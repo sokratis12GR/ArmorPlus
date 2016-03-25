@@ -1,0 +1,16 @@
+[
+{
+  "modid": "armorplus",
+  "name": "ArmorPlus",
+  "description": "Didn't you wish to have more armors in your game? If yes there you go this mod adds alot more armors to minecraft!",
+  "version": "1.7.1",
+  "mcversion": "1.9",
+  "url": "http://curse.com/project/237366",
+  "updateUrl": "http://curse.com/project/237366",
+  "authorList": ["sokratis12GR"],
+  "credits": "Item textures by jdog1408",
+  "logoFile": "/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

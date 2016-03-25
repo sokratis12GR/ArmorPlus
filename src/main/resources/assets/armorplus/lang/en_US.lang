@@ -1,0 +1,72 @@
+#en_US.lang File
+
+#Config File
+config.recipes=Recipes
+config.coalarmor=Coal Armor
+config.lapisarmor=Lapis Armor
+config.redstonearmor=Redstone Armor
+config.emeraldarmor=Emerald Armor
+config.obsidianarmor=Obsidian Armor
+config.lavaarmor=Lava Armor
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus Configuration
+
+#CoalArmor
+item.CoalHelmet.name=Coal Helmet
+item.CoalChestplate.name=Coal Chestplate
+item.CoalLeggings.name=Coal Leggings
+item.CoalBoots.name=Coal Boots
+
+#LapisArmor
+item.LapisHelmet.name=Lapis Helmet
+item.LapisChestplate.name=Lapis Chestplate
+item.LapisLeggings.name=Lapis Leggings
+item.LapisBoots.name=Lapis Boots
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Redstone Helmet
+item.RedstoneChestplate.name=Redstone Chestplate
+item.RedstoneLeggings.name=Redstone Leggings
+item.RedstoneBoots.name=Redstone Boots
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Emerald Helmet
+item.EmeraldChestplate.name=Emerald Chestplate
+item.EmeraldLeggings.name=Emerald Leggings
+item.EmeraldBoots.name=Emerald Boots
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Obsidian Helmet
+item.ObsidianChestplate.name=Obsidian Chestplate
+item.ObsidianLeggings.name=Obsidian Leggings
+item.ObsidianBoots.name=Obsidian Boots
+
+#LavaArmor
+item.LavaHelmet.name=Lava Helmet
+item.LavaChestplate.name=Lava Chestplate
+item.LavaLeggings.name=Lava Leggings
+item.LavaBoots.name=Lava Boots
+
+#Achievements
+achievement.armorplus.craftCoalArmor=Vision Like A Bat!
+achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece
+achievement.armorplus.craftLapisArmor=Never Drown Again!
+achievement.armorplus.craftLapisArmor.desc=Craft a Lapis Armor Piece
+achievement.armorplus.craftRedstoneArmor=Speeedy!
+achievement.armorplus.craftRedstoneArmor.desc=Craft a Redstone Armor Piece
+achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
+achievement.armorplus.craftEmeraldArmor.desc=Craft an Emerald Armor Piece
+achievement.armorplus.craftObsidianArmor=Undestructable!
+achievement.armorplus.craftObsidianArmor.desc=Craft a Obsidian Armor Piece
+achievement.armorplus.craftLavaArmor=The Overpowered!
+achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
+
+#CONSOLE LOG
+info.armorplus.console.config.refresh=Refreshing configuration file.
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
