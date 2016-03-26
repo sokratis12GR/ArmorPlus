@@ -1,14 +1,5 @@
 #bg_BG.lang File
 
-#Config File
-config.recipes=Рецепти
-config.coalarmor=Броня от Въглища
-config.lapisarmor=Броня от Лазурид
-config.redstonearmor=Броня от Червен камък
-config.emeraldarmor=Броня от Смарагд
-config.obsidianarmor=Броня от Обсидиан
-config.lavaarmor=Броня от Лава
-
 #CREATIVE TAB
 itemGroup.armorplus.creativeTab=ArmorPlus
 

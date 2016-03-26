@@ -81,7 +81,7 @@ public class LapisArmor
 					new ItemStack(Blocks.lapis_block, 1), Character.valueOf('6'), new ItemStack(Blocks.lapis_block, 1),
 					Character.valueOf('8'), new ItemStack(Blocks.lapis_block, 1), });
 			GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-			{ "0X2", "3X5", "XXX", Character.valueOf('1'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'),
+			{ "0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'),
 					new ItemStack(Blocks.lapis_block, 1), Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1),
 					Character.valueOf('5'), new ItemStack(Blocks.lapis_block, 1), });
 			helmet.setCreativeTab(ArmorPlus.tabArmorPlus);

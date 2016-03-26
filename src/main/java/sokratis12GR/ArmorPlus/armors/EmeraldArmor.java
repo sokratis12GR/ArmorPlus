@@ -81,7 +81,7 @@ public class EmeraldArmor
 					new ItemStack(Items.emerald, 1), Character.valueOf('6'), new ItemStack(Items.emerald, 1),
 					Character.valueOf('8'), new ItemStack(Items.emerald, 1), });
 			GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-			{ "0X1", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('2'),
+			{ "0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('2'),
 					new ItemStack(Items.emerald, 1), Character.valueOf('3'), new ItemStack(Items.emerald, 1),
 					Character.valueOf('5'), new ItemStack(Items.emerald, 1), });
 			helmet.setCreativeTab(ArmorPlus.tabArmorPlus);

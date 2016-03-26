@@ -11,7 +11,7 @@ public class EventHandler
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
 	{
-		if (eventArgs.modID.equals(ArmorPlus.MODID))
+		if (eventArgs.equals(ArmorPlus.MODID))
 		{
 			ConfigHandler.syncConfig();
 			ArmorPlus.logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.config.refresh"));
