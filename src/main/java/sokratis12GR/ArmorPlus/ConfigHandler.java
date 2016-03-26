@@ -64,7 +64,7 @@ public class ConfigHandler
 	{
 		String category;
 		category = "Recipes";
-		config.setCategoryLanguageKey("Recipes", "config.recipes");
+		config.addCustomCategoryComment(category, "Armor's Recipes");
 		enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
 				"Enable/Disable The Coal Armor Recipes");
 		enableLapisArmorRecipes = config.getBoolean("enableLapisArmorRecipes", category, true,
@@ -82,8 +82,7 @@ public class ConfigHandler
 
 		// Coal Armor
 		category = "CoalArmor";
-		config.setCategoryLanguageKey("CoalArmor", "config.coalarmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Coal Armor's Settings");
 		enableCoalHNightVision = config.getBoolean("enableCoalHNightVision", category, true,
 				"Enable/Disable The Coal Helmet NightVision");
 		enableCoalCNightVision = config.getBoolean("enableCoalCNightVision", category, true,
@@ -95,8 +94,7 @@ public class ConfigHandler
 
 		// Lapis Armor
 		category = "LapisArmor";
-        config.setCategoryLanguageKey("LapisArmor", "config.lapisarmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Lapis Armor's Settings");
 		enableLapisHBreathing = config.getBoolean("enableLapisHBreathing", category, true,
 				"Enable/Disable The Lapis Helmet Water Breathing");
 		enableLapisCBreathing = config.getBoolean("enableLapisCBreathing", category, true,
@@ -108,8 +106,7 @@ public class ConfigHandler
 
 		// Redstone Armor
 		category = "RedstoneArmor";
-        config.setCategoryLanguageKey("RedstoneArmor", "config.redstonearmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Redstone Armor's Settings");
 		enableRedstoneHSpeed = config.getBoolean("enableRedstoneHSpeed", category, true,
 				"Enable/Disable The Redstone Helmet Speed");
 		enableRedstoneCSpeed = config.getBoolean("enableRedstoneCeSpeed", category, true,
@@ -121,8 +118,7 @@ public class ConfigHandler
 
 		// Emerald Armor
 		category = "EmeraldArmor";
-        config.setCategoryLanguageKey("EmeraldArmor", "config.emeraldarmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Emerald Armor's Settings");
 		enableEmeraldHHaste = config.getBoolean("enableEmeraldHHaste", category, true,
 				"Enable/Disable The Emerald Helmet Haste");
 		enableEmeraldCHaste = config.getBoolean("enableEmeraldCHaste", category, true,
@@ -134,8 +130,7 @@ public class ConfigHandler
 
 		// Obsidian Armor
 		category = "ObsidianArmor";
-        config.setCategoryLanguageKey("ObsidianArmor", "config.obsidianarmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Obsidian Armor's Settings");
 		enableObsidianHResistance = config.getBoolean("enableObsidianHResistance", category, true,
 				"Enable/Disable The Obsidian Helmet Resistance");
 		enableObsidianCResistance = config.getBoolean("enableObsidianCResistance", category, true,
@@ -147,8 +142,7 @@ public class ConfigHandler
 
 		// Lava Armor
 		category = "LavaArmor";
-        config.setCategoryLanguageKey("LavaArmor", "config.lavaarmor");
-		config.isChild = true;
+		config.addCustomCategoryComment(category, "Lava Armor's Settings");
 		// Lava Armor Resistance
 		enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
 				"Enable/Disable The Lava Helmet Resistance");
