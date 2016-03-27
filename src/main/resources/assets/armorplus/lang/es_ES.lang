@@ -1,0 +1,63 @@
+#es_UY.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmaduraMás
+
+#CONFIG GUI
+gui.armorplus.config.title=Configuración de ArmaduraMás
+
+#CoalArmor
+item.CoalHelmet.name=Casco de Carbón
+item.CoalChestplate.name=Peto de Carbón
+item.CoalLeggings.name=Grebas de Carbón
+item.CoalBoots.name=Botas de Carbón
+
+#LapisArmor
+item.LapisHelmet.name=Casco de Lapislázuli
+item.LapisChestplate.name=Peto de Lapislázuli
+item.LapisLeggings.name=Grebas de Lapislázuli
+item.LapisBoots.name=Botas de Lapislázuli
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Casco de Redstone
+item.RedstoneChestplate.name=Peto de Redstone
+item.RedstoneLeggings.name=Grebas de Redstone
+item.RedstoneBoots.name=Botas de Redstone
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Casco de Esmeralda
+item.EmeraldChestplate.name=Peto de Esmeralda
+item.EmeraldLeggings.name=Grebas de Esmeralda
+item.EmeraldBoots.name=Botas de Esmeralda
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Casco de Obsidiana
+item.ObsidianChestplate.name=Peto de Obsidiana
+item.ObsidianLeggings.name=Grebas de Obsidiana
+item.ObsidianBoots.name=Botas de Obsidiana
+
+#LavaArmor
+item.LavaHelmet.name=Casco de Lava
+item.LavaChestplate.name=Peto de Lava
+item.LavaLeggings.name=Grebas de Lava
+item.LavaBoots.name=Botas de Lava
+
+#Achievements
+achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
+achievement.armorplus.craftCoalArmor.desc=Crear una Pieza de Armadura de Carbón
+achievement.armorplus.craftLapisArmor=¡Nunca Ahugue de Nuevo!
+achievement.armorplus.craftLapisArmor.desc=Crear una Pieza de Armadura de Lapislázuli
+achievement.armorplus.craftRedstoneArmor=¡Rápido!
+achievement.armorplus.craftRedstoneArmor.desc=Crear una Pieza de Armadura de Redstone
+achievement.armorplus.craftEmeraldArmor=¡Blande Más Rápido!
+achievement.armorplus.craftEmeraldArmor.desc=Crear una Pieza de Armadura de Esmeralda
+achievement.armorplus.craftObsidianArmor=Indestructable!
+achievement.armorplus.craftObsidianArmor.desc=Crear una Pieza de Armadura de Obsidiana
+achievement.armorplus.craftLavaArmor=¡El Dominado!
+achievement.armorplus.craftLavaArmor.desc=Crear una Pieza de Armadura de Lava
+
+#CONSOLE LOG
+info.armorplus.console.config.refresh=Refrescando el archivo de configuración.
+info.armorplus.console.load.preInit=Empezar pre-inicialización
+info.armorplus.console.load.init=Empezar inicialización
+info.armorplus.console.load.postInit=Empezar post-inicialización
