@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON =  "https://github.com/sokratis12GR/VersionUpdate/blob/gh-pages/ArmorPlus.json" )
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON =  "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json" )
 public class ArmorPlus
 {
 
