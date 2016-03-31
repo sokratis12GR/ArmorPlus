@@ -128,8 +128,8 @@ public class ObsidianArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", "ObsidianArmor", 29, new int[]
-		{ 4, 8, 10, 5 }, 10, SoundEvents.item_armor_equip_diamond);
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", "ObsidianArmor", 40, new int[]
+		{ 3, 7, 10, 5 }, 25, SoundEvents.item_armor_equip_diamond);
 
 		int armorPreffix = 0;
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD)

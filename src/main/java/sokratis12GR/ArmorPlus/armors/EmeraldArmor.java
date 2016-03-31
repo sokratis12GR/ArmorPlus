@@ -131,8 +131,8 @@ public class EmeraldArmor
 	static
 	{
 
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("EMERALDARMOR", "EmeraldArmor", 26, new int[]
-		{ 3, 7, 9, 4 }, 10, SoundEvents.item_armor_equip_diamond);
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("EMERALDARMOR", "EmeraldArmor", 35, new int[]
+		{ 3, 6, 9, 4 }, 20, SoundEvents.item_armor_equip_diamond);
 
 		int armorPreffix = 0;
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD)

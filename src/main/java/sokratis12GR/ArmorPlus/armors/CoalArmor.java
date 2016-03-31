@@ -130,7 +130,7 @@ public class CoalArmor
 	{
 
 		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COALARMOR", "CoalArmor", 7, new int[]
-		{ 1, 2, 3, 1 }, 9, SoundEvents.item_armor_equip_leather);
+		{ 1, 2, 3, 1 }, 8, SoundEvents.item_armor_equip_leather);
 
 		int armorPreffix = 0;
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD )

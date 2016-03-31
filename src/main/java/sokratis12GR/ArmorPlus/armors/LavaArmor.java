@@ -109,8 +109,8 @@ public class LavaArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", "LavaArmor", 32, new int[]
-				{ 5, 9, 11, 6 }, 20, SoundEvents.item_armor_equip_diamond);
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", "LavaArmor", 45, new int[]
+				{ 4, 8, 11, 6 }, 28, SoundEvents.item_armor_equip_diamond);
 
 		int armorPreffix = 0;
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD)
@@ -150,7 +150,8 @@ public class LavaArmor
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
 					}
-					if (ConfigHandler.enableLavaCFireResistance)
+				}
+				if (ConfigHandler.enableLavaCFireResistance)
 					{
 						if (true)
 						{
@@ -158,7 +159,6 @@ public class LavaArmor
 								((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
 						}
 					}
-				}
 			}
 		}).setUnlocalizedName("LavaChestplate");
 		chestplate.setMaxStackSize(1);

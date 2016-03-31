@@ -42,6 +42,12 @@ item.LavaChestplate.name=Lava Chestplate
 item.LavaLeggings.name=Lava Leggings
 item.LavaBoots.name=Lava Boots
 
+#SuperStarArmor
+item.SuperStarHelmet.name=Super Star Helmet
+item.SuperStarChestplate.name=Super Star Chestplate
+item.SuperStarLeggings.name=Super Star Leggings
+item.SuperStarBoots.name=Super Star Boots
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece
@@ -55,6 +61,8 @@ achievement.armorplus.craftObsidianArmor=Undestructable!
 achievement.armorplus.craftObsidianArmor.desc=Craft a Obsidian Armor Piece
 achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
+achievement.armorplus.craftSuperStarArmor=Godlike!
+achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.

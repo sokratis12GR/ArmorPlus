@@ -1,8 +1,5 @@
 package sokratis12GR.ArmorPlus.client.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
@@ -10,6 +7,9 @@ import net.minecraftforge.fml.client.config.IConfigElement;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigGui extends GuiConfig
 {
@@ -31,6 +31,7 @@ public class ConfigGui extends GuiConfig
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("EmeraldArmor".toLowerCase())));
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("ObsidianArmor".toLowerCase())));
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
+		list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
 		return list;
 	}
 }

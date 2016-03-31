@@ -11,6 +11,7 @@ public class ClientProxy extends CommonProxy
 		ins.EmeraldArmor.registerRenderers();
 		ins.ObsidianArmor.registerRenderers();
 		ins.LavaArmor.registerRenderers();
+		ins.SuperStarArmor.registerRenderers();
 
 	}
 }

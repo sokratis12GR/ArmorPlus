@@ -30,5 +30,8 @@ public class GlobalEventsArmorPlus
         //The Overpowered! - Achievement Trigger
         if (i == LavaArmor.helmet || i ==  LavaArmor.chestplate || i ==  LavaArmor.legs || i ==  LavaArmor.boots)
             event.player.addStat(ARPAchievements.craftLavaArmor, 1);
+        //Godlike! - Achievement Trigger
+        if (i == SuperStarArmor.helmet || i ==  SuperStarArmor.chestplate || i ==  SuperStarArmor.legs || i ==  SuperStarArmor.boots)
+            event.player.addStat(ARPAchievements.craftSuperStarArmor, 1);
     }
 }

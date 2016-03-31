@@ -15,7 +15,7 @@ public class ConfigHandler
 	public static boolean enableEmeraldArmorRecipes;
 	public static boolean enableObsidianArmorRecipes;
 	public static boolean enableLavaArmorRecipes;
-	public static boolean enableBoneArmorRecipes;
+	public static boolean enableSuperStarArmorRecipes;
 
 	// Special Effects
 	// Coal Armor
@@ -52,6 +52,11 @@ public class ConfigHandler
 	public static boolean enableLavaLFireResistance;
 	public static boolean enableLavaBResistance;
 	public static boolean enableLavaBFireResistance;
+	// Super Star Armor
+	public static boolean enableSuperStarHRegen;
+	public static boolean enableSuperStarCRegen;
+	public static boolean enableSuperStarLRegen;
+	public static boolean enableSuperStarBRegen;
 
 	public static void init(File file)
 	{
@@ -77,8 +82,8 @@ public class ConfigHandler
 				"Enable/Disable The Obsidian Armor Recipes");
 		enableLavaArmorRecipes = config.getBoolean("enableLavaArmorRecipes", category, true,
 				"Enable/Disable The Lava Armor Recipes");
-		enableBoneArmorRecipes = config.getBoolean("enableBoneArmorRecipes", category, true,
-				"Enable/Disable The Bone Armor Recipes");
+		enableSuperStarArmorRecipes = config.getBoolean("enableSuperStarArmorRecipes", category, true,
+				"Enable/Disable The Super Star Armor Recipes");
 
 		// Coal Armor
 		category = "CoalArmor";
@@ -161,6 +166,18 @@ public class ConfigHandler
 				"Enable/Disable The Lava Leggings FireResistance");
 		enableLavaBFireResistance = config.getBoolean("enableLavaBFireResistance", category, true,
 				"Enable/Disable The Lava Boots FireResistance");
+
+		// Super Star Armor
+		category = "SuperStarArmor";
+		config.addCustomCategoryComment(category, "Super Star Armor's Settings");
+		enableSuperStarHRegen = config.getBoolean("enableSuperStarHRegen", category, true,
+				"Enable/Disable The Super Star Helmet Regeneration");
+		enableSuperStarCRegen = config.getBoolean("enableSuperStarCRegen", category, true,
+				"Enable/Disable The Super Star Chestplate Regeneration");
+		enableSuperStarLRegen = config.getBoolean("enableSuperStarLRegen", category, true,
+				"Enable/Disable The Super Star Leggings Regeneration");
+		enableSuperStarBRegen = config.getBoolean("enableSuperStarBRegen", category, true,
+				"Enable/Disable The Super Star Boots Regeneration");
 
 		if (config.hasChanged())
 			config.save();
