@@ -7,6 +7,7 @@ ArmorPlus 1.7.5
 ** Lava Armor gives just 4 More Protection Points than Obsidian Armor Does (29).
 ** Super Star Armor gives just 3 More Protection Points than Lava Armor Does (32).
 * Changed the ArmorPlus's Achievement Page
+* Increased all armors durability
 {Features Added}
 * Super Star Armor
 * More Achievements
