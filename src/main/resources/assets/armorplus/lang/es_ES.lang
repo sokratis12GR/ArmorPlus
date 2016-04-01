@@ -42,6 +42,12 @@ item.LavaChestplate.name=Peto de Lava
 item.LavaLeggings.name=Grebas de Lava
 item.LavaBoots.name=Botas de Lava
 
+#SuperStarArmor
+item.SuperStarHelmet.name=Casco de Estrella Estupenda
+item.SuperStarChestplate.name=Peto de Estrella Estupenda
+item.SuperStarLeggings.name=Grebas de Estrella Estupenda
+item.SuperStarBoots.name=Botas de Estrella Estupenda
+
 #Achievements
 achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
 achievement.armorplus.craftCoalArmor.desc=Crear una Pieza de Armadura de Carbón
@@ -55,6 +61,8 @@ achievement.armorplus.craftObsidianArmor=Indestructable!
 achievement.armorplus.craftObsidianArmor.desc=Crear una Pieza de Armadura de Obsidiana
 achievement.armorplus.craftLavaArmor=¡El Dominado!
 achievement.armorplus.craftLavaArmor.desc=Crear una Pieza de Armadura de Lava
+achievement.armorplus.craftSuperStarArmor=¡Divino!
+achievement.armorplus.craftSuperStarArmor.desc=Crear una Pieza de Armadura de Estrella Estupenda
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refrescando el archivo de configuración.
