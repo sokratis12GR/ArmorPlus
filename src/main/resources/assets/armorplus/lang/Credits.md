@@ -14,3 +14,9 @@ I want to give credit to those guys who helped with the translation of ArmorPlus
 -(es_ES.lang	Translate to Spanish Spanish)
 
 }
+
+* LuminousLizard https://github.com/LuminousLizard {
+
+- (de_DE.lang Traslate to German)
+
+} 
