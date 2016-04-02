@@ -21,7 +21,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.ConfigHandler;
+import sokratis12GR.ArmorPlus.util.TextHelper;
 
+import java.util.List;
 import java.util.Random;
 
 public class CoalArmor
@@ -136,6 +138,10 @@ public class CoalArmor
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD )
 		{
 			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&1" +"Gives you Night Vision"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableCoalHNightVision)
@@ -153,6 +159,10 @@ public class CoalArmor
 		chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST)
 		{
 			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&1" +"Gives you Night Vision"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableCoalCNightVision)
@@ -170,6 +180,10 @@ public class CoalArmor
 		legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS)
 		{
 			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&1" +"Gives you Night Vision"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableCoalLNightVision)
@@ -187,6 +201,10 @@ public class CoalArmor
 		boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET)
 		{
 			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&1" +"Gives you Night Vision"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableCoalBNightVision)

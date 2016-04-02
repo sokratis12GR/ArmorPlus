@@ -21,7 +21,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.ConfigHandler;
+import sokratis12GR.ArmorPlus.util.TextHelper;
 
+import java.util.List;
 import java.util.Random;
 
 public class ObsidianArmor
@@ -134,6 +136,11 @@ public class ObsidianArmor
 		int armorPreffix = 0;
 		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD)
 		{
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&8" +"Gives you Resistance"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableObsidianHResistance)
@@ -149,6 +156,11 @@ public class ObsidianArmor
 		helmet.setMaxStackSize(1);
 		chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST)
 		{
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&8" +"Gives you Resistance"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableObsidianCResistance)
@@ -163,7 +175,12 @@ public class ObsidianArmor
 		}).setUnlocalizedName("ObsidianChestplate");
 		chestplate.setMaxStackSize(1);
 		legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS)
+		{
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
+				tooltip.add(TextHelper.getFormattedText("&8" +"Gives you Resistance"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableObsidianLResistance)
@@ -179,6 +196,11 @@ public class ObsidianArmor
 		legs.setMaxStackSize(1);
 		boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET)
 		{
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+			{
+				tooltip.add(TextHelper.getFormattedText("&8" +"Gives you Resistance"));
+			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
 				if (ConfigHandler.enableObsidianBResistance)
