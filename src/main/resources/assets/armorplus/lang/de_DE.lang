@@ -1,0 +1,71 @@
+#de_DE.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus Einstellungen
+
+#CoalArmor
+item.CoalHelmet.name=Kohlehelm
+item.CoalChestplate.name=Kohlebrustpanzer
+item.CoalLeggings.name=Kohlebeinschutz
+item.CoalBoots.name=Kohlestiefel
+
+#LapisArmor
+item.LapisHelmet.name=Lapislazulihelm
+item.LapisChestplate.name=Lapislazulibrustpanzer
+item.LapisLeggings.name=Lapislazulibeinschutz
+item.LapisBoots.name=Lapislazulistiefel
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Redstonehelm
+item.RedstoneChestplate.name=Redstonebrustpanzer
+item.RedstoneLeggings.name=Redstonebeinschutz
+item.RedstoneBoots.name=Redstonestiefel
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Smaragdhelm
+item.EmeraldChestplate.name=Smaragdbrustpanzer
+item.EmeraldLeggings.name=Smaragdbeinschutz
+item.EmeraldBoots.name=Smaragdstiefel
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Obsidianhelm
+item.ObsidianChestplate.name=Obsidianbrustpanzer
+item.ObsidianLeggings.name=Obsidianbeinschutz
+item.ObsidianBoots.name=Obsidianstiefel
+
+#LavaArmor
+item.LavaHelmet.name=Lavahelm
+item.LavaChestplate.name=Lavabrustpanzer
+item.LavaLeggings.name=Lavabeinschutz
+item.LavaBoots.name=Lavastiefel
+
+#SuperStarArmor
+item.SuperStarHelmet.name=Super Stern-Helm
+item.SuperStarChestplate.name=Super Stern-Brustpanzer
+item.SuperStarLeggings.name=Super Stern-Beinschutz
+item.SuperStarBoots.name=Super Stern-Stiefel
+
+#Achievements
+achievement.armorplus.craftCoalArmor=Sehvermögen Wie Eine Fledermaus!
+achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohlerüstung!
+achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
+achievement.armorplus.craftLapisArmor.desc=Fertige Ein Teil Der Lapislazulirüstung!
+achievement.armorplus.craftRedstoneArmor=Schneller!
+achievement.armorplus.craftRedstoneArmor.desc=Fertige Ein Teil Der Redstonerüstung!
+achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
+achievement.armorplus.craftEmeraldArmor.desc=Fertige Ein Teil Der Smaragdrüstung!
+achievement.armorplus.craftObsidianArmor=Unzerstörbar!
+achievement.armorplus.craftObsidianArmor.desc=Fertige Ein Teil Der Obsidianrüstung!
+achievement.armorplus.craftLavaArmor=Der Überwältigende!
+achievement.armorplus.craftLavaArmor.desc=Fertige Ein Teil Der Lavarüstung!
+achievement.armorplus.craftSuperStarArmor=Gottgleich!
+achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Super Stern-Rüstung!
+
+#CONSOLE LOG
+info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
+info.armorplus.console.load.preInit=Starte Pre-Initialisierung
+info.armorplus.console.load.init=Starte Initialisierung
+info.armorplus.console.load.postInit=Starte Post-Initialisierung
