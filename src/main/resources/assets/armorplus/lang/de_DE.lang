@@ -49,20 +49,20 @@ item.SuperStarLeggings.name=Super Stern-Beinschutz
 item.SuperStarBoots.name=Super Stern-Stiefel
 
 #Achievements
-achievement.armorplus.craftCoalArmor=Sehvermögen Wie Eine Fledermaus!
-achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohlerüstung!
+achievement.armorplus.craftCoalArmor=Sehvermogen Wie Eine Fledermaus!
+achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohlerustung!
 achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
-achievement.armorplus.craftLapisArmor.desc=Fertige Ein Teil Der Lapislazulirüstung!
+achievement.armorplus.craftLapisArmor.desc=Fertige Ein Teil Der Lapislazulirustung!
 achievement.armorplus.craftRedstoneArmor=Schneller!
-achievement.armorplus.craftRedstoneArmor.desc=Fertige Ein Teil Der Redstonerüstung!
+achievement.armorplus.craftRedstoneArmor.desc=Fertige Ein Teil Der Redstonerustung!
 achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
-achievement.armorplus.craftEmeraldArmor.desc=Fertige Ein Teil Der Smaragdrüstung!
-achievement.armorplus.craftObsidianArmor=Unzerstörbar!
-achievement.armorplus.craftObsidianArmor.desc=Fertige Ein Teil Der Obsidianrüstung!
-achievement.armorplus.craftLavaArmor=Der Überwältigende!
-achievement.armorplus.craftLavaArmor.desc=Fertige Ein Teil Der Lavarüstung!
+achievement.armorplus.craftEmeraldArmor.desc=Fertige Ein Teil Der Smaragdrustung!
+achievement.armorplus.craftObsidianArmor=Unzerstorbar!
+achievement.armorplus.craftObsidianArmor.desc=Fertige Ein Teil Der Obsidianrustung!
+achievement.armorplus.craftLavaArmor=Der Uberwaltigende!
+achievement.armorplus.craftLavaArmor.desc=Fertige Ein Teil Der Lavarustung!
 achievement.armorplus.craftSuperStarArmor=Gottgleich!
-achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Super Stern-Rüstung!
+achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Super Stern-Rustung!
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
