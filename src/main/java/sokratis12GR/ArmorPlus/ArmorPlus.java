@@ -84,8 +84,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        EnderDragonScale.init();
-        EnderDragonScale.register();
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
         RedstoneArmor.instance = ArmorPlus.instance;
@@ -138,7 +136,6 @@ public class ArmorPlus {
             ins.ObsidianArmor.registerRenderers();
             ins.LavaArmor.registerRenderers();
             ins.SuperStarArmor.registerRenderers();
-            ins.EnderDragonScale.registerRenders();
         }
     }
 }
