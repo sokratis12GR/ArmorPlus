@@ -1,5 +1,6 @@
 package sokratis12GR.ArmorPlus;
 
+
 public class ClientProxy extends CommonProxy
 {
 	@Override
@@ -12,6 +13,6 @@ public class ClientProxy extends CommonProxy
 		ins.ObsidianArmor.registerRenderers();
 		ins.LavaArmor.registerRenderers();
 		ins.SuperStarArmor.registerRenderers();
-
+		ArmorPlusItems.init();
 	}
 }

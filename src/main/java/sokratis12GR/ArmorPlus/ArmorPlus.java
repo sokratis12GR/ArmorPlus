@@ -1,22 +1,25 @@
 package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.*;
-import net.minecraft.world.*;
-import net.minecraftforge.common.*;
-import net.minecraftforge.fml.common.*;
-import net.minecraftforge.fml.common.event.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.network.*;
-import sokratis12GR.ArmorPlus.armors.*;
-import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
-import sokratis12GR.ArmorPlus.items.EnderDragonScale;
-import sokratis12GR.ArmorPlus.util.ARPAchievements;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
+import sokratis12GR.ArmorPlus.util.ARPAchievements;
+import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
@@ -33,7 +36,7 @@ public class ArmorPlus {
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
-    public static ConfigHandler.CommonProxy proxy;
+    public static CommonProxy proxy;
 
     public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
@@ -53,7 +56,6 @@ public class ArmorPlus {
     ObsidianArmor ObsidianArmor = new ObsidianArmor();
     LavaArmor LavaArmor = new LavaArmor();
     SuperStarArmor SuperStarArmor = new SuperStarArmor();
-    EnderDragonScale EnderDragonScale = new EnderDragonScale();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -124,18 +126,4 @@ public class ArmorPlus {
         }
     }
 
-    public static class ClientProxy extends ConfigHandler.CommonProxy
-    {
-        @Override
-        public void registerRenderers(ArmorPlus ins)
-        {
-            ins.CoalArmor.registerRenderers();
-            ins.LapisArmor.registerRenderers();
-            ins.RedstoneArmor.registerRenderers();
-            ins.EmeraldArmor.registerRenderers();
-            ins.ObsidianArmor.registerRenderers();
-            ins.LavaArmor.registerRenderers();
-            ins.SuperStarArmor.registerRenderers();
-        }
-    }
 }

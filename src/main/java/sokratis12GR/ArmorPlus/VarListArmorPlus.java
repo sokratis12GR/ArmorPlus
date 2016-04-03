@@ -1,4 +1,6 @@
-package sokratis12GR.ArmorPlus;public class VarListArmorPlus{
+package sokratis12GR.ArmorPlus;
+
+public class VarListArmorPlus{
 
 	
 

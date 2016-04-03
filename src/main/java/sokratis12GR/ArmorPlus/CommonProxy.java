@@ -2,7 +2,6 @@ package sokratis12GR.ArmorPlus;
 
 public class CommonProxy
 {
-
 	public void loadCommands()
 	{
 
