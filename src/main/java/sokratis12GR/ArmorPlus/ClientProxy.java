@@ -12,6 +12,7 @@ public class ClientProxy extends CommonProxy
 		ins.ObsidianArmor.registerRenderers();
 		ins.LavaArmor.registerRenderers();
 		ins.SuperStarArmor.registerRenderers();
+		ins.EnderDragonScale.registerRenders();
 
 	}
 }

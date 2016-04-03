@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.network.*;
 import sokratis12GR.ArmorPlus.armors.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
+import sokratis12GR.ArmorPlus.items.EnderDragonScale;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +33,7 @@ public class ArmorPlus {
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
-    public static CommonProxy proxy;
+    public static ConfigHandler.CommonProxy proxy;
 
     public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
@@ -52,6 +53,7 @@ public class ArmorPlus {
     ObsidianArmor ObsidianArmor = new ObsidianArmor();
     LavaArmor LavaArmor = new LavaArmor();
     SuperStarArmor SuperStarArmor = new SuperStarArmor();
+    EnderDragonScale EnderDragonScale = new EnderDragonScale();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -82,6 +84,8 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        EnderDragonScale.init();
+        EnderDragonScale.register();
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
         RedstoneArmor.instance = ArmorPlus.instance;
@@ -122,4 +126,19 @@ public class ArmorPlus {
         }
     }
 
+    public static class ClientProxy extends ConfigHandler.CommonProxy
+    {
+        @Override
+        public void registerRenderers(ArmorPlus ins)
+        {
+            ins.CoalArmor.registerRenderers();
+            ins.LapisArmor.registerRenderers();
+            ins.RedstoneArmor.registerRenderers();
+            ins.EmeraldArmor.registerRenderers();
+            ins.ObsidianArmor.registerRenderers();
+            ins.LavaArmor.registerRenderers();
+            ins.SuperStarArmor.registerRenderers();
+            ins.EnderDragonScale.registerRenders();
+        }
+    }
 }
