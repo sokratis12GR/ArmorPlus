@@ -38,9 +38,15 @@ item.ObsidianBoots.name=Обсидиан Ботуши
 
 #LavaArmor
 item.LavaHelmet.name=Лава Шлем
-item.LavaChestplate.name=Лава Chestplate
+item.LavaChestplate.name=Лава Нагръдник
 item.LavaLeggings.name=Лава Панталони
 item.LavaBoots.name=Лава Ботуши
+
+#SuperStarArmor
+item.SuperStarHelmet.name=Супер Звезден Шлем
+item.SuperStarChestplate.name=Супер Звезден Нагръдник
+item.SuperStarLeggings.name=Супер Звездени Панталони
+item.SuperStarBoots.name=Супер Звездени Ботуши
 
 #This Remains English
 #Achievements
@@ -56,6 +62,8 @@ achievement.armorplus.craftObsidianArmor=Undestructable!
 achievement.armorplus.craftObsidianArmor.desc=Craft a Obsidian Armor Piece
 achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
+achievement.armorplus.craftSuperStarArmor=Godlike!
+achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.
