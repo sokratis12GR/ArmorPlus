@@ -12,15 +12,15 @@ import sokratis12GR.ArmorPlus.ArmorPlus;
 public class EnderDragonScale extends Item {
 
     public EnderDragonScale() {
-        setRegistryName("enderDragonScale");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("enderDragonScale");     // Used for localization (en_US.lang)
+        setRegistryName("EnderDragonScale");        // The unique name (within your mod) that identifies this item
+        setUnlocalizedName("EnderDragonScale");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorPlus);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:enderDragonScale", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:EnderDragonScale", "inventory"));
     }
 
 }

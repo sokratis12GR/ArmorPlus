@@ -32,7 +32,6 @@ public class CommonProxy
 
 	public void registerRenderers(ArmorPlus armorPlus)
 	{
-		// TODO Auto-generated method stub
 
 	}
 }

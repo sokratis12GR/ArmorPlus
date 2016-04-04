@@ -16,6 +16,7 @@ public class ConfigHandler
 	public static boolean enableObsidianArmorRecipes;
 	public static boolean enableLavaArmorRecipes;
 	public static boolean enableSuperStarArmorRecipes;
+	public static boolean enableEnderDragonArmorRecipes;
 
 	// Special Effects
 	// Coal Armor
@@ -84,6 +85,9 @@ public class ConfigHandler
 				"Enable/Disable The Lava Armor Recipes");
 		enableSuperStarArmorRecipes = config.getBoolean("enableSuperStarArmorRecipes", category, true,
 				"Enable/Disable The Super Star Armor Recipes");
+		enableEnderDragonArmorRecipes = config.getBoolean("enableEnderDragonArmorRecipes", category, true,
+				"Enable/Disable The EnderDragon Armor Recipes");
+
 
 		// Coal Armor
 		category = "CoalArmor";
