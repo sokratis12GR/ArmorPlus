@@ -126,11 +126,8 @@ public class LapisArmor
 			{
 				if (ConfigHandler.enableLapisHBreathing)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LapisHelmet");
@@ -146,11 +143,8 @@ public class LapisArmor
 			{
 				if (ConfigHandler.enableLapisCBreathing)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LapisChestplate");
@@ -166,11 +160,8 @@ public class LapisArmor
 			{
 				if (ConfigHandler.enableLapisLBreathing)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LapisLeggings");
@@ -186,11 +177,8 @@ public class LapisArmor
 			{
 				if (ConfigHandler.enableLapisBBreathing)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LapisBoots");

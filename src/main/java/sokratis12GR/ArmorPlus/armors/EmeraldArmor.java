@@ -128,11 +128,8 @@ public class EmeraldArmor
 			{
 				if (ConfigHandler.enableEmeraldHHaste)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("EmeraldHelmet");
@@ -149,11 +146,8 @@ public class EmeraldArmor
 			{
 				if (ConfigHandler.enableEmeraldCHaste)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("EmeraldChestplate");
@@ -170,11 +164,8 @@ public class EmeraldArmor
 			{
 				if (ConfigHandler.enableEmeraldLHaste)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("EmeraldLeggings");
@@ -191,11 +182,8 @@ public class EmeraldArmor
 			{
 				if (ConfigHandler.enableEmeraldBHaste)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("EmeraldLeggings");

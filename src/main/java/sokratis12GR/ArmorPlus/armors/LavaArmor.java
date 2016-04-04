@@ -106,22 +106,13 @@ public class LavaArmor
 			{
 				if (ConfigHandler.enableLavaHResistance)
 				{
-					if (true)
-					{
-
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
-					}
 				}
 				if (ConfigHandler.enableLavaHFireResistance)
 				{
-					if (true)
-					{
-
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
-
-					}
 				}
 			}
 		}).setUnlocalizedName("LavaHelmet");
@@ -137,19 +128,13 @@ public class LavaArmor
 			{
 				if (ConfigHandler.enableLavaCResistance)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
-					}
 				}
 				if (ConfigHandler.enableLavaCFireResistance)
-					{
-						if (true)
-						{
+				{
 							if (entity instanceof EntityLivingBase)
 								((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
-						}
 					}
 			}
 		}).setUnlocalizedName("LavaChestplate");
@@ -165,19 +150,13 @@ public class LavaArmor
 			{
 				if (ConfigHandler.enableLavaLResistance)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
-					}
 				}
 				if (ConfigHandler.enableLavaLFireResistance)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LavaLeggings");
@@ -193,19 +172,13 @@ public class LavaArmor
 			{
 				if (ConfigHandler.enableLavaBResistance)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
-					}
 				}
 				if (ConfigHandler.enableLavaBFireResistance)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("LavaBoots");

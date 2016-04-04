@@ -133,11 +133,8 @@ public class RedstoneArmor
 			{
 				if (ConfigHandler.enableRedstoneHSpeed)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("RedstoneHelmet");
@@ -153,11 +150,8 @@ public class RedstoneArmor
 			{
 				if (ConfigHandler.enableRedstoneCSpeed)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("RedstoneChestplate");
@@ -173,11 +167,8 @@ public class RedstoneArmor
 			{
 				if (ConfigHandler.enableRedstoneLSpeed)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("RedstoneLeggings");
@@ -193,11 +184,8 @@ public class RedstoneArmor
 			{
 				if (ConfigHandler.enableRedstoneBSpeed)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
-					}
 				}
 			}
 		}).setUnlocalizedName("RedstoneBoots");

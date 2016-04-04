@@ -119,16 +119,16 @@ public class EnderDragonArmor {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
             }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
+            {
+                {
+                    ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                    ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                    ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                    ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-
-                if (ConfigHandler.enableEnderDragonFlight) {
-                    if (true) {
-                        if (head != null && head.getItem() == helmet && chest != null && chest.getItem() == chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == boots) {
+                    if (ConfigHandler.enableEnderDragonFlight) {
+                        if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots) {
                             entity.capabilities.allowFlying = true;
                         } else {
                             entity.capabilities.allowFlying = false;
@@ -136,7 +136,6 @@ public class EnderDragonArmor {
                         }
                     }
                 }
-
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);

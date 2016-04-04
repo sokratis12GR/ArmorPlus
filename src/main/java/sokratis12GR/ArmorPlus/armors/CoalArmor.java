@@ -125,11 +125,8 @@ public class CoalArmor
 			{
 				if (ConfigHandler.enableCoalHNightVision)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision , 240, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("CoalHelmet");
@@ -146,11 +143,8 @@ public class CoalArmor
 			{
 				if (ConfigHandler.enableCoalCNightVision)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("CoalChestplate");
@@ -167,11 +161,8 @@ public class CoalArmor
 			{
 				if (ConfigHandler.enableCoalLNightVision)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("CoalLeggings");
@@ -188,11 +179,8 @@ public class CoalArmor
 			{
 				if (ConfigHandler.enableCoalBNightVision)
 				{
-					if (true)
-					{
 						if (entity instanceof EntityLivingBase)
 							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-					}
 				}
 			}
 		}).setUnlocalizedName("CoalBoots");

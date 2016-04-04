@@ -1,10 +1,10 @@
 package sokratis12GR.ArmorPlus.resources;
 
-        import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-        import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-        import sokratis12GR.ArmorPlus.armors.*;
-        import sokratis12GR.ArmorPlus.util.ARPAchievements;
         import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.util.ARPAchievements;
 
 public class GlobalEventsArmorPlus
 {
@@ -37,4 +37,5 @@ public class GlobalEventsArmorPlus
         if (i == EnderDragonArmor.helmet || i ==  EnderDragonArmor.chestplate || i ==  EnderDragonArmor.legs || i ==  SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftEnderDragonArmor, 1);
     }
+
 }
