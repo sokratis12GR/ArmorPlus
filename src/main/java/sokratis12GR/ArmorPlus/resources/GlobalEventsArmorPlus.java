@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus;
+package sokratis12GR.ArmorPlus.resources;
 
         import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         import net.minecraftforge.fml.common.gameevent.PlayerEvent;

@@ -1,6 +1,8 @@
 package sokratis12GR.ArmorPlus;
 
 
+import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
+
 public class ClientProxy extends CommonProxy
 {
 	@Override
@@ -14,5 +16,6 @@ public class ClientProxy extends CommonProxy
 		ins.LavaArmor.registerRenderers();
 		ins.SuperStarArmor.registerRenderers();
 		ArmorPlusItems.init();
+		ArmorPlusItems.initModels();
 	}
 }

@@ -48,6 +48,13 @@ item.SuperStarChestplate.name=Super Star Chestplate
 item.SuperStarLeggings.name=Super Star Leggings
 item.SuperStarBoots.name=Super Star Boots
 
+#EnderDragon Armor
+item.EnderDragonScale.name=EnderDragon Scale
+item.EnderDragonHelmet.name=EnderDragon Helmet
+item.EnderDragonChestplate.name=EnderDragon Chestplate
+item.EnderDragonLeggings.name=EnderDragon Leggings
+item.EnderDragonBoots.name=EnderDragon Boots
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece

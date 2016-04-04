@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus;
+package sokratis12GR.ArmorPlus.resources;
 
 import net.minecraftforge.common.config.Configuration;
 

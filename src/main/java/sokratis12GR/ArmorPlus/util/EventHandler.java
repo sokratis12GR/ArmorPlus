@@ -3,7 +3,7 @@ package sokratis12GR.ArmorPlus.util;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.ConfigHandler;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 public class EventHandler
 {
