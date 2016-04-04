@@ -33,7 +33,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.7.9";
+    public static final String VERSION = "1.7.10";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -80,14 +80,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
-        CoalArmor.serverLoad(event);
-        LapisArmor.serverLoad(event);
-        RedstoneArmor.serverLoad(event);
-        EmeraldArmor.serverLoad(event);
-        ObsidianArmor.serverLoad(event);
-        LavaArmor.serverLoad(event);
-        SuperStarArmor.serverLoad(event);
-        EnderDragonArmor.serverLoad(event);
     }
 
     @EventHandler

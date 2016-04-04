@@ -1,8 +1,6 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -14,7 +12,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
@@ -23,12 +20,8 @@ import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
-import java.util.Random;
 
 public class EnderDragonArmor {
-
-    public EnderDragonArmor() {
-    }
 
     public static Item helmet;
     public static Item chestplate;
@@ -87,19 +80,6 @@ public class EnderDragonArmor {
 
     }
 
-    public void generateNether(World world, Random random, int chunkX, int chunkZ) {
-    }
-
-    public void generateSurface(World world, Random random, int chunkX, int chunkZ) {
-    }
-
-    public int addFuel(ItemStack fuel) {
-        return 0;
-    }
-
-    public void serverLoad(FMLServerStartingEvent event) {
-    }
-
     public void preInit(FMLPreInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
             ModelLoader.setCustomModelResourceLocation(helmet, 0,
@@ -117,6 +97,7 @@ public class EnderDragonArmor {
     }
 
     static {
+
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ENDERDRAGONARMOR", "EnderDragonArmor", 60, new int[]
                 {5, 9, 12, 6}, 30, SoundEvents.item_armor_equip_diamond);
 
@@ -140,6 +121,22 @@ public class EnderDragonArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+
+                if (ConfigHandler.enableEnderDragonFlight) {
+                    if (true) {
+                        if (head != null && head.getItem() == helmet && chest != null && chest.getItem() == chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == boots) {
+                            entity.capabilities.allowFlying = true;
+                        } else {
+                            entity.capabilities.allowFlying = false;
+                            entity.capabilities.isFlying = false;
+                        }
+                    }
+                }
+
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
@@ -149,7 +146,8 @@ public class EnderDragonArmor {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
             }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
+            {
 
             }
         }).setUnlocalizedName("EnderDragonLeggings");
@@ -162,19 +160,14 @@ public class EnderDragonArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
+
             }
         }).setUnlocalizedName("EnderDragonBoots");
         boots.setMaxStackSize(1);
-
         GameRegistry.registerItem(helmet, "EnderDragonHelmet");
         GameRegistry.registerItem(chestplate, "EnderDragonChestplate");
         GameRegistry.registerItem(legs, "EnderDragonLeggings");
         GameRegistry.registerItem(boots, "EnderDragonBoots");
-    }
-    public void sendPlayerAbilities()
-    {
-        if (EntityEquipmentSlot.HEAD.equals(EnderDragonArmor.helmet) && EntityEquipmentSlot.CHEST.equals(EnderDragonArmor.chestplate) && EntityEquipmentSlot.LEGS.equals(EnderDragonArmor.legs) && EntityEquipmentSlot.FEET.equals(EnderDragonArmor.boots)) {
-            Minecraft.thePlayer.capabilities.allowFlying = true;
-        }
+
     }
 }

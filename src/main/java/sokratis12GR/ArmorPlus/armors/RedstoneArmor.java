@@ -16,7 +16,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
@@ -24,7 +23,6 @@ import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
-import java.util.Random;
 
 public class RedstoneArmor
 {
@@ -100,23 +98,6 @@ public class RedstoneArmor
 		}
 	}
 
-	public void generateNether(World world, Random random, int chunkX, int chunkZ)
-	{
-	}
-
-	public void generateSurface(World world, Random random, int chunkX, int chunkZ)
-	{
-	}
-
-	public int addFuel(ItemStack fuel)
-	{
-		return 0;
-	}
-
-	public void serverLoad(FMLServerStartingEvent event)
-	{
-	}
-
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		if (event.getSide() == Side.CLIENT)
@@ -132,8 +113,7 @@ public class RedstoneArmor
 		}
 	}
 
-	public void registerRenderers()
-	{
+	public void registerRenderers() {
 	}
 
 	static

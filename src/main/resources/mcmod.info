@@ -6,9 +6,9 @@
   "version": "1.7.10",
   "mcversion": "1.9",
   "url": "http://curse.com/project/237366",
-  "updateUrl": "",
+  "updateUrl": "http://minecraft.curseforge.com/projects/armorplus/files",
   "authorList": ["sokratis12GR"],
-  "credits": "Some Item textures by jdog1408",
+  "credits": "",
   "logoFile": "assets/minecraft/textures/logo.png",
   "screenshots": [],
   "dependencies": []

@@ -58,6 +58,8 @@ public class ConfigHandler
 	public static boolean enableSuperStarCRegen;
 	public static boolean enableSuperStarLRegen;
 	public static boolean enableSuperStarBRegen;
+	// EnderDragon Armor
+	public static boolean enableEnderDragonFlight;
 
 	public static void init(File file)
 	{
@@ -182,6 +184,11 @@ public class ConfigHandler
 				"Enable/Disable The Super Star Leggings Regeneration");
 		enableSuperStarBRegen = config.getBoolean("enableSuperStarBRegen", category, true,
 				"Enable/Disable The Super Star Boots Regeneration");
+
+		// EnderDragon Armor
+		category = "EnderDragonArmor";
+		config.addCustomCategoryComment(category, "EnderDragon Armor's Settings");
+		enableEnderDragonFlight = config.getBoolean("enableEnderDragonFlight", category, true, "Enable/Disable EnderDragon Armor Flight");
 
 		if (config.hasChanged())
 			config.save();

@@ -65,11 +65,13 @@ achievement.armorplus.craftRedstoneArmor.desc=Craft a Redstone Armor Piece
 achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
 achievement.armorplus.craftEmeraldArmor.desc=Craft an Emerald Armor Piece
 achievement.armorplus.craftObsidianArmor=Undestructable!
-achievement.armorplus.craftObsidianArmor.desc=Craft a Obsidian Armor Piece
+achievement.armorplus.craftObsidianArmor.desc=Craft an Obsidian Armor Piece
 achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
 achievement.armorplus.craftSuperStarArmor=Godlike!
 achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
+achievement.armorplus.craftEnderDragonArmor=The Power of the EnderDragon!
+achievement.armorplus.craftEnderDragonArmor.desc=Kill the EnderDragon and craft an EnderDragon Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.
