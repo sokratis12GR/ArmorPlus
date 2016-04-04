@@ -33,7 +33,7 @@ public class GlobalEventsArmorPlus
         //Godlike! - Achievement Trigger
         if (i == SuperStarArmor.helmet || i ==  SuperStarArmor.chestplate || i ==  SuperStarArmor.legs || i ==  SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftSuperStarArmor, 1);
-        //The Power of the EnderDragon! - Achievement Trigger
+        //The Power of the Ender Dragon! - Achievement Trigger
         if (i == EnderDragonArmor.helmet || i ==  EnderDragonArmor.chestplate || i ==  EnderDragonArmor.legs || i ==  SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftEnderDragonArmor, 1);
     }

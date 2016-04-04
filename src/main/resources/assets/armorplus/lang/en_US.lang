@@ -49,11 +49,11 @@ item.SuperStarLeggings.name=Super Star Leggings
 item.SuperStarBoots.name=Super Star Boots
 
 #EnderDragon Armor
-item.EnderDragonScale.name=EnderDragon Scale
-item.EnderDragonHelmet.name=EnderDragon Helmet
-item.EnderDragonChestplate.name=EnderDragon Chestplate
-item.EnderDragonLeggings.name=EnderDragon Leggings
-item.EnderDragonBoots.name=EnderDragon Boots
+item.EnderDragonScale.name=Ender Dragon Scale
+item.EnderDragonHelmet.name=Ender Dragon Helmet
+item.EnderDragonChestplate.name=Ender Dragon Chestplate
+item.EnderDragonLeggings.name=Ender Dragon Leggings
+item.EnderDragonBoots.name=Ender Dragon Boots
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
@@ -70,8 +70,8 @@ achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
 achievement.armorplus.craftSuperStarArmor=Godlike!
 achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
-achievement.armorplus.craftEnderDragonArmor=The Power of the EnderDragon!
-achievement.armorplus.craftEnderDragonArmor.desc=Kill the EnderDragon and craft an EnderDragon Armor Piece
+achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
+achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.
