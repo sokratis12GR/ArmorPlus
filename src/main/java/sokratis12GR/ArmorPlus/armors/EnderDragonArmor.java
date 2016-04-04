@@ -121,21 +121,6 @@ public class EnderDragonArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
             {
-                {
-                    ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-                    ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-                    ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-                    ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-
-                    if (ConfigHandler.enableEnderDragonFlight) {
-                        if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots) {
-                            entity.capabilities.allowFlying = true;
-                        } else {
-                            entity.capabilities.allowFlying = false;
-                            entity.capabilities.isFlying = false;
-                        }
-                    }
-                }
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
