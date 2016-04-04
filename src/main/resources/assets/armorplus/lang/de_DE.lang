@@ -43,26 +43,35 @@ item.LavaLeggings.name=Lavabeinschutz
 item.LavaBoots.name=Lavastiefel
 
 #SuperStarArmor
-item.SuperStarHelmet.name=Super Stern-Helm
-item.SuperStarChestplate.name=Super Stern-Brustpanzer
-item.SuperStarLeggings.name=Super Stern-Beinschutz
-item.SuperStarBoots.name=Super Stern-Stiefel
+item.SuperStarHelmet.name=Superstern-Helm
+item.SuperStarChestplate.name=Superstern-Brustpanzer
+item.SuperStarLeggings.name=Superstern-Beinschutz
+item.SuperStarBoots.name=Superstern-Stiefel
+
+#EnderDragon Armor
+item.EnderDragonScale.name=Enderdrachen-Schuppe
+item.EnderDragonHelmet.name=Enderdrachen-Helm
+item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
+item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
+item.EnderDragonBoots.name=Enderdrachen-Stiefel
 
 #Achievements
-achievement.armorplus.craftCoalArmor=Sehvermogen Wie Eine Fledermaus!
-achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohlerustung!
+achievement.armorplus.craftCoalArmor=Sehvermoegen Wie Eine Fledermaus!
+achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohleruestung!
 achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
-achievement.armorplus.craftLapisArmor.desc=Fertige Ein Teil Der Lapislazulirustung!
+achievement.armorplus.craftLapisArmor.desc=Fertige Ein Teil Der Lapislazuliruestung!
 achievement.armorplus.craftRedstoneArmor=Schneller!
-achievement.armorplus.craftRedstoneArmor.desc=Fertige Ein Teil Der Redstonerustung!
+achievement.armorplus.craftRedstoneArmor.desc=Fertige Ein Teil Der Redstoneruestung!
 achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
-achievement.armorplus.craftEmeraldArmor.desc=Fertige Ein Teil Der Smaragdrustung!
-achievement.armorplus.craftObsidianArmor=Unzerstorbar!
-achievement.armorplus.craftObsidianArmor.desc=Fertige Ein Teil Der Obsidianrustung!
-achievement.armorplus.craftLavaArmor=Der Uberwaltigende!
-achievement.armorplus.craftLavaArmor.desc=Fertige Ein Teil Der Lavarustung!
+achievement.armorplus.craftEmeraldArmor.desc=Fertige Ein Teil Der Smaragdruestung!
+achievement.armorplus.craftObsidianArmor=Unzerstoerbar!
+achievement.armorplus.craftObsidianArmor.desc=Fertige Ein Teil Der Obsidianruestung!
+achievement.armorplus.craftLavaArmor=Der Uberwaeltigende!
+achievement.armorplus.craftLavaArmor.desc=Fertige Ein Teil Der Lavaruestung!
 achievement.armorplus.craftSuperStarArmor=Gottgleich!
-achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Super Stern-Rustung!
+achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Superstern-Ruestung!
+achievement.armorplus.craftEnderDragonArmor=Die Macht des Enderdrachen!
+achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Ruestungsteil an
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
