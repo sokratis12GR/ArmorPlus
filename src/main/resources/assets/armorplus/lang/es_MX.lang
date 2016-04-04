@@ -48,6 +48,13 @@ item.SuperStarChestplate.name=Peto de Estrella Estupenda
 item.SuperStarLeggings.name=Grebas de Estrella Estupenda
 item.SuperStarBoots.name=Botas de Estrella Estupenda
 
+#EnderDragon Armor
+item.EnderDragonScale.name=Escama del Dragón del End
+item.EnderDragonHelmet.name=Casco del Dragón del End
+item.EnderDragonChestplate.name=Peto del Dragón del End
+item.EnderDragonLeggings.name=Grebas del Dragón del End
+item.EnderDragonBoots.name=Botas del Dragón del End
+
 #Achievements
 achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
 achievement.armorplus.craftCoalArmor.desc=Crear una Pieza de Armadura de Carbón
@@ -63,6 +70,8 @@ achievement.armorplus.craftLavaArmor=¡El Dominado!
 achievement.armorplus.craftLavaArmor.desc=Crear una Pieza de Armadura de Lava
 achievement.armorplus.craftSuperStarArmor=¡Divino!
 achievement.armorplus.craftSuperStarArmor.desc=Crear una Pieza de Armadura de Estrella Estupenda
+achievement.armorplus.craftEnderDragonArmor=¡El Poder del Dragón del End!
+achievement.armorplus.craftEnderDragonArmor.desc=Mortar el Dragón del End, y crear una Pieza de Armadura del Dragón del End
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refrescando el archivo de configuración.
