@@ -120,7 +120,7 @@ public class LavaArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Resistance and Fire Resistance"));
+				tooltip.add(TextHelper.getFormattedText("&6" +"Gives you Resistance and Fire Resistance"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -151,7 +151,7 @@ public class LavaArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Resistance and Fire Resistance"));
+				tooltip.add(TextHelper.getFormattedText("&6" +"Gives you Resistance and Fire Resistance"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -179,7 +179,7 @@ public class LavaArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Resistance and Fire Resistance"));
+				tooltip.add(TextHelper.getFormattedText("&6" +"Gives you Resistance and Fire Resistance"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -207,7 +207,7 @@ public class LavaArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Resistance and Fire Resistance"));
+				tooltip.add(TextHelper.getFormattedText("&6" +"Gives you Resistance and Fire Resistance"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{

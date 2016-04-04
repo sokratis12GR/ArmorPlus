@@ -140,7 +140,7 @@ public class CoalArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&0" +"Gives you Night Vision"));
+				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -161,7 +161,7 @@ public class CoalArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&0" +"Gives you Night Vision"));
+				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -182,7 +182,7 @@ public class CoalArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&0" +"Gives you Night Vision"));
+				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -203,7 +203,7 @@ public class CoalArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&0" +"Gives you Night Vision"));
+				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{

@@ -147,7 +147,7 @@ public class RedstoneArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Speed 2"));
+				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Speed 2"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -167,7 +167,7 @@ public class RedstoneArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Speed 2"));
+				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Speed 2"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -187,7 +187,7 @@ public class RedstoneArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Speed 2"));
+				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Speed 2"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{
@@ -207,7 +207,7 @@ public class RedstoneArmor
 			@Override
 			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 			{
-				tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Speed 2"));
+				tooltip.add(TextHelper.getFormattedText("&4" +"Gives you Speed 2"));
 			}
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
 			{

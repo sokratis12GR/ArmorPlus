@@ -6,15 +6,14 @@ import sokratis12GR.ArmorPlus.items.EnderDragonScale;
 
 public class ArmorPlusItems {
 
-    public static EnderDragonScale EnderDragonScale;
-
+    public static EnderDragonScale enderDragonScale;
 
     public static void init() {
-        EnderDragonScale = new EnderDragonScale();
+        enderDragonScale = new EnderDragonScale();
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        EnderDragonScale.initModel();
+        enderDragonScale.initModel();
     }
 }

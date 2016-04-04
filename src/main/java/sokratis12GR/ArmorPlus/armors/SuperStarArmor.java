@@ -120,7 +120,7 @@ public class SuperStarArmor
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
             {
-                tooltip.add(TextHelper.getFormattedText("&c" +"Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Regeneration"));
             }
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
             {
@@ -141,7 +141,7 @@ public class SuperStarArmor
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
             {
-                tooltip.add(TextHelper.getFormattedText("&c" +"Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Regeneration"));
             }
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
             {
@@ -161,7 +161,7 @@ public class SuperStarArmor
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
             {
-                tooltip.add(TextHelper.getFormattedText("&c" +"Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Regeneration"));
             }
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
             {
@@ -181,7 +181,7 @@ public class SuperStarArmor
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
             {
-                tooltip.add(TextHelper.getFormattedText("&c" +"Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&f" +"Gives you Regeneration"));
             }
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen) {
