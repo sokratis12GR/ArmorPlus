@@ -48,6 +48,13 @@ item.SuperStarChestplate.name=Супер Звезден Нагръдник
 item.SuperStarLeggings.name=Супер Звездени Панталони
 item.SuperStarBoots.name=Супер Звездени Ботуши
 
+#EnderDragon Armor
+item.EnderDragonScale.name=Ендер Драгон Люспа
+item.EnderDragonHelmet.name=Ендер Драгон Шлем
+item.EnderDragonChestplate.name=Ендер Драгон Нагръдник
+item.EnderDragonLeggings.name=Ендер Драгон Панталони
+item.EnderDragonBoots.name=Ендер Драгон Ботуши
+
 #This Remains English
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
@@ -64,6 +71,9 @@ achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
 achievement.armorplus.craftSuperStarArmor=Godlike!
 achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
+achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
+achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
+
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.

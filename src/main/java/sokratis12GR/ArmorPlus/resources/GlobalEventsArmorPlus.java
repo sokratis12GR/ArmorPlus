@@ -52,9 +52,10 @@ public class GlobalEventsArmorPlus {
             ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
             if (ConfigHandler.enableEnderDragonFlight) {
-                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots) {
+                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode) {
                     entity.capabilities.allowFlying = true;
-                } else {
+                }
+                else {
                     entity.capabilities.allowFlying = false;
                     entity.capabilities.isFlying = false;
                 }
