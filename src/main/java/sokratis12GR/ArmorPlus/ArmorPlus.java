@@ -60,6 +60,7 @@ public class ArmorPlus {
     LavaArmor LavaArmor = new LavaArmor();
     SuperStarArmor SuperStarArmor = new SuperStarArmor();
     EnderDragonArmor EnderDragonArmor = new EnderDragonArmor();
+    GuardianArmor GuardianArmor = new GuardianArmor();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -75,6 +76,7 @@ public class ArmorPlus {
         LavaArmor.load(event);
         SuperStarArmor.load(event);
         EnderDragonArmor.load(event);
+        GuardianArmor.load(event);
         ARPAchievements.init();
     }
 
@@ -93,6 +95,7 @@ public class ArmorPlus {
         LavaArmor.instance = ArmorPlus.instance;
         SuperStarArmor.instance = ArmorPlus.instance;
         EnderDragonArmor.instance = ArmorPlus.instance;
+        GuardianArmor.instance = ArmorPlus.instance;
         CoalArmor.preInit(event);
         LapisArmor.preInit(event);
         RedstoneArmor.preInit(event);
@@ -101,6 +104,7 @@ public class ArmorPlus {
         LavaArmor.preInit(event);
         SuperStarArmor.preInit(event);
         EnderDragonArmor.preInit(event);
+        GuardianArmor.preInit(event);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);

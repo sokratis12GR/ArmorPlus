@@ -106,12 +106,8 @@ public class SuperStarArmor
             {
                 if (ConfigHandler.enableSuperStarHRegen)
                 {
-                    if (true)
-                    {
-
                         if (entity instanceof EntityLivingBase)
                             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                    }
                 }
               }
         }).setUnlocalizedName("SuperStarHelmet");
@@ -127,11 +123,8 @@ public class SuperStarArmor
             {
                 if (ConfigHandler.enableSuperStarCRegen)
                 {
-                    if (true)
-                    {
-                        if (entity instanceof EntityLivingBase)
-                            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                    }
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
                 }
             }
         }).setUnlocalizedName("SuperStarChestplate");
@@ -147,11 +140,8 @@ public class SuperStarArmor
             {
                 if (ConfigHandler.enableSuperStarLRegen)
                 {
-                    if (true)
-                    {
                         if (entity instanceof EntityLivingBase)
                             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                    }
                 }
             }
         }).setUnlocalizedName("SuperStarLeggings");
@@ -165,10 +155,8 @@ public class SuperStarArmor
             }
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen) {
-                    if (true) {
                         if (entity instanceof EntityLivingBase)
                             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                    }
                 }
             }
         }).setUnlocalizedName("SuperStarBoots");

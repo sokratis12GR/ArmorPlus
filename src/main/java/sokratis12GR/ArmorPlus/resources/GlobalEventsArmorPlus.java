@@ -1,5 +1,6 @@
 package sokratis12GR.ArmorPlus.resources;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -13,7 +14,20 @@ import sokratis12GR.ArmorPlus.util.ARPAchievements;
 public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
+
         Item i = event.crafting.getItem();
+
+        ItemStack itemStack = event.crafting;
+
+
+        // Guardian Armor Enchantments + Full of Thorns! - Achievement Trigger
+        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByID(7), 3);
+        itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
+        event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
+        // Guardian Boots Enchantments
+        if (i == GuardianArmor.boots)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
         //Vision Like A Bat! - Achievement Trigger
         if (i == CoalArmor.helmet || i == CoalArmor.chestplate || i == CoalArmor.legs || i == CoalArmor.boots)
             event.player.addStat(ARPAchievements.craftCoalArmor, 1);
@@ -54,8 +68,7 @@ public class GlobalEventsArmorPlus {
             if (ConfigHandler.enableEnderDragonFlight) {
                 if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode) {
                     entity.capabilities.allowFlying = true;
-                }
-                else {
+                } else {
                     entity.capabilities.allowFlying = false;
                     entity.capabilities.isFlying = false;
                 }

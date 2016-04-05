@@ -17,6 +17,7 @@ public class ConfigHandler
 	public static boolean enableLavaArmorRecipes;
 	public static boolean enableSuperStarArmorRecipes;
 	public static boolean enableEnderDragonArmorRecipes;
+	public static boolean enableGuardianArmorRecipes;
 
 	// Special Effects
 	// Coal Armor
@@ -60,6 +61,11 @@ public class ConfigHandler
 	public static boolean enableSuperStarBRegen;
 	// Ender Dragon Armor
 	public static boolean enableEnderDragonFlight;
+	// Guardian Armor
+	public static boolean enableGuardianHEffects;
+	public static boolean enableGuardianCEffects;
+	public static boolean enableGuardianLEffects;
+	public static boolean enableGuardianBEffects;
 
 	public static void init(File file)
 	{
@@ -88,7 +94,9 @@ public class ConfigHandler
 		enableSuperStarArmorRecipes = config.getBoolean("enableSuperStarArmorRecipes", category, true,
 				"Enable/Disable The Super Star Armor Recipes");
 		enableEnderDragonArmorRecipes = config.getBoolean("enableEnderDragonArmorRecipes", category, true,
-				"Enable/Disable The EnderDragon Armor Recipes");
+				"Enable/Disable The Ender Dragon Armor Recipes");
+		enableGuardianArmorRecipes = config.getBoolean("enableGuardianArmorRecipes", category, true,
+				"Enable/Disable The Guardian Armor Recipes");
 
 
 		// Coal Armor
@@ -189,6 +197,18 @@ public class ConfigHandler
 		category = "EnderDragonArmor";
 		config.addCustomCategoryComment(category, "Ender Dragon Armor's Settings");
 		enableEnderDragonFlight = config.getBoolean("enableEnderDragonFlight", category, true, "Enable/Disable Ender Dragon Armor Flight");
+
+		// Guardian Armor
+		category = "GuardianArmor";
+		enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
+				"Enable/Disable Guardian Helmet Effects");
+		enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,
+				"Enable/Disable Guardian Chestplate Effects ");
+		enableGuardianLEffects = config.getBoolean("enableGuardianLEffects", category, true,
+				"Enable/Disable Guardian Leggings Effects");
+		enableGuardianBEffects = config.getBoolean("enableGuardianBEffects", category, true,
+				"Enable/Disable Guardian Boots Effects");
+
 
 		if (config.hasChanged())
 			config.save();

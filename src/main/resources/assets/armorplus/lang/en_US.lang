@@ -55,6 +55,12 @@ item.EnderDragonChestplate.name=Ender Dragon Chestplate
 item.EnderDragonLeggings.name=Ender Dragon Leggings
 item.EnderDragonBoots.name=Ender Dragon Boots
 
+#Guardian Armor
+item.GuardianHelmet.name=Guardian Helmet
+item.GuardianChestplate.name=Guardian Chestplate
+item.GuardianLeggings.name=Guardian Leggings
+item.GuardianBoots.name=Guardian Boots
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece
@@ -72,6 +78,8 @@ achievement.armorplus.craftSuperStarArmor=Godlike!
 achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
 achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
 achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
+achievement.armorplus.craftGuardianArmor=Full of Thorns!
+achievement.armorplus.craftGuardianArmor.desc=Craft a Guardian Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.

@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.7.13
+{Features Added}
+* Guardians Armor
+{Features Changed}
+* Acheivements have been moved Around
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.7.12
 {Language Updates}
 * Updated the German Language file

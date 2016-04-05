@@ -17,22 +17,24 @@ public class ARPAchievements {
 
     public static Achievement craftCoalArmor;//0,0
     public static Achievement craftLapisArmor;//0,2
-    public static Achievement craftRedstoneArmor;//0,4
+    public static Achievement craftRedstoneArmor;//0,-2
     public static Achievement craftEmeraldArmor;//-2,0
     public static Achievement craftObsidianArmor;//2,0
     public static Achievement craftLavaArmor;//4,0
     public static Achievement craftSuperStarArmor;//6,0
-    public static Achievement craftEnderDragonArmor;//0,-2
+    public static Achievement craftEnderDragonArmor;//8,0
+    public static Achievement craftGuardianArmor;//0,4
 
     public static void init() {
         craftCoalArmor = new AchievementARP("craftCoalArmor", 0, 0, CoalArmor.helmet, AchievementList.openInventory).setNormalCrafting();
         craftLapisArmor = new AchievementARP("craftLapisArmor", 0, 2, LapisArmor.helmet, craftCoalArmor).setNormalCrafting();
-        craftRedstoneArmor = new AchievementARP("craftRedstoneArmor", 0, 4, RedstoneArmor.boots, craftLapisArmor).setNormalCrafting();
+        craftRedstoneArmor = new AchievementARP("craftRedstoneArmor", 0, -2, RedstoneArmor.boots, craftCoalArmor).setNormalCrafting();
         craftEmeraldArmor = new AchievementARP("craftEmeraldArmor", -2, 0, EmeraldArmor.chestplate, craftCoalArmor).setNormalCrafting();
         craftObsidianArmor = new AchievementARP("craftObsidianArmor", 2, 0, ObsidianArmor.chestplate, craftCoalArmor).setNormalCrafting();
         craftLavaArmor = new AchievementARP("craftLavaArmor", 4, 0, LavaArmor.chestplate, craftObsidianArmor).setNormalCrafting();
         craftSuperStarArmor = new AchievementARP("craftSuperStarArmor", 6, 0, SuperStarArmor.chestplate, craftLavaArmor).setNormalCrafting();
-        craftEnderDragonArmor = new AchievementARP("craftEnderDragonArmor", 0, -2, EnderDragonArmor.chestplate, AchievementList.theEnd2).setNormalCrafting();
+        craftEnderDragonArmor = new AchievementARP("craftEnderDragonArmor", 8, 0, EnderDragonArmor.chestplate, AchievementList.theEnd2).setNormalCrafting();
+        craftGuardianArmor = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.chestplate, craftLapisArmor).setNormalCrafting();
 
         arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
         AchievementPage.registerAchievementPage(arpAchievementPage);
