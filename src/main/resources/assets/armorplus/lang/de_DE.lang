@@ -55,6 +55,12 @@ item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
 item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
 item.EnderDragonBoots.name=Enderdrachen-Stiefel
 
+#Guardian Armor
+item.GuardianHelmet.name=Beschuetzer-Helm
+item.GuardianChestplate.name=Beschuetzer-Brustpanzer
+item.GuardianLeggings.name=Beschuetzer-Beinschutz
+item.GuardianBoots.name=Beschuetzer-Stiefel
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Sehvermoegen Wie Eine Fledermaus!
 achievement.armorplus.craftCoalArmor.desc=Fertige Ein Teil Der Kohleruestung!
@@ -72,6 +78,8 @@ achievement.armorplus.craftSuperStarArmor=Gottgleich!
 achievement.armorplus.craftSuperStarArmor.desc=Fertige Ein Teil Der Superstern-Ruestung!
 achievement.armorplus.craftEnderDragonArmor=Die Macht des Enderdrachen!
 achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Ruestungsteil an
+achievement.armorplus.craftGuardianArmor=Voller Dornen!
+achievement.armorplus.craftGuardianArmor.desc=Fertige ein Beschützer-Ruestungsteil
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
