@@ -34,7 +34,7 @@ public class ARPAchievements {
         craftLavaArmor = new AchievementARP("craftLavaArmor", 4, 0, LavaArmor.chestplate, craftObsidianArmor).setNormalCrafting();
         craftSuperStarArmor = new AchievementARP("craftSuperStarArmor", 6, 0, SuperStarArmor.chestplate, craftLavaArmor).setNormalCrafting();
         craftEnderDragonArmor = new AchievementARP("craftEnderDragonArmor", 8, 0, EnderDragonArmor.chestplate, AchievementList.theEnd2).setNormalCrafting();
-        craftGuardianArmor = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.chestplate, craftLapisArmor).setNormalCrafting();
+        craftGuardianArmor = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.helmet, craftLapisArmor).setNormalCrafting();
 
         arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
         AchievementPage.registerAchievementPage(arpAchievementPage);

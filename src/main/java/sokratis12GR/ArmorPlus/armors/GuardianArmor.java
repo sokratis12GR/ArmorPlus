@@ -107,7 +107,7 @@ public class GuardianArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -121,7 +121,7 @@ public class GuardianArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -135,7 +135,7 @@ public class GuardianArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -149,7 +149,7 @@ public class GuardianArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

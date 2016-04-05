@@ -3,7 +3,7 @@ ArmorPlus 1.7.13
 {Features Added}
 * Guardians Armor
 {Features Changed}
-* Acheivements have been moved Around
+* Achievements have been moved around
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.7.12
 {Language Updates}
