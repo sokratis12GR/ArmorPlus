@@ -1,4 +1,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.7.15
+{Bugs Fixed}
+* Ender Dragon Scale doesn't load on the Server
+* The Ender Dragon doesn't drop the Ender Dragon Scale
+* Unavailable to fly in spectator mode causing the player to fall of the world
+* Some Rare Crashes
+* Glitch when Equipping the Ender Dragon Armor
+* Fixed the Ingame Config
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.7.14
 {Bugs Fixed}
 * Unbreaking 3 Enchantment Applies for all crafted Items

@@ -5,11 +5,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
+import sokratis12GR.ArmorPlus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
     @SubscribeEvent
@@ -70,7 +73,7 @@ public class GlobalEventsArmorPlus {
             ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
             if (ConfigHandler.enableEnderDragonFlight) {
-                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode) {
+                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                     entity.capabilities.allowFlying = true;
                 } else {
                     entity.capabilities.allowFlying = false;
@@ -80,4 +83,9 @@ public class GlobalEventsArmorPlus {
         }
     }
 
+    @SubscribeEvent
+    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        ConfigHandler.syncConfig();
+        ArmorPlus.logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.config.refresh"));
+    }
 }

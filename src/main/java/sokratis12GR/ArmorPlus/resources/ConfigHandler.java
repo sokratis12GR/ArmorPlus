@@ -200,6 +200,7 @@ public class ConfigHandler
 
 		// Guardian Armor
 		category = "GuardianArmor";
+		config.addCustomCategoryComment(category, " Armor's Settings");
 		enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
 				"Enable/Disable Guardian Helmet Effects");
 		enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,

@@ -18,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
+import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
 import sokratis12GR.ArmorPlus.resources.MobDrops;
@@ -33,7 +34,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.7.14";
+    public static final String VERSION = "1.7.15";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -64,7 +65,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -86,6 +86,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ArmorPlusItems.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
