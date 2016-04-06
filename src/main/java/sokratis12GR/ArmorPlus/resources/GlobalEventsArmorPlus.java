@@ -20,11 +20,15 @@ public class GlobalEventsArmorPlus {
         ItemStack itemStack = event.crafting;
 
 
-        // Guardian Armor Enchantments + Full of Thorns! - Achievement Trigger
+        //Guardian Armor Thorns
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(7), 3);
-        itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
-        event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
+        //Guardian Armor Unbreaking 3
+        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
+        //Full of Thorns! - Achievement Trigger
+        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
+            event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
         // Guardian Boots Enchantments
         if (i == GuardianArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
