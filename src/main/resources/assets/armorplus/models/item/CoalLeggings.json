@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "items/CoalLeggings"
+        "layer0": "armorplus:items/CoalLeggings"
     }
 }
 

@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "blocks/ArmorWorkshop_Front",
-    "down": "blocks/ArmorWorkshop_Base",
-    "up": "blocks/ArmorWorkshop_Top",
-    "north": "blocks/ArmorWorkshop_Front",
-    "east": "blocks/ArmorWorkshop_Side",
-    "south": "blocks/ArmorWorkshop_Side",
-    "west": "blocks/ArmorWorkshop_Front"
+    "particle": "armorplus:blocks/ArmorWorkshop_Front",
+    "down": "armorplus:blocks/ArmorWorkshop_Base",
+    "up": "armorplus:blocks/ArmorWorkshop_Top",
+    "north": "armorplus:blocks/ArmorWorkshop_Front",
+    "east": "armorplus:blocks/ArmorWorkshop_Side",
+    "south": "armorplus:blocks/ArmorWorkshop_Side",
+    "west": "armorplus:blocks/ArmorWorkshop_Front"
   }
 }

@@ -9,7 +9,7 @@
   "updateUrl": "http://minecraft.curseforge.com/projects/armorplus/files",
   "authorList": ["sokratis12GR"],
   "credits": "",
-  "logoFile": "assets/minecraft/textures/logo.png",
+  "logoFile": "assets/armorplus/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
