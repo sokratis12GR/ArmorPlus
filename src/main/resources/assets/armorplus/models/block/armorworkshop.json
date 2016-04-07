@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "blocks/ArmorWorkshop_Front",
+    "down": "blocks/ArmorWorkshop_Base",
+    "up": "blocks/ArmorWorkshop_Top",
+    "north": "blocks/ArmorWorkshop_Front",
+    "east": "blocks/ArmorWorkshop_Side",
+    "south": "blocks/ArmorWorkshop_Side",
+    "west": "blocks/ArmorWorkshop_Front"
+  }
+}

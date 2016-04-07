@@ -18,10 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
-import sokratis12GR.ArmorPlus.resources.MobDrops;
+import sokratis12GR.ArmorPlus.resources.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -86,6 +83,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ArmorPlusBlocks.init();
         ArmorPlusItems.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;

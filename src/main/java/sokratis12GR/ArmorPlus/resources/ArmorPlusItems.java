@@ -12,7 +12,7 @@ public class ArmorPlusItems {
         EnderDragonScale = new EnderDragonScale();
     }
 
-   @SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public static void initModels() {
         EnderDragonScale.initModel();
     }

@@ -1,6 +1,7 @@
 package sokratis12GR.ArmorPlus;
 
 
+import sokratis12GR.ArmorPlus.resources.ArmorPlusBlocks;
 import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
 
 public class ClientProxy extends CommonProxy
@@ -18,5 +19,6 @@ public class ClientProxy extends CommonProxy
 		ins.EnderDragonArmor.registerRenderers();
 		ins.GuardianArmor.registerRenderers();
 		ArmorPlusItems.initModels();
+		ArmorPlusBlocks.initModels();
 	}
 }
