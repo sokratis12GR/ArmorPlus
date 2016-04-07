@@ -49,6 +49,7 @@ public class CoalArmor
 					new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
 			ModelLoader.setCustomModelResourceLocation(boots, 0,
 					new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
+
 		}
 		if (ConfigHandler.enableCoalArmorRecipes)
 		{
@@ -110,7 +111,7 @@ public class CoalArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COALARMOR", "CoalArmor", 7, new int[]
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
 		{ 1, 2, 3, 1 }, 8, SoundEvents.item_armor_equip_leather);
 
 		int armorPreffix = 0;

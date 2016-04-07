@@ -102,7 +102,7 @@ public class ObsidianArmor {
     }
 
     static {
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", "ObsidianArmor", 40, new int[]
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", ArmorPlus.MODID + ":" + "ObsidianArmor", 40, new int[]
                 {3, 7, 10, 5}, 25, SoundEvents.item_armor_equip_diamond);
 
         int armorPreffix = 0;

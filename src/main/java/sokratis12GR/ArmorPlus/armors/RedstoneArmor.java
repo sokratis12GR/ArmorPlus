@@ -118,7 +118,7 @@ public class RedstoneArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("REDSTONEARMOR", "RedstoneArmor", 11, new int[]
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "RedstoneArmor", 11, new int[]
 		{ 1, 3, 5, 2 }, 25, SoundEvents.item_armor_equip_gold);
 
 		int armorPreffix = 0;

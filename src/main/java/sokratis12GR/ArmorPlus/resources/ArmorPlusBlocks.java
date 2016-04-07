@@ -12,6 +12,7 @@ import sokratis12GR.ArmorPlus.blocks.ArmorWorkshop;
 
 public class ArmorPlusBlocks {
 
+
     public static ArmorWorkshop ArmorWorkshop;
 
     public static void init() {
@@ -24,5 +25,6 @@ public class ArmorPlusBlocks {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         ArmorWorkshop.initModel();
+        ArmorWorkshop.getBlockLayer();
     }
 }

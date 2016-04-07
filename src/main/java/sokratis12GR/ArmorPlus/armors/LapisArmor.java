@@ -111,7 +111,7 @@ public class LapisArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAPISARMOR", "LapisArmor", 11, new int[]
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAPISARMOR", ArmorPlus.MODID + ":" + "LapisArmor", 11, new int[]
 		{ 1, 3, 5, 2 }, 25, SoundEvents.item_armor_equip_gold);
 
 		int armorPreffix = 0;

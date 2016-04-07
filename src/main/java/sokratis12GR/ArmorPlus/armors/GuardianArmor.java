@@ -100,7 +100,7 @@ public class GuardianArmor {
     }
 
     static {
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("GUARDIANARMOR", "GuardianArmor", 50, new int[]
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("GUARDIANARMOR", ArmorPlus.MODID + ":" + "GuardianArmor", 50, new int[]
                 { 4, 8, 11, 6 }, 28, SoundEvents.item_armor_equip_diamond);
 
         int armorPreffix = 0;

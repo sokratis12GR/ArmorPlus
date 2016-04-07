@@ -91,7 +91,7 @@ public class LavaArmor
 
 	static
 	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", "LavaArmor", 45, new int[]
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", ArmorPlus.MODID + ":" + "LavaArmor", 45, new int[]
 				{ 4, 8, 11, 6 }, 28, SoundEvents.item_armor_equip_diamond);
 
 		int armorPreffix = 0;
