@@ -19,6 +19,6 @@ public class ClientProxy extends CommonProxy
 		ins.EnderDragonArmor.registerRenderers();
 		ins.GuardianArmor.registerRenderers();
 		ArmorPlusItems.initModels();
-		ArmorPlusBlocks.initModels();
+		ArmorPlusBlocks.registerRenders();
 	}
 }

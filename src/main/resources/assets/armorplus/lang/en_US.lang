@@ -61,6 +61,9 @@ item.GuardianChestplate.name=Guardian Chestplate
 item.GuardianLeggings.name=Guardian Leggings
 item.GuardianBoots.name=Guardian Boots
 
+#ArmorWorkshop
+tile.ArmorWorkshop.name=ArmorWorkshop
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece

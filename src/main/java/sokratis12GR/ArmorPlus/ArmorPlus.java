@@ -85,6 +85,7 @@ public class ArmorPlus {
     public void preInit(FMLPreInitializationEvent event) {
         ArmorPlusBlocks.init();
         ArmorPlusItems.init();
+        ArmorPlusBlocks.register();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
