@@ -11,6 +11,10 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -24,16 +28,16 @@ public class GlobalEventsArmorPlus {
 
 
         //Guardian Armor Thorns
-        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
+        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(7), 3);
         //Guardian Armor Unbreaking 3
-        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
+        if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
         //Full of Thorns! - Achievement Trigger
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
             event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
         // Guardian Boots Enchantments
-        if (i == GuardianArmor.boots)
+        if (i == GuardianArmor.boots || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
         //Vision Like A Bat! - Achievement Trigger
         if (i == CoalArmor.helmet || i == CoalArmor.chestplate || i == CoalArmor.legs || i == CoalArmor.boots)
@@ -59,6 +63,9 @@ public class GlobalEventsArmorPlus {
         //The Power of the Ender Dragon! - Achievement Trigger
         if (i == EnderDragonArmor.helmet || i == EnderDragonArmor.chestplate || i == EnderDragonArmor.legs || i == SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftEnderDragonArmor, 1);
+        //The Ultimate Power! - Achievement Trigger
+        if (i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
+            event.player.addStat(ARPAchievements.craftTheUltimateArmor, 1);
     }
 
     @SubscribeEvent
@@ -72,8 +79,8 @@ public class GlobalEventsArmorPlus {
             ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
             ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-            if (ConfigHandler.enableEnderDragonFlight) {
-                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+            if (ConfigHandler.enableFlightAbility) {
+                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                     entity.capabilities.allowFlying = true;
                 } else {
                     entity.capabilities.allowFlying = false;

@@ -62,7 +62,13 @@ item.GuardianLeggings.name=Guardian Leggings
 item.GuardianBoots.name=Guardian Boots
 
 #ArmorWorkshop
-tile.ArmorWorkshop.name=ArmorWorkshop
+tile.ArmorWorkshop.name=ArmorWorkshop (WIP)
+
+#TheUltimateArmor
+item.TheUltimateHelmet.name=The Ultimate Helmet
+item.TheUltimateChestplate.name=The Ultimate Chestplate
+item.TheUltimateLeggings.name=The Ultimate Leggings
+item.TheUltimateBoots.name=The Ultimate Boots
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
@@ -83,6 +89,8 @@ achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
 achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
 achievement.armorplus.craftGuardianArmor=Full of Thorns!
 achievement.armorplus.craftGuardianArmor.desc=Craft a Guardian Armor Piece
+achievement.armorplus.craftTheUltimateArmor=The Ultimate Power!
+achievement.armorplus.craftTheUltimateArmor.desc=Craft a The Ultimate Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.

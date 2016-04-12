@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors;
+package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
@@ -101,7 +101,7 @@ public class GuardianArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("GUARDIANARMOR", ArmorPlus.MODID + ":" + "GuardianArmor", 50, new int[]
-                { 4, 8, 11, 6 }, 28, SoundEvents.item_armor_equip_diamond);
+                {4, 8, 11, 6}, 28, SoundEvents.item_armor_equip_diamond);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -115,6 +115,10 @@ public class GuardianArmor {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.prismarine_shard;
             }
         }).setUnlocalizedName("GuardianHelmet");
         helmet.setMaxStackSize(1);
@@ -130,6 +134,10 @@ public class GuardianArmor {
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.prismarine_shard;
+            }
         }).setUnlocalizedName("GuardianChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
@@ -144,6 +152,10 @@ public class GuardianArmor {
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.prismarine_shard;
+            }
         }).setUnlocalizedName("GuardianLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
@@ -157,6 +169,10 @@ public class GuardianArmor {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.prismarine_shard;
             }
         }).setUnlocalizedName("GuardianBoots");
         boots.setMaxStackSize(1);

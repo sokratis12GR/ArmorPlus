@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.8.0
+{Features Added}
+* The Ability to Repair Armors
+* The Ultimate Armors
+* The ArmorWorkshop (WIP) - don't craft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.7.15
 {Bugs Fixed}
 * Ender Dragon Scale doesn't load on the Server

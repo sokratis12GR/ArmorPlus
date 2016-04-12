@@ -24,172 +24,168 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
-public class CoalArmor
-{
+public class CoalArmor {
 
-	public CoalArmor()
-	{
-	}
+    public CoalArmor() {
+    }
 
-	public static Item helmet;
-	public static Item chestplate;
-	public static Item legs;
-	public static Item boots;
-	public Object instance;
+    public static Item helmet;
+    public static Item chestplate;
+    public static Item legs;
+    public static Item boots;
+    public Object instance;
 
-	public void load(FMLInitializationEvent event)
-	{
-		if (event.getSide() == Side.CLIENT)
-		{
-			ModelLoader.setCustomModelResourceLocation(helmet, 0,
-					new ModelResourceLocation("armorplus:CoalHelmet", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-					new ModelResourceLocation("armorplus:CoalChestplate", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(legs, 0,
-					new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(boots, 0,
-					new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
+    public void load(FMLInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:CoalHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:CoalChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
 
-		}
-		if (ConfigHandler.enableCoalArmorRecipes)
-		{
-			GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-			{ "XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('4'),
-					new ItemStack(Items.coal, 1), Character.valueOf('5'), new ItemStack(Items.coal, 1),
-					Character.valueOf('6'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
-					new ItemStack(Items.coal, 1), });
-			GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-			{ "012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
-					new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
-					Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-					new ItemStack(Items.coal, 1), });
-			GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-			{ "0X2", "345", "678", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
-					new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
-					Character.valueOf('4'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-					new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-					Character.valueOf('7'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
-					new ItemStack(Items.coal, 1), });
-			GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-			{ "012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
-					new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
-					Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-					new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-					Character.valueOf('8'), new ItemStack(Items.coal, 1), });
-			GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-			{ "XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-					new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-					Character.valueOf('8'), new ItemStack(Items.coal, 1), });
-			GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-			{ "0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
-					new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
-					Character.valueOf('5'), new ItemStack(Items.coal, 1), });
-			helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-			chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-			legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-			boots.setCreativeTab(ArmorPlus.tabArmorPlus);
-		}
-	}
+        }
+        if (ConfigHandler.enableCoalArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('4'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('5'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('6'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
+                            new ItemStack(Items.coal, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
+                            new ItemStack(Items.coal, 1),});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('4'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('7'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
+                            new ItemStack(Items.coal, 1),});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('8'), new ItemStack(Items.coal, 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('8'), new ItemStack(Items.coal, 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
+                            new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
+                            Character.valueOf('5'), new ItemStack(Items.coal, 1),});
+            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
+            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
+            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
+            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+        }
+    }
 
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		if (event.getSide() == Side.CLIENT)
-		{
-			ModelLoader.setCustomModelResourceLocation(helmet, 0,
-					new ModelResourceLocation("armorplus:CoalHelmet", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-					new ModelResourceLocation("armorplus:CoalChestplate", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(legs, 0,
-					new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
-			ModelLoader.setCustomModelResourceLocation(boots, 0,
-					new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
-		}
-	}
+    public void preInit(FMLPreInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:CoalHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:CoalChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
+        }
+    }
 
-	public void registerRenderers() {
-	}
+    public void registerRenderers() {
+    }
 
-	static
-	{
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
-		{ 1, 2, 3, 1 }, 8, SoundEvents.item_armor_equip_leather);
+    static {
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
+                {1, 2, 3, 1}, 8, SoundEvents.item_armor_equip_leather);
 
-		int armorPreffix = 0;
-		helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD )
-		{
-			@Override
-			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-			{
-				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
-			}
-			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-			{
-				if (ConfigHandler.enableCoalHNightVision)
-				{
-						if (entity instanceof EntityLivingBase)
-							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision , 240, 0));
-				}
-			}
-		}).setUnlocalizedName("CoalHelmet");
-		helmet.setMaxStackSize(1);
+        int armorPreffix = 0;
+        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+            }
 
-		chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST)
-		{
-			@Override
-			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-			{
-				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
-			}
-			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-			{
-				if (ConfigHandler.enableCoalCNightVision)
-				{
-						if (entity instanceof EntityLivingBase)
-							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-				}
-			}
-		}).setUnlocalizedName("CoalChestplate");
-		chestplate.setMaxStackSize(1);
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                if (ConfigHandler.enableCoalHNightVision) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                }
+            }
 
-		legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS)
-		{
-			@Override
-			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-			{
-				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
-			}
-			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-			{
-				if (ConfigHandler.enableCoalLNightVision)
-				{
-						if (entity instanceof EntityLivingBase)
-							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-				}
-			}
-		}).setUnlocalizedName("CoalLeggings");
-		legs.setMaxStackSize(1);
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.coal;
+            }
+        }).setUnlocalizedName("CoalHelmet");
+        helmet.setMaxStackSize(1);
 
-		boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET)
-		{
-			@Override
-			public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-			{
-				tooltip.add(TextHelper.getFormattedText("&7" +"Gives you Night Vision"));
-			}
-			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-			{
-				if (ConfigHandler.enableCoalBNightVision)
-				{
-						if (entity instanceof EntityLivingBase)
-							((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
-				}
-			}
-		}).setUnlocalizedName("CoalBoots");
-		boots.setMaxStackSize(1);
+        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+            }
 
-		GameRegistry.registerItem(helmet, "CoalHelmet");
-		GameRegistry.registerItem(chestplate, "CoalChestplate");
-		GameRegistry.registerItem(legs, "CoalLeggings");
-		GameRegistry.registerItem(boots, "CoalBoots");
-	}
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                if (ConfigHandler.enableCoalCNightVision) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.coal;
+            }
+        }).setUnlocalizedName("CoalChestplate");
+        chestplate.setMaxStackSize(1);
+
+        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+            }
+
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                if (ConfigHandler.enableCoalLNightVision) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.coal;
+            }
+        }).setUnlocalizedName("CoalLeggings");
+        legs.setMaxStackSize(1);
+
+        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+            }
+
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                if (ConfigHandler.enableCoalBNightVision) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == Items.coal;
+            }
+        }).setUnlocalizedName("CoalBoots");
+        boots.setMaxStackSize(1);
+
+        GameRegistry.registerItem(helmet, "CoalHelmet");
+        GameRegistry.registerItem(chestplate, "CoalChestplate");
+        GameRegistry.registerItem(legs, "CoalLeggings");
+        GameRegistry.registerItem(boots, "CoalBoots");
+    }
 }

@@ -2,6 +2,10 @@ package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -11,12 +15,16 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.resources.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
@@ -31,7 +39,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.7.15";
+    public static final String VERSION = "1.8";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -41,7 +49,7 @@ public class ArmorPlus {
 
     public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
-
+    private GuiHandler GuiHandler = new GuiHandler();
     @Instance(MODID)
     public static ArmorPlus instance;
     private static File configDir;
@@ -59,12 +67,13 @@ public class ArmorPlus {
     SuperStarArmor SuperStarArmor = new SuperStarArmor();
     EnderDragonArmor EnderDragonArmor = new EnderDragonArmor();
     GuardianArmor GuardianArmor = new GuardianArmor();
+    TheUltimateArmor TheUltimateArmor = new TheUltimateArmor();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
         CoalArmor.load(event);
         LapisArmor.load(event);
         RedstoneArmor.load(event);
@@ -74,18 +83,17 @@ public class ArmorPlus {
         SuperStarArmor.load(event);
         EnderDragonArmor.load(event);
         GuardianArmor.load(event);
+        TheUltimateArmor.load(event);
         ARPAchievements.init();
     }
 
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
-    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ArmorPlusBlocks.init();
+        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(ArmorWorkshop.blockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
+        ArmorWorkshop.init();
         ArmorPlusItems.init();
-        ArmorPlusBlocks.register();
+        ArmorWorkshop.register();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
@@ -96,6 +104,7 @@ public class ArmorPlus {
         SuperStarArmor.instance = ArmorPlus.instance;
         EnderDragonArmor.instance = ArmorPlus.instance;
         GuardianArmor.instance = ArmorPlus.instance;
+        TheUltimateArmor.instance = ArmorPlus.instance;
         CoalArmor.preInit(event);
         LapisArmor.preInit(event);
         RedstoneArmor.preInit(event);
@@ -105,8 +114,8 @@ public class ArmorPlus {
         SuperStarArmor.preInit(event);
         EnderDragonArmor.preInit(event);
         GuardianArmor.preInit(event);
+        TheUltimateArmor.preInit(event);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));

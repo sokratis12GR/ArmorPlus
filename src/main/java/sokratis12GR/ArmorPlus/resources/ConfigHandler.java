@@ -18,6 +18,7 @@ public class ConfigHandler
 	public static boolean enableSuperStarArmorRecipes;
 	public static boolean enableEnderDragonArmorRecipes;
 	public static boolean enableGuardianArmorRecipes;
+	public static boolean enableTheUltimateArmorRecipes;
 
 	// Special Effects
 	// Coal Armor
@@ -59,8 +60,8 @@ public class ConfigHandler
 	public static boolean enableSuperStarCRegen;
 	public static boolean enableSuperStarLRegen;
 	public static boolean enableSuperStarBRegen;
-	// Ender Dragon Armor
-	public static boolean enableEnderDragonFlight;
+	// Flight Ability
+	public static boolean enableFlightAbility;
 	// Guardian Armor
 	public static boolean enableGuardianHEffects;
 	public static boolean enableGuardianCEffects;
@@ -97,6 +98,9 @@ public class ConfigHandler
 				"Enable/Disable The Ender Dragon Armor Recipes");
 		enableGuardianArmorRecipes = config.getBoolean("enableGuardianArmorRecipes", category, true,
 				"Enable/Disable The Guardian Armor Recipes");
+		enableTheUltimateArmorRecipes = config.getBoolean("enableTheUltimateArmorRecipes", category, true,
+				"Enable/Disable The Ultimate Armor Recipes");
+
 
 
 		// Coal Armor
@@ -193,14 +197,8 @@ public class ConfigHandler
 		enableSuperStarBRegen = config.getBoolean("enableSuperStarBRegen", category, true,
 				"Enable/Disable The Super Star Boots Regeneration");
 
-		// Ender Dragon Armor
-		category = "EnderDragonArmor";
-		config.addCustomCategoryComment(category, "Ender Dragon Armor's Settings");
-		enableEnderDragonFlight = config.getBoolean("enableEnderDragonFlight", category, true, "Enable/Disable Ender Dragon Armor Flight");
-
-		// Guardian Armor
 		category = "GuardianArmor";
-		config.addCustomCategoryComment(category, " Armor's Settings");
+		config.addCustomCategoryComment(category, "Guardian Armor's Settings");
 		enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
 				"Enable/Disable Guardian Helmet Effects");
 		enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,
@@ -210,6 +208,10 @@ public class ConfigHandler
 		enableGuardianBEffects = config.getBoolean("enableGuardianBEffects", category, true,
 				"Enable/Disable Guardian Boots Effects");
 
+		// Flight Ability
+		category = "FlightAbility";
+		config.addCustomCategoryComment(category, "Flight Ability's Settings");
+		enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Ultimate Armor Flight");
 
 		if (config.hasChanged())
 			config.save();

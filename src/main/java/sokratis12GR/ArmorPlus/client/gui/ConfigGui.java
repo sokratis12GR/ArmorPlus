@@ -32,7 +32,7 @@ public class ConfigGui extends GuiConfig
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("ObsidianArmor".toLowerCase())));
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
-		list.add(new ConfigElement(ConfigHandler.config.getCategory("EnderDragonArmor".toLowerCase())));
+		list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
 		list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
 		return list;
 	}

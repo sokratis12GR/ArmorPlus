@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors;
+package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -111,6 +111,9 @@ public class EnderDragonArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+            }
         }).setUnlocalizedName("EnderDragonHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
@@ -121,6 +124,9 @@ public class EnderDragonArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
             {
+            }
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
@@ -134,6 +140,9 @@ public class EnderDragonArmor {
             {
 
             }
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+            }
         }).setUnlocalizedName("EnderDragonLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
@@ -145,6 +154,9 @@ public class EnderDragonArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
 
+            }
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonBoots");
         boots.setMaxStackSize(1);

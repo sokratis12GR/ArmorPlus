@@ -118,6 +118,10 @@ public class ObsidianArmor {
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+            }
         }).setUnlocalizedName("ObsidianHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
@@ -132,6 +136,10 @@ public class ObsidianArmor {
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+            }
         }).setUnlocalizedName("ObsidianChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
@@ -142,9 +150,13 @@ public class ObsidianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianLResistance) {
-                        if (entity instanceof EntityLivingBase)
-                            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("ObsidianLeggings");
         legs.setMaxStackSize(1);
@@ -161,6 +173,10 @@ public class ObsidianArmor {
                             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                     }
                 }
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("ObsidianBoots");
         boots.setMaxStackSize(1);
