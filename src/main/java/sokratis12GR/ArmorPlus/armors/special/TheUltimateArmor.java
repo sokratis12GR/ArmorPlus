@@ -1,15 +1,12 @@
 package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -18,7 +15,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
@@ -44,26 +40,12 @@ public class TheUltimateArmor {
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "TheUltimateLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "TheUltimateBoots", "inventory"));
-            if (ConfigHandler.enableTheUltimateArmorRecipes) {
-                GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
-                        {new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1),
-                                new ItemStack(GuardianArmor.helmet, 2),});
-                GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
-                        {new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1),
-                                new ItemStack(GuardianArmor.chestplate, 1),});
-                GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new Object[]
-                        {new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1),
-                                new ItemStack(GuardianArmor.legs, 1),});
-                GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
-                        {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
-                                new ItemStack(GuardianArmor.boots, 1),});
                 helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
                 chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
                 legs.setCreativeTab(ArmorPlus.tabArmorPlus);
                 boots.setCreativeTab(ArmorPlus.tabArmorPlus);
             }
         }
-    }
 
     public void preInit(FMLPreInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
@@ -93,12 +75,6 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
             }
         }).setUnlocalizedName("TheUltimateHelmet");
         helmet.setMaxStackSize(1);
@@ -109,12 +85,6 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
             }
         }).setUnlocalizedName("TheUltimateChestplate");
         chestplate.setMaxStackSize(1);
@@ -125,12 +95,6 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
             }
         }).setUnlocalizedName("TheUltimateLeggings");
         legs.setMaxStackSize(1);
@@ -141,12 +105,6 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
             }
         }).setUnlocalizedName("TheUltimateBoots");
         boots.setMaxStackSize(1);

@@ -1,10 +1,13 @@
 package sokratis12GR.ArmorPlus.resources;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -39,6 +42,9 @@ public class GlobalEventsArmorPlus {
         // Guardian Boots Enchantments
         if (i == GuardianArmor.boots || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
+        else {
+            return;
+        }
         //Vision Like A Bat! - Achievement Trigger
         if (i == CoalArmor.helmet || i == CoalArmor.chestplate || i == CoalArmor.legs || i == CoalArmor.boots)
             event.player.addStat(ARPAchievements.craftCoalArmor, 1);
@@ -86,6 +92,15 @@ public class GlobalEventsArmorPlus {
                     entity.capabilities.allowFlying = false;
                     entity.capabilities.isFlying = false;
                 }
+            }
+            if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots)
+            {
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
             }
         }
     }

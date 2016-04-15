@@ -1,4 +1,16 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.8.2
+{Bugs Fixed}
+* You can't craft The Ultimate Armor in servers
+* Made the ArmorWorkshop (WIP)'s recipe craftable and fixed the crash
+{Features Changed}
+* Ender Dragon Armor has been touched a bit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.8.1
+{Features Changed}
+* The Ultimate Armor now is full set effect
+* The Flight Ability is now for both the Ender Dragon and The Ultimate Armor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.8.0
 {Features Added}
 * The Ability to Repair Armors
