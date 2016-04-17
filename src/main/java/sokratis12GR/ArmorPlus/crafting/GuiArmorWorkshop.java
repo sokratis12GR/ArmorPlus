@@ -14,7 +14,7 @@ import sokratis12GR.ArmorPlus.inventory.ContainerArmorWorkshop;
 @SideOnly(Side.CLIENT)
 public class GuiArmorWorkshop extends GuiContainer
 {
-    private static final ResourceLocation armorWorkshopGuiTextures = new ResourceLocation("armorplus:textures/gui/container/ArmorWorkshop.png");
+    private static final ResourceLocation armorWorkshopGuiTextures = new ResourceLocation("armorplus:textures/gui/container/BlockArmorWorkshop.png");
 
     public GuiArmorWorkshop(InventoryPlayer playerInv, World worldIn)
     {

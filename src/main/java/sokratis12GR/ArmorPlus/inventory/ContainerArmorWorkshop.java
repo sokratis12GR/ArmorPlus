@@ -6,7 +6,7 @@ import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sokratis12GR.ArmorPlus.resources.ArmorWorkshop;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
 
 /**
  * Created by Socrates on 4/8/2016.
@@ -85,7 +85,7 @@ public class ContainerArmorWorkshop extends Container
     @Override
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.worldObj.getBlockState(this.pos).getBlock() != ArmorWorkshop.blockArmorWorkshop ? false : playerIn.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockState(this.pos).getBlock() != ModBlocks.blockArmorWorkshop ? false : playerIn.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     /**

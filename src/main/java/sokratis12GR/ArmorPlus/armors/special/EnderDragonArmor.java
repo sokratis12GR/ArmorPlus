@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -42,36 +42,36 @@ public class EnderDragonArmor {
         }
         if (ConfigHandler.enableEnderDragonArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('4'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('5'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('6'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('8'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('4'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('5'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('6'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('8'),
+                            new ItemStack(ModItems.EnderDragonScale, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('1'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('2'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('5'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('1'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('2'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('5'),
+                            new ItemStack(ModItems.EnderDragonScale, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('2'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('4'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('5'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('7'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('8'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('2'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('4'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('5'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('7'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('8'),
+                            new ItemStack(ModItems.EnderDragonScale, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('1'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('2'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('5'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('8'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('1'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('2'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('5'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('8'), new ItemStack(ModItems.EnderDragonScale, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('5'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('8'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('5'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('6'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('8'), new ItemStack(ModItems.EnderDragonScale, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('2'),
-                            new ItemStack(ArmorPlusItems.EnderDragonScale, 1), Character.valueOf('3'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),
-                            Character.valueOf('5'), new ItemStack(ArmorPlusItems.EnderDragonScale, 1),});
+                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('2'),
+                            new ItemStack(ModItems.EnderDragonScale, 1), Character.valueOf('3'), new ItemStack(ModItems.EnderDragonScale, 1),
+                            Character.valueOf('5'), new ItemStack(ModItems.EnderDragonScale, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);
@@ -112,7 +112,7 @@ public class EnderDragonArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+                return repair.getItem() == ModItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonHelmet");
         helmet.setMaxStackSize(1);
@@ -126,7 +126,7 @@ public class EnderDragonArmor {
             {
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+                return repair.getItem() == ModItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
@@ -141,7 +141,7 @@ public class EnderDragonArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+                return repair.getItem() == ModItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonLeggings");
         legs.setMaxStackSize(1);
@@ -156,7 +156,7 @@ public class EnderDragonArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == ArmorPlusItems.EnderDragonScale;
+                return repair.getItem() == ModItems.EnderDragonScale;
             }
         }).setUnlocalizedName("EnderDragonBoots");
         boots.setMaxStackSize(1);

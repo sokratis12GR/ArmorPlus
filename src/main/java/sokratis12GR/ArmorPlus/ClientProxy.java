@@ -1,25 +1,23 @@
 package sokratis12GR.ArmorPlus;
 
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 
-import sokratis12GR.ArmorPlus.resources.ArmorPlusBlocks;
-import sokratis12GR.ArmorPlus.resources.ArmorPlusItems;
-import sokratis12GR.ArmorPlus.resources.ArmorWorkshop;
+public class ClientProxy extends CommonProxy {
 
-public class ClientProxy extends CommonProxy
-{
-	@Override
-	public void registerRenderers(ArmorPlus ins)
-	{
-		ins.CoalArmor.registerRenderers();
-		ins.LapisArmor.registerRenderers();
-		ins.RedstoneArmor.registerRenderers();
-		ins.EmeraldArmor.registerRenderers();
-		ins.ObsidianArmor.registerRenderers();
-		ins.LavaArmor.registerRenderers();
-		ins.SuperStarArmor.registerRenderers();
-		ins.EnderDragonArmor.registerRenderers();
-		ins.GuardianArmor.registerRenderers();
-		ins.TheUltimateArmor.registerRenderers();
-		ArmorPlusItems.initModels();
-	}
+    @Override
+    public void registerRenderers(ArmorPlus ins) {
+        ins.CoalArmor.registerRenderers();
+        ins.LapisArmor.registerRenderers();
+        ins.RedstoneArmor.registerRenderers();
+        ins.EmeraldArmor.registerRenderers();
+        ins.ObsidianArmor.registerRenderers();
+        ins.LavaArmor.registerRenderers();
+        ins.SuperStarArmor.registerRenderers();
+        ins.EnderDragonArmor.registerRenderers();
+        ins.GuardianArmor.registerRenderers();
+        ins.TheUltimateArmor.registerRenderers();
+        ModItems.initModels();
+        ModBlocks.initModels();
+    }
 }
