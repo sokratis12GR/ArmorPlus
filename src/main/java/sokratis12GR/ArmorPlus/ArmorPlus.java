@@ -32,6 +32,8 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
+import static sokratis12GR.ArmorPlus.resources.ArmorWorkshop.blockArmorWorkshop;
+
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
@@ -50,6 +52,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
     private GuiHandler GuiHandler = new GuiHandler();
+
     @Instance(MODID)
     public static ArmorPlus instance;
     private static File configDir;
@@ -101,14 +104,13 @@ public class ArmorPlus {
                             new ItemStack(GuardianArmor.boots, 1),});
         }
         // ArmorWorkshop recipe (WIP)
-        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(ArmorWorkshop.blockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
+        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(blockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ArmorWorkshop.init();
         ArmorPlusItems.init();
-        ArmorWorkshop.register();
+        ArmorPlusBlocks.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
@@ -136,6 +138,7 @@ public class ArmorPlus {
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
 
+        GameRegistry.registerBlock(ArmorWorkshop.blockArmorWorkshop, "ArmorWorkshop");
     }
 
     @EventHandler

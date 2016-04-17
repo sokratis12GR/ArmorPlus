@@ -19,54 +19,42 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.inventory.ContainerArmorWorkshop;
 
 
-public class ArmorWorkshop {
+public class ArmorWorkshop extends BlockArmorPlus {
 
 
     public static Block blockArmorWorkshop;
 
-    public static void init() {
+    public ArmorWorkshop() {
+        super(Material.iron);
 
-        blockArmorWorkshop = new Block(Material.iron).setUnlocalizedName("ArmorWorkshop").setCreativeTab(ArmorPlus.tabArmorPlus);
-        blockArmorWorkshop.setHardness(4.0F).setHarvestLevel("pickaxe", 2);
+        this.setUnlocalizedName("ArmorWorkshop");     // Used for localization (en_US.lang)
+        this.setCreativeTab(ArmorPlus.tabArmorPlus);
+        this.setHardness(4.0F);
+        this.setHarvestLevel("pickaxe", 2);
     }
-
-    public static void register() {
-        GameRegistry.registerBlock(blockArmorWorkshop, blockArmorWorkshop.getUnlocalizedName().substring(5));
-    }
-
-    public static void registerRenders() {
-        registerRender(blockArmorWorkshop);
-    }
-
-    public static void registerRender(Block block) {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ArmorWorkshop.blockArmorWorkshop), 0, new ModelResourceLocation("armorplus:ArmorWorkshop", "inventory"));
-    }
-
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
+    
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         playerIn.openGui(ArmorPlus.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
-        if (worldIn.isRemote)
-        {
-            return true;
-        }
-        else
-        {
+        if (worldIn.isRemote) {
+            return false;
+        } else {
             playerIn.displayGui(new ArmorWorkshop.InterfaceArmorWorkshop(worldIn, pos));
             return true;
         }
     }
 
-    public static class InterfaceArmorWorkshop implements IInteractionObject
-    {
+    public static class InterfaceArmorWorkshop implements IInteractionObject {
         private final World world;
         private final BlockPos position;
 
-        public InterfaceArmorWorkshop(World worldIn, BlockPos pos)
-        {
+        public InterfaceArmorWorkshop(World worldIn, BlockPos pos) {
             this.world = worldIn;
             this.position = pos;
         }
@@ -74,34 +62,29 @@ public class ArmorWorkshop {
         /**
          * Get the name of this object. For players this returns their username
          */
-        public String getName()
-        {
+        public String getName() {
             return null;
         }
 
         /**
          * Returns true if this thing is named
          */
-        public boolean hasCustomName()
-        {
+        public boolean hasCustomName() {
             return false;
         }
 
         /**
          * Get the formatted ChatComponent that will be used for the sender's username in chat
          */
-        public ITextComponent getDisplayName()
-        {
+        public ITextComponent getDisplayName() {
             return new TextComponentTranslation(ArmorWorkshop.blockArmorWorkshop.getUnlocalizedName() + ".name", new Object[0]);
         }
 
-        public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-        {
+        public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
             return new ContainerArmorWorkshop(playerInventory, this.world, this.position);
         }
 
-        public String getGuiID()
-        {
+        public String getGuiID() {
             return "armorplus:ArmorWorkshop";
         }
     }
