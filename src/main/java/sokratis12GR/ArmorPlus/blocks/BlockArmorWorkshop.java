@@ -1,6 +1,7 @@
 package sokratis12GR.ArmorPlus.blocks;
 
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -17,6 +18,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.ArmorPlus;
@@ -27,14 +29,21 @@ import sokratis12GR.ArmorPlus.registry.ModBlocks;
 
 public class BlockArmorWorkshop extends BlockArmorPlus {
 
+    public static Block BlockArmorWorkshop;
+    public Object instance;
+
     public BlockArmorWorkshop() {
         super(Material.iron);
 
-        this.setRegistryName("BlockArmorWorkshop");
-        this.setUnlocalizedName("BlockArmorWorkshop");     // Used for localization (en_US.lang)
-        this.setCreativeTab(ArmorPlus.tabArmorPlus);
-        this.setHardness(4.0F);
-        this.setHarvestLevel("pickaxe", 2);
+        setRegistryName("BlockArmorWorkshop");
+        setUnlocalizedName("BlockArmorWorkshop");     // Used for localization (en_US.lang)
+        setCreativeTab(ArmorPlus.tabArmorPlus);
+        setHardness(4.0F);
+        setHarvestLevel("pickaxe", 2);
+        GameRegistry.register(this);
+    }
+
+    public void registerRenderers() {
     }
 
     @Override
@@ -75,7 +84,7 @@ public class BlockArmorWorkshop extends BlockArmorPlus {
          * Get the formatted ChatComponent that will be used for the sender's username in chat
          */
         public ITextComponent getDisplayName() {
-            return new TextComponentTranslation(BlockArmorWorkshop.getBlockFromName("BlockArmorWorkshop").getUnlocalizedName() + ".name", new Object[0]);
+            return new TextComponentTranslation(BlockArmorWorkshop.getUnlocalizedName() + ".name", new Object[0]);
         }
 
         public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {

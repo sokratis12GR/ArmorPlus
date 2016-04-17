@@ -1,5 +1,6 @@
 package sokratis12GR.ArmorPlus;
 
+import sokratis12GR.ArmorPlus.blocks.BlockArmorWorkshop;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
