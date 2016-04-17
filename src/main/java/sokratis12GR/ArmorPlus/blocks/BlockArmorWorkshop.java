@@ -30,15 +30,15 @@ public class BlockArmorWorkshop extends BlockArmorPlus {
     public BlockArmorWorkshop() {
         super(Material.iron);
 
+        this.setRegistryName("BlockArmorWorkshop");
         this.setUnlocalizedName("BlockArmorWorkshop");     // Used for localization (en_US.lang)
         this.setCreativeTab(ArmorPlus.tabArmorPlus);
         this.setHardness(4.0F);
         this.setHarvestLevel("pickaxe", 2);
-        this.setRegistryName("BlockArmorWorkshop");
     }
 
     @SideOnly(Side.CLIENT)
-    public void initModel() {
+    public static void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ModBlocks.blockArmorWorkshop), 0, new ModelResourceLocation("armorplus:BlockArmorWorkshop", "inventory"));
     }
 

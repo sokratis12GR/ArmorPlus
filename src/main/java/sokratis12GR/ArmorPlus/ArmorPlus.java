@@ -35,6 +35,8 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
+import static net.minecraftforge.fml.common.registry.GameRegistry.register;
+
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
