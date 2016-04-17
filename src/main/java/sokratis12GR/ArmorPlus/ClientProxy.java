@@ -18,6 +18,5 @@ public class ClientProxy extends CommonProxy {
         ins.GuardianArmor.registerRenderers();
         ins.TheUltimateArmor.registerRenderers();
         ModItems.initModels();
-        ModBlocks.initModels();
     }
 }

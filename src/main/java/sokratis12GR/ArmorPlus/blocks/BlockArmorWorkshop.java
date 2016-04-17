@@ -37,11 +37,6 @@ public class BlockArmorWorkshop extends BlockArmorPlus {
         this.setHarvestLevel("pickaxe", 2);
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ModBlocks.blockArmorWorkshop), 0, new ModelResourceLocation("armorplus:BlockArmorWorkshop", "inventory"));
-    }
-
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         playerIn.openGui(ArmorPlus.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
@@ -80,7 +75,7 @@ public class BlockArmorWorkshop extends BlockArmorPlus {
          * Get the formatted ChatComponent that will be used for the sender's username in chat
          */
         public ITextComponent getDisplayName() {
-            return new TextComponentTranslation(ModBlocks.blockArmorWorkshop.getUnlocalizedName() + ".name", new Object[0]);
+            return new TextComponentTranslation(BlockArmorWorkshop.getBlockFromName("BlockArmorWorkshop").getUnlocalizedName() + ".name", new Object[0]);
         }
 
         public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {

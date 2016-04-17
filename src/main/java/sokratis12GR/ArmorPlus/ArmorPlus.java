@@ -25,6 +25,7 @@ import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
 import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
 import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.blocks.BlockArmorWorkshop;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
@@ -107,7 +108,7 @@ public class ArmorPlus {
                             new ItemStack(GuardianArmor.boots, 1),});
         }
         // BlockArmorWorkshop recipe (WIP)
-        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.blockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
+        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.BlockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
     }
 
     @EventHandler

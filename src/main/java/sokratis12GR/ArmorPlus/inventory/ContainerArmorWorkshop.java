@@ -85,7 +85,7 @@ public class ContainerArmorWorkshop extends Container
     @Override
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.worldObj.getBlockState(this.pos).getBlock() != ModBlocks.blockArmorWorkshop ? false : playerIn.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockState(this.pos).getBlock() != ModBlocks.BlockArmorWorkshop ? false : playerIn.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     /**
