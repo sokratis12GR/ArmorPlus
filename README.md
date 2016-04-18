@@ -2,7 +2,7 @@
 
 ### About this Mod
 
-This Mod adds new Armors to Minecraft
+ArmorPlus is a mod created by sokratis12GR. As the name suggests, the mod adds various armor sets to the game.
 
 ### Mod's Official Wiki
 
