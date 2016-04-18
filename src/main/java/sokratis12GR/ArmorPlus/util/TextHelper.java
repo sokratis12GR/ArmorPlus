@@ -1,8 +1,7 @@
 package sokratis12GR.ArmorPlus.util;
 //General place to call text formatting from. You can alternatively use 'EnumChatFormatting'.
 
-
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.util.StatCollector;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class TextHelper
 
 	public static String localize(String input, Object... format)
 	{
-		return I18n.translateToLocalFormatted(input, format);
+		return StatCollector.translateToLocalFormatted(input, format);
 	}
 
 	public static String localizeEffect(String input, Object... format)

@@ -1,9 +1,7 @@
 package sokratis12GR.ArmorPlus.armors.special;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -65,10 +63,10 @@ public class TheUltimateArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("THEULTIMATEARMOR", ArmorPlus.MODID + ":" + "TheUltimateArmor", 160, new int[]
-                {10, 20, 30, 15}, 88, SoundEvents.item_armor_equip_diamond);
+                {10, 20, 30, 15}, 88);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
@@ -78,7 +76,7 @@ public class TheUltimateArmor {
             }
         }).setUnlocalizedName("TheUltimateHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
@@ -88,7 +86,7 @@ public class TheUltimateArmor {
             }
         }).setUnlocalizedName("TheUltimateChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
@@ -98,7 +96,7 @@ public class TheUltimateArmor {
             }
         }).setUnlocalizedName("TheUltimateLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));

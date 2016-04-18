@@ -1,12 +1,9 @@
 package sokratis12GR.ArmorPlus.armors.special;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -85,10 +82,10 @@ public class SuperStarArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("SUPERSTARARMOR", ArmorPlus.MODID + ":" + "SuperStarArmor", 50, new int[]
-                {5, 9, 12, 6}, 30, SoundEvents.item_armor_equip_diamond);
+                {5, 9, 12, 6}, 30);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
@@ -97,7 +94,7 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(10, 120, 1));
                 }
             }
 
@@ -106,7 +103,7 @@ public class SuperStarArmor {
             }
         }).setUnlocalizedName("SuperStarHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
@@ -115,7 +112,7 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(10, 120, 1));
                 }
             }
 
@@ -124,7 +121,7 @@ public class SuperStarArmor {
             }
         }).setUnlocalizedName("SuperStarChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
@@ -133,7 +130,7 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarLRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(10, 120, 1));
                 }
             }
 
@@ -142,7 +139,7 @@ public class SuperStarArmor {
             }
         }).setUnlocalizedName("SuperStarLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
@@ -151,7 +148,7 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(10, 120, 1));
                 }
             }
 

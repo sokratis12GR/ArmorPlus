@@ -1,12 +1,9 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -103,10 +100,10 @@ public class ObsidianArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", ArmorPlus.MODID + ":" + "ObsidianArmor", 40, new int[]
-                {3, 7, 10, 5}, 25, SoundEvents.item_armor_equip_diamond);
+                {3, 7, 10, 5}, 25);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
@@ -115,7 +112,7 @@ public class ObsidianArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianHResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
             }
 
@@ -124,7 +121,7 @@ public class ObsidianArmor {
             }
         }).setUnlocalizedName("ObsidianHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
@@ -133,7 +130,7 @@ public class ObsidianArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianCResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
             }
 
@@ -142,7 +139,7 @@ public class ObsidianArmor {
             }
         }).setUnlocalizedName("ObsidianChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
@@ -151,7 +148,7 @@ public class ObsidianArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianLResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
             }
 
@@ -160,7 +157,7 @@ public class ObsidianArmor {
             }
         }).setUnlocalizedName("ObsidianLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
@@ -170,7 +167,7 @@ public class ObsidianArmor {
                 if (ConfigHandler.enableObsidianBResistance) {
                     {
                         if (entity instanceof EntityLivingBase)
-                            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                     }
                 }
             }

@@ -1,12 +1,9 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -106,10 +103,10 @@ public class EmeraldArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("EMERALDARMOR", ArmorPlus.MODID + ":" + "EmeraldArmor", 35, new int[]
-                {3, 6, 9, 4}, 20, SoundEvents.item_armor_equip_diamond);
+                {3, 6, 9, 4}, 20);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -118,7 +115,7 @@ public class EmeraldArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldHHaste) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(3, 120, 1));
                 }
             }
 
@@ -128,7 +125,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldHelmet");
         helmet.setMaxStackSize(1);
 
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -137,7 +134,7 @@ public class EmeraldArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldCHaste) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(3, 120, 1));
                 }
             }
 
@@ -147,7 +144,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldChestplate");
         chestplate.setMaxStackSize(1);
 
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -156,7 +153,7 @@ public class EmeraldArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldLHaste) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(3, 120, 1));
                 }
             }
 
@@ -166,7 +163,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldLeggings");
         legs.setMaxStackSize(1);
 
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -175,7 +172,7 @@ public class EmeraldArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldBHaste) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(3, 120, 1));
                 }
             }
 

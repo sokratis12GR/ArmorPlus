@@ -1,12 +1,9 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -104,10 +101,10 @@ public class CoalArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
-                {1, 2, 3, 1}, 8, SoundEvents.item_armor_equip_leather);
+                {1, 2, 3, 1}, 8);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -116,7 +113,7 @@ public class CoalArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalHNightVision) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(16, 240, 0));
                 }
             }
 
@@ -126,7 +123,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalHelmet");
         helmet.setMaxStackSize(1);
 
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -135,7 +132,7 @@ public class CoalArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalCNightVision) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(16, 240, 0));
                 }
             }
 
@@ -145,7 +142,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalChestplate");
         chestplate.setMaxStackSize(1);
 
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -154,7 +151,7 @@ public class CoalArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalLNightVision) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(16, 240, 0));
                 }
             }
 
@@ -164,7 +161,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalLeggings");
         legs.setMaxStackSize(1);
 
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -173,7 +170,7 @@ public class CoalArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalBNightVision) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(16, 240, 0));
                 }
             }
 

@@ -1,13 +1,10 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -85,10 +82,10 @@ public class LavaArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", ArmorPlus.MODID + ":" + "LavaArmor", 45, new int[]
-                {4, 8, 11, 6}, 28, SoundEvents.item_armor_equip_diamond);
+                {4, 8, 11, 6}, 28);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance and Fire Resistance"));
@@ -97,11 +94,11 @@ public class LavaArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaHResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
                 if (ConfigHandler.enableLavaHFireResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(12, 120, 0));
                 }
             }
 
@@ -110,7 +107,7 @@ public class LavaArmor {
             }
         }).setUnlocalizedName("LavaHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance and Fire Resistance"));
@@ -119,11 +116,11 @@ public class LavaArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaCResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
                 if (ConfigHandler.enableLavaCFireResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(12, 120, 0));
                 }
             }
 
@@ -132,7 +129,7 @@ public class LavaArmor {
             }
         }).setUnlocalizedName("LavaChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance and Fire Resistance"));
@@ -141,11 +138,11 @@ public class LavaArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaLResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
                 if (ConfigHandler.enableLavaLFireResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(12, 120, 0));
                 }
             }
 
@@ -154,7 +151,7 @@ public class LavaArmor {
             }
         }).setUnlocalizedName("LavaLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance and Fire Resistance"));
@@ -163,11 +160,11 @@ public class LavaArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaBResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(11, 120, 0));
                 }
                 if (ConfigHandler.enableLavaBFireResistance) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(12, 120, 0));
                 }
             }
 

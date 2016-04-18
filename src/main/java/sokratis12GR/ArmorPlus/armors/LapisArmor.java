@@ -1,12 +1,9 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -104,10 +101,10 @@ public class LapisArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAPISARMOR", ArmorPlus.MODID + ":" + "LapisArmor", 11, new int[]
-                {1, 3, 5, 2}, 25, SoundEvents.item_armor_equip_gold);
+                {1, 3, 5, 2}, 25);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -116,7 +113,7 @@ public class LapisArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisHBreathing) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 }
             }
 
@@ -125,7 +122,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -134,7 +131,7 @@ public class LapisArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisCBreathing) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 }
             }
 
@@ -143,7 +140,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -152,7 +149,7 @@ public class LapisArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisLBreathing) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 }
             }
 
@@ -161,7 +158,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -170,7 +167,7 @@ public class LapisArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisBBreathing) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 }
             }
 

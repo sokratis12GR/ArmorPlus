@@ -1,9 +1,7 @@
 package sokratis12GR.ArmorPlus.armors.special;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -99,10 +97,10 @@ public class EnderDragonArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ENDERDRAGONARMOR", ArmorPlus.MODID + ":" + "EnderDragonArmor", 60, new int[]
-                {5, 9, 12, 6}, 30, SoundEvents.item_armor_equip_diamond);
+                {5, 9, 12, 6}, 30);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -116,7 +114,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -130,7 +128,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+        legs = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -145,7 +143,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+        boots = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));

@@ -3,8 +3,6 @@ package sokratis12GR.ArmorPlus.resources;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -32,16 +30,16 @@ public class GlobalEventsArmorPlus {
 
         //Guardian Armor Thorns
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByID(7), 3);
+            itemStack.addEnchantment(Enchantment.getEnchantmentById(7), 3);
         //Guardian Armor Unbreaking 3
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
+            itemStack.addEnchantment(Enchantment.getEnchantmentById(34), 3);
         //Full of Thorns! - Achievement Trigger
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
             event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
         // Guardian Boots Enchantments
         if (i == GuardianArmor.boots || i == TheUltimateArmor.boots)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
+            itemStack.addEnchantment(Enchantment.getEnchantmentById(8), 3);
         else {
             return;
         }
@@ -80,10 +78,10 @@ public class GlobalEventsArmorPlus {
 
             EntityPlayer entity = event.player;
 
-            ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-            ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-            ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-            ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+            ItemStack head = entity.getEquipmentInSlot(3);
+            ItemStack chest = entity.getEquipmentInSlot(2);
+            ItemStack legs = entity.getEquipmentInSlot(1);
+            ItemStack feet = entity.getEquipmentInSlot(0);
 
             if (ConfigHandler.enableFlightAbility) {
                 if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
@@ -96,11 +94,11 @@ public class GlobalEventsArmorPlus {
             if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots)
             {
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(10, 120, 1));
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(16, 240, 0));
             }
         }
     }

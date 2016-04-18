@@ -25,18 +25,14 @@ import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
 import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
 import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.blocks.BlockArmorWorkshop;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
-
-import static net.minecraftforge.fml.common.registry.GameRegistry.register;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
@@ -45,7 +41,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.8.2";
+    public static final String VERSION = "1.8.3-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -107,14 +103,11 @@ public class ArmorPlus {
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
                             new ItemStack(GuardianArmor.boots, 1),});
         }
-        // BlockArmorWorkshop recipe (WIP)
-        GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.BlockArmorWorkshop), 1), new Object[]{"012", "345", "678", Character.valueOf('0'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('1'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('2'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('3'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('4'), new ItemStack(Blocks.crafting_table, 1), Character.valueOf('5'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('6'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('7'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('8'), new ItemStack(Items.iron_ingot, 1), Character.valueOf('9'), new ItemStack(Items.iron_ingot, 1),});
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.init();
-        ModBlocks.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
         LapisArmor.instance = ArmorPlus.instance;
