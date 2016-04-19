@@ -1,9 +1,12 @@
 package sokratis12GR.ArmorPlus.armors;
 
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -108,10 +111,10 @@ public class RedstoneArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "RedstoneArmor", 11, new int[]
-                {1, 3, 5, 2}, 25);
+                {1, 3, 5, 2}, 25, SoundEvents.item_armor_equip_gold);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
+        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed 2"));
@@ -120,7 +123,7 @@ public class RedstoneArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneHSpeed) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(1, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
             }
 
@@ -129,7 +132,7 @@ public class RedstoneArmor {
             }
         }).setUnlocalizedName("RedstoneHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed 2"));
@@ -138,7 +141,7 @@ public class RedstoneArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneCSpeed) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(1, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
             }
 
@@ -147,7 +150,7 @@ public class RedstoneArmor {
             }
         }).setUnlocalizedName("RedstoneChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, 2) {
+        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed 2"));
@@ -156,7 +159,7 @@ public class RedstoneArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneLSpeed) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(1, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
             }
 
@@ -165,7 +168,7 @@ public class RedstoneArmor {
             }
         }).setUnlocalizedName("RedstoneLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, 3) {
+        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed 2"));
@@ -174,7 +177,7 @@ public class RedstoneArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneBSpeed) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(1, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
             }
 

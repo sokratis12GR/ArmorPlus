@@ -1,11 +1,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ArmorPlus 1.8.4-1.8.9
+ArmorPlus 1.8.3-1.9
 {Bugs Fixed}
-* You equip the Armor Pieces Reverse
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ArmorPlus 1.8.3-1.8.9
-{MC Version}
-* Updated 1.8.9 version of the mod
+* This mod not allowing other mod's flight to work
+{Features Removed}
+* Removed ArmorWorkshop from the game
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.8.2
 {Bugs Fixed}
@@ -80,4 +78,19 @@ ArmorPlus 1.7.6
 * Updated the Spanish Language file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.7.5
+{Features Changed}
+* Rebalanced All the Armors: 
+** Emerald Armor gives just 2 More Protection Points than Diamond Armor Does (22).
+** Obsidian Armor gives just 3 More Protection Points than Emerald Armor Does (25).
+** Lava Armor gives just 4 More Protection Points than Obsidian Armor Does (29).
+** Super Star Armor gives just 3 More Protection Points than Lava Armor Does (32).
+* Changed the ArmorPlus's Achievement Page
+* Increased all armors durability
+{Features Added}
+* Super Star Armor
+* More Achievements
+* Added A Changelog File in the Mod files
+{Bugs Fixed}
+* Both Lava Armor's Effects are getting disabled when disabling the Resistance
+* Some Rare Crashes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -13,9 +13,9 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledEnderDragon(LivingDropsEvent event)
     {
-        if(event.entity instanceof EntityDragon)
+        if(event.getEntity() instanceof EntityDragon)
         {
-            EntityItem entityItem = event.entityLiving.dropItem(ModItems.EnderDragonScale, 24);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.EnderDragonScale, 24);
         }
     }
 }
