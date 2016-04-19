@@ -1,7 +1,5 @@
 package sokratis12GR.ArmorPlus;
 
-import sokratis12GR.ArmorPlus.blocks.BlockArmorWorkshop;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
 public class ClientProxy extends CommonProxy {
@@ -18,6 +16,10 @@ public class ClientProxy extends CommonProxy {
         ins.EnderDragonArmor.registerRenderers();
         ins.GuardianArmor.registerRenderers();
         ins.TheUltimateArmor.registerRenderers();
+        ins.RIArmor.registerRenderers();
+        ins.RGArmor.registerRenderers();
+        ins.RDArmor.registerRenderers();
+        ins.RCArmor.registerRenderers();
         ModItems.initModels();
     }
 }
