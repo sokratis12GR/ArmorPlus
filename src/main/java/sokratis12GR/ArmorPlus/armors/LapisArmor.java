@@ -104,7 +104,7 @@ public class LapisArmor {
                 {1, 3, 5, 2}, 25);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -122,7 +122,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -140,7 +140,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, 1) {
+        legs = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
@@ -158,7 +158,7 @@ public class LapisArmor {
             }
         }).setUnlocalizedName("LapisLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, 0) {
+        boots = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));

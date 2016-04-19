@@ -100,7 +100,7 @@ public class EnderDragonArmor {
                 {5, 9, 12, 6}, 30);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -114,7 +114,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -128,7 +128,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, 1) {
+        legs = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
@@ -143,7 +143,7 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, 0) {
+        boots = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));

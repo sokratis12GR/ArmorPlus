@@ -104,7 +104,7 @@ public class CoalArmor {
                 {1, 2, 3, 1}, 8);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -123,7 +123,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalHelmet");
         helmet.setMaxStackSize(1);
 
-        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -142,7 +142,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalChestplate");
         chestplate.setMaxStackSize(1);
 
-        legs = (new ItemArmor(enuma, armorPreffix, 1) {
+        legs = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
@@ -161,7 +161,7 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalLeggings");
         legs.setMaxStackSize(1);
 
-        boots = (new ItemArmor(enuma, armorPreffix, 0) {
+        boots = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));

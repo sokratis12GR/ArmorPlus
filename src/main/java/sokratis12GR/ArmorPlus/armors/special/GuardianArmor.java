@@ -101,7 +101,7 @@ public class GuardianArmor {
                 {4, 8, 11, 6}, 28);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
@@ -119,7 +119,7 @@ public class GuardianArmor {
             }
         }).setUnlocalizedName("GuardianHelmet");
         helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
@@ -137,7 +137,7 @@ public class GuardianArmor {
             }
         }).setUnlocalizedName("GuardianChestplate");
         chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, 1) {
+        legs = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));
@@ -155,7 +155,7 @@ public class GuardianArmor {
             }
         }).setUnlocalizedName("GuardianLeggings");
         legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, 0) {
+        boots = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&b" + "It is Thorny and gives you Water Breathing"));

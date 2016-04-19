@@ -106,7 +106,7 @@ public class EmeraldArmor {
                 {3, 6, 9, 4}, 20);
 
         int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, 3) {
+        helmet = (new ItemArmor(enuma, armorPreffix, 0) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -125,7 +125,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldHelmet");
         helmet.setMaxStackSize(1);
 
-        chestplate = (new ItemArmor(enuma, armorPreffix, 2) {
+        chestplate = (new ItemArmor(enuma, armorPreffix, 1) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -144,7 +144,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldChestplate");
         chestplate.setMaxStackSize(1);
 
-        legs = (new ItemArmor(enuma, armorPreffix, 1) {
+        legs = (new ItemArmor(enuma, armorPreffix, 2) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
@@ -163,7 +163,7 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldLeggings");
         legs.setMaxStackSize(1);
 
-        boots = (new ItemArmor(enuma, armorPreffix, 0) {
+        boots = (new ItemArmor(enuma, armorPreffix, 3) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
