@@ -48,27 +48,54 @@ item.SuperStarChestplate.name=Super Star Chestplate
 item.SuperStarLeggings.name=Super Star Leggings
 item.SuperStarBoots.name=Super Star Boots
 
-#EnderDragon Armor
+#EnderDragonArmor
 item.EnderDragonScale.name=Ender Dragon Scale
 item.EnderDragonHelmet.name=Ender Dragon Helmet
 item.EnderDragonChestplate.name=Ender Dragon Chestplate
 item.EnderDragonLeggings.name=Ender Dragon Leggings
 item.EnderDragonBoots.name=Ender Dragon Boots
 
-#Guardian Armor
+#GuardianArmor
 item.GuardianHelmet.name=Guardian Helmet
 item.GuardianChestplate.name=Guardian Chestplate
 item.GuardianLeggings.name=Guardian Leggings
 item.GuardianBoots.name=Guardian Boots
-
-#ArmorWorkshop
-tile.ArmorWorkshop.name=ArmorWorkshop (WIP)
 
 #TheUltimateArmor
 item.TheUltimateHelmet.name=The Ultimate Helmet
 item.TheUltimateChestplate.name=The Ultimate Chestplate
 item.TheUltimateLeggings.name=The Ultimate Leggings
 item.TheUltimateBoots.name=The Ultimate Boots
+
+#Chainmail
+item.Chainmail.name=Chainmail
+
+#ReinforcingMaterial
+item.ReinforcingMaterial.name=Reinforcing Material
+
+#ReinforcedIronArmor
+item.RIHelmet.name=Reinforced Iron Helmet
+item.RIChestplate.name=Reinforced Iron Chestplate
+item.RILeggings.name=Reinforced Iron Leggings
+item.RIBoots.name=Reinforced Iron Boots
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=Reinforced Golden Helmet
+item.RGChestplate.name=Reinforced Golden Chestplate
+item.RGLeggings.name=Reinforced Golden Leggings
+item.RGBoots.name=Reinforced Golden Boots
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=Reinforced Diamond Helmet
+item.RDChestplate.name=Reinforced Diamond Chestplate
+item.RDLeggings.name=Reinforced Diamond Leggings
+item.RDBoots.name=Reinforced Diamond Boots
+
+#ReinforcedChainArmor
+item.RCHelmet.name=Reinforced Chain Helmet
+item.RCChestplate.name=Reinforced Chain Chestplate
+item.RCLeggings.name=Reinforced Chain Leggings
+item.RCBoots.name=Reinforced Chain Boots
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
