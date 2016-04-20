@@ -82,7 +82,7 @@ public class LavaArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", ArmorPlus.MODID + ":" + "LavaArmor", 45, new int[]
-                {4, 8, 11, 6}, 28);
+                {6, 11, 8, 4}, 28);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

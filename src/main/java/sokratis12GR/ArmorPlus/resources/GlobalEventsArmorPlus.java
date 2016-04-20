@@ -3,6 +3,7 @@ package sokratis12GR.ArmorPlus.resources;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -20,6 +21,12 @@ import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
+
+    public static final int HEAD = 3;
+    public static final int CHEST = 2;
+    public static final int LEGS = 1;
+    public static final int BOOTS = 0;
+
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
 
@@ -78,21 +85,20 @@ public class GlobalEventsArmorPlus {
 
             EntityPlayer entity = event.player;
 
-            ItemStack head = entity.getEquipmentInSlot(3);
-            ItemStack chest = entity.getEquipmentInSlot(2);
-            ItemStack legs = entity.getEquipmentInSlot(1);
-            ItemStack feet = entity.getEquipmentInSlot(0);
+            ItemStack head = entity.getCurrentArmor(HEAD);
+            ItemStack chest = entity.getCurrentArmor(CHEST);
+            ItemStack legs = entity.getCurrentArmor(LEGS);
+            ItemStack feet = entity.getCurrentArmor(BOOTS);
+
 
             if (ConfigHandler.enableFlightAbility) {
                 if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                     entity.capabilities.allowFlying = true;
                 } else {
-                    entity.capabilities.allowFlying = false;
                     entity.capabilities.isFlying = false;
                 }
             }
-            if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots)
-            {
+            if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 if (entity instanceof EntityLivingBase)
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(13, 120, 0));
                 if (entity instanceof EntityLivingBase)

@@ -1,4 +1,37 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.0-1.8.9
+{Bugs Fixed}
+* Armor Points being reverse
+* Some Crashes
+* Some Uncraftable Items in some Situations
+* Fixed The Ultimate Armor and Ender Dragon Armor not working
+{Features Removed}
+* Block ArmorWorkshop (For Ever)
+{Features Added}
+* Reinforced Armors
+** Reinforced Gold Armor + 1 All Armor
+** Reinforced Chainmail Armor + 1 All Armor
+** Reinforced Iron Armor + 1 All Armor
+** Reinforced Diamond Armor + 1 All Armor
+* Chainmail Armor Recipe
+* Chainmail (Item)
+* Reinforcing Material (Item)
+// Reinforced Armors' Textures are WIP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.0-1.9
+{Features Removed}
+* Block ArmorWorkshop (For Ever)
+{Features Added}
+* Reinforced Armors
+** Reinforced Gold Armor + 1 All Armor
+** Reinforced Chainmail Armor + 1 All Armor
+** Reinforced Iron Armor + 1 All Armor
+** Reinforced Diamond Armor + 1 All Armor
+* Chainmail Armor Recipe
+* Chainmail (Item)
+* Reinforcing Material (Item)
+// Reinforced Armors' Textures are WIP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.8.4-1.8.9
 {Bugs Fixed}
 * You equip the Armor Pieces Reverse
@@ -6,6 +39,12 @@ ArmorPlus 1.8.4-1.8.9
 ArmorPlus 1.8.3-1.8.9
 {MC Version}
 * Updated 1.8.9 version of the mod
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.8.3-1.9
+{Bugs Fixed}
+* This mod not allowing other mod's flight to work
+{Features Removed}
+* Removed ArmorWorkshop from the game
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.8.2
 {Bugs Fixed}

@@ -82,7 +82,7 @@ public class SuperStarArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("SUPERSTARARMOR", ArmorPlus.MODID + ":" + "SuperStarArmor", 50, new int[]
-                {5, 9, 12, 6}, 30);
+                {6, 12, 9, 5}, 30);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

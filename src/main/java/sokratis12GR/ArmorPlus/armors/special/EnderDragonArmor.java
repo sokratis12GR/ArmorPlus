@@ -97,7 +97,7 @@ public class EnderDragonArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ENDERDRAGONARMOR", ArmorPlus.MODID + ":" + "EnderDragonArmor", 60, new int[]
-                {5, 9, 12, 6}, 30);
+                {6, 12, 9, 5}, 30);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

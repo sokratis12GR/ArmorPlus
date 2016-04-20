@@ -16,6 +16,10 @@ public class ClientProxy extends CommonProxy {
         ins.EnderDragonArmor.registerRenderers();
         ins.GuardianArmor.registerRenderers();
         ins.TheUltimateArmor.registerRenderers();
+        ins.RIArmor.registerRenderers();
+        ins.RGArmor.registerRenderers();
+        ins.RDArmor.registerRenderers();
+        ins.RCArmor.registerRenderers();
         ModItems.initModels();
     }
 }

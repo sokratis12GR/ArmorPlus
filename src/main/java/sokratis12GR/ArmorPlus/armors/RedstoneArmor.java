@@ -108,7 +108,7 @@ public class RedstoneArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "RedstoneArmor", 11, new int[]
-                {1, 3, 5, 2}, 25);
+                {2, 5, 3, 1}, 25);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

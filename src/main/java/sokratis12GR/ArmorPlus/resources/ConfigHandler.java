@@ -4,8 +4,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
 
-public class ConfigHandler
-{
+public class ConfigHandler {
 
 	public static Configuration config;
 	// Settings
@@ -19,6 +18,7 @@ public class ConfigHandler
 	public static boolean enableEnderDragonArmorRecipes;
 	public static boolean enableGuardianArmorRecipes;
 	public static boolean enableTheUltimateArmorRecipes;
+	public static boolean enableReinforcedArmorsRecipes;
 
 	// Special Effects
 	// Coal Armor
@@ -68,15 +68,13 @@ public class ConfigHandler
 	public static boolean enableGuardianLEffects;
 	public static boolean enableGuardianBEffects;
 
-	public static void init(File file)
-	{
+	public static void init(File file) {
 		config = new Configuration(file);
 
 		syncConfig();
 	}
 
-	public static void syncConfig()
-	{
+	public static void syncConfig() {
 		String category;
 		category = "Recipes";
 		config.addCustomCategoryComment(category, "Armor's Recipes");
@@ -100,7 +98,8 @@ public class ConfigHandler
 				"Enable/Disable The Guardian Armor Recipes");
 		enableTheUltimateArmorRecipes = config.getBoolean("enableTheUltimateArmorRecipes", category, true,
 				"Enable/Disable The Ultimate Armor Recipes");
-
+		enableReinforcedArmorsRecipes = config.getBoolean("enableReinforcedArmorsRecipes", category, true,
+				"Enable/Disable The Reinforced Armors Recipes");
 
 
 		// Coal Armor

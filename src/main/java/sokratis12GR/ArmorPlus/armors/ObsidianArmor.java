@@ -100,7 +100,7 @@ public class ObsidianArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("OBSIDIANARMOR", ArmorPlus.MODID + ":" + "ObsidianArmor", 40, new int[]
-                {3, 7, 10, 5}, 25);
+                {5, 10, 7, 3}, 25);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

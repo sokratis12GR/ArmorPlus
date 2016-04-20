@@ -103,7 +103,7 @@ public class EmeraldArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("EMERALDARMOR", ArmorPlus.MODID + ":" + "EmeraldArmor", 35, new int[]
-                {3, 6, 9, 4}, 20);
+                {4, 9, 6, 3}, 20);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

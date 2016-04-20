@@ -63,7 +63,7 @@ public class TheUltimateArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("THEULTIMATEARMOR", ArmorPlus.MODID + ":" + "TheUltimateArmor", 160, new int[]
-                {10, 20, 30, 15}, 88);
+                {15, 30, 20, 10}, 88);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {

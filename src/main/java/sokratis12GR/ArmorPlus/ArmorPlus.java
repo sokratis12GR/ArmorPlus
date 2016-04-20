@@ -2,9 +2,7 @@ package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
 import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
@@ -41,7 +40,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.8.4-1.8.9";
+    public static final String VERSION = "1.9.0-1.8.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -71,6 +70,10 @@ public class ArmorPlus {
     EnderDragonArmor EnderDragonArmor = new EnderDragonArmor();
     GuardianArmor GuardianArmor = new GuardianArmor();
     TheUltimateArmor TheUltimateArmor = new TheUltimateArmor();
+    RIArmor RIArmor = new RIArmor();
+    RGArmor RGArmor = new RGArmor();
+    RDArmor RDArmor = new RDArmor();
+    RCArmor RCArmor = new RCArmor();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -87,12 +90,16 @@ public class ArmorPlus {
         EnderDragonArmor.load(event);
         GuardianArmor.load(event);
         TheUltimateArmor.load(event);
+        RIArmor.load(event);
+        RGArmor.load(event);
+        RDArmor.load(event);
+        RCArmor.load(event);
         ARPAchievements.init();
         //Crafting Recipes
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new Object[]
                     {new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1),
-                            new ItemStack(GuardianArmor.helmet, 2),});
+                            new ItemStack(GuardianArmor.helmet, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new Object[]
                     {new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1),
                             new ItemStack(GuardianArmor.chestplate, 1),});
@@ -103,6 +110,45 @@ public class ArmorPlus {
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
                             new ItemStack(GuardianArmor.boots, 1),});
         }
+        // Chainmail Armor Recipes
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
+                {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('4'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('8'),
+                        new ItemStack(ModItems.Chainmail, 1),});
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
+                {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('1'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
+                        new ItemStack(ModItems.Chainmail, 1),});
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_chestplate, 1), new Object[]
+                {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('4'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('7'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('8'),
+                        new ItemStack(ModItems.Chainmail, 1),});
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_leggings, 1), new Object[]
+                {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('1'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('8'), new ItemStack(ModItems.Chainmail, 1),});
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
+                {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('8'), new ItemStack(ModItems.Chainmail, 1),});
+        GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
+                {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'),
+                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1),
+                        Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),});
+        // Chainmail (Item) Recipe
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.Chainmail, 4), new Object[]
+                {new ItemStack(Items.iron_ingot, 1), new ItemStack(Items.iron_ingot, 1),});
+        // Reinforcing Material (Item) Recipe
+        GameRegistry.addRecipe(new ItemStack(ModItems.ReinforcingMaterial, 2), new Object[]
+                {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.string, 1), Character.valueOf('B'),
+                        new ItemStack(Items.slime_ball, 1),});
     }
 
     @EventHandler
@@ -119,6 +165,10 @@ public class ArmorPlus {
         EnderDragonArmor.instance = ArmorPlus.instance;
         GuardianArmor.instance = ArmorPlus.instance;
         TheUltimateArmor.instance = ArmorPlus.instance;
+        RIArmor.instance = ArmorPlus.instance;
+        RGArmor.instance = ArmorPlus.instance;
+        RDArmor.instance = ArmorPlus.instance;
+        RCArmor.instance = ArmorPlus.instance;
         CoalArmor.preInit(event);
         LapisArmor.preInit(event);
         RedstoneArmor.preInit(event);
@@ -129,6 +179,10 @@ public class ArmorPlus {
         EnderDragonArmor.preInit(event);
         GuardianArmor.preInit(event);
         TheUltimateArmor.preInit(event);
+        RIArmor.preInit(event);
+        RGArmor.preInit(event);
+        RDArmor.preInit(event);
+        RCArmor.preInit(event);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();

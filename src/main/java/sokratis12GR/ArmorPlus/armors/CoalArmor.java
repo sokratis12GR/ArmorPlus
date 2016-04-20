@@ -101,7 +101,7 @@ public class CoalArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
-                {1, 2, 3, 1}, 8);
+                {1, 3, 2, 1}, 8);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, 0) {
