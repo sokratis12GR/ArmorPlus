@@ -19,4 +19,16 @@ I want to give credit to those guys who helped with the translation of ArmorPlus
 
 -(de_DE.lang Traslate to German)
 
-} 
+}
+
+* 3 TUSK https://github.com/3TUSK {
+
+-(zh_CN.lang Translate to Chinese)
+
+}
+
+* Tasosmanya https://www.youtube.com/channel/UC21oSgKfEiV_bwFO2Y9CjPg {
+
+-(el_GR.lang Translate to Greek)
+ 
+}
