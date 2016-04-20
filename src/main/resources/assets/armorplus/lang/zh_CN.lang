@@ -61,9 +61,6 @@ item.GuardianChestplate.name=守卫者胸甲
 item.GuardianLeggings.name=守卫者护腿
 item.GuardianBoots.name=守卫者靴子
 
-#ArmorWorkshop
-tile.ArmorWorkshop.name=护甲作坊(WIP)
-
 #TheUltimateArmor
 item.TheUltimateHelmet.name=终极头盔
 item.TheUltimateChestplate.name=终极胸甲
