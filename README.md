@@ -3,7 +3,7 @@
 About this Mod
 ---
 
-ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/ArmorPlus)**. As the name suggests, the mod adds various armor sets to the game.
+ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/sokratis12GR)**. As the name suggests, the mod adds various armor sets to the game.
 
 
 Mod's Official Wiki
