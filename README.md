@@ -1,10 +1,21 @@
 # ArmorPlus
 
-### About this Mod
+About this Mod
+---
 
 ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/ArmorPlus)**. As the name suggests, the mod adds various armor sets to the game.
 
-### Mod's Official Wiki
+
+Mod's Official Wiki
+---
 
 The Official Wiki for this mod is
 **[http://ftb.gamepedia.com/ArmorPlus](http://ftb.gamepedia.com/ArmorPlus)**
+
+Versions
+---
+
+| Forge Version  | Mod's Version  | Minecraft Version  |
+| -------------- |----------------| -------------------|
+| 11.15.1.1855   | 1.9.0          | 1.8.9              |
+| 12.16.0.1865   | 1.9.0          | 1.9                |
