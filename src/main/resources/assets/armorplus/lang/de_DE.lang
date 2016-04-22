@@ -61,9 +61,6 @@ item.GuardianChestplate.name=Beschuetzer-Brustpanzer
 item.GuardianLeggings.name=Beschuetzer-Beinschutz
 item.GuardianBoots.name=Beschuetzer-Stiefel
 
-#ArmorWorkshop
-tile.ArmorWorkshop.name=Ruestungswerkstatt (WIP)
-
 #TheUltimateArmor
 item.TheUltimateHelmet.name=Der ultimative Helm
 item.TheUltimateChestplate.name=Der ultimative Brustpanzer
