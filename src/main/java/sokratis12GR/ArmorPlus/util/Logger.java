@@ -14,8 +14,6 @@ public class Logger {
     public static Configuration Logger;
 
     public static void init(File file) {
-        Logger = new Configuration(file);
-
         syncConfig();
     }
 
@@ -55,9 +53,6 @@ public class Logger {
                 writer.close();
             } catch (Exception ex) {/*ignore*/}
         }
-
-        if (Logger.hasChanged())
-            Logger.save();
     }
 
 }
