@@ -210,7 +210,7 @@ public class ConfigHandler {
         // Flight Ability
         category = "FlightAbility";
         config.addCustomCategoryComment(category, "Flight Ability's Settings");
-        enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Ultimate Armor Flight");
+        enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Armors Flight");
 
         if (config.hasChanged())
             config.save();

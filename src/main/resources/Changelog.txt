@@ -1,4 +1,29 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.1-1.9
+{Features Added}
+* A new command "/armorplus"
+* New file "ArmorPlus.html" for some information about the mod
+* Some Small Name Changes for the Config File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.0-1.8.9
+{Bugs Fixed}
+* Armor Points being reverse
+* Some Crashes
+* Some Uncraftable Items in some Situations
+* Fixed The Ultimate Armor and Ender Dragon Armor not working
+{Features Removed}
+* Block ArmorWorkshop (For Ever)
+{Features Added}
+* Reinforced Armors
+** Reinforced Gold Armor + 1 All Armor
+** Reinforced Chainmail Armor + 1 All Armor
+** Reinforced Iron Armor + 1 All Armor
+** Reinforced Diamond Armor + 1 All Armor
+* Chainmail Armor Recipe
+* Chainmail (Item)
+* Reinforcing Material (Item)
+// Reinforced Armors' Textures are WIP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.0-1.9
 {Features Removed}
 * Block ArmorWorkshop (For Ever)

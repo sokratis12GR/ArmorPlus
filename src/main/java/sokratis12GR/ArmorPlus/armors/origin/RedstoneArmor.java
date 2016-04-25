@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors;
+package sokratis12GR.ArmorPlus.armors.origin;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
