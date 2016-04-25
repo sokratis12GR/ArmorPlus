@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
@@ -40,7 +40,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.9.0-1.8.9";
+    public static final String VERSION = "1.9.1-1.8.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -55,17 +55,22 @@ public class ArmorPlus {
     @Instance(MODID)
     public static ArmorPlus instance;
     private static File configDir;
+    private static File loggerDir;
 
     public static File getConfigDir() {
         return configDir;
     }
+    public static File getloggerDir() {
+        return loggerDir;
+    }
+
 
     CoalArmor CoalArmor = new CoalArmor();
-    LapisArmor LapisArmor = new LapisArmor();
-    RedstoneArmor RedstoneArmor = new RedstoneArmor();
-    EmeraldArmor EmeraldArmor = new EmeraldArmor();
-    ObsidianArmor ObsidianArmor = new ObsidianArmor();
-    LavaArmor LavaArmor = new LavaArmor();
+    sokratis12GR.ArmorPlus.armors.origin.LapisArmor LapisArmor = new LapisArmor();
+    sokratis12GR.ArmorPlus.armors.origin.RedstoneArmor RedstoneArmor = new RedstoneArmor();
+    sokratis12GR.ArmorPlus.armors.origin.EmeraldArmor EmeraldArmor = new EmeraldArmor();
+    sokratis12GR.ArmorPlus.armors.origin.ObsidianArmor ObsidianArmor = new ObsidianArmor();
+    sokratis12GR.ArmorPlus.armors.origin.LavaArmor LavaArmor = new LavaArmor();
     SuperStarArmor SuperStarArmor = new SuperStarArmor();
     EnderDragonArmor EnderDragonArmor = new EnderDragonArmor();
     GuardianArmor GuardianArmor = new GuardianArmor();
@@ -186,6 +191,7 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
+        sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
     }

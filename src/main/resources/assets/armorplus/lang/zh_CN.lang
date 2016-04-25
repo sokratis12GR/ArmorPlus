@@ -1,0 +1,96 @@
+#en_US.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus配置
+
+#CoalArmor
+item.CoalHelmet.name=煤炭头盔
+item.CoalChestplate.name=煤炭胸甲
+item.CoalLeggings.name=煤炭护腿
+item.CoalBoots.name=煤炭靴子
+
+#LapisArmor
+item.LapisHelmet.name=青金石头盔
+item.LapisChestplate.name=青金石胸甲
+item.LapisLeggings.name=青金石护腿
+item.LapisBoots.name=青金石靴子
+
+#RedstoneArmor
+item.RedstoneHelmet.name=红石头盔
+item.RedstoneChestplate.name=红石胸甲
+item.RedstoneLeggings.name=红石护腿
+item.RedstoneBoots.name=红石靴子
+
+#EmeraldArmor
+item.EmeraldHelmet.name=绿宝石头盔
+item.EmeraldChestplate.name=绿宝石胸甲
+item.EmeraldLeggings.name=绿宝石护腿
+item.EmeraldBoots.name=绿宝石靴子
+
+#ObsidianArmor
+item.ObsidianHelmet.name=黑曜石头盔
+item.ObsidianChestplate.name=黑曜石胸甲
+item.ObsidianLeggings.name=黑曜石护腿
+item.ObsidianBoots.name=黑曜石靴子
+
+#LavaArmor
+item.LavaHelmet.name=熔岩头盔
+item.LavaChestplate.name=熔岩胸甲
+item.LavaLeggings.name=熔岩护腿
+item.LavaBoots.name=熔岩靴子
+
+#SuperStarArmor
+item.SuperStarHelmet.name=下界之星头盔
+item.SuperStarChestplate.name=下界之星胸甲
+item.SuperStarLeggings.name=下界之星护腿
+item.SuperStarBoots.name=下界之星靴子
+
+#EnderDragon Armor
+item.EnderDragonScale.name=末影龙碎片
+item.EnderDragonHelmet.name=末影龙头盔
+item.EnderDragonChestplate.name=末影龙胸甲
+item.EnderDragonLeggings.name=末影龙护腿
+item.EnderDragonBoots.name=末影龙靴子
+
+#守卫者Armor
+item.GuardianHelmet.name=守卫者头盔
+item.GuardianChestplate.name=守卫者胸甲
+item.GuardianLeggings.name=守卫者护腿
+item.GuardianBoots.name=守卫者靴子
+
+#TheUltimateArmor
+item.TheUltimateHelmet.name=终极头盔
+item.TheUltimateChestplate.name=终极胸甲
+item.TheUltimateLeggings.name=终极护腿
+item.TheUltimateBoots.name=终极靴子
+
+#Achievements
+achievement.armorplus.craftCoalArmor=像蝙蝠一样的视觉！
+achievement.armorplus.craftCoalArmor.desc=合成一件煤炭护甲
+achievement.armorplus.craftLapisArmor=不再溺水！
+achievement.armorplus.craftLapisArmor.desc=合成一件青金石护甲
+achievement.armorplus.craftRedstoneArmor=Speeedy!
+achievement.armorplus.craftRedstoneArmor.desc=合成一件红石护甲
+achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
+achievement.armorplus.craftEmeraldArmor.desc=合成一件绿宝石护甲
+achievement.armorplus.craftObsidianArmor=坚不可摧！
+achievement.armorplus.craftObsidianArmor.desc=合成一件黑曜石护甲
+achievement.armorplus.craftLavaArmor=The Overpowered!
+achievement.armorplus.craftLavaArmor.desc=合成一件熔岩护甲
+achievement.armorplus.craftSuperStarArmor=Godlike!
+achievement.armorplus.craftSuperStarArmor.desc=合成一件下界之星护甲
+achievement.armorplus.craftEnderDragonArmor=末影龙的力量！
+achievement.armorplus.craftEnderDragonArmor.desc=击杀末影龙并合成一件末影龙护甲
+achievement.armorplus.craftGuardianArmor=充满荆棘！
+achievement.armorplus.craftGuardianArmor.desc=合成一件守卫者护甲
+achievement.armorplus.craftTheUltimateArmor=最终极能量！
+achievement.armorplus.craftTheUltimateArmor.desc=合成一件终极护甲
+
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=Refreshing configuration file.
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization

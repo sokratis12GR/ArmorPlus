@@ -1,4 +1,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.1-1.8.9
+{Features Added}
+* New file "ArmorPlus.html" for some information about the mod
+* Some Small Name Changes for the Config File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.1-1.9
+{Features Added}
+* A new command "/armorplus"
+* New file "ArmorPlus.html" for some information about the mod
+* Some Small Name Changes for the Config File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.0-1.8.9
 {Bugs Fixed}
 * Armor Points being reverse

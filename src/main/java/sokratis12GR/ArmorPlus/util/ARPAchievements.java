@@ -7,7 +7,7 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.*;
+import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
 import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;

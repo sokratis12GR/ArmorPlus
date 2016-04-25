@@ -6,7 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.LavaArmor;
+import sokratis12GR.ArmorPlus.armors.origin.LavaArmor;
 
 public class CreativeTabArmorPlus extends CreativeTabs {
 

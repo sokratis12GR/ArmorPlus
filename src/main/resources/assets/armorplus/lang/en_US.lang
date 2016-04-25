@@ -124,3 +124,4 @@ info.armorplus.console.config.refresh=Refreshing configuration file.
 info.armorplus.console.load.preInit=Begin Pre-initialization
 info.armorplus.console.load.init=Begin Initialization
 info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
