@@ -111,7 +111,9 @@ public class GuardianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableGuardianHEffects) {
+                if (ConfigHandler.enableFullGuardianArmorEffect) {
+
+                } else if  (ConfigHandler.enableGuardianHEffects) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
@@ -129,7 +131,9 @@ public class GuardianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableGuardianCEffects) {
+                if (ConfigHandler.enableFullGuardianArmorEffect) {
+
+                } else if (ConfigHandler.enableGuardianCEffects) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
@@ -147,7 +151,9 @@ public class GuardianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableGuardianLEffects) {
+                if (ConfigHandler.enableFullGuardianArmorEffect) {
+
+                } else if (ConfigHandler.enableGuardianLEffects) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }

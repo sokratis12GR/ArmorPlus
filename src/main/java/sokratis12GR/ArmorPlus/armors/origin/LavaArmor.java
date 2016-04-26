@@ -95,11 +95,16 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLavaHResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaHResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
-                if (ConfigHandler.enableLavaHFireResistance) {
+
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaHFireResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
                 }
@@ -117,11 +122,15 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLavaCResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaCResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
-                if (ConfigHandler.enableLavaCFireResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaCFireResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
                 }
@@ -139,11 +148,15 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLavaLResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaLResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
-                if (ConfigHandler.enableLavaLFireResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaLFireResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
                 }
@@ -161,11 +174,15 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLavaBResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaBResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
-                if (ConfigHandler.enableLavaBFireResistance) {
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+
+                } else if (ConfigHandler.enableLavaBFireResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
                 }

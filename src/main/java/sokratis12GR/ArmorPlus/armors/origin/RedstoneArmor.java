@@ -121,7 +121,9 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneHSpeed) {
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+
+                } else if (ConfigHandler.enableRedstoneHSpeed) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
@@ -139,7 +141,9 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneCSpeed) {
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+
+                } else if (ConfigHandler.enableRedstoneCSpeed) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
@@ -157,7 +161,9 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneLSpeed) {
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+
+                } else if (ConfigHandler.enableRedstoneLSpeed) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }
@@ -175,7 +181,9 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneBSpeed) {
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+
+                } else if (ConfigHandler.enableRedstoneBSpeed) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
                 }

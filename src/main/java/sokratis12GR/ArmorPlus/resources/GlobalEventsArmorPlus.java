@@ -30,43 +30,43 @@ public class GlobalEventsArmorPlus {
         ItemStack itemStack = event.crafting;
 
 
-        //Guardian Armor Thorns
+        /**Guardian Armor Thorns*/
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(7), 3);
-        //Guardian Armor Unbreaking 3
+        /**Guardian Armor Unbreaking 3*/
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots || i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(34), 3);
-        //Full of Thorns! - Achievement Trigger
+        /**Full of Thorns! - Achievement Trigger*/
         if (i == GuardianArmor.helmet || i == GuardianArmor.chestplate || i == GuardianArmor.legs || i == GuardianArmor.boots)
             event.player.addStat(ARPAchievements.craftGuardianArmor, 1);
-        // Guardian Boots Enchantments
+        /** Guardian Boots Enchantments*/
         if (i == GuardianArmor.boots || i == TheUltimateArmor.boots)
             itemStack.addEnchantment(Enchantment.getEnchantmentByID(8), 3);
-        //Vision Like A Bat! - Achievement Trigger
+        /**Vision Like A Bat! - Achievement Trigger*/
         if (i == CoalArmor.helmet || i == CoalArmor.chestplate || i == CoalArmor.legs || i == CoalArmor.boots)
             event.player.addStat(ARPAchievements.craftCoalArmor, 1);
-        //Never Drown Again - Achievement Trigger
+        /**Never Drown Again - Achievement Trigger*/
         if (i == LapisArmor.helmet || i == LapisArmor.chestplate || i == LapisArmor.legs || i == LapisArmor.boots)
             event.player.addStat(ARPAchievements.craftLapisArmor, 1);
-        //Speeedy! - Achievement Trigger
+        /**Speeedy! - Achievement Trigger*/
         if (i == RedstoneArmor.helmet || i == RedstoneArmor.chestplate || i == RedstoneArmor.legs || i == RedstoneArmor.boots)
             event.player.addStat(ARPAchievements.craftRedstoneArmor, 1);
-        //Swing Swing Faster! - Achievement Trigger
+        /**Swing Swing Faster! - Achievement Trigger*/
         if (i == EmeraldArmor.helmet || i == EmeraldArmor.chestplate || i == EmeraldArmor.legs || i == EmeraldArmor.boots)
             event.player.addStat(ARPAchievements.craftEmeraldArmor, 1);
-        //Undestructable! - Achievement Trigger
+        /**Undestructable! - Achievement Trigger*/
         if (i == ObsidianArmor.helmet || i == ObsidianArmor.chestplate || i == ObsidianArmor.legs || i == ObsidianArmor.boots)
             event.player.addStat(ARPAchievements.craftObsidianArmor, 1);
-        //The Overpowered! - Achievement Trigger
+        /**The Overpowered! - Achievement Trigger*/
         if (i == LavaArmor.helmet || i == LavaArmor.chestplate || i == LavaArmor.legs || i == LavaArmor.boots)
             event.player.addStat(ARPAchievements.craftLavaArmor, 1);
-        //Godlike! - Achievement Trigger
+        /**Godlike! - Achievement Trigger*/
         if (i == SuperStarArmor.helmet || i == SuperStarArmor.chestplate || i == SuperStarArmor.legs || i == SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftSuperStarArmor, 1);
-        //The Power of the Ender Dragon! - Achievement Trigger
+        /**The Power of the Ender Dragon! - Achievement Trigger*/
         if (i == EnderDragonArmor.helmet || i == EnderDragonArmor.chestplate || i == EnderDragonArmor.legs || i == SuperStarArmor.boots)
             event.player.addStat(ARPAchievements.craftEnderDragonArmor, 1);
-        //The Ultimate Power! - Achievement Trigger
+        /**The Ultimate Power! - Achievement Trigger*/
         if (i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             event.player.addStat(ARPAchievements.craftTheUltimateArmor, 1);
     }
@@ -89,13 +89,72 @@ public class GlobalEventsArmorPlus {
                     entity.capabilities.isFlying = false;
                 }
             }
+            /**The Ultimate Armor Armor*/
             if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 if (entity instanceof EntityLivingBase)
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
                 if (entity instanceof EntityLivingBase)
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+            }
+            /**Full Super Star Armor*/
+            if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (head != null && head.getItem() == SuperStarArmor.helmet && chest != null && chest.getItem() == SuperStarArmor.chestplate && legs != null && legs.getItem() == SuperStarArmor.legs && feet != null && feet.getItem() == SuperStarArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
+                }
+            }
+            /**Full Coal Armor*/
+            if (ConfigHandler.enableFullCoalArmorEffect) {
+                if (head != null && head.getItem() == CoalArmor.helmet && chest != null && chest.getItem() == CoalArmor.chestplate && legs != null && legs.getItem() == CoalArmor.legs && feet != null && feet.getItem() == CoalArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                }
+            }
+            /**Full Lapis Armor*/
+            if (ConfigHandler.enableFullLapisArmorEffect) {
+                if (head != null && head.getItem() == LapisArmor.helmet && chest != null && chest.getItem() == LapisArmor.chestplate && legs != null && legs.getItem() == LapisArmor.legs && feet != null && feet.getItem() == LapisArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                }
+            }
+            /**Full Lava Armor*/
+            if (ConfigHandler.enableFullLavaArmorEffect) {
+                if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                }
+            }
+            /**Full Emerald Armor*/
+            if (ConfigHandler.enableFullLavaArmorEffect) {
+                if (head != null && head.getItem() == EmeraldArmor.helmet && chest != null && chest.getItem() == EmeraldArmor.chestplate && legs != null && legs.getItem() == EmeraldArmor.legs && feet != null && feet.getItem() == EmeraldArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
+                }
+            }
+            /**Full Obsidian Armor*/
+            if (ConfigHandler.enableFullObsidianArmorEffect) {
+                if (head != null && head.getItem() == ObsidianArmor.helmet && chest != null && chest.getItem() == ObsidianArmor.chestplate && legs != null && legs.getItem() == ObsidianArmor.legs && feet != null && feet.getItem() == ObsidianArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
+                }
+            }
+            /**Full Redstone Armor*/
+            if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                if (head != null && head.getItem() == RedstoneArmor.helmet && chest != null && chest.getItem() == RedstoneArmor.chestplate && legs != null && legs.getItem() == RedstoneArmor.legs && feet != null && feet.getItem() == RedstoneArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
+                }
+            }
+            /**Full Guardian Armor*/
+            if (ConfigHandler.enableFullGuardianArmorEffect) {
+                if (head != null && head.getItem() == GuardianArmor.helmet && chest != null && chest.getItem() == GuardianArmor.chestplate && legs != null && legs.getItem() == GuardianArmor.legs && feet != null && feet.getItem() == GuardianArmor.boots) {
+                    if (entity instanceof EntityLivingBase)
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                }
             }
         }
     }

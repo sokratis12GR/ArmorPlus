@@ -113,7 +113,9 @@ public class ObsidianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianHResistance) {
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+
+                } else if (ConfigHandler.enableObsidianHResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
@@ -131,7 +133,9 @@ public class ObsidianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianCResistance) {
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+
+                } else if (ConfigHandler.enableObsidianCResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
@@ -149,7 +153,9 @@ public class ObsidianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianLResistance) {
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+
+                } else if (ConfigHandler.enableObsidianLResistance) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));
                 }
@@ -167,7 +173,9 @@ public class ObsidianArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianBResistance) {
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+
+                } else if (ConfigHandler.enableObsidianBResistance) {
                     {
                         if (entity instanceof EntityLivingBase)
                             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, 0));

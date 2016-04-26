@@ -7,7 +7,9 @@ import java.io.File;
 public class ConfigHandler {
 
     public static Configuration config;
-    // Settings
+    /**
+     * Settings
+     */
     public static boolean enableCoalArmorRecipes;
     public static boolean enableLapisArmorRecipes;
     public static boolean enableRedstoneArmorRecipes;
@@ -20,33 +22,45 @@ public class ConfigHandler {
     public static boolean enableTheUltimateArmorRecipes;
     public static boolean enableReinforcedArmorsRecipes;
 
-    // Special Effects
-    // Coal Armor
+    /** Special Effects*/
+    /**
+     * Coal Armor
+     */
     public static boolean enableCoalHNightVision;
     public static boolean enableCoalCNightVision;
     public static boolean enableCoalLNightVision;
     public static boolean enableCoalBNightVision;
-    // Lapis Armor
+    /**
+     * Lapis Armor
+     */
     public static boolean enableLapisHBreathing;
     public static boolean enableLapisCBreathing;
     public static boolean enableLapisLBreathing;
     public static boolean enableLapisBBreathing;
-    // Redstone Armor
+    /**
+     * Redstone Armor
+     */
     public static boolean enableRedstoneHSpeed;
     public static boolean enableRedstoneCSpeed;
     public static boolean enableRedstoneLSpeed;
     public static boolean enableRedstoneBSpeed;
-    // Emerald Armor
+    /**
+     * Emerald Armor
+     */
     public static boolean enableEmeraldHHaste;
     public static boolean enableEmeraldCHaste;
     public static boolean enableEmeraldLHaste;
     public static boolean enableEmeraldBHaste;
-    // Obsidian Armor
+    /**
+     * Obsidian Armor
+     */
     public static boolean enableObsidianHResistance;
     public static boolean enableObsidianCResistance;
     public static boolean enableObsidianLResistance;
     public static boolean enableObsidianBResistance;
-    // Lava Armor
+    /**
+     * Lava Armor
+     */
     public static boolean enableLavaHResistance;
     public static boolean enableLavaHFireResistance;
     public static boolean enableLavaCResistance;
@@ -55,18 +69,37 @@ public class ConfigHandler {
     public static boolean enableLavaLFireResistance;
     public static boolean enableLavaBResistance;
     public static boolean enableLavaBFireResistance;
-    // Super Star Armor
+    /**
+     * Super Star Armor
+     */
     public static boolean enableSuperStarHRegen;
     public static boolean enableSuperStarCRegen;
     public static boolean enableSuperStarLRegen;
     public static boolean enableSuperStarBRegen;
-    // Flight Ability
+    /**
+     * Flight Ability
+     */
     public static boolean enableFlightAbility;
-    // Guardian Armor
+    /**
+     * Guardian Armor
+     */
     public static boolean enableGuardianHEffects;
     public static boolean enableGuardianCEffects;
     public static boolean enableGuardianLEffects;
     public static boolean enableGuardianBEffects;
+
+    /**
+     * Full Armor Effects
+     */
+    public static boolean enableFullSuperStarArmorEffect;
+    public static boolean enableFullGuardianArmorEffect;
+    public static boolean enableFullRedstoneArmorEffect;
+    public static boolean enableFullObsidianArmorEffect;
+    public static boolean enableFullLavaArmorEffect;
+    public static boolean enableFullEmeraldArmorEffect;
+    public static boolean enableFullLapisArmorEffect;
+    public static boolean enableFullCoalArmorEffect;
+
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -102,7 +135,7 @@ public class ConfigHandler {
                 "Enable/Disable The Reinforced Armors Recipes");
 
 
-        // Coal Armor
+        /** Coal Armor*/
         category = "CoalArmor";
         config.addCustomCategoryComment(category, "Coal Armor's Settings");
         enableCoalHNightVision = config.getBoolean("enableCoalHNightVision", category, true,
@@ -113,8 +146,11 @@ public class ConfigHandler {
                 "Enable/Disable The Coal Leggings NightVision");
         enableCoalBNightVision = config.getBoolean("enableCoalBNightVision", category, true,
                 "Enable/Disable The Coal Boots NightVision");
+        /**Full Coal Armor Effect*/
+        enableFullCoalArmorEffect = config.getBoolean("enableFullCoalArmorEffect", category, false,
+                "Enable/Disable The Full Coal Armor Effect");
 
-        // Lapis Armor
+        /** Lapis Armor*/
         category = "LapisArmor";
         config.addCustomCategoryComment(category, "Lapis Armor's Settings");
         enableLapisHBreathing = config.getBoolean("enableLapisHBreathing", category, true,
@@ -125,8 +161,11 @@ public class ConfigHandler {
                 "Enable/Disable The Lapis Leggings Water Breathing");
         enableLapisBBreathing = config.getBoolean("enableLapisBBreathing", category, true,
                 "Enable/Disable The Lapis Boots Water Breathing");
+        /**Full Lapis Armor Effect*/
+        enableFullLapisArmorEffect = config.getBoolean("enableFullLapisArmorEffect", category, false,
+                "Enable/Disable The Full Lapis Armor Effect");
 
-        // Redstone Armor
+        /** Redstone Armor*/
         category = "RedstoneArmor";
         config.addCustomCategoryComment(category, "Redstone Armor's Settings");
         enableRedstoneHSpeed = config.getBoolean("enableRedstoneHSpeed", category, true,
@@ -137,8 +176,12 @@ public class ConfigHandler {
                 "Enable/Disable The Redstone Leggings Speed");
         enableRedstoneBSpeed = config.getBoolean("enableRedstoneBSpeed", category, true,
                 "Enable/Disable The Redstone Boots Speed");
+        /**Full Redstone Armor Effect*/
+        enableFullRedstoneArmorEffect = config.getBoolean("enableFullRedstoneArmorEffect", category, false,
+                "Enable/Disable The Full Redstone Armor Effect");
 
-        // Emerald Armor
+
+        /** Emerald Armor*/
         category = "EmeraldArmor";
         config.addCustomCategoryComment(category, "Emerald Armor's Settings");
         enableEmeraldHHaste = config.getBoolean("enableEmeraldHHaste", category, true,
@@ -149,8 +192,12 @@ public class ConfigHandler {
                 "Enable/Disable The Emerald Leggings Haste");
         enableEmeraldBHaste = config.getBoolean("enableEmeraldBHaste", category, true,
                 "Enable/Disable The Emerald Boots Haste");
+        /**Full Emerald Armor Effect*/
+        enableFullEmeraldArmorEffect = config.getBoolean("enableFullEmeraldArmorEffect", category, false,
+                "Enable/Disable The Full Emerald Armor Effect");
 
-        // Obsidian Armor
+
+        /** Obsidian Armor*/
         category = "ObsidianArmor";
         config.addCustomCategoryComment(category, "Obsidian Armor's Settings");
         enableObsidianHResistance = config.getBoolean("enableObsidianHResistance", category, true,
@@ -161,11 +208,14 @@ public class ConfigHandler {
                 "Enable/Disable The Obsidian Leggings Resistance");
         enableObsidianBResistance = config.getBoolean("enableObsidianBResistance", category, true,
                 "Enable/Disable The Obsidian Boots Resistance");
+        /**Full Obsidian Armor Effect*/
+        enableFullObsidianArmorEffect = config.getBoolean("enableFullObsidianArmorEffect", category, false,
+                "Enable/Disable The Full Obsidian Armor Effect");
 
-        // Lava Armor
+        /** Lava Armor*/
         category = "LavaArmor";
         config.addCustomCategoryComment(category, "Lava Armor's Settings");
-        // Lava Armor Resistance
+        /** Lava Armor Resistance*/
         enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
                 "Enable/Disable The Lava Helmet Resistance");
         enableLavaCResistance = config.getBoolean("enableLavaCResistance", category, true,
@@ -174,7 +224,7 @@ public class ConfigHandler {
                 "Enable/Disable The Lava Leggings Resistance");
         enableLavaBResistance = config.getBoolean("enableLavaBResistance", category, true,
                 "Enable/Disable The Lava Boots Resistance");
-        // Lava Armor FireResistance
+        /** Lava Armor FireResistance*/
         enableLavaHFireResistance = config.getBoolean("enableLavaHFireResistance", category, true,
                 "Enable/Disable The Lava Helmet FireResistance");
         enableLavaCFireResistance = config.getBoolean("enableLavaCFireResistance", category, true,
@@ -183,8 +233,11 @@ public class ConfigHandler {
                 "Enable/Disable The Lava Leggings FireResistance");
         enableLavaBFireResistance = config.getBoolean("enableLavaBFireResistance", category, true,
                 "Enable/Disable The Lava Boots FireResistance");
+        /**Full Lava Armor Effect*/
+        enableFullLavaArmorEffect = config.getBoolean("enableFullLavaArmorEffect", category, false,
+                "Enable/Disable The Full Lava Armor Effect");
 
-        // Super Star Armor
+        /** Super Star Armor*/
         category = "SuperStarArmor";
         config.addCustomCategoryComment(category, "Super Star Armor's Settings");
         enableSuperStarHRegen = config.getBoolean("enableSuperStarHRegen", category, true,
@@ -195,6 +248,9 @@ public class ConfigHandler {
                 "Enable/Disable The Super Star Leggings Regeneration");
         enableSuperStarBRegen = config.getBoolean("enableSuperStarBRegen", category, true,
                 "Enable/Disable The Super Star Boots Regeneration");
+        /**Full Super Star Armor Effect*/
+        enableFullSuperStarArmorEffect = config.getBoolean("enableFullSuperStarArmorEffect", category, false,
+                "Enable/Disable The Full Super Star Armor Effect");
 
         category = "GuardianArmor";
         config.addCustomCategoryComment(category, "Guardian Armor's Settings");
@@ -206,8 +262,12 @@ public class ConfigHandler {
                 "Enable/Disable Guardian Leggings Effects");
         enableGuardianBEffects = config.getBoolean("enableGuardianBEffects", category, true,
                 "Enable/Disable Guardian Boots Effects");
+        /**Full Guardian Armor Effect*/
+        enableFullGuardianArmorEffect = config.getBoolean("enableFullGuardianArmorEffect", category, false,
+                "Enable/Disable The Full Guardian Armor Effect");
 
-        // Flight Ability
+
+        /** Flight Ability*/
         category = "FlightAbility";
         config.addCustomCategoryComment(category, "Flight Ability's Settings");
         enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Armors Flight");

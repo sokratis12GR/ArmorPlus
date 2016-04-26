@@ -116,7 +116,9 @@ public class EmeraldArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldHHaste) {
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+
+                } else if (ConfigHandler.enableEmeraldHHaste) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
                 }
@@ -135,7 +137,9 @@ public class EmeraldArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldCHaste) {
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+
+                } else if (ConfigHandler.enableEmeraldCHaste) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
                 }
@@ -154,7 +158,9 @@ public class EmeraldArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldLHaste) {
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+
+                } else if (ConfigHandler.enableEmeraldLHaste) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
                 }
@@ -173,7 +179,9 @@ public class EmeraldArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldBHaste) {
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+
+                } else if (ConfigHandler.enableEmeraldBHaste) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1));
                 }

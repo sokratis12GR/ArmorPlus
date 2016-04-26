@@ -114,7 +114,10 @@ public class CoalArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalHNightVision) {
+               if (ConfigHandler.enableFullCoalArmorEffect) {
+
+               }
+                else if (ConfigHandler.enableCoalHNightVision) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
                 }
@@ -133,7 +136,10 @@ public class CoalArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalCNightVision) {
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+
+                }
+                else if (ConfigHandler.enableCoalCNightVision) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
                 }
@@ -152,7 +158,10 @@ public class CoalArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalLNightVision) {
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+
+                }
+                else if (ConfigHandler.enableCoalLNightVision) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
                 }
@@ -171,7 +180,10 @@ public class CoalArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalBNightVision) {
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+
+                }
+                else if (ConfigHandler.enableCoalBNightVision) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
                 }

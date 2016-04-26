@@ -95,9 +95,11 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarHRegen) {
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+
+                } else if (ConfigHandler.enableSuperStarHRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
                 }
             }
 
@@ -113,9 +115,11 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarCRegen) {
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+
+                } else if (ConfigHandler.enableSuperStarCRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
                 }
             }
 
@@ -131,9 +135,11 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarLRegen) {
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+
+                } else if (ConfigHandler.enableSuperStarLRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
                 }
             }
 
@@ -149,9 +155,11 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarBRegen) {
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+
+                } else if (ConfigHandler.enableSuperStarBRegen) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 2));
                 }
             }
 

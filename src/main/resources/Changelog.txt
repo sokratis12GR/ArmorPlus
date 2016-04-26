@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.3-1.9
+{Features Added}
+* Added full set effects in the config file (You don't have to make the others to false, but it is recommended that you make all the other pieces from true to false)
+{Features Changed}
+* Super Star and The Ultimate Armor Regeneration has Increased to level 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.2-1.9
 {Bugs Fixed}
 * An Error When Launching Minecraft

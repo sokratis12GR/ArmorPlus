@@ -41,7 +41,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.9.2-1.9";
+    public static final String VERSION = "1.9.3-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -101,7 +101,7 @@ public class ArmorPlus {
         RDArmor.load(event);
         RCArmor.load(event);
         ARPAchievements.init();
-        //Crafting Recipes
+        /**Crafting Recipes*/
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new Object[]
                     {new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1),
@@ -116,7 +116,7 @@ public class ArmorPlus {
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
                             new ItemStack(GuardianArmor.boots, 1),});
         }
-        // Chainmail Armor Recipes
+        /** Chainmail Armor Recipes*/
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
                 {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('4'),
                         new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),
@@ -148,10 +148,10 @@ public class ArmorPlus {
                 {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'),
                         new ItemStack(ModItems.Chainmail, 1), Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1),
                         Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),});
-        // Chainmail (Item) Recipe
+        /** Chainmail (Item) Recipe*/
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.Chainmail, 4), new Object[]
                 {new ItemStack(Items.iron_ingot, 1), new ItemStack(Items.iron_ingot, 1),});
-        // Reinforcing Material (Item) Recipe
+        /** Reinforcing Material (Item) Recipe*/
         GameRegistry.addRecipe(new ItemStack(ModItems.ReinforcingMaterial, 2), new Object[]
                 {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.string, 1), Character.valueOf('B'),
                         new ItemStack(Items.slime_ball, 1),});
@@ -203,8 +203,7 @@ public class ArmorPlus {
     }
 
     @EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
+    public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandArmorPlus());
     }
 

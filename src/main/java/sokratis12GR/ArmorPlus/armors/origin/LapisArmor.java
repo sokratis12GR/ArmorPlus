@@ -114,7 +114,9 @@ public class LapisArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisHBreathing) {
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+
+                } else if (ConfigHandler.enableLapisHBreathing) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
@@ -132,7 +134,9 @@ public class LapisArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisCBreathing) {
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+
+                } else if (ConfigHandler.enableLapisCBreathing) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
@@ -150,7 +154,9 @@ public class LapisArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisLBreathing) {
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+
+                } else if (ConfigHandler.enableLapisLBreathing) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
@@ -168,7 +174,9 @@ public class LapisArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisBBreathing) {
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+
+                } else if (ConfigHandler.enableLapisBBreathing) {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
                 }
