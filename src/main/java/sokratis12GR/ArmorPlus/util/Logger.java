@@ -45,7 +45,7 @@ public class Logger {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.txt"), "utf-8"));
-            writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't Modify Or Delete These Files: " + "ArmorPlus.txt" + ", " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]" );
+            writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't Modify Or Delete These Files: " + "ArmorPlus.txt" + ", " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]");
         } catch (IOException ex) {
             // report
         } finally {
@@ -54,5 +54,4 @@ public class Logger {
             } catch (Exception ex) {/*ignore*/}
         }
     }
-
 }

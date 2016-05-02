@@ -1,4 +1,14 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.0-1.9
+{Features Changed}
+* Super Star and The Ultimate Armor's Regeneration is back to 2 (Being too OP)
+* New Textures for the Super Star Armor
+{Features Added}
+* Added the Ability to set the effect's amplifier level
+{Bugs Fixed}
+* Some Config Glitches
+* Some Rare Crashes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.3-1.9
 {Features Added}
 * Added full set effects in the config file (You don't have to make the others to false, but it is recommended that you make all the other pieces from true to false)

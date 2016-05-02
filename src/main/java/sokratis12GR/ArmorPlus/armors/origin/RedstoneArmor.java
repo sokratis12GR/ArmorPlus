@@ -121,11 +121,8 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
-
-                } else if (ConfigHandler.enableRedstoneHSpeed) {
-                    if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
+                if (ConfigHandler.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel));
                 }
             }
 
@@ -141,11 +138,8 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
-
-                } else if (ConfigHandler.enableRedstoneCSpeed) {
-                    if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
+                if (ConfigHandler.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel));
                 }
             }
 
@@ -161,11 +155,8 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
-
-                } else if (ConfigHandler.enableRedstoneLSpeed) {
-                    if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
+                if (ConfigHandler.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel));
                 }
             }
 
@@ -181,11 +172,8 @@ public class RedstoneArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
-
-                } else if (ConfigHandler.enableRedstoneBSpeed) {
-                    if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, 1));
+                if (ConfigHandler.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel));
                 }
             }
 

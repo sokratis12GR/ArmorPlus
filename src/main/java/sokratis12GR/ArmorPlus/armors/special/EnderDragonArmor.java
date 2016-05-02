@@ -111,6 +111,7 @@ public class EnderDragonArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == ModItems.EnderDragonScale;
             }
@@ -122,9 +123,10 @@ public class EnderDragonArmor {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
             }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-            {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == ModItems.EnderDragonScale;
             }
@@ -136,10 +138,10 @@ public class EnderDragonArmor {
                 tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
             }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-            {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == ModItems.EnderDragonScale;
             }
@@ -153,8 +155,8 @@ public class EnderDragonArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
-
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == ModItems.EnderDragonScale;
             }

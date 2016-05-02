@@ -100,6 +100,17 @@ public class ConfigHandler {
     public static boolean enableFullLapisArmorEffect;
     public static boolean enableFullCoalArmorEffect;
 
+    /**
+     * Origin Armors Effect Level
+     */
+    public static int coalArmorEffectlevel;
+    public static int emeraldArmorEffectlevel;
+    public static int lapisArmorEffectlevel;
+    public static int lavaRArmorEffectlevel;
+    public static int lavaFRArmorEffectlevel;
+    public static int obsidianArmorEffectlevel;
+    public static int redstoneArmorEffectlevel;
+
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -272,8 +283,18 @@ public class ConfigHandler {
         config.addCustomCategoryComment(category, "Flight Ability's Settings");
         enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Armors Flight");
 
+        category = "EffectLevel";
+        config.addCustomCategoryComment(category, "Armors Effect's Level Settings");
+        coalArmorEffectlevel = config.getInt("coalArmorEffectlevel", category, 0, 0, 10, "Set the level of the Night Vision effect by the Coal Armor 0-10");
+        emeraldArmorEffectlevel = config.getInt("emeraldArmorEffectlevel", category, 1, 0, 10, "Set the level of the Haste effect by the Emerald Armor 0-10");
+        lapisArmorEffectlevel = config.getInt("lapisArmorEffectlevel", category, 0, 0, 10, "Set the level of the Water Breathing effect by the Lapis Armor 0-10");
+        obsidianArmorEffectlevel = config.getInt("obsidianArmorEffectlevel", category, 0, 0, 10, "Set the level of the Resistance effect by the Obsidian Armor 0-10");
+        redstoneArmorEffectlevel = config.getInt("redstoneArmorEffectlevel", category, 1, 0, 10, "Set the level of the Swiftness effect by the Redstone Armor 0-10");
+        /** Lava Armor Effects */
+        lavaRArmorEffectlevel = config.getInt("lavaRArmorEffectlevel", category, 0, 0, 10, "Set the level of the Resistance effect by the Lava Armor 0-10");
+        lavaFRArmorEffectlevel = config.getInt("lavaFRArmorEffectlevel", category, 0, 0, 10, "Set the level of the Fire Resistance effect by the Lava Armor 0-10");
+
         if (config.hasChanged())
             config.save();
     }
-
 }
