@@ -3,6 +3,11 @@ package sokratis12GR.ArmorPlus.util;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.armors.origin.*;
+import sokratis12GR.ArmorPlus.armors.special.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.*;
+import sokratis12GR.ArmorPlus.items.*;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 
 import java.io.*;
 
@@ -46,6 +51,31 @@ public class Logger {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.txt"), "utf-8"));
             writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't Modify Or Delete These Files: " + "ArmorPlus.txt" + ", " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]");
+        } catch (IOException ex) {
+            // report
+        } finally {
+            try {
+                writer.close();
+            } catch (Exception ex) {/*ignore*/}
+        }
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlusItems.txt"), "utf-8"));
+            writer.write("1. Coal Armor: " + CoalArmor.helmet.getRegistryName() + " , " + CoalArmor.chestplate.getRegistryName() + " , " + CoalArmor.legs.getRegistryName() + " , " + CoalArmor.boots.getRegistryName());
+            writer.write("\n\n2. Lapis Armor: " + LapisArmor.helmet.getRegistryName() + " , " + LapisArmor.chestplate.getRegistryName() + " , " + LapisArmor.legs.getRegistryName() + " , " + LapisArmor.boots.getRegistryName());
+            writer.write("\n\n3. Redstone Armor: " + RedstoneArmor.helmet.getRegistryName() + " , " + RedstoneArmor.chestplate.getRegistryName() + " , " + RedstoneArmor.legs.getRegistryName() + " , " + RedstoneArmor.boots.getRegistryName());
+            writer.write("\n\n4. Emerald Armor: " + EmeraldArmor.helmet.getRegistryName() + " , " + EmeraldArmor.chestplate.getRegistryName() + " , " + EmeraldArmor.legs.getRegistryName() + " , " + EmeraldArmor.boots.getRegistryName());
+            writer.write("\n\n5. Obsidian Armor: " + ObsidianArmor.helmet.getRegistryName() + " , " + ObsidianArmor.chestplate.getRegistryName() + " , " + ObsidianArmor.legs.getRegistryName() + " , " + ObsidianArmor.boots.getRegistryName());
+            writer.write("\n\n6. Lava Armor: " + LavaArmor.helmet.getRegistryName() + " , " + LavaArmor.chestplate.getRegistryName() + " , " + LavaArmor.legs.getRegistryName() + " , " + LavaArmor.boots.getRegistryName());
+            writer.write("\n\n7. Guardian Armor: " + GuardianArmor.helmet.getRegistryName() + " , " + GuardianArmor.chestplate.getRegistryName() + " , " + GuardianArmor.legs.getRegistryName() + " , " + GuardianArmor.boots.getRegistryName());
+            writer.write("\n\n8. Super Star Armor: " + SuperStarArmor.helmet.getRegistryName() + " , " + SuperStarArmor.chestplate.getRegistryName() + " , " + SuperStarArmor.legs.getRegistryName() + " , " + SuperStarArmor.boots.getRegistryName());
+            writer.write("\n\n9. Ender Dragon Armor: " + EnderDragonArmor.helmet.getRegistryName() + " , " + EnderDragonArmor.chestplate.getRegistryName() + " , " + EnderDragonArmor.legs.getRegistryName() + " , " + EnderDragonArmor.boots.getRegistryName());
+            writer.write("\n\n10. The Ultimate Armor: " + TheUltimateArmor.helmet.getRegistryName() + " , " + TheUltimateArmor.chestplate.getRegistryName() + " , " + TheUltimateArmor.legs.getRegistryName() + " , " + TheUltimateArmor.boots.getRegistryName());
+            writer.write("\n\n11. Reinforced Gold Armor: " + RGArmor.helmet.getRegistryName() + " , " + RGArmor.chestplate.getRegistryName() + " , " + RGArmor.legs.getRegistryName() + " , " + RGArmor.boots.getRegistryName());
+            writer.write("\n\n12. Reinforced Chain Armor: " + RCArmor.helmet.getRegistryName() + " , " + RCArmor.chestplate.getRegistryName() + " , " + RCArmor.legs.getRegistryName() + " , " + RCArmor.boots.getRegistryName());
+            writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
+            writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
+            writer.write("\n\nItems: " + ModItems.Chainmail.getRegistryName() + " , " + ModItems.EnderDragonScale.getRegistryName() + " , " + ModItems.ReinforcingMaterial.getRegistryName());
         } catch (IOException ex) {
             // report
         } finally {

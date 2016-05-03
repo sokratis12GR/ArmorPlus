@@ -109,7 +109,8 @@ public class ObsidianArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
+                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -126,7 +127,8 @@ public class ObsidianArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
+                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -143,7 +145,8 @@ public class ObsidianArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
+                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -160,7 +163,8 @@ public class ObsidianArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance"));
+                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

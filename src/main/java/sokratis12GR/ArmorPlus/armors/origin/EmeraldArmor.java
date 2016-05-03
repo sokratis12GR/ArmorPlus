@@ -112,7 +112,8 @@ public class EmeraldArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
+                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -130,7 +131,8 @@ public class EmeraldArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
+                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -148,7 +150,8 @@ public class EmeraldArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
+                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -166,7 +169,8 @@ public class EmeraldArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste 2"));
+                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

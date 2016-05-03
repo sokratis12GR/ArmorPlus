@@ -1,4 +1,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.1-1.9
+{Features Removed}
+* Removed the ability to set level for the coal armor because there is no reason to increase the night vision it works the same at any level
+* Removed the ability to set level for the lapis armor reason like the above
+{Features Changed}
+* The Tools Tips will update with the set values for the effects
+* The Repair cost for the Super Star Armors is now Obsidian instead of Nether Star
+{Features Added}
+* Added the Ability to set the effect's amplifier level for the Super Star & The Ultimate Armor Regeneration
+* Added a new feature that creates a file with all the items ids from ArmorPlus
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.0-1.9
 {Features Changed}
 * Super Star and The Ultimate Armor's Regeneration is back to 2 (Being too OP)

@@ -11,11 +11,9 @@ import java.util.Random;
  * Created by Socrates on 4/4/2016.
  */
 public class MobDrops {
-        @SubscribeEvent
-    public void playerKilledEnderDragon(LivingDropsEvent event)
-    {
-        if(event.getEntity() instanceof EntityDragon)
-        {
+    @SubscribeEvent
+    public void playerKilledEnderDragon(LivingDropsEvent event) {
+        if (event.getEntity() instanceof EntityDragon) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.EnderDragonScale, 12);
         }
     }

@@ -3,6 +3,7 @@ package sokratis12GR.ArmorPlus.armors.special;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -38,14 +39,14 @@ public class SuperStarArmor {
 
     public void load(FMLInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
-                ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                        new ModelResourceLocation("armorplus:SuperStarHelmet", "inventory"));
-                ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                        new ModelResourceLocation("armorplus:SuperStarChestplate", "inventory"));
-                ModelLoader.setCustomModelResourceLocation(legs, 0,
-                        new ModelResourceLocation("armorplus:SuperStarLeggings", "inventory"));
-                ModelLoader.setCustomModelResourceLocation(boots, 0,
-                        new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:SuperStarHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:SuperStarChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:SuperStarLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
         }
         if (ConfigHandler.enableSuperStarArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
@@ -91,68 +92,72 @@ public class SuperStarArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.nether_star;
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("SuperStarHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.nether_star;
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("SuperStarChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarLRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.nether_star;
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("SuperStarLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration"));
+                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
+                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, 1));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.nether_star;
+                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
             }
         }).setUnlocalizedName("SuperStarBoots");
         boots.setMaxStackSize(1);
