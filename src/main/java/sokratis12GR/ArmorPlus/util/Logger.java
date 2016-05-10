@@ -8,6 +8,7 @@ import sokratis12GR.ArmorPlus.armors.special.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.items.*;
 import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 import java.io.*;
 
@@ -76,6 +77,17 @@ public class Logger {
             writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
             writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
             writer.write("\n\nItems: " + ModItems.Chainmail.getRegistryName() + " , " + ModItems.EnderDragonScale.getRegistryName() + " , " + ModItems.ReinforcingMaterial.getRegistryName());
+        } catch (IOException ex) {
+            // report
+        } finally {
+            try {
+                writer.close();
+            } catch (Exception ex) {/*ignore*/}
+        }
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(ArmorPlus.textureDir.getPath() + "/" + "README.txt"), "utf-8"));
+            writer.write("THIS FEATURE IS WIP AND DOESN'T CURRENTLY WORK" + "To Create custom textures for the custom armor you need to create 2 image files with the names \n" + "CustomArmor_layer_1.png\n" + "CustomArmor_layer_2.png\n" + "Here is an example of both files: \n" + "http://i.imgur.com/T24FrdX.png\n" + "http://i.imgur.com/k5QGOba.png \n" + "By sokratis12GR");
         } catch (IOException ex) {
             // report
         } finally {

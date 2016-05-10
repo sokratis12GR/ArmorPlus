@@ -21,6 +21,7 @@ public class ConfigHandler {
     public static boolean enableGuardianArmorRecipes;
     public static boolean enableTheUltimateArmorRecipes;
     public static boolean enableReinforcedArmorsRecipes;
+    public static boolean enableCustomArmorRecipes;
 
     /** Special Effects*/
     /**
@@ -114,6 +115,17 @@ public class ConfigHandler {
     public static int superstarArmorEffectlevel;
     public static int ultimateArmorEffectlevel;
 
+    /**
+     * Custom Armor
+     */
+    public static int customHelmetProtection;
+    public static int customChestplateProtection;
+    public static int customLeggingsProtection;
+    public static int customBootsProtection;
+    public static int customArmorDurability;
+    public static String customArmorRecipe;
+    public static int customArmorProtection;
+
     public static void init(File file) {
         config = new Configuration(file);
 
@@ -146,6 +158,8 @@ public class ConfigHandler {
                 "Enable/Disable The Ultimate Armor Recipes");
         enableReinforcedArmorsRecipes = config.getBoolean("enableReinforcedArmorsRecipes", category, true,
                 "Enable/Disable The Reinforced Armors Recipes");
+        enableCustomArmorRecipes = config.getBoolean("enableCustomArmorRecipes", category, true,
+                "Enable/Disable The Custom Armors Recipes");
 
 
         /** Coal Armor*/
@@ -296,6 +310,19 @@ public class ConfigHandler {
         superstarArmorEffectlevel = config.getInt("superstarArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by the Super Star Armor.");
         /** The Ultimate Armor Effects */
         ultimateArmorEffectlevel = config.getInt("ultimateArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by The Ultimate Armor.");
+
+        /** Custom Armor */
+        category = "CustomArmor";
+        config.addCustomCategoryComment(category, "Custom Armor Settings");
+        customArmorDurability = config.getInt("customArmorDurability", category, 1, 1, 1000, "Set durability for the Custom Armor");
+        customHelmetProtection = config.getInt("customHelmetProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Helmet");
+        customChestplateProtection = config.getInt("customChestplateProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Chestplate");
+        customLeggingsProtection = config.getInt("customLeggingsProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Leggings");
+        customBootsProtection = config.getInt("customBootsProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Boots");
+
+        //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
+        //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)
+        //config.getString(String name, String category, String defaultValue, String comment, String[] validValues, String langKey);
 
         if (config.hasChanged())
             config.save();

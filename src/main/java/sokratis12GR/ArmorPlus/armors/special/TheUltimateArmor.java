@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
@@ -40,12 +41,12 @@ public class TheUltimateArmor {
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "TheUltimateLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "TheUltimateBoots", "inventory"));
-                helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-                chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-                legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-                boots.setCreativeTab(ArmorPlus.tabArmorPlus);
-            }
+            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
+            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
+            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
+            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
         }
+    }
 
     public void preInit(FMLPreInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
@@ -75,6 +76,19 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
         }).setUnlocalizedName("TheUltimateHelmet");
         helmet.setMaxStackSize(1);
@@ -85,6 +99,19 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
         }).setUnlocalizedName("TheUltimateChestplate");
         chestplate.setMaxStackSize(1);
@@ -95,6 +122,19 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
         }).setUnlocalizedName("TheUltimateLeggings");
         legs.setMaxStackSize(1);
@@ -105,6 +145,19 @@ public class TheUltimateArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
         }).setUnlocalizedName("TheUltimateBoots");
         boots.setMaxStackSize(1);

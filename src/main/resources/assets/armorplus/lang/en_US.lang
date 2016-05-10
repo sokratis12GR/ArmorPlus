@@ -97,6 +97,12 @@ item.RCChestplate.name=Reinforced Chain Chestplate
 item.RCLeggings.name=Reinforced Chain Leggings
 item.RCBoots.name=Reinforced Chain Boots
 
+#CustomArmor
+item.CustomHelmet.name=Custom Helmet (WIP)
+item.CustomChestplate.name=Custom Chestplate (WIP)
+item.CustomLeggings.name=Custom Leggings (WIP)
+item.CustomBoots.name=Custom Boots (WIP)
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece

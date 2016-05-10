@@ -20,6 +20,7 @@ public class ClientProxy extends CommonProxy {
         ins.RGArmor.registerRenderers();
         ins.RDArmor.registerRenderers();
         ins.RCArmor.registerRenderers();
+        ins.CustomArmor.registerRenderers();
         ModItems.initModels();
     }
 }

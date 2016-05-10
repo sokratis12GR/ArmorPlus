@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.11.0-1.9
+{Features Added}
+* Custom Armor (WIP) (WARNING: Don't Use!)
+{Bugs Fixed}
+* Fixed Flight Ability Disabling other mods flight
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.1-1.9
 {Features Removed}
 * Removed the ability to set level for the coal armor because there is no reason to increase the night vision it works the same at any level

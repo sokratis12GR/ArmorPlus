@@ -32,6 +32,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("EffectLevel".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("CustomArmor".toLowerCase())));
         return list;
     }
 }

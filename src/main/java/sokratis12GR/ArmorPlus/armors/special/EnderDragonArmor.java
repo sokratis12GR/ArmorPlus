@@ -109,7 +109,18 @@ public class EnderDragonArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+                    if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -124,7 +135,18 @@ public class EnderDragonArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+                    if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -139,7 +161,18 @@ public class EnderDragonArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+                    if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -154,7 +187,18 @@ public class EnderDragonArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+                if (ConfigHandler.enableFlightAbility) {
+                    if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.allowFlying = true;
+                    } else {
+                        entity.capabilities.isFlying = false;
+                        entity.capabilities.allowFlying = false;
+                    }
+                }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

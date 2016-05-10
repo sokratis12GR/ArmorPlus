@@ -11,6 +11,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -84,14 +85,16 @@ public class GlobalEventsArmorPlus {
             ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
             ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-            if (ConfigHandler.enableFlightAbility) {
-                if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-                    entity.capabilities.allowFlying = true;
-                } else {
-                    entity.capabilities.isFlying = false;
-                    entity.capabilities.allowFlying = false;
-                }
-            }
+            /**
+             if (ConfigHandler.enableFlightAbility) {
+             if (head != null && head.getItem() == EnderDragonArmor.helmet && chest != null && chest.getItem() == EnderDragonArmor.chestplate && legs != null && legs.getItem() == EnderDragonArmor.legs && feet != null && feet.getItem() == EnderDragonArmor.boots || head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+             entity.capabilities.allowFlying = true;
+             } else {
+             entity.capabilities.isFlying = false;
+             entity.capabilities.allowFlying = false;
+             }
+             }
+             */
             /**The Ultimate Armor Armor*/
             if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 if (entity instanceof EntityLivingBase)

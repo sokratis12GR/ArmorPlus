@@ -1,12 +1,10 @@
 package sokratis12GR.ArmorPlus;
 
-import net.minecraft.command.ServerCommand;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -20,10 +18,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.*;
+import sokratis12GR.ArmorPlus.armors.custom.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
@@ -41,7 +37,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.10.1-1.9";
+    public static final String VERSION = "1.11.0-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -51,19 +47,19 @@ public class ArmorPlus {
 
     public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
-    private GuiHandler GuiHandler = new GuiHandler();
+    public GuiHandler GuiHandler = new GuiHandler();
 
     @Instance(MODID)
     public static ArmorPlus instance;
-    private static File configDir;
-    private static File loggerDir;
+    public static File configDir;
+    public static File textureDir;
 
     public static File getConfigDir() {
         return configDir;
     }
 
     public static File getloggerDir() {
-        return loggerDir;
+        return textureDir;
     }
 
     CoalArmor CoalArmor = new CoalArmor();
@@ -80,6 +76,7 @@ public class ArmorPlus {
     RGArmor RGArmor = new RGArmor();
     RDArmor RDArmor = new RDArmor();
     RCArmor RCArmor = new RCArmor();
+    CustomArmor CustomArmor = new CustomArmor();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -100,6 +97,7 @@ public class ArmorPlus {
         RGArmor.load(event);
         RDArmor.load(event);
         RCArmor.load(event);
+        CustomArmor.load(event);
         ARPAchievements.init();
         /**Crafting Recipes*/
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
@@ -175,6 +173,7 @@ public class ArmorPlus {
         RGArmor.instance = ArmorPlus.instance;
         RDArmor.instance = ArmorPlus.instance;
         RCArmor.instance = ArmorPlus.instance;
+        CustomArmor.instance = ArmorPlus.instance;
         CoalArmor.preInit(event);
         LapisArmor.preInit(event);
         RedstoneArmor.preInit(event);
@@ -189,9 +188,12 @@ public class ArmorPlus {
         RGArmor.preInit(event);
         RDArmor.preInit(event);
         RCArmor.preInit(event);
+        CustomArmor.preInit(event);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
+        textureDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID + "/" + "textures/models/armor");
+        textureDir.mkdirs();
         sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
