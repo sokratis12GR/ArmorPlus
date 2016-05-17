@@ -98,7 +98,7 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
@@ -116,7 +116,7 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
@@ -134,7 +134,7 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarLRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
@@ -152,7 +152,7 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 

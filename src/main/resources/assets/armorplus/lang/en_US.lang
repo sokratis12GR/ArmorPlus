@@ -103,6 +103,36 @@ item.CustomChestplate.name=Custom Chestplate (WIP)
 item.CustomLeggings.name=Custom Leggings (WIP)
 item.CustomBoots.name=Custom Boots (WIP)
 
+#CobaltArmor
+item.CobaltHelmet.name=Cobalt Helmet
+item.CobaltChestplate.name=Cobalt Chestplate
+item.CobaltLeggings.name=Cobalt Leggings
+item.CobaltBoots.name=Cobalt Boots
+
+#ArditeArmor
+item.ArditeHelmet.name=Ardite Helmet
+item.ArditeChestplate.name=Ardite Chestplate
+item.ArditeLeggings.name=Ardite Leggings
+item.ArditeBoots.name=Ardite Boots
+
+#PigIronArmor
+item.PigIronHelmet.name=PigIron Helmet
+item.PigIronChestplate.name=PigIron Chestplate
+item.PigIronLeggings.name=PigIron Leggings
+item.PigIronBoots.name=PigIron Boots
+
+#KingSlimeArmor
+item.KingSlimeHelmet.name=KingSlime Helmet
+item.KingSlimeChestplate.name=KingSlime Chestplate
+item.KingSlimeLeggings.name=KingSlime Leggings
+item.KingSlimeBoots.name=KingSlime Boots
+
+#ManyullynArmor
+item.ManyullymHelmet.name=Manyullym Helmet
+item.ManyullymChestplate.name=Manyullym Chestplate
+item.ManyullymLeggings.name=Manyullym Leggings
+item.ManyullymBoots.name=Manyullym Boots
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece

@@ -97,10 +97,10 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaHFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
                 }
             }
 
@@ -118,10 +118,11 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaCFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
+
                 }
             }
 
@@ -139,10 +140,10 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaLFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
                 }
             }
 
@@ -160,10 +161,10 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaBFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
                 }
             }
 

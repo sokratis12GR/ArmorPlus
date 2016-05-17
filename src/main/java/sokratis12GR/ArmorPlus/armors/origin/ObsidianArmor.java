@@ -115,7 +115,7 @@ public class ObsidianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -133,7 +133,7 @@ public class ObsidianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -151,7 +151,7 @@ public class ObsidianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -169,7 +169,7 @@ public class ObsidianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 

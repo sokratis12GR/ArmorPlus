@@ -5,17 +5,20 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.Loader;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.CoalArmor;
 
 import java.util.Collections;
 import java.util.List;
 
-public class CommandArmorPlus implements ICommand
-{
+public class CommandArmorPlus implements ICommand {
+    private boolean aBoolean;
+
     @Override
     public String getCommandUsage(ICommandSender sender) {
         return "armorplus";
@@ -32,15 +35,14 @@ public class CommandArmorPlus implements ICommand
      * @param server The Minecraft server instance
      * @param sender The command sender who we are checking permission on
      */
-    public boolean checkPermission(MinecraftServer server, ICommandSender sender)
-    {
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return true;
     }
+
     /**
      * Gets the name of the command
      */
-    public String getCommandName()
-    {
+    public String getCommandName() {
         return "armorplus";
     }
 
@@ -59,24 +61,24 @@ public class CommandArmorPlus implements ICommand
     public int compareTo(ICommand o) {
         return 0;
     }
+
     /**
      * Callback for when the command is executed
      *
      * @param server The Minecraft server instance
      * @param sender The source of the command invocation
-     * @param args The arguments that were passed
+     * @param args   The arguments that were passed
      */
-    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
-    {
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.RED + "[Thank You " + sender.getName() + " For Using " + ArmorPlus.MODNAME + "]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
-        if (sender == server)
-        {
+        sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct"));
+        sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
+        if (sender == server) {
             sender.addChatMessage(new TextComponentString("[" + "Minecraft Version" + " (" + server.getMinecraftVersion() + ")" + "]"));
-        }
-        else {
-            return ;
+        } else {
+            return;
         }
     }
 }

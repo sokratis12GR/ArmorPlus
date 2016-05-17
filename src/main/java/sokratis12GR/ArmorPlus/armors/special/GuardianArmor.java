@@ -112,7 +112,7 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianHEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -129,7 +129,7 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianCEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -146,7 +146,7 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianLEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -163,7 +163,7 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianBEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 

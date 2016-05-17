@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -20,11 +21,14 @@ import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.armors.special.*;
 import sokratis12GR.ArmorPlus.armors.custom.*;
+import sokratis12GR.ArmorPlus.armors.tconstruct.ArditeArmor;
+import sokratis12GR.ArmorPlus.armors.tconstruct.ManyullymArmor;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.*;
+import sokratis12GR.ArmorPlus.armors.tconstruct.CobaltArmor;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -37,7 +41,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.11.0-1.9";
+    public static final String VERSION = "1.12.1-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -78,6 +82,11 @@ public class ArmorPlus {
     RCArmor RCArmor = new RCArmor();
     CustomArmor CustomArmor = new CustomArmor();
 
+    /** Tinkers' Construct Armors */
+    CobaltArmor CobaltArmor = new CobaltArmor();
+    ArditeArmor ArditeArmor = new ArditeArmor();
+    ManyullymArmor ManyullymArmor = new ManyullymArmor();
+
     @EventHandler
     public void init(FMLInitializationEvent event) {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
@@ -98,6 +107,12 @@ public class ArmorPlus {
         RDArmor.load(event);
         RCArmor.load(event);
         CustomArmor.load(event);
+
+        /** Tinkers' Construct Armors */
+        CobaltArmor.load(event);
+        ArditeArmor.load(event);
+        ManyullymArmor.load(event);
+
         ARPAchievements.init();
         /**Crafting Recipes*/
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
@@ -157,6 +172,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        Loader.isModLoaded("tconstruct");
         ModItems.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         CoalArmor.instance = ArmorPlus.instance;
@@ -174,6 +190,12 @@ public class ArmorPlus {
         RDArmor.instance = ArmorPlus.instance;
         RCArmor.instance = ArmorPlus.instance;
         CustomArmor.instance = ArmorPlus.instance;
+
+        /** Tinkers' Construct Armors */
+        CobaltArmor.instance = ArmorPlus.instance;
+        ArditeArmor.instance = ArmorPlus.instance;
+        ManyullymArmor.instance = ArmorPlus.instance;
+
         CoalArmor.preInit(event);
         LapisArmor.preInit(event);
         RedstoneArmor.preInit(event);
@@ -189,10 +211,16 @@ public class ArmorPlus {
         RDArmor.preInit(event);
         RCArmor.preInit(event);
         CustomArmor.preInit(event);
+
+        /** Tinkers' Construct Armors */
+        CobaltArmor.preInit(event);
+        ArditeArmor.preInit(event);
+        ManyullymArmor.preInit(event);
+
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        textureDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID + "/" + "textures/models/armor");
+        textureDir = new File("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "/assets/armorplus/textures/models/armor/CustomArmor");
         textureDir.mkdirs();
         sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));

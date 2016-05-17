@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -48,37 +49,33 @@ public class LapisArmor {
                     new ModelResourceLocation("armorplus:LapisBoots", "inventory"));
         }
         if (ConfigHandler.enableLapisArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('4'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('5'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('6'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.lapis_block, 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('1'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.lapis_block, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('4'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('6'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('7'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.lapis_block, 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('1'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('6'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('8'), new ItemStack(Blocks.lapis_block, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('6'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('8'), new ItemStack(Blocks.lapis_block, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Blocks.lapis_block, 1), Character.valueOf('2'),
-                            new ItemStack(Blocks.lapis_block, 1), Character.valueOf('3'), new ItemStack(Blocks.lapis_block, 1),
-                            Character.valueOf('5'), new ItemStack(Blocks.lapis_block, 1),});
+            if (ConfigHandler.expensiveLapisRecipe) {
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+            } else if (ConfigHandler.cheapLapisRecipe) {
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+            }
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);
@@ -115,7 +112,7 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisHBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -132,7 +129,7 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisCBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -149,7 +146,7 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisLBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 
@@ -166,7 +163,7 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisBBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
 

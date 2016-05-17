@@ -38,6 +38,8 @@ public class ConfigHandler {
     public static boolean enableLapisCBreathing;
     public static boolean enableLapisLBreathing;
     public static boolean enableLapisBBreathing;
+    public static boolean expensiveLapisRecipe;
+    public static boolean cheapLapisRecipe;
     /**
      * Redstone Armor
      */
@@ -80,7 +82,7 @@ public class ConfigHandler {
     /**
      * Flight Ability
      */
-    public static boolean enableFlightAbility;
+    public static boolean enableFlightAbility = true;
     /**
      * Guardian Armor
      */
@@ -118,13 +120,11 @@ public class ConfigHandler {
     /**
      * Custom Armor
      */
-    public static int customHelmetProtection;
-    public static int customChestplateProtection;
-    public static int customLeggingsProtection;
-    public static int customBootsProtection;
-    public static int customArmorDurability;
-    public static String customArmorRecipe;
-    public static int customArmorProtection;
+    public static boolean customArmorIronProtection;
+    public static boolean customArmorGoldProtection;
+    public static boolean customArmorLeatherProtection;
+    public static boolean customArmorOneProtection;
+    public static boolean customArmorDiamondProtection;
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -314,11 +314,21 @@ public class ConfigHandler {
         /** Custom Armor */
         category = "CustomArmor";
         config.addCustomCategoryComment(category, "Custom Armor Settings");
-        customArmorDurability = config.getInt("customArmorDurability", category, 1, 1, 1000, "Set durability for the Custom Armor");
-        customHelmetProtection = config.getInt("customHelmetProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Helmet");
-        customChestplateProtection = config.getInt("customChestplateProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Chestplate");
-        customLeggingsProtection = config.getInt("customLeggingsProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Leggings");
-        customBootsProtection = config.getInt("customBootsProtection", category, 1, 1, 100, "Set protectiom for the Custom Armor Boots");
+        customArmorOneProtection = config.getBoolean("customArmorOneProtection", category, true,
+                "Sets the Custom Armors Protection Amount to One");
+        customArmorLeatherProtection = config.getBoolean("customArmorLeatherProtection", category, false,
+                "Sets the Custom Armors Protection Amount to Leather Armor Like");
+        customArmorGoldProtection = config.getBoolean("customArmorGoldProtection", category, false,
+                "Sets the Custom Armors Protection Amount to Goleden Armor Like");
+        customArmorIronProtection = config.getBoolean("customArmorIronProtection", category, false,
+                "Sets the Custom Armors Protection Amount to Iron Armor Like");
+        customArmorDiamondProtection = config.getBoolean("customArmorDiamondProtection", category, false,
+                "Sets the Custom Armors Protection Amount to Diamond Armor Like");
+
+        expensiveLapisRecipe = config.getBoolean("expensiveLapisRecipe", category, true,
+                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Blocks)");
+        cheapLapisRecipe = config.getBoolean("cheapLapisRecipe", category, false,
+                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Items)");
 
         //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
         //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)

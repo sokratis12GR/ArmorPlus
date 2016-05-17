@@ -115,7 +115,7 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalHNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
                 }
             }
 
@@ -133,7 +133,7 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalCNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
                 }
             }
 
@@ -151,7 +151,7 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalLNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
                 }
             }
 
@@ -169,7 +169,7 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalBNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
                 }
             }
 

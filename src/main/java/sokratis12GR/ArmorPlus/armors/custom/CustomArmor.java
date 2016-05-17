@@ -77,90 +77,70 @@ public class CustomArmor {
     public void registerRenderers() {
     }
 
-    public static int customChestplateProtection;
-
-    public static int customHelmetProtection;
-
-    public static int customBootsProtection;
-
-    public static int customLeggingsProtection;
-
     static {
+        /** Default */
+            ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("CUSTOMARMOR", ArmorPlus.MODID + ":" + "CustomArmor/armor", 1, new int[]{1, 1, 1, 1}, 30, SoundEvents.item_armor_equip_chain);
+            int armorPreffix = 0;
+            helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+                @Override
+                public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                    tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
+                }
 
-        int[] armor;
-        armor = new int[4];
-        armor[0] = ConfigHandler.customBootsProtection;
-        armor[1] = ConfigHandler.customLeggingsProtection;
-        armor[2] = ConfigHandler.customChestplateProtection;
-        armor[3] = ConfigHandler.customHelmetProtection;
-        customChestplateProtection = ConfigHandler.customChestplateProtection;
-        customHelmetProtection = ConfigHandler.customHelmetProtection;
-        customBootsProtection = ConfigHandler.customBootsProtection;
-        customLeggingsProtection = ConfigHandler.customLeggingsProtection;
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("CUSTOMARMOR",ArmorPlus.MODID + ":" + "CustomArmor", 100, armor, 30, SoundEvents.item_armor_equip_chain);
+                public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                }
 
-        int armorPreffix = 0;
-        helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
-            @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
-            }
+                public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                    return repair.getItem() == Items.paper;
+                }
+            }).setUnlocalizedName("CustomHelmet");
+            helmet.setMaxStackSize(1);
+            chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+                @Override
+                public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                    tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
+                }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
+                public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                }
 
-            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
-            }
-        }).setUnlocalizedName("CustomHelmet");
-        helmet.setMaxStackSize(1);
-        chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
-            @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
-            }
+                public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                    return repair.getItem() == Items.paper;
+                }
+            }).setUnlocalizedName("CustomChestplate");
+            chestplate.setMaxStackSize(1);
+            legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+                @Override
+                public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                    tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
+                }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
+                public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                }
 
-            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
-            }
-        }).setUnlocalizedName("CustomChestplate");
-        chestplate.setMaxStackSize(1);
-        legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
-            @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
-            }
+                public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                    return repair.getItem() == Items.paper;
+                }
+            }).setUnlocalizedName("CustomLeggings");
+            legs.setMaxStackSize(1);
+            boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+                @Override
+                public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                    tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
+                }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
+                public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
-            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
-            }
-        }).setUnlocalizedName("CustomLeggings");
-        legs.setMaxStackSize(1);
-        boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
-            @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Still WIP don't use or craft it"));
-            }
+                }
 
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
-            }
-
-            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
-            }
-        }).setUnlocalizedName("CustomBoots");
-        boots.setMaxStackSize(1);
+                public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                    return repair.getItem() == Items.paper;
+                }
+            }).setUnlocalizedName("CustomBoots");
+            boots.setMaxStackSize(1);
         GameRegistry.registerItem(helmet, "CustomHelmet");
         GameRegistry.registerItem(chestplate, "CustomChestplate");
         GameRegistry.registerItem(legs, "CustomLeggings");
         GameRegistry.registerItem(boots, "CustomBoots");
-
     }
 }

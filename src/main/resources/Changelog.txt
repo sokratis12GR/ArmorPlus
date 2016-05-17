@@ -1,4 +1,21 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.12.1-1.9
+{Features Added}
+* Added an option in the config to make the lapis armor use lapis lazuli item or lapis lazuli blocks
+{Bugs Fixed}
+* Manyullym Armor's Texture And Names to error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.12.0-1.9
+{Features Added}
+* Now you can set a custom texture for the Custom Armor
+* Added Support For Tinkers' Construct.
+* Armors Added (Tinkers' Construct)
+** Cobalt Armor
+** Ardite Armor
+** Manyullyn Armor
+{Features Changed}
+* Armor's Potion Effect's Particles are now invisible
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.11.0-1.9
 {Features Added}
 * Custom Armor (WIP) (WARNING: Don't Use!)

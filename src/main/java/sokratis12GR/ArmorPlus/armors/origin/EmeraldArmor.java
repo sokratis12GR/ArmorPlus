@@ -118,7 +118,7 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldHHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -137,7 +137,7 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldCHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -156,7 +156,7 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldLHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -175,7 +175,7 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldBHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 

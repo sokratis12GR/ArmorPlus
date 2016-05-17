@@ -76,6 +76,7 @@ public class Logger {
             writer.write("\n\n12. Reinforced Chain Armor: " + RCArmor.helmet.getRegistryName() + " , " + RCArmor.chestplate.getRegistryName() + " , " + RCArmor.legs.getRegistryName() + " , " + RCArmor.boots.getRegistryName());
             writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
             writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
+            writer.write("\n\n15. Custom Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
             writer.write("\n\nItems: " + ModItems.Chainmail.getRegistryName() + " , " + ModItems.EnderDragonScale.getRegistryName() + " , " + ModItems.ReinforcingMaterial.getRegistryName());
         } catch (IOException ex) {
             // report
@@ -86,8 +87,25 @@ public class Logger {
         }
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(ArmorPlus.textureDir.getPath() + "/" + "README.txt"), "utf-8"));
-            writer.write("THIS FEATURE IS WIP AND DOESN'T CURRENTLY WORK" + "To Create custom textures for the custom armor you need to create 2 image files with the names \n" + "CustomArmor_layer_1.png\n" + "CustomArmor_layer_2.png\n" + "Here is an example of both files: \n" + "http://i.imgur.com/T24FrdX.png\n" + "http://i.imgur.com/k5QGOba.png \n" + "By sokratis12GR");
+                    new FileOutputStream("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "/assets/armorplus/textures/models/armor/CustomArmor" + "/" + "README.txt"), "utf-8"));
+            writer.write("To Create custom textures for the custom armor you need to create 2 image files with the names \n" + "CustomArmor_layer_1.png\n" + "CustomArmor_layer_2.png\n" + "Here is an example of both files: \n" + "http://i.imgur.com/T24FrdX.png\n" + "http://i.imgur.com/k5QGOba.png \n" + "By sokratis12GR");
+        } catch (IOException ex) {
+            // report
+        } finally {
+            try {
+                writer.close();
+            } catch (Exception ex) {/*ignore*/}
+        }
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "pack.mcmeta"), "utf-8"));
+            writer.write("{ \n" +
+                    "\t\"pack\" : \n" +
+                    "\t{ \n" +
+                    "\t\t\"pack_format\" : 2, \n" +
+                    "\t\t\"description\" : \"Custom Armor Textures for ArmorPlus\" \n" +
+                    "\t} \n" +
+                    "}");
         } catch (IOException ex) {
             // report
         } finally {

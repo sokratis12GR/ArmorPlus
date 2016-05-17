@@ -98,66 +98,66 @@ public class GlobalEventsArmorPlus {
             /**The Ultimate Armor Armor*/
             if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.ultimateArmorEffectlevel));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.ultimateArmorEffectlevel, true, true));
                 if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
             }
             /**Full Super Star Armor*/
             if (ConfigHandler.enableFullSuperStarArmorEffect) {
                 if (head != null && head.getItem() == SuperStarArmor.helmet && chest != null && chest.getItem() == SuperStarArmor.chestplate && legs != null && legs.getItem() == SuperStarArmor.legs && feet != null && feet.getItem() == SuperStarArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
             /**Full Coal Armor*/
             if (ConfigHandler.enableFullCoalArmorEffect) {
                 if (head != null && head.getItem() == CoalArmor.helmet && chest != null && chest.getItem() == CoalArmor.chestplate && legs != null && legs.getItem() == CoalArmor.legs && feet != null && feet.getItem() == CoalArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
                 }
             }
             /**Full Lapis Armor*/
             if (ConfigHandler.enableFullLapisArmorEffect) {
                 if (head != null && head.getItem() == LapisArmor.helmet && chest != null && chest.getItem() == LapisArmor.chestplate && legs != null && legs.getItem() == LapisArmor.legs && feet != null && feet.getItem() == LapisArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
             /**Full Lava Armor*/
             if (ConfigHandler.enableFullLavaArmorEffect) {
                 if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
             }
             /**Full Emerald Armor*/
             if (ConfigHandler.enableFullEmeraldArmorEffect) {
                 if (head != null && head.getItem() == EmeraldArmor.helmet && chest != null && chest.getItem() == EmeraldArmor.chestplate && legs != null && legs.getItem() == EmeraldArmor.legs && feet != null && feet.getItem() == EmeraldArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
             /**Full Obsidian Armor*/
             if (ConfigHandler.enableFullObsidianArmorEffect) {
                 if (head != null && head.getItem() == ObsidianArmor.helmet && chest != null && chest.getItem() == ObsidianArmor.chestplate && legs != null && legs.getItem() == ObsidianArmor.legs && feet != null && feet.getItem() == ObsidianArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
             /**Full Redstone Armor*/
             if (ConfigHandler.enableFullRedstoneArmorEffect) {
                 if (head != null && head.getItem() == RedstoneArmor.helmet && chest != null && chest.getItem() == RedstoneArmor.chestplate && legs != null && legs.getItem() == RedstoneArmor.legs && feet != null && feet.getItem() == RedstoneArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
                 }
             }
             /**Full Guardian Armor*/
             if (ConfigHandler.enableFullGuardianArmorEffect) {
                 if (head != null && head.getItem() == GuardianArmor.helmet && chest != null && chest.getItem() == GuardianArmor.chestplate && legs != null && legs.getItem() == GuardianArmor.legs && feet != null && feet.getItem() == GuardianArmor.boots) {
                     if (entity instanceof EntityLivingBase)
-                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0));
+                        ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
             }
         }
