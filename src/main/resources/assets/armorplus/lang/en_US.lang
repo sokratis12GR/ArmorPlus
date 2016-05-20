@@ -116,16 +116,16 @@ item.ArditeLeggings.name=Ardite Leggings
 item.ArditeBoots.name=Ardite Boots
 
 #PigIronArmor
-item.PigIronHelmet.name=PigIron Helmet
-item.PigIronChestplate.name=PigIron Chestplate
-item.PigIronLeggings.name=PigIron Leggings
-item.PigIronBoots.name=PigIron Boots
+item.PigIronHelmet.name=Pig Iron Helmet
+item.PigIronChestplate.name=Pig Iron Chestplate
+item.PigIronLeggings.name=Pig Iron Leggings
+item.PigIronBoots.name=Pig Iron Boots
 
-#KingSlimeArmor
-item.KingSlimeHelmet.name=KingSlime Helmet
-item.KingSlimeChestplate.name=KingSlime Chestplate
-item.KingSlimeLeggings.name=KingSlime Leggings
-item.KingSlimeBoots.name=KingSlime Boots
+#KnightSlimeArmor
+item.KnightSlimeHelmet.name=Knight Slime Helmet
+item.KnightSlimeChestplate.name=Knight Slime Chestplate
+item.KnightSlimeLeggings.name=Knight Slime Leggings
+item.KnightSlimeBoots.name=Knight Slime Boots
 
 #ManyullynArmor
 item.ManyullymHelmet.name=Manyullym Helmet
@@ -154,6 +154,18 @@ achievement.armorplus.craftGuardianArmor=Full of Thorns!
 achievement.armorplus.craftGuardianArmor.desc=Craft a Guardian Armor Piece
 achievement.armorplus.craftTheUltimateArmor=The Ultimate Power!
 achievement.armorplus.craftTheUltimateArmor.desc=Craft a The Ultimate Armor Piece
+achievement.armorplus.craftReinforcedArmor=Reinforcing Armors!
+achievement.armorplus.craftReinforcedArmor.desc=Craft a Reinforced Armor Piece
+achievement.armorplus.craftCobaltArmor=The Tinkers' Armors!
+achievement.armorplus.craftCobaltArmor.desc=Craft a Cobalt Armor Piece
+achievement.armorplus.craftArditeArmor=The Stronger The Better!
+achievement.armorplus.craftArditeArmor.desc=Craft a Ardite Armor Piece
+achievement.armorplus.craftManyullymArmor=The Tinkers' Armors God!
+achievement.armorplus.craftManyullymArmor.desc=Craft a Manyullym Armor Piece
+achievement.armorplus.craftPigIronArmor=Oink!
+achievement.armorplus.craftPigIronArmor.desc=Craft a Pig Iron Armor Piece
+achievement.armorplus.craftKnightSlimeArmor=Fascinating!
+achievement.armorplus.craftKnightSlimeArmor.desc=Craft a Knight Slime Armor Piece
 
 #CONSOLE LOG
 info.armorplus.console.config.refresh=Refreshing configuration file.

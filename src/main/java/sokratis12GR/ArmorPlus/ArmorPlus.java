@@ -21,14 +21,12 @@ import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.armors.special.*;
 import sokratis12GR.ArmorPlus.armors.custom.*;
-import sokratis12GR.ArmorPlus.armors.tconstruct.ArditeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.ManyullymArmor;
+import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.*;
-import sokratis12GR.ArmorPlus.armors.tconstruct.CobaltArmor;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -41,7 +39,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.12.1-1.9";
+    public static final String VERSION = "1.13.1-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -66,52 +64,56 @@ public class ArmorPlus {
         return textureDir;
     }
 
-    CoalArmor CoalArmor = new CoalArmor();
-    LapisArmor LapisArmor = new LapisArmor();
-    RedstoneArmor RedstoneArmor = new RedstoneArmor();
-    EmeraldArmor EmeraldArmor = new EmeraldArmor();
-    ObsidianArmor ObsidianArmor = new ObsidianArmor();
-    LavaArmor LavaArmor = new LavaArmor();
-    SuperStarArmor SuperStarArmor = new SuperStarArmor();
-    EnderDragonArmor EnderDragonArmor = new EnderDragonArmor();
-    GuardianArmor GuardianArmor = new GuardianArmor();
-    TheUltimateArmor TheUltimateArmor = new TheUltimateArmor();
-    RIArmor RIArmor = new RIArmor();
-    RGArmor RGArmor = new RGArmor();
-    RDArmor RDArmor = new RDArmor();
-    RCArmor RCArmor = new RCArmor();
-    CustomArmor CustomArmor = new CustomArmor();
+    CoalArmor COAL_ARMOR = new CoalArmor();
+    LapisArmor LAPIS_ARMOR = new LapisArmor();
+    RedstoneArmor REDSTONE_ARMOR = new RedstoneArmor();
+    EmeraldArmor EMERALD_ARMOR = new EmeraldArmor();
+    ObsidianArmor OBSIDIAN_ARMOR = new ObsidianArmor();
+    LavaArmor LAVA_ARMOR = new LavaArmor();
+    SuperStarArmor SUPER_STAR_ARMOR = new SuperStarArmor();
+    EnderDragonArmor ENDER_DRAGON_ARMOR = new EnderDragonArmor();
+    GuardianArmor GUARDIAN_ARMOR = new GuardianArmor();
+    TheUltimateArmor THE_ULTIMATE_ARMOR = new TheUltimateArmor();
+    RIArmor RI_ARMOR = new RIArmor();
+    RGArmor RG_ARMOR = new RGArmor();
+    RDArmor RD_ARMOR = new RDArmor();
+    RCArmor RC_ARMOR = new RCArmor();
+    CustomArmor CUSTOM_ARMOR = new CustomArmor();
 
     /** Tinkers' Construct Armors */
-    CobaltArmor CobaltArmor = new CobaltArmor();
-    ArditeArmor ArditeArmor = new ArditeArmor();
-    ManyullymArmor ManyullymArmor = new ManyullymArmor();
+    CobaltArmor COBALT_ARMOR = new CobaltArmor();
+    ArditeArmor ARDITE_ARMOR = new ArditeArmor();
+    ManyullymArmor MANYULLYM_ARMOR = new ManyullymArmor();
+    PigIronArmor PIG_IRON_ARMOR = new PigIronArmor();
+    KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        CoalArmor.load(event);
-        LapisArmor.load(event);
-        RedstoneArmor.load(event);
-        EmeraldArmor.load(event);
-        ObsidianArmor.load(event);
-        LavaArmor.load(event);
-        SuperStarArmor.load(event);
-        EnderDragonArmor.load(event);
-        GuardianArmor.load(event);
-        TheUltimateArmor.load(event);
-        RIArmor.load(event);
-        RGArmor.load(event);
-        RDArmor.load(event);
-        RCArmor.load(event);
-        CustomArmor.load(event);
+        COAL_ARMOR.load(event);
+        LAPIS_ARMOR.load(event);
+        REDSTONE_ARMOR.load(event);
+        EMERALD_ARMOR.load(event);
+        OBSIDIAN_ARMOR.load(event);
+        LAVA_ARMOR.load(event);
+        SUPER_STAR_ARMOR.load(event);
+        ENDER_DRAGON_ARMOR.load(event);
+        GUARDIAN_ARMOR.load(event);
+        THE_ULTIMATE_ARMOR.load(event);
+        RI_ARMOR.load(event);
+        RG_ARMOR.load(event);
+        RD_ARMOR.load(event);
+        RC_ARMOR.load(event);
+        CUSTOM_ARMOR.load(event);
 
         /** Tinkers' Construct Armors */
-        CobaltArmor.load(event);
-        ArditeArmor.load(event);
-        ManyullymArmor.load(event);
+        COBALT_ARMOR.load(event);
+        ARDITE_ARMOR.load(event);
+        MANYULLYM_ARMOR.load(event);
+        PIG_IRON_ARMOR.load(event);
+        KNIGHT_SLIME_ARMOR.load(event);
 
         ARPAchievements.init();
         /**Crafting Recipes*/
@@ -129,43 +131,24 @@ public class ArmorPlus {
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
                             new ItemStack(GuardianArmor.boots, 1),});
         }
-        /** Chainmail Armor Recipes*/
+        /** CHAINMAIL Armor Recipes*/
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
-                {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('4'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('8'),
-                        new ItemStack(ModItems.Chainmail, 1),});
+                {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
-                {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('1'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
-                        new ItemStack(ModItems.Chainmail, 1),});
+                {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_chestplate, 1), new Object[]
-                {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('4'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('7'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('8'),
-                        new ItemStack(ModItems.Chainmail, 1),});
+                {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_leggings, 1), new Object[]
-                {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('1'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('8'), new ItemStack(ModItems.Chainmail, 1),});
+                {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
-                {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('5'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('6'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('8'), new ItemStack(ModItems.Chainmail, 1),});
+                {"XXX", "3X5", "6X8", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
-                {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.Chainmail, 1), Character.valueOf('2'),
-                        new ItemStack(ModItems.Chainmail, 1), Character.valueOf('3'), new ItemStack(ModItems.Chainmail, 1),
-                        Character.valueOf('5'), new ItemStack(ModItems.Chainmail, 1),});
-        /** Chainmail (Item) Recipe*/
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.Chainmail, 4), new Object[]
-                {new ItemStack(Items.iron_ingot, 1), new ItemStack(Items.iron_ingot, 1),});
+                {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
+        /** CHAINMAIL (Item) Recipe*/
+        GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), new Object[]
+                {"SSX", "SXS", "XSS", Character.valueOf('S'), new ItemStack(Items.iron_ingot, 1),});
         /** Reinforcing Material (Item) Recipe*/
-        GameRegistry.addRecipe(new ItemStack(ModItems.ReinforcingMaterial, 2), new Object[]
+        GameRegistry.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 2), new Object[]
                 {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.string, 1), Character.valueOf('B'),
                         new ItemStack(Items.slime_ball, 1),});
     }
@@ -175,47 +158,51 @@ public class ArmorPlus {
         Loader.isModLoaded("tconstruct");
         ModItems.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
-        CoalArmor.instance = ArmorPlus.instance;
-        LapisArmor.instance = ArmorPlus.instance;
-        RedstoneArmor.instance = ArmorPlus.instance;
-        EmeraldArmor.instance = ArmorPlus.instance;
-        ObsidianArmor.instance = ArmorPlus.instance;
-        LavaArmor.instance = ArmorPlus.instance;
-        SuperStarArmor.instance = ArmorPlus.instance;
-        EnderDragonArmor.instance = ArmorPlus.instance;
-        GuardianArmor.instance = ArmorPlus.instance;
-        TheUltimateArmor.instance = ArmorPlus.instance;
-        RIArmor.instance = ArmorPlus.instance;
-        RGArmor.instance = ArmorPlus.instance;
-        RDArmor.instance = ArmorPlus.instance;
-        RCArmor.instance = ArmorPlus.instance;
-        CustomArmor.instance = ArmorPlus.instance;
+        COAL_ARMOR.instance = ArmorPlus.instance;
+        LAPIS_ARMOR.instance = ArmorPlus.instance;
+        REDSTONE_ARMOR.instance = ArmorPlus.instance;
+        EMERALD_ARMOR.instance = ArmorPlus.instance;
+        OBSIDIAN_ARMOR.instance = ArmorPlus.instance;
+        LAVA_ARMOR.instance = ArmorPlus.instance;
+        SUPER_STAR_ARMOR.instance = ArmorPlus.instance;
+        ENDER_DRAGON_ARMOR.instance = ArmorPlus.instance;
+        GUARDIAN_ARMOR.instance = ArmorPlus.instance;
+        THE_ULTIMATE_ARMOR.instance = ArmorPlus.instance;
+        RI_ARMOR.instance = ArmorPlus.instance;
+        RG_ARMOR.instance = ArmorPlus.instance;
+        RD_ARMOR.instance = ArmorPlus.instance;
+        RC_ARMOR.instance = ArmorPlus.instance;
+        CUSTOM_ARMOR.instance = ArmorPlus.instance;
 
         /** Tinkers' Construct Armors */
-        CobaltArmor.instance = ArmorPlus.instance;
-        ArditeArmor.instance = ArmorPlus.instance;
-        ManyullymArmor.instance = ArmorPlus.instance;
+        COBALT_ARMOR.instance = ArmorPlus.instance;
+        ARDITE_ARMOR.instance = ArmorPlus.instance;
+        MANYULLYM_ARMOR.instance = ArmorPlus.instance;
+        PIG_IRON_ARMOR.instance = ArmorPlus.instance;
+        KNIGHT_SLIME_ARMOR.instance = ArmorPlus.instance;
 
-        CoalArmor.preInit(event);
-        LapisArmor.preInit(event);
-        RedstoneArmor.preInit(event);
-        EmeraldArmor.preInit(event);
-        ObsidianArmor.preInit(event);
-        LavaArmor.preInit(event);
-        SuperStarArmor.preInit(event);
-        EnderDragonArmor.preInit(event);
-        GuardianArmor.preInit(event);
-        TheUltimateArmor.preInit(event);
-        RIArmor.preInit(event);
-        RGArmor.preInit(event);
-        RDArmor.preInit(event);
-        RCArmor.preInit(event);
-        CustomArmor.preInit(event);
+        COAL_ARMOR.preInit(event);
+        LAPIS_ARMOR.preInit(event);
+        REDSTONE_ARMOR.preInit(event);
+        EMERALD_ARMOR.preInit(event);
+        OBSIDIAN_ARMOR.preInit(event);
+        LAVA_ARMOR.preInit(event);
+        SUPER_STAR_ARMOR.preInit(event);
+        ENDER_DRAGON_ARMOR.preInit(event);
+        GUARDIAN_ARMOR.preInit(event);
+        THE_ULTIMATE_ARMOR.preInit(event);
+        RI_ARMOR.preInit(event);
+        RG_ARMOR.preInit(event);
+        RD_ARMOR.preInit(event);
+        RC_ARMOR.preInit(event);
+        CUSTOM_ARMOR.preInit(event);
 
         /** Tinkers' Construct Armors */
-        CobaltArmor.preInit(event);
-        ArditeArmor.preInit(event);
-        ManyullymArmor.preInit(event);
+        COBALT_ARMOR.preInit(event);
+        ARDITE_ARMOR.preInit(event);
+        MANYULLYM_ARMOR.preInit(event);
+        PIG_IRON_ARMOR.preInit(event);
+        KNIGHT_SLIME_ARMOR.preInit(event);
 
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);

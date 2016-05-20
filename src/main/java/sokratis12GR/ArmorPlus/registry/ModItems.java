@@ -8,21 +8,21 @@ import sokratis12GR.ArmorPlus.items.*;
 
 public class ModItems {
 
-    public static EnderDragonScale EnderDragonScale;
-    public static Chainmail Chainmail;
-    public static ReinforcingMaterial ReinforcingMaterial;
+    public static EnderDragonScale ENDER_DRAGON_SCALE;
+    public static Chainmail CHAINMAIL;
+    public static ReinforcingMaterial REINFORCING_MATERIAL;
 
     public static void init() {
-        EnderDragonScale = new EnderDragonScale();
-        Chainmail = new Chainmail();
-        ReinforcingMaterial = new ReinforcingMaterial();
+        ENDER_DRAGON_SCALE = new EnderDragonScale();
+        CHAINMAIL = new Chainmail();
+        REINFORCING_MATERIAL = new ReinforcingMaterial();
         Item.itemRegistry.containsKey(new ResourceLocation("tconstruct", "ingots"));
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        EnderDragonScale.initModel();
-        Chainmail.initModel();
-        ReinforcingMaterial.initModel();
+        ENDER_DRAGON_SCALE.initModel();
+        CHAINMAIL.initModel();
+        REINFORCING_MATERIAL.initModel();
     }
 }

@@ -6,21 +6,26 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerRenderers(ArmorPlus ins) {
-        ins.CoalArmor.registerRenderers();
-        ins.LapisArmor.registerRenderers();
-        ins.RedstoneArmor.registerRenderers();
-        ins.EmeraldArmor.registerRenderers();
-        ins.ObsidianArmor.registerRenderers();
-        ins.LavaArmor.registerRenderers();
-        ins.SuperStarArmor.registerRenderers();
-        ins.EnderDragonArmor.registerRenderers();
-        ins.GuardianArmor.registerRenderers();
-        ins.TheUltimateArmor.registerRenderers();
-        ins.RIArmor.registerRenderers();
-        ins.RGArmor.registerRenderers();
-        ins.RDArmor.registerRenderers();
-        ins.RCArmor.registerRenderers();
-        ins.CustomArmor.registerRenderers();
+        ins.COAL_ARMOR.registerRenderers();
+        ins.LAPIS_ARMOR.registerRenderers();
+        ins.REDSTONE_ARMOR.registerRenderers();
+        ins.EMERALD_ARMOR.registerRenderers();
+        ins.OBSIDIAN_ARMOR.registerRenderers();
+        ins.LAVA_ARMOR.registerRenderers();
+        ins.SUPER_STAR_ARMOR.registerRenderers();
+        ins.ENDER_DRAGON_ARMOR.registerRenderers();
+        ins.GUARDIAN_ARMOR.registerRenderers();
+        ins.THE_ULTIMATE_ARMOR.registerRenderers();
+        ins.RI_ARMOR.registerRenderers();
+        ins.RG_ARMOR.registerRenderers();
+        ins.RD_ARMOR.registerRenderers();
+        ins.RC_ARMOR.registerRenderers();
+        ins.CUSTOM_ARMOR.registerRenderers();
+        ins.COBALT_ARMOR.registerRenderers();
+        ins.ARDITE_ARMOR.registerRenderers();
+        ins.MANYULLYM_ARMOR.registerRenderers();
+        ins.PIG_IRON_ARMOR.registerRenderers();
+        ins.KNIGHT_SLIME_ARMOR.registerRenderers();
         ModItems.initModels();
     }
 }

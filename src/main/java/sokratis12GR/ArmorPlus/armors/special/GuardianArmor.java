@@ -46,36 +46,17 @@ public class GuardianArmor {
         }
         if (ConfigHandler.enableGuardianArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('4'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('5'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('6'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('8'),
-                            new ItemStack(Items.prismarine_shard, 1),});
+                    {"XXX", "PPP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('1'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('2'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('5'),
-                            new ItemStack(Items.prismarine_shard, 1),});
+                    {"PPP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('2'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('4'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('5'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('6'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('7'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('8'),
-                            new ItemStack(Items.prismarine_shard, 1),});
+                    {"PXP", "PPP", "PPP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('1'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('2'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('5'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('6'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('8'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"PPP", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('5'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('6'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('8'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"XXX", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.prismarine_shard, 1), Character.valueOf('2'),
-                            new ItemStack(Items.prismarine_shard, 1), Character.valueOf('3'), new ItemStack(Items.prismarine_shard, 1),
-                            Character.valueOf('5'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"PXP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);

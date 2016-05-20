@@ -6,9 +6,8 @@ import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.special.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.items.*;
+import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 import java.io.*;
 
@@ -77,7 +76,12 @@ public class Logger {
             writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
             writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
             writer.write("\n\n15. Custom Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
-            writer.write("\n\nItems: " + ModItems.Chainmail.getRegistryName() + " , " + ModItems.EnderDragonScale.getRegistryName() + " , " + ModItems.ReinforcingMaterial.getRegistryName());
+            writer.write("\n\n16. Cobalt Armor: " + CobaltArmor.helmet.getRegistryName() + " , " + CobaltArmor.chestplate.getRegistryName() + " , " + CobaltArmor.legs.getRegistryName() + " , " + CobaltArmor.boots.getRegistryName());
+            writer.write("\n\n17. Ardite  Armor: " + ArditeArmor.helmet.getRegistryName() + " , " + ArditeArmor.chestplate.getRegistryName() + " , " + ArditeArmor.legs.getRegistryName() + " , " + ArditeArmor.boots.getRegistryName());
+            writer.write("\n\n18. Manyullym Armor: " + ManyullymArmor.helmet.getRegistryName() + " , " + ManyullymArmor.chestplate.getRegistryName() + " , " + ManyullymArmor.legs.getRegistryName() + " , " + ManyullymArmor.boots.getRegistryName());
+            writer.write("\n\n19. Pig Iron Armor: " + PigIronArmor.helmet.getRegistryName() + " , " + PigIronArmor.chestplate.getRegistryName() + " , " + PigIronArmor.legs.getRegistryName() + " , " + PigIronArmor.boots.getRegistryName());
+            writer.write("\n\n20. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
+            writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName());
         } catch (IOException ex) {
             // report
         } finally {

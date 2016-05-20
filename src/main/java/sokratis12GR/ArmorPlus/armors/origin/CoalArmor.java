@@ -49,36 +49,17 @@ public class CoalArmor {
         }
         if (ConfigHandler.enableCoalArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('4'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('5'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('6'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
-                            new ItemStack(Items.coal, 1),});
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-                            new ItemStack(Items.coal, 1),});
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('4'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('7'), new ItemStack(Items.coal, 1), Character.valueOf('8'),
-                            new ItemStack(Items.coal, 1),});
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('1'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('2'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('8'), new ItemStack(Items.coal, 1),});
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Items.coal, 1), Character.valueOf('5'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('6'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('8'), new ItemStack(Items.coal, 1),});
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.coal, 1), Character.valueOf('2'),
-                            new ItemStack(Items.coal, 1), Character.valueOf('3'), new ItemStack(Items.coal, 1),
-                            Character.valueOf('5'), new ItemStack(Items.coal, 1),});
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);
@@ -103,7 +84,7 @@ public class CoalArmor {
     }
 
     static {
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COLARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COALARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
                 {1, 2, 3, 1}, 8, SoundEvents.item_armor_equip_leather);
 
         int armorPreffix = 0;

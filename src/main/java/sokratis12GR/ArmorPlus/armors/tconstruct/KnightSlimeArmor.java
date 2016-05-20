@@ -20,9 +20,7 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
-import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
-
-public class CobaltArmor {
+public class KnightSlimeArmor {
 
     public static Item helmet;
     public static Item chestplate;
@@ -33,27 +31,27 @@ public class CobaltArmor {
     public void load(FMLInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
             ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeHelmet", "inventory"));
             ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeChestplate", "inventory"));
             ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeBoots", "inventory"));
         }
-        if (ConfigHandler.enableCobaltArmorRecipes) {
+        if (ConfigHandler.enableKnightSlimeArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3)});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);
@@ -65,13 +63,13 @@ public class CobaltArmor {
     public void preInit(FMLPreInitializationEvent event) {
         if (event.getSide() == Side.CLIENT) {
             ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeHelmet", "inventory"));
             ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeChestplate", "inventory"));
             ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
+                    new ModelResourceLocation("armorplus:KnightSlimeBoots", "inventory"));
         }
     }
 
@@ -79,33 +77,52 @@ public class CobaltArmor {
     }
 
     static {
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COBALTARMOR", ArmorPlus.MODID + ":" + "CobaltArmor", 44, new int[]
-                {3, 7, 9, 3}, 30, SoundEvents.item_armor_equip_diamond);
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("KNIGHTSLIMEARMOR", ArmorPlus.MODID + ":" + "KnightSlimeArmor", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.item_armor_equip_diamond);
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+            }
+
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
-        }).setUnlocalizedName("CobaltHelmet");
+        }).setUnlocalizedName("KnightSlimeHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+            }
+
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
-        }).setUnlocalizedName("CobaltChestplate");
+        }).setUnlocalizedName("KnightSlimeChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+            }
+
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
-        }).setUnlocalizedName("CobaltLeggings");
+        }).setUnlocalizedName("KnightSlimeLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
+            @Override
+            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+            }
+
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
-        }).setUnlocalizedName("CobaltBoots");
+        }).setUnlocalizedName("KnightSlimeBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "CobaltHelmet");
-        GameRegistry.registerItem(chestplate, "CobaltChestplate");
-        GameRegistry.registerItem(legs, "CobaltLeggings");
-        GameRegistry.registerItem(boots, "CobaltBoots");
+        GameRegistry.registerItem(helmet, "KnightSlimeHelmet");
+        GameRegistry.registerItem(chestplate, "KnightSlimeChestplate");
+        GameRegistry.registerItem(legs, "KnightSlimeLeggings");
+        GameRegistry.registerItem(boots, "KnightSlimeBoots");
     }
 }

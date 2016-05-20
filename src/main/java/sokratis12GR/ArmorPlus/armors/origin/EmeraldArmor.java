@@ -49,36 +49,17 @@ public class EmeraldArmor {
         }
         if (ConfigHandler.enableEmeraldArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Items.emerald, 1), Character.valueOf('4'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('5'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('6'), new ItemStack(Items.emerald, 1), Character.valueOf('8'),
-                            new ItemStack(Items.emerald, 1),});
+                    {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('1'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('2'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('3'), new ItemStack(Items.emerald, 1), Character.valueOf('5'),
-                            new ItemStack(Items.emerald, 1),});
+                    {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('2'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('3'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('4'), new ItemStack(Items.emerald, 1), Character.valueOf('5'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('6'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('7'), new ItemStack(Items.emerald, 1), Character.valueOf('8'),
-                            new ItemStack(Items.emerald, 1),});
+                    {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('1'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('2'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('3'), new ItemStack(Items.emerald, 1), Character.valueOf('5'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('6'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('8'), new ItemStack(Items.emerald, 1),});
+                    {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Items.emerald, 1), Character.valueOf('5'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('6'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('8'), new ItemStack(Items.emerald, 1),});
+                    {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Items.emerald, 1), Character.valueOf('2'),
-                            new ItemStack(Items.emerald, 1), Character.valueOf('3'), new ItemStack(Items.emerald, 1),
-                            Character.valueOf('5'), new ItemStack(Items.emerald, 1),});
+                    {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);
@@ -182,7 +163,7 @@ public class EmeraldArmor {
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.emerald;
             }
-        }).setUnlocalizedName("EmeraldLeggings");
+        }).setUnlocalizedName("EmeraldBoots");
         boots.setMaxStackSize(1);
 
         GameRegistry.registerItem(helmet, "EmeraldHelmet");

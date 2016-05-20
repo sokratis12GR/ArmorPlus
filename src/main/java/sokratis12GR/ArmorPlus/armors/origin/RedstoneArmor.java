@@ -48,44 +48,17 @@ public class RedstoneArmor {
         }
         if (ConfigHandler.enableRedstoneArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6X8", Character.valueOf('3'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('4'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('6'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('1'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('2'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('3'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0X2", "345", "678", Character.valueOf('0'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('2'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('3'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('4'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('6'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('7'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3X5", "6X8", Character.valueOf('0'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('1'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('2'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('3'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('6'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3X5", "6X8", Character.valueOf('3'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('5'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('6'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('8'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0X2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(Blocks.redstone_block, 1),
-                            Character.valueOf('2'), new ItemStack(Blocks.redstone_block, 1), Character.valueOf('3'),
-                            new ItemStack(Blocks.redstone_block, 1), Character.valueOf('5'),
-                            new ItemStack(Blocks.redstone_block, 1),});
+                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
             legs.setCreativeTab(ArmorPlus.tabArmorPlus);

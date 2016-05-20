@@ -1,27 +1,22 @@
 package sokratis12GR.ArmorPlus.resources;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.*;
+import sokratis12GR.ArmorPlus.armors.special.*;
+import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -72,6 +67,29 @@ public class GlobalEventsArmorPlus {
         /**The Ultimate Power! - Achievement Trigger*/
         if (i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             event.player.addStat(ARPAchievements.craftTheUltimateArmor, 1);
+        /** Reinforcing Armors! - Achievement Trigger*/
+        if (i == RCArmor.helmet || i == RCArmor.chestplate || i == RCArmor.legs || i == RCArmor.boots
+                || i == RDArmor.helmet || i == RDArmor.chestplate || i == RDArmor.legs || i == RDArmor.boots
+                || i == RGArmor.helmet || i == RGArmor.chestplate || i == RGArmor.legs || i == RGArmor.boots
+                || i == RIArmor.helmet || i == RIArmor.chestplate || i == RIArmor.legs || i == RIArmor.boots)
+            event.player.addStat(ARPAchievements.craftReinforcedArmor, 1);
+
+        /** Tinkers' Armors*/
+        /**The Tinkers' Armors! - Achievement Trigger*/
+        if (i == CobaltArmor.helmet || i == CobaltArmor.chestplate || i == CobaltArmor.legs || i == CobaltArmor.boots)
+            event.player.addStat(ARPAchievements.craftCobaltArmor, 1);
+        /**The Stronger The Better! - Achievement Trigger*/
+        if (i == ArditeArmor.helmet || i == ArditeArmor.chestplate || i == ArditeArmor.legs || i == ArditeArmor.boots)
+            event.player.addStat(ARPAchievements.craftArditeArmor, 1);
+        /**The Tinkers' Armors God! - Achievement Trigger*/
+        if (i == ManyullymArmor.helmet || i == ManyullymArmor.chestplate || i == ManyullymArmor.legs || i == ManyullymArmor.boots)
+            event.player.addStat(ARPAchievements.craftManyullymArmor, 1);
+        /** Oink! - Achievemnt Trigger*/
+        if (i == PigIronArmor.helmet || i == PigIronArmor.chestplate || i == PigIronArmor.legs || i == PigIronArmor.boots)
+            event.player.addStat(ARPAchievements.craftPigIronArmor, 1);
+        /** Fascinating! - Achievemnt Trigger*/
+        if (i == KnightSlimeArmor.helmet || i == KnightSlimeArmor.chestplate || i == KnightSlimeArmor.legs || i == KnightSlimeArmor.boots)
+            event.player.addStat(ARPAchievements.craftKnightSlimeArmor, 1);
     }
 
     @SubscribeEvent
@@ -159,6 +177,27 @@ public class GlobalEventsArmorPlus {
                     if (entity instanceof EntityLivingBase)
                         ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
                 }
+            }
+            /** Tinkers' Construct Armors*/
+            /**Full Manyullym Armor*/
+            if (head != null && head.getItem() == ManyullymArmor.helmet && chest != null && chest.getItem() == ManyullymArmor.chestplate && legs != null && legs.getItem() == ManyullymArmor.legs && feet != null && feet.getItem() == ManyullymArmor.boots) {
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.damageBoost, 120, 1, true, true));
+            }
+            /**Full Pig Iron Armor*/
+            if (head != null && head.getItem() == PigIronArmor.helmet && chest != null && chest.getItem() == PigIronArmor.chestplate && legs != null && legs.getItem() == PigIronArmor.legs && feet != null && feet.getItem() == PigIronArmor.boots) {
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.saturation, 120, 0, true, true));
+            }
+            /**Full Knight Slime Armor*/
+            if (head != null && head.getItem() == KnightSlimeArmor.helmet && chest != null && chest.getItem() == KnightSlimeArmor.chestplate && legs != null && legs.getItem() == KnightSlimeArmor.legs && feet != null && feet.getItem() == KnightSlimeArmor.boots) {
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 1, true, true));
+            }
+            /**Cobalt Armor*/
+            if (head != null && head.getItem() == CobaltArmor.helmet && chest != null && chest.getItem() == CobaltArmor.chestplate && legs != null && legs.getItem() == CobaltArmor.legs && feet != null && feet.getItem() == CobaltArmor.boots) {
+                if (entity instanceof EntityLivingBase)
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, 2, true, true));
             }
         }
     }

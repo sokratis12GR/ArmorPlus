@@ -40,41 +40,22 @@ public class RIArmor {
         }
         if (ConfigHandler.enableReinforcedArmorsRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "345", "6L8", Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('4'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('5'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('6'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('8'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"XXX", "RRR", "RIR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_helmet, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"012", "3L5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('1'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('2'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('5'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"RRR", "RIR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_helmet, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"0L2", "345", "678", Character.valueOf('0'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('2'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('4'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('5'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('6'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('7'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('8'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"RIR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_chestplate, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"012", "3L5", "6X8", Character.valueOf('0'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('1'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('2'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('5'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('6'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('8'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"RRR", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_leggings, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "3L5", "6X8", Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('5'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('6'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('8'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"XXX", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_boots, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"0L2", "3X5", "XXX", Character.valueOf('0'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('2'),
-                            new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('3'), new ItemStack(ModItems.ReinforcingMaterial, 1),
-                            Character.valueOf('5'), new ItemStack(ModItems.ReinforcingMaterial, 1), Character.valueOf('L'),
+                    {"RIR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.iron_boots, 1),});
             helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
             chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);

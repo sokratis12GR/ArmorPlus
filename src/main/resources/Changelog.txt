@@ -1,4 +1,24 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.13.1-1.9
+{Features Changed}
+* Chainmail's recipe
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.13.0-1.9
+{Features Added}
+* The Ability to disable the recipes for the Tinkers' Construct armors
+* Strength 2 Has been Added to the Manyullym Armor
+* New Armors
+** Pig Iron Armor (Full set effects gives you Saturation)
+** Knight Slime Armor (Full set effects gives you Haste 2)
+* Added Some Achievements and Moved others
+{Features Changed}
+* Cobalt Armor now Gives you Haste 3
+* Some Small changes in the code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.12.2-1.9
+{Bugs Fixed}
+* Manyullym recipe
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.12.1-1.9
 {Features Added}
 * Added an option in the config to make the lapis armor use lapis lazuli item or lapis lazuli blocks

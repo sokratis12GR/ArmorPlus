@@ -118,13 +118,14 @@ public class ConfigHandler {
     public static int ultimateArmorEffectlevel;
 
     /**
-     * Custom Armor
+     * Tinkers' Construct Armors
      */
-    public static boolean customArmorIronProtection;
-    public static boolean customArmorGoldProtection;
-    public static boolean customArmorLeatherProtection;
-    public static boolean customArmorOneProtection;
-    public static boolean customArmorDiamondProtection;
+    public static boolean enableArditeArmorRecipes;
+    public static boolean enableCobaltArmorRecipes;
+    public static boolean enableManyullymArmorRecipes;
+    public static boolean enablePigIronArmorRecipes;
+    public static boolean enableKnightSlimeArmorRecipes;
+
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -135,7 +136,6 @@ public class ConfigHandler {
     public static void syncConfig() {
         String category;
         category = "Recipes";
-        config.addCustomCategoryComment(category, "Armor's Recipes");
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
                 "Enable/Disable The Coal Armor Recipes");
         enableLapisArmorRecipes = config.getBoolean("enableLapisArmorRecipes", category, true,
@@ -160,11 +160,20 @@ public class ConfigHandler {
                 "Enable/Disable The Reinforced Armors Recipes");
         enableCustomArmorRecipes = config.getBoolean("enableCustomArmorRecipes", category, true,
                 "Enable/Disable The Custom Armors Recipes");
+        enableArditeArmorRecipes = config.getBoolean("enableArditeArmorRecipes", category, true,
+                "Enable/Disable The Ardite Armors Recipes");
+        enableCobaltArmorRecipes = config.getBoolean("enableCobaltArmorRecipes", category, true,
+                "Enable/Disable The Cobalt Armors Recipes");
+        enableManyullymArmorRecipes = config.getBoolean("enableManyullymArmorRecipes", category, true,
+                "Enable/Disable The Manyullym Armors Recipes");
+        enablePigIronArmorRecipes = config.getBoolean("enablePigIronArmorRecipes", category, true,
+                "Enable/Disable The Pig Iron Armors Recipes");
+        enableKnightSlimeArmorRecipes = config.getBoolean("enableKnightSlimeArmorRecipes", category, true,
+                "Enable/Disable The Knight Slime Armors Recipes");
 
 
         /** Coal Armor*/
         category = "CoalArmor";
-        config.addCustomCategoryComment(category, "Coal Armor's Settings");
         enableCoalHNightVision = config.getBoolean("enableCoalHNightVision", category, true,
                 "Enable/Disable The Coal Helmet NightVision");
         enableCoalCNightVision = config.getBoolean("enableCoalCNightVision", category, true,
@@ -179,7 +188,6 @@ public class ConfigHandler {
 
         /** Lapis Armor*/
         category = "LapisArmor";
-        config.addCustomCategoryComment(category, "Lapis Armor's Settings");
         enableLapisHBreathing = config.getBoolean("enableLapisHBreathing", category, true,
                 "Enable/Disable The Lapis Helmet Water Breathing");
         enableLapisCBreathing = config.getBoolean("enableLapisCBreathing", category, true,
@@ -191,10 +199,14 @@ public class ConfigHandler {
         /**Full Lapis Armor Effect*/
         enableFullLapisArmorEffect = config.getBoolean("enableFullLapisArmorEffect", category, false,
                 "Enable/Disable The Full Lapis Armor Effect");
+        /**Lapis Armor Recipe Cost */
+        expensiveLapisRecipe = config.getBoolean("expensiveLapisRecipe", category, true,
+                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Blocks)");
+        cheapLapisRecipe = config.getBoolean("cheapLapisRecipe", category, false,
+                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Items)");
 
         /** Redstone Armor*/
         category = "RedstoneArmor";
-        config.addCustomCategoryComment(category, "Redstone Armor's Settings");
         enableRedstoneHSpeed = config.getBoolean("enableRedstoneHSpeed", category, true,
                 "Enable/Disable The Redstone Helmet Speed");
         enableRedstoneCSpeed = config.getBoolean("enableRedstoneCeSpeed", category, true,
@@ -210,7 +222,6 @@ public class ConfigHandler {
 
         /** Emerald Armor*/
         category = "EmeraldArmor";
-        config.addCustomCategoryComment(category, "Emerald Armor's Settings");
         enableEmeraldHHaste = config.getBoolean("enableEmeraldHHaste", category, true,
                 "Enable/Disable The Emerald Helmet Haste");
         enableEmeraldCHaste = config.getBoolean("enableEmeraldCHaste", category, true,
@@ -226,7 +237,6 @@ public class ConfigHandler {
 
         /** Obsidian Armor*/
         category = "ObsidianArmor";
-        config.addCustomCategoryComment(category, "Obsidian Armor's Settings");
         enableObsidianHResistance = config.getBoolean("enableObsidianHResistance", category, true,
                 "Enable/Disable The Obsidian Helmet Resistance");
         enableObsidianCResistance = config.getBoolean("enableObsidianCResistance", category, true,
@@ -241,7 +251,6 @@ public class ConfigHandler {
 
         /** Lava Armor*/
         category = "LavaArmor";
-        config.addCustomCategoryComment(category, "Lava Armor's Settings");
         /** Lava Armor Resistance*/
         enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
                 "Enable/Disable The Lava Helmet Resistance");
@@ -266,7 +275,6 @@ public class ConfigHandler {
 
         /** Super Star Armor*/
         category = "SuperStarArmor";
-        config.addCustomCategoryComment(category, "Super Star Armor's Settings");
         enableSuperStarHRegen = config.getBoolean("enableSuperStarHRegen", category, true,
                 "Enable/Disable The Super Star Helmet Regeneration");
         enableSuperStarCRegen = config.getBoolean("enableSuperStarCRegen", category, true,
@@ -280,7 +288,6 @@ public class ConfigHandler {
                 "Enable/Disable The Full Super Star Armor Effect");
 
         category = "GuardianArmor";
-        config.addCustomCategoryComment(category, "Guardian Armor's Settings");
         enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
                 "Enable/Disable Guardian Helmet Effects");
         enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,
@@ -296,11 +303,9 @@ public class ConfigHandler {
 
         /** Flight Ability*/
         category = "FlightAbility";
-        config.addCustomCategoryComment(category, "Flight Ability's Settings");
         enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Armors Flight");
 
         category = "EffectLevel";
-        config.addCustomCategoryComment(category, "Armors Effect's Level Settings");
         emeraldArmorEffectlevel = config.getInt("emeraldArmorEffectlevel", category, 1, 0, 10, "Set the level of the Haste effect by the Emerald Armor.");
         obsidianArmorEffectlevel = config.getInt("obsidianArmorEffectlevel", category, 0, 0, 10, "Set the level of the Resistance effect by the Obsidian Armor.");
         redstoneArmorEffectlevel = config.getInt("redstoneArmorEffectlevel", category, 1, 0, 10, "Set the level of the Swiftness effect by the Redstone Armor.");
@@ -311,24 +316,9 @@ public class ConfigHandler {
         /** The Ultimate Armor Effects */
         ultimateArmorEffectlevel = config.getInt("ultimateArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by The Ultimate Armor.");
 
-        /** Custom Armor */
-        category = "CustomArmor";
-        config.addCustomCategoryComment(category, "Custom Armor Settings");
-        customArmorOneProtection = config.getBoolean("customArmorOneProtection", category, true,
-                "Sets the Custom Armors Protection Amount to One");
-        customArmorLeatherProtection = config.getBoolean("customArmorLeatherProtection", category, false,
-                "Sets the Custom Armors Protection Amount to Leather Armor Like");
-        customArmorGoldProtection = config.getBoolean("customArmorGoldProtection", category, false,
-                "Sets the Custom Armors Protection Amount to Goleden Armor Like");
-        customArmorIronProtection = config.getBoolean("customArmorIronProtection", category, false,
-                "Sets the Custom Armors Protection Amount to Iron Armor Like");
-        customArmorDiamondProtection = config.getBoolean("customArmorDiamondProtection", category, false,
-                "Sets the Custom Armors Protection Amount to Diamond Armor Like");
+        /** Tinkers' Construct Armors */
+        category = "TinkersConstruct";
 
-        expensiveLapisRecipe = config.getBoolean("expensiveLapisRecipe", category, true,
-                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Blocks)");
-        cheapLapisRecipe = config.getBoolean("cheapLapisRecipe", category, false,
-                "Sets the Lapis Armor Recipe to require Lapis Lazuli (Items)");
 
         //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
         //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)

@@ -36,7 +36,7 @@ public class ArditeArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:ArditeBoots", "inventory"));
         }
-        if (ConfigHandler.enableCustomArmorRecipes) {
+        if (ConfigHandler.enableArditeArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1)});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
