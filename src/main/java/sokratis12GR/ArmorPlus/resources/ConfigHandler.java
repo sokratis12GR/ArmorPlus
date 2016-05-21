@@ -122,7 +122,7 @@ public class ConfigHandler {
      */
     public static boolean enableArditeArmorRecipes;
     public static boolean enableCobaltArmorRecipes;
-    public static boolean enableManyullymArmorRecipes;
+    public static boolean enableManyullynArmorRecipes;
     public static boolean enablePigIronArmorRecipes;
     public static boolean enableKnightSlimeArmorRecipes;
 
@@ -164,8 +164,8 @@ public class ConfigHandler {
                 "Enable/Disable The Ardite Armors Recipes");
         enableCobaltArmorRecipes = config.getBoolean("enableCobaltArmorRecipes", category, true,
                 "Enable/Disable The Cobalt Armors Recipes");
-        enableManyullymArmorRecipes = config.getBoolean("enableManyullymArmorRecipes", category, true,
-                "Enable/Disable The Manyullym Armors Recipes");
+        enableManyullynArmorRecipes = config.getBoolean("enableManyullynArmorRecipes", category, true,
+                "Enable/Disable The Manyullyn Armors Recipes");
         enablePigIronArmorRecipes = config.getBoolean("enablePigIronArmorRecipes", category, true,
                 "Enable/Disable The Pig Iron Armors Recipes");
         enableKnightSlimeArmorRecipes = config.getBoolean("enableKnightSlimeArmorRecipes", category, true,

@@ -82,8 +82,8 @@ public class GlobalEventsArmorPlus {
         if (i == ArditeArmor.helmet || i == ArditeArmor.chestplate || i == ArditeArmor.legs || i == ArditeArmor.boots)
             event.player.addStat(ARPAchievements.craftArditeArmor, 1);
         /**The Tinkers' Armors God! - Achievement Trigger*/
-        if (i == ManyullymArmor.helmet || i == ManyullymArmor.chestplate || i == ManyullymArmor.legs || i == ManyullymArmor.boots)
-            event.player.addStat(ARPAchievements.craftManyullymArmor, 1);
+        if (i == ManyullynArmor.helmet || i == ManyullynArmor.chestplate || i == ManyullynArmor.legs || i == ManyullynArmor.boots)
+            event.player.addStat(ARPAchievements.craftManyullynArmor, 1);
         /** Oink! - Achievemnt Trigger*/
         if (i == PigIronArmor.helmet || i == PigIronArmor.chestplate || i == PigIronArmor.legs || i == PigIronArmor.boots)
             event.player.addStat(ARPAchievements.craftPigIronArmor, 1);
@@ -180,7 +180,7 @@ public class GlobalEventsArmorPlus {
             }
             /** Tinkers' Construct Armors*/
             /**Full Manyullym Armor*/
-            if (head != null && head.getItem() == ManyullymArmor.helmet && chest != null && chest.getItem() == ManyullymArmor.chestplate && legs != null && legs.getItem() == ManyullymArmor.legs && feet != null && feet.getItem() == ManyullymArmor.boots) {
+            if (head != null && head.getItem() == ManyullynArmor.helmet && chest != null && chest.getItem() == ManyullynArmor.chestplate && legs != null && legs.getItem() == ManyullynArmor.legs && feet != null && feet.getItem() == ManyullynArmor.boots) {
                 if (entity instanceof EntityLivingBase)
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.damageBoost, 120, 1, true, true));
             }

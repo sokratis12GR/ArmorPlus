@@ -1,4 +1,16 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.13.3-1.9
+{Bugs Fixed}
+* Incorrect name of Manyullyn
+{Features Changed}
+* New Creative Tab GUI Textures
+{Translations}
+* Added Arabic Support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.13.2-1.9
+{Bugs Fixed}
+* Chain boots appear in the crafting table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.13.1-1.9
 {Features Changed}
 * Chainmail's recipe

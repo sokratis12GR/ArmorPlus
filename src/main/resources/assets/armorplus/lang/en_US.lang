@@ -128,10 +128,10 @@ item.KnightSlimeLeggings.name=Knight Slime Leggings
 item.KnightSlimeBoots.name=Knight Slime Boots
 
 #ManyullynArmor
-item.ManyullymHelmet.name=Manyullym Helmet
-item.ManyullymChestplate.name=Manyullym Chestplate
-item.ManyullymLeggings.name=Manyullym Leggings
-item.ManyullymBoots.name=Manyullym Boots
+item.ManyullynHelmet.name=Manyullyn Helmet
+item.ManyullynChestplate.name=Manyullyn Chestplate
+item.ManyullynLeggings.name=Manyullyn Leggings
+item.ManyullynBoots.name=Manyullyn Boots
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
@@ -160,8 +160,8 @@ achievement.armorplus.craftCobaltArmor=The Tinkers' Armors!
 achievement.armorplus.craftCobaltArmor.desc=Craft a Cobalt Armor Piece
 achievement.armorplus.craftArditeArmor=The Stronger The Better!
 achievement.armorplus.craftArditeArmor.desc=Craft a Ardite Armor Piece
-achievement.armorplus.craftManyullymArmor=The Tinkers' Armors God!
-achievement.armorplus.craftManyullymArmor.desc=Craft a Manyullym Armor Piece
+achievement.armorplus.craftManyullynArmor=The Tinkers' Armors God!
+achievement.armorplus.craftManyullynArmor.desc=Craft a Manyullyn Armor Piece
 achievement.armorplus.craftPigIronArmor=Oink!
 achievement.armorplus.craftPigIronArmor.desc=Craft a Pig Iron Armor Piece
 achievement.armorplus.craftKnightSlimeArmor=Fascinating!

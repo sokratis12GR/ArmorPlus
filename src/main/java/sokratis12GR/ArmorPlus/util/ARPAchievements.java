@@ -35,7 +35,7 @@ public class ARPAchievements {
     /** Tinkers' Construct */
     public static Achievement craftCobaltArmor;
     public static Achievement craftArditeArmor;
-    public static Achievement craftManyullymArmor;
+    public static Achievement craftManyullynArmor;
     public static Achievement craftPigIronArmor;
     public static Achievement craftKnightSlimeArmor;
 
@@ -60,7 +60,7 @@ public class ARPAchievements {
         /** Tinkers' Construct */
         craftCobaltArmor = new AchievementARP("craftCobaltArmor", -2, 0, CobaltArmor.chestplate, craftCoalArmor).setNormalCrafting();
         craftArditeArmor = new AchievementARP("craftArditeArmor", -4, 0, ArditeArmor.chestplate, craftCobaltArmor).setNormalCrafting();
-        craftManyullymArmor = new AchievementARP("craftManyullymArmor", -6, 0, ManyullymArmor.chestplate, craftArditeArmor).setNormalCrafting();
+        craftManyullynArmor = new AchievementARP("craftManyullynArmor", -6, 0, ManyullynArmor.chestplate, craftArditeArmor).setNormalCrafting();
         craftPigIronArmor = new AchievementARP("craftPigIronArmor", -2, -2, PigIronArmor.chestplate, craftCobaltArmor).setNormalCrafting();
         craftKnightSlimeArmor = new AchievementARP("craftKnightSlimeArmor", -2, 2, KnightSlimeArmor.chestplate, craftCobaltArmor).setNormalCrafting();
 

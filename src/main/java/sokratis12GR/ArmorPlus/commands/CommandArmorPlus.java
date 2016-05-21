@@ -75,6 +75,10 @@ public class CommandArmorPlus implements ICommand {
         sender.addChatMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct"));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
+        if (!Loader.isModLoaded("tconstruct"))
+        {
+            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Some Armor's Recipes Might Not Work"));
+        }
         if (sender == server) {
             sender.addChatMessage(new TextComponentString("[" + "Minecraft Version" + " (" + server.getMinecraftVersion() + ")" + "]"));
         } else {

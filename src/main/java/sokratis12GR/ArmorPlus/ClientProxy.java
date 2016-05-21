@@ -23,7 +23,7 @@ public class ClientProxy extends CommonProxy {
         ins.CUSTOM_ARMOR.registerRenderers();
         ins.COBALT_ARMOR.registerRenderers();
         ins.ARDITE_ARMOR.registerRenderers();
-        ins.MANYULLYM_ARMOR.registerRenderers();
+        ins.MANYULLYN_ARMOR.registerRenderers();
         ins.PIG_IRON_ARMOR.registerRenderers();
         ins.KNIGHT_SLIME_ARMOR.registerRenderers();
         ModItems.initModels();

@@ -39,7 +39,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.13.1-1.9";
+    public static final String VERSION = "1.13.3-1.9";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -83,7 +83,7 @@ public class ArmorPlus {
     /** Tinkers' Construct Armors */
     CobaltArmor COBALT_ARMOR = new CobaltArmor();
     ArditeArmor ARDITE_ARMOR = new ArditeArmor();
-    ManyullymArmor MANYULLYM_ARMOR = new ManyullymArmor();
+    ManyullynArmor MANYULLYN_ARMOR = new ManyullynArmor();
     PigIronArmor PIG_IRON_ARMOR = new PigIronArmor();
     KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
 
@@ -111,7 +111,7 @@ public class ArmorPlus {
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.load(event);
         ARDITE_ARMOR.load(event);
-        MANYULLYM_ARMOR.load(event);
+        MANYULLYN_ARMOR.load(event);
         PIG_IRON_ARMOR.load(event);
         KNIGHT_SLIME_ARMOR.load(event);
 
@@ -141,7 +141,7 @@ public class ArmorPlus {
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_leggings, 1), new Object[]
                 {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
-                {"XXX", "3X5", "6X8", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
+                {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
                 {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         /** CHAINMAIL (Item) Recipe*/
@@ -177,7 +177,7 @@ public class ArmorPlus {
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.instance = ArmorPlus.instance;
         ARDITE_ARMOR.instance = ArmorPlus.instance;
-        MANYULLYM_ARMOR.instance = ArmorPlus.instance;
+        MANYULLYN_ARMOR.instance = ArmorPlus.instance;
         PIG_IRON_ARMOR.instance = ArmorPlus.instance;
         KNIGHT_SLIME_ARMOR.instance = ArmorPlus.instance;
 
@@ -200,7 +200,7 @@ public class ArmorPlus {
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.preInit(event);
         ARDITE_ARMOR.preInit(event);
-        MANYULLYM_ARMOR.preInit(event);
+        MANYULLYN_ARMOR.preInit(event);
         PIG_IRON_ARMOR.preInit(event);
         KNIGHT_SLIME_ARMOR.preInit(event);
 
