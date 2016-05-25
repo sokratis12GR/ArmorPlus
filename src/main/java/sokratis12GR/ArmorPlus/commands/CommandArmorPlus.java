@@ -3,15 +3,12 @@ package sokratis12GR.ArmorPlus.commands;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.origin.CoalArmor;
 
 import java.util.Collections;
 import java.util.List;
@@ -73,8 +70,9 @@ public class CommandArmorPlus implements ICommand {
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.RED + "[Thank You " + sender.getName() + " For Using " + ArmorPlus.MODNAME + "]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
-        sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct"));
+        sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct\n" + TextFormatting.DARK_GREEN + "WeaponsPlus" ));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
+        sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is WeaponsPlus Loaded: " + Loader.isModLoaded("weaponsplus")));
         if (!Loader.isModLoaded("tconstruct"))
         {
             sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Some Armor's Recipes Might Not Work"));

@@ -49,21 +49,21 @@ public class EmeraldArmor {
         }
         if (ConfigHandler.enableEmeraldArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
+                    {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
+                    {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
+                    {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
+                    {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
+                    {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.emerald, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                    {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -87,7 +87,7 @@ public class EmeraldArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("EMERALDARMOR", ArmorPlus.MODID + ":" + "EmeraldArmor", 35, new int[]
-                {3, 6, 9, 4}, 20, SoundEvents.item_armor_equip_diamond);
+                {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -99,12 +99,12 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldHHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.emerald;
+                return repair.getItem() == Items.EMERALD;
             }
         }).setUnlocalizedName("EmeraldHelmet");
         helmet.setMaxStackSize(1);
@@ -118,12 +118,12 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldCHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.emerald;
+                return repair.getItem() == Items.EMERALD;
             }
         }).setUnlocalizedName("EmeraldChestplate");
         chestplate.setMaxStackSize(1);
@@ -137,12 +137,12 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldLHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.emerald;
+                return repair.getItem() == Items.EMERALD;
             }
         }).setUnlocalizedName("EmeraldLeggings");
         legs.setMaxStackSize(1);
@@ -156,12 +156,12 @@ public class EmeraldArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableEmeraldBHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.digSpeed, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.emerald;
+                return repair.getItem() == Items.EMERALD;
             }
         }).setUnlocalizedName("EmeraldBoots");
         boots.setMaxStackSize(1);

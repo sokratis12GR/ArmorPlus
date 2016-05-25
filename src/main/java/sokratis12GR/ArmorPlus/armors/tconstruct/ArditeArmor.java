@@ -49,10 +49,10 @@ public class ArditeArmor {
                     {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1)});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -75,7 +75,7 @@ public class ArditeArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ARDITEARMOR", ArmorPlus.MODID + ":" + "ArditeArmor", 55, new int[]
-                {4, 8, 10, 4}, 30, SoundEvents.item_armor_equip_diamond);
+                {4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

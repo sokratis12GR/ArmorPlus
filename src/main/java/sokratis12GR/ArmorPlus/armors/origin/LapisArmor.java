@@ -51,35 +51,35 @@ public class LapisArmor {
         if (ConfigHandler.enableLapisArmorRecipes) {
             if (ConfigHandler.expensiveLapisRecipe) {
                 GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
                 GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
                 GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
                 GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
                 GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
                 GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.lapis_block, 1),});
+                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Blocks.LAPIS_BLOCK, 1),});
             } else if (ConfigHandler.cheapLapisRecipe) {
                 GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"XXX", "LLL", "LXL", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
                 GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"LLL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
                 GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"LXL", "LLL", "LLL", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
                 GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"LLL", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
                 GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"XXX", "LXL", "LXL", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
                 GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),});
+                        {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
             }
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -101,7 +101,7 @@ public class LapisArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAPISARMOR", ArmorPlus.MODID + ":" + "LapisArmor", 11, new int[]
-                {1, 3, 5, 2}, 25, SoundEvents.item_armor_equip_gold);
+                {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -112,12 +112,12 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisHBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.lapis_block);
+                return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
         }).setUnlocalizedName("LapisHelmet");
         helmet.setMaxStackSize(1);
@@ -129,12 +129,12 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisCBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.lapis_block);
+                return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
         }).setUnlocalizedName("LapisChestplate");
         chestplate.setMaxStackSize(1);
@@ -146,12 +146,12 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisLBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.lapis_block);
+                return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
         }).setUnlocalizedName("LapisLeggings");
         legs.setMaxStackSize(1);
@@ -163,12 +163,12 @@ public class LapisArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisBBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.lapis_block);
+                return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
         }).setUnlocalizedName("LapisBoots");
         boots.setMaxStackSize(1);

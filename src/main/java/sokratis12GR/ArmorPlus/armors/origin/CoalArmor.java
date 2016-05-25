@@ -12,6 +12,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -49,21 +50,21 @@ public class CoalArmor {
         }
         if (ConfigHandler.enableCoalArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.coal, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -85,7 +86,7 @@ public class CoalArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COALARMOR", ArmorPlus.MODID + ":" + "CoalArmor", 7, new int[]
-                {1, 2, 3, 1}, 8, SoundEvents.item_armor_equip_leather);
+                {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -96,12 +97,12 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalHNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.coal;
+                return repair.getItem() == Items.COAL;
             }
         }).setUnlocalizedName("CoalHelmet");
         helmet.setMaxStackSize(1);
@@ -114,12 +115,12 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalCNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.coal;
+                return repair.getItem() == Items.COAL;
             }
         }).setUnlocalizedName("CoalChestplate");
         chestplate.setMaxStackSize(1);
@@ -132,12 +133,12 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalLNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.coal;
+                return repair.getItem() == Items.COAL;
             }
         }).setUnlocalizedName("CoalLeggings");
         legs.setMaxStackSize(1);
@@ -150,12 +151,12 @@ public class CoalArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalBNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.nightVision, 240, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.coal;
+                return repair.getItem() == Items.COAL;
             }
         }).setUnlocalizedName("CoalBoots");
         boots.setMaxStackSize(1);

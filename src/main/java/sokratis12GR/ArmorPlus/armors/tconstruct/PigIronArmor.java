@@ -52,10 +52,10 @@ public class PigIronArmor {
                     {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4)});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -77,7 +77,7 @@ public class PigIronArmor {
     }
 
     static {
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("PIGIRONARMOR", ArmorPlus.MODID + ":" + "PigIronArmor", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.item_armor_equip_diamond);
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("PIGIRONARMOR", ArmorPlus.MODID + ":" + "PigIronArmor", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override

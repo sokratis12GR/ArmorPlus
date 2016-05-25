@@ -19,53 +19,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ARPAchievements {
-    public static AchievementPage arpAchievementPage;
+    public static AchievementPage ARP_ACHIEVEMENT_PAGE;
 
-    public static Achievement craftCoalArmor;//0,0
-    public static Achievement craftLapisArmor;//0,2
-    public static Achievement craftRedstoneArmor;//0,-2
-    public static Achievement craftEmeraldArmor;//0,-4
-    public static Achievement craftObsidianArmor;//2,0
-    public static Achievement craftLavaArmor;//4,0
-    public static Achievement craftSuperStarArmor;//6,0
-    public static Achievement craftEnderDragonArmor;//8,0
-    public static Achievement craftGuardianArmor;//0,4
-    public static Achievement craftTheUltimateArmor;//10,0
-    public static Achievement craftReinforcedArmor;//2,-2
+    public static Achievement CRAFT_COAL_ARMOR;//0,0
+    public static Achievement CRAFT_LAPIS_ARMOR;//0,2
+    public static Achievement CRAFT_REDSTONE_ARMOR;//0,-2
+    public static Achievement CRAFT_EMERALD_ARMOR;//0,-4
+    public static Achievement CRAFT_OBSIDIAN_ARMOR;//2,0
+    public static Achievement CRAFT_LAVA_ARMOR;//4,0
+    public static Achievement CRAFT_SUPER_STAR_ARMOR;//6,0
+    public static Achievement CRAFT_ENDER_DRAGON_ARMOR;//8,0
+    public static Achievement CRAFT_GUARDIAN_ARMOR;//0,4
+    public static Achievement CRAFT_THE_ULTIMATE_ARMOR;//10,0
+    public static Achievement CRAFT_REINFORCED_ARMOR;//2,-2
     /** Tinkers' Construct */
-    public static Achievement craftCobaltArmor;
-    public static Achievement craftArditeArmor;
-    public static Achievement craftManyullynArmor;
-    public static Achievement craftPigIronArmor;
-    public static Achievement craftKnightSlimeArmor;
+    public static Achievement CRAFT_COBALT_ARMOR;
+    public static Achievement CRAFT_ARDITE_ARMOR;
+    public static Achievement CRAFT_MANYULLYN_ARMOR;
+    public static Achievement CRAFT_PIG_IRON_ARMOR;
+    public static Achievement CRAFT_KNIGHT_SLIME_ARMOR;
 
     public static void init() {
         /** Center */
-        craftCoalArmor = new AchievementARP("craftCoalArmor", 0, 0, CoalArmor.helmet, AchievementList.openInventory).setNormalCrafting();
+        CRAFT_COAL_ARMOR = new AchievementARP("CRAFT_COAL_ARMOR", 0, 0, CoalArmor.helmet, AchievementList.OPEN_INVENTORY).setNormalCrafting();
         /** Bottom */
-        craftLapisArmor = new AchievementARP("craftLapisArmor", 0, 2, LapisArmor.helmet, craftCoalArmor).setNormalCrafting();
-        craftGuardianArmor = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.helmet, craftLapisArmor).setNormalCrafting();
+        CRAFT_LAPIS_ARMOR = new AchievementARP("CRAFT_LAPIS_ARMOR", 0, 2, LapisArmor.helmet, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_GUARDIAN_ARMOR = new AchievementARP("CRAFT_GUARDIAN_ARMOR", 0, 4, GuardianArmor.helmet, CRAFT_LAPIS_ARMOR).setNormalCrafting();
         /** Top */
-        craftRedstoneArmor = new AchievementARP("craftRedstoneArmor", 0, -2, RedstoneArmor.boots, craftCoalArmor).setNormalCrafting();
-        craftEmeraldArmor = new AchievementARP("craftEmeraldArmor", 0, -4, EmeraldArmor.chestplate, craftRedstoneArmor).setNormalCrafting();
+        CRAFT_REDSTONE_ARMOR = new AchievementARP("CRAFT_REDSTONE_ARMOR", 0, -2, RedstoneArmor.boots, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_EMERALD_ARMOR = new AchievementARP("CRAFT_EMERALD_ARMOR", 0, -4, EmeraldArmor.chestplate, CRAFT_LAPIS_ARMOR).setNormalCrafting();
         /** Top-Right */
-        craftReinforcedArmor = new AchievementARP("craftReinforcedArmor", 2, -2, RDArmor.chestplate, craftCoalArmor).setNormalCrafting();
+        CRAFT_REINFORCED_ARMOR = new AchievementARP("CRAFT_REINFORCED_ARMOR", 2, -2, RDArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
         /** Right */
-        craftObsidianArmor = new AchievementARP("craftObsidianArmor", 2, 0, ObsidianArmor.chestplate, craftCoalArmor).setNormalCrafting();
-        craftLavaArmor = new AchievementARP("craftLavaArmor", 4, 0, LavaArmor.chestplate, craftObsidianArmor).setNormalCrafting();
-        craftSuperStarArmor = new AchievementARP("craftSuperStarArmor", 6, 0, SuperStarArmor.chestplate, craftLavaArmor).setNormalCrafting();
-        craftEnderDragonArmor = new AchievementARP("craftEnderDragonArmor", 8, 0, EnderDragonArmor.chestplate, AchievementList.theEnd2).setNormalCrafting();
-        craftTheUltimateArmor = new AchievementARP("craftTheUltimateArmor", 10, 0, TheUltimateArmor.chestplate, craftEnderDragonArmor).setNormalCrafting();
+        CRAFT_OBSIDIAN_ARMOR = new AchievementARP("CRAFT_OBSIDIAN_ARMOR", 2, 0, ObsidianArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_LAVA_ARMOR = new AchievementARP("CRAFT_LAVA_ARMOR", 4, 0, LavaArmor.chestplate, CRAFT_OBSIDIAN_ARMOR).setNormalCrafting();
+        CRAFT_SUPER_STAR_ARMOR = new AchievementARP("CRAFT_SUPER_STAR_ARMOR", 6, 0, SuperStarArmor.chestplate, CRAFT_LAVA_ARMOR).setNormalCrafting();
+        CRAFT_ENDER_DRAGON_ARMOR = new AchievementARP("CRAFT_ENDER_DRAGON_ARMOR", 8, 0, EnderDragonArmor.chestplate, AchievementList.THE_END2).setNormalCrafting();
+        CRAFT_THE_ULTIMATE_ARMOR = new AchievementARP("CRAFT_THE_ULTIMATE_ARMOR", 10, 0, TheUltimateArmor.chestplate, CRAFT_ENDER_DRAGON_ARMOR).setNormalCrafting();
         /** Left */
         /** Tinkers' Construct */
-        craftCobaltArmor = new AchievementARP("craftCobaltArmor", -2, 0, CobaltArmor.chestplate, craftCoalArmor).setNormalCrafting();
-        craftArditeArmor = new AchievementARP("craftArditeArmor", -4, 0, ArditeArmor.chestplate, craftCobaltArmor).setNormalCrafting();
-        craftManyullynArmor = new AchievementARP("craftManyullynArmor", -6, 0, ManyullynArmor.chestplate, craftArditeArmor).setNormalCrafting();
-        craftPigIronArmor = new AchievementARP("craftPigIronArmor", -2, -2, PigIronArmor.chestplate, craftCobaltArmor).setNormalCrafting();
-        craftKnightSlimeArmor = new AchievementARP("craftKnightSlimeArmor", -2, 2, KnightSlimeArmor.chestplate, craftCobaltArmor).setNormalCrafting();
+        CRAFT_COBALT_ARMOR = new AchievementARP("CRAFT_COBALT_ARMOR", -2, 0, CobaltArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_ARDITE_ARMOR = new AchievementARP("CRAFT_ARDITE_ARMOR", -4, 0, ArditeArmor.chestplate, CRAFT_COBALT_ARMOR).setNormalCrafting();
+        CRAFT_MANYULLYN_ARMOR = new AchievementARP("CRAFT_MANYULLYN_ARMOR", -6, 0, ManyullynArmor.chestplate, CRAFT_ARDITE_ARMOR).setNormalCrafting();
+        CRAFT_PIG_IRON_ARMOR = new AchievementARP("CRAFT_PIG_IRON_ARMOR", -2, -2, PigIronArmor.chestplate, CRAFT_COBALT_ARMOR).setNormalCrafting();
+        CRAFT_KNIGHT_SLIME_ARMOR = new AchievementARP("CRAFT_KNIGHT_SLIME_ARMOR", -2, 2, KnightSlimeArmor.chestplate, CRAFT_COBALT_ARMOR).setNormalCrafting();
 
-        arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
-        AchievementPage.registerAchievementPage(arpAchievementPage);
+        ARP_ACHIEVEMENT_PAGE = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
+        AchievementPage.registerAchievementPage(ARP_ACHIEVEMENT_PAGE);
 
     }
 

@@ -4,8 +4,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 

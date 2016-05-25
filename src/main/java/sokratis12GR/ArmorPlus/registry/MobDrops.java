@@ -5,8 +5,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.Random;
-
 /**
  * Created by Socrates on 4/4/2016.
  */

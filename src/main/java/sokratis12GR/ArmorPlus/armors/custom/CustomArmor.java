@@ -42,21 +42,21 @@ public class CustomArmor {
         }
         if (ConfigHandler.enableCustomArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.paper, 1)});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.PAPER, 1)});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -79,7 +79,7 @@ public class CustomArmor {
 
     static {
         /** Default */
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("CUSTOMARMOR", ArmorPlus.MODID + ":" + "CustomArmor/armor", 1, new int[]{1, 1, 1, 1}, 30, SoundEvents.item_armor_equip_chain);
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("CUSTOMARMOR", ArmorPlus.MODID + ":" + "CustomArmor/armor", 1, new int[]{1, 1, 1, 1}, 30, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F);
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
@@ -91,7 +91,7 @@ public class CustomArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
+                return repair.getItem() == Items.PAPER;
             }
         }).setUnlocalizedName("CustomHelmet");
         helmet.setMaxStackSize(1);
@@ -105,7 +105,7 @@ public class CustomArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
+                return repair.getItem() == Items.PAPER;
             }
         }).setUnlocalizedName("CustomChestplate");
         chestplate.setMaxStackSize(1);
@@ -119,7 +119,7 @@ public class CustomArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
+                return repair.getItem() == Items.PAPER;
             }
         }).setUnlocalizedName("CustomLeggings");
         legs.setMaxStackSize(1);
@@ -134,7 +134,7 @@ public class CustomArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.paper;
+                return repair.getItem() == Items.PAPER;
             }
         }).setUnlocalizedName("CustomBoots");
         boots.setMaxStackSize(1);

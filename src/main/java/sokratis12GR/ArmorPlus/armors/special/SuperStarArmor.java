@@ -50,21 +50,21 @@ public class SuperStarArmor {
         }
         if (ConfigHandler.enableSuperStarArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.nether_star, 1),
+                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.NETHER_STAR, 1),
                             new ItemStack(ObsidianArmor.helmet, 2),});
             GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.nether_star, 1),
+                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.NETHER_STAR, 1),
                             new ItemStack(ObsidianArmor.chestplate, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.nether_star, 1),
+                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.NETHER_STAR, 1),
                             new ItemStack(ObsidianArmor.legs, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.nether_star, 1),
+                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.NETHER_STAR, 1),
                             new ItemStack(ObsidianArmor.boots, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -86,7 +86,7 @@ public class SuperStarArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("SUPERSTARARMOR", ArmorPlus.MODID + ":" + "SuperStarArmor", 50, new int[]
-                {5, 9, 12, 6}, 30, SoundEvents.item_armor_equip_diamond);
+                {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -98,12 +98,12 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("SuperStarHelmet");
         helmet.setMaxStackSize(1);
@@ -116,12 +116,12 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("SuperStarChestplate");
         chestplate.setMaxStackSize(1);
@@ -134,12 +134,12 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarLRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("SuperStarLeggings");
         legs.setMaxStackSize(1);
@@ -152,12 +152,12 @@ public class SuperStarArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarBRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.regeneration, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("SuperStarBoots");
         boots.setMaxStackSize(1);

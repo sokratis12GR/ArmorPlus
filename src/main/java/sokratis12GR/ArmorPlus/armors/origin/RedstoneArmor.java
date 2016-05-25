@@ -48,21 +48,21 @@ public class RedstoneArmor {
         }
         if (ConfigHandler.enableRedstoneArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
+                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
+                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
+                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
+                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
+                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.redstone_block, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -84,7 +84,7 @@ public class RedstoneArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "RedstoneArmor", 11, new int[]
-                {1, 3, 5, 2}, 25, SoundEvents.item_armor_equip_gold);
+                {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -96,12 +96,12 @@ public class RedstoneArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.redstone_block);
+                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
             }
         }).setUnlocalizedName("RedstoneHelmet");
         helmet.setMaxStackSize(1);
@@ -113,12 +113,12 @@ public class RedstoneArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.redstone_block);
+                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
             }
         }).setUnlocalizedName("RedstoneChestplate");
         chestplate.setMaxStackSize(1);
@@ -130,12 +130,12 @@ public class RedstoneArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.redstone_block);
+                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
             }
         }).setUnlocalizedName("RedstoneLeggings");
         legs.setMaxStackSize(1);
@@ -147,12 +147,12 @@ public class RedstoneArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.moveSpeed, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true , true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.redstone_block);
+                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
             }
         }).setUnlocalizedName("RedstoneBoots");
         boots.setMaxStackSize(1);

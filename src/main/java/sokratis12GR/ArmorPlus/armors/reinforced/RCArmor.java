@@ -41,26 +41,26 @@ public class RCArmor {
         if (ConfigHandler.enableReinforcedArmorsRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "RRR", "RIR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_helmet, 1),});
+                            new ItemStack(Items.CHAINMAIL_HELMET, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"RRR", "RIR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_helmet, 1),});
+                            new ItemStack(Items.CHAINMAIL_HELMET, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
                     {"RIR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_chestplate, 1),});
+                            new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
                     {"RRR", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_leggings, 1),});
+                            new ItemStack(Items.CHAINMAIL_LEGGINGS, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"XXX", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_boots, 1),});
+                            new ItemStack(Items.CHAINMAIL_BOOTS, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"RIR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.chainmail_boots, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                            new ItemStack(Items.CHAINMAIL_BOOTS, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -84,7 +84,7 @@ public class RCArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("RCARMOR", ArmorPlus.MODID + ":" + "RCArmor", 18, new int[]
-                {2, 5, 6, 3}, 30, SoundEvents.item_armor_equip_chain);
+                {2, 5, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {

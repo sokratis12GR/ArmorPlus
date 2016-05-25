@@ -11,22 +11,32 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sokratis12GR.ArmorPlus.armors.custom.CustomArmor;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.custom.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.resources.*;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
+import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -39,7 +49,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.13.3-1.9";
+    public static final String VERSION = "2.0.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -47,7 +57,7 @@ public class ArmorPlus {
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs tabArmorPlus = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
+    public static CreativeTabs TAB_ARMORPLUS = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
     public GuiHandler GuiHandler = new GuiHandler();
 
@@ -132,25 +142,25 @@ public class ArmorPlus {
                             new ItemStack(GuardianArmor.boots, 1),});
         }
         /** CHAINMAIL Armor Recipes*/
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
                 {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_helmet, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
                 {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_chestplate, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), new Object[]
                 {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_leggings, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), new Object[]
                 {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), new Object[]
                 {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[]
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), new Object[]
                 {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
         /** CHAINMAIL (Item) Recipe*/
         GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), new Object[]
-                {"SSX", "SXS", "XSS", Character.valueOf('S'), new ItemStack(Items.iron_ingot, 1),});
+                {"SSX", "SXS", "XSS", Character.valueOf('S'), new ItemStack(Items.IRON_INGOT, 1),});
         /** Reinforcing Material (Item) Recipe*/
         GameRegistry.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 2), new Object[]
-                {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.string, 1), Character.valueOf('B'),
-                        new ItemStack(Items.slime_ball, 1),});
+                {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.STRING, 1), Character.valueOf('B'),
+                        new ItemStack(Items.SLIME_BALL, 1),});
     }
 
     @EventHandler

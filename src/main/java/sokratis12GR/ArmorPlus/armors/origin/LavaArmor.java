@@ -49,21 +49,21 @@ public class LavaArmor {
         }
         if (ConfigHandler.enableLavaArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.lava_bucket, 1),
+                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.helmet, 2),});
             GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.lava_bucket, 1),
+                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.chestplate, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.lava_bucket, 1),
+                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.legs, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.lava_bucket, 1),
+                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.boots, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -85,7 +85,7 @@ public class LavaArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("LAVAARMOR", ArmorPlus.MODID + ":" + "LavaArmor", 45, new int[]
-                {4, 8, 11, 6}, 28, SoundEvents.item_armor_equip_diamond);
+                {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -97,15 +97,15 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaHFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("LavaHelmet");
         helmet.setMaxStackSize(1);
@@ -118,16 +118,16 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaCFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
 
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("LavaChestplate");
         chestplate.setMaxStackSize(1);
@@ -140,15 +140,15 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaLFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("LavaLeggings");
         legs.setMaxStackSize(1);
@@ -161,15 +161,15 @@ public class LavaArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.resistance, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaBFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.fireResistance, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.obsidian);
+                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
         }).setUnlocalizedName("LavaBoots");
         boots.setMaxStackSize(1);

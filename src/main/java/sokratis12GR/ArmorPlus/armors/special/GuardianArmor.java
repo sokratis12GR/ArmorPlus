@@ -46,21 +46,21 @@ public class GuardianArmor {
         }
         if (ConfigHandler.enableGuardianArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "PPP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"XXX", "PPP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"PPP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"PPP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"PXP", "PPP", "PPP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"PXP", "PPP", "PPP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"PPP", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"PPP", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
+                    {"XXX", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"PXP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.prismarine_shard, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                    {"PXP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
     }
 
@@ -82,7 +82,7 @@ public class GuardianArmor {
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("GUARDIANARMOR", ArmorPlus.MODID + ":" + "GuardianArmor", 50, new int[]
-                {4, 8, 11, 6}, 28, SoundEvents.item_armor_equip_diamond);
+                {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -93,12 +93,12 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianHEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.prismarine_shard;
+                return repair.getItem() == Items.PRISMARINE_SHARD;
             }
         }).setUnlocalizedName("GuardianHelmet");
         helmet.setMaxStackSize(1);
@@ -110,12 +110,12 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianCEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.prismarine_shard;
+                return repair.getItem() == Items.PRISMARINE_SHARD;
             }
         }).setUnlocalizedName("GuardianChestplate");
         chestplate.setMaxStackSize(1);
@@ -127,12 +127,12 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianLEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.prismarine_shard;
+                return repair.getItem() == Items.PRISMARINE_SHARD;
             }
         }).setUnlocalizedName("GuardianLeggings");
         legs.setMaxStackSize(1);
@@ -144,12 +144,12 @@ public class GuardianArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableGuardianBEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullGuardianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.waterBreathing, 120, 0, true, true));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.prismarine_shard;
+                return repair.getItem() == Items.PRISMARINE_SHARD;
             }
         }).setUnlocalizedName("GuardianBoots");
         boots.setMaxStackSize(1);

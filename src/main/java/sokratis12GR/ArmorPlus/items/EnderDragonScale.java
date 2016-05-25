@@ -15,7 +15,7 @@ public class EnderDragonScale extends Item {
         setRegistryName("EnderDragonScale");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("EnderDragonScale");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorPlus);
+        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     @SideOnly(Side.CLIENT)

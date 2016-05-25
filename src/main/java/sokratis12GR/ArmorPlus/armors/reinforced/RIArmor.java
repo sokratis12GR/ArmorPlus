@@ -41,26 +41,26 @@ public class RIArmor {
         if (ConfigHandler.enableReinforcedArmorsRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "RRR", "RIR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_helmet, 1),});
+                            new ItemStack(Items.IRON_HELMET, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"RRR", "RIR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_helmet, 1),});
+                            new ItemStack(Items.IRON_HELMET, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
                     {"RIR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_chestplate, 1),});
+                            new ItemStack(Items.IRON_CHESTPLATE, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
                     {"RRR", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_leggings, 1),});
+                            new ItemStack(Items.IRON_LEGGINGS, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"XXX", "RIR", "RXR", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_boots, 1),});
+                            new ItemStack(Items.IRON_BOOTS, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"RIR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
-                            new ItemStack(Items.iron_boots, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+                            new ItemStack(Items.IRON_BOOTS, 1),});
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -84,7 +84,7 @@ public class RIArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("RIARMOR", ArmorPlus.MODID + ":" + "RIArmor", 18, new int[]
-        {3, 6, 7, 3}, 30, SoundEvents.item_armor_equip_iron);
+        {3, 6, 7, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
@@ -92,7 +92,7 @@ public class RIArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.iron_ingot;
+                return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RIHelmet");
         helmet.setMaxStackSize(1);
@@ -101,7 +101,7 @@ public class RIArmor {
             {
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.iron_ingot;
+                return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RIChestplate");
         chestplate.setMaxStackSize(1);
@@ -111,7 +111,7 @@ public class RIArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.iron_ingot;
+                return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RILeggings");
         legs.setMaxStackSize(1);
@@ -121,7 +121,7 @@ public class RIArmor {
 
             }
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.iron_ingot;
+                return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RIBoots");
         boots.setMaxStackSize(1);

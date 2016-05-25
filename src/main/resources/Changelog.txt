@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.0.0
+{Minecraft Version}
+* Ported to Minecraft 1.9.4
+{Features Changed}
+* Added Armor Toughness to some Armors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.13.3-1.9
 {Bugs Fixed}
 * Incorrect name of Manyullyn
@@ -18,7 +24,7 @@ ArmorPlus 1.13.1-1.9
 ArmorPlus 1.13.0-1.9
 {Features Added}
 * The Ability to disable the recipes for the Tinkers' Construct armors
-* Strength 2 Has been Added to the Manyullym Armor
+* Strength 2 Has been Added to the Manyullyn Armor
 * New Armors
 ** Pig Iron Armor (Full set effects gives you Saturation)
 ** Knight Slime Armor (Full set effects gives you Haste 2)
@@ -29,13 +35,13 @@ ArmorPlus 1.13.0-1.9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.12.2-1.9
 {Bugs Fixed}
-* Manyullym recipe
+* Manyullyn recipe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.12.1-1.9
 {Features Added}
 * Added an option in the config to make the lapis armor use lapis lazuli item or lapis lazuli blocks
 {Bugs Fixed}
-* Manyullym Armor's Texture And Names to error
+* Manyullyn Armor's Texture And Names to error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.12.0-1.9
 {Features Added}

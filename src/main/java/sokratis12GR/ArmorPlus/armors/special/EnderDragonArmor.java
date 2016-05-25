@@ -53,10 +53,10 @@ public class EnderDragonArmor {
                     {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
-            helmet.setCreativeTab(ArmorPlus.tabArmorPlus);
-            chestplate.setCreativeTab(ArmorPlus.tabArmorPlus);
-            legs.setCreativeTab(ArmorPlus.tabArmorPlus);
-            boots.setCreativeTab(ArmorPlus.tabArmorPlus);
+            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
 
     }
@@ -80,7 +80,7 @@ public class EnderDragonArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ENDERDRAGONARMOR", ArmorPlus.MODID + ":" + "EnderDragonArmor", 60, new int[]
-                {5, 9, 12, 6}, 30, SoundEvents.item_armor_equip_diamond);
+                {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
