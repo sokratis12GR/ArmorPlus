@@ -92,8 +92,9 @@ achievement.armorplus.craftGuardianArmor.desc=Crear una Pieza de Armadura de Gua
 achievement.armorplus.craftTheUltimateArmor=¡El Poder Supremo!
 achievement.armorplus.craftTheUltimateArmor.desc=Crear una Pieza de Armadura Suprema
 
-#CONSOLE LOG
-info.armorplus.console.config.refresh=Refrescando el archivo de configuración.
-info.armorplus.console.load.preInit=Empezar pre-inicialización
-info.armorplus.console.load.init=Empezar inicialización
-info.armorplus.console.load.postInit=Empezar post-inicialización
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=[ArmorPlus] Refreshing configuration file.
+info.armorplus.console.load.preInit=[ArmorPlus] Begin Pre-initialization
+info.armorplus.console.load.init=[ArmorPlus] Begin Initialization
+info.armorplus.console.load.postInit=[ArmorPlus] Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

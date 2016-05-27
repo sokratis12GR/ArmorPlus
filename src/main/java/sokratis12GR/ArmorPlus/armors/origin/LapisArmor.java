@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -116,6 +118,11 @@ public class LapisArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_BLUE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
@@ -131,6 +138,11 @@ public class LapisArmor {
                 if (ConfigHandler.enableLapisCBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_BLUE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -150,6 +162,11 @@ public class LapisArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_BLUE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
             }
@@ -165,6 +182,11 @@ public class LapisArmor {
                 if (ConfigHandler.enableLapisBBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_BLUE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

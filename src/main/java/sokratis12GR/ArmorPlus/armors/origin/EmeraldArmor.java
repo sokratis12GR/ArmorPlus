@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -103,6 +105,11 @@ public class EmeraldArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.EMERALD;
             }
@@ -120,6 +127,11 @@ public class EmeraldArmor {
                 if (ConfigHandler.enableEmeraldCHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -141,6 +153,11 @@ public class EmeraldArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.EMERALD;
             }
@@ -158,6 +175,11 @@ public class EmeraldArmor {
                 if (ConfigHandler.enableEmeraldBHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

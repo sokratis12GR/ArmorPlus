@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -99,7 +101,13 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.WHITE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -117,7 +125,13 @@ public class SuperStarArmor {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.WHITE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -133,9 +147,15 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarLRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.WHITE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -151,9 +171,15 @@ public class SuperStarArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarBRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.WHITE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

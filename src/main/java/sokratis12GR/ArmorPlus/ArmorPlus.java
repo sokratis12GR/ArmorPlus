@@ -49,7 +49,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "2.0.0";
+    public static final String VERSION = "2.1.1";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -96,6 +96,7 @@ public class ArmorPlus {
     ManyullynArmor MANYULLYN_ARMOR = new ManyullynArmor();
     PigIronArmor PIG_IRON_ARMOR = new PigIronArmor();
     KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
+    // player.getHealth()
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -165,7 +166,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Loader.isModLoaded("tconstruct");
         ModItems.init();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         COAL_ARMOR.instance = ArmorPlus.instance;
@@ -215,7 +215,7 @@ public class ArmorPlus {
         KNIGHT_SLIME_ARMOR.preInit(event);
 
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
-        configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
+        configDir = new File(event.getModConfigurationDirectory() + "/" + "sokratis12GR's Mods" + "/" +  ArmorPlus.MODID);
         configDir.mkdirs();
         textureDir = new File("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "/assets/armorplus/textures/models/armor/CustomArmor");
         textureDir.mkdirs();

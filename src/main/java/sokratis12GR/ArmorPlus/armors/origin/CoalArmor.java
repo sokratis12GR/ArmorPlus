@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -101,6 +103,12 @@ public class CoalArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.COAL;
             }
@@ -117,6 +125,11 @@ public class CoalArmor {
                 if (ConfigHandler.enableCoalCNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
@@ -137,6 +150,11 @@ public class CoalArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.COAL;
             }
@@ -153,6 +171,11 @@ public class CoalArmor {
                 if (ConfigHandler.enableCoalBNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

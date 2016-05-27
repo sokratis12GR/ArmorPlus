@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -104,6 +106,12 @@ public class LavaArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
@@ -126,6 +134,12 @@ public class LavaArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
@@ -147,6 +161,12 @@ public class LavaArmor {
                 }
             }
 
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
             }
@@ -167,6 +187,12 @@ public class LavaArmor {
                     ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
             }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);

@@ -7,6 +7,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.Loader;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 
@@ -73,14 +74,11 @@ public class CommandArmorPlus implements ICommand {
         sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct\n" + TextFormatting.DARK_GREEN + "WeaponsPlus" ));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is WeaponsPlus Loaded: " + Loader.isModLoaded("weaponsplus")));
+        sender.addChatMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
+
         if (!Loader.isModLoaded("tconstruct"))
         {
-            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Some Armor's Recipes Might Not Work"));
-        }
-        if (sender == server) {
-            sender.addChatMessage(new TextComponentString("[" + "Minecraft Version" + " (" + server.getMinecraftVersion() + ")" + "]"));
-        } else {
-            return;
+            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Tinkers' Construct Armor Recipes wont work until Tinkers' Construct update to 1.9.4"));
         }
     }
 }

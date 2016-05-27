@@ -34,7 +34,7 @@ public class Logger {
 
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.html"), "utf-8"));
+                    new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.html"), "utf-8"));
             writer.write("<html>" + "<head><title>ArmorPlus</title></head>" + "<body><div style=\"background-color:#1A1A1A\">");
             writer.write("<h2 style=\"color:#DEDEDE;text-align:center\">" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</h2>");
             writer.write("<h2 style=\"color:#DEDEDE;text-align:center\"><u>" + ArmorPlus.MODNAME + "</u></h2>");
@@ -55,7 +55,7 @@ public class Logger {
 
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.txt"), "utf-8"));
+                    new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.txt"), "utf-8"));
             writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't Modify Or Delete These Files: " + "ArmorPlus.txt" + ", " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]");
         } catch (IOException ex) {
             // report
@@ -66,7 +66,7 @@ public class Logger {
         }
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlusItems.txt"), "utf-8"));
+                    new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlusItems.txt"), "utf-8"));
             writer.write("1. Coal Armor: " + CoalArmor.helmet.getRegistryName() + " , " + CoalArmor.chestplate.getRegistryName() + " , " + CoalArmor.legs.getRegistryName() + " , " + CoalArmor.boots.getRegistryName());
             writer.write("\n\n2. Lapis Armor: " + LapisArmor.helmet.getRegistryName() + " , " + LapisArmor.chestplate.getRegistryName() + " , " + LapisArmor.legs.getRegistryName() + " , " + LapisArmor.boots.getRegistryName());
             writer.write("\n\n3. Redstone Armor: " + RedstoneArmor.helmet.getRegistryName() + " , " + RedstoneArmor.chestplate.getRegistryName() + " , " + RedstoneArmor.legs.getRegistryName() + " , " + RedstoneArmor.boots.getRegistryName());

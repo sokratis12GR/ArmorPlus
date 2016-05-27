@@ -7,6 +7,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -88,6 +90,12 @@ public class KnightSlimeArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_PURPLE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
         }).setUnlocalizedName("KnightSlimeHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
@@ -97,6 +105,11 @@ public class KnightSlimeArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_PURPLE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
         }).setUnlocalizedName("KnightSlimeChestplate");
         chestplate.setMaxStackSize(1);
@@ -108,6 +121,11 @@ public class KnightSlimeArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_PURPLE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
         }).setUnlocalizedName("KnightSlimeLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
@@ -118,6 +136,11 @@ public class KnightSlimeArmor {
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
+            }
+
+            @Override
+            public String getItemStackDisplayName(ItemStack stack) {
+                return (TextFormatting.DARK_PURPLE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
         }).setUnlocalizedName("KnightSlimeBoots");
         boots.setMaxStackSize(1);

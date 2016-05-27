@@ -1,4 +1,30 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.1.1
+{Bugs Fixed}
+* Fixed French support being invalid
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.1.0
+{Features Changed}
+* The command /armorplus has been updated and changed a bit
+* Now the init phases of the mod can be indicated with [ArmorPlus]
+{Features Added}
+* Almost all the Armors now have colored names
+* The Super Star Armor Now is immune to Wither Effect
+* The Ultimate Armor Now is immune to Wither Effect
+{Bugs Fixed}
+* ItemCreativeTab was throwing an error for missing json file (Removed the Item, useless)
+* Fixed Achievements not working properly
+{Language}
+* Added Arabic Support
+* Added French Support
+* Updated Lang Files with the latest information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.0.1
+{Features Changed}
+* Changed the Configuration files path
+{Bugs Fixed}
+* Fixed Configuration Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 2.0.0
 {Minecraft Version}
 * Ported to Minecraft 1.9.4

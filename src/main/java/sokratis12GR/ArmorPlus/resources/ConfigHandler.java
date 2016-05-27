@@ -135,7 +135,7 @@ public class ConfigHandler {
 
     public static void syncConfig() {
         String category;
-        category = "Recipes";
+        category = "Recipes".toLowerCase();
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
                 "Enable/Disable The Coal Armor Recipes");
         enableLapisArmorRecipes = config.getBoolean("enableLapisArmorRecipes", category, true,
@@ -173,7 +173,7 @@ public class ConfigHandler {
 
 
         /** Coal Armor*/
-        category = "CoalArmor";
+        category = "CoalArmor".toLowerCase();
         enableCoalHNightVision = config.getBoolean("enableCoalHNightVision", category, true,
                 "Enable/Disable The Coal Helmet NightVision");
         enableCoalCNightVision = config.getBoolean("enableCoalCNightVision", category, true,
@@ -187,7 +187,7 @@ public class ConfigHandler {
                 "Enable/Disable The Full Coal Armor Effect");
 
         /** Lapis Armor*/
-        category = "LapisArmor";
+        category = "LapisArmor".toLowerCase();
         enableLapisHBreathing = config.getBoolean("enableLapisHBreathing", category, true,
                 "Enable/Disable The Lapis Helmet Water Breathing");
         enableLapisCBreathing = config.getBoolean("enableLapisCBreathing", category, true,
@@ -206,7 +206,7 @@ public class ConfigHandler {
                 "Sets the Lapis Armor Recipe to require Lapis Lazuli (Items)");
 
         /** Redstone Armor*/
-        category = "RedstoneArmor";
+        category = "RedstoneArmor".toLowerCase();
         enableRedstoneHSpeed = config.getBoolean("enableRedstoneHSpeed", category, true,
                 "Enable/Disable The Redstone Helmet Speed");
         enableRedstoneCSpeed = config.getBoolean("enableRedstoneCeSpeed", category, true,
@@ -221,7 +221,7 @@ public class ConfigHandler {
 
 
         /** Emerald Armor*/
-        category = "EmeraldArmor";
+        category = "EmeraldArmor".toLowerCase();
         enableEmeraldHHaste = config.getBoolean("enableEmeraldHHaste", category, true,
                 "Enable/Disable The Emerald Helmet Haste");
         enableEmeraldCHaste = config.getBoolean("enableEmeraldCHaste", category, true,
@@ -236,7 +236,7 @@ public class ConfigHandler {
 
 
         /** Obsidian Armor*/
-        category = "ObsidianArmor";
+        category = "ObsidianArmor".toLowerCase();
         enableObsidianHResistance = config.getBoolean("enableObsidianHResistance", category, true,
                 "Enable/Disable The Obsidian Helmet Resistance");
         enableObsidianCResistance = config.getBoolean("enableObsidianCResistance", category, true,
@@ -250,7 +250,7 @@ public class ConfigHandler {
                 "Enable/Disable The Full Obsidian Armor Effect");
 
         /** Lava Armor*/
-        category = "LavaArmor";
+        category = "LavaArmor".toLowerCase();
         /** Lava Armor Resistance*/
         enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
                 "Enable/Disable The Lava Helmet Resistance");
@@ -274,7 +274,7 @@ public class ConfigHandler {
                 "Enable/Disable The Full Lava Armor Effect");
 
         /** Super Star Armor*/
-        category = "SuperStarArmor";
+        category = "SuperStarArmor".toLowerCase();
         enableSuperStarHRegen = config.getBoolean("enableSuperStarHRegen", category, true,
                 "Enable/Disable The Super Star Helmet Regeneration");
         enableSuperStarCRegen = config.getBoolean("enableSuperStarCRegen", category, true,
@@ -287,7 +287,7 @@ public class ConfigHandler {
         enableFullSuperStarArmorEffect = config.getBoolean("enableFullSuperStarArmorEffect", category, false,
                 "Enable/Disable The Full Super Star Armor Effect");
 
-        category = "GuardianArmor";
+        category = "GuardianArmor".toLowerCase();
         enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
                 "Enable/Disable Guardian Helmet Effects");
         enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,
@@ -302,10 +302,10 @@ public class ConfigHandler {
 
 
         /** Flight Ability*/
-        category = "FlightAbility";
+        category = "FlightAbility".toLowerCase();
         enableFlightAbility = config.getBoolean("enableFlightAbility", category, true, "Enable/Disable The Armors Flight");
 
-        category = "EffectLevel";
+        category = "EffectLevel".toLowerCase();
         emeraldArmorEffectlevel = config.getInt("emeraldArmorEffectlevel", category, 1, 0, 10, "Set the level of the Haste effect by the Emerald Armor.");
         obsidianArmorEffectlevel = config.getInt("obsidianArmorEffectlevel", category, 0, 0, 10, "Set the level of the Resistance effect by the Obsidian Armor.");
         redstoneArmorEffectlevel = config.getInt("redstoneArmorEffectlevel", category, 1, 0, 10, "Set the level of the Swiftness effect by the Redstone Armor.");

@@ -155,9 +155,9 @@ achievement.armorplus.craftGuardianArmor.desc=Fertige ein Beschützer-Ruestungst
 achievement.armorplus.craftTheUltimateArmor=Die Ultimative Macht!
 achievement.armorplus.craftTheUltimateArmor.desc=Fertige ein ultimatives Ruestungsteil an
 
-#CONSOLE LOG
-info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
-info.armorplus.console.load.preInit=Starte Pre-Initialisierung
-info.armorplus.console.load.init=Starte Initialisierung
-info.armorplus.console.load.postInit=Starte Post-Initialisierung
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt enthält einen Fehler
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=[ArmorPlus] Refreshing configuration file.
+info.armorplus.console.load.preInit=[ArmorPlus] Begin Pre-initialization
+info.armorplus.console.load.init=[ArmorPlus] Begin Initialization
+info.armorplus.console.load.postInit=[ArmorPlus] Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
