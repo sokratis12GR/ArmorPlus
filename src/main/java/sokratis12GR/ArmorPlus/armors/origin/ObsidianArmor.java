@@ -61,11 +61,11 @@ public class ObsidianArmor {
                     {"XXX", "OXO", "OXO", Character.valueOf('O'), new ItemStack(Blocks.OBSIDIAN, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"OXO", "OXO", "XXX", Character.valueOf('O'), new ItemStack(Blocks.OBSIDIAN, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

@@ -57,12 +57,11 @@ public class RIArmor {
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"RIR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(ModItems.REINFORCING_MATERIAL, 1), Character.valueOf('I'),
                             new ItemStack(Items.IRON_BOOTS, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
-
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -84,32 +83,33 @@ public class RIArmor {
     static {
 
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("RIARMOR", ArmorPlus.MODID + ":" + "RIArmor", 18, new int[]
-        {3, 6, 7, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+                {3, 6, 7, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RIHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-            {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.IRON_INGOT;
             }
         }).setUnlocalizedName("RIChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack)
-            {
+            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
 
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.IRON_INGOT;
             }
@@ -120,6 +120,7 @@ public class RIArmor {
 
 
             }
+
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
                 return repair.getItem() == Items.IRON_INGOT;
             }

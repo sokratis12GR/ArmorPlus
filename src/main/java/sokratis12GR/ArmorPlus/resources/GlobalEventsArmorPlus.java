@@ -8,6 +8,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.FoodStats;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -188,8 +190,13 @@ public class GlobalEventsArmorPlus {
             }
             /**Full Pig Iron Armor*/
             if (head != null && head.getItem() == PigIronArmor.helmet && chest != null && chest.getItem() == PigIronArmor.chestplate && legs != null && legs.getItem() == PigIronArmor.legs && feet != null && feet.getItem() == PigIronArmor.boots) {
-                if (entity instanceof EntityLivingBase)
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SATURATION, 120, 0, true, true));
+                if (entity instanceof EntityLivingBase && entity.getFoodStats().needFood()) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 0, true, true));
+                    head.damageItem(1, entity);
+                    chest.damageItem(1, entity);
+                    legs.damageItem(1, entity);
+                    feet.damageItem(1, entity);
+                }
             }
             /**Full Knight Slime Armor*/
             if (head != null && head.getItem() == KnightSlimeArmor.helmet && chest != null && chest.getItem() == KnightSlimeArmor.chestplate && legs != null && legs.getItem() == KnightSlimeArmor.legs && feet != null && feet.getItem() == KnightSlimeArmor.boots) {

@@ -12,6 +12,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -41,25 +42,26 @@ public class ManyullynArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:ManyullynBoots", "inventory"));
         }
-        if (ConfigHandler.enableManyullynArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        if (!Loader.isModLoaded("tconstruct")) {
+            if (ConfigHandler.enableManyullynArmorRecipes) {
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                        {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+                GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                        {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+                GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                        {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                        {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2)});
+            }
         }
-
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

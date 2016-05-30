@@ -1,5 +1,6 @@
 package sokratis12GR.ArmorPlus.resources;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -126,7 +127,6 @@ public class ConfigHandler {
     public static boolean enablePigIronArmorRecipes;
     public static boolean enableKnightSlimeArmorRecipes;
 
-
     public static void init(File file) {
         config = new Configuration(file);
 
@@ -171,9 +171,9 @@ public class ConfigHandler {
         enableKnightSlimeArmorRecipes = config.getBoolean("enableKnightSlimeArmorRecipes", category, true,
                 "Enable/Disable The Knight Slime Armors Recipes");
 
-
         /** Coal Armor*/
         category = "CoalArmor".toLowerCase();
+        config.isChild = true;
         enableCoalHNightVision = config.getBoolean("enableCoalHNightVision", category, true,
                 "Enable/Disable The Coal Helmet NightVision");
         enableCoalCNightVision = config.getBoolean("enableCoalCNightVision", category, true,
@@ -188,6 +188,7 @@ public class ConfigHandler {
 
         /** Lapis Armor*/
         category = "LapisArmor".toLowerCase();
+        config.isChild = true;
         enableLapisHBreathing = config.getBoolean("enableLapisHBreathing", category, true,
                 "Enable/Disable The Lapis Helmet Water Breathing");
         enableLapisCBreathing = config.getBoolean("enableLapisCBreathing", category, true,
@@ -207,6 +208,7 @@ public class ConfigHandler {
 
         /** Redstone Armor*/
         category = "RedstoneArmor".toLowerCase();
+        config.isChild = true;
         enableRedstoneHSpeed = config.getBoolean("enableRedstoneHSpeed", category, true,
                 "Enable/Disable The Redstone Helmet Speed");
         enableRedstoneCSpeed = config.getBoolean("enableRedstoneCeSpeed", category, true,
@@ -222,6 +224,7 @@ public class ConfigHandler {
 
         /** Emerald Armor*/
         category = "EmeraldArmor".toLowerCase();
+        config.isChild = true;
         enableEmeraldHHaste = config.getBoolean("enableEmeraldHHaste", category, true,
                 "Enable/Disable The Emerald Helmet Haste");
         enableEmeraldCHaste = config.getBoolean("enableEmeraldCHaste", category, true,
@@ -237,6 +240,7 @@ public class ConfigHandler {
 
         /** Obsidian Armor*/
         category = "ObsidianArmor".toLowerCase();
+        config.isChild = true;
         enableObsidianHResistance = config.getBoolean("enableObsidianHResistance", category, true,
                 "Enable/Disable The Obsidian Helmet Resistance");
         enableObsidianCResistance = config.getBoolean("enableObsidianCResistance", category, true,
@@ -251,6 +255,7 @@ public class ConfigHandler {
 
         /** Lava Armor*/
         category = "LavaArmor".toLowerCase();
+        config.isChild = true;
         /** Lava Armor Resistance*/
         enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
                 "Enable/Disable The Lava Helmet Resistance");
@@ -275,6 +280,7 @@ public class ConfigHandler {
 
         /** Super Star Armor*/
         category = "SuperStarArmor".toLowerCase();
+        config.isChild = true;
         enableSuperStarHRegen = config.getBoolean("enableSuperStarHRegen", category, true,
                 "Enable/Disable The Super Star Helmet Regeneration");
         enableSuperStarCRegen = config.getBoolean("enableSuperStarCRegen", category, true,
@@ -288,6 +294,7 @@ public class ConfigHandler {
                 "Enable/Disable The Full Super Star Armor Effect");
 
         category = "GuardianArmor".toLowerCase();
+        config.isChild = true;
         enableGuardianHEffects = config.getBoolean("enableGuardianHEffects", category, true,
                 "Enable/Disable Guardian Helmet Effects");
         enableGuardianCEffects = config.getBoolean("enableGuardianCEffects", category, true,
@@ -315,10 +322,6 @@ public class ConfigHandler {
         superstarArmorEffectlevel = config.getInt("superstarArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by the Super Star Armor.");
         /** The Ultimate Armor Effects */
         ultimateArmorEffectlevel = config.getInt("ultimateArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by The Ultimate Armor.");
-
-        /** Tinkers' Construct Armors */
-        category = "TinkersConstruct";
-
 
         //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
         //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)

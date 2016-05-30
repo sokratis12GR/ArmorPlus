@@ -22,6 +22,9 @@ public class ConfigGui extends GuiConfig {
 
         /** adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
         list.add(new ConfigElement(ConfigHandler.config.getCategory("Recipes".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("EffectLevel".toLowerCase())));
+
         list.add(new ConfigElement(ConfigHandler.config.getCategory("CoalArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("LapisArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("RedstoneArmor".toLowerCase())));
@@ -29,10 +32,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("ObsidianArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("EffectLevel".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("CustomArmor".toLowerCase())));
         return list;
     }
 }

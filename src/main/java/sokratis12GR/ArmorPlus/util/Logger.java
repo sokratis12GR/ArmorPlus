@@ -81,41 +81,12 @@ public class Logger {
             writer.write("\n\n12. Reinforced Chain Armor: " + RCArmor.helmet.getRegistryName() + " , " + RCArmor.chestplate.getRegistryName() + " , " + RCArmor.legs.getRegistryName() + " , " + RCArmor.boots.getRegistryName());
             writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
             writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
-            writer.write("\n\n15. Custom Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
-            writer.write("\n\n16. Cobalt Armor: " + CobaltArmor.helmet.getRegistryName() + " , " + CobaltArmor.chestplate.getRegistryName() + " , " + CobaltArmor.legs.getRegistryName() + " , " + CobaltArmor.boots.getRegistryName());
-            writer.write("\n\n17. Ardite  Armor: " + ArditeArmor.helmet.getRegistryName() + " , " + ArditeArmor.chestplate.getRegistryName() + " , " + ArditeArmor.legs.getRegistryName() + " , " + ArditeArmor.boots.getRegistryName());
-            writer.write("\n\n18. Manyullyn Armor: " + ManyullynArmor.helmet.getRegistryName() + " , " + ManyullynArmor.chestplate.getRegistryName() + " , " + ManyullynArmor.legs.getRegistryName() + " , " + ManyullynArmor.boots.getRegistryName());
-            writer.write("\n\n19. Pig Iron Armor: " + PigIronArmor.helmet.getRegistryName() + " , " + PigIronArmor.chestplate.getRegistryName() + " , " + PigIronArmor.legs.getRegistryName() + " , " + PigIronArmor.boots.getRegistryName());
-            writer.write("\n\n20. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
+            writer.write("\n\n15. Cobalt Armor: " + CobaltArmor.helmet.getRegistryName() + " , " + CobaltArmor.chestplate.getRegistryName() + " , " + CobaltArmor.legs.getRegistryName() + " , " + CobaltArmor.boots.getRegistryName());
+            writer.write("\n\n16. Ardite  Armor: " + ArditeArmor.helmet.getRegistryName() + " , " + ArditeArmor.chestplate.getRegistryName() + " , " + ArditeArmor.legs.getRegistryName() + " , " + ArditeArmor.boots.getRegistryName());
+            writer.write("\n\n17. Manyullyn Armor: " + ManyullynArmor.helmet.getRegistryName() + " , " + ManyullynArmor.chestplate.getRegistryName() + " , " + ManyullynArmor.legs.getRegistryName() + " , " + ManyullynArmor.boots.getRegistryName());
+            writer.write("\n\n18. Pig Iron Armor: " + PigIronArmor.helmet.getRegistryName() + " , " + PigIronArmor.chestplate.getRegistryName() + " , " + PigIronArmor.legs.getRegistryName() + " , " + PigIronArmor.boots.getRegistryName());
+            writer.write("\n\n19. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
             writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName());
-        } catch (IOException ex) {
-            // report
-        } finally {
-            try {
-                writer.close();
-            } catch (Exception ex) {/*ignore*/}
-        }
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "/assets/armorplus/textures/models/armor/CustomArmor" + "/" + "README.txt"), "utf-8"));
-            writer.write("To Create custom textures for the custom armor you need to create 2 image files with the names \n" + "CustomArmor_layer_1.png\n" + "CustomArmor_layer_2.png\n" + "Here is an example of both files: \n" + "http://i.imgur.com/T24FrdX.png\n" + "http://i.imgur.com/k5QGOba.png \n" + "By sokratis12GR");
-        } catch (IOException ex) {
-            // report
-        } finally {
-            try {
-                writer.close();
-            } catch (Exception ex) {/*ignore*/}
-        }
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "pack.mcmeta"), "utf-8"));
-            writer.write("{ \n" +
-                    "\t\"pack\" : \n" +
-                    "\t{ \n" +
-                    "\t\t\"pack_format\" : 2, \n" +
-                    "\t\t\"description\" : \"Custom Armor Textures for ArmorPlus\" \n" +
-                    "\t} \n" +
-                    "}");
         } catch (IOException ex) {
             // report
         } finally {

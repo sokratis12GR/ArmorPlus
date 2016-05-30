@@ -78,11 +78,11 @@ public class LapisArmor {
                 GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                         {"LXL", "LXL", "XXX", Character.valueOf('L'), new ItemStack(Items.DYE, 1, 4),});
             }
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

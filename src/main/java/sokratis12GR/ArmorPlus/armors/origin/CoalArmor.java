@@ -63,11 +63,11 @@ public class CoalArmor {
                     {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

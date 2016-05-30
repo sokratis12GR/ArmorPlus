@@ -55,12 +55,11 @@ public class EnderDragonArmor {
                     {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
-
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

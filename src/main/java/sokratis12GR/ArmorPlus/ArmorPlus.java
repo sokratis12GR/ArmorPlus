@@ -6,7 +6,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -20,16 +19,9 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12GR.ArmorPlus.armors.custom.CustomArmor;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.*;
+import sokratis12GR.ArmorPlus.armors.special.*;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
@@ -49,7 +41,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "2.1.1";
+    public static final String VERSION = "2.2.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -88,9 +80,10 @@ public class ArmorPlus {
     RGArmor RG_ARMOR = new RGArmor();
     RDArmor RD_ARMOR = new RDArmor();
     RCArmor RC_ARMOR = new RCArmor();
-    CustomArmor CUSTOM_ARMOR = new CustomArmor();
 
-    /** Tinkers' Construct Armors */
+    /**
+     * Tinkers' Construct Armors
+     */
     CobaltArmor COBALT_ARMOR = new CobaltArmor();
     ArditeArmor ARDITE_ARMOR = new ArditeArmor();
     ManyullynArmor MANYULLYN_ARMOR = new ManyullynArmor();
@@ -117,8 +110,6 @@ public class ArmorPlus {
         RG_ARMOR.load(event);
         RD_ARMOR.load(event);
         RC_ARMOR.load(event);
-        CUSTOM_ARMOR.load(event);
-
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.load(event);
         ARDITE_ARMOR.load(event);
@@ -182,7 +173,6 @@ public class ArmorPlus {
         RG_ARMOR.instance = ArmorPlus.instance;
         RD_ARMOR.instance = ArmorPlus.instance;
         RC_ARMOR.instance = ArmorPlus.instance;
-        CUSTOM_ARMOR.instance = ArmorPlus.instance;
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.instance = ArmorPlus.instance;
@@ -205,7 +195,6 @@ public class ArmorPlus {
         RG_ARMOR.preInit(event);
         RD_ARMOR.preInit(event);
         RC_ARMOR.preInit(event);
-        CUSTOM_ARMOR.preInit(event);
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.preInit(event);
@@ -215,10 +204,8 @@ public class ArmorPlus {
         KNIGHT_SLIME_ARMOR.preInit(event);
 
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
-        configDir = new File(event.getModConfigurationDirectory() + "/" + "sokratis12GR's Mods" + "/" +  ArmorPlus.MODID);
+        configDir = new File(event.getModConfigurationDirectory() + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        textureDir = new File("resourcepacks" + "/" + ArmorPlus.MODID + "/" + "/assets/armorplus/textures/models/armor/CustomArmor");
-        textureDir.mkdirs();
         sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);

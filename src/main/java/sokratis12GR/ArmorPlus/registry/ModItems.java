@@ -24,5 +24,6 @@ public class ModItems {
         ENDER_DRAGON_SCALE.initModel();
         CHAINMAIL.initModel();
         REINFORCING_MATERIAL.initModel();
+
     }
 }

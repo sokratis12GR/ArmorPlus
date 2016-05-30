@@ -62,11 +62,11 @@ public class LavaArmor {
             GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
                     {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.boots, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {

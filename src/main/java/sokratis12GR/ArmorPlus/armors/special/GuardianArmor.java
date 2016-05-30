@@ -59,11 +59,11 @@ public class GuardianArmor {
                     {"XXX", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"PXP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
-            helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-            boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
 
     public void preInit(FMLPreInitializationEvent event) {
