@@ -1,4 +1,21 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPLus 2.3.0
+{Features Added}
+* Mob Drops
+** The Wither Boss now will also drop 6 Wither Bones
+** The Elder Guardian now will also drop 6 Guardian Scales
+* New Items
+** "Guardian Scale"
+** "Wither Bone"
+** "The Ultimate Material"
+* Now you will need to kill 4 Elder Guardians to obtain the Guardian Armor
+* Now you will need to kill 4 Wither Bosses to obtain the Super Star Armor
+{Features Changed}
+* Changed the amount that the Reinforced Material Recipes from 2 to 4
+* The Recipes for the Guardian Armor Changed, now requires the "Guardian Scale" in order to be crafted
+* The Recipes for the Super Star Armor Changed, now requires "Wither Bones" + Nether Stars in order to be crafted
+* The Recipes for the "The Ultimate" Armor Changed, now requires the "The Ultimate Material" + the other armors like before in order to be crafted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 2.2.0
 {Features Changed}
 * Balanced Pig Iron Armor's Saturation, now it will cost durability on use

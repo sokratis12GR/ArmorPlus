@@ -49,7 +49,6 @@ item.SuperStarLeggings.name=Super Star Leggings
 item.SuperStarBoots.name=Super Star Boots
 
 #EnderDragonArmor
-item.EnderDragonScale.name=Ender Dragon Scale
 item.EnderDragonHelmet.name=Ender Dragon Helmet
 item.EnderDragonChestplate.name=Ender Dragon Chestplate
 item.EnderDragonLeggings.name=Ender Dragon Leggings
@@ -66,12 +65,6 @@ item.TheUltimateHelmet.name=The Ultimate Helmet
 item.TheUltimateChestplate.name=The Ultimate Chestplate
 item.TheUltimateLeggings.name=The Ultimate Leggings
 item.TheUltimateBoots.name=The Ultimate Boots
-
-#Chainmail
-item.Chainmail.name=Chainmail
-
-#ReinforcingMaterial
-item.ReinforcingMaterial.name=Reinforcing Material
 
 #ReinforcedIronArmor
 item.RIHelmet.name=Reinforced Iron Helmet
@@ -132,6 +125,16 @@ item.ManyullynHelmet.name=Manyullyn Helmet
 item.ManyullynChestplate.name=Manyullyn Chestplate
 item.ManyullynLeggings.name=Manyullyn Leggings
 item.ManyullynBoots.name=Manyullyn Boots
+
+#Items
+item.Chainmail.name=Chainmail
+item.ReinforcingMaterial.name=Reinforcing Material
+
+#Special Items
+item.WitherBone.name=Wither Bone
+item.TheUltimateMaterial.name=The Ultimate Material
+item.EnderDragonScale.name=Ender Dragon Scale
+item.GuardianScale.name=Guardian Scale
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

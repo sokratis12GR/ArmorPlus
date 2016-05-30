@@ -41,7 +41,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "2.2.0";
+    public static final String VERSION = "2.3.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -122,16 +122,16 @@ public class ArmorPlus {
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new Object[]
                     {new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1),
-                            new ItemStack(GuardianArmor.helmet, 1),});
+                            new ItemStack(GuardianArmor.helmet, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new Object[]
                     {new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1),
-                            new ItemStack(GuardianArmor.chestplate, 1),});
+                            new ItemStack(GuardianArmor.chestplate, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.legs, 1), new Object[]
                     {new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1),
-                            new ItemStack(GuardianArmor.legs, 1),});
+                            new ItemStack(GuardianArmor.legs, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.boots, 1), new Object[]
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
-                            new ItemStack(GuardianArmor.boots, 1),});
+                            new ItemStack(GuardianArmor.boots, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
         }
         /** CHAINMAIL Armor Recipes*/
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
@@ -150,9 +150,12 @@ public class ArmorPlus {
         GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), new Object[]
                 {"SSX", "SXS", "XSS", Character.valueOf('S'), new ItemStack(Items.IRON_INGOT, 1),});
         /** Reinforcing Material (Item) Recipe*/
-        GameRegistry.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 2), new Object[]
+        GameRegistry.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), new Object[]
                 {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.STRING, 1), Character.valueOf('B'),
                         new ItemStack(Items.SLIME_BALL, 1),});
+        /** The Ultimate Material */
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), new Object[]
+                {new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), new ItemStack(ModItems.GUARDIAN_SCALE, 1), new ItemStack(ModItems.WITHER_BONE, 1),});
     }
 
     @EventHandler

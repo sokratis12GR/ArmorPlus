@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -48,17 +49,17 @@ public class GuardianArmor {
         }
         if (ConfigHandler.enableGuardianArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "PPP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"XXX", "GGG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"PPP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"GGG", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"PXP", "PPP", "PPP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"GXG", "GGG", "GGG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"PPP", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"GGG", "GXG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "PXP", "PXP", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"XXX", "GXG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"PXP", "PXP", "XXX", Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1),});
+                    {"GXG", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1),});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -105,7 +106,7 @@ public class GuardianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.PRISMARINE_SHARD;
+                return repair.getItem() == ModItems.GUARDIAN_SCALE;
             }
         }).setUnlocalizedName("GuardianHelmet");
         helmet.setMaxStackSize(1);
@@ -127,7 +128,7 @@ public class GuardianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.PRISMARINE_SHARD;
+                return repair.getItem() == ModItems.GUARDIAN_SCALE;
             }
         }).setUnlocalizedName("GuardianChestplate");
         chestplate.setMaxStackSize(1);
@@ -149,7 +150,7 @@ public class GuardianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.PRISMARINE_SHARD;
+                return repair.getItem() == ModItems.GUARDIAN_SCALE;
             }
         }).setUnlocalizedName("GuardianLeggings");
         legs.setMaxStackSize(1);
@@ -171,7 +172,7 @@ public class GuardianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.PRISMARINE_SHARD;
+                return repair.getItem() == ModItems.GUARDIAN_SCALE;
             }
         }).setUnlocalizedName("GuardianBoots");
         boots.setMaxStackSize(1);

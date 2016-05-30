@@ -61,9 +61,6 @@ item.GuardianChestplate.name=Peto del Guardián
 item.GuardianLeggings.name=Grebas del Guardián
 item.GuardianBoots.name=Botas del Guardián
 
-#ArmorWorkshop
-tile.ArmorWorkshop.name=Taller de Armadura (WIP)
-
 #TheUltimateArmor
 item.TheUltimateHelmet.name=El Casco Supremo
 item.TheUltimateChestplate.name=El Peto Supremo

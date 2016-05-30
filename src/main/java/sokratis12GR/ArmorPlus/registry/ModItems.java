@@ -8,22 +8,35 @@ import sokratis12GR.ArmorPlus.items.*;
 
 public class ModItems {
 
-    public static EnderDragonScale ENDER_DRAGON_SCALE;
     public static Chainmail CHAINMAIL;
     public static ReinforcingMaterial REINFORCING_MATERIAL;
+    /** Special Items */
+    public static GuardianScale GUARDIAN_SCALE;
+    public static WitherBone WITHER_BONE;
+    public static EnderDragonScale ENDER_DRAGON_SCALE;
+    public static TheUltimateMaterial THE_ULTIMATE_MATERIAL;
+
 
     public static void init() {
-        ENDER_DRAGON_SCALE = new EnderDragonScale();
         CHAINMAIL = new Chainmail();
         REINFORCING_MATERIAL = new ReinforcingMaterial();
+        /** Special Items */
+        GUARDIAN_SCALE = new GuardianScale();
+        WITHER_BONE = new WitherBone();
+        ENDER_DRAGON_SCALE = new EnderDragonScale();
+        THE_ULTIMATE_MATERIAL = new TheUltimateMaterial();
+
         Item.REGISTRY.containsKey(new ResourceLocation("tconstruct", "ingots"));
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        ENDER_DRAGON_SCALE.initModel();
         CHAINMAIL.initModel();
         REINFORCING_MATERIAL.initModel();
-
+        /** Special Items */
+        GUARDIAN_SCALE.initModel();
+        WITHER_BONE.initModel();
+        ENDER_DRAGON_SCALE.initModel();
+        THE_ULTIMATE_MATERIAL.initModel();
     }
 }

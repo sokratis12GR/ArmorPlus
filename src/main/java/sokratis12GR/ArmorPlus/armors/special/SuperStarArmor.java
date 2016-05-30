@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.ObsidianArmor;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -51,18 +52,18 @@ public class SuperStarArmor {
                     new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
         }
         if (ConfigHandler.enableSuperStarArmorRecipes) {
-            GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.NETHER_STAR, 1),
-                            new ItemStack(ObsidianArmor.helmet, 2),});
-            GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.NETHER_STAR, 1),
-                            new ItemStack(ObsidianArmor.chestplate, 1),});
-            GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.NETHER_STAR, 1),
-                            new ItemStack(ObsidianArmor.legs, 1),});
-            GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
-                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.NETHER_STAR, 1),
-                            new ItemStack(ObsidianArmor.boots, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "WWW", "WNW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"WWW", "WNW", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"WNW", "WWW", "WWW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"WWW", "WNW", "WXW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "WNW", "WXW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"WNW", "WXW", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -111,7 +112,7 @@ public class SuperStarArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.WITHER_BONE;
             }
         }).setUnlocalizedName("SuperStarHelmet");
         helmet.setMaxStackSize(1);
@@ -135,7 +136,7 @@ public class SuperStarArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.WITHER_BONE;
             }
         }).setUnlocalizedName("SuperStarChestplate");
         chestplate.setMaxStackSize(1);
@@ -159,7 +160,7 @@ public class SuperStarArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.WITHER_BONE;
             }
         }).setUnlocalizedName("SuperStarLeggings");
         legs.setMaxStackSize(1);
@@ -183,7 +184,7 @@ public class SuperStarArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.WITHER_BONE;
             }
         }).setUnlocalizedName("SuperStarBoots");
         boots.setMaxStackSize(1);
