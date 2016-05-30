@@ -49,7 +49,6 @@ item.SuperStarLeggings.name=Jambières en Étoile Formidable
 item.SuperStarBoots.name=Bottes en Étoile Formidable
 
 #EnderDragonArmor
-item.EnderDragonScale.name=Écaille du Dragon de l'Ender
 item.EnderDragonHelmet.name=Casque du Dragon de l'Ender
 item.EnderDragonChestplate.name=Plastron du Dragon de l'Ender
 item.EnderDragonLeggings.name=Jambières du Dragon de l'Ender
@@ -66,12 +65,6 @@ item.TheUltimateHelmet.name=La Casque Ultime
 item.TheUltimateChestplate.name=Le Platron Ultime
 item.TheUltimateLeggings.name=Les Jambières Ultimes
 item.TheUltimateBoots.name=Les Bottes Ultimes
-
-#Chainmail
-item.Chainmail.name=mailles
-
-#ReinforcingMaterial
-item.ReinforcingMaterial.name=Matériel de Renforcement
 
 #ReinforcedIronArmor
 item.RIHelmet.name=Casque en Fer Renforcée
@@ -132,6 +125,16 @@ item.ManyullymHelmet.name=Casque en Manyullyn
 item.ManyullymChestplate.name=Plastron en Manyullyn
 item.ManyullymLeggings.name=Jambières en Manyullyn
 item.ManyullymBoots.name=Bottes en Manyullyn
+
+#Items
+item.Chainmail.name=Mailles
+item.ReinforcingMaterial.name=Matériel de Renforcement
+
+#Special Items
+item.WitherBone.name=Os du Wither
+item.TheUltimateMaterial.name=Le Matériel Ultime
+item.EnderDragonScale.name=Écaille du Dragon de l'Ender
+item.GuardianScale.name=Écaille du Guardien
 
 #Achievements
 achievement.armorplus.craftCoalArmor=La Vision d'une Chauve-Souris!
