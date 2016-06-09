@@ -3,7 +3,6 @@ package sokratis12GR.ArmorPlus.armors.special;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -22,7 +21,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.origin.ObsidianArmor;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
@@ -51,7 +49,7 @@ public class SuperStarArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
         }
-        if (ConfigHandler.enableSuperStarArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableSuperStarArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "WWW", "WNW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
@@ -64,6 +62,18 @@ public class SuperStarArmor {
                     {"XXX", "WNW", "WXW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"WNW", "WXW", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableSuperStarArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"WWW", "WSW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1),});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"SXS", "NNN", "WWW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"SWS", "WXW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "WXW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"WXW", "NXN", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

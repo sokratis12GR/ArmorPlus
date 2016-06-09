@@ -2,6 +2,8 @@ package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -42,7 +44,7 @@ public class EnderDragonArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:EnderDragonBoots", "inventory"));
         }
-        if (ConfigHandler.enableEnderDragonArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableEnderDragonArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
@@ -55,6 +57,20 @@ public class EnderDragonArmor {
                     {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1),});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableEnderDragonArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "EEE", "ESE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 5),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"EEE", "ESE", "XXX", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 5),});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"ELE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('L'), new ItemStack(Items.ELYTRA, 1),});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"DED", "EXE", "EXE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('D'), new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "EXE", "ECE", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('C'), new ItemStack(Items.END_CRYSTAL, 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"EXE", "ECE", "XXX", Character.valueOf('E'), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), Character.valueOf('C'), new ItemStack(Items.END_CRYSTAL, 1),});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

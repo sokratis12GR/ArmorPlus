@@ -24,6 +24,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("Recipes".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("EffectLevel".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("TinkersEffects".toLowerCase())));
 
         list.add(new ConfigElement(ConfigHandler.config.getCategory("CoalArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("LapisArmor".toLowerCase())));
@@ -33,6 +34,8 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
+
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("GameModes".toLowerCase())));
         return list;
     }
 }

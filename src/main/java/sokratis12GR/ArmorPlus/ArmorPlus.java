@@ -2,7 +2,9 @@ package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,8 +24,10 @@ import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.*;
 import sokratis12GR.ArmorPlus.armors.special.*;
+import sokratis12GR.ArmorPlus.armors.special.mob.*;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
+import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlusItems;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModItems;
@@ -41,7 +45,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "2.3.0";
+    public static final String VERSION = "2.5.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -50,6 +54,7 @@ public class ArmorPlus {
     public static CommonProxy proxy;
 
     public static CreativeTabs TAB_ARMORPLUS = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
+    public static CreativeTabs TAB_ARMORPLUS_ITEMS = new CreativeTabArmorPlusItems(ArmorPlus.MODID + ".creativeTabItems");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
     public GuiHandler GuiHandler = new GuiHandler();
 
@@ -80,6 +85,8 @@ public class ArmorPlus {
     RGArmor RG_ARMOR = new RGArmor();
     RDArmor RD_ARMOR = new RDArmor();
     RCArmor RC_ARMOR = new RCArmor();
+    ChickenArmor CHICKEN_ARMOR = new ChickenArmor();
+    SlimeArmor SLIME_ARMOR = new SlimeArmor();
 
     /**
      * Tinkers' Construct Armors
@@ -110,6 +117,9 @@ public class ArmorPlus {
         RG_ARMOR.load(event);
         RD_ARMOR.load(event);
         RC_ARMOR.load(event);
+        CHICKEN_ARMOR.load(event);
+        SLIME_ARMOR.load(event);
+
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.load(event);
         ARDITE_ARMOR.load(event);
@@ -133,6 +143,9 @@ public class ArmorPlus {
                     {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
                             new ItemStack(GuardianArmor.boots, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
         }
+        /**
+         *  Origin Armors
+         */
         /** CHAINMAIL Armor Recipes*/
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
                 {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
@@ -156,6 +169,9 @@ public class ArmorPlus {
         /** The Ultimate Material */
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), new Object[]
                 {new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), new ItemStack(ModItems.GUARDIAN_SCALE, 1), new ItemStack(ModItems.WITHER_BONE, 1),});
+        /** Compressed Obsidian */
+        GameRegistry.addRecipe(new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1), new Object[]
+                {"OOO", "OOO", "OOO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
     }
 
     @EventHandler
@@ -176,6 +192,8 @@ public class ArmorPlus {
         RG_ARMOR.instance = ArmorPlus.instance;
         RD_ARMOR.instance = ArmorPlus.instance;
         RC_ARMOR.instance = ArmorPlus.instance;
+        CHICKEN_ARMOR.instance = ArmorPlus.instance;
+        SLIME_ARMOR.instance = ArmorPlus.instance;
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.instance = ArmorPlus.instance;
@@ -198,6 +216,8 @@ public class ArmorPlus {
         RG_ARMOR.preInit(event);
         RD_ARMOR.preInit(event);
         RC_ARMOR.preInit(event);
+        CHICKEN_ARMOR.preInit(event);
+        SLIME_ARMOR.preInit(event);
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.preInit(event);

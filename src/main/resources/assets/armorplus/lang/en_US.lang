@@ -1,7 +1,8 @@
 #en_US.lang File
 
-#CREATIVE TAB
+#CREATIVE TABS
 itemGroup.armorplus.creativeTab=ArmorPlus
+itemGroup.armorplus.creativeTabItems=ArmorPlus
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -126,6 +127,18 @@ item.ManyullynChestplate.name=Manyullyn Chestplate
 item.ManyullynLeggings.name=Manyullyn Leggings
 item.ManyullynBoots.name=Manyullyn Boots
 
+#ChickenArmor
+item.ChickenHelmet.name=Chicken Helmet
+item.ChickenChestplate.name=Chicken Chestplate
+item.ChickenLeggings.name=Chicken Leggings
+item.ChickenBoots.name=Chicken Boots
+
+#SlimeArmor
+item.SlimeHelmet.name=Slime Helmet
+item.SlimeChestplate.name=Slime Chestplate
+item.SlimeLeggings.name=Slime Leggings
+item.SlimeBoots.name=Slime Boots
+
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
@@ -135,6 +148,9 @@ item.WitherBone.name=Wither Bone
 item.TheUltimateMaterial.name=The Ultimate Material
 item.EnderDragonScale.name=Ender Dragon Scale
 item.GuardianScale.name=Guardian Scale
+
+#Expert Items
+item.CompressedObsidian.name=Compressed Obsidian
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

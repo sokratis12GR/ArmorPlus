@@ -18,7 +18,7 @@ public class TheUltimateMaterial extends Item {
         setRegistryName("TheUltimateMaterial");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("TheUltimateMaterial");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
 
     }
 

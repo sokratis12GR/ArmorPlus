@@ -12,7 +12,6 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -42,21 +41,33 @@ public class CobaltArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
         }
-        if (!Loader.isModLoaded("tconstruct")) {
-            if (ConfigHandler.enableCobaltArmorRecipes) {
-                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-                GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                        {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-                GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                        {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-                GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                        {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-                GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                        {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
-            }
+        if (ConfigHandler.easyMode && ConfigHandler.enableCobaltArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0)});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableCobaltArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0)});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

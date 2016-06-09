@@ -4,14 +4,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.*;
+import sokratis12GR.ArmorPlus.armors.special.*;
+import sokratis12GR.ArmorPlus.armors.special.mob.*;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
@@ -86,7 +81,9 @@ public class Logger {
             writer.write("\n\n17. Manyullyn Armor: " + ManyullynArmor.helmet.getRegistryName() + " , " + ManyullynArmor.chestplate.getRegistryName() + " , " + ManyullynArmor.legs.getRegistryName() + " , " + ManyullynArmor.boots.getRegistryName());
             writer.write("\n\n18. Pig Iron Armor: " + PigIronArmor.helmet.getRegistryName() + " , " + PigIronArmor.chestplate.getRegistryName() + " , " + PigIronArmor.legs.getRegistryName() + " , " + PigIronArmor.boots.getRegistryName());
             writer.write("\n\n19. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
-            writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , " + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName());
+            writer.write("\n\n20. Chicken Armor: " + ChickenArmor.helmet.getRegistryName() + " , " + ChickenArmor.chestplate.getRegistryName() + " , " + ChickenArmor.legs.getRegistryName() + " , " + ChickenArmor.boots.getRegistryName());
+            writer.write("\n\n21. Slime Armor: " + SlimeArmor.helmet.getRegistryName() + " , " + SlimeArmor.chestplate.getRegistryName() + " , " + SlimeArmor.legs.getRegistryName() + " , " + SlimeArmor.boots.getRegistryName());
+            writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , " + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.COMPRESSED_OBSIDIAN.getRegistryName());
         } catch (IOException ex) {
             // report
         } finally {

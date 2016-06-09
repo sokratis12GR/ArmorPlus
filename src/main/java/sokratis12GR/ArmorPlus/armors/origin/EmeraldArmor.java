@@ -3,6 +3,7 @@ package sokratis12GR.ArmorPlus.armors.origin;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -49,7 +50,7 @@ public class EmeraldArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:EmeraldBoots", "inventory"));
         }
-        if (ConfigHandler.enableEmeraldArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableEmeraldArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
@@ -63,6 +64,20 @@ public class EmeraldArmor {
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
         }
+        if (ConfigHandler.expertMode && ConfigHandler.enableEmeraldArmorRecipes) {
+        GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+        GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+        GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+        GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+        GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+        GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
+    }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

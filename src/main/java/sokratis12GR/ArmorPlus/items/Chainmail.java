@@ -17,7 +17,7 @@ public class Chainmail extends Item {
         setRegistryName("Chainmail");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("Chainmail");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)

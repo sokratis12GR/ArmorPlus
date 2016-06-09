@@ -1,4 +1,34 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.5.0
+{Features Added}
+* Added Mod Game modes
+** Easy (All the recipes are like the normal ones)
+** Expert (All the recipes are very hard to craft //Not Recommended for beginners)
+* The ability to disable/enable individual tinkers' armors effects
+* Added new Item Compressed Obsidian (Used Only In Expert Mode)
+* Added Separate Creative Tab for the Items (More Organized)
+* Full Ardite Set gives you Fire Resistance
+{Bugs Fixed}
+* Disabling Chicken Armor's Recipes, disables slime armor's recipe as well
+* Fixed Some Crafting Issues
+* Fixed some issues with the config file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPLus 2.4.2
+{Bugs Fixed}
+* Bugs fixed Lava Armor texture being missing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPLus 2.4.1
+{Bugs Fixed}
+* Tinkers' Construct armors recipes don't work even if tinkers' construct is installed/loaded
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPLus 2.4.0
+{Features Changed}
+* Creative Menu changed again
+{Features Added}
+* New Armors
+** Chicken Armor
+** Slime Armor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPLus 2.3.0
 {Features Added}
 * Mob Drops

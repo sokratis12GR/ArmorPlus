@@ -20,6 +20,9 @@ public class ClientProxy extends CommonProxy {
         ins.RG_ARMOR.registerRenderers();
         ins.RD_ARMOR.registerRenderers();
         ins.RC_ARMOR.registerRenderers();
+        ins.CHICKEN_ARMOR.registerRenderers();
+        ins.SLIME_ARMOR.registerRenderers();
+        /** Tinkers' Construct */
         ins.COBALT_ARMOR.registerRenderers();
         ins.ARDITE_ARMOR.registerRenderers();
         ins.MANYULLYN_ARMOR.registerRenderers();

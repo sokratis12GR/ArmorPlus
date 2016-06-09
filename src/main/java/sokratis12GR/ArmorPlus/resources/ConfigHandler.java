@@ -1,6 +1,5 @@
 package sokratis12GR.ArmorPlus.resources;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -126,6 +125,20 @@ public class ConfigHandler {
     public static boolean enableManyullynArmorRecipes;
     public static boolean enablePigIronArmorRecipes;
     public static boolean enableKnightSlimeArmorRecipes;
+    //Their Effects
+    public static boolean enableArditeArmorEffects;
+    public static boolean enableCobaltArmorEffects;
+    public static boolean enableManyullynArmorEffects;
+    public static boolean enablePigIronArmorEffects;
+    public static boolean enableKnightSlimeArmorEffects;
+
+    /** Special - Mob */
+    public static boolean enableChickenArmorRecipes;
+    public static boolean enableSlimeArmorRecipes;
+
+    /** Armor Game Mods */
+    public static boolean easyMode;
+    public static boolean expertMode;
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -170,6 +183,8 @@ public class ConfigHandler {
                 "Enable/Disable The Pig Iron Armors Recipes");
         enableKnightSlimeArmorRecipes = config.getBoolean("enableKnightSlimeArmorRecipes", category, true,
                 "Enable/Disable The Knight Slime Armors Recipes");
+        enableChickenArmorRecipes = config.getBoolean("enableChickenArmorRecipes", category, true, "Enable/Disable The Chicken Armors Recipes");
+        enableSlimeArmorRecipes = config.getBoolean("enableSlimeArmorRecipes", category, true, "Enable/Disable The Slime Armors Recipes");
 
         /** Coal Armor*/
         category = "CoalArmor".toLowerCase();
@@ -322,6 +337,24 @@ public class ConfigHandler {
         superstarArmorEffectlevel = config.getInt("superstarArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by the Super Star Armor.");
         /** The Ultimate Armor Effects */
         ultimateArmorEffectlevel = config.getInt("ultimateArmorEffectlevel", category, 1, 0, 10, "Set the level of the Regeneration effect by The Ultimate Armor.");
+
+        /** Game Modes */
+        category = "GameModes".toLowerCase();
+        easyMode = config.getBoolean("easyMode", category, true, "Sets the Recipe Difficulty to easy");
+        expertMode = config.getBoolean("expertMode", category, false, "Sets the Recipe Difficulty to Expert");
+
+        /** Tinkers' Armors Effects */
+        category = "TinkersEffects".toLowerCase();
+        enableArditeArmorEffects = config.getBoolean("enableArditeArmorEffects", category, true,
+                "Enable/Disable Ardite Armor Effects");
+        enableCobaltArmorEffects = config.getBoolean("enableCobaltArmorEffects", category, true,
+                "Enable/Disable Cobalt Armor Effects ");
+        enableManyullynArmorEffects = config.getBoolean("enableManyullynArmorEffects", category, true,
+                "Enable/Disable Manyullym Armor Effects");
+        enablePigIronArmorEffects = config.getBoolean("enablePigIronArmorEffects", category, true,
+                "Enable/Disable Pig Iron Armor Effects");
+        enableKnightSlimeArmorEffects = config.getBoolean("enableKnightSlimeArmorEffects", category, true,
+                "Enable/Disable Knight Slime Armor Effects");
 
         //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
         //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)

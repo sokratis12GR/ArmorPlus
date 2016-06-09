@@ -12,7 +12,7 @@ public class CreativeTabArmorPlus extends CreativeTabs {
 
     public CreativeTabArmorPlus(String tabLabel) {
         super(tabLabel);
-        setBackgroundImageName(ArmorPlus.MODID + "(WIP)" + ".png"); // Automagically has tab_ applied to it. Make sure you change the texture name.
+        setBackgroundImageName(ArmorPlus.MODID + "(NEW)" + ".png"); // Automagically has tab_ applied to it. Make sure you change the texture name.
     }
 
     public boolean hasSearchBar() {

@@ -18,7 +18,7 @@ public class GuardianScale extends Item {
         setRegistryName("GuardianScale");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("GuardianScale");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
 
     }
 

@@ -3,6 +3,7 @@ package sokratis12GR.ArmorPlus.armors.origin;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -14,7 +15,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -50,7 +50,7 @@ public class CoalArmor {
                     new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
 
         }
-        if (ConfigHandler.enableCoalArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableCoalArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
                     {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
@@ -63,6 +63,20 @@ public class CoalArmor {
                     {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
                     {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableCoalArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

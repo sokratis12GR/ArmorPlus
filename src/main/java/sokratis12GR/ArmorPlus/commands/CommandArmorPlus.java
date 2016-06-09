@@ -7,7 +7,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.Loader;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 
@@ -78,7 +77,7 @@ public class CommandArmorPlus implements ICommand {
 
         if (!Loader.isModLoaded("tconstruct"))
         {
-            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Tinkers' Construct Armor Recipes wont work until Tinkers' Construct update to 1.9.4"));
+            sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Tinkers' Construct Armor Recipes wont work until Tinkers' Construct is Loaded"));
         }
     }
 }

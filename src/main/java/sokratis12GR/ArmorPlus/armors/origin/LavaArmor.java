@@ -49,10 +49,10 @@ public class LavaArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:LavaBoots", "inventory"));
         }
-        if (ConfigHandler.enableLavaArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableLavaArmorRecipes) {
             GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
                     {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1),
-                            new ItemStack(ObsidianArmor.helmet, 2),});
+                            new ItemStack(ObsidianArmor.helmet, 1),});
             GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
                     {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.chestplate, 1),});
@@ -62,6 +62,20 @@ public class LavaArmor {
             GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
                     {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1),
                             new ItemStack(ObsidianArmor.boots, 1),});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableLavaArmorRecipes) {
+            GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new Object[]
+                    {new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1),
+                            new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1),});
+            GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1),
+                            new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1),});
+            GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new Object[]
+                    {new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1),
+                            new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1),});
+            GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new Object[]
+                    {new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1),
+                            new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1),});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

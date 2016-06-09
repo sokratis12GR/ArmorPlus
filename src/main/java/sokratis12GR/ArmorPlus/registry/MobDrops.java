@@ -1,13 +1,9 @@
 package sokratis12GR.ArmorPlus.registry;
 
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGuardian;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 

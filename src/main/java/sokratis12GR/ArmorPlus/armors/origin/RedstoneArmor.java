@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -48,19 +49,33 @@ public class RedstoneArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:RedstoneBoots", "inventory"));
         }
-        if (ConfigHandler.enableRedstoneArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableRedstoneArmorRecipes) {
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
             GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
             GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
             GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
             GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Blocks.REDSTONE_BLOCK, 1),});
+                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
+        }
+        if (ConfigHandler.expertMode && ConfigHandler.enableRedstoneArmorRecipes) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
+                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
+                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
+                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
+                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
