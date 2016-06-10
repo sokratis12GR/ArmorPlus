@@ -66,12 +66,6 @@ item.TheUltimateChestplate.name=صفيحة الصدر العظية
 item.TheUltimateLeggings.name=السروال العظيم
 item.TheUltimateBoots.name=الحذاء العظيم
 
-#Chainmail
-item.Chainmail.name=زرد
-
-#ReinforcingMaterial
-item.ReinforcingMaterial.name=مادة تسليح
-
 #ReinforcedIronArmor
 item.RIHelmet.name=خوذة حيدية مسلحة
 item.RIChestplate.name=صفيحة صدر حديدية مسلحة
@@ -131,6 +125,10 @@ item.ManyullymHelmet.name=خوذة من المانيولين
 item.ManyullymChestplate.name=صفيحة صدر من المانيولين
 item.ManyullymLeggings.name=سروال من المانيولين
 item.ManyullymBoots.name=حذاء من المانيولين
+
+#Items
+item.Chainmail.name=زرد
+item.ReinforcingMaterial.name=مادة تسليح
 
 #Special Items
 item.WitherBone.name=عظم الويذر
