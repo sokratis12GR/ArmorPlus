@@ -1,4 +1,49 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.7.1
+{Bugs Fixed}
+* Server Crashing
+{Features Changed}
+* Compressed Obsidian now works like a block
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.7.0
+{Features Added}
+* Items
+** ArmorPlus Book (WIP)
+* Blocks
+** Lava Crystals
+* Another Creative Tab
+* World Generation
+{Features Changed}
+* Lava Armor Recipe now requires Lava Crystals to be crafted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.6.0
+{Features Added & Changed}
+* Repairing Armors now require the current's Game Mode difficulty Ingredients
+{Bugs Fixed}
+* Chicken & Slime Armor Achievements being broken
+* Chicken Armor Achievement have a wrong placement
+* Some Achievements not triggering
+{Versioning Changes}
+* Now Versioning should be as the following
+** MCVERSION-MAJORMOD.MAJORAPI.MINOR.PATCH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.5.3
+{Features Added}
+* The Ultimate Armor is now Rairable with The Ultimate Material
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.5.2
+{Features Added}
+* Made Guardians to drop 1 Guardian Scale (because of their rarity)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 2.5.1
+{Features Added}
+* Compressed Obsidian Now supports all types of obsidian
+* Slime Armor in Both Game Modes support all types of slime balls/slime blocks
+* Added Some More Achievements
+* Added new option to enable/disable the Coal Armor to be crafted with Charcoal (Only easy Mode)
+{Bugs Fixed}
+* Recipes Hander
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 2.5.0
 {Features Added}
 * Added Mod Game modes

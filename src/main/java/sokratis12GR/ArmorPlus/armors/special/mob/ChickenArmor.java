@@ -44,32 +44,20 @@ public class ChickenArmor {
                     new ModelResourceLocation("armorplus:ChickenBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableChickenArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "FFF", "FXF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"FFF", "FXF", "XXX", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"FXF", "FFF", "FFF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"FFF", "FXF", "FXF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "FXF", "FXF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"FXF", "FXF", "XXX", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "FFF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "FFF", "FXF", "XXX", 'F', new ItemStack(Items.FEATHER, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "FXF", "FFF", "FFF", 'F', new ItemStack(Items.FEATHER, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "FFF", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "FXF", "FXF", "XXX", 'F', new ItemStack(Items.FEATHER, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableChickenArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "FFF", "EXE", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"FFF", "EXE", "XXX", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"EXE", "FEF", "FFF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"EFE", "FXF", "FXF", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "FXF", "EXE", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"FXF", "EXE", "XXX", Character.valueOf('F'), new ItemStack(Items.FEATHER, 1), Character.valueOf('E'), new ItemStack(Items.EGG, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "FFF", "EXE", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "FFF", "EXE", "XXX", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "FEF", "FFF", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "EFE", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "FXF", "EXE", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "FXF", "EXE", "XXX", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -99,7 +87,7 @@ public class ChickenArmor {
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
-           
+
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5"));

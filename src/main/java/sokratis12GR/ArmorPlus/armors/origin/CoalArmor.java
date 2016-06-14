@@ -48,35 +48,30 @@ public class CoalArmor {
                     new ModelResourceLocation("armorplus:CoalLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:CoalBoots", "inventory"));
-
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableCoalArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Items.COAL, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Items.COAL, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Items.COAL, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1));
+        }
+        if (ConfigHandler.easyMode && ConfigHandler.enableCharcoalCoalArmorRecipe) {
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Items.COAL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableCoalArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(Item.getItemFromBlock(Blocks.COAL_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "CXC", "CXC", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Blocks.COAL_BLOCK, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -122,9 +117,14 @@ public class CoalArmor {
                 return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
 
-
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.COAL;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.COAL;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("CoalHelmet");
         helmet.setMaxStackSize(1);
@@ -147,7 +147,13 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.COAL;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.COAL;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("CoalChestplate");
         chestplate.setMaxStackSize(1);
@@ -170,7 +176,13 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.COAL;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.COAL;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("CoalLeggings");
         legs.setMaxStackSize(1);
@@ -193,7 +205,13 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.COAL;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.COAL;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("CoalBoots");
         boots.setMaxStackSize(1);

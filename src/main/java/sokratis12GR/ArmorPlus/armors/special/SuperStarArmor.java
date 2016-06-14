@@ -50,30 +50,19 @@ public class SuperStarArmor {
                     new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableSuperStarArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "WWW", "WNW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"WWW", "WNW", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"WNW", "WWW", "WWW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"WWW", "WNW", "WXW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "WNW", "WXW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"WNW", "WXW", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "WWW", "WNW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "WWW", "WNW", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "WNW", "WWW", "WWW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "WWW", "WNW", "WXW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "WNW", "WXW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "WNW", "WXW", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableSuperStarArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"WWW", "WSW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"SXS", "NNN", "WWW", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"SWS", "WXW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('S'), new ItemStack(Items.SKULL, 1, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "WXW", "NXN", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"WXW", "NXN", "XXX", Character.valueOf('W'), new ItemStack(ModItems.WITHER_BONE, 1), Character.valueOf('N'), new ItemStack(Items.NETHER_STAR, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "WWW", "WSW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "SXS", "NNN", "WWW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "SWS", "WXW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "WXW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "WXW", "NXN", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

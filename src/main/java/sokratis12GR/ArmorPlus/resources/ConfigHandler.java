@@ -31,6 +31,8 @@ public class ConfigHandler {
     public static boolean enableCoalCNightVision;
     public static boolean enableCoalLNightVision;
     public static boolean enableCoalBNightVision;
+
+    public static boolean enableCharcoalCoalArmorRecipe;
     /**
      * Lapis Armor
      */
@@ -72,6 +74,8 @@ public class ConfigHandler {
     public static boolean enableLavaLFireResistance;
     public static boolean enableLavaBResistance;
     public static boolean enableLavaBFireResistance;
+
+    public static boolean enableOldLavaArmorRecipes;
     /**
      * Super Star Armor
      */
@@ -82,7 +86,7 @@ public class ConfigHandler {
     /**
      * Flight Ability
      */
-    public static boolean enableFlightAbility = true;
+    public static boolean enableFlightAbility;
     /**
      * Guardian Armor
      */
@@ -132,11 +136,15 @@ public class ConfigHandler {
     public static boolean enablePigIronArmorEffects;
     public static boolean enableKnightSlimeArmorEffects;
 
-    /** Special - Mob */
+    /**
+     * Special - Mob
+     */
     public static boolean enableChickenArmorRecipes;
     public static boolean enableSlimeArmorRecipes;
 
-    /** Armor Game Mods */
+    /**
+     * Armor Game Mods
+     */
     public static boolean easyMode;
     public static boolean expertMode;
 
@@ -151,6 +159,8 @@ public class ConfigHandler {
         category = "Recipes".toLowerCase();
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
                 "Enable/Disable The Coal Armor Recipes");
+        enableCharcoalCoalArmorRecipe = config.getBoolean("enableCharcoalCoalArmorRecipe", category, false,
+                "Enable/Disable The Charcoal Coal Armor Recipes");
         enableLapisArmorRecipes = config.getBoolean("enableLapisArmorRecipes", category, true,
                 "Enable/Disable The Lapis Armor Recipes");
         enableRedstoneArmorRecipes = config.getBoolean("enableRedstoneArmorRecipes", category, true,
@@ -185,6 +195,7 @@ public class ConfigHandler {
                 "Enable/Disable The Knight Slime Armors Recipes");
         enableChickenArmorRecipes = config.getBoolean("enableChickenArmorRecipes", category, true, "Enable/Disable The Chicken Armors Recipes");
         enableSlimeArmorRecipes = config.getBoolean("enableSlimeArmorRecipes", category, true, "Enable/Disable The Slime Armors Recipes");
+        enableOldLavaArmorRecipes = config.getBoolean("enableOldLavaArmorRecipes", category, false, "Enable/Disable The Old Lava Armors Recipes");
 
         /** Coal Armor*/
         category = "CoalArmor".toLowerCase();

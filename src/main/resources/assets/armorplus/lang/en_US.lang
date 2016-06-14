@@ -3,6 +3,10 @@
 #CREATIVE TABS
 itemGroup.armorplus.creativeTab=ArmorPlus
 itemGroup.armorplus.creativeTabItems=ArmorPlus
+itemGroup.armorplus.creativeTabBlocks=ArmorPlus
+
+#BOOKS
+item.ArmorPlusBook.name=ArmorPlus Book (WIP)
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -142,6 +146,7 @@ item.SlimeBoots.name=Slime Boots
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
+item.LavaCrystal.name=Lava Crystal
 
 #Special Items
 item.WitherBone.name=Wither Bone
@@ -149,8 +154,9 @@ item.TheUltimateMaterial.name=The Ultimate Material
 item.EnderDragonScale.name=Ender Dragon Scale
 item.GuardianScale.name=Guardian Scale
 
-#Expert Items
-item.CompressedObsidian.name=Compressed Obsidian
+#Blocks
+tile.CompressedObsidian.name=Compressed Obsidian
+tile.BlockLavaCrystal.name=Lava Crystal Block
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
@@ -185,10 +191,15 @@ achievement.armorplus.craftPigIronArmor=Oink!
 achievement.armorplus.craftPigIronArmor.desc=Craft a Pig Iron Armor Piece
 achievement.armorplus.craftKnightSlimeArmor=Fascinating!
 achievement.armorplus.craftKnightSlimeArmor.desc=Craft a Knight Slime Armor Piece
+achievement.armorplus.craftSlimeArmor=Jump Jump Jump!
+achievement.armorplus.craftSlimeArmor.desc=Craft a Slime Armor Piece
+achievement.armorplus.craftChickenArmor=Its time to go Faster!
+achievement.armorplus.craftChickenArmor.desc=Craft a Chicken Armor Piece
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=[ArmorPlus] Refreshing configuration file.
-info.armorplus.console.load.preInit=[ArmorPlus] Begin Pre-initialization
-info.armorplus.console.load.init=[ArmorPlus] Begin Initialization
-info.armorplus.console.load.postInit=[ArmorPlus] Begin Post-initialization
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.blocks=Blocks Successfully Registered
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

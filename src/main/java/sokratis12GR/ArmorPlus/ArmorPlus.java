@@ -4,7 +4,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,17 +18,29 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.special.mob.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
+import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlusBlocks;
 import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlusItems;
+import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
+import sokratis12GR.ArmorPlus.commands.CommandBook;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
@@ -38,6 +49,8 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
+import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
+
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
@@ -45,7 +58,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "2.5.0";
+    public static final String VERSION = "1.9.4-2.0.7.1";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -55,6 +68,7 @@ public class ArmorPlus {
 
     public static CreativeTabs TAB_ARMORPLUS = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new CreativeTabArmorPlusItems(ArmorPlus.MODID + ".creativeTabItems");
+    public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new CreativeTabArmorPlusBlocks(ArmorPlus.MODID + ".creativeTabBlocks");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
     public GuiHandler GuiHandler = new GuiHandler();
 
@@ -130,53 +144,35 @@ public class ArmorPlus {
         ARPAchievements.init();
         /**Crafting Recipes*/
         if (ConfigHandler.enableTheUltimateArmorRecipes) {
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new Object[]
-                    {new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1),
-                            new ItemStack(GuardianArmor.helmet, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new Object[]
-                    {new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1),
-                            new ItemStack(GuardianArmor.chestplate, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.legs, 1), new Object[]
-                    {new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1),
-                            new ItemStack(GuardianArmor.legs, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.boots, 1), new Object[]
-                    {new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1),
-                            new ItemStack(GuardianArmor.boots, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),});
+            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1), new ItemStack(GuardianArmor.helmet, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
+            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1), new ItemStack(GuardianArmor.chestplate, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
+            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.legs, 1), new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1), new ItemStack(GuardianArmor.legs, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
+            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.boots, 1), new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1), new ItemStack(GuardianArmor.boots, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
         }
-        /**
-         *  Origin Armors
-         */
-        /** CHAINMAIL Armor Recipes*/
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
-                {"XXX", "CCC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), new Object[]
-                {"CCC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), new Object[]
-                {"CXC", "CCC", "CCC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), new Object[]
-                {"CCC", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), new Object[]
-                {"XXX", "CXC", "CXC", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), new Object[]
-                {"CXC", "CXC", "XXX", Character.valueOf('C'), new ItemStack(ModItems.CHAINMAIL, 1),});
-        /** CHAINMAIL (Item) Recipe*/
-        GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), new Object[]
-                {"SSX", "SXS", "XSS", Character.valueOf('S'), new ItemStack(Items.IRON_INGOT, 1),});
+        /** Chainmail Armor Recipes*/
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
+        /** Chainmail (Item) Recipe*/
+        GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', Items.IRON_INGOT);
         /** Reinforcing Material (Item) Recipe*/
-        GameRegistry.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), new Object[]
-                {"XSX", "SBS", "XSX", Character.valueOf('S'), new ItemStack(Items.STRING, 1), Character.valueOf('B'),
-                        new ItemStack(Items.SLIME_BALL, 1),});
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), "XSX", "SBS", "XSX", 'S', "string", 'B', "slimeball"));
         /** The Ultimate Material */
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), new Object[]
-                {new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), new ItemStack(ModItems.GUARDIAN_SCALE, 1), new ItemStack(ModItems.WITHER_BONE, 1),});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), new ItemStack(ModItems.GUARDIAN_SCALE, 1), new ItemStack(ModItems.WITHER_BONE, 1));
         /** Compressed Obsidian */
-        GameRegistry.addRecipe(new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1), new Object[]
-                {"OOO", "OOO", "OOO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
+        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
+        //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1, 0), "AGA", "GCG", "AAA", 'A', alloy1, 'G', "blockGlass", 'C', active_core1)
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.init();
+        ModBlocks.init();
+        ModBlocks.register();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         COAL_ARMOR.instance = ArmorPlus.instance;
         LAPIS_ARMOR.instance = ArmorPlus.instance;
@@ -232,6 +228,7 @@ public class ArmorPlus {
         sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
+        proxy.registerWorldGenerators();
     }
 
     @EventHandler
@@ -242,16 +239,20 @@ public class ArmorPlus {
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandArmorPlus());
+        event.registerServerCommand(new CommandBook());
     }
 
     public static class GuiHandler implements IGuiHandler {
         @Override
         public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-            return null;
-        }
+            if (id == GUI_ARMORPLUS)
+                return new GuiArmorPlus();
+            return null;        }
 
         @Override
         public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+            if (id == GUI_ARMORPLUS)
+                return new GuiArmorPlus();
             return null;
         }
     }

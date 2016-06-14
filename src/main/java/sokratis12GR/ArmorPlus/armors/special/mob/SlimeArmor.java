@@ -2,7 +2,6 @@ package sokratis12GR.ArmorPlus.armors.special.mob;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -18,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
@@ -47,32 +47,20 @@ public class SlimeArmor {
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "SlimeBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableSlimeArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "SSS", "SXS", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"SSS", "SXS", "XXX", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"SXS", "SSS", "SSS", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"SSS", "SXS", "SXS", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "SXS", "SXS", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"SXS", "SXS", "XXX", Character.valueOf('S'), new ItemStack(Items.SLIME_BALL, 1)});
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "XXX", "SSS", "SXS", 'S', "slimeball"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "SSS", "SXS", "XXX", 'S', "slimeball"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chestplate, 1), "SXS", "SSS", "SSS", 'S', "slimeball"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs, 1), "SSS", "SXS", "SXS", 'S', "slimeball"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "XXX", "SXS", "SXS", 'S', "slimeball"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "SXS", "SXS", "XXX", 'S', "slimeball"));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableSlimeArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "SSS", "SXS", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"SSS", "SXS", "XXX", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"SXS", "SSS", "SSS", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"SSS", "SXS", "SXS", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "SXS", "SXS", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"SXS", "SXS", "XXX", Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SLIME_BLOCK), 1)});
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "XXX", "SSS", "SXS", 'S', "blockSlime"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "SSS", "SXS", "XXX", 'S', "blockSlime"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chestplate, 1), "SXS", "SSS", "SSS", 'S', "blockSlime"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs, 1), "SSS", "SXS", "SXS", 'S', "blockSlime"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "XXX", "SXS", "SXS", 'S', "blockSlime"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "SXS", "SXS", "XXX", 'S', "blockSlime"));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

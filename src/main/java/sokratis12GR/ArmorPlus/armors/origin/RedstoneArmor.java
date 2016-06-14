@@ -50,32 +50,20 @@ public class RedstoneArmor {
                     new ModelResourceLocation("armorplus:RedstoneBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableRedstoneArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Items.REDSTONE, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "RRR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "RRR", "RXR", "XXX", 'R', new ItemStack(Items.REDSTONE, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "RXR", "RRR", "RRR", 'R', new ItemStack(Items.REDSTONE, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "RRR", "RXR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "RXR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "RXR", "RXR", "XXX", 'R', new ItemStack(Items.REDSTONE, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableRedstoneArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "RRR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"RRR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"RXR", "RRR", "RRR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"RRR", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "RXR", "RXR", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"RXR", "RXR", "XXX", Character.valueOf('R'), new ItemStack(Item.getItemFromBlock(Blocks.REDSTONE_BLOCK), 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "RRR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "RRR", "RXR", "XXX", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "RXR", "RRR", "RRR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "RRR", "RXR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "RXR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "RXR", "RXR", "XXX", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -123,7 +111,13 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.REDSTONE;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("RedstoneHelmet");
         helmet.setMaxStackSize(1);
@@ -146,7 +140,13 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.REDSTONE;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("RedstoneChestplate");
         chestplate.setMaxStackSize(1);
@@ -169,7 +169,13 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.REDSTONE;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("RedstoneLeggings");
         legs.setMaxStackSize(1);
@@ -192,7 +198,13 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.REDSTONE;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("RedstoneBoots");
         boots.setMaxStackSize(1);

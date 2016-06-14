@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
@@ -50,32 +51,20 @@ public class ObsidianArmor {
                     new ModelResourceLocation("armorplus:ObsidianBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableObsidianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "OOO", "OXO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"OOO", "OXO", "XXX", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"OXO", "OOO", "OOO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"OOO", "OXO", "OXO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "OXO", "OXO", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"OXO", "OXO", "XXX", Character.valueOf('O'), new ItemStack(Item.getItemFromBlock(Blocks.OBSIDIAN), 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "OOO", "OXO", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "OOO", "OXO", "XXX", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "OXO", "OOO", "OOO", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "OOO", "OXO", "OXO", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "OXO", "OXO", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "OXO", "OXO", "XXX", 'O', new ItemStack(Blocks.OBSIDIAN, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableObsidianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "OOO", "OXO", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"OOO", "OXO", "XXX", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"OXO", "OOO", "OOO", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"OOO", "OXO", "OXO", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "OXO", "OXO", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"OXO", "OXO", "XXX", Character.valueOf('O'), new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "OOO", "OXO", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "OOO", "OXO", "XXX", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "OXO", "OOO", "OOO", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "OOO", "OXO", "OXO", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "OXO", "OXO", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "OXO", "OXO", "XXX", 'O', new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

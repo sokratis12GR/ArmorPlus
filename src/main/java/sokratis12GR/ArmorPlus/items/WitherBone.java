@@ -19,7 +19,6 @@ public class WitherBone extends Item {
         setUnlocalizedName("WitherBone");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
-
     }
 
     @Override

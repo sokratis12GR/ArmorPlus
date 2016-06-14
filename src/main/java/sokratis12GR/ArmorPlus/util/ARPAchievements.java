@@ -13,6 +13,8 @@ import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
 import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
 import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
 import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 
 import java.util.ArrayList;
@@ -32,16 +34,23 @@ public class ARPAchievements {
     public static Achievement CRAFT_GUARDIAN_ARMOR;//0,4
     public static Achievement CRAFT_THE_ULTIMATE_ARMOR;//10,0
     public static Achievement CRAFT_REINFORCED_ARMOR;//2,-2
-    /** Tinkers' Construct */
-    public static Achievement CRAFT_COBALT_ARMOR;
-    public static Achievement CRAFT_ARDITE_ARMOR;
-    public static Achievement CRAFT_MANYULLYN_ARMOR;
-    public static Achievement CRAFT_PIG_IRON_ARMOR;
-    public static Achievement CRAFT_KNIGHT_SLIME_ARMOR;
+    public static Achievement CRAFT_SLIME_ARMOR;//2,4
+    public static Achievement CRAFT_CHICKEN_ARMOR;//2,2
+    /**
+     * Tinkers' Construct
+     */
+    public static Achievement CRAFT_COBALT_ARMOR;//-2,0
+    public static Achievement CRAFT_ARDITE_ARMOR;//-4,0
+    public static Achievement CRAFT_MANYULLYN_ARMOR;//-6,0
+    public static Achievement CRAFT_PIG_IRON_ARMOR;//-2,-2
+    public static Achievement CRAFT_KNIGHT_SLIME_ARMOR;//-2,2
 
     public static void init() {
         /** Center */
         CRAFT_COAL_ARMOR = new AchievementARP("craftCoalArmor", 0, 0, CoalArmor.helmet, AchievementList.OPEN_INVENTORY).setNormalCrafting();
+        /** Bottom-Right */
+        CRAFT_CHICKEN_ARMOR = new AchievementARP("craftChickenArmor", 2, 2, ChickenArmor.boots, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_SLIME_ARMOR = new AchievementARP("craftSlimeArmor", 2, 4, SlimeArmor.boots, CRAFT_COAL_ARMOR).setNormalCrafting();
         /** Bottom */
         CRAFT_LAPIS_ARMOR = new AchievementARP("craftLapisArmor", 0, 2, LapisArmor.helmet, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_GUARDIAN_ARMOR = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.helmet, CRAFT_LAPIS_ARMOR).setNormalCrafting();
@@ -56,6 +65,7 @@ public class ARPAchievements {
         CRAFT_SUPER_STAR_ARMOR = new AchievementARP("craftSuperStarArmor", 6, 0, SuperStarArmor.chestplate, CRAFT_LAVA_ARMOR).setNormalCrafting();
         CRAFT_ENDER_DRAGON_ARMOR = new AchievementARP("craftEnderDragonArmor", 8, 0, EnderDragonArmor.chestplate, AchievementList.THE_END2).setNormalCrafting();
         CRAFT_THE_ULTIMATE_ARMOR = new AchievementARP("craftTheUltimateArmor", 10, 0, TheUltimateArmor.chestplate, CRAFT_ENDER_DRAGON_ARMOR).setNormalCrafting();
+        /** Top-Left */
         /** Left */
         /** Tinkers' Construct */
         CRAFT_COBALT_ARMOR = new AchievementARP("craftCobaltArmor", -2, 0, CobaltArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();

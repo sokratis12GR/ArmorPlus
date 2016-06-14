@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -98,6 +99,10 @@ public class TheUltimateArmor {
             public String getItemStackDisplayName(ItemStack stack) {
                 return (TextFormatting.GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ModItems.THE_ULTIMATE_MATERIAL;
+            }
         }).setUnlocalizedName("TheUltimateHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
@@ -127,6 +132,10 @@ public class TheUltimateArmor {
             public String getItemStackDisplayName(ItemStack stack) {
                 return (TextFormatting.GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ModItems.THE_ULTIMATE_MATERIAL;
+            }
         }).setUnlocalizedName("TheUltimateChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
@@ -155,6 +164,10 @@ public class TheUltimateArmor {
             public String getItemStackDisplayName(ItemStack stack) {
                 return (TextFormatting.GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
             }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ModItems.THE_ULTIMATE_MATERIAL;
+            }
         }).setUnlocalizedName("TheUltimateLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
@@ -182,6 +195,10 @@ public class TheUltimateArmor {
             @Override
             public String getItemStackDisplayName(ItemStack stack) {
                 return (TextFormatting.GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+            }
+
+            public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+                return repair.getItem() == ModItems.THE_ULTIMATE_MATERIAL;
             }
         }).setUnlocalizedName("TheUltimateBoots");
         boots.setMaxStackSize(1);

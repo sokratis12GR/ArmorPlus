@@ -14,14 +14,22 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.special.mob.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
+
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
 
@@ -68,6 +76,12 @@ public class GlobalEventsArmorPlus {
         /**The Ultimate Power! - Achievement Trigger*/
         if (i == TheUltimateArmor.helmet || i == TheUltimateArmor.chestplate || i == TheUltimateArmor.legs || i == TheUltimateArmor.boots)
             event.player.addStat(ARPAchievements.CRAFT_THE_ULTIMATE_ARMOR, 1);
+        /**Jump Jump Jump! - Achievement Trigger*/
+        if (i == SlimeArmor.helmet || i == SlimeArmor.chestplate || i == SlimeArmor.legs || i == SlimeArmor.boots)
+            event.player.addStat(ARPAchievements.CRAFT_SLIME_ARMOR, 1);
+        /**Its time to go Faster! - Achievement Trigger*/
+        if (i == ChickenArmor.helmet || i == ChickenArmor.chestplate || i == ChickenArmor.legs || i == ChickenArmor.boots)
+            event.player.addStat(ARPAchievements.CRAFT_CHICKEN_ARMOR, 1);
         /** Reinforcing Armors! - Achievement Trigger*/
         if (i == RCArmor.helmet || i == RCArmor.chestplate || i == RCArmor.legs || i == RCArmor.boots
                 || i == RDArmor.helmet || i == RDArmor.chestplate || i == RDArmor.legs || i == RDArmor.boots

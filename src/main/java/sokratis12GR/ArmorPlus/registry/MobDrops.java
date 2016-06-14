@@ -8,7 +8,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
- * Created by Socrates on 4/4/2016.
+ * Created by sokratis12GR on 4/4/2016.
  */
 public class MobDrops {
     @SubscribeEvent
@@ -25,9 +25,16 @@ public class MobDrops {
     }
 
     @SubscribeEvent
-    public void playerKilledGuardian(LivingDropsEvent event) {
+    public void playerKilledElderGuardian(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, 6);
+        }
+    }
+
+    @SubscribeEvent
+    public void playerKilledGuardian(LivingDropsEvent event) {
+        if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, 1);
         }
     }
 

@@ -20,9 +20,9 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-
-group= "sokratis12GR.ArmorPlus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "ArmorPlus"
+version = "2.0.0.0"
+group = "sokratis12GR.ArmorPlus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "ArmorPlus1.9.4"
 
 minecraft {
     version = "1.9.4-12.17.0.1954"

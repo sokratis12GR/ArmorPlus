@@ -1,5 +1,8 @@
 package sokratis12GR.ArmorPlus;
 
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import sokratis12GR.ArmorPlus.worldgen.OreGen;
+
 public class CommonProxy {
     public void loadCommands() {
 
@@ -23,5 +26,9 @@ public class CommonProxy {
 
     public void registerRenderers(ArmorPlus armorPlus) {
 
+    }
+
+    public void registerWorldGenerators() {
+        GameRegistry.registerWorldGenerator(new OreGen(), 0);
     }
 }

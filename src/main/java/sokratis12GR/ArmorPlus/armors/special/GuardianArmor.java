@@ -49,32 +49,20 @@ public class GuardianArmor {
                     new ModelResourceLocation("armorplus:GuardianBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableGuardianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "GGG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"GGG", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"GXG", "GGG", "GGG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"GGG", "GXG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "GXG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"GXG", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "GGG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "GGG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "GXG", "GGG", "GGG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "GGG", "GXG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "GXG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "GXG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableGuardianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "GLG", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('L'), new ItemStack(Item.getItemFromBlock(Blocks.SEA_LANTERN), 1)});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"GLG", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('L'), new ItemStack(Item.getItemFromBlock(Blocks.SEA_LANTERN), 1)});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"SXS", "GLG", "CGC", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('C'), new ItemStack(Items.PRISMARINE_CRYSTALS, 1), Character.valueOf('L'), new ItemStack(Item.getItemFromBlock(Blocks.SEA_LANTERN), 1), Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SPONGE), 1)});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"CGC", "GXG", "PXP", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('C'), new ItemStack(Items.PRISMARINE_CRYSTALS, 1), Character.valueOf('P'), new ItemStack(Items.PRISMARINE_SHARD, 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "SXS", "GXG", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SPONGE), 1)});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"SXS", "GXG", "XXX", Character.valueOf('G'), new ItemStack(ModItems.GUARDIAN_SCALE, 1), Character.valueOf('S'), new ItemStack(Item.getItemFromBlock(Blocks.SPONGE), 1)});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "GLG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "GLG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "SXS", "GLG", "CGC", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'C', new ItemStack(Items.PRISMARINE_CRYSTALS, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "CGC", "GXG", "PXP", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'C', new ItemStack(Items.PRISMARINE_CRYSTALS, 1), 'P', new ItemStack(Items.PRISMARINE_SHARD, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "SXS", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "SXS", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

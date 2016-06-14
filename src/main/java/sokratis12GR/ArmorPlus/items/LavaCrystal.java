@@ -11,18 +11,18 @@ import sokratis12GR.ArmorPlus.ArmorPlus;
 /**
  * Created by Socrates on 4/19/2016.
  */
-public class CompressedObsidian extends Item {
+public class LavaCrystal extends Item {
 
-    public CompressedObsidian() {
-        setRegistryName("CompressedObsidian");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("CompressedObsidian");     // Used for localization (en_US.lang)
+    public LavaCrystal() {
+        setRegistryName("LavaCrystal");        // The unique name (within your mod) that identifies this item
+        setUnlocalizedName("LavaCrystal");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:CompressedObsidian", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:LavaCrystal", "inventory"));
     }
 
 }

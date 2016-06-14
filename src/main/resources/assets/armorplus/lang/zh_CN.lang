@@ -90,8 +90,8 @@ achievement.armorplus.craftTheUltimateArmor=最终极能量！
 achievement.armorplus.craftTheUltimateArmor.desc=合成一件终极护甲
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=[ArmorPlus] Refreshing configuration file.
-info.armorplus.console.load.preInit=[ArmorPlus] Begin Pre-initialization
-info.armorplus.console.load.init=[ArmorPlus] Begin Initialization
-info.armorplus.console.load.postInit=[ArmorPlus] Begin Post-initialization
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

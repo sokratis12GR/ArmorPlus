@@ -2,6 +2,7 @@
 
 #CREATIVE TAB
 itemGroup.armorplus.creativeTab=ArmorPlus
+itemGroup.armorplus.creativeTabItems=ArmorPlus
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -171,8 +172,8 @@ achievement.armorplus.craftKnightSlimeArmor=Fascinant!
 achievement.armorplus.craftKnightSlimeArmor.desc=Créez une pièce d'armure du Chevaliers des Slimes
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=[ArmorPlus] Refreshing configuration file.
-info.armorplus.console.load.preInit=[ArmorPlus] Begin Pre-initialization
-info.armorplus.console.load.init=[ArmorPlus] Begin Initialization
-info.armorplus.console.load.postInit=[ArmorPlus] Begin Post-initialization
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

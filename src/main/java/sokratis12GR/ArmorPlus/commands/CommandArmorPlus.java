@@ -18,7 +18,7 @@ public class CommandArmorPlus implements ICommand {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "armorplus";
+        return "/armorplus";
     }
 
     @Override

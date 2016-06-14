@@ -2,22 +2,30 @@ package sokratis12GR.ArmorPlus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import sokratis12GR.ArmorPlus.blocks.CompressedObsidian;
 import sokratis12GR.ArmorPlus.items.*;
 
 public class ModItems {
 
     public static Chainmail CHAINMAIL;
     public static ReinforcingMaterial REINFORCING_MATERIAL;
-    /** Special Items */
+    /**
+     * Special Items
+     */
     public static GuardianScale GUARDIAN_SCALE;
     public static WitherBone WITHER_BONE;
     public static EnderDragonScale ENDER_DRAGON_SCALE;
     public static TheUltimateMaterial THE_ULTIMATE_MATERIAL;
-    /** Expert Items */
-    public static CompressedObsidian COMPRESSED_OBSIDIAN;
-
+    public static LavaCrystal LAVA_CRYSTAL;
+    /**
+     * GUI Items
+     */
+    public static ArmorPlusBook ITEM_ARMORPLUS_GUI;
 
     public static void init() {
+        //EntityItem e = new EntityItem();
+        //e.setNoDespawn();
+
         CHAINMAIL = new Chainmail();
         REINFORCING_MATERIAL = new ReinforcingMaterial();
         /** Special Items */
@@ -25,8 +33,9 @@ public class ModItems {
         WITHER_BONE = new WitherBone();
         ENDER_DRAGON_SCALE = new EnderDragonScale();
         THE_ULTIMATE_MATERIAL = new TheUltimateMaterial();
-        /** Expert Items */
-        COMPRESSED_OBSIDIAN = new CompressedObsidian();
+        LAVA_CRYSTAL = new LavaCrystal();
+        /** GUI Items */
+        ITEM_ARMORPLUS_GUI = new ArmorPlusBook();
     }
 
     @SideOnly(Side.CLIENT)
@@ -38,7 +47,8 @@ public class ModItems {
         WITHER_BONE.initModel();
         ENDER_DRAGON_SCALE.initModel();
         THE_ULTIMATE_MATERIAL.initModel();
-        /** Expert Items */
-        COMPRESSED_OBSIDIAN.initModel();
+        LAVA_CRYSTAL.initModel();
+        /** GUI Items */
+        ITEM_ARMORPLUS_GUI.initModel();
     }
 }

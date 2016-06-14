@@ -51,33 +51,21 @@ public class EmeraldArmor {
                     new ModelResourceLocation("armorplus:EmeraldBoots", "inventory"));
         }
         if (ConfigHandler.easyMode && ConfigHandler.enableEmeraldArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                    {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                    {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
-            GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                    {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
-            GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                    {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Items.EMERALD, 1),});
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "EEE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "EEE", "EXE", "XXX", 'E', new ItemStack(Items.EMERALD, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "EEE", "EEE", 'E', new ItemStack(Items.EMERALD, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "EEE", "EXE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "EXE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "EXE", "EXE", "XXX", 'E', new ItemStack(Items.EMERALD, 1));
         }
         if (ConfigHandler.expertMode && ConfigHandler.enableEmeraldArmorRecipes) {
-        GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                {"XXX", "EEE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-        GameRegistry.addRecipe(new ItemStack(helmet, 1), new Object[]
-                {"EEE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-        GameRegistry.addRecipe(new ItemStack(chestplate, 1), new Object[]
-                {"EXE", "EEE", "EEE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-        GameRegistry.addRecipe(new ItemStack(legs, 1), new Object[]
-                {"EEE", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-        GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                {"XXX", "EXE", "EXE", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-        GameRegistry.addRecipe(new ItemStack(boots, 1), new Object[]
-                {"EXE", "EXE", "XXX", Character.valueOf('E'), new ItemStack(Item.getItemFromBlock(Blocks.EMERALD_BLOCK), 1),});
-    }
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "EEE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(helmet, 1), "EEE", "EXE", "XXX", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "EEE", "EEE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(legs, 1), "EEE", "EXE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "EXE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+            GameRegistry.addRecipe(new ItemStack(boots, 1), "EXE", "EXE", "XXX", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
+        }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -126,7 +114,13 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.EMERALD;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.EMERALD;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("EmeraldHelmet");
         helmet.setMaxStackSize(1);
@@ -150,7 +144,13 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.EMERALD;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.EMERALD;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("EmeraldChestplate");
         chestplate.setMaxStackSize(1);
@@ -174,7 +174,13 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.EMERALD;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.EMERALD;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("EmeraldLeggings");
         legs.setMaxStackSize(1);
@@ -198,7 +204,13 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.EMERALD;
+                if (ConfigHandler.easyMode) {
+                    return repair.getItem() == Items.EMERALD;
+                }
+                if (ConfigHandler.expertMode) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("EmeraldBoots");
         boots.setMaxStackSize(1);

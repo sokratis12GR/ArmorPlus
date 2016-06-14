@@ -1,6 +1,11 @@
 package sokratis12GR.ArmorPlus;
 
+import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.util.TextHelper;
+
 
 public class ClientProxy extends CommonProxy {
 
@@ -29,5 +34,6 @@ public class ClientProxy extends CommonProxy {
         ins.PIG_IRON_ARMOR.registerRenderers();
         ins.KNIGHT_SLIME_ARMOR.registerRenderers();
         ModItems.initModels();
+        ModBlocks.registerRenders();
     }
 }
