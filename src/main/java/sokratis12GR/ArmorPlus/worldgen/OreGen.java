@@ -21,7 +21,7 @@ public class OreGen implements IWorldGenerator {
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         switch (world.provider.getDimension()) {
             case 0: //Overworld Dimension
-                this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, 4, 6, 16);
+                this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, 4, 6, 26);
                 break;
             case 1: //The End
 

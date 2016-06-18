@@ -90,7 +90,7 @@ public class EnderDragonArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -121,7 +121,7 @@ public class EnderDragonArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -152,7 +152,7 @@ public class EnderDragonArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -183,7 +183,7 @@ public class EnderDragonArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you the power of the EnderDragon when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

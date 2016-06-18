@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -97,12 +96,17 @@ public class ObsidianArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                if (ConfigHandler.enableObsidianHResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -121,12 +125,17 @@ public class ObsidianArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                if (ConfigHandler.enableObsidianCResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -145,12 +154,17 @@ public class ObsidianArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                if (ConfigHandler.enableObsidianLResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -169,12 +183,17 @@ public class ObsidianArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                if (ConfigHandler.enableObsidianBResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableObsidianBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
                 }
             }
 

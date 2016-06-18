@@ -101,15 +101,20 @@ public class LavaArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                if (ConfigHandler.enableLavaHResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                }
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaHFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 entity.isGlowing();
             }
@@ -129,15 +134,19 @@ public class LavaArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
-            }
+                if (ConfigHandler.enableLavaCResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                }
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaCFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                     entity.isGlowing();
 
                 }
@@ -158,15 +167,19 @@ public class LavaArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
-            }
+                if (ConfigHandler.enableLavaLResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                }
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaLFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 entity.isGlowing();
 
@@ -187,15 +200,19 @@ public class LavaArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
-            }
+                if (ConfigHandler.enableLavaBResistance) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                }
+                if (ConfigHandler.enableFullLavaArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaBFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 entity.isGlowing();
 

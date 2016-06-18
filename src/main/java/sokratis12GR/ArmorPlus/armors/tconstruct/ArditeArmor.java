@@ -96,7 +96,7 @@ public class ArditeArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance when using full set"));
             }
         }).setUnlocalizedName("ArditeHelmet");
         helmet.setMaxStackSize(1);
@@ -111,7 +111,7 @@ public class ArditeArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance when using full set"));
             }
         }).setUnlocalizedName("ArditeChestplate");
         chestplate.setMaxStackSize(1);
@@ -126,7 +126,7 @@ public class ArditeArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance when using full set"));
             }
         }).setUnlocalizedName("ArditeLeggings");
         legs.setMaxStackSize(1);
@@ -142,7 +142,7 @@ public class ArditeArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.DARK_RED + "Gives you Fire Resistance when using full set"));
             }
         }).setUnlocalizedName("ArditeBoots");
         boots.setMaxStackSize(1);

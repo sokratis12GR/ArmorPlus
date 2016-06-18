@@ -96,12 +96,17 @@ public class LapisArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                if (ConfigHandler.enableLapisHBreathing) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                }
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisHBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
@@ -118,12 +123,17 @@ public class LapisArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                if (ConfigHandler.enableLapisCBreathing) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                }
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisCBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
@@ -140,12 +150,17 @@ public class LapisArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                if (ConfigHandler.enableLapisLBreathing) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                }
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisLBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 
@@ -162,12 +177,17 @@ public class LapisArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                if (ConfigHandler.enableLapisBBreathing) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                }
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLapisBBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
 

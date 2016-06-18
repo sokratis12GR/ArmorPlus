@@ -56,7 +56,7 @@ public class ARPAchievements {
         CRAFT_GUARDIAN_ARMOR = new AchievementARP("craftGuardianArmor", 0, 4, GuardianArmor.helmet, CRAFT_LAPIS_ARMOR).setNormalCrafting();
         /** Top */
         CRAFT_REDSTONE_ARMOR = new AchievementARP("craftRedstoneArmor", 0, -2, RedstoneArmor.boots, CRAFT_COAL_ARMOR).setNormalCrafting();
-        CRAFT_EMERALD_ARMOR = new AchievementARP("craftEmeraldArmor", 0, -4, EmeraldArmor.chestplate, CRAFT_LAPIS_ARMOR).setNormalCrafting();
+        CRAFT_EMERALD_ARMOR = new AchievementARP("craftEmeraldArmor", 0, -4, EmeraldArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
         /** Top-Right */
         CRAFT_REINFORCED_ARMOR = new AchievementARP("craftReinforcedArmor", 2, -2, RDArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
         /** Right */

@@ -86,7 +86,7 @@ public class ManyullynArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2, " + "Cold-Blooded"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2 when using full set, " + "Cold-Blooded"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -101,7 +101,7 @@ public class ManyullynArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2, " + "Cold-Blooded"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2 when using full set, " + "Cold-Blooded"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -116,7 +116,7 @@ public class ManyullynArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2, " + "Cold-Blooded"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2 when using full set, " + "Cold-Blooded"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -131,7 +131,7 @@ public class ManyullynArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2, " + "Cold-Blooded"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Strength 2 when using full set, " + "Cold-Blooded"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

@@ -103,12 +103,17 @@ public class CoalArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                if (ConfigHandler.enableCoalHNightVision) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                }
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalHNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
@@ -132,12 +137,17 @@ public class CoalArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                if (ConfigHandler.enableCoalCNightVision) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                }
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalCNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
@@ -161,12 +171,17 @@ public class CoalArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                if (ConfigHandler.enableCoalLNightVision) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                }
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalLNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 
@@ -190,12 +205,17 @@ public class CoalArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                if (ConfigHandler.enableCoalBNightVision) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                }
+                if (ConfigHandler.enableFullCoalArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableCoalBNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
 

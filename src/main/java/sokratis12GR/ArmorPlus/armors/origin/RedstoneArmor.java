@@ -96,12 +96,17 @@ public class RedstoneArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                if (ConfigHandler.enableRedstoneHSpeed) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -125,12 +130,16 @@ public class RedstoneArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
-            }
+                if (ConfigHandler.enableRedstoneCSpeed) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -154,12 +163,16 @@ public class RedstoneArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
-            }
+                if (ConfigHandler.enableRedstoneLSpeed) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -183,12 +196,16 @@ public class RedstoneArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
-            }
+                if (ConfigHandler.enableRedstoneBSpeed) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
                 }
             }
 

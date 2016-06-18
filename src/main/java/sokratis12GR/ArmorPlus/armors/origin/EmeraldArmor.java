@@ -99,7 +99,12 @@ public class EmeraldArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+                if (ConfigHandler.enableEmeraldHHaste) {
+                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel +  "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

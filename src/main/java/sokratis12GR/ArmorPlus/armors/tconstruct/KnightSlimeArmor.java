@@ -86,7 +86,7 @@ public class KnightSlimeArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -102,7 +102,7 @@ public class KnightSlimeArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -117,7 +117,7 @@ public class KnightSlimeArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -132,7 +132,7 @@ public class KnightSlimeArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2, " + "Unnatural"));
+                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

@@ -14,9 +14,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlus;
 
-/**
- * Created by Socrates on 4/19/2016.
- */
 public class ArmorPlusBook extends Item {
 
     public ArmorPlusBook() {
@@ -33,7 +30,7 @@ public class ArmorPlusBook extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
+        Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
         return super.onItemRightClick(item, world, player, hand);
     }
 }

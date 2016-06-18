@@ -1,4 +1,19 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.10.0
+{Features Changed}
+* The Ultimate armor Invincibility will be applied only if the full set is equipped
+{Features Added}
+* New Block
+** Armor Forge (WIP) (Soon This will be the place to craft the armors)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.9.0
+{Features Added}
+* Added a crafting recipe for the Ender Dragon Egg (Because otherwise you can't create the full Ender Dragon Set)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.8.0
+{Features Added & Changed}
+* Armor ToolTips now have much better description depending on the configuration settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-2.0.7.1
 {Bugs Fixed}
 * Server Crashing

@@ -92,7 +92,11 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                entity.capabilities.disableDamage = true;
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    entity.capabilities.disableDamage = true;
+                } else {
+                    entity.capabilities.disableDamage = false;
+                }
             }
 
             @Override
@@ -125,7 +129,11 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    entity.capabilities.disableDamage = true;
+                } else {
+                    entity.capabilities.disableDamage = false;
+                }
             }
 
             @Override
@@ -158,6 +166,11 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    entity.capabilities.disableDamage = true;
+                } else {
+                    entity.capabilities.disableDamage = false;
+                }
             }
 
             @Override
@@ -189,6 +202,11 @@ public class TheUltimateArmor {
                         entity.capabilities.isFlying = false;
                         entity.capabilities.allowFlying = false;
                     }
+                }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    entity.capabilities.disableDamage = true;
+                } else {
+                    entity.capabilities.disableDamage = false;
                 }
             }
 

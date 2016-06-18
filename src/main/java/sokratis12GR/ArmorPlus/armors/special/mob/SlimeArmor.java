@@ -92,7 +92,7 @@ public class SlimeArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3"));
+                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -111,7 +111,7 @@ public class SlimeArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3"));
+                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -130,7 +130,7 @@ public class SlimeArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3"));
+                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -149,7 +149,7 @@ public class SlimeArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3"));
+                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

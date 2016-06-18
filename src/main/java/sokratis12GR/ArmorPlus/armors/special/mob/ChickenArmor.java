@@ -90,7 +90,7 @@ public class ChickenArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -109,7 +109,7 @@ public class ChickenArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -128,7 +128,7 @@ public class ChickenArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -147,7 +147,7 @@ public class ChickenArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5"));
+                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

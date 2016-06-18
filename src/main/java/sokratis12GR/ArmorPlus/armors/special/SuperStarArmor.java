@@ -95,13 +95,18 @@ public class SuperStarArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                if (ConfigHandler.enableSuperStarHRegen) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
-                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
 
@@ -119,13 +124,17 @@ public class SuperStarArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
-            }
+                if (ConfigHandler.enableSuperStarCRegen) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
-                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
 
@@ -143,13 +152,17 @@ public class SuperStarArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
-            }
+                if (ConfigHandler.enableSuperStarLRegen) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
-                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
 
@@ -167,13 +180,17 @@ public class SuperStarArmor {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
-            }
+                if (ConfigHandler.enableSuperStarBRegen) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                }
+                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                }            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
-                    ((EntityLivingBase) entity).removePotionEffect(MobEffects.WITHER);
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                    entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
 

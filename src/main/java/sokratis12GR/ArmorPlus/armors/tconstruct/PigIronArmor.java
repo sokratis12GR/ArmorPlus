@@ -85,7 +85,7 @@ public class PigIronArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation, " + "Tasty"));
+                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation when using full set, " + "Tasty"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -100,7 +100,7 @@ public class PigIronArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation, " + "Tasty"));
+                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation when using full set, " + "Tasty"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -115,7 +115,7 @@ public class PigIronArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation, " + "Tasty"));
+                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation when using full set, " + "Tasty"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -130,7 +130,7 @@ public class PigIronArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation, " + "Tasty"));
+                tooltip.add(TextHelper.getFormattedText("&d" + "Gives you Saturation when using full set, " + "Tasty"));
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

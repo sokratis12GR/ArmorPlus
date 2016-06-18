@@ -89,7 +89,7 @@ public class CobaltArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
             }
 
             @Override
@@ -105,7 +105,7 @@ public class CobaltArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
             }
 
             @Override
@@ -121,7 +121,7 @@ public class CobaltArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
             }
 
             @Override
@@ -138,7 +138,7 @@ public class CobaltArmor {
 
             @Override
             public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3"));
+                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
             }
 
             @Override
