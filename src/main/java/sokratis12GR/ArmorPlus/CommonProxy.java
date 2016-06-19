@@ -1,6 +1,7 @@
 package sokratis12GR.ArmorPlus;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
 import sokratis12GR.ArmorPlus.worldgen.OreGen;
 
 public class CommonProxy {
@@ -30,5 +31,9 @@ public class CommonProxy {
 
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
+    }
+
+    public void registerTileEntities() {
+        GameRegistry.registerTileEntity(TileEntityArmorForge.class, "ArmorForge");
     }
 }

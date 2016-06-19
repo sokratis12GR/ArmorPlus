@@ -46,22 +46,7 @@ public class SlimeArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation(ArmorPlus.MODID + ":" + "SlimeBoots", "inventory"));
         }
-        if (ConfigHandler.easyMode && ConfigHandler.enableSlimeArmorRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "XXX", "SSS", "SXS", 'S', "slimeball"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "SSS", "SXS", "XXX", 'S', "slimeball"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chestplate, 1), "SXS", "SSS", "SSS", 'S', "slimeball"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs, 1), "SSS", "SXS", "SXS", 'S', "slimeball"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "XXX", "SXS", "SXS", 'S', "slimeball"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "SXS", "SXS", "XXX", 'S', "slimeball"));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableSlimeArmorRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "XXX", "SSS", "SXS", 'S', "blockSlime"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(helmet, 1), "SSS", "SXS", "XXX", 'S', "blockSlime"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(chestplate, 1), "SXS", "SSS", "SSS", 'S', "blockSlime"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(legs, 1), "SSS", "SXS", "SXS", 'S', "blockSlime"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "XXX", "SXS", "SXS", 'S', "blockSlime"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(boots, 1), "SXS", "SXS", "XXX", 'S', "blockSlime"));
-        }
+
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

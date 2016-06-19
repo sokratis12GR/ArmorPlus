@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -34,23 +35,23 @@ import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlus;
-import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlusBlocks;
-import sokratis12GR.ArmorPlus.client.gui.CreativeTabArmorPlusItems;
-import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlus;
+import sokratis12GR.ArmorPlus.client.gui.*;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandBook;
+import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
 import sokratis12GR.ArmorPlus.registry.MobDrops;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
+import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
+import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
@@ -59,7 +60,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String VERSION = "1.9.4-2.0.10.0";
+    public static final String VERSION = "1.9.4-3.0.0.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -144,12 +145,6 @@ public class ArmorPlus {
 
         ARPAchievements.init();
 
-        if (ConfigHandler.enableTheUltimateArmorRecipes) {
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1), new ItemStack(GuardianArmor.helmet, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1), new ItemStack(GuardianArmor.chestplate, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.legs, 1), new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1), new ItemStack(GuardianArmor.legs, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(TheUltimateArmor.boots, 1), new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1), new ItemStack(GuardianArmor.boots, 1), new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-        }
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
@@ -157,8 +152,7 @@ public class ArmorPlus {
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), "XSX", "SBS", "XSX", 'S', "string", 'B', "slimeball"));
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), new ItemStack(ModItems.GUARDIAN_SCALE, 1), new ItemStack(ModItems.WITHER_BONE, 1));
+
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
         GameRegistry.addRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), 'G', new ItemStack(Items.EGG, 1));
@@ -227,6 +221,7 @@ public class ArmorPlus {
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
         proxy.registerWorldGenerators();
+        proxy.registerTileEntities();
     }
 
     @EventHandler
@@ -242,16 +237,22 @@ public class ArmorPlus {
 
     public static class GuiHandler implements IGuiHandler {
         @Override
-        public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-            if (id == GUI_ARMORPLUS)
+        public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+            if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
+            if (ID == GUI_ARMOR_FORGE) {
+                return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z));
+            }
             return null;
         }
 
         @Override
-        public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-            if (id == GUI_ARMORPLUS)
+        public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+            if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
+            if (ID == GUI_ARMOR_FORGE) {
+                return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z));
+            }
             return null;
         }
     }

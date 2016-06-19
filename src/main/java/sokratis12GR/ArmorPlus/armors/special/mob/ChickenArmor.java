@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
@@ -42,22 +41,6 @@ public class ChickenArmor {
                     new ModelResourceLocation("armorplus:ChickenLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:ChickenBoots", "inventory"));
-        }
-        if (ConfigHandler.easyMode && ConfigHandler.enableChickenArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "FFF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "FFF", "FXF", "XXX", 'F', new ItemStack(Items.FEATHER, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "FXF", "FFF", "FFF", 'F', new ItemStack(Items.FEATHER, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "FFF", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "FXF", "FXF", "XXX", 'F', new ItemStack(Items.FEATHER, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableChickenArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "FFF", "EXE", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "FFF", "EXE", "XXX", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "FEF", "FFF", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "EFE", "FXF", "FXF", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "FXF", "EXE", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "FXF", "EXE", "XXX", 'F', new ItemStack(Items.FEATHER, 1), 'E', new ItemStack(Items.EGG, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

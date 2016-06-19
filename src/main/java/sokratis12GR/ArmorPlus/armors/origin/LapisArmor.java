@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -49,22 +48,6 @@ public class LapisArmor {
                     new ModelResourceLocation("armorplus:LapisLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:LapisBoots", "inventory"));
-        }
-        if (ConfigHandler.easyMode && ConfigHandler.enableLapisArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "LLL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "LLL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "LXL", "LLL", "LLL", 'L', new ItemStack(Items.DYE, 1, 4));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "LLL", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "LXL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableLapisArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "LLL", "LXL", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "LLL", "LXL", "XXX", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "LXL", "LLL", "LLL", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "LLL", "LXL", "LXL", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "LXL", "LXL", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "LXL", "LXL", "XXX", 'L', new ItemStack(Blocks.LAPIS_BLOCK, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

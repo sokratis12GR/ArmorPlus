@@ -2,8 +2,6 @@ package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -22,7 +20,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
@@ -46,22 +43,6 @@ public class GuardianArmor {
                     new ModelResourceLocation("armorplus:GuardianLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:GuardianBoots", "inventory"));
-        }
-        if (ConfigHandler.easyMode && ConfigHandler.enableGuardianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "GGG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "GGG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "GXG", "GGG", "GGG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "GGG", "GXG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "GXG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "GXG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableGuardianArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "GLG", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "GLG", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "SXS", "GLG", "CGC", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'C', new ItemStack(Items.PRISMARINE_CRYSTALS, 1), 'L', new ItemStack(Blocks.SEA_LANTERN, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "CGC", "GXG", "PXP", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'C', new ItemStack(Items.PRISMARINE_CRYSTALS, 1), 'P', new ItemStack(Items.PRISMARINE_SHARD, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "SXS", "GXG", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "SXS", "GXG", "XXX", 'G', new ItemStack(ModItems.GUARDIAN_SCALE, 1), 'S', new ItemStack(Blocks.SPONGE, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);

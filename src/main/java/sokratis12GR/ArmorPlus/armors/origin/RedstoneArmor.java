@@ -49,22 +49,6 @@ public class RedstoneArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:RedstoneBoots", "inventory"));
         }
-        if (ConfigHandler.easyMode && ConfigHandler.enableRedstoneArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "RRR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "RRR", "RXR", "XXX", 'R', new ItemStack(Items.REDSTONE, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "RXR", "RRR", "RRR", 'R', new ItemStack(Items.REDSTONE, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "RRR", "RXR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "RXR", "RXR", 'R', new ItemStack(Items.REDSTONE, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "RXR", "RXR", "XXX", 'R', new ItemStack(Items.REDSTONE, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableRedstoneArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "RRR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "RRR", "RXR", "XXX", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "RXR", "RRR", "RRR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "RRR", "RXR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "RXR", "RXR", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "RXR", "RXR", "XXX", 'R', new ItemStack(Blocks.REDSTONE_BLOCK, 1));
-        }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -135,7 +119,8 @@ public class RedstoneArmor {
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
@@ -168,7 +153,8 @@ public class RedstoneArmor {
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
@@ -201,7 +187,8 @@ public class RedstoneArmor {
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {

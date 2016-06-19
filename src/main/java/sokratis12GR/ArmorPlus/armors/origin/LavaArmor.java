@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -22,7 +21,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
@@ -49,26 +47,6 @@ public class LavaArmor {
                     new ModelResourceLocation("armorplus:LavaLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:LavaBoots", "inventory"));
-        }
-        if (ConfigHandler.easyMode && ConfigHandler.enableLavaArmorRecipes && ConfigHandler.enableOldLavaArmorRecipes) {
-            GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.helmet, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.chestplate, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.legs, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.boots, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableLavaArmorRecipes && ConfigHandler.enableOldLavaArmorRecipes) {
-            GameRegistry.addShapelessRecipe(new ItemStack(helmet, 1), new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.helmet, 1), new ItemStack(Items.LAVA_BUCKET, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(chestplate, 1), new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.chestplate, 1), new ItemStack(Items.LAVA_BUCKET, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(legs, 1), new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.legs, 1), new ItemStack(Items.LAVA_BUCKET, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(boots, 1), new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1), new ItemStack(ObsidianArmor.boots, 1), new ItemStack(Items.LAVA_BUCKET, 1));
-        }
-        if (ConfigHandler.enableLavaArmorRecipes && !ConfigHandler.enableOldLavaArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -139,7 +117,8 @@ public class LavaArmor {
                 }
                 if (ConfigHandler.enableFullLavaArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
@@ -172,7 +151,8 @@ public class LavaArmor {
                 }
                 if (ConfigHandler.enableFullLavaArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
@@ -205,7 +185,8 @@ public class LavaArmor {
                 }
                 if (ConfigHandler.enableFullLavaArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {

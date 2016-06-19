@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_all",
-    "particle": "armorplus:blocks/CompressedObsidian",
     "textures": {
+        "particle": "armorplus:blocks/CompressedObsidian",
         "0": "armorplus:blocks/CompressedObsidian",
         "1": "armorplus:blocks/BlockLavaCrystal",
         "2": "armorplus:blocks/ArmorForgeTop"

@@ -3,7 +3,6 @@ package sokratis12GR.ArmorPlus.armors.special;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -48,21 +47,6 @@ public class SuperStarArmor {
                     new ModelResourceLocation("armorplus:SuperStarLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:SuperStarBoots", "inventory"));
-        }
-        if (ConfigHandler.easyMode && ConfigHandler.enableSuperStarArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "WWW", "WNW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "WWW", "WNW", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "WNW", "WWW", "WWW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "WWW", "WNW", "WXW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "WNW", "WXW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "WNW", "WXW", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableSuperStarArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "WWW", "WSW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "SXS", "NNN", "WWW", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "SWS", "WXW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'S', new ItemStack(Items.SKULL, 1, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "WXW", "NXN", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "WXW", "NXN", "XXX", 'W', new ItemStack(ModItems.WITHER_BONE, 1), 'N', new ItemStack(Items.NETHER_STAR, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -129,7 +113,8 @@ public class SuperStarArmor {
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
@@ -157,7 +142,8 @@ public class SuperStarArmor {
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
@@ -185,7 +171,8 @@ public class SuperStarArmor {
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
-                }            }
+                }
+            }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
                 if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {

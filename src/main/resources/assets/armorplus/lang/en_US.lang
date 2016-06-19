@@ -5,6 +5,10 @@ itemGroup.armorplus.creativeTab=ArmorPlus
 itemGroup.armorplus.creativeTabItems=ArmorPlus
 itemGroup.armorplus.creativeTabBlocks=ArmorPlus
 
+#Containers
+container.ArmorForge=Armor Forge (WIP)
+container.inventory=Inventory
+
 #BOOKS
 item.ArmorPlusBook.name=ArmorPlus Book (WIP)
 

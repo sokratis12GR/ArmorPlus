@@ -50,22 +50,6 @@ public class EmeraldArmor {
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:EmeraldBoots", "inventory"));
         }
-        if (ConfigHandler.easyMode && ConfigHandler.enableEmeraldArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "EEE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "EEE", "EXE", "XXX", 'E', new ItemStack(Items.EMERALD, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "EEE", "EEE", 'E', new ItemStack(Items.EMERALD, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "EEE", "EXE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "EXE", "EXE", 'E', new ItemStack(Items.EMERALD, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "EXE", "EXE", "XXX", 'E', new ItemStack(Items.EMERALD, 1));
-        }
-        if (ConfigHandler.expertMode && ConfigHandler.enableEmeraldArmorRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "EEE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "EEE", "EXE", "XXX", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "EXE", "EEE", "EEE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "EEE", "EXE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "EXE", "EXE", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "EXE", "EXE", "XXX", 'E', new ItemStack(Blocks.EMERALD_BLOCK, 1));
-        }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -103,7 +87,7 @@ public class EmeraldArmor {
                     tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
                 }
                 if (ConfigHandler.enableFullEmeraldArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel +  "when using full set"));
+                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel + "when using full set"));
                 }
             }
 

@@ -16,8 +16,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 public class RGArmor {
 
@@ -37,14 +35,6 @@ public class RGArmor {
                     new ModelResourceLocation("armorplus:RGLeggings", "inventory"));
             ModelLoader.setCustomModelResourceLocation(boots, 0,
                     new ModelResourceLocation("armorplus:RGBoots", "inventory"));
-        }
-        if (ConfigHandler.enableReinforcedArmorsRecipes) {
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "XXX", "RRR", "RIR", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_HELMET, 1));
-            GameRegistry.addRecipe(new ItemStack(helmet, 1), "RRR", "RIR", "XXX", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_HELMET, 1));
-            GameRegistry.addRecipe(new ItemStack(chestplate, 1), "RIR", "RRR", "RRR", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_CHESTPLATE, 1));
-            GameRegistry.addRecipe(new ItemStack(legs, 1), "RRR", "RIR", "RXR", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_LEGGINGS, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "XXX", "RIR", "RXR", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_BOOTS, 1));
-            GameRegistry.addRecipe(new ItemStack(boots, 1), "RIR", "RXR", "XXX", 'R', new ItemStack(ModItems.REINFORCING_MATERIAL, 1), 'I', new ItemStack(Items.GOLDEN_BOOTS, 1));
         }
         helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
         chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
