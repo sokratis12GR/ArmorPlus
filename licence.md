@@ -10,14 +10,17 @@ The things listed below are special cases and exceptions from the above. They ha
 * Copy small parts of code for other projects.
 * Make a review/spotlight of the mod or use it in a modpack.
 * Make Let's Play (and similar) videos containing the mod.
+
 ##YOU CAN NOT
 * Copy entire classes, methods or features or claim you made them.
 * Redistribute the mod. This does not apply, however, when it comes to pre-packaged modpacks.
+
 ##YOU HAVE TO
 When modifying or using code, always explicitly credit sokratis12GR as the creator.
 When making a review/spotlight containing the mod or using it in a modpack, always make clear that ArmorPlus is used.
 When it comes to the code, always link back to the official repository.
 When it comes to the mod, always link back to the the official Minecraft Forum thread or CurseForge page.
+
 ##NOTES
 The ArmorPlus API can be excerpted for use in other projects, however it should not be modified. It can be redistributed with other mods (if it is getting used), however it should still be visible that it is a part of ArmorPlus. Do not remove the copyright header from any of the API's files.
 The above License only applies for code I wrote myself, any APIs used have their own License that is being respected.
