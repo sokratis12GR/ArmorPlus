@@ -11,10 +11,3 @@ Mod's Official Wiki
 
 The Official Wiki for this mod is
 **[http://ftb.gamepedia.com/ArmorPlus](http://ftb.gamepedia.com/ArmorPlus)**
-
-Versions
----
-
-| Forge Version  | Mod's Version  | Minecraft Version  |
-| -------------- |----------------| -------------------|
-| 12.17.0.1921   | 2.0.1          | 1.9.4              |
