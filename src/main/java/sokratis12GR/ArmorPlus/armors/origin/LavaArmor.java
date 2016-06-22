@@ -88,13 +88,21 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+
                 if (ConfigHandler.enableLavaHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaHFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
-                entity.isGlowing();
+                if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
+                    entity.extinguish();
+                }
             }
 
             @Override
@@ -118,16 +126,24 @@ public class LavaArmor {
                 if (ConfigHandler.enableFullLavaArmorEffect) {
                     tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
                 }
+
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+
                 if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaCFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
-                    entity.isGlowing();
 
+                }
+                if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
+                    entity.extinguish();
                 }
             }
 
@@ -155,14 +171,20 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+
                 if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaLFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
-                entity.isGlowing();
-
+                if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
+                    entity.extinguish();
+                }
             }
 
             @Override
@@ -189,14 +211,20 @@ public class LavaArmor {
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+                ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+                ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+
                 if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
                 }
                 if (ConfigHandler.enableLavaBFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
-                entity.isGlowing();
-
+                if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
+                    entity.extinguish();
+                }
             }
 
             @Override

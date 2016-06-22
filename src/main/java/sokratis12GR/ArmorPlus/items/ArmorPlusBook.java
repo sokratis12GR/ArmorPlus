@@ -12,6 +12,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlus;
 
 public class ArmorPlusBook extends Item {
@@ -20,6 +21,7 @@ public class ArmorPlusBook extends Item {
         setRegistryName("ArmorPlusBook");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("ArmorPlusBook");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
+        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  */
 public class TileEntityArmorForge extends TileEntity implements IInventory {
 
-    private ItemStack[] inventory;
+    private ItemStack[] inventory = new ItemStack[8];
     private String customName;
 
     public TileEntityArmorForge() {
@@ -57,9 +57,15 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        if (index < 0 || index >= this.getSizeInventory())
+        if (index < 0 || index >= this.getSizeInventory()) {
+            inventory = null;
             return null;
+        }
         return this.inventory[index];
+    }
+
+    public ItemStack[] getInventory() {
+        return inventory;
     }
 
     @Override
@@ -103,6 +109,8 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
 
         this.inventory[index] = stack;
         this.markDirty();
+        this.updateContainingBlockInfo();
+        this.getUpdatePacket();
     }
 
     @Override
@@ -151,8 +159,9 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
 
     @Override
     public void clear() {
-        for (int i = 0; 0 < this.getSizeInventory(); i++)
+        for (int i = 0; 0 < this.getSizeInventory(); i++) {
             this.setInventorySlotContents(i, null);
+        }
     }
 
     @Override

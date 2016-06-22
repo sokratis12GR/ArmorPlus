@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sokratis12GR.ArmorPlus.api.Constants;
 import sokratis12GR.ArmorPlus.armors.origin.*;
 import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
 import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
@@ -38,10 +39,9 @@ import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.*;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.commands.CommandBook;
+import sokratis12GR.ArmorPlus.compat.ICompatibility;
 import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
-import sokratis12GR.ArmorPlus.registry.MobDrops;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.registry.*;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
 import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
@@ -53,14 +53,13 @@ import java.io.File;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION,  dependencies = Constants.Mod.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODNAME = "ArmorPlus";
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
-    public static final String DEPEND = "";
-    public static final String VERSION = "1.9.4-3.0.0.0";
+    public static final String VERSION = "1.9.4-3.1.1.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -116,6 +115,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
@@ -145,6 +145,8 @@ public class ArmorPlus {
 
         ARPAchievements.init();
 
+        ModRecipes.init();
+
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
         GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
@@ -162,6 +164,8 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ModCompatibility.registerModCompat();
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         ModItems.init();
         ModBlocks.init();
         ModBlocks.register();
@@ -226,6 +230,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
     }
 
@@ -241,7 +246,7 @@ public class ArmorPlus {
             if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
             if (ID == GUI_ARMOR_FORGE) {
-                return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z));
+                return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }
@@ -251,7 +256,7 @@ public class ArmorPlus {
             if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
             if (ID == GUI_ARMOR_FORGE) {
-                return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z));
+                return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }

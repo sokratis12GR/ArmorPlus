@@ -1,7 +1,35 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.1.0
+{Features Added}
+* JEI Support
+{Features Changed}
+* Minor API Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-3.0.0.0
-{Gameplay Changes}
+{Features Changed}
+* ArmorPlus Book changed a bit
+* Changed the way Achievements Work
+* Recipe Handling Changed
+{Features Added}
 * Now Almost all the recipes need to be done via the Armor Forge
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.11.1
+{Bugs Fixed}
+* Getting Achievement "Welcome to ArmorPlus!" when crafting any item in the game
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-2.0.11.0
+{Coming Soon Changes}
+* Now Almost all the recipes need to be done via the Armor Forge (Still WIP, Recommended to use the Vanilla Crafting Table)
+* Mob Bosses
+* Many more armors, items and blocks
+{Features Added}
+* If the player wears full Lava Armor the fire wont get rendered if the player isn't inside a lava source or in fire
+* Added some information to the ArmorPlus Book
+{Features Changed}
+* The Achievement list is now different
+* Special Achievements
+{Bugs Fixed}
+* Achivements not trigger right
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-2.0.10.0
 {Features Changed}

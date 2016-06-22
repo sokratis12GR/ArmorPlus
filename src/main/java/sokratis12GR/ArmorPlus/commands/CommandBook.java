@@ -4,13 +4,9 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.CommandGive;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.Loader;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 
 import java.util.Collections;
 import java.util.List;
@@ -69,6 +65,6 @@ public class CommandBook implements ICommand {
      * @param args   The arguments that were passed
      */
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-        CommandGive.getCommandSenderAsPlayer(sender).dropItem(Item.getByNameOrId("armorplus:ArmorPlusBook"), 1);
+        CommandGive.getCommandSenderAsPlayer(sender).dropItem(ModItems.ARMORPLUS_BOOK, 1);
     }
 }

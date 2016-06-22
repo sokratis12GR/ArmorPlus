@@ -21,14 +21,14 @@ public class GuiArmorForge extends GuiContainer
 {
     private static final ResourceLocation ARMOR_FORGE_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/GuiArmorForge.png");
 
-    public GuiArmorForge(InventoryPlayer playerInv, World worldIn)
+    public GuiArmorForge(InventoryPlayer playerInv, World worldIn, TileEntityArmorForge tileEntity)
     {
-        this(playerInv, worldIn, BlockPos.ORIGIN);
+        this(playerInv, worldIn, BlockPos.ORIGIN, tileEntity);
     }
 
-    public GuiArmorForge(InventoryPlayer playerInv, World worldIn, BlockPos blockPosition)
+    public GuiArmorForge(InventoryPlayer playerInv, World worldIn, BlockPos blockPosition, TileEntityArmorForge tileEntity)
     {
-        super(new ContainerArmorForge(playerInv, worldIn, blockPosition));
+        super(new ContainerArmorForge(playerInv, worldIn, blockPosition, tileEntity));
         this.xSize = 176;
         this.ySize = 165;
     }

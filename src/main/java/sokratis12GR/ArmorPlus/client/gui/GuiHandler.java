@@ -18,7 +18,7 @@ public class GuiHandler implements IGuiHandler {
         if (ID == GUI_ARMORPLUS)
             return new GuiArmorPlus();
         if (ID == GUI_ARMOR_FORGE) {
-            return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z));
+            return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x,y,z)));
         }
         return null;
     }
@@ -28,7 +28,7 @@ public class GuiHandler implements IGuiHandler {
         if (ID == GUI_ARMORPLUS)
             return new GuiArmorPlus();
         if (ID == GUI_ARMOR_FORGE) {
-            return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z));
+            return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x,y,z)));
         }
         return null;
     }

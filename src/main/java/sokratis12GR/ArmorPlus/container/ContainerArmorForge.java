@@ -2,13 +2,16 @@ package sokratis12GR.ArmorPlus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sokratis12GR.ArmorPlus.crafting.ArmorForgeCraftingManager;
+import sokratis12GR.ArmorPlus.api.crafting.InventoryCrafting;
+import sokratis12GR.ArmorPlus.api.crafting.SlotCrafting;
+import sokratis12GR.ArmorPlus.api.crafting.ArmorForgeCraftingManager;
 import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
 
 import javax.annotation.Nullable;
@@ -24,19 +27,20 @@ public class ContainerArmorForge extends Container {
         return true;
     }
 
-    private TileEntityArmorForge te;
+    private TileEntityArmorForge tileEntity;
     /**
      * The crafting matrix inventory (3x3).
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
-    public World worldObj;
+    private World worldObj;
     /**
      * Position of the workbench
      */
-    private BlockPos pos;
+    public BlockPos pos;
 
-    public ContainerArmorForge(InventoryPlayer playerInventory, World worldIn, BlockPos posIn) {
+    public ContainerArmorForge(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityArmorForge tileEntity) {
+        this.tileEntity = tileEntity;
         this.worldObj = worldIn;
         this.pos = posIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
@@ -63,26 +67,32 @@ public class ContainerArmorForge extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
-    public void onCraftMatrixChanged(IInventory inventoryIn)
-    {
+    public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, ArmorForgeCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+
+    }
+
+    @Nullable
+    @Override
+    public Slot getSlotFromInventory(IInventory inv, int slotIn) {
+        if (this.inventoryItemStacks == null) {
+            getSlotFromInventory(inv, slotIn).inventory.clear();
+        }
+        return super.getSlotFromInventory(inv, slotIn);
+
     }
 
     /**
      * Called when the container is closed.
      */
-    public void onContainerClosed(EntityPlayer playerIn)
-    {
+    public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
-        if (!this.worldObj.isRemote)
-        {
-            for (int i = 0; i < 9; ++i)
-            {
+        if (!this.worldObj.isRemote) {
+            for (int i = 0; i < 9; ++i) {
                 ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
-                if (itemstack != null)
-                {
+                if (itemstack != null) {
                     playerIn.dropItem(itemstack, false);
                 }
             }
@@ -93,55 +103,39 @@ public class ContainerArmorForge extends Container {
      * Take a stack from the specified inventory slot.
      */
     @Nullable
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
-    {
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = (Slot) this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack())
-        {
+        if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index == 0)
-            {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true))
-                {
+            if (index == 0) {
+                if (!this.mergeItemStack(itemstack1, 10, 46, true)) {
                     return null;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            }
-            else if (index >= 10 && index < 37)
-            {
-                if (!this.mergeItemStack(itemstack1, 37, 46, false))
-                {
+            } else if (index >= 10 && index < 37) {
+                if (!this.mergeItemStack(itemstack1, 37, 46, false)) {
                     return null;
                 }
-            }
-            else if (index >= 37 && index < 46)
-            {
-                if (!this.mergeItemStack(itemstack1, 10, 37, false))
-                {
+            } else if (index >= 37 && index < 46) {
+                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
                     return null;
                 }
-            }
-            else if (!this.mergeItemStack(itemstack1, 10, 46, false))
-            {
+            } else if (!this.mergeItemStack(itemstack1, 10, 46, false)) {
                 return null;
             }
 
-            if (itemstack1.stackSize == 0)
-            {
-                slot.putStack((ItemStack)null);
-            }
-            else
-            {
+            if (itemstack1.stackSize == 0) {
+                slot.putStack((ItemStack) null);
+            } else {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.stackSize == itemstack.stackSize)
-            {
+            if (itemstack1.stackSize == itemstack.stackSize) {
                 return null;
             }
 
@@ -151,12 +145,12 @@ public class ContainerArmorForge extends Container {
         return itemstack;
     }
 
+
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.
      */
-    public boolean canMergeSlot(ItemStack stack, Slot slotIn)
-    {
+    public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
         return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
     }
 }

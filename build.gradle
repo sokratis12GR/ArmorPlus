@@ -14,25 +14,48 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+repositories {
+    maven { url "http://dvs1.progwml6.com/files/maven" }
+}
 /*
 // for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
 plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "2.0.0.0"
+version = "3.0.0.0"
 group = "sokratis12GR.ArmorPlus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ArmorPlus1.9.4"
 
 minecraft {
     version = "1.9.4-12.17.0.1965"
     runDir = "run"
-    
+    useDepAts = true
+
     mappings = "snapshot_20160518"
     makeObfSourceJar = true
 }
 
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
+}
+
 dependencies {
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

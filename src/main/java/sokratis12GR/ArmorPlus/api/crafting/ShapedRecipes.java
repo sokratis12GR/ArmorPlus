@@ -1,6 +1,5 @@
-package sokratis12GR.ArmorPlus.crafting;
+package sokratis12GR.ArmorPlus.api.crafting;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -8,7 +7,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.crafting
+ * sokratis12GR.ArmorPlus.api.crafting
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
  */
 public class ShapedRecipes implements IRecipe {

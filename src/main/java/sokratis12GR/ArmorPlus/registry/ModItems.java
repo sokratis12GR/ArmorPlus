@@ -20,7 +20,7 @@ public class ModItems {
     /**
      * GUI Items
      */
-    public static ArmorPlusBook ITEM_ARMORPLUS_GUI;
+    public static ArmorPlusBook ARMORPLUS_BOOK;
 
     public static void init() {
         //EntityItem e = new EntityItem();
@@ -35,7 +35,7 @@ public class ModItems {
         THE_ULTIMATE_MATERIAL = new TheUltimateMaterial();
         LAVA_CRYSTAL = new LavaCrystal();
         /** GUI Items */
-        ITEM_ARMORPLUS_GUI = new ArmorPlusBook();
+        ARMORPLUS_BOOK = new ArmorPlusBook();
     }
 
     @SideOnly(Side.CLIENT)
@@ -49,6 +49,6 @@ public class ModItems {
         THE_ULTIMATE_MATERIAL.initModel();
         LAVA_CRYSTAL.initModel();
         /** GUI Items */
-        ITEM_ARMORPLUS_GUI.initModel();
+        ARMORPLUS_BOOK.initModel();
     }
 }
