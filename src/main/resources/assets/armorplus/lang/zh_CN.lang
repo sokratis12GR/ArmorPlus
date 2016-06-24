@@ -67,20 +67,50 @@ item.TheUltimateChestplate.name=终极胸甲
 item.TheUltimateLeggings.name=终极护腿
 item.TheUltimateBoots.name=终极靴子
 
+#Chainmail
+item.Chainmail.name=锁甲
+
+#ReinforcingMaterial
+item.ReinforcingMaterial.name=强化材料
+
+#ReinforcedIronArmor
+item.RIHelmet.name=强化铁头盔
+item.RIChestplate.name=强化铁胸甲
+item.RILeggings.name=强化铁护腿
+item.RIBoots.name=强化铁靴子
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=强化金头盔
+item.RGChestplate.name=强化金胸甲
+item.RGLeggings.name=强化金护腿
+item.RGBoots.name=强化金靴子
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=强化钻石头盔
+item.RDChestplate.name=强化钻石胸甲
+item.RDLeggings.name=强化钻石护腿
+item.RDBoots.name=强化钻石靴子
+
+#ReinforcedChainArmor
+item.RCHelmet.name=强化锁链头盔
+item.RCChestplate.name=强化锁链胸甲
+item.RCLeggings.name=强化锁链护腿
+item.RCBoots.name=强化锁链Boots
+
 #Achievements
 achievement.armorplus.craftCoalArmor=像蝙蝠一样的视觉！
 achievement.armorplus.craftCoalArmor.desc=合成一件煤炭护甲
 achievement.armorplus.craftLapisArmor=不再溺水！
 achievement.armorplus.craftLapisArmor.desc=合成一件青金石护甲
-achievement.armorplus.craftRedstoneArmor=Speeedy!
+achievement.armorplus.craftRedstoneArmor=动如雷震!
 achievement.armorplus.craftRedstoneArmor.desc=合成一件红石护甲
 achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
 achievement.armorplus.craftEmeraldArmor.desc=合成一件绿宝石护甲
 achievement.armorplus.craftObsidianArmor=坚不可摧！
 achievement.armorplus.craftObsidianArmor.desc=合成一件黑曜石护甲
-achievement.armorplus.craftLavaArmor=The Overpowered!
+achievement.armorplus.craftLavaArmor=充满能量!
 achievement.armorplus.craftLavaArmor.desc=合成一件熔岩护甲
-achievement.armorplus.craftSuperStarArmor=Godlike!
+achievement.armorplus.craftSuperStarArmor=神明的力量!
 achievement.armorplus.craftSuperStarArmor.desc=合成一件下界之星护甲
 achievement.armorplus.craftEnderDragonArmor=末影龙的力量！
 achievement.armorplus.craftEnderDragonArmor.desc=击杀末影龙并合成一件末影龙护甲
@@ -89,8 +119,9 @@ achievement.armorplus.craftGuardianArmor.desc=合成一件守卫者护甲
 achievement.armorplus.craftTheUltimateArmor=最终极能量！
 achievement.armorplus.craftTheUltimateArmor.desc=合成一件终极护甲
 
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file.
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
+#CONSOLE LOG - No Translation - 
+#
+#Yes these lines are occupying space for convenience when counting lines.
+#
+#
+#
