@@ -38,7 +38,6 @@ import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.client.gui.*;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
-import sokratis12GR.ArmorPlus.commands.CommandBook;
 import sokratis12GR.ArmorPlus.compat.ICompatibility;
 import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
 import sokratis12GR.ArmorPlus.registry.*;
@@ -53,13 +52,13 @@ import java.io.File;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION,  dependencies = Constants.Mod.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = Constants.Mod.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODNAME = "ArmorPlus";
     public static final String MODID = "armorplus";
     public static final String CHANNEL = "ArmorPlus";
-    public static final String VERSION = "1.9.4-3.1.1.0";
+    public static final String VERSION = "1.9.4-3.1.2.0";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
@@ -237,7 +236,6 @@ public class ArmorPlus {
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandArmorPlus());
-        event.registerServerCommand(new CommandBook());
     }
 
     public static class GuiHandler implements IGuiHandler {

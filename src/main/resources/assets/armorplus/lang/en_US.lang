@@ -9,6 +9,22 @@ itemGroup.armorplus.creativeTabBlocks=ArmorPlus
 container.ArmorForge=Armor Forge
 container.inventory=Inventory
 
+#Commands
+commands.error.arg.invalid=Invalid arguments
+commands.error.arg.missing=Not enough arguments
+commands.error.arg.player.missing=You must specify which player you wish to perform this action on.
+commands.error.404=Command not found!
+commands.error.unknown=Unknown command! Type /armorplus help
+commands.error.perm=You do not have permission to use this command.
+commands.success=Executed successfully
+commands.format.help=%s - %s
+#CommandHelp
+commands.help.usage=/armorplus help
+commands.help.help=Displays the help information for the "/armorplus" command.
+#CommandInfo
+commands.info.usage=/armorplus info
+commands.info.help=Shows Information about ArmorPlus
+
 #JEI
 gui.jei.category.armorforge=Armor Forge
 

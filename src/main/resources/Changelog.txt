@@ -1,4 +1,12 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.2.0
+{Features Changes}
+* Commands
+** Changed How commands work, now they are more organized
+** Removed the ArmorPlus Book Command
+{Language}
+* Updated zh_CN Lang File with the latest information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-3.1.1.0
 {Features Added}
 * JEI Support
