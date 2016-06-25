@@ -1,7 +1,19 @@
 #en_US.lang File
 
 #CREATIVE TAB
-itemGroup.armorplus.creativeTab=ArmorPlus
+#itemGroup.armorplus.creativeTab=ArmorPlus
+#
+#
+
+#Containers
+container.ArmorForge=盔甲锻造台
+container.inventory=物品栏
+
+#JEI
+gui.jei.category.armorforge=盔甲锻造台
+
+#BOOKS
+item.ArmorPlusBook.name=盔甲之书 (WIP)
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus配置
@@ -49,13 +61,12 @@ item.SuperStarLeggings.name=下界之星护腿
 item.SuperStarBoots.name=下界之星靴子
 
 #EnderDragon Armor
-item.EnderDragonScale.name=末影龙碎片
 item.EnderDragonHelmet.name=末影龙头盔
 item.EnderDragonChestplate.name=末影龙胸甲
 item.EnderDragonLeggings.name=末影龙护腿
 item.EnderDragonBoots.name=末影龙靴子
 
-#守卫者Armor
+#GuardianArmor
 item.GuardianHelmet.name=守卫者头盔
 item.GuardianChestplate.name=守卫者胸甲
 item.GuardianLeggings.name=守卫者护腿
@@ -67,20 +78,108 @@ item.TheUltimateChestplate.name=终极胸甲
 item.TheUltimateLeggings.name=终极护腿
 item.TheUltimateBoots.name=终极靴子
 
+#ReinforcedIronArmor
+item.RIHelmet.name=强化铁头盔
+item.RIChestplate.name=强化铁胸甲
+item.RILeggings.name=强化铁护腿
+item.RIBoots.name=强化铁靴子
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=强化金头盔
+item.RGChestplate.name=强化金胸甲
+item.RGLeggings.name=强化金护腿
+item.RGBoots.name=强化金靴子
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=强化钻石头盔
+item.RDChestplate.name=强化钻石胸甲
+item.RDLeggings.name=强化钻石护腿
+item.RDBoots.name=强化钻石靴子
+
+#ReinforcedChainArmor
+item.RCHelmet.name=强化锁链头盔
+item.RCChestplate.name=强化锁链胸甲
+item.RCLeggings.name=强化锁链护腿
+item.RCBoots.name=强化锁链靴子
+
+#CustomArmor
+item.CustomHelmet.name=自定义头盔 (WIP)
+item.CustomChestplate.name=自定义胸甲 (WIP)
+item.CustomLeggings.name=自定义护腿 (WIP)
+item.CustomBoots.name=自定义靴子 (WIP)
+
+#CobaltArmor
+item.CobaltHelmet.name=钴头盔
+item.CobaltChestplate.name=钴胸甲
+item.CobaltLeggings.name=钴护腿
+item.CobaltBoots.name=钴靴子
+
+#ArditeArmor
+item.ArditeHelmet.name=阿迪特头盔
+item.ArditeChestplate.name=阿迪特胸甲
+item.ArditeLeggings.name=阿迪特护腿
+item.ArditeBoots.name=阿迪特靴子
+
+#PigIronArmor
+item.PigIronHelmet.name=生铁头盔
+item.PigIronChestplate.name=生铁胸甲
+item.PigIronLeggings.name=生铁护腿
+item.PigIronBoots.name=生铁靴子
+
+#KnightSlimeArmor
+item.KnightSlimeHelmet.name=骑士史莱姆头盔
+item.KnightSlimeChestplate.name=骑士史莱姆胸甲
+item.KnightSlimeLeggings.name=骑士史莱姆护腿
+item.KnightSlimeBoots.name=骑士史莱姆靴子
+
+#ManyullynArmor
+item.ManyullynHelmet.name=玛玉灵头盔
+item.ManyullynChestplate.name=玛玉灵胸甲
+item.ManyullynLeggings.name=玛玉灵护腿
+item.ManyullynBoots.name=玛玉灵靴子
+
+#ChickenArmor
+item.ChickenHelmet.name=鸡毛头盔
+item.ChickenChestplate.name=鸡毛胸甲
+item.ChickenLeggings.name=鸡毛护腿
+item.ChickenBoots.name=鸡毛靴子
+
+#SlimeArmor
+item.SlimeHelmet.name=史莱姆头盔
+item.SlimeChestplate.name=史莱姆胸甲
+item.SlimeLeggings.name=史莱姆护腿
+item.SlimeBoots.name=史莱姆靴子
+
+#Chainmail
+item.Chainmail.name=锁甲
+item.ReinforcingMaterial.name=强化材料
+item.LavaCrystal.name=熔岩水晶
+
+#Special Items
+item.WitherBone.name=凋灵之骨
+item.TheUltimateMaterial.name=终极材料
+item.EnderDragonScale.name=末影龙碎片
+item.GuardianScale.name=守卫者碎片
+
+#Blocks
+tile.CompressedObsidian.name=压缩黑曜石
+tile.BlockLavaCrystal.name=熔岩水晶块
+tile.ArmorForge.name=盔甲锻造台
+
 #Achievements
 achievement.armorplus.craftCoalArmor=像蝙蝠一样的视觉！
 achievement.armorplus.craftCoalArmor.desc=合成一件煤炭护甲
 achievement.armorplus.craftLapisArmor=不再溺水！
 achievement.armorplus.craftLapisArmor.desc=合成一件青金石护甲
-achievement.armorplus.craftRedstoneArmor=Speeedy!
+achievement.armorplus.craftRedstoneArmor=动如雷震!
 achievement.armorplus.craftRedstoneArmor.desc=合成一件红石护甲
 achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
 achievement.armorplus.craftEmeraldArmor.desc=合成一件绿宝石护甲
 achievement.armorplus.craftObsidianArmor=坚不可摧！
 achievement.armorplus.craftObsidianArmor.desc=合成一件黑曜石护甲
-achievement.armorplus.craftLavaArmor=The Overpowered!
+achievement.armorplus.craftLavaArmor=充满能量!
 achievement.armorplus.craftLavaArmor.desc=合成一件熔岩护甲
-achievement.armorplus.craftSuperStarArmor=Godlike!
+achievement.armorplus.craftSuperStarArmor=神明的力量!
 achievement.armorplus.craftSuperStarArmor.desc=合成一件下界之星护甲
 achievement.armorplus.craftEnderDragonArmor=末影龙的力量！
 achievement.armorplus.craftEnderDragonArmor.desc=击杀末影龙并合成一件末影龙护甲
@@ -88,10 +187,29 @@ achievement.armorplus.craftGuardianArmor=充满荆棘！
 achievement.armorplus.craftGuardianArmor.desc=合成一件守卫者护甲
 achievement.armorplus.craftTheUltimateArmor=最终极能量！
 achievement.armorplus.craftTheUltimateArmor.desc=合成一件终极护甲
+achievement.armorplus.craftReinforcedArmor=强化的护甲!
+achievement.armorplus.craftReinforcedArmor.desc=合成一件强化护甲
+achievement.armorplus.craftCobaltArmor=工匠盔甲!
+achievement.armorplus.craftCobaltArmor.desc=合成一件钴护甲
+achievement.armorplus.craftArditeArmor=越强越好!
+achievement.armorplus.craftArditeArmor.desc=合成一件阿迪特护甲
+achievement.armorplus.craftManyullynArmor=最强工匠护甲!
+achievement.armorplus.craftManyullynArmor.desc=合成一件玛玉灵护甲
+achievement.armorplus.craftPigIronArmor=Oink!
+achievement.armorplus.craftPigIronArmor.desc=合成一件生铁护甲
+achievement.armorplus.craftKnightSlimeArmor=闪耀!
+achievement.armorplus.craftKnightSlimeArmor.desc=合成一件骑士史莱姆护甲
+achievement.armorplus.craftSlimeArmor=我跳跳跳!
+achievement.armorplus.craftSlimeArmor.desc=合成一件史莱姆护甲
+achievement.armorplus.craftChickenArmor=是时候跑起来了!
+achievement.armorplus.craftChickenArmor.desc=合成一件鸡毛护甲
+achievement.armorplus.craftAnyArmor=欢迎使用ArmorPlus!
+achievement.armorplus.craftAnyArmor.desc=合成ArmorPlus的任意护甲
 
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
+#CONSOLE LOG - No Translation - 
+#
+#Yes these lines are occupying space for convenience when counting lines.
+#
+#
+#
+#
