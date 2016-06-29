@@ -21,12 +21,9 @@ import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.util.ARPAchievements;
 
 import javax.annotation.Nullable;
-
-import static sokratis12GR.ArmorPlus.util.ARPAchievements.CRAFT_ANY_ARMOR;
 
 /**
  * sokratis12GR.ArmorPlus.api
@@ -93,38 +90,6 @@ public class SlotCrafting extends Slot {
         }
 
         this.amountCrafted = 0;
-
-        if (stack.getItem() == Item.getItemFromBlock(Blocks.CRAFTING_TABLE)) {
-            this.thePlayer.addStat(AchievementList.BUILD_WORK_BENCH);
-        }
-
-        if (stack.getItem() == GuardianArmor.helmet || stack.getItem() == GuardianArmor.chestplate || stack.getItem() == GuardianArmor.legs || stack.getItem() == GuardianArmor.boots ||
-                stack.getItem() == CoalArmor.helmet || stack.getItem() == CoalArmor.chestplate || stack.getItem() == CoalArmor.legs || stack.getItem() == CoalArmor.boots ||
-                stack.getItem() == LapisArmor.helmet || stack.getItem() == LapisArmor.chestplate || stack.getItem() == LapisArmor.legs || stack.getItem() == LapisArmor.boots ||
-                stack.getItem() == RedstoneArmor.helmet || stack.getItem() == RedstoneArmor.chestplate || stack.getItem() == RedstoneArmor.legs || stack.getItem() == RedstoneArmor.boots ||
-                stack.getItem() == EmeraldArmor.helmet || stack.getItem() == EmeraldArmor.chestplate || stack.getItem() == EmeraldArmor.legs || stack.getItem() == EmeraldArmor.boots ||
-                stack.getItem() == ObsidianArmor.helmet || stack.getItem() == ObsidianArmor.chestplate || stack.getItem() == ObsidianArmor.legs || stack.getItem() == ObsidianArmor.boots ||
-                stack.getItem() == LavaArmor.helmet || stack.getItem() == LavaArmor.chestplate || stack.getItem() == LavaArmor.legs || stack.getItem() == LavaArmor.boots ||
-                stack.getItem() == SuperStarArmor.helmet || stack.getItem() == SuperStarArmor.chestplate || stack.getItem() == SuperStarArmor.legs || stack.getItem() == SuperStarArmor.boots ||
-                stack.getItem() == EnderDragonArmor.helmet || stack.getItem() == EnderDragonArmor.chestplate || stack.getItem() == EnderDragonArmor.legs || stack.getItem() == SuperStarArmor.boots ||
-                stack.getItem() == TheUltimateArmor.helmet || stack.getItem() == TheUltimateArmor.chestplate || stack.getItem() == TheUltimateArmor.legs || stack.getItem() == TheUltimateArmor.boots ||
-                stack.getItem() == SlimeArmor.helmet || stack.getItem() == SlimeArmor.chestplate || stack.getItem() == SlimeArmor.legs || stack.getItem() == SlimeArmor.boots ||
-                stack.getItem() == ChickenArmor.helmet || stack.getItem() == ChickenArmor.chestplate || stack.getItem() == ChickenArmor.legs || stack.getItem() == ChickenArmor.boots ||
-                stack.getItem() == RCArmor.helmet || stack.getItem() == RCArmor.chestplate || stack.getItem() == RCArmor.legs || stack.getItem() == RCArmor.boots || stack.getItem() == RDArmor.helmet ||
-                stack.getItem() == RDArmor.chestplate || stack.getItem() == RDArmor.legs || stack.getItem() == RDArmor.boots || stack.getItem() == RGArmor.helmet || stack.getItem() == RGArmor.chestplate ||
-                stack.getItem() == RGArmor.legs || stack.getItem() == RGArmor.boots || stack.getItem() == RIArmor.helmet || stack.getItem() == RIArmor.chestplate || stack.getItem() == RIArmor.legs || stack.getItem() == RIArmor.boots ||
-                stack.getItem() == CobaltArmor.helmet || stack.getItem() == CobaltArmor.chestplate || stack.getItem() == CobaltArmor.legs || stack.getItem() == CobaltArmor.boots ||
-                stack.getItem() == ArditeArmor.helmet || stack.getItem() == ArditeArmor.chestplate || stack.getItem() == ArditeArmor.legs || stack.getItem() == ArditeArmor.boots ||
-                stack.getItem() == ManyullynArmor.helmet || stack.getItem() == ManyullynArmor.chestplate || stack.getItem() == ManyullynArmor.legs || stack.getItem() == ManyullynArmor.boots ||
-                stack.getItem() == PigIronArmor.helmet || stack.getItem() == PigIronArmor.chestplate || stack.getItem() == PigIronArmor.legs || stack.getItem() == PigIronArmor.boots ||
-                stack.getItem() == KnightSlimeArmor.helmet || stack.getItem() == KnightSlimeArmor.chestplate || stack.getItem() == KnightSlimeArmor.legs || stack.getItem() == KnightSlimeArmor.boots &&
-                !this.thePlayer.hasAchievement(CRAFT_ANY_ARMOR)) {
-            if (this.thePlayer.hasAchievement(CRAFT_ANY_ARMOR)) {
-            } else if (!this.thePlayer.hasAchievement(CRAFT_ANY_ARMOR)) {
-                this.thePlayer.addStat(CRAFT_ANY_ARMOR, 1);
-                thePlayer.dropItem(ModItems.ARMORPLUS_BOOK, 1);
-            }
-        }
 
         /**Guardian Armor Thorns*/
         if (stack.getItem() == GuardianArmor.helmet || stack.getItem() == GuardianArmor.chestplate || stack.getItem() == GuardianArmor.legs || stack.getItem() == GuardianArmor.boots || stack.getItem() == TheUltimateArmor.helmet || stack.getItem() == TheUltimateArmor.chestplate || stack.getItem() == TheUltimateArmor.legs || stack.getItem() == TheUltimateArmor.boots)

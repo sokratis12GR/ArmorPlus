@@ -4,10 +4,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
@@ -20,9 +22,26 @@ import sokratis12GR.ArmorPlus.armors.tconstruct.CobaltArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.KnightSlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.ManyullynArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.PigIronArmor;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
+import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
+
+    @SubscribeEvent
+    public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
+
+        Item i = event.crafting.getItem();
+
+        ItemStack itemStack = event.crafting;
+
+        /**Guardian Armor Thorns*/
+        if (i == Item.getItemFromBlock(ModBlocks.ARMOR_FORGE)) {
+            event.player.addStat(ARPAchievements.WELCOME_TO_ARMORPLUS, 1);
+            event.player.inventory.addItemStackToInventory(new ItemStack(ModItems.ARMORPLUS_BOOK, 1));
+        }
+    }
 
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {

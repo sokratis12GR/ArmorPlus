@@ -49,10 +49,10 @@ public class ARPAchievements {
     /**
      * ArmorPlus Book
      */
-    public static Achievement CRAFT_ANY_ARMOR;
+    public static Achievement WELCOME_TO_ARMORPLUS;
 
     public static void init() {
-        CRAFT_ANY_ARMOR = new AchievementARP("craftAnyArmor", -2, -2, ModItems.ARMORPLUS_BOOK, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        WELCOME_TO_ARMORPLUS = new AchievementARP("craftArmorForge", -2, -2, ModItems.ARMORPLUS_BOOK, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
         /** Center */
         CRAFT_COAL_ARMOR = new AchievementARP("craftCoalArmor", 0, 0, CoalArmor.helmet, AchievementList.OPEN_INVENTORY).setNormalCrafting();
         /** Bottom-Right */

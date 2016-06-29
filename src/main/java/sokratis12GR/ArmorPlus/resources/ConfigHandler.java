@@ -148,6 +148,12 @@ public class ConfigHandler {
     public static boolean easyMode;
     public static boolean expertMode;
 
+    /**
+     * The Ultimate Armor
+     */
+    public static boolean enableTheUltimateArmorIncinvibility;
+
+
     public static void init(File file) {
         config = new Configuration(file);
 
@@ -366,6 +372,9 @@ public class ConfigHandler {
                 "Enable/Disable Pig Iron Armor Effects");
         enableKnightSlimeArmorEffects = config.getBoolean("enableKnightSlimeArmorEffects", category, true,
                 "Enable/Disable Knight Slime Armor Effects");
+
+        /** The Ultimate Armor */
+        enableTheUltimateArmorIncinvibility = config.getBoolean("enableTheUltimateArmorIncinvibility", category, true, "Enable/Disable The Ultimata Armor Invincibility");
 
         //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
         //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)

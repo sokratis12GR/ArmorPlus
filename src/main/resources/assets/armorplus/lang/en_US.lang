@@ -219,8 +219,8 @@ achievement.armorplus.craftSlimeArmor=Jump Jump Jump!
 achievement.armorplus.craftSlimeArmor.desc=Craft a Slime Armor Piece
 achievement.armorplus.craftChickenArmor=Its time to go Faster!
 achievement.armorplus.craftChickenArmor.desc=Craft a Chicken Armor Piece
-achievement.armorplus.craftAnyArmor=Welcome to ArmorPlus!
-achievement.armorplus.craftAnyArmor.desc=Craft any Armor Piece from ArmorPlus
+achievement.armorplus.craftArmorForge=Welcome to ArmorPlus!
+achievement.armorplus.craftArmorForge.desc=Craft the Armor Forge from ArmorPlus
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.config.refresh=Refreshing configuration file

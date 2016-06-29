@@ -1,12 +1,15 @@
 package sokratis12GR.ArmorPlus.armors.special;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
@@ -92,10 +95,20 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-                    entity.capabilities.disableDamage = true;
+                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.disableDamage = true;
+                    } else {
+                        entity.capabilities.disableDamage = false;
+                    }
+                }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 } else {
-                    entity.capabilities.disableDamage = false;
+                    if (entity instanceof EntityLivingBase) {
+                        entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+                    }
                 }
             }
 
@@ -129,10 +142,20 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-                    entity.capabilities.disableDamage = true;
+                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.disableDamage = true;
+                    } else {
+                        entity.capabilities.disableDamage = false;
+                    }
+                }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 } else {
-                    entity.capabilities.disableDamage = false;
+                    if (entity instanceof EntityLivingBase) {
+                        entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+                    }
                 }
             }
 
@@ -166,10 +189,20 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-                    entity.capabilities.disableDamage = true;
+                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.disableDamage = true;
+                    } else {
+                        entity.capabilities.disableDamage = false;
+                    }
+                }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 } else {
-                    entity.capabilities.disableDamage = false;
+                    if (entity instanceof EntityLivingBase) {
+                        entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+                    }
                 }
             }
 
@@ -203,10 +236,20 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-                    entity.capabilities.disableDamage = true;
+                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                    if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                        entity.capabilities.disableDamage = true;
+                    } else {
+                        entity.capabilities.disableDamage = false;
+                    }
+                }
+                if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
                 } else {
-                    entity.capabilities.disableDamage = false;
+                    if (entity instanceof EntityLivingBase) {
+                        entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+                    }
                 }
             }
 

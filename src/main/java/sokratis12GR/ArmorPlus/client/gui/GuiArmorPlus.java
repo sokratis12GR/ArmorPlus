@@ -48,10 +48,10 @@ public class GuiArmorPlus extends GuiScreen {
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "The Ulitmate Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Water Breathing,").getText(), guiX + 10, guiY + 120, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.ITALIC + "Night Vision, Regeneration 2 & Flight (Full Set)").getText(), guiX + 10, guiY + 130, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Ardite Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Fire Resistance (Full Set)").getText(), guiX + 10, guiY + 140, 0xffaa00);
-        drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Cobalt Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Haste 2 (Full Set)").getText(), guiX + 10, guiY + 150, 0xffaa00);
+        drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Cobalt Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Haste 3 (Full Set)").getText(), guiX + 10, guiY + 150, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Manyullyn Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Strength 2 (Full Set)").getText(), guiX + 10, guiY + 160, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Pig Iron Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Saturation (Full Set)").getText(), guiX + 10, guiY + 170, 0xffaa00);
-        drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Knight Slime Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Haste 3 (Full Set)").getText(), guiX + 10, guiY + 180, 0xffaa00);
+        drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Knight Slime Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Haste 2 (Full Set)").getText(), guiX + 10, guiY + 180, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Chicken Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Speed 5 (Full Set)").getText(), guiX + 10, guiY + 190, 0xffaa00);
         drawString(fontRendererObj, new TextComponentString(TextFormatting.BOLD + "Slime Armor" + TextFormatting.RESET + TextFormatting.ITALIC + " - Jump Boost 3 (Full Set)").getText(), guiX + 10, guiY + 200, 0xffaa00);
         super.drawScreen(x, y, ticks);

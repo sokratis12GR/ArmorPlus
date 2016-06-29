@@ -28,7 +28,7 @@ group = "sokratis12GR.ArmorPlus" // http://maven.apache.org/guides/mini/guide-na
 archivesBaseName = "ArmorPlus1.9.4"
 
 minecraft {
-    version = "1.10-12.18.0.1981-1.10.0"
+    version = "1.9.4-12.17.0.1976"
     runDir = "run"
     
     mappings = "snapshot_20160518"

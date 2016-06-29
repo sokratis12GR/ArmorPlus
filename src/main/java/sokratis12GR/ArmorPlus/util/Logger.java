@@ -1,24 +1,31 @@
 package sokratis12GR.ArmorPlus.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.special.mob.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
 import java.io.*;
+import java.util.UUID;
 
 /**
  * Created by Socrates on 4/23/2016.
  */
 public class Logger {
-
-    public static Configuration Logger;
 
     public static void init(File file) {
         syncConfig();
@@ -28,6 +35,7 @@ public class Logger {
 
         Writer writer = null;
 
+        //ArmorPlus.html
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.html"), "utf-8"));
@@ -48,10 +56,10 @@ public class Logger {
                 writer.close();
             } catch (Exception ex) {/*ignore*/}
         }
-
+        //Note.txt
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.txt"), "utf-8"));
+                    new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "Note.txt"), "utf-8"));
             writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't Modify Or Delete These Files: " + "ArmorPlus.txt" + ", " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]");
         } catch (IOException ex) {
             // report
@@ -60,6 +68,7 @@ public class Logger {
                 writer.close();
             } catch (Exception ex) {/*ignore*/}
         }
+        //ArmorPlusItem.txt
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("config" + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID + "/" + "ArmorPlusItems.txt"), "utf-8"));
@@ -85,7 +94,7 @@ public class Logger {
             writer.write("\n\n20. Chicken Armor: " + ChickenArmor.helmet.getRegistryName() + " , " + ChickenArmor.chestplate.getRegistryName() + " , " + ChickenArmor.legs.getRegistryName() + " , " + ChickenArmor.boots.getRegistryName());
             writer.write("\n\n21. Slime Armor: " + SlimeArmor.helmet.getRegistryName() + " , " + SlimeArmor.chestplate.getRegistryName() + " , " + SlimeArmor.legs.getRegistryName() + " , " + SlimeArmor.boots.getRegistryName());
             writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , " + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName());
-            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName());
+            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName());
         } catch (IOException ex) {
             // report
         } finally {

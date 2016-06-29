@@ -229,7 +229,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ChickenArmor.boots, 1), "FXF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
         }
         /** Slime Armor */
-        if (ConfigHandler.easyMode && ConfigHandler.enableChickenArmorRecipes) {
+        if (ConfigHandler.easyMode && ConfigHandler.enableSlimeArmorRecipes) {
             this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "XXX", "SSS", "SXS", 'S', Items.SLIME_BALL);
             this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "SSS", "SXS", "XXX", 'S', Items.SLIME_BALL);
             this.addRecipe(new ItemStack(SlimeArmor.chestplate, 1), "SXS", "SSS", "SSS", 'S', Items.SLIME_BALL);
@@ -237,7 +237,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "XXX", "SXS", "SXS", 'S', Items.SLIME_BALL);
             this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "SXS", "SXS", "XXX", 'S', Items.SLIME_BALL);
         }
-        if (ConfigHandler.expertMode && ConfigHandler.enableChickenArmorRecipes) {
+        if (ConfigHandler.expertMode && ConfigHandler.enableSlimeArmorRecipes) {
             this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "XXX", "SSS", "SXS", 'S', Blocks.SLIME_BLOCK);
             this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "SSS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
             this.addRecipe(new ItemStack(SlimeArmor.chestplate, 1), "SXS", "SSS", "SSS", 'S', Blocks.SLIME_BLOCK);
