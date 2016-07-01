@@ -23,7 +23,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -81,13 +80,15 @@ public class EmeraldArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
                 if (ConfigHandler.enableEmeraldHHaste) {
-                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullEmeraldArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -116,9 +117,16 @@ public class EmeraldArmor {
 
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                if (ConfigHandler.enableEmeraldCHaste) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
+                }
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -146,9 +154,16 @@ public class EmeraldArmor {
 
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                if (ConfigHandler.enableEmeraldLHaste) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
+                }
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -176,9 +191,16 @@ public class EmeraldArmor {
 
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int emeraldArmorEffectlevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                tooltip.add(TextHelper.getFormattedText("&2" + "Gives you Haste " + emeraldArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
+                if (ConfigHandler.enableEmeraldBHaste) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
+                }
+                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
+                }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

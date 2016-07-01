@@ -34,8 +34,12 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("TheUltimateArmor".toLowerCase())));
 
         list.add(new ConfigElement(ConfigHandler.config.getCategory("GameModes".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("BlackList".toLowerCase())));
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("WhiteList".toLowerCase())));
+
         return list;
     }
 }

@@ -176,6 +176,7 @@ item.WitherBone.name=Wither Bone
 item.TheUltimateMaterial.name=The Ultimate Material
 item.EnderDragonScale.name=Ender Dragon Scale
 item.GuardianScale.name=Guardian Scale
+item.TheGiftOfTheGods.name=The Gift Of The Gods
 
 #Blocks
 tile.CompressedObsidian.name=Compressed Obsidian

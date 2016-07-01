@@ -2,10 +2,6 @@ package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,8 +15,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.origin.*;
@@ -50,12 +44,13 @@ import java.io.File;
 
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
+import static sokratis12GR.ArmorPlus.resources.ConfigHandler.blackListedItems;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4, 1.10]", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4,1.10)", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-3.1.5.3";
+    public static final String VERSION = "1.9.4-3.1.10.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
@@ -144,20 +139,6 @@ public class ArmorPlus {
         ARPAchievements.init();
 
         ModRecipes.init();
-
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', Items.IRON_INGOT);
-
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
-        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
-        GameRegistry.addRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), 'G', new ItemStack(Items.EGG, 1));
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', new ItemStack(Blocks.CRAFTING_TABLE), 'O', new ItemStack(Blocks.COAL_BLOCK), 'L', new ItemStack(Blocks.LAPIS_BLOCK), 'C', new ItemStack(ModItems.LAVA_CRYSTAL));
-        //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.COMPRESSED_OBSIDIAN, 1, 0), "AGA", "GCG", "AAA", 'A', alloy1, 'G', "blockGlass", 'C', active_core1)
     }
 
     @EventHandler

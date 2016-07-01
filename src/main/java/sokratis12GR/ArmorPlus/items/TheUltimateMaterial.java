@@ -19,7 +19,6 @@ public class TheUltimateMaterial extends Item {
         setUnlocalizedName("TheUltimateMaterial");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
-
     }
 
     @Override
@@ -31,5 +30,4 @@ public class TheUltimateMaterial extends Item {
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:TheUltimateMaterial", "inventory"));
     }
-
 }

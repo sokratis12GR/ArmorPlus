@@ -22,7 +22,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -77,13 +76,15 @@ public class SuperStarArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
                 if (ConfigHandler.enableSuperStarHRegen) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -106,13 +107,15 @@ public class SuperStarArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
                 if (ConfigHandler.enableSuperStarCRegen) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -135,13 +138,15 @@ public class SuperStarArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
                 if (ConfigHandler.enableSuperStarLRegen) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -164,13 +169,15 @@ public class SuperStarArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
                 if (ConfigHandler.enableSuperStarBRegen) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullSuperStarArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&f" + "Gives you Regeneration " + superstarArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 

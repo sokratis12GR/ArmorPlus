@@ -23,7 +23,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -78,13 +77,15 @@ public class RedstoneArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
                 if (ConfigHandler.enableRedstoneHSpeed) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -112,13 +113,15 @@ public class RedstoneArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
                 if (ConfigHandler.enableRedstoneCSpeed) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -146,13 +149,15 @@ public class RedstoneArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
                 if (ConfigHandler.enableRedstoneLSpeed) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -180,13 +185,15 @@ public class RedstoneArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
                 if (ConfigHandler.enableRedstoneBSpeed) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullRedstoneArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&4" + "Gives you Speed " + redstoneArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 

@@ -22,7 +22,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -77,8 +76,9 @@ public class TheUltimateArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -124,8 +124,9 @@ public class TheUltimateArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -171,8 +172,9 @@ public class TheUltimateArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -218,8 +220,9 @@ public class TheUltimateArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "The Most OverPowered Armor"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

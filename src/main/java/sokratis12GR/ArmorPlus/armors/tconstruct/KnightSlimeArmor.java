@@ -9,7 +9,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -68,11 +66,9 @@ public class KnightSlimeArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
-            }
-
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 2");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -84,11 +80,9 @@ public class KnightSlimeArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
-            }
-
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 2");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -99,11 +93,9 @@ public class KnightSlimeArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
-            }
-
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 2");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -114,12 +106,9 @@ public class KnightSlimeArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&5" + "Gives you Haste 2 when using full set, " + "Unnatural"));
-            }
-
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 2");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override

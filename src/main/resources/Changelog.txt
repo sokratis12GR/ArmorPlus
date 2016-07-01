@@ -1,4 +1,35 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.10.0
+{Features Changed}
+* Optimized the BlackList, now you can choose how many items you want to add to the list
+{Features Added}
+* WhiteList (If you hvae this enabled, you will only get the items you set in the config)
+* Some Configurations for the BlackList & WhiteList
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.9.1
+{Bugs Fixed}
+* "The Gift Of The Gods" not working if 50 items in the blacklist aren't added (now are added by default, just replace them with the item you want to disable //The Must always be 50)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.9.0
+{Features Added}
+* Blacklist config, so you can disable the listed items to not be given by the "The Gift Of The Gods" (Limitation for now are 50 Items) //The is an example on how to do the config option in the config
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.8.0
+{Features Added}
+* Item
+** "The Gift Of The Gods", a very expensive Item that gives you 1 random thing from the entire Modpack
+{Features Changed}
+* Armor Descriptions are now better
+* Some Config Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.7.0
+{Features Changed}
+* Guardians now new will drop 0-1 Guardian Scales
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.6.0
+{Supported Minecraft Versions}
+* 1.9.4 and 1.10 and 1.10.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-3.1.5.3
 {Bugs Fixed}
 * Fixed ArmorPlus Book Information

@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -77,13 +76,15 @@ public class ObsidianArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
                 if (ConfigHandler.enableObsidianHResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullObsidianArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -106,13 +107,15 @@ public class ObsidianArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianCResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                if (ConfigHandler.enableObsidianHResistance) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullObsidianArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -135,13 +138,15 @@ public class ObsidianArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianLResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                if (ConfigHandler.enableObsidianHResistance) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullObsidianArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -164,13 +169,15 @@ public class ObsidianArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                int lavaArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianBResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
+                if (ConfigHandler.enableObsidianHResistance) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullObsidianArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&8" + "Gives you Resistance " + lavaArmorEffectlevel + "when using full set"));
+                    infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 

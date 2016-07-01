@@ -66,14 +66,10 @@ public class ConfigHandler {
     /**
      * Lava Armor
      */
-    public static boolean enableLavaHResistance;
-    public static boolean enableLavaHFireResistance;
-    public static boolean enableLavaCResistance;
-    public static boolean enableLavaCFireResistance;
-    public static boolean enableLavaLResistance;
-    public static boolean enableLavaLFireResistance;
-    public static boolean enableLavaBResistance;
-    public static boolean enableLavaBFireResistance;
+    public static boolean enableLavaHEffects;
+    public static boolean enableLavaCEffects;
+    public static boolean enableLavaLEffects;
+    public static boolean enableLavaBEffects;
 
     public static boolean enableOldLavaArmorRecipes;
     /**
@@ -153,14 +149,27 @@ public class ConfigHandler {
      */
     public static boolean enableTheUltimateArmorIncinvibility;
 
+    /**
+     * WhiteList & BlackList
+     */
+    public static String[] blackListedItems;
+    public static String[] whiteListedItems;
+    public static boolean enableBlackList;
+    public static boolean enableWhiteList;
+    public static int whitelistmin;
+    public static int whitelistmax;
+    public static int blacklistmin;
+    public static int blacklistmax;
+
 
     public static void init(File file) {
         config = new Configuration(file);
-
         syncConfig();
     }
 
     public static void syncConfig() {
+        final String[] blackListed;
+
         String category;
         category = "Recipes".toLowerCase();
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
@@ -289,23 +298,14 @@ public class ConfigHandler {
         category = "LavaArmor".toLowerCase();
         config.isChild = true;
         /** Lava Armor Resistance*/
-        enableLavaHResistance = config.getBoolean("enableLavaHResistance", category, true,
-                "Enable/Disable The Lava Helmet Resistance");
-        enableLavaCResistance = config.getBoolean("enableLavaCResistance", category, true,
-                "Enable/Disable Lava Chestplate Resistance");
-        enableLavaLResistance = config.getBoolean("enableLavaLResistance", category, true,
-                "Enable/Disable The Lava Leggings Resistance");
-        enableLavaBResistance = config.getBoolean("enableLavaBResistance", category, true,
-                "Enable/Disable The Lava Boots Resistance");
-        /** Lava Armor FireResistance*/
-        enableLavaHFireResistance = config.getBoolean("enableLavaHFireResistance", category, true,
-                "Enable/Disable The Lava Helmet FireResistance");
-        enableLavaCFireResistance = config.getBoolean("enableLavaCFireResistance", category, true,
-                "Enable/Disable Lava Chestplate FireResistance");
-        enableLavaLFireResistance = config.getBoolean("enableLavaLFireResistance", category, true,
-                "Enable/Disable The Lava Leggings FireResistance");
-        enableLavaBFireResistance = config.getBoolean("enableLavaBFireResistance", category, true,
-                "Enable/Disable The Lava Boots FireResistance");
+        enableLavaHEffects = config.getBoolean("enableLavaHResistance", category, true,
+                "Enable/Disable The Lava Helmet Effects");
+        enableLavaCEffects = config.getBoolean("enableLavaCResistance", category, true,
+                "Enable/Disable Lava Chestplate Effects");
+        enableLavaLEffects = config.getBoolean("enableLavaLResistance", category, true,
+                "Enable/Disable The Lava Leggings Effects");
+        enableLavaBEffects = config.getBoolean("enableLavaBResistance", category, true,
+                "Enable/Disable The Lava Boots Effects");
         /**Full Lava Armor Effect*/
         enableFullLavaArmorEffect = config.getBoolean("enableFullLavaArmorEffect", category, false,
                 "Enable/Disable The Full Lava Armor Effect");
@@ -373,11 +373,31 @@ public class ConfigHandler {
         enableKnightSlimeArmorEffects = config.getBoolean("enableKnightSlimeArmorEffects", category, true,
                 "Enable/Disable Knight Slime Armor Effects");
 
+        category = "TheUltimateArmor".toLowerCase();
         /** The Ultimate Armor */
         enableTheUltimateArmorIncinvibility = config.getBoolean("enableTheUltimateArmorIncinvibility", category, true, "Enable/Disable The Ultimata Armor Invincibility");
 
-        //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment)
-        //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue)
+
+        category = "BlackList".toLowerCase();
+        config.setCategoryComment(category, "You Can't Get Blocks from \"The Gift Of The Gods\". So it isn't recommended adding them to any of the lists");
+        blacklistmax = config.getInt("blacklistmax", category, 0, 0, 100, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:You will need to have that many BlackListed Items.");
+        blacklistmin = config.getInt("blacklistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
+        enableBlackList = config.getBoolean("enableBlackList", category, false, "Enable/Disable the BlackList");
+        blackListedItems = config.getStringList("blackListedItems", category, new String[]{"minecraft:dirt"}, "\nAdd Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add");
+
+        category = "WhiteList".toLowerCase();
+        whitelistmax = config.getInt("whitelistmax", category, 0, 0, 100, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.");
+        whitelistmin = config.getInt("whitelistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
+        enableWhiteList = config.getBoolean("enableWhiteList", category, false, "Enable/Disable the WhiteList");
+        whiteListedItems = config.getStringList("whiteListedItems", category, new String[]{"minecraft:dirt"}, "\nAdd WhiteListed Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the whitelist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add");
+
+
+        //config.getStringList(String name, String category, String[] defaultValue, String comment, String[] validValues)
+
+        //config.getFloat(String name, String category, float defaultValue, float minValue, float maxValue, String comment);
+
+        //config.get(String category, String key, int[] defaultValues, String comment, int minValue, int maxValue);
+
         //config.getString(String name, String category, String defaultValue, String comment, String[] validValues, String langKey);
 
         if (config.hasChanged())

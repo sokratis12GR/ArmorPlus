@@ -78,12 +78,14 @@ public class CoalArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 if (ConfigHandler.enableCoalHNightVision) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullCoalArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -112,12 +114,14 @@ public class CoalArmor {
 
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 if (ConfigHandler.enableCoalCNightVision) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullCoalArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -146,12 +150,14 @@ public class CoalArmor {
 
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 if (ConfigHandler.enableCoalLNightVision) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullCoalArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -180,12 +186,14 @@ public class CoalArmor {
 
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 if (ConfigHandler.enableCoalBNightVision) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullCoalArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&7" + "Gives you Night Vision when using full set"));
+                    infoList.add("\2479Ability: " + "\247rNight Vision");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 

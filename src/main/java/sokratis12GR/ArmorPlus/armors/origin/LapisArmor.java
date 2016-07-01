@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -78,12 +77,14 @@ public class LapisArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 if (ConfigHandler.enableLapisHBreathing) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullLapisArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -105,12 +106,14 @@ public class LapisArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                if (ConfigHandler.enableLapisCBreathing) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                if (ConfigHandler.enableLapisHBreathing) {
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullLapisArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -132,12 +135,14 @@ public class LapisArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                if (ConfigHandler.enableLapisLBreathing) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                if (ConfigHandler.enableLapisHBreathing) {
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullLapisArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -159,12 +164,14 @@ public class LapisArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                if (ConfigHandler.enableLapisBBreathing) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                if (ConfigHandler.enableLapisHBreathing) {
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
                 if (ConfigHandler.enableFullLapisArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&1" + "Gives you Water Breathing when using full set"));
+                    infoList.add("\2479Ability: " + "\247rWater Breathing ");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 

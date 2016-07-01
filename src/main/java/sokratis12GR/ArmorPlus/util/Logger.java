@@ -1,7 +1,5 @@
 package sokratis12GR.ArmorPlus.util;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.armors.origin.*;
@@ -20,7 +18,6 @@ import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
 import java.io.*;
-import java.util.UUID;
 
 /**
  * Created by Socrates on 4/23/2016.
@@ -93,7 +90,8 @@ public class Logger {
             writer.write("\n\n19. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
             writer.write("\n\n20. Chicken Armor: " + ChickenArmor.helmet.getRegistryName() + " , " + ChickenArmor.chestplate.getRegistryName() + " , " + ChickenArmor.legs.getRegistryName() + " , " + ChickenArmor.boots.getRegistryName());
             writer.write("\n\n21. Slime Armor: " + SlimeArmor.helmet.getRegistryName() + " , " + SlimeArmor.chestplate.getRegistryName() + " , " + SlimeArmor.legs.getRegistryName() + " , " + SlimeArmor.boots.getRegistryName());
-            writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , " + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName());
+            writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , "
+                    + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName());
             writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName());
         } catch (IOException ex) {
             // report

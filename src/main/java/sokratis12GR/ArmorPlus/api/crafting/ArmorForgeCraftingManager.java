@@ -392,6 +392,7 @@ public class ArmorForgeCraftingManager {
         // ===================================== Items =====================================
         this.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), new Object[]{"XSX", "SBS", "XSX", 'S', Items.STRING, 'B', Items.SLIME_BALL});
         this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), ModItems.ENDER_DRAGON_SCALE, ModItems.GUARDIAN_SCALE, ModItems.WITHER_BONE);
+        this.addRecipe(new ItemStack(ModItems.THE_GIFT_OF_THE_GODS, 1), "SOS", "OLO", "SOS", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.LAVA_CRYSTAL));
         //this.addRecipe(new ItemStack(Blocks.TNT, 1), new Object[]{"X#X", "#X#", "X#X", 'X', Items.GUNPOWDER, '#', Blocks.SAND});
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

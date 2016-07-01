@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -70,10 +69,10 @@ public class ChickenArmor {
 
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
-
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rSpeed 5");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -91,8 +90,9 @@ public class ChickenArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rSpeed 5");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -110,8 +110,9 @@ public class ChickenArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rSpeed 5");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -129,8 +130,9 @@ public class ChickenArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&b" + "Gives you Speed 5 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rSpeed 5");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

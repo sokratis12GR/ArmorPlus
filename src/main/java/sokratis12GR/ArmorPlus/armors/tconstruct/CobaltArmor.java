@@ -9,7 +9,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -67,12 +65,10 @@ public class CobaltArmor {
                 {3, 7, 9, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
-
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -83,12 +79,10 @@ public class CobaltArmor {
         }).setUnlocalizedName("CobaltHelmet");
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
-
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -99,12 +93,10 @@ public class CobaltArmor {
         }).setUnlocalizedName("CobaltChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-            }
-
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override
@@ -115,13 +107,11 @@ public class CobaltArmor {
         }).setUnlocalizedName("CobaltLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
-            public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
-            }
 
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText(TextFormatting.BLUE + "Gives you Haste 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rHaste 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             @Override

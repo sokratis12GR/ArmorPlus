@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -77,13 +76,15 @@ public class LavaArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                if (ConfigHandler.enableLavaHResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                if (ConfigHandler.enableLavaHEffects) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLavaArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -94,10 +95,8 @@ public class LavaArmor {
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-                if (ConfigHandler.enableLavaHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
+                if (ConfigHandler.enableLavaHEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
-                }
-                if (ConfigHandler.enableLavaHFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
@@ -118,15 +117,16 @@ public class LavaArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                if (ConfigHandler.enableLavaCResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                if (ConfigHandler.enableLavaHEffects) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLavaArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
-
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -135,10 +135,8 @@ public class LavaArmor {
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-                if (ConfigHandler.enableLavaCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
+                if (ConfigHandler.enableLavaCEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
-                }
-                if (ConfigHandler.enableLavaCFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
 
                 }
@@ -160,13 +158,15 @@ public class LavaArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                if (ConfigHandler.enableLavaLResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                if (ConfigHandler.enableLavaHEffects) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLavaArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -176,10 +176,8 @@ public class LavaArmor {
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-                if (ConfigHandler.enableLavaLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
+                if (ConfigHandler.enableLavaLEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
-                }
-                if (ConfigHandler.enableLavaLFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {
@@ -200,13 +198,15 @@ public class LavaArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
                 int lavaArmorEffectlevel = ConfigHandler.lavaArmorEffectlevel + 1;
-                if (ConfigHandler.enableLavaBResistance) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance"));
+                if (ConfigHandler.enableLavaHEffects) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLavaArmorEffect) {
-                    tooltip.add(TextHelper.getFormattedText("&6" + "Gives you Resistance " + lavaArmorEffectlevel + " and Fire Resistance when using full set"));
+                if (ConfigHandler.enableFullLapisArmorEffect) {
+                    infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+                    infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
@@ -216,10 +216,8 @@ public class LavaArmor {
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-                if (ConfigHandler.enableLavaBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
+                if (ConfigHandler.enableLavaBEffects && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.lavaArmorEffectlevel, true, true));
-                }
-                if (ConfigHandler.enableLavaBFireResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLavaArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
                 }
                 if (head != null && head.getItem() == LavaArmor.helmet && chest != null && chest.getItem() == LavaArmor.chestplate && legs != null && legs.getItem() == LavaArmor.legs && feet != null && feet.getItem() == LavaArmor.boots) {

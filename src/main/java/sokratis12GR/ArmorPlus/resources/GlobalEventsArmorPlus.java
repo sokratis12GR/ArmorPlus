@@ -121,12 +121,12 @@ public class GlobalEventsArmorPlus {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
             }
-            /**Chicken Armor*/
+            /**Full Chicken Armor*/
             if (head != null && head.getItem() == ChickenArmor.helmet && chest != null && chest.getItem() == ChickenArmor.chestplate && legs != null && legs.getItem() == ChickenArmor.legs && feet != null && feet.getItem() == ChickenArmor.boots) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, 4, true, true));
             }
-            /**Slime Armor*/
+            /**Full Slime Armor*/
             if (head != null && head.getItem() == SlimeArmor.helmet && chest != null && chest.getItem() == SlimeArmor.chestplate && legs != null && legs.getItem() == SlimeArmor.legs && feet != null && feet.getItem() == SlimeArmor.boots) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 120, 2, true, true));

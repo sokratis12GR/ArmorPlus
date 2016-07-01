@@ -76,8 +76,9 @@ public class SlimeArmor {
         int armorPreffix = 0;
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rJump Boost 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -95,9 +96,11 @@ public class SlimeArmor {
         helmet.setMaxStackSize(1);
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rJump Boost 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
+
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
@@ -114,8 +117,9 @@ public class SlimeArmor {
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rJump Boost 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -133,9 +137,11 @@ public class SlimeArmor {
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
-            public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-                tooltip.add(TextHelper.getFormattedText("&a" + "Gives you Jump Boost 3 when using full set"));
+            public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+                infoList.add("\2479Ability: " + "\247rJump Boost 3");
+                infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
+
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }

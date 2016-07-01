@@ -2,7 +2,6 @@ package sokratis12GR.ArmorPlus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.blocks.CompressedObsidian;
 import sokratis12GR.ArmorPlus.items.*;
 
 public class ModItems {
@@ -18,12 +17,17 @@ public class ModItems {
     public static TheUltimateMaterial THE_ULTIMATE_MATERIAL;
     public static LavaCrystal LAVA_CRYSTAL;
     /**
+     * The Fift Of The Gods
+     */
+    public static TheGiftOfTheGods THE_GIFT_OF_THE_GODS;
+
+    /**
      * GUI Items
      */
     public static ArmorPlusBook ARMORPLUS_BOOK;
 
     public static void init() {
-        //EntityItem e = new EntityItem();
+        //EntityItemArmorPlus e = new EntityItemArmorPlus();
         //e.setNoDespawn();
 
         CHAINMAIL = new Chainmail();
@@ -34,6 +38,8 @@ public class ModItems {
         ENDER_DRAGON_SCALE = new EnderDragonScale();
         THE_ULTIMATE_MATERIAL = new TheUltimateMaterial();
         LAVA_CRYSTAL = new LavaCrystal();
+        /** The Fift Of The Gods */
+        THE_GIFT_OF_THE_GODS = new TheGiftOfTheGods();
         /** GUI Items */
         ARMORPLUS_BOOK = new ArmorPlusBook();
     }
@@ -48,6 +54,8 @@ public class ModItems {
         ENDER_DRAGON_SCALE.initModel();
         THE_ULTIMATE_MATERIAL.initModel();
         LAVA_CRYSTAL.initModel();
+        /** The Fift Of The Gods */
+        THE_GIFT_OF_THE_GODS.initModel();
         /** GUI Items */
         ARMORPLUS_BOOK.initModel();
     }

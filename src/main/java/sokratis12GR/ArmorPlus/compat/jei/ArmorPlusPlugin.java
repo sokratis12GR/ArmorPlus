@@ -31,10 +31,6 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         nbtRegistry.useNbtForSubtypes(
         );
 
-        if (FluidRegistry.isUniversalBucketEnabled()) {
-            nbtRegistry.useNbtForSubtypes(ForgeModContainer.getInstance().universalBucket);
-        }
-
         registry.addRecipeCategories(
                 new ArmorForgeRecipeCategory(guiHelper)
         );
