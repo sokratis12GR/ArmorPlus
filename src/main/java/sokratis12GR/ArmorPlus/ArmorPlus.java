@@ -2,6 +2,7 @@ package sokratis12GR.ArmorPlus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,6 +30,8 @@ import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
+import sokratis12GR.ArmorPlus.armors.v2.ElectricalArmor;
+import sokratis12GR.ArmorPlus.armors.v2.MetalArmor;
 import sokratis12GR.ArmorPlus.client.gui.*;
 import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
 import sokratis12GR.ArmorPlus.compat.ICompatibility;
@@ -42,15 +45,15 @@ import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.io.File;
 
+import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
-import static sokratis12GR.ArmorPlus.resources.ConfigHandler.blackListedItems;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4,1.10)", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-3.1.10.0";
+    public static final String VERSION = "1.9.4-4.0.0.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
@@ -97,6 +100,12 @@ public class ArmorPlus {
     SlimeArmor SLIME_ARMOR = new SlimeArmor();
 
     /**
+     * v2
+     */
+    MetalArmor METAL_ARMOR = new MetalArmor();
+    ElectricalArmor ELECTRICAL_ARMOR = new ElectricalArmor();
+
+    /**
      * Tinkers' Construct Armors
      */
     CobaltArmor COBALT_ARMOR = new CobaltArmor();
@@ -129,6 +138,10 @@ public class ArmorPlus {
         CHICKEN_ARMOR.load(event);
         SLIME_ARMOR.load(event);
 
+        /** v2 */
+        METAL_ARMOR.load(event);
+        ELECTRICAL_ARMOR.load(event);
+
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.load(event);
         ARDITE_ARMOR.load(event);
@@ -139,6 +152,10 @@ public class ArmorPlus {
         ARPAchievements.init();
 
         ModRecipes.init();
+
+        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
+        registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
+        registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
     }
 
     @EventHandler
@@ -148,6 +165,7 @@ public class ArmorPlus {
         ModItems.init();
         ModBlocks.init();
         ModBlocks.register();
+        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         COAL_ARMOR.instance = ArmorPlus.instance;
         LAPIS_ARMOR.instance = ArmorPlus.instance;
@@ -165,6 +183,11 @@ public class ArmorPlus {
         RC_ARMOR.instance = ArmorPlus.instance;
         CHICKEN_ARMOR.instance = ArmorPlus.instance;
         SLIME_ARMOR.instance = ArmorPlus.instance;
+
+        /** v2 */
+        METAL_ARMOR.instance = ArmorPlus.instance;
+        ELECTRICAL_ARMOR.instance = ArmorPlus.instance;
+
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.instance = ArmorPlus.instance;
@@ -189,6 +212,10 @@ public class ArmorPlus {
         RC_ARMOR.preInit(event);
         CHICKEN_ARMOR.preInit(event);
         SLIME_ARMOR.preInit(event);
+
+        /** v2 */
+        METAL_ARMOR.preInit(event);
+        ELECTRICAL_ARMOR.preInit(event);
 
         /** Tinkers' Construct Armors */
         COBALT_ARMOR.preInit(event);
@@ -239,5 +266,4 @@ public class ArmorPlus {
             return null;
         }
     }
-
 }

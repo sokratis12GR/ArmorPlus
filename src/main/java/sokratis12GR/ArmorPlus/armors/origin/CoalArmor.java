@@ -23,7 +23,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -101,10 +100,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -137,10 +136,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -173,10 +172,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -209,10 +208,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -220,9 +219,9 @@ public class CoalArmor {
         }).setUnlocalizedName("CoalBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "CoalHelmet");
-        GameRegistry.registerItem(chestplate, "CoalChestplate");
-        GameRegistry.registerItem(legs, "CoalLeggings");
-        GameRegistry.registerItem(boots, "CoalBoots");
+        GameRegistry.registerItem(helmet, "coal_helmet");
+        GameRegistry.registerItem(chestplate, "coal_chestplate");
+        GameRegistry.registerItem(legs, "coal_leggings");
+        GameRegistry.registerItem(boots, "coal_boots");
     }
 }

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items;
+package sokratis12GR.ArmorPlus.items.consumables;
 
 /**
  * sokratis12GR.ArmorPlus.items
@@ -24,6 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -33,10 +34,9 @@ public class TheGiftOfTheGods extends Item {
 
     private static Random random = new Random();
 
-
     public TheGiftOfTheGods() {
         super();
-        setRegistryName("TheGiftOfTheGods");        // The unique name (within your mod) that identifies this item
+        setRegistryName("the_gift_of_the_gods");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("TheGiftOfTheGods");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
@@ -50,6 +50,7 @@ public class TheGiftOfTheGods extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+        List<String> blackListedItems = Arrays.asList(ConfigHandler.blackListedItems);
         if (worldIn.isRemote) {
             return new ActionResult(EnumActionResult.PASS, itemStackIn);
         }
@@ -65,7 +66,7 @@ public class TheGiftOfTheGods extends Item {
                 item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
             }
         }
-        while (item == null || (item != null && item instanceof ItemBlock) || item == Item.getByNameOrId(blackListedItems[random.nextInt(blacklistmax - blacklistmin + 1) + blacklistmax]) && enableBlackList);
+        while (item == null || (item != null && item instanceof ItemBlock) || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
 
         itemStackIn = new ItemStack(item);
 

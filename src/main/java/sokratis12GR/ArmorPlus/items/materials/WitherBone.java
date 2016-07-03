@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items;
+package sokratis12GR.ArmorPlus.items.materials;
 
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -15,7 +15,7 @@ import sokratis12GR.ArmorPlus.ArmorPlus;
 public class WitherBone extends Item {
 
     public WitherBone() {
-        setRegistryName("WitherBone");        // The unique name (within your mod) that identifies this item
+        setRegistryName("wither_bone");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("WitherBone");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);

@@ -116,9 +116,9 @@ public class ArditeArmor {
             }
         }).setUnlocalizedName("ArditeBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "ArditeHelmet");
-        GameRegistry.registerItem(chestplate, "ArditeChestplate");
-        GameRegistry.registerItem(legs, "ArditeLeggings");
-        GameRegistry.registerItem(boots, "ArditeBoots");
+        GameRegistry.registerItem(helmet, "ardite_helmet");
+        GameRegistry.registerItem(chestplate, "ardite_chestplate");
+        GameRegistry.registerItem(legs, "ardite_leggings");
+        GameRegistry.registerItem(boots, "ardite_boots");
     }
 }

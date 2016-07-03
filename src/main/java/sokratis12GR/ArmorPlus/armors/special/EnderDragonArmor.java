@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -198,10 +197,10 @@ public class EnderDragonArmor {
             }
         }).setUnlocalizedName("EnderDragonBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "EnderDragonHelmet");
-        GameRegistry.registerItem(chestplate, "EnderDragonChestplate");
-        GameRegistry.registerItem(legs, "EnderDragonLeggings");
-        GameRegistry.registerItem(boots, "EnderDragonBoots");
+        GameRegistry.registerItem(helmet, "ender_dragon_helmet");
+        GameRegistry.registerItem(chestplate, "ender_dragon_chestplate");
+        GameRegistry.registerItem(legs, "ender_dragon_leggings");
+        GameRegistry.registerItem(boots, "ender_dragon_boots");
 
     }
 }

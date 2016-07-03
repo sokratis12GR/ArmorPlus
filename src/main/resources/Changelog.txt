@@ -1,4 +1,25 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.0.0
+{Features Changed}
+* Changed all the item's and block's Registry Names
+* easyMode & expertMode have been changed to (recipes 0 - easy, 1 - expert)
+{Features Added}
+* Redstone Apple
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-3.1.11.0
+{Features Added}
+* Added the command "armorplus wiki" (This command will open a link in your browser to the ArmorPlus wiki)
+* Armors, Items and Blocks
+** Metal Armor (Protection same as Iron Armor)
+** Electrict Armor (Protection +4 more than the Metal Armor)
+** Metal Ingot
+** Electrical Ingot
+** Metal Ore
+{Features Changed}
+* The ArmorPLus Book Gui Look
+{Bugs Fixed}
+* The BlackList now should work properly
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-3.1.10.0
 {Features Changed}
 * Optimized the BlackList, now you can choose how many items you want to add to the list

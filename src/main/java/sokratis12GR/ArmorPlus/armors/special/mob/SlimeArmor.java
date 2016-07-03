@@ -17,10 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
 
 import java.util.List;
 
@@ -157,10 +154,10 @@ public class SlimeArmor {
         }).setUnlocalizedName("SlimeBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "SlimeHelmet");
-        GameRegistry.registerItem(chestplate, "SlimeChestplate");
-        GameRegistry.registerItem(legs, "SlimeLeggings");
-        GameRegistry.registerItem(boots, "SlimeBoots");
+        GameRegistry.registerItem(helmet, "slime_helmet");
+        GameRegistry.registerItem(chestplate, "slime_chestplate");
+        GameRegistry.registerItem(legs, "slime_leggings");
+        GameRegistry.registerItem(boots, "slime_boots");
 
     }
 

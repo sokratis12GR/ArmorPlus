@@ -267,10 +267,10 @@ public class TheUltimateArmor {
         }).setUnlocalizedName("TheUltimateBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "TheUltimateHelmet");
-        GameRegistry.registerItem(chestplate, "TheUltimateChestplate");
-        GameRegistry.registerItem(legs, "TheUltimateLeggings");
-        GameRegistry.registerItem(boots, "TheUltimateBoots");
+        GameRegistry.registerItem(helmet, "the_ultimate_helmet");
+        GameRegistry.registerItem(chestplate, "the_ultimate_chestplate");
+        GameRegistry.registerItem(legs, "the_ultimate_leggings");
+        GameRegistry.registerItem(boots, "the_ultimate_boots");
 
     }
 

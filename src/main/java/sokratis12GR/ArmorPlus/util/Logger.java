@@ -14,6 +14,8 @@ import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
 import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
+import sokratis12GR.ArmorPlus.armors.v2.ElectricalArmor;
+import sokratis12GR.ArmorPlus.armors.v2.MetalArmor;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
@@ -90,9 +92,11 @@ public class Logger {
             writer.write("\n\n19. Knight Slime Armor: " + KnightSlimeArmor.helmet.getRegistryName() + " , " + KnightSlimeArmor.chestplate.getRegistryName() + " , " + KnightSlimeArmor.legs.getRegistryName() + " , " + KnightSlimeArmor.boots.getRegistryName());
             writer.write("\n\n20. Chicken Armor: " + ChickenArmor.helmet.getRegistryName() + " , " + ChickenArmor.chestplate.getRegistryName() + " , " + ChickenArmor.legs.getRegistryName() + " , " + ChickenArmor.boots.getRegistryName());
             writer.write("\n\n21. Slime Armor: " + SlimeArmor.helmet.getRegistryName() + " , " + SlimeArmor.chestplate.getRegistryName() + " , " + SlimeArmor.legs.getRegistryName() + " , " + SlimeArmor.boots.getRegistryName());
+            writer.write("\n\n22. Metal Armor: " + MetalArmor.helmet.getRegistryName() + " , " + MetalArmor.chestplate.getRegistryName() + " , " + MetalArmor.legs.getRegistryName() + " , " + MetalArmor.boots.getRegistryName());
+            writer.write("\n\n23. Electrical Armor: " + ElectricalArmor.helmet.getRegistryName() + " , " + ElectricalArmor.chestplate.getRegistryName() + " , " + ElectricalArmor.legs.getRegistryName() + " , " + ElectricalArmor.boots.getRegistryName());
             writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , "
-                    + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName());
-            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName());
+                    + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName() + " , " + ModItems.METAL_INGOT.getRegistryName() + " , " + ModItems.ELECTRICAL_INGOT.getRegistryName());
+            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName() + " , " + ModBlocks.METAL_ORE.getRegistryName());
         } catch (IOException ex) {
             // report
         } finally {

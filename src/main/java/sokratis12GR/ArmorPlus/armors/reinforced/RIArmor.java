@@ -104,10 +104,10 @@ public class RIArmor {
             }
         }).setUnlocalizedName("RIBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "RIHelmet");
-        GameRegistry.registerItem(chestplate, "RIChestplate");
-        GameRegistry.registerItem(legs, "RILeggings");
-        GameRegistry.registerItem(boots, "RIBoots");
+        GameRegistry.registerItem(helmet, "reinforced_iron_helmet");
+        GameRegistry.registerItem(chestplate, "reinforced_iron_chestplate");
+        GameRegistry.registerItem(legs, "reinforced_iron_leggings");
+        GameRegistry.registerItem(boots, "reinforced_iron_boots");
 
     }
 }

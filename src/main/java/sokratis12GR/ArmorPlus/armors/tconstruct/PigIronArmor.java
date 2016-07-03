@@ -66,7 +66,7 @@ public class PigIronArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                infoList.add("\2479Ability: " + "\247Saturation");
+                infoList.add("\2479Ability: " + "\247rSaturation");
                 infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
@@ -79,7 +79,7 @@ public class PigIronArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                infoList.add("\2479Ability: " + "\247Saturation");
+                infoList.add("\2479Ability: " + "\247rSaturation");
                 infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
@@ -92,7 +92,7 @@ public class PigIronArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                infoList.add("\2479Ability: " + "\247Saturation");
+                infoList.add("\2479Ability: " + "\247rSaturation");
                 infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 
@@ -105,7 +105,7 @@ public class PigIronArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                infoList.add("\2479Ability: " + "\247Saturation");
+                infoList.add("\2479Ability: " + "\247rSaturation");
                 infoList.add("\2473Use: " + "\247rEquip The Full Set");
             }
 

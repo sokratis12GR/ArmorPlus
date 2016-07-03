@@ -21,7 +21,8 @@ public class OreGen implements IWorldGenerator {
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         switch (world.provider.getDimension()) {
             case 0: //Overworld Dimension
-                this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, 4, 6, 26);
+                this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, 4, 6, 16);
+                this.runGenerator(metalOreGenerator, world, random, chunkX, chunkZ, 7, 8, 58);
                 break;
             case 1: //The End
 
@@ -33,9 +34,11 @@ public class OreGen implements IWorldGenerator {
     }
 
     public WorldGenerator lavaCrystalGenerator;
+    public WorldGenerator metalOreGenerator;
 
     public OreGen() {
-        lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), 4);
+        lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), 3);
+        metalOreGenerator = new WorldGenMinable(ModBlocks.METAL_ORE.getDefaultState(), 5);
     }
 
     private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items;
+package sokratis12GR.ArmorPlus.items.materials;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -14,7 +14,7 @@ import sokratis12GR.ArmorPlus.ArmorPlus;
 public class Chainmail extends Item {
 
     public Chainmail() {
-        setRegistryName("Chainmail");        // The unique name (within your mod) that identifies this item
+        setRegistryName("chainmail");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("Chainmail");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);

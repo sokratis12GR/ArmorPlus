@@ -237,10 +237,10 @@ public class LavaArmor {
         }).setUnlocalizedName("LavaBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "LavaHelmet");
-        GameRegistry.registerItem(chestplate, "LavaChestplate");
-        GameRegistry.registerItem(legs, "LavaLeggings");
-        GameRegistry.registerItem(boots, "LavaBoots");
+        GameRegistry.registerItem(helmet, "lava_helmet");
+        GameRegistry.registerItem(chestplate, "lava_chestplate");
+        GameRegistry.registerItem(legs, "lava_leggings");
+        GameRegistry.registerItem(boots, "lava_boots");
 
     }
 

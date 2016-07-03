@@ -104,10 +104,10 @@ public class RGArmor {
             }
         }).setUnlocalizedName("RGBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "RGHelmet");
-        GameRegistry.registerItem(chestplate, "RGChestplate");
-        GameRegistry.registerItem(legs, "RGLeggings");
-        GameRegistry.registerItem(boots, "RGBoots");
+        GameRegistry.registerItem(helmet, "reinforced_golden_helmet");
+        GameRegistry.registerItem(chestplate, "reinforced_golden_chestplate");
+        GameRegistry.registerItem(legs, "reinforced_golden_leggings");
+        GameRegistry.registerItem(boots, "reinforced_golden_boots");
 
     }
 }

@@ -28,6 +28,11 @@ public class SubCommandInfo extends SubCommandBase {
     }
 
     @Override
+    public int getRequiredPermissionLevel() {
+        return 0;
+    }
+
+    @Override
     public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
         super.processSubCommand(server, sender, args);
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR]"));
@@ -37,7 +42,7 @@ public class SubCommandInfo extends SubCommandBase {
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is WeaponsPlus Loaded: " + Loader.isModLoaded("weaponsplus")));
         sender.addChatMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
-        sender.addChatMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "https://ftb.gamepedia.com/ArmorPlus"));
+        sender.addChatMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "use command /armorplus wiki"));
 
         if (!Loader.isModLoaded("tconstruct")) {
             sender.addChatMessage(new TextComponentString(TextFormatting.RED + "Tinkers' Construct Armor Recipes wont work until Tinkers' Construct is Loaded"));

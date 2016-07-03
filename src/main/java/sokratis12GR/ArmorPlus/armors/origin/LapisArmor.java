@@ -192,10 +192,10 @@ public class LapisArmor {
         }).setUnlocalizedName("LapisBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "LapisHelmet");
-        GameRegistry.registerItem(chestplate, "LapisChestplate");
-        GameRegistry.registerItem(legs, "LapisLeggings");
-        GameRegistry.registerItem(boots, "LapisBoots");
+        GameRegistry.registerItem(helmet, "lapis_helmet");
+        GameRegistry.registerItem(chestplate, "lapis_chestplate");
+        GameRegistry.registerItem(legs, "lapis_leggings");
+        GameRegistry.registerItem(boots, "lapis_boots");
 
     }
 }

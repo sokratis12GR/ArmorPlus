@@ -14,16 +14,22 @@ commands.error.arg.invalid=Invalid arguments
 commands.error.arg.missing=Not enough arguments
 commands.error.arg.player.missing=You must specify which player you wish to perform this action on.
 commands.error.404=Command not found!
-commands.error.unknown=Unknown command! Type /armorplus help
+commands.error.unknown=Unknown command! Please use /armorplus help
 commands.error.perm=You do not have permission to use this command.
 commands.success=Executed successfully
 commands.format.help=%s - %s
+
 #CommandHelp
 commands.help.usage=/armorplus help
 commands.help.help=Displays the help information for the "/armorplus" command.
+
 #CommandInfo
 commands.info.usage=/armorplus info
 commands.info.help=Shows Information about ArmorPlus
+
+#CommandWiki
+commands.wiki.usage=/armorplus wiki
+commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #JEI
 gui.jei.category.armorforge=Armor Forge
@@ -166,10 +172,27 @@ item.SlimeChestplate.name=Slime Chestplate
 item.SlimeLeggings.name=Slime Leggings
 item.SlimeBoots.name=Slime Boots
 
+#ElectricalArmor
+item.ElectricalHelmet.name=Electrical Helmet
+item.ElectricalChestplate.name=Electrical Chestplate
+item.ElectricalLeggings.name=Electrical Leggings
+item.ElectricalBoots.name=Electrical Boots
+
+#MetalArmor
+item.MetalHelmet.name=Metal Helmet
+item.MetalChestplate.name=Metal Chestplate
+item.MetalLeggings.name=Metal Leggings
+item.MetalBoots.name=Metal Boots
+
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
 item.LavaCrystal.name=Lava Crystal
+item.MetalIngot.name=Metal Ingot
+item.ElectricalIngot.name=Electrical Ingot
+
+#Food Items
+item.RedstoneApple.name=Redstone Apple
 
 #Special Items
 item.WitherBone.name=Wither Bone
@@ -182,6 +205,7 @@ item.TheGiftOfTheGods.name=The Gift Of The Gods
 tile.CompressedObsidian.name=Compressed Obsidian
 tile.BlockLavaCrystal.name=Lava Crystal Block
 tile.ArmorForge.name=Armor Forge
+tile.MetalOre.name=Metal Ore
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

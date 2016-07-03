@@ -135,9 +135,9 @@ public class GuardianArmor {
             }
         }).setUnlocalizedName("GuardianBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "GuardianHelmet");
-        GameRegistry.registerItem(chestplate, "GuardianChestplate");
-        GameRegistry.registerItem(legs, "GuardianLeggings");
-        GameRegistry.registerItem(boots, "GuardianBoots");
+        GameRegistry.registerItem(helmet, "guardian_helmet");
+        GameRegistry.registerItem(chestplate, "guardian_chestplate");
+        GameRegistry.registerItem(legs, "guardian_leggings");
+        GameRegistry.registerItem(boots, "guardian_boots");
     }
 }

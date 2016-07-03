@@ -10,156 +10,39 @@ public class ConfigHandler {
     /**
      * Settings
      */
-    public static boolean enableCoalArmorRecipes;
-    public static boolean enableLapisArmorRecipes;
-    public static boolean enableRedstoneArmorRecipes;
-    public static boolean enableEmeraldArmorRecipes;
-    public static boolean enableObsidianArmorRecipes;
-    public static boolean enableLavaArmorRecipes;
-    public static boolean enableSuperStarArmorRecipes;
-    public static boolean enableEnderDragonArmorRecipes;
-    public static boolean enableGuardianArmorRecipes;
-    public static boolean enableTheUltimateArmorRecipes;
-    public static boolean enableReinforcedArmorsRecipes;
-    public static boolean enableCustomArmorRecipes;
+    public static boolean enableCoalArmorRecipes,
+            enableLapisArmorRecipes, enableRedstoneArmorRecipes, enableEmeraldArmorRecipes,
+            enableObsidianArmorRecipes, enableLavaArmorRecipes, enableSuperStarArmorRecipes,
+            enableEnderDragonArmorRecipes, enableGuardianArmorRecipes, enableTheUltimateArmorRecipes,
+            enableReinforcedArmorsRecipes, enableCustomArmorRecipes, enableCoalHNightVision,
+            enableCoalCNightVision, enableCoalLNightVision, enableCoalBNightVision,
+            enableCharcoalCoalArmorRecipe, enableLapisHBreathing, enableLapisCBreathing,
+            enableLapisLBreathing, enableLapisBBreathing, expensiveLapisRecipe,
+            cheapLapisRecipe, enableRedstoneHSpeed, enableRedstoneCSpeed,
+            enableRedstoneLSpeed, enableRedstoneBSpeed, enableEmeraldHHaste,
+            enableEmeraldCHaste, enableEmeraldLHaste, enableEmeraldBHaste,
+            enableObsidianHResistance, enableObsidianCResistance, enableObsidianLResistance,
+            enableObsidianBResistance, enableLavaHEffects, enableLavaCEffects,
+            enableLavaLEffects, enableLavaBEffects, enableOldLavaArmorRecipes,
+            enableSuperStarHRegen, enableSuperStarCRegen, enableSuperStarLRegen,
+            enableSuperStarBRegen, enableFlightAbility, enableGuardianHEffects,
+            enableGuardianCEffects, enableGuardianLEffects, enableGuardianBEffects,
+            enableFullSuperStarArmorEffect, enableFullGuardianArmorEffect, enableFullRedstoneArmorEffect,
+            enableFullObsidianArmorEffect, enableFullLavaArmorEffect, enableFullEmeraldArmorEffect,
+            enableFullLapisArmorEffect, enableFullCoalArmorEffect, enableArditeArmorRecipes,
+            enableCobaltArmorRecipes, enableManyullynArmorRecipes, enablePigIronArmorRecipes,
+            enableKnightSlimeArmorRecipes, enableArditeArmorEffects, enableCobaltArmorEffects,
+            enableManyullynArmorEffects, enablePigIronArmorEffects, enableKnightSlimeArmorEffects,
+            enableChickenArmorRecipes, enableSlimeArmorRecipes, /*easyMode, expertMode,*/
+            enableTheUltimateArmorIncinvibility, enableBlackList, enableWhiteList;
 
-    /** Special Effects*/
-    /**
-     * Coal Armor
-     */
-    public static boolean enableCoalHNightVision;
-    public static boolean enableCoalCNightVision;
-    public static boolean enableCoalLNightVision;
-    public static boolean enableCoalBNightVision;
+    public static int emeraldArmorEffectlevel,
+            lavaArmorEffectlevel, obsidianArmorEffectlevel, redstoneArmorEffectlevel,
+            superstarArmorEffectlevel, ultimateArmorEffectlevel, whitelistmin,
+            whitelistmax, blacklistmin, blacklistmax, recipes;
 
-    public static boolean enableCharcoalCoalArmorRecipe;
-    /**
-     * Lapis Armor
-     */
-    public static boolean enableLapisHBreathing;
-    public static boolean enableLapisCBreathing;
-    public static boolean enableLapisLBreathing;
-    public static boolean enableLapisBBreathing;
-    public static boolean expensiveLapisRecipe;
-    public static boolean cheapLapisRecipe;
-    /**
-     * Redstone Armor
-     */
-    public static boolean enableRedstoneHSpeed;
-    public static boolean enableRedstoneCSpeed;
-    public static boolean enableRedstoneLSpeed;
-    public static boolean enableRedstoneBSpeed;
-    /**
-     * Emerald Armor
-     */
-    public static boolean enableEmeraldHHaste;
-    public static boolean enableEmeraldCHaste;
-    public static boolean enableEmeraldLHaste;
-    public static boolean enableEmeraldBHaste;
-    /**
-     * Obsidian Armor
-     */
-    public static boolean enableObsidianHResistance;
-    public static boolean enableObsidianCResistance;
-    public static boolean enableObsidianLResistance;
-    public static boolean enableObsidianBResistance;
-    /**
-     * Lava Armor
-     */
-    public static boolean enableLavaHEffects;
-    public static boolean enableLavaCEffects;
-    public static boolean enableLavaLEffects;
-    public static boolean enableLavaBEffects;
-
-    public static boolean enableOldLavaArmorRecipes;
-    /**
-     * Super Star Armor
-     */
-    public static boolean enableSuperStarHRegen;
-    public static boolean enableSuperStarCRegen;
-    public static boolean enableSuperStarLRegen;
-    public static boolean enableSuperStarBRegen;
-    /**
-     * Flight Ability
-     */
-    public static boolean enableFlightAbility;
-    /**
-     * Guardian Armor
-     */
-    public static boolean enableGuardianHEffects;
-    public static boolean enableGuardianCEffects;
-    public static boolean enableGuardianLEffects;
-    public static boolean enableGuardianBEffects;
-
-    /**
-     * Full Armor Effects
-     */
-    public static boolean enableFullSuperStarArmorEffect;
-    public static boolean enableFullGuardianArmorEffect;
-    public static boolean enableFullRedstoneArmorEffect;
-    public static boolean enableFullObsidianArmorEffect;
-    public static boolean enableFullLavaArmorEffect;
-    public static boolean enableFullEmeraldArmorEffect;
-    public static boolean enableFullLapisArmorEffect;
-    public static boolean enableFullCoalArmorEffect;
-
-    /**
-     * Origin Armors Effect Level
-     */
-    public static int emeraldArmorEffectlevel;
-    public static int lavaArmorEffectlevel;
-    public static int obsidianArmorEffectlevel;
-    public static int redstoneArmorEffectlevel;
-
-    /**
-     * Special Armors Effect Level
-     */
-    public static int superstarArmorEffectlevel;
-    public static int ultimateArmorEffectlevel;
-
-    /**
-     * Tinkers' Construct Armors
-     */
-    public static boolean enableArditeArmorRecipes;
-    public static boolean enableCobaltArmorRecipes;
-    public static boolean enableManyullynArmorRecipes;
-    public static boolean enablePigIronArmorRecipes;
-    public static boolean enableKnightSlimeArmorRecipes;
-    //Their Effects
-    public static boolean enableArditeArmorEffects;
-    public static boolean enableCobaltArmorEffects;
-    public static boolean enableManyullynArmorEffects;
-    public static boolean enablePigIronArmorEffects;
-    public static boolean enableKnightSlimeArmorEffects;
-
-    /**
-     * Special - Mob
-     */
-    public static boolean enableChickenArmorRecipes;
-    public static boolean enableSlimeArmorRecipes;
-
-    /**
-     * Armor Game Mods
-     */
-    public static boolean easyMode;
-    public static boolean expertMode;
-
-    /**
-     * The Ultimate Armor
-     */
-    public static boolean enableTheUltimateArmorIncinvibility;
-
-    /**
-     * WhiteList & BlackList
-     */
     public static String[] blackListedItems;
     public static String[] whiteListedItems;
-    public static boolean enableBlackList;
-    public static boolean enableWhiteList;
-    public static int whitelistmin;
-    public static int whitelistmax;
-    public static int blacklistmin;
-    public static int blacklistmax;
 
 
     public static void init(File file) {
@@ -357,8 +240,10 @@ public class ConfigHandler {
 
         /** Game Modes */
         category = "GameModes".toLowerCase();
-        easyMode = config.getBoolean("easyMode", category, true, "Sets the Recipe Difficulty to easy");
-        expertMode = config.getBoolean("expertMode", category, false, "Sets the Recipe Difficulty to Expert");
+        /*easyMode = config.getBoolean("easyMode", category, true, "Sets the Recipe Difficulty to easy");
+        expertMode = config.getBoolean("expertMode", category, false, "Sets the Recipe Difficulty to Expert");*/
+        recipes = config.getInt("recipes", category, 0, 0, 1, "Sets the Recipe Difficulty \n0 = easy , 1 = expert");
+
 
         /** Tinkers' Armors Effects */
         category = "TinkersEffects".toLowerCase();
@@ -380,13 +265,13 @@ public class ConfigHandler {
 
         category = "BlackList".toLowerCase();
         config.setCategoryComment(category, "You Can't Get Blocks from \"The Gift Of The Gods\". So it isn't recommended adding them to any of the lists");
-        blacklistmax = config.getInt("blacklistmax", category, 0, 0, 100, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:You will need to have that many BlackListed Items.");
+        blacklistmax = config.getInt("blacklistmax", category, 0, 0, (2 ^ 31) - 1, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:You will need to have that many BlackListed Items.");
         blacklistmin = config.getInt("blacklistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
         enableBlackList = config.getBoolean("enableBlackList", category, false, "Enable/Disable the BlackList");
         blackListedItems = config.getStringList("blackListedItems", category, new String[]{"minecraft:dirt"}, "\nAdd Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add");
 
         category = "WhiteList".toLowerCase();
-        whitelistmax = config.getInt("whitelistmax", category, 0, 0, 100, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.");
+        whitelistmax = config.getInt("whitelistmax", category, 0, 0, (2 ^ 31) - 1, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.");
         whitelistmin = config.getInt("whitelistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
         enableWhiteList = config.getBoolean("enableWhiteList", category, false, "Enable/Disable the WhiteList");
         whiteListedItems = config.getStringList("whiteListedItems", category, new String[]{"minecraft:dirt"}, "\nAdd WhiteListed Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the whitelist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add");

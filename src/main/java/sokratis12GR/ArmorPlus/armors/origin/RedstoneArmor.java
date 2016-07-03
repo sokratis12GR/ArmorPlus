@@ -101,10 +101,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -137,10 +137,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -173,10 +173,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -209,10 +209,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -220,10 +220,10 @@ public class RedstoneArmor {
         }).setUnlocalizedName("RedstoneBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "RedstoneHelmet");
-        GameRegistry.registerItem(chestplate, "RedstoneChestplate");
-        GameRegistry.registerItem(legs, "RedstoneLeggings");
-        GameRegistry.registerItem(boots, "RedstoneBoots");
+        GameRegistry.registerItem(helmet, "redstone_helmet");
+        GameRegistry.registerItem(chestplate, "redstone_chestplate");
+        GameRegistry.registerItem(legs, "redstone_leggings");
+        GameRegistry.registerItem(boots, "redstone_boots");
 
     }
 

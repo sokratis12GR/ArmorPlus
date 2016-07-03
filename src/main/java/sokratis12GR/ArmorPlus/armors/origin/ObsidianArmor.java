@@ -198,10 +198,10 @@ public class ObsidianArmor {
         }).setUnlocalizedName("ObsidianBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "ObsidianHelmet");
-        GameRegistry.registerItem(chestplate, "ObsidianChestplate");
-        GameRegistry.registerItem(legs, "ObsidianLeggings");
-        GameRegistry.registerItem(boots, "ObsidianBoots");
+        GameRegistry.registerItem(helmet, "obsidian_helmet");
+        GameRegistry.registerItem(chestplate, "obsidian_chestplate");
+        GameRegistry.registerItem(legs, "obsidian_leggings");
+        GameRegistry.registerItem(boots, "obsidian_boots");
 
     }
 

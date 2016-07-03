@@ -24,32 +24,25 @@ import java.util.List;
 public class ARPAchievements {
     public static AchievementPage ARP_ACHIEVEMENT_PAGE;
 
-    public static Achievement CRAFT_COAL_ARMOR;//0,0
-    public static Achievement CRAFT_LAPIS_ARMOR;//0,2
-    public static Achievement CRAFT_REDSTONE_ARMOR;//0,-2
-    public static Achievement CRAFT_EMERALD_ARMOR;//0,-4
-    public static Achievement CRAFT_OBSIDIAN_ARMOR;//2,0
-    public static Achievement CRAFT_LAVA_ARMOR;//4,0
-    public static Achievement CRAFT_SUPER_STAR_ARMOR;//6,0
-    public static Achievement CRAFT_ENDER_DRAGON_ARMOR;//8,0
-    public static Achievement CRAFT_GUARDIAN_ARMOR;//0,4
-    public static Achievement CRAFT_THE_ULTIMATE_ARMOR;//10,0
-    public static Achievement CRAFT_REINFORCED_ARMOR;//2,-2
-    public static Achievement CRAFT_SLIME_ARMOR;//2,4
-    public static Achievement CRAFT_CHICKEN_ARMOR;//2,2
-    /**
-     * Tinkers' Construct
-     */
-    public static Achievement CRAFT_COBALT_ARMOR;//-2,0
-    public static Achievement CRAFT_ARDITE_ARMOR;//-4,0
-    public static Achievement CRAFT_MANYULLYN_ARMOR;//-6,0
-    public static Achievement CRAFT_PIG_IRON_ARMOR;//-2,-2
-    public static Achievement CRAFT_KNIGHT_SLIME_ARMOR;//-2,2
-
-    /**
-     * ArmorPlus Book
-     */
-    public static Achievement WELCOME_TO_ARMORPLUS;
+    public static Achievement CRAFT_COAL_ARMOR,
+            CRAFT_LAPIS_ARMOR,
+            CRAFT_REDSTONE_ARMOR,
+            CRAFT_EMERALD_ARMOR,
+            CRAFT_OBSIDIAN_ARMOR,
+            CRAFT_LAVA_ARMOR,
+            CRAFT_SUPER_STAR_ARMOR,
+            CRAFT_ENDER_DRAGON_ARMOR,
+            CRAFT_GUARDIAN_ARMOR,
+            CRAFT_THE_ULTIMATE_ARMOR,
+            CRAFT_REINFORCED_ARMOR,
+            CRAFT_SLIME_ARMOR,
+            CRAFT_CHICKEN_ARMOR,
+            CRAFT_COBALT_ARMOR,
+            CRAFT_ARDITE_ARMOR,
+            CRAFT_MANYULLYN_ARMOR,
+            CRAFT_PIG_IRON_ARMOR,
+            CRAFT_KNIGHT_SLIME_ARMOR,
+            WELCOME_TO_ARMORPLUS;
 
     public static void init() {
         WELCOME_TO_ARMORPLUS = new AchievementARP("craftArmorForge", -2, -2, ModItems.ARMORPLUS_BOOK, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();

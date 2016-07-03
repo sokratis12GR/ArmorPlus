@@ -4,11 +4,14 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandHelp;
 import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandInfo;
+import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandWiki;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
 public class CommandArmorPlus extends CommandBase {
@@ -21,6 +24,7 @@ public class CommandArmorPlus extends CommandBase {
 
         subCommands.put("help", new SubCommandHelp(this));
         subCommands.put("info", new SubCommandInfo(this));
+        subCommands.put("wiki", new SubCommandWiki(this));
     }
 
     @Override
@@ -31,6 +35,15 @@ public class CommandArmorPlus extends CommandBase {
     @Override
     public int getRequiredPermissionLevel() {
         return 0;
+    }
+
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        return sender.canCommandSenderUseCommand(this.getRequiredPermissionLevel(), this.getCommandName());
+    }
+
+    @Override
+    public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
+        return super.getTabCompletionOptions(server, sender, args, pos);
     }
 
     @Override
@@ -45,6 +58,7 @@ public class CommandArmorPlus extends CommandBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+        System.out.println(getRequiredPermissionLevel());
         if (args.length > 0 && subCommands.containsKey(args[0])) {
 
             ISubCommand subCommand = subCommands.get(args[0]);

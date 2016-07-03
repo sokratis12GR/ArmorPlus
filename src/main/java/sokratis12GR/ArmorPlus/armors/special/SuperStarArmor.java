@@ -199,11 +199,10 @@ public class SuperStarArmor {
         }).setUnlocalizedName("SuperStarBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "SuperStarHelmet");
-        GameRegistry.registerItem(chestplate, "SuperStarChestplate");
-        GameRegistry.registerItem(legs, "SuperStarLeggings");
-        GameRegistry.registerItem(boots, "SuperStarBoots");
-
+        GameRegistry.registerItem(helmet, "super_star_helmet");
+        GameRegistry.registerItem(chestplate, "super_star_chestplate");
+        GameRegistry.registerItem(legs, "super_star_leggings");
+        GameRegistry.registerItem(boots, "super_star_boots");
     }
 
 }

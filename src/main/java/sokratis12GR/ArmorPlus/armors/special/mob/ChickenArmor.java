@@ -148,9 +148,9 @@ public class ChickenArmor {
             }
         }).setUnlocalizedName("ChickenBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "ChickenHelmet");
-        GameRegistry.registerItem(chestplate, "ChickenChestplate");
-        GameRegistry.registerItem(legs, "ChickenLeggings");
-        GameRegistry.registerItem(boots, "ChickenBoots");
+        GameRegistry.registerItem(helmet, "chicken_helmet");
+        GameRegistry.registerItem(chestplate, "chicken_chestplate");
+        GameRegistry.registerItem(legs, "chicken_leggings");
+        GameRegistry.registerItem(boots, "chicken_boots");
     }
 }

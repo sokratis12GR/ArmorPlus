@@ -121,9 +121,9 @@ public class CobaltArmor {
 
         }).setUnlocalizedName("CobaltBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "CobaltHelmet");
-        GameRegistry.registerItem(chestplate, "CobaltChestplate");
-        GameRegistry.registerItem(legs, "CobaltLeggings");
-        GameRegistry.registerItem(boots, "CobaltBoots");
+        GameRegistry.registerItem(helmet, "cobalt_helmet");
+        GameRegistry.registerItem(chestplate, "cobalt_chestplate");
+        GameRegistry.registerItem(legs, "cobalt_leggings");
+        GameRegistry.registerItem(boots, "cobalt_boots");
     }
 }

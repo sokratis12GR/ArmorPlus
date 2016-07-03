@@ -104,10 +104,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -141,10 +141,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -178,10 +178,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -215,10 +215,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.easyMode) {
+                if (ConfigHandler.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.expertMode) {
+                if (ConfigHandler.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -226,10 +226,10 @@ public class EmeraldArmor {
         }).setUnlocalizedName("EmeraldBoots");
         boots.setMaxStackSize(1);
 
-        GameRegistry.registerItem(helmet, "EmeraldHelmet");
-        GameRegistry.registerItem(chestplate, "EmeraldChestplate");
-        GameRegistry.registerItem(legs, "EmeraldLeggings");
-        GameRegistry.registerItem(boots, "EmeraldBoots");
+        GameRegistry.registerItem(helmet, "emerald_helmet");
+        GameRegistry.registerItem(chestplate, "emerald_chestplate");
+        GameRegistry.registerItem(legs, "emerald_leggings");
+        GameRegistry.registerItem(boots, "emerald_boots");
 
     }
 }

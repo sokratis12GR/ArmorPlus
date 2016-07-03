@@ -104,10 +104,9 @@ public class RCArmor {
             }
         }).setUnlocalizedName("RCBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "RCHelmet");
-        GameRegistry.registerItem(chestplate, "RCChestplate");
-        GameRegistry.registerItem(legs, "RCLeggings");
-        GameRegistry.registerItem(boots, "RCBoots");
-
+        GameRegistry.registerItem(helmet, "reinforced_chain_helmet");
+        GameRegistry.registerItem(chestplate, "reinforced_chain_chestplate");
+        GameRegistry.registerItem(legs, "reinforced_chain_leggings");
+        GameRegistry.registerItem(boots, "reinforced_chain_boots");
     }
 }

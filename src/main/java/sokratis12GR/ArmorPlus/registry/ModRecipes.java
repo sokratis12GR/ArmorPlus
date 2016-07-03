@@ -17,6 +17,7 @@ public class ModRecipes {
     public static void init() {
         addShapedRecipes();
         addShapelessRecipes();
+        addFurnaceRecipes();
     }
 
     public static void addShapedRecipes() {
@@ -30,10 +31,15 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         GameRegistry.addRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), 'G', new ItemStack(Items.EGG, 1));
         GameRegistry.addRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', new ItemStack(Blocks.CRAFTING_TABLE), 'O', new ItemStack(Blocks.COAL_BLOCK), 'L', new ItemStack(Blocks.LAPIS_BLOCK), 'C', new ItemStack(ModItems.LAVA_CRYSTAL));
+        GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE), "BRB", "RAR", "BRB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
 
     }
 
     public static void addShapelessRecipes() {
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
+    }
+
+    public static void addFurnaceRecipes() {
+        GameRegistry.addSmelting(new ItemStack(ModBlocks.METAL_ORE), new ItemStack(ModItems.METAL_INGOT), 0.5F);
     }
 }

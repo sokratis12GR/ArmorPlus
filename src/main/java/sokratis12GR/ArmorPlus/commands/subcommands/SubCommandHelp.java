@@ -31,13 +31,18 @@ public class SubCommandHelp extends SubCommandBase {
     }
 
     @Override
-    public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
-        super.processSubCommand(server, sender, args);
+    public int getRequiredPermissionLevel() {
+        return 0;
+    }
+
+    @Override
+    public void processSubCommand(MinecraftServer server, ICommandSender commandSender, String[] args) {
+        super.processSubCommand(server, commandSender, args);
 
         if (args.length > 0)
             return;
 
         for (ISubCommand subCommand : ((CommandArmorPlus) getParentCommand()).getSubCommands().values())
-            sender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(sender))));
+            commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(commandSender))));
     }
 }

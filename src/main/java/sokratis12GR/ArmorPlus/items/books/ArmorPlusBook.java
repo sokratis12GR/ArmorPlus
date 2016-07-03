@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items;
+package sokratis12GR.ArmorPlus.items.books;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -18,7 +18,7 @@ import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlus;
 public class ArmorPlusBook extends Item {
 
     public ArmorPlusBook() {
-        setRegistryName("ArmorPlusBook");        // The unique name (within your mod) that identifies this item
+        setRegistryName("armorplus_book");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("ArmorPlusBook");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
