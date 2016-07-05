@@ -66,7 +66,7 @@ public class TheGiftOfTheGods extends Item {
                 item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
             }
         }
-        while (item == null || (item != null && item instanceof ItemBlock) || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
+        while (item == null /*|| (item != null && item instanceof ItemBlock)*/ || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
 
         itemStackIn = new ItemStack(item);
 
