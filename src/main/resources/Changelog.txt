@@ -1,4 +1,18 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.2.0
+{Features Added}
+* Config
+** World Generation Options for the Lava Crystal
+** World Generation Options for the Metal Ore
+* The Gift Of Gods now supports Blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.1.0
+{Features Changed}
+* Redstone Apple now has a sub type of upgraded version
+* Redstone Apple's Recipes
+{Features Added}
+* You can enable/disable Redstone Apple's Recipes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-4.0.0.0
 {Features Changed}
 * Changed all the item's and block's Registry Names

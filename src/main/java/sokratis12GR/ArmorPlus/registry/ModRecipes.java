@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 /**
  * sokratis12GR.ArmorPlus.registry
@@ -31,8 +32,10 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         GameRegistry.addRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), 'G', new ItemStack(Items.EGG, 1));
         GameRegistry.addRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', new ItemStack(Blocks.CRAFTING_TABLE), 'O', new ItemStack(Blocks.COAL_BLOCK), 'L', new ItemStack(Blocks.LAPIS_BLOCK), 'C', new ItemStack(ModItems.LAVA_CRYSTAL));
-        GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE), "BRB", "RAR", "BRB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
-
+        if (ConfigHandler.enableRedstoneAppleRecipes) {
+            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
+            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'A', new ItemStack(Items.APPLE));
+        }
     }
 
     public static void addShapelessRecipes() {

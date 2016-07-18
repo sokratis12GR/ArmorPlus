@@ -115,9 +115,9 @@ public class PigIronArmor {
             }
         }).setUnlocalizedName("PigIronBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "PigIronHelmet");
-        GameRegistry.registerItem(chestplate, "PigIronChestplate");
-        GameRegistry.registerItem(legs, "PigIronLeggings");
-        GameRegistry.registerItem(boots, "PigIronBoots");
+        GameRegistry.registerItem(helmet, "pig_iron_helmet");
+        GameRegistry.registerItem(chestplate, "pig_iron_chestplate");
+        GameRegistry.registerItem(legs, "pig_iron_leggings");
+        GameRegistry.registerItem(boots, "pig_iron_boots");
     }
 }

@@ -102,10 +102,10 @@ public class MetalArmor {
             }
         }).setUnlocalizedName("MetalBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "MetalHelmet");
-        GameRegistry.registerItem(chestplate, "MetalChestplate");
-        GameRegistry.registerItem(legs, "MetalLeggings");
-        GameRegistry.registerItem(boots, "MetalBoots");
+        GameRegistry.registerItem(helmet, "metal_helmet");
+        GameRegistry.registerItem(chestplate, "metal_chestplate");
+        GameRegistry.registerItem(legs, "metal_leggings");
+        GameRegistry.registerItem(boots, "metal_boots");
 
     }
 }

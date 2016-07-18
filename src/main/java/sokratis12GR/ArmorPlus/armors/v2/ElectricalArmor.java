@@ -100,10 +100,10 @@ public class ElectricalArmor {
             }
         }).setUnlocalizedName("ElectricalBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "ElectricalHelmet");
-        GameRegistry.registerItem(chestplate, "ElectricalChestplate");
-        GameRegistry.registerItem(legs, "ElectricalLeggings");
-        GameRegistry.registerItem(boots, "ElectricalBoots");
+        GameRegistry.registerItem(helmet, "electrical_helmet");
+        GameRegistry.registerItem(chestplate, "electrical_chestplate");
+        GameRegistry.registerItem(legs, "electrical_leggings");
+        GameRegistry.registerItem(boots, "electrical_boots");
 
     }
 }

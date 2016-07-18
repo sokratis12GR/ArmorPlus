@@ -53,7 +53,7 @@ import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.0.0.0";
+    public static final String VERSION = "1.9.4-4.0.2.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";

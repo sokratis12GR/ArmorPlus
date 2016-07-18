@@ -33,8 +33,8 @@ public class ConfigHandler {
             enableCobaltArmorRecipes, enableManyullynArmorRecipes, enablePigIronArmorRecipes,
             enableKnightSlimeArmorRecipes, enableArditeArmorEffects, enableCobaltArmorEffects,
             enableManyullynArmorEffects, enablePigIronArmorEffects, enableKnightSlimeArmorEffects,
-            enableChickenArmorRecipes, enableSlimeArmorRecipes, /*easyMode, expertMode,*/
-            enableTheUltimateArmorIncinvibility, enableBlackList, enableWhiteList;
+            enableChickenArmorRecipes, enableSlimeArmorRecipes, enableTheUltimateArmorIncinvibility,
+            enableBlackList, enableWhiteList, enableRedstoneAppleRecipes;
 
     public static int emeraldArmorEffectlevel,
             lavaArmorEffectlevel, obsidianArmorEffectlevel, redstoneArmorEffectlevel,
@@ -44,6 +44,19 @@ public class ConfigHandler {
     public static String[] blackListedItems;
     public static String[] whiteListedItems;
 
+    /**
+     * World Generation
+     **/
+    //Lava Crystal
+    public static boolean enableLavaCrystalOverworldGen, enableLavaCrystalTheEndGen, enableLavaCrystalTheNetherGen;
+    public static int lavaCrystalOverworldRarity, lavaCrystalTheEndRarity, lavaCrystalTheNetherRarity, lavaCrystalVeinAmount;
+    public static int lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn, lavaCrystalTheEndMinYSpawn,
+            lavaCrystalTheEndMaxYSpawn, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn;
+    //Metal Ore
+    public static boolean enableMetalOreOverworldGen, enableMetalOreTheEndGen, enableMetalOreTheNetherGen;
+    public static int metalOreOverworldRarity, metalOreTheEndRarity, metalOreTheNetherRarity, metalOreVeinAmount;
+    public static int metalOreOverworldMinYSpawn, metalOreOverworldMaxYSpawn, metalOreTheEndMinYSpawn,
+            metalOreTheEndMaxYSpawn, metalOreTheNetherMinYSpawn, metalOreTheNetherMaxYSpawn;
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -54,6 +67,50 @@ public class ConfigHandler {
         final String[] blackListed;
 
         String category;
+
+        category = "WorldGeneration".toLowerCase();
+        //Lava Crystal
+        enableLavaCrystalOverworldGen = config.getBoolean("enableLavaCrystalOverworldGen", category, true,
+                "Enable/Disable The Lava Crystal World Generation in the dimension `Overworld`");
+        lavaCrystalOverworldRarity = config.getInt("lavaCrystalOverworldRarity", category, 4, 0, 100, "Set the rarity level of the Lava Crystal Generation in the dimension `Overworld`");
+        lavaCrystalOverworldMinYSpawn = config.getInt("lavaCrystalOverworldMinYSpawn", category, 6, 0, 256, "Set the min Y level of the Lava Crystal Generation in the dimension `Overworld`");
+        lavaCrystalOverworldMaxYSpawn = config.getInt("lavaCrystalOverworldMaxYSpawn", category, 16, 0, 256, "Set the max Y level of the Lava Crystal Generation in the dimension `Overworld`");
+
+        enableLavaCrystalTheEndGen = config.getBoolean("enableLavaCrystalTheEndGen", category, false,
+                "Enable/Disable The Lava Crystal World Generation in the dimension `The End`");
+        lavaCrystalTheEndRarity = config.getInt("lavaCrystalTheEndRarity", category, 0, 0, 100, "Set the rarity level of the Lava Crystal Generation in the dimension `The End`");
+        lavaCrystalTheEndMinYSpawn = config.getInt("lavaCrystalTheEndMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Lava Crystal Generation in the dimension `The End`");
+        lavaCrystalTheEndMaxYSpawn = config.getInt("lavaCrystalTheEndMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Lava Crystal Generation in the dimension `The End`");
+
+        enableLavaCrystalTheNetherGen = config.getBoolean("enableLavaCrystalTheNetherGen", category, false,
+                "Enable/Disable The Lava Crystal World Generation in the dimension `The Nether`");
+        lavaCrystalTheNetherRarity = config.getInt("lavaCrystalTheNetherRarity", category, 0, 0, 100, "Set the rarity level of the Lava Crystal Generation in the dimension `The Nether`");
+        lavaCrystalTheNetherMinYSpawn = config.getInt("lavaCrystalTheNetherMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Lava Crystal Generation in the dimension `The Nether`");
+        lavaCrystalTheNetherMaxYSpawn = config.getInt("lavaCrystalTheNetherMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Lava Crystal Generation in the dimension `The Nether`");
+
+        lavaCrystalVeinAmount = config.getInt("lavaCrystalVeinAmount", category, 3, 0, 100, "Set the vein amount of the Lava Crystal Generation");
+
+        //Metal Ore
+        enableMetalOreOverworldGen = config.getBoolean("enableMetalOreOverworldGen", category, true,
+                "Enable/Disable The Metal Ore World Generation in the dimension `Overworld`");
+        metalOreOverworldRarity = config.getInt("metalOreOverworldRarity", category, 7, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `Overworld`");
+        metalOreOverworldMinYSpawn = config.getInt("metalOreOverworldMinYSpawn", category, 8, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `Overworld`");
+        metalOreOverworldMaxYSpawn = config.getInt("metalOreOverworldMaxYSpawn", category, 58, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `Overworld`");
+
+        enableMetalOreTheEndGen = config.getBoolean("enableMetalOreTheEndGen", category, false,
+                "Enable/Disable The Metal Ore World Generation in the dimension `The End`");
+        metalOreTheEndRarity = config.getInt("metalOreTheEndRarity", category, 0, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `The End`");
+        metalOreTheEndMinYSpawn = config.getInt("metalOreTheEndMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `The End`");
+        metalOreTheEndMaxYSpawn = config.getInt("metalOreTheEndMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `The End`");
+
+        enableMetalOreTheNetherGen = config.getBoolean("enableMetalOreTheNetherGen", category, false,
+                "Enable/Disable The Metal Ore World Generation in the dimension `The Nether`");
+        metalOreTheNetherRarity = config.getInt("metalOreTheNetherRarity", category, 0, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `The Nether`");
+        metalOreTheNetherMinYSpawn = config.getInt("metalOreTheNetherMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `The Nether`");
+        metalOreTheNetherMaxYSpawn = config.getInt("metalOreTheNetherMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `The Nether`");
+
+        metalOreVeinAmount = config.getInt("metalOreVeinAmount", category, 5, 0, 100, "Set the vein amount of the Metal Ore Generation");
+
         category = "Recipes".toLowerCase();
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,
                 "Enable/Disable The Coal Armor Recipes");
@@ -94,6 +151,7 @@ public class ConfigHandler {
         enableChickenArmorRecipes = config.getBoolean("enableChickenArmorRecipes", category, true, "Enable/Disable The Chicken Armors Recipes");
         enableSlimeArmorRecipes = config.getBoolean("enableSlimeArmorRecipes", category, true, "Enable/Disable The Slime Armors Recipes");
         enableOldLavaArmorRecipes = config.getBoolean("enableOldLavaArmorRecipes", category, false, "Enable/Disable The Old Lava Armors Recipes");
+        enableRedstoneAppleRecipes = config.getBoolean("enableRedstoneAppleRecipes", category, true, "Enable/Disable The Redstone Apple Recipes");
 
         /** Coal Armor*/
         category = "CoalArmor".toLowerCase();
@@ -260,11 +318,10 @@ public class ConfigHandler {
 
         category = "TheUltimateArmor".toLowerCase();
         /** The Ultimate Armor */
-        enableTheUltimateArmorIncinvibility = config.getBoolean("enableTheUltimateArmorIncinvibility", category, true, "Enable/Disable The Ultimata Armor Invincibility");
+        enableTheUltimateArmorIncinvibility = config.getBoolean("enableTheUltimateArmorInvincibility", category, true, "Enable/Disable The Ultimate Armor Invincibility");
 
 
         category = "BlackList".toLowerCase();
-        config.setCategoryComment(category, "You Can't Get Blocks from \"The Gift Of The Gods\". So it isn't recommended adding them to any of the lists");
         blacklistmax = config.getInt("blacklistmax", category, 0, 0, (2 ^ 31) - 1, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:You will need to have that many BlackListed Items.");
         blacklistmin = config.getInt("blacklistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
         enableBlackList = config.getBoolean("enableBlackList", category, false, "Enable/Disable the BlackList");

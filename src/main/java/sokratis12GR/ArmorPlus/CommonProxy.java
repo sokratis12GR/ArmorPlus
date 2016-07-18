@@ -1,6 +1,7 @@
 package sokratis12GR.ArmorPlus;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import sokratis12GR.ArmorPlus.ArmorPlus;
 import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
 import sokratis12GR.ArmorPlus.worldgen.OreGen;
 

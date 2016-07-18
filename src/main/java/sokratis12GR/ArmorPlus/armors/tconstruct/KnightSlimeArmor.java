@@ -117,9 +117,9 @@ public class KnightSlimeArmor {
             }
         }).setUnlocalizedName("KnightSlimeBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "KnightSlimeHelmet");
-        GameRegistry.registerItem(chestplate, "KnightSlimeChestplate");
-        GameRegistry.registerItem(legs, "KnightSlimeLeggings");
-        GameRegistry.registerItem(boots, "KnightSlimeBoots");
+        GameRegistry.registerItem(helmet, "knight_slime_helmet");
+        GameRegistry.registerItem(chestplate, "knight_slime_chestplate");
+        GameRegistry.registerItem(legs, "knight_slime_leggings");
+        GameRegistry.registerItem(boots, "knight_slime_boots");
     }
 }

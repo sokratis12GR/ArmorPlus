@@ -40,6 +40,8 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ConfigHandler.config.getCategory("BlackList".toLowerCase())));
         list.add(new ConfigElement(ConfigHandler.config.getCategory("WhiteList".toLowerCase())));
 
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("WorldGeneration".toLowerCase())));
+
         return list;
     }
 }

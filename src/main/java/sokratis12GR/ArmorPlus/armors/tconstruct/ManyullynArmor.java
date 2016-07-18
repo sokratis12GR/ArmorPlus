@@ -116,9 +116,9 @@ public class ManyullynArmor {
             }
         }).setUnlocalizedName("ManyullynBoots");
         boots.setMaxStackSize(1);
-        GameRegistry.registerItem(helmet, "ManyullynHelmet");
-        GameRegistry.registerItem(chestplate, "ManyullynChestplate");
-        GameRegistry.registerItem(legs, "ManyullynLeggings");
-        GameRegistry.registerItem(boots, "ManyullynBoots");
+        GameRegistry.registerItem(helmet, "manyullyn_helmet");
+        GameRegistry.registerItem(chestplate, "manyullyn_chestplate");
+        GameRegistry.registerItem(legs, "manyullyn_leggings");
+        GameRegistry.registerItem(boots, "manyullyn_boots");
     }
 }

@@ -36,6 +36,7 @@ public class ModItems {
         REDSTONE_APPLE = new RedstoneApple(4, 2.0f, false);
     }
 
+
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         CHAINMAIL.initModel();
