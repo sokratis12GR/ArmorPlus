@@ -40,6 +40,7 @@ public class ModRecipes {
 
     public static void addShapelessRecipes() {
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), new ItemStack(Items.BOOK), new ItemStack(Items.COAL));
     }
 
     public static void addFurnaceRecipes() {

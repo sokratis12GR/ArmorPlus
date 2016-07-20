@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 import java.util.List;
@@ -101,7 +102,13 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
+                }
+                return true;
             }
         }).setUnlocalizedName("ObsidianHelmet");
         helmet.setMaxStackSize(1);
@@ -132,7 +139,13 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
+                }
+                return true;
             }
         }).setUnlocalizedName("ObsidianChestplate");
         chestplate.setMaxStackSize(1);
@@ -163,7 +176,13 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
+                }
+                return true;
             }
         }).setUnlocalizedName("ObsidianLeggings");
         legs.setMaxStackSize(1);
@@ -193,7 +212,13 @@ public class ObsidianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
+                }
+                return true;
             }
         }).setUnlocalizedName("ObsidianBoots");
         boots.setMaxStackSize(1);

@@ -1,10 +1,20 @@
 package sokratis12GR.ArmorPlus;
 
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import org.lwjgl.input.Keyboard;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 
 
 public class ClientProxy extends CommonProxy {
+
+    public static final KeyBinding KEY_NIGHT_VION = new KeyBinding("key.nightvision", Keyboard.KEY_N, "key.categories.armorplus");
+
+    @Override
+    public void registerClientKeyBindings() {
+        ClientRegistry.registerKeyBinding(KEY_NIGHT_VION);
+    }
 
     @Override
     public void registerRenderers(ArmorPlus ins) {

@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 import java.util.List;
@@ -111,7 +112,7 @@ public class LavaArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.LAVA_CRYSTAL;
             }
         }).setUnlocalizedName("LavaHelmet");
         helmet.setMaxStackSize(1);
@@ -152,7 +153,7 @@ public class LavaArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.LAVA_CRYSTAL;
             }
         }).setUnlocalizedName("LavaChestplate");
         chestplate.setMaxStackSize(1);
@@ -192,7 +193,7 @@ public class LavaArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.LAVA_CRYSTAL;
             }
         }).setUnlocalizedName("LavaLeggings");
         legs.setMaxStackSize(1);
@@ -232,7 +233,7 @@ public class LavaArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == getItemFromBlock(Blocks.OBSIDIAN);
+                return repair.getItem() == ModItems.LAVA_CRYSTAL;
             }
         }).setUnlocalizedName("LavaBoots");
         boots.setMaxStackSize(1);

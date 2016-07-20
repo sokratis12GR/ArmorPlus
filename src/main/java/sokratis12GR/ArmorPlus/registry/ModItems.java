@@ -3,11 +3,13 @@ package sokratis12GR.ArmorPlus.registry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.items.books.ArmorPlusBook;
+import sokratis12GR.ArmorPlus.items.books.ArmorPlusInfoBook;
 import sokratis12GR.ArmorPlus.items.consumables.RedstoneApple;
 import sokratis12GR.ArmorPlus.items.consumables.TheGiftOfTheGods;
 import sokratis12GR.ArmorPlus.items.materials.*;
 
 public class ModItems {
+
     public static Chainmail CHAINMAIL;
     public static ReinforcingMaterial REINFORCING_MATERIAL;
     public static GuardianScale GUARDIAN_SCALE;
@@ -20,6 +22,7 @@ public class ModItems {
     public static MetalIngot METAL_INGOT;
     public static ElectricalIngot ELECTRICAL_INGOT;
     public static RedstoneApple REDSTONE_APPLE;
+    public static ArmorPlusInfoBook ARMORPLUS_INFO_BOOK;
 
     public static void init() {
         CHAINMAIL = new Chainmail();
@@ -34,6 +37,7 @@ public class ModItems {
         METAL_INGOT = new MetalIngot();
         ELECTRICAL_INGOT = new ElectricalIngot();
         REDSTONE_APPLE = new RedstoneApple(4, 2.0f, false);
+        ARMORPLUS_INFO_BOOK = new ArmorPlusInfoBook();
     }
 
 
@@ -51,5 +55,6 @@ public class ModItems {
         METAL_INGOT.initModel();
         ELECTRICAL_INGOT.initModel();
         REDSTONE_APPLE.initModel();
+        ARMORPLUS_INFO_BOOK.initModel();
     }
 }

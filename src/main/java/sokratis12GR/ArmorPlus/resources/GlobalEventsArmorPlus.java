@@ -1,14 +1,12 @@
 package sokratis12GR.ArmorPlus.resources;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -30,8 +28,6 @@ import sokratis12GR.ArmorPlus.util.ARPAchievements;
 import sokratis12GR.ArmorPlus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
-    public EntityLightningBolt lightning;
-    public MinecraftServer server;
 
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
@@ -60,7 +56,7 @@ public class GlobalEventsArmorPlus {
             if (entity instanceof EntityLivingBase) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.ultimateArmorEffectlevel, true, true));
-                entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                entity.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 120, 0, true, true));
                 entity.removePotionEffect(MobEffects.WITHER);
             }
         }

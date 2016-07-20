@@ -27,6 +27,9 @@ public class CommonProxy {
     }
 
     public void registerRenderers(ArmorPlus armorPlus) {
+    }
+
+    public void registerClientKeyBindings() {
 
     }
 

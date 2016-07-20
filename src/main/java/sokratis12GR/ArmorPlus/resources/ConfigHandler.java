@@ -298,9 +298,7 @@ public class ConfigHandler {
 
         /** Game Modes */
         category = "GameModes".toLowerCase();
-        /*easyMode = config.getBoolean("easyMode", category, true, "Sets the Recipe Difficulty to easy");
-        expertMode = config.getBoolean("expertMode", category, false, "Sets the Recipe Difficulty to Expert");*/
-        recipes = config.getInt("recipes", category, 0, 0, 1, "Sets the Recipe Difficulty \n0 = easy , 1 = expert");
+        recipes = config.getInt("recipes", category, 1, 0, 1, "Sets the Recipe Difficulty \n0 = easy , 1 = expert");
 
 
         /** Tinkers' Armors Effects */

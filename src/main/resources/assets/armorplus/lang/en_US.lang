@@ -9,6 +9,10 @@ itemGroup.armorplus.creativeTabBlocks=ArmorPlus
 container.ArmorForge=Armor Forge
 container.inventory=Inventory
 
+# Keybinds
+key.categories.armorplus=ArmorPlus
+key.nightvision=Toggle Night Vision (The Ultimate Armor)
+
 #Commands
 commands.error.arg.invalid=Invalid arguments
 commands.error.arg.missing=Not enough arguments
@@ -35,7 +39,8 @@ commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 gui.jei.category.armorforge=Armor Forge
 
 #BOOKS
-item.ArmorPlusBook.name=ArmorPlus Book (WIP)
+item.ArmorPlusBook.name=ArmorPlus Book
+item.ArmorPlusInfoBook.name=ArmorPlus Info Book
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration

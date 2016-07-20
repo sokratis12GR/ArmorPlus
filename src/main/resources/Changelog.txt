@@ -1,4 +1,20 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.5.0
+{Features Added}
+* ArmorPlus Info Book (It informs the player of the Game Mode they are playing in)
+{Features Changed}
+* Expert Mode is enabled by default!
+* Lava Armor now Requires Lava Crystal to be repaired
+* Obsidian Armor now Requires Compressed Obsidian to be repaired in Expert Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.4.0
+{Features Removed}
+* The Ultimate Armor has no longer a key bind option to enable Night Vision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.3.0
+{Features Added}
+* The Ultimate Armor now has a key bind option to enable Night Vision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-4.0.2.0
 {Features Added}
 * Config

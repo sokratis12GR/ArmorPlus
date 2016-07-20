@@ -158,6 +158,7 @@ public class TheUltimateArmor {
                         entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
                     }
                 }
+
             }
 
             @Override

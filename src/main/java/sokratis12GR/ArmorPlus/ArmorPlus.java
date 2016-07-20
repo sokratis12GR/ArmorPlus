@@ -16,6 +16,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sokratis12GR.ArmorPlus.armors.origin.*;
@@ -49,11 +51,13 @@ import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
+/*import sokratis12GR.ArmorPlus.resources.ClientEvents;*/
+
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4,1.10)", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.0.2.0";
+    public static final String VERSION = "1.9.4-4.0.5.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
@@ -115,8 +119,55 @@ public class ArmorPlus {
     KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
     // player.getHealth()
 
+    @SideOnly(Side.CLIENT)
     @EventHandler
-    public void init(FMLInitializationEvent event) {
+    public void initClient(FMLInitializationEvent event) {
+
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
+        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
+        MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+        /*MinecraftForge.EVENT_BUS.register(new ClientEvents());*/
+        COAL_ARMOR.load(event);
+        LAPIS_ARMOR.load(event);
+        REDSTONE_ARMOR.load(event);
+        EMERALD_ARMOR.load(event);
+        OBSIDIAN_ARMOR.load(event);
+        LAVA_ARMOR.load(event);
+        SUPER_STAR_ARMOR.load(event);
+        ENDER_DRAGON_ARMOR.load(event);
+        GUARDIAN_ARMOR.load(event);
+        THE_ULTIMATE_ARMOR.load(event);
+        RI_ARMOR.load(event);
+        RG_ARMOR.load(event);
+        RD_ARMOR.load(event);
+        RC_ARMOR.load(event);
+        CHICKEN_ARMOR.load(event);
+        SLIME_ARMOR.load(event);
+
+        /** v2 */
+        METAL_ARMOR.load(event);
+        ELECTRICAL_ARMOR.load(event);
+
+        /** Tinkers' Construct Armors */
+        COBALT_ARMOR.load(event);
+        ARDITE_ARMOR.load(event);
+        MANYULLYN_ARMOR.load(event);
+        PIG_IRON_ARMOR.load(event);
+        KNIGHT_SLIME_ARMOR.load(event);
+
+        ARPAchievements.init();
+        ModRecipes.init();
+
+        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
+        registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
+        registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+    }
+
+    @SideOnly(Side.SERVER)
+    @EventHandler
+    public void initServer(FMLInitializationEvent event) {
+
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
@@ -150,13 +201,13 @@ public class ArmorPlus {
         KNIGHT_SLIME_ARMOR.load(event);
 
         ARPAchievements.init();
-
         ModRecipes.init();
 
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
         registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
     }
+
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
