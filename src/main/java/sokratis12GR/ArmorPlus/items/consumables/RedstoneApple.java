@@ -29,7 +29,7 @@ public class RedstoneApple extends ItemFood {
         this.setHasSubtypes(true);
         setUnlocalizedName("RedstoneApple");
         setRegistryName("redstone_apple");
-        setAlwaysEdible();
+        setAlwaysEdible().equals(true);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

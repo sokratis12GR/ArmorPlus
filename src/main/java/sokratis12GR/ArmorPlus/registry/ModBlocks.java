@@ -9,10 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.blocks.ArmorForge;
-import sokratis12GR.ArmorPlus.blocks.BlockLavaCrystal;
-import sokratis12GR.ArmorPlus.blocks.CompressedObsidian;
-import sokratis12GR.ArmorPlus.blocks.MetalOre;
+import sokratis12GR.ArmorPlus.blocks.*;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
 
@@ -24,13 +21,15 @@ public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
             COMPRESSED_OBSIDIAN,
-            ARMOR_FORGE, METAL_ORE;
+            ARMOR_FORGE, METAL_ORE, METAL_BLOCK, ELECTRICAL_BLOCK;
 
     public static void init() {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
         ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
         METAL_ORE = new MetalOre().setRegistryName("metal_ore");
+        METAL_BLOCK = new MetalBlock().setRegistryName("metal_block");
+        ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
     }
 
     public static void register() {
@@ -38,6 +37,8 @@ public class ModBlocks {
         registerBlock(COMPRESSED_OBSIDIAN);
         registerBlock(ARMOR_FORGE);
         registerBlock(METAL_ORE);
+        registerBlock(METAL_BLOCK);
+        registerBlock(ELECTRICAL_BLOCK);
     }
 
     public static void registerRenders() {
@@ -45,6 +46,8 @@ public class ModBlocks {
         registerRender(COMPRESSED_OBSIDIAN);
         registerRender(ARMOR_FORGE);
         registerRender(METAL_ORE);
+        registerRender(METAL_BLOCK);
+        registerRender(ELECTRICAL_BLOCK);
     }
 
     public static void registerBlock(Block block) {

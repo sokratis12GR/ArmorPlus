@@ -16,6 +16,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
+import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 public class ElectricalArmor {
 
@@ -69,7 +72,13 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.ELECTRICAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("ElectricalHelmet");
         helmet.setMaxStackSize(1);
@@ -78,7 +87,13 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.ELECTRICAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("ElectricalChestplate");
         chestplate.setMaxStackSize(1);
@@ -87,7 +102,13 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.ELECTRICAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("ElectricalLeggings");
         legs.setMaxStackSize(1);
@@ -96,7 +117,13 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.ELECTRICAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("ElectricalBoots");
         boots.setMaxStackSize(1);

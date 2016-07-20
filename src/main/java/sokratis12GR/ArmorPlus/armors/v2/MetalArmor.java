@@ -17,6 +17,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12GR.ArmorPlus.registry.ModBlocks;
+import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12GR.ArmorPlus.resources.ConfigHandler;
 
 public class MetalArmor {
     public static EntityLivingBase entityLivingBase;
@@ -71,7 +74,13 @@ public class MetalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.METAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.METAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("MetalHelmet");
         helmet.setMaxStackSize(1);
@@ -80,7 +89,13 @@ public class MetalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.METAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.METAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("MetalChestplate");
         chestplate.setMaxStackSize(1);
@@ -89,7 +104,13 @@ public class MetalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.METAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.METAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("MetalLeggings");
         legs.setMaxStackSize(1);
@@ -98,7 +119,13 @@ public class MetalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                return repair.getItem() == Items.IRON_INGOT;
+                if (ConfigHandler.recipes == 0) {
+                    return repair.getItem() == ModItems.METAL_INGOT;
+                }
+                if (ConfigHandler.recipes == 1) {
+                    return repair.getItem() == Item.getItemFromBlock(ModBlocks.METAL_BLOCK);
+                }
+                return true;
             }
         }).setUnlocalizedName("MetalBoots");
         boots.setMaxStackSize(1);

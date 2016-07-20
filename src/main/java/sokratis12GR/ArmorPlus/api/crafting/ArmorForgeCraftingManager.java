@@ -9,11 +9,19 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.*;
-import sokratis12GR.ArmorPlus.armors.special.*;
-import sokratis12GR.ArmorPlus.armors.special.mob.*;
+import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
+import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
+import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
+import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
+import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
+import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
+import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
 import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.armors.v2.*;
+import sokratis12GR.ArmorPlus.armors.v2.ElectricalArmor;
+import sokratis12GR.ArmorPlus.armors.v2.MetalArmor;
 import sokratis12GR.ArmorPlus.registry.ModBlocks;
 import sokratis12GR.ArmorPlus.registry.ModItems;
 import sokratis12GR.ArmorPlus.resources.ConfigHandler;
@@ -386,19 +394,40 @@ public class ArmorForgeCraftingManager {
         // ===================================== v2 Armors =====================================
         this.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 1), ModItems.METAL_INGOT, Items.REDSTONE, Items.GLOWSTONE_DUST);
         /** Metal Armor */
-        this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModItems.METAL_INGOT);
-        this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
-        this.addRecipe(new ItemStack(MetalArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.METAL_INGOT);
-        this.addRecipe(new ItemStack(MetalArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
-        this.addRecipe(new ItemStack(MetalArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
-        this.addRecipe(new ItemStack(MetalArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
+        if (ConfigHandler.recipes == 0) {
+            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(MetalArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(MetalArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
+        }
+        if (ConfigHandler.recipes == 1) {
+            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(MetalArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(MetalArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.METAL_BLOCK);
+        }
         /** Electrical Armor */
-        this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-        this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
-        this.addRecipe(new ItemStack(ElectricalArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.ELECTRICAL_INGOT);
-        this.addRecipe(new ItemStack(ElectricalArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-        this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-        this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
+        if (ConfigHandler.recipes == 0) {
+            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ElectricalArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ElectricalArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
+        }
+        if (ConfigHandler.recipes == 1) {
+            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ElectricalArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ElectricalArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
+        }
+
         // ===================================== Items =====================================
         this.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), "XSX", "SBS", "XSX", 'S', Items.STRING, 'B', Items.SLIME_BALL);
         this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1), ModItems.ENDER_DRAGON_SCALE, ModItems.GUARDIAN_SCALE, ModItems.WITHER_BONE);

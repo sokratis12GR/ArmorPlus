@@ -57,7 +57,7 @@ import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.0.5.0";
+    public static final String VERSION = "1.9.4-4.0.6.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
@@ -162,6 +162,7 @@ public class ArmorPlus {
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
         registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+        registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
     }
 
     @SideOnly(Side.SERVER)
@@ -206,6 +207,7 @@ public class ArmorPlus {
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
         registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+        registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
     }
 
 

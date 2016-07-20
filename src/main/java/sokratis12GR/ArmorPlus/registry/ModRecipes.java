@@ -36,10 +36,14 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
             GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'A', new ItemStack(Items.APPLE));
         }
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.METAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.METAL_INGOT));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.ELECTRICAL_INGOT));
     }
 
     public static void addShapelessRecipes() {
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.METAL_INGOT, 9), new ItemStack(ModBlocks.METAL_BLOCK));
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), new ItemStack(ModBlocks.ELECTRICAL_BLOCK));
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), new ItemStack(Items.BOOK), new ItemStack(Items.COAL));
     }
 

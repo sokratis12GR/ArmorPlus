@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": [
+			{ "model": "armorplus:MetalBlock" },
+			{ "model": "armorplus:MetalBlock", "y": 90 },
+			{ "model": "armorplus:MetalBlock", "y": 180 },
+			{ "model": "armorplus:MetalBlock", "y": 270 }
+		]
+	}
+}

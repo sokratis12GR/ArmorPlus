@@ -211,6 +211,8 @@ tile.CompressedObsidian.name=Compressed Obsidian
 tile.BlockLavaCrystal.name=Lava Crystal Block
 tile.ArmorForge.name=Armor Forge
 tile.MetalOre.name=Metal Ore
+tile.MetalBlock.name=Metal Block
+tile.ElectricalBlock.name=Electrical Block
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

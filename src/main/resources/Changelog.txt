@@ -1,4 +1,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.0.6.0
+{Features Added}
+* Blocks
+** Metal Block
+** Electrical Block
+{Features Changed}
+* Metal Armor now requires Metal Ingots to be repaired in Easy Mode and Metal Blocks in Expert Mode.
+* Electrical Armor now requires Electrical Ingots to be repaired in Easy Mode and Electrical Blocks in Expert Mode.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-4.0.5.0
 {Features Added}
 * ArmorPlus Info Book (It informs the player of the Game Mode they are playing in)
