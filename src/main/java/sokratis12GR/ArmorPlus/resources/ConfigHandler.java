@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.resources;
+package sokratis12gr.armorplus.resources;
 
 import net.minecraftforge.common.config.Configuration;
 
@@ -52,11 +52,11 @@ public class ConfigHandler {
     public static int lavaCrystalOverworldRarity, lavaCrystalTheEndRarity, lavaCrystalTheNetherRarity, lavaCrystalVeinAmount;
     public static int lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn, lavaCrystalTheEndMinYSpawn,
             lavaCrystalTheEndMaxYSpawn, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn;
-    //Metal Ore
-    public static boolean enableMetalOreOverworldGen, enableMetalOreTheEndGen, enableMetalOreTheNetherGen;
-    public static int metalOreOverworldRarity, metalOreTheEndRarity, metalOreTheNetherRarity, metalOreVeinAmount;
-    public static int metalOreOverworldMinYSpawn, metalOreOverworldMaxYSpawn, metalOreTheEndMinYSpawn,
-            metalOreTheEndMaxYSpawn, metalOreTheNetherMinYSpawn, metalOreTheNetherMaxYSpawn;
+    //Steel Ore
+    public static boolean enableSteelOreOverworldGen, enableSteelOreTheEndGen, enableSteelOreTheNetherGen;
+    public static int steelOreOverworldRarity, steelOreTheEndRarity, steelOreTheNetherRarity, steelOreVeinAmount;
+    public static int steelOreOverworldMinYSpawn, steelOreOverworldMaxYSpawn, steelOreTheEndMinYSpawn,
+            steelOreTheEndMaxYSpawn, steelOreTheNetherMinYSpawn, steelOreTheNetherMaxYSpawn;
 
     public static void init(File file) {
         config = new Configuration(file);
@@ -90,26 +90,26 @@ public class ConfigHandler {
 
         lavaCrystalVeinAmount = config.getInt("lavaCrystalVeinAmount", category, 3, 0, 100, "Set the vein amount of the Lava Crystal Generation");
 
-        //Metal Ore
-        enableMetalOreOverworldGen = config.getBoolean("enableMetalOreOverworldGen", category, true,
-                "Enable/Disable The Metal Ore World Generation in the dimension `Overworld`");
-        metalOreOverworldRarity = config.getInt("metalOreOverworldRarity", category, 7, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `Overworld`");
-        metalOreOverworldMinYSpawn = config.getInt("metalOreOverworldMinYSpawn", category, 8, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `Overworld`");
-        metalOreOverworldMaxYSpawn = config.getInt("metalOreOverworldMaxYSpawn", category, 58, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `Overworld`");
+        //Steel Ore
+        enableSteelOreOverworldGen = config.getBoolean("enableSteelOreOverworldGen", category, true,
+                "Enable/Disable The Steel Ore World Generation in the dimension `Overworld`");
+        steelOreOverworldRarity = config.getInt("steelOreOverworldRarity", category, 7, 0, 100, "Set the rarity level of the Steel Ore Generation in the dimension `Overworld`");
+        steelOreOverworldMinYSpawn = config.getInt("steelOreOverworldMinYSpawn", category, 8, 0, 256, "Set the min Y level of the Steel Ore Generation in the dimension `Overworld`");
+        steelOreOverworldMaxYSpawn = config.getInt("steelOreOverworldMaxYSpawn", category, 58, 0, 256, "Set the max Y level of the Steel Ore Generation in the dimension `Overworld`");
 
-        enableMetalOreTheEndGen = config.getBoolean("enableMetalOreTheEndGen", category, false,
-                "Enable/Disable The Metal Ore World Generation in the dimension `The End`");
-        metalOreTheEndRarity = config.getInt("metalOreTheEndRarity", category, 0, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `The End`");
-        metalOreTheEndMinYSpawn = config.getInt("metalOreTheEndMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `The End`");
-        metalOreTheEndMaxYSpawn = config.getInt("metalOreTheEndMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `The End`");
+        enableSteelOreTheEndGen = config.getBoolean("enableSteelOreTheEndGen", category, false,
+                "Enable/Disable The Steel Ore World Generation in the dimension `The End`");
+        steelOreTheEndRarity = config.getInt("steelOreTheEndRarity", category, 0, 0, 100, "Set the rarity level of the Steel Ore Generation in the dimension `The End`");
+        steelOreTheEndMinYSpawn = config.getInt("steelOreTheEndMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Steel Ore Generation in the dimension `The End`");
+        steelOreTheEndMaxYSpawn = config.getInt("steelOreTheEndMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Steel Ore Generation in the dimension `The End`");
 
-        enableMetalOreTheNetherGen = config.getBoolean("enableMetalOreTheNetherGen", category, false,
-                "Enable/Disable The Metal Ore World Generation in the dimension `The Nether`");
-        metalOreTheNetherRarity = config.getInt("metalOreTheNetherRarity", category, 0, 0, 100, "Set the rarity level of the Metal Ore Generation in the dimension `The Nether`");
-        metalOreTheNetherMinYSpawn = config.getInt("metalOreTheNetherMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Metal Ore Generation in the dimension `The Nether`");
-        metalOreTheNetherMaxYSpawn = config.getInt("metalOreTheNetherMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Metal Ore Generation in the dimension `The Nether`");
+        enableSteelOreTheNetherGen = config.getBoolean("enableSteelOreTheNetherGen", category, false,
+                "Enable/Disable The Steel Ore World Generation in the dimension `The Nether`");
+        steelOreTheNetherRarity = config.getInt("steelOreTheNetherRarity", category, 0, 0, 100, "Set the rarity level of the Steel Ore Generation in the dimension `The Nether`");
+        steelOreTheNetherMinYSpawn = config.getInt("steelOreTheNetherMinYSpawn", category, 0, 0, 256, "Set the min Y level of the Steel Ore Generation in the dimension `The Nether`");
+        steelOreTheNetherMaxYSpawn = config.getInt("steelOreTheNetherMaxYSpawn", category, 0, 0, 256, "Set the max Y level of the Steel Ore Generation in the dimension `The Nether`");
 
-        metalOreVeinAmount = config.getInt("metalOreVeinAmount", category, 5, 0, 100, "Set the vein amount of the Metal Ore Generation");
+        steelOreVeinAmount = config.getInt("steelOreVeinAmount", category, 5, 0, 100, "Set the vein amount of the Steel Ore Generation");
 
         category = "Recipes".toLowerCase();
         enableCoalArmorRecipes = config.getBoolean("enableCoalArmorRecipes", category, true,

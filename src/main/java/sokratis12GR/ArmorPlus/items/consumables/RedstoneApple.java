@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items.consumables;
+package sokratis12gr.armorplus.items.consumables;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +14,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package sokratis12GR.ArmorPlus.commands.subcommands;
+package sokratis12gr.armorplus.commands.subcommands;
 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
-import sokratis12GR.ArmorPlus.commands.SubCommandBase;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.commands.SubCommandBase;
+import sokratis12gr.armorplus.util.TextHelper;
 
 import java.awt.*;
 import java.net.MalformedURLException;
@@ -16,6 +16,25 @@ public class SubCommandWiki extends SubCommandBase {
 
     public SubCommandWiki(ICommand parent) {
         super(parent, "wiki");
+    }
+
+    public static void openWebpage(URI uri) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void openWebpage(URL url) {
+        try {
+            openWebpage(url.toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -41,24 +60,5 @@ public class SubCommandWiki extends SubCommandBase {
     @Override
     public int getRequiredPermissionLevel() {
         return 0;
-    }
-
-    public static void openWebpage(URI uri) {
-        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-            try {
-                desktop.browse(uri);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void openWebpage(URL url) {
-        try {
-            openWebpage(url.toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
     }
 }

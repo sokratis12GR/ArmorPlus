@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.compat.jei.armorforge;
+package sokratis12gr.armorplus.compat.jei.armorforge;
 
 /**
  * sokratis12GR.ArmorPlus.compat.jei.armorforge
@@ -16,7 +16,7 @@ import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
 import mezz.jei.util.Translator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
-import sokratis12GR.ArmorPlus.api.Constants;
+import sokratis12gr.armorplus.api.Constants;
 
 import javax.annotation.Nonnull;
 

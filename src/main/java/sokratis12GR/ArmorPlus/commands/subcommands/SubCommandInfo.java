@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.commands.subcommands;
+package sokratis12gr.armorplus.commands.subcommands;
 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -7,9 +7,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.commands.SubCommandBase;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.commands.SubCommandBase;
+import sokratis12gr.armorplus.util.TextHelper;
 
 public class SubCommandInfo extends SubCommandBase {
 

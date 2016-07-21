@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.container;
+package sokratis12gr.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,36 +9,31 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sokratis12GR.ArmorPlus.api.crafting.InventoryCrafting;
-import sokratis12GR.ArmorPlus.api.crafting.SlotCrafting;
-import sokratis12GR.ArmorPlus.api.crafting.ArmorForgeCraftingManager;
-import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
+import sokratis12gr.armorplus.api.crafting.ArmorForgeCraftingManager;
+import sokratis12gr.armorplus.api.crafting.InventoryCrafting;
+import sokratis12gr.armorplus.api.crafting.SlotCrafting;
+import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
 
 import javax.annotation.Nullable;
 
 
 /**
- * sokratis12GR.ArmorPlus.container
+ * sokratis12gr.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
  */
 public class ContainerArmorForge extends Container {
 
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
-    }
-
-    private TileEntityArmorForge tileEntity;
     /**
      * The crafting matrix inventory (3x3).
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
-    private World worldObj;
     /**
      * Position of the workbench
      */
     public BlockPos pos;
-
+    private TileEntityArmorForge tileEntity;
+    private World worldObj;
     public ContainerArmorForge(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityArmorForge tileEntity) {
         this.tileEntity = tileEntity;
         this.worldObj = worldIn;
@@ -62,6 +57,10 @@ public class ContainerArmorForge extends Container {
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
+    }
+
+    public boolean canInteractWith(EntityPlayer playerIn) {
+        return true;
     }
 
     /**

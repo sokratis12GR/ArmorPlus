@@ -1,8 +1,8 @@
-package sokratis12GR.ArmorPlus;
+package sokratis12gr.armorplus;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
-import sokratis12GR.ArmorPlus.worldgen.OreGen;
+import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
+import sokratis12gr.armorplus.worldgen.OreGen;
 
 public class CommonProxy {
     public void loadCommands() {

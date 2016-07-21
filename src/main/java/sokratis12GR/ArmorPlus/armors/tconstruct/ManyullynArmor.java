@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors.tconstruct;
+package sokratis12gr.armorplus.armors.tconstruct;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.util.List;
 
@@ -25,40 +25,6 @@ public class ManyullynArmor {
     public static Item chestplate;
     public static Item legs;
     public static Item boots;
-    public Object instance;
-
-    public void load(FMLInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:ManyullynHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:ManyullynChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:ManyullynLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:ManyullynBoots", "inventory"));
-        }
-        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-    }
-
-    public void preInit(FMLPreInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:ManyullynHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:ManyullynChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:ManyullynLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:ManyullynBoots", "inventory"));
-        }
-    }
-
-    public void registerRenderers() {
-    }
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("MANYULLYNARMOR", ArmorPlus.MODID + ":" + "ManyullynArmor", 66, new int[]
@@ -120,5 +86,40 @@ public class ManyullynArmor {
         GameRegistry.registerItem(chestplate, "manyullyn_chestplate");
         GameRegistry.registerItem(legs, "manyullyn_leggings");
         GameRegistry.registerItem(boots, "manyullyn_boots");
+    }
+
+    public Object instance;
+
+    public void load(FMLInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:ManyullynHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:ManyullynChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:ManyullynLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:ManyullynBoots", "inventory"));
+        }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    public void preInit(FMLPreInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:ManyullynHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:ManyullynChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:ManyullynLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:ManyullynBoots", "inventory"));
+        }
+    }
+
+    public void registerRenderers() {
     }
 }

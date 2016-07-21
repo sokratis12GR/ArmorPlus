@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api.crafting;
+package sokratis12gr.armorplus.api.crafting;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

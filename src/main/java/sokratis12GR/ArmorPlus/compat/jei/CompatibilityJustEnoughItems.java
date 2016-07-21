@@ -1,6 +1,6 @@
-package sokratis12GR.ArmorPlus.compat.jei;
+package sokratis12gr.armorplus.compat.jei;
 
-import sokratis12GR.ArmorPlus.compat.ICompatibility;
+import sokratis12gr.armorplus.compat.ICompatibility;
 
 /**
  * sokratis12GR.ArmorPlus.compatibility.jei

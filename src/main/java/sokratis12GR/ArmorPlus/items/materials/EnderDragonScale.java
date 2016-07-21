@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items.materials;
+package sokratis12gr.armorplus.items.materials;
 
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -10,7 +10,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 public class EnderDragonScale extends Item {
 

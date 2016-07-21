@@ -183,17 +183,17 @@ item.ElectricalChestplate.name=Electrical Chestplate
 item.ElectricalLeggings.name=Electrical Leggings
 item.ElectricalBoots.name=Electrical Boots
 
-#MetalArmor
-item.MetalHelmet.name=Metal Helmet
-item.MetalChestplate.name=Metal Chestplate
-item.MetalLeggings.name=Metal Leggings
-item.MetalBoots.name=Metal Boots
+#SteelArmor
+item.SteelHelmet.name=Steel Helmet
+item.SteelChestplate.name=Steel Chestplate
+item.SteelLeggings.name=Steel Leggings
+item.SteelBoots.name=Steel Boots
 
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
 item.LavaCrystal.name=Lava Crystal
-item.MetalIngot.name=Metal Ingot
+item.SteelIngot.name=Steel Ingot
 item.ElectricalIngot.name=Electrical Ingot
 
 #Food Items
@@ -210,8 +210,8 @@ item.TheGiftOfTheGods.name=The Gift Of The Gods
 tile.CompressedObsidian.name=Compressed Obsidian
 tile.BlockLavaCrystal.name=Lava Crystal Block
 tile.ArmorForge.name=Armor Forge
-tile.MetalOre.name=Metal Ore
-tile.MetalBlock.name=Metal Block
+tile.SteelOre.name=Steel Ore
+tile.SteelBlock.name=Block of Steel
 tile.ElectricalBlock.name=Electrical Block
 
 #Achievements

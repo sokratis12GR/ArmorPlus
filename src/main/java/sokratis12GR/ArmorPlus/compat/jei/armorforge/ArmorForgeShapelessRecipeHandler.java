@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.compat.jei.armorforge;
+package sokratis12gr.armorplus.compat.jei.armorforge;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.recipe.IRecipeHandler;
@@ -6,13 +6,13 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.util.ErrorUtil;
 import mezz.jei.util.Log;
 import net.minecraft.item.ItemStack;
-import sokratis12GR.ArmorPlus.api.Constants;
-import sokratis12GR.ArmorPlus.api.crafting.ShapelessRecipes;
+import sokratis12gr.armorplus.api.Constants;
+import sokratis12gr.armorplus.api.crafting.ShapelessRecipes;
 
 import javax.annotation.Nonnull;
 
 /**
- * sokratis12GR.ArmorPlus.compat.jei.armorforge
+ * sokratis12gr.armorplus.compat.jei.armorforge
  * ArmorPlus created by sokratis12GR on 6/22/2016 7:03 PM.
  */
 public class ArmorForgeShapelessRecipeHandler implements IRecipeHandler<ShapelessRecipes> {

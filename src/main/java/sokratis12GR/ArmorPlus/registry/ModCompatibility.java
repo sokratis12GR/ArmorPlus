@@ -1,13 +1,13 @@
-package sokratis12GR.ArmorPlus.registry;
+package sokratis12gr.armorplus.registry;
 
 import net.minecraftforge.fml.common.Loader;
-import sokratis12GR.ArmorPlus.compat.ICompatibility;
-import sokratis12GR.ArmorPlus.compat.jei.CompatibilityJustEnoughItems;
+import sokratis12gr.armorplus.compat.ICompatibility;
+import sokratis12gr.armorplus.compat.jei.CompatibilityJustEnoughItems;
 
 import java.util.ArrayList;
 
 /**
- * sokratis12GR.ArmorPlus.registry
+ * sokratis12gr.armorplus.registry
  * ArmorPlus created by sokratis12GR on 6/22/2016 12:20 AM.
  */
 public class ModCompatibility {

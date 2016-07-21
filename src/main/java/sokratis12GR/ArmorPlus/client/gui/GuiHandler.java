@@ -1,11 +1,11 @@
-package sokratis12GR.ArmorPlus.client.gui;
+package sokratis12gr.armorplus.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
-import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
+import sokratis12gr.armorplus.container.ContainerArmorForge;
+import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
 
 
 public class GuiHandler implements IGuiHandler {

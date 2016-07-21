@@ -1,7 +1,7 @@
-package sokratis12GR.ArmorPlus;
+package sokratis12gr.armorplus;
 
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12gr.armorplus.registry.ModBlocks;
+import sokratis12gr.armorplus.registry.ModItems;
 
 
 public class ClientProxy extends CommonProxy {
@@ -25,7 +25,7 @@ public class ClientProxy extends CommonProxy {
         ins.CHICKEN_ARMOR.registerRenderers();
         ins.SLIME_ARMOR.registerRenderers();
         /**  v2 */
-        ins.METAL_ARMOR.registerRenderers();
+        ins.STEEL_ARMOR.registerRenderers();
         ins.ELECTRICAL_ARMOR.registerRenderers();
         /** Tinkers' Construct */
         ins.COBALT_ARMOR.registerRenderers();
@@ -37,3 +37,5 @@ public class ClientProxy extends CommonProxy {
         ModBlocks.registerRenders();
     }
 }
+
+

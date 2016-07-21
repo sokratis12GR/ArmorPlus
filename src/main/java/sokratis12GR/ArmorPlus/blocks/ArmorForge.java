@@ -1,9 +1,7 @@
-package sokratis12GR.ArmorPlus.blocks;
+package sokratis12gr.armorplus.blocks;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,14 +14,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.client.gui.GuiHandler;
-import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.client.gui.GuiHandler;
+import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
 
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.blocks
+ * sokratis12gr.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  */
 public class ArmorForge extends BlockWorkbench implements ITileEntityProvider {
@@ -53,8 +51,7 @@ public class ArmorForge extends BlockWorkbench implements ITileEntityProvider {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
-    {
+    public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 

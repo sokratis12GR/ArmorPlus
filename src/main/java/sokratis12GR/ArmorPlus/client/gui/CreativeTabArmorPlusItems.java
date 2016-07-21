@@ -1,13 +1,12 @@
-package sokratis12GR.ArmorPlus.client.gui;
+package sokratis12gr.armorplus.client.gui;
 
 //Creates your creative tab.
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.origin.LavaArmor;
-import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.registry.ModItems;
 
 public class CreativeTabArmorPlusItems extends CreativeTabs {
 

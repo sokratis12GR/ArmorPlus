@@ -1,7 +1,7 @@
-package sokratis12GR.ArmorPlus.commands;
+package sokratis12gr.armorplus.commands;
 
 /**
- * sokratis12GR.ArmorPlus.commands.subcommands
+ * sokratis12gr.armorplus.commands.subcommands
  * ArmorPlus created by sokratis12GR on 6/25/2016 9:54 AM.
  */
 
@@ -9,7 +9,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.util.TextHelper;
 
 import java.util.Locale;
 
@@ -21,6 +21,18 @@ public class SubCommandBase implements ISubCommand {
     public SubCommandBase(ICommand parent, String name) {
         this.parent = parent;
         this.name = name;
+    }
+
+    public static void displayHelpString(ICommandSender commandSender, String display, Object... info) {
+        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
+    }
+
+    public static void displayErrorString(ICommandSender commandSender, String display, Object... info) {
+        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
+    }
+
+    public static void displaySuccessString(ICommandSender commandSender, String display, Object... info) {
+        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
     }
 
     @Override
@@ -54,17 +66,5 @@ public class SubCommandBase implements ISubCommand {
 
     protected String capitalizeFirstLetter(String toCapital) {
         return String.valueOf(toCapital.charAt(0)).toUpperCase(Locale.ENGLISH) + toCapital.substring(1);
-    }
-
-    public static void displayHelpString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
-    }
-
-    public static void displayErrorString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
-    }
-
-    public static void displaySuccessString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
     }
 }

@@ -1,13 +1,13 @@
-package sokratis12GR.ArmorPlus.compat.jei.armorforge;
+package sokratis12gr.armorplus.compat.jei.armorforge;
 
 /**
- * sokratis12GR.ArmorPlus.compat.jei.armorforge
+ * sokratis12gr.armorplus.compat.jei.armorforge
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:39 PM.
  */
 
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import sokratis12GR.ArmorPlus.api.recipe.ArmorForgeRecipe;
+import sokratis12gr.armorplus.api.recipe.ArmorForgeRecipe;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

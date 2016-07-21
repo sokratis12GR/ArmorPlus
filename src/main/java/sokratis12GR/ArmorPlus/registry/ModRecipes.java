@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.registry;
+package sokratis12gr.armorplus.registry;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
+import sokratis12gr.armorplus.resources.ConfigHandler;
 
 /**
  * sokratis12GR.ArmorPlus.registry
@@ -36,18 +36,18 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
             GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'A', new ItemStack(Items.APPLE));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.METAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.METAL_INGOT));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.STEEL_INGOT));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.ELECTRICAL_INGOT));
     }
 
     public static void addShapelessRecipes() {
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN));
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.METAL_INGOT, 9), new ItemStack(ModBlocks.METAL_BLOCK));
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 9), new ItemStack(ModBlocks.STEEL_BLOCK));
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), new ItemStack(ModBlocks.ELECTRICAL_BLOCK));
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), new ItemStack(Items.BOOK), new ItemStack(Items.COAL));
     }
 
     public static void addFurnaceRecipes() {
-        GameRegistry.addSmelting(new ItemStack(ModBlocks.METAL_ORE), new ItemStack(ModItems.METAL_INGOT), 0.5F);
+        GameRegistry.addSmelting(new ItemStack(ModBlocks.STEEL_ORE), new ItemStack(ModItems.STEEL_INGOT), 0.5F);
     }
 }

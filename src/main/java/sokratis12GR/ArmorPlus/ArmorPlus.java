@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus;
+package sokratis12gr.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,49 +20,49 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.armors.v2.ElectricalArmor;
-import sokratis12GR.ArmorPlus.armors.v2.MetalArmor;
-import sokratis12GR.ArmorPlus.client.gui.*;
-import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
-import sokratis12GR.ArmorPlus.compat.ICompatibility;
-import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
-import sokratis12GR.ArmorPlus.registry.*;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.resources.GlobalEventsArmorPlus;
-import sokratis12GR.ArmorPlus.tileentity.TileEntityArmorForge;
-import sokratis12GR.ArmorPlus.util.ARPAchievements;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.armors.origin.*;
+import sokratis12gr.armorplus.armors.reinforced.RCArmor;
+import sokratis12gr.armorplus.armors.reinforced.RDArmor;
+import sokratis12gr.armorplus.armors.reinforced.RGArmor;
+import sokratis12gr.armorplus.armors.reinforced.RIArmor;
+import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
+import sokratis12gr.armorplus.armors.special.GuardianArmor;
+import sokratis12gr.armorplus.armors.special.SuperStarArmor;
+import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
+import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
+import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.*;
+import sokratis12gr.armorplus.armors.v2.ElectricalArmor;
+import sokratis12gr.armorplus.armors.v2.SteelArmor;
+import sokratis12gr.armorplus.client.gui.*;
+import sokratis12gr.armorplus.commands.CommandArmorPlus;
+import sokratis12gr.armorplus.compat.ICompatibility;
+import sokratis12gr.armorplus.container.ContainerArmorForge;
+import sokratis12gr.armorplus.registry.*;
+import sokratis12gr.armorplus.resources.ConfigHandler;
+import sokratis12gr.armorplus.resources.GlobalEventsArmorPlus;
+import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
+import sokratis12gr.armorplus.util.ARPAchievements;
+import sokratis12gr.armorplus.util.TextHelper;
 
 import java.io.File;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
-import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMORPLUS;
-import static sokratis12GR.ArmorPlus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
+import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
+import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
-/*import sokratis12GR.ArmorPlus.resources.ClientEvents;*/
+/*import sokratis12gr.armorplus.resources.ClientEvents;*/
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4,1.10)", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.0.6.1";
+    public static final String VERSION = "1.9.4-4.1.7.1";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
-    public static final String CLIENTPROXY = "sokratis12GR.ArmorPlus.ClientProxy";
-    public static final String COMMONPROXY = "sokratis12GR.ArmorPlus.CommonProxy";
-    public static final String GUIFACTORY = "sokratis12GR.ArmorPlus.client.gui.ConfigGuiFactory";
+    public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
+    public static final String COMMONPROXY = "sokratis12gr.armorplus.CommonProxy";
+    public static final String GUIFACTORY = "sokratis12gr.armorplus.client.gui.ConfigGuiFactory";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
@@ -71,21 +71,11 @@ public class ArmorPlus {
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new CreativeTabArmorPlusItems(ArmorPlus.MODID + ".creativeTabItems");
     public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new CreativeTabArmorPlusBlocks(ArmorPlus.MODID + ".creativeTabBlocks");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
-    public GuiHandler GuiHandler = new GuiHandler();
-
     @Instance(MODID)
     public static ArmorPlus instance;
     public static File configDir;
     public static File textureDir;
-
-    public static File getConfigDir() {
-        return configDir;
-    }
-
-    public static File getloggerDir() {
-        return textureDir;
-    }
-
+    public GuiHandler GuiHandler = new GuiHandler();
     CoalArmor COAL_ARMOR = new CoalArmor();
     LapisArmor LAPIS_ARMOR = new LapisArmor();
     RedstoneArmor REDSTONE_ARMOR = new RedstoneArmor();
@@ -102,13 +92,11 @@ public class ArmorPlus {
     RCArmor RC_ARMOR = new RCArmor();
     ChickenArmor CHICKEN_ARMOR = new ChickenArmor();
     SlimeArmor SLIME_ARMOR = new SlimeArmor();
-
     /**
      * v2
      */
-    MetalArmor METAL_ARMOR = new MetalArmor();
+    SteelArmor STEEL_ARMOR = new SteelArmor();
     ElectricalArmor ELECTRICAL_ARMOR = new ElectricalArmor();
-
     /**
      * Tinkers' Construct Armors
      */
@@ -117,6 +105,14 @@ public class ArmorPlus {
     ManyullynArmor MANYULLYN_ARMOR = new ManyullynArmor();
     PigIronArmor PIG_IRON_ARMOR = new PigIronArmor();
     KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
+
+    public static File getConfigDir() {
+        return configDir;
+    }
+
+    public static File getloggerDir() {
+        return textureDir;
+    }
     // player.getHealth()
 
     @SideOnly(Side.CLIENT)
@@ -146,7 +142,7 @@ public class ArmorPlus {
         SLIME_ARMOR.load(event);
 
         /** v2 */
-        METAL_ARMOR.load(event);
+        STEEL_ARMOR.load(event);
         ELECTRICAL_ARMOR.load(event);
 
         /** Tinkers' Construct Armors */
@@ -160,8 +156,11 @@ public class ArmorPlus {
         ModRecipes.init();
 
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
+        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
+        registerOre("oreSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
+        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+        registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
     }
 
@@ -191,7 +190,7 @@ public class ArmorPlus {
         SLIME_ARMOR.load(event);
 
         /** v2 */
-        METAL_ARMOR.load(event);
+        STEEL_ARMOR.load(event);
         ELECTRICAL_ARMOR.load(event);
 
         /** Tinkers' Construct Armors */
@@ -205,7 +204,7 @@ public class ArmorPlus {
         ModRecipes.init();
 
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        registerOre("ingotMetal", new ItemStack(ModItems.METAL_INGOT, 1));
+        registerOre("ingotMetal", new ItemStack(ModItems.STEEL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
     }
@@ -238,7 +237,7 @@ public class ArmorPlus {
         SLIME_ARMOR.instance = ArmorPlus.instance;
 
         /** v2 */
-        METAL_ARMOR.instance = ArmorPlus.instance;
+        STEEL_ARMOR.instance = ArmorPlus.instance;
         ELECTRICAL_ARMOR.instance = ArmorPlus.instance;
 
 
@@ -267,7 +266,7 @@ public class ArmorPlus {
         SLIME_ARMOR.preInit(event);
 
         /** v2 */
-        METAL_ARMOR.preInit(event);
+        STEEL_ARMOR.preInit(event);
         ELECTRICAL_ARMOR.preInit(event);
 
         /** Tinkers' Construct Armors */
@@ -280,7 +279,7 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        sokratis12GR.ArmorPlus.util.Logger.init(new File(configDir.getPath()));
+        sokratis12gr.armorplus.util.Logger.init(new File(configDir.getPath()));
         ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
         proxy.registerRenderers(this);
         proxy.registerWorldGenerators();

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.client.gui;
+package sokratis12gr.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -6,13 +6,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.io.IOException;
 
 /**
- * sokratis12GR.ArmorPlus.client.gui
+ * sokratis12gr.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/13/2016 6:42 PM.
  */
 public class GuiArmorPlusInfo extends GuiScreen {

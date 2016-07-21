@@ -1,17 +1,14 @@
-package sokratis12GR.ArmorPlus.registry;
+package sokratis12gr.armorplus.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.blocks.*;
-
-import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.blocks.*;
 
 /**
  * sokratis12GR.ArmorPlus.registry
@@ -21,14 +18,14 @@ public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
             COMPRESSED_OBSIDIAN,
-            ARMOR_FORGE, METAL_ORE, METAL_BLOCK, ELECTRICAL_BLOCK;
+            ARMOR_FORGE, STEEL_ORE, STEEL_BLOCK, ELECTRICAL_BLOCK;
 
     public static void init() {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
         ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
-        METAL_ORE = new MetalOre().setRegistryName("metal_ore");
-        METAL_BLOCK = new MetalBlock().setRegistryName("metal_block");
+        STEEL_ORE = new SteelOre().setRegistryName("metal_ore");
+        STEEL_BLOCK = new SteelBlock().setRegistryName("metal_block");
         ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
     }
 
@@ -36,8 +33,8 @@ public class ModBlocks {
         registerBlock(BLOCK_LAVA_CRYSTAL);
         registerBlock(COMPRESSED_OBSIDIAN);
         registerBlock(ARMOR_FORGE);
-        registerBlock(METAL_ORE);
-        registerBlock(METAL_BLOCK);
+        registerBlock(STEEL_ORE);
+        registerBlock(STEEL_BLOCK);
         registerBlock(ELECTRICAL_BLOCK);
     }
 
@@ -45,8 +42,8 @@ public class ModBlocks {
         registerRender(BLOCK_LAVA_CRYSTAL);
         registerRender(COMPRESSED_OBSIDIAN);
         registerRender(ARMOR_FORGE);
-        registerRender(METAL_ORE);
-        registerRender(METAL_BLOCK);
+        registerRender(STEEL_ORE);
+        registerRender(STEEL_BLOCK);
         registerRender(ELECTRICAL_BLOCK);
     }
 

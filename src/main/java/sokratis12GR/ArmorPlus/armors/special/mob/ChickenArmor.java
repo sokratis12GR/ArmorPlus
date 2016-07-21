@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors.special.mob;
+package sokratis12gr.armorplus.armors.special.mob;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.util.List;
 

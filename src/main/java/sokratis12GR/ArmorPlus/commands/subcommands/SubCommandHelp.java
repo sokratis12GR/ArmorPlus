@@ -1,7 +1,7 @@
-package sokratis12GR.ArmorPlus.commands.subcommands;
+package sokratis12gr.armorplus.commands.subcommands;
 
 /**
- * sokratis12GR.ArmorPlus.commands.subcommands
+ * sokratis12gr.armorplus.commands.subcommands
  * ArmorPlus created by sokratis12GR on 6/25/2016 9:59 AM.
  */
 
@@ -9,10 +9,10 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
-import sokratis12GR.ArmorPlus.commands.CommandArmorPlus;
-import sokratis12GR.ArmorPlus.commands.ISubCommand;
-import sokratis12GR.ArmorPlus.commands.SubCommandBase;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.commands.CommandArmorPlus;
+import sokratis12gr.armorplus.commands.ISubCommand;
+import sokratis12gr.armorplus.commands.SubCommandBase;
+import sokratis12gr.armorplus.util.TextHelper;
 
 public class SubCommandHelp extends SubCommandBase {
 

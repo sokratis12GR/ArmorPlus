@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api;
+package sokratis12gr.armorplus.api;
 
 /**
  * sokratis12GR.ArmorPlus

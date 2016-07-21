@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.resources;
+package sokratis12gr.armorplus.resources;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,21 +11,21 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.CobaltArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.KnightSlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.ManyullynArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.PigIronArmor;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.util.ARPAchievements;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.armors.origin.*;
+import sokratis12gr.armorplus.armors.special.GuardianArmor;
+import sokratis12gr.armorplus.armors.special.SuperStarArmor;
+import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
+import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
+import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.CobaltArmor;
+import sokratis12gr.armorplus.armors.tconstruct.KnightSlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.ManyullynArmor;
+import sokratis12gr.armorplus.armors.tconstruct.PigIronArmor;
+import sokratis12gr.armorplus.registry.ModBlocks;
+import sokratis12gr.armorplus.registry.ModItems;
+import sokratis12gr.armorplus.util.ARPAchievements;
+import sokratis12gr.armorplus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
 
@@ -172,7 +172,7 @@ public class GlobalEventsArmorPlus {
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
             }
         }
-        /*if (head != null && head.getItem() == MetalArmor.helmet && chest != null && chest.getItem() == MetalArmor.chestplate && legs != null && legs.getItem() == MetalArmor.legs && feet != null && feet.getItem() == MetalArmor.boots) {
+        /*if (head != null && head.getItem() == SteelArmor.helmet && chest != null && chest.getItem() == SteelArmor.chestplate && legs != null && legs.getItem() == SteelArmor.legs && feet != null && feet.getItem() == SteelArmor.boots) {
             /**  entity.replaceItemInInventory(100 + EntityEquipmentSlot.HEAD.getIndex(), new ItemStack(ElectricalArmor.helmet, 1));
              entity.replaceItemInInventory(100 + EntityEquipmentSlot.CHEST.getIndex(), new ItemStack(ElectricalArmor.chestplate, 1));
              entity.replaceItemInInventory(100 + EntityEquipmentSlot.LEGS.getIndex(), new ItemStack(ElectricalArmor.legs, 1));

@@ -1,18 +1,17 @@
-package sokratis12GR.ArmorPlus.client.gui;
+package sokratis12gr.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.io.IOException;
 
 /**
- * sokratis12GR.ArmorPlus.client.gui
+ * sokratis12gr.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/13/2016 6:42 PM.
  */
 public class GuiArmorPlus extends GuiScreen {
@@ -37,24 +36,24 @@ public class GuiArmorPlus extends GuiScreen {
 
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Book (WIP)").getFormattedText(), guiX + 10, guiY + 5, 0x000000);
         fontRendererObj.drawString(new TextComponentString("Armor Effects").getFormattedText(), guiX + 10, guiY + 15, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Coal Armor"  + " - Night Vision").getFormattedText(), guiX + 10, guiY + 30, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Lapis Armor"  + " - Water Breathing").getFormattedText(), guiX + 10, guiY + 40, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Redstone Armor"  + " - Speed 2").getFormattedText(), guiX + 10, guiY + 50, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Emerald Armor"  + " - Haste 2").getFormattedText(), guiX + 10, guiY + 60, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Obsidian Armor"  + " - Resistance").getFormattedText(), guiX + 10, guiY + 70, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Lava Armor"  + " - Resistance & Fire Resistance").getFormattedText(), guiX + 11, guiY + 80, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Guardian Armor"  + " - Water Breathing (Full Set)").getFormattedText(), guiX + 11, guiY + 90, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Super Star Armor"  + " - Regeneration 2").getFormattedText(), guiX + 10, guiY + 100, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Ender Dragon Armor"  + " - Flight (Full Set)").getFormattedText(), guiX + 10, guiY + 110, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "The Ulitmate Armor"  + " - Water Breathing,").getFormattedText(), guiX + 10, guiY + 120, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Night Vision, Regeneration 2 & Flight (Full Set)").getFormattedText(), guiX + 10, guiY + 130, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Ardite Armor"  + " - Fire Resistance (Full Set)").getFormattedText(), guiX + 10, guiY + 140, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Cobalt Armor"  + " - Haste 3 (Full Set)").getFormattedText(), guiX + 10, guiY + 150, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Manyullyn Armor"  + " - Strength 2 (Full Set)").getFormattedText(), guiX + 10, guiY + 160, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Pig Iron Armor"  + " - Saturation (Full Set)").getFormattedText(), guiX + 10, guiY + 170, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Knight Slime Armor"  + " - Haste 2 (Full Set)").getFormattedText(), guiX + 10, guiY + 180, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Chicken Armor"  + " - Speed 5 (Full Set)").getFormattedText(), guiX + 10, guiY + 190, 0x000000);
-        fontRendererObj.drawString(new TextComponentString( "Slime Armor"  + " - Jump Boost 3 (Full Set)").getFormattedText(), guiX + 10, guiY + 200, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Coal Armor" + " - Night Vision").getFormattedText(), guiX + 10, guiY + 30, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Lapis Armor" + " - Water Breathing").getFormattedText(), guiX + 10, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Redstone Armor" + " - Speed 2").getFormattedText(), guiX + 10, guiY + 50, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Emerald Armor" + " - Haste 2").getFormattedText(), guiX + 10, guiY + 60, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Obsidian Armor" + " - Resistance").getFormattedText(), guiX + 10, guiY + 70, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Lava Armor" + " - Resistance & Fire Resistance").getFormattedText(), guiX + 11, guiY + 80, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Guardian Armor" + " - Water Breathing (Full Set)").getFormattedText(), guiX + 11, guiY + 90, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Super Star Armor" + " - Regeneration 2").getFormattedText(), guiX + 10, guiY + 100, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Ender Dragon Armor" + " - Flight (Full Set)").getFormattedText(), guiX + 10, guiY + 110, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("The Ulitmate Armor" + " - Water Breathing,").getFormattedText(), guiX + 10, guiY + 120, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Night Vision, Regeneration 2 & Flight (Full Set)").getFormattedText(), guiX + 10, guiY + 130, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Ardite Armor" + " - Fire Resistance (Full Set)").getFormattedText(), guiX + 10, guiY + 140, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Cobalt Armor" + " - Haste 3 (Full Set)").getFormattedText(), guiX + 10, guiY + 150, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Manyullyn Armor" + " - Strength 2 (Full Set)").getFormattedText(), guiX + 10, guiY + 160, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Pig Iron Armor" + " - Saturation (Full Set)").getFormattedText(), guiX + 10, guiY + 170, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Knight Slime Armor" + " - Haste 2 (Full Set)").getFormattedText(), guiX + 10, guiY + 180, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Chicken Armor" + " - Speed 5 (Full Set)").getFormattedText(), guiX + 10, guiY + 190, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Slime Armor" + " - Jump Boost 3 (Full Set)").getFormattedText(), guiX + 10, guiY + 200, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors.tconstruct;
+package sokratis12gr.armorplus.armors.tconstruct;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.util.List;
 
@@ -25,40 +25,6 @@ public class PigIronArmor {
     public static Item chestplate;
     public static Item legs;
     public static Item boots;
-    public Object instance;
-
-    public void load(FMLInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:PigIronHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:PigIronChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:PigIronLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:PigIronBoots", "inventory"));
-        }
-        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-    }
-
-    public void preInit(FMLPreInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:PigIronHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:PigIronChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:PigIronLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:PigIronBoots", "inventory"));
-        }
-    }
-
-    public void registerRenderers() {
-    }
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("PIGIRONARMOR", ArmorPlus.MODID + ":" + "PigIronArmor", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
@@ -119,5 +85,40 @@ public class PigIronArmor {
         GameRegistry.registerItem(chestplate, "pig_iron_chestplate");
         GameRegistry.registerItem(legs, "pig_iron_leggings");
         GameRegistry.registerItem(boots, "pig_iron_boots");
+    }
+
+    public Object instance;
+
+    public void load(FMLInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:PigIronHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:PigIronChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:PigIronLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:PigIronBoots", "inventory"));
+        }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    public void preInit(FMLPreInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:PigIronHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:PigIronChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:PigIronLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:PigIronBoots", "inventory"));
+        }
+    }
+
+    public void registerRenderers() {
     }
 }

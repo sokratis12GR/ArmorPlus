@@ -1,12 +1,12 @@
-package sokratis12GR.ArmorPlus.client.gui;
+package sokratis12gr.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.resources.ConfigHandler;
+import sokratis12gr.armorplus.util.TextHelper;
 
 import java.util.ArrayList;
 import java.util.List;

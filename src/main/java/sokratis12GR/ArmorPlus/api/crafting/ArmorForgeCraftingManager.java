@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api.crafting;
+package sokratis12gr.armorplus.api.crafting;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -8,23 +8,23 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.armors.v2.ElectricalArmor;
-import sokratis12GR.ArmorPlus.armors.v2.MetalArmor;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
+import sokratis12gr.armorplus.armors.origin.*;
+import sokratis12gr.armorplus.armors.reinforced.RCArmor;
+import sokratis12gr.armorplus.armors.reinforced.RDArmor;
+import sokratis12gr.armorplus.armors.reinforced.RGArmor;
+import sokratis12gr.armorplus.armors.reinforced.RIArmor;
+import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
+import sokratis12gr.armorplus.armors.special.GuardianArmor;
+import sokratis12gr.armorplus.armors.special.SuperStarArmor;
+import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
+import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
+import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.*;
+import sokratis12gr.armorplus.armors.v2.ElectricalArmor;
+import sokratis12gr.armorplus.armors.v2.SteelArmor;
+import sokratis12gr.armorplus.registry.ModBlocks;
+import sokratis12gr.armorplus.registry.ModItems;
+import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * sokratis12GR.ArmorPlus.api.crafting
+ * sokratis12gr.armorplus.api.crafting
  * ArmorPlus created by sokratis12GR on 6/19/2016 12:29PM.
  */
 public class ArmorForgeCraftingManager {
@@ -44,16 +44,6 @@ public class ArmorForgeCraftingManager {
      */
     private static final ArmorForgeCraftingManager INSTANCE = new ArmorForgeCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
-
-    /**
-     * Returns the
-     * static instance of
-     * this class
-     */
-    public static ArmorForgeCraftingManager getInstance() {
-        // The static instance of this class
-        return INSTANCE;
-    }
 
     private ArmorForgeCraftingManager() {
         // ===================================== Origin Armors =====================================
@@ -392,23 +382,23 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(PigIronArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
         }
         // ===================================== v2 Armors =====================================
-        this.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 1), ModItems.METAL_INGOT, Items.REDSTONE, Items.GLOWSTONE_DUST);
+        this.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 1), ModItems.STEEL_INGOT, Items.REDSTONE, Items.GLOWSTONE_DUST);
         /** Metal Armor */
         if (ConfigHandler.recipes == 0) {
-            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModItems.METAL_INGOT);
-            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
-            this.addRecipe(new ItemStack(MetalArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.METAL_INGOT);
-            this.addRecipe(new ItemStack(MetalArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
-            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModItems.METAL_INGOT);
-            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModItems.METAL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
         }
         if (ConfigHandler.recipes == 1) {
-            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModBlocks.METAL_BLOCK);
-            this.addRecipe(new ItemStack(MetalArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModBlocks.METAL_BLOCK);
-            this.addRecipe(new ItemStack(MetalArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.METAL_BLOCK);
-            this.addRecipe(new ItemStack(MetalArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.METAL_BLOCK);
-            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.METAL_BLOCK);
-            this.addRecipe(new ItemStack(MetalArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.METAL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
         }
         /** Electrical Armor */
         if (ConfigHandler.recipes == 0) {
@@ -438,6 +428,16 @@ public class ArmorForgeCraftingManager {
                 return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
             }
         });
+    }
+
+    /**
+     * Returns the
+     * static instance of
+     * this class
+     */
+    public static ArmorForgeCraftingManager getInstance() {
+        // The static instance of this class
+        return INSTANCE;
     }
 
     /**

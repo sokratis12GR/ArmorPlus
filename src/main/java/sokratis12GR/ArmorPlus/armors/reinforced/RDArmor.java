@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors.reinforced;
+package sokratis12gr.armorplus.armors.reinforced;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 public class RDArmor {
 
@@ -23,40 +23,6 @@ public class RDArmor {
     public static Item chestplate;
     public static Item legs;
     public static Item boots;
-    public Object instance;
-
-    public void load(FMLInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:RDHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:RDChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:RDLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:RDBoots", "inventory"));
-        }
-        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-    }
-
-    public void preInit(FMLPreInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:RDHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:RDChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:RDLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:RDBoots", "inventory"));
-        }
-    }
-
-    public void registerRenderers() {
-    }
 
     static {
 
@@ -109,5 +75,40 @@ public class RDArmor {
         GameRegistry.registerItem(legs, "reinforced_diamond_leggings");
         GameRegistry.registerItem(boots, "reinforced_diamond_boots");
 
+    }
+
+    public Object instance;
+
+    public void load(FMLInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:RDHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:RDChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:RDLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:RDBoots", "inventory"));
+        }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    public void preInit(FMLPreInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:RDHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:RDChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:RDLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:RDBoots", "inventory"));
+        }
+    }
+
+    public void registerRenderers() {
     }
 }

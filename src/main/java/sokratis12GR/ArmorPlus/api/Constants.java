@@ -1,6 +1,6 @@
-package sokratis12GR.ArmorPlus.api;
+package sokratis12gr.armorplus.api;
 
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 /**
  * sokratis12GR.ArmorPlus.api

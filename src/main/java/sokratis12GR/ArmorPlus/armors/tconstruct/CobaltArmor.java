@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.armors.tconstruct;
+package sokratis12gr.armorplus.armors.tconstruct;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 import java.util.List;
 
@@ -25,40 +25,6 @@ public class CobaltArmor {
     public static Item chestplate;
     public static Item legs;
     public static Item boots;
-    public Object instance;
-
-    public void load(FMLInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
-        }
-        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
-    }
-
-    public void preInit(FMLPreInitializationEvent event) {
-        if (event.getSide() == Side.CLIENT) {
-            ModelLoader.setCustomModelResourceLocation(helmet, 0,
-                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
-                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(legs, 0,
-                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(boots, 0,
-                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
-        }
-    }
-
-    public void registerRenderers() {
-    }
 
     static {
         ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("COBALTARMOR", ArmorPlus.MODID + ":" + "CobaltArmor", 44, new int[]
@@ -125,5 +91,40 @@ public class CobaltArmor {
         GameRegistry.registerItem(chestplate, "cobalt_chestplate");
         GameRegistry.registerItem(legs, "cobalt_leggings");
         GameRegistry.registerItem(boots, "cobalt_boots");
+    }
+
+    public Object instance;
+
+    public void load(FMLInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
+        }
+        helmet.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        chestplate.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        legs.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        boots.setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    public void preInit(FMLPreInitializationEvent event) {
+        if (event.getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(helmet, 0,
+                    new ModelResourceLocation("armorplus:CobaltHelmet", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(chestplate, 0,
+                    new ModelResourceLocation("armorplus:CobaltChestplate", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(legs, 0,
+                    new ModelResourceLocation("armorplus:CobaltLeggings", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(boots, 0,
+                    new ModelResourceLocation("armorplus:CobaltBoots", "inventory"));
+        }
+    }
+
+    public void registerRenderers() {
     }
 }

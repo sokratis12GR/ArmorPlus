@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.registry;
+package sokratis12gr.armorplus.registry;
 
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;

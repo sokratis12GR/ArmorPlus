@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.tileentity;
+package sokratis12gr.armorplus.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

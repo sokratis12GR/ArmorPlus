@@ -1,12 +1,12 @@
-package sokratis12GR.ArmorPlus.compat.jei.armorforge;
+package sokratis12gr.armorplus.compat.jei.armorforge;
 
 /**
- * sokratis12GR.ArmorPlus.compat.jei
+ * sokratis12gr.armorplus.compat.jei
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:35 PM.
  */
 
-import sokratis12GR.ArmorPlus.api.recipe.ArmorForgeRecipe;
-import sokratis12GR.ArmorPlus.api.registry.ArmorForgeRecipeRegistry;
+import sokratis12gr.armorplus.api.recipe.ArmorForgeRecipe;
+import sokratis12gr.armorplus.api.registry.ArmorForgeRecipeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;

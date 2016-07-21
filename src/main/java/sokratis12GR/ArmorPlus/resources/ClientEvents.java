@@ -1,4 +1,4 @@
-/*package sokratis12GR.ArmorPlus.resources;
+/*package sokratis12gr.armorplus.resources;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;

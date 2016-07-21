@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.items.books;
+package sokratis12gr.armorplus.items.books;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -12,8 +12,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.client.gui.GuiArmorPlusInfo;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.client.gui.GuiArmorPlusInfo;
 
 public class ArmorPlusInfoBook extends Item {
 

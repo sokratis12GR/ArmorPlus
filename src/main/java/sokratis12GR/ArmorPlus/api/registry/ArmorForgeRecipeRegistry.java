@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api.registry;
+package sokratis12gr.armorplus.api.registry;
 
 /**
  * sokratis12GR.ArmorPlus.api.registry
@@ -8,7 +8,7 @@ package sokratis12GR.ArmorPlus.api.registry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sokratis12GR.ArmorPlus.api.recipe.ArmorForgeRecipe;
+import sokratis12gr.armorplus.api.recipe.ArmorForgeRecipe;
 
 import java.util.ArrayList;
 import java.util.List;

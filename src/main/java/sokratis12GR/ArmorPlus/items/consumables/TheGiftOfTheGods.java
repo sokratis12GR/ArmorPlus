@@ -1,7 +1,7 @@
-package sokratis12GR.ArmorPlus.items.consumables;
+package sokratis12gr.armorplus.items.consumables;
 
 /**
- * sokratis12GR.ArmorPlus.items
+ * sokratis12gr.armorplus.items
  * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
  */
 
@@ -20,14 +20,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.resources.ConfigHandler;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static sokratis12GR.ArmorPlus.resources.ConfigHandler.*;
+import static sokratis12gr.armorplus.resources.ConfigHandler.*;
 
 public class TheGiftOfTheGods extends Item {
 

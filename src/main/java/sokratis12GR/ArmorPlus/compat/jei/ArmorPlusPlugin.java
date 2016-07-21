@@ -1,23 +1,21 @@
-package sokratis12GR.ArmorPlus.compat.jei;
+package sokratis12gr.armorplus.compat.jei;
 
 /**
- * sokratis12GR.ArmorPlus.compat.jei
+ * sokratis12gr.armorplus.compat.jei
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:01 PM.
  */
 
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.ForgeModContainer;
-import net.minecraftforge.fluids.FluidRegistry;
-import sokratis12GR.ArmorPlus.api.Constants;
-import sokratis12GR.ArmorPlus.client.gui.GuiArmorForge;
-import sokratis12GR.ArmorPlus.compat.jei.armorforge.ArmorForgeRecipeCategory;
-import sokratis12GR.ArmorPlus.compat.jei.armorforge.ArmorForgeShapedRecipeHandler;
-import sokratis12GR.ArmorPlus.compat.jei.armorforge.ArmorForgeShapelessRecipeHandler;
-import sokratis12GR.ArmorPlus.container.ContainerArmorForge;
-import sokratis12GR.ArmorPlus.api.crafting.ArmorForgeCraftingManager;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
+import sokratis12gr.armorplus.api.Constants;
+import sokratis12gr.armorplus.client.gui.GuiArmorForge;
+import sokratis12gr.armorplus.compat.jei.armorforge.ArmorForgeRecipeCategory;
+import sokratis12gr.armorplus.compat.jei.armorforge.ArmorForgeShapedRecipeHandler;
+import sokratis12gr.armorplus.compat.jei.armorforge.ArmorForgeShapelessRecipeHandler;
+import sokratis12gr.armorplus.container.ContainerArmorForge;
+import sokratis12gr.armorplus.api.crafting.ArmorForgeCraftingManager;
+import sokratis12gr.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
 

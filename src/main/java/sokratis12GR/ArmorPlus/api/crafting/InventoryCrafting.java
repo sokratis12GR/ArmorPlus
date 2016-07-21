@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api.crafting;
+package sokratis12gr.armorplus.api.crafting;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

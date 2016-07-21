@@ -1,20 +1,16 @@
-package sokratis12GR.ArmorPlus.blocks;
+package sokratis12gr.armorplus.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.registry.ModBlocks;
-import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.registry.ModItems;
 
 import java.util.Random;
 
 /**
- * sokratis12GR.ArmorPlus.blocks
+ * sokratis12gr.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  */
 public class BlockLavaCrystal extends Block {

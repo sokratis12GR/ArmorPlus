@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.commands;
+package sokratis12gr.armorplus.commands;
 
 /**
  * sokratis12GR.ArmorPlus.commands

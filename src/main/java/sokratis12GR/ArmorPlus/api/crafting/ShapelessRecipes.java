@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.api.crafting;
+package sokratis12gr.armorplus.api.crafting;
 
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
@@ -12,11 +12,11 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:28 PM.
  */
 public class ShapelessRecipes implements IRecipe {
+    public final List<ItemStack> recipeItems;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
-    public final List<ItemStack> recipeItems;
 
     public ShapelessRecipes(ItemStack output, List<ItemStack> inputList) {
         this.recipeOutput = output;

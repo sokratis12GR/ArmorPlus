@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/MetalHelmet"
+    "layer0": "armorplus:items/SteelLeggings"
   }
 }
+

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.util;
+package sokratis12gr.armorplus.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -6,17 +6,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
-import sokratis12GR.ArmorPlus.ArmorPlus;
-import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.registry.ModItems;
+import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.armors.origin.*;
+import sokratis12gr.armorplus.armors.reinforced.RDArmor;
+import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
+import sokratis12gr.armorplus.armors.special.GuardianArmor;
+import sokratis12gr.armorplus.armors.special.SuperStarArmor;
+import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
+import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
+import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.*;
+import sokratis12gr.armorplus.registry.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +43,7 @@ public class ARPAchievements {
             CRAFT_PIG_IRON_ARMOR,
             CRAFT_KNIGHT_SLIME_ARMOR,
             WELCOME_TO_ARMORPLUS;
+    public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
 
     public static void init() {
         WELCOME_TO_ARMORPLUS = new AchievementARP("craftArmorForge", -2, -2, ModItems.ARMORPLUS_BOOK, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
@@ -72,6 +73,7 @@ public class ARPAchievements {
 
     public static class AchievementARP extends Achievement {
         public static List<Achievement> achievements = new ArrayList();
+        public ItemStack[] triggerItems;
 
         public AchievementARP(String name, int x, int y, ItemStack icon, Achievement parent) {
             super("achievement.armorplus." + name, "armorplus." + name, x, y, icon, parent);
@@ -87,8 +89,6 @@ public class ARPAchievements {
             this(name, x, y, new ItemStack(icon), parent);
         }
 
-        public ItemStack[] triggerItems;
-
         public AchievementARP setNormalCrafting(ItemStack... triggerItems) {
             this.triggerItems = triggerItems;
             normalCraftingAchievements.add(this);
@@ -96,6 +96,4 @@ public class ARPAchievements {
         }
 
     }
-
-    public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
 }

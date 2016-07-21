@@ -1,11 +1,11 @@
-package sokratis12GR.ArmorPlus.blocks;
+package sokratis12gr.armorplus.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import sokratis12GR.ArmorPlus.ArmorPlus;
+import sokratis12gr.armorplus.ArmorPlus;
 
 /**
- * sokratis12GR.ArmorPlus.blocks
+ * sokratis12gr.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  */
 public class ElectricalBlock extends Block {

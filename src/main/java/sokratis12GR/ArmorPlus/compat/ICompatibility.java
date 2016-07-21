@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.compat;
+package sokratis12gr.armorplus.compat;
 
 /**
  * sokratis12GR.ArmorPlus.compatibility.jei

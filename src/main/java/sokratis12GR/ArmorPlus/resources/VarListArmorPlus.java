@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.resources;
+package sokratis12gr.armorplus.resources;
 
 public class VarListArmorPlus {
 }

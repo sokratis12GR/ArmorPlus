@@ -1,4 +1,18 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{Bugs Fixed}
+* Not Fully Converted the Metal Armor to Steel Armor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.1.7.0
+{Some API Changes}
+{Some Source Code Changes}
+* sokratis12GR.ArmorPlus to sokratis12gr.armorplus
+{Features Changed}
+* Metal Ingot is now called Steel Ingot
+* Metal Ore is now called Steel Ore
+* Metal Block is now called Block of Steel
+* Metal Armor is now called Steel Armor
+* The Mod's Jar file is now called armorplus1.9.4-(major).(api).(minor).(patch)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-4.0.6.1
 {Bugs Fixed}
 * Crash when going to the Controls settings

@@ -1,4 +1,4 @@
-package sokratis12GR.ArmorPlus.commands;
+package sokratis12gr.armorplus.commands;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -6,10 +6,10 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandHelp;
-import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandInfo;
-import sokratis12GR.ArmorPlus.commands.subcommands.SubCommandWiki;
-import sokratis12GR.ArmorPlus.util.TextHelper;
+import sokratis12gr.armorplus.commands.subcommands.SubCommandHelp;
+import sokratis12gr.armorplus.commands.subcommands.SubCommandInfo;
+import sokratis12gr.armorplus.commands.subcommands.SubCommandWiki;
+import sokratis12gr.armorplus.util.TextHelper;
 
 import javax.annotation.Nullable;
 import java.util.*;

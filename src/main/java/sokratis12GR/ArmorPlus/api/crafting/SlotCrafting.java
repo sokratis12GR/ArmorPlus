@@ -1,37 +1,32 @@
-package sokratis12GR.ArmorPlus.api.crafting;
+package sokratis12gr.armorplus.api.crafting;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.AchievementList;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import sokratis12GR.ArmorPlus.armors.origin.*;
-import sokratis12GR.ArmorPlus.armors.reinforced.RCArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RDArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RGArmor;
-import sokratis12GR.ArmorPlus.armors.reinforced.RIArmor;
-import sokratis12GR.ArmorPlus.armors.special.EnderDragonArmor;
-import sokratis12GR.ArmorPlus.armors.special.GuardianArmor;
-import sokratis12GR.ArmorPlus.armors.special.SuperStarArmor;
-import sokratis12GR.ArmorPlus.armors.special.TheUltimateArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.ChickenArmor;
-import sokratis12GR.ArmorPlus.armors.special.mob.SlimeArmor;
-import sokratis12GR.ArmorPlus.armors.tconstruct.*;
-import sokratis12GR.ArmorPlus.util.ARPAchievements;
+import sokratis12gr.armorplus.armors.origin.*;
+import sokratis12gr.armorplus.armors.reinforced.RCArmor;
+import sokratis12gr.armorplus.armors.reinforced.RDArmor;
+import sokratis12gr.armorplus.armors.reinforced.RGArmor;
+import sokratis12gr.armorplus.armors.reinforced.RIArmor;
+import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
+import sokratis12gr.armorplus.armors.special.GuardianArmor;
+import sokratis12gr.armorplus.armors.special.SuperStarArmor;
+import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
+import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
+import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
+import sokratis12gr.armorplus.armors.tconstruct.*;
+import sokratis12gr.armorplus.util.ARPAchievements;
 
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.api
+ * sokratis12gr.armorplus.api
  * ArmorPlus created by sokratis12GR on 6/21/2016 3:55 PM.
  */
 public class SlotCrafting extends Slot {
-    public PlayerEvent.ItemCraftedEvent event;
-
     /**
      * The craft matrix inventory linked to this result slot.
      */
@@ -40,6 +35,7 @@ public class SlotCrafting extends Slot {
      * The player that is using the GUI where this slot resides.
      */
     private final EntityPlayer thePlayer;
+    public PlayerEvent.ItemCraftedEvent event;
     /**
      * The number of items that have been crafted so far. Gets passed to ItemStack.onCrafting before being reset.
      */
