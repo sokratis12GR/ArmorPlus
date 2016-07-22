@@ -1,0 +1,127 @@
+#el_GR.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus Διαμόρφωση
+
+#CoalArmor
+item.CoalHelmet.name=Κάρβουνο Κράνος
+item.CoalChestplate.name=Κάρβουνο Θώρακας
+item.CoalLeggings.name=Κάρβουνο Περικνημίδες
+item.CoalBoots.name=Κάρβουνο Μπότες
+
+#LapisArmor
+item.LapisHelmet.name=Λάπις Κράνος
+item.LapisChestplate.name=Λάπις Θώρακας
+item.LapisLeggings.name=Λάπις Περικνημίδες
+item.LapisBoots.name=Λάπις Μπότες
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Κοκκινόπετρα Κράνος
+item.RedstoneChestplate.name=Κοκκινόπετρα Θώρακας
+item.RedstoneLeggings.name=Κοκκινόπετρα Περικνημίδες
+item.RedstoneBoots.name=Κοκκινόπετρα Μπότες
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Σμαράγδι Κράνος
+item.EmeraldChestplate.name=Σμαράγδι Θώρακας
+item.EmeraldLeggings.name=Σμαράγδι Περικνημίδες
+item.EmeraldBoots.name=Σμαράγδι Μπότες
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Οψιάνος Κράνος
+item.ObsidianChestplate.name=Οψιάνος Θώρακας
+item.ObsidianLeggings.name=Οψιάνος Περικνημίδες
+item.ObsidianBoots.name=Οψιάνος Μπότες
+
+#LavaArmor
+item.LavaHelmet.name=Λαβα Κράνος
+item.LavaChestplate.name=Lava Θώρακας
+item.LavaLeggings.name=Lava Περικνημίδες
+item.LavaBoots.name=Lava Μπότες
+
+#SuperStarArmor
+item.SuperStarHelmet.name=Σούπερ Άστρο Κράνος
+item.SuperStarChestplate.name=Σούπερ Άστρο Θώρακας
+item.SuperStarLeggings.name=Σούπερ Άστρο Περικνημίδες
+item.SuperStarBoots.name=Σούπερ Άστρο Μπότες
+
+#EnderDragon Armor
+item.EnderDragonScale.name=Ender Δράκος Λέπι
+item.EnderDragonHelmet.name=Ender Δράκος Κράνος
+item.EnderDragonChestplate.name=Ender Δράκος Θώρακας
+item.EnderDragonLeggings.name=Ender Δράκος Περικνημίδες
+item.EnderDragonBoots.name=Ender Δράκος Μπότες
+
+#Guardian Armor
+item.GuardianHelmet.name=Φύλακας Κράνος
+item.GuardianChestplate.name=Φύλακας Θώρακας
+item.GuardianLeggings.name=Φύλακας Περικνημίδες
+item.GuardianBoots.name=Φύλακας Μπότες
+
+#TheUltimateArmor
+item.TheUltimateHelmet.name=Tο Απόλυτo Κράνος
+item.TheUltimateChestplate.name=Tο Απόλυτo Θώρακας
+item.TheUltimateLeggings.name=Tο Απόλυτo Περικνημίδες
+item.TheUltimateBoots.name=Tο Απόλυτo Μπότες
+
+#Chainmail
+item.Chainmail.name=Αλυσίδα
+
+#ReinforcingMaterial
+item.ReinforcingMaterial.name=Ενισχυτικό Υλικό
+
+#ReinforcedIronArmor
+item.RIHelmet.name=Ενισχυτικό Σιδερένιο Κράνος
+item.RIChestplate.name=Ενισχυτικός Σιδερένιος Θώρακας
+item.RILeggings.name=Ενισχυτικες Σιδερένιες Περικνημίδες
+item.RIBoots.name=Ενισχυτικες Σιδερένιες Μπότες
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=Ενισχυτικό Χρυσό Κράνος
+item.RGChestplate.name=Ενισχυτικός Χρυσός Θώρακας
+item.RGLeggings.name=Ενισχυτικες Χρυσες Περικνημίδες
+item.RGBoots.name=Ενισχυτικες Χρυσες Μπότες
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=Ενισχυτικό Διαμαντένιο Κράνος
+item.RDChestplate.name=Ενισχυτικός Διαμαντένιος Θώρακας
+item.RDLeggings.name=Ενισχυτικες Διαμαντένιες Περικνημίδες
+item.RDBoots.name=Ενισχυτικες Διαμαντένιες Μπότες
+
+#ReinforcedChainArmor
+item.RCHelmet.name=Ενισχυτικό αλυσιδωτο Helmet
+item.RCChestplate.name=Ενισχυτικός αλυσιδωτος Chestplate
+item.RCLeggings.name=Ενισχυτικες αλυσιδωτες Leggings
+item.RCBoots.name=Ενισχυτικες αλυσιδωτες Boots
+
+#Achievements
+achievement.armorplus.craftCoalArmor=Όραμα όπως μια νυχτερίδα!
+achievement.armorplus.craftCoalArmor.desc=Δημιουργήσε ένα κομμάτι Κάρβουνο πανοπλία
+achievement.armorplus.craftLapisArmor=Ποτέ μην πνίξει πάλι!
+achievement.armorplus.craftLapisArmor.desc=Δημιουργήσει ένα κομμάτι Λάπις πανοπλία
+achievement.armorplus.craftRedstoneArmor=Ταχύς!
+achievement.armorplus.craftRedstoneArmor.desc=Δημιουργήσει ένα κομμάτι Κοκκινόπετρα πανοπλία
+achievement.armorplus.craftEmeraldArmor=Κούνια Κούνια Ταχύτερα!
+achievement.armorplus.craftEmeraldArmor.desc=Δημιουργήσει ένα κομμάτι Emerald πανοπλία
+achievement.armorplus.craftObsidianArmor=Άφθαρτος!
+achievement.armorplus.craftObsidianArmor.desc=Δημιουργήσει ένα κομμάτι Οψιανού πανοπλία
+achievement.armorplus.craftLavaArmor=Η εξουδετέρωσαν!
+achievement.armorplus.craftLavaArmor.desc=Δημιουργήσει ένα κομμάτι λάβας πανοπλία
+achievement.armorplus.craftSuperStarArmor=Θεϊκός!
+achievement.armorplus.craftSuperStarArmor.desc=Δημιουργήσει ένα κομμάτι Σούπερ Άστρο πανοπλία
+achievement.armorplus.craftEnderDragonArmor=Η Δύναμη του Ender Δράκου!
+achievement.armorplus.craftEnderDragonArmor.desc=Σκότωσε τον Ender Δράκο και δημιουργήσε ένα κομμάτι Ender Δράκος πανοπλία
+achievement.armorplus.craftGuardianArmor=Γεμάτος αγκάθια!
+achievement.armorplus.craftGuardianArmor.desc=Δημιουργήσει ένα κομμάτι Φύλακας πανοπλία
+achievement.armorplus.craftTheUltimateArmor=Η απόλυτη εξουσία!
+achievement.armorplus.craftTheUltimateArmor.desc=Δημιουργήσει ένα κομμάτι το Απόλυτo πανοπλία
+
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

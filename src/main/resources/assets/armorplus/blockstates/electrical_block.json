@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": [
+			{ "model": "armorplus:ElectricalBlock" },
+			{ "model": "armorplus:ElectricalBlock", "y": 90 },
+			{ "model": "armorplus:ElectricalBlock", "y": 180 },
+			{ "model": "armorplus:ElectricalBlock", "y": 270 }
+		]
+	}
+}

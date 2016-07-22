@@ -1,0 +1,179 @@
+#fr_FR.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+itemGroup.armorplus.creativeTabItems=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus Configuration
+
+#CoalArmor
+item.CoalHelmet.name=Casque en Charbon
+item.CoalChestplate.name=Plastron en Charbon
+item.CoalLeggings.name=Jambières en Charbon
+item.CoalBoots.name=Bottes en Charbon
+
+#LapisArmor
+item.LapisHelmet.name=Casque en Lapis
+item.LapisChestplate.name=Plastron en Lapis
+item.LapisLeggings.name=Jambières en Lapis
+item.LapisBoots.name=Bottes en Lapis
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Casque en Redstone
+item.RedstoneChestplate.name=Plastron en Redstone
+item.RedstoneLeggings.name=Jambières en Redstone
+item.RedstoneBoots.name=Bottes en Redstone
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Casque en Émeraude
+item.EmeraldChestplate.name=Plastron en Émeraude
+item.EmeraldLeggings.name=Jambières en Émeraude
+item.EmeraldBoots.name=Bottes en Émeraude
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Casque en Obsidienne
+item.ObsidianChestplate.name=Plastron en Obsidienne
+item.ObsidianLeggings.name=Jambières en Obsidienne
+item.ObsidianBoots.name=Bottes en Obsidienne
+
+#LavaArmor
+item.LavaHelmet.name=Casque en Lave
+item.LavaChestplate.name=Plastron en Lave
+item.LavaLeggings.name=Jambières en Lave
+item.LavaBoots.name=Bottes en Lave
+
+#SuperStarArmor
+item.SuperStarHelmet.name=Casque en Étoile Formidable
+item.SuperStarChestplate.name=Plastron en Étoile Formidable
+item.SuperStarLeggings.name=Jambières en Étoile Formidable
+item.SuperStarBoots.name=Bottes en Étoile Formidable
+
+#EnderDragonArmor
+item.EnderDragonHelmet.name=Casque du Dragon de l'Ender
+item.EnderDragonChestplate.name=Plastron du Dragon de l'Ender
+item.EnderDragonLeggings.name=Jambières du Dragon de l'Ender
+item.EnderDragonBoots.name=Bottes du Dragon de l'Ender
+
+#GuardianArmor
+item.GuardianHelmet.name=Casque du Guardien
+item.GuardianChestplate.name=Plastron du Guardien
+item.GuardianLeggings.name=Jambières du Guardien
+item.GuardianBoots.name=Bottes du Guardien
+
+#TheUltimateArmor
+item.TheUltimateHelmet.name=La Casque Ultime
+item.TheUltimateChestplate.name=Le Platron Ultime
+item.TheUltimateLeggings.name=Les Jambières Ultimes
+item.TheUltimateBoots.name=Les Bottes Ultimes
+
+#ReinforcedIronArmor
+item.RIHelmet.name=Casque en Fer Renforcée
+item.RIChestplate.name=Plastron en Fer Renforcé
+item.RILeggings.name=Jambières en Fer Renforcées
+item.RIBoots.name=Bottes en Fer Renforcées
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=Casque en Or Renforcée
+item.RGChestplate.name=Plastron en Or Renforcée
+item.RGLeggings.name=Jambière en Or Renforcées
+item.RGBoots.name=Bottes en Or Renforcées
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=Casque en Diamant Renforcée
+item.RDChestplate.name=Plastron en Diamant Renforcé
+item.RDLeggings.name=Jambières en Diamant Renforcées
+item.RDBoots.name=Bottes en Diamant Renforcées
+
+#ReinforcedChainArmor
+item.RCHelmet.name=Casque de Mailles Renforcée
+item.RCChestplate.name=Cottes de Mailles Renforcées
+item.RCLeggings.name=Jambières de Mailles Renforcées
+item.RCBoots.name=Bottes de Mailles Renforcées
+
+#CustomArmor
+item.CustomHelmet.name=Casque Personnalisée (WIP)
+item.CustomChestplate.name=Plastron Personnalisé (WIP)
+item.CustomLeggings.name=Jambières Personnalisées (WIP)
+item.CustomBoots.name=Bottes Personnalisées (WIP)
+
+#CobaltArmor
+item.CobaltHelmet.name=Casque en Cobalt
+item.CobaltChestplate.name=Plastron en Cobalt
+item.CobaltLeggings.name=Jambières en Cobalt
+item.CobaltBoots.name=Bottes en Cobalt
+
+#ArditeArmor
+item.ArditeHelmet.name=Casque en Ardite
+item.ArditeChestplate.name=Plastron en Ardite
+item.ArditeLeggings.name=Jambières en Ardite
+item.ArditeBoots.name=Bottes en Ardite
+
+#PigIronArmor
+item.PigIronHelmet.name=Casque en Saumon de Fonte
+item.PigIronChestplate.name=Plastron en Saumon de Fonte
+item.PigIronLeggings.name=Jambières en Saumon de Fonte
+item.PigIronBoots.name=Bottes en Saumon de Fonte
+
+#KnightSlimeArmor
+item.KnightSlimeHelmet.name=Casque du Chevalier des Slimes
+item.KnightSlimeChestplate.name=Platron du Chevalier des Slimes
+item.KnightSlimeLeggings.name=Jambières du Chevalier des Slimes
+item.KnightSlimeBoots.name=Botters du Chevalier des Slimes
+
+#ManyullynArmor
+item.ManyullymHelmet.name=Casque en Manyullyn
+item.ManyullymChestplate.name=Plastron en Manyullyn
+item.ManyullymLeggings.name=Jambières en Manyullyn
+item.ManyullymBoots.name=Bottes en Manyullyn
+
+#Items
+item.Chainmail.name=Mailles
+item.ReinforcingMaterial.name=Matériel de Renforcement
+
+#Special Items
+item.WitherBone.name=Os du Wither
+item.TheUltimateMaterial.name=Le Matériel Ultime
+item.EnderDragonScale.name=Écaille du Dragon de l'Ender
+item.GuardianScale.name=Écaille du Guardien
+
+#Achievements
+achievement.armorplus.craftCoalArmor=La Vision d'une Chauve-Souris!
+achievement.armorplus.craftCoalArmor.desc=Créez une pièce d'armure en Charbon
+achievement.armorplus.craftLapisArmor=Plus noyer encore!
+achievement.armorplus.craftLapisArmor.desc=Créez une pièce d'armure en Lapis
+achievement.armorplus.craftRedstoneArmor=Vitesssse!
+achievement.armorplus.craftRedstoneArmor.desc=Créez une pièce d'armure en Redstone
+achievement.armorplus.craftEmeraldArmor=Frapper plus vite!
+achievement.armorplus.craftEmeraldArmor.desc=Créez une pièce d'armure en Émeraude
+achievement.armorplus.craftObsidianArmor=Indestructible!
+achievement.armorplus.craftObsidianArmor.desc=Créez une pièce d'armure en Obsidienne
+achievement.armorplus.craftLavaArmor=La Domination!
+achievement.armorplus.craftLavaArmor.desc=Créez une pièce d'armure en Lave
+achievement.armorplus.craftSuperStarArmor=Divin!
+achievement.armorplus.craftSuperStarArmor.desc=Créez une pièce d'armure en Étoile Formidable
+achievement.armorplus.craftEnderDragonArmor=Le Pouvoir du Dragon de l'Ender!
+achievement.armorplus.craftEnderDragonArmor.desc=Tuez le Dragon de l'Ender et créez une pièce d'armure du Dragon de l'Ender
+achievement.armorplus.craftGuardianArmor=Épineux!
+achievement.armorplus.craftGuardianArmor.desc=Créez une pièce d'armure du Guardien
+achievement.armorplus.craftTheUltimateArmor=Le Pouvoir Ultime!
+achievement.armorplus.craftTheUltimateArmor.desc=Créez une pièce d'armure Ultime
+achievement.armorplus.craftReinforcedArmor=Renforcer les Armures!
+achievement.armorplus.craftReinforcedArmor.desc=Créez une pièce d'armure renforcée
+achievement.armorplus.craftCobaltArmor=Les Armures de Tinkers'!
+achievement.armorplus.craftCobaltArmor.desc=Créez une pièce d'armure en Cobalt
+achievement.armorplus.craftArditeArmor=Le plus puissance est le mieux!
+achievement.armorplus.craftArditeArmor.desc=Créez une pièce d'armure en Ardite
+achievement.armorplus.craftManyullymArmor=Le dieu des Armures de Tinkers'!
+achievement.armorplus.craftManyullymArmor.desc=Créez une pièce d'armure en Manyullyn
+achievement.armorplus.craftPigIronArmor=Oink!
+achievement.armorplus.craftPigIronArmor.desc=Créez une pièce d'armure en Saumon de Fonte
+achievement.armorplus.craftKnightSlimeArmor=Fascinant!
+achievement.armorplus.craftKnightSlimeArmor.desc=Créez une pièce d'armure du Chevaliers des Slimes
+
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

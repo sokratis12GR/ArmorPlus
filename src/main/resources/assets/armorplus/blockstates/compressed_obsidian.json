@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": [
+			{ "model": "armorplus:CompressedObsidian" },
+			{ "model": "armorplus:CompressedObsidian", "y": 90 },
+			{ "model": "armorplus:CompressedObsidian", "y": 180 },
+			{ "model": "armorplus:CompressedObsidian", "y": 270 }
+		]
+	}
+}

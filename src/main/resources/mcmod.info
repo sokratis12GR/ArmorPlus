@@ -1,0 +1,18 @@
+[
+{
+  "modid": "armorplus",
+  "name": "ArmorPlus",
+  "description": "Didn't you wish to have more armors in your game? If yes there you go this mod adds a lot more armors to minecraft!",
+  "version": "1.9.4-4.1.7.4",
+  "mcversion": "1.9.4",
+  "url": "http://curse.com/project/237366",
+  "updateUrl": "http://adf.ly/1YfdD4",
+  "authorList": ["sokratis12GR"],
+  "credits": "All the people who helped translating the mod, more info can be found in assets/armorplus/lang/Credits.md",
+  "logoFile": "assets/armorplus/textures/logo.png",
+  "screenshots": [],
+  "dependencies": [
+    "MinecraftForge"
+  ]
+}
+]

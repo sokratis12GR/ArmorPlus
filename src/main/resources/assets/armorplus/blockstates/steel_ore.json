@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"normal": [
+			{ "model": "armorplus:SteelOre" },
+			{ "model": "armorplus:SteelOre", "y": 90 },
+			{ "model": "armorplus:SteelOre", "y": 180 },
+			{ "model": "armorplus:SteelOre", "y": 270 }
+		]
+	}
+}

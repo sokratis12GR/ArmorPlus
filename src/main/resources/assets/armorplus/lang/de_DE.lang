@@ -1,0 +1,163 @@
+#de_DE.lang File
+
+#CREATIVE TAB
+itemGroup.armorplus.creativeTab=ArmorPlus
+
+#CONFIG GUI
+gui.armorplus.config.title=ArmorPlus Einstellungen
+
+#CoalArmor
+item.CoalHelmet.name=Kohlehelm
+item.CoalChestplate.name=Kohlebrustpanzer
+item.CoalLeggings.name=Kohlebeinschutz
+item.CoalBoots.name=Kohlestiefel
+
+#LapisArmor
+item.LapisHelmet.name=Lapislazulihelm
+item.LapisChestplate.name=Lapislazulibrustpanzer
+item.LapisLeggings.name=Lapislazulibeinschutz
+item.LapisBoots.name=Lapislazulistiefel
+
+#RedstoneArmor
+item.RedstoneHelmet.name=Redstonehelm
+item.RedstoneChestplate.name=Redstonebrustpanzer
+item.RedstoneLeggings.name=Redstonebeinschutz
+item.RedstoneBoots.name=Redstonestiefel
+
+#EmeraldArmor
+item.EmeraldHelmet.name=Smaragdhelm
+item.EmeraldChestplate.name=Smaragdbrustpanzer
+item.EmeraldLeggings.name=Smaragdbeinschutz
+item.EmeraldBoots.name=Smaragdstiefel
+
+#ObsidianArmor
+item.ObsidianHelmet.name=Obsidianhelm
+item.ObsidianChestplate.name=Obsidianbrustpanzer
+item.ObsidianLeggings.name=Obsidianbeinschutz
+item.ObsidianBoots.name=Obsidianstiefel
+
+#LavaArmor
+item.LavaHelmet.name=Lavahelm
+item.LavaChestplate.name=Lavabrustpanzer
+item.LavaLeggings.name=Lavabeinschutz
+item.LavaBoots.name=Lavastiefel
+
+#SuperStarArmor
+item.SuperStarHelmet.name=Superstern-Helm
+item.SuperStarChestplate.name=Superstern-Brustpanzer
+item.SuperStarLeggings.name=Superstern-Beinschutz
+item.SuperStarBoots.name=Superstern-Stiefel
+
+#EnderDragonArmor
+item.EnderDragonScale.name=Enderdrachen-Schuppe
+item.EnderDragonHelmet.name=Enderdrachen-Helm
+item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
+item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
+item.EnderDragonBoots.name=Enderdrachen-Stiefel
+
+#GuardianArmor
+item.GuardianHelmet.name=Beschuetzer-Helm
+item.GuardianChestplate.name=Beschuetzer-Brustpanzer
+item.GuardianLeggings.name=Beschuetzer-Beinschutz
+item.GuardianBoots.name=Beschuetzer-Stiefel
+
+#TheUltimateArmor
+item.TheUltimateHelmet.name=Der ultimative Helm
+item.TheUltimateChestplate.name=Der ultimative Brustpanzer
+item.TheUltimateLeggings.name=Der ultimative Beinschutz
+item.TheUltimateBoots.name=Die ultimativen Stiefel
+
+#Chainmail
+item.Chainmail.name=Kettenpanzer
+
+#ReinforcingMaterial
+item.ReinforcingMaterial.name=Verstärkendes Material
+
+#ReinforcedIronArmor
+item.RIHelmet.name=Verstärkter Eisenhelm
+item.RIChestplate.name=Verstärkter Eisenbrustpanzer
+item.RILeggings.name=Verstärkter Eisenbeinschutz
+item.RIBoots.name=Verstärkte Eisenstiefel
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=Verstärkter Goldhelm
+item.RGChestplate.name=Verstärkter Goldbrustpanzer
+item.RGLeggings.name=Verstärkter Goldbeinschutz
+item.RGBoots.name=Verstärkte Goldstiefel
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=Verstärkter Diamanthelm
+item.RDChestplate.name=Verstärkter Diamantbrustpanzer
+item.RDLeggings.name=Verstärkter Diamantbeinschutz
+item.RDBoots.name=Verstärkte Diamantstiefel
+
+#ReinforcedChainArmor
+item.RCHelmet.name=Verstärkte Kettenhaube
+item.RCChestplate.name=Verstärktes Kettenhemd
+item.RCLeggings.name=Verstärkte Kettenhose
+item.RCBoots.name=Verstärkte Kettenstiefel
+
+#CustomArmor
+item.CustomHelmet.name=Selbsterstellter Helm (WIP)
+item.CustomChestplate.name=Selbsterstellter Brustpanzer (WIP)
+item.CustomLeggings.name=Selbsterstellter Beinschutz (WIP)
+item.CustomBoots.name=Selbsterstellte Stiefel (WIP)
+
+#CobaltArmor
+item.CobaltHelmet.name=Kobalthelm
+item.CobaltChestplate.name=Kobaltbrustpanzer
+item.CobaltLeggings.name=Kobaltbeinschutz
+item.CobaltBoots.name=Kobaltstiefel
+
+#ArditeArmor
+item.ArditeHelmet.name=Arditehelm
+item.ArditeChestplate.name=Arditebrustpanzer
+item.ArditeLeggings.name=Arditebeinschutz
+item.ArditeBoots.name=Arditestiefel
+
+#PigIronArmor
+item.PigIronHelmet.name=PigIron-Helm
+item.PigIronChestplate.name=PigIron-Brustpanzer
+item.PigIronLeggings.name=PigIron-Beinschutz
+item.PigIronBoots.name=PigIron-Stiefel
+
+#KingSlimeArmor
+item.KingSlimeHelmet.name=KingSlime-Helm
+item.KingSlimeChestplate.name=KingSlime-Brustpanzer
+item.KingSlimeLeggings.name=KingSlime-Beinschutz
+item.KingSlimeBoots.name=KingSlime-Stiefel
+
+#ManyullynArmor
+item.ManyullymHelmet.name=Manyullymhelm
+item.ManyullymChestplate.name=Manyullymbrustpanzer
+item.ManyullymLeggings.name=Manyullymbeinschutz
+item.ManyullymBoots.name=Manyullymstiefel
+
+#Achievements
+achievement.armorplus.craftCoalArmor=Sehvermoegen Wie Eine Fledermaus!
+achievement.armorplus.craftCoalArmor.desc=Fertige ein Teil der Kohleruestung
+achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
+achievement.armorplus.craftLapisArmor.desc=Fertige ein Teil der Lapislazuliruestung an
+achievement.armorplus.craftRedstoneArmor=Schneller!
+achievement.armorplus.craftRedstoneArmor.desc=Fertige ein Teil der Redstoneruestung an
+achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
+achievement.armorplus.craftEmeraldArmor.desc=Fertige ein Teil der Smaragdruestung an
+achievement.armorplus.craftObsidianArmor=Unzerstoerbar!
+achievement.armorplus.craftObsidianArmor.desc=Fertige ein Teil der Obsidianruestung an
+achievement.armorplus.craftLavaArmor=Der Ueberwaeltigende!
+achievement.armorplus.craftLavaArmor.desc=Fertige ein Teil der Lavaruestung an
+achievement.armorplus.craftSuperStarArmor=Gottgleich!
+achievement.armorplus.craftSuperStarArmor.desc=Fertige ein Teil der Superstern-Ruestung an
+achievement.armorplus.craftEnderDragonArmor=Die Macht Des Enderdrachen!
+achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Ruestungsteil an
+achievement.armorplus.craftGuardianArmor=Voller Dornen!
+achievement.armorplus.craftGuardianArmor.desc=Fertige ein Beschützer-Ruestungsteil an
+achievement.armorplus.craftTheUltimateArmor=Die Ultimative Macht!
+achievement.armorplus.craftTheUltimateArmor.desc=Fertige ein ultimatives Ruestungsteil an
+
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
