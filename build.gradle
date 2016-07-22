@@ -26,22 +26,27 @@ plugins {
 */
 
 version = mc_version + '-' + version_major + '.' + version_api + '.' + version_minor + '.' + version_patch
-group = "sokratis12gr.armorplus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "armorplus"
+group = package_group
+archivesBaseName = mod_id
 
 minecraft {
-    version = "1.9.4-12.17.0.1976"
+    version = "${mc_version}-${forge_version}"
     runDir = "run"
-    
-    mappings = "snapshot_20160518"
     makeObfSourceJar = true
     useDepAts = true
+
+    if (project.hasProperty('mappings_version'))
+        mappings = project.mappings_version
 }
 
 jar {
-    manifest {
-        attributes 'FMLAT': 'armorplus_at.cfg'
-    }
+    classifier = ''
+    manifest.mainAttributes(
+            "Built-By": "${author}",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+            "Built-On": "${mc_version}-${forge_version}"
+    )
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -68,25 +73,20 @@ artifacts {
 }
 
 processResources {
-    // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
+        include '**/*.info'
+        include '**/*.properties'
 
-        // replace version and mcversion
         expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
-    // copy everything else, that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude '**/*.info'
+        exclude '**/*.properties'
     }
-
-    // Move access transformers to META-INF
-    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 dependencies {

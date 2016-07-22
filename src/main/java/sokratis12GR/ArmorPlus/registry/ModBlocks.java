@@ -24,8 +24,8 @@ public class ModBlocks {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
         ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
-        STEEL_ORE = new SteelOre().setRegistryName("metal_ore");
-        STEEL_BLOCK = new SteelBlock().setRegistryName("metal_block");
+        STEEL_ORE = new SteelOre().setRegistryName("steel_ore");
+        STEEL_BLOCK = new SteelBlock().setRegistryName("steel_block");
         ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
     }
 
