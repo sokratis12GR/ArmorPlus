@@ -14,7 +14,7 @@ import sokratis12gr.armorplus.ArmorPlus;
 public class SteelIngot extends Item {
 
     public SteelIngot() {
-        setRegistryName("metal_ingot");        // The unique name (within your mod) that identifies this item
+        setRegistryName("steel_ingot");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("SteelIngot");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
