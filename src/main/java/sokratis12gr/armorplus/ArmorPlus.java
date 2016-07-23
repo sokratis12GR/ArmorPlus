@@ -57,7 +57,7 @@ import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.1.7.4";
+    public static final String VERSION = "1.9.4-4.1.8.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "";
     public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
@@ -71,6 +71,7 @@ public class ArmorPlus {
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new CreativeTabArmorPlusItems(ArmorPlus.MODID + ".creativeTabItems");
     public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new CreativeTabArmorPlusBlocks(ArmorPlus.MODID + ".creativeTabBlocks");
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
+
     @Instance(MODID)
     public static ArmorPlus instance;
     public static File configDir;
@@ -155,13 +156,36 @@ public class ArmorPlus {
         ARPAchievements.init();
         ModRecipes.init();
 
+        //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
-        registerOre("oreSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
+        }
+
+        //Ingots
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
+        }
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+
+        //Blocks
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
+        }
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
+        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+        registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
+
+        //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
+
+        //Materials
+        registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
+        registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
+        registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
+        registerOre("materialReinforcing", new ItemStack(ModItems.REINFORCING_MATERIAL, 1));
+        registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+        registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
     }
 
     @SideOnly(Side.SERVER)
@@ -203,10 +227,36 @@ public class ArmorPlus {
         ARPAchievements.init();
         ModRecipes.init();
 
+        //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        registerOre("ingotMetal", new ItemStack(ModItems.STEEL_INGOT, 1));
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
+        }
+
+        //Ingots
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
+        }
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
+
+        //Blocks
+        if (ConfigHandler.enableARPSteelOreDict) {
+            registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
+        }
+        registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
+        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
+        registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
+
+        //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
+
+        //Materials
+        registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
+        registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
+        registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
+        registerOre("materialReinforcing", new ItemStack(ModItems.REINFORCING_MATERIAL, 1));
+        registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
+        registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
     }
 
 

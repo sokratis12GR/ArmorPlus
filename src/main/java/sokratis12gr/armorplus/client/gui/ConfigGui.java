@@ -42,6 +42,8 @@ public class ConfigGui extends GuiConfig {
 
         list.add(new ConfigElement(ConfigHandler.config.getCategory("WorldGeneration".toLowerCase())));
 
+        list.add(new ConfigElement(ConfigHandler.config.getCategory("OreDict".toLowerCase())));
+
         return list;
     }
 }

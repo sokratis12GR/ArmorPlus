@@ -22,22 +22,25 @@ public class ModRecipes {
     }
 
     public static void addShapedRecipes() {
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.CHAINMAIL, 1));
-        GameRegistry.addRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
-        GameRegistry.addRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1), 'G', new ItemStack(Items.EGG, 1));
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', new ItemStack(Blocks.CRAFTING_TABLE), 'O', new ItemStack(Blocks.COAL_BLOCK), 'L', new ItemStack(Blocks.LAPIS_BLOCK), 'C', new ItemStack(ModItems.LAVA_CRYSTAL));
-        if (ConfigHandler.enableRedstoneAppleRecipes) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', new ItemStack(Items.REDSTONE), 'A', new ItemStack(Items.APPLE));
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', new ItemStack(Blocks.REDSTONE_BLOCK), 'A', new ItemStack(Items.APPLE));
+        if (ConfigHandler.enableChainArmorRecipes) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', "chainmail"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', "chainmail"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', "chainmail"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', "chainmail"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', "chainmail"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', "chainmail"));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.STEEL_INGOT));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', ModItems.ELECTRICAL_INGOT));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', "ingotIron"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getByNameOrId("minecraft:dragon_egg"), 1), "EEE", "EGE", "EEE", 'E', "scaleEnderDragon", 'G', "egg"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "blockLapis", 'C', "gemLavaCrystal"));
+
+        if (ConfigHandler.enableRedstoneAppleRecipes) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', new ItemStack(Items.APPLE)));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', new ItemStack(Items.APPLE)));
+        }
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotARPSteel"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
     }
 
     public static void addShapelessRecipes() {

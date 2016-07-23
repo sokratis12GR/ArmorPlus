@@ -14,7 +14,7 @@ public class ConfigHandler {
             enableLapisArmorRecipes, enableRedstoneArmorRecipes, enableEmeraldArmorRecipes,
             enableObsidianArmorRecipes, enableLavaArmorRecipes, enableSuperStarArmorRecipes,
             enableEnderDragonArmorRecipes, enableGuardianArmorRecipes, enableTheUltimateArmorRecipes,
-            enableReinforcedArmorsRecipes, enableCustomArmorRecipes, enableCoalHNightVision,
+            enableReinforcedArmorsRecipes, enableChainArmorRecipes, enableCoalHNightVision,
             enableCoalCNightVision, enableCoalLNightVision, enableCoalBNightVision,
             enableCharcoalCoalArmorRecipe, enableLapisHBreathing, enableLapisCBreathing,
             enableLapisLBreathing, enableLapisBBreathing, expensiveLapisRecipe,
@@ -34,7 +34,7 @@ public class ConfigHandler {
             enableKnightSlimeArmorRecipes, enableArditeArmorEffects, enableCobaltArmorEffects,
             enableManyullynArmorEffects, enablePigIronArmorEffects, enableKnightSlimeArmorEffects,
             enableChickenArmorRecipes, enableSlimeArmorRecipes, enableTheUltimateArmorIncinvibility,
-            enableBlackList, enableWhiteList, enableRedstoneAppleRecipes;
+            enableBlackList, enableWhiteList, enableRedstoneAppleRecipes, enableARPSteelOreDict;
 
     public static int emeraldArmorEffectlevel,
             lavaArmorEffectlevel, obsidianArmorEffectlevel, redstoneArmorEffectlevel,
@@ -136,8 +136,8 @@ public class ConfigHandler {
                 "Enable/Disable The Ultimate Armor Recipes");
         enableReinforcedArmorsRecipes = config.getBoolean("enableReinforcedArmorsRecipes", category, true,
                 "Enable/Disable The Reinforced Armors Recipes");
-        enableCustomArmorRecipes = config.getBoolean("enableCustomArmorRecipes", category, true,
-                "Enable/Disable The Custom Armors Recipes");
+        enableChainArmorRecipes = config.getBoolean("enableChainArmorRecipes", category, true,
+                "Enable/Disable The Chain Armors Recipes");
         enableArditeArmorRecipes = config.getBoolean("enableArditeArmorRecipes", category, true,
                 "Enable/Disable The Ardite Armors Recipes");
         enableCobaltArmorRecipes = config.getBoolean("enableCobaltArmorRecipes", category, true,
@@ -330,6 +330,9 @@ public class ConfigHandler {
         whitelistmin = config.getInt("whitelistmin", category, 0, 0, 0, "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"");
         enableWhiteList = config.getBoolean("enableWhiteList", category, false, "Enable/Disable the WhiteList");
         whiteListedItems = config.getStringList("whiteListedItems", category, new String[]{"minecraft:dirt"}, "\nAdd WhiteListed Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the whitelist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add");
+
+        category = "OreDict".toLowerCase();
+        enableARPSteelOreDict = config.getBoolean("enableARPSteelOreDict", category, false, "Enable/Disable ArmorPlus' Steel OreDict \nex: \"ingotARPSteel\", \"oreARPSteel\", \"blockARPSteel\"");
 
 
         //config.getStringList(String name, String category, String[] defaultValue, String comment, String[] validValues)

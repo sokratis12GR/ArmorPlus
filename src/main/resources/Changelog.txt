@@ -1,4 +1,25 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.9.4-4.1.8.0
+{Features Added}
+* Added Most of the materials and blocks to the OreDict
+** Block Lava Crystal - oreLavaCrystal
+** Steel Ore - oreARPSteel
+** Steel Ingot - ingotARPSteel
+** Electrical Ingot - ingotElectrical
+** Block of Steel - blockARPSteel
+** Electrical Block - blockElectrical
+** Compressed Obsidian - blockCompressedObsidian
+** Armor Forge - armorforge
+** Lava Crystal - gemLavaCrystal
+** Chainmail - chainmail
+** Wither Bone - witherbone
+** The Ultimate Material - materialTheUltimate
+** Reinforcing Material - materialReinforcing
+** Guardian Scale - scaleGuardian
+** Ender Dragon Scale - scaleEnderDragon
+* Config Option to Enable/Disable ArmorPlus' Steel OreDict
+* Made Almost all Crafting Table Recipes to be able to use OreDict
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.9.4-4.1.7.4
 {Bugs Fixed}
 * Steel Ore render with missing textures
