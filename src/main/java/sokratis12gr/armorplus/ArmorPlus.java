@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -34,16 +34,21 @@ import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
 import sokratis12gr.armorplus.armors.tconstruct.*;
 import sokratis12gr.armorplus.armors.v2.ElectricalArmor;
 import sokratis12gr.armorplus.armors.v2.SteelArmor;
-import sokratis12gr.armorplus.client.gui.*;
+import sokratis12gr.armorplus.client.gui.ARPTab;
+import sokratis12gr.armorplus.client.gui.GuiArmorForge;
+import sokratis12gr.armorplus.client.gui.GuiArmorPlus;
 import sokratis12gr.armorplus.commands.CommandArmorPlus;
 import sokratis12gr.armorplus.compat.ICompatibility;
 import sokratis12gr.armorplus.container.ContainerArmorForge;
 import sokratis12gr.armorplus.registry.*;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 import sokratis12gr.armorplus.resources.GlobalEventsArmorPlus;
 import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
 import sokratis12gr.armorplus.util.ARPAchievements;
 import sokratis12gr.armorplus.util.TextHelper;
+import sokratis12gr.sokratiscore.SokratisCore;
+import sokratis12gr.sokratiscore.config.ModConfigProcessor;
+import sokratis12gr.sokratiscore.config.ModFeatureParser;
+import sokratis12gr.sokratiscore.util.LogHelper;
 
 import java.io.File;
 
@@ -51,15 +56,14 @@ import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
-/*import sokratis12gr.armorplus.resources.ClientEvents;*/
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, acceptedMinecraftVersions = "[1.9.4,1.10)", guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, canBeDeactivated = false, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.9.4-4.1.8.0";
+    public static final String VERSION = "1.10.2-5.0.1.0";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "";
+    public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
     public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
     public static final String COMMONPROXY = "sokratis12gr.armorplus.CommonProxy";
     public static final String GUIFACTORY = "sokratis12gr.armorplus.client.gui.ConfigGuiFactory";
@@ -67,15 +71,24 @@ public class ArmorPlus {
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs TAB_ARMORPLUS = new CreativeTabArmorPlus(ArmorPlus.MODID + ".creativeTab");
-    public static CreativeTabs TAB_ARMORPLUS_ITEMS = new CreativeTabArmorPlusItems(ArmorPlus.MODID + ".creativeTabItems");
-    public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new CreativeTabArmorPlusBlocks(ArmorPlus.MODID + ".creativeTabBlocks");
+    public static CreativeTabs TAB_ARMORPLUS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "armors", 0);
+    public static CreativeTabs TAB_ARMORPLUS_ITEMS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "items", 1);
+    public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "blocks", 2);
+
+    public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{TAB_ARMORPLUS, TAB_ARMORPLUS_ITEMS, TAB_ARMORPLUS_BLOCKS});
+    public static ModConfigProcessor configProcessor = new ModConfigProcessor();
+
+    public static Configuration configuration;
+
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
 
-    @Instance(MODID)
+    @Mod.Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
+
     public static File configDir;
+
     public static File textureDir;
+
     public GuiHandler GuiHandler = new GuiHandler();
     CoalArmor COAL_ARMOR = new CoalArmor();
     LapisArmor LAPIS_ARMOR = new LapisArmor();
@@ -114,7 +127,11 @@ public class ArmorPlus {
     public static File getloggerDir() {
         return textureDir;
     }
-    // player.getHealth()
+
+    public ArmorPlus()
+    {
+        LogHelper.info("Welcoming Minecraft");
+    }
 
     @SideOnly(Side.CLIENT)
     @EventHandler
@@ -124,7 +141,6 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        /*MinecraftForge.EVENT_BUS.register(new ClientEvents());*/
         COAL_ARMOR.load(event);
         LAPIS_ARMOR.load(event);
         REDSTONE_ARMOR.load(event);
@@ -158,18 +174,18 @@ public class ArmorPlus {
 
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
         }
 
         //Ingots
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
         }
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
 
         //Blocks
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
         }
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
@@ -229,18 +245,18 @@ public class ArmorPlus {
 
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
         }
 
         //Ingots
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
         }
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
 
         //Blocks
-        if (ConfigHandler.enableARPSteelOreDict) {
+        if (ARPConfig.enableARPSteelOreDict) {
             registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
         }
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
@@ -257,6 +273,7 @@ public class ArmorPlus {
         registerOre("materialReinforcing", new ItemStack(ModItems.REINFORCING_MATERIAL, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
+        proxy.init(event);
     }
 
 
@@ -326,20 +343,26 @@ public class ArmorPlus {
         PIG_IRON_ARMOR.preInit(event);
         KNIGHT_SLIME_ARMOR.preInit(event);
 
+        configuration = new Configuration(event.getSuggestedConfigurationFile());
+        configProcessor.processConfig(ARPConfig.class, configuration);
+
+        featureParser.registerFeatures();
+
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
-        configDir = new File(event.getModConfigurationDirectory() + "/" + "sokratis12GR's Mods" + "/" + ArmorPlus.MODID);
+        configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        sokratis12gr.armorplus.util.Logger.init(new File(configDir.getPath()));
-        ConfigHandler.init(new File(configDir.getPath(), ArmorPlus.MODID + ".cfg"));
+        sokratis12gr.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         proxy.registerRenderers(this);
         proxy.registerWorldGenerators();
         proxy.registerTileEntities();
+        proxy.preInit(event);
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
+        proxy.postInit(event);
     }
 
     @EventHandler

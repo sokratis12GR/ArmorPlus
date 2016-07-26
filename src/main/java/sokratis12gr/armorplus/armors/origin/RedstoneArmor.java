@@ -21,8 +21,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -41,20 +41,20 @@ public class RedstoneArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                if (ConfigHandler.enableRedstoneHSpeed) {
+                int redstoneArmorEffectlevel = ARPConfig.redstoneArmorEffectlevel + 1;
+                if (ARPConfig.enableRedstoneHSpeed) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                if (ARPConfig.enableFullRedstoneArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                if (ARPConfig.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -64,10 +64,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -77,20 +77,20 @@ public class RedstoneArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                if (ConfigHandler.enableRedstoneCSpeed) {
+                int redstoneArmorEffectlevel = ARPConfig.redstoneArmorEffectlevel + 1;
+                if (ARPConfig.enableRedstoneCSpeed) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                if (ARPConfig.enableFullRedstoneArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                if (ARPConfig.enableRedstoneCSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -100,10 +100,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -113,20 +113,20 @@ public class RedstoneArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                if (ConfigHandler.enableRedstoneLSpeed) {
+                int redstoneArmorEffectlevel = ARPConfig.redstoneArmorEffectlevel + 1;
+                if (ARPConfig.enableRedstoneLSpeed) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                if (ARPConfig.enableFullRedstoneArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                if (ARPConfig.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -136,10 +136,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;
@@ -149,20 +149,20 @@ public class RedstoneArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int redstoneArmorEffectlevel = ConfigHandler.redstoneArmorEffectlevel + 1;
-                if (ConfigHandler.enableRedstoneBSpeed) {
+                int redstoneArmorEffectlevel = ARPConfig.redstoneArmorEffectlevel + 1;
+                if (ARPConfig.enableRedstoneBSpeed) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullRedstoneArmorEffect) {
+                if (ARPConfig.enableFullRedstoneArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ConfigHandler.enableFullRedstoneArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ConfigHandler.redstoneArmorEffectlevel, true, true));
+                if (ARPConfig.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
                 }
             }
 
@@ -172,10 +172,10 @@ public class RedstoneArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.REDSTONE;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
                 }
                 return true;

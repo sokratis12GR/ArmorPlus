@@ -7,8 +7,8 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.registry.ModBlocks;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.Random;
 
@@ -21,35 +21,35 @@ public class OreGen implements IWorldGenerator {
     public WorldGenerator lavaCrystalGenerator;
     public WorldGenerator steelOreGenerator;
     public OreGen() {
-        lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ConfigHandler.lavaCrystalVeinAmount);
-        steelOreGenerator = new WorldGenMinable(ModBlocks.STEEL_ORE.getDefaultState(), ConfigHandler.steelOreVeinAmount);
+        lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalVeinAmount);
+        steelOreGenerator = new WorldGenMinable(ModBlocks.STEEL_ORE.getDefaultState(), ARPConfig.steelOreVeinAmount);
     }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         switch (world.provider.getDimension()) {
             case 0: //Overworld Dimension
-                if (ConfigHandler.enableLavaCrystalOverworldGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ConfigHandler.lavaCrystalOverworldRarity, ConfigHandler.lavaCrystalOverworldMinYSpawn, ConfigHandler.lavaCrystalOverworldMaxYSpawn);
+                if (ARPConfig.enableLavaCrystalOverworldGen) {
+                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalOverworldRarity, ARPConfig.lavaCrystalOverworldMinYSpawn, ARPConfig.lavaCrystalOverworldMaxYSpawn);
                 }
-                if (ConfigHandler.enableSteelOreOverworldGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ConfigHandler.steelOreOverworldRarity, ConfigHandler.steelOreOverworldMinYSpawn, ConfigHandler.steelOreOverworldMaxYSpawn);
+                if (ARPConfig.enableSteelOreOverworldGen) {
+                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreOverworldRarity, ARPConfig.steelOreOverworldMinYSpawn, ARPConfig.steelOreOverworldMaxYSpawn);
                 }
                 break;
             case 1: //The End
-                if (ConfigHandler.enableLavaCrystalTheEndGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ConfigHandler.lavaCrystalTheEndRarity, ConfigHandler.lavaCrystalTheEndMinYSpawn, ConfigHandler.lavaCrystalTheEndMaxYSpawn);
+                if (ARPConfig.enableLavaCrystalTheEndGen) {
+                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheEndRarity, ARPConfig.lavaCrystalTheEndMinYSpawn, ARPConfig.lavaCrystalTheEndMaxYSpawn);
                 }
-                if (ConfigHandler.enableSteelOreTheEndGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ConfigHandler.steelOreTheEndRarity, ConfigHandler.steelOreTheEndMinYSpawn, ConfigHandler.steelOreTheEndMaxYSpawn);
+                if (ARPConfig.enableSteelOreTheEndGen) {
+                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreTheEndRarity, ARPConfig.steelOreTheEndMinYSpawn, ARPConfig.steelOreTheEndMaxYSpawn);
                 }
                 break;
             case -1: //The Nether
-                if (ConfigHandler.enableLavaCrystalTheNetherGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ConfigHandler.lavaCrystalTheNetherRarity, ConfigHandler.lavaCrystalTheNetherMinYSpawn, ConfigHandler.lavaCrystalTheNetherMaxYSpawn);
+                if (ARPConfig.enableLavaCrystalTheNetherGen) {
+                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheNetherRarity, ARPConfig.lavaCrystalTheNetherMinYSpawn, ARPConfig.lavaCrystalTheNetherMaxYSpawn);
                 }
-                if (ConfigHandler.enableSteelOreTheNetherGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ConfigHandler.steelOreTheNetherRarity, ConfigHandler.steelOreTheNetherMinYSpawn, ConfigHandler.steelOreTheNetherMaxYSpawn);
+                if (ARPConfig.enableSteelOreTheNetherGen) {
+                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreTheNetherRarity, ARPConfig.steelOreTheNetherMinYSpawn, ARPConfig.steelOreTheNetherMaxYSpawn);
                 }
                 break;
         }

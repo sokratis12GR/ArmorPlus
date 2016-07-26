@@ -20,9 +20,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.registry.ModBlocks;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -41,20 +41,20 @@ public class ObsidianArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianHResistance) {
+                int obsidianArmorEffectlevel = ARPConfig.obsidianArmorEffectlevel + 1;
+                if (ARPConfig.enableObsidianHResistance) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                if (ARPConfig.enableFullObsidianArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianHResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                if (ARPConfig.enableObsidianHResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -65,10 +65,10 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
                 }
                 return true;
@@ -78,20 +78,20 @@ public class ObsidianArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianHResistance) {
+                int obsidianArmorEffectlevel = ARPConfig.obsidianArmorEffectlevel + 1;
+                if (ARPConfig.enableObsidianHResistance) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                if (ARPConfig.enableFullObsidianArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianCResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                if (ARPConfig.enableObsidianCResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -102,10 +102,10 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
                 }
                 return true;
@@ -115,20 +115,20 @@ public class ObsidianArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianHResistance) {
+                int obsidianArmorEffectlevel = ARPConfig.obsidianArmorEffectlevel + 1;
+                if (ARPConfig.enableObsidianHResistance) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                if (ARPConfig.enableFullObsidianArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianLResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                if (ARPConfig.enableObsidianLResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -139,10 +139,10 @@ public class ObsidianArmor {
 
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
                 }
                 return true;
@@ -152,20 +152,20 @@ public class ObsidianArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int obsidianArmorEffectlevel = ConfigHandler.obsidianArmorEffectlevel + 1;
-                if (ConfigHandler.enableObsidianHResistance) {
+                int obsidianArmorEffectlevel = ARPConfig.obsidianArmorEffectlevel + 1;
+                if (ARPConfig.enableObsidianHResistance) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullObsidianArmorEffect) {
+                if (ARPConfig.enableFullObsidianArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableObsidianBResistance && entity instanceof EntityLivingBase && !ConfigHandler.enableFullObsidianArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ConfigHandler.obsidianArmorEffectlevel, true, true));
+                if (ARPConfig.enableObsidianBResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
                 }
             }
 
@@ -175,10 +175,10 @@ public class ObsidianArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
                 }
                 return true;

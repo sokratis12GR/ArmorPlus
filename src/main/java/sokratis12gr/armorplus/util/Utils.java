@@ -12,6 +12,7 @@ import java.util.Set;
  * ArmorPlus created by sokratis12GR on 7/18/2016 8:17 PM.
  */
 public class Utils {
+
     public static ItemStack setUnbreakable(ItemStack stack) {
         NBTHelper.checkNBT(stack);
         stack.getTagCompound().setBoolean("Unbreakable", true);

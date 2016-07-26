@@ -19,9 +19,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.registry.ModItems;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class TheUltimateArmor {
                 ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                if (ConfigHandler.enableFlightAbility) {
+                if (ARPConfig.enableFlightAbility) {
 
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
@@ -58,7 +58,7 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                if (ARPConfig.enableTheUltimateArmorIncinvibility) {
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.disableDamage = true;
                     } else {
@@ -97,7 +97,7 @@ public class TheUltimateArmor {
                 ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                if (ConfigHandler.enableFlightAbility) {
+                if (ARPConfig.enableFlightAbility) {
 
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
@@ -106,7 +106,7 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                if (ARPConfig.enableTheUltimateArmorIncinvibility) {
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.disableDamage = true;
                     } else {
@@ -146,7 +146,7 @@ public class TheUltimateArmor {
                 ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                if (ConfigHandler.enableFlightAbility) {
+                if (ARPConfig.enableFlightAbility) {
 
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
@@ -155,7 +155,7 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                if (ARPConfig.enableTheUltimateArmorIncinvibility) {
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.disableDamage = true;
                     } else {
@@ -194,7 +194,7 @@ public class TheUltimateArmor {
                 ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
                 ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
                 ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-                if (ConfigHandler.enableFlightAbility) {
+                if (ARPConfig.enableFlightAbility) {
 
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
@@ -203,7 +203,7 @@ public class TheUltimateArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (ConfigHandler.enableTheUltimateArmorIncinvibility) {
+                if (ARPConfig.enableTheUltimateArmorIncinvibility) {
                     if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.disableDamage = true;
                     } else {

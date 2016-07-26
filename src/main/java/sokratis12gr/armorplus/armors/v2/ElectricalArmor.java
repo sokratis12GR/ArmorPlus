@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
@@ -28,7 +29,7 @@ public class ElectricalArmor {
 
     static {
 
-        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ELECTRICALARMORrARMOR", ArmorPlus.MODID + ":" + "ElectricalArmor", 19,
+        ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("ELECTRICALARMOR", ArmorPlus.MODID + ":" + "ElectricalArmor", 19,
                 new int[]{3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
         int armorPreffix = 0;
@@ -37,10 +38,10 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.ELECTRICAL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
                 }
                 return true;
@@ -52,10 +53,10 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.ELECTRICAL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
                 }
                 return true;
@@ -67,10 +68,10 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.ELECTRICAL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
                 }
                 return true;
@@ -82,10 +83,10 @@ public class ElectricalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.ELECTRICAL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
                 }
                 return true;

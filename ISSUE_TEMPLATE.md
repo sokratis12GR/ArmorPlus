@@ -1,5 +1,7 @@
 **ArmorPlus Version**:
 
+**SokratisCore Version**:
+
 **MinecraftForge Version**:
 
 **Client or Server?**:

@@ -1,11 +1,9 @@
 package sokratis12gr.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 import sokratis12gr.armorplus.util.TextHelper;
 
 import java.util.ArrayList;
@@ -20,29 +18,6 @@ public class ConfigGui extends GuiConfig {
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
 
-        /** adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("Recipes".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("FlightAbility".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("EffectLevel".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("TinkersEffects".toLowerCase())));
-
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("CoalArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("LapisArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("RedstoneArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("EmeraldArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("ObsidianArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("LavaArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("SuperStarArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("GuardianArmor".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("TheUltimateArmor".toLowerCase())));
-
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("GameModes".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("BlackList".toLowerCase())));
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("WhiteList".toLowerCase())));
-
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("WorldGeneration".toLowerCase())));
-
-        list.add(new ConfigElement(ConfigHandler.config.getCategory("OreDict".toLowerCase())));
 
         return list;
     }

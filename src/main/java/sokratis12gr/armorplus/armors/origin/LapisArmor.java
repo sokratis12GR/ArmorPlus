@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -40,18 +40,18 @@ public class LapisArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableLapisHBreathing) {
+                if (ARPConfig.enableLapisHBreathing) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableFullLapisArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisHBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableLapisHBreathing && entity instanceof EntityLivingBase && !ARPConfig.enableFullLapisArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
@@ -69,18 +69,18 @@ public class LapisArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableLapisHBreathing) {
+                if (ARPConfig.enableLapisHBreathing) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableFullLapisArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisCBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableLapisCBreathing && entity instanceof EntityLivingBase && !ARPConfig.enableFullLapisArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
@@ -98,18 +98,18 @@ public class LapisArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableLapisHBreathing) {
+                if (ARPConfig.enableLapisHBreathing) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableFullLapisArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisLBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableLapisLBreathing && entity instanceof EntityLivingBase && !ARPConfig.enableFullLapisArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }
@@ -127,18 +127,18 @@ public class LapisArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableLapisHBreathing) {
+                if (ARPConfig.enableLapisHBreathing) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableFullLapisArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rWater Breathing ");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableLapisBBreathing && entity instanceof EntityLivingBase && !ConfigHandler.enableFullLapisArmorEffect) {
+                if (ARPConfig.enableLapisBBreathing && entity instanceof EntityLivingBase && !ARPConfig.enableFullLapisArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 }
             }

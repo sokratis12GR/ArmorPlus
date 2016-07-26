@@ -41,8 +41,7 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledGuardian(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, random.nextInt(max - min + 1) + min
-            );
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, random.nextInt(max - min + 1) + min);
         }
     }
 

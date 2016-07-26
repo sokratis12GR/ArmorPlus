@@ -16,7 +16,9 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 
 repositories {
-    maven { url "http://dvs1.progwml6.com/files/maven" }
+  maven {
+    url "http://dvs1.progwml6.com/files/maven"
+  }
 }
 /*
 // for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
@@ -34,7 +36,6 @@ minecraft {
     runDir = "run"
     makeObfSourceJar = true
     useDepAts = true
-
     if (project.hasProperty('mappings_version'))
         mappings = project.mappings_version
 }
@@ -91,7 +92,8 @@ processResources {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-	
+
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

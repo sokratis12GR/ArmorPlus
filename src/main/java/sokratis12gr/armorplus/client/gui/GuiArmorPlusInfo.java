@@ -6,6 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.resources.ConfigHandler;
 
@@ -41,7 +42,7 @@ public class GuiArmorPlusInfo extends GuiScreen {
         fontRendererObj.drawString(new TextComponentString("If you want to change to Easy Mode you will").getFormattedText(), guiX + 10, guiY + 50, 0x000000);
         fontRendererObj.drawString(new TextComponentString("need to change the config").getFormattedText(), guiX + 10, guiY + 60, 0x000000);
         fontRendererObj.drawString(new TextComponentString("From `I:Recipe:1` to `I:Recipe:0`.").getFormattedText(), guiX + 10, guiY + 70, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + ConfigHandler.recipes + "`.").getFormattedText(), guiX + 10, guiY + 90, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + ARPConfig.recipes + "`.").getFormattedText(), guiX + 10, guiY + 90, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

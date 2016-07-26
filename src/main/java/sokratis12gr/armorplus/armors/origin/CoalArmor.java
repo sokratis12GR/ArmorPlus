@@ -21,8 +21,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -41,18 +41,18 @@ public class CoalArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableCoalHNightVision) {
+                if (ARPConfig.enableCoalHNightVision) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableFullCoalArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalHNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableCoalHNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
@@ -63,10 +63,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -77,18 +77,18 @@ public class CoalArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableCoalCNightVision) {
+                if (ARPConfig.enableCoalCNightVision) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableFullCoalArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalCNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableCoalCNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
@@ -99,10 +99,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -113,18 +113,18 @@ public class CoalArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableCoalLNightVision) {
+                if (ARPConfig.enableCoalLNightVision) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableFullCoalArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalLNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableCoalLNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
@@ -135,10 +135,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;
@@ -149,18 +149,18 @@ public class CoalArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                if (ConfigHandler.enableCoalBNightVision) {
+                if (ARPConfig.enableCoalBNightVision) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableFullCoalArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rNight Vision");
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableCoalBNightVision && entity instanceof EntityLivingBase && !ConfigHandler.enableFullCoalArmorEffect) {
+                if (ARPConfig.enableCoalBNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
                 }
             }
@@ -171,10 +171,10 @@ public class CoalArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.COAL;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
                 }
                 return true;

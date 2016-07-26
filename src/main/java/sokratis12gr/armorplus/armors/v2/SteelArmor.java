@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
@@ -39,10 +40,10 @@ public class SteelArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.STEEL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.STEEL_BLOCK);
                 }
                 return true;
@@ -54,45 +55,45 @@ public class SteelArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.STEEL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.STEEL_BLOCK);
                 }
                 return true;
             }
-        }).setUnlocalizedName("SteelHelmet");
+        }).setUnlocalizedName("SteelChestplate");
         chestplate.setMaxStackSize(1);
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.STEEL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.STEEL_BLOCK);
                 }
                 return true;
             }
-        }).setUnlocalizedName("SteelHelmet");
+        }).setUnlocalizedName("SteelLeggings");
         legs.setMaxStackSize(1);
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == ModItems.STEEL_INGOT;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(ModBlocks.STEEL_BLOCK);
                 }
                 return true;
             }
-        }).setUnlocalizedName("SteelHelmet");
+        }).setUnlocalizedName("SteelBoots");
         boots.setMaxStackSize(1);
         GameRegistry.registerItem(helmet, "steel_helmet");
         GameRegistry.registerItem(chestplate, "steel_chestplate");

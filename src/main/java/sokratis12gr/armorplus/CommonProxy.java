@@ -1,10 +1,33 @@
 package sokratis12gr.armorplus;
 
+import net.minecraft.world.DimensionType;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import sokratis12gr.armorplus.client.gui.ARPTab;
 import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
 import sokratis12gr.armorplus.worldgen.OreGen;
+import sokratis12gr.sokratiscore.util.LogHelper;
 
 public class CommonProxy {
+
+    private DimensionType ArmorPlusDimension;
+
+    public void preInit(FMLPreInitializationEvent event) {
+        LogHelper.info("Finished PreInitialization");
+    }
+
+    public void init(FMLInitializationEvent event) {
+        ARPTab.initialize();
+
+        LogHelper.info("Finished Initialization");
+    }
+
+    public void postInit(FMLPostInitializationEvent event) {
+        LogHelper.info("Finished PostInitialization");
+    }
+
     public void loadCommands() {
 
     }
@@ -34,5 +57,9 @@ public class CommonProxy {
 
     public void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityArmorForge.class, "ArmorForge");
+    }
+
+    public DimensionType getArmorPlusDimension() {
+        return ArmorPlusDimension;
     }
 }

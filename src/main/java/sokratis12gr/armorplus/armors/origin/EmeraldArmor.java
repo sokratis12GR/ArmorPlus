@@ -21,8 +21,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -42,20 +42,20 @@ public class EmeraldArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                if (ConfigHandler.enableEmeraldHHaste) {
+                int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
+                if (ARPConfig.enableEmeraldHHaste) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                if (ARPConfig.enableFullEmeraldArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldHHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                if (ARPConfig.enableEmeraldHHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -65,10 +65,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -79,20 +79,20 @@ public class EmeraldArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                if (ConfigHandler.enableEmeraldCHaste) {
+                int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
+                if (ARPConfig.enableEmeraldCHaste) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                if (ARPConfig.enableFullEmeraldArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldCHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                if (ARPConfig.enableEmeraldCHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -102,10 +102,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -116,20 +116,20 @@ public class EmeraldArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                if (ConfigHandler.enableEmeraldLHaste) {
+                int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
+                if (ARPConfig.enableEmeraldLHaste) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                if (ARPConfig.enableFullEmeraldArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldLHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                if (ARPConfig.enableEmeraldLHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -139,10 +139,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;
@@ -153,20 +153,20 @@ public class EmeraldArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int emeraldArmorEffectLevel = ConfigHandler.emeraldArmorEffectlevel + 1;
-                if (ConfigHandler.enableEmeraldBHaste) {
+                int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
+                if (ARPConfig.enableEmeraldBHaste) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullEmeraldArmorEffect) {
+                if (ARPConfig.enableFullEmeraldArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableEmeraldBHaste && entity instanceof EntityLivingBase && !ConfigHandler.enableFullEmeraldArmorEffect) {
-                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ConfigHandler.emeraldArmorEffectlevel, true, true));
+                if (ARPConfig.enableEmeraldBHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
                 }
             }
 
@@ -176,10 +176,10 @@ public class EmeraldArmor {
             }
 
             public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-                if (ConfigHandler.recipes == 0) {
+                if (ARPConfig.recipes == 0) {
                     return repair.getItem() == Items.EMERALD;
                 }
-                if (ConfigHandler.recipes == 1) {
+                if (ARPConfig.recipes == 1) {
                     return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
                 }
                 return true;

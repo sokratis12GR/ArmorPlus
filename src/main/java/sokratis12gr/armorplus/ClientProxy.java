@@ -1,5 +1,6 @@
 package sokratis12gr.armorplus;
 
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
 

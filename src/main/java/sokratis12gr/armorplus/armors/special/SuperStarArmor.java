@@ -19,9 +19,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
 import sokratis12gr.armorplus.registry.ModItems;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.List;
 
@@ -40,20 +40,20 @@ public class SuperStarArmor {
         helmet = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.HEAD) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                if (ConfigHandler.enableSuperStarHRegen) {
+                int superstarArmorEffectlevel = ARPConfig.superstarArmorEffectlevel + 1;
+                if (ARPConfig.enableSuperStarHRegen) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ARPConfig.enableFullSuperStarArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                if (ARPConfig.enableSuperStarHRegen && entity instanceof EntityLivingBase && !ARPConfig.enableFullSuperStarArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
                     entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
@@ -71,20 +71,20 @@ public class SuperStarArmor {
         chestplate = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.CHEST) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                if (ConfigHandler.enableSuperStarCRegen) {
+                int superstarArmorEffectlevel = ARPConfig.superstarArmorEffectlevel + 1;
+                if (ARPConfig.enableSuperStarCRegen) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ARPConfig.enableFullSuperStarArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                if (ARPConfig.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ARPConfig.enableFullSuperStarArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
                     entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
@@ -102,20 +102,20 @@ public class SuperStarArmor {
         legs = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.LEGS) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                if (ConfigHandler.enableSuperStarLRegen) {
+                int superstarArmorEffectlevel = ARPConfig.superstarArmorEffectlevel + 1;
+                if (ARPConfig.enableSuperStarLRegen) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ARPConfig.enableFullSuperStarArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                if (ARPConfig.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ARPConfig.enableFullSuperStarArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
                     entity.removePotionEffect(MobEffects.WITHER);
                 }
             }
@@ -133,20 +133,20 @@ public class SuperStarArmor {
         boots = (new ItemArmor(enuma, armorPreffix, EntityEquipmentSlot.FEET) {
             @Override
             public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-                int superstarArmorEffectlevel = ConfigHandler.superstarArmorEffectlevel + 1;
-                if (ConfigHandler.enableSuperStarBRegen) {
+                int superstarArmorEffectlevel = ARPConfig.superstarArmorEffectlevel + 1;
+                if (ARPConfig.enableSuperStarBRegen) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip A Piece");
                 }
-                if (ConfigHandler.enableFullSuperStarArmorEffect) {
+                if (ARPConfig.enableFullSuperStarArmorEffect) {
                     infoList.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                     infoList.add("\2473Use: " + "\247rEquip The Full Set");
                 }
             }
 
             public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-                if (ConfigHandler.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ConfigHandler.enableFullSuperStarArmorEffect) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ConfigHandler.superstarArmorEffectlevel, true, true));
+                if (ARPConfig.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ARPConfig.enableFullSuperStarArmorEffect) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
                     entity.removePotionEffect(MobEffects.WITHER);
                 }
             }

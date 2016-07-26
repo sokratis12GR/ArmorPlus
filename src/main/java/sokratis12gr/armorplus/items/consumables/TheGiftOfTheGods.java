@@ -20,14 +20,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.resources.ConfigHandler;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static sokratis12gr.armorplus.resources.ConfigHandler.*;
+import static sokratis12gr.armorplus.ARPConfig.*;
 
 public class TheGiftOfTheGods extends Item {
 
@@ -49,7 +49,7 @@ public class TheGiftOfTheGods extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        List<String> blackListedItems = Arrays.asList(ConfigHandler.blackListedItems);
+        List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
         if (worldIn.isRemote) {
             return new ActionResult(EnumActionResult.PASS, itemStackIn);
         }
@@ -57,11 +57,11 @@ public class TheGiftOfTheGods extends Item {
         int count;
         Item item = null;
         do {
-            if (!ConfigHandler.enableWhiteList) {
+            if (!ARPConfig.enableWhiteList) {
                 count = 256 + random.nextInt(32000 - 256);
                 item = Item.getItemById(count);
             }
-            if (ConfigHandler.enableWhiteList) {
+            if (ARPConfig.enableWhiteList) {
                 item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
             }
         }

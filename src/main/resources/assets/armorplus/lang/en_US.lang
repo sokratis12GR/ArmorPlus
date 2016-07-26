@@ -1,9 +1,9 @@
 #en_US.lang File
 
 #CREATIVE TABS
-itemGroup.armorplus.creativeTab=ArmorPlus
-itemGroup.armorplus.creativeTabItems=ArmorPlus
-itemGroup.armorplus.creativeTabBlocks=ArmorPlus
+itemGroup.armors=ARP Armors
+itemGroup.items=ARP Items
+itemGroup.blocks=ARP Blocks
 
 #Containers
 container.ArmorForge=Armor Forge
@@ -189,6 +189,12 @@ item.SteelChestplate.name=Steel Chestplate
 item.SteelLeggings.name=Steel Leggings
 item.SteelBoots.name=Steel Boots
 
+#DevArmor
+item.DevHelmet.name=Dev Helmet
+item.DevChestplate.name=Dev Chestplate
+item.DevLeggings.name=Dev Leggings
+item.DevBoots.name=Dev Boots
+
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
@@ -214,6 +220,9 @@ tile.SteelOre.name=Steel Ore
 tile.SteelBlock.name=Block of Steel
 tile.ElectricalBlock.name=Electrical Block
 
+#PotionEffects
+potion.armorplusEffects=ArmorPlus Potion
+
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
 achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece
@@ -223,7 +232,7 @@ achievement.armorplus.craftRedstoneArmor=Speeedy!
 achievement.armorplus.craftRedstoneArmor.desc=Craft a Redstone Armor Piece
 achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
 achievement.armorplus.craftEmeraldArmor.desc=Craft an Emerald Armor Piece
-achievement.armorplus.craftObsidianArmor=Undestructable!
+achievement.armorplus.craftObsidianArmor=Indestructible!
 achievement.armorplus.craftObsidianArmor.desc=Craft an Obsidian Armor Piece
 achievement.armorplus.craftLavaArmor=The Overpowered!
 achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
