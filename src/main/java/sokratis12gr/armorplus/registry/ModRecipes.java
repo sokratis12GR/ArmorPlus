@@ -19,7 +19,6 @@ public class ModRecipes {
     public static void init() {
         addShapedRecipes();
         addShapelessRecipes();
-        addFurnaceRecipes();
     }
 
     public static void addShapedRecipes() {
@@ -40,7 +39,7 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', new ItemStack(Items.APPLE)));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', new ItemStack(Items.APPLE)));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', new ItemStack(ModItems.STEEL_INGOT)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
     }
 
@@ -49,9 +48,6 @@ public class ModRecipes {
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 9), new ItemStack(ModBlocks.STEEL_BLOCK));
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), new ItemStack(ModBlocks.ELECTRICAL_BLOCK));
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), new ItemStack(Items.BOOK), new ItemStack(Items.COAL));
-    }
-
-    public static void addFurnaceRecipes() {
-        GameRegistry.addSmelting(new ItemStack(ModBlocks.STEEL_ORE), new ItemStack(ModItems.STEEL_INGOT), 0.5F);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 1), new ItemStack(Items.COAL, 1, 1), new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.LAVA_CRYSTAL));
     }
 }

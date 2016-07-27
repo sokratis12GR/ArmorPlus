@@ -18,13 +18,12 @@ public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
             COMPRESSED_OBSIDIAN,
-            ARMOR_FORGE, STEEL_ORE, STEEL_BLOCK, ELECTRICAL_BLOCK;
+            ARMOR_FORGE, STEEL_BLOCK, ELECTRICAL_BLOCK;
 
     public static void init() {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
         ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
-        STEEL_ORE = new SteelOre().setRegistryName("steel_ore");
         STEEL_BLOCK = new SteelBlock().setRegistryName("steel_block");
         ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
     }
@@ -33,7 +32,6 @@ public class ModBlocks {
         registerBlock(BLOCK_LAVA_CRYSTAL);
         registerBlock(COMPRESSED_OBSIDIAN);
         registerBlock(ARMOR_FORGE);
-        registerBlock(STEEL_ORE);
         registerBlock(STEEL_BLOCK);
         registerBlock(ELECTRICAL_BLOCK);
     }
@@ -42,7 +40,6 @@ public class ModBlocks {
         registerRender(BLOCK_LAVA_CRYSTAL);
         registerRender(COMPRESSED_OBSIDIAN);
         registerRender(ARMOR_FORGE);
-        registerRender(STEEL_ORE);
         registerRender(STEEL_BLOCK);
         registerRender(ELECTRICAL_BLOCK);
     }

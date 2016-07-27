@@ -199,53 +199,9 @@ public class ARPConfig {
     @ModConfigProperty(category = "WorldGeneration", name = "lavaCrystalVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation")
     public static int lavaCrystalVeinAmount = 5;
 
-    //WorldGeneration.SteelOre
-    @ModConfigProperty(category = "WorldGeneration", name = "enableSteelOreOverworldGen", comment = "Enable/Disable The Steel Ore World Generation in the dimension `Overworld`")
-    public static boolean enableSteelOreOverworldGen = true;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "enableSteelOreTheEndGen", comment = "Enable/Disable The Steel Ore World Generation in the dimension `The End`")
-    public static boolean enableSteelOreTheEndGen = false;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "enableSteelOreTheNetherGen", comment = "Enable/Disable The Steel Ore World Generation in the dimension `The Nether`")
-    public static boolean enableSteelOreTheNetherGen = false;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreOverworldRarity", comment = "Set the rarity level of the Steel Ore Generation in the dimension `Overworld`")
-    public static int steelOreOverworldRarity = 7;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreOverworldMinYSpawn", comment = "Set the min Y level of the Steel Ore Generation in the dimension `Overworld`")
-    public static int steelOreOverworldMinYSpawn = 8;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreOverworldMaxYSpawn", comment = "Set the max Y level of the Steel Ore Generation in the dimension `Overworld`")
-    public static int steelOreOverworldMaxYSpawn = 58;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndRarity", comment = "Set the rarity level of the Steel Ore Generation in the dimension `The End`")
-    public static int steelOreTheEndRarity = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndMinYSpawn", comment = "Set the min Y level of the Steel Ore Generation in the dimension `The End`")
-    public static int steelOreTheEndMinYSpawn = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndMaxYSpawn", comment = "Set the max Y level of the Steel Ore Generation in the dimension `The End`")
-    public static int steelOreTheEndMaxYSpawn = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndRarity", comment = "Set the rarity level of the Steel Ore Generation in the dimension `The Nether`")
-    public static int steelOreTheNetherRarity = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndMinYSpawn", comment = "Set the min Y level of the Steel Ore Generation in the dimension `The Nether`")
-    public static int steelOreTheNetherMinYSpawn = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreTheEndMaxYSpawn", comment = "Set the max Y level of the Steel Ore Generation in the dimension `The Nether`")
-    public static int steelOreTheNetherMaxYSpawn = 0;
-
-    @ModConfigProperty(category = "WorldGeneration", name = "steelOreVeinAmount", comment = "Set the vein amount of the Steel Ore Generation")
-    public static int steelOreVeinAmount = 5;
-
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
     public static int recipes = 1;
-
-    //OreDict
-    @ModConfigProperty(category = "OreDict", name = "enableARPSteelOreDict", comment = "Enable/Disable ArmorPlus' Steel OreDict \nex: \"ingotARPSteel\", \"oreARPSteel\", \"blockARPSteel\"")
-    public static boolean enableARPSteelOreDict = false;
 
     //WhiteList
     @ModConfigProperty(category = "WhiteList", name = "whitelistmax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")

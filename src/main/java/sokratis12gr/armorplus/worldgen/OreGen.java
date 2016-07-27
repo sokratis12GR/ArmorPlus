@@ -19,10 +19,8 @@ import java.util.Random;
 public class OreGen implements IWorldGenerator {
 
     public WorldGenerator lavaCrystalGenerator;
-    public WorldGenerator steelOreGenerator;
     public OreGen() {
         lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalVeinAmount);
-        steelOreGenerator = new WorldGenMinable(ModBlocks.STEEL_ORE.getDefaultState(), ARPConfig.steelOreVeinAmount);
     }
 
     @Override
@@ -32,24 +30,15 @@ public class OreGen implements IWorldGenerator {
                 if (ARPConfig.enableLavaCrystalOverworldGen) {
                     this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalOverworldRarity, ARPConfig.lavaCrystalOverworldMinYSpawn, ARPConfig.lavaCrystalOverworldMaxYSpawn);
                 }
-                if (ARPConfig.enableSteelOreOverworldGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreOverworldRarity, ARPConfig.steelOreOverworldMinYSpawn, ARPConfig.steelOreOverworldMaxYSpawn);
-                }
                 break;
             case 1: //The End
                 if (ARPConfig.enableLavaCrystalTheEndGen) {
                     this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheEndRarity, ARPConfig.lavaCrystalTheEndMinYSpawn, ARPConfig.lavaCrystalTheEndMaxYSpawn);
                 }
-                if (ARPConfig.enableSteelOreTheEndGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreTheEndRarity, ARPConfig.steelOreTheEndMinYSpawn, ARPConfig.steelOreTheEndMaxYSpawn);
-                }
                 break;
             case -1: //The Nether
                 if (ARPConfig.enableLavaCrystalTheNetherGen) {
                     this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheNetherRarity, ARPConfig.lavaCrystalTheNetherMinYSpawn, ARPConfig.lavaCrystalTheNetherMaxYSpawn);
-                }
-                if (ARPConfig.enableSteelOreTheNetherGen) {
-                    this.runGenerator(steelOreGenerator, world, random, chunkX, chunkZ, ARPConfig.steelOreTheNetherRarity, ARPConfig.steelOreTheNetherMinYSpawn, ARPConfig.steelOreTheNetherMaxYSpawn);
                 }
                 break;
         }

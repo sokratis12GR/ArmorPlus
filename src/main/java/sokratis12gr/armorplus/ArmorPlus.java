@@ -61,7 +61,7 @@ import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.10.2-5.0.1.0";
+    public static final String VERSION = "1.10.2-5.0.2.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
     public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
@@ -174,20 +174,11 @@ public class ArmorPlus {
 
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
-        }
 
         //Ingots
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
-        }
+        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
-
-        //Blocks
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
-        }
+        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
         registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
         registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
@@ -245,20 +236,11 @@ public class ArmorPlus {
 
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("oreARPSteel", new ItemStack(ModBlocks.STEEL_ORE, 1));
-        }
 
         //Ingots
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("ingotARPSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
-        }
+        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
-
-        //Blocks
-        if (ARPConfig.enableARPSteelOreDict) {
-            registerOre("blockARPSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
-        }
+        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
         registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
         registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));

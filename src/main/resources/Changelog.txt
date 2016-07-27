@@ -1,4 +1,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-5.0.2.0
+{Features Removed}
+* Steel Ore
+* Some Config Options for the Steel Ore
+{Features Changed}
+* Changed Steel's OreDict to `ingotSteel`, `blockSteel`
+* Steel Ingot now requires (Iron Ingot + Charcoal + Lava Crystal) to be crafted
+* Steel Ingot no longer can be obtained by smelting Steel Ore
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-5.0.1.0
 {Features Changed}
 * ArmorPlus now requires SokratisCore 1.10.2-1.0.1 to work
