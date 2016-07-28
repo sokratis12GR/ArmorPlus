@@ -10,12 +10,46 @@ import sokratis12gr.armorplus.armors.dev.DevBoots;
 import sokratis12gr.armorplus.armors.dev.DevChestplate;
 import sokratis12gr.armorplus.armors.dev.DevHelmet;
 import sokratis12gr.armorplus.armors.dev.DevLeggings;
-import sokratis12gr.armorplus.armors.origin.coal.*;
-import sokratis12gr.armorplus.armors.origin.emerald.*;
-import sokratis12gr.armorplus.armors.origin.lapis.*;
-import sokratis12gr.armorplus.armors.origin.lava.*;
-import sokratis12gr.armorplus.armors.origin.obsidian.*;
-import sokratis12gr.armorplus.armors.origin.redstone.*;
+import sokratis12gr.armorplus.armors.origin.coal.CoalBoots;
+import sokratis12gr.armorplus.armors.origin.coal.CoalChestplate;
+import sokratis12gr.armorplus.armors.origin.coal.CoalHelmet;
+import sokratis12gr.armorplus.armors.origin.coal.CoalLeggings;
+import sokratis12gr.armorplus.armors.origin.emerald.EmeraldBoots;
+import sokratis12gr.armorplus.armors.origin.emerald.EmeraldChestplate;
+import sokratis12gr.armorplus.armors.origin.emerald.EmeraldHelmet;
+import sokratis12gr.armorplus.armors.origin.emerald.EmeraldLeggings;
+import sokratis12gr.armorplus.armors.origin.lapis.LapisBoots;
+import sokratis12gr.armorplus.armors.origin.lapis.LapisChestplate;
+import sokratis12gr.armorplus.armors.origin.lapis.LapisHelmet;
+import sokratis12gr.armorplus.armors.origin.lapis.LapisLeggings;
+import sokratis12gr.armorplus.armors.origin.lava.LavaBoots;
+import sokratis12gr.armorplus.armors.origin.lava.LavaChestplate;
+import sokratis12gr.armorplus.armors.origin.lava.LavaHelmet;
+import sokratis12gr.armorplus.armors.origin.lava.LavaLeggings;
+import sokratis12gr.armorplus.armors.origin.obsidian.ObsidianBoots;
+import sokratis12gr.armorplus.armors.origin.obsidian.ObsidianChestplate;
+import sokratis12gr.armorplus.armors.origin.obsidian.ObsidianHelmet;
+import sokratis12gr.armorplus.armors.origin.obsidian.ObsidianLeggings;
+import sokratis12gr.armorplus.armors.origin.redstone.RedstoneBoots;
+import sokratis12gr.armorplus.armors.origin.redstone.RedstoneChestplate;
+import sokratis12gr.armorplus.armors.origin.redstone.RedstoneHelmet;
+import sokratis12gr.armorplus.armors.origin.redstone.RedstoneLeggings;
+import sokratis12gr.armorplus.armors.reinforced.rcarmor.RCBoots;
+import sokratis12gr.armorplus.armors.reinforced.rcarmor.RCChestplate;
+import sokratis12gr.armorplus.armors.reinforced.rcarmor.RCHelmet;
+import sokratis12gr.armorplus.armors.reinforced.rcarmor.RCLeggings;
+import sokratis12gr.armorplus.armors.reinforced.rdarmor.RDBoots;
+import sokratis12gr.armorplus.armors.reinforced.rdarmor.RDChestplate;
+import sokratis12gr.armorplus.armors.reinforced.rdarmor.RDHelmet;
+import sokratis12gr.armorplus.armors.reinforced.rdarmor.RDLeggings;
+import sokratis12gr.armorplus.armors.reinforced.rgarmor.RGBoots;
+import sokratis12gr.armorplus.armors.reinforced.rgarmor.RGChestplate;
+import sokratis12gr.armorplus.armors.reinforced.rgarmor.RGHelmet;
+import sokratis12gr.armorplus.armors.reinforced.rgarmor.RGLeggings;
+import sokratis12gr.armorplus.armors.reinforced.riarmor.RIBoots;
+import sokratis12gr.armorplus.armors.reinforced.riarmor.RIChestplate;
+import sokratis12gr.armorplus.armors.reinforced.riarmor.RIHelmet;
+import sokratis12gr.armorplus.armors.reinforced.riarmor.RILeggings;
 import sokratis12gr.armorplus.items.books.ArmorPlusBook;
 import sokratis12gr.armorplus.items.books.ArmorPlusInfoBook;
 import sokratis12gr.armorplus.items.consumables.RedstoneApple;
@@ -44,6 +78,18 @@ public class ModItems {
 
     public static ItemArmor.ArmorMaterial REDSTONE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "RedstoneArmor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
+
+    public static ItemArmor.ArmorMaterial RC_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RCARMOR", ArmorPlus.MODID + ":" + "RCArmor", 18, new int[]
+            {2, 5, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F);
+
+    public static ItemArmor.ArmorMaterial RD_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RDARMOR", ArmorPlus.MODID + ":" + "RDArmor", 35, new int[]
+            {4, 7, 9, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+
+    public static ItemArmor.ArmorMaterial RG_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RGARMOR", ArmorPlus.MODID + ":" + "RGArmor", 10, new int[]
+            {2, 4, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
+
+    public static ItemArmor.ArmorMaterial RI_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RIARMOR", ArmorPlus.MODID + ":" + "RIArmor", 18, new int[]
+            {3, 6, 7, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
     public static Chainmail CHAINMAIL;
     public static ReinforcingMaterial REINFORCING_MATERIAL;
@@ -94,6 +140,28 @@ public class ModItems {
     public static RedstoneLeggings REDSTONE_LEGGINGS;
     public static RedstoneBoots REDSTONE_BOOTS;
 
+    public static RCHelmet RC_HELMET;
+    public static RCChestplate RC_CHESTPLATE;
+    public static RCLeggings RC_LEGGINGS;
+    public static RCBoots RC_BOOTS;
+
+
+    public static RDHelmet RD_HELMET;
+    public static RDChestplate RD_CHESTPLATE;
+    public static RDLeggings RD_LEGGINGS;
+    public static RDBoots RD_BOOTS;
+
+
+    public static RGHelmet RG_HELMET;
+    public static RGChestplate RG_CHESTPLATE;
+    public static RGLeggings RG_LEGGINGS;
+    public static RGBoots RG_BOOTS;
+
+    public static RIHelmet RI_HELMET;
+    public static RIChestplate RI_CHESTPLATE;
+    public static RILeggings RI_LEGGINGS;
+    public static RIBoots RI_BOOTS;
+
     public static void init() {
         CHAINMAIL = new Chainmail();
         REINFORCING_MATERIAL = new ReinforcingMaterial();
@@ -143,6 +211,26 @@ public class ModItems {
         REDSTONE_CHESTPLATE = new RedstoneChestplate();
         REDSTONE_LEGGINGS = new RedstoneLeggings();
         REDSTONE_BOOTS = new RedstoneBoots();
+
+        RC_HELMET = new RCHelmet();
+        RC_CHESTPLATE = new RCChestplate();
+        RC_LEGGINGS = new RCLeggings();
+        RC_BOOTS = new RCBoots();
+
+        RD_HELMET = new RDHelmet();
+        RD_CHESTPLATE = new RDChestplate();
+        RD_LEGGINGS = new RDLeggings();
+        RD_BOOTS = new RDBoots();
+
+        RG_HELMET = new RGHelmet();
+        RG_CHESTPLATE = new RGChestplate();
+        RG_LEGGINGS = new RGLeggings();
+        RG_BOOTS = new RGBoots();
+
+        RI_HELMET = new RIHelmet();
+        RI_CHESTPLATE = new RIChestplate();
+        RI_LEGGINGS = new RILeggings();
+        RI_BOOTS = new RIBoots();
     }
 
 
@@ -196,5 +284,25 @@ public class ModItems {
         REDSTONE_CHESTPLATE.initModel();
         REDSTONE_LEGGINGS.initModel();
         REDSTONE_BOOTS.initModel();
+
+        RC_HELMET.initModel();
+        RC_CHESTPLATE.initModel();
+        RC_LEGGINGS.initModel();
+        RC_BOOTS.initModel();
+
+        RD_HELMET.initModel();
+        RD_CHESTPLATE.initModel();
+        RD_LEGGINGS.initModel();
+        RD_BOOTS.initModel();
+
+        RG_HELMET.initModel();
+        RG_CHESTPLATE.initModel();
+        RG_LEGGINGS.initModel();
+        RG_BOOTS.initModel();
+
+        RI_HELMET.initModel();
+        RI_CHESTPLATE.initModel();
+        RI_LEGGINGS.initModel();
+        RI_BOOTS.initModel();
     }
 }

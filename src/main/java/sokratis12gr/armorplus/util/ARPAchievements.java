@@ -7,7 +7,6 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.armors.reinforced.RDArmor;
 import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
 import sokratis12gr.armorplus.armors.special.GuardianArmor;
 import sokratis12gr.armorplus.armors.special.SuperStarArmor;
@@ -53,7 +52,7 @@ public class ARPAchievements {
         CRAFT_GUARDIAN_ARMOR = new AchievementARP("craftGuardianArmor", -2, 4, GuardianArmor.helmet, CRAFT_LAPIS_ARMOR).setNormalCrafting();
         CRAFT_REDSTONE_ARMOR = new AchievementARP("craftRedstoneArmor", 0, -4, ModItems.REDSTONE_BOOTS, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_EMERALD_ARMOR = new AchievementARP("craftEmeraldArmor", 0, -6, ModItems.EMERALD_CHESTPLATE, CRAFT_REDSTONE_ARMOR).setNormalCrafting();
-        CRAFT_REINFORCED_ARMOR = new AchievementARP("craftReinforcedArmor", 2, -2, RDArmor.chestplate, CRAFT_COAL_ARMOR).setNormalCrafting();
+        CRAFT_REINFORCED_ARMOR = new AchievementARP("craftReinforcedArmor", 2, -2, ModItems.RD_CHESTPLATE, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_OBSIDIAN_ARMOR = new AchievementARP("craftObsidianArmor", 4, 0, ModItems.OBSIDIAN_CHESTPLATE, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_LAVA_ARMOR = new AchievementARP("craftLavaArmor", 6, 0, ModItems.LAVA_CHESTPLATE, CRAFT_OBSIDIAN_ARMOR).setNormalCrafting();
         CRAFT_SUPER_STAR_ARMOR = new AchievementARP("craftSuperStarArmor", 8, 0, SuperStarArmor.chestplate, CRAFT_LAVA_ARMOR).setNormalCrafting();

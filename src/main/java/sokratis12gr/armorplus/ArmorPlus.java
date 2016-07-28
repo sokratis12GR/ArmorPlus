@@ -20,10 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12gr.armorplus.armors.reinforced.RCArmor;
-import sokratis12gr.armorplus.armors.reinforced.RDArmor;
-import sokratis12gr.armorplus.armors.reinforced.RGArmor;
-import sokratis12gr.armorplus.armors.reinforced.RIArmor;
 import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
 import sokratis12gr.armorplus.armors.special.GuardianArmor;
 import sokratis12gr.armorplus.armors.special.SuperStarArmor;
@@ -93,10 +89,6 @@ public class ArmorPlus {
     EnderDragonArmor ENDER_DRAGON_ARMOR = new EnderDragonArmor();
     GuardianArmor GUARDIAN_ARMOR = new GuardianArmor();
     TheUltimateArmor THE_ULTIMATE_ARMOR = new TheUltimateArmor();
-    RIArmor RI_ARMOR = new RIArmor();
-    RGArmor RG_ARMOR = new RGArmor();
-    RDArmor RD_ARMOR = new RDArmor();
-    RCArmor RC_ARMOR = new RCArmor();
     ChickenArmor CHICKEN_ARMOR = new ChickenArmor();
     SlimeArmor SLIME_ARMOR = new SlimeArmor();
     /**
@@ -138,10 +130,6 @@ public class ArmorPlus {
         ENDER_DRAGON_ARMOR.load(event);
         GUARDIAN_ARMOR.load(event);
         THE_ULTIMATE_ARMOR.load(event);
-        RI_ARMOR.load(event);
-        RG_ARMOR.load(event);
-        RD_ARMOR.load(event);
-        RC_ARMOR.load(event);
         CHICKEN_ARMOR.load(event);
         SLIME_ARMOR.load(event);
 
@@ -194,10 +182,6 @@ public class ArmorPlus {
         ENDER_DRAGON_ARMOR.load(event);
         GUARDIAN_ARMOR.load(event);
         THE_ULTIMATE_ARMOR.load(event);
-        RI_ARMOR.load(event);
-        RG_ARMOR.load(event);
-        RD_ARMOR.load(event);
-        RC_ARMOR.load(event);
         CHICKEN_ARMOR.load(event);
         SLIME_ARMOR.load(event);
 
@@ -253,10 +237,6 @@ public class ArmorPlus {
         ENDER_DRAGON_ARMOR.instance = ArmorPlus.instance;
         GUARDIAN_ARMOR.instance = ArmorPlus.instance;
         THE_ULTIMATE_ARMOR.instance = ArmorPlus.instance;
-        RI_ARMOR.instance = ArmorPlus.instance;
-        RG_ARMOR.instance = ArmorPlus.instance;
-        RD_ARMOR.instance = ArmorPlus.instance;
-        RC_ARMOR.instance = ArmorPlus.instance;
         CHICKEN_ARMOR.instance = ArmorPlus.instance;
         SLIME_ARMOR.instance = ArmorPlus.instance;
 
@@ -276,10 +256,6 @@ public class ArmorPlus {
         ENDER_DRAGON_ARMOR.preInit(event);
         GUARDIAN_ARMOR.preInit(event);
         THE_ULTIMATE_ARMOR.preInit(event);
-        RI_ARMOR.preInit(event);
-        RG_ARMOR.preInit(event);
-        RD_ARMOR.preInit(event);
-        RC_ARMOR.preInit(event);
         CHICKEN_ARMOR.preInit(event);
         SLIME_ARMOR.preInit(event);
 

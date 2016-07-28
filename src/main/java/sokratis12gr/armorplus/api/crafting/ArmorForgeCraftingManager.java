@@ -9,10 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sokratis12gr.armorplus.ARPConfig;
-import sokratis12gr.armorplus.armors.reinforced.RCArmor;
-import sokratis12gr.armorplus.armors.reinforced.RDArmor;
-import sokratis12gr.armorplus.armors.reinforced.RGArmor;
-import sokratis12gr.armorplus.armors.reinforced.RIArmor;
 import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
 import sokratis12gr.armorplus.armors.special.GuardianArmor;
 import sokratis12gr.armorplus.armors.special.SuperStarArmor;
@@ -167,39 +163,39 @@ public class ArmorForgeCraftingManager {
         // ===================================== Reinforced Armors =====================================
         /**  Reinforced Chain Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(new ItemStack(RCArmor.helmet, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
-            this.addRecipe(new ItemStack(RCArmor.helmet, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
-            this.addRecipe(new ItemStack(RCArmor.chestplate, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_CHESTPLATE);
-            this.addRecipe(new ItemStack(RCArmor.legs, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_LEGGINGS);
-            this.addRecipe(new ItemStack(RCArmor.boots, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
-            this.addRecipe(new ItemStack(RCArmor.boots, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RC_HELMET, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RC_HELMET, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RC_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_CHESTPLATE);
+            this.addRecipe(new ItemStack(ModItems.RC_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_LEGGINGS);
+            this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
         }
         /**  Reinforced Diamond Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(new ItemStack(RDArmor.helmet, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
-            this.addRecipe(new ItemStack(RDArmor.helmet, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
-            this.addRecipe(new ItemStack(RDArmor.chestplate, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_CHESTPLATE);
-            this.addRecipe(new ItemStack(RDArmor.legs, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_LEGGINGS);
-            this.addRecipe(new ItemStack(RDArmor.boots, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
-            this.addRecipe(new ItemStack(RDArmor.boots, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RD_HELMET, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RD_HELMET, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RD_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_CHESTPLATE);
+            this.addRecipe(new ItemStack(ModItems.RD_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_LEGGINGS);
+            this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
         }
         /**  Reinforced Golden Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(new ItemStack(RGArmor.helmet, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
-            this.addRecipe(new ItemStack(RGArmor.helmet, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
-            this.addRecipe(new ItemStack(RGArmor.chestplate, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_CHESTPLATE);
-            this.addRecipe(new ItemStack(RGArmor.legs, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_LEGGINGS);
-            this.addRecipe(new ItemStack(RGArmor.boots, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
-            this.addRecipe(new ItemStack(RGArmor.boots, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RG_HELMET, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RG_HELMET, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RG_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_CHESTPLATE);
+            this.addRecipe(new ItemStack(ModItems.RG_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_LEGGINGS);
+            this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
         }
         /**  Reinforced Iron Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(new ItemStack(RIArmor.helmet, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
-            this.addRecipe(new ItemStack(RIArmor.helmet, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
-            this.addRecipe(new ItemStack(RIArmor.chestplate, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_CHESTPLATE);
-            this.addRecipe(new ItemStack(RIArmor.legs, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_LEGGINGS);
-            this.addRecipe(new ItemStack(RIArmor.boots, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
-            this.addRecipe(new ItemStack(RIArmor.boots, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RI_HELMET, 1), "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RI_HELMET, 1), "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
+            this.addRecipe(new ItemStack(ModItems.RI_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_CHESTPLATE);
+            this.addRecipe(new ItemStack(ModItems.RI_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_LEGGINGS);
+            this.addRecipe(new ItemStack(ModItems.RI_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
+            this.addRecipe(new ItemStack(ModItems.RI_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
         }
         // ===================================== Special Mob Armors =====================================
         /** Chicken Armor */

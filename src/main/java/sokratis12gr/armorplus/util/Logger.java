@@ -2,10 +2,6 @@ package sokratis12gr.armorplus.util;
 
 import net.minecraftforge.common.MinecraftForge;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.armors.reinforced.RCArmor;
-import sokratis12gr.armorplus.armors.reinforced.RDArmor;
-import sokratis12gr.armorplus.armors.reinforced.RGArmor;
-import sokratis12gr.armorplus.armors.reinforced.RIArmor;
 import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
 import sokratis12gr.armorplus.armors.special.GuardianArmor;
 import sokratis12gr.armorplus.armors.special.SuperStarArmor;
@@ -82,10 +78,10 @@ public class Logger {
             writer.write("\n\n8. Super Star Armor: " + SuperStarArmor.helmet.getRegistryName() + " , " + SuperStarArmor.chestplate.getRegistryName() + " , " + SuperStarArmor.legs.getRegistryName() + " , " + SuperStarArmor.boots.getRegistryName());
             writer.write("\n\n9. Ender Dragon Armor: " + EnderDragonArmor.helmet.getRegistryName() + " , " + EnderDragonArmor.chestplate.getRegistryName() + " , " + EnderDragonArmor.legs.getRegistryName() + " , " + EnderDragonArmor.boots.getRegistryName());
             writer.write("\n\n10. The Ultimate Armor: " + TheUltimateArmor.helmet.getRegistryName() + " , " + TheUltimateArmor.chestplate.getRegistryName() + " , " + TheUltimateArmor.legs.getRegistryName() + " , " + TheUltimateArmor.boots.getRegistryName());
-            writer.write("\n\n11. Reinforced Gold Armor: " + RGArmor.helmet.getRegistryName() + " , " + RGArmor.chestplate.getRegistryName() + " , " + RGArmor.legs.getRegistryName() + " , " + RGArmor.boots.getRegistryName());
-            writer.write("\n\n12. Reinforced Chain Armor: " + RCArmor.helmet.getRegistryName() + " , " + RCArmor.chestplate.getRegistryName() + " , " + RCArmor.legs.getRegistryName() + " , " + RCArmor.boots.getRegistryName());
-            writer.write("\n\n13. Reinforced Iron Armor: " + RIArmor.helmet.getRegistryName() + " , " + RIArmor.chestplate.getRegistryName() + " , " + RIArmor.legs.getRegistryName() + " , " + RIArmor.boots.getRegistryName());
-            writer.write("\n\n14. Reinforced Diamond Armor: " + RDArmor.helmet.getRegistryName() + " , " + RDArmor.chestplate.getRegistryName() + " , " + RDArmor.legs.getRegistryName() + " , " + RDArmor.boots.getRegistryName());
+            writer.write("\n\n11. Reinforced Gold Armor: " + ModItems.RG_HELMET.getRegistryName() + " , " + ModItems.RG_CHESTPLATE.getRegistryName() + " , " + ModItems.RG_LEGGINGS.getRegistryName() + " , " + ModItems.RG_BOOTS.getRegistryName());
+            writer.write("\n\n12. Reinforced Chain Armor: " + ModItems.RC_HELMET.getRegistryName() + " , " + ModItems.RC_CHESTPLATE.getRegistryName() + " , " + ModItems.RC_LEGGINGS.getRegistryName() + " , " + ModItems.RC_BOOTS.getRegistryName());
+            writer.write("\n\n13. Reinforced Iron Armor: " + ModItems.RI_HELMET.getRegistryName() + " , " + ModItems.RI_CHESTPLATE.getRegistryName() + " , " + ModItems.RI_LEGGINGS.getRegistryName() + " , " + ModItems.RI_BOOTS.getRegistryName());
+            writer.write("\n\n14. Reinforced Diamond Armor: " + ModItems.RD_HELMET.getRegistryName() + " , " + ModItems.RD_CHESTPLATE.getRegistryName() + " , " + ModItems.RD_LEGGINGS.getRegistryName() + " , " + ModItems.RD_BOOTS.getRegistryName());
             writer.write("\n\n15. Cobalt Armor: " + CobaltArmor.helmet.getRegistryName() + " , " + CobaltArmor.chestplate.getRegistryName() + " , " + CobaltArmor.legs.getRegistryName() + " , " + CobaltArmor.boots.getRegistryName());
             writer.write("\n\n16. Ardite  Armor: " + ArditeArmor.helmet.getRegistryName() + " , " + ArditeArmor.chestplate.getRegistryName() + " , " + ArditeArmor.legs.getRegistryName() + " , " + ArditeArmor.boots.getRegistryName());
             writer.write("\n\n17. Manyullyn Armor: " + ManyullynArmor.helmet.getRegistryName() + " , " + ManyullynArmor.chestplate.getRegistryName() + " , " + ManyullynArmor.legs.getRegistryName() + " , " + ManyullynArmor.boots.getRegistryName());

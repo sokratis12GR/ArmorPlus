@@ -6,11 +6,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import sokratis12gr.armorplus.armors.origin.*;
-import sokratis12gr.armorplus.armors.reinforced.RCArmor;
-import sokratis12gr.armorplus.armors.reinforced.RDArmor;
-import sokratis12gr.armorplus.armors.reinforced.RGArmor;
-import sokratis12gr.armorplus.armors.reinforced.RIArmor;
 import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
 import sokratis12gr.armorplus.armors.special.GuardianArmor;
 import sokratis12gr.armorplus.armors.special.SuperStarArmor;
@@ -134,10 +129,10 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == ChickenArmor.helmet || stack.getItem() == ChickenArmor.chestplate || stack.getItem() == ChickenArmor.legs || stack.getItem() == ChickenArmor.boots)
             this.thePlayer.addStat(ARPAchievements.CRAFT_CHICKEN_ARMOR, 1);
         /** Reinforcing Armors! - Achievement Trigger*/
-        if (stack.getItem() == RCArmor.helmet || stack.getItem() == RCArmor.chestplate || stack.getItem() == RCArmor.legs || stack.getItem() == RCArmor.boots
-                || stack.getItem() == RDArmor.helmet || stack.getItem() == RDArmor.chestplate || stack.getItem() == RDArmor.legs || stack.getItem() == RDArmor.boots
-                || stack.getItem() == RGArmor.helmet || stack.getItem() == RGArmor.chestplate || stack.getItem() == RGArmor.legs || stack.getItem() == RGArmor.boots
-                || stack.getItem() == RIArmor.helmet || stack.getItem() == RIArmor.chestplate || stack.getItem() == RIArmor.legs || stack.getItem() == RIArmor.boots)
+        if (stack.getItem() == ModItems.RC_HELMET || stack.getItem() == ModItems.RC_CHESTPLATE || stack.getItem() == ModItems.RC_LEGGINGS || stack.getItem() == ModItems.RC_BOOTS
+                || stack.getItem() == ModItems.RD_HELMET || stack.getItem() == ModItems.RD_CHESTPLATE || stack.getItem() == ModItems.RD_LEGGINGS || stack.getItem() == ModItems.RD_BOOTS
+                || stack.getItem() == ModItems.RG_HELMET || stack.getItem() == ModItems.RG_CHESTPLATE || stack.getItem() == ModItems.RG_LEGGINGS || stack.getItem() == ModItems.RG_BOOTS
+                || stack.getItem() == ModItems.RG_HELMET || stack.getItem() == ModItems.RI_CHESTPLATE || stack.getItem() == ModItems.RI_LEGGINGS || stack.getItem() == ModItems.RI_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_REINFORCED_ARMOR, 1);
 
         /** Tinkers' Armors*/
