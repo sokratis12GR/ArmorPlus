@@ -9,15 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sokratis12gr.armorplus.ARPConfig;
-import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
-import sokratis12gr.armorplus.armors.special.GuardianArmor;
-import sokratis12gr.armorplus.armors.special.SuperStarArmor;
-import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
-import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
-import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
 import sokratis12gr.armorplus.armors.tconstruct.*;
-import sokratis12gr.armorplus.armors.v2.ElectricalArmor;
-import sokratis12gr.armorplus.armors.v2.SteelArmor;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
 
@@ -200,217 +192,217 @@ public class ArmorForgeCraftingManager {
         // ===================================== Special Mob Armors =====================================
         /** Chicken Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableChickenArmorRecipes) {
-            this.addRecipe(new ItemStack(ChickenArmor.helmet, 1), "XXX", "FFF", "FXF", 'F', Items.FEATHER);
-            this.addRecipe(new ItemStack(ChickenArmor.helmet, 1), "FFF", "FXF", "XXX", 'F', Items.FEATHER);
-            this.addRecipe(new ItemStack(ChickenArmor.chestplate, 1), "FXF", "FFF", "FFF", 'F', Items.FEATHER);
-            this.addRecipe(new ItemStack(ChickenArmor.legs, 1), "FFF", "FXF", "FXF", 'F', Items.FEATHER);
-            this.addRecipe(new ItemStack(ChickenArmor.boots, 1), "XXX", "FXF", "FXF", 'F', Items.FEATHER);
-            this.addRecipe(new ItemStack(ChickenArmor.boots, 1), "FXF", "FXF", "XXX", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_HELMET, 1), "XXX", "FFF", "FXF", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_HELMET, 1), "FFF", "FXF", "XXX", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_CHESTPLATE, 1), "FXF", "FFF", "FFF", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_LEGGINGS, 1), "FFF", "FXF", "FXF", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "XXX", "FXF", "FXF", 'F', Items.FEATHER);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "FXF", "FXF", "XXX", 'F', Items.FEATHER);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableChickenArmorRecipes) {
-            this.addRecipe(new ItemStack(ChickenArmor.helmet, 1), "XXX", "FFF", "EXE", 'F', Items.FEATHER, 'E', Items.EGG);
-            this.addRecipe(new ItemStack(ChickenArmor.helmet, 1), "FFF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
-            this.addRecipe(new ItemStack(ChickenArmor.chestplate, 1), "EXE", "FEF", "FFF", 'F', Items.FEATHER, 'E', Items.EGG);
-            this.addRecipe(new ItemStack(ChickenArmor.legs, 1), "EFE", "FXF", "FXF", 'F', Items.FEATHER, 'E', Items.EGG);
-            this.addRecipe(new ItemStack(ChickenArmor.boots, 1), "XXX", "FXF", "EXE", 'F', Items.FEATHER, 'E', Items.EGG);
-            this.addRecipe(new ItemStack(ChickenArmor.boots, 1), "FXF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_HELMET, 1), "XXX", "FFF", "EXE", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_HELMET, 1), "FFF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_CHESTPLATE, 1), "EXE", "FEF", "FFF", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_LEGGINGS, 1), "EFE", "FXF", "FXF", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "XXX", "FXF", "EXE", 'F', Items.FEATHER, 'E', Items.EGG);
+            this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "FXF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
         }
         /** Slime Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableSlimeArmorRecipes) {
-            this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "XXX", "SSS", "SXS", 'S', Items.SLIME_BALL);
-            this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "SSS", "SXS", "XXX", 'S', Items.SLIME_BALL);
-            this.addRecipe(new ItemStack(SlimeArmor.chestplate, 1), "SXS", "SSS", "SSS", 'S', Items.SLIME_BALL);
-            this.addRecipe(new ItemStack(SlimeArmor.legs, 1), "SSS", "SXS", "SXS", 'S', Items.SLIME_BALL);
-            this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "XXX", "SXS", "SXS", 'S', Items.SLIME_BALL);
-            this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "SXS", "SXS", "XXX", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_HELMET, 1), "XXX", "SSS", "SXS", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_HELMET, 1), "SSS", "SXS", "XXX", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_CHESTPLATE, 1), "SXS", "SSS", "SSS", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_LEGGINGS, 1), "SSS", "SXS", "SXS", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_BOOTS, 1), "XXX", "SXS", "SXS", 'S', Items.SLIME_BALL);
+            this.addRecipe(new ItemStack(ModItems.SLIME_BOOTS, 1), "SXS", "SXS", "XXX", 'S', Items.SLIME_BALL);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableSlimeArmorRecipes) {
-            this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "XXX", "SSS", "SXS", 'S', Blocks.SLIME_BLOCK);
-            this.addRecipe(new ItemStack(SlimeArmor.helmet, 1), "SSS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
-            this.addRecipe(new ItemStack(SlimeArmor.chestplate, 1), "SXS", "SSS", "SSS", 'S', Blocks.SLIME_BLOCK);
-            this.addRecipe(new ItemStack(SlimeArmor.legs, 1), "SSS", "SXS", "SXS", 'S', Blocks.SLIME_BLOCK);
-            this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "XXX", "SXS", "SXS", 'S', Blocks.SLIME_BLOCK);
-            this.addRecipe(new ItemStack(SlimeArmor.boots, 1), "SXS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_HELMET, 1), "XXX", "SSS", "SXS", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_HELMET, 1), "SSS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_CHESTPLATE, 1), "SXS", "SSS", "SSS", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_LEGGINGS, 1), "SSS", "SXS", "SXS", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_BOOTS, 1), "XXX", "SXS", "SXS", 'S', Blocks.SLIME_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.SLIME_BOOTS, 1), "SXS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
         }
         // ===================================== Special Armors =====================================
         /** Ender Dragon Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableEnderDragonArmorRecipes) {
-            this.addRecipe(new ItemStack(EnderDragonArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
-            this.addRecipe(new ItemStack(EnderDragonArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE);
-            this.addRecipe(new ItemStack(EnderDragonArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE);
-            this.addRecipe(new ItemStack(EnderDragonArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
-            this.addRecipe(new ItemStack(EnderDragonArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
-            this.addRecipe(new ItemStack(EnderDragonArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1), "XXX", "EEE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1), "EEE", "EXE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1), "EXE", "EEE", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS, 1), "EEE", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1), "XXX", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1), "EXE", "EXE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableEnderDragonArmorRecipes) {
-            this.addRecipe(new ItemStack(EnderDragonArmor.helmet, 1), "XXX", "EEE", "ESE", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', new ItemStack(Items.SKULL, 1, 5));
-            this.addRecipe(new ItemStack(EnderDragonArmor.helmet, 1), "EEE", "ESE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', new ItemStack(Items.SKULL, 1, 5));
-            this.addRecipe(new ItemStack(EnderDragonArmor.chestplate, 1), "ELE", "EEE", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE, 'L', Items.ELYTRA);
-            this.addRecipe(new ItemStack(EnderDragonArmor.legs, 1), "DED", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE, 'D', new ItemStack(Item.getByNameOrId("minecraft:dragon_egg")));
-            this.addRecipe(new ItemStack(EnderDragonArmor.boots, 1), "XXX", "EXE", "ECE", 'E', ModItems.ENDER_DRAGON_SCALE, 'C', Items.END_CRYSTAL);
-            this.addRecipe(new ItemStack(EnderDragonArmor.boots, 1), "EXE", "ECE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE, 'C', Items.END_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1), "XXX", "EEE", "ESE", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', new ItemStack(Items.SKULL, 1, 5));
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1), "EEE", "ESE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', new ItemStack(Items.SKULL, 1, 5));
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1), "ELE", "EEE", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE, 'L', Items.ELYTRA);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS, 1), "DED", "EXE", "EXE", 'E', ModItems.ENDER_DRAGON_SCALE, 'D', new ItemStack(Item.getByNameOrId("minecraft:dragon_egg")));
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1), "XXX", "EXE", "ECE", 'E', ModItems.ENDER_DRAGON_SCALE, 'C', Items.END_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1), "EXE", "ECE", "XXX", 'E', ModItems.ENDER_DRAGON_SCALE, 'C', Items.END_CRYSTAL);
         }
         /** Guardian Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableGuardianArmorRecipes) {
-            this.addRecipe(new ItemStack(GuardianArmor.helmet, 1), "XXX", "GGG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
-            this.addRecipe(new ItemStack(GuardianArmor.helmet, 1), "GGG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE);
-            this.addRecipe(new ItemStack(GuardianArmor.chestplate, 1), "GXG", "GGG", "GGG", 'G', ModItems.GUARDIAN_SCALE);
-            this.addRecipe(new ItemStack(GuardianArmor.legs, 1), "GGG", "GXG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
-            this.addRecipe(new ItemStack(GuardianArmor.boots, 1), "XXX", "GXG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
-            this.addRecipe(new ItemStack(GuardianArmor.boots, 1), "GXG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_HELMET, 1), "XXX", "GGG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_HELMET, 1), "GGG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_CHESTPLATE, 1), "GXG", "GGG", "GGG", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_LEGGINGS, 1), "GGG", "GXG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1), "XXX", "GXG", "GXG", 'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1), "GXG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableGuardianArmorRecipes) {
-            this.addRecipe(new ItemStack(GuardianArmor.helmet, 1), "XXX", "GLG", "GXG", 'G', ModItems.GUARDIAN_SCALE, 'L', Blocks.SEA_LANTERN);
-            this.addRecipe(new ItemStack(GuardianArmor.helmet, 1), "GLG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE, 'L', Blocks.SEA_LANTERN);
-            this.addRecipe(new ItemStack(GuardianArmor.chestplate, 1), "SXS", "GLG", "CGC", 'G', ModItems.GUARDIAN_SCALE, 'C', Items.PRISMARINE_CRYSTALS, 'L', Blocks.SEA_LANTERN, 'S', Blocks.SPONGE);
-            this.addRecipe(new ItemStack(GuardianArmor.legs, 1), "CGC", "GXG", "PXP", 'G', ModItems.GUARDIAN_SCALE, 'C', Items.PRISMARINE_CRYSTALS, 'P', Items.PRISMARINE_SHARD);
-            this.addRecipe(new ItemStack(GuardianArmor.boots, 1), "XXX", "SXS", "GXG", 'G', ModItems.GUARDIAN_SCALE, 'S', Blocks.SPONGE);
-            this.addRecipe(new ItemStack(GuardianArmor.boots, 1), "SXS", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE, 'S', Blocks.SPONGE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_HELMET, 1), "XXX", "GLG", "GXG", 'G', ModItems.GUARDIAN_SCALE, 'L', Blocks.SEA_LANTERN);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_HELMET, 1), "GLG", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE, 'L', Blocks.SEA_LANTERN);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_CHESTPLATE, 1), "SXS", "GLG", "CGC", 'G', ModItems.GUARDIAN_SCALE, 'C', Items.PRISMARINE_CRYSTALS, 'L', Blocks.SEA_LANTERN, 'S', Blocks.SPONGE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_LEGGINGS, 1), "CGC", "GXG", "PXP", 'G', ModItems.GUARDIAN_SCALE, 'C', Items.PRISMARINE_CRYSTALS, 'P', Items.PRISMARINE_SHARD);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1), "XXX", "SXS", "GXG", 'G', ModItems.GUARDIAN_SCALE, 'S', Blocks.SPONGE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1), "SXS", "GXG", "XXX", 'G', ModItems.GUARDIAN_SCALE, 'S', Blocks.SPONGE);
         }
         /** Super Star Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableSuperStarArmorRecipes) {
-            this.addRecipe(new ItemStack(SuperStarArmor.helmet, 1), "XXX", "WWW", "WNW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.helmet, 1), "WWW", "WNW", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.chestplate, 1), "WNW", "WWW", "WWW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.legs, 1), "WWW", "WNW", "WXW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.boots, 1), "XXX", "WNW", "WXW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.boots, 1), "WNW", "WXW", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_HELMET, 1), "XXX", "WWW", "WNW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_HELMET, 1), "WWW", "WNW", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_CHESTPLATE, 1), "WNW", "WWW", "WWW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_LEGGINGS, 1), "WWW", "WNW", "WXW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1), "XXX", "WNW", "WXW", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1), "WNW", "WXW", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableSuperStarArmorRecipes) {
-            this.addRecipe(new ItemStack(SuperStarArmor.helmet, 1), "WWW", "WSW", "NXN", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.chestplate, 1), "SXS", "NNN", "WWW", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.legs, 1), "SWS", "WXW", "NXN", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.boots, 1), "XXX", "WXW", "NXN", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
-            this.addRecipe(new ItemStack(SuperStarArmor.boots, 1), "WXW", "NXN", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_HELMET, 1), "WWW", "WSW", "NXN", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_CHESTPLATE, 1), "SXS", "NNN", "WWW", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_LEGGINGS, 1), "SWS", "WXW", "NXN", 'W', ModItems.WITHER_BONE, 'S', new ItemStack(Items.SKULL, 1, 1), 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1), "XXX", "WXW", "NXN", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1), "WXW", "NXN", "XXX", 'W', ModItems.WITHER_BONE, 'N', Items.NETHER_STAR);
         }
         /** The Ultimate Armor */
         if (ARPConfig.enableTheUltimateArmorRecipes) {
-            this.addShapelessRecipe(new ItemStack(TheUltimateArmor.helmet, 1), new ItemStack(SuperStarArmor.helmet, 1), new ItemStack(EnderDragonArmor.helmet, 1), new ItemStack(GuardianArmor.helmet, 1), ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(TheUltimateArmor.chestplate, 1), new ItemStack(SuperStarArmor.chestplate, 1), new ItemStack(EnderDragonArmor.chestplate, 1), new ItemStack(GuardianArmor.chestplate, 1), ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(TheUltimateArmor.legs, 1), new ItemStack(SuperStarArmor.legs, 1), new ItemStack(EnderDragonArmor.legs, 1), new ItemStack(GuardianArmor.legs, 1), ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(TheUltimateArmor.boots, 1), new ItemStack(SuperStarArmor.boots, 1), new ItemStack(EnderDragonArmor.boots, 1), new ItemStack(GuardianArmor.boots, 1), ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1), new ItemStack(ModItems.SUPER_STAR_HELMET, 1), new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1), new ItemStack(ModItems.GUARDIAN_HELMET, 1), ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1), new ItemStack(ModItems.SUPER_STAR_CHESTPLATE, 1), new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1), new ItemStack(ModItems.GUARDIAN_CHESTPLATE, 1), ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1), new ItemStack(ModItems.SUPER_STAR_LEGGINGS, 1), new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS, 1), new ItemStack(ModItems.GUARDIAN_LEGGINGS, 1), ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1), new ItemStack(ModItems.SUPER_STAR_BOOTS, 1), new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1), new ItemStack(ModItems.GUARDIAN_BOOTS, 1), ModItems.THE_ULTIMATE_MATERIAL);
         }
         // ===================================== Tinkers' Construct Armors =====================================
         /** Ardite Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableArditeArmorRecipes) {
-            this.addRecipe(new ItemStack(ArditeArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableArditeArmorRecipes) {
-            this.addRecipe(new ItemStack(ArditeArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
-            this.addRecipe(new ItemStack(ArditeArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
+            this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1));
         }
         /** Cobalt Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCobaltArmorRecipes) {
-            this.addRecipe(new ItemStack(CobaltArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableCobaltArmorRecipes) {
-            this.addRecipe(new ItemStack(CobaltArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
-            this.addRecipe(new ItemStack(CobaltArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
+            this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0));
         }
         /** Knight Slime Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableKnightSlimeArmorRecipes) {
-            this.addRecipe(new ItemStack(KnightSlimeArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_LEGGINGS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableKnightSlimeArmorRecipes) {
-            this.addRecipe(new ItemStack(KnightSlimeArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
-            this.addRecipe(new ItemStack(KnightSlimeArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_LEGGINGS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
+            this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_LEGGINGS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3));
         }
         /** Manyullyn Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableManyullynArmorRecipes) {
-            this.addRecipe(new ItemStack(ManyullynArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableManyullynArmorRecipes) {
-            this.addRecipe(new ItemStack(ManyullynArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
-            this.addRecipe(new ItemStack(ManyullynArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
+            this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2));
         }
         /** Pig Iron Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enablePigIronArmorRecipes) {
-            this.addRecipe(new ItemStack(PigIronArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enablePigIronArmorRecipes) {
-            this.addRecipe(new ItemStack(PigIronArmor.helmet, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.helmet, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.chestplate, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.legs, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.boots, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
-            this.addRecipe(new ItemStack(PigIronArmor.boots, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
+            this.addRecipe(new ItemStack(ModItems.PIG_IRON_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4));
         }
         // ===================================== v2 Armors =====================================
         this.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 1), ModItems.STEEL_INGOT, Items.REDSTONE, Items.GLOWSTONE_DUST);
         /** Metal Armor */
         if (ARPConfig.recipes == 0) {
-            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModItems.STEEL_INGOT);
-            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
-            this.addRecipe(new ItemStack(SteelArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.STEEL_INGOT);
-            this.addRecipe(new ItemStack(SteelArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
-            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
-            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_HELMET, 1), "XXX", "MMM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_HELMET, 1), "MMM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_CHESTPLATE, 1), "MXM", "MMM", "MMM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_LEGGINGS, 1), "MMM", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "XXX", "MXM", "MXM", 'M', ModItems.STEEL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "MXM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
         }
         if (ARPConfig.recipes == 1) {
-            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "XXX", "MMM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
-            this.addRecipe(new ItemStack(SteelArmor.helmet, 1), "MMM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
-            this.addRecipe(new ItemStack(SteelArmor.chestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.STEEL_BLOCK);
-            this.addRecipe(new ItemStack(SteelArmor.legs, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
-            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
-            this.addRecipe(new ItemStack(SteelArmor.boots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_HELMET, 1), "XXX", "MMM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_HELMET, 1), "MMM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_CHESTPLATE, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_LEGGINGS, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
         }
         /** Electrical Armor */
         if (ARPConfig.recipes == 0) {
-            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
-            this.addRecipe(new ItemStack(ElectricalArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.ELECTRICAL_INGOT);
-            this.addRecipe(new ItemStack(ElectricalArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
-            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_HELMET, 1), "XXX", "EEE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_HELMET, 1), "EEE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_CHESTPLATE, 1), "EXE", "EEE", "EEE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_LEGGINGS, 1), "EEE", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_BOOTS, 1), "XXX", "EXE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_BOOTS, 1), "EXE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
         }
         if (ARPConfig.recipes == 1) {
-            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "XXX", "EEE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
-            this.addRecipe(new ItemStack(ElectricalArmor.helmet, 1), "EEE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
-            this.addRecipe(new ItemStack(ElectricalArmor.chestplate, 1), "EXE", "EEE", "EEE", 'E', ModBlocks.ELECTRICAL_BLOCK);
-            this.addRecipe(new ItemStack(ElectricalArmor.legs, 1), "EEE", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
-            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "XXX", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
-            this.addRecipe(new ItemStack(ElectricalArmor.boots, 1), "EXE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_HELMET, 1), "XXX", "EEE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_HELMET, 1), "EEE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_CHESTPLATE, 1), "EXE", "EEE", "EEE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_LEGGINGS, 1), "EEE", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_BOOTS, 1), "XXX", "EXE", "EXE", 'E', ModBlocks.ELECTRICAL_BLOCK);
+            this.addRecipe(new ItemStack(ModItems.ELECTRICAL_BOOTS, 1), "EXE", "EXE", "XXX", 'E', ModBlocks.ELECTRICAL_BLOCK);
         }
 
         // ===================================== Items =====================================

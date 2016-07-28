@@ -2,6 +2,7 @@ package sokratis12gr.armorplus.armors.reinforced.riarmor;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -42,6 +43,6 @@ public class RIHelmet extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.CHAINMAIL;
+        return repair.getItem() == Items.IRON_INGOT;
     }
 }

@@ -13,12 +13,6 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.armors.special.GuardianArmor;
-import sokratis12gr.armorplus.armors.special.SuperStarArmor;
-import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
-import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
-import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
-import sokratis12gr.armorplus.armors.tconstruct.*;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
 import sokratis12gr.armorplus.util.ARPAchievements;
@@ -49,7 +43,7 @@ public class GlobalEventsArmorPlus {
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
         /**The Ultimate Armor Armor*/
-        if (head != null && head.getItem() == TheUltimateArmor.helmet && chest != null && chest.getItem() == TheUltimateArmor.chestplate && legs != null && legs.getItem() == TheUltimateArmor.legs && feet != null && feet.getItem() == TheUltimateArmor.boots) {
+        if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS) {
             if (entity instanceof EntityLivingBase) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.ultimateArmorEffectlevel, true, true));
@@ -59,7 +53,7 @@ public class GlobalEventsArmorPlus {
         }
         /**Full Super Star Armor*/
         if (ARPConfig.enableFullSuperStarArmorEffect) {
-            if (head != null && head.getItem() == SuperStarArmor.helmet && chest != null && chest.getItem() == SuperStarArmor.chestplate && legs != null && legs.getItem() == SuperStarArmor.legs && feet != null && feet.getItem() == SuperStarArmor.boots) {
+            if (head != null && head.getItem() == ModItems.SUPER_STAR_HELMET && chest != null && chest.getItem() == ModItems.SUPER_STAR_CHESTPLATE && legs != null && legs.getItem() == ModItems.SUPER_STAR_LEGGINGS && feet != null && feet.getItem() == ModItems.SUPER_STAR_BOOTS) {
                 if (entity instanceof EntityLivingBase) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
                     entity.removePotionEffect(MobEffects.WITHER);
@@ -111,17 +105,17 @@ public class GlobalEventsArmorPlus {
             }
         }
         /**Full Guardian Armor*/
-        if (head != null && head.getItem() == GuardianArmor.helmet && chest != null && chest.getItem() == GuardianArmor.chestplate && legs != null && legs.getItem() == GuardianArmor.legs && feet != null && feet.getItem() == GuardianArmor.boots) {
+        if (head != null && head.getItem() == ModItems.GUARDIAN_HELMET && chest != null && chest.getItem() == ModItems.GUARDIAN_CHESTPLATE && legs != null && legs.getItem() == ModItems.GUARDIAN_LEGGINGS && feet != null && feet.getItem() == ModItems.GUARDIAN_BOOTS) {
             if (entity instanceof EntityLivingBase)
                 entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
         }
         /**Full Chicken Armor*/
-        if (head != null && head.getItem() == ChickenArmor.helmet && chest != null && chest.getItem() == ChickenArmor.chestplate && legs != null && legs.getItem() == ChickenArmor.legs && feet != null && feet.getItem() == ChickenArmor.boots) {
+        if (head != null && head.getItem() == ModItems.CHICKEN_HELMET && chest != null && chest.getItem() == ModItems.CHICKEN_CHESTPLATE && legs != null && legs.getItem() == ModItems.CHICKEN_LEGGINGS && feet != null && feet.getItem() == ModItems.CHICKEN_BOOTS) {
             if (entity instanceof EntityLivingBase)
                 entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, 4, true, true));
         }
         /**Full Slime Armor*/
-        if (head != null && head.getItem() == SlimeArmor.helmet && chest != null && chest.getItem() == SlimeArmor.chestplate && legs != null && legs.getItem() == SlimeArmor.legs && feet != null && feet.getItem() == SlimeArmor.boots) {
+        if (head != null && head.getItem() == ModItems.SLIME_HELMET && chest != null && chest.getItem() == ModItems.SLIME_CHESTPLATE && legs != null && legs.getItem() == ModItems.SLIME_LEGGINGS && feet != null && feet.getItem() == ModItems.SLIME_BOOTS) {
             if (entity instanceof EntityLivingBase)
                 entity.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 120, 2, true, true));
         }
@@ -131,14 +125,14 @@ public class GlobalEventsArmorPlus {
          */
         /**Full Manyullym Armor*/
         if (ARPConfig.enableManyullynArmorEffects) {
-            if (head != null && head.getItem() == ManyullynArmor.helmet && chest != null && chest.getItem() == ManyullynArmor.chestplate && legs != null && legs.getItem() == ManyullynArmor.legs && feet != null && feet.getItem() == ManyullynArmor.boots) {
+            if (head != null && head.getItem() == ModItems.MANYULLYN_HELMET && chest != null && chest.getItem() == ModItems.MANYULLYN_CHESTPLATE && legs != null && legs.getItem() == ModItems.MANYULLYN_LEGGINGS && feet != null && feet.getItem() == ModItems.MANYULLYN_BOOTS) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 120, 1, true, true));
             }
         }
         /**Full Pig Iron Armor*/
         if (ARPConfig.enablePigIronArmorEffects) {
-            if (head != null && head.getItem() == PigIronArmor.helmet && chest != null && chest.getItem() == PigIronArmor.chestplate && legs != null && legs.getItem() == PigIronArmor.legs && feet != null && feet.getItem() == PigIronArmor.boots) {
+            if (head != null && head.getItem() == ModItems.PIG_IRON_HELMET && chest != null && chest.getItem() == ModItems.PIG_IRON_CHESTPLATE && legs != null && legs.getItem() == ModItems.PIG_IRON_LEGGINGS && feet != null && feet.getItem() == ModItems.PIG_IRON_BOOTS) {
                 if (entity instanceof EntityLivingBase && entity.getFoodStats().needFood()) {
                     entity.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 0, true, true));
                     head.damageItem(1, entity);
@@ -150,21 +144,21 @@ public class GlobalEventsArmorPlus {
         }
         /**Full Knight Slime Armor*/
         if (ARPConfig.enableKnightSlimeArmorEffects) {
-            if (head != null && head.getItem() == KnightSlimeArmor.helmet && chest != null && chest.getItem() == KnightSlimeArmor.chestplate && legs != null && legs.getItem() == KnightSlimeArmor.legs && feet != null && feet.getItem() == KnightSlimeArmor.boots) {
+            if (head != null && head.getItem() == ModItems.KNIGHT_SLIME_HELMET && chest != null && chest.getItem() == ModItems.KNIGHT_SLIME_CHESTPLATE && legs != null && legs.getItem() == ModItems.KNIGHT_SLIME_LEGGINGS && feet != null && feet.getItem() == ModItems.KNIGHT_SLIME_BOOTS) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, 1, true, true));
             }
         }
         /**Cobalt Armor*/
         if (ARPConfig.enableCobaltArmorEffects) {
-            if (head != null && head.getItem() == CobaltArmor.helmet && chest != null && chest.getItem() == CobaltArmor.chestplate && legs != null && legs.getItem() == CobaltArmor.legs && feet != null && feet.getItem() == CobaltArmor.boots) {
+            if (head != null && head.getItem() == ModItems.COBALT_HELMET && chest != null && chest.getItem() == ModItems.COBALT_CHESTPLATE && legs != null && legs.getItem() == ModItems.COBALT_LEGGINGS && feet != null && feet.getItem() == ModItems.COBALT_BOOTS) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, 2, true, true));
             }
         }
         /**Ardite Armor*/
         if (ARPConfig.enableArditeArmorEffects) {
-            if (head != null && head.getItem() == ArditeArmor.helmet && chest != null && chest.getItem() == ArditeArmor.chestplate && legs != null && legs.getItem() == ArditeArmor.legs && feet != null && feet.getItem() == ArditeArmor.boots) {
+            if (head != null && head.getItem() == ModItems.ARDITE_HELMET && chest != null && chest.getItem() == ModItems.ARDITE_CHESTPLATE && legs != null && legs.getItem() == ModItems.ARDITE_LEGGINGS && feet != null && feet.getItem() == ModItems.ARDITE_BOOTS) {
                 if (entity instanceof EntityLivingBase)
                     entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
             }

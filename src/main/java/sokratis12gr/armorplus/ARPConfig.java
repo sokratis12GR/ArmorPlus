@@ -247,7 +247,7 @@ public class ARPConfig {
     public static boolean enableObsidianArmorRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
-    public static boolean enableLavaArmorRecipes = false;
+    public static boolean enableLavaArmorRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
     public static boolean enableSuperStarArmorRecipes = true;
@@ -277,7 +277,7 @@ public class ARPConfig {
     public static boolean enableManyullynArmorRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
-    public static boolean enablePigIronArmorRecipes = false;
+    public static boolean enablePigIronArmorRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
     public static boolean enableKnightSlimeArmorRecipes = true;

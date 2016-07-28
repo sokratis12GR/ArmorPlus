@@ -6,13 +6,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
-import sokratis12gr.armorplus.armors.special.GuardianArmor;
-import sokratis12gr.armorplus.armors.special.SuperStarArmor;
-import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
-import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
-import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
-import sokratis12gr.armorplus.armors.tconstruct.*;
 import sokratis12gr.armorplus.registry.ModItems;
 import sokratis12gr.armorplus.util.ARPAchievements;
 
@@ -84,16 +77,16 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         /**Guardian Armor Thorns*/
-        if (stack.getItem() == GuardianArmor.helmet || stack.getItem() == GuardianArmor.chestplate || stack.getItem() == GuardianArmor.legs || stack.getItem() == GuardianArmor.boots || stack.getItem() == TheUltimateArmor.helmet || stack.getItem() == TheUltimateArmor.chestplate || stack.getItem() == TheUltimateArmor.legs || stack.getItem() == TheUltimateArmor.boots)
+        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("thorns"), 3);
         /**Guardian Armor Unbreaking 3*/
-        if (stack.getItem() == GuardianArmor.helmet || stack.getItem() == GuardianArmor.chestplate || stack.getItem() == GuardianArmor.legs || stack.getItem() == GuardianArmor.boots || stack.getItem() == TheUltimateArmor.helmet || stack.getItem() == TheUltimateArmor.chestplate || stack.getItem() == TheUltimateArmor.legs || stack.getItem() == TheUltimateArmor.boots)
+        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("unbreaking"), 3);
         /**Full of Thorns! - Achievement Trigger*/
-        if (stack.getItem() == GuardianArmor.helmet || stack.getItem() == GuardianArmor.chestplate || stack.getItem() == GuardianArmor.legs || stack.getItem() == GuardianArmor.boots)
+        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_GUARDIAN_ARMOR, 1);
         /** Guardian Boots Enchantments*/
-        if (stack.getItem() == GuardianArmor.boots || stack.getItem() == TheUltimateArmor.boots)
+        if (stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("depth_strider"), 3);
         /**Vision Like A Bat! - Achievement Trigger*/
         if (stack.getItem() == ModItems.COAL_HELMET || stack.getItem() == ModItems.COAL_CHESTPLATE || stack.getItem() == ModItems.COAL_LEGGINGS || stack.getItem() == ModItems.COAL_BOOTS)
@@ -114,19 +107,19 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == ModItems.LAVA_HELMET || stack.getItem() == ModItems.LAVA_CHESTPLATE || stack.getItem() == ModItems.LAVA_LEGGINGS || stack.getItem() == ModItems.LAVA_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_LAVA_ARMOR, 1);
         /**Godlike! - Achievement Trigger*/
-        if (stack.getItem() == SuperStarArmor.helmet || stack.getItem() == SuperStarArmor.chestplate || stack.getItem() == SuperStarArmor.legs || stack.getItem() == SuperStarArmor.boots)
+        if (stack.getItem() == ModItems.SUPER_STAR_HELMET || stack.getItem() == ModItems.SUPER_STAR_CHESTPLATE || stack.getItem() == ModItems.SUPER_STAR_LEGGINGS || stack.getItem() == ModItems.SUPER_STAR_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_SUPER_STAR_ARMOR, 1);
         /**The Power of the Ender Dragon! - Achievement Trigger*/
-        if (stack.getItem() == EnderDragonArmor.helmet || stack.getItem() == EnderDragonArmor.chestplate || stack.getItem() == EnderDragonArmor.legs || stack.getItem() == SuperStarArmor.boots)
+        if (stack.getItem() == ModItems.ENDER_DRAGON_HELMET || stack.getItem() == ModItems.ENDER_DRAGON_CHESTPLATE || stack.getItem() == ModItems.ENDER_DRAGON_LEGGINGS || stack.getItem() == ModItems.ENDER_DRAGON_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_ENDER_DRAGON_ARMOR, 1);
         /**The Ultimate Power! - Achievement Trigger*/
-        if (stack.getItem() == TheUltimateArmor.helmet || stack.getItem() == TheUltimateArmor.chestplate || stack.getItem() == TheUltimateArmor.legs || stack.getItem() == TheUltimateArmor.boots)
+        if (stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_THE_ULTIMATE_ARMOR, 1);
         /**Jump Jump Jump! - Achievement Trigger*/
-        if (stack.getItem() == SlimeArmor.helmet || stack.getItem() == SlimeArmor.chestplate || stack.getItem() == SlimeArmor.legs || stack.getItem() == SlimeArmor.boots)
+        if (stack.getItem() == ModItems.SLIME_HELMET || stack.getItem() == ModItems.SLIME_CHESTPLATE || stack.getItem() == ModItems.SLIME_LEGGINGS || stack.getItem() == ModItems.SLIME_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_SLIME_ARMOR, 1);
         /**Its time to go Faster! - Achievement Trigger*/
-        if (stack.getItem() == ChickenArmor.helmet || stack.getItem() == ChickenArmor.chestplate || stack.getItem() == ChickenArmor.legs || stack.getItem() == ChickenArmor.boots)
+        if (stack.getItem() == ModItems.CHICKEN_HELMET || stack.getItem() == ModItems.CHICKEN_CHESTPLATE || stack.getItem() == ModItems.CHICKEN_LEGGINGS || stack.getItem() == ModItems.CHICKEN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_CHICKEN_ARMOR, 1);
         /** Reinforcing Armors! - Achievement Trigger*/
         if (stack.getItem() == ModItems.RC_HELMET || stack.getItem() == ModItems.RC_CHESTPLATE || stack.getItem() == ModItems.RC_LEGGINGS || stack.getItem() == ModItems.RC_BOOTS
@@ -137,19 +130,19 @@ public class SlotCrafting extends Slot {
 
         /** Tinkers' Armors*/
         /**The Tinkers' Armors! - Achievement Trigger*/
-        if (stack.getItem() == CobaltArmor.helmet || stack.getItem() == CobaltArmor.chestplate || stack.getItem() == CobaltArmor.legs || stack.getItem() == CobaltArmor.boots)
+        if (stack.getItem() == ModItems.COBALT_HELMET || stack.getItem() == ModItems.COBALT_CHESTPLATE || stack.getItem() == ModItems.COBALT_LEGGINGS || stack.getItem() == ModItems.COBALT_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_COBALT_ARMOR, 1);
         /**The Stronger The Better! - Achievement Trigger*/
-        if (stack.getItem() == ArditeArmor.helmet || stack.getItem() == ArditeArmor.chestplate || stack.getItem() == ArditeArmor.legs || stack.getItem() == ArditeArmor.boots)
+        if (stack.getItem() == ModItems.ARDITE_HELMET || stack.getItem() == ModItems.ARDITE_CHESTPLATE || stack.getItem() == ModItems.ARDITE_LEGGINGS || stack.getItem() == ModItems.ARDITE_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_ARDITE_ARMOR, 1);
         /**The Tinkers' Armors God! - Achievement Trigger*/
-        if (stack.getItem() == ManyullynArmor.helmet || stack.getItem() == ManyullynArmor.chestplate || stack.getItem() == ManyullynArmor.legs || stack.getItem() == ManyullynArmor.boots)
+        if (stack.getItem() == ModItems.MANYULLYN_HELMET || stack.getItem() == ModItems.MANYULLYN_CHESTPLATE || stack.getItem() == ModItems.MANYULLYN_LEGGINGS || stack.getItem() == ModItems.MANYULLYN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_MANYULLYN_ARMOR, 1);
         /** Oink! - Achievemnt Trigger*/
-        if (stack.getItem() == PigIronArmor.helmet || stack.getItem() == PigIronArmor.chestplate || stack.getItem() == PigIronArmor.legs || stack.getItem() == PigIronArmor.boots)
+        if (stack.getItem() == ModItems.PIG_IRON_HELMET || stack.getItem() == ModItems.PIG_IRON_CHESTPLATE || stack.getItem() == ModItems.PIG_IRON_LEGGINGS || stack.getItem() == ModItems.PIG_IRON_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_PIG_IRON_ARMOR, 1);
         /** Fascinating! - Achievemnt Trigger*/
-        if (stack.getItem() == KnightSlimeArmor.helmet || stack.getItem() == KnightSlimeArmor.chestplate || stack.getItem() == KnightSlimeArmor.legs || stack.getItem() == KnightSlimeArmor.boots)
+        if (stack.getItem() == ModItems.KNIGHT_SLIME_HELMET || stack.getItem() == ModItems.KNIGHT_SLIME_CHESTPLATE || stack.getItem() == ModItems.KNIGHT_SLIME_LEGGINGS || stack.getItem() == ModItems.KNIGHT_SLIME_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_KNIGHT_SLIME_ARMOR, 1);
     }
 

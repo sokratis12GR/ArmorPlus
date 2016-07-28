@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-5.0.3.0
+{Features Changed}
+* ArmorPlus code completely rewritten
+{Bugs Fixed}
+* Wrong Config values for the Reinforced armor, Lava armor and Pig Iron armor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-5.0.2.0
 {Features Removed}
 * Steel Ore

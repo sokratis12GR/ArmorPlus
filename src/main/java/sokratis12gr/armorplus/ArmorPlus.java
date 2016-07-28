@@ -20,15 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12gr.armorplus.armors.special.EnderDragonArmor;
-import sokratis12gr.armorplus.armors.special.GuardianArmor;
-import sokratis12gr.armorplus.armors.special.SuperStarArmor;
-import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
-import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
-import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
 import sokratis12gr.armorplus.armors.tconstruct.*;
-import sokratis12gr.armorplus.armors.v2.ElectricalArmor;
-import sokratis12gr.armorplus.armors.v2.SteelArmor;
 import sokratis12gr.armorplus.client.gui.ARPTab;
 import sokratis12gr.armorplus.client.gui.GuiArmorForge;
 import sokratis12gr.armorplus.client.gui.GuiArmorPlus;
@@ -56,7 +48,7 @@ import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.10.2-5.0.2.0";
+    public static final String VERSION = "1.10.2-5.0.3.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
     public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
@@ -85,25 +77,6 @@ public class ArmorPlus {
     public static File textureDir;
 
     public GuiHandler GuiHandler = new GuiHandler();
-    SuperStarArmor SUPER_STAR_ARMOR = new SuperStarArmor();
-    EnderDragonArmor ENDER_DRAGON_ARMOR = new EnderDragonArmor();
-    GuardianArmor GUARDIAN_ARMOR = new GuardianArmor();
-    TheUltimateArmor THE_ULTIMATE_ARMOR = new TheUltimateArmor();
-    ChickenArmor CHICKEN_ARMOR = new ChickenArmor();
-    SlimeArmor SLIME_ARMOR = new SlimeArmor();
-    /**
-     * v2
-     */
-    SteelArmor STEEL_ARMOR = new SteelArmor();
-    ElectricalArmor ELECTRICAL_ARMOR = new ElectricalArmor();
-    /**
-     * Tinkers' Construct Armors
-     */
-    CobaltArmor COBALT_ARMOR = new CobaltArmor();
-    ArditeArmor ARDITE_ARMOR = new ArditeArmor();
-    ManyullynArmor MANYULLYN_ARMOR = new ManyullynArmor();
-    PigIronArmor PIG_IRON_ARMOR = new PigIronArmor();
-    KnightSlimeArmor KNIGHT_SLIME_ARMOR = new KnightSlimeArmor();
 
     public static File getConfigDir() {
         return configDir;
@@ -113,8 +86,7 @@ public class ArmorPlus {
         return textureDir;
     }
 
-    public ArmorPlus()
-    {
+    public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
     }
 
@@ -126,23 +98,6 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        SUPER_STAR_ARMOR.load(event);
-        ENDER_DRAGON_ARMOR.load(event);
-        GUARDIAN_ARMOR.load(event);
-        THE_ULTIMATE_ARMOR.load(event);
-        CHICKEN_ARMOR.load(event);
-        SLIME_ARMOR.load(event);
-
-        /** v2 */
-        STEEL_ARMOR.load(event);
-        ELECTRICAL_ARMOR.load(event);
-
-        /** Tinkers' Construct Armors */
-        COBALT_ARMOR.load(event);
-        ARDITE_ARMOR.load(event);
-        MANYULLYN_ARMOR.load(event);
-        PIG_IRON_ARMOR.load(event);
-        KNIGHT_SLIME_ARMOR.load(event);
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -178,23 +133,6 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        SUPER_STAR_ARMOR.load(event);
-        ENDER_DRAGON_ARMOR.load(event);
-        GUARDIAN_ARMOR.load(event);
-        THE_ULTIMATE_ARMOR.load(event);
-        CHICKEN_ARMOR.load(event);
-        SLIME_ARMOR.load(event);
-
-        /** v2 */
-        STEEL_ARMOR.load(event);
-        ELECTRICAL_ARMOR.load(event);
-
-        /** Tinkers' Construct Armors */
-        COBALT_ARMOR.load(event);
-        ARDITE_ARMOR.load(event);
-        MANYULLYN_ARMOR.load(event);
-        PIG_IRON_ARMOR.load(event);
-        KNIGHT_SLIME_ARMOR.load(event);
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -233,42 +171,6 @@ public class ArmorPlus {
         ModBlocks.register();
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
         MinecraftForge.EVENT_BUS.register(new MobDrops());
-        SUPER_STAR_ARMOR.instance = ArmorPlus.instance;
-        ENDER_DRAGON_ARMOR.instance = ArmorPlus.instance;
-        GUARDIAN_ARMOR.instance = ArmorPlus.instance;
-        THE_ULTIMATE_ARMOR.instance = ArmorPlus.instance;
-        CHICKEN_ARMOR.instance = ArmorPlus.instance;
-        SLIME_ARMOR.instance = ArmorPlus.instance;
-
-        /** v2 */
-        STEEL_ARMOR.instance = ArmorPlus.instance;
-        ELECTRICAL_ARMOR.instance = ArmorPlus.instance;
-
-
-        /** Tinkers' Construct Armors */
-        COBALT_ARMOR.instance = ArmorPlus.instance;
-        ARDITE_ARMOR.instance = ArmorPlus.instance;
-        MANYULLYN_ARMOR.instance = ArmorPlus.instance;
-        PIG_IRON_ARMOR.instance = ArmorPlus.instance;
-        KNIGHT_SLIME_ARMOR.instance = ArmorPlus.instance;
-
-        SUPER_STAR_ARMOR.preInit(event);
-        ENDER_DRAGON_ARMOR.preInit(event);
-        GUARDIAN_ARMOR.preInit(event);
-        THE_ULTIMATE_ARMOR.preInit(event);
-        CHICKEN_ARMOR.preInit(event);
-        SLIME_ARMOR.preInit(event);
-
-        /** v2 */
-        STEEL_ARMOR.preInit(event);
-        ELECTRICAL_ARMOR.preInit(event);
-
-        /** Tinkers' Construct Armors */
-        COBALT_ARMOR.preInit(event);
-        ARDITE_ARMOR.preInit(event);
-        MANYULLYN_ARMOR.preInit(event);
-        PIG_IRON_ARMOR.preInit(event);
-        KNIGHT_SLIME_ARMOR.preInit(event);
 
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
