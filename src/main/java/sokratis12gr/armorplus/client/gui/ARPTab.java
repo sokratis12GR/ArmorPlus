@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.armors.origin.LavaArmor;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
 
@@ -21,7 +20,7 @@ public class ARPTab extends CreativeTabs {
     static ItemStack iconArmorPlus;
 
     public static void initialize() {
-        iconArmorPlus = new ItemStack(LavaArmor.chestplate);
+        iconArmorPlus = new ItemStack(ModItems.LAVA_CHESTPLATE);
     }
 
     public ARPTab(int id, String modid, String label, int tab) {
@@ -41,7 +40,7 @@ public class ARPTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return new ItemStack(LavaArmor.chestplate);
+                return new ItemStack(ModItems.LAVA_CHESTPLATE);
             case (1):
                 return new ItemStack(ModItems.ENDER_DRAGON_SCALE);
             case (2):

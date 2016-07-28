@@ -20,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12gr.armorplus.armors.origin.*;
 import sokratis12gr.armorplus.armors.reinforced.RCArmor;
 import sokratis12gr.armorplus.armors.reinforced.RDArmor;
 import sokratis12gr.armorplus.armors.reinforced.RGArmor;
@@ -90,12 +89,6 @@ public class ArmorPlus {
     public static File textureDir;
 
     public GuiHandler GuiHandler = new GuiHandler();
-    CoalArmor COAL_ARMOR = new CoalArmor();
-    LapisArmor LAPIS_ARMOR = new LapisArmor();
-    RedstoneArmor REDSTONE_ARMOR = new RedstoneArmor();
-    EmeraldArmor EMERALD_ARMOR = new EmeraldArmor();
-    ObsidianArmor OBSIDIAN_ARMOR = new ObsidianArmor();
-    LavaArmor LAVA_ARMOR = new LavaArmor();
     SuperStarArmor SUPER_STAR_ARMOR = new SuperStarArmor();
     EnderDragonArmor ENDER_DRAGON_ARMOR = new EnderDragonArmor();
     GuardianArmor GUARDIAN_ARMOR = new GuardianArmor();
@@ -141,12 +134,6 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        COAL_ARMOR.load(event);
-        LAPIS_ARMOR.load(event);
-        REDSTONE_ARMOR.load(event);
-        EMERALD_ARMOR.load(event);
-        OBSIDIAN_ARMOR.load(event);
-        LAVA_ARMOR.load(event);
         SUPER_STAR_ARMOR.load(event);
         ENDER_DRAGON_ARMOR.load(event);
         GUARDIAN_ARMOR.load(event);
@@ -203,12 +190,6 @@ public class ArmorPlus {
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-        COAL_ARMOR.load(event);
-        LAPIS_ARMOR.load(event);
-        REDSTONE_ARMOR.load(event);
-        EMERALD_ARMOR.load(event);
-        OBSIDIAN_ARMOR.load(event);
-        LAVA_ARMOR.load(event);
         SUPER_STAR_ARMOR.load(event);
         ENDER_DRAGON_ARMOR.load(event);
         GUARDIAN_ARMOR.load(event);
@@ -268,12 +249,6 @@ public class ArmorPlus {
         ModBlocks.register();
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
         MinecraftForge.EVENT_BUS.register(new MobDrops());
-        COAL_ARMOR.instance = ArmorPlus.instance;
-        LAPIS_ARMOR.instance = ArmorPlus.instance;
-        REDSTONE_ARMOR.instance = ArmorPlus.instance;
-        EMERALD_ARMOR.instance = ArmorPlus.instance;
-        OBSIDIAN_ARMOR.instance = ArmorPlus.instance;
-        LAVA_ARMOR.instance = ArmorPlus.instance;
         SUPER_STAR_ARMOR.instance = ArmorPlus.instance;
         ENDER_DRAGON_ARMOR.instance = ArmorPlus.instance;
         GUARDIAN_ARMOR.instance = ArmorPlus.instance;
@@ -297,12 +272,6 @@ public class ArmorPlus {
         PIG_IRON_ARMOR.instance = ArmorPlus.instance;
         KNIGHT_SLIME_ARMOR.instance = ArmorPlus.instance;
 
-        COAL_ARMOR.preInit(event);
-        LAPIS_ARMOR.preInit(event);
-        REDSTONE_ARMOR.preInit(event);
-        EMERALD_ARMOR.preInit(event);
-        OBSIDIAN_ARMOR.preInit(event);
-        LAVA_ARMOR.preInit(event);
         SUPER_STAR_ARMOR.preInit(event);
         ENDER_DRAGON_ARMOR.preInit(event);
         GUARDIAN_ARMOR.preInit(event);

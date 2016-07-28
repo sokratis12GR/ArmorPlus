@@ -9,12 +9,6 @@ import sokratis12gr.armorplus.ArmorPlus;
 
 
 public class Constants {
-
-    public static class NBT {
-        public static final String OWNER_UUID = "ownerUUID";
-        public static final String OWNER_NAME = "ownerNAME";
-    }
-
     public static class Compat {
         public static final String JEI_CATEGORY_ARMOR_FORGE = ArmorPlus.MODID + ":ArmorForge";
     }

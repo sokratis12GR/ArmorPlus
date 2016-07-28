@@ -2,7 +2,6 @@ package sokratis12gr.armorplus.util;
 
 import net.minecraftforge.common.MinecraftForge;
 import sokratis12gr.armorplus.ArmorPlus;
-import sokratis12gr.armorplus.armors.origin.*;
 import sokratis12gr.armorplus.armors.reinforced.RCArmor;
 import sokratis12gr.armorplus.armors.reinforced.RDArmor;
 import sokratis12gr.armorplus.armors.reinforced.RGArmor;
@@ -73,12 +72,12 @@ public class Logger {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlusItems.txt"), "utf-8"));
-            writer.write("1. Coal Armor: " + CoalArmor.helmet.getRegistryName() + " , " + CoalArmor.chestplate.getRegistryName() + " , " + CoalArmor.legs.getRegistryName() + " , " + CoalArmor.boots.getRegistryName());
-            writer.write("\n\n2. Lapis Armor: " + LapisArmor.helmet.getRegistryName() + " , " + LapisArmor.chestplate.getRegistryName() + " , " + LapisArmor.legs.getRegistryName() + " , " + LapisArmor.boots.getRegistryName());
-            writer.write("\n\n3. Redstone Armor: " + RedstoneArmor.helmet.getRegistryName() + " , " + RedstoneArmor.chestplate.getRegistryName() + " , " + RedstoneArmor.legs.getRegistryName() + " , " + RedstoneArmor.boots.getRegistryName());
-            writer.write("\n\n4. Emerald Armor: " + EmeraldArmor.helmet.getRegistryName() + " , " + EmeraldArmor.chestplate.getRegistryName() + " , " + EmeraldArmor.legs.getRegistryName() + " , " + EmeraldArmor.boots.getRegistryName());
-            writer.write("\n\n5. Obsidian Armor: " + ObsidianArmor.helmet.getRegistryName() + " , " + ObsidianArmor.chestplate.getRegistryName() + " , " + ObsidianArmor.legs.getRegistryName() + " , " + ObsidianArmor.boots.getRegistryName());
-            writer.write("\n\n6. Lava Armor: " + LavaArmor.helmet.getRegistryName() + " , " + LavaArmor.chestplate.getRegistryName() + " , " + LavaArmor.legs.getRegistryName() + " , " + LavaArmor.boots.getRegistryName());
+            writer.write("1. Coal Armor: " + ModItems.COAL_HELMET.getRegistryName() + " , " + ModItems.COAL_CHESTPLATE.getRegistryName() + " , " + ModItems.COAL_LEGGINGS.getRegistryName() + " , " + ModItems.COAL_BOOTS.getRegistryName());
+            writer.write("\n\n2. Lapis Armor: " + ModItems.LAPIS_HELMET.getRegistryName() + " , " + ModItems.LAPIS_CHESTPLATE.getRegistryName() + " , " + ModItems.LAPIS_LEGGINGS.getRegistryName() + " , " + ModItems.LAPIS_BOOTS.getRegistryName());
+            writer.write("\n\n3. Redstone Armor: " + ModItems.REDSTONE_HELMET.getRegistryName() + " , " + ModItems.REDSTONE_CHESTPLATE.getRegistryName() + " , " + ModItems.REDSTONE_LEGGINGS.getRegistryName() + " , " + ModItems.REDSTONE_BOOTS.getRegistryName());
+            writer.write("\n\n4. Emerald Armor: " + ModItems.EMERALD_HELMET.getRegistryName() + " , " + ModItems.EMERALD_CHESTPLATE.getRegistryName() + " , " + ModItems.EMERALD_LEGGINGS.getRegistryName() + " , " + ModItems.EMERALD_BOOTS.getRegistryName());
+            writer.write("\n\n5. Obsidian Armor: " + ModItems.OBSIDIAN_HELMET.getRegistryName() + " , " + ModItems.OBSIDIAN_CHESTPLATE.getRegistryName() + " , " + ModItems.OBSIDIAN_LEGGINGS.getRegistryName() + " , " + ModItems.OBSIDIAN_BOOTS.getRegistryName());
+            writer.write("\n\n6. Lava Armor: " + ModItems.LAVA_HELMET.getRegistryName() + " , " + ModItems.LAVA_CHESTPLATE.getRegistryName() + " , " + ModItems.LAVA_LEGGINGS.getRegistryName() + " , " + ModItems.LAVA_BOOTS.getRegistryName());
             writer.write("\n\n7. Guardian Armor: " + GuardianArmor.helmet.getRegistryName() + " , " + GuardianArmor.chestplate.getRegistryName() + " , " + GuardianArmor.legs.getRegistryName() + " , " + GuardianArmor.boots.getRegistryName());
             writer.write("\n\n8. Super Star Armor: " + SuperStarArmor.helmet.getRegistryName() + " , " + SuperStarArmor.chestplate.getRegistryName() + " , " + SuperStarArmor.legs.getRegistryName() + " , " + SuperStarArmor.boots.getRegistryName());
             writer.write("\n\n9. Ender Dragon Armor: " + EnderDragonArmor.helmet.getRegistryName() + " , " + EnderDragonArmor.chestplate.getRegistryName() + " , " + EnderDragonArmor.legs.getRegistryName() + " , " + EnderDragonArmor.boots.getRegistryName());

@@ -9,12 +9,6 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerRenderers(ArmorPlus ins) {
-        ins.COAL_ARMOR.registerRenderers();
-        ins.LAPIS_ARMOR.registerRenderers();
-        ins.REDSTONE_ARMOR.registerRenderers();
-        ins.EMERALD_ARMOR.registerRenderers();
-        ins.OBSIDIAN_ARMOR.registerRenderers();
-        ins.LAVA_ARMOR.registerRenderers();
         ins.SUPER_STAR_ARMOR.registerRenderers();
         ins.ENDER_DRAGON_ARMOR.registerRenderers();
         ins.GUARDIAN_ARMOR.registerRenderers();

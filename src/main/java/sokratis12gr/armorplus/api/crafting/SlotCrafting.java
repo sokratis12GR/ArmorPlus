@@ -18,6 +18,7 @@ import sokratis12gr.armorplus.armors.special.TheUltimateArmor;
 import sokratis12gr.armorplus.armors.special.mob.ChickenArmor;
 import sokratis12gr.armorplus.armors.special.mob.SlimeArmor;
 import sokratis12gr.armorplus.armors.tconstruct.*;
+import sokratis12gr.armorplus.registry.ModItems;
 import sokratis12gr.armorplus.util.ARPAchievements;
 
 import javax.annotation.Nullable;
@@ -100,22 +101,22 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == GuardianArmor.boots || stack.getItem() == TheUltimateArmor.boots)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("depth_strider"), 3);
         /**Vision Like A Bat! - Achievement Trigger*/
-        if (stack.getItem() == CoalArmor.helmet || stack.getItem() == CoalArmor.chestplate || stack.getItem() == CoalArmor.legs || stack.getItem() == CoalArmor.boots)
+        if (stack.getItem() == ModItems.COAL_HELMET || stack.getItem() == ModItems.COAL_CHESTPLATE || stack.getItem() == ModItems.COAL_LEGGINGS || stack.getItem() == ModItems.COAL_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_COAL_ARMOR, 1);
         /**Never Drown Again - Achievement Trigger*/
-        if (stack.getItem() == LapisArmor.helmet || stack.getItem() == LapisArmor.chestplate || stack.getItem() == LapisArmor.legs || stack.getItem() == LapisArmor.boots)
+        if (stack.getItem() == ModItems.LAPIS_HELMET || stack.getItem() == ModItems.LAPIS_CHESTPLATE || stack.getItem() == ModItems.LAPIS_LEGGINGS || stack.getItem() == ModItems.LAPIS_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_LAPIS_ARMOR, 1);
         /**Speeedy! - Achievement Trigger*/
-        if (stack.getItem() == RedstoneArmor.helmet || stack.getItem() == RedstoneArmor.chestplate || stack.getItem() == RedstoneArmor.legs || stack.getItem() == RedstoneArmor.boots)
+        if (stack.getItem() == ModItems.REDSTONE_HELMET || stack.getItem() == ModItems.REDSTONE_CHESTPLATE || stack.getItem() == ModItems.REDSTONE_LEGGINGS || stack.getItem() == ModItems.REDSTONE_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_REDSTONE_ARMOR, 1);
         /**Swing Swing Faster! - Achievement Trigger*/
-        if (stack.getItem() == EmeraldArmor.helmet || stack.getItem() == EmeraldArmor.chestplate || stack.getItem() == EmeraldArmor.legs || stack.getItem() == EmeraldArmor.boots)
+        if (stack.getItem() == ModItems.EMERALD_HELMET || stack.getItem() == ModItems.EMERALD_CHESTPLATE || stack.getItem() == ModItems.EMERALD_LEGGINGS || stack.getItem() == ModItems.EMERALD_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_EMERALD_ARMOR, 1);
-        /**Undestructable! - Achievement Trigger*/
-        if (stack.getItem() == ObsidianArmor.helmet || stack.getItem() == ObsidianArmor.chestplate || stack.getItem() == ObsidianArmor.legs || stack.getItem() == ObsidianArmor.boots)
+        /**Indestructible! - Achievement Trigger*/
+        if (stack.getItem() == ModItems.OBSIDIAN_HELMET || stack.getItem() == ModItems.OBSIDIAN_CHESTPLATE || stack.getItem() == ModItems.OBSIDIAN_LEGGINGS || stack.getItem() == ModItems.OBSIDIAN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_OBSIDIAN_ARMOR, 1);
         /**The Overpowered! - Achievement Trigger*/
-        if (stack.getItem() == LavaArmor.helmet || stack.getItem() == LavaArmor.chestplate || stack.getItem() == LavaArmor.legs || stack.getItem() == LavaArmor.boots)
+        if (stack.getItem() == ModItems.LAVA_HELMET || stack.getItem() == ModItems.LAVA_CHESTPLATE || stack.getItem() == ModItems.LAVA_LEGGINGS || stack.getItem() == ModItems.LAVA_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_LAVA_ARMOR, 1);
         /**Godlike! - Achievement Trigger*/
         if (stack.getItem() == SuperStarArmor.helmet || stack.getItem() == SuperStarArmor.chestplate || stack.getItem() == SuperStarArmor.legs || stack.getItem() == SuperStarArmor.boots)

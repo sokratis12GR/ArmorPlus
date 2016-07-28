@@ -8,22 +8,6 @@ import sokratis12gr.sokratiscore.config.ModConfigProperty;
  */
 public class ARPConfig {
 
-    //GuardianArmor
-    @ModConfigProperty(category = "GuardianArmor", name = "enableGuardianHEffects", comment = "Enable/Disable The Guardian Helmet Effects")
-    public static boolean enableGuardianHEffects = true;
-
-    @ModConfigProperty(category = "GuardianArmor", name = "enableGuardianCEffects", comment = "Enable/Disable The Guardian Chestplate Effects")
-    public static boolean enableGuardianCEffects = true;
-
-    @ModConfigProperty(category = "GuardianArmor", name = "enableGuardianLEffects", comment = "Enable/Disable The Guardian Leggings Effects")
-    public static boolean enableGuardianLEffects = true;
-
-    @ModConfigProperty(category = "GuardianArmor", name = "enableGuardianBEffects", comment = "Enable/Disable The Guardian Boots Effects")
-    public static boolean enableGuardianBEffects = true;
-
-    @ModConfigProperty(category = "GuardianArmor", name = "enableFullGuardianArmorEffect", comment = "Enable/Disable The Full Guardian Armor Effect")
-    public static boolean enableFullGuardianArmorEffect = false;
-
     //SuperStarArmor
     @ModConfigProperty(category = "SuperStarArmor", name = "enableSuperStarHRegen", comment = "Enable/Disable The Super Star Helmet Regeneration")
     public static boolean enableSuperStarHRegen = true;
@@ -217,12 +201,6 @@ public class ARPConfig {
     public static String[] whiteListedItems = new String[]{"minecraft:dirt"};
 
     //BlackList
-    @ModConfigProperty(category = "BlackList", name = "blacklistmax", comment = "Set the maximum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:You will need to have that many BlackListed Items.")
-    public static int blacklistmax = 0;
-
-    @ModConfigProperty(category = "BlackList", name = "blacklistmin", comment = "Set the minimum amount of items that the player can't get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"")
-    public static int blacklistmin = 0;
-
     @ModConfigProperty(category = "BlackList", name = "enableBlackList", comment = "Enable/Disable the BlackList")
     public static boolean enableBlackList = false;
 
@@ -284,7 +262,7 @@ public class ARPConfig {
     public static boolean enableTheUltimateArmorRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enableReinforcedArmorsRecipes", comment = "Enable/Disable The Reinforced Armors Recipes")
-    public static boolean enableReinforcedArmorsRecipes = false;
+    public static boolean enableReinforcedArmorsRecipes = true;
 
     @ModConfigProperty(category = "Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
     public static boolean enableChainArmorRecipes = true;
