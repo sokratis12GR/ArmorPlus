@@ -1,7 +1,46 @@
 #de_DE.lang File
 
 #CREATIVE TAB
-itemGroup.armorplus.creativeTab=ArmorPlus
+itemGroup.armors=ARP Rüstung
+itemGroup.items=ARP Gegenstände
+itemGroup.blocks=ARP Blöcke
+
+#Containers
+container.ArmorForge=Rütungsschmiede
+container.inventory=Inventar
+
+# Keybinds
+key.categories.armorplus=ArmorPlus
+key.nightvision=Umschalten Nachtsicht (The Ultimate Armor)
+
+#Commands
+commands.error.arg.invalid=Ungültige Argumente 
+commands.error.arg.missing=Nicht genügend Argumente
+commands.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
+commands.error.404=Befehl nicht gefunden!
+commands.error.unknown=Unbekannter Befehl! Bitte verwende /armorplus help
+commands.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
+commands.success=Erfolgreich ausgeführt
+commands.format.help=%s - %s
+
+#CommandHelp
+commands.help.usage=/armorplus help
+commands.help.help=Zeigt die Hilfe für den "/armorplus" Befehl an.
+
+#CommandInfo
+commands.info.usage=/armorplus info
+commands.info.help=Zeigt Informationen über ArmorPlus
+
+#CommandWiki
+commands.wiki.usage=/armorplus wiki
+commands.wiki.help=öffnet einen Link in deinem Browser zur ArmorPlus Wiki
+
+#JEI
+gui.jei.category.armorforge=Rüstungsschmiede
+
+#BOOKS
+item.ArmorPlusBook.name=ArmorPlus Buch
+item.ArmorPlusInfoBook.name=ArmorPlus Informationsbuch
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Einstellungen
@@ -49,29 +88,22 @@ item.SuperStarLeggings.name=Superstern-Beinschutz
 item.SuperStarBoots.name=Superstern-Stiefel
 
 #EnderDragonArmor
-item.EnderDragonScale.name=Enderdrachen-Schuppe
 item.EnderDragonHelmet.name=Enderdrachen-Helm
 item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
 item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
 item.EnderDragonBoots.name=Enderdrachen-Stiefel
 
 #GuardianArmor
-item.GuardianHelmet.name=Beschuetzer-Helm
-item.GuardianChestplate.name=Beschuetzer-Brustpanzer
-item.GuardianLeggings.name=Beschuetzer-Beinschutz
-item.GuardianBoots.name=Beschuetzer-Stiefel
+item.GuardianHelmet.name=Beschützer-Helm
+item.GuardianChestplate.name=Beschützer-Brustpanzer
+item.GuardianLeggings.name=Beschützer-Beinschutz
+item.GuardianBoots.name=Beschützer-Stiefel
 
 #TheUltimateArmor
 item.TheUltimateHelmet.name=Der ultimative Helm
 item.TheUltimateChestplate.name=Der ultimative Brustpanzer
 item.TheUltimateLeggings.name=Der ultimative Beinschutz
 item.TheUltimateBoots.name=Die ultimativen Stiefel
-
-#Chainmail
-item.Chainmail.name=Kettenpanzer
-
-#ReinforcingMaterial
-item.ReinforcingMaterial.name=Verstärkendes Material
 
 #ReinforcedIronArmor
 item.RIHelmet.name=Verstärkter Eisenhelm
@@ -133,31 +165,108 @@ item.ManyullymChestplate.name=Manyullymbrustpanzer
 item.ManyullymLeggings.name=Manyullymbeinschutz
 item.ManyullymBoots.name=Manyullymstiefel
 
+#ChickenArmor
+item.ChickenHelmet.name=Chicken-Helm
+item.ChickenChestplate.name=Chicken-Brustpanzer
+item.ChickenLeggings.name=Chicken-Beinschutz
+item.ChickenBoots.name=Chicken-Stiefel
+
+#SlimeArmor
+item.SlimeHelmet.name=Schleimhelm
+item.SlimeChestplate.name=Schleimbrustpanzer
+item.SlimeLeggings.name=Schleimbeinschutz
+item.SlimeBoots.name=Schleimstiefel
+
+#ElectricalArmor
+item.ElectricalHelmet.name=Elektrischer Helm
+item.ElectricalChestplate.name=Elektrischer Brustpanzer
+item.ElectricalLeggings.name=Elektrischer Beinschutz
+item.ElectricalBoots.name=Elektrische Stiefel
+
+#SteelArmor
+item.SteelHelmet.name=Stahlhelm
+item.SteelChestplate.name=Stahlbrustpanzer
+item.SteelLeggings.name=Stahlbeinschutz
+item.SteelBoots.name=Stahlstiefel
+
+#DevArmor
+item.DevHelmet.name=Dev-Helm
+item.DevChestplate.name=Dev-Brustpanzer
+item.DevLeggings.name=Dev-Beinschutz
+item.DevBoots.name=Dev-Stiefel
+
+#Items
+item.Chainmail.name=Kettenhemd
+item.ReinforcingMaterial.name=Verstärkendes Material
+item.LavaCrystal.name=Lavakristall
+item.SteelIngot.name=Stahlbarren
+item.ElectricalIngot.name=Elektrischer Barren
+
+#Food Items
+item.RedstoneApple.name=Redstone Apfel
+
+#Special Items
+item.WitherBone.name=Wither Knochen
+item.TheUltimateMaterial.name=Das ultimative Material
+item.EnderDragonScale.name=Enderdrachen-Schuppe
+item.GuardianScale.name=Beschützer-Schuppe
+item.TheGiftOfTheGods.name=Das Geschenk der Götter
+
+#Blocks
+tile.CompressedObsidian.name=Komprimiertes Obsidian
+tile.BlockLavaCrystal.name=Block aus Lavakristall
+tile.ArmorForge.name=Rüstungsschmiede
+tile.SteelOre.name=Stahlerz
+tile.SteelBlock.name=Block aus Stahl
+tile.ElectricalBlock.name=Elektrischer Block
+
+#PotionEffects
+potion.armorplusEffects=ArmorPlus Trank
+
 #Achievements
-achievement.armorplus.craftCoalArmor=Sehvermoegen Wie Eine Fledermaus!
-achievement.armorplus.craftCoalArmor.desc=Fertige ein Teil der Kohleruestung
+achievement.armorplus.craftCoalArmor=Sehvermögen wie eine Fledermaus!
+achievement.armorplus.craftCoalArmor.desc=Fertige ein Teil der Kohlerüstung
 achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
-achievement.armorplus.craftLapisArmor.desc=Fertige ein Teil der Lapislazuliruestung an
+achievement.armorplus.craftLapisArmor.desc=Fertige ein Teil der Lapislazulirüstung an
 achievement.armorplus.craftRedstoneArmor=Schneller!
-achievement.armorplus.craftRedstoneArmor.desc=Fertige ein Teil der Redstoneruestung an
+achievement.armorplus.craftRedstoneArmor.desc=Fertige ein Teil der Redstonerüstung an
 achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
-achievement.armorplus.craftEmeraldArmor.desc=Fertige ein Teil der Smaragdruestung an
-achievement.armorplus.craftObsidianArmor=Unzerstoerbar!
-achievement.armorplus.craftObsidianArmor.desc=Fertige ein Teil der Obsidianruestung an
-achievement.armorplus.craftLavaArmor=Der Ueberwaeltigende!
-achievement.armorplus.craftLavaArmor.desc=Fertige ein Teil der Lavaruestung an
+achievement.armorplus.craftEmeraldArmor.desc=Fertige ein Teil der Smaragdrüstung an
+achievement.armorplus.craftObsidianArmor=Unzerstörbar!
+achievement.armorplus.craftObsidianArmor.desc=Fertige ein Teil der Obsidianrüstung an
+achievement.armorplus.craftLavaArmor=Der Überwältigende!
+achievement.armorplus.craftLavaArmor.desc=Fertige ein Teil der Lavarüstung an
 achievement.armorplus.craftSuperStarArmor=Gottgleich!
-achievement.armorplus.craftSuperStarArmor.desc=Fertige ein Teil der Superstern-Ruestung an
+achievement.armorplus.craftSuperStarArmor.desc=Fertige ein Teil der Superstern-Rüstung an
 achievement.armorplus.craftEnderDragonArmor=Die Macht Des Enderdrachen!
-achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Ruestungsteil an
+achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Rüstungsteil an
 achievement.armorplus.craftGuardianArmor=Voller Dornen!
-achievement.armorplus.craftGuardianArmor.desc=Fertige ein Beschützer-Ruestungsteil an
+achievement.armorplus.craftGuardianArmor.desc=Fertige ein Teil der Beschützer-Rüstung an
 achievement.armorplus.craftTheUltimateArmor=Die Ultimative Macht!
-achievement.armorplus.craftTheUltimateArmor.desc=Fertige ein ultimatives Ruestungsteil an
+achievement.armorplus.craftTheUltimateArmor.desc=Fertige ein Teil der ultimativen Rüstung an
+achievement.armorplus.craftReinforcedArmor=Verstärkte Rüstung!
+achievement.armorplus.craftReinforcedArmor.desc=Fertige ein Teil der verstärkten Rüstung an
+achievement.armorplus.craftCobaltArmor=Die Tinkers' Rüstung!
+achievement.armorplus.craftCobaltArmor.desc=Fertige ein Teil der Kobaltrüstung an
+achievement.armorplus.craftArditeArmor=Je stärker, desto besser!
+achievement.armorplus.craftArditeArmor.desc=Fertige ein Teil der Arditerüstung an
+achievement.armorplus.craftManyullynArmor=Der Gott von Tinkers' Rüstungen!
+achievement.armorplus.craftManyullynArmor.desc=Fertige ein Teil der Manyullynrüstung an
+achievement.armorplus.craftPigIronArmor=Grunz!
+achievement.armorplus.craftPigIronArmor.desc=Fertige ein Teil der PigIron-Rüstung an
+achievement.armorplus.craftKnightSlimeArmor=Faszinierend!
+achievement.armorplus.craftKnightSlimeArmor.desc=Fertige ein Teil der KnightSlime-Rüstung an
+achievement.armorplus.craftSlimeArmor=Spring Spring Spring!
+achievement.armorplus.craftSlimeArmor.desc=Fertige ein Teil der Schleimrüstung an
+achievement.armorplus.craftChickenArmor=Es ist Zeit schneller zu gehen!
+achievement.armorplus.craftChickenArmor.desc=Fertige ein Teil der Chicken-Rüstung an
+achievement.armorplus.craftArmorForge=Willkommen bei ArmorPlus!
+achievement.armorplus.craftArmorForge.desc=Fertige die Rüstungsschmiede von ArmorPlus an
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.config.refresh=Refreshing configuration file
 info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.blocks=Blocks Successfully Registered
 info.armorplus.console.load.init=Begin Initialization
 info.armorplus.console.load.postInit=Begin Post-initialization
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
