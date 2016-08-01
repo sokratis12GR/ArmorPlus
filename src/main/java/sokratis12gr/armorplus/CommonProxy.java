@@ -12,8 +12,6 @@ import sokratis12gr.sokratiscore.util.LogHelper;
 
 public class CommonProxy {
 
-    private DimensionType ArmorPlusDimension;
-
     public void preInit(FMLPreInitializationEvent event) {
         LogHelper.info("Finished PreInitialization");
     }
@@ -57,9 +55,5 @@ public class CommonProxy {
 
     public void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityArmorForge.class, "ArmorForge");
-    }
-
-    public DimensionType getArmorPlusDimension() {
-        return ArmorPlusDimension;
     }
 }

@@ -1,5 +1,6 @@
 package sokratis12gr.armorplus.worldgen;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkGenerator;
@@ -18,9 +19,14 @@ import java.util.Random;
  */
 public class OreGen implements IWorldGenerator {
 
-    public WorldGenerator lavaCrystalGenerator;
+    public WorldGenerator lavaCrystalOverworldGenerator;
+    public WorldGenerator lavaCrystalTheEndGenerator;
+    public WorldGenerator lavaCrystalTheNetherGenerator;
+
     public OreGen() {
-        lavaCrystalGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalVeinAmount);
+        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalOverworldVeinAmount);
+        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalTheEndVeinAmount);
+        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), ARPConfig.lavaCrystalTheNetherVeinAmount);
     }
 
     @Override
@@ -28,17 +34,17 @@ public class OreGen implements IWorldGenerator {
         switch (world.provider.getDimension()) {
             case 0: //Overworld Dimension
                 if (ARPConfig.enableLavaCrystalOverworldGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalOverworldRarity, ARPConfig.lavaCrystalOverworldMinYSpawn, ARPConfig.lavaCrystalOverworldMaxYSpawn);
+                    this.runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalOverworldRarity, ARPConfig.lavaCrystalOverworldMinYSpawn, ARPConfig.lavaCrystalOverworldMaxYSpawn);
                 }
                 break;
             case 1: //The End
                 if (ARPConfig.enableLavaCrystalTheEndGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheEndRarity, ARPConfig.lavaCrystalTheEndMinYSpawn, ARPConfig.lavaCrystalTheEndMaxYSpawn);
+                    this.runGenerator(lavaCrystalTheEndGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheEndRarity, ARPConfig.lavaCrystalTheEndMinYSpawn, ARPConfig.lavaCrystalTheEndMaxYSpawn);
                 }
                 break;
             case -1: //The Nether
                 if (ARPConfig.enableLavaCrystalTheNetherGen) {
-                    this.runGenerator(lavaCrystalGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheNetherRarity, ARPConfig.lavaCrystalTheNetherMinYSpawn, ARPConfig.lavaCrystalTheNetherMaxYSpawn);
+                    this.runGenerator(lavaCrystalTheNetherGenerator, world, random, chunkX, chunkZ, ARPConfig.lavaCrystalTheNetherRarity, ARPConfig.lavaCrystalTheNetherMinYSpawn, ARPConfig.lavaCrystalTheNetherMaxYSpawn);
                 }
                 break;
         }

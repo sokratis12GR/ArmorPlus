@@ -36,7 +36,7 @@ public class CoalBoots extends ItemArmor {
         super(ModItems.COAL_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("coal_boots");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LapisBoots");     // Used for localization (en_US.lang)
+        setUnlocalizedName("CoalBoots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }

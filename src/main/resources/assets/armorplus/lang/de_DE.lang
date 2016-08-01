@@ -14,7 +14,7 @@ key.categories.armorplus=ArmorPlus
 key.nightvision=Umschalten Nachtsicht (The Ultimate Armor)
 
 #Commands
-commands.error.arg.invalid=Ungültige Argumente 
+commands.error.arg.invalid=Ungültige Argumente
 commands.error.arg.missing=Nicht genügend Argumente
 commands.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
 commands.error.404=Befehl nicht gefunden!

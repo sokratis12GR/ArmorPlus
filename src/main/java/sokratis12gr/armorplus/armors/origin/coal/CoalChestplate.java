@@ -36,7 +36,7 @@ public class CoalChestplate extends ItemArmor {
         super(ModItems.COAL_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("coal_chestplate");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LapisChestplate");     // Used for localization (en_US.lang)
+        setUnlocalizedName("CoalChestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }

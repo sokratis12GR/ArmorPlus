@@ -20,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sokratis12gr.armorplus.armors.tconstruct.*;
 import sokratis12gr.armorplus.client.gui.ARPTab;
 import sokratis12gr.armorplus.client.gui.GuiArmorForge;
 import sokratis12gr.armorplus.client.gui.GuiArmorPlus;
@@ -48,7 +47,7 @@ import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.10.2-5.0.3.0";
+    public static final String VERSION = "1.10.2-5.0.4.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
     public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
