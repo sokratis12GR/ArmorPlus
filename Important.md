@@ -32,10 +32,15 @@ Tier [Tinkers]
 * Knight Slime Armor [Diamond+]
 * Pig Iron Armor [Diamond]
 
-* Finished *
+Development
+--------------------------
 
 - [x] Not Started
+
 - [ ] Not Yet
+
 - [ ] Soon
+
 - [ ] WIP
+
 - [ ] Yes
