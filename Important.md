@@ -31,3 +31,11 @@ Tier [Tinkers]
 * Manyullyn Armor [Ardite+]
 * Knight Slime Armor [Diamond+]
 * Pig Iron Armor [Diamond]
+
+* Finished *
+
+- [x] Not Started
+- [ ] Not Yet
+- [ ] Soon
+- [ ] WIP
+- [ ] Yes
