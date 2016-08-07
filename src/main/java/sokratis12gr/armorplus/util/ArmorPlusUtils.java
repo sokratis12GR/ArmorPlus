@@ -24,7 +24,7 @@ public final class ArmorPlusUtils {
     public static void updateDonators() {
         ArmorPlus.donators.clear();
 
-        for (String s : getHTML("https://capes.sokratis12gr.tk/donators.txt")) {
+        for (String s : getHTML("http://capes.sokratis12gr.tk/donators.txt")) {
             ArmorPlus.donators.add(s);
         }
     }

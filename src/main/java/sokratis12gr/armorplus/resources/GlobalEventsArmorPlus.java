@@ -13,12 +13,20 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import sokratis12gr.armorplus.ARPConfig;
 import sokratis12gr.armorplus.ArmorPlus;
+import sokratis12gr.armorplus.client.ClientTickHandler;
 import sokratis12gr.armorplus.registry.ModBlocks;
 import sokratis12gr.armorplus.registry.ModItems;
 import sokratis12gr.armorplus.util.ARPAchievements;
 import sokratis12gr.armorplus.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
+
+
+    @SubscribeEvent
+    public void onClientTick(TickEvent.ClientTickEvent event) {
+        ClientTickHandler handler = new ClientTickHandler();
+        handler.onTick(event);
+    }
 
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {

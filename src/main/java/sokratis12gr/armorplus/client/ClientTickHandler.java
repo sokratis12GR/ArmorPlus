@@ -31,8 +31,8 @@ public class ClientTickHandler {
 
     public static Minecraft mc = FMLClientHandler.instance().getClient();
 
-    public static final String DONATE_CAPE = "https://dl.dropboxusercontent.com/u/90411166/cape.png";
-    public static final String THE_DRAGON_TEAM_CAPE = "https://dl.dropboxusercontent.com/u/90411166/aidan.png";
+    public static final String DONATE_CAPE = "http://capes.sokratis12gr.tk/cape.png";
+    public static final String THE_DRAGON_TEAM_CAPE = "http://capes.sokratis12gr.tk/thedragoncape.png";
 
     private Map<String, CapeBufferDownload> donateDownload = new HashMap<String, CapeBufferDownload>();
     private Map<String, CapeBufferDownload> thedragonteamDownload = new HashMap<String, CapeBufferDownload>();
@@ -65,7 +65,7 @@ public class ClientTickHandler {
                 if (entityPlayer instanceof AbstractClientPlayer) {
                     AbstractClientPlayer player = (AbstractClientPlayer) entityPlayer;
 
-                    if (StringUtils.stripControlCodes(player.getName()).equals("moritz30")) {
+                    if (StringUtils.stripControlCodes(player.getName()).equals("Moritz30")) {
                         CapeBufferDownload download = thedragonteamDownload.get(player.getName());
 
                         if (download == null) {
