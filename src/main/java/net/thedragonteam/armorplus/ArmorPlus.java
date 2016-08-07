@@ -18,6 +18,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.*;
+import net.thedragonteam.core.TheDragonCore;
+import net.thedragonteam.core.config.ModConfigProcessor;
+import net.thedragonteam.core.config.ModFeatureParser;
+import net.thedragonteam.core.util.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.thedragonteam.armorplus.api.network.DynamicNetwork;
@@ -34,10 +38,6 @@ import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.util.TextHelper;
-import sokratis12gr.sokratiscore.SokratisCore;
-import sokratis12gr.sokratiscore.config.ModConfigProcessor;
-import sokratis12gr.sokratiscore.config.ModFeatureParser;
-import sokratis12gr.sokratiscore.util.LogHelper;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -49,16 +49,16 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, canBeDeactivated = false, guiFactory = ArmorPlus.GUIFACTORY, updateJSON = "https://raw.githubusercontent.com/sokratis12GR/VersionUpdate/gh-pages/ArmorPlus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String VERSION = "1.10.2-5.0.5.0";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
-    public static final String CLIENTPROXY = "ClientProxy";
-    public static final String COMMONPROXY = "CommonProxy";
-    public static final String GUIFACTORY = "ConfigGuiFactory";
+    public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
+    public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
+    public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
+    public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
@@ -66,6 +66,7 @@ public class ArmorPlus {
     public static CreativeTabs TAB_ARMORPLUS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "armors", 0);
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "items", 1);
     public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "blocks", 2);
+    public static CreativeTabs TAB_ARMORPLUS_WEAPONS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "weapons", 3);
 
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{TAB_ARMORPLUS, TAB_ARMORPLUS_ITEMS, TAB_ARMORPLUS_BLOCKS});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();

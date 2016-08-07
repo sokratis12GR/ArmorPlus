@@ -28,17 +28,24 @@ public class CommandArmorPlus extends CommandBase {
     }
 
     @Override
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        return server.isSinglePlayer() || super.checkPermission(server, sender) || super.getRequiredPermissionLevel() == 0;
+    }
+
+
+    @Override
+    public List getCommandAliases() {
+        return Arrays.asList(new String[]{"armorplus", "arp"});
+    }
+
+    @Override
     public String getCommandName() {
-        return "/armorplus";
+        return "arp";
     }
 
     @Override
     public int getRequiredPermissionLevel() {
         return 0;
-    }
-
-    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
-        return sender.canCommandSenderUseCommand(this.getRequiredPermissionLevel(), this.getCommandName());
     }
 
     @Override
@@ -49,11 +56,6 @@ public class CommandArmorPlus extends CommandBase {
     @Override
     public String getCommandUsage(ICommandSender sender) {
         return getCommandName() + " help";
-    }
-
-    @Override
-    public List<String> getCommandAliases() {
-        return aliases;
     }
 
     @Override

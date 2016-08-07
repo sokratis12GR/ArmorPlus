@@ -10,6 +10,7 @@ public class ConfigHandler {
 
     public static void init(File file) {
         config = new Configuration(file);
+
         syncConfig();
     }
 

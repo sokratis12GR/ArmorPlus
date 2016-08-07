@@ -4,6 +4,7 @@
 itemGroup.armors=ARP Armors
 itemGroup.items=ARP Items
 itemGroup.blocks=ARP Blocks
+itemGroup.weapons=ARP Weapons
 
 #Containers
 container.ArmorForge=Armor Forge
@@ -220,8 +221,38 @@ tile.SteelOre.name=Steel Ore
 tile.SteelBlock.name=Block of Steel
 tile.ElectricalBlock.name=Electrical Block
 
-#PotionEffects
-potion.armorplusEffects=ArmorPlus Potion
+#Swords
+item.CoalSword.name=Coal Sword
+item.LapisSword.name=Lapis Sword
+item.RedstoneSword.name=Redstone Sword
+item.EmeraldSword.name=Emerald Sword
+item.ObsidianSword.name=Obsidian Sword
+item.LavaSword.name=Lava Sword
+item.SuperStarSword.name=Super Star Sword
+item.GuardianSword.name=Guardian Sword
+item.EnderDragonSword.name=Ender Dragon Sword
+
+#BattleAxes
+item.CoalBattleAxe.name=Coal Battle Axe
+item.LapisBattleAxe.name=Lapis Battle Axe
+item.RedstoneBattleAxe.name=Redstone Battle Axe
+item.EmeraldBattleAxe.name=Emerald Battle Axe
+item.ObsidianBattleAxe.name=Obsidian Battle Axe
+item.LavaBattleAxe.name=Lava Battle Axe
+item.SuperStarBattleAxe.name=Super Star Battle Axe
+item.GuardianBattleAxe.name=Guardian Battle Axe
+item.EnderDragonBattleAxe.name=Ender Dragon Battle Axe
+
+#Bows
+item.CoalBow.name=Coal Bow
+item.LapisBow.name=Lapis Bow
+item.RedstoneBow.name=Redstone Bow
+item.EmeraldBow.name=Emerald Bow
+item.ObsidianBow.name=Obsidian Bow
+item.LavaBow.name=Lava Bow
+item.SuperStarBow.name=Super Star Bow
+item.GuardianBow.name=Guardian Bow
+item.EnderDragonBow.name=Ender Dragon Bow
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

@@ -4,7 +4,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
-import sokratis12gr.sokratiscore.SokratisCore;
+import net.thedragonteam.core.TheDragonCore;
 
 import java.io.*;
 
@@ -31,7 +31,7 @@ public class Logger {
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "ArmorPlus Version: " + ArmorPlus.VERSION + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "modid: " + ArmorPlus.MODID + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Minecraft Version: " + MinecraftForge.MC_VERSION + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "dependencies: " + SokratisCore.MODID + SokratisCore.VERSION + " ( " + SokratisCore.MODNAME + " ) " + "</strong></p>");
+            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "dependencies: " + TheDragonCore.MODID + TheDragonCore.VERSION + " ( " + TheDragonCore.MODNAME + " ) " + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "by " + "<a href=\"http://minecraft.curseforge.com/members/sokratis12GR\" style=\"color:#AA0000;text-decoration:none\">sokratis12GR</a></strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Mod&#39;s Page: " + "<a href=\"http://minecraft.curseforge.com/projects/armorplus\" style=\"color:#AA0000;text-decoration:none\">ArmorPlus</a></strong></p>\n");
             writer.write("<h2 style=\"color:#DEDEDE;text-align:center\">" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</h2>");
@@ -83,6 +83,15 @@ public class Logger {
             writer.write("\n\n22. Steel Armor: " + ModItems.STEEL_HELMET.getRegistryName() + " , " + ModItems.STEEL_CHESTPLATE.getRegistryName() + " , " + ModItems.STEEL_LEGGINGS.getRegistryName() + " , " + ModItems.STEEL_BOOTS.getRegistryName());
             writer.write("\n\n23. Electrical Armor: " + ModItems.ELECTRICAL_HELMET.getRegistryName() + " , " + ModItems.ELECTRICAL_CHESTPLATE.getRegistryName() + " , " + ModItems.ELECTRICAL_LEGGINGS.getRegistryName() + " , " + ModItems.ELECTRICAL_BOOTS.getRegistryName());
             writer.write("\n\n24. Dev Armor: " + ModItems.DEV_HELMET.getRegistryName() + " , " + ModItems.DEV_CHESTPLATE.getRegistryName() + " , " + ModItems.DEV_LEGGINGS.getRegistryName() + " , " + ModItems.DEV_BOOTS.getRegistryName());
+            writer.write("\n\n25. Coal Weapons: " + ModItems.COAL_SWORD.getRegistryName() + " , " + ModItems.COAL_BATTLE_AXE.getRegistryName() + " , " + ModItems.COAL_BOW.getRegistryName());
+            writer.write("\n\n26. Lapis Weapons: " + ModItems.LAPIS_SWORD.getRegistryName() + " , " + ModItems.LAPIS_BATTLE_AXE.getRegistryName() + " , " + ModItems.LAPIS_BOW.getRegistryName());
+            writer.write("\n\n27. Redstone Weapons: " + ModItems.REDSTONE_SWORD.getRegistryName() + " , " + ModItems.REDSTONE_BATTLE_AXE.getRegistryName() + " , " + ModItems.REDSTONE_BOW.getRegistryName());
+            writer.write("\n\n28. Emerald Weapons: " + ModItems.EMERALD_SWORD.getRegistryName() + " , " + ModItems.EMERALD_BATTLE_AXE.getRegistryName() + " , " + ModItems.EMERALD_BOW.getRegistryName());
+            writer.write("\n\n29. Obsidian Weapons: " + ModItems.OBSIDIAN_SWORD.getRegistryName() + " , " + ModItems.OBSIDIAN_BATTLE_AXE.getRegistryName() + " , " + ModItems.OBSIDIAN_BOW.getRegistryName());
+            writer.write("\n\n30. Lava Weapons: " + ModItems.LAVA_SWORD.getRegistryName() + " , " + ModItems.LAVA_BATTLE_AXE.getRegistryName() + " , " + ModItems.LAVA_BOW.getRegistryName());
+            writer.write("\n\n31. Super Star Weapons: " + ModItems.SUPER_STAR_SWORD.getRegistryName() + " , " + ModItems.SUPER_STAR_BATTLE_AXE.getRegistryName() + " , " + ModItems.SUPER_STAR_BOW.getRegistryName());
+            writer.write("\n\n32. Guardian Weapons: " + ModItems.GUARDIAN_SWORD.getRegistryName() + " , " + ModItems.GUARDIAN_BATTLE_AXE.getRegistryName() + " , " + ModItems.GUARDIAN_BOW.getRegistryName());
+            writer.write("\n\n33. Ender Dragon Weapons: " + ModItems.ENDER_DRAGON_SWORD.getRegistryName() + " , " + ModItems.ENDER_DRAGON_BATTLE_AXE.getRegistryName() + " , " + ModItems.ENDER_DRAGON_BOW.getRegistryName());
             writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , "
                     + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName() + " , " + ModItems.STEEL_INGOT.getRegistryName() + " , " + ModItems.ELECTRICAL_INGOT.getRegistryName());
             writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName() + " , " + " , " + ModBlocks.STEEL_BLOCK.getRegistryName() + " , " + ModBlocks.ELECTRICAL_BLOCK.getRegistryName());

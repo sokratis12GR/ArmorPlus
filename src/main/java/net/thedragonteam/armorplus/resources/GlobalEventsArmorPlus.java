@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.resources;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -20,8 +21,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 
 public class GlobalEventsArmorPlus {
-
-
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
         ClientTickHandler handler = new ClientTickHandler();
@@ -34,6 +33,22 @@ public class GlobalEventsArmorPlus {
         Item i = event.crafting.getItem();
 
         ItemStack itemStack = event.crafting;
+
+        /** Swords */
+        if (i == ModItems.LAPIS_SWORD)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (i == ModItems.GUARDIAN_SWORD)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
+        /** BattleAxes */
+        if (i == ModItems.LAPIS_BATTLE_AXE)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (i == ModItems.GUARDIAN_BATTLE_AXE)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
+        /** Bows */
+        if (i == ModItems.LAPIS_BOW)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (i == ModItems.GUARDIAN_BOW)
+            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("power"), 1);
 
         /**Guardian Armor Thorns*/
         if (i == Item.getItemFromBlock(ModBlocks.ARMOR_FORGE)) {

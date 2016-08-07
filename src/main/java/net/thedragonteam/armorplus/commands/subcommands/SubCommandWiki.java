@@ -5,6 +5,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
 import net.thedragonteam.armorplus.util.TextHelper;
+import net.thedragonteam.core.client.util.ClientUtills;
 
 import java.awt.*;
 import java.net.MalformedURLException;
@@ -16,25 +17,6 @@ public class SubCommandWiki extends SubCommandBase {
 
     public SubCommandWiki(ICommand parent) {
         super(parent, "wiki");
-    }
-
-    public static void openWebpage(URI uri) {
-        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-            try {
-                desktop.browse(uri);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void openWebpage(URL url) {
-        try {
-            openWebpage(url.toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -50,11 +32,9 @@ public class SubCommandWiki extends SubCommandBase {
     @Override
     public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
         super.processSubCommand(server, sender, args);
-        try {
-            URL myURL = new URL("http://ftb.gamepedia.com/ArmorPlus");
-            openWebpage(myURL);
-        } catch (MalformedURLException e) {
-        }
+
+        ClientUtills.openLink("https://ftb.gamepedia.com/ArmorPlus");
+
     }
 
     @Override

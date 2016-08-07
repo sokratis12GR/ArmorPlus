@@ -1,12 +1,19 @@
 package net.thedragonteam.armorplus;
 
-import sokratis12gr.sokratiscore.config.ModConfigProperty;
+import net.thedragonteam.core.config.ModConfigProperty;
 
 /**
  * sokratis12gr.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  */
 public class ARPConfig {
+    //Weapons
+    @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable The ArmorPlus Sword's Recipes")
+    public static boolean enableSwordsRecipes = true;
+    @ModConfigProperty(category = "Weapons", name = "enableBattleAxesRecipes", comment = "Enable/Disable The ArmorPlus Battle Axes's Recipes")
+    public static boolean enableBattleAxesRecipes = true;
+    @ModConfigProperty(category = "Weapons", name = "enableBowsRecipes", comment = "Enable/Disable The ArmorPlus Bows's Recipes")
+    public static boolean enableBowsRecipes = true;
 
     //SuperStarArmor
     @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableSuperStarHRegen", comment = "Enable/Disable The Super Star Helmet Regeneration")

@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.worldgen.OreGen;
-import sokratis12gr.sokratiscore.util.LogHelper;
+import net.thedragonteam.core.util.LogHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

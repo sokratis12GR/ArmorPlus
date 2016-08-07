@@ -54,4 +54,3 @@ public class ModBlocks {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
     }
 }
-
