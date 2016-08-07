@@ -1,5 +1,6 @@
 package sokratis12gr.armorplus;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -10,22 +11,24 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sokratis12gr.armorplus.api.network.DynamicNetwork;
+import sokratis12gr.armorplus.client.ClientTickHandler;
 import sokratis12gr.armorplus.client.gui.ARPTab;
 import sokratis12gr.armorplus.client.gui.GuiArmorForge;
 import sokratis12gr.armorplus.client.gui.GuiArmorPlus;
 import sokratis12gr.armorplus.commands.CommandArmorPlus;
+import sokratis12gr.armorplus.common.ThreadGetData;
 import sokratis12gr.armorplus.compat.ICompatibility;
 import sokratis12gr.armorplus.container.ContainerArmorForge;
+import sokratis12gr.armorplus.proxy.CommonProxy;
 import sokratis12gr.armorplus.registry.*;
 import sokratis12gr.armorplus.resources.GlobalEventsArmorPlus;
 import sokratis12gr.armorplus.tileentity.TileEntityArmorForge;
@@ -37,6 +40,9 @@ import sokratis12gr.sokratiscore.config.ModFeatureParser;
 import sokratis12gr.sokratiscore.util.LogHelper;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static sokratis12gr.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
@@ -50,9 +56,9 @@ public class ArmorPlus {
     public static final String VERSION = "1.10.2-5.0.4.0";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:sokratiscore@[" + SokratisCore.VERSION + ",);";
-    public static final String CLIENTPROXY = "sokratis12gr.armorplus.ClientProxy";
-    public static final String COMMONPROXY = "sokratis12gr.armorplus.CommonProxy";
-    public static final String GUIFACTORY = "sokratis12gr.armorplus.client.gui.ConfigGuiFactory";
+    public static final String CLIENTPROXY = "sokratis12gr.armorplus.proxy.ClientProxy";
+    public static final String COMMONPROXY = "sokratis12gr.armorplus.proxy.CommonProxy";
+    public static final String GUIFACTORY = "ConfigGuiFactory";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
@@ -77,6 +83,11 @@ public class ArmorPlus {
 
     public GuiHandler GuiHandler = new GuiHandler();
 
+    /**
+     * The GameProfile used by the dummy ArmorPlus player
+     */
+    public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
+
     public static File getConfigDir() {
         return configDir;
     }
@@ -85,6 +96,11 @@ public class ArmorPlus {
         return textureDir;
     }
 
+    /**
+     * A list of the usernames of players who have donated to ArmorPlus.
+     */
+    public static List<String> donators = new ArrayList<String>();
+
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
     }
@@ -92,11 +108,17 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
+        logger.info("Version " + ArmorPlus.VERSION + " initializing...");
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+
+        //Register to receive subscribed events
+        MinecraftForge.EVENT_BUS.register(this);
+
+
+        //Get data from server
+        new ThreadGetData();
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -128,10 +150,20 @@ public class ArmorPlus {
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
 
+        //Initialization notification
+        logger.info("Version " + ArmorPlus.VERSION + " initializing...");
+
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+
+        //Register to receive subscribed events
+        MinecraftForge.EVENT_BUS.register(this);
+
+        //Get data from server
+        new ThreadGetData();
+
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -159,7 +191,6 @@ public class ArmorPlus {
         registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
         proxy.init(event);
     }
-
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -189,8 +220,23 @@ public class ArmorPlus {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
+
+        logger.info("Fake player readout: UUID = " + gameProfile.getId().toString() + ", name = " + gameProfile.getName());
+
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
         proxy.postInit(event);
+    }
+
+    @SubscribeEvent
+    public void onClientTickUpdate(DynamicNetwork.ClientTickUpdate event) {
+        try {
+            if (event.operation == 0) {
+                ClientTickHandler.tickingSet.remove(event.network);
+            } else {
+                ClientTickHandler.tickingSet.add(event.network);
+            }
+        } catch (Exception e) {
+        }
     }
 
     @EventHandler
