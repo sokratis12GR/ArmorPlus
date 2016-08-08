@@ -50,11 +50,6 @@ jar {
     )
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    from javadoc.destinationDir
-    classifier = 'javadoc'
-}
-
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
@@ -68,7 +63,6 @@ task apiJar(type: Jar) {
 }
 
 artifacts {
-    archives javadocJar
     archives sourcesJar
     archives apiJar
 }
