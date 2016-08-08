@@ -24,6 +24,8 @@ import net.thedragonteam.core.config.ModFeatureParser;
 import net.thedragonteam.core.util.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import net.thedragonteam.armorplus.api.crafting.ArmorForgeCraftingManager;
 import net.thedragonteam.armorplus.api.network.DynamicNetwork;
 import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
@@ -227,6 +229,7 @@ public class ArmorPlus {
 
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
         proxy.postInit(event);
+        
     }
 
     @SubscribeEvent

@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -30,29 +31,48 @@ public class ArmorForgeCraftingManager {
      */
     private static final ArmorForgeCraftingManager INSTANCE = new ArmorForgeCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
-
+    
+    NBTTagCompound nbttagc = new NBTTagCompound();
+    
+    ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
+    ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
+    ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
+    ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
+    
     private ArmorForgeCraftingManager() {
-        // ===================================== Origin Armors =====================================
+    	
+    	// ===================================== Set Variables =====================================
+    	
+    	/** NBT-Tag-Compound */
+    	nbttagc.setInteger("theoneprobe", 1);
+    	
+    	/** Set Helmets' NBT-Tags */
+    	COAL_HELMET.setTagCompound(nbttagc);
+    	EMERALD_HELMET.setTagCompound(nbttagc);
+    	LAPIS_HELMET.setTagCompound(nbttagc);
+    	LAVA_HELMET.setTagCompound(nbttagc);
+        
+    	// ===================================== Origin Armors =====================================
         /** Coal Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCoalArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "XXX", "CCC", "CXC", 'C', Items.COAL);
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "CCC", "CXC", "XXX", 'C', Items.COAL);
+            this.addRecipe(COAL_HELMET, "XXX", "CCC", "CXC", 'C', Items.COAL);
+            this.addRecipe(COAL_HELMET, "CCC", "CXC", "XXX", 'C', Items.COAL);
             this.addRecipe(new ItemStack(ModItems.COAL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', Items.COAL);
             this.addRecipe(new ItemStack(ModItems.COAL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', Items.COAL);
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', Items.COAL);
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', Items.COAL);
         }
         if (ARPConfig.recipes == 0 && ARPConfig.enableCharcoalCoalArmorRecipe) {
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "XXX", "CCC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "CCC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1, 1));
+            this.addRecipe(COAL_HELMET, "XXX", "CCC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
+            this.addRecipe(COAL_HELMET, "CCC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1, 1));
             this.addRecipe(new ItemStack(ModItems.COAL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(Items.COAL, 1, 1));
             this.addRecipe(new ItemStack(ModItems.COAL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(Items.COAL, 1, 1));
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(Items.COAL, 1, 1));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableCoalArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "XXX", "CCC", "CXC", 'C', Blocks.COAL_BLOCK);
-            this.addRecipe(new ItemStack(ModItems.COAL_HELMET, 1), "CCC", "CXC", "XXX", 'C', Blocks.COAL_BLOCK);
+            this.addRecipe(COAL_HELMET, "XXX", "CCC", "CXC", 'C', Blocks.COAL_BLOCK);
+            this.addRecipe(COAL_HELMET, "CCC", "CXC", "XXX", 'C', Blocks.COAL_BLOCK);
             this.addRecipe(new ItemStack(ModItems.COAL_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', Blocks.COAL_BLOCK);
             this.addRecipe(new ItemStack(ModItems.COAL_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', Blocks.COAL_BLOCK);
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "CXC", "CXC", 'C', Blocks.COAL_BLOCK);
@@ -60,16 +80,16 @@ public class ArmorForgeCraftingManager {
         }
         /** Emerald Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableEmeraldArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.EMERALD_HELMET, 1), "XXX", "EEE", "EXE", 'E', Items.EMERALD);
-            this.addRecipe(new ItemStack(ModItems.EMERALD_HELMET, 1), "EEE", "EXE", "XXX", 'E', Items.EMERALD);
+            this.addRecipe(EMERALD_HELMET, "XXX", "EEE", "EXE", 'E', Items.EMERALD);
+            this.addRecipe(EMERALD_HELMET, "EEE", "EXE", "XXX", 'E', Items.EMERALD);
             this.addRecipe(new ItemStack(ModItems.EMERALD_CHESTPLATE, 1), "EXE", "EEE", "EEE", 'E', Items.EMERALD);
             this.addRecipe(new ItemStack(ModItems.EMERALD_LEGGINGS, 1), "EEE", "EXE", "EXE", 'E', Items.EMERALD);
             this.addRecipe(new ItemStack(ModItems.EMERALD_BOOTS, 1), "XXX", "EXE", "EXE", 'E', Items.EMERALD);
             this.addRecipe(new ItemStack(ModItems.EMERALD_BOOTS, 1), "EXE", "EXE", "XXX", 'E', Items.EMERALD);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableEmeraldArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.EMERALD_HELMET, 1), "XXX", "EEE", "EXE", 'E', Blocks.EMERALD_BLOCK);
-            this.addRecipe(new ItemStack(ModItems.EMERALD_HELMET, 1), "EEE", "EXE", "XXX", 'E', Blocks.EMERALD_BLOCK);
+            this.addRecipe(EMERALD_HELMET, "XXX", "EEE", "EXE", 'E', Blocks.EMERALD_BLOCK);
+            this.addRecipe(EMERALD_HELMET, "EEE", "EXE", "XXX", 'E', Blocks.EMERALD_BLOCK);
             this.addRecipe(new ItemStack(ModItems.EMERALD_CHESTPLATE, 1), "EXE", "EEE", "EEE", 'E', Blocks.EMERALD_BLOCK);
             this.addRecipe(new ItemStack(ModItems.EMERALD_LEGGINGS, 1), "EEE", "EXE", "EXE", 'E', Blocks.EMERALD_BLOCK);
             this.addRecipe(new ItemStack(ModItems.EMERALD_BOOTS, 1), "XXX", "EXE", "EXE", 'E', Blocks.EMERALD_BLOCK);
@@ -77,16 +97,16 @@ public class ArmorForgeCraftingManager {
         }
         /** Lapis Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.LAPIS_HELMET, 1), "XXX", "LLL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(new ItemStack(ModItems.LAPIS_HELMET, 1), "LLL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
+            this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
+            this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
             this.addRecipe(new ItemStack(ModItems.LAPIS_CHESTPLATE, 1), "LXL", "LLL", "LLL", 'L', new ItemStack(Items.DYE, 1, 4));
             this.addRecipe(new ItemStack(ModItems.LAPIS_LEGGINGS, 1), "LLL", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
             this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "XXX", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
             this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "LXL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableLapisArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.LAPIS_HELMET, 1), "XXX", "LLL", "LXL", 'L', Blocks.LAPIS_BLOCK);
-            this.addRecipe(new ItemStack(ModItems.LAPIS_HELMET, 1), "LLL", "LXL", "XXX", 'L', Blocks.LAPIS_BLOCK);
+            this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', Blocks.LAPIS_BLOCK);
+            this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', Blocks.LAPIS_BLOCK);
             this.addRecipe(new ItemStack(ModItems.LAPIS_CHESTPLATE, 1), "LXL", "LLL", "LLL", 'L', Blocks.LAPIS_BLOCK);
             this.addRecipe(new ItemStack(ModItems.LAPIS_LEGGINGS, 1), "LLL", "LXL", "LXL", 'L', Blocks.LAPIS_BLOCK);
             this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "XXX", "LXL", "LXL", 'L', Blocks.LAPIS_BLOCK);
@@ -94,13 +114,13 @@ public class ArmorForgeCraftingManager {
         }
         /** Lava Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && ARPConfig.enableOldLavaArmorRecipes) {
-            this.addShapelessRecipe(new ItemStack(ModItems.LAVA_HELMET, 1), ModItems.OBSIDIAN_HELMET, Items.LAVA_BUCKET, ModItems.OBSIDIAN_HELMET);
+            this.addShapelessRecipe(LAVA_HELMET, ModItems.OBSIDIAN_HELMET, Items.LAVA_BUCKET, ModItems.OBSIDIAN_HELMET);
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), ModItems.OBSIDIAN_CHESTPLATE, Items.LAVA_BUCKET, ModItems.OBSIDIAN_CHESTPLATE);
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), ModItems.OBSIDIAN_LEGGINGS, Items.LAVA_BUCKET, ModItems.OBSIDIAN_LEGGINGS);
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), ModItems.OBSIDIAN_BOOTS, Items.LAVA_BUCKET, ModItems.OBSIDIAN_BOOTS);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableLavaArmorRecipes && ARPConfig.enableOldLavaArmorRecipes) {
-            this.addShapelessRecipe(new ItemStack(ModItems.LAVA_HELMET, 1), ModItems.OBSIDIAN_HELMET, Items.LAVA_BUCKET, ModItems.OBSIDIAN_HELMET,
+            this.addShapelessRecipe(LAVA_HELMET, ModItems.OBSIDIAN_HELMET, Items.LAVA_BUCKET, ModItems.OBSIDIAN_HELMET,
                     Items.LAVA_BUCKET);
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), ModItems.OBSIDIAN_CHESTPLATE, Items.LAVA_BUCKET, ModItems.OBSIDIAN_CHESTPLATE,
                     Items.LAVA_BUCKET);
@@ -110,8 +130,8 @@ public class ArmorForgeCraftingManager {
                     Items.LAVA_BUCKET);
         }
         if (ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.LAVA_HELMET, 1), "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_HELMET, 1), "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
