@@ -38,6 +38,8 @@ public class ArmorForgeCraftingManager {
     ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
     ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
     ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
+    ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
+    ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
     
     private ArmorForgeCraftingManager() {
     	
@@ -51,6 +53,8 @@ public class ArmorForgeCraftingManager {
     	EMERALD_HELMET.setTagCompound(nbttagc);
     	LAPIS_HELMET.setTagCompound(nbttagc);
     	LAVA_HELMET.setTagCompound(nbttagc);
+    	OBSIDIAN_HELMET.setTagCompound(nbttagc);
+    	REDSTONE_HELMET.setTagCompound(nbttagc);
         
     	// ===================================== Origin Armors =====================================
         /** Coal Armor */
@@ -139,16 +143,16 @@ public class ArmorForgeCraftingManager {
         }
         /** Obsidian Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableObsidianArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.OBSIDIAN_HELMET, 1), "XXX", "OOO", "OXO", 'O', Blocks.OBSIDIAN);
-            this.addRecipe(new ItemStack(ModItems.OBSIDIAN_HELMET, 1), "OOO", "OXO", "XXX", 'O', Blocks.OBSIDIAN);
+            this.addRecipe(OBSIDIAN_HELMET, "XXX", "OOO", "OXO", 'O', Blocks.OBSIDIAN);
+            this.addRecipe(OBSIDIAN_HELMET, "OOO", "OXO", "XXX", 'O', Blocks.OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_CHESTPLATE, 1), "OXO", "OOO", "OOO", 'O', Blocks.OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_LEGGINGS, 1), "OOO", "OXO", "OXO", 'O', Blocks.OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOOTS, 1), "XXX", "OXO", "OXO", 'O', Blocks.OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOOTS, 1), "OXO", "OXO", "XXX", 'O', Blocks.OBSIDIAN);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableObsidianArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.OBSIDIAN_HELMET, 1), "XXX", "OOO", "OXO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
-            this.addRecipe(new ItemStack(ModItems.OBSIDIAN_HELMET, 1), "OOO", "OXO", "XXX", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
+            this.addRecipe(OBSIDIAN_HELMET, "XXX", "OOO", "OXO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
+            this.addRecipe(OBSIDIAN_HELMET, "OOO", "OXO", "XXX", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_CHESTPLATE, 1), "OXO", "OOO", "OOO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_LEGGINGS, 1), "OOO", "OXO", "OXO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOOTS, 1), "XXX", "OXO", "OXO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
@@ -156,16 +160,16 @@ public class ArmorForgeCraftingManager {
         }
         /** Redstone Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableRedstoneArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.REDSTONE_HELMET, 1), "XXX", "RRR", "RXR", 'R', Items.REDSTONE);
-            this.addRecipe(new ItemStack(ModItems.REDSTONE_HELMET, 1), "RRR", "RXR", "XXX", 'R', Items.REDSTONE);
+            this.addRecipe(REDSTONE_HELMET, "XXX", "RRR", "RXR", 'R', Items.REDSTONE);
+            this.addRecipe(REDSTONE_HELMET, "RRR", "RXR", "XXX", 'R', Items.REDSTONE);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_CHESTPLATE, 1), "RXR", "RRR", "RRR", 'R', Items.REDSTONE);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_LEGGINGS, 1), "RRR", "RXR", "RXR", 'R', Items.REDSTONE);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "XXX", "RXR", "RXR", 'R', Items.REDSTONE);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "RXR", "RXR", "XXX", 'R', Items.REDSTONE);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableRedstoneArmorRecipes) {
-            this.addRecipe(new ItemStack(ModItems.REDSTONE_HELMET, 1), "XXX", "RRR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
-            this.addRecipe(new ItemStack(ModItems.REDSTONE_HELMET, 1), "RRR", "RXR", "XXX", 'R', Blocks.REDSTONE_BLOCK);
+            this.addRecipe(REDSTONE_HELMET, "XXX", "RRR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
+            this.addRecipe(REDSTONE_HELMET, "RRR", "RXR", "XXX", 'R', Blocks.REDSTONE_BLOCK);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_CHESTPLATE, 1), "RXR", "RRR", "RRR", 'R', Blocks.REDSTONE_BLOCK);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_LEGGINGS, 1), "RRR", "RXR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "XXX", "RXR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
