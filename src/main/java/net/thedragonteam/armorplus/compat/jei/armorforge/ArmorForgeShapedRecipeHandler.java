@@ -11,7 +11,7 @@ import mezz.jei.util.ErrorUtil;
 import mezz.jei.util.Log;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
-import net.thedragonteam.armorplus.api.crafting.ShapedRecipes;
+import net.thedragonteam.armorplus.api.crafting.armorforge.ShapedRecipes;
 
 import javax.annotation.Nonnull;
 

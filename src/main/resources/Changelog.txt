@@ -1,4 +1,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-5.0.6.0
+{Features Added}
+* The One Probe Integration
+* In Game Config GUI support
+* Added Advanced Armor Forge (WIP)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-5.0.5.1
 {Bugs Fixed}
 * ArmorForge's GUI not opening

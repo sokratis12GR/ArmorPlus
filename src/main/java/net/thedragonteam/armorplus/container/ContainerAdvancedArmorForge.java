@@ -9,10 +9,10 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.armorforge.SlotCrafting;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
-import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.armorforge.InventoryCrafting;
+import net.thedragonteam.armorplus.api.crafting.advarmorforge.AdvancedArmorForgeCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.advarmorforge.InventoryCrafting;
+import net.thedragonteam.armorplus.api.crafting.advarmorforge.SlotCrafting;
+import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 
 import javax.annotation.Nullable;
 
@@ -21,40 +21,40 @@ import javax.annotation.Nullable;
  * sokratis12gr.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
  */
-public class ContainerArmorForge extends Container {
+public class ContainerAdvancedArmorForge extends Container {
 
     /**
-     * The crafting matrix inventory (3x3).
+     * The crafting matrix inventory (4x3).
      */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
     /**
      * Position of the armorforge
      */
     public BlockPos pos;
-    private TileEntityArmorForge tileEntity;
+    private TileEntityAdvancedArmorForge tileEntity;
     private World worldObj;
 
-    public ContainerArmorForge(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityArmorForge tileEntity) {
+    public ContainerAdvancedArmorForge(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityAdvancedArmorForge tileEntity) {
         this.tileEntity = tileEntity;
         this.worldObj = worldIn;
         this.pos = posIn;
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 44));
 
-        for (int i = 0; i < 3; ++i) { //i = y
-            for (int j = 0; j < 3; ++j) { //j = x
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+        for (int i = 0; i < 4; ++i) { //i = y
+            for (int j = 0; j < 4; ++j) { //j = x
+                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 4, 12 + j * 18, 17 + i * 18));
             }
         }
 
         for (int k = 0; k < 3; ++k) { //k = y
             for (int i1 = 0; i1 < 9; ++i1) { //i1 = x
-                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
+                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 102 + k * 18));
             }
         }
 
         for (int l = 0; l < 9; ++l) { //l = x
-            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 142));
+            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 160));
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
@@ -68,7 +68,7 @@ public class ContainerArmorForge extends Container {
      * Callback for when the crafting matrix is changed.
      */
     public void onCraftMatrixChanged(IInventory inventoryIn) {
-        this.craftResult.setInventorySlotContents(0, ArmorForgeCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+        this.craftResult.setInventorySlotContents(0, AdvancedArmorForgeCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
 
     }
 

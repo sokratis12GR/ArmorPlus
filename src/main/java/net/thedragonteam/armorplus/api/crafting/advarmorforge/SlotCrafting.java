@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.crafting;
+package net.thedragonteam.armorplus.api.crafting.advarmorforge;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -150,7 +150,7 @@ public class SlotCrafting extends Slot {
         net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, craftMatrix);
         this.onCrafting(stack);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(playerIn);
-        ItemStack[] aitemstack = ArmorForgeCraftingManager.getInstance().getRemainingItems(this.craftMatrix, playerIn.worldObj);
+        ItemStack[] aitemstack = AdvancedArmorForgeCraftingManager.getInstance().getRemainingItems(this.craftMatrix, playerIn.worldObj);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
 
         for (int i = 0; i < aitemstack.length; ++i) {

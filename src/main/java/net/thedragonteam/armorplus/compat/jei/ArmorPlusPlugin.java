@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapedRecipeHandler;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapelessRecipeHandler;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
-import net.thedragonteam.armorplus.api.crafting.ArmorForgeCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
 
 import javax.annotation.Nonnull;
 

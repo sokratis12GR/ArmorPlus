@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,7 +18,11 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
+import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
+import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.registry.*;
+import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.core.TheDragonCore;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
@@ -25,7 +30,6 @@ import net.thedragonteam.core.util.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.thedragonteam.armorplus.api.crafting.ArmorForgeCraftingManager;
 import net.thedragonteam.armorplus.api.network.DynamicNetwork;
 import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
@@ -47,6 +51,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ADVANCED_ARMOR_FORGE;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
@@ -55,8 +60,14 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = "1.10.2-5.0.5.1";
+    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String MODNAME = "ArmorPlus";
+    public static final String MCVERSION = "1.10.2";
+    public static final String MAJOR = "6"; // Updates every MAJOR change, never resets
+    public static final String API = "0"; // Updates every time the API change, resets on MAJOR changes
+    public static final String MINOR = "0"; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
+    public static final String PATCH = "0"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
+
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
@@ -64,6 +75,8 @@ public class ArmorPlus {
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
+
+    public ResourceLocation resourceLocation;
 
     public static CreativeTabs TAB_ARMORPLUS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "armors", 0);
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "items", 1);
@@ -85,6 +98,12 @@ public class ArmorPlus {
     public static File textureDir;
 
     public GuiHandler GuiHandler = new GuiHandler();
+
+    @SuppressWarnings("unused")
+    private ModItems items;
+
+    @SuppressWarnings("unused")
+    private ArmorPlusEntity entity;
 
     /**
      * The GameProfile used by the dummy ArmorPlus player
@@ -111,6 +130,19 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
+        try {
+            File capeFile = new File(resourceLocation.getResourcePath() + ".png");
+
+            if (capeFile.exists()) {
+                capeFile.delete();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        entity = new ArmorPlusEntity();
+
+
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         logger.info("Version " + ArmorPlus.VERSION + " initializing...");
@@ -153,6 +185,8 @@ public class ArmorPlus {
     @SideOnly(Side.SERVER)
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
+
+        entity = new ArmorPlusEntity();
 
         //Initialization notification
         logger.info("Version " + ArmorPlus.VERSION + " initializing...");
@@ -202,6 +236,8 @@ public class ArmorPlus {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         ModItems.init();
         ModBlocks.init();
+        items = new ModItems();
+
         ModBlocks.register();
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
         MinecraftForge.EVENT_BUS.register(new MobDrops());
@@ -215,6 +251,7 @@ public class ArmorPlus {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
+        proxy.registerRenderer();
         proxy.registerRenderers(this);
         proxy.registerWorldGenerators();
         proxy.registerTileEntities();
@@ -224,12 +261,12 @@ public class ArmorPlus {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
-
         logger.info("Fake player readout: UUID = " + gameProfile.getId().toString() + ", name = " + gameProfile.getName());
 
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
+        proxy.registerModels();
         proxy.postInit(event);
-        
+
     }
 
     @SubscribeEvent
@@ -257,6 +294,9 @@ public class ArmorPlus {
             if (ID == GUI_ARMOR_FORGE) {
                 return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
             }
+            if (ID == GUI_ADVANCED_ARMOR_FORGE) {
+                return new ContainerAdvancedArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityAdvancedArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            }
             return null;
         }
 
@@ -266,6 +306,9 @@ public class ArmorPlus {
                 return new GuiArmorPlus();
             if (ID == GUI_ARMOR_FORGE) {
                 return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            }
+            if (ID == GUI_ADVANCED_ARMOR_FORGE) {
+                return new GuiAdvancedArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityAdvancedArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }

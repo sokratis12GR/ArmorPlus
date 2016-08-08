@@ -3,7 +3,7 @@ package net.thedragonteam.armorplus.compat.jei.armorforge;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
 import mezz.jei.plugins.vanilla.VanillaRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.crafting.ShapedRecipes;
+import net.thedragonteam.armorplus.api.crafting.armorforge.ShapedRecipes;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;

@@ -3,7 +3,7 @@ package net.thedragonteam.armorplus.compat.jei.armorforge;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.plugins.vanilla.crafting.AbstractShapelessRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.crafting.ShapelessRecipes;
+import net.thedragonteam.armorplus.api.crafting.armorforge.ShapelessRecipes;
 
 import javax.annotation.Nonnull;
 import java.util.Collections;

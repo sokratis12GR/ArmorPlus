@@ -11,8 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.io.File;
 
 @SideOnly(Side.CLIENT)
-public class CapeBufferDownload extends Thread
-{
+public class CapeBufferDownload extends Thread {
     public String username;
 
     public String staticCapeUrl;
@@ -23,8 +22,7 @@ public class CapeBufferDownload extends Thread
 
     boolean downloaded = false;
 
-    public CapeBufferDownload(String name, String url)
-    {
+    public CapeBufferDownload(String name, String url) {
         username = name;
         staticCapeUrl = url;
 
@@ -33,47 +31,37 @@ public class CapeBufferDownload extends Thread
     }
 
     @Override
-    public void run()
-    {
+    public void run() {
         try {
             download();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void download()
-    {
+    private void download() {
         try {
             resourceLocation = new ResourceLocation("armorplus/" + StringUtils.stripControlCodes(username));
 
             capeImage = downloadCape();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         downloaded = true;
     }
 
-    public ThreadDownloadImageData getImage()
-    {
+    public ThreadDownloadImageData getImage() {
         return capeImage;
     }
 
-    public ResourceLocation getResourceLocation()
-    {
+    public ResourceLocation getResourceLocation() {
         return resourceLocation;
     }
 
-    public ThreadDownloadImageData downloadCape()
-    {
+    public ThreadDownloadImageData downloadCape() {
         try {
             File capeFile = new File(resourceLocation.getResourcePath() + ".png");
-
-            if(capeFile.exists())
-            {
-                capeFile.delete();
-            }
 
             TextureManager manager = Minecraft.getMinecraft().getTextureManager();
             ThreadDownloadImageData data = new ThreadDownloadImageData(capeFile, staticCapeUrl, null, null);
@@ -81,7 +69,7 @@ public class CapeBufferDownload extends Thread
             manager.loadTexture(resourceLocation, data);
 
             return data;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

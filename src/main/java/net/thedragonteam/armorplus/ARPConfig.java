@@ -16,115 +16,115 @@ public class ARPConfig {
     public static boolean enableBowsRecipes = true;
 
     //SuperStarArmor
-    @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableSuperStarHRegen", comment = "Enable/Disable The Super Star Helmet Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHRegen", comment = "Enable/Disable The Super Star Helmet Regeneration")
     public static boolean enableSuperStarHRegen = true;
 
-    @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableSuperStarCRegen", comment = "Enable/Disable The Super Star Chestplate Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarCRegen", comment = "Enable/Disable The Super Star Chestplate Regeneration")
     public static boolean enableSuperStarCRegen = true;
 
-    @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableSuperStarLRegen", comment = "Enable/Disable The Super Star Leggings Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarLRegen", comment = "Enable/Disable The Super Star Leggings Regeneration")
     public static boolean enableSuperStarLRegen = true;
 
-    @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableSuperStarBRegen", comment = "Enable/Disable The Super Star Boots Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarBRegen", comment = "Enable/Disable The Super Star Boots Regeneration")
     public static boolean enableSuperStarBRegen = true;
 
-    @ModConfigProperty(category = "SuperStarArmor.Effects", name = "enableFullSuperStarArmorEffect", comment = "Enable/Disable The Full Super Star Armor Effect")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableFullSuperStarArmorEffect", comment = "Enable/Disable The Full Super Star Armor Effect")
     public static boolean enableFullSuperStarArmorEffect = false;
 
     //LavaArmor
-    @ModConfigProperty(category = "LavaArmor.Effects", name = "enableLavaHEffects", comment = "Enable/Disable The Lava Helmet Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaHEffects", comment = "Enable/Disable The Lava Helmet Resistance and Fire Resistance")
     public static boolean enableLavaHEffects = true;
 
-    @ModConfigProperty(category = "LavaArmor.Effects", name = "enableLavaCEffects", comment = "Enable/Disable The Lava Chestplate Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaCEffects", comment = "Enable/Disable The Lava Chestplate Resistance and Fire Resistance")
     public static boolean enableLavaCEffects = true;
 
-    @ModConfigProperty(category = "LavaArmor.Effects", name = "enableLavaLEffects", comment = "Enable/Disable The Lava Leggings Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaLEffects", comment = "Enable/Disable The Lava Leggings Resistance and Fire Resistance")
     public static boolean enableLavaLEffects = true;
 
-    @ModConfigProperty(category = "LavaArmor.Effects", name = "enableLavaBEffects", comment = "Enable/Disable The Lava Boots Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaBEffects", comment = "Enable/Disable The Lava Boots Resistance and Fire Resistance")
     public static boolean enableLavaBEffects = true;
 
-    @ModConfigProperty(category = "LavaArmor.Effects", name = "enableFullLavaArmorEffect", comment = "Enable/Disable The Full Lava Armor Effect")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableFullLavaArmorEffect", comment = "Enable/Disable The Full Lava Armor Effect")
     public static boolean enableFullLavaArmorEffect = false;
 
     //ObsidianArmor
-    @ModConfigProperty(category = "ObsidianArmor.Effects", name = "enableObsidianHResistance", comment = "Enable/Disable The Obsidian Helmet Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianHResistance", comment = "Enable/Disable The Obsidian Helmet Resistance")
     public static boolean enableObsidianHResistance = true;
 
-    @ModConfigProperty(category = "ObsidianArmor.Effects", name = "enableObsidianCResistance", comment = "Enable/Disable The Obsidian Chestplate Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianCResistance", comment = "Enable/Disable The Obsidian Chestplate Resistance")
     public static boolean enableObsidianCResistance = true;
 
-    @ModConfigProperty(category = "ObsidianArmor.Effects", name = "enableObsidianLResistance", comment = "Enable/Disable The Obsidian Leggings Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianLResistance", comment = "Enable/Disable The Obsidian Leggings Resistance")
     public static boolean enableObsidianLResistance = true;
 
-    @ModConfigProperty(category = "ObsidianArmor.Effects", name = "enableObsidianBResistance", comment = "Enable/Disable The Obsidian Boots Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianBResistance", comment = "Enable/Disable The Obsidian Boots Resistance")
     public static boolean enableObsidianBResistance = true;
 
-    @ModConfigProperty(category = "ObsidianArmor.Effects", name = "enableFullObsidianArmorEffect", comment = "Enable/Disable The Full Obsidian Armor Effect")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableFullObsidianArmorEffect", comment = "Enable/Disable The Full Obsidian Armor Effect")
     public static boolean enableFullObsidianArmorEffect = false;
 
     //EmeraldArmor
-    @ModConfigProperty(category = "EmeraldArmor.Effects", name = "enableEmeraldHHaste", comment = "Enable/Disable The Emerald Helmet Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldHHaste", comment = "Enable/Disable The Emerald Helmet Haste")
     public static boolean enableEmeraldHHaste = true;
 
-    @ModConfigProperty(category = "EmeraldArmor.Effects", name = "enableEmeraldCHaste", comment = "Enable/Disable The Emerald Chestplate Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldCHaste", comment = "Enable/Disable The Emerald Chestplate Haste")
     public static boolean enableEmeraldCHaste = true;
 
-    @ModConfigProperty(category = "EmeraldArmor.Effects", name = "enableEmeraldLHaste", comment = "Enable/Disable The Emerald Leggings Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldLHaste", comment = "Enable/Disable The Emerald Leggings Haste")
     public static boolean enableEmeraldLHaste = true;
 
-    @ModConfigProperty(category = "EmeraldArmor.Effects", name = "enableEmeraldBHaste", comment = "Enable/Disable The Emerald Boots Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldBHaste", comment = "Enable/Disable The Emerald Boots Haste")
     public static boolean enableEmeraldBHaste = true;
 
-    @ModConfigProperty(category = "EmeraldArmor.Effects", name = "enableFullEmeraldArmorEffect", comment = "Enable/Disable The Full Emerald Armor Effect")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableFullEmeraldArmorEffect", comment = "Enable/Disable The Full Emerald Armor Effect")
     public static boolean enableFullEmeraldArmorEffect = false;
 
     //RedstoneArmor
-    @ModConfigProperty(category = "RedstoneArmor.Effects", name = "enableRedstoneHSpeed", comment = "Enable/Disable The Redstone Helmet Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneHSpeed", comment = "Enable/Disable The Redstone Helmet Speed")
     public static boolean enableRedstoneHSpeed = true;
 
-    @ModConfigProperty(category = "RedstoneArmor.Effects", name = "enableRedstoneCSpeed", comment = "Enable/Disable The Redstone Chestplate Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneCSpeed", comment = "Enable/Disable The Redstone Chestplate Speed")
     public static boolean enableRedstoneCSpeed = true;
 
-    @ModConfigProperty(category = "RedstoneArmor.Effects", name = "enableRedstoneLSpeed", comment = "Enable/Disable The Redstone Leggings Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneLSpeed", comment = "Enable/Disable The Redstone Leggings Speed")
     public static boolean enableRedstoneLSpeed = true;
 
-    @ModConfigProperty(category = "RedstoneArmor.Effects", name = "enableRedstoneBSpeed", comment = "Enable/Disable The Redstone Boots Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneBSpeed", comment = "Enable/Disable The Redstone Boots Speed")
     public static boolean enableRedstoneBSpeed = true;
 
-    @ModConfigProperty(category = "RedstoneArmor.Effects", name = "enableFullRedstoneArmorEffect", comment = "Enable/Disable The Full Redstone Armor Effect")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableFullRedstoneArmorEffect", comment = "Enable/Disable The Full Redstone Armor Effect")
     public static boolean enableFullRedstoneArmorEffect = false;
 
     //LapisArmor
-    @ModConfigProperty(category = "LapisArmor.Effects", name = "enableLapisHBreathing", comment = "Enable/Disable The Lapis Helmet Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisHBreathing", comment = "Enable/Disable The Lapis Helmet Water Breathing")
     public static boolean enableLapisHBreathing = true;
 
-    @ModConfigProperty(category = "LapisArmor.Effects", name = "enableLapisCBreathing", comment = "Enable/Disable The Lapis Chestplate Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisCBreathing", comment = "Enable/Disable The Lapis Chestplate Water Breathing")
     public static boolean enableLapisCBreathing = true;
 
-    @ModConfigProperty(category = "LapisArmor.Effects", name = "enableLapisLBreathing", comment = "Enable/Disable The Lapis Leggings Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisLBreathing", comment = "Enable/Disable The Lapis Leggings Water Breathing")
     public static boolean enableLapisLBreathing = true;
 
-    @ModConfigProperty(category = "LapisArmor.Effects", name = "enableLapisBBreathing", comment = "Enable/Disable The Lapis Boots Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisBBreathing", comment = "Enable/Disable The Lapis Boots Water Breathing")
     public static boolean enableLapisBBreathing = true;
 
-    @ModConfigProperty(category = "LapisArmor.Effects", name = "enableFullLapisArmorEffect", comment = "Enable/Disable The Full Lapis Armor Effect")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableFullLapisArmorEffect", comment = "Enable/Disable The Full Lapis Armor Effect")
     public static boolean enableFullLapisArmorEffect = false;
 
     //CoalArmor
-    @ModConfigProperty(category = "CoalArmor.Effects", name = "enableCoalHNightVision", comment = "Enable/Disable The Coal Helmet NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalHNightVision", comment = "Enable/Disable The Coal Helmet NightVision")
     public static boolean enableCoalHNightVision = true;
 
-    @ModConfigProperty(category = "CoalArmor.Effects", name = "enableCoalCNightVision", comment = "Enable/Disable The Coal Chestplate NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalCNightVision", comment = "Enable/Disable The Coal Chestplate NightVision")
     public static boolean enableCoalCNightVision = true;
 
-    @ModConfigProperty(category = "CoalArmor.Effects", name = "enableCoalLNightVision", comment = "Enable/Disable The Coal Leggings NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalLNightVision", comment = "Enable/Disable The Coal Leggings NightVision")
     public static boolean enableCoalLNightVision = true;
 
-    @ModConfigProperty(category = "CoalArmor.Effects", name = "enableCoalBNightVision", comment = "Enable/Disable The Coal Boots NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalBNightVision", comment = "Enable/Disable The Coal Boots NightVision")
     public static boolean enableCoalBNightVision = true;
 
-    @ModConfigProperty(category = "CoalArmor.Effects", name = "enableFullCoalArmorEffect", comment = "Enable/Disable The Full Coal Armor Effect")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableFullCoalArmorEffect", comment = "Enable/Disable The Full Coal Armor Effect")
     public static boolean enableFullCoalArmorEffect = false;
 
     //FlightAbility
@@ -132,22 +132,22 @@ public class ARPConfig {
     public static boolean enableFlightAbility = true;
 
     //EffectLevel
-    @ModConfigProperty(category = "EmeraldArmor.EffectLevel", name = "emeraldArmorEffectlevel", comment = "Set the level of the Haste effect by the Emerald Armor.")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.EffectLevel", name = "emeraldArmorEffectlevel", comment = "Set the level of the Haste effect by the Emerald Armor.")
     public static int emeraldArmorEffectlevel = 1;
 
-    @ModConfigProperty(category = "ObsidianArmor.EffectLevel", name = "obsidianArmorEffectlevel", comment = "Set the level of the Resistance effect by the Obsidian Armor.")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.EffectLevel", name = "obsidianArmorEffectlevel", comment = "Set the level of the Resistance effect by the Obsidian Armor.")
     public static int obsidianArmorEffectlevel = 0;
 
-    @ModConfigProperty(category = "EffectLevel", name = "redstoneArmorEffectlevel", comment = "Set the level of the Swiftness effect by the Redstone Armor.")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.EffectLevel", name = "redstoneArmorEffectlevel", comment = "Set the level of the Swiftness effect by the Redstone Armor.")
     public static int redstoneArmorEffectlevel = 1;
 
-    @ModConfigProperty(category = "LavaArmor.EffectLevel", name = "lavaArmorEffectlevel", comment = "Set the level of the Resistance effect by the Lava Armor.")
+    @ModConfigProperty(category = "Armors.LavaArmor.EffectLevel", name = "lavaArmorEffectlevel", comment = "Set the level of the Resistance effect by the Lava Armor.")
     public static int lavaArmorEffectlevel = 0;
 
-    @ModConfigProperty(category = "SuperStarArmor.EffectLevel", name = "superstarArmorEffectlevel", comment = "Set the level of the Regeneration effect by the Super Star Armor.")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.EffectLevel", name = "superstarArmorEffectlevel", comment = "Set the level of the Regeneration effect by the Super Star Armor.")
     public static int superstarArmorEffectlevel = 1;
 
-    @ModConfigProperty(category = "TheUltimateArmor.EffectLevel", name = "ultimateArmorEffectlevel", comment = "Set the level of the Regeneration effect by The Ultimate Armor.")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.EffectLevel", name = "ultimateArmorEffectlevel", comment = "Set the level of the Regeneration effect by The Ultimate Armor.")
     public static int ultimateArmorEffectlevel = 1;
 
     //WorldGeneration
@@ -221,87 +221,87 @@ public class ARPConfig {
     public static String[] blackListedItems = new String[]{"minecraft:dirt"};
 
     //TinkersEffects
-    @ModConfigProperty(category = "ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")
     public static boolean enableArditeArmorEffects = true;
 
-    @ModConfigProperty(category = "CobaltArmor.Effects", name = "enableCobaltArmorEffects", comment = "Enable/Disable Cobalt Armor Effects ")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Effects", name = "enableCobaltArmorEffects", comment = "Enable/Disable Cobalt Armor Effects")
     public static boolean enableCobaltArmorEffects = true;
 
-    @ModConfigProperty(category = "ManyullynArmor.Effects", name = "enableManyullynArmorEffects", comment = "Enable/Disable The Ultimate Armor Invincibility")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Effects", name = "enableManyullynArmorEffects", comment = "Enable/Disable Manyullyn Armor Effects")
     public static boolean enableManyullynArmorEffects = true;
 
-    @ModConfigProperty(category = "PigIronArmor.Effects", name = "enablePigIronArmorEffects", comment = "Enable/Disable Manyullym Armor Effects")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Effects", name = "enablePigIronArmorEffects", comment = "Enable/Disable Manyullym Armor Effects")
     public static boolean enablePigIronArmorEffects = true;
 
-    @ModConfigProperty(category = "KnightSlimeArmor.Effects", name = "enableKnightSlimeArmorEffects", comment = "Enable/Disable Knight Slime Armor Effects")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Effects", name = "enableKnightSlimeArmorEffects", comment = "Enable/Disable Knight Slime Armor Effects")
     public static boolean enableKnightSlimeArmorEffects = true;
 
     //TheUltimateArmor
-    @ModConfigProperty(category = "TheUltimateArmor.Ability", name = "enableTheUltimateArmorIncinvibility", comment = "Enable/Disable The Ultimate Armor Invincibility")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Ability", name = "enableTheUltimateArmorIncinvibility", comment = "Enable/Disable The Ultimate Armor Invincibility")
     public static boolean enableTheUltimateArmorIncinvibility = true;
 
     //Recipes
-    @ModConfigProperty(category = "CoalArmor.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
+    @ModConfigProperty(category = "Armors.CoalArmor.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
     public static boolean enableCoalArmorRecipes = true;
 
-    @ModConfigProperty(category = "CoalArmor.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
+    @ModConfigProperty(category = "Armors.CoalArmor.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
     public static boolean enableCharcoalCoalArmorRecipe = false;
 
-    @ModConfigProperty(category = "LapisArmor.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
+    @ModConfigProperty(category = "Armors.LapisArmor.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
     public static boolean enableLapisArmorRecipes = true;
 
-    @ModConfigProperty(category = "RedstoneArmor.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
     public static boolean enableRedstoneArmorRecipes = true;
 
-    @ModConfigProperty(category = "EmeraldArmor.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
     public static boolean enableEmeraldArmorRecipes = true;
 
-    @ModConfigProperty(category = "ObsidianArmor.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
     public static boolean enableObsidianArmorRecipes = true;
 
-    @ModConfigProperty(category = "LavaArmor.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
+    @ModConfigProperty(category = "Armors.LavaArmor.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
     public static boolean enableLavaArmorRecipes = true;
 
-    @ModConfigProperty(category = "SuperStarArmor.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
     public static boolean enableSuperStarArmorRecipes = true;
 
-    @ModConfigProperty(category = "EnderDragonArmor.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
     public static boolean enableEnderDragonArmorRecipes = true;
 
-    @ModConfigProperty(category = "GuardianArmor.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
+    @ModConfigProperty(category = "Armors.GuardianArmor.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
     public static boolean enableGuardianArmorRecipes = true;
 
-    @ModConfigProperty(category = "TheUltimateArmor.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
     public static boolean enableTheUltimateArmorRecipes = true;
 
-    @ModConfigProperty(category = "ReinforcedArmors.Recipes", name = "enableReinforcedArmorsRecipes", comment = "Enable/Disable The Reinforced Armors Recipes")
+    @ModConfigProperty(category = "Armors.ReinforcedArmors.Recipes", name = "enableReinforcedArmorsRecipes", comment = "Enable/Disable The Reinforced Armors Recipes")
     public static boolean enableReinforcedArmorsRecipes = true;
 
-    @ModConfigProperty(category = "ChainArmor.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
+    @ModConfigProperty(category = "Armors.ChainArmor.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
     public static boolean enableChainArmorRecipes = true;
 
-    @ModConfigProperty(category = "ArditeArmor.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
     public static boolean enableArditeArmorRecipes = true;
 
-    @ModConfigProperty(category = "CobaltArmor.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
     public static boolean enableCobaltArmorRecipes = true;
 
-    @ModConfigProperty(category = "ManyullynArmor.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
     public static boolean enableManyullynArmorRecipes = true;
 
-    @ModConfigProperty(category = "PigIronArmor.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
     public static boolean enablePigIronArmorRecipes = true;
 
-    @ModConfigProperty(category = "KnightSlimeArmor.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
     public static boolean enableKnightSlimeArmorRecipes = true;
 
-    @ModConfigProperty(category = "ChickenArmor.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
     public static boolean enableChickenArmorRecipes = true;
 
-    @ModConfigProperty(category = "SlimeArmor.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
+    @ModConfigProperty(category = "Armors.SlimeArmor.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
     public static boolean enableSlimeArmorRecipes = true;
 
-    @ModConfigProperty(category = "LavaArmor.Recipes", name = "enableOldLavaArmorRecipes", comment = "Enable/Disable The Old Lava Armors Recipes")
+    @ModConfigProperty(category = "Armors.LavaArmor.Recipes", name = "enableOldLavaArmorRecipes", comment = "Enable/Disable The Old Lava Armors Recipes")
     public static boolean enableOldLavaArmorRecipes = false;
 
     @ModConfigProperty(category = "Items.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")

@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.core.util.LogHelper;
@@ -47,6 +48,12 @@ public class CommonProxy {
     public void registerRenderers(ArmorPlus armorPlus) {
     }
 
+    public void registerRenderer() {
+    }
+
+    public void registerModels() {
+    }
+
     /**
      * Gets the Minecraft base directory.
      *
@@ -62,6 +69,7 @@ public class CommonProxy {
 
     public void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityArmorForge.class, "ArmorForge");
+        GameRegistry.registerTileEntity(TileEntityAdvancedArmorForge.class, "AdvancedArmorForge");
     }
 
     private WeakReference<EntityPlayer> createNewPlayer(WorldServer world) {

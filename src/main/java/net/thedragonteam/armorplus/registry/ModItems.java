@@ -29,6 +29,7 @@ import net.thedragonteam.armorplus.armors.tconstruct.knightslime.*;
 import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.*;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.*;
 import net.thedragonteam.armorplus.armors.v2.electrical.*;
+import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
 import net.thedragonteam.armorplus.items.battleaxes.*;
 import net.thedragonteam.armorplus.items.books.ArmorPlusBook;
 import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
@@ -42,6 +43,7 @@ import net.thedragonteam.armorplus.armors.origin.redstone.*;
 import net.thedragonteam.armorplus.armors.reinforced.rdarmor.*;
 import net.thedragonteam.armorplus.armors.v2.steel.*;
 import net.thedragonteam.armorplus.items.swords.*;
+import net.thedragonteam.armorplus.util.NameUtil;
 
 public class ModItems {
     /**
@@ -306,6 +308,8 @@ public class ModItems {
     public static GuardianBow GUARDIAN_BOW;
     public static EnderDragonBow ENDER_DRAGON_BOW;
 
+    public static Item COAL_ARROW;
+
     public static void init() {
         CHAINMAIL = new Chainmail();
         REINFORCING_MATERIAL = new ReinforcingMaterial();
@@ -468,6 +472,9 @@ public class ModItems {
         SUPER_STAR_BOW = new SuperStarBow();
         GUARDIAN_BOW = new GuardianBow();
         ENDER_DRAGON_BOW = new EnderDragonBow();
+
+        COAL_ARROW = new ItemCoalArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        NameUtil.setNames(COAL_ARROW, "coal_arrow");
     }
 
 
@@ -635,4 +642,20 @@ public class ModItems {
         GUARDIAN_BOW.initModel();
         ENDER_DRAGON_BOW.initModel();
     }
+
+
+    private void register() {
+        registerItem(COAL_ARROW);
+
+    }
+
+    private void registerItem(Item item) {
+        GameRegistry.register(item);
+    }
+
+
+    public ModItems() {
+        register();
+    }
+
 }

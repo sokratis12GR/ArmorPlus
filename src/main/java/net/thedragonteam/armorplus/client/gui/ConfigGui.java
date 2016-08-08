@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -18,6 +19,14 @@ public class ConfigGui extends GuiConfig {
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
 
+        /** adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Weapons".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Armors".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("GameModes".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Items".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("WhiteList".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("BlackList".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("WorldGeneration".toLowerCase())));
 
         return list;
     }

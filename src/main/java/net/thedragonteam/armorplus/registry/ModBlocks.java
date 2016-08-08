@@ -17,31 +17,36 @@ import net.thedragonteam.armorplus.blocks.*;
 public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
-            COMPRESSED_OBSIDIAN,
-            ARMOR_FORGE, STEEL_BLOCK, ELECTRICAL_BLOCK;
+            COMPRESSED_OBSIDIAN, STEEL_BLOCK, ELECTRICAL_BLOCK,
+            ARMOR_FORGE, ADVANCED_ARMOR_FORGE;
 
     public static void init() {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
-        ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
         STEEL_BLOCK = new SteelBlock().setRegistryName("steel_block");
         ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
+        ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
+        ADVANCED_ARMOR_FORGE = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
+
     }
 
     public static void register() {
         registerBlock(BLOCK_LAVA_CRYSTAL);
         registerBlock(COMPRESSED_OBSIDIAN);
-        registerBlock(ARMOR_FORGE);
         registerBlock(STEEL_BLOCK);
         registerBlock(ELECTRICAL_BLOCK);
+        registerBlock(ARMOR_FORGE);
+        registerBlock(ADVANCED_ARMOR_FORGE);
+
     }
 
     public static void registerRenders() {
         registerRender(BLOCK_LAVA_CRYSTAL);
         registerRender(COMPRESSED_OBSIDIAN);
-        registerRender(ARMOR_FORGE);
         registerRender(STEEL_BLOCK);
         registerRender(ELECTRICAL_BLOCK);
+        registerRender(ARMOR_FORGE);
+        registerRender(ADVANCED_ARMOR_FORGE);
     }
 
     public static void registerBlock(Block block) {

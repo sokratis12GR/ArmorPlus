@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.crafting;
+package net.thedragonteam.armorplus.api.crafting.armorforge;
 
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;

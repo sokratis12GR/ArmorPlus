@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.crafting;
+package net.thedragonteam.armorplus.api.crafting.advarmorforge;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

@@ -8,6 +8,7 @@ itemGroup.weapons=ARP Weapons
 
 #Containers
 container.ArmorForge=Armor Forge
+container.AdvancedArmorForge=Advanced Armor Forge
 container.inventory=Inventory
 
 # Keybinds
@@ -216,10 +217,11 @@ item.TheGiftOfTheGods.name=The Gift Of The Gods
 #Blocks
 tile.CompressedObsidian.name=Compressed Obsidian
 tile.BlockLavaCrystal.name=Lava Crystal Block
-tile.ArmorForge.name=Armor Forge
 tile.SteelOre.name=Steel Ore
 tile.SteelBlock.name=Block of Steel
 tile.ElectricalBlock.name=Electrical Block
+tile.ArmorForge.name=Armor Forge
+tile.AdvancedArmorForge.name=Advanced Armor Forge
 
 #Swords
 item.CoalSword.name=Coal Sword
@@ -253,6 +255,9 @@ item.LavaBow.name=Lava Bow
 item.SuperStarBow.name=Super Star Bow
 item.GuardianBow.name=Guardian Bow
 item.EnderDragonBow.name=Ender Dragon Bow
+
+#Arrows
+item.coal_arrow.name=Coal Arrow
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
