@@ -106,15 +106,6 @@ public class SlotCrafting extends Slot {
         /**The Overpowered! - Achievement Trigger*/
         if (stack.getItem() == ModItems.LAVA_HELMET || stack.getItem() == ModItems.LAVA_CHESTPLATE || stack.getItem() == ModItems.LAVA_LEGGINGS || stack.getItem() == ModItems.LAVA_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_LAVA_ARMOR, 1);
-        /**Godlike! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.SUPER_STAR_HELMET || stack.getItem() == ModItems.SUPER_STAR_CHESTPLATE || stack.getItem() == ModItems.SUPER_STAR_LEGGINGS || stack.getItem() == ModItems.SUPER_STAR_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_SUPER_STAR_ARMOR, 1);
-        /**The Power of the Ender Dragon! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.ENDER_DRAGON_HELMET || stack.getItem() == ModItems.ENDER_DRAGON_CHESTPLATE || stack.getItem() == ModItems.ENDER_DRAGON_LEGGINGS || stack.getItem() == ModItems.ENDER_DRAGON_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_ENDER_DRAGON_ARMOR, 1);
-        /**The Ultimate Power! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_THE_ULTIMATE_ARMOR, 1);
         /**Jump Jump Jump! - Achievement Trigger*/
         if (stack.getItem() == ModItems.SLIME_HELMET || stack.getItem() == ModItems.SLIME_CHESTPLATE || stack.getItem() == ModItems.SLIME_LEGGINGS || stack.getItem() == ModItems.SLIME_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_SLIME_ARMOR, 1);

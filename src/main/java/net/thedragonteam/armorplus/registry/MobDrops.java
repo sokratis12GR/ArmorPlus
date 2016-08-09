@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
 
+import static net.thedragonteam.armorplus.ARPConfig.*;
+
 /**
  * Created by sokratis12GR on 4/4/2016.
  */
@@ -20,21 +22,21 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledEnderDragon(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityDragon) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.ENDER_DRAGON_SCALE, 12);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.ENDER_DRAGON_SCALE, enderdragonScaleDropAmount);
         }
     }
 
     @SubscribeEvent
     public void playerKilledWither(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityWither) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.WITHER_BONE, 6);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.WITHER_BONE, witherBoneDropAmount);
         }
     }
 
     @SubscribeEvent
     public void playerKilledElderGuardian(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, 6);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, guardianScaleDropAmount);
         }
     }
 

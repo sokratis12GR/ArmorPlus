@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.util.TextHelper;
+import net.thedragonteam.core.util.TextHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("WhiteList".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("BlackList".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("WorldGeneration".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("MobDrops".toLowerCase())));
 
         return list;
     }

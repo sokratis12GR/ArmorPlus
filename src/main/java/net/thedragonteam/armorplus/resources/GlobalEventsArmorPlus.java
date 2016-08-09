@@ -15,10 +15,10 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.util.TextHelper;
 import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.core.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
     @SubscribeEvent

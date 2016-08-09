@@ -3,11 +3,13 @@ package net.thedragonteam.armorplus.api.crafting.advarmorforge;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nullable;
@@ -15,6 +17,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+
+import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
  * sokratis12gr.armorplus.api.crafting
@@ -32,7 +36,9 @@ public class AdvancedArmorForgeCraftingManager {
     NBTTagCompound nbttagc = new NBTTagCompound();
 
     ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
-
+    ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
+    ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
+    ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
 
     private AdvancedArmorForgeCraftingManager() {
 
@@ -43,24 +49,436 @@ public class AdvancedArmorForgeCraftingManager {
 
         /** Set Helmets' NBT-Tags */
         ENDER_DRAGON_HELMET.setTagCompound(nbttagc);
+        GUARDIAN_HELMET.setTagCompound(nbttagc);
+        SUPER_STAR_HELMET.setTagCompound(nbttagc);
+        THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
 
+        /** The Ultimate Armor */
+        if (enableTheUltimateArmorRecipes) {
+            this.addShapelessRecipe(THE_ULTIMATE_HELMET,
+                    ModItems.THE_ULTIMATE_HELMET_LEFT,
+                    ModItems.THE_ULTIMATE_HELMET_MIDDLE,
+                    ModItems.THE_ULTIMATE_HELMET_RIGHT,
+                    ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1),
+                    ModItems.THE_ULTIMATE_CHESTPLATE_LEFT,
+                    ModItems.THE_ULTIMATE_CHESTPLATE_MIDDLE,
+                    ModItems.THE_ULTIMATE_CHESTPLATE_RIGHT,
+                    ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1),
+                    ModItems.THE_ULTIMATE_LEGGINGS_LEFT,
+                    ModItems.THE_ULTIMATE_LEGGINGS_MIDDLE,
+                    ModItems.THE_ULTIMATE_LEGGINGS_RIGHT,
+                    ModItems.THE_ULTIMATE_MATERIAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1),
+                    ModItems.THE_ULTIMATE_BOOTS_LEFT,
+                    ModItems.THE_ULTIMATE_BOOTS_MIDDLE,
+                    ModItems.THE_ULTIMATE_BOOTS_RIGHT,
+                    ModItems.THE_ULTIMATE_MATERIAL);
+            //Helmet Parts
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET_LEFT, 1),
+                    ModItems.SUPER_STAR_HELMET,
+                    ModItems.WITHER_BONE,
+                    Blocks.SOUL_SAND,
+                    Blocks.NETHERRACK,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET_MIDDLE, 1),
+                    ModItems.ENDER_DRAGON_HELMET,
+                    ModItems.ENDER_DRAGON_SCALE,
+                    Items.ENDER_PEARL,
+                    Items.ENDER_EYE,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET_RIGHT, 1),
+                    ModItems.GUARDIAN_HELMET,
+                    ModItems.GUARDIAN_SCALE,
+                    Items.PRISMARINE_CRYSTALS,
+                    Items.PRISMARINE_SHARD,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            //Chestplate Parts
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_LEFT, 1),
+                    ModItems.SUPER_STAR_CHESTPLATE,
+                    ModItems.WITHER_BONE,
+                    Blocks.SOUL_SAND,
+                    Blocks.NETHERRACK,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_MIDDLE, 1),
+                    ModItems.ENDER_DRAGON_CHESTPLATE,
+                    ModItems.ENDER_DRAGON_SCALE,
+                    Items.ENDER_PEARL,
+                    Items.ENDER_EYE,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_RIGHT, 1),
+                    ModItems.GUARDIAN_CHESTPLATE,
+                    ModItems.GUARDIAN_SCALE,
+                    Items.PRISMARINE_CRYSTALS,
+                    Items.PRISMARINE_SHARD,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            //Leggings Parts
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_LEFT, 1),
+                    ModItems.SUPER_STAR_LEGGINGS,
+                    ModItems.WITHER_BONE,
+                    Blocks.SOUL_SAND,
+                    Blocks.NETHERRACK,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_MIDDLE, 1),
+                    ModItems.ENDER_DRAGON_LEGGINGS,
+                    ModItems.ENDER_DRAGON_SCALE,
+                    Items.ENDER_PEARL,
+                    Items.ENDER_EYE,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_RIGHT, 1),
+                    ModItems.GUARDIAN_LEGGINGS,
+                    ModItems.GUARDIAN_SCALE,
+                    Items.PRISMARINE_CRYSTALS,
+                    Items.PRISMARINE_SHARD,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            //Boots Parts
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_LEFT, 1),
+                    ModItems.SUPER_STAR_BOOTS,
+                    ModItems.WITHER_BONE,
+                    Blocks.SOUL_SAND,
+                    Blocks.NETHERRACK,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_MIDDLE, 1),
+                    ModItems.ENDER_DRAGON_BOOTS,
+                    ModItems.ENDER_DRAGON_SCALE,
+                    Items.ENDER_PEARL,
+                    Items.ENDER_EYE,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_RIGHT, 1),
+                    ModItems.GUARDIAN_BOOTS,
+                    ModItems.GUARDIAN_SCALE,
+                    Items.PRISMARINE_CRYSTALS,
+                    Items.PRISMARINE_SHARD,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.THE_ULTIMATE_MATERIAL,
+                    ModItems.LAVA_CRYSTAL);
+        }
+
+        /** Super Star Armor */
+        if (ARPConfig.recipes == 0 && enableSuperStarArmorRecipes) {
+            this.addRecipe(SUPER_STAR_HELMET,
+                    "WWWW",
+                    "WNNW",
+                    "XXXX",
+                    "XXXX",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+            this.addRecipe(SUPER_STAR_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "WWWW",
+                    "WNNW",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_CHESTPLATE, 1),
+                    "WXXW",
+                    "WWWW",
+                    "WNNW",
+                    "WWWW",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_LEGGINGS, 1),
+                    "WWWW",
+                    "WNNW",
+                    "WXXW",
+                    "WXXW",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1),
+                    "WXXW",
+                    "NXXN",
+                    "XXXX",
+                    "XXXX",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1),
+                    "XXXX",
+                    "XXXX",
+                    "WXXW",
+                    "NXXN",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR);
+        }
+        if (ARPConfig.recipes == 1 && enableSuperStarArmorRecipes) {
+            this.addRecipe(SUPER_STAR_HELMET,
+                    "SWWS",
+                    "WNNW",
+                    "XXXX",
+                    "XXXX",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+            this.addRecipe(SUPER_STAR_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "SWWS",
+                    "WNNW",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_CHESTPLATE, 1),
+                    "SXXS",
+                    "WWWW",
+                    "SNNS",
+                    "WWWW",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_LEGGINGS, 1),
+                    "SWWS",
+                    "WNNW",
+                    "WXXW",
+                    "SXXS",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1),
+                    "SXXS",
+                    "WXXW",
+                    "NXXN",
+                    "XXXX",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+            this.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOOTS, 1),
+                    "XXXX",
+                    "SXXS",
+                    "WXXW",
+                    "NXXN",
+                    'W', ModItems.WITHER_BONE,
+                    'N', Items.NETHER_STAR,
+                    'S', Blocks.SOUL_SAND);
+        }
+
+        /** Guardian Armor */
+        if (ARPConfig.recipes == 0 && enableGuardianArmorRecipes) {
+            this.addRecipe(GUARDIAN_HELMET,
+                    "GGGG",
+                    "GXXG",
+                    "XXXX",
+                    "XXXX",
+                    'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(GUARDIAN_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "GGGG",
+                    "GXXG",
+                    'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_CHESTPLATE, 1),
+                    "GXXG",
+                    "GGGG",
+                    "GGGG",
+                    "GGGG",
+                    'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_LEGGINGS, 1),
+                    "GGGG",
+                    "GGGG",
+                    "GXXG",
+                    "GXXG",
+                    'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1),
+                    "GXXG",
+                    "GXXG",
+                    "XXXX",
+                    "XXXX",
+                    'G', ModItems.GUARDIAN_SCALE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1),
+                    "XXXX",
+                    "XXXX",
+                    "GXXG",
+                    "GXXG",
+                    'G', ModItems.GUARDIAN_SCALE);
+        }
+        if (ARPConfig.recipes == 1 && enableGuardianArmorRecipes) {
+            this.addRecipe(GUARDIAN_HELMET,
+                    "GPPG",
+                    "GLLG",
+                    "XXXX",
+                    "XXXX",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'L', Blocks.SEA_LANTERN,
+                    'P', Items.PRISMARINE_CRYSTALS)
+            ;
+            this.addRecipe(GUARDIAN_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "GPPG",
+                    "GLLG",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'L', Blocks.SEA_LANTERN,
+                    'P', Items.PRISMARINE_CRYSTALS);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_CHESTPLATE, 1),
+                    "GXXG",
+                    "GPPG",
+                    "PLLP",
+                    "GPPG",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'L', Blocks.SEA_LANTERN,
+                    'P', Items.PRISMARINE_CRYSTALS);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_LEGGINGS, 1),
+                    "GPPG",
+                    "GLLG",
+                    "PXXP",
+                    "GXXG",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'L', Blocks.SEA_LANTERN,
+                    'P', Items.PRISMARINE_CRYSTALS);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1),
+                    "GXXG",
+                    "SXXS",
+                    "XXXX",
+                    "XXXX",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'S', Blocks.SPONGE);
+            this.addRecipe(new ItemStack(ModItems.GUARDIAN_BOOTS, 1),
+                    "XXXX",
+                    "XXXX",
+                    "GXXG",
+                    "SXXS",
+                    'G', ModItems.GUARDIAN_SCALE,
+                    'S', Blocks.SPONGE);
+        }
 
         /** Ender Dragon Armor */
-
-        this.addRecipe(ENDER_DRAGON_HELMET,
-                "CEEC",
-                "ESSE",
-                "XXXX",
-                "XXXX",
-                'E', ModItems.ENDER_DRAGON_SCALE,
-                'S', Items.ENDER_EYE);
-        this.addRecipe(ENDER_DRAGON_HELMET,
-                "XXXX",
-                "XXXX",
-                "CEEC",
-                "ESSE",
-                'E', ModItems.ENDER_DRAGON_SCALE,
-                'S', Items.ENDER_EYE);
+        if (ARPConfig.recipes == 0 && enableEnderDragonArmorRecipes) {
+            this.addRecipe(ENDER_DRAGON_HELMET,
+                    "EEEE",
+                    "EXXE",
+                    "XXXX",
+                    "XXXX",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(ENDER_DRAGON_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "EEEE",
+                    "EXXE",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1),
+                    "EXXE",
+                    "EEEE",
+                    "EEEE",
+                    "EEEE",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS, 1),
+                    "EEEE",
+                    "EEEE",
+                    "EXXE",
+                    "EXXE",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1),
+                    "EXXE",
+                    "EXXE",
+                    "XXXX",
+                    "XXXX",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1),
+                    "XXXX",
+                    "XXXX",
+                    "EXXE",
+                    "EXXE",
+                    'E', ModItems.ENDER_DRAGON_SCALE);
+        }
+        if (ARPConfig.recipes == 1 && enableEnderDragonArmorRecipes) {
+            this.addRecipe(ENDER_DRAGON_HELMET,
+                    "CEEC",
+                    "ESSE",
+                    "XXXX",
+                    "XXXX",
+                    'E', ModItems.ENDER_DRAGON_SCALE,
+                    'S', Items.ENDER_EYE,
+                    'C', Items.END_CRYSTAL);
+            this.addRecipe(ENDER_DRAGON_HELMET,
+                    "XXXX",
+                    "XXXX",
+                    "CEEC",
+                    "ESSE",
+                    'E', ModItems.ENDER_DRAGON_SCALE,
+                    'S', Items.ENDER_EYE,
+                    'C', Items.END_CRYSTAL);
+            if (!enableEnderDragonArmorElytra) {
+                this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1),
+                        "SXXS",
+                        "EEEE",
+                        "ECCE",
+                        "EEEE",
+                        'E', ModItems.ENDER_DRAGON_SCALE,
+                        'S', Items.ENDER_EYE,
+                        'C', Items.END_CRYSTAL);
+            } else if (enableEnderDragonArmorElytra) {
+                this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE, 1),
+                        "SXXS",
+                        "EEEE",
+                        "ELLE",
+                        "EEEE",
+                        'E', ModItems.ENDER_DRAGON_SCALE,
+                        'S', Items.ENDER_EYE,
+                        'L', Items.ELYTRA);
+            }
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS, 1),
+                    "SEES",
+                    "ECCE",
+                    "EXXE",
+                    "EXXE",
+                    'E', ModItems.ENDER_DRAGON_SCALE,
+                    'S', Items.ENDER_EYE,
+                    'C', Items.END_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1),
+                    "SXXS",
+                    "EXXE",
+                    "CXXC",
+                    "XXXX",
+                    'E', ModItems.ENDER_DRAGON_SCALE,
+                    'S', Items.ENDER_EYE,
+                    'C', Items.END_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOOTS, 1),
+                    "XXXX",
+                    "SXXS",
+                    "EXXE",
+                    "CXXC",
+                    'E', ModItems.ENDER_DRAGON_SCALE,
+                    'S', Items.ENDER_EYE,
+                    'C', Items.END_CRYSTAL);
+            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1),
+                    ModItems.ENDER_DRAGON_SCALE,
+                    ModItems.GUARDIAN_SCALE,
+                    ModItems.WITHER_BONE,
+                    ModItems.LAVA_CRYSTAL);
+        }
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {
@@ -74,6 +492,7 @@ public class AdvancedArmorForgeCraftingManager {
      * static instance of
      * this class
      */
+
     public static AdvancedArmorForgeCraftingManager getInstance() {
         // The static instance of this class
         return INSTANCE;

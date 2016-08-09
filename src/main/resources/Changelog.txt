@@ -1,9 +1,17 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ArmorPlus 1.10.2-5.0.6.0
+ArmorPlus 1.10.2-6.0.0.0
 {Features Added}
 * The One Probe Integration
 * In Game Config GUI support
-* Added Advanced Armor Forge (WIP)
+* Added Advanced Armor Forge
+* Added a new Crafting System
+* Added Arrows (WIP)
+* Fixed Bows
+* Added Elytra Crafting
+{Features Changed}
+* Nerfed the Crafting recipes cost of all Tinkers Armors in expert mode
+* Replaced a lot of the old recipes, changed them and moved them to the Advanced Armor Forge
+* Tweaked the Configuration File (I can't promise its gonna be for last)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-5.0.5.1
 {Bugs Fixed}

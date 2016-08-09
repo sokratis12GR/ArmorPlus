@@ -11,10 +11,6 @@ container.ArmorForge=Armor Forge
 container.AdvancedArmorForge=Advanced Armor Forge
 container.inventory=Inventory
 
-# Keybinds
-key.categories.armorplus=ArmorPlus
-key.nightvision=Toggle Night Vision (The Ultimate Armor)
-
 #Commands
 commands.error.arg.invalid=Invalid arguments
 commands.error.arg.missing=Not enough arguments
@@ -39,6 +35,7 @@ commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #JEI
 gui.jei.category.armorforge=Armor Forge
+gui.jei.category.advancedarmorforge=Advanced Armor Forge
 
 #BOOKS
 item.ArmorPlusBook.name=ArmorPlus Book
@@ -213,6 +210,19 @@ item.TheUltimateMaterial.name=The Ultimate Material
 item.EnderDragonScale.name=Ender Dragon Scale
 item.GuardianScale.name=Guardian Scale
 item.TheGiftOfTheGods.name=The Gift Of The Gods
+item.TheUltimateHelmetLeft.name=The Ultimate Helmet Left
+item.TheUltimateHelmetMiddle.name=The Ultimate Helmet Middle
+item.TheUltimateHelmetRight.name=The Ultimate Helmet Right
+item.TheUltimateChestplateLeft.name=The Ultimate Chestplate Left
+item.TheUltimateChestplateMiddle.name=The Ultimate Chestplate Middle
+item.TheUltimateChestplateRight.name=The Ultimate Chestplate Right
+item.TheUltimateLeggingsLeft.name=The Ultimate Legging Left
+item.TheUltimateLeggingsMiddle.name=The Ultimate Legging Middle
+item.TheUltimateLeggingsRight.name=The Ultimate Legging Right
+item.TheUltimateBootsLeft.name=The Ultimate Boots Left
+item.TheUltimateBootsMiddle.name=The Ultimate Boots Middle
+item.TheUltimateBootsRight.name=The Ultimate Boots Right
+
 
 #Blocks
 tile.CompressedObsidian.name=Compressed Obsidian

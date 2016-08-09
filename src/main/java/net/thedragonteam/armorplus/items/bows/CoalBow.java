@@ -7,8 +7,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -23,18 +25,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import static net.thedragonteam.core.util.TextHelper.localize;
+
 /**
  * Created by Socrates on 4/19/2016.
  */
 public class CoalBow extends ItemBow {
 
     public CoalBow() {
+        this.setMaxDamage(59);
         setRegistryName("coal_bow");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("CoalBow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;
-        this.setMaxDamage(59);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -154,7 +158,7 @@ public class CoalBow extends ItemBow {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GRAY + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)

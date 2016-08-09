@@ -32,7 +32,7 @@ public class TheUltimateLeggings extends ItemArmor {
     public TheUltimateLeggings() {
         super(ModItems.THE_ULTIMATE_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
-        setRegistryName("the_ultimate_leggings");        // The unique name (within your mod) that identifies this item
+        setRegistryName("the_ultimate_leggings_full");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName("TheUltimateLeggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
@@ -64,7 +64,7 @@ public class TheUltimateLeggings extends ItemArmor {
                 entity.capabilities.allowFlying = false;
             }
         }
-        if (ARPConfig.enableTheUltimateArmorIncinvibility) {
+        if (ARPConfig.enableTheUltimateArmorInvincibility) {
             if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.disableDamage = true;
             } else {

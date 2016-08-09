@@ -4,14 +4,8 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
-import net.thedragonteam.armorplus.util.TextHelper;
 import net.thedragonteam.core.client.util.ClientUtills;
-
-import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import net.thedragonteam.core.util.TextHelper;
 
 public class SubCommandWiki extends SubCommandBase {
 

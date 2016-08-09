@@ -43,6 +43,7 @@ import net.thedragonteam.armorplus.armors.origin.redstone.*;
 import net.thedragonteam.armorplus.armors.reinforced.rdarmor.*;
 import net.thedragonteam.armorplus.armors.v2.steel.*;
 import net.thedragonteam.armorplus.items.swords.*;
+import net.thedragonteam.armorplus.items.theultimate.*;
 import net.thedragonteam.armorplus.util.NameUtil;
 
 public class ModItems {
@@ -252,7 +253,6 @@ public class ModItems {
     public static TheUltimateLeggings THE_ULTIMATE_LEGGINGS;
     public static TheUltimateBoots THE_ULTIMATE_BOOTS;
 
-
     public static ArditeHelmet ARDITE_HELMET;
     public static ArditeChestplate ARDITE_CHESTPLATE;
     public static ArditeLeggings ARDITE_LEGGINGS;
@@ -307,6 +307,20 @@ public class ModItems {
     public static SuperStarBow SUPER_STAR_BOW;
     public static GuardianBow GUARDIAN_BOW;
     public static EnderDragonBow ENDER_DRAGON_BOW;
+
+    public static TheUltimateHelmetLeft THE_ULTIMATE_HELMET_LEFT;
+    public static TheUltimateHelmetMiddle THE_ULTIMATE_HELMET_MIDDLE;
+    public static TheUltimateHelmetRight THE_ULTIMATE_HELMET_RIGHT;
+    public static TheUltimateChestplateLeft THE_ULTIMATE_CHESTPLATE_LEFT;
+    public static TheUltimateChestplateMiddle THE_ULTIMATE_CHESTPLATE_MIDDLE;
+    public static TheUltimateChestplateRight THE_ULTIMATE_CHESTPLATE_RIGHT;
+    public static TheUltimateLeggingsLeft THE_ULTIMATE_LEGGINGS_LEFT;
+    public static TheUltimateLeggingsMiddle THE_ULTIMATE_LEGGINGS_MIDDLE;
+    public static TheUltimateLeggingsRight THE_ULTIMATE_LEGGINGS_RIGHT;
+    public static TheUltimateBootsLeft THE_ULTIMATE_BOOTS_LEFT;
+    public static TheUltimateBootsMiddle THE_ULTIMATE_BOOTS_MIDDLE;
+    public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
+
 
     public static Item COAL_ARROW;
 
@@ -472,6 +486,20 @@ public class ModItems {
         SUPER_STAR_BOW = new SuperStarBow();
         GUARDIAN_BOW = new GuardianBow();
         ENDER_DRAGON_BOW = new EnderDragonBow();
+
+        THE_ULTIMATE_HELMET_LEFT = new TheUltimateHelmetLeft();
+        THE_ULTIMATE_HELMET_MIDDLE = new TheUltimateHelmetMiddle();
+        THE_ULTIMATE_HELMET_RIGHT = new TheUltimateHelmetRight();
+        THE_ULTIMATE_CHESTPLATE_LEFT = new TheUltimateChestplateLeft();
+        THE_ULTIMATE_CHESTPLATE_MIDDLE = new TheUltimateChestplateMiddle();
+        THE_ULTIMATE_CHESTPLATE_RIGHT = new TheUltimateChestplateRight();
+        THE_ULTIMATE_LEGGINGS_LEFT = new TheUltimateLeggingsLeft();
+        THE_ULTIMATE_LEGGINGS_MIDDLE = new TheUltimateLeggingsMiddle();
+        THE_ULTIMATE_LEGGINGS_RIGHT = new TheUltimateLeggingsRight();
+        THE_ULTIMATE_BOOTS_LEFT = new TheUltimateBootsLeft();
+        THE_ULTIMATE_BOOTS_MIDDLE = new TheUltimateBootsMiddle();
+        THE_ULTIMATE_BOOTS_RIGHT = new TheUltimateBootsRight();
+
 
         COAL_ARROW = new ItemCoalArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         NameUtil.setNames(COAL_ARROW, "coal_arrow");
@@ -641,6 +669,19 @@ public class ModItems {
         SUPER_STAR_BOW.initModel();
         GUARDIAN_BOW.initModel();
         ENDER_DRAGON_BOW.initModel();
+
+        THE_ULTIMATE_HELMET_LEFT.initModel();
+        THE_ULTIMATE_HELMET_MIDDLE.initModel();
+        THE_ULTIMATE_HELMET_RIGHT.initModel();
+        THE_ULTIMATE_CHESTPLATE_LEFT.initModel();
+        THE_ULTIMATE_CHESTPLATE_MIDDLE.initModel();
+        THE_ULTIMATE_CHESTPLATE_RIGHT.initModel();
+        THE_ULTIMATE_LEGGINGS_LEFT.initModel();
+        THE_ULTIMATE_LEGGINGS_MIDDLE.initModel();
+        THE_ULTIMATE_LEGGINGS_RIGHT.initModel();
+        THE_ULTIMATE_BOOTS_LEFT.initModel();
+        THE_ULTIMATE_BOOTS_MIDDLE.initModel();
+        THE_ULTIMATE_BOOTS_RIGHT.initModel();
     }
 
 

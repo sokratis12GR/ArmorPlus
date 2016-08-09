@@ -9,7 +9,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
-import net.thedragonteam.armorplus.util.TextHelper;
+import net.thedragonteam.core.util.TextHelper;
 
 import java.util.Locale;
 

@@ -42,9 +42,9 @@ public class EntityCoalArrow extends EntityArrow {
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
         World world = living.getEntityWorld();
-        living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
         if (living != shootingEntity) {
             world.createExplosion(shootingEntity, living.posX, living.posY, living.posZ, 4.0F, true);
+            living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
         }
     }
 

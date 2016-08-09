@@ -9,7 +9,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandHelp;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
-import net.thedragonteam.armorplus.util.TextHelper;
+import net.thedragonteam.core.util.TextHelper;
 
 import javax.annotation.Nullable;
 import java.util.*;

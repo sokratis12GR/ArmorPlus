@@ -27,6 +27,7 @@ import net.thedragonteam.core.TheDragonCore;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
 import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.core.util.TextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,7 +44,6 @@ import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
-import net.thedragonteam.armorplus.util.TextHelper;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -169,6 +169,7 @@ public class ArmorPlus {
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
         registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
         registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
+        registerOre("advarmorforge", new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE, 1));
 
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
@@ -216,6 +217,7 @@ public class ArmorPlus {
         registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
         registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
         registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
+        registerOre("advarmorforge", new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE, 1));
 
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));

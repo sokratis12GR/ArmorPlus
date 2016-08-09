@@ -237,8 +237,12 @@ public class ARPConfig {
     public static boolean enableKnightSlimeArmorEffects = true;
 
     //TheUltimateArmor
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Ability", name = "enableTheUltimateArmorIncinvibility", comment = "Enable/Disable The Ultimate Armor Invincibility")
-    public static boolean enableTheUltimateArmorIncinvibility = true;
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Ability", name = "enableTheUltimateArmorInvincibility", comment = "Enable/Disable The Ultimate Armor Invincibility")
+    public static boolean enableTheUltimateArmorInvincibility = true;
+
+    //EnderDragonArmor
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Recipes", name = "enableEnderDragonArmorElytra", comment = "Enable/Disable The Ender Dragon Chestplate to require 2 x Elytras instead of 2 x End Crystals to craft")
+    public static boolean enableEnderDragonArmorElytra = false;
 
     //Recipes
     @ModConfigProperty(category = "Armors.CoalArmor.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
@@ -304,6 +308,21 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.LavaArmor.Recipes", name = "enableOldLavaArmorRecipes", comment = "Enable/Disable The Old Lava Armors Recipes")
     public static boolean enableOldLavaArmorRecipes = false;
 
+    //Items.Recipes
     @ModConfigProperty(category = "Items.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
     public static boolean enableRedstoneAppleRecipes = true;
+
+    @ModConfigProperty(category = "Items.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
+    public static boolean enableElytraRecipe = false;
+
+    @ModConfigProperty(category = "Items.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The ArmorPlus Arrows Recipes")
+    public static boolean enableArrowRecipes = true;
+
+    //MobDrops
+    @ModConfigProperty(category = "MobDrops", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
+    public static int enderdragonScaleDropAmount = 12;
+    @ModConfigProperty(category = "MobDrops", name = "witherBoneDropAmount", comment = "Set the amount of dropped Wither Bones that the Wither Boss will drop")
+    public static int witherBoneDropAmount = 6;
+    @ModConfigProperty(category = "MobDrops", name = "guardianScaleDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
+    public static int guardianScaleDropAmount = 6;
 }

@@ -89,7 +89,7 @@ public class ContainerAdvancedArmorForge extends Container {
         super.onContainerClosed(playerIn);
 
         if (!this.worldObj.isRemote) {
-            for (int i = 0; i < 9; ++i) {
+            for (int i = 0; i < 16; ++i) {
                 ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
                 if (itemstack != null) {

@@ -21,7 +21,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
  */
 public class CoalBattleAxe extends ItemSword {
 
-
     public CoalBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("coal_battle_axe");        // The unique name (within your mod) that identifies this item

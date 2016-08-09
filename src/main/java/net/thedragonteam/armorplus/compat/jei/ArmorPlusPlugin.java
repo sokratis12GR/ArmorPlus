@@ -8,7 +8,7 @@ package net.thedragonteam.armorplus.compat.jei;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.Constants;
+import net.thedragonteam.armorplus.api.Constants;;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeRecipeCategory;
 import net.thedragonteam.armorplus.registry.ModBlocks;

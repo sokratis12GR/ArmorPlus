@@ -25,6 +25,14 @@ public class ModRecipes {
     }
 
     public static void addShapedRecipes() {
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE), "LLL", "CAC", "CCC", 'C', ModItems.LAVA_CRYSTAL, 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.ARMOR_FORGE);
+
+        if (recipes == 0 && enableArrowRecipes)
+            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_ARROW, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
+        if (recipes == 1 && enableArrowRecipes)
+            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_ARROW, 2), "CCC", "CAC", "CCC", 'C', Blocks.COAL_BLOCK, 'A', Items.ARROW);
+        if (enableElytraRecipe)
+            GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING, 'N', Items.NETHER_STAR);
         if (enableChainArmorRecipes) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', "chainmail"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', "chainmail"));
