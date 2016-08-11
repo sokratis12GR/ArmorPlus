@@ -69,7 +69,7 @@ public final class ArmorPlusUtils {
      */
     public static boolean isOffline() {
         try {
-            new URL("http://www.apple.com").openConnection().connect();
+            new URL("https://www.sokratis12gr.tk").openConnection().connect();
             return true;
         } catch (IOException e) {
             return false;

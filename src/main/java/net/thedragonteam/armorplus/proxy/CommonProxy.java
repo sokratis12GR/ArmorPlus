@@ -3,6 +3,7 @@ package net.thedragonteam.armorplus.proxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -61,10 +62,6 @@ public class CommonProxy {
      */
     public File getMinecraftDir() {
         return (File) FMLInjectionData.data()[6];
-    }
-
-    public void registerWorldGenerators() {
-        GameRegistry.registerWorldGenerator(new OreGen(), 0);
     }
 
     public void registerTileEntities() {

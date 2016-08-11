@@ -21,6 +21,8 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
+
 /**
  * sokratis12gr.armorplus.armors.dev
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -73,7 +75,7 @@ public class TheUltimateLeggings extends ItemArmor {
         }
         if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS) {
         } else {
-            if (entity instanceof EntityLivingBase) {
+            if (entity instanceof EntityLivingBase && enableTheUltimateArmorDeBuffs) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));

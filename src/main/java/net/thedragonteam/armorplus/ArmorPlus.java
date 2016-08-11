@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
@@ -23,6 +24,7 @@ import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
+import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.core.TheDragonCore;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
@@ -66,7 +68,7 @@ public class ArmorPlus {
     public static final String MAJOR = "6"; // Updates every MAJOR change, never resets
     public static final String API = "0"; // Updates every time the API change, resets on MAJOR changes
     public static final String MINOR = "0"; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final String PATCH = "0"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
+    public static final String PATCH = "1"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
 
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
@@ -130,6 +132,8 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new OreGen(), 0);
+
         try {
             File capeFile = new File(resourceLocation.getResourcePath() + ".png");
 
@@ -255,7 +259,6 @@ public class ArmorPlus {
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         proxy.registerRenderer();
         proxy.registerRenderers(this);
-        proxy.registerWorldGenerators();
         proxy.registerTileEntities();
         proxy.preInit(event);
     }

@@ -7,6 +7,10 @@ import net.thedragonteam.core.config.ModConfigProperty;
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  */
 public class ARPConfig {
+    //Debug
+    @ModConfigProperty(category = "Debug", name = "debugMode", comment = "Enable/Disable Debug Mode")
+    public static boolean debugMode = false;
+
     //Weapons
     @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable The ArmorPlus Sword's Recipes")
     public static boolean enableSwordsRecipes = true;
@@ -164,10 +168,10 @@ public class ARPConfig {
     public static int lavaCrystalOverworldRarity = 7;
 
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMinYSpawn", comment = "Set the min Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMinYSpawn = 8;
+    public static int lavaCrystalOverworldMinYSpawn = 6;
 
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMaxYSpawn", comment = "Set the max Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMaxYSpawn = 58;
+    public static int lavaCrystalOverworldMaxYSpawn = 16;
 
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndRarity = 0;
@@ -178,13 +182,13 @@ public class ARPConfig {
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndMaxYSpawn", comment = "Set the max Y level of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndMaxYSpawn = 0;
 
-    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheEndRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `The Nether`")
+    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherRarity = 0;
 
-    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheEndMinYSpawn", comment = "Set the min Y level of the Lava Crystal Generation in the dimension `The Nether`")
+    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherMinYSpawn", comment = "Set the min Y level of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherMinYSpawn = 0;
 
-    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheEndMaxYSpawn", comment = "Set the max Y level of the Lava Crystal Generation in the dimension `The Nether`")
+    @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherMaxYSpawn", comment = "Set the max Y level of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherMaxYSpawn = 0;
 
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `Overworld`")
@@ -238,7 +242,10 @@ public class ARPConfig {
 
     //TheUltimateArmor
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Ability", name = "enableTheUltimateArmorInvincibility", comment = "Enable/Disable The Ultimate Armor Invincibility")
-    public static boolean enableTheUltimateArmorInvincibility = true;
+    public static boolean enableTheUltimateArmorInvincibility = false;
+
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.DeBuffs", name = "enableTheUltimateArmorDeBuffs", comment = "Enable/Disable The Ultimate Armor DeBuffs")
+    public static boolean enableTheUltimateArmorDeBuffs = true;
 
     //EnderDragonArmor
     @ModConfigProperty(category = "Armors.EnderDragonArmor.Recipes", name = "enableEnderDragonArmorElytra", comment = "Enable/Disable The Ender Dragon Chestplate to require 2 x Elytras instead of 2 x End Crystals to craft")

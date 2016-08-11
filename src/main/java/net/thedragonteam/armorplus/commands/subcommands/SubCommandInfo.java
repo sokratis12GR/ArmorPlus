@@ -40,7 +40,6 @@ public class SubCommandInfo extends SubCommandBase {
         sender.addChatMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
         sender.addChatMessage(new TextComponentString(TextFormatting.BLUE + "Supported Mods:\n" + TextFormatting.DARK_GREEN + "Tinkers' Construct\n" + TextFormatting.DARK_GREEN + "WeaponsPlus"));
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is Tinkers' Construct Loaded: " + Loader.isModLoaded("tconstruct")));
-        sender.addChatMessage(new TextComponentString(TextFormatting.DARK_GREEN + "Is WeaponsPlus Loaded: " + Loader.isModLoaded("weaponsplus")));
         sender.addChatMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
         sender.addChatMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "use command /armorplus wiki"));
 
