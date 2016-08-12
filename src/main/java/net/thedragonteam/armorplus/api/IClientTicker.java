@@ -2,7 +2,7 @@ package net.thedragonteam.armorplus.api;
 
 public interface IClientTicker
 {
-    public void clientTick();
+    void clientTick();
 
-    public boolean needsTicks();
+    boolean needsTicks();
 }

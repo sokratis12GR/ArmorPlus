@@ -21,7 +21,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.EntityCoalArrow;
+import net.thedragonteam.armorplus.entity.EntityLapisArrow;
 import net.thedragonteam.armorplus.entity.render.RenderCoalArrow;
+import net.thedragonteam.armorplus.entity.render.RenderLapisArrow;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -75,6 +77,12 @@ public class ClientProxy extends CommonProxy {
                 return new RenderCoalArrow(manager);
             }
         });
+        RenderingRegistry.registerEntityRenderingHandler(EntityLapisArrow.class, new IRenderFactory() {
+            @Override
+            public Render createRenderFor(RenderManager manager) {
+                return new RenderLapisArrow(manager);
+            }
+        });
     }
 
     private void registerModel(Object obj, int meta) {
@@ -93,6 +101,7 @@ public class ClientProxy extends CommonProxy {
 
     public void registerModels() {
         registerModel(ModItems.COAL_ARROW, 0);
+        registerModel(ModItems.LAPIS_ARROW, 0);
     }
 
 

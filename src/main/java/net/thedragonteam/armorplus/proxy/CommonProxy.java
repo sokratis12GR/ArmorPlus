@@ -108,6 +108,10 @@ public class CommonProxy {
         return dummyPlayer;
     }
 
+    public void registerWorldGenerators() {
+        GameRegistry.registerWorldGenerator(new OreGen(), 0);
+    }
+
     public EntityPlayer getPlayer(MessageContext context) {
         return context.getServerHandler().playerEntity;
     }

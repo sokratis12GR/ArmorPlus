@@ -58,7 +58,7 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
 
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
@@ -132,8 +132,6 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-        GameRegistry.registerWorldGenerator(new OreGen(), 0);
-
         try {
             File capeFile = new File(resourceLocation.getResourcePath() + ".png");
 
@@ -259,6 +257,7 @@ public class ArmorPlus {
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         proxy.registerRenderer();
         proxy.registerRenderers(this);
+        proxy.registerWorldGenerators();
         proxy.registerTileEntities();
         proxy.preInit(event);
     }

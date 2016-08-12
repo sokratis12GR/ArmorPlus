@@ -34,6 +34,8 @@ public class ArmorForgeCraftingManager {
 
     NBTTagCompound nbttagc = new NBTTagCompound();
 
+    ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
+
     ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
     ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
     ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
@@ -140,12 +142,12 @@ public class ArmorForgeCraftingManager {
         }
         /** Lapis Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
-            this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(new ItemStack(ModItems.LAPIS_CHESTPLATE, 1), "LXL", "LLL", "LLL", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(new ItemStack(ModItems.LAPIS_LEGGINGS, 1), "LLL", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "XXX", "LXL", "LXL", 'L', new ItemStack(Items.DYE, 1, 4));
-            this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "LXL", "LXL", "XXX", 'L', new ItemStack(Items.DYE, 1, 4));
+            this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', LAPIS_LAZULI);
+            this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', LAPIS_LAZULI);
+            this.addRecipe(new ItemStack(ModItems.LAPIS_CHESTPLATE, 1), "LXL", "LLL", "LLL", 'L', LAPIS_LAZULI);
+            this.addRecipe(new ItemStack(ModItems.LAPIS_LEGGINGS, 1), "LLL", "LXL", "LXL", 'L', LAPIS_LAZULI);
+            this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "XXX", "LXL", "LXL", 'L', LAPIS_LAZULI);
+            this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "LXL", "LXL", "XXX", 'L', LAPIS_LAZULI);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableLapisArmorRecipes) {
             this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', Blocks.LAPIS_BLOCK);

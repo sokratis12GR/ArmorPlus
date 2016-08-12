@@ -30,6 +30,7 @@ import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.*;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.*;
 import net.thedragonteam.armorplus.armors.v2.electrical.*;
 import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
+import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
 import net.thedragonteam.armorplus.items.battleaxes.*;
 import net.thedragonteam.armorplus.items.books.ArmorPlusBook;
 import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
@@ -322,7 +323,7 @@ public class ModItems {
     public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
 
 
-    public static Item COAL_ARROW;
+    public static Item COAL_ARROW, LAPIS_ARROW;
 
     public static void init() {
         CHAINMAIL = new Chainmail();
@@ -503,6 +504,8 @@ public class ModItems {
 
         COAL_ARROW = new ItemCoalArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         NameUtil.setNames(COAL_ARROW, "coal_arrow");
+        LAPIS_ARROW = new ItemLapisArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        NameUtil.setNames(LAPIS_ARROW, "lapis_arrow");
     }
 
 
@@ -687,7 +690,7 @@ public class ModItems {
 
     private void register() {
         registerItem(COAL_ARROW);
-
+        registerItem(LAPIS_ARROW);
     }
 
     private void registerItem(Item item) {

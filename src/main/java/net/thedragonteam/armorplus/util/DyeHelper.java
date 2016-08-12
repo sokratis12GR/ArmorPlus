@@ -10,6 +10,4 @@ public class DyeHelper {
 
     private final List<ItemStack> dyes = Lists.<ItemStack>newArrayList();
 
-    ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
-
 }

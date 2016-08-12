@@ -3,7 +3,7 @@ package net.thedragonteam.armorplus;
 import net.thedragonteam.core.config.ModConfigProperty;
 
 /**
- * sokratis12gr.armorplus
+ * net.thedragonteam.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  */
 public class ARPConfig {

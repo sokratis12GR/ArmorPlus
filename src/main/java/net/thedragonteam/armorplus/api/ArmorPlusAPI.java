@@ -6,6 +6,4 @@ package net.thedragonteam.armorplus.api;
  */
 public class ArmorPlusAPI {
 
-    public static boolean debug = false;
-
 }

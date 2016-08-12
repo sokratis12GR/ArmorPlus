@@ -12,6 +12,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.Sets;
 
+import static net.thedragonteam.armorplus.ARPConfig.debugMode;
+
 public class TransmitterNetworkRegistry {
     private static TransmitterNetworkRegistry INSTANCE = new TransmitterNetworkRegistry();
     private static boolean loaderRegistered = false;
@@ -75,7 +77,7 @@ public class TransmitterNetworkRegistry {
     }
 
     public void removeInvalidTransmitters() {
-        if (ArmorPlusAPI.debug && !invalidTransmitters.isEmpty()) {
+        if (debugMode && !invalidTransmitters.isEmpty()) {
             logger.info("Dealing with " + invalidTransmitters.size() + " invalid Transmitters");
         }
 

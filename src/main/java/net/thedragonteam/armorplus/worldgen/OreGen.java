@@ -1,16 +1,13 @@
 package net.thedragonteam.armorplus.worldgen;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.block.state.pattern.BlockMatcher;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import net.thedragonteam.armorplus.registry.ModBlocks;
+ import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import java.util.Random;
 
@@ -22,47 +19,46 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  */
 public class OreGen implements IWorldGenerator {
 
-    private void nether(Random random, int x, int z, World world) {
-        generateOre(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), Blocks.NETHERRACK, random, x, z, world, lavaCrystalTheNetherRarity, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn, lavaCrystalTheNetherVeinAmount);
-    }
+    public WorldGenerator lavaCrystalOverworldGenerator;
+    public WorldGenerator lavaCrystalTheEndGenerator;
+    public WorldGenerator lavaCrystalTheNetherGenerator;
 
-    private void overworld(Random random, int x, int z, World world) {
-        generateOre(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), Blocks.STONE, random, x, z, world, lavaCrystalOverworldRarity, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn, lavaCrystalOverworldVeinAmount);
-    }
-
-
-    private void end(Random random, int x, int z, World world) {
-        generateOre(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), Blocks.END_STONE, random, x, z, world, lavaCrystalTheEndRarity, lavaCrystalTheEndMinYSpawn, lavaCrystalTheEndMaxYSpawn, lavaCrystalTheEndVeinAmount);
+    public OreGen() {
+        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalOverworldVeinAmount);
+        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalTheEndVeinAmount);
+        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalTheNetherVeinAmount);
     }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        int x = chunkX * 16;
-        int z = chunkZ * 16;
         switch (world.provider.getDimension()) {
-            case -1:
-                if (enableLavaCrystalTheNetherGen)
-                    nether(random, x, z, world);
+            case 0: //Overworld Dimension
+                if (enableLavaCrystalOverworldGen) {
+                    this.runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lavaCrystalOverworldRarity, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn);
+                }
                 break;
-            case 0:
-                if (enableLavaCrystalOverworldGen)
-                    overworld(random, x, z, world);
+            case 1: //The End
+                if (enableLavaCrystalTheEndGen) {
+                    this.runGenerator(lavaCrystalTheEndGenerator, world, random, chunkX, chunkZ, lavaCrystalTheEndRarity, lavaCrystalTheEndMinYSpawn, lavaCrystalTheEndMaxYSpawn);
+                }
                 break;
-            case 1:
-                if (enableLavaCrystalTheEndGen)
-                    end(random, x, z, world);
+            case -1: //The Nether
+                if (enableLavaCrystalTheNetherGen) {
+                    this.runGenerator(lavaCrystalTheNetherGenerator, world, random, chunkX, chunkZ, lavaCrystalTheNetherRarity, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn);
+                }
                 break;
         }
     }
 
-    private void generateOre(IBlockState state, Block blockin, Random random, int x, int z, World world, int chance, int minY, int maxY, int vienSize) {
-        int hightRange = maxY - minY + 1;
-
-        for (int i = 0; i < chance; i++) {
-            int posX = x * 16 + random.nextInt(16);
-            int posY = minY + random.nextInt(hightRange);
-            int posZ = z * 16 + random.nextInt(16);
-            new WorldGenMinable(state, vienSize, BlockMatcher.forBlock(blockin)).generate(world, random, new BlockPos(posX, posY, posZ));
+    private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
+        if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
+            throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
+        int heightDiff = maxHeight - minHeight + 1;
+        for (int i = 0; i < chancesToSpawn; i++) {
+            int x = chunk_X * 16 + rand.nextInt(16);
+            int y = minHeight + rand.nextInt(heightDiff);
+            int z = chunk_Z * 16 + rand.nextInt(16);
+            generator.generate(world, rand, new BlockPos(x, y, z));
         }
     }
 }

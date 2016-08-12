@@ -2,7 +2,6 @@
 ArmorPlus 1.10.2-6.0.0.1
 {Bugs Fixed}
 * Lava Crystal Ore spawn being between y level 58 and 8 rather than 16 and 6
-* Fixed Lava Crystal World Gen in other worlds
 {Features Added}
 * Added the ability to disable the DeBuffs from the Ultimate Armor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
