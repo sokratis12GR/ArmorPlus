@@ -5,17 +5,17 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
-public class ItemCoalArrow extends ItemArrow {
+public class ItemRedstoneArrow extends ItemArrow {
 
-    public ItemCoalArrow() {
+    public ItemRedstoneArrow() {
         super();
     }
 
     @Override
     public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
-        return new EntityCoalArrow(world, shooter);
+        return new EntityRedstoneArrow(world, shooter);
     }
 
 }

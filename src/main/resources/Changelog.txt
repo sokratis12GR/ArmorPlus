@@ -1,4 +1,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.1.0
+{Features Added}
+* Arrows
+* Lapis Arrow (Gives the enemy Nausa)
+* Redstone Arrow (Gives the enemy Slowness)
+* Lava Arrow (Sets the enemy on Fire)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.0.1
 {Bugs Fixed}
 * Lava Crystal Ore spawn being between y level 58 and 8 rather than 16 and 6

@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity;
+package net.thedragonteam.armorplus.entity.entityarrow;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -9,17 +9,17 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-public class EntityLapisArrow extends EntityArrow {
+public class EntityLavaArrow extends EntityArrow {
 
-    public EntityLapisArrow(World worldIn) {
+    public EntityLavaArrow(World worldIn) {
         super(worldIn);
     }
 
-    public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
+    public EntityLavaArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
     }
 
-    public EntityLapisArrow(World worldIn, double x, double y, double z) {
+    public EntityLavaArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
     }
 
@@ -28,13 +28,13 @@ public class EntityLapisArrow extends EntityArrow {
         super.onUpdate();
 
         if (this.worldObj.isRemote && !this.inGround) {
-            this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+            this.worldObj.spawnParticle(EnumParticleTypes.LAVA, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D,new int[0]);
         }
     }
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.LAPIS_ARROW);
+        return new ItemStack(ModItems.LAVA_ARROW);
     }
 
     @Override
@@ -42,8 +42,7 @@ public class EntityLapisArrow extends EntityArrow {
         super.arrowHit(living);
         World world = living.getEntityWorld();
         if (living != shootingEntity) {
-            world.createExplosion(shootingEntity, living.posX, living.posY, living.posZ, 4.0F, true);
-            living.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 180, 0, false, true));
+            living.setFire(6);
         }
     }
 

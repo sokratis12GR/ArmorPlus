@@ -31,6 +31,8 @@ import net.thedragonteam.armorplus.armors.tconstruct.pigiron.*;
 import net.thedragonteam.armorplus.armors.v2.electrical.*;
 import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
+import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
+import net.thedragonteam.armorplus.items.arrows.ItemRedstoneArrow;
 import net.thedragonteam.armorplus.items.battleaxes.*;
 import net.thedragonteam.armorplus.items.books.ArmorPlusBook;
 import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
@@ -323,7 +325,7 @@ public class ModItems {
     public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
 
 
-    public static Item COAL_ARROW, LAPIS_ARROW;
+    public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
 
     public static void init() {
         CHAINMAIL = new Chainmail();
@@ -506,6 +508,10 @@ public class ModItems {
         NameUtil.setNames(COAL_ARROW, "coal_arrow");
         LAPIS_ARROW = new ItemLapisArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         NameUtil.setNames(LAPIS_ARROW, "lapis_arrow");
+        REDSTONE_ARROW = new ItemRedstoneArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        NameUtil.setNames(REDSTONE_ARROW, "redstone_arrow");
+        LAVA_ARROW = new ItemLavaArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        NameUtil.setNames(LAVA_ARROW, "lava_arrow");
     }
 
 
@@ -691,6 +697,8 @@ public class ModItems {
     private void register() {
         registerItem(COAL_ARROW);
         registerItem(LAPIS_ARROW);
+        registerItem(REDSTONE_ARROW);
+        registerItem(LAVA_ARROW);
     }
 
     private void registerItem(Item item) {

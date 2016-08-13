@@ -6,19 +6,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.EntityCoalArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 
 @SideOnly(Side.CLIENT)
-public class RenderLapisArrow extends RenderArrow<EntityCoalArrow> {
+public class RenderLapisArrow extends RenderArrow<EntityLapisArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lapisarrow.png");
+    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lapis_arrow.png");
 
     public RenderLapisArrow(RenderManager rm) {
         super(rm);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityCoalArrow entity) {
+    public ResourceLocation getEntityTexture(EntityLapisArrow entity) {
         return res;
     }
 

@@ -1,8 +1,7 @@
-package net.thedragonteam.armorplus.entity;
+package net.thedragonteam.armorplus.entity.entityarrow;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -10,17 +9,17 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-public class EntityCoalArrow extends EntityArrow {
+public class EntityLapisArrow extends EntityArrow {
 
-    public EntityCoalArrow(World worldIn) {
+    public EntityLapisArrow(World worldIn) {
         super(worldIn);
     }
 
-    public EntityCoalArrow(World worldIn, EntityLivingBase shooter) {
+    public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
     }
 
-    public EntityCoalArrow(World worldIn, double x, double y, double z) {
+    public EntityLapisArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
     }
 
@@ -29,13 +28,13 @@ public class EntityCoalArrow extends EntityArrow {
         super.onUpdate();
 
         if (this.worldObj.isRemote && !this.inGround) {
-            this.worldObj.spawnParticle(EnumParticleTypes.CLOUD, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+            this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
         }
     }
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.COAL_ARROW);
+        return new ItemStack(ModItems.LAPIS_ARROW);
     }
 
     @Override
@@ -43,8 +42,7 @@ public class EntityCoalArrow extends EntityArrow {
         super.arrowHit(living);
         World world = living.getEntityWorld();
         if (living != shootingEntity) {
-            world.createExplosion(shootingEntity, living.posX, living.posY, living.posZ, 4.0F, true);
-            living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
+            living.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 180, 0, false, true));
         }
     }
 

@@ -67,8 +67,8 @@ public class ArmorPlus {
     public static final String MCVERSION = "1.10.2";
     public static final String MAJOR = "6"; // Updates every MAJOR change, never resets
     public static final String API = "0"; // Updates every time the API change, resets on MAJOR changes
-    public static final String MINOR = "0"; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final String PATCH = "1"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
+    public static final String MINOR = "1"; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
+    public static final String PATCH = "0"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
 
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";

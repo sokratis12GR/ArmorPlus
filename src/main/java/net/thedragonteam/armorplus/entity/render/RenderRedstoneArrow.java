@@ -6,19 +6,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
 @SideOnly(Side.CLIENT)
-public class RenderCoalArrow extends RenderArrow<EntityCoalArrow> {
+public class RenderRedstoneArrow extends RenderArrow<EntityRedstoneArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/coal_arrow.png");
+    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/redstone_arrow.png");
 
-    public RenderCoalArrow(RenderManager rm) {
+    public RenderRedstoneArrow(RenderManager rm) {
         super(rm);
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityCoalArrow entity) {
+    public ResourceLocation getEntityTexture(EntityRedstoneArrow entity) {
         return res;
     }
 

@@ -128,12 +128,6 @@ item.RCChestplate.name=Reinforced Chain Chestplate
 item.RCLeggings.name=Reinforced Chain Leggings
 item.RCBoots.name=Reinforced Chain Boots
 
-#CustomArmor
-item.CustomHelmet.name=Custom Helmet (WIP)
-item.CustomChestplate.name=Custom Chestplate (WIP)
-item.CustomLeggings.name=Custom Leggings (WIP)
-item.CustomBoots.name=Custom Boots (WIP)
-
 #CobaltArmor
 item.CobaltHelmet.name=Cobalt Helmet
 item.CobaltChestplate.name=Cobalt Chestplate
@@ -268,6 +262,9 @@ item.EnderDragonBow.name=Ender Dragon Bow
 
 #Arrows
 item.coal_arrow.name=Coal Arrow
+item.lapis_arrow.name=Lapis Arrow
+item.redstone_arrow.name=Redstone Arrow
+item.lava_arrow.name=Lava Arrow
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!
