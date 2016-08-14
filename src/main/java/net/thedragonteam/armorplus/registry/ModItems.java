@@ -1,11 +1,8 @@
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,6 +35,7 @@ import net.thedragonteam.armorplus.items.books.ArmorPlusBook;
 import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
 import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.*;
+import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.armors.dev.*;
 import net.thedragonteam.armorplus.armors.origin.emerald.*;
@@ -73,6 +71,8 @@ public class ModItems {
     public static Item.ToolMaterial BATTLE_AXE_SUPER_STAR_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_SUPER_STAR_MATERIAL", 1, 1750, 0.0F, 8.0F, 20);
     public static Item.ToolMaterial BATTLE_AXE_GUARDIAN_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_GUARDIAN_MATERIAL", 1, 500, 1.0F, 5.0F, 30);
     public static Item.ToolMaterial BATTLE_AXE_ENDER_DRAGON_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_ENDER_DRAGON_MATERIAL", 1, 2000, 1.0F, 10.0F, 20);
+
+    public static Item.ToolMaterial SWORD_DEV_MATERIAL = EnumHelper.addToolMaterial("SWORD_COAL_MATERIAL", 1, 100000, 1.0F, -4.0F, 30);
 
     public static ItemArmor.ArmorMaterial DEV_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("DEVARMOR", ArmorPlus.MODID + ":" + "DevArmor", 100000, new int[]
             {100, 100, 100, 100}, 100, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 100.0F);
@@ -142,6 +142,7 @@ public class ModItems {
 
     public static ItemArmor.ArmorMaterial MANYULLYN_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("MANYULLYNARMOR", ArmorPlus.MODID + ":" + "ManyullynArmor", 66, new int[]
             {5, 10, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F);
+
     public static ItemArmor.ArmorMaterial PIG_IRON_MATERIAL = EnumHelper.addArmorMaterial("PIGIRONARMOR", ArmorPlus.MODID + ":" + "PigIronArmor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
@@ -324,6 +325,7 @@ public class ModItems {
     public static TheUltimateBootsMiddle THE_ULTIMATE_BOOTS_MIDDLE;
     public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
 
+    public static DevTool DEV_TOOL;
 
     public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
 
@@ -503,6 +505,7 @@ public class ModItems {
         THE_ULTIMATE_BOOTS_MIDDLE = new TheUltimateBootsMiddle();
         THE_ULTIMATE_BOOTS_RIGHT = new TheUltimateBootsRight();
 
+        DEV_TOOL = new DevTool();
 
         COAL_ARROW = new ItemCoalArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         NameUtil.setNames(COAL_ARROW, "coal_arrow");
@@ -691,6 +694,8 @@ public class ModItems {
         THE_ULTIMATE_BOOTS_LEFT.initModel();
         THE_ULTIMATE_BOOTS_MIDDLE.initModel();
         THE_ULTIMATE_BOOTS_RIGHT.initModel();
+
+        DEV_TOOL.initModel();
     }
 
 

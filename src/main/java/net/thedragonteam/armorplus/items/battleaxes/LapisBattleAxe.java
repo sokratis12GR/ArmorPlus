@@ -2,6 +2,7 @@ package net.thedragonteam.armorplus.items.battleaxes;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -16,6 +17,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+
+import java.util.List;
 
 /**
  * Created by Socrates on 4/19/2016.
@@ -38,6 +41,12 @@ public class LapisBattleAxe extends ItemSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
         }
         return true;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+        infoList.add("\2479Ability: " + "\247rApplies Nausea 2");
+        infoList.add("\2473Use: " + "\247rHit a Target");
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {

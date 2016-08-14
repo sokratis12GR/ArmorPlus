@@ -2,6 +2,7 @@ package net.thedragonteam.armorplus.items.swords;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -16,6 +17,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
+
+import java.util.List;
 
 /**
  * Created by Socrates on 4/19/2016.
@@ -42,6 +45,12 @@ public class EnderDragonSword extends ItemSword {
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return repair.getItem() == ModItems.ENDER_DRAGON_SCALE;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+        infoList.add("\2479Ability: " + "\247rApplies Wither 4");
+        infoList.add("\2473Use: " + "\247rHit a Target");
     }
 
     @Override

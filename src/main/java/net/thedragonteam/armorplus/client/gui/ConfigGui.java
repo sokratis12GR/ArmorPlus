@@ -28,6 +28,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("BlackList".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("WorldGeneration".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("MobDrops".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Debug".toLowerCase())));
 
         return list;
     }

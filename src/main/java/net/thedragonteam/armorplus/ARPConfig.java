@@ -326,10 +326,10 @@ public class ARPConfig {
     public static boolean enableArrowRecipes = true;
 
     //MobDrops
-    @ModConfigProperty(category = "MobDrops", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
+    @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
     public static int enderdragonScaleDropAmount = 12;
-    @ModConfigProperty(category = "MobDrops", name = "witherBoneDropAmount", comment = "Set the amount of dropped Wither Bones that the Wither Boss will drop")
+    @ModConfigProperty(category = "MobDrops.WitherBoss", name = "witherBoneDropAmount", comment = "Set the amount of dropped Wither Bones that the Wither Boss will drop")
     public static int witherBoneDropAmount = 6;
-    @ModConfigProperty(category = "MobDrops", name = "guardianScaleDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
-    public static int guardianScaleDropAmount = 6;
+    @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
+    public static int guardianScaleElderDropAmount = 6;
 }

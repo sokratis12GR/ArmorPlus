@@ -1,7 +1,9 @@
 package net.thedragonteam.armorplus.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,9 +27,10 @@ import javax.annotation.Nullable;
  * sokratis12gr.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  */
-public class AdvancedArmorForge extends BlockWorkbench implements ITileEntityProvider {
+public class AdvancedArmorForge extends Block implements ITileEntityProvider {
 
     public AdvancedArmorForge() {
+        super(Material.IRON);
         setUnlocalizedName("AdvancedArmorForge");
         this.setResistance(1000.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);

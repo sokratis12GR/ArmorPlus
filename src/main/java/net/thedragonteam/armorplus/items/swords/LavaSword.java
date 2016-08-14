@@ -2,6 +2,7 @@ package net.thedragonteam.armorplus.items.swords;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -17,6 +18,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
+
+import java.util.List;
 
 /**
  * Created by Socrates on 4/19/2016.
@@ -48,6 +51,12 @@ public class LavaSword extends ItemSword {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+        infoList.add("\2479Ability: " + "\247rSets on Fire");
+        infoList.add("\2473Use: " + "\247rHit a Target");
     }
 
     @SideOnly(Side.CLIENT)

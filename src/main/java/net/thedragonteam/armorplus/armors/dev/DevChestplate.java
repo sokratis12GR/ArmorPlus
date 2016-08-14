@@ -1,14 +1,17 @@
 package net.thedragonteam.armorplus.armors.dev;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.util.Utils;
 
 /**
  * sokratis12gr.armorplus.armors.dev
@@ -25,6 +28,12 @@ public class DevChestplate extends ItemArmor {
         setUnlocalizedName("DevChestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    @Override
+    public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player) {
+        Utils.setUnbreakable(item);
+        return super.onDroppedByPlayer(item, player);
     }
 
     @SideOnly(Side.CLIENT)

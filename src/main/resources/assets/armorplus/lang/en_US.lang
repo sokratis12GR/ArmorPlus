@@ -182,11 +182,12 @@ item.SteelChestplate.name=Steel Chestplate
 item.SteelLeggings.name=Steel Leggings
 item.SteelBoots.name=Steel Boots
 
-#DevArmor
+#Dev
 item.DevHelmet.name=Dev Helmet
 item.DevChestplate.name=Dev Chestplate
 item.DevLeggings.name=Dev Leggings
 item.DevBoots.name=Dev Boots
+item.dev_sword.name=Dev Sword
 
 #Items
 item.Chainmail.name=Chainmail
