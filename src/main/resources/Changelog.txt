@@ -1,10 +1,17 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.2.0
+{Features Added}
+* DebugMode (WIP)
+** If DebugMode is enabled you can view how many items are dropped from a mob with custom drops from ArmorPlus' Config (ex: "Ender Dragon Dropped: armorplus:ender_dragon_scale x 12)
+* A new Dev Tool (WIP)
+** Prints the current (exact) health of the entity, that the item was used on. (ex: "[ Zombie ] - Health: 20")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.1.0
 {Features Added}
 * Arrows
-* Lapis Arrow (Gives the enemy Nausa)
-* Redstone Arrow (Gives the enemy Slowness)
-* Lava Arrow (Sets the enemy on Fire)
+** Lapis Arrow (Gives the enemy Nausa)
+** Redstone Arrow (Gives the enemy Slowness)
+** Lava Arrow (Sets the enemy on Fire)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.0.1
 {Bugs Fixed}
