@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCactus;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -18,7 +19,8 @@ public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
             COMPRESSED_OBSIDIAN, STEEL_BLOCK, ELECTRICAL_BLOCK,
-            ARMOR_FORGE, ADVANCED_ARMOR_FORGE;
+            ARMOR_FORGE, ADVANCED_ARMOR_FORGE, LAVA_NETHER_BRICK;
+    public static Block LAVA_CACTUS;
 
     public static void init() {
         BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
@@ -27,7 +29,8 @@ public class ModBlocks {
         ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
         ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
         ADVANCED_ARMOR_FORGE = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
-
+        LAVA_CACTUS = new LavaCactus().setRegistryName("lava_cactus");
+        LAVA_NETHER_BRICK = new LavaNetherBrick().setRegistryName("lava_nether_brick");
     }
 
     public static void register() {
@@ -37,7 +40,8 @@ public class ModBlocks {
         registerBlock(ELECTRICAL_BLOCK);
         registerBlock(ARMOR_FORGE);
         registerBlock(ADVANCED_ARMOR_FORGE);
-
+        registerBlock(LAVA_CACTUS);
+        registerBlock(LAVA_NETHER_BRICK);
     }
 
     public static void registerRenders() {
@@ -47,6 +51,8 @@ public class ModBlocks {
         registerRender(ELECTRICAL_BLOCK);
         registerRender(ARMOR_FORGE);
         registerRender(ADVANCED_ARMOR_FORGE);
+        registerRender(LAVA_CACTUS);
+        registerRender(LAVA_NETHER_BRICK);
     }
 
     public static void registerBlock(Block block) {
