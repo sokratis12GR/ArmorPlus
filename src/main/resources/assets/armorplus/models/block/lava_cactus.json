@@ -4,7 +4,7 @@
     "particle": "armorplus:blocks/lava_cactus_side",
     "bottom": "armorplus:blocks/lava_cactus_bottom",
     "top": "armorplus:blocks/lava_cactus_top",
-    "side": "blocks/lava_cactus_side"
+    "side": "armorplus:blocks/lava_cactus_side"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],

@@ -144,7 +144,7 @@ public class LavaCactus extends Block implements IPlantable {
 
     @Override
     public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
-        return EnumPlantType.Nether;
+        return EnumPlantType.Desert;
     }
 
     @Override

@@ -227,6 +227,8 @@ tile.SteelBlock.name=Block of Steel
 tile.ElectricalBlock.name=Electrical Block
 tile.ArmorForge.name=Armor Forge
 tile.AdvancedArmorForge.name=Advanced Armor Forge
+tile.lava_cactus.name=Lava Cactus
+tile.lava_nether_brick.name=Lava Nether Brick
 
 #Swords
 item.CoalSword.name=Coal Sword
