@@ -12,16 +12,18 @@ package net.thedragonteam.armorplus.compat.jei;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.Constants;;
+import net.thedragonteam.armorplus.api.Constants;
+import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeRecipeCategory;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapedRecipeHandler;
 import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapelessRecipeHandler;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
-import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
+
+;
 
 @JEIPlugin
 public class ArmorPlusPlugin extends BlankModPlugin {

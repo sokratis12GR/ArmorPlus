@@ -5,8 +5,8 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.common.Loader;
-import net.thedragonteam.armorplus.compat.jei.CompatibilityJustEnoughItems;
 import net.thedragonteam.armorplus.compat.ICompatibility;
+import net.thedragonteam.armorplus.compat.jei.CompatibilityJustEnoughItems;
 
 import java.util.ArrayList;
 

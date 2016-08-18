@@ -19,7 +19,6 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  */
 public class ModRecipes {
 
-
     public static void init() {
         addShapedRecipes();
         addShapelessRecipes();

@@ -10,7 +10,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +18,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
+
+import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
  * sokratis12gr.armorplus.armors.dev
@@ -50,6 +51,6 @@ public class CobaltChestplate extends ItemArmor {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.BLUE + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.BLUE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

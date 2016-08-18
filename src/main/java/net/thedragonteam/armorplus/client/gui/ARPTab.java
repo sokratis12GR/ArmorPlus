@@ -10,22 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 /**
  * sokratis12gr.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:42 PM.
  */
 public class ARPTab extends CreativeTabs {
+    static ItemStack iconArmorPlus;
     private String label;
     private int tab;
-
-    static ItemStack iconArmorPlus;
-
-    public static void initialize() {
-        iconArmorPlus = new ItemStack(ModItems.LAVA_CHESTPLATE);
-    }
 
     public ARPTab(int id, String modid, String label, int tab) {
         super(id, modid);
@@ -33,6 +28,10 @@ public class ARPTab extends CreativeTabs {
         this.tab = tab;
         setBackgroundImageName(ArmorPlus.MODID + ".png"); // Automagically has tab_ applied to it. Make sure you change the texture name.
 
+    }
+
+    public static void initialize() {
+        iconArmorPlus = new ItemStack(ModItems.LAVA_CHESTPLATE);
     }
 
     public boolean hasSearchBar() {

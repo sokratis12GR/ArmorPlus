@@ -6,9 +6,7 @@ package net.thedragonteam.armorplus.entity.entityarrow;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -32,7 +30,7 @@ public class EntityLavaArrow extends EntityArrow {
         super.onUpdate();
 
         if (this.worldObj.isRemote && !this.inGround) {
-            this.worldObj.spawnParticle(EnumParticleTypes.LAVA, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D,new int[0]);
+            this.worldObj.spawnParticle(EnumParticleTypes.LAVA, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
         }
     }
 

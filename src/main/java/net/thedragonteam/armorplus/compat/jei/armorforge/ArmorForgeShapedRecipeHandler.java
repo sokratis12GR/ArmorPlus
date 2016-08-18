@@ -27,7 +27,6 @@ public class ArmorForgeShapedRecipeHandler implements IRecipeHandler<ShapedRecip
         return ShapedRecipes.class;
     }
 
-
     @Nonnull
     @Override
     public String getRecipeCategoryUid() {

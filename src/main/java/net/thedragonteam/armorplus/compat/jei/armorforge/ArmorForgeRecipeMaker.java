@@ -12,16 +12,13 @@ package net.thedragonteam.armorplus.compat.jei.armorforge;
 import net.thedragonteam.armorplus.api.recipe.ArmorForgeRecipe;
 import net.thedragonteam.armorplus.api.registry.ArmorForgeRecipeRegistry;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
-public class ArmorForgeRecipeMaker
-{
+public class ArmorForgeRecipeMaker {
     @Nonnull
-    public static List<ArmorForgeRecipeJEI> getRecipes()
-    {
+    public static List<ArmorForgeRecipeJEI> getRecipes() {
         List<ArmorForgeRecipe> recipeList = ArmorForgeRecipeRegistry.getRecipeList();
         ArrayList<ArmorForgeRecipeJEI> recipes = new ArrayList<ArmorForgeRecipeJEI>();
 

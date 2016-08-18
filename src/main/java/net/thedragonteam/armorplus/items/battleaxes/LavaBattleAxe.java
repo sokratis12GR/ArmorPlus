@@ -7,13 +7,10 @@ package net.thedragonteam.armorplus.items.battleaxes;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,11 +20,12 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
+import static net.thedragonteam.core.util.TextHelper.localize;
+
 /**
  * Created by Socrates on 4/19/2016.
  */
 public class LavaBattleAxe extends ItemSword {
-
 
     public LavaBattleAxe(Item.ToolMaterial material) {
         super(material);
@@ -58,7 +56,7 @@ public class LavaBattleAxe extends ItemSword {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)

@@ -14,8 +14,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.commands.SubCommandBase;
 import net.thedragonteam.armorplus.commands.ISubCommand;
+import net.thedragonteam.armorplus.commands.SubCommandBase;
 import net.thedragonteam.core.util.TextHelper;
 
 public class SubCommandHelp extends SubCommandBase {

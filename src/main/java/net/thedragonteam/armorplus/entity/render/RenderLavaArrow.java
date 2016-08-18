@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
 @SideOnly(Side.CLIENT)
 public class RenderLavaArrow extends RenderArrow<EntityLavaArrow> {

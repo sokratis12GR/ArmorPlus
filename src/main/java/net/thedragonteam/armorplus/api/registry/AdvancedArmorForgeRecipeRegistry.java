@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.recipe.AdvancedArmorForgeRecipe;
-import net.thedragonteam.armorplus.api.recipe.ArmorForgeRecipe;
 
 import java.util.ArrayList;
 import java.util.List;

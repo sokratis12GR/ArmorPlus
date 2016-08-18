@@ -20,7 +20,6 @@ import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 
 import javax.annotation.Nullable;
 
-
 /**
  * sokratis12gr.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
@@ -148,7 +147,6 @@ public class ContainerAdvancedArmorForge extends Container {
 
         return itemstack;
     }
-
 
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in

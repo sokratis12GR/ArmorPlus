@@ -17,24 +17,19 @@ import net.thedragonteam.armorplus.api.IClientTicker;
 
 import java.util.*;
 
-
 public abstract class DynamicNetwork<A, N extends DynamicNetwork<A, N>> implements IClientTicker {
     public LinkedHashSet<IGridTransmitter<A, N>> transmitters = Sets.newLinkedHashSet();
     public LinkedHashSet<IGridTransmitter<A, N>> transmittersToAdd = Sets.newLinkedHashSet();
     public LinkedHashSet<IGridTransmitter<A, N>> transmittersAdded = Sets.newLinkedHashSet();
 
     public HashMap<IGridTransmitter<A, N>, EnumSet<EnumFacing>> changedAcceptors = Maps.newHashMap();
-
-    private Set<DelayQueue> updateQueue = new LinkedHashSet<DelayQueue>();
-
     protected int capacity = 0;
     protected double meanCapacity = 0;
-
     protected boolean needsUpdate = false;
     protected int updateDelay = 0;
-
     protected boolean firstUpdate = true;
     protected World worldObj = null;
+    private Set<DelayQueue> updateQueue = new LinkedHashSet<DelayQueue>();
 
     public void addNewTransmitters(Collection<IGridTransmitter<A, N>> newTransmitters) {
         transmittersToAdd.addAll(newTransmitters);
@@ -189,6 +184,10 @@ public abstract class DynamicNetwork<A, N extends DynamicNetwork<A, N>> implemen
         updateDelay = 3;
     }
 
+    public void addUpdate(EntityPlayer player) {
+        updateQueue.add(new DelayQueue(player));
+    }
+
     public static class TransmittersAddedEvent extends Event {
         public DynamicNetwork<?, ?> network;
         public boolean newNetwork;
@@ -217,10 +216,6 @@ public abstract class DynamicNetwork<A, N extends DynamicNetwork<A, N>> implemen
         public NetworkClientRequest(TileEntity tile) {
             tileEntity = tile;
         }
-    }
-
-    public void addUpdate(EntityPlayer player) {
-        updateQueue.add(new DelayQueue(player));
     }
 
     public static class DelayQueue {

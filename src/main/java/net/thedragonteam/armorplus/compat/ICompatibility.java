@@ -8,6 +8,7 @@ package net.thedragonteam.armorplus.compat;
  * sokratis12GR.ArmorPlus.compatibility.jei
  * ArmorPlus created by sokratis12GR on 6/21/2016 10:56 PM.
  */
+
 /**
  * Implement on all primary compatibility classes.
  */

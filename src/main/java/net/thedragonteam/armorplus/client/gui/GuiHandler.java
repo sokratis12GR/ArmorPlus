@@ -13,7 +13,6 @@ import net.thedragonteam.armorplus.container.ContainerArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 
-
 public class GuiHandler implements IGuiHandler {
 
     public static final int GUI_ARMORPLUS = 0;

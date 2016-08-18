@@ -24,6 +24,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
@@ -33,7 +34,6 @@ import net.thedragonteam.armorplus.entity.render.RenderLapisArrow;
 import net.thedragonteam.armorplus.entity.render.RenderLavaArrow;
 import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.io.File;
@@ -70,7 +70,6 @@ public class ClientProxy extends CommonProxy {
     public File getMinecraftDir() {
         return Minecraft.getMinecraft().mcDataDir;
     }
-
 
     @Override
     public void registerRenderers(ArmorPlus ins) {
@@ -118,14 +117,12 @@ public class ClientProxy extends CommonProxy {
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 
-
     public void registerModels() {
         registerModel(ModItems.COAL_ARROW, 0);
         registerModel(ModItems.LAPIS_ARROW, 0);
         registerModel(ModItems.REDSTONE_ARROW, 0);
         registerModel(ModItems.LAVA_ARROW, 0);
     }
-
 
     @Override
     public EntityPlayer getPlayer(MessageContext context) {

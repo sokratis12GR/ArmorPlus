@@ -205,7 +205,6 @@ public class TileEntityAdvancedArmorForge extends TileEntity implements IInvento
 
     //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket
 
-
     @Override
     public NBTTagCompound getUpdateTag() {
         return super.getUpdateTag();

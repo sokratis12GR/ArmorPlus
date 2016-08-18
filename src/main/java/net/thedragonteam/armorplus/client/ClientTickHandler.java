@@ -4,13 +4,7 @@
 
 package net.thedragonteam.armorplus.client;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -23,25 +17,37 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.IClientTicker;
 import net.thedragonteam.armorplus.api.ObfuscatedNames;
 import net.thedragonteam.armorplus.api.util.ReflectionUtils;
 
+import java.lang.reflect.Method;
+import java.util.*;
+
 @SideOnly(Side.CLIENT)
 public class ClientTickHandler {
 
-    public static Minecraft mc = FMLClientHandler.instance().getClient();
-
     public static final String DONATE_CAPE = "http://capes.sokratis12gr.tk/cape.png";
     public static final String THE_DRAGON_TEAM_CAPE = "http://capes.sokratis12gr.tk/thedragoncape.png";
-
+    public static Minecraft mc = FMLClientHandler.instance().getClient();
+    public static Set<IClientTicker> tickingSet = new HashSet<IClientTicker>();
     private Map<String, CapeBufferDownload> donateDownload = new HashMap<String, CapeBufferDownload>();
     private Map<String, CapeBufferDownload> thedragonteamDownload = new HashMap<String, CapeBufferDownload>();
 
-    public static Set<IClientTicker> tickingSet = new HashSet<IClientTicker>();
+    public static void setCape(AbstractClientPlayer player, ResourceLocation cape) {
+        try {
+            Method m = ReflectionUtils.getPrivateMethod(AbstractClientPlayer.class, ObfuscatedNames.AbstractClientPlayer_getPlayerInfo);
+            Object obj = m.invoke(player);
+
+            if (obj instanceof NetworkPlayerInfo) {
+                NetworkPlayerInfo info = (NetworkPlayerInfo) obj;
+                Map<MinecraftProfileTexture.Type, ResourceLocation> map = (Map<MinecraftProfileTexture.Type, ResourceLocation>) ReflectionUtils.getPrivateValue(info, NetworkPlayerInfo.class, ObfuscatedNames.NetworkPlayerInfo_playerTextures);
+                map.put(MinecraftProfileTexture.Type.CAPE, cape);
+            }
+        } catch (Exception e) {
+        }
+    }
 
     @SubscribeEvent
     public void onTick(ClientTickEvent event) {
@@ -117,21 +123,6 @@ public class ClientTickHandler {
                     }
                 }
             }
-        }
-    }
-
-
-    public static void setCape(AbstractClientPlayer player, ResourceLocation cape) {
-        try {
-            Method m = ReflectionUtils.getPrivateMethod(AbstractClientPlayer.class, ObfuscatedNames.AbstractClientPlayer_getPlayerInfo);
-            Object obj = m.invoke(player);
-
-            if (obj instanceof NetworkPlayerInfo) {
-                NetworkPlayerInfo info = (NetworkPlayerInfo) obj;
-                Map<MinecraftProfileTexture.Type, ResourceLocation> map = (Map<MinecraftProfileTexture.Type, ResourceLocation>) ReflectionUtils.getPrivateValue(info, NetworkPlayerInfo.class, ObfuscatedNames.NetworkPlayerInfo_playerTextures);
-                map.put(MinecraftProfileTexture.Type.CAPE, cape);
-            }
-        } catch (Exception e) {
         }
     }
 }

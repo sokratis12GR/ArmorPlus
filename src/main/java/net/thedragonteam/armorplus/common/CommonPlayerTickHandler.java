@@ -15,16 +15,6 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class CommonPlayerTickHandler {
 
-    @SubscribeEvent
-    public void onTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.side == Side.SERVER) {
-            tickEnd(event.player);
-        }
-    }
-
-    public void tickEnd(EntityPlayer player) {
-    }
-
     public static boolean isOnGround(EntityPlayer player) {
         int x = MathHelper.floor_double(player.posX);
         int y = (int) Math.round(player.posY - 1);
@@ -36,5 +26,15 @@ public class CommonPlayerTickHandler {
         AxisAlignedBB playerBox = player.getCollisionBoundingBox();
 
         return box != null && playerBox != null && playerBox.offset(0, -0.01, 0).intersectsWith(box);
+    }
+
+    @SubscribeEvent
+    public void onTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && event.side == Side.SERVER) {
+            tickEnd(event.player);
+        }
+    }
+
+    public void tickEnd(EntityPlayer player) {
     }
 }

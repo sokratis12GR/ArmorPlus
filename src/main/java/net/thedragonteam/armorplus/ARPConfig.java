@@ -223,10 +223,10 @@ public class ARPConfig {
 
     //BlackList
     @ModConfigProperty(category = "BlackList", name = "enableBlackList", comment = "Enable/Disable the BlackList")
-    public static boolean enableBlackList = false;
+    public static boolean enableBlackList = true;
 
     @ModConfigProperty(category = "BlackList", name = "blackListedItems", comment = "Add Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
-    public static String[] blackListedItems = new String[]{"minecraft:dirt"};
+    public static String[] blackListedItems = new String[]{"armorplus:dev_helmet", "armorplus:dev_chestplate", "armorplus:dev_leggings", "armorplus:dev_boots", "minecraft:dirt"};
 
     //TinkersEffects
     @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")

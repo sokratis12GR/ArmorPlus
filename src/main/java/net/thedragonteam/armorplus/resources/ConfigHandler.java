@@ -4,9 +4,9 @@
 
 package net.thedragonteam.armorplus.resources;
 
-import static net.thedragonteam.armorplus.ArmorPlus.configuration;
-
 import java.io.File;
+
+import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 
 public class ConfigHandler {
 

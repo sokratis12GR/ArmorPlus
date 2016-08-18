@@ -205,7 +205,6 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
 
     //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket
 
-
     @Override
     public NBTTagCompound getUpdateTag() {
         return super.getUpdateTag();

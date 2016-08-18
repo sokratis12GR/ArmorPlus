@@ -4,17 +4,15 @@
 
 package net.thedragonteam.armorplus.api.network;
 
-import java.util.HashSet;
-
+import com.google.common.collect.Sets;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import net.thedragonteam.armorplus.api.ArmorPlusAPI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.google.common.collect.Sets;
+import java.util.HashSet;
 
 import static net.thedragonteam.armorplus.ARPConfig.debugMode;
 

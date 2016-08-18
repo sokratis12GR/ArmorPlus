@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,11 +21,12 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.List;
 
+import static net.thedragonteam.core.util.TextHelper.localize;
+
 /**
  * Created by Socrates on 4/19/2016.
  */
 public class EmeraldSword extends ItemSword {
-
 
     public EmeraldSword(ToolMaterial material) {
         super(material);
@@ -51,7 +51,7 @@ public class EmeraldSword extends ItemSword {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GREEN + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

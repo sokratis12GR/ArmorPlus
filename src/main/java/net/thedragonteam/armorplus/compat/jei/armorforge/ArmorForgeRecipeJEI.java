@@ -24,15 +24,13 @@ public class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
 
     private ArmorForgeRecipe recipe;
 
-    public ArmorForgeRecipeJEI(ArmorForgeRecipe recipe)
-    {
+    public ArmorForgeRecipeJEI(ArmorForgeRecipe recipe) {
         this.recipe = recipe;
     }
 
     @Override
     @Nonnull
-    public List<Collection> getInputs()
-    {
+    public List<Collection> getInputs() {
         ArrayList<Collection> ret = new ArrayList<Collection>();
         ret.add(recipe.getInput());
         return ret;
@@ -40,15 +38,13 @@ public class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
 
     @Override
     @Nonnull
-    public List<ItemStack> getOutputs()
-    {
+    public List<ItemStack> getOutputs() {
         return Collections.singletonList(recipe.getRecipeOutput(new ArrayList<ItemStack>()));
     }
 
     @Nullable
     @Override
-    public List<String> getTooltipStrings(int mouseX, int mouseY)
-    {
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
         return null;
     }
 }

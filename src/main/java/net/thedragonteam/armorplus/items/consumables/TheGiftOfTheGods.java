@@ -18,20 +18,20 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.core.util.TextHelper.localize;
 
 public class TheGiftOfTheGods extends Item {
 
@@ -48,7 +48,7 @@ public class TheGiftOfTheGods extends Item {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

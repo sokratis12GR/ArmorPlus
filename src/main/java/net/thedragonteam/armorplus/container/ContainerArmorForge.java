@@ -13,13 +13,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.armorforge.SlotCrafting;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.armorforge.InventoryCrafting;
+import net.thedragonteam.armorplus.api.crafting.armorforge.SlotCrafting;
+import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 
 import javax.annotation.Nullable;
-
 
 /**
  * sokratis12gr.armorplus.container
@@ -148,7 +147,6 @@ public class ContainerArmorForge extends Container {
 
         return itemstack;
     }
-
 
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in

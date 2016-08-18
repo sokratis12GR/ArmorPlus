@@ -12,24 +12,102 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.armors.origin.coal.*;
-import net.thedragonteam.armorplus.armors.origin.lapis.*;
-import net.thedragonteam.armorplus.armors.origin.obsidian.*;
-import net.thedragonteam.armorplus.armors.reinforced.rcarmor.*;
-import net.thedragonteam.armorplus.armors.reinforced.rgarmor.*;
-import net.thedragonteam.armorplus.armors.reinforced.riarmor.*;
-import net.thedragonteam.armorplus.armors.special.enderdragon.*;
-import net.thedragonteam.armorplus.armors.special.guardian.*;
-import net.thedragonteam.armorplus.armors.special.mob.chicken.*;
-import net.thedragonteam.armorplus.armors.special.mob.slime.*;
-import net.thedragonteam.armorplus.armors.special.superstar.*;
-import net.thedragonteam.armorplus.armors.special.theultimate.*;
-import net.thedragonteam.armorplus.armors.tconstruct.ardite.*;
-import net.thedragonteam.armorplus.armors.tconstruct.cobalt.*;
-import net.thedragonteam.armorplus.armors.tconstruct.knightslime.*;
-import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.*;
-import net.thedragonteam.armorplus.armors.tconstruct.pigiron.*;
-import net.thedragonteam.armorplus.armors.v2.electrical.*;
+import net.thedragonteam.armorplus.armors.dev.DevBoots;
+import net.thedragonteam.armorplus.armors.dev.DevChestplate;
+import net.thedragonteam.armorplus.armors.dev.DevHelmet;
+import net.thedragonteam.armorplus.armors.dev.DevLeggings;
+import net.thedragonteam.armorplus.armors.origin.coal.CoalBoots;
+import net.thedragonteam.armorplus.armors.origin.coal.CoalChestplate;
+import net.thedragonteam.armorplus.armors.origin.coal.CoalHelmet;
+import net.thedragonteam.armorplus.armors.origin.coal.CoalLeggings;
+import net.thedragonteam.armorplus.armors.origin.emerald.EmeraldBoots;
+import net.thedragonteam.armorplus.armors.origin.emerald.EmeraldChestplate;
+import net.thedragonteam.armorplus.armors.origin.emerald.EmeraldHelmet;
+import net.thedragonteam.armorplus.armors.origin.emerald.EmeraldLeggings;
+import net.thedragonteam.armorplus.armors.origin.lapis.LapisBoots;
+import net.thedragonteam.armorplus.armors.origin.lapis.LapisChestplate;
+import net.thedragonteam.armorplus.armors.origin.lapis.LapisHelmet;
+import net.thedragonteam.armorplus.armors.origin.lapis.LapisLeggings;
+import net.thedragonteam.armorplus.armors.origin.lava.LavaBoots;
+import net.thedragonteam.armorplus.armors.origin.lava.LavaChestplate;
+import net.thedragonteam.armorplus.armors.origin.lava.LavaHelmet;
+import net.thedragonteam.armorplus.armors.origin.lava.LavaLeggings;
+import net.thedragonteam.armorplus.armors.origin.obsidian.ObsidianBoots;
+import net.thedragonteam.armorplus.armors.origin.obsidian.ObsidianChestplate;
+import net.thedragonteam.armorplus.armors.origin.obsidian.ObsidianHelmet;
+import net.thedragonteam.armorplus.armors.origin.obsidian.ObsidianLeggings;
+import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneBoots;
+import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneChestplate;
+import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneHelmet;
+import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneLeggings;
+import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCBoots;
+import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCChestplate;
+import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCHelmet;
+import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCLeggings;
+import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDBoots;
+import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDChestplate;
+import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDHelmet;
+import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDLeggings;
+import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGBoots;
+import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGChestplate;
+import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGHelmet;
+import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGLeggings;
+import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIBoots;
+import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIChestplate;
+import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIHelmet;
+import net.thedragonteam.armorplus.armors.reinforced.riarmor.RILeggings;
+import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonBoots;
+import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonChestplate;
+import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonHelmet;
+import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonLeggings;
+import net.thedragonteam.armorplus.armors.special.guardian.GuardianBoots;
+import net.thedragonteam.armorplus.armors.special.guardian.GuardianChestplate;
+import net.thedragonteam.armorplus.armors.special.guardian.GuardianHelmet;
+import net.thedragonteam.armorplus.armors.special.guardian.GuardianLeggings;
+import net.thedragonteam.armorplus.armors.special.mob.chicken.ChickenBoots;
+import net.thedragonteam.armorplus.armors.special.mob.chicken.ChickenChestplate;
+import net.thedragonteam.armorplus.armors.special.mob.chicken.ChickenHelmet;
+import net.thedragonteam.armorplus.armors.special.mob.chicken.ChickenLeggings;
+import net.thedragonteam.armorplus.armors.special.mob.slime.SlimeBoots;
+import net.thedragonteam.armorplus.armors.special.mob.slime.SlimeChestplate;
+import net.thedragonteam.armorplus.armors.special.mob.slime.SlimeHelmet;
+import net.thedragonteam.armorplus.armors.special.mob.slime.SlimeLeggings;
+import net.thedragonteam.armorplus.armors.special.superstar.SuperStarBoots;
+import net.thedragonteam.armorplus.armors.special.superstar.SuperStarChestplate;
+import net.thedragonteam.armorplus.armors.special.superstar.SuperStarHelmet;
+import net.thedragonteam.armorplus.armors.special.superstar.SuperStarLeggings;
+import net.thedragonteam.armorplus.armors.special.theultimate.TheUltimateBoots;
+import net.thedragonteam.armorplus.armors.special.theultimate.TheUltimateChestplate;
+import net.thedragonteam.armorplus.armors.special.theultimate.TheUltimateHelmet;
+import net.thedragonteam.armorplus.armors.special.theultimate.TheUltimateLeggings;
+import net.thedragonteam.armorplus.armors.tconstruct.ardite.ArditeBoots;
+import net.thedragonteam.armorplus.armors.tconstruct.ardite.ArditeChestplate;
+import net.thedragonteam.armorplus.armors.tconstruct.ardite.ArditeHelmet;
+import net.thedragonteam.armorplus.armors.tconstruct.ardite.ArditeLeggings;
+import net.thedragonteam.armorplus.armors.tconstruct.cobalt.CobaltBoots;
+import net.thedragonteam.armorplus.armors.tconstruct.cobalt.CobaltChestplate;
+import net.thedragonteam.armorplus.armors.tconstruct.cobalt.CobaltHelmet;
+import net.thedragonteam.armorplus.armors.tconstruct.cobalt.CobaltLeggings;
+import net.thedragonteam.armorplus.armors.tconstruct.knightslime.KnightSlimeBoots;
+import net.thedragonteam.armorplus.armors.tconstruct.knightslime.KnightSlimeChestplate;
+import net.thedragonteam.armorplus.armors.tconstruct.knightslime.KnightSlimeHelmet;
+import net.thedragonteam.armorplus.armors.tconstruct.knightslime.KnightSlimeLeggings;
+import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.ManyullynBoots;
+import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.ManyullynChestplate;
+import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.ManyullynHelmet;
+import net.thedragonteam.armorplus.armors.tconstruct.manyullyn.ManyullynLeggings;
+import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronBoots;
+import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronChestplate;
+import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronHelmet;
+import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronLeggings;
+import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalBoots;
+import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalChestplate;
+import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalHelmet;
+import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalLeggings;
+import net.thedragonteam.armorplus.armors.v2.steel.SteelBoots;
+import net.thedragonteam.armorplus.armors.v2.steel.SteelChestplate;
+import net.thedragonteam.armorplus.armors.v2.steel.SteelHelmet;
+import net.thedragonteam.armorplus.armors.v2.steel.SteelLeggings;
 import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
@@ -38,15 +116,10 @@ import net.thedragonteam.armorplus.items.battleaxes.*;
 import net.thedragonteam.armorplus.items.books.ArmorPlusBook;
 import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
 import net.thedragonteam.armorplus.items.bows.*;
-import net.thedragonteam.armorplus.items.consumables.*;
+import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
+import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.materials.*;
-import net.thedragonteam.armorplus.armors.dev.*;
-import net.thedragonteam.armorplus.armors.origin.emerald.*;
-import net.thedragonteam.armorplus.armors.origin.lava.*;
-import net.thedragonteam.armorplus.armors.origin.redstone.*;
-import net.thedragonteam.armorplus.armors.reinforced.rdarmor.*;
-import net.thedragonteam.armorplus.armors.v2.steel.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
 import net.thedragonteam.armorplus.util.NameUtil;
@@ -204,12 +277,10 @@ public class ModItems {
     public static RCLeggings RC_LEGGINGS;
     public static RCBoots RC_BOOTS;
 
-
     public static RDHelmet RD_HELMET;
     public static RDChestplate RD_CHESTPLATE;
     public static RDLeggings RD_LEGGINGS;
     public static RDBoots RD_BOOTS;
-
 
     public static RGHelmet RG_HELMET;
     public static RGChestplate RG_CHESTPLATE;
@@ -332,6 +403,10 @@ public class ModItems {
     public static DevTool DEV_TOOL;
 
     public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
+
+    public ModItems() {
+        register();
+    }
 
     public static void init() {
         CHAINMAIL = new Chainmail();
@@ -521,7 +596,6 @@ public class ModItems {
         NameUtil.setNames(LAVA_ARROW, "lava_arrow");
     }
 
-
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         CHAINMAIL.initModel();
@@ -702,7 +776,6 @@ public class ModItems {
         DEV_TOOL.initModel();
     }
 
-
     private void register() {
         registerItem(COAL_ARROW);
         registerItem(LAPIS_ARROW);
@@ -712,11 +785,6 @@ public class ModItems {
 
     private void registerItem(Item item) {
         GameRegistry.register(item);
-    }
-
-
-    public ModItems() {
-        register();
     }
 
 }

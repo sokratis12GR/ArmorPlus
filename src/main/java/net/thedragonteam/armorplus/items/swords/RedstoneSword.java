@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,11 +22,12 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.List;
 
+import static net.thedragonteam.core.util.TextHelper.localize;
+
 /**
  * Created by Socrates on 4/19/2016.
  */
 public class RedstoneSword extends ItemSword {
-
 
     public RedstoneSword(ToolMaterial material) {
         super(material);
@@ -46,7 +46,6 @@ public class RedstoneSword extends ItemSword {
         return true;
     }
 
-
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
     }
@@ -57,10 +56,9 @@ public class RedstoneSword extends ItemSword {
         infoList.add("\2473Use: " + "\247rHit a Target");
     }
 
-
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_RED + I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)

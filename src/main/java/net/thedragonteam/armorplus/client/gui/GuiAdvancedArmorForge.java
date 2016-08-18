@@ -12,9 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
-import net.thedragonteam.armorplus.container.ContainerArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 
 /**
  * sokratis12gr.armorplus.client.gui

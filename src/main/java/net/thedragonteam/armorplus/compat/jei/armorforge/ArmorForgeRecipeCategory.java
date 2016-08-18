@@ -26,12 +26,10 @@ import javax.annotation.Nonnull;
 
 public class ArmorForgeRecipeCategory implements IRecipeCategory {
 
-    private static final int OUTPUT_SLOT = 0;
-    private static final int INPUT_SLOT = 1;
-
     public static final int width = 116;
     public static final int height = 54;
-
+    private static final int OUTPUT_SLOT = 0;
+    private static final int INPUT_SLOT = 1;
     @Nonnull
     private final IDrawable background;
     @Nonnull
@@ -73,7 +71,6 @@ public class ArmorForgeRecipeCategory implements IRecipeCategory {
     public IDrawable getBackground() {
         return background;
     }
-
 
     @Override
     @SuppressWarnings("unchecked")

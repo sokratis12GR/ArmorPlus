@@ -36,7 +36,6 @@ public class CommandArmorPlus extends CommandBase {
         return server.isSinglePlayer() || super.checkPermission(server, sender) || super.getRequiredPermissionLevel() == 0;
     }
 
-
     @Override
     public List getCommandAliases() {
         return Arrays.asList(new String[]{"armorplus", "arp"});

@@ -29,7 +29,6 @@ public class GuiArmorPlusInfo extends GuiScreen {
 
     GuiButton buttonLink1;
 
-
     @Override
     public void drawScreen(int x, int y, float ticks) {
         int guiX = (width - guiWidth) / 2;

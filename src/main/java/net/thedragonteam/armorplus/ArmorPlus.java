@@ -59,19 +59,17 @@ import java.util.UUID;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
-
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
 public class ArmorPlus {
 
     public static final String MODID = "armorplus";
-    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String MODNAME = "ArmorPlus";
     public static final String MCVERSION = "1.10.2";
-    public static final String MAJOR = "6"; // Updates every MAJOR change, never resets
-    public static final String API = "0"; // Updates every time the API change, resets on MAJOR changes
-    public static final String MINOR = "1"; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final String PATCH = "0"; // Updates every time a new block, item or features is added or change, resets on MINOR changes
-
+    public static final int MAJOR = 6; // Updates every MAJOR change, never resets
+    public static final int API = 0; // Updates every time the API change, resets on MAJOR changes
+    public static final int MINOR = 2; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
+    public static final int PATCH = 0; // Updates every time a new block, item or features is added or change, resets on MINOR changes
+    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
@@ -79,40 +77,36 @@ public class ArmorPlus {
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
-
-    public ResourceLocation resourceLocation;
-
     public static CreativeTabs TAB_ARMORPLUS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "armors", 0);
     public static CreativeTabs TAB_ARMORPLUS_ITEMS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "items", 1);
     public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "blocks", 2);
     public static CreativeTabs TAB_ARMORPLUS_WEAPONS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, "weapons", 3);
-
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{TAB_ARMORPLUS, TAB_ARMORPLUS_ITEMS, TAB_ARMORPLUS_BLOCKS});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
-
     public static Configuration configuration;
-
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
-
     @Mod.Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
-
     public static File configDir;
-
     public static File textureDir;
-
-    public GuiHandler GuiHandler = new GuiHandler();
-
-    @SuppressWarnings("unused")
-    private ModItems items;
-
-    @SuppressWarnings("unused")
-    private ArmorPlusEntity entity;
-
     /**
      * The GameProfile used by the dummy ArmorPlus player
      */
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
+    /**
+     * A list of the usernames of players who have donated to ArmorPlus.
+     */
+    public static List<String> donators = new ArrayList<String>();
+    public ResourceLocation resourceLocation;
+    public GuiHandler GuiHandler = new GuiHandler();
+    @SuppressWarnings("unused")
+    private ModItems items;
+    @SuppressWarnings("unused")
+    private ArmorPlusEntity entity;
+
+    public ArmorPlus() {
+        LogHelper.info("Welcoming Minecraft");
+    }
 
     public static File getConfigDir() {
         return configDir;
@@ -120,15 +114,6 @@ public class ArmorPlus {
 
     public static File getloggerDir() {
         return textureDir;
-    }
-
-    /**
-     * A list of the usernames of players who have donated to ArmorPlus.
-     */
-    public static List<String> donators = new ArrayList<String>();
-
-    public ArmorPlus() {
-        LogHelper.info("Welcoming Minecraft");
     }
 
     @SideOnly(Side.CLIENT)
@@ -146,7 +131,6 @@ public class ArmorPlus {
 
         entity = new ArmorPlusEntity();
 
-
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
         logger.info("Version " + ArmorPlus.VERSION + " initializing...");
@@ -155,7 +139,6 @@ public class ArmorPlus {
 
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-
 
         //Get data from server
         new ThreadGetData();
@@ -206,7 +189,6 @@ public class ArmorPlus {
 
         //Get data from server
         new ThreadGetData();
-
 
         ARPAchievements.init();
         ModRecipes.init();

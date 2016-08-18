@@ -19,7 +19,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -34,7 +33,6 @@ import static net.thedragonteam.core.util.TextHelper.localize;
  * Created by Socrates on 4/19/2016.
  */
 public class ObsidianBow extends ItemBow {
-
 
     public ObsidianBow() {
         this.setMaxDamage(1500);

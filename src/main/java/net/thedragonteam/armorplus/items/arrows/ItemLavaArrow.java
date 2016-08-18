@@ -10,7 +10,6 @@ import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
 public class ItemLavaArrow extends ItemArrow {
 
