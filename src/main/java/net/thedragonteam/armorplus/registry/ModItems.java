@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.init.SoundEvents;

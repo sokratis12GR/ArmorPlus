@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.proxy;
 
 import net.minecraft.block.Block;

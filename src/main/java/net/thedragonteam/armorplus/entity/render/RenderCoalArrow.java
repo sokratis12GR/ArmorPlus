@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.entity.render;
 
 import net.minecraft.client.renderer.entity.RenderArrow;

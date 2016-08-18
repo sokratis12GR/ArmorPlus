@@ -1,7 +1,15 @@
 {
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block"
+  },
   "variants": {
-    "normal": {
-      "model": "armorplus:lava_cactus"
-    }
-  }
+    "age=0": { "model": "armorplus:lava_cactus" },
+    "age=1": { "model": "armorplus:lava_cactus" },
+    "age=2": { "model": "armorplus:lava_cactus" },
+    "age=3": { "model": "armorplus:lava_cactus" },
+    "age=4": { "model": "armorplus:lava_cactus" },
+    "age=5": { "model": "armorplus:lava_cactus" },
+    "age=6": { "model": "armorplus:lava_cactus" },
+    "age=7": { "model": "armorplus:lava_cactus" }  }
 }

@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.worldgen;
 
 import net.minecraft.util.math.BlockPos;

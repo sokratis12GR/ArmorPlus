@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.init.Blocks;
@@ -6,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.thedragonteam.armorplus.ARPConfig;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
@@ -70,6 +73,7 @@ public class ModRecipes {
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), ModBlocks.ELECTRICAL_BLOCK);
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), Items.BOOK, Items.COAL);
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 1), new ItemStack(Items.COAL, 1, 1), Items.IRON_INGOT, ModItems.LAVA_CRYSTAL);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.LAVA_CACTUS, 1), Blocks.CACTUS, ModItems.LAVA_CRYSTAL);
     }
 
     public static void addEasyWeaponsRecipes() {

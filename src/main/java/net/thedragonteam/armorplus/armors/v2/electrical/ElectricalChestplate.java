@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.armors.v2.electrical;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus;
 
 import com.mojang.authlib.GameProfile;
@@ -12,19 +16,33 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.network.DynamicNetwork;
+import net.thedragonteam.armorplus.client.ClientTickHandler;
+import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
+import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
+import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
+import net.thedragonteam.armorplus.commands.CommandArmorPlus;
+import net.thedragonteam.armorplus.common.ThreadGetData;
+import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
+import net.thedragonteam.armorplus.container.ContainerArmorForge;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
+import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.registry.*;
+import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
-import net.thedragonteam.armorplus.worldgen.OreGen;
+import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
+import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.core.TheDragonCore;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
@@ -33,29 +51,13 @@ import net.thedragonteam.core.util.TextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.thedragonteam.armorplus.api.network.DynamicNetwork;
-import net.thedragonteam.armorplus.client.ClientTickHandler;
-import net.thedragonteam.armorplus.client.gui.ARPTab;
-import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
-import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
-import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.common.ThreadGetData;
-import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.container.ContainerArmorForge;
-import net.thedragonteam.armorplus.proxy.CommonProxy;
-import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
-import net.thedragonteam.armorplus.util.ARPAchievements;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ADVANCED_ARMOR_FORGE;
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMORPLUS;
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.GUI_ARMOR_FORGE;
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")

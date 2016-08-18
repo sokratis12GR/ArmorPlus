@@ -7,25 +7,25 @@
     "side": "armorplus:blocks/lava_cactus_side"
   },
   "elements": [
-    {   "from": [ 0, 0, 0 ],
-      "to": [ 16, 16, 16 ],
+    {   "from": [ 0.0, 0.0, 0.0 ],
+      "to": [ 16.0, 16.0, 16.0 ],
       "faces": {
-        "down": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
-        "up":   { "uv": [ 0, 0, 16, 16 ], "texture": "#top", "cullface": "up" }
+        "down": { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#bottom", "cullface": "down" },
+        "up":   { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#top", "cullface": "up" }
       }
     },
-    {   "from": [ 0, 0, 1 ],
-      "to": [ 16, 16, 15 ],
+    {   "from": [ 0.0, 0.0, 1.0 ],
+      "to": [ 16.0, 16.0, 15.0 ],
       "faces": {
-        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" },
-        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" }
+        "north": { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#side" },
+        "south": { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#side" }
       }
     },
-    {   "from": [ 1, 0, 0 ],
-      "to": [ 15, 16, 16 ],
+    {   "from": [ 1.0, 0.0, 0.0 ],
+      "to": [ 15.0, 16.0, 16.0 ],
       "faces": {
-        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" },
-        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#side" }
+        "west": { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#side" },
+        "east": { "uv": [ 0.0, 0.0, 16.0, 16.0 ], "texture": "#side" }
       }
     }
   ]
