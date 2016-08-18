@@ -62,15 +62,21 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
 public class ArmorPlus {
 
+    public static final String VERSION =
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
+    public static final String MCVERSION = "1.10.2";
+    // Updates every MAJOR change, never resets
+    public static final int MAJOR = 6;
+    // Updates every time the API change, resets on MAJOR changes
+    public static final int API = 0;
+    // Updates every time a new block, item or features is added or change, resets on MAJOR changes
+    public static final int MINOR = 2;
+    // Updates every time a new block, item or features is added or change, resets on MINOR changes
+    public static final int PATCH = 0;
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String MCVERSION = "1.10.2";
-    public static final int MAJOR = 6; // Updates every MAJOR change, never resets
-    public static final int API = 0; // Updates every time the API change, resets on MAJOR changes
-    public static final int MINOR = 2; // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int PATCH = 0; // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
+
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
     public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
@@ -119,15 +125,15 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-        try {
-            File capeFile = new File(resourceLocation.getResourcePath() + ".png");
-
-            if (capeFile.exists()) {
-                capeFile.delete();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            File capeFile = new File(resourceLocation.getResourcePath() + ".png");
+//
+//            if (capeFile.exists()) {
+//                capeFile.delete();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         entity = new ArmorPlusEntity();
 

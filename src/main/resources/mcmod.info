@@ -8,7 +8,7 @@
   "url": "https://minecraft.curseforge.com/projects/armorplus",
   "updateUrl": "http://adf.ly/1YfdD4",
   "authorList": ["sokratis12GR", "Moritz30"],
-  "credits": "All the people who helped translating the mod, more info can be found in assets/armorplus/lang/credits.md",
+  "credits": "To all the people who helped translating ArmorPlus: https://github.com/TheDragonTeam/ArmorPlus/blob/1.10.2/src/main/resources/assets/armorplus/lang/Credits.md",
   "logoFile": "assets/armorplus/textures/logo.png",
   "screenshots": [],
   "dependencies": [
