@@ -1,6 +1,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.2.0
 {Features Added}
+* Blocks
+* Lava Nether Brick
+* Lava Cactus
 * DebugMode (WIP)
 ** If DebugMode is enabled you can view how many items are dropped from a mob with custom drops from ArmorPlus' Config (ex: "Ender Dragon Dropped: armorplus:ender_dragon_scale x 12)
 * A new Dev Tool (WIP)

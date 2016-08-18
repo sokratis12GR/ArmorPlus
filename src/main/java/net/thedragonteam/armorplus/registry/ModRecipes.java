@@ -31,6 +31,7 @@ public class ModRecipes {
         ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE), "LLL", "CAC", "CCC", 'C', ModItems.LAVA_CRYSTAL, 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.ARMOR_FORGE);
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.LAVA_NETHER_BRICK, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
         if (recipes == 0 && enableArrowRecipes) {
             GameRegistry.addRecipe(new ItemStack(ModItems.COAL_ARROW, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
