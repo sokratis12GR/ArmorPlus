@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
 @SideOnly(Side.CLIENT)
 public class RenderLavaArrow extends RenderArrow<EntityLavaArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lava_arrow.png");
+    private static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lava_arrow.png");
 
     public RenderLavaArrow(RenderManager rm) {
         super(rm);

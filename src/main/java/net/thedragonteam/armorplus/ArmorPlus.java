@@ -62,8 +62,6 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "https://sokratis12gr.tk/armorplus/armorplus.json")
 public class ArmorPlus {
 
-    public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String MCVERSION = "1.10.2";
     // Updates every MAJOR change, never resets
     public static final int MAJOR = 6;
@@ -73,6 +71,9 @@ public class ArmorPlus {
     public static final int MINOR = 2;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
     public static final int PATCH = 0;
+    // The ArmorPlus Version
+    public static final String VERSION =
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
@@ -272,6 +273,7 @@ public class ArmorPlus {
                 ClientTickHandler.tickingSet.add(event.network);
             }
         } catch (Exception e) {
+            //Ignore
         }
     }
 

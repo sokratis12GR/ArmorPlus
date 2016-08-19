@@ -20,12 +20,13 @@ import net.thedragonteam.armorplus.ArmorPlus;
 public class LavaNetherBrick extends Block {
 
     public LavaNetherBrick() {
-        super(Material.ROCK);
+        super(Material.ROCK, MapColor.NETHERRACK);
         setUnlocalizedName("lava_nether_brick");
         this.setResistance(20.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(3.0F);
         this.setHarvestLevel("pickaxe", 1);
+        this.setLightLevel(0.7F);
     }
 
     @Override

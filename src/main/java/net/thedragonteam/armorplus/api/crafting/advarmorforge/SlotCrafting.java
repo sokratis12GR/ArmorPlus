@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.api.crafting.advarmorforge;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -15,8 +16,9 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import javax.annotation.Nullable;
 
 /**
- * sokratis12gr.armorplus.api
+ * net.thedragonteam.armorplus.api.crafting.advarmorforge
  * ArmorPlus created by sokratis12GR on 6/21/2016 3:55 PM.
+ * - TheDragonTeam
  */
 public class SlotCrafting extends Slot {
     /**
@@ -78,6 +80,11 @@ public class SlotCrafting extends Slot {
         }
 
         this.amountCrafted = 0;
+
+        /**Guardian Armor Thorns*/
+        if (stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("mending"), 1);
+
         /**Godlike! - Achievement Trigger*/
         if (stack.getItem() == ModItems.SUPER_STAR_HELMET || stack.getItem() == ModItems.SUPER_STAR_CHESTPLATE || stack.getItem() == ModItems.SUPER_STAR_LEGGINGS || stack.getItem() == ModItems.SUPER_STAR_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_SUPER_STAR_ARMOR, 1);

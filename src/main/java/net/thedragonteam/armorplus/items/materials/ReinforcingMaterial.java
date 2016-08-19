@@ -13,7 +13,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 /**
- * Created by Socrates on 4/19/2016.
+ * net.thedragonteam.armorplus.items.materials
+ * ArmorPlus created by sokratis12GR on 4/19/2016.
+ * - TheDragonTeam
  */
 public class ReinforcingMaterial extends Item {
 

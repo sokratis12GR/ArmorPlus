@@ -5,8 +5,9 @@
 package net.thedragonteam.armorplus.api.recipe;
 
 /**
- * sokratis12GR.ArmorPlus.api.recipe
+ * net.thedragonteam.armorplus.api.recipe
  * ArmorPlus created by sokratis12GR on 6/22/2016 5:26 PM.
+ * - TheDragonTeam
  */
 
 import net.minecraft.block.Block;

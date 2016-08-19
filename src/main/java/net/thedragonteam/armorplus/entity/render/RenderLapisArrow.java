@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 @SideOnly(Side.CLIENT)
 public class RenderLapisArrow extends RenderArrow<EntityLapisArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lapis_arrow.png");
+    private static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lapis_arrow.png");
 
     public RenderLapisArrow(RenderManager rm) {
         super(rm);

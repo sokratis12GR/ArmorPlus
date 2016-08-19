@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
-/**
- * sokratis12gr.armorplus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:42 PM.
- */
-
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.util.ErrorUtil;
@@ -19,6 +14,11 @@ import net.thedragonteam.armorplus.api.crafting.armorforge.ShapedRecipes;
 
 import javax.annotation.Nonnull;
 
+/**
+ * net.thedragonteam.armorplus.compat.jei.armorforge
+ * ArmorPlus created by sokratis12GR on 6/21/2016 11:42 PM.
+ * - TheDragonTeam
+ */
 public class ArmorForgeShapedRecipeHandler implements IRecipeHandler<ShapedRecipes> {
 
     @Override

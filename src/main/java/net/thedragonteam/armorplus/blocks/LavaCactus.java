@@ -33,6 +33,7 @@ public class LavaCactus extends BlockCactus {
     public LavaCactus() {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setTickRandomly(true);
+        setHardness(0.4F);
         setUnlocalizedName("lava_cactus");
         setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
@@ -124,6 +125,7 @@ public class LavaCactus extends BlockCactus {
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         entityIn.attackEntityFrom(DamageSource.cactus, 1.0F);
+        entityIn.setFire(2);
     }
 
     /**

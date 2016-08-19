@@ -22,8 +22,9 @@ import java.util.List;
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
- * sokratis12gr.armorplus.armors.dev
+ * net.thedragonteam.armorplus.armors.tconstruct.cobalt
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
+ * - TheDragonTeam
  */
 public class CobaltChestplate extends ItemArmor {
 

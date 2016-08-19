@@ -6,11 +6,15 @@ package net.thedragonteam.armorplus.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 
 /**
- * sokratis12gr.armorplus.blocks
+ * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
+ * - TheDragonTeam
  */
 public class ElectricalBlock extends Block {
 
@@ -21,5 +25,10 @@ public class ElectricalBlock extends Block {
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(5.0F);
         this.setHarvestLevel("pickaxe", 1);
+    }
+
+    @Override
+    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+        return this == ModBlocks.ELECTRICAL_BLOCK;
     }
 }

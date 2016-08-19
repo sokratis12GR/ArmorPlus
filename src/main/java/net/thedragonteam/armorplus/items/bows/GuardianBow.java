@@ -32,7 +32,9 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
- * Created by Socrates on 4/19/2016.
+ * net.thedragonteam.armorplus.items.bows
+ * ArmorPlus created by sokratis12GR on 4/19/2016.
+ * - TheDragonTeam
  */
 public class GuardianBow extends ItemBow {
 
@@ -113,7 +115,7 @@ public class GuardianBow extends ItemBow {
                             entityarrow.setIsCritical(true);
                         }
 
-                        entityarrow.setDamage(10.0F);
+                        entityarrow.setDamage(6.5F);
 
                         int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 

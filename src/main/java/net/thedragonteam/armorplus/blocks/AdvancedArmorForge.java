@@ -26,8 +26,9 @@ import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import javax.annotation.Nullable;
 
 /**
- * sokratis12gr.armorplus.blocks
+ * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
+ * - TheDragonTeam
  */
 public class AdvancedArmorForge extends Block implements ITileEntityProvider {
 

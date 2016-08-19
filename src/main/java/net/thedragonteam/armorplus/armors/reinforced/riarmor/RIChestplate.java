@@ -19,8 +19,9 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 /**
- * sokratis12gr.armorplus.armors.dev
+ * net.thedragonteam.armorplus.armors.reinforced.riarmor
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
+ * - TheDragonTeam
  */
 public class RIChestplate extends ItemArmor {
 

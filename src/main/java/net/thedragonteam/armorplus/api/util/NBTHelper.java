@@ -4,14 +4,14 @@
 
 package net.thedragonteam.armorplus.api.util;
 
-/**
- * sokratis12GR.ArmorPlus.api.util
- * ArmorPlus created by sokratis12GR on 6/26/2016 1:08 PM.
- */
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+/**
+ * net.thedragonteam.armorplus.api.util
+ * ArmorPlus created by sokratis12GR on 6/26/2016 1:08 PM.
+ * - TheDragonTeam
+ */
 public class NBTHelper {
 
     public static ItemStack checkNBT(ItemStack stack) {

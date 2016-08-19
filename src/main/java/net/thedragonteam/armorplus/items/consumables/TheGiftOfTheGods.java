@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.items.consumables;
 
-/**
- * sokratis12gr.armorplus.items
- * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
- */
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -33,6 +28,11 @@ import java.util.Random;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.core.util.TextHelper.localize;
 
+/**
+ * net.thedragonteam.armorplus.items.consumables
+ * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
+ * - TheDragonTeam
+ */
 public class TheGiftOfTheGods extends Item {
 
     private static Random random = new Random();

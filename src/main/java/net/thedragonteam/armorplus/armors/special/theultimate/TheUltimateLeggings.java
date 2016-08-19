@@ -28,8 +28,9 @@ import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuff
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
- * sokratis12gr.armorplus.armors.dev
+ * net.thedragonteam.armorplus.armors.special.theultimate
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
+ * - TheDragonTeam
  */
 public class TheUltimateLeggings extends ItemArmor {
 
@@ -42,6 +43,11 @@ public class TheUltimateLeggings extends ItemArmor {
         setUnlocalizedName("TheUltimateLeggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
     }
 
     @SideOnly(Side.CLIENT)

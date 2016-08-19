@@ -12,8 +12,9 @@ import net.thedragonteam.armorplus.api.util.NBTHelper;
 import java.util.Set;
 
 /**
- * sokratis12GR.ArmorPlus.util
+ * net.thedragonteam.armorplus.util
  * ArmorPlus created by sokratis12GR on 7/18/2016 8:17 PM.
+ * - TheDragonTeam
  */
 public class Utils {
 

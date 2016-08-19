@@ -5,8 +5,9 @@
 package net.thedragonteam.armorplus.api;
 
 /**
- * sokratis12GR.ArmorPlus
+ * net.thedragonteam.armorplus.api
  * ArmorPlus created by sokratis12GR on 6/26/2016 12:42 PM.
+ * - TheDragonTeam
  */
 public class ArmorPlusAPI {
 

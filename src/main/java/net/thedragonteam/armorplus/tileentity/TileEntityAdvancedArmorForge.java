@@ -19,8 +19,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.tileentity
+ * net.thedragonteam.armorplus.tileentity
  * ArmorPlus created by sokratis12GR on 6/19/2016 12:36 AM.
+ * - TheDragonTeam
  */
 public class TileEntityAdvancedArmorForge extends TileEntity implements IInventory {
 

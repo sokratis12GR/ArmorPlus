@@ -9,7 +9,9 @@ import net.minecraft.block.material.Material;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 /**
- * Created by Socrates on 4/19/2016.
+ * net.thedragonteam.armorplus.blocks
+ * ArmorPlus created by sokratis12GR on 6/13/2016 9:50 PM.
+ * - TheDragonTeam
  */
 public class CompressedObsidian extends Block {
 

@@ -8,6 +8,17 @@ ArmorPlus 1.10.2-6.0.2.0
 ** If DebugMode is enabled you can view how many items are dropped from a mob with custom drops from ArmorPlus' Config (ex: "Ender Dragon Dropped: armorplus:ender_dragon_scale x 12)
 * A new Dev Tool (WIP)
 ** Prints the current (exact) health of the entity, that the item was used on. (ex: "[ Zombie ] - Health: 20")
+{Features Removed}
+* Ender Dragon Egg Recipe (Useless for the Mod)
+{Features Fixed}
+* World Gen should work perfectly now ^^
+{Features Changed}
+* Block of Steal & Electric Block can now be used as beacon base
+* Added Light Level to the Block Lava Crystal
+* Each Type of bow has its own shot power damage
+* The Ultimate Armor is now unbreakable, added Mending to it, and made it unable to be combined with other enchantments
+* Changed some deprecated code
+* Updated some old code information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.1.0
 {Features Added}

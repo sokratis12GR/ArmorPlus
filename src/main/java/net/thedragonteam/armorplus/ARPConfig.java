@@ -9,6 +9,7 @@ import net.thedragonteam.core.config.ModConfigProperty;
 /**
  * net.thedragonteam.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
+ * - TheDragonTeam
  */
 public class ARPConfig {
     //Debug

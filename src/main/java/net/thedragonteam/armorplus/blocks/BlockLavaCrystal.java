@@ -14,8 +14,9 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.Random;
 
 /**
- * sokratis12gr.armorplus.blocks
+ * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
+ * - TheDragonTeam
  */
 public class BlockLavaCrystal extends Block {
 
@@ -29,6 +30,7 @@ public class BlockLavaCrystal extends Block {
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(25.0F);
         this.setHarvestLevel("pickaxe", 3);
+        this.setLightLevel(0.4F);
     }
 
     @Override

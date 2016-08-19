@@ -23,8 +23,9 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import java.util.List;
 
 /**
- * sokratis12GR.ArmorPlus.items.consumables
+ * net.thedragonteam.armorplus.items.consumables
  * ArmorPlus created by sokratis12GR on 7/3/2016 10:59 AM.
+ * - TheDragonTeam
  */
 public class RedstoneApple extends ItemFood {
 

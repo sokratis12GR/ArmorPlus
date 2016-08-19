@@ -13,10 +13,10 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
 public class ArmorPlusEntity {
 
-    public static int COAL_ARROW = 0;
-    public static int LAPIS_ARROW = 1;
-    public static int REDSTONE_ARROW = 2;
-    public static int LAVA_ARROW = 3;
+    private static final int COAL_ARROW = 0;
+    private static final int LAPIS_ARROW = 1;
+    private static final int REDSTONE_ARROW = 2;
+    private static final int LAVA_ARROW = 3;
 
     public ArmorPlusEntity() {
         register();

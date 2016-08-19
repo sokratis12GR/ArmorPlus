@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.commands.subcommands;
 
-/**
- * sokratis12gr.armorplus.commands.subcommands
- * ArmorPlus created by sokratis12GR on 6/25/2016 9:59 AM.
- */
-
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
@@ -18,6 +13,11 @@ import net.thedragonteam.armorplus.commands.ISubCommand;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
 import net.thedragonteam.core.util.TextHelper;
 
+/**
+ * net.thedragonteam.armorplus.commands.subcommands
+ * ArmorPlus created by sokratis12GR on 6/25/2016 9:59 AM.
+ * - TheDragonTeam
+ */
 public class SubCommandHelp extends SubCommandBase {
 
     public SubCommandHelp(ICommand parent) {

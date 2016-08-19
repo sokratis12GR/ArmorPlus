@@ -25,7 +25,9 @@ import java.util.List;
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
- * Created by Socrates on 4/19/2016.
+ * net.thedragonteam.armorplus.items.battleaxes
+ * ArmorPlus created by sokratis12GR on 4/19/2016.
+ * - TheDragonTeam
  */
 public class EnderDragonBattleAxe extends ItemSword {
 

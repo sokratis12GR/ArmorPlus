@@ -11,8 +11,9 @@ import net.thedragonteam.armorplus.compat.jei.CompatibilityJustEnoughItems;
 import java.util.ArrayList;
 
 /**
- * sokratis12gr.armorplus.registry
+ * net.thedragonteam.armorplus.registry
  * ArmorPlus created by sokratis12GR on 6/22/2016 12:20 AM.
+ * - TheDragonTeam
  */
 public class ModCompatibility {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<ICompatibility>();

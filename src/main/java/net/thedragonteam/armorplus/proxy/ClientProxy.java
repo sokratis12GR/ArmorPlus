@@ -77,6 +77,7 @@ public class ClientProxy extends CommonProxy {
         ModBlocks.registerRenders();
     }
 
+    @SuppressWarnings("unchecked")
     public void registerRenderer() {
         RenderingRegistry.registerEntityRenderingHandler(EntityCoalArrow.class, new IRenderFactory() {
             @Override

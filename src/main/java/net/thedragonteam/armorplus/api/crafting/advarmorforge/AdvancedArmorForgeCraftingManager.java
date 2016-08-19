@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -25,8 +26,9 @@ import java.util.Map;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
- * sokratis12gr.armorplus.api.crafting
+ * net.thedragonteam.armorplus.api.crafting.advarmorforge
  * ArmorPlus created by sokratis12GR on 6/19/2016 12:29PM.
+ * - TheDragonTeam
  */
 public class AdvancedArmorForgeCraftingManager {
     /**
@@ -43,6 +45,9 @@ public class AdvancedArmorForgeCraftingManager {
     ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
     ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
     ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
+    ItemStack THE_ULTIMATE_CHESTPLATE = new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1);
+    ItemStack THE_ULTIMATE_LEGGINGS = new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1);
+    ItemStack THE_ULTIMATE_BOOTS = new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1);
 
     private AdvancedArmorForgeCraftingManager() {
 
@@ -57,6 +62,12 @@ public class AdvancedArmorForgeCraftingManager {
         SUPER_STAR_HELMET.setTagCompound(nbttagc);
         THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
 
+        /** Sets The Ultimate Armor Unbreakable */
+        Utils.setUnbreakable(THE_ULTIMATE_HELMET);
+        Utils.setUnbreakable(THE_ULTIMATE_CHESTPLATE);
+        Utils.setUnbreakable(THE_ULTIMATE_LEGGINGS);
+        Utils.setUnbreakable(THE_ULTIMATE_BOOTS);
+
         /** The Ultimate Armor */
         if (enableTheUltimateArmorRecipes) {
             this.addShapelessRecipe(THE_ULTIMATE_HELMET,
@@ -64,17 +75,17 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_HELMET_MIDDLE,
                     ModItems.THE_ULTIMATE_HELMET_RIGHT,
                     ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1),
+            this.addShapelessRecipe(THE_ULTIMATE_CHESTPLATE,
                     ModItems.THE_ULTIMATE_CHESTPLATE_LEFT,
                     ModItems.THE_ULTIMATE_CHESTPLATE_MIDDLE,
                     ModItems.THE_ULTIMATE_CHESTPLATE_RIGHT,
                     ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1),
+            this.addShapelessRecipe(THE_ULTIMATE_LEGGINGS,
                     ModItems.THE_ULTIMATE_LEGGINGS_LEFT,
                     ModItems.THE_ULTIMATE_LEGGINGS_MIDDLE,
                     ModItems.THE_ULTIMATE_LEGGINGS_RIGHT,
                     ModItems.THE_ULTIMATE_MATERIAL);
-            this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1),
+            this.addShapelessRecipe(THE_ULTIMATE_BOOTS,
                     ModItems.THE_ULTIMATE_BOOTS_LEFT,
                     ModItems.THE_ULTIMATE_BOOTS_MIDDLE,
                     ModItems.THE_ULTIMATE_BOOTS_RIGHT,

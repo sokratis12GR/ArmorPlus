@@ -14,8 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * sokratis12gr.armorplus.compat.jei.armorforge
+ * net.thedragonteam.armorplus.compat.jei.armorforge
  * ArmorPlus created by sokratis12GR on 6/22/2016 7:04 PM.
+ * - TheDragonTeam
  */
 public class ArmorForgeShapelessRecipeWrapper extends AbstractShapelessRecipeWrapper {
 

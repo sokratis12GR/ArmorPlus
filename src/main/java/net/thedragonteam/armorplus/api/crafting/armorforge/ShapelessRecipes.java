@@ -12,8 +12,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * sokratis12GR.ArmorPlus.api.crafting
+ * net.thedragonteam.armorplus.api.crafting.armorforge
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:28 PM.
+ * - TheDragonTeam
  */
 public class ShapelessRecipes implements IRecipe {
     public final List<ItemStack> recipeItems;

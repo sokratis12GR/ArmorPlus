@@ -6,7 +6,6 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -14,8 +13,9 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
- * sokratis12GR.ArmorPlus.registry
+ * net.thedragonteam.armorplus.registry
  * ArmorPlus created by sokratis12GR on 6/20/2016 6:44 PM.
+ * - TheDragonTeam
  */
 public class ModRecipes {
 

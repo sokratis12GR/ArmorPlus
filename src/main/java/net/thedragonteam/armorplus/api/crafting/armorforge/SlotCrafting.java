@@ -16,8 +16,9 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import javax.annotation.Nullable;
 
 /**
- * sokratis12gr.armorplus.api
+ * net.thedragonteam.armorplus.api.crafting.armorforge
  * ArmorPlus created by sokratis12GR on 6/21/2016 3:55 PM.
+ * - TheDragonTeam
  */
 public class SlotCrafting extends Slot {
     /**
@@ -81,10 +82,10 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         /**Guardian Armor Thorns*/
-        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
+        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("thorns"), 3);
         /**Guardian Armor Unbreaking 3*/
-        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
+        if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("unbreaking"), 3);
         /**Full of Thorns! - Achievement Trigger*/
         if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS)

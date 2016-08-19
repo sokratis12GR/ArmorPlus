@@ -20,8 +20,9 @@ import java.util.Random;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
- * sokratis12gr.armorplus.worldgen
+ * net.thedragonteam.armorplus.worldgen
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:30 PM.
+ * - TheDragonTeam
  */
 public class OreGen implements IWorldGenerator {
 

@@ -14,8 +14,9 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 /**
- * sokratis12gr.armorplus.client.gui
+ * net.thedragonteam.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:42 PM.
+ * - TheDragonTeam
  */
 public class ARPTab extends CreativeTabs {
     static ItemStack iconArmorPlus;

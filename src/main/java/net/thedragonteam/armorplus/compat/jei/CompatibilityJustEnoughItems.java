@@ -7,8 +7,9 @@ package net.thedragonteam.armorplus.compat.jei;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 
 /**
- * sokratis12GR.ArmorPlus.compatibility.jei
+ * net.thedragonteam.armorplus.compat.jei
  * ArmorPlus created by sokratis12GR on 6/21/2016 10:54 PM.
+ * - TheDragonTeam
  */
 public class CompatibilityJustEnoughItems implements ICompatibility {
     @Override

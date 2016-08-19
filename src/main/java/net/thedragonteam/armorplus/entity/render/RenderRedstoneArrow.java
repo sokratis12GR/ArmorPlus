@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 @SideOnly(Side.CLIENT)
 public class RenderRedstoneArrow extends RenderArrow<EntityRedstoneArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/redstone_arrow.png");
+    private static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/redstone_arrow.png");
 
     public RenderRedstoneArrow(RenderManager rm) {
         super(rm);

@@ -17,7 +17,9 @@ import java.util.Random;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
- * Created by sokratis12GR on 4/4/2016.
+ * net.thedragonteam.armorplus.registry
+ * ArmorPlus Created by sokratis12GR on 4/4/2016.
+ * - TheDragonTeam
  */
 public class MobDrops {
     Random random = new Random();

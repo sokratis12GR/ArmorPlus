@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.commands;
 
-/**
- * sokratis12gr.armorplus.commands.subcommands
- * ArmorPlus created by sokratis12GR on 6/25/2016 9:54 AM.
- */
-
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
@@ -17,6 +12,11 @@ import net.thedragonteam.core.util.TextHelper;
 
 import java.util.Locale;
 
+/**
+ * net.thedragonteam.armorplus.commands
+ * ArmorPlus created by sokratis12GR on 6/25/2016 9:54 AM.
+ * - TheDragonTeam
+ */
 public class SubCommandBase implements ISubCommand {
 
     private ICommand parent;

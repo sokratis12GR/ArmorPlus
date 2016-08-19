@@ -13,7 +13,9 @@ import net.thedragonteam.core.TheDragonCore;
 import java.io.*;
 
 /**
- * Created by Socrates on 4/23/2016.
+ * net.thedragonteam.armorplus.util
+ * Created by sokratis12GR on 4/23/2016.
+ * - TheDragonTeam
  */
 public class Logger {
 
@@ -97,8 +99,10 @@ public class Logger {
             writer.write("\n\n32. Guardian Weapons: " + ModItems.GUARDIAN_SWORD.getRegistryName() + " , " + ModItems.GUARDIAN_BATTLE_AXE.getRegistryName() + " , " + ModItems.GUARDIAN_BOW.getRegistryName());
             writer.write("\n\n33. Ender Dragon Weapons: " + ModItems.ENDER_DRAGON_SWORD.getRegistryName() + " , " + ModItems.ENDER_DRAGON_BATTLE_AXE.getRegistryName() + " , " + ModItems.ENDER_DRAGON_BOW.getRegistryName());
             writer.write("\n\nItems: " + ModItems.CHAINMAIL.getRegistryName() + " , " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " , " + ModItems.REINFORCING_MATERIAL.getRegistryName() + " , " + ModItems.GUARDIAN_SCALE.getRegistryName() + " , "
-                    + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName() + " , " + ModItems.STEEL_INGOT.getRegistryName() + " , " + ModItems.ELECTRICAL_INGOT.getRegistryName());
-            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName() + " , " + " , " + ModBlocks.STEEL_BLOCK.getRegistryName() + " , " + ModBlocks.ELECTRICAL_BLOCK.getRegistryName() + " , " + ModBlocks.ADVANCED_ARMOR_FORGE);
+                    + ModItems.WITHER_BONE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_MATERIAL.getRegistryName() + " , " + ModItems.LAVA_CRYSTAL.getRegistryName() + " , " + ModItems.THE_GIFT_OF_THE_GODS.getRegistryName() + " , " + ModItems.STEEL_INGOT.getRegistryName() + " , " + ModItems.ELECTRICAL_INGOT.getRegistryName() + " , " + ModItems.DEV_TOOL.getRegistryName());
+            writer.write("\n\nBlocks: " + ModBlocks.COMPRESSED_OBSIDIAN.getRegistryName() + " , " + ModBlocks.BLOCK_LAVA_CRYSTAL.getRegistryName() + " , " + ModBlocks.ARMOR_FORGE.getRegistryName() + " , " + " , " + ModBlocks.STEEL_BLOCK.getRegistryName() + " , " + ModBlocks.ELECTRICAL_BLOCK.getRegistryName() + " , " + ModBlocks.ADVANCED_ARMOR_FORGE + " , " + ModBlocks.LAVA_CACTUS + " , " + ModBlocks.LAVA_NETHER_BRICK);
+            writer.write("\n\nThe Ultimate Armor Parts: " + ModItems.THE_ULTIMATE_BOOTS_LEFT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_BOOTS_MIDDLE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_BOOTS_RIGHT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_LEGGINGS_LEFT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_LEGGINGS_MIDDLE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_LEGGINGS_RIGHT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_CHESTPLATE_LEFT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_CHESTPLATE_MIDDLE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_CHESTPLATE_RIGHT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_HELMET_LEFT.getRegistryName() + " , " + ModItems.THE_ULTIMATE_HELMET_MIDDLE.getRegistryName() + " , " + ModItems.THE_ULTIMATE_HELMET_RIGHT.getRegistryName());
+
         } catch (IOException ex) {
             // report
         } finally {

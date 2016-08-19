@@ -21,8 +21,9 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 /**
- * sokratis12gr.armorplus.armors.dev
+ * net.thedragonteam.armorplus.armors.v2.electrical
  * ArmorPlus created by sokratis12GR on 7/28/2016 9:19 AM.
+ * - TheDragonTeam
  */
 public class ElectricalBoots extends ItemArmor {
 

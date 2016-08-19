@@ -28,8 +28,9 @@ import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuff
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
- * sokratis12gr.armorplus.armors.dev
+ * net.thedragonteam.armorplus.armors.special.theultimate
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
+ * - TheDragonTeam
  */
 public class TheUltimateChestplate extends ItemArmor {
 
@@ -47,6 +48,11 @@ public class TheUltimateChestplate extends ItemArmor {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:TheUltimateChestplate", "inventory"));
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
     }
 
     @Override

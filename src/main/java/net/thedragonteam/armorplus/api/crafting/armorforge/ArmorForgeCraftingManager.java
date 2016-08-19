@@ -24,8 +24,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * sokratis12gr.armorplus.api.crafting
+ * net.thedragonteam.armorplus.api.crafting.armorforge
  * ArmorPlus created by sokratis12GR on 6/19/2016 12:29PM.
+ * - TheDragonTeam
  */
 public class ArmorForgeCraftingManager {
     /**

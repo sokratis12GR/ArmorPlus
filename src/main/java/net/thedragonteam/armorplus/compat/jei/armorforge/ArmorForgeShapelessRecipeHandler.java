@@ -16,8 +16,9 @@ import net.thedragonteam.armorplus.api.crafting.armorforge.ShapelessRecipes;
 import javax.annotation.Nonnull;
 
 /**
- * sokratis12gr.armorplus.compat.jei.armorforge
+ * net.thedragonteam.armorplus.compat.jei.armorforge
  * ArmorPlus created by sokratis12GR on 6/22/2016 7:03 PM.
+ * - TheDragonTeam
  */
 public class ArmorForgeShapelessRecipeHandler implements IRecipeHandler<ShapelessRecipes> {
 

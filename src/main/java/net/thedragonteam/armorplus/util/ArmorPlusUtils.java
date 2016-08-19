@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Utilities used by ArmorPlus. All miscellaneous methods are located here.
  *
- * @author AidanBrady
+ * @author sokratis12GR
  */
 public final class ArmorPlusUtils {
 

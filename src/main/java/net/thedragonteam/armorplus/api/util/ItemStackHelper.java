@@ -2,15 +2,16 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.api.crafting.armorforge;
+package net.thedragonteam.armorplus.api.util;
 
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.api
+ * net.thedragonteam.armorplus.api.util
  * ArmorPlus created by sokratis12GR on 6/21/2016 4:04 PM.
+ * - TheDragonTeam
  */
 public class ItemStackHelper {
     @Nullable

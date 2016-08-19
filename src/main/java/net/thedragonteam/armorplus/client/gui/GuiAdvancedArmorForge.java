@@ -15,8 +15,9 @@ import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 
 /**
- * sokratis12gr.armorplus.client.gui
+ * net.thedragonteam.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:37 AM.
+ * - TheDragonTeam
  */
 public class GuiAdvancedArmorForge extends GuiContainer {
     private static final ResourceLocation ADVANCED_ARMOR_FORGE_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/GuiAdvancedArmorForge.png");

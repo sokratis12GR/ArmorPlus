@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.api.registry;
 
-/**
- * sokratis12GR.ArmorPlus.api.registry
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:47 PM.
- */
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -17,6 +12,11 @@ import net.thedragonteam.armorplus.api.recipe.ArmorForgeRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * net.thedragonteam.armorplus.api.registry
+ * ArmorPlus created by sokratis12GR on 6/21/2016 11:47 PM.
+ * - TheDragonTeam
+ */
 public class ArmorForgeRecipeRegistry {
     private static List<ArmorForgeRecipe> recipeList = new ArrayList<ArmorForgeRecipe>();
 

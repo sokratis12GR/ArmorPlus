@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
-/**
- * sokratis12GR.ArmorPlus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:57 PM.
- */
-
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -24,6 +19,11 @@ import net.thedragonteam.armorplus.api.Constants;
 
 import javax.annotation.Nonnull;
 
+/**
+ * net.thedragonteam.armorplus.compat.jei.armorforge
+ * ArmorPlus created by sokratis12GR on 6/21/2016 11:57 PM.
+ * - TheDragonTeam
+ */
 public class ArmorForgeRecipeCategory implements IRecipeCategory {
 
     public static final int width = 116;

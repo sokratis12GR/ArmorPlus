@@ -15,8 +15,9 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.*;
 
 /**
- * sokratis12GR.ArmorPlus.registry
+ * net.thedragonteam.armorplus.registry
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:39 PM.
+ * - TheDragonTeam
  */
 public class ModBlocks {
 

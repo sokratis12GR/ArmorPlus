@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
-/**
- * sokratis12gr.armorplus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:39 PM.
- */
-
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.recipe.ArmorForgeRecipe;
@@ -20,6 +15,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * net.thedragonteam.armorplus.compat.jei.armorforge
+ * ArmorPlus created by sokratis12GR on 6/21/2016 11:39 PM.
+ * - TheDragonTeam
+ */
 public class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
 
     private ArmorForgeRecipe recipe;

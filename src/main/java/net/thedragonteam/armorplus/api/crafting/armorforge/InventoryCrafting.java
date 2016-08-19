@@ -11,12 +11,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.thedragonteam.armorplus.api.util.ItemStackHelper;
 
 import javax.annotation.Nullable;
 
 /**
- * sokratis12GR.ArmorPlus.api
+ * net.thedragonteam.armorplus.api.crafting.armorforge
  * ArmorPlus created by sokratis12GR on 6/20/2016 6:21 PM.
+ * - TheDragonTeam
  */
 public class InventoryCrafting implements IInventory {
     /**

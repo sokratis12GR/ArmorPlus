@@ -4,11 +4,6 @@
 
 package net.thedragonteam.armorplus.compat.jei;
 
-/**
- * sokratis12gr.armorplus.compat.jei
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:01 PM.
- */
-
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
@@ -23,8 +18,11 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
 
-;
-
+/**
+ * net.thedragonteam.armorplus.compat.jei
+ * ArmorPlus created by sokratis12GR on 6/21/2016 11:01 PM.
+ * - TheDragonTeam
+ */
 @JEIPlugin
 public class ArmorPlusPlugin extends BlankModPlugin {
     @Override

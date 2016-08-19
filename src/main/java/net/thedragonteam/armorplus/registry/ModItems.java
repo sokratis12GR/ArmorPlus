@@ -149,8 +149,6 @@ public class ModItems {
     public static Item.ToolMaterial BATTLE_AXE_GUARDIAN_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_GUARDIAN_MATERIAL", 1, 500, 1.0F, 5.0F, 30);
     public static Item.ToolMaterial BATTLE_AXE_ENDER_DRAGON_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_ENDER_DRAGON_MATERIAL", 1, 2000, 1.0F, 10.0F, 20);
 
-    public static Item.ToolMaterial SWORD_DEV_MATERIAL = EnumHelper.addToolMaterial("SWORD_COAL_MATERIAL", 1, 100000, 1.0F, -4.0F, 30);
-
     public static ItemArmor.ArmorMaterial DEV_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("DEVARMOR", ArmorPlus.MODID + ":" + "DevArmor", 100000, new int[]
             {100, 100, 100, 100}, 100, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 100.0F);
 
@@ -206,7 +204,7 @@ public class ModItems {
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
     public static ItemArmor.ArmorMaterial THE_ULTIMATE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("THEULTIMATEARMOR", ArmorPlus.MODID + ":" + "TheUltimateArmor", 160, new int[]
-            {10, 20, 30, 15}, 88, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F);
+            {10, 20, 30, 15}, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F);
 
     public static ItemArmor.ArmorMaterial ARDITE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("ARDITEARMOR", ArmorPlus.MODID + ":" + "ArditeArmor", 55, new int[]
             {4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);

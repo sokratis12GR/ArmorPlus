@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 @SideOnly(Side.CLIENT)
 public class RenderCoalArrow extends RenderArrow<EntityCoalArrow> {
 
-    public static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/coal_arrow.png");
+    private static final ResourceLocation res = new ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/coal_arrow.png");
 
     public RenderCoalArrow(RenderManager rm) {
         super(rm);
