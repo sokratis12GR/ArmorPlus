@@ -8,4 +8,4 @@ I want to give credit to those guys who helped with the translation of ArmorPlus
 | [LuminousLizard](https://github.com/LuminousLizard), [Moritz30] (https://moritz30.de) | German | Deutsch | de_DE
 | [3TUSK](https://github.com/3TUSK) | Chinese | 中文 | zh_CN
 | [Tasomanya](https://www.youtube.com/channel/UC21oSgKfEiV_bwFO2Y9CjPg) | Greek | Ελληνικά | el_GR
-| [ImmortalPharaoh7](https://www.youtube.com/channel/UCmpPDi94KWH_6eL0OGLFMpQ) | Arabic, French | Français, اللغة العربية | ar_SA.lang, fr_FR.lang
+| [ImmortalPharaoh7](https://www.youtube.com/channel/UCmpPDi94KWH_6eL0OGLFMpQ) | Arabic, French | اللغة العربية, Français | ar_SA.lang, fr_FR.lang
