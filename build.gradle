@@ -44,6 +44,9 @@ minecraft {
         mappings = project.mappings_version
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 jar {
     classifier = ''
     manifest.mainAttributes(

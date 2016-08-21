@@ -32,6 +32,7 @@ import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
+import net.thedragonteam.armorplus.commands.TeleportCommand;
 import net.thedragonteam.armorplus.common.ThreadGetData;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
@@ -279,6 +280,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new TeleportCommand());
         event.registerServerCommand(new CommandArmorPlus());
     }
 

@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.items.materials;
 
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -21,13 +22,19 @@ public class LavaCrystal extends Item {
 
     public LavaCrystal() {
         setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LavaCrystal");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + ".lava_crystal");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:LavaCrystal", "inventory"));
+        ModelResourceLocation normalModel = new ModelResourceLocation(getRegistryName() + "_normal", "inventory");
+
+        ModelBakery.registerItemVariants(this, normalModel);
+
+        ModelLoader.setCustomMeshDefinition(this, stack -> {
+            return normalModel;
+        });
     }
 }

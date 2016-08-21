@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.ClientTickHandler;
+import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
@@ -50,6 +53,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+
+        OBJLoader.INSTANCE.addDomain(ArmorPlus.MODID);
+
+        ARPEntities.initModels();
         MinecraftForge.EVENT_BUS.register(this);
     }
 

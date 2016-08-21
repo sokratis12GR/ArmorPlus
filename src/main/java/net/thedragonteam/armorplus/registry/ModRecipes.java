@@ -27,6 +27,7 @@ public class ModRecipes {
     }
 
     public static void addShapedRecipes() {
+
         ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE), "LLL", "CAC", "CCC", 'C', ModItems.LAVA_CRYSTAL, 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.ARMOR_FORGE);

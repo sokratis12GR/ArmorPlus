@@ -12,6 +12,10 @@ import net.thedragonteam.core.config.ModConfigProperty;
  * - TheDragonTeam
  */
 public class ARPConfig {
+    //Dimensions
+    @ModConfigProperty(category = "Dimensions", name = "dimensionId", comment = "Set the ArmorPlus dimension ID")
+    public static int dimensionId = 234;
+
     //Debug
     @ModConfigProperty(category = "Debug", name = "debugMode", comment = "Enable/Disable Debug Mode")
     public static boolean debugMode = false;

@@ -16,9 +16,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.worldgen.OreGen;
+import net.thedragonteam.armorplus.worldgen.dimensions.ARPDimensions;
 import net.thedragonteam.core.util.LogHelper;
 
 import java.io.File;
@@ -29,6 +31,8 @@ public class CommonProxy {
     protected static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
 
     public void preInit(FMLPreInitializationEvent event) {
+        ARPEntities.init();
+        ARPDimensions.init();
         LogHelper.info("Finished PreInitialization");
     }
 

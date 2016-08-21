@@ -192,7 +192,7 @@ item.dev_tool.name=Dev Tool
 #Items
 item.Chainmail.name=Chainmail
 item.ReinforcingMaterial.name=Reinforcing Material
-item.LavaCrystal.name=Lava Crystal
+item.armorplus.lava_crystal.name=Lava Crystal
 item.SteelIngot.name=Steel Ingot
 item.ElectricalIngot.name=Electrical Ingot
 
@@ -217,7 +217,6 @@ item.TheUltimateLeggingsRight.name=The Ultimate Legging Right
 item.TheUltimateBootsLeft.name=The Ultimate Boots Left
 item.TheUltimateBootsMiddle.name=The Ultimate Boots Middle
 item.TheUltimateBootsRight.name=The Ultimate Boots Right
-
 
 #Blocks
 tile.CompressedObsidian.name=Compressed Obsidian
@@ -267,6 +266,9 @@ item.coal_arrow.name=Coal Arrow
 item.lapis_arrow.name=Lapis Arrow
 item.redstone_arrow.name=Redstone Arrow
 item.lava_arrow.name=Lava Arrow
+
+$Entities
+entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Vision Like A Bat!

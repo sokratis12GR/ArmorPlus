@@ -79,10 +79,10 @@ public class ArmorForgeCraftingManager {
 
         // ===================================== Set Variables =====================================
 
-        /** NBT-Tag-Compound */
+        /* NBT-Tag-Compound */
         nbttagc.setInteger("theoneprobe", 1);
 
-        /** Set Helmets' NBT-Tags */
+        /* Set Helmets' NBT-Tags */
         COAL_HELMET.setTagCompound(nbttagc);
         EMERALD_HELMET.setTagCompound(nbttagc);
         LAPIS_HELMET.setTagCompound(nbttagc);
@@ -103,7 +103,7 @@ public class ArmorForgeCraftingManager {
         STEEL_HELMET.setTagCompound(nbttagc);
         ELECTRICAL_HELMET.setTagCompound(nbttagc);
         // ===================================== Origin Armors =====================================
-        /** Coal Armor */
+        /* Coal Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCoalArmorRecipes) {
             this.addRecipe(COAL_HELMET, "XXX", "CCC", "CXC", 'C', Items.COAL);
             this.addRecipe(COAL_HELMET, "CCC", "CXC", "XXX", 'C', Items.COAL);
@@ -128,7 +128,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "CXC", "CXC", 'C', Blocks.COAL_BLOCK);
             this.addRecipe(new ItemStack(ModItems.COAL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', Blocks.COAL_BLOCK);
         }
-        /** Emerald Armor */
+        /* Emerald Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableEmeraldArmorRecipes) {
             this.addRecipe(EMERALD_HELMET, "XXX", "EEE", "EXE", 'E', Items.EMERALD);
             this.addRecipe(EMERALD_HELMET, "EEE", "EXE", "XXX", 'E', Items.EMERALD);
@@ -145,7 +145,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.EMERALD_BOOTS, 1), "XXX", "EXE", "EXE", 'E', Blocks.EMERALD_BLOCK);
             this.addRecipe(new ItemStack(ModItems.EMERALD_BOOTS, 1), "EXE", "EXE", "XXX", 'E', Blocks.EMERALD_BLOCK);
         }
-        /** Lapis Armor */
+        /* Lapis Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
             this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', LAPIS_LAZULI);
             this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', LAPIS_LAZULI);
@@ -162,7 +162,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "XXX", "LXL", "LXL", 'L', Blocks.LAPIS_BLOCK);
             this.addRecipe(new ItemStack(ModItems.LAPIS_BOOTS, 1), "LXL", "LXL", "XXX", 'L', Blocks.LAPIS_BLOCK);
         }
-        /** Lava Armor */
+        /* Lava Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && ARPConfig.enableOldLavaArmorRecipes) {
             this.addShapelessRecipe(LAVA_HELMET, ModItems.OBSIDIAN_HELMET, Items.LAVA_BUCKET, ModItems.OBSIDIAN_HELMET);
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), ModItems.OBSIDIAN_CHESTPLATE, Items.LAVA_BUCKET, ModItems.OBSIDIAN_CHESTPLATE);
@@ -179,7 +179,7 @@ public class ArmorForgeCraftingManager {
             this.addShapelessRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), ModItems.OBSIDIAN_BOOTS, Items.LAVA_BUCKET, ModItems.OBSIDIAN_BOOTS,
                     Items.LAVA_BUCKET);
         }
-        if (ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
+        if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
             this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', ModItems.LAVA_CRYSTAL);
@@ -187,7 +187,15 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
             this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
         }
-        /** Obsidian Armor */
+        if (ARPConfig.recipes == 1 && ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
+            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
+        }
+        /* Obsidian Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableObsidianArmorRecipes) {
             this.addRecipe(OBSIDIAN_HELMET, "XXX", "OOO", "OXO", 'O', Blocks.OBSIDIAN);
             this.addRecipe(OBSIDIAN_HELMET, "OOO", "OXO", "XXX", 'O', Blocks.OBSIDIAN);
@@ -204,7 +212,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOOTS, 1), "XXX", "OXO", "OXO", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
             this.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOOTS, 1), "OXO", "OXO", "XXX", 'O', ModBlocks.COMPRESSED_OBSIDIAN);
         }
-        /** Redstone Armor */
+        /* Redstone Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableRedstoneArmorRecipes) {
             this.addRecipe(REDSTONE_HELMET, "XXX", "RRR", "RXR", 'R', Items.REDSTONE);
             this.addRecipe(REDSTONE_HELMET, "RRR", "RXR", "XXX", 'R', Items.REDSTONE);
@@ -222,7 +230,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "RXR", "RXR", "XXX", 'R', Blocks.REDSTONE_BLOCK);
         }
         // ===================================== Reinforced Armors =====================================
-        /**  Reinforced Chain Armor */
+        /*  Reinforced Chain Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
             this.addRecipe(RC_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
             this.addRecipe(RC_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
@@ -231,7 +239,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
             this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
         }
-        /**  Reinforced Diamond Armor */
+        /*  Reinforced Diamond Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
             this.addRecipe(RD_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
             this.addRecipe(RD_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
@@ -240,7 +248,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
             this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
         }
-        /**  Reinforced Golden Armor */
+        /*  Reinforced Golden Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
             this.addRecipe(RG_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
             this.addRecipe(RG_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
@@ -249,7 +257,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
             this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
         }
-        /**  Reinforced Iron Armor */
+        /*  Reinforced Iron Armor */
         if (ARPConfig.enableReinforcedArmorsRecipes) {
             this.addRecipe(RI_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
             this.addRecipe(RI_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
@@ -259,7 +267,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.RI_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
         }
         // ===================================== Special Mob Armors =====================================
-        /** Chicken Armor */
+        /* Chicken Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableChickenArmorRecipes) {
             this.addRecipe(CHICKEN_HELMET, "XXX", "FFF", "FXF", 'F', Items.FEATHER);
             this.addRecipe(CHICKEN_HELMET, "FFF", "FXF", "XXX", 'F', Items.FEATHER);
@@ -276,7 +284,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "XXX", "FXF", "EXE", 'F', Items.FEATHER, 'E', Items.EGG);
             this.addRecipe(new ItemStack(ModItems.CHICKEN_BOOTS, 1), "FXF", "EXE", "XXX", 'F', Items.FEATHER, 'E', Items.EGG);
         }
-        /** Slime Armor */
+        /* Slime Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableSlimeArmorRecipes) {
             this.addRecipe(SLIME_HELMET, "XXX", "SSS", "SXS", 'S', Items.SLIME_BALL);
             this.addRecipe(SLIME_HELMET, "SSS", "SXS", "XXX", 'S', Items.SLIME_BALL);
@@ -294,7 +302,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.SLIME_BOOTS, 1), "SXS", "SXS", "XXX", 'S', Blocks.SLIME_BLOCK);
         }
         // ===================================== Tinkers' Construct Armors =====================================
-        /** Ardite Armor */
+        /* Ardite Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableArditeArmorRecipes) {
             this.addRecipe(ARDITE_HELMET, "XXX", "CCC", "CXC", 'C', ARDITE_INGOT);
             this.addRecipe(ARDITE_HELMET, "CCC", "CXC", "XXX", 'C', ARDITE_INGOT);
@@ -311,7 +319,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "XXX", "CXC", "AXA", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
             this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "CXC", "AXA", "XXX", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
         }
-        /** Cobalt Armor */
+        /* Cobalt Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCobaltArmorRecipes) {
             this.addRecipe(COBALT_HELMET, "XXX", "CCC", "CXC", 'C', COBALT_INGOT);
             this.addRecipe(COBALT_HELMET, "CCC", "CXC", "XXX", 'C', COBALT_INGOT);
@@ -328,7 +336,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "XXX", "CXC", "AXA", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
             this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "CXC", "AXA", "XXX", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
         }
-        /** Knight Slime Armor */
+        /* Knight Slime Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableKnightSlimeArmorRecipes) {
             this.addRecipe(KNIGHT_SLIME_HELMET, "XXX", "CCC", "CXC", 'C', KNIGHT_SLIME_INGOT);
             this.addRecipe(KNIGHT_SLIME_HELMET, "CCC", "CXC", "XXX", 'C', KNIGHT_SLIME_INGOT);
@@ -345,7 +353,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_BOOTS, 1), "XXX", "CXC", "AXA", 'C', KNIGHT_SLIME_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_BOOTS, 1), "CXC", "AXA", "XXX", 'C', KNIGHT_SLIME_BLOCK, 'A', KNIGHT_SLIME_INGOT);
         }
-        /** Manyullyn Armor */
+        /* Manyullyn Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableManyullynArmorRecipes) {
             this.addRecipe(MANYULLYN_HELMET, "XXX", "CCC", "CXC", 'C', MANYULLYN_INGOT);
             this.addRecipe(MANYULLYN_HELMET, "CCC", "CXC", "XXX", 'C', MANYULLYN_INGOT);
@@ -362,7 +370,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "XXX", "CXC", "AXA", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "CXC", "AXA", "XXX", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
         }
-        /** Pig Iron Armor */
+        /* Pig Iron Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enablePigIronArmorRecipes) {
             this.addRecipe(PIG_IRON_HELMET, "XXX", "CCC", "CXC", 'C', PIG_IRON_INGOT);
             this.addRecipe(PIG_IRON_HELMET, "CCC", "CXC", "XXX", 'C', PIG_IRON_INGOT);
@@ -381,7 +389,7 @@ public class ArmorForgeCraftingManager {
         }
         // ===================================== v2 Armors =====================================
         this.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 1), ModItems.STEEL_INGOT, Items.REDSTONE, Items.GLOWSTONE_DUST);
-        /** Metal Armor */
+        /* Metal Armor */
         if (ARPConfig.recipes == 0) {
             this.addRecipe(STEEL_HELMET, "XXX", "MMM", "MXM", 'M', ModItems.STEEL_INGOT);
             this.addRecipe(STEEL_HELMET, "MMM", "MXM", "XXX", 'M', ModItems.STEEL_INGOT);
@@ -398,7 +406,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.STEEL_BLOCK);
             this.addRecipe(new ItemStack(ModItems.STEEL_BOOTS, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.STEEL_BLOCK);
         }
-        /** Electrical Armor */
+        /* Electrical Armor */
         if (ARPConfig.recipes == 0) {
             this.addRecipe(ELECTRICAL_HELMET, "XXX", "EEE", "EXE", 'E', ModItems.ELECTRICAL_INGOT);
             this.addRecipe(ELECTRICAL_HELMET, "EEE", "EXE", "XXX", 'E', ModItems.ELECTRICAL_INGOT);
@@ -420,9 +428,7 @@ public class ArmorForgeCraftingManager {
         this.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), "XSX", "SBS", "XSX", 'S', Items.STRING, 'B', Items.SLIME_BALL);
         this.addRecipe(new ItemStack(ModItems.THE_GIFT_OF_THE_GODS, 1), "SOS", "OLO", "SOS", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.LAVA_CRYSTAL));
         //this.addRecipe(new ItemStack(Blocks.TNT, 1), new Object[]{"X#X", "#X#", "X#X", 'X', Items.GUNPOWDER, '#', Blocks.SAND});
-        Collections.sort(this.recipes, new Comparator<IRecipe>()
-
-        {
+        Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {
                 return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
             }
