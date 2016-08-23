@@ -1,6 +1,6 @@
 **ArmorPlus Version**:
 
-**SokratisCore Version**:
+**TheDragonCore Version**:
 
 **MinecraftForge Version**:
 
@@ -13,3 +13,5 @@
 **What happens / happened?**:
 
 **How can I reproduce it?**:
+
+**(Optional) Mod List**:
