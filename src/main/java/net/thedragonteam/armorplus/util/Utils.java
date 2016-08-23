@@ -18,6 +18,7 @@ import java.util.Set;
  */
 public class Utils {
 
+    @SuppressWarnings("ConstantConditions")
     public static ItemStack setUnbreakable(ItemStack stack) {
         NBTHelper.checkNBT(stack);
         stack.getTagCompound().setBoolean("Unbreakable", true);

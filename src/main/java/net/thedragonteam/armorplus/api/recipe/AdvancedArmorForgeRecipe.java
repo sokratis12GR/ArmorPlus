@@ -4,12 +4,6 @@
 
 package net.thedragonteam.armorplus.api.recipe;
 
-/**
- * net.thedragonteam.armorplus.api.recipe
- * ArmorPlus created by sokratis12GR on 6/22/2016 5:26 PM.
- * - TheDragonTeam
- */
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +15,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * net.thedragonteam.armorplus.api.recipe
+ * ArmorPlus created by sokratis12GR on 6/22/2016 5:26 PM.
+ * - TheDragonTeam
+ */
 public class AdvancedArmorForgeRecipe {
     protected ItemStack output = null;
     protected ArrayList<Object> input = new ArrayList<Object>();

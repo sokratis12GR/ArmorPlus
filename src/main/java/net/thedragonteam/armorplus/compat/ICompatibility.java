@@ -5,13 +5,13 @@
 package net.thedragonteam.armorplus.compat;
 
 /**
- * net.thedragonteam.armorplus.compat
- * ArmorPlus created by sokratis12GR on 6/21/2016 10:56 PM.
- * - TheDragonTeam
+ * Implement on all primary compatibility classes.
  */
 
 /**
- * Implement on all primary compatibility classes.
+ * net.thedragonteam.armorplus.compat
+ * ArmorPlus created by sokratis12GR on 6/21/2016 10:56 PM.
+ * - TheDragonTeam
  */
 public interface ICompatibility {
     /**

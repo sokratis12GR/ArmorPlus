@@ -18,12 +18,12 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/22/2016 7:04 PM.
  * - TheDragonTeam
  */
-public class ArmorForgeShapelessRecipeWrapper extends AbstractShapelessRecipeWrapper {
+class ArmorForgeShapelessRecipeWrapper extends AbstractShapelessRecipeWrapper {
 
     @Nonnull
     private final ShapelessRecipes recipe;
 
-    public ArmorForgeShapelessRecipeWrapper(@Nonnull IGuiHelper guiHelper, @Nonnull ShapelessRecipes recipe) {
+    ArmorForgeShapelessRecipeWrapper(@Nonnull IGuiHelper guiHelper, @Nonnull ShapelessRecipes recipe) {
         super(guiHelper);
         this.recipe = recipe;
         for (Object input : this.recipe.recipeItems) {

@@ -14,6 +14,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 repositories {
     maven { // JEI repo
@@ -22,6 +23,9 @@ repositories {
     maven { //The repo to get TiC
         name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven { //ArmorPlus repo
+        url 'http://vps1.thedragonteam.net:8085/nexus/content/repositories/armorplus/'
     }
 }
 /*
@@ -93,6 +97,7 @@ processResources {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+//    deobfCompile "net.thedragonteam:armorplus:project.version"
 //    deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}"
 //    deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tconstruct_version}"
 
@@ -119,23 +124,45 @@ dependencies {
 
 }
 
-processResources
-        {
-            // this will ensure that this task is redone when the versions change.
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
 
-                // replace version and mcversion
-                expand 'version': project.version, 'mcversion': project.minecraft.version
-            }
+        // replace version and mcversion
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
 
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+/*uploadArchives {
+    dependsOn 'reobf'
+    repositories.mavenDeployer {
+        configuration = configurations.deployerJars
+        repository(url: "scp://mobiusstrip.eu/home/mobius/web/maven"){
+            authentication(userName: "mobius")
         }
 
+        pom {
+            groupId = project.group
+            version = project.version
+            artifactId = project.archivesBaseName
+            project {
+                name project.archivesBaseName
+                packaging 'jar'
+                description 'Jabba '
+                url 'http://mobiusstrip.eu'
+            }
+        }
+    }
+
+}
+*/

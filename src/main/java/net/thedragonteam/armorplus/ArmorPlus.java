@@ -71,7 +71,7 @@ public class ArmorPlus {
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
     public static final int MINOR = 2;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -106,7 +106,7 @@ public class ArmorPlus {
      */
     public static List<String> donators = new ArrayList<String>();
     public ResourceLocation resourceLocation;
-    public GuiHandler GuiHandler = new GuiHandler();
+    private GuiHandler GuiHandler = new GuiHandler();
     @SuppressWarnings("unused")
     private ModItems items;
     @SuppressWarnings("unused")
@@ -284,7 +284,7 @@ public class ArmorPlus {
         event.registerServerCommand(new CommandArmorPlus());
     }
 
-    public static class GuiHandler implements IGuiHandler {
+    private static class GuiHandler implements IGuiHandler {
         @Override
         public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
             if (ID == GUI_ARMORPLUS)

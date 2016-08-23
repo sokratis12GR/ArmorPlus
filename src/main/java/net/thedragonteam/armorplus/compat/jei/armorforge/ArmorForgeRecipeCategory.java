@@ -45,12 +45,12 @@ public class ArmorForgeRecipeCategory implements IRecipeCategory {
     }
 
     @Override
-    public void drawExtras(Minecraft minecraft) {
+    public void drawExtras(@Nonnull Minecraft minecraft) {
 
     }
 
     @Override
-    public void drawAnimations(Minecraft minecraft) {
+    public void drawAnimations(@Nonnull Minecraft minecraft) {
 
     }
 

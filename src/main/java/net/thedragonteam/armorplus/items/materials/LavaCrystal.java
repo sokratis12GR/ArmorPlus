@@ -33,7 +33,8 @@ public class LavaCrystal extends Item {
 
         ModelBakery.registerItemVariants(this, normalModel);
 
-        ModelLoader.setCustomMeshDefinition(this, stack -> {
+        ModelLoader.setCustomMeshDefinition(this, stack ->
+        {
             return normalModel;
         });
     }

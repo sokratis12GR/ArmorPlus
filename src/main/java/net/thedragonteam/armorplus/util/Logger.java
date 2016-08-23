@@ -23,7 +23,7 @@ public class Logger {
         syncConfig();
     }
 
-    public static void syncConfig() {
+    private static void syncConfig() {
 
         Writer writer = null;
 

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ARPAchievements {
-    public static AchievementPage ARP_ACHIEVEMENT_PAGE;
+    private static AchievementPage ARP_ACHIEVEMENT_PAGE;
 
     public static Achievement CRAFT_COAL_ARMOR,
             CRAFT_LAPIS_ARMOR,

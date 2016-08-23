@@ -32,11 +32,11 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
         this.inventory = new ItemStack[this.getSizeInventory()];
     }
 
-    public String getCustomName() {
+    private String getCustomName() {
         return customName;
     }
 
-    public void setCustomName(String customName) {
+    private void setCustomName(String customName) {
         this.customName = customName;
     }
 

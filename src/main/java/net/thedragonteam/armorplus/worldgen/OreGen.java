@@ -26,9 +26,9 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  */
 public class OreGen implements IWorldGenerator {
 
-    public WorldGenerator lavaCrystalOverworldGenerator;
-    public WorldGenerator lavaCrystalTheEndGenerator;
-    public WorldGenerator lavaCrystalTheNetherGenerator;
+    private WorldGenerator lavaCrystalOverworldGenerator;
+    private WorldGenerator lavaCrystalTheEndGenerator;
+    private WorldGenerator lavaCrystalTheNetherGenerator;
 
     public OreGen() {
         lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalOverworldVeinAmount);

@@ -28,7 +28,7 @@ import java.util.List;
 public class TeleportCommand extends CommandBase {
 
     public TeleportCommand() {
-        aliases = Lists.newArrayList(ArmorPlus.MODID, "ARPTP", "arptp");
+        aliases = Lists.newArrayList("ARPTP", "arptp");
     }
 
     private final List<String> aliases;

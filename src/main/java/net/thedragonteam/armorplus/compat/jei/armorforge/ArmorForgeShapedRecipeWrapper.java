@@ -19,12 +19,12 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/22/2016 6:16 PM.
  * - TheDragonTeam
  */
-public class ArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements IShapedCraftingRecipeWrapper {
+class ArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements IShapedCraftingRecipeWrapper {
 
     @Nonnull
     private final ShapedRecipes recipe;
 
-    public ArmorForgeShapedRecipeWrapper(@Nonnull ShapedRecipes recipe) {
+    ArmorForgeShapedRecipeWrapper(@Nonnull ShapedRecipes recipe) {
         this.recipe = recipe;
         for (ItemStack itemStack : this.recipe.recipeItems) {
             if (itemStack != null && itemStack.stackSize != 1) {

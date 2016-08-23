@@ -28,7 +28,7 @@ import java.lang.ref.WeakReference;
 
 public class CommonProxy {
 
-    protected static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
+    private static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
 
     public void preInit(FMLPreInitializationEvent event) {
         ARPEntities.init();

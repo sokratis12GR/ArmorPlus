@@ -8,16 +8,12 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -86,30 +82,10 @@ public class ClientProxy extends CommonProxy {
 
     @SuppressWarnings("unchecked")
     public void registerRenderer() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityCoalArrow.class, new IRenderFactory() {
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new RenderCoalArrow(manager);
-            }
-        });
-        RenderingRegistry.registerEntityRenderingHandler(EntityLapisArrow.class, new IRenderFactory() {
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new RenderLapisArrow(manager);
-            }
-        });
-        RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneArrow.class, new IRenderFactory() {
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new RenderRedstoneArrow(manager);
-            }
-        });
-        RenderingRegistry.registerEntityRenderingHandler(EntityLavaArrow.class, new IRenderFactory() {
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new RenderLavaArrow(manager);
-            }
-        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
     }
 
     private void registerModel(Object obj, int meta) {

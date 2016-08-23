@@ -37,20 +37,6 @@ public class ArmorForgeCraftingManager {
     private static final ArmorForgeCraftingManager INSTANCE = new ArmorForgeCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
 
-    NBTTagCompound nbttagc = new NBTTagCompound();
-
-    ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
-
-    ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
-    ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
-    ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
-    ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
-    ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
-    ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
-    ItemStack RC_HELMET = new ItemStack(ModItems.RC_HELMET, 1);
-    ItemStack RD_HELMET = new ItemStack(ModItems.RD_HELMET, 1);
-    ItemStack RG_HELMET = new ItemStack(ModItems.RG_HELMET, 1);
-    ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
     ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
     ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
     ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
@@ -80,18 +66,29 @@ public class ArmorForgeCraftingManager {
         // ===================================== Set Variables =====================================
 
         /* NBT-Tag-Compound */
+        NBTTagCompound nbttagc = new NBTTagCompound();
         nbttagc.setInteger("theoneprobe", 1);
 
         /* Set Helmets' NBT-Tags */
+        ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
         COAL_HELMET.setTagCompound(nbttagc);
+        ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
         EMERALD_HELMET.setTagCompound(nbttagc);
+        ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
         LAPIS_HELMET.setTagCompound(nbttagc);
+        ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
         LAVA_HELMET.setTagCompound(nbttagc);
+        ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
         OBSIDIAN_HELMET.setTagCompound(nbttagc);
+        ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
         REDSTONE_HELMET.setTagCompound(nbttagc);
+        ItemStack RC_HELMET = new ItemStack(ModItems.RC_HELMET, 1);
         RC_HELMET.setTagCompound(nbttagc);
+        ItemStack RD_HELMET = new ItemStack(ModItems.RD_HELMET, 1);
         RD_HELMET.setTagCompound(nbttagc);
+        ItemStack RG_HELMET = new ItemStack(ModItems.RG_HELMET, 1);
         RG_HELMET.setTagCompound(nbttagc);
+        ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
         RI_HELMET.setTagCompound(nbttagc);
         CHICKEN_HELMET.setTagCompound(nbttagc);
         SLIME_HELMET.setTagCompound(nbttagc);
@@ -147,6 +144,7 @@ public class ArmorForgeCraftingManager {
         }
         /* Lapis Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
+            ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
             this.addRecipe(LAPIS_HELMET, "XXX", "LLL", "LXL", 'L', LAPIS_LAZULI);
             this.addRecipe(LAPIS_HELMET, "LLL", "LXL", "XXX", 'L', LAPIS_LAZULI);
             this.addRecipe(new ItemStack(ModItems.LAPIS_CHESTPLATE, 1), "LXL", "LLL", "LLL", 'L', LAPIS_LAZULI);

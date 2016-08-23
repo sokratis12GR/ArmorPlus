@@ -20,11 +20,11 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:39 PM.
  * - TheDragonTeam
  */
-public class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
+class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
 
     private ArmorForgeRecipe recipe;
 
-    public ArmorForgeRecipeJEI(ArmorForgeRecipe recipe) {
+    ArmorForgeRecipeJEI(ArmorForgeRecipe recipe) {
         this.recipe = recipe;
     }
 

@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
  * ArmorPlus created by sokratis12GR on 6/19/2016 12:36 AM.
  * - TheDragonTeam
  */
+@SuppressWarnings("NullableProblems")
 public class TileEntityAdvancedArmorForge extends TileEntity implements IInventory {
 
     private ItemStack[] inventory = new ItemStack[19];
