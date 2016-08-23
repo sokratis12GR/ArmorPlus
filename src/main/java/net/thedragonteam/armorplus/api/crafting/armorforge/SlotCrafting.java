@@ -91,7 +91,7 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == ModItems.GUARDIAN_HELMET || stack.getItem() == ModItems.GUARDIAN_CHESTPLATE || stack.getItem() == ModItems.GUARDIAN_LEGGINGS || stack.getItem() == ModItems.GUARDIAN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_GUARDIAN_ARMOR, 1);
         /** Guardian Boots Enchantments*/
-        if (stack.getItem() == ModItems.GUARDIAN_BOOTS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
+        if (stack.getItem() == ModItems.GUARDIAN_BOOTS)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("depth_strider"), 3);
         /**Vision Like A Bat! - Achievement Trigger*/
         if (stack.getItem() == ModItems.COAL_HELMET || stack.getItem() == ModItems.COAL_CHESTPLATE || stack.getItem() == ModItems.COAL_LEGGINGS || stack.getItem() == ModItems.COAL_BOOTS)
