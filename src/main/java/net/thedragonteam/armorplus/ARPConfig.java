@@ -12,6 +12,28 @@ import net.thedragonteam.core.config.ModConfigProperty;
  * - TheDragonTeam
  */
 public class ARPConfig {
+    //EnderDragonZombie
+    @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
+    public static boolean enableEnderDragonZombieSpawnEnd = true;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieHealth", comment = "Set the Ender Dragon Zombie's Health")
+    public static double enderDragonZombieHealth = 20.0D;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieKnockbackResistance", comment = "Set the Ender Dragon Zombie's Knockback Resistance")
+    public static double enderDragonZombieKnockbackResistance = 100.0D;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieArmor", comment = "Set the Ender Dragon Zombie's Armor")
+    public static double enderDragonZombieArmor = 5.0D;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieAttackDamage", comment = "Set the Ender Dragon Zombie's Attack Damage")
+    public static double enderDragonZombieAttackDamage = 4.0D;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieMovementSpeed", comment = "Set the Ender Dragon Zombie's Movement Speed")
+    public static double enderDragonZombieMovementSpeed = 0.10D;
+    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieFollowRange", comment = "Set the Ender Dragon Zombie's Follow Range")
+    public static double enderDragonZombieFollowRange = 10.0D;
+    @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enableEnderDragonZombieWithering", comment = "Enable/Disable the Ender Dragon Zombie's Withering Effect")
+    public static boolean enableEnderDragonZombieWithering = true;
+    @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectDuration", comment = "Set the Ender Dragon Zombie's Withering Effect Duration")
+    public static int enderDragonZombieWitheringEffectDuration = 50;
+    @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectLevel", comment = "Set the Ender Dragon Zombie's Withering Effect Level")
+    public static int enderDragonZombieWitheringEffectLevel = 4;
+
     //Dimensions
     @ModConfigProperty(category = "Dimensions", name = "dimensionId", comment = "Set the ArmorPlus dimension ID")
     public static int dimensionId = 234;

@@ -69,9 +69,9 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 2;
+    public static final int MINOR = 3;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;

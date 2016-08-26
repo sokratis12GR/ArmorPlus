@@ -1,4 +1,24 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.3.0
+{Balancing Update}
+* Reduced Ender Dragon Zombie's HP from 100 to 20
+{Features Added}
+* Added a config option for all Ender Dragon Zombie Properties (hp, damage, knockback resistance etc..)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.2.4
+{Balancing Update}
+* Fixed Ender Dragon Zombie Spawn Rates
+{Bugs Fixed}
+* Wrong Loot Table for the Ender Dragon Zombie
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.2.3
+{Balancing Update}
+* Fixed Ender Dragon Zombie Spawn Rates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.2.2
+{Bugs Fixed}
+* Fixed Ender Dragon Zombie not rendering the Ender Dragon Battle Axe
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.2.1
 {Bugs Fixed}
 * Server Crash on Start up

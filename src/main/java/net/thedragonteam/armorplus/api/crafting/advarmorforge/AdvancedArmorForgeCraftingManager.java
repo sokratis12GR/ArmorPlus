@@ -39,36 +39,34 @@ public class AdvancedArmorForgeCraftingManager {
     private static final AdvancedArmorForgeCraftingManager INSTANCE = new AdvancedArmorForgeCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
 
-    NBTTagCompound nbttagc = new NBTTagCompound();
-
-    ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
-    ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
-    ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
-    ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
-    ItemStack THE_ULTIMATE_CHESTPLATE = new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1);
-    ItemStack THE_ULTIMATE_LEGGINGS = new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1);
-    ItemStack THE_ULTIMATE_BOOTS = new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1);
-
     private AdvancedArmorForgeCraftingManager() {
 
         // ===================================== Set Variables =====================================
 
-        /** NBT-Tag-Compound */
+        /* NBT-Tag-Compound */
+        NBTTagCompound nbttagc = new NBTTagCompound();
         nbttagc.setInteger("theoneprobe", 1);
 
-        /** Set Helmets' NBT-Tags */
+        /* Set Helmets' NBT-Tags */
+        ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
         ENDER_DRAGON_HELMET.setTagCompound(nbttagc);
+        ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
         GUARDIAN_HELMET.setTagCompound(nbttagc);
+        ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
         SUPER_STAR_HELMET.setTagCompound(nbttagc);
+        ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
         THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
 
-        /** Sets The Ultimate Armor Unbreakable */
+        /* Sets The Ultimate Armor Unbreakable */
         Utils.setUnbreakable(THE_ULTIMATE_HELMET);
+        ItemStack THE_ULTIMATE_CHESTPLATE = new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE, 1);
         Utils.setUnbreakable(THE_ULTIMATE_CHESTPLATE);
+        ItemStack THE_ULTIMATE_LEGGINGS = new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS, 1);
         Utils.setUnbreakable(THE_ULTIMATE_LEGGINGS);
+        ItemStack THE_ULTIMATE_BOOTS = new ItemStack(ModItems.THE_ULTIMATE_BOOTS, 1);
         Utils.setUnbreakable(THE_ULTIMATE_BOOTS);
 
-        /** The Ultimate Armor */
+        /* The Ultimate Armor */
         if (enableTheUltimateArmorRecipes) {
             this.addShapelessRecipe(THE_ULTIMATE_HELMET,
                     ModItems.THE_ULTIMATE_HELMET_LEFT,
@@ -204,7 +202,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.LAVA_CRYSTAL);
         }
 
-        /** Super Star Armor */
+        /* Super Star Armor */
         if (ARPConfig.recipes == 0 && enableSuperStarArmorRecipes) {
             this.addRecipe(SUPER_STAR_HELMET,
                     "WWWW",
@@ -300,7 +298,7 @@ public class AdvancedArmorForgeCraftingManager {
                     'S', Blocks.SOUL_SAND);
         }
 
-        /** Guardian Armor */
+        /* Guardian Armor */
         if (ARPConfig.recipes == 0 && enableGuardianArmorRecipes) {
             this.addRecipe(GUARDIAN_HELMET,
                     "GGGG",
@@ -389,7 +387,7 @@ public class AdvancedArmorForgeCraftingManager {
                     'S', Blocks.SPONGE);
         }
 
-        /** Ender Dragon Armor */
+        /* Ender Dragon Armor */
         if (ARPConfig.recipes == 0 && enableEnderDragonArmorRecipes) {
             this.addRecipe(ENDER_DRAGON_HELMET,
                     "EEEE",

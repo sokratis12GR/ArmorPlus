@@ -1,7 +1,7 @@
 {
   "pools": [
     {
-      "name": "armorplus:powerful_zombie",
+      "name": "armorplus:ender_dragon_zombie",
       "rolls": 1,
       "entries": [
         {
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "armorplus:powerful_zombie",
+      "name": "armorplus:ender_dragon_zombie",
       "conditions": [
         {
           "condition": "killed_by_player"

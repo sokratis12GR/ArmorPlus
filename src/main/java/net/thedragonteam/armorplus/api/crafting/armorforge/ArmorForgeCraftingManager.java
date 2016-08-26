@@ -37,30 +37,6 @@ public class ArmorForgeCraftingManager {
     private static final ArmorForgeCraftingManager INSTANCE = new ArmorForgeCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
 
-    ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
-    ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
-    ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
-    ItemStack COBALT_HELMET = new ItemStack(ModItems.COBALT_HELMET, 1);
-    ItemStack MANYULLYN_HELMET = new ItemStack(ModItems.MANYULLYN_HELMET, 1);
-    ItemStack PIG_IRON_HELMET = new ItemStack(ModItems.PIG_IRON_HELMET, 1);
-    ItemStack KNIGHT_SLIME_HELMET = new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1);
-    ItemStack STEEL_HELMET = new ItemStack(ModItems.STEEL_HELMET, 1);
-    ItemStack ELECTRICAL_HELMET = new ItemStack(ModItems.ELECTRICAL_HELMET, 1);
-
-    //Tinkers Ingots
-    ItemStack COBALT_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0);
-    ItemStack ARDITE_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1);
-    ItemStack MANYULLYN_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2);
-    ItemStack KNIGHT_SLIME_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3);
-    ItemStack PIG_IRON_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4);
-
-    //Tinkers Blocks
-    ItemStack COBALT_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0);
-    ItemStack ARDITE_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1);
-    ItemStack MANYULLYN_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2);
-    ItemStack KNIGHT_SLIME_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3);
-    ItemStack PIG_IRON_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4);
-
     private ArmorForgeCraftingManager() {
 
         // ===================================== Set Variables =====================================
@@ -90,14 +66,23 @@ public class ArmorForgeCraftingManager {
         RG_HELMET.setTagCompound(nbttagc);
         ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
         RI_HELMET.setTagCompound(nbttagc);
+        ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
         CHICKEN_HELMET.setTagCompound(nbttagc);
+        ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
         SLIME_HELMET.setTagCompound(nbttagc);
+        ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
         ARDITE_HELMET.setTagCompound(nbttagc);
+        ItemStack COBALT_HELMET = new ItemStack(ModItems.COBALT_HELMET, 1);
         COBALT_HELMET.setTagCompound(nbttagc);
+        ItemStack MANYULLYN_HELMET = new ItemStack(ModItems.MANYULLYN_HELMET, 1);
         MANYULLYN_HELMET.setTagCompound(nbttagc);
+        ItemStack PIG_IRON_HELMET = new ItemStack(ModItems.PIG_IRON_HELMET, 1);
         PIG_IRON_HELMET.setTagCompound(nbttagc);
+        ItemStack KNIGHT_SLIME_HELMET = new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1);
         KNIGHT_SLIME_HELMET.setTagCompound(nbttagc);
+        ItemStack STEEL_HELMET = new ItemStack(ModItems.STEEL_HELMET, 1);
         STEEL_HELMET.setTagCompound(nbttagc);
+        ItemStack ELECTRICAL_HELMET = new ItemStack(ModItems.ELECTRICAL_HELMET, 1);
         ELECTRICAL_HELMET.setTagCompound(nbttagc);
         // ===================================== Origin Armors =====================================
         /* Coal Armor */
@@ -301,6 +286,7 @@ public class ArmorForgeCraftingManager {
         }
         // ===================================== Tinkers' Construct Armors =====================================
         /* Ardite Armor */
+        ItemStack ARDITE_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1);
         if (ARPConfig.recipes == 0 && ARPConfig.enableArditeArmorRecipes) {
             this.addRecipe(ARDITE_HELMET, "XXX", "CCC", "CXC", 'C', ARDITE_INGOT);
             this.addRecipe(ARDITE_HELMET, "CCC", "CXC", "XXX", 'C', ARDITE_INGOT);
@@ -310,6 +296,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "CXC", "CXC", "XXX", 'C', ARDITE_INGOT);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableArditeArmorRecipes) {
+            ItemStack ARDITE_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1);
             this.addRecipe(ARDITE_HELMET, "XXX", "CCC", "AXA", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
             this.addRecipe(ARDITE_HELMET, "CCC", "AXA", "XXX", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
             this.addRecipe(new ItemStack(ModItems.ARDITE_CHESTPLATE, 1), "AXA", "CAC", "CCC", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
@@ -318,6 +305,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.ARDITE_BOOTS, 1), "CXC", "AXA", "XXX", 'C', ARDITE_BLOCK, 'A', ARDITE_INGOT);
         }
         /* Cobalt Armor */
+        ItemStack COBALT_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0);
         if (ARPConfig.recipes == 0 && ARPConfig.enableCobaltArmorRecipes) {
             this.addRecipe(COBALT_HELMET, "XXX", "CCC", "CXC", 'C', COBALT_INGOT);
             this.addRecipe(COBALT_HELMET, "CCC", "CXC", "XXX", 'C', COBALT_INGOT);
@@ -327,6 +315,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "CXC", "CXC", "XXX", 'C', COBALT_INGOT);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableCobaltArmorRecipes) {
+            ItemStack COBALT_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0);
             this.addRecipe(COBALT_HELMET, "XXX", "CCC", "AXA", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
             this.addRecipe(COBALT_HELMET, "CCC", "AXA", "XXX", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
             this.addRecipe(new ItemStack(ModItems.COBALT_CHESTPLATE, 1), "AXA", "CAC", "CCC", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
@@ -335,6 +324,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.COBALT_BOOTS, 1), "CXC", "AXA", "XXX", 'C', COBALT_BLOCK, 'A', COBALT_INGOT);
         }
         /* Knight Slime Armor */
+        ItemStack KNIGHT_SLIME_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3);
         if (ARPConfig.recipes == 0 && ARPConfig.enableKnightSlimeArmorRecipes) {
             this.addRecipe(KNIGHT_SLIME_HELMET, "XXX", "CCC", "CXC", 'C', KNIGHT_SLIME_INGOT);
             this.addRecipe(KNIGHT_SLIME_HELMET, "CCC", "CXC", "XXX", 'C', KNIGHT_SLIME_INGOT);
@@ -344,6 +334,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_BOOTS, 1), "CXC", "CXC", "XXX", 'C', KNIGHT_SLIME_INGOT);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableKnightSlimeArmorRecipes) {
+            ItemStack KNIGHT_SLIME_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3);
             this.addRecipe(KNIGHT_SLIME_HELMET, "XXX", "CCC", "AXA", 'C', KNIGHT_SLIME_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(KNIGHT_SLIME_HELMET, "CCC", "AXA", "XXX", 'C', KNIGHT_SLIME_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(new ItemStack(ModItems.KNIGHT_SLIME_CHESTPLATE, 1), "AXA", "CAC", "CCC", 'C', KNIGHT_SLIME_BLOCK, 'A', KNIGHT_SLIME_INGOT);
@@ -353,6 +344,7 @@ public class ArmorForgeCraftingManager {
         }
         /* Manyullyn Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableManyullynArmorRecipes) {
+            ItemStack MANYULLYN_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2);
             this.addRecipe(MANYULLYN_HELMET, "XXX", "CCC", "CXC", 'C', MANYULLYN_INGOT);
             this.addRecipe(MANYULLYN_HELMET, "CCC", "CXC", "XXX", 'C', MANYULLYN_INGOT);
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', MANYULLYN_INGOT);
@@ -361,6 +353,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "CXC", "CXC", "XXX", 'C', MANYULLYN_INGOT);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableManyullynArmorRecipes) {
+            ItemStack MANYULLYN_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2);
             this.addRecipe(MANYULLYN_HELMET, "XXX", "CCC", "AXA", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(MANYULLYN_HELMET, "CCC", "AXA", "XXX", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_CHESTPLATE, 1), "AXA", "CAC", "CCC", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
@@ -369,6 +362,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.MANYULLYN_BOOTS, 1), "CXC", "AXA", "XXX", 'C', MANYULLYN_BLOCK, 'A', KNIGHT_SLIME_INGOT);
         }
         /* Pig Iron Armor */
+        ItemStack PIG_IRON_INGOT = new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4);
         if (ARPConfig.recipes == 0 && ARPConfig.enablePigIronArmorRecipes) {
             this.addRecipe(PIG_IRON_HELMET, "XXX", "CCC", "CXC", 'C', PIG_IRON_INGOT);
             this.addRecipe(PIG_IRON_HELMET, "CCC", "CXC", "XXX", 'C', PIG_IRON_INGOT);
@@ -378,6 +372,7 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.PIG_IRON_BOOTS, 1), "CXC", "CXC", "XXX", 'C', PIG_IRON_INGOT);
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enablePigIronArmorRecipes) {
+            ItemStack PIG_IRON_BLOCK = new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4);
             this.addRecipe(PIG_IRON_HELMET, "XXX", "CCC", "AXA", 'C', PIG_IRON_BLOCK, 'A', PIG_IRON_INGOT);
             this.addRecipe(PIG_IRON_HELMET, "CCC", "AXA", "XXX", 'C', PIG_IRON_BLOCK, 'A', PIG_IRON_INGOT);
             this.addRecipe(new ItemStack(ModItems.PIG_IRON_CHESTPLATE, 1), "AXA", "CAC", "CCC", 'C', PIG_IRON_BLOCK, 'A', PIG_IRON_INGOT);

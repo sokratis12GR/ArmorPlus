@@ -15,6 +15,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.RenderPowerfulZombie;
 
+import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonZombieSpawnEnd;
+
 /**
  * net.thedragonteam.armorplus.entity
  * ArmorPlus created by sokratis12GR on 8/21/2016.
@@ -27,11 +29,12 @@ public class ARPEntities {
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
-        EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 3, true, 0x002200, 0x00ff00);
+        EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1000, true, 0x002200, 0x00ff00);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually
-        EntityRegistry.addSpawn(EntityEnderDragonZombie.class, 100, 3, 5, EnumCreatureType.MONSTER, Biomes.SKY);
+        if (enableEnderDragonZombieSpawnEnd)
+            EntityRegistry.addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
 
         // This is the loot table for the mobs
         LootTableList.register(EntityEnderDragonZombie.LOOT);

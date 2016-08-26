@@ -29,6 +29,8 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nullable;
 
+import static net.thedragonteam.armorplus.ARPConfig.*;
+
 /**
  * net.thedragonteam.armorplus.entity.entityzombie
  * ArmorPlus created by sokratis12GR on 8/21/2016.
@@ -39,7 +41,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie.class, DataSerializers.BOOLEAN);
 
-    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/powerful_zombie");
+    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/ender_dragon_zombie");
 
     public EntityEnderDragonZombie(World worldIn) {
         super(worldIn);
@@ -67,12 +69,12 @@ public class EntityEnderDragonZombie extends EntityMob {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(5.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(100.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(enderDragonZombieFollowRange);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(enderDragonZombieMovementSpeed);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(enderDragonZombieAttackDamage);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(enderDragonZombieArmor);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(enderDragonZombieHealth);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(enderDragonZombieKnockbackResistance);
     }
 
     public void setArmsRaised(boolean armsRaised) {
@@ -108,7 +110,8 @@ public class EntityEnderDragonZombie extends EntityMob {
         if (super.attackEntityAsMob(entityIn)) {
             if (entityIn instanceof EntityLivingBase) {
                 // This zombie gives wither 4 when it attacks
-                ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 4));
+                if (enableEnderDragonZombieWithering)
+                    ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
             }
             return true;
         } else {
@@ -129,6 +132,6 @@ public class EntityEnderDragonZombie extends EntityMob {
 
     @Override
     public int getMaxSpawnedInChunk() {
-        return 5;
+        return 1;
     }
 }
