@@ -34,7 +34,7 @@ public class GuardianBattleAxe extends ItemSword {
     public GuardianBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("guardian_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("GuardianBattleAxe");     // Used for localization (en_US.lang)
+        setUnlocalizedName("guardian_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -65,7 +65,7 @@ public class GuardianBattleAxe extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "GuardianBattleAxe", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

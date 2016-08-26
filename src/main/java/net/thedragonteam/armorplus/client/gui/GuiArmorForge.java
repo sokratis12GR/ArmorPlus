@@ -20,7 +20,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
  * - TheDragonTeam
  */
 public class GuiArmorForge extends GuiContainer {
-    private static final ResourceLocation ARMOR_FORGE_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/GuiArmorForge.png");
+    private static final ResourceLocation ARMOR_FORGE_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_armor_forge.png");
 
     public GuiArmorForge(InventoryPlayer playerInv, World worldIn, TileEntityArmorForge tileEntity) {
         this(playerInv, worldIn, BlockPos.ORIGIN, tileEntity);

@@ -20,7 +20,7 @@ public class TheUltimateChestplateLeft extends Item {
 
     public TheUltimateChestplateLeft() {
         setRegistryName("the_ultimate_chestplate_left");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("TheUltimateChestplateLeft");     // Used for localization (en_US.lang)
+        setUnlocalizedName("the_ultimate_chestplate_left");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
@@ -32,6 +32,6 @@ public class TheUltimateChestplateLeft extends Item {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:TheUltimateChestplateLeft", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

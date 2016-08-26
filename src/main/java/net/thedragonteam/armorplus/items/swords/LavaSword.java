@@ -31,7 +31,7 @@ public class LavaSword extends ItemSword {
     public LavaSword(ToolMaterial material) {
         super(material);
         setRegistryName("lava_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LavaSword");     // Used for localization (en_US.lang)
+        setUnlocalizedName("lava_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -62,7 +62,7 @@ public class LavaSword extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "LavaSword", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

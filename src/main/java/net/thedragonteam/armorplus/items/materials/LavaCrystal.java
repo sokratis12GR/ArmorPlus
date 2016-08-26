@@ -22,7 +22,7 @@ public class LavaCrystal extends Item {
 
     public LavaCrystal() {
         setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + ".lava_crystal");     // Used for localization (en_US.lang)
+        setUnlocalizedName("lava_crystal");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

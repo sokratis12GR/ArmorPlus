@@ -21,14 +21,14 @@ public class SteelIngot extends Item {
 
     public SteelIngot() {
         setRegistryName("steel_ingot");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("SteelIngot");     // Used for localization (en_US.lang)
+        setUnlocalizedName("steel_ingot");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:SteelIngot", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

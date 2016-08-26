@@ -32,7 +32,7 @@ public class LavaBattleAxe extends ItemSword {
     public LavaBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("lava_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LavaBattleAxe");     // Used for localization (en_US.lang)
+        setUnlocalizedName("lava_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -63,7 +63,7 @@ public class LavaBattleAxe extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "LavaBattleAxe", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

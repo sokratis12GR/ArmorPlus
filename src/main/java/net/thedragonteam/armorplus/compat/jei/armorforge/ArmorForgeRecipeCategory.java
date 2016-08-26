@@ -38,7 +38,7 @@ public class ArmorForgeRecipeCategory implements IRecipeCategory {
     private final ICraftingGridHelper craftingGridHelper;
 
     public ArmorForgeRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation("armorplus", "textures/gui/container/GuiArmorForge.png");
+        ResourceLocation location = new ResourceLocation("armorplus", "textures/gui/container/gui_armor_forge.png");
         background = guiHelper.createDrawable(location, 29, 16, width, height);
         localizedName = Translator.translateToLocal("gui.jei.category.armorforge");
         craftingGridHelper = guiHelper.createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);

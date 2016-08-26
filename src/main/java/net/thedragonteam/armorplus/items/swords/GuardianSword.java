@@ -33,7 +33,7 @@ public class GuardianSword extends ItemSword {
     public GuardianSword(ToolMaterial material) {
         super(material);
         setRegistryName("guardian_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("GuardianSword");     // Used for localization (en_US.lang)
+        setUnlocalizedName("guardian_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -64,7 +64,7 @@ public class GuardianSword extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "GuardianSword", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

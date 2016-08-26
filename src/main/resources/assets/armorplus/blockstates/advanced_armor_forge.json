@@ -4,6 +4,6 @@
 		"transform": "forge:default-block"
 	},
 	"variants": {
-		"normal": { "model": "armorplus:AdvancedArmorForge" }
+		"normal": { "model": "armorplus:advanced_armor_forge" }
 	}
 }

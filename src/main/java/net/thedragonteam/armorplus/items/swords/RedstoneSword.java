@@ -34,7 +34,7 @@ public class RedstoneSword extends ItemSword {
     public RedstoneSword(ToolMaterial material) {
         super(material);
         setRegistryName("redstone_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("RedstoneSword");     // Used for localization (en_US.lang)
+        setUnlocalizedName("redstone_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -65,7 +65,7 @@ public class RedstoneSword extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "RedstoneSword", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

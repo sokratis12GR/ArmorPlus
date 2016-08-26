@@ -41,7 +41,7 @@ public class EnderDragonBow extends ItemBow {
     public EnderDragonBow() {
         this.setMaxDamage(2000);
         setRegistryName("ender_dragon_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("EnderDragonBow");     // Used for localization (en_US.lang)
+        setUnlocalizedName("ender_dragon_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;
@@ -169,7 +169,7 @@ public class EnderDragonBow extends ItemBow {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "EnderDragonBow", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

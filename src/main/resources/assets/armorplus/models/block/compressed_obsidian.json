@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "armorplus:blocks/CompressedObsidian"
+    "all": "armorplus:blocks/compressed_obsidian"
   }
 }

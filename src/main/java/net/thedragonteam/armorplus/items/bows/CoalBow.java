@@ -41,7 +41,7 @@ public class CoalBow extends ItemBow {
     public CoalBow() {
         this.setMaxDamage(59);
         setRegistryName("coal_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("CoalBow");     // Used for localization (en_US.lang)
+        setUnlocalizedName("coal_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;
@@ -169,7 +169,7 @@ public class CoalBow extends ItemBow {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "CoalBow", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

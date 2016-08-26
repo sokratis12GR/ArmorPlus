@@ -33,7 +33,7 @@ public class EmeraldSword extends ItemSword {
     public EmeraldSword(ToolMaterial material) {
         super(material);
         setRegistryName("emerald_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("EmeraldSword");     // Used for localization (en_US.lang)
+        setUnlocalizedName("emerald_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -64,7 +64,7 @@ public class EmeraldSword extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "EmeraldSword", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

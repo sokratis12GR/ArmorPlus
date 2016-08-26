@@ -33,7 +33,7 @@ public class SuperStarSword extends ItemSword {
     public SuperStarSword(ToolMaterial material) {
         super(material);
         setRegistryName("super_star_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("SuperStarSword");     // Used for localization (en_US.lang)
+        setUnlocalizedName("super_star_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -64,7 +64,7 @@ public class SuperStarSword extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "SuperStarSword", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

@@ -23,14 +23,14 @@ public class ArmorPlusBook extends Item {
 
     public ArmorPlusBook() {
         setRegistryName("armorplus_book");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("ArmorPlusBook");     // Used for localization (en_US.lang)
+        setUnlocalizedName("armorplus_book");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:ArmorPlusBook", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

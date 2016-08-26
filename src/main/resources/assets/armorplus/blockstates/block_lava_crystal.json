@@ -1,10 +1,10 @@
 {
 	"variants": {
 		"normal": [
-			{ "model": "armorplus:BlockLavaCrystal" },
-			{ "model": "armorplus:BlockLavaCrystal", "y": 90 },
-			{ "model": "armorplus:BlockLavaCrystal", "y": 180 },
-			{ "model": "armorplus:BlockLavaCrystal", "y": 270 }
+			{ "model": "armorplus:block_lava_crystal" },
+			{ "model": "armorplus:block_lava_crystal", "y": 90 },
+			{ "model": "armorplus:block_lava_crystal", "y": 180 },
+			{ "model": "armorplus:block_lava_crystal", "y": 270 }
 		]
 	}
 }

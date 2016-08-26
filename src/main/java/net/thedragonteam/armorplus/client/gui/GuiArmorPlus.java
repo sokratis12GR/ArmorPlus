@@ -34,7 +34,7 @@ public class GuiArmorPlus extends GuiScreen {
         int guiY = (height - guiHeight) / 2;
         GL11.glColor4f(1, 1, 1, 1);
         drawDefaultBackground();
-        mc.renderEngine.bindTexture(new ResourceLocation(ArmorPlus.MODID, "textures/gui/GuiArmorPlus.png"));
+        mc.renderEngine.bindTexture(new ResourceLocation(ArmorPlus.MODID, "textures/gui/gui_armorplus.png"));
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
 
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Book (WIP)").getFormattedText(), guiX + 10, guiY + 5, 0x000000);

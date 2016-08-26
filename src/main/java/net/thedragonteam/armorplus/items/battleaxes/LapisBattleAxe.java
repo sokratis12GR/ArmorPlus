@@ -34,7 +34,7 @@ public class LapisBattleAxe extends ItemSword {
     public LapisBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("lapis_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("LapisBattleAxe");     // Used for localization (en_US.lang)
+        setUnlocalizedName("lapis_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -65,7 +65,7 @@ public class LapisBattleAxe extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "LapisBattleAxe", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

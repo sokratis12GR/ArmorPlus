@@ -1,10 +1,10 @@
 {
 	"variants": {
 		"normal": [
-			{ "model": "armorplus:SteelBlock" },
-			{ "model": "armorplus:SteelBlock", "y": 90 },
-			{ "model": "armorplus:SteelBlock", "y": 180 },
-			{ "model": "armorplus:SteelBlock", "y": 270 }
+			{ "model": "armorplus:steel_block" },
+			{ "model": "armorplus:steel_block", "y": 90 },
+			{ "model": "armorplus:steel_block", "y": 180 },
+			{ "model": "armorplus:steel_block", "y": 270 }
 		]
 	}
 }

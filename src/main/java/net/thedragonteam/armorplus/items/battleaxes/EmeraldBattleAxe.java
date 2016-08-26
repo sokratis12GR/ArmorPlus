@@ -34,7 +34,7 @@ public class EmeraldBattleAxe extends ItemSword {
     public EmeraldBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("emerald_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("EmeraldBattleAxe");     // Used for localization (en_US.lang)
+        setUnlocalizedName("emerald_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }
@@ -65,7 +65,7 @@ public class EmeraldBattleAxe extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "EmeraldBattleAxe", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

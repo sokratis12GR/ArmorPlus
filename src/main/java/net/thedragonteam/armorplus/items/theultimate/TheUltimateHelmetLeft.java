@@ -20,7 +20,7 @@ public class TheUltimateHelmetLeft extends Item {
 
     public TheUltimateHelmetLeft() {
         setRegistryName("the_ultimate_helmet_left");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("TheUltimateHelmetLeft");     // Used for localization (en_US.lang)
+        setUnlocalizedName("the_ultimate_helmet_left");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
@@ -32,6 +32,6 @@ public class TheUltimateHelmetLeft extends Item {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:TheUltimateHelmetLeft", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

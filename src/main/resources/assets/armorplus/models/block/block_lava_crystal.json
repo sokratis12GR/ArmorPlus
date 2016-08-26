@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "armorplus:blocks/BlockLavaCrystal"
+    "all": "armorplus:blocks/block_lava_crystal"
   }
 }

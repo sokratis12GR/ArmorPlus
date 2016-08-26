@@ -32,7 +32,7 @@ public class RedstoneApple extends ItemFood {
     public RedstoneApple(int amount, float saturation, boolean isWolfFood) {
         super(amount, saturation, isWolfFood);
         this.setHasSubtypes(true);
-        setUnlocalizedName("RedstoneApple");
+        setUnlocalizedName("redstone_apple");
         setRegistryName("redstone_apple");
         setAlwaysEdible().equals(true);
         GameRegistry.register(this);
@@ -73,7 +73,7 @@ public class RedstoneApple extends ItemFood {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:RedstoneApple", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation("armorplus:RedstoneApple", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

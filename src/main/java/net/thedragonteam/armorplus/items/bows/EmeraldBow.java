@@ -41,7 +41,7 @@ public class EmeraldBow extends ItemBow {
     public EmeraldBow() {
         this.setMaxDamage(1561);
         setRegistryName("emerald_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("EmeraldBow");     // Used for localization (en_US.lang)
+        setUnlocalizedName("emerald_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;
@@ -169,7 +169,7 @@ public class EmeraldBow extends ItemBow {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + "EmeraldBow", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }

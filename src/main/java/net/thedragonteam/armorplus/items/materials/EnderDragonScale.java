@@ -20,7 +20,7 @@ public class EnderDragonScale extends Item {
 
     public EnderDragonScale() {
         setRegistryName("ender_dragon_scale");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("EnderDragonScale");     // Used for localization (en_US.lang)
+        setUnlocalizedName("ender_dragon_scale");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
 
@@ -33,7 +33,7 @@ public class EnderDragonScale extends Item {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:EnderDragonScale", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }
