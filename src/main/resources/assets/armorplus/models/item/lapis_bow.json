@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/LapisBow"
+        "layer0": "armorplus:items/lapis_bow"
     },
     "display": {
         "thirdperson_righthand": {
@@ -30,7 +30,7 @@
             "predicate": {
                 "pulling": 1
             },
-            "model": "armorplus:item/LapisBow_pulling_0"
+            "model": "armorplus:item/lapis_bow_pulling_0"
         }
     ]
 }

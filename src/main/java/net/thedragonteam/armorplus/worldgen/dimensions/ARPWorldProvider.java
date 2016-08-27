@@ -21,7 +21,7 @@ public class ARPWorldProvider extends WorldProvider {
 
     @Override
     public String getSaveFolder() {
-        return "ArmorPlus";
+        return "armorplus";
     }
 
     @Override

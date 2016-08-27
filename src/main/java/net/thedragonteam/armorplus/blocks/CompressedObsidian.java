@@ -17,7 +17,7 @@ public class CompressedObsidian extends Block {
 
     public CompressedObsidian() {
         super(Material.ROCK);
-        setUnlocalizedName("CompressedObsidian");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "compressed_obsidian");
         this.setResistance(2000.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(50.0F);

@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/EmeraldBow"
+        "layer0": "armorplus:items/emerald_bow"
     },
     "display": {
         "thirdperson_righthand": {
@@ -30,7 +30,7 @@
             "predicate": {
                 "pulling": 1
             },
-            "model": "armorplus:item/EmeraldBow_pulling_0"
+            "model": "armorplus:item/emerald_bow_pulling_0"
         }
     ]
 }

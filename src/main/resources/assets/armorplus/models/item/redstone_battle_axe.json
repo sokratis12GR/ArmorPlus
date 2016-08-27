@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "armorplus:items/RedstoneBattleAxe"
+        "layer0": "armorplus:items/redstone_battle_axe"
     }
 }

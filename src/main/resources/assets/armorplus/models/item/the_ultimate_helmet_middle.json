@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/TheUltimateHelmetMiddle"
+    "layer0": "armorplus:items/the_ultimate_helmet_middle"
   }
 }

@@ -34,7 +34,7 @@ public class AdvancedArmorForge extends Block implements ITileEntityProvider {
 
     public AdvancedArmorForge() {
         super(Material.IRON);
-        setUnlocalizedName("AdvancedArmorForge");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "advanced_armor_forge");
         this.setResistance(1000.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(10.0F);

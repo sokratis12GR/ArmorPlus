@@ -25,7 +25,7 @@ public class BlockLavaCrystal extends Block {
     public BlockLavaCrystal() {
         super(Material.ROCK);
         this.drop = ModItems.LAVA_CRYSTAL;
-        setUnlocalizedName("BlockLavaCrystal");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "block_lava_crystal");
         this.setResistance(2000.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(25.0F);

@@ -43,7 +43,7 @@ public class TileEntityAdvancedArmorForge extends TileEntity implements IInvento
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.AdvancedArmorForge";
+        return this.hasCustomName() ? this.customName : "container.armorplus.advanced_armor_forge";
     }
 
     @Override

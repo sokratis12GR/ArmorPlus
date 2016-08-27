@@ -20,7 +20,7 @@ public class TheUltimateLeggingsLeft extends Item {
 
     public TheUltimateLeggingsLeft() {
         setRegistryName("the_ultimate_leggings_left");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("the_ultimate_leggings_left");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_leggings_left");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

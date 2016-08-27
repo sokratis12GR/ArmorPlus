@@ -1,6 +1,6 @@
 {
     "parent": "item/bow",
     "textures": {
-        "layer0": "armorplus:items/LavaBow_pulling_0"
+        "layer0": "armorplus:items/lava_bow_pulling_0"
     }
 }

@@ -34,7 +34,7 @@ public class LavaCactus extends BlockCactus {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setTickRandomly(true);
         setHardness(0.4F);
-        setUnlocalizedName("lava_cactus");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_cactus");
         setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
     }

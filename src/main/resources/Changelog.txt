@@ -1,4 +1,12 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.4.0
+{Features Changed}
+* Unlocalized names are now all lowercase
+* Textures names are now all lowercase
+* Model names are now all lowercase
+* Resource Location names are now all lowercase
+* Language File changed the item's unlocalized names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.3.0
 {Balancing Update}
 * Reduced Ender Dragon Zombie's HP from 100 to 20

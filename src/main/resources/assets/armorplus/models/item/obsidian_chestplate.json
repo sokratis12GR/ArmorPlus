@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/ObsidianChestplate"
+        "layer0": "armorplus:items/obsidian_chestplate"
     }
 }

@@ -20,7 +20,7 @@ public class TheUltimateChestplateLeft extends Item {
 
     public TheUltimateChestplateLeft() {
         setRegistryName("the_ultimate_chestplate_left");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("the_ultimate_chestplate_left");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_chestplate_left");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

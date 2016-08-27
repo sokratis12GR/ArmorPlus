@@ -42,7 +42,7 @@ public class TileEntityArmorForge extends TileEntity implements IInventory {
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.ArmorForge";
+        return this.hasCustomName() ? this.customName : "container.armorplus.armor_forge";
     }
 
     @Override

@@ -24,10 +24,10 @@ public class ArmorPlusEntity {
     }
 
     private void register() {
-        EntityRegistry.registerModEntity(EntityCoalArrow.class, "COAL_ARROW", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLapisArrow.class, "LAPIS_ARROW", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityRedstoneArrow.class, "REDSTONE_ARROW", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLavaArrow.class, "LAVA_ARROW", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
     }
 
 }

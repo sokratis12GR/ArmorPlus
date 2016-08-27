@@ -52,7 +52,7 @@ public class DevTool extends Item {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
         infoList.add("\2479Ability: " + "\247rTracks Targets Health");
-        infoList.add("\2473Use: " + "\247Right Click a Target");
+        infoList.add("\2473Use: " + "\247rRight Click a Target");
     }
 
     @SideOnly(Side.CLIENT)

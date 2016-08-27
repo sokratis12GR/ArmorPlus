@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/ObsidianBow"
+        "layer0": "armorplus:items/obsidian_bow"
     },
     "display": {
         "thirdperson_righthand": {
@@ -30,7 +30,7 @@
             "predicate": {
                 "pulling": 1
             },
-            "model": "armorplus:item/ObsidianBow_pulling_0"
+            "model": "armorplus:item/obsidian_bow_pulling_0"
         }
     ]
 }

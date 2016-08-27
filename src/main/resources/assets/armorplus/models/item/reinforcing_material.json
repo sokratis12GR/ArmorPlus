@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/ReinforcingMaterial"
+        "layer0": "armorplus:items/reinforcing_material"
     }
 }

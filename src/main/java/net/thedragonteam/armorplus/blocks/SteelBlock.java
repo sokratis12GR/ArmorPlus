@@ -20,7 +20,7 @@ public class SteelBlock extends Block {
 
     public SteelBlock() {
         super(Material.IRON);
-        setUnlocalizedName("SteelBlock");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "steel_block");
         this.setResistance(20.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(5.0F);

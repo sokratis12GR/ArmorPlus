@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/SteelBoots"
+    "layer0": "armorplus:items/steel_boots"
   }
 }

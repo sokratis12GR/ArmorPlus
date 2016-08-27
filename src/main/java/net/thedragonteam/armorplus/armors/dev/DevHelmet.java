@@ -30,7 +30,7 @@ public class DevHelmet extends ItemArmor {
         super(ModItems.DEV_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("dev_helmet");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("DevHelmet");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "dev_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
     }
@@ -43,6 +43,6 @@ public class DevHelmet extends ItemArmor {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("armorplus:DevHelmet", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

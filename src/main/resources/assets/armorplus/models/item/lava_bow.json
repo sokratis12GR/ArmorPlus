@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/LavaBow"
+        "layer0": "armorplus:items/lava_bow"
     },
     "display": {
         "thirdperson_righthand": {
@@ -30,7 +30,7 @@
             "predicate": {
                 "pulling": 1
             },
-            "model": "armorplus:item/LavaBow_pulling_0"
+            "model": "armorplus:item/lava_bow_pulling_0"
         }
     ]
 }

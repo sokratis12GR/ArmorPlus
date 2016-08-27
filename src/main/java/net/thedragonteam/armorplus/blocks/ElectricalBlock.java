@@ -20,7 +20,7 @@ public class ElectricalBlock extends Block {
 
     public ElectricalBlock() {
         super(Material.IRON);
-        setUnlocalizedName("ElectricalBlock");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "electrical_block");
         this.setResistance(20.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(5.0F);
