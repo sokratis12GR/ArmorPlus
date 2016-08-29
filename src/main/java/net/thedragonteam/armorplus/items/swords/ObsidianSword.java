@@ -34,7 +34,7 @@ public class ObsidianSword extends ItemSword {
     public ObsidianSword(ToolMaterial material) {
         super(material);
         setRegistryName("obsidian_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("obsidian_sword");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "obsidian_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

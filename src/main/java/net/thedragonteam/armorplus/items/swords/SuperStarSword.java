@@ -33,7 +33,7 @@ public class SuperStarSword extends ItemSword {
     public SuperStarSword(ToolMaterial material) {
         super(material);
         setRegistryName("super_star_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("super_star_sword");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "super_star_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

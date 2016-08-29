@@ -34,7 +34,7 @@ public class EnderDragonBattleAxe extends ItemSword {
     public EnderDragonBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("ender_dragon_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("ender_dragon_battle_axe");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "ender_dragon_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

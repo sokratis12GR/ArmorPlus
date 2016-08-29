@@ -227,6 +227,9 @@ tile.armorplus.armor_forge.name=Armor Forge
 tile.armorplus.advanced_armor_forge.name=Advanced Armor Forge
 tile.armorplus.lava_cactus.name=Lava Cactus
 tile.armorplus.lava_nether_brick.name=Lava Nether Brick
+tile.armorplus.white_stone_brick.name=White Stone Brick
+tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
+tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword

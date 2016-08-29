@@ -34,7 +34,7 @@ public class RedstoneBattleAxe extends ItemSword {
     public RedstoneBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("redstone_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("redstone_battle_axe");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

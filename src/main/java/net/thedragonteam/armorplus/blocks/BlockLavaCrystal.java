@@ -30,7 +30,7 @@ public class BlockLavaCrystal extends Block {
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
         this.setHardness(25.0F);
         this.setHarvestLevel("pickaxe", 3);
-        this.setLightLevel(0.4F);
+        this.setLightLevel(0.8F);
     }
 
     @Override

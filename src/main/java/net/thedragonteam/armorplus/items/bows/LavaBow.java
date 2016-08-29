@@ -41,7 +41,7 @@ public class LavaBow extends ItemBow {
     public LavaBow() {
         this.setMaxDamage(1750);
         setRegistryName("lava_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("lava_bow");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;

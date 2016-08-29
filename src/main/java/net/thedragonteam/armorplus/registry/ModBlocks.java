@@ -22,7 +22,8 @@ public class ModBlocks {
 
     public static Block BLOCK_LAVA_CRYSTAL,
             COMPRESSED_OBSIDIAN, STEEL_BLOCK, ELECTRICAL_BLOCK,
-            ARMOR_FORGE, ADVANCED_ARMOR_FORGE, LAVA_NETHER_BRICK;
+            ARMOR_FORGE, ADVANCED_ARMOR_FORGE, LAVA_NETHER_BRICK,
+            WHITE_STONE_BRICK, WHITE_STONE_BRICK_TOWER, WHITE_STONE_BRICK_CORNER;
     public static LavaCactus LAVA_CACTUS;
 
     public static void init() {
@@ -34,6 +35,9 @@ public class ModBlocks {
         ADVANCED_ARMOR_FORGE = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
         LAVA_CACTUS = new LavaCactus();
         LAVA_NETHER_BRICK = new LavaNetherBrick().setRegistryName("lava_nether_brick");
+        WHITE_STONE_BRICK = new WhiteStoneBrick().setRegistryName("white_stone_brick");
+        WHITE_STONE_BRICK_TOWER = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
+        WHITE_STONE_BRICK_CORNER = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_corner");
     }
 
     public static void register() {
@@ -45,6 +49,9 @@ public class ModBlocks {
         registerBlock(ADVANCED_ARMOR_FORGE);
         registerBlock(LAVA_CACTUS);
         registerBlock(LAVA_NETHER_BRICK);
+        registerBlock(WHITE_STONE_BRICK);
+        registerBlock(WHITE_STONE_BRICK_TOWER);
+        registerBlock(WHITE_STONE_BRICK_CORNER);
     }
 
     public static void registerRenders() {
@@ -56,6 +63,9 @@ public class ModBlocks {
         registerRender(ADVANCED_ARMOR_FORGE);
         registerRender(LAVA_CACTUS);
         registerRender(LAVA_NETHER_BRICK);
+        registerRender(WHITE_STONE_BRICK);
+        registerRender(WHITE_STONE_BRICK_TOWER);
+        registerRender(WHITE_STONE_BRICK_CORNER);
     }
 
     public static void registerBlock(Block block) {

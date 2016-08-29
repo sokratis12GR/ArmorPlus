@@ -21,7 +21,7 @@ public class ReinforcingMaterial extends Item {
 
     public ReinforcingMaterial() {
         setRegistryName("reinforcing_material");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("reinforcing_material");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "reinforcing_material");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

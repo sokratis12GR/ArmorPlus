@@ -33,7 +33,7 @@ public class CoalSword extends ItemSword {
     public CoalSword(ToolMaterial material) {
         super(material);
         setRegistryName("coal_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("coal_sword");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "coal_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

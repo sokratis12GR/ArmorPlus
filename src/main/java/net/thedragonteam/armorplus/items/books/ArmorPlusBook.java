@@ -23,7 +23,7 @@ public class ArmorPlusBook extends Item {
 
     public ArmorPlusBook() {
         setRegistryName("armorplus_book");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("armorplus_book");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "armorplus_book");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }

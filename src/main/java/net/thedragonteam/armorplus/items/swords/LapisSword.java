@@ -33,7 +33,7 @@ public class LapisSword extends ItemSword {
     public LapisSword(ToolMaterial material) {
         super(material);
         setRegistryName("lapis_sword");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("lapis_sword");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "lapis_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

@@ -41,7 +41,7 @@ public class SuperStarBow extends ItemBow {
     public SuperStarBow() {
         this.setMaxDamage(1750);
         setRegistryName("super_star_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("super_star_bow");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "super_star_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;

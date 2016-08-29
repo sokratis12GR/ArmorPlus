@@ -34,7 +34,7 @@ public class CoalBattleAxe extends ItemSword {
     public CoalBattleAxe(Item.ToolMaterial material) {
         super(material);
         setRegistryName("coal_battle_axe");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("coal_battle_axe");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "coal_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
     }

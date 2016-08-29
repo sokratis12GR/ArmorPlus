@@ -39,7 +39,7 @@ public class RedstoneBow extends ItemBow {
     public RedstoneBow() {
         this.setMaxDamage(200);
         setRegistryName("redstone_bow");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName("redstone_bow");     // Used for localization (en_US.lang)
+        setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_bow");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
         this.maxStackSize = 1;

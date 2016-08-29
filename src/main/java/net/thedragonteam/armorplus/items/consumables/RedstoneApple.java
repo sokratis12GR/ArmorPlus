@@ -32,10 +32,10 @@ public class RedstoneApple extends ItemFood {
     public RedstoneApple(int amount, float saturation, boolean isWolfFood) {
         super(amount, saturation, isWolfFood);
         this.setHasSubtypes(true);
-        setUnlocalizedName("redstone_apple");
         setRegistryName("redstone_apple");
-        setAlwaysEdible().equals(true);
+        setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_apple");
         GameRegistry.register(this);
+        setAlwaysEdible().equals(true);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
     }
 
