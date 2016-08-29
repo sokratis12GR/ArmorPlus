@@ -11,7 +11,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.*;
 
 /**
@@ -66,6 +65,6 @@ public class ModBlocks {
     @SideOnly(Side.CLIENT)
     public static void registerRender(Block block) {
         Item item = Item.getItemFromBlock(block);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(ArmorPlus.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 }

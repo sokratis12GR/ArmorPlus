@@ -99,10 +99,10 @@ item.armorplus.guardian_leggings.name=Guardian Leggings
 item.armorplus.guardian_boots.name=Guardian Boots
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet.name=The Ultimate Helmet
-item.armorplus.the_ultimate_chestplate.name=The Ultimate Chestplate
-item.armorplus.the_ultimate_leggings.name=The Ultimate Leggings
-item.armorplus.the_ultimate_boots.name=The Ultimate Boots
+item.armorplus.the_ultimate_helmet_full.name=The Ultimate Helmet
+item.armorplus.the_ultimate_chestplate_full.name=The Ultimate Chestplate
+item.armorplus.the_ultimate_leggings_full.name=The Ultimate Leggings
+item.armorplus.the_ultimate_boots_full.name=The Ultimate Boots
 
 #ReinforcedIronArmor
 item.armorplus.reinforced_iron_helmet.name=Reinforced Iron Helmet

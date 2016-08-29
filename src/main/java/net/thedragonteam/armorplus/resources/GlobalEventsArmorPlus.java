@@ -18,19 +18,12 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.core.util.TextHelper;
 
 public class GlobalEventsArmorPlus {
-    @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event) {
-        ClientTickHandler handler = new ClientTickHandler();
-        handler.onTick(event);
-    }
-
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
 

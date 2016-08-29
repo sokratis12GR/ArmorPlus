@@ -1,6 +1,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.4.1
+{Bugs Fixed}
+* Missing Texture on some Items/Blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.4.0
 {Features Changed}
+* Fixed some compatability issues in some situations
 * Unlocalized names are now all lowercase
 * Textures names are now all lowercase
 * Model names are now all lowercase

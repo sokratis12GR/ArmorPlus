@@ -8,7 +8,6 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,20 +19,16 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.api.network.DynamicNetwork;
-import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.commands.TeleportCommand;
-import net.thedragonteam.armorplus.common.ThreadGetData;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
@@ -53,8 +48,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
@@ -71,7 +64,7 @@ public class ArmorPlus {
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
     public static final int MINOR = 4;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -104,8 +97,6 @@ public class ArmorPlus {
     /**
      * A list of the usernames of players who have donated to ArmorPlus.
      */
-    public static List<String> donators = new ArrayList<String>();
-    public ResourceLocation resourceLocation;
     private GuiHandler GuiHandler = new GuiHandler();
     @SuppressWarnings("unused")
     private ModItems items;
@@ -127,16 +118,6 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-//        try {
-//            File capeFile = new File(resourceLocation.getResourcePath() + ".png");
-//
-//            if (capeFile.exists()) {
-//                capeFile.delete();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
         entity = new ArmorPlusEntity();
 
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
@@ -147,9 +128,6 @@ public class ArmorPlus {
 
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-
-        //Get data from server
-        new ThreadGetData();
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -194,9 +172,6 @@ public class ArmorPlus {
 
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-
-        //Get data from server
-        new ThreadGetData();
 
         ARPAchievements.init();
         ModRecipes.init();
@@ -263,19 +238,6 @@ public class ArmorPlus {
         proxy.registerModels();
         proxy.postInit(event);
 
-    }
-
-    @SubscribeEvent
-    public void onClientTickUpdate(DynamicNetwork.ClientTickUpdate event) {
-        try {
-            if (event.operation == 0) {
-                ClientTickHandler.tickingSet.remove(event.network);
-            } else {
-                ClientTickHandler.tickingSet.add(event.network);
-            }
-        } catch (Exception e) {
-            //Ignore
-        }
     }
 
     @EventHandler

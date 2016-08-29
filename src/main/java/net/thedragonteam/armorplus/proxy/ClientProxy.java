@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.client.ClientTickHandler;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
@@ -43,7 +42,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
     }
 
     @Override
