@@ -4,8 +4,10 @@ ArmorPlus 1.10.2-6.0.5.0
 * White Stone Brick
 * White Stone Brick Tower
 * White Stone Brick Corner
+* Added JEI Support for the Advanced Armor Forge
 {Bugs Fixed}
 * Names not displaying correctly
+* Fixed a crash on easy mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.4.1
 {Bugs Fixed}

@@ -37,7 +37,7 @@ public class ModBlocks {
         LAVA_NETHER_BRICK = new LavaNetherBrick().setRegistryName("lava_nether_brick");
         WHITE_STONE_BRICK = new WhiteStoneBrick().setRegistryName("white_stone_brick");
         WHITE_STONE_BRICK_TOWER = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
-        WHITE_STONE_BRICK_CORNER = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_corner");
+        WHITE_STONE_BRICK_CORNER = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
     }
 
     public static void register() {
