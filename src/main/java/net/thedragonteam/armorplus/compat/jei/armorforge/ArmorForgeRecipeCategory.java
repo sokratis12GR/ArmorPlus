@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
-import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
@@ -16,6 +15,7 @@ import mezz.jei.util.Translator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.thedragonteam.armorplus.api.Constants;
+import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 
 import javax.annotation.Nonnull;
 
@@ -37,11 +37,11 @@ public class ArmorForgeRecipeCategory implements IRecipeCategory {
     @Nonnull
     private final ICraftingGridHelper craftingGridHelper;
 
-    public ArmorForgeRecipeCategory(IGuiHelper guiHelper) {
+    public ArmorForgeRecipeCategory() {
         ResourceLocation location = new ResourceLocation("armorplus", "textures/gui/container/gui_armor_forge.png");
-        background = guiHelper.createDrawable(location, 29, 16, width, height);
-        localizedName = Translator.translateToLocal("gui.jei.category.armorforge");
-        craftingGridHelper = guiHelper.createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
+        background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, 29, 16, width, height);
+        localizedName = Translator.translateToLocal("gui.jei.category.armor_forge");
+        craftingGridHelper = ArmorPlusPlugin.jeiHelper.getGuiHelper().createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
     }
 
     @Override

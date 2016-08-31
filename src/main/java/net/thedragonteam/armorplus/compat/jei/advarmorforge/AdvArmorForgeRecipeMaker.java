@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * net.thedragonteam.armorplus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:35 PM.
+ * net.thedragonteam.armorplus.compat.jei.advarmorforge
+ * ArmorPlus created by sokratis12GR on 8/31/2016 11:35 PM.
  * - TheDragonTeam
  */
 public class AdvArmorForgeRecipeMaker {

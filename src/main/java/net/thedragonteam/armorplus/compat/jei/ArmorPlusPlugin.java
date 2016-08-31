@@ -31,17 +31,17 @@ import javax.annotation.Nonnull;
  */
 @JEIPlugin
 public class ArmorPlusPlugin extends BlankModPlugin {
+
+    public static IJeiHelpers jeiHelper;
+
     @Override
     public void register(@Nonnull IModRegistry registry) {
-        IJeiHelpers jeiHelpers = registry.getJeiHelpers();
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-        ISubtypeRegistry nbtRegistry = jeiHelpers.getSubtypeRegistry();
-        nbtRegistry.useNbtForSubtypes(
-        );
+        jeiHelper = registry.getJeiHelpers();
+        IGuiHelper guiHelper = jeiHelper.getGuiHelper();
 
         registry.addRecipeCategories(
-                new ArmorForgeRecipeCategory(guiHelper),
-                new AdvArmorForgeRecipeCategory(guiHelper)
+                new ArmorForgeRecipeCategory(),
+                new AdvArmorForgeRecipeCategory()
         );
 
         registry.addRecipeHandlers(

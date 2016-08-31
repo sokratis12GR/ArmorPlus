@@ -36,8 +36,8 @@ public class GuiArmorForge extends GuiContainer {
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(I18n.format("container.ArmorForge", new Object[0]), 28, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRendererObj.drawString(I18n.format("container.armorplus.armor_forge", new Object[0]), 28, 6, 4210752);
+        this.fontRendererObj.drawString(I18n.format("container.armorplus.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**

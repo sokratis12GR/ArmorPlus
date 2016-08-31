@@ -16,8 +16,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * net.thedragonteam.armorplus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:39 PM.
+ * net.thedragonteam.armorplus.compat.jei.advarmorforge
+ * ArmorPlus created by sokratis12GR on 8/31/2016 11:39 PM.
  * - TheDragonTeam
  */
 class AdvArmorForgeRecipeJEI extends BlankRecipeWrapper {

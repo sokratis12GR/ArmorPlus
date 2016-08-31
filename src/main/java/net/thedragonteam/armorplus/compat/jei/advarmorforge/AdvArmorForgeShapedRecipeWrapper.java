@@ -15,8 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * net.thedragonteam.armorplus.compat.jei.armorforge
- * ArmorPlus created by sokratis12GR on 6/22/2016 6:16 PM.
+ * net.thedragonteam.armorplus.compat.jei.advarmorforge
+ * ArmorPlus created by sokratis12GR on 8/31/2016 6:16 PM.
  * - TheDragonTeam
  */
 class AdvArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements IShapedCraftingRecipeWrapper {

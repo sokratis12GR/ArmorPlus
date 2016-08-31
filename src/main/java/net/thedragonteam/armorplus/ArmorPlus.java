@@ -15,10 +15,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -64,7 +61,7 @@ public class ArmorPlus {
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
     public static final int MINOR = 5;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -113,6 +110,10 @@ public class ArmorPlus {
 
     public static File getloggerDir() {
         return textureDir;
+    }
+
+    public static String getVERSION() {
+        return VERSION;
     }
 
     @SideOnly(Side.CLIENT)
@@ -238,6 +239,11 @@ public class ArmorPlus {
         proxy.registerModels();
         proxy.postInit(event);
 
+    }
+
+    @EventHandler
+    public void modMapping(FMLModIdMappingEvent event) {
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.MAPPING);
     }
 
     @EventHandler

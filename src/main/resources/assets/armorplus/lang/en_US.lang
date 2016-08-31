@@ -7,9 +7,9 @@ itemGroup.armorplus.blocks=ARP Blocks
 itemGroup.armorplus.weapons=ARP Weapons
 
 #Containers
-container.armor_forge=Armor Forge
-container.advanced_armor_forge=Advanced Armor Forge
-container.inventory=Inventory
+container.armorplus.armor_forge=Armor Forge
+container.armorplus.advanced_armor_forge=Advanced Armor Forge
+container.armorplus.inventory=Inventory
 
 #Commands
 commands.error.arg.invalid=Invalid arguments
@@ -34,8 +34,8 @@ commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #JEI
-gui.jei.category.armorforge=Armor Forge
-gui.jei.category.advarmorforge=Advanced Armor Forge
+gui.jei.category.armor_forge=Armor Forge
+gui.jei.category.adv_armor_forge=Advanced Armor Forge
 
 #BOOKS
 item.armorplus.armorplus_book.name=ArmorPlus Book
