@@ -82,7 +82,7 @@ public class ARPChunkGenerator implements IChunkGenerator {
         int i = x * 16;
         int j = z * 16;
         BlockPos blockpos = new BlockPos(i, 0, j);
-        Biome biome = this.worldObj.getBiomeGenForCoords(blockpos.add(16, 0, 16));
+        Biome biome = this.worldObj.getBiome(blockpos.add(16, 0, 16));
 
         // Add biome decorations (like flowers, grass, trees, ...)
         biome.decorate(this.worldObj, this.random, blockpos);

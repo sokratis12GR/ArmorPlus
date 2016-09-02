@@ -73,10 +73,45 @@ task apiJar(type: Jar) {
     classifier = 'api'
 }
 
+task devJar(type: Jar) {
+    classifier = "dev"
+    from sourceSets.main.output
+}
+
 artifacts {
     archives sourcesJar
     archives apiJar
+	archives devJar
 }
+
+/**publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            artifact apiJar {
+                classifier "api"
+            }
+            artifact devJar {
+                classifier "dev"
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username secret.username
+                password secret.password
+            }
+            url secret.url
+        }
+    }
+}*/
 
 processResources {
     inputs.property "version", project.version

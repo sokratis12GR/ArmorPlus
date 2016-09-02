@@ -12,6 +12,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -51,30 +52,25 @@ public class LavaBoots extends ItemArmor {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
-        int lavaArmorEffectlevel = ARPConfig.lavaArmorEffectlevel + 1;
         if (ARPConfig.enableLavaBEffects) {
-            infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+            infoList.add("\2479Ability: " + "\247rFire Resistance");
             infoList.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullLavaArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rResistance " + lavaArmorEffectlevel + " And Fire Resistance");
+            infoList.add("\2479Ability: " + "\247rFire Resistance");
             infoList.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-        ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-        ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-        ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-
         if (ARPConfig.enableLavaBEffects && entity instanceof EntityLivingBase && !ARPConfig.enableFullLavaArmorEffect) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.lavaArmorEffectlevel, true, true));
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
         }
-        if (head != null && head.getItem() == ModItems.LAVA_HELMET && chest != null && chest.getItem() == ModItems.LAVA_CHESTPLATE && legs != null && legs.getItem() == ModItems.LAVA_LEGGINGS && feet != null && feet.getItem() == ModItems.LAVA_BOOTS) {
-            entity.extinguish();
+        if (entity.isInWater()) {
+            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+            itemStack.damageItem(1, entity);
+            entity.attackEntityFrom(DamageSource.drown, 1F);
         }
     }
 

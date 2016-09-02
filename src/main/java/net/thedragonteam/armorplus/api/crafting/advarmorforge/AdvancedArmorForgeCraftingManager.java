@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -43,19 +42,10 @@ public class AdvancedArmorForgeCraftingManager {
 
         // ===================================== Set Variables =====================================
 
-        /* NBT-Tag-Compound */
-        NBTTagCompound nbttagc = new NBTTagCompound();
-        nbttagc.setInteger("theoneprobe", 1);
-
-        /* Set Helmets' NBT-Tags */
         ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
-        ENDER_DRAGON_HELMET.setTagCompound(nbttagc);
         ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
-        GUARDIAN_HELMET.setTagCompound(nbttagc);
         ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
-        SUPER_STAR_HELMET.setTagCompound(nbttagc);
         ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
-        THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
 
         /* Sets The Ultimate Armor Unbreakable */
         Utils.setUnbreakable(THE_ULTIMATE_HELMET);

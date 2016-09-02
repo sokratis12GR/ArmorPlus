@@ -6,7 +6,9 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -24,6 +26,86 @@ public class ModRecipes {
         addShapelessRecipes();
         addEasyWeaponsRecipes();
         addExpertWeaponsRecipes();
+        addIntegrationShapelessRecipes();
+    }
+
+    public static void addIntegrationShapelessRecipes() {
+        /* NBT-Tag-Compound */
+        NBTTagCompound nbttagc = new NBTTagCompound();
+        nbttagc.setInteger("theoneprobe", 1);
+
+        /* Set Helmets' NBT-Tags */
+        ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
+        COAL_HELMET.setTagCompound(nbttagc);
+        ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
+        EMERALD_HELMET.setTagCompound(nbttagc);
+        ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
+        LAPIS_HELMET.setTagCompound(nbttagc);
+        ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
+        LAVA_HELMET.setTagCompound(nbttagc);
+        ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
+        OBSIDIAN_HELMET.setTagCompound(nbttagc);
+        ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
+        REDSTONE_HELMET.setTagCompound(nbttagc);
+        ItemStack RC_HELMET = new ItemStack(ModItems.RC_HELMET, 1);
+        RC_HELMET.setTagCompound(nbttagc);
+        ItemStack RD_HELMET = new ItemStack(ModItems.RD_HELMET, 1);
+        RD_HELMET.setTagCompound(nbttagc);
+        ItemStack RG_HELMET = new ItemStack(ModItems.RG_HELMET, 1);
+        RG_HELMET.setTagCompound(nbttagc);
+        ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
+        RI_HELMET.setTagCompound(nbttagc);
+        ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
+        CHICKEN_HELMET.setTagCompound(nbttagc);
+        ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
+        SLIME_HELMET.setTagCompound(nbttagc);
+        ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
+        ARDITE_HELMET.setTagCompound(nbttagc);
+        ItemStack COBALT_HELMET = new ItemStack(ModItems.COBALT_HELMET, 1);
+        COBALT_HELMET.setTagCompound(nbttagc);
+        ItemStack MANYULLYN_HELMET = new ItemStack(ModItems.MANYULLYN_HELMET, 1);
+        MANYULLYN_HELMET.setTagCompound(nbttagc);
+        ItemStack PIG_IRON_HELMET = new ItemStack(ModItems.PIG_IRON_HELMET, 1);
+        PIG_IRON_HELMET.setTagCompound(nbttagc);
+        ItemStack KNIGHT_SLIME_HELMET = new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1);
+        KNIGHT_SLIME_HELMET.setTagCompound(nbttagc);
+        ItemStack STEEL_HELMET = new ItemStack(ModItems.STEEL_HELMET, 1);
+        STEEL_HELMET.setTagCompound(nbttagc);
+        ItemStack ELECTRICAL_HELMET = new ItemStack(ModItems.ELECTRICAL_HELMET, 1);
+        ELECTRICAL_HELMET.setTagCompound(nbttagc);
+        ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
+        ENDER_DRAGON_HELMET.setTagCompound(nbttagc);
+        ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
+        GUARDIAN_HELMET.setTagCompound(nbttagc);
+        ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
+        SUPER_STAR_HELMET.setTagCompound(nbttagc);
+        ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
+        THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
+
+        GameRegistry.addShapelessRecipe(ENDER_DRAGON_HELMET, ModItems.ENDER_DRAGON_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(GUARDIAN_HELMET, ModItems.GUARDIAN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(SUPER_STAR_HELMET, ModItems.SUPER_STAR_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(THE_ULTIMATE_HELMET, ModItems.THE_ULTIMATE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(COAL_HELMET, ModItems.COAL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(EMERALD_HELMET, ModItems.EMERALD_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(LAPIS_HELMET, ModItems.LAPIS_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(LAVA_HELMET, ModItems.LAVA_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(OBSIDIAN_HELMET, ModItems.OBSIDIAN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(REDSTONE_HELMET, ModItems.REDSTONE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(RC_HELMET, ModItems.RC_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(RD_HELMET, ModItems.RD_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(RG_HELMET, ModItems.RG_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(RI_HELMET, ModItems.RI_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(CHICKEN_HELMET, ModItems.CHICKEN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(SLIME_HELMET, ModItems.SLIME_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(ARDITE_HELMET, ModItems.ARDITE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(COBALT_HELMET, ModItems.COBALT_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(MANYULLYN_HELMET, ModItems.MANYULLYN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(PIG_IRON_HELMET, ModItems.PIG_IRON_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(KNIGHT_SLIME_HELMET, ModItems.KNIGHT_SLIME_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(STEEL_HELMET, ModItems.STEEL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(ELECTRICAL_HELMET, ModItems.ELECTRICAL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+
     }
 
     public static void addShapedRecipes() {

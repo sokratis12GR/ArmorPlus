@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -41,49 +40,25 @@ public class ArmorForgeCraftingManager {
 
         // ===================================== Set Variables =====================================
 
-        /* NBT-Tag-Compound */
-        NBTTagCompound nbttagc = new NBTTagCompound();
-        nbttagc.setInteger("theoneprobe", 1);
-
-        /* Set Helmets' NBT-Tags */
         ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
-        COAL_HELMET.setTagCompound(nbttagc);
         ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
-        EMERALD_HELMET.setTagCompound(nbttagc);
         ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
-        LAPIS_HELMET.setTagCompound(nbttagc);
         ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
-        LAVA_HELMET.setTagCompound(nbttagc);
         ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
-        OBSIDIAN_HELMET.setTagCompound(nbttagc);
         ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
-        REDSTONE_HELMET.setTagCompound(nbttagc);
         ItemStack RC_HELMET = new ItemStack(ModItems.RC_HELMET, 1);
-        RC_HELMET.setTagCompound(nbttagc);
         ItemStack RD_HELMET = new ItemStack(ModItems.RD_HELMET, 1);
-        RD_HELMET.setTagCompound(nbttagc);
         ItemStack RG_HELMET = new ItemStack(ModItems.RG_HELMET, 1);
-        RG_HELMET.setTagCompound(nbttagc);
         ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
-        RI_HELMET.setTagCompound(nbttagc);
         ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
-        CHICKEN_HELMET.setTagCompound(nbttagc);
         ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
-        SLIME_HELMET.setTagCompound(nbttagc);
         ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
-        ARDITE_HELMET.setTagCompound(nbttagc);
         ItemStack COBALT_HELMET = new ItemStack(ModItems.COBALT_HELMET, 1);
-        COBALT_HELMET.setTagCompound(nbttagc);
         ItemStack MANYULLYN_HELMET = new ItemStack(ModItems.MANYULLYN_HELMET, 1);
-        MANYULLYN_HELMET.setTagCompound(nbttagc);
         ItemStack PIG_IRON_HELMET = new ItemStack(ModItems.PIG_IRON_HELMET, 1);
-        PIG_IRON_HELMET.setTagCompound(nbttagc);
         ItemStack KNIGHT_SLIME_HELMET = new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1);
-        KNIGHT_SLIME_HELMET.setTagCompound(nbttagc);
         ItemStack STEEL_HELMET = new ItemStack(ModItems.STEEL_HELMET, 1);
-        STEEL_HELMET.setTagCompound(nbttagc);
         ItemStack ELECTRICAL_HELMET = new ItemStack(ModItems.ELECTRICAL_HELMET, 1);
-        ELECTRICAL_HELMET.setTagCompound(nbttagc);
         // ===================================== Origin Armors =====================================
         /* Coal Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCoalArmorRecipes) {
