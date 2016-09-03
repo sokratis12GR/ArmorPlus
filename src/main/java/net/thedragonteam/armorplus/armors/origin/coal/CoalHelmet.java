@@ -53,14 +53,14 @@ public class CoalHelmet extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         if (ARPConfig.enableCoalHNightVision) {
-            infoList.add("\2479Ability: " + "\247rNight Vision");
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rNight Vision");
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullCoalArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rNight Vision");
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rNight Vision");
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

@@ -53,15 +53,15 @@ public class RedstoneLeggings extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         int redstoneArmorEffectlevel = ARPConfig.redstoneArmorEffectlevel + 1;
         if (ARPConfig.enableRedstoneLSpeed) {
-            infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullRedstoneArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.entity.ARPEntities;
@@ -26,6 +27,8 @@ import net.thedragonteam.core.util.LogHelper;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
+import static net.thedragonteam.armorplus.ARPConfig.dimensionId;
+
 public class CommonProxy {
 
     private static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
@@ -33,6 +36,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         ARPEntities.init();
         ARPDimensions.init();
+        if (ARPConfig.isDebugMode())
+            LogHelper.info("ArmorPlus Dimension ID: " + dimensionId);
         LogHelper.info("Finished PreInitialization");
     }
 

@@ -17,6 +17,7 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,6 +32,7 @@ import net.thedragonteam.armorplus.entity.render.RenderCoalArrow;
 import net.thedragonteam.armorplus.entity.render.RenderLapisArrow;
 import net.thedragonteam.armorplus.entity.render.RenderLavaArrow;
 import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
+import net.thedragonteam.armorplus.misc.SpecialRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
@@ -52,6 +54,12 @@ public class ClientProxy extends CommonProxy {
 
         ARPEntities.initModels();
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        super.postInit(event);
+        new SpecialRenderInit();
     }
 
     @Override

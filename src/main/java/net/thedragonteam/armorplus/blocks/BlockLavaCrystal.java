@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 
@@ -20,11 +21,10 @@ import java.util.Random;
  */
 public class BlockLavaCrystal extends Block {
 
-    private Item drop;
+    private ItemStack drop = new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1);
 
     public BlockLavaCrystal() {
         super(Material.ROCK);
-        this.drop = ModItems.LAVA_CRYSTAL;
         setUnlocalizedName(ArmorPlus.MODID + "." + "block_lava_crystal");
         this.setResistance(2000.0F);
         this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
@@ -33,8 +33,12 @@ public class BlockLavaCrystal extends Block {
         this.setLightLevel(0.8F);
     }
 
+    public ItemStack getDrop() {
+        return drop;
+    }
+
     @Override
     public Item getItemDropped(IBlockState blockstate, Random random, int fortune) {
-        return this.drop;
+        return this.drop.getItem();
     }
 }

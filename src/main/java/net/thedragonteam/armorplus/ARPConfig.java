@@ -12,6 +12,7 @@ import net.thedragonteam.core.config.ModConfigProperty;
  * - TheDragonTeam
  */
 public class ARPConfig {
+
     //EnderDragonZombie
     @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
     public static boolean enableEnderDragonZombieSpawnEnd = true;
@@ -41,6 +42,10 @@ public class ARPConfig {
     //Debug
     @ModConfigProperty(category = "Debug", name = "debugMode", comment = "Enable/Disable Debug Mode")
     public static boolean debugMode = false;
+
+    public static boolean isDebugMode() {
+        return debugMode;
+    }
 
     //Weapons
     @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable The ArmorPlus Sword's Recipes")
@@ -227,6 +232,9 @@ public class ARPConfig {
 
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherVeinAmount = 0;
+
+    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnChance", comment = "Set the spawn chance of the Castle Generation in the Overworld")
+    public static int castleGenSpawnChance = 10;
 
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")

@@ -53,15 +53,15 @@ public class ObsidianChestplate extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         int obsidianArmorEffectlevel = ARPConfig.obsidianArmorEffectlevel + 1;
         if (ARPConfig.enableObsidianHResistance) {
-            infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullObsidianArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

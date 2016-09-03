@@ -53,15 +53,15 @@ public class EmeraldLeggings extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
         if (ARPConfig.enableEmeraldLHaste) {
-            infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullEmeraldArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

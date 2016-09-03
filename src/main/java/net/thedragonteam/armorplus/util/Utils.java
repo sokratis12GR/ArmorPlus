@@ -4,9 +4,15 @@
 
 package net.thedragonteam.armorplus.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 
 import java.util.Set;
@@ -34,6 +40,21 @@ public class Utils {
             } catch (Exception e) {
                 // No-op
             }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void renderItemInWorld(ItemStack stack) {
+        if (stack != null && stack.getItem() != null) {
+            GlStateManager.pushMatrix();
+            GlStateManager.disableLighting();
+            GlStateManager.pushAttrib();
+            RenderHelper.enableStandardItemLighting();
+            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.popAttrib();
+            GlStateManager.enableLighting();
+            GlStateManager.popMatrix();
         }
     }
 

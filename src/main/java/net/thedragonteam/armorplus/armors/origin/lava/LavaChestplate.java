@@ -51,14 +51,14 @@ public class LavaChestplate extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         if (ARPConfig.enableLavaCEffects) {
-            infoList.add("\2479Ability: " + "\247rFire Resistance");
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rFire Resistance");
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullLavaArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rFire Resistance");
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rFire Resistance");
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

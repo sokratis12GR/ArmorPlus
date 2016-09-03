@@ -192,7 +192,8 @@ item.armorplus.dev_tool.name=Dev Tool
 #Items
 item.armorplus.chainmail.name=Chainmail
 item.armorplus.reinforcing_material.name=Reinforcing Material
-item.armorplus.lava_crystal.name=Lava Crystal
+item.armorplus.lava_crystal_normal.name=Lava Crystal
+item.armorplus.lava_crystal_charged.name=Charged Lava Crystal
 item.armorplus.steel_ingot.name=Steel Ingot
 item.armorplus.electrical_ingot.name=Electrical Ingot
 
