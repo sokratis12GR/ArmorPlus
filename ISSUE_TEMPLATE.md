@@ -14,4 +14,4 @@
 
 **How can I reproduce it?**:
 
-**(Optional) Mod List**:
+**(Optional) ModPack**:
