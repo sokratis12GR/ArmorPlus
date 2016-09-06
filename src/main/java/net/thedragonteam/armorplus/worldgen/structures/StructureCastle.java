@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.worldgen.structures;
 
 import net.minecraft.block.Block;
@@ -13,7 +17,7 @@ import net.thedragonteam.core.util.LogHelper;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.debugMode;
+import static net.thedragonteam.armorplus.ARPConfig.isDebugMode;
 
 public class StructureCastle extends WorldGenerator {
     /**
@@ -69,10 +73,8 @@ public class StructureCastle extends WorldGenerator {
 
     private final int[][] lavaPos = new int[][]
             {
-                    // floor lava (9 x 9) without (7 x 7)
-
                     // Corner
-                    {-1, -1, -1}, {-1, -1, -2}, {-2, -1, -1}, {-2, -1, -2},
+                    {-1, -1, -1}, {-1, -1, -2}, {-2, -1, -1},
 
                     // {-1, -1, X}, {-2, -1, X} = Negative X
                     // {7, -1, X}, {8, -1, X} = Positive X
@@ -84,7 +86,7 @@ public class StructureCastle extends WorldGenerator {
                     {-1, -1, 5}, {-2, -1, 5}, {7, -1, 5}, {8, -1, 5},
                     {-1, -1, 6}, {-2, -1, 6}, {7, -1, 6}, {8, -1, 6},
                     {-1, -1, 7}, {-2, -1, 7}, {7, -1, 7}, {8, -1, 7},
-                    {-1, -1, 8}, {-2, -1, 8}, {7, -1, 8}, {8, -1, 8},
+                    {-1, -1, 8},
 
                     // {0, -1, -1}, {0, -1, -2} = Negative X
                     // {0, -1, 7}, {0, -1, 8} = Positive X
@@ -96,8 +98,73 @@ public class StructureCastle extends WorldGenerator {
                     {5, -1, -1}, {5, -1, -2}, {5, -1, 7}, {5, -1, 8},
                     {6, -1, -1}, {6, -1, -2}, {6, -1, 7}, {6, -1, 8},
                     {7, -1, -1}, {7, -1, -2}, {7, -1, 7}, {7, -1, 8},
-                    {8, -1, -1}, {8, -1, -2}, {8, -1, 7}, {8, -1, 8},
+                    {8, -1, -1},
             };
+    private final int[][] stonePos = new int[][]
+            {
+                    // Corner
+                    {-1, -2, -1}, {-1, -2, -2}, {-2, -2, -1},
+
+                    // {-1, -1, X}, {-2, -1, X} = Negative X
+                    // {7, -1, X}, {8, -1, X} = Positive X
+                    {-1, -2, 0}, {-2, -2, 0}, {7, -2, 0}, {8, -2, 0},
+                    {-1, -2, 1}, {-2, -2, 1}, {7, -2, 1}, {8, -2, 1},
+                    {-1, -2, 2}, {-2, -2, 2}, {7, -2, 2}, {8, -2, 2},
+                    {-1, -2, 3}, {-2, -2, 3}, {7, -2, 3}, {8, -2, 3},
+                    {-1, -2, 4}, {-2, -2, 4}, {7, -2, 4}, {8, -2, 4},
+                    {-1, -2, 5}, {-2, -2, 5}, {7, -2, 5}, {8, -2, 5},
+                    {-1, -2, 6}, {-2, -2, 6}, {7, -2, 6}, {8, -2, 6},
+                    {-1, -2, 7}, {-2, -2, 7}, {7, -2, 7}, {8, -2, 7},
+                    {-1, -2, 8},
+
+                    // {0, -1, -1}, {0, -1, -2} = Negative X
+                    // {0, -1, 7}, {0, -1, 8} = Positive X
+                    {0, -2, -1}, {0, -2, -2}, {0, -2, 7}, {0, -2, 8},
+                    {1, -2, -1}, {1, -2, -2}, {1, -2, 7}, {1, -2, 8},
+                    {2, -2, -1}, {2, -2, -2}, {2, -2, 7}, {2, -2, 8},
+                    {3, -2, -1}, {3, -2, -2}, {3, -2, 7}, {3, -2, 8},
+                    {4, -2, -1}, {4, -2, -2}, {4, -2, 7}, {4, -2, 8},
+                    {5, -2, -1}, {5, -2, -2}, {5, -2, 7}, {5, -2, 8},
+                    {6, -2, -1}, {6, -2, -2}, {6, -2, 7}, {6, -2, 8},
+                    {7, -2, -1}, {7, -2, -2}, {7, -2, 7}, {7, -2, 8},
+                    {8, -2, -1},
+
+                    // Corner
+                    {-2, -1, -2}, {-3, -1, -2}, {-2, -1, -3},
+                    {8, -1, -2}, {9, -1, -2}, {8, -1, -3},
+                    {-2, -1, 8}, {-3, -1, 8}, {-2, -1, 9},
+                    {8, -1, 8}, {8, -1, 9}, {9, -1, 8},
+
+                    // Sides
+                    //// Front
+                    {-1, -1, -3}, {0, -1, -3}, {1, -1, -3}, {2, -1, -3}, {3, -1, -3}, {4, -1, -3}, {5, -1, -3}, {6, -1, -3}, {7, -1, -3},
+                    //// Right
+                    {-3, -1, -1}, {-3, -1, 0}, {-3, -1, 1}, {-3, -1, 2}, {-3, -1, 3}, {-3, -1, 4}, {-3, -1, 5}, {-3, -1, 6}, {-3, -1, 7},
+                    //// Left
+                    {9, -1, -1}, {9, -1, 0}, {9, -1, 1}, {9, -1, 2}, {9, -1, 3}, {9, -1, 4}, {9, -1, 5}, {9, -1, 6}, {9, -1, 7},
+                    //// Back
+                    {-1, -1, 9}, {0, -1, 9}, {1, -1, 9}, {2, -1, 9}, {3, -1, 9}, {4, -1, 9}, {5, -1, 9}, {6, -1, 9}, {7, -1, 9},
+            };
+
+    private final int[][] stoneFencePos = new int[][]
+            {
+                    // Corner
+                    {-2, 0, -2}, {-3, 0, -2}, {-2, 0, -3},
+                    {8, 0, -2}, {9, 0, -2}, {8, 0, -3},
+                    {-2, 0, 8}, {-3, 0, 8}, {-2, 0, 9},
+                    {8, 0, 8}, {8, 0, 9}, {9, 0, 8},
+
+                    // Sides
+                    //// Front
+                    {-1, 0, -3}, {0, 0, -3}, {1, 0, -3}, {2, 0, -3}, {3, 0, -3}, {4, 0, -3}, {5, 0, -3}, {6, 0, -3}, {7, 0, -3},
+                    //// Right
+                    {-3, 0, -1}, {-3, 0, 0}, {-3, 0, 1}, {-3, 0, 2}, {-3, 0, 3}, {-3, 0, 4}, {-3, 0, 5}, {-3, 0, 6}, {-3, 0, 7},
+                    //// Left
+                    {9, 0, -1}, {9, 0, 0}, {9, 0, 1}, {9, 0, 2}, {9, 0, 3}, {9, 0, 4}, {9, 0, 5}, {9, 0, 6}, {9, 0, 7},
+                    //// Back
+                    {-1, 0, 9}, {0, 0, 9}, {1, 0, 9}, {2, 0, 9}, {3, 0, 9}, {4, 0, 9}, {5, 0, 9}, {6, 0, 9}, {7, 0, 9},
+            };
+
 
     @Override
     public boolean generate(World worldIn, Random rand, BlockPos corner) {
@@ -110,11 +177,15 @@ public class StructureCastle extends WorldGenerator {
             IBlockState chest = Blocks.CHEST.getDefaultState();
             IBlockState glowstone = Blocks.GLOWSTONE.getDefaultState();
             IBlockState lava = Blocks.LAVA.getDefaultState();
+            IBlockState stone = Blocks.STONEBRICK.getDefaultState();
+            IBlockState stoneFence = Blocks.COBBLESTONE_WALL.getDefaultState();
 
             // build the layers using the arrays
             buildLayer(worldIn, corner, stoneBrickTowerPos, stoneBrickTower);
             buildLayer(worldIn, corner, stoneBrickPos, stoneBrick);
             buildLayer(worldIn, corner, lavaPos, lava);
+            buildLayer(worldIn, corner, stonePos, stone);
+            buildLayer(worldIn, corner, stoneFencePos, stoneFence);
 
             // place the other features LAST
             placeBlock(worldIn, corner, doorBottomPos, doorLower);
@@ -125,11 +196,11 @@ public class StructureCastle extends WorldGenerator {
             placeBlock(worldIn, corner, chestPos, chest);
 
             // debug:
-            if (debugMode) {
+            if (isDebugMode()) {
                 LogHelper.info("Built a castle starting at " + corner + "!");
             }
             return true;
-        } else if (debugMode) {
+        } else if (isDebugMode()) {
             LogHelper.info("Sorry, can't spawn a castle at " + corner);
         }
         return false;

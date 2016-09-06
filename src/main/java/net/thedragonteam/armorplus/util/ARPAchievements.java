@@ -29,7 +29,6 @@ public class ARPAchievements {
             CRAFT_ENDER_DRAGON_ARMOR,
             CRAFT_GUARDIAN_ARMOR,
             CRAFT_THE_ULTIMATE_ARMOR,
-            CRAFT_REINFORCED_ARMOR,
             CRAFT_SLIME_ARMOR,
             CRAFT_CHICKEN_ARMOR,
             CRAFT_COBALT_ARMOR,
@@ -49,7 +48,6 @@ public class ARPAchievements {
         CRAFT_GUARDIAN_ARMOR = new AchievementARP("craft_guardian_armor", -2, 4, ModItems.GUARDIAN_HELMET, CRAFT_LAPIS_ARMOR).setNormalCrafting();
         CRAFT_REDSTONE_ARMOR = new AchievementARP("craft_redstone_armor", 0, -4, ModItems.REDSTONE_BOOTS, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_EMERALD_ARMOR = new AchievementARP("craft_emerald_armor", 0, -6, ModItems.EMERALD_CHESTPLATE, CRAFT_REDSTONE_ARMOR).setNormalCrafting();
-        CRAFT_REINFORCED_ARMOR = new AchievementARP("craft_reinforced_armor", 2, -2, ModItems.RD_CHESTPLATE, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_OBSIDIAN_ARMOR = new AchievementARP("craft_obsidian_armor", 4, 0, ModItems.OBSIDIAN_CHESTPLATE, CRAFT_COAL_ARMOR).setNormalCrafting();
         CRAFT_LAVA_ARMOR = new AchievementARP("craft_lava_armor", 6, 0, ModItems.LAVA_CHESTPLATE, CRAFT_OBSIDIAN_ARMOR).setNormalCrafting();
         CRAFT_SUPER_STAR_ARMOR = new AchievementARP("craft_super_star_armor", 8, 0, ModItems.SUPER_STAR_CHESTPLATE, CRAFT_LAVA_ARMOR).setNormalCrafting();

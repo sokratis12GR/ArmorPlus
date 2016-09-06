@@ -12,6 +12,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
  * - TheDragonTeam
  */
 public class Constants {
+
     public static class Compat {
         public static final String JEI_CATEGORY_ARMOR_FORGE = ArmorPlus.MODID + ":armor_forge";
         public static final String JEI_CATEGORY_ADVANCED_ARMOR_FORGE = ArmorPlus.MODID + ":adv_armor_forge";

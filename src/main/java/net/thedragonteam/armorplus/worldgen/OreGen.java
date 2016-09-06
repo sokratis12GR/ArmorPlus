@@ -67,9 +67,8 @@ public class OreGen implements IWorldGenerator {
     private void generateOverworldStructures(World world, Random rand, int blockX, int blockZ) {
 
         WorldGenerator genCabin = new StructureCastle();
-        // 25% of chunks can have a cabin
-        final int CASTLE_CHANCE = 25;
-        if (rand.nextInt(100) < CASTLE_CHANCE) {
+        // 4% of chunks can have a castle
+        if (rand.nextInt(100) < castleGenSpawnChance) {
             // get a random position in the chunk
             int randX = blockX + rand.nextInt(16);
             int randZ = blockZ + rand.nextInt(16);
@@ -89,7 +88,7 @@ public class OreGen implements IWorldGenerator {
         while (!foundGround && y-- >= 0) {
             Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
             // "ground" for our bush is grass or dirt
-            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS;
+            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS || blockAt != Blocks.AIR;
         }
 
         return y;

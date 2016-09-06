@@ -1,4 +1,16 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArmorPlus 1.10.2-6.0.7.0
+{Features Added}
+* World Gen Castles [WIP]
+* If not the full set of the Ultimate Armor is equipped the player can't move
+* Improved White Stone Brick blocks to work better with BlockStates
+* Lava Crystal Sub Items
+** Lva Crystal and Charged Lava Crystal
+{Features Changed}
+* Chnaged the recipe of the Armor Forge now uses Lapis Lazuli instead of lapis blocks
+{Features Removed}
+* All the 4 Reinforced Sets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ArmorPlus 1.10.2-6.0.6.0
 {Features Changed}
 * Lava Armor no longer have the resistance effect.

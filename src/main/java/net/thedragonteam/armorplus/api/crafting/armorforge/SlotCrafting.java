@@ -117,12 +117,6 @@ public class SlotCrafting extends Slot {
         /**Its time to go Faster! - Achievement Trigger*/
         if (stack.getItem() == ModItems.CHICKEN_HELMET || stack.getItem() == ModItems.CHICKEN_CHESTPLATE || stack.getItem() == ModItems.CHICKEN_LEGGINGS || stack.getItem() == ModItems.CHICKEN_BOOTS)
             this.thePlayer.addStat(ARPAchievements.CRAFT_CHICKEN_ARMOR, 1);
-        /** Reinforcing Armors! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.RC_HELMET || stack.getItem() == ModItems.RC_CHESTPLATE || stack.getItem() == ModItems.RC_LEGGINGS || stack.getItem() == ModItems.RC_BOOTS
-                || stack.getItem() == ModItems.RD_HELMET || stack.getItem() == ModItems.RD_CHESTPLATE || stack.getItem() == ModItems.RD_LEGGINGS || stack.getItem() == ModItems.RD_BOOTS
-                || stack.getItem() == ModItems.RG_HELMET || stack.getItem() == ModItems.RG_CHESTPLATE || stack.getItem() == ModItems.RG_LEGGINGS || stack.getItem() == ModItems.RG_BOOTS
-                || stack.getItem() == ModItems.RG_HELMET || stack.getItem() == ModItems.RI_CHESTPLATE || stack.getItem() == ModItems.RI_LEGGINGS || stack.getItem() == ModItems.RI_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_REINFORCED_ARMOR, 1);
 
         /** Tinkers' Armors*/
         /**The Tinkers' Armors! - Achievement Trigger*/

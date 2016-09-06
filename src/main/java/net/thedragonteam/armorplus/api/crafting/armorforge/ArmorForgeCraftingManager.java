@@ -46,10 +46,6 @@ public class ArmorForgeCraftingManager {
         ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
         ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
         ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
-        ItemStack RC_HELMET = new ItemStack(ModItems.RC_HELMET, 1);
-        ItemStack RD_HELMET = new ItemStack(ModItems.RD_HELMET, 1);
-        ItemStack RG_HELMET = new ItemStack(ModItems.RG_HELMET, 1);
-        ItemStack RI_HELMET = new ItemStack(ModItems.RI_HELMET, 1);
         ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
         ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
         ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
@@ -138,20 +134,20 @@ public class ArmorForgeCraftingManager {
                     Items.LAVA_BUCKET);
         }
         if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
-            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
         }
         if (ARPConfig.recipes == 1 && ARPConfig.enableLavaArmorRecipes && !ARPConfig.enableOldLavaArmorRecipes) {
-            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', ModItems.LAVA_CRYSTAL);
-            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', ModItems.LAVA_CRYSTAL);
+            this.addRecipe(LAVA_HELMET, "XXX", "CCC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(LAVA_HELMET, "CCC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_CHESTPLATE, 1), "CXC", "CCC", "CCC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_LEGGINGS, 1), "CCC", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "XXX", "CXC", "CXC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+            this.addRecipe(new ItemStack(ModItems.LAVA_BOOTS, 1), "CXC", "CXC", "XXX", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
         }
         /* Obsidian Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableObsidianArmorRecipes) {
@@ -186,43 +182,6 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.REDSTONE_LEGGINGS, 1), "RRR", "RXR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "XXX", "RXR", "RXR", 'R', Blocks.REDSTONE_BLOCK);
             this.addRecipe(new ItemStack(ModItems.REDSTONE_BOOTS, 1), "RXR", "RXR", "XXX", 'R', Blocks.REDSTONE_BLOCK);
-        }
-        // ===================================== Reinforced Armors =====================================
-        /*  Reinforced Chain Armor */
-        if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(RC_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
-            this.addRecipe(RC_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_HELMET);
-            this.addRecipe(new ItemStack(ModItems.RC_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_CHESTPLATE);
-            this.addRecipe(new ItemStack(ModItems.RC_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_LEGGINGS);
-            this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
-            this.addRecipe(new ItemStack(ModItems.RC_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.CHAINMAIL_BOOTS);
-        }
-        /*  Reinforced Diamond Armor */
-        if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(RD_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
-            this.addRecipe(RD_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_HELMET);
-            this.addRecipe(new ItemStack(ModItems.RD_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_CHESTPLATE);
-            this.addRecipe(new ItemStack(ModItems.RD_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_LEGGINGS);
-            this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
-            this.addRecipe(new ItemStack(ModItems.RD_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.DIAMOND_BOOTS);
-        }
-        /*  Reinforced Golden Armor */
-        if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(RG_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
-            this.addRecipe(RG_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_HELMET);
-            this.addRecipe(new ItemStack(ModItems.RG_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_CHESTPLATE);
-            this.addRecipe(new ItemStack(ModItems.RG_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_LEGGINGS);
-            this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
-            this.addRecipe(new ItemStack(ModItems.RG_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.GOLDEN_BOOTS);
-        }
-        /*  Reinforced Iron Armor */
-        if (ARPConfig.enableReinforcedArmorsRecipes) {
-            this.addRecipe(RI_HELMET, "XXX", "RRR", "RIR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
-            this.addRecipe(RI_HELMET, "RRR", "RIR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_HELMET);
-            this.addRecipe(new ItemStack(ModItems.RI_CHESTPLATE, 1), "RIR", "RRR", "RRR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_CHESTPLATE);
-            this.addRecipe(new ItemStack(ModItems.RI_LEGGINGS, 1), "RRR", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_LEGGINGS);
-            this.addRecipe(new ItemStack(ModItems.RI_BOOTS, 1), "XXX", "RIR", "RXR", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
-            this.addRecipe(new ItemStack(ModItems.RI_BOOTS, 1), "RIR", "RXR", "XXX", 'R', ModItems.REINFORCING_MATERIAL, 'I', Items.IRON_BOOTS);
         }
         // ===================================== Special Mob Armors =====================================
         /* Chicken Armor */
@@ -393,8 +352,7 @@ public class ArmorForgeCraftingManager {
         }
 
         // ===================================== Items =====================================
-        this.addRecipe(new ItemStack(ModItems.REINFORCING_MATERIAL, 4), "XSX", "SBS", "XSX", 'S', Items.STRING, 'B', Items.SLIME_BALL);
-        this.addRecipe(new ItemStack(ModItems.THE_GIFT_OF_THE_GODS, 1), "SOS", "OLO", "SOS", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.LAVA_CRYSTAL));
+        this.addRecipe(new ItemStack(ModItems.THE_GIFT_OF_THE_GODS, 1), "SOS", "OLO", "SOS", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
         //this.addRecipe(new ItemStack(Blocks.TNT, 1), new Object[]{"X#X", "#X#", "X#X", 'X', Items.GUNPOWDER, '#', Blocks.SAND});
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

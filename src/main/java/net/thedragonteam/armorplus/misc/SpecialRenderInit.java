@@ -1,4 +1,9 @@
+/*******************************************************************************
+ * Copyright (c) TheDragonTeam 2016.
+ ******************************************************************************/
+
 package net.thedragonteam.armorplus.misc;
+
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -13,43 +18,41 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class SpecialRenderInit{
+public class SpecialRenderInit {
 
     public static final HashMap<String, RenderSpecial> SPECIAL_LIST = new HashMap<String, RenderSpecial>();
 
-    public SpecialRenderInit(){
+    public SpecialRenderInit() {
         new ThreadSpecialFetcher();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    public static void parse(Properties properties){
-        for(String key : properties.stringPropertyNames()){
+    public static void parse(Properties properties) {
+        for (String key : properties.stringPropertyNames()) {
             String[] values = properties.getProperty(key).split("@");
-            if(values.length > 0){
+            if (values.length > 0) {
                 String itemName = values[0];
 
                 int meta;
-                try{
+                try {
                     meta = Integer.parseInt(values[1]);
-                }
-                catch(Exception e){
+                } catch (Exception e) {
                     meta = 0;
                 }
 
                 ItemStack stack = null;
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(itemName);
-                if(Item.REGISTRY.containsKey(resLoc)){
+                if (Item.REGISTRY.containsKey(resLoc)) {
                     stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
-                }
-                else{
-                    if(Block.REGISTRY.containsKey(resLoc)){
+                } else {
+                    if (Block.REGISTRY.containsKey(resLoc)) {
                         stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
                     }
                 }
 
                 //Add a new Special Renderer to the list
-                if(stack != null){
+                if (stack != null) {
                     SPECIAL_LIST.put(key, new RenderSpecial(stack));
                 }
             }
@@ -57,13 +60,13 @@ public class SpecialRenderInit{
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onPlayerRender(RenderPlayerEvent.Pre event){
-        if(!SPECIAL_LIST.isEmpty()){
-            for(Map.Entry<String, RenderSpecial> entry : SPECIAL_LIST.entrySet()){
+    public void onPlayerRender(RenderPlayerEvent.Pre event) {
+        if (!SPECIAL_LIST.isEmpty()) {
+            for (Map.Entry<String, RenderSpecial> entry : SPECIAL_LIST.entrySet()) {
                 //Does the player have one of the names from the list?
                 String playerName = event.getEntityPlayer().getName();
-                if(entry.getKey() != null && playerName != null){
-                    if(entry.getKey().equalsIgnoreCase(playerName)){
+                if (entry.getKey() != null && playerName != null) {
+                    if (entry.getKey().equalsIgnoreCase(playerName)) {
                         //Render the special Item/Block
                         entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
                         break;

@@ -87,7 +87,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET_MIDDLE, 1),
                     ModItems.ENDER_DRAGON_HELMET,
                     ModItems.ENDER_DRAGON_SCALE,
@@ -96,7 +96,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_HELMET_RIGHT, 1),
                     ModItems.GUARDIAN_HELMET,
                     ModItems.GUARDIAN_SCALE,
@@ -105,7 +105,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             //Chestplate Parts
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_LEFT, 1),
                     ModItems.SUPER_STAR_CHESTPLATE,
@@ -115,7 +115,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_MIDDLE, 1),
                     ModItems.ENDER_DRAGON_CHESTPLATE,
                     ModItems.ENDER_DRAGON_SCALE,
@@ -124,7 +124,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_CHESTPLATE_RIGHT, 1),
                     ModItems.GUARDIAN_CHESTPLATE,
                     ModItems.GUARDIAN_SCALE,
@@ -133,7 +133,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             //Leggings Parts
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_LEFT, 1),
                     ModItems.SUPER_STAR_LEGGINGS,
@@ -143,7 +143,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_MIDDLE, 1),
                     ModItems.ENDER_DRAGON_LEGGINGS,
                     ModItems.ENDER_DRAGON_SCALE,
@@ -152,7 +152,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_LEGGINGS_RIGHT, 1),
                     ModItems.GUARDIAN_LEGGINGS,
                     ModItems.GUARDIAN_SCALE,
@@ -161,7 +161,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             //Boots Parts
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_LEFT, 1),
                     ModItems.SUPER_STAR_BOOTS,
@@ -171,7 +171,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_MIDDLE, 1),
                     ModItems.ENDER_DRAGON_BOOTS,
                     ModItems.ENDER_DRAGON_SCALE,
@@ -180,7 +180,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
             this.addShapelessRecipe(new ItemStack(ModItems.THE_ULTIMATE_BOOTS_RIGHT, 1),
                     ModItems.GUARDIAN_BOOTS,
                     ModItems.GUARDIAN_SCALE,
@@ -189,7 +189,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
                     ModItems.THE_ULTIMATE_MATERIAL,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
         }
 
         /* Super Star Armor */
@@ -480,7 +480,7 @@ public class AdvancedArmorForgeCraftingManager {
                     ModItems.ENDER_DRAGON_SCALE,
                     ModItems.GUARDIAN_SCALE,
                     ModItems.WITHER_BONE,
-                    ModItems.LAVA_CRYSTAL);
+                    new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
         }
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {

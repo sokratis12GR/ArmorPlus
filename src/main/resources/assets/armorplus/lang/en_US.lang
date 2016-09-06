@@ -174,7 +174,7 @@ item.armorplus.slime_boots.name=Slime Boots
 item.armorplus.electrical_helmet.name=Electrical Helmet
 item.armorplus.electrical_chestplate.name=Electrical Chestplate
 item.armorplus.electrical_leggings.name=Electrical Leggings
-item.armorplus.ellectrical_boots.name=Electrical Boots
+item.armorplus.electrical_boots.name=Electrical Boots
 
 #SteelArmor
 item.armorplus.steel_helmet.name=Steel Helmet
@@ -188,6 +188,7 @@ item.armorplus.dev_chestplate.name=Dev Chestplate
 item.armorplus.dev_leggings.name=Dev Leggings
 item.armorplus.dev_boots.name=Dev Boots
 item.armorplus.dev_tool.name=Dev Tool
+item.armorplus.the_dragon_team.name=The Dragon Team
 
 #Items
 item.armorplus.chainmail.name=Chainmail
@@ -295,8 +296,6 @@ achievement.armorplus.craft_guardian_armor=Full of Thorns!
 achievement.armorplus.craft_guardian_armor.desc=craft a Guardian Armor Piece
 achievement.armorplus.craft_the_ultimate_armor=The Ultimate Power!
 achievement.armorplus.craft_the_ultimate_armor.desc=craft a The Ultimate Armor Piece
-achievement.armorplus.craft_reinforced_armor=Reinforcing Armors!
-achievement.armorplus.craft_reinforced_armor.desc=craft a Reinforced Armor Piece
 achievement.armorplus.craft_cobalt_armor=The Tinkers' Armors!
 achievement.armorplus.craft_cobalt_armor.desc=craft a Cobalt Armor Piece
 achievement.armorplus.craft_ardite_armor=The Stronger The Better!

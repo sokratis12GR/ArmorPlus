@@ -59,7 +59,7 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 6;
+    public static final int MINOR = 7;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
     public static final int PATCH = 0;
     // The ArmorPlus Version
@@ -152,7 +152,6 @@ public class ArmorPlus {
         registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
         registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
         registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-        registerOre("materialReinforcing", new ItemStack(ModItems.REINFORCING_MATERIAL, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
     }
@@ -196,7 +195,6 @@ public class ArmorPlus {
         registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
         registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
         registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-        registerOre("materialReinforcing", new ItemStack(ModItems.REINFORCING_MATERIAL, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
         proxy.init(event);

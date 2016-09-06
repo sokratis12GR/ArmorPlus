@@ -64,6 +64,10 @@ public class GlobalEventsArmorPlus {
 
         if (head != null && head.getItem() == ModItems.LAVA_HELMET && chest != null && chest.getItem() == ModItems.LAVA_CHESTPLATE && legs != null && legs.getItem() == ModItems.LAVA_LEGGINGS && feet != null && feet.getItem() == ModItems.LAVA_BOOTS) {
             entity.extinguish();
+            if (entity.isInLava()) {
+                entity.setAbsorptionAmount(4.0F);
+            } else
+                entity.setAbsorptionAmount(0.0F);
         }
 
         /*The Ultimate Armor Armor*/

@@ -40,22 +40,6 @@ import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneBoots;
 import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneChestplate;
 import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneHelmet;
 import net.thedragonteam.armorplus.armors.origin.redstone.RedstoneLeggings;
-import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCBoots;
-import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCChestplate;
-import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCHelmet;
-import net.thedragonteam.armorplus.armors.reinforced.rcarmor.RCLeggings;
-import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDBoots;
-import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDChestplate;
-import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDHelmet;
-import net.thedragonteam.armorplus.armors.reinforced.rdarmor.RDLeggings;
-import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGBoots;
-import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGChestplate;
-import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGHelmet;
-import net.thedragonteam.armorplus.armors.reinforced.rgarmor.RGLeggings;
-import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIBoots;
-import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIChestplate;
-import net.thedragonteam.armorplus.armors.reinforced.riarmor.RIHelmet;
-import net.thedragonteam.armorplus.armors.reinforced.riarmor.RILeggings;
 import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonBoots;
 import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonChestplate;
 import net.thedragonteam.armorplus.armors.special.enderdragon.EnderDragonHelmet;
@@ -119,6 +103,7 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
+import net.thedragonteam.armorplus.items.dev.TheDragonTeamItem;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
@@ -222,7 +207,6 @@ public class ModItems {
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
     public static Chainmail CHAINMAIL;
-    public static ReinforcingMaterial REINFORCING_MATERIAL;
     public static GuardianScale GUARDIAN_SCALE;
     public static WitherBone WITHER_BONE;
     public static EnderDragonScale ENDER_DRAGON_SCALE;
@@ -269,26 +253,6 @@ public class ModItems {
     public static RedstoneChestplate REDSTONE_CHESTPLATE;
     public static RedstoneLeggings REDSTONE_LEGGINGS;
     public static RedstoneBoots REDSTONE_BOOTS;
-
-    public static RCHelmet RC_HELMET;
-    public static RCChestplate RC_CHESTPLATE;
-    public static RCLeggings RC_LEGGINGS;
-    public static RCBoots RC_BOOTS;
-
-    public static RDHelmet RD_HELMET;
-    public static RDChestplate RD_CHESTPLATE;
-    public static RDLeggings RD_LEGGINGS;
-    public static RDBoots RD_BOOTS;
-
-    public static RGHelmet RG_HELMET;
-    public static RGChestplate RG_CHESTPLATE;
-    public static RGLeggings RG_LEGGINGS;
-    public static RGBoots RG_BOOTS;
-
-    public static RIHelmet RI_HELMET;
-    public static RIChestplate RI_CHESTPLATE;
-    public static RILeggings RI_LEGGINGS;
-    public static RIBoots RI_BOOTS;
 
     public static SteelHelmet STEEL_HELMET;
     public static SteelChestplate STEEL_CHESTPLATE;
@@ -399,6 +363,7 @@ public class ModItems {
     public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
 
     public static DevTool DEV_TOOL;
+    public static TheDragonTeamItem THE_DRAGON_TEAM_ITEM;
 
     public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
 
@@ -407,8 +372,9 @@ public class ModItems {
     }
 
     public static void init() {
+        THE_DRAGON_TEAM_ITEM = new TheDragonTeamItem();
+
         CHAINMAIL = new Chainmail();
-        REINFORCING_MATERIAL = new ReinforcingMaterial();
         GUARDIAN_SCALE = new GuardianScale();
         WITHER_BONE = new WitherBone();
         ENDER_DRAGON_SCALE = new EnderDragonScale();
@@ -455,26 +421,6 @@ public class ModItems {
         REDSTONE_CHESTPLATE = new RedstoneChestplate();
         REDSTONE_LEGGINGS = new RedstoneLeggings();
         REDSTONE_BOOTS = new RedstoneBoots();
-
-        RC_HELMET = new RCHelmet();
-        RC_CHESTPLATE = new RCChestplate();
-        RC_LEGGINGS = new RCLeggings();
-        RC_BOOTS = new RCBoots();
-
-        RD_HELMET = new RDHelmet();
-        RD_CHESTPLATE = new RDChestplate();
-        RD_LEGGINGS = new RDLeggings();
-        RD_BOOTS = new RDBoots();
-
-        RG_HELMET = new RGHelmet();
-        RG_CHESTPLATE = new RGChestplate();
-        RG_LEGGINGS = new RGLeggings();
-        RG_BOOTS = new RGBoots();
-
-        RI_HELMET = new RIHelmet();
-        RI_CHESTPLATE = new RIChestplate();
-        RI_LEGGINGS = new RILeggings();
-        RI_BOOTS = new RIBoots();
 
         STEEL_HELMET = new SteelHelmet();
         STEEL_CHESTPLATE = new SteelChestplate();
@@ -596,8 +542,9 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        THE_DRAGON_TEAM_ITEM.initModel();
+
         CHAINMAIL.initModel();
-        REINFORCING_MATERIAL.initModel();
         GUARDIAN_SCALE.initModel();
         WITHER_BONE.initModel();
         ENDER_DRAGON_SCALE.initModel();
@@ -644,26 +591,6 @@ public class ModItems {
         REDSTONE_CHESTPLATE.initModel();
         REDSTONE_LEGGINGS.initModel();
         REDSTONE_BOOTS.initModel();
-
-        RC_HELMET.initModel();
-        RC_CHESTPLATE.initModel();
-        RC_LEGGINGS.initModel();
-        RC_BOOTS.initModel();
-
-        RD_HELMET.initModel();
-        RD_CHESTPLATE.initModel();
-        RD_LEGGINGS.initModel();
-        RD_BOOTS.initModel();
-
-        RG_HELMET.initModel();
-        RG_CHESTPLATE.initModel();
-        RG_LEGGINGS.initModel();
-        RG_BOOTS.initModel();
-
-        RI_HELMET.initModel();
-        RI_CHESTPLATE.initModel();
-        RI_LEGGINGS.initModel();
-        RI_BOOTS.initModel();
 
         STEEL_HELMET.initModel();
         STEEL_CHESTPLATE.initModel();

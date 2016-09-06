@@ -53,10 +53,11 @@ public class LavaCrystal extends Item {
         return super.getShareTag();
     }
 
+
     @SideOnly(Side.CLIENT)
     public void initModel() {
-                ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_charged", "inventory"));
-                ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName() + "_normal", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_charged", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName() + "_normal", "inventory"));
     }
 
     @Override

@@ -89,6 +89,12 @@ public class TheUltimateChestplate extends ItemArmor {
                 entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+
+                entity.motionX = 0;
+                if (((EntityLivingBase) entity).onGround)
+                    entity.motionY = 0;
+                entity.motionZ = 0;
+                ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
             }
         }
     }
