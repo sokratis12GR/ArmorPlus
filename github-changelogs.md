@@ -6,7 +6,7 @@
 	* If not the full set of the Ultimate Armor is equipped the player can't move
 	* Improved White Stone Brick blocks to work better with BlockStates
 	* Lava Crystal Sub Items
-	* Lva Crystal and Charged Lava Crystal
+	* Lava Crystal and Charged Lava Crystal
 * **{Features Changed} **
 	* Chnaged the recipe of the Armor Forge now uses Lapis Lazuli instead of lapis blocks
 * **{Features Removed}**
