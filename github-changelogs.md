@@ -8,7 +8,7 @@
 	* Lava Crystal Sub Items
 	* Lava Crystal and Charged Lava Crystal
 * **{Features Changed} **
-	* Chnaged the recipe of the Armor Forge now uses Lapis Lazuli instead of lapis blocks
+	* Changed the recipe of the Armor Forge now uses Lapis Lazuli instead of lapis blocks
 * **{Features Removed}**
 	* All the 4 Reinforced Sets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
