@@ -1,3 +1,12 @@
+**ArmorPlus 1.10.2-6.0.8.0**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Changed}**
+    * Armors again will be single set effect by default
+    * NBT Item (Dev Item) (Ignore - Added for future planed releases)
+* **{Features Added}**
+    * Keybind to enable/disable the Night Vison effect of The Ultimate Armor (Default: "N")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.7.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
