@@ -12,6 +12,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -23,7 +24,11 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.core.util.TextHelper;
 
+import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
+import static net.thedragonteam.armorplus.ArmorPlus.nightVisionEnabled;
+
 public class GlobalEventsArmorPlus {
+
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
 
@@ -62,12 +67,30 @@ public class GlobalEventsArmorPlus {
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
+        if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS) {
+            if (entity instanceof EntityLivingBase) {
+                if (nightVisionEnabled) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
+                } else if (!nightVisionEnabled) {
+                    entity.removePotionEffect(MobEffects.NIGHT_VISION);
+                }
+            }
+        }
+
         if (head != null && head.getItem() == ModItems.LAVA_HELMET && chest != null && chest.getItem() == ModItems.LAVA_CHESTPLATE && legs != null && legs.getItem() == ModItems.LAVA_LEGGINGS && feet != null && feet.getItem() == ModItems.LAVA_BOOTS) {
             entity.extinguish();
             if (entity.isInLava()) {
                 entity.setAbsorptionAmount(4.0F);
             } else
                 entity.setAbsorptionAmount(0.0F);
+            if (entity.isInWater() && enableFullLavaArmorEffect) {
+                entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                head.damageItem(1, entity);
+                chest.damageItem(1, entity);
+                legs.damageItem(1, entity);
+                feet.damageItem(1, entity);
+                entity.attackEntityFrom(DamageSource.drown, 1F);
+            }
         }
 
         /*The Ultimate Armor Armor*/
@@ -79,6 +102,7 @@ public class GlobalEventsArmorPlus {
                 entity.removePotionEffect(MobEffects.WITHER);
             }
         }
+
         /*Full Super Star Armor*/
         if (ARPConfig.enableFullSuperStarArmorEffect) {
             if (head != null && head.getItem() == ModItems.SUPER_STAR_HELMET && chest != null && chest.getItem() == ModItems.SUPER_STAR_CHESTPLATE && legs != null && legs.getItem() == ModItems.SUPER_STAR_LEGGINGS && feet != null && feet.getItem() == ModItems.SUPER_STAR_BOOTS) {

@@ -103,6 +103,7 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
+import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.dev.TheDragonTeamItem;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
@@ -218,6 +219,7 @@ public class ModItems {
     public static ElectricalIngot ELECTRICAL_INGOT;
     public static RedstoneApple REDSTONE_APPLE;
     public static ArmorPlusInfoBook ARMORPLUS_INFO_BOOK;
+    public static NBTItem NBT_ITEM;
 
     public static DevHelmet DEV_HELMET;
     public static DevChestplate DEV_CHESTPLATE;
@@ -386,6 +388,7 @@ public class ModItems {
         ELECTRICAL_INGOT = new ElectricalIngot();
         REDSTONE_APPLE = new RedstoneApple(4, 2.0f, false);
         ARMORPLUS_INFO_BOOK = new ArmorPlusInfoBook();
+        NBT_ITEM = new NBTItem();
 
         DEV_HELMET = new DevHelmet();
         DEV_CHESTPLATE = new DevChestplate();
@@ -699,6 +702,7 @@ public class ModItems {
         THE_ULTIMATE_BOOTS_RIGHT.initModel();
 
         DEV_TOOL.initModel();
+        NBT_ITEM.initModel();
     }
 
     private void register() {

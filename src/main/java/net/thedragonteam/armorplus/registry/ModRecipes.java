@@ -140,6 +140,8 @@ public class ModRecipes {
     }
 
     public static void addShapelessRecipes() {
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.NBT_ITEM, 1), Items.STICK);
+
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), ModBlocks.COMPRESSED_OBSIDIAN);
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 9), ModBlocks.STEEL_BLOCK);
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), ModBlocks.ELECTRICAL_BLOCK);

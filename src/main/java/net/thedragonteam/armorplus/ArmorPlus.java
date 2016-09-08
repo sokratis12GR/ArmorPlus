@@ -33,6 +33,8 @@ import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.resources.KeyBinds;
+import net.thedragonteam.armorplus.resources.KeyInputHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
@@ -59,9 +61,9 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 7;
+    public static final int MINOR = 8;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -100,6 +102,13 @@ public class ArmorPlus {
     @SuppressWarnings("unused")
     private ArmorPlusEntity entity;
 
+    public static boolean nightVisionEnabled = true;
+
+    public static boolean isNightVisionEnabled() {
+        return nightVisionEnabled;
+    }
+
+
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
     }
@@ -119,6 +128,9 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
+        KeyBinds.register();
+
+        MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
         entity = new ArmorPlusEntity();
 
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
@@ -207,6 +219,7 @@ public class ArmorPlus {
         ModItems.init();
         ModBlocks.init();
         items = new ModItems();
+
 
         ModBlocks.register();
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));

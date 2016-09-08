@@ -25,6 +25,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
 import static net.thedragonteam.core.util.TextHelper.localize;
 
 /**
@@ -56,7 +57,7 @@ public class LavaChestplate extends ItemArmor {
             tooltip.add("\2479Ability: " + "\247rFire Resistance");
             tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
-        if (ARPConfig.enableFullLavaArmorEffect) {
+        if (enableFullLavaArmorEffect) {
             tooltip.add("\2479Ability: " + "\247rFire Resistance");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
@@ -64,10 +65,10 @@ public class LavaChestplate extends ItemArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableLavaCEffects && entity instanceof EntityLivingBase && !ARPConfig.enableFullLavaArmorEffect) {
+        if (ARPConfig.enableLavaCEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
         }
-        if (entity.isInWater()) {
+        if (entity.isInWater() && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
             itemStack.damageItem(1, entity);
             entity.attackEntityFrom(DamageSource.drown, 1F);

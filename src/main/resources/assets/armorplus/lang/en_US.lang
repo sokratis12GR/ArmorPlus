@@ -188,6 +188,7 @@ item.armorplus.dev_chestplate.name=Dev Chestplate
 item.armorplus.dev_leggings.name=Dev Leggings
 item.armorplus.dev_boots.name=Dev Boots
 item.armorplus.dev_tool.name=Dev Tool
+item.armorplus.dev_item.name=NBT Item
 item.armorplus.the_dragon_team.name=The Dragon Team
 
 #Items
@@ -274,6 +275,10 @@ item.lava_arrow.name=Lava Arrow
 
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
+
+#KeyBinds
+key.nightVision=Toggle NightVision from The Ultimate Armor
+key.categories.armorplus=ArmorPlus
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!
