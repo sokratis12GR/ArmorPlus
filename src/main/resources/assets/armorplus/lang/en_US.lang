@@ -190,6 +190,8 @@ item.armorplus.dev_boots.name=Dev Boots
 item.armorplus.dev_tool.name=Dev Tool
 item.armorplus.dev_item.name=NBT Item
 item.armorplus.the_dragon_team.name=The Dragon Team
+item.armorplus.modded_city.name=Modded City
+item.armorplus.jon_bams.name=Jon Bams
 
 #Items
 item.armorplus.chainmail.name=Chainmail
