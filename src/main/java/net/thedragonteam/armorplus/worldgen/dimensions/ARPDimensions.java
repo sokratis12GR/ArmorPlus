@@ -8,7 +8,7 @@ import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 import net.thedragonteam.armorplus.ArmorPlus;
 
-import static net.thedragonteam.armorplus.ARPConfig.dimensionId;
+import static net.thedragonteam.armorplus.ARPConfig.arpDimensionId;
 
 /**
  * net.thedragonteam.armorplus.worldgen.dimensions
@@ -25,10 +25,10 @@ public class ARPDimensions {
     }
 
     private static void registerDimensionTypes() {
-        arpDimensionType = DimensionType.register(ArmorPlus.MODID, "_arp", dimensionId, ARPWorldProvider.class, false);
+        arpDimensionType = DimensionType.register(ArmorPlus.MODID, "_arp", arpDimensionId, ARPWorldProvider.class, false);
     }
 
     private static void registerDimensions() {
-        DimensionManager.registerDimension(dimensionId, arpDimensionType);
+        DimensionManager.registerDimension(arpDimensionId, arpDimensionType);
     }
 }

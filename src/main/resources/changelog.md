@@ -1,3 +1,16 @@
+**ArmorPlus 1.10.2-6.0.9.0**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added}**
+    * Special Cosmetic for special people
+* **{Fratures Changed}**
+    * Lava Armor will now extinguish the fire overlay if the full set effect is set to false and the player is wearing 1 of the armor pieces
+    * ARP Dimensions will be disabled by defualt
+    * Structure Castle Generation is set to 0 by default, until it is fully done
+    * Ender Dragon Zombies will have 40.0D HP by default and their movement speed is increased to 0.20D
+* **{Bugs Fixed}**
+    * No Description and no name for the achievement "Welcome to ArmorPlus" 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.8.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

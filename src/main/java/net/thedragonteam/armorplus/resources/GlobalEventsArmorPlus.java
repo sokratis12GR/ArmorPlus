@@ -152,7 +152,7 @@ public class GlobalEventsArmorPlus {
         if (ARPConfig.enableFullRedstoneArmorEffect) {
             if (head != null && head.getItem() == ModItems.REDSTONE_HELMET && chest != null && chest.getItem() == ModItems.REDSTONE_CHESTPLATE && legs != null && legs.getItem() == ModItems.REDSTONE_LEGGINGS && feet != null && feet.getItem() == ModItems.REDSTONE_BOOTS) {
                 if (entity instanceof EntityLivingBase)
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, ARPConfig.redstoneArmorEffectlevel, true, true));
             }
         }
         /*Full Guardian Armor*/

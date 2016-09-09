@@ -68,7 +68,7 @@ public class RedstoneLeggings extends ItemArmor {
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
         if (ARPConfig.enableRedstoneLSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 120, ARPConfig.redstoneArmorEffectlevel, true, true));
+            entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, ARPConfig.redstoneArmorEffectlevel, true, true));
         }
     }
 

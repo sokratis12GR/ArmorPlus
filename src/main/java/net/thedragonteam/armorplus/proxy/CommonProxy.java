@@ -27,7 +27,8 @@ import net.thedragonteam.core.util.LogHelper;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
-import static net.thedragonteam.armorplus.ARPConfig.dimensionId;
+import static net.thedragonteam.armorplus.ARPConfig.arpDimensionEnabled;
+import static net.thedragonteam.armorplus.ARPConfig.arpDimensionId;
 
 public class CommonProxy {
 
@@ -35,9 +36,12 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         ARPEntities.init();
-        ARPDimensions.init();
-        if (ARPConfig.isDebugMode())
-            LogHelper.info("ArmorPlus Dimension ID: " + dimensionId);
+        if (arpDimensionEnabled)
+            ARPDimensions.init();
+        if (ARPConfig.isDebugMode()) {
+            LogHelper.info("ARP Dimension ID: " + arpDimensionId);
+            LogHelper.info("ARP Dimension Enabled: " + arpDimensionEnabled);
+        }
         LogHelper.info("Finished PreInitialization");
     }
 

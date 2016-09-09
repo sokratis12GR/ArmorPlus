@@ -68,6 +68,8 @@ public class LavaBoots extends ItemArmor {
         if (ARPConfig.enableLavaBEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
         }
+        if (!enableFullLavaArmorEffect)
+            entity.extinguish();
         if (entity.isInWater() && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
             itemStack.damageItem(1, entity);

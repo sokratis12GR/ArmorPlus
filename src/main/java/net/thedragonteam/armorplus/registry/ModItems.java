@@ -102,9 +102,7 @@ import net.thedragonteam.armorplus.items.books.ArmorPlusInfoBook;
 import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
-import net.thedragonteam.armorplus.items.dev.DevTool;
-import net.thedragonteam.armorplus.items.dev.NBTItem;
-import net.thedragonteam.armorplus.items.dev.TheDragonTeamItem;
+import net.thedragonteam.armorplus.items.dev.*;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
@@ -366,6 +364,8 @@ public class ModItems {
 
     public static DevTool DEV_TOOL;
     public static TheDragonTeamItem THE_DRAGON_TEAM_ITEM;
+    public static ModdedCityItem MODDED_CITY_ITEM;
+    public static JonBamsItem JON_BAMS_ITEM;
 
     public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
 
@@ -375,6 +375,8 @@ public class ModItems {
 
     public static void init() {
         THE_DRAGON_TEAM_ITEM = new TheDragonTeamItem();
+        MODDED_CITY_ITEM = new ModdedCityItem();
+        JON_BAMS_ITEM = new JonBamsItem();
 
         CHAINMAIL = new Chainmail();
         GUARDIAN_SCALE = new GuardianScale();
@@ -546,6 +548,8 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         THE_DRAGON_TEAM_ITEM.initModel();
+        MODDED_CITY_ITEM.initModel();
+        JON_BAMS_ITEM.initModel();
 
         CHAINMAIL.initModel();
         GUARDIAN_SCALE.initModel();

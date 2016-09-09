@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -22,7 +23,9 @@ import java.util.Set;
  * ArmorPlus created by sokratis12GR on 7/18/2016 8:17 PM.
  * - TheDragonTeam
  */
-public class Utils {
+public final class Utils {
+
+    public static final Random RANDOM = new Random();
 
     @SuppressWarnings("ConstantConditions")
     public static ItemStack setUnbreakable(ItemStack stack) {

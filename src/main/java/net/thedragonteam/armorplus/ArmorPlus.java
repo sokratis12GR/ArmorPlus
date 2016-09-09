@@ -61,9 +61,9 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 8;
+    public static final int MINOR = 9;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -159,6 +159,7 @@ public class ArmorPlus {
 
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
+        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
 
         //Materials
         registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
@@ -202,6 +203,7 @@ public class ArmorPlus {
 
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
+        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
 
         //Materials
         registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
@@ -219,8 +221,6 @@ public class ArmorPlus {
         ModItems.init();
         ModBlocks.init();
         items = new ModItems();
-
-
         ModBlocks.register();
         logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
         MinecraftForge.EVENT_BUS.register(new MobDrops());
