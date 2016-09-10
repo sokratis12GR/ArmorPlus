@@ -31,12 +31,12 @@ public class KnightSlimeLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public KnightSlimeLeggings() {
-        super(ModItems.KNIGHT_SLIME_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.knightSlimeArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("knight_slime_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "knight_slime_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

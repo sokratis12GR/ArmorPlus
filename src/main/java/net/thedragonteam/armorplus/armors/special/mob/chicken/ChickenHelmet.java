@@ -33,12 +33,12 @@ public class ChickenHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ChickenHelmet() {
-        super(ModItems.CHICKEN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.chickenArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("chicken_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "chicken_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

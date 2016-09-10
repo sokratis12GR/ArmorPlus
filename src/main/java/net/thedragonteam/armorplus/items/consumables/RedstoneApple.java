@@ -29,14 +29,14 @@ import java.util.List;
  */
 public class RedstoneApple extends ItemFood {
 
-    public RedstoneApple(int amount, float saturation, boolean isWolfFood) {
-        super(amount, saturation, isWolfFood);
+    public RedstoneApple() {
+        super(4, 2.0f, false);
         this.setHasSubtypes(true);
         setRegistryName("redstone_apple");
         setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_apple");
         GameRegistry.register(this);
         setAlwaysEdible().equals(true);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @SideOnly(Side.CLIENT)

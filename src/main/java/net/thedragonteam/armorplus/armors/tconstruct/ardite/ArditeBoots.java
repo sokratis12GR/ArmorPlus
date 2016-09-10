@@ -31,12 +31,12 @@ public class ArditeBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ArditeBoots() {
-        super(ModItems.ARDITE_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.arditeArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("ardite_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "ardite_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

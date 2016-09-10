@@ -39,12 +39,12 @@ public class CoalLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public CoalLeggings() {
-        super(ModItems.COAL_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.coalArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("coal_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "coal_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

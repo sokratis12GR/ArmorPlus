@@ -39,12 +39,12 @@ public class EmeraldChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public EmeraldChestplate() {
-        super(ModItems.EMERALD_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.emeraldArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("emerald_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "emerald_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

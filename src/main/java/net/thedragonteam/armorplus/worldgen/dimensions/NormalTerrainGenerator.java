@@ -213,7 +213,7 @@ public class NormalTerrainGenerator {
                                 if (height < 2) {
                                     primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, Blocks.BEDROCK.getDefaultState());
                                 } else if ((d15 += d16) > 0.0D) {
-                                    primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, ModBlocks.COMPRESSED_OBSIDIAN.getDefaultState());
+                                    primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, ModBlocks.compressedObsidian.getDefaultState());
                                 }
                             }
 

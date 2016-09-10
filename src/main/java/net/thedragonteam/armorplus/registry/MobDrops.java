@@ -29,9 +29,9 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledEnderDragon(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityDragon) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.ENDER_DRAGON_SCALE, enderdragonScaleDropAmount);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.enderDragonScale, enderdragonScaleDropAmount);
             if (debugMode) {
-                LogHelper.info("Ender Dragon Dropped: " + ModItems.ENDER_DRAGON_SCALE.getRegistryName() + " x " + enderdragonScaleDropAmount);
+                LogHelper.info("Ender Dragon Dropped: " + ModItems.enderDragonScale.getRegistryName() + " x " + enderdragonScaleDropAmount);
             }
         }
     }
@@ -39,9 +39,9 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledWither(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityWither) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.WITHER_BONE, witherBoneDropAmount);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.witherBone, witherBoneDropAmount);
             if (debugMode) {
-                LogHelper.info("Wither Boss Dropped: " + ModItems.WITHER_BONE.getRegistryName() + " x " + witherBoneDropAmount);
+                LogHelper.info("Wither Boss Dropped: " + ModItems.witherBone.getRegistryName() + " x " + witherBoneDropAmount);
             }
         }
     }
@@ -49,9 +49,9 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledElderGuardian(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, guardianScaleElderDropAmount);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.guardianScale, guardianScaleElderDropAmount);
             if (debugMode) {
-                LogHelper.info("Elder Guardian Dropped:" + ModItems.GUARDIAN_SCALE.getRegistryName() + " x " + guardianScaleElderDropAmount);
+                LogHelper.info("Elder Guardian Dropped:" + ModItems.guardianScale.getRegistryName() + " x " + guardianScaleElderDropAmount);
             }
         }
     }
@@ -59,9 +59,9 @@ public class MobDrops {
     @SubscribeEvent
     public void playerKilledGuardian(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
-            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.GUARDIAN_SCALE, random.nextInt(max - min + 1) + min);
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.guardianScale, random.nextInt(max - min + 1) + min);
             if (debugMode) {
-                LogHelper.info("Guardian Dropped: " + ModItems.GUARDIAN_SCALE.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
+                LogHelper.info("Guardian Dropped: " + ModItems.guardianScale.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
             }
         }
     }

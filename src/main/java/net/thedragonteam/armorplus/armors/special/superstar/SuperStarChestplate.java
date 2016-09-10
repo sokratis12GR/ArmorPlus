@@ -36,12 +36,12 @@ public class SuperStarChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public SuperStarChestplate() {
-        super(ModItems.SUPER_STAR_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.superStarArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("super_star_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "super_star_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -77,6 +77,6 @@ public class SuperStarChestplate extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.WITHER_BONE;
+        return repair.getItem() == ModItems.witherBone;
     }
 }

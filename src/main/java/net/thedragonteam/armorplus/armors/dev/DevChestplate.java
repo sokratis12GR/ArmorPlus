@@ -27,12 +27,12 @@ public class DevChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public DevChestplate() {
-        super(ModItems.DEV_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.devArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("dev_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "dev_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @Override

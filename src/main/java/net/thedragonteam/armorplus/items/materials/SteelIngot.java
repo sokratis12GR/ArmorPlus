@@ -23,7 +23,7 @@ public class SteelIngot extends Item {
         setRegistryName("steel_ingot");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "steel_ingot");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @SideOnly(Side.CLIENT)

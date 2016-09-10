@@ -61,9 +61,9 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 9;
+    public static final int MINOR = 10;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
@@ -77,11 +77,11 @@ public class ArmorPlus {
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
     public static CommonProxy proxy;
-    public static CreativeTabs TAB_ARMORPLUS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
-    public static CreativeTabs TAB_ARMORPLUS_ITEMS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
-    public static CreativeTabs TAB_ARMORPLUS_BLOCKS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
-    public static CreativeTabs TAB_ARMORPLUS_WEAPONS = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
-    public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{TAB_ARMORPLUS, TAB_ARMORPLUS_ITEMS, TAB_ARMORPLUS_BLOCKS});
+    public static CreativeTabs tabArmorplus = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
+    public static CreativeTabs tabArmorplusItems = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
+    public static CreativeTabs tabArmorplusBlocks = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
+    public static CreativeTabs tabArmorplusWeapons = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
+    public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
@@ -146,27 +146,27 @@ public class ArmorPlus {
         ModRecipes.init();
 
         //Ores
-        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
+        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
 
         //Ingots
-        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
-        registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
-        registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
-        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
-        registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
-        registerOre("advarmorforge", new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE, 1));
+        registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
+        registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
+        registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
+        registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
+        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
+        registerOre("armorforge", new ItemStack(ModBlocks.armorForge, 1));
+        registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
 
         //Gems
-        registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+        registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
+        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
 
         //Materials
-        registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
-        registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
-        registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-        registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-        registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
+        registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
+        registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));
+        registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
+        registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
+        registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
     }
 
     @SideOnly(Side.SERVER)
@@ -190,27 +190,27 @@ public class ArmorPlus {
         ModRecipes.init();
 
         //Ores
-        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL, 1));
+        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
 
         //Ingots
-        registerOre("ingotSteel", new ItemStack(ModItems.STEEL_INGOT, 1));
-        registerOre("ingotElectrical", new ItemStack(ModItems.ELECTRICAL_INGOT, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.STEEL_BLOCK, 1));
-        registerOre("blockElectrical", new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1));
-        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1));
-        registerOre("armorforge", new ItemStack(ModBlocks.ARMOR_FORGE, 1));
-        registerOre("advarmorforge", new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE, 1));
+        registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
+        registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
+        registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
+        registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
+        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
+        registerOre("armorforge", new ItemStack(ModBlocks.armorForge, 1));
+        registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
 
         //Gems
-        registerOre("gemLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1));
-        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+        registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
+        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
 
         //Materials
-        registerOre("chainmail", new ItemStack(ModItems.CHAINMAIL, 1));
-        registerOre("witherbone", new ItemStack(ModItems.WITHER_BONE, 1));
-        registerOre("materialTheUltimate", new ItemStack(ModItems.THE_ULTIMATE_MATERIAL, 1));
-        registerOre("scaleGuardian", new ItemStack(ModItems.GUARDIAN_SCALE, 1));
-        registerOre("scaleEnderDragon", new ItemStack(ModItems.ENDER_DRAGON_SCALE, 1));
+        registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
+        registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));
+        registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
+        registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
+        registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
         proxy.init(event);
     }
 

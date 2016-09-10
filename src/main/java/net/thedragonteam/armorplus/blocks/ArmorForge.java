@@ -34,7 +34,7 @@ public class ArmorForge extends BlockWorkbench implements ITileEntityProvider {
     public ArmorForge() {
         setUnlocalizedName(ArmorPlus.MODID + "." + "armor_forge");
         this.setResistance(1000.0F);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(10.0F);
         this.setHarvestLevel("pickaxe", 2);
     }

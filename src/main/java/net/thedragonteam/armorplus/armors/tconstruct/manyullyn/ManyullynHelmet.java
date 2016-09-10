@@ -31,12 +31,12 @@ public class ManyullynHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ManyullynHelmet() {
-        super(ModItems.MANYULLYN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.manyullynArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("manyullyn_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "manyullyn_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

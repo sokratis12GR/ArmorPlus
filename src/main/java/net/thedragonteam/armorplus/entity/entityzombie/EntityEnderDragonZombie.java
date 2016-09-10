@@ -46,12 +46,11 @@ public class EntityEnderDragonZombie extends EntityMob {
     public EntityEnderDragonZombie(World worldIn) {
         super(worldIn);
         setSize(0.6F, 1.95F);
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.ENDER_DRAGON_HELMET));
-        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ModItems.ENDER_DRAGON_CHESTPLATE));
-        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.ENDER_DRAGON_LEGGINGS));
-        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.ENDER_DRAGON_BOOTS));
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.ENDER_DRAGON_HELMET));
-        setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.ENDER_DRAGON_BATTLE_AXE));
+        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.enderDragonHelmet));
+        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ModItems.enderDragonChestplate));
+        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.enderDragonLeggings));
+        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.enderDragonBoots));
+        setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.enderDragonBattleAxe));
     }
 
     @Override

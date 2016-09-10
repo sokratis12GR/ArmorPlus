@@ -22,7 +22,7 @@ public class WitherBone extends Item {
         setRegistryName("wither_bone");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "wither_bone");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @Override

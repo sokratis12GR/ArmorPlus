@@ -33,12 +33,12 @@ public class SlimeHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public SlimeHelmet() {
-        super(ModItems.SLIME_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.slimeArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("slime_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "slime_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

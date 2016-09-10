@@ -27,12 +27,12 @@ public class DevHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public DevHelmet() {
-        super(ModItems.DEV_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.devArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("dev_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "dev_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @Override

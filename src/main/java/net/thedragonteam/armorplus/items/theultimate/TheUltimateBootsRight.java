@@ -22,7 +22,7 @@ public class TheUltimateBootsRight extends Item {
         setRegistryName("the_ultimate_boots_right");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_boots_right");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @Override

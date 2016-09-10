@@ -82,18 +82,18 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         /**Guardian Armor Thorns*/
-        if (stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
+        if (stack.getItem() == ModItems.theUltimateHelmet || stack.getItem() == ModItems.theUltimateChestplate || stack.getItem() == ModItems.theUltimateLeggings || stack.getItem() == ModItems.theUltimateBoots)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("mending"), 1);
 
         /**Godlike! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.SUPER_STAR_HELMET || stack.getItem() == ModItems.SUPER_STAR_CHESTPLATE || stack.getItem() == ModItems.SUPER_STAR_LEGGINGS || stack.getItem() == ModItems.SUPER_STAR_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_SUPER_STAR_ARMOR, 1);
+        if (stack.getItem() == ModItems.superStarHelmet || stack.getItem() == ModItems.superStarChestplate || stack.getItem() == ModItems.superStarLeggings || stack.getItem() == ModItems.superStarBoots)
+            this.thePlayer.addStat(ARPAchievements.craftSuperStarArmor, 1);
         /**The Power of the Ender Dragon! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.ENDER_DRAGON_HELMET || stack.getItem() == ModItems.ENDER_DRAGON_CHESTPLATE || stack.getItem() == ModItems.ENDER_DRAGON_LEGGINGS || stack.getItem() == ModItems.ENDER_DRAGON_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_ENDER_DRAGON_ARMOR, 1);
+        if (stack.getItem() == ModItems.enderDragonHelmet || stack.getItem() == ModItems.enderDragonChestplate || stack.getItem() == ModItems.enderDragonLeggings || stack.getItem() == ModItems.enderDragonBoots)
+            this.thePlayer.addStat(ARPAchievements.craftEnderDragonArmor, 1);
         /**The Ultimate Power! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.THE_ULTIMATE_HELMET || stack.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE || stack.getItem() == ModItems.THE_ULTIMATE_LEGGINGS || stack.getItem() == ModItems.THE_ULTIMATE_BOOTS)
-            this.thePlayer.addStat(ARPAchievements.CRAFT_THE_ULTIMATE_ARMOR, 1);
+        if (stack.getItem() == ModItems.theUltimateHelmet || stack.getItem() == ModItems.theUltimateChestplate || stack.getItem() == ModItems.theUltimateLeggings || stack.getItem() == ModItems.theUltimateBoots)
+            this.thePlayer.addStat(ARPAchievements.craftTheUltimatermor, 1);
     }
 
     public void onPickupFromSlot(EntityPlayer playerIn, ItemStack stack) {

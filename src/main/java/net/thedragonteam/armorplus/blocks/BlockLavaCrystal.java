@@ -21,13 +21,13 @@ import java.util.Random;
  */
 public class BlockLavaCrystal extends Block {
 
-    private ItemStack drop = new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1);
+    private ItemStack drop = new ItemStack(ModItems.lavaCrystal, 1, 1);
 
     public BlockLavaCrystal() {
         super(Material.ROCK);
         setUnlocalizedName(ArmorPlus.MODID + "." + "block_lava_crystal");
         this.setResistance(2000.0F);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(25.0F);
         this.setHarvestLevel("pickaxe", 3);
         this.setLightLevel(0.8F);

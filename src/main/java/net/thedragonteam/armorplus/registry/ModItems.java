@@ -114,606 +114,569 @@ public class ModItems {
      * Float damageVsEntity + 4.0F
      * public static ToolMaterial MATERIAL = EnumHelper.addToolMaterial("MATERIAL", int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability);
      */
-    public static Item.ToolMaterial SWORD_COAL_MATERIAL = EnumHelper.addToolMaterial("SWORD_COAL_MATERIAL", 1, 59, 1.0F, 0.5F, 15);
-    public static Item.ToolMaterial SWORD_LAPIS_MATERIAL = EnumHelper.addToolMaterial("SWORD_LAPIS_MATERIAL", 1, 250, 1.0F, 1.0F, 30);
-    public static Item.ToolMaterial SWORD_REDSTONE_MATERIAL = EnumHelper.addToolMaterial("SWORD_REDSTONE_MATERIAL", 1, 200, 1.0F, 1.5F, 20);
-    public static Item.ToolMaterial SWORD_EMERALD_MATERIAL = EnumHelper.addToolMaterial("SWORD_EMERALD_MATERIAL", 1, 1561, 1.0F, 3.5F, 20);
-    public static Item.ToolMaterial SWORD_OBSIDIAN_MATERIAL = EnumHelper.addToolMaterial("SWORD_OBSIDIAN_MATERIAL", 1, 1500, 1.0F, 4.0F, 20);
-    public static Item.ToolMaterial SWORD_LAVA_MATERIAL = EnumHelper.addToolMaterial("SWORD_LAVA_MATERIAL", 1, 1750, 1.0F, 4.5F, 20);
-    public static Item.ToolMaterial SWORD_SUPER_STAR_MATERIAL = EnumHelper.addToolMaterial("SWORD_SUPER_STAR_MATERIAL", 1, 1750, 0.0F, 6.0F, 20);
-    public static Item.ToolMaterial SWORD_GUARDIAN_MATERIAL = EnumHelper.addToolMaterial("SWORD_GUARDIAN_MATERIAL", 1, 500, 1.0F, 3.0F, 30);
-    public static Item.ToolMaterial SWORD_ENDER_DRAGON_MATERIAL = EnumHelper.addToolMaterial("SWORD_ENDER_DRAGON_MATERIAL", 1, 2000, 1.0F, 8.0F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_COAL_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_COAL_MATERIAL", 1, 59, 1.0F, 2.5F, 15);
-    public static Item.ToolMaterial BATTLE_AXE_LAPIS_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_LAPIS_MATERIAL", 1, 250, 1.0F, 3.0F, 30);
-    public static Item.ToolMaterial BATTLE_AXE_REDSTONE_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_REDSTONE_MATERIAL", 1, 200, 1.0F, 3.5F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_EMERALD_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_EMERALD_MATERIAL", 1, 1561, 1.0F, 5.5F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_OBSIDIAN_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_OBSIDIAN_MATERIAL", 1, 1500, 1.0F, 6.0F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_LAVA_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_LAVA_MATERIAL", 1, 1750, 1.0F, 6.5F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_SUPER_STAR_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_SUPER_STAR_MATERIAL", 1, 1750, 0.0F, 8.0F, 20);
-    public static Item.ToolMaterial BATTLE_AXE_GUARDIAN_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_GUARDIAN_MATERIAL", 1, 500, 1.0F, 5.0F, 30);
-    public static Item.ToolMaterial BATTLE_AXE_ENDER_DRAGON_MATERIAL = EnumHelper.addToolMaterial("BATTLE_AXE_ENDER_DRAGON_MATERIAL", 1, 2000, 1.0F, 10.0F, 20);
+    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, 59, 1.0F, 0.5F, 15);
+    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, 250, 1.0F, 1.0F, 30);
+    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, 200, 1.0F, 1.5F, 20);
+    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, 1561, 1.0F, 3.5F, 20);
+    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, 1500, 1.0F, 4.0F, 20);
+    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, 1750, 1.0F, 4.5F, 20);
+    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, 1750, 0.0F, 6.0F, 20);
+    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, 500, 1.0F, 3.0F, 30);
+    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, 2000, 1.0F, 8.0F, 20);
+    public static Item.ToolMaterial battleAxeCoalMaterial = EnumHelper.addToolMaterial("battleAxeCoalMaterial", 1, 59, 1.0F, 2.5F, 15);
+    public static Item.ToolMaterial battleAxeLapisMaterial = EnumHelper.addToolMaterial("battleAxeLapisMaterial", 1, 250, 1.0F, 3.0F, 30);
+    public static Item.ToolMaterial battleAxeRedstoneMaterial = EnumHelper.addToolMaterial("battleAxeRedstoneMaterial", 1, 200, 1.0F, 3.5F, 20);
+    public static Item.ToolMaterial battleAxeEmeraldMaterial = EnumHelper.addToolMaterial("battleAxeEmeraldMaterial", 1, 1561, 1.0F, 5.5F, 20);
+    public static Item.ToolMaterial battleAxeObsidianMaterial = EnumHelper.addToolMaterial("battleAxeObsidianMaterial", 1, 1500, 1.0F, 6.0F, 20);
+    public static Item.ToolMaterial battleAxeLavaMaterial = EnumHelper.addToolMaterial("battleAxeLavaMaterial", 1, 1750, 1.0F, 6.5F, 20);
+    public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, 1750, 0.0F, 8.0F, 20);
+    public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, 500, 1.0F, 5.0F, 30);
+    public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, 2000, 1.0F, 10.0F, 20);
 
-    public static ItemArmor.ArmorMaterial DEV_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("DEVARMOR", ArmorPlus.MODID + ":" + "dev_armor", 100000, new int[]
+    public static ItemArmor.ArmorMaterial devArmor = EnumHelper.addArmorMaterial("devArmor", ArmorPlus.MODID + ":" + "dev_armor", 100000, new int[]
             {100, 100, 100, 100}, 100, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 100.0F);
 
-    public static ItemArmor.ArmorMaterial COAL_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("COALARMOR", ArmorPlus.MODID + ":" + "coal_armor", 7, new int[]
+    public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", ArmorPlus.MODID + ":" + "coal_armor", 7, new int[]
             {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial EMERALD_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("EMERALDARMOR", ArmorPlus.MODID + ":" + "emerald_armor", 35, new int[]
+    public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", ArmorPlus.MODID + ":" + "emerald_armor", 35, new int[]
             {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial LAPIS_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("LAPISARMOR", ArmorPlus.MODID + ":" + "lapis_armor", 11, new int[]
+    public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", ArmorPlus.MODID + ":" + "lapis_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
-    public static ItemArmor.ArmorMaterial LAVA_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("LAVAARMOR", ArmorPlus.MODID + ":" + "lava_armor", 45, new int[]
+    public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", ArmorPlus.MODID + ":" + "lava_armor", 45, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial OBSIDIAN_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("OBSIDIANARMOR", ArmorPlus.MODID + ":" + "obsidian_armor", 40, new int[]
+    public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", ArmorPlus.MODID + ":" + "obsidian_armor", 40, new int[]
             {3, 7, 10, 5}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 
-    public static ItemArmor.ArmorMaterial REDSTONE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("REDSTONEARMOR", ArmorPlus.MODID + ":" + "redstone_armor", 11, new int[]
+    public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", ArmorPlus.MODID + ":" + "redstone_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
-    public static ItemArmor.ArmorMaterial RC_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RCARMOR", ArmorPlus.MODID + ":" + "rc_armor", 18, new int[]
-            {2, 5, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F);
-
-    public static ItemArmor.ArmorMaterial RD_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RDARMOR", ArmorPlus.MODID + ":" + "rd_armor", 35, new int[]
-            {4, 7, 9, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
-    public static ItemArmor.ArmorMaterial RG_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RGARMOR", ArmorPlus.MODID + ":" + "rg_armor", 10, new int[]
-            {2, 4, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-
-    public static ItemArmor.ArmorMaterial RI_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("RIARMOR", ArmorPlus.MODID + ":" + "ri_armor", 18, new int[]
-            {3, 6, 7, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-
-    public static ItemArmor.ArmorMaterial STEEL_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("STEELARMOR", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
+    public static ItemArmor.ArmorMaterial steelArmor = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
             {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
-    public static ItemArmor.ArmorMaterial ELECTRICAL_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("ELECTRICALARMOR", ArmorPlus.MODID + ":" + "electrical_armor", 19, new int[]
+    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", ArmorPlus.MODID + ":" + "electrical_armor", 19, new int[]
             {3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
-    public static ItemArmor.ArmorMaterial CHICKEN_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("CHICKENARMOR", ArmorPlus.MODID + ":" + "chicken_armor", 3, new int[]
+    public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", ArmorPlus.MODID + ":" + "chicken_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial SLIME_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("SLIMEARMOR", ArmorPlus.MODID + ":" + "slime_armor", 3, new int[]
+    public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", ArmorPlus.MODID + ":" + "slime_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial ENDER_DRAGON_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("ENDERDRAGONARMOR", ArmorPlus.MODID + ":" + "ender_dragon_armor", 60, new int[]
+    public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", ArmorPlus.MODID + ":" + "ender_dragon_armor", 60, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial GUARDIAN_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("GUARDIANARMOR", ArmorPlus.MODID + ":" + "guardian_armor", 50, new int[]
+    public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", ArmorPlus.MODID + ":" + "guardian_armor", 50, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial SUPER_STAR_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("SUPERSTARARMOR", ArmorPlus.MODID + ":" + "super_star_armor", 50, new int[]
+    public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", ArmorPlus.MODID + ":" + "super_star_armor", 50, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial THE_ULTIMATE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("THEULTIMATEARMOR", ArmorPlus.MODID + ":" + "the_ultimate_armor", 160, new int[]
+    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", ArmorPlus.MODID + ":" + "the_ultimate_armor", 160, new int[]
             {10, 20, 30, 15}, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F);
 
-    public static ItemArmor.ArmorMaterial ARDITE_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("ARDITEARMOR", ArmorPlus.MODID + ":" + "ardite_armor", 55, new int[]
+    public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", ArmorPlus.MODID + ":" + "ardite_armor", 55, new int[]
             {4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial COBALT_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("COBALTARMOR", ArmorPlus.MODID + ":" + "cobalt_armor", 44, new int[]
+    public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", ArmorPlus.MODID + ":" + "cobalt_armor", 44, new int[]
             {3, 7, 9, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial KNIGHT_SLIME_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("KNIGHTSLIMEARMOR", ArmorPlus.MODID + ":" + "knight_slime_armor", 33, new int[]
+    public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", ArmorPlus.MODID + ":" + "knight_slime_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
-    public static ItemArmor.ArmorMaterial MANYULLYN_ARMOR_MATERIAL = EnumHelper.addArmorMaterial("MANYULLYNARMOR", ArmorPlus.MODID + ":" + "manyullyn_armor", 66, new int[]
+    public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", ArmorPlus.MODID + ":" + "manyullyn_armor", 66, new int[]
             {5, 10, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F);
 
-    public static ItemArmor.ArmorMaterial PIG_IRON_MATERIAL = EnumHelper.addArmorMaterial("PIGIRONARMOR", ArmorPlus.MODID + ":" + "pig_iron_armor", 33, new int[]
+    public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", ArmorPlus.MODID + ":" + "pig_iron_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
-    public static Chainmail CHAINMAIL;
-    public static GuardianScale GUARDIAN_SCALE;
-    public static WitherBone WITHER_BONE;
-    public static EnderDragonScale ENDER_DRAGON_SCALE;
-    public static TheUltimateMaterial THE_ULTIMATE_MATERIAL;
-    public static LavaCrystal LAVA_CRYSTAL;
-    public static TheGiftOfTheGods THE_GIFT_OF_THE_GODS;
-    public static ArmorPlusBook ARMORPLUS_BOOK;
-    public static SteelIngot STEEL_INGOT;
-    public static ElectricalIngot ELECTRICAL_INGOT;
-    public static RedstoneApple REDSTONE_APPLE;
-    public static ArmorPlusInfoBook ARMORPLUS_INFO_BOOK;
-    public static NBTItem NBT_ITEM;
+    public static Chainmail chainmail;
+    public static GuardianScale guardianScale;
+    public static WitherBone witherBone;
+    public static EnderDragonScale enderDragonScale;
+    public static TheUltimateMaterial theUltimateMaterial;
+    public static LavaCrystal lavaCrystal;
+    public static TheGiftOfTheGods theGiftOfTheGods;
+    public static ArmorPlusBook armorPlusBook;
+    public static SteelIngot steelIngot;
+    public static ElectricalIngot electricalIngot;
+    public static RedstoneApple redstoneApple;
+    public static ArmorPlusInfoBook armorPlusInfoBook;
+    public static NBTItem nbtItem;
 
-    public static DevHelmet DEV_HELMET;
-    public static DevChestplate DEV_CHESTPLATE;
-    public static DevLeggings DEV_LEGGINGS;
-    public static DevBoots DEV_BOOTS;
+    public static DevHelmet devHelmet;
+    public static DevChestplate devChestplate;
+    public static DevLeggings devLeggings;
+    public static DevBoots devBoots;
 
-    public static CoalHelmet COAL_HELMET;
-    public static CoalChestplate COAL_CHESTPLATE;
-    public static CoalLeggings COAL_LEGGINGS;
-    public static CoalBoots COAL_BOOTS;
+    public static CoalHelmet coalHelmet;
+    public static CoalChestplate coalChestplate;
+    public static CoalLeggings coalLeggings;
+    public static CoalBoots coalBoots;
 
-    public static EmeraldHelmet EMERALD_HELMET;
-    public static EmeraldChestplate EMERALD_CHESTPLATE;
-    public static EmeraldLeggings EMERALD_LEGGINGS;
-    public static EmeraldBoots EMERALD_BOOTS;
+    public static EmeraldHelmet emeraldHelmet;
+    public static EmeraldChestplate emeraldChestplate;
+    public static EmeraldLeggings emeraldLeggings;
+    public static EmeraldBoots emeraldBoots;
 
-    public static LapisHelmet LAPIS_HELMET;
-    public static LapisChestplate LAPIS_CHESTPLATE;
-    public static LapisLeggings LAPIS_LEGGINGS;
-    public static LapisBoots LAPIS_BOOTS;
+    public static LapisHelmet lapisHelmet;
+    public static LapisChestplate lapisChestplate;
+    public static LapisLeggings lapisLeggings;
+    public static LapisBoots lapisBoots;
 
-    public static LavaHelmet LAVA_HELMET;
-    public static LavaChestplate LAVA_CHESTPLATE;
-    public static LavaLeggings LAVA_LEGGINGS;
-    public static LavaBoots LAVA_BOOTS;
+    public static LavaHelmet lavaHelmet;
+    public static LavaChestplate lavaChestplate;
+    public static LavaLeggings lavaLeggings;
+    public static LavaBoots lavaBoots;
 
-    public static ObsidianHelmet OBSIDIAN_HELMET;
-    public static ObsidianChestplate OBSIDIAN_CHESTPLATE;
-    public static ObsidianLeggings OBSIDIAN_LEGGINGS;
-    public static ObsidianBoots OBSIDIAN_BOOTS;
+    public static ObsidianHelmet obsidianHelmet;
+    public static ObsidianChestplate obsidianChestplate;
+    public static ObsidianLeggings obsidianLeggings;
+    public static ObsidianBoots obsidianBoots;
 
-    public static RedstoneHelmet REDSTONE_HELMET;
-    public static RedstoneChestplate REDSTONE_CHESTPLATE;
-    public static RedstoneLeggings REDSTONE_LEGGINGS;
-    public static RedstoneBoots REDSTONE_BOOTS;
+    public static RedstoneHelmet redstoneHelmet;
+    public static RedstoneChestplate redstoneChestplate;
+    public static RedstoneLeggings redstoneLeggings;
+    public static RedstoneBoots redstoneBoots;
 
-    public static SteelHelmet STEEL_HELMET;
-    public static SteelChestplate STEEL_CHESTPLATE;
-    public static SteelLeggings STEEL_LEGGINGS;
-    public static SteelBoots STEEL_BOOTS;
+    public static SteelHelmet steelHelmet;
+    public static SteelChestplate steelChestplate;
+    public static SteelLeggings steelLeggings;
+    public static SteelBoots steelBoots;
 
-    public static ElectricalHelmet ELECTRICAL_HELMET;
-    public static ElectricalChestplate ELECTRICAL_CHESTPLATE;
-    public static ElectricalLeggings ELECTRICAL_LEGGINGS;
-    public static ElectricalBoots ELECTRICAL_BOOTS;
+    public static ElectricalHelmet electricalHelmet;
+    public static ElectricalChestplate electricalChestplate;
+    public static ElectricalLeggings electricalLeggings;
+    public static ElectricalBoots electricalBoots;
 
-    public static ChickenHelmet CHICKEN_HELMET;
-    public static ChickenChestplate CHICKEN_CHESTPLATE;
-    public static ChickenLeggings CHICKEN_LEGGINGS;
-    public static ChickenBoots CHICKEN_BOOTS;
+    public static ChickenHelmet chickenHelmet;
+    public static ChickenChestplate chickenChestplate;
+    public static ChickenLeggings chickenLeggings;
+    public static ChickenBoots chickenBoots;
 
-    public static SlimeHelmet SLIME_HELMET;
-    public static SlimeChestplate SLIME_CHESTPLATE;
-    public static SlimeLeggings SLIME_LEGGINGS;
-    public static SlimeBoots SLIME_BOOTS;
+    public static SlimeHelmet slimeHelmet;
+    public static SlimeChestplate slimeChestplate;
+    public static SlimeLeggings slimeLeggings;
+    public static SlimeBoots slimeBoots;
 
-    public static EnderDragonHelmet ENDER_DRAGON_HELMET;
-    public static EnderDragonChestplate ENDER_DRAGON_CHESTPLATE;
-    public static EnderDragonLeggings ENDER_DRAGON_LEGGINGS;
-    public static EnderDragonBoots ENDER_DRAGON_BOOTS;
+    public static EnderDragonHelmet enderDragonHelmet;
+    public static EnderDragonChestplate enderDragonChestplate;
+    public static EnderDragonLeggings enderDragonLeggings;
+    public static EnderDragonBoots enderDragonBoots;
 
-    public static GuardianHelmet GUARDIAN_HELMET;
-    public static GuardianChestplate GUARDIAN_CHESTPLATE;
-    public static GuardianLeggings GUARDIAN_LEGGINGS;
-    public static GuardianBoots GUARDIAN_BOOTS;
+    public static GuardianHelmet guardianHelmet;
+    public static GuardianChestplate guardianChestplate;
+    public static GuardianLeggings guardianLeggings;
+    public static GuardianBoots guardianBoots;
 
-    public static SuperStarHelmet SUPER_STAR_HELMET;
-    public static SuperStarChestplate SUPER_STAR_CHESTPLATE;
-    public static SuperStarLeggings SUPER_STAR_LEGGINGS;
-    public static SuperStarBoots SUPER_STAR_BOOTS;
+    public static SuperStarHelmet superStarHelmet;
+    public static SuperStarChestplate superStarChestplate;
+    public static SuperStarLeggings superStarLeggings;
+    public static SuperStarBoots superStarBoots;
 
-    public static TheUltimateHelmet THE_ULTIMATE_HELMET;
-    public static TheUltimateChestplate THE_ULTIMATE_CHESTPLATE;
-    public static TheUltimateLeggings THE_ULTIMATE_LEGGINGS;
-    public static TheUltimateBoots THE_ULTIMATE_BOOTS;
+    public static TheUltimateHelmet theUltimateHelmet;
+    public static TheUltimateChestplate theUltimateChestplate;
+    public static TheUltimateLeggings theUltimateLeggings;
+    public static TheUltimateBoots theUltimateBoots;
 
-    public static ArditeHelmet ARDITE_HELMET;
-    public static ArditeChestplate ARDITE_CHESTPLATE;
-    public static ArditeLeggings ARDITE_LEGGINGS;
-    public static ArditeBoots ARDITE_BOOTS;
+    public static ArditeHelmet arditeHelmet;
+    public static ArditeChestplate arditeChestplate;
+    public static ArditeLeggings arditeLeggings;
+    public static ArditeBoots arditeBoots;
 
-    public static CobaltHelmet COBALT_HELMET;
-    public static CobaltChestplate COBALT_CHESTPLATE;
-    public static CobaltLeggings COBALT_LEGGINGS;
-    public static CobaltBoots COBALT_BOOTS;
+    public static CobaltHelmet cobaltHelmet;
+    public static CobaltChestplate cobaltChestplate;
+    public static CobaltLeggings cobaltLeggings;
+    public static CobaltBoots cobaltBoots;
 
-    public static ManyullynHelmet MANYULLYN_HELMET;
-    public static ManyullynChestplate MANYULLYN_CHESTPLATE;
-    public static ManyullynLeggings MANYULLYN_LEGGINGS;
-    public static ManyullynBoots MANYULLYN_BOOTS;
+    public static ManyullynHelmet manyullynHelmet;
+    public static ManyullynChestplate manyullynChestplate;
+    public static ManyullynLeggings manyullynLeggings;
+    public static ManyullynBoots manyullynBoots;
 
-    public static PigIronHelmet PIG_IRON_HELMET;
-    public static PigIronChestplate PIG_IRON_CHESTPLATE;
-    public static PigIronLeggings PIG_IRON_LEGGINGS;
-    public static PigIronBoots PIG_IRON_BOOTS;
+    public static PigIronHelmet pigIronHelmet;
+    public static PigIronChestplate pigIronChestplate;
+    public static PigIronLeggings pigIronLeggings;
+    public static PigIronBoots pigIronBoots;
 
-    public static KnightSlimeHelmet KNIGHT_SLIME_HELMET;
-    public static KnightSlimeChestplate KNIGHT_SLIME_CHESTPLATE;
-    public static KnightSlimeLeggings KNIGHT_SLIME_LEGGINGS;
-    public static KnightSlimeBoots KNIGHT_SLIME_BOOTS;
+    public static KnightSlimeHelmet knightSlimeHelmet;
+    public static KnightSlimeChestplate knightSlimeChestplate;
+    public static KnightSlimeLeggings knightSlimeLeggings;
+    public static KnightSlimeBoots knightSlimeBoots;
 
-    public static CoalSword COAL_SWORD;
-    public static LapisSword LAPIS_SWORD;
-    public static RedstoneSword REDSTONE_SWORD;
-    public static EmeraldSword EMERALD_SWORD;
-    public static ObsidianSword OBSIDIAN_SWORD;
-    public static LavaSword LAVA_SWORD;
-    public static SuperStarSword SUPER_STAR_SWORD;
-    public static GuardianSword GUARDIAN_SWORD;
-    public static EnderDragonSword ENDER_DRAGON_SWORD;
+    public static CoalSword coalSword;
+    public static LapisSword lapisSword;
+    public static RedstoneSword redstoneSword;
+    public static EmeraldSword emeraldSword;
+    public static ObsidianSword obsidianSword;
+    public static LavaSword lavaSword;
+    public static SuperStarSword superStarSword;
+    public static GuardianSword guardianSword;
+    public static EnderDragonSword enderDragonSword;
 
-    public static CoalBattleAxe COAL_BATTLE_AXE;
-    public static LapisBattleAxe LAPIS_BATTLE_AXE;
-    public static RedstoneBattleAxe REDSTONE_BATTLE_AXE;
-    public static EmeraldBattleAxe EMERALD_BATTLE_AXE;
-    public static ObsidianBattleAxe OBSIDIAN_BATTLE_AXE;
-    public static LavaBattleAxe LAVA_BATTLE_AXE;
-    public static SuperStarBattleAxe SUPER_STAR_BATTLE_AXE;
-    public static GuardianBattleAxe GUARDIAN_BATTLE_AXE;
-    public static EnderDragonBattleAxe ENDER_DRAGON_BATTLE_AXE;
+    public static CoalBattleAxe coalBattleAxe;
+    public static LapisBattleAxe lapisBattleAxe;
+    public static RedstoneBattleAxe redstoneBattleAxe;
+    public static EmeraldBattleAxe emeraldBattleAxe;
+    public static ObsidianBattleAxe obsidianBattleAxe;
+    public static LavaBattleAxe lavaBattleAxe;
+    public static SuperStarBattleAxe superStarBattleAxe;
+    public static GuardianBattleAxe guardianBattleAxe;
+    public static EnderDragonBattleAxe enderDragonBattleAxe;
 
-    public static CoalBow COAL_BOW;
-    public static LapisBow LAPIS_BOW;
-    public static RedstoneBow REDSTONE_BOW;
-    public static EmeraldBow EMERALD_BOW;
-    public static ObsidianBow OBSIDIAN_BOW;
-    public static LavaBow LAVA_BOW;
-    public static SuperStarBow SUPER_STAR_BOW;
-    public static GuardianBow GUARDIAN_BOW;
-    public static EnderDragonBow ENDER_DRAGON_BOW;
+    public static CoalBow coalBow;
+    public static LapisBow lapisBow;
+    public static RedstoneBow redstoneBow;
+    public static EmeraldBow emeraldBow;
+    public static ObsidianBow obsidianBow;
+    public static LavaBow lavaBow;
+    public static SuperStarBow superStarBow;
+    public static GuardianBow guardianBow;
+    public static EnderDragonBow enderDragonBow;
 
-    public static TheUltimateHelmetLeft THE_ULTIMATE_HELMET_LEFT;
-    public static TheUltimateHelmetMiddle THE_ULTIMATE_HELMET_MIDDLE;
-    public static TheUltimateHelmetRight THE_ULTIMATE_HELMET_RIGHT;
-    public static TheUltimateChestplateLeft THE_ULTIMATE_CHESTPLATE_LEFT;
-    public static TheUltimateChestplateMiddle THE_ULTIMATE_CHESTPLATE_MIDDLE;
-    public static TheUltimateChestplateRight THE_ULTIMATE_CHESTPLATE_RIGHT;
-    public static TheUltimateLeggingsLeft THE_ULTIMATE_LEGGINGS_LEFT;
-    public static TheUltimateLeggingsMiddle THE_ULTIMATE_LEGGINGS_MIDDLE;
-    public static TheUltimateLeggingsRight THE_ULTIMATE_LEGGINGS_RIGHT;
-    public static TheUltimateBootsLeft THE_ULTIMATE_BOOTS_LEFT;
-    public static TheUltimateBootsMiddle THE_ULTIMATE_BOOTS_MIDDLE;
-    public static TheUltimateBootsRight THE_ULTIMATE_BOOTS_RIGHT;
+    public static TheUltimateHelmetLeft theUltimateHelmetLeft;
+    public static TheUltimateHelmetMiddle theUltimateHelmetMiddle;
+    public static TheUltimateHelmetRight theUltimateHelmetRight;
+    public static TheUltimateChestplateLeft theUltimateChestplateLeft;
+    public static TheUltimateChestplateMiddle theUltimateChestplateMiddle;
+    public static TheUltimateChestplateRight theUltimateChestplateRight;
+    public static TheUltimateLeggingsLeft theUltimateLeggingsLeft;
+    public static TheUltimateLeggingsMiddle theUltimateLeggingsMiddle;
+    public static TheUltimateLeggingsRight theUltimateLeggingsRight;
+    public static TheUltimateBootsLeft theUltimateBootsLeft;
+    public static TheUltimateBootsMiddle theUltimateBootsMiddle;
+    public static TheUltimateBootsRight theUltimateBootsRight;
 
-    public static DevTool DEV_TOOL;
-    public static TheDragonTeamItem THE_DRAGON_TEAM_ITEM;
-    public static ModdedCityItem MODDED_CITY_ITEM;
-    public static JonBamsItem JON_BAMS_ITEM;
+    public static DevTool devTool;
+    public static TheDragonTeamItem theDragonTeamItem;
+    public static ModdedCityItem moddedCityItem;
+    public static JonBamsItem jonBamsItem;
 
-    public static Item COAL_ARROW, LAPIS_ARROW, REDSTONE_ARROW, LAVA_ARROW;
+    public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
     public ModItems() {
         register();
     }
 
     public static void init() {
-        THE_DRAGON_TEAM_ITEM = new TheDragonTeamItem();
-        MODDED_CITY_ITEM = new ModdedCityItem();
-        JON_BAMS_ITEM = new JonBamsItem();
-
-        CHAINMAIL = new Chainmail();
-        GUARDIAN_SCALE = new GuardianScale();
-        WITHER_BONE = new WitherBone();
-        ENDER_DRAGON_SCALE = new EnderDragonScale();
-        THE_ULTIMATE_MATERIAL = new TheUltimateMaterial();
-        LAVA_CRYSTAL = new LavaCrystal();
-        THE_GIFT_OF_THE_GODS = new TheGiftOfTheGods();
-        ARMORPLUS_BOOK = new ArmorPlusBook();
-        STEEL_INGOT = new SteelIngot();
-        ELECTRICAL_INGOT = new ElectricalIngot();
-        REDSTONE_APPLE = new RedstoneApple(4, 2.0f, false);
-        ARMORPLUS_INFO_BOOK = new ArmorPlusInfoBook();
-        NBT_ITEM = new NBTItem();
-
-        DEV_HELMET = new DevHelmet();
-        DEV_CHESTPLATE = new DevChestplate();
-        DEV_LEGGINGS = new DevLeggings();
-        DEV_BOOTS = new DevBoots();
-
-        COAL_HELMET = new CoalHelmet();
-        COAL_CHESTPLATE = new CoalChestplate();
-        COAL_LEGGINGS = new CoalLeggings();
-        COAL_BOOTS = new CoalBoots();
-
-        EMERALD_HELMET = new EmeraldHelmet();
-        EMERALD_CHESTPLATE = new EmeraldChestplate();
-        EMERALD_LEGGINGS = new EmeraldLeggings();
-        EMERALD_BOOTS = new EmeraldBoots();
-
-        LAPIS_HELMET = new LapisHelmet();
-        LAPIS_CHESTPLATE = new LapisChestplate();
-        LAPIS_LEGGINGS = new LapisLeggings();
-        LAPIS_BOOTS = new LapisBoots();
-
-        LAVA_HELMET = new LavaHelmet();
-        LAVA_CHESTPLATE = new LavaChestplate();
-        LAVA_LEGGINGS = new LavaLeggings();
-        LAVA_BOOTS = new LavaBoots();
-
-        OBSIDIAN_HELMET = new ObsidianHelmet();
-        OBSIDIAN_CHESTPLATE = new ObsidianChestplate();
-        OBSIDIAN_LEGGINGS = new ObsidianLeggings();
-        OBSIDIAN_BOOTS = new ObsidianBoots();
-
-        REDSTONE_HELMET = new RedstoneHelmet();
-        REDSTONE_CHESTPLATE = new RedstoneChestplate();
-        REDSTONE_LEGGINGS = new RedstoneLeggings();
-        REDSTONE_BOOTS = new RedstoneBoots();
-
-        STEEL_HELMET = new SteelHelmet();
-        STEEL_CHESTPLATE = new SteelChestplate();
-        STEEL_LEGGINGS = new SteelLeggings();
-        STEEL_BOOTS = new SteelBoots();
-
-        ELECTRICAL_HELMET = new ElectricalHelmet();
-        ELECTRICAL_CHESTPLATE = new ElectricalChestplate();
-        ELECTRICAL_LEGGINGS = new ElectricalLeggings();
-        ELECTRICAL_BOOTS = new ElectricalBoots();
-
-        CHICKEN_HELMET = new ChickenHelmet();
-        CHICKEN_CHESTPLATE = new ChickenChestplate();
-        CHICKEN_LEGGINGS = new ChickenLeggings();
-        CHICKEN_BOOTS = new ChickenBoots();
-
-        SLIME_HELMET = new SlimeHelmet();
-        SLIME_CHESTPLATE = new SlimeChestplate();
-        SLIME_LEGGINGS = new SlimeLeggings();
-        SLIME_BOOTS = new SlimeBoots();
-
-        ENDER_DRAGON_HELMET = new EnderDragonHelmet();
-        ENDER_DRAGON_CHESTPLATE = new EnderDragonChestplate();
-        ENDER_DRAGON_LEGGINGS = new EnderDragonLeggings();
-        ENDER_DRAGON_BOOTS = new EnderDragonBoots();
-
-        GUARDIAN_HELMET = new GuardianHelmet();
-        GUARDIAN_CHESTPLATE = new GuardianChestplate();
-        GUARDIAN_LEGGINGS = new GuardianLeggings();
-        GUARDIAN_BOOTS = new GuardianBoots();
-
-        SUPER_STAR_HELMET = new SuperStarHelmet();
-        SUPER_STAR_CHESTPLATE = new SuperStarChestplate();
-        SUPER_STAR_LEGGINGS = new SuperStarLeggings();
-        SUPER_STAR_BOOTS = new SuperStarBoots();
-
-        THE_ULTIMATE_HELMET = new TheUltimateHelmet();
-        THE_ULTIMATE_CHESTPLATE = new TheUltimateChestplate();
-        THE_ULTIMATE_LEGGINGS = new TheUltimateLeggings();
-        THE_ULTIMATE_BOOTS = new TheUltimateBoots();
-
-        ARDITE_HELMET = new ArditeHelmet();
-        ARDITE_CHESTPLATE = new ArditeChestplate();
-        ARDITE_LEGGINGS = new ArditeLeggings();
-        ARDITE_BOOTS = new ArditeBoots();
-
-        COBALT_HELMET = new CobaltHelmet();
-        COBALT_CHESTPLATE = new CobaltChestplate();
-        COBALT_LEGGINGS = new CobaltLeggings();
-        COBALT_BOOTS = new CobaltBoots();
-
-        MANYULLYN_HELMET = new ManyullynHelmet();
-        MANYULLYN_CHESTPLATE = new ManyullynChestplate();
-        MANYULLYN_LEGGINGS = new ManyullynLeggings();
-        MANYULLYN_BOOTS = new ManyullynBoots();
-
-        PIG_IRON_HELMET = new PigIronHelmet();
-        PIG_IRON_CHESTPLATE = new PigIronChestplate();
-        PIG_IRON_LEGGINGS = new PigIronLeggings();
-        PIG_IRON_BOOTS = new PigIronBoots();
-
-        KNIGHT_SLIME_HELMET = new KnightSlimeHelmet();
-        KNIGHT_SLIME_CHESTPLATE = new KnightSlimeChestplate();
-        KNIGHT_SLIME_LEGGINGS = new KnightSlimeLeggings();
-        KNIGHT_SLIME_BOOTS = new KnightSlimeBoots();
-
-        COAL_SWORD = new CoalSword(SWORD_COAL_MATERIAL);
-        LAPIS_SWORD = new LapisSword(SWORD_LAPIS_MATERIAL);
-        REDSTONE_SWORD = new RedstoneSword(SWORD_REDSTONE_MATERIAL);
-        EMERALD_SWORD = new EmeraldSword(SWORD_EMERALD_MATERIAL);
-        OBSIDIAN_SWORD = new ObsidianSword(SWORD_OBSIDIAN_MATERIAL);
-        LAVA_SWORD = new LavaSword(SWORD_LAVA_MATERIAL);
-        SUPER_STAR_SWORD = new SuperStarSword(SWORD_SUPER_STAR_MATERIAL);
-        GUARDIAN_SWORD = new GuardianSword(SWORD_GUARDIAN_MATERIAL);
-        ENDER_DRAGON_SWORD = new EnderDragonSword(SWORD_ENDER_DRAGON_MATERIAL);
-        COAL_BATTLE_AXE = new CoalBattleAxe(BATTLE_AXE_COAL_MATERIAL);
-        LAPIS_BATTLE_AXE = new LapisBattleAxe(BATTLE_AXE_LAPIS_MATERIAL);
-        REDSTONE_BATTLE_AXE = new RedstoneBattleAxe(BATTLE_AXE_REDSTONE_MATERIAL);
-        EMERALD_BATTLE_AXE = new EmeraldBattleAxe(BATTLE_AXE_EMERALD_MATERIAL);
-        OBSIDIAN_BATTLE_AXE = new ObsidianBattleAxe(BATTLE_AXE_OBSIDIAN_MATERIAL);
-        LAVA_BATTLE_AXE = new LavaBattleAxe(BATTLE_AXE_LAVA_MATERIAL);
-        SUPER_STAR_BATTLE_AXE = new SuperStarBattleAxe(BATTLE_AXE_SUPER_STAR_MATERIAL);
-        GUARDIAN_BATTLE_AXE = new GuardianBattleAxe(BATTLE_AXE_GUARDIAN_MATERIAL);
-        ENDER_DRAGON_BATTLE_AXE = new EnderDragonBattleAxe(BATTLE_AXE_ENDER_DRAGON_MATERIAL);
-        COAL_BOW = new CoalBow();
-        LAPIS_BOW = new LapisBow();
-        REDSTONE_BOW = new RedstoneBow();
-        EMERALD_BOW = new EmeraldBow();
-        OBSIDIAN_BOW = new ObsidianBow();
-        LAVA_BOW = new LavaBow();
-        SUPER_STAR_BOW = new SuperStarBow();
-        GUARDIAN_BOW = new GuardianBow();
-        ENDER_DRAGON_BOW = new EnderDragonBow();
-
-        THE_ULTIMATE_HELMET_LEFT = new TheUltimateHelmetLeft();
-        THE_ULTIMATE_HELMET_MIDDLE = new TheUltimateHelmetMiddle();
-        THE_ULTIMATE_HELMET_RIGHT = new TheUltimateHelmetRight();
-        THE_ULTIMATE_CHESTPLATE_LEFT = new TheUltimateChestplateLeft();
-        THE_ULTIMATE_CHESTPLATE_MIDDLE = new TheUltimateChestplateMiddle();
-        THE_ULTIMATE_CHESTPLATE_RIGHT = new TheUltimateChestplateRight();
-        THE_ULTIMATE_LEGGINGS_LEFT = new TheUltimateLeggingsLeft();
-        THE_ULTIMATE_LEGGINGS_MIDDLE = new TheUltimateLeggingsMiddle();
-        THE_ULTIMATE_LEGGINGS_RIGHT = new TheUltimateLeggingsRight();
-        THE_ULTIMATE_BOOTS_LEFT = new TheUltimateBootsLeft();
-        THE_ULTIMATE_BOOTS_MIDDLE = new TheUltimateBootsMiddle();
-        THE_ULTIMATE_BOOTS_RIGHT = new TheUltimateBootsRight();
-
-        DEV_TOOL = new DevTool();
-
-        COAL_ARROW = new ItemCoalArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
-        NameUtil.setNames(COAL_ARROW, "coal_arrow");
-        LAPIS_ARROW = new ItemLapisArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
-        NameUtil.setNames(LAPIS_ARROW, "lapis_arrow");
-        REDSTONE_ARROW = new ItemRedstoneArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
-        NameUtil.setNames(REDSTONE_ARROW, "redstone_arrow");
-        LAVA_ARROW = new ItemLavaArrow().setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
-        NameUtil.setNames(LAVA_ARROW, "lava_arrow");
+        theDragonTeamItem = new TheDragonTeamItem();
+        moddedCityItem = new ModdedCityItem();
+        jonBamsItem = new JonBamsItem();
+        chainmail = new Chainmail();
+        guardianScale = new GuardianScale();
+        witherBone = new WitherBone();
+        enderDragonScale = new EnderDragonScale();
+        theUltimateMaterial = new TheUltimateMaterial();
+        lavaCrystal = new LavaCrystal();
+        theGiftOfTheGods = new TheGiftOfTheGods();
+        armorPlusBook = new ArmorPlusBook();
+        steelIngot = new SteelIngot();
+        electricalIngot = new ElectricalIngot();
+        redstoneApple = new RedstoneApple();
+        armorPlusInfoBook = new ArmorPlusInfoBook();
+        nbtItem = new NBTItem();
+        devHelmet = new DevHelmet();
+        devChestplate = new DevChestplate();
+        devLeggings = new DevLeggings();
+        devBoots = new DevBoots();
+        coalHelmet = new CoalHelmet();
+        coalChestplate = new CoalChestplate();
+        coalLeggings = new CoalLeggings();
+        coalBoots = new CoalBoots();
+        emeraldHelmet = new EmeraldHelmet();
+        emeraldChestplate = new EmeraldChestplate();
+        emeraldLeggings = new EmeraldLeggings();
+        emeraldBoots = new EmeraldBoots();
+        lapisHelmet = new LapisHelmet();
+        lapisChestplate = new LapisChestplate();
+        lapisLeggings = new LapisLeggings();
+        lapisBoots = new LapisBoots();
+        lavaHelmet = new LavaHelmet();
+        lavaChestplate = new LavaChestplate();
+        lavaLeggings = new LavaLeggings();
+        lavaBoots = new LavaBoots();
+        obsidianHelmet = new ObsidianHelmet();
+        obsidianChestplate = new ObsidianChestplate();
+        obsidianLeggings = new ObsidianLeggings();
+        obsidianBoots = new ObsidianBoots();
+        redstoneHelmet = new RedstoneHelmet();
+        redstoneChestplate = new RedstoneChestplate();
+        redstoneLeggings = new RedstoneLeggings();
+        redstoneBoots = new RedstoneBoots();
+        steelHelmet = new SteelHelmet();
+        steelChestplate = new SteelChestplate();
+        steelLeggings = new SteelLeggings();
+        steelBoots = new SteelBoots();
+        electricalHelmet = new ElectricalHelmet();
+        electricalChestplate = new ElectricalChestplate();
+        electricalLeggings = new ElectricalLeggings();
+        electricalBoots = new ElectricalBoots();
+        chickenHelmet = new ChickenHelmet();
+        chickenChestplate = new ChickenChestplate();
+        chickenLeggings = new ChickenLeggings();
+        chickenBoots = new ChickenBoots();
+        slimeHelmet = new SlimeHelmet();
+        slimeChestplate = new SlimeChestplate();
+        slimeLeggings = new SlimeLeggings();
+        slimeBoots = new SlimeBoots();
+        enderDragonHelmet = new EnderDragonHelmet();
+        enderDragonChestplate = new EnderDragonChestplate();
+        enderDragonLeggings = new EnderDragonLeggings();
+        enderDragonBoots = new EnderDragonBoots();
+        guardianHelmet = new GuardianHelmet();
+        guardianChestplate = new GuardianChestplate();
+        guardianLeggings = new GuardianLeggings();
+        guardianBoots = new GuardianBoots();
+        superStarHelmet = new SuperStarHelmet();
+        superStarChestplate = new SuperStarChestplate();
+        superStarLeggings = new SuperStarLeggings();
+        superStarBoots = new SuperStarBoots();
+        theUltimateHelmet = new TheUltimateHelmet();
+        theUltimateChestplate = new TheUltimateChestplate();
+        theUltimateLeggings = new TheUltimateLeggings();
+        theUltimateBoots = new TheUltimateBoots();
+        arditeHelmet = new ArditeHelmet();
+        arditeChestplate = new ArditeChestplate();
+        arditeLeggings = new ArditeLeggings();
+        arditeBoots = new ArditeBoots();
+        cobaltHelmet = new CobaltHelmet();
+        cobaltChestplate = new CobaltChestplate();
+        cobaltLeggings = new CobaltLeggings();
+        cobaltBoots = new CobaltBoots();
+        manyullynHelmet = new ManyullynHelmet();
+        manyullynChestplate = new ManyullynChestplate();
+        manyullynLeggings = new ManyullynLeggings();
+        manyullynBoots = new ManyullynBoots();
+        pigIronHelmet = new PigIronHelmet();
+        pigIronChestplate = new PigIronChestplate();
+        pigIronLeggings = new PigIronLeggings();
+        pigIronBoots = new PigIronBoots();
+        knightSlimeHelmet = new KnightSlimeHelmet();
+        knightSlimeChestplate = new KnightSlimeChestplate();
+        knightSlimeLeggings = new KnightSlimeLeggings();
+        knightSlimeBoots = new KnightSlimeBoots();
+        coalSword = new CoalSword(swordCoalMaterial);
+        lapisSword = new LapisSword(swordLapisMaterial);
+        redstoneSword = new RedstoneSword(swordRedstoneMaterial);
+        emeraldSword = new EmeraldSword(swordEmeraldMaterial);
+        obsidianSword = new ObsidianSword(swordObsidianMaterial);
+        lavaSword = new LavaSword(swordLavaMaterial);
+        superStarSword = new SuperStarSword(swordSuperStarMaterial);
+        guardianSword = new GuardianSword(swordGuardianMaterial);
+        enderDragonSword = new EnderDragonSword(swordEnderDragonMaterial);
+        coalBattleAxe = new CoalBattleAxe(battleAxeCoalMaterial);
+        lapisBattleAxe = new LapisBattleAxe(battleAxeLapisMaterial);
+        redstoneBattleAxe = new RedstoneBattleAxe(battleAxeRedstoneMaterial);
+        emeraldBattleAxe = new EmeraldBattleAxe(battleAxeEmeraldMaterial);
+        obsidianBattleAxe = new ObsidianBattleAxe(battleAxeObsidianMaterial);
+        lavaBattleAxe = new LavaBattleAxe(battleAxeLavaMaterial);
+        superStarBattleAxe = new SuperStarBattleAxe(battleAxeSuperStarMaterial);
+        guardianBattleAxe = new GuardianBattleAxe(battleAxeGuardianMaterial);
+        enderDragonBattleAxe = new EnderDragonBattleAxe(battleAxeEnderDragonMaterial);
+        coalBow = new CoalBow();
+        lapisBow = new LapisBow();
+        redstoneBow = new RedstoneBow();
+        emeraldBow = new EmeraldBow();
+        obsidianBow = new ObsidianBow();
+        lavaBow = new LavaBow();
+        superStarBow = new SuperStarBow();
+        guardianBow = new GuardianBow();
+        enderDragonBow = new EnderDragonBow();
+        theUltimateHelmetLeft = new TheUltimateHelmetLeft();
+        theUltimateHelmetMiddle = new TheUltimateHelmetMiddle();
+        theUltimateHelmetRight = new TheUltimateHelmetRight();
+        theUltimateChestplateLeft = new TheUltimateChestplateLeft();
+        theUltimateChestplateMiddle = new TheUltimateChestplateMiddle();
+        theUltimateChestplateRight = new TheUltimateChestplateRight();
+        theUltimateLeggingsLeft = new TheUltimateLeggingsLeft();
+        theUltimateLeggingsMiddle = new TheUltimateLeggingsMiddle();
+        theUltimateLeggingsRight = new TheUltimateLeggingsRight();
+        theUltimateBootsLeft = new TheUltimateBootsLeft();
+        theUltimateBootsMiddle = new TheUltimateBootsMiddle();
+        theUltimateBootsRight = new TheUltimateBootsRight();
+        devTool = new DevTool();
+        coalArrow = new ItemCoalArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        NameUtil.setNames(coalArrow, "coal_arrow");
+        lapisArrow = new ItemLapisArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        NameUtil.setNames(lapisArrow, "lapis_arrow");
+        redstoneArrow = new ItemRedstoneArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        NameUtil.setNames(redstoneArrow, "redstone_arrow");
+        lavaArrow = new ItemLavaArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        NameUtil.setNames(lavaArrow, "lava_arrow");
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        THE_DRAGON_TEAM_ITEM.initModel();
-        MODDED_CITY_ITEM.initModel();
-        JON_BAMS_ITEM.initModel();
+        theDragonTeamItem.initModel();
+        moddedCityItem.initModel();
+        jonBamsItem.initModel();
 
-        CHAINMAIL.initModel();
-        GUARDIAN_SCALE.initModel();
-        WITHER_BONE.initModel();
-        ENDER_DRAGON_SCALE.initModel();
-        THE_ULTIMATE_MATERIAL.initModel();
-        LAVA_CRYSTAL.initModel();
-        THE_GIFT_OF_THE_GODS.initModel();
-        ARMORPLUS_BOOK.initModel();
-        STEEL_INGOT.initModel();
-        ELECTRICAL_INGOT.initModel();
-        REDSTONE_APPLE.initModel();
-        ARMORPLUS_INFO_BOOK.initModel();
+        chainmail.initModel();
+        guardianScale.initModel();
+        witherBone.initModel();
+        enderDragonScale.initModel();
+        theUltimateMaterial.initModel();
+        lavaCrystal.initModel();
+        theGiftOfTheGods.initModel();
+        armorPlusBook.initModel();
+        steelIngot.initModel();
+        electricalIngot.initModel();
+        redstoneApple.initModel();
+        armorPlusInfoBook.initModel();
 
-        DEV_HELMET.initModel();
-        DEV_CHESTPLATE.initModel();
-        DEV_LEGGINGS.initModel();
-        DEV_BOOTS.initModel();
+        devHelmet.initModel();
+        devChestplate.initModel();
+        devLeggings.initModel();
+        devBoots.initModel();
 
-        COAL_HELMET.initModel();
-        COAL_CHESTPLATE.initModel();
-        COAL_LEGGINGS.initModel();
-        COAL_BOOTS.initModel();
+        coalHelmet.initModel();
+        coalChestplate.initModel();
+        coalLeggings.initModel();
+        coalBoots.initModel();
 
-        EMERALD_HELMET.initModel();
-        EMERALD_CHESTPLATE.initModel();
-        EMERALD_LEGGINGS.initModel();
-        EMERALD_BOOTS.initModel();
+        emeraldHelmet.initModel();
+        emeraldChestplate.initModel();
+        emeraldLeggings.initModel();
+        emeraldBoots.initModel();
 
-        LAPIS_HELMET.initModel();
-        LAPIS_CHESTPLATE.initModel();
-        LAPIS_LEGGINGS.initModel();
-        LAPIS_BOOTS.initModel();
+        lapisHelmet.initModel();
+        lapisChestplate.initModel();
+        lapisLeggings.initModel();
+        lapisBoots.initModel();
 
-        LAVA_HELMET.initModel();
-        LAVA_CHESTPLATE.initModel();
-        LAVA_LEGGINGS.initModel();
-        LAVA_BOOTS.initModel();
+        lavaHelmet.initModel();
+        lavaChestplate.initModel();
+        lavaLeggings.initModel();
+        lavaBoots.initModel();
 
-        OBSIDIAN_HELMET.initModel();
-        OBSIDIAN_CHESTPLATE.initModel();
-        OBSIDIAN_LEGGINGS.initModel();
-        OBSIDIAN_BOOTS.initModel();
+        obsidianHelmet.initModel();
+        obsidianChestplate.initModel();
+        obsidianLeggings.initModel();
+        obsidianBoots.initModel();
 
-        REDSTONE_HELMET.initModel();
-        REDSTONE_CHESTPLATE.initModel();
-        REDSTONE_LEGGINGS.initModel();
-        REDSTONE_BOOTS.initModel();
+        redstoneHelmet.initModel();
+        redstoneChestplate.initModel();
+        redstoneLeggings.initModel();
+        redstoneBoots.initModel();
 
-        STEEL_HELMET.initModel();
-        STEEL_CHESTPLATE.initModel();
-        STEEL_LEGGINGS.initModel();
-        STEEL_BOOTS.initModel();
+        steelHelmet.initModel();
+        steelChestplate.initModel();
+        steelLeggings.initModel();
+        steelBoots.initModel();
 
-        ELECTRICAL_HELMET.initModel();
-        ELECTRICAL_CHESTPLATE.initModel();
-        ELECTRICAL_LEGGINGS.initModel();
-        ELECTRICAL_BOOTS.initModel();
+        electricalHelmet.initModel();
+        electricalChestplate.initModel();
+        electricalLeggings.initModel();
+        electricalBoots.initModel();
 
-        CHICKEN_HELMET.initModel();
-        CHICKEN_CHESTPLATE.initModel();
-        CHICKEN_LEGGINGS.initModel();
-        CHICKEN_BOOTS.initModel();
+        chickenHelmet.initModel();
+        chickenChestplate.initModel();
+        chickenLeggings.initModel();
+        chickenBoots.initModel();
 
-        SLIME_HELMET.initModel();
-        SLIME_CHESTPLATE.initModel();
-        SLIME_LEGGINGS.initModel();
-        SLIME_BOOTS.initModel();
+        slimeHelmet.initModel();
+        slimeChestplate.initModel();
+        slimeLeggings.initModel();
+        slimeBoots.initModel();
 
-        ENDER_DRAGON_HELMET.initModel();
-        ENDER_DRAGON_CHESTPLATE.initModel();
-        ENDER_DRAGON_LEGGINGS.initModel();
-        ENDER_DRAGON_BOOTS.initModel();
+        enderDragonHelmet.initModel();
+        enderDragonChestplate.initModel();
+        enderDragonLeggings.initModel();
+        enderDragonBoots.initModel();
 
-        GUARDIAN_HELMET.initModel();
-        GUARDIAN_CHESTPLATE.initModel();
-        GUARDIAN_LEGGINGS.initModel();
-        GUARDIAN_BOOTS.initModel();
+        guardianHelmet.initModel();
+        guardianChestplate.initModel();
+        guardianLeggings.initModel();
+        guardianBoots.initModel();
 
-        SUPER_STAR_HELMET.initModel();
-        SUPER_STAR_CHESTPLATE.initModel();
-        SUPER_STAR_LEGGINGS.initModel();
-        SUPER_STAR_BOOTS.initModel();
+        superStarHelmet.initModel();
+        superStarChestplate.initModel();
+        superStarLeggings.initModel();
+        superStarBoots.initModel();
 
-        THE_ULTIMATE_HELMET.initModel();
-        THE_ULTIMATE_CHESTPLATE.initModel();
-        THE_ULTIMATE_LEGGINGS.initModel();
-        THE_ULTIMATE_BOOTS.initModel();
+        theUltimateHelmet.initModel();
+        theUltimateChestplate.initModel();
+        theUltimateLeggings.initModel();
+        theUltimateBoots.initModel();
 
-        ARDITE_HELMET.initModel();
-        ARDITE_CHESTPLATE.initModel();
-        ARDITE_LEGGINGS.initModel();
-        ARDITE_BOOTS.initModel();
+        arditeHelmet.initModel();
+        arditeChestplate.initModel();
+        arditeLeggings.initModel();
+        arditeBoots.initModel();
 
-        COBALT_HELMET.initModel();
-        COBALT_CHESTPLATE.initModel();
-        COBALT_LEGGINGS.initModel();
-        COBALT_BOOTS.initModel();
+        cobaltHelmet.initModel();
+        cobaltChestplate.initModel();
+        cobaltLeggings.initModel();
+        cobaltBoots.initModel();
 
-        MANYULLYN_HELMET.initModel();
-        MANYULLYN_CHESTPLATE.initModel();
-        MANYULLYN_LEGGINGS.initModel();
-        MANYULLYN_BOOTS.initModel();
+        manyullynHelmet.initModel();
+        manyullynChestplate.initModel();
+        manyullynLeggings.initModel();
+        manyullynBoots.initModel();
 
-        PIG_IRON_HELMET.initModel();
-        PIG_IRON_CHESTPLATE.initModel();
-        PIG_IRON_LEGGINGS.initModel();
-        PIG_IRON_BOOTS.initModel();
+        pigIronHelmet.initModel();
+        pigIronChestplate.initModel();
+        pigIronLeggings.initModel();
+        pigIronBoots.initModel();
 
-        KNIGHT_SLIME_HELMET.initModel();
-        KNIGHT_SLIME_CHESTPLATE.initModel();
-        KNIGHT_SLIME_LEGGINGS.initModel();
-        KNIGHT_SLIME_BOOTS.initModel();
+        knightSlimeHelmet.initModel();
+        knightSlimeChestplate.initModel();
+        knightSlimeLeggings.initModel();
+        knightSlimeBoots.initModel();
 
-        COAL_SWORD.initModel();
-        LAPIS_SWORD.initModel();
-        REDSTONE_SWORD.initModel();
-        EMERALD_SWORD.initModel();
-        OBSIDIAN_SWORD.initModel();
-        LAVA_SWORD.initModel();
-        SUPER_STAR_SWORD.initModel();
-        GUARDIAN_SWORD.initModel();
-        ENDER_DRAGON_SWORD.initModel();
-        COAL_BATTLE_AXE.initModel();
-        LAPIS_BATTLE_AXE.initModel();
-        REDSTONE_BATTLE_AXE.initModel();
-        EMERALD_BATTLE_AXE.initModel();
-        OBSIDIAN_BATTLE_AXE.initModel();
-        LAVA_BATTLE_AXE.initModel();
-        SUPER_STAR_BATTLE_AXE.initModel();
-        GUARDIAN_BATTLE_AXE.initModel();
-        ENDER_DRAGON_BATTLE_AXE.initModel();
-        COAL_BOW.initModel();
-        LAPIS_BOW.initModel();
-        REDSTONE_BOW.initModel();
-        EMERALD_BOW.initModel();
-        OBSIDIAN_BOW.initModel();
-        LAVA_BOW.initModel();
-        SUPER_STAR_BOW.initModel();
-        GUARDIAN_BOW.initModel();
-        ENDER_DRAGON_BOW.initModel();
+        coalSword.initModel();
+        lapisSword.initModel();
+        redstoneSword.initModel();
+        emeraldSword.initModel();
+        obsidianSword.initModel();
+        lavaSword.initModel();
+        superStarSword.initModel();
+        guardianSword.initModel();
+        enderDragonSword.initModel();
+        coalBattleAxe.initModel();
+        lapisBattleAxe.initModel();
+        redstoneBattleAxe.initModel();
+        emeraldBattleAxe.initModel();
+        obsidianBattleAxe.initModel();
+        lavaBattleAxe.initModel();
+        superStarBattleAxe.initModel();
+        guardianBattleAxe.initModel();
+        enderDragonBattleAxe.initModel();
+        coalBow.initModel();
+        lapisBow.initModel();
+        redstoneBow.initModel();
+        emeraldBow.initModel();
+        obsidianBow.initModel();
+        lavaBow.initModel();
+        superStarBow.initModel();
+        guardianBow.initModel();
+        enderDragonBow.initModel();
 
-        THE_ULTIMATE_HELMET_LEFT.initModel();
-        THE_ULTIMATE_HELMET_MIDDLE.initModel();
-        THE_ULTIMATE_HELMET_RIGHT.initModel();
-        THE_ULTIMATE_CHESTPLATE_LEFT.initModel();
-        THE_ULTIMATE_CHESTPLATE_MIDDLE.initModel();
-        THE_ULTIMATE_CHESTPLATE_RIGHT.initModel();
-        THE_ULTIMATE_LEGGINGS_LEFT.initModel();
-        THE_ULTIMATE_LEGGINGS_MIDDLE.initModel();
-        THE_ULTIMATE_LEGGINGS_RIGHT.initModel();
-        THE_ULTIMATE_BOOTS_LEFT.initModel();
-        THE_ULTIMATE_BOOTS_MIDDLE.initModel();
-        THE_ULTIMATE_BOOTS_RIGHT.initModel();
+        theUltimateHelmetLeft.initModel();
+        theUltimateHelmetMiddle.initModel();
+        theUltimateHelmetRight.initModel();
+        theUltimateChestplateLeft.initModel();
+        theUltimateChestplateMiddle.initModel();
+        theUltimateChestplateRight.initModel();
+        theUltimateLeggingsLeft.initModel();
+        theUltimateLeggingsMiddle.initModel();
+        theUltimateLeggingsRight.initModel();
+        theUltimateBootsLeft.initModel();
+        theUltimateBootsMiddle.initModel();
+        theUltimateBootsRight.initModel();
 
-        DEV_TOOL.initModel();
-        NBT_ITEM.initModel();
+        devTool.initModel();
+        nbtItem.initModel();
     }
 
     private void register() {
-        registerItem(COAL_ARROW);
-        registerItem(LAPIS_ARROW);
-        registerItem(REDSTONE_ARROW);
-        registerItem(LAVA_ARROW);
+        registerItem(coalArrow);
+        registerItem(lapisArrow);
+        registerItem(redstoneArrow);
+        registerItem(lavaArrow);
     }
 
     private void registerItem(Item item) {

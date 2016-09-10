@@ -32,7 +32,7 @@ public class ARPTab extends CreativeTabs {
     }
 
     public static void initialize() {
-        iconArmorPlus = new ItemStack(ModItems.LAVA_CHESTPLATE);
+        iconArmorPlus = new ItemStack(ModItems.lavaChestplate);
     }
 
     public boolean hasSearchBar() {
@@ -44,13 +44,13 @@ public class ARPTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return new ItemStack(ModItems.LAVA_CHESTPLATE);
+                return new ItemStack(ModItems.lavaChestplate);
             case (1):
-                return new ItemStack(ModItems.ENDER_DRAGON_SCALE);
+                return new ItemStack(ModItems.enderDragonScale);
             case (2):
-                return new ItemStack(ModBlocks.BLOCK_LAVA_CRYSTAL);
+                return new ItemStack(ModBlocks.blockLavaCrystal);
             case (3):
-                return new ItemStack(ModItems.REDSTONE_BATTLE_AXE);
+                return new ItemStack(ModItems.redstoneBattleAxe);
         }
         return null;
     }

@@ -59,8 +59,8 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         recipeTransferRegistry.addRecipeTransferHandler(ContainerArmorForge.class, Constants.Compat.JEI_CATEGORY_ARMOR_FORGE, 1, 9, 10, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerAdvancedArmorForge.class, Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE, 1, 16, 17, 36);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.ARMOR_FORGE), Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE), Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.armorForge), Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.advancedArmorForge), Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE);
 
         registry.addRecipes(ArmorForgeCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(AdvancedArmorForgeCraftingManager.getInstance().getRecipeList());

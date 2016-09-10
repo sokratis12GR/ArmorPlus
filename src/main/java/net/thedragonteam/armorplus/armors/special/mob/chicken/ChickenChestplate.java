@@ -33,12 +33,12 @@ public class ChickenChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ChickenChestplate() {
-        super(ModItems.CHICKEN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.chickenArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("chicken_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "chicken_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

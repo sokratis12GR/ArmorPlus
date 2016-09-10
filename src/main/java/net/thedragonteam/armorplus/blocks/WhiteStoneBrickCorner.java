@@ -37,7 +37,7 @@ public class WhiteStoneBrickCorner extends Block {
         this.setLightOpacity(255);
         setUnlocalizedName(ArmorPlus.MODID + "." + "white_stone_brick_corner");
         this.setResistance(10.0F);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(5.0F);
         this.setHarvestLevel("pickaxe", 0);
     }

@@ -33,12 +33,12 @@ public class ChickenBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ChickenBoots() {
-        super(ModItems.CHICKEN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.chickenArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("chicken_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "chicken_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

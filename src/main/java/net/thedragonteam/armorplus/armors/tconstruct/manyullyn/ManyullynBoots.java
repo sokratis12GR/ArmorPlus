@@ -31,12 +31,12 @@ public class ManyullynBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ManyullynBoots() {
-        super(ModItems.MANYULLYN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.manyullynArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("manyullyn_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "manyullyn_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

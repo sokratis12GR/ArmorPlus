@@ -36,12 +36,12 @@ public class SuperStarLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public SuperStarLeggings() {
-        super(ModItems.SUPER_STAR_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.superStarArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("super_star_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "super_star_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -77,6 +77,6 @@ public class SuperStarLeggings extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.WITHER_BONE;
+        return repair.getItem() == ModItems.witherBone;
     }
 }

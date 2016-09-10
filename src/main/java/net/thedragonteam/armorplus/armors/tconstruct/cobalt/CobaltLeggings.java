@@ -31,12 +31,12 @@ public class CobaltLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public CobaltLeggings() {
-        super(ModItems.COBALT_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.cobaltArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("cobalt_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "cobalt_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

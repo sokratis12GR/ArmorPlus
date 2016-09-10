@@ -33,9 +33,9 @@ public class OreGen implements IWorldGenerator {
     private WorldGenerator lavaCrystalTheNetherGenerator;
 
     public OreGen() {
-        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalOverworldVeinAmount);
-        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.BLOCK_LAVA_CRYSTAL.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalOverworldVeinAmount);
+        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
     }
 
     @Override

@@ -27,12 +27,12 @@ public class DevBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public DevBoots() {
-        super(ModItems.DEV_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.devArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("dev_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "dev_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @Override

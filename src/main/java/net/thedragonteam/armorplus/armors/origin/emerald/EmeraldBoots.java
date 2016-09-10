@@ -39,12 +39,12 @@ public class EmeraldBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public EmeraldBoots() {
-        super(ModItems.EMERALD_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.emeraldArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("emerald_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "emerald_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

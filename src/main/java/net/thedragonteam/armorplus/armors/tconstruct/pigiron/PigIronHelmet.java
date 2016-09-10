@@ -31,12 +31,12 @@ public class PigIronHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public PigIronHelmet() {
-        super(ModItems.PIG_IRON_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.pigIronArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("pig_iron_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "pig_iron_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

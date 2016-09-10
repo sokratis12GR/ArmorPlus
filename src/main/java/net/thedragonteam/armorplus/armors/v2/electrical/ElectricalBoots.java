@@ -30,12 +30,12 @@ public class ElectricalBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ElectricalBoots() {
-        super(ModItems.ELECTRICAL_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.electricalArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("electrical_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "electrical_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -51,10 +51,10 @@ public class ElectricalBoots extends ItemArmor {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         if (ARPConfig.recipes == 0) {
-            return repair.getItem() == ModItems.ELECTRICAL_INGOT;
+            return repair.getItem() == ModItems.electricalIngot;
         }
         if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(ModBlocks.ELECTRICAL_BLOCK);
+            return repair.getItem() == Item.getItemFromBlock(ModBlocks.electricalBlock);
         }
         return true;
     }

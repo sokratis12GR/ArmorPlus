@@ -38,7 +38,7 @@ public class EntityCoalArrow extends EntityArrow {
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.COAL_ARROW);
+        return new ItemStack(ModItems.coalArrow);
     }
 
     @Override

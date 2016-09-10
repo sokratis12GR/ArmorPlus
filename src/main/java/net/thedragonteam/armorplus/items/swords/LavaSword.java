@@ -33,7 +33,7 @@ public class LavaSword extends ItemSword {
         setRegistryName("lava_sword");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class LavaSword extends ItemSword {
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.LAVA_CRYSTAL;
+        return repair.getItem() == ModItems.lavaCrystal;
     }
 
     @Override

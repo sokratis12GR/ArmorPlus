@@ -35,91 +35,91 @@ public class ModRecipes {
         nbttagc.setInteger("theoneprobe", 1);
 
         /* Set Helmets' NBT-Tags */
-        ItemStack COAL_HELMET = new ItemStack(ModItems.COAL_HELMET, 1);
-        COAL_HELMET.setTagCompound(nbttagc);
-        ItemStack EMERALD_HELMET = new ItemStack(ModItems.EMERALD_HELMET, 1);
-        EMERALD_HELMET.setTagCompound(nbttagc);
-        ItemStack LAPIS_HELMET = new ItemStack(ModItems.LAPIS_HELMET, 1);
-        LAPIS_HELMET.setTagCompound(nbttagc);
-        ItemStack LAVA_HELMET = new ItemStack(ModItems.LAVA_HELMET, 1);
-        LAVA_HELMET.setTagCompound(nbttagc);
-        ItemStack OBSIDIAN_HELMET = new ItemStack(ModItems.OBSIDIAN_HELMET);
-        OBSIDIAN_HELMET.setTagCompound(nbttagc);
-        ItemStack REDSTONE_HELMET = new ItemStack(ModItems.REDSTONE_HELMET, 1);
-        REDSTONE_HELMET.setTagCompound(nbttagc);
-        ItemStack CHICKEN_HELMET = new ItemStack(ModItems.CHICKEN_HELMET, 1);
-        CHICKEN_HELMET.setTagCompound(nbttagc);
-        ItemStack SLIME_HELMET = new ItemStack(ModItems.SLIME_HELMET, 1);
-        SLIME_HELMET.setTagCompound(nbttagc);
-        ItemStack ARDITE_HELMET = new ItemStack(ModItems.ARDITE_HELMET, 1);
-        ARDITE_HELMET.setTagCompound(nbttagc);
-        ItemStack COBALT_HELMET = new ItemStack(ModItems.COBALT_HELMET, 1);
-        COBALT_HELMET.setTagCompound(nbttagc);
-        ItemStack MANYULLYN_HELMET = new ItemStack(ModItems.MANYULLYN_HELMET, 1);
-        MANYULLYN_HELMET.setTagCompound(nbttagc);
-        ItemStack PIG_IRON_HELMET = new ItemStack(ModItems.PIG_IRON_HELMET, 1);
-        PIG_IRON_HELMET.setTagCompound(nbttagc);
-        ItemStack KNIGHT_SLIME_HELMET = new ItemStack(ModItems.KNIGHT_SLIME_HELMET, 1);
-        KNIGHT_SLIME_HELMET.setTagCompound(nbttagc);
-        ItemStack STEEL_HELMET = new ItemStack(ModItems.STEEL_HELMET, 1);
-        STEEL_HELMET.setTagCompound(nbttagc);
-        ItemStack ELECTRICAL_HELMET = new ItemStack(ModItems.ELECTRICAL_HELMET, 1);
-        ELECTRICAL_HELMET.setTagCompound(nbttagc);
-        ItemStack ENDER_DRAGON_HELMET = new ItemStack(ModItems.ENDER_DRAGON_HELMET, 1);
-        ENDER_DRAGON_HELMET.setTagCompound(nbttagc);
-        ItemStack GUARDIAN_HELMET = new ItemStack(ModItems.GUARDIAN_HELMET, 1);
-        GUARDIAN_HELMET.setTagCompound(nbttagc);
-        ItemStack SUPER_STAR_HELMET = new ItemStack(ModItems.SUPER_STAR_HELMET, 1);
-        SUPER_STAR_HELMET.setTagCompound(nbttagc);
-        ItemStack THE_ULTIMATE_HELMET = new ItemStack(ModItems.THE_ULTIMATE_HELMET, 1);
-        THE_ULTIMATE_HELMET.setTagCompound(nbttagc);
+        ItemStack coalHelmet = new ItemStack(ModItems.coalHelmet, 1);
+        coalHelmet.setTagCompound(nbttagc);
+        ItemStack emeraldHelmet = new ItemStack(ModItems.emeraldHelmet, 1);
+        emeraldHelmet.setTagCompound(nbttagc);
+        ItemStack lapisHelmet = new ItemStack(ModItems.lapisHelmet, 1);
+        lapisHelmet.setTagCompound(nbttagc);
+        ItemStack lavaHelmet = new ItemStack(ModItems.lavaHelmet, 1);
+        lavaHelmet.setTagCompound(nbttagc);
+        ItemStack obsidianHelmet = new ItemStack(ModItems.obsidianHelmet);
+        obsidianHelmet.setTagCompound(nbttagc);
+        ItemStack redstoneHelmet = new ItemStack(ModItems.redstoneHelmet, 1);
+        redstoneHelmet.setTagCompound(nbttagc);
+        ItemStack chickenHelmet = new ItemStack(ModItems.chickenHelmet, 1);
+        chickenHelmet.setTagCompound(nbttagc);
+        ItemStack slimeHelmet = new ItemStack(ModItems.slimeHelmet, 1);
+        slimeHelmet.setTagCompound(nbttagc);
+        ItemStack arditeHelmet = new ItemStack(ModItems.arditeHelmet, 1);
+        arditeHelmet.setTagCompound(nbttagc);
+        ItemStack cobaltHelmet = new ItemStack(ModItems.cobaltHelmet, 1);
+        cobaltHelmet.setTagCompound(nbttagc);
+        ItemStack manyullynHelmet = new ItemStack(ModItems.manyullynHelmet, 1);
+        manyullynHelmet.setTagCompound(nbttagc);
+        ItemStack pigIronHelmet = new ItemStack(ModItems.pigIronHelmet, 1);
+        pigIronHelmet.setTagCompound(nbttagc);
+        ItemStack knightSlimeHelmet = new ItemStack(ModItems.knightSlimeHelmet, 1);
+        knightSlimeHelmet.setTagCompound(nbttagc);
+        ItemStack steelHelmet = new ItemStack(ModItems.steelHelmet, 1);
+        steelHelmet.setTagCompound(nbttagc);
+        ItemStack electricalHelmet = new ItemStack(ModItems.electricalHelmet, 1);
+        electricalHelmet.setTagCompound(nbttagc);
+        ItemStack enderDragonHelmet = new ItemStack(ModItems.enderDragonHelmet, 1);
+        enderDragonHelmet.setTagCompound(nbttagc);
+        ItemStack guardianHelmet = new ItemStack(ModItems.guardianHelmet, 1);
+        guardianHelmet.setTagCompound(nbttagc);
+        ItemStack superStarHelmet = new ItemStack(ModItems.superStarHelmet, 1);
+        superStarHelmet.setTagCompound(nbttagc);
+        ItemStack theUltimateHelmet = new ItemStack(ModItems.theUltimateHelmet, 1);
+        theUltimateHelmet.setTagCompound(nbttagc);
 
-        GameRegistry.addShapelessRecipe(ENDER_DRAGON_HELMET, ModItems.ENDER_DRAGON_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(GUARDIAN_HELMET, ModItems.GUARDIAN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(SUPER_STAR_HELMET, ModItems.SUPER_STAR_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(THE_ULTIMATE_HELMET, ModItems.THE_ULTIMATE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(COAL_HELMET, ModItems.COAL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(EMERALD_HELMET, ModItems.EMERALD_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(LAPIS_HELMET, ModItems.LAPIS_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(LAVA_HELMET, ModItems.LAVA_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(OBSIDIAN_HELMET, ModItems.OBSIDIAN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(REDSTONE_HELMET, ModItems.REDSTONE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(CHICKEN_HELMET, ModItems.CHICKEN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(SLIME_HELMET, ModItems.SLIME_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(ARDITE_HELMET, ModItems.ARDITE_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(COBALT_HELMET, ModItems.COBALT_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(MANYULLYN_HELMET, ModItems.MANYULLYN_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(PIG_IRON_HELMET, ModItems.PIG_IRON_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(KNIGHT_SLIME_HELMET, ModItems.KNIGHT_SLIME_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(STEEL_HELMET, ModItems.STEEL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(ELECTRICAL_HELMET, ModItems.ELECTRICAL_HELMET, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
 
     }
 
     public static void addShapedRecipes() {
 
-        ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
-        GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), "RGR", "GAG", "RGR", 'R', Items.REDSTONE, 'G', Items.GLOWSTONE_DUST, 'A', ModItems.LAVA_CRYSTAL);
+        ItemStack lapisLAZULI = new ItemStack(Items.DYE, 1, 4);
+        GameRegistry.addRecipe(new ItemStack(ModItems.lavaCrystal, 1, 1), "RGR", "GAG", "RGR", 'R', Items.REDSTONE, 'G', Items.GLOWSTONE_DUST, 'A', ModItems.lavaCrystal);
 
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.ADVANCED_ARMOR_FORGE), "LLL", "CAC", "CCC", 'C', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.ARMOR_FORGE);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ARMOR_FORGE), "LCL", "OTO", "OXO", 'T', "workbench", 'O', Blocks.COAL_BLOCK, 'L', LAPIS_LAZULI, 'C', ModItems.LAVA_CRYSTAL));
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.advancedArmorForge), "LLL", "CAC", "CCC", 'C', new ItemStack(ModItems.lavaCrystal, 1, 1), 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.armorForge);
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', Blocks.COAL_BLOCK, 'L', lapisLAZULI, 'C', ModItems.lavaCrystal));
 
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.LAVA_NETHER_BRICK, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
         if (recipes == 0 && enableArrowRecipes) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_ARROW, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_ARROW, 2), "LLL", "LAL", "LLL", 'L', LAPIS_LAZULI, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_ARROW, 2), "RRR", "RAR", "RRR", 'R', Items.REDSTONE, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_ARROW, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', lapisLAZULI, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', Items.REDSTONE, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'A', Items.ARROW);
         }
         if (recipes == 1 && enableArrowRecipes) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_ARROW, 2), "CCC", "CAC", "CCC", 'C', Blocks.COAL_BLOCK, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_ARROW, 2), "LLL", "LAL", "LLL", 'L', Blocks.LAPIS_BLOCK, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_ARROW, 2), "RRR", "RAR", "RRR", 'R', Blocks.REDSTONE_BLOCK, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_ARROW, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', Blocks.COAL_BLOCK, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', Blocks.LAPIS_BLOCK, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', Blocks.REDSTONE_BLOCK, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'A', Items.ARROW);
         }
         if (enableElytraRecipe)
-            GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING, 'N', Items.NETHER_STAR);
+            GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'N', Items.NETHER_STAR);
         if (enableChainArmorRecipes) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "XXX", "CCC", "CXC", 'C', "chainmail"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "CXC", "XXX", 'C', "chainmail"));
@@ -128,117 +128,117 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "XXX", "CXC", "CXC", 'C', "chainmail"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "CXC", "CXC", "XXX", 'C', "chainmail"));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CHAINMAIL, 12), "SSX", "SXS", "XSS", 'S', "ingotIron"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.COMPRESSED_OBSIDIAN, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chainmail, 12), "SSX", "SXS", "XSS", 'S', "ingotIron"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
 
         if (enableRedstoneAppleRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', Items.APPLE));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.REDSTONE_APPLE, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', Items.APPLE));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', Items.APPLE));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', Items.APPLE));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.STEEL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ELECTRICAL_BLOCK, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.electricalBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
     }
 
     public static void addShapelessRecipes() {
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.NBT_ITEM, 1), Items.STICK);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.nbtItem, 1), Items.STICK);
 
-        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), ModBlocks.COMPRESSED_OBSIDIAN);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 9), ModBlocks.STEEL_BLOCK);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ELECTRICAL_INGOT, 9), ModBlocks.ELECTRICAL_BLOCK);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ARMORPLUS_INFO_BOOK, 1), Items.BOOK, Items.COAL);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.STEEL_INGOT, 1), new ItemStack(Items.COAL, 1, 1), Items.IRON_INGOT, new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
-        GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.LAVA_CACTUS, 1), Blocks.CACTUS, new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1));
+        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), ModBlocks.compressedObsidian);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.steelIngot, 9), ModBlocks.steelBlock);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.electricalIngot, 9), ModBlocks.electricalBlock);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorPlusInfoBook, 1), Items.BOOK, Items.COAL);
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.steelIngot, 1), new ItemStack(Items.COAL, 1, 1), Items.IRON_INGOT, new ItemStack(ModItems.lavaCrystal, 1, 1));
+        GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lavaCactus, 1), Blocks.CACTUS, new ItemStack(ModItems.lavaCrystal, 1, 1));
     }
 
     public static void addEasyWeaponsRecipes() {
-        ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
+        ItemStack lapisLAZULI = new ItemStack(Items.DYE, 1, 4);
         if (enableSwordsRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_SWORD, 1), "XCX", "XCX", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_SWORD, 1), "XLX", "XLX", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_SWORD, 1), "XRX", "XRX", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_SWORD, 1), "XEX", "XEX", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_SWORD, 1), "XOX", "XOX", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_SWORD, 1), "XGX", "XGX", "XSX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_SWORD, 1), "XEX", "XEX", "XSX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_SWORD, 1), "XWX", "XWX", "XSX", 'W', ModItems.WITHER_BONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_SWORD, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', Items.COAL, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', lapisLAZULI, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldSword, 1), "XEX", "XEX", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianSword, 1), "XOX", "XOX", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianSword, 1), "XGX", "XGX", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonSword, 1), "XEX", "XEX", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarSword, 1), "XWX", "XWX", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
         }
         if (enableBattleAxesRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BATTLE_AXE, 1), "CXC", "CSC", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BATTLE_AXE, 1), "LXL", "LSL", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BATTLE_AXE, 1), "RXR", "RSR", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BATTLE_AXE, 1), "EXE", "ESE", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BATTLE_AXE, 1), "OXO", "OSO", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BATTLE_AXE, 1), "GXG", "GSG", "XSX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BATTLE_AXE, 1), "EXE", "ESE", "XSX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BATTLE_AXE, 1), "WXW", "WSW", "XSX", 'W', ModItems.WITHER_BONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BATTLE_AXE, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Items.COAL, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', lapisLAZULI, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1), "EXE", "ESE", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBattleAxe, 1), "OXO", "OSO", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBattleAxe, 1), "GXG", "GSG", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1), "EXE", "ESE", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBattleAxe, 1), "WXW", "WSW", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
         }
         if (enableBowsRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BOW, 1), "XCS", "CXS", "XCS", 'C', Items.COAL, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BOW, 1), "SCX", "SXC", "SCX", 'C', Items.COAL, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BOW, 1), "XLS", "LXS", "XLS", 'L', LAPIS_LAZULI, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BOW, 1), "SLX", "SXL", "SLX", 'L', LAPIS_LAZULI, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BOW, 1), "XRS", "RXS", "XRS", 'R', Items.REDSTONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BOW, 1), "SRX", "SXR", "SRX", 'R', Items.REDSTONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BOW, 1), "XES", "EXS", "XES", 'E', Items.EMERALD, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BOW, 1), "SEX", "SXE", "SEX", 'E', Items.EMERALD, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOW, 1), "XOS", "OXS", "XOS", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOW, 1), "SOX", "SXO", "SOX", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BOW, 1), "XGS", "GXS", "XGS", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BOW, 1), "SGX", "SXG", "SGX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOW, 1), "XES", "EXS", "XES", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOW, 1), "SEX", "SXE", "SEX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOW, 1), "XWS", "WXS", "XWS", 'W', ModItems.WITHER_BONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOW, 1), "SWX", "SXW", "SWX", 'W', ModItems.WITHER_BONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BOW, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BOW, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Items.COAL, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', Items.COAL, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', lapisLAZULI, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', lapisLAZULI, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', Items.REDSTONE, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', Items.REDSTONE, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "XES", "EXS", "XES", 'E', Items.EMERALD, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "SEX", "SXE", "SEX", 'E', Items.EMERALD, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "XOS", "OXS", "XOS", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "SOX", "SXO", "SOX", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "XGS", "GXS", "XGS", 'G', ModItems.guardianScale, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "SGX", "SXG", "SGX", 'G', ModItems.guardianScale, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "XES", "EXS", "XES", 'E', ModItems.enderDragonScale, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "SEX", "SXE", "SEX", 'E', ModItems.enderDragonScale, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "XWS", "WXS", "XWS", 'W', ModItems.witherBone, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "SWX", "SXW", "SWX", 'W', ModItems.witherBone, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
 
         }
     }
 
     public static void addExpertWeaponsRecipes() {
         if (enableSwordsRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_SWORD, 1), "XCX", "XCX", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_SWORD, 1), "XLX", "XLX", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_SWORD, 1), "XRX", "XRX", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_SWORD, 1), "XEX", "XEX", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_SWORD, 1), "XOX", "XOX", "XSX", 'O', ModBlocks.COMPRESSED_OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_SWORD, 1), "XGX", "XGX", "XSX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_SWORD, 1), "XEX", "XEX", "XSX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_SWORD, 1), "XWX", "XWX", "XSX", 'W', ModItems.WITHER_BONE, 'S', Items.NETHER_STAR);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_SWORD, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldSword, 1), "XEX", "XEX", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianSword, 1), "XOX", "XOX", "XSX", 'O', ModBlocks.compressedObsidian, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianSword, 1), "XGX", "XGX", "XSX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonSword, 1), "XEX", "XEX", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.DRAGON_BREATH);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarSword, 1), "XWX", "XWX", "XSX", 'W', ModItems.witherBone, 'S', Items.NETHER_STAR);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
         }
         if (enableBattleAxesRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BATTLE_AXE, 1), "CXC", "CSC", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BATTLE_AXE, 1), "LXL", "LSL", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BATTLE_AXE, 1), "RXR", "RSR", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BATTLE_AXE, 1), "EXE", "ESE", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BATTLE_AXE, 1), "OXO", "OSO", "XSX", 'O', ModBlocks.COMPRESSED_OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BATTLE_AXE, 1), "GXG", "GSG", "XSX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BATTLE_AXE, 1), "EXE", "ESE", "XSX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BATTLE_AXE, 1), "WXW", "WSW", "XSX", 'W', ModItems.WITHER_BONE, 'S', Items.NETHER_STAR);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BATTLE_AXE, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1), "EXE", "ESE", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBattleAxe, 1), "OXO", "OSO", "XSX", 'O', ModBlocks.compressedObsidian, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBattleAxe, 1), "GXG", "GSG", "XSX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1), "EXE", "ESE", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.DRAGON_BREATH);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBattleAxe, 1), "WXW", "WSW", "XSX", 'W', ModItems.witherBone, 'S', Items.NETHER_STAR);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
         }
         if (enableBowsRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BOW, 1), "XCS", "CXS", "XCS", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.COAL_BOW, 1), "SCX", "SXC", "SCX", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BOW, 1), "XLS", "LXS", "XLS", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAPIS_BOW, 1), "SLX", "SXL", "SLX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BOW, 1), "XRS", "RXS", "XRS", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.REDSTONE_BOW, 1), "SRX", "SXR", "SRX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BOW, 1), "XES", "EXS", "XES", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.EMERALD_BOW, 1), "SEX", "SXE", "SEX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOW, 1), "XOS", "OXS", "XOS", 'O', ModBlocks.COMPRESSED_OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.OBSIDIAN_BOW, 1), "SOX", "SXO", "SOX", 'O', ModBlocks.COMPRESSED_OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BOW, 1), "XGS", "GXS", "XGS", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.GUARDIAN_BOW, 1), "SGX", "SXG", "SGX", 'G', ModItems.GUARDIAN_SCALE, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOW, 1), "XES", "DXS", "XES", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.ENDER_DRAGON_BOW, 1), "SEX", "SXD", "SEX", 'E', ModItems.ENDER_DRAGON_SCALE, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOW, 1), "XWS", "NXS", "XWS", 'W', ModItems.WITHER_BONE, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
-            GameRegistry.addRecipe(new ItemStack(ModItems.SUPER_STAR_BOW, 1), "SWX", "SXN", "SWX", 'W', ModItems.WITHER_BONE, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BOW, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.LAVA_BOW, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.LAVA_CRYSTAL, 1, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "XES", "EXS", "XES", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "SEX", "SXE", "SEX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "XOS", "OXS", "XOS", 'O', ModBlocks.compressedObsidian, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "SOX", "SXO", "SOX", 'O', ModBlocks.compressedObsidian, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "XGS", "GXS", "XGS", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
+            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "SGX", "SXG", "SGX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "XES", "DXS", "XES", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
+            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "SEX", "SXD", "SEX", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "XWS", "NXS", "XWS", 'W', ModItems.witherBone, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "SWX", "SXN", "SWX", 'W', ModItems.witherBone, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
         }
     }
 }

@@ -35,7 +35,7 @@ public class SuperStarSword extends ItemSword {
         setRegistryName("super_star_sword");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "super_star_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SuperStarSword extends ItemSword {
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.WITHER_BONE;
+        return repair.getItem() == ModItems.witherBone;
     }
 
     @Override

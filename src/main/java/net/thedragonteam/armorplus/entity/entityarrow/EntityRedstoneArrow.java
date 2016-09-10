@@ -38,7 +38,7 @@ public class EntityRedstoneArrow extends EntityArrow {
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.REDSTONE_ARROW);
+        return new ItemStack(ModItems.redstoneArrow);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class GuardianBattleAxe extends ItemSword {
         setRegistryName("guardian_battle_axe");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "guardian_battle_axe");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class GuardianBattleAxe extends ItemSword {
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.GUARDIAN_SCALE;
+        return repair.getItem() == ModItems.guardianScale;
     }
 
     @Override

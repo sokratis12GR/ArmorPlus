@@ -38,12 +38,12 @@ public class LavaLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public LavaLeggings() {
-        super(ModItems.LAVA_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.lavaArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("lava_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -68,8 +68,13 @@ public class LavaLeggings extends ItemArmor {
         if (ARPConfig.enableLavaLEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
         }
-        if (!enableFullLavaArmorEffect)
+        if (!enableFullLavaArmorEffect) {
             entity.extinguish();
+            if (entity.isInLava()) {
+                entity.setAbsorptionAmount(4.0F);
+            } else
+                entity.setAbsorptionAmount(0.0F);
+        }
         if (entity.isInWater() && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
             itemStack.damageItem(1, entity);
@@ -84,6 +89,6 @@ public class LavaLeggings extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.LAVA_CRYSTAL;
+        return repair.getItem() == ModItems.lavaCrystal;
     }
 }

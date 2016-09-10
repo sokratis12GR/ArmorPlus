@@ -35,7 +35,7 @@ public class EmeraldSword extends ItemSword {
         setRegistryName("emerald_sword");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "emerald_sword");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_WEAPONS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override

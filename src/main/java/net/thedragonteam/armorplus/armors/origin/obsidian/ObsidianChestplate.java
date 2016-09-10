@@ -39,12 +39,12 @@ public class ObsidianChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public ObsidianChestplate() {
-        super(ModItems.OBSIDIAN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.obsidianArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("obsidian_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "obsidian_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -83,7 +83,7 @@ public class ObsidianChestplate extends ItemArmor {
             return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
         }
         if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(ModBlocks.BLOCK_LAVA_CRYSTAL);
+            return repair.getItem() == Item.getItemFromBlock(ModBlocks.compressedObsidian);
         }
         return true;
     }

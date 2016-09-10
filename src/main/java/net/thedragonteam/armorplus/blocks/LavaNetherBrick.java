@@ -23,7 +23,7 @@ public class LavaNetherBrick extends Block {
         super(Material.ROCK, MapColor.NETHERRACK);
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_nether_brick");
         this.setResistance(20.0F);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(3.0F);
         this.setHarvestLevel("pickaxe", 1);
         this.setLightLevel(1.0F);

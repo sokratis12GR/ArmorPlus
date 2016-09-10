@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.armors.special.enderdragon;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -33,12 +34,12 @@ public class EnderDragonHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public EnderDragonHelmet() {
-        super(ModItems.ENDER_DRAGON_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.enderDragonArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("ender_dragon_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "ender_dragon_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -59,8 +60,9 @@ public class EnderDragonHelmet extends ItemArmor {
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         if (ARPConfig.enableFlightAbility) {
-            if (head != null && head.getItem() == ModItems.ENDER_DRAGON_HELMET && chest != null && chest.getItem() == ModItems.ENDER_DRAGON_CHESTPLATE && legs != null && legs.getItem() == ModItems.ENDER_DRAGON_LEGGINGS && feet != null && feet.getItem() == ModItems.ENDER_DRAGON_BOOTS || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+            if (head != null && head.getItem() == ModItems.enderDragonHelmet && chest != null && chest.getItem() == ModItems.enderDragonChestplate && legs != null && legs.getItem() == ModItems.enderDragonLeggings && feet != null && feet.getItem() == ModItems.enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.allowFlying = true;
+                entity.removePotionEffect(MobEffects.WITHER);
             } else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
@@ -75,6 +77,6 @@ public class EnderDragonHelmet extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.ENDER_DRAGON_SCALE;
+        return repair.getItem() == ModItems.enderDragonScale;
     }
 }

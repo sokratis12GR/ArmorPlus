@@ -36,7 +36,7 @@ public class LavaCactus extends BlockCactus {
         setHardness(0.4F);
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_cactus");
         setRegistryName("lava_cactus");
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     @Override

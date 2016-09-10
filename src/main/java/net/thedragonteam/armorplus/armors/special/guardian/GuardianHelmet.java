@@ -31,12 +31,12 @@ public class GuardianHelmet extends ItemArmor {
     public static int armorPreffix = 0;
 
     public GuardianHelmet() {
-        super(ModItems.GUARDIAN_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.HEAD);
+        super(ModItems.guardianArmor, armorPreffix, EntityEquipmentSlot.HEAD);
         setMaxStackSize(1);
         setRegistryName("guardian_helmet");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "guardian_helmet");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -57,6 +57,6 @@ public class GuardianHelmet extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.GUARDIAN_SCALE;
+        return repair.getItem() == ModItems.guardianScale;
     }
 }

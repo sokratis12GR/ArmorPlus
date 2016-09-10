@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.items.dev;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,7 @@ public class NBTItem extends Item {
         setRegistryName("dev_item");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "dev_item");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @Override
@@ -42,6 +43,24 @@ public class NBTItem extends Item {
             nbt.setInteger("Level", 1);
         }
         stack.setTagCompound(nbt);
+    }
+
+    @Override
+    public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+        NBTTagCompound nbt;
+        if (stack.hasTagCompound()) {
+            nbt = stack.getTagCompound();
+        } else {
+            nbt = new NBTTagCompound();
+        }
+
+        if (nbt.hasKey("Level")) {
+            nbt.setInteger("Level", nbt.getInteger("Level") + 1);
+        } else {
+            nbt.setInteger("Level", 1);
+        }
+        stack.setTagCompound(nbt);
+        return super.onEntitySwing(entityLiving, stack);
     }
 
     @SideOnly(Side.CLIENT)

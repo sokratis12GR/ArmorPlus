@@ -23,7 +23,7 @@ public class ElectricalIngot extends Item {
         setRegistryName("electrical_ingot");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "electrical_ingot");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_ITEMS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @SideOnly(Side.CLIENT)

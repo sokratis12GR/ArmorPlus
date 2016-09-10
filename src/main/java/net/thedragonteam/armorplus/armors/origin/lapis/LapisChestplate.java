@@ -37,12 +37,12 @@ public class LapisChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public LapisChestplate() {
-        super(ModItems.LAPIS_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.lapisArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("lapis_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "lapis_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -51,14 +51,14 @@ public class LapisChestplate extends ItemArmor {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         if (ARPConfig.enableLapisHBreathing) {
-            infoList.add("\2479Ability: " + "\247rWater Breathing ");
-            infoList.add("\2473Use: " + "\247rEquip A Piece");
+            tooltip.add("\2479Ability: " + "\247rWater Breathing ");
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
         }
         if (ARPConfig.enableFullLapisArmorEffect) {
-            infoList.add("\2479Ability: " + "\247rWater Breathing ");
-            infoList.add("\2473Use: " + "\247rEquip The Full Set");
+            tooltip.add("\2479Ability: " + "\247rWater Breathing ");
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         }
     }
 

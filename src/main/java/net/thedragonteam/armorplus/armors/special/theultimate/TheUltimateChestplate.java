@@ -37,12 +37,12 @@ public class TheUltimateChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public TheUltimateChestplate() {
-        super(ModItems.THE_ULTIMATE_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.theUltimateArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("the_ultimate_chestplate_full");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_chestplate_full");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -69,7 +69,7 @@ public class TheUltimateChestplate extends ItemArmor {
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         if (ARPConfig.enableFlightAbility) {
 
-            if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.allowFlying = true;
             } else {
                 entity.capabilities.isFlying = false;
@@ -77,13 +77,13 @@ public class TheUltimateChestplate extends ItemArmor {
             }
         }
         if (ARPConfig.enableTheUltimateArmorInvincibility) {
-            if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.disableDamage = true;
             } else {
                 entity.capabilities.disableDamage = false;
             }
         }
-        if (head != null && head.getItem() == ModItems.THE_ULTIMATE_HELMET && chest != null && chest.getItem() == ModItems.THE_ULTIMATE_CHESTPLATE && legs != null && legs.getItem() == ModItems.THE_ULTIMATE_LEGGINGS && feet != null && feet.getItem() == ModItems.THE_ULTIMATE_BOOTS) {
+        if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else {
             if (entity instanceof EntityLivingBase && enableTheUltimateArmorDeBuffs) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
@@ -106,6 +106,6 @@ public class TheUltimateChestplate extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.THE_ULTIMATE_MATERIAL;
+        return repair.getItem() == ModItems.theUltimateMaterial;
     }
 }

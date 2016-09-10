@@ -30,12 +30,12 @@ public class SteelBoots extends ItemArmor {
     public static int armorPreffix = 0;
 
     public SteelBoots() {
-        super(ModItems.STEEL_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.FEET);
+        super(ModItems.steelArmor, armorPreffix, EntityEquipmentSlot.FEET);
         setMaxStackSize(1);
         setRegistryName("steel_boots");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "steel_boots");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -51,10 +51,10 @@ public class SteelBoots extends ItemArmor {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         if (ARPConfig.recipes == 0) {
-            return repair.getItem() == ModItems.STEEL_INGOT;
+            return repair.getItem() == ModItems.steelIngot;
         }
         if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(ModBlocks.STEEL_BLOCK);
+            return repair.getItem() == Item.getItemFromBlock(ModBlocks.steelBlock);
         }
         return true;
     }

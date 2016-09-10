@@ -38,7 +38,7 @@ public class EntityLapisArrow extends EntityArrow {
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.LAPIS_ARROW);
+        return new ItemStack(ModItems.lapisArrow);
     }
 
     @Override

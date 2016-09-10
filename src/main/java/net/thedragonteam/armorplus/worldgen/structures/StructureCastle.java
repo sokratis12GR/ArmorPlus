@@ -170,8 +170,8 @@ public class StructureCastle extends WorldGenerator {
     public boolean generate(World worldIn, Random rand, BlockPos corner) {
         if (canSpawnHere(worldIn, corner)) {
             // figure out each IBlockState we will use
-            IBlockState stoneBrickTower = ModBlocks.WHITE_STONE_BRICK_TOWER.getDefaultState();
-            IBlockState stoneBrick = ModBlocks.WHITE_STONE_BRICK.getDefaultState();
+            IBlockState stoneBrickTower = ModBlocks.whiteStoneBrickTower.getDefaultState();
+            IBlockState stoneBrick = ModBlocks.whiteStoneBrick.getDefaultState();
             IBlockState doorLower = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER);
             IBlockState doorUpper = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
             IBlockState chest = Blocks.CHEST.getDefaultState();

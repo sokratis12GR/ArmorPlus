@@ -38,12 +38,12 @@ public class LavaChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public LavaChestplate() {
-        super(ModItems.LAVA_ARMOR_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.lavaArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("lava_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -67,8 +67,14 @@ public class LavaChestplate extends ItemArmor {
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
         if (ARPConfig.enableLavaCEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
-        }        if (!enableFullLavaArmorEffect)
+        }
+        if (!enableFullLavaArmorEffect) {
             entity.extinguish();
+            if (entity.isInLava()) {
+                entity.setAbsorptionAmount(4.0F);
+            } else
+                entity.setAbsorptionAmount(0.0F);
+        }
         if (entity.isInWater() && !enableFullLavaArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
             itemStack.damageItem(1, entity);
@@ -83,6 +89,6 @@ public class LavaChestplate extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.LAVA_CRYSTAL;
+        return repair.getItem() == ModItems.lavaCrystal;
     }
 }

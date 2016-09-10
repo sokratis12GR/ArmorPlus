@@ -108,10 +108,10 @@ public class ClientProxy extends CommonProxy {
     }
 
     public void registerModels() {
-        registerModel(ModItems.COAL_ARROW, 0);
-        registerModel(ModItems.LAPIS_ARROW, 0);
-        registerModel(ModItems.REDSTONE_ARROW, 0);
-        registerModel(ModItems.LAVA_ARROW, 0);
+        registerModel(ModItems.coalArrow, 0);
+        registerModel(ModItems.lapisArrow, 0);
+        registerModel(ModItems.redstoneArrow, 0);
+        registerModel(ModItems.lavaArrow, 0);
     }
 
     @Override

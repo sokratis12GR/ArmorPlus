@@ -22,13 +22,13 @@ public class SteelBlock extends Block {
         super(Material.IRON);
         setUnlocalizedName(ArmorPlus.MODID + "." + "steel_block");
         this.setResistance(20.0F);
-        this.setCreativeTab(ArmorPlus.TAB_ARMORPLUS_BLOCKS);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(5.0F);
         this.setHarvestLevel("pickaxe", 1);
     }
 
     @Override
     public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
-        return this == ModBlocks.STEEL_BLOCK;
+        return this == ModBlocks.steelBlock;
     }
 }

@@ -31,12 +31,12 @@ public class PigIronLeggings extends ItemArmor {
     public static int armorPreffix = 0;
 
     public PigIronLeggings() {
-        super(ModItems.PIG_IRON_MATERIAL, armorPreffix, EntityEquipmentSlot.LEGS);
+        super(ModItems.pigIronArmor, armorPreffix, EntityEquipmentSlot.LEGS);
         setMaxStackSize(1);
         setRegistryName("pig_iron_leggings");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "pig_iron_leggings");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)

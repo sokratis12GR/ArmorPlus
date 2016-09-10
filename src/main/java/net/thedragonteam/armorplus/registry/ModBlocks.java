@@ -20,52 +20,58 @@ import net.thedragonteam.armorplus.blocks.*;
  */
 public class ModBlocks {
 
-    public static Block BLOCK_LAVA_CRYSTAL,
-            COMPRESSED_OBSIDIAN, STEEL_BLOCK, ELECTRICAL_BLOCK,
-            ARMOR_FORGE, ADVANCED_ARMOR_FORGE, LAVA_NETHER_BRICK,
-            WHITE_STONE_BRICK, WHITE_STONE_BRICK_TOWER, WHITE_STONE_BRICK_CORNER;
-    public static LavaCactus LAVA_CACTUS;
+    public static Block blockLavaCrystal;
+    public static Block compressedObsidian;
+    public static Block steelBlock;
+    public static Block electricalBlock;
+    public static Block armorForge;
+    public static Block advancedArmorForge;
+    public static Block whiteStoneBrick;
+    public static Block lavaNetherBrick;
+    public static Block whiteStoneBrickTower;
+    public static Block whiteStoneBrickCorner;
+    public static LavaCactus lavaCactus;
 
     public static void init() {
-        BLOCK_LAVA_CRYSTAL = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
-        COMPRESSED_OBSIDIAN = new CompressedObsidian().setRegistryName("compressed_obsidian");
-        STEEL_BLOCK = new SteelBlock().setRegistryName("steel_block");
-        ELECTRICAL_BLOCK = new ElectricalBlock().setRegistryName("electrical_block");
-        ARMOR_FORGE = new ArmorForge().setRegistryName("armor_forge");
-        ADVANCED_ARMOR_FORGE = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
-        LAVA_CACTUS = new LavaCactus();
-        LAVA_NETHER_BRICK = new LavaNetherBrick().setRegistryName("lava_nether_brick");
-        WHITE_STONE_BRICK = new WhiteStoneBrick().setRegistryName("white_stone_brick");
-        WHITE_STONE_BRICK_TOWER = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
-        WHITE_STONE_BRICK_CORNER = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
+        blockLavaCrystal = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
+        compressedObsidian = new CompressedObsidian().setRegistryName("compressed_obsidian");
+        steelBlock = new SteelBlock().setRegistryName("steel_block");
+        electricalBlock = new ElectricalBlock().setRegistryName("electrical_block");
+        armorForge = new ArmorForge().setRegistryName("armor_forge");
+        advancedArmorForge = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
+        lavaCactus = new LavaCactus();
+        lavaNetherBrick = new LavaNetherBrick().setRegistryName("lava_nether_brick");
+        whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
+        whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
+        whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
     }
 
     public static void register() {
-        registerBlock(BLOCK_LAVA_CRYSTAL);
-        registerBlock(COMPRESSED_OBSIDIAN);
-        registerBlock(STEEL_BLOCK);
-        registerBlock(ELECTRICAL_BLOCK);
-        registerBlock(ARMOR_FORGE);
-        registerBlock(ADVANCED_ARMOR_FORGE);
-        registerBlock(LAVA_CACTUS);
-        registerBlock(LAVA_NETHER_BRICK);
-        registerBlock(WHITE_STONE_BRICK);
-        registerBlock(WHITE_STONE_BRICK_TOWER);
-        registerBlock(WHITE_STONE_BRICK_CORNER);
+        registerBlock(blockLavaCrystal);
+        registerBlock(compressedObsidian);
+        registerBlock(steelBlock);
+        registerBlock(electricalBlock);
+        registerBlock(armorForge);
+        registerBlock(advancedArmorForge);
+        registerBlock(lavaCactus);
+        registerBlock(lavaNetherBrick);
+        registerBlock(whiteStoneBrick);
+        registerBlock(whiteStoneBrickTower);
+        registerBlock(whiteStoneBrickCorner);
     }
 
     public static void registerRenders() {
-        registerRender(BLOCK_LAVA_CRYSTAL);
-        registerRender(COMPRESSED_OBSIDIAN);
-        registerRender(STEEL_BLOCK);
-        registerRender(ELECTRICAL_BLOCK);
-        registerRender(ARMOR_FORGE);
-        registerRender(ADVANCED_ARMOR_FORGE);
-        registerRender(LAVA_CACTUS);
-        registerRender(LAVA_NETHER_BRICK);
-        registerRender(WHITE_STONE_BRICK);
-        registerRender(WHITE_STONE_BRICK_TOWER);
-        registerRender(WHITE_STONE_BRICK_CORNER);
+        registerRender(blockLavaCrystal);
+        registerRender(compressedObsidian);
+        registerRender(steelBlock);
+        registerRender(electricalBlock);
+        registerRender(armorForge);
+        registerRender(advancedArmorForge);
+        registerRender(lavaCactus);
+        registerRender(lavaNetherBrick);
+        registerRender(whiteStoneBrick);
+        registerRender(whiteStoneBrickTower);
+        registerRender(whiteStoneBrickCorner);
     }
 
     public static void registerBlock(Block block) {

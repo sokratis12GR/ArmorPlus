@@ -31,12 +31,12 @@ public class PigIronChestplate extends ItemArmor {
     public static int armorPreffix = 0;
 
     public PigIronChestplate() {
-        super(ModItems.PIG_IRON_MATERIAL, armorPreffix, EntityEquipmentSlot.CHEST);
+        super(ModItems.pigIronArmor, armorPreffix, EntityEquipmentSlot.CHEST);
         setMaxStackSize(1);
         setRegistryName("pig_iron_chestplate");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "pig_iron_chestplate");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.TAB_ARMORPLUS);
+        setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
     @SideOnly(Side.CLIENT)
