@@ -6,7 +6,6 @@
     * Lava Armor now if is in the water with water breathing effect wont apply any debuffs nor break the armor
 * **{Features Added}**
     * More Cosmetic Items for special people
-        * MMD Logo Cosmetic
         * Twitch Logo Cosmetic
         * Beam Logo Cosmetic
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
