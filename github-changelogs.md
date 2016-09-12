@@ -1,3 +1,15 @@
+**ArmorPlus 1.10.2-7.0.0.0-dev**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Changed}**
+    * Full Code Rewrite
+    * Lava Armor now if is in the water with water breathing effect wont apply any debuffs nor break the armor
+* **{Features Added}**
+    * More Cosmetic Items for special people
+        * MMD Logo Cosmetic
+        * Twitch Logo Cosmetic
+        * Beam Logo Cosmetic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.9.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
