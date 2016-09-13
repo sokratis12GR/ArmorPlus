@@ -57,16 +57,16 @@ public class ArmorPlus {
 
     public static final String MCVERSION = "1.10.2";
     // Updates every MAJOR change, never resets
-    public static final int MAJOR = 6;
+    public static final int MAJOR = 7;
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 9;
+    public static final int MINOR = 0;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
-    public static final int PATCH = 2;
+    public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "-dev";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
@@ -93,6 +93,7 @@ public class ArmorPlus {
      * The GameProfile used by the dummy ArmorPlus player
      */
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
+    public static boolean nightVisionEnabled = true;
     /**
      * A list of the usernames of players who have donated to ArmorPlus.
      */
@@ -102,15 +103,12 @@ public class ArmorPlus {
     @SuppressWarnings("unused")
     private ArmorPlusEntity entity;
 
-    public static boolean nightVisionEnabled = true;
+    public ArmorPlus() {
+        LogHelper.info("Welcoming Minecraft");
+    }
 
     public static boolean isNightVisionEnabled() {
         return nightVisionEnabled;
-    }
-
-
-    public ArmorPlus() {
-        LogHelper.info("Welcoming Minecraft");
     }
 
     public static File getConfigDir() {

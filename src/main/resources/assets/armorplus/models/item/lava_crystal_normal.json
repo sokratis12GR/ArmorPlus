@@ -1,7 +1,7 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "armorplus:items/lava_crystal_normal"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "armorplus:items/lava_crystal_normal"
+  }
 }
 

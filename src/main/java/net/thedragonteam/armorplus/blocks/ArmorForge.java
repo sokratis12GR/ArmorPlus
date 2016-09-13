@@ -4,8 +4,8 @@
 
 package net.thedragonteam.armorplus.blocks;
 
-import net.minecraft.block.BlockWorkbench;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.base.BaseBlock;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 
@@ -29,14 +30,11 @@ import javax.annotation.Nullable;
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class ArmorForge extends BlockWorkbench implements ITileEntityProvider {
+public class ArmorForge extends BaseBlock implements ITileEntityProvider {
 
     public ArmorForge() {
-        setUnlocalizedName(ArmorPlus.MODID + "." + "armor_forge");
-        this.setResistance(1000.0F);
-        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.setHardness(10.0F);
-        this.setHarvestLevel("pickaxe", 2);
+        super(Material.ROCK, "armor_forge", 1000.0F, 10.0F, "pickaxe", 2);
+
     }
 
     @Override

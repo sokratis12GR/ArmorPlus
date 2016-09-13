@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ARPAchievements {
-    private static AchievementPage arpAchievementPage;
-
     public static Achievement craftCoalArmor,
             craftLapisArmor,
             craftRedstoneArmor,
@@ -38,6 +36,7 @@ public class ARPAchievements {
             craftKnightSlimeArmor,
             welcomeToArmorPlus;
     public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
+    private static AchievementPage arpAchievementPage;
 
     public static void init() {
         welcomeToArmorPlus = new AchievementARP("craft_armor_forge", -2, -2, ModItems.armorPlusBook, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();

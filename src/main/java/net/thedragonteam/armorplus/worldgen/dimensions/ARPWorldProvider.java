@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.worldgen.dimensions;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.IChunkGenerator;
+
 /**
  * net.thedragonteam.armorplus.worldgen.dimensions
  * ArmorPlus created by sokratis12GR on 8/21/2016.

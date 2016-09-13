@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "armorplus:items/cobalt_chestplate"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "armorplus:items/cobalt_chestplate"
+  }
 }

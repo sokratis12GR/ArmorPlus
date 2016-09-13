@@ -2,31 +2,24 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.blocks;
+package net.thedragonteam.armorplus.blocks.castle;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class WhiteStoneBrickTower extends Block {
+public class WhiteStoneBrickTower extends BaseCastleBlock {
 
     public WhiteStoneBrickTower() {
-        super(Material.ROCK);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "white_stone_brick_tower");
-        this.setResistance(10.0F);
-        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.setHardness(5.0F);
-        this.setHarvestLevel("pickaxe", 0);
+        super("white_stone_brick_tower");
     }
 
     @Override

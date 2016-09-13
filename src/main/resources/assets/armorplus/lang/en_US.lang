@@ -192,6 +192,9 @@ item.armorplus.dev_item.name=NBT Item
 item.armorplus.the_dragon_team.name=The Dragon Team
 item.armorplus.modded_city.name=Modded City
 item.armorplus.jon_bams.name=Jon Bams
+item.armorplus.beam.name=Beam
+item.armorplus.twitch.name=Twitch
+item.armorplus.mmd.name=MMD
 
 #Items
 item.armorplus.chainmail.name=Chainmail

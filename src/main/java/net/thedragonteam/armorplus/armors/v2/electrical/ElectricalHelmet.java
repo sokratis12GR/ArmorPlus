@@ -4,19 +4,11 @@
 
 package net.thedragonteam.armorplus.armors.v2.electrical;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
@@ -25,27 +17,10 @@ import net.thedragonteam.armorplus.registry.ModItems;
  * ArmorPlus created by sokratis12GR on 7/28/2016 9:19 AM.
  * - TheDragonTeam
  */
-public class ElectricalHelmet extends ItemArmor {
-
-    public static int armorPreffix = 0;
+public class ElectricalHelmet extends BaseArmor {
 
     public ElectricalHelmet() {
-        super(ModItems.electricalArmor, armorPreffix, EntityEquipmentSlot.HEAD);
-        setMaxStackSize(1);
-        setRegistryName("electrical_helmet");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "electrical_helmet");     // Used for localization (en_US.lang)
-        GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.tabArmorplus);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-    @Override
-    public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-
+        super(ModItems.electricalArmor, 0, EntityEquipmentSlot.HEAD, "electrical_helmet");
     }
 
     @Override

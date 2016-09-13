@@ -12,6 +12,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.*;
+import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrick;
+import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickCorner;
+import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickTower;
+import net.thedragonteam.armorplus.blocks.v2.ElectricalBlock;
+import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
 
 /**
  * net.thedragonteam.armorplus.registry

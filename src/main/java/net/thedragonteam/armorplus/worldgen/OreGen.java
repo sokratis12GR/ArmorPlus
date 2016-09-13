@@ -38,6 +38,22 @@ public class OreGen implements IWorldGenerator {
         lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
     }
 
+    /**
+     * HELPER METHODS
+     **/
+    // find a grass or dirt block to place the bush on
+    public static int getGroundFromAbove(World world, int x, int z) {
+        int y = 255;
+        boolean foundGround = false;
+        while (!foundGround && y-- >= 0) {
+            Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+            // "ground" for our bush is grass or dirt
+            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS || blockAt != Blocks.AIR;
+        }
+
+        return y;
+    }
+
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         int blockX = chunkX * 16;
@@ -76,22 +92,6 @@ public class OreGen implements IWorldGenerator {
             int groundY = getGroundFromAbove(world, randX, randZ);
             genCabin.generate(world, rand, new BlockPos(randX, groundY + 1, randZ));
         }
-    }
-
-    /**
-     * HELPER METHODS
-     **/
-    // find a grass or dirt block to place the bush on
-    public static int getGroundFromAbove(World world, int x, int z) {
-        int y = 255;
-        boolean foundGround = false;
-        while (!foundGround && y-- >= 0) {
-            Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-            // "ground" for our bush is grass or dirt
-            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS || blockAt != Blocks.AIR;
-        }
-
-        return y;
     }
 
     private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {

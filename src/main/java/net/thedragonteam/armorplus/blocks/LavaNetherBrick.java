@@ -4,29 +4,22 @@
 
 package net.thedragonteam.armorplus.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.base.BaseBlock;
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 8/15/2016.
  * - TheDragonTeam
  */
-public class LavaNetherBrick extends Block {
+public class LavaNetherBrick extends BaseBlock {
 
     public LavaNetherBrick() {
-        super(Material.ROCK, MapColor.NETHERRACK);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_nether_brick");
-        this.setResistance(20.0F);
-        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.setHardness(3.0F);
-        this.setHarvestLevel("pickaxe", 1);
-        this.setLightLevel(1.0F);
+        super(Material.ROCK, "lava_nether_brick", 20.0F, 3.0F, "pickaxe", 1, 1.0F);
     }
 
     @Override

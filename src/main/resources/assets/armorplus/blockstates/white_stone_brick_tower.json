@@ -1,9 +1,11 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"transform": "forge:default-block"
-	},
-	"variants": {
-		"normal": { "model": "armorplus:white_stone_brick_tower" }
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": {
+      "model": "armorplus:white_stone_brick_tower"
+    }
+  }
 }

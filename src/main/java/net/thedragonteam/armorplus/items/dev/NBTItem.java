@@ -4,28 +4,19 @@
 
 package net.thedragonteam.armorplus.items.dev;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.base.BaseItem;
 
 import java.util.List;
 
-public class NBTItem extends Item {
+public class NBTItem extends BaseItem {
 
     public NBTItem() {
-        setRegistryName("dev_item");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "dev_item");     // Used for localization (en_US.lang)
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        super("dev_item");
     }
 
     @Override
@@ -61,11 +52,6 @@ public class NBTItem extends Item {
         }
         stack.setTagCompound(nbt);
         return super.onEntitySwing(entityLiving, stack);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation("minecraft" + ":" + "stick", "inventory"));
     }
 
     @Override

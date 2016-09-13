@@ -4,16 +4,11 @@
 
 package net.thedragonteam.armorplus.armors.dev;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.minecraft.world.World;
+import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -22,27 +17,14 @@ import net.thedragonteam.armorplus.util.Utils;
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
  * - TheDragonTeam
  */
-public class DevChestplate extends ItemArmor {
-
-    public static int armorPreffix = 0;
+public class DevChestplate extends BaseArmor {
 
     public DevChestplate() {
-        super(ModItems.devArmor, armorPreffix, EntityEquipmentSlot.CHEST);
-        setMaxStackSize(1);
-        setRegistryName("dev_chestplate");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "dev_chestplate");     // Used for localization (en_US.lang)
-        GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.tabArmorplus);
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.CHEST, "dev_chestplate");
     }
 
     @Override
-    public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player) {
-        Utils.setUnbreakable(item);
-        return super.onDroppedByPlayer(item, player);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        Utils.setUnbreakable(stack);
     }
 }

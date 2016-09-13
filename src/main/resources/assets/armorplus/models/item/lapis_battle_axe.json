@@ -1,7 +1,7 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "armorplus:items/lapis_battle_axe"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "armorplus:items/lapis_battle_axe"
+  }
 }
 

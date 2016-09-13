@@ -13,7 +13,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.thedragonteam.armorplus.ArmorPlus;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -27,11 +26,11 @@ import java.util.List;
  */
 public class TeleportCommand extends CommandBase {
 
+    private final List<String> aliases;
+
     public TeleportCommand() {
         aliases = Lists.newArrayList("ARPTP", "arptp");
     }
-
-    private final List<String> aliases;
 
     @Override
     @Nonnull

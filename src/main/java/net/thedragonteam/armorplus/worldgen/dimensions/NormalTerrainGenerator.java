@@ -22,24 +22,20 @@ import java.util.Random;
  * - TheDragonTeam
  */
 public class NormalTerrainGenerator {
+    private final double[] heightMap;
+    private final float[] biomeWeights;
     private World world;
     private Random random;
-
-    private final double[] heightMap;
     private double[] mainNoiseRegion;
     private double[] minLimitRegion;
     private double[] maxLimitRegion;
     private double[] depthRegion;
-
     private NoiseGeneratorOctaves minLimitPerlinNoise;
     private NoiseGeneratorOctaves maxLimitPerlinNoise;
     private NoiseGeneratorOctaves mainPerlinNoise;
     private NoiseGeneratorPerlin surfaceNoise;
-
     // A NoiseGeneratorOctaves used in generating terrain
     private NoiseGeneratorOctaves depthNoise;
-
-    private final float[] biomeWeights;
     private double[] depthBuffer = new double[256];
 
     private Biome[] biomesForGeneration;

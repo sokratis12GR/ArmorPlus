@@ -25,11 +25,9 @@ import javax.annotation.Nonnull;
  */
 public class RenderPowerfulZombie extends RenderBiped<EntityEnderDragonZombie> {
 
-    private ResourceLocation mobTexture = new ResourceLocation("armorplus:textures/entity/ender_dragon_zombie.png");
-
     public static final Factory FACTORY = new Factory();
-
     public ModelBiped defaultModel;
+    private ResourceLocation mobTexture = new ResourceLocation("armorplus:textures/entity/ender_dragon_zombie.png");
 
     public RenderPowerfulZombie(RenderManager rendermanagerIn) {
         //Using Minecraft Zombie's Texture and Re-Texturing it

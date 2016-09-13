@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "armorplus:items/guardian_sword"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "armorplus:items/guardian_sword"
+  }
 }

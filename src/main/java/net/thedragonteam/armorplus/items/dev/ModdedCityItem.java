@@ -4,30 +4,18 @@
 
 package net.thedragonteam.armorplus.items.dev;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.base.BaseItem;
 
-public class ModdedCityItem extends Item {
+public class ModdedCityItem extends BaseItem {
 
     public ModdedCityItem() {
-        setRegistryName("modded_city");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "modded_city");     // Used for localization (en_US.lang)
-        GameRegistry.register(this);
+        super("modded_city");
     }
 
     @Override
     public Item setCreativeTab(CreativeTabs tab) {
         return null;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

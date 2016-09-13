@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "armorplus:items/lava_sword"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "armorplus:items/lava_sword"
+  }
 }

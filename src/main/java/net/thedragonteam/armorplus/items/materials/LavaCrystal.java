@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,7 +22,12 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 4/19/2016.
  * - TheDragonTeam
  */
-public class LavaCrystal extends Item {
+public class LavaCrystal extends Item implements IFuelHandler {
+
+    @Override
+    public int getBurnTime(ItemStack fuel) {
+        return 22000;
+    }
 
     public LavaCrystal() {
         this.setHasSubtypes(true);

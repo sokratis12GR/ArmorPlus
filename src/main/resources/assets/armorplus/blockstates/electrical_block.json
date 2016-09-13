@@ -1,10 +1,21 @@
 {
-	"variants": {
-		"normal": [
-			{ "model": "armorplus:electrical_block" },
-			{ "model": "armorplus:electrical_block", "y": 90 },
-			{ "model": "armorplus:electrical_block", "y": 180 },
-			{ "model": "armorplus:electrical_block", "y": 270 }
-		]
-	}
+  "variants": {
+    "normal": [
+      {
+        "model": "armorplus:electrical_block"
+      },
+      {
+        "model": "armorplus:electrical_block",
+        "y": 90
+      },
+      {
+        "model": "armorplus:electrical_block",
+        "y": 180
+      },
+      {
+        "model": "armorplus:electrical_block",
+        "y": 270
+      }
+    ]
+  }
 }

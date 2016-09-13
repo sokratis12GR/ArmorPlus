@@ -67,6 +67,7 @@ public class AdvancedArmorForgeRecipe {
      * the default output.
      *
      * @param inputList
+     *
      * @return
      */
     public ItemStack getRecipeOutput(List<ItemStack> inputList) {

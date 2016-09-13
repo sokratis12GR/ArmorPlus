@@ -352,7 +352,7 @@ public class ArmorForgeCraftingManager {
         }
 
         // ===================================== Items =====================================
-        this.addRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1), "SOS", "OLO", "SOS", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
+        this.addRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1), "LOL", "OSO", "LOL", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
         //this.addRecipe(new ItemStack(Blocks.TNT, 1), new Object[]{"X#X", "#X#", "X#X", 'X', Items.GUNPOWDER, '#', Blocks.SAND});
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

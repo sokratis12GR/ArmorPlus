@@ -38,10 +38,9 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  */
 public class EntityEnderDragonZombie extends EntityMob {
 
+    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/ender_dragon_zombie");
     // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie.class, DataSerializers.BOOLEAN);
-
-    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/ender_dragon_zombie");
 
     public EntityEnderDragonZombie(World worldIn) {
         super(worldIn);
@@ -76,13 +75,13 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(enderDragonZombieKnockbackResistance);
     }
 
-    public void setArmsRaised(boolean armsRaised) {
-        this.getDataManager().set(ARMS_RAISED, Boolean.valueOf(armsRaised));
-    }
-
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
         return this.getDataManager().get(ARMS_RAISED).booleanValue();
+    }
+
+    public void setArmsRaised(boolean armsRaised) {
+        this.getDataManager().set(ARMS_RAISED, Boolean.valueOf(armsRaised));
     }
 
     @Override

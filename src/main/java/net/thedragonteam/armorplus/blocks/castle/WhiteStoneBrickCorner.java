@@ -2,11 +2,9 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.blocks;
+package net.thedragonteam.armorplus.blocks.castle;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
@@ -19,27 +17,64 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class WhiteStoneBrickCorner extends Block {
+public class WhiteStoneBrickCorner extends BaseCastleBlock {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyEnum<WhiteStoneBrickCorner.EnumHalf> HALF = PropertyEnum.<WhiteStoneBrickCorner.EnumHalf>create("half", WhiteStoneBrickCorner.EnumHalf.class);
     public static final PropertyEnum<WhiteStoneBrickCorner.EnumShape> SHAPE = PropertyEnum.<WhiteStoneBrickCorner.EnumShape>create("shape", WhiteStoneBrickCorner.EnumShape.class);
 
     public WhiteStoneBrickCorner() {
-        super(Material.ROCK);
+        super("white_stone_brick_corner");
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HALF, WhiteStoneBrickCorner.EnumHalf.BOTTOM).withProperty(SHAPE, WhiteStoneBrickCorner.EnumShape.STRAIGHT));
         this.setLightOpacity(255);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "white_stone_brick_corner");
-        this.setResistance(10.0F);
-        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.setHardness(5.0F);
-        this.setHarvestLevel("pickaxe", 0);
+    }
+
+    private static boolean isDifferentStairs(IBlockState p_185704_0_, IBlockAccess p_185704_1_, BlockPos p_185704_2_, EnumFacing p_185704_3_) {
+        IBlockState iblockstate = p_185704_1_.getBlockState(p_185704_2_.offset(p_185704_3_));
+        return !isWhiteStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != p_185704_0_.getValue(FACING) || iblockstate.getValue(HALF) != p_185704_0_.getValue(HALF);
+    }
+
+    public static boolean isWhiteStoneBrickCorner(IBlockState state) {
+        return state.getBlock() instanceof WhiteStoneBrickCorner;
+    }
+
+    private static WhiteStoneBrickCorner.EnumShape getStairsShape(IBlockState p_185706_0_, IBlockAccess p_185706_1_, BlockPos p_185706_2_) {
+        EnumFacing enumfacing = (EnumFacing) p_185706_0_.getValue(FACING);
+        IBlockState iblockstate = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing));
+
+        if (isWhiteStoneBrickCorner(iblockstate) && p_185706_0_.getValue(HALF) == iblockstate.getValue(HALF)) {
+            EnumFacing enumfacing1 = (EnumFacing) iblockstate.getValue(FACING);
+
+            if (enumfacing1.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing1.getOpposite())) {
+                if (enumfacing1 == enumfacing.rotateYCCW()) {
+                    return WhiteStoneBrickCorner.EnumShape.OUTER_LEFT;
+                }
+
+                return WhiteStoneBrickCorner.EnumShape.OUTER_RIGHT;
+            }
+        }
+
+        IBlockState iblockstate1 = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing.getOpposite()));
+
+        if (isWhiteStoneBrickCorner(iblockstate1) && p_185706_0_.getValue(HALF) == iblockstate1.getValue(HALF)) {
+            EnumFacing enumfacing2 = (EnumFacing) iblockstate1.getValue(FACING);
+
+            if (enumfacing2.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing2)) {
+                if (enumfacing2 == enumfacing.rotateYCCW()) {
+                    return WhiteStoneBrickCorner.EnumShape.INNER_LEFT;
+                }
+
+                return WhiteStoneBrickCorner.EnumShape.INNER_RIGHT;
+            }
+        }
+
+        return WhiteStoneBrickCorner.EnumShape.STRAIGHT;
     }
 
     @Override
@@ -78,15 +113,6 @@ public class WhiteStoneBrickCorner extends Block {
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return state.withProperty(SHAPE, getStairsShape(state, worldIn, pos));
-    }
-
-    private static boolean isDifferentStairs(IBlockState p_185704_0_, IBlockAccess p_185704_1_, BlockPos p_185704_2_, EnumFacing p_185704_3_) {
-        IBlockState iblockstate = p_185704_1_.getBlockState(p_185704_2_.offset(p_185704_3_));
-        return !isWhiteStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != p_185704_0_.getValue(FACING) || iblockstate.getValue(HALF) != p_185704_0_.getValue(HALF);
-    }
-
-    public static boolean isWhiteStoneBrickCorner(IBlockState state) {
-        return state.getBlock() instanceof WhiteStoneBrickCorner;
     }
 
     @Override
@@ -142,39 +168,6 @@ public class WhiteStoneBrickCorner extends Block {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, new IProperty[]{FACING, HALF, SHAPE});
-    }
-
-    private static WhiteStoneBrickCorner.EnumShape getStairsShape(IBlockState p_185706_0_, IBlockAccess p_185706_1_, BlockPos p_185706_2_) {
-        EnumFacing enumfacing = (EnumFacing) p_185706_0_.getValue(FACING);
-        IBlockState iblockstate = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing));
-
-        if (isWhiteStoneBrickCorner(iblockstate) && p_185706_0_.getValue(HALF) == iblockstate.getValue(HALF)) {
-            EnumFacing enumfacing1 = (EnumFacing) iblockstate.getValue(FACING);
-
-            if (enumfacing1.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing1.getOpposite())) {
-                if (enumfacing1 == enumfacing.rotateYCCW()) {
-                    return WhiteStoneBrickCorner.EnumShape.OUTER_LEFT;
-                }
-
-                return WhiteStoneBrickCorner.EnumShape.OUTER_RIGHT;
-            }
-        }
-
-        IBlockState iblockstate1 = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing.getOpposite()));
-
-        if (isWhiteStoneBrickCorner(iblockstate1) && p_185706_0_.getValue(HALF) == iblockstate1.getValue(HALF)) {
-            EnumFacing enumfacing2 = (EnumFacing) iblockstate1.getValue(FACING);
-
-            if (enumfacing2.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing2)) {
-                if (enumfacing2 == enumfacing.rotateYCCW()) {
-                    return WhiteStoneBrickCorner.EnumShape.INNER_LEFT;
-                }
-
-                return WhiteStoneBrickCorner.EnumShape.INNER_RIGHT;
-            }
-        }
-
-        return WhiteStoneBrickCorner.EnumShape.STRAIGHT;
     }
 
     @Override

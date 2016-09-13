@@ -4,6 +4,8 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -109,11 +111,15 @@ import net.thedragonteam.armorplus.items.theultimate.*;
 import net.thedragonteam.armorplus.util.NameUtil;
 
 public class ModItems {
+
+    public static final IAttribute ARMOR = (new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 30.0D)).setShouldWatch(true);
+
     /**
      * Swords
      * Float damageVsEntity + 4.0F
      * public static ToolMaterial MATERIAL = EnumHelper.addToolMaterial("MATERIAL", int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability);
      */
+
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, 59, 1.0F, 0.5F, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, 250, 1.0F, 1.0F, 30);
     public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, 200, 1.0F, 1.5F, 20);
@@ -354,6 +360,9 @@ public class ModItems {
     public static TheDragonTeamItem theDragonTeamItem;
     public static ModdedCityItem moddedCityItem;
     public static JonBamsItem jonBamsItem;
+    public static TwitchItem twitchItem;
+    public static BeamItem beamItem;
+    public static MMDItem mmdItem;
 
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
@@ -362,6 +371,9 @@ public class ModItems {
     }
 
     public static void init() {
+        mmdItem = new MMDItem();
+        twitchItem = new TwitchItem();
+        beamItem = new BeamItem();
         theDragonTeamItem = new TheDragonTeamItem();
         moddedCityItem = new ModdedCityItem();
         jonBamsItem = new JonBamsItem();
@@ -458,24 +470,24 @@ public class ModItems {
         knightSlimeChestplate = new KnightSlimeChestplate();
         knightSlimeLeggings = new KnightSlimeLeggings();
         knightSlimeBoots = new KnightSlimeBoots();
-        coalSword = new CoalSword(swordCoalMaterial);
-        lapisSword = new LapisSword(swordLapisMaterial);
-        redstoneSword = new RedstoneSword(swordRedstoneMaterial);
-        emeraldSword = new EmeraldSword(swordEmeraldMaterial);
-        obsidianSword = new ObsidianSword(swordObsidianMaterial);
-        lavaSword = new LavaSword(swordLavaMaterial);
-        superStarSword = new SuperStarSword(swordSuperStarMaterial);
-        guardianSword = new GuardianSword(swordGuardianMaterial);
-        enderDragonSword = new EnderDragonSword(swordEnderDragonMaterial);
-        coalBattleAxe = new CoalBattleAxe(battleAxeCoalMaterial);
-        lapisBattleAxe = new LapisBattleAxe(battleAxeLapisMaterial);
-        redstoneBattleAxe = new RedstoneBattleAxe(battleAxeRedstoneMaterial);
-        emeraldBattleAxe = new EmeraldBattleAxe(battleAxeEmeraldMaterial);
-        obsidianBattleAxe = new ObsidianBattleAxe(battleAxeObsidianMaterial);
-        lavaBattleAxe = new LavaBattleAxe(battleAxeLavaMaterial);
-        superStarBattleAxe = new SuperStarBattleAxe(battleAxeSuperStarMaterial);
-        guardianBattleAxe = new GuardianBattleAxe(battleAxeGuardianMaterial);
-        enderDragonBattleAxe = new EnderDragonBattleAxe(battleAxeEnderDragonMaterial);
+        coalSword = new CoalSword();
+        lapisSword = new LapisSword();
+        redstoneSword = new RedstoneSword();
+        emeraldSword = new EmeraldSword();
+        obsidianSword = new ObsidianSword();
+        lavaSword = new LavaSword();
+        superStarSword = new SuperStarSword();
+        guardianSword = new GuardianSword();
+        enderDragonSword = new EnderDragonSword();
+        coalBattleAxe = new CoalBattleAxe();
+        lapisBattleAxe = new LapisBattleAxe();
+        redstoneBattleAxe = new RedstoneBattleAxe();
+        emeraldBattleAxe = new EmeraldBattleAxe();
+        obsidianBattleAxe = new ObsidianBattleAxe();
+        lavaBattleAxe = new LavaBattleAxe();
+        superStarBattleAxe = new SuperStarBattleAxe();
+        guardianBattleAxe = new GuardianBattleAxe();
+        enderDragonBattleAxe = new EnderDragonBattleAxe();
         coalBow = new CoalBow();
         lapisBow = new LapisBow();
         redstoneBow = new RedstoneBow();
@@ -510,10 +522,12 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        mmdItem.initModel();
+        twitchItem.initModel();
+        beamItem.initModel();
         theDragonTeamItem.initModel();
         moddedCityItem.initModel();
         jonBamsItem.initModel();
-
         chainmail.initModel();
         guardianScale.initModel();
         witherBone.initModel();
@@ -526,107 +540,86 @@ public class ModItems {
         electricalIngot.initModel();
         redstoneApple.initModel();
         armorPlusInfoBook.initModel();
-
         devHelmet.initModel();
         devChestplate.initModel();
         devLeggings.initModel();
         devBoots.initModel();
-
         coalHelmet.initModel();
         coalChestplate.initModel();
         coalLeggings.initModel();
         coalBoots.initModel();
-
         emeraldHelmet.initModel();
         emeraldChestplate.initModel();
         emeraldLeggings.initModel();
         emeraldBoots.initModel();
-
         lapisHelmet.initModel();
         lapisChestplate.initModel();
         lapisLeggings.initModel();
         lapisBoots.initModel();
-
         lavaHelmet.initModel();
         lavaChestplate.initModel();
         lavaLeggings.initModel();
         lavaBoots.initModel();
-
         obsidianHelmet.initModel();
         obsidianChestplate.initModel();
         obsidianLeggings.initModel();
         obsidianBoots.initModel();
-
         redstoneHelmet.initModel();
         redstoneChestplate.initModel();
         redstoneLeggings.initModel();
         redstoneBoots.initModel();
-
         steelHelmet.initModel();
         steelChestplate.initModel();
         steelLeggings.initModel();
         steelBoots.initModel();
-
         electricalHelmet.initModel();
         electricalChestplate.initModel();
         electricalLeggings.initModel();
         electricalBoots.initModel();
-
         chickenHelmet.initModel();
         chickenChestplate.initModel();
         chickenLeggings.initModel();
         chickenBoots.initModel();
-
         slimeHelmet.initModel();
         slimeChestplate.initModel();
         slimeLeggings.initModel();
         slimeBoots.initModel();
-
         enderDragonHelmet.initModel();
         enderDragonChestplate.initModel();
         enderDragonLeggings.initModel();
         enderDragonBoots.initModel();
-
         guardianHelmet.initModel();
         guardianChestplate.initModel();
         guardianLeggings.initModel();
         guardianBoots.initModel();
-
         superStarHelmet.initModel();
         superStarChestplate.initModel();
         superStarLeggings.initModel();
         superStarBoots.initModel();
-
         theUltimateHelmet.initModel();
         theUltimateChestplate.initModel();
         theUltimateLeggings.initModel();
         theUltimateBoots.initModel();
-
         arditeHelmet.initModel();
         arditeChestplate.initModel();
         arditeLeggings.initModel();
         arditeBoots.initModel();
-
         cobaltHelmet.initModel();
         cobaltChestplate.initModel();
         cobaltLeggings.initModel();
         cobaltBoots.initModel();
-
         manyullynHelmet.initModel();
         manyullynChestplate.initModel();
         manyullynLeggings.initModel();
         manyullynBoots.initModel();
-
         pigIronHelmet.initModel();
         pigIronChestplate.initModel();
         pigIronLeggings.initModel();
         pigIronBoots.initModel();
-
         knightSlimeHelmet.initModel();
         knightSlimeChestplate.initModel();
         knightSlimeLeggings.initModel();
         knightSlimeBoots.initModel();
-
         coalSword.initModel();
         lapisSword.initModel();
         redstoneSword.initModel();
@@ -654,7 +647,6 @@ public class ModItems {
         superStarBow.initModel();
         guardianBow.initModel();
         enderDragonBow.initModel();
-
         theUltimateHelmetLeft.initModel();
         theUltimateHelmetMiddle.initModel();
         theUltimateHelmetRight.initModel();
@@ -667,7 +659,6 @@ public class ModItems {
         theUltimateBootsLeft.initModel();
         theUltimateBootsMiddle.initModel();
         theUltimateBootsRight.initModel();
-
         devTool.initModel();
         nbtItem.initModel();
     }
