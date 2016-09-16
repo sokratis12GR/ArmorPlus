@@ -15,13 +15,13 @@ public class ARPConfig {
 
     //EnderDragonZombie
     @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
-    public static boolean enableEnderDragonZombieSpawnEnd = false;
+    public static boolean enableEnderDragonZombieSpawnEnd = true;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieHealth", comment = "Set the Ender Dragon Zombie's Health")
     public static double enderDragonZombieHealth = 40.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieKnockbackResistance", comment = "Set the Ender Dragon Zombie's Knockback Resistance")
-    public static double enderDragonZombieKnockbackResistance = 100.0D;
+    public static double enderDragonZombieKnockbackResistance = 20.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieArmor", comment = "Set the Ender Dragon Zombie's Armor")
-    public static double enderDragonZombieArmor = 5.0D;
+    public static double enderDragonZombieArmor = 2.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieAttackDamage", comment = "Set the Ender Dragon Zombie's Attack Damage")
     public static double enderDragonZombieAttackDamage = 4.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieMovementSpeed", comment = "Set the Ender Dragon Zombie's Movement Speed")
@@ -31,15 +31,9 @@ public class ARPConfig {
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enableEnderDragonZombieWithering", comment = "Enable/Disable the Ender Dragon Zombie's Withering Effect")
     public static boolean enableEnderDragonZombieWithering = true;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectDuration", comment = "Set the Ender Dragon Zombie's Withering Effect Duration")
-    public static int enderDragonZombieWitheringEffectDuration = 50;
+    public static int enderDragonZombieWitheringEffectDuration = 20;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectLevel", comment = "Set the Ender Dragon Zombie's Withering Effect Level")
     public static int enderDragonZombieWitheringEffectLevel = 4;
-
-    //Dimensions
-    @ModConfigProperty(category = "Dimensions", name = "arpDimensionId", comment = "Set the ArmorPlus dimension ID")
-    public static int arpDimensionId = 234;
-    @ModConfigProperty(category = "Dimensions", name = "arpDimensionEnabled", comment = "Enable/Disable the ARP Dimension")
-    public static boolean arpDimensionEnabled = false;
 
     //Debug
     @ModConfigProperty(category = "Debug", name = "debugMode", comment = "Enable/Disable Debug Mode")

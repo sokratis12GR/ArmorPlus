@@ -35,8 +35,6 @@ import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
 import net.thedragonteam.armorplus.misc.SpecialRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.resources.InputHandler;
-import net.thedragonteam.armorplus.resources.KeyBindings;
 
 import java.io.File;
 
@@ -48,8 +46,6 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
 
         // Initialize the input handler so we can listen to keys
-        MinecraftForge.EVENT_BUS.register(new InputHandler());
-        KeyBindings.init();
     }
 
     @Override

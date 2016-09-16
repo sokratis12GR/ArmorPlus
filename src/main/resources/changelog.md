@@ -1,9 +1,27 @@
 **ArmorPlus 1.10.2-7.0.1.0-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Features Added}**
+* **{Features Added/Removed/Changed}**
+    * Tesla Items/Blocks
+        * Tesla Sword
+        * Tesla Pickaxe
+        * Creative Power Cell (Tesla)
     * More Cosmetic Items for special people
         * MMD Logo Cosmetic
+    * Removed Teleport Command, Dimension ArmorPlus
+    * Changed GUI Scale and Background Image of the ArmorPlus Books
+    * Removed Night Vision from the Ultimate Armor
+* **{Code Changed/Added/Removed}**
+    * Added BaseEnergyBlock (Used by the tesla blocks as a base)
+    * Added Cofh/API to main code for later usage mayble - if not used it will be removed
+    * Added BaseTesla (Used by the tesla tools/weapons as a base)
+    * Item Tesla Sword
+    * Removed all the code for the Dimension ArmorPlus
+    * Removed the ARPTP command, cheaty, unneeded
+    * Changed Values of the GUIs for the ArmorPlus Books so they match their new GUI Texture by (Aya Shameimaru)
+    * Added the `hasTesla` Method so it checks if Tesla is loaded
+    * Added Recipes for the Tesla tools/weapons
+    * Removed Night Vision Key Bind
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.0.0-dev**
 ============================

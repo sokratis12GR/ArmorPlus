@@ -14,22 +14,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
-import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.entity.ARPEntities;
-import net.thedragonteam.armorplus.network.PacketHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.worldgen.OreGen;
-import net.thedragonteam.armorplus.worldgen.dimensions.ARPDimensions;
 import net.thedragonteam.core.util.LogHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
-
-import static net.thedragonteam.armorplus.ARPConfig.arpDimensionEnabled;
-import static net.thedragonteam.armorplus.ARPConfig.arpDimensionId;
 
 public class CommonProxy {
 
@@ -37,16 +31,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         ARPEntities.init();
-        if (arpDimensionEnabled)
-            ARPDimensions.init();
-        if (ARPConfig.isDebugMode()) {
-            LogHelper.info("ARP Dimension ID: " + arpDimensionId);
-            LogHelper.info("ARP Dimension Enabled: " + arpDimensionEnabled);
-        }
 
-        // Initialize the packet handler. Make sure the name is
-        // 20 characters or less!
-        PacketHandler.registerMessages("armorplus");
         LogHelper.info("Finished PreInitialization");
     }
 

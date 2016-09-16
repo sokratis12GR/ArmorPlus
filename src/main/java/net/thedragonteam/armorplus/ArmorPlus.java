@@ -26,7 +26,6 @@ import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.commands.TeleportCommand;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
@@ -92,7 +91,6 @@ public class ArmorPlus {
      * The GameProfile used by the dummy ArmorPlus player
      */
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
-    public static boolean nightVisionEnabled = true;
     /**
      * A list of the usernames of players who have donated to ArmorPlus.
      */
@@ -104,10 +102,6 @@ public class ArmorPlus {
 
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
-    }
-
-    public static boolean isNightVisionEnabled() {
-        return nightVisionEnabled;
     }
 
     public static File getConfigDir() {
@@ -257,7 +251,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
-        event.registerServerCommand(new TeleportCommand());
         event.registerServerCommand(new CommandArmorPlus());
     }
 

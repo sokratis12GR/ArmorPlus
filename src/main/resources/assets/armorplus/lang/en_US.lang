@@ -11,6 +11,21 @@ container.armorplus.armor_forge=Armor Forge
 container.armorplus.advanced_armor_forge=Advanced Armor Forge
 container.armorplus.inventory=Inventory
 
+﻿#Tile
+tile.armorplus.block_energy.name=Tesla Analyzer
+tile.armorplus.blackhole.name=Power Blackhole
+tile.armorplus.block_energy_creative.name=Creative Power Cell
+
+#Item
+item.armorplus.battery.name=Battery
+item.armorplus.battery_blackhole.name=Blackhole Battery
+item.armorplus.battery_creative.name=Creative Battery
+
+#Tooltips
+tooltip.armorplus.battery.normal=Contains §e%dT/§e%dT
+tooltip.armorplus.battery.blackhole=Consumes an infinite amount of Tesla
+tooltip.armorplus.battery.creative=Produces an infinite amount of Tesla
+
 #Commands
 commands.error.arg.invalid=Invalid arguments
 commands.error.arg.missing=Not enough arguments
@@ -284,6 +299,7 @@ item.lava_arrow.name=Lava Arrow
 #EnergyItems
 item.armorplus.item_energy_container.name=Energy Container
 item.armorplus.tesla_sword.name=Tesla Sword
+item.armorplus.tesla_pickaxe.name=Tesla Pickaxe
 
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie

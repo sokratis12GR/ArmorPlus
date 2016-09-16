@@ -26,6 +26,12 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     @Override
     public int getBurnTime(ItemStack fuel) {
+        switch (fuel.getItemDamage()) {
+            case 1:
+                return 22000;
+            case 0:
+                return 22000;
+        }
         return 22000;
     }
 

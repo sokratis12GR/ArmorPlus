@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2516.
  ******************************************************************************/
 
 package net.thedragonteam.armorplus.client.gui;
@@ -17,13 +17,13 @@ import java.io.IOException;
 
 /**
  * net.thedragonteam.armorplus.client.gui
- * ArmorPlus created by sokratis12GR on 6/13/2016 6:42 PM.
+ * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  * - TheDragonTeam
  */
 public class GuiArmorPlusInfo extends GuiScreen {
 
-    int guiWidth = 265;
-    int guiHeight = 250;
+    int guiWidth = 256;
+    int guiHeight = 256;
 
     int guiX = (width - guiWidth) / 2;
     int guiY = (height - guiHeight) / 2;
@@ -39,13 +39,13 @@ public class GuiArmorPlusInfo extends GuiScreen {
         mc.renderEngine.bindTexture(new ResourceLocation(ArmorPlus.MODID, "textures/gui/gui_armorplus.png"));
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
 
-        fontRendererObj.drawString(new TextComponentString("ArmorPlus Info").getFormattedText(), guiX + 10, guiY + 10, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("ArmorPlus Crafting Recipes are Expert Mode").getFormattedText(), guiX + 10, guiY + 30, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("`I:Recipe:1` by default.").getFormattedText(), guiX + 10, guiY + 40, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("If you want to change to Easy Mode you will").getFormattedText(), guiX + 10, guiY + 50, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("need to change the config").getFormattedText(), guiX + 10, guiY + 60, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("From `I:Recipe:1` to `I:Recipe:0`.").getFormattedText(), guiX + 10, guiY + 70, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + ARPConfig.recipes + "`.").getFormattedText(), guiX + 10, guiY + 90, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("ArmorPlus Info").getFormattedText(), guiX + 25, guiY + 20, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("ArmorPlus Crafting Recipes are").getFormattedText(), guiX + 25, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Expert Mode `I:Recipe:1` by default.").getFormattedText(), guiX + 25, guiY + 50, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("If you want to change to Easy Mode").getFormattedText(), guiX + 25, guiY + 60, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("you will need to change the config").getFormattedText(), guiX + 25, guiY + 70, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("From `I:Recipe:1` to `I:Recipe:0`.").getFormattedText(), guiX + 25, guiY + 80, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + ARPConfig.recipes + "`.").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

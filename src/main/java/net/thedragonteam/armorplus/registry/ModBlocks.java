@@ -15,6 +15,7 @@ import net.thedragonteam.armorplus.blocks.*;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickTower;
+import net.thedragonteam.armorplus.blocks.energy.BlockCreativePower;
 import net.thedragonteam.armorplus.blocks.v2.ElectricalBlock;
 import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
 
@@ -35,6 +36,7 @@ public class ModBlocks {
     public static Block lavaNetherBrick;
     public static Block whiteStoneBrickTower;
     public static Block whiteStoneBrickCorner;
+    public static Block blockCreativeEnergy;
     public static LavaCactus lavaCactus;
 
     public static void init() {
@@ -49,6 +51,7 @@ public class ModBlocks {
         whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
         whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
         whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
+        blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
     }
 
     public static void register() {
@@ -63,6 +66,7 @@ public class ModBlocks {
         registerBlock(whiteStoneBrick);
         registerBlock(whiteStoneBrickTower);
         registerBlock(whiteStoneBrickCorner);
+        registerBlock(blockCreativeEnergy);
     }
 
     public static void registerRenders() {
@@ -77,6 +81,7 @@ public class ModBlocks {
         registerRender(whiteStoneBrick);
         registerRender(whiteStoneBrickTower);
         registerRender(whiteStoneBrickCorner);
+        registerRender(blockCreativeEnergy);
     }
 
     public static void registerBlock(Block block) {

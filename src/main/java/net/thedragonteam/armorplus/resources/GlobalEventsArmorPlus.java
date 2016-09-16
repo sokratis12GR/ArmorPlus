@@ -25,7 +25,6 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.core.util.TextHelper;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
-import static net.thedragonteam.armorplus.ArmorPlus.nightVisionEnabled;
 
 public class GlobalEventsArmorPlus {
 
@@ -59,16 +58,6 @@ public class GlobalEventsArmorPlus {
         ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-
-        if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots) {
-            if (entity instanceof EntityLivingBase) {
-                if (nightVisionEnabled) {
-                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
-                } else if (!nightVisionEnabled) {
-                    entity.removePotionEffect(MobEffects.NIGHT_VISION);
-                }
-            }
-        }
 
         if (head != null && head.getItem() == ModItems.lavaHelmet && chest != null && chest.getItem() == ModItems.lavaChestplate && legs != null && legs.getItem() == ModItems.lavaLeggings && feet != null && feet.getItem() == ModItems.lavaBoots) {
             entity.extinguish();
