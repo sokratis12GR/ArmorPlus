@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,8 +34,6 @@ import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
-import net.thedragonteam.armorplus.resources.KeyBinds;
-import net.thedragonteam.armorplus.resources.KeyInputHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
@@ -61,7 +60,7 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 0;
+    public static final int MINOR = 1;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
     public static final int PATCH = 0;
     // The ArmorPlus Version
@@ -123,12 +122,13 @@ public class ArmorPlus {
         return VERSION;
     }
 
+    public static boolean hasTesla() {
+        return Loader.isModLoaded("Tesla");
+    }
+
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-        KeyBinds.register();
-
-        MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
         entity = new ArmorPlusEntity();
 
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);

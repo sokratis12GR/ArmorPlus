@@ -6,21 +6,17 @@ package net.thedragonteam.armorplus.resources;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.thedragonteam.armorplus.network.PacketHandler;
+import net.thedragonteam.armorplus.network.PacketSendKey;
 
-import static net.thedragonteam.armorplus.ArmorPlus.isNightVisionEnabled;
-import static net.thedragonteam.armorplus.ArmorPlus.nightVisionEnabled;
 
-
-public class KeyInputHandler {
+public class InputHandler {
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
-        if (KeyBinds.nightVision.isPressed()) {
-            if (isNightVisionEnabled()) {
-                nightVisionEnabled = false;
-            } else {
-                nightVisionEnabled = true;
-            }
+        if (KeyBindings.nightVision.isPressed()) {
+            // Someone pressed our tutorialKey. We send a message
+            PacketHandler.INSTANCE.sendToServer(new PacketSendKey());
         }
     }
 }

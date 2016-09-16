@@ -195,6 +195,9 @@ item.armorplus.jon_bams.name=Jon Bams
 item.armorplus.beam.name=Beam
 item.armorplus.twitch.name=Twitch
 item.armorplus.mmd.name=MMD
+item.armorplus.test_0.name=Test 0
+item.armorplus.test_1.name=Test 1
+item.armorplus.test_2.name=Test 2
 
 #Items
 item.armorplus.chainmail.name=Chainmail
@@ -277,6 +280,10 @@ item.coal_arrow.name=Coal Arrow
 item.lapis_arrow.name=Lapis Arrow
 item.redstone_arrow.name=Redstone Arrow
 item.lava_arrow.name=Lava Arrow
+
+#EnergyItems
+item.armorplus.item_energy_container.name=Energy Container
+item.armorplus.tesla_sword.name=Tesla Sword
 
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie

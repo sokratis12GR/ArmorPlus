@@ -18,6 +18,7 @@ import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.entity.ARPEntities;
+import net.thedragonteam.armorplus.network.PacketHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.worldgen.OreGen;
@@ -42,6 +43,10 @@ public class CommonProxy {
             LogHelper.info("ARP Dimension ID: " + arpDimensionId);
             LogHelper.info("ARP Dimension Enabled: " + arpDimensionEnabled);
         }
+
+        // Initialize the packet handler. Make sure the name is
+        // 20 characters or less!
+        PacketHandler.registerMessages("armorplus");
         LogHelper.info("Finished PreInitialization");
     }
 

@@ -105,6 +105,9 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.*;
+import net.thedragonteam.armorplus.items.energy.ItemTeslaEnergy;
+import net.thedragonteam.armorplus.items.energy.ItemTeslaPickaxe;
+import net.thedragonteam.armorplus.items.energy.ItemTeslaSword;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
@@ -364,6 +367,10 @@ public class ModItems {
     public static BeamItem beamItem;
     public static MMDItem mmdItem;
 
+    public static ItemTeslaEnergy itemTeslaEnergy;
+    public static ItemTeslaPickaxe itemTeslaPickaxe;
+    public static ItemTeslaSword itemTeslaSword;
+
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
     public ModItems() {
@@ -371,6 +378,9 @@ public class ModItems {
     }
 
     public static void init() {
+        itemTeslaEnergy = new ItemTeslaEnergy();
+        itemTeslaPickaxe = new ItemTeslaPickaxe();
+        itemTeslaSword = new ItemTeslaSword();
         mmdItem = new MMDItem();
         twitchItem = new TwitchItem();
         beamItem = new BeamItem();
@@ -522,6 +532,9 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemTeslaEnergy.initModel();
+        itemTeslaPickaxe.initModel();
+        itemTeslaSword.initModel();
         mmdItem.initModel();
         twitchItem.initModel();
         beamItem.initModel();

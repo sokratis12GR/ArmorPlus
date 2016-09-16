@@ -17,6 +17,9 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 repositories {
+    maven { // Tesla repo
+      url 'http://maven.epoxide.xyz'
+    }
     maven { // JEI repo
         url "http://dvs1.progwml6.com/files/maven"
     }
@@ -78,10 +81,21 @@ task devJar(type: Jar) {
     from sourceSets.main.output
 }
 
+
+task deobfJar(type: Jar) { // Generate deobfuscated
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+tasks.build.dependsOn('deobfJar')
+artifacts {
+    archives deobfJar
+}
+
 artifacts {
     archives sourcesJar
     archives apiJar
 	archives devJar
+	archives deobfJar
 }
 
 /**publishing {
@@ -132,6 +146,8 @@ processResources {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+	    compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.46"
+
 //    deobfCompile "net.thedragonteam:armorplus:project.version"
 //    deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}"
 //    deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tconstruct_version}"
