@@ -12,15 +12,25 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider
-{
+public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
     private final BaseTeslaContainer container;
-    private long maxCapacity;
-    private long output;
-    private long input;
+    private int power;
+    private int maxCapacity;
+    private int output;
+    private int input;
 
-    public BaseARPTeslaContainerProvider(BaseTeslaContainer container, long maxCapacity, long input, long output)
-    {
+    public BaseARPTeslaContainerProvider(BaseTeslaContainer container, int power, int maxCapacity, int input, int output) {
+        this.container = container;
+        this.power = power;
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
+        container.setCapacity(maxCapacity);
+        container.setOutputRate(output);
+        container.setInputRate(input);
+    }
+
+    public BaseARPTeslaContainerProvider(BaseTeslaContainer container, int maxCapacity, int input, int output) {
         this.container = container;
         this.maxCapacity = maxCapacity;
         this.output = output;
@@ -30,16 +40,15 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
         container.setInputRate(input);
     }
 
+
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
-    {
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         return capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
-    {
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return (T) this.container;
 
@@ -47,14 +56,12 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
     }
 
     @Override
-    public NBTTagCompound serializeNBT ()
-    {
+    public NBTTagCompound serializeNBT() {
         return this.container.serializeNBT();
     }
 
     @Override
-    public void deserializeNBT (NBTTagCompound nbt)
-    {
+    public void deserializeNBT(NBTTagCompound nbt) {
         this.container.deserializeNBT(nbt);
     }
 }

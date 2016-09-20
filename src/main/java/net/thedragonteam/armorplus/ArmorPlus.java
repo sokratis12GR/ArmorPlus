@@ -50,7 +50,7 @@ import java.util.UUID;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, acceptedMinecraftVersions = "[1.10.2,1.11)", updateJSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json")
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json")
 public class ArmorPlus {
 
     public static final String MCVERSION = "1.10.2";
@@ -59,15 +59,16 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 1;
+    public static final int MINOR = 2;
     // Updates every time a new block, item or features is added or change, resets on MINOR changes
     public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "-dev";
+    public static final String TESLA_VERSION = "1.2.1.49";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);";
+    public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);";
 
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
@@ -159,6 +160,8 @@ public class ArmorPlus {
         registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
+
+        registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));
     }
 
     @SideOnly(Side.SERVER)

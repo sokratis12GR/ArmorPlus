@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.items.consumables;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -15,6 +16,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.core.util.LogHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +36,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
+        setMaxDamage(maxUses);
     }
 
     @Override
@@ -44,6 +47,21 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
+
+        NBTTagCompound nbt;
+        if (itemStackIn.hasTagCompound()) {
+            nbt = itemStackIn.getTagCompound();
+        } else {
+            nbt = new NBTTagCompound();
+        }
+
+        if (nbt.hasKey("Clicked")) {
+            nbt.setInteger("Clicked", nbt.getInteger("Clicked") + 1);
+        } else {
+            nbt.setInteger("Clicked", 1);
+        }
+        itemStackIn.setTagCompound(nbt);
+
         if (worldIn.isRemote) {
             return new ActionResult(EnumActionResult.PASS, itemStackIn);
         }
@@ -60,12 +78,23 @@ public class TheGiftOfTheGods extends BaseItem {
             }
         }
         while (item == null /*|| (item != null && item instanceof ItemBlock)*/ || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
+        if (enableTheGiftOfTheGods) {
+            if (!playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem()) && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() && !debugMode)
+                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
+            else if (debugMode && debugModeGOTG)
+                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), 0);
 
-        itemStackIn = new ItemStack(item);
+            playerIn.dropItem(item, 1);
+            playerIn.addChatMessage(new TextComponentString("You got: " + item.getRegistryName()));
+            if (debugMode && debugModeGOTG)
+                LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
+                        " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
+                        " ; Item's Max Damage: " + item.getMaxDamage());
 
-        playerIn.addChatMessage(new TextComponentString("You got: " + itemStackIn.getItem().getRegistryName()));
-
+            itemStackIn.damageItem(1, playerIn);
+        }
         return new ActionResult(EnumActionResult.PASS, itemStackIn);
+
     }
 
     @Override

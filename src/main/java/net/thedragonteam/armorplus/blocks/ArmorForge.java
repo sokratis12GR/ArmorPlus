@@ -34,7 +34,6 @@ public class ArmorForge extends BaseBlock implements ITileEntityProvider {
 
     public ArmorForge() {
         super(Material.ROCK, "armor_forge", 1000.0F, 10.0F, "pickaxe", 2);
-
     }
 
     @Override

@@ -98,20 +98,25 @@ public class ModRecipes {
 
     public static void addShapedRecipes() {
 
-        ItemStack lapisLAZULI = new ItemStack(Items.DYE, 1, 4);
+        ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
         GameRegistry.addRecipe(new ItemStack(ModItems.lavaCrystal, 1, 1), "RGR", "GAG", "RGR", 'R', Items.REDSTONE, 'G', Items.GLOWSTONE_DUST, 'A', ModItems.lavaCrystal);
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.advancedArmorForge), "LLL", "CAC", "CCC", 'C', new ItemStack(ModItems.lavaCrystal, 1, 1), 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.armorForge);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', Blocks.COAL_BLOCK, 'L', lapisLAZULI, 'C', ModItems.lavaCrystal));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', Blocks.COAL_BLOCK, 'L', LAPIS_LAZULI, 'C', ModItems.lavaCrystal));
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaSword, 1), "XTX", "XTX", "XSX", 'T', ModItems.steelIngot, 'S', Items.STICK);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaPickaxe, 1), "TTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', Items.STICK);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaRod, 1), "XTX", "TST", "XTX", 'T', LAPIS_LAZULI, 'S', Items.STICK);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaShovel, 1), "XTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "TTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "XTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaSword, 1), "XTX", "XTX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaAxe, 1), "TTX", "TSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaPickaxe, 1), "TTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
 
         if (recipes == 0 && enableArrowRecipes) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', lapisLAZULI, 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', LAPIS_LAZULI, 'A', Items.ARROW);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', Items.REDSTONE, 'A', Items.ARROW);
             GameRegistry.addRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'A', Items.ARROW);
         }
@@ -154,10 +159,10 @@ public class ModRecipes {
     }
 
     public static void addEasyWeaponsRecipes() {
-        ItemStack lapisLAZULI = new ItemStack(Items.DYE, 1, 4);
+        ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
         if (enableSwordsRecipes && recipes == 0) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', lapisLAZULI, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.emeraldSword, 1), "XEX", "XEX", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.obsidianSword, 1), "XOX", "XOX", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
@@ -168,7 +173,7 @@ public class ModRecipes {
         }
         if (enableBattleAxesRecipes && recipes == 0) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', lapisLAZULI, 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1), "EXE", "ESE", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBattleAxe, 1), "OXO", "OSO", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
@@ -180,8 +185,8 @@ public class ModRecipes {
         if (enableBowsRecipes && recipes == 0) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Items.COAL, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', Items.COAL, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', lapisLAZULI, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', lapisLAZULI, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', LAPIS_LAZULI, 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', LAPIS_LAZULI, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', Items.REDSTONE, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', Items.REDSTONE, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "XES", "EXS", "XES", 'E', Items.EMERALD, 'S', Items.STRING);

@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.items.base;
+package net.thedragonteam.armorplus.items.base.energy.tesla;
 
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.lib.TeslaUtils;
@@ -26,11 +26,11 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseTesla extends Item {
-    private long maxCapacity;
-    private long output;
-    private long input;
+    private int maxCapacity;
+    private int output;
+    private int input;
 
-    public BaseTesla(String name, float f, float g, ToolMaterial diamond, Set<Block> effectiveOn, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, float f, float g, ToolMaterial diamond, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -41,7 +41,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, ToolMaterial diamond, Set<Block> effectiveOn, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, ToolMaterial diamond, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -52,7 +52,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, Set<Block> effectiveOn, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -63,7 +63,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, ToolMaterial diamond, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, ToolMaterial diamond, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -74,7 +74,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, float f, float g, ToolMaterial diamond, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, float f, float g, ToolMaterial diamond, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -85,7 +85,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, float f, float g, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, float f, float g, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -96,7 +96,7 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, long maxCapacity, long input, long output) {
+    public BaseTesla(String name, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -122,7 +122,17 @@ public class BaseTesla extends Item {
 
     @Override
     public boolean isRepairable() {
-        return false;
+        return true;
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability(ItemStack stack) {
+        return 30;
     }
 
     @Override

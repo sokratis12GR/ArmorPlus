@@ -105,8 +105,7 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.*;
-import net.thedragonteam.armorplus.items.energy.ItemTeslaPickaxe;
-import net.thedragonteam.armorplus.items.energy.ItemTeslaSword;
+import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
@@ -162,8 +161,12 @@ public class ModItems {
     public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", ArmorPlus.MODID + ":" + "redstone_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
-    public static ItemArmor.ArmorMaterial steelArmor = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
+    /* Steel Armor Not Powered */
+    public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
             {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+    /* Steel Armor Powered */
+    public static ItemArmor.ArmorMaterial steelArmorPowered = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 30, new int[]
+            {3, 6, 7, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
     public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", ArmorPlus.MODID + ":" + "electrical_armor", 19, new int[]
             {3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
@@ -368,6 +371,10 @@ public class ModItems {
 
     public static ItemTeslaPickaxe itemTeslaPickaxe;
     public static ItemTeslaSword itemTeslaSword;
+    public static ItemTeslaAxe itemTeslaAxe;
+    public static ItemTeslaRod itemTeslaRod;
+    public static ItemTeslaHoe itemTeslaHoe;
+    public static ItemTeslaShovel itemTeslaShovel;
 
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
@@ -376,6 +383,10 @@ public class ModItems {
     }
 
     public static void init() {
+        itemTeslaShovel = new ItemTeslaShovel();
+        itemTeslaHoe = new ItemTeslaHoe();
+        itemTeslaRod = new ItemTeslaRod();
+        itemTeslaAxe = new ItemTeslaAxe();
         itemTeslaPickaxe = new ItemTeslaPickaxe();
         itemTeslaSword = new ItemTeslaSword();
         mmdItem = new MMDItem();
@@ -529,6 +540,10 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemTeslaShovel.initModel();
+        itemTeslaHoe.initModel();
+        itemTeslaRod.initModel();
+        itemTeslaAxe.initModel();
         itemTeslaPickaxe.initModel();
         itemTeslaSword.initModel();
         mmdItem.initModel();

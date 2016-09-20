@@ -44,6 +44,7 @@ public class RedstoneApple extends ItemFood {
         return stack.getMetadata() > 0;
     }
 
+
     /**
      * Return an item rarity from EnumRarity
      */
@@ -56,7 +57,7 @@ public class RedstoneApple extends ItemFood {
             if (stack.getMetadata() > 0) {
                 player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 6000, 1));
             } else {
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 2400, 1));
+                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1));
             }
         }
     }
