@@ -33,6 +33,7 @@ import static net.thedragonteam.core.util.TextHelper.localize;
 public class TheGiftOfTheGods extends BaseItem {
 
     private static Random random = new Random();
+    private int cooldown = 0;
 
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
@@ -82,7 +83,7 @@ public class TheGiftOfTheGods extends BaseItem {
             if (!playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem()) && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() && !debugMode)
                 playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
             else if (debugMode && debugModeGOTG)
-                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), 0);
+                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), this.cooldown);
 
             playerIn.dropItem(item, 1);
             playerIn.addChatMessage(new TextComponentString("You got: " + item.getRegistryName()));

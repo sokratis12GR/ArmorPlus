@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,7 +52,9 @@ public class ModBlocks {
         whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
         whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
         whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
-        blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
+        if (Loader.isModLoaded("tesla")) {
+            blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
+        }
     }
 
     public static void register() {
@@ -66,7 +69,9 @@ public class ModBlocks {
         registerBlock(whiteStoneBrick);
         registerBlock(whiteStoneBrickTower);
         registerBlock(whiteStoneBrickCorner);
-        registerBlock(blockCreativeEnergy);
+        if (Loader.isModLoaded("tesla")) {
+            registerBlock(blockCreativeEnergy);
+        }
     }
 
     public static void registerRenders() {
@@ -81,7 +86,9 @@ public class ModBlocks {
         registerRender(whiteStoneBrick);
         registerRender(whiteStoneBrickTower);
         registerRender(whiteStoneBrickCorner);
-        registerRender(blockCreativeEnergy);
+        if (Loader.isModLoaded("tesla")) {
+            registerRender(blockCreativeEnergy);
+        }
     }
 
     public static void registerBlock(Block block) {

@@ -11,12 +11,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Optional;
 
 /**
  * A TileEntity that produces infinite amounts of tesla power.
  */
 public class TileEntityCreativePower extends TileEntity implements ITickable {
 
+    @Optional.Method(modid = "tesla")
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
@@ -27,6 +29,7 @@ public class TileEntityCreativePower extends TileEntity implements ITickable {
         return super.getCapability(capability, facing);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 
@@ -36,9 +39,9 @@ public class TileEntityCreativePower extends TileEntity implements ITickable {
         return super.hasCapability(capability, facing);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public void update() {
-
         TeslaUtils.distributePowerToAllFaces(this.worldObj, this.pos, 50, false);
     }
 }

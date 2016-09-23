@@ -5,6 +5,7 @@ itemGroup.armorplus.armors=ARP Armors
 itemGroup.armorplus.items=ARP Items
 itemGroup.armorplus.blocks=ARP Blocks
 itemGroup.armorplus.weapons=ARP Weapons
+itemGroup.armorplus.tesla=ARP Tesla
 
 #Containers
 container.armorplus.armor_forge=Armor Forge

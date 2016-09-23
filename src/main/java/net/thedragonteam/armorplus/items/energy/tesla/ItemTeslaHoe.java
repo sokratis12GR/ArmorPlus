@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaHoe;
 import net.thedragonteam.armorplus.util.ARPTeslaUtils;
@@ -25,9 +26,10 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
 
     @Override
     public CreativeTabs getCreativeTab() {
-        return ArmorPlus.tabArmorplusWeapons;
+        return ArmorPlus.tabArmorplusTesla;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         ARPTeslaUtils.usePower(stack, costHoe);
@@ -39,6 +41,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
         return Items.DIAMOND_HOE.canHarvestBlock(state);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
         if (ARPTeslaUtils.getStoredPower(stack) < costHoe) {

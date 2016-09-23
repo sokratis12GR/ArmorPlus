@@ -12,9 +12,7 @@ import net.thedragonteam.armorplus.armors.base.BaseTeslaArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.inputSteelArmor;
-import static net.thedragonteam.armorplus.ARPConfig.maxCapacitySteelArmor;
-import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
+import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
  * net.thedragonteam.armorplus.armors.v2.steel
@@ -24,7 +22,7 @@ import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
 public class SteelChestplate extends BaseTeslaArmor {
 
     public SteelChestplate() {
-        super(ModItems.steelArmorNotPowered, 0, EntityEquipmentSlot.CHEST, "steel_chestplate", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+        super(0, EntityEquipmentSlot.CHEST, "steel_chestplate", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
         setMaxDamage(0);
     }
 

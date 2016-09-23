@@ -24,6 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -47,7 +48,7 @@ public class BaseTeslaHoe extends ItemHoe {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
@@ -59,7 +60,7 @@ public class BaseTeslaHoe extends ItemHoe {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
@@ -71,7 +72,7 @@ public class BaseTeslaHoe extends ItemHoe {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
@@ -122,6 +123,7 @@ public class BaseTeslaHoe extends ItemHoe {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
@@ -145,6 +147,7 @@ public class BaseTeslaHoe extends ItemHoe {
         return 30;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
         return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
@@ -156,11 +159,13 @@ public class BaseTeslaHoe extends ItemHoe {
     }
 
 
+    @Optional.Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         TeslaUtils.createTooltip(stack, tooltip);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);

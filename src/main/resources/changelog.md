@@ -1,3 +1,70 @@
+**ArmorPlus 1.10.2-7.0.0.0**
+============================
+####The Birth Of Something New
+######Entire Changelog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Dependancies}**
+    * ArmorPlus now requires TheDragonCore 1.10.2-1.0.2.0 or later to work!
+* **{Features Added}**
+    * Creative Tab for Tesla Items/Blocks/Weapons
+* **{Code Changed/Added/Removed}**
+    * Moved all the Tesla Items/Blocks/Weapons to the Tesla Creative Tab
+    * Added @Optional Annotations to all Tesla stuffs, so they work only if Tesla is installed
+################################ Changes (dev version 1.10.2-7.0.2.0-dev )################################
+* **{Features Added/Removed/Changed}**
+    * Tesla Items
+        * Added Tesla Axe
+        * Added Tesla Rod
+        * Added Tesla Shovel
+        * Added Tesla Hoe
+    * The Gift Of The Gods now will have 2 uses before it gets consumed, and if the player uses the gift of gods while in stack it will only consume one of them.
+    * The Gift Of The Gods now has cooldown 30 seconds
+    * Steel Armor now will have Tesla as durability
+    * New Textures for the Tesla Tools/Weapons
+    * Added a config option for all the Gift Of The Gods things, and debugMode for it
+    * Made all aniumated textures a bit more smooth
+    * Added config options for most of the tesla items' propeties
+* **{Code Changed/Added/Removed}**
+    * Made Tesla Weapons/Tools animated using mcmeta
+    * Rewrited how (GOTG) works (now drops the item instead of replacing the held one, and made it to have more than 1 uses)
+    * added more config options
+    * Registered the new Items
+    * Updated Client Config Gui's list to include all the config options
+    * Added/Changed recipes of the tesla tools/weapons to require Tesla Rod instead of Stick
+    * Gradlew Clean Up
+* **{Dependancies}**
+    * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
+################################ Changes (dev version 1.10.2-7.0.1.0-dev )################################
+* **{Features Added/Removed/Changed}**
+    * Tesla Items/Blocks
+        * Tesla Sword
+        * Tesla Pickaxe
+        * Creative Power Cell (Tesla)
+    * More Cosmetic Items for special people
+        * MMD Logo Cosmetic
+    * Removed Teleport Command, Dimension ArmorPlus
+    * Changed GUI Scale and Background Image of the ArmorPlus Books
+    * Removed Night Vision from the Ultimate Armor
+* **{Code Changed/Added/Removed}**
+    * Added BaseEnergyBlock (Used by the tesla blocks as a base)
+    * Added Cofh/API to main code for later usage mayble - if not used it will be removed
+    * Added BaseTesla (Used by the tesla tools/weapons as a base)
+    * Item Tesla Sword
+    * Removed all the code for the Dimension ArmorPlus
+    * Removed the ARPTP command, cheaty, unneeded
+    * Changed Values of the GUIs for the ArmorPlus Books so they match their new GUI Texture by (Aya Shameimaru)
+    * Added the `hasTesla` Method so it checks if Tesla is loaded
+    * Added Recipes for the Tesla tools/weapons
+    * Removed Night Vision Key Bind
+################################ Changes (dev version 1.10.2-7.0.0.0-dev )################################
+* **{Features Changed}**
+    * Full Code Rewrite
+    * Lava Armor now if is in the water with water breathing effect wont apply any debuffs nor break the armor
+* **{Features Added}**
+    * More Cosmetic Items for special people
+        * Twitch Logo Cosmetic
+        * Beam Logo Cosmetic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.2.0-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

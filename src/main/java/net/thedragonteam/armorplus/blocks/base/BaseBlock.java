@@ -13,6 +13,7 @@ public class BaseBlock extends Block {
     public BaseBlock(Material material, String name) {
         super(material);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness) {
@@ -20,6 +21,7 @@ public class BaseBlock extends Block {
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         this.setResistance(resistance);
         this.setHardness(hardness);
+        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
@@ -28,6 +30,7 @@ public class BaseBlock extends Block {
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
+        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
@@ -37,5 +40,6 @@ public class BaseBlock extends Block {
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
         this.setLightLevel(lightLevel);
+        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 }

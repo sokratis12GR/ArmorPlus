@@ -81,17 +81,19 @@ public class OreGen implements IWorldGenerator {
     }
 
     private void generateOverworldStructures(World world, Random rand, int blockX, int blockZ) {
-
-        WorldGenerator genCabin = new StructureCastle();
-        // 4% of chunks can have a castle
-        if (rand.nextInt(100) < castleGenSpawnChance) {
-            // get a random position in the chunk
-            int randX = blockX + rand.nextInt(16);
-            int randZ = blockZ + rand.nextInt(16);
-            // use our custom function to get the ground height
-            int groundY = getGroundFromAbove(world, randX, randZ);
-            genCabin.generate(world, rand, new BlockPos(randX, groundY + 1, randZ));
+        if (enableCastleGen) {
+            WorldGenerator genCastle = new StructureCastle();
+            // 4% of chunks can have a castle
+            if (rand.nextInt(100) < castleGenSpawnChance) {
+                // get a random position in the chunk
+                int randX = blockX + rand.nextInt(16);
+                int randZ = blockZ + rand.nextInt(16);
+                // use our custom function to get the ground height
+                int groundY = getGroundFromAbove(world, randX, randZ);
+                genCastle.generate(world, rand, new BlockPos(randX, groundY + 1, randZ));
+            }
         }
+
     }
 
     private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {

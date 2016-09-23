@@ -11,8 +11,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.fml.common.Optional;
 
 public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+
     private final BaseTeslaContainer container;
     private int power;
     private int maxCapacity;
@@ -41,11 +43,13 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
     }
 
 
+    @Optional.Method(modid = "tesla")
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         return capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
@@ -55,11 +59,13 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
         return null;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public NBTTagCompound serializeNBT() {
         return this.container.serializeNBT();
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
         this.container.deserializeNBT(nbt);

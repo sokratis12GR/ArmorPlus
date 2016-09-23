@@ -234,6 +234,8 @@ public class ARPConfig {
     public static int lavaCrystalTheNetherVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnChance", comment = "Set the spawn chance of the Castle Generation in the Overworld")
     public static int castleGenSpawnChance = 0;
+    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
+    public static boolean enableCastleGen = false;
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
     public static int recipes = 1;

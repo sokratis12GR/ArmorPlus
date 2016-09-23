@@ -15,6 +15,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaSword;
 import net.thedragonteam.armorplus.util.ARPTeslaUtils;
@@ -32,11 +33,11 @@ public class ItemTeslaSword extends BaseTeslaSword {
 
     @Override
     public CreativeTabs getCreativeTab() {
-        return ArmorPlus.tabArmorplusWeapons;
+        return ArmorPlus.tabArmorplusTesla;
     }
 
+    @Optional.Method(modid = "tesla")
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-
         ARPTeslaUtils.usePower(stack, costSword);
 
         return true;
@@ -53,6 +54,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
         return multimap;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         ARPTeslaUtils.usePower(stack, costSword);
@@ -64,6 +66,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
         return Items.DIAMOND_SWORD.canHarvestBlock(state);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
         if (ARPTeslaUtils.getStoredPower(stack) < costSword) {

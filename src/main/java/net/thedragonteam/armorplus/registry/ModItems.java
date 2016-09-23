@@ -10,6 +10,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -383,12 +384,18 @@ public class ModItems {
     }
 
     public static void init() {
-        itemTeslaShovel = new ItemTeslaShovel();
-        itemTeslaHoe = new ItemTeslaHoe();
+        if (Loader.isModLoaded("tesla")) {
+            itemTeslaShovel = new ItemTeslaShovel();
+            itemTeslaHoe = new ItemTeslaHoe();
+            itemTeslaAxe = new ItemTeslaAxe();
+            itemTeslaPickaxe = new ItemTeslaPickaxe();
+            itemTeslaSword = new ItemTeslaSword();
+            steelHelmet = new SteelHelmet();
+            steelChestplate = new SteelChestplate();
+            steelLeggings = new SteelLeggings();
+            steelBoots = new SteelBoots();
+        }
         itemTeslaRod = new ItemTeslaRod();
-        itemTeslaAxe = new ItemTeslaAxe();
-        itemTeslaPickaxe = new ItemTeslaPickaxe();
-        itemTeslaSword = new ItemTeslaSword();
         mmdItem = new MMDItem();
         twitchItem = new TwitchItem();
         beamItem = new BeamItem();
@@ -436,10 +443,6 @@ public class ModItems {
         redstoneChestplate = new RedstoneChestplate();
         redstoneLeggings = new RedstoneLeggings();
         redstoneBoots = new RedstoneBoots();
-        steelHelmet = new SteelHelmet();
-        steelChestplate = new SteelChestplate();
-        steelLeggings = new SteelLeggings();
-        steelBoots = new SteelBoots();
         electricalHelmet = new ElectricalHelmet();
         electricalChestplate = new ElectricalChestplate();
         electricalLeggings = new ElectricalLeggings();
@@ -540,12 +543,18 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        itemTeslaShovel.initModel();
-        itemTeslaHoe.initModel();
+        if (Loader.isModLoaded("tesla")) {
+            itemTeslaShovel.initModel();
+            itemTeslaHoe.initModel();
+            itemTeslaAxe.initModel();
+            itemTeslaPickaxe.initModel();
+            itemTeslaSword.initModel();
+            steelHelmet.initModel();
+            steelChestplate.initModel();
+            steelLeggings.initModel();
+            steelBoots.initModel();
+        }
         itemTeslaRod.initModel();
-        itemTeslaAxe.initModel();
-        itemTeslaPickaxe.initModel();
-        itemTeslaSword.initModel();
         mmdItem.initModel();
         twitchItem.initModel();
         beamItem.initModel();
@@ -592,10 +601,6 @@ public class ModItems {
         redstoneChestplate.initModel();
         redstoneLeggings.initModel();
         redstoneBoots.initModel();
-        steelHelmet.initModel();
-        steelChestplate.initModel();
-        steelLeggings.initModel();
-        steelBoots.initModel();
         electricalHelmet.initModel();
         electricalChestplate.initModel();
         electricalLeggings.initModel();

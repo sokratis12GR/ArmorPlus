@@ -51,6 +51,8 @@ public class ARPTab extends CreativeTabs {
                 return new ItemStack(ModBlocks.blockLavaCrystal);
             case (3):
                 return new ItemStack(ModItems.redstoneBattleAxe);
+            case (4):
+                return new ItemStack(ModItems.itemTeslaRod);
         }
         return null;
     }

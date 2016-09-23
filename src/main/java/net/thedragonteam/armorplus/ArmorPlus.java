@@ -36,7 +36,6 @@ import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
-import net.thedragonteam.core.TheDragonCore;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
 import net.thedragonteam.core.util.LogHelper;
@@ -59,16 +58,17 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 2;
-    // Updates every time a new block, item or features is added or change, resets on MINOR changes
+    public static final int MINOR = 0;
+    // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "-dev";
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
     public static final String TESLA_VERSION = "1.2.1.49";
+    public static final String CORE_VERSION = "1.10.2-1.0.2.0";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "required-after:thedragoncore@[" + TheDragonCore.VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);";
+    public static final String DEPEND = "required-after:thedragoncore@[" + ArmorPlus.CORE_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);";
 
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
@@ -80,6 +80,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusItems = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
     public static CreativeTabs tabArmorplusBlocks = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
     public static CreativeTabs tabArmorplusWeapons = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
+    public static CreativeTabs tabArmorplusTesla = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
@@ -118,7 +119,7 @@ public class ArmorPlus {
     }
 
     public static boolean hasTesla() {
-        return Loader.isModLoaded("Tesla");
+        return Loader.isModLoaded("tesla");
     }
 
     @SideOnly(Side.CLIENT)

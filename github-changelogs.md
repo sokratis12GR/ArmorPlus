@@ -5,6 +5,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Dependancies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.2.0 or later to work!
+* **{Features Added}**
+    * Creative Tab for Tesla Items/Blocks/Weapons
+* **{Code Changed/Added/Removed}**
+    * Moved all the Tesla Items/Blocks/Weapons to the Tesla Creative Tab
+    * Added @Optional Annotations to all Tesla stuffs, so they work only if Tesla is installed
 ################################ Changes (dev version 1.10.2-7.0.2.0-dev )################################
 * **{Features Added/Removed/Changed}**
     * Tesla Items
@@ -59,6 +64,7 @@
     * More Cosmetic Items for special people
         * Twitch Logo Cosmetic
         * Beam Logo Cosmetic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.2.0-dev**
 ============================

@@ -22,7 +22,7 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
 public class SteelLeggings extends BaseTeslaArmor {
 
     public SteelLeggings() {
-        super(ModItems.steelArmorNotPowered, 0, EntityEquipmentSlot.LEGS, "steel_leggings", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+        super(0, EntityEquipmentSlot.LEGS, "steel_leggings", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
         setMaxDamage(0);
     }
 

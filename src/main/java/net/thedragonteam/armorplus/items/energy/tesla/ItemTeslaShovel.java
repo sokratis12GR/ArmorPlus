@@ -14,6 +14,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaShovel;
 import net.thedragonteam.armorplus.util.ARPTeslaUtils;
@@ -33,9 +34,10 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
 
     @Override
     public CreativeTabs getCreativeTab() {
-        return ArmorPlus.tabArmorplusWeapons;
+        return ArmorPlus.tabArmorplusTesla;
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         ARPTeslaUtils.usePower(stack, costShovel);
@@ -47,6 +49,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
         return Items.DIAMOND_SHOVEL.canHarvestBlock(state);
     }
 
+    @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
         if (ARPTeslaUtils.getStoredPower(stack) < costShovel) {
