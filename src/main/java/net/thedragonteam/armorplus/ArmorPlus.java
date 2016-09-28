@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,7 +45,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.util.UUID;
 
-import static net.minecraftforge.oredict.OreDictionary.registerOre;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json")
@@ -58,23 +56,25 @@ public class ArmorPlus {
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 0;
+    public static final int MINOR = 1;
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
+    // Updates every time a build is created, mostly used for dev versions, resets on MINOR changes
+    public static final int BUILD = 1;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH;
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
     public static final String TESLA_VERSION = "1.2.1.49";
     public static final String CORE_VERSION = "1.10.2-1.0.2.0";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "required-after:thedragoncore@[" + ArmorPlus.CORE_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);";
-
+    public static final String DEPEND = "required-after:thedragoncore@[" + ArmorPlus.CORE_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle@[1.10.2-1.0.0,);" + "after:tconstruct@[1.10.2-2.5.2,);";
+    public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
-    public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
+    public static final String SERVERPROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
 
-    @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.COMMONPROXY)
+    @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.SERVERPROXY)
     public static CommonProxy proxy;
     public static CreativeTabs tabArmorplus = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
     public static CreativeTabs tabArmorplusItems = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
@@ -139,30 +139,7 @@ public class ArmorPlus {
         ARPAchievements.init();
         ModRecipes.init();
 
-        //Ores
-        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
-
-        //Ingots
-        registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
-        registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
-        registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
-        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
-        registerOre("armorforge", new ItemStack(ModBlocks.armorForge, 1));
-        registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
-
-        //Gems
-        registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
-        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
-
-        //Materials
-        registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
-        registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));
-        registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
-        registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
-        registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
-
-        registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));
+        proxy.registerOreDictEnties();
     }
 
     @SideOnly(Side.SERVER)
@@ -185,28 +162,7 @@ public class ArmorPlus {
         ARPAchievements.init();
         ModRecipes.init();
 
-        //Ores
-        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
-
-        //Ingots
-        registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
-        registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
-        registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
-        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
-        registerOre("armorforge", new ItemStack(ModBlocks.armorForge, 1));
-        registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
-
-        //Gems
-        registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
-        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
-
-        //Materials
-        registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
-        registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));
-        registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
-        registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
-        registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
+        proxy.registerOreDictEnties();
         proxy.init(event);
     }
 

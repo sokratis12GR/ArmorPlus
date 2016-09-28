@@ -16,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -32,6 +33,8 @@ import net.thedragonteam.armorplus.entity.render.RenderCoalArrow;
 import net.thedragonteam.armorplus.entity.render.RenderLapisArrow;
 import net.thedragonteam.armorplus.entity.render.RenderLavaArrow;
 import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
+import net.thedragonteam.armorplus.integration.TiC;
+import net.thedragonteam.armorplus.integration.tinkers.TiCMaterials;
 import net.thedragonteam.armorplus.misc.SpecialRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -43,9 +46,12 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
+        if (event.getSide().isClient()) {
+            if (Loader.isModLoaded("tconstruct")) {
+                TiC.init();
+            }
+        }
         super.init(event);
-
-        // Initialize the input handler so we can listen to keys
     }
 
     @Override
@@ -61,6 +67,11 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
+        if (event.getSide().isClient()) {
+            if (Loader.isModLoaded("tconstruct")) {
+                TiCMaterials.registerMaterialRendering();
+            }
+        }
         new SpecialRenderInit();
     }
 

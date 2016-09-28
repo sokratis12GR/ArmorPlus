@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.blocks;
+package net.thedragonteam.armorplus.blocks.normal;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCactus;

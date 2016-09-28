@@ -5,13 +5,12 @@
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
 import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.plugins.vanilla.crafting.AbstractShapelessRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.armorforge.ShapelessRecipes;
 
 import javax.annotation.Nonnull;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * net.thedragonteam.armorplus.compat.jei.armorforge
@@ -36,15 +35,8 @@ class ArmorForgeShapelessRecipeWrapper extends AbstractShapelessRecipeWrapper {
         }
     }
 
-    @Nonnull
     @Override
-    public List<ItemStack> getInputs() {
-        return recipe.recipeItems;
-    }
+    public void getIngredients(IIngredients ingredients) {
 
-    @Nonnull
-    @Override
-    public List<ItemStack> getOutputs() {
-        return Collections.singletonList(recipe.getRecipeOutput());
     }
 }

@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.entity.entityminibossguardian.EntityMiniBossGuardian;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.RenderPowerfulZombie;
 
@@ -26,18 +27,23 @@ public class ARPEntities {
 
     //Mobs ID from 21 and up
     private static final int ENDER_DRAGON_ZOMBIE = 21;
+    private static final int MINI_BOSS_GUARDIAN = 22;
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
         EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1000, true, 0x002200, 0x00ff00);
+        EntityRegistry.registerModEntity(EntityMiniBossGuardian.class, "mini_boss_guardian", MINI_BOSS_GUARDIAN, ArmorPlus.instance, 64, 100, true, 0x476200, 0x00ff00);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually
         if (enableEnderDragonZombieSpawnEnd)
             EntityRegistry.addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
 
+        EntityRegistry.addSpawn(EntityMiniBossGuardian.class, 1, 0, 1, EnumCreatureType.MONSTER);
+
         // This is the loot table for the mobs
         LootTableList.register(EntityEnderDragonZombie.LOOT);
+        LootTableList.register(EntityMiniBossGuardian.LOOT);
     }
 
     @SideOnly(Side.CLIENT)

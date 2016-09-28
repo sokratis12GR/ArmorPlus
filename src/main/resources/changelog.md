@@ -1,3 +1,25 @@
+**ArmorPlus 1.10.2-7.0.1.0.1-dev**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Changed Format For Dev Versions}**
+    * <mcversion>-<major>.<api>.<minor>.<patch>.<build>-dev
+* **{Bugs Fixed}**
+    * Crash using 3.11.0.269 and later version of JEI
+* **{Features Added/Removed/Changed}**
+    * Added Tinkers Integration
+        * Added Modifiers
+            * Charged Lava Crystal + Brick = Firestorm
+            * The Ultimate Material + Tool/Weapon = + 1 Modifier (max uses 1)
+        * Added Materials
+            * Lava Crystal material
+    * Blocks Added
+        * WIP Spawners
+    * Mobs Added
+        * WIP Mini Boss Guardian
+* **{Code Changed/Added/Removed}**
+    * Cleaned Up some code from Main Mod file, like Ore Dicts moved to common proxy
+    * Added an empty class ServerProxy - just because it should be here
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.0.0**
 ============================
 ####The Birth Of Something New

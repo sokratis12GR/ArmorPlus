@@ -17,21 +17,19 @@ apply plugin: 'maven-publish'
 
 repositories {
     maven { // Tesla repo
-      url 'http://maven.epoxide.xyz'
+        url 'http://maven.epoxide.xyz'
     }
     maven { // JEI repo
+        name "JEI"
         url "http://dvs1.progwml6.com/files/maven"
     }
     maven { //The repo to get TiC
-        name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { //ArmorPlus repo
-        url 'http://vps1.thedragonteam.net:8085/nexus/content/repositories/armorplus/'
     }
 }
 
-version = mc_version + '-' + version_major + '.' + version_api + '.' + version_minor + '.' + version_patch
+
+version = mc_version + '-' + version_major + '.' + version_api + '.' + version_minor + '.' + version_patch + '.' + version_build
 group = package_group
 archivesBaseName = mod_id
 
@@ -88,8 +86,8 @@ artifacts {
 artifacts {
     archives sourcesJar
     archives apiJar
-	archives devJar
-	archives deobfJar
+    archives devJar
+    archives deobfJar
 }
 
 processResources {
@@ -110,11 +108,10 @@ processResources {
 }
 
 dependencies {
-      deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-	  compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
-//    deobfCompile "net.thedragonteam:armorplus:project.version"
-//    deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}"
-//    deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tconstruct_version}"
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
+    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
+    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
 }
 
 processResources {

@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.compat.jei.armorforge;
 
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.recipe.ArmorForgeRecipe;
@@ -26,6 +27,11 @@ class ArmorForgeRecipeJEI extends BlankRecipeWrapper {
 
     ArmorForgeRecipeJEI(ArmorForgeRecipe recipe) {
         this.recipe = recipe;
+    }
+
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+
     }
 
     @Override

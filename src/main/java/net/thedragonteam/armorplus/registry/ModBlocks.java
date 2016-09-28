@@ -12,11 +12,17 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.*;
+import net.thedragonteam.armorplus.blocks.AdvancedArmorForge;
+import net.thedragonteam.armorplus.blocks.ArmorForge;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.energy.BlockCreativePower;
+import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
+import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
+import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
+import net.thedragonteam.armorplus.blocks.normal.LavaNetherBrick;
+import net.thedragonteam.armorplus.blocks.spawners.SpawnerGuardian;
 import net.thedragonteam.armorplus.blocks.v2.ElectricalBlock;
 import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
 
@@ -40,6 +46,8 @@ public class ModBlocks {
     public static Block blockCreativeEnergy;
     public static LavaCactus lavaCactus;
 
+    public static Block spawnerGuardian;
+
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
         compressedObsidian = new CompressedObsidian().setRegistryName("compressed_obsidian");
@@ -55,6 +63,8 @@ public class ModBlocks {
         if (Loader.isModLoaded("tesla")) {
             blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
         }
+
+        spawnerGuardian = new SpawnerGuardian().setRegistryName("spawner_guardian");
     }
 
     public static void register() {
@@ -72,6 +82,9 @@ public class ModBlocks {
         if (Loader.isModLoaded("tesla")) {
             registerBlock(blockCreativeEnergy);
         }
+
+        registerBlock(spawnerGuardian);
+
     }
 
     public static void registerRenders() {
@@ -89,6 +102,8 @@ public class ModBlocks {
         if (Loader.isModLoaded("tesla")) {
             registerRender(blockCreativeEnergy);
         }
+
+        registerRender(spawnerGuardian);
     }
 
     public static void registerBlock(Block block) {

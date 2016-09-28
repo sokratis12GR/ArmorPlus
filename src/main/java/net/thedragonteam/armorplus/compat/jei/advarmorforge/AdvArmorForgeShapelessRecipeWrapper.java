@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.compat.jei.advarmorforge;
 
 import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.plugins.vanilla.crafting.AbstractShapelessRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.advarmorforge.ShapelessRecipes;
@@ -34,6 +35,11 @@ class AdvArmorForgeShapelessRecipeWrapper extends AbstractShapelessRecipeWrapper
                 }
             }
         }
+    }
+
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+
     }
 
     @Nonnull

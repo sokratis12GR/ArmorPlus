@@ -12,6 +12,15 @@ container.armorplus.armor_forge=Armor Forge
 container.armorplus.advanced_armor_forge=Advanced Armor Forge
 container.armorplus.inventory=Inventory
 
+#TiC
+modifier.firestorm.name=Fire Storm
+modifier.firestorm.desc=§oThe real Super Nova!§r\nBonus fire damage, sets your enemies on fire.
+modifier.firestorm.extra=Fire Damage: +%s
+modifier.firestorm.extra2=Burn Duration: %ss
+modifier.ultimatemod.name=Expanded
+modifier.ultimatemod.desc=Add +1 Modifier
+material.lava_crystal.name=Lava Crystal
+
 ﻿#Tile
 tile.armorplus.block_energy_creative.name=Creative Power Cell
 
@@ -299,6 +308,9 @@ entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor
 key.categories.armorplus=ArmorPlus
+
+#Spawners
+tile.armorplus.spawner_guardian.name=Spawner Guardian
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!

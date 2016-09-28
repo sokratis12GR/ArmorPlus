@@ -8,6 +8,7 @@ import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
@@ -75,6 +76,29 @@ public class ArmorForgeRecipeCategory implements IRecipeCategory {
     @Override
     @SuppressWarnings("unchecked")
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IRecipeWrapper recipeWrapper) {
+        IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
+
+        guiItemStacks.init(OUTPUT_SLOT, false, 94, 18);
+
+        for (int y = 0; y < 3; ++y) {
+            for (int x = 0; x < 3; ++x) {
+                int index = INPUT_SLOT + x + (y * 3);
+                guiItemStacks.init(index, true, x * 18, y * 18);
+            }
+        }
+
+        if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
+            IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
+            craftingGridHelper.setInput(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
+            craftingGridHelper.setOutput(guiItemStacks, wrapper.getOutputs());
+        } else {
+            craftingGridHelper.setInput(guiItemStacks, recipeWrapper.getInputs());
+            craftingGridHelper.setOutput(guiItemStacks, recipeWrapper.getOutputs());
+        }
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
         guiItemStacks.init(OUTPUT_SLOT, false, 94, 18);

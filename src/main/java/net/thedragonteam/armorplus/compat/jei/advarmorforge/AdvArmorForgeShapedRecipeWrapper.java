@@ -4,12 +4,15 @@
 
 package net.thedragonteam.armorplus.compat.jei.advarmorforge;
 
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import mezz.jei.plugins.vanilla.VanillaRecipeWrapper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.thedragonteam.armorplus.api.crafting.advarmorforge.ShapedRecipes;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +22,7 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 8/31/2016 6:16 PM.
  * - TheDragonTeam
  */
-class AdvArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements IShapedCraftingRecipeWrapper {
+class AdvArmorForgeShapedRecipeWrapper implements IShapedCraftingRecipeWrapper {
 
     @Nonnull
     private final ShapedRecipes recipe;
@@ -33,6 +36,11 @@ class AdvArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements I
         }
     }
 
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+
+    }
+
     @Nonnull
     @Override
     public List getInputs() {
@@ -43,6 +51,37 @@ class AdvArmorForgeShapedRecipeWrapper extends VanillaRecipeWrapper implements I
     @Override
     public List<ItemStack> getOutputs() {
         return Collections.singletonList(recipe.getRecipeOutput());
+    }
+
+    @Override
+    public List<FluidStack> getFluidInputs() {
+        return null;
+    }
+
+    @Override
+    public List<FluidStack> getFluidOutputs() {
+        return null;
+    }
+
+    @Override
+    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+
+    }
+
+    @Override
+    public void drawAnimations(Minecraft minecraft, int recipeWidth, int recipeHeight) {
+
+    }
+
+    @Nullable
+    @Override
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
+        return null;
+    }
+
+    @Override
+    public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton) {
+        return false;
     }
 
     @Override
