@@ -60,7 +60,7 @@ public class ArmorPlus {
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
     // Updates every time a build is created, mostly used for dev versions, resets on MINOR changes
-    public static final int BUILD = 1;
+    public static final int BUILD = 2;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";

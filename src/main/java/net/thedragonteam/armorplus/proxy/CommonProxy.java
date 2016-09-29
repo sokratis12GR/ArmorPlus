@@ -53,9 +53,6 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        if (Loader.isModLoaded("tconstruct")) {
-            TiC.postInit();
-        }
         LogHelper.info("Finished PostInitialization");
     }
 

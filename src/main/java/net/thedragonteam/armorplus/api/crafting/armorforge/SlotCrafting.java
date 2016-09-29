@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.api.crafting.armorforge;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -81,18 +80,6 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
-        /*Guardian Armor Thorns*/
-        if (stack.getItem() == ModItems.guardianHelmet || stack.getItem() == ModItems.guardianChestplate || stack.getItem() == ModItems.guardianLeggings || stack.getItem() == ModItems.guardianBoots)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("thorns"), 3);
-        /*Guardian Armor Unbreaking 3*/
-        if (stack.getItem() == ModItems.guardianHelmet || stack.getItem() == ModItems.guardianChestplate || stack.getItem() == ModItems.guardianLeggings || stack.getItem() == ModItems.guardianBoots)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("unbreaking"), 3);
-        /*Full of Thorns! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.guardianHelmet || stack.getItem() == ModItems.guardianChestplate || stack.getItem() == ModItems.guardianLeggings || stack.getItem() == ModItems.guardianBoots)
-            this.thePlayer.addStat(ARPAchievements.craftGuardianArmor, 1);
-        /* Guardian Boots Enchantments*/
-        if (stack.getItem() == ModItems.guardianBoots)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("depth_strider"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
         if (stack.getItem() == ModItems.coalHelmet || stack.getItem() == ModItems.coalChestplate || stack.getItem() == ModItems.coalLeggings || stack.getItem() == ModItems.coalBoots)
             this.thePlayer.addStat(ARPAchievements.craftCoalArmor, 1);
@@ -113,7 +100,7 @@ public class SlotCrafting extends Slot {
             this.thePlayer.addStat(ARPAchievements.craftLavaArmor, 1);
         /*Jump Jump Jump! - Achievement Trigger*/
         if (stack.getItem() == ModItems.slimeHelmet || stack.getItem() == ModItems.slimeChestplate || stack.getItem() == ModItems.slimeLeggings || stack.getItem() == ModItems.slimeBoots)
-            this.thePlayer.addStat(ARPAchievements.craftKnightSlimeArmor, 1);
+            this.thePlayer.addStat(ARPAchievements.craftSlimeArmor, 1);
         /*Its time to go Faster! - Achievement Trigger*/
         if (stack.getItem() == ModItems.chickenHelmet || stack.getItem() == ModItems.chickenChestplate || stack.getItem() == ModItems.chickenLeggings || stack.getItem() == ModItems.chickenBoots)
             this.thePlayer.addStat(ARPAchievements.craftChickenArmor, 1);
