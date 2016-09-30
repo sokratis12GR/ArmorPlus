@@ -22,166 +22,166 @@ modifier.ultimatemod.desc=Ajouter +1 Modificateur
 material.lava_crystal.name=Crystale de Lave
 
 #Tile
-tile.armorplus.block_energy_creative.name=Creative Power Cell
+tile.armorplus.block_energy_creative.name=Cellule d'Énergie Créative
 
 #Commands
-commands.error.arg.invalid=Invalid arguments
-commands.error.arg.missing=Not enough arguments
-commands.error.arg.player.missing=You must specify which player you wish to perform this action on.
-commands.error.404=Command not found!
-commands.error.unknown=Unknown command! Please use /armorplus help
-commands.error.perm=You do not have permission to use this command.
-commands.success=Executed successfully
+commands.error.arg.invalid=Arguments non-valables
+commands.error.arg.missing=Arguments insuffisants
+commands.error.arg.player.missing=Vous devez specifier quel joueur vous vouliez effectuer cette action sur.
+commands.error.404=Commande pas trouvée!
+commands.error.unknown=Commande inconnue! Prières tapper /armorplus help
+commands.error.perm=Vous n'avez pas la permission d'utiliser cette commande.
+commands.success=Exéctuée avec succès
 commands.format.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
-commands.help.help=Displays the help information for the "/armorplus" command.
+commands.help.help=Affiche l'aide de l'"armorplus" commande.
 
 #CommandInfo
 commands.info.usage=/armorplus info
-commands.info.help=Shows Information about ArmorPlus
+commands.info.help=Affiche des informations sur ArmorPlus.
 
 #CommandWiki
 commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
+commands.wiki.help=Ouvre un lien sur votre navigateur sur le wiki d'ArmorPlus.
 
 #JEI
-gui.jei.category.armor_forge=Armor Forge
-gui.jei.category.adv_armor_forge=Advanced Armor Forge
+gui.jei.category.armor_forge=Forge d'Armures
+gui.jei.category.adv_armor_forge=Forge d'Armures Avancée
 
 #BOOKS
-item.armorplus.armorplus_book.name=ArmorPlus Book
-item.armorplus.armorplus_info_book.name=ArmorPlus Info Book
+item.armorplus.armorplus_book.name=Livre d'ArmorPlus
+item.armorplus.armorplus_info_book.name=Livre d'Info sur ArmorPlus
 
 #CONFIG GUI
-gui.armorplus.config.title=ArmorPlus Configuration
+gui.armorplus.config.title=Configuration d'ArmorPlus
 
 #CoalArmor
-item.armorplus.coal_helmet.name=Coal Helmet
-item.armorplus.coal_chestplate.name=Coal Chestplate
-item.armorplus.coal_leggings.name=Coal Leggings
-item.armorplus.coal_boots.name=Coal Boots
+item.armorplus.coal_helmet.name=Casque en Charbon
+item.armorplus.coal_chestplate.name=Plastron en Charbon
+item.armorplus.coal_leggings.name=Jambières en Charbon
+item.armorplus.coal_boots.name=Bottes en Charbon
 
 #LapisArmor
-item.armorplus.lapis_helmet.name=Lapis Helmet
-item.armorplus.lapis_chestplate.name=Lapis Chestplate
-item.armorplus.lapis_leggings.name=Lapis Leggings
-item.armorplus.lapis_boots.name=Lapis Boots
+item.armorplus.lapis_helmet.name=Casque en Lapis
+item.armorplus.lapis_chestplate.name=Plastron en Lapis
+item.armorplus.lapis_leggings.name=Jambières en Lapis
+item.armorplus.lapis_boots.name=Bottes en Lapis
 
 #RedstoneArmor
-item.armorplus.redstone_helmet.name=Redstone Helmet
-item.armorplus.redstone_chestplate.name=Redstone Chestplate
-item.armorplus.redstone_leggings.name=Redstone Leggings
-item.armorplus.redstone_boots.name=Redstone Boots
+item.armorplus.redstone_helmet.name=Casque en Redstone
+item.armorplus.redstone_chestplate.name=Plastron en Redstone
+item.armorplus.redstone_leggings.name=Jambières en Redstone
+item.armorplus.redstone_boots.name=Bottes en Redstone
 
 #EmeraldArmor
-item.armorplus.emerald_helmet.name=Emerald Helmet
-item.armorplus.emerald_chestplate.name=Emerald Chestplate
-item.armorplus.emerald_leggings.name=Emerald Leggings
-item.armorplus.emerald_boots.name=Emerald Boots
+item.armorplus.emerald_helmet.name=Casque en Émeraude
+item.armorplus.emerald_chestplate.name=Plastron en Émeraude
+item.armorplus.emerald_leggings.name=Jambières en Émeraude
+item.armorplus.emerald_boots.name=Bottes en Émeraude
 
 #ObsidianArmor
-item.armorplus.obsidian_helmet.name=Obsidian Helmet
-item.armorplus.obsidian_chestplate.name=Obsidian Chestplate
-item.armorplus.obsidian_leggings.name=Obsidian Leggings
-item.armorplus.obsidian_boots.name=Obsidian Boots
+item.armorplus.obsidian_helmet.name=Casque en Obsidienne
+item.armorplus.obsidian_chestplate.name=Plastron en Obsidienne
+item.armorplus.obsidian_leggings.name=Jambières en Obsidienne
+item.armorplus.obsidian_boots.name=Bottes en Obsidienne
 
 #LavaArmor
-item.armorplus.lava_helmet.name=Lava Helmet
-item.armorplus.lava_chestplate.name=Lava Chestplate
-item.armorplus.lava_leggings.name=Lava Leggings
-item.armorplus.lava_boots.name=Lava Boots
+item.armorplus.lava_helmet.name=Casque en Lave
+item.armorplus.lava_chestplate.name=Plastron en Lave
+item.armorplus.lava_leggings.name=Jambières en Lave
+item.armorplus.lava_boots.name=Bottes en Lave
 
 #SuperStarArmor
-item.armorplus.super_star_helmet.name=Super Star Helmet
-item.armorplus.super_star_chestplate.name=Super Star Chestplate
-item.armorplus.super_star_leggings.name=Super Star Leggings
-item.armorplus.super_star_boots.name=Super Star Boots
+item.armorplus.super_star_helmet.name=Casque en Étoile Formidable
+item.armorplus.super_star_chestplate.name=Plastron en Étoile Formidable
+item.armorplus.super_star_leggings.name=Jambières en Étoile Formidable
+item.armorplus.super_star_boots.name=Bottes en Étoile Formidable
 
 #EnderDragonArmor
-item.armorplus.ender_dragon_helmet.name=Ender Dragon Helmet
-item.armorplus.ender_dragon_chestplate.name=Ender Dragon Chestplate
-item.armorplus.ender_dragon_leggings.name=Ender Dragon Leggings
-item.armorplus.ender_dragon_boots.name=Ender Dragon Boots
+item.armorplus.ender_dragon_helmet.name=Casque du Dragon de l'Ender
+item.armorplus.ender_dragon_chestplate.name=Plastron du Dragon de l'Ender
+item.armorplus.ender_dragon_leggings.name=Jambières du Dragon de l'Ender
+item.armorplus.ender_dragon_boots.name=Bottes du Dragon de l'Ender
 
 #GuardianArmor
-item.armorplus.guardian_helmet.name=Guardian Helmet
-item.armorplus.guardian_chestplate.name=Guardian Chestplate
-item.armorplus.guardian_leggings.name=Guardian Leggings
-item.armorplus.guardian_boots.name=Guardian Boots
+item.armorplus.guardian_helmet.name=Casque du Guardien
+item.armorplus.guardian_chestplate.name=Plastron du Guardien
+item.armorplus.guardian_leggings.name=Jambières du Guardien
+item.armorplus.guardian_boots.name=Bottes du Guardien
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet_full.name=The Ultimate Helmet
-item.armorplus.the_ultimate_chestplate_full.name=The Ultimate Chestplate
-item.armorplus.the_ultimate_leggings_full.name=The Ultimate Leggings
-item.armorplus.the_ultimate_boots_full.name=The Ultimate Boots
+item.armorplus.the_ultimate_helmet_full.name=Le Casque Ultime
+item.armorplus.the_ultimate_chestplate_full.name=Le Platron Ultime
+item.armorplus.the_ultimate_leggings_full.name=Les Jambières Ultimes
+item.armorplus.the_ultimate_boots_full.name=Les Bottes Ultimes
 
 #ReinforcedIronArmor
-item.armorplus.reinforced_iron_helmet.name=Reinforced Iron Helmet
-item.armorplus.reinforced_iron_chestplate.name=Reinforced Iron Chestplate
-item.armorplus.reinforced_iron_leggings.name=Reinforced Iron Leggings
-item.armorplus.reinforced_iron_boots.name=Reinforced Iron Boots
+item.armorplus.reinforced_iron_helmet.name=Casque en Fer Renforcé
+item.armorplus.reinforced_iron_chestplate.name=Plastron en Fer Renforcé
+item.armorplus.reinforced_iron_leggings.name=Jambières en Fer Renforcées
+item.armorplus.reinforced_iron_boots.name=Bottes en Fer Renforcées
 
 #ReinforcedGoldenArmor
-item.armorplus.reinforced_golden_helmet.name=Reinforced Golden Helmet
-item.armorplus.reinforced_golden_chestplate.name=Reinforced Golden Chestplate
-item.armorplus.reinforced_golden_leggings.name=Reinforced Golden Leggings
-item.armorplus.reinforced_golden_boots.name=Reinforced Golden Boots
+item.armorplus.reinforced_golden_helmet.name=Casque en Or Renforcé
+item.armorplus.reinforced_golden_chestplate.name=Plastron en Or Renforcée
+item.armorplus.reinforced_golden_leggings.name=Jambières en Or Renforcées
+item.armorplus.reinforced_golden_boots.name=Bottes en Or Renforcées
 
 #ReinforcedDiamondArmor
-item.armorplus.reinforced_diamond_helmet.name=Reinforced Diamond Helmet
-item.armorplus.reinforced_diamond_chestplate.name=Reinforced Diamond Chestplate
-item.armorplus.reinforced_diamond_leggings.name=Reinforced Diamond Leggings
-item.armorplus.reinforced_diamond_boots.name=Reinforced Diamond Boots
+item.armorplus.reinforced_diamond_helmet.name=Casque en Diamant Renforcé
+item.armorplus.reinforced_diamond_chestplate.name=Plastron en Diamant Renforcé
+item.armorplus.reinforced_diamond_leggings.name=Jambières en Diamant Renforcées
+item.armorplus.reinforced_diamond_boots.name=Bottes en Diamant Renforcées
 
 #ReinforcedChainArmor
-item.armorplus.reinforced_chain_helmet.name=Reinforced Chain Helmet
-item.armorplus.reinforced_chain_chestplate.name=Reinforced Chain Chestplate
-item.armorplus.reinforced_chain_leggings.name=Reinforced Chain Leggings
-item.armorplus.reinforced_chain_boots.name=Reinforced Chain Boots
+item.armorplus.reinforced_chain_helmet.name=Casque en Mailles Renforcé
+item.armorplus.reinforced_chain_chestplate.name=Cottes de Mailles Renforcées
+item.armorplus.reinforced_chain_leggings.name=Jambières en Mailles Renforcées
+item.armorplus.reinforced_chain_boots.name=Bottes en Mailles Renforcées
 
 #CobaltArmor
-item.armorplus.cobalt_helmet.name=Cobalt Helmet
-item.armorplus.cobalt_chestplate.name=Cobalt Chestplate
-item.armorplus.cobalt_leggings.name=Cobalt Leggings
-item.armorplus.cobalt_boots.name=Cobalt Boots
+item.armorplus.cobalt_helmet.name=Casque en Cobalt
+item.armorplus.cobalt_chestplate.name=Plastron en Cobalt
+item.armorplus.cobalt_leggings.name=Jambières en Cobalt
+item.armorplus.cobalt_boots.name=Bottes en Cobalt
 
 #ArditeArmor
-item.armorplus.ardite_helmet.name=Ardite Helmet
-item.armorplus.ardite_chestplate.name=Ardite Chestplate
-item.armorplus.ardite_leggings.name=Ardite Leggings
-item.armorplus.ardite_boots.name=Ardite Boots
+item.armorplus.ardite_helmet.name=Casque en Ardite
+item.armorplus.ardite_chestplate.name=Plastron en Ardite
+item.armorplus.ardite_leggings.name=Jambières en Ardite
+item.armorplus.ardite_boots.name=Bottes en Ardite
 
 #PigIronArmor
-item.armorplus.pig_iron_helmet.name=Pig Iron Helmet
-item.armorplus.pig_iron_chestplate.name=Pig Iron Chestplate
-item.armorplus.pig_iron_leggings.name=Pig Iron Leggings
-item.armorplus.pig_iron_boots.name=Pig Iron Boots
+item.armorplus.pig_iron_helmet.name=Casque en Saumon de Fonte
+item.armorplus.pig_iron_chestplate.name=Plastron en Saumon de Fonte
+item.armorplus.pig_iron_leggings.name=Jambières en Saumon de Fonte
+item.armorplus.pig_iron_boots.name=Bottes en Saumon de Fonte
 
 #KnightSlimeArmor
-item.armorplus.knight_slime_helmet.name=Knight Slime Helmet
-item.armorplus.knight_slime_chestplate.name=Knight Slime Chestplate
-item.armorplus.knight_slime_leggings.name=Knight Slime Leggings
-item.armorplus.knight_slime_boots.name=Knight Slime Boots
+item.armorplus.knight_slime_helmet.name=Casque du Chevalier des Slimes
+item.armorplus.knight_slime_chestplate.name=Platron du Chevalier des Slimes
+item.armorplus.knight_slime_leggings.name=Jambières du Chevalier des Slimes
+item.armorplus.knight_slime_boots.name=Bottes du Chevalier des Slimes
 
 #ManyullynArmor
-item.armorplus.manyullyn_helmet.name=Manyullyn Helmet
-item.armorplus.manyullyn_chestplate.name=Manyullyn Chestplate
-item.armorplus.manyullyn_leggings.name=Manyullyn Leggings
-item.armorplus.manyullyn_boots.name=Manyullyn Boots
+item.armorplus.manyullyn_helmet.name=Casque en Manyullyn
+item.armorplus.manyullyn_chestplate.name=Plastron en Manyullyn
+item.armorplus.manyullyn_leggings.name=Jambières en Manyullyn
+item.armorplus.manyullyn_boots.name=Bottes en Manyullyn
 
 #ChickenArmor
-item.armorplus.chicken_helmet.name=Chicken Helmet
-item.armorplus.chicken_chestplate.name=Chicken Chestplate
-item.armorplus.chicken_leggings.name=Chicken Leggings
-item.armorplus.chicken_boots.name=Chicken Boots
+item.armorplus.chicken_helmet.name=Casque de Poulet
+item.armorplus.chicken_chestplate.name=Pastron de Poulet
+item.armorplus.chicken_leggings.name=Jambières de Poulet
+item.armorplus.chicken_boots.name=Bottes de Poulet
 
 #SlimeArmor
-item.armorplus.slime_helmet.name=Slime Helmet
-item.armorplus.slime_chestplate.name=Slime Chestplate
-item.armorplus.slime_leggings.name=Slime Leggings
-item.armorplus.slime_boots.name=Slime Boots
+item.armorplus.slime_helmet.name=Casque de Slime
+item.armorplus.slime_chestplate.name=Plastron de Slime
+item.armorplus.slime_leggings.name=Jambières de Slime
+item.armorplus.slime_boots.name=Bottes de Slime
 
 #ElectricalArmor
 item.armorplus.electrical_helmet.name=Electrical Helmet
