@@ -16,5 +16,5 @@ public class ElectricalIngot extends BaseItem {
     public ElectricalIngot() {
         super("electrical_ingot");
     }
-    
+
 }

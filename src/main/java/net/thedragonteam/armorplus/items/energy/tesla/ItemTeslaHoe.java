@@ -32,7 +32,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ARPTeslaUtils.usePower(stack, costHoe);
+        ARPTeslaUtils.usePower(stack, outputHoe);
         return true;
     }
 
@@ -44,7 +44,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < costHoe) {
+        if (ARPTeslaUtils.getStoredPower(stack) < outputHoe) {
             return 0.5F;
         }
         if (Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F) {

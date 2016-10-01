@@ -25,6 +25,7 @@ public class KnightSlimeLeggings extends BaseArmor {
     public KnightSlimeLeggings() {
         super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.LEGS, "knight_slime_leggings");
     }
+
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         tooltip.add("\2479Ability: " + "\247rHaste 2");

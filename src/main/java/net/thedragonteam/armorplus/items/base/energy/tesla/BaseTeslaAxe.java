@@ -5,11 +5,9 @@
 package net.thedragonteam.armorplus.items.base.energy.tesla;
 
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
-import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
@@ -32,18 +30,6 @@ public class BaseTeslaAxe extends ItemAxe {
     private int maxCapacity;
     private int output;
     private int input;
-
-    public BaseTeslaAxe(ToolMaterial material, String name, float f, float g, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
 
     public BaseTeslaAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material);
@@ -107,13 +93,6 @@ public class BaseTeslaAxe extends ItemAxe {
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
-    }
-
-
-    @Optional.Method(modid = "tesla")
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        TeslaUtils.createTooltip(stack, tooltip);
     }
 
     @Optional.Method(modid = "tesla")

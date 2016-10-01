@@ -35,7 +35,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Debug".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("EnderDragonZombie".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("TheGiftOfTheGods".toLowerCase())));
-        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("TeslaItems".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("EnergyItems".toLowerCase())));
 
         return list;
     }

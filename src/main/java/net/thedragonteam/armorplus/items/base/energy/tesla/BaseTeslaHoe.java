@@ -7,12 +7,9 @@ package net.thedragonteam.armorplus.items.base.energy.tesla;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
@@ -43,18 +40,6 @@ public class BaseTeslaHoe extends ItemHoe {
     private int output;
     private int input;
 
-    public BaseTeslaHoe(ToolMaterial material, String name, float f, float g, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
     public BaseTeslaHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material);
         setRegistryName(name);
@@ -79,43 +64,10 @@ public class BaseTeslaHoe extends ItemHoe {
         this.input = input;
     }
 
-    /**
-     * Called when a Block is right-clicked with this Item
-     */
-    @SuppressWarnings("incomplete-switch")
+    @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!playerIn.canPlayerEdit(pos.offset(facing), facing, stack)) {
-            return EnumActionResult.FAIL;
-        } else {
-            int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(stack, playerIn, worldIn, pos);
-            if (hook != 0) return hook > 0 ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
-
-            IBlockState iblockstate = worldIn.getBlockState(pos);
-            Block block = iblockstate.getBlock();
-
-            if (facing != EnumFacing.DOWN && worldIn.isAirBlock(pos.up())) {
-                if (block == Blocks.GRASS || block == Blocks.GRASS_PATH) {
-                    this.setBlock(stack, playerIn, worldIn, pos, Blocks.FARMLAND.getDefaultState());
-                    ARPTeslaUtils.usePower(stack, cost);
-                    return EnumActionResult.SUCCESS;
-                }
-
-                if (block == Blocks.DIRT) {
-                    switch ((BlockDirt.DirtType) iblockstate.getValue(BlockDirt.VARIANT)) {
-                        case DIRT:
-                            this.setBlock(stack, playerIn, worldIn, pos, Blocks.FARMLAND.getDefaultState());
-                            ARPTeslaUtils.usePower(stack, cost);
-                            return EnumActionResult.SUCCESS;
-                        case COARSE_DIRT:
-                            this.setBlock(stack, playerIn, worldIn, pos, Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
-                            ARPTeslaUtils.usePower(stack, cost);
-                            return EnumActionResult.SUCCESS;
-                    }
-                }
-            }
-
-            return EnumActionResult.PASS;
-        }
+        ARPTeslaUtils.usePower(stack, cost);
+        return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
     @SideOnly(Side.CLIENT)

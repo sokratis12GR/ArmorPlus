@@ -5,8 +5,9 @@
 package net.thedragonteam.armorplus.items.base.energy.rf;
 
 import cofh.api.energy.IEnergyContainerItem;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
@@ -15,21 +16,24 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
-public class BaseRF extends Item implements IEnergyContainerItem {
+import java.util.Set;
+
+public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
 
     protected int capacity;
     protected int maxReceive;
     protected int maxExtract;
 
-    public BaseRF(String name, int capacity) {
-        this(name, capacity, capacity, capacity);
+    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity) {
+        this(material, name, effectiveOn, capacity, capacity, capacity);
     }
 
-    public BaseRF(String name, int capacity, int maxTransfer) {
-        this(name, capacity, maxTransfer, maxTransfer);
+    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxTransfer) {
+        this(material, name, effectiveOn, capacity, maxTransfer, maxTransfer);
     }
 
-    public BaseRF(String name, int capacity, int maxReceive, int maxExtract) {
+    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxReceive, int maxExtract) {
+        super(material);
         setRegistryName(name);        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + name);     // Used for localization (en_US.lang)
         GameRegistry.register(this);
@@ -39,23 +43,28 @@ public class BaseRF extends Item implements IEnergyContainerItem {
         this.maxExtract = maxExtract;
     }
 
-    public BaseRF setCapacity(int capacity) {
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return true;
+    }
+
+    public BaseRFAxe setCapacity(int capacity) {
         this.capacity = capacity;
         return this;
     }
 
-    public BaseRF setMaxTransfer(int maxTransfer) {
+    public BaseRFAxe setMaxTransfer(int maxTransfer) {
         setMaxReceive(maxTransfer);
         setMaxExtract(maxTransfer);
         return this;
     }
 
-    public BaseRF setMaxReceive(int maxReceive) {
+    public BaseRFAxe setMaxReceive(int maxReceive) {
         this.maxReceive = maxReceive;
         return this;
     }
 
-    public BaseRF setMaxExtract(int maxExtract) {
+    public BaseRFAxe setMaxExtract(int maxExtract) {
         this.maxExtract = maxExtract;
         return this;
     }

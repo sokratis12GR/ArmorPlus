@@ -59,6 +59,7 @@ public class CommonProxy {
     public void registerOreDictEnties() {
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
+        registerOre("blockLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
         //Ingots
         registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
@@ -69,7 +70,9 @@ public class CommonProxy {
         registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
+        registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
         registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
+        registerOre("ingotChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
         //Materials
         registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
         registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));

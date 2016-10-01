@@ -31,17 +31,6 @@ public class BaseTesla extends Item {
     private int output;
     private int input;
 
-    public BaseTesla(String name, float f, float g, ToolMaterial diamond, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
     public BaseTesla(String name, ToolMaterial diamond, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
@@ -75,28 +64,6 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-    public BaseTesla(String name, float f, float g, ToolMaterial diamond, int maxCapacity, int input, int output) {
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
-    public BaseTesla(String name, float f, float g, int maxCapacity, int input, int output) {
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
     public BaseTesla(String name, int maxCapacity, int input, int output) {
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
@@ -107,6 +74,7 @@ public class BaseTesla extends Item {
         this.output = output;
         this.input = input;
     }
+
 
     @SideOnly(Side.CLIENT)
     public void initModel() {

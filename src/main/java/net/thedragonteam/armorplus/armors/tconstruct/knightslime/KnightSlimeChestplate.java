@@ -25,6 +25,7 @@ public class KnightSlimeChestplate extends BaseArmor {
     public KnightSlimeChestplate() {
         super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.CHEST, "knight_slime_chestplate");
     }
+
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         tooltip.add("\2479Ability: " + "\247rHaste 2");

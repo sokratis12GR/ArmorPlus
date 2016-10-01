@@ -24,7 +24,7 @@ import java.util.Set;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
 public class ItemTeslaPickaxe extends BaseTeslaPickaxe {
-    public static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(new Block[]{Blocks.ACTIVATOR_RAIL, Blocks.COAL_ORE, Blocks.COBBLESTONE, Blocks.DETECTOR_RAIL, Blocks.DIAMOND_BLOCK, Blocks.DIAMOND_ORE, Blocks.DOUBLE_STONE_SLAB, Blocks.GOLDEN_RAIL, Blocks.GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.ICE, Blocks.IRON_BLOCK, Blocks.IRON_ORE, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE, Blocks.LIT_REDSTONE_ORE, Blocks.MOSSY_COBBLESTONE, Blocks.NETHERRACK, Blocks.PACKED_ICE, Blocks.RAIL, Blocks.REDSTONE_ORE, Blocks.SANDSTONE, Blocks.RED_SANDSTONE, Blocks.STONE, Blocks.STONE_SLAB, Blocks.STONE_BUTTON, Blocks.STONE_PRESSURE_PLATE});
+    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.ACTIVATOR_RAIL, Blocks.COAL_ORE, Blocks.COBBLESTONE, Blocks.DETECTOR_RAIL, Blocks.DIAMOND_BLOCK, Blocks.DIAMOND_ORE, Blocks.DOUBLE_STONE_SLAB, Blocks.GOLDEN_RAIL, Blocks.GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.ICE, Blocks.IRON_BLOCK, Blocks.IRON_ORE, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE, Blocks.LIT_REDSTONE_ORE, Blocks.MOSSY_COBBLESTONE, Blocks.NETHERRACK, Blocks.PACKED_ICE, Blocks.RAIL, Blocks.REDSTONE_ORE, Blocks.SANDSTONE, Blocks.RED_SANDSTONE, Blocks.STONE, Blocks.STONE_SLAB, Blocks.STONE_BUTTON, Blocks.STONE_PRESSURE_PLATE);
 
     public ItemTeslaPickaxe() {
         super(ToolMaterial.DIAMOND, "tesla_pickaxe", EFFECTIVE_ON, maxCapacityPickaxe, inputPickaxe, outputPickaxe);
@@ -38,7 +38,7 @@ public class ItemTeslaPickaxe extends BaseTeslaPickaxe {
     @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ARPTeslaUtils.usePower(stack, costPickaxe);
+        ARPTeslaUtils.usePower(stack, outputPickaxe);
         return true;
     }
 
@@ -50,7 +50,7 @@ public class ItemTeslaPickaxe extends BaseTeslaPickaxe {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < costPickaxe) {
+        if (ARPTeslaUtils.getStoredPower(stack) < outputPickaxe) {
             return 0.5F;
         }
         if (Items.WOODEN_PICKAXE.getStrVsBlock(stack, state) > 1.0F) {

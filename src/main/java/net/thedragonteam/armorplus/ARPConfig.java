@@ -13,59 +13,47 @@ import net.thedragonteam.core.config.ModConfigProperty;
  */
 public class ARPConfig {
 
-    //TeslaItems.Armor
-    @ModConfigProperty(category = "TeslaItems", name = "costSteelArmor", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costSteelArmor = 1;
-    @ModConfigProperty(category = "TeslaItems", name = "inputSteelArmor", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItems.Armor
+    @ModConfigProperty(category = "EnergyItems", name = "inputSteelArmor", comment = "Set the amount of Energy that the item can input")
     public static int inputSteelArmor = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputSteelArmor", comment = "Set the amount of Tesla that the item can output")
-    public static int outputSteelArmor = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacitySteelArmor", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "outputSteelArmor", comment = "Set the amount of Energy that the item can output")
+    public static int outputSteelArmor = 1;
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacitySteelArmor", comment = "Set the max capacity that the item can hold")
     public static int maxCapacitySteelArmor = 3000;
-    //TeslaItems.Sword
-    @ModConfigProperty(category = "TeslaItems", name = "costSword", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costSword = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "inputSword", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItems.Sword
+    @ModConfigProperty(category = "EnergyItems", name = "inputSword", comment = "Set the amount of Energy that the item can input")
     public static int inputSword = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputSword", comment = "Set the amount of Tesla that the item can output")
+    @ModConfigProperty(category = "EnergyItems", name = "outputSword", comment = "Set the amount of Energy that the item can output")
     public static int outputSword = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacitySword", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacitySword", comment = "Set the max capacity that the item can hold")
     public static int maxCapacitySword = 3000;
-    //TeslaItems.Pickaxe
-    @ModConfigProperty(category = "TeslaItems", name = "costPickaxe", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costPickaxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "inputPickaxe", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItems.Pickaxe
+    @ModConfigProperty(category = "EnergyItems", name = "inputPickaxe", comment = "Set the amount of Energy that the item can input")
     public static int inputPickaxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputPickaxe", comment = "Set the amount of Tesla that the item can output")
+    @ModConfigProperty(category = "EnergyItems", name = "outputPickaxe", comment = "Set the amount of Energy that the item can output")
     public static int outputPickaxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacityPickaxe", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityPickaxe", comment = "Set the max capacity that the item can hold")
     public static int maxCapacityPickaxe = 3000;
-    //TeslaItems.Axe
-    @ModConfigProperty(category = "TeslaItems", name = "costAxe", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costAxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "inputAxe", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItems.Axe
+    @ModConfigProperty(category = "EnergyItems", name = "inputAxe", comment = "Set the amount of Energy that the item can input")
     public static int inputAxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputAxe", comment = "Set the amount of Tesla that the item can output")
+    @ModConfigProperty(category = "EnergyItems", name = "outputAxe", comment = "Set the amount of Energy that the item can output")
     public static int outputAxe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacityAxe", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityAxe", comment = "Set the max capacity that the item can hold")
     public static int maxCapacityAxe = 3000;
-    //TeslaItemsShovel
-    @ModConfigProperty(category = "TeslaItems", name = "costShovel", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costShovel = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "inputShovel", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItemsShovel
+    @ModConfigProperty(category = "EnergyItems", name = "inputShovel", comment = "Set the amount of Energy that the item can input")
     public static int inputShovel = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputShovel", comment = "Set the amount of Tesla that the item can output")
+    @ModConfigProperty(category = "EnergyItems", name = "outputShovel", comment = "Set the amount of Energy that the item can output")
     public static int outputShovel = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacityShovel", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityShovel", comment = "Set the max capacity that the item can hold")
     public static int maxCapacityShovel = 3000;
-    //TeslaItems.Hoe
-    @ModConfigProperty(category = "TeslaItems", name = "costHoe", comment = "Set the amount of Tesla that will be consumed when the item is used")
-    public static int costHoe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "inputHoe", comment = "Set the amount of Tesla that the item can input")
+    //EnergyItems.Hoe
+    @ModConfigProperty(category = "EnergyItems", name = "inputHoe", comment = "Set the amount of Energy that the item can input")
     public static int inputHoe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "outputHoe", comment = "Set the amount of Tesla that the item can output")
+    @ModConfigProperty(category = "EnergyItems", name = "outputHoe", comment = "Set the amount of Energy that the item can output")
     public static int outputHoe = 10;
-    @ModConfigProperty(category = "TeslaItems", name = "maxCapacityHoe", comment = "Set the max capacity that the item can hold")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityHoe", comment = "Set the max capacity that the item can hold")
     public static int maxCapacityHoe = 3000;
 
     //TheGiftOfTheGods (TGOTG)

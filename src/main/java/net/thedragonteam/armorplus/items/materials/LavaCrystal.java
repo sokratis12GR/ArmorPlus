@@ -24,6 +24,15 @@ import java.util.List;
  */
 public class LavaCrystal extends Item implements IFuelHandler {
 
+    public LavaCrystal() {
+        this.setHasSubtypes(true);
+        setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
+        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_crystal");     // Used for localization (en_US.lang)
+        GameRegistry.register(this);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        setMaxDamage(0);
+    }
+
     @Override
     public int getBurnTime(ItemStack fuel) {
         switch (fuel.getItemDamage()) {
@@ -33,15 +42,6 @@ public class LavaCrystal extends Item implements IFuelHandler {
                 return 22000;
         }
         return 22000;
-    }
-
-    public LavaCrystal() {
-        this.setHasSubtypes(true);
-        setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_crystal");     // Used for localization (en_US.lang)
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
-        setMaxDamage(0);
     }
 
     @Override

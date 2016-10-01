@@ -15,15 +15,17 @@ public class TiC {
     public static TiCModifiers tinkersModifiers;
     public static TiCMaterials tinkersMaterials;
     public static MaterialIntegration tinkersMatInt;
-    public static TiCTraits tinkerTraits;
+    public static TiCTraits tinkersTraits;
 
     public static void preInit() {
-        tinkerTraits = new TiCTraits();
+        tinkersTraits = new TiCTraits();
         tinkersMaterials = new TiCMaterials();
-        tinkersMatInt = new MaterialIntegration(TiCMaterials.lavacrystal).toolforge();
+        tinkersMatInt = new MaterialIntegration(TiCMaterials.lavacrystal);
         tinkersMatInt.integrate();
+        tinkersMatInt.toolforge();
         tinkersModifiers = new TiCModifiers();
         tinkersMaterials.setupMaterials();
+        tinkersMaterials.postInit();
     }
 
     public static void init() {

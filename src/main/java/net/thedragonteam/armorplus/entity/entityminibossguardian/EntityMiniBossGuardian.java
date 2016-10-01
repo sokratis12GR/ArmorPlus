@@ -29,6 +29,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import javax.annotation.Nullable;
 
 public class EntityMiniBossGuardian extends EntityMob {
+    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/mini_boss_guardian");
+    private static final DataParameter<Byte> ON_FIRE = EntityDataManager.<Byte>createKey(EntityMiniBossGuardian.class, DataSerializers.BYTE);
     /**
      * Random offset used in floating behaviour
      */
@@ -37,10 +39,6 @@ public class EntityMiniBossGuardian extends EntityMob {
      * ticks until heightOffset is randomized
      */
     private int heightOffsetUpdateTime;
-
-    public static final ResourceLocation LOOT = new ResourceLocation(ArmorPlus.MODID, "entities/mini_boss_guardian");
-
-    private static final DataParameter<Byte> ON_FIRE = EntityDataManager.<Byte>createKey(EntityMiniBossGuardian.class, DataSerializers.BYTE);
 
     public EntityMiniBossGuardian(World worldIn) {
         super(worldIn);

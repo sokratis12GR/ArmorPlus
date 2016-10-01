@@ -31,14 +31,31 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.costSteelArmor;
-
 @Optional.InterfaceList({
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
 })
 public class BaseTeslaArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder {
+
+    private int power;
+    private int maxCapacity;
+    private int output;
+    private int input;
+
+    public BaseTeslaArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
+        super(ModItems.steelArmorNotPowered, armorPreffix, slot);
+        setMaxStackSize(1);
+        setRegistryName(name);
+        setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        GameRegistry.register(this);
+        setCreativeTab(ArmorPlus.tabArmorplusTesla);
+        setMaxStackSize(1);
+        this.power = power;
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
+    }
 
     @Optional.Method(modid = "tesla")
     @Override
@@ -69,30 +86,11 @@ public class BaseTeslaArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
         return power;
     }
 
-    private int power;
-    private int maxCapacity;
-    private int output;
-    private int input;
-
-    public BaseTeslaArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.steelArmorNotPowered, armorPreffix, slot);
-        setMaxStackSize(1);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.power = power;
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
     @Optional.Method(modid = "tesla")
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         if (player.getLastAttacker() != null && player.hurtTime > 0)
-            ARPTeslaUtils.usePower(itemStack, costSteelArmor);
+            ARPTeslaUtils.usePower(itemStack, output);
     }
 
     @SideOnly(Side.CLIENT)

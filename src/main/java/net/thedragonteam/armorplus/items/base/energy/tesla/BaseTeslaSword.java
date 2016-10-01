@@ -33,18 +33,6 @@ public class BaseTeslaSword extends ItemSword {
     private int output;
     private int input;
 
-    public BaseTeslaSword(ToolMaterial material, String name, float f, float g, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
-        this.maxCapacity = maxCapacity;
-        this.output = output;
-        this.input = input;
-    }
-
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material);
         setRegistryName(name);

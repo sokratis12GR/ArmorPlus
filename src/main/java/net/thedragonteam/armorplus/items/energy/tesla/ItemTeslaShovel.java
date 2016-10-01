@@ -40,7 +40,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
     @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ARPTeslaUtils.usePower(stack, costShovel);
+        ARPTeslaUtils.usePower(stack, outputShovel);
         return true;
     }
 
@@ -52,7 +52,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < costShovel) {
+        if (ARPTeslaUtils.getStoredPower(stack) < outputShovel) {
             return 0.5F;
         }
         if (Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F) {

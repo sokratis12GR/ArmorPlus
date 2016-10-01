@@ -8,7 +8,6 @@ import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -27,8 +26,8 @@ import static net.thedragonteam.armorplus.integration.tinkers.TiCTraits.lavacrys
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HANDLE;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 import static slimeknights.tconstruct.library.utils.HarvestLevels.COBALT;
+import static slimeknights.tconstruct.tools.TinkerTraits.autosmelt;
 import static slimeknights.tconstruct.tools.TinkerTraits.flammable;
-import static slimeknights.tconstruct.tools.TinkerTraits.writable;
 
 public final class TiCMaterials {
 
@@ -54,12 +53,12 @@ public final class TiCMaterials {
         // Lava Crystal
         lavacrystal.setCraftable(true);
         lavacrystal.setCastable(true);
-        lavacrystal.setShard(ModItems.lavaCrystal);
+        lavacrystal.setShard(new ItemStack(ModItems.lavaCrystal, 1));
         lavacrystal.addRecipeMatch(new RecipeMatch.ItemCombination(100, new ItemStack(ModItems.lavaCrystal, 1, 1), new ItemStack(Items.BRICK)));
         lavacrystal.addRecipeMatch(new RecipeMatch.ItemCombination(50, new ItemStack(ModItems.lavaCrystal, 1), new ItemStack(Items.BRICK)));
         lavacrystal.addTrait(lavacrystalic, HEAD);
         lavacrystal.addTrait(flammable);
-        lavacrystal.addTrait(writable, HANDLE);
+        lavacrystal.addTrait(autosmelt, HANDLE);
         registerToolMaterialStats();
     }
 
@@ -72,7 +71,7 @@ public final class TiCMaterials {
     }
 
     @Subscribe
-    public void postInit(FMLPostInitializationEvent event) {
+    public void postInit() {
         if (TinkerTools.shard == null) {
             return;
         }

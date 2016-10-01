@@ -106,6 +106,8 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.*;
+import net.thedragonteam.armorplus.items.energy.rf.ItemRFAxe;
+import net.thedragonteam.armorplus.items.energy.rf.ItemRFRod;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
@@ -377,6 +379,9 @@ public class ModItems {
     public static ItemTeslaHoe itemTeslaHoe;
     public static ItemTeslaShovel itemTeslaShovel;
 
+    public static ItemRFAxe itemRFAxe;
+    public static ItemRFRod itemRFRod;
+
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
     public ModItems() {
@@ -384,6 +389,8 @@ public class ModItems {
     }
 
     public static void init() {
+        itemRFAxe = new ItemRFAxe();
+        itemRFRod = new ItemRFRod();
         if (Loader.isModLoaded("tesla")) {
             itemTeslaShovel = new ItemTeslaShovel();
             itemTeslaHoe = new ItemTeslaHoe();
@@ -543,6 +550,8 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemRFAxe.initModel();
+        itemRFRod.initModel();
         if (Loader.isModLoaded("tesla")) {
             itemTeslaShovel.initModel();
             itemTeslaHoe.initModel();
