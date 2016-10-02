@@ -16,7 +16,8 @@
     * Made BaseEnergyArmor class confusing, then made it to no longer be
     * Added a lot of base classes for all types of items/weaps supported by Energy APIs
     * Changed Tesla tools/weapons tooltips to be more accurate using own mathod rather than the premade from Tesla
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~**ArmorPlus 1.10.2-7.0.1.0.2-dev**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-7.0.1.0.2-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Bugs Fixed}**
