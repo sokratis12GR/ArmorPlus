@@ -12,7 +12,7 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.SkeletonType;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 

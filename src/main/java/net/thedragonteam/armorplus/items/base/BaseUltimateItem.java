@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseUltimateItem extends Item {
 

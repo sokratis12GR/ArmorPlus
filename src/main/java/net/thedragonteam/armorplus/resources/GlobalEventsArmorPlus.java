@@ -22,7 +22,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
-import net.thedragonteam.core.util.TextHelper;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
 

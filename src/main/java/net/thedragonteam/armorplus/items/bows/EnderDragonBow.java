@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.bows

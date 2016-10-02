@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.items.base.BaseItem;
 
 import java.util.List;
 
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class DevTool extends BaseItem {
 

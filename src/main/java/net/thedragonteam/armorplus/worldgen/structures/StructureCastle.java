@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 

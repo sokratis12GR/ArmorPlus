@@ -1,6 +1,6 @@
 **ArmorPlus Version**:
 
-**TheDragonCore Version**:
+**TheDragonLib Version**:
 
 **MinecraftForge Version**:
 
@@ -14,4 +14,4 @@
 
 **How can I reproduce it?**:
 
-**(Optional) ModPack**:
+**(Optional) Mod List**:

@@ -13,7 +13,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
-import net.thedragonteam.core.util.TextHelper;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 public class SubCommandInfo extends SubCommandBase {
 

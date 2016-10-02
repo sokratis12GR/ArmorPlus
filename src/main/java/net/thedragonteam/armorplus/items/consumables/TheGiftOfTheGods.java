@@ -16,14 +16,14 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
-import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.consumables

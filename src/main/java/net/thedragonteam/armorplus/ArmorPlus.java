@@ -34,10 +34,10 @@ import net.thedragonteam.armorplus.registry.ModCompatibility;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
-import net.thedragonteam.core.config.ModConfigProcessor;
-import net.thedragonteam.core.config.ModFeatureParser;
-import net.thedragonteam.core.util.LogHelper;
-import net.thedragonteam.core.util.TextHelper;
+import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
+import net.thedragonteam.thedragonlib.config.ModFeatureParser;
+import net.thedragonteam.thedragonlib.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,15 +59,15 @@ public class ArmorPlus {
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
     // Updates every time a build is created, mostly used for dev versions, resets on MINOR changes
-    public static final int BUILD = 3;
+    public static final int BUILD = 4;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
     public static final String TESLA_VERSION = "1.2.1.49";
-    public static final String CORE_VERSION = "1.10.2-1.0.2.0";
+    public static final String LIB_VERSION = "1.10.2-1.0.3.0";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String DEPEND = "required-after:thedragoncore@[" + ArmorPlus.CORE_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle@[1.10.2-1.0.0,);" + "after:tconstruct@[1.10.2-2.5.2,);";
+    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle@[1.10.2-1.0.0,);" + "after:tconstruct@[1.10.2-2.5.2,);";
     public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";

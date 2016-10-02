@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus.misc;
 
-import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.InputStreamReader;
 import java.net.URL;

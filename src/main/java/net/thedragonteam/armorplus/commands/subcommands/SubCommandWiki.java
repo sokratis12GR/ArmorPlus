@@ -8,8 +8,8 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
-import net.thedragonteam.core.client.util.ClientUtills;
-import net.thedragonteam.core.util.TextHelper;
+import net.thedragonteam.thedragonlib.client.util.ClientUtills;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 public class SubCommandWiki extends SubCommandBase {
 

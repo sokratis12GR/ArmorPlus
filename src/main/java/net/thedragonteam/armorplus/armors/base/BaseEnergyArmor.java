@@ -92,6 +92,11 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
         return maxCapacity;
     }
 
+    public BaseEnergyArmor setCapacity(int capacity) {
+        this.maxCapacity = capacity;
+        return this;
+    }
+
     public int getPower() {
         return power;
     }
@@ -107,7 +112,6 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-
 
     private int createPoweredStack(ItemStack container, boolean simulate) {
         if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
@@ -184,11 +188,6 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
     @Override
     public int getMaxEnergyStored(ItemStack container) {
         return maxCapacity;
-    }
-
-    public BaseEnergyArmor setCapacity(int capacity) {
-        this.maxCapacity = capacity;
-        return this;
     }
 
     public BaseEnergyArmor setMaxTransfer(int maxTransfer) {

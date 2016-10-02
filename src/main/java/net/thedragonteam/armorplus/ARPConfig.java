@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus;
 
-import net.thedragonteam.core.config.ModConfigProperty;
+import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
 /**
  * net.thedragonteam.armorplus

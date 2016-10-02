@@ -20,7 +20,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.origin.lava

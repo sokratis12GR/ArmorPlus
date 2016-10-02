@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.core.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.battleaxes

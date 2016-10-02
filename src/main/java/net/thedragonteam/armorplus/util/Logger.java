@@ -6,7 +6,7 @@ package net.thedragonteam.armorplus.util;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.core.TheDragonCore;
+import net.thedragonteam.thedragonlib.TheDragonLib;
 
 import java.io.*;
 
@@ -35,7 +35,7 @@ public class Logger {
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "ArmorPlus Version: " + ArmorPlus.VERSION + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "modid: " + ArmorPlus.MODID + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Minecraft Version: " + MinecraftForge.MC_VERSION + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "dependencies: " + TheDragonCore.MODID + TheDragonCore.VERSION + " ( " + TheDragonCore.MODNAME + " ) " + "</strong></p>");
+            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "dependencies: " + TheDragonLib.MODID + TheDragonLib.VERSION + " ( " + TheDragonLib.MODNAME + " ) " + "</strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "by " + "<a href=\"https://minecraft.curseforge.com/members/TheDragonTeam\" style=\"color:#AA0000;text-decoration:none\">TheDragonTeam</a></strong></p>");
             writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Mod&#39;s Page: " + "<a href=\"https://minecraft.curseforge.com/projects/armorplus\" style=\"color:#AA0000;text-decoration:none\">ArmorPlus</a></strong></p>\n");
             writer.write("<h2 style=\"color:#DEDEDE;text-align:center\">" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</h2>");

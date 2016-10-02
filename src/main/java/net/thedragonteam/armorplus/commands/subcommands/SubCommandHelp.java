@@ -11,7 +11,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.commands.ISubCommand;
 import net.thedragonteam.armorplus.commands.SubCommandBase;
-import net.thedragonteam.core.util.TextHelper;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 /**
  * net.thedragonteam.armorplus.commands.subcommands

@@ -28,7 +28,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.worldgen.OreGen;
-import net.thedragonteam.core.util.LogHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
