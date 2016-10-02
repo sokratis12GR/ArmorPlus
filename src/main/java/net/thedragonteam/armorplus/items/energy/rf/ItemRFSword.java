@@ -4,9 +4,8 @@
 
 package net.thedragonteam.armorplus.items.energy.rf;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.Multimap;
 import com.mojang.realmsclient.gui.ChatFormatting;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -15,35 +14,42 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFAxe;
+import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFSword;
 
 import java.util.List;
-import java.util.Set;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
-public class ItemRFAxe extends BaseRFAxe {
+public class ItemRFSword extends BaseRFSword {
 
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2, Blocks.WOODEN_SLAB, Blocks.DOUBLE_WOODEN_SLAB, Blocks.CHEST, Blocks.LADDER,
-            Blocks.CRAFTING_TABLE, Blocks.TRAPDOOR, Blocks.ACACIA_FENCE, Blocks.BIRCH_FENCE, Blocks.DARK_OAK_FENCE, Blocks.JUNGLE_FENCE, Blocks.OAK_FENCE, Blocks.SPRUCE_FENCE,
-            Blocks.ACACIA_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.LEAVES,
-            Blocks.LEAVES2, Blocks.BOOKSHELF, Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.NOTEBLOCK, Blocks.PUMPKIN, Blocks.MELON_BLOCK, Blocks.PLANKS, Blocks.WOODEN_PRESSURE_PLATE,
-            Blocks.ACACIA_STAIRS, Blocks.BIRCH_STAIRS, Blocks.SPRUCE_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.JUNGLE_STAIRS, Blocks.OAK_STAIRS);
+    private float attackDamage;
+    private ItemStack stack;
 
-    public ItemRFAxe() {
-        super(ToolMaterial.DIAMOND, "redstone_flux_axe", EFFECTIVE_ON, maxCapacityAxe, inputAxe, outputAxe);
+    public ItemRFSword() {
+        super(ToolMaterial.DIAMOND, "redstone_flux_sword", maxCapacitySword, inputSword, outputSword);
         setMaxStackSize(1);
         canRepair = false;
         setMaxDamage(0);
+    }
+
+    public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
+        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+        if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
+        }
+        return multimap;
     }
 
     @Override
@@ -54,12 +60,6 @@ public class ItemRFAxe extends BaseRFAxe {
 
     public double getDurabilityForDisplay(ItemStack stack) {
         return 1 - ((double) this.getEnergyStored(stack) / (double) this.getMaxEnergyStored(stack));
-    }
-
-    @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        this.extractEnergy(stack, outputAxe, false);
-        return true;
     }
 
     @Override
@@ -95,15 +95,20 @@ public class ItemRFAxe extends BaseRFAxe {
 
     @Override
     public boolean canHarvestBlock(IBlockState state) {
-        return Items.DIAMOND_AXE.canHarvestBlock(state);
+        return Items.DIAMOND_SWORD.canHarvestBlock(state);
+    }
+
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        this.extractEnergy(stack, outputSword, false);
+        return true;
     }
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputAxe) {
+        if (this.getEnergyStored(stack) < outputSword) {
             return 0.5F;
         }
-        if (Items.WOODEN_AXE.getStrVsBlock(stack, state) > 1.0F) {
+        if (Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F) {
             return 5.5F;
         } else {
             return super.getStrVsBlock(stack, state);
@@ -116,24 +121,23 @@ public class ItemRFAxe extends BaseRFAxe {
         createTooltip(stack, tooltip);
     }
 
-
     private int createPoweredStack(ItemStack container, boolean simulate) {
         if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
             return 0;
         }
         //int energy = container.getTagCompound().getInteger("Energy");
         if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityAxe);
+            container.getTagCompound().setInteger("Energy", maxCapacitySword);
         }
 
-        return maxCapacityAxe;
+        return maxCapacitySword;
     }
 
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add(ChatFormatting.DARK_RED + I18n.format("") + this.getEnergyStored(stack) + "/" + this.getMaxEnergyStored(stack) + I18n.format(" RF"));
-            tooltip.add(ChatFormatting.DARK_RED + I18n.format("tooltip.rf.cost.tool", Integer.toString(this.getMaxReceive(stack))));
+            tooltip.add(ChatFormatting.DARK_RED + I18n.format("tooltip.rf.cost.hit", Integer.toString(this.getMaxReceive(stack))));
         } else
             tooltip.add(I18n.format("tooltip.rf.showinfo", ChatFormatting.DARK_RED, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }

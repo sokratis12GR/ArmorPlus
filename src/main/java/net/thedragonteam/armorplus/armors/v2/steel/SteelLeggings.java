@@ -8,7 +8,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.armors.base.BaseTeslaArmor;
+import net.thedragonteam.armorplus.armors.base.BaseEnergyArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
@@ -19,7 +19,7 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
  * - TheDragonTeam
  */
-public class SteelLeggings extends BaseTeslaArmor {
+public class SteelLeggings extends BaseEnergyArmor {
 
     public SteelLeggings() {
         super(0, EntityEquipmentSlot.LEGS, "steel_leggings", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);

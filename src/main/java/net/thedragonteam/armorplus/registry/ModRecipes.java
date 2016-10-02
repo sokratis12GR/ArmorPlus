@@ -108,6 +108,14 @@ public class ModRecipes {
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFRod, 1), "XTX", "TST", "XTX", 'T', Items.REDSTONE, 'S', Items.STICK);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFAxe, 1), "TTX", "TSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFShovel, 1), "XTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFHoe, 1), "TTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFHoe, 1), "XTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFSword, 1), "XTX", "XTX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFPickaxe, 1), "TTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+
         if (Loader.isModLoaded("tesla")) {
             GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaRod, 1), "XTX", "TST", "XTX", 'T', LAPIS_LAZULI, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaShovel, 1), "XTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);

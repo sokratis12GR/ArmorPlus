@@ -17,7 +17,7 @@ container.armorplus.inventory=Inventory
 tooltip.rf.showinfo=Press %s%s%s for more info.
 tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/block
-tooltip.rf.cost.hit=Cost: %s RF/hit
+tooltip.rf.cost.weap=Cost: %s RF/hit
 #TeslaTooltip
 tooltip.tesla.showinfo=Press %s%s%s for more info.
 tooltip.tesla.powerinfo=%s/%s Tesla
@@ -317,7 +317,10 @@ item.armorplus.tesla_shovel.name=Tesla Shovel
 #RedstoneFluxItems
 item.armorplus.redstone_flux_axe.name=Redstone Flux Axe
 item.armorplus.redstone_flux_rod.name=Redstone Flux Rod
-
+item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
+item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
+item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
+item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
 
@@ -368,7 +371,6 @@ achievement.armorplus.craft_armor_forge.desc=craft the Armor Forge from ArmorPlu
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
 info.armorplus.console.load.blocks=Blocks Successfully Registered
 info.armorplus.console.load.init=Begin Initialization
 info.armorplus.console.load.postInit=Begin Post-initialization

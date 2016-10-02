@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -17,7 +16,6 @@ import net.thedragonteam.armorplus.blocks.ArmorForge;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickTower;
-import net.thedragonteam.armorplus.blocks.energy.BlockCreativePower;
 import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
@@ -43,7 +41,7 @@ public class ModBlocks {
     public static Block lavaNetherBrick;
     public static Block whiteStoneBrickTower;
     public static Block whiteStoneBrickCorner;
-    public static Block blockCreativeEnergy;
+    //   public static Block blockCreativeEnergy;
     public static LavaCactus lavaCactus;
 
     public static Block spawnerGuardian;
@@ -60,9 +58,9 @@ public class ModBlocks {
         whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
         whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
         whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
-        if (Loader.isModLoaded("tesla")) {
-            blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
-        }
+        //  if (Loader.isModLoaded("tesla")) {
+        //     blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
+        //  }
 
         spawnerGuardian = new SpawnerGuardian().setRegistryName("spawner_guardian");
     }
@@ -79,9 +77,9 @@ public class ModBlocks {
         registerBlock(whiteStoneBrick);
         registerBlock(whiteStoneBrickTower);
         registerBlock(whiteStoneBrickCorner);
-        if (Loader.isModLoaded("tesla")) {
-            registerBlock(blockCreativeEnergy);
-        }
+        //    if (Loader.isModLoaded("tesla")) {
+        //        registerBlock(blockCreativeEnergy);
+        //    }
 
         registerBlock(spawnerGuardian);
 
@@ -99,9 +97,9 @@ public class ModBlocks {
         registerRender(whiteStoneBrick);
         registerRender(whiteStoneBrickTower);
         registerRender(whiteStoneBrickCorner);
-        if (Loader.isModLoaded("tesla")) {
-            registerRender(blockCreativeEnergy);
-        }
+        //      if (Loader.isModLoaded("tesla")) {
+        //       registerRender(blockCreativeEnergy);
+        //      }
 
         registerRender(spawnerGuardian);
     }

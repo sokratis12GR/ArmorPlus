@@ -106,8 +106,7 @@ import net.thedragonteam.armorplus.items.bows.*;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.*;
-import net.thedragonteam.armorplus.items.energy.rf.ItemRFAxe;
-import net.thedragonteam.armorplus.items.energy.rf.ItemRFRod;
+import net.thedragonteam.armorplus.items.energy.rf.*;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
@@ -381,6 +380,11 @@ public class ModItems {
 
     public static ItemRFAxe itemRFAxe;
     public static ItemRFRod itemRFRod;
+    public static ItemRFPickaxe itemRFPickaxe;
+    public static ItemRFSword itemRFSword;
+    public static ItemRFHoe itemRFHoe;
+    public static ItemRFShovel itemRFShovel;
+
 
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
@@ -389,7 +393,11 @@ public class ModItems {
     }
 
     public static void init() {
+        itemRFShovel = new ItemRFShovel();
+        itemRFHoe = new ItemRFHoe();
         itemRFAxe = new ItemRFAxe();
+        itemRFPickaxe = new ItemRFPickaxe();
+        itemRFSword = new ItemRFSword();
         itemRFRod = new ItemRFRod();
         if (Loader.isModLoaded("tesla")) {
             itemTeslaShovel = new ItemTeslaShovel();
@@ -397,11 +405,11 @@ public class ModItems {
             itemTeslaAxe = new ItemTeslaAxe();
             itemTeslaPickaxe = new ItemTeslaPickaxe();
             itemTeslaSword = new ItemTeslaSword();
-            steelHelmet = new SteelHelmet();
-            steelChestplate = new SteelChestplate();
-            steelLeggings = new SteelLeggings();
-            steelBoots = new SteelBoots();
         }
+        steelHelmet = new SteelHelmet();
+        steelChestplate = new SteelChestplate();
+        steelLeggings = new SteelLeggings();
+        steelBoots = new SteelBoots();
         itemTeslaRod = new ItemTeslaRod();
         mmdItem = new MMDItem();
         twitchItem = new TwitchItem();
@@ -550,7 +558,11 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemRFShovel.initModel();
+        itemRFHoe.initModel();
         itemRFAxe.initModel();
+        itemRFPickaxe.initModel();
+        itemRFSword.initModel();
         itemRFRod.initModel();
         if (Loader.isModLoaded("tesla")) {
             itemTeslaShovel.initModel();
@@ -558,11 +570,11 @@ public class ModItems {
             itemTeslaAxe.initModel();
             itemTeslaPickaxe.initModel();
             itemTeslaSword.initModel();
-            steelHelmet.initModel();
-            steelChestplate.initModel();
-            steelLeggings.initModel();
-            steelBoots.initModel();
         }
+        steelHelmet.initModel();
+        steelChestplate.initModel();
+        steelLeggings.initModel();
+        steelBoots.initModel();
         itemTeslaRod.initModel();
         mmdItem.initModel();
         twitchItem.initModel();

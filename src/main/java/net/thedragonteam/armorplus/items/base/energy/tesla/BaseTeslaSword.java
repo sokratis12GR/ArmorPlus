@@ -5,11 +5,9 @@
 package net.thedragonteam.armorplus.items.base.energy.tesla;
 
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
-import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -95,13 +93,6 @@ public class BaseTeslaSword extends ItemSword {
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
-    }
-
-
-    @Optional.Method(modid = "tesla")
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        TeslaUtils.createTooltip(stack, tooltip);
     }
 
     @Optional.Method(modid = "tesla")

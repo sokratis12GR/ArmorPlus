@@ -24,23 +24,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFAxe;
+import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFShovel;
 
 import java.util.List;
 import java.util.Set;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
-public class ItemRFAxe extends BaseRFAxe {
+public class ItemRFShovel extends BaseRFShovel {
 
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2, Blocks.WOODEN_SLAB, Blocks.DOUBLE_WOODEN_SLAB, Blocks.CHEST, Blocks.LADDER,
-            Blocks.CRAFTING_TABLE, Blocks.TRAPDOOR, Blocks.ACACIA_FENCE, Blocks.BIRCH_FENCE, Blocks.DARK_OAK_FENCE, Blocks.JUNGLE_FENCE, Blocks.OAK_FENCE, Blocks.SPRUCE_FENCE,
-            Blocks.ACACIA_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.LEAVES,
-            Blocks.LEAVES2, Blocks.BOOKSHELF, Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.NOTEBLOCK, Blocks.PUMPKIN, Blocks.MELON_BLOCK, Blocks.PLANKS, Blocks.WOODEN_PRESSURE_PLATE,
-            Blocks.ACACIA_STAIRS, Blocks.BIRCH_STAIRS, Blocks.SPRUCE_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.JUNGLE_STAIRS, Blocks.OAK_STAIRS);
+    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.FARMLAND, Blocks.SAND, Blocks.DIRT, Blocks.GRAVEL, Blocks.GRASS, Blocks.GRASS_PATH,
+            Blocks.SNOW, Blocks.SNOW_LAYER, Blocks.CLAY, Blocks.SOUL_SAND);
 
-    public ItemRFAxe() {
-        super(ToolMaterial.DIAMOND, "redstone_flux_axe", EFFECTIVE_ON, maxCapacityAxe, inputAxe, outputAxe);
+    public ItemRFShovel() {
+        super(ToolMaterial.DIAMOND, "redstone_flux_shovel", EFFECTIVE_ON, maxCapacityShovel, inputShovel, outputShovel);
         setMaxStackSize(1);
         canRepair = false;
         setMaxDamage(0);
@@ -58,7 +55,7 @@ public class ItemRFAxe extends BaseRFAxe {
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        this.extractEnergy(stack, outputAxe, false);
+        this.extractEnergy(stack, outputShovel, false);
         return true;
     }
 
@@ -95,15 +92,15 @@ public class ItemRFAxe extends BaseRFAxe {
 
     @Override
     public boolean canHarvestBlock(IBlockState state) {
-        return Items.DIAMOND_AXE.canHarvestBlock(state);
+        return Items.DIAMOND_SHOVEL.canHarvestBlock(state);
     }
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputAxe) {
+        if (this.getEnergyStored(stack) < outputShovel) {
             return 0.5F;
         }
-        if (Items.WOODEN_AXE.getStrVsBlock(stack, state) > 1.0F) {
+        if (Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F) {
             return 5.5F;
         } else {
             return super.getStrVsBlock(stack, state);
@@ -116,17 +113,16 @@ public class ItemRFAxe extends BaseRFAxe {
         createTooltip(stack, tooltip);
     }
 
-
     private int createPoweredStack(ItemStack container, boolean simulate) {
         if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
             return 0;
         }
         //int energy = container.getTagCompound().getInteger("Energy");
         if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityAxe);
+            container.getTagCompound().setInteger("Energy", maxCapacityShovel);
         }
 
-        return maxCapacityAxe;
+        return maxCapacityShovel;
     }
 
     private void createTooltip(ItemStack stack, List<String> tooltip) {

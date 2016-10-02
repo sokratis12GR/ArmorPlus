@@ -1,9 +1,21 @@
-**ArmorPlus 1.10.2-7.0.1.0.2-dev**
+**ArmorPlus 1.10.2-7.0.1.0.3-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Dependancies}**
+    * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
-
+    * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
+    * Added RF supports, Main Supposted Energy API
+        * RF Tools/Weapons
+    * Changed Steel Armor to support mainly RF and secondary Tesla
+    * Added OreDict for some things
+    * Mob drops
+        * Made the Wither skeleton to drop 0-1 wither bones on death
+    * Removed Creative Power Cell (Temporaly, maybe)
 * **{Code Changed/Added/Removed}**
+    * Made BaseEnergyArmor class confusing, then made it to no longer be
+    * Added a lot of base classes for all types of items/weaps supported by Energy APIs
+    * Changed Tesla tools/weapons tooltips to be more accurate using own mathod rather than the premade from Tesla
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.2-dev**
 ============================

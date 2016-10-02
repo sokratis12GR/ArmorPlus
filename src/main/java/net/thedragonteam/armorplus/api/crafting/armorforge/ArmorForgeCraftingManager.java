@@ -12,7 +12,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -316,44 +315,42 @@ public class ArmorForgeCraftingManager {
             this.addRecipe(new ItemStack(ModItems.pigIronBoots, 1), "CXC", "AXA", "XXX", 'C', pigIronBlock, 'A', pigIronIngot);
         }
         // ===================================== v2 Armors =====================================
-        if (Loader.isModLoaded("tesla")) {
-
-            this.addShapelessRecipe(new ItemStack(ModItems.electricalIngot, 1), ModItems.steelIngot, Items.REDSTONE, Items.GLOWSTONE_DUST);
+        this.addShapelessRecipe(new ItemStack(ModItems.electricalIngot, 1), ModItems.steelIngot, Items.REDSTONE, Items.GLOWSTONE_DUST);
         /* Metal Armor */
-            if (ARPConfig.recipes == 0) {
-                this.addRecipe(steelHelmet, "XXX", "MMM", "MXM", 'M', ModItems.steelIngot);
-                this.addRecipe(steelHelmet, "MMM", "MXM", "XXX", 'M', ModItems.steelIngot);
-                this.addRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.steelIngot);
-                this.addRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMM", "MXM", "MXM", 'M', ModItems.steelIngot);
-                this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "XXX", "MXM", "MXM", 'M', ModItems.steelIngot);
-                this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "MXM", "MXM", "XXX", 'M', ModItems.steelIngot);
-            }
-            if (ARPConfig.recipes == 1) {
-                this.addRecipe(steelHelmet, "XXX", "MMM", "MXM", 'M', ModBlocks.steelBlock);
-                this.addRecipe(steelHelmet, "MMM", "MXM", "XXX", 'M', ModBlocks.steelBlock);
-                this.addRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.steelBlock);
-                this.addRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.steelBlock);
-                this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.steelBlock);
-                this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.steelBlock);
-            }
-        /* Electrical Armor */
-            if (ARPConfig.recipes == 0) {
-                this.addRecipe(electricalHelmet, "XXX", "EEE", "EXE", 'E', ModItems.electricalIngot);
-                this.addRecipe(electricalHelmet, "EEE", "EXE", "XXX", 'E', ModItems.electricalIngot);
-                this.addRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.electricalIngot);
-                this.addRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEE", "EXE", "EXE", 'E', ModItems.electricalIngot);
-                this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXX", "EXE", "EXE", 'E', ModItems.electricalIngot);
-                this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXE", "EXE", "XXX", 'E', ModItems.electricalIngot);
-            }
-            if (ARPConfig.recipes == 1) {
-                this.addRecipe(electricalHelmet, "XXX", "EEE", "EXE", 'E', ModBlocks.electricalBlock);
-                this.addRecipe(electricalHelmet, "EEE", "EXE", "XXX", 'E', ModBlocks.electricalBlock);
-                this.addRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXE", "EEE", "EEE", 'E', ModBlocks.electricalBlock);
-                this.addRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEE", "EXE", "EXE", 'E', ModBlocks.electricalBlock);
-                this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXX", "EXE", "EXE", 'E', ModBlocks.electricalBlock);
-                this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXE", "EXE", "XXX", 'E', ModBlocks.electricalBlock);
-            }
+        if (ARPConfig.recipes == 0) {
+            this.addRecipe(steelHelmet, "XXX", "MMM", "MXM", 'M', ModItems.steelIngot);
+            this.addRecipe(steelHelmet, "MMM", "MXM", "XXX", 'M', ModItems.steelIngot);
+            this.addRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXM", "MMM", "MMM", 'M', ModItems.steelIngot);
+            this.addRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMM", "MXM", "MXM", 'M', ModItems.steelIngot);
+            this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "XXX", "MXM", "MXM", 'M', ModItems.steelIngot);
+            this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "MXM", "MXM", "XXX", 'M', ModItems.steelIngot);
         }
+        if (ARPConfig.recipes == 1) {
+            this.addRecipe(steelHelmet, "XXX", "MMM", "MXM", 'M', ModBlocks.steelBlock);
+            this.addRecipe(steelHelmet, "MMM", "MXM", "XXX", 'M', ModBlocks.steelBlock);
+            this.addRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXM", "MMM", "MMM", 'M', ModBlocks.steelBlock);
+            this.addRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMM", "MXM", "MXM", 'M', ModBlocks.steelBlock);
+            this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "XXX", "MXM", "MXM", 'M', ModBlocks.steelBlock);
+            this.addRecipe(new ItemStack(ModItems.steelBoots, 1), "MXM", "MXM", "XXX", 'M', ModBlocks.steelBlock);
+        }
+        /* Electrical Armor */
+        if (ARPConfig.recipes == 0) {
+            this.addRecipe(electricalHelmet, "XXX", "EEE", "EXE", 'E', ModItems.electricalIngot);
+            this.addRecipe(electricalHelmet, "EEE", "EXE", "XXX", 'E', ModItems.electricalIngot);
+            this.addRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXE", "EEE", "EEE", 'E', ModItems.electricalIngot);
+            this.addRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEE", "EXE", "EXE", 'E', ModItems.electricalIngot);
+            this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXX", "EXE", "EXE", 'E', ModItems.electricalIngot);
+            this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXE", "EXE", "XXX", 'E', ModItems.electricalIngot);
+        }
+        if (ARPConfig.recipes == 1) {
+            this.addRecipe(electricalHelmet, "XXX", "EEE", "EXE", 'E', ModBlocks.electricalBlock);
+            this.addRecipe(electricalHelmet, "EEE", "EXE", "XXX", 'E', ModBlocks.electricalBlock);
+            this.addRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXE", "EEE", "EEE", 'E', ModBlocks.electricalBlock);
+            this.addRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEE", "EXE", "EXE", 'E', ModBlocks.electricalBlock);
+            this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXX", "EXE", "EXE", 'E', ModBlocks.electricalBlock);
+            this.addRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXE", "EXE", "XXX", 'E', ModBlocks.electricalBlock);
+        }
+
         // ===================================== Items =====================================
         this.addRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1), "LOL", "OSO", "LOL", 'S', new ItemStack(Items.NETHER_STAR, 1), 'O', new ItemStack(Blocks.OBSIDIAN), 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
         //this.addRecipe(new ItemStack(Blocks.TNT, 1), new Object[]{"X#X", "#X#", "X#X", 'X', Items.GUNPOWDER, '#', Blocks.SAND});

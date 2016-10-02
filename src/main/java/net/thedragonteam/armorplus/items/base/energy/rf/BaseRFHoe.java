@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.items.base.energy.rf;
 import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
@@ -18,21 +18,21 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Set;
 
-public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
+public class BaseRFHoe extends ItemHoe implements IEnergyContainerItem {
 
     protected int capacity;
     protected int maxReceive;
     protected int maxExtract;
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity) {
+    public BaseRFHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity) {
         this(material, name, effectiveOn, capacity, capacity, capacity);
     }
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxTransfer) {
+    public BaseRFHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxTransfer) {
         this(material, name, effectiveOn, capacity, maxTransfer, maxTransfer);
     }
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxReceive, int maxExtract) {
+    public BaseRFHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxReceive, int maxExtract) {
         super(material);
         setRegistryName(name);        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + name);     // Used for localization (en_US.lang)
@@ -48,23 +48,23 @@ public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
         return true;
     }
 
-    public BaseRFAxe setCapacity(int capacity) {
+    public BaseRFHoe setCapacity(int capacity) {
         this.capacity = capacity;
         return this;
     }
 
-    public BaseRFAxe setMaxTransfer(int maxTransfer) {
+    public BaseRFHoe setMaxTransfer(int maxTransfer) {
         setMaxReceive(maxTransfer);
         setMaxExtract(maxTransfer);
         return this;
     }
 
-    public BaseRFAxe setMaxReceive(int maxReceive) {
+    public BaseRFHoe setMaxReceive(int maxReceive) {
         this.maxReceive = maxReceive;
         return this;
     }
 
-    public BaseRFAxe setMaxExtract(int maxExtract) {
+    public BaseRFHoe setMaxExtract(int maxExtract) {
         this.maxExtract = maxExtract;
         return this;
     }
@@ -112,6 +112,11 @@ public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
 
     public int getMaxEnergyStored(ItemStack container) {
         return this.capacity;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return (1 - (double) this.getEnergyStored(stack) / (double) this.getMaxEnergyStored(stack));
     }
 
     @SideOnly(Side.CLIENT)

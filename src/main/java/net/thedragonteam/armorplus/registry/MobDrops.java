@@ -8,6 +8,8 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGuardian;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.SkeletonType;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.thedragonteam.core.util.LogHelper;
@@ -52,6 +54,16 @@ public class MobDrops {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.guardianScale, guardianScaleElderDropAmount);
             if (debugMode) {
                 LogHelper.info("Elder Guardian Dropped:" + ModItems.guardianScale.getRegistryName() + " x " + guardianScaleElderDropAmount);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void playerKilledWitherSkeleton(LivingDropsEvent event) {
+        if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).func_189771_df() == SkeletonType.WITHER) {
+            EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.witherBone, random.nextInt(max - min + 1) + min);
+            if (debugMode) {
+                LogHelper.info("Wither Skeleton Dropped: " + ModItems.witherBone.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
             }
         }
     }

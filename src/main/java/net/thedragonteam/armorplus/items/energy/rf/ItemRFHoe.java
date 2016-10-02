@@ -20,27 +20,26 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFAxe;
+import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFHoe;
 
 import java.util.List;
 import java.util.Set;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
-public class ItemRFAxe extends BaseRFAxe {
+public class ItemRFHoe extends BaseRFHoe {
 
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2, Blocks.WOODEN_SLAB, Blocks.DOUBLE_WOODEN_SLAB, Blocks.CHEST, Blocks.LADDER,
-            Blocks.CRAFTING_TABLE, Blocks.TRAPDOOR, Blocks.ACACIA_FENCE, Blocks.BIRCH_FENCE, Blocks.DARK_OAK_FENCE, Blocks.JUNGLE_FENCE, Blocks.OAK_FENCE, Blocks.SPRUCE_FENCE,
-            Blocks.ACACIA_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.LEAVES,
-            Blocks.LEAVES2, Blocks.BOOKSHELF, Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.NOTEBLOCK, Blocks.PUMPKIN, Blocks.MELON_BLOCK, Blocks.PLANKS, Blocks.WOODEN_PRESSURE_PLATE,
-            Blocks.ACACIA_STAIRS, Blocks.BIRCH_STAIRS, Blocks.SPRUCE_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.JUNGLE_STAIRS, Blocks.OAK_STAIRS);
+    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.ACTIVATOR_RAIL);
 
-    public ItemRFAxe() {
-        super(ToolMaterial.DIAMOND, "redstone_flux_axe", EFFECTIVE_ON, maxCapacityAxe, inputAxe, outputAxe);
+    public ItemRFHoe() {
+        super(ToolMaterial.DIAMOND, "redstone_flux_hoe", EFFECTIVE_ON, maxCapacityHoe, inputHoe, outputHoe);
         setMaxStackSize(1);
         canRepair = false;
         setMaxDamage(0);
@@ -58,9 +57,16 @@ public class ItemRFAxe extends BaseRFAxe {
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        this.extractEnergy(stack, outputAxe, false);
+        this.extractEnergy(stack, outputHoe, false);
         return true;
     }
+
+    @Override
+    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        this.extractEnergy(stack, outputHoe, false);
+        return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    }
+
 
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
@@ -95,15 +101,15 @@ public class ItemRFAxe extends BaseRFAxe {
 
     @Override
     public boolean canHarvestBlock(IBlockState state) {
-        return Items.DIAMOND_AXE.canHarvestBlock(state);
+        return Items.DIAMOND_HOE.canHarvestBlock(state);
     }
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputAxe) {
+        if (this.getEnergyStored(stack) < outputHoe) {
             return 0.5F;
         }
-        if (Items.WOODEN_AXE.getStrVsBlock(stack, state) > 1.0F) {
+        if (Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F) {
             return 5.5F;
         } else {
             return super.getStrVsBlock(stack, state);
@@ -116,17 +122,16 @@ public class ItemRFAxe extends BaseRFAxe {
         createTooltip(stack, tooltip);
     }
 
-
     private int createPoweredStack(ItemStack container, boolean simulate) {
         if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
             return 0;
         }
         //int energy = container.getTagCompound().getInteger("Energy");
         if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityAxe);
+            container.getTagCompound().setInteger("Energy", maxCapacityHoe);
         }
 
-        return maxCapacityAxe;
+        return maxCapacityHoe;
     }
 
     private void createTooltip(ItemStack stack, List<String> tooltip) {

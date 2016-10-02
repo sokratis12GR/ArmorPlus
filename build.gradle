@@ -28,7 +28,6 @@ repositories {
     }
 }
 
-
 version = mc_version + '-' + version_major + '.' + version_api + '.' + version_minor + '.' + version_patch + '.' + version_build
 group = package_group
 archivesBaseName = mod_id

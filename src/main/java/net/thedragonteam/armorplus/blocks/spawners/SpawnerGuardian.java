@@ -35,6 +35,7 @@ public class SpawnerGuardian extends SpawnerBase {
             EntityGuardian guardian = new EntityGuardian(world);
             guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
             world.spawnEntityInWorld(guardian);
+            world.destroyBlock(pos, true);
         }
         return true;
     }

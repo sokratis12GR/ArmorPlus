@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,12 +19,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.integration.TiC;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.registry.*;
+import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
+import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.core.util.LogHelper;
 
@@ -37,14 +40,17 @@ public class CommonProxy {
     private static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
 
     public void preInit(FMLPreInitializationEvent event) {
+        LogHelper.info("Begin PreInitialization");
         ARPEntities.init();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.preInit();
         }
+        MinecraftForge.EVENT_BUS.register(new MobDrops());
         LogHelper.info("Finished PreInitialization");
     }
 
     public void init(FMLInitializationEvent event) {
+        LogHelper.info("Begin Initialization");
         ARPTab.initialize();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.init();
@@ -53,7 +59,20 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
+        LogHelper.info("Begin PostInitialization");
+
         LogHelper.info("Finished PostInitialization");
+    }
+
+    public void registerEvents() {
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
+        MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
+
+        //Register to receive subscribed events
+        MinecraftForge.EVENT_BUS.register(this);
+
+        ARPAchievements.init();
+        ModRecipes.init();
     }
 
     public void registerOreDictEnties() {
@@ -80,6 +99,7 @@ public class CommonProxy {
         registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
         registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));
+        registerOre("rodRF", new ItemStack(ModItems.itemRFRod, 1));
     }
 
     /**

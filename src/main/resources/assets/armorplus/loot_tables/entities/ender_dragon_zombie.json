@@ -16,27 +16,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "armorplus:ender_dragon_helmet",
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "armorplus:ender_dragon_chestplate",
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "armorplus:ender_dragon_leggings",
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "armorplus:ender_dragon_boots",
-          "weight": 1
-        },
-        {
-          "type": "item",
-          "name": "armorplus:ender_dragon_battle_axe",
+          "name": "armorplus:ender_dragon_scale",
           "weight": 1
         }
       ]

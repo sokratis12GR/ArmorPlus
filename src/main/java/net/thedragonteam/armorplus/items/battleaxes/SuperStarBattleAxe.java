@@ -25,7 +25,7 @@ import static net.thedragonteam.core.util.TextHelper.localize;
 public class SuperStarBattleAxe extends BaseSword {
 
     public SuperStarBattleAxe() {
-        super(ModItems.swordSuperStarMaterial, "super_star_battle_axe");
+        super(ModItems.battleAxeSuperStarMaterial, "super_star_battle_axe");
     }
 
     @Override

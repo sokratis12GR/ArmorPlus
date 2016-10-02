@@ -105,6 +105,11 @@ public class BaseRF extends Item implements IEnergyContainerItem {
         return this.capacity;
     }
 
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return (1 - (double) this.getEnergyStored(stack) / (double) this.getMaxEnergyStored(stack));
+    }
+
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));

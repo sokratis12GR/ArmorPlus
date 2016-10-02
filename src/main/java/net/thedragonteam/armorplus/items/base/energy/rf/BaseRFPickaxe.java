@@ -18,21 +18,21 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Set;
 
-public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
+public class BaseRFPickaxe extends ItemAxe implements IEnergyContainerItem {
 
     protected int capacity;
     protected int maxReceive;
     protected int maxExtract;
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity) {
+    public BaseRFPickaxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity) {
         this(material, name, effectiveOn, capacity, capacity, capacity);
     }
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxTransfer) {
+    public BaseRFPickaxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxTransfer) {
         this(material, name, effectiveOn, capacity, maxTransfer, maxTransfer);
     }
 
-    public BaseRFAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxReceive, int maxExtract) {
+    public BaseRFPickaxe(ToolMaterial material, String name, Set<Block> effectiveOn, int capacity, int maxReceive, int maxExtract) {
         super(material);
         setRegistryName(name);        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + name);     // Used for localization (en_US.lang)
@@ -48,23 +48,23 @@ public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
         return true;
     }
 
-    public BaseRFAxe setCapacity(int capacity) {
+    public BaseRFPickaxe setCapacity(int capacity) {
         this.capacity = capacity;
         return this;
     }
 
-    public BaseRFAxe setMaxTransfer(int maxTransfer) {
+    public BaseRFPickaxe setMaxTransfer(int maxTransfer) {
         setMaxReceive(maxTransfer);
         setMaxExtract(maxTransfer);
         return this;
     }
 
-    public BaseRFAxe setMaxReceive(int maxReceive) {
+    public BaseRFPickaxe setMaxReceive(int maxReceive) {
         this.maxReceive = maxReceive;
         return this;
     }
 
-    public BaseRFAxe setMaxExtract(int maxExtract) {
+    public BaseRFPickaxe setMaxExtract(int maxExtract) {
         this.maxExtract = maxExtract;
         return this;
     }
@@ -112,6 +112,11 @@ public class BaseRFAxe extends ItemAxe implements IEnergyContainerItem {
 
     public int getMaxEnergyStored(ItemStack container) {
         return this.capacity;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return (1 - (double) this.getEnergyStored(stack) / (double) this.getMaxEnergyStored(stack));
     }
 
     @SideOnly(Side.CLIENT)

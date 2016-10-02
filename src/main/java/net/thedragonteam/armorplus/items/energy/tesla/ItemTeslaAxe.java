@@ -87,5 +87,4 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
-
 }

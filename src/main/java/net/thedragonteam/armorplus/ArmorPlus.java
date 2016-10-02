@@ -9,7 +9,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -30,11 +29,11 @@ import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
-import net.thedragonteam.armorplus.registry.*;
-import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.registry.ModCompatibility;
+import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
 import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
-import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.core.config.ModConfigProcessor;
 import net.thedragonteam.core.config.ModFeatureParser;
 import net.thedragonteam.core.util.LogHelper;
@@ -60,7 +59,7 @@ public class ArmorPlus {
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
     // Updates every time a build is created, mostly used for dev versions, resets on MINOR changes
-    public static final int BUILD = 2;
+    public static final int BUILD = 3;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
@@ -126,43 +125,25 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
+        LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
 
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
-        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
-        logger.info("Version " + ArmorPlus.VERSION + " initializing...");
-        MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
-        //Register to receive subscribed events
-        MinecraftForge.EVENT_BUS.register(this);
-
-        ARPAchievements.init();
-        ModRecipes.init();
-
+        proxy.registerEvents();
         proxy.registerOreDictEnties();
+        proxy.init(event);
     }
 
     @SideOnly(Side.SERVER)
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
-
+        LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
 
-        //Initialization notification
-        logger.info("Version " + ArmorPlus.VERSION + " initializing...");
-
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
-        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.init"));
-        MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
-        //Register to receive subscribed events
-        MinecraftForge.EVENT_BUS.register(this);
-
-        ARPAchievements.init();
-        ModRecipes.init();
-
+        proxy.registerEvents();
         proxy.registerOreDictEnties();
         proxy.init(event);
     }
@@ -171,19 +152,19 @@ public class ArmorPlus {
     public void preInit(FMLPreInitializationEvent event) {
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
+
         ModItems.init();
         ModBlocks.init();
-        items = new ModItems();
         ModBlocks.register();
-        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.blocks"));
-        MinecraftForge.EVENT_BUS.register(new MobDrops());
+        LogHelper.info("Blocks Successfully Registered");
+
+        items = new ModItems();
 
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
 
         featureParser.registerFeatures();
 
-        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.preInit"));
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
