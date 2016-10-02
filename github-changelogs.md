@@ -5,7 +5,7 @@
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
     * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
-    * Added RF supports, Main Supposted Energy API
+    * Added RF supports, Main Supported Energy API
         * RF Tools/Weapons
     * Changed Steel Armor to support mainly RF and secondary Tesla
     * Added OreDict for some things
