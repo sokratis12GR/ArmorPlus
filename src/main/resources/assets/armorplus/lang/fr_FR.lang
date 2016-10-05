@@ -12,6 +12,17 @@ container.armorplus.armor_forge=Forge d'Armures
 container.armorplus.advanced_armor_forge=Forge d'Armures Avancée
 container.armorplus.inventory=Inventaire
 
+#RFTooltip
+tooltip.rf.showinfo=Press %s%s%s for more info.
+tooltip.rf.powerinfo=%s/%s RF
+tooltip.rf.cost.tool=Cost: %s RF/block
+tooltip.rf.cost.weap=Cost: %s RF/hit
+#TeslaTooltip
+tooltip.tesla.showinfo=Press %s%s%s for more info.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.cost.tool=Cost: %s Tesla/block
+tooltip.tesla.cost.hit=Cost: %s Tesla/hit
+
 #TiC
 modifier.firestorm.name=Tempête de Feu
 modifier.firestorm.desc=§oLa vrai Super Nova§r\nDégât de feu en bonus, mets tes enemies au feu.
@@ -294,13 +305,23 @@ item.lapis_arrow.name=Lapis Arrow
 item.redstone_arrow.name=Redstone Arrow
 item.lava_arrow.name=Lava Arrow
 
-#EnergyItems
+#TeslaItems
 item.armorplus.tesla_sword.name=Tesla Sword
 item.armorplus.tesla_pickaxe.name=Tesla Pickaxe
 item.armorplus.tesla_axe.name=Tesla Axe
 item.armorplus.tesla_rod.name=Tesla Rod
 item.armorplus.tesla_hoe.name=Tesla Hoe
 item.armorplus.tesla_shovel.name=Tesla Shovel
+
+#RedstoneFluxItems
+item.armorplus.redstone_flux_axe.name=Redstone Flux Axe
+item.armorplus.redstone_flux_rod.name=Redstone Flux Rod
+item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
+item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
+item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
+item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
+#Entities
+entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
 
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
