@@ -371,8 +371,9 @@ achievement.armorplus.craft_armor_forge=Welcome to ArmorPlus!
 achievement.armorplus.craft_armor_forge.desc=craft the Armor Forge from ArmorPlus
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Обновленный конфиг файл
-info.armorplus.console.load.blocks=Блоки успешно зарегестрированы
-info.armorplus.console.load.init=Начало инициализации
-info.armorplus.console.load.postInit=Начало пост-инициализации
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt имеет ошибку
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.blocks=Blocks Successfully Registered
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
