@@ -13,15 +13,15 @@ container.armorplus.advanced_armor_forge=Forge d'Armures Avancée
 container.armorplus.inventory=Inventaire
 
 #RFTooltip
-tooltip.rf.showinfo=Press %s%s%s for more info.
+tooltip.rf.showinfo=Press %s%s%s pour plus d'info.
 tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=Cost: %s RF/block
-tooltip.rf.cost.hit=Cost: %s RF/hit
+tooltip.rf.cost.tool=Cost: %s RF/bloc
+tooltip.rf.cost.hit=Cost: %s RF/coup
 #TeslaTooltip
-tooltip.tesla.showinfo=Press %s%s%s for more info.
+tooltip.tesla.showinfo=Press %s%s%s pour plus d'info.
 tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=Cost: %s Tesla/block
-tooltip.tesla.cost.hit=Cost: %s Tesla/hit
+tooltip.tesla.cost.tool=Cost: %s Tesla/bloc
+tooltip.tesla.cost.hit=Cost: %s Tesla/coup
 
 #TiC
 modifier.firestorm.name=Tempête de Feu
@@ -30,7 +30,7 @@ modifier.firestorm.extra=Dégât du Feu: +%s
 modifier.firestorm.extra2=Durée du Combustion: %ss
 modifier.ultimatemod.name=Étendu
 modifier.ultimatemod.desc=Ajouter +1 Modificateur
-material.lava_crystal.name=Crystale de Lave
+material.lava_crystal.name=Cristal de Lave
 
 #Tile
 tile.armorplus.block_energy_creative.name=Cellule d'Énergie Créative
@@ -195,24 +195,24 @@ item.armorplus.slime_leggings.name=Jambières de Slime
 item.armorplus.slime_boots.name=Bottes de Slime
 
 #ElectricalArmor
-item.armorplus.electrical_helmet.name=Electrical Helmet
-item.armorplus.electrical_chestplate.name=Electrical Chestplate
-item.armorplus.electrical_leggings.name=Electrical Leggings
-item.armorplus.electrical_boots.name=Electrical Boots
+item.armorplus.electrical_helmet.name=Casque Électrique
+item.armorplus.electrical_chestplate.name=Plastron Électrique
+item.armorplus.electrical_leggings.name=Jambières Électriques
+item.armorplus.electrical_boots.name=Bottes Électriques
 
 #SteelArmor
-item.armorplus.steel_helmet.name=Steel Helmet
-item.armorplus.steel_chestplate.name=Steel Chestplate
-item.armorplus.steel_leggings.name=Steel Leggings
-item.armorplus.steel_boots.name=Steel Boots
+item.armorplus.steel_helmet.name=Casque en Acier
+item.armorplus.steel_chestplate.name=Plastron en Acier
+item.armorplus.steel_leggings.name=Jambières en Acier
+item.armorplus.steel_boots.name=Bottes en Acier
 
 #Dev
-item.armorplus.dev_helmet.name=Dev Helmet
-item.armorplus.dev_chestplate.name=Dev Chestplate
-item.armorplus.dev_leggings.name=Dev Leggings
-item.armorplus.dev_boots.name=Dev Boots
-item.armorplus.dev_tool.name=Dev Tool
-item.armorplus.dev_item.name=NBT Item
+item.armorplus.dev_helmet.name=Casque du Dev
+item.armorplus.dev_chestplate.name=Plastron du Dev
+item.armorplus.dev_leggings.name=Jambières du Dev
+item.armorplus.dev_boots.name=Bottes du Dev
+item.armorplus.dev_tool.name=Outil du Dev
+item.armorplus.dev_item.name=Objet NBT
 item.armorplus.the_dragon_team.name=The Dragon Team
 item.armorplus.modded_city.name=Modded City
 item.armorplus.jon_bams.name=Jon Bams
@@ -224,114 +224,112 @@ item.armorplus.test_1.name=Test 1
 item.armorplus.test_2.name=Test 2
 
 #Items
-item.armorplus.chainmail.name=Chainmail
-item.armorplus.reinforcing_material.name=Reinforcing Material
-item.armorplus.lava_crystal_normal.name=Lava Crystal
-item.armorplus.lava_crystal_charged.name=Charged Lava Crystal
-item.armorplus.steel_ingot.name=Steel Ingot
-item.armorplus.electrical_ingot.name=Electrical Ingot
+item.armorplus.chainmail.name=Mailles
+item.armorplus.reinforcing_material.name=Matériel de Renforcement
+item.armorplus.lava_crystal_normal.name=Cristal de Lave
+item.armorplus.lava_crystal_charged.name=Cristal de Lave Chargé
+item.armorplus.steel_ingot.name=Lingot d'Acier
+item.armorplus.electrical_ingot.name=Lingot Électrique
 
 #Food Items
-item.armorplus.redstone_apple.name=Redstone Apple
+item.armorplus.redstone_apple.name=Pomme de Redstone
 
 #Special Items
-item.armorplus.wither_bone.name=Wither Bone
-item.armorplus.the_ultimate_material.name=The Ultimate Material
-item.armorplus.ender_dragon_scale.name=Ender Dragon Scale
-item.armorplus.guardian_scale.name=Guardian Scale
-item.armorplus.the_gift_of_the_gods.name=The Gift Of The Gods
-item.armorplus.the_ultimate_helmet_left.name=The Ultimate Helmet Left
-item.armorplus.the_ultimate_helmet_middle.name=The Ultimate Helmet Middle
-item.armorplus.the_ultimate_helmet_right.name=The Ultimate Helmet Right
-item.armorplus.the_ultimate_chestplate_left.name=The Ultimate Chestplate Left
-item.armorplus.the_ultimate_chestplate_middle.name=The Ultimate Chestplate Middle
-item.armorplus.the_ultimate_chestplate_right.name=The Ultimate Chestplate Right
-item.armorplus.the_ultimate_leggings_left.name=The Ultimate Legging Left
-item.armorplus.the_ultimate_leggings_middle.name=The Ultimate Legging Middle
-item.armorplus.the_ultimate_leggings_right.name=The Ultimate Legging Right
-item.armorplus.the_ultimate_boots_left.name=The Ultimate Boots Left
-item.armorplus.the_ultimate_boots_middle.name=The Ultimate Boots Middle
-item.armorplus.the_ultimate_boots_right.name=The Ultimate Boots Right
+item.armorplus.wither_bone.name=Os du Wither
+item.armorplus.the_ultimate_material.name=Le Matériel Ultime
+item.armorplus.ender_dragon_scale.name=Écaille du Dragon de l'Ender
+item.armorplus.guardian_scale.name=Écaille du Guardien
+item.armorplus.the_gift_of_the_gods.name=Le Cadeau des dieux
+item.armorplus.the_ultimate_helmet_left.name=Morceau de Gauche du Casque Ultime
+item.armorplus.the_ultimate_helmet_middle.name=Morceau du Milieu du Casque Ultime
+item.armorplus.the_ultimate_helmet_right.name=Morceau Droit du Casque Ultime
+item.armorplus.the_ultimate_chestplate_left.name=Morceau de Gauche du Plastron Ultime
+item.armorplus.the_ultimate_chestplate_middle.name=Morceau du Milieu du Plastron Ultime
+item.armorplus.the_ultimate_chestplate_right.name=Morceau Droit du Plastron Ultime
+item.armorplus.the_ultimate_leggings_left.name=Morceau de Gauche des Jambières Ultimes
+item.armorplus.the_ultimate_leggings_middle.name=Morceau du Milieu des Jambières Ultimes
+item.armorplus.the_ultimate_leggings_right.name=Morceau Droit des Jambières Ultimes
+item.armorplus.the_ultimate_boots_left.name=Morceau de Gauche des Bottes Ultimes
+item.armorplus.the_ultimate_boots_middle.name=Morceau du Milieu des Bottes Ultimes
+item.armorplus.the_ultimate_boots_right.name=Morceau Droit des Bottes Ultimes
 
 #Blocks
-tile.armorplus.compressed_obsidian.name=Compressed Obsidian
-tile.armorplus.block_lava_crystal.name=Lava Crystal Block
-tile.armorplus.steel_block.name=Block of Steel
-tile.armorplus.electrical_block.name=Electrical Block
-tile.armorplus.armor_forge.name=Armor Forge
-tile.armorplus.advanced_armor_forge.name=Advanced Armor Forge
-tile.armorplus.lava_cactus.name=Lava Cactus
-tile.armorplus.lava_nether_brick.name=Lava Nether Brick
-tile.armorplus.white_stone_brick.name=White Stone Brick
-tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
-tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
+tile.armorplus.compressed_obsidian.name=Obsidienne Comprimée
+tile.armorplus.block_lava_crystal.name=Bloc de Cristal de Lave
+tile.armorplus.steel_block.name=Bloc d'Acier
+tile.armorplus.electrical_block.name=Bloc Électrique
+tile.armorplus.armor_forge.name=Forge d'Armure
+tile.armorplus.advanced_armor_forge.name=Forge d'Armures Avancée
+tile.armorplus.lava_cactus.name=Cactus de Lave
+tile.armorplus.lava_nether_brick.name=Brique de Lave du Nether
+tile.armorplus.white_stone_brick.name=Pierre Blanche Taillée
+tile.armorplus.white_stone_brick_tower.name=Tour en Pierre Blanche Taillée
+tile.armorplus.white_stone_brick_corner.name=Coin en Pierre Blanche Taillée
 
 #Swords
-item.armorplus.coal_sword.name=Coal Sword
-item.armorplus.lapis_sword.name=Lapis Sword
-item.armorplus.redstone_sword.name=Redstone Sword
-item.armorplus.emerald_sword.name=Emerald Sword
-item.armorplus.obsidian_sword.name=Obsidian Sword
-item.armorplus.lava_sword.name=Lava Sword
-item.armorplus.super_star_sword.name=Super Star Sword
-item.armorplus.guardian_sword.name=Guardian Sword
-item.armorplus.ender_dragon_sword.name=Ender Dragon Sword
+item.armorplus.coal_sword.name=Épée en Charbon
+item.armorplus.lapis_sword.name=Épée en Lapis
+item.armorplus.redstone_sword.name=Épée en Redstone
+item.armorplus.emerald_sword.name=Épée en Émeraude
+item.armorplus.obsidian_sword.name=Épée en Obsidienne
+item.armorplus.lava_sword.name=Épée en Lave
+item.armorplus.super_star_sword.name=Épée en Étoile Formidable
+item.armorplus.guardian_sword.name=Épée du Guardien
+item.armorplus.ender_dragon_sword.name=Épée du Dragon de l'Ender
 
 #BattleAxes
-item.armorplus.coal_battle_axe.name=Coal Battle Axe
-item.armorplus.lapis_battle_axe.name=Lapis Battle Axe
-item.armorplus.redstone_battle_axe.name=Redstone Battle Axe
-item.armorplus.emerald_battle_axe.name=Emerald Battle Axe
-item.armorplus.obsidian_battle_axe.name=Obsidian Battle Axe
-item.armorplus.lava_battle_axe.name=Lava Battle Axe
-item.armorplus.super_star_battle_axe.name=Super Star Battle Axe
-item.armorplus.guardian_battle_axe.name=Guardian Battle Axe
-item.armorplus.ender_dragon_battle_axe.name=Ender Dragon Battle Axe
+item.armorplus.coal_battle_axe.name=Hache de Guerre en Charbon
+item.armorplus.lapis_battle_axe.name=Hache de Guerre en Lapis
+item.armorplus.redstone_battle_axe.name=Hache de Guerre en Redstone
+item.armorplus.emerald_battle_axe.name=Hache de Guerre en Émeraude
+item.armorplus.obsidian_battle_axe.name=Hache de Guerre en Obsidienne
+item.armorplus.lava_battle_axe.name=Hache de Guerre en Lave
+item.armorplus.super_star_battle_axe.name=Hache de Guerre en Étoile Formidable
+item.armorplus.guardian_battle_axe.name=Hache de Guerre du Guardien
+item.armorplus.ender_dragon_battle_axe.name=Hache de Guerre du Dragon de l'Ender
 
 #Bows
-item.armorplus.coal_bow.name=Coal Bow
-item.armorplus.lapis_bow.name=Lapis Bow
-item.armorplus.redstone_bow.name=Redstone Bow
-item.armorplus.emerald_bow.name=Emerald Bow
-item.armorplus.obsidian_bow.name=Obsidian Bow
-item.armorplus.lava_bow.name=Lava Bow
-item.armorplus.super_star_bow.name=Super Star Bow
-item.armorplus.guardian_bow.name=Guardian Bow
-item.armorplus.ender_dragon_bow.name=Ender Dragon Bow
+item.armorplus.coal_bow.name=Arc en Charbon
+item.armorplus.lapis_bow.name=Arc en Lapis
+item.armorplus.redstone_bow.name=Arc en Redstone
+item.armorplus.emerald_bow.name=Arc en Émeraude
+item.armorplus.obsidian_bow.name=Arc en Obsidienne
+item.armorplus.lava_bow.name=Arc en Lave
+item.armorplus.super_star_bow.name=Arc en Étoile Formidable
+item.armorplus.guardian_bow.name=Arc du Guardien
+item.armorplus.ender_dragon_bow.name=Arc du Dragon de l'Ender
 
 #Arrows
-item.coal_arrow.name=Coal Arrow
-item.lapis_arrow.name=Lapis Arrow
-item.redstone_arrow.name=Redstone Arrow
-item.lava_arrow.name=Lava Arrow
+item.coal_arrow.name=Flèche en Charbon
+item.lapis_arrow.name=Flèche en Lapis
+item.redstone_arrow.name=Flèche en Redstone
+item.lava_arrow.name=Flèche en Lave
 
 #TeslaItems
-item.armorplus.tesla_sword.name=Tesla Sword
-item.armorplus.tesla_pickaxe.name=Tesla Pickaxe
-item.armorplus.tesla_axe.name=Tesla Axe
-item.armorplus.tesla_rod.name=Tesla Rod
-item.armorplus.tesla_hoe.name=Tesla Hoe
-item.armorplus.tesla_shovel.name=Tesla Shovel
+item.armorplus.tesla_sword.name=Épée à Tesla
+item.armorplus.tesla_pickaxe.name=Pioche à Tesla
+item.armorplus.tesla_axe.name=Hache à Tesla
+item.armorplus.tesla_rod.name=Baguette à Tesla
+item.armorplus.tesla_hoe.name=Houe à Tesla
+item.armorplus.tesla_shovel.name=Pelle à Tesla
 
 #RedstoneFluxItems
-item.armorplus.redstone_flux_axe.name=Redstone Flux Axe
-item.armorplus.redstone_flux_rod.name=Redstone Flux Rod
-item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
-item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
-item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
-item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
-#Entities
-entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
+item.armorplus.redstone_flux_axe.name=Hache à Redstone Flux
+item.armorplus.redstone_flux_rod.name=Baguette à Redstone Flux
+item.armorplus.redstone_flux_sword.name=Épée à Redstone Flux
+item.armorplus.redstone_flux_pickaxe.name=Pioche à Redstone Flux
+item.armorplus.redstone_flux_hoe.name=Houe à Redstone Flux
+item.armorplus.redstone_flux_shovel.name=Pelle à Redstone Flux
 
 #Entities
-entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
+entity.armorplus.ender_dragon_zombie.name=Zombie du Dragon de l'Ender
 
 #KeyBinds
-key.nightVision=Toggle NightVision from The Ultimate Armor
+key.nightVision=Changer à la Vision Nocturne de l'Armure Ultime
 key.categories.armorplus=ArmorPlus
 
 #Spawners
-tile.armorplus.spawner_guardian.name=Spawner Guardian
+tile.armorplus.spawner_guardian.name=Générateurs de Guardiens
 
 #Achievements
 achievement.armorplus.craft_coal_armor=La Vision d'une Chauve-Souris!
