@@ -1,4 +1,4 @@
-**ArmorPlus 1.10.2-7.0.1.0.0**
+**ArmorPlus 1.10.2-7.0.1.0.5**
 ============================
 ####The Energized Tinkering Update
 ######Entire Changelog
