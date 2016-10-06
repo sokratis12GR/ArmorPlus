@@ -58,11 +58,11 @@ public class ArmorPlus {
     public static final int MINOR = 1;
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
-    // Updates every time a build is created, mostly used for dev versions, resets on MINOR changes
-    public static final int BUILD = 4;
+    // Updates every time a build is created, mostly used for dev versions and final versions for releases after for each Minor update, resets on MINOR changes
+    public static final int BUILD = 5;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.2.1.49";
     public static final String LIB_VERSION = "1.10.2-1.0.3.0";
     public static final String MODID = "armorplus";

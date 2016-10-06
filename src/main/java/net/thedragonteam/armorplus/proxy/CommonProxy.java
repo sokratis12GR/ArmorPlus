@@ -85,8 +85,8 @@ public class CommonProxy {
         registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
         registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
         registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
-        registerOre("armorforge", new ItemStack(ModBlocks.armorForge, 1));
-        registerOre("advarmorforge", new ItemStack(ModBlocks.advancedArmorForge, 1));
+        registerOre("armorForge", new ItemStack(ModBlocks.armorForge, 1));
+        registerOre("armorForgeAdv", new ItemStack(ModBlocks.advancedArmorForge, 1));
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
         registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
@@ -94,7 +94,7 @@ public class CommonProxy {
         registerOre("ingotChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
         //Materials
         registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
-        registerOre("witherbone", new ItemStack(ModItems.witherBone, 1));
+        registerOre("witherBone", new ItemStack(ModItems.witherBone, 1));
         registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));

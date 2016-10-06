@@ -18,7 +18,7 @@ container.armorplus.inventory=Инвентарь
 tooltip.rf.showinfo=Нажмите %s%s%s для дополнительной информации.
 tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/блок
-tooltip.rf.cost.weap=Cost: %s RF/удар
+tooltip.rf.cost.hit=Cost: %s RF/удар
 #TeslaTooltip
 tooltip.tesla.showinfo=Нажмите %s%s%s для дополнительной информации.
 tooltip.tesla.powerinfo=%s/%s Tesla
