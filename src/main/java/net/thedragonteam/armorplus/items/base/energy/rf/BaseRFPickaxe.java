@@ -44,6 +44,16 @@ public class BaseRFPickaxe extends ItemAxe implements IEnergyContainerItem {
     }
 
     @Override
+    public boolean isItemTool(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability(ItemStack stack) {
+        return 30;
+    }
+
+    @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }

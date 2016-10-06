@@ -6,6 +6,9 @@
 * **{Translations}**
 	* Updated French Translation of ArmorPlus (Thanks to ImmortalPharaoh7)
 	* Added Russian Translation of ArmorPlus (Thanks to FTB_lag)
+* **{Features Added/Removed/Changed}**
+    * Made the Energy Items to be able to be enchanted
+    * Lava Crystal & Charged Lava Crystal are funally registered as a fuel source
 ################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
 * **{Dependancies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!

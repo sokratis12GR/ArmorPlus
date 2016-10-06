@@ -64,6 +64,11 @@ public class BaseTeslaHoe extends ItemHoe {
     }
 
     @Override
+    public boolean isItemTool(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ARPTeslaUtils.usePower(stack, cost);
         return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);

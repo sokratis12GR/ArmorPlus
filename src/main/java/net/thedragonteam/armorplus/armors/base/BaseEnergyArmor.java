@@ -65,6 +65,11 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
         this.input = input;
     }
 
+    @Override
+    public boolean isItemTool(ItemStack stack) {
+        return true;
+    }
+
     /**
      * Tesla
      */

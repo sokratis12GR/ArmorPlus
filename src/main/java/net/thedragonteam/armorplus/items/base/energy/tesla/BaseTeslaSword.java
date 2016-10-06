@@ -55,6 +55,11 @@ public class BaseTeslaSword extends ItemSword {
         this.input = input;
     }
 
+    @Override
+    public boolean isItemTool(ItemStack stack) {
+        return true;
+    }
+
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));

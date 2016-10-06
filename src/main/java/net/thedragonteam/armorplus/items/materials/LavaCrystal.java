@@ -26,6 +26,7 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     public LavaCrystal() {
         this.setHasSubtypes(true);
+        GameRegistry.registerFuelHandler(this);
         setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_crystal");     // Used for localization (en_US.lang)
         GameRegistry.register(this);
@@ -33,15 +34,16 @@ public class LavaCrystal extends Item implements IFuelHandler {
         setMaxDamage(0);
     }
 
-    @Override
     public int getBurnTime(ItemStack fuel) {
-        switch (fuel.getItemDamage()) {
-            case 1:
-                return 22000;
-            case 0:
-                return 22000;
+        if (fuel.getItem() == this) {
+            switch (fuel.getItemDamage()) {
+                case 1:
+                    return 26000;
+                case 0:
+                    return 22000;
+            }
         }
-        return 22000;
+        return 0;
     }
 
     @Override

@@ -97,7 +97,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(ARPTeslaUtils.getStoredPower(stack)), Long.toString(ARPTeslaUtils.getMaxCapacity(stack))));
-            tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.weap", Long.toString(outputSword)));
+            tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.hit", Long.toString(outputSword)));
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }

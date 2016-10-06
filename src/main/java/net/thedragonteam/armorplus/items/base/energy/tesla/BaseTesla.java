@@ -75,7 +75,6 @@ public class BaseTesla extends Item {
         this.input = input;
     }
 
-
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
