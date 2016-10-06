@@ -1,3 +1,56 @@
+**ArmorPlus 1.10.2-7.0.1.0.0**
+============================
+####The Energized Tinkering Update
+######Entire Changelog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Translations}**
+	* Updated French Translation of ArmorPlus (Thanks to ImmortalPharaoh7)
+	* Added Russian Translation of ArmorPlus (Thanks to FTB_lag)
+################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
+* **{Dependancies}**
+    * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
+################################ Changes (dev version 1.10.2-7.0.1.0.3-dev )################################
+* **{Dependancies}**
+    * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
+* **{Features Added/Removed/Changed}**
+    * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
+    * Added RF supports, Main Supported Energy API
+        * RF Tools/Weapons
+    * Changed Steel Armor to support mainly RF and secondary Tesla
+    * Added OreDict for some things
+    * Mob drops
+        * Made the Wither skeleton to drop 0-1 wither bones on death
+    * Removed Creative Power Cell (Temporaly, maybe)
+* **{Code Changed/Added/Removed}**
+    * Made BaseEnergyArmor class confusing, then made it to no longer be
+    * Added a lot of base classes for all types of items/weaps supported by Energy APIs
+    * Changed Tesla tools/weapons tooltips to be more accurate using own mathod rather than the premade from Tesla
+################################ Changes (dev version 1.10.2-7.0.1.0.2-dev )################################
+* **{Bugs Fixed}**
+    * Fixed Guardian Armor's stats and achievements not working
+    * Fixed a server Crash
+* **{Code Changed/Added/Removed}**
+    * Removed TiC.postInit from Common Proxy
+################################ Changes (dev version 1.10.2-7.0.1.0.1-dev )################################
+* **{Changed Format For Dev Versions}**
+    * <mcversion>-<major>.<api>.<minor>.<patch>.<build>-dev
+* **{Bugs Fixed}**
+    * Crash using 3.11.0.269 and later version of JEI
+* **{Features Added/Removed/Changed}**
+    * Added Tinkers Integration
+        * Added Modifiers
+            * Charged Lava Crystal + Brick = Firestorm
+            * The Ultimate Material + Tool/Weapon = + 1 Modifier (max uses 1)
+        * Added Materials
+            * Lava Crystal material
+    * Blocks Added
+        * WIP Spawners
+    * Mobs Added
+        * WIP Mini Boss Guardian
+* **{Code Changed/Added/Removed}**
+    * Cleaned Up some code from Main Mod file, like Ore Dicts moved to common proxy
+    * Added an empty class ServerProxy - just because it should be here
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.4-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
