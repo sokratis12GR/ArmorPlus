@@ -13,12 +13,16 @@ container.armorplus.armor_forge=Armor Forge
 container.armorplus.advanced_armor_forge=Advanced Armor Forge
 container.armorplus.inventory=Inventory
 
-#RFTooltip
+#Tooltip
+tooltip.shift.showinfo=Press %s%s%s for more info.
+
+##RFTooltip
 tooltip.rf.showinfo=Press %s%s%s for more info.
 tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/block
 tooltip.rf.cost.hit=Cost: %s RF/hit
-#TeslaTooltip
+
+##TeslaTooltip
 tooltip.tesla.showinfo=Press %s%s%s for more info.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/block
@@ -321,6 +325,7 @@ item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
 item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
 item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
 item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
+
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
 
@@ -330,6 +335,7 @@ key.categories.armorplus=ArmorPlus
 
 #Spawners
 tile.armorplus.spawner_guardian.name=Spawner Guardian
+tile.armorplus.spawner_ender_dragon_zombie.name=Spawner Ender Dragon Zombie
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!
@@ -368,6 +374,8 @@ achievement.armorplus.craft_chicken_armor=Its time to go Faster!
 achievement.armorplus.craft_chicken_armor.desc=craft a Chicken Armor Piece
 achievement.armorplus.craft_armor_forge=Welcome to ArmorPlus!
 achievement.armorplus.craft_armor_forge.desc=craft the Armor Forge from ArmorPlus
+achievement.armorplus.armorplus=sokratis12GR
+achievement.armorplus.armorplus.desc=Created ArmorPlus
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.config.refresh=Refreshing configuration file

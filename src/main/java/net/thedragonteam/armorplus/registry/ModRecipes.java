@@ -101,36 +101,35 @@ public class ModRecipes {
     public static void addShapedRecipes() {
 
         ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
-        GameRegistry.addRecipe(new ItemStack(ModItems.lavaCrystal, 1, 1), "RGR", "GAG", "RGR", 'R', Items.REDSTONE, 'G', Items.GLOWSTONE_DUST, 'A', ModItems.lavaCrystal);
 
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.advancedArmorForge), "LLL", "CAC", "CCC", 'C', new ItemStack(ModItems.lavaCrystal, 1, 1), 'L', Blocks.REDSTONE_BLOCK, 'A', ModBlocks.armorForge);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', Blocks.COAL_BLOCK, 'L', LAPIS_LAZULI, 'C', ModItems.lavaCrystal));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.advancedArmorForge), "LLL", "CAC", "CCC", 'C', "gemChargedLavaCrystal", 'L', "blockRedstone", 'A', "armorForge"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFRod, 1), "XTX", "TST", "XTX", 'T', Items.REDSTONE, 'S', Items.STICK);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFAxe, 1), "TTX", "TSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFShovel, 1), "XTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFHoe, 1), "TTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFHoe, 1), "XTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFSword, 1), "XTX", "XTX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
-        GameRegistry.addRecipe(new ItemStack(ModItems.itemRFPickaxe, 1), "TTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemRFRod);
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFRod, 1), "XTX", "TST", "XTX", 'T', "dustRedstone", 'S', Items.STICK));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFAxe, 1), "TTX", "TSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFShovel, 1), "XTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFHoe, 1), "TTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFHoe, 1), "XTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFSword, 1), "XTX", "XTX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFPickaxe, 1), "TTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
 
         if (Loader.isModLoaded("tesla")) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaRod, 1), "XTX", "TST", "XTX", 'T', LAPIS_LAZULI, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaShovel, 1), "XTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "TTX", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "XTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaSword, 1), "XTX", "XTX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaAxe, 1), "TTX", "TSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
-            GameRegistry.addRecipe(new ItemStack(ModItems.itemTeslaPickaxe, 1), "TTT", "XSX", "XSX", 'T', ModItems.steelIngot, 'S', ModItems.itemTeslaRod);
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaRod, 1), "XTX", "TST", "XTX", 'T', "gemLapis", 'S', Items.STICK));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaShovel, 1), "XTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "TTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "XTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaSword, 1), "XTX", "XTX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaAxe, 1), "TTX", "TSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaPickaxe, 1), "TTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
         }
 
         if (recipes == 0 && enableArrowRecipes) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', Items.COAL, 'A', Items.ARROW);
             GameRegistry.addRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', LAPIS_LAZULI, 'A', Items.ARROW);
             GameRegistry.addRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', Items.REDSTONE, 'A', Items.ARROW);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'A', Items.ARROW);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'A', Items.ARROW);
         }
         if (recipes == 1 && enableArrowRecipes) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', Blocks.COAL_BLOCK, 'A', Items.ARROW);
@@ -162,14 +161,8 @@ public class ModRecipes {
     }
 
     public static void addShapelessRecipes() {
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.nbtItem, 1), Items.STICK);
-
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.nbtItem, 1), Items.STICK, Items.GLOWSTONE_DUST);
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), ModBlocks.compressedObsidian);
-        if (Loader.isModLoaded("tesla")) {
-            GameRegistry.addShapelessRecipe(new ItemStack(ModItems.steelIngot, 9), ModBlocks.steelBlock);
-            GameRegistry.addShapelessRecipe(new ItemStack(ModItems.steelIngot, 1), new ItemStack(Items.COAL, 1, 1), Items.IRON_INGOT, new ItemStack(ModItems.lavaCrystal, 1, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(ModItems.electricalIngot, 9), ModBlocks.electricalBlock);
-        }
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorPlusInfoBook, 1), Items.BOOK, Items.COAL);
         GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lavaCactus, 1), Blocks.CACTUS, new ItemStack(ModItems.lavaCrystal, 1, 1));
     }
@@ -185,7 +178,7 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ItemStack(ModItems.guardianSword, 1), "XGX", "XGX", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonSword, 1), "XEX", "XEX", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.superStarSword, 1), "XWX", "XWX", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STICK);
         }
         if (enableBattleAxesRecipes && recipes == 0) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Items.COAL, 'S', Items.STICK);
@@ -196,7 +189,7 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ItemStack(ModItems.guardianBattleAxe, 1), "GXG", "GSG", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1), "EXE", "ESE", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
             GameRegistry.addRecipe(new ItemStack(ModItems.superStarBattleAxe, 1), "WXW", "WSW", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STICK);
         }
         if (enableBowsRecipes && recipes == 0) {
             GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Items.COAL, 'S', Items.STRING);
@@ -215,8 +208,8 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "SEX", "SXE", "SEX", 'E', ModItems.enderDragonScale, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "XWS", "WXS", "XWS", 'W', ModItems.witherBone, 'S', Items.STRING);
             GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "SWX", "SXW", "SWX", 'W', ModItems.witherBone, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STRING);
+            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STRING);
 
         }
     }

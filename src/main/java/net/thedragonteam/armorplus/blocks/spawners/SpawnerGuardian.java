@@ -40,17 +40,6 @@ public class SpawnerGuardian extends SpawnerBase {
         return true;
     }
 
-//    @Override
-//    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-//        if (!worldIn.isRemote) {
-//            if (worldIn.isAnyPlayerWithinRangeAt(pos.getX(), pos.getY(), pos.getZ(), 100D)) {
-//                EntityGuardian guardian = new EntityGuardian(worldIn);
-//                guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
-//                worldIn.spawnEntityInWorld(guardian);
-//            }
-//        }
-//    }
-
     @Override
     public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
         if (!worldIn.isRemote) {

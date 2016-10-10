@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.proxy;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
@@ -100,6 +101,9 @@ public class CommonProxy {
         registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
         registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));
         registerOre("rodRF", new ItemStack(ModItems.itemRFRod, 1));
+        //Vanilla
+        registerOre("itemCoal", new ItemStack(Items.COAL, 1));
+        registerOre("itemCharcoal", new ItemStack(Items.COAL, 1, 1));
     }
 
     /**

@@ -20,6 +20,7 @@ import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
 import net.thedragonteam.armorplus.blocks.normal.LavaNetherBrick;
+import net.thedragonteam.armorplus.blocks.spawners.SpawnerEnderDragonZombie;
 import net.thedragonteam.armorplus.blocks.spawners.SpawnerGuardian;
 import net.thedragonteam.armorplus.blocks.v2.ElectricalBlock;
 import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
@@ -41,10 +42,9 @@ public class ModBlocks {
     public static Block lavaNetherBrick;
     public static Block whiteStoneBrickTower;
     public static Block whiteStoneBrickCorner;
-    //   public static Block blockCreativeEnergy;
     public static LavaCactus lavaCactus;
-
     public static Block spawnerGuardian;
+    public static Block spawnerEnderDragonZombie;
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
@@ -58,11 +58,8 @@ public class ModBlocks {
         whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
         whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
         whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
-        //  if (Loader.isModLoaded("tesla")) {
-        //     blockCreativeEnergy = new BlockCreativePower().setRegistryName("block_energy_creative");
-        //  }
-
         spawnerGuardian = new SpawnerGuardian().setRegistryName("spawner_guardian");
+        spawnerEnderDragonZombie = new SpawnerEnderDragonZombie().setRegistryName("spawner_ender_dragon_zombie");
     }
 
     public static void register() {
@@ -77,12 +74,8 @@ public class ModBlocks {
         registerBlock(whiteStoneBrick);
         registerBlock(whiteStoneBrickTower);
         registerBlock(whiteStoneBrickCorner);
-        //    if (Loader.isModLoaded("tesla")) {
-        //        registerBlock(blockCreativeEnergy);
-        //    }
-
         registerBlock(spawnerGuardian);
-
+        registerBlock(spawnerEnderDragonZombie);
     }
 
     public static void registerRenders() {
@@ -97,11 +90,8 @@ public class ModBlocks {
         registerRender(whiteStoneBrick);
         registerRender(whiteStoneBrickTower);
         registerRender(whiteStoneBrickCorner);
-        //      if (Loader.isModLoaded("tesla")) {
-        //       registerRender(blockCreativeEnergy);
-        //      }
-
         registerRender(spawnerGuardian);
+        registerRender(spawnerEnderDragonZombie);
     }
 
     public static void registerBlock(Block block) {

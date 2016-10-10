@@ -87,14 +87,14 @@ import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronBoots;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronChestplate;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronHelmet;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronLeggings;
-import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalBoots;
-import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalChestplate;
-import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalHelmet;
-import net.thedragonteam.armorplus.armors.v2.electrical.ElectricalLeggings;
-import net.thedragonteam.armorplus.armors.v2.steel.SteelBoots;
-import net.thedragonteam.armorplus.armors.v2.steel.SteelChestplate;
-import net.thedragonteam.armorplus.armors.v2.steel.SteelHelmet;
-import net.thedragonteam.armorplus.armors.v2.steel.SteelLeggings;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalBoots;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalChestplate;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalHelmet;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalLeggings;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelBoots;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelChestplate;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelHelmet;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelLeggings;
 import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
@@ -149,7 +149,7 @@ public class ModItems {
             {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
     public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", ArmorPlus.MODID + ":" + "emerald_armor", 35, new int[]
-            {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+            {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
     public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", ArmorPlus.MODID + ":" + "lapis_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
@@ -385,6 +385,8 @@ public class ModItems {
     public static ItemRFHoe itemRFHoe;
     public static ItemRFShovel itemRFShovel;
 
+    public static ItemLaser itemLaser;
+    public static ItemSomething itemSomething;
 
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
@@ -393,6 +395,8 @@ public class ModItems {
     }
 
     public static void init() {
+        itemSomething = new ItemSomething();
+        itemLaser = new ItemLaser();
         itemRFShovel = new ItemRFShovel();
         itemRFHoe = new ItemRFHoe();
         itemRFAxe = new ItemRFAxe();
@@ -558,6 +562,8 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemSomething.initModel();
+        itemLaser.initModel();
         itemRFShovel.initModel();
         itemRFHoe.initModel();
         itemRFAxe.initModel();

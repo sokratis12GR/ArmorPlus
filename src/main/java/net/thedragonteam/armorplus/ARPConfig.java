@@ -66,7 +66,7 @@ public class ARPConfig {
 
     //EnderDragonZombie
     @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
-    public static boolean enableEnderDragonZombieSpawnEnd = true;
+    public static boolean enableEnderDragonZombieSpawnEnd = false;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieHealth", comment = "Set the Ender Dragon Zombie's Health")
     public static double enderDragonZombieHealth = 40.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieKnockbackResistance", comment = "Set the Ender Dragon Zombie's Knockback Resistance")

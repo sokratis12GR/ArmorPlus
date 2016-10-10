@@ -35,10 +35,12 @@ public class ARPAchievements {
             craftPigIronArmor,
             craftKnightSlimeArmor,
             welcomeToArmorPlus;
+    public static Achievement armorPlus;
     public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
     private static AchievementPage arpAchievementPage;
 
     public static void init() {
+        armorPlus = new AchievementARP("armorplus", -4, -4, ModItems.redstoneChestplate, AchievementList.OPEN_INVENTORY).setSpecial().initIndependentStat();
         welcomeToArmorPlus = new AchievementARP("craft_armor_forge", -2, -2, ModItems.armorPlusBook, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
         craftCoalArmor = new AchievementARP("craft_coal_armor", 0, 0, ModItems.coalHelmet, craftCoalArmor).setNormalCrafting();
         craftChickenArmor = new AchievementARP("craft_chicken_armor", 2, 2, ModItems.chickenBoots, craftCoalArmor).setNormalCrafting();

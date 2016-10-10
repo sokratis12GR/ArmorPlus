@@ -12,12 +12,8 @@ import net.thedragonteam.armorplus.api.crafting.advarmorforge.AdvancedArmorForge
 import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
 import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
 import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
-import net.thedragonteam.armorplus.compat.jei.advarmorforge.AdvArmorForgeRecipeCategory;
-import net.thedragonteam.armorplus.compat.jei.advarmorforge.AdvArmorForgeShapedRecipeHandler;
-import net.thedragonteam.armorplus.compat.jei.advarmorforge.AdvArmorForgeShapelessRecipeHandler;
-import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeRecipeCategory;
-import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapedRecipeHandler;
-import net.thedragonteam.armorplus.compat.jei.armorforge.ArmorForgeShapelessRecipeHandler;
+import net.thedragonteam.armorplus.compat.jei.advarmorforge.*;
+import net.thedragonteam.armorplus.compat.jei.armorforge.*;
 import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
 import net.thedragonteam.armorplus.container.ContainerArmorForge;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -47,8 +43,12 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         registry.addRecipeHandlers(
                 new ArmorForgeShapedRecipeHandler(),
                 new ArmorForgeShapelessRecipeHandler(guiHelper),
+                new ArmorForgeShapelessOreRecipeHandler(guiHelper),
+                new ArmorForgeShapedOreRecipeHandler(),
+                new AdvArmorForgeShapelessRecipeHandler(guiHelper),
                 new AdvArmorForgeShapedRecipeHandler(),
-                new AdvArmorForgeShapelessRecipeHandler(guiHelper)
+                new AdvArmorForgeShapelessOreRecipeHandler(guiHelper),
+                new AdvArmorForgeShapedOreRecipeHandler()
         );
 
         registry.addRecipeClickArea(GuiArmorForge.class, 88, 32, 28, 23, Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
@@ -62,6 +62,7 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.armorForge), Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.advancedArmorForge), Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE);
 
+        registry.addRecipes(ArmorForgeCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(ArmorForgeCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(AdvancedArmorForgeCraftingManager.getInstance().getRecipeList());
     }

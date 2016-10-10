@@ -127,7 +127,7 @@ public class ArmorPlus {
     public void initClient(FMLInitializationEvent event) {
         LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
-
+        syncConfig();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
@@ -140,12 +140,17 @@ public class ArmorPlus {
     public void initServer(FMLInitializationEvent event) {
         LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
-
+        syncConfig();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
         proxy.registerOreDictEnties();
         proxy.init(event);
+    }
+
+    public static void syncConfig() {
+        if (configuration.hasChanged())
+            configuration.save();
     }
 
     @EventHandler
