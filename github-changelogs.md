@@ -7,7 +7,10 @@
 	* Updated French Translation of ArmorPlus (Thanks to ImmortalPharaoh7)
 	* Added Russian Translation of ArmorPlus (Thanks to FTB_lag)
 * **{Features Added/Removed/Changed}**
+<<<<<<< HEAD
     * Removed unused Images & Models
+=======
+>>>>>>> bb8d913894fcfb1a6ea53fefbbc66b4c5fbae207
     * Made the Energy Items to be able to be enchanted
     * Lava Crystal & Charged Lava Crystal are funally registered as a fuel source
     * Added a special text color for ArmorPlus people
