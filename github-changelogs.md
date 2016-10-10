@@ -9,8 +9,6 @@
 * **{Features Added/Removed/Changed}**
 <<<<<<< HEAD
     * Removed unused Images & Models
-=======
->>>>>>> bb8d913894fcfb1a6ea53fefbbc66b4c5fbae207
     * Made the Energy Items to be able to be enchanted
     * Lava Crystal & Charged Lava Crystal are funally registered as a fuel source
     * Added a special text color for ArmorPlus people
@@ -186,7 +184,6 @@
     * More Cosmetic Items for special people
         * Twitch Logo Cosmetic
         * Beam Logo Cosmetic
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.2.0-dev**
 ============================
