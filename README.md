@@ -9,6 +9,14 @@ ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/sokratis
 
 Credits for people who helped translating the mod can be found **[here](https://github.com/TheDragonTeam/ArmorPlus/blob/1.10.2/src/main/resources/assets/armorplus/lang/Credits.md)**
 
+Mod Integrations
+---
+* **Tesla**
+* **RF**
+* **Tinkers' Construct**
+* **The One Probe**
+* **Just Enough Items**
+
 Mod's Official Wiki
 ---
 
