@@ -4,6 +4,8 @@
 
 **MinecraftForge Version**:
 
+**Minecraft Version**:
+
 **Client or Server?**:
 - [ ] Client
 - [ ] Server
