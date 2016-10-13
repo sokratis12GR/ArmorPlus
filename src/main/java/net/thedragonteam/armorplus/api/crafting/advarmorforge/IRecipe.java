@@ -35,4 +35,5 @@ public interface IRecipe {
     ItemStack getRecipeOutput();
 
     ItemStack[] getRemainingItems(InventoryCrafting inv);
+
 }

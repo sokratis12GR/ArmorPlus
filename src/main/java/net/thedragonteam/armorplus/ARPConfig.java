@@ -20,6 +20,12 @@ public class ARPConfig {
     public static int outputSteelArmor = 1;
     @ModConfigProperty(category = "EnergyItems", name = "maxCapacitySteelArmor", comment = "Set the max capacity that the item can hold")
     public static int maxCapacitySteelArmor = 3000;
+    @ModConfigProperty(category = "EnergyItems", name = "inputElectricalArmor", comment = "Set the amount of Energy that the item can input")
+    public static int inputElectricalArmor = 10;
+    @ModConfigProperty(category = "EnergyItems", name = "outputElectricalArmor", comment = "Set the amount of Energy that the item can output")
+    public static int outputElectricalArmor = 1;
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityElectricalArmor", comment = "Set the max capacity that the item can hold")
+    public static int maxCapacityElectricalArmor = 8000;
     //EnergyItems.Sword
     @ModConfigProperty(category = "EnergyItems", name = "inputSword", comment = "Set the amount of Energy that the item can input")
     public static int inputSword = 10;

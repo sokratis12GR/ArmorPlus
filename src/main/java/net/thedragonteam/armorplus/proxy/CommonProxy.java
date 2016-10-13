@@ -97,6 +97,7 @@ public class CommonProxy {
         registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
         registerOre("witherBone", new ItemStack(ModItems.witherBone, 1));
         registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
+        registerOre("materialUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
         registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
         registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
         registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));

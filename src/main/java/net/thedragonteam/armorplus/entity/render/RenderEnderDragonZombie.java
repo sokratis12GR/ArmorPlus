@@ -23,13 +23,13 @@ import javax.annotation.Nonnull;
  * ArmorPlus created by sokratis12GR on 8/21/2016.
  * - TheDragonTeam
  */
-public class RenderPowerfulZombie extends RenderBiped<EntityEnderDragonZombie> {
+public class RenderEnderDragonZombie extends RenderBiped<EntityEnderDragonZombie> {
 
     public static final Factory FACTORY = new Factory();
     public ModelBiped defaultModel;
     private ResourceLocation mobTexture = new ResourceLocation("armorplus:textures/entity/ender_dragon_zombie.png");
 
-    public RenderPowerfulZombie(RenderManager rendermanagerIn) {
+    public RenderEnderDragonZombie(RenderManager rendermanagerIn) {
         //Using Minecraft Zombie's Texture and Re-Texturing it
         super(rendermanagerIn, new ModelZombie(), 0.5F, 1.0F);
         LayerRenderer<?> layerrenderer = (LayerRenderer) this.layerRenderers.get(0);
@@ -53,7 +53,7 @@ public class RenderPowerfulZombie extends RenderBiped<EntityEnderDragonZombie> {
 
         @Override
         public Render<? super EntityEnderDragonZombie> createRenderFor(RenderManager manager) {
-            return new RenderPowerfulZombie(manager);
+            return new RenderEnderDragonZombie(manager);
         }
 
     }

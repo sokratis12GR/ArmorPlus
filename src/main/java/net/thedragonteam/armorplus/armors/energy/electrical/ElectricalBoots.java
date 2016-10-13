@@ -8,19 +8,22 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.armors.base.BaseArmor;
+import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
+
+import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
  * net.thedragonteam.armorplus.armors.energy.electrical
  * ArmorPlus created by sokratis12GR on 7/28/2016 9:19 AM.
  * - TheDragonTeam
  */
-public class ElectricalBoots extends BaseArmor {
+public class ElectricalBoots extends BaseElectricalArmor {
 
     public ElectricalBoots() {
-        super(ModItems.electricalArmor, 0, EntityEquipmentSlot.FEET, "electrical_boots");
+        super(0, EntityEquipmentSlot.FEET, "electrical_boots", 0, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+        setMaxDamage(0);
     }
 
     @Override

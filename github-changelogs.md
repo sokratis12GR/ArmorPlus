@@ -7,15 +7,20 @@
 	* Updated French Translation of ArmorPlus (Thanks to ImmortalPharaoh7)
 	* Added Russian Translation of ArmorPlus (Thanks to FTB_lag)
 * **{Features Added/Removed/Changed}**
+    * Tooltips on Armors now will only be displayed if LSHIFT is pressed
     * Removed unused Images & Models
     * Made the Energy Items to be able to be enchanted
     * Lava Crystal & Charged Lava Crystal are funally registered as a fuel source
     * Added a special text color for ArmorPlus people
-    * Made Emerald Armor weaker, (Now it has 1 Armor toughness rather than 2)
     * Armor Forge & Advanced Armor Forge
-        * Added the ability to add recipes to both armor forge (for modders and addon creators)
+        * Added the ability to add/remove recipes to both armor forge (for modders and addon creators)
         * Made them support OreDict
         * Fixed Functionality, and added support for Ore Dict recipes via JEI
+    * Made repair cost on the Lava Armor depend on gamemode via config (Easy = Lava Crystal, Expert = Charged Lava Crystal)
+* **{Bugs Fixed}**
+    * Fixed a bug with Obsidian Armor Configs and Effects being wrong
+    * Fixed a bug with Lapis Armor Configs and Effects being wrong
+    * Fixed Ender Dragon Zombie drops
 ################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
 * **{Dependancies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!

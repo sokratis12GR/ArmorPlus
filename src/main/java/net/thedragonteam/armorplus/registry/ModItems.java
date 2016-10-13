@@ -19,6 +19,14 @@ import net.thedragonteam.armorplus.armors.dev.DevBoots;
 import net.thedragonteam.armorplus.armors.dev.DevChestplate;
 import net.thedragonteam.armorplus.armors.dev.DevHelmet;
 import net.thedragonteam.armorplus.armors.dev.DevLeggings;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalBoots;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalChestplate;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalHelmet;
+import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalLeggings;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelBoots;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelChestplate;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelHelmet;
+import net.thedragonteam.armorplus.armors.energy.steel.SteelLeggings;
 import net.thedragonteam.armorplus.armors.origin.coal.CoalBoots;
 import net.thedragonteam.armorplus.armors.origin.coal.CoalChestplate;
 import net.thedragonteam.armorplus.armors.origin.coal.CoalHelmet;
@@ -87,14 +95,6 @@ import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronBoots;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronChestplate;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronHelmet;
 import net.thedragonteam.armorplus.armors.tconstruct.pigiron.PigIronLeggings;
-import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalBoots;
-import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalChestplate;
-import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalHelmet;
-import net.thedragonteam.armorplus.armors.energy.electrical.ElectricalLeggings;
-import net.thedragonteam.armorplus.armors.energy.steel.SteelBoots;
-import net.thedragonteam.armorplus.armors.energy.steel.SteelChestplate;
-import net.thedragonteam.armorplus.armors.energy.steel.SteelHelmet;
-import net.thedragonteam.armorplus.armors.energy.steel.SteelLeggings;
 import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
@@ -149,7 +149,7 @@ public class ModItems {
             {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
     public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", ArmorPlus.MODID + ":" + "emerald_armor", 35, new int[]
-            {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
+            {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
     public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", ArmorPlus.MODID + ":" + "lapis_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
@@ -166,10 +166,8 @@ public class ModItems {
     /* Steel Armor Not Powered */
     public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
             {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-    /* Steel Armor Powered */
-    public static ItemArmor.ArmorMaterial steelArmorPowered = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 30, new int[]
-            {3, 6, 7, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
+    /* Electrical Armor Not Powered */
     public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", ArmorPlus.MODID + ":" + "electrical_armor", 19, new int[]
             {3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 

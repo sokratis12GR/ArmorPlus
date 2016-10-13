@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
-import net.thedragonteam.armorplus.entity.render.RenderPowerfulZombie;
+import net.thedragonteam.armorplus.entity.render.RenderEnderDragonZombie;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonZombieSpawnEnd;
 
@@ -43,6 +43,6 @@ public class ARPEntities {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderPowerfulZombie.FACTORY);
+        RenderingRegistry.registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie.FACTORY);
     }
 }

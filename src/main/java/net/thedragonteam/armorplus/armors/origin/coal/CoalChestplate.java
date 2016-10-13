@@ -4,6 +4,11 @@
 
 package net.thedragonteam.armorplus.armors.origin.coal;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -36,14 +41,19 @@ public class CoalChestplate extends BaseArmor {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        if (ARPConfig.enableCoalCNightVision) {
-            tooltip.add("\2479Ability: " + "\247rNight Vision");
-            tooltip.add("\2473Use: " + "\247rEquip A Piece");
-        }
-        if (ARPConfig.enableFullCoalArmorEffect) {
-            tooltip.add("\2479Ability: " + "\247rNight Vision");
-            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-        }
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            if (ARPConfig.enableCoalCNightVision) {
+                tooltip.add("\2479Ability: " + "\247rNight Vision");
+                tooltip.add("\2473Use: " + "\247rEquip A Piece");
+            }
+            if (ARPConfig.enableFullCoalArmorEffect) {
+                tooltip.add("\2479Ability: " + "\247rNight Vision");
+                tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+            }
+        } else
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override

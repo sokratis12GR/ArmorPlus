@@ -106,8 +106,10 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        int maxUses = ARPConfig.maxUses + 1;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");
+            tooltip.add("\2479Max Uses: " + "\247r" + maxUses);
             tooltip.add("\2473Use: " + "\247rRight-Click");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));

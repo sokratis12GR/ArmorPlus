@@ -149,6 +149,13 @@ public class ArmorForgeCraftingManager {
     }
 
     /**
+     * Removes an IRecipe to the list of crafting recipes.
+     */
+    public void removeRecipe(IRecipe recipe) {
+        this.recipes.remove(recipe);
+    }
+
+    /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     @Nullable

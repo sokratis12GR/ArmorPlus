@@ -4,6 +4,11 @@
 
 package net.thedragonteam.armorplus.armors.origin.emerald;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -36,15 +41,20 @@ public class EmeraldHelmet extends BaseArmor {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
-        if (ARPConfig.enableEmeraldHHaste) {
-            tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
-            tooltip.add("\2473Use: " + "\247rEquip A Piece");
-        }
-        if (ARPConfig.enableFullEmeraldArmorEffect) {
-            tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
-            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-        }
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            int emeraldArmorEffectLevel = ARPConfig.emeraldArmorEffectlevel + 1;
+            if (ARPConfig.enableEmeraldHHaste) {
+                tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                tooltip.add("\2473Use: " + "\247rEquip A Piece");
+            }
+            if (ARPConfig.enableFullEmeraldArmorEffect) {
+                tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
+                tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+            }
+        } else
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.DARK_GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override

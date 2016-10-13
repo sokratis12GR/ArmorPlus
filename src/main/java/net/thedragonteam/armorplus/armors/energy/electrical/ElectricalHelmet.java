@@ -8,19 +8,22 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.armors.base.BaseArmor;
+import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
+
+import static net.thedragonteam.armorplus.ARPConfig.*;
 
 /**
  * net.thedragonteam.armorplus.armors.energy.electrical
  * ArmorPlus created by sokratis12GR on 7/28/2016 9:19 AM.
  * - TheDragonTeam
  */
-public class ElectricalHelmet extends BaseArmor {
+public class ElectricalHelmet extends BaseElectricalArmor {
 
     public ElectricalHelmet() {
-        super(ModItems.electricalArmor, 0, EntityEquipmentSlot.HEAD, "electrical_helmet");
+        super(0, EntityEquipmentSlot.HEAD, "electrical_helmet", 0, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+        setMaxDamage(0);
     }
 
     @Override

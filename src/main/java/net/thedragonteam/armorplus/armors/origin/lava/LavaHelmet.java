@@ -4,6 +4,11 @@
 
 package net.thedragonteam.armorplus.armors.origin.lava;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -35,14 +40,19 @@ public class LavaHelmet extends BaseArmor {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        if (ARPConfig.enableLavaHEffects) {
-            tooltip.add("\2479Ability: " + "\247rFire Resistance");
-            tooltip.add("\2473Use: " + "\247rEquip A Piece");
-        }
-        if (enableFullLavaArmorEffect) {
-            tooltip.add("\2479Ability: " + "\247rFire Resistance");
-            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-        }
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            if (ARPConfig.enableLavaHEffects) {
+                tooltip.add("\2479Ability: " + "\247rFire Resistance");
+                tooltip.add("\2473Use: " + "\247rEquip A Piece");
+            }
+            if (enableFullLavaArmorEffect) {
+                tooltip.add("\2479Ability: " + "\247rFire Resistance");
+                tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+            }
+        } else
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override
@@ -73,6 +83,12 @@ public class LavaHelmet extends BaseArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.lavaCrystal;
+        if (ARPConfig.recipes == 0) {
+            return repair.getItem() == ModItems.lavaCrystal;
+        }
+        if (ARPConfig.recipes == 1) {
+            return repair.getItem() == (new ItemStack(ModItems.lavaCrystal, 1, 1)).getItem();
+        }
+        return true;
     }
 }

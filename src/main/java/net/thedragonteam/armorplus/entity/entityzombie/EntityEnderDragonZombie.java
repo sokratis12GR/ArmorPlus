@@ -50,6 +50,7 @@ public class EntityEnderDragonZombie extends EntityMob {
         setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.enderDragonLeggings));
         setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.enderDragonBoots));
         setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.enderDragonBattleAxe));
+        dropEquipment(false, 0);
     }
 
     @Override
@@ -61,6 +62,21 @@ public class EntityEnderDragonZombie extends EntityMob {
     @Override
     public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nullable ItemStack stack) {
         super.setItemStackToSlot(slotIn, stack);
+    }
+
+    @Override
+    protected void dropEquipment(boolean wasRecentlyHit, int lootingModifier) {
+        super.dropEquipment(false, lootingModifier);
+    }
+
+    @Override
+    public void setDropChance(EntityEquipmentSlot slotIn, float chance) {
+        super.setDropChance(slotIn, 0);
+    }
+
+    @Override
+    public void setDropItemsWhenDead(boolean dropWhenDead) {
+        super.setDropItemsWhenDead(false);
     }
 
     @Override

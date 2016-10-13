@@ -44,20 +44,20 @@ import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
 })
-public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
+public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
     private int power;
     private int maxCapacity;
     private int output;
     private int input;
 
-    public BaseEnergyArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
+    public BaseSteelArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
         super(ModItems.steelArmorNotPowered, armorPreffix, slot);
         setMaxStackSize(1);
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.tabArmorplusTesla);
+        setCreativeTab(ArmorPlus.tabArmorplusRF);
         setMaxStackSize(1);
         this.power = power;
         this.maxCapacity = maxCapacity;
@@ -97,7 +97,7 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
         return maxCapacity;
     }
 
-    public BaseEnergyArmor setCapacity(int capacity) {
+    public BaseSteelArmor setCapacity(int capacity) {
         this.maxCapacity = capacity;
         return this;
     }
@@ -195,18 +195,18 @@ public class BaseEnergyArmor extends ItemArmor implements ITeslaConsumer, ITesla
         return maxCapacity;
     }
 
-    public BaseEnergyArmor setMaxTransfer(int maxTransfer) {
+    public BaseSteelArmor setMaxTransfer(int maxTransfer) {
         setMaxReceive(maxTransfer);
         setMaxExtract(maxTransfer);
         return this;
     }
 
-    public BaseEnergyArmor setMaxReceive(int maxReceive) {
+    public BaseSteelArmor setMaxReceive(int maxReceive) {
         this.input = maxReceive;
         return this;
     }
 
-    public BaseEnergyArmor setMaxExtract(int maxExtract) {
+    public BaseSteelArmor setMaxExtract(int maxExtract) {
         this.output = maxExtract;
         return this;
     }
