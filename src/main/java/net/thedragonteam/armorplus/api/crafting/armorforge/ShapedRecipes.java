@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.api.crafting.armorforge;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nullable;
 
@@ -51,7 +52,7 @@ public class ShapedRecipes implements IRecipe {
 
         for (int i = 0; i < aitemstack.length; ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack[i] = ForgeHooks.getContainerItem(itemstack);
         }
 
         return aitemstack;

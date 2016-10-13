@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.api.crafting.armorforge;
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -38,7 +39,7 @@ public class ShapelessRecipes implements IRecipe {
 
         for (int i = 0; i < aitemstack.length; ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack[i] = ForgeHooks.getContainerItem(itemstack);
         }
 
         return aitemstack;
