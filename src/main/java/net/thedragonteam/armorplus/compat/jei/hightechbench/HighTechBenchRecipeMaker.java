@@ -4,8 +4,8 @@
 
 package net.thedragonteam.armorplus.compat.jei.hightechbench;
 
-import net.thedragonteam.armorplus.api.recipe.ARPHighTechBenchRecipe;
-import net.thedragonteam.armorplus.api.registry.ARPHighTechBenchRecipeRegistry;
+import net.thedragonteam.armorplus.api.recipe.HighTechBenchRecipe;
+import net.thedragonteam.armorplus.api.registry.HighTechBenchRecipeRegistry;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -19,10 +19,10 @@ import java.util.List;
 public class HighTechBenchRecipeMaker {
     @Nonnull
     public static List<HighTechBenchRecipeJEI> getRecipes() {
-        List<ARPHighTechBenchRecipe> recipeList = ARPHighTechBenchRecipeRegistry.getRecipeList();
+        List<HighTechBenchRecipe> recipeList = HighTechBenchRecipeRegistry.getRecipeList();
         ArrayList<HighTechBenchRecipeJEI> recipes = new ArrayList<HighTechBenchRecipeJEI>();
 
-        for (ARPHighTechBenchRecipe recipe : recipeList)
+        for (HighTechBenchRecipe recipe : recipeList)
             recipes.add(new HighTechBenchRecipeJEI(recipe));
 
         return recipes;

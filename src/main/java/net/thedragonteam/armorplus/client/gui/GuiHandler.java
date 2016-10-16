@@ -48,10 +48,10 @@ public class GuiHandler implements IGuiHandler {
         if (ID == GUI_ARMORPLUS_INFO)
             return new GuiArmorPlusInfo();
         if (ID == GUI_WORKBENCH) {
-            return new GuiARPWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new GuiWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
         }
         if (ID == GUI_HIGH_TECH_BENCH) {
-            return new GuiARPHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new GuiHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
         }
         if (ID == GUI_ULTI_TECH_BENCH) {
             return new ContainerUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));

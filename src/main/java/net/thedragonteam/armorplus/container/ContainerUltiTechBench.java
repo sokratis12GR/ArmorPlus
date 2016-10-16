@@ -13,9 +13,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 
 import javax.annotation.Nullable;
@@ -30,7 +30,7 @@ public class ContainerUltiTechBench extends Container {
     /**
      * The crafting matrix inventory (4x3).
      */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 5, 5);
     public IInventory craftResult = new InventoryCraftResult();
     /**
      * Position of the benches
@@ -43,22 +43,22 @@ public class ContainerUltiTechBench extends Container {
         this.tileEntity = tileEntity;
         this.worldObj = worldIn;
         this.pos = posIn;
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 44));
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 149, 53));
 
-        for (int i = 0; i < 4; ++i) { //i = y
-            for (int j = 0; j < 4; ++j) { //j = x
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 4, 12 + j * 18, 17 + i * 18));
+        for (int i = 0; i < 5; ++i) { //i = y
+            for (int j = 0; j < 5; ++j) { //j = x
+                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 5, 12 + j * 18, 17 + i * 18));
             }
         }
 
         for (int k = 0; k < 3; ++k) { //k = y
             for (int i1 = 0; i1 < 9; ++i1) { //i1 = x
-                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 102 + k * 18));
+                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 118 + k * 18));
             }
         }
 
         for (int l = 0; l < 9; ++l) { //l = x
-            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 160));
+            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 176));
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
@@ -73,8 +73,8 @@ public class ContainerUltiTechBench extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, UltiTechBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-
     }
+
 
     @Nullable
     @Override

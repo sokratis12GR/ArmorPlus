@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("NullableProblems")
 public class TileEntityUltiTechBench extends TileEntity implements IInventory {
 
-    private ItemStack[] inventory = new ItemStack[19];
+    private ItemStack[] inventory = new ItemStack[34];
     private String customName;
 
     public TileEntityUltiTechBench() {
@@ -58,7 +58,7 @@ public class TileEntityUltiTechBench extends TileEntity implements IInventory {
 
     @Override
     public int getSizeInventory() {
-        return 10;
+        return 25;
     }
 
     @Override

@@ -4,8 +4,8 @@
 
 package net.thedragonteam.armorplus.compat.jei.workbench;
 
-import net.thedragonteam.armorplus.api.recipe.ARPWorkbenchRecipe;
-import net.thedragonteam.armorplus.api.registry.ARPWorkbenchRecipeRegistry;
+import net.thedragonteam.armorplus.api.recipe.WorkbenchRecipe;
+import net.thedragonteam.armorplus.api.registry.WorkbenchRecipeRegistry;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -19,10 +19,10 @@ import java.util.List;
 public class WorkbenchRecipeMaker {
     @Nonnull
     public static List<WorkbenchRecipeJEI> getRecipes() {
-        List<ARPWorkbenchRecipe> recipeList = ARPWorkbenchRecipeRegistry.getRecipeList();
+        List<WorkbenchRecipe> recipeList = WorkbenchRecipeRegistry.getRecipeList();
         ArrayList<WorkbenchRecipeJEI> recipes = new ArrayList<WorkbenchRecipeJEI>();
 
-        for (ARPWorkbenchRecipe recipe : recipeList)
+        for (WorkbenchRecipe recipe : recipeList)
             recipes.add(new WorkbenchRecipeJEI(recipe));
 
         return recipes;

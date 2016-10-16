@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.compat.jei.hightechbench;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.recipe.ARPHighTechBenchRecipe;
+import net.thedragonteam.armorplus.api.recipe.HighTechBenchRecipe;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,9 +23,9 @@ import java.util.List;
  */
 class HighTechBenchRecipeJEI extends BlankRecipeWrapper {
 
-    private ARPHighTechBenchRecipe recipe;
+    private HighTechBenchRecipe recipe;
 
-    HighTechBenchRecipeJEI(ARPHighTechBenchRecipe recipe) {
+    HighTechBenchRecipeJEI(HighTechBenchRecipe recipe) {
         this.recipe = recipe;
     }
 

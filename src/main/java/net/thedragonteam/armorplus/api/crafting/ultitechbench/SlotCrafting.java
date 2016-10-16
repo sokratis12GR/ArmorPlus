@@ -16,8 +16,8 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import javax.annotation.Nullable;
 
 /**
- * net.thedragonteam.armorplus.api.crafting.ultitechbench
- * ArmorPlus created by sokratis12GR on 10/16/2016 3:55 PM.
+ * net.thedragonteam.armorplus.api.crafting.hightechbench
+ * ArmorPlus created by sokratis12GR on 6/21/2016 3:55 PM.
  * - TheDragonTeam
  */
 public class SlotCrafting extends Slot {

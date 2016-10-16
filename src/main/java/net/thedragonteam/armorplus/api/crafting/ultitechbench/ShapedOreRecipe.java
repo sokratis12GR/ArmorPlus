@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
-    public static final int MAX_CRAFT_GRID_WIDTH = 4;
-    public static final int MAX_CRAFT_GRID_HEIGHT = 4;
+    public static final int MAX_CRAFT_GRID_WIDTH = 5;
+    public static final int MAX_CRAFT_GRID_HEIGHT = 5;
 
     protected ItemStack output = null;
     protected Object[] input = null;

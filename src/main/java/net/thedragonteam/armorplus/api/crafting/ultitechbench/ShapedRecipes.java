@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 /**
- * net.thedragonteam.armorplus.api.crafting.ultitechbench
- * ArmorPlus created by sokratis12GR on 10/16/2016 1:27 PM.
+ * net.thedragonteam.armorplus.api.crafting.hightechbench
+ * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
  * - TheDragonTeam
  */
 public class ShapedRecipes implements IRecipe {

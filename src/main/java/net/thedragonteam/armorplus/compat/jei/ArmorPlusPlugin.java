@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
-import net.thedragonteam.armorplus.client.gui.GuiARPHighTechBench;
-import net.thedragonteam.armorplus.client.gui.GuiARPWorkbench;
+import net.thedragonteam.armorplus.client.gui.GuiHighTechBench;
+import net.thedragonteam.armorplus.client.gui.GuiWorkbench;
 import net.thedragonteam.armorplus.compat.jei.hightechbench.*;
 import net.thedragonteam.armorplus.compat.jei.workbench.*;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
@@ -51,8 +51,8 @@ public class ArmorPlusPlugin extends BlankModPlugin {
                 new HighTechBenchShapedOreRecipeHandler()
         );
 
-        registry.addRecipeClickArea(GuiARPWorkbench.class, 88, 32, 28, 23, Constants.Compat.JEI_CATEGORY_WORKBENCH);
-        registry.addRecipeClickArea(GuiARPHighTechBench.class, 88, 40, 28, 27, Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, Constants.Compat.JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeClickArea(GuiHighTechBench.class, 88, 40, 28, 27, Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 

@@ -14,7 +14,7 @@ public class WorkbenchRegistry {
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
      *
-     * @result example: ARPWorkbenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXX", "XXX", "XXX", 'X', Items.Stick )
+     * @result example: WorkbenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXX", "XXX", "XXX", 'X', Items.Stick )
      * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModEnergyRecipes
      * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemsRecipes
      * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes

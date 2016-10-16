@@ -14,7 +14,7 @@ public class HighTechBenchRegistry {
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
      *
-     * @result example: ARPHighTechBenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
+     * @result example: HighTechBenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
      * @see net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModEnderDragonRecipes
      * @see net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModGuardianRecipes
      * @see net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModSuperStarRecipes

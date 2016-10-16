@@ -103,9 +103,9 @@ public class CommonProxy {
     }
 
     public void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "ARPWorkbench");
-        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "ARPHighTechBench");
-        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "ARPGalacticSystem");
+        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "Workbench");
+        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "HighTechBench");
+        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "UltiTechBench");
     }
 
     private WeakReference<EntityPlayer> createNewPlayer(WorldServer world) {

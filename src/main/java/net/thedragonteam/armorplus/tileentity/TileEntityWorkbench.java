@@ -42,7 +42,7 @@ public class TileEntityWorkbench extends TileEntity implements IInventory {
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.armorplus.benches";
+        return this.hasCustomName() ? this.customName : "container.armorplus.workbench";
     }
 
     @Override

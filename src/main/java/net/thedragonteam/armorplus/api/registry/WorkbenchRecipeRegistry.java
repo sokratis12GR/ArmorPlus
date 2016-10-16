@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.api.registry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.recipe.ARPWorkbenchRecipe;
+import net.thedragonteam.armorplus.api.recipe.WorkbenchRecipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,19 +17,19 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:47 PM.
  * - TheDragonTeam
  */
-public class ARPWorkbenchRecipeRegistry {
-    private static List<ARPWorkbenchRecipe> recipeList = new ArrayList<ARPWorkbenchRecipe>();
+public class WorkbenchRecipeRegistry {
+    private static List<WorkbenchRecipe> recipeList = new ArrayList<WorkbenchRecipe>();
 
-    public static void registerRecipe(ARPWorkbenchRecipe recipe) {
+    public static void registerRecipe(WorkbenchRecipe recipe) {
         recipeList.add(recipe);
     }
 
     public static void registerRecipe(ItemStack outputStack, Object... objects) {
-        registerRecipe(new ARPWorkbenchRecipe(outputStack, objects));
+        registerRecipe(new WorkbenchRecipe(outputStack, objects));
     }
 
-    public static ARPWorkbenchRecipe getMatchingRecipe(List<ItemStack> itemList, World world, BlockPos pos) {
-        for (ARPWorkbenchRecipe recipe : recipeList) {
+    public static WorkbenchRecipe getMatchingRecipe(List<ItemStack> itemList, World world, BlockPos pos) {
+        for (WorkbenchRecipe recipe : recipeList) {
             if (recipe.matches(itemList, world, pos)) {
                 return recipe;
             }
@@ -38,7 +38,7 @@ public class ARPWorkbenchRecipeRegistry {
         return null;
     }
 
-    public static List<ARPWorkbenchRecipe> getRecipeList() {
-        return new ArrayList<ARPWorkbenchRecipe>(recipeList);
+    public static List<WorkbenchRecipe> getRecipeList() {
+        return new ArrayList<WorkbenchRecipe>(recipeList);
     }
 }

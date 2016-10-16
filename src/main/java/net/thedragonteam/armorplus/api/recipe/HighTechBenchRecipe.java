@@ -20,19 +20,19 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/22/2016 5:26 PM.
  * - TheDragonTeam
  */
-public class ARPWorkbenchRecipe {
+public class HighTechBenchRecipe {
     protected ItemStack output = null;
     protected ArrayList<Object> input = new ArrayList<Object>();
 
-    public ARPWorkbenchRecipe(Block result, Object... recipe) {
+    public HighTechBenchRecipe(Block result, Object... recipe) {
         this(new ItemStack(result), recipe);
     }
 
-    public ARPWorkbenchRecipe(Item result, Object... recipe) {
+    public HighTechBenchRecipe(Item result, Object... recipe) {
         this(new ItemStack(result), recipe);
     }
 
-    public ARPWorkbenchRecipe(ItemStack result, Object... recipe) {
+    public HighTechBenchRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
         for (Object in : recipe) {
             if (in instanceof ItemStack) {
@@ -44,7 +44,7 @@ public class ARPWorkbenchRecipe {
             } else if (in instanceof String) {
                 input.add(OreDictionary.getOres((String) in));
             } else {
-                String ret = "Invalid ARP Workbench recipe: ";
+                String ret = "Invalid High-Tech Bench recipe: ";
                 for (Object tmp : recipe) {
                     ret += tmp + ", ";
                 }

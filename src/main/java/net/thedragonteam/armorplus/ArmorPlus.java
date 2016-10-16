@@ -56,11 +56,11 @@ public class ArmorPlus {
     public static final int MINOR = 0;
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
     public static final int PATCH = 0;
-    // Updates every time a build is created, mostly used for dev versions and final versions for releases after for each Minor update, resets on MINOR changes
+    // Updates every time a build is created, mostly used for dev versions and final versions for releases after for each Minor or Major update, resets on MINOR changes
     public static final int BUILD = 1;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
     public static final String TESLA_VERSION = "1.2.1.49";
     public static final String LIB_VERSION = "1.10.2-1.0.3.0";
     public static final String MODID = "armorplus";
@@ -217,13 +217,13 @@ public class ArmorPlus {
             if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
             if (ID == GUI_WORKBENCH) {
-                return new GuiARPWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
+                return new GuiWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
             }
             if (ID == GUI_HIGH_TECH_BENCH) {
-                return new GuiARPHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+                return new GuiHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
             }
             if (ID == GUI_ULTI_TECH_BENCH) {
-                return new GuiARPUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+                return new GuiUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }

@@ -16,8 +16,8 @@ import net.thedragonteam.armorplus.api.util.ItemStackHelper;
 import javax.annotation.Nullable;
 
 /**
- * net.thedragonteam.armorplus.api.crafting.ultitechbench
- * ArmorPlus created by sokratis12GR on 10/16/2016 6:21 PM.
+ * net.thedragonteam.armorplus.api.crafting.hightechbench
+ * ArmorPlus created by sokratis12GR on 6/20/2016 6:21 PM.
  * - TheDragonTeam
  */
 public class InventoryCrafting implements IInventory {
@@ -70,7 +70,7 @@ public class InventoryCrafting implements IInventory {
      * Get the name of this object. For players this returns their username
      */
     public String getName() {
-        return "container.crafting";
+        return "container.ulti_tech_bench";
     }
 
     /**

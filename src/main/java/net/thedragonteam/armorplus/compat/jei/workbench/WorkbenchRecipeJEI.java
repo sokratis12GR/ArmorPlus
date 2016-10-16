@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.compat.jei.workbench;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.recipe.ARPWorkbenchRecipe;
+import net.thedragonteam.armorplus.api.recipe.WorkbenchRecipe;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,9 +23,9 @@ import java.util.List;
  */
 class WorkbenchRecipeJEI extends BlankRecipeWrapper {
 
-    private ARPWorkbenchRecipe recipe;
+    private WorkbenchRecipe recipe;
 
-    WorkbenchRecipeJEI(ARPWorkbenchRecipe recipe) {
+    WorkbenchRecipeJEI(WorkbenchRecipe recipe) {
         this.recipe = recipe;
     }
 
