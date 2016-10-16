@@ -9,8 +9,9 @@ itemGroup.armorplus.tesla=ARP Tesla
 itemGroup.armorplus.rf=ARP RF
 
 #Containers
-container.armorplus.armor_forge=Armor Forge
-container.armorplus.advanced_armor_forge=Advanced Armor Forge
+container.armorplus.workbench=Workbench
+container.armorplus.high_tech_bench=High-Tech Bench
+container.armorplus.ulti_tech_bench=Ulti-Tech Bench
 container.armorplus.inventory=Inventory
 
 #Tooltip
@@ -63,8 +64,9 @@ commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #JEI
-gui.jei.category.armor_forge=Armor Forge
-gui.jei.category.adv_armor_forge=Advanced Armor Forge
+gui.jei.category.workbench=Workbench
+gui.jei.category.high_tech_bench=High-Tech Bench
+gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
 
 #BOOKS
 item.armorplus.armorplus_book.name=ArmorPlus Book
@@ -263,8 +265,9 @@ tile.armorplus.compressed_obsidian.name=Compressed Obsidian
 tile.armorplus.block_lava_crystal.name=Lava Crystal Block
 tile.armorplus.steel_block.name=Block of Steel
 tile.armorplus.electrical_block.name=Electrical Block
-tile.armorplus.armor_forge.name=Armor Forge
-tile.armorplus.advanced_armor_forge.name=Advanced Armor Forge
+tile.armorplus.workbench.name=Workbench
+tile.armorplus.high_tech_bench.name=High-Tech Bench
+tile.armorplus.ulti_tech_bench.name=Ulti-Tech Bench
 tile.armorplus.lava_cactus.name=Lava Cactus
 tile.armorplus.lava_nether_brick.name=Lava Nether Brick
 tile.armorplus.white_stone_brick.name=White Stone Brick

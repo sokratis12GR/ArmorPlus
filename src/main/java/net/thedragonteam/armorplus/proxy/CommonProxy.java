@@ -6,8 +6,6 @@ package net.thedragonteam.armorplus.proxy;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
@@ -25,16 +23,15 @@ import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
-import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
-
-import static net.minecraftforge.oredict.OreDictionary.registerOre;
 
 public class CommonProxy {
 
@@ -43,6 +40,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         LogHelper.info("Begin PreInitialization");
         ARPEntities.init();
+        ModBlocks.init();
+        registerWorldGenerators();
+        registerTileEntities();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.preInit();
         }
@@ -52,6 +52,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         LogHelper.info("Begin Initialization");
+        ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.init();
@@ -76,37 +77,6 @@ public class CommonProxy {
         ModRecipes.init();
     }
 
-    public void registerOreDictEnties() {
-        //Ores
-        registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
-        registerOre("blockLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
-        //Ingots
-        registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
-        registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
-        registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));
-        registerOre("blockElectrical", new ItemStack(ModBlocks.electricalBlock, 1));
-        registerOre("blockCompressedObsidian", new ItemStack(ModBlocks.compressedObsidian, 1));
-        registerOre("armorForge", new ItemStack(ModBlocks.armorForge, 1));
-        registerOre("armorForgeAdv", new ItemStack(ModBlocks.advancedArmorForge, 1));
-        //Gems
-        registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
-        registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
-        registerOre("gemChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
-        registerOre("ingotChargedLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1, 1));
-        //Materials
-        registerOre("chainmail", new ItemStack(ModItems.chainmail, 1));
-        registerOre("witherBone", new ItemStack(ModItems.witherBone, 1));
-        registerOre("materialTheUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
-        registerOre("materialUltimate", new ItemStack(ModItems.theUltimateMaterial, 1));
-        registerOre("scaleGuardian", new ItemStack(ModItems.guardianScale, 1));
-        registerOre("scaleEnderDragon", new ItemStack(ModItems.enderDragonScale, 1));
-        registerOre("rodTesla", new ItemStack(ModItems.itemTeslaRod, 1));
-        registerOre("rodRF", new ItemStack(ModItems.itemRFRod, 1));
-        //Vanilla
-        registerOre("itemCoal", new ItemStack(Items.COAL, 1));
-        registerOre("itemCharcoal", new ItemStack(Items.COAL, 1, 1));
-    }
-
     /**
      * Whether or not the game is paused.
      */
@@ -114,7 +84,7 @@ public class CommonProxy {
         return false;
     }
 
-    public void registerRenderers(ArmorPlus armorPlus) {
+    public void registerRenderers() {
     }
 
     public void registerRenderer() {
@@ -133,8 +103,9 @@ public class CommonProxy {
     }
 
     public void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityArmorForge.class, "ArmorForge");
-        GameRegistry.registerTileEntity(TileEntityAdvancedArmorForge.class, "AdvancedArmorForge");
+        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "ARPWorkbench");
+        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "ARPHighTechBench");
+        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "ARPGalacticSystem");
     }
 
     private WeakReference<EntityPlayer> createNewPlayer(WorldServer world) {

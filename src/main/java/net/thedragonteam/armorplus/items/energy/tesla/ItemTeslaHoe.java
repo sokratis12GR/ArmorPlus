@@ -14,6 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -42,6 +43,11 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         ARPTeslaUtils.usePower(stack, outputHoe);
         return true;
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.EPIC;
     }
 
     @Override

@@ -4,15 +4,11 @@
 
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.AdvancedArmorForge;
-import net.thedragonteam.armorplus.blocks.ArmorForge;
+import net.thedragonteam.armorplus.blocks.benches.HighTechBench;
+import net.thedragonteam.armorplus.blocks.benches.UltiTechBench;
+import net.thedragonteam.armorplus.blocks.benches.Workbench;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.WhiteStoneBrickTower;
@@ -32,75 +28,54 @@ import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
  */
 public class ModBlocks {
 
-    public static Block blockLavaCrystal;
-    public static Block compressedObsidian;
-    public static Block steelBlock;
-    public static Block electricalBlock;
-    public static Block armorForge;
-    public static Block advancedArmorForge;
-    public static Block whiteStoneBrick;
-    public static Block lavaNetherBrick;
-    public static Block whiteStoneBrickTower;
-    public static Block whiteStoneBrickCorner;
+    public static BlockLavaCrystal blockLavaCrystal;
+    public static CompressedObsidian compressedObsidian;
+    public static SteelBlock steelBlock;
+    public static ElectricalBlock electricalBlock;
+    public static WhiteStoneBrick whiteStoneBrick;
+    public static LavaNetherBrick lavaNetherBrick;
+    public static WhiteStoneBrickTower whiteStoneBrickTower;
+    public static WhiteStoneBrickCorner whiteStoneBrickCorner;
     public static LavaCactus lavaCactus;
-    public static Block spawnerGuardian;
-    public static Block spawnerEnderDragonZombie;
+    public static SpawnerGuardian spawnerGuardian;
+    public static SpawnerEnderDragonZombie spawnerEnderDragonZombie;
+    public static Workbench arpWorkbench;
+    public static HighTechBench arpHighTechBench;
+    public static UltiTechBench arpUltiTechBench;
 
     public static void init() {
-        blockLavaCrystal = new BlockLavaCrystal().setRegistryName("block_lava_crystal");
-        compressedObsidian = new CompressedObsidian().setRegistryName("compressed_obsidian");
-        steelBlock = new SteelBlock().setRegistryName("steel_block");
-        electricalBlock = new ElectricalBlock().setRegistryName("electrical_block");
-        armorForge = new ArmorForge().setRegistryName("armor_forge");
-        advancedArmorForge = new AdvancedArmorForge().setRegistryName("advanced_armor_forge");
+        blockLavaCrystal = new BlockLavaCrystal();
+        compressedObsidian = new CompressedObsidian();
+        steelBlock = new SteelBlock();
+        electricalBlock = new ElectricalBlock();
         lavaCactus = new LavaCactus();
-        lavaNetherBrick = new LavaNetherBrick().setRegistryName("lava_nether_brick");
-        whiteStoneBrick = new WhiteStoneBrick().setRegistryName("white_stone_brick");
-        whiteStoneBrickTower = new WhiteStoneBrickTower().setRegistryName("white_stone_brick_tower");
-        whiteStoneBrickCorner = new WhiteStoneBrickCorner().setRegistryName("white_stone_brick_corner");
-        spawnerGuardian = new SpawnerGuardian().setRegistryName("spawner_guardian");
-        spawnerEnderDragonZombie = new SpawnerEnderDragonZombie().setRegistryName("spawner_ender_dragon_zombie");
-    }
-
-    public static void register() {
-        registerBlock(blockLavaCrystal);
-        registerBlock(compressedObsidian);
-        registerBlock(steelBlock);
-        registerBlock(electricalBlock);
-        registerBlock(armorForge);
-        registerBlock(advancedArmorForge);
-        registerBlock(lavaCactus);
-        registerBlock(lavaNetherBrick);
-        registerBlock(whiteStoneBrick);
-        registerBlock(whiteStoneBrickTower);
-        registerBlock(whiteStoneBrickCorner);
-        registerBlock(spawnerGuardian);
-        registerBlock(spawnerEnderDragonZombie);
-    }
-
-    public static void registerRenders() {
-        registerRender(blockLavaCrystal);
-        registerRender(compressedObsidian);
-        registerRender(steelBlock);
-        registerRender(electricalBlock);
-        registerRender(armorForge);
-        registerRender(advancedArmorForge);
-        registerRender(lavaCactus);
-        registerRender(lavaNetherBrick);
-        registerRender(whiteStoneBrick);
-        registerRender(whiteStoneBrickTower);
-        registerRender(whiteStoneBrickCorner);
-        registerRender(spawnerGuardian);
-        registerRender(spawnerEnderDragonZombie);
-    }
-
-    public static void registerBlock(Block block) {
-        GameRegistry.registerBlock(block, block.getRegistryName().toString());
+        lavaNetherBrick = new LavaNetherBrick();
+        whiteStoneBrick = new WhiteStoneBrick();
+        whiteStoneBrickTower = new WhiteStoneBrickTower();
+        whiteStoneBrickCorner = new WhiteStoneBrickCorner();
+        spawnerGuardian = new SpawnerGuardian();
+        spawnerEnderDragonZombie = new SpawnerEnderDragonZombie();
+        arpWorkbench = new Workbench();
+        arpHighTechBench = new HighTechBench();
+        arpUltiTechBench = new UltiTechBench();
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerRender(Block block) {
-        Item item = Item.getItemFromBlock(block);
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    public static void initModels() {
+        blockLavaCrystal.initModel();
+        compressedObsidian.initModel();
+        steelBlock.initModel();
+        electricalBlock.initModel();
+        lavaCactus.initModel();
+        lavaNetherBrick.initModel();
+        whiteStoneBrick.initModel();
+        whiteStoneBrickTower.initModel();
+        whiteStoneBrickCorner.initModel();
+        spawnerGuardian.initModel();
+        spawnerEnderDragonZombie.initModel();
+        arpWorkbench.initModel();
+        arpHighTechBench.initModel();
+        arpUltiTechBench.initModel();
     }
+
 }

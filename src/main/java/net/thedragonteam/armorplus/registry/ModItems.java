@@ -113,6 +113,8 @@ import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
 import net.thedragonteam.armorplus.util.NameUtil;
 
+import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+
 public class ModItems {
 
     public static final IAttribute ARMOR = (new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 30.0D)).setShouldWatch(true);
@@ -142,66 +144,66 @@ public class ModItems {
     public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, 500, 1.0F, 5.0F, 30);
     public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, 2000, 1.0F, 10.0F, 20);
 
-    public static ItemArmor.ArmorMaterial devArmor = EnumHelper.addArmorMaterial("devArmor", ArmorPlus.MODID + ":" + "dev_armor", 100000, new int[]
+    public static ItemArmor.ArmorMaterial devArmor = EnumHelper.addArmorMaterial("devArmor", getArmorPlusLocation() + "dev_armor", 100000, new int[]
             {100, 100, 100, 100}, 100, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 100.0F);
 
-    public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", ArmorPlus.MODID + ":" + "coal_armor", 7, new int[]
+    public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", getArmorPlusLocation() + "coal_armor", 7, new int[]
             {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", ArmorPlus.MODID + ":" + "emerald_armor", 35, new int[]
+    public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", getArmorPlusLocation() + "emerald_armor", 35, new int[]
             {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", ArmorPlus.MODID + ":" + "lapis_armor", 11, new int[]
+    public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", getArmorPlusLocation() + "lapis_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
-    public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", ArmorPlus.MODID + ":" + "lava_armor", 45, new int[]
+    public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", getArmorPlusLocation() + "lava_armor", 45, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", ArmorPlus.MODID + ":" + "obsidian_armor", 40, new int[]
+    public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", getArmorPlusLocation() + "obsidian_armor", 40, new int[]
             {3, 7, 10, 5}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 
-    public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", ArmorPlus.MODID + ":" + "redstone_armor", 11, new int[]
+    public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", getArmorPlusLocation() + "redstone_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 
     /* Steel Armor Not Powered */
-    public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", ArmorPlus.MODID + ":" + "steel_armor", 15, new int[]
+    public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", getArmorPlusLocation() + "steel_armor", 15, new int[]
             {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
     /* Electrical Armor Not Powered */
-    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", ArmorPlus.MODID + ":" + "electrical_armor", 19, new int[]
+    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation() + "electrical_armor", 19, new int[]
             {3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
-    public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", ArmorPlus.MODID + ":" + "chicken_armor", 3, new int[]
+    public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", getArmorPlusLocation() + "chicken_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", ArmorPlus.MODID + ":" + "slime_armor", 3, new int[]
+    public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", getArmorPlusLocation() + "slime_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
-    public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", ArmorPlus.MODID + ":" + "ender_dragon_armor", 60, new int[]
+    public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", getArmorPlusLocation() + "ender_dragon_armor", 60, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", ArmorPlus.MODID + ":" + "guardian_armor", 50, new int[]
+    public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", getArmorPlusLocation() + "guardian_armor", 50, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", ArmorPlus.MODID + ":" + "super_star_armor", 50, new int[]
+    public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", getArmorPlusLocation() + "super_star_armor", 50, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", ArmorPlus.MODID + ":" + "the_ultimate_armor", 160, new int[]
+    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation() + "the_ultimate_armor", 160, new int[]
             {10, 20, 30, 15}, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F);
 
-    public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", ArmorPlus.MODID + ":" + "ardite_armor", 55, new int[]
+    public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", getArmorPlusLocation() + "ardite_armor", 55, new int[]
             {4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", ArmorPlus.MODID + ":" + "cobalt_armor", 44, new int[]
+    public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", getArmorPlusLocation() + "cobalt_armor", 44, new int[]
             {3, 7, 9, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
-    public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", ArmorPlus.MODID + ":" + "knight_slime_armor", 33, new int[]
+    public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", getArmorPlusLocation() + "knight_slime_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
-    public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", ArmorPlus.MODID + ":" + "manyullyn_armor", 66, new int[]
+    public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", getArmorPlusLocation() + "manyullyn_armor", 66, new int[]
             {5, 10, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F);
 
-    public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", ArmorPlus.MODID + ":" + "pig_iron_armor", 33, new int[]
+    public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", getArmorPlusLocation() + "pig_iron_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
     public static Chainmail chainmail;

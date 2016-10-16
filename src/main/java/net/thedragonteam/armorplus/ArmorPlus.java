@@ -19,21 +19,19 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.client.gui.ARPTab;
-import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
-import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
-import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
+import net.thedragonteam.armorplus.client.gui.*;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
-import net.thedragonteam.armorplus.container.ContainerArmorForge;
+import net.thedragonteam.armorplus.container.ContainerHighTechBench;
+import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
+import net.thedragonteam.armorplus.container.ContainerWorkbench;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModCompatibility;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.tileentity.TileEntityAdvancedArmorForge;
-import net.thedragonteam.armorplus.tileentity.TileEntityArmorForge;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -51,15 +49,15 @@ public class ArmorPlus {
 
     public static final String MCVERSION = "1.10.2";
     // Updates every MAJOR change, never resets
-    public static final int MAJOR = 7;
+    public static final int MAJOR = 8;
     // Updates every time the API change, resets on MAJOR changes
     public static final int API = 0;
     // Updates every time a new block, item or features is added or change, resets on MAJOR changes
-    public static final int MINOR = 1;
+    public static final int MINOR = 0;
     // Updates every time a bug is fixed or issue solved or very minor code changes, resets on MINOR changes
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     // Updates every time a build is created, mostly used for dev versions and final versions for releases after for each Minor update, resets on MINOR changes
-    public static final int BUILD = 6;
+    public static final int BUILD = 1;
     // The ArmorPlus Version
     public static final String VERSION =
             ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
@@ -122,6 +120,10 @@ public class ArmorPlus {
         return Loader.isModLoaded("tesla");
     }
 
+    public static String getArmorPlusLocation() {
+        return ArmorPlus.MODID + ":";
+    }
+
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
@@ -131,7 +133,6 @@ public class ArmorPlus {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
-        proxy.registerOreDictEnties();
         proxy.init(event);
     }
 
@@ -144,7 +145,6 @@ public class ArmorPlus {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
-        proxy.registerOreDictEnties();
         proxy.init(event);
     }
 
@@ -159,8 +159,6 @@ public class ArmorPlus {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
 
         ModItems.init();
-        ModBlocks.init();
-        ModBlocks.register();
         LogHelper.info("Blocks Successfully Registered");
 
         items = new ModItems();
@@ -173,10 +171,6 @@ public class ArmorPlus {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
-        proxy.registerRenderer();
-        proxy.registerRenderers(this);
-        proxy.registerWorldGenerators();
-        proxy.registerTileEntities();
         proxy.preInit(event);
     }
 
@@ -206,11 +200,14 @@ public class ArmorPlus {
         public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
             if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
-            if (ID == GUI_ARMOR_FORGE) {
-                return new ContainerArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            if (ID == GUI_WORKBENCH) {
+                return new ContainerWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
             }
-            if (ID == GUI_ADVANCED_ARMOR_FORGE) {
-                return new ContainerAdvancedArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityAdvancedArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            if (ID == GUI_HIGH_TECH_BENCH) {
+                return new ContainerHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            }
+            if (ID == GUI_ULTI_TECH_BENCH) {
+                return new ContainerUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }
@@ -219,11 +216,14 @@ public class ArmorPlus {
         public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
             if (ID == GUI_ARMORPLUS)
                 return new GuiArmorPlus();
-            if (ID == GUI_ARMOR_FORGE) {
-                return new GuiArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            if (ID == GUI_WORKBENCH) {
+                return new GuiARPWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
             }
-            if (ID == GUI_ADVANCED_ARMOR_FORGE) {
-                return new GuiAdvancedArmorForge(player.inventory, world, new BlockPos(x, y, z), (TileEntityAdvancedArmorForge) world.getTileEntity(new BlockPos(x, y, z)));
+            if (ID == GUI_HIGH_TECH_BENCH) {
+                return new GuiARPHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            }
+            if (ID == GUI_ULTI_TECH_BENCH) {
+                return new GuiARPUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
             }
             return null;
         }

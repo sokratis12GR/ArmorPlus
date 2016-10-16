@@ -10,6 +10,8 @@ import net.thedragonteam.thedragonlib.TheDragonLib;
 
 import java.io.*;
 
+import static java.lang.String.*;
+
 /**
  * net.thedragonteam.armorplus.util
  * Created by sokratis12GR on 4/23/2016.
@@ -28,18 +30,18 @@ public class Logger {
         //ArmorPlus.html
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "ArmorPlus.html"), "utf-8"));
-            writer.write("<html>" + "<head><title>ArmorPlus</title></head>" + "<body><div style=\"background-color:#1A1A1A\">");
-            writer.write("<h2 style=\"color:#DEDEDE;text-align:center\">" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</h2>");
-            writer.write("<h2 style=\"color:#DEDEDE;text-align:center\"><u>" + ArmorPlus.MODNAME + "</u></h2>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "ArmorPlus Version: " + ArmorPlus.VERSION + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "modid: " + ArmorPlus.MODID + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Minecraft Version: " + MinecraftForge.MC_VERSION + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "dependencies: " + TheDragonLib.MODID + TheDragonLib.VERSION + " ( " + TheDragonLib.MODNAME + " ) " + "</strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "by " + "<a href=\"https://minecraft.curseforge.com/members/TheDragonTeam\" style=\"color:#AA0000;text-decoration:none\">TheDragonTeam</a></strong></p>");
-            writer.write("<p style=\"color:#DEDEDE;text-align:center\"><strong>" + "Mod&#39;s Page: " + "<a href=\"https://minecraft.curseforge.com/projects/armorplus\" style=\"color:#AA0000;text-decoration:none\">ArmorPlus</a></strong></p>\n");
-            writer.write("<h2 style=\"color:#DEDEDE;text-align:center\">" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</h2>");
-            writer.write("</div></body>" + "</html>");
+                    new FileOutputStream(format("config/%s/%s.html", ArmorPlus.MODID, ArmorPlus.MODNAME)), "utf-8"));
+            writer.write(format("<html><head><title>%s</title></head><body><div style=\"background-color:#1A1A1A\">", ArmorPlus.MODNAME));
+            writer.write(format("%s~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2>", "<h2 style=\"color:#DEDEDE;text-align:center\">"));
+            writer.write(format("%s<u>%s</u></h2>", "<h2 style=\"color:#DEDEDE;text-align:center\">", ArmorPlus.MODNAME));
+            writer.write(format("%s<strong>ArmorPlus Version: %s</strong></p>", "<p style=\"color:#DEDEDE;text-align:center\">", ArmorPlus.VERSION));
+            writer.write(format("%s<strong>modid: %s</strong></p>", "<p style=\"color:#DEDEDE;text-align:center\">", ArmorPlus.MODID));
+            writer.write(format("%s<strong>Minecraft Version: %s</strong></p>", "<p style=\"color:#DEDEDE;text-align:center\">", MinecraftForge.MC_VERSION));
+            writer.write(format("%s<strong>dependencies: %s%s ( %s ) </strong></p>", "<p style=\"color:#DEDEDE;text-align:center\">", TheDragonLib.MODID, TheDragonLib.VERSION, TheDragonLib.MODNAME));
+            writer.write(format("%s<strong>by <a href=\"https://sokratis12gr.tk\" style=\"color:#AA0000;text-decoration:none\">%s</a></strong></p>", "<p style=\"color:#DEDEDE;text-align:center\">", "sokratis12GR"));
+            writer.write(format("%sMod&#39;s Page: <a href=\"https://minecraft.curseforge.com/projects/armorplus\" style=\"color:#AA0000;text-decoration:none\">%s</a></strong></p>\n", "<p style=\"color:#DEDEDE;text-align:center\"><strong>", ArmorPlus.MODNAME));
+            writer.write(format("%s~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2>", "<h2 style=\"color:#DEDEDE;text-align:center\">"));
+            writer.write(format("%s%s%s", "</div>", "</body>", "</html>"));
         } catch (IOException ex) {
             // report
         } finally {
@@ -50,8 +52,8 @@ public class Logger {
         //Note.txt
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("config" + "/" + ArmorPlus.MODID + "/" + "Note.txt"), "utf-8"));
-            writer.write("[ " + "( " + "ArmorPlus" + " )" + " | " + "Don't modify or delete the file: " + "ArmorPlus.html" + " | " + "For More Information Click: " + "ArmorPlus.html" + " ]");
+                    new FileOutputStream(format("config/%s/Note.txt", ArmorPlus.MODID)), "utf-8"));
+            writer.write(format("[ (%s) | Don't modify or delete the file: %s.html | For More Information Click: %s.html ]", ArmorPlus.MODNAME, ArmorPlus.MODNAME, ArmorPlus.MODNAME));
         } catch (IOException ex) {
             // report
         } finally {

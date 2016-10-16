@@ -8,14 +8,14 @@ import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
-import net.thedragonteam.armorplus.api.crafting.advarmorforge.AdvancedArmorForgeCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.armorforge.ArmorForgeCraftingManager;
-import net.thedragonteam.armorplus.client.gui.GuiAdvancedArmorForge;
-import net.thedragonteam.armorplus.client.gui.GuiArmorForge;
-import net.thedragonteam.armorplus.compat.jei.advarmorforge.*;
-import net.thedragonteam.armorplus.compat.jei.armorforge.*;
-import net.thedragonteam.armorplus.container.ContainerAdvancedArmorForge;
-import net.thedragonteam.armorplus.container.ContainerArmorForge;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.client.gui.GuiARPHighTechBench;
+import net.thedragonteam.armorplus.client.gui.GuiARPWorkbench;
+import net.thedragonteam.armorplus.compat.jei.hightechbench.*;
+import net.thedragonteam.armorplus.compat.jei.workbench.*;
+import net.thedragonteam.armorplus.container.ContainerHighTechBench;
+import net.thedragonteam.armorplus.container.ContainerWorkbench;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
@@ -36,34 +36,33 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         IGuiHelper guiHelper = jeiHelper.getGuiHelper();
 
         registry.addRecipeCategories(
-                new ArmorForgeRecipeCategory(),
-                new AdvArmorForgeRecipeCategory()
+                new WorkbenchRecipeCategory(),
+                new HighTechBenchRecipeCategory()
         );
 
         registry.addRecipeHandlers(
-                new ArmorForgeShapedRecipeHandler(),
-                new ArmorForgeShapelessRecipeHandler(guiHelper),
-                new ArmorForgeShapelessOreRecipeHandler(guiHelper),
-                new ArmorForgeShapedOreRecipeHandler(),
-                new AdvArmorForgeShapelessRecipeHandler(guiHelper),
-                new AdvArmorForgeShapedRecipeHandler(),
-                new AdvArmorForgeShapelessOreRecipeHandler(guiHelper),
-                new AdvArmorForgeShapedOreRecipeHandler()
+                new WorkbenchShapedRecipeHandler(),
+                new WorkbenchShapelessRecipeHandler(guiHelper),
+                new WorkbenchShapelessOreRecipeHandler(guiHelper),
+                new WorkbenchShapedOreRecipeHandler(),
+                new HighTechBenchShapelessRecipeHandler(guiHelper),
+                new HighTechBenchShapedRecipeHandler(),
+                new HighTechBenchShapelessOreRecipeHandler(guiHelper),
+                new HighTechBenchShapedOreRecipeHandler()
         );
 
-        registry.addRecipeClickArea(GuiArmorForge.class, 88, 32, 28, 23, Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
-        registry.addRecipeClickArea(GuiAdvancedArmorForge.class, 88, 40, 28, 27, Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE);
+        registry.addRecipeClickArea(GuiARPWorkbench.class, 88, 32, 28, 23, Constants.Compat.JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeClickArea(GuiARPHighTechBench.class, 88, 40, 28, 27, Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerArmorForge.class, Constants.Compat.JEI_CATEGORY_ARMOR_FORGE, 1, 9, 10, 36);
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerAdvancedArmorForge.class, Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE, 1, 16, 17, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerWorkbench.class, Constants.Compat.JEI_CATEGORY_WORKBENCH, 1, 9, 10, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.armorForge), Constants.Compat.JEI_CATEGORY_ARMOR_FORGE);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.advancedArmorForge), Constants.Compat.JEI_CATEGORY_ADVANCED_ARMOR_FORGE);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpWorkbench), Constants.Compat.JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpHighTechBench), Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH);
 
-        registry.addRecipes(ArmorForgeCraftingManager.getInstance().getRecipeList());
-        registry.addRecipes(ArmorForgeCraftingManager.getInstance().getRecipeList());
-        registry.addRecipes(AdvancedArmorForgeCraftingManager.getInstance().getRecipeList());
+        registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
+        registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());
     }
 }

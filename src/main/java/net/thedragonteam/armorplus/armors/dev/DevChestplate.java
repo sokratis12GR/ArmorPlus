@@ -4,8 +4,10 @@
 
 package net.thedragonteam.armorplus.armors.dev;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -26,5 +28,10 @@ public class DevChestplate extends BaseArmor {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         Utils.setUnbreakable(stack);
+    }
+
+    @Override
+    public Item setCreativeTab(CreativeTabs tab) {
+        return null;
     }
 }

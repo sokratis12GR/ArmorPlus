@@ -4,8 +4,10 @@
 
 package net.thedragonteam.armorplus.items.dev;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -52,6 +54,11 @@ public class NBTItem extends BaseItem {
         }
         stack.setTagCompound(nbt);
         return super.onEntitySwing(entityLiving, stack);
+    }
+
+    @Override
+    public Item setCreativeTab(CreativeTabs tab) {
+        return null;
     }
 
     @Override

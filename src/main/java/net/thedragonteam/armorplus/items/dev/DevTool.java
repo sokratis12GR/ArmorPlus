@@ -11,7 +11,6 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
@@ -31,14 +30,19 @@ public class DevTool extends BaseItem {
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if (target != null) {
-            playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "[ " + target.getName() + " ]" + " - " + "Health: " + target.getHealth()));
+            if (!playerIn.worldObj.isRemote)
+                playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD +
+                        "[" + target.getName() + "]"
+                        + " - " + "Health: " + target.getHealth()
+                        + " - " + "Max Health: " + target.getMaxHealth()
+                        + " - " + "Class: " + target.getClass()
+                        + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
+                        + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
+                        + " - " + "Position: " + target.getPosition()
+                        + " - " + "Tags: " + target.getTags()));
             return true;
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.COAL;
     }
 
     @Override
@@ -50,9 +54,9 @@ public class DevTool extends BaseItem {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rTracks Targets Health");
+            tooltip.add("\2479Ability: " + "\247rGives Information about the Target");
             tooltip.add("\2473Use: " + "\247rRight Click a Target");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.BOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 }

@@ -13,10 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -26,8 +23,6 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.thedragonlib.util.TextHelper;
-
-import java.util.Objects;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
 
@@ -50,29 +45,30 @@ public class GlobalEventsArmorPlus {
         if (i == ModItems.guardianBow)
             itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("power"), 1);
 
-        if (i == Item.getItemFromBlock(ModBlocks.armorForge)) {
+        if (i == Item.getItemFromBlock(ModBlocks.arpWorkbench)) {
             event.player.addStat(ARPAchievements.welcomeToArmorPlus, 1);
             event.player.inventory.addItemStackToInventory(new ItemStack(ModItems.armorPlusBook, 1));
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (Objects.equals(event.player.getName(), "sokratis12GR"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.AQUA + "[ArmorPlus] "));
-        if (Objects.equals(event.player.getName(), "Moritz30"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-        if (Objects.equals(event.player.getName(), "FTB_lag"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.WHITE + "Armo" + TextFormatting.BLUE + "rP" + TextFormatting.RED + "lus" + TextFormatting.BLACK + "] "));
-        if (Objects.equals(event.player.getName(), "ImmortalPharaoh7"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-        if (Objects.equals(event.player.getName(), "EPIIC_THUNDERCAT"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.LIGHT_PURPLE + "[ArmorPlus] "));
-        if (Objects.equals(event.player.getName(), "Douggie1999"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-        if (Objects.equals(event.player.getName(), "A_Deathly_Touch"))
-            event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.GREEN + "A" + TextFormatting.AQUA + "r" + TextFormatting.RED + "m" + TextFormatting.LIGHT_PURPLE + "o" + TextFormatting.YELLOW + "r" + TextFormatting.YELLOW + "P" + TextFormatting.LIGHT_PURPLE + "l" + TextFormatting.RED + "u" + TextFormatting.AQUA + "s" + TextFormatting.BLACK + "] "));
-    }
+    /*    @SubscribeEvent(priority = EventPriority.HIGHEST)
+        public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+            if (Objects.equals(event.player.getName(), "sokratis12GR"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.AQUA + "[ArmorPlus] "));
+            if (Objects.equals(event.player.getName(), "Moritz30"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
+            if (Objects.equals(event.player.getName(), "FTB_lag"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.WHITE + "Armo" + TextFormatting.BLUE + "rP" + TextFormatting.RED + "lus" + TextFormatting.BLACK + "] "));
+            if (Objects.equals(event.player.getName(), "ImmortalPharaoh7"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
+            if (Objects.equals(event.player.getName(), "EPIIC_THUNDERCAT"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.LIGHT_PURPLE + "[ArmorPlus] "));
+            if (Objects.equals(event.player.getName(), "Douggie1999"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
+            if (Objects.equals(event.player.getName(), "A_Deathly_Touch"))
+                event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.GREEN + "A" + TextFormatting.AQUA + "r" + TextFormatting.RED + "m" + TextFormatting.LIGHT_PURPLE + "o" + TextFormatting.YELLOW + "r" + TextFormatting.YELLOW + "P" + TextFormatting.LIGHT_PURPLE + "l" + TextFormatting.RED + "u" + TextFormatting.AQUA + "s" + TextFormatting.BLACK + "] "));
+        }
+    */
 
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {

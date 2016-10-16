@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchRegistry;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
@@ -28,6 +29,11 @@ public class ModRecipes {
         addEasyWeaponsRecipes();
         addExpertWeaponsRecipes();
         addIntegrationShapelessRecipes();
+        addRecipes();
+    }
+
+    public static void addRecipes() {
+        HighTechBenchRegistry.addRecipe(new ItemStack(ModBlocks.arpUltiTechBench, 1), "LUUL", "OWHO", "OUUO", "OXXO", 'U', ModItems.theUltimateMaterial, 'W', ModBlocks.arpWorkbench, 'H', ModBlocks.arpHighTechBench, 'O', ModBlocks.compressedObsidian, 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
     }
 
     public static void addIntegrationShapelessRecipes() {
@@ -92,23 +98,22 @@ public class ModRecipes {
         GameRegistry.addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
         GameRegistry.addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
         GameRegistry.addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (Loader.isModLoaded("tesla")) {
-            GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-            GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        }
+        GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
     }
 
     public static void addShapedRecipes() {
 
         ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.advancedArmorForge), "LLL", "CAC", "CCC", 'C', "gemChargedLavaCrystal", 'L', "blockRedstone", 'A', "armorForge"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.armorForge), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpHighTechBench), "LLL", "CAC", "CCC", 'C', "gemChargedLavaCrystal", 'L', "blockRedstone", 'A', "arpWorkbench"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
 
         GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFRod, 1), "XTX", "TST", "XTX", 'T', "dustRedstone", 'S', Items.STICK));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFAxe, 1), "TTX", "TSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFAxe, 1), "XTT", "XST", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFShovel, 1), "XTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFHoe, 1), "TTX", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFHoe, 1), "XTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemRFRod));
@@ -122,6 +127,7 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaHoe, 1), "XTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaSword, 1), "XTX", "XTX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaAxe, 1), "TTX", "TSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaAxe, 1), "XTT", "XST", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaPickaxe, 1), "TTT", "XSX", "XSX", 'T', "ingotSteel", 'S', ModItems.itemTeslaRod));
         }
 

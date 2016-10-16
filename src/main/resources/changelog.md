@@ -1,3 +1,16 @@
+**ArmorPlus 1.10.2-8.0.0.0.1-dev**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added/Removed/Changed}**
+    * MAJOR Update
+        * Refactor of "Armor Forge" to "Workbench" (Tier 1)
+        * Refactor or "Advanced Armor Forge" to "High-Tech Bench" (Tier 2)
+        * Addition of the "Ulti-Tech Bench" (Tier 3)
+        * Moved all ArmorPlus recipes into their benches (UNDER DEVELOPMENT & UNDER CHANGES)
+    * Removed Prefixes before names that were listed
+    * Made all items require to have SHIFT pressed to show their tooltips
+    * Hidded Dev Items from JEI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.1.6**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

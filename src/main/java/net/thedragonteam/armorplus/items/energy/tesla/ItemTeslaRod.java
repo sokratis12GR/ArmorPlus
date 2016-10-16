@@ -4,6 +4,11 @@
 
 package net.thedragonteam.armorplus.items.energy.tesla;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,10 +36,14 @@ public class ItemTeslaRod extends BaseItem {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        if (Loader.isModLoaded("tesla")) {
-            tooltip.add(1, "Tesla is installed all the recipes should work");
-        } else {
-            tooltip.add(1, "Tesla isn't installed none of the recipes will work");
-        }
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            if (Loader.isModLoaded("tesla")) {
+                tooltip.add(1, "Tesla is installed all the recipes should work");
+            } else {
+                tooltip.add(1, "Tesla isn't installed none of the recipes will work");
+            }
+        } else
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 }

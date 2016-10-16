@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.items.consumables;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -19,6 +20,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -38,7 +42,6 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheGiftOfTheGods extends BaseItem {
 
     private static Random random = new Random();
-    private int cooldown = 0;
 
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
@@ -48,6 +51,11 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
@@ -83,12 +91,13 @@ public class TheGiftOfTheGods extends BaseItem {
                 item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
             }
         }
-        while (item == null /*|| (item != null && item instanceof ItemBlock)*/ || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
+        while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
+            int cooldown = 0;
             if (!playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem()) && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() && !debugMode)
                 playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
             else if (debugMode && debugModeGOTG)
-                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), this.cooldown);
+                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
             playerIn.dropItem(item, 1);
             playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStackIn) + " [" + item.getRegistryName() + "]"));
