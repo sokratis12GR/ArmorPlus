@@ -7,7 +7,7 @@
         * Refactor or "Advanced Armor Forge" to "High-Tech Bench" (Tier 2)
         * Addition of the "Ulti-Tech Bench" (Tier 3)
         * Moved all ArmorPlus recipes into their benches (UNDER DEVELOPMENT & UNDER CHANGES)
-    * Removed Prefixes before names that were listed
+    * Removed Prefixes before names that were listed https://github.com/TheDragonTeam/ArmorPlus/blob/1.10.2/src/main/java/net/thedragonteam/armorplus/resources/GlobalEventsArmorPlus.java#L54L71
     * Made all items require to have SHIFT pressed to show their tooltips
     * Hidded Dev Items from JEI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
