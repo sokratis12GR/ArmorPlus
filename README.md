@@ -19,7 +19,7 @@ Developing Addons
 -----------------
 
 Download ArmorPlus and place it into you `/libs/` folder, if there isn't one create it
-You will also be required to downlaod TheDragonLib and place it into `/libs/` or `run/mods` folder in order ArmorPlus to work
+You will also be required to downlaod TheDragonLib and place it into `/libs/` or `/run/mods` folder in order ArmorPlus to work
 
 Mod Integrations
 -----------------
