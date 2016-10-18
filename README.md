@@ -11,6 +11,11 @@ Github
 
 [![GitHub contributors](https://img.shields.io/github/contributors/TheDragonTeam/ArmorPlus.svg)]()
 
+[![GitHub commits](https://img.shields.io/github/commits-since/TheDragonTeam/ArmorPlus/1.10.2.svg)]()
+[![GitHub commits](https://img.shields.io/github/commits-since/TheDragonTeam/ArmorPlus/1.9.4.svg)]()
+[![GitHub commits](https://img.shields.io/github/commits-since/TheDragonTeam/ArmorPlus/1.9.svg)]()
+[![GitHub commits](https://img.shields.io/github/commits-since/TheDragonTeam/ArmorPlus/1.8.9.svg)]()
+
 [![](https://img.shields.io/github/issues/TheDragonTeam/ArmorPlus.svg)]()
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/TheDragonTeam/ArmorPlus.svg)]()
 
