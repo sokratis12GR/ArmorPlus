@@ -62,7 +62,6 @@ public class CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event) {
         LogHelper.info("Begin PostInitialization");
-
         LogHelper.info("Finished PostInitialization");
     }
 

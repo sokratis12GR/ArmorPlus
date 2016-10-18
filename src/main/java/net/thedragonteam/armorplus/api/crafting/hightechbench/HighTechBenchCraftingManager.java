@@ -10,7 +10,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.*;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModGuardianRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModItemRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModSuperStarRecipes;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -44,10 +46,9 @@ public class HighTechBenchCraftingManager {
 
     private HighTechBenchCraftingManager() {
 
-        (new ModEnderDragonRecipes()).addRecipes(this);
         (new ModGuardianRecipes()).addRecipes(this);
         (new ModSuperStarRecipes()).addRecipes(this);
-        (new ModTheUltimateRecipes()).addRecipes(this);
+        (new ModItemRecipes()).addRecipes(this);
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

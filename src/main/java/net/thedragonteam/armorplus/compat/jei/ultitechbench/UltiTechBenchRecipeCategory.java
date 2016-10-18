@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.compat.jei.hightechbench;
+package net.thedragonteam.armorplus.compat.jei.ultitechbench;
 
 import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -25,10 +25,10 @@ import javax.annotation.Nonnull;
  * ArmorPlus created by sokratis12GR on 8/31/2016 11:57 PM.
  * - TheDragonTeam
  */
-public class HighTechBenchRecipeCategory implements IRecipeCategory {
+public class UltiTechBenchRecipeCategory implements IRecipeCategory {
 
-    public static final int width = 136;
-    public static final int height = 70;
+    public static final int width = 156;
+    public static final int height = 93;
     private static final int OUTPUT_SLOT = 0;
     private static final int INPUT_SLOT = 1;
     @Nonnull
@@ -38,10 +38,10 @@ public class HighTechBenchRecipeCategory implements IRecipeCategory {
     @Nonnull
     private final ICraftingGridHelper craftingGridHelper;
 
-    public HighTechBenchRecipeCategory() {
-        ResourceLocation location = new ResourceLocation("armorplus", "textures/gui/container/gui_high_tech_bench.png");
+    public UltiTechBenchRecipeCategory() {
+        ResourceLocation location = new ResourceLocation("armorplus", "textures/gui/container/gui_ulti_tech_bench.png");
         background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, 11, 16, width, height);
-        localizedName = Translator.translateToLocal("gui.jei.category.high_tech_bench");
+        localizedName = Translator.translateToLocal("gui.jei.category.ulti_tech_bench");
         craftingGridHelper = ArmorPlusPlugin.jeiHelper.getGuiHelper().createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
     }
 
@@ -58,7 +58,7 @@ public class HighTechBenchRecipeCategory implements IRecipeCategory {
     @Nonnull
     @Override
     public String getUid() {
-        return Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH;
+        return Constants.Compat.JEI_CATEGORY_ULTI_TECH_BENCH;
     }
 
     @Nonnull
@@ -77,11 +77,11 @@ public class HighTechBenchRecipeCategory implements IRecipeCategory {
     public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
-        guiItemStacks.init(OUTPUT_SLOT, false, 113, 26);
+        guiItemStacks.init(OUTPUT_SLOT, false, 136, 36);
 
-        for (int y = 0; y < 4; ++y) {
-            for (int x = 0; x < 4; ++x) {
-                int index = INPUT_SLOT + x + (y * 4);
+        for (int y = 0; y < 5; ++y) {
+            for (int x = 0; x < 5; ++x) {
+                int index = INPUT_SLOT + x + (y * 5);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
         }
@@ -100,11 +100,11 @@ public class HighTechBenchRecipeCategory implements IRecipeCategory {
     public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
-        guiItemStacks.init(OUTPUT_SLOT, false, 113, 26);
+        guiItemStacks.init(OUTPUT_SLOT, false, 136, 36);
 
-        for (int y = 0; y < 4; ++y) {
-            for (int x = 0; x < 4; ++x) {
-                int index = INPUT_SLOT + x + (y * 4);
+        for (int y = 0; y < 5; ++y) {
+            for (int x = 0; x < 5; ++x) {
+                int index = INPUT_SLOT + x + (y * 5);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
         }

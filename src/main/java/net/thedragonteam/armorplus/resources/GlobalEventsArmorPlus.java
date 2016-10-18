@@ -51,25 +51,6 @@ public class GlobalEventsArmorPlus {
         }
     }
 
-    /*    @SubscribeEvent(priority = EventPriority.HIGHEST)
-        public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-            if (Objects.equals(event.player.getName(), "sokratis12GR"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.AQUA + "[ArmorPlus] "));
-            if (Objects.equals(event.player.getName(), "Moritz30"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-            if (Objects.equals(event.player.getName(), "FTB_lag"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.WHITE + "Armo" + TextFormatting.BLUE + "rP" + TextFormatting.RED + "lus" + TextFormatting.BLACK + "] "));
-            if (Objects.equals(event.player.getName(), "ImmortalPharaoh7"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-            if (Objects.equals(event.player.getName(), "EPIIC_THUNDERCAT"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.LIGHT_PURPLE + "[ArmorPlus] "));
-            if (Objects.equals(event.player.getName(), "Douggie1999"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.DARK_RED + "[ArmorPlus] "));
-            if (Objects.equals(event.player.getName(), "A_Deathly_Touch"))
-                event.player.addPrefix(new TextComponentString(TextFormatting.BLACK + "[" + TextFormatting.GREEN + "A" + TextFormatting.AQUA + "r" + TextFormatting.RED + "m" + TextFormatting.LIGHT_PURPLE + "o" + TextFormatting.YELLOW + "r" + TextFormatting.YELLOW + "P" + TextFormatting.LIGHT_PURPLE + "l" + TextFormatting.RED + "u" + TextFormatting.AQUA + "s" + TextFormatting.BLACK + "] "));
-        }
-    */
-
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer entity = event.player;

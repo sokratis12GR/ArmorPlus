@@ -43,7 +43,7 @@ public class ContainerUltiTechBench extends Container {
         this.tileEntity = tileEntity;
         this.worldObj = worldIn;
         this.pos = posIn;
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 149, 53));
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
         for (int i = 0; i < 5; ++i) { //i = y
             for (int j = 0; j < 5; ++j) { //j = x

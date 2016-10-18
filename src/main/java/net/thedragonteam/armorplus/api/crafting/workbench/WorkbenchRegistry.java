@@ -15,11 +15,6 @@ public class WorkbenchRegistry {
      * @param params are the parameters for the recipe
      *
      * @result example: WorkbenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXX", "XXX", "XXX", 'X', Items.Stick )
-     * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModEnergyRecipes
-     * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemsRecipes
-     * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes
-     * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes
-     * @see net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModTinkersConstructRecipes
      */
     public static void addRecipe(ItemStack output, Object... params) {
         addShapedRecipe(output, params);

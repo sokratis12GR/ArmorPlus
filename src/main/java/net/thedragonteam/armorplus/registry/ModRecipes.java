@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchRegistry;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
@@ -33,8 +34,46 @@ public class ModRecipes {
     }
 
     public static void addRecipes() {
-        HighTechBenchRegistry.addRecipe(new ItemStack(ModBlocks.arpUltiTechBench, 1), "LUUL", "OWHO", "OUUO", "OXXO", 'U', ModItems.theUltimateMaterial, 'W', ModBlocks.arpWorkbench, 'H', ModBlocks.arpHighTechBench, 'O', ModBlocks.compressedObsidian, 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
+        /* Metal Armor */
+        if (ARPConfig.recipes == 0) {
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "XXXX", "XXXX", "MMMM", "MXXM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "MMMM", "MXXM", "XXXX", "XXXX", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMMM", "MXXM", "MXXM", "MXXM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "XXXX", "MXXM", "MXXM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "MXXM", "MXXM", "XXXX", "XXXX", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "MXXM", "MXXM", "XXXX", 'M', "ingotSteel"));
+        }
+        if (ARPConfig.recipes == 1) {
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "XXXX", "XXXX", "MMMM", "MXXM", 'M', "blockSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "MMMM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMMM", "MXXM", "MXXM", "MXXM", 'M', "blockSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "XXXX", "MXXM", "MXXM", 'M', "blockSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "MXXM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "MXXM", "MXXM", "XXXX", 'M', "blockSteel"));
+        }
+        /* Electrical Armor */
+        if (ARPConfig.recipes == 0) {
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "EEE", "EXE", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "XXXX", "EXXE", "EXXE", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXXE", "EXXE", "XXXX", "XXXX", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "EXXE", "EXXE", "XXXX", 'E', "ingotElectrical"));
+        }
+        if (ARPConfig.recipes == 1) {
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "EEE", "EXE", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "XXXX", "EXXE", "EXXE", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXXE", "EXXE", "XXXX", "XXXX", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "EXXE", "EXXE", "XXXX", 'E', "blockElectrical"));
+        }
     }
+
 
     public static void addIntegrationShapelessRecipes() {
         /* NBT-Tag-Compound */

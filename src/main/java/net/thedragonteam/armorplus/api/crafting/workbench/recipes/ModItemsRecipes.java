@@ -6,9 +6,10 @@ package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 public class ModItemsRecipes {
@@ -23,5 +24,6 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 9), "blockSteel"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 9), "blockElectrical"));
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
     }
 }

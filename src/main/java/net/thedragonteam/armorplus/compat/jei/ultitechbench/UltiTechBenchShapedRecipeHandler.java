@@ -2,65 +2,63 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.compat.jei.hightechbench;
+package net.thedragonteam.armorplus.compat.jei.ultitechbench;
 
-import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.util.ErrorUtil;
 import mezz.jei.util.Log;
+import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapedRecipes;
 
-import java.util.List;
+import javax.annotation.Nonnull;
 
-public class HighTechBenchShapelessOreRecipeHandler implements IRecipeHandler<ShapelessOreRecipe> {
-    private final IGuiHelper guiHelper;
-
-    public HighTechBenchShapelessOreRecipeHandler(IGuiHelper guiHelper) {
-        this.guiHelper = guiHelper;
-    }
+/**
+ * net.thedragonteam.armorplus.compat.jei.hightechbench
+ * ArmorPlus created by sokratis12GR on 8/31/2016 11:42 PM.
+ * - TheDragonTeam
+ */
+public class UltiTechBenchShapedRecipeHandler implements IRecipeHandler<ShapedRecipes> {
 
     @Override
-    public Class<ShapelessOreRecipe> getRecipeClass() {
-        return ShapelessOreRecipe.class;
+    @Nonnull
+    public Class<ShapedRecipes> getRecipeClass() {
+        return ShapedRecipes.class;
     }
 
+    @Nonnull
     @Override
     public String getRecipeCategoryUid() {
-        return Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH;
+        return Constants.Compat.JEI_CATEGORY_ULTI_TECH_BENCH;
+    }
+
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid(@Nonnull ShapedRecipes recipe) {
+        return Constants.Compat.JEI_CATEGORY_ULTI_TECH_BENCH;
     }
 
     @Override
-    public String getRecipeCategoryUid(ShapelessOreRecipe recipe) {
-        return Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH;
+    @Nonnull
+    public IRecipeWrapper getRecipeWrapper(@Nonnull ShapedRecipes recipe) {
+        return new UltiTechBenchShapedRecipeWrapper(recipe);
     }
 
     @Override
-    public IRecipeWrapper getRecipeWrapper(ShapelessOreRecipe recipe) {
-        return new HighTechBenchShapelessOreRecipeWrapper(guiHelper, recipe);
-    }
-
-    @Override
-    public boolean isRecipeValid(ShapelessOreRecipe recipe) {
+    public boolean isRecipeValid(@Nonnull ShapedRecipes recipe) {
         if (recipe.getRecipeOutput() == null) {
             String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
             Log.error("Recipe has no outputs. {}", recipeInfo);
             return false;
         }
         int inputCount = 0;
-        for (Object input : recipe.getInput()) {
-            if (input instanceof List) {
-                if (((List) input).isEmpty()) {
-                    // missing items for an oreDict name. This is normal behavior, but the recipe is invalid.
-                    return false;
-                }
-            }
+        for (ItemStack input : recipe.recipeItems) {
             if (input != null) {
                 inputCount++;
             }
         }
-        if (inputCount > 16) {
+        if (inputCount > 25) {
             String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);
             return false;

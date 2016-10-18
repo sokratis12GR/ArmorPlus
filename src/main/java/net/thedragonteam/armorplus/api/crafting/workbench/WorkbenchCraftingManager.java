@@ -10,7 +10,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.workbench.recipes.*;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemsRecipes;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModTinkersConstructRecipes;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -43,7 +46,6 @@ public class WorkbenchCraftingManager {
     }
 
     private WorkbenchCraftingManager() {
-        (new ModEnergyRecipes()).addRecipes(this);
         (new ModItemsRecipes()).addRecipes(this);
         (new ModOriginRecipes()).addRecipes(this);
         (new ModSpecialMobRecipes()).addRecipes(this);
