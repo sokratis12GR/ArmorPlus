@@ -2,6 +2,22 @@
 [![](http://cf.way2muchnoise.eu/full_237366_downloads.svg)](http://minecraft.curseforge.com/projects/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](http://minecraft.curseforge.com/projects/armorplus)
 
+Github
+-----------------
+[![GitHub forks](https://img.shields.io/github/forks/TheDragonTeam/ArmorPlus.svg?style=social&label=Fork)]()
+[![GitHub stars](https://img.shields.io/github/stars/TheDragonTeam/ArmorPlus.svg?style=social&label=Star)]()
+[![GitHub stars](https://img.shields.io/github/stars/TheDragonTeam/ArmorPlus.svg?style=social&label=Watch)]()
+[![GitHub stars](https://img.shields.io/github/stars/TheDragonTeam/ArmorPlus.svg?style=social&label=Follow)]()
+
+[![GitHub contributors](https://img.shields.io/github/contributors/TheDragonTeam/ArmorPlus.svg)]()
+
+[![](https://img.shields.io/github/issues/TheDragonTeam/ArmorPlus.svg)]()
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/TheDragonTeam/ArmorPlus.svg)]()
+
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/TheDragonTeam/ArmorPlus.svg)]()
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-closed/TheDragonTeam/ArmorPlus.svg)]()
+
+[![license](https://img.shields.io/github/license/TheDragonTeam/ArmorPlus.svg)]()
 About this Mod
 -----------------
 
