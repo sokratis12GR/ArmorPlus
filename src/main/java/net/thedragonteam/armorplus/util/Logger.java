@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.util;
 
@@ -10,7 +10,7 @@ import net.thedragonteam.thedragonlib.TheDragonLib;
 
 import java.io.*;
 
-import static java.lang.String.*;
+import static java.lang.String.format;
 
 /**
  * net.thedragonteam.armorplus.util

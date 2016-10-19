@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
@@ -32,16 +32,6 @@ public class HighTechBenchCraftingManager {
     private static final HighTechBenchCraftingManager INSTANCE = new HighTechBenchCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
 
-    /**
-     * Returns the
-     * static instance of
-     * this class
-     */
-    public static HighTechBenchCraftingManager getInstance() {
-        // The static instance of this class
-        return INSTANCE;
-    }
-
     private HighTechBenchCraftingManager() {
 
         (new ModItemRecipes()).addRecipes(this);
@@ -51,6 +41,16 @@ public class HighTechBenchCraftingManager {
                 return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
             }
         });
+    }
+
+    /**
+     * Returns the
+     * static instance of
+     * this class
+     */
+    public static HighTechBenchCraftingManager getInstance() {
+        // The static instance of this class
+        return INSTANCE;
     }
 
     /**

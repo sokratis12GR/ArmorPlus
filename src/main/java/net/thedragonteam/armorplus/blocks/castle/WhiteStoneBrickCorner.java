@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.blocks.castle;
 
@@ -43,11 +43,6 @@ public class WhiteStoneBrickCorner extends BaseCastleBlock {
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
     private static boolean isDifferentStairs(IBlockState p_185704_0_, IBlockAccess p_185704_1_, BlockPos p_185704_2_, EnumFacing p_185704_3_) {
         IBlockState iblockstate = p_185704_1_.getBlockState(p_185704_2_.offset(p_185704_3_));
         return !isWhiteStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != p_185704_0_.getValue(FACING) || iblockstate.getValue(HALF) != p_185704_0_.getValue(HALF);
@@ -88,6 +83,11 @@ public class WhiteStoneBrickCorner extends BaseCastleBlock {
         }
 
         return WhiteStoneBrickCorner.EnumShape.STRAIGHT;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

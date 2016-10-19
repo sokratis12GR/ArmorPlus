@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.compat.jei;
 
@@ -15,7 +15,6 @@ public class CompatibilityJustEnoughItems implements ICompatibility {
     @Override
     public void loadCompatibility(InitializationPhase phase) {
     }
-
 
 
     @Override

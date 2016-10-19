@@ -1,11 +1,15 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.compat;
 
 /**
  * Implement on all primary compatibility classes.
+ * <p>
+ * net.thedragonteam.armorplus.compat
+ * ArmorPlus created by sokratis12GR on 6/21/2016 10:56 PM.
+ * - TheDragonTeam
  * <p>
  * net.thedragonteam.armorplus.compat
  * ArmorPlus created by sokratis12GR on 6/21/2016 10:56 PM.

@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
@@ -35,16 +35,6 @@ public class WorkbenchCraftingManager {
     private static final WorkbenchCraftingManager INSTANCE = new WorkbenchCraftingManager();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
 
-    /**
-     * Returns the
-     * static instance of
-     * this class
-     */
-    public static WorkbenchCraftingManager getInstance() {
-        // The static instance of this class
-        return INSTANCE;
-    }
-
     private WorkbenchCraftingManager() {
         (new ModItemsRecipes()).addRecipes(this);
         (new ModOriginRecipes()).addRecipes(this);
@@ -56,6 +46,16 @@ public class WorkbenchCraftingManager {
                 return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
             }
         });
+    }
+
+    /**
+     * Returns the
+     * static instance of
+     * this class
+     */
+    public static WorkbenchCraftingManager getInstance() {
+        // The static instance of this class
+        return INSTANCE;
     }
 
     /**

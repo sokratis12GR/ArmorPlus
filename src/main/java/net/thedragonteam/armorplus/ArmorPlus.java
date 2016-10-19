@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus;
 
@@ -124,6 +124,11 @@ public class ArmorPlus {
         return ArmorPlus.MODID + ":";
     }
 
+    public static void syncConfig() {
+        if (configuration.hasChanged())
+            configuration.save();
+    }
+
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
@@ -146,11 +151,6 @@ public class ArmorPlus {
 
         proxy.registerEvents();
         proxy.init(event);
-    }
-
-    public static void syncConfig() {
-        if (configuration.hasChanged())
-            configuration.save();
     }
 
     @EventHandler

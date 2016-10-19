@@ -1,6 +1,6 @@
-/*******************************************************************************
+/*
  * Copyright (c) TheDragonTeam 2016.
- ******************************************************************************/
+ */
 
 package net.thedragonteam.armorplus.compat.tweaker;
 
@@ -49,6 +49,53 @@ public class UltiTechBenchCrafting {
     @ZenMethod
     public static void remove(IItemStack target) {
         MineTweakerAPI.apply(new Remove(toStack(target)));
+    }
+
+    private static ItemStack toStack(IItemStack item) {
+        if (item == null) return null;
+        else {
+            Object internal = item.getInternal();
+            if (internal == null || !(internal instanceof ItemStack)) {
+                MineTweakerAPI.getLogger().logError("Not a valid item stack: " + item);
+            }
+            return (ItemStack) internal;
+        }
+    }
+
+    private static Object toObject(IIngredient ingredient) {
+        if (ingredient == null) return null;
+        else {
+            if (ingredient instanceof IOreDictEntry) {
+                return toString((IOreDictEntry) ingredient);
+            } else if (ingredient instanceof IItemStack) {
+                return toStack((IItemStack) ingredient);
+            } else return null;
+        }
+    }
+
+    private static Object[] toObjects(IIngredient[] list) {
+        if (list == null)
+            return null;
+        Object[] ingredients = new Object[list.length];
+        for (int x = 0; x < list.length; x++) {
+            ingredients[x] = toObject(list[x]);
+        }
+        return ingredients;
+    }
+
+    private static Object toActualObject(IIngredient ingredient) {
+        if (ingredient == null) return null;
+        else {
+            if (ingredient instanceof IOreDictEntry) {
+                return OreDictionary.getOres(toString((IOreDictEntry) ingredient));
+            } else if (ingredient instanceof IItemStack) {
+                return toStack((IItemStack) ingredient);
+            } else return null;
+        }
+    }
+
+    private static String toString(IOreDictEntry entry) {
+        return ((IOreDictEntry) entry).getName();
     }
 
     private static class Add implements IUndoableAction {
@@ -139,53 +186,6 @@ public class UltiTechBenchCrafting {
             return null;
         }
 
-    }
-
-    private static ItemStack toStack(IItemStack item) {
-        if (item == null) return null;
-        else {
-            Object internal = item.getInternal();
-            if (internal == null || !(internal instanceof ItemStack)) {
-                MineTweakerAPI.getLogger().logError("Not a valid item stack: " + item);
-            }
-            return (ItemStack) internal;
-        }
-    }
-
-    private static Object toObject(IIngredient ingredient) {
-        if (ingredient == null) return null;
-        else {
-            if (ingredient instanceof IOreDictEntry) {
-                return toString((IOreDictEntry) ingredient);
-            } else if (ingredient instanceof IItemStack) {
-                return toStack((IItemStack) ingredient);
-            } else return null;
-        }
-    }
-
-    private static Object[] toObjects(IIngredient[] list) {
-        if (list == null)
-            return null;
-        Object[] ingredients = new Object[list.length];
-        for (int x = 0; x < list.length; x++) {
-            ingredients[x] = toObject(list[x]);
-        }
-        return ingredients;
-    }
-
-    private static Object toActualObject(IIngredient ingredient) {
-        if (ingredient == null) return null;
-        else {
-            if (ingredient instanceof IOreDictEntry) {
-                return OreDictionary.getOres(toString((IOreDictEntry) ingredient));
-            } else if (ingredient instanceof IItemStack) {
-                return toStack((IItemStack) ingredient);
-            } else return null;
-        }
-    }
-
-    private static String toString(IOreDictEntry entry) {
-        return ((IOreDictEntry) entry).getName();
     }
 
 }
