@@ -1,21 +1,19 @@
 {
   "variants": {
-    "normal": [
-      {
-        "model": "armorplus:compressed_obsidian"
-      },
-      {
-        "model": "armorplus:compressed_obsidian",
-        "y": 90
-      },
-      {
-        "model": "armorplus:compressed_obsidian",
-        "y": 180
-      },
-      {
-        "model": "armorplus:compressed_obsidian",
-        "y": 270
-      }
-    ]
+    "facing=east": {
+      "model": "armorplus:compressed_obsidian"
+    },
+    "facing=west": {
+      "model": "armorplus:compressed_obsidian",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "armorplus:compressed_obsidian",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "armorplus:compressed_obsidian",
+      "y": 270
+    }
   }
 }

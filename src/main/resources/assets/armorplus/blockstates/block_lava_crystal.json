@@ -1,21 +1,19 @@
 {
   "variants": {
-    "normal": [
-      {
-        "model": "armorplus:block_lava_crystal"
-      },
-      {
-        "model": "armorplus:block_lava_crystal",
-        "y": 90
-      },
-      {
-        "model": "armorplus:block_lava_crystal",
-        "y": 180
-      },
-      {
-        "model": "armorplus:block_lava_crystal",
-        "y": 270
-      }
-    ]
+    "facing=east": {
+      "model": "armorplus:block_lava_crystal"
+    },
+    "facing=west": {
+      "model": "armorplus:block_lava_crystal",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "armorplus:block_lava_crystal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "armorplus:block_lava_crystal",
+      "y": 270
+    }
   }
 }

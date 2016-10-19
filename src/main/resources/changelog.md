@@ -4,7 +4,9 @@
 * **{Features Added/Removed/Changed}**
     * Moved more recipes to the benches and changed some recipes
     * Added JEI support for the Ulti-Tech Bench
-    * WIP CraftTweaker/MineTweaker3 Integration/Support
+    * WIP CraftTweaker/MineTweaker3 Integration/Support (NOT WORKING YET)
+    * Added support for block rotation
+        * Block Lava Crystal, Block of Steel, Electrical Block, Lava Nether Brick, Compressed Obsidian
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.0.1-dev**
 ============================
