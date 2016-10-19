@@ -47,7 +47,7 @@ public class ModRecipes {
         if (ARPConfig.recipes == 1) {
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "XXXX", "XXXX", "MMMM", "MXXM", 'M', "blockSteel"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "MMMM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "ingotSteel"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "blockSteel"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMMM", "MXXM", "MXXM", "MXXM", 'M', "blockSteel"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "XXXX", "MXXM", "MXXM", 'M', "blockSteel"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "MXXM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
@@ -55,7 +55,7 @@ public class ModRecipes {
         }
         /* Electrical Armor */
         if (ARPConfig.recipes == 0) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "EEE", "EXE", 'E', "ingotElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "XXXX", "EEEE", "EXXE", 'E', "ingotElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "ingotElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "ingotElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "ingotElectrical"));
@@ -64,7 +64,7 @@ public class ModRecipes {
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "EXXE", "EXXE", "XXXX", 'E', "ingotElectrical"));
         }
         if (ARPConfig.recipes == 1) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "EEE", "EXE", 'E', "blockElectrical"));
+            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "XXXX", "EEEE", "EXXE", 'E', "blockElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "blockElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "blockElectrical"));
             HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "blockElectrical"));
@@ -199,10 +199,8 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', Items.APPLE));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', Items.APPLE));
         }
-        if (Loader.isModLoaded("tesla")) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.electricalBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
-        }
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.electricalBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
     }
 
     public static void addShapelessRecipes() {

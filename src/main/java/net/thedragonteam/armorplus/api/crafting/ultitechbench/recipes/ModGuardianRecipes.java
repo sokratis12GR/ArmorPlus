@@ -2,105 +2,120 @@
  * Copyright (c) TheDragonTeam 2016.
  ******************************************************************************/
 
-package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
+package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableGuardianArmorRecipes;
 
 public class ModGuardianRecipes {
-    public void addRecipes(HighTechBenchCraftingManager manager) {
+    public void addRecipes(UltiTechBenchCraftingManager manager) {
 
         /* Guardian Armor */
         if (ARPConfig.recipes == 0 && enableGuardianArmorRecipes) {
             manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
-                    "GGGG",
-                    "GXXG",
-                    "XXXX",
-                    "XXXX",
+                    "GGGGG",
+                    "GXXXG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
                     'G', ModItems.guardianScale);
             manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
-                    "XXXX",
-                    "XXXX",
-                    "GGGG",
-                    "GXXG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
+                    "GGGGG",
+                    "GXXXG",
                     'G', ModItems.guardianScale);
             manager.addRecipe(new ItemStack(ModItems.guardianChestplate, 1),
-                    "GXXG",
-                    "GGGG",
-                    "GGGG",
-                    "GGGG",
+                    "GXXXG",
+                    "GXXXG",
+                    "GGGGG",
+                    "GGGGG",
+                    "GGGGG",
                     'G', ModItems.guardianScale);
             manager.addRecipe(new ItemStack(ModItems.guardianLeggings, 1),
-                    "GGGG",
-                    "GGGG",
-                    "GXXG",
-                    "GXXG",
+                    "GGGGG",
+                    "GGGGG",
+                    "GXXXG",
+                    "GXXXG",
+                    "GXXXG",
                     'G', ModItems.guardianScale);
             manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
-                    "GXXG",
-                    "GXXG",
-                    "XXXX",
-                    "XXXX",
+                    "GXXXG",
+                    "GXXXG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
                     'G', ModItems.guardianScale);
             manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
-                    "XXXX",
-                    "XXXX",
-                    "GXXG",
-                    "GXXG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
+                    "GXXXG",
+                    "GXXXG",
                     'G', ModItems.guardianScale);
         }
         if (ARPConfig.recipes == 1 && enableGuardianArmorRecipes) {
             manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
-                    "GPPG",
-                    "GLLG",
-                    "XXXX",
-                    "XXXX",
+                    "GPPPG",
+                    "GSLSG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
                     'G', ModItems.guardianScale,
                     'L', Blocks.SEA_LANTERN,
-                    'P', Items.PRISMARINE_CRYSTALS)
-            ;
+                    'P', Items.PRISMARINE_CRYSTALS,
+                    'S', Blocks.PRISMARINE);
             manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
-                    "XXXX",
-                    "XXXX",
-                    "GPPG",
-                    "GLLG",
+                    "XXXXX",
+                    "XXXXX",
+                    "XXXXX",
+                    "GPPPG",
+                    "GSLSG",
                     'G', ModItems.guardianScale,
                     'L', Blocks.SEA_LANTERN,
-                    'P', Items.PRISMARINE_CRYSTALS);
+                    'P', Items.PRISMARINE_CRYSTALS,
+                    'S', Blocks.PRISMARINE);
             manager.addRecipe(new ItemStack(ModItems.guardianChestplate, 1),
-                    "GXXG",
-                    "GPPG",
-                    "PLLP",
-                    "GPPG",
+                    "LXXXL",
+                    "GXXXG",
+                    "PGGGP",
+                    "GSLSG",
+                    "PGGGP",
                     'G', ModItems.guardianScale,
                     'L', Blocks.SEA_LANTERN,
-                    'P', Items.PRISMARINE_CRYSTALS);
+                    'P', Items.PRISMARINE_CRYSTALS,
+                    'S', Blocks.PRISMARINE);
             manager.addRecipe(new ItemStack(ModItems.guardianLeggings, 1),
-                    "GPPG",
-                    "GLLG",
-                    "PXXP",
-                    "GXXG",
+                    "GPGPG",
+                    "GSLSG",
+                    "GXXXG",
+                    "GXXXG",
+                    "PXXXP",
                     'G', ModItems.guardianScale,
                     'L', Blocks.SEA_LANTERN,
-                    'P', Items.PRISMARINE_CRYSTALS);
+                    'P', Items.PRISMARINE_CRYSTALS,
+                    'S', Blocks.PRISMARINE);
             manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
-                    "GXXG",
-                    "SXXS",
-                    "XXXX",
-                    "XXXX",
+                    "GXXXG",
+                    "GXXXG",
+                    "GXXXG",
+                    "SXXXS",
+                    "XXXXX",
                     'G', ModItems.guardianScale,
                     'S', Blocks.SPONGE);
             manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
-                    "XXXX",
-                    "XXXX",
-                    "GXXG",
-                    "SXXS",
+                    "XXXXX",
+                    "GXXXG",
+                    "GXXXG",
+                    "GXXXG",
+                    "SXXXS",
                     'G', ModItems.guardianScale,
                     'S', Blocks.SPONGE);
         }

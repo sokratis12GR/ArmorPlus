@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 public class ModOriginRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
-                /* Coal Armor */
+        /* Coal Armor */
         if (ARPConfig.recipes == 0 && ARPConfig.enableCoalArmorRecipes) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalHelmet, 1), "XXX", "CCC", "CXC", 'C', "itemCoal"));
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalHelmet, 1), "CCC", "CXC", "XXX", 'C', "itemCoal"));

@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModEnderDragonRecipes;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModGuardianRecipes;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModSuperStarRecipes;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModUltimateRecipes;
 
 import javax.annotation.Nullable;
@@ -47,6 +49,8 @@ public class UltiTechBenchCraftingManager {
 
         (new ModUltimateRecipes()).addRecipes(this);
         (new ModEnderDragonRecipes()).addRecipes(this);
+        (new ModSuperStarRecipes()).addRecipes(this);
+        (new ModGuardianRecipes()).addRecipes(this);
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {
