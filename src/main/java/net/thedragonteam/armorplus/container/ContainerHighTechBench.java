@@ -11,12 +11,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.SlotCrafting;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 
 import javax.annotation.Nullable;
 
@@ -28,21 +26,15 @@ import javax.annotation.Nullable;
 public class ContainerHighTechBench extends Container {
 
     /**
-     * The crafting matrix inventory (4x3).
+     * The crafting matrix inventory (4x4).
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
-    /**
-     * Position of the benches
-     */
-    public BlockPos pos;
-    private TileEntityHighTechBench tileEntity;
+
     private World worldObj;
 
-    public ContainerHighTechBench(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityHighTechBench tileEntity) {
-        this.tileEntity = tileEntity;
+    public ContainerHighTechBench(InventoryPlayer playerInventory, World worldIn) {
         this.worldObj = worldIn;
-        this.pos = posIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 44));
 
         for (int i = 0; i < 4; ++i) { //i = y

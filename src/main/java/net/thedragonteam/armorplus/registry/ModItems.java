@@ -388,6 +388,8 @@ public class ModItems {
     public static ItemLaser itemLaser;
     public static ItemSomething itemSomething;
 
+    public static GuiTester guiTester;
+
     public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
 
     public ModItems() {
@@ -395,6 +397,7 @@ public class ModItems {
     }
 
     public static void init() {
+        guiTester = new GuiTester();
         itemSomething = new ItemSomething();
         itemLaser = new ItemLaser();
         itemRFShovel = new ItemRFShovel();
@@ -562,6 +565,7 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        guiTester.initModel();
         itemSomething.initModel();
         itemLaser.initModel();
         itemRFShovel.initModel();

@@ -7,15 +7,15 @@ package net.thedragonteam.armorplus.items.base.energy.rf;
 import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.base.BaseSword;
 
-public class BaseRFSword extends ItemSword implements IEnergyContainerItem {
+public class BaseRFSword extends BaseSword implements IEnergyContainerItem {
 
     protected int capacity;
     protected int maxReceive;
@@ -30,9 +30,7 @@ public class BaseRFSword extends ItemSword implements IEnergyContainerItem {
     }
 
     public BaseRFSword(ToolMaterial material, String name, int capacity, int maxReceive, int maxExtract) {
-        super(material);
-        setRegistryName(name);        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);     // Used for localization (en_US.lang)
+        super(material, name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.capacity = capacity;

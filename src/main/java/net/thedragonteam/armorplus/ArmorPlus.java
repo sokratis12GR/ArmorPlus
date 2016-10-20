@@ -83,7 +83,7 @@ public class ArmorPlus {
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
 
     private GuiHandler GuiHandler = new GuiHandler();
-    
+
     @SuppressWarnings("unused")
     private ModItems items;
     @SuppressWarnings("unused")

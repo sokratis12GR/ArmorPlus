@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 
 import javax.annotation.Nullable;
 
@@ -62,8 +64,8 @@ public class ShapedRecipes implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     public boolean matches(InventoryCrafting inv, World worldIn) {
-        for (int i = 0; i <= 5 - this.recipeWidth; ++i) {
-            for (int j = 0; j <= 4 - this.recipeHeight; ++j) {
+        for (int i = 0; i <= 3 - this.recipeWidth; ++i) {
+            for (int j = 0; j <= 3 - this.recipeHeight; ++j) {
                 if (this.checkMatch(inv, i, j, true)) {
                     return true;
                 }
@@ -81,8 +83,8 @@ public class ShapedRecipes implements IRecipe {
      * Checks if the region of a crafting inventory is match for the recipe.
      */
     private boolean checkMatch(InventoryCrafting p_77573_1_, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
-        for (int i = 0; i < 5; ++i) {
-            for (int j = 0; j < 4; ++j) {
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
                 int k = i - p_77573_2_;
                 int l = j - p_77573_3_;
                 ItemStack itemstack = null;

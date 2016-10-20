@@ -11,12 +11,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.workbench.InventoryCrafting;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nullable;
 
@@ -32,17 +30,11 @@ public class ContainerWorkbench extends Container {
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
-    /**
-     * Position of the benches
-     */
-    public BlockPos pos;
-    private TileEntityWorkbench tileEntity;
+
     private World worldObj;
 
-    public ContainerWorkbench(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityWorkbench tileEntity) {
-        this.tileEntity = tileEntity;
+    public ContainerWorkbench(InventoryPlayer playerInventory, World worldIn) {
         this.worldObj = worldIn;
-        this.pos = posIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
         for (int i = 0; i < 3; ++i) { //i = y

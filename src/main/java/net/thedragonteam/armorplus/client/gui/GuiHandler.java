@@ -12,9 +12,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 import net.thedragonteam.armorplus.container.ContainerWorkbench;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 public class GuiHandler implements IGuiHandler {
 
@@ -23,7 +20,6 @@ public class GuiHandler implements IGuiHandler {
     public static final int GUI_WORKBENCH = 2;
     public static final int GUI_HIGH_TECH_BENCH = 3;
     public static final int GUI_ULTI_TECH_BENCH = 4;
-    public static final int GUI_LAVA_CHEST = 5;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -32,13 +28,13 @@ public class GuiHandler implements IGuiHandler {
         if (ID == GUI_ARMORPLUS_INFO)
             return new GuiArmorPlusInfo();
         if (ID == GUI_WORKBENCH) {
-            return new ContainerWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new ContainerWorkbench(player.inventory, world);
         }
         if (ID == GUI_HIGH_TECH_BENCH) {
-            return new ContainerHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new ContainerHighTechBench(player.inventory, world);
         }
         if (ID == GUI_ULTI_TECH_BENCH) {
-            return new ContainerUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new ContainerUltiTechBench(player.inventory, world);
         }
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
         if (te instanceof IInventoryGui) {
@@ -54,13 +50,13 @@ public class GuiHandler implements IGuiHandler {
         if (ID == GUI_ARMORPLUS_INFO)
             return new GuiArmorPlusInfo();
         if (ID == GUI_WORKBENCH) {
-            return new GuiWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new GuiWorkbench(player.inventory, world);
         }
         if (ID == GUI_HIGH_TECH_BENCH) {
-            return new GuiHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new GuiHighTechBench(player.inventory, world);
         }
         if (ID == GUI_ULTI_TECH_BENCH) {
-            return new GuiUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
+            return new GuiUltiTechBench(player.inventory, world);
         }
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
         if (te instanceof IInventoryGui) {

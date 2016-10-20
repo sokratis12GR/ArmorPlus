@@ -6,36 +6,28 @@ package net.thedragonteam.armorplus.items.base.energy.tesla;
 
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
+import net.thedragonteam.armorplus.items.base.BaseAxe;
 import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
 
-public class BaseTeslaAxe extends ItemAxe {
+public class BaseTeslaAxe extends BaseAxe {
 
     private int maxCapacity;
     private int output;
     private int input;
 
     public BaseTeslaAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
+        super(material, name);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
@@ -44,10 +36,7 @@ public class BaseTeslaAxe extends ItemAxe {
     }
 
     public BaseTeslaAxe(ToolMaterial material, String name, int maxCapacity, int input, int output) {
-        super(material);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
+        this(material, name, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
@@ -58,11 +47,6 @@ public class BaseTeslaAxe extends ItemAxe {
     @Override
     public boolean isItemTool(ItemStack stack) {
         return true;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Optional.Method(modid = "tesla")

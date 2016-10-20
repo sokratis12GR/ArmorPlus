@@ -11,12 +11,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.InventoryCrafting;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 
 import javax.annotation.Nullable;
 
@@ -28,21 +26,15 @@ import javax.annotation.Nullable;
 public class ContainerUltiTechBench extends Container {
 
     /**
-     * The crafting matrix inventory (4x3).
+     * The crafting matrix inventory (5x5).
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 5, 5);
     public IInventory craftResult = new InventoryCraftResult();
-    /**
-     * Position of the benches
-     */
-    public BlockPos pos;
-    private TileEntityUltiTechBench tileEntity;
+
     private World worldObj;
 
-    public ContainerUltiTechBench(InventoryPlayer playerInventory, World worldIn, BlockPos posIn, TileEntityUltiTechBench tileEntity) {
-        this.tileEntity = tileEntity;
+    public ContainerUltiTechBench(InventoryPlayer playerInventory, World worldIn) {
         this.worldObj = worldIn;
-        this.pos = posIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
         for (int i = 0; i < 5; ++i) { //i = y
@@ -92,7 +84,7 @@ public class ContainerUltiTechBench extends Container {
         super.onContainerClosed(playerIn);
 
         if (!this.worldObj.isRemote) {
-            for (int i = 0; i < 16; ++i) {
+            for (int i = 0; i < 25; ++i) {
                 ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
                 if (itemstack != null) {

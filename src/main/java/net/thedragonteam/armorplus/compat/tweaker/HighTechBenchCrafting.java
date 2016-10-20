@@ -12,7 +12,7 @@ import minetweaker.api.oredict.IOreDictEntry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessOreRecipe;
 import stanhebben.zenscript.annotations.ZenClass;

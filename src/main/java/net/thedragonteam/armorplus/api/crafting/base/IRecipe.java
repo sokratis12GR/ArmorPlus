@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.api.crafting.ultitechbench;
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
 import net.minecraft.item.ItemStack;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
 
 public class WorkbenchRegistry {
 

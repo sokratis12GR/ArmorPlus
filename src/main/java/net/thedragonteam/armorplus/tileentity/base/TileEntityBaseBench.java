@@ -25,12 +25,11 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
     public int stackLimit;
     public String tileEntityName;
 
-
     /**
      * the amount of slots for the crafting grid
      */
-    private ItemStack[] inventory = new ItemStack[itemStackAmount];
-    private String customName;
+    public ItemStack[] inventory = new ItemStack[itemStackAmount];
+    public String customName;
 
     public TileEntityBaseBench(String tileEntityName, int itemStackAmount, int inventorySize, int stackLimit) {
         this.tileEntityName = tileEntityName;
@@ -40,11 +39,11 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
         this.inventory = new ItemStack[this.getSizeInventory()];
     }
 
-    private String getCustomName() {
+    public String getCustomName() {
         return customName;
     }
 
-    private void setCustomName(String customName) {
+    public void setCustomName(String customName) {
         this.customName = customName;
     }
 

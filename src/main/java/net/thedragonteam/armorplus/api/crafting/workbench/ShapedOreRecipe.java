@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 
 import java.util.HashMap;
 import java.util.Iterator;

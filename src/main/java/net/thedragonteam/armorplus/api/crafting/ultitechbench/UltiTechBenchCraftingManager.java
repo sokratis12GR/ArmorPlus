@@ -10,6 +10,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModEnderDragonRecipes;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModGuardianRecipes;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModSuperStarRecipes;

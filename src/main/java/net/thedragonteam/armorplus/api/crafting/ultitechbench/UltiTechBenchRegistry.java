@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 import net.minecraft.item.ItemStack;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
 
 public class UltiTechBenchRegistry {
 

@@ -11,26 +11,15 @@ import net.thedragonteam.armorplus.ArmorPlus;
 public class BaseBlock extends Block {
 
     public BaseBlock(Material material, String name) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, 0F, 0F);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, resistance, hardness, null, 0);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        this.setHarvestLevel(tool, harvestLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, resistance, hardness, tool, harvestLevel, 0F);
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {

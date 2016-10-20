@@ -7,11 +7,14 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
+import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 
 import javax.annotation.Nullable;
 
 /**
- * net.thedragonteam.armorplus.api.crafting.hightechbench
+ * net.thedragonteam.armorplus.api.crafting.benches
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
  * - TheDragonTeam
  */
@@ -51,7 +54,7 @@ public class ShapedRecipes implements IRecipe {
 
         for (int i = 0; i < aitemstack.length; ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack[i] = ForgeHooks.getContainerItem(itemstack);
         }
 
         return aitemstack;

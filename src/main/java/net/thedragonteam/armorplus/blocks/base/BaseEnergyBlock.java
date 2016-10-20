@@ -14,26 +14,15 @@ import net.thedragonteam.armorplus.ArmorPlus;
 public class BaseEnergyBlock extends BlockContainer {
 
     public BaseEnergyBlock(Material material, String name) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setCreativeTab(ArmorPlus.tabArmorplusTesla);
+        this(material, name, 0, 0);
     }
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        setCreativeTab(ArmorPlus.tabArmorplusTesla);
+        this(material, name, resistance, hardness, null, 0);
     }
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        this.setHarvestLevel(tool, harvestLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusTesla);
+        this(material, name, resistance, hardness, tool, harvestLevel, 0F);
     }
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
