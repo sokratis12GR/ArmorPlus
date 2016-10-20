@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.blocks.benches;
 
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -12,9 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -24,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.blocks.base.BaseBlock;
+import net.thedragonteam.armorplus.blocks.base.BaseBenchBlock;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
@@ -35,10 +31,10 @@ import javax.annotation.Nullable;
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class Workbench extends BaseBlock implements ITileEntityProvider {
+public class Workbench extends BaseBenchBlock {
 
-    public Workbench() {
-        super(Material.ROCK, "workbench", 1000.0F, 10.0F, "pickaxe", 2);
+    public Workbench(TileEntityWorkbench tileEntityWorkbench) {
+        super(Material.ROCK, "workbench", 1000.0F, 10.0F, "pickaxe", 2, tileEntityWorkbench);
         setRegistryName("workbench");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
@@ -47,32 +43,6 @@ public class Workbench extends BaseBlock implements ITileEntityProvider {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityWorkbench();
     }
 
     @Override

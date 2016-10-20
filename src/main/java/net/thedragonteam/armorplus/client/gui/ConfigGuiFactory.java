@@ -14,7 +14,6 @@ public class ConfigGuiFactory implements IModGuiFactory {
 
     @Override
     public void initialize(Minecraft minecraftInstance) {
-
     }
 
     @Override
@@ -31,4 +30,6 @@ public class ConfigGuiFactory implements IModGuiFactory {
     public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
         return null;
     }
+
+
 }

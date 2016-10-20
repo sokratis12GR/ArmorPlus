@@ -5,8 +5,6 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModGuardianRecipes;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.ModSuperStarRecipes;
 
 public class HighTechBenchRegistry {
 
@@ -17,8 +15,6 @@ public class HighTechBenchRegistry {
      * @param params are the parameters for the recipe
      *
      * @result example: HighTechBenchRegistry.addRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
-     * @see ModGuardianRecipes
-     * @see ModSuperStarRecipes
      */
     public static void addRecipe(ItemStack output, Object... params) {
         addShapedRecipe(output, params);

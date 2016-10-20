@@ -6,32 +6,23 @@ package net.thedragonteam.armorplus;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.client.gui.*;
+import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.container.ContainerHighTechBench;
-import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
-import net.thedragonteam.armorplus.container.ContainerWorkbench;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.registry.ModCompatibility;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -41,8 +32,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.UUID;
-
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json")
 public class ArmorPlus {
@@ -73,6 +62,7 @@ public class ArmorPlus {
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.SERVERPROXY)
     public static CommonProxy proxy;
+
     public static CreativeTabs tabArmorplus = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
     public static CreativeTabs tabArmorplusItems = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
     public static CreativeTabs tabArmorplusBlocks = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
@@ -91,10 +81,9 @@ public class ArmorPlus {
      * The GameProfile used by the dummy ArmorPlus player
      */
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
-    /**
-     * A list of the usernames of players who have donated to ArmorPlus.
-     */
+
     private GuiHandler GuiHandler = new GuiHandler();
+    
     @SuppressWarnings("unused")
     private ModItems items;
     @SuppressWarnings("unused")
@@ -192,39 +181,5 @@ public class ArmorPlus {
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandArmorPlus());
-    }
-
-    private static class GuiHandler implements IGuiHandler {
-        @Override
-        public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-            if (ID == GUI_ARMORPLUS)
-                return new GuiArmorPlus();
-            if (ID == GUI_WORKBENCH) {
-                return new ContainerWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            if (ID == GUI_HIGH_TECH_BENCH) {
-                return new ContainerHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            if (ID == GUI_ULTI_TECH_BENCH) {
-                return new ContainerUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            return null;
-        }
-
-        @Override
-        public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-            if (ID == GUI_ARMORPLUS)
-                return new GuiArmorPlus();
-            if (ID == GUI_WORKBENCH) {
-                return new GuiWorkbench(player.inventory, world, new BlockPos(x, y, z), (TileEntityWorkbench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            if (ID == GUI_HIGH_TECH_BENCH) {
-                return new GuiHighTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityHighTechBench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            if (ID == GUI_ULTI_TECH_BENCH) {
-                return new GuiUltiTechBench(player.inventory, world, new BlockPos(x, y, z), (TileEntityUltiTechBench) world.getTileEntity(new BlockPos(x, y, z)));
-            }
-            return null;
-        }
     }
 }

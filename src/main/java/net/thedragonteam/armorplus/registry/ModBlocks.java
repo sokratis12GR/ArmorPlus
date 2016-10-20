@@ -20,6 +20,9 @@ import net.thedragonteam.armorplus.blocks.spawners.SpawnerEnderDragonZombie;
 import net.thedragonteam.armorplus.blocks.spawners.SpawnerGuardian;
 import net.thedragonteam.armorplus.blocks.v2.ElectricalBlock;
 import net.thedragonteam.armorplus.blocks.v2.SteelBlock;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -55,9 +58,9 @@ public class ModBlocks {
         whiteStoneBrickCorner = new WhiteStoneBrickCorner();
         spawnerGuardian = new SpawnerGuardian();
         spawnerEnderDragonZombie = new SpawnerEnderDragonZombie();
-        arpWorkbench = new Workbench();
-        arpHighTechBench = new HighTechBench();
-        arpUltiTechBench = new UltiTechBench();
+        arpWorkbench = new Workbench(new TileEntityWorkbench());
+        arpHighTechBench = new HighTechBench(new TileEntityHighTechBench());
+        arpUltiTechBench = new UltiTechBench(new TileEntityUltiTechBench());
     }
 
     @SideOnly(Side.CLIENT)
