@@ -95,7 +95,7 @@ public class ModWeaponTierTwoRecipes {
                     "LXXX",
                     "LXXX",
                     "LXXX",
-                    "LXXX",
+                    "SXXX",
                     'L', "gemLavaCrystal",
                     'S', "stickWood"));
         }
@@ -248,7 +248,7 @@ public class ModWeaponTierTwoRecipes {
                     "LXXX",
                     "LXXX",
                     "LXXX",
-                    "LXXX",
+                    "SXXX",
                     'L', "gemChargedLavaCrystal",
                     'S', "stickWood"));
         }
