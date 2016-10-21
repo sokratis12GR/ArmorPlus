@@ -150,7 +150,7 @@ public class ModWeaponTierTwoRecipes {
                     "SXXO",
                     "SOOX",
                     'O', "obsidian",
-                    'S', "string"));
+                    'S', "C"));
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaBow, 1),
                     "XLLS",
                     "LXXS",

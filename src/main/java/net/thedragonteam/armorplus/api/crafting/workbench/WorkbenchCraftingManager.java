@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemsRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
-import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModTinkersConstructRecipes;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTierOneRecipes;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -41,7 +41,7 @@ public class WorkbenchCraftingManager {
         (new ModItemsRecipes()).addRecipes(this);
         (new ModOriginRecipes()).addRecipes(this);
         (new ModSpecialMobRecipes()).addRecipes(this);
-        (new ModTinkersConstructRecipes()).addRecipes(this);
+        (new ModWeaponsTierOneRecipes()).addRecipes(this);
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

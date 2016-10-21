@@ -32,10 +32,10 @@ public class ModUltimateRecipes {
                     "OXXOX",
                     "XXXXX",
                     'U', ModItems.theUltimateMaterial,
-                    'W', ModBlocks.arpWorkbench, 'H',
-                    ModBlocks.arpHighTechBench, 'O',
-                    ModBlocks.compressedObsidian, 'L',
-                    new ItemStack(ModItems.lavaCrystal, 1, 1));
+                    'W', ModBlocks.arpWorkbench,
+                    'H', ModBlocks.arpHighTechBench,
+                    'O', ModBlocks.compressedObsidian,
+                    'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
             manager.addRecipe(new ItemStack(ModItems.theUltimateHelmet, 1),
                     "UUCUU",
                     "UCXCU",

@@ -14,6 +14,7 @@ import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModEnergyRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModItemRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 
 import javax.annotation.Nullable;
@@ -41,6 +42,7 @@ public class HighTechBenchCraftingManager {
         (new ModItemRecipes()).addRecipes(this);
         (new ModEnergyRecipes()).addRecipes(this);
         (new ModWeaponTierTwoRecipes()).addRecipes(this);
+        (new ModTinkersConstructRecipes()).addRecipes(this);
 
         Collections.sort(this.recipes, new Comparator<IRecipe>() {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {

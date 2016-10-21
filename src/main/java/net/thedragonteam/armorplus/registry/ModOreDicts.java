@@ -30,7 +30,6 @@ public class ModOreDicts {
         registerOre("arpUltiTechBench", new ItemStack(ModBlocks.arpUltiTechBench, 1));
         registerOre("arpWorkbenchTier3", new ItemStack(ModBlocks.arpUltiTechBench, 1));
         registerOre("arpWorkbenchTierThree", new ItemStack(ModBlocks.arpUltiTechBench, 1));
-
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
         registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
@@ -48,5 +47,6 @@ public class ModOreDicts {
         //Vanilla
         registerOre("itemCoal", new ItemStack(Items.COAL, 1));
         registerOre("itemCharcoal", new ItemStack(Items.COAL, 1, 1));
+        registerOre("itemArrow", new ItemStack(Items.ARROW, 1));
     }
 }
