@@ -12,6 +12,11 @@ import net.thedragonteam.armorplus.ArmorPlus;
  * - TheDragonTeam
  */
 public class Constants {
+
+    public static class API {
+        public static final String API_VERSION = "1.0";
+    }
+
     public static class Compat {
         public static final String JEI_CATEGORY_WORKBENCH = ArmorPlus.MODID + ":benches";
         public static final String JEI_CATEGORY_HIGH_TECH_BENCH = ArmorPlus.MODID + ":high_tech_bench";

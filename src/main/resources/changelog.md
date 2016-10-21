@@ -1,6 +1,8 @@
-**ArmorPlus 1.10.2-8.0.0.0.2-dev**
+**ArmorPlus 1.10.2-8.0.0.2-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Versioning}**
+    * <MC>-<Major>.<Mino>.<Patch>.<Build>
 * **{Features Added/Removed/Changed}**
     * Moved more recipes to the benches and changed some recipes
     * Added JEI support for the Ulti-Tech Bench
