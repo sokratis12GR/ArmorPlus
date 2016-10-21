@@ -24,9 +24,9 @@ public class ModItemRecipes {
                 'O', ModBlocks.compressedObsidian,
                 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.theUltimateMaterial, 1),
-                ModItems.enderDragonScale,
-                ModItems.guardianScale,
-                ModItems.witherBone,
-                new ItemStack(ModItems.lavaCrystal, 1, 1)));
+                "scaleEnderDragon",
+                "scaleGuardian",
+                "witherBone",
+                "gemChargedLavaCrystal"));
     }
 }

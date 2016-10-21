@@ -12,10 +12,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchRegistry;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.registry.recipes.ModWeaponsRecipes.addEasyWeaponsRecipes;
+import static net.thedragonteam.armorplus.registry.recipes.ModWeaponsRecipes.addExpertWeaponsRecipes;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -30,50 +30,7 @@ public class ModRecipes {
         addEasyWeaponsRecipes();
         addExpertWeaponsRecipes();
         addIntegrationShapelessRecipes();
-        addRecipes();
     }
-
-    public static void addRecipes() {
-        /* Metal Armor */
-        if (ARPConfig.recipes == 0) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "XXXX", "XXXX", "MMMM", "MXXM", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "MMMM", "MXXM", "XXXX", "XXXX", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMMM", "MXXM", "MXXM", "MXXM", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "XXXX", "MXXM", "MXXM", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "MXXM", "MXXM", "XXXX", "XXXX", 'M', "ingotSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "MXXM", "MXXM", "XXXX", 'M', "ingotSteel"));
-        }
-        if (ARPConfig.recipes == 1) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "XXXX", "XXXX", "MMMM", "MXXM", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1), "MMMM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1), "MXXM", "MXXM", "MMMM", "MMMM", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1), "MMMM", "MXXM", "MXXM", "MXXM", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "XXXX", "MXXM", "MXXM", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "MXXM", "MXXM", "XXXX", "XXXX", 'M', "blockSteel"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1), "XXXX", "MXXM", "MXXM", "XXXX", 'M', "blockSteel"));
-        }
-        /* Electrical Armor */
-        if (ARPConfig.recipes == 0) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "XXXX", "EEEE", "EXXE", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "XXXX", "EXXE", "EXXE", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXXE", "EXXE", "XXXX", "XXXX", 'E', "ingotElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "EXXE", "EXXE", "XXXX", 'E', "ingotElectrical"));
-        }
-        if (ARPConfig.recipes == 1) {
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "XXXX", "XXXX", "EEEE", "EXXE", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1), "EEEE", "EXXE", "XXXX", "XXXX", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1), "EXXE", "EXXE", "EEEE", "EEEE", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1), "EEEE", "EXXE", "EXXE", "EXXE", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "XXXX", "EXXE", "EXXE", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "EXXE", "EXXE", "XXXX", "XXXX", 'E', "blockElectrical"));
-            HighTechBenchRegistry.addRecipe(new net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1), "XXXX", "EXXE", "EXXE", "XXXX", 'E', "blockElectrical"));
-        }
-    }
-
 
     public static void addIntegrationShapelessRecipes() {
         /* NBT-Tag-Compound */
@@ -210,95 +167,4 @@ public class ModRecipes {
         GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lavaCactus, 1), Blocks.CACTUS, new ItemStack(ModItems.lavaCrystal, 1, 1));
     }
 
-    public static void addEasyWeaponsRecipes() {
-        ItemStack LAPIS_LAZULI = new ItemStack(Items.DYE, 1, 4);
-        if (enableSwordsRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldSword, 1), "XEX", "XEX", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianSword, 1), "XOX", "XOX", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianSword, 1), "XGX", "XGX", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonSword, 1), "XEX", "XEX", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarSword, 1), "XWX", "XWX", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STICK);
-        }
-        if (enableBattleAxesRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Items.COAL, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', LAPIS_LAZULI, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', Items.REDSTONE, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1), "EXE", "ESE", "XSX", 'E', Items.EMERALD, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBattleAxe, 1), "OXO", "OSO", "XSX", 'O', Blocks.OBSIDIAN, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBattleAxe, 1), "GXG", "GSG", "XSX", 'G', ModItems.guardianScale, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1), "EXE", "ESE", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBattleAxe, 1), "WXW", "WSW", "XSX", 'W', ModItems.witherBone, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STICK);
-        }
-        if (enableBowsRecipes && recipes == 0) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Items.COAL, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', Items.COAL, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', LAPIS_LAZULI, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', LAPIS_LAZULI, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', Items.REDSTONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', Items.REDSTONE, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "XES", "EXS", "XES", 'E', Items.EMERALD, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "SEX", "SXE", "SEX", 'E', Items.EMERALD, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "XOS", "OXS", "XOS", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "SOX", "SXO", "SOX", 'O', Blocks.OBSIDIAN, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "XGS", "GXS", "XGS", 'G', ModItems.guardianScale, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "SGX", "SXG", "SGX", 'G', ModItems.guardianScale, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "XES", "EXS", "XES", 'E', ModItems.enderDragonScale, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "SEX", "SXE", "SEX", 'E', ModItems.enderDragonScale, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "XWS", "WXS", "XWS", 'W', ModItems.witherBone, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "SWX", "SXW", "SWX", 'W', ModItems.witherBone, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1), 'S', Items.STRING);
-
-        }
-    }
-
-    public static void addExpertWeaponsRecipes() {
-        if (enableSwordsRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldSword, 1), "XEX", "XEX", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianSword, 1), "XOX", "XOX", "XSX", 'O', ModBlocks.compressedObsidian, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianSword, 1), "XGX", "XGX", "XSX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonSword, 1), "XEX", "XEX", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarSword, 1), "XWX", "XWX", "XSX", 'W', ModItems.witherBone, 'S', Items.NETHER_STAR);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaSword, 1), "XLX", "XLX", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
-        }
-        if (enableBattleAxesRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', Blocks.COAL_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1), "EXE", "ESE", "XSX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBattleAxe, 1), "OXO", "OSO", "XSX", 'O', ModBlocks.compressedObsidian, 'S', Items.STICK);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBattleAxe, 1), "GXG", "GSG", "XSX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1), "EXE", "ESE", "XSX", 'E', ModItems.enderDragonScale, 'S', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBattleAxe, 1), "WXW", "WSW", "XSX", 'W', ModItems.witherBone, 'S', Items.NETHER_STAR);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBattleAxe, 1), "LXL", "LSL", "XSX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STICK);
-        }
-        if (enableBowsRecipes && recipes == 1) {
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', Blocks.COAL_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', Blocks.LAPIS_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "XES", "EXS", "XES", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.emeraldBow, 1), "SEX", "SXE", "SEX", 'E', Blocks.EMERALD_BLOCK, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "XOS", "OXS", "XOS", 'O', ModBlocks.compressedObsidian, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.obsidianBow, 1), "SOX", "SXO", "SOX", 'O', ModBlocks.compressedObsidian, 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "XGS", "GXS", "XGS", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.guardianBow, 1), "SGX", "SXG", "SGX", 'G', ModItems.guardianScale, 'S', Items.PRISMARINE_SHARD);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "XES", "DXS", "XES", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.enderDragonBow, 1), "SEX", "SXD", "SEX", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'D', Items.DRAGON_BREATH);
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "XWS", "NXS", "XWS", 'W', ModItems.witherBone, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
-            GameRegistry.addRecipe(new ItemStack(ModItems.superStarBow, 1), "SWX", "SXN", "SWX", 'W', ModItems.witherBone, 'S', Items.STRING, 'N', new ItemStack(Items.SKULL, 1, 1));
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "SLX", "SXL", "SLX", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
-            GameRegistry.addRecipe(new ItemStack(ModItems.lavaBow, 1), "XLS", "LXS", "XLS", 'L', new ItemStack(ModItems.lavaCrystal, 1, 1), 'S', Items.STRING);
-        }
-    }
 }
