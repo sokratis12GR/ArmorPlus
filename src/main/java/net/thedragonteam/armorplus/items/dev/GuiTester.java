@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,8 +25,8 @@ public class GuiTester extends BaseItem {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiARPExperiments());
-        return super.onItemRightClick(item, world, player, hand);
+        while (Minecraft.getMinecraft().gameSettings.keyBindSneak.isPressed())
+            Minecraft.getMinecraft().displayGuiScreen(new GuiARPExperiments());
+        return new ActionResult(EnumActionResult.PASS, item);
     }
-
 }

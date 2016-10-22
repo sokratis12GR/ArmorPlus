@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -31,7 +30,6 @@ public class BaseRF extends BaseItem implements IEnergyContainerItem {
 
     public BaseRF(String name, int capacity, int maxReceive, int maxExtract) {
         super(name);
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.capacity = capacity;
         this.maxReceive = maxReceive;

@@ -21,7 +21,7 @@ import java.util.List;
 public class ModFireStorm extends ModifierTrait {
 
     public ModFireStorm() {
-        super("firestorm", 0xea0000, 4, 4);
+        super("firestorm", 0xea0000, 10, 4);
     }
 
     @Override

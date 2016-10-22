@@ -4,32 +4,25 @@
 
 package net.thedragonteam.armorplus.client.gui;
 
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiListExtended;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.thedragonteam.armorplus.ArmorPlus;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * net.thedragonteam.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  * - TheDragonTeam
  */
-public class GuiARPExperiments extends GuiScreen implements GuiListExtended.IGuiListEntry {
+public class GuiARPExperiments extends GuiScreen {
 
     int guiWidth = 256;
     int guiHeight = 256;
-
-    int guiX = (width - guiWidth) / 2;
-    int guiY = (height - guiHeight) / 2;
-
 
     @Override
     public void drawScreen(int x, int y, float ticks) {
@@ -41,23 +34,23 @@ public class GuiARPExperiments extends GuiScreen implements GuiListExtended.IGui
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Dev Book").getFormattedText(), guiX + 25, guiY + 20, 0x000000);
         drawHorizontalLine(guiX + 10, guiX + 50, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Name: " + mc.thePlayer.getName()).getFormattedText(), guiX + 25, guiY + 30, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Health: " + mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth()).getFormattedText(), guiX + 25, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Bed Location: x: " + mc.thePlayer.getBedLocation().getX() + " y: " + mc.thePlayer.getBedLocation().getY() + " z: " + mc.thePlayer.getBedLocation().getZ()).getFormattedText(), guiX + 25, guiY + 50, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Score: " + mc.thePlayer.getScore()).getFormattedText(), guiX + 25, guiY + 60, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Team: " + mc.thePlayer.getTeam()).getFormattedText(), guiX + 25, guiY + 70, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Location: x: " + mc.thePlayer.getPosition().getX() + " y: " + mc.thePlayer.getPosition().getY() + " y: " + mc.thePlayer.getPosition().getZ()).getFormattedText(), guiX + 25, guiY + 80, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 
     @Override
     public void initGui() {
-        buttonList.clear();
         super.initGui();
     }
 
     @Override
-    protected void drawHoveringText(List<String> textLines, int x, int y, FontRenderer font) {
-        super.drawHoveringText(textLines, x, y, font);
-    }
-
-    @Override
-    protected boolean handleComponentClick(ITextComponent component) {
-        return super.handleComponentClick(component);
+    protected void actionPerformed(GuiButton button) throws IOException {
+        super.actionPerformed(button);
     }
 
     @Override
@@ -67,34 +60,5 @@ public class GuiARPExperiments extends GuiScreen implements GuiListExtended.IGui
                 mc.displayGuiScreen(null);
         }
         super.keyTyped(c, key);
-    }
-
-    @Override
-    protected void setText(String newChatText, boolean shouldOverwrite) {
-        super.setText(newChatText, shouldOverwrite);
-    }
-
-    @Override
-    protected void handleComponentHover(ITextComponent component, int x, int y) {
-        super.handleComponentHover(component, x, y);
-    }
-
-    @Override
-    public void setSelected(int p_178011_1_, int p_178011_2_, int p_178011_3_) {
-
-    }
-
-    @Override
-    public void drawEntry(int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected) {
-    }
-
-    @Override
-    public boolean mousePressed(int slotIndex, int mouseX, int mouseY, int mouseEvent, int relativeX, int relativeY) {
-        return false;
-    }
-
-    @Override
-    public void mouseReleased(int slotIndex, int x, int y, int mouseEvent, int relativeX, int relativeY) {
-
     }
 }

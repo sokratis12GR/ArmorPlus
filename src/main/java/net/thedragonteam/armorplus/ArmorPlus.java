@@ -69,6 +69,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusWeapons = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
     public static CreativeTabs tabArmorplusTesla = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
     public static CreativeTabs tabArmorplusRF = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "rf", 5);
+    public static CreativeTabs tabArmorplusTinkers = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tinkers", 6);
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
@@ -123,7 +124,6 @@ public class ArmorPlus {
     public void initClient(FMLInitializationEvent event) {
         LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
-        syncConfig();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
@@ -135,7 +135,6 @@ public class ArmorPlus {
     public void initServer(FMLInitializationEvent event) {
         LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
         entity = new ArmorPlusEntity();
-        syncConfig();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.registerEvents();
@@ -156,7 +155,7 @@ public class ArmorPlus {
         configProcessor.processConfig(ARPConfig.class, configuration);
 
         featureParser.registerFeatures();
-
+        syncConfig();
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));

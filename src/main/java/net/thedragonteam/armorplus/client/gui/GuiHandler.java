@@ -20,6 +20,7 @@ public class GuiHandler implements IGuiHandler {
     public static final int GUI_WORKBENCH = 2;
     public static final int GUI_HIGH_TECH_BENCH = 3;
     public static final int GUI_ULTI_TECH_BENCH = 4;
+    public static final int GUI_EXPERIMENT = 100;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

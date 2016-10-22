@@ -1,0 +1,20 @@
+{
+    "textures": {
+        "battleaxe": "armorplus:items/battleaxe/mod_firestorm",
+        "battlesign": "armorplus:items/battlesign/mod_firestorm",
+        "broadsword": "armorplus:items/broadsword/mod_firestorm",
+        "rapier": "armorplus:items/rapier/mod_firestorm",
+        "cleaver": "armorplus:items/cleaver/mod_firestorm",
+        "excavator": "armorplus:items/excavator/mod_firestorm",
+        "frypan": "armorplus:items/frypan/mod_firestorm",
+        "hammer": "armorplus:items/hammer/mod_firestorm",
+        "hatchet": "armorplus:items/hatchet/mod_firestorm",
+        "longsword": "armorplus:items/longsword/mod_firestorm",
+        "lumberaxe": "armorplus:items/lumberaxe/mod_firestorm",
+        "mattock": "armorplus:items/mattock/mod_firestorm",
+        "pickaxe": "armorplus:items/pickaxe/mod_firestorm",
+        "scythe": "armorplus:items/scythe/mod_firestorm",
+        "shovel": "armorplus:items/shovel/mod_firestorm",
+        "shuriken": "armorplus:items/shuriken/mod_firestorm"
+    }
+}

@@ -9,10 +9,12 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 
 import java.util.Random;
@@ -25,7 +27,13 @@ import java.util.Set;
  */
 public final class Utils {
 
+    public static final String RESOURCE = ArmorPlus.MODID;
+
     public static final Random RANDOM = new Random();
+
+    public static ResourceLocation getResource(String res) {
+        return new ResourceLocation(RESOURCE, res);
+    }
 
     @SuppressWarnings("ConstantConditions")
     public static ItemStack setUnbreakable(ItemStack stack) {

@@ -25,6 +25,7 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.thedragonlib.util.TextHelper;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
+import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 
 public class GlobalEventsArmorPlus {
 
@@ -201,8 +202,14 @@ public class GlobalEventsArmorPlus {
 
     }
 
+    public static void syncConfig() {
+        if (configuration.hasChanged())
+            configuration.save();
+    }
+
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        syncConfig();
         ArmorPlus.logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.config.refresh"));
     }
 }

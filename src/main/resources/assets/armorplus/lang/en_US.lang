@@ -37,6 +37,7 @@ modifier.firestorm.extra2=Burn Duration: %ss
 modifier.ultimatemod.name=Expanded
 modifier.ultimatemod.desc=Add +1 Modifier
 material.lava_crystal.name=Lava Crystal
+material.compressed_obsidian.name=Compressed Obsidian
 
 ﻿#Tile
 tile.armorplus.block_energy_creative.name=Creative Power Cell
