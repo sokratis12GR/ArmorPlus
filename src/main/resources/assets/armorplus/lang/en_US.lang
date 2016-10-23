@@ -228,9 +228,7 @@ item.armorplus.jon_bams.name=Jon Bams
 item.armorplus.beam.name=Beam
 item.armorplus.twitch.name=Twitch
 item.armorplus.mmd.name=MMD
-item.armorplus.test_0.name=Test 0
-item.armorplus.test_1.name=Test 1
-item.armorplus.test_2.name=Test 2
+item.armorplus.gui_tester.name=GUI Tester
 
 #Items
 item.armorplus.chainmail.name=Chainmail
@@ -383,8 +381,4 @@ achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.blocks=Blocks Successfully Registered
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

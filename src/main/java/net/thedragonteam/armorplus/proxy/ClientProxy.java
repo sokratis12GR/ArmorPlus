@@ -57,7 +57,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-
         OBJLoader.INSTANCE.addDomain(ArmorPlus.MODID);
         registerRenderers();
         registerRenderer();
@@ -68,6 +67,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
+        registerModels();
         if (event.getSide().isClient()) {
             if (Loader.isModLoaded("tconstruct")) {
                 TiCMaterials.registerMaterialRendering();

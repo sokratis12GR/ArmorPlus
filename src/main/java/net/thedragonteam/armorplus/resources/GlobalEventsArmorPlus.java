@@ -18,11 +18,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
-import net.thedragonteam.thedragonlib.util.TextHelper;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
@@ -210,6 +209,6 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         syncConfig();
-        ArmorPlus.logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.config.refresh"));
+        LogHelper.info("Refreshing configuration file");
     }
 }

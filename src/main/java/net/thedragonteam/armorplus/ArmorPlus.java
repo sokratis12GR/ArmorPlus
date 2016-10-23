@@ -19,18 +19,14 @@ import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.armorplus.registry.ModCompatibility;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
-import net.thedragonteam.thedragonlib.util.TextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.util.UUID;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = false, updateJSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json")
@@ -57,7 +53,6 @@ public class ArmorPlus {
     public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle@[1.10.2-1.0.0,);" + "after:tconstruct@[1.10.2-2.5.2,);";
     public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
-    public static final String COMMONPROXY = "net.thedragonteam.armorplus.proxy.CommonProxy";
     public static final String SERVERPROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
 
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.SERVERPROXY)
@@ -70,36 +65,21 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusTesla = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
     public static CreativeTabs tabArmorplusRF = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "rf", 5);
     public static CreativeTabs tabArmorplusTinkers = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tinkers", 6);
-    public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks});
+    public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTesla, tabArmorplusRF, tabArmorplusTinkers});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
+
+    private GuiHandler GuiHandler = new GuiHandler();
     public static Logger logger = LogManager.getLogger(ArmorPlus.MODNAME);
     @Mod.Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
-    public static File configDir;
-    public static File textureDir;
     /**
      * The GameProfile used by the dummy ArmorPlus player
      */
     public static GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("armorplus.common".getBytes()), "[ArmorPlus]");
 
-    private GuiHandler GuiHandler = new GuiHandler();
-
-    @SuppressWarnings("unused")
-    private ModItems items;
-    @SuppressWarnings("unused")
-    private ArmorPlusEntity entity;
-
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
-    }
-
-    public static File getConfigDir() {
-        return configDir;
-    }
-
-    public static File getloggerDir() {
-        return textureDir;
     }
 
     public static String getVERSION() {
@@ -114,16 +94,9 @@ public class ArmorPlus {
         return ArmorPlus.MODID + ":";
     }
 
-    public static void syncConfig() {
-        if (configuration.hasChanged())
-            configuration.save();
-    }
-
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-        LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
-        entity = new ArmorPlusEntity();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.init(event);
@@ -132,8 +105,6 @@ public class ArmorPlus {
     @SideOnly(Side.SERVER)
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
-        LogHelper.info("Version " + ArmorPlus.VERSION + " initializing...");
-        entity = new ArmorPlusEntity();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
         proxy.init(event);
@@ -141,33 +112,16 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ModCompatibility.registerModCompat();
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
-
-        ModItems.init();
-        LogHelper.info("Blocks Successfully Registered");
-
-        items = new ModItems();
-
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
-
         featureParser.registerFeatures();
-        syncConfig();
-        configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
-        configDir.mkdirs();
-        net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         proxy.preInit(event);
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
         logger.info("Fake player readout: UUID = " + gameProfile.getId().toString() + ", name = " + gameProfile.getName());
-        logger.info(TextHelper.localize("info." + ArmorPlus.MODID + ".console.load.postInit"));
-        proxy.registerModels();
         proxy.postInit(event);
-
     }
 
     @EventHandler
