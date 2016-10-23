@@ -6,7 +6,6 @@ package net.thedragonteam.armorplus.items.bows;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -19,6 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 public class CoalBow extends BaseBow {
 
     public CoalBow() {
-        super(59, "coal_bow", 2.0F, Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK), TextFormatting.GRAY, ModItems.coalBow);
+        super(59, "coal_bow", 2.0F, Items.COAL, Blocks.COAL_BLOCK, TextFormatting.GRAY, ModItems.coalBow);
     }
 }

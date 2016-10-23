@@ -4,8 +4,14 @@
 
 package net.thedragonteam.armorplus.items.base;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -17,6 +23,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import java.util.List;
+
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSword extends ItemSword {
@@ -24,36 +32,48 @@ public class BaseSword extends ItemSword {
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
+    public String effect;
 
-    public BaseSword(ToolMaterial material, String name, Item repairEasy, Item repairExpert, TextFormatting textFormatting) {
+    public BaseSword(ToolMaterial material, String name, Item repairEasy, Item repairExpert, TextFormatting textFormatting, String effectName) {
         super(material);
         this.itemEasy = repairEasy;
         this.itemExpert = repairExpert;
         this.formatting = textFormatting;
+        this.effect = effectName;
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
-    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
-        this(material, name, repairEasy.getItem(), repairExpert.getItem(), textFormatting);
+    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting, String effectName) {
+        this(material, name, repairEasy.getItem(), repairExpert.getItem(), textFormatting, effectName);
     }
 
-    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(material, name, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting, String effectName) {
+        this(material, name, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting, effectName);
     }
 
-    public BaseSword(ToolMaterial material, String name, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
-        this(material, name, repairEasy, repairExpert.getItem(), textFormatting);
+    public BaseSword(ToolMaterial material, String name, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting, String effectName) {
+        this(material, name, repairEasy, repairExpert.getItem(), textFormatting, effectName);
     }
 
-    public BaseSword(ToolMaterial material, String name, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(material, name, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseSword(ToolMaterial material, String name, Item repairEasy, Block repairExpert, TextFormatting textFormatting, String effectName) {
+        this(material, name, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting, effectName);
     }
 
-    public BaseSword(ToolMaterial material, String name, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(material, name, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseSword(ToolMaterial material, String name, Block repairEasy, Block repairExpert, TextFormatting textFormatting, String effectName) {
+        this(material, name, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting, effectName);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add("\2479Ability: " + "\247r" + effect);
+            tooltip.add("\2473Use: " + "\247rHit a Target");
+        } else
+            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override

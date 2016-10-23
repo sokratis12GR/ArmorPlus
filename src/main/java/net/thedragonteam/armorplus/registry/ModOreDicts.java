@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -30,6 +31,16 @@ public class ModOreDicts {
         registerOre("arpUltiTechBench", new ItemStack(ModBlocks.arpUltiTechBench, 1));
         registerOre("arpWorkbenchTier3", new ItemStack(ModBlocks.arpUltiTechBench, 1));
         registerOre("arpWorkbenchTierThree", new ItemStack(ModBlocks.arpUltiTechBench, 1));
+        //CastleBlocks
+        registerOre("stonebrickWhite", new ItemStack(ModBlocks.whiteStoneBrick, 1));
+        registerOre("stonebrickRed", new ItemStack(ModBlocks.redStoneBrick, 1));
+        registerOre("stonebrickBlack", new ItemStack(ModBlocks.blackStoneBrick, 1));
+        registerOre("stonebrickWhiteCorner", new ItemStack(ModBlocks.whiteStoneBrickCorner, 1));
+        registerOre("stonebrickRedCorner", new ItemStack(ModBlocks.redStoneBrickCorner, 1));
+        registerOre("stonebrickBlackCorner", new ItemStack(ModBlocks.blackStoneBrickCorner, 1));
+        registerOre("stonebrickWhiteTower", new ItemStack(ModBlocks.whiteStoneBrickTower, 1));
+        registerOre("stonebrickRedTower", new ItemStack(ModBlocks.redStoneBrickTower, 1));
+        registerOre("stonebrickBlackTower", new ItemStack(ModBlocks.blackStoneBrickTower, 1));
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
         registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
@@ -48,5 +59,6 @@ public class ModOreDicts {
         registerOre("itemCoal", new ItemStack(Items.COAL, 1));
         registerOre("itemCharcoal", new ItemStack(Items.COAL, 1, 1));
         registerOre("itemArrow", new ItemStack(Items.ARROW, 1));
+        registerOre("stonebrick", new ItemStack(Blocks.STONEBRICK, 1));
     }
 }

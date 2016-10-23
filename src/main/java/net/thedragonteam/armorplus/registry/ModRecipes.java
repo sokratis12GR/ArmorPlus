@@ -95,7 +95,24 @@ public class ModRecipes {
 
     public static void addShapedRecipes() {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), "XNX", "NLN", "XNX", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeWhite"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeRed"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeBlack"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 5), "   ", " S ", "   ", 'S', "stonebrickWhiteTower"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 5), "   ", " S ", "   ", 'S', "stonebrickRedTower"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 5), "   ", " S ", "   ", 'S', "stonebrickBlackTower"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickWhite"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickRed"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickBlack"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 3), "   ", " S ", "   ", 'S', "stonebrickWhiteCorner"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 3), "   ", " S ", "   ", 'S', "stonebrickRedCorner"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 3), "   ", " S ", "   ", 'S', "stonebrickBlackCorner"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickWhite"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickRed"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickBlack"));
+
         if (enableElytraRecipe)
             GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'N', Items.NETHER_STAR);
         if (enableChainArmorRecipes) {

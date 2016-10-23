@@ -273,6 +273,12 @@ tile.armorplus.lava_nether_brick.name=Lava Nether Brick
 tile.armorplus.white_stone_brick.name=White Stone Brick
 tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
 tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
+tile.armorplus.red_stone_brick.name=Red Stone Brick
+tile.armorplus.red_stone_brick_tower.name=Red Stone Brick Tower
+tile.armorplus.red_stone_brick_corner.name=Red Stone Brick Corner
+tile.armorplus.black_stone_brick.name=Black Stone Brick
+tile.armorplus.black_stone_brick_tower.name=Black Stone Brick Tower
+tile.armorplus.black_stone_brick_corner.name=Black Stone Brick Corner
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword

@@ -12,6 +12,14 @@
     * You can add/remove recipes from all three benches through mod addons/integrations
     * Added JEI support for the Ulti-Tech Bench
     * WIP CraftTweaker/MineTweaker3 Integration/Support (NOT WORKING YET)
+    * Added new blocks
+         * Red Stone Brick
+         * Red Stone Brick Tower
+         * Red Stone Brick Corner
+         * Black Stone Brick
+         * Black Stone Brick Tower
+         * Black Stone Brick Corner
+    * Added Recipes for the castle blocks (red/white/black stone bricks)
     * Added support for block rotation
         * Block Lava Crystal, Block of Steel, Electrical Block, Lava Nether Brick, Compressed Obsidian
     * Tinkers Integration

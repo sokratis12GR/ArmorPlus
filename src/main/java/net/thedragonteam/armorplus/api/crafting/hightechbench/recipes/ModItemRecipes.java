@@ -17,7 +17,7 @@ public class ModItemRecipes {
                 "LUUL",
                 "OWHO",
                 "OUUO",
-                "OXXO",
+                "O  O",
                 'U', ModItems.theUltimateMaterial,
                 'W', ModBlocks.arpWorkbench,
                 'H', ModBlocks.arpHighTechBench,

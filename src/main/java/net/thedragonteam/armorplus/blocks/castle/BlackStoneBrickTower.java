@@ -17,16 +17,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
 
-/**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
- * - TheDragonTeam
- */
-public class WhiteStoneBrickTower extends BaseCastleBlock {
+public class BlackStoneBrickTower extends BaseCastleBlock {
 
-    public WhiteStoneBrickTower() {
-        super("white_stone_brick_tower");
-        setRegistryName("white_stone_brick_tower");
+    public BlackStoneBrickTower() {
+        super("black_stone_brick_tower");
+        setRegistryName("black_stone_brick_tower");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
@@ -40,7 +35,7 @@ public class WhiteStoneBrickTower extends BaseCastleBlock {
      * Get the MapColor for this Block and the given BlockState
      */
     public MapColor getMapColor(IBlockState state) {
-        return MapColor.QUARTZ;
+        return MapColor.BLACK;
     }
 
     @Override

@@ -4,13 +4,7 @@
 
 package net.thedragonteam.armorplus.items.swords;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -20,8 +14,6 @@ import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import java.util.List;
-
 /**
  * net.thedragonteam.armorplus.items.swords
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -30,7 +22,7 @@ import java.util.List;
 public class ObsidianSword extends BaseSword {
 
     public ObsidianSword() {
-        super(ModItems.swordObsidianMaterial, "obsidian_sword", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
+        super(ModItems.swordObsidianMaterial, "obsidian_sword", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY, "Applies Weakness 2");
     }
 
     @Override
@@ -40,15 +32,5 @@ public class ObsidianSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
         }
         return true;
-    }
-
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rApplies Weakness 2");
-            tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 }
