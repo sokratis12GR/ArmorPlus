@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class PigIronChestplate extends BaseArmor {
 
     public PigIronChestplate() {
-        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.CHEST, "pig_iron_chestplate");
+        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.CHEST, "pig_iron_chestplate", null, null);
     }
 
     @Override

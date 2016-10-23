@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ManyullynHelmet extends BaseArmor {
 
     public ManyullynHelmet() {
-        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.HEAD, "manyullyn_helmet");
+        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.HEAD, "manyullyn_helmet", null, null);
     }
 
     @Override

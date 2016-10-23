@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalLeggings extends BaseArmor {
 
     public CoalLeggings() {
-        super(ModItems.coalArmor, 0, EntityEquipmentSlot.LEGS, "coal_leggings");
+        super(ModItems.coalArmor, 0, EntityEquipmentSlot.LEGS, "coal_leggings", Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
     }
 
     @Override
@@ -66,16 +66,5 @@ public class CoalLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Items.COAL;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
-        }
-        return true;
     }
 }

@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalBoots extends BaseArmor {
 
     public CoalBoots() {
-        super(ModItems.coalArmor, 0, EntityEquipmentSlot.FEET, "coal_boots");
+        super(ModItems.coalArmor, 0, EntityEquipmentSlot.FEET, "coal_boots", Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
     }
 
     @Override
@@ -66,16 +66,5 @@ public class CoalBoots extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Items.COAL;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.COAL_BLOCK);
-        }
-        return true;
     }
 }

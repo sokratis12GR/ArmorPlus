@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ManyullynChestplate extends BaseArmor {
 
     public ManyullynChestplate() {
-        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.CHEST, "manyullyn_chestplate");
+        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.CHEST, "manyullyn_chestplate", null, null);
     }
 
     @Override

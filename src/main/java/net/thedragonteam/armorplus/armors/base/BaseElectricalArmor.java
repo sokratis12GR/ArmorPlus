@@ -20,14 +20,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -44,7 +42,7 @@ import static net.thedragonteam.armorplus.ARPConfig.outputElectricalArmor;
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
 })
-public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
+public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
     private int power;
     private int maxCapacity;
@@ -52,13 +50,8 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
     private int input;
 
     public BaseElectricalArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.electricalArmor, armorPreffix, slot);
-        setMaxStackSize(1);
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        GameRegistry.register(this);
+        super(ModItems.electricalArmor, armorPreffix, slot, name, null, null);
         setCreativeTab(ArmorPlus.tabArmorplusRF);
-        setMaxStackSize(1);
         this.power = power;
         this.maxCapacity = maxCapacity;
         this.output = output;

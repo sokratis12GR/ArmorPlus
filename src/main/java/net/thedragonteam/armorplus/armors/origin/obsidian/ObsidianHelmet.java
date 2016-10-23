@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianHelmet extends BaseArmor {
 
     public ObsidianHelmet() {
-        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.HEAD, "obsidian_helmet");
+        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.HEAD, "obsidian_helmet", Item.getItemFromBlock(Blocks.OBSIDIAN), Item.getItemFromBlock(ModBlocks.compressedObsidian));
     }
 
     @Override
@@ -67,16 +67,5 @@ public class ObsidianHelmet extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(ModBlocks.compressedObsidian);
-        }
-        return true;
     }
 }

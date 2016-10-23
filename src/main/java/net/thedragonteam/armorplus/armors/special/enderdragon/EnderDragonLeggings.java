@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonLeggings extends BaseArmor {
 
     public EnderDragonLeggings() {
-        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.LEGS, "ender_dragon_leggings");
+        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.LEGS, "ender_dragon_leggings", ModItems.enderDragonScale, ModItems.enderDragonScale);
     }
 
     @Override
@@ -65,10 +65,5 @@ public class EnderDragonLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.enderDragonScale;
     }
 }

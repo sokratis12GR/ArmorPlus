@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class RedstoneBoots extends BaseArmor {
 
     public RedstoneBoots() {
-        super(ModItems.redstoneArmor, 0, EntityEquipmentSlot.FEET, "redstone_boots");
+        super(ModItems.redstoneArmor, 0, EntityEquipmentSlot.FEET, "redstone_boots", Items.REDSTONE, Item.getItemFromBlock(Blocks.REDSTONE_BLOCK));
     }
 
     @Override
@@ -67,16 +67,5 @@ public class RedstoneBoots extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Items.REDSTONE;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
-        }
-        return true;
     }
 }

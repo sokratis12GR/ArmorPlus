@@ -10,8 +10,10 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -30,7 +32,7 @@ public class SlimeLeggings extends BaseArmor {
 
 
     public SlimeLeggings() {
-        super(ModItems.slimeArmor, 0, EntityEquipmentSlot.LEGS, "slime_leggings");
+        super(ModItems.slimeArmor, 0, EntityEquipmentSlot.LEGS, "slime_leggings", Items.SLIME_BALL, Item.getItemFromBlock(Blocks.SLIME_BLOCK));
     }
 
     @Override
@@ -47,10 +49,5 @@ public class SlimeLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.SLIME_BALL;
     }
 }

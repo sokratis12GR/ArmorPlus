@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ArditeBoots extends BaseArmor {
 
     public ArditeBoots() {
-        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.FEET, "ardite_boots");
+        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.FEET, "ardite_boots", null, null);
     }
 
     @Override

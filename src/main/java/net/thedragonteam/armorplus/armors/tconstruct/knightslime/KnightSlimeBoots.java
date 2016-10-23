@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class KnightSlimeBoots extends BaseArmor {
 
     public KnightSlimeBoots() {
-        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.FEET, "knight_slime_boots");
+        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.FEET, "knight_slime_boots", null, null);
     }
 
     @Override

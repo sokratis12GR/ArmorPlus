@@ -34,7 +34,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheUltimateChestplate extends BaseArmor {
 
     public TheUltimateChestplate() {
-        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.CHEST, "the_ultimate_chestplate_full");
+        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.CHEST, "the_ultimate_chestplate_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial);
     }
 
     @Override
@@ -94,10 +94,5 @@ public class TheUltimateChestplate extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.theUltimateMaterial;
     }
 }

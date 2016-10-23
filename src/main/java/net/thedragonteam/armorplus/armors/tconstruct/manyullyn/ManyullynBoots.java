@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ManyullynBoots extends BaseArmor {
 
     public ManyullynBoots() {
-        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.FEET, "manyullyn_boots");
+        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.FEET, "manyullyn_boots", null, null);
     }
 
     @Override

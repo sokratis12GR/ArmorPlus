@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class KnightSlimeChestplate extends BaseArmor {
 
     public KnightSlimeChestplate() {
-        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.CHEST, "knight_slime_chestplate");
+        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.CHEST, "knight_slime_chestplate", null, null);
     }
 
     @Override

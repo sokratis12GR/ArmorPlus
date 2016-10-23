@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonBoots extends BaseArmor {
 
     public EnderDragonBoots() {
-        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.FEET, "ender_dragon_boots");
+        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.FEET, "ender_dragon_boots", ModItems.enderDragonScale, ModItems.enderDragonScale);
     }
 
     @Override
@@ -65,10 +65,5 @@ public class EnderDragonBoots extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.enderDragonScale;
     }
 }

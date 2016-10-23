@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ArditeHelmet extends BaseArmor {
 
     public ArditeHelmet() {
-        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.HEAD, "ardite_helmet");
+        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.HEAD, "ardite_helmet", null, null);
     }
 
     @Override

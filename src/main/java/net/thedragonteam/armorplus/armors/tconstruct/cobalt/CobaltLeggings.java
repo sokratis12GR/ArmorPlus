@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CobaltLeggings extends BaseArmor {
 
     public CobaltLeggings() {
-        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.LEGS, "cobalt_leggings");
+        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.LEGS, "cobalt_leggings", null, null);
     }
 
     @Override

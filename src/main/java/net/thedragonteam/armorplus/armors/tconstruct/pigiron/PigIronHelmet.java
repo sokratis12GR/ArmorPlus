@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class PigIronHelmet extends BaseArmor {
 
     public PigIronHelmet() {
-        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.HEAD, "pig_iron_helmet");
+        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.HEAD, "pig_iron_helmet", null, null);
     }
 
     @Override

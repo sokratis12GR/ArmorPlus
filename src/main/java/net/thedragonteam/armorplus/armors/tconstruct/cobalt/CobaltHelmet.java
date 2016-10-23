@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CobaltHelmet extends BaseArmor {
 
     public CobaltHelmet() {
-        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.HEAD, "cobalt_helmet");
+        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.HEAD, "cobalt_helmet", null, null);
     }
 
     @Override

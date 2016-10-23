@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class KnightSlimeLeggings extends BaseArmor {
 
     public KnightSlimeLeggings() {
-        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.LEGS, "knight_slime_leggings");
+        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.LEGS, "knight_slime_leggings", null, null);
     }
 
     @Override

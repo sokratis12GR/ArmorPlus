@@ -15,15 +15,12 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
-
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.special.superstar
@@ -33,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarHelmet extends BaseArmor {
 
     public SuperStarHelmet() {
-        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.HEAD, "super_star_helmet");
+        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.HEAD, "super_star_helmet", ModItems.witherBone, ModItems.witherBone);
     }
 
     @Override
@@ -60,15 +57,5 @@ public class SuperStarHelmet extends BaseArmor {
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
             entity.removePotionEffect(MobEffects.WITHER);
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.WHITE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.witherBone;
     }
 }

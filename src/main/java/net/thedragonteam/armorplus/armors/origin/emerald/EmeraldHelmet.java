@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldHelmet extends BaseArmor {
 
     public EmeraldHelmet() {
-        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.HEAD, "emerald_helmet");
+        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.HEAD, "emerald_helmet", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
     }
 
     @Override
@@ -67,16 +67,5 @@ public class EmeraldHelmet extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Items.EMERALD;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
-        }
-        return true;
     }
 }

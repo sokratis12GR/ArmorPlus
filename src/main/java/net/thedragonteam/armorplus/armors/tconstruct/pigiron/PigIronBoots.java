@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class PigIronBoots extends BaseArmor {
 
     public PigIronBoots() {
-        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.FEET, "pig_iron_boots");
+        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.FEET, "pig_iron_boots", null, null);
     }
 
     @Override

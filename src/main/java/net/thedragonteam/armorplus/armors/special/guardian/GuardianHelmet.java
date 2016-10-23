@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianHelmet extends BaseArmor {
 
     public GuardianHelmet() {
-        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.HEAD, "guardian_helmet");
+        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.HEAD, "guardian_helmet", ModItems.guardianScale, ModItems.guardianScale);
     }
 
     @Override
@@ -45,10 +45,5 @@ public class GuardianHelmet extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.guardianScale;
     }
 }

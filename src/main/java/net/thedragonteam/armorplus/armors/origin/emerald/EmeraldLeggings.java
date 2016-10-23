@@ -36,7 +36,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldLeggings extends BaseArmor {
 
     public EmeraldLeggings() {
-        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.LEGS, "emerald_leggings");
+        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.LEGS, "emerald_leggings", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
     }
 
     @Override
@@ -67,16 +67,5 @@ public class EmeraldLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == Items.EMERALD;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(Blocks.EMERALD_BLOCK);
-        }
-        return true;
     }
 }

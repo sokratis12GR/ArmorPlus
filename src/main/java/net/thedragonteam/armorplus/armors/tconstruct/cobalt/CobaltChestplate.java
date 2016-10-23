@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CobaltChestplate extends BaseArmor {
 
     public CobaltChestplate() {
-        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.CHEST, "cobalt_chestplate");
+        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.CHEST, "cobalt_chestplate", null, null);
     }
 
     @Override

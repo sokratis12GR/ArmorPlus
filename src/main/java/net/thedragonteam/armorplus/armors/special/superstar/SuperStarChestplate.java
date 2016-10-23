@@ -33,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarChestplate extends BaseArmor {
 
     public SuperStarChestplate() {
-        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.CHEST, "super_star_chestplate");
+        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.CHEST, "super_star_chestplate", ModItems.witherBone, ModItems.witherBone);
     }
 
     @Override
@@ -65,10 +65,5 @@ public class SuperStarChestplate extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.WHITE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.witherBone;
     }
 }

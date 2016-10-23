@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ArditeLeggings extends BaseArmor {
 
     public ArditeLeggings() {
-        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.LEGS, "ardite_leggings");
+        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.LEGS, "ardite_leggings", null, null);
     }
 
     @Override

@@ -29,7 +29,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ChickenLeggings extends BaseArmor {
 
     public ChickenLeggings() {
-        super(ModItems.chickenArmor, 0, EntityEquipmentSlot.LEGS, "chicken_leggings");
+        super(ModItems.chickenArmor, 0, EntityEquipmentSlot.LEGS, "chicken_leggings", Items.FEATHER, Items.FEATHER);
     }
 
     @Override
@@ -46,10 +46,5 @@ public class ChickenLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.FEATHER;
     }
 }

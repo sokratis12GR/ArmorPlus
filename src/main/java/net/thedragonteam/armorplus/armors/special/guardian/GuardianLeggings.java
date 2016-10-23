@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianLeggings extends BaseArmor {
 
     public GuardianLeggings() {
-        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.LEGS, "guardian_leggings");
+        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.LEGS, "guardian_leggings", ModItems.guardianScale, ModItems.guardianScale);
     }
 
     @Override
@@ -45,10 +45,5 @@ public class GuardianLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.guardianScale;
     }
 }

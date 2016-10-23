@@ -34,7 +34,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheUltimateHelmet extends BaseArmor {
 
     public TheUltimateHelmet() {
-        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.HEAD, "the_ultimate_helmet_full");
+        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.HEAD, "the_ultimate_helmet_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial);
     }
 
     @Override
@@ -93,10 +93,5 @@ public class TheUltimateHelmet extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.theUltimateMaterial;
     }
 }

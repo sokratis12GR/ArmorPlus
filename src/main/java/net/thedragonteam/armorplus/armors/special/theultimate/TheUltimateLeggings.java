@@ -34,7 +34,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheUltimateLeggings extends BaseArmor {
 
     public TheUltimateLeggings() {
-        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.LEGS, "the_ultimate_leggings_full");
+        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.LEGS, "the_ultimate_leggings_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial);
     }
 
     @Override
@@ -94,10 +94,5 @@ public class TheUltimateLeggings extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.theUltimateMaterial;
     }
 }

@@ -35,7 +35,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaChestplate extends BaseArmor {
 
     public LavaChestplate() {
-        super(ModItems.lavaArmor, 0, EntityEquipmentSlot.CHEST, "lava_chestplate");
+        super(ModItems.lavaArmor, 0, EntityEquipmentSlot.CHEST, "lava_chestplate", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
     }
 
     @Override
@@ -79,16 +79,5 @@ public class LavaChestplate extends BaseArmor {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == ModItems.lavaCrystal;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == (new ItemStack(ModItems.lavaCrystal, 1, 1)).getItem();
-        }
-        return true;
     }
 }

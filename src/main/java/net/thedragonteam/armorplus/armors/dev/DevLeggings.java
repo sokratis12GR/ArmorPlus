@@ -22,7 +22,7 @@ import net.thedragonteam.armorplus.util.Utils;
 public class DevLeggings extends BaseArmor {
 
     public DevLeggings() {
-        super(ModItems.devArmor, 0, EntityEquipmentSlot.LEGS, "dev_leggings");
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.LEGS, "dev_leggings", null, null);
     }
 
     @Override

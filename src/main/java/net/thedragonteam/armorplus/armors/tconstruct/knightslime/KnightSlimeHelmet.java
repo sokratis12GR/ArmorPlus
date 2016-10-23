@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class KnightSlimeHelmet extends BaseArmor {
 
     public KnightSlimeHelmet() {
-        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.HEAD, "knight_slime_helmet");
+        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.HEAD, "knight_slime_helmet", null, null);
     }
 
     @Override

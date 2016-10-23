@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ArditeChestplate extends BaseArmor {
 
     public ArditeChestplate() {
-        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.CHEST, "ardite_chestplate");
+        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.CHEST, "ardite_chestplate", null, null);
     }
 
     @Override
