@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianSword extends BaseSword {
 
     public GuardianSword() {
-        super(ModItems.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale);
+        super(ModItems.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, ModItems.guardianScale);
     }
 
     @Override

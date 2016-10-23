@@ -5,8 +5,10 @@
 package net.thedragonteam.armorplus.items.bows;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -26,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class RedstoneBow extends BaseBow {
 
     public RedstoneBow() {
-        super(200, "redstone_bow", 3.5F, Items.REDSTONE);
+        super(200, "redstone_bow", 3.5F, Items.REDSTONE, Item.getItemFromBlock(Blocks.REDSTONE_BLOCK));
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

@@ -11,8 +11,10 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -31,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldBattleAxe extends BaseSword {
 
     public EmeraldBattleAxe() {
-        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD);
+        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
     }
 
     @Override

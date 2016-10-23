@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaSword extends BaseSword {
 
     public LavaSword() {
-        super(ModItems.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal);
+        super(ModItems.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
     }
 
     @Override

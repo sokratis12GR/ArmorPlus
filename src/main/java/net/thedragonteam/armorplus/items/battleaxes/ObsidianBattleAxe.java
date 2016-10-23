@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseSword;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
@@ -32,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianBattleAxe extends BaseSword {
 
     public ObsidianBattleAxe() {
-        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe", Item.getItemFromBlock(Blocks.OBSIDIAN));
+        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe", Item.getItemFromBlock(Blocks.OBSIDIAN), Item.getItemFromBlock(ModBlocks.compressedObsidian));
     }
 
     @Override

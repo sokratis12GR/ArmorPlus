@@ -25,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarBow extends BaseBow {
 
     public SuperStarBow() {
-        super(1750, "super_star_bow", 10.0F, ModItems.witherBone);
+        super(1750, "super_star_bow", 10.0F, ModItems.witherBone, ModItems.witherBone);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

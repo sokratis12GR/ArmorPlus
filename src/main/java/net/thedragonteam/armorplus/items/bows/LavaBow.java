@@ -25,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaBow extends BaseBow {
 
     public LavaBow() {
-        super(1750, "lava_bow", 7.0F, ModItems.lavaCrystal);
+        super(1750, "lava_bow", 7.0F, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

@@ -5,8 +5,10 @@
 package net.thedragonteam.armorplus.items.bows;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -26,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisBow extends BaseBow {
 
     public LapisBow() {
-        super(250, "lapis_bow", 3.5F, new ItemStack(Items.DYE, 1, 4).getItem());
+        super(250, "lapis_bow", 3.5F, new ItemStack(Items.DYE, 1, 4).getItem(), Item.getItemFromBlock(Blocks.LAPIS_BLOCK));
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

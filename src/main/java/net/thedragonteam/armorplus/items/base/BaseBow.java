@@ -24,18 +24,21 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 public class BaseBow extends ItemBow {
 
     public float damage;
 
-    public Item item;
+    public Item itemEasy;
+    public Item itemExpert;
 
-    public BaseBow(int durability, String name, float damage, Item item) {
+    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert) {
         this.setMaxDamage(durability);
         this.damage = damage;
-        this.item = item;
+        this.itemEasy = repairEasy;
+        this.itemExpert = repairExpert;
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
@@ -61,8 +64,15 @@ public class BaseBow extends ItemBow {
         }
     }
 
+    @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == item;
+        if (ARPConfig.recipes == 0) {
+            return repair.getItem() == itemEasy;
+        }
+        if (ARPConfig.recipes == 1) {
+            return repair.getItem() == itemExpert;
+        }
+        return true;
     }
 
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {

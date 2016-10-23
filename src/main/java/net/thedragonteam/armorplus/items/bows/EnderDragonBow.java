@@ -25,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonBow extends BaseBow {
 
     public EnderDragonBow() {
-        super(2000, "ender_dragon_bow", 12.0F, ModItems.enderDragonScale);
+        super(2000, "ender_dragon_bow", 12.0F, ModItems.enderDragonScale, ModItems.enderDragonScale);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

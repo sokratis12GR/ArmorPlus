@@ -25,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianBow extends BaseBow {
 
     public GuardianBow() {
-        super(500, "guardian_bow", 6.5F, ModItems.guardianScale);
+        super(500, "guardian_bow", 6.5F, ModItems.guardianScale, ModItems.guardianScale);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

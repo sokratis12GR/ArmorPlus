@@ -5,8 +5,10 @@
 package net.thedragonteam.armorplus.items.bows;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -26,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalBow extends BaseBow {
 
     public CoalBow() {
-        super(59, "coal_bow", 2.0F, Items.COAL);
+        super(59, "coal_bow", 2.0F, Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {

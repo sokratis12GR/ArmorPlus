@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonBattleAxe extends BaseSword {
 
     public EnderDragonBattleAxe() {
-        super(ModItems.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale);
+        super(ModItems.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale);
     }
 
     @Override

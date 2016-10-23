@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarBattleAxe extends BaseSword {
 
     public SuperStarBattleAxe() {
-        super(ModItems.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone);
+        super(ModItems.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone, ModItems.witherBone);
     }
 
     @Override
