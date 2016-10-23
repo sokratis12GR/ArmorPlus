@@ -18,8 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.special.guardian
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianLeggings extends BaseArmor {
 
     public GuardianLeggings() {
-        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.LEGS, "guardian_leggings", ModItems.guardianScale, ModItems.guardianScale);
+        super(ModItems.guardianArmor, 0, EntityEquipmentSlot.LEGS, "guardian_leggings", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA);
     }
 
     @Override
@@ -40,10 +38,5 @@ public class GuardianLeggings extends BaseArmor {
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

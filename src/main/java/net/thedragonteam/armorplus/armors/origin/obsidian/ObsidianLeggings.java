@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -26,8 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.origin.obsidian
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -36,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianLeggings extends BaseArmor {
 
     public ObsidianLeggings() {
-        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.LEGS, "obsidian_leggings", Item.getItemFromBlock(Blocks.OBSIDIAN), Item.getItemFromBlock(ModBlocks.compressedObsidian));
+        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.LEGS, "obsidian_leggings", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
     }
 
     @Override
@@ -62,10 +59,5 @@ public class ObsidianLeggings extends BaseArmor {
         if (ARPConfig.enableObsidianLResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

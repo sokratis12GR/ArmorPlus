@@ -15,7 +15,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -26,8 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.origin.lapis
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -36,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisHelmet extends BaseArmor {
 
     public LapisHelmet() {
-        super(ModItems.lapisArmor, 0, EntityEquipmentSlot.HEAD, "lapis_helmet", new ItemStack(Items.DYE, 1, 4).getItem(), Item.getItemFromBlock(Blocks.LAPIS_BLOCK));
+        super(ModItems.lapisArmor, 0, EntityEquipmentSlot.HEAD, "lapis_helmet", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.DARK_BLUE);
     }
 
     @Override
@@ -61,10 +58,5 @@ public class LapisHelmet extends BaseArmor {
         if (ARPConfig.enableLapisHBreathing && entity instanceof EntityLivingBase && !ARPConfig.enableFullLapisArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_BLUE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

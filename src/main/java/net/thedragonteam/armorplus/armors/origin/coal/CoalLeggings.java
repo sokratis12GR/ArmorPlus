@@ -15,7 +15,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -26,8 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.origin.coal
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -36,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalLeggings extends BaseArmor {
 
     public CoalLeggings() {
-        super(ModItems.coalArmor, 0, EntityEquipmentSlot.LEGS, "coal_leggings", Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
+        super(ModItems.coalArmor, 0, EntityEquipmentSlot.LEGS, "coal_leggings", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.GRAY);
     }
 
     @Override
@@ -61,10 +58,5 @@ public class CoalLeggings extends BaseArmor {
         if (ARPConfig.enableCoalLNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

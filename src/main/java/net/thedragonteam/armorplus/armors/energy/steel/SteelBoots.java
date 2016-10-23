@@ -5,12 +5,7 @@
 package net.thedragonteam.armorplus.armors.energy.steel;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.armors.base.BaseSteelArmor;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
@@ -24,16 +19,5 @@ public class SteelBoots extends BaseSteelArmor {
     public SteelBoots() {
         super(0, EntityEquipmentSlot.FEET, "steel_boots", 0, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
         setMaxDamage(0);
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == ModItems.steelIngot;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == Item.getItemFromBlock(ModBlocks.steelBlock);
-        }
-        return true;
     }
 }

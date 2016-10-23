@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -22,7 +23,7 @@ import net.thedragonteam.armorplus.util.Utils;
 public class DevChestplate extends BaseArmor {
 
     public DevChestplate() {
-        super(ModItems.devArmor, 0, EntityEquipmentSlot.CHEST, "dev_chestplate", null, null);
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.CHEST, "dev_chestplate", null, null, TextFormatting.BOLD);
     }
 
     @Override

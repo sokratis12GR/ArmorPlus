@@ -19,8 +19,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.special.mob.chicken
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -29,7 +27,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ChickenBoots extends BaseArmor {
 
     public ChickenBoots() {
-        super(ModItems.chickenArmor, 0, EntityEquipmentSlot.FEET, "chicken_boots", Items.FEATHER, Items.FEATHER);
+        super(ModItems.chickenArmor, 0, EntityEquipmentSlot.FEET, "chicken_boots", Items.FEATHER, Items.FEATHER, TextFormatting.AQUA);
     }
 
     @Override
@@ -41,10 +39,5 @@ public class ChickenBoots extends BaseArmor {
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

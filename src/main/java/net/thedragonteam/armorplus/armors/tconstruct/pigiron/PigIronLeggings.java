@@ -18,8 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.tconstruct.pigiron
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class PigIronLeggings extends BaseArmor {
 
     public PigIronLeggings() {
-        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.LEGS, "pig_iron_leggings", null, null);
+        super(ModItems.pigIronArmor, 0, EntityEquipmentSlot.LEGS, "pig_iron_leggings", null, null, TextFormatting.LIGHT_PURPLE);
     }
 
     @Override
@@ -40,10 +38,5 @@ public class PigIronLeggings extends BaseArmor {
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.LIGHT_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.LIGHT_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

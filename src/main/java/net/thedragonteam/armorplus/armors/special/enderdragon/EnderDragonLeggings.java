@@ -21,8 +21,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.special.enderdragon
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -31,7 +29,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonLeggings extends BaseArmor {
 
     public EnderDragonLeggings() {
-        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.LEGS, "ender_dragon_leggings", ModItems.enderDragonScale, ModItems.enderDragonScale);
+        super(ModItems.enderDragonArmor, 0, EntityEquipmentSlot.LEGS, "ender_dragon_leggings", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.DARK_PURPLE);
     }
 
     @Override
@@ -60,10 +58,5 @@ public class EnderDragonLeggings extends BaseArmor {
                 entity.capabilities.allowFlying = false;
             }
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

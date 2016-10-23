@@ -24,7 +24,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.special.theultimate
@@ -34,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheUltimateLeggings extends BaseArmor {
 
     public TheUltimateLeggings() {
-        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.LEGS, "the_ultimate_leggings_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial);
+        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.LEGS, "the_ultimate_leggings_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial, TextFormatting.GREEN);
     }
 
     @Override
@@ -89,10 +88,5 @@ public class TheUltimateLeggings extends BaseArmor {
                 ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
             }
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

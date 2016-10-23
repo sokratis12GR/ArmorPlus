@@ -15,6 +15,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -30,7 +31,7 @@ import java.util.List;
 public class SuperStarHelmet extends BaseArmor {
 
     public SuperStarHelmet() {
-        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.HEAD, "super_star_helmet", ModItems.witherBone, ModItems.witherBone);
+        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.HEAD, "super_star_helmet", ModItems.witherBone, ModItems.witherBone, TextFormatting.WHITE);
     }
 
     @Override

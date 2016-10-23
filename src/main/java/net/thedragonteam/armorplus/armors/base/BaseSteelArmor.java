@@ -22,6 +22,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -50,7 +51,7 @@ public class BaseSteelArmor extends BaseArmor implements ITeslaConsumer, ITeslaP
     private int input;
 
     public BaseSteelArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.steelArmorNotPowered, armorPreffix, slot, name, null, null);
+        super(ModItems.steelArmorNotPowered, armorPreffix, slot, name, null, null, TextFormatting.DARK_RED);
         setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.power = power;
         this.maxCapacity = maxCapacity;

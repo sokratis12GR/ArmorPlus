@@ -24,8 +24,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.special.superstar
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -34,7 +32,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarLeggings extends BaseArmor {
 
     public SuperStarLeggings() {
-        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.LEGS, "super_star_leggings", ModItems.witherBone, ModItems.witherBone);
+        super(ModItems.superStarArmor, 0, EntityEquipmentSlot.LEGS, "super_star_leggings", ModItems.witherBone, ModItems.witherBone, TextFormatting.WHITE);
     }
 
     @Override
@@ -61,10 +59,5 @@ public class SuperStarLeggings extends BaseArmor {
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
             entity.removePotionEffect(MobEffects.WITHER);
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.WHITE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

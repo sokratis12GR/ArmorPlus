@@ -15,7 +15,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -26,8 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.origin.redstone
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -36,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class RedstoneBoots extends BaseArmor {
 
     public RedstoneBoots() {
-        super(ModItems.redstoneArmor, 0, EntityEquipmentSlot.FEET, "redstone_boots", Items.REDSTONE, Item.getItemFromBlock(Blocks.REDSTONE_BLOCK));
+        super(ModItems.redstoneArmor, 0, EntityEquipmentSlot.FEET, "redstone_boots", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.DARK_RED);
     }
 
     @Override
@@ -62,10 +59,5 @@ public class RedstoneBoots extends BaseArmor {
         if (ARPConfig.enableRedstoneBSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, ARPConfig.redstoneArmorEffectlevel, true, true));
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

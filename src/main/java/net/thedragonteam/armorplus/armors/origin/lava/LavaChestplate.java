@@ -25,7 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableFullLavaArmorEffect;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.origin.lava
@@ -35,7 +34,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaChestplate extends BaseArmor {
 
     public LavaChestplate() {
-        super(ModItems.lavaArmor, 0, EntityEquipmentSlot.CHEST, "lava_chestplate", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
+        super(ModItems.lavaArmor, 0, EntityEquipmentSlot.CHEST, "lava_chestplate", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD);
     }
 
     @Override
@@ -74,10 +73,5 @@ public class LavaChestplate extends BaseArmor {
                 entity.attackEntityFrom(DamageSource.drown, 1F);
             }
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

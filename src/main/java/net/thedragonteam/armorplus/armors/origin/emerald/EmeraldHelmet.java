@@ -15,7 +15,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -26,8 +25,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.origin.emerald
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -36,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldHelmet extends BaseArmor {
 
     public EmeraldHelmet() {
-        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.HEAD, "emerald_helmet", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
+        super(ModItems.emeraldArmor, 0, EntityEquipmentSlot.HEAD, "emerald_helmet", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.DARK_GREEN);
     }
 
     @Override
@@ -62,10 +59,5 @@ public class EmeraldHelmet extends BaseArmor {
         if (ARPConfig.enableEmeraldHHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

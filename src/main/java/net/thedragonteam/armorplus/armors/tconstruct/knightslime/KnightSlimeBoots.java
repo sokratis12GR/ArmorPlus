@@ -18,8 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.armors.tconstruct.knightslime
  * ArmorPlus created by sokratis12GR on 7/25/2016 10:08 AM.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class KnightSlimeBoots extends BaseArmor {
 
     public KnightSlimeBoots() {
-        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.FEET, "knight_slime_boots", null, null);
+        super(ModItems.knightSlimeArmor, 0, EntityEquipmentSlot.FEET, "knight_slime_boots", null, null, TextFormatting.DARK_PURPLE);
     }
 
     @Override
@@ -40,10 +38,5 @@ public class KnightSlimeBoots extends BaseArmor {
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.DARK_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

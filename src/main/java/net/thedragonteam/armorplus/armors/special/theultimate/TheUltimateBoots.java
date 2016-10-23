@@ -24,7 +24,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.special.theultimate
@@ -34,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class TheUltimateBoots extends BaseArmor {
 
     public TheUltimateBoots() {
-        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.FEET, "the_ultimate_boots_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial);
+        super(ModItems.theUltimateArmor, 0, EntityEquipmentSlot.FEET, "the_ultimate_boots_full", ModItems.theUltimateMaterial, ModItems.theUltimateMaterial, TextFormatting.GREEN);
     }
 
     @Override
@@ -50,7 +49,7 @@ public class TheUltimateBoots extends BaseArmor {
             tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY, TextFormatting.GREEN));
     }
 
     @Override
@@ -89,10 +88,5 @@ public class TheUltimateBoots extends BaseArmor {
                 ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
             }
         }
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

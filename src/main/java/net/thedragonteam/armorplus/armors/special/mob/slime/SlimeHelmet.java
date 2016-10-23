@@ -13,15 +13,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
-
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.armors.special.mob.slime
@@ -31,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SlimeHelmet extends BaseArmor {
 
     public SlimeHelmet() {
-        super(ModItems.slimeArmor, 0, EntityEquipmentSlot.HEAD, "slime_helmet", Items.SLIME_BALL, Item.getItemFromBlock(Blocks.SLIME_BLOCK));
+        super(ModItems.slimeArmor, 0, EntityEquipmentSlot.HEAD, "slime_helmet", Items.SLIME_BALL,  Blocks.SLIME_BLOCK, TextFormatting.GREEN);
     }
 
     @Override
@@ -43,10 +40,5 @@ public class SlimeHelmet extends BaseArmor {
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

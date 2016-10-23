@@ -126,7 +126,6 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
     }
 
-
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
