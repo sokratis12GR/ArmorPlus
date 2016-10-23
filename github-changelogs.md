@@ -1,10 +1,33 @@
-**ArmorPlus 1.10.2-8.0.0.0.2-dev**
+**ArmorPlus 1.10.2-8.0.0.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Versioning}**
+    * <MC>-<Major>.<Mino>.<Patch>.<Build>
+* **Bugs Fixed**
+    * Fixed Ender Dragon Zombie being buggy and its movement
 * **{Features Added/Removed/Changed}**
-    * Moved more recipes to the benches and changed some recipes
+    * Added debug info for the Ender Dragon Zombie if debugMode is true
+    * Moved all the remaining recipes to their benches
+    * Tiering from one to tier three is done
+    * You can add/remove recipes from all three benches through mod addons/integrations
     * Added JEI support for the Ulti-Tech Bench
-    * WIP CraftTweaker/MineTweaker3 Integration/Support
+    * WIP CraftTweaker/MineTweaker3 Integration/Support (NOT WORKING YET)
+    * Added new blocks
+         * Red Stone Brick
+         * Red Stone Brick Tower
+         * Red Stone Brick Corner
+         * Black Stone Brick
+         * Black Stone Brick Tower
+         * Black Stone Brick Corner
+    * Added Recipes for the castle blocks (red/white/black stone bricks)
+    * Changed benches' models and textures
+    * Added support for block rotation
+        * Block Lava Crystal, Block of Steel, Electrical Block, Lava Nether Brick, Compressed Obsidian
+    * Tinkers Integration
+        * Added Compressed Obsidian material
+        * Tweaked Lava Crystal Material, now requires 2 Lava Crystals or 1 Charged Lava Crystal
+        * Tweaked Fire Storm modifier, now it has 10 levels instead of 4
+        * Added compatability for Steel material via ArmorPlus' steel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.0.1-dev**
 ============================
