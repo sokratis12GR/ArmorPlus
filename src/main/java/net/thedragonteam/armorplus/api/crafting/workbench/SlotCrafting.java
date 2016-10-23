@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -80,7 +81,12 @@ public class SlotCrafting extends Slot {
         }
 
         this.amountCrafted = 0;
-
+        if (stack.getItem() == ModItems.lapisSword)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (stack.getItem() == ModItems.lapisBattleAxe)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (stack.getItem() == ModItems.lapisBow)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
         if (stack.getItem() == ModItems.coalHelmet || stack.getItem() == ModItems.coalChestplate || stack.getItem() == ModItems.coalLeggings || stack.getItem() == ModItems.coalBoots)
             this.thePlayer.addStat(ARPAchievements.craftCoalArmor, 1);

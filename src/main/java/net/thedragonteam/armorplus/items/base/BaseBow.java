@@ -13,12 +13,10 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArrow;
-import net.minecraft.item.ItemBow;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -37,39 +35,58 @@ public class BaseBow extends ItemBow {
 
     public Item itemEasy;
     public Item itemExpert;
+    public Item itemBow;
     public TextFormatting formatting;
 
-    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert, TextFormatting textFormatting) {
+    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert, TextFormatting textFormatting, Item bowItem) {
         this.setMaxDamage(durability);
         this.damage = damage;
         this.itemEasy = repairEasy;
         this.itemExpert = repairExpert;
         this.formatting = textFormatting;
+        this.itemBow = bowItem;
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
+        this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
+            @SideOnly(Side.CLIENT)
+            public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
+                if (entityIn == null) {
+                    return 0.0F;
+                } else {
+                    ItemStack itemstack = entityIn.getActiveItemStack();
+                    return itemstack != null && itemstack.getItem() == itemBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 5.0F : 0.0F;
+                }
+            }
+        });
+        this.addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter() {
+            @SideOnly(Side.CLIENT)
+            public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
+                return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
+            }
+        });
     }
 
-    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
-        this(durability, name, damage, repairEasy.getItem(), repairExpert.getItem(), textFormatting);
+    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting, Item bowItem) {
+        this(durability, name, damage, repairEasy.getItem(), repairExpert.getItem(), textFormatting, bowItem);
     }
 
-    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(durability, name, damage, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
+        this(durability, name, damage, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
     }
 
-    public BaseBow(int durability, String name, float damage, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
-        this(durability, name, damage, repairEasy, repairExpert.getItem(), textFormatting);
+    public BaseBow(int durability, String name, float damage, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting, Item bowItem) {
+        this(durability, name, damage, repairEasy, repairExpert.getItem(), textFormatting, bowItem);
     }
 
-    public BaseBow(int durability, String name, float damage, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(durability, name, damage, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseBow(int durability, String name, float damage, Item repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
+        this(durability, name, damage, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
     }
 
-    public BaseBow(int durability, String name, float damage, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
-        this(durability, name, damage, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting);
+    public BaseBow(int durability, String name, float damage, Block repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
+        this(durability, name, damage, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
     }
 
 

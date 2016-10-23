@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.resources;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -31,19 +30,6 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-        ItemStack itemStack = event.crafting;
-        if (i == ModItems.lapisSword)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
-        if (i == ModItems.guardianSword)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
-        if (i == ModItems.lapisBattleAxe)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
-        if (i == ModItems.guardianBattleAxe)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
-        if (i == ModItems.lapisBow)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
-        if (i == ModItems.guardianBow)
-            itemStack.addEnchantment(Enchantment.getEnchantmentByLocation("power"), 1);
 
         if (i == Item.getItemFromBlock(ModBlocks.arpWorkbench)) {
             event.player.addStat(ARPAchievements.welcomeToArmorPlus, 1);

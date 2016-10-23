@@ -84,6 +84,12 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
+        if (stack.getItem() == ModItems.guardianSword)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
+        if (stack.getItem() == ModItems.guardianBattleAxe)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
+        if (stack.getItem() == ModItems.guardianBow)
+            stack.addEnchantment(Enchantment.getEnchantmentByLocation("power"), 1);
         /*Guardian Armor Thorns*/
         if (stack.getItem() == ModItems.guardianHelmet || stack.getItem() == ModItems.guardianChestplate || stack.getItem() == ModItems.guardianLeggings || stack.getItem() == ModItems.guardianBoots)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("thorns"), 3);

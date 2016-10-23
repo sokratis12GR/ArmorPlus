@@ -14,6 +14,6 @@ import net.thedragonteam.armorplus.tileentity.base.TileEntityBaseBench;
 public class TileEntityUltiTechBench extends TileEntityBaseBench {
 
     public TileEntityUltiTechBench() {
-        super("ulti_tech_bench", 34, 25, 64);
+        super("ulti_tech_bench", 24, 26, 64);
     }
 }
