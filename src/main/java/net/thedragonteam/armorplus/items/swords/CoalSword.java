@@ -23,8 +23,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.swords
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -33,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalSword extends BaseSword {
 
     public CoalSword() {
-        super(ModItems.swordCoalMaterial, "coal_sword", Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
+        super(ModItems.swordCoalMaterial, "coal_sword", Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK), TextFormatting.GRAY);
     }
 
     @Override
@@ -53,10 +51,5 @@ public class CoalSword extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

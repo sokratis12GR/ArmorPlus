@@ -8,7 +8,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -18,8 +17,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.bows
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisBow extends BaseBow {
 
     public LapisBow() {
-        super(250, "lapis_bow", 3.5F, new ItemStack(Items.DYE, 1, 4).getItem(), Item.getItemFromBlock(Blocks.LAPIS_BLOCK));
+        super(250, "lapis_bow", 3.5F, new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.DARK_BLUE);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -46,10 +43,5 @@ public class LapisBow extends BaseBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_BLUE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

@@ -18,8 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.battleaxes
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaBattleAxe extends BaseSword {
 
     public LavaBattleAxe() {
-        super(ModItems.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
+        super(ModItems.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD);
     }
 
     @Override
@@ -48,10 +46,5 @@ public class LavaBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

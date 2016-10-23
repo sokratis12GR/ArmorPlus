@@ -51,7 +51,7 @@ public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, IT
     private int input;
 
     public BaseElectricalArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.electricalArmor, armorPreffix, slot, name, null, null, TextFormatting.DARK_RED);
+        super(ModItems.electricalArmor, armorPreffix, slot, name, ModItems.electricalIngot, ModItems.electricalIngot, TextFormatting.DARK_RED);
         setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.power = power;
         this.maxCapacity = maxCapacity;

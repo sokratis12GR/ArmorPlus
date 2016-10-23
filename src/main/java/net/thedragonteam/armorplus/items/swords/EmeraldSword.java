@@ -23,8 +23,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.swords
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -33,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldSword extends BaseSword {
 
     public EmeraldSword() {
-        super(ModItems.swordEmeraldMaterial, "emerald_sword", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
+        super(ModItems.swordEmeraldMaterial, "emerald_sword", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.DARK_GREEN);
     }
 
     @Override
@@ -53,10 +51,5 @@ public class EmeraldSword extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

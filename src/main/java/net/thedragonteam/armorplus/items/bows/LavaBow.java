@@ -15,8 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.bows
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -25,7 +23,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaBow extends BaseBow {
 
     public LavaBow() {
-        super(1750, "lava_bow", 7.0F, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
+        super(1750, "lava_bow", 7.0F, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -43,10 +41,5 @@ public class LavaBow extends BaseBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

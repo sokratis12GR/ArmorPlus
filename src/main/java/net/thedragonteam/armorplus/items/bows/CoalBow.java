@@ -18,8 +18,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.bows
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalBow extends BaseBow {
 
     public CoalBow() {
-        super(59, "coal_bow", 2.0F, Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK));
+        super(59, "coal_bow", 2.0F, Items.COAL, Item.getItemFromBlock(Blocks.COAL_BLOCK), TextFormatting.GRAY);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -46,10 +44,5 @@ public class CoalBow extends BaseBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

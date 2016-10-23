@@ -20,8 +20,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.battleaxes
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -30,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonBattleAxe extends BaseSword {
 
     public EnderDragonBattleAxe() {
-        super(ModItems.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale);
+        super(ModItems.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.DARK_PURPLE);
     }
 
     @Override
@@ -50,10 +48,5 @@ public class EnderDragonBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

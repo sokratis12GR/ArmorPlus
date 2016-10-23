@@ -18,8 +18,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.swords
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,7 +26,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaSword extends BaseSword {
 
     public LavaSword() {
-        super(ModItems.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1).getItem());
+        super(ModItems.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD);
     }
 
     @Override
@@ -48,10 +46,5 @@ public class LavaSword extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

@@ -23,7 +23,7 @@ import net.thedragonteam.armorplus.util.Utils;
 public class DevChestplate extends BaseArmor {
 
     public DevChestplate() {
-        super(ModItems.devArmor, 0, EntityEquipmentSlot.CHEST, "dev_chestplate", null, null, TextFormatting.BOLD);
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.CHEST, "dev_chestplate", ModItems.devChestplate, ModItems.devChestplate, TextFormatting.BOLD);
     }
 
     @Override

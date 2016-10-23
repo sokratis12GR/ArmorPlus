@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.items.bows;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -18,8 +17,6 @@ import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.bows
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianBow extends BaseBow {
 
     public ObsidianBow() {
-        super(1500, "obsidian_bow", 6.0F, Item.getItemFromBlock(Blocks.OBSIDIAN), Item.getItemFromBlock(ModBlocks.compressedObsidian));
+        super(1500, "obsidian_bow", 6.0F, Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -46,10 +43,5 @@ public class ObsidianBow extends BaseBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

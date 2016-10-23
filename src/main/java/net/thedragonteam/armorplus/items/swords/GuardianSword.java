@@ -20,8 +20,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.swords
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -30,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianSword extends BaseSword {
 
     public GuardianSword() {
-        super(ModItems.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, ModItems.guardianScale);
+        super(ModItems.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA);
     }
 
     @Override
@@ -50,10 +48,5 @@ public class GuardianSword extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

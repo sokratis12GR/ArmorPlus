@@ -51,7 +51,7 @@ public class BaseSteelArmor extends BaseArmor implements ITeslaConsumer, ITeslaP
     private int input;
 
     public BaseSteelArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.steelArmorNotPowered, armorPreffix, slot, name, null, null, TextFormatting.DARK_RED);
+        super(ModItems.steelArmorNotPowered, armorPreffix, slot, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.DARK_RED);
         setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.power = power;
         this.maxCapacity = maxCapacity;

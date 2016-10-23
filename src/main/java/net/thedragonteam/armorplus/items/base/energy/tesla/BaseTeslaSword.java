@@ -10,11 +10,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseSword;
+import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
@@ -27,7 +29,7 @@ public class BaseTeslaSword extends BaseSword {
     private int input;
 
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material, name, null, null);
+        super(material, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.DARK_AQUA);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;

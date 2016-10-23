@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -22,8 +21,6 @@ import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
-
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.battleaxes
@@ -33,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldBattleAxe extends BaseSword {
 
     public EmeraldBattleAxe() {
-        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Item.getItemFromBlock(Blocks.EMERALD_BLOCK));
+        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.DARK_GREEN);
     }
 
     @Override
@@ -53,10 +50,5 @@ public class EmeraldBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

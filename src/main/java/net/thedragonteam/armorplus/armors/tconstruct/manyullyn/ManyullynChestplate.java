@@ -11,6 +11,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -26,7 +27,7 @@ import java.util.List;
 public class ManyullynChestplate extends BaseArmor {
 
     public ManyullynChestplate() {
-        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.CHEST, "manyullyn_chestplate", null, null, TextFormatting.DARK_PURPLE);
+        super(ModItems.manyullynArmor, 0, EntityEquipmentSlot.CHEST, "manyullyn_chestplate", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2), TextFormatting.DARK_PURPLE);
     }
 
     @Override

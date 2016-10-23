@@ -13,7 +13,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -23,8 +22,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.battleaxes
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -33,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianBattleAxe extends BaseSword {
 
     public ObsidianBattleAxe() {
-        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe", Item.getItemFromBlock(Blocks.OBSIDIAN), Item.getItemFromBlock(ModBlocks.compressedObsidian));
+        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
     }
 
     @Override
@@ -53,10 +50,5 @@ public class ObsidianBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_GRAY + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -22,8 +21,6 @@ import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
-
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.swords
@@ -33,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisSword extends BaseSword {
 
     public LapisSword() {
-        super(ModItems.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4).getItem(), Item.getItemFromBlock(Blocks.LAPIS_BLOCK));
+        super(ModItems.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.DARK_BLUE);
     }
 
     @Override
@@ -53,10 +50,5 @@ public class LapisSword extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_BLUE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_BLUE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

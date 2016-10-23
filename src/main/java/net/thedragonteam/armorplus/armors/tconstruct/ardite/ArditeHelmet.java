@@ -11,6 +11,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -26,7 +27,7 @@ import java.util.List;
 public class ArditeHelmet extends BaseArmor {
 
     public ArditeHelmet() {
-        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.HEAD, "ardite_helmet", null, null, TextFormatting.DARK_RED);
+        super(ModItems.arditeArmor, 0, EntityEquipmentSlot.HEAD, "ardite_helmet", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1), TextFormatting.DARK_RED);
     }
 
     @Override

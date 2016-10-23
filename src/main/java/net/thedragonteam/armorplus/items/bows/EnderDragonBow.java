@@ -15,8 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseBow;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * net.thedragonteam.armorplus.items.bows
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -25,7 +23,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonBow extends BaseBow {
 
     public EnderDragonBow() {
-        super(2000, "ender_dragon_bow", 12.0F, ModItems.enderDragonScale, ModItems.enderDragonScale);
+        super(2000, "ender_dragon_bow", 12.0F, ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.DARK_PURPLE);
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
@@ -43,10 +41,5 @@ public class EnderDragonBow extends BaseBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_PURPLE + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 }

@@ -8,11 +8,13 @@ import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseSword;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 public class BaseRFSword extends BaseSword implements IEnergyContainerItem {
 
@@ -29,7 +31,7 @@ public class BaseRFSword extends BaseSword implements IEnergyContainerItem {
     }
 
     public BaseRFSword(ToolMaterial material, String name, int capacity, int maxReceive, int maxExtract) {
-        super(material, name, null, null);
+        super(material, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.DARK_RED);
         this.setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.capacity = capacity;
         this.maxReceive = maxReceive;

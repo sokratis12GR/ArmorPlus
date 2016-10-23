@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.items.base;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -27,23 +29,53 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+
 public class BaseBow extends ItemBow {
 
     public float damage;
 
     public Item itemEasy;
     public Item itemExpert;
+    public TextFormatting formatting;
 
-    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert) {
+    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert, TextFormatting textFormatting) {
         this.setMaxDamage(durability);
         this.damage = damage;
         this.itemEasy = repairEasy;
         this.itemExpert = repairExpert;
+        this.formatting = textFormatting;
         setRegistryName(name);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
+    }
+
+    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+        this(durability, name, damage, repairEasy.getItem(), repairExpert.getItem(), textFormatting);
+    }
+
+    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(durability, name, damage, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting);
+    }
+
+    public BaseBow(int durability, String name, float damage, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+        this(durability, name, damage, repairEasy, repairExpert.getItem(), textFormatting);
+    }
+
+    public BaseBow(int durability, String name, float damage, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(durability, name, damage, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting);
+    }
+
+    public BaseBow(int durability, String name, float damage, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(durability, name, damage, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting);
+    }
+
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (formatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     public ItemStack func_185060_a(EntityPlayer player) {

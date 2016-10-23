@@ -23,7 +23,7 @@ import net.thedragonteam.armorplus.util.Utils;
 public class DevBoots extends BaseArmor {
 
     public DevBoots() {
-        super(ModItems.devArmor, 0, EntityEquipmentSlot.FEET, "dev_boots", null, null, TextFormatting.BOLD);
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.FEET, "dev_boots", ModItems.devBoots, ModItems.devBoots, TextFormatting.BOLD);
     }
 
     @Override

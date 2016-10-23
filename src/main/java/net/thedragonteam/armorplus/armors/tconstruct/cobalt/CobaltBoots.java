@@ -11,6 +11,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
@@ -26,7 +27,7 @@ import java.util.List;
 public class CobaltBoots extends BaseArmor {
 
     public CobaltBoots() {
-        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.FEET, "cobalt_boots", null, null, TextFormatting.BLUE);
+        super(ModItems.cobaltArmor, 0, EntityEquipmentSlot.FEET, "cobalt_boots", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0), TextFormatting.BLUE);
     }
 
     @Override

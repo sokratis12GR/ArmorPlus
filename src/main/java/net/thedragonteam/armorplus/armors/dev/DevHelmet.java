@@ -23,7 +23,7 @@ import net.thedragonteam.armorplus.util.Utils;
 public class DevHelmet extends BaseArmor {
 
     public DevHelmet() {
-        super(ModItems.devArmor, 0, EntityEquipmentSlot.HEAD, "dev_helmet", null, null, TextFormatting.BOLD);
+        super(ModItems.devArmor, 0, EntityEquipmentSlot.HEAD, "dev_helmet", ModItems.devHelmet, ModItems.devHelmet, TextFormatting.BOLD);
     }
 
     @Override
