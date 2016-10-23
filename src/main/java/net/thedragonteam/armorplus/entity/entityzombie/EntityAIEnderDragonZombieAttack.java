@@ -16,8 +16,8 @@ import net.minecraft.entity.ai.EntityAIAttackMelee;
  * Custom AI attack class to support raising of the arms when the zombie attacks
  */
 public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
+    private final EntityEnderDragonZombie enderDragonZombie;
     private int raiseArmTicks;
-    private EntityEnderDragonZombie enderDragonZombie;
 
     public EntityAIEnderDragonZombieAttack(EntityEnderDragonZombie zombieIn, double speedIn, boolean longMemoryIn) {
         super(zombieIn, speedIn, longMemoryIn);

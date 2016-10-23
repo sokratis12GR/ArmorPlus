@@ -75,16 +75,14 @@ public class ARPConfig {
     public static boolean enableEnderDragonZombieSpawnEnd = false;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieHealth", comment = "Set the Ender Dragon Zombie's Health")
     public static double enderDragonZombieHealth = 40.0D;
-    @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieKnockbackResistance", comment = "Set the Ender Dragon Zombie's Knockback Resistance")
-    public static double enderDragonZombieKnockbackResistance = 20.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieArmor", comment = "Set the Ender Dragon Zombie's Armor")
     public static double enderDragonZombieArmor = 2.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieAttackDamage", comment = "Set the Ender Dragon Zombie's Attack Damage")
-    public static double enderDragonZombieAttackDamage = 4.0D;
+    public static double enderDragonZombieAttackDamage = 3.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieMovementSpeed", comment = "Set the Ender Dragon Zombie's Movement Speed")
-    public static double enderDragonZombieMovementSpeed = 0.20D;
+    public static double enderDragonZombieMovementSpeed = 0.23000000417232513D;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieFollowRange", comment = "Set the Ender Dragon Zombie's Follow Range")
-    public static double enderDragonZombieFollowRange = 10.0D;
+    public static double enderDragonZombieFollowRange = 35.0D;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enableEnderDragonZombieWithering", comment = "Enable/Disable the Ender Dragon Zombie's Withering Effect")
     public static boolean enableEnderDragonZombieWithering = true;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectDuration", comment = "Set the Ender Dragon Zombie's Withering Effect Duration")

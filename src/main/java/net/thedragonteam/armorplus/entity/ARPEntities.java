@@ -29,7 +29,7 @@ public class ARPEntities {
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
-        EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1000, true, 0x002200, 0x00ff00);
+        EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x002200, 0x00ff00);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually

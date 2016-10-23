@@ -3,7 +3,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Versioning}**
     * <MC>-<Major>.<Mino>.<Patch>.<Build>
+* **Bugs Fixed**
+    * Fixed Ender Dragon Zombie being buggy and its movement
 * **{Features Added/Removed/Changed}**
+    * Added debug info for the Ender Dragon Zombie if debugMode is true
     * Moved all the remaining recipes to their benches
     * Tiering from one to tier three is done
     * You can add/remove recipes from all three benches through mod addons/integrations

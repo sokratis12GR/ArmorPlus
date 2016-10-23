@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nullable;
 
@@ -88,7 +89,13 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(enderDragonZombieAttackDamage);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(enderDragonZombieArmor);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(enderDragonZombieHealth);
-        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(enderDragonZombieKnockbackResistance);
+        if (debugMode) {
+            LogHelper.info("EnderDragon Zombie Follow Range: " + enderDragonZombieFollowRange);
+            LogHelper.info("EnderDragon Zombie Movement Speed: " + enderDragonZombieMovementSpeed);
+            LogHelper.info("EnderDragon Zombie Attack Damage: " + enderDragonZombieAttackDamage);
+            LogHelper.info("EnderDragon Zombie Armor: " + enderDragonZombieArmor);
+            LogHelper.info("EnderDragon Zombie Max Health: " + enderDragonZombieHealth);
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -111,13 +118,14 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.applyEntityAI();
     }
 
-    private void applyEntityAI() {
+    protected void applyEntityAI() {
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
     }
+
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
