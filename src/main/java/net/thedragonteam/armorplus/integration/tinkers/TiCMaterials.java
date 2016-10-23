@@ -57,8 +57,8 @@ public final class TiCMaterials {
         // Lava Crystal
         lavacrystal.setCraftable(true);
         lavacrystal.setCastable(true);
-        lavacrystal.setShard(new ItemStack(ModItems.lavaCrystal, 1));
         lavacrystal.addItem("gemChargedLavaCrystal", 1, Material.VALUE_Ingot);
+        lavacrystal.addItem(new ItemStack(ModItems.lavaCrystal, 1, 1), 1, Material.VALUE_Ingot);
         lavacrystal.addItem(new ItemStack(ModItems.lavaCrystal, 1), 1, 72);
         lavacrystal.addTrait(lavacrystalic, HEAD);
         lavacrystal.addTrait(flammable);
@@ -67,8 +67,8 @@ public final class TiCMaterials {
         // Obsidian
         compressed_obsidian.setCraftable(true);
         compressed_obsidian.addTrait(duritos);
-        compressed_obsidian.addItemIngot("blockCompressedObsidian");
-        compressed_obsidian.setRepresentativeItem(ModBlocks.compressedObsidian);
+        compressed_obsidian.addItem(new ItemStack(ModBlocks.compressedObsidian, 1), 1, Material.VALUE_Ingot);
+        compressed_obsidian.setRepresentativeItem(new ItemStack(ModBlocks.compressedObsidian, 1));
 
         registerToolMaterialStats();
     }

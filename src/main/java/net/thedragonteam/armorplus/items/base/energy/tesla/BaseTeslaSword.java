@@ -27,7 +27,7 @@ public class BaseTeslaSword extends BaseSword {
     private int input;
 
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material, name);
+        super(material, name, null);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;

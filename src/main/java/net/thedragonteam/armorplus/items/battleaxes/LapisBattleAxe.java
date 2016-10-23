@@ -11,9 +11,8 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -32,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisBattleAxe extends BaseSword {
 
     public LapisBattleAxe() {
-        super(ModItems.battleAxeLapisMaterial, "lapis_battle_axe");
+        super(ModItems.battleAxeLapisMaterial, "lapis_battle_axe", new ItemStack(Items.DYE, 1, 4).getItem());
     }
 
     @Override
@@ -52,10 +51,6 @@ public class LapisBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_BLUE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(Blocks.LAPIS_BLOCK);
     }
 
     @Override

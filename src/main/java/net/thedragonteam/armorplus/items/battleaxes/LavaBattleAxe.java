@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaBattleAxe extends BaseSword {
 
     public LavaBattleAxe() {
-        super(ModItems.battleAxeLavaMaterial, "lava_battle_axe");
+        super(ModItems.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal);
     }
 
     @Override
@@ -48,10 +48,6 @@ public class LavaBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.lavaCrystal;
     }
 
     @Override

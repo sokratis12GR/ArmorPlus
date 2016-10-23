@@ -28,6 +28,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.worldgen.OreGen;
+import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.File;
@@ -52,6 +53,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         LogHelper.info("Begin Initialization");
+        registerEvents();
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
         if (Loader.isModLoaded("tconstruct")) {
@@ -148,6 +150,7 @@ public class CommonProxy {
 
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
+        GameRegistry.registerWorldGenerator(new StructureGen(), 1);
     }
 
     public EntityPlayer getPlayer(MessageContext context) {

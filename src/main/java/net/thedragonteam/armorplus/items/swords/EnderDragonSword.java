@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EnderDragonSword extends BaseSword {
 
     public EnderDragonSword() {
-        super(ModItems.swordEnderDragonMaterial, "ender_dragon_sword");
+        super(ModItems.swordEnderDragonMaterial, "ender_dragon_sword", ModItems.enderDragonScale);
     }
 
     @Override
@@ -40,10 +40,6 @@ public class EnderDragonSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.enderDragonScale;
     }
 
     @Override

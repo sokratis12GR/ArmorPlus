@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class SuperStarSword extends BaseSword {
 
     public SuperStarSword() {
-        super(ModItems.swordSuperStarMaterial, "super_star_sword");
+        super(ModItems.swordSuperStarMaterial, "super_star_sword", ModItems.witherBone);
     }
 
     @Override
@@ -40,10 +40,6 @@ public class SuperStarSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.witherBone;
     }
 
     @Override

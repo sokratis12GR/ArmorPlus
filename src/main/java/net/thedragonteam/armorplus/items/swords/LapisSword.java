@@ -11,7 +11,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LapisSword extends BaseSword {
 
     public LapisSword() {
-        super(ModItems.swordLapisMaterial, "lapis_sword");
+        super(ModItems.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4).getItem());
     }
 
     @Override
@@ -41,10 +41,6 @@ public class LapisSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == getItemFromBlock(Blocks.LAPIS_BLOCK);
     }
 
     @Override

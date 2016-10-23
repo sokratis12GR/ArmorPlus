@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianSword extends BaseSword {
 
     public GuardianSword() {
-        super(ModItems.swordGuardianMaterial, "guardian_sword");
+        super(ModItems.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale);
     }
 
     @Override
@@ -40,10 +40,6 @@ public class GuardianSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.guardianScale;
     }
 
     @Override

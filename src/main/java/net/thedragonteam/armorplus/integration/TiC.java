@@ -9,6 +9,7 @@ import net.thedragonteam.armorplus.integration.tinkers.TiCMaterials;
 import net.thedragonteam.armorplus.integration.tinkers.TiCModifiers;
 import net.thedragonteam.armorplus.integration.tinkers.TiCTraits;
 import slimeknights.tconstruct.library.MaterialIntegration;
+import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
 public class TiC {
@@ -24,11 +25,13 @@ public class TiC {
         tinkersTraits = new TiCTraits();
         tinkersMaterials = new TiCMaterials();
         lavacrystalInt = new MaterialIntegration(TiCMaterials.lavacrystal);
+        lavacrystalInt.registerRepresentativeItem();
         lavacrystalInt.integrate();
         lavacrystalInt.toolforge();
-        steelInt = new MaterialIntegration(TinkerMaterials.steel);
+        steelInt = new MaterialIntegration(TinkerMaterials.steel, TinkerFluids.steel);
         steelInt.integrate();
         obsidianInt = new MaterialIntegration(TiCMaterials.compressed_obsidian);
+        lavacrystalInt.registerRepresentativeItem();
         obsidianInt.integrate();
         tinkersModifiers = new TiCModifiers();
         tinkersMaterials.setupMaterials();

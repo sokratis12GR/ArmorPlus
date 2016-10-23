@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldSword extends BaseSword {
 
     public EmeraldSword() {
-        super(ModItems.swordEmeraldMaterial, "emerald_sword");
+        super(ModItems.swordEmeraldMaterial, "emerald_sword", Items.EMERALD);
     }
 
     @Override
@@ -41,10 +41,6 @@ public class EmeraldSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.EMERALD;
     }
 
     @Override

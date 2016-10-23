@@ -49,7 +49,7 @@ public class ArmorPlus {
     public static final int BUILD = 2;
     // The ArmorPlus Version
     public static final String VERSION =
-            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-dev";
+            ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.API + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.2.1.49";
     public static final String LIB_VERSION = "1.10.2-1.0.3.0";
     public static final String MODID = "armorplus";
@@ -126,7 +126,6 @@ public class ArmorPlus {
         entity = new ArmorPlusEntity();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
-        proxy.registerEvents();
         proxy.init(event);
     }
 
@@ -137,7 +136,6 @@ public class ArmorPlus {
         entity = new ArmorPlusEntity();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
 
-        proxy.registerEvents();
         proxy.init(event);
     }
 

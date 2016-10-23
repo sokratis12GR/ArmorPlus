@@ -28,7 +28,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class LavaSword extends BaseSword {
 
     public LavaSword() {
-        super(ModItems.swordLavaMaterial, "lava_sword");
+        super(ModItems.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal);
     }
 
     @Override
@@ -38,10 +38,6 @@ public class LavaSword extends BaseSword {
             ((EntityLivingBase) target).setFire(6);
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.lavaCrystal;
     }
 
     @Override

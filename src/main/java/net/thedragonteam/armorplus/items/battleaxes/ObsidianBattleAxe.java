@@ -32,7 +32,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianBattleAxe extends BaseSword {
 
     public ObsidianBattleAxe() {
-        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe");
+        super(ModItems.battleAxeObsidianMaterial, "obsidian_battle_axe", Item.getItemFromBlock(Blocks.OBSIDIAN));
     }
 
     @Override
@@ -52,10 +52,6 @@ public class ObsidianBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
     }
 
     @Override

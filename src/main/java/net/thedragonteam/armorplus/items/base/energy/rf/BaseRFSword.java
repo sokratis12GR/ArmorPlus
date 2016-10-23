@@ -29,7 +29,7 @@ public class BaseRFSword extends BaseSword implements IEnergyContainerItem {
     }
 
     public BaseRFSword(ToolMaterial material, String name, int capacity, int maxReceive, int maxExtract) {
-        super(material, name);
+        super(material, name, null);
         this.setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.capacity = capacity;
         this.maxReceive = maxReceive;

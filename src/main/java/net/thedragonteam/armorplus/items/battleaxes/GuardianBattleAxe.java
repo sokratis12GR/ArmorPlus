@@ -30,7 +30,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class GuardianBattleAxe extends BaseSword {
 
     public GuardianBattleAxe() {
-        super(ModItems.battleAxeGuardianMaterial, "guardian_battle_axe");
+        super(ModItems.battleAxeGuardianMaterial, "guardian_battle_axe", ModItems.guardianScale);
     }
 
     @Override
@@ -50,10 +50,6 @@ public class GuardianBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == ModItems.guardianScale;
     }
 
     @Override

@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalBattleAxe extends BaseSword {
 
     public CoalBattleAxe() {
-        super(ModItems.battleAxeCoalMaterial, "coal_battle_axe");
+        super(ModItems.battleAxeCoalMaterial, "coal_battle_axe", Items.COAL);
     }
 
     @Override
@@ -51,10 +51,6 @@ public class CoalBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.COAL;
     }
 
     @Override

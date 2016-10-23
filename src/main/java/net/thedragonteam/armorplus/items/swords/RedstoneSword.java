@@ -11,9 +11,8 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -32,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class RedstoneSword extends BaseSword {
 
     public RedstoneSword() {
-        super(ModItems.swordRedstoneMaterial, "redstone_sword");
+        super(ModItems.swordRedstoneMaterial, "redstone_sword", Items.REDSTONE);
     }
 
     @Override
@@ -42,10 +41,6 @@ public class RedstoneSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_BLOCK);
     }
 
     @Override

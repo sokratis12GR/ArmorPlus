@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class EmeraldBattleAxe extends BaseSword {
 
     public EmeraldBattleAxe() {
-        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe");
+        super(ModItems.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD);
     }
 
     @Override
@@ -51,10 +51,6 @@ public class EmeraldBattleAxe extends BaseSword {
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_GREEN, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.EMERALD;
     }
 
     @Override

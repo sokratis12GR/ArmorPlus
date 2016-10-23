@@ -7,6 +7,7 @@ itemGroup.armorplus.blocks=ARP Blocks
 itemGroup.armorplus.weapons=ARP Weapons
 itemGroup.armorplus.tesla=ARP Tesla
 itemGroup.armorplus.rf=ARP RF
+itemGroup.armorplus.tinkers=ARP Tinkers
 
 #Containers
 container.armorplus.workbench=Workbench

@@ -31,7 +31,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class CoalSword extends BaseSword {
 
     public CoalSword() {
-        super(ModItems.swordCoalMaterial, "coal_sword");
+        super(ModItems.swordCoalMaterial, "coal_sword", Items.COAL);
     }
 
     @Override
@@ -41,10 +41,6 @@ public class CoalSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Items.COAL;
     }
 
     @Override

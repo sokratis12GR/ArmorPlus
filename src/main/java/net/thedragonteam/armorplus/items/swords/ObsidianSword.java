@@ -32,7 +32,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class ObsidianSword extends BaseSword {
 
     public ObsidianSword() {
-        super(ModItems.swordObsidianMaterial, "obsidian_sword");
+        super(ModItems.swordObsidianMaterial, "obsidian_sword", Item.getItemFromBlock(Blocks.OBSIDIAN));
     }
 
     @Override
@@ -42,10 +42,6 @@ public class ObsidianSword extends BaseSword {
             ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
         }
         return true;
-    }
-
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(Blocks.OBSIDIAN);
     }
 
     @Override
