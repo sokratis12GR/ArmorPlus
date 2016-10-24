@@ -16,6 +16,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 public class GuardianBow extends BaseBow {
 
     public GuardianBow() {
-        super(500, "guardian_bow", 6.5F, ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA, ModItems.guardianBow);
+        super(500, "guardian_bow", 8.5F, ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA, ModItems.guardianBow);
     }
 }

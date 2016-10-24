@@ -96,7 +96,6 @@ public class ModRecipes {
     public static void addShapedRecipes() {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
         GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
-
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeWhite"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeRed"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeBlack"));
@@ -112,7 +111,6 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickWhite"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickRed"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickBlack"));
-
         if (enableElytraRecipe)
             GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'N', Items.NETHER_STAR);
         if (enableChainArmorRecipes) {

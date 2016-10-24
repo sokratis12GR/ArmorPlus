@@ -44,7 +44,7 @@ public class WorkbenchRecipe {
             } else if (in instanceof String) {
                 input.add(OreDictionary.getOres((String) in));
             } else {
-                String ret = "Invalid Bench recipe: ";
+                String ret = "Invalid Workbench recipe: ";
                 for (Object tmp : recipe) {
                     ret += tmp + ", ";
                 }

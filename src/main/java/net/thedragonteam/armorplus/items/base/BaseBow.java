@@ -4,8 +4,13 @@
 
 package net.thedragonteam.armorplus.items.base;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,6 +31,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
+
+import java.util.List;
 
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -89,6 +96,14 @@ public class BaseBow extends ItemBow {
         this(durability, name, damage, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
     }
 
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add("\2479Base Arrow Damage: " + "\247r" + damage);
+        } else
+            tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+    }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
