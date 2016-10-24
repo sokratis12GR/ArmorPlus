@@ -67,7 +67,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        registerModels();
         if (event.getSide().isClient()) {
             if (Loader.isModLoaded("tconstruct")) {
                 TiCMaterials.registerMaterialRendering();
@@ -119,13 +118,6 @@ public class ClientProxy extends CommonProxy {
             throw new IllegalArgumentException("Only item and block instances");
         }
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
-    }
-
-    public void registerModels() {
-        registerModel(ModItems.coalArrow, 0);
-        registerModel(ModItems.lapisArrow, 0);
-        registerModel(ModItems.redstoneArrow, 0);
-        registerModel(ModItems.lavaArrow, 0);
     }
 
     @Override

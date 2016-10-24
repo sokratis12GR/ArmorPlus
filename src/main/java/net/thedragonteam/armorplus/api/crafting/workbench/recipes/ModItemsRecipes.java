@@ -51,16 +51,16 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotSteel"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.electricalBlock, 1), "OOO", "OOO", "OOO", 'O', "ingotElectrical"));
         if (recipes == 0 && enableArrowRecipes) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', "itemCoal", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', "gemLapis", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', "gemLavaCrystal", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2), "CCC", "CAC", "CCC", 'C', "itemCoal", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemLapisArrow, 2), "LLL", "LAL", "LLL", 'L', "gemLapis", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstoneArrow, 2), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemLavaArrow, 2), "LLL", "LAL", "LLL", 'L', "gemLavaCrystal", 'A', "itemArrow"));
         }
         if (recipes == 1 && enableArrowRecipes) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalArrow, 2), "CCC", "CAC", "CCC", 'C', "blockCoal", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisArrow, 2), "LLL", "LAL", "LLL", 'L', "blockLapis", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneArrow, 2), "RRR", "RAR", "RRR", 'R', "blockRedstone", 'A', "itemArrow"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaArrow, 2), "LLL", "LAL", "LLL", 'L', "gemChargedLavaCrystal", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2), "CCC", "CAC", "CCC", 'C', "blockCoal", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemLapisArrow, 2), "LLL", "LAL", "LLL", 'L', "blockLapis", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstoneArrow, 2), "RRR", "RAR", "RRR", 'R', "blockRedstone", 'A', "itemArrow"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemLavaArrow, 2), "LLL", "LAL", "LLL", 'L', "gemChargedLavaCrystal", 'A', "itemArrow"));
         }
     }
 }

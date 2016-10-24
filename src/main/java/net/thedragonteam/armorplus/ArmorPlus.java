@@ -64,8 +64,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusWeapons = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
     public static CreativeTabs tabArmorplusTesla = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
     public static CreativeTabs tabArmorplusRF = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "rf", 5);
-    public static CreativeTabs tabArmorplusTinkers = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tinkers", 6);
-    public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTesla, tabArmorplusRF, tabArmorplusTinkers});
+    public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTesla, tabArmorplusRF});
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
 
@@ -82,8 +81,8 @@ public class ArmorPlus {
         LogHelper.info("Welcoming Minecraft");
     }
 
-    public static String getVERSION() {
-        return VERSION;
+    public static String getVersion() {
+        return ArmorPlus.VERSION;
     }
 
     public static boolean hasTesla() {
@@ -98,7 +97,6 @@ public class ArmorPlus {
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-
         proxy.init(event);
     }
 
@@ -106,7 +104,6 @@ public class ArmorPlus {
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
-
         proxy.init(event);
     }
 

@@ -36,7 +36,7 @@ public class EntityLavaArrow extends EntityArrow {
 
     @Override
     public ItemStack getArrowStack() {
-        return new ItemStack(ModItems.lavaArrow);
+        return new ItemStack(ModItems.itemLavaArrow);
     }
 
     @Override

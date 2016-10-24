@@ -20,7 +20,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.entity.ARPEntities;
-import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
@@ -40,8 +39,6 @@ public class CommonProxy {
     private static WeakReference<EntityPlayer> dummyPlayer = new WeakReference<EntityPlayer>(null);
     @SuppressWarnings("unused")
     private ModItems items;
-    @SuppressWarnings("unused")
-    private ArmorPlusEntity entity;
     public static File configDir;
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -50,10 +47,10 @@ public class CommonProxy {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         ARPEntities.init();
         ModBlocks.init();
-        LogHelper.info("Blocks Successfully Registered");
+        LogHelper.debug("Blocks Successfully Registered");
         ModItems.init();
         items = new ModItems();
-        LogHelper.info("Items Successfully Registered");
+        LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
@@ -69,7 +66,6 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         LogHelper.info("Begin Initialization");
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
-        entity = new ArmorPlusEntity();
         registerEvents();
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
@@ -87,10 +83,8 @@ public class CommonProxy {
 
     public void registerEvents() {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
-
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-
         ARPAchievements.init();
         ModRecipes.init();
     }
@@ -106,9 +100,6 @@ public class CommonProxy {
     }
 
     public void registerRenderer() {
-    }
-
-    public void registerModels() {
     }
 
     /**

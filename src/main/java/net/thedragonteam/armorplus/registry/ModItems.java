@@ -4,17 +4,13 @@
 
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.dev.DevBoots;
 import net.thedragonteam.armorplus.armors.dev.DevChestplate;
 import net.thedragonteam.armorplus.armors.dev.DevHelmet;
@@ -111,20 +107,16 @@ import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.*;
 import net.thedragonteam.armorplus.items.swords.*;
 import net.thedragonteam.armorplus.items.theultimate.*;
-import net.thedragonteam.armorplus.util.NameUtil;
 
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 
 public class ModItems {
-
-    public static final IAttribute ARMOR = (new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 30.0D)).setShouldWatch(true);
 
     /**
      * Swords
      * Float damageVsEntity + 4.0F
      * public static ToolMaterial MATERIAL = EnumHelper.addToolMaterial("MATERIAL", int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability);
      */
-
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, 59, 1.0F, 0.5F, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, 250, 1.0F, 1.0F, 30);
     public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, 200, 1.0F, 1.5F, 20);
@@ -143,66 +135,46 @@ public class ModItems {
     public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, 1750, 0.0F, 8.0F, 20);
     public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, 500, 1.0F, 5.0F, 30);
     public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, 2000, 1.0F, 10.0F, 20);
-
     public static ItemArmor.ArmorMaterial devArmor = EnumHelper.addArmorMaterial("devArmor", getArmorPlusLocation() + "dev_armor", 100000, new int[]
             {100, 100, 100, 100}, 100, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 100.0F);
-
     public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", getArmorPlusLocation() + "coal_armor", 7, new int[]
             {1, 2, 3, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
-
     public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", getArmorPlusLocation() + "emerald_armor", 35, new int[]
             {3, 6, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", getArmorPlusLocation() + "lapis_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-
     public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", getArmorPlusLocation() + "lava_armor", 45, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", getArmorPlusLocation() + "obsidian_armor", 40, new int[]
             {3, 7, 10, 5}, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
-
     public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", getArmorPlusLocation() + "redstone_armor", 11, new int[]
             {1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-
     /* Steel Armor Not Powered */
     public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", getArmorPlusLocation() + "steel_armor", 15, new int[]
             {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-
     /* Electrical Armor Not Powered */
     public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation() + "electrical_armor", 19, new int[]
             {3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-
     public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", getArmorPlusLocation() + "chicken_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
-
     public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", getArmorPlusLocation() + "slime_armor", 3, new int[]
             {1, 1, 2, 1}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
-
     public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", getArmorPlusLocation() + "ender_dragon_armor", 60, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", getArmorPlusLocation() + "guardian_armor", 50, new int[]
             {4, 8, 11, 6}, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", getArmorPlusLocation() + "super_star_armor", 50, new int[]
             {5, 9, 12, 6}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation() + "the_ultimate_armor", 160, new int[]
             {10, 20, 30, 15}, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F);
-
     public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", getArmorPlusLocation() + "ardite_armor", 55, new int[]
             {4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", getArmorPlusLocation() + "cobalt_armor", 44, new int[]
             {3, 7, 9, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
-
     public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", getArmorPlusLocation() + "knight_slime_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
-
     public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", getArmorPlusLocation() + "manyullyn_armor", 66, new int[]
             {5, 10, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F);
-
     public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", getArmorPlusLocation() + "pig_iron_armor", 33, new int[]
             {3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
@@ -219,107 +191,86 @@ public class ModItems {
     public static RedstoneApple redstoneApple;
     public static ArmorPlusInfoBook armorPlusInfoBook;
     public static NBTItem nbtItem;
-
     public static DevHelmet devHelmet;
     public static DevChestplate devChestplate;
     public static DevLeggings devLeggings;
     public static DevBoots devBoots;
-
     public static CoalHelmet coalHelmet;
     public static CoalChestplate coalChestplate;
     public static CoalLeggings coalLeggings;
     public static CoalBoots coalBoots;
-
     public static EmeraldHelmet emeraldHelmet;
     public static EmeraldChestplate emeraldChestplate;
     public static EmeraldLeggings emeraldLeggings;
     public static EmeraldBoots emeraldBoots;
-
     public static LapisHelmet lapisHelmet;
     public static LapisChestplate lapisChestplate;
     public static LapisLeggings lapisLeggings;
     public static LapisBoots lapisBoots;
-
     public static LavaHelmet lavaHelmet;
     public static LavaChestplate lavaChestplate;
     public static LavaLeggings lavaLeggings;
     public static LavaBoots lavaBoots;
-
     public static ObsidianHelmet obsidianHelmet;
     public static ObsidianChestplate obsidianChestplate;
     public static ObsidianLeggings obsidianLeggings;
     public static ObsidianBoots obsidianBoots;
-
     public static RedstoneHelmet redstoneHelmet;
     public static RedstoneChestplate redstoneChestplate;
     public static RedstoneLeggings redstoneLeggings;
     public static RedstoneBoots redstoneBoots;
-
     public static SteelHelmet steelHelmet;
     public static SteelChestplate steelChestplate;
     public static SteelLeggings steelLeggings;
     public static SteelBoots steelBoots;
-
     public static ElectricalHelmet electricalHelmet;
     public static ElectricalChestplate electricalChestplate;
     public static ElectricalLeggings electricalLeggings;
     public static ElectricalBoots electricalBoots;
-
     public static ChickenHelmet chickenHelmet;
     public static ChickenChestplate chickenChestplate;
     public static ChickenLeggings chickenLeggings;
     public static ChickenBoots chickenBoots;
-
     public static SlimeHelmet slimeHelmet;
     public static SlimeChestplate slimeChestplate;
     public static SlimeLeggings slimeLeggings;
     public static SlimeBoots slimeBoots;
-
     public static EnderDragonHelmet enderDragonHelmet;
     public static EnderDragonChestplate enderDragonChestplate;
     public static EnderDragonLeggings enderDragonLeggings;
     public static EnderDragonBoots enderDragonBoots;
-
     public static GuardianHelmet guardianHelmet;
     public static GuardianChestplate guardianChestplate;
     public static GuardianLeggings guardianLeggings;
     public static GuardianBoots guardianBoots;
-
     public static SuperStarHelmet superStarHelmet;
     public static SuperStarChestplate superStarChestplate;
     public static SuperStarLeggings superStarLeggings;
     public static SuperStarBoots superStarBoots;
-
     public static TheUltimateHelmet theUltimateHelmet;
     public static TheUltimateChestplate theUltimateChestplate;
     public static TheUltimateLeggings theUltimateLeggings;
     public static TheUltimateBoots theUltimateBoots;
-
     public static ArditeHelmet arditeHelmet;
     public static ArditeChestplate arditeChestplate;
     public static ArditeLeggings arditeLeggings;
     public static ArditeBoots arditeBoots;
-
     public static CobaltHelmet cobaltHelmet;
     public static CobaltChestplate cobaltChestplate;
     public static CobaltLeggings cobaltLeggings;
     public static CobaltBoots cobaltBoots;
-
     public static ManyullynHelmet manyullynHelmet;
     public static ManyullynChestplate manyullynChestplate;
     public static ManyullynLeggings manyullynLeggings;
     public static ManyullynBoots manyullynBoots;
-
     public static PigIronHelmet pigIronHelmet;
     public static PigIronChestplate pigIronChestplate;
     public static PigIronLeggings pigIronLeggings;
     public static PigIronBoots pigIronBoots;
-
     public static KnightSlimeHelmet knightSlimeHelmet;
     public static KnightSlimeChestplate knightSlimeChestplate;
     public static KnightSlimeLeggings knightSlimeLeggings;
     public static KnightSlimeBoots knightSlimeBoots;
-
     public static CoalSword coalSword;
     public static LapisSword lapisSword;
     public static RedstoneSword redstoneSword;
@@ -329,7 +280,6 @@ public class ModItems {
     public static SuperStarSword superStarSword;
     public static GuardianSword guardianSword;
     public static EnderDragonSword enderDragonSword;
-
     public static CoalBattleAxe coalBattleAxe;
     public static LapisBattleAxe lapisBattleAxe;
     public static RedstoneBattleAxe redstoneBattleAxe;
@@ -339,7 +289,6 @@ public class ModItems {
     public static SuperStarBattleAxe superStarBattleAxe;
     public static GuardianBattleAxe guardianBattleAxe;
     public static EnderDragonBattleAxe enderDragonBattleAxe;
-
     public static CoalBow coalBow;
     public static LapisBow lapisBow;
     public static RedstoneBow redstoneBow;
@@ -349,7 +298,6 @@ public class ModItems {
     public static SuperStarBow superStarBow;
     public static GuardianBow guardianBow;
     public static EnderDragonBow enderDragonBow;
-
     public static TheUltimateHelmetLeft theUltimateHelmetLeft;
     public static TheUltimateHelmetMiddle theUltimateHelmetMiddle;
     public static TheUltimateHelmetRight theUltimateHelmetRight;
@@ -362,7 +310,6 @@ public class ModItems {
     public static TheUltimateBootsLeft theUltimateBootsLeft;
     public static TheUltimateBootsMiddle theUltimateBootsMiddle;
     public static TheUltimateBootsRight theUltimateBootsRight;
-
     public static DevTool devTool;
     public static TheDragonTeamItem theDragonTeamItem;
     public static ModdedCityItem moddedCityItem;
@@ -370,31 +317,25 @@ public class ModItems {
     public static TwitchItem twitchItem;
     public static BeamItem beamItem;
     public static MMDItem mmdItem;
-
     public static ItemTeslaPickaxe itemTeslaPickaxe;
     public static ItemTeslaSword itemTeslaSword;
     public static ItemTeslaAxe itemTeslaAxe;
     public static ItemTeslaRod itemTeslaRod;
     public static ItemTeslaHoe itemTeslaHoe;
     public static ItemTeslaShovel itemTeslaShovel;
-
     public static ItemRFAxe itemRFAxe;
     public static ItemRFRod itemRFRod;
     public static ItemRFPickaxe itemRFPickaxe;
     public static ItemRFSword itemRFSword;
     public static ItemRFHoe itemRFHoe;
     public static ItemRFShovel itemRFShovel;
-
     public static ItemLaser itemLaser;
     public static ItemSomething itemSomething;
-
     public static GuiTester guiTester;
-
-    public static Item coalArrow, lapisArrow, redstoneArrow, lavaArrow;
-
-    public ModItems() {
-        register();
-    }
+    public static ItemCoalArrow itemCoalArrow;
+    public static ItemLapisArrow itemLapisArrow;
+    public static ItemRedstoneArrow itemRedstoneArrow;
+    public static ItemLavaArrow itemLavaArrow;
 
     public static void init() {
         guiTester = new GuiTester();
@@ -553,14 +494,10 @@ public class ModItems {
         theUltimateBootsMiddle = new TheUltimateBootsMiddle();
         theUltimateBootsRight = new TheUltimateBootsRight();
         devTool = new DevTool();
-        coalArrow = new ItemCoalArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        NameUtil.setNames(coalArrow, "coal_arrow");
-        lapisArrow = new ItemLapisArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        NameUtil.setNames(lapisArrow, "lapis_arrow");
-        redstoneArrow = new ItemRedstoneArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        NameUtil.setNames(redstoneArrow, "redstone_arrow");
-        lavaArrow = new ItemLavaArrow().setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        NameUtil.setNames(lavaArrow, "lava_arrow");
+        itemCoalArrow = new ItemCoalArrow();
+        itemLapisArrow = new ItemLapisArrow();
+        itemRedstoneArrow = new ItemRedstoneArrow();
+        itemLavaArrow = new ItemLavaArrow();
     }
 
     @SideOnly(Side.CLIENT)
@@ -721,17 +658,9 @@ public class ModItems {
         theUltimateBootsRight.initModel();
         devTool.initModel();
         nbtItem.initModel();
+        itemCoalArrow.initModel();
+        itemLapisArrow.initModel();
+        itemRedstoneArrow.initModel();
+        itemLavaArrow.initModel();
     }
-
-    private void register() {
-        registerItem(coalArrow);
-        registerItem(lapisArrow);
-        registerItem(redstoneArrow);
-        registerItem(lavaArrow);
-    }
-
-    private void registerItem(Item item) {
-        GameRegistry.register(item);
-    }
-
 }

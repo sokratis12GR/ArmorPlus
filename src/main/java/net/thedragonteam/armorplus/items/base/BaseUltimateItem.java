@@ -19,8 +19,8 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class BaseUltimateItem extends Item {
 
     public BaseUltimateItem(String name) {
-        setRegistryName("the_ultimate_" + name);        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_" + name);     // Used for localization (en_US.lang)
+        setRegistryName("the_ultimate_" + name);
+        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_" + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

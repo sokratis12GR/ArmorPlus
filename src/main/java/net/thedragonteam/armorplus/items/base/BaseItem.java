@@ -15,8 +15,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 public class BaseItem extends Item {
 
     public BaseItem(String name) {
-        setRegistryName(name);        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);     // Used for localization (en_US.lang)
+        setRegistryName(name);
+        setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

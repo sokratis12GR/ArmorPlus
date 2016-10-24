@@ -44,7 +44,7 @@ public class UltiTechBenchRecipe {
             } else if (in instanceof String) {
                 input.add(OreDictionary.getOres((String) in));
             } else {
-                String ret = "Invalid High-Tech Bench recipe: ";
+                String ret = "Invalid Bench recipe: ";
                 for (Object tmp : recipe) {
                     ret += tmp + ", ";
                 }
