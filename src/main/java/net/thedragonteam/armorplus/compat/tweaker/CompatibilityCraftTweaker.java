@@ -10,7 +10,6 @@ public class CompatibilityCraftTweaker implements ICompatibility {
 
     @Override
     public void loadCompatibility(ICompatibility.InitializationPhase phase) {
-        CraftTweak.register();
     }
 
     @Override

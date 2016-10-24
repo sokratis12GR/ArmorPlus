@@ -20,6 +20,7 @@
          * Black Stone Brick Tower
          * Black Stone Brick Corner
     * Added Recipes for the castle blocks (red/white/black stone bricks)
+    * Changed benches' models and textures
     * Added support for block rotation
         * Block Lava Crystal, Block of Steel, Electrical Block, Lava Nether Brick, Compressed Obsidian
     * Tinkers Integration

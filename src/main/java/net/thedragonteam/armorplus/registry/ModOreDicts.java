@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
 
 public class ModOreDicts {
@@ -59,6 +60,6 @@ public class ModOreDicts {
         registerOre("itemCoal", new ItemStack(Items.COAL, 1));
         registerOre("itemCharcoal", new ItemStack(Items.COAL, 1, 1));
         registerOre("itemArrow", new ItemStack(Items.ARROW, 1));
-        registerOre("stonebrick", new ItemStack(Blocks.STONEBRICK, 1));
+        registerOre("stonebrick", new ItemStack(Blocks.STONEBRICK, 1, WILDCARD_VALUE));
     }
 }

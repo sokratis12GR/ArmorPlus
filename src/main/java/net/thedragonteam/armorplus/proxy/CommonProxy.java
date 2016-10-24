@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.proxy;
 
+import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.WorldServer;
@@ -19,6 +20,9 @@ import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.compat.ICompatibility;
+import net.thedragonteam.armorplus.compat.tweaker.HighTechBenchCrafting;
+import net.thedragonteam.armorplus.compat.tweaker.UltiTechBenchCrafting;
+import net.thedragonteam.armorplus.compat.tweaker.WorkbenchCrafting;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.entity.ArmorPlusEntity;
 import net.thedragonteam.armorplus.integration.TiC;
@@ -72,6 +76,12 @@ public class CommonProxy {
         entity = new ArmorPlusEntity();
         registerEvents();
         ModOreDicts.registerOreDictEnties();
+        if (Loader.isModLoaded("MineTweaker3")) {
+            LogHelper.info("Loading MineTweaker Classes...");
+            MineTweakerAPI.registerClass(WorkbenchCrafting.class);
+            MineTweakerAPI.registerClass(HighTechBenchCrafting.class);
+            MineTweakerAPI.registerClass(UltiTechBenchCrafting.class);
+        }
         ARPTab.initialize();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.init();

@@ -23,7 +23,6 @@ public class UltiTechBenchCrafting {
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] ingredients) {
-
         MineTweakerAPI.apply(new Add(new ShapelessOreRecipe(toStack(output), toObjects(ingredients))));
     }
 
