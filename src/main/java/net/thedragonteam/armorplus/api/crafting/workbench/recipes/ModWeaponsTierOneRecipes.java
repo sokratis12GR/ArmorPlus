@@ -14,40 +14,40 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
 public class ModWeaponsTierOneRecipes {
     public void addRecipes(WorkbenchCraftingManager manager) {
         if (enableSwordsRecipes && recipes == 0) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', "itemCoal", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', "gemLapis", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', "dustRedstone", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "itemCoal", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), " L ", " L ", " S ", 'L', "gemLapis", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "dustRedstone", 'S', "stickWood"));
         }
         if (enableBattleAxesRecipes && recipes == 0) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', "itemCoal", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', "gemLapis", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', "dustRedstone", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "C C", "CSC", " S ", 'C', "itemCoal", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "L L", "LSL", " S ", 'L', "gemLapis", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "R R", "RSR", " S ", 'R', "dustRedstone", 'S', "stickWood"));
         }
         if (enableBowsRecipes && recipes == 0) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', "itemCoal", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', "itemCoal", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', "gemLapis", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', "gemLapis", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', "dustRedstone", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', "dustRedstone", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), " CS", "C S", " CS", 'C', "itemCoal", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SC ", "S C", "SC ", 'C', "itemCoal", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), " LS", "L S", " LS", 'L', "gemLapis", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "SL ", "S L", "SL ", 'L', "gemLapis", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), " RS", "R S", " RS", 'R', "dustRedstone", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "SR ", "S R", "SR ", 'R', "dustRedstone", 'S', "string"));
         }
         if (enableSwordsRecipes && recipes == 1) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), "XCX", "XCX", "XSX", 'C', "blockCoal", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), "XLX", "XLX", "XSX", 'L', "blockLapis", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), "XRX", "XRX", "XSX", 'R', "blockRedstone", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "blockCoal", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), " L ", " L ", " S ", 'L', "blockLapis", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "blockRedstone", 'S', "stickWood"));
         }
         if (enableBattleAxesRecipes && recipes == 1) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "CXC", "CSC", "XSX", 'C', "blockCoal", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "LXL", "LSL", "XSX", 'L', "blockLapis", 'S', "stickWood"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "RXR", "RSR", "XSX", 'R', "blockRedstone", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "C C", "CSC", " S ", 'C', "blockCoal", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBattleAxe, 1), "L L", "LSL", " S ", 'L', "blockLapis", 'S', "stickWood"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "R R", "RSR", " S ", 'R', "blockRedstone", 'S', "stickWood"));
         }
         if (enableBowsRecipes && recipes == 1) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "XCS", "CXS", "XCS", 'C', "blockCoal", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SCX", "SXC", "SCX", 'C', "blockCoal", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "XLS", "LXS", "XLS", 'L', "blockLapis", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "SLX", "SXL", "SLX", 'L', "blockLapis", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "XRS", "RXS", "XRS", 'R', "blockRedstone", 'S', "string"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "SRX", "SXR", "SRX", 'R', "blockRedstone", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), " CS", "C S", " CS", 'C', "blockCoal", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SC ", "S C", "SC ", 'C', "blockCoal", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), " LS", "L S", " LS", 'L', "blockLapis", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBow, 1), "SL ", "S L", "SL ", 'L', "blockLapis", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), " RS", "R S", " RS", 'R', "blockRedstone", 'S', "string"));
+            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "SR ", "S R", "SR ", 'R', "blockRedstone", 'S', "string"));
         }
     }
 }
