@@ -12,12 +12,17 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
+import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
 
-public class BlueStoneBrick extends BaseCastleBlock {
+/**
+ * net.thedragonteam.armorplus.blocks
+ * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
+ * - TheDragonTeam
+ */
+public class YellowStoneBrickCorner extends BaseStoneBrickCorner {
 
-    public BlueStoneBrick() {
-        super("blue", MapColor.BLUE);
+    public YellowStoneBrickCorner() {
+        super("yellow", MapColor.YELLOW);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

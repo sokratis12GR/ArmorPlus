@@ -36,12 +36,24 @@ public class ModOreDicts {
         registerOre("stonebrickWhite", new ItemStack(ModBlocks.whiteStoneBrick, 1));
         registerOre("stonebrickRed", new ItemStack(ModBlocks.redStoneBrick, 1));
         registerOre("stonebrickBlack", new ItemStack(ModBlocks.blackStoneBrick, 1));
+        registerOre("stonebrickBlue", new ItemStack(ModBlocks.blueStoneBrick, 1));
+        registerOre("stonebrickGreen", new ItemStack(ModBlocks.greenStoneBrick, 1));
+        registerOre("stonebrickYellow", new ItemStack(ModBlocks.yellowStoneBrick, 1));
+        registerOre("stonebrickPurple", new ItemStack(ModBlocks.purpleStoneBrick, 1));
         registerOre("stonebrickWhiteCorner", new ItemStack(ModBlocks.whiteStoneBrickCorner, 1));
         registerOre("stonebrickRedCorner", new ItemStack(ModBlocks.redStoneBrickCorner, 1));
         registerOre("stonebrickBlackCorner", new ItemStack(ModBlocks.blackStoneBrickCorner, 1));
+        registerOre("stonebrickBlueCorner", new ItemStack(ModBlocks.blueStoneBrickCorner, 1));
+        registerOre("stonebrickGreenCorner", new ItemStack(ModBlocks.greenStoneBrickCorner, 1));
+        registerOre("stonebrickYellowCorner", new ItemStack(ModBlocks.yellowStoneBrickCorner, 1));
+        registerOre("stonebrickPurpleCorner", new ItemStack(ModBlocks.purpleStoneBrickCorner, 1));
         registerOre("stonebrickWhiteTower", new ItemStack(ModBlocks.whiteStoneBrickTower, 1));
         registerOre("stonebrickRedTower", new ItemStack(ModBlocks.redStoneBrickTower, 1));
         registerOre("stonebrickBlackTower", new ItemStack(ModBlocks.blackStoneBrickTower, 1));
+        registerOre("stonebrickBlueTower", new ItemStack(ModBlocks.blueStoneBrickTower, 1));
+        registerOre("stonebrickGreenTower", new ItemStack(ModBlocks.greenStoneBrickTower, 1));
+        registerOre("stonebrickYellowTower", new ItemStack(ModBlocks.yellowStoneBrickTower, 1));
+        registerOre("stonebrickPurpleTower", new ItemStack(ModBlocks.purpleStoneBrickTower, 1));
         //Gems
         registerOre("gemLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));
         registerOre("ingotLavaCrystal", new ItemStack(ModItems.lavaCrystal, 1));

@@ -14,10 +14,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
 
-public class BlueStoneBrick extends BaseCastleBlock {
+public class PurpleStoneBrick extends BaseCastleBlock {
 
-    public BlueStoneBrick() {
-        super("blue", MapColor.BLUE);
+    public PurpleStoneBrick() {
+        super("purple", MapColor.PURPLE);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

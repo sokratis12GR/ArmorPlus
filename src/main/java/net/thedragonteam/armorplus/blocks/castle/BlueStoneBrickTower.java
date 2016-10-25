@@ -17,7 +17,7 @@ import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
 public class BlueStoneBrickTower extends BaseStoneBrickTower {
 
     public BlueStoneBrickTower() {
-        super("blue", MapColor.BLACK);
+        super("blue", MapColor.BLUE);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

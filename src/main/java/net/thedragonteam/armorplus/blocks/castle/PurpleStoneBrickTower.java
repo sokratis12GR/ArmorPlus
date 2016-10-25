@@ -12,12 +12,12 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseCastleBlock;
+import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
 
-public class BlueStoneBrick extends BaseCastleBlock {
+public class PurpleStoneBrickTower extends BaseStoneBrickTower {
 
-    public BlueStoneBrick() {
-        super("blue", MapColor.BLUE);
+    public PurpleStoneBrickTower() {
+        super("purple", MapColor.PURPLE);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

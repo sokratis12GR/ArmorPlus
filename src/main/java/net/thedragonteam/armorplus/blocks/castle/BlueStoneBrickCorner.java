@@ -15,8 +15,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
 
 public class BlueStoneBrickCorner extends BaseStoneBrickCorner {
+
     public BlueStoneBrickCorner() {
-        super("blue", MapColor.BLACK);
+        super("blue", MapColor.BLUE);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
