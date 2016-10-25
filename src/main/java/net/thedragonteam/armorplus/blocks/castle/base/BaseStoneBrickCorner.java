@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
 
 public class BaseStoneBrickCorner extends BaseBlock {
@@ -32,10 +31,6 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
     public BaseStoneBrickCorner(String colorName, MapColor color) {
         super(Material.ROCK, colorName + "_stone_brick_corner", 10.0F, 5.0F, "pickaxe", 0, 255);
-        this.setResistance(10.0F);
-        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.setHardness(5.0F);
-        this.setHarvestLevel("pickaxe", 0);
         this.mapColor = color;
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HALF, BaseStoneBrickCorner.EnumHalf.BOTTOM).withProperty(SHAPE, BaseStoneBrickCorner.EnumShape.STRAIGHT));
     }

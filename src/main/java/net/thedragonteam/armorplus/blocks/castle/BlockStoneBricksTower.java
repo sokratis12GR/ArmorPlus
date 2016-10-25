@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.blocks.castle;
 
-import net.minecraft.block.material.MapColor;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -12,17 +11,12 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
+import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
 
-/**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
- * - TheDragonTeam
- */
-public class YellowStoneBrickCorner extends BaseStoneBrickCorner {
+public class BlockStoneBricksTower extends BaseStoneBrickTower {
 
-    public YellowStoneBrickCorner() {
-        super("yellow", MapColor.YELLOW);
+    public BlockStoneBricksTower(EnumStoneBrick enumtypeIn) {
+        super(enumtypeIn.getName(), enumtypeIn.getMapColor());
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
