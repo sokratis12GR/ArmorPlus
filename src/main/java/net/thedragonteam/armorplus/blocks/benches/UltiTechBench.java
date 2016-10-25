@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.blocks.benches;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,8 +33,7 @@ import javax.annotation.Nullable;
 public class UltiTechBench extends BaseBenchBlock {
 
     public UltiTechBench(TileEntityUltiTechBench tileEntityUltiTechBench) {
-        super(Material.ROCK, "ulti_tech_bench", 1000.0F, 10.0F, "pickaxe", 2, tileEntityUltiTechBench);
-        setRegistryName("ulti_tech_bench");
+        super("ulti_tech_bench", tileEntityUltiTechBench);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

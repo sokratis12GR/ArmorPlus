@@ -34,7 +34,6 @@ public class SteelBlock extends BaseMetalBlock {
 
     public SteelBlock() {
         super("steel_block");
-        setRegistryName("steel_block");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

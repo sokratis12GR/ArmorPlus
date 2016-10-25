@@ -34,7 +34,6 @@ public class ElectricalBlock extends BaseMetalBlock {
 
     public ElectricalBlock() {
         super("electrical_block");
-        setRegistryName("electrical_block");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

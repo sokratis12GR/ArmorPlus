@@ -34,7 +34,6 @@ public class SpawnerGuardian extends SpawnerBase {
 
     public SpawnerGuardian() {
         super(Material.ROCK, "spawner_guardian", 20.0F, 20.0F);
-        setRegistryName("spawner_guardian");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

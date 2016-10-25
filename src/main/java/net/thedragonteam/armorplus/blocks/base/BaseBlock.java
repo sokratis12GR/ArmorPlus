@@ -23,12 +23,18 @@ public class BaseBlock extends Block {
     }
 
     public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
+        this(material, name, resistance, hardness, tool, harvestLevel, lightLevel, 0);
+    }
+
+    public BaseBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, int lightOpacity) {
         super(material);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setRegistryName(name);
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
         this.setLightLevel(lightLevel);
+        this.setLightOpacity(lightOpacity);
         setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 }

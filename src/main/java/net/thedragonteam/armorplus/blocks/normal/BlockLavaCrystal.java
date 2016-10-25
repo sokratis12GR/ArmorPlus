@@ -42,7 +42,6 @@ public class BlockLavaCrystal extends BaseBlock {
     public BlockLavaCrystal() {
         super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, "pickaxe", 3, 0.8F);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        setRegistryName("block_lava_crystal");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

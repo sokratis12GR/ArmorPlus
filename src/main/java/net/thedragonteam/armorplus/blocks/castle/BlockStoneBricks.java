@@ -75,7 +75,11 @@ public class BlockStoneBricks extends Block {
     public static enum EnumType implements IStringSerializable {
         WHITE(0, "white", MapColor.QUARTZ),
         RED(1, "red", MapColor.RED),
-        BLACK(2, "black", MapColor.BLACK);
+        BLACK(2, "black", MapColor.BLACK),
+        BLUE(3, "blue", MapColor.BLUE),
+        GREEN(4, "green", MapColor.GREEN),
+        YELLOW(5, "yellow", MapColor.YELLOW),
+        PURPLE(6, "purple", MapColor.PURPLE);
 
         private static final BlockStoneBricks.EnumType[] META_LOOKUP = new BlockStoneBricks.EnumType[values().length];
         private final int meta;

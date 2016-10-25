@@ -19,11 +19,10 @@ public class BaseBenchBlock extends BaseBlock implements ITileEntityProvider {
 
     public TileEntityBaseBench tileEntityBaseBench;
 
-    public BaseBenchBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, TileEntityBaseBench tileEntityBaseBench) {
-        super(material, name, resistance, hardness, tool, harvestLevel);
+    public BaseBenchBlock(String name, TileEntityBaseBench tileEntityBaseBench) {
+        super(Material.IRON, name, 1000.0F, 10.0F, "pickaxe", 2);
         this.tileEntityBaseBench = tileEntityBaseBench;
     }
-
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {

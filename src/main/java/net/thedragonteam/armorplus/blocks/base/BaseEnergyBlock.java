@@ -28,6 +28,7 @@ public class BaseEnergyBlock extends BlockContainer {
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
         super(material);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setRegistryName(name);
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);

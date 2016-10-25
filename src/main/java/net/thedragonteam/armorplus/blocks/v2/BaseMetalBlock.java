@@ -13,6 +13,7 @@ public class BaseMetalBlock extends Block {
     public BaseMetalBlock(String name) {
         super(Material.IRON);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setRegistryName(name);
         this.setResistance(20.0F);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.setHardness(5.0F);

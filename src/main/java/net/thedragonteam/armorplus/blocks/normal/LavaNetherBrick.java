@@ -36,7 +36,6 @@ public class LavaNetherBrick extends BaseBlock {
 
     public LavaNetherBrick() {
         super(Material.ROCK, "lava_nether_brick", 20.0F, 3.0F, "pickaxe", 1, 1.0F);
-        setRegistryName("lava_nether_brick");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

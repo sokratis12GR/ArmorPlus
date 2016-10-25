@@ -34,7 +34,6 @@ public class SpawnerEnderDragonZombie extends SpawnerBase {
 
     public SpawnerEnderDragonZombie() {
         super(Material.ROCK, "spawner_ender_dragon_zombie", 20.0F, 20.0F);
-        setRegistryName("spawner_ender_dragon_zombie");
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

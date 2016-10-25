@@ -35,7 +35,6 @@ public class CompressedObsidian extends BaseBlock {
 
     public CompressedObsidian() {
         super(Material.ROCK, "compressed_obsidian", 2000.0F, 50.0F, "pickaxe", 3);
-        setRegistryName("compressed_obsidian");
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

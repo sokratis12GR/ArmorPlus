@@ -29,31 +29,21 @@ public class SpawnerBase extends Block {
 
 
     public SpawnerBase(Material material, String name) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, 0.0F, 0.0F);
     }
 
     public SpawnerBase(Material material, String name, float resistance, float hardness) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, resistance, hardness, null, 0);
     }
 
     public SpawnerBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        this.setHarvestLevel(tool, harvestLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this(material, name, resistance, hardness, tool, harvestLevel, 0);
     }
 
     public SpawnerBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
         super(material);
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setRegistryName(name);
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
