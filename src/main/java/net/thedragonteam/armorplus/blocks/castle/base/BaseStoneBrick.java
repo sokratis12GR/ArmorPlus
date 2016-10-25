@@ -10,7 +10,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,13 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
 import net.thedragonteam.armorplus.blocks.castle.EnumStoneBrick;
 
-public class BaseStoneBrickTower extends BaseBlock {
+public class BaseStoneBrick extends BaseBlock {
 
-    public MapColor mapColor;
+    public MapColor color;
 
-    public BaseStoneBrickTower(EnumStoneBrick enumtypeIn) {
-        super(Material.ROCK, enumtypeIn.getName() + "_stone_brick_tower", 10.0F, 5.0F, "pickaxe", 0);
-        this.mapColor = enumtypeIn.getMapColor();
+    public BaseStoneBrick(EnumStoneBrick enumtypeIn) {
+        super(Material.ROCK, enumtypeIn.getName() + "_stone_brick", 10.0F, 5.0F, "pickaxe", 0);
+        this.color = enumtypeIn.getMapColor();
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
@@ -38,21 +37,6 @@ public class BaseStoneBrickTower extends BaseBlock {
      * Get the MapColor for this Block and the given BlockState
      */
     public MapColor getMapColor(IBlockState state) {
-        return mapColor;
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
+        return color;
     }
 }
