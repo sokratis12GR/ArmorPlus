@@ -11,6 +11,8 @@
     * Tiering from one to tier three is done
     * You can add/remove recipes from all three benches through mod addons/integrations
     * Added JEI support for the Ulti-Tech Bench
+    * Added some little, but handly info for the bows
+    * Improved how things work in code
     * Added new blocks
          * Red Stone Brick
          * Red Stone Brick Tower
