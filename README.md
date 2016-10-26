@@ -15,11 +15,7 @@ Download
 
 [Or you can get a version from dev builds](http://fdn.redstone.tech/TheDragonTeam/armorplus/jars/)
 
-Developing Addons
------------------
-
-Download ArmorPlus and place it into you `/libs/` folder, if there isn't one create it
-You will also be required to downlaod TheDragonLib and place it into `/libs/` or `/run/mods` folder in order ArmorPlus to work
+##[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/TheDragonTeam/ArmorPlus/wiki)
 
 Mod Integrations
 -----------------
