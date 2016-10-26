@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.base;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -31,6 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.Bows;
 
 import java.util.List;
 
@@ -45,15 +45,15 @@ public class BaseBow extends ItemBow {
     public Item itemBow;
     public TextFormatting formatting;
 
-    public BaseBow(int durability, String name, float damage, Item repairEasy, Item repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this.setMaxDamage(durability);
-        this.damage = damage;
-        this.itemEasy = repairEasy;
-        this.itemExpert = repairExpert;
-        this.formatting = textFormatting;
-        this.itemBow = bowItem;
-        setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
+    public BaseBow(Bows bows) {
+        this.setMaxDamage(bows.getDurability());
+        this.damage = bows.getDamage();
+        this.itemEasy = bows.getRepairEasy();
+        this.itemExpert = bows.getRepairExpert();
+        this.formatting = bows.getTextFormatting();
+        this.itemBow = bows.getBowItem();
+        setRegistryName(bows.getName());
+        setUnlocalizedName(ArmorPlus.MODID + "." + bows.getName());
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -74,26 +74,6 @@ public class BaseBow extends ItemBow {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-    }
-
-    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this(durability, name, damage, repairEasy.getItem(), repairExpert.getItem(), textFormatting, bowItem);
-    }
-
-    public BaseBow(int durability, String name, float damage, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this(durability, name, damage, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
-    }
-
-    public BaseBow(int durability, String name, float damage, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this(durability, name, damage, repairEasy, repairExpert.getItem(), textFormatting, bowItem);
-    }
-
-    public BaseBow(int durability, String name, float damage, Item repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this(durability, name, damage, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
-    }
-
-    public BaseBow(int durability, String name, float damage, Block repairEasy, Block repairExpert, TextFormatting textFormatting, Item bowItem) {
-        this(durability, name, damage, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting, bowItem);
     }
 
     @Override

@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.items.dev;
+package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.DevItems;
 
 import java.util.List;
 

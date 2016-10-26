@@ -13,14 +13,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.UltimateItems;
 
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseUltimateItem extends Item {
 
-    public BaseUltimateItem(String name) {
-        setRegistryName("the_ultimate_" + name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_" + name);
+    public BaseUltimateItem(UltimateItems ultimateItems) {
+        setRegistryName("the_ultimate_" + ultimateItems.getName());
+        setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_" + ultimateItems.getName());
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

@@ -4,13 +4,26 @@
 
 package net.thedragonteam.armorplus.items.base;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
+import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
+import net.thedragonteam.armorplus.items.Items;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseItem extends Item {
 
@@ -19,6 +32,36 @@ public class BaseItem extends Item {
         setUnlocalizedName(ArmorPlus.MODID + "." + name);
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+    }
+
+    private Items items;
+    private TextFormatting textFormatting;
+
+    public BaseItem(Items itemsIn) {
+        this(itemsIn.getName());
+        this.items = itemsIn;
+        this.textFormatting = items.getFormatting();
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
+        if (items == null) {
+            return new ActionResult(EnumActionResult.PASS, item);
+        }
+        if (items.getId() == 10)
+            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
+        if (items.getId() == 11)
+            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
+        return new ActionResult(EnumActionResult.PASS, item);
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        if (items == null) {
+            return (localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        }
+        return (textFormatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)
