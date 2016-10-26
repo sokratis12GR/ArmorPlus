@@ -31,9 +31,9 @@ public class BaseMetalBlock extends BaseBlock {
 
     public Block beaconBase;
 
-    public BaseMetalBlock(EnumMetalBlock enumMetalBlock) {
-        super(Material.IRON, enumMetalBlock.getName() + "_block", 20.0F, 5.0F, "pickaxe", 1);
-        this.beaconBase = enumMetalBlock.getBeaconBase();
+    public BaseMetalBlock(Metals metals) {
+        super(Material.IRON, metals.getName() + "_block", 20.0F, 5.0F, "pickaxe", 1);
+        this.beaconBase = metals.getBeaconBase();
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

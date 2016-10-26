@@ -15,15 +15,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
-import net.thedragonteam.armorplus.blocks.castle.EnumStoneBrick;
+import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
 public class BaseStoneBrick extends BaseBlock {
 
     public MapColor color;
 
-    public BaseStoneBrick(EnumStoneBrick enumtypeIn) {
-        super(Material.ROCK, enumtypeIn.getName() + "_stone_brick", 10.0F, 5.0F, "pickaxe", 0);
-        this.color = enumtypeIn.getMapColor();
+    public BaseStoneBrick(StoneBricks stoneBricks) {
+        super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, "pickaxe", 0);
+        this.color = stoneBricks.getMapColor();
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }

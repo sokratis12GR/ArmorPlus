@@ -4,12 +4,14 @@
 
 package net.thedragonteam.armorplus.blocks.spawners.base;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -18,37 +20,26 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.base.BaseBlock;
+import net.thedragonteam.armorplus.blocks.spawners.Spawners;
+import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class SpawnerBase extends Block {
+public class BaseSpawner extends BaseBlock {
 
+    public Spawners spawners;
 
-    public SpawnerBase(Material material, String name) {
-        this(material, name, 0.0F, 0.0F);
-    }
-
-    public SpawnerBase(Material material, String name, float resistance, float hardness) {
-        this(material, name, resistance, hardness, null, 0);
-    }
-
-    public SpawnerBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
-        this(material, name, resistance, hardness, tool, harvestLevel, 0);
-    }
-
-    public SpawnerBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
-        super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setRegistryName(name);
-        this.setResistance(resistance);
-        this.setHardness(hardness);
-        this.setHarvestLevel(tool, harvestLevel);
-        this.setLightLevel(lightLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+    public BaseSpawner(Spawners spawnersIn) {
+        super(Material.ROCK, "spawner_" + spawnersIn.getName(), 20.0F, 20.0F);
+        this.spawners = spawnersIn;
+        GameRegistry.register(this);
+        GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
     @Override
@@ -65,6 +56,11 @@ public class SpawnerBase extends Block {
         return blockAccess.getBlockState(pos.offset(side)).getBlock() == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
     }
 
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
     /**
      * Get the MapColor for this Block and the given BlockState
      */
@@ -75,6 +71,20 @@ public class SpawnerBase extends Block {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float x, float y, float z) {
+        if (!world.isRemote) {
+            if (spawners.getMobSpawn() == 0) {
+                EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
+                enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
+                world.spawnEntityInWorld(enderDragonZombie);
+                world.destroyBlock(pos, true);
+            }
+            if (spawners.getMobSpawn() == 1) {
+                EntityGuardian guardian = new EntityGuardian(world);
+                guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
+                world.spawnEntityInWorld(guardian);
+                world.destroyBlock(pos, true);
+            }
+        }
         return true;
     }
 

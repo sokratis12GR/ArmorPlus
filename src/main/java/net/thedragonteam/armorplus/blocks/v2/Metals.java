@@ -8,7 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.util.IStringSerializable;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
-public enum EnumMetalBlock implements IStringSerializable {
+public enum Metals implements IStringSerializable {
     STEEL("steel", ModBlocks.steelBlock),
     ELECTRICAL("electrical", ModBlocks.electricalBlock);
 
@@ -16,7 +16,7 @@ public enum EnumMetalBlock implements IStringSerializable {
 
     private final Block beaconBase;
 
-    EnumMetalBlock(String nameIn, Block beaconBaseIn) {
+    Metals(String nameIn, Block beaconBaseIn) {
         this.name = nameIn;
         this.beaconBase = beaconBaseIn;
     }

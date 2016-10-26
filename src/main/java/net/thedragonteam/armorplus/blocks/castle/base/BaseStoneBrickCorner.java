@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
-import net.thedragonteam.armorplus.blocks.castle.EnumStoneBrick;
+import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
 public class BaseStoneBrickCorner extends BaseBlock {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
@@ -35,9 +35,9 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
     public MapColor mapColor;
 
-    public BaseStoneBrickCorner(EnumStoneBrick enumtypeIn) {
-        super(Material.ROCK, enumtypeIn.getName() + "_stone_brick_corner", 10.0F, 5.0F, "pickaxe", 0, 255);
-        this.mapColor = enumtypeIn.getMapColor();
+    public BaseStoneBrickCorner(StoneBricks stoneBricks) {
+        super(Material.ROCK, stoneBricks.getName() + "_stone_brick_corner", 10.0F, 5.0F, "pickaxe", 0, 255);
+        this.mapColor = stoneBricks.getMapColor();
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HALF, BaseStoneBrickCorner.EnumHalf.BOTTOM).withProperty(SHAPE, BaseStoneBrickCorner.EnumShape.STRAIGHT));
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

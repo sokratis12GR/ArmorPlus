@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.blocks.castle;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumStoneBrick implements IStringSerializable {
+public enum StoneBricks implements IStringSerializable {
     WHITE("white", MapColor.SNOW),
     RED("red", MapColor.RED),
     BLACK("black", MapColor.BLACK),
@@ -22,7 +22,7 @@ public enum EnumStoneBrick implements IStringSerializable {
      */
     private final MapColor mapColor;
 
-    EnumStoneBrick(String nameIn, MapColor mapColorIn) {
+    StoneBricks(String nameIn, MapColor mapColorIn) {
         this.name = nameIn;
         this.mapColor = mapColorIn;
     }

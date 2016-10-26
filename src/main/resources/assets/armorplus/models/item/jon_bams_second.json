@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/jon_bams"
+    "layer0": "armorplus:items/jon_bams_second"
   }
 }

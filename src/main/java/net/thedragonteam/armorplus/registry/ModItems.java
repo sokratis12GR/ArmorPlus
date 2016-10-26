@@ -311,12 +311,12 @@ public class ModItems {
     public static TheUltimateBootsMiddle theUltimateBootsMiddle;
     public static TheUltimateBootsRight theUltimateBootsRight;
     public static DevTool devTool;
-    public static TheDragonTeamItem theDragonTeamItem;
-    public static ModdedCityItem moddedCityItem;
-    public static JonBamsItem jonBamsItem;
-    public static TwitchItem twitchItem;
-    public static BeamItem beamItem;
-    public static MMDItem mmdItem;
+    public static BaseDevItem theDragonTeamItem;
+    public static BaseDevItem moddedCityItem;
+    public static BaseDevItem jonBamsItem;
+    public static BaseDevItem twitchItem;
+    public static BaseDevItem beamItem;
+    public static BaseDevItem mmdItem;
     public static ItemTeslaPickaxe itemTeslaPickaxe;
     public static ItemTeslaSword itemTeslaSword;
     public static ItemTeslaAxe itemTeslaAxe;
@@ -329,8 +329,6 @@ public class ModItems {
     public static ItemRFSword itemRFSword;
     public static ItemRFHoe itemRFHoe;
     public static ItemRFShovel itemRFShovel;
-    public static ItemLaser itemLaser;
-    public static ItemSomething itemSomething;
     public static GuiTester guiTester;
     public static ItemCoalArrow itemCoalArrow;
     public static ItemLapisArrow itemLapisArrow;
@@ -339,8 +337,6 @@ public class ModItems {
 
     public static void init() {
         guiTester = new GuiTester();
-        itemSomething = new ItemSomething();
-        itemLaser = new ItemLaser();
         itemRFShovel = new ItemRFShovel();
         itemRFHoe = new ItemRFHoe();
         itemRFAxe = new ItemRFAxe();
@@ -359,12 +355,12 @@ public class ModItems {
         steelLeggings = new SteelLeggings();
         steelBoots = new SteelBoots();
         itemTeslaRod = new ItemTeslaRod();
-        mmdItem = new MMDItem();
-        twitchItem = new TwitchItem();
-        beamItem = new BeamItem();
-        theDragonTeamItem = new TheDragonTeamItem();
-        moddedCityItem = new ModdedCityItem();
-        jonBamsItem = new JonBamsItem();
+        mmdItem = new BaseDevItem(DevItems.MMD);
+        twitchItem = new BaseDevItem(DevItems.TWITCH);
+        beamItem = new BaseDevItem(DevItems.BEAM);
+        theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
+        moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY);
+        jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
         chainmail = new Chainmail();
         guardianScale = new GuardianScale();
         witherBone = new WitherBone();
@@ -503,8 +499,6 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         guiTester.initModel();
-        itemSomething.initModel();
-        itemLaser.initModel();
         itemRFShovel.initModel();
         itemRFHoe.initModel();
         itemRFAxe.initModel();
