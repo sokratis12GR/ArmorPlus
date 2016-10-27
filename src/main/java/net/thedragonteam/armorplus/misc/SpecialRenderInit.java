@@ -59,7 +59,7 @@ public class SpecialRenderInit {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public void onPlayerRender(RenderPlayerEvent.Pre event) {
         if (!SPECIAL_LIST.isEmpty()) {
             for (Map.Entry<String, RenderSpecial> entry : SPECIAL_LIST.entrySet()) {

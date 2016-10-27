@@ -13,6 +13,9 @@
     * Added JEI support for the Ulti-Tech Bench
     * Added some little, but handly info for the bows
     * Improved how things work in code
+    * Enchantments, added 2 new enchantments
+        * Life Steal - when an entity is hit the player will get health points back depending on the level of the enchantment
+        * Furious - Treasure Enchantment, when player is hit wearign this enchantment the player will get speed and strenght effects for a limited time depending on the level of the enchantment
     * Added new blocks
          * Red Stone Brick
          * Red Stone Brick Tower

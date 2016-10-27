@@ -37,6 +37,8 @@ public class GlobalEventsArmorPlus {
         }
     }
 
+    //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
+
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer entity = event.player;

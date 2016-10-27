@@ -9,6 +9,10 @@ itemGroup.armorplus.tesla=ARP Tesla
 itemGroup.armorplus.rf=ARP RF
 itemGroup.armorplus.tinkers=ARP Tinkers
 
+#Enchantmnets
+enchantment.life_steal=Life Steal
+enchantment.furious=Furious
+
 #Containers
 container.armorplus.workbench=Workbench
 container.armorplus.high_tech_bench=High-Tech Bench
@@ -227,7 +231,6 @@ item.armorplus.modded_city.name=Modded City
 item.armorplus.jon_bams.name=Jon Bams
 item.armorplus.beam.name=Beam
 item.armorplus.twitch.name=Twitch
-item.armorplus.mmd.name=MMD
 item.armorplus.gui_tester.name=GUI Tester
 
 #Items

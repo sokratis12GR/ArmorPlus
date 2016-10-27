@@ -4,8 +4,20 @@
     "transform": "forge:default-block"
   },
   "variants": {
-    "normal": {
+    "facing=east": {
+      "model": "armorplus:workbench",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "armorplus:workbench",
+      "y": 90
+    },
+    "facing=south": {
       "model": "armorplus:workbench"
+    },
+    "facing=north": {
+      "model": "armorplus:workbench",
+      "y": 180
     }
   }
 }

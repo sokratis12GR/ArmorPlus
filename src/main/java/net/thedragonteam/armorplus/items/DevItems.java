@@ -10,7 +10,6 @@ public enum DevItems implements IStringSerializable {
     THE_DRAGON_TEAM("the_dragon_team"),
     MODDED_CITY("modded_city"),
     JON_BAMS("jon_bams", true),
-    MMD("mmd"),
     TWITCH("twitch"),
     BEAM("beam");
 

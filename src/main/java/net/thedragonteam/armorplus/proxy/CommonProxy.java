@@ -58,6 +58,7 @@ public class CommonProxy {
         registerEvents();
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
+        ModEnchantments.registerEnchantments();
         if (Loader.isModLoaded("tconstruct")) {
             TiC.init();
         }

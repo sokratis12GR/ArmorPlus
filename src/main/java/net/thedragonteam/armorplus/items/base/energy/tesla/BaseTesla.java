@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -21,6 +22,8 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseTesla extends BaseItem {
     private int maxCapacity;
@@ -70,6 +73,11 @@ public class BaseTesla extends BaseItem {
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

@@ -10,6 +10,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -19,6 +20,8 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseTeslaAxe extends BaseAxe {
 
@@ -42,6 +45,11 @@ public class BaseTeslaAxe extends BaseAxe {
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

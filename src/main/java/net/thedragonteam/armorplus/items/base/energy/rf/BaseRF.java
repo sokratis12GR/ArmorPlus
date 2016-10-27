@@ -8,11 +8,14 @@ import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseRF extends BaseItem implements IEnergyContainerItem {
 
@@ -34,6 +37,11 @@ public class BaseRF extends BaseItem implements IEnergyContainerItem {
         this.capacity = capacity;
         this.maxReceive = maxReceive;
         this.maxExtract = maxExtract;
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     public BaseRF setCapacity(int capacity) {

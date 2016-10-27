@@ -15,6 +15,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
@@ -25,6 +26,8 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseTeslaHoe extends BaseHoe {
 
@@ -55,6 +58,11 @@ public class BaseTeslaHoe extends BaseHoe {
     @Override
     public boolean isItemTool(ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

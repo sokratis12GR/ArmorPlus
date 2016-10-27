@@ -49,17 +49,5 @@ public class Logger {
                 writer.close();
             } catch (Exception ex) {/*ignore*/}
         }
-        //Note.txt
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(format("config/%s/Note.txt", ArmorPlus.MODID)), "utf-8"));
-            writer.write(format("[ (%s) | Don't modify or delete the file: %s.html | For More Information Click: %s.html ]", ArmorPlus.MODNAME, ArmorPlus.MODNAME, ArmorPlus.MODNAME));
-        } catch (IOException ex) {
-            // report
-        } finally {
-            try {
-                writer.close();
-            } catch (Exception ex) {/*ignore*/}
-        }
     }
 }

@@ -4,8 +4,20 @@
     "transform": "forge:default-block"
   },
   "variants": {
-    "normal": {
+    "facing=east": {
+      "model": "armorplus:high_tech_bench",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "armorplus:high_tech_bench",
+      "y": 90
+    },
+    "facing=south": {
       "model": "armorplus:high_tech_bench"
+    },
+    "facing=north": {
+      "model": "armorplus:high_tech_bench",
+      "y": 180
     }
   }
 }

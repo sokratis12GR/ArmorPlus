@@ -13,6 +13,7 @@
     "credits": "To all the people who helped translating ArmorPlus: https://goo.gl/9Na67D",
     "logoFile": "assets/armorplus/textures/logo.png",
     "screenshots": [],
+    "parent": "",
     "dependencies": [
       "MinecraftForge",
       "TheDragonLib"

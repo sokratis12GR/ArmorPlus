@@ -95,6 +95,8 @@ public class ARPConfig {
     public static boolean debugMode = false;
     @ModConfigProperty(category = "Debug", name = "debugModeGOTG", comment = "Enable/Disable Debug Mode for the Gift Of The Gods")
     public static boolean debugModeGOTG = false;
+    @ModConfigProperty(category = "Debug", name = "debugModeEnchantments", comment = "Enable/Disable Debug Mode for the Enchantments")
+    public static boolean debugModeEnchantments = false;
     //Weapons
     @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable The ArmorPlus Sword's Recipes")
     public static boolean enableSwordsRecipes = true;

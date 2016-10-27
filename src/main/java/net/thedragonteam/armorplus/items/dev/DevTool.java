@@ -6,34 +6,25 @@ package net.thedragonteam.armorplus.items.dev;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.items.base.BaseItem;
 
 import java.util.List;
 
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class DevTool extends Item {
+public class DevTool extends BaseItem {
 
     public DevTool() {
-        setRegistryName("dev_tool");
-        setUnlocalizedName(ArmorPlus.MODID + "." + "dev_tool");
-        GameRegistry.register(this);
-        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        super("dev_tool");
     }
 
     @Override
@@ -57,11 +48,6 @@ public class DevTool extends Item {
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.BOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

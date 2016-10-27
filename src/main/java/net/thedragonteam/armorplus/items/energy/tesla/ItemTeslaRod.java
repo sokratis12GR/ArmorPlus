@@ -12,11 +12,14 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
 import java.util.List;
+
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
  * net.thedragonteam.armorplus.items.materials
@@ -27,6 +30,11 @@ public class ItemTeslaRod extends BaseItem {
 
     public ItemTeslaRod() {
         super("tesla_rod");
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

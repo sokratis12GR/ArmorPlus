@@ -314,7 +314,6 @@ public class ModItems {
     public static BaseDevItem jonBamsItem;
     public static BaseDevItem twitchItem;
     public static BaseDevItem beamItem;
-    public static BaseDevItem mmdItem;
     public static ItemTeslaPickaxe itemTeslaPickaxe;
     public static ItemTeslaSword itemTeslaSword;
     public static ItemTeslaAxe itemTeslaAxe;
@@ -353,7 +352,6 @@ public class ModItems {
         steelLeggings = new SteelLeggings();
         steelBoots = new SteelBoots();
         itemTeslaRod = new ItemTeslaRod();
-        mmdItem = new BaseDevItem(DevItems.MMD);
         twitchItem = new BaseDevItem(DevItems.TWITCH);
         beamItem = new BaseDevItem(DevItems.BEAM);
         theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
@@ -515,7 +513,6 @@ public class ModItems {
         steelLeggings.initModel();
         steelBoots.initModel();
         itemTeslaRod.initModel();
-        mmdItem.initModel();
         twitchItem.initModel();
         beamItem.initModel();
         theDragonTeamItem.initModel();
