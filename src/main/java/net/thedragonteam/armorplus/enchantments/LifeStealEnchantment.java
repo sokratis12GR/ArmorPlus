@@ -82,8 +82,12 @@ public class LifeStealEnchantment extends Enchantment {
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
         if (user.getHeldItemMainhand() != null && !(user.getHeldItemMainhand().getItem() instanceof ItemTool) || user.getHeldItemOffhand() != null && !(user.getHeldItemOffhand().getItem() instanceof ItemTool) || user.getHeldItemMainhand() != null && !(user.getHeldItemMainhand().getItem() instanceof ItemSword) || user.getHeldItemOffhand() != null && !(user.getHeldItemOffhand().getItem() instanceof ItemSword)) {
-            if (level == 1 || level == 2 || level == 3)
+            if (level == 1)
                 user.heal(0.5F);
+            if (level == 2)
+                user.heal(1.0F);
+            if (level == 3)
+                user.heal(1.5F);
         }
         if (user.getHeldItemMainhand() != null && user.getHeldItemMainhand().getItem() instanceof ItemTool || user.getHeldItemOffhand() != null && user.getHeldItemOffhand().getItem() instanceof ItemTool) {
             damageDealt = ((ItemTool) user.getHeldItemMainhand().getItem()).getToolMaterial().getDamageVsEntity();
