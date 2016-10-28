@@ -106,7 +106,6 @@ public class BaseTesla extends BaseItem {
         return true;
     }
 
-
     @Optional.Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {

@@ -57,14 +57,15 @@ public class CosmeticsRenderInit {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onPlayerRender(RenderPlayerEvent.Pre event) {
-        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty()) for (Map.Entry<String, RenderCosmetics> entry : COSMETICS_FOR_PEOPLE_LIST.entrySet()) {
-            String playerName = event.getEntityPlayer().getName();
-            if (entry.getKey() != null && playerName != null && entry.getKey().equalsIgnoreCase(playerName)) {
-                //Render the special Item/Block
-                entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
-                break;
+        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty())
+            for (Map.Entry<String, RenderCosmetics> entry : COSMETICS_FOR_PEOPLE_LIST.entrySet()) {
+                String playerName = event.getEntityPlayer().getName();
+                if (entry.getKey() != null && playerName != null && entry.getKey().equalsIgnoreCase(playerName)) {
+                    //Render the special Item/Block
+                    entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
+                    break;
+                }
             }
-        }
     }
 
 }

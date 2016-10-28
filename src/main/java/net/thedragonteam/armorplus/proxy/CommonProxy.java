@@ -82,9 +82,9 @@ public class CommonProxy {
     }
 
     public void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "Workbench");
-        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "HighTechBench");
-        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "UltiTechBench");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "ARPWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "ARPHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "ARPHighTechBench", "WorkbenchTier3", "WorkbenchTierThree");
     }
 
     public void registerWorldGenerators() {

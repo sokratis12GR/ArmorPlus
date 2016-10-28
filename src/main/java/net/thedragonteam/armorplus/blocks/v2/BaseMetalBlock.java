@@ -73,7 +73,6 @@ public class BaseMetalBlock extends BaseBlock {
         return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
     }
 
-
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);

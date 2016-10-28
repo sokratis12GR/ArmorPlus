@@ -331,8 +331,10 @@ public class ModItems {
     public static ItemLapisArrow itemLapisArrow;
     public static ItemRedstoneArrow itemRedstoneArrow;
     public static ItemLavaArrow itemLavaArrow;
+    public static ItemEnergyStorage itemEnergyStorage;
 
     public static void init() {
+        itemEnergyStorage = new ItemEnergyStorage();
         guiTester = new GuiTester();
         itemRFShovel = new ItemRFShovel();
         itemRFHoe = new ItemRFHoe();
@@ -494,6 +496,7 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemEnergyStorage.initModel();
         guiTester.initModel();
         itemRFShovel.initModel();
         itemRFHoe.initModel();

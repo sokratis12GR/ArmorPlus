@@ -30,6 +30,7 @@ public class JEI implements IModPlugin {
         blacklist.addItemToBlacklist(new ItemStack(ModItems.devChestplate, 1));
         blacklist.addItemToBlacklist(new ItemStack(ModItems.devLeggings, 1));
         blacklist.addItemToBlacklist(new ItemStack(ModItems.devBoots, 1));
+        blacklist.addItemToBlacklist(new ItemStack(ModItems.itemEnergyStorage, 1)); //TODO: Balance the damn energy storage item before release
     }
 
     @Optional.Method(modid = "JEI")
