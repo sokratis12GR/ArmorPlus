@@ -24,34 +24,18 @@ public class NBTItem extends BaseItem {
     @Override
     public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
         NBTTagCompound nbt;
-        if (stack.hasTagCompound()) {
-            nbt = stack.getTagCompound();
-        } else {
-            nbt = new NBTTagCompound();
-        }
+        nbt = stack.hasTagCompound() ? stack.getTagCompound() : new NBTTagCompound();
 
-        if (nbt.hasKey("Level")) {
-            nbt.setInteger("Level", nbt.getInteger("Level") + 1);
-        } else {
-            nbt.setInteger("Level", 1);
-        }
+        nbt.setInteger("Level", nbt.hasKey("Level") ? nbt.getInteger("Level") + 1 : 1);
         stack.setTagCompound(nbt);
     }
 
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         NBTTagCompound nbt;
-        if (stack.hasTagCompound()) {
-            nbt = stack.getTagCompound();
-        } else {
-            nbt = new NBTTagCompound();
-        }
+        nbt = stack.hasTagCompound() ? stack.getTagCompound() : new NBTTagCompound();
 
-        if (nbt.hasKey("Level")) {
-            nbt.setInteger("Level", nbt.getInteger("Level") + 1);
-        } else {
-            nbt.setInteger("Level", 1);
-        }
+        nbt.setInteger("Level", nbt.hasKey("Level") ? nbt.getInteger("Level") + 1 : 1);
         stack.setTagCompound(nbt);
         return super.onEntitySwing(entityLiving, stack);
     }
@@ -63,8 +47,7 @@ public class NBTItem extends BaseItem {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Level")) {
+        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Level"))
             tooltip.add("Item Level: " + Integer.toString(stack.getTagCompound().getInteger("Level")));
-        }
     }
 }

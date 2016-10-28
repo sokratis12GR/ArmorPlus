@@ -126,8 +126,6 @@ public class InventoryCraftResult implements IInventory {
     }
 
     public void clear() {
-        for (int i = 0; i < this.stackResult.length; ++i) {
-            this.stackResult[i] = null;
-        }
+        for (int i = 0; i < this.stackResult.length; ++i) this.stackResult[i] = null;
     }
 }

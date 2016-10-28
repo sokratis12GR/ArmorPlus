@@ -71,19 +71,19 @@ public class BaseSpawner extends BaseBlock {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float x, float y, float z) {
-        if (!world.isRemote) {
-            if (spawners.getMobSpawn() == 0) {
+        if (!world.isRemote) switch (spawners.getMobSpawn()) {
+            case 0:
                 EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
                 enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
                 world.spawnEntityInWorld(enderDragonZombie);
                 world.destroyBlock(pos, true);
-            }
-            if (spawners.getMobSpawn() == 1) {
+                break;
+            case 1:
                 EntityGuardian guardian = new EntityGuardian(world);
                 guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
                 world.spawnEntityInWorld(guardian);
                 world.destroyBlock(pos, true);
-            }
+                break;
         }
         return true;
     }

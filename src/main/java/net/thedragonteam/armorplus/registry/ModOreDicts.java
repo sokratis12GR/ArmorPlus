@@ -17,7 +17,7 @@ public class ModOreDicts {
         //Ores
         registerOre("oreLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
         registerOre("blockLavaCrystal", new ItemStack(ModBlocks.blockLavaCrystal, 1));
-        //Ingots
+        //Normal
         registerOre("ingotSteel", new ItemStack(ModItems.steelIngot, 1));
         registerOre("ingotElectrical", new ItemStack(ModItems.electricalIngot, 1));
         registerOre("blockSteel", new ItemStack(ModBlocks.steelBlock, 1));

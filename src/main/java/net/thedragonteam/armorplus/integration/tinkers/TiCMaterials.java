@@ -87,18 +87,14 @@ public final class TiCMaterials {
 
     @Subscribe
     public void postInit() {
-        if (TinkerTools.shard == null) {
-            return;
-        }
+        if (TinkerTools.shard == null) return;
 
         // each material without a shard set gets the default one set
         for (Material material : TinkerRegistry.getAllMaterials()) {
             ItemStack shard = TinkerTools.shard.getItemstackWithMaterial(material);
 
             material.addRecipeMatch(new RecipeMatch.ItemCombination(Material.VALUE_Shard, shard));
-            if (material.getShard() != null) {
-                material.setShard(shard);
-            }
+            if (material.getShard() != null) material.setShard(shard);
         }
     }
 }

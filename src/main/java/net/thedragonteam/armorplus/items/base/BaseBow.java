@@ -60,9 +60,8 @@ public class BaseBow extends ItemBow {
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
-                if (entityIn == null) {
-                    return 0.0F;
-                } else {
+                if (entityIn == null) return 0.0F;
+                else {
                     ItemStack itemstack = entityIn.getActiveItemStack();
                     return itemstack != null && itemstack.getItem() == itemBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 5.0F : 0.0F;
                 }
@@ -79,10 +78,7 @@ public class BaseBow extends ItemBow {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Base Arrow Damage: " + "\247r" + damage);
-        } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Base Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override
@@ -90,31 +86,26 @@ public class BaseBow extends ItemBow {
         return (formatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
-    public ItemStack func_185060_a(EntityPlayer player) {
-        if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND))) {
-            return player.getHeldItem(EnumHand.OFF_HAND);
-        } else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND))) {
-            return player.getHeldItem(EnumHand.MAIN_HAND);
-        } else {
+    public ItemStack findAmmo(EntityPlayer player) {
+        if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND))) return player.getHeldItem(EnumHand.OFF_HAND);
+        else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND))) return player.getHeldItem(EnumHand.MAIN_HAND);
+        else {
             for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
                 ItemStack itemstack = player.inventory.getStackInSlot(i);
 
-                if (this.isArrow(itemstack)) {
-                    return itemstack;
-                }
+                if (this.isArrow(itemstack)) return itemstack;
             }
-
             return null;
         }
     }
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == itemEasy;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == itemExpert;
+        switch (ARPConfig.recipes) {
+            case 0:
+                return repair.getItem() == itemEasy;
+            case 1:
+                return repair.getItem() == itemExpert;
         }
         return true;
     }
@@ -123,7 +114,7 @@ public class BaseBow extends ItemBow {
         if (entityLiving instanceof EntityPlayer) {
             EntityPlayer entityplayer = (EntityPlayer) entityLiving;
             boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
-            ItemStack itemstack = this.func_185060_a(entityplayer);
+            ItemStack itemstack = this.findAmmo(entityplayer);
 
             int i = this.getMaxItemUseDuration(stack) - timeLeft;
             i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, (EntityPlayer) entityLiving, i, itemstack != null || flag);
@@ -131,15 +122,11 @@ public class BaseBow extends ItemBow {
                 return;
 
             if (itemstack != null || flag) {
-                if (itemstack == null) {
-                    itemstack = new ItemStack(Items.ARROW);
-                }
+                if (itemstack == null) itemstack = new ItemStack(Items.ARROW);
 
                 float f = (float) i / 5.0F;
 
-                if (f > 1.0F) {
-                    f = 1.0F;
-                }
+                if (f > 1.0F) f = 1.0F;
 
                 if ((double) f >= 0.1D) {
                     boolean flag1 = flag && itemstack.getItem() instanceof ItemArrow;
@@ -148,33 +135,24 @@ public class BaseBow extends ItemBow {
                         EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
                         entityarrow.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
-                        if (f == 1.0F) {
-                            entityarrow.setIsCritical(true);
-                        }
+                        if (f == 1.0F) entityarrow.setIsCritical(true);
 
                         entityarrow.setDamage(damage);
 
                         int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 
-                        if (j > 0) {
-                            entityarrow.setDamage(entityarrow.getDamage() + (double) j * 0.5D + 0.5D);
-                        }
+                        if (j > 0) entityarrow.setDamage(entityarrow.getDamage() + (double) j * 0.5D + 0.5D);
 
                         int k = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
 
-                        if (k > 0) {
-                            entityarrow.setKnockbackStrength(k);
-                        }
+                        if (k > 0) entityarrow.setKnockbackStrength(k);
 
-                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0) {
+                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
                             entityarrow.setFire(100);
-                        }
 
                         stack.damageItem(1, entityplayer);
 
-                        if (flag1) {
-                            entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-                        }
+                        if (flag1) entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
 
                         worldIn.spawnEntityInWorld(entityarrow);
                     }
@@ -184,9 +162,7 @@ public class BaseBow extends ItemBow {
                     if (!flag1) {
                         --itemstack.stackSize;
 
-                        if (itemstack.stackSize == 0) {
-                            entityplayer.inventory.deleteStack(itemstack);
-                        }
+                        if (itemstack.stackSize == 0) entityplayer.inventory.deleteStack(itemstack);
                     }
 
                     entityplayer.addStat(StatList.getObjectUseStats(this));

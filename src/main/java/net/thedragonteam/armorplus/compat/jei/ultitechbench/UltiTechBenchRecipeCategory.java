@@ -79,12 +79,11 @@ public class UltiTechBenchRecipeCategory implements IRecipeCategory {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 136, 36);
 
-        for (int y = 0; y < 5; ++y) {
+        for (int y = 0; y < 5; ++y)
             for (int x = 0; x < 5; ++x) {
                 int index = INPUT_SLOT + x + (y * 5);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
-        }
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
@@ -102,12 +101,11 @@ public class UltiTechBenchRecipeCategory implements IRecipeCategory {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 136, 36);
 
-        for (int y = 0; y < 5; ++y) {
+        for (int y = 0; y < 5; ++y)
             for (int x = 0; x < 5; ++x) {
                 int index = INPUT_SLOT + x + (y * 5);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
-        }
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;

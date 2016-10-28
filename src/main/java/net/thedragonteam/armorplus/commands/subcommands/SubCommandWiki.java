@@ -32,7 +32,6 @@ public class SubCommandWiki extends SubCommandBase {
         super.processSubCommand(server, sender, args);
 
         ClientUtills.openLink("https://ftb.gamepedia.com/ArmorPlus");
-
     }
 
     @Override

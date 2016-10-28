@@ -113,13 +113,8 @@ public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, IT
     }
 
     private int createPoweredStack(ItemStack container, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        //int energy = container.getTagCompound().getInteger("Energy");
-        if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityElectricalArmor);
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
+        if (!simulate) container.getTagCompound().setInteger("Energy", maxCapacityElectricalArmor);
 
         return maxCapacityElectricalArmor;
     }
@@ -214,9 +209,7 @@ public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, IT
     }
 
     public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
-        if (!container.hasTagCompound()) {
-            container.setTagCompound(new NBTTagCompound());
-        }
+        if (!container.hasTagCompound()) container.setTagCompound(new NBTTagCompound());
         int energy = container.getTagCompound().getInteger("Energy");
         int energyReceived = Math.min(this.maxCapacity - energy, Math.min(this.input, maxReceive));
         if (!simulate) {
@@ -227,9 +220,7 @@ public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, IT
     }
 
     public int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
         int energy = container.getTagCompound().getInteger("Energy");
         int energyExtracted = Math.min(energy, Math.min(this.output, maxExtract));
         if (!simulate) {
@@ -240,9 +231,6 @@ public class BaseElectricalArmor extends BaseArmor implements ITeslaConsumer, IT
     }
 
     public int getEnergyStored(ItemStack container) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        return power = container.getTagCompound().getInteger("Energy");
+        return (container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy")) ? 0 : (power = container.getTagCompound().getInteger("Energy"));
     }
 }

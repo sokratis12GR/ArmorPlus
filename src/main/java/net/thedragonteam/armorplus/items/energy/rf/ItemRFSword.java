@@ -105,14 +105,8 @@ public class ItemRFSword extends BaseRFSword {
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputSword) {
-            return 0.5F;
-        }
-        if (Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F) {
-            return 5.5F;
-        } else {
-            return super.getStrVsBlock(stack, state);
-        }
+        if (this.getEnergyStored(stack) < outputSword) return 0.5F;
+        return Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @SideOnly(Side.CLIENT)
@@ -122,13 +116,8 @@ public class ItemRFSword extends BaseRFSword {
     }
 
     private int createPoweredStack(ItemStack container, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        //int energy = container.getTagCompound().getInteger("Energy");
-        if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacitySword);
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
+        if (!simulate) container.getTagCompound().setInteger("Energy", maxCapacitySword);
 
         return maxCapacitySword;
     }

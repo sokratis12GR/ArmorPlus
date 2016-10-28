@@ -46,22 +46,21 @@ public class BaseItem extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-        if (items == null) {
-            return new ActionResult(EnumActionResult.PASS, item);
+        if (items == null) return new ActionResult(EnumActionResult.PASS, item);
+        else switch (items.getId()) {
+            case 10:
+                Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
+                break;
+            case 11:
+                Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
+                break;
         }
-        if (items.getId() == 10)
-            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
-        if (items.getId() == 11)
-            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
         return new ActionResult(EnumActionResult.PASS, item);
     }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        if (items == null) {
-            return (localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-        }
-        return (textFormatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return items == null ? (localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim() : (textFormatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)

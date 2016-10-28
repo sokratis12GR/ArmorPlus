@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -56,22 +55,15 @@ public class LavaBoots extends BaseArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableLavaBEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
+        if (ARPConfig.enableLavaBEffects && !enableFullLavaArmorEffect)
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
-        }
         if (!enableFullLavaArmorEffect) {
             entity.extinguish();
-            if (entity.isInLava()) {
-                entity.setAbsorptionAmount(4.0F);
-            } else
-                entity.setAbsorptionAmount(0.0F);
-        }
-        if (entity.isInWater() && !enableFullLavaArmorEffect) {
-            if (entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-                entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
-                itemStack.damageItem(1, entity);
-                entity.attackEntityFrom(DamageSource.drown, 1F);
-            }
+            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+        } else if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+            itemStack.damageItem(1, entity);
+            entity.attackEntityFrom(DamageSource.drown, 1F);
         }
     }
 }

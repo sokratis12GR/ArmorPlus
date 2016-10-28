@@ -67,8 +67,8 @@ public class ARPConfig {
     public static boolean enableTheGiftOfTheGods = true;
     @ModConfigProperty(category = "TheGiftOfTheGods", name = "cooldownTicks", comment = "Set the cooldown ticks until you can use The Gift Of The Gods (1 second = 20 ticks)")
     public static int cooldownTicks = 600;
-    @ModConfigProperty(category = "TheGiftOfTheGods", name = "maxUses", comment = "Set the max amount of uses for the item (0 = 1 use, 1 = 2 uses etc.)")
-    public static int maxUses = 1;
+    @ModConfigProperty(category = "TheGiftOfTheGods", name = "maxUses", comment = "Set the max amount of uses for the item")
+    public static int maxUses = 2;
 
     //EnderDragonZombie
     @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
@@ -227,9 +227,9 @@ public class ARPConfig {
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnChance", comment = "Set the spawn chance of the Castle Generation in the Overworld")
-    public static int castleGenSpawnChance = 0;
+    public static int castleGenSpawnChance = 1;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
-    public static boolean enableCastleGen = false;
+    public static boolean enableCastleGen = true;
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
     public static int recipes = 1;

@@ -57,9 +57,7 @@ public class BlockLavaCrystal extends BaseBlock {
         Item item = ModItems.lavaCrystal;
         Random rand = (world instanceof World) ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);
-        for (int i = 0; i < count; i++) {
-            ret.add(new ItemStack(item, 1, damageDropped(state)));
-        }
+        for (int i = 0; i < count; i++) ret.add(new ItemStack(item, 1, damageDropped(state)));
         return ret;
     }
 

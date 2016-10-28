@@ -42,8 +42,6 @@ public class TiC {
     }
 
     public static void postInit() {
-        if (Loader.isModLoaded("tconstruct")) {
-            TiCMaterials.registerMaterialRendering();
-        }
+        if (Loader.isModLoaded("tconstruct")) TiCMaterials.registerMaterialRendering();
     }
 }

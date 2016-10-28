@@ -129,15 +129,11 @@ public class EntityEnderDragonZombie extends EntityMob {
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
-            if (entityIn instanceof EntityLivingBase) {
-                // This zombie gives wither 4 when it attacks
-                if (enableEnderDragonZombieWithering)
-                    ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
-            }
+            // This zombie gives wither 4 when it attacks
+            if (entityIn instanceof EntityLivingBase) if (enableEnderDragonZombieWithering)
+                ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
             return true;
-        } else {
-            return false;
-        }
+        } else return false;
     }
 
     @Override

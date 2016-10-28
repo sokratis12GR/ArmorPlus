@@ -112,14 +112,8 @@ public class ItemRFHoe extends BaseRFHoe {
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputHoe) {
-            return 0.5F;
-        }
-        if (Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F) {
-            return 5.5F;
-        } else {
-            return super.getStrVsBlock(stack, state);
-        }
+        if (this.getEnergyStored(stack) < outputHoe) return 0.5F;
+        return Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @SideOnly(Side.CLIENT)
@@ -129,13 +123,8 @@ public class ItemRFHoe extends BaseRFHoe {
     }
 
     private int createPoweredStack(ItemStack container, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        //int energy = container.getTagCompound().getInteger("Energy");
-        if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityHoe);
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
+        if (!simulate) container.getTagCompound().setInteger("Energy", maxCapacityHoe);
 
         return maxCapacityHoe;
     }

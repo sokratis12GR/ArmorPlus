@@ -53,13 +53,8 @@ public class RedstoneApple extends ItemFood {
     }
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
-        if (!worldIn.isRemote) {
-            if (stack.getMetadata() > 0) {
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 6000, 1));
-            } else {
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1));
-            }
-        }
+        if (!worldIn.isRemote)
+            player.addPotionEffect(stack.getMetadata() > 0 ? new PotionEffect(MobEffects.SPEED, 6000, 1) : new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1));
     }
 
     /**

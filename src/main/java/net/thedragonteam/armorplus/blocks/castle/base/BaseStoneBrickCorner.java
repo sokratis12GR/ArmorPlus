@@ -71,13 +71,8 @@ public class BaseStoneBrickCorner extends BaseBlock {
         if (isBaseStoneBrickCorner(iblockstate) && p_185706_0_.getValue(HALF) == iblockstate.getValue(HALF)) {
             EnumFacing enumfacing1 = (EnumFacing) iblockstate.getValue(FACING);
 
-            if (enumfacing1.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing1.getOpposite())) {
-                if (enumfacing1 == enumfacing.rotateYCCW()) {
-                    return BaseStoneBrickCorner.EnumShape.OUTER_LEFT;
-                }
-
-                return BaseStoneBrickCorner.EnumShape.OUTER_RIGHT;
-            }
+            if (enumfacing1.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing1.getOpposite()))
+                return enumfacing1 == enumfacing.rotateYCCW() ? EnumShape.OUTER_LEFT : EnumShape.OUTER_RIGHT;
         }
 
         IBlockState iblockstate1 = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing.getOpposite()));
@@ -85,13 +80,8 @@ public class BaseStoneBrickCorner extends BaseBlock {
         if (isBaseStoneBrickCorner(iblockstate1) && p_185706_0_.getValue(HALF) == iblockstate1.getValue(HALF)) {
             EnumFacing enumfacing2 = (EnumFacing) iblockstate1.getValue(FACING);
 
-            if (enumfacing2.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing2)) {
-                if (enumfacing2 == enumfacing.rotateYCCW()) {
-                    return BaseStoneBrickCorner.EnumShape.INNER_LEFT;
-                }
-
-                return BaseStoneBrickCorner.EnumShape.INNER_RIGHT;
-            }
+            if (enumfacing2.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing2))
+                return enumfacing2 == enumfacing.rotateYCCW() ? EnumShape.INNER_LEFT : EnumShape.INNER_RIGHT;
         }
 
         return BaseStoneBrickCorner.EnumShape.STRAIGHT;
@@ -122,9 +112,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
     public int getMetaFromState(IBlockState state) {
         int i = 0;
 
-        if (state.getValue(HALF) == BaseStoneBrickCorner.EnumHalf.TOP) {
-            i |= 4;
-        }
+        if (state.getValue(HALF) == BaseStoneBrickCorner.EnumHalf.TOP) i |= 4;
 
         i = i | 5 - ((EnumFacing) state.getValue(FACING)).getIndex();
         return i;

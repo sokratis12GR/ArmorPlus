@@ -35,13 +35,11 @@ public class LavaCrystal extends Item implements IFuelHandler {
     }
 
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.getItem() == this) {
-            switch (fuel.getItemDamage()) {
-                case 1:
-                    return 26000;
-                case 0:
-                    return 22000;
-            }
+        if (fuel.getItem() == this) switch (fuel.getItemDamage()) {
+            case 1:
+                return 26000;
+            case 0:
+                return 22000;
         }
         return 0;
     }

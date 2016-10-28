@@ -80,12 +80,11 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 94, 18);
 
-        for (int y = 0; y < 3; ++y) {
+        for (int y = 0; y < 3; ++y)
             for (int x = 0; x < 3; ++x) {
                 int index = INPUT_SLOT + x + (y * 3);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
-        }
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
@@ -103,12 +102,11 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 94, 18);
 
-        for (int y = 0; y < 3; ++y) {
+        for (int y = 0; y < 3; ++y)
             for (int x = 0; x < 3; ++x) {
                 int index = INPUT_SLOT + x + (y * 3);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
-        }
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;

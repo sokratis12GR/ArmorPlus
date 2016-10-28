@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -45,8 +44,7 @@ public class EmeraldLeggings extends BaseArmor {
             if (ARPConfig.enableEmeraldLHaste) {
                 tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                 tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (ARPConfig.enableFullEmeraldArmorEffect) {
+            } else if (ARPConfig.enableFullEmeraldArmorEffect) {
                 tooltip.add("\2479Ability: " + "\247rHaste " + emeraldArmorEffectLevel);
                 tooltip.add("\2473Use: " + "\247rEquip The Full Set");
             }
@@ -56,8 +54,7 @@ public class EmeraldLeggings extends BaseArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableEmeraldLHaste && entity instanceof EntityLivingBase && !ARPConfig.enableFullEmeraldArmorEffect) {
-            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
-        }
+        if (ARPConfig.enableEmeraldLHaste && !ARPConfig.enableFullEmeraldArmorEffect)
+            entity.addPotionEffect(new PotionEffect(MobEffects.HASTE, 120, ARPConfig.emeraldArmorEffectlevel, true, true));
     }
 }

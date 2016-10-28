@@ -102,9 +102,7 @@ public class InventoryCrafting implements IInventory {
     public ItemStack decrStackSize(int index, int count) {
         ItemStack itemstack = ItemStackHelper.getAndSplit(this.stackList, index, count);
 
-        if (itemstack != null) {
-            this.eventHandler.onCraftMatrixChanged(this);
-        }
+        if (itemstack != null) this.eventHandler.onCraftMatrixChanged(this);
 
         return itemstack;
     }
@@ -163,9 +161,7 @@ public class InventoryCrafting implements IInventory {
     }
 
     public void clear() {
-        for (int i = 0; i < this.stackList.length; ++i) {
-            this.stackList[i] = null;
-        }
+        for (int i = 0; i < this.stackList.length; ++i) this.stackList[i] = null;
     }
 
     public int getHeight() {

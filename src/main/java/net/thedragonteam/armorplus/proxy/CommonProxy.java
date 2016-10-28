@@ -45,9 +45,7 @@ public class CommonProxy {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
-        if (Loader.isModLoaded("tconstruct")) {
-            TiC.preInit();
-        }
+        if (Loader.isModLoaded("tconstruct")) TiC.preInit();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         LogHelper.info("Finished PreInitialization");
     }
@@ -59,9 +57,7 @@ public class CommonProxy {
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
         ModEnchantments.registerEnchantments();
-        if (Loader.isModLoaded("tconstruct")) {
-            TiC.init();
-        }
+        if (Loader.isModLoaded("tconstruct")) TiC.init();
         LogHelper.info("Finished Initialization");
     }
 

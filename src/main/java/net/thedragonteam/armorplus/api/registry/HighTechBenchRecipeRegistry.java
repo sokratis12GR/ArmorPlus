@@ -29,11 +29,7 @@ public class HighTechBenchRecipeRegistry {
     }
 
     public static HighTechBenchRecipe getMatchingRecipe(List<ItemStack> itemList, World world, BlockPos pos) {
-        for (HighTechBenchRecipe recipe : recipeList) {
-            if (recipe.matches(itemList, world, pos)) {
-                return recipe;
-            }
-        }
+        for (HighTechBenchRecipe recipe : recipeList) if (recipe.matches(itemList, world, pos)) return recipe;
 
         return null;
     }

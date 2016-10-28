@@ -25,7 +25,7 @@ import net.thedragonteam.armorplus.entity.render.RenderLavaArrow;
 import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
 import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.integration.tinkers.TiCMaterials;
-import net.thedragonteam.armorplus.misc.SpecialRenderInit;
+import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
@@ -34,11 +34,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
-        if (event.getSide().isClient()) {
-            if (Loader.isModLoaded("tconstruct")) {
-                TiC.init();
-            }
-        }
+        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct")) TiC.init();
         super.init(event);
     }
 
@@ -55,12 +51,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        if (event.getSide().isClient()) {
-            if (Loader.isModLoaded("tconstruct")) {
-                TiCMaterials.registerMaterialRendering();
-            }
-        }
-        new SpecialRenderInit();
+        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct")) TiCMaterials.registerMaterialRendering();
+        new CosmeticsRenderInit();
     }
 
     @Override

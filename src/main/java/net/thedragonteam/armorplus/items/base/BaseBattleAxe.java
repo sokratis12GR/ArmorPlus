@@ -54,42 +54,35 @@ public class BaseBattleAxe extends ItemSword {
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        if (battleAxes.getId() == 0)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
-            }
-        if (battleAxes.getId() == 1)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
-            }
-        if (battleAxes.getId() == 2)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
-            }
-        if (battleAxes.getId() == 3)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
-            }
-        if (battleAxes.getId() == 4)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
-            }
-        if (battleAxes.getId() == 5)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).setFire(8);
-            }
-        if (battleAxes.getId() == 6)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
-            }
-        if (battleAxes.getId() == 7)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
-            }
-        if (battleAxes.getId() == 8)
-            if (target instanceof EntityLivingBase) {
-                ((EntityLivingBase) target).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
-            }
+        switch (battleAxes.getId()) {
+            case 0:
+                target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
+                break;
+            case 1:
+                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                break;
+            case 2:
+                target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
+                break;
+            case 3:
+                target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
+                break;
+            case 4:
+                target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
+                break;
+            case 5:
+                target.setFire(8);
+                break;
+            case 6:
+                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                break;
+            case 7:
+                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
+                break;
+            case 8:
+                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
+                break;
+        }
         return true;
     }
 
@@ -110,11 +103,11 @@ public class BaseBattleAxe extends ItemSword {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == itemEasy;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == itemExpert;
+        switch (ARPConfig.recipes) {
+            case 0:
+                return repair.getItem() == itemEasy;
+            case 1:
+                return repair.getItem() == itemExpert;
         }
         return true;
     }

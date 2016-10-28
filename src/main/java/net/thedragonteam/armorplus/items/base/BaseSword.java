@@ -83,11 +83,11 @@ public class BaseSword extends ItemSword {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        if (ARPConfig.recipes == 0) {
-            return repair.getItem() == itemEasy;
-        }
-        if (ARPConfig.recipes == 1) {
-            return repair.getItem() == itemExpert;
+        switch (ARPConfig.recipes) {
+            case 0:
+                return repair.getItem() == itemEasy;
+            case 1:
+                return repair.getItem() == itemExpert;
         }
         return true;
     }

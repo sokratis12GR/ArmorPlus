@@ -74,9 +74,7 @@ public class BaseRF extends BaseItem implements IEnergyContainerItem {
     }
 
     public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
-        if (!container.hasTagCompound()) {
-            container.setTagCompound(new NBTTagCompound());
-        }
+        if (!container.hasTagCompound()) container.setTagCompound(new NBTTagCompound());
         int energy = container.getTagCompound().getInteger("Energy");
         int energyReceived = Math.min(this.capacity - energy, Math.min(this.maxReceive, maxReceive));
         if (!simulate) {
@@ -87,9 +85,7 @@ public class BaseRF extends BaseItem implements IEnergyContainerItem {
     }
 
     public int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
         int energy = container.getTagCompound().getInteger("Energy");
         int energyExtracted = Math.min(energy, Math.min(this.maxExtract, maxExtract));
         if (!simulate) {
@@ -100,10 +96,7 @@ public class BaseRF extends BaseItem implements IEnergyContainerItem {
     }
 
     public int getEnergyStored(ItemStack container) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        return container.getTagCompound().getInteger("Energy");
+        return (container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy")) ? 0 : container.getTagCompound().getInteger("Energy");
     }
 
     public int getMaxEnergyStored(ItemStack container) {

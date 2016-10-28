@@ -29,11 +29,7 @@ public class WorkbenchRecipeRegistry {
     }
 
     public static WorkbenchRecipe getMatchingRecipe(List<ItemStack> itemList, World world, BlockPos pos) {
-        for (WorkbenchRecipe recipe : recipeList) {
-            if (recipe.matches(itemList, world, pos)) {
-                return recipe;
-            }
-        }
+        for (WorkbenchRecipe recipe : recipeList) if (recipe.matches(itemList, world, pos)) return recipe;
 
         return null;
     }

@@ -65,13 +65,16 @@ public class LavaCactus extends BlockCactus {
             if (i < 3) {
                 int j = ((Integer) state.getValue(AGE)).intValue();
 
-                if (j == 15) {
-                    worldIn.setBlockState(blockpos, this.getDefaultState());
-                    IBlockState iblockstate = state.withProperty(AGE, Integer.valueOf(0));
-                    worldIn.setBlockState(pos, iblockstate, 4);
-                    iblockstate.neighborChanged(worldIn, blockpos, this);
-                } else {
-                    worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
+                switch (j) {
+                    case 15:
+                        worldIn.setBlockState(blockpos, this.getDefaultState());
+                        IBlockState iblockstate = state.withProperty(AGE, Integer.valueOf(0));
+                        worldIn.setBlockState(pos, iblockstate, 4);
+                        iblockstate.neighborChanged(worldIn, blockpos, this);
+                        break;
+                    default:
+                        worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
+                        break;
                 }
             }
         }
@@ -113,9 +116,7 @@ public class LavaCactus extends BlockCactus {
      */
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-        if (!this.canBlockStay(worldIn, pos)) {
-            worldIn.destroyBlock(pos, true);
-        }
+        if (!this.canBlockStay(worldIn, pos)) worldIn.destroyBlock(pos, true);
     }
 
     @Override
@@ -123,9 +124,7 @@ public class LavaCactus extends BlockCactus {
         for (EnumFacing enumfacing : EnumFacing.Plane.VERTICAL) {
             Material material = worldIn.getBlockState(pos.offset(enumfacing)).getMaterial();
 
-            if (material.isSolid() || material == Material.LAVA) {
-                return true;
-            }
+            if (material.isSolid() || material == Material.LAVA) return true;
         }
 
         IBlockState state = worldIn.getBlockState(pos.down());

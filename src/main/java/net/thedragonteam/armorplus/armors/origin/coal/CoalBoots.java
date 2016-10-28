@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -40,23 +39,20 @@ public class CoalBoots extends BaseArmor {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            if (ARPConfig.enableCoalBNightVision) {
-                tooltip.add("\2479Ability: " + "\247rNight Vision");
-                tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (ARPConfig.enableFullCoalArmorEffect) {
-                tooltip.add("\2479Ability: " + "\247rNight Vision");
-                tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-            }
-        } else
+        if (GameSettings.isKeyDown(keyBindSneak)) if (ARPConfig.enableCoalBNightVision) {
+            tooltip.add("\2479Ability: " + "\247rNight Vision");
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
+        } else if (ARPConfig.enableFullCoalArmorEffect) {
+            tooltip.add("\2479Ability: " + "\247rNight Vision");
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+        }
+        else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GRAY, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableCoalBNightVision && entity instanceof EntityLivingBase && !ARPConfig.enableFullCoalArmorEffect) {
+        if (ARPConfig.enableCoalBNightVision && !ARPConfig.enableFullCoalArmorEffect)
             entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 240, 0, true, true));
-        }
     }
 }

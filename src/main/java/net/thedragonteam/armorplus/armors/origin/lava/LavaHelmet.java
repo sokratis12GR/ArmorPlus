@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -41,37 +40,27 @@ public class LavaHelmet extends BaseArmor {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            if (ARPConfig.enableLavaHEffects) {
-                tooltip.add("\2479Ability: " + "\247rFire Resistance");
-                tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (enableFullLavaArmorEffect) {
-                tooltip.add("\2479Ability: " + "\247rFire Resistance");
-                tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-            }
+        if (GameSettings.isKeyDown(keyBindSneak)) if (ARPConfig.enableLavaHEffects) {
+            tooltip.add("\2479Ability: " + "\247rFire Resistance");
+            tooltip.add("\2473Use: " + "\247rEquip A Piece");
+        } else if (enableFullLavaArmorEffect) {
+            tooltip.add("\2479Ability: " + "\247rFire Resistance");
+            tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableLavaHEffects && entity instanceof EntityLivingBase && !enableFullLavaArmorEffect) {
+        if (ARPConfig.enableLavaHEffects && !enableFullLavaArmorEffect)
             entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
-        }
         if (!enableFullLavaArmorEffect) {
             entity.extinguish();
-            if (entity.isInLava()) {
-                entity.setAbsorptionAmount(4.0F);
-            } else
-                entity.setAbsorptionAmount(0.0F);
-        }
-        if (entity.isInWater() && !enableFullLavaArmorEffect) {
-            if (entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-                entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
-                itemStack.damageItem(1, entity);
-                entity.attackEntityFrom(DamageSource.drown, 1F);
-            }
+            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+        } else if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+            itemStack.damageItem(1, entity);
+            entity.attackEntityFrom(DamageSource.drown, 1F);
         }
     }
 }

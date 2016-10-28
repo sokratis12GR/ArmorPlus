@@ -19,14 +19,10 @@ public class ItemStackHelper {
         if (index >= 0 && index < stacks.length && stacks[index] != null && amount > 0) {
             ItemStack itemstack = stacks[index].splitStack(amount);
 
-            if (stacks[index].stackSize == 0) {
-                stacks[index] = null;
-            }
+            if (stacks[index].stackSize == 0) stacks[index] = null;
 
             return itemstack;
-        } else {
-            return null;
-        }
+        } else return null;
     }
 
     @Nullable
@@ -35,8 +31,6 @@ public class ItemStackHelper {
             ItemStack itemstack = stacks[index];
             stacks[index] = null;
             return itemstack;
-        } else {
-            return null;
-        }
+        } else return null;
     }
 }

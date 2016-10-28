@@ -18,12 +18,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class SpecialRenderInit {
+public class CosmeticsRenderInit {
 
-    public static final HashMap<String, RenderSpecial> SPECIAL_LIST = new HashMap<String, RenderSpecial>();
+    public static final HashMap<String, RenderCosmetics> COSMETICS_FOR_PEOPLE_LIST = new HashMap<String, RenderCosmetics>();
 
-    public SpecialRenderInit() {
-        new ThreadSpecialFetcher();
+    public CosmeticsRenderInit() {
+        new ThreadCosmeticsFetcher();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -43,17 +43,13 @@ public class SpecialRenderInit {
                 ItemStack stack = null;
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(itemName);
-                if (Item.REGISTRY.containsKey(resLoc)) {
-                    stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
-                } else {
-                    if (Block.REGISTRY.containsKey(resLoc)) {
-                        stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
-                    }
-                }
+                if (Item.REGISTRY.containsKey(resLoc)) stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
+                else if (Block.REGISTRY.containsKey(resLoc))
+                    stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
 
                 //Add a new Special Renderer to the list
                 if (stack != null) {
-                    SPECIAL_LIST.put(key, new RenderSpecial(stack));
+                    COSMETICS_FOR_PEOPLE_LIST.put(key, new RenderCosmetics(stack));
                 }
             }
         }
@@ -61,17 +57,12 @@ public class SpecialRenderInit {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onPlayerRender(RenderPlayerEvent.Pre event) {
-        if (!SPECIAL_LIST.isEmpty()) {
-            for (Map.Entry<String, RenderSpecial> entry : SPECIAL_LIST.entrySet()) {
-                //Does the player have one of the names from the list?
-                String playerName = event.getEntityPlayer().getName();
-                if (entry.getKey() != null && playerName != null) {
-                    if (entry.getKey().equalsIgnoreCase(playerName)) {
-                        //Render the special Item/Block
-                        entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
-                        break;
-                    }
-                }
+        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty()) for (Map.Entry<String, RenderCosmetics> entry : COSMETICS_FOR_PEOPLE_LIST.entrySet()) {
+            String playerName = event.getEntityPlayer().getName();
+            if (entry.getKey() != null && playerName != null && entry.getKey().equalsIgnoreCase(playerName)) {
+                //Render the special Item/Block
+                entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
+                break;
             }
         }
     }

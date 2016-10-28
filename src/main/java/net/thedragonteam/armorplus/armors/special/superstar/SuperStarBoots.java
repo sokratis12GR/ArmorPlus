@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -43,8 +42,7 @@ public class SuperStarBoots extends BaseArmor {
             if (ARPConfig.enableSuperStarBRegen) {
                 tooltip.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (ARPConfig.enableFullSuperStarArmorEffect) {
+            } else if (ARPConfig.enableFullSuperStarArmorEffect) {
                 tooltip.add("\2479Ability: " + "\247rRegeneration " + superstarArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip The Full Set");
             }
@@ -54,7 +52,7 @@ public class SuperStarBoots extends BaseArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableSuperStarCRegen && entity instanceof EntityLivingBase && !ARPConfig.enableFullSuperStarArmorEffect) {
+        if (ARPConfig.enableSuperStarCRegen && !ARPConfig.enableFullSuperStarArmorEffect) {
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.superstarArmorEffectlevel, true, true));
             entity.removePotionEffect(MobEffects.WITHER);
         }

@@ -9,9 +9,12 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -192,17 +195,20 @@ public class StructureCastle extends WorldGenerator {
             placeBlock(worldIn, corner, doorTopPos, doorUpper);
             placeBlock(worldIn, corner, glowstonePos, glowstone);
 
-            // I saved the chest for last
             placeBlock(worldIn, corner, chestPos, chest);
+            TileEntity tileentity1 = getTileEntity(worldIn, corner, chestPos);
+            placeTileEntity(worldIn, corner, chestPos, tileentity1);
+
+            if (tileentity1 instanceof TileEntityChest)
+                ((TileEntityChest) tileentity1).setLootTable(LootTableList.CHESTS_END_CITY_TREASURE, rand.nextLong());
+
+            // I saved the chest for last
+            //    placeBlock(worldIn, corner, chestPos, chest);
 
             // debug:
-            if (isDebugMode()) {
-                LogHelper.info("Built a castle starting at " + corner + "!");
-            }
+            if (isDebugMode()) LogHelper.info("Built a castle starting at " + corner + "!");
             return true;
-        } else if (isDebugMode()) {
-            LogHelper.info("Sorry, can't spawn a castle at " + corner);
-        }
+        } else if (isDebugMode()) LogHelper.info("Sorry, can't spawn a castle at " + corner);
         return false;
     }
 
@@ -215,8 +221,29 @@ public class StructureCastle extends WorldGenerator {
     }
 
     /**
-     * Helper Method
+     * Helper Methods
      **/
+    private void placeTileEntity(World world, BlockPos frontLeftCorner, int[] offsets, TileEntity toPlace) {
+        placeTileEntity(world, frontLeftCorner, offsets[0], offsets[1], offsets[2], toPlace);
+    }
+
+    private void placeTileEntity(World world, BlockPos frontLeftCorner, int offsetX, int offsetY, int offsetZ, TileEntity toPlace) {
+        // figure out where that block is relative to the corner
+        BlockPos placePos = frontLeftCorner.add(offsetX, offsetY, offsetZ);
+        world.setTileEntity(placePos, toPlace);
+    }
+
+    private TileEntity getTileEntity(World world, BlockPos frontLeftCorner, int[] offsets) {
+        return getTileEntity(world, frontLeftCorner, offsets[0], offsets[1], offsets[2]);
+    }
+
+    private TileEntity getTileEntity(World world, BlockPos frontLeftCorner, int offsetX, int offsetY, int offsetZ) {
+        // figure out where that block is relative to the corner
+        BlockPos placePos = frontLeftCorner.add(offsetX, offsetY, offsetZ);
+        return world.getTileEntity(placePos);
+    }
+
+
     private void placeBlock(World world, BlockPos frontLeftCorner, int[] offsets, IBlockState toPlace) {
         placeBlock(world, frontLeftCorner, offsets[0], offsets[1], offsets[2], toPlace);
     }

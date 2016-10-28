@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -79,6 +80,10 @@ public class ArmorPlus {
 
     public static boolean hasTesla() {
         return Loader.isModLoaded("tesla");
+    }
+
+    public static ResourceLocation getResourceLocation(String path) {
+        return new ResourceLocation(ArmorPlus.MODID, path);
     }
 
     public static String getArmorPlusLocation() {

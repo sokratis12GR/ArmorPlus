@@ -35,9 +35,8 @@ public class BaseDevItem extends BaseItem {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (devItems.hasSubTypes()) {
+        if (devItems.hasSubTypes())
             ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
-        }
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 

@@ -53,9 +53,11 @@ public class ItemTeslaSword extends BaseTeslaSword {
     public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
-        if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, 0));
-            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
+        switch (equipmentSlot) {
+            case MAINHAND:
+                multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, 0));
+                multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
+                break;
         }
 
         return multimap;
@@ -76,14 +78,8 @@ public class ItemTeslaSword extends BaseTeslaSword {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < outputSword) {
-            return 0.5F;
-        }
-        if (Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F) {
-            return 5.5F;
-        } else {
-            return super.getStrVsBlock(stack, state);
-        }
+        if (ARPTeslaUtils.getStoredPower(stack) < outputSword) return 0.5F;
+        return Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @Optional.Method(modid = "tesla")

@@ -25,41 +25,32 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
  * - TheDragonTeam
  */
 public class MobDrops {
-    Random random = new Random();
-    int min = 0;
-    int max = 1;
+    private Random random = new Random();
+    private int min = 0;
+    private int max = 1;
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void playerKilledEntity(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityDragon) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.enderDragonScale, enderdragonScaleDropAmount);
-            if (debugMode) {
+            if (debugMode)
                 LogHelper.info("Ender Dragon Dropped: " + ModItems.enderDragonScale.getRegistryName() + " x " + enderdragonScaleDropAmount);
-            }
-        }
-        if (event.getEntity() instanceof EntityWither) {
+        } else if (event.getEntity() instanceof EntityWither) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.witherBone, witherBoneDropAmount);
-            if (debugMode) {
+            if (debugMode)
                 LogHelper.info("Wither Boss Dropped: " + ModItems.witherBone.getRegistryName() + " x " + witherBoneDropAmount);
-            }
-        }
-        if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
+        } else if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.guardianScale, guardianScaleElderDropAmount);
-            if (debugMode) {
+            if (debugMode)
                 LogHelper.info("Elder Guardian Dropped:" + ModItems.guardianScale.getRegistryName() + " x " + guardianScaleElderDropAmount);
-            }
-        }
-        if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).func_189771_df() == SkeletonType.WITHER) {
+        } else if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).getSkeletonType() == SkeletonType.WITHER) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.witherBone, random.nextInt(max - min + 1) + min);
-            if (debugMode) {
+            if (debugMode)
                 LogHelper.info("Wither Skeleton Dropped: " + ModItems.witherBone.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
-            }
-        }
-        if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
+        } else if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
             EntityItem entityItem = event.getEntityLiving().dropItem(ModItems.guardianScale, random.nextInt(max - min + 1) + min);
-            if (debugMode) {
+            if (debugMode)
                 LogHelper.info("Guardian Dropped: " + ModItems.guardianScale.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
-            }
         }
     }
 }

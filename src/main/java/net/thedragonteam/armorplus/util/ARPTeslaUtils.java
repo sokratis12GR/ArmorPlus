@@ -15,9 +15,7 @@ public class ARPTeslaUtils {
 
     @Optional.Method(modid = "tesla")
     public static boolean isPoweredItem(ItemStack stack) {
-        if (stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
-            return true;
-        return false;
+        return stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
     }
 
     @Optional.Method(modid = "tesla")
@@ -30,55 +28,37 @@ public class ARPTeslaUtils {
 
     @Optional.Method(modid = "tesla")
     public static long getMaxCapacity(ItemStack stack) {
-        if (isPoweredItem(stack)) {
-            return getContainer(stack).getCapacity();
-        } else return 0;
+        return isPoweredItem(stack) ? getContainer(stack).getCapacity() : 0;
     }
 
     @Optional.Method(modid = "tesla")
     public static void addPower(ItemStack stack, long amount) {
-        if (isPoweredItem(stack)) {
-            getContainer(stack).givePower(amount, false);
-        }
+        if (isPoweredItem(stack)) getContainer(stack).givePower(amount, false);
     }
 
     @Optional.Method(modid = "tesla")
     public static BaseTeslaContainer getContainer(ItemStack stack) {
-        if (isPoweredItem(stack)) {
-            BaseTeslaContainer container = (BaseTeslaContainer) stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
-            return container;
-        }
-        return null;
+        return isPoweredItem(stack) ? (BaseTeslaContainer) stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN) : null;
     }
 
     @Optional.Method(modid = "tesla")
     public static void setMaxCapacity(ItemStack stack, long amount) {
-        if (isPoweredItem(stack)) {
-            getContainer(stack).setCapacity(amount);
-        }
+        if (isPoweredItem(stack)) getContainer(stack).setCapacity(amount);
     }
 
     @Optional.Method(modid = "tesla")
     public static void usePower(ItemStack stack, long amount) {
-        if (isPoweredItem(stack)) {
-            getContainer(stack).takePower(amount, false);
-        }
+        if (isPoweredItem(stack)) getContainer(stack).takePower(amount, false);
     }
 
     @Optional.Method(modid = "tesla")
     public static long getMaxInput(ItemStack stack) {
-        if (isPoweredItem(stack)) {
-            return getContainer(stack).getInputRate();
-        }
-        return 0;
+        return isPoweredItem(stack) ? getContainer(stack).getInputRate() : 0;
     }
 
     @Optional.Method(modid = "tesla")
     public static long getMaxOutput(ItemStack stack) {
-        if (isPoweredItem(stack)) {
-            return getContainer(stack).getOutputRate();
-        }
-        return 0;
+        return isPoweredItem(stack) ? getContainer(stack).getOutputRate() : 0;
     }
 
     @Optional.Method(modid = "tesla")
@@ -98,9 +78,7 @@ public class ARPTeslaUtils {
      */
     @Optional.Method(modid = "tesla")
     public static boolean isTelsaBlock(TileEntity tileEntity) {
-        if (tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
-            return true;
-        return false;
+        return tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
     }
 
     @Optional.Method(modid = "tesla")
@@ -114,9 +92,7 @@ public class ARPTeslaUtils {
 
     @Optional.Method(modid = "tesla")
     public static boolean isConsumer(TileEntity tileEntity) {
-        if (tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, EnumFacing.DOWN))
-            return true;
-        return false;
+        return tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, EnumFacing.DOWN);
     }
 
     @Optional.Method(modid = "tesla")
@@ -136,10 +112,7 @@ public class ARPTeslaUtils {
 
     @Optional.Method(modid = "tesla")
     public static boolean canAcceptPower(TileEntity tile, long amount) {
-        if (getMissingPower(tile) >= amount) {
-            return true;
-        }
-        return false;
+        return getMissingPower(tile) >= amount;
     }
 
     @Optional.Method(modid = "tesla")

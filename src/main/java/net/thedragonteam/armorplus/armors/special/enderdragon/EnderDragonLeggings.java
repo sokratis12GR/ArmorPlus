@@ -49,7 +49,7 @@ public class EnderDragonLeggings extends BaseArmor {
         ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-        if (ARPConfig.enableFlightAbility) {
+        if (ARPConfig.enableFlightAbility)
             if (head != null && head.getItem() == ModItems.enderDragonHelmet && chest != null && chest.getItem() == ModItems.enderDragonChestplate && legs != null && legs.getItem() == ModItems.enderDragonLeggings && feet != null && feet.getItem() == ModItems.enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.allowFlying = true;
                 entity.removePotionEffect(MobEffects.WITHER);
@@ -57,6 +57,5 @@ public class EnderDragonLeggings extends BaseArmor {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
-        }
     }
 }

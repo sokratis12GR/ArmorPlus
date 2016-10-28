@@ -59,14 +59,8 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < outputShovel) {
-            return 0.5F;
-        }
-        if (Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F) {
-            return 5.5F;
-        } else {
-            return super.getStrVsBlock(stack, state);
-        }
+        if (ARPTeslaUtils.getStoredPower(stack) < outputShovel) return 0.5F;
+        return Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @Optional.Method(modid = "tesla")

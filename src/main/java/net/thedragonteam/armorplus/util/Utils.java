@@ -29,7 +29,7 @@ public final class Utils {
 
     @SideOnly(Side.CLIENT)
     public static void renderItemInWorld(ItemStack stack) {
-        if (stack != null && stack.getItem() != null) {
+        if (stack != null) {
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
             GlStateManager.pushAttrib();

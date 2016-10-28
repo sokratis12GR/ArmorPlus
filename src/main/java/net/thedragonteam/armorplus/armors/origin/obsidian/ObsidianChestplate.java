@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -33,7 +32,7 @@ import java.util.List;
 public class ObsidianChestplate extends BaseArmor {
 
     public ObsidianChestplate() {
-        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.CHEST, "obsidian_chestplate",  Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
+        super(ModItems.obsidianArmor, 0, EntityEquipmentSlot.CHEST, "obsidian_chestplate", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY);
     }
 
     @Override
@@ -45,8 +44,7 @@ public class ObsidianChestplate extends BaseArmor {
             if (ARPConfig.enableObsidianCResistance) {
                 tooltip.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (ARPConfig.enableFullObsidianArmorEffect) {
+            } else if (ARPConfig.enableFullObsidianArmorEffect) {
                 tooltip.add("\2479Ability: " + "\247rResistance " + obsidianArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip The Full Set");
             }
@@ -56,8 +54,7 @@ public class ObsidianChestplate extends BaseArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableObsidianCResistance && entity instanceof EntityLivingBase && !ARPConfig.enableFullObsidianArmorEffect) {
+        if (ARPConfig.enableObsidianCResistance && !ARPConfig.enableFullObsidianArmorEffect)
             entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
-        }
     }
 }

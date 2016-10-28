@@ -73,17 +73,28 @@ public class FuriousEnchantment extends Enchantment {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        if (level == 1) {
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 460, 0));
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 0));
+        Levels levelIn = Levels.values()[level];
+        switch (levelIn) {
+            case ZERO:
+                break;
+            case ONE:
+                user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 0));
+                break;
+            case TWO:
+                user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 0));
+                user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 460, 0));
+                break;
+            case THREE:
+                user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 1));
+                user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 920, 0));
+                break;
         }
-        if (level == 2) {
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 460, 1));
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 1));
-        }
-        if (level == 3) {
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 460, 2));
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 2));
-        }
+    }
+
+    private enum Levels {
+        ZERO,
+        ONE,
+        TWO,
+        THREE
     }
 }

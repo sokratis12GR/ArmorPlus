@@ -65,34 +65,29 @@ public class TheUltimateHelmet extends BaseArmor {
         ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-        if (ARPConfig.enableFlightAbility) {
-            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+        if (ARPConfig.enableFlightAbility)
+            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.allowFlying = true;
-            } else {
+            else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
-        }
         if (ARPConfig.enableTheUltimateArmorInvincibility) {
-            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.disableDamage = true;
-            } else {
-                entity.capabilities.disableDamage = false;
-            }
+            else entity.capabilities.disableDamage = false;
         }
         if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-        } else {
-            if (entity instanceof EntityLivingBase && enableTheUltimateArmorDeBuffs) {
-                entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
-                entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
-                entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+        } else if (enableTheUltimateArmorDeBuffs) {
+            entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
+            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
+            entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
 
-                entity.motionX = 0;
-                if (((EntityLivingBase) entity).onGround)
-                    entity.motionY = 0;
-                entity.motionZ = 0;
-                ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
-            }
+            entity.motionX = 0;
+            if (((EntityLivingBase) entity).onGround)
+                entity.motionY = 0;
+            entity.motionZ = 0;
+            ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
     }
 }

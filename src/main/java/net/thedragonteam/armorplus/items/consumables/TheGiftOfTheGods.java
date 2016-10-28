@@ -47,7 +47,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
-        this.maxUsable = maxUses;
+        this.maxUsable = maxUses - 1;
         setMaxDamage(maxUsable);
     }
 
@@ -66,34 +66,21 @@ public class TheGiftOfTheGods extends BaseItem {
         List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
 
         NBTTagCompound nbt;
-        if (itemStackIn.hasTagCompound()) {
-            nbt = itemStackIn.getTagCompound();
-        } else {
-            nbt = new NBTTagCompound();
-        }
+        nbt = itemStackIn.hasTagCompound() ? itemStackIn.getTagCompound() : new NBTTagCompound();
 
-        if (nbt.hasKey("Clicked")) {
-            nbt.setInteger("Clicked", nbt.getInteger("Clicked") + 1);
-        } else {
-            nbt.setInteger("Clicked", 1);
-        }
+        nbt.setInteger("Clicked", nbt.hasKey("Clicked") ? nbt.getInteger("Clicked") + 1 : 1);
         itemStackIn.setTagCompound(nbt);
 
-        if (worldIn.isRemote) {
-            return new ActionResult(EnumActionResult.PASS, itemStackIn);
-        }
+        if (worldIn.isRemote) return new ActionResult(EnumActionResult.PASS, itemStackIn);
 
         int count;
         Item item = null;
-        do {
-            if (!ARPConfig.enableWhiteList) {
-                count = 256 + random.nextInt(32000 - 256);
-                item = Item.getItemById(count);
-            }
-            if (ARPConfig.enableWhiteList) {
-                item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
-            }
-        }
+        do if (!ARPConfig.enableWhiteList) {
+            count = 256 + random.nextInt(32000 - 256);
+            item = Item.getItemById(count);
+        } else if (ARPConfig.enableWhiteList)
+            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
+
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
@@ -118,7 +105,7 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        int maxUses = ARPConfig.maxUses + 1;
+        int maxUses = ARPConfig.maxUses;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");
             tooltip.add("\2479Max Uses: " + "\247r" + maxUses);

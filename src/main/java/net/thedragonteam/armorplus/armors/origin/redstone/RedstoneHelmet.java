@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -45,8 +44,7 @@ public class RedstoneHelmet extends BaseArmor {
             if (ARPConfig.enableRedstoneHSpeed) {
                 tooltip.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip A Piece");
-            }
-            if (ARPConfig.enableFullRedstoneArmorEffect) {
+            } else if (ARPConfig.enableFullRedstoneArmorEffect) {
                 tooltip.add("\2479Ability: " + "\247rSpeed " + redstoneArmorEffectlevel);
                 tooltip.add("\2473Use: " + "\247rEquip The Full Set");
             }
@@ -56,8 +54,7 @@ public class RedstoneHelmet extends BaseArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        if (ARPConfig.enableRedstoneHSpeed && entity instanceof EntityLivingBase && !ARPConfig.enableFullRedstoneArmorEffect) {
+        if (ARPConfig.enableRedstoneHSpeed && !ARPConfig.enableFullRedstoneArmorEffect)
             entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, ARPConfig.redstoneArmorEffectlevel, true, true));
-        }
     }
 }

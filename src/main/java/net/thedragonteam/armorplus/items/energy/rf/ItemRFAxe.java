@@ -116,15 +116,9 @@ public class ItemRFAxe extends BaseRFAxe {
         createTooltip(stack, tooltip);
     }
 
-
     private int createPoweredStack(ItemStack container, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        //int energy = container.getTagCompound().getInteger("Energy");
-        if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityAxe);
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
+        if (!simulate) container.getTagCompound().setInteger("Energy", maxCapacityAxe);
 
         return maxCapacityAxe;
     }

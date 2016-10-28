@@ -96,14 +96,8 @@ public class ItemRFPickaxe extends BaseRFPickaxe {
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (this.getEnergyStored(stack) < outputPickaxe) {
-            return 0.5F;
-        }
-        if (Items.WOODEN_PICKAXE.getStrVsBlock(stack, state) > 1.0F) {
-            return 5.5F;
-        } else {
-            return super.getStrVsBlock(stack, state);
-        }
+        if (this.getEnergyStored(stack) < outputPickaxe) return 0.5F;
+        return Items.WOODEN_PICKAXE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @SideOnly(Side.CLIENT)
@@ -113,13 +107,8 @@ public class ItemRFPickaxe extends BaseRFPickaxe {
     }
 
     private int createPoweredStack(ItemStack container, boolean simulate) {
-        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) {
-            return 0;
-        }
-        //int energy = container.getTagCompound().getInteger("Energy");
-        if (!simulate) {
-            container.getTagCompound().setInteger("Energy", maxCapacityPickaxe);
-        }
+        if ((container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy"))) return 0;
+        if (!simulate) container.getTagCompound().setInteger("Energy", maxCapacityPickaxe);
 
         return maxCapacityPickaxe;
     }

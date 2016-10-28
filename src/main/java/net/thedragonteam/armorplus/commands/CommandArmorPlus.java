@@ -69,9 +69,7 @@ public class CommandArmorPlus extends CommandBase {
             ISubCommand subCommand = subCommands.get(args[0]);
             String[] subArgs = Arrays.copyOfRange(args, 1, args.length);
             subCommand.processSubCommand(server, sender, subArgs);
-        } else {
-            sender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.error.unknown")));
-        }
+        } else sender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.error.unknown")));
     }
 
     public Map<String, ISubCommand> getSubCommands() {
