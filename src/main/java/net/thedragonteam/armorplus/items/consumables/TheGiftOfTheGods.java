@@ -43,9 +43,12 @@ public class TheGiftOfTheGods extends BaseItem {
 
     private static Random random = new Random();
 
+    public int maxUsable;
+
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
-        setMaxDamage(maxUses);
+        this.maxUsable = maxUses;
+        setMaxDamage(maxUsable);
     }
 
     @Override
