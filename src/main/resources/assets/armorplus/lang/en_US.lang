@@ -13,6 +13,9 @@ itemGroup.armorplus.tinkers=ARP Tinkers
 enchantment.life_steal=Life Steal
 enchantment.furious=Furious
 
+#Baubles
+item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
+
 #Containers
 container.armorplus.workbench=Workbench
 container.armorplus.high_tech_bench=High-Tech Bench

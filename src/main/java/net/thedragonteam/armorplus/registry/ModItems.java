@@ -97,6 +97,7 @@ import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
 import net.thedragonteam.armorplus.items.arrows.ItemRedstoneArrow;
 import net.thedragonteam.armorplus.items.base.*;
+import net.thedragonteam.armorplus.items.baubles.ItemBaubleDragon;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
@@ -332,8 +333,12 @@ public class ModItems {
     public static ItemRedstoneArrow itemRedstoneArrow;
     public static ItemLavaArrow itemLavaArrow;
     public static ItemEnergyStorage itemEnergyStorage;
+    public static ItemBaubleDragon itemBaubleDragon;
 
     public static void init() {
+        if (Loader.isModLoaded("Baubles")) {
+            itemBaubleDragon = new ItemBaubleDragon();
+        }
         itemEnergyStorage = new ItemEnergyStorage();
         guiTester = new GuiTester();
         itemRFShovel = new ItemRFShovel();
@@ -496,6 +501,9 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        if (Loader.isModLoaded("Baubles")) {
+            itemBaubleDragon.initModel();
+        }
         itemEnergyStorage.initModel();
         guiTester.initModel();
         itemRFShovel.initModel();
