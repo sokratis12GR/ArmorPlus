@@ -323,9 +323,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Features Added}**
     * Special Cosmetic for special people
-* **{Fratures Changed}**
+* **{Features Changed}**
     * Lava Armor will now extinguish the fire overlay if the full set effect is set to false and the player is wearing 1 of the armor pieces
-    * ARP Dimensions will be disabled by defualt
+    * ARP Dimensions will be disabled by default
     * Structure Castle Generation is set to 0 by default, until it is fully done
     * Ender Dragon Zombies will have 40.0D HP by default and their movement speed is increased to 0.20D
 * **{Bugs Fixed}**
