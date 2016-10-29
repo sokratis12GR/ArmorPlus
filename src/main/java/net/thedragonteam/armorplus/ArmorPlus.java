@@ -25,7 +25,7 @@ import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = ArmorPlus.CAN_BE_DEACTIVATED, updateJSON = ArmorPlus.UPDATE_JSON)
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUIFACTORY, canBeDeactivated = ArmorPlus.CAN_BE_DEACTIVATED, updateJSON = ArmorPlus.UPDATE_JSON, modLanguage = ArmorPlus.MOD_LANGUAGE, serverSideOnly = ArmorPlus.SERVER_SIDE_ONLY)
 public class ArmorPlus {
 
     public static final String MCVERSION = "1.10.2";
@@ -47,6 +47,8 @@ public class ArmorPlus {
     public static final String BAUBLES_VERSION = "1.3.0";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
+    public static final String MOD_LANGUAGE = "java";
+    public static final boolean SERVER_SIDE_ONLY = false;
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
     public static final boolean CAN_BE_DEACTIVATED = false;
     public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);" + "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);" + "after:Baubles@[" + ArmorPlus.BAUBLES_VERSION + ",);";
