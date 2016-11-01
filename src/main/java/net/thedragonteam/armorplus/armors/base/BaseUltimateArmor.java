@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -20,6 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,12 +33,16 @@ import net.thedragonteam.armorplus.util.Utils;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
+import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseUltimateArmor extends ItemArmor {
 
+    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation() + "the_ultimate_armor", 160,
+            ARPConfig.theUltimateArmorProtectionPoints, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.theUltimateArmorToughnessPoints);
+
     public BaseUltimateArmor(EntityEquipmentSlot slot) {
-        super(ModItems.theUltimateArmor, 0, slot);
+        super(theUltimateArmor, 0, slot);
         setMaxStackSize(1);
         switch (slot) {
             case FEET:

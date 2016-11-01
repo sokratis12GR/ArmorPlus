@@ -18,6 +18,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -27,6 +28,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,6 +43,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.maxCapacityElectricalArmor;
 import static net.thedragonteam.armorplus.ARPConfig.outputElectricalArmor;
+import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @Optional.InterfaceList({
@@ -55,8 +58,11 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
     private int output;
     private int input;
 
+    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation() + "electrical_armor", 19,
+            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON,(float) ARPConfig.electricalArmorToughnessPoints);
+
     public BaseElectricalArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
-        super(ModItems.electricalArmor, 0, slot);
+        super(electricalArmor, 0, slot);
         setMaxStackSize(1);
         switch (slot) {
             case FEET:
