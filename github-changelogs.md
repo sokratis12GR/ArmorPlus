@@ -13,6 +13,7 @@
     * Added JEI support for the Ulti-Tech Bench
     * Added some little, but handly info for the bows
     * Improved how things work in code
+    * Added the ability to disable armors entirely from the game via config options
     * Added Baubles integration/support
         * Added some new Cosmetics
     * Enchantments, added 2 new enchantments

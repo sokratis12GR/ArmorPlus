@@ -12,183 +12,187 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 public class ModEnergyRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
-        /* Metal Armor */
-        if (ARPConfig.recipes == 0) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
-                    "MMMM",
-                    "M  M",
-                    "    ",
-                    "    ",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
-                    "    ",
-                    "    ",
-                    "MMMM",
-                    "M  M",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1),
-                    "M  M",
-                    "M  M",
-                    "MMMM",
-                    "MMMM",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1),
-                    "MMMM",
-                    "M  M",
-                    "M  M",
-                    "M  M",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "    ",
-                    "    ",
-                    "M  M",
-                    "M  M",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "    ",
-                    "M  M",
-                    "M  M",
-                    "    ",
-                    'M', "ingotSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "M  M",
-                    "M  M",
-                    "    ",
-                    "    ",
-                    'M', "ingotSteel"));
-        }
-        if (ARPConfig.recipes == 1) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
-                    "MMMM",
-                    "M  M",
-                    "    ",
-                    "    ",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
-                    "    ",
-                    "    ",
-                    "MMMM",
-                    "M  M",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1),
-                    "M  M",
-                    "M  M",
-                    "MMMM",
-                    "MMMM",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1),
-                    "MMMM",
-                    "M  M",
-                    "M  M",
-                    "M  M",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "    ",
-                    "    ",
-                    "M  M",
-                    "M  M",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "M  M",
-                    "M  M",
-                    "    ",
-                    "    ",
-                    'M', "blockSteel"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
-                    "    ",
-                    "M  M",
-                    "M  M",
-                    "    ",
-                    'M', "blockSteel"));
+        /* Steel Armor */
+        if (ARPConfig.enableSteelArmor) {
+            if (ARPConfig.recipes == 0) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
+                        "MMMM",
+                        "M  M",
+                        "    ",
+                        "    ",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
+                        "    ",
+                        "    ",
+                        "MMMM",
+                        "M  M",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1),
+                        "M  M",
+                        "M  M",
+                        "MMMM",
+                        "MMMM",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1),
+                        "MMMM",
+                        "M  M",
+                        "M  M",
+                        "M  M",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "    ",
+                        "    ",
+                        "M  M",
+                        "M  M",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "    ",
+                        "M  M",
+                        "M  M",
+                        "    ",
+                        'M', "ingotSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "M  M",
+                        "M  M",
+                        "    ",
+                        "    ",
+                        'M', "ingotSteel"));
+            }
+            if (ARPConfig.recipes == 1) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
+                        "MMMM",
+                        "M  M",
+                        "    ",
+                        "    ",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
+                        "    ",
+                        "    ",
+                        "MMMM",
+                        "M  M",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelChestplate, 1),
+                        "M  M",
+                        "M  M",
+                        "MMMM",
+                        "MMMM",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelLeggings, 1),
+                        "MMMM",
+                        "M  M",
+                        "M  M",
+                        "M  M",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "    ",
+                        "    ",
+                        "M  M",
+                        "M  M",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "M  M",
+                        "M  M",
+                        "    ",
+                        "    ",
+                        'M', "blockSteel"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelBoots, 1),
+                        "    ",
+                        "M  M",
+                        "M  M",
+                        "    ",
+                        'M', "blockSteel"));
+            }
         }
         /* Electrical Armor */
-        if (ARPConfig.recipes == 0) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
-                    "    ",
-                    "    ",
-                    "EEEE",
-                    "E  E",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
-                    "EEEE",
-                    "EXXE",
-                    "    ",
-                    "    ",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1),
-                    "E  E",
-                    "E  E",
-                    "EEEE",
-                    "EEEE",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1),
-                    "EEEE",
-                    "E  E",
-                    "E  E",
-                    "E  E",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "    ",
-                    "   ",
-                    "E  E",
-                    "E  E",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "E  E",
-                    "E  E",
-                    "    ",
-                    "    ",
-                    'E', "ingotElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "    ",
-                    "E  E",
-                    "E  E",
-                    "    ",
-                    'E', "ingotElectrical"));
-        }
-        if (ARPConfig.recipes == 1) {
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
-                    "    ",
-                    "    ",
-                    "EEEE",
-                    "E  E",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
-                    "EEEE",
-                    "E  E",
-                    "    ",
-                    "    ",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1),
-                    "E  E",
-                    "E  E",
-                    "EEEE",
-                    "EEEE",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1),
-                    "EEEE",
-                    "E  E",
-                    "E  E",
-                    "E  E",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "    ",
-                    "    ",
-                    "E  E",
-                    "E  E",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "E  E",
-                    "E  E",
-                    "    ",
-                    "    ",
-                    'E', "blockElectrical"));
-            manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
-                    "    ",
-                    "E  E",
-                    "E  E",
-                    "    ",
-                    'E', "blockElectrical"));
+        if (ARPConfig.enableElectricalArmor) {
+            if (ARPConfig.recipes == 0) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
+                        "    ",
+                        "    ",
+                        "EEEE",
+                        "E  E",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
+                        "EEEE",
+                        "EXXE",
+                        "    ",
+                        "    ",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1),
+                        "E  E",
+                        "E  E",
+                        "EEEE",
+                        "EEEE",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1),
+                        "EEEE",
+                        "E  E",
+                        "E  E",
+                        "E  E",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "    ",
+                        "   ",
+                        "E  E",
+                        "E  E",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "E  E",
+                        "E  E",
+                        "    ",
+                        "    ",
+                        'E', "ingotElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "    ",
+                        "E  E",
+                        "E  E",
+                        "    ",
+                        'E', "ingotElectrical"));
+            }
+            if (ARPConfig.recipes == 1) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
+                        "    ",
+                        "    ",
+                        "EEEE",
+                        "E  E",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
+                        "EEEE",
+                        "E  E",
+                        "    ",
+                        "    ",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalChestplate, 1),
+                        "E  E",
+                        "E  E",
+                        "EEEE",
+                        "EEEE",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalLeggings, 1),
+                        "EEEE",
+                        "E  E",
+                        "E  E",
+                        "E  E",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "    ",
+                        "    ",
+                        "E  E",
+                        "E  E",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "E  E",
+                        "E  E",
+                        "    ",
+                        "    ",
+                        'E', "blockElectrical"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalBoots, 1),
+                        "    ",
+                        "E  E",
+                        "E  E",
+                        "    ",
+                        'E', "blockElectrical"));
+            }
         }
     }
 }

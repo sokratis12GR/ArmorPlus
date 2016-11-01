@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.thedragonteam.armorplus.ARPConfig;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
@@ -73,25 +74,44 @@ public class ModRecipes {
         ItemStack theUltimateHelmet = new ItemStack(ModItems.theUltimateHelmet, 1);
         theUltimateHelmet.setTagCompound(nbttagc);
 
-        GameRegistry.addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableEnderDragonArmor)
+            GameRegistry.addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableGuardianArmor)
+            GameRegistry.addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableSuperStarArmor)
+            GameRegistry.addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableTheUltimateArmor)
+            GameRegistry.addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableCoalArmor)
+            GameRegistry.addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableEmeraldArmor)
+            GameRegistry.addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableLapisArmor)
+            GameRegistry.addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableLavaArmor)
+            GameRegistry.addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableObsidianArmor)
+            GameRegistry.addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableRedstoneArmor)
+            GameRegistry.addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableChickenArmor)
+            GameRegistry.addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableSlimeArmor)
+            GameRegistry.addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableArditeArmor)
+            GameRegistry.addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableCobaltArmor)
+            GameRegistry.addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableManyullynArmor)
+            GameRegistry.addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enablePigIronArmor)
+            GameRegistry.addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableKnightSlimeArmor)
+            GameRegistry.addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableSteelArmor)
+            GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (ARPConfig.enableElectricalArmor)
+            GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
     }
 
     public static void addShapedRecipes() {
