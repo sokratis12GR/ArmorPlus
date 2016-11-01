@@ -3,7 +3,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Versioning}**
     * <MC>-<Major>.<Mino>.<Patch>.<Build>
-* **Bugs Fixed**
+* **{Bugs Fixed}**
     * Fixed Ender Dragon Zombie being buggy and its movement
 * **{Features Added/Removed/Changed}**
     * Added debug info for the Ender Dragon Zombie if debugMode is true
@@ -11,7 +11,13 @@
     * Tiering from one to tier three is done
     * You can add/remove recipes from all three benches through mod addons/integrations
     * Added JEI support for the Ulti-Tech Bench
-    * WIP CraftTweaker/MineTweaker3 Integration/Support (NOT WORKING YET)
+    * Added some little, but handly info for the bows
+    * Improved how things work in code
+    * Added Baubles integration/support
+        * Added some new Cosmetics
+    * Enchantments, added 2 new enchantments
+        * Life Steal - when an entity is hit the player will get health points back depending on the level of the enchantment, the damage that the item will deal and some other calculations
+        * Furious - Treasure Enchantment, when player is hit wearign this enchantment the player will get speed and strenght effects for a limited time depending on the level of the enchantment
     * Added new blocks
          * Red Stone Brick
          * Red Stone Brick Tower
@@ -38,7 +44,7 @@
         * Refactor or "Advanced Armor Forge" to "High-Tech Bench" (Tier 2)
         * Addition of the "Ulti-Tech Bench" (Tier 3)
         * Moved all ArmorPlus recipes into their benches (UNDER DEVELOPMENT & UNDER CHANGES)
-    * Removed Prefixes before names that were listed https://github.com/TheDragonTeam/ArmorPlus/blob/1.10.2/src/main/java/net/thedragonteam/armorplus/resources/GlobalEventsArmorPlus.java#L54L71
+    * Removed Prefixes before names that were listed
     * Made all items require to have SHIFT pressed to show their tooltips
     * Hidded Dev Items from JEI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,10 +80,10 @@
     * Fixed a bug with Lapis Armor Configs and Effects being wrong
     * Fixed Ender Dragon Zombie drops
 ################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
 ################################ Changes (dev version 1.10.2-7.0.1.0.3-dev )################################
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
     * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
@@ -121,13 +127,13 @@
 **ArmorPlus 1.10.2-7.0.1.0.4-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.3-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
     * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
@@ -179,7 +185,7 @@
 ####The Birth Of Something New
 ######Entire Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.2.0 or later to work!
 * **{Features Added}**
     * Creative Tab for Tesla Items/Blocks/Weapons
@@ -208,7 +214,7 @@
     * Updated Client Config Gui's list to include all the config options
     * Added/Changed recipes of the tesla tools/weapons to require Tesla Rod instead of Stick
     * Gradlew Clean Up
-* **{Dependancies}**
+* **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
 ################################ Changes (dev version 1.10.2-7.0.1.0-dev )################################
 * **{Features Added/Removed/Changed}**
@@ -265,7 +271,7 @@
     * Updated Client Config Gui's list to include all the config options
     * Added/Changed recipes of the tesla tools/weapons to require Tesla Rod instead of Stick
     * Gradlew Clean Up
-* **{Dependancies}**
+* **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0-dev**
@@ -323,9 +329,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Features Added}**
     * Special Cosmetic for special people
-* **{Features Changed}**
+* **{Fratures Changed}**
     * Lava Armor will now extinguish the fire overlay if the full set effect is set to false and the player is wearing 1 of the armor pieces
-    * ARP Dimensions will be disabled by default
+    * ARP Dimensions will be disabled by defualt
     * Structure Castle Generation is set to 0 by default, until it is fully done
     * Ender Dragon Zombies will have 40.0D HP by default and their movement speed is increased to 0.20D
 * **{Bugs Fixed}**

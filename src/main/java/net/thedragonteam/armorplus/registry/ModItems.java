@@ -11,6 +11,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
 import net.thedragonteam.armorplus.armors.base.BaseSteelArmor;
@@ -175,10 +176,12 @@ public class ModItems {
             itemTeslaPickaxe = new ItemTeslaPickaxe();
             itemTeslaSword = new ItemTeslaSword();
         }
-        steelHelmet = new BaseSteelArmor(HEAD, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-        steelChestplate = new BaseSteelArmor(CHEST, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-        steelLeggings = new BaseSteelArmor(LEGS, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-        steelBoots = new BaseSteelArmor(FEET, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+        if (ARPConfig.enableSteelArmor) {
+            steelHelmet = new BaseSteelArmor(HEAD, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+            steelChestplate = new BaseSteelArmor(CHEST, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+            steelLeggings = new BaseSteelArmor(LEGS, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+            steelBoots = new BaseSteelArmor(FEET, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
+        }
         itemTeslaRod = new ItemTeslaRod();
         twitchItem = new BaseDevItem(DevItems.TWITCH);
         beamItem = new BaseDevItem(DevItems.BEAM);
@@ -198,78 +201,126 @@ public class ModItems {
         redstoneApple = new RedstoneApple();
         armorPlusInfoBook = new BaseItem(Items.ARMORPLUS_INFO_BOOK);
         nbtItem = new NBTItem();
-        coalHelmet = new BaseArmor(COAL, HEAD);
-        coalChestplate = new BaseArmor(COAL, CHEST);
-        coalLeggings = new BaseArmor(COAL, LEGS);
-        coalBoots = new BaseArmor(COAL, FEET);
-        emeraldHelmet = new BaseArmor(EMERALD, HEAD);
-        emeraldChestplate = new BaseArmor(EMERALD, CHEST);
-        emeraldLeggings = new BaseArmor(EMERALD, LEGS);
-        emeraldBoots = new BaseArmor(EMERALD, FEET);
-        lapisHelmet = new BaseArmor(LAPIS, HEAD);
-        lapisChestplate = new BaseArmor(LAPIS, CHEST);
-        lapisLeggings = new BaseArmor(LAPIS, LEGS);
-        lapisBoots = new BaseArmor(LAPIS, FEET);
-        lavaHelmet = new BaseArmor(LAVA, HEAD);
-        lavaChestplate = new BaseArmor(LAVA, CHEST);
-        lavaLeggings = new BaseArmor(LAVA, LEGS);
-        lavaBoots = new BaseArmor(LAVA, FEET);
-        obsidianHelmet = new BaseArmor(OBSIDIAN, HEAD);
-        obsidianChestplate = new BaseArmor(OBSIDIAN, CHEST);
-        obsidianLeggings = new BaseArmor(OBSIDIAN, LEGS);
-        obsidianBoots = new BaseArmor(OBSIDIAN, FEET);
-        redstoneHelmet = new BaseArmor(REDSTONE, HEAD);
-        redstoneChestplate = new BaseArmor(REDSTONE, CHEST);
-        redstoneLeggings = new BaseArmor(REDSTONE, LEGS);
-        redstoneBoots = new BaseArmor(REDSTONE, FEET);
-        electricalHelmet = new BaseElectricalArmor(HEAD, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-        electricalChestplate = new BaseElectricalArmor(CHEST, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-        electricalLeggings = new BaseElectricalArmor(LEGS, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-        electricalBoots = new BaseElectricalArmor(FEET, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-        chickenHelmet = new BaseArmor(CHICKEN, HEAD);
-        chickenChestplate = new BaseArmor(CHICKEN, CHEST);
-        chickenLeggings = new BaseArmor(CHICKEN, LEGS);
-        chickenBoots = new BaseArmor(CHICKEN, FEET);
-        slimeHelmet = new BaseArmor(SLIME, HEAD);
-        slimeChestplate = new BaseArmor(SLIME, CHEST);
-        slimeLeggings = new BaseArmor(SLIME, LEGS);
-        slimeBoots = new BaseArmor(SLIME, FEET);
-        enderDragonHelmet = new BaseArmor(ENDER_DRAGON, HEAD);
-        enderDragonChestplate = new BaseArmor(ENDER_DRAGON, CHEST);
-        enderDragonLeggings = new BaseArmor(ENDER_DRAGON, LEGS);
-        enderDragonBoots = new BaseArmor(ENDER_DRAGON, FEET);
-        guardianHelmet = new BaseArmor(GUARDIAN, HEAD);
-        guardianChestplate = new BaseArmor(GUARDIAN, CHEST);
-        guardianLeggings = new BaseArmor(GUARDIAN, LEGS);
-        guardianBoots = new BaseArmor(GUARDIAN, FEET);
-        superStarHelmet = new BaseArmor(SUPER_STAR, HEAD);
-        superStarChestplate = new BaseArmor(SUPER_STAR, CHEST);
-        superStarLeggings = new BaseArmor(SUPER_STAR, LEGS);
-        superStarBoots = new BaseArmor(SUPER_STAR, FEET);
-        theUltimateHelmet = new BaseUltimateArmor(HEAD);
-        theUltimateChestplate = new BaseUltimateArmor(CHEST);
-        theUltimateLeggings = new BaseUltimateArmor(LEGS);
-        theUltimateBoots = new BaseUltimateArmor(FEET);
-        arditeHelmet = new BaseArmor(ARDITE, HEAD);
-        arditeChestplate = new BaseArmor(ARDITE, CHEST);
-        arditeLeggings = new BaseArmor(ARDITE, LEGS);
-        arditeBoots = new BaseArmor(ARDITE, FEET);
-        cobaltHelmet = new BaseArmor(COBALT, HEAD);
-        cobaltChestplate = new BaseArmor(COBALT, CHEST);
-        cobaltLeggings = new BaseArmor(COBALT, LEGS);
-        cobaltBoots = new BaseArmor(COBALT, FEET);
-        manyullynHelmet = new BaseArmor(MANYULLYN, HEAD);
-        manyullynChestplate = new BaseArmor(MANYULLYN, CHEST);
-        manyullynLeggings = new BaseArmor(MANYULLYN, LEGS);
-        manyullynBoots = new BaseArmor(MANYULLYN, FEET);
-        pigIronHelmet = new BaseArmor(PIG_IRON, HEAD);
-        pigIronChestplate = new BaseArmor(PIG_IRON, CHEST);
-        pigIronLeggings = new BaseArmor(PIG_IRON, LEGS);
-        pigIronBoots = new BaseArmor(PIG_IRON, FEET);
-        knightSlimeHelmet = new BaseArmor(KNIGHT_SLIME, HEAD);
-        knightSlimeChestplate = new BaseArmor(KNIGHT_SLIME, CHEST);
-        knightSlimeLeggings = new BaseArmor(KNIGHT_SLIME, LEGS);
-        knightSlimeBoots = new BaseArmor(KNIGHT_SLIME, FEET);
+        if (ARPConfig.enableCoalArmor) {
+            coalHelmet = new BaseArmor(COAL, HEAD);
+            coalChestplate = new BaseArmor(COAL, CHEST);
+            coalLeggings = new BaseArmor(COAL, LEGS);
+            coalBoots = new BaseArmor(COAL, FEET);
+        }
+        if (ARPConfig.enableEmeraldArmor) {
+            emeraldHelmet = new BaseArmor(EMERALD, HEAD);
+            emeraldChestplate = new BaseArmor(EMERALD, CHEST);
+            emeraldLeggings = new BaseArmor(EMERALD, LEGS);
+            emeraldBoots = new BaseArmor(EMERALD, FEET);
+        }
+        if (ARPConfig.enableLapisArmor) {
+            lapisHelmet = new BaseArmor(LAPIS, HEAD);
+            lapisChestplate = new BaseArmor(LAPIS, CHEST);
+            lapisLeggings = new BaseArmor(LAPIS, LEGS);
+            lapisBoots = new BaseArmor(LAPIS, FEET);
+        }
+        if (ARPConfig.enableLavaArmor) {
+            lavaHelmet = new BaseArmor(LAVA, HEAD);
+            lavaChestplate = new BaseArmor(LAVA, CHEST);
+            lavaLeggings = new BaseArmor(LAVA, LEGS);
+            lavaBoots = new BaseArmor(LAVA, FEET);
+        }
+        if (ARPConfig.enableObsidianArmor) {
+            obsidianHelmet = new BaseArmor(OBSIDIAN, HEAD);
+            obsidianChestplate = new BaseArmor(OBSIDIAN, CHEST);
+            obsidianLeggings = new BaseArmor(OBSIDIAN, LEGS);
+            obsidianBoots = new BaseArmor(OBSIDIAN, FEET);
+        }
+        if (ARPConfig.enableRedstoneArmor) {
+            redstoneHelmet = new BaseArmor(REDSTONE, HEAD);
+            redstoneChestplate = new BaseArmor(REDSTONE, CHEST);
+            redstoneLeggings = new BaseArmor(REDSTONE, LEGS);
+            redstoneBoots = new BaseArmor(REDSTONE, FEET);
+        }
+        if (ARPConfig.enableElectricalArmor) {
+            electricalHelmet = new BaseElectricalArmor(HEAD, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+            electricalChestplate = new BaseElectricalArmor(CHEST, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+            electricalLeggings = new BaseElectricalArmor(LEGS, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+            electricalBoots = new BaseElectricalArmor(FEET, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
+        }
+        if (ARPConfig.enableChickenArmor) {
+            chickenHelmet = new BaseArmor(CHICKEN, HEAD);
+            chickenChestplate = new BaseArmor(CHICKEN, CHEST);
+            chickenLeggings = new BaseArmor(CHICKEN, LEGS);
+            chickenBoots = new BaseArmor(CHICKEN, FEET);
+        }
+        if (ARPConfig.enableSlimeArmor) {
+            slimeHelmet = new BaseArmor(SLIME, HEAD);
+            slimeChestplate = new BaseArmor(SLIME, CHEST);
+            slimeLeggings = new BaseArmor(SLIME, LEGS);
+            slimeBoots = new BaseArmor(SLIME, FEET);
+        }
+        if (ARPConfig.enableEnderDragonArmor) {
+            enderDragonHelmet = new BaseArmor(ENDER_DRAGON, HEAD);
+            enderDragonChestplate = new BaseArmor(ENDER_DRAGON, CHEST);
+            enderDragonLeggings = new BaseArmor(ENDER_DRAGON, LEGS);
+            enderDragonBoots = new BaseArmor(ENDER_DRAGON, FEET);
+        }
+        if (ARPConfig.enableGuardianArmor) {
+            guardianHelmet = new BaseArmor(GUARDIAN, HEAD);
+            guardianChestplate = new BaseArmor(GUARDIAN, CHEST);
+            guardianLeggings = new BaseArmor(GUARDIAN, LEGS);
+            guardianBoots = new BaseArmor(GUARDIAN, FEET);
+        }
+        if (ARPConfig.enableSuperStarArmor) {
+            superStarHelmet = new BaseArmor(SUPER_STAR, HEAD);
+            superStarChestplate = new BaseArmor(SUPER_STAR, CHEST);
+            superStarLeggings = new BaseArmor(SUPER_STAR, LEGS);
+            superStarBoots = new BaseArmor(SUPER_STAR, FEET);
+        }
+        if (ARPConfig.enableTheUltimateArmor) {
+            theUltimateHelmet = new BaseUltimateArmor(HEAD);
+            theUltimateChestplate = new BaseUltimateArmor(CHEST);
+            theUltimateLeggings = new BaseUltimateArmor(LEGS);
+            theUltimateBoots = new BaseUltimateArmor(FEET);
+            theUltimateHelmetLeft = new BaseUltimateItem(HELMET_LEFT);
+            theUltimateHelmetMiddle = new BaseUltimateItem(HELMET_MIDDLE);
+            theUltimateHelmetRight = new BaseUltimateItem(HELMET_RIGHT);
+            theUltimateChestplateLeft = new BaseUltimateItem(CHESTPLATE_LEFT);
+            theUltimateChestplateMiddle = new BaseUltimateItem(CHESTPLATE_MIDDLE);
+            theUltimateChestplateRight = new BaseUltimateItem(CHESTPLATE_RIGHT);
+            theUltimateLeggingsLeft = new BaseUltimateItem(LEGGINGS_LEFT);
+            theUltimateLeggingsMiddle = new BaseUltimateItem(LEGGINGS_MIDDLE);
+            theUltimateLeggingsRight = new BaseUltimateItem(LEGGINGS_RIGHT);
+            theUltimateBootsLeft = new BaseUltimateItem(BOOTS_LEFT);
+            theUltimateBootsMiddle = new BaseUltimateItem(BOOTS_MIDDLE);
+            theUltimateBootsRight = new BaseUltimateItem(BOOTS_RIGHT);
+        }
+        if (ARPConfig.enableArditeArmor) {
+            arditeHelmet = new BaseArmor(ARDITE, HEAD);
+            arditeChestplate = new BaseArmor(ARDITE, CHEST);
+            arditeLeggings = new BaseArmor(ARDITE, LEGS);
+            arditeBoots = new BaseArmor(ARDITE, FEET);
+        }
+        if (ARPConfig.enableCobaltArmor) {
+            cobaltHelmet = new BaseArmor(COBALT, HEAD);
+            cobaltChestplate = new BaseArmor(COBALT, CHEST);
+            cobaltLeggings = new BaseArmor(COBALT, LEGS);
+            cobaltBoots = new BaseArmor(COBALT, FEET);
+        }
+        if (ARPConfig.enableManyullynArmor) {
+            manyullynHelmet = new BaseArmor(MANYULLYN, HEAD);
+            manyullynChestplate = new BaseArmor(MANYULLYN, CHEST);
+            manyullynLeggings = new BaseArmor(MANYULLYN, LEGS);
+            manyullynBoots = new BaseArmor(MANYULLYN, FEET);
+        }
+        if (ARPConfig.enablePigIronArmor) {
+            pigIronHelmet = new BaseArmor(PIG_IRON, HEAD);
+            pigIronChestplate = new BaseArmor(PIG_IRON, CHEST);
+            pigIronLeggings = new BaseArmor(PIG_IRON, LEGS);
+            pigIronBoots = new BaseArmor(PIG_IRON, FEET);
+        }
+        if (ARPConfig.enableKnightSlimeArmor) {
+            knightSlimeHelmet = new BaseArmor(KNIGHT_SLIME, HEAD);
+            knightSlimeChestplate = new BaseArmor(KNIGHT_SLIME, CHEST);
+            knightSlimeLeggings = new BaseArmor(KNIGHT_SLIME, LEGS);
+            knightSlimeBoots = new BaseArmor(KNIGHT_SLIME, FEET);
+        }
         coalSword = new BaseSpecialSword(Swords.COAL);
         lapisSword = new BaseSpecialSword(Swords.LAPIS);
         redstoneSword = new BaseSpecialSword(Swords.REDSTONE);
@@ -297,18 +348,6 @@ public class ModItems {
         superStarBow = new BaseBow(Bows.SUPER_STAR);
         guardianBow = new BaseBow(Bows.GUARDIAN);
         enderDragonBow = new BaseBow(Bows.ENDER_DRAGON);
-        theUltimateHelmetLeft = new BaseUltimateItem(HELMET_LEFT);
-        theUltimateHelmetMiddle = new BaseUltimateItem(HELMET_MIDDLE);
-        theUltimateHelmetRight = new BaseUltimateItem(HELMET_RIGHT);
-        theUltimateChestplateLeft = new BaseUltimateItem(CHESTPLATE_LEFT);
-        theUltimateChestplateMiddle = new BaseUltimateItem(CHESTPLATE_MIDDLE);
-        theUltimateChestplateRight = new BaseUltimateItem(CHESTPLATE_RIGHT);
-        theUltimateLeggingsLeft = new BaseUltimateItem(LEGGINGS_LEFT);
-        theUltimateLeggingsMiddle = new BaseUltimateItem(LEGGINGS_MIDDLE);
-        theUltimateLeggingsRight = new BaseUltimateItem(LEGGINGS_RIGHT);
-        theUltimateBootsLeft = new BaseUltimateItem(BOOTS_LEFT);
-        theUltimateBootsMiddle = new BaseUltimateItem(BOOTS_MIDDLE);
-        theUltimateBootsRight = new BaseUltimateItem(BOOTS_RIGHT);
         devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
         itemLapisArrow = new ItemLapisArrow();
@@ -336,10 +375,12 @@ public class ModItems {
             itemTeslaPickaxe.initModel();
             itemTeslaSword.initModel();
         }
-        steelHelmet.initModel();
-        steelChestplate.initModel();
-        steelLeggings.initModel();
-        steelBoots.initModel();
+        if (ARPConfig.enableSteelArmor) {
+            steelHelmet.initModel();
+            steelChestplate.initModel();
+            steelLeggings.initModel();
+            steelBoots.initModel();
+        }
         itemTeslaRod.initModel();
         twitchItem.initModel();
         beamItem.initModel();
@@ -358,78 +399,126 @@ public class ModItems {
         electricalIngot.initModel();
         redstoneApple.initModel();
         armorPlusInfoBook.initModel();
-        coalHelmet.initModel();
-        coalChestplate.initModel();
-        coalLeggings.initModel();
-        coalBoots.initModel();
-        emeraldHelmet.initModel();
-        emeraldChestplate.initModel();
-        emeraldLeggings.initModel();
-        emeraldBoots.initModel();
-        lapisHelmet.initModel();
-        lapisChestplate.initModel();
-        lapisLeggings.initModel();
-        lapisBoots.initModel();
-        lavaHelmet.initModel();
-        lavaChestplate.initModel();
-        lavaLeggings.initModel();
-        lavaBoots.initModel();
-        obsidianHelmet.initModel();
-        obsidianChestplate.initModel();
-        obsidianLeggings.initModel();
-        obsidianBoots.initModel();
-        redstoneHelmet.initModel();
-        redstoneChestplate.initModel();
-        redstoneLeggings.initModel();
-        redstoneBoots.initModel();
-        electricalHelmet.initModel();
-        electricalChestplate.initModel();
-        electricalLeggings.initModel();
-        electricalBoots.initModel();
-        chickenHelmet.initModel();
-        chickenChestplate.initModel();
-        chickenLeggings.initModel();
-        chickenBoots.initModel();
-        slimeHelmet.initModel();
-        slimeChestplate.initModel();
-        slimeLeggings.initModel();
-        slimeBoots.initModel();
-        enderDragonHelmet.initModel();
-        enderDragonChestplate.initModel();
-        enderDragonLeggings.initModel();
-        enderDragonBoots.initModel();
-        guardianHelmet.initModel();
-        guardianChestplate.initModel();
-        guardianLeggings.initModel();
-        guardianBoots.initModel();
-        superStarHelmet.initModel();
-        superStarChestplate.initModel();
-        superStarLeggings.initModel();
-        superStarBoots.initModel();
-        theUltimateHelmet.initModel();
-        theUltimateChestplate.initModel();
-        theUltimateLeggings.initModel();
-        theUltimateBoots.initModel();
-        arditeHelmet.initModel();
-        arditeChestplate.initModel();
-        arditeLeggings.initModel();
-        arditeBoots.initModel();
-        cobaltHelmet.initModel();
-        cobaltChestplate.initModel();
-        cobaltLeggings.initModel();
-        cobaltBoots.initModel();
-        manyullynHelmet.initModel();
-        manyullynChestplate.initModel();
-        manyullynLeggings.initModel();
-        manyullynBoots.initModel();
-        pigIronHelmet.initModel();
-        pigIronChestplate.initModel();
-        pigIronLeggings.initModel();
-        pigIronBoots.initModel();
-        knightSlimeHelmet.initModel();
-        knightSlimeChestplate.initModel();
-        knightSlimeLeggings.initModel();
-        knightSlimeBoots.initModel();
+        if (ARPConfig.enableCoalArmor) {
+            coalHelmet.initModel();
+            coalChestplate.initModel();
+            coalLeggings.initModel();
+            coalBoots.initModel();
+        }
+        if (ARPConfig.enableEmeraldArmor) {
+            emeraldHelmet.initModel();
+            emeraldChestplate.initModel();
+            emeraldLeggings.initModel();
+            emeraldBoots.initModel();
+        }
+        if (ARPConfig.enableLapisArmor) {
+            lapisHelmet.initModel();
+            lapisChestplate.initModel();
+            lapisLeggings.initModel();
+            lapisBoots.initModel();
+        }
+        if (ARPConfig.enableLavaArmor) {
+            lavaHelmet.initModel();
+            lavaChestplate.initModel();
+            lavaLeggings.initModel();
+            lavaBoots.initModel();
+        }
+        if (ARPConfig.enableObsidianArmor) {
+            obsidianHelmet.initModel();
+            obsidianChestplate.initModel();
+            obsidianLeggings.initModel();
+            obsidianBoots.initModel();
+        }
+        if (ARPConfig.enableRedstoneArmor) {
+            redstoneHelmet.initModel();
+            redstoneChestplate.initModel();
+            redstoneLeggings.initModel();
+            redstoneBoots.initModel();
+        }
+        if (ARPConfig.enableElectricalArmor) {
+            electricalHelmet.initModel();
+            electricalChestplate.initModel();
+            electricalLeggings.initModel();
+            electricalBoots.initModel();
+        }
+        if (ARPConfig.enableChickenArmor) {
+            chickenHelmet.initModel();
+            chickenChestplate.initModel();
+            chickenLeggings.initModel();
+            chickenBoots.initModel();
+        }
+        if (ARPConfig.enableSlimeArmor) {
+            slimeHelmet.initModel();
+            slimeChestplate.initModel();
+            slimeLeggings.initModel();
+            slimeBoots.initModel();
+        }
+        if (ARPConfig.enableEnderDragonArmor) {
+            enderDragonHelmet.initModel();
+            enderDragonChestplate.initModel();
+            enderDragonLeggings.initModel();
+            enderDragonBoots.initModel();
+        }
+        if (ARPConfig.enableGuardianArmor) {
+            guardianHelmet.initModel();
+            guardianChestplate.initModel();
+            guardianLeggings.initModel();
+            guardianBoots.initModel();
+        }
+        if (ARPConfig.enableSuperStarArmor) {
+            superStarHelmet.initModel();
+            superStarChestplate.initModel();
+            superStarLeggings.initModel();
+            superStarBoots.initModel();
+        }
+        if (ARPConfig.enableTheUltimateArmor) {
+            theUltimateHelmet.initModel();
+            theUltimateChestplate.initModel();
+            theUltimateLeggings.initModel();
+            theUltimateBoots.initModel();
+            theUltimateHelmetLeft.initModel();
+            theUltimateHelmetMiddle.initModel();
+            theUltimateHelmetRight.initModel();
+            theUltimateChestplateLeft.initModel();
+            theUltimateChestplateMiddle.initModel();
+            theUltimateChestplateRight.initModel();
+            theUltimateLeggingsLeft.initModel();
+            theUltimateLeggingsMiddle.initModel();
+            theUltimateLeggingsRight.initModel();
+            theUltimateBootsLeft.initModel();
+            theUltimateBootsMiddle.initModel();
+            theUltimateBootsRight.initModel();
+        }
+        if (ARPConfig.enableArditeArmor) {
+            arditeHelmet.initModel();
+            arditeChestplate.initModel();
+            arditeLeggings.initModel();
+            arditeBoots.initModel();
+        }
+        if (ARPConfig.enableCobaltArmor) {
+            cobaltHelmet.initModel();
+            cobaltChestplate.initModel();
+            cobaltLeggings.initModel();
+            cobaltBoots.initModel();
+        }
+        if (ARPConfig.enableManyullynArmor) {
+            manyullynHelmet.initModel();
+            manyullynChestplate.initModel();
+            manyullynLeggings.initModel();
+            manyullynBoots.initModel();
+        }
+        if (ARPConfig.enablePigIronArmor) {
+            pigIronHelmet.initModel();
+            pigIronChestplate.initModel();
+            pigIronLeggings.initModel();
+            pigIronBoots.initModel();
+        }
+        if (ARPConfig.enableKnightSlimeArmor) {
+            knightSlimeHelmet.initModel();
+            knightSlimeChestplate.initModel();
+            knightSlimeLeggings.initModel();
+            knightSlimeBoots.initModel();
+        }
         coalSword.initModel();
         lapisSword.initModel();
         redstoneSword.initModel();
@@ -457,18 +546,6 @@ public class ModItems {
         superStarBow.initModel();
         guardianBow.initModel();
         enderDragonBow.initModel();
-        theUltimateHelmetLeft.initModel();
-        theUltimateHelmetMiddle.initModel();
-        theUltimateHelmetRight.initModel();
-        theUltimateChestplateLeft.initModel();
-        theUltimateChestplateMiddle.initModel();
-        theUltimateChestplateRight.initModel();
-        theUltimateLeggingsLeft.initModel();
-        theUltimateLeggingsMiddle.initModel();
-        theUltimateLeggingsRight.initModel();
-        theUltimateBootsLeft.initModel();
-        theUltimateBootsMiddle.initModel();
-        theUltimateBootsRight.initModel();
         devTool.initModel();
         nbtItem.initModel();
         itemCoalArrow.initModel();

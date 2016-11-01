@@ -412,7 +412,6 @@ public class BaseArmor extends ItemArmor {
                     showInfo(tooltip, keyBindSneak);
                 break;
         }
-
     }
 
     private void lavaEffects(EntityPlayer entity, ItemStack itemStack) {

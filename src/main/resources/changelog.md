@@ -3,7 +3,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * **{Versioning}**
     * <MC>-<Major>.<Mino>.<Patch>.<Build>
-* **Bugs Fixed**
+* **{Bugs Fixed}**
     * Fixed Ender Dragon Zombie being buggy and its movement
 * **{Features Added/Removed/Changed}**
     * Added debug info for the Ender Dragon Zombie if debugMode is true
@@ -80,10 +80,10 @@
     * Fixed a bug with Lapis Armor Configs and Effects being wrong
     * Fixed Ender Dragon Zombie drops
 ################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
 ################################ Changes (dev version 1.10.2-7.0.1.0.3-dev )################################
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
     * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
@@ -127,13 +127,13 @@
 **ArmorPlus 1.10.2-7.0.1.0.4-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.3-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
     * Ender Dragon Zombie will now only drop Ender Dragon Scale rather than full equipment (after this it might stay or be removed, time will say)
@@ -185,7 +185,7 @@
 ####The Birth Of Something New
 ######Entire Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* **{Dependancies}**
+* **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.2.0 or later to work!
 * **{Features Added}**
     * Creative Tab for Tesla Items/Blocks/Weapons
@@ -214,7 +214,7 @@
     * Updated Client Config Gui's list to include all the config options
     * Added/Changed recipes of the tesla tools/weapons to require Tesla Rod instead of Stick
     * Gradlew Clean Up
-* **{Dependancies}**
+* **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
 ################################ Changes (dev version 1.10.2-7.0.1.0-dev )################################
 * **{Features Added/Removed/Changed}**
@@ -271,7 +271,7 @@
     * Updated Client Config Gui's list to include all the config options
     * Added/Changed recipes of the tesla tools/weapons to require Tesla Rod instead of Stick
     * Gradlew Clean Up
-* **{Dependancies}**
+* **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0-dev**
