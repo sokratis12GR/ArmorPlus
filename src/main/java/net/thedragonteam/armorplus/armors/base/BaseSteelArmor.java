@@ -20,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -27,36 +28,80 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.maxCapacitySteelArmor;
 import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
+import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @Optional.InterfaceList({
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
         @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
 })
-public class BaseSteelArmor extends BaseArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
+public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
     private int power;
     private int maxCapacity;
     private int output;
     private int input;
 
-    public BaseSteelArmor(int armorPreffix, EntityEquipmentSlot slot, String name, int power, int maxCapacity, int input, int output) {
-        super(ModItems.steelArmorNotPowered, armorPreffix, slot, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.DARK_RED);
+    public BaseSteelArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
+        super(ModItems.steelArmorNotPowered, 0, slot);
+        setMaxStackSize(1);
+        switch (slot) {
+            case FEET:
+                String boots = "steel_boots";
+                setRegistryName(boots);
+                setUnlocalizedName(ArmorPlus.MODID + "." + boots);
+                break;
+            case LEGS:
+                String leggings = "steel_leggings";
+                setRegistryName(leggings);
+                setUnlocalizedName(ArmorPlus.MODID + "." + leggings);
+                break;
+            case CHEST:
+                String chestplate = "steel_chestplate";
+                setRegistryName(chestplate);
+                setUnlocalizedName(ArmorPlus.MODID + "." + chestplate);
+                break;
+            case HEAD:
+                String helmet = "steel_helmet";
+                setRegistryName(helmet);
+                setUnlocalizedName(ArmorPlus.MODID + "." + helmet);
+                break;
+        }
+        GameRegistry.register(this);
         setCreativeTab(ArmorPlus.tabArmorplusRF);
-        this.power = power;
+        this.power = 0;
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        switch (ARPConfig.recipes) {
+            case 0:
+                return repair.getItem() == ModItems.steelIngot;
+            case 1:
+                return repair.getItem() == Item.getItemFromBlock(ModBlocks.steelBlock);
+        }
+        return true;
     }
 
     @Override
