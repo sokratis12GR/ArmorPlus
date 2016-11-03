@@ -18,6 +18,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -71,14 +72,14 @@ public class BaseSpawner extends BaseBlock {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float x, float y, float z) {
-        if (!world.isRemote) switch (spawners.getMobSpawn()) {
-            case 0:
+        if (!world.isRemote) switch (spawners) {
+            case ENDER_DRAGON_ZOMBIE:
                 EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
                 enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
                 world.spawnEntityInWorld(enderDragonZombie);
                 world.destroyBlock(pos, true);
                 break;
-            case 1:
+            case GUARDIAN:
                 EntityGuardian guardian = new EntityGuardian(world);
                 guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
                 world.spawnEntityInWorld(guardian);
@@ -135,8 +136,7 @@ public class BaseSpawner extends BaseBlock {
     }
 
     @Override
-    @Nullable
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         return null;
     }
 

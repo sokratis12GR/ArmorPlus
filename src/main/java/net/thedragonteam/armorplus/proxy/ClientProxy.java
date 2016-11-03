@@ -42,9 +42,8 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         OBJLoader.INSTANCE.addDomain(ArmorPlus.MODID);
-        registerRenderers();
+        registerModels();
         registerRenderer();
-        ARPEntities.initModels();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -56,9 +55,10 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void registerRenderers() {
+    public void registerModels() {
         ModItems.initModels();
         ModBlocks.initModels();
+        ARPEntities.initModels();
     }
 
     public void registerRenderer() {

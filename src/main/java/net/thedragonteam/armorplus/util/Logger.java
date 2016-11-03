@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.util;
 import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.thedragonlib.TheDragonLib;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.*;
 
@@ -43,7 +44,7 @@ public class Logger {
             writer.write(format("%s~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2>", "<h2 style=\"color:#DEDEDE;text-align:center\">"));
             writer.write(format("%s%s%s", "</div>", "</body>", "</html>"));
         } catch (IOException ex) {
-            // report
+            LogHelper.error(format("%s.html", ArmorPlus.MODNAME) + " error");
         } finally {
             try {
                 writer.close();

@@ -55,32 +55,32 @@ public class BaseSpecialSword extends ItemSword {
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        switch (swords.getId()) {
-            case 0:
+        switch (swords) {
+            case COAL:
                 target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
                 break;
-            case 1:
+            case LAPIS:
                 target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
                 break;
-            case 2:
+            case REDSTONE:
                 target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
                 break;
-            case 3:
+            case EMERALD:
                 target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
                 break;
-            case 4:
+            case OBSIDIAN:
                 target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
                 break;
-            case 5:
+            case LAVA:
                 target.setFire(6);
                 break;
-            case 6:
+            case GUARDIAN:
                 target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
                 break;
-            case 7:
+            case SUPER_STAR:
                 target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
                 break;
-            case 8:
+            case ENDER_DRAGON:
                 target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
                 break;
         }

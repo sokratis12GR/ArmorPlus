@@ -75,7 +75,7 @@ public class CommonProxy {
         ModRecipes.init();
     }
 
-    public void registerRenderers() {
+    public void registerModels() {
     }
 
     public void registerRenderer() {
