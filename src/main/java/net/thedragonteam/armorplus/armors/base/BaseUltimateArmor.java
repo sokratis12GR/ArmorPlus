@@ -43,6 +43,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     public BaseUltimateArmor(EntityEquipmentSlot slot) {
         super(theUltimateArmor, 0, slot);
+        ItemArmor.MAX_DAMAGE_ARRAY = new int[]{93, 95, 96, 91};
         setMaxStackSize(1);
         switch (slot) {
             case FEET:

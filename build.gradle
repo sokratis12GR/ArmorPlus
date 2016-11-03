@@ -46,6 +46,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
+    manifest {
+        attributes 'FMLAT': 'armorplus_at.cfg'
+    }
     classifier = ''
     manifest.mainAttributes(
             "Built-By": "${author}",
@@ -104,6 +107,8 @@ processResources {
         exclude '**/*.info'
         exclude '**/*.properties'
     }
+
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 dependencies {
