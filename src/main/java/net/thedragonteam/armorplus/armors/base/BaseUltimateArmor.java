@@ -18,6 +18,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.util.ParticlesHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
@@ -117,6 +119,8 @@ public class BaseUltimateArmor extends ItemArmor {
             entity.motionZ = 0;
             ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
+
+        ParticlesHelper.createParticleCircleTop(EnumParticleTypes.ENCHANTMENT_TABLE, world, entity);
     }
 
     @Override

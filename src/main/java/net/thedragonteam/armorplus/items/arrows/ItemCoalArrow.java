@@ -6,9 +6,11 @@ package net.thedragonteam.armorplus.items.arrows;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -16,6 +18,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
+import net.thedragonteam.armorplus.util.ArrowUtils;
+
+import java.util.List;
 
 public class ItemCoalArrow extends ItemArrow {
 
@@ -34,5 +39,10 @@ public class ItemCoalArrow extends ItemArrow {
     @Override
     public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
         return new EntityCoalArrow(world, shooter);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        ArrowUtils.addArrowInformation(tooltip, "Applies Blindness", 2.0D, TextFormatting.DARK_AQUA);
     }
 }

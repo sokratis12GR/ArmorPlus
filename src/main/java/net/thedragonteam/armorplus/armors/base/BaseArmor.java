@@ -19,6 +19,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -203,20 +204,36 @@ public class BaseArmor extends ItemArmor {
             case REDSTONE:
                 switch (getEquipmentSlot()) {
                     case FEET:
-                        if (ARPConfig.enableRedstoneBSpeed && !ARPConfig.enableFullRedstoneArmorEffect)
+                        if (ARPConfig.enableRedstoneBSpeed && !ARPConfig.enableFullRedstoneArmorEffect) {
                             entity.addPotionEffect(ARPArmorEffects.REDSTONE.getPotionEffect());
+                            if (world.isRemote) {
+                                world.spawnParticle(EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+                            }
+                        }
                         break;
                     case LEGS:
-                        if (ARPConfig.enableRedstoneLSpeed && !ARPConfig.enableFullRedstoneArmorEffect)
+                        if (ARPConfig.enableRedstoneLSpeed && !ARPConfig.enableFullRedstoneArmorEffect) {
                             entity.addPotionEffect(ARPArmorEffects.REDSTONE.getPotionEffect());
+                            if (world.isRemote) {
+                                world.spawnParticle(EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+                            }
+                        }
                         break;
                     case CHEST:
-                        if (ARPConfig.enableRedstoneCSpeed && !ARPConfig.enableFullRedstoneArmorEffect)
+                        if (ARPConfig.enableRedstoneCSpeed && !ARPConfig.enableFullRedstoneArmorEffect) {
                             entity.addPotionEffect(ARPArmorEffects.REDSTONE.getPotionEffect());
+                            if (world.isRemote) {
+                                world.spawnParticle(EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+                            }
+                        }
                         break;
                     case HEAD:
-                        if (ARPConfig.enableRedstoneHSpeed && !ARPConfig.enableFullRedstoneArmorEffect)
+                        if (ARPConfig.enableRedstoneHSpeed && !ARPConfig.enableFullRedstoneArmorEffect) {
                             entity.addPotionEffect(ARPArmorEffects.REDSTONE.getPotionEffect());
+                            if (world.isRemote) {
+                                world.spawnParticle(EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+                            }
+                        }
                         break;
                 }
                 break;
@@ -248,8 +265,8 @@ public class BaseArmor extends ItemArmor {
                         entity.capabilities.isFlying = false;
                         entity.capabilities.allowFlying = false;
                     }
-                    entity.removePotionEffect(MobEffects.WITHER);
                 }
+                entity.removePotionEffect(MobEffects.WITHER);
                 break;
             case SUPER_STAR:
                 switch (getEquipmentSlot()) {

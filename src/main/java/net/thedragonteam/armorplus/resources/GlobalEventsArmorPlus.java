@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -29,7 +30,6 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-
         if (i == Item.getItemFromBlock(ModBlocks.arpWorkbench)) {
             event.player.addStat(ARPAchievements.welcomeToArmorPlus, 1);
             event.player.inventory.addItemStackToInventory(new ItemStack(ModItems.armorPlusBook, 1));
@@ -89,6 +89,9 @@ public class GlobalEventsArmorPlus {
                 entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, ARPConfig.obsidianArmorEffectlevel, true, true));
             } else if (ARPConfig.enableFullRedstoneArmorEffect && head.getItem() == ModItems.redstoneHelmet && chest.getItem() == ModItems.redstoneChestplate && legs.getItem() == ModItems.redstoneLeggings && feet.getItem() == ModItems.redstoneBoots) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, ARPConfig.redstoneArmorEffectlevel, true, true));
+                if (entity.worldObj.isRemote) {
+                    entity.worldObj.spawnParticle(EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+                }
             } else if (head.getItem() == ModItems.guardianHelmet && chest.getItem() == ModItems.guardianChestplate && legs.getItem() == ModItems.guardianLeggings && feet.getItem() == ModItems.guardianBoots) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
             } else if (head.getItem() == ModItems.chickenHelmet && chest.getItem() == ModItems.chickenChestplate && legs.getItem() == ModItems.chickenLeggings && feet.getItem() == ModItems.chickenBoots) {
