@@ -44,6 +44,7 @@ public class BaseArmor extends ItemArmor {
     public Item itemExpert;
     public TextFormatting formatting;
     private ARPArmorMaterial material;
+    private EntityEquipmentSlot slot;
     public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", getArmorPlusLocation() + "coal_armor", 7,
             ARPConfig.coalArmorProtectionPoints, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, (float) ARPConfig.coalArmorToughnessPoints);
     public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", getArmorPlusLocation() + "emerald_armor", 35,
@@ -83,6 +84,7 @@ public class BaseArmor extends ItemArmor {
         this.itemExpert = armorMaterial.getItemExpert();
         this.formatting = armorMaterial.getFormatting();
         this.material = armorMaterial;
+        this.slot = slot;
         setMaxStackSize(1);
         switch (slot) {
             case FEET:
@@ -118,7 +120,7 @@ public class BaseArmor extends ItemArmor {
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         switch (material) {
             case COAL:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableCoalBNightVision && !ARPConfig.enableFullCoalArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.COAL.getPotionEffect());
@@ -138,7 +140,7 @@ public class BaseArmor extends ItemArmor {
                 }
                 break;
             case EMERALD:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableEmeraldBHaste && !ARPConfig.enableFullEmeraldArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.EMERALD.getPotionEffect());
@@ -158,7 +160,7 @@ public class BaseArmor extends ItemArmor {
                 }
                 break;
             case LAPIS:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableLapisBBreathing && !ARPConfig.enableFullLapisArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.LAPIS.getPotionEffect());
@@ -178,31 +180,59 @@ public class BaseArmor extends ItemArmor {
                 }
                 break;
             case LAVA:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableLavaBEffects && !ARPConfig.enableFullLavaArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.LAVA.getPotionEffect());
-                        lavaEffects(entity, itemStack);
+                        if (!ARPConfig.enableFullLavaArmorEffect) {
+                            entity.extinguish();
+                            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+                        } else if (entity.isInWater() && !ARPConfig.enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                            itemStack.damageItem(1, entity);
+                            entity.attackEntityFrom(DamageSource.drown, 1F);
+                        }
                         break;
                     case LEGS:
                         if (ARPConfig.enableLavaLEffects && !ARPConfig.enableFullLavaArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.LAVA.getPotionEffect());
-                        lavaEffects(entity, itemStack);
+                        if (!ARPConfig.enableFullLavaArmorEffect) {
+                            entity.extinguish();
+                            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+                        } else if (entity.isInWater() && !ARPConfig.enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                            itemStack.damageItem(1, entity);
+                            entity.attackEntityFrom(DamageSource.drown, 1F);
+                        }
                         break;
                     case CHEST:
                         if (ARPConfig.enableLavaCEffects && !ARPConfig.enableFullLavaArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.LAVA.getPotionEffect());
-                        lavaEffects(entity, itemStack);
+                        if (!ARPConfig.enableFullLavaArmorEffect) {
+                            entity.extinguish();
+                            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+                        } else if (entity.isInWater() && !ARPConfig.enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                            itemStack.damageItem(1, entity);
+                            entity.attackEntityFrom(DamageSource.drown, 1F);
+                        }
                         break;
                     case HEAD:
                         if (ARPConfig.enableLavaHEffects && !ARPConfig.enableFullLavaArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.LAVA.getPotionEffect());
-                        lavaEffects(entity, itemStack);
+                        if (!ARPConfig.enableFullLavaArmorEffect) {
+                            entity.extinguish();
+                            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
+                        } else if (entity.isInWater() && !ARPConfig.enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                            itemStack.damageItem(1, entity);
+                            entity.attackEntityFrom(DamageSource.drown, 1F);
+                        }
                         break;
                 }
                 break;
             case REDSTONE:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableRedstoneBSpeed && !ARPConfig.enableFullRedstoneArmorEffect) {
                             entity.addPotionEffect(ARPArmorEffects.REDSTONE.getPotionEffect());
@@ -238,7 +268,7 @@ public class BaseArmor extends ItemArmor {
                 }
                 break;
             case OBSIDIAN:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableObsidianBResistance && !ARPConfig.enableFullObsidianArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.OBSIDIAN.getPotionEffect());
@@ -269,7 +299,7 @@ public class BaseArmor extends ItemArmor {
                 entity.removePotionEffect(MobEffects.WITHER);
                 break;
             case SUPER_STAR:
-                switch (getEquipmentSlot()) {
+                switch (slot) {
                     case FEET:
                         if (ARPConfig.enableSuperStarBRegen && !ARPConfig.enableFullSuperStarArmorEffect)
                             entity.addPotionEffect(ARPArmorEffects.SUPER_STAR.getPotionEffect());
@@ -463,17 +493,6 @@ public class BaseArmor extends ItemArmor {
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
-        }
-    }
-
-    private void lavaEffects(EntityPlayer entity, ItemStack itemStack) {
-        if (!ARPConfig.enableFullLavaArmorEffect) {
-            entity.extinguish();
-            entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
-        } else if (entity.isInWater() && !ARPConfig.enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
-            itemStack.damageItem(1, entity);
-            entity.attackEntityFrom(DamageSource.drown, 1F);
         }
     }
 
