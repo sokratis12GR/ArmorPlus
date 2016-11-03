@@ -10,3 +10,4 @@ I want to give credit to those guys who helped with the translation of ArmorPlus
 | [Tasomanya](https://www.youtube.com/channel/UC21oSgKfEiV_bwFO2Y9CjPg) | Greek | Ελληνικά | el_GR
 | [ImmortalPharaoh7](https://www.youtube.com/channel/UCmpPDi94KWH_6eL0OGLFMpQ) | Arabic, French | اللغة العربية, Français | ar_SA.lang, fr_FR.lang
 | [FTB_lag](https://github.com/DoctorFTB) | Russian | ру́сский | ru_RU.lang 
+| [ikunai](https://github.com/ikunai) | Japanese | 日本語 | ja_JP.lang
