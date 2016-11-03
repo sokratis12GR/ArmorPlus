@@ -52,15 +52,17 @@ public class GlobalEventsArmorPlus {
         feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
         if (head != null && chest != null && legs != null && feet != null) {
-            if (head.getItem() == ModItems.lavaHelmet && chest.getItem() == ModItems.lavaChestplate && legs.getItem() == ModItems.lavaLeggings && feet.getItem() == ModItems.lavaBoots && entity.isInWater() && enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+            if (head.getItem() == ModItems.lavaHelmet && chest.getItem() == ModItems.lavaChestplate && legs.getItem() == ModItems.lavaLeggings && feet.getItem() == ModItems.lavaBoots && entity.isInWater() && enableFullLavaArmorEffect) {
                 entity.extinguish();
                 entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
-                entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
-                head.damageItem(1, entity);
-                chest.damageItem(1, entity);
-                legs.damageItem(1, entity);
-                feet.damageItem(1, entity);
-                entity.attackEntityFrom(DamageSource.drown, 1F);
+                if (entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
+                    head.damageItem(1, entity);
+                    chest.damageItem(1, entity);
+                    legs.damageItem(1, entity);
+                    feet.damageItem(1, entity);
+                    entity.attackEntityFrom(DamageSource.drown, 1F);
+                }
             } else if (head.getItem() == ModItems.theUltimateHelmet && chest.getItem() == ModItems.theUltimateChestplate && legs.getItem() == ModItems.theUltimateLeggings && feet.getItem() == ModItems.theUltimateBoots) {
                 entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 120, 0, true, true));
                 entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 120, ARPConfig.ultimateArmorEffectlevel, true, true));
@@ -103,6 +105,7 @@ public class GlobalEventsArmorPlus {
                 entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, true, true));
             }
         }
+
     }
 
     public static void syncConfig() {
