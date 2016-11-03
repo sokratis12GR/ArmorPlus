@@ -11,6 +11,7 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.ArrayList;
@@ -34,14 +35,18 @@ public class ARPAchievements {
             craftManyullynArmor,
             craftPigIronArmor,
             craftKnightSlimeArmor,
-            welcomeToArmorPlus;
+            welcomeToArmorPlus,
+            craftHighTechBench,
+            craftUltiTechBench;
     public static Achievement armorPlus;
     public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
     private static AchievementPage arpAchievementPage;
 
     public static void init() {
         armorPlus = new AchievementARP("armorplus", -4, -4, ModItems.redstoneChestplate, AchievementList.OPEN_INVENTORY).setSpecial().initIndependentStat();
-        welcomeToArmorPlus = new AchievementARP("craft_armor_forge", -2, -2, ModItems.armorPlusBook, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        welcomeToArmorPlus = new AchievementARP("craft_workbench", -2, -2, new ItemStack(ModBlocks.arpWorkbench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftHighTechBench = new AchievementARP("craft_high_tech_bench", -2, -4, new ItemStack(ModBlocks.arpHighTechBench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftUltiTechBench = new AchievementARP("craft_ulti_tech_bench", -2, -6, new ItemStack(ModBlocks.arpUltiTechBench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
         craftCoalArmor = new AchievementARP("craft_coal_armor", 0, 0, ModItems.coalHelmet, craftCoalArmor).setNormalCrafting();
         craftChickenArmor = new AchievementARP("craft_chicken_armor", 2, 2, ModItems.chickenBoots, craftCoalArmor).setNormalCrafting();
         craftSlimeArmor = new AchievementARP("craft_slime_armor", 2, 4, ModItems.slimeBoots, craftCoalArmor).setNormalCrafting();
