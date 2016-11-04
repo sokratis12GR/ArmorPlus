@@ -19,6 +19,7 @@ import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * net.thedragonteam.armorplus.compat.jei.benches
@@ -71,6 +72,12 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
     @Override
     public IDrawable getBackground() {
         return background;
+    }
+
+    @Nullable
+    @Override
+    public IDrawable getIcon() {
+        return null;
     }
 
     @Override

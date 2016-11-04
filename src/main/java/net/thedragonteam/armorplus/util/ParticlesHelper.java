@@ -132,6 +132,10 @@ public class ParticlesHelper {
         entity.worldObj.spawnParticle(particleType, xCoord, yCoord, zCoord, xSpeed, 0.0D, zSpeed);
     }
 
+    public static void spawnParticleFromPlayerXZ(EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double xzSpeed) {
+        entity.worldObj.spawnParticle(particleType, xCoord, yCoord, zCoord, xzSpeed, 0.0D, xzSpeed);
+    }
+
     public static void spawnParticleFromPlayerHorizontalZ(EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double zSpeed) {
         entity.worldObj.spawnParticle(particleType, xCoord, yCoord, zCoord, 0.0D, 0.0D, zSpeed);
     }

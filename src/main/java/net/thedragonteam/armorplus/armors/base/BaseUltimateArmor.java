@@ -119,7 +119,6 @@ public class BaseUltimateArmor extends ItemArmor {
             entity.motionZ = 0;
             ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
-
         ParticlesHelper.createParticleCircleTop(EnumParticleTypes.ENCHANTMENT_TABLE, world, entity);
     }
 

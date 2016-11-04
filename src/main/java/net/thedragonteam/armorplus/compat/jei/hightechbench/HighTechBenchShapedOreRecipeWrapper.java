@@ -4,10 +4,10 @@
 
 package net.thedragonteam.armorplus.compat.jei.hightechbench;
 
+import mezz.jei.Internal;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IStackHelper;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import mezz.jei.plugins.vanilla.VanillaPlugin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -41,7 +41,7 @@ public class HighTechBenchShapedOreRecipeWrapper implements IShapedCraftingRecip
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        IStackHelper stackHelper = VanillaPlugin.jeiHelpers.getStackHelper();
+        IStackHelper stackHelper = Internal.getStackHelper();
 
         List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(Arrays.asList(recipe.getInput()));
         ingredients.setInputLists(ItemStack.class, inputs);

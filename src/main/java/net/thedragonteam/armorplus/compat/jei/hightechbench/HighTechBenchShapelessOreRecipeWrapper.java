@@ -4,10 +4,10 @@
 
 package net.thedragonteam.armorplus.compat.jei.hightechbench;
 
+import mezz.jei.Internal;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IStackHelper;
-import mezz.jei.plugins.vanilla.VanillaPlugin;
 import mezz.jei.plugins.vanilla.crafting.AbstractShapelessRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessOreRecipe;
@@ -34,7 +34,7 @@ public class HighTechBenchShapelessOreRecipeWrapper extends AbstractShapelessRec
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        IStackHelper stackHelper = VanillaPlugin.jeiHelpers.getStackHelper();
+        IStackHelper stackHelper = Internal.getStackHelper();
 
         List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(recipe.getInput());
         ingredients.setInputLists(ItemStack.class, inputs);

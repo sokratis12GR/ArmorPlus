@@ -22,7 +22,7 @@ public class ModItemRecipes {
                 'W', ModBlocks.arpWorkbench,
                 'H', ModBlocks.arpHighTechBench,
                 'O', ModBlocks.compressedObsidian,
-                'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
+                'L', new ItemStack(ModItems.lavaCrystal.setContainerItem(ModItems.lavaCrystal), 1, 1));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.theUltimateMaterial, 1),
                 "scaleEnderDragon",
                 "scaleGuardian",

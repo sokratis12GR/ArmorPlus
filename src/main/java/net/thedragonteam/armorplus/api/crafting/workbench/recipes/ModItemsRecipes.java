@@ -28,8 +28,10 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 9), "blockSteel"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 9), "blockElectrical"));
+
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "O O", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpHighTechBench), "LLL", "CAC", "CCC", 'C', "gemChargedLavaCrystal", 'L', "blockRedstone", 'A', "arpWorkbench"));
+
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpHighTechBench), "LLL", "CAC", "CCC", 'C', new ItemStack(ModItems.lavaCrystal.setContainerItem(ModItems.lavaCrystal), 1, 1), 'L', "blockRedstone", 'A', "arpWorkbench"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFRod, 1), " T ", "TST", " T ", 'T', "dustRedstone", 'S', "stickWood"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFAxe, 1), "TT ", "TS ", " S ", 'T', "ingotSteel", 'S', "rodRF"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFAxe, 1), " TT", " ST", " S ", 'T', "ingotSteel", 'S', "rodRF"));

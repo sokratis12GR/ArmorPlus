@@ -4,11 +4,11 @@
 
 package net.thedragonteam.armorplus.compat.jei.workbench;
 
+import mezz.jei.Internal;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
 import mezz.jei.api.recipe.IStackHelper;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import mezz.jei.plugins.vanilla.VanillaPlugin;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
@@ -39,7 +39,7 @@ public class WorkbenchShapedOreRecipeWrapper extends BlankRecipeWrapper implemen
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        IStackHelper stackHelper = VanillaPlugin.jeiHelpers.getStackHelper();
+        IStackHelper stackHelper = Internal.getStackHelper();
 
         List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(Arrays.asList(recipe.getInput()));
         ingredients.setInputLists(ItemStack.class, inputs);
