@@ -41,7 +41,7 @@ public enum ARPArmorMaterial {
     private final Item itemExpert;
 
     private final TextFormatting formatting;
-
+    
     ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
