@@ -6,10 +6,7 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.benches.HighTechBench;
-import net.thedragonteam.armorplus.blocks.benches.UltiTechBench;
-import net.thedragonteam.armorplus.blocks.benches.Workbench;
-import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.blocks.base.BaseBenchBlock;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
@@ -17,13 +14,15 @@ import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
 import net.thedragonteam.armorplus.blocks.normal.LavaNetherBrick;
-import net.thedragonteam.armorplus.blocks.spawners.Spawners;
 import net.thedragonteam.armorplus.blocks.spawners.base.BaseSpawner;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
-import net.thedragonteam.armorplus.blocks.v2.Metals;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
+
+import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
+import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
+import static net.thedragonteam.armorplus.blocks.spawners.Spawners.ENDER_DRAGON_ZOMBIE;
+import static net.thedragonteam.armorplus.blocks.spawners.Spawners.GUARDIAN;
+import static net.thedragonteam.armorplus.blocks.v2.Metals.ELECTRICAL;
+import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -61,43 +60,43 @@ public class ModBlocks {
     public static LavaCactus lavaCactus;
     public static BaseSpawner spawnerGuardian;
     public static BaseSpawner spawnerEnderDragonZombie;
-    public static Workbench arpWorkbench;
-    public static HighTechBench arpHighTechBench;
-    public static UltiTechBench arpUltiTechBench;
+    public static BaseBenchBlock arpWorkbench;
+    public static BaseBenchBlock arpHighTechBench;
+    public static BaseBenchBlock arpUltiTechBench;
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal();
         compressedObsidian = new CompressedObsidian();
-        steelBlock = new BaseMetalBlock(Metals.STEEL);
-        electricalBlock = new BaseMetalBlock(Metals.ELECTRICAL);
+        steelBlock = new BaseMetalBlock(STEEL);
+        electricalBlock = new BaseMetalBlock(ELECTRICAL);
         lavaCactus = new LavaCactus();
         lavaNetherBrick = new LavaNetherBrick();
-        whiteStoneBrick = new BaseStoneBrick(StoneBricks.WHITE);
-        whiteStoneBrickTower = new BaseStoneBrickTower(StoneBricks.WHITE);
-        whiteStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.WHITE);
-        redStoneBrick = new BaseStoneBrick(StoneBricks.RED);
-        redStoneBrickTower = new BaseStoneBrickTower(StoneBricks.RED);
-        redStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.RED);
-        blackStoneBrick = new BaseStoneBrick(StoneBricks.BLACK);
-        blackStoneBrickTower = new BaseStoneBrickTower(StoneBricks.BLACK);
-        blackStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.BLACK);
-        blueStoneBrick = new BaseStoneBrick(StoneBricks.BLUE);
-        blueStoneBrickTower = new BaseStoneBrickTower(StoneBricks.BLUE);
-        blueStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.BLUE);
-        greenStoneBrick = new BaseStoneBrick(StoneBricks.GREEN);
-        greenStoneBrickTower = new BaseStoneBrickTower(StoneBricks.GREEN);
-        greenStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.GREEN);
-        yellowStoneBrick = new BaseStoneBrick(StoneBricks.YELLOW);
-        yellowStoneBrickTower = new BaseStoneBrickTower(StoneBricks.YELLOW);
-        yellowStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.YELLOW);
-        purpleStoneBrick = new BaseStoneBrick(StoneBricks.PURPLE);
-        purpleStoneBrickTower = new BaseStoneBrickTower(StoneBricks.PURPLE);
-        purpleStoneBrickCorner = new BaseStoneBrickCorner(StoneBricks.PURPLE);
-        spawnerGuardian = new BaseSpawner(Spawners.GUARDIAN);
-        spawnerEnderDragonZombie = new BaseSpawner(Spawners.ENDER_DRAGON_ZOMBIE);
-        arpWorkbench = new Workbench(new TileEntityWorkbench());
-        arpHighTechBench = new HighTechBench(new TileEntityHighTechBench());
-        arpUltiTechBench = new UltiTechBench(new TileEntityUltiTechBench());
+        whiteStoneBrick = new BaseStoneBrick(WHITE);
+        whiteStoneBrickTower = new BaseStoneBrickTower(WHITE);
+        whiteStoneBrickCorner = new BaseStoneBrickCorner(WHITE);
+        redStoneBrick = new BaseStoneBrick(RED);
+        redStoneBrickTower = new BaseStoneBrickTower(RED);
+        redStoneBrickCorner = new BaseStoneBrickCorner(RED);
+        blackStoneBrick = new BaseStoneBrick(BLACK);
+        blackStoneBrickTower = new BaseStoneBrickTower(BLACK);
+        blackStoneBrickCorner = new BaseStoneBrickCorner(BLACK);
+        blueStoneBrick = new BaseStoneBrick(BLUE);
+        blueStoneBrickTower = new BaseStoneBrickTower(BLUE);
+        blueStoneBrickCorner = new BaseStoneBrickCorner(BLUE);
+        greenStoneBrick = new BaseStoneBrick(GREEN);
+        greenStoneBrickTower = new BaseStoneBrickTower(GREEN);
+        greenStoneBrickCorner = new BaseStoneBrickCorner(GREEN);
+        yellowStoneBrick = new BaseStoneBrick(YELLOW);
+        yellowStoneBrickTower = new BaseStoneBrickTower(YELLOW);
+        yellowStoneBrickCorner = new BaseStoneBrickCorner(YELLOW);
+        purpleStoneBrick = new BaseStoneBrick(PURPLE);
+        purpleStoneBrickTower = new BaseStoneBrickTower(PURPLE);
+        purpleStoneBrickCorner = new BaseStoneBrickCorner(PURPLE);
+        spawnerGuardian = new BaseSpawner(GUARDIAN);
+        spawnerEnderDragonZombie = new BaseSpawner(ENDER_DRAGON_ZOMBIE);
+        arpWorkbench = new BaseBenchBlock(WORKBENCH);
+        arpHighTechBench = new BaseBenchBlock(HIGH_TECH);
+        arpUltiTechBench = new BaseBenchBlock(ULIT_TECH);
     }
 
     @SideOnly(Side.CLIENT)
@@ -135,5 +134,4 @@ public class ModBlocks {
         arpHighTechBench.initModel();
         arpUltiTechBench.initModel();
     }
-
 }

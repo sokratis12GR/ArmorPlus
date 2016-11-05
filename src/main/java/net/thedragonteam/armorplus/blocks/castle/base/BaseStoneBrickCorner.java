@@ -56,32 +56,32 @@ public class BaseStoneBrickCorner extends BaseBlock {
         return mapColor;
     }
 
-    private static boolean isDifferentStairs(IBlockState p_185704_0_, IBlockAccess p_185704_1_, BlockPos p_185704_2_, EnumFacing p_185704_3_) {
-        IBlockState iblockstate = p_185704_1_.getBlockState(p_185704_2_.offset(p_185704_3_));
-        return !isBaseStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != p_185704_0_.getValue(FACING) || iblockstate.getValue(HALF) != p_185704_0_.getValue(HALF);
+    private static boolean isDifferentStairs(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EnumFacing enumFacing) {
+        IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumFacing));
+        return !isBaseStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != blockState.getValue(FACING) || iblockstate.getValue(HALF) != blockState.getValue(HALF);
     }
 
     public static boolean isBaseStoneBrickCorner(IBlockState state) {
         return state.getBlock() instanceof BaseStoneBrickCorner;
     }
 
-    private static BaseStoneBrickCorner.EnumShape getStairsShape(IBlockState p_185706_0_, IBlockAccess p_185706_1_, BlockPos p_185706_2_) {
-        EnumFacing enumfacing = (EnumFacing) p_185706_0_.getValue(FACING);
-        IBlockState iblockstate = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing));
+    private static BaseStoneBrickCorner.EnumShape getStairsShape(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
+        EnumFacing enumfacing = (EnumFacing) blockState.getValue(FACING);
+        IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumfacing));
 
-        if (isBaseStoneBrickCorner(iblockstate) && p_185706_0_.getValue(HALF) == iblockstate.getValue(HALF)) {
+        if (isBaseStoneBrickCorner(iblockstate) && blockState.getValue(HALF) == iblockstate.getValue(HALF)) {
             EnumFacing enumfacing1 = (EnumFacing) iblockstate.getValue(FACING);
 
-            if (enumfacing1.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing1.getOpposite()))
+            if (enumfacing1.getAxis() != ((EnumFacing) blockState.getValue(FACING)).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing1.getOpposite()))
                 return enumfacing1 == enumfacing.rotateYCCW() ? EnumShape.OUTER_LEFT : EnumShape.OUTER_RIGHT;
         }
 
-        IBlockState iblockstate1 = p_185706_1_.getBlockState(p_185706_2_.offset(enumfacing.getOpposite()));
+        IBlockState iblockstate1 = blockAccess.getBlockState(blockPos.offset(enumfacing.getOpposite()));
 
-        if (isBaseStoneBrickCorner(iblockstate1) && p_185706_0_.getValue(HALF) == iblockstate1.getValue(HALF)) {
+        if (isBaseStoneBrickCorner(iblockstate1) && blockState.getValue(HALF) == iblockstate1.getValue(HALF)) {
             EnumFacing enumfacing2 = (EnumFacing) iblockstate1.getValue(FACING);
 
-            if (enumfacing2.getAxis() != ((EnumFacing) p_185706_0_.getValue(FACING)).getAxis() && isDifferentStairs(p_185706_0_, p_185706_1_, p_185706_2_, enumfacing2))
+            if (enumfacing2.getAxis() != ((EnumFacing) blockState.getValue(FACING)).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing2))
                 return enumfacing2 == enumfacing.rotateYCCW() ? EnumShape.INNER_LEFT : EnumShape.INNER_RIGHT;
         }
 
@@ -196,10 +196,8 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
     @Override
     public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-        if (ForgeModContainer.disableStairSlabCulling)
-            return super.doesSideBlockRendering(state, world, pos, face);
-
-        if (state.isOpaqueCube())
+        if (ForgeModContainer.disableStairSlabCulling) return super.doesSideBlockRendering(state, world, pos, face);
+        else if (state.isOpaqueCube())
             return true;
 
         state = this.getActualState(state, world, pos);
@@ -207,14 +205,13 @@ public class BaseStoneBrickCorner extends BaseBlock {
         BaseStoneBrickCorner.EnumHalf half = state.getValue(HALF);
         EnumFacing side = state.getValue(FACING);
         BaseStoneBrickCorner.EnumShape shape = state.getValue(SHAPE);
-        if (face == EnumFacing.UP) return half == BaseStoneBrickCorner.EnumHalf.TOP;
-        if (face == EnumFacing.DOWN) return half == BaseStoneBrickCorner.EnumHalf.BOTTOM;
-        if (shape == BaseStoneBrickCorner.EnumShape.OUTER_LEFT || shape == BaseStoneBrickCorner.EnumShape.OUTER_RIGHT)
-            return false;
-        if (face == side) return true;
-        if (shape == BaseStoneBrickCorner.EnumShape.INNER_LEFT && face.rotateY() == side) return true;
-        if (shape == BaseStoneBrickCorner.EnumShape.INNER_RIGHT && face.rotateYCCW() == side) return true;
-        return false;
+        switch (face) {
+            case UP:
+                return half == EnumHalf.TOP;
+            case DOWN:
+                return half == EnumHalf.BOTTOM;
+        }
+        return (shape == EnumShape.OUTER_LEFT || shape == EnumShape.OUTER_RIGHT || face == side || shape == EnumShape.INNER_LEFT && face.rotateY() == side || shape == EnumShape.STRAIGHT) || shape == EnumShape.INNER_RIGHT && face.rotateYCCW() == side;
     }
 
     public static enum EnumHalf implements IStringSerializable {

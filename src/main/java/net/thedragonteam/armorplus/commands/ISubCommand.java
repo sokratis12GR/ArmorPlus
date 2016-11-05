@@ -23,7 +23,5 @@ public interface ISubCommand {
 
     String getHelpText();
 
-    int getRequiredPermissionLevel();
-
     void processSubCommand(MinecraftServer server, ICommandSender commandSender, String[] args);
 }

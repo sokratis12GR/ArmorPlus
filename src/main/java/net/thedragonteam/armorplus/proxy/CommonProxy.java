@@ -6,12 +6,11 @@ package net.thedragonteam.armorplus.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.integration.TiC;
@@ -65,6 +64,14 @@ public class CommonProxy {
         LogHelper.info("Begin PostInitialization");
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
         LogHelper.info("Finished PostInitialization");
+    }
+
+    public void modMapping(FMLModIdMappingEvent event) {
+        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.MAPPING);
+    }
+
+    public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new CommandArmorPlus());
     }
 
     public void registerEvents() {

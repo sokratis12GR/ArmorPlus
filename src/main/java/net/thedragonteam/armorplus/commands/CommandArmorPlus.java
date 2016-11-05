@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.commands;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -25,6 +26,7 @@ public class CommandArmorPlus extends CommandBase {
 
     public CommandArmorPlus() {
         aliases.add("armorplus");
+        aliases.add("ap");
 
         subCommands.put("help", new SubCommandHelp(this));
         subCommands.put("info", new SubCommandInfo(this));
@@ -33,7 +35,7 @@ public class CommandArmorPlus extends CommandBase {
 
     @Override
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
-        return server.isSinglePlayer() || super.checkPermission(server, sender) || super.getRequiredPermissionLevel() == 0;
+        return sender instanceof EntityPlayer;
     }
 
     @Override
@@ -44,11 +46,6 @@ public class CommandArmorPlus extends CommandBase {
     @Override
     public String getCommandName() {
         return "arp";
-    }
-
-    @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
     }
 
     @Override

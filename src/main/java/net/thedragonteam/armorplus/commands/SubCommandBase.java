@@ -50,11 +50,6 @@ public class SubCommandBase implements ISubCommand {
     }
 
     @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
-    }
-
-    @Override
     public String getSubCommandName() {
         return name;
     }

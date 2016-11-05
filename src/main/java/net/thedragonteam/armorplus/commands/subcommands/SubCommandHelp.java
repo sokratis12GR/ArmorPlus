@@ -35,11 +35,6 @@ public class SubCommandHelp extends SubCommandBase {
     }
 
     @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
-    }
-
-    @Override
     public void processSubCommand(MinecraftServer server, ICommandSender commandSender, String[] args) {
         super.processSubCommand(server, commandSender, args);
 

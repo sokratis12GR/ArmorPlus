@@ -96,10 +96,10 @@ public class SlotCrafting extends Slot {
         /*The Tinkers' Armors God! - Achievement Trigger*/
         if (stack.getItem() == ModItems.manyullynHelmet || stack.getItem() == ModItems.manyullynChestplate || stack.getItem() == ModItems.manyullynLeggings || stack.getItem() == ModItems.manyullynBoots)
             this.thePlayer.addStat(ARPAchievements.craftManyullynArmor, 1);
-        /* Oink! - Achievemnt Trigger*/
+        /* Oink! - Achievement Trigger*/
         if (stack.getItem() == ModItems.pigIronHelmet || stack.getItem() == ModItems.pigIronChestplate || stack.getItem() == ModItems.pigIronLeggings || stack.getItem() == ModItems.pigIronBoots)
             this.thePlayer.addStat(ARPAchievements.craftPigIronArmor, 1);
-        /* Fascinating! - Achievemnt Trigger*/
+        /* Fascinating! - Achievement Trigger*/
         if (stack.getItem() == ModItems.knightSlimeHelmet || stack.getItem() == ModItems.knightSlimeChestplate || stack.getItem() == ModItems.knightSlimeLeggings || stack.getItem() == ModItems.knightSlimeBoots)
             this.thePlayer.addStat(ARPAchievements.craftKnightSlimeArmor, 1);
     }

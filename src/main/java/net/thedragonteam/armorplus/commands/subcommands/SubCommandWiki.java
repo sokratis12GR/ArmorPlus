@@ -33,9 +33,4 @@ public class SubCommandWiki extends SubCommandBase {
 
         ClientUtills.openLink("https://ftb.gamepedia.com/ArmorPlus");
     }
-
-    @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
-    }
 }

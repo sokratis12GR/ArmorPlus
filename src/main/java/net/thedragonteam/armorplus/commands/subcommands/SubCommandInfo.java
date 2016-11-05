@@ -31,11 +31,6 @@ public class SubCommandInfo extends SubCommandBase {
     }
 
     @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
-    }
-
-    @Override
     public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
         super.processSubCommand(server, sender, args);
         sender.addChatMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR (TheDragonTeam)]"));

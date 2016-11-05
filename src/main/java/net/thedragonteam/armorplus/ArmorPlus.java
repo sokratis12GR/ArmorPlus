@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
@@ -17,10 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
-import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
-import net.thedragonteam.armorplus.registry.ModCompatibility;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -129,6 +127,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ItemArmor.MAX_DAMAGE_ARRAY = new int[]{93, 95, 96, 91};
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
         featureParser.registerFeatures();
@@ -142,11 +141,11 @@ public class ArmorPlus {
 
     @EventHandler
     public void modMapping(FMLModIdMappingEvent event) {
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.MAPPING);
+        proxy.modMapping(event);
     }
 
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
-        event.registerServerCommand(new CommandArmorPlus());
+        proxy.serverLoad(event);
     }
 }
