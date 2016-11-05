@@ -32,12 +32,9 @@ import static net.thedragonteam.armorplus.items.UltimateItems.*;
 
 public class ModItems {
 
-    /**
-     * Swords
-     * Float damageVsEntity + 4.0F
-     * public static ToolMaterial MATERIAL = EnumHelper.addToolMaterial("MATERIAL", int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability);
-     */
-    public static BaseItem chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial, armorPlusBook, steelIngot, electricalIngot, armorPlusInfoBook;
+    public static BaseItem chainmail, guardianScale, witherBone,
+            enderDragonScale, theUltimateMaterial, armorPlusBook,
+            steelIngot, electricalIngot, armorPlusInfoBook;
     public static RedstoneApple redstoneApple;
     public static LavaCrystal lavaCrystal;
     public static TheGiftOfTheGods theGiftOfTheGods;
@@ -61,9 +58,15 @@ public class ModItems {
     public static BaseSteelArmor steelHelmet, steelChestplate, steelLeggings, steelBoots;
     public static BaseElectricalArmor electricalHelmet, electricalChestplate, electricalLeggings, electricalBoots;
     public static BaseUltimateArmor theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots;
-    public static BaseSpecialSword coalSword, lapisSword, redstoneSword, emeraldSword, obsidianSword, lavaSword, superStarSword, guardianSword, enderDragonSword;
-    public static BaseBattleAxe coalBattleAxe, lapisBattleAxe, redstoneBattleAxe, emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe, superStarBattleAxe, guardianBattleAxe, enderDragonBattleAxe;
-    public static BaseBow coalBow, lapisBow, redstoneBow, emeraldBow, obsidianBow, lavaBow, superStarBow, guardianBow, enderDragonBow;
+    public static BaseSpecialSword coalSword, lapisSword, redstoneSword,
+            emeraldSword, obsidianSword, lavaSword,
+            guardianSword, superStarSword, enderDragonSword;
+    public static BaseBattleAxe coalBattleAxe, lapisBattleAxe, redstoneBattleAxe,
+            emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe,
+            guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe;
+    public static BaseBow coalBow, lapisBow, redstoneBow,
+            emeraldBow, obsidianBow, lavaBow,
+            guardianBow, superStarBow, enderDragonBow;
     public static BaseUltimateItem theUltimateHelmetLeft, theUltimateHelmetMiddle, theUltimateHelmetRight,
             theUltimateChestplateLeft, theUltimateChestplateMiddle, theUltimateChestplateRight,
             theUltimateLeggingsLeft, theUltimateLeggingsMiddle, theUltimateLeggingsRight,
@@ -256,33 +259,60 @@ public class ModItems {
             knightSlimeLeggings = new BaseArmor(KNIGHT_SLIME, LEGS);
             knightSlimeBoots = new BaseArmor(KNIGHT_SLIME, FEET);
         }
-        coalSword = new BaseSpecialSword(Swords.COAL);
-        lapisSword = new BaseSpecialSword(Swords.LAPIS);
-        redstoneSword = new BaseSpecialSword(Swords.REDSTONE);
-        emeraldSword = new BaseSpecialSword(Swords.EMERALD);
-        obsidianSword = new BaseSpecialSword(Swords.OBSIDIAN);
-        lavaSword = new BaseSpecialSword(Swords.LAVA);
-        superStarSword = new BaseSpecialSword(Swords.SUPER_STAR);
-        guardianSword = new BaseSpecialSword(Swords.GUARDIAN);
-        enderDragonSword = new BaseSpecialSword(Swords.ENDER_DRAGON);
-        coalBattleAxe = new BaseBattleAxe(BattleAxes.COAL);
-        lapisBattleAxe = new BaseBattleAxe(BattleAxes.LAPIS);
-        redstoneBattleAxe = new BaseBattleAxe(BattleAxes.REDSTONE);
-        emeraldBattleAxe = new BaseBattleAxe(BattleAxes.EMERALD);
-        obsidianBattleAxe = new BaseBattleAxe(BattleAxes.OBSIDIAN);
-        lavaBattleAxe = new BaseBattleAxe(BattleAxes.LAVA);
-        superStarBattleAxe = new BaseBattleAxe(BattleAxes.SUPER_STAR);
-        guardianBattleAxe = new BaseBattleAxe(BattleAxes.GUARDIAN);
-        enderDragonBattleAxe = new BaseBattleAxe(BattleAxes.ENDER_DRAGON);
-        coalBow = new BaseBow(Bows.COAL);
-        lapisBow = new BaseBow(Bows.LAPIS);
-        redstoneBow = new BaseBow(Bows.REDSTONE);
-        emeraldBow = new BaseBow(Bows.EMERALD);
-        obsidianBow = new BaseBow(Bows.OBSIDIAN);
-        lavaBow = new BaseBow(Bows.LAVA);
-        superStarBow = new BaseBow(Bows.SUPER_STAR);
-        guardianBow = new BaseBow(Bows.GUARDIAN);
-        enderDragonBow = new BaseBow(Bows.ENDER_DRAGON);
+        if (ARPConfig.enableCoalSword)
+            coalSword = new BaseSpecialSword(Swords.COAL);
+        if (ARPConfig.enableLapisSword)
+            lapisSword = new BaseSpecialSword(Swords.LAPIS);
+        if (ARPConfig.enableRedstoneSword)
+            redstoneSword = new BaseSpecialSword(Swords.REDSTONE);
+        if (ARPConfig.enableEmeraldSword)
+            emeraldSword = new BaseSpecialSword(Swords.EMERALD);
+        if (ARPConfig.enableObsidianSword)
+            obsidianSword = new BaseSpecialSword(Swords.OBSIDIAN);
+        if (ARPConfig.enableLavaSword)
+            lavaSword = new BaseSpecialSword(Swords.LAVA);
+        if (ARPConfig.enableGuardianSword)
+            guardianSword = new BaseSpecialSword(Swords.GUARDIAN);
+        if (ARPConfig.enableSuperStarSword)
+            superStarSword = new BaseSpecialSword(Swords.SUPER_STAR);
+        if (ARPConfig.enableEnderDragonSword)
+            enderDragonSword = new BaseSpecialSword(Swords.ENDER_DRAGON);
+        if (ARPConfig.enableCoalBattleAxe)
+            coalBattleAxe = new BaseBattleAxe(BattleAxes.COAL);
+        if (ARPConfig.enableLapisBattleAxe)
+            lapisBattleAxe = new BaseBattleAxe(BattleAxes.LAPIS);
+        if (ARPConfig.enableRedstoneBattleAxe)
+            redstoneBattleAxe = new BaseBattleAxe(BattleAxes.REDSTONE);
+        if (ARPConfig.enableEmeraldBattleAxe)
+            emeraldBattleAxe = new BaseBattleAxe(BattleAxes.EMERALD);
+        if (ARPConfig.enableObsidianBattleAxe)
+            obsidianBattleAxe = new BaseBattleAxe(BattleAxes.OBSIDIAN);
+        if (ARPConfig.enableLavaBattleAxe)
+            lavaBattleAxe = new BaseBattleAxe(BattleAxes.LAVA);
+        if (ARPConfig.enableGuardianBattleAxe)
+            guardianBattleAxe = new BaseBattleAxe(BattleAxes.GUARDIAN);
+        if (ARPConfig.enableSuperStarBattleAxe)
+            superStarBattleAxe = new BaseBattleAxe(BattleAxes.SUPER_STAR);
+        if (ARPConfig.enableEnderDragonBattleAxe)
+            enderDragonBattleAxe = new BaseBattleAxe(BattleAxes.ENDER_DRAGON);
+        if (ARPConfig.enableCoalBow)
+            coalBow = new BaseBow(Bows.COAL);
+        if (ARPConfig.enableLapisBow)
+            lapisBow = new BaseBow(Bows.LAPIS);
+        if (ARPConfig.enableRedstoneBow)
+            redstoneBow = new BaseBow(Bows.REDSTONE);
+        if (ARPConfig.enableEmeraldBow)
+            emeraldBow = new BaseBow(Bows.EMERALD);
+        if (ARPConfig.enableObsidianBow)
+            obsidianBow = new BaseBow(Bows.OBSIDIAN);
+        if (ARPConfig.enableLavaBow)
+            lavaBow = new BaseBow(Bows.LAVA);
+        if (ARPConfig.enableGuardianBow)
+            guardianBow = new BaseBow(Bows.GUARDIAN);
+        if (ARPConfig.enableSuperStarBow)
+            superStarBow = new BaseBow(Bows.SUPER_STAR);
+        if (ARPConfig.enableEnderDragonBow)
+            enderDragonBow = new BaseBow(Bows.ENDER_DRAGON);
         devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
         itemLapisArrow = new ItemLapisArrow();
@@ -455,33 +485,60 @@ public class ModItems {
             knightSlimeLeggings.initModel();
             knightSlimeBoots.initModel();
         }
-        coalSword.initModel();
-        lapisSword.initModel();
-        redstoneSword.initModel();
-        emeraldSword.initModel();
-        obsidianSword.initModel();
-        lavaSword.initModel();
-        superStarSword.initModel();
-        guardianSword.initModel();
-        enderDragonSword.initModel();
-        coalBattleAxe.initModel();
-        lapisBattleAxe.initModel();
-        redstoneBattleAxe.initModel();
-        emeraldBattleAxe.initModel();
-        obsidianBattleAxe.initModel();
-        lavaBattleAxe.initModel();
-        superStarBattleAxe.initModel();
-        guardianBattleAxe.initModel();
-        enderDragonBattleAxe.initModel();
-        coalBow.initModel();
-        lapisBow.initModel();
-        redstoneBow.initModel();
-        emeraldBow.initModel();
-        obsidianBow.initModel();
-        lavaBow.initModel();
-        superStarBow.initModel();
-        guardianBow.initModel();
-        enderDragonBow.initModel();
+        if (ARPConfig.enableCoalSword)
+            coalSword.initModel();
+        if (ARPConfig.enableLapisSword)
+            lapisSword.initModel();
+        if (ARPConfig.enableRedstoneSword)
+            redstoneSword.initModel();
+        if (ARPConfig.enableEmeraldSword)
+            emeraldSword.initModel();
+        if (ARPConfig.enableObsidianSword)
+            obsidianSword.initModel();
+        if (ARPConfig.enableLavaSword)
+            lavaSword.initModel();
+        if (ARPConfig.enableGuardianSword)
+            guardianSword.initModel();
+        if (ARPConfig.enableSuperStarSword)
+            superStarSword.initModel();
+        if (ARPConfig.enableEnderDragonSword)
+            enderDragonSword.initModel();
+        if (ARPConfig.enableCoalBattleAxe)
+            coalBattleAxe.initModel();
+        if (ARPConfig.enableLapisBattleAxe)
+            lapisBattleAxe.initModel();
+        if (ARPConfig.enableRedstoneBattleAxe)
+            redstoneBattleAxe.initModel();
+        if (ARPConfig.enableEmeraldBattleAxe)
+            emeraldBattleAxe.initModel();
+        if (ARPConfig.enableObsidianBattleAxe)
+            obsidianBattleAxe.initModel();
+        if (ARPConfig.enableLavaBattleAxe)
+            lavaBattleAxe.initModel();
+        if (ARPConfig.enableGuardianBattleAxe)
+            guardianBattleAxe.initModel();
+        if (ARPConfig.enableSuperStarBattleAxe)
+            superStarBattleAxe.initModel();
+        if (ARPConfig.enableEnderDragonBattleAxe)
+            enderDragonBattleAxe.initModel();
+        if (ARPConfig.enableCoalBow)
+            coalBow.initModel();
+        if (ARPConfig.enableLapisBow)
+            lapisBow.initModel();
+        if (ARPConfig.enableRedstoneBow)
+            redstoneBow.initModel();
+        if (ARPConfig.enableEmeraldBow)
+            emeraldBow.initModel();
+        if (ARPConfig.enableObsidianBow)
+            obsidianBow.initModel();
+        if (ARPConfig.enableLavaBow)
+            lavaBow.initModel();
+        if (ARPConfig.enableGuardianBow)
+            guardianBow.initModel();
+        if (ARPConfig.enableSuperStarBow)
+            superStarBow.initModel();
+        if (ARPConfig.enableEnderDragonBow)
+            enderDragonBow.initModel();
         devTool.initModel();
         nbtItem.initModel();
         itemCoalArrow.initModel();

@@ -41,6 +41,44 @@ public class ModOriginRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBoots, 1), "C C", "C C", "   ", 'C', "blockCoal"));
             }
         }
+        /* Lapis Armor */
+        if (ARPConfig.enableLapisArmor) {
+            if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "   ", "LLL", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "LLL", "L L", "   ", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisChestplate, 1), "L L", "LLL", "LLL", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisLeggings, 1), "LLL", "L L", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "   ", "L L", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "L L", "L L", "   ", 'L', "gemLapis"));
+            }
+            if (ARPConfig.recipes == 1 && ARPConfig.enableLapisArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "   ", "LLL", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "LLL", "L L", "   ", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisChestplate, 1), "L L", "LLL", "LLL", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisLeggings, 1), "LLL", "L L", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "   ", "L L", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "L L", "L L", "   ", 'L', "blockLapis"));
+            }
+        }
+        /* Redstone Armor */
+        if (ARPConfig.enableRedstoneArmor) {
+            if (ARPConfig.recipes == 0 && ARPConfig.enableRedstoneArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "   ", "RRR", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "RRR", "R R", "   ", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneChestplate, 1), "R R", "RRR", "RRR", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneLeggings, 1), "RRR", "R R", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "   ", "R R", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "R R", "R R", "   ", 'R', "dustRedstone"));
+            }
+            if (ARPConfig.recipes == 1 && ARPConfig.enableRedstoneArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "   ", "RRR", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "RRR", "R R", "   ", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneChestplate, 1), "R R", "RRR", "RRR", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneLeggings, 1), "RRR", "R R", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "   ", "R R", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "R R", "R R", "   ", 'R', "blockRedstone"));
+            }
+        }
         /* Emerald Armor */
         if (ARPConfig.enableEmeraldArmor) {
             if (ARPConfig.recipes == 0 && ARPConfig.enableEmeraldArmorRecipes) {
@@ -59,25 +97,27 @@ public class ModOriginRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBoots, 1), "   ", "E E", "E E", 'E', "blockEmerald"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBoots, 1), "E E", "E E", "   ", 'E', "blockEmerald"));
             }
-        /* Lapis Armor */
-            if (ARPConfig.recipes == 0 && ARPConfig.enableLapisArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "   ", "LLL", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "LLL", "L L", "   ", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisChestplate, 1), "L L", "LLL", "LLL", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisLeggings, 1), "LLL", "L L", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "   ", "L L", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "L L", "L L", "   ", 'L', "gemLapis"));
+        }
+        /* Obsidian Armor */
+        if (ARPConfig.enableObsidianArmor) {
+            if (ARPConfig.recipes == 0 && ARPConfig.enableObsidianArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "   ", "OOO", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "OOO", "O O", "   ", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianChestplate, 1), "O O", "OOO", "OOO", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianLeggings, 1), "OOO", "O O", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "   ", "O O", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "O O", "O O", "   ", 'O', "obsidian"));
             }
-            if (ARPConfig.recipes == 1 && ARPConfig.enableLapisArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "   ", "LLL", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisHelmet, 1), "LLL", "L L", "   ", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisChestplate, 1), "L L", "LLL", "LLL", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisLeggings, 1), "LLL", "L L", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "   ", "L L", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisBoots, 1), "L L", "L L", "   ", 'L', "blockLapis"));
+            if (ARPConfig.recipes == 1 && ARPConfig.enableObsidianArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "   ", "OOO", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "OOO", "O O", "   ", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianChestplate, 1), "O O", "OOO", "OOO", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianLeggings, 1), "OOO", "O O", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "   ", "O O", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "O O", "O O", "   ", 'O', "blockCompressedObsidian"));
             }
         }
-        /* Lava Armor */
+                /* Lava Armor */
         if (ARPConfig.enableLavaArmor) {
             if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && ARPConfig.enableOldLavaArmorRecipes) {
                 manager.addShapelessRecipe(new ItemStack(ModItems.lavaHelmet, 1), ModItems.obsidianHelmet, 1, Items.LAVA_BUCKET, ModItems.obsidianHelmet, 1);
@@ -110,44 +150,6 @@ public class ModOriginRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaLeggings, 1), "CCC", "C C", "C C", 'C', "gemChargedLavaCrystal"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaBoots, 1), "   ", "C C", "C C", 'C', "gemChargedLavaCrystal"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaBoots, 1), "C C", "C C", "   ", 'C', "gemChargedLavaCrystal"));
-            }
-        }
-        /* Obsidian Armor */
-        if (ARPConfig.enableObsidianArmor) {
-            if (ARPConfig.recipes == 0 && ARPConfig.enableObsidianArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "   ", "OOO", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "OOO", "O O", "   ", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianChestplate, 1), "O O", "OOO", "OOO", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianLeggings, 1), "OOO", "O O", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "   ", "O O", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "O O", "O O", "   ", 'O', "obsidian"));
-            }
-            if (ARPConfig.recipes == 1 && ARPConfig.enableObsidianArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "   ", "OOO", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianHelmet, 1), "OOO", "O O", "   ", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianChestplate, 1), "O O", "OOO", "OOO", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianLeggings, 1), "OOO", "O O", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "   ", "O O", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "O O", "O O", "   ", 'O', "blockCompressedObsidian"));
-            }
-        }
-        /* Redstone Armor */
-        if (ARPConfig.enableRedstoneArmor) {
-            if (ARPConfig.recipes == 0 && ARPConfig.enableRedstoneArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "   ", "RRR", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "RRR", "R R", "   ", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneChestplate, 1), "R R", "RRR", "RRR", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneLeggings, 1), "RRR", "R R", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "   ", "R R", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "R R", "R R", "   ", 'R', "dustRedstone"));
-            }
-            if (ARPConfig.recipes == 1 && ARPConfig.enableRedstoneArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "   ", "RRR", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneHelmet, 1), "RRR", "R R", "   ", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneChestplate, 1), "R R", "RRR", "RRR", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneLeggings, 1), "RRR", "R R", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "   ", "R R", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBoots, 1), "R R", "R R", "   ", 'R', "blockRedstone"));
             }
         }
     }

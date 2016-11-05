@@ -13,118 +13,174 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  */
 public class ARPConfig {
 
-    //Weapons.Swords.Properties
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "coalSwordDamage", comment = "Set the amount of damage the Coal Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    //Weapons.*.Registry
+    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalSword", comment = "Enable/Disable the Coal Sword from the Game")
+    public static boolean enableCoalSword = true;
+    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalBattleAxe", comment = "Enable/Disable the Coal BattleAxe from the Game")
+    public static boolean enableCoalBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalBow", comment = "Enable/Disable the Coal Bow from the Game")
+    public static boolean enableCoalBow = true;
+    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis Sword from the Game")
+    public static boolean enableLapisSword = true;
+    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis BattleAxe from the Game")
+    public static boolean enableLapisBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis Bow from the Game")
+    public static boolean enableLapisBow = true;
+    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneSword", comment = "Enable/Disable the Redstone Sword from the Game")
+    public static boolean enableRedstoneSword = true;
+    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneBattleAxe", comment = "Enable/Disable the Redstone BattleAxe from the Game")
+    public static boolean enableRedstoneBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneBow", comment = "Enable/Disable the Redstone Bow from the Game")
+    public static boolean enableRedstoneBow = true;
+    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldSword", comment = "Enable/Disable the Emerald Sword from the Game")
+    public static boolean enableEmeraldSword = true;
+    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldBattleAxe", comment = "Enable/Disable the Emerald Battle from the Game")
+    public static boolean enableEmeraldBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldBow", comment = "Enable/Disable the Emerald Bow from the Game")
+    public static boolean enableEmeraldBow = true;
+    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianSword", comment = "Enable/Disable the Obsidian Sword from the Game")
+    public static boolean enableObsidianSword = true;
+    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianBattleAxe", comment = "Enable/Disable the Obsidian BattleAxe from the Game")
+    public static boolean enableObsidianBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianBow", comment = "Enable/Disable the Obsidian Bow from the Game")
+    public static boolean enableObsidianBow = true;
+    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaSword", comment = "Enable/Disable the Lava Sword from the Game")
+    public static boolean enableLavaSword = true;
+    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaBattleAxe", comment = "Enable/Disable the Lava BattleAxe from the Game")
+    public static boolean enableLavaBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaBow", comment = "Enable/Disable the Lava Bow from the Game")
+    public static boolean enableLavaBow = true;
+    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianSword", comment = "Enable/Disable the Guardian Sword from the Game")
+    public static boolean enableGuardianSword = true;
+    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianBattleAxe", comment = "Enable/Disable the Guardian BattleAxe from the Game")
+    public static boolean enableGuardianBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianBow", comment = "Enable/Disable the Guardian Bow from the Game")
+    public static boolean enableGuardianBow = true;
+    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarSword", comment = "Enable/Disable the Super Star Sword from the Game")
+    public static boolean enableSuperStarSword = true;
+    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarBattleAxe", comment = "Enable/Disable the Super Star BattleAxe from the Game")
+    public static boolean enableSuperStarBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarBow", comment = "Enable/Disable the Super Star Bow from the Game")
+    public static boolean enableSuperStarBow = true;
+    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonSword", comment = "Enable/Disable the Ender Dragon Sword from the Game")
+    public static boolean enableEnderDragonSword = true;
+    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonBattleAxe", comment = "Enable/Disable the Ender Dragon BattleAxe from the Game")
+    public static boolean enableEnderDragonBattleAxe = true;
+    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonBow", comment = "Enable/Disable the Ender Dragon Bow from the Game")
+    public static boolean enableEnderDragonBow = true;
+
+    //Weapons.*.Sword
+    @ModConfigProperty(category = "Weapons.Coal.Sword", name = "coalSwordDamage", comment = "Set the amount of damage the Coal Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double coalSwordDamage = 0.5;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lapisSwordDamage", comment = "Set the amount of damage the Lapis Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lapis.Sword", name = "lapisSwordDamage", comment = "Set the amount of damage the Lapis Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lapisSwordDamage = 1.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "redstoneSwordDamage", comment = "Set the amount of damage the Redstone Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Redstone.Sword", name = "redstoneSwordDamage", comment = "Set the amount of damage the Redstone Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double redstoneSwordDamage = 1.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "emeraldSwordDamage", comment = "Set the amount of damage the Emerald Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Emerald.Sword", name = "emeraldSwordDamage", comment = "Set the amount of damage the Emerald Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double emeraldSwordDamage = 1.5;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "obsidianSwordDamage", comment = "Set the amount of damage the Obsidian Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Obsidian.Sword", name = "obsidianSwordDamage", comment = "Set the amount of damage the Obsidian Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double obsidianSwordDamage = 4.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lavaSwordDamage", comment = "Set the amount of damage the Lava Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lava.Sword", name = "lavaSwordDamage", comment = "Set the amount of damage the Lava Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lavaSwordDamage = 4.5;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "guardianSwordDamage", comment = "Set the amount of damage the Guardian Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Guardian.Sword", name = "guardianSwordDamage", comment = "Set the amount of damage the Guardian Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double guardianSwordDamage = 6.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "superStarSwordDamage", comment = "Set the amount of damage the Super Star Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.SuperStar.Sword", name = "superStarSwordDamage", comment = "Set the amount of damage the Super Star Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double superStarSwordDamage = 7.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "enderDragonSwordDamage", comment = "Set the amount of damage the Ender Dragon Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.EnderDragon.Sword", name = "enderDragonSwordDamage", comment = "Set the amount of damage the Ender Dragon Sword will do (Additional +4 damage will be added automatically by minecraft)")
     public static double enderDragonSwordDamage = 8.0;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "coalSwordDurability", comment = "Set the amount of durability the Coal Sword have")
+    @ModConfigProperty(category = "Weapons.Coal.Sword", name = "coalSwordDurability", comment = "Set the amount of durability the Coal Sword have")
     public static int coalSwordDurability = 59;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lapisSwordDurability", comment = "Set the amount of durability the Lapis Sword have")
+    @ModConfigProperty(category = "Weapons.Lapis.Sword", name = "lapisSwordDurability", comment = "Set the amount of durability the Lapis Sword have")
     public static int lapisSwordDurability = 250;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "redstoneSwordDurability", comment = "Set the amount of durability the Redstone Sword have")
+    @ModConfigProperty(category = "Weapons.Redstone.Sword", name = "redstoneSwordDurability", comment = "Set the amount of durability the Redstone Sword have")
     public static int redstoneSwordDurability = 200;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "emeraldSwordDurability", comment = "Set the amount of durability the Emerald Sword have")
+    @ModConfigProperty(category = "Weapons.Emerald.Sword", name = "emeraldSwordDurability", comment = "Set the amount of durability the Emerald Sword have")
     public static int emeraldSwordDurability = 1561;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "obsidianSwordDurability", comment = "Set the amount of durability the Obsidian Sword have")
+    @ModConfigProperty(category = "Weapons.Obsidian.Sword", name = "obsidianSwordDurability", comment = "Set the amount of durability the Obsidian Sword have")
     public static int obsidianSwordDurability = 1500;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lavaSwordDurability", comment = "Set the amount of durability the Lava Sword have")
+    @ModConfigProperty(category = "Weapons.Lava.Sword", name = "lavaSwordDurability", comment = "Set the amount of durability the Lava Sword have")
     public static int lavaSwordDurability = 1750;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "guardianSwordDurability", comment = "Set the amount of durability the Guardian Sword have")
+    @ModConfigProperty(category = "Weapons.Guardian.Sword", name = "guardianSwordDurability", comment = "Set the amount of durability the Guardian Sword have")
     public static int guardianSwordDurability = 1800;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "superStarSwordDurability", comment = "Set the amount of durability the Super Star Sword have")
+    @ModConfigProperty(category = "Weapons.SuperStar.Sword", name = "superStarSwordDurability", comment = "Set the amount of durability the Super Star Sword have")
     public static int superStarSwordDurability = 1950;
-    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "enderDragonSwordDurability", comment = "Set the amount of durability the Ender Dragon Sword have")
+    @ModConfigProperty(category = "Weapons.EnderDragon.Sword", name = "enderDragonSwordDurability", comment = "Set the amount of durability the Ender Dragon Sword have")
     public static int enderDragonSwordDurability = 2310;
 
-    //Weapons.BattleAxes.Properties
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "coalBattleAxeDamage", comment = "Set the amount of damage the Coal BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    //Weapons.*.BattleAxe
+    @ModConfigProperty(category = "Weapons.Coal.BattleAxe", name = "coalBattleAxeDamage", comment = "Set the amount of damage the Coal BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double coalBattleAxeDamage = 2.5;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lapisBattleAxeDamage", comment = "Set the amount of damage the Lapis BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lapis.BattleAxe", name = "lapisBattleAxeDamage", comment = "Set the amount of damage the Lapis BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lapisBattleAxeDamage = 3.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "redstoneBattleAxeDamage", comment = "Set the amount of damage the Redstone BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Redstone.BattleAxe", name = "redstoneBattleAxeDamage", comment = "Set the amount of damage the Redstone BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double redstoneBattleAxeDamage = 3.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "emeraldBattleAxeDamage", comment = "Set the amount of damage the Emerald BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Emerald.BattleAxe", name = "emeraldBattleAxeDamage", comment = "Set the amount of damage the Emerald BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double emeraldBattleAxeDamage = 3.5;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "obsidianBattleAxeDamage", comment = "Set the amount of damage the Obsidian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Obsidian.BattleAxe", name = "obsidianBattleAxeDamage", comment = "Set the amount of damage the Obsidian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double obsidianBattleAxeDamage = 6.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lavaBattleAxeDamage", comment = "Set the amount of damage the Lava BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lava.BattleAxe", name = "lavaBattleAxeDamage", comment = "Set the amount of damage the Lava BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lavaBattleAxeDamage = 6.5;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "guardianBattleAxeDamage", comment = "Set the amount of damage the Guardian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Guardian.BattleAxe", name = "guardianBattleAxeDamage", comment = "Set the amount of damage the Guardian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double guardianBattleAxeDamage = 7.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "superStarBattleAxeDamage", comment = "Set the amount of damage the Super Star BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.SuperStar.BattleAxe", name = "superStarBattleAxeDamage", comment = "Set the amount of damage the Super Star BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double superStarBattleAxeDamage = 8.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "enderDragonBattleAxeDamage", comment = "Set the amount of damage the Ender Dragon BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.EnderDragon.BattleAxe", name = "enderDragonBattleAxeDamage", comment = "Set the amount of damage the Ender Dragon BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double enderDragonBattleAxeDamage = 10.0;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "coalBattleAxeDurability", comment = "Set the amount of durability the Coal BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Coal.BattleAxe", name = "coalBattleAxeDurability", comment = "Set the amount of durability the Coal BattleAxe have")
     public static int coalBattleAxeDurability = 59;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lapisBattleAxeDurability", comment = "Set the amount of durability the Lapis BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Lapis.BattleAxe", name = "lapisBattleAxeDurability", comment = "Set the amount of durability the Lapis BattleAxe have")
     public static int lapisBattleAxeDurability = 250;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "redstoneBattleAxeDurability", comment = "Set the amount of durability the Redstone BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Redstone.BattleAxe", name = "redstoneBattleAxeDurability", comment = "Set the amount of durability the Redstone BattleAxe have")
     public static int redstoneBattleAxeDurability = 200;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "emeraldBattleAxeDurability", comment = "Set the amount of durability the Emerald BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Emerald.BattleAxe", name = "emeraldBattleAxeDurability", comment = "Set the amount of durability the Emerald BattleAxe have")
     public static int emeraldBattleAxeDurability = 1561;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "obsidianBattleAxeDurability", comment = "Set the amount of durability the Obsidian BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Obsidian.BattleAxe", name = "obsidianBattleAxeDurability", comment = "Set the amount of durability the Obsidian BattleAxe have")
     public static int obsidianBattleAxeDurability = 1500;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lavaBattleAxeDurability", comment = "Set the amount of durability the Lava BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Lava.BattleAxe", name = "lavaBattleAxeDurability", comment = "Set the amount of durability the Lava BattleAxe have")
     public static int lavaBattleAxeDurability = 1750;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "guardianBattleAxeDurability", comment = "Set the amount of durability the Guardian BattleAxe have")
+    @ModConfigProperty(category = "Weapons.Guardian.BattleAxe", name = "guardianBattleAxeDurability", comment = "Set the amount of durability the Guardian BattleAxe have")
     public static int guardianBattleAxeDurability = 1800;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "superStarBattleAxeDurability", comment = "Set the amount of durability the Super Star BattleAxe have")
+    @ModConfigProperty(category = "Weapons.SuperStar.BattleAxe", name = "superStarBattleAxeDurability", comment = "Set the amount of durability the Super Star BattleAxe have")
     public static int superStarBattleAxeDurability = 1950;
-    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "enderDragonBattleAxeDurability", comment = "Set the amount of durability the Ender Dragon BattleAxe have")
+    @ModConfigProperty(category = "Weapons.EnderDragon.BattleAxe", name = "enderDragonBattleAxeDurability", comment = "Set the amount of durability the Ender Dragon BattleAxe have")
     public static int enderDragonBattleAxeDurability = 2310;
 
-    //Weapons.Bows.Properties
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    //Weapons.*.Bow
+    @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double coalBowArrowBonusDamage = 2.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lapisBowArrowBonusDamage = 3.5;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Redstone.Bow", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double redstoneBowArrowBonusDamage = 3.5;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Emerald.Bow", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double emeraldBowArrowBonusDamage = 5.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Obsidian.Bow", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double obsidianBowArrowBonusDamage = 6.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Lava.Bow", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double lavaBowArrowBonusDamage = 7.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.Guardian.Bow", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double guardianBowArrowBonusDamage = 8.5;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.SuperStar.Bow", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double superStarBowArrowBonusDamage = 10.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    @ModConfigProperty(category = "Weapons.EnderDragon.Bow", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do (Additional +4 damage will be added automatically by minecraft)")
     public static double enderDragonBowArrowBonusDamage = 12.0;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "coalBowDurability", comment = "Set the amount of durability the Coal Bow have")
+    @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowDurability", comment = "Set the amount of durability the Coal Bow have")
     public static int coalBowDurability = 59;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lapisBowDurability", comment = "Set the amount of durability the Lapis Bow have")
+    @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowDurability", comment = "Set the amount of durability the Lapis Bow have")
     public static int lapisBowDurability = 250;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "redstoneBowDurability", comment = "Set the amount of durability the Redstone Bow have")
+    @ModConfigProperty(category = "Weapons.Redstone.Bow", name = "redstoneBowDurability", comment = "Set the amount of durability the Redstone Bow have")
     public static int redstoneBowDurability = 200;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "emeraldBowDurability", comment = "Set the amount of durability the Emerald Bow have")
+    @ModConfigProperty(category = "Weapons.Emerald.Bow", name = "emeraldBowDurability", comment = "Set the amount of durability the Emerald Bow have")
     public static int emeraldBowDurability = 1561;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "obsidianBowDurability", comment = "Set the amount of durability the Obsidian Bow have")
+    @ModConfigProperty(category = "Weapons.Obsidian.Bow", name = "obsidianBowDurability", comment = "Set the amount of durability the Obsidian Bow have")
     public static int obsidianBowDurability = 1500;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lavaBowDurability", comment = "Set the amount of durability the Lava Bow have")
+    @ModConfigProperty(category = "Weapons.Lava.Bow", name = "lavaBowDurability", comment = "Set the amount of durability the Lava Bow have")
     public static int lavaBowDurability = 1750;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "guardianBowDurability", comment = "Set the amount of durability the Guardian Bow have")
+    @ModConfigProperty(category = "Weapons.Guardian.Bow", name = "guardianBowDurability", comment = "Set the amount of durability the Guardian Bow have")
     public static int guardianBowDurability = 1800;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "superStarBowDurability", comment = "Set the amount of durability the Super Star Bow have")
+    @ModConfigProperty(category = "Weapons.SuperStar.Bow", name = "superStarBowDurability", comment = "Set the amount of durability the Super Star Bow have")
     public static int superStarBowDurability = 1950;
-    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "enderDragonBowDurability", comment = "Set the amount of durability the Ender Dragon Bow have")
+    @ModConfigProperty(category = "Weapons.EnderDragon.Bow", name = "enderDragonBowDurability", comment = "Set the amount of durability the Ender Dragon Bow have")
     public static int enderDragonBowDurability = 2310;
 
     //Armors.*.Registry
@@ -291,130 +347,130 @@ public class ARPConfig {
     @ModConfigProperty(category = "Debug", name = "debugModeEnchantments", comment = "Enable/Disable Debug Mode for the Enchantments")
     public static boolean debugModeEnchantments = false;
     //Weapons
-    @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable The ArmorPlus Sword's Recipes")
+    @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
     public static boolean enableSwordsRecipes = true;
-    @ModConfigProperty(category = "Weapons", name = "enableBattleAxesRecipes", comment = "Enable/Disable The ArmorPlus Battle Axes's Recipes")
+    @ModConfigProperty(category = "Weapons", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
     public static boolean enableBattleAxesRecipes = true;
-    @ModConfigProperty(category = "Weapons", name = "enableBowsRecipes", comment = "Enable/Disable The ArmorPlus Bows's Recipes")
+    @ModConfigProperty(category = "Weapons", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
     public static boolean enableBowsRecipes = true;
     //SuperStarArmor
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHRegen", comment = "Enable/Disable The Super Star Helmet Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHRegen", comment = "Enable/Disable the Super Star Helmet Regeneration")
     public static boolean enableSuperStarHRegen = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarCRegen", comment = "Enable/Disable The Super Star Chestplate Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarCRegen", comment = "Enable/Disable the Super Star Chestplate Regeneration")
     public static boolean enableSuperStarCRegen = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarLRegen", comment = "Enable/Disable The Super Star Leggings Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarLRegen", comment = "Enable/Disable the Super Star Leggings Regeneration")
     public static boolean enableSuperStarLRegen = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarBRegen", comment = "Enable/Disable The Super Star Boots Regeneration")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarBRegen", comment = "Enable/Disable the Super Star Boots Regeneration")
     public static boolean enableSuperStarBRegen = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableFullSuperStarArmorEffect", comment = "Enable/Disable The Full Super Star Armor Effect")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableFullSuperStarArmorEffect", comment = "Enable/Disable the Full Super Star Armor Effect")
     public static boolean enableFullSuperStarArmorEffect = false;
     //LavaArmor
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaHEffects", comment = "Enable/Disable The Lava Helmet Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaHEffects", comment = "Enable/Disable the Lava Helmet Resistance and Fire Resistance")
     public static boolean enableLavaHEffects = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaCEffects", comment = "Enable/Disable The Lava Chestplate Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaCEffects", comment = "Enable/Disable the Lava Chestplate Resistance and Fire Resistance")
     public static boolean enableLavaCEffects = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaLEffects", comment = "Enable/Disable The Lava Leggings Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaLEffects", comment = "Enable/Disable the Lava Leggings Resistance and Fire Resistance")
     public static boolean enableLavaLEffects = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaBEffects", comment = "Enable/Disable The Lava Boots Resistance and Fire Resistance")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaBEffects", comment = "Enable/Disable the Lava Boots Resistance and Fire Resistance")
     public static boolean enableLavaBEffects = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableFullLavaArmorEffect", comment = "Enable/Disable The Full Lava Armor Effect")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableFullLavaArmorEffect", comment = "Enable/Disable the Full Lava Armor Effect")
     public static boolean enableFullLavaArmorEffect = false;
     //ObsidianArmor
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianHResistance", comment = "Enable/Disable The Obsidian Helmet Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianHResistance", comment = "Enable/Disable the Obsidian Helmet Resistance")
     public static boolean enableObsidianHResistance = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianCResistance", comment = "Enable/Disable The Obsidian Chestplate Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianCResistance", comment = "Enable/Disable the Obsidian Chestplate Resistance")
     public static boolean enableObsidianCResistance = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianLResistance", comment = "Enable/Disable The Obsidian Leggings Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianLResistance", comment = "Enable/Disable the Obsidian Leggings Resistance")
     public static boolean enableObsidianLResistance = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianBResistance", comment = "Enable/Disable The Obsidian Boots Resistance")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianBResistance", comment = "Enable/Disable the Obsidian Boots Resistance")
     public static boolean enableObsidianBResistance = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableFullObsidianArmorEffect", comment = "Enable/Disable The Full Obsidian Armor Effect")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableFullObsidianArmorEffect", comment = "Enable/Disable the Full Obsidian Armor Effect")
     public static boolean enableFullObsidianArmorEffect = false;
     //EmeraldArmor
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldHHaste", comment = "Enable/Disable The Emerald Helmet Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldHHaste", comment = "Enable/Disable the Emerald Helmet Haste")
     public static boolean enableEmeraldHHaste = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldCHaste", comment = "Enable/Disable The Emerald Chestplate Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldCHaste", comment = "Enable/Disable the Emerald Chestplate Haste")
     public static boolean enableEmeraldCHaste = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldLHaste", comment = "Enable/Disable The Emerald Leggings Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldLHaste", comment = "Enable/Disable the Emerald Leggings Haste")
     public static boolean enableEmeraldLHaste = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldBHaste", comment = "Enable/Disable The Emerald Boots Haste")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldBHaste", comment = "Enable/Disable the Emerald Boots Haste")
     public static boolean enableEmeraldBHaste = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableFullEmeraldArmorEffect", comment = "Enable/Disable The Full Emerald Armor Effect")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableFullEmeraldArmorEffect", comment = "Enable/Disable the Full Emerald Armor Effect")
     public static boolean enableFullEmeraldArmorEffect = false;
     //RedstoneArmor
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneHSpeed", comment = "Enable/Disable The Redstone Helmet Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneHSpeed", comment = "Enable/Disable the Redstone Helmet Speed")
     public static boolean enableRedstoneHSpeed = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneCSpeed", comment = "Enable/Disable The Redstone Chestplate Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneCSpeed", comment = "Enable/Disable the Redstone Chestplate Speed")
     public static boolean enableRedstoneCSpeed = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneLSpeed", comment = "Enable/Disable The Redstone Leggings Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneLSpeed", comment = "Enable/Disable the Redstone Leggings Speed")
     public static boolean enableRedstoneLSpeed = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneBSpeed", comment = "Enable/Disable The Redstone Boots Speed")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneBSpeed", comment = "Enable/Disable the Redstone Boots Speed")
     public static boolean enableRedstoneBSpeed = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableFullRedstoneArmorEffect", comment = "Enable/Disable The Full Redstone Armor Effect")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableFullRedstoneArmorEffect", comment = "Enable/Disable the Full Redstone Armor Effect")
     public static boolean enableFullRedstoneArmorEffect = false;
     //LapisArmor
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisHBreathing", comment = "Enable/Disable The Lapis Helmet Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisHBreathing", comment = "Enable/Disable the Lapis Helmet Water Breathing")
     public static boolean enableLapisHBreathing = true;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisCBreathing", comment = "Enable/Disable The Lapis Chestplate Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisCBreathing", comment = "Enable/Disable the Lapis Chestplate Water Breathing")
     public static boolean enableLapisCBreathing = true;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisLBreathing", comment = "Enable/Disable The Lapis Leggings Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisLBreathing", comment = "Enable/Disable the Lapis Leggings Water Breathing")
     public static boolean enableLapisLBreathing = true;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisBBreathing", comment = "Enable/Disable The Lapis Boots Water Breathing")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisBBreathing", comment = "Enable/Disable the Lapis Boots Water Breathing")
     public static boolean enableLapisBBreathing = true;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableFullLapisArmorEffect", comment = "Enable/Disable The Full Lapis Armor Effect")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableFullLapisArmorEffect", comment = "Enable/Disable the Full Lapis Armor Effect")
     public static boolean enableFullLapisArmorEffect = false;
     //CoalArmor
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalHNightVision", comment = "Enable/Disable The Coal Helmet NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalHNightVision", comment = "Enable/Disable the Coal Helmet NightVision")
     public static boolean enableCoalHNightVision = true;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalCNightVision", comment = "Enable/Disable The Coal Chestplate NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalCNightVision", comment = "Enable/Disable the Coal Chestplate NightVision")
     public static boolean enableCoalCNightVision = true;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalLNightVision", comment = "Enable/Disable The Coal Leggings NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalLNightVision", comment = "Enable/Disable the Coal Leggings NightVision")
     public static boolean enableCoalLNightVision = true;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalBNightVision", comment = "Enable/Disable The Coal Boots NightVision")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalBNightVision", comment = "Enable/Disable the Coal Boots NightVision")
     public static boolean enableCoalBNightVision = true;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableFullCoalArmorEffect", comment = "Enable/Disable The Full Coal Armor Effect")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableFullCoalArmorEffect", comment = "Enable/Disable the Full Coal Armor Effect")
     public static boolean enableFullCoalArmorEffect = false;
     //Registry
-    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "enableCoalArmor", comment = "Enable/Disable The Coal Armor From the Game")
+    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "enableCoalArmor", comment = "Enable/Disable the Coal Armor from the Game")
     public static boolean enableCoalArmor = true;
-    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "enableLapisArmor", comment = "Enable/Disable The Lapis Armor From the Game")
+    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "enableLapisArmor", comment = "Enable/Disable the Lapis Armor from the Game")
     public static boolean enableLapisArmor = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "enableRedstoneArmor", comment = "Enable/Disable The Redstone Armor From the Game")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "enableRedstoneArmor", comment = "Enable/Disable the Redstone Armor from the Game")
     public static boolean enableRedstoneArmor = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "enableEmeraldArmor", comment = "Enable/Disable The Emerald Armor From the Game")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "enableEmeraldArmor", comment = "Enable/Disable the Emerald Armor from the Game")
     public static boolean enableEmeraldArmor = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "enableObsidianArmor", comment = "Enable/Disable The Obsidian Armor From the Game")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "enableObsidianArmor", comment = "Enable/Disable the Obsidian Armor from the Game")
     public static boolean enableObsidianArmor = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "enableLavaArmor", comment = "Enable/Disable The Lava Armor From the Game")
+    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "enableLavaArmor", comment = "Enable/Disable the Lava Armor from the Game")
     public static boolean enableLavaArmor = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "enableSuperStarArmor", comment = "Enable/Disable The Super Star Armor From the Game")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "enableSuperStarArmor", comment = "Enable/Disable the Super Star Armor from the Game")
     public static boolean enableSuperStarArmor = true;
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enableEnderDragonArmor", comment = "Enable/Disable The Ender Dragon Armor From the Game")
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enableEnderDragonArmor", comment = "Enable/Disable the Ender Dragon Armor from the Game")
     public static boolean enableEnderDragonArmor = true;
-    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "enableGuardianArmor", comment = "Enable/Disable The Guardian Armor From the Game")
+    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "enableGuardianArmor", comment = "Enable/Disable the Guardian Armor from the Game")
     public static boolean enableGuardianArmor = true;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "enableTheUltimateArmor", comment = "Enable/Disable The Ultimate Armor From the Game")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "enableTheUltimateArmor", comment = "Enable/Disable The Ultimate Armor from the Game")
     public static boolean enableTheUltimateArmor = true;
-    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "enableArditeArmor", comment = "Enable/Disable The Ardite Armors From the Game")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "enableArditeArmor", comment = "Enable/Disable the Ardite Armors from the Game")
     public static boolean enableArditeArmor = true;
-    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "enableCobaltArmor", comment = "Enable/Disable The Cobalt Armors From the Game")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "enableCobaltArmor", comment = "Enable/Disable the Cobalt Armors from the Game")
     public static boolean enableCobaltArmor = true;
-    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "enableManyullynArmor", comment = "Enable/Disable The Manyullyn Armors From the Game")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "enableManyullynArmor", comment = "Enable/Disable the Manyullyn Armors from the Game")
     public static boolean enableManyullynArmor = true;
-    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "enablePigIronArmor", comment = "Enable/Disable The Pig Iron Armors From the Game")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "enablePigIronArmor", comment = "Enable/Disable the Pig Iron Armors from the Game")
     public static boolean enablePigIronArmor = true;
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "enableKnightSlimeArmor", comment = "Enable/Disable The Knight Slime Armors From the Game")
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "enableKnightSlimeArmor", comment = "Enable/Disable the Knight Slime Armors from the Game")
     public static boolean enableKnightSlimeArmor = true;
-    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "enableChickenArmor", comment = "Enable/Disable The Chicken Armors From the Game")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "enableChickenArmor", comment = "Enable/Disable the Chicken Armors from the Game")
     public static boolean enableChickenArmor = true;
-    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "enableSlimeArmor", comment = "Enable/Disable The Slime Armors From the Game")
+    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "enableSlimeArmor", comment = "Enable/Disable the Slime Armors from the Game")
     public static boolean enableSlimeArmor = true;
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "enableSteelArmor", comment = "Enable/Disable The Steel Armors From the Game")
+    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "enableSteelArmor", comment = "Enable/Disable the Steel Armors from the Game")
     public static boolean enableSteelArmor = true;
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "enableElectricalArmor", comment = "Enable/Disable The Electrical Armors From the Game")
+    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "enableElectricalArmor", comment = "Enable/Disable the Electrical Armors from the Game")
     public static boolean enableElectricalArmor = true;
     //FlightAbility
-    @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable The Armors Flight")
+    @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable the Armors Flight")
     public static boolean enableFlightAbility = true;
     //EffectLevel
     @ModConfigProperty(category = "Armors.EmeraldArmor.EffectLevel", name = "emeraldArmorEffectlevel", comment = "Set the level of the Haste effect by the Emerald Armor.")
