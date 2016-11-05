@@ -336,6 +336,7 @@ item.armorplus.coal_arrow.name=Coal Arrow
 item.armorplus.lapis_arrow.name=Lapis Arrow
 item.armorplus.redstone_arrow.name=Redstone Arrow
 item.armorplus.lava_arrow.name=Lava Arrow
+item.armorplus.ender_dragon_arrow.name=Ender Dragon Arrow
 
 #TeslaItems
 item.armorplus.tesla_sword.name=Tesla Sword

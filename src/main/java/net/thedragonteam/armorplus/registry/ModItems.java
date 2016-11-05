@@ -4,8 +4,6 @@
 
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.item.Item;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,10 +13,7 @@ import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
 import net.thedragonteam.armorplus.armors.base.BaseSteelArmor;
 import net.thedragonteam.armorplus.armors.base.BaseUltimateArmor;
 import net.thedragonteam.armorplus.items.*;
-import net.thedragonteam.armorplus.items.arrows.ItemCoalArrow;
-import net.thedragonteam.armorplus.items.arrows.ItemLapisArrow;
-import net.thedragonteam.armorplus.items.arrows.ItemLavaArrow;
-import net.thedragonteam.armorplus.items.arrows.ItemRedstoneArrow;
+import net.thedragonteam.armorplus.items.arrows.*;
 import net.thedragonteam.armorplus.items.base.*;
 import net.thedragonteam.armorplus.items.baubles.ItemBaubleDragon;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
@@ -42,25 +37,6 @@ public class ModItems {
      * Float damageVsEntity + 4.0F
      * public static ToolMaterial MATERIAL = EnumHelper.addToolMaterial("MATERIAL", int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability);
      */
-    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, 59, 1.0F, 0.5F, 15);
-    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, 250, 1.0F, 1.0F, 30);
-    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, 200, 1.0F, 1.5F, 20);
-    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, 1561, 1.0F, 3.5F, 20);
-    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, 1500, 1.0F, 4.0F, 20);
-    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, 1750, 1.0F, 4.5F, 20);
-    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, 1750, 0.0F, 6.0F, 20);
-    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, 500, 1.0F, 3.0F, 30);
-    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, 2000, 1.0F, 8.0F, 20);
-    public static Item.ToolMaterial battleAxeCoalMaterial = EnumHelper.addToolMaterial("battleAxeCoalMaterial", 1, 59, 1.0F, 2.5F, 15);
-    public static Item.ToolMaterial battleAxeLapisMaterial = EnumHelper.addToolMaterial("battleAxeLapisMaterial", 1, 250, 1.0F, 3.0F, 30);
-    public static Item.ToolMaterial battleAxeRedstoneMaterial = EnumHelper.addToolMaterial("battleAxeRedstoneMaterial", 1, 200, 1.0F, 3.5F, 20);
-    public static Item.ToolMaterial battleAxeEmeraldMaterial = EnumHelper.addToolMaterial("battleAxeEmeraldMaterial", 1, 1561, 1.0F, 5.5F, 20);
-    public static Item.ToolMaterial battleAxeObsidianMaterial = EnumHelper.addToolMaterial("battleAxeObsidianMaterial", 1, 1500, 1.0F, 6.0F, 20);
-    public static Item.ToolMaterial battleAxeLavaMaterial = EnumHelper.addToolMaterial("battleAxeLavaMaterial", 1, 1750, 1.0F, 6.5F, 20);
-    public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, 1750, 0.0F, 8.0F, 20);
-    public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, 500, 1.0F, 5.0F, 30);
-    public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, 2000, 1.0F, 10.0F, 20);
-
     public static BaseItem chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial, armorPlusBook, steelIngot, electricalIngot, armorPlusInfoBook;
     public static RedstoneApple redstoneApple;
     public static LavaCrystal lavaCrystal;
@@ -111,6 +87,7 @@ public class ModItems {
     public static ItemLapisArrow itemLapisArrow;
     public static ItemRedstoneArrow itemRedstoneArrow;
     public static ItemLavaArrow itemLavaArrow;
+    public static ItemEnderDragonArrow itemEnderDragonArrow;
     public static ItemEnergyStorage itemEnergyStorage;
     public static ItemBaubleDragon itemBaubleDragon;
 
@@ -118,6 +95,7 @@ public class ModItems {
         if (Loader.isModLoaded("Baubles")) {
             itemBaubleDragon = new ItemBaubleDragon();
         }
+        itemEnderDragonArrow = new ItemEnderDragonArrow();
         itemEnergyStorage = new ItemEnergyStorage();
         guiTester = new GuiTester();
         itemRFShovel = new ItemRFShovel();
@@ -314,6 +292,7 @@ public class ModItems {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        itemEnderDragonArrow.initModel();
         if (Loader.isModLoaded("Baubles")) {
             itemBaubleDragon.initModel();
         }

@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.util.ParticlesHelper;
 
 public class EntityRedstoneArrow extends EntityArrow {
 
@@ -28,11 +29,17 @@ public class EntityRedstoneArrow extends EntityArrow {
     }
 
     @Override
+    public void setDamage(double damageIn) {
+        super.setDamage(3.5D);
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
 
+        EnumParticleTypes redstone = EnumParticleTypes.REDSTONE;
         if (this.worldObj.isRemote && !this.inGround) {
-            this.worldObj.spawnParticle(EnumParticleTypes.REDSTONE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+            ParticlesHelper.spawnParticle(this, redstone, this.posX, this.posY, this.posZ);
         }
     }
 

@@ -12,44 +12,160 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  * - TheDragonTeam
  */
 public class ARPConfig {
-    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorToughnessPoints", comment = "Set the amount of toughness points the Coal Armor will have ")
-    public static double coalArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorToughnessPoints", comment = "Set the amount of toughness points the Lapis Armor will have ")
-    public static double lapisArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorToughnessPoints", comment = "Set the amount of toughness points the Redstone Armor will have ")
-    public static double redstoneArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorToughnessPoints", comment = "Set the amount of toughness points the Emerald Armor will have ")
-    public static double emeraldArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorToughnessPoints", comment = "Set the amount of toughness points the Obsidian Armor will have ")
-    public static double obsidianArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorToughnessPoints", comment = "Set the amount of toughness points the Lava Armor will have ")
-    public static double lavaArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorToughnessPoints", comment = "Set the amount of toughness points the Super Star Armor will have ")
-    public static double superStarArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorToughnessPoints", comment = "Set the amount of toughness points the Ender Dragon Armor will have ")
-    public static double enderDragonArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorToughnessPoints", comment = "Set the amount of toughness points the Guardian Armor will have ")
-    public static double guardianArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorToughnessPoints", comment = "Set the amount of toughness points the Ultimate Armor will have ")
-    public static double theUltimateArmorToughnessPoints = 6.0F;
-    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorToughnessPoints", comment = "Set the amount of toughness points the Ardite Armor will have ")
-    public static double arditeArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorToughnessPoints", comment = "Set the amount of toughness points the Cobalt Armor will have ")
-    public static double cobaltArmorToughnessPoints = 2.0F;
-    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorToughnessPoints", comment = "Set the amount of toughness points the Manyullyn Armor will have ")
-    public static double manyullynArmorToughnessPoints = 3.0F;
-    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorToughnessPoints", comment = "Set the amount of toughness points the Pig Iron Armor will have ")
-    public static double pigIronArmorToughnessPoints = 1.0F;
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorToughnessPoints", comment = "Set the amount of toughness points the Knight Slime Armor will have ")
-    public static double knightSlimeArmorToughnessPoints = 1.0F;
-    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorToughnessPoints", comment = "Set the amount of toughness points the Chicen Armor will have ")
-    public static double chickenArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorToughnessPoints", comment = "Set the amount of toughness points the Slime Armor will have ")
-    public static double slimeArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorToughnessPoints", comment = "Set the amount of toughness points the Steel Armor will have ")
-    public static double steelArmorToughnessPoints = 0.0F;
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorToughnessPoints", comment = "Set the amount of toughness points the Electrical Armor will have ")
-    public static double electricalArmorToughnessPoints = 0.0F;
+
+    //Weapons.Swords.Properties
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "coalSwordDamage", comment = "Set the amount of damage the Coal Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double coalSwordDamage = 0.5;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lapisSwordDamage", comment = "Set the amount of damage the Lapis Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lapisSwordDamage = 1.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "redstoneSwordDamage", comment = "Set the amount of damage the Redstone Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double redstoneSwordDamage = 1.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "emeraldSwordDamage", comment = "Set the amount of damage the Emerald Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double emeraldSwordDamage = 1.5;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "obsidianSwordDamage", comment = "Set the amount of damage the Obsidian Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double obsidianSwordDamage = 4.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lavaSwordDamage", comment = "Set the amount of damage the Lava Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lavaSwordDamage = 4.5;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "guardianSwordDamage", comment = "Set the amount of damage the Guardian Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double guardianSwordDamage = 6.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "superStarSwordDamage", comment = "Set the amount of damage the Super Star Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double superStarSwordDamage = 7.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "enderDragonSwordDamage", comment = "Set the amount of damage the Ender Dragon Sword will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double enderDragonSwordDamage = 8.0;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "coalSwordDurability", comment = "Set the amount of durability the Coal Sword have")
+    public static int coalSwordDurability = 59;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lapisSwordDurability", comment = "Set the amount of durability the Lapis Sword have")
+    public static int lapisSwordDurability = 250;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "redstoneSwordDurability", comment = "Set the amount of durability the Redstone Sword have")
+    public static int redstoneSwordDurability = 200;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "emeraldSwordDurability", comment = "Set the amount of durability the Emerald Sword have")
+    public static int emeraldSwordDurability = 1561;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "obsidianSwordDurability", comment = "Set the amount of durability the Obsidian Sword have")
+    public static int obsidianSwordDurability = 1500;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "lavaSwordDurability", comment = "Set the amount of durability the Lava Sword have")
+    public static int lavaSwordDurability = 1750;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "guardianSwordDurability", comment = "Set the amount of durability the Guardian Sword have")
+    public static int guardianSwordDurability = 1800;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "superStarSwordDurability", comment = "Set the amount of durability the Super Star Sword have")
+    public static int superStarSwordDurability = 1950;
+    @ModConfigProperty(category = "Weapons.Swords.Properties", name = "enderDragonSwordDurability", comment = "Set the amount of durability the Ender Dragon Sword have")
+    public static int enderDragonSwordDurability = 2310;
+
+    //Weapons.BattleAxes.Properties
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "coalBattleAxeDamage", comment = "Set the amount of damage the Coal BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double coalBattleAxeDamage = 2.5;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lapisBattleAxeDamage", comment = "Set the amount of damage the Lapis BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lapisBattleAxeDamage = 3.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "redstoneBattleAxeDamage", comment = "Set the amount of damage the Redstone BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double redstoneBattleAxeDamage = 3.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "emeraldBattleAxeDamage", comment = "Set the amount of damage the Emerald BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double emeraldBattleAxeDamage = 3.5;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "obsidianBattleAxeDamage", comment = "Set the amount of damage the Obsidian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double obsidianBattleAxeDamage = 6.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lavaBattleAxeDamage", comment = "Set the amount of damage the Lava BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lavaBattleAxeDamage = 6.5;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "guardianBattleAxeDamage", comment = "Set the amount of damage the Guardian BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double guardianBattleAxeDamage = 7.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "superStarBattleAxeDamage", comment = "Set the amount of damage the Super Star BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double superStarBattleAxeDamage = 8.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "enderDragonBattleAxeDamage", comment = "Set the amount of damage the Ender Dragon BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double enderDragonBattleAxeDamage = 10.0;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "coalBattleAxeDurability", comment = "Set the amount of durability the Coal BattleAxe have")
+    public static int coalBattleAxeDurability = 59;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lapisBattleAxeDurability", comment = "Set the amount of durability the Lapis BattleAxe have")
+    public static int lapisBattleAxeDurability = 250;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "redstoneBattleAxeDurability", comment = "Set the amount of durability the Redstone BattleAxe have")
+    public static int redstoneBattleAxeDurability = 200;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "emeraldBattleAxeDurability", comment = "Set the amount of durability the Emerald BattleAxe have")
+    public static int emeraldBattleAxeDurability = 1561;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "obsidianBattleAxeDurability", comment = "Set the amount of durability the Obsidian BattleAxe have")
+    public static int obsidianBattleAxeDurability = 1500;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "lavaBattleAxeDurability", comment = "Set the amount of durability the Lava BattleAxe have")
+    public static int lavaBattleAxeDurability = 1750;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "guardianBattleAxeDurability", comment = "Set the amount of durability the Guardian BattleAxe have")
+    public static int guardianBattleAxeDurability = 1800;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "superStarBattleAxeDurability", comment = "Set the amount of durability the Super Star BattleAxe have")
+    public static int superStarBattleAxeDurability = 1950;
+    @ModConfigProperty(category = "Weapons.BattleAxes.Properties", name = "enderDragonBattleAxeDurability", comment = "Set the amount of durability the Ender Dragon BattleAxe have")
+    public static int enderDragonBattleAxeDurability = 2310;
+
+    //Weapons.Bows.Properties
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double coalBowArrowBonusDamage = 2.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lapisBowArrowBonusDamage = 3.5;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double redstoneBowArrowBonusDamage = 3.5;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double emeraldBowArrowBonusDamage = 5.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double obsidianBowArrowBonusDamage = 6.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double lavaBowArrowBonusDamage = 7.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double guardianBowArrowBonusDamage = 8.5;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double superStarBowArrowBonusDamage = 10.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do (Additional +4 damage will be added automatically by minecraft)")
+    public static double enderDragonBowArrowBonusDamage = 12.0;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "coalBowDurability", comment = "Set the amount of durability the Coal Bow have")
+    public static int coalBowDurability = 59;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lapisBowDurability", comment = "Set the amount of durability the Lapis Bow have")
+    public static int lapisBowDurability = 250;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "redstoneBowDurability", comment = "Set the amount of durability the Redstone Bow have")
+    public static int redstoneBowDurability = 200;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "emeraldBowDurability", comment = "Set the amount of durability the Emerald Bow have")
+    public static int emeraldBowDurability = 1561;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "obsidianBowDurability", comment = "Set the amount of durability the Obsidian Bow have")
+    public static int obsidianBowDurability = 1500;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "lavaBowDurability", comment = "Set the amount of durability the Lava Bow have")
+    public static int lavaBowDurability = 1750;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "guardianBowDurability", comment = "Set the amount of durability the Guardian Bow have")
+    public static int guardianBowDurability = 1800;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "superStarBowDurability", comment = "Set the amount of durability the Super Star Bow have")
+    public static int superStarBowDurability = 1950;
+    @ModConfigProperty(category = "Weapons.Bows.Properties", name = "enderDragonBowDurability", comment = "Set the amount of durability the Ender Dragon Bow have")
+    public static int enderDragonBowDurability = 2310;
+
+    //Armors.*.Registry
+    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorToughnessPoints", comment = "Set the amount of toughness points the Coal Armor will have")
+    public static double coalArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorToughnessPoints", comment = "Set the amount of toughness points the Lapis Armor will have")
+    public static double lapisArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorToughnessPoints", comment = "Set the amount of toughness points the Redstone Armor will have")
+    public static double redstoneArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorToughnessPoints", comment = "Set the amount of toughness points the Emerald Armor will have")
+    public static double emeraldArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorToughnessPoints", comment = "Set the amount of toughness points the Obsidian Armor will have")
+    public static double obsidianArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorToughnessPoints", comment = "Set the amount of toughness points the Lava Armor will have")
+    public static double lavaArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorToughnessPoints", comment = "Set the amount of toughness points the Super Star Armor will have")
+    public static double superStarArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorToughnessPoints", comment = "Set the amount of toughness points the Ender Dragon Armor will have")
+    public static double enderDragonArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorToughnessPoints", comment = "Set the amount of toughness points the Guardian Armor will have")
+    public static double guardianArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorToughnessPoints", comment = "Set the amount of toughness points the Ultimate Armor will have")
+    public static double theUltimateArmorToughnessPoints = 6.0;
+    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorToughnessPoints", comment = "Set the amount of toughness points the Ardite Armor will have")
+    public static double arditeArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorToughnessPoints", comment = "Set the amount of toughness points the Cobalt Armor will have")
+    public static double cobaltArmorToughnessPoints = 2.0;
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorToughnessPoints", comment = "Set the amount of toughness points the Manyullyn Armor will have")
+    public static double manyullynArmorToughnessPoints = 3.0;
+    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorToughnessPoints", comment = "Set the amount of toughness points the Pig Iron Armor will have")
+    public static double pigIronArmorToughnessPoints = 1.0;
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorToughnessPoints", comment = "Set the amount of toughness points the Knight Slime Armor will have")
+    public static double knightSlimeArmorToughnessPoints = 1.0;
+    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorToughnessPoints", comment = "Set the amount of toughness points the Chicen Armor will have")
+    public static double chickenArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorToughnessPoints", comment = "Set the amount of toughness points the Slime Armor will have")
+    public static double slimeArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorToughnessPoints", comment = "Set the amount of toughness points the Steel Armor will have")
+    public static double steelArmorToughnessPoints = 0.0;
+    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorToughnessPoints", comment = "Set the amount of toughness points the Electrical Armor will have")
+    public static double electricalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorProtectionPoints", comment = "Set the amount of protection points the Coal Armor will have (boots, leggings, chestplate, boots)")
     public static int[] coalArmorProtectionPoints = new int[]{1, 2, 3, 1};
     @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorProtectionPoints", comment = "Set the amount of protection points the Lapis Armor will have (boots, leggings, chestplate, boots)")
@@ -89,13 +205,14 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorProtectionPoints", comment = "Set the amount of protection points the Electrical Armor will have (boots, leggings, chestplate, boots)")
     public static int[] electricalArmorProtectionPoints = new int[]{3, 6, 7, 3};
 
-    //EnergyItems.Armor
+    //Armors.SteelArmor
     @ModConfigProperty(category = "Armors.SteelArmor", name = "inputSteelArmor", comment = "Set the amount of Energy that the item can input")
     public static int inputSteelArmor = 10;
     @ModConfigProperty(category = "Armors.SteelArmor", name = "outputSteelArmor", comment = "Set the amount of Energy that the item can output")
     public static int outputSteelArmor = 1;
     @ModConfigProperty(category = "Armors.SteelArmor", name = "maxCapacitySteelArmor", comment = "Set the max capacity that the item can hold")
     public static int maxCapacitySteelArmor = 3000;
+    //Armors.ElectricalArmor
     @ModConfigProperty(category = "Armors.ElectricalArmor", name = "inputElectricalArmor", comment = "Set the amount of Energy that the item can input")
     public static int inputElectricalArmor = 10;
     @ModConfigProperty(category = "Armors.ElectricalArmor", name = "outputElectricalArmor", comment = "Set the amount of Energy that the item can output")
@@ -150,15 +267,15 @@ public class ARPConfig {
     @ModConfigProperty(category = "EnderDragonZombie.Spawn", name = "enableEnderDragonZombieSpawnEnd", comment = "Enable/Disable the Ender Dragon Zombie to spawn in the End")
     public static boolean enableEnderDragonZombieSpawnEnd = false;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieHealth", comment = "Set the Ender Dragon Zombie's Health")
-    public static double enderDragonZombieHealth = 40.0D;
+    public static double enderDragonZombieHealth = 40.0;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieArmor", comment = "Set the Ender Dragon Zombie's Armor")
-    public static double enderDragonZombieArmor = 2.0D;
+    public static double enderDragonZombieArmor = 2.0;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieAttackDamage", comment = "Set the Ender Dragon Zombie's Attack Damage")
-    public static double enderDragonZombieAttackDamage = 3.0D;
+    public static double enderDragonZombieAttackDamage = 3.0;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieMovementSpeed", comment = "Set the Ender Dragon Zombie's Movement Speed")
-    public static double enderDragonZombieMovementSpeed = 0.23000000417232513D;
+    public static double enderDragonZombieMovementSpeed = 0.23000000417232513;
     @ModConfigProperty(category = "EnderDragonZombie.Properties", name = "enderDragonZombieFollowRange", comment = "Set the Ender Dragon Zombie's Follow Range")
-    public static double enderDragonZombieFollowRange = 35.0D;
+    public static double enderDragonZombieFollowRange = 35.0;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enableEnderDragonZombieWithering", comment = "Enable/Disable the Ender Dragon Zombie's Withering Effect")
     public static boolean enableEnderDragonZombieWithering = true;
     @ModConfigProperty(category = "EnderDragonZombie.Effects", name = "enderDragonZombieWitheringEffectDuration", comment = "Set the Ender Dragon Zombie's Withering Effect Duration")

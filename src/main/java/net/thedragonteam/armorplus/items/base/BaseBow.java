@@ -38,7 +38,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBow extends ItemBow {
 
-    public float damage;
+    public double damage;
 
     public Item itemEasy;
     public Item itemExpert;
@@ -78,7 +78,7 @@ public class BaseBow extends ItemBow {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Base Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Bonus Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
     }
 
     @Override

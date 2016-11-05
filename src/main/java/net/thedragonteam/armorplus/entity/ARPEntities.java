@@ -12,10 +12,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.RenderEnderDragonZombie;
 
@@ -33,6 +30,7 @@ public class ARPEntities {
     private static final int LAPIS_ARROW = 1;
     private static final int REDSTONE_ARROW = 2;
     private static final int LAVA_ARROW = 3;
+    private static final int ENDER_DRAGON_ARROW = 4;
     //Mobs ID from 21 and up
     private static final int ENDER_DRAGON_ZOMBIE = 21;
 
@@ -43,6 +41,7 @@ public class ARPEntities {
         EntityRegistry.registerModEntity(EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually

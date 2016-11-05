@@ -43,6 +43,6 @@ public class ItemCoalArrow extends ItemArrow {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        ArrowUtils.addArrowInformation(tooltip, "Applies Blindness", 2.0D, TextFormatting.DARK_AQUA);
+        ArrowUtils.addArrowInformation(tooltip, "Applies Blindness", 2.0D, TextFormatting.GRAY);
     }
 }

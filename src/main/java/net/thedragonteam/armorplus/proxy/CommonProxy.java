@@ -34,6 +34,9 @@ public class CommonProxy {
         LogHelper.info("Begin PreInitialization");
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
+        configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
+        configDir.mkdirs();
+        net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         ARPEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
@@ -41,9 +44,6 @@ public class CommonProxy {
         LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
-        configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
-        configDir.mkdirs();
-        net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         if (Loader.isModLoaded("tconstruct")) TiC.preInit();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         LogHelper.info("Finished PreInitialization");

@@ -17,16 +17,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.EntityEnderDragonArrow;
 import net.thedragonteam.armorplus.util.ArrowUtils;
 
 import java.util.List;
 
-public class ItemLavaArrow extends ItemArrow {
+public class ItemEnderDragonArrow extends ItemArrow {
 
-    public ItemLavaArrow() {
-        setRegistryName("lava_arrow");
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_arrow");
+    public ItemEnderDragonArrow() {
+        setRegistryName("ender_dragon_arrow");
+        setUnlocalizedName(ArmorPlus.MODID + "." + "ender_dragon_arrow");
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -38,11 +38,11 @@ public class ItemLavaArrow extends ItemArrow {
 
     @Override
     public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
-        return new EntityLavaArrow(world, shooter);
+        return new EntityEnderDragonArrow(world, shooter);
     }
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        ArrowUtils.addArrowInformation(tooltip, "Sets on Fire", 5.5D, TextFormatting.GOLD);
+        ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 10.5D, TextFormatting.DARK_PURPLE);
     }
 }

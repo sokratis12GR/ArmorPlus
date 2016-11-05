@@ -19,6 +19,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -37,6 +38,16 @@ public class BaseBattleAxe extends ItemSword {
     public TextFormatting formatting;
     public String effect;
     public BattleAxes battleAxes;
+
+    public static Item.ToolMaterial battleAxeCoalMaterial = EnumHelper.addToolMaterial("battleAxeCoalMaterial", 1, ARPConfig.coalBattleAxeDurability, 1.0F, (float) ARPConfig.coalBattleAxeDamage, 15);
+    public static Item.ToolMaterial battleAxeLapisMaterial = EnumHelper.addToolMaterial("battleAxeLapisMaterial", 1, ARPConfig.lapisBattleAxeDurability, 1.0F, (float) ARPConfig.lapisBattleAxeDamage, 30);
+    public static Item.ToolMaterial battleAxeRedstoneMaterial = EnumHelper.addToolMaterial("battleAxeRedstoneMaterial", 1, ARPConfig.redstoneBattleAxeDurability, 1.0F, (float)  ARPConfig.redstoneBattleAxeDamage, 20);
+    public static Item.ToolMaterial battleAxeEmeraldMaterial = EnumHelper.addToolMaterial("battleAxeEmeraldMaterial", 1, ARPConfig.emeraldBattleAxeDurability, 1.0F, (float)  ARPConfig.emeraldBattleAxeDamage, 20);
+    public static Item.ToolMaterial battleAxeObsidianMaterial = EnumHelper.addToolMaterial("battleAxeObsidianMaterial", 1, ARPConfig.obsidianBattleAxeDurability, 1.0F, (float)  ARPConfig.obsidianBattleAxeDamage, 20);
+    public static Item.ToolMaterial battleAxeLavaMaterial = EnumHelper.addToolMaterial("battleAxeLavaMaterial", 1, ARPConfig.lavaBattleAxeDurability, 1.0F, (float)  ARPConfig.lavaBattleAxeDamage, 20);
+    public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, ARPConfig.guardianBattleAxeDurability, 1.0F, (float)  ARPConfig.guardianBattleAxeDamage, 30);
+    public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, ARPConfig.superStarBattleAxeDurability, 1.0F, (float)  ARPConfig.superStarBattleAxeDamage, 20);
+    public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, ARPConfig.enderDragonBattleAxeDurability, 1.0F, (float)  ARPConfig.enderDragonBattleAxeDamage, 20);
 
     public BaseBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());

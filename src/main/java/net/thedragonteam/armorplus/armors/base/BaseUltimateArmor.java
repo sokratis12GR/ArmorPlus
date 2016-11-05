@@ -18,7 +18,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -29,7 +28,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
@@ -108,9 +106,9 @@ public class BaseUltimateArmor extends ItemArmor {
             else entity.capabilities.disableDamage = false;
         if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, true, true));
-            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, true, true));
-            entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, true, true));
+            entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, false, false));
+            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, false, false));
+            entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, false, false));
 
             entity.motionX = 0;
             if (((EntityLivingBase) entity).onGround)
@@ -118,7 +116,6 @@ public class BaseUltimateArmor extends ItemArmor {
             entity.motionZ = 0;
             ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
-        ParticlesHelper.createParticleCircleTop(EnumParticleTypes.ENCHANTMENT_TABLE, world, entity);
     }
 
     @Override

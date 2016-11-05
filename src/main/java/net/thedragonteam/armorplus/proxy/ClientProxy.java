@@ -15,14 +15,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.ARPEntities;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
-import net.thedragonteam.armorplus.entity.render.RenderCoalArrow;
-import net.thedragonteam.armorplus.entity.render.RenderLapisArrow;
-import net.thedragonteam.armorplus.entity.render.RenderLavaArrow;
-import net.thedragonteam.armorplus.entity.render.RenderRedstoneArrow;
+import net.thedragonteam.armorplus.entity.entityarrow.*;
+import net.thedragonteam.armorplus.entity.render.*;
 import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.integration.tinkers.TiCMaterials;
 import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
@@ -66,5 +60,6 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
     }
 }
