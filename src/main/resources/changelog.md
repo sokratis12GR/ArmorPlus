@@ -4,6 +4,9 @@
 * **{Features Added/Removed/Changed}**
     * Bows/BattleAxes/Swords Damage are now configurable
     * Bows/BattleAxes/Swords Durability are now configurable
+    * Added Ender Dragon Arrow
+    * Changed Particles
+    * Fixed dupe glitch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.4**
 ============================
