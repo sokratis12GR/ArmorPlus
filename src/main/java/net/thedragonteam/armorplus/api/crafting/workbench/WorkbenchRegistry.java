@@ -42,5 +42,4 @@ public class WorkbenchRegistry {
     public static void removeRecipe(IRecipe recipe) {
         WorkbenchCraftingManager.getInstance().getRecipeList().remove(recipe);
     }
-
 }
