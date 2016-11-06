@@ -17,7 +17,6 @@ import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorRecipe
 
 public class ModUltimateRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
-
         /* Sets The Ultimate Armor Unbreakable */
         Utils.setUnbreakable(new ItemStack(ModItems.theUltimateHelmet, 1));
         Utils.setUnbreakable(new ItemStack(ModItems.theUltimateChestplate, 1));
@@ -35,7 +34,6 @@ public class ModUltimateRecipes {
                 'H', ModBlocks.arpHighTechBench,
                 'O', ModBlocks.compressedObsidian,
                 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
-
         /* The Ultimate Armor */
         if (ARPConfig.enableTheUltimateArmor) {
             if (enableTheUltimateArmorRecipes) {

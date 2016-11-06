@@ -1,3 +1,20 @@
+**ArmorPlus 1.10.2-8.0.0.5**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added/Removed/Changed}**
+    * Bows/BattleAxes/Swords Damage are now configurable
+    * Bows/BattleAxes/Swords Durability are now configurable
+    * Added Ender Dragon Arrow
+    * Changed Particles
+    * Fixed dupe glitch
+    * Fixed Potion Effect Particles being shown while wearing armors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-8.0.0.4**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{JEI}**
+    * Fixed world freeze/crash using 3.13.2.349 version of JEI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.3**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

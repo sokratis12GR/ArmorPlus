@@ -7,6 +7,7 @@
     * Added Ender Dragon Arrow
     * Changed Particles
     * Fixed dupe glitch
+    * Fixed Potion Effect Particles being shown while wearing armors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.4**
 ============================

@@ -16,7 +16,6 @@ public class CompatibilityJustEnoughItems implements ICompatibility {
     public void loadCompatibility(InitializationPhase phase) {
     }
 
-
     @Override
     public String getMODID() {
         return "JEI";
