@@ -66,7 +66,9 @@ public class ContainerHighTechBench extends Container {
     @Nullable
     @Override
     public Slot getSlotFromInventory(IInventory inv, int slotIn) {
-        if (this.inventoryItemStacks == null) getSlotFromInventory(inv, slotIn).inventory.clear();
+        if (this.inventoryItemStacks == null) {
+            getSlotFromInventory(inv, slotIn).inventory.clear();
+        }
         return super.getSlotFromInventory(inv, slotIn);
     }
 

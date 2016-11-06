@@ -40,7 +40,7 @@ public class CommandArmorPlus extends CommandBase {
 
     @Override
     public List getCommandAliases() {
-        return Arrays.asList(new String[]{"armorplus", "arp"});
+        return Arrays.asList("armorplus", "arp");
     }
 
     @Override

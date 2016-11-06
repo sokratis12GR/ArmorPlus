@@ -22,11 +22,14 @@ public class GuiTester extends BaseItem {
         super("gui_tester");
     }
 
+    private Minecraft mc = Minecraft.getMinecraft();
+
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-        while (Minecraft.getMinecraft().gameSettings.keyBindSneak.isPressed())
-            Minecraft.getMinecraft().displayGuiScreen(new GuiARPExperiments());
+        while (Minecraft.getMinecraft().gameSettings.keyBindSneak.isPressed()) {
+            mc.displayGuiScreen(new GuiARPExperiments());
+        }
         return new ActionResult(EnumActionResult.PASS, item);
     }
 }

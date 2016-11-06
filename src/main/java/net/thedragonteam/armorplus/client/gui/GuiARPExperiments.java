@@ -4,8 +4,7 @@
 
 package net.thedragonteam.armorplus.client.gui;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -19,7 +18,7 @@ import java.io.IOException;
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  * - TheDragonTeam
  */
-public class GuiARPExperiments extends GuiScreen {
+public class GuiARPExperiments extends GuiChat {
 
     int guiWidth = 256;
     int guiHeight = 256;
@@ -46,11 +45,6 @@ public class GuiARPExperiments extends GuiScreen {
     @Override
     public void initGui() {
         super.initGui();
-    }
-
-    @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
-        super.actionPerformed(button);
     }
 
     @Override

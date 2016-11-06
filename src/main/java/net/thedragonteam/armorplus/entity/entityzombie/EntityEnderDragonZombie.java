@@ -57,7 +57,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     @Override
     protected void entityInit() {
         super.entityInit();
-        this.getDataManager().register(ARMS_RAISED, Boolean.valueOf(false));
+        this.getDataManager().register(ARMS_RAISED, Boolean.FALSE);
     }
 
     @Override
@@ -100,11 +100,11 @@ public class EntityEnderDragonZombie extends EntityMob {
 
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
-        return this.getDataManager().get(ARMS_RAISED).booleanValue();
+        return this.getDataManager().get(ARMS_RAISED);
     }
 
     public void setArmsRaised(boolean armsRaised) {
-        this.getDataManager().set(ARMS_RAISED, Boolean.valueOf(armsRaised));
+        this.getDataManager().set(ARMS_RAISED, armsRaised);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
             // This zombie gives wither 4 when it attacks
-            if (entityIn instanceof EntityLivingBase) if (enableEnderDragonZombieWithering)
+            if (entityIn instanceof EntityLivingBase && enableEnderDragonZombieWithering)
                 ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
             return true;
         } else return false;

@@ -48,9 +48,8 @@ public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
     @Override
     public void updateTask() {
         super.updateTask();
-        ++this.raiseArmTicks;
+        this.raiseArmTicks++;
 
-        if (this.raiseArmTicks >= 5 && this.attackTick < 10) this.enderDragonZombie.setArmsRaised(true);
-        else this.enderDragonZombie.setArmsRaised(false);
+        this.enderDragonZombie.setArmsRaised(this.raiseArmTicks >= 5 && this.attackTick < 10);
     }
 }
