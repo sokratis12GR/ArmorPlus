@@ -127,7 +127,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ItemArmor.MAX_DAMAGE_ARRAY = new int[]{93, 95, 96, 91};
+        ItemArmor.MAX_DAMAGE_ARRAY = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
         featureParser.registerFeatures();

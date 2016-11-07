@@ -33,6 +33,7 @@ import net.thedragonteam.armorplus.util.Utils;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
+import static net.thedragonteam.armorplus.ARPConfig.theUltimateArmorItemNameColor;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -79,7 +80,7 @@ public class BaseUltimateArmor extends ItemArmor {
             tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.GREEN, keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.getTextWithoutFormattingCodes(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
     }
 
     @Override
@@ -120,7 +121,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.GREEN + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getTextWithoutFormattingCodes(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

@@ -146,24 +146,24 @@ public class ARPConfig {
     public static int enderDragonBattleAxeDurability = 2310;
 
     //Weapons.*.Bow
-    @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double coalBowArrowBonusDamage = 2.0;
-    @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double lapisBowArrowBonusDamage = 3.5;
-    @ModConfigProperty(category = "Weapons.Redstone.Bow", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double redstoneBowArrowBonusDamage = 3.5;
-    @ModConfigProperty(category = "Weapons.Emerald.Bow", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double emeraldBowArrowBonusDamage = 5.0;
-    @ModConfigProperty(category = "Weapons.Obsidian.Bow", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double obsidianBowArrowBonusDamage = 6.0;
-    @ModConfigProperty(category = "Weapons.Lava.Bow", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double lavaBowArrowBonusDamage = 7.0;
-    @ModConfigProperty(category = "Weapons.Guardian.Bow", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double guardianBowArrowBonusDamage = 8.5;
-    @ModConfigProperty(category = "Weapons.SuperStar.Bow", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double superStarBowArrowBonusDamage = 10.0;
-    @ModConfigProperty(category = "Weapons.EnderDragon.Bow", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do (Additional +4 damage will be added automatically by minecraft)")
-    public static double enderDragonBowArrowBonusDamage = 12.0;
+    @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do")
+    public static double coalBowArrowBonusDamage = -1.0;
+    @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do")
+    public static double lapisBowArrowBonusDamage = -0.5;
+    @ModConfigProperty(category = "Weapons.Redstone.Bow", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do")
+    public static double redstoneBowArrowBonusDamage = -0.5;
+    @ModConfigProperty(category = "Weapons.Emerald.Bow", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do")
+    public static double emeraldBowArrowBonusDamage = 0.0;
+    @ModConfigProperty(category = "Weapons.Obsidian.Bow", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do")
+    public static double obsidianBowArrowBonusDamage = 0.5;
+    @ModConfigProperty(category = "Weapons.Lava.Bow", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do")
+    public static double lavaBowArrowBonusDamage = 1.0;
+    @ModConfigProperty(category = "Weapons.Guardian.Bow", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do")
+    public static double guardianBowArrowBonusDamage = 1.5;
+    @ModConfigProperty(category = "Weapons.SuperStar.Bow", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do")
+    public static double superStarBowArrowBonusDamage = 2.5;
+    @ModConfigProperty(category = "Weapons.EnderDragon.Bow", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do")
+    public static double enderDragonBowArrowBonusDamage = 3.5;
     @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowDurability", comment = "Set the amount of durability the Coal Bow have")
     public static int coalBowDurability = 59;
     @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowDurability", comment = "Set the amount of durability the Lapis Bow have")
@@ -184,6 +184,45 @@ public class ARPConfig {
     public static int enderDragonBowDurability = 2310;
 
     //Armors.*.Registry
+    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorItemNameColor", comment = "Set the color name the Coal Armor will have")
+    public static String coalArmorItemNameColor = "gray";
+    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorItemNameColor", comment = "Set the color name the Lapis Armor will have")
+    public static String lapisArmorItemNameColor = "dark_blue";
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorItemNameColor", comment = "Set the color name the Redstone Armor will have")
+    public static String redstoneArmorItemNameColor = "dark_red";
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorItemNameColor", comment = "Set the color name the Emerald Armor will have")
+    public static String emeraldArmorItemNameColor = "dark_green";
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorItemNameColor", comment = "Set the color name the Obsidian Armor will have")
+    public static String obsidianArmorItemNameColor = "dark_gray";
+    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorItemNameColor", comment = "Set the color name the Lava Armor will have")
+    public static String lavaArmorItemNameColor = "gold";
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorItemNameColor", comment = "Set the color name the Super Star Armor will have")
+    public static String superStarArmorItemNameColor = "white";
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorItemNameColor", comment = "Set the color name the Ender Dragon Armor will have")
+    public static String enderDragonArmorItemNameColor = "dark_pruple";
+    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorItemNameColor", comment = "Set the color name the Guardian Armor will have")
+    public static String guardianArmorItemNameColor = "aqua";
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorItemNameColor", comment = "Set the color name the Ultimate Armor will have")
+    public static String theUltimateArmorItemNameColor = "green";
+    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorItemNameColor", comment = "Set the color name the Ardite Armor will have")
+    public static String arditeArmorItemNameColor = "dark_red";
+    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorItemNameColor", comment = "Set the color name the Cobalt Armor will have")
+    public static String cobaltArmorItemNameColor = "blue";
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorItemNameColor", comment = "Set the color name the Manyullyn Armor will have")
+    public static String manyullynArmorItemNameColor = "dark_pirple";
+    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorItemNameColor", comment = "Set the color name the Pig Iron Armor will have")
+    public static String pigIronArmorItemNameColor = "light_purple";
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorItemNameColor", comment = "Set the color name the Knight Slime Armor will have")
+    public static String knightSlimeArmorItemNameColor = "dark_pirple";
+    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorItemNameColor", comment = "Set the color name the Chicken Armor will have")
+    public static String chickenArmorItemNameColor = "aqua";
+    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorItemNameColor", comment = "Set the color name the Slime Armor will have")
+    public static String slimeArmorItemNameColor = "green";
+    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorItemNameColor", comment = "Set the color name the Steel Armor will have")
+    public static String steelArmorItemNameColor = "dark_red";
+    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorItemNameColor", comment = "Set the color name the Electrical Armor will have")
+    public static String electricalArmorItemNameColor = "dark_red";
+
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorToughnessPoints", comment = "Set the amount of toughness points the Coal Armor will have")
     public static double coalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorToughnessPoints", comment = "Set the amount of toughness points the Lapis Armor will have")
@@ -214,7 +253,7 @@ public class ARPConfig {
     public static double pigIronArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorToughnessPoints", comment = "Set the amount of toughness points the Knight Slime Armor will have")
     public static double knightSlimeArmorToughnessPoints = 1.0;
-    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorToughnessPoints", comment = "Set the amount of toughness points the Chicen Armor will have")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorToughnessPoints", comment = "Set the amount of toughness points the Chicken Armor will have")
     public static double chickenArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorToughnessPoints", comment = "Set the amount of toughness points the Slime Armor will have")
     public static double slimeArmorToughnessPoints = 0.0;

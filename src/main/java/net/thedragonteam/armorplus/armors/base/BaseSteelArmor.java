@@ -43,6 +43,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.maxCapacitySteelArmor;
 import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
+import static net.thedragonteam.armorplus.ARPConfig.steelArmorItemNameColor;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -96,7 +97,7 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getTextWithoutFormattingCodes(steelArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

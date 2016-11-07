@@ -43,6 +43,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.maxCapacityElectricalArmor;
 import static net.thedragonteam.armorplus.ARPConfig.outputElectricalArmor;
+import static net.thedragonteam.armorplus.ARPConfig.steelArmorItemNameColor;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -96,7 +97,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_RED + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getTextWithoutFormattingCodes(steelArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override
