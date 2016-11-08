@@ -64,7 +64,6 @@ public class BaseEnergyBlock extends BlockContainer {
         return BlockRenderLayer.SOLID;
     }
 
-
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return tileEntity;

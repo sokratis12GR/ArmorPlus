@@ -66,7 +66,7 @@ public class CompressedObsidian extends BaseBlock {
 
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override

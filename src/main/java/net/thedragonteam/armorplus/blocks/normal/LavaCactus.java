@@ -36,7 +36,7 @@ import java.util.Random;
  */
 public class LavaCactus extends BlockCactus {
     public LavaCactus() {
-        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
         this.setTickRandomly(true);
         setHardness(0.4F);
         setUnlocalizedName(ArmorPlus.MODID + "." + "lava_cactus");
@@ -62,17 +62,17 @@ public class LavaCactus extends BlockCactus {
             }
 
             if (i < 3) {
-                int j = ((Integer) state.getValue(AGE)).intValue();
+                int j = state.getValue(AGE);
 
                 switch (j) {
                     case 15:
                         worldIn.setBlockState(blockpos, this.getDefaultState());
-                        IBlockState iblockstate = state.withProperty(AGE, Integer.valueOf(0));
+                        IBlockState iblockstate = state.withProperty(AGE, 0);
                         worldIn.setBlockState(pos, iblockstate, 4);
                         iblockstate.neighborChanged(worldIn, blockpos, this);
                         break;
                     default:
-                        worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
+                        worldIn.setBlockState(pos, state.withProperty(AGE, j + 1), 4);
                         break;
                 }
             }
@@ -158,7 +158,7 @@ public class LavaCactus extends BlockCactus {
      */
     @Override
     public int getMetaFromState(IBlockState state) {
-        return (Integer) state.getValue(AGE);
+        return state.getValue(AGE);
     }
 
     @Override

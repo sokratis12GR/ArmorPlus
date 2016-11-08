@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.blocks.castle.base;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -31,8 +30,8 @@ import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
 public class BaseStoneBrickCorner extends BaseBlock {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public static final PropertyEnum<BaseStoneBrickCorner.EnumHalf> HALF = PropertyEnum.<BaseStoneBrickCorner.EnumHalf>create("half", BaseStoneBrickCorner.EnumHalf.class);
-    public static final PropertyEnum<BaseStoneBrickCorner.EnumShape> SHAPE = PropertyEnum.<BaseStoneBrickCorner.EnumShape>create("shape", BaseStoneBrickCorner.EnumShape.class);
+    public static final PropertyEnum<BaseStoneBrickCorner.EnumHalf> HALF = PropertyEnum.create("half", BaseStoneBrickCorner.EnumHalf.class);
+    public static final PropertyEnum<BaseStoneBrickCorner.EnumShape> SHAPE = PropertyEnum.create("shape", BaseStoneBrickCorner.EnumShape.class);
 
     public MapColor mapColor;
 
@@ -66,22 +65,22 @@ public class BaseStoneBrickCorner extends BaseBlock {
     }
 
     private static BaseStoneBrickCorner.EnumShape getStairsShape(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
-        EnumFacing enumfacing = (EnumFacing) blockState.getValue(FACING);
+        EnumFacing enumfacing = blockState.getValue(FACING);
         IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumfacing));
 
         if (isBaseStoneBrickCorner(iblockstate) && blockState.getValue(HALF) == iblockstate.getValue(HALF)) {
-            EnumFacing enumfacing1 = (EnumFacing) iblockstate.getValue(FACING);
+            EnumFacing enumfacing1 = iblockstate.getValue(FACING);
 
-            if (enumfacing1.getAxis() != ((EnumFacing) blockState.getValue(FACING)).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing1.getOpposite()))
+            if (enumfacing1.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing1.getOpposite()))
                 return enumfacing1 == enumfacing.rotateYCCW() ? EnumShape.OUTER_LEFT : EnumShape.OUTER_RIGHT;
         }
 
         IBlockState iblockstate1 = blockAccess.getBlockState(blockPos.offset(enumfacing.getOpposite()));
 
         if (isBaseStoneBrickCorner(iblockstate1) && blockState.getValue(HALF) == iblockstate1.getValue(HALF)) {
-            EnumFacing enumfacing2 = (EnumFacing) iblockstate1.getValue(FACING);
+            EnumFacing enumfacing2 = iblockstate1.getValue(FACING);
 
-            if (enumfacing2.getAxis() != ((EnumFacing) blockState.getValue(FACING)).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing2))
+            if (enumfacing2.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentStairs(blockState, blockAccess, blockPos, enumfacing2))
                 return enumfacing2 == enumfacing.rotateYCCW() ? EnumShape.INNER_LEFT : EnumShape.INNER_RIGHT;
         }
 
@@ -115,7 +114,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
         if (state.getValue(HALF) == BaseStoneBrickCorner.EnumHalf.TOP) i |= 4;
 
-        i = i | 5 - ((EnumFacing) state.getValue(FACING)).getIndex();
+        i = i | 5 - state.getValue(FACING).getIndex();
         return i;
     }
 
@@ -126,13 +125,13 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
-        BaseStoneBrickCorner.EnumShape blockstairs$enumshape = (BaseStoneBrickCorner.EnumShape) state.getValue(SHAPE);
+        EnumFacing enumfacing = state.getValue(FACING);
+        BaseStoneBrickCorner.EnumShape blockstairs$enumshape = state.getValue(SHAPE);
 
         switch (mirrorIn) {
             case LEFT_RIGHT:
@@ -176,7 +175,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{FACING, HALF, SHAPE});
+        return new BlockStateContainer(this, FACING, HALF, SHAPE);
     }
 
     @Override
@@ -214,13 +213,13 @@ public class BaseStoneBrickCorner extends BaseBlock {
         return (shape == EnumShape.OUTER_LEFT || shape == EnumShape.OUTER_RIGHT || face == side || shape == EnumShape.INNER_LEFT && face.rotateY() == side || shape == EnumShape.STRAIGHT) || shape == EnumShape.INNER_RIGHT && face.rotateYCCW() == side;
     }
 
-    public static enum EnumHalf implements IStringSerializable {
+    public enum EnumHalf implements IStringSerializable {
         TOP("top"),
         BOTTOM("bottom");
 
         private final String name;
 
-        private EnumHalf(String name) {
+        EnumHalf(String name) {
             this.name = name;
         }
 
@@ -233,7 +232,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
         }
     }
 
-    public static enum EnumShape implements IStringSerializable {
+    public enum EnumShape implements IStringSerializable {
         STRAIGHT("straight"),
         INNER_LEFT("inner_left"),
         INNER_RIGHT("inner_right"),
@@ -242,7 +241,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
 
         private final String name;
 
-        private EnumShape(String name) {
+        EnumShape(String name) {
             this.name = name;
         }
 

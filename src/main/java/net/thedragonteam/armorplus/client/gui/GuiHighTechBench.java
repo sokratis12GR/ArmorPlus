@@ -19,6 +19,6 @@ public class GuiHighTechBench extends GuiBaseBench {
     private static final ResourceLocation ARP_HIGH_TECH_BENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_high_tech_bench.png");
 
     public GuiHighTechBench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerHighTechBench(playerInv, worldIn), playerInv, worldIn, ARP_HIGH_TECH_BENCH_GUI_TEXTURES, "high_tech_bench", 176, 184);
+        super(new ContainerHighTechBench(playerInv, worldIn), ARP_HIGH_TECH_BENCH_GUI_TEXTURES, "high_tech_bench", 176, 184);
     }
 }

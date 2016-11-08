@@ -33,6 +33,7 @@ public enum ARPArmorMaterial {
     MANYULLYN(BaseArmor.manyullynArmor, "manyullyn", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2), TextFormatting.getValueByName(ARPConfig.manyullynArmorItemNameColor)),
     KNIGHT_SLIME(BaseArmor.knightSlimeArmor, "knight_slime", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3), TextFormatting.getValueByName(ARPConfig.knightSlimeArmorItemNameColor)),
     PIG_IRON(BaseArmor.pigIronArmor, "pig_iron", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4), TextFormatting.getValueByName(ARPConfig.pigIronArmorItemNameColor));
+
     private final ItemArmor.ArmorMaterial armorMaterial;
 
     private final String name;

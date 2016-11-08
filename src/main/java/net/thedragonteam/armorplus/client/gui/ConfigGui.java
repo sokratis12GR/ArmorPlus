@@ -23,7 +23,7 @@ public class ConfigGui extends GuiConfig {
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
 
-        /** adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
+        /* adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Weapons".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Armors".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("GameModes".toLowerCase())));
@@ -36,6 +36,7 @@ public class ConfigGui extends GuiConfig {
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("EnderDragonZombie".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("TheGiftOfTheGods".toLowerCase())));
         list.add(new ConfigElement(ArmorPlus.configuration.getCategory("EnergyItems".toLowerCase())));
+        list.add(new ConfigElement(ArmorPlus.configuration.getCategory("Weapons".toLowerCase())));
 
         return list;
     }

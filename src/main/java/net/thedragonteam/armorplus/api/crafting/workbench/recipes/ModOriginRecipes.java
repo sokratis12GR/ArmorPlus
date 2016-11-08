@@ -117,7 +117,7 @@ public class ModOriginRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianBoots, 1), "O O", "O O", "   ", 'O', "blockCompressedObsidian"));
             }
         }
-                /* Lava Armor */
+        /* Lava Armor */
         if (ARPConfig.enableLavaArmor) {
             if (ARPConfig.recipes == 0 && ARPConfig.enableLavaArmorRecipes && ARPConfig.enableOldLavaArmorRecipes) {
                 manager.addShapelessRecipe(new ItemStack(ModItems.lavaHelmet, 1), ModItems.obsidianHelmet, 1, Items.LAVA_BUCKET, ModItems.obsidianHelmet, 1);

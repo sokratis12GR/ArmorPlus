@@ -60,7 +60,6 @@ public class ContainerHighTechBench extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, HighTechBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-
     }
 
     @Nullable
@@ -98,12 +97,17 @@ public class ContainerHighTechBench extends Container {
             itemstack = itemstack1.copy();
 
             if (index == 0) {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true)) return null;
-
+                if (!this.mergeItemStack(itemstack1, 10, 46, true))
+                    return null;
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37) if (!this.mergeItemStack(itemstack1, 37, 46, false)) return null;
-            else if (index >= 37 && index < 46) if (!this.mergeItemStack(itemstack1, 10, 37, false)) return null;
-            else if (!this.mergeItemStack(itemstack1, 10, 46, false)) return null;
+            } else if (index >= 10 && index < 37)
+                if (!this.mergeItemStack(itemstack1, 37, 46, false))
+                    return null;
+            else if (index >= 37 && index < 46)
+                if (!this.mergeItemStack(itemstack1, 10, 37, false))
+                    return null;
+            else if (!this.mergeItemStack(itemstack1, 10, 46, false))
+                return null;
 
             switch (itemstack1.stackSize) {
                 case 0:
@@ -113,9 +117,8 @@ public class ContainerHighTechBench extends Container {
                     slot.onSlotChanged();
                     break;
             }
-
-            if (itemstack1.stackSize == itemstack.stackSize) return null;
-
+            if (itemstack1.stackSize == itemstack.stackSize)
+                return null;
             slot.onPickupFromSlot(playerIn, itemstack1);
         }
 
