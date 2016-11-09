@@ -41,10 +41,9 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.maxCapacitySteelArmor;
-import static net.thedragonteam.armorplus.ARPConfig.outputSteelArmor;
-import static net.thedragonteam.armorplus.ARPConfig.steelArmorItemNameColor;
+import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @Optional.InterfaceList({
@@ -59,8 +58,8 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
     private int output;
     private int input;
 
-    public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", getArmorPlusLocation() + "steel_armor", 15,
-            ARPConfig.steelArmorProtectionPoints, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON,(float) ARPConfig.steelArmorToughnessPoints);
+    public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", getArmorPlusLocation("steel_armor"), 15,
+            ARPConfig.steelArmorProtectionPoints, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, (float) ARPConfig.steelArmorToughnessPoints);
 
     public BaseSteelArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
         super(steelArmorNotPowered, 0, slot);
@@ -69,22 +68,22 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
             case FEET:
                 String boots = "steel_boots";
                 setRegistryName(boots);
-                setUnlocalizedName(ArmorPlus.MODID + "." + boots);
+                setUnlocalizedName(setARPUnlocalizedName(boots));
                 break;
             case LEGS:
                 String leggings = "steel_leggings";
                 setRegistryName(leggings);
-                setUnlocalizedName(ArmorPlus.MODID + "." + leggings);
+                setUnlocalizedName(setARPUnlocalizedName(leggings));
                 break;
             case CHEST:
                 String chestplate = "steel_chestplate";
                 setRegistryName(chestplate);
-                setUnlocalizedName(ArmorPlus.MODID + "." + chestplate);
+                setUnlocalizedName(setARPUnlocalizedName(chestplate));
                 break;
             case HEAD:
                 String helmet = "steel_helmet";
                 setRegistryName(helmet);
-                setUnlocalizedName(ArmorPlus.MODID + "." + helmet);
+                setUnlocalizedName(setARPUnlocalizedName(helmet));
                 break;
         }
         GameRegistry.register(this);
@@ -154,7 +153,7 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (player.getLastAttacker() != null && player.hurtTime > 0)
+        if (player.hurtTime > 0)
             this.extractEnergy(itemStack, outputSteelArmor, false);
     }
 

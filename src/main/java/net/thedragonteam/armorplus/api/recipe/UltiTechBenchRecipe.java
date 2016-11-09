@@ -82,22 +82,17 @@ public class UltiTechBenchRecipe {
     public boolean matches(List<ItemStack> checkedList, World world, BlockPos pos) {
         ArrayList<Object> required = new ArrayList<Object>(input);
 
-        for (int x = 0; x < checkedList.size(); x++) {
-            ItemStack slot = checkedList.get(x);
-
+        for (ItemStack slot : checkedList) {
             if (slot != null) {
                 boolean inRecipe = false;
-                Iterator<Object> req = required.iterator();
 
-                while (req.hasNext()) {
+                for (Object aRequired : required) {
                     boolean match = false;
 
-                    Object next = req.next();
-
-                    if (next instanceof ItemStack) {
-                        match = OreDictionary.itemMatches((ItemStack) next, slot, false);
-                    } else if (next instanceof List) {
-                        Iterator<ItemStack> itr = ((List<ItemStack>) next).iterator();
+                    if (aRequired instanceof ItemStack) {
+                        match = OreDictionary.itemMatches((ItemStack) aRequired, slot, false);
+                    } else if (aRequired instanceof List) {
+                        Iterator<ItemStack> itr = ((List<ItemStack>) aRequired).iterator();
                         while (itr.hasNext() && !match) {
                             match = OreDictionary.itemMatches(itr.next(), slot, false);
                         }
@@ -105,7 +100,7 @@ public class UltiTechBenchRecipe {
 
                     if (match) {
                         inRecipe = true;
-                        required.remove(next);
+                        required.remove(aRequired);
                         break;
                     }
                 }

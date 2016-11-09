@@ -50,7 +50,6 @@ public class EntityCoalArrow extends EntityArrow {
     @Override
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        World world = living.getEntityWorld();
         if (living != shootingEntity) {
             living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
         }

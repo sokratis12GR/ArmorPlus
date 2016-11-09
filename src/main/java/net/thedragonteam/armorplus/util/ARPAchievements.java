@@ -39,14 +39,14 @@ public class ARPAchievements {
             craftHighTechBench,
             craftUltiTechBench;
     public static Achievement armorPlus;
+    @SuppressWarnings("unchecked")
     public static ArrayList<AchievementARP> normalCraftingAchievements = new ArrayList();
-    private static AchievementPage arpAchievementPage;
 
     public static void init() {
         armorPlus = new AchievementARP("armorplus", -4, -4, ModItems.redstoneChestplate, AchievementList.OPEN_INVENTORY).setSpecial().initIndependentStat();
-        welcomeToArmorPlus = new AchievementARP("craft_workbench", -2, -2, new ItemStack(ModBlocks.arpWorkbench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
-        craftHighTechBench = new AchievementARP("craft_high_tech_bench", -2, -4, new ItemStack(ModBlocks.arpHighTechBench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
-        craftUltiTechBench = new AchievementARP("craft_ulti_tech_bench", -2, -6, new ItemStack(ModBlocks.arpUltiTechBench, 1), AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        welcomeToArmorPlus = new AchievementARP("craft_workbench", -2, -2, ModBlocks.arpWorkbench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftHighTechBench = new AchievementARP("craft_high_tech_bench", -2, -4, ModBlocks.arpHighTechBench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftUltiTechBench = new AchievementARP("craft_ulti_tech_bench", -2, -6, ModBlocks.arpUltiTechBench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
         craftCoalArmor = new AchievementARP("craft_coal_armor", 0, 0, ModItems.coalHelmet, craftCoalArmor).setNormalCrafting();
         craftChickenArmor = new AchievementARP("craft_chicken_armor", 2, 2, ModItems.chickenBoots, craftCoalArmor).setNormalCrafting();
         craftSlimeArmor = new AchievementARP("craft_slime_armor", 2, 4, ModItems.slimeBoots, craftCoalArmor).setNormalCrafting();
@@ -65,30 +65,30 @@ public class ARPAchievements {
         craftPigIronArmor = new AchievementARP("craft_pig_iron_armor", -4, -2, ModItems.pigIronChestplate, craftCobaltArmor).setNormalCrafting();
         craftKnightSlimeArmor = new AchievementARP("craft_knight_slime_armor", -4, 2, ModItems.knightSlimeChestplate, craftCobaltArmor).setNormalCrafting();
 
-        arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
+        AchievementPage arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementARP.achievements.toArray(new Achievement[AchievementARP.achievements.size()]));
         AchievementPage.registerAchievementPage(arpAchievementPage);
-
     }
 
-    public static class AchievementARP extends Achievement {
+    @SuppressWarnings("unchecked")
+    private static class AchievementARP extends Achievement {
         public static List<Achievement> achievements = new ArrayList();
-        public ItemStack[] triggerItems;
+        ItemStack[] triggerItems;
 
-        public AchievementARP(String name, int x, int y, ItemStack icon, Achievement parent) {
+        AchievementARP(String name, int x, int y, ItemStack icon, Achievement parent) {
             super("achievement.armorplus." + name, "armorplus." + name, x, y, icon, parent);
             achievements.add(this);
             registerStat();
         }
 
-        public AchievementARP(String name, int x, int y, Item icon, Achievement parent) {
+        AchievementARP(String name, int x, int y, Item icon, Achievement parent) {
             this(name, x, y, new ItemStack(icon), parent);
         }
 
-        public AchievementARP(String name, int x, int y, Block icon, Achievement parent) {
+        AchievementARP(String name, int x, int y, Block icon, Achievement parent) {
             this(name, x, y, new ItemStack(icon), parent);
         }
 
-        public AchievementARP setNormalCrafting(ItemStack... triggerItems) {
+        AchievementARP setNormalCrafting(ItemStack... triggerItems) {
             this.triggerItems = triggerItems;
             normalCraftingAchievements.add(this);
             return this;

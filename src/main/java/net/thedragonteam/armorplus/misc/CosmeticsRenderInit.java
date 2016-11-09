@@ -43,7 +43,8 @@ public class CosmeticsRenderInit {
                 ItemStack stack = null;
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(itemName);
-                if (Item.REGISTRY.containsKey(resLoc)) stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
+                if (Item.REGISTRY.containsKey(resLoc))
+                    stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
                 else if (Block.REGISTRY.containsKey(resLoc))
                     stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
 
@@ -60,7 +61,7 @@ public class CosmeticsRenderInit {
         if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty())
             for (Map.Entry<String, RenderCosmetics> entry : COSMETICS_FOR_PEOPLE_LIST.entrySet()) {
                 String playerName = event.getEntityPlayer().getName();
-                if (entry.getKey() != null && playerName != null && entry.getKey().equalsIgnoreCase(playerName)) {
+                if (entry.getKey() != null && entry.getKey().equalsIgnoreCase(playerName)) {
                     //Render the special Item/Block
                     entry.getValue().render(event.getEntityPlayer(), event.getPartialRenderTick());
                     break;

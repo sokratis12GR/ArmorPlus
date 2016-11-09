@@ -43,6 +43,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @Optional.InterfaceList({
@@ -57,8 +58,8 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
     private int output;
     private int input;
 
-    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation() + "electrical_armor", 19,
-            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON,(float) ARPConfig.electricalArmorToughnessPoints);
+    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation("electrical_armor"), 19,
+            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, (float) ARPConfig.electricalArmorToughnessPoints);
 
     public BaseElectricalArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
         super(electricalArmor, 0, slot);
@@ -67,22 +68,22 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
             case FEET:
                 String boots = "electrical_boots";
                 setRegistryName(boots);
-                setUnlocalizedName(ArmorPlus.MODID + "." + boots);
+                setUnlocalizedName(setARPUnlocalizedName(boots));
                 break;
             case LEGS:
                 String leggings = "electrical_leggings";
                 setRegistryName(leggings);
-                setUnlocalizedName(ArmorPlus.MODID + "." + leggings);
+                setUnlocalizedName(setARPUnlocalizedName(leggings));
                 break;
             case CHEST:
                 String chestplate = "electrical_chestplate";
                 setRegistryName(chestplate);
-                setUnlocalizedName(ArmorPlus.MODID + "." + chestplate);
+                setUnlocalizedName(setARPUnlocalizedName(chestplate));
                 break;
             case HEAD:
                 String helmet = "electrical_helmet";
                 setRegistryName(helmet);
-                setUnlocalizedName(ArmorPlus.MODID + "." + helmet);
+                setUnlocalizedName(setARPUnlocalizedName(helmet));
                 break;
         }
         GameRegistry.register(this);
@@ -152,7 +153,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (player.getLastAttacker() != null && player.hurtTime > 0)
+        if (player.hurtTime > 0)
             this.extractEnergy(itemStack, outputElectricalArmor, false);
     }
 

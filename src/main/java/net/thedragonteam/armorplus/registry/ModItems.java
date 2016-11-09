@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.ArmorPlus.hasTesla;
 import static net.thedragonteam.armorplus.armors.ARPArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.UltimateItems.*;
 
@@ -107,7 +108,7 @@ public class ModItems {
         itemRFPickaxe = new ItemRFPickaxe();
         itemRFSword = new ItemRFSword();
         itemRFRod = new ItemRFRod();
-        if (Loader.isModLoaded("tesla")) {
+        if (hasTesla()) {
             itemTeslaShovel = new ItemTeslaShovel();
             itemTeslaHoe = new ItemTeslaHoe();
             itemTeslaAxe = new ItemTeslaAxe();
@@ -334,7 +335,7 @@ public class ModItems {
         itemRFPickaxe.initModel();
         itemRFSword.initModel();
         itemRFRod.initModel();
-        if (Loader.isModLoaded("tesla")) {
+        if (hasTesla()) {
             itemTeslaShovel.initModel();
             itemTeslaHoe.initModel();
             itemTeslaAxe.initModel();

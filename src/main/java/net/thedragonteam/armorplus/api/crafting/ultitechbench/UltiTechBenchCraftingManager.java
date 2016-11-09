@@ -16,7 +16,6 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.*;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -42,11 +41,7 @@ public class UltiTechBenchCraftingManager {
         (new ModGuardianRecipes()).addRecipes(this);
         (new ModWeaponTierThreeRecipes()).addRecipes(this);
         (new ModItemRecipes()).addRecipes(this);
-        Collections.sort(this.recipes, new Comparator<IRecipe>() {
-            public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {
-                return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
-            }
-        });
+        Collections.sort(this.recipes, (pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -69,10 +64,9 @@ public class UltiTechBenchCraftingManager {
         int k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
-            String[] astring = (String[]) ((String[]) recipeComponents[i++]);
+            String[] astring = (String[]) recipeComponents[i++];
 
-            for (int l = 0; l < astring.length; ++l) {
-                String s2 = astring[l];
+            for (String s2 : astring) {
                 ++k;
                 j = s2.length();
                 s = s + s2;
@@ -88,17 +82,16 @@ public class UltiTechBenchCraftingManager {
 
         Map<Character, ItemStack> map;
 
-        for (map = Maps.<Character, ItemStack>newHashMap(); i < recipeComponents.length; i += 2) {
+        for (map = Maps.newHashMap(); i < recipeComponents.length; i += 2) {
             Character character = (Character) recipeComponents[i];
             ItemStack itemstack = null;
 
-            if (recipeComponents[i + 1] instanceof Item) {
+            if (recipeComponents[i + 1] instanceof Item)
                 itemstack = new ItemStack((Item) recipeComponents[i + 1]);
-            } else if (recipeComponents[i + 1] instanceof Block) {
+            else if (recipeComponents[i + 1] instanceof Block)
                 itemstack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
-            } else if (recipeComponents[i + 1] instanceof ItemStack) {
+            else if (recipeComponents[i + 1] instanceof ItemStack)
                 itemstack = (ItemStack) recipeComponents[i + 1];
-            }
 
             map.put(character, itemstack);
         }
@@ -108,8 +101,8 @@ public class UltiTechBenchCraftingManager {
         for (int i1 = 0; i1 < j * k; ++i1) {
             char c0 = s.charAt(i1);
 
-            if (map.containsKey(Character.valueOf(c0))) {
-                aitemstack[i1] = ((ItemStack) map.get(Character.valueOf(c0))).copy();
+            if (map.containsKey(c0)) {
+                aitemstack[i1] = map.get(c0).copy();
             } else {
                 aitemstack[i1] = null;
             }
@@ -124,17 +117,15 @@ public class UltiTechBenchCraftingManager {
      * Adds a shapeless crafting recipe to the the game.
      */
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
-        List<ItemStack> list = Lists.<ItemStack>newArrayList();
+        List<ItemStack> list = Lists.newArrayList();
 
         for (Object object : recipeComponents) {
-            if (object instanceof ItemStack) {
+            if (object instanceof ItemStack)
                 list.add(((ItemStack) object).copy());
-            } else if (object instanceof Item) {
+            else if (object instanceof Item)
                 list.add(new ItemStack((Item) object));
-            } else {
-                if (!(object instanceof Block)) {
-                    throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
-                }
+            else {
+                assert object instanceof Block : "Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!";
 
                 list.add(new ItemStack((Block) object));
             }

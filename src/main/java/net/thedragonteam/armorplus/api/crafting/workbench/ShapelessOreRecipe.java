@@ -102,12 +102,11 @@ public class ShapelessOreRecipe implements IRecipe {
 
             if (slot != null) {
                 boolean inRecipe = false;
-                Iterator<Object> req = required.iterator();
 
-                while (req.hasNext()) {
+                for (Object aRequired : required) {
                     boolean match = false;
 
-                    Object next = req.next();
+                    Object next = aRequired;
 
                     if (next instanceof ItemStack) {
                         match = OreDictionary.itemMatches((ItemStack) next, slot, false);

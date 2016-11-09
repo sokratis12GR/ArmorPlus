@@ -107,8 +107,8 @@ public class ArmorPlus {
         return new ResourceLocation(ArmorPlus.MODID, path);
     }
 
-    public static String getArmorPlusLocation() {
-        return ArmorPlus.MODID + ":";
+    public static String getArmorPlusLocation(String path) {
+        return ArmorPlus.MODID + ":" + path;
     }
 
     @SideOnly(Side.CLIENT)

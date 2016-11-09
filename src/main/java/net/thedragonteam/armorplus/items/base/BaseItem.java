@@ -23,13 +23,14 @@ import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
 import net.thedragonteam.armorplus.items.Items;
 
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseItem extends Item {
 
     public BaseItem(String name) {
         setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setUnlocalizedName(setARPUnlocalizedName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
@@ -46,7 +47,8 @@ public class BaseItem extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-        if (items == null) return new ActionResult(EnumActionResult.PASS, item);
+        if (items == null)
+            return new ActionResult<>(EnumActionResult.PASS, item);
         else switch (items.getId()) {
             case 10:
                 Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
@@ -55,7 +57,7 @@ public class BaseItem extends Item {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
                 break;
         }
-        return new ActionResult(EnumActionResult.PASS, item);
+        return new ActionResult<>(EnumActionResult.PASS, item);
     }
 
     @Override

@@ -19,6 +19,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
  * - TheDragonTeam
  */
 public class ARPTab extends CreativeTabs {
+
     static ItemStack iconArmorPlus;
     private String label;
     private int tab;
@@ -27,8 +28,7 @@ public class ARPTab extends CreativeTabs {
         super(id, modid);
         this.label = label;
         this.tab = tab;
-        setBackgroundImageName(ArmorPlus.MODID + ".png"); // Automagically has tab_ applied to it. Make sure you change the texture name.
-
+        setBackgroundImageName(ArmorPlus.MODID + ".png"); // Automatically has tab_ applied to it. Make sure you change the texture name.
     }
 
     public static void initialize() {

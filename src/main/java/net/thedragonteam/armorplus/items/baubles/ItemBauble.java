@@ -39,7 +39,7 @@ public abstract class ItemBauble extends BaseItem implements IBauble {
                     break;
                 }
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
     @Override

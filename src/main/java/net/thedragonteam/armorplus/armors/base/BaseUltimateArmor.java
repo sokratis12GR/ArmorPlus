@@ -10,7 +10,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -35,11 +34,12 @@ import java.util.List;
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
 import static net.thedragonteam.armorplus.ARPConfig.theUltimateArmorItemNameColor;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseUltimateArmor extends ItemArmor {
 
-    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation() + "the_ultimate_armor", 160,
+    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation("the_ultimate_armor"), 160,
             ARPConfig.theUltimateArmorProtectionPoints, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.theUltimateArmorToughnessPoints);
 
     public BaseUltimateArmor(EntityEquipmentSlot slot) {
@@ -47,20 +47,24 @@ public class BaseUltimateArmor extends ItemArmor {
         setMaxStackSize(1);
         switch (slot) {
             case FEET:
-                setRegistryName("the_ultimate_boots_full");
-                setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_boots_full");
+                String boots = "the_ultimate_boots_full";
+                setRegistryName(boots);
+                setUnlocalizedName(setARPUnlocalizedName(boots));
                 break;
             case LEGS:
-                setRegistryName("the_ultimate_leggings_full");
-                setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_leggings_full");
+                String leggings = "the_ultimate_leggings_full";
+                setRegistryName(leggings);
+                setUnlocalizedName(setARPUnlocalizedName(leggings));
                 break;
             case CHEST:
-                setRegistryName("the_ultimate_chestplate_full");
-                setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_chestplate_full");
+                String chestplate = "the_ultimate_chestplate_full";
+                setRegistryName(chestplate);
+                setUnlocalizedName(setARPUnlocalizedName(chestplate));
                 break;
             case HEAD:
-                setRegistryName("the_ultimate_helmet_full");
-                setUnlocalizedName(ArmorPlus.MODID + "." + "the_ultimate_helmet_full");
+                String helmet = "the_ultimate_helmet_full";
+                setRegistryName(helmet);
+                setUnlocalizedName(setARPUnlocalizedName(helmet));
                 break;
         }
         GameRegistry.register(this);
@@ -112,10 +116,10 @@ public class BaseUltimateArmor extends ItemArmor {
             entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, false, false));
 
             entity.motionX = 0;
-            if (((EntityLivingBase) entity).onGround)
+            if (entity.onGround)
                 entity.motionY = 0;
             entity.motionZ = 0;
-            ((EntityPlayer) entity).velocityChanged = true; // assumes that entity instanceof EntityPlayer
+            entity.velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
     }
 

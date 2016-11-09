@@ -50,7 +50,6 @@ public class EntityEnderDragonArrow extends EntityArrow {
     @Override
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        World world = living.getEntityWorld();
         if (living != shootingEntity) {
             living.addPotionEffect(new PotionEffect(MobEffects.WITHER, 180, 4, false, true));
         }

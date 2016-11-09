@@ -71,7 +71,8 @@ public class TheGiftOfTheGods extends BaseItem {
         nbt.setInteger("Clicked", nbt.hasKey("Clicked") ? nbt.getInteger("Clicked") + 1 : 1);
         itemStackIn.setTagCompound(nbt);
 
-        if (worldIn.isRemote) return new ActionResult(EnumActionResult.PASS, itemStackIn);
+        if (worldIn.isRemote)
+            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
         int count;
         Item item = null;
@@ -84,10 +85,11 @@ public class TheGiftOfTheGods extends BaseItem {
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
-            if (!playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem()) && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() && !debugMode)
-                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
-            else if (debugMode && debugModeGOTG)
-                playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
+            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == itemStackIn.getItem())
+                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem())) {
+                    playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
+                } else if (debugMode && debugModeGOTG)
+                    playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
             playerIn.dropItem(item, 1);
             playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStackIn) + " [" + item.getRegistryName() + "]"));
@@ -98,7 +100,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
             itemStackIn.damageItem(1, playerIn);
         }
-        return new ActionResult(EnumActionResult.PASS, itemStackIn);
+        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 
     }
 

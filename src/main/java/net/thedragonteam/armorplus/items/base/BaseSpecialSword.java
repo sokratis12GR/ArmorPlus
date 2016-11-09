@@ -29,6 +29,7 @@ import net.thedragonteam.armorplus.items.Swords;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSpecialSword extends ItemSword {
@@ -38,7 +39,7 @@ public class BaseSpecialSword extends ItemSword {
     public TextFormatting formatting;
     public String effect;
 
-    public Swords swords;
+    private Swords swords;
 
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, ARPConfig.coalSwordDurability, 1.0F, (float) ARPConfig.coalSwordDamage, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, ARPConfig.lapisSwordDurability, 1.0F, (float) ARPConfig.lapisSwordDamage, 30);
@@ -58,7 +59,7 @@ public class BaseSpecialSword extends ItemSword {
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
         setRegistryName(swords.getName());
-        setUnlocalizedName(ArmorPlus.MODID + "." + swords.getName());
+        setUnlocalizedName(setARPUnlocalizedName(swords.getName()));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

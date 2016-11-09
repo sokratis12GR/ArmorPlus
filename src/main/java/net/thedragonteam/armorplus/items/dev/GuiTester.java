@@ -30,6 +30,6 @@ public class GuiTester extends BaseItem {
         while (Minecraft.getMinecraft().gameSettings.keyBindSneak.isPressed()) {
             mc.displayGuiScreen(new GuiARPExperiments());
         }
-        return new ActionResult(EnumActionResult.PASS, item);
+        return new ActionResult<>(EnumActionResult.PASS, item);
     }
 }

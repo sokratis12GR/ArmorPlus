@@ -202,9 +202,6 @@ public class StructureCastle extends WorldGenerator {
             if (tileentity1 instanceof TileEntityChest)
                 ((TileEntityChest) tileentity1).setLootTable(LootTableList.CHESTS_END_CITY_TREASURE, rand.nextLong());
 
-            // I saved the chest for last
-            //    placeBlock(worldIn, corner, chestPos, chest);
-
             // debug:
             if (isDebugMode()) LogHelper.info("Built a castle starting at " + corner + "!");
             return true;

@@ -10,13 +10,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ArmorPlus;
+
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 
 public class BaseAxe extends ItemAxe {
 
     public BaseAxe(ToolMaterial material, String name) {
         super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setUnlocalizedName(setARPUnlocalizedName(name));
         setRegistryName(name);
         GameRegistry.register(this);
     }

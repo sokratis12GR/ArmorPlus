@@ -199,7 +199,7 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorItemNameColor", comment = "Set the color name the Super Star Armor will have")
     public static String superStarArmorItemNameColor = "white";
     @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorItemNameColor", comment = "Set the color name the Ender Dragon Armor will have")
-    public static String enderDragonArmorItemNameColor = "dark_pruple";
+    public static String enderDragonArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorItemNameColor", comment = "Set the color name the Guardian Armor will have")
     public static String guardianArmorItemNameColor = "aqua";
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorItemNameColor", comment = "Set the color name the Ultimate Armor will have")
@@ -209,11 +209,11 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorItemNameColor", comment = "Set the color name the Cobalt Armor will have")
     public static String cobaltArmorItemNameColor = "blue";
     @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorItemNameColor", comment = "Set the color name the Manyullyn Armor will have")
-    public static String manyullynArmorItemNameColor = "dark_pirple";
+    public static String manyullynArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorItemNameColor", comment = "Set the color name the Pig Iron Armor will have")
     public static String pigIronArmorItemNameColor = "light_purple";
     @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorItemNameColor", comment = "Set the color name the Knight Slime Armor will have")
-    public static String knightSlimeArmorItemNameColor = "dark_pirple";
+    public static String knightSlimeArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorItemNameColor", comment = "Set the color name the Chicken Armor will have")
     public static String chickenArmorItemNameColor = "aqua";
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorItemNameColor", comment = "Set the color name the Slime Armor will have")

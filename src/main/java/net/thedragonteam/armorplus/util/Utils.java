@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 
 /**
@@ -40,5 +41,9 @@ public final class Utils {
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();
         }
+    }
+
+    public static String setARPUnlocalizedName(String name) {
+        return ArmorPlus.MODID + "." + name;
     }
 }

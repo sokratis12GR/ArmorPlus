@@ -105,7 +105,7 @@ public class BaseStoneBrickCorner extends BaseBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
     @Override

@@ -4,9 +4,7 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import com.google.common.collect.Sets;
 import com.mojang.realmsclient.gui.ChatFormatting;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -16,7 +14,6 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,13 +30,11 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.BattleAxes;
 
 import java.util.List;
-import java.util.Set;
 
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBattleAxe extends ItemSword {
-
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE);
 
     public Item itemEasy;
     public Item itemExpert;
@@ -67,7 +62,7 @@ public class BaseBattleAxe extends ItemSword {
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         setRegistryName(battleAxes.getName());
-        setUnlocalizedName(ArmorPlus.MODID + "." + battleAxes.getName());
+        setUnlocalizedName(setARPUnlocalizedName(battleAxes.getName()));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

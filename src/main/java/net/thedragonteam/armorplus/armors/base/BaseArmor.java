@@ -39,41 +39,42 @@ import java.util.Objects;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseArmor extends ItemArmor {
 
-    public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", getArmorPlusLocation() + "coal_armor", 7,
+    public static ItemArmor.ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coalArmor", getArmorPlusLocation("coal_armor"), 7,
             ARPConfig.coalArmorProtectionPoints, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, (float) ARPConfig.coalArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", getArmorPlusLocation() + "emerald_armor", 35,
+    public static ItemArmor.ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emeraldArmor", getArmorPlusLocation("emerald_armor"), 35,
             ARPConfig.emeraldArmorProtectionPoints, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.emeraldArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", getArmorPlusLocation() + "lapis_armor", 11,
+    public static ItemArmor.ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapisArmor", getArmorPlusLocation("lapis_armor"), 11,
             ARPConfig.lapisArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, (float) ARPConfig.lapisArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", getArmorPlusLocation() + "lava_armor", 45,
+    public static ItemArmor.ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lavaArmor", getArmorPlusLocation("lava_armor"), 45,
             ARPConfig.lavaArmorProtectionPoints, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.lavaArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", getArmorPlusLocation() + "obsidian_armor", 40,
+    public static ItemArmor.ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidianArmor", getArmorPlusLocation("obsidian_armor"), 40,
             ARPConfig.obsidianArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.obsidianArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", getArmorPlusLocation() + "redstone_armor", 11,
+    public static ItemArmor.ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstoneArmor", getArmorPlusLocation("redstone_armor"), 11,
             ARPConfig.redstoneArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, (float) ARPConfig.redstoneArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", getArmorPlusLocation() + "chicken_armor", 3,
+    public static ItemArmor.ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chickenArmor", getArmorPlusLocation("chicken_armor"), 3,
             ARPConfig.chickenArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, (float) ARPConfig.chickenArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", getArmorPlusLocation() + "slime_armor", 3,
+    public static ItemArmor.ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slimeArmor", getArmorPlusLocation("slime_armor"), 3,
             ARPConfig.slimeArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, (float) ARPConfig.slimeArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", getArmorPlusLocation() + "ender_dragon_armor", 60,
+    public static ItemArmor.ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragonArmor", getArmorPlusLocation("ender_dragon_armor"), 60,
             ARPConfig.enderDragonArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.enderDragonArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", getArmorPlusLocation() + "guardian_armor", 50,
+    public static ItemArmor.ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardianArmor", getArmorPlusLocation("guardian_armor"), 50,
             ARPConfig.guardianArmorProtectionPoints, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.guardianArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", getArmorPlusLocation() + "super_star_armor", 50,
+    public static ItemArmor.ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStarArmor", getArmorPlusLocation("super_star_armor"), 50,
             ARPConfig.superStarArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.superStarArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", getArmorPlusLocation() + "ardite_armor", 55,
+    public static ItemArmor.ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("arditeArmor", getArmorPlusLocation("ardite_armor"), 55,
             ARPConfig.arditeArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.arditeArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", getArmorPlusLocation() + "cobalt_armor", 44,
+    public static ItemArmor.ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobaltArmor", getArmorPlusLocation("cobalt_armor"), 44,
             ARPConfig.cobaltArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.cobaltArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", getArmorPlusLocation() + "knight_slime_armor", 33,
+    public static ItemArmor.ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlimeArmor", getArmorPlusLocation("knight_slime_armor"), 33,
             ARPConfig.knightSlimeArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.knightSlimeArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", getArmorPlusLocation() + "manyullyn_armor", 66,
+    public static ItemArmor.ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullynArmor", getArmorPlusLocation("manyullyn_armor"), 66,
             ARPConfig.manyullynArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.manyullynArmorToughnessPoints);
-    public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", getArmorPlusLocation() + "pig_iron_armor", 33,
+    public static ItemArmor.ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIronArmor", getArmorPlusLocation("pig_iron_armor"), 33,
             ARPConfig.pigIronArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.pigIronArmorToughnessPoints);
     public Item itemEasy;
     public Item itemExpert;
@@ -93,22 +94,22 @@ public class BaseArmor extends ItemArmor {
             case FEET:
                 String boots = armorMaterial.getName() + "_boots";
                 setRegistryName(boots);
-                setUnlocalizedName(ArmorPlus.MODID + "." + boots);
+                setUnlocalizedName(setARPUnlocalizedName(boots));
                 break;
             case LEGS:
                 String leggings = armorMaterial.getName() + "_leggings";
                 setRegistryName(leggings);
-                setUnlocalizedName(ArmorPlus.MODID + "." + leggings);
+                setUnlocalizedName(setARPUnlocalizedName(leggings));
                 break;
             case CHEST:
                 String chestplate = armorMaterial.getName() + "_chestplate";
                 setRegistryName(chestplate);
-                setUnlocalizedName(ArmorPlus.MODID + "." + chestplate);
+                setUnlocalizedName(setARPUnlocalizedName(chestplate));
                 break;
             case HEAD:
                 String helmet = armorMaterial.getName() + "_helmet";
                 setRegistryName(helmet);
-                setUnlocalizedName(ArmorPlus.MODID + "." + helmet);
+                setUnlocalizedName(setARPUnlocalizedName(helmet));
                 break;
         }
         GameRegistry.register(this);

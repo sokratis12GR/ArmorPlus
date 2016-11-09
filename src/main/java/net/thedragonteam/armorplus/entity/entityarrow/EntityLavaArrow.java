@@ -49,7 +49,6 @@ public class EntityLavaArrow extends EntityArrow {
     @Override
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        World world = living.getEntityWorld();
         if (living != shootingEntity) {
             living.setFire(6);
         }

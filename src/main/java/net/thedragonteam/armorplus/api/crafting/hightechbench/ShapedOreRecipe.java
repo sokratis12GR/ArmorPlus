@@ -174,7 +174,7 @@ public class ShapedOreRecipe implements IRecipe {
     }
 
     @SuppressWarnings("unchecked")
-    protected boolean checkMatch(InventoryCrafting inv, int startX, int startY, boolean mirror) {
+    private boolean checkMatch(InventoryCrafting inv, int startX, int startY, boolean mirror) {
         for (int x = 0; x < MAX_CRAFT_GRID_WIDTH; x++) {
             for (int y = 0; y < MAX_CRAFT_GRID_HEIGHT; y++) {
                 int subX = x - startX;

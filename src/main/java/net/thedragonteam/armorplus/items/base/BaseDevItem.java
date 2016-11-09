@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BaseDevItem extends BaseItem {
 
-    DevItems devItems;
+    private DevItems devItems;
 
     public BaseDevItem(DevItems devItemsIn) {
         super(devItemsIn.getName());

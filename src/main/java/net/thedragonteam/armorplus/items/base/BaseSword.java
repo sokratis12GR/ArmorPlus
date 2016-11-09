@@ -25,6 +25,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSword extends ItemSword {
@@ -41,7 +42,7 @@ public class BaseSword extends ItemSword {
         this.formatting = textFormatting;
         this.effect = effectName;
         setRegistryName(name);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        setUnlocalizedName(setARPUnlocalizedName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
