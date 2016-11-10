@@ -88,12 +88,12 @@ public class TheGiftOfTheGods extends BaseItem {
             if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == itemStackIn.getItem())
                 if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem())) {
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
-                } else if (debugMode && debugModeGOTG)
+                } else if (debugMode && debugModeTGOTG)
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
             playerIn.dropItem(item, 1);
             playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStackIn) + " [" + item.getRegistryName() + "]"));
-            if (debugMode && debugModeGOTG)
+            if (debugMode && debugModeTGOTG)
                 LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
                         " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
                         " ; Item's Max Damage: " + item.getMaxDamage());

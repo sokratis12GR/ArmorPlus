@@ -15,16 +15,18 @@ import net.thedragonteam.armorplus.items.base.BaseBattleAxe;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import static net.thedragonteam.armorplus.ARPConfig.*;
+
 public enum BattleAxes implements IStringSerializable {
-    COAL(BaseBattleAxe.battleAxeCoalMaterial, "coal_battle_axe", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.GRAY, "Applies Blindness", 8.0F),
-    LAPIS(BaseBattleAxe.battleAxeLapisMaterial, "lapis_battle_axe", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.DARK_BLUE, "Applies Nausea 2", 9.0F),
-    REDSTONE(BaseBattleAxe.battleAxeRedstoneMaterial, "redstone_battle_axe", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.DARK_RED, "Applies Slowness 2", 9.0F),
-    EMERALD(BaseBattleAxe.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.DARK_GREEN, "Applies Fatigue 2", 10.0F),
-    OBSIDIAN(BaseBattleAxe.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY, "Applies Weakness 2", 10.5F),
-    LAVA(BaseBattleAxe.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD, "Sets on Fire", 11.5F),
-    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA, "Applies Nausea 2", 14.0F),
-    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone, ModItems.witherBone, TextFormatting.WHITE, "Applies Wither 2", 15.0F),
-    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.DARK_PURPLE, "Applies Wither 4", 16.0F);
+    COAL(BaseBattleAxe.battleAxeCoalMaterial, "coal_battle_axe", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), "Applies Blindness", 8.0F),
+    LAPIS(BaseBattleAxe.battleAxeLapisMaterial, "lapis_battle_axe", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), "Applies Nausea 2", 9.0F),
+    REDSTONE(BaseBattleAxe.battleAxeRedstoneMaterial, "redstone_battle_axe", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(redstoneWeaponItemNameColor), "Applies Slowness 2", 9.0F),
+    EMERALD(BaseBattleAxe.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), "Applies Fatigue 2", 10.0F),
+    OBSIDIAN(BaseBattleAxe.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), "Applies Weakness 2", 10.5F),
+    LAVA(BaseBattleAxe.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), "Sets on Fire", 11.5F),
+    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2", 14.0F),
+    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2", 15.0F),
+    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4", 16.0F);
 
     private final String name;
 

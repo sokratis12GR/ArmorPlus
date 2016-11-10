@@ -5,7 +5,9 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
@@ -51,7 +53,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 5;
+    public static final int BUILD = 6;
     /**
      * The ArmorPlus Version
      */
@@ -127,7 +129,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ItemArmor.MAX_DAMAGE_ARRAY = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
+        SharedMonsterAttributes.ARMOR = new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(ARPConfig.class, configuration);
         featureParser.registerFeatures();

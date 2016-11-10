@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.client.gui;
 
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
@@ -24,11 +23,6 @@ public class GuiArmorPlusInfo extends GuiScreen {
 
     int guiWidth = 256;
     int guiHeight = 256;
-
-    int guiX = (width - guiWidth) / 2;
-    int guiY = (height - guiHeight) / 2;
-
-    GuiButton buttonLink1;
 
     @Override
     public void drawScreen(int x, int y, float ticks) {

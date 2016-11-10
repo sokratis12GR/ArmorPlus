@@ -19,15 +19,15 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
 
 //TODO Finish later, after school
 public enum Bows implements IStringSerializable {
-    COAL(coalBowDurability, "coal_bow", coalBowArrowBonusDamage, Items.COAL, Blocks.COAL_BLOCK, TextFormatting.GRAY, ModItems.coalBow),
-    LAPIS(lapisBowDurability, "lapis_bow", lapisBowArrowBonusDamage, new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.DARK_BLUE, ModItems.lapisBow),
-    REDSTONE(redstoneBowDurability, "redstone_bow", redstoneBowArrowBonusDamage, Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.DARK_RED, ModItems.redstoneBow),
-    EMERALD(emeraldBowDurability, "emerald_bow", emeraldBowArrowBonusDamage, Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.DARK_GREEN, ModItems.emeraldBow),
-    OBSIDIAN(obsidianBowDurability, "obsidian_bow", obsidianBowArrowBonusDamage, Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.DARK_GRAY, ModItems.obsidianBow),
-    LAVA(lavaBowDurability, "lava_bow", lavaBowArrowBonusDamage, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.GOLD, ModItems.lavaBow),
-    GUARDIAN(guardianBowDurability, "guardian_bow", guardianBowArrowBonusDamage, ModItems.guardianScale, ModItems.guardianScale, TextFormatting.AQUA, ModItems.guardianBow),
-    SUPER_STAR(superStarBowDurability, "super_star_bow", superStarBowArrowBonusDamage, ModItems.witherBone, ModItems.witherBone, TextFormatting.WHITE, ModItems.superStarBow),
-    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon_bow", enderDragonBowArrowBonusDamage, ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.DARK_PURPLE, ModItems.enderDragonBow);
+    COAL(coalBowDurability, "coal_bow", coalBowArrowBonusDamage, Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), ModItems.coalBow),
+    LAPIS(lapisBowDurability, "lapis_bow", lapisBowArrowBonusDamage, new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), ModItems.lapisBow),
+    REDSTONE(redstoneBowDurability, "redstone_bow", redstoneBowArrowBonusDamage, Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(redstoneWeaponItemNameColor), ModItems.redstoneBow),
+    EMERALD(emeraldBowDurability, "emerald_bow", emeraldBowArrowBonusDamage, Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), ModItems.emeraldBow),
+    OBSIDIAN(obsidianBowDurability, "obsidian_bow", obsidianBowArrowBonusDamage, Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), ModItems.obsidianBow),
+    LAVA(lavaBowDurability, "lava_bow", lavaBowArrowBonusDamage, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), ModItems.lavaBow),
+    GUARDIAN(guardianBowDurability, "guardian_bow", guardianBowArrowBonusDamage, ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), ModItems.guardianBow),
+    SUPER_STAR(superStarBowDurability, "super_star_bow", superStarBowArrowBonusDamage, ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), ModItems.superStarBow),
+    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon_bow", enderDragonBowArrowBonusDamage, ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), ModItems.enderDragonBow);
 
     private final String name;
 

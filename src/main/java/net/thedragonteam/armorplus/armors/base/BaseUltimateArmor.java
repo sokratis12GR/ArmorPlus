@@ -84,7 +84,7 @@ public class BaseUltimateArmor extends ItemArmor {
             tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.getTextWithoutFormattingCodes(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
     }
 
     @Override
@@ -125,7 +125,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getTextWithoutFormattingCodes(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

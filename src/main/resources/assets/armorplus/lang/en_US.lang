@@ -409,5 +409,34 @@ achievement.armorplus.craft_ulti_tech_bench.desc=craft the an Ulti-Tech Bench fr
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
 
+effect.none.name=No Effects
+effect.moveSpeed.name=Speed
+effect.moveSlowdown.name=Slowness
+effect.digSpeed.name=Haste
+effect.digSlowDown.name=Mining Fatigue
+effect.damageBoost.name=Strength
+effect.heal.name=Instant Health
+effect.harm.name=Instant Damage
+effect.jump.name=Jump Boost
+effect.confusion.name=Nausea
+effect.regeneration.name=Regeneration
+effect.resistance.name=Resistance
+effect.fireResistance.name=Fire Resistance
+effect.waterBreathing.name=Water Breathing
+effect.invisibility.name=Invisibility
+effect.blindness.name=Blindness
+effect.nightVision.name=Night Vision
+effect.hunger.name=Hunger
+effect.weakness.name=Weakness
+effect.poison.name=Poison
+effect.wither.name=Wither
+effect.healthBoost.name=Health Boost
+effect.absorption.name=Absorption
+effect.saturation.name=Saturation
+effect.glowing.name=Glowing
+effect.luck.name=Luck
+effect.unluck.name=Bad Luck
+effect.levitation.name=Levitation
+
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

@@ -96,7 +96,7 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getTextWithoutFormattingCodes(steelArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(steelArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

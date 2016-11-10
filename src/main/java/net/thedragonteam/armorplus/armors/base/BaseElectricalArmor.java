@@ -58,8 +58,10 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
     private int output;
     private int input;
 
+    private static float electricalArmorToughnessPoints = (float) ARPConfig.electricalArmorToughnessPoints;
+
     public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation("electrical_armor"), 19,
-            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, (float) ARPConfig.electricalArmorToughnessPoints);
+            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, electricalArmorToughnessPoints);
 
     public BaseElectricalArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
         super(electricalArmor, 0, slot);
@@ -96,7 +98,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getTextWithoutFormattingCodes(electricalArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(electricalArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override
