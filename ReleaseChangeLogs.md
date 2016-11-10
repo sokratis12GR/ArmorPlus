@@ -6,7 +6,7 @@
 * Refactor of "Armor Forge" to "Workbench" (Tier 1)
 * Refactor or "Advanced Armor Forge" to "High-Tech Bench" (Tier 2)
 * Addition of the "Ulti-Tech Bench" (Tier 3)
-* Moved all ArmorPlus recipes into their benches (UNDER DEVELOPMENT & UNDER CHANGES)
+* Moved all ArmorPlus recipes into their benches
 * Removed Prefixes before names that were listed
 * Made all items require to have SHIFT pressed to show their tooltips
 * Hidden Dev Items from JEI
