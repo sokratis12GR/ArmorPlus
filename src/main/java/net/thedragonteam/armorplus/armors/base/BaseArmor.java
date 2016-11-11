@@ -294,27 +294,27 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableSuperStarBEffect && !enableFullSuperStarArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        if (Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect) != null)
-                            entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
+                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
                         break;
                     case LEGS:
                         if (enableSuperStarLEffect && !enableFullSuperStarArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        if (Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect) != null)
-                            entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
+                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
                         break;
                     case CHEST:
                         if (enableSuperStarCEffect && !enableFullSuperStarArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        if (Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect) != null)
-                            entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
+                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
                         break;
                     case HEAD:
                         if (enableSuperStarHEffect && !enableFullSuperStarArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        if (Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect) != null)
-                            entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
+                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
                         break;
                 }
                 break;

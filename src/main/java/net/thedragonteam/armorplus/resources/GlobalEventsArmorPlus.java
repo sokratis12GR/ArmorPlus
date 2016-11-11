@@ -71,7 +71,8 @@ public class GlobalEventsArmorPlus {
                 addArmorEffect(entity, Potion.getPotionFromResourceLocation(theUltimateArmorAddPotionEffects[2]), 120, ultimateArmorEffectLevels[2]);
                 ArmorUtils.removeArmorEffect(entity, Potion.getPotionFromResourceLocation(theUltimateArmorRemovePotionEffect));
             } else if (enableFullSuperStarArmorEffect && head.getItem() == ModItems.superStarHelmet && chest.getItem() == ModItems.superStarChestplate && legs.getItem() == ModItems.superStarLeggings && feet.getItem() == ModItems.superStarBoots) {
-                addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel);
+                if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
+                    addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel);
                 ArmorUtils.removeArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
             } else if (enableFullCoalArmorEffect && head.getItem() == ModItems.coalHelmet && chest.getItem() == ModItems.coalChestplate && legs.getItem() == ModItems.coalLeggings && feet.getItem() == ModItems.coalBoots) {
                 addArmorEffect(entity, Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);

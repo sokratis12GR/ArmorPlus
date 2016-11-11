@@ -13,7 +13,6 @@ import net.thedragonteam.armorplus.container.ContainerWorkbench;
 
 public class GuiHandler implements IGuiHandler {
 
-    public static final int GUI_ARMORPLUS = 0;
     public static final int GUI_ARMORPLUS_INFO = 1;
     public static final int GUI_WORKBENCH = 2;
     public static final int GUI_HIGH_TECH_BENCH = 3;
@@ -23,8 +22,6 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case GUI_ARMORPLUS:
-                return new GuiArmorPlus();
             case GUI_ARMORPLUS_INFO:
                 return new GuiArmorPlusInfo();
             case GUI_WORKBENCH:
@@ -40,8 +37,6 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case GUI_ARMORPLUS:
-                return new GuiArmorPlus();
             case GUI_ARMORPLUS_INFO:
                 return new GuiArmorPlusInfo();
             case GUI_WORKBENCH:

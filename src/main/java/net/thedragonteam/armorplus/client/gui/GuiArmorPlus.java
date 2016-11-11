@@ -13,10 +13,6 @@ import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 
-import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
-import static net.thedragonteam.armorplus.ARPConfig.*;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
 /**
  * sokratis12gr.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
@@ -26,7 +22,6 @@ public class GuiArmorPlus extends GuiScreen {
     private int guiWidth = 256;
     private int guiHeight = 256;
 
-    @SuppressWarnings("ConstantConditions")
     @Override
     public void drawScreen(int x, int y, float ticks) {
         int guiX = (width - guiWidth) / 2;
@@ -38,24 +33,24 @@ public class GuiArmorPlus extends GuiScreen {
 
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Book").getFormattedText(), guiX + 25, guiY + 20, 0x000000);
         fontRendererObj.drawString(new TextComponentString("Armor Effects").getFormattedText(), guiX + 25, guiY + 30, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Coal Armor" + " - " + localize(getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim() + " " + (coalArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 40, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Lapis Armor" + " - " + localize(getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim() + " " + (lapisArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 50, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Redstone Armor" + " - " + localize(getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim() + " " + (redstoneArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 60, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Emerald Armor" + " - " + localize(getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim() + " " + (emeraldArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 70, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Obsidian Armor" + " - " + localize(getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim() + " " + (obsidianArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 80, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Lava Armor" + " - " + localize(getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim() + " " + (lavaArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 90, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Guardian Armor" + " - " + localize(getPotionFromResourceLocation(guardianArmorAddPotionEffect).getName() + ".name").trim() + " " + (guardianArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 100, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Super Star Armor" + " - " + localize(getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim() + " " + (superStarArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 110, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Coal Armor" + " - Night Vision").getFormattedText(), guiX + 25, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Lapis Armor" + " - Water Breathing").getFormattedText(), guiX + 25, guiY + 50, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Redstone Armor" + " - Speed II").getFormattedText(), guiX + 25, guiY + 60, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Emerald Armor" + " - Haste II").getFormattedText(), guiX + 25, guiY + 70, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Obsidian Armor" + " - Resistance").getFormattedText(), guiX + 25, guiY + 80, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Lava Armor" + " - Fire Resistance").getFormattedText(), guiX + 25, guiY + 90, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Guardian Armor" + " - Water Breathing").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Super Star Armor" + " - Regeneration 2").getFormattedText(), guiX + 25, guiY + 110, 0x000000);
         fontRendererObj.drawString(new TextComponentString("Ender Dragon Armor" + " - Flight").getFormattedText(), guiX + 25, guiY + 120, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("The Ultimate Armor" + " - " + localize(getPotionFromResourceLocation(theUltimateArmorAddPotionEffects[0]).getName() + ".name").trim() + " " + (ultimateArmorEffectLevels[0] + 1) + ",").getFormattedText(), guiX + 25, guiY + 130, 0x000000);
-        fontRendererObj.drawString(new TextComponentString(localize(getPotionFromResourceLocation(theUltimateArmorAddPotionEffects[1]).getName() + ".name").trim() + " " + (ultimateArmorEffectLevels[1] + 1) + "," + localize(getPotionFromResourceLocation(theUltimateArmorAddPotionEffects[2]).getName() + ".name").trim() + " " + (ultimateArmorEffectLevels[2] + 1) + " & Flight").getFormattedText(), guiX + 25, guiY + 140, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Ardite Armor" + " - " + localize(getPotionFromResourceLocation(arditeArmorAddPotionEffect).getName() + ".name").trim() + " " + (arditeArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 150, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Cobalt Armor" + " - " + localize(getPotionFromResourceLocation(cobaltArmorAddPotionEffect).getName() + ".name").trim() + " " + (cobaltArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 160, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Manyullyn Armor" + " - " + localize(getPotionFromResourceLocation(manyullynArmorAddPotionEffect).getName() + ".name").trim() + " " + (manyullynArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 170, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Pig Iron Armor" + " - " + localize(getPotionFromResourceLocation(pigIronArmorAddPotionEffect).getName() + ".name").trim() + " " + (pigIronArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 180, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Knight Slime Armor" + " - " + localize(getPotionFromResourceLocation(knightSlimeArmorAddPotionEffect).getName() + ".name").trim() + " " + (knightSlimeArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 190, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Chicken Armor" + " - " + localize(getPotionFromResourceLocation(chickenArmorAddPotionEffect).getName() + ".name").trim() + " " + (chickenArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 200, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Slime Armor" + " - " + localize(getPotionFromResourceLocation(slimeArmorAddPotionEffect).getName() + ".name").trim() + " " + (slimeArmorEffectLevel + 1)).getFormattedText(), guiX + 25, guiY + 210, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("The Ulitmate Armor" + " - Water Breathing,").getFormattedText(), guiX + 25, guiY + 130, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Night Vision, Regeneration II & Flight").getFormattedText(), guiX + 25, guiY + 140, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Ardite Armor" + " - Fire Resistance").getFormattedText(), guiX + 25, guiY + 150, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Cobalt Armor" + " - Haste III").getFormattedText(), guiX + 25, guiY + 160, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Manyullyn Armor" + " - Strength II").getFormattedText(), guiX + 25, guiY + 170, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Pig Iron Armor" + " - Saturation").getFormattedText(), guiX + 25, guiY + 180, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Knight Slime Armor" + " - Haste II").getFormattedText(), guiX + 25, guiY + 190, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Chicken Armor" + " - Speed V").getFormattedText(), guiX + 25, guiY + 200, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Slime Armor" + " - Jump Boost III").getFormattedText(), guiX + 25, guiY + 210, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 
