@@ -32,9 +32,9 @@ public class ARPConfig {
     public static String enderDragonWeaponItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "guardianWeaponItemNameColor", comment = "Set the color name the Guardian Weapons will have")
     public static String guardianWeaponItemNameColor = "aqua";
-    @ModConfigProperty(category = "Weapons.RF.Registry", name = "rfWeaponItemNameColor", comment = "Set the color name the Steel Weapons will have")
+    @ModConfigProperty(category = "Weapons.RF.Registry", name = "rfWeaponItemNameColor", comment = "Set the color name the RF Weapons will have")
     public static String rfWeaponItemNameColor = "dark_red";
-    @ModConfigProperty(category = "Weapons.Tesla.Registry", name = "teslaWeaponItemNameColor", comment = "Set the color name the Electrical Weapons will have")
+    @ModConfigProperty(category = "Weapons.Tesla.Registry", name = "teslaWeaponItemNameColor", comment = "Set the color name the Tesla Weapons will have")
     public static String teslaWeaponItemNameColor = "dark_aqua";
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalSword", comment = "Enable/Disable the Coal Sword from the Game")
     public static boolean enableCoalSword = true;

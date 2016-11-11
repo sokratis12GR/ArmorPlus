@@ -19,7 +19,6 @@ import net.thedragonteam.armorplus.items.baubles.ItemBaubleDragon;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
-import net.thedragonteam.armorplus.items.dev.GuiTester;
 import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.energy.rf.*;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
@@ -86,7 +85,6 @@ public class ModItems {
     public static ItemRFSword itemRFSword;
     public static ItemRFHoe itemRFHoe;
     public static ItemRFShovel itemRFShovel;
-    public static GuiTester guiTester;
     public static ItemCoalArrow itemCoalArrow;
     public static ItemLapisArrow itemLapisArrow;
     public static ItemRedstoneArrow itemRedstoneArrow;
@@ -101,7 +99,6 @@ public class ModItems {
         }
         itemEnderDragonArrow = new ItemEnderDragonArrow();
         itemEnergyStorage = new ItemEnergyStorage();
-        guiTester = new GuiTester();
         itemRFShovel = new ItemRFShovel();
         itemRFHoe = new ItemRFHoe();
         itemRFAxe = new ItemRFAxe();
@@ -328,7 +325,6 @@ public class ModItems {
             itemBaubleDragon.initModel();
         }
         itemEnergyStorage.initModel();
-        guiTester.initModel();
         itemRFShovel.initModel();
         itemRFHoe.initModel();
         itemRFAxe.initModel();
