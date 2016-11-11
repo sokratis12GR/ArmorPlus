@@ -15,8 +15,8 @@ public class TiCModifiers {
     public static Modifier theUltimateMaterial;
     public static Modifier chargedLavaCrystalModifier;
 
-    ItemStack chargedLavaCrystal = new ItemStack(ModItems.lavaCrystal, 1, 1);
-    ItemStack brick = new ItemStack(Items.BRICK, 1);
+    private ItemStack chargedLavaCrystal = new ItemStack(ModItems.lavaCrystal, 1, 1);
+    private ItemStack brick = new ItemStack(Items.BRICK, 1);
 
     public TiCModifiers() {
         theUltimateMaterial = new TiCExtraModifier("ultimatemod");

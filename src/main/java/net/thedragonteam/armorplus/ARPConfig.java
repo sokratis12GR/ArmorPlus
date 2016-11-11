@@ -573,16 +573,39 @@ public class ARPConfig {
     @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable the Armors Flight")
     public static boolean enableFlightAbility = true;
     //EffectLevel
-    @ModConfigProperty(category = "Armors.EmeraldArmor.EffectLevel", name = "emeraldArmorEffectlevel", comment = "Set the level of the Effect effect by the Emerald Armor.")
-    public static int emeraldArmorEffectlevel = 1;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.EffectLevel", name = "obsidianArmorEffectlevel", comment = "Set the level of the Resistance Effect effect by the Obsidian Armor.")
-    public static int obsidianArmorEffectlevel = 0;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.EffectLevel", name = "redstoneArmorEffectlevel", comment = "Set the level of the Swiftness effect by the Redstone Armor.")
-    public static int redstoneArmorEffectlevel = 1;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.EffectLevel", name = "superstarArmorEffectlevel", comment = "Set the level of the Effect effect by the Super Star Armor.")
-    public static int superstarArmorEffectlevel = 1;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.EffectLevel", name = "ultimateArmorEffectlevel", comment = "Set the level of the Effect effect by The Ultimate Armor.")
-    public static int ultimateArmorEffectlevel = 1;
+    @ModConfigProperty(category = "Armors.CoalArmor.EffectLevel", name = "coalArmorEffectLevel", comment = "Set the level of the Effect by the Coal Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int coalArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.LapisArmor.EffectLevel", name = "lapisArmorEffectLevel", comment = "Set the level of the Effect by the Lapis Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int lapisArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.RedstoneArmor.EffectLevel", name = "redstoneArmorEffectLevel", comment = "Set the level of the Effect by the Redstone Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int redstoneArmorEffectLevel = 1;
+    @ModConfigProperty(category = "Armors.EmeraldArmor.EffectLevel", name = "emeraldArmorEffectLevel", comment = "Set the level of the Effect by the Emerald Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int emeraldArmorEffectLevel = 1;
+    @ModConfigProperty(category = "Armors.ObsidianArmor.EffectLevel", name = "obsidianArmorEffectLevel", comment = "Set the level of the Effect by the Obsidian Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int obsidianArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.LavaArmor.EffectLevel", name = "lavaArmorEffectLevel", comment = "Set the level of the Effect by the Lava Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int lavaArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.ChickenArmor.EffectLevel", name = "chickenArmorEffectLevel", comment = "Set the level of the Effect by the Chicken Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int chickenArmorEffectLevel = 4;
+    @ModConfigProperty(category = "Armors.SlimeArmor.EffectLevel", name = "slimeArmorEffectLevel", comment = "Set the level of the Effect by the Slime Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int slimeArmorEffectLevel = 2;
+    @ModConfigProperty(category = "Armors.GuardianArmor.EffectLevel", name = "guardianArmorEffectLevel", comment = "Set the level of the Effect by the Guardian Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int guardianArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.SuperStarArmor.EffectLevel", name = "superStarArmorEffectLevel", comment = "Set the level of the Effect by the Super Star Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int superStarArmorEffectLevel = 1;
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.EffectLevel", name = "ultimateArmorEffectLevel", comment = "Set the level of the Effect by The Ultimate Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int[] ultimateArmorEffectLevels = new int[]{0, 1, 0};
+    @ModConfigProperty(category = "Armors.ArditeArmor.EffectLevel", name = "arditeArmorEffectLevel", comment = "Set the level of the Effect by the Ardite Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int arditeArmorEffectLevel = 0;
+    @ModConfigProperty(category = "Armors.CobaltArmor.EffectLevel", name = "cobaltArmorEffectLevel", comment = "Set the level of the Effect by the Cobalt Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int cobaltArmorEffectLevel = 2;
+    @ModConfigProperty(category = "Armors.ManyullynArmor.EffectLevel", name = "manyullynArmorEffectLevel", comment = "Set the level of the Effect by the Manyullyn Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int manyullynArmorEffectLevel = 1;
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.EffectLevel", name = "knightSlimeArmorEffectLevel", comment = "Set the level of the Effect by the Knight Slime Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int knightSlimeArmorEffectLevel = 1;
+    @ModConfigProperty(category = "Armors.PigIronArmor.EffectLevel", name = "pigIronArmorEffectLevel", comment = "Set the level of the Effect by the Pig Iron Armor. (0 = level 1, 1 = level 2 etc.)")
+    public static int pigIronArmorEffectLevel = 0;
+
     //WorldGeneration
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "enableLavaCrystalOreOverworldGen", comment = "Enable/Disable The Lava Crystal World Generation in the dimension `Overworld`")
     public static boolean enableLavaCrystalOverworldGen = true;
