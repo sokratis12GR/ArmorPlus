@@ -43,18 +43,6 @@ public class BaseStoneBrickCorner extends BaseBlock {
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-    /**
-     * Get the MapColor for this Block and the given BlockState
-     */
-    public MapColor getMapColor(IBlockState state) {
-        return mapColor;
-    }
-
     private static boolean isDifferentStairs(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EnumFacing enumFacing) {
         IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumFacing));
         return !isBaseStoneBrickCorner(iblockstate) || iblockstate.getValue(FACING) != blockState.getValue(FACING) || iblockstate.getValue(HALF) != blockState.getValue(HALF);
@@ -85,6 +73,18 @@ public class BaseStoneBrickCorner extends BaseBlock {
         }
 
         return BaseStoneBrickCorner.EnumShape.STRAIGHT;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
+    /**
+     * Get the MapColor for this Block and the given BlockState
+     */
+    public MapColor getMapColor(IBlockState state) {
+        return mapColor;
     }
 
     @Override

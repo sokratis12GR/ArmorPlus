@@ -88,10 +88,9 @@ public class ArmorPlus {
     });
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
-
-    private GuiHandler GuiHandler = new GuiHandler();
     @Mod.Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
+    private GuiHandler GuiHandler = new GuiHandler();
 
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");

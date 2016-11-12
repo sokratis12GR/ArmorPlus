@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 public class BaseEnergyBlock extends BlockContainer {
 
+    private TileEntity tileEntity;
+
     public BaseEnergyBlock(Material material, String name, TileEntity tileEntityIn) {
         this(material, name, 0, 0, tileEntityIn);
     }
@@ -28,8 +30,6 @@ public class BaseEnergyBlock extends BlockContainer {
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, TileEntity tileEntityIn) {
         this(material, name, resistance, hardness, tool, harvestLevel, 0F, tileEntityIn);
     }
-
-    private TileEntity tileEntity;
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, TileEntity tileEntityIn) {
         super(material);

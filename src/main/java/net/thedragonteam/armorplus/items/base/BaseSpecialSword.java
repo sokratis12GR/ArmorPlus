@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -34,22 +33,20 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSpecialSword extends ItemSword {
 
+    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, ARPConfig.coalSwordDurability, 1.0F, (float) ARPConfig.coalSwordDamage, 15);
+    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, ARPConfig.lapisSwordDurability, 1.0F, (float) ARPConfig.lapisSwordDamage, 30);
+    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, ARPConfig.redstoneSwordDurability, 1.0F, (float) ARPConfig.redstoneSwordDamage, 20);
+    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, ARPConfig.emeraldSwordDurability, 1.0F, (float) ARPConfig.emeraldSwordDamage, 20);
+    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, ARPConfig.obsidianSwordDurability, 1.0F, (float) ARPConfig.obsidianSwordDamage, 20);
+    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, ARPConfig.lavaSwordDurability, 1.0F, (float) ARPConfig.lavaSwordDamage, 20);
+    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, ARPConfig.guardianSwordDurability, 1.0F, (float) ARPConfig.guardianSwordDamage, 30);
+    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, ARPConfig.superStarSwordDurability, 1.0F, (float) ARPConfig.superStarSwordDamage, 20);
+    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, ARPConfig.enderDragonSwordDurability, 1.0F, (float) ARPConfig.enderDragonSwordDamage, 20);
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
     public String effect;
-
     private Swords swords;
-
-    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, ARPConfig.coalSwordDurability, 1.0F, (float) ARPConfig.coalSwordDamage, 15);
-    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, ARPConfig.lapisSwordDurability, 1.0F, (float) ARPConfig.lapisSwordDamage, 30);
-    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, ARPConfig.redstoneSwordDurability, 1.0F, (float)  ARPConfig.redstoneSwordDamage, 20);
-    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, ARPConfig.emeraldSwordDurability, 1.0F, (float)  ARPConfig.emeraldSwordDamage, 20);
-    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, ARPConfig.obsidianSwordDurability, 1.0F, (float)  ARPConfig.obsidianSwordDamage, 20);
-    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, ARPConfig.lavaSwordDurability, 1.0F, (float)  ARPConfig.lavaSwordDamage, 20);
-    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, ARPConfig.guardianSwordDurability, 1.0F, (float)  ARPConfig.guardianSwordDamage, 30);
-    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, ARPConfig.superStarSwordDurability, 1.0F, (float)  ARPConfig.superStarSwordDamage, 20);
-    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, ARPConfig.enderDragonSwordDurability, 1.0F, (float)  ARPConfig.enderDragonSwordDamage, 20);
 
     public BaseSpecialSword(Swords swords) {
         super(swords.getToolMaterial());
@@ -106,7 +103,7 @@ public class BaseSpecialSword extends ItemSword {
             tooltip.add("\2479Ability: " + "\247r" + effect);
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
     @Override

@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.armors.base;
 
 import cofh.api.energy.IEnergyContainerItem;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.darkhax.tesla.api.ITeslaConsumer;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.api.ITeslaProducer;
@@ -53,15 +52,13 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 })
 public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
+    private static float electricalArmorToughnessPoints = (float) ARPConfig.electricalArmorToughnessPoints;
+    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation("electrical_armor"), 19,
+            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, electricalArmorToughnessPoints);
     private int power;
     private int maxCapacity;
     private int output;
     private int input;
-
-    private static float electricalArmorToughnessPoints = (float) ARPConfig.electricalArmorToughnessPoints;
-
-    public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation("electrical_armor"), 19,
-            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, electricalArmorToughnessPoints);
 
     public BaseElectricalArmor(EntityEquipmentSlot slot, int maxCapacity, int input, int output) {
         super(electricalArmor, 0, slot);
@@ -217,10 +214,10 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(ChatFormatting.DARK_RED + I18n.format("") + this.getEnergyStored(stack) + "/" + this.getMaxEnergyStored(stack) + I18n.format(" RF"));
-            tooltip.add(ChatFormatting.DARK_RED + I18n.format("tooltip.rf.cost.tool", Integer.toString(this.getMaxReceive(stack))));
+            tooltip.add(TextFormatting.DARK_RED + I18n.format("") + this.getEnergyStored(stack) + "/" + this.getMaxEnergyStored(stack) + I18n.format(" RF"));
+            tooltip.add(TextFormatting.DARK_RED + I18n.format("tooltip.rf.cost.tool", Integer.toString(this.getMaxReceive(stack))));
         } else
-            tooltip.add(I18n.format("tooltip.rf.showinfo", ChatFormatting.DARK_RED, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.rf.showinfo", TextFormatting.DARK_RED, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
     @Optional.Method(modid = "tesla")

@@ -62,15 +62,6 @@ public class ContainerHighTechBench extends Container {
         this.craftResult.setInventorySlotContents(0, HighTechBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
 
-    @Nullable
-    @Override
-    public Slot getSlotFromInventory(IInventory inv, int slotIn) {
-        if (this.inventoryItemStacks == null) {
-            getSlotFromInventory(inv, slotIn).inventory.clear();
-        }
-        return super.getSlotFromInventory(inv, slotIn);
-    }
-
     /**
      * Called when the container is closed.
      */
@@ -90,35 +81,40 @@ public class ContainerHighTechBench extends Container {
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
-        Slot slot = this.inventorySlots.get(index);
+        Slot slot = (Slot) this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
             if (index == 0) {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true))
+                if (!this.mergeItemStack(itemstack1, 10, 53, true)) {
                     return null;
-                slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37)
-                if (!this.mergeItemStack(itemstack1, 37, 46, false))
-                    return null;
-            else if (index >= 37 && index < 46)
-                if (!this.mergeItemStack(itemstack1, 10, 37, false))
-                    return null;
-            else if (!this.mergeItemStack(itemstack1, 10, 46, false))
-                return null;
+                }
 
-            switch (itemstack1.stackSize) {
-                case 0:
-                    slot.putStack(null);
-                    break;
-                default:
-                    slot.onSlotChanged();
-                    break;
-            }
-            if (itemstack1.stackSize == itemstack.stackSize)
+                slot.onSlotChange(itemstack1, itemstack);
+            } else if (index >= 10 && index < 37) {
+                if (!this.mergeItemStack(itemstack1, 37, 53, false)) {
+                    return null;
+                }
+            } else if (index >= 37 && index < 53) {
+                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
+                    return null;
+                }
+            } else if (!this.mergeItemStack(itemstack1, 10, 53, false)) {
                 return null;
+            }
+
+            if (itemstack1.stackSize == 0) {
+                slot.putStack((ItemStack) null);
+            } else {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize) {
+                return null;
+            }
+
             slot.onPickupFromSlot(playerIn, itemstack1);
         }
 

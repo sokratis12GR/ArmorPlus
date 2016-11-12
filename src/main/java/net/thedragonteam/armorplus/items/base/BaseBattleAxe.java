@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -36,13 +35,6 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBattleAxe extends ItemSword {
 
-    public Item itemEasy;
-    public Item itemExpert;
-    public TextFormatting formatting;
-    public String effect;
-    public BattleAxes battleAxes;
-    public float efficiency;
-
     public static Item.ToolMaterial battleAxeCoalMaterial = EnumHelper.addToolMaterial("battleAxeCoalMaterial", 1, ARPConfig.coalBattleAxeDurability, 1.0F, (float) ARPConfig.coalBattleAxeDamage, 15);
     public static Item.ToolMaterial battleAxeLapisMaterial = EnumHelper.addToolMaterial("battleAxeLapisMaterial", 1, ARPConfig.lapisBattleAxeDurability, 1.0F, (float) ARPConfig.lapisBattleAxeDamage, 30);
     public static Item.ToolMaterial battleAxeRedstoneMaterial = EnumHelper.addToolMaterial("battleAxeRedstoneMaterial", 1, ARPConfig.redstoneBattleAxeDurability, 1.0F, (float) ARPConfig.redstoneBattleAxeDamage, 20);
@@ -52,6 +44,12 @@ public class BaseBattleAxe extends ItemSword {
     public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, ARPConfig.guardianBattleAxeDurability, 1.0F, (float) ARPConfig.guardianBattleAxeDamage, 30);
     public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, ARPConfig.superStarBattleAxeDurability, 1.0F, (float) ARPConfig.superStarBattleAxeDamage, 20);
     public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, ARPConfig.enderDragonBattleAxeDurability, 1.0F, (float) ARPConfig.enderDragonBattleAxeDamage, 20);
+    public Item itemEasy;
+    public Item itemExpert;
+    public TextFormatting formatting;
+    public String effect;
+    public BattleAxes battleAxes;
+    public float efficiency;
 
     public BaseBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());
@@ -115,7 +113,7 @@ public class BaseBattleAxe extends ItemSword {
             tooltip.add("\2479Ability: " + "\247r" + effect);
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
     @Override

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.energy.tesla;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
@@ -48,6 +47,6 @@ public class ItemTeslaRod extends BaseItem {
         if (GameSettings.isKeyDown(keyBindSneak))
             tooltip.add(1, Loader.isModLoaded("tesla") ? "Tesla is installed all the recipes should work" : "Tesla isn't installed none of the recipes will work");
         else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 }

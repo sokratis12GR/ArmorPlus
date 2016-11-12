@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.consumables;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -113,6 +112,6 @@ public class TheGiftOfTheGods extends BaseItem {
             tooltip.add("\2479Max Uses: " + "\247r" + maxUses);
             tooltip.add("\2473Use: " + "\247rRight-Click");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.GOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.GOLD, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 }

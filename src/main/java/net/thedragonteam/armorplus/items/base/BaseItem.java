@@ -28,15 +28,14 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseItem extends Item {
 
+    private Items items;
+    private TextFormatting textFormatting;
     public BaseItem(String name) {
         setRegistryName(name);
         setUnlocalizedName(setARPUnlocalizedName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
-
-    private Items items;
-    private TextFormatting textFormatting;
 
     public BaseItem(Items itemsIn) {
         this(itemsIn.getName());

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.dev;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
@@ -57,6 +56,6 @@ public class DevTool extends BaseItem {
             tooltip.add("\2479Ability: " + "\247rGives Information about the Target");
             tooltip.add("\2473Use: " + "\247rRight Click a Target");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", ChatFormatting.BOLD, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.BOLD, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 }

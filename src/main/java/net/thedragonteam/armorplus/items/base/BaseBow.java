@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -80,7 +79,7 @@ public class BaseBow extends ItemBow {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Bonus Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Bonus Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
     @Override

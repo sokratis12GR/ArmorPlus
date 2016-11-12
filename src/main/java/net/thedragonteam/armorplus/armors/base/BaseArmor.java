@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.armors.base;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -505,7 +504,7 @@ public class BaseArmor extends ItemArmor {
     }
 
     private void showInfo(List<String> tooltip, KeyBinding keyBinding) {
-        tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBinding.getDisplayName(), ChatFormatting.GRAY));
+        tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBinding.getDisplayName(), TextFormatting.GRAY));
     }
 
     @SideOnly(Side.CLIENT)

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -74,7 +73,7 @@ public class BaseSword extends ItemSword {
             tooltip.add("\2479Ability: " + "\247r" + effect);
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
     @Override
