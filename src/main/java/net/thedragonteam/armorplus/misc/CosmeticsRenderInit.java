@@ -20,7 +20,7 @@ import java.util.Properties;
 
 public class CosmeticsRenderInit {
 
-    public static final HashMap<String, RenderCosmetics> COSMETICS_FOR_PEOPLE_LIST = new HashMap<String, RenderCosmetics>();
+    public static final HashMap<String, RenderCosmetics> COSMETICS_FOR_PEOPLE_LIST = new HashMap<>();
 
     public CosmeticsRenderInit() {
         new ThreadCosmeticsFetcher();
