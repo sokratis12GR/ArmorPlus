@@ -79,7 +79,7 @@ public class ShapedOreRecipe implements IRecipe {
             throw new RuntimeException(ret);
         }
 
-        HashMap<Character, Object> itemMap = new HashMap<Character, Object>();
+        HashMap<Character, Object> itemMap = new HashMap<>();
 
         for (; idx < recipe.length; idx += 2) {
             Character chr = (Character) recipe[idx];

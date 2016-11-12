@@ -31,14 +31,15 @@ import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.ARPArmorMaterial;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ArmorUtils;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
 
 import java.util.List;
 import java.util.Objects;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.ArmorUtils.addArmorEffect;
+import static net.thedragonteam.armorplus.util.ArmorUtils.removeArmorEffect;
+import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -145,35 +146,35 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableCoalBEffect && !enableFullCoalArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
                     case LEGS:
                         if (enableCoalLEffect && !enableFullCoalArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
                     case CHEST:
                         if (enableCoalCEffect && !enableFullCoalArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
                     case HEAD:
                         if (enableCoalHEffect && !enableFullCoalArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
                 }
                 break;
             case EMERALD:
                 switch (slot) {
                     case FEET:
                         if (enableEmeraldBEffect && !enableFullEmeraldArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                         break;
                     case LEGS:
                         if (enableEmeraldLEffect && !enableFullEmeraldArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                         break;
                     case CHEST:
                         if (enableEmeraldCEffect && !enableFullEmeraldArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                         break;
                     case HEAD:
                         if (enableEmeraldHEffect && !enableFullEmeraldArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                         break;
                 }
                 break;
@@ -181,19 +182,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLapisBEffect && !enableFullLapisArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                         break;
                     case LEGS:
                         if (enableLapisLEffect && !enableFullLapisArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                         break;
                     case CHEST:
                         if (enableLapisCEffect && !enableFullLapisArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                         break;
                     case HEAD:
                         if (enableLapisHEffect && !enableFullLapisArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                         break;
                 }
                 break;
@@ -201,22 +202,22 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLavaBEffect && !enableFullLavaArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                         lavaEffects(entity, itemStack);
                         break;
                     case LEGS:
                         if (enableLavaLEffect && !enableFullLavaArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                         lavaEffects(entity, itemStack);
                         break;
                     case CHEST:
                         if (enableLavaCEffect && !enableFullLavaArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                         lavaEffects(entity, itemStack);
                         break;
                     case HEAD:
                         if (enableLavaHEffect && !enableFullLavaArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                         lavaEffects(entity, itemStack);
                         break;
                 }
@@ -225,33 +226,33 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableRedstoneBEffect && !enableFullRedstoneArmorEffect) {
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                             if (world.isRemote) {
-                                ParticlesHelper.spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
+                                spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
                         }
                         break;
                     case LEGS:
                         if (enableRedstoneLEffect && !enableFullRedstoneArmorEffect) {
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                             if (world.isRemote) {
-                                ParticlesHelper.spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
+                                spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
                         }
                         break;
                     case CHEST:
                         if (enableRedstoneCEffect && !enableFullRedstoneArmorEffect) {
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                             if (world.isRemote) {
-                                ParticlesHelper.spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
+                                spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
                         }
                         break;
                     case HEAD:
                         if (enableRedstoneHEffect && !enableFullRedstoneArmorEffect) {
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                             if (world.isRemote) {
-                                ParticlesHelper.spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
+                                spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
                         }
                         break;
@@ -261,19 +262,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableObsidianBEffect && !enableFullObsidianArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                         break;
                     case LEGS:
                         if (enableObsidianLEffect && !enableFullObsidianArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                         break;
                     case CHEST:
                         if (enableObsidianCEffect && !enableFullObsidianArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                         break;
                     case HEAD:
                         if (enableObsidianHEffect && !enableFullObsidianArmorEffect)
-                            ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                         break;
                 }
                 break;
@@ -286,34 +287,34 @@ public class BaseArmor extends ItemArmor {
                         entity.capabilities.allowFlying = false;
                     }
                 }
-                if (Potion.getPotionFromResourceLocation(enderDragonArmorRemovePotionEffect) != null)
-                    entity.removePotionEffect(Potion.getPotionFromResourceLocation(enderDragonArmorRemovePotionEffect));
+                if (getPotion(enderDragonArmorRemovePotionEffect) != null)
+                    removeArmorEffect(entity, getPotion(enderDragonArmorRemovePotionEffect));
                 break;
             case SUPER_STAR:
                 switch (slot) {
                     case FEET:
                         if (enableSuperStarBEffect && !enableFullSuperStarArmorEffect)
-                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
-                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
+                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case LEGS:
                         if (enableSuperStarLEffect && !enableFullSuperStarArmorEffect)
-                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
-                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
+                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case CHEST:
                         if (enableSuperStarCEffect && !enableFullSuperStarArmorEffect)
-                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
-                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
+                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case HEAD:
                         if (enableSuperStarHEffect && !enableFullSuperStarArmorEffect)
-                            if (entity.getActivePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect)) == null)
-                                ArmorUtils.addArmorEffect(entity, Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        entity.removePotionEffect(Potion.getPotionFromResourceLocation(superStarArmorRemovePotionEffect));
+                            if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
+                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                 }
                 break;
@@ -347,7 +348,6 @@ public class BaseArmor extends ItemArmor {
         return true;
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
@@ -356,9 +356,9 @@ public class BaseArmor extends ItemArmor {
             case COAL:
                 if (isKeyDown()) {
                     if (!enableFullCoalArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim(), coalArmorEffectLevel);
-                    } else if (enableFullCoalArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim(), coalArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(coalArmorAddPotionEffect), coalArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(coalArmorAddPotionEffect), coalArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -366,9 +366,9 @@ public class BaseArmor extends ItemArmor {
             case EMERALD:
                 if (isKeyDown()) {
                     if (!enableFullEmeraldArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim(), emeraldArmorEffectLevel);
-                    } else if (enableFullEmeraldArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim(), emeraldArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -376,9 +376,9 @@ public class BaseArmor extends ItemArmor {
             case LAPIS:
                 if (isKeyDown()) {
                     if (!enableFullLapisArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim(), lapisArmorEffectLevel);
-                    } else if (enableFullLapisArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim(), lapisArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -386,9 +386,9 @@ public class BaseArmor extends ItemArmor {
             case LAVA:
                 if (isKeyDown()) {
                     if (!enableFullLavaArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim(), lavaArmorEffectLevel);
-                    } else if (enableFullLavaArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim(), lavaArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -396,9 +396,9 @@ public class BaseArmor extends ItemArmor {
             case REDSTONE:
                 if (isKeyDown()) {
                     if (!enableFullRedstoneArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim(), redstoneArmorEffectLevel);
-                    } else if (enableFullRedstoneArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim(), redstoneArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -406,9 +406,9 @@ public class BaseArmor extends ItemArmor {
             case OBSIDIAN:
                 if (isKeyDown()) {
                     if (!enableFullObsidianArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim(), obsidianArmorEffectLevel);
-                    } else if (enableFullObsidianArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim(), obsidianArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
@@ -421,59 +421,59 @@ public class BaseArmor extends ItemArmor {
                 break;
             case GUARDIAN:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(guardianArmorAddPotionEffect).getName() + ".name").trim(), guardianArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(guardianArmorAddPotionEffect), guardianArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case SLIME:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(slimeArmorAddPotionEffect).getName() + ".name").trim(), slimeArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(slimeArmorAddPotionEffect), slimeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case CHICKEN:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(chickenArmorAddPotionEffect).getName() + ".name").trim(), chickenArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(chickenArmorAddPotionEffect), chickenArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case SUPER_STAR:
                 if (isKeyDown()) {
                     if (!enableFullObsidianArmorEffect) {
-                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim(), superStarArmorEffectLevel);
-                    } else if (enableFullObsidianArmorEffect) {
-                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim(), superStarArmorEffectLevel);
+                        addToolTipPiece(tooltip, localizePotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
+                    } else {
+                        addToolTipFull(tooltip, localizePotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case ARDITE:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(arditeArmorAddPotionEffect).getName() + ".name").trim(), arditeArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(arditeArmorAddPotionEffect), arditeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case COBALT:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(cobaltArmorAddPotionEffect).getName() + ".name").trim(), cobaltArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(cobaltArmorAddPotionEffect), cobaltArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case MANYULLYN:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(manyullynArmorAddPotionEffect).getName() + ".name").trim(), manyullynArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(manyullynArmorAddPotionEffect), manyullynArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case KNIGHT_SLIME:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(knightSlimeArmorAddPotionEffect).getName() + ".name").trim(), knightSlimeArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(knightSlimeArmorAddPotionEffect), knightSlimeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case PIG_IRON:
                 if (isKeyDown()) {
-                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(pigIronArmorAddPotionEffect).getName() + ".name").trim(), pigIronArmorEffectLevel);
+                    addToolTipFull(tooltip, localizePotion(pigIronArmorAddPotionEffect), pigIronArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
@@ -510,5 +510,13 @@ public class BaseArmor extends ItemArmor {
     public boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         return GameSettings.isKeyDown(keyBindSneak);
+    }
+
+    private String localizePotion(String resourceLocation) {
+        return localize(getPotion(resourceLocation).getName() + ".name").trim();
+    }
+
+    private Potion getPotion(String resourceLocation) {
+        return Potion.getPotionFromResourceLocation(resourceLocation);
     }
 }

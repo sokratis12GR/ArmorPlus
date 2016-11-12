@@ -80,7 +80,7 @@ public class HighTechBenchRecipe {
      */
     @SuppressWarnings("unchecked")
     public boolean matches(List<ItemStack> checkedList, World world, BlockPos pos) {
-        ArrayList<Object> required = new ArrayList<Object>(input);
+        ArrayList<Object> required = new ArrayList<>(input);
 
         for (ItemStack slot : checkedList) {
             if (slot != null) {

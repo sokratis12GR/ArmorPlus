@@ -10,6 +10,7 @@ import net.thedragonteam.armorplus.api.registry.HighTechBenchRecipeRegistry;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * net.thedragonteam.armorplus.compat.jei.hightechbench
@@ -20,11 +21,7 @@ public class HighTechBenchRecipeMaker {
     @Nonnull
     public static List<HighTechBenchRecipeJEI> getRecipes() {
         List<HighTechBenchRecipe> recipeList = HighTechBenchRecipeRegistry.getRecipeList();
-        ArrayList<HighTechBenchRecipeJEI> recipes = new ArrayList<HighTechBenchRecipeJEI>();
 
-        for (HighTechBenchRecipe recipe : recipeList)
-            recipes.add(new HighTechBenchRecipeJEI(recipe));
-
-        return recipes;
+        return recipeList.stream().map(HighTechBenchRecipeJEI::new).collect(Collectors.toCollection(ArrayList::new));
     }
 }

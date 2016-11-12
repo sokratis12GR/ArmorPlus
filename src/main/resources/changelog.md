@@ -1,3 +1,11 @@
+**ArmorPlus 1.10.2-8.0.5.11**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{JEI}**
+    * Added description to the Wither Bone, Ender Dragon Scale, Guardian Scale to provide information for what they are used for and how to obtain them.
+* **{Bugs Fixed}**
+    * Fixed config disabling the effects, don't set the effect to `none` just set the enableEffects for all pieces and full set to `false`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.4.10**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

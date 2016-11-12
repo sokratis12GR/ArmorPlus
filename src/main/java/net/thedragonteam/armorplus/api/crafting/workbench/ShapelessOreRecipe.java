@@ -95,7 +95,7 @@ public class ShapelessOreRecipe implements IRecipe {
     @SuppressWarnings("unchecked")
     @Override
     public boolean matches(InventoryCrafting var1, World world) {
-        ArrayList<Object> required = new ArrayList<Object>(input);
+        ArrayList<Object> required = new ArrayList<>(input);
 
         for (int x = 0; x < var1.getSizeInventory(); x++) {
             ItemStack slot = var1.getStackInSlot(x);

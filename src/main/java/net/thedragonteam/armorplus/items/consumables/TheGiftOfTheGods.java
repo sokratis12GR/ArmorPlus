@@ -95,7 +95,7 @@ public class TheGiftOfTheGods extends BaseItem {
             if (debugMode && debugModeTGOTG)
                 LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
                         " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
-                        " ; Item's Max Damage: " + item.getMaxDamage());
+                        " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)));
 
             itemStackIn.damageItem(1, playerIn);
         }

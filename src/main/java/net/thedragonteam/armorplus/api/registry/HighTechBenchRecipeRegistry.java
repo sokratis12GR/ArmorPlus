@@ -35,6 +35,6 @@ public class HighTechBenchRecipeRegistry {
     }
 
     public static List<HighTechBenchRecipe> getRecipeList() {
-        return new ArrayList<HighTechBenchRecipe>(recipeList);
+        return new ArrayList<>(recipeList);
     }
 }

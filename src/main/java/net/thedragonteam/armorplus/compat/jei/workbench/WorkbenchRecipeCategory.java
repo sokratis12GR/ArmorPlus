@@ -95,16 +95,17 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
-            craftingGridHelper.setInput(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
+            craftingGridHelper.setInputStacks(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
             craftingGridHelper.setOutput(guiItemStacks, wrapper.getOutputs());
         } else {
-            craftingGridHelper.setInput(guiItemStacks, recipeWrapper.getInputs());
+            craftingGridHelper.setInputStacks(guiItemStacks, recipeWrapper.getInputs());
             craftingGridHelper.setOutput(guiItemStacks, recipeWrapper.getOutputs());
         }
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+    @SuppressWarnings("unchecked")
+    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
         guiItemStacks.init(OUTPUT_SLOT, false, 94, 18);
@@ -117,10 +118,10 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
-            craftingGridHelper.setInput(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
+            craftingGridHelper.setInputStacks(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
             craftingGridHelper.setOutput(guiItemStacks, wrapper.getOutputs());
         } else {
-            craftingGridHelper.setInput(guiItemStacks, recipeWrapper.getInputs());
+            craftingGridHelper.setInputStacks(guiItemStacks, recipeWrapper.getInputs());
             craftingGridHelper.setOutput(guiItemStacks, recipeWrapper.getOutputs());
         }
     }

@@ -10,6 +10,7 @@ import net.thedragonteam.armorplus.api.registry.WorkbenchRecipeRegistry;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * net.thedragonteam.armorplus.compat.jei.benches
@@ -20,11 +21,7 @@ public class WorkbenchRecipeMaker {
     @Nonnull
     public static List<WorkbenchRecipeJEI> getRecipes() {
         List<WorkbenchRecipe> recipeList = WorkbenchRecipeRegistry.getRecipeList();
-        ArrayList<WorkbenchRecipeJEI> recipes = new ArrayList<WorkbenchRecipeJEI>();
 
-        for (WorkbenchRecipe recipe : recipeList)
-            recipes.add(new WorkbenchRecipeJEI(recipe));
-
-        return recipes;
+        return recipeList.stream().map(WorkbenchRecipeJEI::new).collect(Collectors.toCollection(ArrayList::new));
     }
 }

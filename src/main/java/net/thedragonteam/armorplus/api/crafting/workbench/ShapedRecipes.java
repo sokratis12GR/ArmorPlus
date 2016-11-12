@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
@@ -130,7 +129,7 @@ public class ShapedRecipes implements IRecipe {
                 ItemStack itemstack1 = inv.getStackInSlot(i);
 
                 if (itemstack1 != null && itemstack1.hasTagCompound()) {
-                    itemstack.setTagCompound((NBTTagCompound) itemstack1.getTagCompound().copy());
+                    itemstack.setTagCompound(itemstack1.getTagCompound().copy());
                 }
             }
         }

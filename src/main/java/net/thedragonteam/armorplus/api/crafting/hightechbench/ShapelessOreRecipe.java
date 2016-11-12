@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
@@ -94,7 +95,7 @@ public class ShapelessOreRecipe implements IRecipe {
     @SuppressWarnings("unchecked")
     @Override
     public boolean matches(InventoryCrafting var1, World world) {
-        ArrayList<Object> required = new ArrayList<Object>(input);
+        ArrayList<Object> required = new ArrayList<>(input);
 
         for (int x = 0; x < var1.getSizeInventory(); x++) {
             ItemStack slot = var1.getStackInSlot(x);
@@ -148,7 +149,7 @@ public class ShapelessOreRecipe implements IRecipe {
 
         for (int i = 0; i < aitemstack.length; ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack[i] = ForgeHooks.getContainerItem(itemstack);
         }
 
         return aitemstack;

@@ -16,7 +16,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -34,6 +33,7 @@ import java.util.List;
 import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
 import static net.thedragonteam.armorplus.ARPConfig.theUltimateArmorItemNameColor;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.ArmorUtils.addArmorEffect;
 import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -111,9 +111,9 @@ public class BaseUltimateArmor extends ItemArmor {
             else entity.capabilities.disableDamage = false;
         if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 60, 2, false, false));
-            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 2, false, false));
-            entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, false, false));
+            addArmorEffect(entity, MobEffects.POISON, 60, 2);
+            addArmorEffect(entity, MobEffects.SLOWNESS, 60, 2);
+            addArmorEffect(entity, MobEffects.BLINDNESS, 60, 0);
 
             entity.motionX = 0;
             if (entity.onGround)

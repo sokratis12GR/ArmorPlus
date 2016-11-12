@@ -119,7 +119,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     }
 
     @SuppressWarnings("unchecked")
-    protected void applyEntityAI() {
+    private void applyEntityAI() {
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPigZombie.class));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));

@@ -19,7 +19,6 @@ import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTier
 
 import javax.annotation.Nullable;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -43,11 +42,7 @@ public class WorkbenchCraftingManager {
         (new ModSpecialMobRecipes()).addRecipes(this);
         (new ModWeaponsTierOneRecipes()).addRecipes(this);
 
-        Collections.sort(this.recipes, new Comparator<IRecipe>() {
-            public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_) {
-                return p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0)));
-            }
-        });
+        Collections.sort(this.recipes, (p_compare_1_, p_compare_2_) -> p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0))));
     }
 
     /**

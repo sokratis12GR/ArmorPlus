@@ -4,17 +4,20 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import net.thedragonteam.armorplus.ARPConfig;
 
+import static net.minecraft.init.Items.*;
+import static net.minecraft.item.Item.getByNameOrId;
+import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
+import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRecipe;
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.registry.ModBlocks.*;
+import static net.thedragonteam.armorplus.registry.ModItems.*;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -74,107 +77,111 @@ public class ModRecipes {
         ItemStack theUltimateHelmet = new ItemStack(ModItems.theUltimateHelmet, 1);
         theUltimateHelmet.setTagCompound(nbttagc);
 
-        if (ARPConfig.enableEnderDragonArmor)
-            GameRegistry.addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableGuardianArmor)
-            GameRegistry.addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableSuperStarArmor)
-            GameRegistry.addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableTheUltimateArmor)
-            GameRegistry.addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableCoalArmor)
-            GameRegistry.addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableEmeraldArmor)
-            GameRegistry.addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableLapisArmor)
-            GameRegistry.addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableLavaArmor)
-            GameRegistry.addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableObsidianArmor)
-            GameRegistry.addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableRedstoneArmor)
-            GameRegistry.addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableChickenArmor)
-            GameRegistry.addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableSlimeArmor)
-            GameRegistry.addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableArditeArmor)
-            GameRegistry.addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableCobaltArmor)
-            GameRegistry.addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableManyullynArmor)
-            GameRegistry.addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enablePigIronArmor)
-            GameRegistry.addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableKnightSlimeArmor)
-            GameRegistry.addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableSteelArmor)
-            GameRegistry.addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
-        if (ARPConfig.enableElectricalArmor)
-            GameRegistry.addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(Item.getByNameOrId("theoneprobe:probe"), 1));
+        if (enableEnderDragonArmor)
+            addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableGuardianArmor)
+            addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableSuperStarArmor)
+            addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableTheUltimateArmor)
+            addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableCoalArmor)
+            addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableEmeraldArmor)
+            addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableLapisArmor)
+            addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableLavaArmor)
+            addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableObsidianArmor)
+            addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableRedstoneArmor)
+            addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableChickenArmor)
+            addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableSlimeArmor)
+            addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableArditeArmor)
+            addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableCobaltArmor)
+            addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableManyullynArmor)
+            addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enablePigIronArmor)
+            addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableKnightSlimeArmor)
+            addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableSteelArmor)
+            addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+        if (enableElectricalArmor)
+            addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
     }
 
     public static void addShapedRecipes() {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
-        GameRegistry.addRecipe(new ItemStack(ModBlocks.lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', Items.LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeWhite"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeRed"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeBlack"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blueStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeBlue"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.greenStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeGreen"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.yellowStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyeYellow"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.purpleStoneBrick, 4), " S ", "SWS", " S ", 'S', "stonebrick", 'W', "dyePurple"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 5), "stonebrickWhiteTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 5), "stonebrickRedTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 5), "stonebrickBlackTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blueStoneBrick, 5), "stonebrickBlueTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.greenStoneBrick, 5), "stonebrickGreenTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.yellowStoneBrick, 5), "stonebrickYellowTower"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.purpleStoneBrick, 5), "stonebrickPurpleTower"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickWhite"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickRed"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickBlack"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blueStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickBlue"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.greenStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickGreen"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.yellowStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickYellow"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.purpleStoneBrickTower, 1), "   ", "S S", "SSS", 'S', "stonebrickPurple"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.whiteStoneBrick, 3), "stonebrickWhiteCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.redStoneBrick, 3), "stonebrickRedCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blackStoneBrick, 3), "stonebrickBlackCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blueStoneBrick, 3), "stonebrickBlueCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.greenStoneBrick, 3), "stonebrickGreenCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.yellowStoneBrick, 3), "stonebrickYellowCorner"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.purpleStoneBrick, 3), "stonebrickPurpleCorner"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.whiteStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickWhite"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.redStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickRed"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blackStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickBlack"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blueStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickBlue"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.greenStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickGreen"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.yellowStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickYellow"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.purpleStoneBrickCorner, 1), "   ", "  S", " SS", 'S', "stonebrickPurple"));
+        addRecipe(new ShapedOreRecipe(new ItemStack(arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
+        addRecipe(new ItemStack(lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
+        addRecipeCastle(whiteStoneBrick, "White");
+        addRecipeCastle(redStoneBrick, "Red");
+        addRecipeCastle(blackStoneBrick, "Black");
+        addRecipeCastle(blueStoneBrick, "Blue");
+        addRecipeCastle(greenStoneBrick, "Green");
+        addRecipeCastle(yellowStoneBrick, "Yellow");
+        addRecipeCastle(purpleStoneBrick, "Purple");
+        addRecipeCastleCorner(whiteStoneBrickCorner, "White");
+        addRecipeCastleCorner(redStoneBrickCorner, "Red");
+        addRecipeCastleCorner(blackStoneBrickCorner, "Black");
+        addRecipeCastleCorner(blueStoneBrickCorner, "Blue");
+        addRecipeCastleCorner(greenStoneBrickCorner, "Green");
+        addRecipeCastleCorner(yellowStoneBrickCorner, "Yellow");
+        addRecipeCastleCorner(purpleStoneBrickCorner, "Purple");
+        addRecipeCastleTower(whiteStoneBrickTower, "White");
+        addRecipeCastleTower(redStoneBrickTower, "Red");
+        addRecipeCastleTower(blackStoneBrickTower, "Black");
+        addRecipeCastleTower(blueStoneBrickTower, "Blue");
+        addRecipeCastleTower(greenStoneBrickTower, "Green");
+        addRecipeCastleTower(yellowStoneBrickTower, "Yellow");
+        addRecipeCastleTower(purpleStoneBrickTower, "Purple");
         if (enableElytraRecipe)
-            GameRegistry.addRecipe(new ItemStack(Items.ELYTRA, 1), "ESE", "SNS", "EEE", 'E', ModItems.enderDragonScale, 'S', Items.STRING, 'N', Items.NETHER_STAR);
+            addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', enderDragonScale, 'S', STRING, 'N', NETHER_STAR);
         if (enableChainArmorRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
+            addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
         }
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chainmail, 12), "SS ", "S S", " SS", 'S', "ingotIron"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
+        addRecipe(new ShapedOreRecipe(new ItemStack(chainmail, 12), "SS ", "S S", " SS", 'S', "ingotIron"));
+        addRecipe(new ShapedOreRecipe(new ItemStack(compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         if (enableRedstoneAppleRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', Items.APPLE));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneApple, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', Items.APPLE));
+            addRecipe(new ShapedOreRecipe(new ItemStack(redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', APPLE));
+            addRecipe(new ShapedOreRecipe(new ItemStack(redstoneApple, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', APPLE));
         }
     }
 
     public static void addShapelessRecipes() {
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.nbtItem, 1), Items.STICK, Items.GLOWSTONE_DUST);
-        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), ModBlocks.compressedObsidian);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.armorPlusInfoBook, 1), Items.BOOK, Items.COAL);
-        GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lavaCactus, 1), Blocks.CACTUS, new ItemStack(ModItems.lavaCrystal, 1, 1));
+        addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
+        addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
+        addShapelessRecipe(new ItemStack(armorPlusInfoBook, 1), BOOK, COAL);
+        addShapelessRecipe(new ItemStack(lavaCactus, 1), Blocks.CACTUS, new ItemStack(lavaCrystal, 1, 1));
     }
 
+    public static void addRecipeCastleCorner(Block block, String color) {
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "   ", "  S", " SS", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "   ", "S  ", "SS ", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "  S", " SS", "   ", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "S  ", "SS ", "   ", 'S', "stonebrick" + color));
+    }
+
+    public static void addRecipeCastleTower(Block block, String color) {
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "   ", "S S", "SSS", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "S S", "SSS", "   ", 'S', "stonebrick" + color));
+    }
+
+    public static void addRecipeCastle(Block block, String color) {
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
+    }
 }
+

@@ -150,6 +150,7 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
 
     @Override
     public void openInventory(EntityPlayer player) {
+
     }
 
     @Override
@@ -218,6 +219,7 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
     }
 
     //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket
+
 
     @Override
     public NBTTagCompound getUpdateTag() {

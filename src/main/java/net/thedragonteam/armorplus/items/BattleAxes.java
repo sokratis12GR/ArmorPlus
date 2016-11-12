@@ -24,9 +24,9 @@ public enum BattleAxes implements IStringSerializable {
     EMERALD(BaseBattleAxe.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), "Applies Fatigue 2", 10.0F),
     OBSIDIAN(BaseBattleAxe.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), "Applies Weakness 2", 10.5F),
     LAVA(BaseBattleAxe.battleAxeLavaMaterial, "lava_battle_axe", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), "Sets on Fire", 11.5F),
-    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2", 14.0F),
-    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2", 15.0F),
-    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4", 16.0F);
+    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2", 14.0F),
+    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2", 15.0F),
+    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe",  ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4", 16.0F);
 
     private final String name;
 
@@ -60,6 +60,10 @@ public enum BattleAxes implements IStringSerializable {
 
     BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {
         this(materialIn, nameIn, repairEasyIn, repairExpertIn.getItem(), textFormattingIn, effectIn, efficiencyIn);
+    }
+
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairBoth,  TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {
+        this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn, efficiencyIn);
     }
 
     BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {

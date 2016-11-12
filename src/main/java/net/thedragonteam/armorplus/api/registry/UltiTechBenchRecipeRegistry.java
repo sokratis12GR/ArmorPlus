@@ -35,6 +35,6 @@ public class UltiTechBenchRecipeRegistry {
     }
 
     public static List<UltiTechBenchRecipe> getRecipeList() {
-        return new ArrayList<UltiTechBenchRecipe>(recipeList);
+        return new ArrayList<>(recipeList);
     }
 }

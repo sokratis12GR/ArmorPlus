@@ -50,24 +50,6 @@ public class StructureCastle extends WorldGenerator {
                     {0, 3, 6}, {1, 3, 6}, {2, 3, 6}, {3, 3, 6}, {4, 3, 6}, {5, 3, 6}, {6, 3, 6},     // back
                     {0, 3, 1}, {0, 3, 2}, {0, 3, 3}, {0, 3, 4}, {0, 3, 5},    // left
                     {6, 3, 1}, {6, 3, 2}, {6, 3, 3}, {6, 3, 4}, {6, 3, 5},    // right
-
-                    // walls
-                    //// front
-                    {0, 0, 0}, {1, 0, 0}, {2, 0, 0}, {3, 0, 0}, {4, 0, 0}, {5, 0, 0}, {6, 0, 0},
-                    {0, 1, 0}, {1, 1, 0}, {2, 1, 0}, {3, 1, 0}, {4, 1, 0}, {5, 1, 0}, {6, 1, 0},
-                    {0, 2, 0}, {1, 2, 0}, {2, 2, 0}, {3, 2, 0}, {4, 2, 0}, {5, 2, 0}, {6, 2, 0},
-                    //// right
-                    {6, 0, 1}, {6, 0, 2}, {6, 0, 3}, {6, 0, 4}, {6, 0, 5}, {6, 0, 6},
-                    {6, 1, 1}, {6, 1, 2}, {6, 1, 3}, {6, 1, 4}, {6, 1, 5}, {6, 1, 6},
-                    {6, 2, 1}, {6, 2, 2}, {6, 2, 3}, {6, 2, 4}, {6, 2, 5}, {6, 2, 6},
-                    //// back
-                    {1, 0, 6}, {2, 0, 6}, {3, 0, 6}, {4, 0, 6}, {5, 0, 6}, {6, 0, 6},
-                    {1, 1, 6}, {2, 1, 6}, {3, 1, 6}, {4, 1, 6}, {5, 1, 6}, {6, 1, 6},
-                    {1, 2, 6}, {2, 2, 6}, {3, 2, 6}, {4, 2, 6}, {5, 2, 6}, {6, 2, 6},
-                    //// left
-                    {0, 0, 1}, {0, 0, 2}, {0, 0, 3}, {0, 0, 4}, {0, 0, 5}, {0, 0, 6},
-                    {0, 1, 1}, {0, 1, 2}, {0, 1, 3}, {0, 1, 4}, {0, 1, 5}, {0, 1, 6},
-                    {0, 2, 1}, {0, 2, 2}, {0, 2, 3}, {0, 2, 4}, {0, 2, 5}, {0, 2, 6}
             };
     private final int[] doorBottomPos = new int[]{3, 0, 0};
     private final int[] doorTopPos = new int[]{3, 1, 0};
@@ -199,6 +181,46 @@ public class StructureCastle extends WorldGenerator {
             TileEntity tileentity1 = getTileEntity(worldIn, corner, chestPos);
             placeTileEntity(worldIn, corner, chestPos, tileentity1);
 
+            //Building Left Wall of the castle
+            for (int y = 0; y <= 2; y++) {
+                for (int z = 1; z <= 6; z++) {
+                    int[] stoneBrickLeft = new int[]{
+                            0, y, z
+                    };
+                    placeBlock(worldIn, corner, stoneBrickLeft, stoneBrick);
+                }
+            }
+            //Building Right Wall of the castle
+            for (int y = 0; y <= 2; y++) {
+                for (int z = 1; z <= 6; z++) {
+                    int[] stoneBrickLeft = new int[]{
+                            6, y, z
+                    };
+                    placeBlock(worldIn, corner, stoneBrickLeft, stoneBrick);
+                }
+            }
+            //Building Back Wall of the castle
+            for (int y = 0; y <= 2; y++) {
+                for (int x = 1; x <= 6; x++) {
+                    int[] stoneBrickLeft = new int[]{
+                            x, y, 6
+                    };
+                    placeBlock(worldIn, corner, stoneBrickLeft, stoneBrick);
+                }
+            }
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, 'x');
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, 'x');
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, 'z');
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, 'z');
+            //Building Front Wall of the castle
+            for (int y = 0; y <= 2; y++) {
+                for (int x = 0; x <= 6; x++) {
+                    int[] stoneBrickLeft = new int[]{
+                            x, y, 0
+                    };
+                    placeBlock(worldIn, corner, stoneBrickLeft, stoneBrick);
+                }
+            }
             if (tileentity1 instanceof TileEntityChest)
                 ((TileEntityChest) tileentity1).setLootTable(LootTableList.CHESTS_END_CITY_TREASURE, rand.nextLong());
 
@@ -209,7 +231,35 @@ public class StructureCastle extends WorldGenerator {
         return false;
     }
 
+    private void buildWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn, char xz) {
+        int pos;
+        int posY;
+        switch (xz) {
+            case 'x':
+                for (posY = 0; posY <= maxPosY; posY++) {
+                    for (pos = 0; pos <= maxPos; pos++) {
+                        int[] stoneBrickLeft = new int[]{
+                                pos, posY, posIn
+                        };
+                        placeBlock(worldIn, corner, stoneBrickLeft, block);
+                    }
+                }
+                break;
+            case 'z':
+                for (posY = 0; posY <= maxPosY; posY++) {
+                    for (pos = 0; pos <= maxPos; pos++) {
+                        int[] stoneBrickLeft = new int[]{
+                                posIn, posY, pos
+                        };
+                        placeBlock(worldIn, corner, stoneBrickLeft, block);
+                    }
+                }
+                break;
+        }
+    }
+
     // use an int[][] to place a lot of one block at once
+
     private void buildLayer(World world, BlockPos frontLeftCorner, int[][] blockPositions, IBlockState toPlace) {
         // iterate through the entire int[][]
         for (int[] coord : blockPositions) {

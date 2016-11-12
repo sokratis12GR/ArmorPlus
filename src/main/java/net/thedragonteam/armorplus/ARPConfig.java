@@ -206,43 +206,43 @@ public class ARPConfig {
     public static int enderDragonBowDurability = 2310;
 
     //Armors.*.Effects
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "coalArmorAddPotionEffect", comment = "Adds the Potion Effect the Coal Armor will have (to disable the effect set it to \'none\')")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "coalArmorAddPotionEffect", comment = "Adds the Potion Effect the Coal Armor will have (to disable the effect set the effects \'false\')")
     public static String coalArmorAddPotionEffect = "night_vision";
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "lapisArmorAddPotionEffect", comment = "Adds the Potion Effect the Lapis Armor will have (to disable the effect set it to \'none\')")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "lapisArmorAddPotionEffect", comment = "Adds the Potion Effect the Lapis Armor will have (to disable the effect set the effects \'false\')")
     public static String lapisArmorAddPotionEffect = "water_breathing";
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "redstoneArmorAddPotionEffect", comment = "Adds the Potion Effect the Redstone Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "redstoneArmorAddPotionEffect", comment = "Adds the Potion Effect the Redstone Armor will have (to disable the effect set the effects \'false\')")
     public static String redstoneArmorAddPotionEffect = "speed";
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "emeraldArmorAddPotionEffect", comment = "Adds the Potion Effect the Emerald Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "emeraldArmorAddPotionEffect", comment = "Adds the Potion Effect the Emerald Armor will have (to disable the effect set the effects \'false\')")
     public static String emeraldArmorAddPotionEffect = "haste";
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "obsidianArmorAddPotionEffect", comment = "Adds the Potion Effect the Obsidian Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "obsidianArmorAddPotionEffect", comment = "Adds the Potion Effect the Obsidian Armor will have (to disable the effect set the effects \'false\')")
     public static String obsidianArmorAddPotionEffect = "resistance";
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "lavaArmorAddPotionEffect", comment = "Adds the Potion Effect the Lava Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "lavaArmorAddPotionEffect", comment = "Adds the Potion Effect the Lava Armor will have (to disable the effect set the effects \'false\')")
     public static String lavaArmorAddPotionEffect = "fire_resistance";
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorAddPotionEffect", comment = "Adds the Potion Effect the Super Star Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorAddPotionEffect", comment = "Adds the Potion Effect the Super Star Armor will have (to disable the effect set the effects \'false\')")
     public static String superStarArmorAddPotionEffect = "regeneration";
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorRemovePotionEffect", comment = "The Potion Effect that the Super Star Armor will be Removing")
     public static String superStarArmorRemovePotionEffect = "wither";
     @ModConfigProperty(category = "Armors.EnderDragonArmor.Effects", name = "enderDragonArmorRemovePotionEffect", comment = "The Potion Effect that the Ender Dragon Armor will be Removing")
     public static String enderDragonArmorRemovePotionEffect = "wither";
-    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set the effects \'false\')")
     public static String guardianArmorAddPotionEffect = "water_breathing";
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "theUltimateArmorAddPotionEffect", comment = "Adds the Potion Effect the Ultimate Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "theUltimateArmorAddPotionEffect", comment = "Adds the Potion Effect the Ultimate Armor will have (to disable the effect set the effects \'false\')")
     public static String[] theUltimateArmorAddPotionEffects = new String[]{"saturation", "regeneration", "water_breathing"};
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "theUltimateArmorRemovePotionEffect", comment = "The Potion Effect that the Ultimate Dragon Armor will be Removing")
     public static String theUltimateArmorRemovePotionEffect = "wither";
-    @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "arditeArmorAddPotionEffect", comment = "Adds the Potion Effect the Ardite Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "arditeArmorAddPotionEffect", comment = "Adds the Potion Effect the Ardite Armor will have (to disable the effect set the effects \'false\')")
     public static String arditeArmorAddPotionEffect = "fire_resistance";
-    @ModConfigProperty(category = "Armors.CobaltArmor.Effects", name = "cobaltArmorAddPotionEffect", comment = "Adds the Potion Effect the Cobalt Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Effects", name = "cobaltArmorAddPotionEffect", comment = "Adds the Potion Effect the Cobalt Armor will have (to disable the effect set the effects \'false\')")
     public static String cobaltArmorAddPotionEffect = "haste";
-    @ModConfigProperty(category = "Armors.ManyullynArmor.Effects", name = "manyullynArmorAddPotionEffect", comment = "Adds the Potion Effect the Manyullyn Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Effects", name = "manyullynArmorAddPotionEffect", comment = "Adds the Potion Effect the Manyullyn Armor will have (to disable the effect set the effects \'false\')")
     public static String manyullynArmorAddPotionEffect = "strength";
-    @ModConfigProperty(category = "Armors.PigIronArmor.Effects", name = "pigIronArmorAddPotionEffect", comment = "Adds the Potion Effect the Pig Iron Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Effects", name = "pigIronArmorAddPotionEffect", comment = "Adds the Potion Effect the Pig Iron Armor will have (to disable the effect set the effects \'false\')")
     public static String pigIronArmorAddPotionEffect = "saturation";
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Effects", name = "knightSlimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Knight Slime Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Effects", name = "knightSlimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Knight Slime Armor will have (to disable the effect set the effects \'false\')")
     public static String knightSlimeArmorAddPotionEffect = "haste";
-    @ModConfigProperty(category = "Armors.ChickenArmor.Effects", name = "chickenArmorAddPotionEffect", comment = "Adds the Potion Effect the Chicken Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Effects", name = "chickenArmorAddPotionEffect", comment = "Adds the Potion Effect the Chicken Armor will have (to disable the effect set the effects \'false\')")
     public static String chickenArmorAddPotionEffect = "speed";
-    @ModConfigProperty(category = "Armors.SlimeArmor.Effects", name = "slimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Slime Armor will have (to disable the effect set it to 'none')")
+    @ModConfigProperty(category = "Armors.SlimeArmor.Effects", name = "slimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Slime Armor will have (to disable the effect set the effects \'false\')")
     public static String slimeArmorAddPotionEffect = "jump_boost";
     //Armors.*.Registry
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorItemNameColor", comment = "Set the color name the Coal Armor will have")

@@ -23,11 +23,11 @@ public enum ARPArmorMaterial {
     LAVA(BaseArmor.lavaArmor, "lava", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(ARPConfig.lavaArmorItemNameColor)),
     REDSTONE(BaseArmor.redstoneArmor, "redstone", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(ARPConfig.redstoneArmorItemNameColor)),
     OBSIDIAN(BaseArmor.obsidianArmor, "obsidian", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(ARPConfig.obsidianArmorItemNameColor)),
-    ENDER_DRAGON(BaseArmor.enderDragonArmor, "ender_dragon", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(ARPConfig.enderDragonArmorItemNameColor)),
-    GUARDIAN(BaseArmor.guardianArmor, "guardian", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(ARPConfig.guardianArmorItemNameColor)),
+    ENDER_DRAGON(BaseArmor.enderDragonArmor, "ender_dragon", ModItems.enderDragonScale, TextFormatting.getValueByName(ARPConfig.enderDragonArmorItemNameColor)),
+    GUARDIAN(BaseArmor.guardianArmor, "guardian", ModItems.guardianScale, TextFormatting.getValueByName(ARPConfig.guardianArmorItemNameColor)),
     SLIME(BaseArmor.slimeArmor, "slime", Items.SLIME_BALL, Blocks.SLIME_BLOCK, TextFormatting.getValueByName(ARPConfig.slimeArmorItemNameColor)),
-    CHICKEN(BaseArmor.chickenArmor, "chicken", Items.FEATHER, Items.FEATHER, TextFormatting.getValueByName(ARPConfig.chickenArmorItemNameColor)),
-    SUPER_STAR(BaseArmor.superStarArmor, "super_star", ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(ARPConfig.superStarArmorItemNameColor)),
+    CHICKEN(BaseArmor.chickenArmor, "chicken", Items.FEATHER, TextFormatting.getValueByName(ARPConfig.chickenArmorItemNameColor)),
+    SUPER_STAR(BaseArmor.superStarArmor, "super_star", ModItems.witherBone, TextFormatting.getValueByName(ARPConfig.superStarArmorItemNameColor)),
     ARDITE(BaseArmor.arditeArmor, "ardite", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1), TextFormatting.getValueByName(ARPConfig.arditeArmorItemNameColor)),
     COBALT(BaseArmor.cobaltArmor, "cobalt", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0), TextFormatting.getValueByName(ARPConfig.cobaltArmorItemNameColor)),
     MANYULLYN(BaseArmor.manyullynArmor, "manyullyn", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2), TextFormatting.getValueByName(ARPConfig.manyullynArmorItemNameColor)),
@@ -50,6 +50,10 @@ public enum ARPArmorMaterial {
         this.itemEasy = repairEasyIn;
         this.itemExpert = repairExpertIn;
         this.formatting = textFormattingIn;
+    }
+
+    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn) {
+        this(armorMaterialIn, nameIn, repairBoth, repairBoth, textFormattingIn);
     }
 
     ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {

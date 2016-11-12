@@ -30,13 +30,13 @@ class HighTechBenchRecipeJEI extends BlankRecipeWrapper {
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
     }
 
     @Override
     @Nonnull
     public List<Collection> getInputs() {
-        ArrayList<Collection> ret = new ArrayList<Collection>();
+        ArrayList<Collection> ret = new ArrayList<>();
         ret.add(recipe.getInput());
         return ret;
     }
@@ -44,7 +44,7 @@ class HighTechBenchRecipeJEI extends BlankRecipeWrapper {
     @Override
     @Nonnull
     public List<ItemStack> getOutputs() {
-        return Collections.singletonList(recipe.getRecipeOutput(new ArrayList<ItemStack>()));
+        return Collections.singletonList(recipe.getRecipeOutput(new ArrayList<>()));
     }
 
     @Nullable

@@ -24,9 +24,9 @@ public enum Swords implements IStringSerializable {
     EMERALD(BaseSpecialSword.swordEmeraldMaterial, "emerald_sword", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), "Applies Fatigue 2"),
     OBSIDIAN(BaseSpecialSword.swordObsidianMaterial, "obsidian_sword", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), "Applies Weakness 2"),
     LAVA(BaseSpecialSword.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), "Sets on Fire"),
-    GUARDIAN(BaseSpecialSword.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2"),
-    SUPER_STAR(BaseSpecialSword.swordSuperStarMaterial, "super_star_sword", ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2"),
-    ENDER_DRAGON(BaseSpecialSword.swordEnderDragonMaterial, "ender_dragon_sword", ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4");
+    GUARDIAN(BaseSpecialSword.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2"),
+    SUPER_STAR(BaseSpecialSword.swordSuperStarMaterial, "super_star_sword", ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2"),
+    ENDER_DRAGON(BaseSpecialSword.swordEnderDragonMaterial, "ender_dragon_sword", ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4");
 
     private final String name;
 
@@ -59,6 +59,10 @@ public enum Swords implements IStringSerializable {
 
     Swords(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn) {
         this(materialIn, nameIn, repairEasyIn, repairExpertIn.getItem(), textFormattingIn, effectIn);
+    }
+
+    Swords(Item.ToolMaterial materialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn, String effectIn) {
+        this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn);
     }
 
     Swords(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn) {

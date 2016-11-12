@@ -23,9 +23,9 @@ public enum Bows implements IStringSerializable {
     EMERALD(emeraldBowDurability, "emerald_bow", emeraldBowArrowBonusDamage, Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), ModItems.emeraldBow),
     OBSIDIAN(obsidianBowDurability, "obsidian_bow", obsidianBowArrowBonusDamage, Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), ModItems.obsidianBow),
     LAVA(lavaBowDurability, "lava_bow", lavaBowArrowBonusDamage, ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), ModItems.lavaBow),
-    GUARDIAN(guardianBowDurability, "guardian_bow", guardianBowArrowBonusDamage, ModItems.guardianScale, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), ModItems.guardianBow),
-    SUPER_STAR(superStarBowDurability, "super_star_bow", superStarBowArrowBonusDamage, ModItems.witherBone, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), ModItems.superStarBow),
-    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon_bow", enderDragonBowArrowBonusDamage, ModItems.enderDragonScale, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), ModItems.enderDragonBow);
+    GUARDIAN(guardianBowDurability, "guardian_bow", guardianBowArrowBonusDamage, ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), ModItems.guardianBow),
+    SUPER_STAR(superStarBowDurability, "super_star_bow", superStarBowArrowBonusDamage, ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), ModItems.superStarBow),
+    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon_bow", enderDragonBowArrowBonusDamage, ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), ModItems.enderDragonBow);
 
     private final String name;
 
@@ -59,6 +59,10 @@ public enum Bows implements IStringSerializable {
 
     Bows(int durabilityIn, String nameIn, double damageIn, Item repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, Item bowItemIn) {
         this(durabilityIn, nameIn, damageIn, repairEasyIn, repairExpertIn.getItem(), textFormattingIn, bowItemIn);
+    }
+
+    Bows(int durabilityIn, String nameIn, double damageIn, Item repairBoth, TextFormatting textFormattingIn, Item bowItemIn) {
+        this(durabilityIn, nameIn, damageIn, repairBoth, repairBoth, textFormattingIn, bowItemIn);
     }
 
     Bows(int durabilityIn, String nameIn, double damageIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, Item bowItemIn) {

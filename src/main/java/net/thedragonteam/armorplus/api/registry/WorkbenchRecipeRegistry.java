@@ -35,6 +35,6 @@ public class WorkbenchRecipeRegistry {
     }
 
     public static List<WorkbenchRecipe> getRecipeList() {
-        return new ArrayList<WorkbenchRecipe>(recipeList);
+        return new ArrayList<>(recipeList);
     }
 }

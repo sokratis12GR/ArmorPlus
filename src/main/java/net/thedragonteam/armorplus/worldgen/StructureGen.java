@@ -66,6 +66,5 @@ public class StructureGen implements IWorldGenerator {
                 genCastle.generate(world, rand, new BlockPos(randX, groundY + 1, randZ));
             }
         }
-
     }
 }
