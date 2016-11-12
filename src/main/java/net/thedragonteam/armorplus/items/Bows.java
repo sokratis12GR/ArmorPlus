@@ -16,8 +16,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
-
-//TODO Finish later, after school
 public enum Bows implements IStringSerializable {
     COAL(coalBowDurability, "coal_bow", coalBowArrowBonusDamage, Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), ModItems.coalBow),
     LAPIS(lapisBowDurability, "lapis_bow", lapisBowArrowBonusDamage, new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), ModItems.lapisBow),

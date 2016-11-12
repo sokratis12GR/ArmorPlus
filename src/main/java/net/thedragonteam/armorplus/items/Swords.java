@@ -17,8 +17,6 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 
-
-//TODO Finish later, after school
 public enum Swords implements IStringSerializable {
     COAL(BaseSpecialSword.swordCoalMaterial, "coal_sword", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), "Applies Blindness"),
     LAPIS(BaseSpecialSword.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), "Applies Nausea 2"),

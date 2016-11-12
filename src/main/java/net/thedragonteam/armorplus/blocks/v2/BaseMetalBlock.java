@@ -25,6 +25,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
 
+import javax.annotation.Nonnull;
+
 public class BaseMetalBlock extends BaseBlock {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
@@ -62,6 +64,7 @@ public class BaseMetalBlock extends BaseBlock {
     }
 
     @Override
+    @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -69,11 +72,13 @@ public class BaseMetalBlock extends BaseBlock {
     }
 
     @Override
+    @Nonnull
     public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }

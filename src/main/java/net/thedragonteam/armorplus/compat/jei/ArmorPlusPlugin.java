@@ -6,6 +6,8 @@ package net.thedragonteam.armorplus.compat.jei;
 
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
@@ -20,6 +22,7 @@ import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 import net.thedragonteam.armorplus.container.ContainerWorkbench;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
 
@@ -77,5 +80,18 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList());
+
+        addDescription(registry, ModItems.witherBone, "Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons");
+        addDescription(registry, ModItems.guardianScale, "Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians");
+        addDescription(registry, ModItems.enderDragonScale, "Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies");
+    }
+
+
+    private void addDescription(@Nonnull IModRegistry registry, Item item, String description) {
+        registry.addDescription(new ItemStack(item), description);
+    }
+
+    private void addDescription(@Nonnull IModRegistry registry, Block block, String description) {
+        registry.addDescription(new ItemStack(block), description);
     }
 }

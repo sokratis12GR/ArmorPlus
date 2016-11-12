@@ -354,149 +354,126 @@ public class BaseArmor extends ItemArmor {
 
         switch (material) {
             case COAL:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullCoalArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim() + " " + (coalArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim(), coalArmorEffectLevel);
                     } else if (enableFullCoalArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim() + " " + (coalArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(coalArmorAddPotionEffect).getName() + ".name").trim(), coalArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case EMERALD:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullEmeraldArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim() + " " + (emeraldArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim(), emeraldArmorEffectLevel);
                     } else if (enableFullEmeraldArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim() + " " + (emeraldArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(emeraldArmorAddPotionEffect).getName() + ".name").trim(), emeraldArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case LAPIS:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullLapisArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim() + " " + (lapisArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim(), lapisArmorEffectLevel);
                     } else if (enableFullLapisArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim() + " " + (lapisArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(lapisArmorAddPotionEffect).getName() + ".name").trim(), lapisArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case LAVA:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullLavaArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim() + " " + (lavaArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim(), lavaArmorEffectLevel);
                     } else if (enableFullLavaArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim() + " " + (lavaArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(lavaArmorAddPotionEffect).getName() + ".name").trim(), lavaArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case REDSTONE:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullRedstoneArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim() + " " + (redstoneArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim(), redstoneArmorEffectLevel);
                     } else if (enableFullRedstoneArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim() + " " + (redstoneArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(redstoneArmorAddPotionEffect).getName() + ".name").trim(), redstoneArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case OBSIDIAN:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullObsidianArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim() + " " + (obsidianArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim(), obsidianArmorEffectLevel);
                     } else if (enableFullObsidianArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim() + " " + (obsidianArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(obsidianArmorAddPotionEffect).getName() + ".name").trim(), obsidianArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case ENDER_DRAGON:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247rFlight");
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, "Flight");
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case GUARDIAN:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(guardianArmorAddPotionEffect).getName() + ".name").trim() + " " + (guardianArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(guardianArmorAddPotionEffect).getName() + ".name").trim(), guardianArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case SLIME:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(slimeArmorAddPotionEffect).getName() + ".name").trim() + " " + (slimeArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(slimeArmorAddPotionEffect).getName() + ".name").trim(), slimeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case CHICKEN:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(chickenArmorAddPotionEffect).getName() + ".name").trim() + " " + (chickenArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(chickenArmorAddPotionEffect).getName() + ".name").trim(), chickenArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case SUPER_STAR:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (isKeyDown()) {
                     if (!enableFullObsidianArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim() + " " + (superStarArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+                        addToolTipPiece(tooltip, localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim(), superStarArmorEffectLevel);
                     } else if (enableFullObsidianArmorEffect) {
-                        tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim() + " " + (superStarArmorEffectLevel + 1));
-                        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                        addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(superStarArmorAddPotionEffect).getName() + ".name").trim(), superStarArmorEffectLevel);
                     }
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case ARDITE:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(arditeArmorAddPotionEffect).getName() + ".name").trim() + " " + (arditeArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(arditeArmorAddPotionEffect).getName() + ".name").trim(), arditeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case COBALT:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(cobaltArmorAddPotionEffect).getName() + ".name").trim() + " " + (cobaltArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(cobaltArmorAddPotionEffect).getName() + ".name").trim(), cobaltArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case MANYULLYN:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(manyullynArmorAddPotionEffect).getName() + ".name").trim() + " " + (manyullynArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(manyullynArmorAddPotionEffect).getName() + ".name").trim(), manyullynArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case KNIGHT_SLIME:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(knightSlimeArmorAddPotionEffect).getName() + ".name").trim() + " " + (knightSlimeArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(knightSlimeArmorAddPotionEffect).getName() + ".name").trim(), knightSlimeArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
             case PIG_IRON:
-                if (GameSettings.isKeyDown(keyBindSneak)) {
-                    tooltip.add("\2479Ability: " + "\247r" + localize(Potion.getPotionFromResourceLocation(pigIronArmorAddPotionEffect).getName() + ".name").trim() + " " + (pigIronArmorEffectLevel + 1));
-                    tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+                if (isKeyDown()) {
+                    addToolTipFull(tooltip, localize(Potion.getPotionFromResourceLocation(pigIronArmorAddPotionEffect).getName() + ".name").trim(), pigIronArmorEffectLevel);
                 } else
                     showInfo(tooltip, keyBindSneak);
                 break;
@@ -510,5 +487,28 @@ public class BaseArmor extends ItemArmor {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
+    private void addToolTipFull(List<String> tooltip, String ability, int amplifier) {
+        this.addToolTipFull(tooltip, ability + " " + (amplifier + 1));
+    }
+
+    private void addToolTipFull(List<String> tooltip, String ability) {
+        tooltip.add("\2479Ability: " + "\247r" + ability);
+        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+    }
+
+    private void addToolTipPiece(List<String> tooltip, String ability, int amplifier) {
+        this.addToolTipPiece(tooltip, ability + " " + (amplifier + 1));
+    }
+
+    private void addToolTipPiece(List<String> tooltip, String ability) {
+        tooltip.add("\2479Ability: " + "\247r" + ability);
+        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+    }
+
+    public boolean isKeyDown() {
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        return GameSettings.isKeyDown(keyBindSneak);
     }
 }
