@@ -18,7 +18,7 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class WorkbenchRecipeRegistry {
-    private static List<WorkbenchRecipe> recipeList = new ArrayList<WorkbenchRecipe>();
+    private static List<WorkbenchRecipe> recipeList = new ArrayList<>();
 
     public static void registerRecipe(WorkbenchRecipe recipe) {
         recipeList.add(recipe);

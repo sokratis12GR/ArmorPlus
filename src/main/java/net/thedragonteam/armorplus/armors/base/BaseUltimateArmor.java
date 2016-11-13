@@ -31,8 +31,7 @@ import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorDeBuffs;
-import static net.thedragonteam.armorplus.ARPConfig.theUltimateArmorItemNameColor;
+import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -89,7 +88,8 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        Utils.setUnbreakable(stack);
+        if (makeTheUltimateArmorUnbreakable)
+            Utils.setUnbreakable(stack);
     }
 
     @Override

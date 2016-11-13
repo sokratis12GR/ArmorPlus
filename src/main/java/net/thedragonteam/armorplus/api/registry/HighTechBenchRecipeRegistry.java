@@ -18,7 +18,7 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class HighTechBenchRecipeRegistry {
-    private static List<HighTechBenchRecipe> recipeList = new ArrayList<HighTechBenchRecipe>();
+    private static List<HighTechBenchRecipe> recipeList = new ArrayList<>();
 
     public static void registerRecipe(HighTechBenchRecipe recipe) {
         recipeList.add(recipe);

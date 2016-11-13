@@ -1,3 +1,14 @@
+**ArmorPlus 1.10.2-8.2.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{NOTE}**
+    * I really apologize for this, but after this update you must delete the old Config file
+* **{Features Added/Removed/Changed}**
+    * All the armors were nerfed
+        * Ultimate Armor from Armor now have the same values of 25 Armor Points rather than 75
+        * Ender Dragon, Super Star, Guardian Armor now have the same values of 22 Armor Points
+        * Nerfed most of the other armors as well.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.1.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

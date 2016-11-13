@@ -22,14 +22,12 @@ public class WorkbenchShapelessOreRecipeWrapper extends AbstractShapelessRecipeW
     public WorkbenchShapelessOreRecipeWrapper(IGuiHelper guiHelper, ShapelessOreRecipe recipe) {
         super(guiHelper);
         this.recipe = recipe;
-        for (Object input : this.recipe.getInput()) {
-            if (input instanceof ItemStack) {
-                ItemStack itemStack = (ItemStack) input;
-                if (itemStack.stackSize != 1) {
-                    itemStack.stackSize = 1;
-                }
+        this.recipe.getInput().stream().filter(input -> input instanceof ItemStack).forEachOrdered(input -> {
+            ItemStack itemStack = (ItemStack) input;
+            if (itemStack.stackSize != 1) {
+                itemStack.stackSize = 1;
             }
-        }
+        });
     }
 
     @Override

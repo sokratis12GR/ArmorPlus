@@ -34,7 +34,7 @@ public class WorkbenchCraftingManager {
      * this class
      */
     private static final WorkbenchCraftingManager INSTANCE = new WorkbenchCraftingManager();
-    private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
+    private final List<IRecipe> recipes = Lists.newArrayList();
 
     private WorkbenchCraftingManager() {
         (new ModItemsRecipes()).addRecipes(this);
@@ -42,7 +42,7 @@ public class WorkbenchCraftingManager {
         (new ModSpecialMobRecipes()).addRecipes(this);
         (new ModWeaponsTierOneRecipes()).addRecipes(this);
 
-        Collections.sort(this.recipes, (p_compare_1_, p_compare_2_) -> p_compare_1_ instanceof ShapelessRecipes && p_compare_2_ instanceof ShapedRecipes ? 1 : (p_compare_2_ instanceof ShapelessRecipes && p_compare_1_ instanceof ShapedRecipes ? -1 : (p_compare_2_.getRecipeSize() < p_compare_1_.getRecipeSize() ? -1 : (p_compare_2_.getRecipeSize() > p_compare_1_.getRecipeSize() ? 1 : 0))));
+        Collections.sort(this.recipes, (pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**

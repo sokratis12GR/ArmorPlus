@@ -50,8 +50,8 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         registry.addRecipeHandlers(
                 new WorkbenchShapedRecipeHandler(),
                 new WorkbenchShapelessRecipeHandler(guiHelper),
-                new WorkbenchShapelessOreRecipeHandler(guiHelper),
                 new WorkbenchShapedOreRecipeHandler(),
+                new WorkbenchShapelessOreRecipeHandler(guiHelper),
                 new HighTechBenchShapelessRecipeHandler(guiHelper),
                 new HighTechBenchShapedRecipeHandler(),
                 new HighTechBenchShapelessOreRecipeHandler(guiHelper),

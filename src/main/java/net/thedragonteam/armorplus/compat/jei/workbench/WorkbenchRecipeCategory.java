@@ -118,10 +118,10 @@ public class WorkbenchRecipeCategory implements IRecipeCategory {
 
         if (recipeWrapper instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) recipeWrapper;
-            craftingGridHelper.setInputStacks(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
+            craftingGridHelper.setInput(guiItemStacks, wrapper.getInputs(), wrapper.getWidth(), wrapper.getHeight());
             craftingGridHelper.setOutput(guiItemStacks, wrapper.getOutputs());
         } else {
-            craftingGridHelper.setInputStacks(guiItemStacks, recipeWrapper.getInputs());
+            craftingGridHelper.setInput(guiItemStacks, recipeWrapper.getInputs());
             craftingGridHelper.setOutput(guiItemStacks, recipeWrapper.getOutputs());
         }
     }

@@ -18,7 +18,7 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class UltiTechBenchRecipeRegistry {
-    private static List<UltiTechBenchRecipe> recipeList = new ArrayList<UltiTechBenchRecipe>();
+    private static List<UltiTechBenchRecipe> recipeList = new ArrayList<>();
 
     public static void registerRecipe(UltiTechBenchRecipe recipe) {
         recipeList.add(recipe);

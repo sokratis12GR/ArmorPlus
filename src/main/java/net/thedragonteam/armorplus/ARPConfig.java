@@ -13,6 +13,7 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  */
 public class ARPConfig {
 
+
     //Weapons.*.Registry
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "coalWeaponItemNameColor", comment = "Set the color name the Coal Weapons will have")
     public static String coalWeaponItemNameColor = "gray";
@@ -341,11 +342,11 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorToughnessPoints", comment = "Set the amount of toughness points the Redstone Armor will have")
     public static double redstoneArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorToughnessPoints", comment = "Set the amount of toughness points the Emerald Armor will have")
-    public static double emeraldArmorToughnessPoints = 2.0;
+    public static double emeraldArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorToughnessPoints", comment = "Set the amount of toughness points the Obsidian Armor will have")
-    public static double obsidianArmorToughnessPoints = 0.0;
+    public static double obsidianArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorToughnessPoints", comment = "Set the amount of toughness points the Lava Armor will have")
-    public static double lavaArmorToughnessPoints = 2.0;
+    public static double lavaArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorToughnessPoints", comment = "Set the amount of toughness points the Super Star Armor will have")
     public static double superStarArmorToughnessPoints = 2.0;
     @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorToughnessPoints", comment = "Set the amount of toughness points the Ender Dragon Armor will have")
@@ -353,13 +354,13 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorToughnessPoints", comment = "Set the amount of toughness points the Guardian Armor will have")
     public static double guardianArmorToughnessPoints = 2.0;
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorToughnessPoints", comment = "Set the amount of toughness points the Ultimate Armor will have")
-    public static double theUltimateArmorToughnessPoints = 6.0;
+    public static double theUltimateArmorToughnessPoints = 3.0;
     @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorToughnessPoints", comment = "Set the amount of toughness points the Ardite Armor will have")
-    public static double arditeArmorToughnessPoints = 2.0;
+    public static double arditeArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorToughnessPoints", comment = "Set the amount of toughness points the Cobalt Armor will have")
-    public static double cobaltArmorToughnessPoints = 2.0;
+    public static double cobaltArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorToughnessPoints", comment = "Set the amount of toughness points the Manyullyn Armor will have")
-    public static double manyullynArmorToughnessPoints = 3.0;
+    public static double manyullynArmorToughnessPoints = 2.0;
     @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorToughnessPoints", comment = "Set the amount of toughness points the Pig Iron Armor will have")
     public static double pigIronArmorToughnessPoints = 1.0;
     @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorToughnessPoints", comment = "Set the amount of toughness points the Knight Slime Armor will have")
@@ -373,43 +374,43 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorToughnessPoints", comment = "Set the amount of toughness points the Electrical Armor will have")
     public static double electricalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorProtectionPoints", comment = "Set the amount of protection points the Coal Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] coalArmorProtectionPoints = new int[]{1, 2, 3, 1};
+    public static int[] coalArmorProtectionPoints = new int[]{1, 1, 2, 1};
     @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorProtectionPoints", comment = "Set the amount of protection points the Lapis Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] lapisArmorProtectionPoints = new int[]{1, 3, 5, 2};
+    public static int[] lapisArmorProtectionPoints = new int[]{1, 2, 3, 2};
     @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorProtectionPoints", comment = "Set the amount of protection points the Redstone Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] redstoneArmorProtectionPoints = new int[]{1, 3, 5, 2};
+    public static int[] redstoneArmorProtectionPoints = new int[]{1, 2, 3, 2};
     @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorProtectionPoints", comment = "Set the amount of protection points the Emerald Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] emeraldArmorProtectionPoints = new int[]{3, 6, 9, 4};
+    public static int[] emeraldArmorProtectionPoints = new int[]{3, 6, 8, 3};
     @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorProtectionPoints", comment = "Set the amount of protection points the Obsidian Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] obsidianArmorProtectionPoints = new int[]{3, 7, 10, 5};
+    public static int[] obsidianArmorProtectionPoints = new int[]{3, 6, 7, 3};
     @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorProtectionPoints", comment = "Set the amount of protection points the Lava Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] lavaArmorProtectionPoints = new int[]{4, 8, 11, 6};
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorProtectionPoints", comment = "Set the amount of protection points the Super Star Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] superStarArmorProtectionPoints = new int[]{5, 9, 12, 6};
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorProtectionPoints", comment = "Set the amount of protection points the Ender Dragon Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] enderDragonArmorProtectionPoints = new int[]{5, 9, 12, 6};
+    public static int[] lavaArmorProtectionPoints = new int[]{3, 6, 8, 3};
     @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorProtectionPoints", comment = "Set the amount of protection points the Guardian Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] guardianArmorProtectionPoints = new int[]{4, 8, 11, 6};
+    public static int[] guardianArmorProtectionPoints = new int[]{4, 7, 8, 3};
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorProtectionPoints", comment = "Set the amount of protection points the Super Star Armor will have (boots, leggings, chestplate, boots)")
+    public static int[] superStarArmorProtectionPoints = new int[]{4, 7, 8, 3};
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorProtectionPoints", comment = "Set the amount of protection points the Ender Dragon Armor will have (boots, leggings, chestplate, boots)")
+    public static int[] enderDragonArmorProtectionPoints = new int[]{4, 7, 8, 3};
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorProtectionPoints", comment = "Set the amount of protection points the Ultimate Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] theUltimateArmorProtectionPoints = new int[]{10, 20, 30, 15};
+    public static int[] theUltimateArmorProtectionPoints = new int[]{4, 8, 9, 4};
     @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorProtectionPoints", comment = "Set the amount of protection points the Ardite Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] arditeArmorProtectionPoints = new int[]{4, 8, 10, 4};
+    public static int[] arditeArmorProtectionPoints = new int[]{2, 3, 4, 2};
     @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorProtectionPoints", comment = "Set the amount of protection points the Cobalt Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] cobaltArmorProtectionPoints = new int[]{3, 7, 9, 3};
+    public static int[] cobaltArmorProtectionPoints = new int[]{2, 3, 4, 2};
     @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorProtectionPoints", comment = "Set the amount of protection points the Manyullyn Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] manyullynArmorProtectionPoints = new int[]{5, 10, 12, 5};
+    public static int[] manyullynArmorProtectionPoints = new int[]{3, 5, 5, 3};
     @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorProtectionPoints", comment = "Set the amount of protection points the Pig Iron Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] pigIronArmorProtectionPoints = new int[]{3, 6, 8, 3};
+    public static int[] pigIronArmorProtectionPoints = new int[]{2, 3, 4, 3};
     @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorProtectionPoints", comment = "Set the amount of protection points the Knight Slime Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] knightSlimeArmorProtectionPoints = new int[]{3, 6, 8, 3};
+    public static int[] knightSlimeArmorProtectionPoints = new int[]{2, 3, 4, 3};
     @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorProtectionPoints", comment = "Set the amount of protection points the Chicen Armor will have (boots, leggings, chestplate, boots)")
     public static int[] chickenArmorProtectionPoints = new int[]{1, 1, 2, 1};
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorProtectionPoints", comment = "Set the amount of protection points the Slime Armor will have (boots, leggings, chestplate, boots)")
     public static int[] slimeArmorProtectionPoints = new int[]{1, 1, 2, 1};
     @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorProtectionPoints", comment = "Set the amount of protection points the Steel Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] steelArmorProtectionPoints = new int[]{2, 5, 6, 2};
+    public static int[] steelArmorProtectionPoints = new int[]{2, 4, 5, 2};
     @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorProtectionPoints", comment = "Set the amount of protection points the Electrical Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] electricalArmorProtectionPoints = new int[]{3, 6, 7, 3};
+    public static int[] electricalArmorProtectionPoints = new int[]{3, 5, 6, 3};
 
     //Armors.SteelArmor
     @ModConfigProperty(category = "Armors.SteelArmor", name = "inputSteelArmor", comment = "Set the amount of Energy that the item can input")
@@ -601,6 +602,8 @@ public class ARPConfig {
     public static boolean enableGuardianArmor = true;
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "enableTheUltimateArmor", comment = "Enable/Disable The Ultimate Armor from the Game")
     public static boolean enableTheUltimateArmor = true;
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "makeTheUltimateArmorUnbreakable", comment = "Sets The Ultimate Armor Unbreakable")
+    public static boolean makeTheUltimateArmorUnbreakable = false;
     @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "enableArditeArmor", comment = "Enable/Disable the Ardite Armors from the Game")
     public static boolean enableArditeArmor = true;
     @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "enableCobaltArmor", comment = "Enable/Disable the Cobalt Armors from the Game")
