@@ -11,7 +11,9 @@ itemGroup.armorplus.tinkers=ARP Tinkers
 
 #Enchantmnets
 enchantment.life_steal=Life Steal
+enchantment.life_steal.desc=Steal's the attacked entity's health and heals you
 enchantment.furious=Furious
+enchantment.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
 
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon

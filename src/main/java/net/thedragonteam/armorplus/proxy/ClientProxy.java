@@ -40,7 +40,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct")) TiCMaterials.registerMaterialRendering();
+        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct"))
+            TiCMaterials.registerMaterialRendering();
         new CosmeticsRenderInit();
     }
 

@@ -11,11 +11,9 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -28,7 +26,10 @@ import net.thedragonteam.armorplus.items.Swords;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSpecialSword extends ItemSword {
@@ -56,7 +57,7 @@ public class BaseSpecialSword extends ItemSword {
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
         setRegistryName(swords.getName());
-        setUnlocalizedName(setARPUnlocalizedName(swords.getName()));
+        setUnlocalizedName(setName(swords.getName()));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -66,31 +67,39 @@ public class BaseSpecialSword extends ItemSword {
         stack.damageItem(1, attacker);
         switch (swords) {
             case COAL:
-                target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
+                if (enableCoalWeaponsEffects)
+                    addEffect(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, 'B');
                 break;
             case LAPIS:
-                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                if (enableLapisWeaponsEffects)
+                    addEffect(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, 'B');
                 break;
             case REDSTONE:
-                target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
+                if (enableRedstoneWeaponsEffects)
+                    addEffect(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, 'B');
                 break;
             case EMERALD:
-                target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
+                if (enableEmeraldWeaponsEffects)
+                    addEffect(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, 'B');
                 break;
             case OBSIDIAN:
-                target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
+                if (enableObsidianWeaponsEffects)
+                    addEffect(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, 'B');
                 break;
             case LAVA:
-                target.setFire(6);
+                target.setFire(8);
                 break;
             case GUARDIAN:
-                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                if (enableGuardianWeaponsEffects)
+                    addEffect(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, 'B');
                 break;
             case SUPER_STAR:
-                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
+                if (enableSuperStarWeaponsEffects)
+                    addEffect(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, 'B');
                 break;
             case ENDER_DRAGON:
-                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
+                if (enableEnderDragonWeaponsEffects)
+                    addEffect(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, 'B');
                 break;
         }
         return true;

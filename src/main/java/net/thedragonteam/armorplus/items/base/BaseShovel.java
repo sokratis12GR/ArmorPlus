@@ -11,14 +11,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseShovel extends ItemSpade {
 
     public BaseShovel(ToolMaterial material, String name) {
         super(material);
         setRegistryName(name);
-        setUnlocalizedName(setARPUnlocalizedName(name));
+        setUnlocalizedName(setName(name));
         GameRegistry.register(this);
     }
 

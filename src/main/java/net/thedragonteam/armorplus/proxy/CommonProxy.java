@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.registry.*;
@@ -20,11 +19,14 @@ import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.armorplus.util.Logger;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.File;
+
+import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
 
 public class CommonProxy {
 
@@ -33,10 +35,10 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         LogHelper.info("Begin PreInitialization");
         ModCompatibility.registerModCompat();
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
+        ModCompatibility.loadCompat(PRE_INIT);
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        net.thedragonteam.armorplus.util.Logger.init(new File(event.getModConfigurationDirectory().getPath()));
+        Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         ARPEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
@@ -51,7 +53,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         LogHelper.info("Begin Initialization");
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.INIT);
+        ModCompatibility.loadCompat(INIT);
         registerEvents();
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
@@ -62,12 +64,12 @@ public class CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event) {
         LogHelper.info("Begin PostInitialization");
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
+        ModCompatibility.loadCompat(POST_INIT);
         LogHelper.info("Finished PostInitialization");
     }
 
     public void modMapping(FMLModIdMappingEvent event) {
-        ModCompatibility.loadCompat(ICompatibility.InitializationPhase.MAPPING);
+        ModCompatibility.loadCompat(MAPPING);
     }
 
     public void serverLoad(FMLServerStartingEvent event) {

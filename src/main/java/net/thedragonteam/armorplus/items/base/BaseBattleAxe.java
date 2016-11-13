@@ -13,37 +13,37 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.BattleAxes;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
+import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBattleAxe extends ItemSword {
 
-    public static Item.ToolMaterial battleAxeCoalMaterial = EnumHelper.addToolMaterial("battleAxeCoalMaterial", 1, ARPConfig.coalBattleAxeDurability, 1.0F, (float) ARPConfig.coalBattleAxeDamage, 15);
-    public static Item.ToolMaterial battleAxeLapisMaterial = EnumHelper.addToolMaterial("battleAxeLapisMaterial", 1, ARPConfig.lapisBattleAxeDurability, 1.0F, (float) ARPConfig.lapisBattleAxeDamage, 30);
-    public static Item.ToolMaterial battleAxeRedstoneMaterial = EnumHelper.addToolMaterial("battleAxeRedstoneMaterial", 1, ARPConfig.redstoneBattleAxeDurability, 1.0F, (float) ARPConfig.redstoneBattleAxeDamage, 20);
-    public static Item.ToolMaterial battleAxeEmeraldMaterial = EnumHelper.addToolMaterial("battleAxeEmeraldMaterial", 1, ARPConfig.emeraldBattleAxeDurability, 1.0F, (float) ARPConfig.emeraldBattleAxeDamage, 20);
-    public static Item.ToolMaterial battleAxeObsidianMaterial = EnumHelper.addToolMaterial("battleAxeObsidianMaterial", 1, ARPConfig.obsidianBattleAxeDurability, 1.0F, (float) ARPConfig.obsidianBattleAxeDamage, 20);
-    public static Item.ToolMaterial battleAxeLavaMaterial = EnumHelper.addToolMaterial("battleAxeLavaMaterial", 1, ARPConfig.lavaBattleAxeDurability, 1.0F, (float) ARPConfig.lavaBattleAxeDamage, 20);
-    public static Item.ToolMaterial battleAxeGuardianMaterial = EnumHelper.addToolMaterial("battleAxeGuardianMaterial", 1, ARPConfig.guardianBattleAxeDurability, 1.0F, (float) ARPConfig.guardianBattleAxeDamage, 30);
-    public static Item.ToolMaterial battleAxeSuperStarMaterial = EnumHelper.addToolMaterial("battleAxeSuperStarMaterial", 1, ARPConfig.superStarBattleAxeDurability, 1.0F, (float) ARPConfig.superStarBattleAxeDamage, 20);
-    public static Item.ToolMaterial battleAxeEnderDragonMaterial = EnumHelper.addToolMaterial("battleAxeEnderDragonMaterial", 1, ARPConfig.enderDragonBattleAxeDurability, 1.0F, (float) ARPConfig.enderDragonBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
+    public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
+    public static ToolMaterial battleAxeRedstoneMaterial = addToolMaterial("battleAxeRedstoneMaterial", 1, redstoneBattleAxeDurability, 1.0F, (float) redstoneBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeEmeraldMaterial = addToolMaterial("battleAxeEmeraldMaterial", 1, emeraldBattleAxeDurability, 1.0F, (float) emeraldBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeObsidianMaterial = addToolMaterial("battleAxeObsidianMaterial", 1, obsidianBattleAxeDurability, 1.0F, (float) obsidianBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeLavaMaterial = addToolMaterial("battleAxeLavaMaterial", 1, lavaBattleAxeDurability, 1.0F, (float) lavaBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeGuardianMaterial = addToolMaterial("battleAxeGuardianMaterial", 1, guardianBattleAxeDurability, 1.0F, (float) guardianBattleAxeDamage, 30);
+    public static ToolMaterial battleAxeSuperStarMaterial = addToolMaterial("battleAxeSuperStarMaterial", 1, superStarBattleAxeDurability, 1.0F, (float) superStarBattleAxeDamage, 20);
+    public static ToolMaterial battleAxeEnderDragonMaterial = addToolMaterial("battleAxeEnderDragonMaterial", 1, enderDragonBattleAxeDurability, 1.0F, (float) enderDragonBattleAxeDamage, 20);
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
@@ -60,7 +60,7 @@ public class BaseBattleAxe extends ItemSword {
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         setRegistryName(battleAxes.getName());
-        setUnlocalizedName(setARPUnlocalizedName(battleAxes.getName()));
+        setUnlocalizedName(setName(battleAxes.getName()));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -76,31 +76,39 @@ public class BaseBattleAxe extends ItemSword {
         stack.damageItem(1, attacker);
         switch (battleAxes) {
             case COAL:
-                target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
+                if (enableCoalWeaponsEffects)
+                    addEffect(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, 'B');
                 break;
             case LAPIS:
-                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                if (enableLapisWeaponsEffects)
+                    addEffect(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, 'B');
                 break;
             case REDSTONE:
-                target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 1, false, true));
+                if (enableRedstoneWeaponsEffects)
+                    addEffect(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, 'B');
                 break;
             case EMERALD:
-                target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 120, 1, false, true));
+                if (enableEmeraldWeaponsEffects)
+                    addEffect(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, 'B');
                 break;
             case OBSIDIAN:
-                target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120, 1, false, true));
+                if (enableObsidianWeaponsEffects)
+                    addEffect(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, 'B');
                 break;
             case LAVA:
                 target.setFire(8);
                 break;
             case GUARDIAN:
-                target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 120, 1, false, true));
+                if (enableGuardianWeaponsEffects)
+                    addEffect(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, 'B');
                 break;
             case SUPER_STAR:
-                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 120, 1, false, true));
+                if (enableSuperStarWeaponsEffects)
+                    addEffect(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, 'B');
                 break;
             case ENDER_DRAGON:
-                target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 3, false, true));
+                if (enableEnderDragonWeaponsEffects)
+                    addEffect(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, 'B');
                 break;
         }
         return true;
@@ -110,7 +118,7 @@ public class BaseBattleAxe extends ItemSword {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247r" + effect);
+            tooltip.add("\2479Ability: " + "\247rApplies " + effect);
             tooltip.add("\2473Use: " + "\247rHit a Target");
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
@@ -123,7 +131,7 @@ public class BaseBattleAxe extends ItemSword {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (recipes) {
             case 0:
                 return repair.getItem() == itemEasy;
             case 1:

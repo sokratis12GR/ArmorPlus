@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntityDamageSource;
 import slimeknights.tconstruct.library.Util;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
@@ -21,7 +22,13 @@ import java.util.List;
 public class ModFireStorm extends ModifierTrait {
 
     public ModFireStorm() {
-        super("firestorm", 0xea0000, 10, 4);
+        super("firestorm", 0xea0000);
+        addAspects(new ModifierAspect.LevelAspect(this, 10));
+    }
+
+    @Override
+    public boolean hasTexturePerMaterial() {
+        return true;
     }
 
     @Override

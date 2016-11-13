@@ -23,7 +23,7 @@ import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
 import net.thedragonteam.armorplus.items.Items;
 
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseItem extends Item {
@@ -32,7 +32,7 @@ public class BaseItem extends Item {
     private TextFormatting textFormatting;
     public BaseItem(String name) {
         setRegistryName(name);
-        setUnlocalizedName(setARPUnlocalizedName(name));
+        setUnlocalizedName(setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

@@ -43,7 +43,7 @@ public final class Utils {
         }
     }
 
-    public static String setARPUnlocalizedName(String name) {
+    public static String setName(String name) {
         return ArmorPlus.MODID + "." + name;
     }
 }

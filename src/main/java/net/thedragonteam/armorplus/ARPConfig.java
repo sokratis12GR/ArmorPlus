@@ -129,7 +129,57 @@ public class ARPConfig {
     @ModConfigProperty(category = "Weapons.EnderDragon.Sword", name = "enderDragonSwordDurability", comment = "Set the amount of durability the Ender Dragon Sword have")
     public static int enderDragonSwordDurability = 2310;
 
-    //Weapons.*.BattleAxe
+    //Weapons.*.Effects
+    @ModConfigProperty(category = "Weapons.Coal.Effects", name = "coalWeaponsEffectLevel", comment = "Set the level of the Effect by the Coal Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int coalWeaponsEffectLevel = 0;
+    @ModConfigProperty(category = "Weapons.Lapis.Effects", name = "lapisWeaponsEffectLevel", comment = "Set the level of the Effect by the Lapis Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int lapisWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.Redstone.Effects", name = "redstoneWeaponsEffectLevel", comment = "Set the level of the Effect by the Redstone Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int redstoneWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.Emerald.Effects", name = "emeraldWeaponsEffectLevel", comment = "Set the level of the Effect by the Emerald Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int emeraldWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.Obsidian.Effects", name = "obsidianWeaponsEffectLevel", comment = "Set the level of the Effect by the Obsidian Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int obsidianWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.Guardian.Effects", name = "guardianWeaponsEffectLevel", comment = "Set the level of the Effect by the Guardian Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int guardianWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "superStarWeaponsEffectLevel", comment = "Set the level of the Effect by the Super Star Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int superStarWeaponsEffectLevel = 1;
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "enderDragonWeaponsEffectLevel", comment = "Set the level of the Effect by the Super Star Weapons. (0 = level 1, 1 = level 2 etc.)")
+    public static int enderDragonWeaponsEffectLevel = 3;
+
+    @ModConfigProperty(category = "Weapons.Coal.Effects", name = "coalWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Coal Weapons will have (to disable the effect set the effects \'false\')")
+    public static String coalWeaponsAddPotionEffect = "blindness";
+    @ModConfigProperty(category = "Weapons.Lapis.Effects", name = "lapisWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Lapis Weapons will have (to disable the effect set the effects \'false\')")
+    public static String lapisWeaponsAddPotionEffect = "nausea";
+    @ModConfigProperty(category = "Weapons.Redstone.Effects", name = "redstoneWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Redstone Weapons will have (to disable the effect set the effects \'false\')")
+    public static String redstoneWeaponsAddPotionEffect = "slowness";
+    @ModConfigProperty(category = "Weapons.Emerald.Effects", name = "emeraldWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Emerald Weapons will have (to disable the effect set the effects \'false\')")
+    public static String emeraldWeaponsAddPotionEffect = "mining_fatigue";
+    @ModConfigProperty(category = "Weapons.Obsidian.Effects", name = "obsidianWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Obsidian Weapons will have (to disable the effect set the effects \'false\')")
+    public static String obsidianWeaponsAddPotionEffect = "weakness";
+    @ModConfigProperty(category = "Weapons.Guardian.Effects", name = "guardianWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Guardian Weapons will have (to disable the effect set the effects \'false\')")
+    public static String guardianWeaponsAddPotionEffect = "nausea";
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "superStarWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Super Star Weapons will have (to disable the effect set the effects \'false\')")
+    public static String superStarWeaponsAddPotionEffect = "wither";
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "enderDragonWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Super Star Weapons will have (to disable the effect set the effects \'false\')")
+    public static String enderDragonWeaponsAddPotionEffect = "wither";
+    @ModConfigProperty(category = "Weapons.Coal.Effects", name = "enableCoalWeaponsEffects", comment = "Enable/Disable the Potion Effect the Coal Weapons will have")
+    public static boolean enableCoalWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.Lapis.Effects", name = "enableLapisWeaponsEffects", comment = "Enable/Disable the Potion Effect the Lapis Weapons will have")
+    public static boolean enableLapisWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.Redstone.Effects", name = "enableRedstoneWeaponsEffects", comment = "Enable/Disable the Potion Effect the Redstone Weapons will have")
+    public static boolean enableRedstoneWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.Emerald.Effects", name = "enableEmeraldWeaponsEffects", comment = "Enable/Disable the Potion Effect the Emerald Weapons will have")
+    public static boolean enableEmeraldWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.Obsidian.Effects", name = "enableObsidianWeaponsEffects", comment = "Enable/Disable the Potion Effect the Obsidian Weapons will have")
+    public static boolean enableObsidianWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.Guardian.Effects", name = "enableGuardianWeaponsEffects", comment = "Enable/Disable the Potion Effect the Guardian Weapons will have")
+    public static boolean enableGuardianWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "enableSuperStarWeaponsEffects", comment = "Enable/Disable the Potion Effect the Super Star Weapons will have")
+    public static boolean enableSuperStarWeaponsEffects = true;
+    @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "enableEnderDragonWeaponsEffects", comment = "Enable/Disable the Potion Effect the Super Star Weapons will have")
+    public static boolean enableEnderDragonWeaponsEffects = true;
+
     @ModConfigProperty(category = "Weapons.Coal.BattleAxe", name = "coalBattleAxeDamage", comment = "Set the amount of damage the Coal BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
     public static double coalBattleAxeDamage = 2.5;
     @ModConfigProperty(category = "Weapons.Lapis.BattleAxe", name = "lapisBattleAxeDamage", comment = "Set the amount of damage the Lapis BattleAxe will do (Additional +4 damage will be added automatically by minecraft)")
@@ -218,14 +268,14 @@ public class ARPConfig {
     public static String obsidianArmorAddPotionEffect = "resistance";
     @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "lavaArmorAddPotionEffect", comment = "Adds the Potion Effect the Lava Armor will have (to disable the effect set the effects \'false\')")
     public static String lavaArmorAddPotionEffect = "fire_resistance";
+    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set the effects \'false\')")
+    public static String guardianArmorAddPotionEffect = "water_breathing";
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorAddPotionEffect", comment = "Adds the Potion Effect the Super Star Armor will have (to disable the effect set the effects \'false\')")
     public static String superStarArmorAddPotionEffect = "regeneration";
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorRemovePotionEffect", comment = "The Potion Effect that the Super Star Armor will be Removing")
     public static String superStarArmorRemovePotionEffect = "wither";
     @ModConfigProperty(category = "Armors.EnderDragonArmor.Effects", name = "enderDragonArmorRemovePotionEffect", comment = "The Potion Effect that the Ender Dragon Armor will be Removing")
     public static String enderDragonArmorRemovePotionEffect = "wither";
-    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set the effects \'false\')")
-    public static String guardianArmorAddPotionEffect = "water_breathing";
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "theUltimateArmorAddPotionEffect", comment = "Adds the Potion Effect the Ultimate Armor will have (to disable the effect set the effects \'false\')")
     public static String[] theUltimateArmorAddPotionEffects = new String[]{"saturation", "regeneration", "water_breathing"};
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "theUltimateArmorRemovePotionEffect", comment = "The Potion Effect that the Ultimate Dragon Armor will be Removing")
@@ -446,12 +496,12 @@ public class ARPConfig {
     public static boolean debugModeTGOTG = false;
     @ModConfigProperty(category = "Debug", name = "debugModeEnchantments", comment = "Enable/Disable Debug Mode for the Enchantments")
     public static boolean debugModeEnchantments = false;
-    //Weapons
-    @ModConfigProperty(category = "Weapons", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
+    //Weapons.Recipes
+    @ModConfigProperty(category = "Weapons.Recipes", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
     public static boolean enableSwordsRecipes = true;
-    @ModConfigProperty(category = "Weapons", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
+    @ModConfigProperty(category = "Weapons.Recipes", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
     public static boolean enableBattleAxesRecipes = true;
-    @ModConfigProperty(category = "Weapons", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
+    @ModConfigProperty(category = "Weapons.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
     public static boolean enableBowsRecipes = true;
     //SuperStarArmor
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHEffect", comment = "Enable/Disable the Super Star Helmet Effect")
@@ -573,37 +623,37 @@ public class ARPConfig {
     @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable the Armors Flight")
     public static boolean enableFlightAbility = true;
     //EffectLevel
-    @ModConfigProperty(category = "Armors.CoalArmor.EffectLevel", name = "coalArmorEffectLevel", comment = "Set the level of the Effect by the Coal Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "coalArmorEffectLevel", comment = "Set the level of the Effect by the Coal Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int coalArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.LapisArmor.EffectLevel", name = "lapisArmorEffectLevel", comment = "Set the level of the Effect by the Lapis Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "lapisArmorEffectLevel", comment = "Set the level of the Effect by the Lapis Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int lapisArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.EffectLevel", name = "redstoneArmorEffectLevel", comment = "Set the level of the Effect by the Redstone Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "redstoneArmorEffectLevel", comment = "Set the level of the Effect by the Redstone Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int redstoneArmorEffectLevel = 1;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.EffectLevel", name = "emeraldArmorEffectLevel", comment = "Set the level of the Effect by the Emerald Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "emeraldArmorEffectLevel", comment = "Set the level of the Effect by the Emerald Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int emeraldArmorEffectLevel = 1;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.EffectLevel", name = "obsidianArmorEffectLevel", comment = "Set the level of the Effect by the Obsidian Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "obsidianArmorEffectLevel", comment = "Set the level of the Effect by the Obsidian Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int obsidianArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.LavaArmor.EffectLevel", name = "lavaArmorEffectLevel", comment = "Set the level of the Effect by the Lava Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "lavaArmorEffectLevel", comment = "Set the level of the Effect by the Lava Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int lavaArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.ChickenArmor.EffectLevel", name = "chickenArmorEffectLevel", comment = "Set the level of the Effect by the Chicken Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Effects", name = "chickenArmorEffectLevel", comment = "Set the level of the Effect by the Chicken Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int chickenArmorEffectLevel = 4;
-    @ModConfigProperty(category = "Armors.SlimeArmor.EffectLevel", name = "slimeArmorEffectLevel", comment = "Set the level of the Effect by the Slime Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.SlimeArmor.Effects", name = "slimeArmorEffectLevel", comment = "Set the level of the Effect by the Slime Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int slimeArmorEffectLevel = 2;
-    @ModConfigProperty(category = "Armors.GuardianArmor.EffectLevel", name = "guardianArmorEffectLevel", comment = "Set the level of the Effect by the Guardian Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "guardianArmorEffectLevel", comment = "Set the level of the Effect by the Guardian Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int guardianArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.EffectLevel", name = "superStarArmorEffectLevel", comment = "Set the level of the Effect by the Super Star Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "superStarArmorEffectLevel", comment = "Set the level of the Effect by the Super Star Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int superStarArmorEffectLevel = 1;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.EffectLevel", name = "ultimateArmorEffectLevel", comment = "Set the level of the Effect by The Ultimate Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Effects", name = "ultimateArmorEffectLevel", comment = "Set the level of the Effect by The Ultimate Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int[] ultimateArmorEffectLevels = new int[]{0, 1, 0};
-    @ModConfigProperty(category = "Armors.ArditeArmor.EffectLevel", name = "arditeArmorEffectLevel", comment = "Set the level of the Effect by the Ardite Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "arditeArmorEffectLevel", comment = "Set the level of the Effect by the Ardite Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int arditeArmorEffectLevel = 0;
-    @ModConfigProperty(category = "Armors.CobaltArmor.EffectLevel", name = "cobaltArmorEffectLevel", comment = "Set the level of the Effect by the Cobalt Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Effects", name = "cobaltArmorEffectLevel", comment = "Set the level of the Effect by the Cobalt Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int cobaltArmorEffectLevel = 2;
-    @ModConfigProperty(category = "Armors.ManyullynArmor.EffectLevel", name = "manyullynArmorEffectLevel", comment = "Set the level of the Effect by the Manyullyn Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Effects", name = "manyullynArmorEffectLevel", comment = "Set the level of the Effect by the Manyullyn Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int manyullynArmorEffectLevel = 1;
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.EffectLevel", name = "knightSlimeArmorEffectLevel", comment = "Set the level of the Effect by the Knight Slime Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Effects", name = "knightSlimeArmorEffectLevel", comment = "Set the level of the Effect by the Knight Slime Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int knightSlimeArmorEffectLevel = 1;
-    @ModConfigProperty(category = "Armors.PigIronArmor.EffectLevel", name = "pigIronArmorEffectLevel", comment = "Set the level of the Effect by the Pig Iron Armor. (0 = level 1, 1 = level 2 etc.)")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Effects", name = "pigIronArmorEffectLevel", comment = "Set the level of the Effect by the Pig Iron Armor. (0 = level 1, 1 = level 2 etc.)")
     public static int pigIronArmorEffectLevel = 0;
 
     //WorldGeneration

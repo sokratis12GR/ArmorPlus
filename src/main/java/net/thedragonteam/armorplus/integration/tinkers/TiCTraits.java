@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.integration.tinkers;
 
+
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TiCTraits {

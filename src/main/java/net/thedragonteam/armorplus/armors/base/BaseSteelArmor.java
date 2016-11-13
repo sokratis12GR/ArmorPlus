@@ -42,7 +42,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @Optional.InterfaceList({
@@ -66,22 +66,22 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
             case FEET:
                 String boots = "steel_boots";
                 setRegistryName(boots);
-                setUnlocalizedName(setARPUnlocalizedName(boots));
+                setUnlocalizedName(setName(boots));
                 break;
             case LEGS:
                 String leggings = "steel_leggings";
                 setRegistryName(leggings);
-                setUnlocalizedName(setARPUnlocalizedName(leggings));
+                setUnlocalizedName(setName(leggings));
                 break;
             case CHEST:
                 String chestplate = "steel_chestplate";
                 setRegistryName(chestplate);
-                setUnlocalizedName(setARPUnlocalizedName(chestplate));
+                setUnlocalizedName(setName(chestplate));
                 break;
             case HEAD:
                 String helmet = "steel_helmet";
                 setRegistryName(helmet);
-                setUnlocalizedName(setARPUnlocalizedName(helmet));
+                setUnlocalizedName(setName(helmet));
                 break;
         }
         GameRegistry.register(this);

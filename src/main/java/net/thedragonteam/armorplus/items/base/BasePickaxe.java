@@ -11,13 +11,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BasePickaxe extends ItemPickaxe {
 
     public BasePickaxe(ToolMaterial material, String name) {
         super(material);
-        setUnlocalizedName(setARPUnlocalizedName(name));
+        setUnlocalizedName(setName(name));
         setRegistryName(name);
         GameRegistry.register(this);
     }

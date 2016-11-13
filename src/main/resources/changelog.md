@@ -1,3 +1,11 @@
+**ArmorPlus 1.10.2-8.1.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added/Removed/Changed}**
+    * Added more config options for full customization of the weapons's effects
+* **{Note}**
+    * Any suggestions are greatly appreciated, you can contact me at sokratis12GR@gmail.com, via twitter https://twitter.com/sokratis12GR and/or via GitHub you can submit an issue with the request.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.5.11**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

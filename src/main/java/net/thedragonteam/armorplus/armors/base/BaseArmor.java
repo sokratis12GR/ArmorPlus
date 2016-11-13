@@ -11,23 +11,19 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.ARPArmorMaterial;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -35,64 +31,50 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import java.util.List;
 import java.util.Objects;
 
+import static net.minecraft.init.SoundEvents.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
-import static net.thedragonteam.armorplus.util.ArmorUtils.addArmorEffect;
-import static net.thedragonteam.armorplus.util.ArmorUtils.removeArmorEffect;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
-import static net.thedragonteam.armorplus.util.Utils.setARPUnlocalizedName;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseArmor extends ItemArmor {
 
-    private static float coalArmorToughnessPoints = (float) ARPConfig.coalArmorToughnessPoints;
-    public static ArmorMaterial coalArmor = EnumHelper.addArmorMaterial("coal", getArmorPlusLocation("coal_armor"), 7,
-            coalArmorProtectionPoints, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, coalArmorToughnessPoints);
-    private static float emeraldArmorToughnessPoints = (float) ARPConfig.emeraldArmorToughnessPoints;
-    public static ArmorMaterial emeraldArmor = EnumHelper.addArmorMaterial("emerald", getArmorPlusLocation("emerald_armor"), 35,
-            emeraldArmorProtectionPoints, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, emeraldArmorToughnessPoints);
-    private static float lapisArmorToughnessPoints = (float) ARPConfig.lapisArmorToughnessPoints;
-    public static ArmorMaterial lapisArmor = EnumHelper.addArmorMaterial("lapis", getArmorPlusLocation("lapis_armor"), 11,
-            lapisArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, lapisArmorToughnessPoints);
-    private static float lavaArmorToughnessPoints = (float) ARPConfig.lavaArmorToughnessPoints;
-    public static ArmorMaterial lavaArmor = EnumHelper.addArmorMaterial("lava", getArmorPlusLocation("lava_armor"), 45,
-            lavaArmorProtectionPoints, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, lavaArmorToughnessPoints);
-    private static float obsidianArmorToughnessPoints = (float) ARPConfig.obsidianArmorToughnessPoints;
-    public static ArmorMaterial obsidianArmor = EnumHelper.addArmorMaterial("obsidian", getArmorPlusLocation("obsidian_armor"), 40,
-            obsidianArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, obsidianArmorToughnessPoints);
-    private static float redstoneArmorToughnessPoints = (float) ARPConfig.redstoneArmorToughnessPoints;
-    public static ArmorMaterial redstoneArmor = EnumHelper.addArmorMaterial("redstone", getArmorPlusLocation("redstone_armor"), 11,
-            redstoneArmorProtectionPoints, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, redstoneArmorToughnessPoints);
-    private static float chickenArmorToughnessPoints = (float) ARPConfig.chickenArmorToughnessPoints;
-    public static ArmorMaterial chickenArmor = EnumHelper.addArmorMaterial("chicken", getArmorPlusLocation("chicken_armor"), 3,
-            chickenArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, chickenArmorToughnessPoints);
-    private static float slimeArmorToughnessPoints = (float) ARPConfig.slimeArmorToughnessPoints;
-    public static ArmorMaterial slimeArmor = EnumHelper.addArmorMaterial("slime", getArmorPlusLocation("slime_armor"), 3,
-            slimeArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, slimeArmorToughnessPoints);
-    private static float enderDragonArmorToughnessPoints = (float) ARPConfig.enderDragonArmorToughnessPoints;
-    public static ArmorMaterial enderDragonArmor = EnumHelper.addArmorMaterial("enderDragon", getArmorPlusLocation("ender_dragon_armor"), 60,
-            enderDragonArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, enderDragonArmorToughnessPoints);
-    private static float guardianArmorToughnessPoints = (float) ARPConfig.guardianArmorToughnessPoints;
-    public static ArmorMaterial guardianArmor = EnumHelper.addArmorMaterial("guardian", getArmorPlusLocation("guardian_armor"), 50,
-            guardianArmorProtectionPoints, 28, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, guardianArmorToughnessPoints);
-    private static float superStarArmorToughnessPoints = (float) ARPConfig.superStarArmorToughnessPoints;
-    public static ArmorMaterial superStarArmor = EnumHelper.addArmorMaterial("superStar", getArmorPlusLocation("super_star_armor"), 50,
-            superStarArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, superStarArmorToughnessPoints);
-    private static float arditeArmorToughnessPoints = (float) ARPConfig.arditeArmorToughnessPoints;
-    public static ArmorMaterial arditeArmor = EnumHelper.addArmorMaterial("ardite", getArmorPlusLocation("ardite_armor"), 55,
-            arditeArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, arditeArmorToughnessPoints);
-    private static float cobaltArmorToughnessPoints = (float) ARPConfig.cobaltArmorToughnessPoints;
-    public static ArmorMaterial cobaltArmor = EnumHelper.addArmorMaterial("cobalt", getArmorPlusLocation("cobalt_armor"), 44,
-            cobaltArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, cobaltArmorToughnessPoints);
-    private static float knightSlimeArmorToughnessPoints = (float) ARPConfig.knightSlimeArmorToughnessPoints;
-    public static ArmorMaterial knightSlimeArmor = EnumHelper.addArmorMaterial("knightSlime", getArmorPlusLocation("knight_slime_armor"), 33,
-            knightSlimeArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, knightSlimeArmorToughnessPoints);
-    private static float manyullynArmorToughnessPoints = (float) ARPConfig.manyullynArmorToughnessPoints;
-    public static ArmorMaterial manyullynArmor = EnumHelper.addArmorMaterial("manyullyn", getArmorPlusLocation("manyullyn_armor"), 66,
-            manyullynArmorProtectionPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, manyullynArmorToughnessPoints);
-    private static float pigIronArmorToughnessPoints = (float) ARPConfig.pigIronArmorToughnessPoints;
-    public static ArmorMaterial pigIronArmor = EnumHelper.addArmorMaterial("pigIron", getArmorPlusLocation("pig_iron_armor"), 33,
-            pigIronArmorProtectionPoints, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, pigIronArmorToughnessPoints);
+    public static ArmorMaterial coalArmor = addArmorMaterial("coal", getArmorPlusLocation("coal_armor"), 7,
+            coalArmorProtectionPoints, 8, ITEM_ARMOR_EQUIP_LEATHER, (float) coalArmorToughnessPoints);
+    public static ArmorMaterial emeraldArmor = addArmorMaterial("emerald", getArmorPlusLocation("emerald_armor"), 35,
+            emeraldArmorProtectionPoints, 20, ITEM_ARMOR_EQUIP_DIAMOND, (float) emeraldArmorToughnessPoints);
+    public static ArmorMaterial lapisArmor = addArmorMaterial("lapis", getArmorPlusLocation("lapis_armor"), 11,
+            lapisArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) lapisArmorToughnessPoints);
+    public static ArmorMaterial lavaArmor = addArmorMaterial("lava", getArmorPlusLocation("lava_armor"), 45,
+            lavaArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) lavaArmorToughnessPoints);
+    public static ArmorMaterial obsidianArmor = addArmorMaterial("obsidian", getArmorPlusLocation("obsidian_armor"), 40,
+            obsidianArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_DIAMOND, (float) obsidianArmorToughnessPoints);
+    public static ArmorMaterial redstoneArmor = addArmorMaterial("redstone", getArmorPlusLocation("redstone_armor"), 11,
+            redstoneArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) redstoneArmorToughnessPoints);
+    public static ArmorMaterial chickenArmor = addArmorMaterial("chicken", getArmorPlusLocation("chicken_armor"), 3,
+            chickenArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) chickenArmorToughnessPoints);
+    public static ArmorMaterial slimeArmor = addArmorMaterial("slime", getArmorPlusLocation("slime_armor"), 3,
+            slimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) slimeArmorToughnessPoints);
+    public static ArmorMaterial enderDragonArmor = addArmorMaterial("enderDragon", getArmorPlusLocation("ender_dragon_armor"), 60,
+            enderDragonArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) enderDragonArmorToughnessPoints);
+    public static ArmorMaterial guardianArmor = addArmorMaterial("guardian", getArmorPlusLocation("guardian_armor"), 50,
+            guardianArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) guardianArmorToughnessPoints);
+    public static ArmorMaterial superStarArmor = addArmorMaterial("superStar", getArmorPlusLocation("super_star_armor"), 50,
+            superStarArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) superStarArmorToughnessPoints);
+    public static ArmorMaterial arditeArmor = addArmorMaterial("ardite", getArmorPlusLocation("ardite_armor"), 55,
+            arditeArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) arditeArmorToughnessPoints);
+    public static ArmorMaterial cobaltArmor = addArmorMaterial("cobalt", getArmorPlusLocation("cobalt_armor"), 44,
+            cobaltArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) cobaltArmorToughnessPoints);
+    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("knightSlime", getArmorPlusLocation("knight_slime_armor"), 33,
+            knightSlimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) knightSlimeArmorToughnessPoints);
+    public static ArmorMaterial manyullynArmor = addArmorMaterial("manyullyn", getArmorPlusLocation("manyullyn_armor"), 66,
+            manyullynArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) manyullynArmorToughnessPoints);
+    public static ArmorMaterial pigIronArmor = addArmorMaterial("pigIron", getArmorPlusLocation("pig_iron_armor"), 33,
+            pigIronArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) pigIronArmorToughnessPoints);
 
     public Item itemEasy;
     public Item itemExpert;
@@ -112,22 +94,22 @@ public class BaseArmor extends ItemArmor {
             case FEET:
                 String boots = armorMaterial.getName() + "_boots";
                 setRegistryName(boots);
-                setUnlocalizedName(setARPUnlocalizedName(boots));
+                setUnlocalizedName(setName(boots));
                 break;
             case LEGS:
                 String leggings = armorMaterial.getName() + "_leggings";
                 setRegistryName(leggings);
-                setUnlocalizedName(setARPUnlocalizedName(leggings));
+                setUnlocalizedName(setName(leggings));
                 break;
             case CHEST:
                 String chestplate = armorMaterial.getName() + "_chestplate";
                 setRegistryName(chestplate);
-                setUnlocalizedName(setARPUnlocalizedName(chestplate));
+                setUnlocalizedName(setName(chestplate));
                 break;
             case HEAD:
                 String helmet = armorMaterial.getName() + "_helmet";
                 setRegistryName(helmet);
-                setUnlocalizedName(setARPUnlocalizedName(helmet));
+                setUnlocalizedName(setName(helmet));
                 break;
         }
         GameRegistry.register(this);
@@ -137,44 +119,44 @@ public class BaseArmor extends ItemArmor {
     @SuppressWarnings("ConstantConditions")
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
-        ItemStack head = entity.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-        ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-        ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-        ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+        ItemStack head = entity.getItemStackFromSlot(HEAD);
+        ItemStack chest = entity.getItemStackFromSlot(CHEST);
+        ItemStack legs = entity.getItemStackFromSlot(LEGS);
+        ItemStack feet = entity.getItemStackFromSlot(FEET);
         switch (material) {
             case COAL:
                 switch (slot) {
                     case FEET:
                         if (enableCoalBEffect && !enableFullCoalArmorEffect)
-                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
                     case LEGS:
                         if (enableCoalLEffect && !enableFullCoalArmorEffect)
-                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
                     case CHEST:
                         if (enableCoalCEffect && !enableFullCoalArmorEffect)
-                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
                     case HEAD:
                         if (enableCoalHEffect && !enableFullCoalArmorEffect)
-                            addArmorEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel);
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
                 }
                 break;
             case EMERALD:
                 switch (slot) {
                     case FEET:
                         if (enableEmeraldBEffect && !enableFullEmeraldArmorEffect)
-                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
                         break;
                     case LEGS:
                         if (enableEmeraldLEffect && !enableFullEmeraldArmorEffect)
-                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
                         break;
                     case CHEST:
                         if (enableEmeraldCEffect && !enableFullEmeraldArmorEffect)
-                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
                         break;
                     case HEAD:
                         if (enableEmeraldHEffect && !enableFullEmeraldArmorEffect)
-                            addArmorEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
                         break;
                 }
                 break;
@@ -182,19 +164,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLapisBEffect && !enableFullLapisArmorEffect)
-                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
                         break;
                     case LEGS:
                         if (enableLapisLEffect && !enableFullLapisArmorEffect)
-                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
                         break;
                     case CHEST:
                         if (enableLapisCEffect && !enableFullLapisArmorEffect)
-                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
                         break;
                     case HEAD:
                         if (enableLapisHEffect && !enableFullLapisArmorEffect)
-                            addArmorEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
                         break;
                 }
                 break;
@@ -202,22 +184,22 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLavaBEffect && !enableFullLavaArmorEffect)
-                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
                         lavaEffects(entity, itemStack);
                         break;
                     case LEGS:
                         if (enableLavaLEffect && !enableFullLavaArmorEffect)
-                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
                         lavaEffects(entity, itemStack);
                         break;
                     case CHEST:
                         if (enableLavaCEffect && !enableFullLavaArmorEffect)
-                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
                         lavaEffects(entity, itemStack);
                         break;
                     case HEAD:
                         if (enableLavaHEffect && !enableFullLavaArmorEffect)
-                            addArmorEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
                         lavaEffects(entity, itemStack);
                         break;
                 }
@@ -226,7 +208,7 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableRedstoneBEffect && !enableFullRedstoneArmorEffect) {
-                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -234,7 +216,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case LEGS:
                         if (enableRedstoneLEffect && !enableFullRedstoneArmorEffect) {
-                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -242,7 +224,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case CHEST:
                         if (enableRedstoneCEffect && !enableFullRedstoneArmorEffect) {
-                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -250,7 +232,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case HEAD:
                         if (enableRedstoneHEffect && !enableFullRedstoneArmorEffect) {
-                            addArmorEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -262,19 +244,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableObsidianBEffect && !enableFullObsidianArmorEffect)
-                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
                         break;
                     case LEGS:
                         if (enableObsidianLEffect && !enableFullObsidianArmorEffect)
-                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
                         break;
                     case CHEST:
                         if (enableObsidianCEffect && !enableFullObsidianArmorEffect)
-                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
                         break;
                     case HEAD:
                         if (enableObsidianHEffect && !enableFullObsidianArmorEffect)
-                            addArmorEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
                         break;
                 }
                 break;
@@ -288,33 +270,33 @@ public class BaseArmor extends ItemArmor {
                     }
                 }
                 if (getPotion(enderDragonArmorRemovePotionEffect) != null)
-                    removeArmorEffect(entity, getPotion(enderDragonArmorRemovePotionEffect));
+                    removeEffect(entity, getPotion(enderDragonArmorRemovePotionEffect));
                 break;
             case SUPER_STAR:
                 switch (slot) {
                     case FEET:
                         if (enableSuperStarBEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                        removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case LEGS:
                         if (enableSuperStarLEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                        removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case CHEST:
                         if (enableSuperStarCEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                        removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case HEAD:
                         if (enableSuperStarHEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addArmorEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
-                        removeArmorEffect(entity, getPotion(superStarArmorRemovePotionEffect));
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                        removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                 }
                 break;
@@ -510,13 +492,5 @@ public class BaseArmor extends ItemArmor {
     public boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         return GameSettings.isKeyDown(keyBindSneak);
-    }
-
-    private String localizePotion(String resourceLocation) {
-        return localize(getPotion(resourceLocation).getName() + ".name").trim();
-    }
-
-    private Potion getPotion(String resourceLocation) {
-        return Potion.getPotionFromResourceLocation(resourceLocation);
     }
 }

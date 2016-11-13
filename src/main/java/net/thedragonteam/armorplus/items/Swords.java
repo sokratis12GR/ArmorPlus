@@ -16,17 +16,18 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 
 public enum Swords implements IStringSerializable {
-    COAL(BaseSpecialSword.swordCoalMaterial, "coal_sword", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), "Applies Blindness"),
-    LAPIS(BaseSpecialSword.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), "Applies Nausea 2"),
-    REDSTONE(BaseSpecialSword.swordRedstoneMaterial, "redstone_sword", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(redstoneWeaponItemNameColor), "Applies Slowness 2"),
-    EMERALD(BaseSpecialSword.swordEmeraldMaterial, "emerald_sword", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), "Applies Fatigue 2"),
-    OBSIDIAN(BaseSpecialSword.swordObsidianMaterial, "obsidian_sword", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), "Applies Weakness 2"),
+    COAL(BaseSpecialSword.swordCoalMaterial, "coal_sword", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(coalWeaponItemNameColor), localizePotion(coalWeaponsAddPotionEffect) + " " + coalWeaponsEffectLevel),
+    LAPIS(BaseSpecialSword.swordLapisMaterial, "lapis_sword", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(lapisWeaponItemNameColor), localizePotion(lapisWeaponsAddPotionEffect) + " " + lapisWeaponsEffectLevel),
+    REDSTONE(BaseSpecialSword.swordRedstoneMaterial, "redstone_sword", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(redstoneWeaponItemNameColor), localizePotion(redstoneWeaponsAddPotionEffect) + " " + redstoneWeaponsEffectLevel),
+    EMERALD(BaseSpecialSword.swordEmeraldMaterial, "emerald_sword", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(emeraldWeaponItemNameColor), localizePotion(emeraldWeaponsAddPotionEffect) + " " + emeraldWeaponsEffectLevel),
+    OBSIDIAN(BaseSpecialSword.swordObsidianMaterial, "obsidian_sword", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(obsidianWeaponItemNameColor), localizePotion(obsidianWeaponsAddPotionEffect) + " " + obsidianWeaponsEffectLevel),
     LAVA(BaseSpecialSword.swordLavaMaterial, "lava_sword", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(lavaWeaponItemNameColor), "Sets on Fire"),
-    GUARDIAN(BaseSpecialSword.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), "Applies Nausea 2"),
-    SUPER_STAR(BaseSpecialSword.swordSuperStarMaterial, "super_star_sword", ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), "Applies Wither 2"),
-    ENDER_DRAGON(BaseSpecialSword.swordEnderDragonMaterial, "ender_dragon_sword", ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), "Applies Wither 4");
+    GUARDIAN(BaseSpecialSword.swordGuardianMaterial, "guardian_sword", ModItems.guardianScale, TextFormatting.getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + guardianWeaponsEffectLevel),
+    SUPER_STAR(BaseSpecialSword.swordSuperStarMaterial, "super_star_sword", ModItems.witherBone, TextFormatting.getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + superStarWeaponsEffectLevel),
+    ENDER_DRAGON(BaseSpecialSword.swordEnderDragonMaterial, "ender_dragon_sword", ModItems.enderDragonScale, TextFormatting.getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + enderDragonWeaponsEffectLevel);
 
     private final String name;
 

@@ -38,7 +38,6 @@ public class TiC {
         obsidianInt.integrate();
         tinkersModifiers = new TiCModifiers();
         tinkersMaterials.setupMaterials();
-        tinkersMaterials.postInit();
     }
 
     public static void init() {
