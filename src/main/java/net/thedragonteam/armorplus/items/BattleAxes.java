@@ -21,15 +21,15 @@ import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
-    COAL(BaseBattleAxe.battleAxeCoalMaterial, "coal_battle_axe", Items.COAL, COAL_BLOCK, getValueByName(coalWeaponItemNameColor), localizePotion(coalWeaponsAddPotionEffect) + " " + coalWeaponsEffectLevel, 8.0F),
-    LAPIS(BaseBattleAxe.battleAxeLapisMaterial, "lapis_battle_axe", new ItemStack(Items.DYE, 1, 4), LAPIS_BLOCK, getValueByName(lapisWeaponItemNameColor), localizePotion(lapisWeaponsAddPotionEffect) + " " + lapisWeaponsEffectLevel, 9.0F),
-    REDSTONE(BaseBattleAxe.battleAxeRedstoneMaterial, "redstone_battle_axe", Items.REDSTONE, REDSTONE_BLOCK, getValueByName(redstoneWeaponItemNameColor), localizePotion(redstoneWeaponsAddPotionEffect) + " " + redstoneWeaponsEffectLevel, 9.0F),
-    EMERALD(BaseBattleAxe.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, EMERALD_BLOCK, getValueByName(emeraldWeaponItemNameColor), localizePotion(emeraldWeaponsAddPotionEffect) + " " + emeraldWeaponsEffectLevel, 10.0F),
-    OBSIDIAN(BaseBattleAxe.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, compressedObsidian, getValueByName(obsidianWeaponItemNameColor), localizePotion(obsidianWeaponsAddPotionEffect) + " " + obsidianWeaponsEffectLevel, 10.5F),
+    COAL(BaseBattleAxe.battleAxeCoalMaterial, "coal_battle_axe", Items.COAL, COAL_BLOCK, getValueByName(coalWeaponItemNameColor), localizePotion(coalWeaponsAddPotionEffect) + " " + (coalWeaponsEffectLevel + 1), 8.0F),
+    LAPIS(BaseBattleAxe.battleAxeLapisMaterial, "lapis_battle_axe", new ItemStack(Items.DYE, 1, 4), LAPIS_BLOCK, getValueByName(lapisWeaponItemNameColor), localizePotion(lapisWeaponsAddPotionEffect) + " " + (lapisWeaponsEffectLevel + 1), 9.0F),
+    REDSTONE(BaseBattleAxe.battleAxeRedstoneMaterial, "redstone_battle_axe", Items.REDSTONE, REDSTONE_BLOCK, getValueByName(redstoneWeaponItemNameColor), localizePotion(redstoneWeaponsAddPotionEffect) + " " + (redstoneWeaponsEffectLevel + 1), 9.0F),
+    EMERALD(BaseBattleAxe.battleAxeEmeraldMaterial, "emerald_battle_axe", Items.EMERALD, EMERALD_BLOCK, getValueByName(emeraldWeaponItemNameColor), localizePotion(emeraldWeaponsAddPotionEffect) + " " + (emeraldWeaponsEffectLevel + 1), 10.0F),
+    OBSIDIAN(BaseBattleAxe.battleAxeObsidianMaterial, "obsidian_battle_axe", Blocks.OBSIDIAN, compressedObsidian, getValueByName(obsidianWeaponItemNameColor), localizePotion(obsidianWeaponsAddPotionEffect) + " " + (obsidianWeaponsEffectLevel + 1), 10.5F),
     LAVA(BaseBattleAxe.battleAxeLavaMaterial, "lava_battle_axe", lavaCrystal, new ItemStack(lavaCrystal, 1, 1), getValueByName(lavaWeaponItemNameColor), "Sets on Fire", 11.5F),
-    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", guardianScale, getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + guardianWeaponsEffectLevel, 14.0F),
-    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", witherBone, getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + superStarWeaponsEffectLevel, 15.0F),
-    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", enderDragonScale, getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + enderDragonWeaponsEffectLevel, 16.0F);
+    GUARDIAN(BaseBattleAxe.battleAxeGuardianMaterial, "guardian_battle_axe", guardianScale, getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + (guardianWeaponsEffectLevel + 1), 14.0F),
+    SUPER_STAR(BaseBattleAxe.battleAxeSuperStarMaterial, "super_star_battle_axe", witherBone, getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + (superStarWeaponsEffectLevel + 1), 15.0F),
+    ENDER_DRAGON(BaseBattleAxe.battleAxeEnderDragonMaterial, "ender_dragon_battle_axe", enderDragonScale, getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + (enderDragonWeaponsEffectLevel + 1), 16.0F);
 
     private final String name;
 
