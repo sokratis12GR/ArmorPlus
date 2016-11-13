@@ -1,3 +1,31 @@
+**ArmorPlus 1.10.2-8.1.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added/Removed/Changed}**
+    * Added more config options for full customization of the weapons's effects
+* **{Note}**
+    * Any suggestions are greatly appreciated, you can contact me at sokratis12GR@gmail.com, via twitter https://twitter.com/sokratis12GR and/or via GitHub you can submit an issue with the request.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-8.0.5.11**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{JEI}**
+    * Added description to the Wither Bone, Ender Dragon Scale, Guardian Scale to provide information for what they are used for and how to obtain them.
+* **{Bugs Fixed}**
+    * Fixed config disabling the effects, don't set the effect to `none` just set the enableEffects for all pieces and full set to `false`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-8.0.4.10**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Bugs Fixed}**
+    * Finally Fixed Regeneration Effect from Super Star Armor not working properly
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-8.0.3.9**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Bugs Fixed}**
+    * Crash opening the ArmorPlus Book
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.2.8**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
