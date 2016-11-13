@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
@@ -26,6 +25,7 @@ import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.armorplus.util.ArmorUtils.addArmorEffect;
 import static net.thedragonteam.armorplus.util.ArmorUtils.removeArmorEffect;
+import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 
 public class GlobalEventsArmorPlus {
 
@@ -98,7 +98,7 @@ public class GlobalEventsArmorPlus {
             } else if (enableFullRedstoneArmorEffect && head.getItem() == ModItems.redstoneHelmet && chest.getItem() == ModItems.redstoneChestplate && legs.getItem() == ModItems.redstoneLeggings && feet.getItem() == ModItems.redstoneBoots) {
                 addArmorEffect(entity, getPotionFromResourceLocation(redstoneArmorAddPotionEffect), 240, redstoneArmorEffectLevel);
                 if (entity.worldObj.isRemote) {
-                    ParticlesHelper.spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
+                    spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                 }
             } else if (head.getItem() == ModItems.guardianHelmet && chest.getItem() == ModItems.guardianChestplate && legs.getItem() == ModItems.guardianLeggings && feet.getItem() == ModItems.guardianBoots) {
                 addArmorEffect(entity, getPotionFromResourceLocation(guardianArmorAddPotionEffect), 120, guardianArmorEffectLevel);

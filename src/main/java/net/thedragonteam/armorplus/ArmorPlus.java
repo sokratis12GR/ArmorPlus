@@ -149,6 +149,4 @@ public class ArmorPlus {
     public void serverLoad(FMLServerStartingEvent event) {
         proxy.serverLoad(event);
     }
-
-
 }

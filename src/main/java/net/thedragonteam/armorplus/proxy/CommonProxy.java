@@ -85,9 +85,6 @@ public class CommonProxy {
     public void registerModels() {
     }
 
-    public void registerRenderer() {
-    }
-
     public void registerTileEntities() {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "ARPWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
         GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "ARPHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
