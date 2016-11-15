@@ -106,6 +106,7 @@ public class TheGiftOfTheGods extends BaseItem {
         int maxUses = ARPConfig.maxUses;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");
+            tooltip.add("\2479Uses: " + "\247r" + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
             tooltip.add("\2479Max Uses: " + "\247r" + maxUses);
             tooltip.add("\2473Use: " + "\247rRight-Click");
         } else
