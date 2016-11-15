@@ -5,14 +5,12 @@
 package net.thedragonteam.armorplus.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.ARPTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.entity.ARPEntities;
-import net.thedragonteam.armorplus.integration.TiC;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
@@ -33,9 +31,6 @@ public class CommonProxy {
     public static File configDir;
 
     public void preInit(FMLPreInitializationEvent event) {
-        LogHelper.info("Begin PreInitialization");
-        ModCompatibility.registerModCompat();
-        ModCompatibility.loadCompat(PRE_INIT);
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         Logger.init(new File(event.getModConfigurationDirectory().getPath()));
@@ -46,24 +41,22 @@ public class CommonProxy {
         LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
-        if (Loader.isModLoaded("tconstruct")) TiC.preInit();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
+        ModCompatibility.registerModCompat();
+        ModCompatibility.loadCompat(PRE_INIT);
         LogHelper.info("Finished PreInitialization");
     }
 
     public void init(FMLInitializationEvent event) {
-        LogHelper.info("Begin Initialization");
-        ModCompatibility.loadCompat(INIT);
         registerEvents();
         ModOreDicts.registerOreDictEnties();
         ARPTab.initialize();
         ModEnchantments.registerEnchantments();
-        if (Loader.isModLoaded("tconstruct")) TiC.init();
+        ModCompatibility.loadCompat(INIT);
         LogHelper.info("Finished Initialization");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        LogHelper.info("Begin PostInitialization");
         ModCompatibility.loadCompat(POST_INIT);
         LogHelper.info("Finished PostInitialization");
     }

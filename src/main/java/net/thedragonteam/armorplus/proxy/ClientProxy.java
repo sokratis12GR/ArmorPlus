@@ -6,7 +6,6 @@ package net.thedragonteam.armorplus.proxy;
 
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -14,8 +13,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.ARPEntities;
-import net.thedragonteam.armorplus.integration.TiC;
-import net.thedragonteam.armorplus.integration.tinkers.TiCMaterials;
 import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -25,7 +22,6 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
-        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct")) TiC.init();
         super.init(event);
     }
 
@@ -40,8 +36,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        if (event.getSide().isClient() && Loader.isModLoaded("tconstruct"))
-            TiCMaterials.registerMaterialRendering();
         new CosmeticsRenderInit();
     }
 

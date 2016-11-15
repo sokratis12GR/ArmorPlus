@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.compat;
+package net.thedragonteam.armorplus.compat.jei;
 
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IModIngredientRegistration;

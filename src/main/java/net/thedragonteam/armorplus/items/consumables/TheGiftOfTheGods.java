@@ -70,9 +70,6 @@ public class TheGiftOfTheGods extends BaseItem {
         nbt.setInteger("Clicked", nbt.hasKey("Clicked") ? nbt.getInteger("Clicked") + 1 : 1);
         itemStackIn.setTagCompound(nbt);
 
-        if (worldIn.isRemote)
-            return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-
         int count;
         Item item = null;
         do if (!ARPConfig.enableWhiteList) {

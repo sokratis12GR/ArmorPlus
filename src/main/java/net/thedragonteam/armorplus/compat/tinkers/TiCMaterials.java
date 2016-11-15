@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.integration.tinkers;
+package net.thedragonteam.armorplus.compat.tinkers;
 
 import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
@@ -22,7 +22,6 @@ import slimeknights.tconstruct.tools.TinkerTools;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.integration.tinkers.TiCTraits.lavacrystalic;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HANDLE;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 import static slimeknights.tconstruct.library.utils.HarvestLevels.COBALT;
@@ -60,7 +59,7 @@ public final class TiCMaterials {
         lavacrystal.addItem("gemChargedLavaCrystal", 1, Material.VALUE_Ingot);
         lavacrystal.addItem(new ItemStack(ModItems.lavaCrystal, 1, 1), 1, Material.VALUE_Ingot);
         lavacrystal.addItem(new ItemStack(ModItems.lavaCrystal, 1), 1, 72);
-        lavacrystal.addTrait(lavacrystalic, HEAD);
+        lavacrystal.addTrait(TiCTraits.lavacrystalic, HEAD);
         lavacrystal.addTrait(flammable);
         lavacrystal.addTrait(autosmelt, HANDLE);
         lavacrystal.setRepresentativeItem(new ItemStack(ModItems.lavaCrystal, 1, 1));

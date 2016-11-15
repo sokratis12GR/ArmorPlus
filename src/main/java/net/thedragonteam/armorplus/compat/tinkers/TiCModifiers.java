@@ -2,12 +2,17 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.integration.tinkers;
+package net.thedragonteam.armorplus.compat.tinkers;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 import slimeknights.mantle.util.RecipeMatch;
+import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 
 public class TiCModifiers {
@@ -23,6 +28,10 @@ public class TiCModifiers {
         theUltimateMaterial.addItem(ModItems.theUltimateMaterial);
         chargedLavaCrystalModifier = new ModFireStorm();
         chargedLavaCrystalModifier.addRecipeMatch(new RecipeMatch.ItemCombination(1, chargedLavaCrystal, brick));
-        chargedLavaCrystalModifier.hasTexturePerMaterial();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void initRender() {
+        ModelRegisterUtil.registerModifierModel(chargedLavaCrystalModifier, new ResourceLocation(ArmorPlus.MODID, "models/item/modifiers/firestorm"));
     }
 }
