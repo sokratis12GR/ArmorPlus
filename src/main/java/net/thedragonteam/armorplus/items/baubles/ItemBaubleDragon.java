@@ -4,35 +4,27 @@
 
 package net.thedragonteam.armorplus.items.baubles;
 
-import baubles.api.BaubleType;
-import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
-
-public class ItemBaubleDragon extends ItemBauble implements IEnergyContainerItem {
+public class ItemBaubleDragon /*extends ItemBauble implements IEnergyContainerItem */ {
 
     private int storage;
 
     public ItemBaubleDragon() {
-        super("bauble_cosmetic_dragon");
+        //      super("bauble_cosmetic_dragon");
         this.storage = 1000;
     }
 
     // ========= Baubles =========
-
+/*
     @Override
     public BaubleType getBaubleType(ItemStack arg0) {
         return BaubleType.HEAD;
@@ -59,9 +51,9 @@ public class ItemBaubleDragon extends ItemBauble implements IEnergyContainerItem
     public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
         return true;
     }
-
+*/
     // ========= RF =========
-
+/*
     @Override
     @SideOnly(Side.CLIENT)
     public boolean showDurabilityBar(ItemStack stack) {
@@ -76,7 +68,7 @@ public class ItemBaubleDragon extends ItemBauble implements IEnergyContainerItem
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         createTooltip(stack, tooltip);
-    }
+    }*/
 
     public int getMaxExtract(ItemStack container) {
         return 100;
@@ -116,10 +108,10 @@ public class ItemBaubleDragon extends ItemBauble implements IEnergyContainerItem
         return 10000;
     }
 
-    @Override
+   /* @Override
     public double getDurabilityForDisplay(ItemStack stack) {
         return (1 - (double) this.getEnergyStored(stack) / (double) this.getMaxEnergyStored(stack));
-    }
+    }*/
 
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;

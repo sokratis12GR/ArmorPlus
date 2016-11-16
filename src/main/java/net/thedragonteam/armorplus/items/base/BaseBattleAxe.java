@@ -53,14 +53,15 @@ public class BaseBattleAxe extends ItemSword {
 
     public BaseBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());
+        setHasSubtypes(true);
         this.battleAxes = battleAxes;
         this.itemEasy = battleAxes.getRepairEasy();
         this.itemExpert = battleAxes.getRepairExpert();
         this.formatting = battleAxes.getTextFormatting();
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
-        setRegistryName(battleAxes.getName());
-        setUnlocalizedName(setName(battleAxes.getName()));
+        setRegistryName(battleAxes.getName() + "_battle_axe");
+        setUnlocalizedName(setName(battleAxes.getName() + "_battle_axe"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

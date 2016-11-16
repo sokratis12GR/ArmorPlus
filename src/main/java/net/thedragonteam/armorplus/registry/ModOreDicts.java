@@ -29,15 +29,6 @@ public class ModOreDicts {
         registerOre("blockSteel", ModBlocks.steelBlock);
         registerOre("blockElectrical", ModBlocks.electricalBlock);
         registerOre("blockCompressedObsidian", ModBlocks.compressedObsidian);
-        registerOre("arpWorkbench", ModBlocks.arpWorkbench);
-        registerOre("arpWorkbenchTier1", ModBlocks.arpWorkbench);
-        registerOre("arpWorkbenchTierOne", ModBlocks.arpWorkbench);
-        registerOre("arpHighTechBench", ModBlocks.arpHighTechBench);
-        registerOre("arpWorkbenchTier2", ModBlocks.arpHighTechBench);
-        registerOre("arpWorkbenchTierTwo", ModBlocks.arpHighTechBench);
-        registerOre("arpUltiTechBench", ModBlocks.arpUltiTechBench);
-        registerOre("arpWorkbenchTier3", ModBlocks.arpUltiTechBench);
-        registerOre("arpWorkbenchTierThree", ModBlocks.arpUltiTechBench);
         //CastleBlocks
         registerOre("stonebrickWhite", ModBlocks.whiteStoneBrick);
         registerOre("stonebrickRed", ModBlocks.redStoneBrick);
@@ -68,7 +59,6 @@ public class ModOreDicts {
         registerOre("scaleGuardian", ModItems.guardianScale);
         registerOre("scaleEnderDragon", ModItems.enderDragonScale);
         registerOre("rodTesla", ModItems.itemTeslaRod);
-        registerOre("rodRF", ModItems.itemRFRod);
         //Vanilla
         registerOre("itemCoal", Items.COAL);
         registerOre("coal", Items.COAL);

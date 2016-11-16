@@ -24,6 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.thedragonlib.client.util.ClientUtills;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Arrays;
@@ -61,14 +62,29 @@ public class TheGiftOfTheGods extends BaseItem {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public boolean shouldRotateAroundWhenRendering() {
+        return true;
+    }
+
+    @Override
+    public boolean isFull3D() {
+        return true;
+    }
+
+    @Override
+    public Item setFull3D() {
+        return this;
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
 
         NBTTagCompound nbt;
-        nbt = itemStackIn.hasTagCompound() ? itemStackIn.getTagCompound() : new NBTTagCompound();
+        nbt = playerIn.getHeldItem(hand).hasTagCompound() ? playerIn.getHeldItem(hand).getTagCompound() : new NBTTagCompound();
 
         nbt.setInteger("Clicked", nbt.hasKey("Clicked") ? nbt.getInteger("Clicked") + 1 : 1);
-        itemStackIn.setTagCompound(nbt);
+        playerIn.getHeldItem(hand).setTagCompound(nbt);
 
         int count;
         Item item = null;
@@ -81,23 +97,23 @@ public class TheGiftOfTheGods extends BaseItem {
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
-            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == itemStackIn.getItem())
-                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem())) {
+            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == playerIn.getHeldItem(hand).getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == playerIn.getHeldItem(hand).getItem())
+                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(playerIn.getHeldItem(hand).getItem())) {
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
                 } else if (debugMode && debugModeTGOTG)
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
-            playerIn.dropItem(item, 1);
-            playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStackIn) + " [" + item.getRegistryName() + "]"));
-            if (debugMode && debugModeTGOTG)
-                LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
-                        " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
-                        " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)));
-
-            itemStackIn.damageItem(1, playerIn);
+            if (!worldIn.isRemote) {
+                playerIn.dropItem(item, 1);
+                playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(playerIn.getHeldItem(hand)) + " [" + item.getRegistryName() + "]"));
+                if (debugMode && debugModeTGOTG)
+                    LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
+                            " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
+                            " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)));
+            }
+            playerIn.getHeldItem(hand).damageItem(1, playerIn);
         }
-        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-
+        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
     @Override

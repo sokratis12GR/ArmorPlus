@@ -36,12 +36,12 @@ public class ARPEntities {
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
-        EntityRegistry.registerModEntity(EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
-        EntityRegistry.registerModEntity(EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.entity.render;
 
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -25,14 +24,12 @@ import javax.annotation.Nonnull;
 public class RenderEnderDragonZombie extends RenderBiped<EntityEnderDragonZombie> {
 
     public static final Factory FACTORY = new Factory();
-    public ModelBiped defaultModel;
     private ResourceLocation mobTexture = new ResourceLocation("armorplus:textures/entity/ender_dragon_zombie.png");
 
     public RenderEnderDragonZombie(RenderManager rendermanagerIn) {
         //Using Minecraft Zombie's Texture and Re-Texturing it
-        super(rendermanagerIn, new ModelZombie(), 0.5F, 1.0F);
+        super(rendermanagerIn, new ModelZombie(), 0.5F);
         this.layerRenderers.get(0);
-        this.defaultModel = this.modelBipedMain;
         this.addLayer(new LayerHeldItem(this));
         new LayerBipedArmor(this) {
             protected void initArmor() {

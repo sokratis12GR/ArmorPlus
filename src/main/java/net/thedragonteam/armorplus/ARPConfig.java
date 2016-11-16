@@ -13,7 +13,6 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  */
 public class ARPConfig {
 
-
     //Weapons.*.Registry
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "coalWeaponItemNameColor", comment = "Set the color name the Coal Weapons will have")
     public static String coalWeaponItemNameColor = "gray";
@@ -33,8 +32,6 @@ public class ARPConfig {
     public static String enderDragonWeaponItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "guardianWeaponItemNameColor", comment = "Set the color name the Guardian Weapons will have")
     public static String guardianWeaponItemNameColor = "aqua";
-    @ModConfigProperty(category = "Weapons.RF.Registry", name = "rfWeaponItemNameColor", comment = "Set the color name the RF Weapons will have")
-    public static String rfWeaponItemNameColor = "dark_red";
     @ModConfigProperty(category = "Weapons.Tesla.Registry", name = "teslaWeaponItemNameColor", comment = "Set the color name the Tesla Weapons will have")
     public static String teslaWeaponItemNameColor = "dark_aqua";
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalSword", comment = "Enable/Disable the Coal Sword from the Game")
@@ -330,11 +327,6 @@ public class ARPConfig {
     public static String chickenArmorItemNameColor = "aqua";
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorItemNameColor", comment = "Set the color name the Slime Armor will have")
     public static String slimeArmorItemNameColor = "green";
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorItemNameColor", comment = "Set the color name the Steel Armor will have")
-    public static String steelArmorItemNameColor = "dark_red";
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorItemNameColor", comment = "Set the color name the Electrical Armor will have")
-    public static String electricalArmorItemNameColor = "dark_red";
-
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorToughnessPoints", comment = "Set the amount of toughness points the Coal Armor will have")
     public static double coalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorToughnessPoints", comment = "Set the amount of toughness points the Lapis Armor will have")
@@ -369,10 +361,6 @@ public class ARPConfig {
     public static double chickenArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorToughnessPoints", comment = "Set the amount of toughness points the Slime Armor will have")
     public static double slimeArmorToughnessPoints = 0.0;
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorToughnessPoints", comment = "Set the amount of toughness points the Steel Armor will have")
-    public static double steelArmorToughnessPoints = 0.0;
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorToughnessPoints", comment = "Set the amount of toughness points the Electrical Armor will have")
-    public static double electricalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorProtectionPoints", comment = "Set the amount of protection points the Coal Armor will have (boots, leggings, chestplate, boots)")
     public static int[] coalArmorProtectionPoints = new int[]{1, 1, 2, 1};
     @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorProtectionPoints", comment = "Set the amount of protection points the Lapis Armor will have (boots, leggings, chestplate, boots)")
@@ -407,25 +395,7 @@ public class ARPConfig {
     public static int[] chickenArmorProtectionPoints = new int[]{1, 1, 2, 1};
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorProtectionPoints", comment = "Set the amount of protection points the Slime Armor will have (boots, leggings, chestplate, boots)")
     public static int[] slimeArmorProtectionPoints = new int[]{1, 1, 2, 1};
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "steelArmorProtectionPoints", comment = "Set the amount of protection points the Steel Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] steelArmorProtectionPoints = new int[]{2, 4, 5, 2};
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "electricalArmorProtectionPoints", comment = "Set the amount of protection points the Electrical Armor will have (boots, leggings, chestplate, boots)")
-    public static int[] electricalArmorProtectionPoints = new int[]{3, 5, 6, 3};
 
-    //Armors.SteelArmor
-    @ModConfigProperty(category = "Armors.SteelArmor", name = "inputSteelArmor", comment = "Set the amount of Energy that the item can input")
-    public static int inputSteelArmor = 10;
-    @ModConfigProperty(category = "Armors.SteelArmor", name = "outputSteelArmor", comment = "Set the amount of Energy that the item can output")
-    public static int outputSteelArmor = 1;
-    @ModConfigProperty(category = "Armors.SteelArmor", name = "maxCapacitySteelArmor", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacitySteelArmor = 3000;
-    //Armors.ElectricalArmor
-    @ModConfigProperty(category = "Armors.ElectricalArmor", name = "inputElectricalArmor", comment = "Set the amount of Energy that the item can input")
-    public static int inputElectricalArmor = 10;
-    @ModConfigProperty(category = "Armors.ElectricalArmor", name = "outputElectricalArmor", comment = "Set the amount of Energy that the item can output")
-    public static int outputElectricalArmor = 1;
-    @ModConfigProperty(category = "Armors.ElectricalArmor", name = "maxCapacityElectricalArmor", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacityElectricalArmor = 8000;
     //EnergyItems.Sword
     @ModConfigProperty(category = "EnergyItems", name = "inputSword", comment = "Set the amount of Energy that the item can input")
     public static int inputSword = 10;
@@ -497,13 +467,6 @@ public class ARPConfig {
     public static boolean debugModeTGOTG = false;
     @ModConfigProperty(category = "Debug", name = "debugModeEnchantments", comment = "Enable/Disable Debug Mode for the Enchantments")
     public static boolean debugModeEnchantments = false;
-    //Weapons.Recipes
-    @ModConfigProperty(category = "Weapons.Recipes", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
-    public static boolean enableSwordsRecipes = true;
-    @ModConfigProperty(category = "Weapons.Recipes", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
-    public static boolean enableBattleAxesRecipes = true;
-    @ModConfigProperty(category = "Weapons.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
-    public static boolean enableBowsRecipes = true;
     //SuperStarArmor
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHEffect", comment = "Enable/Disable the Super Star Helmet Effect")
     public static boolean enableSuperStarHEffect = true;
@@ -618,10 +581,6 @@ public class ARPConfig {
     public static boolean enableChickenArmor = true;
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "enableSlimeArmor", comment = "Enable/Disable the Slime Armors from the Game")
     public static boolean enableSlimeArmor = true;
-    @ModConfigProperty(category = "Armors.SteelArmor.Registry", name = "enableSteelArmor", comment = "Enable/Disable the Steel Armors from the Game")
-    public static boolean enableSteelArmor = true;
-    @ModConfigProperty(category = "Armors.ElectricalArmor.Registry", name = "enableElectricalArmor", comment = "Enable/Disable the Electrical Armors from the Game")
-    public static boolean enableElectricalArmor = true;
     //FlightAbility
     @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable the Armors Flight")
     public static boolean enableFlightAbility = true;
@@ -727,57 +686,11 @@ public class ARPConfig {
     public static boolean enableTheUltimateArmorInvincibility = false;
     @ModConfigProperty(category = "Armors.TheUltimateArmor.DeBuffs", name = "enableTheUltimateArmorDeBuffs", comment = "Enable/Disable The Ultimate Armor DeBuffs")
     public static boolean enableTheUltimateArmorDeBuffs = true;
-    //EnderDragonArmor
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Recipes", name = "enableEnderDragonArmorElytra", comment = "Enable/Disable The Ender Dragon Chestplate to require 2 x Elytras instead of 2 x End Crystals to craft")
-    public static boolean enableEnderDragonArmorElytra = false;
-    //Recipes
-    @ModConfigProperty(category = "Armors.CoalArmor.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
-    public static boolean enableCoalArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.CoalArmor.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
-    public static boolean enableCharcoalCoalArmorRecipe = false;
-    @ModConfigProperty(category = "Armors.LapisArmor.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
-    public static boolean enableLapisArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
-    public static boolean enableRedstoneArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
-    public static boolean enableEmeraldArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
-    public static boolean enableObsidianArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
-    public static boolean enableLavaArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
-    public static boolean enableSuperStarArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
-    public static boolean enableEnderDragonArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.GuardianArmor.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
-    public static boolean enableGuardianArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
-    public static boolean enableTheUltimateArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.ChainArmor.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
-    public static boolean enableChainArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.ArditeArmor.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
-    public static boolean enableArditeArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.CobaltArmor.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
-    public static boolean enableCobaltArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.ManyullynArmor.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
-    public static boolean enableManyullynArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.PigIronArmor.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
-    public static boolean enablePigIronArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
-    public static boolean enableKnightSlimeArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.ChickenArmor.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
-    public static boolean enableChickenArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.SlimeArmor.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
-    public static boolean enableSlimeArmorRecipes = true;
-    @ModConfigProperty(category = "Armors.LavaArmor.Recipes", name = "enableOldLavaArmorRecipes", comment = "Enable/Disable The Old Lava Armors Recipes")
-    public static boolean enableOldLavaArmorRecipes = false;
     //Items.Recipes
     @ModConfigProperty(category = "Items.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
     public static boolean enableRedstoneAppleRecipes = true;
     @ModConfigProperty(category = "Items.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
     public static boolean enableElytraRecipe = false;
-    @ModConfigProperty(category = "Items.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The ArmorPlus Arrows Recipes")
-    public static boolean enableArrowRecipes = true;
     //MobDrops
     @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
     public static int enderdragonScaleDropAmount = 12;
@@ -785,6 +698,9 @@ public class ARPConfig {
     public static int witherBoneDropAmount = 6;
     @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
     public static int guardianScaleElderDropAmount = 6;
+
+    @ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
+    public static boolean forceAll16x16Textures = false;
 
     public static boolean isDebugMode() {
         return debugMode;

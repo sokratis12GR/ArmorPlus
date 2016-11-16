@@ -64,10 +64,6 @@ public class ModRecipes {
         pigIronHelmet.setTagCompound(nbttagc);
         ItemStack knightSlimeHelmet = new ItemStack(ModItems.knightSlimeHelmet, 1);
         knightSlimeHelmet.setTagCompound(nbttagc);
-        ItemStack steelHelmet = new ItemStack(ModItems.steelHelmet, 1);
-        steelHelmet.setTagCompound(nbttagc);
-        ItemStack electricalHelmet = new ItemStack(ModItems.electricalHelmet, 1);
-        electricalHelmet.setTagCompound(nbttagc);
         ItemStack enderDragonHelmet = new ItemStack(ModItems.enderDragonHelmet, 1);
         enderDragonHelmet.setTagCompound(nbttagc);
         ItemStack guardianHelmet = new ItemStack(ModItems.guardianHelmet, 1);
@@ -111,14 +107,9 @@ public class ModRecipes {
             addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
         if (enableKnightSlimeArmor)
             addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
-        if (enableSteelArmor)
-            addShapelessRecipe(steelHelmet, ModItems.steelHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
-        if (enableElectricalArmor)
-            addShapelessRecipe(electricalHelmet, ModItems.electricalHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
     }
 
     public static void addShapedRecipes() {
-        addRecipe(new ShapedOreRecipe(new ItemStack(arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
         addRecipe(new ItemStack(lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
         addRecipeCastle(whiteStoneBrick, "White");
         addRecipeCastle(redStoneBrick, "Red");
@@ -143,14 +134,14 @@ public class ModRecipes {
         addRecipeCastleTower(purpleStoneBrickTower, "Purple");
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', enderDragonScale, 'S', STRING, 'N', NETHER_STAR);
-        if (enableChainArmorRecipes) {
+    /*    if (enableChainArmorRecipes) {
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
-        }
+        }*/
         addRecipe(new ShapedOreRecipe(new ItemStack(chainmail, 12), "SS ", "S S", " SS", 'S', "ingotIron"));
         addRecipe(new ShapedOreRecipe(new ItemStack(compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         if (enableRedstoneAppleRecipes) {

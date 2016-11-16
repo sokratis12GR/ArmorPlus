@@ -4,28 +4,23 @@
 
 package net.thedragonteam.armorplus.items.base.energy.tesla;
 
-import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseHoe;
-import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
-import java.util.List;
 import java.util.Set;
 
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -67,17 +62,17 @@ public class BaseTeslaHoe extends BaseHoe {
     }
 
     @Override
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ARPTeslaUtils.usePower(stack, cost);
-        return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos posIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        //       ARPTeslaUtils.usePower(player.getHeldItem(hand), cost);
+        return super.onItemUse(player, worldIn, posIn, hand, facing, hitX, hitY, hitZ);
     }
 
     @Optional.Method(modid = "tesla")
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+//        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
-        subItems.add(powered);
+//        subItems.add(powered);
         subItems.add(unpowered);
     }
 
@@ -96,20 +91,20 @@ public class BaseTeslaHoe extends BaseHoe {
         return 30;
     }
 
-    @Optional.Method(modid = "tesla")
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
-    }
+//    @Optional.Method(modid = "tesla")
+//    @Override
+//    public double getDurabilityForDisplay(ItemStack stack) {
+//        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
+//    }
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    /*@Optional.Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
-    }
+    }*/
 }

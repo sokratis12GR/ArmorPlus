@@ -15,9 +15,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
@@ -38,10 +36,6 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-        if (i == Item.getItemFromBlock(ModBlocks.arpWorkbench)) {
-            event.player.addStat(ARPAchievements.welcomeToArmorPlus, 1);
-            event.player.inventory.addItemStackToInventory(new ItemStack(ModItems.armorPlusBook, 1));
-        }
     }
 
     @SubscribeEvent

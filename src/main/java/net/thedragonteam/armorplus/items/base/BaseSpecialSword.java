@@ -56,8 +56,8 @@ public class BaseSpecialSword extends ItemSword {
         this.itemExpert = swords.getRepairExpert();
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
-        setRegistryName(swords.getName());
-        setUnlocalizedName(setName(swords.getName()));
+        setRegistryName(swords.getName() + "_sword");
+        setUnlocalizedName(setName(swords.getName() + "_sword"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

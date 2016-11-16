@@ -4,15 +4,8 @@
 
 package net.thedragonteam.armorplus.util;
 
-import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
-import net.darkhax.tesla.capability.TeslaCapabilities;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.common.Optional;
-
 public class ARPTeslaUtils {
-
+/*
     @Optional.Method(modid = "tesla")
     public static boolean isPoweredItem(ItemStack stack) {
         return stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
@@ -72,11 +65,11 @@ public class ARPTeslaUtils {
         }
         return null;
     }
-
+*/
     /**
      * Blocks
      */
-    @Optional.Method(modid = "tesla")
+  /*  @Optional.Method(modid = "tesla")
     public static boolean isTelsaBlock(TileEntity tileEntity) {
         return tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
     }
@@ -118,5 +111,5 @@ public class ARPTeslaUtils {
     @Optional.Method(modid = "tesla")
     public static void addPower(TileEntity tileEntity, long amount) {
         getContainer(tileEntity).givePower(amount, false);
-    }
+    }*/
 }

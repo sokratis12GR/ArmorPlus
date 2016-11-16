@@ -6,9 +6,9 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.monster.EntityElderGuardian;
 import net.minecraft.entity.monster.EntityGuardian;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.SkeletonType;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -40,17 +40,17 @@ public class MobDrops {
             if (debugMode) {
                 LogHelper.info("Wither Boss Dropped: " + ModItems.witherBone.getRegistryName() + " x " + witherBoneDropAmount);
             }
-        } else if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).func_189771_df() == SkeletonType.WITHER) {
+        } else if (event.getEntity() instanceof EntityWitherSkeleton) {
             event.getEntityLiving().dropItem(ModItems.witherBone, random.nextInt(max - min + 1) + min);
             if (debugMode) {
                 LogHelper.info("Wither Skeleton Dropped: " + ModItems.witherBone.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
             }
-        } else if (event.getEntity() instanceof EntityGuardian && !((EntityGuardian) event.getEntity()).isElder()) {
+        } else if (event.getEntity() instanceof EntityGuardian) {
             event.getEntityLiving().dropItem(ModItems.guardianScale, random.nextInt(max - min + 1) + min);
             if (debugMode) {
                 LogHelper.info("Guardian Dropped: " + ModItems.guardianScale.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);
             }
-        } else if (event.getEntity() instanceof EntityGuardian && ((EntityGuardian) event.getEntity()).isElder()) {
+        } else if (event.getEntity() instanceof EntityElderGuardian) {
             event.getEntityLiving().dropItem(ModItems.guardianScale, guardianScaleElderDropAmount);
             if (debugMode) {
                 LogHelper.info("Elder Guardian Dropped:" + ModItems.guardianScale.getRegistryName() + " x " + guardianScaleElderDropAmount);

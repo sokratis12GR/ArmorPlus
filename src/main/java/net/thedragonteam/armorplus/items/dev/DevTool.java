@@ -38,7 +38,7 @@ public class DevTool extends BaseItem {
                         + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
                         + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
                         + " - " + "Position: " + target.getPosition()
-                        + " - " + "Tags: " + target.getTags()));
+                        + " - " + "Tags: " + target.getTags()), true);
             return true;
         }
         return true;

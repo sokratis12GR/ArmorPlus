@@ -4,18 +4,12 @@
 
 package net.thedragonteam.armorplus.base;
 
-import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
-import net.darkhax.tesla.capability.TeslaCapabilities;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.fml.common.Optional;
+//import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+//import net.darkhax.tesla.capability.TeslaCapabilities;
 
-public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
-
-    private final BaseTeslaContainer container;
+//public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+/*
+    //private final BaseTeslaContainer container;
     private int power;
     private int maxCapacity;
     private int output;
@@ -40,9 +34,8 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
         container.setCapacity(maxCapacity);
         container.setOutputRate(output);
         container.setInputRate(input);
-    }
-
-
+    }*/
+/*
     @Optional.Method(modid = "tesla")
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -57,9 +50,8 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
             return (T) this.container;
 
         return null;
-    }
-
-    @Optional.Method(modid = "tesla")
+    }*/
+/*@Optional.Method(modid = "tesla")
     @Override
     public NBTTagCompound serializeNBT() {
         return this.container.serializeNBT();
@@ -70,4 +62,4 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
     public void deserializeNBT(NBTTagCompound nbt) {
         this.container.deserializeNBT(nbt);
     }
-}
+}*/

@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.client.gui;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -53,16 +52,14 @@ public class ARPTab extends CreativeTabs {
                 return new ItemStack(ModItems.redstoneBattleAxe);
             case (4):
                 return new ItemStack(ModItems.itemTeslaRod);
-            case (5):
-                return new ItemStack(ModItems.itemRFRod);
         }
         return null;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Item getTabIconItem() {
-        return getIconItemStack().getItem();
+    public ItemStack getTabIconItem() {
+        return getIconItemStack();
     }
 
     @Override

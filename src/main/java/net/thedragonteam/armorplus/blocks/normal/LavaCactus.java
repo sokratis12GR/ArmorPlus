@@ -19,6 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
@@ -69,7 +70,7 @@ public class LavaCactus extends BlockCactus {
                         worldIn.setBlockState(blockpos, this.getDefaultState());
                         IBlockState iblockstate = state.withProperty(AGE, 0);
                         worldIn.setBlockState(pos, iblockstate, 4);
-                        iblockstate.neighborChanged(worldIn, blockpos, this);
+                        iblockstate.neighborChanged(worldIn, blockpos, this, pos);
                         break;
                     default:
                         worldIn.setBlockState(pos, state.withProperty(AGE, j + 1), 4);
@@ -80,8 +81,7 @@ public class LavaCactus extends BlockCactus {
     }
 
     @Override
-
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos) {
         return CACTUS_AABB;
     }
 
@@ -108,13 +108,8 @@ public class LavaCactus extends BlockCactus {
         return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
     }
 
-    /**
-     * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
-     * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
-     * block, etc.
-     */
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos blockPos) {
         if (!this.canBlockStay(worldIn, pos)) worldIn.destroyBlock(pos, true);
     }
 

@@ -4,22 +4,7 @@
 
 package net.thedragonteam.armorplus.compat.tinkers;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EntityDamageSource;
-import slimeknights.tconstruct.library.Util;
-import slimeknights.tconstruct.library.modifiers.ModifierAspect;
-import slimeknights.tconstruct.library.modifiers.ModifierNBT;
-import slimeknights.tconstruct.library.modifiers.ModifierTrait;
-import slimeknights.tconstruct.library.utils.TinkerUtil;
-import slimeknights.tconstruct.shared.client.ParticleEffect;
-import slimeknights.tconstruct.tools.TinkerTools;
-
-import java.util.List;
-
-public class ModFireStorm extends ModifierTrait {
+/*public class ModFireStorm extends ModifierTrait {
 
     public ModFireStorm() {
         super("firestorm", 0xea0000);
@@ -71,4 +56,5 @@ public class ModFireStorm extends ModifierTrait {
                 Util.translateFormatted(loc + 2, Util.df.format(duration))
         );
     }
-}
+}*/
+

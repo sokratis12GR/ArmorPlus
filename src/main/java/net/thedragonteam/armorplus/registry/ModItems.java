@@ -9,26 +9,20 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
-import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
-import net.thedragonteam.armorplus.armors.base.BaseSteelArmor;
 import net.thedragonteam.armorplus.armors.base.BaseUltimateArmor;
 import net.thedragonteam.armorplus.items.*;
 import net.thedragonteam.armorplus.items.arrows.*;
 import net.thedragonteam.armorplus.items.base.*;
-import net.thedragonteam.armorplus.items.baubles.ItemBaubleDragon;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.dev.NBTItem;
-import net.thedragonteam.armorplus.items.energy.rf.*;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.hasTesla;
 import static net.thedragonteam.armorplus.armors.ARPArmorMaterial.*;
-import static net.thedragonteam.armorplus.items.UltimateItems.*;
 
 public class ModItems {
 
@@ -55,8 +49,6 @@ public class ModItems {
             manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots,
             pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots,
             knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots;
-    public static BaseSteelArmor steelHelmet, steelChestplate, steelLeggings, steelBoots;
-    public static BaseElectricalArmor electricalHelmet, electricalChestplate, electricalLeggings, electricalBoots;
     public static BaseUltimateArmor theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots;
     public static BaseSpecialSword coalSword, lapisSword, redstoneSword,
             emeraldSword, obsidianSword, lavaSword,
@@ -67,10 +59,7 @@ public class ModItems {
     public static BaseBow coalBow, lapisBow, redstoneBow,
             emeraldBow, obsidianBow, lavaBow,
             guardianBow, superStarBow, enderDragonBow;
-    public static BaseUltimateItem theUltimateHelmetLeft, theUltimateHelmetMiddle, theUltimateHelmetRight,
-            theUltimateChestplateLeft, theUltimateChestplateMiddle, theUltimateChestplateRight,
-            theUltimateLeggingsLeft, theUltimateLeggingsMiddle, theUltimateLeggingsRight,
-            theUltimateBootsLeft, theUltimateBootsMiddle, theUltimateBootsRight;
+    public static ItemUltimateParts theUltimateParts;
     public static DevTool devTool;
     public static BaseDevItem theDragonTeamItem, moddedCityItem, jonBamsItem, twitchItem, beamItem;
     public static ItemTeslaPickaxe itemTeslaPickaxe;
@@ -79,44 +68,24 @@ public class ModItems {
     public static ItemTeslaRod itemTeslaRod;
     public static ItemTeslaHoe itemTeslaHoe;
     public static ItemTeslaShovel itemTeslaShovel;
-    public static ItemRFAxe itemRFAxe;
-    public static ItemRFRod itemRFRod;
-    public static ItemRFPickaxe itemRFPickaxe;
-    public static ItemRFSword itemRFSword;
-    public static ItemRFHoe itemRFHoe;
-    public static ItemRFShovel itemRFShovel;
     public static ItemCoalArrow itemCoalArrow;
     public static ItemLapisArrow itemLapisArrow;
     public static ItemRedstoneArrow itemRedstoneArrow;
     public static ItemLavaArrow itemLavaArrow;
     public static ItemEnderDragonArrow itemEnderDragonArrow;
-    public static ItemEnergyStorage itemEnergyStorage;
-    public static ItemBaubleDragon itemBaubleDragon;
+    //    public static ItemBaubleDragon itemBaubleDragon;
 
     public static void init() {
         if (Loader.isModLoaded("Baubles")) {
-            itemBaubleDragon = new ItemBaubleDragon();
+            //  itemBaubleDragon = new ItemBaubleDragon();
         }
         itemEnderDragonArrow = new ItemEnderDragonArrow();
-        itemEnergyStorage = new ItemEnergyStorage();
-        itemRFShovel = new ItemRFShovel();
-        itemRFHoe = new ItemRFHoe();
-        itemRFAxe = new ItemRFAxe();
-        itemRFPickaxe = new ItemRFPickaxe();
-        itemRFSword = new ItemRFSword();
-        itemRFRod = new ItemRFRod();
         if (hasTesla()) {
             itemTeslaShovel = new ItemTeslaShovel();
             itemTeslaHoe = new ItemTeslaHoe();
             itemTeslaAxe = new ItemTeslaAxe();
             itemTeslaPickaxe = new ItemTeslaPickaxe();
             itemTeslaSword = new ItemTeslaSword();
-        }
-        if (ARPConfig.enableSteelArmor) {
-            steelHelmet = new BaseSteelArmor(HEAD, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-            steelChestplate = new BaseSteelArmor(CHEST, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-            steelLeggings = new BaseSteelArmor(LEGS, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
-            steelBoots = new BaseSteelArmor(FEET, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
         }
         itemTeslaRod = new ItemTeslaRod();
         twitchItem = new BaseDevItem(DevItems.TWITCH);
@@ -173,12 +142,6 @@ public class ModItems {
             redstoneLeggings = new BaseArmor(REDSTONE, LEGS);
             redstoneBoots = new BaseArmor(REDSTONE, FEET);
         }
-        if (ARPConfig.enableElectricalArmor) {
-            electricalHelmet = new BaseElectricalArmor(HEAD, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-            electricalChestplate = new BaseElectricalArmor(CHEST, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-            electricalLeggings = new BaseElectricalArmor(LEGS, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-            electricalBoots = new BaseElectricalArmor(FEET, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
-        }
         if (ARPConfig.enableChickenArmor) {
             chickenHelmet = new BaseArmor(CHICKEN, HEAD);
             chickenChestplate = new BaseArmor(CHICKEN, CHEST);
@@ -214,18 +177,7 @@ public class ModItems {
             theUltimateChestplate = new BaseUltimateArmor(CHEST);
             theUltimateLeggings = new BaseUltimateArmor(LEGS);
             theUltimateBoots = new BaseUltimateArmor(FEET);
-            theUltimateHelmetLeft = new BaseUltimateItem(HELMET_LEFT);
-            theUltimateHelmetMiddle = new BaseUltimateItem(HELMET_MIDDLE);
-            theUltimateHelmetRight = new BaseUltimateItem(HELMET_RIGHT);
-            theUltimateChestplateLeft = new BaseUltimateItem(CHESTPLATE_LEFT);
-            theUltimateChestplateMiddle = new BaseUltimateItem(CHESTPLATE_MIDDLE);
-            theUltimateChestplateRight = new BaseUltimateItem(CHESTPLATE_RIGHT);
-            theUltimateLeggingsLeft = new BaseUltimateItem(LEGGINGS_LEFT);
-            theUltimateLeggingsMiddle = new BaseUltimateItem(LEGGINGS_MIDDLE);
-            theUltimateLeggingsRight = new BaseUltimateItem(LEGGINGS_RIGHT);
-            theUltimateBootsLeft = new BaseUltimateItem(BOOTS_LEFT);
-            theUltimateBootsMiddle = new BaseUltimateItem(BOOTS_MIDDLE);
-            theUltimateBootsRight = new BaseUltimateItem(BOOTS_RIGHT);
+            theUltimateParts = new ItemUltimateParts();
         }
         if (ARPConfig.enableArditeArmor) {
             arditeHelmet = new BaseArmor(ARDITE, HEAD);
@@ -322,27 +274,14 @@ public class ModItems {
     public static void initModels() {
         itemEnderDragonArrow.initModel();
         if (Loader.isModLoaded("Baubles")) {
-            itemBaubleDragon.initModel();
+            //          itemBaubleDragon.initModel();
         }
-        itemEnergyStorage.initModel();
-        itemRFShovel.initModel();
-        itemRFHoe.initModel();
-        itemRFAxe.initModel();
-        itemRFPickaxe.initModel();
-        itemRFSword.initModel();
-        itemRFRod.initModel();
         if (hasTesla()) {
             itemTeslaShovel.initModel();
             itemTeslaHoe.initModel();
             itemTeslaAxe.initModel();
             itemTeslaPickaxe.initModel();
             itemTeslaSword.initModel();
-        }
-        if (ARPConfig.enableSteelArmor) {
-            steelHelmet.initModel();
-            steelChestplate.initModel();
-            steelLeggings.initModel();
-            steelBoots.initModel();
         }
         itemTeslaRod.initModel();
         twitchItem.initModel();
@@ -398,12 +337,6 @@ public class ModItems {
             redstoneLeggings.initModel();
             redstoneBoots.initModel();
         }
-        if (ARPConfig.enableElectricalArmor) {
-            electricalHelmet.initModel();
-            electricalChestplate.initModel();
-            electricalLeggings.initModel();
-            electricalBoots.initModel();
-        }
         if (ARPConfig.enableChickenArmor) {
             chickenHelmet.initModel();
             chickenChestplate.initModel();
@@ -439,18 +372,7 @@ public class ModItems {
             theUltimateChestplate.initModel();
             theUltimateLeggings.initModel();
             theUltimateBoots.initModel();
-            theUltimateHelmetLeft.initModel();
-            theUltimateHelmetMiddle.initModel();
-            theUltimateHelmetRight.initModel();
-            theUltimateChestplateLeft.initModel();
-            theUltimateChestplateMiddle.initModel();
-            theUltimateChestplateRight.initModel();
-            theUltimateLeggingsLeft.initModel();
-            theUltimateLeggingsMiddle.initModel();
-            theUltimateLeggingsRight.initModel();
-            theUltimateBootsLeft.initModel();
-            theUltimateBootsMiddle.initModel();
-            theUltimateBootsRight.initModel();
+            theUltimateParts.initModel();
         }
         if (ARPConfig.enableArditeArmor) {
             arditeHelmet.initModel();

@@ -255,18 +255,18 @@ item.armorplus.the_ultimate_material.name=The Ultimate Material
 item.armorplus.ender_dragon_scale.name=Ender Dragon Scale
 item.armorplus.guardian_scale.name=Guardian Scale
 item.armorplus.the_gift_of_the_gods.name=The Gift Of The Gods
-item.armorplus.the_ultimate_helmet_left.name=The Ultimate Helmet Left
-item.armorplus.the_ultimate_helmet_middle.name=The Ultimate Helmet Middle
-item.armorplus.the_ultimate_helmet_right.name=The Ultimate Helmet Right
-item.armorplus.the_ultimate_chestplate_left.name=The Ultimate Chestplate Left
-item.armorplus.the_ultimate_chestplate_middle.name=The Ultimate Chestplate Middle
-item.armorplus.the_ultimate_chestplate_right.name=The Ultimate Chestplate Right
-item.armorplus.the_ultimate_leggings_left.name=The Ultimate Legging Left
-item.armorplus.the_ultimate_leggings_middle.name=The Ultimate Legging Middle
-item.armorplus.the_ultimate_leggings_right.name=The Ultimate Legging Right
-item.armorplus.the_ultimate_boots_left.name=The Ultimate Boots Left
-item.armorplus.the_ultimate_boots_middle.name=The Ultimate Boots Middle
-item.armorplus.the_ultimate_boots_right.name=The Ultimate Boots Right
+item.armorplus.the_ultimate_part_helmet_left.name=The Ultimate Helmet Left
+item.armorplus.the_ultimate_part_helmet_middle.name=The Ultimate Helmet Middle
+item.armorplus.the_ultimate_part_helmet_right.name=The Ultimate Helmet Right
+item.armorplus.the_ultimate_part_chestplate_left.name=The Ultimate Chestplate Left
+item.armorplus.the_ultimate_part_chestplate_middle.name=The Ultimate Chestplate Middle
+item.armorplus.the_ultimate_part_chestplate_right.name=The Ultimate Chestplate Right
+item.armorplus.the_ultimate_part_leggings_left.name=The Ultimate Legging Left
+item.armorplus.the_ultimate_part_leggings_middle.name=The Ultimate Legging Middle
+item.armorplus.the_ultimate_part_leggings_right.name=The Ultimate Legging Right
+item.armorplus.the_ultimate_part_boots_left.name=The Ultimate Boots Left
+item.armorplus.the_ultimate_part_boots_middle.name=The Ultimate Boots Middle
+item.armorplus.the_ultimate_part_boots_right.name=The Ultimate Boots Right
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=Compressed Obsidian
@@ -357,15 +357,11 @@ item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
 item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 
 #Entities
-entity.armorplus.ender_dragon_zombie.name=Ender Dragon Zombie
+entity.ender_dragon_zombie.name=Ender Dragon Zombie
 
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor
 key.categories.armorplus=ArmorPlus
-
-#Spawners
-tile.armorplus.spawner_guardian.name=Spawner Guardian
-tile.armorplus.spawner_ender_dragon_zombie.name=Spawner Ender Dragon Zombie
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!

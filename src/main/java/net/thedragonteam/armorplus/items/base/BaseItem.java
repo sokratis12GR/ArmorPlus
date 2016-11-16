@@ -30,6 +30,7 @@ public class BaseItem extends Item {
 
     private Items items;
     private TextFormatting textFormatting;
+
     public BaseItem(String name) {
         setRegistryName(name);
         setUnlocalizedName(setName(name));
@@ -45,9 +46,9 @@ public class BaseItem extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (items == null)
-            return new ActionResult<>(EnumActionResult.PASS, item);
+            return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
         else switch (items.getId()) {
             case 10:
                 Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
@@ -56,7 +57,7 @@ public class BaseItem extends Item {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
                 break;
         }
-        return new ActionResult<>(EnumActionResult.PASS, item);
+        return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
 
     @Override

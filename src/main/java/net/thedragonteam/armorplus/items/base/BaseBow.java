@@ -35,6 +35,7 @@ import net.thedragonteam.armorplus.items.Bows;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBow extends ItemBow {
@@ -53,8 +54,8 @@ public class BaseBow extends ItemBow {
         this.itemExpert = bows.getRepairExpert();
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
-        setRegistryName(bows.getName());
-        setUnlocalizedName(ArmorPlus.MODID + "." + bows.getName());
+        setRegistryName(bows.getName() + "_bow");
+        setUnlocalizedName(setName(bows.getName() + "_bow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -190,14 +191,6 @@ public class BaseBow extends ItemBow {
                     }
 
                     world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + arrowVelocity * 0.5F);
-
-                    if (!flag1) {
-                        --itemstack.stackSize;
-
-                        if (itemstack.stackSize == 0) {
-                            player.inventory.deleteStack(itemstack);
-                        }
-                    }
 
                     player.addStat(StatList.getObjectUseStats(this));
                 }

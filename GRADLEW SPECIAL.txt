@@ -1,0 +1,2 @@
+//updates gradlew to the latest version
+gradlew wrapper --gradle-version 2.14.1
