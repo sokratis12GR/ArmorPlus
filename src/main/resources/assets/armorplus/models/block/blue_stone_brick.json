@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "armorplus:blocks/blue_stone_brick"
+  }
+}

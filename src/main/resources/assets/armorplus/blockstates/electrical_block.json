@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "armorplus:electrical_block"
+    },
+    "facing=west": {
+      "model": "armorplus:electrical_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "armorplus:electrical_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "armorplus:electrical_block",
+      "y": 270
+    }
+  }
+}
