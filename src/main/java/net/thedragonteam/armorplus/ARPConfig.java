@@ -687,10 +687,12 @@ public class ARPConfig {
     @ModConfigProperty(category = "Armors.TheUltimateArmor.DeBuffs", name = "enableTheUltimateArmorDeBuffs", comment = "Enable/Disable The Ultimate Armor DeBuffs")
     public static boolean enableTheUltimateArmorDeBuffs = true;
     //Items.Recipes
-    @ModConfigProperty(category = "Items.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
     public static boolean enableRedstoneAppleRecipes = true;
-    @ModConfigProperty(category = "Items.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
     public static boolean enableElytraRecipe = false;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The chainmail armor recipes")
+    public static boolean enableChainArmorRecipes = true;
     //MobDrops
     @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
     public static int enderdragonScaleDropAmount = 12;

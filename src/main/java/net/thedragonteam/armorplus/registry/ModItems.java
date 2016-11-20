@@ -13,11 +13,13 @@ import net.thedragonteam.armorplus.armors.base.BaseUltimateArmor;
 import net.thedragonteam.armorplus.items.*;
 import net.thedragonteam.armorplus.items.arrows.*;
 import net.thedragonteam.armorplus.items.base.*;
+import net.thedragonteam.armorplus.items.books.ItemARPBook;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
+import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
@@ -26,9 +28,9 @@ import static net.thedragonteam.armorplus.armors.ARPArmorMaterial.*;
 
 public class ModItems {
 
-    public static BaseItem chainmail, guardianScale, witherBone,
-            enderDragonScale, theUltimateMaterial, armorPlusBook,
-            steelIngot, electricalIngot, armorPlusInfoBook;
+    public static ItemARPBook books;
+    public static ItemMaterial materials;
+    public static BaseItem steelIngot, electricalIngot;
     public static RedstoneApple redstoneApple;
     public static LavaCrystal lavaCrystal;
     public static TheGiftOfTheGods theGiftOfTheGods;
@@ -93,18 +95,13 @@ public class ModItems {
         theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
         moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY);
         jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
-        chainmail = new BaseItem(Items.CHAINMAIL);
-        guardianScale = new BaseItem(Items.GUARDIAN_SCALE);
-        witherBone = new BaseItem(Items.WITHER_BONE);
-        enderDragonScale = new BaseItem(Items.ENDER_DRAGON_SCALE);
-        theUltimateMaterial = new BaseItem(Items.THE_ULTIMATE_MATERIAL);
+        materials = new ItemMaterial();
         lavaCrystal = new LavaCrystal();
         theGiftOfTheGods = new TheGiftOfTheGods();
-        armorPlusBook = new BaseItem(Items.ARMORPLUS_BOOK);
+        books = new ItemARPBook();
         steelIngot = new BaseItem(Items.STEEL_INGOT);
         electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
         redstoneApple = new RedstoneApple();
-        armorPlusInfoBook = new BaseItem(Items.ARMORPLUS_INFO_BOOK);
         nbtItem = new NBTItem();
         if (ARPConfig.enableCoalArmor) {
             coalHelmet = new BaseArmor(COAL, HEAD);
@@ -289,18 +286,13 @@ public class ModItems {
         theDragonTeamItem.initModel();
         moddedCityItem.initModel();
         jonBamsItem.initModel();
-        chainmail.initModel();
-        guardianScale.initModel();
-        witherBone.initModel();
-        enderDragonScale.initModel();
-        theUltimateMaterial.initModel();
+        materials.initModel();
         lavaCrystal.initModel();
         theGiftOfTheGods.initModel();
-        armorPlusBook.initModel();
+        books.initModel();
         steelIngot.initModel();
         electricalIngot.initModel();
         redstoneApple.initModel();
-        armorPlusInfoBook.initModel();
         if (ARPConfig.enableCoalArmor) {
             coalHelmet.initModel();
             coalChestplate.initModel();

@@ -133,16 +133,16 @@ public class ModRecipes {
         addRecipeCastleTower(yellowStoneBrickTower, "Yellow");
         addRecipeCastleTower(purpleStoneBrickTower, "Purple");
         if (enableElytraRecipe)
-            addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', enderDragonScale, 'S', STRING, 'N', NETHER_STAR);
-    /*    if (enableChainArmorRecipes) {
+            addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
+        if (enableChainArmorRecipes) {
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
-        }*/
-        addRecipe(new ShapedOreRecipe(new ItemStack(chainmail, 12), "SS ", "S S", " SS", 'S', "ingotIron"));
+        }
+        addRecipe(new ShapedOreRecipe(new ItemStack(materials, 12, 0), "SS ", "S S", " SS", 'S', "ingotIron"));
         addRecipe(new ShapedOreRecipe(new ItemStack(compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         if (enableRedstoneAppleRecipes) {
             addRecipe(new ShapedOreRecipe(new ItemStack(redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', APPLE));
@@ -153,7 +153,7 @@ public class ModRecipes {
     public static void addShapelessRecipes() {
         addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
         addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
-        addShapelessRecipe(new ItemStack(armorPlusInfoBook, 1), BOOK, COAL);
+        addShapelessRecipe(new ItemStack(books, 1, 1), BOOK, COAL);
         addShapelessRecipe(new ItemStack(lavaCactus, 1), Blocks.CACTUS, new ItemStack(lavaCrystal, 1, 1));
     }
 

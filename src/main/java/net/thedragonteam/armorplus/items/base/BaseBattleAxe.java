@@ -33,7 +33,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseBattleAxe extends ItemSword {
+public class BaseBattleAxe extends ItemSword implements IItemHelper{
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -141,7 +141,26 @@ public class BaseBattleAxe extends ItemSword {
         return true;
     }
 
+    @Override
+    public void getItemStack(ItemStack stack) {
+    }
+
+    @Override
+    public void getItem(Item item) {
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
+
     @SideOnly(Side.CLIENT)
+    @Override
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }

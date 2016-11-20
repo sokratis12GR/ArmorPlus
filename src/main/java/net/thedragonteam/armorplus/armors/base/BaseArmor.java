@@ -312,7 +312,8 @@ public class BaseArmor extends ItemArmor {
         if (!enableFullLavaArmorEffect) {
             entity.extinguish();
             entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
-        } else if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+        }
+        if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 120, 1, true, true));
             itemStack.damageItem(1, entity);
             entity.attackEntityFrom(DamageSource.drown, 1F);

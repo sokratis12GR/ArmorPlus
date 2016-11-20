@@ -16,6 +16,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
+import java.io.File;
 import java.util.List;
 
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -37,8 +38,8 @@ public class DevTool extends BaseItem {
                         + " - " + "Class: " + target.getClass()
                         + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
                         + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
-                        + " - " + "Position: " + target.getPosition()
-                        + " - " + "Tags: " + target.getTags()), true);
+                        + " - " + "Position: " + target.getPosition()),true);
+            File data = new File("");
             return true;
         }
         return true;

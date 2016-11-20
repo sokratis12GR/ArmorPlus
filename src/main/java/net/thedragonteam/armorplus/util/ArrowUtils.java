@@ -23,6 +23,6 @@ public class ArrowUtils {
             tooltip.add(String.format("§9Ability: §r%s", effect));
             tooltip.add(String.format("§3Base Arrow Damage: §r%s", damage));
         } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 }

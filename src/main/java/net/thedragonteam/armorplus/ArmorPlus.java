@@ -57,8 +57,8 @@ public class ArmorPlus {
     /**
      * The ArmorPlus Version
      */
-    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
-    //    public static final String TESLA_VERSION = "1.2.1.49";
+    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-alpha";
+    public static final String TESLA_VERSION = "1.3.0.51";
     public static final String LIB_VERSION = "1.11-2.0.0";
     //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
     //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
@@ -69,7 +69,7 @@ public class ArmorPlus {
     public static final boolean SERVER_SIDE_ONLY = false;
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
     public static final boolean CAN_BE_DEACTIVATED = false;
-    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" /*+ "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);"*/ /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ /*+ "after:Baubles;"*/;
+    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ /*+ "after:Baubles;"*/;
     public static final String GUIFACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENTPROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVERPROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";

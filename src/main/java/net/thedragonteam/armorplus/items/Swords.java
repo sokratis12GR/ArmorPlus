@@ -26,9 +26,9 @@ public enum Swords implements IStringSerializable {
     EMERALD(swordEmeraldMaterial, "emerald", Items.EMERALD, Blocks.EMERALD_BLOCK, getValueByName(emeraldWeaponItemNameColor), localizePotion(emeraldWeaponsAddPotionEffect) + " " + (emeraldWeaponsEffectLevel + 1)),
     OBSIDIAN(swordObsidianMaterial, "obsidian", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, getValueByName(obsidianWeaponItemNameColor), localizePotion(obsidianWeaponsAddPotionEffect) + " " + (obsidianWeaponsEffectLevel + 1)),
     LAVA(swordLavaMaterial, "lava", lavaCrystal, new ItemStack(lavaCrystal, 1, 1), getValueByName(lavaWeaponItemNameColor), "Sets on Fire"),
-    GUARDIAN(swordGuardianMaterial, "guardian", guardianScale, getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + (guardianWeaponsEffectLevel + 1)),
-    SUPER_STAR(swordSuperStarMaterial, "super_star", witherBone, getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + (superStarWeaponsEffectLevel + 1)),
-    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", enderDragonScale, getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + (enderDragonWeaponsEffectLevel + 1));
+    GUARDIAN(swordGuardianMaterial, "guardian", new ItemStack(materials, 1, 1), getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + (guardianWeaponsEffectLevel + 1)),
+    SUPER_STAR(swordSuperStarMaterial, "super_star", new ItemStack(materials, 1, 2), getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + (superStarWeaponsEffectLevel + 1)),
+    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", new ItemStack(materials, 1, 3), getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + (enderDragonWeaponsEffectLevel + 1));
 
     private final String name;
 
@@ -65,6 +65,10 @@ public enum Swords implements IStringSerializable {
 
     Swords(Item.ToolMaterial materialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn, String effectIn) {
         this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn);
+    }
+
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairBoth, TextFormatting textFormattingIn, String effectIn) {
+        this(materialIn, nameIn, repairBoth.getItem(), repairBoth.getItem(), textFormattingIn, effectIn);
     }
 
     Swords(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn) {

@@ -17,7 +17,7 @@ import java.io.IOException;
  * sokratis12gr.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  */
-public class GuiArmorPlus extends GuiScreen {
+public class GuiArmorPlusAbilities extends GuiScreen {
 
     private int guiWidth = 256;
     private int guiHeight = 256;

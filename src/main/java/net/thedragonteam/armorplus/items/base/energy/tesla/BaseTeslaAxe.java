@@ -4,16 +4,21 @@
 
 package net.thedragonteam.armorplus.items.base.energy.tesla;
 
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseAxe;
+import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.Set;
 
@@ -56,9 +61,9 @@ public class BaseTeslaAxe extends BaseAxe {
     @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-//        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
-//        subItems.add(powered);
+        subItems.add(powered);
         subItems.add(unpowered);
     }
 
@@ -77,20 +82,20 @@ public class BaseTeslaAxe extends BaseAxe {
         return 30;
     }
 
-    // @Optional.Method(modid = "tesla")
-    // @Override
-    // public double getDurabilityForDisplay(ItemStack stack) {
-    //      return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
-    //  }
+    @Optional.Method(modid = "tesla")
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
+    }
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
         return true;
     }
 
-    /*@Optional.Method(modid = "tesla")
+    @Optional.Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
-    }*/
+    }
 }

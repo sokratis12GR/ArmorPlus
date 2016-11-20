@@ -19,7 +19,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseSword extends ItemSword {
+public class BaseSword extends ItemSword implements IItemHelper {
 
     public Item itemEasy;
     public Item itemExpert;
@@ -54,7 +54,26 @@ public class BaseSword extends ItemSword {
         return true;
     }
 
+    @Override
+    public void getItemStack(ItemStack stack) {
+    }
+
+    @Override
+    public void getItem(Item item) {
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
+
     @SideOnly(Side.CLIENT)
+    @Override
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }

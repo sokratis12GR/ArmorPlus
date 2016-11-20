@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.proxy;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -44,5 +45,10 @@ public class ClientProxy extends CommonProxy {
         ModItems.initModels();
         ModBlocks.initModels();
         ARPEntities.initModels();
+    }
+
+    @Override
+    public void setActionText(String text) {
+        Minecraft.getMinecraft().ingameGUI.setRecordPlaying(text, false);
     }
 }

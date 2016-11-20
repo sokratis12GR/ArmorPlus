@@ -17,7 +17,8 @@ import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.items.base.BaseBattleAxe.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
-import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
@@ -27,9 +28,9 @@ public enum BattleAxes implements IStringSerializable {
     EMERALD(battleAxeEmeraldMaterial, "emerald", Items.EMERALD, EMERALD_BLOCK, getValueByName(emeraldWeaponItemNameColor), localizePotion(emeraldWeaponsAddPotionEffect) + " " + (emeraldWeaponsEffectLevel + 1), 10.0F),
     OBSIDIAN(battleAxeObsidianMaterial, "obsidian", Blocks.OBSIDIAN, compressedObsidian, getValueByName(obsidianWeaponItemNameColor), localizePotion(obsidianWeaponsAddPotionEffect) + " " + (obsidianWeaponsEffectLevel + 1), 10.5F),
     LAVA(battleAxeLavaMaterial, "lava", lavaCrystal, new ItemStack(lavaCrystal, 1, 1), getValueByName(lavaWeaponItemNameColor), "Sets on Fire", 11.5F),
-    GUARDIAN(battleAxeGuardianMaterial, "guardian", guardianScale, getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + (guardianWeaponsEffectLevel + 1), 14.0F),
-    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", witherBone, getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + (superStarWeaponsEffectLevel + 1), 15.0F),
-    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", enderDragonScale, getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + (enderDragonWeaponsEffectLevel + 1), 16.0F);
+    GUARDIAN(battleAxeGuardianMaterial, "guardian", new ItemStack(materials, 1, 1), getValueByName(guardianWeaponItemNameColor), localizePotion(guardianWeaponsAddPotionEffect) + " " + (guardianWeaponsEffectLevel + 1), 14.0F),
+    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", new ItemStack(materials, 1, 2), getValueByName(superStarWeaponItemNameColor), localizePotion(superStarWeaponsAddPotionEffect) + " " + (superStarWeaponsEffectLevel + 1), 15.0F),
+    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", new ItemStack(materials, 1, 3), getValueByName(enderDragonWeaponItemNameColor), localizePotion(enderDragonWeaponsAddPotionEffect) + " " + (enderDragonWeaponsEffectLevel + 1), 16.0F);
 
     private final String name;
 
@@ -67,6 +68,10 @@ public enum BattleAxes implements IStringSerializable {
 
     BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {
         this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn, efficiencyIn);
+    }
+
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairBoth, TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {
+        this(materialIn, nameIn, repairBoth.getItem(), repairBoth.getItem(), textFormattingIn, effectIn, efficiencyIn);
     }
 
     BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn) {

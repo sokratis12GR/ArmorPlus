@@ -84,4 +84,7 @@ public class CommonProxy {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
         GameRegistry.registerWorldGenerator(new StructureGen(), 1);
     }
+
+    public void setActionText(String text) {
+    }
 }

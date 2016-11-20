@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaAxe;
+import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
@@ -49,7 +50,7 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
     @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-//        ARPTeslaUtils.usePower(stack, outputAxe);
+        ARPTeslaUtils.usePower(stack, outputAxe);
         return true;
     }
 
@@ -61,7 +62,7 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-//        if (ARPTeslaUtils.getStoredPower(stack) < outputAxe) return 0.5F;
+        if (ARPTeslaUtils.getStoredPower(stack) < outputAxe) return 0.5F;
         return Items.WOODEN_AXE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
@@ -75,7 +76,7 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-  //          tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(ARPTeslaUtils.getStoredPower(stack)), Long.toString(ARPTeslaUtils.getMaxCapacity(stack))));
+            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(ARPTeslaUtils.getStoredPower(stack)), Long.toString(ARPTeslaUtils.getMaxCapacity(stack))));
             tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.tool", Long.toString(outputAxe)));
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));

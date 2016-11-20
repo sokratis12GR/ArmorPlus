@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
 
 public class ModOreDicts {
 
@@ -52,12 +53,12 @@ public class ModOreDicts {
         registerOre("stonebrickYellowTower", ModBlocks.yellowStoneBrickTower);
         registerOre("stonebrickPurpleTower", ModBlocks.purpleStoneBrickTower);
         //Materials
-        registerOre("chainmail", ModItems.chainmail);
-        registerOre("witherBone", ModItems.witherBone);
-        registerOre("materialTheUltimate", ModItems.theUltimateMaterial);
-        registerOre("materialUltimate", ModItems.theUltimateMaterial);
-        registerOre("scaleGuardian", ModItems.guardianScale);
-        registerOre("scaleEnderDragon", ModItems.enderDragonScale);
+        registerOre("chainmail", new ItemStack(materials, 1, 0));
+        registerOre("witherBone", new ItemStack(materials, 1, 2));
+        registerOre("materialTheUltimate", new ItemStack(materials, 1, 4));
+        registerOre("materialUltimate", new ItemStack(materials, 1, 4));
+        registerOre("scaleGuardian", new ItemStack(materials, 1, 1));
+        registerOre("scaleEnderDragon", new ItemStack(materials, 1, 3));
         registerOre("rodTesla", ModItems.itemTeslaRod);
         //Vanilla
         registerOre("itemCoal", Items.COAL);

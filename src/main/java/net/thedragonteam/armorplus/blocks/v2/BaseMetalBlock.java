@@ -12,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Rotation;
@@ -20,14 +19,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BaseBlock;
+import net.thedragonteam.armorplus.blocks.base.BlockBase;
 
 import javax.annotation.Nonnull;
 
-public class BaseMetalBlock extends BaseBlock {
+public class BaseMetalBlock extends BlockBase {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -37,8 +35,6 @@ public class BaseMetalBlock extends BaseBlock {
         super(Material.IRON, metals.getName() + "_block", 20.0F, 5.0F, "pickaxe", 1);
         this.beaconBase = metals.getBeaconBase();
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
     @SideOnly(Side.CLIENT)

@@ -38,7 +38,7 @@ import java.util.List;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseBow extends ItemBow {
+public class BaseBow extends ItemBow implements IItemHelper {
 
     public double damage;
 
@@ -198,7 +198,26 @@ public class BaseBow extends ItemBow {
         }
     }
 
+    @Override
+    public void getItemStack(ItemStack stack) {
+    }
+
+    @Override
+    public void getItem(Item item) {
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
+
     @SideOnly(Side.CLIENT)
+    @Override
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }

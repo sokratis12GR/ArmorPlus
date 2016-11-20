@@ -9,10 +9,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -20,11 +18,7 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BaseBlock;
+import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.ArrayList;
@@ -36,20 +30,12 @@ import java.util.Random;
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class BlockLavaCrystal extends BaseBlock {
+public class BlockLavaCrystal extends BlockBase {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockLavaCrystal() {
         super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, "pickaxe", 3, 0.8F);
-        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

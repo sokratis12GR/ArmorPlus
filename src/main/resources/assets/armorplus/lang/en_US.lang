@@ -80,8 +80,8 @@ gui.jei.category.high_tech_bench=High-Tech Bench
 gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
 
 #BOOKS
-item.armorplus.armorplus_book.name=ArmorPlus Book
-item.armorplus.armorplus_info_book.name=ArmorPlus Info Book
+item.armorplus.book_abilities.name=ArmorPlus Abilities Book
+item.armorplus.book_info.name=ArmorPlus Info Book
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -141,34 +141,10 @@ item.armorplus.guardian_leggings.name=Guardian Leggings
 item.armorplus.guardian_boots.name=Guardian Boots
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet_full.name=The Ultimate Helmet
-item.armorplus.the_ultimate_chestplate_full.name=The Ultimate Chestplate
-item.armorplus.the_ultimate_leggings_full.name=The Ultimate Leggings
-item.armorplus.the_ultimate_boots_full.name=The Ultimate Boots
-
-#ReinforcedIronArmor
-item.armorplus.reinforced_iron_helmet.name=Reinforced Iron Helmet
-item.armorplus.reinforced_iron_chestplate.name=Reinforced Iron Chestplate
-item.armorplus.reinforced_iron_leggings.name=Reinforced Iron Leggings
-item.armorplus.reinforced_iron_boots.name=Reinforced Iron Boots
-
-#ReinforcedGoldenArmor
-item.armorplus.reinforced_golden_helmet.name=Reinforced Golden Helmet
-item.armorplus.reinforced_golden_chestplate.name=Reinforced Golden Chestplate
-item.armorplus.reinforced_golden_leggings.name=Reinforced Golden Leggings
-item.armorplus.reinforced_golden_boots.name=Reinforced Golden Boots
-
-#ReinforcedDiamondArmor
-item.armorplus.reinforced_diamond_helmet.name=Reinforced Diamond Helmet
-item.armorplus.reinforced_diamond_chestplate.name=Reinforced Diamond Chestplate
-item.armorplus.reinforced_diamond_leggings.name=Reinforced Diamond Leggings
-item.armorplus.reinforced_diamond_boots.name=Reinforced Diamond Boots
-
-#ReinforcedChainArmor
-item.armorplus.reinforced_chain_helmet.name=Reinforced Chain Helmet
-item.armorplus.reinforced_chain_chestplate.name=Reinforced Chain Chestplate
-item.armorplus.reinforced_chain_leggings.name=Reinforced Chain Leggings
-item.armorplus.reinforced_chain_boots.name=Reinforced Chain Boots
+item.armorplus.the_ultimate_helmet.name=The Ultimate Helmet
+item.armorplus.the_ultimate_chestplate.name=The Ultimate Chestplate
+item.armorplus.the_ultimate_leggings.name=The Ultimate Leggings
+item.armorplus.the_ultimate_boots.name=The Ultimate Boots
 
 #CobaltArmor
 item.armorplus.cobalt_helmet.name=Cobalt Helmet
@@ -239,7 +215,7 @@ item.armorplus.twitch.name=Twitch
 item.armorplus.gui_tester.name=GUI Tester
 
 #Items
-item.armorplus.chainmail.name=Chainmail
+item.armorplus.material_chainmail.name=Chainmail
 item.armorplus.reinforcing_material.name=Reinforcing Material
 item.armorplus.lava_crystal_normal.name=Lava Crystal
 item.armorplus.lava_crystal_charged.name=Charged Lava Crystal
@@ -250,10 +226,10 @@ item.armorplus.electrical_ingot.name=Electrical Ingot
 item.armorplus.redstone_apple.name=Redstone Apple
 
 #Special Items
-item.armorplus.wither_bone.name=Wither Bone
-item.armorplus.the_ultimate_material.name=The Ultimate Material
-item.armorplus.ender_dragon_scale.name=Ender Dragon Scale
-item.armorplus.guardian_scale.name=Guardian Scale
+item.armorplus.material_wither_bone.name=Wither Bone
+item.armorplus.material_the_ultimate_material.name=The Ultimate Material
+item.armorplus.material_ender_dragon_scale.name=Ender Dragon Scale
+item.armorplus.material_guardian_scale.name=Guardian Scale
 item.armorplus.the_gift_of_the_gods.name=The Gift Of The Gods
 item.armorplus.the_ultimate_part_helmet_left.name=The Ultimate Helmet Left
 item.armorplus.the_ultimate_part_helmet_middle.name=The Ultimate Helmet Middle

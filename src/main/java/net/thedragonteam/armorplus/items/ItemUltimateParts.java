@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016.
  */
 
-package net.thedragonteam.armorplus.items.base;
+package net.thedragonteam.armorplus.items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,21 +39,18 @@ public class ItemUltimateParts extends Item {
                 return super.getUnlocalizedName(stack) + "_helmet_middle";
             case 2:
                 return super.getUnlocalizedName(stack) + "_helmet_left";
-
             case 3:
                 return super.getUnlocalizedName(stack) + "_chestplate_right";
             case 4:
                 return super.getUnlocalizedName(stack) + "_chestplate_middle";
             case 5:
                 return super.getUnlocalizedName(stack) + "_chestplate_left";
-
             case 6:
                 return super.getUnlocalizedName(stack) + "_leggings_right";
             case 7:
                 return super.getUnlocalizedName(stack) + "_leggings_middle";
             case 8:
                 return super.getUnlocalizedName(stack) + "_leggings_left";
-
             case 9:
                 return super.getUnlocalizedName(stack) + "_leggings_right";
             case 10:

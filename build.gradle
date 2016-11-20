@@ -116,8 +116,8 @@ processResources {
 }
 
 dependencies {
-//    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-//    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
 //    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
 //    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"

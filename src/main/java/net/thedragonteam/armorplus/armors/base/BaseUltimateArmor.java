@@ -25,7 +25,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -33,6 +32,7 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -46,22 +46,22 @@ public class BaseUltimateArmor extends ItemArmor {
         setMaxStackSize(1);
         switch (slot) {
             case FEET:
-                String boots = "the_ultimate_boots_full";
+                String boots = "the_ultimate_boots";
                 setRegistryName(boots);
                 setUnlocalizedName(setName(boots));
                 break;
             case LEGS:
-                String leggings = "the_ultimate_leggings_full";
+                String leggings = "the_ultimate_leggings";
                 setRegistryName(leggings);
                 setUnlocalizedName(setName(leggings));
                 break;
             case CHEST:
-                String chestplate = "the_ultimate_chestplate_full";
+                String chestplate = "the_ultimate_chestplate";
                 setRegistryName(chestplate);
                 setUnlocalizedName(setName(chestplate));
                 break;
             case HEAD:
-                String helmet = "the_ultimate_helmet_full";
+                String helmet = "the_ultimate_helmet";
                 setRegistryName(helmet);
                 setUnlocalizedName(setName(helmet));
                 break;
@@ -99,17 +99,17 @@ public class BaseUltimateArmor extends ItemArmor {
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         if (ARPConfig.enableFlightAbility)
-            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
+            if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.allowFlying = true;
             else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
         if (ARPConfig.enableTheUltimateArmorInvincibility)
-            if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
+            if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.disableDamage = true;
             else entity.capabilities.disableDamage = false;
-        if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+        if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
             PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, 'B');
             PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, 'B');
@@ -132,9 +132,9 @@ public class BaseUltimateArmor extends ItemArmor {
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         switch (ARPConfig.recipes) {
             case 0:
-                return repair.getItem() == ModItems.theUltimateMaterial;
+                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
             case 1:
-                return repair.getItem() == ModItems.theUltimateMaterial;
+                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
         }
         return true;
     }

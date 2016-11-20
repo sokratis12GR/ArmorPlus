@@ -32,7 +32,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseSpecialSword extends ItemSword {
+public class BaseSpecialSword extends ItemSword implements IItemHelper {
 
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, ARPConfig.coalSwordDurability, 1.0F, (float) ARPConfig.coalSwordDamage, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, ARPConfig.lapisSwordDurability, 1.0F, (float) ARPConfig.lapisSwordDamage, 30);
@@ -131,7 +131,26 @@ public class BaseSpecialSword extends ItemSword {
         return true;
     }
 
+    @Override
+    public void getItemStack(ItemStack stack) {
+    }
+
+    @Override
+    public void getItem(Item item) {
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
+
     @SideOnly(Side.CLIENT)
+    @Override
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }

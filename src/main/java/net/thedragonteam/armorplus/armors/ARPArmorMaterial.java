@@ -11,28 +11,34 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.thedragonteam.armorplus.ARPConfig;
-import net.thedragonteam.armorplus.armors.base.BaseArmor;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
+
+import static net.minecraft.init.Blocks.*;
+import static net.minecraft.util.text.TextFormatting.getValueByName;
+import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.armors.base.BaseArmor.*;
+import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
+import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
+import static net.thedragonteam.armorplus.util.ItemStackUtils.getTICItem;
 
 public enum ARPArmorMaterial {
-    COAL(BaseArmor.coalArmor, "coal", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(ARPConfig.coalArmorItemNameColor)),
-    EMERALD(BaseArmor.emeraldArmor, "emerald", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(ARPConfig.emeraldArmorItemNameColor)),
-    LAPIS(BaseArmor.lapisArmor, "lapis", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(ARPConfig.lapisArmorItemNameColor)),
-    LAVA(BaseArmor.lavaArmor, "lava", ModItems.lavaCrystal, new ItemStack(ModItems.lavaCrystal, 1, 1), TextFormatting.getValueByName(ARPConfig.lavaArmorItemNameColor)),
-    REDSTONE(BaseArmor.redstoneArmor, "redstone", Items.REDSTONE, Blocks.REDSTONE_BLOCK, TextFormatting.getValueByName(ARPConfig.redstoneArmorItemNameColor)),
-    OBSIDIAN(BaseArmor.obsidianArmor, "obsidian", Blocks.OBSIDIAN, ModBlocks.compressedObsidian, TextFormatting.getValueByName(ARPConfig.obsidianArmorItemNameColor)),
-    ENDER_DRAGON(BaseArmor.enderDragonArmor, "ender_dragon", ModItems.enderDragonScale, TextFormatting.getValueByName(ARPConfig.enderDragonArmorItemNameColor)),
-    GUARDIAN(BaseArmor.guardianArmor, "guardian", ModItems.guardianScale, TextFormatting.getValueByName(ARPConfig.guardianArmorItemNameColor)),
-    SLIME(BaseArmor.slimeArmor, "slime", Items.SLIME_BALL, Blocks.SLIME_BLOCK, TextFormatting.getValueByName(ARPConfig.slimeArmorItemNameColor)),
-    CHICKEN(BaseArmor.chickenArmor, "chicken", Items.FEATHER, TextFormatting.getValueByName(ARPConfig.chickenArmorItemNameColor)),
-    SUPER_STAR(BaseArmor.superStarArmor, "super_star", ModItems.witherBone, TextFormatting.getValueByName(ARPConfig.superStarArmorItemNameColor)),
-    ARDITE(BaseArmor.arditeArmor, "ardite", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 1), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 1), TextFormatting.getValueByName(ARPConfig.arditeArmorItemNameColor)),
-    COBALT(BaseArmor.cobaltArmor, "cobalt", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 0), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 0), TextFormatting.getValueByName(ARPConfig.cobaltArmorItemNameColor)),
-    MANYULLYN(BaseArmor.manyullynArmor, "manyullyn", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 2), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 2), TextFormatting.getValueByName(ARPConfig.manyullynArmorItemNameColor)),
-    KNIGHT_SLIME(BaseArmor.knightSlimeArmor, "knight_slime", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 3), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 3), TextFormatting.getValueByName(ARPConfig.knightSlimeArmorItemNameColor)),
-    PIG_IRON(BaseArmor.pigIronArmor, "pig_iron", new ItemStack(Item.getByNameOrId("tconstruct:ingots"), 1, 4), new ItemStack(Item.getByNameOrId("tconstruct:metal"), 1, 4), TextFormatting.getValueByName(ARPConfig.pigIronArmorItemNameColor));
+    COAL(coalArmor, "coal", Items.COAL, COAL_BLOCK, getValueByName(coalArmorItemNameColor)),
+    LAPIS(lapisArmor, "lapis", getItemStack(Items.DYE, 4), LAPIS_BLOCK, getValueByName(lapisArmorItemNameColor)),
+    REDSTONE(redstoneArmor, "redstone", Items.REDSTONE, REDSTONE_BLOCK, getValueByName(redstoneArmorItemNameColor)),
+    EMERALD(emeraldArmor, "emerald", Items.EMERALD, EMERALD_BLOCK, getValueByName(emeraldArmorItemNameColor)),
+    OBSIDIAN(obsidianArmor, "obsidian", Blocks.OBSIDIAN, compressedObsidian, getValueByName(obsidianArmorItemNameColor)),
+    LAVA(lavaArmor, "lava", lavaCrystal, getItemStack(lavaCrystal, 1), getValueByName(lavaArmorItemNameColor)),
+    GUARDIAN(guardianArmor, "guardian", getItemStack(materials, 1).getItem(), getValueByName(guardianArmorItemNameColor)),
+    SUPER_STAR(superStarArmor, "super_star", getItemStack(materials, 2).getItem(), getValueByName(superStarArmorItemNameColor)),
+    ENDER_DRAGON(enderDragonArmor, "ender_dragon", getItemStack(materials, 3).getItem(), getValueByName(enderDragonArmorItemNameColor)),
+    ARDITE(arditeArmor, "ardite", getTICItem("ingots", 1), getTICItem("metal", 1), getValueByName(arditeArmorItemNameColor)),
+    COBALT(cobaltArmor, "cobalt", getTICItem("ingots", 0), getTICItem("metal", 0), getValueByName(cobaltArmorItemNameColor)),
+    MANYULLYN(manyullynArmor, "manyullyn", getTICItem("ingots", 2), getTICItem("metal", 2), getValueByName(manyullynArmorItemNameColor)),
+    KNIGHT_SLIME(knightSlimeArmor, "knight_slime", getTICItem("ingots", 3), getTICItem("metal", 3), getValueByName(knightSlimeArmorItemNameColor)),
+    PIG_IRON(pigIronArmor, "pig_iron", getTICItem("ingots", 4), getTICItem("metal", 4), getValueByName(pigIronArmorItemNameColor)),
+    SLIME(slimeArmor, "slime", Items.SLIME_BALL, SLIME_BLOCK, getValueByName(slimeArmorItemNameColor)),
+    CHICKEN(chickenArmor, "chicken", Items.FEATHER, getValueByName(chickenArmorItemNameColor));
 
     private final ItemArmor.ArmorMaterial armorMaterial;
 

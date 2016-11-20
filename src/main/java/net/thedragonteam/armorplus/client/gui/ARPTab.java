@@ -12,6 +12,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
+
 /**
  * net.thedragonteam.armorplus.client.gui
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:42 PM.
@@ -45,7 +47,7 @@ public class ARPTab extends CreativeTabs {
             case (0):
                 return new ItemStack(ModItems.lavaChestplate);
             case (1):
-                return new ItemStack(ModItems.enderDragonScale);
+                return new ItemStack(materials, 1, 3);
             case (2):
                 return new ItemStack(ModBlocks.blockLavaCrystal);
             case (3):

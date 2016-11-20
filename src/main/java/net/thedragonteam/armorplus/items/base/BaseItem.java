@@ -19,14 +19,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.client.gui.GuiArmorPlus;
+import net.thedragonteam.armorplus.client.gui.GuiArmorPlusAbilities;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
 import net.thedragonteam.armorplus.items.Items;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseItem extends Item {
+public class BaseItem extends Item implements IItemHelper {
 
     private Items items;
     private TextFormatting textFormatting;
@@ -51,7 +51,7 @@ public class BaseItem extends Item {
             return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
         else switch (items.getId()) {
             case 10:
-                Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlus());
+                Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusAbilities());
                 break;
             case 11:
                 Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
@@ -65,7 +65,26 @@ public class BaseItem extends Item {
         return items == null ? (localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim() : (textFormatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
+    @Override
+    public void getItemStack(ItemStack stack) {
+    }
+
+    @Override
+    public void getItem(Item item) {
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
+
     @SideOnly(Side.CLIENT)
+    @Override
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }

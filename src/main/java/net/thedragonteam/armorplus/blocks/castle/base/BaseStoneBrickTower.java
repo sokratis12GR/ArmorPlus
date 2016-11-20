@@ -9,24 +9,20 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BaseBlock;
+import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
-public class BaseStoneBrickTower extends BaseBlock {
+public class BaseStoneBrickTower extends BlockBase {
 
     public MapColor mapColor;
 
     public BaseStoneBrickTower(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0F, 5.0F, "pickaxe", 0);
         this.mapColor = stoneBricks.getMapColor();
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
     @SideOnly(Side.CLIENT)
