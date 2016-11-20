@@ -28,15 +28,15 @@ public class SubCommandBase implements ISubCommand {
     }
 
     public static void displayHelpString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
+        commandSender.sendMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
     }
 
     public static void displayErrorString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
+        commandSender.sendMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
     }
 
     public static void displaySuccessString(ICommandSender commandSender, String display, Object... info) {
-        commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
+        commandSender.sendMessage(new TextComponentString(TextHelper.localizeEffect(display, info)));
     }
 
     @Override

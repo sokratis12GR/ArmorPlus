@@ -109,11 +109,6 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
         return true;
     }
 
-    @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
     /**
      * Tesla
      */

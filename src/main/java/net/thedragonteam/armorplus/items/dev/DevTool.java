@@ -29,8 +29,8 @@ public class DevTool extends BaseItem {
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if (target != null) {
-            if (!playerIn.worldObj.isRemote)
-                playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD +
+            if (!playerIn.world.isRemote)
+                playerIn.sendMessage(new TextComponentString(TextFormatting.GOLD +
                         "[" + target.getName() + "]"
                         + " - " + "Health: " + target.getHealth()
                         + " - " + "Max Health: " + target.getMaxHealth()

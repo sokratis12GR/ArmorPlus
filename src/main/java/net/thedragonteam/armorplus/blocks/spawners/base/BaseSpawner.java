@@ -76,13 +76,13 @@ public class BaseSpawner extends BaseBlock {
             case ENDER_DRAGON_ZOMBIE:
                 EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
                 enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
-                world.spawnEntityInWorld(enderDragonZombie);
+                world.spawnEntity(enderDragonZombie);
                 world.destroyBlock(pos, true);
                 break;
             case GUARDIAN:
                 EntityGuardian guardian = new EntityGuardian(world);
                 guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
-                world.spawnEntityInWorld(guardian);
+                world.spawnEntity(guardian);
                 world.destroyBlock(pos, true);
                 break;
         }

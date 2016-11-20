@@ -6,11 +6,11 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ARPAchievements;
@@ -78,7 +78,7 @@ public class SlotCrafting extends Slot {
     protected void onCrafting(ItemStack stack) {
 
         if (this.amountCrafted > 0) {
-            stack.onCrafting(this.thePlayer.worldObj, this.thePlayer, this.amountCrafted);
+            stack.onCrafting(this.thePlayer.world, this.thePlayer, this.amountCrafted);
         }
 
         this.amountCrafted = 0;
@@ -108,7 +108,7 @@ public class SlotCrafting extends Slot {
         net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, craftMatrix);
         this.onCrafting(stack);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(playerIn);
-        ItemStack[] aitemstack = HighTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, playerIn.worldObj);
+        ItemStack[] aitemstack = HighTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, playerIn.world);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
 
         for (int i = 0; i < aitemstack.length; ++i) {

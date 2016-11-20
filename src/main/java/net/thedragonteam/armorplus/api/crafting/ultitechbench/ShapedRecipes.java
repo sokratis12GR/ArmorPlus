@@ -4,11 +4,11 @@
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 
 import javax.annotation.Nullable;
 

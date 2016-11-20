@@ -48,11 +48,6 @@ public class BaseTeslaShovel extends BaseShovel {
         this.input = input;
     }
 
-    @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
     @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {

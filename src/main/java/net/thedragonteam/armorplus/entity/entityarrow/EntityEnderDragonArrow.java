@@ -37,7 +37,7 @@ public class EntityEnderDragonArrow extends EntityArrow {
     public void onUpdate() {
         super.onUpdate();
         EnumParticleTypes dragonBreath = EnumParticleTypes.DRAGON_BREATH;
-        if (this.worldObj.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround) {
             ParticlesHelper.spawnParticle(this, dragonBreath, this.posX, this.posY, this.posZ);
         }
     }

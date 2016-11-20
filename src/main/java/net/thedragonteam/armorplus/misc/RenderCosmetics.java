@@ -29,7 +29,7 @@ public class RenderCosmetics {
         GlStateManager.pushMatrix();
 
         Vec3d currentPos;
-        currentPos = Minecraft.getMinecraft().thePlayer.getPositionEyes(partialTicks);
+        currentPos = Minecraft.getMinecraft().player.getPositionEyes(partialTicks);
         Vec3d playerPos;
         playerPos = player.getPositionEyes(partialTicks);
         GlStateManager.translate(playerPos.xCoord - currentPos.xCoord, playerPos.yCoord - currentPos.yCoord, playerPos.zCoord - currentPos.zCoord);

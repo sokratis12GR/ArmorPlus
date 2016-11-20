@@ -61,7 +61,6 @@ public class LifeStealEnchantment extends Enchantment {
         return true;
     }
 
-
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
         return super.canApplyAtEnchantingTable(stack);

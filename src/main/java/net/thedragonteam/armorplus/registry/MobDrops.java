@@ -40,7 +40,7 @@ public class MobDrops {
             if (debugMode) {
                 LogHelper.info("Wither Boss Dropped: " + ModItems.witherBone.getRegistryName() + " x " + witherBoneDropAmount);
             }
-        } else if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).func_189771_df() == SkeletonType.WITHER) {
+        } else if (event.getEntity() instanceof EntitySkeleton && ((EntitySkeleton) event.getEntity()).getSkeletonType() == SkeletonType.WITHER) {
             event.getEntityLiving().dropItem(ModItems.witherBone, random.nextInt(max - min + 1) + min);
             if (debugMode) {
                 LogHelper.info("Wither Skeleton Dropped: " + ModItems.witherBone.getRegistryName() + " x " + random.nextInt(max - min + 1) + min);

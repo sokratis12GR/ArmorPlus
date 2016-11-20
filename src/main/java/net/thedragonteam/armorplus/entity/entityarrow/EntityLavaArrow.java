@@ -36,7 +36,7 @@ public class EntityLavaArrow extends EntityArrow {
         super.onUpdate();
 
         EnumParticleTypes lava = EnumParticleTypes.FLAME;
-        if (this.worldObj.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround) {
             ParticlesHelper.spawnParticle(this, lava, this.posX, this.posY, this.posZ);
         }
     }

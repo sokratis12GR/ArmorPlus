@@ -53,11 +53,6 @@ public class BaseTeslaPickaxe extends BasePickaxe {
         return (TextFormatting.getValueByName(ARPConfig.teslaWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
-    @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
     @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {

@@ -33,12 +33,12 @@ public class GuiARPExperiments extends GuiChat {
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Dev Book").getFormattedText(), guiX + 25, guiY + 20, 0x000000);
         drawHorizontalLine(guiX + 10, guiX + 50, guiY + 40, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Name: " + mc.thePlayer.getName()).getFormattedText(), guiX + 25, guiY + 30, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Health: " + mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth()).getFormattedText(), guiX + 25, guiY + 40, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Bed Location: x: " + mc.thePlayer.getBedLocation().getX() + " y: " + mc.thePlayer.getBedLocation().getY() + " z: " + mc.thePlayer.getBedLocation().getZ()).getFormattedText(), guiX + 25, guiY + 50, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Score: " + mc.thePlayer.getScore()).getFormattedText(), guiX + 25, guiY + 60, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Team: " + mc.thePlayer.getTeam()).getFormattedText(), guiX + 25, guiY + 70, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Player's Location: x: " + mc.thePlayer.getPosition().getX() + " y: " + mc.thePlayer.getPosition().getY() + " y: " + mc.thePlayer.getPosition().getZ()).getFormattedText(), guiX + 25, guiY + 80, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Name: " + mc.player.getName()).getFormattedText(), guiX + 25, guiY + 30, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Health: " + mc.player.getHealth() + "/" + mc.player.getMaxHealth()).getFormattedText(), guiX + 25, guiY + 40, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Bed Location: x: " + mc.player.getBedLocation().getX() + " y: " + mc.player.getBedLocation().getY() + " z: " + mc.player.getBedLocation().getZ()).getFormattedText(), guiX + 25, guiY + 50, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Score: " + mc.player.getScore()).getFormattedText(), guiX + 25, guiY + 60, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Team: " + mc.player.getTeam()).getFormattedText(), guiX + 25, guiY + 70, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Player's Location: x: " + mc.player.getPosition().getX() + " y: " + mc.player.getPosition().getY() + " y: " + mc.player.getPosition().getZ()).getFormattedText(), guiX + 25, guiY + 80, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

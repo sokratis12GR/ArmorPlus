@@ -49,11 +49,6 @@ public class BaseRFHoe extends BaseHoe implements IEnergyContainerItem {
     }
 
     @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
-    @Override
     public int getItemEnchantability(ItemStack stack) {
         return 30;
     }

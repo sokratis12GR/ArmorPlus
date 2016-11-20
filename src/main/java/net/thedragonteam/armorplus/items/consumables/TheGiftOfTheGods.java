@@ -61,14 +61,14 @@ public class TheGiftOfTheGods extends BaseItem {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
 
         NBTTagCompound nbt;
-        nbt = itemStackIn.hasTagCompound() ? itemStackIn.getTagCompound() : new NBTTagCompound();
+        nbt = itemStack.hasTagCompound() ? itemStack.getTagCompound() : new NBTTagCompound();
 
         nbt.setInteger("Clicked", nbt.hasKey("Clicked") ? nbt.getInteger("Clicked") + 1 : 1);
-        itemStackIn.setTagCompound(nbt);
+        itemStack.setTagCompound(nbt);
 
         int count;
         Item item = null;
@@ -81,23 +81,23 @@ public class TheGiftOfTheGods extends BaseItem {
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
-            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == itemStackIn.getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == itemStackIn.getItem())
-                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(itemStackIn.getItem())) {
+            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == itemStack.getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == itemStack.getItem())
+                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(itemStack.getItem())) {
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
                 } else if (debugMode && debugModeTGOTG)
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
-            playerIn.dropItem(item, 1);
-            playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStackIn) + " [" + item.getRegistryName() + "]"));
-            if (debugMode && debugModeTGOTG)
-                LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
-                        " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
-                        " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)));
-
-            itemStackIn.damageItem(1, playerIn);
+            if (!worldIn.isRemote) {
+                playerIn.dropItem(item, 1);
+                playerIn.sendMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(itemStack) + " [" + item.getRegistryName() + "]"));
+                if (debugMode && debugModeTGOTG)
+                    LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
+                            " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
+                            " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)) + " ; Item's Meta Data: " + item.getMetadata(new ItemStack(item)));
+            }
+            itemStack.damageItem(1, playerIn);
         }
-        return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-
+        return new ActionResult<>(EnumActionResult.PASS, itemStack);
     }
 
     @Override

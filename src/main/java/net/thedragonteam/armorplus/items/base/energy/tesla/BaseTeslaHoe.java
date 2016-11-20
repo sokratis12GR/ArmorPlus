@@ -57,11 +57,6 @@ public class BaseTeslaHoe extends BaseHoe {
     }
 
     @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
-    @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return (TextFormatting.getValueByName(ARPConfig.teslaWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }

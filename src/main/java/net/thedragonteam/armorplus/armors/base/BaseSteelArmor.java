@@ -108,11 +108,6 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
         return true;
     }
 
-    @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
     /**
      * Tesla
      */

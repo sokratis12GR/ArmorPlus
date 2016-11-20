@@ -20,7 +20,7 @@ import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
 public class BaseStoneBrickTower extends BaseBlock {
 
-    public MapColor mapColor;
+    private MapColor mapColor;
 
     public BaseStoneBrickTower(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0F, 5.0F, "pickaxe", 0);

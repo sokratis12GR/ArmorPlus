@@ -5,7 +5,7 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
+import net.minecraft.item.crafting.IRecipe;
 
 public class HighTechBenchRegistry {
 

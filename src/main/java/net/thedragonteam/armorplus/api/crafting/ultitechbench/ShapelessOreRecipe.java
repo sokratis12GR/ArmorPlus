@@ -6,12 +6,12 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 
 import net.minecraft.block.Block;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
-import net.thedragonteam.armorplus.api.crafting.base.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.base.InventoryCrafting;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class ShapelessOreRecipe implements IRecipe {
     protected ItemStack output = null;
-    protected ArrayList<Object> input = new ArrayList<Object>();
+    protected ArrayList<Object> input = new ArrayList<>();
 
     public ShapelessOreRecipe(Block result, Object... recipe) {
         this(new ItemStack(result), recipe);
