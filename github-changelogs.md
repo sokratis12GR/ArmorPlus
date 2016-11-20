@@ -5,7 +5,7 @@
     * Updated to mappings: stable_29
     * Updated to forge: 1.10.2-12.18.2.2151
 * **{Bugs Fixed}**
-    * Fixed not being able to connect (server & clint) with higher version of forge
+    * Fixed not being able to connect (server & client) with higher version of forge
     * Fixed TGOTG having server side thrown errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.1.2**
