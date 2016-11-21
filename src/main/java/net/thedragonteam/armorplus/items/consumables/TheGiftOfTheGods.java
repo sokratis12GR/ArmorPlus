@@ -24,7 +24,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
-import net.thedragonteam.thedragonlib.client.util.ClientUtills;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Arrays;
@@ -97,7 +96,7 @@ public class TheGiftOfTheGods extends BaseItem {
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
-            if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() == playerIn.getHeldItem(hand).getItem() || playerIn.getHeldItemOffhand() != null && playerIn.getHeldItemOffhand().getItem() == playerIn.getHeldItem(hand).getItem())
+            if (playerIn.getHeldItemMainhand().getCount() > 0 && playerIn.getHeldItemMainhand().getItem() == playerIn.getHeldItem(hand).getItem() || playerIn.getHeldItemOffhand().getCount() > 0 && playerIn.getHeldItemOffhand().getItem() == playerIn.getHeldItem(hand).getItem())
                 if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(playerIn.getHeldItem(hand).getItem())) {
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
                 } else if (debugMode && debugModeTGOTG)
@@ -105,7 +104,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
             if (!worldIn.isRemote) {
                 playerIn.dropItem(item, 1);
-                playerIn.addChatMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(playerIn.getHeldItem(hand)) + " [" + item.getRegistryName() + "]"));
+                playerIn.sendMessage(new TextComponentString("You got: " + item.getItemStackDisplayName(playerIn.getHeldItem(hand)) + " [" + item.getRegistryName() + "]"));
                 if (debugMode && debugModeTGOTG)
                     LogHelper.info("Item's Registry Name: " + item.getRegistryName() + " ; Item's Creative Tab: " + item.getCreativeTab() +
                             " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +

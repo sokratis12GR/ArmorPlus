@@ -21,8 +21,8 @@ import java.util.*;
 
 public class CommandArmorPlus extends CommandBase {
 
-    private final List<String> aliases = new ArrayList<String>();
-    private final Map<String, ISubCommand> subCommands = new HashMap<String, ISubCommand>();
+    private final List<String> aliases = new ArrayList<>();
+    private final Map<String, ISubCommand> subCommands = new HashMap<>();
 
     public CommandArmorPlus() {
         aliases.add("armorplus");
@@ -39,23 +39,23 @@ public class CommandArmorPlus extends CommandBase {
     }
 
     @Override
-    public List getCommandAliases() {
+    public List<String> getAliases() {
         return Arrays.asList("armorplus", "arp");
     }
 
     @Override
-    public String getCommandName() {
+    public String getName() {
         return "arp";
     }
 
     @Override
-    public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
-        return super.getTabCompletionOptions(server, sender, args, pos);
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
+        return super.getTabCompletions(server, sender, args, pos);
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return getCommandName() + " help";
+    public String getUsage(ICommandSender sender) {
+        return getName() + " help";
     }
 
     @Override
@@ -66,7 +66,7 @@ public class CommandArmorPlus extends CommandBase {
             ISubCommand subCommand = subCommands.get(args[0]);
             String[] subArgs = Arrays.copyOfRange(args, 1, args.length);
             subCommand.processSubCommand(server, sender, subArgs);
-        } else sender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.error.unknown")));
+        } else sender.sendMessage(new TextComponentString(TextHelper.localizeEffect("commands.error.unknown")));
     }
 
     public Map<String, ISubCommand> getSubCommands() {

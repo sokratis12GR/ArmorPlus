@@ -17,7 +17,7 @@ public class ItemStackHelper {
         if (index >= 0 && index < stacks.length && stacks[index] != null && amount > 0) {
             ItemStack itemstack = stacks[index].splitStack(amount);
 
-            if (stacks[index].func_190916_E() == 0) stacks[index] = null;
+            if (stacks[index].getCount() == 0) stacks[index] = null;
 
             return itemstack;
         } else return null;

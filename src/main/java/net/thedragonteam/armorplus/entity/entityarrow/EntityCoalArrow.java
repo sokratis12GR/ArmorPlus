@@ -37,7 +37,7 @@ public class EntityCoalArrow extends EntityArrow {
     public void onUpdate() {
         super.onUpdate();
         EnumParticleTypes cloud = EnumParticleTypes.CLOUD;
-        if (this.worldObj.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround) {
             ParticlesHelper.spawnParticle(this, cloud, this.posX, this.posY, this.posZ);
         }
     }

@@ -33,10 +33,10 @@ public class SubCommandInfo extends SubCommandBase {
     @Override
     public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
         super.processSubCommand(server, sender, args);
-        sender.addChatMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR (TheDragonTeam)]"));
-        sender.addChatMessage(new TextComponentString(TextFormatting.RED + "[Thank You " + sender.getName() + " For Using " + ArmorPlus.MODNAME + "]"));
-        sender.addChatMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
-        sender.addChatMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
-        sender.addChatMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "use command /armorplus wiki"));
+        sender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "[" + ArmorPlus.MODNAME + " (" + ArmorPlus.VERSION + ") " + "by" + TextFormatting.GOLD + " sokratis12GR (TheDragonTeam)]"));
+        sender.sendMessage(new TextComponentString(TextFormatting.RED + "[Thank You " + sender.getName() + " For Using " + ArmorPlus.MODNAME + "]"));
+        sender.sendMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
+        sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
+        sender.sendMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "use command /armorplus wiki"));
     }
 }

@@ -30,15 +30,15 @@ public class DevTool extends BaseItem {
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if (target != null) {
-            if (!playerIn.worldObj.isRemote)
-                playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD +
+            if (!playerIn.world.isRemote)
+                playerIn.sendMessage(new TextComponentString(TextFormatting.GOLD +
                         "[" + target.getName() + "]"
                         + " - " + "Health: " + target.getHealth()
                         + " - " + "Max Health: " + target.getMaxHealth()
                         + " - " + "Class: " + target.getClass()
                         + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
                         + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
-                        + " - " + "Position: " + target.getPosition()),true);
+                        + " - " + "Position: " + target.getPosition()));
             File data = new File("");
             return true;
         }

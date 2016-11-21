@@ -65,7 +65,7 @@ public class BaseBow extends ItemBow implements IItemHelper {
                 if (entityIn == null) return 0.0F;
                 else {
                     ItemStack itemstack = entityIn.getActiveItemStack();
-                    return itemstack != null && itemstack.getItem() == itemBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 5.0F : 0.0F;
+                    return itemstack.getCount() > 0 && itemstack.getItem() == itemBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 5.0F : 0.0F;
                 }
             }
         });
@@ -187,7 +187,7 @@ public class BaseBow extends ItemBow implements IItemHelper {
                             entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
                         }
 
-                        world.spawnEntityInWorld(entityArrow);
+                        world.spawnEntity(entityArrow);
                     }
 
                     world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + arrowVelocity * 0.5F);

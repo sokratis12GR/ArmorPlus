@@ -130,7 +130,7 @@ public class LavaCactus extends BlockCactus {
      */
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
-        entityIn.attackEntityFrom(DamageSource.cactus, 1.0F);
+        entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
         entityIn.setFire(2);
     }
 

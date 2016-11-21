@@ -31,8 +31,8 @@ public class SubCommandWiki extends SubCommandBase {
     @Override
     public void processSubCommand(MinecraftServer server, ICommandSender sender, String[] args) {
         super.processSubCommand(server, sender, args);
-        sender.addChatMessage(new TextComponentString("Opening a link to the site \"https://ftb.gamepedia.com/com/ArmorPlus...\""));
+        sender.sendMessage(new TextComponentString("\nOpening a link to the site \"https://ftb.gamepedia.com/com/ArmorPlus...\"\n"));
         ClientUtills.openLink("https://ftb.gamepedia.com/ArmorPlus");
-        sender.addChatMessage(new TextComponentString("Link opened successfully"));
+        sender.sendMessage(new TextComponentString("\nLink opened successfully\n"));
     }
 }

@@ -31,7 +31,7 @@ public class ParticlesHelper {
     }
 
     public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
-        entity.worldObj.spawnParticle(particleType, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+        entity.world.spawnParticle(particleType, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
     }
 
     public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord) {

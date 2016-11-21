@@ -51,7 +51,7 @@ public class GlobalEventsArmorPlus {
         ItemStack feet;
         feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
 
-        if (head != null && chest != null && legs != null && feet != null) {
+        if (head.getCount() > 0 && chest.getCount() > 0 && legs.getCount() > 0 && feet.getCount() > 0) {
             if (head.getItem() == ModItems.lavaHelmet && chest.getItem() == ModItems.lavaChestplate && legs.getItem() == ModItems.lavaLeggings && feet.getItem() == ModItems.lavaBoots && entity.isInWater() && enableFullLavaArmorEffect) {
                 entity.extinguish();
                 if (entity.isInLava())
@@ -62,7 +62,7 @@ public class GlobalEventsArmorPlus {
                     chest.damageItem(1, entity);
                     legs.damageItem(1, entity);
                     feet.damageItem(1, entity);
-                    entity.attackEntityFrom(DamageSource.drown, 1F);
+                    entity.attackEntityFrom(DamageSource.DROWN, 1F);
                 }
             } else if (head.getItem() == ModItems.theUltimateHelmet && chest.getItem() == ModItems.theUltimateChestplate && legs.getItem() == ModItems.theUltimateLeggings && feet.getItem() == ModItems.theUltimateBoots) {
                 addEffect(entity, getPotionFromResourceLocation(theUltimateArmorAddPotionEffects[0]), 120, ultimateArmorEffectLevels[0], 'G');
@@ -91,7 +91,7 @@ public class GlobalEventsArmorPlus {
                 addEffect(entity, getPotionFromResourceLocation(obsidianArmorAddPotionEffect), 120, obsidianArmorEffectLevel, 'G');
             } else if (enableFullRedstoneArmorEffect && head.getItem() == ModItems.redstoneHelmet && chest.getItem() == ModItems.redstoneChestplate && legs.getItem() == ModItems.redstoneLeggings && feet.getItem() == ModItems.redstoneBoots) {
                 addEffect(entity, getPotionFromResourceLocation(redstoneArmorAddPotionEffect), 240, redstoneArmorEffectLevel, 'G');
-                if (entity.worldObj.isRemote) {
+                if (entity.world.isRemote) {
                     spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                 }
             } else if (head.getItem() == ModItems.guardianHelmet && chest.getItem() == ModItems.guardianChestplate && legs.getItem() == ModItems.guardianLeggings && feet.getItem() == ModItems.guardianBoots) {

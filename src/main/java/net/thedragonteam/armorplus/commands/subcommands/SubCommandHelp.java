@@ -42,6 +42,6 @@ public class SubCommandHelp extends SubCommandBase {
             return;
 
         for (ISubCommand subCommand : ((CommandArmorPlus) getParentCommand()).getSubCommands().values())
-            commandSender.addChatMessage(new TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(commandSender))));
+            commandSender.sendMessage(new TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(commandSender))));
     }
 }

@@ -38,7 +38,7 @@ public class EntityLapisArrow extends EntityArrow {
         super.onUpdate();
 
         EnumParticleTypes waterDrop = EnumParticleTypes.WATER_DROP;
-        if (this.worldObj.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround) {
             ParticlesHelper.spawnParticle(this, waterDrop, this.posX, this.posY, this.posZ);
         }
     }

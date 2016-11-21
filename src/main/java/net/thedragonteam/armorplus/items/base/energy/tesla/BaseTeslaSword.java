@@ -47,11 +47,6 @@ public class BaseTeslaSword extends BaseSword {
         this.input = input;
     }
 
-    @Override
-    public boolean isItemTool(ItemStack stack) {
-        return true;
-    }
-
     @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
