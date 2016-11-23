@@ -48,14 +48,14 @@ item.SuperStarChestplate.name=Superstern-Brustpanzer
 item.SuperStarLeggings.name=Superstern-Beinschutz
 item.SuperStarBoots.name=Superstern-Stiefel
 
-#EnderDragon Armor
+#EnderDragonArmor
 item.EnderDragonScale.name=Enderdrachen-Schuppe
 item.EnderDragonHelmet.name=Enderdrachen-Helm
 item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
 item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
 item.EnderDragonBoots.name=Enderdrachen-Stiefel
 
-#Guardian Armor
+#GuardianArmor
 item.GuardianHelmet.name=Beschuetzer-Helm
 item.GuardianChestplate.name=Beschuetzer-Brustpanzer
 item.GuardianLeggings.name=Beschuetzer-Beinschutz
@@ -66,6 +66,36 @@ item.TheUltimateHelmet.name=Der ultimative Helm
 item.TheUltimateChestplate.name=Der ultimative Brustpanzer
 item.TheUltimateLeggings.name=Der ultimative Beinschutz
 item.TheUltimateBoots.name=Die ultimativen Stiefel
+
+#Chainmail
+item.Chainmail.name=Kettenpanzer
+
+#ReinforcingMaterial
+item.ReinforcingMaterial.name=Verstärkendes Material
+
+#ReinforcedIronArmor
+item.RIHelmet.name=Verstärkter Eisenhelm
+item.RIChestplate.name=Verstärkter Eisenbrustpanzer
+item.RILeggings.name=Verstärkter Eisenbeinschutz
+item.RIBoots.name=Verstärkte Eisenstiefel
+
+#ReinforcedGoldenArmor
+item.RGHelmet.name=Verstärkter Goldhelm
+item.RGChestplate.name=Verstärkter Goldbrustpanzer
+item.RGLeggings.name=Verstärkter Goldbeinschutz
+item.RGBoots.name=Verstärkte Goldstiefel
+
+#ReinforcedDiamondArmor
+item.RDHelmet.name=Verstärkter Diamanthelm
+item.RDChestplate.name=Verstärkter Diamantbrustpanzer
+item.RDLeggings.name=Verstärkter Diamantbeinschutz
+item.RDBoots.name=Verstärkte Diamantstiefel
+
+#ReinforcedChainArmor
+item.RCHelmet.name=Verstärkte Kettenhaube
+item.RCChestplate.name=Verstärktes Kettenhemd
+item.RCLeggings.name=Verstärkte Kettenhose
+item.RCBoots.name=Verstärkte Kettenstiefel
 
 #Achievements
 achievement.armorplus.craftCoalArmor=Sehvermoegen Wie Eine Fledermaus!
@@ -94,3 +124,4 @@ info.armorplus.console.config.refresh=Auffrischen Der Konfigurationsdatei.
 info.armorplus.console.load.preInit=Starte Pre-Initialisierung
 info.armorplus.console.load.init=Starte Initialisierung
 info.armorplus.console.load.postInit=Starte Post-Initialisierung
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt enthält einen Fehler
