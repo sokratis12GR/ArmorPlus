@@ -33,6 +33,7 @@ import java.util.List;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -99,21 +100,21 @@ public class BaseUltimateArmor extends ItemArmor {
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         if (ARPConfig.enableFlightAbility)
-            if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
+            if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.allowFlying = true;
             else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
         if (ARPConfig.enableTheUltimateArmorInvincibility)
-            if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
+            if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.disableDamage = true;
             else entity.capabilities.disableDamage = false;
-        if (head != null && head.getItem() == theUltimateHelmet && chest != null && chest.getItem() == theUltimateChestplate && legs != null && legs.getItem() == theUltimateLeggings && feet != null && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+        if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, 'B');
-            PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, 'B');
-            PotionUtils.addEffect(entity, MobEffects.BLINDNESS, 60, 0, 'B');
+            PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, BAD);
+            PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+            PotionUtils.addEffect(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
             entity.motionX = 0;
             if (entity.onGround)

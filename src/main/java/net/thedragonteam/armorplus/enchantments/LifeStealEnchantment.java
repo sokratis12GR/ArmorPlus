@@ -80,7 +80,7 @@ public class LifeStealEnchantment extends Enchantment {
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
         Levels levelIn = Levels.values()[level];
         float damageDealt;
-        if (user.getHeldItemMainhand() != null && !(user.getHeldItemMainhand().getItem() instanceof ItemTool) || user.getHeldItemOffhand() != null && !(user.getHeldItemOffhand().getItem() instanceof ItemTool) || user.getHeldItemMainhand() != null && !(user.getHeldItemMainhand().getItem() instanceof ItemSword) || user.getHeldItemOffhand() != null && !(user.getHeldItemOffhand().getItem() instanceof ItemSword))
+        if (user.getHeldItemMainhand().getCount() > 0 && !(user.getHeldItemMainhand().getItem() instanceof ItemTool) || user.getHeldItemOffhand().getCount() > 0 && !(user.getHeldItemOffhand().getItem() instanceof ItemTool) || user.getHeldItemMainhand().getCount() > 0 && !(user.getHeldItemMainhand().getItem() instanceof ItemSword) || user.getHeldItemOffhand().getCount() > 0 && !(user.getHeldItemOffhand().getItem() instanceof ItemSword))
             switch (levelIn) {
                 case ZERO:
                     break;
@@ -94,7 +94,7 @@ public class LifeStealEnchantment extends Enchantment {
                     user.heal(2.5F);
                     break;
             }
-        else if (user.getHeldItemMainhand() != null && user.getHeldItemMainhand().getItem() instanceof ItemTool || user.getHeldItemOffhand() != null && user.getHeldItemOffhand().getItem() instanceof ItemTool) {
+        else if (user.getHeldItemMainhand().getCount() > 0 && user.getHeldItemMainhand().getItem() instanceof ItemTool || user.getHeldItemOffhand().getCount() > 0 && user.getHeldItemOffhand().getItem() instanceof ItemTool) {
             damageDealt = ((ItemTool) user.getHeldItemMainhand().getItem()).getToolMaterial().getDamageVsEntity();
             float damageDealtTool = damageDealt / 0.5F;
             switch (levelIn) {
@@ -152,7 +152,7 @@ public class LifeStealEnchantment extends Enchantment {
                     }
                     break;
             }
-        } else if (user.getHeldItemMainhand() != null && user.getHeldItemMainhand().getItem() instanceof ItemSword || user.getHeldItemOffhand() != null && user.getHeldItemOffhand().getItem() instanceof ItemSword) {
+        } else if (user.getHeldItemMainhand().getCount() > 0 && user.getHeldItemMainhand().getItem() instanceof ItemSword || user.getHeldItemOffhand().getCount() > 0 && user.getHeldItemOffhand().getItem() instanceof ItemSword) {
             damageDealt = ((ItemSword) user.getHeldItemMainhand().getItem()).getDamageVsEntity();
             float damageDealtSword = damageDealt / 0.5F;
             switch (levelIn) {

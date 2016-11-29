@@ -54,5 +54,4 @@ public class EntityCoalArrow extends EntityArrow {
             living.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 180, 0, false, true));
         }
     }
-
 }

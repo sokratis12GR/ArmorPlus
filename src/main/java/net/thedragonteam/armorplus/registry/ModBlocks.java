@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.base.BlockBenchBase;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
@@ -15,6 +16,7 @@ import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
 import net.thedragonteam.armorplus.blocks.normal.LavaNetherBrick;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
 
+import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
 import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.ELECTRICAL;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
@@ -44,6 +46,9 @@ public class ModBlocks {
     public static BaseStoneBrickCorner greenStoneBrickCorner;
     public static BaseStoneBrickCorner purpleStoneBrickCorner;
     public static LavaCactus lavaCactus;
+    public static BlockBenchBase arpWorkbench;
+    public static BlockBenchBase arpHighTechBench;
+    public static BlockBenchBase arpUltiTechBench;
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal();
@@ -73,6 +78,9 @@ public class ModBlocks {
         purpleStoneBrick = new BaseStoneBrick(PURPLE);
         purpleStoneBrickTower = new BaseStoneBrickTower(PURPLE);
         purpleStoneBrickCorner = new BaseStoneBrickCorner(PURPLE, purpleStoneBrick.getDefaultState());
+        arpWorkbench = new BlockBenchBase(WORKBENCH);
+        arpHighTechBench = new BlockBenchBase(HIGH_TECH);
+        arpUltiTechBench = new BlockBenchBase(ULTI_TECH);
     }
 
     @SideOnly(Side.CLIENT)
@@ -104,5 +112,8 @@ public class ModBlocks {
         purpleStoneBrick.initModel();
         purpleStoneBrickTower.initModel();
         purpleStoneBrickCorner.initModel();
+        arpWorkbench.initModel();
+        arpHighTechBench.initModel();
+        arpUltiTechBench.initModel();
     }
 }

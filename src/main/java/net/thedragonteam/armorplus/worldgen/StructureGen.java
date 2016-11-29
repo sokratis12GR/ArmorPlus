@@ -57,7 +57,7 @@ public class StructureGen implements IWorldGenerator {
         if (enableCastleGen) {
             WorldGenerator genCastle = new StructureCastle();
             // 4% of chunks can have a castle
-            if (rand.nextInt(1000) < castleGenSpawnChance) {
+            if (rand.nextInt(2) < castleGenSpawnChance) {
                 // get a random position in the chunk
                 int randX = blockX + rand.nextInt(16);
                 int randZ = blockZ + rand.nextInt(16);

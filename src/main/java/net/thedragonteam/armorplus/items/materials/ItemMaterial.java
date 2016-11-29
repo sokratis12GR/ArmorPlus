@@ -26,7 +26,7 @@ public class ItemMaterial extends Item {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        switch (stack.getMetadata()) {
+        switch (stack.getItemDamage()) {
             //0 = Chainmail
             case 0:
                 return super.getUnlocalizedName(stack) + "_chainmail";

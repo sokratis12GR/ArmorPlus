@@ -13,6 +13,9 @@ import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.armorplus.util.Logger;
 import net.thedragonteam.armorplus.worldgen.OreGen;
@@ -78,7 +81,11 @@ public class CommonProxy {
     }
 
     public void registerTileEntities() {
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "ARPWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "ARPHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "ARPHighTechBench", "WorkbenchTier3", "WorkbenchTierThree");
     }
+
 
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);

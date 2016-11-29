@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.items.Swords;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -68,38 +69,38 @@ public class BaseSpecialSword extends ItemSword implements IItemHelper {
         switch (swords) {
             case COAL:
                 if (enableCoalWeaponsEffects)
-                    addEffect(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, BAD);
                 break;
             case LAPIS:
                 if (enableLapisWeaponsEffects)
-                    addEffect(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, BAD);
                 break;
             case REDSTONE:
                 if (enableRedstoneWeaponsEffects)
-                    addEffect(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, BAD);
                 break;
             case EMERALD:
                 if (enableEmeraldWeaponsEffects)
-                    addEffect(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, BAD);
                 break;
             case OBSIDIAN:
                 if (enableObsidianWeaponsEffects)
-                    addEffect(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, BAD);
                 break;
             case LAVA:
                 target.setFire(8);
                 break;
             case GUARDIAN:
                 if (enableGuardianWeaponsEffects)
-                    addEffect(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, BAD);
                 break;
             case SUPER_STAR:
                 if (enableSuperStarWeaponsEffects)
-                    addEffect(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, BAD);
                 break;
             case ENDER_DRAGON:
                 if (enableEnderDragonWeaponsEffects)
-                    addEffect(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, 'B');
+                    addEffect(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, BAD);
                 break;
         }
         return true;

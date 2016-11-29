@@ -6,6 +6,8 @@ package net.thedragonteam.armorplus;
 
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
+import static net.thedragonteam.armorplus.ARPConfig.RecipesDifficulty.*;
+
 /**
  * net.thedragonteam.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
@@ -13,6 +15,23 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  */
 public class ARPConfig {
 
+    //GameModes
+    @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
+    public static int recipes = 1;
+    //WhiteList
+    @ModConfigProperty(category = "WhiteList", name = "whitelistmax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
+    public static int whitelistmax = 0;
+    @ModConfigProperty(category = "WhiteList", name = "whitelistmin", comment = "Set the minimum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"")
+    public static int whitelistmin = 0;
+    @ModConfigProperty(category = "WhiteList", name = "enableWhiteList", comment = "Enable/Disable the WhiteList")
+    public static boolean enableWhiteList = false;
+    @ModConfigProperty(category = "WhiteList", name = "whiteListedItems", comment = "Add WhiteListed Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the whitelist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
+    public static String[] whiteListedItems = new String[]{"minecraft:dirt"};
+    //BlackList
+    @ModConfigProperty(category = "BlackList", name = "enableBlackList", comment = "Enable/Disable the BlackList")
+    public static boolean enableBlackList = true;
+    @ModConfigProperty(category = "BlackList", name = "blackListedItems", comment = "Add Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
+    public static String[] blackListedItems = new String[]{"minecraft:dirt"};
     //Weapons.*.Registry
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "coalWeaponItemNameColor", comment = "Set the color name the Coal Weapons will have")
     public static String coalWeaponItemNameColor = "gray";
@@ -653,23 +672,6 @@ public class ARPConfig {
     public static int castleGenSpawnChance = 1;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
     public static boolean enableCastleGen = true;
-    //GameModes
-    @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
-    public static int recipes = 1;
-    //WhiteList
-    @ModConfigProperty(category = "WhiteList", name = "whitelistmax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
-    public static int whitelistmax = 0;
-    @ModConfigProperty(category = "WhiteList", name = "whitelistmin", comment = "Set the minimum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:Don't change this from 0\"")
-    public static int whitelistmin = 0;
-    @ModConfigProperty(category = "WhiteList", name = "enableWhiteList", comment = "Enable/Disable the WhiteList")
-    public static boolean enableWhiteList = false;
-    @ModConfigProperty(category = "WhiteList", name = "whiteListedItems", comment = "Add WhiteListed Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the whitelist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
-    public static String[] whiteListedItems = new String[]{"minecraft:dirt"};
-    //BlackList
-    @ModConfigProperty(category = "BlackList", name = "enableBlackList", comment = "Enable/Disable the BlackList")
-    public static boolean enableBlackList = true;
-    @ModConfigProperty(category = "BlackList", name = "blackListedItems", comment = "Add Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
-    public static String[] blackListedItems = new String[]{"armorplus:dev_helmet", "armorplus:dev_chestplate", "armorplus:dev_leggings", "armorplus:dev_boots", "minecraft:dirt"};
     //TinkersEffects
     @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")
     public static boolean enableArditeArmorEffect = true;
@@ -691,8 +693,8 @@ public class ARPConfig {
     public static boolean enableRedstoneAppleRecipes = true;
     @ModConfigProperty(category = "Registry.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
     public static boolean enableElytraRecipe = false;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The chainmail armor recipes")
-    public static boolean enableChainArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The armorplus arrow recipes")
+    public static boolean enableArrowRecipes = true;
     //MobDrops
     @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
     public static int enderdragonScaleDropAmount = 12;
@@ -701,10 +703,74 @@ public class ARPConfig {
     @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
     public static int guardianScaleElderDropAmount = 6;
 
-    @ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
-    public static boolean forceAll16x16Textures = false;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
+    public static boolean enableCoalArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
+    public static boolean enableCharcoalCoalArmorRecipe = false;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
+    public static boolean enableLapisArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
+    public static boolean enableRedstoneArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
+    public static boolean enableEmeraldArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
+    public static boolean enableObsidianArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
+    public static boolean enableLavaArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
+    public static boolean enableSuperStarArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
+    public static boolean enableEnderDragonArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
+    public static boolean enableGuardianArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
+    public static boolean enableTheUltimateArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
+    public static boolean enableChainArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
+    public static boolean enableArditeArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
+    public static boolean enableCobaltArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
+    public static boolean enableManyullynArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
+    public static boolean enablePigIronArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
+    public static boolean enableKnightSlimeArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
+    public static boolean enableSlimeArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
+    public static boolean enableChickenArmorRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
+    public static boolean enableSwordsRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
+    public static boolean enableBattleAxesRecipes = true;
+    @ModConfigProperty(category = "Registry.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
+    public static boolean enableBowsRecipes = true;
+
+    //TODO: Add an option for all textures to be 16x16 (still haven't decided if I want to add it)
+    //@ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
+    //public static boolean forceAll16x16Textures = false;
 
     public static boolean isDebugMode() {
         return debugMode;
+    }
+
+    public static RecipesDifficulty getRecipesDifficulty() {
+        switch (recipes) {
+            case 0:
+                return EASY;
+            case 1:
+                return EXPERT;
+            case 2:
+                return HELLISH;
+        }
+        return EXPERT;
+    }
+
+    public enum RecipesDifficulty {
+        EASY,
+        EXPERT,
+        HELLISH
     }
 }

@@ -16,7 +16,13 @@
       "entries": [
         {
           "type": "item",
-          "name": "armorplus:ender_dragon_scale",
+          "name": "armorplus:material",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 3
+            }
+          ],
           "weight": 1
         }
       ]

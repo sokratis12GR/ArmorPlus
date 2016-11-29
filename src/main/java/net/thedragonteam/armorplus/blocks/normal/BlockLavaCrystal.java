@@ -77,12 +77,10 @@ public class BlockLavaCrystal extends BlockBase {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
-
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
-
 
     /**
      * Get the MapColor for this Block and the given BlockState

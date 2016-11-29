@@ -21,7 +21,15 @@ public class ItemStackUtils {
         return new ItemStack(item, 1, meta);
     }
 
+    public static ItemStack getItemStack(Item item) {
+        return new ItemStack(item, 1);
+    }
+
     public static ItemStack getItemStack(Block block, int meta) {
         return new ItemStack(block, 1, meta);
+    }
+
+    public static ItemStack getItemStack(Block block) {
+        return new ItemStack(block, 1);
     }
 }

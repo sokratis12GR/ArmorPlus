@@ -59,7 +59,7 @@ public class ArmorPlus {
      */
     public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-alpha";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11-2.0.0";
+    public static final String LIB_VERSION = "1.11-2.0.1";
     //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
     //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
     //    public static final String BAUBLES_VERSION = "1.3.0";
