@@ -20,6 +20,8 @@ import java.util.Random;
 
 import static net.thedragonteam.armorplus.ARPConfig.isDebugMode;
 import static net.thedragonteam.armorplus.util.StructureUtils.*;
+import static net.thedragonteam.armorplus.util.StructureUtils.Direction.*;
+import static net.thedragonteam.armorplus.util.StructureUtils.Direction.POSITION_X;
 
 public class StructureCastle extends WorldGenerator {
     /**
@@ -162,10 +164,10 @@ public class StructureCastle extends WorldGenerator {
             buildLayer(worldIn, corner, stonePos, stone);
             buildLayer(worldIn, corner, stoneFencePos, stoneFence);
 
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, Direction.POSITION_X);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, Direction.POSITION_X);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, Direction.POSITION_Z);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, Direction.POSITION_Z);
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, POSITION_X);
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, POSITION_X);
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, POSITION_Z);
+            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, POSITION_Z);
             buildFloor(worldIn, corner, stone, 6, 6);
 
             // place the other features LAST

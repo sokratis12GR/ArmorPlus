@@ -120,7 +120,7 @@ public class SlotCrafting extends Slot {
     public ItemStack onTake(EntityPlayer player, ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
-        NonNullList<ItemStack> nonnulllist = CraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
+        NonNullList<ItemStack> nonnulllist = UltiTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
         ForgeHooks.setCraftingPlayer(null);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {

@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -16,7 +15,10 @@ import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
+import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
+import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonZombieSpawnEnd;
+import static net.thedragonteam.armorplus.ArmorPlus.getResourceLocation;
 
 /**
  * net.thedragonteam.armorplus.entity
@@ -36,12 +38,12 @@ public class ARPEntities {
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(ArmorPlus.getResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(getResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
+        registerModEntity(getResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(getResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(getResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(getResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(getResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually
@@ -55,12 +57,12 @@ public class ARPEntities {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         //Mobs
-        RenderingRegistry.registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
+        registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
         //Arrows
-        RenderingRegistry.registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
+        registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
+        registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
+        registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
+        registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
+        registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
     }
 }

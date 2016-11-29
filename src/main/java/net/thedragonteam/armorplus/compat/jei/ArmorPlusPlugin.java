@@ -11,6 +11,7 @@ import mezz.jei.api.JEIPlugin;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 @JEIPlugin
 public class ArmorPlusPlugin extends BlankModPlugin {
@@ -21,9 +22,9 @@ public class ArmorPlusPlugin extends BlankModPlugin {
     public void register(IModRegistry registry) {
         jeiHelper = registry.getJeiHelpers();
 
-        addDescription(registry, ModItems.materials, 1, "Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians");
-        addDescription(registry, ModItems.materials, 2, "Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons");
-        addDescription(registry, ModItems.materials, 3, "Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies");
+        addDescription(registry, ModItems.materials, 1, TextHelper.localize("armorplus.jei.guardian_scale.desc"));
+        addDescription(registry, ModItems.materials, 2, TextHelper.localize("armorplus.jei.wither_bone.desc"));
+        addDescription(registry, ModItems.materials, 3, TextHelper.localize("armorplus.jei.ender_dragon_scale.desc"));
         super.register(registry);
     }
 

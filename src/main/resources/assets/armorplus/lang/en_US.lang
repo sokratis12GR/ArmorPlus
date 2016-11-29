@@ -15,6 +15,11 @@ enchantment.life_steal.desc=Steal's the attacked entity's health and heals you
 enchantment.furious=Furious
 enchantment.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
 
+#JeiDescriptions
+armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
+armorplus.jei.wither_bone.desc=Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons.
+armorplus.jei.ender_dragon_scale.desc=Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies.
+
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
 

@@ -74,7 +74,7 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return true;
     }
 
     @Override

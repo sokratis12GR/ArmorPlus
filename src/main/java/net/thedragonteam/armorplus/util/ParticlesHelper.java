@@ -47,7 +47,7 @@ public class ParticlesHelper {
             case X:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, speed, ySpeed, 0.0D);
                 break;
-            case Y:
+            case Z:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, ySpeed, speed);
                 break;
         }

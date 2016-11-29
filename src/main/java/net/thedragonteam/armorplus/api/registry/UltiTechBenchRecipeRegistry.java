@@ -29,7 +29,8 @@ public class UltiTechBenchRecipeRegistry {
     }
 
     public static UltiTechBenchRecipe getMatchingRecipe(List<ItemStack> itemList, World world, BlockPos pos) {
-        for (UltiTechBenchRecipe recipe : recipeList) if (recipe.matches(itemList, world, pos)) return recipe;
+        for (UltiTechBenchRecipe recipe : recipeList)
+            if (recipe.matches(itemList, world, pos)) return recipe;
 
         return null;
     }

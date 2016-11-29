@@ -11,7 +11,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -127,7 +126,7 @@ public class SlotCrafting extends Slot {
     public ItemStack onTake(EntityPlayer player, ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
-        NonNullList<ItemStack> nonnulllist = CraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
+        NonNullList<ItemStack> nonnulllist = WorkbenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
         ForgeHooks.setCraftingPlayer(null);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {

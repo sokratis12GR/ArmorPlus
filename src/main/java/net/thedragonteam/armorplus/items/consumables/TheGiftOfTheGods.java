@@ -91,7 +91,7 @@ public class TheGiftOfTheGods extends BaseItem {
             count = 256 + random.nextInt(32000 - 256);
             item = Item.getItemById(count);
         } else if (ARPConfig.enableWhiteList)
-            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
+            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistmin + 1) + whitelistmin]);
 
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {

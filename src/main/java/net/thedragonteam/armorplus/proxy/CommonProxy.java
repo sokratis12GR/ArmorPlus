@@ -49,7 +49,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         registerEvents();
-        ModOreDicts.registerOreDictEnties();
+        ModOreDicts.registerOreDictEntries();
         ARPTab.initialize();
         ModEnchantments.registerEnchantments();
         ModCompatibility.loadCompat(INIT);
