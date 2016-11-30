@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -29,7 +30,8 @@ public class ModRecipes {
     public static void init() {
         addShapedRecipes();
         addShapelessRecipes();
-        addIntegrationShapelessRecipes();
+        if (Loader.isModLoaded("theoneprobe"))
+            addIntegrationShapelessRecipes();
     }
 
     public static void addIntegrationShapelessRecipes() {

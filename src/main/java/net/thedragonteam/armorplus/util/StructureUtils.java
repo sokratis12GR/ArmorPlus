@@ -16,7 +16,7 @@ import static net.thedragonteam.armorplus.util.StructureUtils.Direction.POSITIVE
 
 public class StructureUtils {
 
-    public static void buildWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn, StructureUtils.Direction direction) {
+    public static void buildWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn, Direction direction) {
         int pos;
         int posY;
         switch (direction) {
@@ -80,7 +80,7 @@ public class StructureUtils {
      * @param maxPosZ   the end position of Z
      * @param direction the direction that the floor will be generating
      */
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, StructureUtils.Direction direction) {
+    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, Direction direction) {
         switch (direction) {
             case POSITIVE_XZ:
                 for (int z = posZ; z <= maxPosZ; z++)
