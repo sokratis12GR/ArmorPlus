@@ -26,6 +26,9 @@ repositories {
     maven { //The repo to get TiC
         url 'http://dvs1.progwml6.com/files/maven'
     }
+    maven { // HWYLA repo
+        url "http://tehnut.info/maven"
+    }
 }
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
@@ -36,7 +39,7 @@ minecraft {
     version = "${mc_version}-${forge_version}"
     runDir = "run"
     makeObfSourceJar = true
-    useDepAts = true
+//    useDepAts = true
 
     if (project.hasProperty('mappings_version'))
         mappings = project.mappings_version
@@ -116,6 +119,7 @@ dependencies {
     compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
     deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
     deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
 }
 
 processResources {

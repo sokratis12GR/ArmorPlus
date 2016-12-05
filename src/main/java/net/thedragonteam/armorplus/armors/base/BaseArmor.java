@@ -37,6 +37,7 @@ import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -128,35 +129,35 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableCoalBEffect && !enableFullCoalArmorEffect)
-                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, GOOD);
                     case LEGS:
                         if (enableCoalLEffect && !enableFullCoalArmorEffect)
-                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, GOOD);
                     case CHEST:
                         if (enableCoalCEffect && !enableFullCoalArmorEffect)
-                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, GOOD);
                     case HEAD:
                         if (enableCoalHEffect && !enableFullCoalArmorEffect)
-                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(coalArmorAddPotionEffect), 240, coalArmorEffectLevel, GOOD);
                 }
                 break;
             case EMERALD:
                 switch (slot) {
                     case FEET:
                         if (enableEmeraldBEffect && !enableFullEmeraldArmorEffect)
-                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, GOOD);
                         break;
                     case LEGS:
                         if (enableEmeraldLEffect && !enableFullEmeraldArmorEffect)
-                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, GOOD);
                         break;
                     case CHEST:
                         if (enableEmeraldCEffect && !enableFullEmeraldArmorEffect)
-                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, GOOD);
                         break;
                     case HEAD:
                         if (enableEmeraldHEffect && !enableFullEmeraldArmorEffect)
-                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel, GOOD);
                         break;
                 }
                 break;
@@ -164,19 +165,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLapisBEffect && !enableFullLapisArmorEffect)
-                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, GOOD);
                         break;
                     case LEGS:
                         if (enableLapisLEffect && !enableFullLapisArmorEffect)
-                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, GOOD);
                         break;
                     case CHEST:
                         if (enableLapisCEffect && !enableFullLapisArmorEffect)
-                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, GOOD);
                         break;
                     case HEAD:
                         if (enableLapisHEffect && !enableFullLapisArmorEffect)
-                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel, GOOD);
                         break;
                 }
                 break;
@@ -184,22 +185,22 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableLavaBEffect && !enableFullLavaArmorEffect)
-                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, GOOD);
                         lavaEffects(entity, itemStack);
                         break;
                     case LEGS:
                         if (enableLavaLEffect && !enableFullLavaArmorEffect)
-                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, GOOD);
                         lavaEffects(entity, itemStack);
                         break;
                     case CHEST:
                         if (enableLavaCEffect && !enableFullLavaArmorEffect)
-                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, GOOD);
                         lavaEffects(entity, itemStack);
                         break;
                     case HEAD:
                         if (enableLavaHEffect && !enableFullLavaArmorEffect)
-                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel, GOOD);
                         lavaEffects(entity, itemStack);
                         break;
                 }
@@ -208,7 +209,7 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableRedstoneBEffect && !enableFullRedstoneArmorEffect) {
-                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, GOOD);
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -216,7 +217,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case LEGS:
                         if (enableRedstoneLEffect && !enableFullRedstoneArmorEffect) {
-                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, GOOD);
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -224,7 +225,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case CHEST:
                         if (enableRedstoneCEffect && !enableFullRedstoneArmorEffect) {
-                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, GOOD);
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -232,7 +233,7 @@ public class BaseArmor extends ItemArmor {
                         break;
                     case HEAD:
                         if (enableRedstoneHEffect && !enableFullRedstoneArmorEffect) {
-                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel, GOOD);
                             if (world.isRemote) {
                                 spawnParticle(entity, EnumParticleTypes.REDSTONE, entity.posX, entity.posY, entity.posZ);
                             }
@@ -244,19 +245,19 @@ public class BaseArmor extends ItemArmor {
                 switch (slot) {
                     case FEET:
                         if (enableObsidianBEffect && !enableFullObsidianArmorEffect)
-                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, GOOD);
                         break;
                     case LEGS:
                         if (enableObsidianLEffect && !enableFullObsidianArmorEffect)
-                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, GOOD);
                         break;
                     case CHEST:
                         if (enableObsidianCEffect && !enableFullObsidianArmorEffect)
-                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, GOOD);
                         break;
                     case HEAD:
                         if (enableObsidianHEffect && !enableFullObsidianArmorEffect)
-                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, 'G');
+                            addEffect(entity, getPotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel, GOOD);
                         break;
                 }
                 break;
@@ -277,25 +278,25 @@ public class BaseArmor extends ItemArmor {
                     case FEET:
                         if (enableSuperStarBEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, GOOD);
                         removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case LEGS:
                         if (enableSuperStarLEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, GOOD);
                         removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case CHEST:
                         if (enableSuperStarCEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, GOOD);
                         removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                     case HEAD:
                         if (enableSuperStarHEffect && !enableFullSuperStarArmorEffect)
                             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, 'G');
+                                addEffect(entity, getPotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel, GOOD);
                         removeEffect(entity, getPotion(superStarArmorRemovePotionEffect));
                         break;
                 }

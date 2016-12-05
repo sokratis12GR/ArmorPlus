@@ -21,8 +21,8 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class WorkbenchRecipe {
-    protected ItemStack output = null;
-    protected ArrayList<Object> input = new ArrayList<Object>();
+    public ItemStack output = null;
+    public ArrayList<Object> input = new ArrayList<Object>();
 
     public WorkbenchRecipe(Block result, Object... recipe) {
         this(new ItemStack(result), recipe);
@@ -123,6 +123,10 @@ public class WorkbenchRecipe {
      */
     public ArrayList<Object> getInput() {
         return this.input;
+    }
+
+    public Object getOutput() {
+        return this.output;
     }
 
     public ItemStack[] getRemainingItems(ItemStack[] inventory) {

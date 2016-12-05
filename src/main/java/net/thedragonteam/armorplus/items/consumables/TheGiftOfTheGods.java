@@ -95,8 +95,8 @@ public class TheGiftOfTheGods extends BaseItem {
                             " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + " ; Does the Item have Subtypes: " + item.getHasSubtypes() +
                             " ; Item's Max Damage: " + getMaxDamage(new ItemStack(item)) + " ; Item's Meta Data: " + item.getMetadata(new ItemStack(item)));
             }
-            itemStack.damageItem(1, playerIn);
         }
+        itemStack.damageItem(1, playerIn);
         return new ActionResult<>(EnumActionResult.PASS, itemStack);
     }
 
@@ -104,6 +104,7 @@ public class TheGiftOfTheGods extends BaseItem {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         int maxUses = ARPConfig.maxUses;
+        tooltip.add("" + TextFormatting.ITALIC + "" + TextFormatting.RED + "This item can summon items which can potentially cause crashes");
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");
             tooltip.add("\2479Max Uses: " + "\247r" + maxUses);

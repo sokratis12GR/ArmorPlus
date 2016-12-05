@@ -786,7 +786,7 @@ public class ARPConfig {
     @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
     public static int guardianScaleElderDropAmount = 6;
 
-    //TODO: Add an option for all textures to be 16x16
+    //TODO: Add an option for all textures to be 16x16 (still haven't decided if I want to add it)
     //@ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
     //public static boolean forceAll16x16Textures = false;
 

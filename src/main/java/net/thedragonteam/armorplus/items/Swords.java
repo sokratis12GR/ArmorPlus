@@ -75,10 +75,6 @@ public enum Swords implements IStringSerializable {
         this.effect = effectIn;
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
         return this.name;
     }

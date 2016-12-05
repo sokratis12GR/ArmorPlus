@@ -76,10 +76,6 @@ public enum Bows implements IStringSerializable {
         this.bowItem = bowItemIn;
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
         return this.name;
     }

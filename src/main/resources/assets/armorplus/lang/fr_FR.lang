@@ -6,6 +6,23 @@ itemGroup.armorplus.items=ARP Objets
 itemGroup.armorplus.blocks=ARP Blocs
 itemGroup.armorplus.weapons=ARP Armes
 itemGroup.armorplus.tesla=ARP Tesla
+itemGroup.armorplus.rf=ARP RF
+itemGroup.armorplus.tinkers=ARP Tinkers
+
+#Enchantmnets
+enchantment.life_steal=Voler la Vie
+enchantment.life_steal.desc=Voler de la santé des victimes et de la restorer à
+enchantment.furious=Furieux
+enchantment.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
+
+#JeiDescriptions
+armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
+armorplus.jei.wither_bone.desc=Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons.
+armorplus.jei.ender_dragon_scale.desc=Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies.
+
+#Baubles
+item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
+
 
 #Containers
 container.armorplus.armor_forge=Forge d'Armures

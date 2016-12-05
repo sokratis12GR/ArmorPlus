@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
@@ -24,6 +23,7 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 import java.util.List;
 import java.util.Set;
 
+import static net.minecraftforge.fml.common.Optional.Method;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseTesla extends BaseItem {
@@ -67,7 +67,7 @@ public class BaseTesla extends BaseItem {
         this.input = input;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
@@ -96,7 +96,7 @@ public class BaseTesla extends BaseItem {
         return 30;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
         return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
@@ -107,13 +107,13 @@ public class BaseTesla extends BaseItem {
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         TeslaUtils.createTooltip(stack, tooltip);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);

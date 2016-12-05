@@ -31,8 +31,10 @@ import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
+import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ARPConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
@@ -83,7 +85,7 @@ public class BaseUltimateArmor extends ItemArmor {
             tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
     }
 
     @Override
@@ -111,9 +113,9 @@ public class BaseUltimateArmor extends ItemArmor {
             else entity.capabilities.disableDamage = false;
         if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, 'B');
-            PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, 'B');
-            PotionUtils.addEffect(entity, MobEffects.BLINDNESS, 60, 0, 'B');
+            PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, BAD);
+            PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+            PotionUtils.addEffect(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
             entity.motionX = 0;
             if (entity.onGround)
@@ -125,7 +127,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (getValueByName(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

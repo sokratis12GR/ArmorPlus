@@ -43,10 +43,6 @@ public enum Items implements IStringSerializable {
         this.id = ID;
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
         return this.name;
     }

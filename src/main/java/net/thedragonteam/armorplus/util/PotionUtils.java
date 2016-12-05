@@ -17,34 +17,34 @@ public class PotionUtils {
         entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, ambientIn, showParticlesIn));
     }
 
-    public static void addEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, char isGoodOrBad) {
-        switch (isGoodOrBad) {
-            case 'G':
+    public static void addEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, EffectType effectType) {
+        switch (effectType) {
+            case GOOD:
                 addEffect(entity, potion, duration, amplifier, ambientIn, false);
                 break;
-            case 'B':
+            case BAD:
                 addEffect(entity, potion, duration, amplifier, ambientIn, true);
                 break;
         }
     }
 
-    public static void addEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, char isGoodOrBad) {
-        switch (isGoodOrBad) {
-            case 'G':
+    public static void addEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, EffectType effectType) {
+        switch (effectType) {
+            case GOOD:
                 addEffect(entity, potion, duration, amplifier, false, false);
                 break;
-            case 'B':
+            case BAD:
                 addEffect(entity, potion, duration, amplifier, false, true);
                 break;
         }
     }
 
-    public static void addEffect(EntityLivingBase entity, Potion potion, int amplifier, char isGoodOrBad) {
-        switch (isGoodOrBad) {
-            case 'G':
+    public static void addEffect(EntityLivingBase entity, Potion potion, int amplifier, EffectType effectType) {
+        switch (effectType) {
+            case GOOD:
                 addEffect(entity, potion, 120, amplifier, false, false);
                 break;
-            case 'B':
+            case BAD:
                 addEffect(entity, potion, 120, amplifier, false, true);
                 break;
         }
@@ -60,5 +60,10 @@ public class PotionUtils {
 
     public static Potion getPotion(String resourceLocation) {
         return getPotionFromResourceLocation(resourceLocation);
+    }
+
+    public enum EffectType {
+        GOOD,
+        BAD
     }
 }

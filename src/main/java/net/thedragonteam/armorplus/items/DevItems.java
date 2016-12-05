@@ -26,10 +26,6 @@ public enum DevItems implements IStringSerializable {
         this.subTypes = hasSubTypes;
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
         return this.name;
     }

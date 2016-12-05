@@ -79,10 +79,6 @@ public enum BattleAxes implements IStringSerializable {
         this.efficiency = efficiencyIn;
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
         return this.name;
     }

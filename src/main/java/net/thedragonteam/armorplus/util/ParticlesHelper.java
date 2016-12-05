@@ -42,12 +42,12 @@ public class ParticlesHelper {
         spawnParticle(entity, particleType, xCoord, yCoord, zCoord, allSpeed, allSpeed, allSpeed);
     }
 
-    public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double speed, double ySpeed, char xz) {
+    public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double speed, double ySpeed, Pos xz) {
         switch (xz) {
-            case 'x':
+            case X:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, speed, ySpeed, 0.0D);
                 break;
-            case 'z':
+            case Z:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, ySpeed, speed);
                 break;
         }
@@ -62,17 +62,23 @@ public class ParticlesHelper {
             spawnParticle(entity, particleType, xCoord, yCoord, zCoord, xzSpeed, xzSpeed);
     }
 
-    public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double speed, char xyz) {
-        switch (xyz) {
-            case 'z':
-                spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, 0.0D, speed);
-                break;
-            case 'x':
+    public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double speed, Pos pos) {
+        switch (pos) {
+            case X:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, speed, 0.0D, 0.0D);
                 break;
-            case 'y':
+            case Y:
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, speed, 0.0D);
                 break;
+            case Z:
+                spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, 0.0D, speed);
+                break;
         }
+    }
+
+    public enum Pos {
+        X,
+        Y,
+        Z
     }
 }

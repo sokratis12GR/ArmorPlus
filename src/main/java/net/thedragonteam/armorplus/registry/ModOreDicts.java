@@ -15,7 +15,7 @@ import static net.minecraftforge.oredict.OreDictionary.registerOre;
 
 public class ModOreDicts {
 
-    public static void registerOreDictEnties() {
+    public static void registerOreDictEntries() {
         //Ingots
         registerOre("ingotSteel", ModItems.steelIngot);
         registerOre("ingotElectrical", ModItems.electricalIngot);
@@ -39,27 +39,27 @@ public class ModOreDicts {
         registerOre("arpWorkbenchTier3", ModBlocks.arpUltiTechBench);
         registerOre("arpWorkbenchTierThree", ModBlocks.arpUltiTechBench);
         //CastleBlocks
-        registerOre("stonebrickWhite", ModBlocks.whiteStoneBrick);
-        registerOre("stonebrickRed", ModBlocks.redStoneBrick);
-        registerOre("stonebrickBlack", ModBlocks.blackStoneBrick);
-        registerOre("stonebrickBlue", ModBlocks.blueStoneBrick);
-        registerOre("stonebrickGreen", ModBlocks.greenStoneBrick);
-        registerOre("stonebrickYellow", ModBlocks.yellowStoneBrick);
-        registerOre("stonebrickPurple", ModBlocks.purpleStoneBrick);
-        registerOre("stonebrickWhiteCorner", ModBlocks.whiteStoneBrickCorner);
-        registerOre("stonebrickRedCorner", ModBlocks.redStoneBrickCorner);
-        registerOre("stonebrickBlackCorner", ModBlocks.blackStoneBrickCorner);
-        registerOre("stonebrickBlueCorner", ModBlocks.blueStoneBrickCorner);
-        registerOre("stonebrickGreenCorner", ModBlocks.greenStoneBrickCorner);
-        registerOre("stonebrickYellowCorner", ModBlocks.yellowStoneBrickCorner);
-        registerOre("stonebrickPurpleCorner", ModBlocks.purpleStoneBrickCorner);
-        registerOre("stonebrickWhiteTower", ModBlocks.whiteStoneBrickTower);
-        registerOre("stonebrickRedTower", ModBlocks.redStoneBrickTower);
-        registerOre("stonebrickBlackTower", ModBlocks.blackStoneBrickTower);
-        registerOre("stonebrickBlueTower", ModBlocks.blueStoneBrickTower);
-        registerOre("stonebrickGreenTower", ModBlocks.greenStoneBrickTower);
-        registerOre("stonebrickYellowTower", ModBlocks.yellowStoneBrickTower);
-        registerOre("stonebrickPurpleTower", ModBlocks.purpleStoneBrickTower);
+        registerWildBrick("White", ModBlocks.whiteStoneBrick);
+        registerWildBrick("Red", ModBlocks.redStoneBrick);
+        registerWildBrick("Black", ModBlocks.blackStoneBrick);
+        registerWildBrick("Blue", ModBlocks.blueStoneBrick);
+        registerWildBrick("Green", ModBlocks.greenStoneBrick);
+        registerWildBrick("Yellow", ModBlocks.yellowStoneBrick);
+        registerWildBrick("Purple", ModBlocks.purpleStoneBrick);
+        registerWildBrick("WhiteCorner", ModBlocks.whiteStoneBrickCorner);
+        registerWildBrick("RedCorner", ModBlocks.redStoneBrickCorner);
+        registerWildBrick("BlackCorner", ModBlocks.blackStoneBrickCorner);
+        registerWildBrick("BlueCorner", ModBlocks.blueStoneBrickCorner);
+        registerWildBrick("GreenCorner", ModBlocks.greenStoneBrickCorner);
+        registerWildBrick("YellowCorner", ModBlocks.yellowStoneBrickCorner);
+        registerWildBrick("PurpleCorner", ModBlocks.purpleStoneBrickCorner);
+        registerWildBrick("WhiteTower", ModBlocks.whiteStoneBrickTower);
+        registerWildBrick("RedTower", ModBlocks.redStoneBrickTower);
+        registerWildBrick("BlackTower", ModBlocks.blackStoneBrickTower);
+        registerWildBrick("BlueTower", ModBlocks.blueStoneBrickTower);
+        registerWildBrick("GreenTower", ModBlocks.greenStoneBrickTower);
+        registerWildBrick("YellowTower", ModBlocks.yellowStoneBrickTower);
+        registerWildBrick("PurpleTower", ModBlocks.purpleStoneBrickTower);
         //Materials
         registerOre("chainmail", ModItems.chainmail);
         registerOre("witherBone", ModItems.witherBone);
@@ -75,14 +75,22 @@ public class ModOreDicts {
         registerWildOre("itemCharcoal", Items.COAL, 1);
         registerOre("itemArrow", Items.ARROW);
         registerOre("arrow", Items.ARROW);
-        registerWildOre("stonebrick", Blocks.STONEBRICK, WILDCARD_VALUE);
+        registerWildBrick(Blocks.STONEBRICK, WILDCARD_VALUE);
     }
 
-    private static void registerWildOre(String name, Item item, int wildCardValiue) {
-        registerOre(name, new ItemStack(item, 1, wildCardValiue));
+    private static void registerWildOre(String name, Item item, int wildCardValue) {
+        registerOre(name, new ItemStack(item, 1, wildCardValue));
     }
 
-    private static void registerWildOre(String name, Block block, int wildCardValiue) {
-        registerOre(name, new ItemStack(block, 1, wildCardValiue));
+    private static void registerWildOre(String name, Block block, int wildCardValue) {
+        registerOre(name, new ItemStack(block, 1, wildCardValue));
+    }
+
+    private static void registerWildBrick(Block block, int wildCardValue) {
+        registerWildOre("stonebrick", block, wildCardValue);
+    }
+
+    private static void registerWildBrick(String color, Block block) {
+        registerWildOre("stonebrick" + color, block, 1);
     }
 }
