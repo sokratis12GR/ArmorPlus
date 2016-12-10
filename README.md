@@ -20,10 +20,11 @@ Download
 Mod Integrations
 -----------------
 * **Tesla**
-* **RF**
+* **RF** (Not in 1.11)
 * **Tinkers' Construct**
 * **The One Probe**
 * **Just Enough Items**
+* **Baubles**
 
 Mod's Official Wiki
 -----------------
