@@ -12,7 +12,7 @@ import net.minecraft.util.EnumFacing;
 
 import static net.minecraftforge.fml.common.Optional.Method;
 
-public class ARPTeslaUtils {
+public class APTeslaUtils {
 
     @Method(modid = "tesla")
     public static boolean isPoweredItem(ItemStack stack) {
@@ -66,9 +66,9 @@ public class ARPTeslaUtils {
     public static ItemStack createChargedStack(ItemStack stack) {
         if (isPoweredItem(stack)) {
             ItemStack chargedstack = stack.copy();
-            getContainer(chargedstack).setInputRate(ARPTeslaUtils.getMaxCapacity(stack));
+            getContainer(chargedstack).setInputRate(APTeslaUtils.getMaxCapacity(stack));
             addPower(chargedstack, getMaxCapacity(stack));
-            getContainer(chargedstack).setInputRate(ARPTeslaUtils.getMaxInput(stack));
+            getContainer(chargedstack).setInputRate(APTeslaUtils.getMaxInput(stack));
             return chargedstack;
         }
         return null;

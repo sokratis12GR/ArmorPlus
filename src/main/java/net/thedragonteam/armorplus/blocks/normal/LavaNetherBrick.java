@@ -28,7 +28,7 @@ public class LavaNetherBrick extends BlockBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public LavaNetherBrick() {
-        super(Material.ROCK, "lava_nether_brick", 20.0F, 3.0F, "pickaxe", 1, 1.0F);
+        super(Material.ROCK, "lava_nether_brick", 20.0F, 3.0F, ToolType.PICKAXE, 1, 1.0F);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

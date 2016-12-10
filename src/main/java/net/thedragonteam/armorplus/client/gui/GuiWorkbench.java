@@ -16,9 +16,9 @@ import net.thedragonteam.armorplus.container.ContainerWorkbench;
  * - TheDragonTeam
  */
 public class GuiWorkbench extends GuiBaseBench {
-    private static final ResourceLocation ARP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_workbench.png");
+    private static final ResourceLocation AP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_workbench.png");
 
     public GuiWorkbench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerWorkbench(playerInv, worldIn), ARP_WORKBENCH_GUI_TEXTURES, "workbench", 176, 165);
+        super(new ContainerWorkbench(playerInv, worldIn), AP_WORKBENCH_GUI_TEXTURES, "workbench", 176, 165);
     }
 }

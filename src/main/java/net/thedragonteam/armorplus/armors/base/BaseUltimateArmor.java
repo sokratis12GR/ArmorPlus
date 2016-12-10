@@ -9,38 +9,43 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
-import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
+import static net.minecraft.util.text.TextFormatting.getValueByName;
+import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.Utils.setAPLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseUltimateArmor extends ItemArmor {
 
-    public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation("the_ultimate_armor"), 160,
-            ARPConfig.theUltimateArmorProtectionPoints, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.theUltimateArmorToughnessPoints);
+    public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setAPLocation("the_ultimate_armor"), 160,
+            theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, (float) theUltimateArmorToughnessPoints);
+
+    public EnumRarity formattingName;
 
     public BaseUltimateArmor(EntityEquipmentSlot slot) {
         super(theUltimateArmor, 0, slot);
@@ -69,10 +74,21 @@ public class BaseUltimateArmor extends ItemArmor {
         }
         GameRegistry.register(this);
         setCreativeTab(ArmorPlus.tabArmorplus);
+        formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
     @Override
     public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return false;
     }
 
@@ -84,7 +100,7 @@ public class BaseUltimateArmor extends ItemArmor {
             tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
+            tooltip.add(I18n.format("tooltip.shift.showinfo", getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
     }
 
     @Override
@@ -99,22 +115,22 @@ public class BaseUltimateArmor extends ItemArmor {
         ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-        if (ARPConfig.enableFlightAbility)
+        if (APConfig.enableFlightAbility)
             if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.allowFlying = true;
             else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
-        if (ARPConfig.enableTheUltimateArmorInvincibility)
+        if (APConfig.enableTheUltimateArmorInvincibility)
             if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.disableDamage = true;
             else entity.capabilities.disableDamage = false;
         if (head.getCount() > 0 && head.getItem() == theUltimateHelmet && chest.getCount() > 0 && chest.getItem() == theUltimateChestplate && legs.getCount() > 0 && legs.getItem() == theUltimateLeggings && feet.getCount() > 0 && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            PotionUtils.addEffect(entity, MobEffects.POISON, 60, 2, BAD);
-            PotionUtils.addEffect(entity, MobEffects.SLOWNESS, 60, 2, BAD);
-            PotionUtils.addEffect(entity, MobEffects.BLINDNESS, 60, 0, BAD);
+            PotionUtils.addPotion(entity, MobEffects.POISON, 60, 2, BAD);
+            PotionUtils.addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+            PotionUtils.addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
             entity.motionX = 0;
             if (entity.onGround)
@@ -125,13 +141,8 @@ public class BaseUltimateArmor extends ItemArmor {
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
             case 1:

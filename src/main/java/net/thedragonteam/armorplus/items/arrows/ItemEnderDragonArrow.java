@@ -43,6 +43,6 @@ public class ItemEnderDragonArrow extends ItemArrow {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 10.5D, TextFormatting.DARK_PURPLE);
+        ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 8.5D, TextFormatting.DARK_PURPLE);
     }
 }

@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +38,7 @@ public class ShapedOreRecipe implements IRecipe {
         this(new ItemStack(result), recipe);
     }
 
-    public ShapedOreRecipe(@Nonnull ItemStack result, Object... recipe) {
+    public ShapedOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
 
         String shape = "";

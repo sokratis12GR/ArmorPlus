@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -46,4 +47,13 @@ public final class Utils {
     public static String setName(String name) {
         return ArmorPlus.MODID + "." + name;
     }
+
+    public static ResourceLocation setResourceLocation(String path) {
+        return new ResourceLocation(ArmorPlus.MODID, path);
+    }
+
+    public static String setAPLocation(String path) {
+        return ArmorPlus.MODID + ":" + path;
+    }
+
 }

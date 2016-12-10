@@ -170,10 +170,3 @@ achievement.armorplus.craftPigIronArmor=!أوينك
 achievement.armorplus.craftPigIronArmor.desc=اصنع قعطة درع من حديد الخنزير
 achievement.armorplus.craftKnightSlimeArmor=!جذاب
 achievement.armorplus.craftKnightSlimeArmor.desc=اصنع قعطة درع فارس اللازجين
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

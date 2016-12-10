@@ -32,7 +32,7 @@ public class BaseMetalBlock extends BlockBase {
     public Block beaconBase;
 
     public BaseMetalBlock(Metals metals) {
-        super(Material.IRON, metals.getName() + "_block", 20.0F, 5.0F, "pickaxe", 1);
+        super(Material.IRON, metals.getName() + "_block", 20.0F, 5.0F, ToolType.PICKAXE, 1);
         this.beaconBase = metals.getBeaconBase();
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

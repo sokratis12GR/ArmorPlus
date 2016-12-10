@@ -6,21 +6,30 @@ package net.thedragonteam.armorplus.items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class ItemUltimateParts extends Item {
+
+    public EnumRarity formattingName;
+
+    private String[] ultimateNames = new String[]{
+            "_helmet_right", "_helmet_middle", "_helmet_left",
+            "_chestplate_right", "_chestplate_middle", "_chestplate_left",
+            "_leggings_right", "_leggings_middle", "_leggings_left",
+            "_boots_right", "_boots_middle", "_boots_left"
+    };
 
     public ItemUltimateParts() {
         setHasSubtypes(true);
@@ -28,35 +37,41 @@ public class ItemUltimateParts extends Item {
         setUnlocalizedName(setName("the_ultimate_part"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
+        formattingName = addRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         switch (stack.getItemDamage()) {
             case 0:
-                return super.getUnlocalizedName(stack) + "_helmet_right";
+                return super.getUnlocalizedName(stack) + ultimateNames[0];
             case 1:
-                return super.getUnlocalizedName(stack) + "_helmet_middle";
+                return super.getUnlocalizedName(stack) + ultimateNames[1];
             case 2:
-                return super.getUnlocalizedName(stack) + "_helmet_left";
+                return super.getUnlocalizedName(stack) + ultimateNames[2];
             case 3:
-                return super.getUnlocalizedName(stack) + "_chestplate_right";
+                return super.getUnlocalizedName(stack) + ultimateNames[3];
             case 4:
-                return super.getUnlocalizedName(stack) + "_chestplate_middle";
+                return super.getUnlocalizedName(stack) + ultimateNames[4];
             case 5:
-                return super.getUnlocalizedName(stack) + "_chestplate_left";
+                return super.getUnlocalizedName(stack) + ultimateNames[5];
             case 6:
-                return super.getUnlocalizedName(stack) + "_leggings_right";
+                return super.getUnlocalizedName(stack) + ultimateNames[6];
             case 7:
-                return super.getUnlocalizedName(stack) + "_leggings_middle";
+                return super.getUnlocalizedName(stack) + ultimateNames[7];
             case 8:
-                return super.getUnlocalizedName(stack) + "_leggings_left";
+                return super.getUnlocalizedName(stack) + ultimateNames[8];
             case 9:
-                return super.getUnlocalizedName(stack) + "_leggings_right";
+                return super.getUnlocalizedName(stack) + ultimateNames[9];
             case 10:
-                return super.getUnlocalizedName(stack) + "_leggings_middle";
+                return super.getUnlocalizedName(stack) + ultimateNames[10];
             case 11:
-                return super.getUnlocalizedName(stack) + "_leggings_left";
+                return super.getUnlocalizedName(stack) + ultimateNames[11];
 
         }
         return super.getUnlocalizedName();
@@ -68,24 +83,10 @@ public class ItemUltimateParts extends Item {
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(ARPConfig.theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName() + "_helmet_right", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_helmet_middle", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 2, new ModelResourceLocation(getRegistryName() + "_helmet_left", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 3, new ModelResourceLocation(getRegistryName() + "_chestplate_right", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 4, new ModelResourceLocation(getRegistryName() + "_chestplate_middle", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 5, new ModelResourceLocation(getRegistryName() + "_chestplate_left", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 6, new ModelResourceLocation(getRegistryName() + "_leggings_right", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 7, new ModelResourceLocation(getRegistryName() + "_leggings_middle", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 8, new ModelResourceLocation(getRegistryName() + "_leggings_left", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 9, new ModelResourceLocation(getRegistryName() + "_boots_right", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 10, new ModelResourceLocation(getRegistryName() + "_boots_middle", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 11, new ModelResourceLocation(getRegistryName() + "_boots_left", "inventory"));
+        for (int i = 0; i <= 11; i++) {
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ultimateNames[i], "inventory"));
+        }
     }
 }

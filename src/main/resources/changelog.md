@@ -1,3 +1,16 @@
+ArmorPlus 1.11-9.2.0.1-beta
+----------------------------
+
+Features Added:
+
+* Champion Bench (Tier 4) is added, wip, not finished, special.
+* Improved the models of all the benches
+
+Bugs Fixed:
+
+* Fixed Shift Clicking while in the bench gui not working properly
+* Fixed Workbench (from A+) not having a recipe resulting not being able to craft anything. 
+
 ArmorPlus 1.11-9.1.1.2-beta
 ----------------------------
 

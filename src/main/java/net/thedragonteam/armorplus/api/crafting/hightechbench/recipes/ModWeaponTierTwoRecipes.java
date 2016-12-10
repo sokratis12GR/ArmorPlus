@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 

@@ -13,7 +13,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.common.Optional.Method;
 
-public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+public class BaseAPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
 
     private final BaseTeslaContainer container;
     private int power;
@@ -21,7 +21,7 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
     private int output;
     private int input;
 
-    public BaseARPTeslaContainerProvider(BaseTeslaContainer container, int power, int maxCapacity, int input, int output) {
+    public BaseAPTeslaContainerProvider(BaseTeslaContainer container, int power, int maxCapacity, int input, int output) {
         this.container = container;
         this.power = power;
         this.maxCapacity = maxCapacity;
@@ -32,7 +32,7 @@ public class BaseARPTeslaContainerProvider implements INBTSerializable<NBTTagCom
         container.setInputRate(input);
     }
 
-    public BaseARPTeslaContainerProvider(BaseTeslaContainer container, int maxCapacity, int input, int output) {
+    public BaseAPTeslaContainerProvider(BaseTeslaContainer container, int maxCapacity, int input, int output) {
         this.container = container;
         this.maxCapacity = maxCapacity;
         this.output = output;

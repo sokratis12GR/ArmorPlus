@@ -27,7 +27,7 @@ public class CompressedObsidian extends BlockBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public CompressedObsidian() {
-        super(Material.ROCK, "compressed_obsidian", 2000.0F, 50.0F, "pickaxe", 3);
+        super(Material.ROCK, "compressed_obsidian", 2000.0F, 50.0F, ToolType.PICKAXE, 3);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

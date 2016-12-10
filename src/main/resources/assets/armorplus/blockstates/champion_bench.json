@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "facing=east": {
+      "model": "armorplus:champion_bench",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "armorplus:champion_bench",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "armorplus:champion_bench",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "armorplus:champion_bench"
+    }
+  }
+}

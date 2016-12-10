@@ -9,13 +9,17 @@ import net.minecraft.item.ItemStack;
 
 public interface IItemHelper {
 
-    void getItemStack(ItemStack stack);
+    ItemStack getItemStack(ItemStack stack);
 
-    void getItem(Item item);
+    Item getItem(Item item);
 
     ItemStack getItemStack();
 
     Item getItem();
 
     void initModel();
+
+    String getName(String name);
+
+    String getName();
 }

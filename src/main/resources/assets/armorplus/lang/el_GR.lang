@@ -118,10 +118,3 @@ achievement.armorplus.craftGuardianArmor=Γεμάτος αγκάθια!
 achievement.armorplus.craftGuardianArmor.desc=Δημιουργήσει ένα κομμάτι Φύλακας πανοπλία
 achievement.armorplus.craftTheUltimateArmor=Η απόλυτη εξουσία!
 achievement.armorplus.craftTheUltimateArmor.desc=Δημιουργήσει ένα κομμάτι το Απόλυτo πανοπλία
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

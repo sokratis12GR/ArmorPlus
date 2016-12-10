@@ -10,9 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
 
-public class EntityLavaArrow extends EntityArrow {
+import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
+
+public class EntityLavaArrow extends EntityArrow implements IArrowHelper {
+
+    private EnumParticleTypes particle;
 
     public EntityLavaArrow(World worldIn) {
         super(worldIn);
@@ -20,6 +23,7 @@ public class EntityLavaArrow extends EntityArrow {
 
     public EntityLavaArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
+        this.setParticle(EnumParticleTypes.FLAME);
     }
 
     public EntityLavaArrow(World worldIn, double x, double y, double z) {
@@ -32,12 +36,20 @@ public class EntityLavaArrow extends EntityArrow {
     }
 
     @Override
+    public void setParticle(EnumParticleTypes particleIn) {
+        this.particle = particleIn;
+    }
+
+    @Override
+    public EnumParticleTypes getParticle() {
+        return this.particle;
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
-
-        EnumParticleTypes lava = EnumParticleTypes.FLAME;
         if (this.world.isRemote && !this.inGround) {
-            ParticlesHelper.spawnParticle(this, lava, this.posX, this.posY, this.posZ);
+            spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
         }
     }
 

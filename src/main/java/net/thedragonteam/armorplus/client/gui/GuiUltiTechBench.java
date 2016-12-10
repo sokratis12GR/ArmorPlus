@@ -16,9 +16,9 @@ import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
  * - TheDragonTeam
  */
 public class GuiUltiTechBench extends GuiBaseBench {
-    private static final ResourceLocation ARP_ULTI_TECH_BENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_ulti_tech_bench.png");
+    private static final ResourceLocation AP_ULTI_TECH_BENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_ulti_tech_bench.png");
 
     public GuiUltiTechBench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerUltiTechBench(playerInv, worldIn), ARP_ULTI_TECH_BENCH_GUI_TEXTURES, "ulti_tech_bench", 176, 200);
+        super(new ContainerUltiTechBench(playerInv, worldIn), AP_ULTI_TECH_BENCH_GUI_TEXTURES, "ulti_tech_bench", 176, 200);
     }
 }

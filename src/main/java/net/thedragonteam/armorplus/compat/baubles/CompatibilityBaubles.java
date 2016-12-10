@@ -12,14 +12,14 @@ import net.thedragonteam.armorplus.compat.ICompatibility;
  * - TheDragonTeam
  */
 public class CompatibilityBaubles implements ICompatibility {
+
     @Override
     public void loadCompatibility(InitializationPhase phase) {
     }
 
-
     @Override
     public String getMODID() {
-        return "Baubles";
+        return "baubles";
     }
 
     @Override

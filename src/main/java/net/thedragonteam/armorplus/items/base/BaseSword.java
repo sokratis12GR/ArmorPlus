@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -13,11 +14,11 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.util.Utils;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IItemHelper {
 
@@ -25,27 +26,31 @@ public class BaseSword extends ItemSword implements IItemHelper {
     public Item itemExpert;
     public TextFormatting formatting;
     public String effect;
+    public EnumRarity formattingName;
+    public String itemName;
 
-    public BaseSword(ToolMaterial material, String name, Item repairEasy, Item repairExpert, TextFormatting textFormatting, String effectName) {
+    public BaseSword(ToolMaterial material, String name, Item repairEasy, Item repairExpert, String textFormatting, String effectName) {
         super(material);
+        this.itemName = name;
         this.itemEasy = repairEasy;
         this.itemExpert = repairExpert;
-        this.formatting = textFormatting;
+        this.formatting = TextFormatting.getValueByName(textFormatting);
         this.effect = effectName;
         setRegistryName(name);
-        setUnlocalizedName(setName(name));
+        setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        formattingName = addRarity("SWORD", formatting, "Sword");
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (formatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == itemEasy;
             case 1:
@@ -54,12 +59,20 @@ public class BaseSword extends ItemSword implements IItemHelper {
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void getItemStack(ItemStack stack) {
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
-    public void getItem(Item item) {
+    public ItemStack getItemStack(ItemStack stack) {
+        return stack;
+    }
+
+    @Override
+    public Item getItem(Item item) {
+        return item;
     }
 
     @Override
@@ -72,9 +85,14 @@ public class BaseSword extends ItemSword implements IItemHelper {
         return this;
     }
 
-    @SideOnly(Side.CLIENT)
+
     @Override
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public String getName(String name) {
+        return name;
+    }
+
+    @Override
+    public String getName() {
+        return this.itemName;
     }
 }

@@ -35,7 +35,7 @@ public class BlockLavaCrystal extends BlockBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockLavaCrystal() {
-        super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, "pickaxe", 3, 0.8F);
+        super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }
 
     @Override

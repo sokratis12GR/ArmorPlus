@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
+import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
@@ -36,7 +37,7 @@ public class BlockBenchBase extends BlockBase implements ITileEntityProvider {
     public Benches benches;
 
     public BlockBenchBase(Benches benches) {
-        super(Material.IRON, benches.getName(), 1000.0F, 10.0F, "pickaxe", 2);
+        super(Material.IRON, benches.getName(), 1000.0F, 10.0F, ToolType.PICKAXE, 2);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;
     }
@@ -62,6 +63,11 @@ public class BlockBenchBase extends BlockBase implements ITileEntityProvider {
             case ULTI_TECH:
                 if (!worldIn.isRemote) {
                     playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_ULTI_TECH_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                }
+                break;
+            case CHAMPION:
+                if (!worldIn.isRemote) {
+                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_CHAMPION_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
                 }
                 break;
         }
@@ -128,6 +134,8 @@ public class BlockBenchBase extends BlockBase implements ITileEntityProvider {
                 return new TileEntityHighTechBench();
             case ULTI_TECH:
                 return new TileEntityUltiTechBench();
+            case CHAMPION:
+                return new TileEntityChampionBench();
         }
         return null;
     }

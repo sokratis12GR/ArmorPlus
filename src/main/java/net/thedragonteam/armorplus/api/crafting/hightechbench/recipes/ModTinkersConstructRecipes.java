@@ -4,11 +4,11 @@
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 
-import static net.thedragonteam.armorplus.ARPConfig.getRecipesDifficulty;
+import static net.thedragonteam.armorplus.APConfig.getRecipesDifficulty;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
@@ -18,8 +18,8 @@ public class ModTinkersConstructRecipes {
         switch (getRecipesDifficulty()) {
             case EASY:
                 //Ardite
-                if (ARPConfig.enableArditeArmor) {
-                    if (ARPConfig.enableArditeArmorRecipes) {
+                if (APConfig.enableArditeArmor) {
+                    if (APConfig.enableArditeArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(arditeHelmet),
                                 "    ",
                                 "    ",
@@ -59,8 +59,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //Cobalt
-                if (ARPConfig.enableCobaltArmor) {
-                    if (ARPConfig.enableCobaltArmorRecipes) {
+                if (APConfig.enableCobaltArmor) {
+                    if (APConfig.enableCobaltArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(cobaltHelmet),
                                 "    ",
                                 "    ",
@@ -100,8 +100,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //KnightSlime
-                if (ARPConfig.enableKnightSlimeArmor) {
-                    if (ARPConfig.enableKnightSlimeArmorRecipes) {
+                if (APConfig.enableKnightSlimeArmor) {
+                    if (APConfig.enableKnightSlimeArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(knightSlimeHelmet),
                                 "    ",
                                 "    ",
@@ -141,8 +141,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //Manyullyn
-                if (ARPConfig.enableManyullynArmor) {
-                    if (ARPConfig.enableManyullynArmorRecipes) {
+                if (APConfig.enableManyullynArmor) {
+                    if (APConfig.enableManyullynArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(manyullynHelmet),
                                 "    ",
                                 "    ",
@@ -182,8 +182,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //PigIron
-                if (ARPConfig.enablePigIronArmor) {
-                    if (ARPConfig.enablePigIronArmorRecipes) {
+                if (APConfig.enablePigIronArmor) {
+                    if (APConfig.enablePigIronArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(pigIronHelmet),
                                 "    ",
                                 "    ",
@@ -225,8 +225,8 @@ public class ModTinkersConstructRecipes {
                 break;
             case EXPERT:
                 //Ardite
-                if (ARPConfig.enableArditeArmor) {
-                    if (ARPConfig.enableArditeArmorRecipes) {
+                if (APConfig.enableArditeArmor) {
+                    if (APConfig.enableArditeArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(arditeHelmet),
                                 "    ",
                                 "    ",
@@ -272,8 +272,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //Cobalt
-                if (ARPConfig.enableCobaltArmor) {
-                    if (ARPConfig.enableCobaltArmorRecipes) {
+                if (APConfig.enableCobaltArmor) {
+                    if (APConfig.enableCobaltArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(cobaltHelmet),
                                 "    ",
                                 "    ",
@@ -319,8 +319,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //KnightSlime
-                if (ARPConfig.enableKnightSlimeArmor) {
-                    if (ARPConfig.enableKnightSlimeArmorRecipes) {
+                if (APConfig.enableKnightSlimeArmor) {
+                    if (APConfig.enableKnightSlimeArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(knightSlimeHelmet),
                                 "    ",
                                 "    ",
@@ -366,8 +366,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //Manyullyn
-                if (ARPConfig.enableManyullynArmor) {
-                    if (ARPConfig.enableManyullynArmorRecipes) {
+                if (APConfig.enableManyullynArmor) {
+                    if (APConfig.enableManyullynArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(manyullynHelmet),
                                 "    ",
                                 "    ",
@@ -413,8 +413,8 @@ public class ModTinkersConstructRecipes {
                     }
                 }
                 //PigIron
-                if (ARPConfig.enablePigIronArmor) {
-                    if (ARPConfig.enablePigIronArmorRecipes) {
+                if (APConfig.enablePigIronArmor) {
+                    if (APConfig.enablePigIronArmorRecipes) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(pigIronHelmet),
                                 "    ",
                                 "    ",

@@ -12,7 +12,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.DevItems;
+import net.thedragonteam.armorplus.items.dev.DevItems;
 
 public class BaseDevItem extends BaseItem implements IItemHelper {
 
@@ -45,23 +45,5 @@ public class BaseDevItem extends BaseItem implements IItemHelper {
             subItems.add(new ItemStack(itemIn, 1, 0));
             subItems.add(new ItemStack(itemIn, 1, 1));
         }
-    }
-
-    @Override
-    public void getItemStack(ItemStack stack) {
-    }
-
-    @Override
-    public void getItem(Item item) {
-    }
-
-    @Override
-    public ItemStack getItemStack() {
-        return new ItemStack(this);
-    }
-
-    @Override
-    public Item getItem() {
-        return this;
     }
 }

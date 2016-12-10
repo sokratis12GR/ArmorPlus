@@ -6,9 +6,9 @@ package net.thedragonteam.armorplus.client.gui.base;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 public class GuiBaseBench extends GuiContainer {
 
@@ -27,8 +27,8 @@ public class GuiBaseBench extends GuiContainer {
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(I18n.format("container.armorplus." + name), 28, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.format("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus." + name), 28, 5, 4210752);
+        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**

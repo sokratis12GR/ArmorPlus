@@ -9,6 +9,15 @@ itemGroup.armorplus.tesla=ARP Tesla
 itemGroup.armorplus.rf=ARP RF
 itemGroup.armorplus.tinkers=ARP Tinkers
 
+#GuiArmorPlusInfo
+gui.armorplus.info.text_line_heading=ArmorPlus Info
+gui.armorplus.info.text_line_one=ArmorPlus Crafting Recipes are
+gui.armorplus.info.text_line_two=Expert Mode `I:Recipe:1` by default.
+gui.armorplus.info.text_line_three=If you want to change to Easy Mode
+gui.armorplus.info.text_line_four=you will need to change the config
+gui.armorplus.info.text_line_five=From `I:Recipe:1` to `I:Recipe:0`.
+gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
+
 #Enchantmnets
 enchantment.life_steal=Life Steal
 enchantment.life_steal.desc=Steal's the attacked entity's health and heals you
@@ -27,6 +36,7 @@ item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
 container.armorplus.workbench=Workbench
 container.armorplus.high_tech_bench=High-Tech Bench
 container.armorplus.ulti_tech_bench=Ulti-Tech Bench
+container.armorplus.champion_bench=Champion Bench
 container.armorplus.inventory=Inventory
 
 #Tooltip
@@ -83,10 +93,10 @@ commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 gui.jei.category.workbench=Workbench
 gui.jei.category.high_tech_bench=High-Tech Bench
 gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
+gui.jei.category.champion_bench=Champion Bench
 
 #BOOKS
-item.armorplus.book_abilities.name=ArmorPlus Abilities Book
-item.armorplus.book_info.name=ArmorPlus Info Book
+item.armorplus.book.name=ArmorPlus Info Book
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -257,6 +267,7 @@ tile.armorplus.electrical_block.name=Electrical Block
 tile.armorplus.workbench.name=Workbench
 tile.armorplus.high_tech_bench.name=High-Tech Bench
 tile.armorplus.ulti_tech_bench.name=Ulti-Tech Bench
+tile.armorplus.champion_bench.name=Champion Bench
 tile.armorplus.lava_cactus.name=Lava Cactus
 tile.armorplus.lava_nether_brick.name=Lava Nether Brick
 tile.armorplus.white_stone_brick.name=White Stone Brick
@@ -385,9 +396,15 @@ achievement.armorplus.craft_high_tech_bench=More Complexity
 achievement.armorplus.craft_high_tech_bench.desc=craft the a High-Tech Bench from ArmorPlus
 achievement.armorplus.craft_ulti_tech_bench=Ultimately Advanced
 achievement.armorplus.craft_ulti_tech_bench.desc=craft the an Ulti-Tech Bench from ArmorPlus
+achievement.armorplus.craft_champion_bench=This is only for real Champions
+achievement.armorplus.craft_champion_bench.desc=craft the a Champion Bench from ArmorPlus
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
 
+##############
+# Deprecated #
+##############
+#VanillaPotions
 effect.none.name=No Effects
 effect.moveSpeed.name=Speed
 effect.moveSlowdown.name=Slowness

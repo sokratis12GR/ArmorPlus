@@ -7,13 +7,13 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.Utils;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmorRecipes;
 import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 public class ModUltimateRecipes {
@@ -36,7 +36,7 @@ public class ModUltimateRecipes {
                 'O', ModBlocks.compressedObsidian,
                 'L', getItemStack(ModItems.lavaCrystal, 1));
         /* The Ultimate Armor */
-        if (ARPConfig.enableTheUltimateArmor) {
+        if (APConfig.enableTheUltimateArmor) {
             if (enableTheUltimateArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.theUltimateHelmet, 1),
                         "UUCUU",
@@ -87,7 +87,7 @@ public class ModUltimateRecipes {
                         'R', getItemStack(ModItems.theUltimateParts, 9)
                 );
                 //Helmet Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 2),
                             "UUCUU",
                             "UCTCU",
@@ -102,7 +102,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 1),
                             "UUCUU",
                             "UCTCU",
@@ -117,7 +117,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 0),
                             "UUCUU",
                             "UCTCU",
@@ -133,7 +133,7 @@ public class ModUltimateRecipes {
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
                 //Chestplate Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 5),
                             "UUCUU",
                             "UCTCU",
@@ -148,7 +148,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 4),
                             "UUCUU",
                             "UCTCU",
@@ -163,7 +163,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 3),
                             "UUCUU",
                             "UCTCU",
@@ -179,7 +179,7 @@ public class ModUltimateRecipes {
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
                 //Leggings Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 8),
                             "UUCUU",
                             "UCTCU",
@@ -194,7 +194,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 7),
                             "UUCUU",
                             "UCTCU",
@@ -209,7 +209,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 6),
                             "UUCUU",
                             "UCTCU",
@@ -225,7 +225,7 @@ public class ModUltimateRecipes {
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
                 //Boots Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 11),
                             "UUCUU",
                             "UCTCU",
@@ -240,7 +240,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 10),
                             "UUCUU",
                             "UCTCU",
@@ -255,7 +255,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 9),
                             "UUCUU",
                             "UCTCU",

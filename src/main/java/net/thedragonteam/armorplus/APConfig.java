@@ -6,14 +6,14 @@ package net.thedragonteam.armorplus;
 
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
-import static net.thedragonteam.armorplus.ARPConfig.RecipesDifficulty.*;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
 
 /**
  * net.thedragonteam.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  * - TheDragonTeam
  */
-public class ARPConfig {
+public class APConfig {
 
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")

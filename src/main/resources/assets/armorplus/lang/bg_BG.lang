@@ -72,11 +72,3 @@ achievement.armorplus.craftSuperStarArmor=Godlike!
 achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
 achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
 achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
-
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

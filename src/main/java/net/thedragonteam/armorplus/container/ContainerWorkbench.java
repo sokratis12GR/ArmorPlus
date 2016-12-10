@@ -24,26 +24,35 @@ public class ContainerWorkbench extends Container {
      */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
+
+    private static final int ITEM_BOX = 18;
+    private static final int RECIPE_SLOTS = 10;
+    private static final int RECIPE_SIZE = 3;
+    private static final int RECIPE_SIZE_TOTAL = 9;
+    private static final int ROW_SLOTS = 9;
+    private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
+    private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
+
     private final World world;
 
     public ContainerWorkbench(InventoryPlayer playerInventory, World worldIn) {
         this.world = worldIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+        for (int i = 0; i < RECIPE_SIZE; ++i) {
+            for (int j = 0; j < RECIPE_SIZE; ++j) {
+                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * RECIPE_SIZE, 30 + j * ITEM_BOX, 17 + i * ITEM_BOX));
             }
         }
 
         for (int k = 0; k < 3; ++k) {
-            for (int i1 = 0; i1 < 9; ++i1) {
-                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
+            for (int i1 = 0; i1 < ROW_SLOTS; ++i1) {
+                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 84 + k * ITEM_BOX));
             }
         }
 
-        for (int l = 0; l < 9; ++l) {
-            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 142));
+        for (int l = 0; l < ROW_SLOTS; ++l) {
+            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * ITEM_BOX, 142));
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
@@ -63,7 +72,7 @@ public class ContainerWorkbench extends Container {
         super.onContainerClosed(playerIn);
 
         if (!this.world.isRemote) {
-            for (int i = 0; i < 9; ++i) {
+            for (int i = 0; i < RECIPE_SIZE_TOTAL; ++i) {
                 ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
                 if (!itemstack.isEmpty()) {
@@ -85,7 +94,7 @@ public class ContainerWorkbench extends Container {
      */
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot) this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
@@ -94,20 +103,20 @@ public class ContainerWorkbench extends Container {
             if (index == 0) {
                 itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
 
-                if (!this.mergeItemStack(itemstack1, 10, 46, true)) {
+                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37) {
-                if (!this.mergeItemStack(itemstack1, 37, 46, false)) {
+            } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {
+                if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (index >= 37 && index < 46) {
-                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
+            } else if (index >= MAIN_INVENTORY_SLOTS && index < FULL_INVENTORY_SLOTS) {
+                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 10, 46, false)) {
+            } else if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, false)) {
                 return ItemStack.EMPTY;
             }
 

@@ -13,6 +13,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -23,18 +24,18 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.BattleAxes;
+import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
-import static net.thedragonteam.armorplus.ARPConfig.*;
-import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
+import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
-import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-public class BaseBattleAxe extends ItemSword implements IItemHelper{
+public class BaseBattleAxe extends ItemSword implements IItemHelper {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -51,10 +52,13 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
     public String effect;
     public BattleAxes battleAxes;
     public float efficiency;
+    public EnumRarity formattingName;
+    public String itemName;
 
     public BaseBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());
         setHasSubtypes(true);
+        this.itemName = battleAxes.getName();
         this.battleAxes = battleAxes;
         this.itemEasy = battleAxes.getRepairEasy();
         this.itemExpert = battleAxes.getRepairExpert();
@@ -62,9 +66,10 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         setRegistryName(battleAxes.getName() + "_battle_axe");
-        setUnlocalizedName(setName(battleAxes.getName() + "_battle_axe"));
+        setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
+        formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
     }
 
     @Override
@@ -79,38 +84,38 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
         switch (battleAxes) {
             case COAL:
                 if (enableCoalWeaponsEffects)
-                    addEffect(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, BAD);
                 break;
             case LAPIS:
                 if (enableLapisWeaponsEffects)
-                    addEffect(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, BAD);
                 break;
             case REDSTONE:
                 if (enableRedstoneWeaponsEffects)
-                    addEffect(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, BAD);
                 break;
             case EMERALD:
                 if (enableEmeraldWeaponsEffects)
-                    addEffect(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, BAD);
                 break;
             case OBSIDIAN:
                 if (enableObsidianWeaponsEffects)
-                    addEffect(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, BAD);
                 break;
             case LAVA:
                 target.setFire(8);
                 break;
             case GUARDIAN:
                 if (enableGuardianWeaponsEffects)
-                    addEffect(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, BAD);
                 break;
             case SUPER_STAR:
                 if (enableSuperStarWeaponsEffects)
-                    addEffect(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, BAD);
                 break;
             case ENDER_DRAGON:
                 if (enableEnderDragonWeaponsEffects)
-                    addEffect(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, BAD);
                 break;
         }
         return true;
@@ -127,8 +132,8 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (formatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
     @Override
@@ -142,12 +147,20 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void getItemStack(ItemStack stack) {
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
-    public void getItem(Item item) {
+    public ItemStack getItemStack(ItemStack stack) {
+        return stack;
+    }
+
+    @Override
+    public Item getItem(Item item) {
+        return item;
     }
 
     @Override
@@ -160,9 +173,13 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper{
         return this;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public String getName(String name) {
+        return name;
+    }
+
+    @Override
+    public String getName() {
+        return this.itemName;
     }
 }

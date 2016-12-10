@@ -14,7 +14,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import static net.minecraft.util.text.TextFormatting.getValueByName;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 
 public enum Bows implements IStringSerializable {

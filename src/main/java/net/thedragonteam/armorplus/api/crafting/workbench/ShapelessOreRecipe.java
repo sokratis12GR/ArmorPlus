@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,7 @@ public class ShapelessOreRecipe implements IRecipe {
         this(new ItemStack(result), recipe);
     }
 
-    public ShapelessOreRecipe(@Nonnull ItemStack result, Object... recipe) {
+    public ShapelessOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
         for (Object in : recipe) {
             if (in instanceof ItemStack) {

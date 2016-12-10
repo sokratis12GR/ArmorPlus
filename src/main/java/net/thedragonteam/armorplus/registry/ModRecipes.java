@@ -13,12 +13,12 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import static net.minecraft.init.Items.*;
-import static net.minecraft.item.Item.getByNameOrId;
 import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
 import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRecipe;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -76,43 +76,56 @@ public class ModRecipes {
         theUltimateHelmet.setTagCompound(nbttagc);
 
         if (enableEnderDragonArmor)
-            addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(enderDragonHelmet, ModItems.enderDragonHelmet, getItemStack("theoneprobe", "probe"));
         if (enableGuardianArmor)
-            addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(guardianHelmet, ModItems.guardianHelmet, getItemStack("theoneprobe", "probe"));
         if (enableSuperStarArmor)
-            addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(superStarHelmet, ModItems.superStarHelmet, getItemStack("theoneprobe", "probe"));
         if (enableTheUltimateArmor)
-            addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(theUltimateHelmet, ModItems.theUltimateHelmet, getItemStack("theoneprobe", "probe"));
         if (enableCoalArmor)
-            addShapelessRecipe(coalHelmet, ModItems.coalHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(coalHelmet, ModItems.coalHelmet, getItemStack("theoneprobe", "probe"));
         if (enableEmeraldArmor)
-            addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(emeraldHelmet, ModItems.emeraldHelmet, getItemStack("theoneprobe", "probe"));
         if (enableLapisArmor)
-            addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(lapisHelmet, ModItems.lapisHelmet, getItemStack("theoneprobe", "probe"));
         if (enableLavaArmor)
-            addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(lavaHelmet, ModItems.lavaHelmet, getItemStack("theoneprobe", "probe"));
         if (enableObsidianArmor)
-            addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(obsidianHelmet, ModItems.obsidianHelmet, getItemStack("theoneprobe", "probe"));
         if (enableRedstoneArmor)
-            addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(redstoneHelmet, ModItems.redstoneHelmet, getItemStack("theoneprobe", "probe"));
         if (enableChickenArmor)
-            addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(chickenHelmet, ModItems.chickenHelmet, getItemStack("theoneprobe", "probe"));
         if (enableSlimeArmor)
-            addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(slimeHelmet, ModItems.slimeHelmet, getItemStack("theoneprobe", "probe"));
         if (enableArditeArmor)
-            addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(arditeHelmet, ModItems.arditeHelmet, getItemStack("theoneprobe", "probe"));
         if (enableCobaltArmor)
-            addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(cobaltHelmet, ModItems.cobaltHelmet, getItemStack("theoneprobe", "probe"));
         if (enableManyullynArmor)
-            addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(manyullynHelmet, ModItems.manyullynHelmet, getItemStack("theoneprobe", "probe"));
         if (enablePigIronArmor)
-            addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(pigIronHelmet, ModItems.pigIronHelmet, getItemStack("theoneprobe", "probe"));
         if (enableKnightSlimeArmor)
-            addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, new ItemStack(getByNameOrId("theoneprobe:probe"), 1));
+            addShapelessRecipe(knightSlimeHelmet, ModItems.knightSlimeHelmet, getItemStack("theoneprobe", "probe"));
     }
 
     public static void addShapedRecipes() {
-        addRecipe(new ItemStack(lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
+        addRecipe(new ItemStack(lavaNetherBrick, 4),
+                " N ",
+                "NLN",
+                " N ",
+                'L', LAVA_BUCKET,
+                'N', Blocks.NETHER_BRICK);
+        addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench),
+                "LCL",
+                "OTO",
+                "O O",
+                'T', "workbench",
+                'O', "blockCoal",
+                'L', "gemLapis",
+                'C', "gemLavaCrystal"));
         addRecipeCastle(whiteStoneBrick, "White");
         addRecipeCastle(redStoneBrick, "Red");
         addRecipeCastle(blackStoneBrick, "Black");
@@ -155,7 +168,7 @@ public class ModRecipes {
     public static void addShapelessRecipes() {
         addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
         addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
-        addShapelessRecipe(new ItemStack(books, 1, 1), BOOK, COAL);
+        addShapelessRecipe(new ItemStack(bookInfo), BOOK, COAL);
         addShapelessRecipe(new ItemStack(lavaCactus, 1), Blocks.CACTUS, new ItemStack(lavaCrystal, 1, 1));
     }
 

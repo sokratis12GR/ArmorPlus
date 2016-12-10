@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.armorplus.util.APAchievements;
 
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 
@@ -88,7 +88,7 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         if (stack.getItem() == Item.getItemFromBlock(ModBlocks.arpHighTechBench))
-            this.player.addStat(ARPAchievements.craftHighTechBench, 1);
+            this.player.addStat(APAchievements.craftHighTechBench, 1);
 
         if (stack.getItem() == lapisSword)
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
@@ -98,28 +98,28 @@ public class SlotCrafting extends Slot {
             stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
         if (stack.getItem() == coalHelmet || stack.getItem() == coalChestplate || stack.getItem() == coalLeggings || stack.getItem() == coalBoots)
-            this.player.addStat(ARPAchievements.craftCoalArmor, 1);
+            this.player.addStat(APAchievements.craftCoalArmor, 1);
         /*Never Drown Again - Achievement Trigger*/
         if (stack.getItem() == lapisHelmet || stack.getItem() == lapisChestplate || stack.getItem() == lapisLeggings || stack.getItem() == lapisBoots)
-            this.player.addStat(ARPAchievements.craftLapisArmor, 1);
+            this.player.addStat(APAchievements.craftLapisArmor, 1);
         /*Speeedy! - Achievement Trigger*/
         if (stack.getItem() == redstoneHelmet || stack.getItem() == redstoneChestplate || stack.getItem() == redstoneLeggings || stack.getItem() == redstoneBoots)
-            this.player.addStat(ARPAchievements.craftRedstoneArmor, 1);
+            this.player.addStat(APAchievements.craftRedstoneArmor, 1);
         /*Swing Swing Faster! - Achievement Trigger*/
         if (stack.getItem() == emeraldHelmet || stack.getItem() == emeraldChestplate || stack.getItem() == emeraldLeggings || stack.getItem() == emeraldBoots)
-            this.player.addStat(ARPAchievements.craftEmeraldArmor, 1);
+            this.player.addStat(APAchievements.craftEmeraldArmor, 1);
         /*Indestructible! - Achievement Trigger*/
         if (stack.getItem() == obsidianHelmet || stack.getItem() == obsidianChestplate || stack.getItem() == obsidianLeggings || stack.getItem() == obsidianBoots)
-            this.player.addStat(ARPAchievements.craftObsidianArmor, 1);
+            this.player.addStat(APAchievements.craftObsidianArmor, 1);
         /*The Overpowered! - Achievement Trigger*/
         if (stack.getItem() == lavaHelmet || stack.getItem() == lavaChestplate || stack.getItem() == lavaLeggings || stack.getItem() == lavaBoots)
-            this.player.addStat(ARPAchievements.craftLavaArmor, 1);
+            this.player.addStat(APAchievements.craftLavaArmor, 1);
         /*Jump Jump Jump! - Achievement Trigger*/
         if (stack.getItem() == slimeHelmet || stack.getItem() == slimeChestplate || stack.getItem() == slimeLeggings || stack.getItem() == slimeBoots)
-            this.player.addStat(ARPAchievements.craftSlimeArmor, 1);
+            this.player.addStat(APAchievements.craftSlimeArmor, 1);
         /*Its time to go Faster! - Achievement Trigger*/
         if (stack.getItem() == chickenHelmet || stack.getItem() == chickenChestplate || stack.getItem() == chickenLeggings || stack.getItem() == chickenBoots)
-            this.player.addStat(ARPAchievements.craftChickenArmor, 1);
+            this.player.addStat(APAchievements.craftChickenArmor, 1);
     }
 
 

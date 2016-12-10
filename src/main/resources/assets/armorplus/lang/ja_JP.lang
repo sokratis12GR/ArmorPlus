@@ -403,6 +403,3 @@ achievement.armorplus.craft_armor_forge=ArmorPlusへようこそ!
 achievement.armorplus.craft_armor_forge.desc=ArmorPlusからArmor Forgeを作成
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

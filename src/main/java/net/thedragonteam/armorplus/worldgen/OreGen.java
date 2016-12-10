@@ -17,7 +17,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 /**
  * net.thedragonteam.armorplus.worldgen

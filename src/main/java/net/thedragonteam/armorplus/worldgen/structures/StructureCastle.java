@@ -18,7 +18,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.isDebugMode;
+import static net.thedragonteam.armorplus.APConfig.isDebugMode;
 import static net.thedragonteam.armorplus.util.StructureUtils.*;
 import static net.thedragonteam.armorplus.util.StructureUtils.Direction.*;
 import static net.thedragonteam.armorplus.util.StructureUtils.Direction.POSITION_X;

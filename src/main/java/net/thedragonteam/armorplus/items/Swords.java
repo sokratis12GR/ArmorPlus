@@ -14,7 +14,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import static net.minecraft.util.text.TextFormatting.*;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.BaseSpecialSword.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;

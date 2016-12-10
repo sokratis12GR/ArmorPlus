@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -16,16 +15,17 @@ import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
+import static net.minecraftforge.fml.common.registry.EntityRegistry.addSpawn;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
-import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonZombieSpawnEnd;
-import static net.thedragonteam.armorplus.ArmorPlus.getResourceLocation;
+import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnEnd;
+import static net.thedragonteam.armorplus.util.Utils.setResourceLocation;
 
 /**
  * net.thedragonteam.armorplus.entity
  * ArmorPlus created by sokratis12GR on 8/21/2016.
  * - TheDragonTeam
  */
-public class ARPEntities {
+public class APEntities {
 
     //Arrows ID 0 to 5
     private static final int COAL_ARROW = 0;
@@ -38,17 +38,17 @@ public class ARPEntities {
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
-        registerModEntity(getResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
-        registerModEntity(getResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
-        registerModEntity(getResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
-        registerModEntity(getResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
-        registerModEntity(getResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
-        registerModEntity(getResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(setResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
+        registerModEntity(setResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(setResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(setResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(setResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, ArmorPlus.instance, 64, 1, true);
+        registerModEntity(setResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, ArmorPlus.instance, 64, 1, true);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually
         if (enableEnderDragonZombieSpawnEnd)
-            EntityRegistry.addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
+            addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
 
         // This is the loot table for the mobs
         LootTableList.register(EntityEnderDragonZombie.LOOT);

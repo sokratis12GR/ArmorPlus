@@ -20,7 +20,7 @@ public class BaseStoneBrick extends BlockBase {
     public MapColor color;
 
     public BaseStoneBrick(StoneBricks stoneBricks) {
-        super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, "pickaxe", 0);
+        super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, ToolType.PICKAXE, 0);
         this.color = stoneBricks.getMapColor();
     }
 

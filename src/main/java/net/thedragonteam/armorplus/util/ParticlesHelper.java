@@ -6,29 +6,8 @@ package net.thedragonteam.armorplus.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.world.World;
 
 public class ParticlesHelper {
-
-    public static void createParticleCircleTopForLoop(EnumParticleTypes particleTypes, World world, Entity entity) {
-        if (world.isRemote) {
-            double y = entity.posY + 2.1D;
-            double x = entity.posX;
-            double z = entity.posZ;
-            for (int i = 0; i <= 5; i++) {
-                double iIn = i * 0.1D;
-                double yPos = y + iIn;
-                double xPositive = x + iIn;
-                double zPositive = z + iIn;
-                spawnParticle(entity, particleTypes, xPositive, yPos, z);
-                spawnParticle(entity, particleTypes, x, yPos, zPositive);
-                double xNegative = x - iIn;
-                double zNegative = z - iIn;
-                spawnParticle(entity, particleTypes, xNegative, yPos, z);
-                spawnParticle(entity, particleTypes, x, yPos, zNegative);
-            }
-        }
-    }
 
     public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
         entity.world.spawnParticle(particleType, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
@@ -74,6 +53,14 @@ public class ParticlesHelper {
                 spawnParticle(entity, particleType, xCoord, yCoord, zCoord, 0.0D, 0.0D, speed);
                 break;
         }
+    }
+
+    public EnumParticleTypes getParticle(String name) {
+        return EnumParticleTypes.getByName(name);
+    }
+
+    public EnumParticleTypes getParticle(int id) {
+        return EnumParticleTypes.getParticleFromId(id);
     }
 
     public enum Pos {

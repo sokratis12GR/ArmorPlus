@@ -9,7 +9,8 @@ import net.minecraft.util.IStringSerializable;
 public enum Benches implements IStringSerializable {
     WORKBENCH("workbench"),
     HIGH_TECH("high_tech_bench"),
-    ULTI_TECH("ulti_tech_bench");
+    ULTI_TECH("ulti_tech_bench"),
+    CHAMPION("champion_bench");
 
     private final String name;
 

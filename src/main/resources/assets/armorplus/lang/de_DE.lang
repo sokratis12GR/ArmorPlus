@@ -262,11 +262,3 @@ achievement.armorplus.craftChickenArmor=Es ist Zeit schneller zu gehen!
 achievement.armorplus.craftChickenArmor.desc=Fertige ein Teil der Chicken-Rüstung an
 achievement.armorplus.craftArmorForge=Willkommen bei ArmorPlus!
 achievement.armorplus.craftArmorForge.desc=Fertige die Rüstungsschmiede von ArmorPlus an
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.blocks=Blocks Successfully Registered
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error

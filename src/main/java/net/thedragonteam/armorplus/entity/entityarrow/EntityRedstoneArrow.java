@@ -8,13 +8,17 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ParticlesHelper;
+import net.thedragonteam.armorplus.util.PotionUtils;
 
-public class EntityRedstoneArrow extends EntityArrow {
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+
+public class EntityRedstoneArrow extends EntityArrow implements IArrowHelper {
+
+    private EnumParticleTypes particle;
 
     public EntityRedstoneArrow(World worldIn) {
         super(worldIn);
@@ -22,6 +26,7 @@ public class EntityRedstoneArrow extends EntityArrow {
 
     public EntityRedstoneArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
+        this.setParticle(EnumParticleTypes.REDSTONE);
     }
 
     public EntityRedstoneArrow(World worldIn, double x, double y, double z) {
@@ -34,12 +39,20 @@ public class EntityRedstoneArrow extends EntityArrow {
     }
 
     @Override
+    public void setParticle(EnumParticleTypes particleIn) {
+        this.particle = particleIn;
+    }
+
+    @Override
+    public EnumParticleTypes getParticle() {
+        return this.particle;
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
-
-        EnumParticleTypes redstone = EnumParticleTypes.REDSTONE;
         if (this.world.isRemote && !this.inGround) {
-            ParticlesHelper.spawnParticle(this, redstone, this.posX, this.posY, this.posZ);
+            ParticlesHelper.spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
         }
     }
 
@@ -52,8 +65,7 @@ public class EntityRedstoneArrow extends EntityArrow {
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
         if (living != shootingEntity) {
-            living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 180, 0, false, true));
+            PotionUtils.addPotion(living, MobEffects.SLOWNESS, 180, 0, BAD);
         }
     }
-
 }

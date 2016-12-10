@@ -11,15 +11,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.common.Optional;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.minecraftforge.fml.common.Optional.Method;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
+import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ARPTeslaUtils;
+import net.thedragonteam.armorplus.util.APTeslaUtils;
 
 import java.util.Set;
 
@@ -30,7 +29,7 @@ public class BaseTeslaSword extends BaseSword {
     private int input;
 
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.getValueByName(ARPConfig.teslaWeaponItemNameColor), null);
+        super(material, name, ModItems.steelIngot, ModItems.steelIngot, APConfig.teslaWeaponItemNameColor, null);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
@@ -47,10 +46,10 @@ public class BaseTeslaSword extends BaseSword {
         this.input = input;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -71,10 +70,10 @@ public class BaseTeslaSword extends BaseSword {
         return 30;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
     }
 
     @Override
@@ -82,9 +81,9 @@ public class BaseTeslaSword extends BaseSword {
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
-        return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
+        return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
 }

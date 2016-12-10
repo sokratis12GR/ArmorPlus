@@ -16,8 +16,8 @@ import net.thedragonteam.armorplus.worldgen.structures.StructureCastle;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.castleGenSpawnChance;
-import static net.thedragonteam.armorplus.ARPConfig.enableCastleGen;
+import static net.thedragonteam.armorplus.APConfig.castleGenSpawnChance;
+import static net.thedragonteam.armorplus.APConfig.enableCastleGen;
 
 public class StructureGen implements IWorldGenerator {
 

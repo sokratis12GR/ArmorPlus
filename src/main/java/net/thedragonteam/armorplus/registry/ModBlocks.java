@@ -46,9 +46,7 @@ public class ModBlocks {
     public static BaseStoneBrickCorner greenStoneBrickCorner;
     public static BaseStoneBrickCorner purpleStoneBrickCorner;
     public static LavaCactus lavaCactus;
-    public static BlockBenchBase arpWorkbench;
-    public static BlockBenchBase arpHighTechBench;
-    public static BlockBenchBase arpUltiTechBench;
+    public static BlockBenchBase arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench;
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal();
@@ -81,6 +79,7 @@ public class ModBlocks {
         arpWorkbench = new BlockBenchBase(WORKBENCH);
         arpHighTechBench = new BlockBenchBase(HIGH_TECH);
         arpUltiTechBench = new BlockBenchBase(ULTI_TECH);
+        arpChampionBench = new BlockBenchBase(CHAMPION);
     }
 
     @SideOnly(Side.CLIENT)
@@ -115,5 +114,6 @@ public class ModBlocks {
         arpWorkbench.initModel();
         arpHighTechBench.initModel();
         arpUltiTechBench.initModel();
+        arpChampionBench.initModel();
     }
 }

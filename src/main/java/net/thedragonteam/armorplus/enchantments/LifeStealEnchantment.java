@@ -15,8 +15,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import static net.thedragonteam.armorplus.ARPConfig.debugMode;
-import static net.thedragonteam.armorplus.ARPConfig.debugModeEnchantments;
+import static net.thedragonteam.armorplus.APConfig.debugMode;
+import static net.thedragonteam.armorplus.APConfig.debugModeEnchantments;
 
 public class LifeStealEnchantment extends Enchantment {
 

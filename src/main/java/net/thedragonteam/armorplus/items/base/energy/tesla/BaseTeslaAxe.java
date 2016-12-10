@@ -7,28 +7,29 @@ package net.thedragonteam.armorplus.items.base.energy.tesla;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.common.Optional;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
+import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseAxe;
-import net.thedragonteam.armorplus.util.ARPTeslaUtils;
+import net.thedragonteam.armorplus.util.APTeslaUtils;
 
 import java.util.Set;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+import static net.thedragonteam.armorplus.APConfig.teslaWeaponItemNameColor;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseTeslaAxe extends BaseAxe {
 
     private int maxCapacity;
     private int output;
     private int input;
+    public EnumRarity formattingName;
 
     public BaseTeslaAxe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name);
@@ -37,6 +38,7 @@ public class BaseTeslaAxe extends BaseAxe {
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
+        formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
     }
 
     public BaseTeslaAxe(ToolMaterial material, String name, int maxCapacity, int input, int output) {
@@ -49,14 +51,14 @@ public class BaseTeslaAxe extends BaseAxe {
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(ARPConfig.teslaWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -77,10 +79,10 @@ public class BaseTeslaAxe extends BaseAxe {
         return 30;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
     }
 
     @Override
@@ -88,9 +90,9 @@ public class BaseTeslaAxe extends BaseAxe {
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
-        return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
+        return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
 }

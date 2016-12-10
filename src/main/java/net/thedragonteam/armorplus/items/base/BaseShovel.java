@@ -12,24 +12,34 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import net.thedragonteam.armorplus.util.Utils;
 
 public class BaseShovel extends ItemSpade implements IItemHelper {
 
+    public String itemName;
+
     public BaseShovel(ToolMaterial material, String name) {
         super(material);
+        this.itemName = name;
         setRegistryName(name);
-        setUnlocalizedName(setName(name));
+        setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void getItemStack(ItemStack stack) {
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
-    public void getItem(Item item) {
+    public ItemStack getItemStack(ItemStack stack) {
+        return stack;
+    }
+
+    @Override
+    public Item getItem(Item item) {
+        return item;
     }
 
     @Override
@@ -42,9 +52,13 @@ public class BaseShovel extends ItemSpade implements IItemHelper {
         return this;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public String getName(String name) {
+        return name;
+    }
+
+    @Override
+    public String getName() {
+        return this.itemName;
     }
 }

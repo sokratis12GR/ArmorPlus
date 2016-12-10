@@ -8,15 +8,16 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.entity.ARPEntities;
+import net.thedragonteam.armorplus.entity.APEntities;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.armorplus.util.APAchievements;
 import net.thedragonteam.armorplus.util.Logger;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
@@ -34,7 +35,7 @@ public class CommonProxy {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         Logger.init(new File(event.getModConfigurationDirectory().getPath()));
-        ARPEntities.init();
+        APEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
         ModItems.init();
@@ -50,7 +51,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         registerEvents();
         ModOreDicts.registerOreDictEntries();
-        ARPTab.initialize();
+        APTab.initialize();
         ModEnchantments.registerEnchantments();
         ModCompatibility.loadCompat(INIT);
         LogHelper.info("Finished Initialization");
@@ -73,7 +74,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-        ARPAchievements.init();
+        APAchievements.init();
         ModRecipes.init();
     }
 
@@ -83,15 +84,13 @@ public class CommonProxy {
     public void registerTileEntities() {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "ARPWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
         GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "ARPHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "ARPHighTechBench", "WorkbenchTier3", "WorkbenchTierThree");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "ARPUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench.class, "ChampionBench", "ARPChampionBench", "WorkbenchTier4", "WorkbenchTierFour");
     }
 
 
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
         GameRegistry.registerWorldGenerator(new StructureGen(), 1);
-    }
-
-    public void setActionText(String text) {
     }
 }

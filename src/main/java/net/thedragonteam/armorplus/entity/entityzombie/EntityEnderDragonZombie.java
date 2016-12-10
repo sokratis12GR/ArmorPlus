@@ -30,7 +30,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nullable;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 /**
  * net.thedragonteam.armorplus.entity.entityzombie

@@ -190,6 +190,6 @@ public class StructureUtils {
         POSITIVE_X_NEGATIVE_Z,
         POSITIVE_Z_NEGATIVE_X,
         POSITION_X,
-        POSITION_Z;
+        POSITION_Z,;
     }
 }

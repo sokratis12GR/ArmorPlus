@@ -24,11 +24,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaSword;
-import net.thedragonteam.armorplus.util.ARPTeslaUtils;
+import net.thedragonteam.armorplus.util.APTeslaUtils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemTeslaSword extends BaseTeslaSword {
 
@@ -46,7 +46,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
 
     @Optional.Method(modid = "tesla")
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        ARPTeslaUtils.usePower(stack, outputSword);
+        APTeslaUtils.usePower(stack, outputSword);
         return true;
     }
 
@@ -66,7 +66,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
     @Optional.Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        ARPTeslaUtils.usePower(stack, outputSword);
+        APTeslaUtils.usePower(stack, outputSword);
         return true;
     }
 
@@ -78,7 +78,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
     @Optional.Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (ARPTeslaUtils.getStoredPower(stack) < outputSword) return 0.5F;
+        if (APTeslaUtils.getStoredPower(stack) < outputSword) return 0.5F;
         return Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
@@ -92,7 +92,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(ARPTeslaUtils.getStoredPower(stack)), Long.toString(ARPTeslaUtils.getMaxCapacity(stack))));
+            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(APTeslaUtils.getStoredPower(stack)), Long.toString(APTeslaUtils.getMaxCapacity(stack))));
             tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.hit", Long.toString(outputSword)));
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));

@@ -7,17 +7,17 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableSuperStarArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.enableSuperStarArmorRecipes;
 
 public class ModSuperStarRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Super Star Armor */
-        if (ARPConfig.enableSuperStarArmor) {
-            if (ARPConfig.recipes == 0 && enableSuperStarArmorRecipes) {
+        if (APConfig.enableSuperStarArmor) {
+            if (APConfig.recipes == 0 && enableSuperStarArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
                         "WWWWW",
                         "W   W",
@@ -61,7 +61,7 @@ public class ModSuperStarRecipes {
                         "W   W",
                         'W', new ItemStack(ModItems.materials, 1, 2));
             }
-            if (ARPConfig.recipes == 1 && enableSuperStarArmorRecipes) {
+            if (APConfig.recipes == 1 && enableSuperStarArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
                         "SWWWS",
                         "WN NW",

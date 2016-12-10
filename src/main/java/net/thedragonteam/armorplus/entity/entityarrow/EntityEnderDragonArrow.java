@@ -8,13 +8,17 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
+import net.thedragonteam.armorplus.util.PotionUtils;
 
-public class EntityEnderDragonArrow extends EntityArrow {
+import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+
+public class EntityEnderDragonArrow extends EntityArrow implements IArrowHelper {
+
+    private EnumParticleTypes particle;
 
     public EntityEnderDragonArrow(World worldIn) {
         super(worldIn);
@@ -22,6 +26,7 @@ public class EntityEnderDragonArrow extends EntityArrow {
 
     public EntityEnderDragonArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
+        this.setParticle(EnumParticleTypes.DRAGON_BREATH);
     }
 
     public EntityEnderDragonArrow(World worldIn, double x, double y, double z) {
@@ -34,11 +39,20 @@ public class EntityEnderDragonArrow extends EntityArrow {
     }
 
     @Override
+    public void setParticle(EnumParticleTypes particleIn) {
+        this.particle = particleIn;
+    }
+
+    @Override
+    public EnumParticleTypes getParticle() {
+        return this.particle;
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
-        EnumParticleTypes dragonBreath = EnumParticleTypes.DRAGON_BREATH;
         if (this.world.isRemote && !this.inGround) {
-            ParticlesHelper.spawnParticle(this, dragonBreath, this.posX, this.posY, this.posZ);
+            spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
         }
     }
 
@@ -51,7 +65,7 @@ public class EntityEnderDragonArrow extends EntityArrow {
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
         if (living != shootingEntity) {
-            living.addPotionEffect(new PotionEffect(MobEffects.WITHER, 180, 4, false, true));
+            PotionUtils.addPotion(living, MobEffects.WITHER, 180, 4, BAD);
         }
     }
 

@@ -8,13 +8,17 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.ParticlesHelper;
+import net.thedragonteam.armorplus.util.PotionUtils;
 
-public class EntityLapisArrow extends EntityArrow {
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+
+public class EntityLapisArrow extends EntityArrow implements IArrowHelper {
+
+    private EnumParticleTypes particle;
 
     public EntityLapisArrow(World worldIn) {
         super(worldIn);
@@ -22,6 +26,7 @@ public class EntityLapisArrow extends EntityArrow {
 
     public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
+        this.setParticle(EnumParticleTypes.WATER_DROP);
     }
 
     public EntityLapisArrow(World worldIn, double x, double y, double z) {
@@ -34,13 +39,19 @@ public class EntityLapisArrow extends EntityArrow {
     }
 
     @Override
+    public void setParticle(EnumParticleTypes particleIn) {
+        this.particle = particleIn;
+    }
+
+    @Override
+    public EnumParticleTypes getParticle() {
+        return this.particle;
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
-
-        EnumParticleTypes waterDrop = EnumParticleTypes.WATER_DROP;
-        if (this.world.isRemote && !this.inGround) {
-            ParticlesHelper.spawnParticle(this, waterDrop, this.posX, this.posY, this.posZ);
-        }
+        ParticlesHelper.spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
     }
 
     @Override
@@ -53,7 +64,7 @@ public class EntityLapisArrow extends EntityArrow {
         super.arrowHit(living);
 
         if (living != shootingEntity) {
-            living.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 180, 0, false, true));
+            PotionUtils.addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
         }
     }
 

@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.client.gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.thedragonteam.armorplus.container.ContainerChampionBench;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 import net.thedragonteam.armorplus.container.ContainerWorkbench;
@@ -14,10 +15,11 @@ import net.thedragonteam.armorplus.container.ContainerWorkbench;
 public class GuiHandler implements IGuiHandler {
 
 
-    public static final int GUI_ARMORPLUS_INFO = 1;
+    public static final int GUI_ARMORPLUS_INFO = 0;
     public static final int GUI_WORKBENCH = 2;
     public static final int GUI_HIGH_TECH_BENCH = 3;
     public static final int GUI_ULTI_TECH_BENCH = 4;
+    public static final int GUI_CHAMPION_BENCH = 5;
     public static final int GUI_EXPERIMENT = 100;
 
     @Override
@@ -31,6 +33,8 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerHighTechBench(player.inventory, world);
             case GUI_ULTI_TECH_BENCH:
                 return new ContainerUltiTechBench(player.inventory, world);
+            case GUI_CHAMPION_BENCH:
+                return new ContainerChampionBench(player.inventory, world);
         }
         return null;
     }
@@ -46,6 +50,8 @@ public class GuiHandler implements IGuiHandler {
                 return new GuiHighTechBench(player.inventory, world);
             case GUI_ULTI_TECH_BENCH:
                 return new GuiUltiTechBench(player.inventory, world);
+            case GUI_CHAMPION_BENCH:
+                return new GuiChampionBench(player.inventory, world);
             default:
                 break;
         }

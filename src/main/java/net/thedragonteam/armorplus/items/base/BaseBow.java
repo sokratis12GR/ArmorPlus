@@ -28,15 +28,15 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.items.Bows;
+import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseBow extends ItemBow implements IItemHelper {
 
@@ -46,8 +46,11 @@ public class BaseBow extends ItemBow implements IItemHelper {
     public Item itemExpert;
     public Item itemBow;
     public TextFormatting formatting;
+    public EnumRarity formattingName;
+    public String itemName;
 
     public BaseBow(Bows bows) {
+        this.itemName = bows.getName();
         this.setMaxDamage(bows.getDurability());
         this.damage = bows.getDamage();
         this.itemEasy = bows.getRepairEasy();
@@ -55,7 +58,7 @@ public class BaseBow extends ItemBow implements IItemHelper {
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         setRegistryName(bows.getName() + "_bow");
-        setUnlocalizedName(setName(bows.getName() + "_bow"));
+        setUnlocalizedName(Utils.setName(bows.getName() + "_bow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -75,6 +78,13 @@ public class BaseBow extends ItemBow implements IItemHelper {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
+        formattingName = addRarity("BOW", formatting, "Bow");
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
@@ -84,8 +94,8 @@ public class BaseBow extends ItemBow implements IItemHelper {
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (formatting + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    public EnumRarity getRarity(ItemStack stack) {
+        return formattingName;
     }
 
     public ItemStack findAmmo(EntityPlayer player) {
@@ -103,7 +113,7 @@ public class BaseBow extends ItemBow implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == itemEasy;
             case 1:
@@ -199,11 +209,13 @@ public class BaseBow extends ItemBow implements IItemHelper {
     }
 
     @Override
-    public void getItemStack(ItemStack stack) {
+    public ItemStack getItemStack(ItemStack stack) {
+        return stack;
     }
 
     @Override
-    public void getItem(Item item) {
+    public Item getItem(Item item) {
+        return item;
     }
 
     @Override
@@ -216,9 +228,13 @@ public class BaseBow extends ItemBow implements IItemHelper {
         return this;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public String getName(String name) {
+        return name;
+    }
+
+    @Override
+    public String getName() {
+        return this.itemName;
     }
 }

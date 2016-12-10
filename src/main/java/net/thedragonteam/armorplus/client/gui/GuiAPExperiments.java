@@ -18,17 +18,17 @@ import java.io.IOException;
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  * - TheDragonTeam
  */
-public class GuiARPExperiments extends GuiChat {
+public class GuiAPExperiments extends GuiChat {
 
     int guiWidth = 256;
     int guiHeight = 256;
 
     @Override
     public void drawScreen(int x, int y, float ticks) {
+        super.drawScreen(x, y, ticks);
         int guiX = (width - guiWidth) / 2;
         int guiY = (height - guiHeight) / 2;
         GL11.glColor4f(1, 1, 1, 1);
-        drawDefaultBackground();
         mc.renderEngine.bindTexture(new ResourceLocation(ArmorPlus.MODID, "textures/gui/gui_armorplus.png"));
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
         fontRendererObj.drawString(new TextComponentString("ArmorPlus Dev Book").getFormattedText(), guiX + 25, guiY + 20, 0x000000);
@@ -39,7 +39,6 @@ public class GuiARPExperiments extends GuiChat {
         fontRendererObj.drawString(new TextComponentString("Player's Score: " + mc.player.getScore()).getFormattedText(), guiX + 25, guiY + 60, 0x000000);
         fontRendererObj.drawString(new TextComponentString("Player's Team: " + mc.player.getTeam()).getFormattedText(), guiX + 25, guiY + 70, 0x000000);
         fontRendererObj.drawString(new TextComponentString("Player's Location: x: " + mc.player.getPosition().getX() + " y: " + mc.player.getPosition().getY() + " y: " + mc.player.getPosition().getZ()).getFormattedText(), guiX + 25, guiY + 80, 0x000000);
-        super.drawScreen(x, y, ticks);
     }
 
     @Override

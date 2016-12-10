@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class WorkbenchRecipe {
     protected ItemStack output = null;
-    protected ArrayList<Object> input = new ArrayList<Object>();
+    protected ArrayList<Object> input = new ArrayList<>();
 
     public WorkbenchRecipe(Block result, Object... recipe) {
         this(new ItemStack(result), recipe);

@@ -47,37 +47,37 @@ public class BlockBase extends Block {
         this(material, name, resistance, hardness, null, unbreakable);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool) {
         this(material, name, resistance, hardness, tool, 0);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, boolean unbreakable) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, boolean unbreakable) {
         this(material, name, resistance, hardness, tool, 0, unbreakable);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel) {
         this(material, name, resistance, hardness, tool, harvestLevel, 0.0F);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, boolean unbreakable) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, boolean unbreakable) {
         this(material, name, resistance, hardness, tool, harvestLevel, 0.0F, unbreakable);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel) {
         this(material, name, resistance, hardness, tool, harvestLevel, lightLevel, 0, false);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, boolean unbreakable) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, boolean unbreakable) {
         this(material, name, resistance, hardness, tool, harvestLevel, lightLevel, 0, unbreakable);
     }
 
-    public BlockBase(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
+    public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
         super(material);
         setRegistryName(name);
         setUnlocalizedName(setName(name));
         this.setResistance(resistance);
         this.setHardness(hardness);
-        this.setHarvestLevel(tool, harvestLevel);
+        this.setHarvestLevel(tool.getTool(), harvestLevel);
         this.setLightLevel(lightLevel);
         this.setLightOpacity(lightOpacity);
         if (unbreakable) {
@@ -91,5 +91,21 @@ public class BlockBase extends Block {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
+
+    public enum ToolType {
+        PICKAXE("pickaxe"),
+        AXE("axe"),
+        SHOVEL("shovel");
+
+        private final String tool;
+
+        ToolType(String toolIn) {
+            tool = toolIn;
+        }
+
+        public String getTool() {
+            return tool;
+        }
     }
 }

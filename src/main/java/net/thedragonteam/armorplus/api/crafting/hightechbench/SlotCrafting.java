@@ -14,7 +14,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.armorplus.util.APAchievements;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -86,24 +86,24 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         if (stack.getItem() == Item.getItemFromBlock(ModBlocks.arpUltiTechBench))
-            this.player.addStat(ARPAchievements.craftUltiTechBench, 1);
+            this.player.addStat(APAchievements.craftUltiTechBench, 1);
 
         /* Tinkers' Armors*/
         /*The Tinkers' Armors! - Achievement Trigger*/
         if (stack.getItem() == ModItems.cobaltHelmet || stack.getItem() == ModItems.cobaltChestplate || stack.getItem() == ModItems.cobaltLeggings || stack.getItem() == ModItems.cobaltBoots)
-            this.player.addStat(ARPAchievements.craftCobaltArmor, 1);
+            this.player.addStat(APAchievements.craftCobaltArmor, 1);
         /*The Stronger The Better! - Achievement Trigger*/
         if (stack.getItem() == ModItems.arditeHelmet || stack.getItem() == ModItems.arditeChestplate || stack.getItem() == ModItems.arditeLeggings || stack.getItem() == ModItems.arditeBoots)
-            this.player.addStat(ARPAchievements.craftArditeArmor, 1);
+            this.player.addStat(APAchievements.craftArditeArmor, 1);
         /*The Tinkers' Armors God! - Achievement Trigger*/
         if (stack.getItem() == ModItems.manyullynHelmet || stack.getItem() == ModItems.manyullynChestplate || stack.getItem() == ModItems.manyullynLeggings || stack.getItem() == ModItems.manyullynBoots)
-            this.player.addStat(ARPAchievements.craftManyullynArmor, 1);
+            this.player.addStat(APAchievements.craftManyullynArmor, 1);
         /* Oink! - Achievement Trigger*/
         if (stack.getItem() == ModItems.pigIronHelmet || stack.getItem() == ModItems.pigIronChestplate || stack.getItem() == ModItems.pigIronLeggings || stack.getItem() == ModItems.pigIronBoots)
-            this.player.addStat(ARPAchievements.craftPigIronArmor, 1);
+            this.player.addStat(APAchievements.craftPigIronArmor, 1);
         /* Fascinating! - Achievement Trigger*/
         if (stack.getItem() == ModItems.knightSlimeHelmet || stack.getItem() == ModItems.knightSlimeChestplate || stack.getItem() == ModItems.knightSlimeLeggings || stack.getItem() == ModItems.knightSlimeBoots)
-            this.player.addStat(ARPAchievements.craftKnightSlimeArmor, 1);
+            this.player.addStat(APAchievements.craftKnightSlimeArmor, 1);
     }
 
     public ItemStack onTake(EntityPlayer player, ItemStack itemStack) {
