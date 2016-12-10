@@ -1,4 +1,4 @@
-# ArmorPlus (ARP)
+# ArmorPlus (A+|AP)
 [![](http://cf.way2muchnoise.eu/full_237366_downloads.svg)](http://minecraft.curseforge.com/projects/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](http://minecraft.curseforge.com/projects/armorplus)
 
