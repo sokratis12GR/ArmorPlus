@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.util.PotionUtils;
 
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 
-public class EntityLapisArrow extends EntityArrow implements IArrowHelper {
+public class EntityLapisArrow extends EntityArrow{
 
     private EnumParticleTypes particle;
 
@@ -26,7 +26,6 @@ public class EntityLapisArrow extends EntityArrow implements IArrowHelper {
 
     public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        this.setParticle(EnumParticleTypes.WATER_DROP);
     }
 
     public EntityLapisArrow(World worldIn, double x, double y, double z) {
@@ -39,19 +38,9 @@ public class EntityLapisArrow extends EntityArrow implements IArrowHelper {
     }
 
     @Override
-    public void setParticle(EnumParticleTypes particleIn) {
-        this.particle = particleIn;
-    }
-
-    @Override
-    public EnumParticleTypes getParticle() {
-        return this.particle;
-    }
-
-    @Override
     public void onUpdate() {
         super.onUpdate();
-        ParticlesHelper.spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
+        ParticlesHelper.spawnParticle(this,EnumParticleTypes.WATER_DROP, this.posX, this.posY, this.posZ);
     }
 
     @Override

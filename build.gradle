@@ -85,15 +85,12 @@ task deobfJar(type: Jar) { // Generate deobfuscated
     classifier = 'deobf'
 }
 tasks.build.dependsOn('deobfJar')
-artifacts {
-    archives deobfJar
-}
 
 artifacts {
+    archives deobfJar
     archives sourcesJar
     archives apiJar
     archives devJar
-    archives deobfJar
 }
 
 processResources {

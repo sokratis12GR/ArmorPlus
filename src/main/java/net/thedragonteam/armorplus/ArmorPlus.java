@@ -68,7 +68,7 @@ public class ArmorPlus {
     public static final boolean SERVER_SIDE_ONLY = false;
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
     public static final boolean CAN_BE_DEACTIVATED = false;
-    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ + "after:Baubles;";
+    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ + "after:baubles;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";

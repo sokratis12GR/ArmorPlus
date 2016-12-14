@@ -748,10 +748,6 @@ public class APConfig {
     @ModConfigProperty(category = "Registry.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
     public static boolean enableBowsRecipes = true;
 
-    //TODO: Add an option for all textures to be 16x16 (still haven't decided if I want to add it)
-    //@ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
-    //public static boolean forceAll16x16Textures = false;
-
     public static boolean isDebugMode() {
         return debugMode;
     }
@@ -771,6 +767,6 @@ public class APConfig {
     public enum RecipesDifficulty {
         EASY,
         EXPERT,
-        HELLISH
+        HELLISH//TODO: Add Hellish Mode recipes
     }
 }

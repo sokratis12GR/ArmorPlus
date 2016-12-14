@@ -1,13 +1,13 @@
 #en_US.lang File
 
 #CREATIVE TABS
-itemGroup.armorplus.armors=ARP Armors
-itemGroup.armorplus.items=ARP Items
-itemGroup.armorplus.blocks=ARP Blocks
-itemGroup.armorplus.weapons=ARP Weapons
-itemGroup.armorplus.tesla=ARP Tesla
-itemGroup.armorplus.rf=ARP RF
-itemGroup.armorplus.tinkers=ARP Tinkers
+itemGroup.armorplus.armors=AP Armors
+itemGroup.armorplus.items=AP Items
+itemGroup.armorplus.blocks=AP Blocks
+itemGroup.armorplus.weapons=AP Weapons
+itemGroup.armorplus.tesla=AP Tesla
+itemGroup.armorplus.rf=AP RF
+itemGroup.armorplus.tinkers=AP Tinkers
 
 #GuiArmorPlusInfo
 gui.armorplus.info.text_line_heading=ArmorPlus Info

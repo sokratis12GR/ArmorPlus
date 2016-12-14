@@ -13,7 +13,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 
-public class EntityLavaArrow extends EntityArrow implements IArrowHelper {
+public class EntityLavaArrow extends EntityArrow {
 
     private EnumParticleTypes particle;
 
@@ -23,7 +23,6 @@ public class EntityLavaArrow extends EntityArrow implements IArrowHelper {
 
     public EntityLavaArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        this.setParticle(EnumParticleTypes.FLAME);
     }
 
     public EntityLavaArrow(World worldIn, double x, double y, double z) {
@@ -36,20 +35,10 @@ public class EntityLavaArrow extends EntityArrow implements IArrowHelper {
     }
 
     @Override
-    public void setParticle(EnumParticleTypes particleIn) {
-        this.particle = particleIn;
-    }
-
-    @Override
-    public EnumParticleTypes getParticle() {
-        return this.particle;
-    }
-
-    @Override
     public void onUpdate() {
         super.onUpdate();
         if (this.world.isRemote && !this.inGround) {
-            spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
+            spawnParticle(this, EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ);
         }
     }
 

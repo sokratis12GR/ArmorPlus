@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.util.PotionUtils;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 
-public class EntityCoalArrow extends EntityArrow implements IArrowHelper {
+public class EntityCoalArrow extends EntityArrow {
 
     private EnumParticleTypes particle;
 
@@ -26,7 +26,6 @@ public class EntityCoalArrow extends EntityArrow implements IArrowHelper {
 
     public EntityCoalArrow(World worldIn, EntityLivingBase shooter) {
         super(worldIn, shooter);
-        this.setParticle(EnumParticleTypes.CLOUD);
     }
 
     public EntityCoalArrow(World worldIn, double x, double y, double z) {
@@ -39,20 +38,10 @@ public class EntityCoalArrow extends EntityArrow implements IArrowHelper {
     }
 
     @Override
-    public void setParticle(EnumParticleTypes particleIn) {
-        this.particle = particleIn;
-    }
-
-    @Override
-    public EnumParticleTypes getParticle() {
-        return this.particle;
-    }
-
-    @Override
     public void onUpdate() {
         super.onUpdate();
         if (this.world.isRemote && !this.inGround) {
-            spawnParticle(this, getParticle(), this.posX, this.posY, this.posZ);
+            spawnParticle(this, EnumParticleTypes.CLOUD, this.posX, this.posY, this.posZ);
         }
     }
 

@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 
 import javax.annotation.Nonnull;
@@ -21,6 +23,7 @@ import javax.annotation.Nonnull;
  * ArmorPlus created by sokratis12GR on 8/21/2016.
  * - TheDragonTeam
  */
+@SideOnly(Side.CLIENT)
 public class RenderEnderDragonZombie extends RenderBiped<EntityEnderDragonZombie> {
 
     public static final Factory FACTORY = new Factory();

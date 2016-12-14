@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.items.books;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -19,7 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
 
-import static net.minecraft.client.Minecraft.getMinecraft;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemAPBook extends Item {
@@ -34,8 +34,8 @@ public class ItemAPBook extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if (!world.isRemote)
-            getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
+        if (!player.getHeldItem(hand).isEmpty())
+            Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
         return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
 

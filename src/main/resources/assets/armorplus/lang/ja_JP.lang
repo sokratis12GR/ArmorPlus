@@ -1,13 +1,13 @@
 #en_US.lang File
 
 #CREATIVE TABS
-itemGroup.armorplus.armors=ARP 防具
-itemGroup.armorplus.items=ARP アイテム
-itemGroup.armorplus.blocks=ARP ブロック
-itemGroup.armorplus.weapons=ARP 武器
-itemGroup.armorplus.tesla=ARP テスラ
-itemGroup.armorplus.rf=ARP RF
-itemGroup.armorplus.tinkers=ARP Tinkers
+itemGroup.armorplus.armors=AP 防具
+itemGroup.armorplus.items=AP アイテム
+itemGroup.armorplus.blocks=AP ブロック
+itemGroup.armorplus.weapons=AP 武器
+itemGroup.armorplus.tesla=AP テスラ
+itemGroup.armorplus.rf=AP RF
+itemGroup.armorplus.tinkers=AP Tinkers
 
 #Enchantmnets
 enchantment.life_steal=吸命

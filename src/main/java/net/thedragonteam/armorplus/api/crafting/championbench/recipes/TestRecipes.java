@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+//TODO: Remove Test Recipe
 public class TestRecipes {
     public void addRecipes(ChampionBenchCraftingManager manager) {
         manager.addRecipe(new ItemStack(ModItems.itemEnderDragonArrow, 1),

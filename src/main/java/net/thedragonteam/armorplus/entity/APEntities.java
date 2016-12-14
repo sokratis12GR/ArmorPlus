@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
+import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
@@ -35,10 +36,12 @@ public class APEntities {
     private static final int ENDER_DRAGON_ARROW = 4;
     //Mobs ID from 21 and up
     private static final int ENDER_DRAGON_ZOMBIE = 21;
+    private static final int ICE_GOLEM = 22;
 
     public static void init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
         registerModEntity(setResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, ArmorPlus.instance, 64, 1, true, 0x721164, 0x00ff00);
+        registerModEntity(setResourceLocation("ice_golem"), EntityIceGolem.class, "ice_golem", ICE_GOLEM, ArmorPlus.instance, 64, 1, true, 0xffffff, 0x00ff00);
         registerModEntity(setResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, ArmorPlus.instance, 64, 1, true);
         registerModEntity(setResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, ArmorPlus.instance, 64, 1, true);
         registerModEntity(setResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, ArmorPlus.instance, 64, 1, true);
@@ -52,12 +55,14 @@ public class APEntities {
 
         // This is the loot table for the mobs
         LootTableList.register(EntityEnderDragonZombie.LOOT);
+        LootTableList.register(EntityIceGolem.LOOT);
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         //Mobs
         registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
+        registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
         //Arrows
         registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
         registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);

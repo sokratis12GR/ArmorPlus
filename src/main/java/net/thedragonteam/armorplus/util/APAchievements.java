@@ -44,10 +44,10 @@ public class APAchievements {
     public static ArrayList<AchievementAP> normalCraftingAchievements = new ArrayList();
 
     public static void init() {
-        welcomeToArmorPlus = new AchievementAP("craft_workbench", 6, -4, ModBlocks.arpWorkbench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
-        craftHighTechBench = new AchievementAP("craft_high_bench", 8, -4, ModBlocks.arpHighTechBench, welcomeToArmorPlus).setNormalCrafting().setSpecial();
-        craftUltiTechBench = new AchievementAP("craft_ulti_bench", 8, -2, ModBlocks.arpUltiTechBench, craftHighTechBench).setNormalCrafting().setSpecial();
-        craftChampionBench = new AchievementAP("craft_champion_bench", 8, 0, ModBlocks.arpChampionBench, craftUltiTechBench).setNormalCrafting().setSpecial();
+        welcomeToArmorPlus = new AchievementAP("craft_workbench", 4, -4, ModBlocks.arpWorkbench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftHighTechBench = new AchievementAP("craft_high_tech_bench", 6, -2, ModBlocks.arpHighTechBench, welcomeToArmorPlus).setNormalCrafting().setSpecial();
+        craftUltiTechBench = new AchievementAP("craft_ulti_tech_bench", 8, -2, ModBlocks.arpUltiTechBench, craftHighTechBench).setNormalCrafting().setSpecial();
+        craftChampionBench = new AchievementAP("craft_champion_bench", 10, -4, ModBlocks.arpChampionBench, craftUltiTechBench).setNormalCrafting().setSpecial();
         armorPlus = new AchievementAP("armorplus", -4, -4, ModItems.redstoneChestplate, AchievementList.OPEN_INVENTORY).setSpecial().initIndependentStat();
         craftCoalArmor = new AchievementAP("craft_coal_armor", 0, 0, ModItems.coalHelmet, craftCoalArmor).setNormalCrafting();
         craftChickenArmor = new AchievementAP("craft_chicken_armor", 2, 2, ModItems.chickenBoots, craftCoalArmor).setNormalCrafting();

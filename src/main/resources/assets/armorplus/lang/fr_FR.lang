@@ -1,11 +1,11 @@
 #fr_FR.lang File
 
 #CREATIVE TABS
-itemGroup.armorplus.armors=ARP Armures
-itemGroup.armorplus.items=ARP Objets
-itemGroup.armorplus.blocks=ARP Blocs
-itemGroup.armorplus.weapons=ARP Armes
-itemGroup.armorplus.tesla=ARP Tesla
+itemGroup.armorplus.armors=AP Armures
+itemGroup.armorplus.items=AP Objets
+itemGroup.armorplus.blocks=AP Blocs
+itemGroup.armorplus.weapons=AP Armes
+itemGroup.armorplus.tesla=AP Tesla
 
 #Containers
 container.armorplus.armor_forge=Forge d'Armures

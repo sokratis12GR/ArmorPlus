@@ -6,7 +6,10 @@ package net.thedragonteam.armorplus.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ParticlesHelper {
 
     public static void spawnParticle(Entity entity, EnumParticleTypes particleType, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {

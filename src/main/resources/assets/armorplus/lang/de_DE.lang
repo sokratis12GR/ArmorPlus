@@ -1,9 +1,9 @@
 #de_DE.lang File
 
 #CREATIVE TAB
-itemGroup.armors=ARP Rüstung
-itemGroup.items=ARP Gegenstände
-itemGroup.blocks=ARP Blöcke
+itemGroup.armors=AP Rüstung
+itemGroup.items=AP Gegenstände
+itemGroup.blocks=AP Blöcke
 
 #Containers
 container.ArmorForge=Rütungsschmiede

@@ -2,12 +2,12 @@
 #ru_RU.lang File
 
 #CREATIVE TABS
-itemGroup.armorplus.armors=ARP Броня
-itemGroup.armorplus.items=ARP Предметы
-itemGroup.armorplus.blocks=ARP Блоки
-itemGroup.armorplus.weapons=ARP Оружия
-itemGroup.armorplus.tesla=ARP Tesla
-itemGroup.armorplus.rf=ARP RF
+itemGroup.armorplus.armors=AP Броня
+itemGroup.armorplus.items=AP Предметы
+itemGroup.armorplus.blocks=AP Блоки
+itemGroup.armorplus.weapons=AP Оружия
+itemGroup.armorplus.tesla=AP Tesla
+itemGroup.armorplus.rf=AP RF
 
 #Containers
 container.armorplus.armor_forge=Armor Forge
