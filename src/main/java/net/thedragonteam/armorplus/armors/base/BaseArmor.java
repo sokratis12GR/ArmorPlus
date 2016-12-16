@@ -6,8 +6,6 @@ package net.thedragonteam.armorplus.armors.base;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -41,6 +39,7 @@ import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.setAPLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
@@ -122,7 +121,6 @@ public class BaseArmor extends ItemArmor {
         formattingName = addRarity("ARMOR_COLOR", formatting, "Armor Color");
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Override
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
         ItemStack head = entity.getItemStackFromSlot(HEAD);
@@ -268,7 +266,7 @@ public class BaseArmor extends ItemArmor {
                 break;
             case ENDER_DRAGON:
                 if (enableFlightAbility) {
-                    if (head != null && head.getItem() == ModItems.enderDragonHelmet && chest != null && chest.getItem() == ModItems.enderDragonChestplate && legs != null && legs.getItem() == ModItems.enderDragonLeggings && feet != null && feet.getItem() == ModItems.enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    if (!head.isEmpty() && head.getItem() == ModItems.enderDragonHelmet && !chest.isEmpty() && chest.getItem() == ModItems.enderDragonChestplate && !legs.isEmpty() && legs.getItem() == ModItems.enderDragonLeggings && !feet.isEmpty() && feet.getItem() == ModItems.enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
                     } else {
                         entity.capabilities.isFlying = false;
@@ -351,7 +349,7 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(coalArmorAddPotionEffect), coalArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case EMERALD:
                 if (isKeyDown()) {
@@ -361,7 +359,7 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(emeraldArmorAddPotionEffect), emeraldArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case LAPIS:
                 if (isKeyDown()) {
@@ -371,7 +369,7 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(lapisArmorAddPotionEffect), lapisArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case LAVA:
                 if (isKeyDown()) {
@@ -381,7 +379,7 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(lavaArmorAddPotionEffect), lavaArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case REDSTONE:
                 if (isKeyDown()) {
@@ -391,7 +389,7 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(redstoneArmorAddPotionEffect), redstoneArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case OBSIDIAN:
                 if (isKeyDown()) {
@@ -401,31 +399,31 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(obsidianArmorAddPotionEffect), obsidianArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case ENDER_DRAGON:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, "Flight");
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case GUARDIAN:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(guardianArmorAddPotionEffect), guardianArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case SLIME:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(slimeArmorAddPotionEffect), slimeArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case CHICKEN:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(chickenArmorAddPotionEffect), chickenArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case SUPER_STAR:
                 if (isKeyDown()) {
@@ -435,70 +433,43 @@ public class BaseArmor extends ItemArmor {
                         addToolTipFull(tooltip, localizePotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
                     }
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case ARDITE:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(arditeArmorAddPotionEffect), arditeArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case COBALT:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(cobaltArmorAddPotionEffect), cobaltArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case MANYULLYN:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(manyullynArmorAddPotionEffect), manyullynArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case KNIGHT_SLIME:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(knightSlimeArmorAddPotionEffect), knightSlimeArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
             case PIG_IRON:
                 if (isKeyDown()) {
                     addToolTipFull(tooltip, localizePotion(pigIronArmorAddPotionEffect), pigIronArmorEffectLevel);
                 } else
-                    showInfo(tooltip, keyBindSneak);
+                    showInfo(tooltip, keyBindSneak, formatting);
                 break;
         }
-    }
-
-    private void showInfo(List<String> tooltip, KeyBinding keyBinding) {
-        tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBinding.getDisplayName(), TextFormatting.GRAY));
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-    private void addToolTipFull(List<String> tooltip, String ability, int amplifier) {
-        this.addToolTipFull(tooltip, ability + " " + (amplifier + 1));
-    }
-
-    private void addToolTipFull(List<String> tooltip, String ability) {
-        tooltip.add("\2479Ability: " + "\247r" + ability);
-        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
-    }
-
-    private void addToolTipPiece(List<String> tooltip, String ability, int amplifier) {
-        this.addToolTipPiece(tooltip, ability + " " + (amplifier + 1));
-    }
-
-    private void addToolTipPiece(List<String> tooltip, String ability) {
-        tooltip.add("\2479Ability: " + "\247r" + ability);
-        tooltip.add("\2473Use: " + "\247rEquip A Piece");
-    }
-
-    public boolean isKeyDown() {
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        return GameSettings.isKeyDown(keyBindSneak);
     }
 }

@@ -23,6 +23,14 @@ import net.thedragonteam.armorplus.ArmorPlus;
  */
 public class LavaCrystal extends Item implements IFuelHandler {
 
+    private final String[] LAVA_CRYSTAL_NAMES = new String[]{
+            "_normal", "_charged"
+    };
+
+    private final int[] BURN_TIME = new int[]{
+            22000, 26000
+    };
+
     public LavaCrystal() {
         this.setHasSubtypes(true);
         GameRegistry.registerFuelHandler(this);
@@ -34,22 +42,23 @@ public class LavaCrystal extends Item implements IFuelHandler {
     }
 
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.getItem() == this) switch (fuel.getItemDamage()) {
-            case 1:
-                return 26000;
-            case 0:
-                return 22000;
-        }
+        if (fuel.getItem() == this)
+            switch (fuel.getItemDamage()) {
+                case 0:
+                    return BURN_TIME[0];
+                case 1:
+                    return BURN_TIME[1];
+            }
         return 0;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         switch (stack.getItemDamage()) {
-            case 1:
-                return super.getUnlocalizedName(stack) + "_" + "charged";
             case 0:
-                return super.getUnlocalizedName(stack) + "_" + "normal";
+                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[0];
+            case 1:
+                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[1];
         }
         return super.getUnlocalizedName(stack);
     }
@@ -64,16 +73,15 @@ public class LavaCrystal extends Item implements IFuelHandler {
         return super.getShareTag();
     }
 
-
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_charged", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName() + "_normal", "inventory"));
+        for (int i = 0; i <= 1; i++)
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
     }
 
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        subItems.add(new ItemStack(itemIn, 1, 0));
-        subItems.add(new ItemStack(itemIn, 1, 1));
+        for (int i = 0; i <= 1; i++)
+            subItems.add(new ItemStack(itemIn, 1, i));
     }
 }

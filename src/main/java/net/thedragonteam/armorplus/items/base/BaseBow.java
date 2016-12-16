@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
-import net.thedragonteam.armorplus.items.Bows;
+import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;

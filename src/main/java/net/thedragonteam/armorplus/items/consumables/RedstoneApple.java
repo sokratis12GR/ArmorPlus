@@ -43,7 +43,6 @@ public class RedstoneApple extends ItemFood {
         return stack.getMetadata() > 0;
     }
 
-
     /**
      * Return an item rarity from EnumRarity
      */

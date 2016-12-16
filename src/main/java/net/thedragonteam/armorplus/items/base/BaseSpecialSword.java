@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.items.Swords;
+import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;

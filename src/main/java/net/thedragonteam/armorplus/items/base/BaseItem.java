@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.items.Items;
+import net.thedragonteam.armorplus.items.enums.Items;
 import net.thedragonteam.armorplus.util.Utils;
 
 public class BaseItem extends Item implements IItemHelper {

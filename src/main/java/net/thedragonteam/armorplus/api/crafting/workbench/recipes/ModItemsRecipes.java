@@ -40,7 +40,6 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 9), "blockSteel"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 9), "blockElectrical"));
-
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench),
                 "LCL",
                 "OTO",

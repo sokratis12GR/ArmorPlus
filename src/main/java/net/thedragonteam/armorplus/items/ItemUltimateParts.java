@@ -24,7 +24,7 @@ public class ItemUltimateParts extends Item {
 
     public EnumRarity formattingName;
 
-    private String[] ultimateNames = new String[]{
+    private final String[] ULTIMATE_NAMES = new String[]{
             "_helmet_right", "_helmet_middle", "_helmet_left",
             "_chestplate_right", "_chestplate_middle", "_chestplate_left",
             "_leggings_right", "_leggings_middle", "_leggings_left",
@@ -49,29 +49,29 @@ public class ItemUltimateParts extends Item {
     public String getUnlocalizedName(ItemStack stack) {
         switch (stack.getItemDamage()) {
             case 0:
-                return super.getUnlocalizedName(stack) + ultimateNames[0];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[0];
             case 1:
-                return super.getUnlocalizedName(stack) + ultimateNames[1];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[1];
             case 2:
-                return super.getUnlocalizedName(stack) + ultimateNames[2];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[2];
             case 3:
-                return super.getUnlocalizedName(stack) + ultimateNames[3];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[3];
             case 4:
-                return super.getUnlocalizedName(stack) + ultimateNames[4];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[4];
             case 5:
-                return super.getUnlocalizedName(stack) + ultimateNames[5];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[5];
             case 6:
-                return super.getUnlocalizedName(stack) + ultimateNames[6];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[6];
             case 7:
-                return super.getUnlocalizedName(stack) + ultimateNames[7];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[7];
             case 8:
-                return super.getUnlocalizedName(stack) + ultimateNames[8];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[8];
             case 9:
-                return super.getUnlocalizedName(stack) + ultimateNames[9];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[9];
             case 10:
-                return super.getUnlocalizedName(stack) + ultimateNames[10];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[10];
             case 11:
-                return super.getUnlocalizedName(stack) + ultimateNames[11];
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[11];
 
         }
         return super.getUnlocalizedName();
@@ -86,7 +86,7 @@ public class ItemUltimateParts extends Item {
     @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0; i <= 11; i++) {
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ultimateNames[i], "inventory"));
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
         }
     }
 }

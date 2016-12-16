@@ -16,10 +16,14 @@ import net.thedragonteam.armorplus.items.baubles.ItemBaubleDragon;
 import net.thedragonteam.armorplus.items.books.ItemAPBook;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
-import net.thedragonteam.armorplus.items.dev.DevItems;
+import net.thedragonteam.armorplus.items.enums.DevItems;
 import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
+import net.thedragonteam.armorplus.items.enums.BattleAxes;
+import net.thedragonteam.armorplus.items.enums.Bows;
+import net.thedragonteam.armorplus.items.enums.Items;
+import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 

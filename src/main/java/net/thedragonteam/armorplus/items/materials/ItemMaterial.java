@@ -16,6 +16,12 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemMaterial extends Item {
+
+    private final String[] MATERIAL_NAMES = new String[]{
+            "_chainmail", "_guardian_scale", "_wither_bone",
+            "_ender_dragon_scale", "_the_ultimate_material"
+    };
+
     public ItemMaterial() {
         setRegistryName("material");
         setUnlocalizedName(setName("material"));
@@ -29,19 +35,19 @@ public class ItemMaterial extends Item {
         switch (stack.getItemDamage()) {
             //0 = Chainmail
             case 0:
-                return super.getUnlocalizedName(stack) + "_chainmail";
+                return super.getUnlocalizedName(stack) + MATERIAL_NAMES[0];
             //1 = Guardian Scale
             case 1:
-                return super.getUnlocalizedName(stack) + "_guardian_scale";
+                return super.getUnlocalizedName(stack) + MATERIAL_NAMES[1];
             //2 = Wither Bone
             case 2:
-                return super.getUnlocalizedName(stack) + "_wither_bone";
+                return super.getUnlocalizedName(stack) + MATERIAL_NAMES[2];
             //3 = Ender Dragon Scale
             case 3:
-                return super.getUnlocalizedName(stack) + "_ender_dragon_scale";
+                return super.getUnlocalizedName(stack) + MATERIAL_NAMES[3];
             //4 = The Ultimate Material
             case 4:
-                return super.getUnlocalizedName(stack) + "_the_ultimate_material";
+                return super.getUnlocalizedName(stack) + MATERIAL_NAMES[4];
         }
         return super.getUnlocalizedName(stack);
     }
@@ -53,10 +59,7 @@ public class ItemMaterial extends Item {
     }
 
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName() + "_chainmail", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_guardian_scale", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 2, new ModelResourceLocation(getRegistryName() + "_wither_bone", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 3, new ModelResourceLocation(getRegistryName() + "_ender_dragon_scale", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 4, new ModelResourceLocation(getRegistryName() + "_the_ultimate_material", "inventory"));
+        for (int i = 0; i <= 4; i++)
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + MATERIAL_NAMES[i], "inventory"));
     }
 }

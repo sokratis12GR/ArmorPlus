@@ -126,7 +126,7 @@ public class ContainerChampionBench extends Container {
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= RECIPE_SLOTS && index < 132) {
+            } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {
                 if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
                     return ItemStack.EMPTY;
                 }

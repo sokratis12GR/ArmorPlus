@@ -12,7 +12,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.dev.DevItems;
+import net.thedragonteam.armorplus.items.enums.DevItems;
 
 public class BaseDevItem extends BaseItem implements IItemHelper {
 

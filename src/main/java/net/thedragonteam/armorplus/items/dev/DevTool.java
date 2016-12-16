@@ -10,21 +10,33 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
-import java.io.File;
 import java.util.List;
-
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class DevTool extends BaseItem {
 
+    private EnumRarity dev;
+
     public DevTool() {
         super("dev_tool");
+        dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return dev;
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return true;
     }
 
     @Override
@@ -39,15 +51,9 @@ public class DevTool extends BaseItem {
                         + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
                         + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
                         + " - " + "Position: " + target.getPosition()));
-            File data = new File("");
             return true;
         }
         return true;
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.BOLD + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

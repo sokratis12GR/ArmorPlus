@@ -17,6 +17,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 /**
@@ -32,29 +33,29 @@ public class MobDrops {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void playerKilledEntity(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityDragon) {
-            event.getEntityLiving().entityDropItem(getItemStack(ModItems.materials, 3), enderdragonScaleDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, 3), enderdragonScaleDropAmount);
             if (debugMode) {
-                LogHelper.info("Ender Dragon Dropped: " + getItemStack(ModItems.materials, 3) + " x " + enderdragonScaleDropAmount);
+                LogHelper.info("Ender Dragon Dropped: " + getItemStack(materials, 3) + " x " + enderdragonScaleDropAmount);
             }
         } else if (event.getEntity() instanceof EntityWither) {
-            event.getEntityLiving().entityDropItem(getItemStack(ModItems.materials, 2), witherBoneDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, 2), witherBoneDropAmount);
             if (debugMode) {
-                LogHelper.info("Wither Boss Dropped: " + getItemStack(ModItems.materials, 2) + " x " + witherBoneDropAmount);
+                LogHelper.info("Wither Boss Dropped: " + getItemStack(materials, 2) + " x " + witherBoneDropAmount);
             }
         } else if (event.getEntity() instanceof EntityWitherSkeleton) {
-            event.getEntityLiving().entityDropItem(getItemStack(ModItems.materials, 2), random.nextInt(max - min + 1) + min);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, 2), random.nextInt(max - min + 1) + min);
             if (debugMode) {
-                LogHelper.info("Wither Skeleton Dropped: " + getItemStack(ModItems.materials, 2) + " x " + random.nextInt(max - min + 1) + min);
+                LogHelper.info("Wither Skeleton Dropped: " + getItemStack(materials, 2) + " x " + random.nextInt(max - min + 1) + min);
             }
         } else if (event.getEntity() instanceof EntityGuardian) {
-            event.getEntityLiving().entityDropItem(getItemStack(ModItems.materials, 1), random.nextInt(max - min + 1) + min);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, 1), random.nextInt(max - min + 1) + min);
             if (debugMode) {
-                LogHelper.info("Guardian Dropped: " + getItemStack(ModItems.materials, 1) + " x " + random.nextInt(max - min + 1) + min);
+                LogHelper.info("Guardian Dropped: " + getItemStack(materials, 1) + " x " + random.nextInt(max - min + 1) + min);
             }
         } else if (event.getEntity() instanceof EntityElderGuardian) {
-            event.getEntityLiving().entityDropItem(getItemStack(ModItems.materials, 1), guardianScaleElderDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, 1), guardianScaleElderDropAmount);
             if (debugMode) {
-                LogHelper.info("Elder Guardian Dropped:" + getItemStack(ModItems.materials, 1) + " x " + guardianScaleElderDropAmount);
+                LogHelper.info("Elder Guardian Dropped:" + getItemStack(materials, 1) + " x " + guardianScaleElderDropAmount);
             }
         }
     }
