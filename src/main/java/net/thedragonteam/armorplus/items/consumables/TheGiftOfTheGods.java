@@ -94,7 +94,7 @@ public class TheGiftOfTheGods extends BaseItem {
             count = 256 + random.nextInt(32000 - 256);
             item = Item.getItemById(count);
         } else if (APConfig.enableWhiteList)
-            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistmin + 1) + whitelistmin]);
+            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin]);
 
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
         if (enableTheGiftOfTheGods) {

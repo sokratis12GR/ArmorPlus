@@ -26,8 +26,8 @@ public class GuiUtils extends GuiScreen {
      * @param y          slot y
      * @param renderItem Item Render
      */
-    public void drawDisabledSlot(int x, int y, RenderItem renderItem) {
-        this.zLevel = 100.f;
+    public static void drawDisabledSlot(int x, int y, RenderItem renderItem) {
+        new GuiUtils().zLevel = 100.f;
         renderItem.zLevel = 100.0f;
 
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -35,14 +35,14 @@ public class GuiUtils extends GuiScreen {
         GlStateManager.disableLighting();
         GlStateManager.disableDepth();
         GlStateManager.colorMask(true, true, true, false);
-        renderItem.renderItemAndEffectIntoGUI(new ItemStack(Blocks.BARRIER), x, y);
-        this.drawGradientRect(x, y, x + 16, y + 16, colorOverlay, colorOverlay);
+        renderItem.renderItemAndEffectIntoGUI(new ItemStack(Blocks.AIR), x, y);
+        new GuiUtils().drawGradientRect(x, y, x + 16, y + 16, colorOverlay, colorOverlay);
         GlStateManager.colorMask(true, true, true, true);
         GlStateManager.enableLighting();
         GlStateManager.enableDepth();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-        this.zLevel = 0.0f;
+        new GuiUtils().zLevel = 0.0f;
         renderItem.zLevel = 0.0f;
     }
 }

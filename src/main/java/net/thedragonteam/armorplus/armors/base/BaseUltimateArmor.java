@@ -37,12 +37,12 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.Utils.setAPLocation;
+import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseUltimateArmor extends ItemArmor {
 
-    public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setAPLocation("the_ultimate_armor"), 160,
+    public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
             theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, (float) theUltimateArmorToughnessPoints);
 
     public EnumRarity formattingName;
@@ -142,10 +142,12 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
+        switch (APConfig.getRecipesDifficulty()) {
+            case EASY:
                 return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
-            case 1:
+            case EXPERT:
+                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
+            case HELLISH:
                 return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
         }
         return true;

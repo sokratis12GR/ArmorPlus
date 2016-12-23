@@ -40,48 +40,49 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
-import static net.thedragonteam.armorplus.util.Utils.setAPLocation;
+import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseArmor extends ItemArmor {
 
-    public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setAPLocation("coal_armor"), 7,
+    public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 7,
             coalArmorProtectionPoints, 8, ITEM_ARMOR_EQUIP_LEATHER, (float) coalArmorToughnessPoints);
-    public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", setAPLocation("emerald_armor"), 35,
+    public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", setLocation("emerald_armor"), 35,
             emeraldArmorProtectionPoints, 20, ITEM_ARMOR_EQUIP_DIAMOND, (float) emeraldArmorToughnessPoints);
-    public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", setAPLocation("lapis_armor"), 11,
+    public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", setLocation("lapis_armor"), 11,
             lapisArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) lapisArmorToughnessPoints);
-    public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", setAPLocation("lava_armor"), 45,
+    public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", setLocation("lava_armor"), 45,
             lavaArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) lavaArmorToughnessPoints);
-    public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", setAPLocation("obsidian_armor"), 40,
+    public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", setLocation("obsidian_armor"), 40,
             obsidianArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_DIAMOND, (float) obsidianArmorToughnessPoints);
-    public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", setAPLocation("redstone_armor"), 11,
+    public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", setLocation("redstone_armor"), 11,
             redstoneArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) redstoneArmorToughnessPoints);
-    public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", setAPLocation("chicken_armor"), 3,
+    public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", setLocation("chicken_armor"), 3,
             chickenArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) chickenArmorToughnessPoints);
-    public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", setAPLocation("slime_armor"), 3,
+    public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", setLocation("slime_armor"), 3,
             slimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) slimeArmorToughnessPoints);
-    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", setAPLocation("ender_dragon_armor"), 60,
+    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", setLocation("ender_dragon_armor"), 60,
             enderDragonArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) enderDragonArmorToughnessPoints);
-    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", setAPLocation("guardian_armor"), 50,
+    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", setLocation("guardian_armor"), 50,
             guardianArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) guardianArmorToughnessPoints);
-    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setAPLocation("super_star_armor"), 50,
+    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
             superStarArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) superStarArmorToughnessPoints);
-    public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", setAPLocation("ardite_armor"), 55,
+    public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", setLocation("ardite_armor"), 55,
             arditeArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) arditeArmorToughnessPoints);
-    public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", setAPLocation("cobalt_armor"), 44,
+    public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", setLocation("cobalt_armor"), 44,
             cobaltArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) cobaltArmorToughnessPoints);
-    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", setAPLocation("knight_slime_armor"), 33,
+    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", setLocation("knight_slime_armor"), 33,
             knightSlimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) knightSlimeArmorToughnessPoints);
-    public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", setAPLocation("manyullyn_armor"), 66,
+    public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", setLocation("manyullyn_armor"), 66,
             manyullynArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) manyullynArmorToughnessPoints);
-    public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", setAPLocation("pig_iron_armor"), 33,
+    public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", setLocation("pig_iron_armor"), 33,
             pigIronArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) pigIronArmorToughnessPoints);
 
     public EnumRarity formattingName;
 
     public Item itemEasy;
     public Item itemExpert;
+    public Item itemHellish;
     public TextFormatting formatting;
     private APArmorMaterial material;
     private EntityEquipmentSlot slot;
@@ -90,6 +91,7 @@ public class BaseArmor extends ItemArmor {
         super(armorMaterial.getArmorMaterial(), 0, slot);
         this.itemEasy = armorMaterial.getItemEasy();
         this.itemExpert = armorMaterial.getItemExpert();
+        this.itemHellish = armorMaterial.getItemHellish();
         this.formatting = armorMaterial.getFormatting();
         this.material = armorMaterial;
         this.slot = slot;
@@ -326,11 +328,13 @@ public class BaseArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (recipes) {
-            case 0:
+        switch (getRecipesDifficulty()) {
+            case EASY:
                 return Objects.equals(repair.getItem(), itemEasy);
-            case 1:
+            case EXPERT:
                 return Objects.equals(repair.getItem(), itemExpert);
+            case HELLISH:
+                return Objects.equals(repair.getItem(), itemHellish);
         }
         return true;
     }
@@ -427,7 +431,7 @@ public class BaseArmor extends ItemArmor {
                 break;
             case SUPER_STAR:
                 if (isKeyDown()) {
-                    if (!enableFullObsidianArmorEffect) {
+                    if (!enableFullSuperStarArmorEffect) {
                         addToolTipPiece(tooltip, localizePotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);
                     } else {
                         addToolTipFull(tooltip, localizePotion(superStarArmorAddPotionEffect), superStarArmorEffectLevel);

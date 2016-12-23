@@ -5,10 +5,12 @@
 package net.thedragonteam.armorplus.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import static net.minecraft.item.Item.getByNameOrId;
+import static net.minecraft.item.Item.getItemFromBlock;
 
 public class ItemStackUtils {
     public static ItemStack getTICItemStack(String name, int meta) {
@@ -39,16 +41,24 @@ public class ItemStackUtils {
         return getItemStack(getByNameOrId(modid + ":" + itemName), 0);
     }
 
+    public static ItemStack getItemStack(Item item, int amount, int meta) {
+        return new ItemStack(item, amount, meta);
+    }
+
     public static ItemStack getItemStack(Item item, int meta) {
-        return new ItemStack(item, 1, meta);
+        return getItemStack(item, 1, meta);
     }
 
     public static ItemStack getItemStack(Item item) {
         return new ItemStack(item, 1);
     }
 
+    public static ItemStack getItemStack(Block block, int amount, int meta) {
+        return new ItemStack(block, amount, meta);
+    }
+
     public static ItemStack getItemStack(Block block, int meta) {
-        return new ItemStack(block, 1, meta);
+        return getItemStack(block, 1, meta);
     }
 
     public static ItemStack getItemStack(Block block) {
@@ -57,5 +67,25 @@ public class ItemStackUtils {
 
     public static ItemStack getEmptyStack() {
         return ItemStack.EMPTY;
+    }
+
+    public static Item getItem(ItemStack stack) {
+        return stack.getItem();
+    }
+
+    public static Item getItem(Block block) {
+        return getItemFromBlock(block);
+    }
+
+    public static Item getItem(String modName, String itemName) {
+        return getByNameOrId(modName + ":" + itemName);
+    }
+
+    public static Item getItem(String name) {
+        return getByNameOrId(name);
+    }
+
+    public static Item getEmptyItem() {
+        return Items.AIR;
     }
 }

@@ -52,7 +52,7 @@ public final class Utils {
         return new ResourceLocation(ArmorPlus.MODID, path);
     }
 
-    public static String setAPLocation(String path) {
+    public static String setLocation(String path) {
         return ArmorPlus.MODID + ":" + path;
     }
 

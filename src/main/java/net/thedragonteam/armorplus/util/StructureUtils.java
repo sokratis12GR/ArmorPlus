@@ -16,7 +16,7 @@ import static net.thedragonteam.armorplus.util.StructureUtils.Direction.POSITIVE
 
 public class StructureUtils {
 
-    public static void buildWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn, Direction direction) {
+    public static void placeWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn, Direction direction) {
         int pos;
         int posY;
         switch (direction) {
@@ -41,29 +41,48 @@ public class StructureUtils {
         }
     }
 
+    public static void placeWall(World worldIn, BlockPos corner, IBlockState block, int maxPos, int maxPosY, int posIn) {
+        int pos;
+        int posY;
+        for (posY = 0; posY <= maxPosY; posY++)
+            for (pos = 0; pos <= maxPos; pos++) {
+                int[] stoneBrick = new int[]{
+                        pos, posY, posIn
+                };
+                placeBlock(worldIn, corner, stoneBrick, block);
+            }
+        for (posY = 0; posY <= maxPosY; posY++)
+            for (pos = 0; pos <= maxPos; pos++) {
+                int[] stoneBrick = new int[]{
+                        posIn, posY, pos
+                };
+                placeBlock(worldIn, corner, stoneBrick, block);
+            }
+    }
+
     /**
      * Builds a floor at y level -1 with starting points x = 0 and z = 0
      */
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int maxPosX, int maxPosZ) {
-        buildFloor(worldIn, corner, block, 0, 0, maxPosX, maxPosZ);
+    public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int maxPosX, int maxPosZ) {
+        placeFloor(worldIn, corner, block, 0, 0, maxPosX, maxPosZ);
     }
 
     /**
      * Builds a floor at y level -1
      */
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posZ, int maxPosX, int maxPosZ) {
-        buildFloor(worldIn, corner, block, posX, -1, posZ, maxPosX, maxPosZ);
+    public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posZ, int maxPosX, int maxPosZ) {
+        placeFloor(worldIn, corner, block, posX, -1, posZ, maxPosX, maxPosZ);
     }
 
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ) {
-        buildFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, true);
+    public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ) {
+        placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, true);
     }
 
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, boolean isPositive) {
+    public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, boolean isPositive) {
         if (isPositive) {
-            buildFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, POSITIVE_XZ);
+            placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, POSITIVE_XZ);
         } else {
-            buildFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, NEGATIVE_XZ);
+            placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, NEGATIVE_XZ);
         }
     }
 
@@ -77,10 +96,10 @@ public class StructureUtils {
      * @param posY      the y level
      * @param posZ      the z starting point
      * @param maxPosX   the end position of x
-     * @param maxPosZ   the end position of Z
+     * @param maxPosZ   the end position of POS_Z
      * @param direction the direction that the floor will be generating
      */
-    public static void buildFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, Direction direction) {
+    public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, Direction direction) {
         switch (direction) {
             case POSITIVE_XZ:
                 for (int z = posZ; z <= maxPosZ; z++)
@@ -122,7 +141,7 @@ public class StructureUtils {
     }
 
     // use an int[][] to place a lot of one block at once
-    public static void buildLayer(World world, BlockPos frontLeftCorner, int[][] blockPositions, IBlockState toPlace) {
+    public static void placeLayer(World world, BlockPos frontLeftCorner, int[][] blockPositions, IBlockState toPlace) {
         // iterate through the entire int[][]
         for (int[] coord : blockPositions) {
             placeBlock(world, frontLeftCorner, coord[0], coord[1], coord[2], toPlace);
@@ -173,7 +192,7 @@ public class StructureUtils {
         boolean corner4Air = canReplace(world, posAboveGround.add(0, 0, 4));
         boolean corner3Air = canReplace(world, posAboveGround.add(4, 0, 4));
 
-        // if Y > 20 and all corners pass the test, it's okay to spawn the structure
+        // if POS_Y > 20 and all corners pass the test, it's okay to spawn the structure
         return posAboveGround.getY() > 20 && corner1Air && corner2Air && corner3Air && corner4Air;
     }
 

@@ -20,8 +20,6 @@ import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.isDebugMode;
 import static net.thedragonteam.armorplus.util.StructureUtils.*;
-import static net.thedragonteam.armorplus.util.StructureUtils.Direction.*;
-import static net.thedragonteam.armorplus.util.StructureUtils.Direction.POSITION_X;
 
 public class StructureCastle extends WorldGenerator {
     /**
@@ -29,12 +27,6 @@ public class StructureCastle extends WorldGenerator {
      **/
     // Format: int[][] { {distanceRight, distanceUp, distanceBack} }
     // Format: int[][] { {PosX, PosY, PosZ} }
-    private final int[][] stoneBrickTowerPos = new int[][]
-            {
-                    // tower corners
-                    {0, 4, 0}, {6, 4, 0},
-                    {0, 4, 6}, {6, 4, 6}
-            };
     private final int[][] stoneBrickPos = new int[][]
             {
                     // upper trim (first part of roof)
@@ -53,8 +45,8 @@ public class StructureCastle extends WorldGenerator {
                     // Corner
                     {-1, -1, -1}, {-1, -1, -2}, {-2, -1, -1},
 
-                    // {-1, -1, X}, {-2, -1, X} = Negative X
-                    // {7, -1, X}, {8, -1, X} = Positive X
+                    // {-1, -1, POS_X}, {-2, -1, POS_X} = Negative POS_X
+                    // {7, -1, POS_X}, {8, -1, POS_X} = Positive POS_X
                     {-1, -1, 0}, {-2, -1, 0}, {7, -1, 0}, {8, -1, 0},
                     {-1, -1, 1}, {-2, -1, 1}, {7, -1, 1}, {8, -1, 1},
                     {-1, -1, 2}, {-2, -1, 2}, {7, -1, 2}, {8, -1, 2},
@@ -82,8 +74,8 @@ public class StructureCastle extends WorldGenerator {
                     // Corner
                     {-1, -2, -1}, {-1, -2, -2}, {-2, -2, -1},
 
-                    // {-1, -1, X}, {-2, -1, X} = Negative X
-                    // {7, -1, X}, {8, -1, X} = Positive X
+                    // {-1, -1, POS_X}, {-2, -1, POS_X} = Negative POS_X
+                    // {7, -1, POS_X}, {8, -1, POS_X} = Positive POS_X
                     {-1, -2, 0}, {-2, -2, 0}, {7, -2, 0}, {8, -2, 0},
                     {-1, -2, 1}, {-2, -2, 1}, {7, -2, 1}, {8, -2, 1},
                     {-1, -2, 2}, {-2, -2, 2}, {7, -2, 2}, {8, -2, 2},
@@ -158,18 +150,20 @@ public class StructureCastle extends WorldGenerator {
             IBlockState stoneFence = Blocks.COBBLESTONE_WALL.getDefaultState();
 
             // build the layers using the arrays
-            buildLayer(worldIn, corner, stoneBrickTowerPos, stoneBrickTower);
-            buildLayer(worldIn, corner, stoneBrickPos, stoneBrick);
-            buildLayer(worldIn, corner, lavaPos, lava);
-            buildLayer(worldIn, corner, stonePos, stone);
-            buildLayer(worldIn, corner, stoneFencePos, stoneFence);
+            placeLayer(worldIn, corner, stoneBrickPos, stoneBrick);
+            placeLayer(worldIn, corner, lavaPos, lava);
+            placeLayer(worldIn, corner, stonePos, stone);
+            placeLayer(worldIn, corner, stoneFencePos, stoneFence);
 
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, POSITION_X);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, POSITION_X);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 0, POSITION_Z);
-            buildWall(worldIn, corner, stoneBrick, 6, 2, 6, POSITION_Z);
-            buildFloor(worldIn, corner, stone, 6, 6);
+            placeWall(worldIn, corner, stoneBrick, 6, 2, 0);
+            placeWall(worldIn, corner, stoneBrick, 6, 2, 6);
+            placeFloor(worldIn, corner, stone, 6, 6);
 
+            // Corners
+            placeBlock(worldIn, corner, 0, 4, 0, stoneBrick);
+            placeBlock(worldIn, corner, 0, 4, 6, stoneBrick);
+            placeBlock(worldIn, corner, 6, 4, 0, stoneBrick);
+            placeBlock(worldIn, corner, 6, 4, 6, stoneBrick);
             // place the other features LAST
             placeBlock(worldIn, corner, doorBottomPos, doorLower);
             placeBlock(worldIn, corner, doorTopPos, doorUpper);

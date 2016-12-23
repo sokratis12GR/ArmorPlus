@@ -8,6 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.thedragonlib.TheDragonLib;
 import net.thedragonteam.thedragonlib.util.LogHelper;
+import org.apache.commons.compress.utils.IOUtils;
 
 import java.io.*;
 
@@ -46,9 +47,7 @@ public class Logger {
         } catch (IOException ex) {
             LogHelper.error(format("%s.html", ArmorPlus.MODNAME) + " error");
         } finally {
-            try {
-                writer.close();
-            } catch (Exception ex) {/*ignore*/}
+            IOUtils.closeQuietly(writer);
         }
     }
 }

@@ -39,21 +39,16 @@ public class ContainerWorkbench extends Container {
         this.world = worldIn;
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
-        for (int i = 0; i < RECIPE_SIZE; ++i) {
-            for (int j = 0; j < RECIPE_SIZE; ++j) {
+        for (int i = 0; i < RECIPE_SIZE; ++i)
+            for (int j = 0; j < RECIPE_SIZE; ++j)
                 this.addSlotToContainer(new Slot(this.craftMatrix, j + i * RECIPE_SIZE, 30 + j * ITEM_BOX, 17 + i * ITEM_BOX));
-            }
-        }
 
-        for (int k = 0; k < 3; ++k) {
-            for (int i1 = 0; i1 < ROW_SLOTS; ++i1) {
+        for (int k = 0; k < 3; ++k)
+            for (int i1 = 0; i1 < ROW_SLOTS; ++i1)
                 this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 84 + k * ITEM_BOX));
-            }
-        }
 
-        for (int l = 0; l < ROW_SLOTS; ++l) {
+        for (int l = 0; l < ROW_SLOTS; ++l)
             this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * ITEM_BOX, 142));
-        }
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }

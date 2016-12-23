@@ -5,6 +5,10 @@ Features Added:
 
 * Champion Bench (Tier 4) is added, wip, not finished, special.
 * Improved the models of all the benches
+* Added a new WIP mob (Ice Golem)
+
+Code Changes:
+* A few improvements here and there
 
 Bugs Fixed:
 

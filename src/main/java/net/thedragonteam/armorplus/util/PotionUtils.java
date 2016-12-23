@@ -13,8 +13,24 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class PotionUtils {
 
+
+    public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
+        entity.addPotionEffect(new PotionEffect(getPotion(potion), duration, amplifier, ambientIn, showParticlesIn));
+    }
+
     public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
         entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, ambientIn, showParticlesIn));
+    }
+
+    public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
+        switch (potionType) {
+            case GOOD:
+                addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, false);
+                break;
+            case BAD:
+                addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, true);
+                break;
+        }
     }
 
     public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
@@ -24,6 +40,17 @@ public class PotionUtils {
                 break;
             case BAD:
                 addPotion(entity, potion, duration, amplifier, ambientIn, true);
+                break;
+        }
+    }
+
+    public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, PotionType potionType) {
+        switch (potionType) {
+            case GOOD:
+                addPotion(entity, getPotion(potion), duration, amplifier, false, false);
+                break;
+            case BAD:
+                addPotion(entity, getPotion(potion), duration, amplifier, false, true);
                 break;
         }
     }
@@ -39,6 +66,17 @@ public class PotionUtils {
         }
     }
 
+    public static void addPotion(EntityLivingBase entity, String potion, int amplifier, PotionType potionType) {
+        switch (potionType) {
+            case GOOD:
+                addPotion(entity, getPotion(potion), 120, amplifier, false, false);
+                break;
+            case BAD:
+                addPotion(entity, getPotion(potion), 120, amplifier, false, true);
+                break;
+        }
+    }
+
     public static void addPotion(EntityLivingBase entity, Potion potion, int amplifier, PotionType potionType) {
         switch (potionType) {
             case GOOD:
@@ -48,6 +86,10 @@ public class PotionUtils {
                 addPotion(entity, potion, 120, amplifier, false, true);
                 break;
         }
+    }
+
+    public static void removePotion(EntityLivingBase entity, String potion) {
+        entity.removePotionEffect(getPotion(potion));
     }
 
     public static void removePotion(EntityLivingBase entity, Potion potion) {

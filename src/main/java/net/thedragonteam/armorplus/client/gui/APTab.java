@@ -13,6 +13,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 /**
  * net.thedragonteam.armorplus.client.gui
@@ -45,15 +46,15 @@ public class APTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return new ItemStack(ModItems.lavaChestplate);
+                return getItemStack(ModItems.lavaChestplate);
             case (1):
-                return new ItemStack(materials, 1, 3);
+                return getItemStack(materials, 3);
             case (2):
-                return new ItemStack(ModBlocks.blockLavaCrystal);
+                return getItemStack(ModBlocks.blockLavaCrystal);
             case (3):
-                return new ItemStack(ModItems.redstoneBattleAxe);
+                return getItemStack(ModItems.redstoneBattleAxe);
             case (4):
-                return new ItemStack(ModItems.itemTeslaRod);
+                return getItemStack(ModItems.itemTeslaRod);
         }
         return null;
     }

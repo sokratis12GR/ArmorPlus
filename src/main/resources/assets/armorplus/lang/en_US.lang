@@ -19,10 +19,10 @@ gui.armorplus.info.text_line_five=From `I:Recipe:1` to `I:Recipe:0`.
 gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
 
 #Enchantmnets
-enchantment.life_steal=Life Steal
-enchantment.life_steal.desc=Steal's the attacked entity's health and heals you
-enchantment.furious=Furious
-enchantment.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
+enchantment.armorplus.life_steal=Life Steal
+enchantment.armorplus.life_steal.desc=Steal's the attacked entity's health and heals you
+enchantment.armorplus.furious=Furious
+enchantment.armorplus.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
 
 #JeiDescriptions
 armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
@@ -350,6 +350,7 @@ item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 
 #Entities
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
+entity.ice_golem.name=Ice Golem (WIP)
 
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor

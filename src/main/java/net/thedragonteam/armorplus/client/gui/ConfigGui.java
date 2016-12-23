@@ -17,6 +17,7 @@ import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class ConfigGui extends GuiConfig {
+
     public ConfigGui(GuiScreen parentScreen) {
         super(parentScreen, getConfigElements(parentScreen), ArmorPlus.MODID, false, true,
                 localize("gui." + ArmorPlus.MODID + ".config.title"));

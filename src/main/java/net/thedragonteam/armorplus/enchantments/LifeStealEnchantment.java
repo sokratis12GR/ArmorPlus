@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
+import net.thedragonteam.armorplus.util.Utils;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.thedragonteam.armorplus.APConfig.debugMode;
@@ -23,7 +24,7 @@ public class LifeStealEnchantment extends Enchantment {
     public LifeStealEnchantment() {
         super(Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         setRegistryName("life_steal");
-        setName("life_steal");
+        setName(Utils.setName("life_steal"));
         MinecraftForge.EVENT_BUS.register(this);
     }
 
