@@ -6,6 +6,30 @@ itemGroup.armorplus.items=AP Objets
 itemGroup.armorplus.blocks=AP Blocs
 itemGroup.armorplus.weapons=AP Armes
 itemGroup.armorplus.tesla=AP Tesla
+itemGroup.armorplus.tinkers=AP Tinkers
+
+#GuiArmorPlusInfo
+gui.armorplus.info.text_line_heading=ArmorPlus Info
+gui.armorplus.info.text_line_one=Les recettes d'ArmorPlus sont
+gui.armorplus.info.text_line_two=Mode Expert `I:Recipe:1` par défaut.
+gui.armorplus.info.text_line_three=Si vous voulez changer à Easy Mode
+gui.armorplus.info.text_line_four=vous devriez changer les configs
+gui.armorplus.info.text_line_five=De `I:Recipe:1` à `I:Recipe:0`.
+gui.armorplus.info.text_line_six=Game Mode courant `I:Recipe: %s`.
+
+#Enchantmnets
+enchantment.armorplus.life_steal=Life Steal
+enchantment.armorplus.life_steal.desc=Steal's the attacked entity's health and heals you
+enchantment.armorplus.furious=Furieux
+enchantment.armorplus.furious.desc=Quand vous êtes attaquée, vous devenez furieux et vous avez donc de la vitesse et de la force (dépend au niveau).
+
+#JeiDescriptions
+armorplus.jei.guardian_scale.desc=Utilisées pour fabriquer les armes du Gardien, ses armures et le Matériel Ultime. Ils sont lâchées par les gardiens et les anciens gardiens.
+armorplus.jei.wither_bone.desc=Utilisées pour fabriquer les armes et les armures formidables et le Matériel Ultime. Ils sont lâchées par les Withers et les withers squelettes.
+armorplus.jei.ender_dragon_scale.desc=Utilisées pour fabriquer les armes du l'Ender Dragon, ses armures et le Matériel Ultime. Ils sont lâchées par l'Ender Dragon et les Ender Dragon Zombies.
+
+#Baubles
+item.armorplus.bauble_cosmetic_dragon.name=Dragon Cosmetique
 
 #Containers
 container.armorplus.armor_forge=Forge d'Armures
@@ -13,7 +37,7 @@ container.armorplus.advanced_armor_forge=Forge d'Armures Avancée
 container.armorplus.inventory=Inventaire
 
 #RFTooltip
-tooltip.rf.showinfo=Press %s%s%s pour plus d'info.
+tooltip.rf.showinfo=Appuyez sur %s%s%s pour plus d'info.
 tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/bloc
 tooltip.rf.cost.hit=Cost: %s RF/coup
@@ -25,7 +49,7 @@ tooltip.tesla.cost.hit=Cost: %s Tesla/coup
 
 #TiC
 modifier.firestorm.name=Tempête de Feu
-modifier.firestorm.desc=§oLa vrai Super Nova§r\nDégât de feu en bonus, mets tes enemies au feu.
+modifier.firestorm.desc=§oLa vrai Super Nova§r\nDégât de feu en bonus, enflame tes enemies.
 modifier.firestorm.extra=Dégât du Feu: +%s
 modifier.firestorm.extra2=Durée du Combustion: %ss
 modifier.ultimatemod.name=Étendu
@@ -265,6 +289,24 @@ tile.armorplus.lava_nether_brick.name=Brique de Lave du Nether
 tile.armorplus.white_stone_brick.name=Pierre Blanche Taillée
 tile.armorplus.white_stone_brick_tower.name=Tour en Pierre Blanche Taillée
 tile.armorplus.white_stone_brick_corner.name=Coin en Pierre Blanche Taillée
+tile.armorplus.red_stone_brick.name=Pierre Rouge Taillée
+tile.armorplus.red_stone_brick_tower.name=Tour en Pierre Rouge Taillée
+tile.armorplus.red_stone_brick_corner.name=Coin en Pierre Rouge Taillée
+tile.armorplus.black_stone_brick.name=Pierre Noire Taillée
+tile.armorplus.black_stone_brick_tower.name=Tour en Pierre Noire Taillée
+tile.armorplus.black_stone_brick_corner.name=Coin en Pierre Noire Taillée
+tile.armorplus.blue_stone_brick.name=Pierre Bleue Taillée
+tile.armorplus.blue_stone_brick_tower.name=Tour en Pierre Bleue Taillée
+tile.armorplus.blue_stone_brick_corner.name=Coin en Pierre Bleue Taillée
+tile.armorplus.green_stone_brick.name=Pierre Verte Taillée
+tile.armorplus.green_stone_brick_tower.name=Tour en Pierre Verte Taillée
+tile.armorplus.green_stone_brick_corner.name=Coin en Pierre Verte Taillée
+tile.armorplus.yellow_stone_brick.name=Pierre Jaune Taillée
+tile.armorplus.yellow_stone_brick_tower.name=Tour en Pierre Jaune Taillée
+tile.armorplus.yellow_stone_brick_corner.name=Coin en Pierre Jaune Taillée
+tile.armorplus.purple_stone_brick.name=Pierre Violette Taillée
+tile.armorplus.purple_stone_brick_tower.name=Tour en Pierre Violette Taillée
+tile.armorplus.purple_stone_brick_corner.name=Coin en Pierre Violette Taillée
 
 #Swords
 item.armorplus.coal_sword.name=Épée en Charbon
@@ -323,6 +365,7 @@ item.armorplus.redstone_flux_shovel.name=Pelle à Redstone Flux
 
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Zombie du Dragon de l'Ender
+entity.ice_golem.name=Golem de Glace (WIP)
 
 #KeyBinds
 key.nightVision=Changer à la Vision Nocturne de l'Armure Ultime
