@@ -116,14 +116,14 @@ public class ShapedOreRecipe implements IRecipe {
         width = recipe.recipeWidth;
         height = recipe.recipeHeight;
 
-        input = new Object[recipe.recipeItems.length];
+        input = new Object[recipe.input.length];
 
         for (int i = 0; i < input.length; i++) {
-            ItemStack ingredient = recipe.recipeItems[i];
+            ItemStack ingredient = recipe.input[i];
 
             if (ingredient.isEmpty()) continue;
 
-            input[i] = recipe.recipeItems[i];
+            input[i] = recipe.input[i];
 
             for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, true)) {
@@ -236,5 +236,13 @@ public class ShapedOreRecipe implements IRecipe {
     @Override
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

@@ -28,7 +28,7 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Is a array of ItemStack that composes the recipe.
      */
-    public final ItemStack[] recipeItems;
+    public final ItemStack[] input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
@@ -38,11 +38,11 @@ public class ShapedRecipes implements IRecipe {
     public ShapedRecipes(int width, int height, ItemStack[] ingredientsIn, ItemStack output) {
         this.recipeWidth = width;
         this.recipeHeight = height;
-        this.recipeItems = ingredientsIn;
+        this.input = ingredientsIn;
 
-        for (int i = 0; i < this.recipeItems.length; ++i) {
-            if (this.recipeItems[i] == null) {
-                this.recipeItems[i] = ItemStack.EMPTY;
+        for (int i = 0; i < this.input.length; ++i) {
+            if (this.input[i] == null) {
+                this.input[i] = ItemStack.EMPTY;
             }
         }
 
@@ -95,9 +95,9 @@ public class ShapedRecipes implements IRecipe {
 
                 if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
                     if (p_77573_4_) {
-                        itemstack = this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth];
+                        itemstack = this.input[this.recipeWidth - k - 1 + l * this.recipeWidth];
                     } else {
-                        itemstack = this.recipeItems[k + l * this.recipeWidth];
+                        itemstack = this.input[k + l * this.recipeWidth];
                     }
                 }
 
@@ -139,6 +139,16 @@ public class ShapedRecipes implements IRecipe {
         }
 
         return itemstack;
+    }
+
+    /**
+     * Returns the input for this recipe, any mod accessing this value should never
+     * manipulate the values in this array as it will effect the recipe itself.
+     *
+     * @return The recipes input vales.
+     */
+    public Object[] getInput() {
+        return this.input;
     }
 
     /**

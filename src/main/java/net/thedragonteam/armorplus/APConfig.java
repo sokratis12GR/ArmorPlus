@@ -15,7 +15,6 @@ import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
  */
 public class APConfig {
 
-
     //GameModes
     @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
     public static int recipes = 1;
@@ -646,11 +645,11 @@ public class APConfig {
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "enableLavaCrystalOreTheNetherGen", comment = "Enable/Disable The Lava Crystal World Generation in the dimension `The Nether`")
     public static boolean enableLavaCrystalTheNetherGen = false;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldRarity = 7;
+    public static int lavaCrystalOverworldRarity = 62;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMinYSpawn", comment = "Set the min POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMinYSpawn = 6;
+    public static int lavaCrystalOverworldMinYSpawn = 3;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMaxYSpawn", comment = "Set the max POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMaxYSpawn = 16;
+    public static int lavaCrystalOverworldMaxYSpawn = 4;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndRarity = 0;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndMinYSpawn", comment = "Set the min POS_Y level of the Lava Crystal Generation in the dimension `The End`")

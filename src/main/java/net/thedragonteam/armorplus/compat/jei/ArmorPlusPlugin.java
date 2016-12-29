@@ -8,10 +8,26 @@ import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.client.gui.GuiHighTechBench;
+import net.thedragonteam.armorplus.client.gui.GuiUltiTechBench;
+import net.thedragonteam.armorplus.client.gui.GuiWorkbench;
+import net.thedragonteam.armorplus.compat.jei.hightechbench.*;
+import net.thedragonteam.armorplus.compat.jei.ultitechbench.*;
+import net.thedragonteam.armorplus.compat.jei.workbench.*;
+import net.thedragonteam.armorplus.container.ContainerHighTechBench;
+import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
+import net.thedragonteam.armorplus.container.ContainerWorkbench;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.thedragonlib.util.TextHelper;
+
+import static net.thedragonteam.armorplus.api.Constants.Compat.*;
 
 @JEIPlugin
 public class ArmorPlusPlugin extends BlankModPlugin {
@@ -21,6 +37,46 @@ public class ArmorPlusPlugin extends BlankModPlugin {
     @Override
     public void register(IModRegistry registry) {
         jeiHelper = registry.getJeiHelpers();
+
+        //IGuiHelper guiHelper = jeiHelper.getGuiHelper();
+
+        registry.addRecipeCategories(
+                new WBCategory(),
+                new HTBCategory(),
+                new UTBCategory()
+        );
+        registry.addRecipeHandlers(
+                new WBShapedRecipeHandler(),
+                new WBShapelessRecipeHandler(),
+                new WBShapedOreRecipeHandler(jeiHelper),
+                new WBShapelessOreRecipeHandler(jeiHelper),
+                new HTBShapedRecipeHandler(),
+                new HTBShapelessRecipeHandler(),
+                new HTBShapedOreRecipeHandler(jeiHelper),
+                new HTBShapelessOreRecipeHandler(jeiHelper),
+                new UTBShapedRecipeHandler(),
+                new UTBShapelessRecipeHandler(),
+                new UTBShapedOreRecipeHandler(jeiHelper),
+                new UTBShapelessOreRecipeHandler(jeiHelper)
+        );
+
+        registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeClickArea(GuiHighTechBench.class, 88, 40, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeClickArea(GuiUltiTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_ULTI_TECH_BENCH);
+
+        IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
+
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerWorkbench.class, JEI_CATEGORY_WORKBENCH, 1, 9, 10, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36);
+
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpWorkbench), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpHighTechBench), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpUltiTechBench), JEI_CATEGORY_ULTI_TECH_BENCH);
+
+        registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
+        registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());
+        registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList());
 
         addDescription(registry, ModItems.materials, 1, TextHelper.localize("armorplus.jei.guardian_scale.desc"));
         addDescription(registry, ModItems.materials, 2, TextHelper.localize("armorplus.jei.wither_bone.desc"));

@@ -18,8 +18,10 @@ public class Constants {
     }
 
     public static class Compat {
-        public static final String JEI_CATEGORY_WORKBENCH = ArmorPlus.MODID + ":benches";
+        public static final String JEI_CATEGORY_WORKBENCH = ArmorPlus.MODID + ":bench";
         public static final String JEI_CATEGORY_HIGH_TECH_BENCH = ArmorPlus.MODID + ":high_tech_bench";
         public static final String JEI_CATEGORY_ULTI_TECH_BENCH = ArmorPlus.MODID + ":ulti_tech_bench";
+        public static final String JEI_CATEGORY_CHAMPION_BENCH = ArmorPlus.MODID + ":champion_bench";
+
     }
 }

@@ -18,7 +18,6 @@ import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.APAchievements;
-import net.thedragonteam.armorplus.util.Logger;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -34,7 +33,6 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        Logger.init(new File(event.getModConfigurationDirectory().getPath()));
         APEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");

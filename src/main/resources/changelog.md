@@ -1,3 +1,14 @@
+ArmorPlus 1.11-9.3.0.1-beta
+----------------------------
+
+Features Added:
+
+* Added back JEI support for the benches.
+
+Bugs Fixed:
+
+* Crash on server start up.
+
 ArmorPlus 1.11-9.2.0.1-beta
 ----------------------------
 
