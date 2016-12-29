@@ -1,3 +1,10 @@
+ArmorPlus 1.11-9.3.1.2-beta
+----------------------------
+
+Features Changed:
+
+* Made the lava crystal ore gen rarity from 7 to 8 and amount in a vein from 5 to 2
+
 ArmorPlus 1.11-9.3.0.1-beta
 ----------------------------
 

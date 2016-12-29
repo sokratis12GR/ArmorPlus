@@ -645,11 +645,11 @@ public class APConfig {
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "enableLavaCrystalOreTheNetherGen", comment = "Enable/Disable The Lava Crystal World Generation in the dimension `The Nether`")
     public static boolean enableLavaCrystalTheNetherGen = false;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldRarity = 62;
+    public static int lavaCrystalOverworldRarity = 8;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMinYSpawn", comment = "Set the min POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMinYSpawn = 3;
+    public static int lavaCrystalOverworldMinYSpawn = 6;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMaxYSpawn", comment = "Set the max POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldMaxYSpawn = 4;
+    public static int lavaCrystalOverworldMaxYSpawn = 16;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndRarity = 0;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndMinYSpawn", comment = "Set the min POS_Y level of the Lava Crystal Generation in the dimension `The End`")
@@ -663,7 +663,7 @@ public class APConfig {
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherMaxYSpawn", comment = "Set the max POS_Y level of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherMaxYSpawn = 0;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldVeinAmount = 5;
+    public static int lavaCrystalOverworldVeinAmount = 2;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")

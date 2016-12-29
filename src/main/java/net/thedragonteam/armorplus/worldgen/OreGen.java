@@ -65,7 +65,8 @@ public class OreGen implements IWorldGenerator {
             int x = chunk_X * 16 + rand.nextInt(16);
             int y = minHeight + rand.nextInt(heightDiff);
             int z = chunk_Z * 16 + rand.nextInt(16);
-            generator.generate(world, rand, new BlockPos(x, y, z));
+            BlockPos orePos = new BlockPos(x, y, z);
+            generator.generate(world, rand, orePos);
         }
     }
 }
