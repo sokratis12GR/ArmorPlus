@@ -39,7 +39,7 @@ public class GuiArmorPlusInfo extends GuiScreen {
         fontRendererObj.drawString(localize("gui.armorplus.info.text_line_three"), guiX + 25, guiY + 60, 0x000000);
         fontRendererObj.drawString(localize("gui.armorplus.info.text_line_four"), guiX + 25, guiY + 70, 0x000000);
         fontRendererObj.drawString(localize("gui.armorplus.info.text_line_five"), guiX + 25, guiY + 80, 0x000000);
-        fontRendererObj.drawString(localize("gui.armorplus.info.text_line_six", APConfig.recipes), guiX + 25, guiY + 100, 0x000000);
+        fontRendererObj.drawString(localize("gui.armorplus.info.text_line_six", APConfig.gameMode), guiX + 25, guiY + 100, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

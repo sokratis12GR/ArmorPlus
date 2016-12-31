@@ -38,7 +38,7 @@ public class SubCommandInfo extends SubCommandBase {
         sender.sendMessage(new TextComponentString(TextFormatting.RED + "[Thank You " + sender.getName() + " for using " + ArmorPlus.MODNAME + "]"));
         sender.sendMessage(new TextComponentString(TextFormatting.GREEN + "[" + "modid: " + ArmorPlus.MODID + "]"));
         sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "[Minecraft Version: " + server.getMinecraftVersion() + "]"));
-        sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "[ArmorPlus recipe difficulty: " + APConfig.recipes + "]"));
+        sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "[ArmorPlus recipe difficulty: " + APConfig.gameMode + "]"));
         sender.sendMessage(new TextComponentTranslation(TextFormatting.GOLD + "[Recipes] " + "use command /armorplus wiki"));
     }
 }

@@ -14,10 +14,10 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.Utils;
 
+import static net.thedragonteam.armorplus.APConfig.getRecipesDifficulty;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IItemHelper {
@@ -50,11 +50,13 @@ public class BaseSword extends ItemSword implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
+        switch (getRecipesDifficulty()) {
+            case EASY:
                 return repair.getItem() == itemEasy;
-            case 1:
+            case EXPERT:
                 return repair.getItem() == itemExpert;
+            case HELLISH:
+                return false;
         }
         return true;
     }

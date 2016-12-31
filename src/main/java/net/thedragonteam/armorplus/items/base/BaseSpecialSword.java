@@ -128,11 +128,13 @@ public class BaseSpecialSword extends ItemSword implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
+        switch (getRecipesDifficulty()) {
+            case EASY:
                 return repair.getItem() == itemEasy;
-            case 1:
+            case EXPERT:
                 return repair.getItem() == itemExpert;
+            case HELLISH:
+                return false;
         }
         return true;
     }

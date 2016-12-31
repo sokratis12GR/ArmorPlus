@@ -16,7 +16,7 @@ public class ModEnderDragonRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Ender Dragon Armor */
         if (APConfig.enableEnderDragonArmor) {
-            if (APConfig.recipes == 0 && enableEnderDragonArmorRecipes) {
+            if (APConfig.gameMode == 0 && enableEnderDragonArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
                         "EEEEE",
                         "E   E",
@@ -59,7 +59,7 @@ public class ModEnderDragonRecipes {
                         "E   E",
                         'E', new ItemStack(ModItems.materials, 1, 3));
             }
-            if (APConfig.recipes == 1 && enableEnderDragonArmorRecipes) {
+            if (APConfig.gameMode == 1 && enableEnderDragonArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
                         "CEEEC",
                         "ES SE",

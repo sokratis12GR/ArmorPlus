@@ -18,8 +18,10 @@ import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 import net.thedragonteam.armorplus.util.APAchievements;
+import net.thedragonteam.armorplus.util.EnumHelperUtil;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
+import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.io.File;
@@ -90,5 +92,6 @@ public class CommonProxy {
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
         GameRegistry.registerWorldGenerator(new StructureGen(), 1);
+        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 2);
     }
 }

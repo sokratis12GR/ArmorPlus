@@ -16,8 +16,8 @@ import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
 public class APConfig {
 
     //GameModes
-    @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
-    public static int recipes = 1;
+    @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy (All recipes are extremely easy) , 1 = expert (default, All Recipes Are Harder), 2 = hellish (Repairing for A+ items is DISABLED)")
+    public static int gameMode = 1;
     //WhiteList
     @ModConfigProperty(category = "WhiteList", name = "whitelistMax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
     public static int whitelistMax = 0;
@@ -672,6 +672,12 @@ public class APConfig {
     public static int castleGenSpawnChance = 1;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
     public static boolean enableCastleGen = true;
+
+    @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "towerGenSpawnChance", comment = "Set the spawn chance of the Tower Generation in the Overworld")
+    public static int towerGenSpawnChance = 1;
+    @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "enableTowerGenSpawnChance", comment = "Enable/Disable the Tower Generation")
+    public static boolean enableTowerGenSpawnChance = true;
+
     //TinkersEffects
     @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")
     public static boolean enableArditeArmorEffect = true;
@@ -753,7 +759,7 @@ public class APConfig {
     }
 
     public static RecipesDifficulty getRecipesDifficulty() {
-        switch (recipes) {
+        switch (gameMode) {
             case 0:
                 return EASY;
             case 1:

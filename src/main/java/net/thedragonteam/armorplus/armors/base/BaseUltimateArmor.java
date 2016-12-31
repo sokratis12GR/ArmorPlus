@@ -148,7 +148,7 @@ public class BaseUltimateArmor extends ItemArmor {
             case EXPERT:
                 return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
             case HELLISH:
-                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
+                return false;
         }
         return true;
     }

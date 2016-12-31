@@ -13,7 +13,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponsTierOneRecipes {
     public void addRecipes(WorkbenchCraftingManager manager) {
-        if (enableSwordsRecipes && recipes == 0) {
+        if (enableSwordsRecipes && gameMode == 0) {
             if (enableCoalSword)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "itemCoal", 'S', "stickWood"));
             if (enableLapisSword)
@@ -21,7 +21,7 @@ public class ModWeaponsTierOneRecipes {
             if (enableRedstoneSword)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "dustRedstone", 'S', "stickWood"));
         }
-        if (enableBattleAxesRecipes && recipes == 0) {
+        if (enableBattleAxesRecipes && gameMode == 0) {
             if (enableCoalBattleAxe)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "C C", "CSC", " S ", 'C', "itemCoal", 'S', "stickWood"));
             if (enableLapisBattleAxe)
@@ -29,7 +29,7 @@ public class ModWeaponsTierOneRecipes {
             if (enableRedstoneBattleAxe)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "R R", "RSR", " S ", 'R', "dustRedstone", 'S', "stickWood"));
         }
-        if (enableBowsRecipes && recipes == 0) {
+        if (enableBowsRecipes && gameMode == 0) {
             if (enableCoalBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), " CS", "C S", " CS", 'C', "itemCoal", 'S', "string"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SC ", "S C", "SC ", 'C', "itemCoal", 'S', "string"));
@@ -43,7 +43,7 @@ public class ModWeaponsTierOneRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBow, 1), "SR ", "S R", "SR ", 'R', "dustRedstone", 'S', "string"));
             }
         }
-        if (enableSwordsRecipes && recipes == 1) {
+        if (enableSwordsRecipes && gameMode == 1) {
             if (enableCoalSword)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "blockCoal", 'S', "stickWood"));
             if (enableLapisSword)
@@ -51,7 +51,7 @@ public class ModWeaponsTierOneRecipes {
             if (enableRedstoneSword)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "blockRedstone", 'S', "stickWood"));
         }
-        if (enableBattleAxesRecipes && recipes == 1) {
+        if (enableBattleAxesRecipes && gameMode == 1) {
             if (enableCoalBattleAxe)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBattleAxe, 1), "C C", "CSC", " S ", 'C', "blockCoal", 'S', "stickWood"));
             if (enableLapisBattleAxe)
@@ -59,7 +59,7 @@ public class ModWeaponsTierOneRecipes {
             if (enableRedstoneBattleAxe)
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneBattleAxe, 1), "R R", "RSR", " S ", 'R', "blockRedstone", 'S', "stickWood"));
         }
-        if (enableBowsRecipes && recipes == 1) {
+        if (enableBowsRecipes && gameMode == 1) {
             if (enableCoalBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), " CS", "C S", " CS", 'C', "blockCoal", 'S', "string"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalBow, 1), "SC ", "S C", "SC ", 'C', "blockCoal", 'S', "string"));

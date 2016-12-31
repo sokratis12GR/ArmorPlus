@@ -23,7 +23,7 @@ import static net.thedragonteam.armorplus.util.ItemStackUtils.*;
 public enum APArmorMaterial {
     COAL(coalArmor, "coal", Items.COAL, COAL_BLOCK, getValueByName(coalArmorItemNameColor)),
     LAPIS(lapisArmor, "lapis", getItemStack(Items.DYE, 4), LAPIS_BLOCK, getValueByName(lapisArmorItemNameColor)),
-    REDSTONE(redstoneArmor, "redstone", Items.REDSTONE, REDSTONE_BLOCK, REDSTONE_BLOCK, getValueByName(redstoneArmorItemNameColor)),
+    REDSTONE(redstoneArmor, "redstone", Items.REDSTONE, REDSTONE_BLOCK, getValueByName(redstoneArmorItemNameColor)),
     EMERALD(emeraldArmor, "emerald", Items.EMERALD, EMERALD_BLOCK, getValueByName(emeraldArmorItemNameColor)),
     OBSIDIAN(obsidianArmor, "obsidian", Blocks.OBSIDIAN, compressedObsidian, getValueByName(obsidianArmorItemNameColor)),
     LAVA(lavaArmor, "lava", lavaCrystal, getItemStack(lavaCrystal, 1), getValueByName(lavaArmorItemNameColor)),
@@ -46,65 +46,38 @@ public enum APArmorMaterial {
 
     private final Item itemExpert;
 
-    private final Item itemHellish;
-
     private final TextFormatting formatting;
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, Item repairHellishIn, TextFormatting textFormattingIn) {
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
         this.itemEasy = repairEasyIn;
         this.itemExpert = repairExpertIn;
-        this.itemHellish = repairHellishIn;
         this.formatting = textFormattingIn;
     }
 
     APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairAll, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairAll, repairAll, repairAll, textFormattingIn);
+        this(armorMaterialIn, nameIn, repairAll, repairAll, textFormattingIn);
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairEasy, Item repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
+    APArmorMaterial(ArmorMaterial armorMaterial, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), textFormatting);
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairEasy, Block repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
+    APArmorMaterial(ArmorMaterial armorMaterial, String name, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), textFormatting);
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairEasy, Block repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
+    APArmorMaterial(ArmorMaterial armorMaterial, String name, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+        this(armorMaterial, name, repairEasy, getItem(repairExpert), textFormatting);
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Block repairEasy, Block repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
+    APArmorMaterial(ArmorMaterial armorMaterial, String name, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(armorMaterial, name, repairEasy, getItem(repairExpert), textFormatting);
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairEasy, ItemStack repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, Item repairEasy, ItemStack repairHard, TextFormatting textFormattingIn) {
-        this(armorMaterialIn, nameIn, repairEasy, repairHard, repairHard, textFormattingIn);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterial, String name, ItemStack repairEasy, ItemStack repairExpert, ItemStack repairHellish, TextFormatting textFormatting) {
-        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), getItem(repairHellish), textFormatting);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterial, String name, ItemStack repairEasy, Block repairExpert, Block repairHellish, TextFormatting textFormatting) {
-        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), getItem(repairHellish), textFormatting);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterial, String name, Item repairEasy, ItemStack repairExpert, ItemStack repairHellish, TextFormatting textFormatting) {
-        this(armorMaterial, name, repairEasy, getItem(repairExpert), getItem(repairHellish), textFormatting);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterial, String name, Item repairEasy, Block repairExpert, Block repairHellish, TextFormatting textFormatting) {
-        this(armorMaterial, name, repairEasy, getItem(repairExpert), getItem(repairHellish), textFormatting);
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterial, String name, Block repairEasy, Block repairExpert, Block repairHellish, TextFormatting textFormatting) {
-        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), getItem(repairHellish), textFormatting);
+    APArmorMaterial(ArmorMaterial armorMaterial, String name, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
+        this(armorMaterial, name, getItem(repairEasy), getItem(repairExpert), textFormatting);
     }
 
     public ArmorMaterial getArmorMaterial() {
@@ -121,10 +94,6 @@ public enum APArmorMaterial {
 
     public Item getItemExpert() {
         return itemExpert;
-    }
-
-    public Item getItemHellish() {
-        return itemHellish;
     }
 
     public TextFormatting getFormatting() {

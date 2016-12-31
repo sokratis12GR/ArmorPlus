@@ -10,10 +10,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
@@ -25,16 +22,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.util.EnumTiers;
 import net.thedragonteam.armorplus.util.PotionUtils;
 
 import java.util.List;
 import java.util.Objects;
 
-import static net.minecraft.init.SoundEvents.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
@@ -46,52 +42,52 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 public class BaseArmor extends ItemArmor {
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 7,
-            coalArmorProtectionPoints, 8, ITEM_ARMOR_EQUIP_LEATHER, (float) coalArmorToughnessPoints);
+            coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", setLocation("emerald_armor"), 35,
-            emeraldArmorProtectionPoints, 20, ITEM_ARMOR_EQUIP_DIAMOND, (float) emeraldArmorToughnessPoints);
+            emeraldArmorProtectionPoints, emeraldArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", setLocation("lapis_armor"), 11,
-            lapisArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) lapisArmorToughnessPoints);
+            lapisArmorProtectionPoints, lapisArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", setLocation("lava_armor"), 45,
-            lavaArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) lavaArmorToughnessPoints);
+            lavaArmorProtectionPoints, lavaArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", setLocation("obsidian_armor"), 40,
-            obsidianArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_DIAMOND, (float) obsidianArmorToughnessPoints);
+            obsidianArmorProtectionPoints, obsidianArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", setLocation("redstone_armor"), 11,
-            redstoneArmorProtectionPoints, 25, ITEM_ARMOR_EQUIP_GOLD, (float) redstoneArmorToughnessPoints);
+            redstoneArmorProtectionPoints, redstoneArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", setLocation("chicken_armor"), 3,
-            chickenArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) chickenArmorToughnessPoints);
+            chickenArmorProtectionPoints, chickenArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", setLocation("slime_armor"), 3,
-            slimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_LEATHER, (float) slimeArmorToughnessPoints);
-    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", setLocation("ender_dragon_armor"), 60,
-            enderDragonArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) enderDragonArmorToughnessPoints);
-    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", setLocation("guardian_armor"), 50,
-            guardianArmorProtectionPoints, 28, ITEM_ARMOR_EQUIP_DIAMOND, (float) guardianArmorToughnessPoints);
-    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
-            superStarArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) superStarArmorToughnessPoints);
+            slimeArmorProtectionPoints, slimeArmorToughnessPoints, EnumTiers.TIER_1);
     public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", setLocation("ardite_armor"), 55,
-            arditeArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) arditeArmorToughnessPoints);
+            arditeArmorProtectionPoints, arditeArmorToughnessPoints, EnumTiers.TIER_2);
     public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", setLocation("cobalt_armor"), 44,
-            cobaltArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) cobaltArmorToughnessPoints);
+            cobaltArmorProtectionPoints, cobaltArmorToughnessPoints, EnumTiers.TIER_2);
     public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", setLocation("knight_slime_armor"), 33,
-            knightSlimeArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) knightSlimeArmorToughnessPoints);
+            knightSlimeArmorProtectionPoints, knightSlimeArmorToughnessPoints, EnumTiers.TIER_2);
     public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", setLocation("manyullyn_armor"), 66,
-            manyullynArmorProtectionPoints, 30, ITEM_ARMOR_EQUIP_DIAMOND, (float) manyullynArmorToughnessPoints);
+            manyullynArmorProtectionPoints, manyullynArmorToughnessPoints, EnumTiers.TIER_2);
     public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", setLocation("pig_iron_armor"), 33,
-            pigIronArmorProtectionPoints, 10, ITEM_ARMOR_EQUIP_DIAMOND, (float) pigIronArmorToughnessPoints);
+            pigIronArmorProtectionPoints, pigIronArmorToughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", setLocation("ender_dragon_armor"), 60,
+            enderDragonArmorProtectionPoints, enderDragonArmorToughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", setLocation("guardian_armor"), 50,
+            guardianArmorProtectionPoints, guardianArmorToughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
+            superStarArmorProtectionPoints, superStarArmorToughnessPoints, EnumTiers.TIER_3);
 
     public EnumRarity formattingName;
 
     public Item itemEasy;
     public Item itemExpert;
-    public Item itemHellish;
     public TextFormatting formatting;
     private APArmorMaterial material;
     private EntityEquipmentSlot slot;
+
+    public static EnumAction wear = addAction("WEAR");
 
     public BaseArmor(APArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
         super(armorMaterial.getArmorMaterial(), 0, slot);
         this.itemEasy = armorMaterial.getItemEasy();
         this.itemExpert = armorMaterial.getItemExpert();
-        this.itemHellish = armorMaterial.getItemHellish();
         this.formatting = armorMaterial.getFormatting();
         this.material = armorMaterial;
         this.slot = slot;
@@ -334,7 +330,7 @@ public class BaseArmor extends ItemArmor {
             case EXPERT:
                 return Objects.equals(repair.getItem(), itemExpert);
             case HELLISH:
-                return Objects.equals(repair.getItem(), itemHellish);
+                return false;
         }
         return true;
     }
@@ -470,6 +466,11 @@ public class BaseArmor extends ItemArmor {
                     showInfo(tooltip, keyBindSneak, formatting);
                 break;
         }
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack stack) {
+        return wear;
     }
 
     @SideOnly(Side.CLIENT)
