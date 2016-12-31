@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_side",
+  "textures": {
+    "wall": "armorplus:blocks/black_stone_brick"
+  }
+}

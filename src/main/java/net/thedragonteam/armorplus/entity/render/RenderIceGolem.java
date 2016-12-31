@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus.entity.render;
 
-import net.minecraft.client.model.ModelIronGolem;
+import net.minecraft.client.model.ModelArmorStand;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -19,7 +19,7 @@ public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
     private static final ResourceLocation ICE_GOLEM_TEXTURES = new ResourceLocation(ArmorPlus.MODID, "textures/entity/ice_golem.png");
 
     public RenderIceGolem(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelIronGolem(), 0.5F);
+        super(renderManagerIn, new ModelArmorStand(), 0.5F);
     }
 
     /**

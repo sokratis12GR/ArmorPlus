@@ -19,10 +19,10 @@ import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 public class ModUltimateRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Sets The Ultimate Armor Unbreakable */
-        Utils.setUnbreakable(new ItemStack(ModItems.theUltimateHelmet, 1));
-        Utils.setUnbreakable(new ItemStack(ModItems.theUltimateChestplate, 1));
-        Utils.setUnbreakable(new ItemStack(ModItems.theUltimateLeggings, 1));
-        Utils.setUnbreakable(new ItemStack(ModItems.theUltimateBoots, 1));
+        Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[0], 1));
+        Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[1], 1));
+        Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[2], 1));
+        Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[3], 1));
 
         manager.addRecipe(new ItemStack(ModBlocks.arpUltiTechBench, 1),
                 "LUUL ",
@@ -38,7 +38,7 @@ public class ModUltimateRecipes {
         /* The Ultimate Armor */
         if (APConfig.enableTheUltimateArmor) {
             if (enableTheUltimateArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.theUltimateHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.theUltimate[0], 1),
                         "UUCUU",
                         "UC CU",
                         "CLMRC",
@@ -50,7 +50,7 @@ public class ModUltimateRecipes {
                         'M', getItemStack(ModItems.theUltimateParts, 1),
                         'R', getItemStack(ModItems.theUltimateParts, 0)
                 );
-                manager.addRecipe(new ItemStack(ModItems.theUltimateChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.theUltimate[1], 1),
                         "UUCUU",
                         "UC CU",
                         "CLMRC",
@@ -62,7 +62,7 @@ public class ModUltimateRecipes {
                         'M', getItemStack(ModItems.theUltimateParts, 4),
                         'R', getItemStack(ModItems.theUltimateParts, 3)
                 );
-                manager.addRecipe(new ItemStack(ModItems.theUltimateLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.theUltimate[2], 1),
                         "UUCUU",
                         "UC CU",
                         "CLMRC",
@@ -74,7 +74,7 @@ public class ModUltimateRecipes {
                         'M', getItemStack(ModItems.theUltimateParts, 7),
                         'R', getItemStack(ModItems.theUltimateParts, 6)
                 );
-                manager.addRecipe(new ItemStack(ModItems.theUltimateBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.theUltimate[3], 1),
                         "UUCUU",
                         "UC CU",
                         "CLMRC",
@@ -86,7 +86,7 @@ public class ModUltimateRecipes {
                         'M', getItemStack(ModItems.theUltimateParts, 10),
                         'R', getItemStack(ModItems.theUltimateParts, 9)
                 );
-                //Helmet Parts
+                //[0] Parts
                 if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 2),
                             "UUCUU",
@@ -94,7 +94,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.superStarHelmet,
+                            'M', ModItems.superStar[0],
                             'B', getItemStack(ModItems.materials, 2),
                             'L', Blocks.SOUL_SAND,
                             'R', Blocks.NETHERRACK,
@@ -109,7 +109,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.enderDragonHelmet,
+                            'M', ModItems.enderDragon[0],
                             'B', getItemStack(ModItems.materials, 3),
                             'L', Items.ENDER_PEARL,
                             'R', Items.ENDER_EYE,
@@ -124,7 +124,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.guardianHelmet,
+                            'M', ModItems.guardian[0],
                             'B', getItemStack(ModItems.materials, 1),
                             'L', Items.PRISMARINE_CRYSTALS,
                             'R', Items.PRISMARINE_SHARD,
@@ -132,7 +132,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                //Chestplate Parts
+                //[1] Parts
                 if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 5),
                             "UUCUU",
@@ -140,7 +140,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.superStarChestplate,
+                            'M', ModItems.superStar[1],
                             'B', getItemStack(ModItems.materials, 2),
                             'L', Blocks.SOUL_SAND,
                             'R', Blocks.NETHERRACK,
@@ -155,7 +155,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.enderDragonChestplate,
+                            'M', ModItems.enderDragon[1],
                             'B', getItemStack(ModItems.materials, 3),
                             'L', Items.ENDER_PEARL,
                             'R', Items.ENDER_EYE,
@@ -170,7 +170,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.guardianChestplate,
+                            'M', ModItems.guardian[1],
                             'B', getItemStack(ModItems.materials, 1),
                             'L', Items.PRISMARINE_CRYSTALS,
                             'R', Items.PRISMARINE_SHARD,
@@ -178,7 +178,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                //Leggings Parts
+                //[2] Parts
                 if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 8),
                             "UUCUU",
@@ -186,7 +186,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.superStarLeggings,
+                            'M', ModItems.superStar[2],
                             'B', getItemStack(ModItems.materials, 2),
                             'L', Blocks.SOUL_SAND,
                             'R', Blocks.NETHERRACK,
@@ -201,7 +201,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.enderDragonLeggings,
+                            'M', ModItems.enderDragon[2],
                             'B', getItemStack(ModItems.materials, 3),
                             'L', Items.ENDER_PEARL,
                             'R', Items.ENDER_EYE,
@@ -216,7 +216,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.guardianLeggings,
+                            'M', ModItems.guardian[2],
                             'B', getItemStack(ModItems.materials, 1),
                             'L', Items.PRISMARINE_CRYSTALS,
                             'R', Items.PRISMARINE_SHARD,
@@ -224,7 +224,7 @@ public class ModUltimateRecipes {
                             'U', getItemStack(ModItems.materials, 4),
                             'C', getItemStack(ModItems.lavaCrystal, 1)
                     );
-                //Boots Parts
+                //[3] Parts
                 if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(getItemStack(ModItems.theUltimateParts, 11),
                             "UUCUU",
@@ -232,7 +232,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.superStarBoots,
+                            'M', ModItems.superStar[3],
                             'B', getItemStack(ModItems.materials, 2),
                             'L', Blocks.SOUL_SAND,
                             'R', Blocks.NETHERRACK,
@@ -247,7 +247,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.enderDragonBoots,
+                            'M', ModItems.enderDragon[3],
                             'B', getItemStack(ModItems.materials, 3),
                             'L', Items.ENDER_PEARL,
                             'R', Items.ENDER_EYE,
@@ -262,7 +262,7 @@ public class ModUltimateRecipes {
                             "CLMRC",
                             "UCBCU",
                             "UUCUU",
-                            'M', ModItems.guardianBoots,
+                            'M', ModItems.guardian[3],
                             'B', getItemStack(ModItems.materials, 1),
                             'L', Items.PRISMARINE_CRYSTALS,
                             'R', Items.PRISMARINE_SHARD,

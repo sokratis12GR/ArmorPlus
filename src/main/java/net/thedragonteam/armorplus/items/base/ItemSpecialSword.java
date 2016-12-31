@@ -34,7 +34,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 
-public class BaseSpecialSword extends ItemSword implements IItemHelper {
+public class ItemSpecialSword extends ItemSword implements IItemHelper {
 
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, APConfig.coalSwordDurability, 1.0F, (float) APConfig.coalSwordDamage, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, APConfig.lapisSwordDurability, 1.0F, (float) APConfig.lapisSwordDamage, 30);
@@ -53,7 +53,7 @@ public class BaseSpecialSword extends ItemSword implements IItemHelper {
     private Swords swords;
     public String itemName;
 
-    public BaseSpecialSword(Swords swords) {
+    public ItemSpecialSword(Swords swords) {
         super(swords.getToolMaterial());
         this.swords = swords;
         this.itemName = swords.getName();

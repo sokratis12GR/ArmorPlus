@@ -15,11 +15,11 @@ public class ModWeaponsTierOneRecipes {
     public void addRecipes(WorkbenchCraftingManager manager) {
         if (enableSwordsRecipes && gameMode == 0) {
             if (enableCoalSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "itemCoal", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[0], 1), " C ", " C ", " S ", 'C', "itemCoal", 'S', "stickWood"));
             if (enableLapisSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), " L ", " L ", " S ", 'L', "gemLapis", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[1], 1), " L ", " L ", " S ", 'L', "gemLapis", 'S', "stickWood"));
             if (enableRedstoneSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "dustRedstone", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[2], 1), " R ", " R ", " S ", 'R', "dustRedstone", 'S', "stickWood"));
         }
         if (enableBattleAxesRecipes && gameMode == 0) {
             if (enableCoalBattleAxe)
@@ -45,11 +45,11 @@ public class ModWeaponsTierOneRecipes {
         }
         if (enableSwordsRecipes && gameMode == 1) {
             if (enableCoalSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coalSword, 1), " C ", " C ", " S ", 'C', "blockCoal", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[0], 1), " C ", " C ", " S ", 'C', "blockCoal", 'S', "stickWood"));
             if (enableLapisSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapisSword, 1), " L ", " L ", " S ", 'L', "blockLapis", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[1], 1), " L ", " L ", " S ", 'L', "blockLapis", 'S', "stickWood"));
             if (enableRedstoneSword)
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstoneSword, 1), " R ", " R ", " S ", 'R', "blockRedstone", 'S', "stickWood"));
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[2], 1), " R ", " R ", " S ", 'R', "blockRedstone", 'S', "stickWood"));
         }
         if (enableBattleAxesRecipes && gameMode == 1) {
             if (enableCoalBattleAxe)

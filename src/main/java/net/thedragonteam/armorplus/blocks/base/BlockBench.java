@@ -30,13 +30,13 @@ import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nullable;
 
-public class BlockBenchBase extends BlockBase implements ITileEntityProvider {
+public class BlockBench extends BlockBase implements ITileEntityProvider {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public Benches benches;
 
-    public BlockBenchBase(Benches benches) {
+    public BlockBench(Benches benches) {
         super(Material.IRON, benches.getName(), 1000.0F, 10.0F, ToolType.PICKAXE, 2);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;

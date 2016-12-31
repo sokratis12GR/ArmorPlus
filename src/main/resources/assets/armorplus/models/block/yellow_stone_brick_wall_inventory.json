@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "armorplus:blocks/yellow_stone_brick"
+  }
+}

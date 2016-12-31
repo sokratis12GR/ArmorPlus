@@ -18,14 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
+
 // TODO: fix CollisionBox to mach Shape (not any time soon)
-public class BaseStoneBrickCorner extends BlockStairs {
+public class BlockStoneBrickCorner extends BlockStairs {
 
     private StoneBricks stoneBricks;
 
-    public BaseStoneBrickCorner(StoneBricks stoneBricks, IBlockState modelState) {
+    public BlockStoneBrickCorner(StoneBricks stoneBricks, IBlockState modelState) {
         super(modelState);
-        setUnlocalizedName(ArmorPlus.MODID + "." + stoneBricks.getName() + "_stone_brick_corner");
+        setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_corner"));
         setRegistryName(stoneBricks.getName() + "_stone_brick_corner");
         setHardness(10.0F);
         setResistance(5.0F);
@@ -34,6 +36,7 @@ public class BaseStoneBrickCorner extends BlockStairs {
         this.stoneBricks = stoneBricks;
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
+        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     @SideOnly(Side.CLIENT)

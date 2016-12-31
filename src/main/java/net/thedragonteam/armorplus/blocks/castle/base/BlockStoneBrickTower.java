@@ -9,19 +9,20 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
-public class BaseStoneBrick extends BlockBase {
+public class BlockStoneBrickTower extends BlockBase {
 
-    public MapColor color;
+    public MapColor mapColor;
 
-    public BaseStoneBrick(StoneBricks stoneBricks) {
-        super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, ToolType.PICKAXE, 0);
-        this.color = stoneBricks.getMapColor();
+    public BlockStoneBrickTower(StoneBricks stoneBricks) {
+        super(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0F, 5.0F, ToolType.PICKAXE, 0);
+        this.mapColor = stoneBricks.getMapColor();
     }
 
     @SideOnly(Side.CLIENT)
@@ -33,6 +34,21 @@ public class BaseStoneBrick extends BlockBase {
      * Get the MapColor for this Block and the given BlockState
      */
     public MapColor getMapColor(IBlockState state) {
-        return color;
+        return mapColor;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
     }
 }

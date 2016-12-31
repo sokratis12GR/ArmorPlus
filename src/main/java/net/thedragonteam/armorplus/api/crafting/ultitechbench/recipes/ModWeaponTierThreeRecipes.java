@@ -16,7 +16,7 @@ public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         if (enableSwordsRecipes && gameMode == 0) {
             if (enableGuardianSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[6], 1),
                         "  G  ",
                         " GSG ",
                         "G S G",
@@ -26,7 +26,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableSuperStarSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[7], 1),
                         "  W  ",
                         " WSW ",
                         "W S W",
@@ -36,7 +36,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableEnderDragonSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[8], 1),
                         "  E  ",
                         " ESE ",
                         "E S E",
@@ -136,7 +136,7 @@ public class ModWeaponTierThreeRecipes {
         }
         if (enableSwordsRecipes && gameMode == 1) {
             if (enableGuardianSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[6], 1),
                         "  G  ",
                         " GSG ",
                         "G S G",
@@ -146,7 +146,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "gemPrismarine"));
             }
             if (enableSuperStarSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[7], 1),
                         "  H  ",
                         " WSW ",
                         "W S W",
@@ -157,7 +157,7 @@ public class ModWeaponTierThreeRecipes {
                         'H', new ItemStack(Items.SKULL, 1, 1)));
             }
             if (enableEnderDragonSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonSword, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[8], 1),
                         "  E  ",
                         " ESE ",
                         "E S E",

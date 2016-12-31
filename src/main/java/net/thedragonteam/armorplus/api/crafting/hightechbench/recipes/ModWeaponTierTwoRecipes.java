@@ -17,28 +17,28 @@ public class ModWeaponTierTwoRecipes {
             case EASY:
                 if (enableSwordsRecipes) {
                     if (enableEmeraldSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "   E",
                                 "   E",
                                 "   E",
                                 "   S",
                                 'E', "gemEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "  E ",
                                 "  E ",
                                 "  E ",
                                 "  S ",
                                 'E', "gemEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 " E  ",
                                 " E  ",
                                 " E  ",
                                 " S  ",
                                 'E', "gemEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "E   ",
                                 "E   ",
                                 "E   ",
@@ -47,28 +47,28 @@ public class ModWeaponTierTwoRecipes {
                                 'S', "stickWood"));
                     }
                     if (enableObsidianSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "   O",
                                 "   O",
                                 "   O",
                                 "   S",
                                 'O', "obsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "  O ",
                                 "  O ",
                                 "  O ",
                                 "  S ",
                                 'O', "obsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 " O  ",
                                 " O  ",
                                 " O  ",
                                 " S  ",
                                 'O', "obsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "O   ",
                                 "O   ",
                                 "O   ",
@@ -77,28 +77,28 @@ public class ModWeaponTierTwoRecipes {
                                 'S', "stickWood"));
                     }
                     if (enableLavaSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "   L",
                                 "   L",
                                 "   L",
                                 "   S",
                                 'L', "gemLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "  L ",
                                 "  L ",
                                 "  L ",
                                 "  S ",
                                 'L', "gemLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 " L  ",
                                 " L  ",
                                 " L  ",
                                 " S  ",
                                 'L', "gemLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "L   ",
                                 "L   ",
                                 "L   ",
@@ -190,28 +190,28 @@ public class ModWeaponTierTwoRecipes {
             case EXPERT:
                 if (enableSwordsRecipes) {
                     if (enableEmeraldSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "   E",
                                 "   E",
                                 "   E",
                                 "   S",
                                 'E', "blockEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "  E ",
                                 "  E ",
                                 "  E ",
                                 "  S ",
                                 'E', "blockEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 " E  ",
                                 " E  ",
                                 " E  ",
                                 " S  ",
                                 'E', "blockEmerald",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[3]),
                                 "E   ",
                                 "E   ",
                                 "E   ",
@@ -220,28 +220,28 @@ public class ModWeaponTierTwoRecipes {
                                 'S', "stickWood"));
                     }
                     if (enableObsidianSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "   O",
                                 "   O",
                                 "   O",
                                 "   S",
                                 'O', "blockCompressedObsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "  O ",
                                 "  O ",
                                 "  O ",
                                 "  S ",
                                 'O', "blockCompressedObsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 " O  ",
                                 " O  ",
                                 " O  ",
                                 " S  ",
                                 'O', "blockCompressedObsidian",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[4]),
                                 "O   ",
                                 "O   ",
                                 "O   ",
@@ -250,28 +250,28 @@ public class ModWeaponTierTwoRecipes {
                                 'S', "stickWood"));
                     }
                     if (enableLavaSword) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "   L",
                                 "   L",
                                 "   L",
                                 "   S",
                                 'L', "gemChargedLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "  L ",
                                 "  L ",
                                 "  L ",
                                 "  S ",
                                 'L', "gemChargedLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 " L  ",
                                 " L  ",
                                 " L  ",
                                 " S  ",
                                 'L', "gemChargedLavaCrystal",
                                 'S', "stickWood"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaSword),
+                        manager.addRecipe(new ShapedOreRecipe(getItemStack(sword[5]),
                                 "L   ",
                                 "L   ",
                                 "L   ",

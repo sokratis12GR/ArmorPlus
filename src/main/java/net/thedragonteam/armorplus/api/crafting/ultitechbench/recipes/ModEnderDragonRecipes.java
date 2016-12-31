@@ -17,41 +17,41 @@ public class ModEnderDragonRecipes {
         /* Ender Dragon Armor */
         if (APConfig.enableEnderDragonArmor) {
             if (APConfig.gameMode == 0 && enableEnderDragonArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[0], 1),
                         "EEEEE",
                         "E   E",
                         "     ",
                         "     ",
                         "     ",
                         'E', new ItemStack(ModItems.materials, 1, 3));
-                manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[0], 1),
                         "     ",
                         "     ",
                         "EEEEE",
                         "E   E",
                         'E', new ItemStack(ModItems.materials, 1, 3));
-                manager.addRecipe(new ItemStack(ModItems.enderDragonChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[1], 1),
                         "E   E",
                         "E   E",
                         "EEEEE",
                         "EEEEE",
                         "EEEEE",
                         'E', new ItemStack(ModItems.materials, 1, 3));
-                manager.addRecipe(new ItemStack(ModItems.enderDragonLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[2], 1),
                         "EEEEE",
                         "EEEEE",
                         "E   E",
                         "E   E",
                         "E   E",
                         'E', new ItemStack(ModItems.materials, 1, 3));
-                manager.addRecipe(new ItemStack(ModItems.enderDragonBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[3], 1),
                         "E   E",
                         "E   E",
                         "     ",
                         "     ",
                         "     ",
                         'E', new ItemStack(ModItems.materials, 1, 3));
-                manager.addRecipe(new ItemStack(ModItems.enderDragonBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[3], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -60,7 +60,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3));
             }
             if (APConfig.gameMode == 1 && enableEnderDragonArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[0], 1),
                         "CEEEC",
                         "ES SE",
                         "     ",
@@ -69,7 +69,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
-                manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[0], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -78,7 +78,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
-                manager.addRecipe(new ItemStack(ModItems.enderDragonChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[1], 1),
                         "S   S",
                         "E   E",
                         "EEEEE",
@@ -87,7 +87,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
-                manager.addRecipe(new ItemStack(ModItems.enderDragonLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[2], 1),
                         "SEEES",
                         "ECSCE",
                         "E   E",
@@ -96,7 +96,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
-                manager.addRecipe(new ItemStack(ModItems.enderDragonBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[3], 1),
                         "S   S",
                         "E   E",
                         "E   E",
@@ -105,7 +105,7 @@ public class ModEnderDragonRecipes {
                         'E', new ItemStack(ModItems.materials, 1, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
-                manager.addRecipe(new ItemStack(ModItems.enderDragonBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.enderDragon[3], 1),
                         "     ",
                         "S   S",
                         "E   E",

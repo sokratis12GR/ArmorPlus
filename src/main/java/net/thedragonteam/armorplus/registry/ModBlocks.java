@@ -6,10 +6,13 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BlockBenchBase;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrick;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickCorner;
-import net.thedragonteam.armorplus.blocks.castle.base.BaseStoneBrickTower;
+import net.thedragonteam.armorplus.blocks.base.BlockBench;
+import net.thedragonteam.armorplus.blocks.benches.Benches;
+import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
+import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
+import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
+import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
 import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
@@ -33,20 +36,27 @@ public class ModBlocks {
     public static BaseMetalBlock steelBlock;
     public static BaseMetalBlock electricalBlock;
     public static LavaNetherBrick lavaNetherBrick;
-    public static BaseStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick,
-            blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
-    public static BaseStoneBrickTower whiteStoneBrickTower, redStoneBrickTower,
-            blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower,
-            greenStoneBrickTower, purpleStoneBrickTower;
-    public static BaseStoneBrickCorner whiteStoneBrickCorner;
-    public static BaseStoneBrickCorner redStoneBrickCorner;
-    public static BaseStoneBrickCorner blackStoneBrickCorner;
-    public static BaseStoneBrickCorner blueStoneBrickCorner;
-    public static BaseStoneBrickCorner yellowStoneBrickCorner;
-    public static BaseStoneBrickCorner greenStoneBrickCorner;
-    public static BaseStoneBrickCorner purpleStoneBrickCorner;
+    public static BlockStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
+    public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[]{
+            whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick
+    };
+    public static BlockStoneBrickTower whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower;
+    public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[]{
+            whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower
+    };
+    public static BlockStoneBrickCorner whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner;
+    public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[]{
+            whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner
+    };
+    public static BlockStonebrickWall whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall;
+    public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[]{
+            whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall
+    };
     public static LavaCactus lavaCactus;
-    public static BlockBenchBase arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench;
+    public static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench;
+    public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench};
+    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
+    public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE};
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal();
@@ -55,31 +65,15 @@ public class ModBlocks {
         electricalBlock = new BaseMetalBlock(ELECTRICAL);
         lavaCactus = new LavaCactus();
         lavaNetherBrick = new LavaNetherBrick();
-        whiteStoneBrick = new BaseStoneBrick(WHITE);
-        whiteStoneBrickTower = new BaseStoneBrickTower(WHITE);
-        whiteStoneBrickCorner = new BaseStoneBrickCorner(WHITE, whiteStoneBrick.getDefaultState());
-        redStoneBrick = new BaseStoneBrick(RED);
-        redStoneBrickTower = new BaseStoneBrickTower(RED);
-        redStoneBrickCorner = new BaseStoneBrickCorner(RED, redStoneBrick.getDefaultState());
-        blackStoneBrick = new BaseStoneBrick(BLACK);
-        blackStoneBrickTower = new BaseStoneBrickTower(BLACK);
-        blackStoneBrickCorner = new BaseStoneBrickCorner(BLACK, blackStoneBrick.getDefaultState());
-        blueStoneBrick = new BaseStoneBrick(BLUE);
-        blueStoneBrickTower = new BaseStoneBrickTower(BLUE);
-        blueStoneBrickCorner = new BaseStoneBrickCorner(BLUE, blueStoneBrick.getDefaultState());
-        greenStoneBrick = new BaseStoneBrick(GREEN);
-        greenStoneBrickTower = new BaseStoneBrickTower(GREEN);
-        greenStoneBrickCorner = new BaseStoneBrickCorner(GREEN, greenStoneBrick.getDefaultState());
-        yellowStoneBrick = new BaseStoneBrick(YELLOW);
-        yellowStoneBrickTower = new BaseStoneBrickTower(YELLOW);
-        yellowStoneBrickCorner = new BaseStoneBrickCorner(YELLOW, yellowStoneBrick.getDefaultState());
-        purpleStoneBrick = new BaseStoneBrick(PURPLE);
-        purpleStoneBrickTower = new BaseStoneBrickTower(PURPLE);
-        purpleStoneBrickCorner = new BaseStoneBrickCorner(PURPLE, purpleStoneBrick.getDefaultState());
-        arpWorkbench = new BlockBenchBase(WORKBENCH);
-        arpHighTechBench = new BlockBenchBase(HIGH_TECH);
-        arpUltiTechBench = new BlockBenchBase(ULTI_TECH);
-        arpChampionBench = new BlockBenchBase(CHAMPION);
+        for (int s = 0; s <= 6; s++) {
+            stoneBricks[s] = new BlockStoneBrick(stoneBrickTypes[s]);
+            stoneBrickTowers[s] = new BlockStoneBrickTower(stoneBrickTypes[s]);
+            stoneBrickCorners[s] = new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState());
+            stonebrickWalls[s] = new BlockStonebrickWall(stoneBricks[s]);
+        }
+        for (int b = 0; b <= 3; b++) {
+            benches[b] = new BlockBench(benchTypes[b]);
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -90,30 +84,14 @@ public class ModBlocks {
         electricalBlock.initModel();
         lavaCactus.initModel();
         lavaNetherBrick.initModel();
-        whiteStoneBrick.initModel();
-        whiteStoneBrickTower.initModel();
-        whiteStoneBrickCorner.initModel();
-        redStoneBrick.initModel();
-        redStoneBrickTower.initModel();
-        redStoneBrickCorner.initModel();
-        blackStoneBrick.initModel();
-        blackStoneBrickTower.initModel();
-        blackStoneBrickCorner.initModel();
-        blueStoneBrick.initModel();
-        blueStoneBrickTower.initModel();
-        blueStoneBrickCorner.initModel();
-        greenStoneBrick.initModel();
-        greenStoneBrickTower.initModel();
-        greenStoneBrickCorner.initModel();
-        yellowStoneBrick.initModel();
-        yellowStoneBrickTower.initModel();
-        yellowStoneBrickCorner.initModel();
-        purpleStoneBrick.initModel();
-        purpleStoneBrickTower.initModel();
-        purpleStoneBrickCorner.initModel();
-        arpWorkbench.initModel();
-        arpHighTechBench.initModel();
-        arpUltiTechBench.initModel();
-        arpChampionBench.initModel();
+        for (int i = 0; i <= 6; i++) {
+            stoneBricks[i].initModel();
+            stoneBrickTowers[i].initModel();
+            stoneBrickCorners[i].initModel();
+            stonebrickWalls[i].initModel();
+        }
+        for (int b = 0; b <= 3; b++) {
+            benches[b].initModel();
+        }
     }
 }

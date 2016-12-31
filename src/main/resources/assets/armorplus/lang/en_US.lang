@@ -273,24 +273,37 @@ tile.armorplus.lava_nether_brick.name=Lava Nether Brick
 tile.armorplus.white_stone_brick.name=White Stone Brick
 tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
 tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
+tile.armorplus.white_stone_brick_wall.name=White Stone Brick Wall
+
 tile.armorplus.red_stone_brick.name=Red Stone Brick
 tile.armorplus.red_stone_brick_tower.name=Red Stone Brick Tower
 tile.armorplus.red_stone_brick_corner.name=Red Stone Brick Corner
+tile.armorplus.red_stone_brick_wall.name=Red Stone Brick Wall
+
 tile.armorplus.black_stone_brick.name=Black Stone Brick
 tile.armorplus.black_stone_brick_tower.name=Black Stone Brick Tower
 tile.armorplus.black_stone_brick_corner.name=Black Stone Brick Corner
+tile.armorplus.black_stone_brick_wall.name=Black Stone Brick Wall
+
 tile.armorplus.blue_stone_brick.name=Blue Stone Brick
 tile.armorplus.blue_stone_brick_tower.name=Blue Stone Brick Tower
 tile.armorplus.blue_stone_brick_corner.name=Blue Stone Brick Corner
+tile.armorplus.blue_stone_brick_wall.name=Blue Stone Brick Wall
+
 tile.armorplus.green_stone_brick.name=Green Stone Brick
 tile.armorplus.green_stone_brick_tower.name=Green Stone Brick Tower
 tile.armorplus.green_stone_brick_corner.name=Green Stone Brick Corner
+tile.armorplus.green_stone_brick_wall.name=Green Stone Brick Wall
+
 tile.armorplus.yellow_stone_brick.name=Yellow Stone Brick
 tile.armorplus.yellow_stone_brick_tower.name=Yellow Stone Brick Tower
 tile.armorplus.yellow_stone_brick_corner.name=Yellow Stone Brick Corner
+tile.armorplus.yellow_stone_brick_wall.name=Yellow Stone Brick Wall
+
 tile.armorplus.purple_stone_brick.name=Purple Stone Brick
 tile.armorplus.purple_stone_brick_tower.name=Purple Stone Brick Tower
 tile.armorplus.purple_stone_brick_corner.name=Purple Stone Brick Corner
+tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword

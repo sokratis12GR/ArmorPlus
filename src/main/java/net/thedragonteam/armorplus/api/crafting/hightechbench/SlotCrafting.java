@@ -90,19 +90,19 @@ public class SlotCrafting extends Slot {
 
         /* Tinkers' Armors*/
         /*The Tinkers' Armors! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.cobaltHelmet || stack.getItem() == ModItems.cobaltChestplate || stack.getItem() == ModItems.cobaltLeggings || stack.getItem() == ModItems.cobaltBoots)
+        if (stack.getItem() == ModItems.cobalt[0] || stack.getItem() == ModItems.cobalt[1] || stack.getItem() == ModItems.cobalt[2] || stack.getItem() == ModItems.cobalt[3])
             this.player.addStat(APAchievements.craftCobaltArmor, 1);
         /*The Stronger The Better! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.arditeHelmet || stack.getItem() == ModItems.arditeChestplate || stack.getItem() == ModItems.arditeLeggings || stack.getItem() == ModItems.arditeBoots)
+        if (stack.getItem() == ModItems.ardite[0] || stack.getItem() == ModItems.ardite[1] || stack.getItem() == ModItems.ardite[2] || stack.getItem() == ModItems.ardite[3])
             this.player.addStat(APAchievements.craftArditeArmor, 1);
         /*The Tinkers' Armors God! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.manyullynHelmet || stack.getItem() == ModItems.manyullynChestplate || stack.getItem() == ModItems.manyullynLeggings || stack.getItem() == ModItems.manyullynBoots)
+        if (stack.getItem() == ModItems.manyullyn[0] || stack.getItem() == ModItems.manyullyn[1] || stack.getItem() == ModItems.manyullyn[2] || stack.getItem() == ModItems.manyullyn[3])
             this.player.addStat(APAchievements.craftManyullynArmor, 1);
         /* Oink! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.pigIronHelmet || stack.getItem() == ModItems.pigIronChestplate || stack.getItem() == ModItems.pigIronLeggings || stack.getItem() == ModItems.pigIronBoots)
+        if (stack.getItem() == ModItems.pigIron[0] || stack.getItem() == ModItems.pigIron[1] || stack.getItem() == ModItems.pigIron[2] || stack.getItem() == ModItems.pigIron[3])
             this.player.addStat(APAchievements.craftPigIronArmor, 1);
         /* Fascinating! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.knightSlimeHelmet || stack.getItem() == ModItems.knightSlimeChestplate || stack.getItem() == ModItems.knightSlimeLeggings || stack.getItem() == ModItems.knightSlimeBoots)
+        if (stack.getItem() == ModItems.knightSlime[0] || stack.getItem() == ModItems.knightSlime[1] || stack.getItem() == ModItems.knightSlime[2] || stack.getItem() == ModItems.knightSlime[3])
             this.player.addStat(APAchievements.craftKnightSlimeArmor, 1);
     }
 

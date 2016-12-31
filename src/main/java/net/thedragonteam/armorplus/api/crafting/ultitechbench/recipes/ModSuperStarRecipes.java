@@ -18,42 +18,42 @@ public class ModSuperStarRecipes {
         /* Super Star Armor */
         if (APConfig.enableSuperStarArmor) {
             if (APConfig.gameMode == 0 && enableSuperStarArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
                         "WWWWW",
                         "W   W",
                         "     ",
                         "     ",
                         "     ",
                         'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
                         "     ",
                         "     ",
                         "     ",
                         "WWWWW",
                         "W   W",
                         'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStarChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[1], 1),
                         "W   W",
                         "W   W",
                         "WWWWW",
                         "WWWWW",
                         "WWWWW",
                         'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStarLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[2], 1),
                         "WWWWW",
                         "WWWWW",
                         "W   W",
                         "W   W",
                         "W   W",
                         'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStarBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
                         "W   W",
                         "W   W",
                         "     ",
                         "     ",
                         "     ",
                         'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStarBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -62,7 +62,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2));
             }
             if (APConfig.gameMode == 1 && enableSuperStarArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
                         "SWWWS",
                         "WN NW",
                         "     ",
@@ -71,7 +71,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -80,7 +80,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStarChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[1], 1),
                         "N   N",
                         "W   W",
                         "WWWWW",
@@ -89,7 +89,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStarLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[2], 1),
                         "SWWWS",
                         "WSNSW",
                         "W   W",
@@ -98,7 +98,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStarBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
                         "N   N",
                         "W   W",
                         "W   W",
@@ -107,7 +107,7 @@ public class ModSuperStarRecipes {
                         'W', new ItemStack(ModItems.materials, 1, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStarBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
                         "     ",
                         "N   N",
                         "W   W",

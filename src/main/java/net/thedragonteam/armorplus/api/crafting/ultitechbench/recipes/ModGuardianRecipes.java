@@ -18,42 +18,42 @@ public class ModGuardianRecipes {
         /* Guardian Armor */
         if (APConfig.enableGuardianArmor) {
             if (APConfig.gameMode == 0 && enableGuardianArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[0], 1),
                         "GGGGG",
                         "G   G",
                         "     ",
                         "     ",
                         "     ",
                         'G', new ItemStack(ModItems.materials, 1, 1));
-                manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[0], 1),
                         "     ",
                         "     ",
                         "     ",
                         "GGGGG",
                         "G   G",
                         'G', new ItemStack(ModItems.materials, 1, 1));
-                manager.addRecipe(new ItemStack(ModItems.guardianChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[1], 1),
                         "G   G",
                         "G   G",
                         "GGGGG",
                         "GGGGG",
                         "GGGGG",
                         'G', new ItemStack(ModItems.materials, 1, 1));
-                manager.addRecipe(new ItemStack(ModItems.guardianLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[2], 1),
                         "GGGGG",
                         "GGGGG",
                         "G   G",
                         "G   G",
                         "G   G",
                         'G', new ItemStack(ModItems.materials, 1, 1));
-                manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[3], 1),
                         "G   G",
                         "G   G",
                         "     ",
                         "     ",
                         "     ",
                         'G', new ItemStack(ModItems.materials, 1, 1));
-                manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[3], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -62,7 +62,7 @@ public class ModGuardianRecipes {
                         'G', new ItemStack(ModItems.materials, 1, 1));
             }
             if (APConfig.gameMode == 1 && enableGuardianArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[0], 1),
                         "GPPPG",
                         "GSLSG",
                         "     ",
@@ -72,7 +72,7 @@ public class ModGuardianRecipes {
                         'L', Blocks.SEA_LANTERN,
                         'P', Items.PRISMARINE_CRYSTALS,
                         'S', Blocks.PRISMARINE);
-                manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[0], 1),
                         "     ",
                         "     ",
                         "     ",
@@ -82,7 +82,7 @@ public class ModGuardianRecipes {
                         'L', Blocks.SEA_LANTERN,
                         'P', Items.PRISMARINE_CRYSTALS,
                         'S', Blocks.PRISMARINE);
-                manager.addRecipe(new ItemStack(ModItems.guardianChestplate, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[1], 1),
                         "L   L",
                         "G   G",
                         "PGGGP",
@@ -92,7 +92,7 @@ public class ModGuardianRecipes {
                         'L', Blocks.SEA_LANTERN,
                         'P', Items.PRISMARINE_CRYSTALS,
                         'S', Blocks.PRISMARINE);
-                manager.addRecipe(new ItemStack(ModItems.guardianLeggings, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[2], 1),
                         "GPGPG",
                         "GSLSG",
                         "G   G",
@@ -102,7 +102,7 @@ public class ModGuardianRecipes {
                         'L', Blocks.SEA_LANTERN,
                         'P', Items.PRISMARINE_CRYSTALS,
                         'S', Blocks.PRISMARINE);
-                manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[3], 1),
                         "G   G",
                         "G   G",
                         "G   G",
@@ -110,7 +110,7 @@ public class ModGuardianRecipes {
                         "     ",
                         'G', new ItemStack(ModItems.materials, 1, 1),
                         'S', Blocks.SPONGE);
-                manager.addRecipe(new ItemStack(ModItems.guardianBoots, 1),
+                manager.addRecipe(new ItemStack(ModItems.guardian[3], 1),
                         "     ",
                         "G   G",
                         "G   G",

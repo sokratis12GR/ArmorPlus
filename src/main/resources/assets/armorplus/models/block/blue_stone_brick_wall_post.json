@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_post",
+  "textures": {
+    "wall": "armorplus:blocks/blue_stone_brick"
+  }
+}

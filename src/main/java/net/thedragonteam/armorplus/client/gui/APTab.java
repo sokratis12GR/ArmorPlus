@@ -34,7 +34,7 @@ public class APTab extends CreativeTabs {
     }
 
     public static void initialize() {
-        iconArmorPlus = new ItemStack(ModItems.lavaChestplate);
+        iconArmorPlus = new ItemStack(ModItems.lava[2]);
     }
 
     public boolean hasSearchBar() {
@@ -46,7 +46,7 @@ public class APTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return getItemStack(ModItems.lavaChestplate);
+                return getItemStack(ModItems.lava[2]);
             case (1):
                 return getItemStack(materials, 3);
             case (2):

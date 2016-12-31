@@ -21,7 +21,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.EnumTiers;
 import net.thedragonteam.armorplus.util.PotionUtils;
 
@@ -30,6 +29,7 @@ import java.util.Objects;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.registry.ModItems.enderDragon;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
@@ -39,7 +39,7 @@ import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class BaseArmor extends ItemArmor {
+public class ItemArmorBase extends ItemArmor {
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 7,
             coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);
@@ -84,7 +84,7 @@ public class BaseArmor extends ItemArmor {
 
     public static EnumAction wear = addAction("WEAR");
 
-    public BaseArmor(APArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
+    public ItemArmorBase(APArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
         super(armorMaterial.getArmorMaterial(), 0, slot);
         this.itemEasy = armorMaterial.getItemEasy();
         this.itemExpert = armorMaterial.getItemExpert();
@@ -264,7 +264,7 @@ public class BaseArmor extends ItemArmor {
                 break;
             case ENDER_DRAGON:
                 if (enableFlightAbility) {
-                    if (!head.isEmpty() && head.getItem() == ModItems.enderDragonHelmet && !chest.isEmpty() && chest.getItem() == ModItems.enderDragonChestplate && !legs.isEmpty() && legs.getItem() == ModItems.enderDragonLeggings && !feet.isEmpty() && feet.getItem() == ModItems.enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
+                    if (!head.isEmpty() && head.getItem() == enderDragon[0] && !chest.isEmpty() && chest.getItem() == enderDragon[1] && !legs.isEmpty() && legs.getItem() == enderDragon[2] && !feet.isEmpty() && feet.getItem() == enderDragon[3] || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                         entity.capabilities.allowFlying = true;
                     } else {
                         entity.capabilities.isFlying = false;

@@ -46,10 +46,10 @@ public class EntityEnderDragonZombie extends EntityMob {
     public EntityEnderDragonZombie(World worldIn) {
         super(worldIn);
         setSize(0.6F, 1.95F);
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.enderDragonHelmet));
-        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ModItems.enderDragonChestplate));
-        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.enderDragonLeggings));
-        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.enderDragonBoots));
+        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.enderDragon[0]));
+        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ModItems.enderDragon[1]));
+        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.enderDragon[2]));
+        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.enderDragon[3]));
         setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.enderDragonBattleAxe));
         dropEquipment(false, 0);
     }
