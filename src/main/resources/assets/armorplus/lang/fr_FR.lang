@@ -39,13 +39,16 @@ container.armorplus.ulti_tech_bench=Table d'Artisanat d'Ulti-Tech
 container.armorplus.champion_bench=Table d'Artisanat du Champion
 container.armorplus.inventory=Inventaire
 
-#RFTooltip
+#Tooltip
+tooltip.shift.showinfo=Appuyez %s%s%s pour plus d'info
+
+##RFTooltip
 tooltip.rf.showinfo=Appuyez sur %s%s%s pour plus d'info.
 tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/bloc
 tooltip.rf.cost.hit=Cost: %s RF/coup
 
-#TeslaTooltip
+##TeslaTooltip
 tooltip.tesla.showinfo=Press %s%s%s pour plus d'info.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/bloc
@@ -59,6 +62,7 @@ modifier.firestorm.extra2=Durée du Combustion: %ss
 modifier.ultimatemod.name=Étendu
 modifier.ultimatemod.desc=Ajouter +1 Modificateur
 material.lava_crystal.name=Cristal de Lave
+material.compressed_obsidian.name=Obsidienne Comprimée
 
 #Tile
 tile.armorplus.block_energy_creative.name=Cellule d'Énergie Créative
@@ -86,12 +90,13 @@ commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Ouvre un lien sur votre navigateur sur le wiki d'ArmorPlus.
 
 #JEI
-gui.jei.category.armor_forge=Forge d'Armures
-gui.jei.category.adv_armor_forge=Forge d'Armures Avancée
+gui.jei.category.workbench=Table d'Artisanat
+gui.jei.category.high_tech_bench=Table d'Artisanat d'Haute-Tech
+gui.jei.category.ulti_tech_bench=Table d'Artisanat d'Ulti-Tech
+gui.jei.category.champion_bench=Table d'Artisanat du Champion
 
 #BOOKS
-item.armorplus.armorplus_book.name=Livre d'ArmorPlus
-item.armorplus.armorplus_info_book.name=Livre d'Info sur ArmorPlus
+item.armorplus.book.name=Livre d'Info sur ArmorPlus
 
 #CONFIG GUI
 gui.armorplus.config.title=Configuration d'ArmorPlus
