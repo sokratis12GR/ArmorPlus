@@ -93,7 +93,6 @@ public class BaseBenchBlock extends BaseBlock implements ITileEntityProvider {
         return benches.getEntityBench();
     }
 
-
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, ItemStack stack) {
         IBlockState iblockstate = super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer, stack);

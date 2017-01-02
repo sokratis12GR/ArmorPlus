@@ -30,7 +30,7 @@ public class TiC {
             steelInt.integrate();
         }
         obsidianInt = new MaterialIntegration(TiCMaterials.compressed_obsidian);
-        lavacrystalInt.registerRepresentativeItem();
+        obsidianInt.registerRepresentativeItem();
         obsidianInt.integrate();
         tinkersModifiers = new TiCModifiers();
         tinkersMaterials.setupMaterials();

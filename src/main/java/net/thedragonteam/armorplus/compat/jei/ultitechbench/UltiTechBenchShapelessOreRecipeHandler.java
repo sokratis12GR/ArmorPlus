@@ -44,7 +44,7 @@ public class UltiTechBenchShapelessOreRecipeHandler implements IRecipeHandler<Sh
     @Override
     public boolean isRecipeValid(ShapelessOreRecipe recipe) {
         if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no outputs. {}", recipeInfo);
             return false;
         }
@@ -61,12 +61,12 @@ public class UltiTechBenchShapelessOreRecipeHandler implements IRecipeHandler<Sh
             }
         }
         if (inputCount > 25) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);
             return false;
         }
         if (inputCount == 0) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no inputs. {}", recipeInfo);
             return false;
         }
