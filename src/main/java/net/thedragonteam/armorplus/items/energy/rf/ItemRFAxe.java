@@ -29,7 +29,7 @@ import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFAxe;
 import java.util.List;
 import java.util.Set;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemRFAxe extends BaseRFAxe {
 

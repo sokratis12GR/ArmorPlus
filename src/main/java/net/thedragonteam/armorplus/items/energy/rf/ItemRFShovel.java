@@ -29,7 +29,7 @@ import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFShovel;
 import java.util.List;
 import java.util.Set;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemRFShovel extends BaseRFShovel {
 

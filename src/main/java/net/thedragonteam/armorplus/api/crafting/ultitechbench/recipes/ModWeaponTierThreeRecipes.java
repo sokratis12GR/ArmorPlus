@@ -10,7 +10,7 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {

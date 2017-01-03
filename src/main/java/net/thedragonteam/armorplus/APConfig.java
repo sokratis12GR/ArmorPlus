@@ -11,7 +11,7 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  * - TheDragonTeam
  */
-public class ARPConfig {
+public class APConfig {
 
 
     //Weapons.*.Registry

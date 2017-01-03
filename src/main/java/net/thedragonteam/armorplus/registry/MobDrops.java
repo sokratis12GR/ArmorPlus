@@ -16,7 +16,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 /**
  * net.thedragonteam.armorplus.registry

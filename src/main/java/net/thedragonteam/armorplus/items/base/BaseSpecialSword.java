@@ -20,13 +20,13 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.Swords;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
@@ -35,15 +35,15 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseSpecialSword extends ItemSword {
 
-    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, ARPConfig.coalSwordDurability, 1.0F, (float) ARPConfig.coalSwordDamage, 15);
-    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, ARPConfig.lapisSwordDurability, 1.0F, (float) ARPConfig.lapisSwordDamage, 30);
-    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, ARPConfig.redstoneSwordDurability, 1.0F, (float) ARPConfig.redstoneSwordDamage, 20);
-    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, ARPConfig.emeraldSwordDurability, 1.0F, (float) ARPConfig.emeraldSwordDamage, 20);
-    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, ARPConfig.obsidianSwordDurability, 1.0F, (float) ARPConfig.obsidianSwordDamage, 20);
-    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, ARPConfig.lavaSwordDurability, 1.0F, (float) ARPConfig.lavaSwordDamage, 20);
-    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, ARPConfig.guardianSwordDurability, 1.0F, (float) ARPConfig.guardianSwordDamage, 30);
-    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, ARPConfig.superStarSwordDurability, 1.0F, (float) ARPConfig.superStarSwordDamage, 20);
-    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, ARPConfig.enderDragonSwordDurability, 1.0F, (float) ARPConfig.enderDragonSwordDamage, 20);
+    public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, APConfig.coalSwordDurability, 1.0F, (float) APConfig.coalSwordDamage, 15);
+    public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, APConfig.lapisSwordDurability, 1.0F, (float) APConfig.lapisSwordDamage, 30);
+    public static Item.ToolMaterial swordRedstoneMaterial = EnumHelper.addToolMaterial("swordRedstoneMaterial", 1, APConfig.redstoneSwordDurability, 1.0F, (float) APConfig.redstoneSwordDamage, 20);
+    public static Item.ToolMaterial swordEmeraldMaterial = EnumHelper.addToolMaterial("swordEmeraldMaterial", 1, APConfig.emeraldSwordDurability, 1.0F, (float) APConfig.emeraldSwordDamage, 20);
+    public static Item.ToolMaterial swordObsidianMaterial = EnumHelper.addToolMaterial("swordObsidianMaterial", 1, APConfig.obsidianSwordDurability, 1.0F, (float) APConfig.obsidianSwordDamage, 20);
+    public static Item.ToolMaterial swordLavaMaterial = EnumHelper.addToolMaterial("swordLavaMaterial", 1, APConfig.lavaSwordDurability, 1.0F, (float) APConfig.lavaSwordDamage, 20);
+    public static Item.ToolMaterial swordGuardianMaterial = EnumHelper.addToolMaterial("swordGuardianMaterial", 1, APConfig.guardianSwordDurability, 1.0F, (float) APConfig.guardianSwordDamage, 30);
+    public static Item.ToolMaterial swordSuperStarMaterial = EnumHelper.addToolMaterial("swordSuperStarMaterial", 1, APConfig.superStarSwordDurability, 1.0F, (float) APConfig.superStarSwordDamage, 20);
+    public static Item.ToolMaterial swordEnderDragonMaterial = EnumHelper.addToolMaterial("swordEnderDragonMaterial", 1, APConfig.enderDragonSwordDurability, 1.0F, (float) APConfig.enderDragonSwordDamage, 20);
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
@@ -123,7 +123,7 @@ public class BaseSpecialSword extends ItemSword {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == itemEasy;
             case 1:

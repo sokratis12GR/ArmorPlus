@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.minecraft.util.text.TextFormatting.getValueByName;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public enum Bows implements IStringSerializable {
     COAL(coalBowDurability, "coal_bow", coalBowArrowBonusDamage, Items.COAL, Blocks.COAL_BLOCK, getValueByName(coalWeaponItemNameColor), ModItems.coalBow),

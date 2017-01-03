@@ -7,13 +7,13 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.Utils;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableTheUltimateArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmorRecipes;
 
 public class ModUltimateRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
@@ -35,7 +35,7 @@ public class ModUltimateRecipes {
                 'O', ModBlocks.compressedObsidian,
                 'L', new ItemStack(ModItems.lavaCrystal, 1, 1));
         /* The Ultimate Armor */
-        if (ARPConfig.enableTheUltimateArmor) {
+        if (APConfig.enableTheUltimateArmor) {
             if (enableTheUltimateArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.theUltimateHelmet, 1),
                         "UUCUU",
@@ -82,7 +82,7 @@ public class ModUltimateRecipes {
                         'M', ModItems.theUltimateBootsMiddle,
                         'R', ModItems.theUltimateBootsRight);
                 //Helmet Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateHelmetLeft, 1),
                             "UUCUU",
                             "UCTCU",
@@ -96,7 +96,7 @@ public class ModUltimateRecipes {
                             'T', Blocks.NETHER_BRICK,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateHelmetMiddle, 1),
                             "UUCUU",
                             "UCTCU",
@@ -110,7 +110,7 @@ public class ModUltimateRecipes {
                             'T', Items.END_CRYSTAL,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateHelmetRight, 1),
                             "UUCUU",
                             "UCTCU",
@@ -125,7 +125,7 @@ public class ModUltimateRecipes {
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
                 //Chestplate Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateChestplateLeft, 1),
                             "UUCUU",
                             "UCTCU",
@@ -139,7 +139,7 @@ public class ModUltimateRecipes {
                             'T', Blocks.NETHER_BRICK,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateChestplateMiddle, 1),
                             "UUCUU",
                             "UCTCU",
@@ -153,7 +153,7 @@ public class ModUltimateRecipes {
                             'T', Items.END_CRYSTAL,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateChestplateRight, 1),
                             "UUCUU",
                             "UCTCU",
@@ -168,7 +168,7 @@ public class ModUltimateRecipes {
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
                 //Leggings Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateLeggingsLeft, 1),
                             "UUCUU",
                             "UCTCU",
@@ -182,7 +182,7 @@ public class ModUltimateRecipes {
                             'T', Blocks.NETHER_BRICK,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateLeggingsMiddle, 1),
                             "UUCUU",
                             "UCTCU",
@@ -196,7 +196,7 @@ public class ModUltimateRecipes {
                             'T', Items.END_CRYSTAL,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateLeggingsRight, 1),
                             "UUCUU",
                             "UCTCU",
@@ -211,7 +211,7 @@ public class ModUltimateRecipes {
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
                 //Boots Parts
-                if (ARPConfig.enableSuperStarArmor)
+                if (APConfig.enableSuperStarArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateBootsLeft, 1),
                             "UUCUU",
                             "UCTCU",
@@ -225,7 +225,7 @@ public class ModUltimateRecipes {
                             'T', Blocks.NETHER_BRICK,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableEnderDragonArmor)
+                if (APConfig.enableEnderDragonArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateBootsMiddle, 1),
                             "UUCUU",
                             "UCTCU",
@@ -239,7 +239,7 @@ public class ModUltimateRecipes {
                             'T', Items.END_CRYSTAL,
                             'U', ModItems.theUltimateMaterial,
                             'C', new ItemStack(ModItems.lavaCrystal, 1, 1));
-                if (ARPConfig.enableGuardianArmor)
+                if (APConfig.enableGuardianArmor)
                     manager.addRecipe(new ItemStack(ModItems.theUltimateBootsRight, 1),
                             "UUCUU",
                             "UCTCU",

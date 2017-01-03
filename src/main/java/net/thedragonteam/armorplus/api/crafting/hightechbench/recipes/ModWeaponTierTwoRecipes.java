@@ -9,7 +9,7 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraft
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponTierTwoRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {

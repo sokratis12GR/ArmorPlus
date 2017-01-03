@@ -28,7 +28,7 @@ import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFSword;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemRFSword extends BaseRFSword {
 

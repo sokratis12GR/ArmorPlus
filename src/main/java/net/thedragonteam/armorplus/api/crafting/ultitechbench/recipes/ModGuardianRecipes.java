@@ -7,17 +7,17 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableGuardianArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.enableGuardianArmorRecipes;
 
 public class ModGuardianRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Guardian Armor */
-        if (ARPConfig.enableGuardianArmor) {
-            if (ARPConfig.recipes == 0 && enableGuardianArmorRecipes) {
+        if (APConfig.enableGuardianArmor) {
+            if (APConfig.recipes == 0 && enableGuardianArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
                         "GGGGG",
                         "G   G",
@@ -61,7 +61,7 @@ public class ModGuardianRecipes {
                         "G   G",
                         'G', ModItems.guardianScale);
             }
-            if (ARPConfig.recipes == 1 && enableGuardianArmorRecipes) {
+            if (APConfig.recipes == 1 && enableGuardianArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
                         "GPPPG",
                         "GSLSG",

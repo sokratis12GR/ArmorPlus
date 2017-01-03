@@ -6,15 +6,15 @@ package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableArrowRecipes;
-import static net.thedragonteam.armorplus.ARPConfig.recipes;
+import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
+import static net.thedragonteam.armorplus.APConfig.recipes;
 
 public class ModItemsRecipes {
 
@@ -26,9 +26,9 @@ public class ModItemsRecipes {
                 'R', "dustRedstone",
                 'G', "dustGlowstone",
                 'A', "gemLavaCrystal"));
-        if (ARPConfig.recipes == 0)
+        if (APConfig.recipes == 0)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
-        if (ARPConfig.recipes == 1)
+        if (APConfig.recipes == 1)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1),
                 "LOL",

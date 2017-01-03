@@ -18,13 +18,13 @@ import net.thedragonteam.armorplus.registry.ModItems;
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:42 PM.
  * - TheDragonTeam
  */
-public class ARPTab extends CreativeTabs {
+public class APTab extends CreativeTabs {
 
     static ItemStack iconArmorPlus;
     private String label;
     private int tab;
 
-    public ARPTab(int id, String modid, String label, int tab) {
+    public APTab(int id, String modid, String label, int tab) {
         super(id, modid);
         this.label = label;
         this.tab = tab;

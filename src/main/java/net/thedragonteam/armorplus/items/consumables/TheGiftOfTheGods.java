@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -30,7 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
@@ -62,7 +62,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        List<String> blackListedItems = Arrays.asList(ARPConfig.blackListedItems);
+        List<String> blackListedItems = Arrays.asList(APConfig.blackListedItems);
 
         NBTTagCompound nbt;
         nbt = itemStack.hasTagCompound() ? itemStack.getTagCompound() : new NBTTagCompound();
@@ -72,10 +72,10 @@ public class TheGiftOfTheGods extends BaseItem {
 
         int count;
         Item item = null;
-        do if (!ARPConfig.enableWhiteList) {
+        do if (!APConfig.enableWhiteList) {
             count = 256 + random.nextInt(32000 - 256);
             item = Item.getItemById(count);
-        } else if (ARPConfig.enableWhiteList)
+        } else if (APConfig.enableWhiteList)
             item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistmax - whitelistmin + 1) + whitelistmin]);
 
         while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
@@ -103,7 +103,7 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        int maxUses = ARPConfig.maxUses;
+        int maxUses = APConfig.maxUses;
         tooltip.add("" + TextFormatting.ITALIC + "" + TextFormatting.RED + "This item can summon items which can potentially cause crashes");
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");

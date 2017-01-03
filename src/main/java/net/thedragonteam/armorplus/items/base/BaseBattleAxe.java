@@ -27,7 +27,7 @@ import net.thedragonteam.armorplus.items.BattleAxes;
 import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;

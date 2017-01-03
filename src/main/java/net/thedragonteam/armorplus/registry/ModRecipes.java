@@ -15,7 +15,7 @@ import static net.minecraft.init.Items.*;
 import static net.minecraft.item.Item.getByNameOrId;
 import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
 import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRecipe;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 

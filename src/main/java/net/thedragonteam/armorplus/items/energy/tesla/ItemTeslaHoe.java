@@ -25,7 +25,7 @@ import net.thedragonteam.armorplus.util.ARPTeslaUtils;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemTeslaHoe extends BaseTeslaHoe {
 

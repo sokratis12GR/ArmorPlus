@@ -28,7 +28,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.items.Bows;
@@ -102,7 +102,7 @@ public class BaseBow extends ItemBow {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == itemEasy;
             case 1:

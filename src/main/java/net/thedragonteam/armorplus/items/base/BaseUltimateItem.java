@@ -12,7 +12,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.UltimateItems;
 
@@ -30,7 +30,7 @@ public class BaseUltimateItem extends Item {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(ARPConfig.theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(APConfig.theUltimateArmorItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @SideOnly(Side.CLIENT)

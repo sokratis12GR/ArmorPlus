@@ -34,7 +34,7 @@ import java.util.Objects;
 import static net.minecraft.init.SoundEvents.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.GOOD;

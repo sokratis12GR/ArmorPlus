@@ -25,9 +25,6 @@ public class CommandArmorPlus extends CommandBase {
     private final Map<String, ISubCommand> subCommands = new HashMap<>();
 
     public CommandArmorPlus() {
-        aliases.add("armorplus");
-        aliases.add("ap");
-
         subCommands.put("help", new SubCommandHelp(this));
         subCommands.put("info", new SubCommandInfo(this));
         subCommands.put("wiki", new SubCommandWiki(this));
@@ -40,12 +37,12 @@ public class CommandArmorPlus extends CommandBase {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("armorplus", "arp");
+        return Arrays.asList("armorplus", "arp", "a+");
     }
 
     @Override
     public String getName() {
-        return "arp";
+        return "ap";
     }
 
     @Override

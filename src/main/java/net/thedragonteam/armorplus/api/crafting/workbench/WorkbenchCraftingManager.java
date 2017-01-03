@@ -35,7 +35,7 @@ public class WorkbenchCraftingManager {
     private static final WorkbenchCraftingManager INSTANCE = new WorkbenchCraftingManager();
     private final List<IRecipe> recipes = Lists.newArrayList();
 
-    private WorkbenchCraftingManager() {
+    public WorkbenchCraftingManager() {
         (new ModItemsRecipes()).addRecipes(this);
         (new ModOriginRecipes()).addRecipes(this);
         (new ModSpecialMobRecipes()).addRecipes(this);

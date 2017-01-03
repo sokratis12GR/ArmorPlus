@@ -23,7 +23,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.PotionUtils;
@@ -32,7 +32,7 @@ import net.thedragonteam.armorplus.util.Utils;
 import java.util.List;
 
 import static net.minecraft.util.text.TextFormatting.getValueByName;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -41,7 +41,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class BaseUltimateArmor extends ItemArmor {
 
     public static ItemArmor.ArmorMaterial theUltimateArmor = EnumHelper.addArmorMaterial("theUltimateArmor", getArmorPlusLocation("the_ultimate_armor"), 160,
-            ARPConfig.theUltimateArmorProtectionPoints, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) ARPConfig.theUltimateArmorToughnessPoints);
+            APConfig.theUltimateArmorProtectionPoints, 1, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, (float) APConfig.theUltimateArmorToughnessPoints);
 
     public BaseUltimateArmor(EntityEquipmentSlot slot) {
         super(theUltimateArmor, 0, slot);
@@ -100,14 +100,14 @@ public class BaseUltimateArmor extends ItemArmor {
         ItemStack chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-        if (ARPConfig.enableFlightAbility)
+        if (APConfig.enableFlightAbility)
             if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.allowFlying = true;
             else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
-        if (ARPConfig.enableTheUltimateArmorInvincibility)
+        if (APConfig.enableTheUltimateArmorInvincibility)
             if (head != null && head.getItem() == ModItems.theUltimateHelmet && chest != null && chest.getItem() == ModItems.theUltimateChestplate && legs != null && legs.getItem() == ModItems.theUltimateLeggings && feet != null && feet.getItem() == ModItems.theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                 entity.capabilities.disableDamage = true;
             else entity.capabilities.disableDamage = false;
@@ -132,7 +132,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == ModItems.theUltimateMaterial;
             case 1:

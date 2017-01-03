@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.items.base.BaseBattleAxe;
 
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;

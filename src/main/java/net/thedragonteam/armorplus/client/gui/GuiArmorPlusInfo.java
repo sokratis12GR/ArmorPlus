@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.client.gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -39,7 +39,7 @@ public class GuiArmorPlusInfo extends GuiScreen {
         fontRendererObj.drawString(new TextComponentString("If you want to change to Easy Mode").getFormattedText(), guiX + 25, guiY + 60, 0x000000);
         fontRendererObj.drawString(new TextComponentString("you will need to change the config").getFormattedText(), guiX + 25, guiY + 70, 0x000000);
         fontRendererObj.drawString(new TextComponentString("From `I:Recipe:1` to `I:Recipe:0`.").getFormattedText(), guiX + 25, guiY + 80, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + ARPConfig.recipes + "`.").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + APConfig.recipes + "`.").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

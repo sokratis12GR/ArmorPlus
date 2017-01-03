@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonZombieSpawnEnd;
+import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnEnd;
 
 /**
  * net.thedragonteam.armorplus.entity

@@ -13,7 +13,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BasePickaxe;
 
@@ -45,7 +45,7 @@ public class BaseRFPickaxe extends BasePickaxe implements IEnergyContainerItem {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.getValueByName(ARPConfig.rfWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(APConfig.rfWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override

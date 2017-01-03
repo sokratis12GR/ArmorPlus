@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
@@ -42,18 +42,18 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 2;
+    public static final int MINOR = 3;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 4;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 5;
+    public static final int BUILD = 1;
     /**
      * The ArmorPlus Version
      */
@@ -77,12 +77,12 @@ public class ArmorPlus {
     @SidedProxy(clientSide = ArmorPlus.CLIENTPROXY, serverSide = ArmorPlus.SERVERPROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs tabArmorplus = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
-    public static CreativeTabs tabArmorplusItems = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
-    public static CreativeTabs tabArmorplusBlocks = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
-    public static CreativeTabs tabArmorplusWeapons = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
-    public static CreativeTabs tabArmorplusTesla = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
-    public static CreativeTabs tabArmorplusRF = new ARPTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "rf", 5);
+    public static CreativeTabs tabArmorplus = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
+    public static CreativeTabs tabArmorplusItems = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
+    public static CreativeTabs tabArmorplusBlocks = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
+    public static CreativeTabs tabArmorplusWeapons = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
+    public static CreativeTabs tabArmorplusTesla = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
+    public static CreativeTabs tabArmorplusRF = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "rf", 5);
     public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{
             tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTesla, tabArmorplusRF
     });
@@ -130,7 +130,7 @@ public class ArmorPlus {
     public void preInit(FMLPreInitializationEvent event) {
         SharedMonsterAttributes.ARMOR = new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
-        configProcessor.processConfig(ARPConfig.class, configuration);
+        configProcessor.processConfig(APConfig.class, configuration);
         featureParser.registerFeatures();
         proxy.preInit(event);
     }

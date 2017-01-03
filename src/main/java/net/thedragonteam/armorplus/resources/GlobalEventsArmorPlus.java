@@ -21,7 +21,7 @@ import net.thedragonteam.armorplus.util.ARPAchievements;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;

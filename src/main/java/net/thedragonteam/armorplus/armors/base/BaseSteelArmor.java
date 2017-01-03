@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -40,7 +40,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -53,7 +53,7 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
     public static ItemArmor.ArmorMaterial steelArmorNotPowered = EnumHelper.addArmorMaterial("steelArmor", getArmorPlusLocation("steel_armor"), 15,
-            ARPConfig.steelArmorProtectionPoints, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, (float) ARPConfig.steelArmorToughnessPoints);
+            APConfig.steelArmorProtectionPoints, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, (float) APConfig.steelArmorToughnessPoints);
     private int power;
     private int maxCapacity;
     private int output;
@@ -99,7 +99,7 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == ModItems.steelIngot;
             case 1:

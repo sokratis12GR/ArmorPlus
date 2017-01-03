@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.registry.ModBlocks;
@@ -40,7 +40,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -52,9 +52,9 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 })
 public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
-    private static float electricalArmorToughnessPoints = (float) ARPConfig.electricalArmorToughnessPoints;
+    private static float electricalArmorToughnessPoints = (float) APConfig.electricalArmorToughnessPoints;
     public static ItemArmor.ArmorMaterial electricalArmor = EnumHelper.addArmorMaterial("electricalArmor", getArmorPlusLocation("electrical_armor"), 19,
-            ARPConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, electricalArmorToughnessPoints);
+            APConfig.electricalArmorProtectionPoints, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, electricalArmorToughnessPoints);
     private int power;
     private int maxCapacity;
     private int output;
@@ -100,7 +100,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (ARPConfig.recipes) {
+        switch (APConfig.recipes) {
             case 0:
                 return repair.getItem() == ModItems.electricalIngot;
             case 1:

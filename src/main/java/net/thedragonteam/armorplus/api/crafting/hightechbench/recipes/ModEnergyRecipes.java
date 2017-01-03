@@ -5,7 +5,7 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -13,8 +13,8 @@ import net.thedragonteam.armorplus.registry.ModItems;
 public class ModEnergyRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
         /* Steel Armor */
-        if (ARPConfig.enableSteelArmor) {
-            if (ARPConfig.recipes == 0) {
+        if (APConfig.enableSteelArmor) {
+            if (APConfig.recipes == 0) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
                         "MMMM",
                         "M  M",
@@ -58,7 +58,7 @@ public class ModEnergyRecipes {
                         "    ",
                         'M', "ingotSteel"));
             }
-            if (ARPConfig.recipes == 1) {
+            if (APConfig.recipes == 1) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
                         "MMMM",
                         "M  M",
@@ -104,8 +104,8 @@ public class ModEnergyRecipes {
             }
         }
         /* Electrical Armor */
-        if (ARPConfig.enableElectricalArmor) {
-            if (ARPConfig.recipes == 0) {
+        if (APConfig.enableElectricalArmor) {
+            if (APConfig.recipes == 0) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
                         "    ",
                         "    ",
@@ -149,7 +149,7 @@ public class ModEnergyRecipes {
                         "    ",
                         'E', "ingotElectrical"));
             }
-            if (ARPConfig.recipes == 1) {
+            if (APConfig.recipes == 1) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
                         "    ",
                         "    ",

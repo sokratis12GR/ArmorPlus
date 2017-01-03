@@ -20,7 +20,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.ARPConfig.isDebugMode;
+import static net.thedragonteam.armorplus.APConfig.isDebugMode;
 
 public class StructureCastle extends WorldGenerator {
     /**

@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.registry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.armors.base.BaseElectricalArmor;
 import net.thedragonteam.armorplus.armors.base.BaseSteelArmor;
@@ -25,7 +25,7 @@ import net.thedragonteam.armorplus.items.energy.tesla.*;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.hasTesla;
 import static net.thedragonteam.armorplus.armors.ARPArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.UltimateItems.*;
@@ -112,7 +112,7 @@ public class ModItems {
             itemTeslaPickaxe = new ItemTeslaPickaxe();
             itemTeslaSword = new ItemTeslaSword();
         }
-        if (ARPConfig.enableSteelArmor) {
+        if (APConfig.enableSteelArmor) {
             steelHelmet = new BaseSteelArmor(HEAD, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
             steelChestplate = new BaseSteelArmor(CHEST, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
             steelLeggings = new BaseSteelArmor(LEGS, maxCapacitySteelArmor, inputSteelArmor, outputSteelArmor);
@@ -137,79 +137,79 @@ public class ModItems {
         redstoneApple = new RedstoneApple();
         armorPlusInfoBook = new BaseItem(Items.ARMORPLUS_INFO_BOOK);
         nbtItem = new NBTItem();
-        if (ARPConfig.enableCoalArmor) {
+        if (APConfig.enableCoalArmor) {
             coalHelmet = new BaseArmor(COAL, HEAD);
             coalChestplate = new BaseArmor(COAL, CHEST);
             coalLeggings = new BaseArmor(COAL, LEGS);
             coalBoots = new BaseArmor(COAL, FEET);
         }
-        if (ARPConfig.enableEmeraldArmor) {
+        if (APConfig.enableEmeraldArmor) {
             emeraldHelmet = new BaseArmor(EMERALD, HEAD);
             emeraldChestplate = new BaseArmor(EMERALD, CHEST);
             emeraldLeggings = new BaseArmor(EMERALD, LEGS);
             emeraldBoots = new BaseArmor(EMERALD, FEET);
         }
-        if (ARPConfig.enableLapisArmor) {
+        if (APConfig.enableLapisArmor) {
             lapisHelmet = new BaseArmor(LAPIS, HEAD);
             lapisChestplate = new BaseArmor(LAPIS, CHEST);
             lapisLeggings = new BaseArmor(LAPIS, LEGS);
             lapisBoots = new BaseArmor(LAPIS, FEET);
         }
-        if (ARPConfig.enableLavaArmor) {
+        if (APConfig.enableLavaArmor) {
             lavaHelmet = new BaseArmor(LAVA, HEAD);
             lavaChestplate = new BaseArmor(LAVA, CHEST);
             lavaLeggings = new BaseArmor(LAVA, LEGS);
             lavaBoots = new BaseArmor(LAVA, FEET);
         }
-        if (ARPConfig.enableObsidianArmor) {
+        if (APConfig.enableObsidianArmor) {
             obsidianHelmet = new BaseArmor(OBSIDIAN, HEAD);
             obsidianChestplate = new BaseArmor(OBSIDIAN, CHEST);
             obsidianLeggings = new BaseArmor(OBSIDIAN, LEGS);
             obsidianBoots = new BaseArmor(OBSIDIAN, FEET);
         }
-        if (ARPConfig.enableRedstoneArmor) {
+        if (APConfig.enableRedstoneArmor) {
             redstoneHelmet = new BaseArmor(REDSTONE, HEAD);
             redstoneChestplate = new BaseArmor(REDSTONE, CHEST);
             redstoneLeggings = new BaseArmor(REDSTONE, LEGS);
             redstoneBoots = new BaseArmor(REDSTONE, FEET);
         }
-        if (ARPConfig.enableElectricalArmor) {
+        if (APConfig.enableElectricalArmor) {
             electricalHelmet = new BaseElectricalArmor(HEAD, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
             electricalChestplate = new BaseElectricalArmor(CHEST, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
             electricalLeggings = new BaseElectricalArmor(LEGS, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
             electricalBoots = new BaseElectricalArmor(FEET, maxCapacityElectricalArmor, inputElectricalArmor, outputElectricalArmor);
         }
-        if (ARPConfig.enableChickenArmor) {
+        if (APConfig.enableChickenArmor) {
             chickenHelmet = new BaseArmor(CHICKEN, HEAD);
             chickenChestplate = new BaseArmor(CHICKEN, CHEST);
             chickenLeggings = new BaseArmor(CHICKEN, LEGS);
             chickenBoots = new BaseArmor(CHICKEN, FEET);
         }
-        if (ARPConfig.enableSlimeArmor) {
+        if (APConfig.enableSlimeArmor) {
             slimeHelmet = new BaseArmor(SLIME, HEAD);
             slimeChestplate = new BaseArmor(SLIME, CHEST);
             slimeLeggings = new BaseArmor(SLIME, LEGS);
             slimeBoots = new BaseArmor(SLIME, FEET);
         }
-        if (ARPConfig.enableEnderDragonArmor) {
+        if (APConfig.enableEnderDragonArmor) {
             enderDragonHelmet = new BaseArmor(ENDER_DRAGON, HEAD);
             enderDragonChestplate = new BaseArmor(ENDER_DRAGON, CHEST);
             enderDragonLeggings = new BaseArmor(ENDER_DRAGON, LEGS);
             enderDragonBoots = new BaseArmor(ENDER_DRAGON, FEET);
         }
-        if (ARPConfig.enableGuardianArmor) {
+        if (APConfig.enableGuardianArmor) {
             guardianHelmet = new BaseArmor(GUARDIAN, HEAD);
             guardianChestplate = new BaseArmor(GUARDIAN, CHEST);
             guardianLeggings = new BaseArmor(GUARDIAN, LEGS);
             guardianBoots = new BaseArmor(GUARDIAN, FEET);
         }
-        if (ARPConfig.enableSuperStarArmor) {
+        if (APConfig.enableSuperStarArmor) {
             superStarHelmet = new BaseArmor(SUPER_STAR, HEAD);
             superStarChestplate = new BaseArmor(SUPER_STAR, CHEST);
             superStarLeggings = new BaseArmor(SUPER_STAR, LEGS);
             superStarBoots = new BaseArmor(SUPER_STAR, FEET);
         }
-        if (ARPConfig.enableTheUltimateArmor) {
+        if (APConfig.enableTheUltimateArmor) {
             theUltimateHelmet = new BaseUltimateArmor(HEAD);
             theUltimateChestplate = new BaseUltimateArmor(CHEST);
             theUltimateLeggings = new BaseUltimateArmor(LEGS);
@@ -227,89 +227,89 @@ public class ModItems {
             theUltimateBootsMiddle = new BaseUltimateItem(BOOTS_MIDDLE);
             theUltimateBootsRight = new BaseUltimateItem(BOOTS_RIGHT);
         }
-        if (ARPConfig.enableArditeArmor) {
+        if (APConfig.enableArditeArmor) {
             arditeHelmet = new BaseArmor(ARDITE, HEAD);
             arditeChestplate = new BaseArmor(ARDITE, CHEST);
             arditeLeggings = new BaseArmor(ARDITE, LEGS);
             arditeBoots = new BaseArmor(ARDITE, FEET);
         }
-        if (ARPConfig.enableCobaltArmor) {
+        if (APConfig.enableCobaltArmor) {
             cobaltHelmet = new BaseArmor(COBALT, HEAD);
             cobaltChestplate = new BaseArmor(COBALT, CHEST);
             cobaltLeggings = new BaseArmor(COBALT, LEGS);
             cobaltBoots = new BaseArmor(COBALT, FEET);
         }
-        if (ARPConfig.enableManyullynArmor) {
+        if (APConfig.enableManyullynArmor) {
             manyullynHelmet = new BaseArmor(MANYULLYN, HEAD);
             manyullynChestplate = new BaseArmor(MANYULLYN, CHEST);
             manyullynLeggings = new BaseArmor(MANYULLYN, LEGS);
             manyullynBoots = new BaseArmor(MANYULLYN, FEET);
         }
-        if (ARPConfig.enablePigIronArmor) {
+        if (APConfig.enablePigIronArmor) {
             pigIronHelmet = new BaseArmor(PIG_IRON, HEAD);
             pigIronChestplate = new BaseArmor(PIG_IRON, CHEST);
             pigIronLeggings = new BaseArmor(PIG_IRON, LEGS);
             pigIronBoots = new BaseArmor(PIG_IRON, FEET);
         }
-        if (ARPConfig.enableKnightSlimeArmor) {
+        if (APConfig.enableKnightSlimeArmor) {
             knightSlimeHelmet = new BaseArmor(KNIGHT_SLIME, HEAD);
             knightSlimeChestplate = new BaseArmor(KNIGHT_SLIME, CHEST);
             knightSlimeLeggings = new BaseArmor(KNIGHT_SLIME, LEGS);
             knightSlimeBoots = new BaseArmor(KNIGHT_SLIME, FEET);
         }
-        if (ARPConfig.enableCoalSword)
+        if (APConfig.enableCoalSword)
             coalSword = new BaseSpecialSword(Swords.COAL);
-        if (ARPConfig.enableLapisSword)
+        if (APConfig.enableLapisSword)
             lapisSword = new BaseSpecialSword(Swords.LAPIS);
-        if (ARPConfig.enableRedstoneSword)
+        if (APConfig.enableRedstoneSword)
             redstoneSword = new BaseSpecialSword(Swords.REDSTONE);
-        if (ARPConfig.enableEmeraldSword)
+        if (APConfig.enableEmeraldSword)
             emeraldSword = new BaseSpecialSword(Swords.EMERALD);
-        if (ARPConfig.enableObsidianSword)
+        if (APConfig.enableObsidianSword)
             obsidianSword = new BaseSpecialSword(Swords.OBSIDIAN);
-        if (ARPConfig.enableLavaSword)
+        if (APConfig.enableLavaSword)
             lavaSword = new BaseSpecialSword(Swords.LAVA);
-        if (ARPConfig.enableGuardianSword)
+        if (APConfig.enableGuardianSword)
             guardianSword = new BaseSpecialSword(Swords.GUARDIAN);
-        if (ARPConfig.enableSuperStarSword)
+        if (APConfig.enableSuperStarSword)
             superStarSword = new BaseSpecialSword(Swords.SUPER_STAR);
-        if (ARPConfig.enableEnderDragonSword)
+        if (APConfig.enableEnderDragonSword)
             enderDragonSword = new BaseSpecialSword(Swords.ENDER_DRAGON);
-        if (ARPConfig.enableCoalBattleAxe)
+        if (APConfig.enableCoalBattleAxe)
             coalBattleAxe = new BaseBattleAxe(BattleAxes.COAL);
-        if (ARPConfig.enableLapisBattleAxe)
+        if (APConfig.enableLapisBattleAxe)
             lapisBattleAxe = new BaseBattleAxe(BattleAxes.LAPIS);
-        if (ARPConfig.enableRedstoneBattleAxe)
+        if (APConfig.enableRedstoneBattleAxe)
             redstoneBattleAxe = new BaseBattleAxe(BattleAxes.REDSTONE);
-        if (ARPConfig.enableEmeraldBattleAxe)
+        if (APConfig.enableEmeraldBattleAxe)
             emeraldBattleAxe = new BaseBattleAxe(BattleAxes.EMERALD);
-        if (ARPConfig.enableObsidianBattleAxe)
+        if (APConfig.enableObsidianBattleAxe)
             obsidianBattleAxe = new BaseBattleAxe(BattleAxes.OBSIDIAN);
-        if (ARPConfig.enableLavaBattleAxe)
+        if (APConfig.enableLavaBattleAxe)
             lavaBattleAxe = new BaseBattleAxe(BattleAxes.LAVA);
-        if (ARPConfig.enableGuardianBattleAxe)
+        if (APConfig.enableGuardianBattleAxe)
             guardianBattleAxe = new BaseBattleAxe(BattleAxes.GUARDIAN);
-        if (ARPConfig.enableSuperStarBattleAxe)
+        if (APConfig.enableSuperStarBattleAxe)
             superStarBattleAxe = new BaseBattleAxe(BattleAxes.SUPER_STAR);
-        if (ARPConfig.enableEnderDragonBattleAxe)
+        if (APConfig.enableEnderDragonBattleAxe)
             enderDragonBattleAxe = new BaseBattleAxe(BattleAxes.ENDER_DRAGON);
-        if (ARPConfig.enableCoalBow)
+        if (APConfig.enableCoalBow)
             coalBow = new BaseBow(Bows.COAL);
-        if (ARPConfig.enableLapisBow)
+        if (APConfig.enableLapisBow)
             lapisBow = new BaseBow(Bows.LAPIS);
-        if (ARPConfig.enableRedstoneBow)
+        if (APConfig.enableRedstoneBow)
             redstoneBow = new BaseBow(Bows.REDSTONE);
-        if (ARPConfig.enableEmeraldBow)
+        if (APConfig.enableEmeraldBow)
             emeraldBow = new BaseBow(Bows.EMERALD);
-        if (ARPConfig.enableObsidianBow)
+        if (APConfig.enableObsidianBow)
             obsidianBow = new BaseBow(Bows.OBSIDIAN);
-        if (ARPConfig.enableLavaBow)
+        if (APConfig.enableLavaBow)
             lavaBow = new BaseBow(Bows.LAVA);
-        if (ARPConfig.enableGuardianBow)
+        if (APConfig.enableGuardianBow)
             guardianBow = new BaseBow(Bows.GUARDIAN);
-        if (ARPConfig.enableSuperStarBow)
+        if (APConfig.enableSuperStarBow)
             superStarBow = new BaseBow(Bows.SUPER_STAR);
-        if (ARPConfig.enableEnderDragonBow)
+        if (APConfig.enableEnderDragonBow)
             enderDragonBow = new BaseBow(Bows.ENDER_DRAGON);
         devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
@@ -338,7 +338,7 @@ public class ModItems {
             itemTeslaPickaxe.initModel();
             itemTeslaSword.initModel();
         }
-        if (ARPConfig.enableSteelArmor) {
+        if (APConfig.enableSteelArmor) {
             steelHelmet.initModel();
             steelChestplate.initModel();
             steelLeggings.initModel();
@@ -362,79 +362,79 @@ public class ModItems {
         electricalIngot.initModel();
         redstoneApple.initModel();
         armorPlusInfoBook.initModel();
-        if (ARPConfig.enableCoalArmor) {
+        if (APConfig.enableCoalArmor) {
             coalHelmet.initModel();
             coalChestplate.initModel();
             coalLeggings.initModel();
             coalBoots.initModel();
         }
-        if (ARPConfig.enableEmeraldArmor) {
+        if (APConfig.enableEmeraldArmor) {
             emeraldHelmet.initModel();
             emeraldChestplate.initModel();
             emeraldLeggings.initModel();
             emeraldBoots.initModel();
         }
-        if (ARPConfig.enableLapisArmor) {
+        if (APConfig.enableLapisArmor) {
             lapisHelmet.initModel();
             lapisChestplate.initModel();
             lapisLeggings.initModel();
             lapisBoots.initModel();
         }
-        if (ARPConfig.enableLavaArmor) {
+        if (APConfig.enableLavaArmor) {
             lavaHelmet.initModel();
             lavaChestplate.initModel();
             lavaLeggings.initModel();
             lavaBoots.initModel();
         }
-        if (ARPConfig.enableObsidianArmor) {
+        if (APConfig.enableObsidianArmor) {
             obsidianHelmet.initModel();
             obsidianChestplate.initModel();
             obsidianLeggings.initModel();
             obsidianBoots.initModel();
         }
-        if (ARPConfig.enableRedstoneArmor) {
+        if (APConfig.enableRedstoneArmor) {
             redstoneHelmet.initModel();
             redstoneChestplate.initModel();
             redstoneLeggings.initModel();
             redstoneBoots.initModel();
         }
-        if (ARPConfig.enableElectricalArmor) {
+        if (APConfig.enableElectricalArmor) {
             electricalHelmet.initModel();
             electricalChestplate.initModel();
             electricalLeggings.initModel();
             electricalBoots.initModel();
         }
-        if (ARPConfig.enableChickenArmor) {
+        if (APConfig.enableChickenArmor) {
             chickenHelmet.initModel();
             chickenChestplate.initModel();
             chickenLeggings.initModel();
             chickenBoots.initModel();
         }
-        if (ARPConfig.enableSlimeArmor) {
+        if (APConfig.enableSlimeArmor) {
             slimeHelmet.initModel();
             slimeChestplate.initModel();
             slimeLeggings.initModel();
             slimeBoots.initModel();
         }
-        if (ARPConfig.enableEnderDragonArmor) {
+        if (APConfig.enableEnderDragonArmor) {
             enderDragonHelmet.initModel();
             enderDragonChestplate.initModel();
             enderDragonLeggings.initModel();
             enderDragonBoots.initModel();
         }
-        if (ARPConfig.enableGuardianArmor) {
+        if (APConfig.enableGuardianArmor) {
             guardianHelmet.initModel();
             guardianChestplate.initModel();
             guardianLeggings.initModel();
             guardianBoots.initModel();
         }
-        if (ARPConfig.enableSuperStarArmor) {
+        if (APConfig.enableSuperStarArmor) {
             superStarHelmet.initModel();
             superStarChestplate.initModel();
             superStarLeggings.initModel();
             superStarBoots.initModel();
         }
-        if (ARPConfig.enableTheUltimateArmor) {
+        if (APConfig.enableTheUltimateArmor) {
             theUltimateHelmet.initModel();
             theUltimateChestplate.initModel();
             theUltimateLeggings.initModel();
@@ -452,89 +452,89 @@ public class ModItems {
             theUltimateBootsMiddle.initModel();
             theUltimateBootsRight.initModel();
         }
-        if (ARPConfig.enableArditeArmor) {
+        if (APConfig.enableArditeArmor) {
             arditeHelmet.initModel();
             arditeChestplate.initModel();
             arditeLeggings.initModel();
             arditeBoots.initModel();
         }
-        if (ARPConfig.enableCobaltArmor) {
+        if (APConfig.enableCobaltArmor) {
             cobaltHelmet.initModel();
             cobaltChestplate.initModel();
             cobaltLeggings.initModel();
             cobaltBoots.initModel();
         }
-        if (ARPConfig.enableManyullynArmor) {
+        if (APConfig.enableManyullynArmor) {
             manyullynHelmet.initModel();
             manyullynChestplate.initModel();
             manyullynLeggings.initModel();
             manyullynBoots.initModel();
         }
-        if (ARPConfig.enablePigIronArmor) {
+        if (APConfig.enablePigIronArmor) {
             pigIronHelmet.initModel();
             pigIronChestplate.initModel();
             pigIronLeggings.initModel();
             pigIronBoots.initModel();
         }
-        if (ARPConfig.enableKnightSlimeArmor) {
+        if (APConfig.enableKnightSlimeArmor) {
             knightSlimeHelmet.initModel();
             knightSlimeChestplate.initModel();
             knightSlimeLeggings.initModel();
             knightSlimeBoots.initModel();
         }
-        if (ARPConfig.enableCoalSword)
+        if (APConfig.enableCoalSword)
             coalSword.initModel();
-        if (ARPConfig.enableLapisSword)
+        if (APConfig.enableLapisSword)
             lapisSword.initModel();
-        if (ARPConfig.enableRedstoneSword)
+        if (APConfig.enableRedstoneSword)
             redstoneSword.initModel();
-        if (ARPConfig.enableEmeraldSword)
+        if (APConfig.enableEmeraldSword)
             emeraldSword.initModel();
-        if (ARPConfig.enableObsidianSword)
+        if (APConfig.enableObsidianSword)
             obsidianSword.initModel();
-        if (ARPConfig.enableLavaSword)
+        if (APConfig.enableLavaSword)
             lavaSword.initModel();
-        if (ARPConfig.enableGuardianSword)
+        if (APConfig.enableGuardianSword)
             guardianSword.initModel();
-        if (ARPConfig.enableSuperStarSword)
+        if (APConfig.enableSuperStarSword)
             superStarSword.initModel();
-        if (ARPConfig.enableEnderDragonSword)
+        if (APConfig.enableEnderDragonSword)
             enderDragonSword.initModel();
-        if (ARPConfig.enableCoalBattleAxe)
+        if (APConfig.enableCoalBattleAxe)
             coalBattleAxe.initModel();
-        if (ARPConfig.enableLapisBattleAxe)
+        if (APConfig.enableLapisBattleAxe)
             lapisBattleAxe.initModel();
-        if (ARPConfig.enableRedstoneBattleAxe)
+        if (APConfig.enableRedstoneBattleAxe)
             redstoneBattleAxe.initModel();
-        if (ARPConfig.enableEmeraldBattleAxe)
+        if (APConfig.enableEmeraldBattleAxe)
             emeraldBattleAxe.initModel();
-        if (ARPConfig.enableObsidianBattleAxe)
+        if (APConfig.enableObsidianBattleAxe)
             obsidianBattleAxe.initModel();
-        if (ARPConfig.enableLavaBattleAxe)
+        if (APConfig.enableLavaBattleAxe)
             lavaBattleAxe.initModel();
-        if (ARPConfig.enableGuardianBattleAxe)
+        if (APConfig.enableGuardianBattleAxe)
             guardianBattleAxe.initModel();
-        if (ARPConfig.enableSuperStarBattleAxe)
+        if (APConfig.enableSuperStarBattleAxe)
             superStarBattleAxe.initModel();
-        if (ARPConfig.enableEnderDragonBattleAxe)
+        if (APConfig.enableEnderDragonBattleAxe)
             enderDragonBattleAxe.initModel();
-        if (ARPConfig.enableCoalBow)
+        if (APConfig.enableCoalBow)
             coalBow.initModel();
-        if (ARPConfig.enableLapisBow)
+        if (APConfig.enableLapisBow)
             lapisBow.initModel();
-        if (ARPConfig.enableRedstoneBow)
+        if (APConfig.enableRedstoneBow)
             redstoneBow.initModel();
-        if (ARPConfig.enableEmeraldBow)
+        if (APConfig.enableEmeraldBow)
             emeraldBow.initModel();
-        if (ARPConfig.enableObsidianBow)
+        if (APConfig.enableObsidianBow)
             obsidianBow.initModel();
-        if (ARPConfig.enableLavaBow)
+        if (APConfig.enableLavaBow)
             lavaBow.initModel();
-        if (ARPConfig.enableGuardianBow)
+        if (APConfig.enableGuardianBow)
             guardianBow.initModel();
-        if (ARPConfig.enableSuperStarBow)
+        if (APConfig.enableSuperStarBow)
             superStarBow.initModel();
-        if (ARPConfig.enableEnderDragonBow)
+        if (APConfig.enableEnderDragonBow)
             enderDragonBow.initModel();
         devTool.initModel();
         nbtItem.initModel();

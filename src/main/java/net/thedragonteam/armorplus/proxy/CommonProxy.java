@@ -8,7 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.client.gui.ARPTab;
+import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.entity.ARPEntities;
 import net.thedragonteam.armorplus.registry.*;
@@ -50,7 +50,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         registerEvents();
         ModOreDicts.registerOreDictEntries();
-        ARPTab.initialize();
+        APTab.initialize();
         ModEnchantments.registerEnchantments();
         ModCompatibility.loadCompat(INIT);
         LogHelper.info("Finished Initialization");

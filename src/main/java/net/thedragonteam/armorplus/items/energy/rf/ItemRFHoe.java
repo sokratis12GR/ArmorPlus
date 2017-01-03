@@ -33,7 +33,7 @@ import net.thedragonteam.armorplus.items.base.energy.rf.BaseRFHoe;
 import java.util.List;
 import java.util.Set;
 
-import static net.thedragonteam.armorplus.ARPConfig.*;
+import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemRFHoe extends BaseRFHoe {
 

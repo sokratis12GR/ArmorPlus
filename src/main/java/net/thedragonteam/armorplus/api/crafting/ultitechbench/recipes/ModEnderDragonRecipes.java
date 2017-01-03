@@ -6,18 +6,18 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonArmorElytra;
-import static net.thedragonteam.armorplus.ARPConfig.enableEnderDragonArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.enableEnderDragonArmorElytra;
+import static net.thedragonteam.armorplus.APConfig.enableEnderDragonArmorRecipes;
 
 public class ModEnderDragonRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Ender Dragon Armor */
-        if (ARPConfig.enableEnderDragonArmor) {
-            if (ARPConfig.recipes == 0 && enableEnderDragonArmorRecipes) {
+        if (APConfig.enableEnderDragonArmor) {
+            if (APConfig.recipes == 0 && enableEnderDragonArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
                         "EEEEE",
                         "E   E",
@@ -60,7 +60,7 @@ public class ModEnderDragonRecipes {
                         "E   E",
                         'E', ModItems.enderDragonScale);
             }
-            if (ARPConfig.recipes == 1 && enableEnderDragonArmorRecipes) {
+            if (APConfig.recipes == 1 && enableEnderDragonArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.enderDragonHelmet, 1),
                         "CEEEC",
                         "ES SE",

@@ -1,3 +1,15 @@
+**ArmorPlus 1.10.2-8.3.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* **{Features Added}**
+    * Added MineTweaker/CraftTweaker Integration:
+     "mods.armorplus.Workbench.addShaped , mods.armorplus.Workbench.addShapeless and mods.armorplus.Workbench.remove"
+     "mods.armorplus.HighTechBench.addShaped , mods.armorplus.HighTechBench.addShapeless and mods.armorplus.HighTechBench.remove"
+     "mods.armorplus.UltiTechBench.addShaped , mods.armorplus.UltiTechBench.addShapeless and mods.armorplus.UltiTechBench.remove"
+* **{Features Changed}**
+    * Upgraded the models for the benches to the newer ones
+    * Fixed the direction for the benches when placed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.4.5**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

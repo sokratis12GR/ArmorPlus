@@ -12,7 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ARPConfig;
+import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -32,7 +32,7 @@ public class BaseRFSword extends BaseSword implements IEnergyContainerItem {
     }
 
     public BaseRFSword(ToolMaterial material, String name, int capacity, int maxReceive, int maxExtract) {
-        super(material, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.getValueByName(ARPConfig.rfWeaponItemNameColor), null);
+        super(material, name, ModItems.steelIngot, ModItems.steelIngot, TextFormatting.getValueByName(APConfig.rfWeaponItemNameColor), null);
         this.setCreativeTab(ArmorPlus.tabArmorplusRF);
         this.capacity = capacity;
         this.maxReceive = maxReceive;
