@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
@@ -85,7 +85,7 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
-        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.arpUltiTechBench))
+        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.benches[2]))
             this.player.addStat(APAchievements.craftUltiTechBench, 1);
 
         /* Tinkers' Armors*/

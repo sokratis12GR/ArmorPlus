@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -36,26 +36,26 @@ public class ModBlocks {
     public static BaseMetalBlock steelBlock;
     public static BaseMetalBlock electricalBlock;
     public static LavaNetherBrick lavaNetherBrick;
-    public static BlockStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
+    private static BlockStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
     public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[]{
             whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick
     };
-    public static BlockStoneBrickTower whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower;
+    private static BlockStoneBrickTower whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower;
     public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[]{
             whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower
     };
-    public static BlockStoneBrickCorner whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner;
+    private static BlockStoneBrickCorner whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner;
     public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[]{
             whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner
     };
-    public static BlockStonebrickWall whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall;
+    private static BlockStonebrickWall whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall;
     public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[]{
             whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall
     };
     public static LavaCactus lavaCactus;
-    public static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench;
-    public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench};
-    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
+    private static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew;
+    public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew};
+    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW};
     public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE};
 
     public static void init() {
@@ -71,7 +71,7 @@ public class ModBlocks {
             stoneBrickCorners[s] = new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState());
             stonebrickWalls[s] = new BlockStonebrickWall(stoneBricks[s]);
         }
-        for (int b = 0; b <= 3; b++) {
+        for (int b = 0; b <= 4; b++) {
             benches[b] = new BlockBench(benchTypes[b]);
         }
     }
@@ -90,7 +90,7 @@ public class ModBlocks {
             stoneBrickCorners[i].initModel();
             stonebrickWalls[i].initModel();
         }
-        for (int b = 0; b <= 3; b++) {
+        for (int b = 0; b <= 4; b++) {
             benches[b].initModel();
         }
     }

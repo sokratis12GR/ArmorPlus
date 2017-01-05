@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.jei;
@@ -70,9 +70,9 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpWorkbench), JEI_CATEGORY_WORKBENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpHighTechBench), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpUltiTechBench), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[0]), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[1]), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[2]), JEI_CATEGORY_ULTI_TECH_BENCH);
 
         registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.jei.hightechbench;
@@ -39,7 +39,7 @@ public class HTBShapelessOreRecipeHandler implements IRecipeHandler<ShapelessOre
     @Override
     public boolean isRecipeValid(ShapelessOreRecipe recipe) {
         if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no outputs. {}", recipeInfo);
             return false;
         }
@@ -56,12 +56,12 @@ public class HTBShapelessOreRecipeHandler implements IRecipeHandler<ShapelessOre
             }
         }
         if (inputCount > 16) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);
             return false;
         }
         if (inputCount == 0) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no inputs. {}", recipeInfo);
             return false;
         }

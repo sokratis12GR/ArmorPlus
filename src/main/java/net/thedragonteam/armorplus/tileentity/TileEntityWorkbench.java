@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.tileentity;
@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.tileentity.base.TileEntityBaseBench;
 public class TileEntityWorkbench extends TileEntityBaseBench {
 
     public TileEntityWorkbench() {
-        super("workbench", 8, 10, 64);
+        super("workbench", 10);
     }
 
 }

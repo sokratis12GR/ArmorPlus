@@ -1,12 +1,11 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
@@ -41,18 +40,18 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 3;
+    public static final int MINOR = 4;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 2;
+    public static final int BUILD = 1;
     /**
      * The ArmorPlus Version
      */
@@ -98,11 +97,11 @@ public class ArmorPlus {
         return ArmorPlus.VERSION;
     }
 
-    public static boolean hasTesla() {
+    public static boolean isTeslaLoaded() {
         return Loader.isModLoaded("tesla");
     }
 
-    public static boolean hasBaubles() {
+    public static boolean isBaublesLoaded() {
         return Loader.isModLoaded("baubles");
     }
 
@@ -122,7 +121,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        SharedMonsterAttributes.ARMOR = new RangedAttribute((IAttribute) null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
+        SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(APConfig.class, configuration);
         featureParser.registerFeatures();

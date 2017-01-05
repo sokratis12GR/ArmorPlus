@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.worldgen;
@@ -16,7 +16,6 @@ import net.thedragonteam.armorplus.worldgen.structures.StructureCastle;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.APConfig.castleGenSpawnChance;
 import static net.thedragonteam.armorplus.APConfig.enableCastleGen;
 
 public class StructureGen implements IWorldGenerator {
@@ -57,7 +56,7 @@ public class StructureGen implements IWorldGenerator {
         if (enableCastleGen) {
             WorldGenerator genCastle = new StructureCastle();
             // 1/1000 of chunks can have a castle
-            if (rand.nextInt(10000) < castleGenSpawnChance) {
+            if (rand.nextInt(10000) < 100) {
                 // get a random position in the chunk
                 int randX = blockX + rand.nextInt(16);
                 int randZ = blockZ + rand.nextInt(16);

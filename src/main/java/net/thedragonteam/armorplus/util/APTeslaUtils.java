@@ -1,14 +1,19 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.util;
 
+import net.darkhax.tesla.api.ITeslaConsumer;
+import net.darkhax.tesla.api.ITeslaHolder;
+import net.darkhax.tesla.api.ITeslaProducer;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 
 import static net.minecraftforge.fml.common.Optional.Method;
 
@@ -120,4 +125,13 @@ public class APTeslaUtils {
     public static void addPower(TileEntity tileEntity, long amount) {
         getContainer(tileEntity).givePower(amount, false);
     }
+
+    @CapabilityInject(ITeslaConsumer.class)
+    public static Capability<ITeslaConsumer> teslaConsumer;
+
+    @CapabilityInject(ITeslaProducer.class)
+    public static Capability<ITeslaProducer> teslaProducer;
+
+    @CapabilityInject(ITeslaHolder.class)
+    public static Capability<ITeslaHolder> teslaHolder;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.items.dev;
@@ -43,14 +43,14 @@ public class DevTool extends BaseItem {
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if (target != null) {
             if (!playerIn.world.isRemote)
-                playerIn.sendMessage(new TextComponentString(TextFormatting.GOLD +
+                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GOLD +
                         "[" + target.getName() + "]"
                         + " - " + "Health: " + target.getHealth()
                         + " - " + "Max Health: " + target.getMaxHealth()
                         + " - " + "Class: " + target.getClass()
                         + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
                         + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
-                        + " - " + "Position: " + target.getPosition()));
+                        + " - " + "Position: " + target.getPosition()), false);
             return true;
         }
         return true;

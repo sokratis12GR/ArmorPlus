@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.base;
@@ -44,7 +44,23 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        switch (benches) {
+            case WORKBENCH:
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+                break;
+            case HIGH_TECH:
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+                break;
+            case ULTI_TECH:
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+                break;
+            case CHAMPION:
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+                break;
+            case WORKBENCH_NEW:
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation("armorplus:workbench", "inventory"));
+                break;
+        }
     }
 
     @Override
@@ -70,6 +86,10 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
                     playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_CHAMPION_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
                 }
                 break;
+            case WORKBENCH_NEW:
+                if (!worldIn.isRemote) {
+                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_WORKBENCH_NEW, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                }
         }
         return true;
     }
@@ -136,6 +156,8 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
                 return new TileEntityUltiTechBench();
             case CHAMPION:
                 return new TileEntityChampionBench();
+            case WORKBENCH_NEW:
+                return new TileEntityWorkbench();
         }
         return null;
     }

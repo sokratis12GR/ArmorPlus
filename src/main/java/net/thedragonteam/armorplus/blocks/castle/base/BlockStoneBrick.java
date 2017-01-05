@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.castle.base;
@@ -19,7 +19,7 @@ public class BlockStoneBrick extends BlockBase {
 
     public MapColor color;
 
-    String name;
+    private String name;
 
     public BlockStoneBrick(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, ToolType.PICKAXE, 0);

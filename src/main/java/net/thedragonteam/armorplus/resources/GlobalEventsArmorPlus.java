@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.resources;
@@ -38,7 +38,7 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-        if (i == Item.getItemFromBlock(ModBlocks.arpWorkbench)) {
+        if (i == Item.getItemFromBlock(ModBlocks.benches[0])) {
             event.player.addStat(APAchievements.welcomeToArmorPlus);
         }
     }

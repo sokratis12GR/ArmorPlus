@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
@@ -87,7 +87,7 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
-        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.arpHighTechBench))
+        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.benches[1]))
             this.player.addStat(APAchievements.craftHighTechBench, 1);
 
         if (stack.getItem() == sword[1])

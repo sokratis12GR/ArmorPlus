@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -18,6 +18,8 @@ import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 public class ModOreDicts {
 
+    public static String[] colors = new String[]{"White", "Red", "Black", "Blue", "Green", "Yellow", "Purple"};
+
     public static void registerOreDictEntries() {
         //Ingots
         registerOre("ingotSteel", steelIngot);
@@ -33,27 +35,11 @@ public class ModOreDicts {
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);
         //CastleBlocks
-        registerWildBrick("White", whiteStoneBrick);
-        registerWildBrick("Red", redStoneBrick);
-        registerWildBrick("Black", blackStoneBrick);
-        registerWildBrick("Blue", blueStoneBrick);
-        registerWildBrick("Green", greenStoneBrick);
-        registerWildBrick("Yellow", yellowStoneBrick);
-        registerWildBrick("Purple", purpleStoneBrick);
-        registerWildBrick("WhiteCorner", whiteStoneBrickCorner);
-        registerWildBrick("RedCorner", redStoneBrickCorner);
-        registerWildBrick("BlackCorner", blackStoneBrickCorner);
-        registerWildBrick("BlueCorner", blueStoneBrickCorner);
-        registerWildBrick("GreenCorner", greenStoneBrickCorner);
-        registerWildBrick("YellowCorner", yellowStoneBrickCorner);
-        registerWildBrick("PurpleCorner", purpleStoneBrickCorner);
-        registerWildBrick("WhiteTower", whiteStoneBrickTower);
-        registerWildBrick("RedTower", redStoneBrickTower);
-        registerWildBrick("BlackTower", blackStoneBrickTower);
-        registerWildBrick("BlueTower", blueStoneBrickTower);
-        registerWildBrick("GreenTower", greenStoneBrickTower);
-        registerWildBrick("YellowTower", yellowStoneBrickTower);
-        registerWildBrick("PurpleTower", purpleStoneBrickTower);
+        for (int i = 0; i <= 6; i++) {
+            registerWildBrick(colors[i], stoneBricks[i]);
+            registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
+            registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
+        }
         //Materials
         registerWildOre("chainmail", materials, 0);
         registerWildOre("witherBone", materials, 2);

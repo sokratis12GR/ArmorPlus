@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 @API(owner = "armorplus", provides = "ArmorPlusApi", apiVersion = Constants.API.API_VERSION)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.jei.workbench;
@@ -31,7 +31,7 @@ public class WBShapelessRecipeHandler implements IRecipeHandler<ShapelessRecipes
     @Override
     public boolean isRecipeValid(ShapelessRecipes recipe) {
         if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no output. {}", recipeInfo);
             return false;
         }
@@ -40,13 +40,13 @@ public class WBShapelessRecipeHandler implements IRecipeHandler<ShapelessRecipes
             if (input instanceof ItemStack) {
                 inputCount++;
             } else {
-                String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+                String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
                 Log.error("Recipe has an input that is not an ItemStack. {}", recipeInfo);
                 return false;
             }
         }
         if (inputCount > 9) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);
             return false;
         }

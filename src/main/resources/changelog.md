@@ -1,3 +1,17 @@
+ArmorPlus 1.11.2-9.4.0.1-beta
+----------------------------
+
+Minecraft Version:
+
+* Updated to 1.11.2
+
+Features Added:
+
+* Stone Brick Walls (Colored)
+
+* Structure Gen:
+  * You will now be able to explore Towers in your world.
+
 ArmorPlus 1.11-9.3.1.2-beta
 ----------------------------
 
@@ -42,6 +56,7 @@ Bugs Fixed:
 
 ArmorPlus 1.11-9.1.0.1-beta
 ----------------------------
+
 Features Added:
 
 * Added the forges (from tier 1 to tier 3)
@@ -66,5 +81,6 @@ Planned Features:
 
 ArmorPlus 1.11-9.0.0.1-alpha
 ----------------------------
+
 Minecraft Version:
 * Updated to 1.11

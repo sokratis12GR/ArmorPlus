@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -26,8 +26,8 @@ import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.ArmorPlus.hasBaubles;
-import static net.thedragonteam.armorplus.ArmorPlus.hasTesla;
+import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
+import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 
 public class ModItems {
@@ -115,11 +115,11 @@ public class ModItems {
     };
 
     public static void init() {
-        if (hasBaubles()) {
+        if (isBaublesLoaded()) {
             itemBaubleDragon = new ItemBaubleDragon();
         }
         itemEnderDragonArrow = new ItemEnderDragonArrow();
-        if (hasTesla()) {
+        if (isTeslaLoaded()) {
             itemTeslaShovel = new ItemTeslaShovel();
             itemTeslaHoe = new ItemTeslaHoe();
             itemTeslaAxe = new ItemTeslaAxe();
@@ -230,10 +230,10 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         itemEnderDragonArrow.initModel();
-        if (hasBaubles()) {
+        if (isBaublesLoaded()) {
             itemBaubleDragon.initModel();
         }
-        if (hasTesla()) {
+        if (isTeslaLoaded()) {
             itemTeslaShovel.initModel();
             itemTeslaHoe.initModel();
             itemTeslaAxe.initModel();

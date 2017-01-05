@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.jei.ultitechbench;
@@ -40,7 +40,7 @@ public class UTBShapedOreRecipeHandler implements IRecipeHandler<ShapedOreRecipe
     @Override
     public boolean isRecipeValid(ShapedOreRecipe recipe) {
         if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no output. {}", recipeInfo);
             return false;
         }
@@ -55,12 +55,12 @@ public class UTBShapedOreRecipeHandler implements IRecipeHandler<ShapedOreRecipe
             }
         }
         if (inputCount > 25) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);
             return false;
         }
         if (inputCount == 0) {
-            String recipeInfo = ErrorUtil.getInfoFromBrokenRecipe(recipe, this);
+            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no inputs. {}", recipeInfo);
             return false;
         }

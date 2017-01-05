@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
@@ -24,15 +24,15 @@ public class ModUltimateRecipes {
         Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[2], 1));
         Utils.setUnbreakable(new ItemStack(ModItems.theUltimate[3], 1));
 
-        manager.addRecipe(new ItemStack(ModBlocks.arpUltiTechBench, 1),
+        manager.addRecipe(new ItemStack(ModBlocks.benches[2], 1),
                 "LUUL ",
                 "OWHO ",
                 "OUUO ",
                 "O  O ",
                 "     ",
                 'U', getItemStack(ModItems.materials, 4),
-                'W', ModBlocks.arpWorkbench,
-                'H', ModBlocks.arpHighTechBench,
+                'W', ModBlocks.benches[0],
+                'H', ModBlocks.benches[1],
                 'O', ModBlocks.compressedObsidian,
                 'L', getItemStack(ModItems.lavaCrystal, 1));
         /* The Ultimate Armor */

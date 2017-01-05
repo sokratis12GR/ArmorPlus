@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.benches;
@@ -10,7 +10,8 @@ public enum Benches implements IStringSerializable {
     WORKBENCH("workbench"),
     HIGH_TECH("high_tech_bench"),
     ULTI_TECH("ulti_tech_bench"),
-    CHAMPION("champion_bench");
+    CHAMPION("champion_bench"),
+    WORKBENCH_NEW("workbench_new");
 
     private final String name;
 

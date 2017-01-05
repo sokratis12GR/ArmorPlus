@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -18,6 +18,7 @@ import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRe
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.ModOreDicts.colors;
 import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 /**
@@ -118,7 +119,7 @@ public class ModRecipes {
                 " N ",
                 'L', LAVA_BUCKET,
                 'N', Blocks.NETHER_BRICK);
-        addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench),
+        addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[0]),
                 "LCL",
                 "OTO",
                 "O O",
@@ -126,27 +127,11 @@ public class ModRecipes {
                 'O', "blockCoal",
                 'L', "gemLapis",
                 'C', "gemLavaCrystal"));
-        addRecipeCastle(whiteStoneBrick, "White");
-        addRecipeCastle(redStoneBrick, "Red");
-        addRecipeCastle(blackStoneBrick, "Black");
-        addRecipeCastle(blueStoneBrick, "Blue");
-        addRecipeCastle(greenStoneBrick, "Green");
-        addRecipeCastle(yellowStoneBrick, "Yellow");
-        addRecipeCastle(purpleStoneBrick, "Purple");
-        addRecipeCastleCorner(whiteStoneBrickCorner, "White");
-        addRecipeCastleCorner(redStoneBrickCorner, "Red");
-        addRecipeCastleCorner(blackStoneBrickCorner, "Black");
-        addRecipeCastleCorner(blueStoneBrickCorner, "Blue");
-        addRecipeCastleCorner(greenStoneBrickCorner, "Green");
-        addRecipeCastleCorner(yellowStoneBrickCorner, "Yellow");
-        addRecipeCastleCorner(purpleStoneBrickCorner, "Purple");
-        addRecipeCastleTower(whiteStoneBrickTower, "White");
-        addRecipeCastleTower(redStoneBrickTower, "Red");
-        addRecipeCastleTower(blackStoneBrickTower, "Black");
-        addRecipeCastleTower(blueStoneBrickTower, "Blue");
-        addRecipeCastleTower(greenStoneBrickTower, "Green");
-        addRecipeCastleTower(yellowStoneBrickTower, "Yellow");
-        addRecipeCastleTower(purpleStoneBrickTower, "Purple");
+        for (int i = 0; i <= 6; i++) {
+            addRecipeCastle(stoneBricks[i], colors[i]);
+            addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
+            addRecipeCastleTower(stoneBrickTowers[i], colors[i]);
+        }
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
         if (enableChainArmorRecipes) {
