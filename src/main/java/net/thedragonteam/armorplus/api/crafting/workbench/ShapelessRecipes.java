@@ -19,11 +19,11 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class ShapelessRecipes implements IRecipe {
+    public final List<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
-    public final List<ItemStack> input;
 
     public ShapelessRecipes(ItemStack output, List<ItemStack> inputList) {
         this.recipeOutput = output;

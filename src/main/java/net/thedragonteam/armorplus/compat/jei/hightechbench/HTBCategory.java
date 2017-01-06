@@ -73,7 +73,7 @@ public class HTBCategory extends BlankRecipeCategory<ICraftingRecipeWrapper> {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 113, 26);
 
-        for (int y = 0; y < 4; ++y){
+        for (int y = 0; y < 4; ++y) {
             for (int x = 0; x < 4; ++x) {
                 int index = INPUT_SLOT + x + (y * 4);
                 guiItemStacks.init(index, true, x * 18, y * 18);

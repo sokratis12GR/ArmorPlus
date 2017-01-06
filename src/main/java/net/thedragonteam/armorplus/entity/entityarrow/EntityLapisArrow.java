@@ -11,12 +11,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
-import net.thedragonteam.armorplus.util.PotionUtils;
 
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
 
-public class EntityLapisArrow extends EntityArrow{
+public class EntityLapisArrow extends EntityArrow {
 
     private EnumParticleTypes particle;
 
@@ -40,7 +40,7 @@ public class EntityLapisArrow extends EntityArrow{
     @Override
     public void onUpdate() {
         super.onUpdate();
-        ParticlesHelper.spawnParticle(this,EnumParticleTypes.WATER_DROP, this.posX, this.posY, this.posZ);
+        spawnParticle(this, EnumParticleTypes.WATER_DROP, this.posX, this.posY, this.posZ);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class EntityLapisArrow extends EntityArrow{
         super.arrowHit(living);
 
         if (living != shootingEntity) {
-            PotionUtils.addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
+            addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
         }
     }
 

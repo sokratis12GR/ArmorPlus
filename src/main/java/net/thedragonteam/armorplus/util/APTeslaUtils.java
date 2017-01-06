@@ -19,6 +19,13 @@ import static net.minecraftforge.fml.common.Optional.Method;
 
 public class APTeslaUtils {
 
+    @CapabilityInject(ITeslaConsumer.class)
+    public static Capability<ITeslaConsumer> teslaConsumer;
+    @CapabilityInject(ITeslaProducer.class)
+    public static Capability<ITeslaProducer> teslaProducer;
+    @CapabilityInject(ITeslaHolder.class)
+    public static Capability<ITeslaHolder> teslaHolder;
+
     @Method(modid = "tesla")
     public static boolean isPoweredItem(ItemStack stack) {
         return stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
@@ -125,13 +132,4 @@ public class APTeslaUtils {
     public static void addPower(TileEntity tileEntity, long amount) {
         getContainer(tileEntity).givePower(amount, false);
     }
-
-    @CapabilityInject(ITeslaConsumer.class)
-    public static Capability<ITeslaConsumer> teslaConsumer;
-
-    @CapabilityInject(ITeslaProducer.class)
-    public static Capability<ITeslaProducer> teslaProducer;
-
-    @CapabilityInject(ITeslaHolder.class)
-    public static Capability<ITeslaHolder> teslaHolder;
 }

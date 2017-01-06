@@ -9,8 +9,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.container.inventory.InventoryCraftingNew;
 
-public interface IRecipe
-{
+public interface IRecipe {
     /**
      * Used to check if a recipe matches current crafting inventory
      */

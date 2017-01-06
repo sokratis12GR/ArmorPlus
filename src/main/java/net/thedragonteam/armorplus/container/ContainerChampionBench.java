@@ -19,12 +19,6 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting;
  */
 public class ContainerChampionBench extends Container {
 
-    /**
-     * The crafting matrix inventory (10x10).
-     */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 10, 10);
-    public IInventory craftResult = new InventoryCraftResult();
-
     private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 101;
     private static final int RECIPE_SIZE = 10;
@@ -32,8 +26,14 @@ public class ContainerChampionBench extends Container {
     private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-
+    private static final EntityEquipmentSlot[] EQUIPMENT_SLOTS = new EntityEquipmentSlot[]{
+            EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
     private final World world;
+    /**
+     * The crafting matrix inventory (10x10).
+     */
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 10, 10);
+    public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerChampionBench(InventoryPlayer playerInventory, World worldIn) {
         this.world = worldIn;
@@ -58,9 +58,6 @@ public class ContainerChampionBench extends Container {
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }
-
-    private static final EntityEquipmentSlot[] EQUIPMENT_SLOTS = new EntityEquipmentSlot[]{
-            EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
 
     protected void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
         for (int k = 0; k < 2; ++k) {

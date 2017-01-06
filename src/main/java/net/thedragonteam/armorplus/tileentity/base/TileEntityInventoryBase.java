@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.tileentity.base;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.items.IItemHandler;
-import net.thedragonteam.armorplus.util.ItemStackHandlerImproved;
+import net.thedragonteam.thedragonlib.util.ItemStackHandlerImproved;
 
 public abstract class TileEntityInventoryBase extends TileEntityBase {
 

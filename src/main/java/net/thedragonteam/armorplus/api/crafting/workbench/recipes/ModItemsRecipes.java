@@ -6,15 +6,18 @@ package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
 import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
-import static net.thedragonteam.armorplus.APConfig.gameMode;
+import static net.thedragonteam.armorplus.APConfig.getRD;
+import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
+import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
 
 public class ModItemsRecipes {
 
@@ -26,9 +29,9 @@ public class ModItemsRecipes {
                 'R', "dustRedstone",
                 'G', "dustGlowstone",
                 'A', "gemLavaCrystal"));
-        if (APConfig.gameMode == 0)
+        if (getRD() == EASY)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
-        if (APConfig.gameMode == 1)
+        if (getRD() == EXPERT)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1),
                 "LOL",
@@ -40,7 +43,7 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 9), "blockSteel"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 9), "blockElectrical"));
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[0]),
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(workbench),
                 "LCL",
                 "OTO",
                 "O O",
@@ -48,7 +51,7 @@ public class ModItemsRecipes {
                 'O', "blockCoal",
                 'L', "gemLapis",
                 'C', "gemLavaCrystal"));
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[1]),
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(highTechBench),
                 "LLL",
                 "CAC",
                 "CCC",
@@ -115,7 +118,7 @@ public class ModItemsRecipes {
                 "OOO",
                 "OOO",
                 'O', "ingotElectrical"));
-        if (gameMode == 0 && enableArrowRecipes) {
+        if (getRD() == EASY && enableArrowRecipes) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2),
                     "CCC",
                     "CAC",
@@ -141,7 +144,7 @@ public class ModItemsRecipes {
                     'L', "gemLavaCrystal",
                     'A', "itemArrow"));
         }
-        if (gameMode == 1 && enableArrowRecipes) {
+        if (getRD() == EXPERT && enableArrowRecipes) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2),
                     "CCC",
                     "CAC",

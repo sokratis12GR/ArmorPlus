@@ -6,114 +6,116 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
-import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.APConfig.enableSuperStarArmorRecipes;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
+import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModSuperStarRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Super Star Armor */
-        if (APConfig.enableSuperStarArmor) {
-            if (APConfig.gameMode == 0 && enableSuperStarArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
+        if (enableSuperStarArmor) {
+            if (getRD() == EASY && enableSuperStarArmorRecipes) {
+                manager.addRecipe(getItemStack(superStarHelmet),
                         "WWWWW",
                         "W   W",
                         "     ",
                         "     ",
                         "     ",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
+                        'W', getItemStack(materials, 2));
+                manager.addRecipe(getItemStack(superStarHelmet),
                         "     ",
                         "     ",
                         "     ",
                         "WWWWW",
                         "W   W",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStar[1], 1),
+                        'W', getItemStack(materials, 2));
+                manager.addRecipe(getItemStack(superStarChestplate),
                         "W   W",
                         "W   W",
                         "WWWWW",
                         "WWWWW",
                         "WWWWW",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStar[2], 1),
+                        'W', getItemStack(materials, 2));
+                manager.addRecipe(getItemStack(superStarLeggings),
                         "WWWWW",
                         "WWWWW",
                         "W   W",
                         "W   W",
                         "W   W",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
+                        'W', getItemStack(materials, 2));
+                manager.addRecipe(getItemStack(superStarBoots),
                         "W   W",
                         "W   W",
                         "     ",
                         "     ",
                         "     ",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
-                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
+                        'W', getItemStack(materials, 2));
+                manager.addRecipe(getItemStack(superStarBoots),
                         "     ",
                         "     ",
                         "     ",
                         "W   W",
                         "W   W",
-                        'W', new ItemStack(ModItems.materials, 1, 2));
+                        'W', getItemStack(materials, 2));
             }
-            if (APConfig.gameMode == 1 && enableSuperStarArmorRecipes) {
-                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
+            if (getRD() == EXPERT && enableSuperStarArmorRecipes) {
+                manager.addRecipe(getItemStack(superStarHelmet),
                         "SWWWS",
                         "WN NW",
                         "     ",
                         "     ",
                         "     ",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStar[0], 1),
+                manager.addRecipe(getItemStack(superStarHelmet),
                         "     ",
                         "     ",
                         "     ",
                         "SWWWS",
                         "WN NW",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStar[1], 1),
+                manager.addRecipe(getItemStack(superStarChestplate),
                         "N   N",
                         "W   W",
                         "WWWWW",
                         "WSNSW",
                         "WWWWW",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStar[2], 1),
+                manager.addRecipe(getItemStack(superStarLeggings),
                         "SWWWS",
                         "WSNSW",
                         "W   W",
                         "W   W",
                         "N   N",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
+                manager.addRecipe(getItemStack(superStarBoots),
                         "N   N",
                         "W   W",
                         "W   W",
                         "S   S",
                         "     ",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
-                manager.addRecipe(new ItemStack(ModItems.superStar[3], 1),
+                manager.addRecipe(getItemStack(superStarBoots),
                         "     ",
                         "N   N",
                         "W   W",
                         "W   W",
                         "S   S",
-                        'W', new ItemStack(ModItems.materials, 1, 2),
+                        'W', getItemStack(materials, 2),
                         'N', Items.NETHER_STAR,
                         'S', Blocks.SOUL_SAND);
             }

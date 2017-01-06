@@ -8,15 +8,17 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
-import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.registry.APItems;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
 
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
-        if (enableSwordsRecipes && gameMode == 0) {
+        if (enableSwordsRecipes && getRD() == EASY) {
             if (enableGuardianSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[6], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
                         "  G  ",
                         " GSG ",
                         "G S G",
@@ -26,7 +28,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableSuperStarSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[7], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
                         "  W  ",
                         " WSW ",
                         "W S W",
@@ -36,7 +38,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableEnderDragonSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[8], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
                         "  E  ",
                         " ESE ",
                         "E S E",
@@ -46,9 +48,9 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
         }
-        if (enableBattleAxesRecipes && gameMode == 0) {
+        if (enableBattleAxesRecipes && getRD() == EASY) {
             if (enableGuardianBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
                         " G G ",
                         "G S G",
                         " GSG ",
@@ -58,7 +60,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableSuperStarBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
                         " W W ",
                         "W S W",
                         " WSW ",
@@ -68,7 +70,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
             if (enableEnderDragonBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
                         " E E ",
                         "E S E",
                         " ESE ",
@@ -78,9 +80,9 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
         }
-        if (enableBowsRecipes && gameMode == 0) {
+        if (enableBowsRecipes && getRD() == EASY) {
             if (enableGuardianBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
                         "  GGS",
                         " GG S",
                         "G   S",
@@ -88,7 +90,7 @@ public class ModWeaponTierThreeRecipes {
                         "  GGS",
                         'G', "scaleGuardian",
                         'S', "gemPrismarine"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
                         "SGG  ",
                         "S GG ",
                         "S   G",
@@ -98,7 +100,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "gemPrismarine"));
             }
             if (enableSuperStarBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
                         "  WWS",
                         " WW S",
                         "N   S",
@@ -106,7 +108,7 @@ public class ModWeaponTierThreeRecipes {
                         "  WWS",
                         'W', "witherBone",
                         'S', "string"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
                         "SWW  ",
                         "S WW ",
                         "S   W",
@@ -116,7 +118,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "string"));
             }
             if (enableEnderDragonBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
                         "  EES",
                         " EE S",
                         "E   S",
@@ -124,7 +126,7 @@ public class ModWeaponTierThreeRecipes {
                         "  EES",
                         'E', "scaleEnderDragon",
                         'S', "string"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
                         "SEE  ",
                         "S EE ",
                         "S   E",
@@ -134,9 +136,9 @@ public class ModWeaponTierThreeRecipes {
                         'S', "string"));
             }
         }
-        if (enableSwordsRecipes && gameMode == 1) {
+        if (enableSwordsRecipes && getRD() == EXPERT) {
             if (enableGuardianSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[6], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
                         "  G  ",
                         " GSG ",
                         "G S G",
@@ -146,7 +148,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "gemPrismarine"));
             }
             if (enableSuperStarSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[7], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
                         "  H  ",
                         " WSW ",
                         "W S W",
@@ -157,7 +159,7 @@ public class ModWeaponTierThreeRecipes {
                         'H', new ItemStack(Items.SKULL, 1, 1)));
             }
             if (enableEnderDragonSword) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sword[8], 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
                         "  E  ",
                         " ESE ",
                         "E S E",
@@ -167,9 +169,9 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.DRAGON_BREATH));
             }
         }
-        if (enableBattleAxesRecipes && gameMode == 1) {
+        if (enableBattleAxesRecipes && getRD() == EXPERT) {
             if (enableGuardianBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
                         " G G ",
                         "G S G",
                         " GSG ",
@@ -179,7 +181,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "gemPrismarine"));
             }
             if (enableSuperStarBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
                         " W W ",
                         "W H W",
                         " WSW ",
@@ -190,7 +192,7 @@ public class ModWeaponTierThreeRecipes {
                         'H', new ItemStack(Items.SKULL, 1, 1)));
             }
             if (enableEnderDragonBattleAxe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBattleAxe, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
                         " E E ",
                         "E S E",
                         " ESE ",
@@ -200,9 +202,9 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.DRAGON_BREATH));
             }
         }
-        if (enableBowsRecipes && gameMode == 1) {
+        if (enableBowsRecipes && getRD() == EXPERT) {
             if (enableGuardianBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
                         "  GGS",
                         " GG S",
                         "G   S",
@@ -210,7 +212,7 @@ public class ModWeaponTierThreeRecipes {
                         "  GGS",
                         'G', "scaleGuardian",
                         'S', "gemPrismarine"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
                         "SGG  ",
                         "S GG ",
                         "S   G",
@@ -220,7 +222,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "gemPrismarine"));
             }
             if (enableSuperStarBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
                         "  WWS",
                         " NW S",
                         "N   S",
@@ -229,7 +231,7 @@ public class ModWeaponTierThreeRecipes {
                         'W', "witherBone",
                         'S', "string",
                         'N', new ItemStack(Items.SKULL, 1, 1)));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.superStarBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
                         "SWW  ",
                         "S WN ",
                         "S   N",
@@ -240,7 +242,7 @@ public class ModWeaponTierThreeRecipes {
                         'N', new ItemStack(Items.SKULL, 1, 1)));
             }
             if (enableEnderDragonBow) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
                         "  EES",
                         " DE S",
                         "D   S",
@@ -249,7 +251,7 @@ public class ModWeaponTierThreeRecipes {
                         'E', "scaleEnderDragon",
                         'S', "string",
                         'D', Items.DRAGON_BREATH));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enderDragonBow, 1),
+                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
                         "SEE  ",
                         "S ED ",
                         "S   D",

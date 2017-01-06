@@ -32,12 +32,11 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseTeslaHoe extends BaseHoe {
 
+    public EnumRarity formattingName;
     private int cost = 10;
-
     private int maxCapacity;
     private int output;
     private int input;
-    public EnumRarity formattingName;
 
     public BaseTeslaHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name);

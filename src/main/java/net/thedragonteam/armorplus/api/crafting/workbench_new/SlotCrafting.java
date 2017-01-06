@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench_new;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -13,10 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.container.inventory.InventoryCraftingNew;
+import net.thedragonteam.armorplus.registry.ModAchievements;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.util.APAchievements;
 
-import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
 public class SlotCrafting extends Slot {
     /**
@@ -83,38 +83,38 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
 
         if (stack.getItem() == Item.getItemFromBlock(ModBlocks.benches[1]))
-            this.player.addStat(APAchievements.craftHighTechBench, 1);
+            this.player.addStat(ModAchievements.craftHighTechBench, 1);
 
-        if (stack.getItem() == sword[1])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+        if (stack.getItem() == lapisSword)
+            stack.addEnchantment(getEnchantment("looting"), 3);
         if (stack.getItem() == lapisBattleAxe)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+            stack.addEnchantment(getEnchantment("looting"), 3);
         if (stack.getItem() == lapisBow)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("looting"), 3);
+            stack.addEnchantment(getEnchantment("looting"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
-        if (stack.getItem() == coal[0] || stack.getItem() == coal[1] || stack.getItem() == coal[2] || stack.getItem() == coal[3])
-            this.player.addStat(APAchievements.craftCoalArmor, 1);
+        if (stack.getItem() == coalHelmet || stack.getItem() == coalChestplate || stack.getItem() == coalLeggings || stack.getItem() == coalBoots)
+            this.player.addStat(ModAchievements.craftCoalArmor, 1);
         /*Never Drown Again - Achievement Trigger*/
-        if (stack.getItem() == lapis[0] || stack.getItem() == lapis[1] || stack.getItem() == lapis[2] || stack.getItem() == lapis[3])
-            this.player.addStat(APAchievements.craftLapisArmor, 1);
+        if (stack.getItem() == lapisHelmet || stack.getItem() == lapisChestplate || stack.getItem() == lapisLeggings || stack.getItem() == lapisBoots)
+            this.player.addStat(ModAchievements.craftLapisArmor, 1);
         /*Speeedy! - Achievement Trigger*/
-        if (stack.getItem() == redstone[0] || stack.getItem() == redstone[1] || stack.getItem() == redstone[2] || stack.getItem() == redstone[3])
-            this.player.addStat(APAchievements.craftRedstoneArmor, 1);
+        if (stack.getItem() == redstoneHelmet || stack.getItem() == redstoneChestplate || stack.getItem() == redstoneLeggings || stack.getItem() == redstoneBoots)
+            this.player.addStat(ModAchievements.craftRedstoneArmor, 1);
         /*Swing Swing Faster! - Achievement Trigger*/
-        if (stack.getItem() == emerald[0] || stack.getItem() == emerald[1] || stack.getItem() == emerald[2] || stack.getItem() == emerald[3])
-            this.player.addStat(APAchievements.craftEmeraldArmor, 1);
+        if (stack.getItem() == emeraldHelmet || stack.getItem() == emeraldChestplate || stack.getItem() == emeraldLeggings || stack.getItem() == emeraldBoots)
+            this.player.addStat(ModAchievements.craftEmeraldArmor, 1);
         /*Indestructible! - Achievement Trigger*/
-        if (stack.getItem() == obsidian[0] || stack.getItem() == obsidian[1] || stack.getItem() == obsidian[2] || stack.getItem() == obsidian[3])
-            this.player.addStat(APAchievements.craftObsidianArmor, 1);
+        if (stack.getItem() == obsidianHelmet || stack.getItem() == obsidianChestplate || stack.getItem() == obsidianLeggings || stack.getItem() == obsidianBoots)
+            this.player.addStat(ModAchievements.craftObsidianArmor, 1);
         /*The Overpowered! - Achievement Trigger*/
-        if (stack.getItem() == lava[0] || stack.getItem() == lava[1] || stack.getItem() == lava[2] || stack.getItem() == lava[3])
-            this.player.addStat(APAchievements.craftLavaArmor, 1);
+        if (stack.getItem() == lavaHelmet || stack.getItem() == lavaChestplate || stack.getItem() == lavaLeggings || stack.getItem() == lavaBoots)
+            this.player.addStat(ModAchievements.craftLavaArmor, 1);
         /*Jump Jump Jump! - Achievement Trigger*/
-        if (stack.getItem() == slime[0] || stack.getItem() == slime[1] || stack.getItem() == slime[2] || stack.getItem() == slime[3])
-            this.player.addStat(APAchievements.craftSlimeArmor, 1);
+        if (stack.getItem() == slimeHelmet || stack.getItem() == slimeChestplate || stack.getItem() == slimeLeggings || stack.getItem() == slimeBoots)
+            this.player.addStat(ModAchievements.craftSlimeArmor, 1);
         /*Its time to go Faster! - Achievement Trigger*/
-        if (stack.getItem() == chicken[0] || stack.getItem() == chicken[1] || stack.getItem() == chicken[2] || stack.getItem() == chicken[3])
-            this.player.addStat(APAchievements.craftChickenArmor, 1);
+        if (stack.getItem() == chickenHelmet || stack.getItem() == chickenChestplate || stack.getItem() == chickenLeggings || stack.getItem() == chickenBoots)
+            this.player.addStat(ModAchievements.craftChickenArmor, 1);
     }
 
 

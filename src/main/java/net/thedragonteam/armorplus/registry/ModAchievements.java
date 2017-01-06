@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.util;
+package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -11,13 +11,11 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class APAchievements {
+public class ModAchievements {
     public static Achievement craftCoalArmor,
             craftLapisArmor,
             craftRedstoneArmor,

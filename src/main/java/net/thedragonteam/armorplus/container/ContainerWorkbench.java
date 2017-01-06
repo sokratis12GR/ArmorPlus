@@ -19,12 +19,6 @@ import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManag
  */
 public class ContainerWorkbench extends Container {
 
-    /**
-     * The crafting matrix inventory (3x3).
-     */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-    public IInventory craftResult = new InventoryCraftResult();
-
     private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 10;
     private static final int RECIPE_SIZE = 3;
@@ -32,8 +26,12 @@ public class ContainerWorkbench extends Container {
     private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-
     private final World world;
+    /**
+     * The crafting matrix inventory (3x3).
+     */
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerWorkbench(InventoryPlayer playerInventory, World worldIn) {
         this.world = worldIn;

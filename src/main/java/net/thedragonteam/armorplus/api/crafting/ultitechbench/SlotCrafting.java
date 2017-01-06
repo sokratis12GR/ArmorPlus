@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
@@ -12,8 +11,10 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
-import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.APAchievements;
+import net.thedragonteam.armorplus.registry.ModAchievements;
+
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -84,36 +85,36 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
-        if (stack.getItem() == ModItems.sword[6])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
-        if (stack.getItem() == ModItems.guardianBattleAxe)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("sharpness"), 1);
-        if (stack.getItem() == ModItems.guardianBow)
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("power"), 1);
+        if (stack.getItem() == guardianSword)
+            stack.addEnchantment(getEnchantment("sharpness"), 1);
+        if (stack.getItem() == guardianBattleAxe)
+            stack.addEnchantment(getEnchantment("sharpness"), 1);
+        if (stack.getItem() == guardianBow)
+            stack.addEnchantment(getEnchantment("power"), 1);
         /*Guardian Armor Thorns*/
-        if (stack.getItem() == ModItems.guardian[0] || stack.getItem() == ModItems.guardian[1] || stack.getItem() == ModItems.guardian[2] || stack.getItem() == ModItems.guardian[3])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("thorns"), 3);
+        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+            stack.addEnchantment(getEnchantment("thorns"), 3);
         /*Guardian Armor Unbreaking 3*/
-        if (stack.getItem() == ModItems.guardian[0] || stack.getItem() == ModItems.guardian[1] || stack.getItem() == ModItems.guardian[2] || stack.getItem() == ModItems.guardian[3])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("unbreaking"), 3);
-        /* Guardian [3] Enchantments*/
-        if (stack.getItem() == ModItems.guardian[3])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("depth_strider"), 3);
+        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+            stack.addEnchantment(getEnchantment("unbreaking"), 3);
+        /* Guardian Boots Enchantments*/
+        if (stack.getItem() == guardianBoots)
+            stack.addEnchantment(getEnchantment("depth_strider"), 3);
         /*Mending*/
-        if (stack.getItem() == ModItems.theUltimate[0] || stack.getItem() == ModItems.theUltimate[1] || stack.getItem() == ModItems.theUltimate[2] || stack.getItem() == ModItems.theUltimate[3])
-            stack.addEnchantment(Enchantment.getEnchantmentByLocation("mending"), 1);
+        if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
+            stack.addEnchantment(getEnchantment("mending"), 1);
         /*Full of Thorns! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.guardian[0] || stack.getItem() == ModItems.guardian[1] || stack.getItem() == ModItems.guardian[2] || stack.getItem() == ModItems.guardian[3])
-            this.player.addStat(APAchievements.craftGuardianArmor, 1);
+        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+            this.player.addStat(ModAchievements.craftGuardianArmor, 1);
         /*Godlike! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.superStar[0] || stack.getItem() == ModItems.superStar[1] || stack.getItem() == ModItems.superStar[2] || stack.getItem() == ModItems.superStar[3])
-            this.player.addStat(APAchievements.craftSuperStarArmor, 1);
+        if (stack.getItem() == superStarHelmet || stack.getItem() == superStarChestplate || stack.getItem() == superStarLeggings || stack.getItem() == superStarBoots)
+            this.player.addStat(ModAchievements.craftSuperStarArmor, 1);
         /*The Power of the Ender Dragon! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.enderDragon[0] || stack.getItem() == ModItems.enderDragon[1] || stack.getItem() == ModItems.enderDragon[2] || stack.getItem() == ModItems.enderDragon[3])
-            this.player.addStat(APAchievements.craftEnderDragonArmor, 1);
+        if (stack.getItem() == enderDragonHelmet || stack.getItem() == enderDragonChestplate || stack.getItem() == enderDragonLeggings || stack.getItem() == enderDragonBoots)
+            this.player.addStat(ModAchievements.craftEnderDragonArmor, 1);
         /*The Ultimate Power! - Achievement Trigger*/
-        if (stack.getItem() == ModItems.theUltimate[0] || stack.getItem() == ModItems.theUltimate[1] || stack.getItem() == ModItems.theUltimate[2] || stack.getItem() == ModItems.theUltimate[3])
-            this.player.addStat(APAchievements.craftTheUltimateArmor, 1);
+        if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
+            this.player.addStat(ModAchievements.craftTheUltimateArmor, 1);
     }
 
     public ItemStack onTake(EntityPlayer player, ItemStack stack) {

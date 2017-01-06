@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nullable;
@@ -46,11 +46,11 @@ public class EntityEnderDragonZombie extends EntityMob {
     public EntityEnderDragonZombie(World worldIn) {
         super(worldIn);
         setSize(0.6F, 1.95F);
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.enderDragon[0]));
-        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ModItems.enderDragon[1]));
-        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ModItems.enderDragon[2]));
-        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ModItems.enderDragon[3]));
-        setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.enderDragonBattleAxe));
+        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(APItems.enderDragonHelmet));
+        setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(APItems.enderDragonChestplate));
+        setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(APItems.enderDragonLeggings));
+        setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(APItems.enderDragonBoots));
+        setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(APItems.enderDragonBattleAxe));
         dropEquipment(false, 0);
     }
 

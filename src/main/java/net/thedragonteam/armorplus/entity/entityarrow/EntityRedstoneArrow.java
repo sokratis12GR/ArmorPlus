@@ -11,10 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.ParticlesHelper;
-import net.thedragonteam.armorplus.util.PotionUtils;
 
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
 
 public class EntityRedstoneArrow extends EntityArrow {
 
@@ -41,7 +41,7 @@ public class EntityRedstoneArrow extends EntityArrow {
     public void onUpdate() {
         super.onUpdate();
         if (this.world.isRemote && !this.inGround) {
-            ParticlesHelper.spawnParticle(this, EnumParticleTypes.REDSTONE, this.posX, this.posY, this.posZ);
+            spawnParticle(this, EnumParticleTypes.REDSTONE, this.posX, this.posY, this.posZ);
         }
     }
 
@@ -54,7 +54,7 @@ public class EntityRedstoneArrow extends EntityArrow {
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
         if (living != shootingEntity) {
-            PotionUtils.addPotion(living, MobEffects.SLOWNESS, 180, 0, BAD);
+            addPotion(living, MobEffects.SLOWNESS, 180, 0, BAD);
         }
     }
 }

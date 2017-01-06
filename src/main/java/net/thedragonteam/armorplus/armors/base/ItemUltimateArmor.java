@@ -25,7 +25,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
@@ -34,11 +33,13 @@ import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.armorplus.registry.ModItems.theUltimate;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
 
 public class ItemUltimateArmor extends ItemArmor {
 
@@ -128,9 +129,9 @@ public class ItemUltimateArmor extends ItemArmor {
             else entity.capabilities.disableDamage = false;
         if (head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator()) {
         } else if (enableTheUltimateArmorDeBuffs) {
-            PotionUtils.addPotion(entity, MobEffects.POISON, 60, 2, BAD);
-            PotionUtils.addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
-            PotionUtils.addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
+            addPotion(entity, MobEffects.POISON, 60, 2, BAD);
+            addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+            addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
             entity.motionX = 0;
             if (entity.onGround)
@@ -142,7 +143,7 @@ public class ItemUltimateArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.getRecipesDifficulty()) {
+        switch (APConfig.getRD()) {
             case EASY:
                 return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
             case EXPERT:

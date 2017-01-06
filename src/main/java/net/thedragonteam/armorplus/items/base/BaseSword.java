@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.Utils;
 
-import static net.thedragonteam.armorplus.APConfig.getRecipesDifficulty;
+import static net.thedragonteam.armorplus.APConfig.getRD;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IItemHelper {
@@ -50,7 +50,7 @@ public class BaseSword extends ItemSword implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRecipesDifficulty()) {
+        switch (getRD()) {
             case EASY:
                 return repair.getItem() == itemEasy;
             case EXPERT:
@@ -86,7 +86,6 @@ public class BaseSword extends ItemSword implements IItemHelper {
     public Item getItem() {
         return this;
     }
-
 
     @Override
     public String getName(String name) {

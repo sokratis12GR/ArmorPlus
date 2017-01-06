@@ -11,7 +11,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
+
 
 public class EntityLavaArrow extends EntityArrow {
 

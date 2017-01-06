@@ -15,18 +15,21 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public enum Bows implements IStringSerializable {
     COAL(coalBowDurability, "coal", coalBowArrowBonusDamage, Items.COAL, Blocks.COAL_BLOCK, getValueByName(coalWeaponItemNameColor), coalBow),
-    LAPIS(lapisBowDurability, "lapis", lapisBowArrowBonusDamage, new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, getValueByName(lapisWeaponItemNameColor), lapisBow),
+    LAPIS(lapisBowDurability, "lapis", lapisBowArrowBonusDamage, getItemStack(Items.DYE, 4), Blocks.LAPIS_BLOCK, getValueByName(lapisWeaponItemNameColor), lapisBow),
     REDSTONE(redstoneBowDurability, "redstone", redstoneBowArrowBonusDamage, Items.REDSTONE, Blocks.REDSTONE_BLOCK, getValueByName(redstoneWeaponItemNameColor), redstoneBow),
     EMERALD(emeraldBowDurability, "emerald", emeraldBowArrowBonusDamage, Items.EMERALD, Blocks.EMERALD_BLOCK, getValueByName(emeraldWeaponItemNameColor), emeraldBow),
     OBSIDIAN(obsidianBowDurability, "obsidian", obsidianBowArrowBonusDamage, Blocks.OBSIDIAN, ModBlocks.compressedObsidian, getValueByName(obsidianWeaponItemNameColor), obsidianBow),
-    LAVA(lavaBowDurability, "lava", lavaBowArrowBonusDamage, lavaCrystal, new ItemStack(lavaCrystal, 1, 1), getValueByName(lavaWeaponItemNameColor), lavaBow),
-    GUARDIAN(guardianBowDurability, "guardian", guardianBowArrowBonusDamage, new ItemStack(materials, 1, 1), getValueByName(guardianWeaponItemNameColor), guardianBow),
-    SUPER_STAR(superStarBowDurability, "super_star", superStarBowArrowBonusDamage, new ItemStack(materials, 1, 2), getValueByName(superStarWeaponItemNameColor), superStarBow),
-    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon", enderDragonBowArrowBonusDamage, new ItemStack(materials, 1, 3), getValueByName(enderDragonWeaponItemNameColor), enderDragonBow);
+    LAVA(lavaBowDurability, "lava", lavaBowArrowBonusDamage, lavaCrystal, getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor), lavaBow),
+    GUARDIAN(guardianBowDurability, "guardian", guardianBowArrowBonusDamage, getItemStack(materials, 1), getValueByName(guardianWeaponItemNameColor), guardianBow),
+    SUPER_STAR(superStarBowDurability, "super_star", superStarBowArrowBonusDamage, getItemStack(materials, 2), getValueByName(superStarWeaponItemNameColor), superStarBow),
+    ENDER_DRAGON(enderDragonBowDurability, "ender_dragon", enderDragonBowArrowBonusDamage, getItemStack(materials, 3), getValueByName(enderDragonWeaponItemNameColor), enderDragonBow);
 
     private final String name;
 

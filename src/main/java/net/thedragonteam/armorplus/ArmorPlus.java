@@ -30,7 +30,7 @@ public class ArmorPlus {
      * Updates every time the mod updates minecraft version,
      * Updates MAJOR with 1 after each version upgrade
      */
-    public static final String MCVERSION = "1.11";
+    public static final String MCVERSION = "1.11.2";
     /**
      * Updates every MAJOR change,
      * never resets

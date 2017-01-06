@@ -18,9 +18,9 @@ import net.thedragonteam.armorplus.util.Utils;
 
 public class BaseItem extends Item implements IItemHelper {
 
-    private Items items;
     public EnumRarity formattingName;
     public String itemName;
+    private Items items;
 
     public BaseItem(String name) {
         this.itemName = name;

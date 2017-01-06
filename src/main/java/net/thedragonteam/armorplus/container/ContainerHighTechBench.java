@@ -19,12 +19,6 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.SlotCrafting;
  */
 public class ContainerHighTechBench extends Container {
 
-    /**
-     * The crafting matrix inventory (4x4).
-     */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
-    public IInventory craftResult = new InventoryCraftResult();
-
     private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 17;
     private static final int RECIPE_SIZE = 4;
@@ -32,8 +26,12 @@ public class ContainerHighTechBench extends Container {
     private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-
     private final World world;
+    /**
+     * The crafting matrix inventory (4x4).
+     */
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
+    public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerHighTechBench(InventoryPlayer playerInventory, World worldIn) {
         this.world = worldIn;
@@ -47,7 +45,8 @@ public class ContainerHighTechBench extends Container {
             for (int i1 = 0; i1 < ROW_SLOTS; ++i1)
                 this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 102 + k * ITEM_BOX));
 
-        for (int l = 0; l < ROW_SLOTS; ++l) this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * ITEM_BOX, 160));
+        for (int l = 0; l < ROW_SLOTS; ++l)
+            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * ITEM_BOX, 160));
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }

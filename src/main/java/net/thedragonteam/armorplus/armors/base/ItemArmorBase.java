@@ -22,7 +22,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.util.EnumTiers;
-import net.thedragonteam.armorplus.util.PotionUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,13 +30,13 @@ import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.enderDragon;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
-import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
-import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.GOOD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.*;
 
 public class ItemArmorBase extends ItemArmor {
 
@@ -73,16 +72,13 @@ public class ItemArmorBase extends ItemArmor {
             guardianArmorProtectionPoints, guardianArmorToughnessPoints, EnumTiers.TIER_3);
     public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
             superStarArmorProtectionPoints, superStarArmorToughnessPoints, EnumTiers.TIER_3);
-
+    public static EnumAction wear = addAction("WEAR");
     public EnumRarity formattingName;
-
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
     private APArmorMaterial material;
     private EntityEquipmentSlot slot;
-
-    public static EnumAction wear = addAction("WEAR");
 
     public ItemArmorBase(APArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
         super(armorMaterial.getArmorMaterial(), 0, slot);
@@ -316,7 +312,7 @@ public class ItemArmorBase extends ItemArmor {
             entity.setAbsorptionAmount(entity.isInLava() ? 4.0F : 0.0F);
         }
         if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-            PotionUtils.addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
+            addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
             itemStack.damageItem(1, entity);
             entity.attackEntityFrom(DamageSource.DROWN, 1F);
         }
@@ -324,7 +320,7 @@ public class ItemArmorBase extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRecipesDifficulty()) {
+        switch (getRD()) {
             case EASY:
                 return Objects.equals(repair.getItem(), itemEasy);
             case EXPERT:

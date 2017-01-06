@@ -10,15 +10,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.entity.APEntities;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.util.APAchievements;
-import net.thedragonteam.armorplus.util.EnumHelperUtil;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -35,10 +32,11 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
-        APEntities.init();
+        ModEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
-        ModItems.init();
+        ModItems.init(); // Initializes the items
+        APItems.init(); // Initializes the helper item class
         LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
@@ -74,7 +72,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-        APAchievements.init();
+        ModAchievements.init();
         ModRecipes.init();
     }
 

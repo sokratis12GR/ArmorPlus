@@ -4,135 +4,138 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
-import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
-import net.thedragonteam.armorplus.registry.ModItems;
+
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
+import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModOriginRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
         /* Coal Armor */
-        if (APConfig.enableCoalArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableCoalArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "   ", "CCC", "C C", 'C', "itemCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "CCC", "C C", "   ", 'C', "itemCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[1], 1), "C C", "CCC", "CCC", 'C', "itemCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[2], 1), "CCC", "C C", "C C", 'C', "itemCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "   ", "C C", "C C", 'C', "itemCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "C C", "C C", "   ", 'C', "itemCoal"));
+        if (enableCoalArmor) {
+            if (getRD() == EASY && enableCoalArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "   ", "CCC", "C C", 'C', "itemCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "CCC", "C C", "   ", 'C', "itemCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalChestplate), "C C", "CCC", "CCC", 'C', "itemCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalLeggings), "CCC", "C C", "C C", 'C', "itemCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "   ", "C C", "C C", 'C', "itemCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", "   ", 'C', "itemCoal"));
             }
-            if (APConfig.gameMode == 0 && APConfig.enableCharcoalCoalArmorRecipe) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "   ", "CCC", "C C", 'C', "itemCharcoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "CCC", "C C", "   ", 'C', "itemCharcoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[1], 1), "C C", "CCC", "CCC", 'C', "itemCharcoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[2], 1), "CCC", "C C", "C C", 'C', "itemCharcoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "   ", "C C", "C C", 'C', "itemCharcoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "C C", "C C", "   ", 'C', "itemCharcoal"));
+            if (getRD() == EASY && enableCharcoalCoalArmorRecipe) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "   ", "CCC", "C C", 'C', "itemCharcoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "CCC", "C C", "   ", 'C', "itemCharcoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalChestplate), "C C", "CCC", "CCC", 'C', "itemCharcoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalLeggings), "CCC", "C C", "C C", 'C', "itemCharcoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "   ", "C C", "C C", 'C', "itemCharcoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", "   ", 'C', "itemCharcoal"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableCoalArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "   ", "CCC", "C C", 'C', "blockCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[0], 1), "CCC", "C C", "   ", 'C', "blockCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[1], 1), "C C", "CCC", "CCC", 'C', "blockCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[2], 1), "CCC", "C C", "C C", 'C', "blockCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "C C", "C C", 'C', "blockCoal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.coal[3], 1), "C C", "C C", "   ", 'C', "blockCoal"));
+            if (getRD() == EXPERT && enableCoalArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "   ", "CCC", "C C", 'C', "blockCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "CCC", "C C", "   ", 'C', "blockCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalChestplate), "C C", "CCC", "CCC", 'C', "blockCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalLeggings), "CCC", "C C", "C C", 'C', "blockCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", 'C', "blockCoal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", "   ", 'C', "blockCoal"));
             }
         }
         /* Lapis Armor */
-        if (APConfig.enableLapisArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableLapisArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[0], 1), "   ", "LLL", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[0], 1), "LLL", "L L", "   ", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[1], 1), "L L", "LLL", "LLL", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[2], 1), "LLL", "L L", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[3], 1), "   ", "L L", "L L", 'L', "gemLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[3], 1), "L L", "L L", "   ", 'L', "gemLapis"));
+        if (enableLapisArmor) {
+            if (getRD() == EASY && enableLapisArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "   ", "LLL", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "LLL", "L L", "   ", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisChestplate), "L L", "LLL", "LLL", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisLeggings), "LLL", "L L", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "   ", "L L", "L L", 'L', "gemLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "L L", "L L", "   ", 'L', "gemLapis"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableLapisArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[0], 1), "   ", "LLL", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[0], 1), "LLL", "L L", "   ", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[1], 1), "L L", "LLL", "LLL", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[2], 1), "LLL", "L L", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[3], 1), "   ", "L L", "L L", 'L', "blockLapis"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lapis[3], 1), "L L", "L L", "   ", 'L', "blockLapis"));
+            if (getRD() == EXPERT && enableLapisArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "   ", "LLL", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "LLL", "L L", "   ", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisChestplate), "L L", "LLL", "LLL", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisLeggings), "LLL", "L L", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "   ", "L L", "L L", 'L', "blockLapis"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "L L", "L L", "   ", 'L', "blockLapis"));
             }
         }
         /* Redstone Armor */
-        if (APConfig.enableRedstoneArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableRedstoneArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[0], 1), "   ", "RRR", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[0], 1), "RRR", "R R", "   ", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[1], 1), "R R", "RRR", "RRR", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[2], 1), "RRR", "R R", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[3], 1), "   ", "R R", "R R", 'R', "dustRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[3], 1), "R R", "R R", "   ", 'R', "dustRedstone"));
+        if (enableRedstoneArmor) {
+            if (getRD() == EASY && enableRedstoneArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneHelmet), "   ", "RRR", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneHelmet), "RRR", "R R", "   ", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneChestplate), "R R", "RRR", "RRR", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneLeggings), "RRR", "R R", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBoots), "   ", "R R", "R R", 'R', "dustRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBoots), "R R", "R R", "   ", 'R', "dustRedstone"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableRedstoneArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[0], 1), "   ", "RRR", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[0], 1), "RRR", "R R", "   ", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[1], 1), "R R", "RRR", "RRR", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[2], 1), "RRR", "R R", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[3], 1), "   ", "R R", "R R", 'R', "blockRedstone"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.redstone[3], 1), "R R", "R R", "   ", 'R', "blockRedstone"));
+            if (getRD() == EXPERT && enableRedstoneArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneHelmet), "   ", "RRR", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneHelmet), "RRR", "R R", "   ", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneChestplate), "R R", "RRR", "RRR", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneLeggings), "RRR", "R R", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBoots), "   ", "R R", "R R", 'R', "blockRedstone"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBoots), "R R", "R R", "   ", 'R', "blockRedstone"));
             }
         }
         /* Emerald Armor */
-        if (APConfig.enableEmeraldArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableEmeraldArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[0], 1), "   ", "EEE", "E E", 'E', "gemEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[0], 1), "EEE", "E E", "   ", 'E', "gemEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[1], 1), "E E", "EEE", "EEE", 'E', "gemEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[2], 1), "EEE", "E E", "E E", 'E', "gemEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[3], 1), "   ", "E E", "E E", 'E', "gemEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[3], 1), "E E", "E E", "   ", 'E', "gemEmerald"));
+        if (enableEmeraldArmor) {
+            if (getRD() == EASY && enableEmeraldArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldHelmet), "   ", "EEE", "E E", 'E', "gemEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldHelmet), "EEE", "E E", "   ", 'E', "gemEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldChestplate), "E E", "EEE", "EEE", 'E', "gemEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldLeggings), "EEE", "E E", "E E", 'E', "gemEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldBoots), "   ", "E E", "E E", 'E', "gemEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldBoots), "E E", "E E", "   ", 'E', "gemEmerald"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableEmeraldArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[0], 1), "   ", "EEE", "E E", 'E', "blockEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[0], 1), "EEE", "E E", "   ", 'E', "blockEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[1], 1), "E E", "EEE", "EEE", 'E', "blockEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[2], 1), "EEE", "E E", "E E", 'E', "blockEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[3], 1), "   ", "E E", "E E", 'E', "blockEmerald"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emerald[3], 1), "E E", "E E", "   ", 'E', "blockEmerald"));
+            if (getRD() == EXPERT && enableEmeraldArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldHelmet), "   ", "EEE", "E E", 'E', "blockEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldHelmet), "EEE", "E E", "   ", 'E', "blockEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldChestplate), "E E", "EEE", "EEE", 'E', "blockEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldLeggings), "EEE", "E E", "E E", 'E', "blockEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldBoots), "   ", "E E", "E E", 'E', "blockEmerald"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldBoots), "E E", "E E", "   ", 'E', "blockEmerald"));
             }
         }
         /* Obsidian Armor */
-        if (APConfig.enableObsidianArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableObsidianArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[0], 1), "   ", "OOO", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[0], 1), "OOO", "O O", "   ", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[1], 1), "O O", "OOO", "OOO", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[2], 1), "OOO", "O O", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[3], 1), "   ", "O O", "O O", 'O', "obsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[3], 1), "O O", "O O", "   ", 'O', "obsidian"));
+        if (enableObsidianArmor) {
+            if (getRD() == EASY && enableObsidianArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianHelmet), "   ", "OOO", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianHelmet), "OOO", "O O", "   ", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianChestplate), "O O", "OOO", "OOO", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianLeggings), "OOO", "O O", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianBoots), "   ", "O O", "O O", 'O', "obsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianBoots), "O O", "O O", "   ", 'O', "obsidian"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableObsidianArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[0], 1), "   ", "OOO", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[0], 1), "OOO", "O O", "   ", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[1], 1), "O O", "OOO", "OOO", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[2], 1), "OOO", "O O", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[3], 1), "   ", "O O", "O O", 'O', "blockCompressedObsidian"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidian[3], 1), "O O", "O O", "   ", 'O', "blockCompressedObsidian"));
+            if (getRD() == EXPERT && enableObsidianArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianHelmet), "   ", "OOO", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianHelmet), "OOO", "O O", "   ", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianChestplate), "O O", "OOO", "OOO", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianLeggings), "OOO", "O O", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianBoots), "   ", "O O", "O O", 'O', "blockCompressedObsidian"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(obsidianBoots), "O O", "O O", "   ", 'O', "blockCompressedObsidian"));
             }
         }
         /* Lava Armor */
-        if (APConfig.enableLavaArmor) {
-            if (APConfig.gameMode == 0 && APConfig.enableLavaArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[0], 1), "   ", "CCC", "C C", 'C', "gemLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[0], 1), "CCC", "C C", "   ", 'C', "gemLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[1], 1), "C C", "CCC", "CCC", 'C', "gemLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[2], 1), "CCC", "C C", "C C", 'C', "gemLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[3], 1), "   ", "C C", "C C", 'C', "gemLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[3], 1), "C C", "C C", "   ", 'C', "gemLavaCrystal"));
+        if (enableLavaArmor) {
+            if (getRD() == EASY && enableLavaArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaHelmet), "   ", "CCC", "C C", 'C', "gemLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaHelmet), "CCC", "C C", "   ", 'C', "gemLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaChestplate), "C C", "CCC", "CCC", 'C', "gemLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaLeggings), "CCC", "C C", "C C", 'C', "gemLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaBoots), "   ", "C C", "C C", 'C', "gemLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaBoots), "C C", "C C", "   ", 'C', "gemLavaCrystal"));
             }
-            if (APConfig.gameMode == 1 && APConfig.enableLavaArmorRecipes) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[0], 1), "   ", "CCC", "C C", 'C', "gemChargedLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[0], 1), "CCC", "C C", "   ", 'C', "gemChargedLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[1], 1), "C C", "CCC", "CCC", 'C', "gemChargedLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[2], 1), "CCC", "C C", "C C", 'C', "gemChargedLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[3], 1), "   ", "C C", "C C", 'C', "gemChargedLavaCrystal"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lava[3], 1), "C C", "C C", "   ", 'C', "gemChargedLavaCrystal"));
+            if (getRD() == EXPERT && enableLavaArmorRecipes) {
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaHelmet), "   ", "CCC", "C C", 'C', "gemChargedLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaHelmet), "CCC", "C C", "   ", 'C', "gemChargedLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaChestplate), "C C", "CCC", "CCC", 'C', "gemChargedLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaLeggings), "CCC", "C C", "C C", 'C', "gemChargedLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaBoots), "   ", "C C", "C C", 'C', "gemChargedLavaCrystal"));
+                manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaBoots), "C C", "C C", "   ", 'C', "gemChargedLavaCrystal"));
             }
         }
     }

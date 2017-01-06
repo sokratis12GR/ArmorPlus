@@ -18,7 +18,7 @@ import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * net.thedragonteam.armorplus.registry

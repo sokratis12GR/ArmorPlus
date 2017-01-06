@@ -26,10 +26,10 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseTeslaShovel extends BaseShovel {
 
+    public EnumRarity formattingName;
     private int maxCapacity;
     private int output;
     private int input;
-    public EnumRarity formattingName;
 
     public BaseTeslaShovel(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name);

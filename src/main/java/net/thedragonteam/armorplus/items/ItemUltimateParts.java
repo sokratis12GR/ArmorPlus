@@ -22,14 +22,13 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemUltimateParts extends Item {
 
-    public EnumRarity formattingName;
-
     private final String[] ULTIMATE_NAMES = new String[]{
             "_helmet_right", "_helmet_middle", "_helmet_left",
             "_chestplate_right", "_chestplate_middle", "_chestplate_left",
             "_leggings_right", "_leggings_middle", "_leggings_left",
             "_boots_right", "_boots_middle", "_boots_left"
     };
+    public EnumRarity formattingName;
 
     public ItemUltimateParts() {
         setHasSubtypes(true);

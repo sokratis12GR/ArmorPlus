@@ -11,6 +11,10 @@ Features Added:
 
 * Structure Gen:
   * You will now be able to explore Towers in your world.
+  
+Dependency:
+
+* Updated to require TheDragonLib 1.11.2-2.1.0
 
 ArmorPlus 1.11-9.3.1.2-beta
 ----------------------------

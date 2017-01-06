@@ -668,15 +668,18 @@ public class APConfig {
     public static int lavaCrystalTheEndVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherVeinAmount = 0;
+    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnNeedOfChance", comment = "Set the spawn chance need of the Castle Generation in the Overworld")
+    public static int castleGenSpawnNeedOfChance = 7000;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnChance", comment = "Set the spawn chance of the Castle Generation in the Overworld")
     public static int castleGenSpawnChance = 1;
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
     public static boolean enableCastleGen = true;
-
+    @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "towerGenSpawnNeedOfChance", comment = "Set the spawn chance need of the Tower Generation in the Overworld")
+    public static int towerGenSpawnNeedOfChance = 7000;
     @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "towerGenSpawnChance", comment = "Set the spawn chance of the Tower Generation in the Overworld")
     public static int towerGenSpawnChance = 1;
-    @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "enableTowerGenSpawnChance", comment = "Enable/Disable the Tower Generation")
-    public static boolean enableTowerGenSpawnChance = true;
+    @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "enableTowerGen", comment = "Enable/Disable the Tower Generation")
+    public static boolean enableTowerGen = true;
 
     //TinkersEffects
     @ModConfigProperty(category = "Armors.ArditeArmor.Effects", name = "enableArditeArmorEffects", comment = "Enable/Disable Ardite Armor Effects")
@@ -758,7 +761,7 @@ public class APConfig {
         return debugMode;
     }
 
-    public static RecipesDifficulty getRecipesDifficulty() {
+    public static RecipesDifficulty getRD() {
         switch (gameMode) {
             case 0:
                 return EASY;

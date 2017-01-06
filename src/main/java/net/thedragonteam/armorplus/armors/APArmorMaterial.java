@@ -18,7 +18,7 @@ import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.ItemStackUtils.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.*;
 
 public enum APArmorMaterial {
     COAL(coalArmor, "coal", Items.COAL, COAL_BLOCK, getValueByName(coalArmorItemNameColor)),

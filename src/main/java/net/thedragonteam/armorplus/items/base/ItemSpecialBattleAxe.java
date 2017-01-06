@@ -31,11 +31,11 @@ import java.util.List;
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.getPotion;
 
-public class BaseBattleAxe extends ItemSword implements IItemHelper {
+public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -55,7 +55,7 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper {
     public EnumRarity formattingName;
     public String itemName;
 
-    public BaseBattleAxe(BattleAxes battleAxes) {
+    public ItemSpecialBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());
         setHasSubtypes(true);
         this.itemName = battleAxes.getName();
@@ -138,7 +138,7 @@ public class BaseBattleAxe extends ItemSword implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRecipesDifficulty()) {
+        switch (getRD()) {
             case EASY:
                 return repair.getItem() == itemEasy;
             case EXPERT:

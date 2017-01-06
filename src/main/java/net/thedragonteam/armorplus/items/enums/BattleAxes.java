@@ -15,11 +15,11 @@ import net.minecraft.util.text.TextFormatting;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.items.base.BaseBattleAxe.*;
+import static net.thedragonteam.armorplus.items.base.ItemSpecialBattleAxe.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
     COAL(battleAxeCoalMaterial, "coal", Items.COAL, COAL_BLOCK, getValueByName(coalWeaponItemNameColor), localizePotion(coalWeaponsAddPotionEffect) + " " + (coalWeaponsEffectLevel + 1), 8.0F),

@@ -30,9 +30,9 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
+import static net.thedragonteam.thedragonlib.util.PotionUtils.getPotion;
 
 public class ItemSpecialSword extends ItemSword implements IItemHelper {
 
@@ -50,8 +50,8 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper {
     public TextFormatting formatting;
     public EnumRarity formattingName;
     public String effect;
-    private Swords swords;
     public String itemName;
+    private Swords swords;
 
     public ItemSpecialSword(Swords swords) {
         super(swords.getToolMaterial());
@@ -128,7 +128,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRecipesDifficulty()) {
+        switch (getRD()) {
             case EASY:
                 return repair.getItem() == itemEasy;
             case EXPERT:

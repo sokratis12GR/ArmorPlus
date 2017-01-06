@@ -12,8 +12,9 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import static net.thedragonteam.armorplus.registry.ModItems.lava;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * net.thedragonteam.armorplus.client.gui
@@ -34,7 +35,7 @@ public class APTab extends CreativeTabs {
     }
 
     public static void initialize() {
-        iconArmorPlus = new ItemStack(ModItems.lava[2]);
+        iconArmorPlus = new ItemStack(lava[1]);
     }
 
     public boolean hasSearchBar() {
@@ -46,13 +47,13 @@ public class APTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return getItemStack(ModItems.lava[2]);
+                return getItemStack(lava[1]);
             case (1):
                 return getItemStack(materials, 3);
             case (2):
                 return getItemStack(ModBlocks.blockLavaCrystal);
             case (3):
-                return getItemStack(ModItems.redstoneBattleAxe);
+                return getItemStack(ModItems.battleAxe[2]);
             case (4):
                 return getItemStack(ModItems.itemTeslaRod);
         }

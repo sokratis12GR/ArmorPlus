@@ -36,6 +36,9 @@ public class ModBlocks {
     public static BaseMetalBlock steelBlock;
     public static BaseMetalBlock electricalBlock;
     public static LavaNetherBrick lavaNetherBrick;
+    public static LavaCactus lavaCactus;
+    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW};
+    public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE};
     private static BlockStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
     public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[]{
             whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick
@@ -52,11 +55,8 @@ public class ModBlocks {
     public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[]{
             whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall
     };
-    public static LavaCactus lavaCactus;
     private static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew;
     public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew};
-    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW};
-    public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE};
 
     public static void init() {
         blockLavaCrystal = new BlockLavaCrystal();

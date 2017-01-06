@@ -39,6 +39,28 @@ public class ModItems {
     public static LavaCrystal lavaCrystal;
     public static TheGiftOfTheGods theGiftOfTheGods;
     public static NBTItem nbtItem;
+    public static boolean[] isEnabled = new boolean[]{
+            enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
+            enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
+    };
+    public static Swords[] swordType = new Swords[]{
+            Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
+    };
+    public static BattleAxes[] battleAxeType = new BattleAxes[]{
+            BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
+    };
+    public static Bows[] bowType = new Bows[]{
+            Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
+    };
+    public static boolean[] isSwordEnabled = new boolean[]{
+            enableCoalSword, enableLapisSword, enableRedstoneSword, enableEmeraldSword, enableObsidianSword, enableLavaSword, enableGuardianSword, enableSuperStarSword, enableEnderDragonSword
+    };
+    public static boolean[] isBowEnabled = new boolean[]{
+            enableCoalBow, enableLapisBow, enableRedstoneBow, enableEmeraldBow, enableObsidianBow, enableLavaBow, enableGuardianBow, enableSuperStarBow, enableEnderDragonBow
+    };
+    public static boolean[] isBattleAxeEnabled = new boolean[]{
+            enableCoalBattleAxe, enableLapisBattleAxe, enableRedstoneBattleAxe, enableEmeraldBattleAxe, enableObsidianBattleAxe, enableLavaBattleAxe, enableGuardianBattleAxe, enableSuperStarBattleAxe, enableEnderDragonBattleAxe
+    };
     private static ItemArmorBase coalHelmet, coalChestplate, coalLeggings, coalBoots,
             emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots,
             obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots,
@@ -81,12 +103,18 @@ public class ModItems {
     public static ItemSpecialSword[] sword = new ItemSpecialSword[]{
             coalSword, lapisSword, redstoneSword, emeraldSword, obsidianSword, lavaSword, guardianSword, superStarSword, enderDragonSword
     };
-    public static BaseBattleAxe coalBattleAxe, lapisBattleAxe, redstoneBattleAxe,
+    private static ItemSpecialBattleAxe coalBattleAxe, lapisBattleAxe, redstoneBattleAxe,
             emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe,
             guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe;
-    public static BaseBow coalBow, lapisBow, redstoneBow,
+    public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[]{
+            coalBattleAxe, lapisBattleAxe, redstoneBattleAxe, emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe, guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe
+    };
+    private static ItemSpecialBow coalBow, lapisBow, redstoneBow,
             emeraldBow, obsidianBow, lavaBow,
             guardianBow, superStarBow, enderDragonBow;
+    public static ItemSpecialBow[] bow = new ItemSpecialBow[]{
+            coalBow, lapisBow, redstoneBow, emeraldBow, obsidianBow, lavaBow, guardianBow, superStarBow, enderDragonBow
+    };
     public static ItemUltimateParts theUltimateParts;
     public static DevTool devTool;
     public static BaseDevItem theDragonTeamItem, moddedCityItem, jonBamsItem, twitchItem, beamItem;
@@ -103,16 +131,6 @@ public class ModItems {
     public static ItemEnderDragonArrow itemEnderDragonArrow;
     public static ItemBaubleDragon itemBaubleDragon;
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
-    public static boolean[] isEnabled = new boolean[]{
-            enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
-            enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
-    };
-    public static Swords[] swordType = new Swords[]{
-            Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
-    };
-    public static boolean[] isSwordEnabled = new boolean[]{
-            enableCoalSword, enableLapisSword, enableRedstoneSword, enableEmeraldSword, enableObsidianSword, enableLavaSword, enableGuardianSword, enableSuperStarSword, enableEnderDragonSword
-    };
 
     public static void init() {
         if (isBaublesLoaded()) {
@@ -161,42 +179,9 @@ public class ModItems {
         //Swords
         registerSword(isSwordEnabled, sword, swordType);
         //BattleAxes
-        if (enableCoalBattleAxe)
-            coalBattleAxe = new BaseBattleAxe(BattleAxes.COAL);
-        if (enableLapisBattleAxe)
-            lapisBattleAxe = new BaseBattleAxe(BattleAxes.LAPIS);
-        if (enableRedstoneBattleAxe)
-            redstoneBattleAxe = new BaseBattleAxe(BattleAxes.REDSTONE);
-        if (enableEmeraldBattleAxe)
-            emeraldBattleAxe = new BaseBattleAxe(BattleAxes.EMERALD);
-        if (enableObsidianBattleAxe)
-            obsidianBattleAxe = new BaseBattleAxe(BattleAxes.OBSIDIAN);
-        if (enableLavaBattleAxe)
-            lavaBattleAxe = new BaseBattleAxe(BattleAxes.LAVA);
-        if (enableGuardianBattleAxe)
-            guardianBattleAxe = new BaseBattleAxe(BattleAxes.GUARDIAN);
-        if (enableSuperStarBattleAxe)
-            superStarBattleAxe = new BaseBattleAxe(BattleAxes.SUPER_STAR);
-        if (enableEnderDragonBattleAxe)
-            enderDragonBattleAxe = new BaseBattleAxe(BattleAxes.ENDER_DRAGON);
-        if (enableCoalBow)
-            coalBow = new BaseBow(Bows.COAL);
-        if (enableLapisBow)
-            lapisBow = new BaseBow(Bows.LAPIS);
-        if (enableRedstoneBow)
-            redstoneBow = new BaseBow(Bows.REDSTONE);
-        if (enableEmeraldBow)
-            emeraldBow = new BaseBow(Bows.EMERALD);
-        if (enableObsidianBow)
-            obsidianBow = new BaseBow(Bows.OBSIDIAN);
-        if (enableLavaBow)
-            lavaBow = new BaseBow(Bows.LAVA);
-        if (enableGuardianBow)
-            guardianBow = new BaseBow(Bows.GUARDIAN);
-        if (enableSuperStarBow)
-            superStarBow = new BaseBow(Bows.SUPER_STAR);
-        if (enableEnderDragonBow)
-            enderDragonBow = new BaseBow(Bows.ENDER_DRAGON);
+        registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
+        //Bows
+        registerBow(isBowEnabled, bow, bowType);
         devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
         itemLapisArrow = new ItemLapisArrow();
@@ -223,6 +208,22 @@ public class ModItems {
         for (int i = 0; i <= 8; i++) {
             if (isEnabled[i]) {
                 sword[i] = new ItemSpecialSword(material[i]);
+            }
+        }
+    }
+
+    private static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] bow, BattleAxes[] material) {
+        for (int i = 0; i <= 8; i++) {
+            if (isEnabled[i]) {
+                bow[i] = new ItemSpecialBattleAxe(material[i]);
+            }
+        }
+    }
+
+    private static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
+        for (int i = 0; i <= 8; i++) {
+            if (isEnabled[i]) {
+                bow[i] = new ItemSpecialBow(material[i]);
             }
         }
     }
@@ -271,42 +272,8 @@ public class ModItems {
         registerArmorModel(enableKnightSlimeArmor, knightSlime);
         registerArmorModel(enableTheUltimateArmor, theUltimate);
         registerSwordModel(isSwordEnabled, sword);
-        if (enableCoalBattleAxe)
-            coalBattleAxe.initModel();
-        if (enableLapisBattleAxe)
-            lapisBattleAxe.initModel();
-        if (enableRedstoneBattleAxe)
-            redstoneBattleAxe.initModel();
-        if (enableEmeraldBattleAxe)
-            emeraldBattleAxe.initModel();
-        if (enableObsidianBattleAxe)
-            obsidianBattleAxe.initModel();
-        if (enableLavaBattleAxe)
-            lavaBattleAxe.initModel();
-        if (enableGuardianBattleAxe)
-            guardianBattleAxe.initModel();
-        if (enableSuperStarBattleAxe)
-            superStarBattleAxe.initModel();
-        if (enableEnderDragonBattleAxe)
-            enderDragonBattleAxe.initModel();
-        if (enableCoalBow)
-            coalBow.initModel();
-        if (enableLapisBow)
-            lapisBow.initModel();
-        if (enableRedstoneBow)
-            redstoneBow.initModel();
-        if (enableEmeraldBow)
-            emeraldBow.initModel();
-        if (enableObsidianBow)
-            obsidianBow.initModel();
-        if (enableLavaBow)
-            lavaBow.initModel();
-        if (enableGuardianBow)
-            guardianBow.initModel();
-        if (enableSuperStarBow)
-            superStarBow.initModel();
-        if (enableEnderDragonBow)
-            enderDragonBow.initModel();
+        registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
+        registerBowModel(isBowEnabled, bow);
         devTool.initModel();
         nbtItem.initModel();
         itemCoalArrow.initModel();
@@ -330,11 +297,28 @@ public class ModItems {
         }
     }
 
-    private static void registerSwordModel(boolean isEnabled[], ItemSpecialSword sword[]) {
+    private static void registerSwordModel(boolean isEnabled[], ItemSpecialSword[] sword) {
         for (int i = 0; i <= 8; i++) {
             if (isEnabled[i]) {
                 sword[i].initModel();
             }
         }
     }
+
+    private static void registerBattleAxeModel(boolean isEnabled[], ItemSpecialBattleAxe[] battleAxe) {
+        for (int i = 0; i <= 8; i++) {
+            if (isEnabled[i]) {
+                battleAxe[i].initModel();
+            }
+        }
+    }
+
+    private static void registerBowModel(boolean isEnabled[], ItemSpecialBow[] bow) {
+        for (int i = 0; i <= 8; i++) {
+            if (isEnabled[i]) {
+                bow[i].initModel();
+            }
+        }
+    }
+
 }

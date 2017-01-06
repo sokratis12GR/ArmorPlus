@@ -108,7 +108,7 @@ public class HighTechBenchCraftingManager {
             }
         }
 
-       ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
+        ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
