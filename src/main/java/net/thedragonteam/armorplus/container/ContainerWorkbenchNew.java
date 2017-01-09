@@ -58,6 +58,7 @@ public class ContainerWorkbenchNew extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
+    @Override
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, WorkbenchNewCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
@@ -65,6 +66,7 @@ public class ContainerWorkbenchNew extends Container {
     /**
      * Called when the container is closed.
      */
+    @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
@@ -82,6 +84,7 @@ public class ContainerWorkbenchNew extends Container {
     /**
      * Determines whether supplied player can use this container
      */
+    @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
         return true;
     }
@@ -89,6 +92,7 @@ public class ContainerWorkbenchNew extends Container {
     /**
      * Take a stack from the specified inventory slot.
      */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
@@ -141,6 +145,7 @@ public class ContainerWorkbenchNew extends Container {
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.
      */
+    @Override
     public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
         return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
     }

@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -21,6 +22,8 @@ import net.thedragonteam.armorplus.api.util.NBTHelper;
  * - TheDragonTeam
  */
 public final class Utils {
+
+    public static final int BUCKET = Fluid.BUCKET_VOLUME;
 
     @SuppressWarnings("ConstantConditions")
     public static ItemStack setUnbreakable(ItemStack stack) {

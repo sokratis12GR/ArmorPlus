@@ -6,9 +6,9 @@ package net.thedragonteam.armorplus.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.thedragonteam.armorplus.client.gui.base.GuiBaseBench;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 
 /**
  * net.thedragonteam.armorplus.client.gui
@@ -18,7 +18,7 @@ import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 public class GuiUltiTechBench extends GuiBaseBench {
     private static final ResourceLocation AP_ULTI_TECH_BENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_ulti_tech_bench.png");
 
-    public GuiUltiTechBench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerUltiTechBench(playerInv, worldIn), AP_ULTI_TECH_BENCH_GUI_TEXTURES, "ulti_tech_bench", 176, 200);
+    public GuiUltiTechBench(InventoryPlayer playerInv, TileEntityUltiTechBench tile) {
+        super(new ContainerUltiTechBench(playerInv, tile), AP_ULTI_TECH_BENCH_GUI_TEXTURES, "ulti_tech_bench", 176, 200);
     }
 }

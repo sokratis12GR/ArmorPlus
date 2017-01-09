@@ -1,3 +1,10 @@
+ArmorPlus 1.11.2-9.4.1.2-beta
+----------------------------
+
+Bugs Fixed:
+
+* Uncraftable High-Tech Bench leading to uncraftable recipes
+
 ArmorPlus 1.11.2-9.4.0.1-beta
 ----------------------------
 
@@ -87,4 +94,5 @@ ArmorPlus 1.11-9.0.0.1-alpha
 ----------------------------
 
 Minecraft Version:
+
 * Updated to 1.11

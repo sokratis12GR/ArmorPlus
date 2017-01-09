@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.SlotCrafting;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 
 /**
  * net.thedragonteam.armorplus.container
@@ -33,8 +34,8 @@ public class ContainerHighTechBench extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerHighTechBench(InventoryPlayer playerInventory, World worldIn) {
-        this.world = worldIn;
+    public ContainerHighTechBench(InventoryPlayer playerInventory, TileEntityHighTechBench tile) {
+        this.world = tile.getWorld();
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 44));
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
@@ -54,6 +55,7 @@ public class ContainerHighTechBench extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
+    @Override
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, HighTechBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
@@ -61,6 +63,7 @@ public class ContainerHighTechBench extends Container {
     /**
      * Called when the container is closed.
      */
+    @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
@@ -78,6 +81,7 @@ public class ContainerHighTechBench extends Container {
     /**
      * Determines whether supplied player can use this container
      */
+    @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
         return true;
     }
@@ -85,6 +89,7 @@ public class ContainerHighTechBench extends Container {
     /**
      * Take a stack from the specified inventory slot.
      */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
@@ -137,6 +142,7 @@ public class ContainerHighTechBench extends Container {
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.
      */
+    @Override
     public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
         return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
     }

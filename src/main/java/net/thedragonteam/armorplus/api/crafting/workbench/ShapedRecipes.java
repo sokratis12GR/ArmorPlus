@@ -17,11 +17,11 @@ import net.minecraft.world.World;
  */
 public class ShapedRecipes implements IRecipe {
     /**
-     * How many horizontal slots this recipe is wide.
+     * How many horizontal itemHandler this recipe is wide.
      */
     public final int recipeWidth;
     /**
-     * How many vertical slots this recipe uses.
+     * How many vertical itemHandler this recipe uses.
      */
     public final int recipeHeight;
     /**

@@ -16,9 +16,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
 
-public class TileEntityBaseBench extends TileEntityInventoryBase {
+public class TileEntityLavaInfuser extends TileEntityInventoryBase {
 
-    public int inventorySize;
+    public int inventorySize = 2;
     public String tileEntityName;
 
     /**
@@ -27,17 +27,16 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     public NonNullList<ItemStack> inventory = NonNullList.withSize(inventorySize, ItemStack.EMPTY);
     public String customName;
 
-    public TileEntityBaseBench(String tileEntityName, int inventorySize) {
-        super(inventorySize);
-        this.tileEntityName = tileEntityName;
-        this.inventorySize = inventorySize;
+    public TileEntityLavaInfuser() {
+        super(2);
+        this.tileEntityName = "lava_infuser";
         this.inventory = this.itemHandler.getItems();
     }
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        for (int i = 0; i <= itemHandler.getSlots(); i++) {
-            if (itemHandler.getStackInSlot(slot) != ItemStack.EMPTY)
+        for (int i = 0; i <= this.inventory.size(); i++) {
+            if (itemHandler.getStackInSlot(slot).isEmpty())
                 return true;
         }
         return false;
@@ -45,7 +44,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
-        for (int i = 0; i <= itemHandler.getSlots(); i++) {
+        for (int i = 0; i <= this.inventory.size(); i++) {
             if (itemHandler.getStackInSlot(slot) != ItemStack.EMPTY)
                 return true;
         }
@@ -96,14 +95,14 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
 
-        NBTTagList list = nbt.getTagList("Items", 10);
+        NBTTagList list = nbt.getTagList("Items", 2);
         for (int i = 0; i < list.tagCount(); ++i) {
             NBTTagCompound stackTag = list.getCompoundTagAt(i);
             int slot = stackTag.getByte("Slot") & 255;
             this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
         }
 
-        if (nbt.hasKey("CustomName", 8)) {
+        if (nbt.hasKey("CustomName", 1)) {
             this.setCustomName(nbt.getString("CustomName"));
         }
     }

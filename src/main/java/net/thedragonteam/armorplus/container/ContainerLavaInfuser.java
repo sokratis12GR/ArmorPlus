@@ -6,84 +6,45 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.workbench.SlotCrafting;
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
+import net.minecraftforge.items.IItemHandler;
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotCrafting;
+import net.thedragonteam.armorplus.container.base.ContainerBase;
+import net.thedragonteam.armorplus.tileentity.base.TileEntityLavaInfuser;
 
-/**
- * net.thedragonteam.armorplus.container
- * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
- * - TheDragonTeam
- */
-public class ContainerWorkbench extends Container {
+public class ContainerLavaInfuser extends ContainerBase {
 
     private static final int ITEM_BOX = 18;
-    private static final int RECIPE_SLOTS = 10;
-    private static final int RECIPE_SIZE = 3;
-    private static final int RECIPE_SIZE_TOTAL = 9;
-    private static final int ROW_SLOTS = 9;
+    private static final int RECIPE_SLOTS = 2;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
+    private TileEntityLavaInfuser tile;
     private final World world;
-    /**
-     * The crafting matrix inventory (3x3).
-     */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-    public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerWorkbench(InventoryPlayer playerInventory, TileEntityWorkbench tile) {
+
+    public ContainerLavaInfuser(InventoryPlayer playerInv, TileEntityLavaInfuser tile) {
+        this.tile = tile;
         this.world = tile.getWorld();
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        addSlotToContainer(new SlotCrafting(playerInv.player, tile.itemHandler, 0, 124, 35));
 
-        for (int i = 0; i < RECIPE_SIZE; ++i)
-            for (int j = 0; j < RECIPE_SIZE; ++j)
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * RECIPE_SIZE, 30 + j * ITEM_BOX, 17 + i * ITEM_BOX));
+        addSlotToContainer(new SlotIngredient(tile.itemHandler, 1, 30 + ITEM_BOX, 17 + ITEM_BOX));
 
         for (int k = 0; k < 3; ++k)
-            for (int i1 = 0; i1 < ROW_SLOTS; ++i1)
-                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 84 + k * ITEM_BOX));
+            for (int i1 = 0; i1 < 9; ++i1)
+                addSlotToContainer(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
 
-        for (int l = 0; l < ROW_SLOTS; ++l)
-            this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * ITEM_BOX, 142));
+        for (int l = 0; l < 9; ++l)
+            addSlotToContainer(new Slot(playerInv, l, 8 + l * 18, 142));
 
-        this.onCraftMatrixChanged(this.craftMatrix);
+        onCraftMatrixChanged(tile.itemHandler);
     }
 
-    /**
-     * Callback for when the crafting matrix is changed.
-     */
-    @Override
-    public void onCraftMatrixChanged(IInventory inventoryIn) {
-        this.craftResult.setInventorySlotContents(0, WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
-    }
 
-    /**
-     * Called when the container is closed.
-     */
-    @Override
-    public void onContainerClosed(EntityPlayer playerIn) {
-        super.onContainerClosed(playerIn);
-
-        if (!this.world.isRemote) {
-            for (int i = 0; i < RECIPE_SIZE_TOTAL; ++i) {
-                ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
-
-                if (!itemstack.isEmpty()) {
-                    playerIn.dropItem(itemstack, false);
-                }
-            }
-        }
-    }
-
-    /**
-     * Determines whether supplied player can use this container
-     */
-    @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
+    public void onCraftMatrixChanged(IItemHandler itemHandler) {
+        this.tile.itemHandler.setStackInSlot(0, LavaInfuserCraftingManager.getInstance().findMatchingRecipe(this.tile.itemHandler, this.world));
     }
 
     /**
@@ -139,11 +100,29 @@ public class ContainerWorkbench extends Container {
     }
 
     /**
+     * Called when the container is closed.
+     */
+    @Override
+    public void onContainerClosed(EntityPlayer playerIn) {
+        super.onContainerClosed(playerIn);
+
+        if (!this.tile.getWorld().isRemote) {
+            for (int i = 0; i < this.tile.inventorySize; ++i) {
+                ItemStack itemstack = this.tile.itemHandler.getStackInSlot(i);
+
+                if (!itemstack.isEmpty()) {
+                    playerIn.dropItem(itemstack, false);
+                }
+            }
+        }
+    }
+
+    /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.
      */
     @Override
     public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
-        return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
+        return slotIn.inventory != this.tile.itemHandler && super.canMergeSlot(stack, slotIn);
     }
 }

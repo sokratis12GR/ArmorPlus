@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting;
+import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 
 /**
  * net.thedragonteam.armorplus.container
@@ -35,8 +36,8 @@ public class ContainerChampionBench extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 10, 10);
     public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerChampionBench(InventoryPlayer playerInventory, World worldIn) {
-        this.world = worldIn;
+    public ContainerChampionBench(InventoryPlayer playerInventory, TileEntityChampionBench tile) {
+        this.world = tile.getWorld();
         //1x1 Output Inventory
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 230, 134));
 
@@ -76,6 +77,7 @@ public class ContainerChampionBench extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
+    @Override
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         this.craftResult.setInventorySlotContents(0, ChampionBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
@@ -83,6 +85,7 @@ public class ContainerChampionBench extends Container {
     /**
      * Called when the container is closed.
      */
+    @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
@@ -100,6 +103,7 @@ public class ContainerChampionBench extends Container {
     /**
      * Determines whether supplied player can use this container
      */
+    @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
         return true;
     }
@@ -107,6 +111,7 @@ public class ContainerChampionBench extends Container {
     /**
      * Take a stack from the specified inventory slot.
      */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
@@ -159,6 +164,7 @@ public class ContainerChampionBench extends Container {
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.
      */
+    @Override
     public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
         return slotIn.inventory != this.craftResult && super.canMergeSlot(stack, slotIn);
     }

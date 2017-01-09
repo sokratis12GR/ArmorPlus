@@ -6,9 +6,9 @@ package net.thedragonteam.armorplus.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.thedragonteam.armorplus.client.gui.base.GuiBaseBench;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 
 /**
  * net.thedragonteam.armorplus.client.gui
@@ -18,7 +18,7 @@ import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 public class GuiHighTechBench extends GuiBaseBench {
     private static final ResourceLocation AP_HIGH_TECH_BENCH_GUI_TEXTURES = new ResourceLocation("armorplus:textures/gui/container/gui_high_tech_bench.png");
 
-    public GuiHighTechBench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerHighTechBench(playerInv, worldIn), AP_HIGH_TECH_BENCH_GUI_TEXTURES, "high_tech_bench", 176, 184);
+    public GuiHighTechBench(InventoryPlayer playerInv, TileEntityHighTechBench tile) {
+        super(new ContainerHighTechBench(playerInv, tile), AP_HIGH_TECH_BENCH_GUI_TEXTURES, "high_tech_bench", 176, 184);
     }
 }

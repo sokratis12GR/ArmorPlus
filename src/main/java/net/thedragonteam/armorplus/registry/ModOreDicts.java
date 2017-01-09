@@ -12,6 +12,9 @@ import static net.minecraft.init.Items.ARROW;
 import static net.minecraft.init.Items.COAL;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
+import static net.thedragonteam.armorplus.registry.APBlocks.ultiTechBench;
+import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -34,6 +37,17 @@ public class ModOreDicts {
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);
+        //Benches
+        registerOre("apWorkbench", workbench);
+        registerOre("workbenchTier1", workbench);
+        registerOre("workbenchTierOne", workbench);
+        registerOre("apHighTechBench", highTechBench);
+        registerOre("workbenchTier2", highTechBench);
+        registerOre("workbenchTierTwo", highTechBench);
+        registerOre("apUltiTechBench", ultiTechBench);
+        registerOre("workbenchTier3", ultiTechBench);
+        registerOre("workbenchTierThree", ultiTechBench);
+
         //CastleBlocks
         for (int i = 0; i <= 6; i++) {
             registerWildBrick(colors[i], stoneBricks[i]);

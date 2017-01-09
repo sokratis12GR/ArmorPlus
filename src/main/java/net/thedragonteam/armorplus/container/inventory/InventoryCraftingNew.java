@@ -28,7 +28,7 @@ public class InventoryCraftingNew implements IInventory {
     }
 
     /**
-     * Returns the number of slots in the inventory.
+     * Returns the number of itemHandler in the inventory.
      */
     @Override
     public int getSizeInventory() {

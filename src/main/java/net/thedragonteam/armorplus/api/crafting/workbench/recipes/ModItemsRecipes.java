@@ -57,7 +57,7 @@ public class ModItemsRecipes {
                 "CCC",
                 'C', "gemChargedLavaCrystal",
                 'L', "blockRedstone",
-                'A', "arpWorkbench"));
+                'A', "apWorkbench"));
         if (Loader.isModLoaded("tesla")) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaRod, 1),
                     " T ",

@@ -13,6 +13,7 @@ import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
+import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfuser;
 import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
@@ -57,8 +58,10 @@ public class ModBlocks {
     };
     private static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew;
     public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew};
+    public static BlockLavaInfuser lavaInfuser;
 
     public static void init() {
+        lavaInfuser = new BlockLavaInfuser();
         blockLavaCrystal = new BlockLavaCrystal();
         compressedObsidian = new CompressedObsidian();
         steelBlock = new BaseMetalBlock(STEEL);
@@ -78,6 +81,7 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        lavaInfuser.initModel();
         blockLavaCrystal.initModel();
         compressedObsidian.initModel();
         steelBlock.initModel();

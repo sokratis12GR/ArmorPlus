@@ -20,9 +20,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.APConfig.enableTowerGen;
-import static net.thedragonteam.armorplus.APConfig.towerGenSpawnChance;
-import static net.thedragonteam.armorplus.APConfig.towerGenSpawnNeedOfChance;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.worldgen.StructureGen.getGroundFromAbove;
 
 public class StructureGenNBT implements IWorldGenerator {
@@ -49,9 +47,6 @@ public class StructureGenNBT implements IWorldGenerator {
         BlockPos basePos = new BlockPos(posX, posY, posZ);
 
         this.generateTower(serverworld, random, basePos);
-
-        //if (world.getWorldType() == WorldType.FLAT) {
-        //}
 
     }
 

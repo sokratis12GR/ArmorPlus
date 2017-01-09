@@ -38,6 +38,7 @@ container.armorplus.high_tech_bench=High-Tech Bench
 container.armorplus.ulti_tech_bench=Ulti-Tech Bench
 container.armorplus.champion_bench=Champion Bench
 container.armorplus.inventory=Inventory
+container.armorplus.lava_infuser=Lava Infuser
 
 #Tooltip
 tooltip.shift.showinfo=Press %s%s%s for more info.

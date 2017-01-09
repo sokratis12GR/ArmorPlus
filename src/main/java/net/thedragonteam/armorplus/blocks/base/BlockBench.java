@@ -46,14 +46,8 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     public void initModel() {
         switch (benches) {
             case WORKBENCH:
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-                break;
             case HIGH_TECH:
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-                break;
             case ULTI_TECH:
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-                break;
             case CHAMPION:
                 ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
                 break;
@@ -64,7 +58,7 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         switch (benches) {
             case WORKBENCH:
                 if (!worldIn.isRemote) {
@@ -91,7 +85,7 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
                     playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_WORKBENCH_NEW, worldIn, pos.getX(), pos.getY(), pos.getZ());
                 }
         }
-        return true;
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 
     @Override

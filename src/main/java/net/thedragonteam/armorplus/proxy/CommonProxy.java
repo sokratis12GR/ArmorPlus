@@ -16,6 +16,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
+import net.thedragonteam.armorplus.tileentity.base.TileEntityLavaInfuser;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -80,10 +81,11 @@ public class CommonProxy {
     }
 
     public void registerTileEntities() {
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "ARPWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "ARPHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "ARPUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench.class, "ChampionBench", "ARPChampionBench", "WorkbenchTier4", "WorkbenchTierFour");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "APWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "APHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "APUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench.class, "ChampionBench", "APChampionBench", "WorkbenchTier4", "WorkbenchTierFour");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser.class, "LavaInfuser", "APLavaInfuser");
     }
 
 

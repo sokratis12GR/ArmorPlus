@@ -11,10 +11,10 @@ import net.thedragonteam.thedragonlib.util.ItemStackHandlerImproved;
 
 public abstract class TileEntityInventoryBase extends TileEntityBase {
 
-    public final ItemStackHandlerImproved slots;
+    public ItemStackHandlerImproved itemHandler;
 
-    public TileEntityInventoryBase(int slots) {
-        this.slots = new ItemStackHandlerImproved(slots) {
+    public TileEntityInventoryBase(int itemHandler) {
+        this.itemHandler = new ItemStackHandlerImproved(itemHandler) {
             @Override
             public boolean canInsert(ItemStack stack, int slot) {
                 return TileEntityInventoryBase.this.isItemValidForSlot(slot, stack);
@@ -40,7 +40,7 @@ public abstract class TileEntityInventoryBase extends TileEntityBase {
 
     @Override
     public IItemHandler getItemHandler(EnumFacing facing) {
-        return this.slots;
+        return this.itemHandler;
     }
 
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
