@@ -18,9 +18,9 @@
     + ~~Recipes (In-Game)~~
 + **Lava Infused Obsidian**
   + **Block**
-    + Code
-    + Model
-    + Texture
+    + ~~Code~~
+    + ~~Model~~
+    + ~~Texture~~
   + **Recipe**
     + Code
       + Self Recipe
