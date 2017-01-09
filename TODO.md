@@ -11,11 +11,11 @@
     + ~~Code~~
     + ~~Texture~~
   + **Container**
-    + Code
-    + Slots
+    + ~~Code~~
+    + ~~Slots~~
   + **Working Mechanics**
-    + Code
-    + Recipes (In-Game)
+    + ~~Code~~
+    + ~~Recipes (In-Game)~~
 + **Lava Infused Obsidian**
   + **Block**
     + Code
