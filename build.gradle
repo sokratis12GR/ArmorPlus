@@ -153,6 +153,14 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
 	    changelogType = 'markdown'
         releaseType = 'beta'
+        relations {
+            requiredLibrary 'thedragonlib'
+            optionalLibrary 'tesla'
+            optionalLibrary 'tinkers-construct'
+            optionalLibrary 'baubles'
+            optionalLibrary 'just-enough-items-jei'
+            optionalLibrary 'the-one-probe'
+        }
   }
 }
 
