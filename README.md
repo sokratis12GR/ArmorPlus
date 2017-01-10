@@ -1,5 +1,5 @@
 # ArmorPlus (A+|AP)
-[![](http://cf.way2muchnoise.eu/full_237366_downloads.svg)](http://minecraft.curseforge.com/projects/armorplus)
+[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](http://minecraft.curseforge.com/projects/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](http://minecraft.curseforge.com/projects/armorplus)
 
 About this Mod
@@ -21,7 +21,7 @@ Mod Integrations
 -----------------
 * **Tesla**
 * **RF** (Not in 1.11)
-* **Tinkers' Construct**
+* **Tinkers' Construct** (Not in 1.11 yet)
 * **The One Probe**
 * **Just Enough Items**
 * **Baubles**
@@ -31,3 +31,8 @@ Mod's Official Wiki
 
 The Official Wiki for this mod is
 **[http://ftb.gamepedia.com/ArmorPlus](http://ftb.gamepedia.com/ArmorPlus)**
+
+Licence
+-----------------
+ArmorPlus is licensed under the GNU GENERAL PUBLIC LICENSE license. Full license is in [LICENSE](https://github.com/TheDragonTeam/TheDragonLib/blob/master/LICENSE).
+
