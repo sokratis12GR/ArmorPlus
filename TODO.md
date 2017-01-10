@@ -1,5 +1,5 @@
 ## ToDo List:
----
+
 + **Lava Infuser**
   + **Block**
     + ~~Code~~
@@ -35,7 +35,7 @@
 + Add Machines
 
 ## Maybe
----
+
 + Improve the Workbench and use the new GUI for custom Crafting mechanics
 
 + Use the EnumTiers
