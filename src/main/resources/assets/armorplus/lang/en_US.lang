@@ -133,10 +133,10 @@ item.armorplus.obsidian_leggings.name=Obsidian Leggings
 item.armorplus.obsidian_boots.name=Obsidian Boots
 
 #LavaArmor
-item.armorplus.lava_helmet.name=Lava Helmet
-item.armorplus.lava_chestplate.name=Lava Chestplate
-item.armorplus.lava_leggings.name=Lava Leggings
-item.armorplus.lava_boots.name=Lava Boots
+item.armorplus.lava_helmet.name=Infused Lava Helmet
+item.armorplus.lava_chestplate.name=Infused Lava Chestplate
+item.armorplus.lava_leggings.name=Infused Lava Leggings
+item.armorplus.lava_boots.name=Infused Lava Boots
 
 #SuperStarArmor
 item.armorplus.super_star_helmet.name=Super Star Helmet
@@ -234,7 +234,7 @@ item.armorplus.gui_tester.name=GUI Tester
 item.armorplus.material_chainmail.name=Chainmail
 item.armorplus.reinforcing_material.name=Reinforcing Material
 item.armorplus.lava_crystal_normal.name=Lava Crystal
-item.armorplus.lava_crystal_charged.name=Charged Lava Crystal
+item.armorplus.lava_crystal_charged.name=Infused Lava Crystal
 item.armorplus.steel_ingot.name=Steel Ingot
 item.armorplus.electrical_ingot.name=Electrical Ingot
 
@@ -275,36 +275,32 @@ tile.armorplus.white_stone_brick.name=White Stone Brick
 tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
 tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
 tile.armorplus.white_stone_brick_wall.name=White Stone Brick Wall
-
 tile.armorplus.red_stone_brick.name=Red Stone Brick
 tile.armorplus.red_stone_brick_tower.name=Red Stone Brick Tower
 tile.armorplus.red_stone_brick_corner.name=Red Stone Brick Corner
 tile.armorplus.red_stone_brick_wall.name=Red Stone Brick Wall
-
 tile.armorplus.black_stone_brick.name=Black Stone Brick
 tile.armorplus.black_stone_brick_tower.name=Black Stone Brick Tower
 tile.armorplus.black_stone_brick_corner.name=Black Stone Brick Corner
 tile.armorplus.black_stone_brick_wall.name=Black Stone Brick Wall
-
 tile.armorplus.blue_stone_brick.name=Blue Stone Brick
 tile.armorplus.blue_stone_brick_tower.name=Blue Stone Brick Tower
 tile.armorplus.blue_stone_brick_corner.name=Blue Stone Brick Corner
 tile.armorplus.blue_stone_brick_wall.name=Blue Stone Brick Wall
-
 tile.armorplus.green_stone_brick.name=Green Stone Brick
 tile.armorplus.green_stone_brick_tower.name=Green Stone Brick Tower
 tile.armorplus.green_stone_brick_corner.name=Green Stone Brick Corner
 tile.armorplus.green_stone_brick_wall.name=Green Stone Brick Wall
-
 tile.armorplus.yellow_stone_brick.name=Yellow Stone Brick
 tile.armorplus.yellow_stone_brick_tower.name=Yellow Stone Brick Tower
 tile.armorplus.yellow_stone_brick_corner.name=Yellow Stone Brick Corner
 tile.armorplus.yellow_stone_brick_wall.name=Yellow Stone Brick Wall
-
 tile.armorplus.purple_stone_brick.name=Purple Stone Brick
 tile.armorplus.purple_stone_brick_tower.name=Purple Stone Brick Tower
 tile.armorplus.purple_stone_brick_corner.name=Purple Stone Brick Corner
 tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
+tile.armorplus.lava_infuser.name=Lava Infuser
+tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword
@@ -312,7 +308,7 @@ item.armorplus.lapis_sword.name=Lapis Sword
 item.armorplus.redstone_sword.name=Redstone Sword
 item.armorplus.emerald_sword.name=Emerald Sword
 item.armorplus.obsidian_sword.name=Obsidian Sword
-item.armorplus.lava_sword.name=Lava Sword
+item.armorplus.lava_sword.name=Infused Lava Sword
 item.armorplus.super_star_sword.name=Super Star Sword
 item.armorplus.guardian_sword.name=Guardian Sword
 item.armorplus.ender_dragon_sword.name=Ender Dragon Sword
@@ -323,7 +319,7 @@ item.armorplus.lapis_battle_axe.name=Lapis Battle Axe
 item.armorplus.redstone_battle_axe.name=Redstone Battle Axe
 item.armorplus.emerald_battle_axe.name=Emerald Battle Axe
 item.armorplus.obsidian_battle_axe.name=Obsidian Battle Axe
-item.armorplus.lava_battle_axe.name=Lava Battle Axe
+item.armorplus.lava_battle_axe.name=Infused Lava Battle Axe
 item.armorplus.super_star_battle_axe.name=Super Star Battle Axe
 item.armorplus.guardian_battle_axe.name=Guardian Battle Axe
 item.armorplus.ender_dragon_battle_axe.name=Ender Dragon Battle Axe
@@ -334,7 +330,7 @@ item.armorplus.lapis_bow.name=Lapis Bow
 item.armorplus.redstone_bow.name=Redstone Bow
 item.armorplus.emerald_bow.name=Emerald Bow
 item.armorplus.obsidian_bow.name=Obsidian Bow
-item.armorplus.lava_bow.name=Lava Bow
+item.armorplus.lava_bow.name=Infused Lava Bow
 item.armorplus.super_star_bow.name=Super Star Bow
 item.armorplus.guardian_bow.name=Guardian Bow
 item.armorplus.ender_dragon_bow.name=Ender Dragon Bow
@@ -343,7 +339,7 @@ item.armorplus.ender_dragon_bow.name=Ender Dragon Bow
 item.armorplus.coal_arrow.name=Coal Arrow
 item.armorplus.lapis_arrow.name=Lapis Arrow
 item.armorplus.redstone_arrow.name=Redstone Arrow
-item.armorplus.lava_arrow.name=Lava Arrow
+item.armorplus.lava_arrow.name=Infused Lava Arrow
 item.armorplus.ender_dragon_arrow.name=Ender Dragon Arrow
 
 #TeslaItems

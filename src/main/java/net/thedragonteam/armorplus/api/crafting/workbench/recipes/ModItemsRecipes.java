@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
@@ -16,19 +15,23 @@ import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
 import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
 import static net.thedragonteam.armorplus.APConfig.getRD;
+import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
 import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
+import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModItemsRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lavaCrystal, 1, 1),
-                "RGR",
-                "GAG",
-                "RGR",
-                'R', "dustRedstone",
-                'G', "dustGlowstone",
-                'A', "gemLavaCrystal"));
+        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaInfuser),
+                "LLL",
+                "G G",
+                "OOO",
+                'L', "gemLavaCrystal",
+                'G', "blockGlass",
+                'O', "blockObsidian"
+        ));
         if (getRD() == EASY)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
         if (getRD() == EXPERT)
@@ -58,7 +61,7 @@ public class ModItemsRecipes {
                 'C', "gemChargedLavaCrystal",
                 'L', "blockRedstone",
                 'A', "apWorkbench"));
-        if (Loader.isModLoaded("tesla")) {
+        if (isTeslaLoaded()) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTeslaRod, 1),
                     " T ",
                     "TST",

@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.tileentity.base.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
 public class GuiHandler implements IGuiHandler {
 
@@ -25,7 +25,7 @@ public class GuiHandler implements IGuiHandler {
     public static final int GUI_ULTI_TECH_BENCH = 4;
     public static final int GUI_CHAMPION_BENCH = 5;
     public static final int GUI_WORKBENCH_NEW = 6;
-    public static final int GUI_LAVA_INFUSER = 7;
+    public static final int GUI_LAVA_INFUSER = 9;
     public static final int GUI_EXPERIMENT = 100;
 
     @Override

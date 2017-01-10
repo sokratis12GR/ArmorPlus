@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.proxy;
 
+import net.minecraft.util.datafix.DataFixesManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -16,7 +17,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.tileentity.base.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -41,6 +42,7 @@ public class CommonProxy {
         LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
+        TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
         MinecraftForge.EVENT_BUS.register(new MobDrops());
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);

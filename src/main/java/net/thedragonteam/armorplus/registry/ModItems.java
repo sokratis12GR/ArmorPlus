@@ -136,7 +136,6 @@ public class ModItems {
         if (isBaublesLoaded()) {
             itemBaubleDragon = new ItemBaubleDragon();
         }
-        itemEnderDragonArrow = new ItemEnderDragonArrow();
         if (isTeslaLoaded()) {
             itemTeslaShovel = new ItemTeslaShovel();
             itemTeslaHoe = new ItemTeslaHoe();
@@ -187,6 +186,7 @@ public class ModItems {
         itemLapisArrow = new ItemLapisArrow();
         itemRedstoneArrow = new ItemRedstoneArrow();
         itemLavaArrow = new ItemLavaArrow();
+        itemEnderDragonArrow = new ItemEnderDragonArrow();
     }
 
     private static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {

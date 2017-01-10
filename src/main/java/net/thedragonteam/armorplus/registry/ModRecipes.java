@@ -41,75 +41,75 @@ public class ModRecipes {
         nbttagc.setInteger("theoneprobe", 1);
 
         /* Set Helmets' NBT-Tags */
-        ItemStack coalHelmet = new ItemStack(APItems.coalHelmet,  1);
+        ItemStack coalHelmet = new ItemStack(APItems.coalHelmet, 1);
         coalHelmet.setTagCompound(nbttagc);
-        ItemStack emeraldHelmet = new ItemStack(APItems.emeraldHelmet,  1);
+        ItemStack emeraldHelmet = new ItemStack(APItems.emeraldHelmet, 1);
         emeraldHelmet.setTagCompound(nbttagc);
-        ItemStack lapisHelmet = new ItemStack(APItems.lapisHelmet,  1);
+        ItemStack lapisHelmet = new ItemStack(APItems.lapisHelmet, 1);
         lapisHelmet.setTagCompound(nbttagc);
-        ItemStack lavaHelmet = new ItemStack(APItems.lavaHelmet,  1);
+        ItemStack lavaHelmet = new ItemStack(APItems.lavaHelmet, 1);
         lavaHelmet.setTagCompound(nbttagc);
-        ItemStack obsidianHelmet = new ItemStack(APItems.obsidianHelmet,  1);
+        ItemStack obsidianHelmet = new ItemStack(APItems.obsidianHelmet, 1);
         obsidianHelmet.setTagCompound(nbttagc);
-        ItemStack redstoneHelmet = new ItemStack(APItems.redstoneHelmet,  1);
+        ItemStack redstoneHelmet = new ItemStack(APItems.redstoneHelmet, 1);
         redstoneHelmet.setTagCompound(nbttagc);
-        ItemStack chickenHelmet = new ItemStack(APItems.chickenHelmet,  1);
+        ItemStack chickenHelmet = new ItemStack(APItems.chickenHelmet, 1);
         chickenHelmet.setTagCompound(nbttagc);
-        ItemStack slimeHelmet = new ItemStack(APItems.slimeHelmet,  1);
+        ItemStack slimeHelmet = new ItemStack(APItems.slimeHelmet, 1);
         slimeHelmet.setTagCompound(nbttagc);
-        ItemStack arditeHelmet = new ItemStack(APItems.arditeHelmet,  1);
+        ItemStack arditeHelmet = new ItemStack(APItems.arditeHelmet, 1);
         arditeHelmet.setTagCompound(nbttagc);
-        ItemStack cobaltHelmet = new ItemStack(APItems.cobaltHelmet,  1);
+        ItemStack cobaltHelmet = new ItemStack(APItems.cobaltHelmet, 1);
         cobaltHelmet.setTagCompound(nbttagc);
-        ItemStack manyullynHelmet = new ItemStack(APItems.manyullynHelmet,  1);
+        ItemStack manyullynHelmet = new ItemStack(APItems.manyullynHelmet, 1);
         manyullynHelmet.setTagCompound(nbttagc);
-        ItemStack pigIronHelmet = new ItemStack(APItems.pigIronHelmet,  1);
+        ItemStack pigIronHelmet = new ItemStack(APItems.pigIronHelmet, 1);
         pigIronHelmet.setTagCompound(nbttagc);
-        ItemStack knightSlimeHelmet = new ItemStack(APItems.knightSlimeHelmet,  1);
+        ItemStack knightSlimeHelmet = new ItemStack(APItems.knightSlimeHelmet, 1);
         knightSlimeHelmet.setTagCompound(nbttagc);
-        ItemStack enderDragonHelmet = new ItemStack(APItems.enderDragonHelmet,  1);
+        ItemStack enderDragonHelmet = new ItemStack(APItems.enderDragonHelmet, 1);
         enderDragonHelmet.setTagCompound(nbttagc);
-        ItemStack guardianHelmet = new ItemStack(APItems.guardianHelmet,  1);
+        ItemStack guardianHelmet = new ItemStack(APItems.guardianHelmet, 1);
         guardianHelmet.setTagCompound(nbttagc);
-        ItemStack superStarHelmet = new ItemStack(APItems.superStarHelmet,  1);
+        ItemStack superStarHelmet = new ItemStack(APItems.superStarHelmet, 1);
         superStarHelmet.setTagCompound(nbttagc);
-        ItemStack theUltimateHelmet = new ItemStack(APItems.theUltimateHelmet,  1);
+        ItemStack theUltimateHelmet = new ItemStack(APItems.theUltimateHelmet, 1);
         theUltimateHelmet.setTagCompound(nbttagc);
 
         if (enableEnderDragonArmor)
-            addShapelessRecipe(enderDragonHelmet, APItems.enderDragonHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(enderDragonHelmet, APItems.enderDragonHelmet, getItemStack("theoneprobe", "probe"));
         if (enableGuardianArmor)
-            addShapelessRecipe(guardianHelmet, APItems.guardianHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(guardianHelmet, APItems.guardianHelmet, getItemStack("theoneprobe", "probe"));
         if (enableSuperStarArmor)
-            addShapelessRecipe(superStarHelmet, APItems.superStarHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(superStarHelmet, APItems.superStarHelmet, getItemStack("theoneprobe", "probe"));
         if (enableTheUltimateArmor)
-            addShapelessRecipe(theUltimateHelmet, APItems.theUltimateHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(theUltimateHelmet, APItems.theUltimateHelmet, getItemStack("theoneprobe", "probe"));
         if (enableCoalArmor)
-            addShapelessRecipe(coalHelmet, APItems.coalHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(coalHelmet, APItems.coalHelmet, getItemStack("theoneprobe", "probe"));
         if (enableEmeraldArmor)
-            addShapelessRecipe(emeraldHelmet, APItems.emeraldHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(emeraldHelmet, APItems.emeraldHelmet, getItemStack("theoneprobe", "probe"));
         if (enableLapisArmor)
-            addShapelessRecipe(lapisHelmet, APItems.lapisHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(lapisHelmet, APItems.lapisHelmet, getItemStack("theoneprobe", "probe"));
         if (enableLavaArmor)
-            addShapelessRecipe(lavaHelmet, APItems.lavaHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(lavaHelmet, APItems.lavaHelmet, getItemStack("theoneprobe", "probe"));
         if (enableObsidianArmor)
-            addShapelessRecipe(obsidianHelmet, APItems.obsidianHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(obsidianHelmet, APItems.obsidianHelmet, getItemStack("theoneprobe", "probe"));
         if (enableRedstoneArmor)
-            addShapelessRecipe(redstoneHelmet, APItems.redstoneHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(redstoneHelmet, APItems.redstoneHelmet, getItemStack("theoneprobe", "probe"));
         if (enableChickenArmor)
-            addShapelessRecipe(chickenHelmet, APItems.chickenHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(chickenHelmet, APItems.chickenHelmet, getItemStack("theoneprobe", "probe"));
         if (enableSlimeArmor)
-            addShapelessRecipe(slimeHelmet, APItems.slimeHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(slimeHelmet, APItems.slimeHelmet, getItemStack("theoneprobe", "probe"));
         if (enableArditeArmor)
-            addShapelessRecipe(arditeHelmet, APItems.arditeHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(arditeHelmet, APItems.arditeHelmet, getItemStack("theoneprobe", "probe"));
         if (enableCobaltArmor)
-            addShapelessRecipe(cobaltHelmet, APItems.cobaltHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(cobaltHelmet, APItems.cobaltHelmet, getItemStack("theoneprobe", "probe"));
         if (enableManyullynArmor)
-            addShapelessRecipe(manyullynHelmet, APItems.manyullynHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(manyullynHelmet, APItems.manyullynHelmet, getItemStack("theoneprobe", "probe"));
         if (enablePigIronArmor)
-            addShapelessRecipe(pigIronHelmet, APItems.pigIronHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(pigIronHelmet, APItems.pigIronHelmet, getItemStack("theoneprobe", "probe"));
         if (enableKnightSlimeArmor)
-            addShapelessRecipe(knightSlimeHelmet, APItems.knightSlimeHelmet,  getItemStack("theoneprobe", "probe"));
+            addShapelessRecipe(knightSlimeHelmet, APItems.knightSlimeHelmet, getItemStack("theoneprobe", "probe"));
     }
 
     public static void addShapedRecipes() {
@@ -131,6 +131,7 @@ public class ModRecipes {
             addRecipeCastle(stoneBricks[i], colors[i]);
             addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
             addRecipeCastleTower(stoneBrickTowers[i], colors[i]);
+            addRecipeCastleWall(stonebrickWalls[i], colors[i]);
         }
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
@@ -169,9 +170,15 @@ public class ModRecipes {
         addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "S S", "SSS", "   ", 'S', "stonebrick" + color));
     }
 
+    public static void addRecipeCastleWall(Block block, String color) {
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', "stonebrick" + color));
+    }
+
     public static void addRecipeCastle(Block block, String color) {
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color + "Wall"));
         addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
     }
 }

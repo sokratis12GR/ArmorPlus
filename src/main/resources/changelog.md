@@ -1,3 +1,16 @@
+ArmorPlus 1.11.2-9.5.0.1-beta
+----------------------------
+
+Features Added:
+
+* Blocks
+  * Added Lava Infuser
+  * Lava Infused Obsidian
+
+Features Changed:
+
+* Charged Lava Crystal
+
 ArmorPlus 1.11.2-9.4.1.2-beta
 ----------------------------
 

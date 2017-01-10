@@ -6,45 +6,93 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.items.IItemHandler;
-import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotCrafting;
-import net.thedragonteam.armorplus.container.base.ContainerBase;
-import net.thedragonteam.armorplus.tileentity.base.TileEntityLavaInfuser;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserManager;
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserFuel;
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserOutput;
+import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
-public class ContainerLavaInfuser extends ContainerBase {
+public class ContainerLavaInfuser extends Container {
 
     private static final int ITEM_BOX = 18;
-    private static final int RECIPE_SLOTS = 2;
-    private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
-    private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-    private TileEntityLavaInfuser tile;
-    private final World world;
+    private final TileEntityLavaInfuser tile;
+    private int cookTime;
+    private int totalCookTime;
+    private int furnaceBurnTime;
+    private int currentItemBurnTime;
 
-
-    public ContainerLavaInfuser(InventoryPlayer playerInv, TileEntityLavaInfuser tile) {
+    public ContainerLavaInfuser(InventoryPlayer playerInventory, TileEntityLavaInfuser tile) {
         this.tile = tile;
-        this.world = tile.getWorld();
-        addSlotToContainer(new SlotCrafting(playerInv.player, tile.itemHandler, 0, 124, 35));
+        this.addSlotToContainer(new Slot(tile, 0, 69, 35));
+        this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
+        this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35));
 
-        addSlotToContainer(new SlotIngredient(tile.itemHandler, 1, 30 + ITEM_BOX, 17 + ITEM_BOX));
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18));
+            }
+        }
 
-        for (int k = 0; k < 3; ++k)
-            for (int i1 = 0; i1 < 9; ++i1)
-                addSlotToContainer(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
-
-        for (int l = 0; l < 9; ++l)
-            addSlotToContainer(new Slot(playerInv, l, 8 + l * 18, 142));
-
-        onCraftMatrixChanged(tile.itemHandler);
+        for (int k = 0; k < 9; ++k) {
+            this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * ITEM_BOX, 142));
+        }
     }
 
+    @Override
+    public void addListener(IContainerListener listener) {
+        super.addListener(listener);
+        listener.sendAllWindowProperties(this, this.tile);
+    }
 
-    public void onCraftMatrixChanged(IItemHandler itemHandler) {
-        this.tile.itemHandler.setStackInSlot(0, LavaInfuserCraftingManager.getInstance().findMatchingRecipe(this.tile.itemHandler, this.world));
+    /**
+     * Looks for changes made in the container, sends them to every listener.
+     */
+    @Override
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
+
+        for (IContainerListener listener : this.listeners) {
+
+            if (this.cookTime != this.tile.getField(2)) {
+                listener.sendProgressBarUpdate(this, 2, this.tile.getField(2));
+            }
+
+            if (this.furnaceBurnTime != this.tile.getField(0)) {
+                listener.sendProgressBarUpdate(this, 0, this.tile.getField(0));
+            }
+
+            if (this.currentItemBurnTime != this.tile.getField(1)) {
+                listener.sendProgressBarUpdate(this, 1, this.tile.getField(1));
+            }
+
+            if (this.totalCookTime != this.tile.getField(3)) {
+                listener.sendProgressBarUpdate(this, 3, this.tile.getField(3));
+            }
+        }
+
+        this.cookTime = this.tile.getField(2);
+        this.furnaceBurnTime = this.tile.getField(0);
+        this.currentItemBurnTime = this.tile.getField(1);
+        this.totalCookTime = this.tile.getField(3);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void updateProgressBar(int id, int data) {
+        this.tile.setField(id, data);
+    }
+
+    /**
+     * Determines whether supplied player can use this container
+     */
+    @Override
+    public boolean canInteractWith(EntityPlayer playerIn) {
+        return true;
     }
 
     /**
@@ -59,23 +107,29 @@ public class ContainerLavaInfuser extends ContainerBase {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index == 0) {
-                itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
-
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
+            if (index == 2) {
+                if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
+            } else if (index != 1 && index != 0) {
+                if (!LavaInfuserManager.getInstance().getSmeltingResult(itemstack1).isEmpty()) {
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (TileEntityLavaInfuser.isItemFuel(itemstack1)) {
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (index >= 3 && index < 30) {
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (index >= MAIN_INVENTORY_SLOTS && index < FULL_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -89,40 +143,9 @@ public class ContainerLavaInfuser extends ContainerBase {
                 return ItemStack.EMPTY;
             }
 
-            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
-
-            if (index == 0) {
-                playerIn.dropItem(itemstack2, false);
-            }
+            slot.onTake(playerIn, itemstack1);
         }
 
         return itemstack;
-    }
-
-    /**
-     * Called when the container is closed.
-     */
-    @Override
-    public void onContainerClosed(EntityPlayer playerIn) {
-        super.onContainerClosed(playerIn);
-
-        if (!this.tile.getWorld().isRemote) {
-            for (int i = 0; i < this.tile.inventorySize; ++i) {
-                ItemStack itemstack = this.tile.itemHandler.getStackInSlot(i);
-
-                if (!itemstack.isEmpty()) {
-                    playerIn.dropItem(itemstack, false);
-                }
-            }
-        }
-    }
-
-    /**
-     * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
-     * is null for the initial slot that was double-clicked.
-     */
-    @Override
-    public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
-        return slotIn.inventory != this.tile.itemHandler && super.canMergeSlot(stack, slotIn);
     }
 }
