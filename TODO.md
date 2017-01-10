@@ -22,9 +22,8 @@
     + ~~Model~~
     + ~~Texture~~
   + **Recipe**
-    + Code
-      + Self Recipe
-      + Usage
+    + ~~Self Recipe~~
+    + Usage
       
 ## Soon
 + Change recipes so Emerald, Obsidian and Lava Armors are Tier 2
