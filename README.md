@@ -28,5 +28,4 @@ The Official Wiki for this mod is
 **[http://ftb.gamepedia.com/ArmorPlus](http://ftb.gamepedia.com/ArmorPlus)**
 
 ## Licence
-ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/TheDragonLib/blob/master/LICENSE).
-
+ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/ArmorPlus/blob/1.11/LICENSE).
