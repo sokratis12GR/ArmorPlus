@@ -16,7 +16,8 @@ Allowed Launchers list
 
 |  Launcher  | Private Modpacks | Public Modpacks |
 |------------|------------------|-----------------|
-|ATLauncher  |        YES       |        YES      |
-|  Curse     |        YES       |        YES      |
-|FTB Launcher|        YES       |        YES      |
-|  Technic   |        NO        |        NO       |
+|ATLauncher|YES|YES|
+|Curse|YES|YES|
+|FTB Launcher|YES|YES|
+|Technic|YES|YES|
+|Custom Launcher|YES|YES|
