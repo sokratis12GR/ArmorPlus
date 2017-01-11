@@ -2,7 +2,7 @@
 
 Q: Am I allowed to use this mod in my Modpack ?
 
-A: Yes but you MUST follow the instructions bellow, also don't upload the mod to the place you're hosting your modpack on.
+A: Yes but you SHOULD follow the instructions bellow.
 
 ##Public Modpacks
 
