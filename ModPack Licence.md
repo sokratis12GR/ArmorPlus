@@ -10,14 +10,4 @@ Optionaly If you make a Public Modpack You have to make sure that you give credi
 
 ##Private Modpacks
 
-Optionaly If you make a Private Modpack you have to make sure that you give credits to the author(s): sokratis12GR & TheDragonTeam and post a link back to this page, also if you want you can tell me about it in PM but it's not required.
-
-Allowed Launchers list
-
-|  Launcher  | Private Modpacks | Public Modpacks |
-|------------|------------------|-----------------|
-|ATLauncher|YES|YES|
-|Curse|YES|YES|
-|FTB Launcher|YES|YES|
-|Technic|YES|YES|
-|Custom Launcher|YES|YES|
+Optionaly If you make a Private Modpack you have to make sure that you give credits to the author(s): sokratis12GR & TheDragonTeam and post a link back to this page, also if you want you can tell me about it in PM but it's not required
