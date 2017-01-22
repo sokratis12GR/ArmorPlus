@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.items.baubles;
 
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
-import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -17,7 +16,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+
+import javax.annotation.Nonnull;
 
 public abstract class ItemBauble extends BaseItem implements IBauble {
 
@@ -26,22 +28,37 @@ public abstract class ItemBauble extends BaseItem implements IBauble {
         setMaxStackSize(1);
     }
 
+    @Nonnull
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if (!world.isRemote) {
-            IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
-            for (int i = 0; i < baubles.getSlots(); i++)
-                if (baubles.getStackInSlot(i).getCount() > 0 && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
-                    baubles.setStackInSlot(i, player.getHeldItem(hand).copy());
-                    if (!player.capabilities.isCreativeMode) {
-                        player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        ItemStack toEquip = stack.copy();
+        toEquip.setCount(1);
+        if (canEquip(toEquip, player)) {
+            IItemHandlerModifiable baubles = BaublesApi.getBaublesHandler(player);
+            for (int i = 0; i < baubles.getSlots(); i++) {
+                ItemStack simulate = baubles.insertItem(i, toEquip, true);
+                if (simulate.isEmpty()) {
+                    ItemStack stackInSlot = baubles.getStackInSlot(i);
+                    if (stackInSlot.isEmpty() || ((IBauble) stackInSlot.getItem()).canUnequip(stackInSlot, player)) {
+                        if (!world.isRemote) {
+                            baubles.setStackInSlot(i, toEquip);
+                            stack.shrink(1);
+                        }
+
+                        if (!stackInSlot.isEmpty()) {
+                            ((IBauble) stackInSlot.getItem()).onUnequipped(stackInSlot, player);
+                            return ActionResult.newResult(EnumActionResult.SUCCESS, stackInSlot.copy());
+                        }
+                        break;
                     }
-                    onEquipped(player.getHeldItem(hand), player);
-                    break;
                 }
+            }
         }
-        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+
+        return ActionResult.newResult(EnumActionResult.PASS, stack);
     }
+
 
     @Override
     public EnumRarity getRarity(ItemStack par1ItemStack) {

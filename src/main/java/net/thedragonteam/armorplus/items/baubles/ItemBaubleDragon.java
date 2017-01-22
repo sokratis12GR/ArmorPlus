@@ -6,7 +6,11 @@ package net.thedragonteam.armorplus.items.baubles;
 
 import baubles.api.BaubleType;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 public class ItemBaubleDragon extends ItemBauble {
 
@@ -27,6 +31,12 @@ public class ItemBaubleDragon extends ItemBauble {
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        if (player.getActivePotionEffect(MobEffects.ABSORPTION) == null)
+            player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 20, 1));
     }
 
     @Override
