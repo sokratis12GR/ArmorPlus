@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.compat.jei;
 
 import mezz.jei.api.*;
+import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional.Interface;
@@ -20,14 +21,14 @@ public class JEI implements IModPlugin {
     @Method(modid = "jei")
     public void register(@Nonnull IModRegistry registry) {
         IJeiHelpers helpers = registry.getJeiHelpers();
-        IItemBlacklist blacklist = helpers.getItemBlacklist();
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.moddedCityItem, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.jonBamsItem, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.jonBamsItem, 1, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.theDragonTeamItem, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.twitchItem, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.beamItem, 1));
-        blacklist.addItemToBlacklist(new ItemStack(ModItems.nbtItem, 1));
+        IIngredientBlacklist blacklist = helpers.getIngredientBlacklist();
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.moddedCityItem, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.jonBamsItem, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.jonBamsItem, 1, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.theDragonTeamItem, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.twitchItem, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.beamItem, 1));
+        blacklist.addIngredientToBlacklist(new ItemStack(ModItems.nbtItem, 1));
     }
 
     @Method(modid = "jei")

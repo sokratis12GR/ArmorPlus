@@ -7,8 +7,8 @@ package net.thedragonteam.armorplus.compat.jei.ultitechbench;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IStackHelper;
-import mezz.jei.api.recipe.wrapper.ICraftingRecipeWrapper;
 import mezz.jei.util.BrokenCraftingRecipeException;
 import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapelessOreRecipe
 
 import java.util.List;
 
-public class UTBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements ICraftingRecipeWrapper {
+public class UTBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements IRecipeWrapper {
     private final IJeiHelpers jeiHelpers;
     private final ShapelessOreRecipe recipe;
 

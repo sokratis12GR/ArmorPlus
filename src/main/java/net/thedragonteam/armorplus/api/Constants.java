@@ -7,8 +7,7 @@ package net.thedragonteam.armorplus.api;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 /**
- * net.thedragonteam.armorplus.api
- * ArmorPlus created by sokratis12GR on 6/21/2016 11:11 PM.
+ * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
 public class Constants {
@@ -22,6 +21,8 @@ public class Constants {
         public static final String JEI_CATEGORY_HIGH_TECH_BENCH = ArmorPlus.MODID + ":high_tech_bench";
         public static final String JEI_CATEGORY_ULTI_TECH_BENCH = ArmorPlus.MODID + ":ulti_tech_bench";
         public static final String JEI_CATEGORY_CHAMPION_BENCH = ArmorPlus.MODID + ":champion_bench";
+        public static final String JEI_CATEGORY_LAVA_INFUSER_INFUSING = ArmorPlus.MODID + ":lava_infuser_infusing";
+        public static final String JEI_CATEGORY_LAVA_INFUSER_FUEL = ArmorPlus.MODID + ":lava_infuser_fuel";
 
     }
 }
