@@ -4,77 +4,23 @@
 
 package net.thedragonteam.armorplus.enchantments;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraftforge.common.MinecraftForge;
-import net.thedragonteam.armorplus.util.Utils;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.thedragonteam.armorplus.APConfig.debugMode;
 import static net.thedragonteam.armorplus.APConfig.debugModeEnchantments;
 
-public class LifeStealEnchantment extends Enchantment {
+public class LifeStealEnchantment extends EnchantmentBase {
 
     public LifeStealEnchantment() {
-        super(Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        setRegistryName("life_steal");
-        setName(Utils.setName("life_steal"));
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    /**
-     * Returns the minimal value of enchantability needed on the enchantment level passed.
-     */
-    public int getMinEnchantability(int enchantmentLevel) {
-        return enchantmentLevel * 10;
-    }
-
-    /**
-     * Returns the maximum value of enchantability nedded on the enchantment level passed.
-     */
-    public int getMaxEnchantability(int enchantmentLevel) {
-        return this.getMinEnchantability(enchantmentLevel) + 15;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
-
-    @Override
-    public int getMinLevel() {
-        return 1;
-    }
-
-    @Override
-    public boolean isAllowedOnBooks() {
-        return true;
-    }
-
-    @Override
-    public boolean isTreasureEnchantment() {
-        return true;
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return super.canApplyAtEnchantingTable(stack);
-    }
-
-    @Override
-    public boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench);
-    }
-
-    @Override
-    public boolean canApply(ItemStack stack) {
-        return super.canApply(stack);
+        super("life_steal",Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{
+                EntityEquipmentSlot.MAINHAND},
+                1, 3, 10, 15, true, true);
     }
 
     @Override
@@ -212,12 +158,5 @@ public class LifeStealEnchantment extends Enchantment {
                     break;
             }
         }
-    }
-
-    private enum Levels {
-        ZERO,
-        ONE,
-        TWO,
-        THREE
     }
 }

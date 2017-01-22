@@ -49,6 +49,10 @@ public enum EnumTiers implements IStringSerializable {
         return subTypes;
     }
 
+    public EnumTiers getTiers() {
+        return this;
+    }
+
     enum Tier {
         ZERO,
         ONE,
