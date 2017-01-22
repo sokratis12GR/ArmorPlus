@@ -1,5 +1,26 @@
+ArmorPlus 1.11.2-9.5.2.3-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed Unregistered Recipes (sorry... my bad...)
+
+ArmorPlus 1.11.2-9.5.1.2-beta
+----------------------------
+
+JEI Integration:
+
+* Added support for the Lava Infuser with JEI
+
+Bugs Fixed:
+
+* Uncraftable lava infusers
+
 ArmorPlus 1.11.2-9.5.0.1-beta
 ----------------------------
+
+###The Pre-Balancing Update
+#####With a few small balance changes and bug fixes
 
 Features Added:
 
@@ -10,6 +31,14 @@ Features Added:
 Features Changed:
 
 * Charged Lava Crystal
+* A few really small performance improvements
+
+* Recipes
+    * Emerald, Obsidian & Lava armor recipes have been moved from the workbench over the high-tech bench with a little changed and more expensive recipes. 
+
+Bugs Fixed:
+
+* Bosses not dropping their drops on death
 
 ArmorPlus 1.11.2-9.4.1.2-beta
 ----------------------------

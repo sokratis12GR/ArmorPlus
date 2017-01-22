@@ -28,6 +28,7 @@ enchantment.armorplus.furious.desc=When hit you get furious, giving you strength
 armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
 armorplus.jei.wither_bone.desc=Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons.
 armorplus.jei.ender_dragon_scale.desc=Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies.
+armorplus.jei.lava_infuser.desc=Used for infusing Lava Crystals and Obsidian blocks into Lava Infused Obsidian. You need to provide it with lava in order to work.
 
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
@@ -95,6 +96,16 @@ gui.jei.category.workbench=Workbench
 gui.jei.category.high_tech_bench=High-Tech Bench
 gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
 gui.jei.category.champion_bench=Champion Bench
+gui.jei.category.lava_infuser=Lava Infuser
+gui.jei.category.lava_infuser_infusing=Lava Infuser Infusing
+gui.jei.category.lava_infuser_fuel=Lava Infuser Fuel
+
+gui.jei.category.armorplus.infusing=Infusing
+gui.jei.category.armorplus.infusing.experience=%s XP
+gui.jei.category.armorplus.infusing.fuel=Fuel
+gui.jei.category.armorplus.infusing.fuel.smeltCount.single=Smelts 1 item
+gui.jei.category.armorplus.infusing.fuel.smeltCount=Infuses %s items
+gui.jei.category.armorplus.infusing.fuel.burnTime=Burn Time: %s
 
 #BOOKS
 item.armorplus.book.name=ArmorPlus Info Book
@@ -300,6 +311,7 @@ tile.armorplus.purple_stone_brick_tower.name=Purple Stone Brick Tower
 tile.armorplus.purple_stone_brick_corner.name=Purple Stone Brick Corner
 tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 tile.armorplus.lava_infuser.name=Lava Infuser
+tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
 tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
 
 #Swords
