@@ -33,27 +33,27 @@ public class MobDrops {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void playerKilledEntity(LivingDropsEvent event) {
         if (event.getEntity() instanceof EntityDragon) {
-            event.getEntityLiving().entityDropItem(getItemStack(materials, 3), enderdragonScaleDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, enderdragonScaleDropAmount, 3), 0.0F);
             if (debugMode) {
                 LogHelper.info("Ender Dragon Dropped: " + getItemStack(materials, 3) + " x " + enderdragonScaleDropAmount);
             }
         } else if (event.getEntity() instanceof EntityWither) {
-            event.getEntityLiving().entityDropItem(getItemStack(materials, 2), witherBoneDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, witherBoneDropAmount, 2), 0.0F);
             if (debugMode) {
                 LogHelper.info("Wither Boss Dropped: " + getItemStack(materials, 2) + " x " + witherBoneDropAmount);
             }
         } else if (event.getEntity() instanceof EntityWitherSkeleton) {
-            event.getEntityLiving().entityDropItem(getItemStack(materials, 2), random.nextInt(max - min + 1) + min);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 2), 0.0F);
             if (debugMode) {
                 LogHelper.info("Wither Skeleton Dropped: " + getItemStack(materials, 2) + " x " + random.nextInt(max - min + 1) + min);
             }
         } else if (event.getEntity() instanceof EntityGuardian) {
-            event.getEntityLiving().entityDropItem(getItemStack(materials, 1), random.nextInt(max - min + 1) + min);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 1), 0.0F);
             if (debugMode) {
                 LogHelper.info("Guardian Dropped: " + getItemStack(materials, 1) + " x " + random.nextInt(max - min + 1) + min);
             }
         } else if (event.getEntity() instanceof EntityElderGuardian) {
-            event.getEntityLiving().entityDropItem(getItemStack(materials, 1), guardianScaleElderDropAmount);
+            event.getEntityLiving().entityDropItem(getItemStack(materials, guardianScaleElderDropAmount, 1), 0.0F);
             if (debugMode) {
                 LogHelper.info("Elder Guardian Dropped:" + getItemStack(materials, 1) + " x " + guardianScaleElderDropAmount);
             }
