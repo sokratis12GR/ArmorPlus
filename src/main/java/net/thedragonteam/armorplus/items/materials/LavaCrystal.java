@@ -16,6 +16,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
+
 /**
  * net.thedragonteam.armorplus.items.materials
  * ArmorPlus created by sokratis12GR on 4/19/2016.
@@ -28,14 +30,14 @@ public class LavaCrystal extends Item implements IFuelHandler {
     };
 
     private final int[] BURN_TIME = new int[]{
-            22000, 26000
+            20000, 22000
     };
 
     public LavaCrystal() {
         this.setHasSubtypes(true);
         GameRegistry.registerFuelHandler(this);
         setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_crystal");     // Used for localization (en_US.lang)
+        setUnlocalizedName(setName("lava_crystal"));     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         setMaxDamage(0);
@@ -43,23 +45,17 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     public int getBurnTime(ItemStack fuel) {
         if (fuel.getItem() == this)
-            switch (fuel.getItemDamage()) {
-                case 0:
-                    return BURN_TIME[0];
-                case 1:
-                    return BURN_TIME[1];
-            }
+            for (int i = 0; i <= 1; i++)
+                if (fuel.getItemDamage() == i)
+                    return BURN_TIME[i];
         return 0;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        switch (stack.getItemDamage()) {
-            case 0:
-                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[0];
-            case 1:
-                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[1];
-        }
+        for (int i = 0; i <= 1; i++)
+            if (stack.getItemDamage() == i)
+                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[i];
         return super.getUnlocalizedName(stack);
     }
 
@@ -75,8 +71,9 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        for (int i = 0; i <= 1; i++)
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
+        if (getRegistryName() != null)
+            for (int i = 0; i <= 1; i++)
+                ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
     }
 
     @Override

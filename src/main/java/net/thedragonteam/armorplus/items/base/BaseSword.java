@@ -64,7 +64,8 @@ public class BaseSword extends ItemSword implements IItemHelper {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        if (getRegistryName() != null)
+            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

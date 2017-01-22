@@ -40,7 +40,7 @@ public class CosmeticsRenderInit {
                     meta = 0;
                 }
 
-                ItemStack stack = null;
+                ItemStack stack = ItemStack.EMPTY;
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(itemName);
                 if (Item.REGISTRY.containsKey(resLoc))
@@ -49,7 +49,7 @@ public class CosmeticsRenderInit {
                     stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
 
                 //Add a new Special Renderer to the list
-                if (stack != null) {
+                if (!stack.isEmpty()) {
                     COSMETICS_FOR_PEOPLE_LIST.put(key, new RenderCosmetics(stack));
                 }
             }

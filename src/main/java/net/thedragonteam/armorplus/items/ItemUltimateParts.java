@@ -46,33 +46,8 @@ public class ItemUltimateParts extends Item {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        switch (stack.getItemDamage()) {
-            case 0:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[0];
-            case 1:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[1];
-            case 2:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[2];
-            case 3:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[3];
-            case 4:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[4];
-            case 5:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[5];
-            case 6:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[6];
-            case 7:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[7];
-            case 8:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[8];
-            case 9:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[9];
-            case 10:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[10];
-            case 11:
-                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[11];
-
-        }
+        for (int i = 0; i <= 11; i++)
+            if (stack.getItemDamage() == i) return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[i];
         return super.getUnlocalizedName();
     }
 
@@ -84,8 +59,8 @@ public class ItemUltimateParts extends Item {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        for (int i = 0; i <= 11; i++) {
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
-        }
+        if (getRegistryName() != null)
+            for (int i = 0; i <= 11; i++)
+                ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
     }
 }

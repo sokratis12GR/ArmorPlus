@@ -27,6 +27,10 @@ import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.*;
 
+/**
+ * ArmorPlus created by sokratis12GR
+ * - TheDragonTeam
+ */
 public class GlobalEventsArmorPlus {
 
     public static void syncConfig() {

@@ -34,9 +34,11 @@ public class BaseDevItem extends BaseItem implements IItemHelper {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (devItems.hasSubTypes())
-            ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        if (getRegistryName() != null) {
+            if (devItems.hasSubTypes())
+                ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
+            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        }
     }
 
     @Override
