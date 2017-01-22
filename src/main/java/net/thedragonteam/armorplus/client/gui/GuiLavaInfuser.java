@@ -30,7 +30,7 @@ public class GuiLavaInfuser extends GuiContainer {
      */
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus.lava_infuser"), 28, 5, 0xffffff);
+        this.fontRenderer.drawString(TextHelper.localize("container.armorplus.lava_infuser"), 28, 5, 0xffffff);
     }
 
     /**

@@ -31,7 +31,7 @@ public class GuiChampionBench extends GuiContainer {
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus.champion_bench"), 28, 5, 4210752);
+        this.fontRenderer.drawString(TextHelper.localize("container.armorplus.champion_bench"), 28, 5, 4210752);
     }
 
     /**

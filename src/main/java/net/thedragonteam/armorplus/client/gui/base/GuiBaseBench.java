@@ -27,8 +27,8 @@ public class GuiBaseBench extends GuiContainer {
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus." + name), 28, 5, 4210752);
-        this.fontRendererObj.drawString(TextHelper.localize("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(TextHelper.localize("container.armorplus." + name), 28, 5, 4210752);
+        this.fontRenderer.drawString(TextHelper.localize("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**

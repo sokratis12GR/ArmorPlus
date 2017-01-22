@@ -22,7 +22,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
-import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
@@ -30,11 +29,24 @@ import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nullable;
 
+import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
+
 public class BlockBench extends BlockBase implements ITileEntityProvider {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public Benches benches;
+
+    private int[] guiNumber = new int[]{
+            GUI_WORKBENCH, GUI_HIGH_TECH_BENCH, GUI_ULTI_TECH_BENCH, GUI_CHAMPION_BENCH, GUI_WORKBENCH_NEW
+    };
+    private Benches[] bench = new Benches[]{
+            WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW
+    };
+    private TileEntity[] tileEntities = new TileEntity[]{
+            new TileEntityWorkbench(), new TileEntityHighTechBench(), new TileEntityUltiTechBench(), new TileEntityChampionBench(), new TileEntityWorkbench()
+    };
 
     public BlockBench(Benches benches) {
         super(Material.IRON, benches.getName(), 1000.0F, 10.0F, ToolType.PICKAXE, 2);
@@ -59,32 +71,10 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        switch (benches) {
-            case WORKBENCH:
-                if (!worldIn.isRemote) {
-                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
-                }
-                break;
-            case HIGH_TECH:
-                if (!worldIn.isRemote) {
-                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_HIGH_TECH_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
-                }
-                break;
-            case ULTI_TECH:
-                if (!worldIn.isRemote) {
-                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_ULTI_TECH_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
-                }
-                break;
-            case CHAMPION:
-                if (!worldIn.isRemote) {
-                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_CHAMPION_BENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
-                }
-                break;
-            case WORKBENCH_NEW:
-                if (!worldIn.isRemote) {
-                    playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_WORKBENCH_NEW, worldIn, pos.getX(), pos.getY(), pos.getZ());
-                }
-        }
+        for (int i = 0; i < guiNumber.length; i++)
+            if (benches == bench[i])
+                if (!worldIn.isRemote)
+                    playerIn.openGui(ArmorPlus.instance, guiNumber[i], worldIn, pos.getX(), pos.getY(), pos.getZ());
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 
@@ -141,18 +131,9 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        switch (benches) {
-            case WORKBENCH:
-                return new TileEntityWorkbench();
-            case HIGH_TECH:
-                return new TileEntityHighTechBench();
-            case ULTI_TECH:
-                return new TileEntityUltiTechBench();
-            case CHAMPION:
-                return new TileEntityChampionBench();
-            case WORKBENCH_NEW:
-                return new TileEntityWorkbench();
-        }
+        for (int i = 0; i < guiNumber.length; i++)
+            if (benches == bench[i])
+                return tileEntities[i];
         return null;
     }
 }

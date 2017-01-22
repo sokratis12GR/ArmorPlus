@@ -63,7 +63,6 @@ public class CommandArmorPlus extends CommandBase {
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         System.out.println(getRequiredPermissionLevel());
         if (args.length > 0 && subCommands.containsKey(args[0])) {
-
             ISubCommand subCommand = subCommands.get(args[0]);
             String[] subArgs = Arrays.copyOfRange(args, 1, args.length);
             subCommand.processSubCommand(server, sender, subArgs);

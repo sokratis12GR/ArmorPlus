@@ -124,20 +124,19 @@ public class ItemUltimateArmor extends ItemArmor {
                 entity.capabilities.allowFlying = false;
             }
         if (APConfig.enableTheUltimateArmorInvincibility)
-            if (head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator())
-                entity.capabilities.disableDamage = true;
-            else entity.capabilities.disableDamage = false;
-        if (head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator()) {
-        } else if (enableTheUltimateArmorDeBuffs) {
-            addPotion(entity, MobEffects.POISON, 60, 2, BAD);
-            addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
-            addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
+            entity.capabilities.disableDamage = head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator();
+        if ((head.getCount() <= 0 || head.getItem() != theUltimate[0] || chest.getCount() <= 0 || chest.getItem() != theUltimate[1] || legs.getCount() <= 0 || legs.getItem() != theUltimate[2] || feet.getCount() <= 0 || feet.getItem() != theUltimate[3]) && !entity.capabilities.isCreativeMode && !entity.isSpectator()) {
+            if (enableTheUltimateArmorDeBuffs) {
+                addPotion(entity, MobEffects.POISON, 60, 2, BAD);
+                addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+                addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
-            entity.motionX = 0;
-            if (entity.onGround)
-                entity.motionY = 0;
-            entity.motionZ = 0;
-            entity.velocityChanged = true; // assumes that entity instanceof EntityPlayer
+                entity.motionX = 0;
+                if (entity.onGround)
+                    entity.motionY = 0;
+                entity.motionZ = 0;
+                entity.velocityChanged = true; // assumes that entity instanceof EntityPlayer
+            }
         }
     }
 

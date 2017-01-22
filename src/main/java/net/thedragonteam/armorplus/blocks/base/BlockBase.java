@@ -20,7 +20,7 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 public class BlockBase extends Block {
 
     public BlockBase(String name) {
-        this(Material.AIR, name);
+        this(Material.GROUND, name);
     }
 
     public BlockBase(Material material, String name) {
@@ -40,11 +40,11 @@ public class BlockBase extends Block {
     }
 
     public BlockBase(Material material, String name, float resistance, float hardness) {
-        this(material, name, resistance, hardness, null);
+        this(material, name, resistance, hardness, ToolType.PICKAXE);
     }
 
     public BlockBase(Material material, String name, float resistance, float hardness, boolean unbreakable) {
-        this(material, name, resistance, hardness, null, unbreakable);
+        this(material, name, resistance, hardness, ToolType.PICKAXE, unbreakable);
     }
 
     public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool) {
