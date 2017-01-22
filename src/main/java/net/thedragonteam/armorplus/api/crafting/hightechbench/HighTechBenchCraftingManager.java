@@ -14,6 +14,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModItemRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTierTwoRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 
@@ -36,11 +37,12 @@ public class HighTechBenchCraftingManager {
 
     private HighTechBenchCraftingManager() {
 
-        (new ModItemRecipes()).addRecipes(this);
-        (new ModWeaponTierTwoRecipes()).addRecipes(this);
-        (new ModTinkersConstructRecipes()).addRecipes(this);
+        new ModTierTwoRecipes().addRecipes(this);
+        new ModItemRecipes().addRecipes(this);
+        new ModWeaponTierTwoRecipes().addRecipes(this);
+        new ModTinkersConstructRecipes().addRecipes(this);
 
-        (this.recipes).sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**

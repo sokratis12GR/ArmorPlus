@@ -16,6 +16,10 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
 
+/**
+ * ArmorPlus created by sokratis12GR
+ * - TheDragonTeam
+ */
 public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     public int inventorySize;

@@ -31,12 +31,16 @@ public class ModOreDicts {
         registerOre("ingotLavaCrystal", lavaCrystal);
         registerWildOre("gemChargedLavaCrystal", lavaCrystal, 1);
         registerWildOre("ingotChargedLavaCrystal", lavaCrystal, 1);
+        registerWildOre("gemInfusedLavaCrystal", lavaCrystal, 1);
+        registerWildOre("ingotInfusedLavaCrystal", lavaCrystal, 1);
         //Blocks
         registerOre("oreLavaCrystal", blockLavaCrystal);
         registerOre("blockLavaCrystal", blockLavaCrystal);
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);
+        registerOre("blockLavaInfusedObsidian", lavaInfusedObsidian);
+        registerOre("blockInfusedObsidian", lavaInfusedObsidian);
         //Benches
         registerOre("apWorkbench", workbench);
         registerOre("workbenchTier1", workbench);

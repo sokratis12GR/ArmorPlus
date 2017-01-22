@@ -18,19 +18,17 @@ import static net.thedragonteam.armorplus.APConfig.getRD;
 import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
 import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
-import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModItemsRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
-        manager.addRecipe(new ShapedOreRecipe(getItemStack(lavaInfuser),
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.lavaInfuser, 1),
                 "LLL",
                 "G G",
                 "OOO",
                 'L', "gemLavaCrystal",
                 'G', "blockGlass",
-                'O', "blockObsidian"
+                'O', "obsidian"
         ));
         if (getRD() == EASY)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));

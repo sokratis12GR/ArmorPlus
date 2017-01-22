@@ -7,8 +7,7 @@ package net.thedragonteam.armorplus.tileentity;
 import net.thedragonteam.armorplus.tileentity.base.TileEntityBaseBench;
 
 /**
- * net.thedragonteam.armorplus.tileentity
- * ArmorPlus created by sokratis12GR on 6/19/2016 12:36 AM.
+ * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
 public class TileEntityWorkbench extends TileEntityBaseBench {

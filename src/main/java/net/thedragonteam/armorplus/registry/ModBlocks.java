@@ -4,8 +4,10 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.BlockBench;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
@@ -63,9 +65,12 @@ public class ModBlocks {
     public static BlockLavaInfuser lavaInfuserCharging;
     public static BlockLavaInfusedObsidian lavaInfusedObsidian;
 
+    private static BlockBase testingBlock;
+
     public static void init() {
+        testingBlock = new BlockBase(Material.WOOD, "test_block", 10, 10);
         lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
-        lavaInfuserCharging = new BlockLavaInfuser("lava_infuser_charging", true);
+        lavaInfuserCharging = new BlockLavaInfuser("lava_infuser_infusing", true);
         lavaInfusedObsidian = new BlockLavaInfusedObsidian();
         blockLavaCrystal = new BlockLavaCrystal();
         compressedObsidian = new CompressedObsidian();
@@ -86,6 +91,7 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        testingBlock.initModel();
         lavaInfuser.initModel();
         lavaInfuserCharging.initModel();
         lavaInfusedObsidian.initModel();

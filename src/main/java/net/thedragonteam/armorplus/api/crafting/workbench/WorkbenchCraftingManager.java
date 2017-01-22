@@ -64,7 +64,7 @@ public class WorkbenchCraftingManager {
         int k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
-            String[] astring = (String[]) ((String[]) recipeComponents[i++]);
+            String[] astring = (String[]) recipeComponents[i++];
 
             for (String s2 : astring) {
                 ++k;
@@ -103,7 +103,7 @@ public class WorkbenchCraftingManager {
             char c0 = s.charAt(l);
 
             if (map.containsKey(c0)) {
-                aitemstack[l] = ((ItemStack) map.get(c0)).copy();
+                aitemstack[l] = map.get(c0).copy();
             } else {
                 aitemstack[l] = ItemStack.EMPTY;
             }

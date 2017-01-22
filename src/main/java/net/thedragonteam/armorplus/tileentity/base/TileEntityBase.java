@@ -17,6 +17,10 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 import net.thedragonteam.armorplus.util.TeslaForgeUnitsWrapper;
 
+/**
+ * ArmorPlus created by sokratis12GR
+ * - TheDragonTeam
+ */
 public abstract class TileEntityBase extends TileEntity {
 
     private Object teslaWrapper;
