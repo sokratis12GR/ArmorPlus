@@ -8,10 +8,8 @@ import minetweaker.IUndoableAction;
 import minetweaker.MineTweakerAPI;
 import minetweaker.api.item.IIngredient;
 import minetweaker.api.item.IItemStack;
-import minetweaker.api.oredict.IOreDictEntry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
@@ -19,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessOreRecipe
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import static com.blamejared.mtlib.helpers.InputHelper.toObjects;
+import static com.blamejared.mtlib.helpers.InputHelper.toStack;
 import static net.thedragonteam.armorplus.compat.minetweaker.MTArmorPlusPlugin.toHighTechShapedObjects;
 
 @ZenClass("mods." + ArmorPlus.MODID + ".HighTechBench")
@@ -130,52 +130,5 @@ public class HighTechBench {
             return null;
         }
 
-    }
-
-    private static ItemStack toStack(IItemStack item) {
-        if (item == null) return null;
-        else {
-            Object internal = item.getInternal();
-            if (internal == null || !(internal instanceof ItemStack)) {
-                MineTweakerAPI.getLogger().logError("Not a valid item stack: " + item);
-            }
-            return (ItemStack) internal;
-        }
-    }
-
-    private static Object toObject(IIngredient ingredient) {
-        if (ingredient == null) return null;
-        else {
-            if (ingredient instanceof IOreDictEntry) {
-                return toString((IOreDictEntry) ingredient);
-            } else if (ingredient instanceof IItemStack) {
-                return toStack((IItemStack) ingredient);
-            } else return null;
-        }
-    }
-
-    private static Object[] toObjects(IIngredient[] list) {
-        if (list == null)
-            return null;
-        Object[] ingredients = new Object[list.length];
-        for (int x = 0; x < list.length; x++) {
-            ingredients[x] = toObject(list[x]);
-        }
-        return ingredients;
-    }
-
-    private static Object toActualObject(IIngredient ingredient) {
-        if (ingredient == null) return null;
-        else {
-            if (ingredient instanceof IOreDictEntry) {
-                return OreDictionary.getOres(toString((IOreDictEntry) ingredient));
-            } else if (ingredient instanceof IItemStack) {
-                return toStack((IItemStack) ingredient);
-            } else return null;
-        }
-    }
-
-    private static String toString(IOreDictEntry entry) {
-        return entry.getName();
     }
 }

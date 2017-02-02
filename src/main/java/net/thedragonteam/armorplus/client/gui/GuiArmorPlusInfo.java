@@ -39,7 +39,7 @@ public class GuiArmorPlusInfo extends GuiScreen {
         fontRendererObj.drawString(new TextComponentString("If you want to change to Easy Mode").getFormattedText(), guiX + 25, guiY + 60, 0x000000);
         fontRendererObj.drawString(new TextComponentString("you will need to change the config").getFormattedText(), guiX + 25, guiY + 70, 0x000000);
         fontRendererObj.drawString(new TextComponentString("From `I:Recipe:1` to `I:Recipe:0`.").getFormattedText(), guiX + 25, guiY + 80, 0x000000);
-        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + APConfig.recipes + "`.").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
+        fontRendererObj.drawString(new TextComponentString("Current Gamemode `I:Recipe:" + APConfig.gameMode + "`.").getFormattedText(), guiX + 25, guiY + 100, 0x000000);
         super.drawScreen(x, y, ticks);
     }
 

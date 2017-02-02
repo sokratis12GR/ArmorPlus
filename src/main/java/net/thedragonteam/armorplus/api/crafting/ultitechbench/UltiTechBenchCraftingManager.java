@@ -134,21 +134,21 @@ public class UltiTechBenchCraftingManager {
     }
 
     /**
-     * Adds an IRecipe to the list of crafting recipes.
+     * Adds an IRecipe to the list of crafting gameMode.
      */
     public void addRecipe(IRecipe recipe) {
         this.recipes.add(recipe);
     }
 
     /**
-     * Removes an IRecipe to the list of crafting recipes.
+     * Removes an IRecipe to the list of crafting gameMode.
      */
     public void removeRecipe(IRecipe recipe) {
         this.recipes.remove(recipe);
     }
 
     /**
-     * Retrieves an ItemStack that has multiple recipes for it.
+     * Retrieves an ItemStack that has multiple gameMode for it.
      */
     @Nullable
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {

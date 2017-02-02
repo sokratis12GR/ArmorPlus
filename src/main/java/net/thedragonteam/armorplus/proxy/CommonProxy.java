@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.entity.ARPEntities;
+import net.thedragonteam.armorplus.registry.ModEntities;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.util.ARPAchievements;
+import net.thedragonteam.armorplus.registry.ModAchievements;
 import net.thedragonteam.armorplus.util.Logger;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
@@ -34,7 +34,7 @@ public class CommonProxy {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
         Logger.init(new File(event.getModConfigurationDirectory().getPath()));
-        ARPEntities.init();
+        ModEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
         ModItems.init();
@@ -73,7 +73,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-        ARPAchievements.init();
+        ModAchievements.init();
         ModRecipes.init();
     }
 

@@ -17,7 +17,7 @@ public class ModGuardianRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Guardian Armor */
         if (APConfig.enableGuardianArmor) {
-            if (APConfig.recipes == 0 && enableGuardianArmorRecipes) {
+            if (APConfig.gameMode == 0 && enableGuardianArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
                         "GGGGG",
                         "G   G",
@@ -61,7 +61,7 @@ public class ModGuardianRecipes {
                         "G   G",
                         'G', ModItems.guardianScale);
             }
-            if (APConfig.recipes == 1 && enableGuardianArmorRecipes) {
+            if (APConfig.gameMode == 1 && enableGuardianArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.guardianHelmet, 1),
                         "GPPPG",
                         "GSLSG",

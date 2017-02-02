@@ -27,7 +27,7 @@ import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.hasTesla;
-import static net.thedragonteam.armorplus.armors.ARPArmorMaterial.*;
+import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.UltimateItems.*;
 
 public class ModItems {

@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
-import static net.thedragonteam.armorplus.APConfig.recipes;
+import static net.thedragonteam.armorplus.APConfig.gameMode;
 
 public class ModItemsRecipes {
 
@@ -26,9 +26,9 @@ public class ModItemsRecipes {
                 'R', "dustRedstone",
                 'G', "dustGlowstone",
                 'A', "gemLavaCrystal"));
-        if (APConfig.recipes == 0)
+        if (APConfig.gameMode == 0)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
-        if (APConfig.recipes == 1)
+        if (APConfig.gameMode == 1)
             manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.theGiftOfTheGods, 1),
                 "LOL",
@@ -164,7 +164,7 @@ public class ModItemsRecipes {
                 "OOO",
                 "OOO",
                 'O', "ingotElectrical"));
-        if (recipes == 0 && enableArrowRecipes) {
+        if (gameMode == 0 && enableArrowRecipes) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2),
                     "CCC",
                     "CAC",
@@ -190,7 +190,7 @@ public class ModItemsRecipes {
                     'L', "gemLavaCrystal",
                     'A', "itemArrow"));
         }
-        if (recipes == 1 && enableArrowRecipes) {
+        if (gameMode == 1 && enableArrowRecipes) {
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCoalArrow, 2),
                     "CCC",
                     "CAC",

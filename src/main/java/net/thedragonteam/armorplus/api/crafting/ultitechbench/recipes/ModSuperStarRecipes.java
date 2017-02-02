@@ -17,7 +17,7 @@ public class ModSuperStarRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Super Star Armor */
         if (APConfig.enableSuperStarArmor) {
-            if (APConfig.recipes == 0 && enableSuperStarArmorRecipes) {
+            if (APConfig.gameMode == 0 && enableSuperStarArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
                         "WWWWW",
                         "W   W",
@@ -61,7 +61,7 @@ public class ModSuperStarRecipes {
                         "W   W",
                         'W', ModItems.witherBone);
             }
-            if (APConfig.recipes == 1 && enableSuperStarArmorRecipes) {
+            if (APConfig.gameMode == 1 && enableSuperStarArmorRecipes) {
                 manager.addRecipe(new ItemStack(ModItems.superStarHelmet, 1),
                         "SWWWS",
                         "WN NW",

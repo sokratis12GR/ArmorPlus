@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -45,6 +46,7 @@ public class LavaCrystal extends Item implements IFuelHandler {
     }
 
     @Override
+    @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
         switch (stack.getItemDamage()) {
             case 1:

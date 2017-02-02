@@ -15,7 +15,7 @@ public class ModTinkersConstructRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
         /* Ardite Armor */
         if (APConfig.enableArditeArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableArditeArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableArditeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.arditeHelmet, 1),
                         "    ",
                         "    ",
@@ -53,7 +53,7 @@ public class ModTinkersConstructRecipes {
                         "    ",
                         'C', "ingotArdite"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableArditeArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableArditeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.arditeHelmet, 1),
                         "    ",
                         "    ",
@@ -100,7 +100,7 @@ public class ModTinkersConstructRecipes {
         }
         /* Cobalt Armor */
         if (APConfig.enableCobaltArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableCobaltArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableCobaltArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.cobaltHelmet, 1),
                         "    ",
                         "    ",
@@ -138,7 +138,7 @@ public class ModTinkersConstructRecipes {
                         "    ",
                         'C', "ingotCobalt"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableCobaltArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableCobaltArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.cobaltHelmet, 1),
                         "    ",
                         "    ",
@@ -185,7 +185,7 @@ public class ModTinkersConstructRecipes {
         }
         /* Knight Slime Armor */
         if (APConfig.enableKnightSlimeArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableKnightSlimeArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableKnightSlimeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.knightSlimeHelmet, 1),
                         "    ",
                         "    ",
@@ -223,7 +223,7 @@ public class ModTinkersConstructRecipes {
                         "    ",
                         'C', "ingotKnightslime"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableKnightSlimeArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableKnightSlimeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.knightSlimeHelmet, 1),
                         "    ",
                         "    ",
@@ -270,7 +270,7 @@ public class ModTinkersConstructRecipes {
         }
         /* Manyullyn Armor */
         if (APConfig.enableManyullynArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableManyullynArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableManyullynArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.manyullynHelmet, 1),
                         "    ",
                         "    ",
@@ -308,7 +308,7 @@ public class ModTinkersConstructRecipes {
                         "    ",
                         'C', "ingotManyullyn"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableManyullynArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableManyullynArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.manyullynHelmet, 1),
                         "    ",
                         "    ",
@@ -355,7 +355,7 @@ public class ModTinkersConstructRecipes {
         }
         /* Pig Iron Armor */
         if (APConfig.enablePigIronArmor) {
-            if (APConfig.recipes == 0 && APConfig.enablePigIronArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enablePigIronArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.pigIronHelmet, 1),
                         "    ",
                         "    ",
@@ -393,7 +393,7 @@ public class ModTinkersConstructRecipes {
                         "    ",
                         'C', "ingotPigiron"));
             }
-            if (APConfig.recipes == 1 && APConfig.enablePigIronArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enablePigIronArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.pigIronHelmet, 1),
                         "    ",
                         "    ",

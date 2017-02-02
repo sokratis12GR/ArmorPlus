@@ -1,8 +1,8 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2017.
  */
 
-package net.thedragonteam.armorplus.entity;
+package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -23,7 +23,7 @@ import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnE
  * ArmorPlus created by sokratis12GR on 8/21/2016.
  * - TheDragonTeam
  */
-public class ARPEntities {
+public class ModEntities {
 
     //Arrows ID 0 to 5
     private static final int COAL_ARROW = 0;

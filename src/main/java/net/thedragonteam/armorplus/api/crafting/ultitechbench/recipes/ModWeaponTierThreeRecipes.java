@@ -14,7 +14,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
-        if (enableSwordsRecipes && recipes == 0) {
+        if (enableSwordsRecipes && gameMode == 0) {
             if (enableGuardianSword) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianSword, 1),
                         "  G  ",
@@ -46,7 +46,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
         }
-        if (enableBattleAxesRecipes && recipes == 0) {
+        if (enableBattleAxesRecipes && gameMode == 0) {
             if (enableGuardianBattleAxe) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBattleAxe, 1),
                         " G G ",
@@ -78,7 +78,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.STICK));
             }
         }
-        if (enableBowsRecipes && recipes == 0) {
+        if (enableBowsRecipes && gameMode == 0) {
             if (enableGuardianBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
                         "  GGS",
@@ -134,7 +134,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', "string"));
             }
         }
-        if (enableSwordsRecipes && recipes == 1) {
+        if (enableSwordsRecipes && gameMode == 1) {
             if (enableGuardianSword) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianSword, 1),
                         "  G  ",
@@ -167,7 +167,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.DRAGON_BREATH));
             }
         }
-        if (enableBattleAxesRecipes && recipes == 1) {
+        if (enableBattleAxesRecipes && gameMode == 1) {
             if (enableGuardianBattleAxe) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBattleAxe, 1),
                         " G G ",
@@ -200,7 +200,7 @@ public class ModWeaponTierThreeRecipes {
                         'S', Items.DRAGON_BREATH));
             }
         }
-        if (enableBowsRecipes && recipes == 1) {
+        if (enableBowsRecipes && gameMode == 1) {
             if (enableGuardianBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.guardianBow, 1),
                         "  GGS",

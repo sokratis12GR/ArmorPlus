@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.ARPEntities;
+import net.thedragonteam.armorplus.registry.ModEntities;
 import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -43,6 +43,6 @@ public class ClientProxy extends CommonProxy {
     public void registerModels() {
         ModItems.initModels();
         ModBlocks.initModels();
-        ARPEntities.initModels();
+        ModEntities.initModels();
     }
 }

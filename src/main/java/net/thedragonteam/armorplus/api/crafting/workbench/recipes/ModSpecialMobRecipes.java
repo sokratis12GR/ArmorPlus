@@ -15,7 +15,7 @@ public class ModSpecialMobRecipes {
     public void addRecipes(WorkbenchCraftingManager manager) {
         /* Chicken Armor */
         if (APConfig.enableSlimeArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableChickenArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableChickenArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenHelmet, 1), "   ", "FFF", "F F", 'F', "feather"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenHelmet, 1), "FFF", "F F", "   ", 'F', "feather"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenChestplate, 1), "F F", "FFF", "FFF", 'F', "feather"));
@@ -23,7 +23,7 @@ public class ModSpecialMobRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenBoots, 1), "   ", "F F", "F F", 'F', "feather"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenBoots, 1), "F F", "F F", "   ", 'F', "feather"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableChickenArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableChickenArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenHelmet, 1), "   ", "FFF", "E E", 'F', "feather", 'E', "egg"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenHelmet, 1), "FFF", "E E", "   ", 'F', "feather", 'E', "egg"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chickenChestplate, 1), "E E", "FEF", "FFF", 'F', "feather", 'E', "egg"));
@@ -34,7 +34,7 @@ public class ModSpecialMobRecipes {
         }
         /* Slime Armor */
         if (APConfig.enableSlimeArmor) {
-            if (APConfig.recipes == 0 && APConfig.enableSlimeArmorRecipes) {
+            if (APConfig.gameMode == 0 && APConfig.enableSlimeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeHelmet, 1), "   ", "SSS", "S S", 'S', "slimeball"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeHelmet, 1), "SSS", "S S", "   ", 'S', "slimeball"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeChestplate, 1), "S S", "SSS", "SSS", 'S', "slimeball"));
@@ -42,7 +42,7 @@ public class ModSpecialMobRecipes {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeBoots, 1), "   ", "S S", "S S", 'S', "slimeball"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeBoots, 1), "S S", "S S", "   ", 'S', "slimeball"));
             }
-            if (APConfig.recipes == 1 && APConfig.enableSlimeArmorRecipes) {
+            if (APConfig.gameMode == 1 && APConfig.enableSlimeArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeHelmet, 1), "   ", "SSS", "S S", 'S', "blockSlime"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeHelmet, 1), "SSS", "S S", "   ", 'S', "blockSlime"));
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.slimeChestplate, 1), "S S", "SSS", "SSS", 'S', "blockSlime"));

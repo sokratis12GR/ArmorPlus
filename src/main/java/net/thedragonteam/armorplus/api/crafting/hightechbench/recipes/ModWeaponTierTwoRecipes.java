@@ -13,7 +13,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponTierTwoRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
-        if (enableSwordsRecipes && recipes == 0) {
+        if (enableSwordsRecipes && gameMode == 0) {
             if (enableEmeraldSword) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldSword, 1),
                         "   E",
@@ -105,7 +105,7 @@ public class ModWeaponTierTwoRecipes {
                         'S', "stickWood"));
             }
         }
-        if (enableBattleAxesRecipes && recipes == 0) {
+        if (enableBattleAxesRecipes && gameMode == 0) {
             if (enableEmeraldBattleAxe) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1),
                         "E  E",
@@ -134,7 +134,7 @@ public class ModWeaponTierTwoRecipes {
                         'S', "stickWood"));
             }
         }
-        if (enableBowsRecipes && recipes == 0) {
+        if (enableBowsRecipes && gameMode == 0) {
             if (enableEmeraldBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBow, 1),
                         " EES",
@@ -184,7 +184,7 @@ public class ModWeaponTierTwoRecipes {
                         'S', "string"));
             }
         }
-        if (enableSwordsRecipes && recipes == 1) {
+        if (enableSwordsRecipes && gameMode == 1) {
             if (enableEmeraldSword) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldSword, 1),
                         "   E",
@@ -276,7 +276,7 @@ public class ModWeaponTierTwoRecipes {
                         'S', "stickWood"));
             }
         }
-        if (enableBattleAxesRecipes && recipes == 1) {
+        if (enableBattleAxesRecipes && gameMode == 1) {
             if (enableEmeraldBattleAxe) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBattleAxe, 1),
                         "E  E",
@@ -305,7 +305,7 @@ public class ModWeaponTierTwoRecipes {
                         'S', "stickWood"));
             }
         }
-        if (enableBowsRecipes && recipes == 1) {
+        if (enableBowsRecipes && gameMode == 1) {
             if (enableEmeraldBow) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.emeraldBow, 1),
                         " EES",

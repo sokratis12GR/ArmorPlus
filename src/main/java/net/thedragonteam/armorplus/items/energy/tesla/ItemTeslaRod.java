@@ -45,7 +45,7 @@ public class ItemTeslaRod extends BaseItem {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak))
-            tooltip.add(1, Loader.isModLoaded("tesla") ? "Tesla is installed all the recipes should work" : "Tesla isn't installed none of the recipes will work");
+            tooltip.add(1, Loader.isModLoaded("tesla") ? "Tesla is installed all the gameMode should work" : "Tesla isn't installed none of the gameMode will work");
         else
             tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }

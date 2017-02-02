@@ -15,6 +15,8 @@ import net.thedragonteam.armorplus.items.base.BaseSpecialSword;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 
@@ -75,6 +77,8 @@ public enum Swords implements IStringSerializable {
         this.effect = effectIn;
     }
 
+    @Override
+    @Nonnull
     public String getName() {
         return this.name;
     }

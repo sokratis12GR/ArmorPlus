@@ -14,7 +14,7 @@ public class ModEnergyRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
         /* Steel Armor */
         if (APConfig.enableSteelArmor) {
-            if (APConfig.recipes == 0) {
+            if (APConfig.gameMode == 0) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
                         "MMMM",
                         "M  M",
@@ -58,7 +58,7 @@ public class ModEnergyRecipes {
                         "    ",
                         'M', "ingotSteel"));
             }
-            if (APConfig.recipes == 1) {
+            if (APConfig.gameMode == 1) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.steelHelmet, 1),
                         "MMMM",
                         "M  M",
@@ -105,7 +105,7 @@ public class ModEnergyRecipes {
         }
         /* Electrical Armor */
         if (APConfig.enableElectricalArmor) {
-            if (APConfig.recipes == 0) {
+            if (APConfig.gameMode == 0) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
                         "    ",
                         "    ",
@@ -149,7 +149,7 @@ public class ModEnergyRecipes {
                         "    ",
                         'E', "ingotElectrical"));
             }
-            if (APConfig.recipes == 1) {
+            if (APConfig.gameMode == 1) {
                 manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.electricalHelmet, 1),
                         "    ",
                         "    ",

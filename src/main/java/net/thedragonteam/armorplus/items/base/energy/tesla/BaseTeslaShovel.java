@@ -17,7 +17,7 @@ import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseShovel;
-import net.thedragonteam.armorplus.util.ARPTeslaUtils;
+import net.thedragonteam.armorplus.util.APTeslaUtils;
 
 import java.util.List;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class BaseTeslaShovel extends BaseShovel {
     @Optional.Method(modid = "tesla")
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
-        ItemStack powered = ARPTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -80,7 +80,7 @@ public class BaseTeslaShovel extends BaseShovel {
     @Optional.Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) ARPTeslaUtils.getStoredPower(stack) / (double) ARPTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
     }
 
     @Override

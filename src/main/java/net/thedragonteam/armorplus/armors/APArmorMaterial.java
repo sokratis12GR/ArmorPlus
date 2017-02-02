@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.armors.base.BaseArmor;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-public enum ARPArmorMaterial {
+public enum APArmorMaterial {
     COAL(BaseArmor.coalArmor, "coal", Items.COAL, Blocks.COAL_BLOCK, TextFormatting.getValueByName(APConfig.coalArmorItemNameColor)),
     EMERALD(BaseArmor.emeraldArmor, "emerald", Items.EMERALD, Blocks.EMERALD_BLOCK, TextFormatting.getValueByName(APConfig.emeraldArmorItemNameColor)),
     LAPIS(BaseArmor.lapisArmor, "lapis", new ItemStack(Items.DYE, 1, 4), Blocks.LAPIS_BLOCK, TextFormatting.getValueByName(APConfig.lapisArmorItemNameColor)),
@@ -44,7 +44,7 @@ public enum ARPArmorMaterial {
 
     private final TextFormatting formatting;
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
         this.itemEasy = repairEasyIn;
@@ -52,27 +52,27 @@ public enum ARPArmorMaterial {
         this.formatting = textFormattingIn;
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn) {
         this(armorMaterialIn, nameIn, repairBoth, repairBoth, textFormattingIn);
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, ItemStack repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
         this(armorMaterial, name, repairEasy.getItem(), repairExpert.getItem(), textFormatting);
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, ItemStack repairEasy, Block repairExpert, TextFormatting textFormatting) {
         this(armorMaterial, name, repairEasy.getItem(), Item.getItemFromBlock(repairExpert), textFormatting);
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Item repairEasy, ItemStack repairExpert, TextFormatting textFormatting) {
         this(armorMaterial, name, repairEasy, repairExpert.getItem(), textFormatting);
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Item repairEasy, Block repairExpert, TextFormatting textFormatting) {
         this(armorMaterial, name, repairEasy, Item.getItemFromBlock(repairExpert), textFormatting);
     }
 
-    ARPArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
+    APArmorMaterial(ItemArmor.ArmorMaterial armorMaterial, String name, Block repairEasy, Block repairExpert, TextFormatting textFormatting) {
         this(armorMaterial, name, Item.getItemFromBlock(repairEasy), Item.getItemFromBlock(repairExpert), textFormatting);
     }
 
