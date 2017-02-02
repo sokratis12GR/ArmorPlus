@@ -78,13 +78,13 @@ public class ModBlocks {
         electricalBlock = new BaseMetalBlock(ELECTRICAL);
         lavaCactus = new LavaCactus();
         lavaNetherBrick = new LavaNetherBrick();
-        for (int s = 0; s <= 6; s++) {
+        for (int s = 0; s < stoneBricks.length && s < stoneBrickTowers.length && s < stoneBrickCorners.length && s < stonebrickWalls.length; s++) {
             stoneBricks[s] = new BlockStoneBrick(stoneBrickTypes[s]);
             stoneBrickTowers[s] = new BlockStoneBrickTower(stoneBrickTypes[s]);
             stoneBrickCorners[s] = new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState());
             stonebrickWalls[s] = new BlockStonebrickWall(stoneBricks[s]);
         }
-        for (int b = 0; b <= 4; b++) {
+        for (int b = 0; b < benches.length; b++) {
             benches[b] = new BlockBench(benchTypes[b]);
         }
     }
@@ -101,14 +101,14 @@ public class ModBlocks {
         electricalBlock.initModel();
         lavaCactus.initModel();
         lavaNetherBrick.initModel();
-        for (int i = 0; i <= 6; i++) {
+        for (int i = 0; i < stoneBricks.length && i < stoneBrickTowers.length && i < stoneBrickCorners.length && i < stonebrickWalls.length; i++) {
             stoneBricks[i].initModel();
             stoneBrickTowers[i].initModel();
             stoneBrickCorners[i].initModel();
             stonebrickWalls[i].initModel();
         }
-        for (int b = 0; b <= 4; b++) {
-            benches[b].initModel();
+        for (BlockBench benche : benches) {
+            benche.initModel();
         }
     }
 }

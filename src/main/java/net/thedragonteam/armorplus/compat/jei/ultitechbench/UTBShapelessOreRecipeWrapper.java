@@ -14,6 +14,7 @@ import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapelessOreRecipe;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class UTBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements IRecipeWrapper {
@@ -34,7 +35,7 @@ public class UTBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements 
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
         IStackHelper stackHelper = jeiHelpers.getStackHelper();
         ItemStack recipeOutput = recipe.getRecipeOutput();
 
@@ -42,7 +43,7 @@ public class UTBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements 
             List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(recipe.getInput());
             ingredients.setInputLists(ItemStack.class, inputs);
 
-            if (recipeOutput != null) {
+            if (!recipeOutput.isEmpty()) {
                 ingredients.setOutput(ItemStack.class, recipeOutput);
             }
         } catch (RuntimeException e) {

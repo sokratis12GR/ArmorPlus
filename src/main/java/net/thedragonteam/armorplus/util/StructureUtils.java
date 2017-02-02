@@ -79,11 +79,7 @@ public class StructureUtils {
     }
 
     public static void placeFloor(World worldIn, BlockPos corner, IBlockState block, int posX, int posY, int posZ, int maxPosX, int maxPosZ, boolean isPositive) {
-        if (isPositive) {
-            placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, POSITIVE_XZ);
-        } else {
-            placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, NEGATIVE_XZ);
-        }
+        placeFloor(worldIn, corner, block, posX, posY, posZ, maxPosX, maxPosZ, isPositive ? POSITIVE_XZ : NEGATIVE_XZ);
     }
 
     /**

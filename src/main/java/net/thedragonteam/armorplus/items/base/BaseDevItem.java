@@ -14,6 +14,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.enums.DevItems;
 
+import javax.annotation.Nonnull;
+
 public class BaseDevItem extends BaseItem implements IItemHelper {
 
     private DevItems devItems;
@@ -28,21 +30,21 @@ public class BaseDevItem extends BaseItem implements IItemHelper {
     }
 
     @Override
-    public Item setCreativeTab(CreativeTabs tab) {
-        return null;
+    @Nonnull
+    public Item setCreativeTab(@Nonnull CreativeTabs tab) {
+        return this;
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null) {
-            if (devItems.hasSubTypes())
-                ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-        }
+        if (devItems.hasSubTypes())
+            ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
+
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (devItems.hasSubTypes()) {
             subItems.add(new ItemStack(itemIn, 1, 0));
             subItems.add(new ItemStack(itemIn, 1, 1));

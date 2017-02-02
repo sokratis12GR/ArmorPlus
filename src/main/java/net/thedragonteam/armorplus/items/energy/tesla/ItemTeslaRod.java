@@ -16,9 +16,10 @@ import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+import static net.minecraft.util.text.translation.I18n.*;
 
 /**
  * net.thedragonteam.armorplus.items.materials
@@ -32,8 +33,9 @@ public class ItemTeslaRod extends BaseItem {
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return (TextFormatting.DARK_AQUA + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+    @Nonnull
+    public String getItemStackDisplayName(@Nonnull ItemStack stack) {
+        return translateToLocalFormatted(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
     }
 
     @Override

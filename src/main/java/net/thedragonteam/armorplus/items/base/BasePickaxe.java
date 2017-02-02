@@ -21,16 +21,15 @@ public class BasePickaxe extends ItemPickaxe implements IItemHelper {
     public BasePickaxe(ToolMaterial material, String name) {
         super(material);
         this.itemName = name;
-        setUnlocalizedName(Utils.setName(name));
-        setRegistryName(name);
+        this.setUnlocalizedName(Utils.setName(name));
+        this.setRegistryName(name);
         GameRegistry.register(this);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

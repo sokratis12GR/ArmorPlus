@@ -8,9 +8,11 @@ import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.util.ErrorUtil;
 import mezz.jei.util.Log;
-import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedRecipes;
+
+import javax.annotation.Nonnull;
+import java.util.Arrays;
 
 /**
  * net.thedragonteam.armorplus.compat.jei.benches
@@ -20,33 +22,26 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedRecipes;
 public class HTBShapedRecipeHandler implements IRecipeHandler<ShapedRecipes> {
 
     @Override
+    @Nonnull
     public Class<ShapedRecipes> getRecipeClass() {
         return ShapedRecipes.class;
     }
 
     @Override
-    public String getRecipeCategoryUid(ShapedRecipes recipe) {
+    @Nonnull
+    public String getRecipeCategoryUid(@Nonnull ShapedRecipes recipe) {
         return Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH;
     }
 
     @Override
-    public IRecipeWrapper getRecipeWrapper(ShapedRecipes recipe) {
+    @Nonnull
+    public IRecipeWrapper getRecipeWrapper(@Nonnull ShapedRecipes recipe) {
         return new HTBShapedRecipeWrapper(recipe);
     }
 
     @Override
-    public boolean isRecipeValid(ShapedRecipes recipe) {
-        if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
-            Log.error("Recipe has no outputs. {}", recipeInfo);
-            return false;
-        }
-        int inputCount = 0;
-        for (ItemStack input : recipe.input) {
-            if (input != null) {
-                inputCount++;
-            }
-        }
+    public boolean isRecipeValid(@Nonnull ShapedRecipes recipe) {
+        int inputCount = (int) Arrays.stream(recipe.input).filter(input -> !input.isEmpty()).count();
         if (inputCount > 16) {
             String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);

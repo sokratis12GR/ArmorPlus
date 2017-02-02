@@ -14,7 +14,9 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.stream.IntStream;
 
 /**
  * ArmorPlus created by sokratis12GR
@@ -40,20 +42,12 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        for (int i = 0; i <= itemHandler.getSlots(); i++) {
-            if (itemHandler.getStackInSlot(slot) != ItemStack.EMPTY)
-                return true;
-        }
-        return false;
+        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
-        for (int i = 0; i <= itemHandler.getSlots(); i++) {
-            if (itemHandler.getStackInSlot(slot) != ItemStack.EMPTY)
-                return true;
-        }
-        return false;
+        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     public String getCustomName() {
@@ -78,6 +72,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     }
 
     @Override
+    @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         NBTTagList list = new NBTTagList();
         for (int i = 0; i < this.inventorySize; ++i) {
@@ -115,6 +110,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket
 
     @Override
+    @Nonnull
     public NBTTagCompound getUpdateTag() {
         return super.getUpdateTag();
     }

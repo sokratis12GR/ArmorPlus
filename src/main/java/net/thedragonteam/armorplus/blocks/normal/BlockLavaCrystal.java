@@ -21,9 +21,11 @@ import net.minecraft.world.World;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import java.util.ArrayList;
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.blocks
@@ -32,30 +34,31 @@ import java.util.Random;
  */
 public class BlockLavaCrystal extends BlockBase {
 
-    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockLavaCrystal() {
         super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }
 
     @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        List<ItemStack> ret = new ArrayList<>();
+    @Nonnull
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune) {
+        List<ItemStack> ret;
         Item item = ModItems.lavaCrystal;
         Random rand = (world instanceof World) ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);
-        for (int i = 0; i < count; i++)
-            ret.add(new ItemStack(item, 1, damageDropped(state)));
+        ret = IntStream.range(0, count).mapToObj(i -> new ItemStack(item, 1, damageDropped(state))).collect(Collectors.toList());
         return ret;
     }
 
     @Override
-    public int quantityDropped(IBlockState blockstate, int fortune, Random random) {
+    public int quantityDropped(IBlockState blockstate, int fortune, @Nonnull Random random) {
         return 1 + random.nextInt(1 + fortune);
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+    @Nonnull
+    public IBlockState getStateForPlacement(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand) {
         IBlockState iblockstate = super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
         iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing());
         return iblockstate;
@@ -67,6 +70,8 @@ public class BlockLavaCrystal extends BlockBase {
     }
 
     @Override
+    @Nonnull
+    @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -74,11 +79,14 @@ public class BlockLavaCrystal extends BlockBase {
     }
 
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
+    @Nonnull
+    @SuppressWarnings("deprecation")
+    public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
@@ -87,6 +95,8 @@ public class BlockLavaCrystal extends BlockBase {
      * Get the MapColor for this Block and the given BlockState
      */
     @Override
+    @Nonnull
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state) {
         return MapColor.RED;
     }

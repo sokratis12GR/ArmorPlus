@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderLapisArrow extends RenderArrow<EntityLapisArrow> {
 
@@ -22,7 +24,7 @@ public class RenderLapisArrow extends RenderArrow<EntityLapisArrow> {
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityLapisArrow entity) {
+    public ResourceLocation getEntityTexture(@Nonnull EntityLapisArrow entity) {
         return res;
     }
 

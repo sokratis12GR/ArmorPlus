@@ -12,6 +12,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
@@ -46,6 +48,7 @@ public class EntityCoalArrow extends EntityArrow {
     }
 
     @Override
+    @Nonnull
     public ItemStack getArrowStack() {
         return new ItemStack(ModItems.itemCoalArrow);
     }

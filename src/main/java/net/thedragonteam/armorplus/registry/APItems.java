@@ -5,8 +5,10 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class APItems {
 
@@ -105,6 +107,13 @@ public class APItems {
     public static Item enderDragonSword;
     public static Item enderDragonBattleAxe;
     public static Item enderDragonBow;
+
+    public static ItemStack material;
+    public static ItemStack chainmail;
+    public static ItemStack guardianScale;
+    public static ItemStack witherBone;
+    public static ItemStack enderDragonScale;
+    public static ItemStack theUltimateMaterial;
 
     public APItems() {
     }
@@ -207,5 +216,11 @@ public class APItems {
         enderDragonSword = sword[8];
         enderDragonBattleAxe = battleAxe[8];
         enderDragonBow = bow[8];
+
+        chainmail = getItemStack(materials, 0);
+        guardianScale = getItemStack(materials, 1);
+        witherBone = getItemStack(materials, 2);
+        enderDragonScale = getItemStack(materials, 3);
+        theUltimateMaterial = getItemStack(materials, 4);
     }
 }

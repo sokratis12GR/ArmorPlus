@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.championbench.recipes.TestRecipes;
 
 import java.util.List;
 import java.util.Map;
@@ -33,8 +32,7 @@ public class ChampionBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private ChampionBenchCraftingManager() {
-        (new TestRecipes()).addRecipes(this);
-        (this.recipes).sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -57,7 +55,7 @@ public class ChampionBenchCraftingManager {
         int k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
-            String[] astring = (String[]) ((String[]) recipeComponents[i++]);
+            String[] astring = (String[]) recipeComponents[i++];
 
             for (String s2 : astring) {
                 ++k;
@@ -96,7 +94,7 @@ public class ChampionBenchCraftingManager {
             char c0 = s.charAt(l);
 
             if (map.containsKey(c0)) {
-                aitemstack[l] = ((ItemStack) map.get(c0)).copy();
+                aitemstack[l] = map.get(c0).copy();
             } else {
                 aitemstack[l] = ItemStack.EMPTY;
             }
@@ -148,13 +146,7 @@ public class ChampionBenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
-
-        return ItemStack.EMPTY;
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

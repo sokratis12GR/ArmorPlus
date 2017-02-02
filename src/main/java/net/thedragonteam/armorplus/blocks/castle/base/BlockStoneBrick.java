@@ -15,6 +15,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
+import javax.annotation.Nonnull;
+
 public class BlockStoneBrick extends BlockBase {
 
     public MapColor color;
@@ -23,12 +25,12 @@ public class BlockStoneBrick extends BlockBase {
 
     public BlockStoneBrick(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, ToolType.PICKAXE, 0);
-        name = stoneBricks.getName() + "_stone_brick";
+        this.name = stoneBricks.getName() + "_stone_brick";
         this.color = stoneBricks.getMapColor();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @SideOnly(Side.CLIENT)
@@ -39,7 +41,10 @@ public class BlockStoneBrick extends BlockBase {
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @Override
+    @Nonnull
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state) {
-        return color;
+        return this.color;
     }
 }

@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -39,13 +40,12 @@ public class BlockContainerBase extends Block implements ITileEntityProvider {
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return tileEntity;
+    public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
+        return this.tileEntity;
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

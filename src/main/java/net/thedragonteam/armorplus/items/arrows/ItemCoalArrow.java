@@ -20,13 +20,14 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 import net.thedragonteam.armorplus.util.ArrowUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class ItemCoalArrow extends ItemArrow {
 
     public ItemCoalArrow() {
-        setRegistryName("coal_arrow");
-        setUnlocalizedName(ArmorPlus.MODID + "." + "coal_arrow");
+        this.setRegistryName("coal_arrow");
+        this.setUnlocalizedName(ArmorPlus.MODID + "." + "coal_arrow");
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -37,7 +38,8 @@ public class ItemCoalArrow extends ItemArrow {
     }
 
     @Override
-    public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
+    @Nonnull
+    public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemStack itemstack, EntityLivingBase shooter) {
         return new EntityCoalArrow(world, shooter);
     }
 

@@ -19,6 +19,7 @@ import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseShovel;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.Set;
 
 import static net.thedragonteam.armorplus.APConfig.teslaWeaponItemNameColor;
@@ -34,17 +35,17 @@ public class BaseTeslaShovel extends BaseShovel {
     public BaseTeslaShovel(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
-        formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
+        this.formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
     }
 
     public BaseTeslaShovel(ToolMaterial material, String name, int maxCapacity, int input, int output) {
         this(material, name, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -52,7 +53,7 @@ public class BaseTeslaShovel extends BaseShovel {
 
     @Method(modid = "tesla")
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
@@ -60,6 +61,7 @@ public class BaseTeslaShovel extends BaseShovel {
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }

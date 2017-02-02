@@ -27,7 +27,7 @@ public class WorkbenchNewCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private WorkbenchNewCraftingManager() {
-        (this.recipes).sort((pCompare1, pCompare2) -> ((pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> ((pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -58,27 +58,16 @@ public class WorkbenchNewCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCraftingNew craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
-
-        return ItemStack.EMPTY;
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCraftingNew craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getRemainingItems(craftMatrix);
-            }
-        }
+        for (IRecipe irecipe : this.recipes)
+            if (irecipe.matches(craftMatrix, worldIn)) return irecipe.getRemainingItems(craftMatrix);
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
-            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
-        }
+        for (int i = 0; i < nonnulllist.size(); ++i) nonnulllist.set(i, craftMatrix.getStackInSlot(i));
 
         return nonnulllist;
     }

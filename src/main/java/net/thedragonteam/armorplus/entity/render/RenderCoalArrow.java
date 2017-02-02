@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderCoalArrow extends RenderArrow<EntityCoalArrow> {
 
@@ -22,7 +24,7 @@ public class RenderCoalArrow extends RenderArrow<EntityCoalArrow> {
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityCoalArrow entity) {
+    public ResourceLocation getEntityTexture(@Nonnull EntityCoalArrow entity) {
         return res;
     }
 

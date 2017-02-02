@@ -9,7 +9,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
+
+import javax.annotation.Nonnull;
 
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
@@ -20,7 +23,7 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.*;
 
-public enum APArmorMaterial {
+public enum APArmorMaterial implements IStringSerializable {
     COAL(coalArmor, "coal", Items.COAL, COAL_BLOCK, getValueByName(coalArmorItemNameColor)),
     LAPIS(lapisArmor, "lapis", getItemStack(Items.DYE, 4), LAPIS_BLOCK, getValueByName(lapisArmorItemNameColor)),
     REDSTONE(redstoneArmor, "redstone", Items.REDSTONE, REDSTONE_BLOCK, getValueByName(redstoneArmorItemNameColor)),
@@ -36,7 +39,7 @@ public enum APArmorMaterial {
     KNIGHT_SLIME(knightSlimeArmor, "knight_slime", getTICItemStack("ingots", 3), getTICItemStack("metal", 3), getValueByName(knightSlimeArmorItemNameColor)),
     PIG_IRON(pigIronArmor, "pig_iron", getTICItemStack("ingots", 4), getTICItemStack("metal", 4), getValueByName(pigIronArmorItemNameColor)),
     SLIME(slimeArmor, "slime", Items.SLIME_BALL, SLIME_BLOCK, getValueByName(slimeArmorItemNameColor)),
-    CHICKEN(chickenArmor, "chicken", Items.FEATHER, getValueByName(chickenArmorItemNameColor));
+    CHICKEN(chickenArmor, "chicken", Items.FEATHER, getValueByName(chickenArmorItemNameColor)),;
 
     private final ArmorMaterial armorMaterial;
 
@@ -81,22 +84,24 @@ public enum APArmorMaterial {
     }
 
     public ArmorMaterial getArmorMaterial() {
-        return armorMaterial;
+        return this.armorMaterial;
     }
 
+    @Nonnull
+    @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Item getItemEasy() {
-        return itemEasy;
+        return this.itemEasy;
     }
 
     public Item getItemExpert() {
-        return itemExpert;
+        return this.itemExpert;
     }
 
     public TextFormatting getFormatting() {
-        return formatting;
+        return this.formatting;
     }
 }

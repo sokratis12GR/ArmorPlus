@@ -9,6 +9,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 
+import javax.annotation.Nonnull;
+
 public class BlockLavaInfusedObsidian extends BlockBase {
 
     public BlockLavaInfusedObsidian() {
@@ -19,6 +21,8 @@ public class BlockLavaInfusedObsidian extends BlockBase {
      * Get the MapColor for this Block and the given BlockState
      */
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public MapColor getMapColor(IBlockState state) {
         return MapColor.RED;
     }

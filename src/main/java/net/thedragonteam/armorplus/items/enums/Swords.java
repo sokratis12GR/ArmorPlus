@@ -13,6 +13,8 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
+import javax.annotation.Nonnull;
+
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
@@ -86,6 +88,8 @@ public enum Swords implements IStringSerializable {
         return this.name;
     }
 
+    @Override
+    @Nonnull
     public String getName() {
         return this.name;
     }

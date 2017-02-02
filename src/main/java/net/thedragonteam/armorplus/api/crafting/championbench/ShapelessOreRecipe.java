@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nonnull;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,7 @@ public class ShapelessOreRecipe implements IRecipe {
     }
 
     @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return output;
     }
@@ -85,7 +87,8 @@ public class ShapelessOreRecipe implements IRecipe {
      * Returns an Item that is the result of this recipe
      */
     @Override
-    public ItemStack getCraftingResult(InventoryCrafting var1) {
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         return output.copy();
     }
 
@@ -94,7 +97,7 @@ public class ShapelessOreRecipe implements IRecipe {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean matches(InventoryCrafting var1, World world) {
+    public boolean matches(@Nonnull InventoryCrafting var1, @Nonnull World world) {
         NonNullList<Object> required = NonNullList.create();
         required.addAll(input);
 
@@ -145,7 +148,7 @@ public class ShapelessOreRecipe implements IRecipe {
     }
 
     @Override
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) //getRecipeLeftovers
+    @Nonnull  public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) //getRecipeLeftovers
     {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }

@@ -10,6 +10,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
+import javax.annotation.Nonnull;
+
 public class SlotLavaInfuserOutput extends Slot {
     /**
      * The player that is using the GUI where this slot resides.
@@ -25,6 +27,7 @@ public class SlotLavaInfuserOutput extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
      */
+    @Override
     public boolean isItemValid(ItemStack stack) {
         return false;
     }
@@ -33,6 +36,8 @@ public class SlotLavaInfuserOutput extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int amount) {
         if (this.getHasStack()) {
             this.removeCount += Math.min(amount, this.getStack().getCount());
@@ -41,7 +46,9 @@ public class SlotLavaInfuserOutput extends Slot {
         return super.decrStackSize(amount);
     }
 
-    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
+    @Override
+    @Nonnull
+    public ItemStack onTake(EntityPlayer thePlayer, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         super.onTake(thePlayer, stack);
         return stack;
@@ -51,6 +58,7 @@ public class SlotLavaInfuserOutput extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
+    @Override
     protected void onCrafting(ItemStack stack, int amount) {
         this.removeCount += amount;
         this.onCrafting(stack);
@@ -59,6 +67,7 @@ public class SlotLavaInfuserOutput extends Slot {
     /**
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood.
      */
+    @Override
     protected void onCrafting(ItemStack stack) {
         stack.onCrafting(this.player.world, this.player, this.removeCount);
 

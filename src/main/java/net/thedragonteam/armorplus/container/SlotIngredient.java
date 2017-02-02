@@ -21,7 +21,7 @@ public class SlotIngredient extends SlotItemHandler {
     }
 
     @Override
-    public boolean isItemValid(ItemStack stack) {
+    public boolean isItemValid(@Nonnull ItemStack stack) {
         return super.isItemValid(stack) || stack == getItemStack(lavaCrystal) || stack == getItemStack(lavaCrystal, 1) || stack == getItemStack(Items.LAVA_BUCKET);
     }
 

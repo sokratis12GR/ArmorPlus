@@ -20,13 +20,14 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow;
 import net.thedragonteam.armorplus.util.ArrowUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class ItemLapisArrow extends ItemArrow {
 
     public ItemLapisArrow() {
-        setRegistryName("lapis_arrow");
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lapis_arrow");
+        this.setRegistryName("lapis_arrow");
+        this.setUnlocalizedName(ArmorPlus.MODID + "." + "lapis_arrow");
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -37,7 +38,8 @@ public class ItemLapisArrow extends ItemArrow {
     }
 
     @Override
-    public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
+    @Nonnull
+    public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemStack itemstack, EntityLivingBase shooter) {
         return new EntityLapisArrow(world, shooter);
     }
 

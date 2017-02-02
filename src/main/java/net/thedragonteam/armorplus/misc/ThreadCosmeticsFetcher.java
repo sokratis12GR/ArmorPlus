@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.misc;
 
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Properties;
@@ -28,7 +29,7 @@ public class ThreadCosmeticsFetcher extends Thread {
             CosmeticsRenderInit.parse(specialProperties);
 
             LogHelper.info("Fetching cosmetics for people done!");
-        } catch (Exception e) {
+        } catch (IOException e) {
             LogHelper.error(ThreadCosmeticsFetcher.class + " Failed", e);
         }
     }

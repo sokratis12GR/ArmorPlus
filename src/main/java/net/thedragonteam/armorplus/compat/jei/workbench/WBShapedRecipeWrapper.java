@@ -12,6 +12,7 @@ import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedRecipes;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,7 +35,7 @@ class WBShapedRecipeWrapper extends BlankRecipeWrapper implements IShapedCraftin
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
         List<ItemStack> recipeItems = Arrays.asList(recipe.input);
         ItemStack recipeOutput = recipe.getRecipeOutput();
         try {

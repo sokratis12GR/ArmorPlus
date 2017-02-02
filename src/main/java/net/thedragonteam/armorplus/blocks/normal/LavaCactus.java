@@ -28,7 +28,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
+
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 /**
  * net.thedragonteam.armorplus.blocks
@@ -36,11 +39,12 @@ import java.util.Random;
  * - TheDragonTeam
  */
 public class LavaCactus extends BlockCactus {
+
     public LavaCactus() {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
         this.setTickRandomly(true);
         setHardness(0.4F);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_cactus");
+        setUnlocalizedName(setName("lava_cactus"));
         setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);
@@ -53,13 +57,15 @@ public class LavaCactus extends BlockCactus {
     }
 
     @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+    public void updateTick(World worldIn, BlockPos pos, @Nonnull IBlockState state, Random rand) {
         BlockPos blockpos = pos.up();
 
         if (worldIn.isAirBlock(blockpos)) {
             int i;
 
-            for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; ++i) {
+            i = 1;
+            while (worldIn.getBlockState(pos.down(i)).getBlock() == this) {
+                ++i;
             }
 
             if (i < 3) {
@@ -87,7 +93,8 @@ public class LavaCactus extends BlockCactus {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
+    @Nonnull
+    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, @Nonnull BlockPos pos) {
         return CACTUS_COLLISION_AABB.offset(pos);
     }
 
@@ -104,12 +111,12 @@ public class LavaCactus extends BlockCactus {
         return false;
     }
 
-    public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+    public boolean canPlaceBlockAt(World worldIn, @Nonnull BlockPos pos) {
         return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos blockPos) {
+    public void neighborChanged(IBlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, Block blockIn, BlockPos blockPos) {
         if (!this.canBlockStay(worldIn, pos)) worldIn.destroyBlock(pos, true);
     }
 
@@ -138,12 +145,14 @@ public class LavaCactus extends BlockCactus {
      * Convert the given metadata into a BlockState for this Block
      */
     @Override
+    @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(AGE, meta);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
+    @Nonnull
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
@@ -157,16 +166,19 @@ public class LavaCactus extends BlockCactus {
     }
 
     @Override
-    public net.minecraftforge.common.EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+    @Nonnull
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
         return EnumPlantType.Nether;
     }
 
     @Override
-    public IBlockState getPlant(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+    @Nonnull
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
         return getDefaultState();
     }
 
     @Override
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, AGE);
     }
@@ -174,6 +186,8 @@ public class LavaCactus extends BlockCactus {
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public MapColor getMapColor(IBlockState state) {
         return MapColor.NETHERRACK;
     }

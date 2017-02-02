@@ -10,25 +10,30 @@ import mezz.jei.util.ErrorUtil;
 import mezz.jei.util.Log;
 import net.thedragonteam.armorplus.api.Constants;
 
+import javax.annotation.Nonnull;
+
 public class InfusingRecipeHandler implements IRecipeHandler<InfusingRecipe> {
 
     @Override
+    @Nonnull
     public Class<InfusingRecipe> getRecipeClass() {
         return InfusingRecipe.class;
     }
 
     @Override
-    public String getRecipeCategoryUid(InfusingRecipe recipe) {
+    @Nonnull
+    public String getRecipeCategoryUid(@Nonnull InfusingRecipe recipe) {
         return Constants.Compat.JEI_CATEGORY_LAVA_INFUSER_INFUSING;
     }
 
     @Override
-    public IRecipeWrapper getRecipeWrapper(InfusingRecipe recipe) {
+    @Nonnull
+    public IRecipeWrapper getRecipeWrapper(@Nonnull InfusingRecipe recipe) {
         return recipe;
     }
 
     @Override
-    public boolean isRecipeValid(InfusingRecipe recipe) {
+    public boolean isRecipeValid(@Nonnull InfusingRecipe recipe) {
         if (recipe.getInputs().isEmpty()) {
             String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has no inputs. {}", recipeInfo);

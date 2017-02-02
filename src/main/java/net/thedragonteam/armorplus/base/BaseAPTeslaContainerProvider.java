@@ -13,6 +13,8 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.common.Optional.Method;
 
+import javax.annotation.Nonnull;
+
 public class BaseAPTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
 
     private final BaseTeslaContainer container;
@@ -44,18 +46,15 @@ public class BaseAPTeslaContainerProvider implements INBTSerializable<NBTTagComp
 
     @Method(modid = "tesla")
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
         return capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER;
     }
 
     @Method(modid = "tesla")
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
-            return (T) this.container;
-
-        return null;
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
+        return capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER ? (T) this.container : null;
     }
 
     @Method(modid = "tesla")

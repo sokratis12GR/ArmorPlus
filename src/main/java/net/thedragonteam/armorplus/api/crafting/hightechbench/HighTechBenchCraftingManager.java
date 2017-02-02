@@ -65,7 +65,7 @@ public class HighTechBenchCraftingManager {
         int k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
-            String[] astring = (String[]) ((String[]) recipeComponents[i++]);
+            String[] astring = (String[]) recipeComponents[i++];
 
             for (String s2 : astring) {
                 ++k;
@@ -104,7 +104,7 @@ public class HighTechBenchCraftingManager {
             char c0 = s.charAt(l);
 
             if (map.containsKey(c0)) {
-                aitemstack[l] = ((ItemStack) map.get(c0)).copy();
+                aitemstack[l] = map.get(c0).copy();
             } else {
                 aitemstack[l] = ItemStack.EMPTY;
             }
@@ -156,13 +156,7 @@ public class HighTechBenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
-
-        return ItemStack.EMPTY;
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

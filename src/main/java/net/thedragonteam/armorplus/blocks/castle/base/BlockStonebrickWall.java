@@ -19,6 +19,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BlockStonebrickWall extends BlockWall {
@@ -27,7 +29,7 @@ public class BlockStonebrickWall extends BlockWall {
 
     public BlockStonebrickWall(BlockStoneBrick modelBlock) {
         super(modelBlock);
-        stoneBrick = modelBlock;
+        this.stoneBrick = modelBlock;
         this.setRegistryName(modelBlock.getName() + "_wall");
         this.setUnlocalizedName(setName(modelBlock.getName() + "_wall"));
         this.setResistance(10F);
@@ -38,12 +40,14 @@ public class BlockStonebrickWall extends BlockWall {
     }
 
     @Override
+    @Nonnull
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state) {
-        return stoneBrick.color;
+        return this.stoneBrick.color;
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
+    public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
         list.add(new ItemStack(itemIn, 1));
     }
 

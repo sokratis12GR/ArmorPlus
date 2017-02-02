@@ -35,6 +35,8 @@ import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfuser;
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -68,19 +70,14 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack itemstack : this.infuserItemStacks) {
-            if (!itemstack.isEmpty()) {
-                return false;
-            }
-        }
-
-        return true;
+        return this.infuserItemStacks.stream().allMatch(ItemStack::isEmpty);
     }
 
     /**
      * Returns the stack in the given slot.
      */
     @Override
+    @Nonnull
     public ItemStack getStackInSlot(int index) {
         return this.infuserItemStacks.get(index);
     }
@@ -89,6 +86,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
      */
     @Override
+    @Nonnull
     public ItemStack decrStackSize(int index, int count) {
         return ItemStackHelper.getAndSplit(this.infuserItemStacks, index, count);
     }
@@ -97,6 +95,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Removes a stack from the given slot and returns it.
      */
     @Override
+    @Nonnull
     public ItemStack removeStackFromSlot(int index) {
         return ItemStackHelper.getAndRemove(this.infuserItemStacks, index);
     }
@@ -105,7 +104,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
      */
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack) {
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
         ItemStack itemstack = this.infuserItemStacks.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.infuserItemStacks.set(index, stack);
@@ -125,6 +124,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Get the name of this object. For players this returns their username
      */
     @Override
+    @Nonnull
     public String getName() {
         return this.hasCustomName() ? this.infuserCustomName : "container.armorplus.lava_infuser";
     }
@@ -161,6 +161,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     }
 
     @Override
+    @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("BurnTime", (short) this.infuserInfusingTime);
@@ -305,14 +306,10 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * fuel
      */
     public static int getItemChargeTime(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return 0;
-        } else {
+        if (stack.isEmpty()) return 0;
+        else {
             Item item = stack.getItem();
-            if (item == Items.LAVA_BUCKET)
-                return 500;
-            if (item == ModItems.lavaCrystal)
-                return 500;
+            if (item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal) return 500;
             return GameRegistry.getFuelValue(stack);
         }
     }
@@ -333,16 +330,16 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Don't rename this method to canInteractWith due to conflicts with Container
      */
     @Override
-    public boolean isUsableByPlayer(EntityPlayer player) {
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
         return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     @Override
-    public void openInventory(EntityPlayer player) {
+    public void openInventory(@Nonnull EntityPlayer player) {
     }
 
     @Override
-    public void closeInventory(EntityPlayer player) {
+    public void closeInventory(@Nonnull EntityPlayer player) {
     }
 
     /**
@@ -350,19 +347,20 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * guis use Slot.isItemValid
      */
     @Override
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
         if (index == 2) {
             return false;
         } else if (index != 1) {
             return true;
         } else {
             ItemStack itemstack = this.infuserItemStacks.get(1);
-            return isItemFuel(stack) || SlotLavaInfuserFuel.isLavaBucket(stack) && itemstack.getItem() != Items.BUCKET;
+            return isItemFuel(stack) || SlotLavaInfuserFuel.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
         }
     }
 
     @Override
-    public int[] getSlotsForFace(EnumFacing side) {
+    @Nonnull
+    public int[] getSlotsForFace(@Nonnull EnumFacing side) {
         return side == EnumFacing.DOWN ? SLOTS_BOTTOM : (side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES);
     }
 
@@ -370,7 +368,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if automation can insert the given item in the given slot from the given side.
      */
     @Override
-    public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+    public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
         return this.isItemValidForSlot(index, itemStackIn);
     }
 
@@ -378,7 +376,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if automation can extract the given item in the given slot from the given side.
      */
     @Override
-    public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+    public boolean canExtractItem(int index,@Nonnull ItemStack stack,@Nonnull EnumFacing direction) {
         if (direction == EnumFacing.DOWN && index == 1) {
             Item item = stack.getItem();
 
@@ -391,12 +389,14 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     }
 
     @Override
+    @Nonnull
     public String getGuiID() {
         return "armorplus:lava_infuser";
     }
 
     @Override
-    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+    @Nonnull
+    public Container createContainer(@Nonnull InventoryPlayer playerInventory, @Nonnull EntityPlayer playerIn) {
         return new ContainerLavaInfuser(playerInventory, this);
     }
 
@@ -449,14 +449,16 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
         if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            if (facing == EnumFacing.DOWN)
-                return (T) handlerBottom;
-            else if (facing == EnumFacing.UP)
-                return (T) handlerTop;
-            else
-                return (T) handlerSide;
+            switch (facing) {
+                case DOWN:
+                    return (T) handlerBottom;
+                case UP:
+                    return (T) handlerTop;
+                default:
+                    return (T) handlerSide;
+            }
         }
         return super.getCapability(capability, facing);
     }

@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderRedstoneArrow extends RenderArrow<EntityRedstoneArrow> {
 
@@ -22,7 +24,7 @@ public class RenderRedstoneArrow extends RenderArrow<EntityRedstoneArrow> {
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityRedstoneArrow entity) {
+    public ResourceLocation getEntityTexture(@Nonnull EntityRedstoneArrow entity) {
         return res;
     }
 

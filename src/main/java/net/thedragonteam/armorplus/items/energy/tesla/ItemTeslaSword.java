@@ -21,11 +21,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaSword;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
@@ -44,12 +45,14 @@ public class ItemTeslaSword extends BaseTeslaSword {
         return ArmorPlus.tabArmorplusTesla;
     }
 
-    @Optional.Method(modid = "tesla")
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+    @Method(modid = "tesla")
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         APTeslaUtils.usePower(stack, outputSword);
         return true;
     }
 
+    @Override
+    @Nonnull
     public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
@@ -63,9 +66,9 @@ public class ItemTeslaSword extends BaseTeslaSword {
         return multimap;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+    public boolean onBlockDestroyed(@Nonnull ItemStack stack, @Nonnull World worldIn, IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving) {
         APTeslaUtils.usePower(stack, outputSword);
         return true;
     }
@@ -75,20 +78,19 @@ public class ItemTeslaSword extends BaseTeslaSword {
         return Items.DIAMOND_SWORD.canHarvestBlock(state);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (APTeslaUtils.getStoredPower(stack) < outputSword) return 0.5F;
-        return Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
+        return APTeslaUtils.getStoredPower(stack) < outputSword ? 0.5F : Items.WOODEN_SWORD.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         createTooltip(stack, tooltip);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {

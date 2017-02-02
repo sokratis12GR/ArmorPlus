@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class NBTItem extends BaseItem {
@@ -45,8 +46,9 @@ public class NBTItem extends BaseItem {
     }
 
     @Override
-    public Item setCreativeTab(CreativeTabs tab) {
-        return null;
+    @Nonnull
+    public Item setCreativeTab(@Nonnull CreativeTabs tab) {
+        return this;
     }
 
     @Override

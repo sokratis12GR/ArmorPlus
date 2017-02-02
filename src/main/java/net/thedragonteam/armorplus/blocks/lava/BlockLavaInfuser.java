@@ -32,11 +32,13 @@ import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserCharging;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class BlockLavaInfuser extends BlockContainer {
 
@@ -66,6 +68,7 @@ public class BlockLavaInfuser extends BlockContainer {
      * Get the Item that this Block should drop when harvested.
      */
     @Override
+    @Nonnull
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(lavaInfuser);
     }
@@ -108,7 +111,6 @@ public class BlockLavaInfuser extends BlockContainer {
             double d0 = (double) pos.getX() + 0.5D;
             double d1 = (double) pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
             double d2 = (double) pos.getZ() + 0.5D;
-            double d3 = 0.52D;
             double d4 = rand.nextDouble() * 0.6D - 0.3D;
 
             if (rand.nextDouble() < 0.1D) {
@@ -175,7 +177,7 @@ public class BlockLavaInfuser extends BlockContainer {
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
         return new TileEntityLavaInfuser();
     }
 
@@ -184,6 +186,8 @@ public class BlockLavaInfuser extends BlockContainer {
      * IBlockstate
      */
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
@@ -208,7 +212,7 @@ public class BlockLavaInfuser extends BlockContainer {
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
      */
     @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+    public void breakBlock(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state) {
         if (!keepInventory) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
@@ -222,18 +226,22 @@ public class BlockLavaInfuser extends BlockContainer {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean hasComparatorInputOverride(IBlockState state) {
         return true;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
         return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
 
     @Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(lavaInfuser);
+    @SuppressWarnings("deprecation")
+    @Nonnull
+    public ItemStack getItem(World worldIn, BlockPos pos, @Nonnull IBlockState state) {
+        return getItemStack(lavaInfuser);
     }
 
     /**
@@ -241,6 +249,7 @@ public class BlockLavaInfuser extends BlockContainer {
      * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
      */
     @Override
+    @Nonnull
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
@@ -248,11 +257,15 @@ public class BlockLavaInfuser extends BlockContainer {
     /**
      * Convert the given metadata into a BlockState for this Block
      */
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-        if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-            enumfacing = EnumFacing.NORTH;
+        switch (enumfacing.getAxis()) {
+            case Y:
+                enumfacing = EnumFacing.NORTH;
+                break;
         }
 
         return this.getDefaultState().withProperty(FACING, enumfacing);
@@ -271,7 +284,9 @@ public class BlockLavaInfuser extends BlockContainer {
      * blockstate.
      */
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
+    @SuppressWarnings("deprecation")
+    @Nonnull
+    public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
@@ -280,11 +295,15 @@ public class BlockLavaInfuser extends BlockContainer {
      * blockstate.
      */
     @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+    @SuppressWarnings("deprecation")
+    @Nonnull
+    public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }

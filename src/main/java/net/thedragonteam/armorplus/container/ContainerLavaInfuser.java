@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserFuel;
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserOutput;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
+import javax.annotation.Nonnull;
+
 public class ContainerLavaInfuser extends Container {
 
     private static final int ITEM_BOX = 18;
@@ -32,15 +34,11 @@ public class ContainerLavaInfuser extends Container {
         this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
         this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35));
 
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 9; ++j) {
+        for (int i = 0; i < 3; ++i)
+            for (int j = 0; j < 9; ++j)
                 this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18));
-            }
-        }
 
-        for (int k = 0; k < 9; ++k) {
-            this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * ITEM_BOX, 142));
-        }
+        for (int k = 0; k < 9; ++k) this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * ITEM_BOX, 142));
     }
 
     @Override
@@ -58,21 +56,16 @@ public class ContainerLavaInfuser extends Container {
 
         for (IContainerListener listener : this.listeners) {
 
-            if (this.cookTime != this.tile.getField(2)) {
-                listener.sendProgressBarUpdate(this, 2, this.tile.getField(2));
-            }
+            if (this.cookTime != this.tile.getField(2)) listener.sendProgressBarUpdate(this, 2, this.tile.getField(2));
 
-            if (this.furnaceBurnTime != this.tile.getField(0)) {
+            if (this.furnaceBurnTime != this.tile.getField(0))
                 listener.sendProgressBarUpdate(this, 0, this.tile.getField(0));
-            }
 
-            if (this.currentItemBurnTime != this.tile.getField(1)) {
+            if (this.currentItemBurnTime != this.tile.getField(1))
                 listener.sendProgressBarUpdate(this, 1, this.tile.getField(1));
-            }
 
-            if (this.totalCookTime != this.tile.getField(3)) {
+            if (this.totalCookTime != this.tile.getField(3))
                 listener.sendProgressBarUpdate(this, 3, this.tile.getField(3));
-            }
         }
 
         this.cookTime = this.tile.getField(2);
@@ -91,7 +84,7 @@ public class ContainerLavaInfuser extends Container {
      * Determines whether supplied player can use this container
      */
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
         return true;
     }
 
@@ -99,6 +92,7 @@ public class ContainerLavaInfuser extends Container {
      * Take a stack from the specified inventory slot.
      */
     @Override
+    @Nonnull
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

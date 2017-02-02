@@ -13,6 +13,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.registry.ModAchievements;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
@@ -44,6 +46,7 @@ public class SlotCrafting extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor itemHandler as well as furnace fuel.
      */
+    @Override
     public boolean isItemValid(ItemStack stack) {
         return false;
     }
@@ -52,6 +55,8 @@ public class SlotCrafting extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int amount) {
         if (this.getHasStack()) {
             this.amountCrafted += Math.min(amount, this.getStack().getCount());
@@ -64,11 +69,13 @@ public class SlotCrafting extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
+    @Override
     protected void onCrafting(ItemStack stack, int amount) {
         this.amountCrafted += amount;
         this.onCrafting(stack);
     }
 
+    @Override
     protected void onSwapCraft(int p_190900_1_) {
         this.amountCrafted += p_190900_1_;
     }
@@ -87,37 +94,39 @@ public class SlotCrafting extends Slot {
 
         if (stack.getItem() == guardianSword)
             stack.addEnchantment(getEnchantment("sharpness"), 1);
-        if (stack.getItem() == guardianBattleAxe)
+        else if (stack.getItem() == guardianBattleAxe)
             stack.addEnchantment(getEnchantment("sharpness"), 1);
-        if (stack.getItem() == guardianBow)
+        else if (stack.getItem() == guardianBow)
             stack.addEnchantment(getEnchantment("power"), 1);
         /*Guardian Armor Thorns*/
-        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+        else if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
             stack.addEnchantment(getEnchantment("thorns"), 3);
         /*Guardian Armor Unbreaking 3*/
-        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+        else if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
             stack.addEnchantment(getEnchantment("unbreaking"), 3);
         /* Guardian Boots Enchantments*/
-        if (stack.getItem() == guardianBoots)
+        else if (stack.getItem() == guardianBoots)
             stack.addEnchantment(getEnchantment("depth_strider"), 3);
         /*Mending*/
-        if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
+        else if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
             stack.addEnchantment(getEnchantment("mending"), 1);
         /*Full of Thorns! - Achievement Trigger*/
-        if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
+        else if (stack.getItem() == guardianHelmet || stack.getItem() == guardianChestplate || stack.getItem() == guardianLeggings || stack.getItem() == guardianBoots)
             this.player.addStat(ModAchievements.craftGuardianArmor, 1);
         /*Godlike! - Achievement Trigger*/
-        if (stack.getItem() == superStarHelmet || stack.getItem() == superStarChestplate || stack.getItem() == superStarLeggings || stack.getItem() == superStarBoots)
+        else if (stack.getItem() == superStarHelmet || stack.getItem() == superStarChestplate || stack.getItem() == superStarLeggings || stack.getItem() == superStarBoots)
             this.player.addStat(ModAchievements.craftSuperStarArmor, 1);
         /*The Power of the Ender Dragon! - Achievement Trigger*/
-        if (stack.getItem() == enderDragonHelmet || stack.getItem() == enderDragonChestplate || stack.getItem() == enderDragonLeggings || stack.getItem() == enderDragonBoots)
+        else if (stack.getItem() == enderDragonHelmet || stack.getItem() == enderDragonChestplate || stack.getItem() == enderDragonLeggings || stack.getItem() == enderDragonBoots)
             this.player.addStat(ModAchievements.craftEnderDragonArmor, 1);
         /*The Ultimate Power! - Achievement Trigger*/
-        if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
+        else if (stack.getItem() == theUltimateHelmet || stack.getItem() == theUltimateChestplate || stack.getItem() == theUltimateLeggings || stack.getItem() == theUltimateBoots)
             this.player.addStat(ModAchievements.craftTheUltimateArmor, 1);
     }
 
-    public ItemStack onTake(EntityPlayer player, ItemStack stack) {
+    @Override
+    @Nonnull
+    public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = UltiTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
@@ -125,7 +134,7 @@ public class SlotCrafting extends Slot {
 
         for (int i = 0; i < nonnulllist.size(); ++i) {
             ItemStack itemstack = this.craftMatrix.getStackInSlot(i);
-            ItemStack itemstack1 = (ItemStack) nonnulllist.get(i);
+            ItemStack itemstack1 = nonnulllist.get(i);
 
             if (!itemstack.isEmpty()) {
                 this.craftMatrix.decrStackSize(i, 1);

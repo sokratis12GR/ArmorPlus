@@ -18,6 +18,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class DevTool extends BaseItem {
@@ -29,6 +30,7 @@ public class DevTool extends BaseItem {
         dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
     }
 
+    @Nonnull
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return dev;

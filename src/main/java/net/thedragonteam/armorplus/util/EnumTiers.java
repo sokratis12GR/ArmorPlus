@@ -6,6 +6,8 @@ package net.thedragonteam.armorplus.util;
 
 import net.minecraft.util.IStringSerializable;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.EnumTiers.SubTypeMaterials.*;
 import static net.thedragonteam.armorplus.util.EnumTiers.Tier.*;
 
@@ -37,6 +39,7 @@ public enum EnumTiers implements IStringSerializable {
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return name;
     }

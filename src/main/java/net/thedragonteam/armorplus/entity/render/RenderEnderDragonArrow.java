@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityEnderDragonArrow;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderEnderDragonArrow extends RenderArrow<EntityEnderDragonArrow> {
 
@@ -22,7 +24,7 @@ public class RenderEnderDragonArrow extends RenderArrow<EntityEnderDragonArrow> 
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityEnderDragonArrow entity) {
+    public ResourceLocation getEntityTexture(@Nonnull EntityEnderDragonArrow entity) {
         return res;
     }
 

@@ -8,6 +8,8 @@ import net.minecraft.block.Block;
 import net.minecraft.util.IStringSerializable;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
+import javax.annotation.Nonnull;
+
 public enum Metals implements IStringSerializable {
     STEEL("steel", ModBlocks.steelBlock),
     ELECTRICAL("electrical", ModBlocks.electricalBlock);
@@ -25,6 +27,8 @@ public enum Metals implements IStringSerializable {
         return this.name;
     }
 
+    @Override
+    @Nonnull
     public String getName() {
         return this.name;
     }

@@ -14,6 +14,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import javax.annotation.Nonnull;
+
 public class InventoryCraftingNew implements IInventory {
     private final NonNullList<ItemStack> stackList;
 
@@ -50,6 +52,7 @@ public class InventoryCraftingNew implements IInventory {
      * Returns the stack in the given slot.
      */
     @Override
+    @Nonnull
     public ItemStack getStackInSlot(int index) {
         if (index >= this.getSizeInventory())
             return ItemStack.EMPTY;
@@ -62,6 +65,7 @@ public class InventoryCraftingNew implements IInventory {
      * Get the name of this object. For players this returns their username
      */
     @Override
+    @Nonnull
     public String getName() {
         return "container.working";
     }
@@ -78,6 +82,7 @@ public class InventoryCraftingNew implements IInventory {
      * Get the formatted ChatComponent that will be used for the sender's username in chat
      */
     @Override
+    @Nonnull
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
     }
@@ -86,6 +91,7 @@ public class InventoryCraftingNew implements IInventory {
      * Removes a stack from the given slot and returns it.
      */
     @Override
+    @Nonnull
     public ItemStack removeStackFromSlot(int index) {
         return ItemStackHelper.getAndRemove(this.stackList, index);
     }
@@ -94,6 +100,7 @@ public class InventoryCraftingNew implements IInventory {
      * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
      */
     @Override
+    @Nonnull
     public ItemStack decrStackSize(int index, int count) {
         ItemStack itemstack = ItemStackHelper.getAndSplit(this.stackList, index, count);
 
@@ -108,7 +115,7 @@ public class InventoryCraftingNew implements IInventory {
      * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
      */
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack) {
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
         this.stackList.set(index, stack);
         this.eventHandler.onCraftMatrixChanged(this);
     }
@@ -133,16 +140,16 @@ public class InventoryCraftingNew implements IInventory {
      * Don't rename this method to canInteractWith due to conflicts with Container
      */
     @Override
-    public boolean isUsableByPlayer(EntityPlayer player) {
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
         return true;
     }
 
     @Override
-    public void openInventory(EntityPlayer player) {
+    public void openInventory(@Nonnull EntityPlayer player) {
     }
 
     @Override
-    public void closeInventory(EntityPlayer player) {
+    public void closeInventory(@Nonnull EntityPlayer player) {
     }
 
     /**
@@ -150,7 +157,7 @@ public class InventoryCraftingNew implements IInventory {
      * guis use Slot.isItemValid
      */
     @Override
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
         return true;
     }
 

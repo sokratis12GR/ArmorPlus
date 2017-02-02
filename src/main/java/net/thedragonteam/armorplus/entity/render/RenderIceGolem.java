@@ -14,6 +14,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
     private static final ResourceLocation ICE_GOLEM_TEXTURES = new ResourceLocation(ArmorPlus.MODID, "textures/entity/ice_golem.png");
@@ -25,7 +27,7 @@ public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityIceGolem entity) {
+    protected ResourceLocation getEntityTexture(@Nonnull EntityIceGolem entity) {
         return ICE_GOLEM_TEXTURES;
     }
 

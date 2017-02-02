@@ -32,15 +32,15 @@ public class JEI implements IModPlugin {
     }
 
     @Method(modid = "jei")
-    public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
+    public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime) {
     }
 
     @Method(modid = "jei")
-    public void registerIngredients(IModIngredientRegistration registry) {
+    public void registerIngredients(@Nonnull IModIngredientRegistration registry) {
     }
 
     @Method(modid = "jei")
     @Override
-    public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
+    public void registerItemSubtypes(@Nonnull ISubtypeRegistry subtypeRegistry) {
     }
 }

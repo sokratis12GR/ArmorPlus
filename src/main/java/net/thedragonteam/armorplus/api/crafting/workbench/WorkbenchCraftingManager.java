@@ -36,12 +36,12 @@ public class WorkbenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private WorkbenchCraftingManager() {
-        (new ModItemsRecipes()).addRecipes(this);
-        (new ModOriginRecipes()).addRecipes(this);
-        (new ModSpecialMobRecipes()).addRecipes(this);
-        (new ModWeaponsTierOneRecipes()).addRecipes(this);
+        new ModItemsRecipes().addRecipes(this);
+        new ModOriginRecipes().addRecipes(this);
+        new ModSpecialMobRecipes().addRecipes(this);
+        new ModWeaponsTierOneRecipes().addRecipes(this);
 
-        (this.recipes).sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -155,13 +155,8 @@ public class WorkbenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
 
-        return ItemStack.EMPTY;
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

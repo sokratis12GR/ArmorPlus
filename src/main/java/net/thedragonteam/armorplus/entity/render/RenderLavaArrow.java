@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public class RenderLavaArrow extends RenderArrow<EntityLavaArrow> {
 
@@ -22,7 +24,7 @@ public class RenderLavaArrow extends RenderArrow<EntityLavaArrow> {
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityLavaArrow entity) {
+    public ResourceLocation getEntityTexture(@Nonnull EntityLavaArrow entity) {
         return res;
     }
 

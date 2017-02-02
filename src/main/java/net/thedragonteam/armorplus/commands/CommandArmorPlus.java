@@ -16,6 +16,7 @@ import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
 import net.thedragonteam.thedragonlib.util.TextHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 
@@ -40,27 +41,31 @@ public class CommandArmorPlus extends CommandBase {
     }
 
     @Override
+    @Nonnull
     public List<String> getAliases() {
         return Arrays.asList("armorplus", "arp", "a+");
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return "ap";
     }
 
     @Override
+    @Nonnull
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos pos) {
         return super.getTabCompletions(server, sender, args, pos);
     }
 
     @Override
-    public String getUsage(ICommandSender sender) {
+    @Nonnull
+    public String getUsage(@Nonnull ICommandSender sender) {
         return getName() + " help";
     }
 
     @Override
-    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+    public void execute(@Nonnull MinecraftServer server, @Nonnull ICommandSender sender, @Nonnull String[] args) throws CommandException {
         System.out.println(getRequiredPermissionLevel());
         if (args.length > 0 && subCommands.containsKey(args[0])) {
             ISubCommand subCommand = subCommands.get(args[0]);

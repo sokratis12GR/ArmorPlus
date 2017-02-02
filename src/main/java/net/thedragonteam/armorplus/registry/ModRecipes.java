@@ -127,11 +127,12 @@ public class ModRecipes {
                 'O', "blockCoal",
                 'L', "gemLapis",
                 'C', "gemLavaCrystal"));
-        for (int i = 0; i <= 6; i++) {
+        for (int i = 0; i < colors.length; i++) {
             addRecipeCastle(stoneBricks[i], colors[i]);
             addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
             addRecipeCastleTower(stoneBrickTowers[i], colors[i]);
             addRecipeCastleWall(stonebrickWalls[i], colors[i]);
+            addRecipeStoneBrick(Blocks.STONEBRICK, colors[i]);
         }
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
@@ -180,6 +181,10 @@ public class ModRecipes {
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color + "Wall"));
         addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
+    }
+
+    public static void addRecipeStoneBrick(Block block, String color) {
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
     }
 }
 

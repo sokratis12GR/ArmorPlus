@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
@@ -34,7 +35,7 @@ import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 public class BlockBench extends BlockBase implements ITileEntityProvider {
 
-    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public Benches benches;
 
@@ -50,7 +51,7 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
 
     public BlockBench(Benches benches) {
         super(Material.IRON, benches.getName(), 1000.0F, 10.0F, ToolType.PICKAXE, 2);
-        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;
     }
 
@@ -72,34 +73,40 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         for (int i = 0; i < guiNumber.length; i++)
-            if (benches == bench[i])
-                if (!worldIn.isRemote)
-                    playerIn.openGui(ArmorPlus.instance, guiNumber[i], worldIn, pos.getX(), pos.getY(), pos.getZ());
+            if (benches == bench[i] && !worldIn.isRemote)
+                playerIn.openGui(ArmorPlus.instance, guiNumber[i], worldIn, pos.getX(), pos.getY(), pos.getZ());
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean isFullCube(IBlockState state) {
         return false;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
+    @Nonnull
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         IBlockState iblockstate = super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
         iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing());
@@ -112,6 +119,8 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -119,18 +128,21 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
+    @SuppressWarnings("deprecation")
+    @Nonnull
+    public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
         for (int i = 0; i < guiNumber.length; i++)
             if (benches == bench[i])
                 return tileEntities[i];

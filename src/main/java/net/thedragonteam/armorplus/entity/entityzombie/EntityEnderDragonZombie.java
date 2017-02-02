@@ -28,6 +28,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.APConfig.*;
@@ -61,7 +62,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     }
 
     @Override
-    public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nullable ItemStack stack) {
+    public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nonnull ItemStack stack) {
         super.setItemStackToSlot(slotIn, stack);
     }
 

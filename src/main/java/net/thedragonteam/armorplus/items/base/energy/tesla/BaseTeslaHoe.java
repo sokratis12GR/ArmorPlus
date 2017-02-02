@@ -19,12 +19,13 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseHoe;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.Set;
 
 import static net.thedragonteam.armorplus.APConfig.teslaWeaponItemNameColor;
@@ -41,7 +42,7 @@ public class BaseTeslaHoe extends BaseHoe {
     public BaseTeslaHoe(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -50,27 +51,29 @@ public class BaseTeslaHoe extends BaseHoe {
     public BaseTeslaHoe(ToolMaterial material, String name, int maxCapacity, int input, int output) {
         this(material, name, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
-        formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
+        this.formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos posIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    @Nonnull
+    public EnumActionResult onItemUse(EntityPlayer player, @Nonnull World worldIn, BlockPos posIn, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ) {
         APTeslaUtils.usePower(player.getHeldItem(hand), cost);
         return super.onItemUse(player, worldIn, posIn, hand, facing, hitX, hitY, hitZ);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
@@ -92,7 +95,7 @@ public class BaseTeslaHoe extends BaseHoe {
         return 30;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
         return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
@@ -103,7 +106,7 @@ public class BaseTeslaHoe extends BaseHoe {
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);

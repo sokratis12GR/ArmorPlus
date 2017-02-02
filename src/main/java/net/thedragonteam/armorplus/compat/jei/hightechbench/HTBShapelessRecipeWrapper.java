@@ -12,6 +12,8 @@ import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessRecipes;
 
+import javax.annotation.Nonnull;
+
 class HTBShapelessRecipeWrapper extends BlankRecipeWrapper implements IRecipeWrapper {
 
     private final ShapelessRecipes recipe;
@@ -29,7 +31,7 @@ class HTBShapelessRecipeWrapper extends BlankRecipeWrapper implements IRecipeWra
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
         ItemStack recipeOutput = recipe.getRecipeOutput();
 
         try {

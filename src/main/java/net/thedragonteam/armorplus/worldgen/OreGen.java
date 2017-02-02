@@ -21,17 +21,18 @@ import static net.thedragonteam.armorplus.APConfig.*;
 
 /**
  * net.thedragonteam.armorplus.worldgen
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:30 PM.
+ * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
 public class OreGen implements IWorldGenerator {
 
     private WorldGenerator lavaCrystalOverworldGenerator;
+    private WorldGenerator lavaCrystalOverworldGenerator2;
     private WorldGenerator lavaCrystalTheEndGenerator;
     private WorldGenerator lavaCrystalTheNetherGenerator;
 
     public OreGen() {
-        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalOverworldVeinAmount);
+        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalOverworldVeinAmountWorking);
         lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
         lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
     }
@@ -41,7 +42,7 @@ public class OreGen implements IWorldGenerator {
         switch (world.provider.getDimension()) {
             case 0: //Overworld Dimension
                 if (enableLavaCrystalOverworldGen) {
-                    this.runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lavaCrystalOverworldRarity, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn);
+                    this.runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lavaCrystalOverworldRarityWorkingOne, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn);
                 }
                 break;
             case 1: //The End

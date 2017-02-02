@@ -18,6 +18,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 // TODO: fix CollisionBox to mach Shape (not any time soon)
@@ -27,16 +29,16 @@ public class BlockStoneBrickCorner extends BlockStairs {
 
     public BlockStoneBrickCorner(StoneBricks stoneBricks, IBlockState modelState) {
         super(modelState);
-        setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_corner"));
-        setRegistryName(stoneBricks.getName() + "_stone_brick_corner");
-        setHardness(10.0F);
-        setResistance(5.0F);
-        setHarvestLevel("pickaxe", 0);
-        setLightOpacity(255);
+        this.setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_corner"));
+        this.setRegistryName(stoneBricks.getName() + "_stone_brick_corner");
+        this.setHardness(10.0F);
+        this.setResistance(5.0F);
+        this.setHarvestLevel("pickaxe", 0);
+        this.setLightOpacity(255);
         this.stoneBricks = stoneBricks;
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     @SideOnly(Side.CLIENT)
@@ -45,6 +47,7 @@ public class BlockStoneBrickCorner extends BlockStairs {
     }
 
     @Override
+    @Nonnull
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
@@ -57,7 +60,9 @@ public class BlockStoneBrickCorner extends BlockStairs {
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @Override
+    @Nonnull
     public MapColor getMapColor(IBlockState state) {
-        return stoneBricks.getMapColor();
+        return this.stoneBricks.getMapColor();
     }
 }

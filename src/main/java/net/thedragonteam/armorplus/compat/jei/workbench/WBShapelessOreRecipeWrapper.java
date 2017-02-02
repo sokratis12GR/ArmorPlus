@@ -14,6 +14,7 @@ import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class WBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements IRecipeWrapper {
@@ -34,7 +35,7 @@ public class WBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements I
     }
 
     @Override
-    public void getIngredients(IIngredients ingredients) {
+    public void getIngredients(@Nonnull IIngredients ingredients) {
         IStackHelper stackHelper = jeiHelpers.getStackHelper();
         ItemStack recipeOutput = recipe.getRecipeOutput();
 
@@ -42,9 +43,7 @@ public class WBShapelessOreRecipeWrapper extends BlankRecipeWrapper implements I
             List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(recipe.getInput());
             ingredients.setInputLists(ItemStack.class, inputs);
 
-            if (recipeOutput != null) {
-                ingredients.setOutput(ItemStack.class, recipeOutput);
-            }
+            ingredients.setOutput(ItemStack.class, recipeOutput);
         } catch (RuntimeException e) {
             String info = ErrorUtil.getInfoFromBrokenCraftingRecipe(recipe, recipe.getInput(), recipeOutput);
             throw new BrokenCraftingRecipeException(info, e);

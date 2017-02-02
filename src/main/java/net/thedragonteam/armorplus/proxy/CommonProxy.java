@@ -13,11 +13,7 @@ import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
-import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -39,6 +35,7 @@ public class CommonProxy {
         LogHelper.debug("Blocks Successfully Registered");
         ModItems.init(); // Initializes the items
         APItems.init(); // Initializes the helper item class
+        APBlocks.init();
         LogHelper.debug("Items Successfully Registered");
         registerWorldGenerators();
         registerTileEntities();
@@ -90,10 +87,9 @@ public class CommonProxy {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser.class, "LavaInfuser", "APLavaInfuser");
     }
 
-
     public void registerWorldGenerators() {
-        GameRegistry.registerWorldGenerator(new OreGen(), 0);
-        GameRegistry.registerWorldGenerator(new StructureGen(), 1);
-        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 2);
+        GameRegistry.registerWorldGenerator(new OreGen(), 1);
+        GameRegistry.registerWorldGenerator(new StructureGen(), 2);
+        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 3);
     }
 }

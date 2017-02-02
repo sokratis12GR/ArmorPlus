@@ -21,8 +21,8 @@ public class BaseShovel extends ItemSpade implements IItemHelper {
     public BaseShovel(ToolMaterial material, String name) {
         super(material);
         this.itemName = name;
-        setRegistryName(name);
-        setUnlocalizedName(Utils.setName(name));
+        this.setRegistryName(name);
+        this.setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
     }
 

@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.thedragonteam.armorplus.util.Utils;
 
+import javax.annotation.Nonnull;
+
 public class EnchantmentBase extends Enchantment {
 
     private int min;
@@ -107,7 +109,7 @@ public class EnchantmentBase extends Enchantment {
     }
 
     @Override
-    public boolean canApply(ItemStack stack) {
+    public boolean canApply(@Nonnull ItemStack stack) {
         return super.canApply(stack);
     }
 

@@ -9,11 +9,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+
+import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
@@ -73,8 +76,8 @@ public class BlockBase extends Block {
 
     public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
         super(material);
-        setRegistryName(name);
-        setUnlocalizedName(setName(name));
+        this.setRegistryName(name);
+        this.setUnlocalizedName(setName(name));
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool.getTool(), harvestLevel);
@@ -83,7 +86,7 @@ public class BlockBase extends Block {
         if (unbreakable) {
             setBlockUnbreakable();
         }
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
@@ -93,19 +96,28 @@ public class BlockBase extends Block {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
-    public enum ToolType {
-        PICKAXE("pickaxe"),
-        AXE("axe"),
-        SHOVEL("shovel");
+    public enum ToolType implements IStringSerializable {
+        PICKAXE("pickaxe", "Pickaxe"),
+        AXE("axe", "Axe"),
+        SHOVEL("shovel", "Shovel");
 
         private final String tool;
 
-        ToolType(String toolIn) {
+        private final String name;
+
+        ToolType(String toolIn, String nameIn) {
             tool = toolIn;
+            name = nameIn;
         }
 
         public String getTool() {
             return tool;
+        }
+
+        @Override
+        @Nonnull
+        public String getName() {
+            return name;
         }
     }
 }

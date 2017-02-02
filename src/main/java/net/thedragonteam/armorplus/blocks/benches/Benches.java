@@ -6,6 +6,8 @@ package net.thedragonteam.armorplus.blocks.benches;
 
 import net.minecraft.util.IStringSerializable;
 
+import javax.annotation.Nonnull;
+
 public enum Benches implements IStringSerializable {
     WORKBENCH("workbench"),
     HIGH_TECH("high_tech_bench"),
@@ -23,6 +25,8 @@ public enum Benches implements IStringSerializable {
         return this.name;
     }
 
+    @Override
+    @Nonnull
     public String getName() {
         return this.name;
     }

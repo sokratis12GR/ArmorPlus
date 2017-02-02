@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -50,16 +51,16 @@ public class TheGiftOfTheGods extends BaseItem {
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
         this.maxUsable = (maxUses - 1);
-        setMaxDamage(maxUsable);
+        this.setMaxDamage(maxUsable);
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return golden;
     }
@@ -75,12 +76,14 @@ public class TheGiftOfTheGods extends BaseItem {
     }
 
     @Override
+    @Nonnull
     public Item setFull3D() {
         return this;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    @Nonnull
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand hand) {
         List<String> blackListedItems = Arrays.asList(APConfig.blackListedItems);
 
         NBTTagCompound nbt;

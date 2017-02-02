@@ -13,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 /**
@@ -30,6 +32,7 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory<InfusingRecip
     }
 
     @Override
+    @Nonnull
     public IDrawable getBackground() {
         return background;
     }
@@ -41,17 +44,19 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory<InfusingRecip
     }
 
     @Override
+    @Nonnull
     public String getTitle() {
         return localizedName;
     }
 
     @Override
+    @Nonnull
     public String getUid() {
         return Constants.Compat.JEI_CATEGORY_LAVA_INFUSER_INFUSING;
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, InfusingRecipe recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull InfusingRecipe recipeWrapper, @Nonnull IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
         guiItemStacks.init(inputSlot, true, 61, 14);

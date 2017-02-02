@@ -21,6 +21,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.items.consumables
  * ArmorPlus created by sokratis12GR on 7/3/2016 10:59 AM.
@@ -31,10 +33,10 @@ public class RedstoneApple extends ItemFood {
     public RedstoneApple() {
         super(4, 2.0f, false);
         this.setHasSubtypes(true);
-        setRegistryName("redstone_apple");
-        setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_apple");
+        this.setRegistryName("redstone_apple");
+        this.setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_apple");
         GameRegistry.register(this);
-        setAlwaysEdible();
+        this.setAlwaysEdible();
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
@@ -46,11 +48,13 @@ public class RedstoneApple extends ItemFood {
     /**
      * Return an item rarity from EnumRarity
      */
+    @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return stack.getMetadata() == 0 ? EnumRarity.RARE : EnumRarity.EPIC;
     }
 
-    protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+    protected void onFoodEaten(ItemStack stack, World worldIn, @Nonnull EntityPlayer player) {
         if (!worldIn.isRemote)
             player.addPotionEffect(stack.getMetadata() > 0 ? new PotionEffect(MobEffects.SPEED, 6000, 1) : new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1));
     }
@@ -59,7 +63,7 @@ public class RedstoneApple extends ItemFood {
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         subItems.add(new ItemStack(itemIn));
         subItems.add(new ItemStack(itemIn, 1, 1));
 
@@ -67,9 +71,7 @@ public class RedstoneApple extends ItemFood {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null) {
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-            ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName(), "inventory"));
-        }
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

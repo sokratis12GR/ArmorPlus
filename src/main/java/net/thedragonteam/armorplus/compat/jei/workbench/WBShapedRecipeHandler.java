@@ -12,6 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapedRecipes;
 
+import javax.annotation.Nonnull;
+import java.util.Arrays;
+
 /**
  * net.thedragonteam.armorplus.compat.jei.benches
  * ArmorPlus created by sokratis12GR on 6/21/2016 11:42 PM.
@@ -20,33 +23,26 @@ import net.thedragonteam.armorplus.api.crafting.workbench.ShapedRecipes;
 public class WBShapedRecipeHandler implements IRecipeHandler<ShapedRecipes> {
 
     @Override
+    @Nonnull
     public Class<ShapedRecipes> getRecipeClass() {
         return ShapedRecipes.class;
     }
 
     @Override
-    public String getRecipeCategoryUid(ShapedRecipes recipe) {
+    @Nonnull
+    public String getRecipeCategoryUid(@Nonnull ShapedRecipes recipe) {
         return Constants.Compat.JEI_CATEGORY_WORKBENCH;
     }
 
     @Override
-    public IRecipeWrapper getRecipeWrapper(ShapedRecipes recipe) {
+    @Nonnull
+    public IRecipeWrapper getRecipeWrapper(@Nonnull ShapedRecipes recipe) {
         return new WBShapedRecipeWrapper(recipe);
     }
 
     @Override
-    public boolean isRecipeValid(ShapedRecipes recipe) {
-        if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
-            Log.error("Recipe has no outputs. {}", recipeInfo);
-            return false;
-        }
-        int inputCount = 0;
-        for (ItemStack input : recipe.input) {
-            if (input != null) {
-                inputCount++;
-            }
-        }
+    public boolean isRecipeValid(@Nonnull ShapedRecipes recipe) {
+        int inputCount = (int) Arrays.stream(recipe.input).filter(ItemStack::isEmpty).count();
         if (inputCount > 9) {
             String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
             Log.error("Recipe has too many inputs. {}", recipeInfo);

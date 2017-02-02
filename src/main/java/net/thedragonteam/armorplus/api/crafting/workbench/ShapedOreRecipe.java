@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -138,7 +139,8 @@ public class ShapedOreRecipe implements IRecipe {
      * Returns an Item that is the result of this recipe
      */
     @Override
-    public ItemStack getCraftingResult(InventoryCrafting var1) {
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         return output.copy();
     }
 
@@ -151,6 +153,7 @@ public class ShapedOreRecipe implements IRecipe {
     }
 
     @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return output;
     }
@@ -159,7 +162,7 @@ public class ShapedOreRecipe implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(InventoryCrafting inv, World world) {
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world) {
         for (int x = 0; x <= MAX_CRAFT_GRID_WIDTH - width; x++) {
             for (int y = 0; y <= MAX_CRAFT_GRID_HEIGHT - height; ++y) {
                 if (checkMatch(inv, x, y, false)) {
@@ -234,7 +237,8 @@ public class ShapedOreRecipe implements IRecipe {
 
     //getRecipeLeftovers
     @Override
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }
 

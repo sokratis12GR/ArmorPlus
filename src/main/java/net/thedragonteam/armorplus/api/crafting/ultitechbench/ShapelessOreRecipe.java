@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nonnull;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,16 +34,12 @@ public class ShapelessOreRecipe implements IRecipe {
 
     public ShapelessOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
-        for (Object in : recipe) {
-            if (in instanceof ItemStack) {
-                input.add(((ItemStack) in).copy());
-            } else if (in instanceof Item) {
-                input.add(new ItemStack((Item) in));
-            } else if (in instanceof Block) {
-                input.add(new ItemStack((Block) in));
-            } else if (in instanceof String) {
-                input.add(OreDictionary.getOres((String) in));
-            } else {
+        for (Object in : recipe)
+            if (in instanceof ItemStack) input.add(((ItemStack) in).copy());
+            else if (in instanceof Item) input.add(new ItemStack((Item) in));
+            else if (in instanceof Block) input.add(new ItemStack((Block) in));
+            else if (in instanceof String) input.add(OreDictionary.getOres((String) in));
+            else {
                 String ret = "Invalid shapeless ore recipe: ";
                 for (Object tmp : recipe) {
                     ret += tmp + ", ";
@@ -50,7 +47,6 @@ public class ShapelessOreRecipe implements IRecipe {
                 ret += output;
                 throw new RuntimeException(ret);
             }
-        }
     }
 
     ShapelessOreRecipe(ShapelessRecipes recipe, Map<ItemStack, String> replacements) {
@@ -77,6 +73,7 @@ public class ShapelessOreRecipe implements IRecipe {
     }
 
     @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return output;
     }
@@ -85,7 +82,8 @@ public class ShapelessOreRecipe implements IRecipe {
      * Returns an Item that is the result of this recipe
      */
     @Override
-    public ItemStack getCraftingResult(InventoryCrafting var1) {
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         return output.copy();
     }
 
@@ -94,7 +92,7 @@ public class ShapelessOreRecipe implements IRecipe {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean matches(InventoryCrafting var1, World world) {
+    public boolean matches(@Nonnull InventoryCrafting var1, @Nonnull World world) {
         NonNullList<Object> required = NonNullList.create();
         required.addAll(input);
 
@@ -107,20 +105,16 @@ public class ShapelessOreRecipe implements IRecipe {
                 for (Object aRequired : required) {
                     boolean match = false;
 
-                    Object next = aRequired;
-
-                    if (next instanceof ItemStack) {
-                        match = OreDictionary.itemMatches((ItemStack) next, slot, false);
-                    } else if (next instanceof List) {
-                        Iterator<ItemStack> itr = ((List<ItemStack>) next).iterator();
-                        while (itr.hasNext() && !match) {
-                            match = OreDictionary.itemMatches(itr.next(), slot, false);
-                        }
+                    if (aRequired instanceof ItemStack)
+                        match = OreDictionary.itemMatches((ItemStack) aRequired, slot, false);
+                    else if (aRequired instanceof List) {
+                        Iterator<ItemStack> itr = ((List<ItemStack>) aRequired).iterator();
+                        while (itr.hasNext() && !match) match = OreDictionary.itemMatches(itr.next(), slot, false);
                     }
 
                     if (match) {
                         inRecipe = true;
-                        required.remove(next);
+                        required.remove(aRequired);
                         break;
                     }
                 }
@@ -145,8 +139,8 @@ public class ShapelessOreRecipe implements IRecipe {
     }
 
     @Override
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) //getRecipeLeftovers
-    {
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }
 }

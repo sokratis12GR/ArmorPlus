@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
  * ArmorPlus created by sokratis12GR on 6/21/2016 3:55 PM.
@@ -40,6 +42,7 @@ public class SlotCrafting extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor itemHandler as well as furnace fuel.
      */
+    @Override
     public boolean isItemValid(ItemStack stack) {
         return false;
     }
@@ -48,6 +51,8 @@ public class SlotCrafting extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int amount) {
         if (this.getHasStack()) {
             this.amountCrafted += Math.min(amount, this.getStack().getCount());
@@ -60,11 +65,13 @@ public class SlotCrafting extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
+    @Override
     protected void onCrafting(ItemStack stack, int amount) {
         this.amountCrafted += amount;
         this.onCrafting(stack);
     }
 
+    @Override
     protected void onSwapCraft(int p_190900_1_) {
         this.amountCrafted += p_190900_1_;
     }
@@ -82,7 +89,9 @@ public class SlotCrafting extends Slot {
         this.amountCrafted = 0;
     }
 
-    public ItemStack onTake(EntityPlayer player, ItemStack stack) {
+    @Override
+    @Nonnull
+    public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = ChampionBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);

@@ -16,6 +16,8 @@ import net.thedragonteam.armorplus.api.crafting.workbench_new.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench_new.WorkbenchNewCraftingManager;
 import net.thedragonteam.armorplus.container.inventory.InventoryCraftingNew;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
@@ -85,7 +87,7 @@ public class ContainerWorkbenchNew extends Container {
      * Determines whether supplied player can use this container
      */
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
         return true;
     }
 
@@ -93,6 +95,7 @@ public class ContainerWorkbenchNew extends Container {
      * Take a stack from the specified inventory slot.
      */
     @Override
+    @Nonnull
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

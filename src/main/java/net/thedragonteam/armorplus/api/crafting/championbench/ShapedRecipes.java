@@ -11,6 +11,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
@@ -49,11 +51,15 @@ public class ShapedRecipes implements IRecipe {
         this.recipeOutput = output;
     }
 
+    @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return this.recipeOutput;
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {
@@ -67,7 +73,8 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public boolean matches(InventoryCrafting inv, World worldIn) {
+    @Override
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
         for (int i = 0; i <= 10 - this.recipeWidth; ++i) {
             for (int j = 0; j <= 10 - this.recipeHeight; ++j) {
                 if (this.checkMatch(inv, i, j, true)) {
@@ -86,7 +93,7 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private boolean checkMatch(InventoryCrafting p_77573_1_, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
+    private boolean checkMatch(InventoryCrafting inv, int p_77573_2_, int p_77573_3_, boolean mirrored_) {
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 10; ++j) {
                 int k = i - p_77573_2_;
@@ -94,14 +101,14 @@ public class ShapedRecipes implements IRecipe {
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
-                    if (p_77573_4_) {
+                    if (mirrored_) {
                         itemstack = this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth];
                     } else {
                         itemstack = this.recipeItems[k + l * this.recipeWidth];
                     }
                 }
 
-                ItemStack itemstack1 = p_77573_1_.getStackInRowAndColumn(i, j);
+                ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);
 
                 if (!itemstack1.isEmpty() || !itemstack.isEmpty()) {
                     if (itemstack1.isEmpty() != itemstack.isEmpty()) {
@@ -125,7 +132,9 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Returns an Item that is the result of this recipe
      */
-    public ItemStack getCraftingResult(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv) {
         ItemStack itemstack = this.getRecipeOutput().copy();
 
         if (this.copyIngredientNBT) {
@@ -144,6 +153,7 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
+    @Override
     public int getRecipeSize() {
         return this.recipeWidth * this.recipeHeight;
     }

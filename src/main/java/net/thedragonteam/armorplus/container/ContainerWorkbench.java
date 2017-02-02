@@ -13,6 +13,8 @@ import net.thedragonteam.armorplus.api.crafting.workbench.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
@@ -82,7 +84,7 @@ public class ContainerWorkbench extends Container {
      * Determines whether supplied player can use this container
      */
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
         return true;
     }
 
@@ -90,16 +92,17 @@ public class ContainerWorkbench extends Container {
      * Take a stack from the specified inventory slot.
      */
     @Override
+    @Nonnull
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(index);
+        Slot slot = inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
             if (index == 0) {
-                itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
+                itemstack1.getItem().onCreated(itemstack1, world, playerIn);
 
                 if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
                     return ItemStack.EMPTY;
@@ -137,7 +140,6 @@ public class ContainerWorkbench extends Container {
 
         return itemstack;
     }
-
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.

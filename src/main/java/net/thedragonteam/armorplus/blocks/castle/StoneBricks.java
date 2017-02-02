@@ -5,8 +5,11 @@
 package net.thedragonteam.armorplus.blocks.castle;
 
 import net.minecraft.block.material.MapColor;
+import net.minecraft.util.IStringSerializable;
 
-public enum StoneBricks {
+import javax.annotation.Nonnull;
+
+public enum StoneBricks implements IStringSerializable {
     WHITE("white", MapColor.SNOW),
     RED("red", MapColor.RED),
     BLACK("black", MapColor.BLACK),
@@ -33,6 +36,8 @@ public enum StoneBricks {
         return this.mapColor;
     }
 
+    @Nonnull
+    @Override
     public String getName() {
         return this.name;
     }

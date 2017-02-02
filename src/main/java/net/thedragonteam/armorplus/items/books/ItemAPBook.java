@@ -20,20 +20,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemAPBook extends Item {
 
     public ItemAPBook() {
-        setRegistryName("book");
-        setUnlocalizedName(setName("book"));
-        setCreativeTab(ArmorPlus.tabArmorplusItems);
+        this.setRegistryName("book");
+        this.setUnlocalizedName(setName("book"));
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         GameRegistry.register(this);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+    @Nonnull
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
         if (!player.getHeldItem(hand).isEmpty())
             Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
         return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));

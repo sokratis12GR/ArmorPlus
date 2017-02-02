@@ -20,6 +20,7 @@ import net.thedragonteam.armorplus.items.base.BaseSword;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.Set;
 
 public class BaseTeslaSword extends BaseSword {
@@ -31,7 +32,7 @@ public class BaseTeslaSword extends BaseSword {
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(material, name, ModItems.steelIngot, ModItems.steelIngot, APConfig.teslaWeaponItemNameColor, null);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -40,7 +41,7 @@ public class BaseTeslaSword extends BaseSword {
     public BaseTeslaSword(ToolMaterial material, String name, int maxCapacity, int input, int output) {
         this(material, name, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -48,7 +49,7 @@ public class BaseTeslaSword extends BaseSword {
 
     @Method(modid = "tesla")
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);

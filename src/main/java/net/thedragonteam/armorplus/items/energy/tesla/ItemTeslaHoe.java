@@ -18,11 +18,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaHoe;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
@@ -38,7 +39,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
         return ArmorPlus.tabArmorplusTesla;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         APTeslaUtils.usePower(stack, outputHoe);
@@ -46,6 +47,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.EPIC;
     }
@@ -55,20 +57,19 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
         return Items.DIAMOND_HOE.canHarvestBlock(state);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (APTeslaUtils.getStoredPower(stack) < outputHoe) return 0.5F;
-        return Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
+        return APTeslaUtils.getStoredPower(stack) < outputHoe ? 0.5F : Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         createTooltip(stack, tooltip);
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {

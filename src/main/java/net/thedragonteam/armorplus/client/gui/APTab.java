@@ -12,6 +12,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.registry.ModItems.lava;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -44,6 +46,7 @@ public class APTab extends CreativeTabs {
 
     @Override
     @SideOnly(Side.CLIENT)
+    @Nonnull
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
@@ -57,16 +60,18 @@ public class APTab extends CreativeTabs {
             case (4):
                 return getItemStack(ModItems.itemTeslaRod);
         }
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
+    @Nonnull
     public ItemStack getTabIconItem() {
         return getIconItemStack();
     }
 
     @Override
+    @Nonnull
     public String getTabLabel() {
         return this.label;
     }

@@ -15,6 +15,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemMaterial extends Item {
@@ -38,22 +40,22 @@ public class ItemMaterial extends Item {
     //3 = Ender Dragon Scale
     //4 = The Ultimate Material
     @Override
+    @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i < MATERIAL_NAMES.length; i++)
             if (stack.getItemDamage() == i) return super.getUnlocalizedName(stack) + MATERIAL_NAMES[i];
         return super.getUnlocalizedName(stack);
     }
 
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i <= 4; i++)
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        for (int i = 0; i < MATERIAL_NAMES.length; i++)
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null)
-            for (int i = 0; i <= 4; i++)
-                ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + MATERIAL_NAMES[i], "inventory"));
+        for (int i = 0; i < MATERIAL_NAMES.length; i++)
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + MATERIAL_NAMES[i], "inventory"));
     }
 }

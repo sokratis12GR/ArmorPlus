@@ -10,7 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -30,16 +32,20 @@ public class ShapelessRecipes implements IRecipe {
         this.input = inputList;
     }
 
+    @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return this.recipeOutput;
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            nonnulllist.set(i, net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack));
+            nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
         }
 
         return nonnulllist;
@@ -48,7 +54,8 @@ public class ShapelessRecipes implements IRecipe {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public boolean matches(InventoryCrafting inv, World worldIn) {
+    @Override
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
         List<ItemStack> list = Lists.newArrayList(this.input);
 
         for (int i = 0; i < inv.getHeight(); ++i) {
@@ -79,13 +86,16 @@ public class ShapelessRecipes implements IRecipe {
     /**
      * Returns an Item that is the result of this recipe
      */
-    public ItemStack getCraftingResult(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv) {
         return this.recipeOutput.copy();
     }
 
     /**
      * Returns the size of the recipe area
      */
+    @Override
     public int getRecipeSize() {
         return this.input.size();
     }

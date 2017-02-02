@@ -13,6 +13,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class CosmeticsRenderInit {
                 int meta;
                 try {
                     meta = Integer.parseInt(values[1]);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     meta = 0;
                 }
 
@@ -44,9 +45,9 @@ public class CosmeticsRenderInit {
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(itemName);
                 if (Item.REGISTRY.containsKey(resLoc))
-                    stack = new ItemStack(Item.REGISTRY.getObject(resLoc), 1, meta);
+                    stack = new ItemStack(ForgeRegistries.ITEMS.getValue(resLoc), 1, meta);
                 else if (Block.REGISTRY.containsKey(resLoc))
-                    stack = new ItemStack(Block.REGISTRY.getObject(resLoc), 1, meta);
+                    stack = new ItemStack(ForgeRegistries.BLOCKS.getValue(resLoc), 1, meta);
 
                 //Add a new Special Renderer to the list
                 if (!stack.isEmpty()) {

@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.registry;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.armorplus.items.ItemUltimateParts;
@@ -29,6 +28,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
 import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
+import static net.thedragonteam.armorplus.registry.RegistryUtils.*;
 
 public class ModItems {
 
@@ -93,6 +93,8 @@ public class ModItems {
     public static ItemArmorBase[] manyullyn = new ItemArmorBase[]{manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots};
     public static ItemArmorBase[] pigIron = new ItemArmorBase[]{pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots};
     public static ItemArmorBase[] knightSlime = new ItemArmorBase[]{knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots};
+    //  private static APArmorMaterial[] armorMaterials = new APArmorMaterial[]{COAL, EMERALD, OBSIDIAN, REDSTONE, LAPIS, LAVA, CHICKEN, SLIME, ENDER_DRAGON, GUARDIAN, SUPER_STAR, ARDITE, COBALT, MANYULLYN, PIG_IRON, KNIGHT_SLIME};
+
     private static ItemUltimateArmor theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots;
     public static ItemUltimateArmor[] theUltimate = new ItemUltimateArmor[]{
             theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots
@@ -189,45 +191,6 @@ public class ModItems {
         itemEnderDragonArrow = new ItemEnderDragonArrow();
     }
 
-    private static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
-        if (isEnabled) {
-            for (int i = 0; i <= 3; i++)
-                armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]);
-        }
-    }
-
-    private static void registerArmor(boolean isEnabled, ItemUltimateArmor[] armor) {
-        if (isEnabled) {
-            for (int i = 0; i <= 3; i++)
-                armor[i] = new ItemUltimateArmor(equipmentSlots[i]);
-            theUltimateParts = new ItemUltimateParts();
-        }
-    }
-
-    private static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                sword[i] = new ItemSpecialSword(material[i]);
-            }
-        }
-    }
-
-    private static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] bow, BattleAxes[] material) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                bow[i] = new ItemSpecialBattleAxe(material[i]);
-            }
-        }
-    }
-
-    private static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                bow[i] = new ItemSpecialBow(material[i]);
-            }
-        }
-    }
-
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         itemEnderDragonArrow.initModel();
@@ -281,44 +244,4 @@ public class ModItems {
         itemRedstoneArrow.initModel();
         itemLavaArrow.initModel();
     }
-
-    private static void registerArmorModel(boolean isEnabled, ItemArmorBase[] armor) {
-        if (isEnabled) {
-            for (int i = 0; i <= 3; i++)
-                armor[i].initModel();
-        }
-    }
-
-    private static void registerArmorModel(boolean isEnabled, ItemUltimateArmor[] armor) {
-        if (isEnabled) {
-            for (int i = 0; i <= 3; i++)
-                armor[i].initModel();
-            theUltimateParts.initModel();
-        }
-    }
-
-    private static void registerSwordModel(boolean isEnabled[], ItemSpecialSword[] sword) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                sword[i].initModel();
-            }
-        }
-    }
-
-    private static void registerBattleAxeModel(boolean isEnabled[], ItemSpecialBattleAxe[] battleAxe) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                battleAxe[i].initModel();
-            }
-        }
-    }
-
-    private static void registerBowModel(boolean isEnabled[], ItemSpecialBow[] bow) {
-        for (int i = 0; i <= 8; i++) {
-            if (isEnabled[i]) {
-                bow[i].initModel();
-            }
-        }
-    }
-
 }

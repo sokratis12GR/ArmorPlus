@@ -29,11 +29,8 @@ public class UTBCategory extends BlankRecipeCategory<IRecipeWrapper> {
     public static final int height = 93;
     private static final int OUTPUT_SLOT = 0;
     private static final int INPUT_SLOT = 1;
-    @Nonnull
     private final IDrawable background;
-    @Nonnull
     private final String localizedName;
-    @Nonnull
     private final ICraftingGridHelper craftingGridHelper;
 
     public UTBCategory() {
@@ -68,7 +65,7 @@ public class UTBCategory extends BlankRecipeCategory<IRecipeWrapper> {
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IRecipeWrapper recipeWrapper,@Nonnull  IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
         guiItemStacks.init(OUTPUT_SLOT, false, 136, 36);

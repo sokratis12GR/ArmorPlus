@@ -10,11 +10,20 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.benches;
 
 public class APBlocks {
 
-    public static Block workbench = benches[0];
-    public static Block highTechBench = benches[1];
-    public static Block ultiTechBench = benches[2];
-    public static Block championBench = benches[3];
+    public static Block workbench;
+    public static Block highTechBench;
+    public static Block ultiTechBench;
+    public static Block championBench;
+    public static Block lavaInfuser;
 
     public APBlocks() {
+    }
+
+    public static void init() {
+        workbench = benches[0];
+        highTechBench = benches[1];
+        ultiTechBench = benches[2];
+        championBench = benches[3];
+        lavaInfuser = ModBlocks.lavaInfuser;
     }
 }

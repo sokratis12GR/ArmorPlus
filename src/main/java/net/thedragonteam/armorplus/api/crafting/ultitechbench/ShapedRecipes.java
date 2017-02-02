@@ -11,6 +11,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
+import javax.annotation.Nonnull;
+
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
@@ -41,19 +43,21 @@ public class ShapedRecipes implements IRecipe {
         this.input = ingredientsIn;
 
         for (int i = 0; i < this.input.length; ++i) {
-            if (this.input[i] == null) {
-                this.input[i] = ItemStack.EMPTY;
-            }
+            if (this.input[i].isEmpty()) this.input[i] = ItemStack.EMPTY;
         }
 
         this.recipeOutput = output;
     }
 
+    @Override
+    @Nonnull
     public ItemStack getRecipeOutput() {
         return this.recipeOutput;
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {
@@ -67,18 +71,11 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public boolean matches(InventoryCrafting inv, World worldIn) {
-        for (int i = 0; i <= 5 - this.recipeWidth; ++i) {
-            for (int j = 0; j <= 5 - this.recipeHeight; ++j) {
-                if (this.checkMatch(inv, i, j, true)) {
-                    return true;
-                }
-
-                if (this.checkMatch(inv, i, j, false)) {
-                    return true;
-                }
-            }
-        }
+    @Override
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
+        for (int i = 0; i <= 5 - this.recipeWidth; ++i)
+            for (int j = 0; j <= 5 - this.recipeHeight; ++j)
+                if (this.checkMatch(inv, i, j, true) || this.checkMatch(inv, i, j, false)) return true;
 
         return false;
     }
@@ -125,16 +122,17 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Returns an Item that is the result of this recipe
      */
-    public ItemStack getCraftingResult(InventoryCrafting inv) {
+    @Override
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv) {
         ItemStack itemstack = this.getRecipeOutput().copy();
 
         if (this.copyIngredientNBT) {
             for (int i = 0; i < inv.getSizeInventory(); ++i) {
                 ItemStack itemstack1 = inv.getStackInSlot(i);
 
-                if (!itemstack1.isEmpty() && itemstack1.hasTagCompound()) {
+                if (!itemstack1.isEmpty() && itemstack1.hasTagCompound())
                     itemstack.setTagCompound(itemstack1.getTagCompound().copy());
-                }
             }
         }
 
@@ -155,6 +153,7 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
+    @Override
     public int getRecipeSize() {
         return this.recipeWidth * this.recipeHeight;
     }

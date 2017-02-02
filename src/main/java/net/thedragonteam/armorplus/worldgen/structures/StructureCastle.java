@@ -16,6 +16,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.isDebugMode;
@@ -136,11 +137,11 @@ public class StructureCastle extends WorldGenerator {
 
 
     @Override
-    public boolean generate(World worldIn, Random rand, BlockPos corner) {
+    public boolean generate(@Nonnull World worldIn, @Nonnull Random rand, @Nonnull BlockPos corner) {
         if (canSpawnHere(worldIn, corner)) {
             // figure out each IBlockState we will use
             IBlockState stoneBrick = ModBlocks.stoneBricks[0].getDefaultState();
-            for (int i = 0; i <= 6; i++) {
+            for (int i = 0; i < ModBlocks.stoneBricks.length; i++) {
                 stoneBrick = ModBlocks.stoneBricks[i].getDefaultState();
             }
             IBlockState doorLower = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER);

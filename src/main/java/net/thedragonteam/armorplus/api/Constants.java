@@ -22,7 +22,5 @@ public class Constants {
         public static final String JEI_CATEGORY_ULTI_TECH_BENCH = ArmorPlus.MODID + ":ulti_tech_bench";
         public static final String JEI_CATEGORY_CHAMPION_BENCH = ArmorPlus.MODID + ":champion_bench";
         public static final String JEI_CATEGORY_LAVA_INFUSER_INFUSING = ArmorPlus.MODID + ":lava_infuser_infusing";
-        public static final String JEI_CATEGORY_LAVA_INFUSER_FUEL = ArmorPlus.MODID + ":lava_infuser_fuel";
-
     }
 }

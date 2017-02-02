@@ -12,6 +12,7 @@ import mezz.jei.util.Log;
 import net.thedragonteam.armorplus.api.Constants;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class WBShapelessOreRecipeHandler implements IRecipeHandler<ShapelessOreRecipe> {
@@ -22,27 +23,25 @@ public class WBShapelessOreRecipeHandler implements IRecipeHandler<ShapelessOreR
     }
 
     @Override
+    @Nonnull
     public Class<ShapelessOreRecipe> getRecipeClass() {
         return ShapelessOreRecipe.class;
     }
 
     @Override
-    public String getRecipeCategoryUid(ShapelessOreRecipe recipe) {
+    @Nonnull
+    public String getRecipeCategoryUid(@Nonnull ShapelessOreRecipe recipe) {
         return Constants.Compat.JEI_CATEGORY_WORKBENCH;
     }
 
     @Override
-    public IRecipeWrapper getRecipeWrapper(ShapelessOreRecipe recipe) {
+    @Nonnull
+    public IRecipeWrapper getRecipeWrapper(@Nonnull ShapelessOreRecipe recipe) {
         return new WBShapelessOreRecipeWrapper(jeiHelpers, recipe);
     }
 
     @Override
-    public boolean isRecipeValid(ShapelessOreRecipe recipe) {
-        if (recipe.getRecipeOutput() == null) {
-            String recipeInfo = ErrorUtil.getInfoFromRecipe(recipe, this);
-            Log.error("Recipe has no outputs. {}", recipeInfo);
-            return false;
-        }
+    public boolean isRecipeValid(@Nonnull ShapelessOreRecipe recipe) {
         int inputCount = 0;
         for (Object input : recipe.getInput()) {
             if (input instanceof List) {

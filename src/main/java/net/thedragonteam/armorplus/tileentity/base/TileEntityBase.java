@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 import net.thedragonteam.armorplus.util.TeslaForgeUnitsWrapper;
 
+import javax.annotation.Nonnull;
+
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
@@ -29,14 +31,14 @@ public abstract class TileEntityBase extends TileEntity {
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
         IItemHandler handler = this.getItemHandler(facing);
         return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && handler != null || super.hasCapability(capability, facing));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             IItemHandler handler = this.getItemHandler(facing);
             if (handler != null) {

@@ -61,6 +61,7 @@ public abstract class ItemBauble extends BaseItem implements IBauble {
 
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack par1ItemStack) {
         return EnumRarity.RARE;
     }

@@ -14,6 +14,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.registry.ModAchievements;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.registry.APBlocks.ultiTechBench;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 
@@ -45,6 +47,7 @@ public class SlotCrafting extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor itemHandler as well as furnace fuel.
      */
+    @Override
     public boolean isItemValid(ItemStack stack) {
         return false;
     }
@@ -53,6 +56,8 @@ public class SlotCrafting extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int amount) {
         if (this.getHasStack()) {
             this.amountCrafted += Math.min(amount, this.getStack().getCount());
@@ -65,11 +70,13 @@ public class SlotCrafting extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
+    @Override
     protected void onCrafting(ItemStack stack, int amount) {
         this.amountCrafted += amount;
         this.onCrafting(stack);
     }
 
+    @Override
     protected void onSwapCraft(int p_190900_1_) {
         this.amountCrafted += p_190900_1_;
     }
@@ -107,7 +114,9 @@ public class SlotCrafting extends Slot {
             this.player.addStat(ModAchievements.craftKnightSlimeArmor, 1);
     }
 
-    public ItemStack onTake(EntityPlayer player, ItemStack itemStack) {
+    @Override
+    @Nonnull
+    public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack itemStack) {
         this.onCrafting(itemStack);
         ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = HighTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);

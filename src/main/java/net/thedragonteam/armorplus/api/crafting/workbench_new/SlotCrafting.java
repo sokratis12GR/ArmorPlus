@@ -12,8 +12,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.container.inventory.InventoryCraftingNew;
+import net.thedragonteam.armorplus.registry.APBlocks;
 import net.thedragonteam.armorplus.registry.ModAchievements;
-import net.thedragonteam.armorplus.registry.ModBlocks;
+
+import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
@@ -49,10 +51,11 @@ public class SlotCrafting extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int amount) {
-        if (this.getHasStack()) {
+        if (this.getHasStack())
             this.amountCrafted += Math.min(amount, this.getStack().getCount());
-        }
 
         return super.decrStackSize(amount);
     }
@@ -61,11 +64,13 @@ public class SlotCrafting extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
+    @Override
     protected void onCrafting(ItemStack stack, int amount) {
         this.amountCrafted += amount;
         this.onCrafting(stack);
     }
 
+    @Override
     protected void onSwapCraft(int p_190900_1_) {
         this.amountCrafted += p_190900_1_;
     }
@@ -81,44 +86,44 @@ public class SlotCrafting extends Slot {
         }
 
         this.amountCrafted = 0;
-
-        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.benches[1]))
+        if (stack.getItem() == Item.getItemFromBlock(APBlocks.highTechBench))
             this.player.addStat(ModAchievements.craftHighTechBench, 1);
-
-        if (stack.getItem() == lapisSword)
+        else if (stack.getItem() == lapisSword)
             stack.addEnchantment(getEnchantment("looting"), 3);
-        if (stack.getItem() == lapisBattleAxe)
+        else if (stack.getItem() == lapisBattleAxe)
             stack.addEnchantment(getEnchantment("looting"), 3);
-        if (stack.getItem() == lapisBow)
+        else if (stack.getItem() == lapisBow)
             stack.addEnchantment(getEnchantment("looting"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
-        if (stack.getItem() == coalHelmet || stack.getItem() == coalChestplate || stack.getItem() == coalLeggings || stack.getItem() == coalBoots)
+        else if (stack.getItem() == coalHelmet || stack.getItem() == coalChestplate || stack.getItem() == coalLeggings || stack.getItem() == coalBoots)
             this.player.addStat(ModAchievements.craftCoalArmor, 1);
         /*Never Drown Again - Achievement Trigger*/
-        if (stack.getItem() == lapisHelmet || stack.getItem() == lapisChestplate || stack.getItem() == lapisLeggings || stack.getItem() == lapisBoots)
+        else if (stack.getItem() == lapisHelmet || stack.getItem() == lapisChestplate || stack.getItem() == lapisLeggings || stack.getItem() == lapisBoots)
             this.player.addStat(ModAchievements.craftLapisArmor, 1);
         /*Speeedy! - Achievement Trigger*/
-        if (stack.getItem() == redstoneHelmet || stack.getItem() == redstoneChestplate || stack.getItem() == redstoneLeggings || stack.getItem() == redstoneBoots)
+        else if (stack.getItem() == redstoneHelmet || stack.getItem() == redstoneChestplate || stack.getItem() == redstoneLeggings || stack.getItem() == redstoneBoots)
             this.player.addStat(ModAchievements.craftRedstoneArmor, 1);
         /*Swing Swing Faster! - Achievement Trigger*/
-        if (stack.getItem() == emeraldHelmet || stack.getItem() == emeraldChestplate || stack.getItem() == emeraldLeggings || stack.getItem() == emeraldBoots)
+        else if (stack.getItem() == emeraldHelmet || stack.getItem() == emeraldChestplate || stack.getItem() == emeraldLeggings || stack.getItem() == emeraldBoots)
             this.player.addStat(ModAchievements.craftEmeraldArmor, 1);
         /*Indestructible! - Achievement Trigger*/
-        if (stack.getItem() == obsidianHelmet || stack.getItem() == obsidianChestplate || stack.getItem() == obsidianLeggings || stack.getItem() == obsidianBoots)
+        else if (stack.getItem() == obsidianHelmet || stack.getItem() == obsidianChestplate || stack.getItem() == obsidianLeggings || stack.getItem() == obsidianBoots)
             this.player.addStat(ModAchievements.craftObsidianArmor, 1);
         /*The Overpowered! - Achievement Trigger*/
-        if (stack.getItem() == lavaHelmet || stack.getItem() == lavaChestplate || stack.getItem() == lavaLeggings || stack.getItem() == lavaBoots)
+        else if (stack.getItem() == lavaHelmet || stack.getItem() == lavaChestplate || stack.getItem() == lavaLeggings || stack.getItem() == lavaBoots)
             this.player.addStat(ModAchievements.craftLavaArmor, 1);
         /*Jump Jump Jump! - Achievement Trigger*/
-        if (stack.getItem() == slimeHelmet || stack.getItem() == slimeChestplate || stack.getItem() == slimeLeggings || stack.getItem() == slimeBoots)
+        else if (stack.getItem() == slimeHelmet || stack.getItem() == slimeChestplate || stack.getItem() == slimeLeggings || stack.getItem() == slimeBoots)
             this.player.addStat(ModAchievements.craftSlimeArmor, 1);
         /*Its time to go Faster! - Achievement Trigger*/
-        if (stack.getItem() == chickenHelmet || stack.getItem() == chickenChestplate || stack.getItem() == chickenLeggings || stack.getItem() == chickenBoots)
+        else if (stack.getItem() == chickenHelmet || stack.getItem() == chickenChestplate || stack.getItem() == chickenLeggings || stack.getItem() == chickenBoots)
             this.player.addStat(ModAchievements.craftChickenArmor, 1);
     }
 
 
-    public ItemStack onTake(EntityPlayer player, ItemStack stack) {
+    @Override
+    @Nonnull
+    public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
         NonNullList<ItemStack> nonnulllist = WorkbenchNewCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);

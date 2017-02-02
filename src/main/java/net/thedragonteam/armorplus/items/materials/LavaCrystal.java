@@ -16,6 +16,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 /**
@@ -45,13 +47,14 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     public int getBurnTime(ItemStack fuel) {
         if (fuel.getItem() == this)
-            for (int i = 0; i <= 1; i++)
+            for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
                 if (fuel.getItemDamage() == i)
                     return BURN_TIME[i];
         return 0;
     }
 
     @Override
+    @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
         for (int i = 0; i <= 1; i++)
             if (stack.getItemDamage() == i)
@@ -71,14 +74,13 @@ public class LavaCrystal extends Item implements IFuelHandler {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null)
-            for (int i = 0; i <= 1; i++)
-                ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
+        for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
     }
 
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i <= 1; i++)
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 }

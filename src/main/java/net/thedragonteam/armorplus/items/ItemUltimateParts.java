@@ -16,6 +16,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -40,27 +42,29 @@ public class ItemUltimateParts extends Item {
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }
 
     @Override
+    @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i <= 11; i++)
-            if (stack.getItemDamage() == i) return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[i];
+        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+            if (stack.getItemDamage() == i)
+                return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[i];
         return super.getUnlocalizedName();
     }
 
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i <= 11; i++)
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (getRegistryName() != null)
-            for (int i = 0; i <= 11; i++)
-                ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
+        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
     }
 }

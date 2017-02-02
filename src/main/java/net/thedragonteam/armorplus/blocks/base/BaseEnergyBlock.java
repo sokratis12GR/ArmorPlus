@@ -15,6 +15,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
+import javax.annotation.Nonnull;
+
 public class BaseEnergyBlock extends BlockContainer {
 
     private TileEntity tileEntity;
@@ -33,39 +35,43 @@ public class BaseEnergyBlock extends BlockContainer {
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, TileEntity tileEntityIn) {
         super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setRegistryName(name);
+        this.setUnlocalizedName(ArmorPlus.MODID + "." + name);
+        this.setRegistryName(name);
         this.tileEntity = tileEntityIn;
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
         this.setLightLevel(lightLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return true;
     }
 
     @Override
+    @Nonnull
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
+    @Nonnull
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.SOLID;
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return tileEntity;
+    public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
+        return this.tileEntity;
     }
 }

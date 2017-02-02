@@ -22,6 +22,7 @@ import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Set;
 
@@ -34,20 +35,20 @@ public class BaseTesla extends BaseItem {
     private int output;
     private int input;
 
-    public BaseTesla(String name, ToolMaterial diamond, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
+    public BaseTesla(String name, ToolMaterial material, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         super(name);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
-        formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
+        this.formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
     }
 
     public BaseTesla(String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
         this(name, null, effectiveOn, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -56,7 +57,7 @@ public class BaseTesla extends BaseItem {
     public BaseTesla(String name, ToolMaterial diamond, int maxCapacity, int input, int output) {
         this(name, diamond, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -65,7 +66,7 @@ public class BaseTesla extends BaseItem {
     public BaseTesla(String name, int maxCapacity, int input, int output) {
         this(name, null, null, maxCapacity, input, output);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
@@ -73,7 +74,7 @@ public class BaseTesla extends BaseItem {
 
     @Method(modid = "tesla")
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
@@ -81,7 +82,8 @@ public class BaseTesla extends BaseItem {
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
+    @Nonnull
+    public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         return (TextFormatting.getValueByName(APConfig.teslaWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 

@@ -24,8 +24,8 @@ public class BaseItem extends Item implements IItemHelper {
 
     public BaseItem(String name) {
         this.itemName = name;
-        setRegistryName(itemName);
-        setUnlocalizedName(Utils.setName(itemName));
+        this.setRegistryName(itemName);
+        this.setUnlocalizedName(Utils.setName(itemName));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
@@ -38,8 +38,7 @@ public class BaseItem extends Item implements IItemHelper {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
