@@ -48,7 +48,7 @@ public class LavaInfuserManager {
     }
 
     public void addInfusing(ItemStack input, ItemStack stack) {
-        this.addInfusingRecipe(input, stack, 0.0F);
+        this.addInfusingRecipe(input, stack, 0.0D);
     }
 
     /**
@@ -64,16 +64,17 @@ public class LavaInfuserManager {
     }
 
     /**
+     * Removes an IRecipe to the list of crafting recipes.
+     */
+    public void removeRecipe(ItemStack recipe) {
+        this.infusingList.remove(recipe);
+    }
+
+    /**
      * Returns the smelting result of an item.
      */
     public ItemStack getSmeltingResult(ItemStack stack) {
-        for (Map.Entry<ItemStack, ItemStack> entry : this.infusingList.entrySet()) {
-            if (this.compareItemStacks(stack, entry.getKey())) {
-                return entry.getValue();
-            }
-        }
-
-        return ItemStack.EMPTY;
+        return this.infusingList.entrySet().stream().filter(entry -> this.compareItemStacks(stack, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(ItemStack.EMPTY);
     }
 
     /**
@@ -91,12 +92,6 @@ public class LavaInfuserManager {
         float ret = stack.getItem().getSmeltingExperience(stack);
         if (ret != -1) return ret;
 
-        for (Map.Entry<ItemStack, Double> entry : this.experienceList.entrySet()) {
-            if (this.compareItemStacks(stack, entry.getKey())) {
-                return entry.getValue();
-            }
-        }
-
-        return 0.0F;
+        return this.experienceList.entrySet().stream().filter(entry -> this.compareItemStacks(stack, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(0.0D);
     }
 }
