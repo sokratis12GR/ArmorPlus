@@ -34,6 +34,8 @@ import java.util.List;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.registry.ModItems.theUltimateMaterial;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -132,13 +134,7 @@ public class BaseUltimateArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
-                return repair.getItem() == ModItems.theUltimateMaterial;
-            case 1:
-                return repair.getItem() == ModItems.theUltimateMaterial;
-        }
-        return true;
+        return isItemRepairable(toRepair, theUltimateMaterial, theUltimateMaterial);
     }
 
     @SideOnly(Side.CLIENT)

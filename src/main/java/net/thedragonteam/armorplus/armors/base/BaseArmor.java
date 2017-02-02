@@ -25,17 +25,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.armors.ARPArmorMaterial;
+import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
-import java.util.Objects;
 
 import static net.minecraft.init.SoundEvents.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.ParticlesHelper.spawnParticle;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
@@ -80,10 +80,10 @@ public class BaseArmor extends ItemArmor {
     public Item itemEasy;
     public Item itemExpert;
     public TextFormatting formatting;
-    private ARPArmorMaterial material;
+    private APArmorMaterial material;
     private EntityEquipmentSlot slot;
 
-    public BaseArmor(ARPArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
+    public BaseArmor(APArmorMaterial armorMaterial, EntityEquipmentSlot slot) {
         super(armorMaterial.getArmorMaterial(), 0, slot);
         this.itemEasy = armorMaterial.getItemEasy();
         this.itemExpert = armorMaterial.getItemExpert();
@@ -322,13 +322,7 @@ public class BaseArmor extends ItemArmor {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (recipes) {
-            case 0:
-                return Objects.equals(repair.getItem(), itemEasy);
-            case 1:
-                return Objects.equals(repair.getItem(), itemExpert);
-        }
-        return true;
+        return isItemRepairable(toRepair, itemEasy, itemExpert);
     }
 
     @Override

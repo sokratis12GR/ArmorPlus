@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.items.Swords;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.PotionUtils.EffectType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
@@ -123,13 +124,7 @@ public class BaseSpecialSword extends ItemSword {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
-                return repair.getItem() == itemEasy;
-            case 1:
-                return repair.getItem() == itemExpert;
-        }
-        return true;
+        return isItemRepairable(toRepair, itemEasy, itemExpert);
     }
 
     @SideOnly(Side.CLIENT)

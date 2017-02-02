@@ -6,14 +6,14 @@ package net.thedragonteam.armorplus;
 
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
+
 /**
  * net.thedragonteam.armorplus
  * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
  * - TheDragonTeam
  */
 public class APConfig {
-
-
     //Weapons.*.Registry
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "coalWeaponItemNameColor", comment = "Set the color name the Coal Weapons will have")
     public static String coalWeaponItemNameColor = "gray";
@@ -695,8 +695,8 @@ public class APConfig {
     @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
     public static boolean enableCastleGen = true;
     //GameModes
-    @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
-    public static int recipes = 1;
+    @ModConfigProperty(category = "GameModes", name = "gamemode", comment = "Sets the Recipe Difficulty \n0 = easy , 1 = expert")
+    public static int gameMode = 1;
     //WhiteList
     @ModConfigProperty(category = "WhiteList", name = "whitelistmax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
     public static int whitelistmax = 0;
@@ -786,11 +786,25 @@ public class APConfig {
     @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
     public static int guardianScaleElderDropAmount = 6;
 
-    //TODO: Add an option for all textures to be 16x16 (still haven't decided if I want to add it)
-    //@ModConfigProperty(category = "Textures", name = "forceAll16x16Textures", comment = "Forces the textures of the items to all be 16x16")
-    //public static boolean forceAll16x16Textures = false;
-
     public static boolean isDebugMode() {
         return debugMode;
+    }
+
+    public static RecipesDifficulty getRD() {
+        switch (gameMode) {
+            case 0:
+                return EASY;
+            case 1:
+                return EXPERT;
+            case 2:
+                return HELLISH;
+        }
+        return EXPERT;
+    }
+
+    public enum RecipesDifficulty {
+        EASY,
+        EXPERT,
+        HELLISH,;
     }
 }

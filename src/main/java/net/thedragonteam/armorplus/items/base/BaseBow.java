@@ -28,13 +28,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.items.Bows;
 
 import java.util.List;
 
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseBow extends ItemBow {
@@ -102,13 +102,7 @@ public class BaseBow extends ItemBow {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
-                return repair.getItem() == itemEasy;
-            case 1:
-                return repair.getItem() == itemExpert;
-        }
-        return true;
+        return isItemRepairable(toRepair, itemEasy, itemExpert);
     }
 
     public void setVelocityOfArrow(ItemStack stack, float velocity) {

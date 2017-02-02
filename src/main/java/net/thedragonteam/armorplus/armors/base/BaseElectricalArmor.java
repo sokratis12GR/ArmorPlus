@@ -28,27 +28,30 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.Optional.Interface;
+import net.minecraftforge.fml.common.Optional.InterfaceList;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseARPTeslaContainerProvider;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
 
 import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.getArmorPlusLocation;
+import static net.thedragonteam.armorplus.registry.ModBlocks.electricalBlock;
+import static net.thedragonteam.armorplus.registry.ModItems.electricalIngot;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
-@Optional.InterfaceList({
-        @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
-        @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
-        @Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
+@InterfaceList({
+        @Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
+        @Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla"),
+        @Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla")
 })
 public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, IEnergyContainerItem {
 
@@ -100,37 +103,31 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.recipes) {
-            case 0:
-                return repair.getItem() == ModItems.electricalIngot;
-            case 1:
-                return repair.getItem() == Item.getItemFromBlock(ModBlocks.electricalBlock);
-        }
-        return true;
+        return isItemRepairable(toRepair, electricalIngot, electricalBlock);
     }
 
     /**
      * Tesla
      */
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public long givePower(long power, boolean simulated) {
         return input;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public long takePower(long power, boolean simulated) {
         return output;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public long getStoredPower() {
         return power;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public long getCapacity() {
         return maxCapacity;
@@ -200,7 +197,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
         return true;
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         createTooltip(stack, tooltip);
@@ -215,7 +212,7 @@ public class BaseElectricalArmor extends ItemArmor implements ITeslaConsumer, IT
             tooltip.add(I18n.format("tooltip.rf.showinfo", TextFormatting.DARK_RED, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }
 
-    @Optional.Method(modid = "tesla")
+    @Method(modid = "tesla")
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseARPTeslaContainerProvider(new BaseTeslaContainer(), power, maxCapacity, output, input);
