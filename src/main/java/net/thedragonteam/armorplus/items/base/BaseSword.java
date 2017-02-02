@@ -17,7 +17,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.Utils;
 
-import static net.thedragonteam.armorplus.APConfig.getRD;
+import javax.annotation.Nonnull;
+
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IItemHelper {
@@ -36,36 +38,28 @@ public class BaseSword extends ItemSword implements IItemHelper {
         this.itemExpert = repairExpert;
         this.formatting = TextFormatting.getValueByName(textFormatting);
         this.effect = effectName;
-        setRegistryName(name);
-        setUnlocalizedName(Utils.setName(name));
+        this.setRegistryName(name);
+        this.setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         formattingName = addRarity("SWORD", formatting, "Sword");
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRD()) {
-            case EASY:
-                return repair.getItem() == itemEasy;
-            case EXPERT:
-                return repair.getItem() == itemExpert;
-            case HELLISH:
-                return false;
-        }
-        return true;
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
+        return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

@@ -8,6 +8,7 @@ import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.IIngredientRegistry;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,18 +21,21 @@ import net.thedragonteam.armorplus.client.gui.GuiLavaInfuser;
 import net.thedragonteam.armorplus.client.gui.GuiUltiTechBench;
 import net.thedragonteam.armorplus.client.gui.GuiWorkbench;
 import net.thedragonteam.armorplus.compat.jei.hightechbench.*;
-import net.thedragonteam.armorplus.compat.jei.lavainfuser.*;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.InfuserRecipeMaker;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.InfusingRecipeHandler;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserCategory;
 import net.thedragonteam.armorplus.compat.jei.ultitechbench.*;
 import net.thedragonteam.armorplus.compat.jei.workbench.*;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 import net.thedragonteam.armorplus.container.ContainerWorkbench;
+import net.thedragonteam.armorplus.registry.APBlocks;
+import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
 
-import static mezz.jei.plugins.jei.JEIInternalPlugin.ingredientRegistry;
 import static net.thedragonteam.armorplus.api.Constants.Compat.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 @JEIPlugin
@@ -42,6 +46,7 @@ public class ArmorPlusPlugin extends BlankModPlugin {
     @Override
     public void register(IModRegistry registry) {
         jeiHelper = registry.getJeiHelpers();
+        IIngredientRegistry ingredientRegistry = registry.getIngredientRegistry();
 
         //IGuiHelper guiHelper = jeiHelper.getGuiHelper();
 
@@ -49,7 +54,6 @@ public class ArmorPlusPlugin extends BlankModPlugin {
                 new WBCategory(),
                 new HTBCategory(),
                 new UTBCategory(),
-                new LavaInfuserFuelCategory(),
                 new LavaInfuserCategory()
         );
         registry.addRecipeHandlers(
@@ -65,14 +69,13 @@ public class ArmorPlusPlugin extends BlankModPlugin {
                 new UTBShapelessRecipeHandler(),
                 new UTBShapedOreRecipeHandler(jeiHelper),
                 new UTBShapelessOreRecipeHandler(jeiHelper),
-                new InfusingRecipeHandler(),
-                new InfuserFuelRecipeHandler()
+                new InfusingRecipeHandler()
         );
 
         registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
         registry.addRecipeClickArea(GuiHighTechBench.class, 88, 40, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH);
         registry.addRecipeClickArea(GuiUltiTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER_INFUSING, JEI_CATEGORY_LAVA_INFUSER_FUEL);
+        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER_INFUSING);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 
@@ -80,39 +83,41 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser.class, JEI_CATEGORY_LAVA_INFUSER_INFUSING, 0, 1, 3, 36);
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser.class, JEI_CATEGORY_LAVA_INFUSER_FUEL, 1, 1, 3, 36);
 
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[0]), JEI_CATEGORY_WORKBENCH);
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[1]), JEI_CATEGORY_HIGH_TECH_BENCH);
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[2]), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER_INFUSING, JEI_CATEGORY_LAVA_INFUSER_FUEL);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER_INFUSING);
 
         registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(InfuserRecipeMaker.getFurnaceRecipes(jeiHelper));
-        registry.addRecipes(InfuserFuelRecipeMaker.getFuelRecipes(ingredientRegistry, jeiHelper));
 
-        addDescription(registry, ModItems.materials, 1, localize("armorplus.jei.guardian_scale.desc"));
-        addDescription(registry, ModItems.materials, 2, localize("armorplus.jei.wither_bone.desc"));
-        addDescription(registry, ModItems.materials, 3, localize("armorplus.jei.ender_dragon_scale.desc"));
-        addDescription(registry, ModBlocks.lavaInfuser, localize("armorplus.jei.lava_infuser.desc"));
+        addDescription(registry, APItems.guardianScale, localize("armorplus.jei.guardian_scale.desc"));
+        addDescription(registry, APItems.witherBone, localize("armorplus.jei.wither_bone.desc"));
+        addDescription(registry, APItems.enderDragonScale, localize("armorplus.jei.ender_dragon_scale.desc"));
+        addDescription(registry, APBlocks.lavaInfuser, localize("armorplus.jei.lava_infuser.desc"));
         super.register(registry);
     }
 
-    private void addDescription(IModRegistry registry, Item item, int meta, String description) {
-        registry.addDescription(new ItemStack(item, 1, meta), description);
+    public void addDescription(IModRegistry registry, ItemStack item, String description) {
+        registry.addDescription(item, description);
     }
 
-    private void addDescription(IModRegistry registry, Item item, String description) {
-        registry.addDescription(new ItemStack(item, 1), description);
+    public void addDescription(IModRegistry registry, Item item, int meta, String description) {
+        registry.addDescription(getItemStack(item, meta), description);
     }
 
-    private void addDescription(IModRegistry registry, Block block, int meta, String description) {
-        registry.addDescription(new ItemStack(block, 1, meta), description);
+    public void addDescription(IModRegistry registry, Item item, String description) {
+        registry.addDescription(getItemStack(item), description);
     }
 
-    private void addDescription(IModRegistry registry, Block block, String description) {
-        registry.addDescription(new ItemStack(block, 1), description);
+    public void addDescription(IModRegistry registry, Block block, int meta, String description) {
+        registry.addDescription(getItemStack(block, meta), description);
+    }
+
+    public void addDescription(IModRegistry registry, Block block, String description) {
+        registry.addDescription(getItemStack(block), description);
     }
 }

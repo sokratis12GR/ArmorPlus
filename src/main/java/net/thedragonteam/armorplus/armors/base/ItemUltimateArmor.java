@@ -27,6 +27,7 @@ import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.util.Utils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
@@ -35,52 +36,55 @@ import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.registry.ModItems.theUltimate;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
 
 public class ItemUltimateArmor extends ItemArmor {
 
-    public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
+    private static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
             theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, (float) theUltimateArmorToughnessPoints);
 
     public EnumRarity formattingName;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(theUltimateArmor, 0, slot);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
         switch (slot) {
             case FEET:
                 String boots = "the_ultimate_boots";
-                setRegistryName(boots);
-                setUnlocalizedName(setName(boots));
+                this.setRegistryName(boots);
+                this.setUnlocalizedName(setName(boots));
                 break;
             case LEGS:
                 String leggings = "the_ultimate_leggings";
-                setRegistryName(leggings);
-                setUnlocalizedName(setName(leggings));
+                this.setRegistryName(leggings);
+                this.setUnlocalizedName(setName(leggings));
                 break;
             case CHEST:
                 String chestplate = "the_ultimate_chestplate";
-                setRegistryName(chestplate);
-                setUnlocalizedName(setName(chestplate));
+                this.setRegistryName(chestplate);
+                this.setUnlocalizedName(setName(chestplate));
                 break;
             case HEAD:
                 String helmet = "the_ultimate_helmet";
-                setRegistryName(helmet);
-                setUnlocalizedName(setName(helmet));
+                this.setRegistryName(helmet);
+                this.setUnlocalizedName(setName(helmet));
                 break;
         }
         GameRegistry.register(this);
-        setCreativeTab(ArmorPlus.tabArmorplus);
-        formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
+        this.setCreativeTab(ArmorPlus.tabArmorplus);
+        this.formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
-        return formattingName;
+        return this.formattingName;
     }
 
     @Override
@@ -141,16 +145,8 @@ public class ItemUltimateArmor extends ItemArmor {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (APConfig.getRD()) {
-            case EASY:
-                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
-            case EXPERT:
-                return repair.getItem() == new ItemStack(materials, 1, 4).getItem();
-            case HELLISH:
-                return false;
-        }
-        return true;
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
+        return isItemRepairable(repair, getItemStack(materials, 4), getItemStack(materials, 4));
     }
 
     @SideOnly(Side.CLIENT)

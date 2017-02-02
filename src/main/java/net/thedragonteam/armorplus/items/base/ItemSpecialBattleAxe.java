@@ -26,10 +26,12 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.util.Utils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
@@ -57,7 +59,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
 
     public ItemSpecialBattleAxe(BattleAxes battleAxes) {
         super(battleAxes.getToolMaterial());
-        setHasSubtypes(true);
+        this.setHasSubtypes(true);
         this.itemName = battleAxes.getName();
         this.battleAxes = battleAxes;
         this.itemEasy = battleAxes.getRepairEasy();
@@ -65,11 +67,11 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
         this.formatting = battleAxes.getTextFormatting();
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
-        setRegistryName(battleAxes.getName() + "_battle_axe");
-        setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
+        this.setRegistryName(battleAxes.getName() + "_battle_axe");
+        this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
+        this.formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
     }
 
     @Override
@@ -79,7 +81,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         switch (battleAxes) {
             case COAL:
@@ -132,28 +134,20 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
     }
 
     @Override
+    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        switch (getRD()) {
-            case EASY:
-                return repair.getItem() == itemEasy;
-            case EXPERT:
-                return repair.getItem() == itemExpert;
-            case HELLISH:
-                return false;
-        }
-        return true;
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
+        return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        if (getRegistryName() != null)
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
