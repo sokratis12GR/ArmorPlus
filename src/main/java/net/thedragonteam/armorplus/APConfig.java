@@ -236,23 +236,23 @@ public class APConfig {
 
     //Weapons.*.Bow
     @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Coal Bow will do")
-    public static double coalBowArrowBonusDamage = -1.0;
+    public static double coalBowArrowBonusDamage = -2.0;
     @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lapis Bow will do")
-    public static double lapisBowArrowBonusDamage = -0.5;
+    public static double lapisBowArrowBonusDamage = -1.5;
     @ModConfigProperty(category = "Weapons.Redstone.Bow", name = "redstoneBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Redstone Bow will do")
-    public static double redstoneBowArrowBonusDamage = -0.5;
+    public static double redstoneBowArrowBonusDamage = -1.5;
     @ModConfigProperty(category = "Weapons.Emerald.Bow", name = "emeraldBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Emerald Bow will do")
-    public static double emeraldBowArrowBonusDamage = 0.0;
+    public static double emeraldBowArrowBonusDamage = -0.5;
     @ModConfigProperty(category = "Weapons.Obsidian.Bow", name = "obsidianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Obsidian Bow will do")
-    public static double obsidianBowArrowBonusDamage = 0.5;
+    public static double obsidianBowArrowBonusDamage = 0.0;
     @ModConfigProperty(category = "Weapons.Lava.Bow", name = "lavaBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Lava Bow will do")
-    public static double lavaBowArrowBonusDamage = 1.0;
+    public static double lavaBowArrowBonusDamage = 0.5;
     @ModConfigProperty(category = "Weapons.Guardian.Bow", name = "guardianBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Guardian Bow will do")
     public static double guardianBowArrowBonusDamage = 1.5;
     @ModConfigProperty(category = "Weapons.SuperStar.Bow", name = "superStarBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Super Star Bow will do")
-    public static double superStarBowArrowBonusDamage = 2.5;
+    public static double superStarBowArrowBonusDamage = 1.5;
     @ModConfigProperty(category = "Weapons.EnderDragon.Bow", name = "enderDragonBowArrowBonusDamage", comment = "Set the amount of bonus arrow damage the Ender Dragon Bow will do")
-    public static double enderDragonBowArrowBonusDamage = 3.5;
+    public static double enderDragonBowArrowBonusDamage = 1.5;
     @ModConfigProperty(category = "Weapons.Coal.Bow", name = "coalBowDurability", comment = "Set the amount of durability the Coal Bow have")
     public static int coalBowDurability = 59;
     @ModConfigProperty(category = "Weapons.Lapis.Bow", name = "lapisBowDurability", comment = "Set the amount of durability the Lapis Bow have")
@@ -644,8 +644,8 @@ public class APConfig {
     public static boolean enableLavaCrystalTheEndGen = false;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "enableLavaCrystalOreTheNetherGen", comment = "Enable/Disable The Lava Crystal World Generation in the dimension `The Nether`")
     public static boolean enableLavaCrystalTheNetherGen = false;
-    @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldRarity", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldRarity = 8;
+    @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldRarityWorkingOne", comment = "Set the rarity level of the Lava Crystal Generation in the dimension `Overworld`")
+    public static int lavaCrystalOverworldRarityWorkingOne = 10;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMinYSpawn", comment = "Set the min POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
     public static int lavaCrystalOverworldMinYSpawn = 6;
     @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldMaxYSpawn", comment = "Set the max POS_Y level of the Lava Crystal Generation in the dimension `Overworld`")
@@ -662,8 +662,8 @@ public class APConfig {
     public static int lavaCrystalTheNetherMinYSpawn = 0;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherMaxYSpawn", comment = "Set the max POS_Y level of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherMaxYSpawn = 0;
-    @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `Overworld`")
-    public static int lavaCrystalOverworldVeinAmount = 2;
+    @ModConfigProperty(category = "WorldGeneration.Overworld", name = "lavaCrystalOverworldVeinAmountWorking", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `Overworld`")
+    public static int lavaCrystalOverworldVeinAmountWorking = 4;
     @ModConfigProperty(category = "WorldGeneration.TheEnd", name = "lavaCrystalTheEndVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The End`")
     public static int lavaCrystalTheEndVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")
@@ -776,6 +776,6 @@ public class APConfig {
     public enum RecipesDifficulty {
         EASY,
         EXPERT,
-        HELLISH//TODO: Add Hellish Mode recipes
+        HELLISH,;
     }
 }
