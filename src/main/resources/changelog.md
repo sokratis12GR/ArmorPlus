@@ -1,3 +1,25 @@
+ArmorPlus 1.11.2-9.5.4.5-beta
+----------------------------
+
+Bugs Fixed:
+
+* Literally impossible to find Lava Crystals
+
+ArmorPlus 1.11.2-9.5.3.4-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed Bows, their strength and fixed a crashing issue when trying to use them.
+
+* Added a recipe to convert back Colored Stone Brick walls into colored stone brick blocks
+
+* A few bugs that caused performance issues
+
+Dependency:
+
+* Now Requires TheDragonLib 1.11.2-2.2.3 in order to work.
+
 ArmorPlus 1.11.2-9.5.2.3-beta
 ----------------------------
 
