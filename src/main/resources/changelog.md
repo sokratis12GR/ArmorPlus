@@ -1,6 +1,15 @@
+**ArmorPlus 1.10.2-8.4.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **{Features Added}**
+    * Hellish Mode (2) un-repairable items
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.3.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
     * Added MineTweaker/CraftTweaker Integration:
      "mods.armorplus.Workbench.addShaped , mods.armorplus.Workbench.addShapeless and mods.armorplus.Workbench.remove"
@@ -9,40 +18,50 @@
 * **{Features Changed}**
     * Upgraded the models for the benches to the newer ones
     * Fixed the direction for the benches when placed
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.4.5**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed some issues with latest JEI
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.3.4**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed TGOTG not working properly on multiplayer
 * **{Features Added}**
     * Made TGOTG have a warning text, which warns that the item can be really dangerous
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.2.3**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Mappings}**
     * Updated to mappings: stable_29
     * Updated to forge: 1.10.2-12.18.2.2151
 * **{Bugs Fixed}**
     * Fixed not being able to connect (server & client) with higher version of forge
     * Fixed TGOTG having server side thrown errors
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.1.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed TGOTG having unlimited uses
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.2.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{NOTE}**
     * I really apologize for this, but after this update you must delete the old Config file
 * **{Features Added/Removed/Changed}**
@@ -50,59 +69,75 @@
         * Ultimate Armor from Armor now have the same values of 25 Armor Points rather than 75
         * Ender Dragon, Super Star, Guardian Armor now have the same values of 22 Armor Points
         * Nerfed most of the other armors as well.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.1.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Added more config options for full customization of the weapons's effects
 * **{Note}**
     * Any suggestions are greatly appreciated, you can contact me at sokratis12GR@gmail.com, via twitter https://twitter.com/sokratis12GR and/or via GitHub you can submit an issue with the request.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.5.11**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{JEI}**
     * Added description to the Wither Bone, Ender Dragon Scale, Guardian Scale to provide information for what they are used for and how to obtain them.
 * **{Bugs Fixed}**
     * Fixed config disabling the effects, don't set the effect to `none` just set the enableEffects for all pieces and full set to `false`
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.4.10**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Finally Fixed Regeneration Effect from Super Star Armor not working properly
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.3.9**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Crash opening the ArmorPlus Book
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.2.8**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Added more config options for full customization of the armor's effects
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.1.7**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed Crash issue on server start up
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.6**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Added the ability to set potion effects to the armors via config
     * Added the ability to color weapons' name
 * **{Bugs Fixed}**
     * Fixed Armors not having a real damage reduction value
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.5**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Bows/BattleAxes/Swords Damage are now configurable
     * Bows/BattleAxes/Swords Durability are now configurable
@@ -110,25 +145,31 @@
     * Changed Particles
     * Fixed dupe glitch
     * Fixed Potion Effect Particles being shown while wearing armors
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.4**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{JEI}**
     * Fixed world freeze/crash using 3.13.2.349 version of JEI
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.3**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Added new achievemnts, tweaked the previous ones
     * Tweaked base classes
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Versioning}**
-    * <MC>-<Major>.<Mino>.<Patch>.<Build>
+    * &lt;MC&gt;-&lt;Major&gt;.&lt;Mino&gt;.&lt;Patch&gt;.&lt;Build&gt;
 * **{Bugs Fixed}**
     * Fixed Ender Dragon Zombie being buggy and its movement
 * **{Features Added/Removed/Changed}**
@@ -161,10 +202,12 @@
         * Tweaked Lava Crystal Material, now requires 2 Lava Crystals or 1 Charged Lava Crystal
         * Tweaked Fire Storm modifier, now it has 10 levels instead of 4
         * Added compatability for Steel material via ArmorPlus' steel
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.0.0.0.1-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * MAJOR Update
         * Refactor of "Armor Forge" to "Workbench" (Tier 1)
@@ -174,20 +217,24 @@
     * Removed Prefixes before names that were listed
     * Made all items require to have SHIFT pressed to show their tooltips
     * Hidded Dev Items from JEI
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.1.6**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{JEI}**
     * Hidden the cosmetic items from JEI
 * **{Bugs Fixed}**
     * Crash on using either Armor Forge & Advanced Armor Forge
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.5**
 ============================
 ####The Energized Tinkering Update
 ######Entire Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Translations}**
 	* Updated French Translation of ArmorPlus (Thanks to ImmortalPharaoh7)
 	* Added Russian Translation of ArmorPlus (Thanks to FTB_lag)
@@ -206,10 +253,14 @@
     * Fixed a bug with Obsidian Armor Configs and Effects being wrong
     * Fixed a bug with Lapis Armor Configs and Effects being wrong
     * Fixed Ender Dragon Zombie drops
+
 ################################ Changes (dev version 1.10.2-7.0.1.0.4-dev )################################
+
 * **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
+
 ################################ Changes (dev version 1.10.2-7.0.1.0.3-dev )################################
+
 * **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
@@ -225,15 +276,19 @@
     * Made BaseEnergyArmor class confusing, then made it to no longer be
     * Added a lot of base classes for all types of items/weaps supported by Energy APIs
     * Changed Tesla tools/weapons tooltips to be more accurate using own mathod rather than the premade from Tesla
+
 ################################ Changes (dev version 1.10.2-7.0.1.0.2-dev )################################
+
 * **{Bugs Fixed}**
     * Fixed Guardian Armor's stats and achievements not working
     * Fixed a server Crash
 * **{Code Changed/Added/Removed}**
     * Removed TiC.postInit from Common Proxy
+
 ################################ Changes (dev version 1.10.2-7.0.1.0.1-dev )################################
+
 * **{Changed Format For Dev Versions}**
-    * <mcversion>-<major>.<api>.<minor>.<patch>.<build>-dev
+    * &lt;mcversion&gt;-&lt;major&gt;.&lt;api&gt;.&lt;minor&gt;.&lt;patch&gt;.&lt;build&gt;-dev
 * **{Bugs Fixed}**
     * Crash using 3.11.0.269 and later version of JEI
 * **{Features Added/Removed/Changed}**
@@ -250,16 +305,20 @@
 * **{Code Changed/Added/Removed}**
     * Cleaned Up some code from Main Mod file, like Ore Dicts moved to common proxy
     * Added an empty class ServerProxy - just because it should be here
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.4-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Dependencies}**
     * ArmorPlus now requires TheDragonLib 1.10.2-1.0.3.0 or later to work!
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.3-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.3.0 or later to work!
 * **{Features Added/Removed/Changed}**
@@ -275,21 +334,25 @@
     * Made BaseEnergyArmor class confusing, then made it to no longer be
     * Added a lot of base classes for all types of items/weaps supported by Energy APIs
     * Changed Tesla tools/weapons tooltips to be more accurate using own mathod rather than the premade from Tesla
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.2-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed Guardian Armor's stats and achievements not working
     * Fixed a server Crash
 * **{Code Changed/Added/Removed}**
     * Removed TiC.postInit from Common Proxy
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0.1-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Changed Format For Dev Versions}**
-    * <mcversion>-<major>.<api>.<minor>.<patch>.<build>-dev
+    * &lt;mcversion&gt;-&lt;major&gt;.&lt;api&gt;.&lt;minor&gt;.&lt;patch&gt;.&lt;build&gt;-dev
 * **{Bugs Fixed}**
     * Crash using 3.11.0.269 and later version of JEI
 * **{Features Added/Removed/Changed}**
@@ -306,12 +369,14 @@
 * **{Code Changed/Added/Removed}**
     * Cleaned Up some code from Main Mod file, like Ore Dicts moved to common proxy
     * Added an empty class ServerProxy - just because it should be here
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.0.0**
 ============================
 ####The Birth Of Something New
 ######Entire Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Dependencies}**
     * ArmorPlus now requires TheDragonCore 1.10.2-1.0.2.0 or later to work!
 * **{Features Added}**
@@ -319,7 +384,9 @@
 * **{Code Changed/Added/Removed}**
     * Moved all the Tesla Items/Blocks/Weapons to the Tesla Creative Tab
     * Added @Optional Annotations to all Tesla stuffs, so they work only if Tesla is installed
+
 ################################ Changes (dev version 1.10.2-7.0.2.0-dev )################################
+
 * **{Features Added/Removed/Changed}**
     * Tesla Items
         * Added Tesla Axe
@@ -343,7 +410,9 @@
     * Gradlew Clean Up
 * **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
+
 ################################ Changes (dev version 1.10.2-7.0.1.0-dev )################################
+
 * **{Features Added/Removed/Changed}**
     * Tesla Items/Blocks
         * Tesla Sword
@@ -365,7 +434,9 @@
     * Added the `hasTesla` Method so it checks if Tesla is loaded
     * Added Recipes for the Tesla tools/weapons
     * Removed Night Vision Key Bind
+
 ################################ Changes (dev version 1.10.2-7.0.0.0-dev )################################
+
 * **{Features Changed}**
     * Full Code Rewrite
     * Lava Armor now if is in the water with water breathing effect wont apply any debuffs nor break the armor
@@ -373,10 +444,12 @@
     * More Cosmetic Items for special people
         * Twitch Logo Cosmetic
         * Beam Logo Cosmetic
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.2.0-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Tesla Items
         * Added Tesla Axe
@@ -400,10 +473,12 @@
     * Gradlew Clean Up
 * **{Dependencies}**
     * Tesla (1.2.1.49 or later) (Optional) but required for Tesla Tools/Weapons and v2 armors
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.1.0-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added/Removed/Changed}**
     * Tesla Items/Blocks
         * Tesla Sword
@@ -425,10 +500,12 @@
     * Added the `hasTesla` Method so it checks if Tesla is loaded
     * Added Recipes for the Tesla tools/weapons
     * Removed Night Vision Key Bind
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-7.0.0.0-dev**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Changed}**
     * Full Code Rewrite
     * Lava Armor now if is in the water with water breathing effect wont apply any debuffs nor break the armor
@@ -436,24 +513,30 @@
     * More Cosmetic Items for special people
         * Twitch Logo Cosmetic
         * Beam Logo Cosmetic
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.9.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Fixed Ender Dragon Zombies Drop Rates
     * Fixed code variables
     * Fixed some problems with bows
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.9.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * A recipe bug with tinkers construct armors.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.9.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
     * Special Cosmetic for special people
 * **{Fratures Changed}**
@@ -463,25 +546,31 @@
     * Ender Dragon Zombies will have 40.0D HP by default and their movement speed is increased to 0.20D
 * **{Bugs Fixed}**
     * No Description and no name for the achievement "Welcome to ArmorPlus" 
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.8.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
     * Crash when loaded armorplus on a sever
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.8.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Changed}**
     * Armors again will be single set effect by default
     * NBT Item (Dev Item) (Ignore - Added for future planed releases)
 * **{Features Added}**
     * Keybind to enable/disable the Night Vison effect of The Ultimate Armor (Default: "N")
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.7.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
 	* World Gen Castles [WIP]
 	* If not the full set of the Ultimate Armor is equipped the player can't move
@@ -492,25 +581,31 @@
 	* Changed the recipe of the Armor Forge now uses Lapis Lazuli instead of lapis blocks
 * **{Features Removed}**
 	* All the 4 Reinforced Sets
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.6.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Changed}**
 	* Lava Armor no longer have the resistance effect.
 	* Lava Armor in contact with water will give the player slowness 2 and will damage the player with water damage and the armor will lose durability each tick.
 	* All armors will now be full set effect only by default.
 	* Integration with the one probe is now optional but will require you to craft the helmet with the probe in order to combine.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.5.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed With Compatibility}**
 	* Crash jei because of duplicated jei categories
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.5.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
 	* White Stone Brick
 	* White Stone Brick Tower
@@ -519,16 +614,20 @@
 * **{Bugs Fixed}**
 	* Names not displaying correctly
 	* Fixed a crash on easy mode
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.4.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
 	* Missing Texture on some Items/Blocks
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.4.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Changed}**
 	* Fixed some compatability issues in some situations
 	* Unlocalized names are now all lowercase
@@ -536,44 +635,56 @@
 	* Model names are now all lowercase
 	* Resource Location names are now all lowercase
 	* Language File changed the item's unlocalized names
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.3.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Balancing Update}**
 	* Reduced Ender Dragon Zombie's HP from 100 to 20
 * **{Features Added}**
 	* Added a config option for all Ender Dragon Zombie Properties (hp, damage, knockback resistance etc..)
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.2.4**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Balancing Update}**
 	* Fixed Ender Dragon Zombie Spawn Rates
 * **{Bugs Fixed}**
 	* Wrong Loot Table for the Ender Dragon Zombie
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.2.3**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Balancing Update}**
 	* Fixed Ender Dragon Zombie Spawn Rates
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.2.2**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
 	* Fixed Ender Dragon Zombie not rendering the Ender Dragon Battle Axe
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.2.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
 	* Server Crash on Start up
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.2.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
 	* Entities (Monsters)
 		* Ender Dragon Zombie (will spawn with full Ender Dragon Armor and Battle Axe)
@@ -597,27 +708,33 @@
 	* The Ultimate Armor is now unbreakable, added Mending to it, and made it unable to be combined with other enchantments
 	* Changed some deprecated code
 	* Updated some old code information
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.1.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
 	* Arrows
 		* Lapis Arrow (Gives the enemy Nausa)
 		* Redstone Arrow (Gives the enemy Slowness)
 		* Lava Arrow (Sets the enemy on Fire)
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Bugs Fixed}**
 	* Lava Crystal Ore spawn being between y level 58 and 8 rather than 16 and 6
 * **{Features Added}**
 	* Added the ability to disable the DeBuffs from the Ultimate Armor
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-6.0.0.0**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * **{Features Added}**
 	* The One Probe Integration
 	* In Game Config GUI support
@@ -630,4 +747,5 @@
 	* Nerfed the Crafting recipes cost of all Tinkers Armors in expert mode
 	* Replaced a lot of the old recipes, changed them and moved them to the Advanced Armor Forge
 	* Tweaked the Configuration File (I can't promise its gonna be for last)
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
