@@ -11,6 +11,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -45,19 +46,19 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 2;
+    public static final int PATCH = 4;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 3;
+    public static final int BUILD = 5;
     /**
      * The ArmorPlus Version
      */
     public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-beta";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11-2.0.1";
+    public static final String LIB_VERSION = "1.11-2.1.0";
     //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
     //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
     public static final String BAUBLES_VERSION = "1.4.0";
@@ -85,7 +86,7 @@ public class ArmorPlus {
     });
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
-    @Mod.Instance(ArmorPlus.MODID)
+    @Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
     private GuiHandler GuiHandler = new GuiHandler();
 
@@ -105,6 +106,19 @@ public class ArmorPlus {
         return Loader.isModLoaded("baubles");
     }
 
+    public static boolean isTheDragonLibLoaded() {
+        return Loader.isModLoaded("thedragonlib");
+    }
+
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
+        configuration = new Configuration(event.getSuggestedConfigurationFile());
+        configProcessor.processConfig(APConfig.class, configuration);
+        featureParser.registerFeatures();
+        proxy.preInit(event);
+    }
+
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
@@ -117,15 +131,6 @@ public class ArmorPlus {
     public void initServer(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
         proxy.init(event);
-    }
-
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
-        configuration = new Configuration(event.getSuggestedConfigurationFile());
-        configProcessor.processConfig(APConfig.class, configuration);
-        featureParser.registerFeatures();
-        proxy.preInit(event);
     }
 
     @EventHandler
