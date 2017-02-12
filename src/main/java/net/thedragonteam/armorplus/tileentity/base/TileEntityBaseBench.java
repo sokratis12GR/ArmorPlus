@@ -85,9 +85,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         }
         nbt.setTag("Items", list);
 
-        if (this.hasCustomName()) {
-            nbt.setString("CustomName", this.getCustomName());
-        }
+        if (this.hasCustomName()) nbt.setString("CustomName", this.getCustomName());
         return nbt;
     }
 
@@ -102,9 +100,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
             this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
         }
 
-        if (nbt.hasKey("CustomName", 8)) {
-            this.setCustomName(nbt.getString("CustomName"));
-        }
+        if (nbt.hasKey("CustomName", 8)) this.setCustomName(nbt.getString("CustomName"));
     }
 
     //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket

@@ -36,7 +36,8 @@ public class APTeslaUtils {
         if (isPoweredItem(stack)) {
             BaseTeslaContainer container = getContainer(stack);
             return getContainer(stack).getStoredPower();
-        } else return 0;
+        }
+        return 0;
     }
 
     @Method(modid = "tesla")

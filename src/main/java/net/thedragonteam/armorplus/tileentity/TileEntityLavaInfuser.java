@@ -109,9 +109,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.infuserItemStacks.set(index, stack);
 
-        if (stack.getCount() > this.getInventoryStackLimit()) {
-            stack.setCount(this.getInventoryStackLimit());
-        }
+        if (stack.getCount() > this.getInventoryStackLimit()) stack.setCount(this.getInventoryStackLimit());
 
         if (index == 0 && !flag) {
             this.totalInfusingTime = this.getInfusionTime(stack);
@@ -155,9 +153,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         this.totalInfusingTime = compound.getInteger("InfusingTimeTotal");
         this.currentItemInfusingTime = getItemChargeTime(this.infuserItemStacks.get(1));
 
-        if (compound.hasKey("CustomName", 8)) {
-            this.infuserCustomName = compound.getString("CustomName");
-        }
+        if (compound.hasKey("CustomName", 8)) this.infuserCustomName = compound.getString("CustomName");
     }
 
     @Override
@@ -169,9 +165,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         compound.setInteger("InfusingTimeTotal", (short) this.totalInfusingTime);
         ItemStackHelper.saveAllItems(compound, this.infuserItemStacks);
 
-        if (this.hasCustomName()) {
-            compound.setString("CustomName", this.infuserCustomName);
-        }
+        if (this.hasCustomName()) compound.setString("CustomName", this.infuserCustomName);
         return compound;
     }
 
@@ -239,12 +233,9 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
                         this.chargeItem();
                         flag1 = true;
                     }
-                } else {
-                    this.infusingTime = 0;
-                }
-            } else if (!this.isInfusing() && this.infusingTime > 0) {
+                } else this.infusingTime = 0;
+            } else if (!this.isInfusing() && this.infusingTime > 0)
                 this.infusingTime = MathHelper.clamp(this.infusingTime - 2, 0, this.totalInfusingTime);
-            }
 
             if (flag != this.isInfusing()) {
                 flag1 = true;
@@ -252,9 +243,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
             }
         }
 
-        if (flag1) {
-            this.markDirty();
-        }
+        if (flag1) this.markDirty();
     }
 
     public int getInfusionTime(ItemStack stack) {
@@ -265,21 +254,15 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
      */
     private boolean canCharge() {
-        if (this.infuserItemStacks.get(0).isEmpty()) {
-            return false;
-        } else {
-            ItemStack itemstack = LavaInfuserManager.getInstance().getSmeltingResult(this.infuserItemStacks.get(0));
+        if (this.infuserItemStacks.get(0).isEmpty()) return false;
+        ItemStack itemstack = LavaInfuserManager.getInstance().getSmeltingResult(this.infuserItemStacks.get(0));
 
-            if (itemstack.isEmpty()) {
-                return false;
-            } else {
-                ItemStack itemstack1 = this.infuserItemStacks.get(2);
-                if (itemstack1.isEmpty()) return true;
-                if (!itemstack1.isItemEqual(itemstack)) return false;
-                int result = itemstack1.getCount() + itemstack.getCount();
-                return result <= getInventoryStackLimit() && result <= itemstack1.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
-            }
-        }
+        if (itemstack.isEmpty()) return false;
+        ItemStack itemstack1 = this.infuserItemStacks.get(2);
+        if (itemstack1.isEmpty()) return true;
+        if (!itemstack1.isItemEqual(itemstack)) return false;
+        int result = itemstack1.getCount() + itemstack.getCount();
+        return result <= getInventoryStackLimit() && result <= itemstack1.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
     }
 
     /**
@@ -291,11 +274,8 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
             ItemStack itemstack1 = LavaInfuserManager.getInstance().getSmeltingResult(itemstack);
             ItemStack itemstack2 = this.infuserItemStacks.get(2);
 
-            if (itemstack2.isEmpty()) {
-                this.infuserItemStacks.set(2, itemstack1.copy());
-            } else if (itemstack2.getItem() == itemstack1.getItem()) {
-                itemstack2.grow(itemstack1.getCount());
-            }
+            if (itemstack2.isEmpty()) this.infuserItemStacks.set(2, itemstack1.copy());
+            else if (itemstack2.getItem() == itemstack1.getItem()) itemstack2.grow(itemstack1.getCount());
 
             itemstack.shrink(1);
         }
@@ -307,11 +287,8 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     public static int getItemChargeTime(ItemStack stack) {
         if (stack.isEmpty()) return 0;
-        else {
-            Item item = stack.getItem();
-            if (item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal) return 500;
-            return GameRegistry.getFuelValue(stack);
-        }
+        Item item = stack.getItem();
+        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : GameRegistry.getFuelValue(stack);
     }
 
     /**
@@ -348,14 +325,10 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     @Override
     public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
-        if (index == 2) {
-            return false;
-        } else if (index != 1) {
-            return true;
-        } else {
-            ItemStack itemstack = this.infuserItemStacks.get(1);
-            return isItemFuel(stack) || SlotLavaInfuserFuel.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
-        }
+        if (index == 2) return false;
+        else if (index != 1) return true;
+        ItemStack itemstack = this.infuserItemStacks.get(1);
+        return isItemFuel(stack) || SlotLavaInfuserFuel.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
     }
 
     @Override
@@ -376,13 +349,11 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if automation can extract the given item in the given slot from the given side.
      */
     @Override
-    public boolean canExtractItem(int index,@Nonnull ItemStack stack,@Nonnull EnumFacing direction) {
+    public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
         if (direction == EnumFacing.DOWN && index == 1) {
             Item item = stack.getItem();
 
-            if (item != Items.WATER_BUCKET && item != Items.BUCKET) {
-                return false;
-            }
+            if (item != Items.WATER_BUCKET && item != Items.BUCKET) return false;
         }
 
         return true;

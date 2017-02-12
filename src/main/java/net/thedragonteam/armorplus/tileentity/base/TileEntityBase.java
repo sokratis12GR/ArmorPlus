@@ -27,7 +27,7 @@ public abstract class TileEntityBase extends TileEntity {
 
     private Object teslaWrapper;
 
-    TileEntityBase() {
+    public TileEntityBase() {
     }
 
     @Override
@@ -41,28 +41,18 @@ public abstract class TileEntityBase extends TileEntity {
     public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             IItemHandler handler = this.getItemHandler(facing);
-            if (handler != null) {
-                return (T) handler;
-            }
+            if (handler != null) return (T) handler;
         } else if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             IFluidHandler tank = this.getFluidHandler(facing);
-            if (tank != null) {
-                return (T) tank;
-            }
+            if (tank != null) return (T) tank;
         } else if (capability == CapabilityEnergy.ENERGY) {
             IEnergyStorage storage = this.getEnergyStorage(facing);
+            if (storage != null) return (T) storage;
+        } else if (ArmorPlus.isTeslaLoaded() && (capability == APTeslaUtils.teslaConsumer || capability == APTeslaUtils.teslaProducer || capability == APTeslaUtils.teslaHolder)) {
+            IEnergyStorage storage = this.getEnergyStorage(facing);
             if (storage != null) {
-                return (T) storage;
-            }
-        } else if (ArmorPlus.isTeslaLoaded()) {
-            if (capability == APTeslaUtils.teslaConsumer || capability == APTeslaUtils.teslaProducer || capability == APTeslaUtils.teslaHolder) {
-                IEnergyStorage storage = this.getEnergyStorage(facing);
-                if (storage != null) {
-                    if (this.teslaWrapper == null) {
-                        this.teslaWrapper = new TeslaForgeUnitsWrapper(storage);
-                    }
-                    return (T) this.teslaWrapper;
-                }
+                if (this.teslaWrapper == null) this.teslaWrapper = new TeslaForgeUnitsWrapper(storage);
+                return (T) this.teslaWrapper;
             }
         }
         return super.getCapability(capability, facing);

@@ -42,9 +42,7 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-        if (i == Item.getItemFromBlock(ModBlocks.benches[0])) {
-            event.player.addStat(ModAchievements.welcomeToArmorPlus);
-        }
+        if (i == Item.getItemFromBlock(ModBlocks.benches[0])) event.player.addStat(ModAchievements.welcomeToArmorPlus);
     }
 
     @SubscribeEvent
