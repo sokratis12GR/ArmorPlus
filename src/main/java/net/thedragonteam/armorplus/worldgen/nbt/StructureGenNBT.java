@@ -37,8 +37,7 @@ public class StructureGenNBT implements IWorldGenerator {
 
         Biome biome = world.getBiomeForCoordsBody(posXZ);
 
-        if (!(world instanceof WorldServer))
-            return;
+        if (!(world instanceof WorldServer)) return;
 
         WorldServer serverworld = (WorldServer) world;
         //BlockPos playerspawn = serverworld.provider.getSpawnPoint();

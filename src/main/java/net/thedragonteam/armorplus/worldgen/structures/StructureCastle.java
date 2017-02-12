@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -141,8 +142,8 @@ public class StructureCastle extends WorldGenerator {
         if (canSpawnHere(worldIn, corner)) {
             // figure out each IBlockState we will use
             IBlockState stoneBrick = ModBlocks.stoneBricks[0].getDefaultState();
-            for (int i = 0; i < ModBlocks.stoneBricks.length; i++) {
-                stoneBrick = ModBlocks.stoneBricks[i].getDefaultState();
+            for (BlockStoneBrick stoneBrickBlock : ModBlocks.stoneBricks) {
+                stoneBrick = stoneBrickBlock.getDefaultState();
             }
             IBlockState doorLower = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER);
             IBlockState doorUpper = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
