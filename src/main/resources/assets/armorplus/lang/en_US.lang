@@ -18,6 +18,15 @@ gui.armorplus.info.text_line_four=you will need to change the config
 gui.armorplus.info.text_line_five=From `I:Recipe:1` to `I:Recipe:0`.
 gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
 
+#CommandInfoText
+command.armorplus.info_line_one=%s[%s (%s) by%s sokratis12GR (TheDragonTeam)]
+command.armorplus.info_line_two=%s[Thank You %s for using %s]
+command.armorplus.info_line_three=%s[modid: %s]
+command.armorplus.info_line_four=%s[Minecraft Version: %s]
+command.armorplus.info_line_five=%s[ArmorPlus recipe difficulty: %s]
+command.armorplus.info_line_six=%s[Recipes] use command /armorplus wiki
+command.armorplus.info_line_seven=%s[Discord] use command /armorplus discord
+
 #Enchantmnets
 enchantment.armorplus.life_steal=Life Steal
 enchantment.armorplus.life_steal.desc=Steal's the attacked entity's health and heals you
@@ -90,6 +99,10 @@ commands.info.help=Shows Information about ArmorPlus
 #CommandWiki
 commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
+
+#CommandDiscord
+commands.wiki.usage=/armorplus discord
+commands.wiki.help=Opens a Link invite in your browser to our TheDragonTeam Community Discord server
 
 #JEI
 gui.jei.category.workbench=Workbench
@@ -414,13 +427,13 @@ achievement.armorplus.craft_slime_armor.desc=craft a Slime Armor Piece
 achievement.armorplus.craft_chicken_armor=Its time to go Faster!
 achievement.armorplus.craft_chicken_armor.desc=craft a Chicken Armor Piece
 achievement.armorplus.craft_workbench=Welcome to ArmorPlus!
-achievement.armorplus.craft_workbench.desc=craft a Workbench from ArmorPlus
+achievement.armorplus.craft_workbench.desc=craft the a Workbench from ArmorPlus
 achievement.armorplus.craft_high_tech_bench=More Complexity
-achievement.armorplus.craft_high_tech_bench.desc=craft a High-Tech Bench from ArmorPlus
+achievement.armorplus.craft_high_tech_bench.desc=craft the a High-Tech Bench from ArmorPlus
 achievement.armorplus.craft_ulti_tech_bench=Ultimately Advanced
-achievement.armorplus.craft_ulti_tech_bench.desc=craft an Ulti-Tech Bench from ArmorPlus
+achievement.armorplus.craft_ulti_tech_bench.desc=craft the an Ulti-Tech Bench from ArmorPlus
 achievement.armorplus.craft_champion_bench=This is only for real Champions
-achievement.armorplus.craft_champion_bench.desc=craft a Champion Bench from ArmorPlus
+achievement.armorplus.craft_champion_bench.desc=craft the a Champion Bench from ArmorPlus
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
 
@@ -456,3 +469,9 @@ effect.glowing.name=Glowing
 effect.luck.name=Luck
 effect.unluck.name=Bad Luck
 effect.levitation.name=Levitation
+
+#ArmorPlus Effects
+effect.armorplus.empty.name=Empty
+effect.armorplus.empty=Empty
+armorplus.empty.name=Empty
+armorplus.empty=Empty
