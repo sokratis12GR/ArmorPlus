@@ -14,9 +14,9 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
 
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
 
 public class EntityCoalArrow extends EntityArrow {
 
@@ -42,9 +42,8 @@ public class EntityCoalArrow extends EntityArrow {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if (this.world.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround)
             spawnParticle(this, EnumParticleTypes.CLOUD, this.posX, this.posY, this.posZ);
-        }
     }
 
     @Override
@@ -56,8 +55,6 @@ public class EntityCoalArrow extends EntityArrow {
     @Override
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        if (living != shootingEntity) {
-            addPotion(living, MobEffects.BLINDNESS, 180, 0, BAD);
-        }
+        if (living != shootingEntity) addPotion(living, MobEffects.BLINDNESS, 180, 0, BAD);
     }
 }

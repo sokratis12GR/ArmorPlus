@@ -35,6 +35,7 @@ public class RenderEnderDragonZombie extends RenderBiped<EntityEnderDragonZombie
         this.layerRenderers.get(0);
         this.addLayer(new LayerHeldItem(this));
         new LayerBipedArmor(this) {
+            @Override
             protected void initArmor() {
                 this.modelLeggings = new ModelZombie(0.5F, true);
                 this.modelArmor = new ModelZombie(1.0F, true);

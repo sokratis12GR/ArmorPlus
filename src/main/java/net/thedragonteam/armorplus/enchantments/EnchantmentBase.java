@@ -77,7 +77,6 @@ public class EnchantmentBase extends Enchantment {
         return this.getMinEnchantability(enchantmentLevel) + this.maxEnchantability;
     }
 
-
     @Override
     public int getMaxLevel() {
         return this.max;

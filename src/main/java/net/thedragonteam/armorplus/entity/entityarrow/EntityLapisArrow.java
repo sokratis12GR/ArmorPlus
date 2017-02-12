@@ -14,9 +14,9 @@ import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
 
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 
 public class EntityLapisArrow extends EntityArrow {
 
@@ -55,9 +55,7 @@ public class EntityLapisArrow extends EntityArrow {
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
 
-        if (living != shootingEntity) {
-            addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
-        }
+        if (living != shootingEntity) addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
     }
 
 }

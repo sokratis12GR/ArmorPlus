@@ -135,7 +135,8 @@ public class EntityEnderDragonZombie extends EntityMob {
             if (entityIn instanceof EntityLivingBase && enableEnderDragonZombieWithering)
                 ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
             return true;
-        } else return false;
+        }
+        return false;
     }
 
     @Override

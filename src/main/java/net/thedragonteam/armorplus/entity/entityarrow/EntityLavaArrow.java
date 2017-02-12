@@ -15,7 +15,6 @@ import javax.annotation.Nonnull;
 
 import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
 
-
 public class EntityLavaArrow extends EntityArrow {
 
     private EnumParticleTypes particle;
@@ -40,9 +39,8 @@ public class EntityLavaArrow extends EntityArrow {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if (this.world.isRemote && !this.inGround) {
+        if (this.world.isRemote && !this.inGround)
             spawnParticle(this, EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ);
-        }
     }
 
     @Override
@@ -54,9 +52,7 @@ public class EntityLavaArrow extends EntityArrow {
     @Override
     public void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        if (living != shootingEntity) {
-            living.setFire(6);
-        }
+        if (living != shootingEntity) living.setFire(6);
     }
 
 }
