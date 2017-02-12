@@ -30,13 +30,14 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         configDir = new File(event.getModConfigurationDirectory() + "/" + ArmorPlus.MODID);
         configDir.mkdirs();
+        ModPotions.registerPotions();
         ModEntities.init();
         ModBlocks.init();
         LogHelper.debug("Blocks Successfully Registered");
-        ModItems.init(); // Initializes the items
-        APItems.init(); // Initializes the helper item class
         APBlocks.init();
+        ModItems.init(); // Initializes the items
         LogHelper.debug("Items Successfully Registered");
+        APItems.init(); // Initializes the helper item class
         registerWorldGenerators();
         registerTileEntities();
         TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
@@ -85,6 +86,7 @@ public class CommonProxy {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "APUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree");
         GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench.class, "ChampionBench", "APChampionBench", "WorkbenchTier4", "WorkbenchTierFour");
         GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser.class, "LavaInfuser", "APLavaInfuser");
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityRitualAltar.class, "RitualAltar", "APRitualAltar");
     }
 
     public void registerWorldGenerators() {
