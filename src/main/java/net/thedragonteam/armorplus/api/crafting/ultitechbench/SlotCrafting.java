@@ -58,10 +58,7 @@ public class SlotCrafting extends Slot {
     @Override
     @Nonnull
     public ItemStack decrStackSize(int amount) {
-        if (this.getHasStack()) {
-            this.amountCrafted += Math.min(amount, this.getStack().getCount());
-        }
-
+        if (this.getHasStack()) this.amountCrafted += Math.min(amount, this.getStack().getCount());
         return super.decrStackSize(amount);
     }
 

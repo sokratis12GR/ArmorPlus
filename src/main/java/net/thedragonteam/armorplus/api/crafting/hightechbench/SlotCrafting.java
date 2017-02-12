@@ -59,9 +59,7 @@ public class SlotCrafting extends Slot {
     @Override
     @Nonnull
     public ItemStack decrStackSize(int amount) {
-        if (this.getHasStack()) {
-            this.amountCrafted += Math.min(amount, this.getStack().getCount());
-        }
+        if (this.getHasStack()) this.amountCrafted += Math.min(amount, this.getStack().getCount());
 
         return super.decrStackSize(amount);
     }
@@ -101,16 +99,16 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == cobaltHelmet || stack.getItem() == cobaltChestplate || stack.getItem() == cobaltLeggings || stack.getItem() == cobaltBoots)
             this.player.addStat(ModAchievements.craftCobaltArmor, 1);
         /*The Stronger The Better! - Achievement Trigger*/
-        if (stack.getItem() == arditeHelmet || stack.getItem() == arditeChestplate || stack.getItem() == arditeLeggings || stack.getItem() == arditeBoots)
+        else if (stack.getItem() == arditeHelmet || stack.getItem() == arditeChestplate || stack.getItem() == arditeLeggings || stack.getItem() == arditeBoots)
             this.player.addStat(ModAchievements.craftArditeArmor, 1);
         /*The Tinkers' Armors God! - Achievement Trigger*/
-        if (stack.getItem() == manyullynHelmet || stack.getItem() == manyullynChestplate || stack.getItem() == manyullynLeggings || stack.getItem() == manyullynBoots)
+        else if (stack.getItem() == manyullynHelmet || stack.getItem() == manyullynChestplate || stack.getItem() == manyullynLeggings || stack.getItem() == manyullynBoots)
             this.player.addStat(ModAchievements.craftManyullynArmor, 1);
         /* Oink! - Achievement Trigger*/
-        if (stack.getItem() == pigIronHelmet || stack.getItem() == pigIronChestplate || stack.getItem() == pigIronLeggings || stack.getItem() == pigIronBoots)
+        else if (stack.getItem() == pigIronHelmet || stack.getItem() == pigIronChestplate || stack.getItem() == pigIronLeggings || stack.getItem() == pigIronBoots)
             this.player.addStat(ModAchievements.craftPigIronArmor, 1);
         /* Fascinating! - Achievement Trigger*/
-        if (stack.getItem() == knightSlimeHelmet || stack.getItem() == knightSlimeChestplate || stack.getItem() == knightSlimeLeggings || stack.getItem() == knightSlimeBoots)
+        else if (stack.getItem() == knightSlimeHelmet || stack.getItem() == knightSlimeChestplate || stack.getItem() == knightSlimeLeggings || stack.getItem() == knightSlimeBoots)
             this.player.addStat(ModAchievements.craftKnightSlimeArmor, 1);
     }
 

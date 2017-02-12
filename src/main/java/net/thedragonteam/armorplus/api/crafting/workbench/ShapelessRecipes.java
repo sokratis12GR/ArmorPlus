@@ -73,9 +73,7 @@ public class ShapelessRecipes implements IRecipe {
                         }
                     }
 
-                    if (!flag) {
-                        return false;
-                    }
+                    if (!flag) return false;
                 }
             }
         }

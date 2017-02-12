@@ -187,11 +187,7 @@ public class ShapedOreRecipe implements IRecipe {
                 Object target = null;
 
                 if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-                    if (mirror) {
-                        target = input[width - subX - 1 + subY * width];
-                    } else {
-                        target = input[subX + subY * width];
-                    }
+                    target = mirror ? input[width - subX - 1 + subY * width] : input[subX + subY * width];
                 }
 
                 ItemStack slot = inv.getStackInRowAndColumn(x, y);

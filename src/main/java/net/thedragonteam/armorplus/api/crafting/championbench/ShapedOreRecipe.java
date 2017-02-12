@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -137,8 +138,9 @@ public class ShapedOreRecipe implements IRecipe {
     /**
      * Returns an Item that is the result of this recipe
      */
+    @Nonnull
     @Override
-    public ItemStack getCraftingResult(InventoryCrafting var1) {
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         return output.copy();
     }
 
@@ -150,6 +152,7 @@ public class ShapedOreRecipe implements IRecipe {
         return input.length;
     }
 
+    @Nonnull
     @Override
     public ItemStack getRecipeOutput() {
         return output;
@@ -159,16 +162,13 @@ public class ShapedOreRecipe implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(InventoryCrafting inv, World world) {
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world) {
         for (int x = 0; x <= MAX_CRAFT_GRID_WIDTH - width; x++) {
             for (int y = 0; y <= MAX_CRAFT_GRID_HEIGHT - height; ++y) {
-                if (checkMatch(inv, x, y, false)) {
+                if (checkMatch(inv, x, y, false) || mirrored && checkMatch(inv, x, y, true)) {
                     return true;
                 }
 
-                if (mirrored && checkMatch(inv, x, y, true)) {
-                    return true;
-                }
             }
         }
 
@@ -184,11 +184,7 @@ public class ShapedOreRecipe implements IRecipe {
                 Object target = null;
 
                 if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-                    if (mirror) {
-                        target = input[width - subX - 1 + subY * width];
-                    } else {
-                        target = input[subX + subY * width];
-                    }
+                    target = mirror ? input[width - subX - 1 + subY * width] : input[subX + subY * width];
                 }
 
                 ItemStack slot = inv.getStackInRowAndColumn(x, y);
@@ -233,8 +229,9 @@ public class ShapedOreRecipe implements IRecipe {
     }
 
     //getRecipeLeftovers
+    @Nonnull
     @Override
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }
 

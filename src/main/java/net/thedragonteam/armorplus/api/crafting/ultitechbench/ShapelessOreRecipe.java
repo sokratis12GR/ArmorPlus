@@ -20,24 +20,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+
 public class ShapelessOreRecipe implements IRecipe {
     protected ItemStack output = ItemStack.EMPTY;
     protected NonNullList<Object> input = NonNullList.create();
 
     public ShapelessOreRecipe(Block result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapelessOreRecipe(Item result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapelessOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
         for (Object in : recipe)
             if (in instanceof ItemStack) input.add(((ItemStack) in).copy());
-            else if (in instanceof Item) input.add(new ItemStack((Item) in));
-            else if (in instanceof Block) input.add(new ItemStack((Block) in));
+            else if (in instanceof Item) input.add(getItemStack((Item) in));
+            else if (in instanceof Block) input.add(getItemStack((Block) in));
             else if (in instanceof String) input.add(OreDictionary.getOres((String) in));
             else {
                 String ret = "Invalid shapeless ore recipe: ";
@@ -54,12 +56,11 @@ public class ShapelessOreRecipe implements IRecipe {
 
         for (ItemStack ingredient : recipe.input) {
             Object finalObj = ingredient;
-            for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
+            for (Map.Entry<ItemStack, String> replace : replacements.entrySet())
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, false)) {
                     finalObj = OreDictionary.getOres(replace.getValue());
                     break;
                 }
-            }
             input.add(finalObj);
         }
     }
@@ -119,9 +120,7 @@ public class ShapelessOreRecipe implements IRecipe {
                     }
                 }
 
-                if (!inRecipe) {
-                    return false;
-                }
+                if (!inRecipe) return false;
             }
         }
 

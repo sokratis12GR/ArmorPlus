@@ -20,6 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+
 public class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
     public static final int MAX_CRAFT_GRID_WIDTH = 3;
@@ -32,11 +34,11 @@ public class ShapedOreRecipe implements IRecipe {
     protected boolean mirrored = true;
 
     public ShapedOreRecipe(Block result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapedOreRecipe(Item result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapedOreRecipe(ItemStack result, Object... recipe) {
@@ -90,9 +92,9 @@ public class ShapedOreRecipe implements IRecipe {
             if (in instanceof ItemStack) {
                 itemMap.put(chr, ((ItemStack) in).copy());
             } else if (in instanceof Item) {
-                itemMap.put(chr, new ItemStack((Item) in));
+                itemMap.put(chr, getItemStack((Item) in));
             } else if (in instanceof Block) {
-                itemMap.put(chr, new ItemStack((Block) in, 1, OreDictionary.WILDCARD_VALUE));
+                itemMap.put(chr, getItemStack((Block) in, 1, OreDictionary.WILDCARD_VALUE));
             } else if (in instanceof String) {
                 itemMap.put(chr, OreDictionary.getOres((String) in));
             } else {
@@ -165,13 +167,7 @@ public class ShapedOreRecipe implements IRecipe {
     public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world) {
         for (int x = 0; x <= MAX_CRAFT_GRID_WIDTH - width; x++) {
             for (int y = 0; y <= MAX_CRAFT_GRID_HEIGHT - height; ++y) {
-                if (checkMatch(inv, x, y, false)) {
-                    return true;
-                }
-
-                if (mirrored && checkMatch(inv, x, y, true)) {
-                    return true;
-                }
+                if (checkMatch(inv, x, y, false) || mirrored && checkMatch(inv, x, y, true)) return true;
             }
         }
 
@@ -187,11 +183,7 @@ public class ShapedOreRecipe implements IRecipe {
                 Object target = null;
 
                 if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-                    if (mirror) {
-                        target = input[width - subX - 1 + subY * width];
-                    } else {
-                        target = input[subX + subY * width];
-                    }
+                    target = mirror ? input[width - subX - 1 + subY * width] : input[subX + subY * width];
                 }
 
                 ItemStack slot = inv.getStackInRowAndColumn(x, y);

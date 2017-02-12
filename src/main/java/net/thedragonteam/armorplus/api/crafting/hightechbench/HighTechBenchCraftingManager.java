@@ -103,11 +103,7 @@ public class HighTechBenchCraftingManager {
         for (int l = 0; l < j * k; ++l) {
             char c0 = s.charAt(l);
 
-            if (map.containsKey(c0)) {
-                aitemstack[l] = map.get(c0).copy();
-            } else {
-                aitemstack[l] = ItemStack.EMPTY;
-            }
+            aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
         }
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
@@ -127,9 +123,7 @@ public class HighTechBenchCraftingManager {
             } else if (object instanceof Item) {
                 list.add(new ItemStack((Item) object));
             } else {
-                if (!(object instanceof Block)) {
-                    throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
-                }
+                assert object instanceof Block : "Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!";
 
                 list.add(new ItemStack((Block) object));
             }

@@ -43,7 +43,7 @@ public class ShapedRecipes implements IRecipe {
         this.recipeItems = ingredientsIn;
 
         for (int i = 0; i < this.recipeItems.length; ++i) {
-            if (this.recipeItems[i] == null) {
+            if (this.recipeItems[i].isEmpty()) {
                 this.recipeItems[i] = ItemStack.EMPTY;
             }
         }
@@ -77,13 +77,10 @@ public class ShapedRecipes implements IRecipe {
     public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
         for (int i = 0; i <= 10 - this.recipeWidth; ++i) {
             for (int j = 0; j <= 10 - this.recipeHeight; ++j) {
-                if (this.checkMatch(inv, i, j, true)) {
+                if (this.checkMatch(inv, i, j, true) || this.checkMatch(inv, i, j, false)) {
                     return true;
                 }
 
-                if (this.checkMatch(inv, i, j, false)) {
-                    return true;
-                }
             }
         }
 
@@ -101,25 +98,13 @@ public class ShapedRecipes implements IRecipe {
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
-                    if (mirrored_) {
-                        itemstack = this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth];
-                    } else {
-                        itemstack = this.recipeItems[k + l * this.recipeWidth];
-                    }
+                    itemstack = mirrored_ ? this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth] : this.recipeItems[k + l * this.recipeWidth];
                 }
 
                 ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);
 
                 if (!itemstack1.isEmpty() || !itemstack.isEmpty()) {
-                    if (itemstack1.isEmpty() != itemstack.isEmpty()) {
-                        return false;
-                    }
-
-                    if (itemstack.getItem() != itemstack1.getItem()) {
-                        return false;
-                    }
-
-                    if (itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
+                    if (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
                         return false;
                     }
                 }

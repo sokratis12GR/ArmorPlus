@@ -20,16 +20,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+
 public class ShapelessOreRecipe implements IRecipe {
     protected ItemStack output = ItemStack.EMPTY;
     protected NonNullList<Object> input = NonNullList.create();
 
     public ShapelessOreRecipe(Block result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapelessOreRecipe(Item result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapelessOreRecipe(ItemStack result, Object... recipe) {
@@ -38,9 +40,9 @@ public class ShapelessOreRecipe implements IRecipe {
             if (in instanceof ItemStack) {
                 input.add(((ItemStack) in).copy());
             } else if (in instanceof Item) {
-                input.add(new ItemStack((Item) in));
+                input.add(getItemStack((Item) in));
             } else if (in instanceof Block) {
-                input.add(new ItemStack((Block) in));
+                input.add(getItemStack((Block) in));
             } else if (in instanceof String) {
                 input.add(OreDictionary.getOres((String) in));
             } else {
@@ -87,7 +89,8 @@ public class ShapelessOreRecipe implements IRecipe {
      * Returns an Item that is the result of this recipe
      */
     @Override
-    @Nonnull public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
+    @Nonnull
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
         return output.copy();
     }
 
@@ -96,7 +99,7 @@ public class ShapelessOreRecipe implements IRecipe {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean matches(@Nonnull InventoryCrafting var1,@Nonnull  World world) {
+    public boolean matches(@Nonnull InventoryCrafting var1, @Nonnull World world) {
         NonNullList<Object> required = NonNullList.create();
         required.addAll(input);
 
@@ -109,12 +112,10 @@ public class ShapelessOreRecipe implements IRecipe {
                 for (Object aRequired : required) {
                     boolean match = false;
 
-                    Object next = aRequired;
-
-                    if (next instanceof ItemStack) {
-                        match = OreDictionary.itemMatches((ItemStack) next, slot, false);
-                    } else if (next instanceof List) {
-                        Iterator<ItemStack> itr = ((List<ItemStack>) next).iterator();
+                    if (aRequired instanceof ItemStack) {
+                        match = OreDictionary.itemMatches((ItemStack) aRequired, slot, false);
+                    } else if (aRequired instanceof List) {
+                        Iterator<ItemStack> itr = ((List<ItemStack>) aRequired).iterator();
                         while (itr.hasNext() && !match) {
                             match = OreDictionary.itemMatches(itr.next(), slot, false);
                         }
@@ -122,7 +123,7 @@ public class ShapelessOreRecipe implements IRecipe {
 
                     if (match) {
                         inRecipe = true;
-                        required.remove(next);
+                        required.remove(aRequired);
                         break;
                     }
                 }
@@ -148,8 +149,7 @@ public class ShapelessOreRecipe implements IRecipe {
 
     @Override
     @Nonnull
-    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) //getRecipeLeftovers
-    {
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }
 }

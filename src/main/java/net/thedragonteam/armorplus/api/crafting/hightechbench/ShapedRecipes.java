@@ -43,9 +43,7 @@ public class ShapedRecipes implements IRecipe {
         this.input = ingredientsIn;
 
         for (int i = 0; i < this.input.length; ++i) {
-            if (this.input[i] == null) {
-                this.input[i] = ItemStack.EMPTY;
-            }
+            if (this.input[i].isEmpty()) this.input[i] = ItemStack.EMPTY;
         }
 
         this.recipeOutput = output;
@@ -77,13 +75,10 @@ public class ShapedRecipes implements IRecipe {
     public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
         for (int i = 0; i <= 4 - this.recipeWidth; ++i) {
             for (int j = 0; j <= 4 - this.recipeHeight; ++j) {
-                if (this.checkMatch(inv, i, j, true)) {
+                if (this.checkMatch(inv, i, j, true) || this.checkMatch(inv, i, j, false)) {
                     return true;
                 }
 
-                if (this.checkMatch(inv, i, j, false)) {
-                    return true;
-                }
             }
         }
 
@@ -93,36 +88,23 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private boolean checkMatch(InventoryCrafting inventoryCrafting, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
+    private boolean checkMatch(InventoryCrafting inventoryCrafting, int width, int height, boolean isMirrored) {
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
-                int k = i - p_77573_2_;
-                int l = j - p_77573_3_;
+                int k = i - width;
+                int l = j - height;
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
-                    if (p_77573_4_) {
-                        itemstack = this.input[this.recipeWidth - k - 1 + l * this.recipeWidth];
-                    } else {
-                        itemstack = this.input[k + l * this.recipeWidth];
-                    }
+                    itemstack = isMirrored ? this.input[this.recipeWidth - k - 1 + l * this.recipeWidth] : this.input[k + l * this.recipeWidth];
                 }
 
                 ItemStack itemstack1 = inventoryCrafting.getStackInRowAndColumn(i, j);
 
-                if (!itemstack1.isEmpty() || !itemstack.isEmpty()) {
-                    if (itemstack1.isEmpty() != itemstack.isEmpty()) {
+                if ((!itemstack1.isEmpty() || !itemstack.isEmpty()))
+                    if ((itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata())) {
                         return false;
                     }
-
-                    if (itemstack.getItem() != itemstack1.getItem()) {
-                        return false;
-                    }
-
-                    if (itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
-                        return false;
-                    }
-                }
             }
         }
 

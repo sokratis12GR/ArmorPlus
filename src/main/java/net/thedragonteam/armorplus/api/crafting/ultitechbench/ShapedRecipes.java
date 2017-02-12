@@ -91,27 +91,16 @@ public class ShapedRecipes implements IRecipe {
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
-                    if (p_77573_4_) {
-                        itemstack = this.input[this.recipeWidth - k - 1 + l * this.recipeWidth];
-                    } else {
-                        itemstack = this.input[k + l * this.recipeWidth];
-                    }
+                    itemstack = p_77573_4_ ? this.input[this.recipeWidth - k - 1 + l * this.recipeWidth] : this.input[k + l * this.recipeWidth];
                 }
 
                 ItemStack itemstack1 = p_77573_1_.getStackInRowAndColumn(i, j);
 
                 if (!itemstack1.isEmpty() || !itemstack.isEmpty()) {
-                    if (itemstack1.isEmpty() != itemstack.isEmpty()) {
+                    if (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
                         return false;
                     }
 
-                    if (itemstack.getItem() != itemstack1.getItem()) {
-                        return false;
-                    }
-
-                    if (itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
-                        return false;
-                    }
                 }
             }
         }

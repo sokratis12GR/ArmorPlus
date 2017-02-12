@@ -96,7 +96,6 @@ public class SlotCrafting extends Slot {
 
         if (stack.getItem() == getItem(highTechBench))
             this.player.addStat(ModAchievements.craftHighTechBench, 1);
-
         else if (stack.getItem() == lapisSword)
             stack.addEnchantment(getEnchantment("looting"), 3);
         else if (stack.getItem() == lapisBattleAxe)

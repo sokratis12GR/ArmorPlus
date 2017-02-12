@@ -55,7 +55,7 @@ public class LavaInfuserManager {
      * Adds a smelting recipe using an ItemStack as the input for the recipe.
      */
     public void addInfusingRecipe(ItemStack input, ItemStack stack, double experience) {
-        if (getSmeltingResult(input) != ItemStack.EMPTY) {
+        if (!getSmeltingResult(input).isEmpty()) {
             LogHelper.info("Ignored smelting recipe with conflicting input: " + input + " = " + stack);
             return;
         }

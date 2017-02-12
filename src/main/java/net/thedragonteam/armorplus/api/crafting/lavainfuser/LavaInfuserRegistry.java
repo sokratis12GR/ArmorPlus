@@ -23,7 +23,7 @@ public class LavaInfuserRegistry {
     }
 
     public static void addInfusingRecipe(ItemStack input, ItemStack output) {
-        addInfusingRecipe(input, output, 0.0D);
+        getInstance().addInfusing(input, output);
     }
 
     public static void addInfusingRecipe(Block input, ItemStack output, double exp) {

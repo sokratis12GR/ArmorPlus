@@ -20,6 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+
 public class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
     public static final int MAX_CRAFT_GRID_WIDTH = 5;
@@ -32,11 +34,11 @@ public class ShapedOreRecipe implements IRecipe {
     protected boolean mirrored = true;
 
     public ShapedOreRecipe(Block result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapedOreRecipe(Item result, Object... recipe) {
-        this(new ItemStack(result), recipe);
+        this(getItemStack(result), recipe);
     }
 
     public ShapedOreRecipe(ItemStack result, Object... recipe) {
@@ -81,8 +83,8 @@ public class ShapedOreRecipe implements IRecipe {
             Object in = recipe[idx + 1];
 
             if (in instanceof ItemStack) itemMap.put(chr, ((ItemStack) in).copy());
-            else if (in instanceof Item) itemMap.put(chr, new ItemStack((Item) in));
-            else if (in instanceof Block) itemMap.put(chr, new ItemStack((Block) in, 1, OreDictionary.WILDCARD_VALUE));
+            else if (in instanceof Item) itemMap.put(chr, getItemStack((Item) in));
+            else if (in instanceof Block) itemMap.put(chr, getItemStack((Block) in, 1, OreDictionary.WILDCARD_VALUE));
             else if (in instanceof String) itemMap.put(chr, OreDictionary.getOres((String) in));
             else {
                 String ret = "Invalid shaped ore recipe: ";
