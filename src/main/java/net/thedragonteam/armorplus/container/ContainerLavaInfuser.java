@@ -6,7 +6,6 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -15,11 +14,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserManager;
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserFuel;
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.SlotLavaInfuserOutput;
+import net.thedragonteam.armorplus.container.base.ContainerBase;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
 import javax.annotation.Nonnull;
 
-public class ContainerLavaInfuser extends Container {
+public class ContainerLavaInfuser extends ContainerBase {
 
     private static final int ITEM_BOX = 18;
     private final TileEntityLavaInfuser tile;
@@ -56,7 +56,8 @@ public class ContainerLavaInfuser extends Container {
 
         for (IContainerListener listener : this.listeners) {
 
-            if (this.cookTime != this.tile.getField(2)) listener.sendProgressBarUpdate(this, 2, this.tile.getField(2));
+            if (this.cookTime != this.tile.getField(2))
+                listener.sendProgressBarUpdate(this, 2, this.tile.getField(2));
 
             if (this.furnaceBurnTime != this.tile.getField(0))
                 listener.sendProgressBarUpdate(this, 0, this.tile.getField(0));
@@ -81,14 +82,6 @@ public class ContainerLavaInfuser extends Container {
     }
 
     /**
-     * Determines whether supplied player can use this container
-     */
-    @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
-        return true;
-    }
-
-    /**
      * Take a stack from the specified inventory slot.
      */
     @Override
@@ -102,40 +95,25 @@ public class ContainerLavaInfuser extends Container {
             itemstack = itemstack1.copy();
 
             if (index == 2) {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
-                    return ItemStack.EMPTY;
-                }
+                if (!this.mergeItemStack(itemstack1, 3, 39, true)) return ItemStack.EMPTY;
 
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (index != 1 && index != 0) {
                 if (!LavaInfuserManager.getInstance().getSmeltingResult(itemstack1).isEmpty()) {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) return ItemStack.EMPTY;
                 } else if (TileEntityLavaInfuser.isItemFuel(itemstack1)) {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
-                        return ItemStack.EMPTY;
-                    }
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false)) return ItemStack.EMPTY;
                 } else if (index >= 3 && index < 30) {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
-                        return ItemStack.EMPTY;
-                    }
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) return ItemStack.EMPTY;
                 } else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
-                return ItemStack.EMPTY;
-            }
+            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) return ItemStack.EMPTY;
 
-            if (itemstack1.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
-            } else {
-                slot.onSlotChanged();
-            }
+            if (itemstack1.isEmpty()) slot.putStack(ItemStack.EMPTY);
+            else slot.onSlotChanged();
 
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
+            if (itemstack1.getCount() == itemstack.getCount()) return ItemStack.EMPTY;
 
             slot.onTake(playerIn, itemstack1);
         }

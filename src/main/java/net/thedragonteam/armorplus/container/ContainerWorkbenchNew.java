@@ -72,14 +72,10 @@ public class ContainerWorkbenchNew extends Container {
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
 
-        if (!this.world.isRemote) {
-            for (int i = 0; i < RECIPE_SIZE_TOTAL; ++i) {
-                ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
+        if (!this.world.isRemote) for (int i = 0; i < RECIPE_SIZE_TOTAL; ++i) {
+            ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
-                if (!itemstack.isEmpty()) {
-                    playerIn.dropItem(itemstack, false);
-                }
-            }
+            if (!itemstack.isEmpty()) playerIn.dropItem(itemstack, false);
         }
     }
 
@@ -107,9 +103,7 @@ public class ContainerWorkbenchNew extends Container {
             if (index == 0) {
                 itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
 
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
-                    return ItemStack.EMPTY;
-                }
+                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) return ItemStack.EMPTY;
 
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {

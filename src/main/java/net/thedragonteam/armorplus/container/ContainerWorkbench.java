@@ -6,21 +6,23 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.workbench.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-
-import javax.annotation.Nonnull;
 
 /**
  * net.thedragonteam.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
  * - TheDragonTeam
  */
-public class ContainerWorkbench extends Container {
+public class ContainerWorkbench extends ContainerBenchBase {
 
     private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 10;
@@ -33,10 +35,11 @@ public class ContainerWorkbench extends Container {
     /**
      * The crafting matrix inventory (3x3).
      */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerWorkbench(InventoryPlayer playerInventory, TileEntityWorkbench tile) {
+        super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
@@ -73,73 +76,11 @@ public class ContainerWorkbench extends Container {
             for (int i = 0; i < RECIPE_SIZE_TOTAL; ++i) {
                 ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
-                if (!itemstack.isEmpty()) {
-                    playerIn.dropItem(itemstack, false);
-                }
+                if (!itemstack.isEmpty()) playerIn.dropItem(itemstack, false);
             }
         }
     }
 
-    /**
-     * Determines whether supplied player can use this container
-     */
-    @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
-        return true;
-    }
-
-    /**
-     * Take a stack from the specified inventory slot.
-     */
-    @Override
-    @Nonnull
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = inventorySlots.get(index);
-
-        if (slot != null && slot.getHasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-
-            if (index == 0) {
-                itemstack1.getItem().onCreated(itemstack1, world, playerIn);
-
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (index >= MAIN_INVENTORY_SLOTS && index < FULL_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (itemstack1.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
-            } else {
-                slot.onSlotChanged();
-            }
-
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
-
-            if (index == 0) {
-                playerIn.dropItem(itemstack2, false);
-            }
-        }
-
-        return itemstack;
-    }
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.

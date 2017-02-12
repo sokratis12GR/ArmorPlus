@@ -6,21 +6,22 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-
-import javax.annotation.Nonnull;
 
 /**
  * net.thedragonteam.armorplus.container
  * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
  * - TheDragonTeam
  */
-public class ContainerUltiTechBench extends Container {
+public class ContainerUltiTechBench extends ContainerBenchBase {
 
     private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 26;
@@ -29,15 +30,14 @@ public class ContainerUltiTechBench extends Container {
     private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-    private final World world;
     /**
      * The crafting matrix inventory (5x5).
      */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 5, 5);
+    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 5, 5);
     public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerUltiTechBench(InventoryPlayer playerInventory, TileEntityUltiTechBench tile) {
-        this.world = tile.getWorld();
+        super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
@@ -78,67 +78,6 @@ public class ContainerUltiTechBench extends Container {
                 }
             }
         }
-    }
-
-    /**
-     * Determines whether supplied player can use this container
-     */
-    @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
-        return true;
-    }
-
-    /**
-     * Take a stack from the specified inventory slot.
-     */
-    @Override
-    @Nonnull
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = inventorySlots.get(index);
-
-        if (slot != null && slot.getHasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-
-            if (index == 0) {
-                itemstack1.getItem().onCreated(itemstack1, world, playerIn);
-
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= RECIPE_SLOTS && index < MAIN_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (index >= MAIN_INVENTORY_SLOTS && index < FULL_INVENTORY_SLOTS) {
-                if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (itemstack1.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
-            } else {
-                slot.onSlotChanged();
-            }
-
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
-
-            if (index == 0) {
-                playerIn.dropItem(itemstack2, false);
-            }
-        }
-
-        return itemstack;
     }
 
     /**

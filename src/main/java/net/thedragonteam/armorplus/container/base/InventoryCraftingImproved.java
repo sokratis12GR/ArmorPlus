@@ -2,11 +2,12 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.container.inventory;
+package net.thedragonteam.armorplus.container.base;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -16,21 +17,32 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nonnull;
 
-public class InventoryCraftingNew implements IInventory {
+/**
+ * ArmorPlus created by sokratis12GR
+ * - TheDragonTeam
+ */
+public class InventoryCraftingImproved extends InventoryCrafting implements IInventory {
     private final NonNullList<ItemStack> stackList;
-
+    /**
+     * the width of the crafting inventory
+     */
+    private final int inventoryWidth;
+    private final int inventoryHeight;
     /**
      * Class containing the callbacks for the events on_GUIClosed and on_CraftMaxtrixChanged.
      */
     private final Container eventHandler;
 
-    public InventoryCraftingNew(Container eventHandlerIn, int slots) {
-        this.stackList = NonNullList.withSize(slots, ItemStack.EMPTY);
+    public InventoryCraftingImproved(Container eventHandlerIn, int width, int height) {
+        super(eventHandlerIn, width, height);
+        this.stackList = NonNullList.withSize(width * height, ItemStack.EMPTY);
         this.eventHandler = eventHandlerIn;
+        this.inventoryWidth = width;
+        this.inventoryHeight = height;
     }
 
     /**
-     * Returns the number of itemHandler in the inventory.
+     * Returns the number of slots in the inventory.
      */
     @Override
     public int getSizeInventory() {
@@ -52,12 +64,21 @@ public class InventoryCraftingNew implements IInventory {
     }
 
     /**
-     * Get the name of this object. For players this returns their username
+     * Gets the ItemStack in the slot specified.
      */
     @Override
     @Nonnull
+    public ItemStack getStackInRowAndColumn(int row, int column) {
+        return row >= 0 && row < this.inventoryWidth && column >= 0 && column <= this.inventoryHeight ? this.getStackInSlot(row + column * this.inventoryWidth) : ItemStack.EMPTY;
+    }
+
+    /**
+     * Get the name of this object. For players this returns their username
+     */
+    @Nonnull
+    @Override
     public String getName() {
-        return "container.working";
+        return "container.armorplus.crafting";
     }
 
     /**
@@ -71,8 +92,8 @@ public class InventoryCraftingNew implements IInventory {
     /**
      * Get the formatted ChatComponent that will be used for the sender's username in chat
      */
-    @Override
     @Nonnull
+    @Override
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
     }
@@ -166,5 +187,15 @@ public class InventoryCraftingNew implements IInventory {
     @Override
     public void clear() {
         this.stackList.clear();
+    }
+
+    @Override
+    public int getHeight() {
+        return this.inventoryHeight;
+    }
+
+    @Override
+    public int getWidth() {
+        return this.inventoryWidth;
     }
 }
