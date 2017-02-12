@@ -10,9 +10,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
@@ -21,12 +19,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -38,22 +36,21 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
  * ArmorPlus created by sokratis12GR on 8/15/2016.
  * - TheDragonTeam
  */
-public class LavaCactus extends BlockCactus {
+public class LavaCactus extends BlockCactus implements IModelHelper {
 
     public LavaCactus() {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
         this.setTickRandomly(true);
-        setHardness(0.4F);
-        setUnlocalizedName(setName("lava_cactus"));
-        setRegistryName("lava_cactus");
+        this.setHardness(0.4F);
+        this.setUnlocalizedName(setName("lava_cactus"));
+        this.setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override
@@ -124,7 +121,6 @@ public class LavaCactus extends BlockCactus {
     public boolean canBlockStay(World worldIn, BlockPos pos) {
         for (EnumFacing enumfacing : EnumFacing.Plane.VERTICAL) {
             Material material = worldIn.getBlockState(pos.offset(enumfacing)).getMaterial();
-
             if (material.isSolid() || material == Material.LAVA) return true;
         }
 

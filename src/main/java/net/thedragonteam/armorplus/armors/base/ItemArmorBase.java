@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.armors.base;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -15,12 +14,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.EnumTiers;
 
 import javax.annotation.Nonnull;
@@ -31,15 +30,15 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.enderDragon;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.GOOD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.*;
 
-public class ItemArmorBase extends ItemArmor {
+public class ItemArmorBase extends ItemArmor implements IModelHelper {
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 7,
             coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);
@@ -341,9 +340,9 @@ public class ItemArmorBase extends ItemArmor {
         switch (material) {
             case COAL:
                 if (isKeyDown()) {
-                    if (!enableFullCoalArmorEffect) {
+                    if (!enableFullCoalArmorEffect)
                         addToolTipPiece(tooltip, localizePotion(coalArmorAddPotionEffect), coalArmorEffectLevel);
-                    } else {
+                    else {
                         addToolTipFull(tooltip, localizePotion(coalArmorAddPotionEffect), coalArmorEffectLevel);
                     }
                 } else
@@ -472,8 +471,7 @@ public class ItemArmorBase extends ItemArmor {
         return wear;
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 }

@@ -97,4 +97,9 @@ public class BaseTeslaShovel extends BaseShovel {
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

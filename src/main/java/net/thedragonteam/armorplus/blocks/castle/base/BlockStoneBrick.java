@@ -7,17 +7,13 @@ package net.thedragonteam.armorplus.blocks.castle.base;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
-public class BlockStoneBrick extends BlockBase {
+public class BlockStoneBrick extends BlockBase implements IModelHelper {
 
     public MapColor color;
 
@@ -33,9 +29,8 @@ public class BlockStoneBrick extends BlockBase {
         return this.name;
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     /**

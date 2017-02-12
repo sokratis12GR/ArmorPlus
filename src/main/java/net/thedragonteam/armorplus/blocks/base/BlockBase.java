@@ -6,21 +6,17 @@ package net.thedragonteam.armorplus.blocks.base;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class BlockBase extends Block {
+public class BlockBase extends Block implements IModelHelper {
 
     public BlockBase(String name) {
         this(Material.GROUND, name);
@@ -83,17 +79,14 @@ public class BlockBase extends Block {
         this.setHarvestLevel(tool.getTool(), harvestLevel);
         this.setLightLevel(lightLevel);
         this.setLightOpacity(lightOpacity);
-        if (unbreakable) {
-            setBlockUnbreakable();
-        }
+        if (unbreakable) this.setBlockUnbreakable();
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     public enum ToolType implements IStringSerializable {

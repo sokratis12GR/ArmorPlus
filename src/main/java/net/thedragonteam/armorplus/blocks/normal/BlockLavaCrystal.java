@@ -47,8 +47,7 @@ public class BlockLavaCrystal extends BlockBase {
         Item item = ModItems.lavaCrystal;
         Random rand = (world instanceof World) ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);
-        ret = IntStream.range(0, count).mapToObj(i -> new ItemStack(item, 1, damageDropped(state))).collect(Collectors.toList());
-        return ret;
+        return IntStream.range(0, count).mapToObj(i -> new ItemStack(item, 1, damageDropped(state))).collect(Collectors.toList());
     }
 
     @Override

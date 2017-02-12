@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -25,7 +26,7 @@ public abstract class ItemBauble extends BaseItem implements IBauble {
 
     public ItemBauble(String name) {
         super(name);
-        setMaxStackSize(1);
+        this.setMaxStackSize(1);
     }
 
     @Nonnull
@@ -74,5 +75,10 @@ public abstract class ItemBauble extends BaseItem implements IBauble {
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
         player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75F, 2f);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 }

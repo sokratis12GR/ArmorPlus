@@ -4,17 +4,14 @@
 
 package net.thedragonteam.armorplus.items;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
@@ -22,7 +19,7 @@ import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemUltimateParts extends Item {
+public class ItemUltimateParts extends Item implements IModelHelper{
 
     private final String[] ULTIMATE_NAMES = new String[]{
             "_helmet_right", "_helmet_middle", "_helmet_left",
@@ -33,12 +30,12 @@ public class ItemUltimateParts extends Item {
     public EnumRarity formattingName;
 
     public ItemUltimateParts() {
-        setHasSubtypes(true);
-        setRegistryName("the_ultimate_part");
-        setUnlocalizedName(setName("the_ultimate_part"));
+        this.setHasSubtypes(true);
+        this.setRegistryName("the_ultimate_part");
+        this.setUnlocalizedName(setName("the_ultimate_part"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
-        formattingName = addRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
+        this.formattingName = addRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
     }
 
     @Override
@@ -62,9 +59,8 @@ public class ItemUltimateParts extends Item {
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0; i < ULTIMATE_NAMES.length; i++)
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + ULTIMATE_NAMES[i], "inventory"));
+            this.initModel(this,getRegistryName() + ULTIMATE_NAMES[i], i);
     }
 }

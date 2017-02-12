@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.items.base;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -18,11 +17,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -33,11 +31,11 @@ import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 
-public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
+public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IModelHelper {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -144,10 +142,8 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper {
         return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override

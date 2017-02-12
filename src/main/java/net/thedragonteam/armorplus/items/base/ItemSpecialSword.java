@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -16,15 +15,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Swords;
-import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -32,11 +31,12 @@ import java.util.List;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.addPotion;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemSpecialSword extends ItemSword implements IItemHelper {
+public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHelper {
 
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, APConfig.coalSwordDurability, 1.0F, (float) APConfig.coalSwordDamage, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, APConfig.lapisSwordDurability, 1.0F, (float) APConfig.lapisSwordDamage, 30);
@@ -64,7 +64,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper {
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
         this.setRegistryName(swords.getName() + "_sword");
-        this.setUnlocalizedName(Utils.setName(swords.getName() + "_sword"));
+        this.setUnlocalizedName(setName(swords.getName() + "_sword"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SPECIAL_SWORD", formatting, "Special Sword");
@@ -135,9 +135,8 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override

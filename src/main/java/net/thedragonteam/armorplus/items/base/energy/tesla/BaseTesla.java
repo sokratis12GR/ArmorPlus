@@ -126,4 +126,8 @@ public class BaseTesla extends BaseItem {
         return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
 
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

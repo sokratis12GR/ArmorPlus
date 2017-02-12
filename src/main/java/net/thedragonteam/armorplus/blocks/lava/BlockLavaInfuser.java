@@ -10,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -23,13 +22,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
 import javax.annotation.Nonnull;
@@ -40,7 +39,7 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserCharging
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class BlockLavaInfuser extends BlockContainer {
+public class BlockLavaInfuser extends BlockContainer implements IModelHelper {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     private final boolean isInfusing;
@@ -59,9 +58,8 @@ public class BlockLavaInfuser extends BlockContainer {
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     /**
@@ -146,9 +144,8 @@ public class BlockLavaInfuser extends BlockContainer {
      */
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
+        if (!world.isRemote)
             playerIn.openGui(ArmorPlus.instance, GuiHandler.GUI_LAVA_INFUSER, world, pos.getX(), pos.getY(), pos.getZ());
-        }
         return super.onBlockActivated(world, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 

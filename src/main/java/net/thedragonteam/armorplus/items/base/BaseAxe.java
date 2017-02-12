@@ -4,17 +4,15 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
-public class BaseAxe extends ItemAxe implements IItemHelper {
+public class BaseAxe extends ItemAxe implements IItemHelper, IModelHelper {
 
     public String itemName;
 
@@ -26,10 +24,8 @@ public class BaseAxe extends ItemAxe implements IItemHelper {
         GameRegistry.register(this);
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override

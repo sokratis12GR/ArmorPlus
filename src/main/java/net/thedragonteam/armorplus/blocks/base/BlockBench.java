@@ -9,19 +9,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
@@ -33,7 +31,7 @@ import javax.annotation.Nullable;
 import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
 import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
-public class BlockBench extends BlockBase implements ITileEntityProvider {
+public class BlockBench extends BlockBase implements ITileEntityProvider, IModelHelper {
 
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -55,17 +53,16 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
         this.benches = benches;
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
         switch (benches) {
             case WORKBENCH:
             case HIGH_TECH:
             case ULTI_TECH:
             case CHAMPION:
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+                this.initModel(this, getRegistryName(), 0);
                 break;
             case WORKBENCH_NEW:
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation("armorplus:workbench", "inventory"));
+                this.initModel(this, "armorplus:workbench", 0);
                 break;
         }
     }
@@ -143,9 +140,18 @@ public class BlockBench extends BlockBase implements ITileEntityProvider {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
-        for (int i = 0; i < guiNumber.length; i++)
-            if (benches == bench[i])
-                return tileEntities[i];
+        switch (benches) {
+            case WORKBENCH:
+                return tileEntities[0];
+            case HIGH_TECH:
+                return tileEntities[1];
+            case ULTI_TECH:
+                return tileEntities[2];
+            case CHAMPION:
+                return tileEntities[3];
+            case WORKBENCH_NEW:
+                return tileEntities[0];
+        }
         return null;
     }
 }

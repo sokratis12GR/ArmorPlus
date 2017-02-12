@@ -9,22 +9,23 @@ import net.minecraft.util.IStringSerializable;
 import javax.annotation.Nonnull;
 
 public enum DevItems implements IStringSerializable {
-    THE_DRAGON_TEAM("the_dragon_team"),
-    MODDED_CITY("modded_city"),
-    JON_BAMS("jon_bams", true),
-    TWITCH("twitch"),
-    BEAM("beam");
+    THE_DRAGON_TEAM("the_dragon_team", 0),
+    MODDED_CITY("modded_city", 1),
+    JON_BAMS("jon_bams", 2, true),
+    TWITCH("twitch", 3),
+    BEAM("beam", 4);
 
     private final String name;
-
     private final boolean subTypes;
+    private final int id;
 
-    DevItems(String nameIn) {
-        this(nameIn, false);
+    DevItems(String nameIn, int idIn) {
+        this(nameIn, idIn, false);
     }
 
-    DevItems(String nameIn, boolean hasSubTypes) {
+    DevItems(String nameIn, int idIn, boolean hasSubTypes) {
         this.name = nameIn;
+        this.id = idIn;
         this.subTypes = hasSubTypes;
     }
 
@@ -40,5 +41,9 @@ public enum DevItems implements IStringSerializable {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    public int getId() {
+        return id;
     }
 }

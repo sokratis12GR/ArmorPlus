@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -23,25 +22,26 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.util.NBTHelper;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Bows;
-import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
-import static net.minecraft.stats.StatList.getOneShotStat;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemHelper {
+public class ItemSpecialBow extends ItemBow implements IItemHelper, IModelHelper {
 
     public double damage;
 
@@ -61,7 +61,7 @@ public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemH
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(bows.getName() + "_bow");
-        this.setUnlocalizedName(Utils.setName(bows.getName() + "_bow"));
+        this.setUnlocalizedName(setName(bows.getName() + "_bow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -83,10 +83,8 @@ public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemH
         this.formattingName = addRarity("BOW", formatting, "Bow");
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override
@@ -108,7 +106,7 @@ public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemH
 
     @Nonnull
     public ItemStack findAmmo(EntityPlayer player) {
-        return this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)) ? player.getHeldItem(EnumHand.OFF_HAND) : this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)) ? player.getHeldItem(EnumHand.MAIN_HAND) : IntStream.range(0, player.inventory.getSizeInventory()).mapToObj(i -> player.inventory.getStackInSlot(i)).filter(this::isArrow).findFirst().orElse(null);
+        return this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)) ? player.getHeldItem(EnumHand.OFF_HAND) : this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)) ? player.getHeldItem(EnumHand.MAIN_HAND) : IntStream.range(0, player.inventory.getSizeInventory()).mapToObj(i -> player.inventory.getStackInSlot(i)).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
     }
 
     public void setVelocityOfArrow(ItemStack stack, float velocity) {
@@ -136,7 +134,7 @@ public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemH
             ItemStack itemstack = this.findAmmo(player);
 
             int useDuration = this.getMaxItemUseDuration(stack) - timeLeft;
-            useDuration = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, world, (EntityPlayer) entityLiving, useDuration, itemstack != null || requiredConditions);
+            useDuration = ForgeEventFactory.onArrowLoose(stack, world, (EntityPlayer) entityLiving, useDuration, !itemstack.isEmpty() || requiredConditions);
             if (useDuration < 0)
                 return;
 
@@ -196,7 +194,6 @@ public class ItemSpecialBow extends net.minecraft.item.ItemBow implements IItemH
                     }
 
                     player.addStat(getObjectUseStats(this));
-                    player.addStat(getOneShotStat("HeadShot"));
                 }
             }
         }

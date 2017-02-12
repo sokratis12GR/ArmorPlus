@@ -7,23 +7,21 @@ package net.thedragonteam.armorplus.blocks.castle.base;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 // TODO: fix CollisionBox to mach Shape (not any time soon)
-public class BlockStoneBrickCorner extends BlockStairs {
+public class BlockStoneBrickCorner extends BlockStairs implements IModelHelper {
 
     private StoneBricks stoneBricks;
 
@@ -43,7 +41,7 @@ public class BlockStoneBrickCorner extends BlockStairs {
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override

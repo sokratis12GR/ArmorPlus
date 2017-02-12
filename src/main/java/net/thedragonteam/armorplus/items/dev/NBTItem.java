@@ -56,4 +56,9 @@ public class NBTItem extends BaseItem {
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Level"))
             tooltip.add("Item Level: " + Integer.toString(stack.getTagCompound().getInteger("Level")));
     }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

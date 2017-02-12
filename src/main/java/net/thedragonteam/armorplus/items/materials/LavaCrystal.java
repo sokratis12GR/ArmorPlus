@@ -4,17 +4,14 @@
 
 package net.thedragonteam.armorplus.items.materials;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
@@ -25,7 +22,7 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
  * ArmorPlus created by sokratis12GR on 4/19/2016.
  * - TheDragonTeam
  */
-public class LavaCrystal extends Item implements IFuelHandler {
+public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
 
     private final String[] LAVA_CRYSTAL_NAMES = new String[]{
             "_normal", "_charged"
@@ -38,11 +35,11 @@ public class LavaCrystal extends Item implements IFuelHandler {
     public LavaCrystal() {
         this.setHasSubtypes(true);
         GameRegistry.registerFuelHandler(this);
-        setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
-        setUnlocalizedName(setName("lava_crystal"));     // Used for localization (en_US.lang)
+        this.setRegistryName("lava_crystal");        // The unique name (within your mod) that identifies this item
+        this.setUnlocalizedName(setName("lava_crystal"));     // Used for localization (en_US.lang)
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
-        setMaxDamage(0);
+        this.setMaxDamage(0);
     }
 
     public int getBurnTime(ItemStack fuel) {
@@ -72,10 +69,9 @@ public class LavaCrystal extends Item implements IFuelHandler {
         return super.getShareTag();
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + LAVA_CRYSTAL_NAMES[i], "inventory"));
+            this.initModel(this, getRegistryName() + LAVA_CRYSTAL_NAMES[i], i);
     }
 
     @Override

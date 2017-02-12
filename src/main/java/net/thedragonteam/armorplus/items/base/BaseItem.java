@@ -4,19 +4,17 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Items;
 import net.thedragonteam.armorplus.util.Utils;
 
-public class BaseItem extends Item implements IItemHelper {
+public class BaseItem extends Item implements IItemHelper, IModelHelper {
 
     public EnumRarity formattingName;
     public String itemName;
@@ -35,10 +33,8 @@ public class BaseItem extends Item implements IItemHelper {
         this.items = itemsIn;
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 
     @Override

@@ -4,19 +4,17 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.DevItems;
 
 import javax.annotation.Nonnull;
 
-public class BaseDevItem extends BaseItem implements IItemHelper {
+public class BaseDevItem extends BaseItem implements IItemHelper, IModelHelper {
 
     private DevItems devItems;
 
@@ -35,11 +33,14 @@ public class BaseDevItem extends BaseItem implements IItemHelper {
         return this;
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        if (devItems.hasSubTypes())
-            ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName() + "_second", "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName() + "_second", 1);
+        this.initModel(this, getRegistryName(), 0);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 
 

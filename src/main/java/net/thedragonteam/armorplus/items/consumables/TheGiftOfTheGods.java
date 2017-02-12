@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.consumables;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -20,11 +19,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nonnull;
@@ -40,7 +38,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
  * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
  * - TheDragonTeam
  */
-public class TheGiftOfTheGods extends BaseItem {
+public class TheGiftOfTheGods extends BaseItem implements IModelHelper {
 
     private static Random random = new Random();
 
@@ -54,9 +52,13 @@ public class TheGiftOfTheGods extends BaseItem {
         this.setMaxDamage(maxUsable);
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 
     @Override
@@ -100,13 +102,14 @@ public class TheGiftOfTheGods extends BaseItem {
         } else if (APConfig.enableWhiteList)
             item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin]);
 
-        while (item == null || item == Item.getByNameOrId(blackListedItems.toString()) && enableBlackList);
+        while (item == null || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList);
+
         if (enableTheGiftOfTheGods) {
             int cooldown = 0;
             if (playerIn.getHeldItemMainhand().getCount() > 0 && playerIn.getHeldItemMainhand().getItem() == playerIn.getHeldItem(hand).getItem() || playerIn.getHeldItemOffhand().getCount() > 0 && playerIn.getHeldItemOffhand().getItem() == playerIn.getHeldItem(hand).getItem())
-                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(playerIn.getHeldItem(hand).getItem())) {
+                if (!debugMode && !playerIn.getCooldownTracker().hasCooldown(playerIn.getHeldItem(hand).getItem()))
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldownTicks);
-                } else if (debugMode && debugModeTGOTG)
+                else if (debugMode && debugModeTGOTG)
                     playerIn.getCooldownTracker().setCooldown(playerIn.getHeldItemMainhand().getItem(), cooldown);
 
             if (!worldIn.isRemote) {

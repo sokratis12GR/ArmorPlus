@@ -87,4 +87,9 @@ public class BaseTeslaSword extends BaseSword {
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new BaseAPTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

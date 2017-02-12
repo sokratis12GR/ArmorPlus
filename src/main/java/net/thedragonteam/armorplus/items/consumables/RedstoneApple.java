@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.items.consumables;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -15,26 +14,28 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
+
 /**
  * net.thedragonteam.armorplus.items.consumables
- * ArmorPlus created by sokratis12GR on 7/3/2016 10:59 AM.
+ * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-public class RedstoneApple extends ItemFood {
+public class RedstoneApple extends ItemFood implements IModelHelper {
 
     public RedstoneApple() {
         super(4, 2.0f, false);
         this.setHasSubtypes(true);
         this.setRegistryName("redstone_apple");
-        this.setUnlocalizedName(ArmorPlus.MODID + "." + "redstone_apple");
+        this.setUnlocalizedName(setName("redstone_apple"));
         GameRegistry.register(this);
         this.setAlwaysEdible();
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
@@ -69,9 +70,9 @@ public class RedstoneApple extends ItemFood {
 
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(this, 1, new ModelResourceLocation(getRegistryName(), "inventory"));
+        for (int i = 0; i < 2; i++) {
+            this.initModel(this, getRegistryName(), i);
+        }
     }
 }

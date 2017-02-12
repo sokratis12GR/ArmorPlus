@@ -31,7 +31,7 @@ public class LavaNetherBrick extends BlockBase {
 
     public LavaNetherBrick() {
         super(Material.ROCK, "lava_nether_brick", 20.0F, 3.0F, ToolType.PICKAXE, 1, 1.0F);
-        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
     @Override

@@ -4,22 +4,19 @@
 
 package net.thedragonteam.armorplus.items.materials;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemMaterial extends Item {
+public class ItemMaterial extends Item implements IModelHelper {
 
     private final String[] MATERIAL_NAMES = new String[]{
             "_chainmail", "_guardian_scale", "_wither_bone",
@@ -53,9 +50,8 @@ public class ItemMaterial extends Item {
             subItems.add(new ItemStack(itemIn, 1, i));
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
         for (int i = 0; i < MATERIAL_NAMES.length; i++)
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName() + MATERIAL_NAMES[i], "inventory"));
+            this.initModel(this, getRegistryName() + MATERIAL_NAMES[i], i);
     }
 }

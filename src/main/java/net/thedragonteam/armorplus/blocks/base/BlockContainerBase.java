@@ -7,22 +7,18 @@ package net.thedragonteam.armorplus.blocks.base;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class BlockContainerBase extends Block implements ITileEntityProvider {
+public class BlockContainerBase extends Block implements ITileEntityProvider, IModelHelper {
 
     private TileEntity tileEntity;
 
@@ -44,8 +40,7 @@ public class BlockContainerBase extends Block implements ITileEntityProvider {
         return this.tileEntity;
     }
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.initModel(this, getRegistryName(), 0);
     }
 }

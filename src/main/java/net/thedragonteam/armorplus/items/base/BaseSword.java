@@ -4,17 +4,15 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.iface.IItemHelper;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
@@ -22,7 +20,7 @@ import javax.annotation.Nonnull;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
-public class BaseSword extends ItemSword implements IItemHelper {
+public class BaseSword extends ItemSword implements IItemHelper, IModelHelper {
 
     public Item itemEasy;
     public Item itemExpert;
@@ -42,7 +40,7 @@ public class BaseSword extends ItemSword implements IItemHelper {
         this.setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        formattingName = addRarity("SWORD", formatting, "Sword");
+        this.formattingName = addRarity("SWORD", formatting, "Sword");
     }
 
     @Override
@@ -56,10 +54,8 @@ public class BaseSword extends ItemSword implements IItemHelper {
         return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        initModel(this, getRegistryName(), 0);
     }
 
     @Override
