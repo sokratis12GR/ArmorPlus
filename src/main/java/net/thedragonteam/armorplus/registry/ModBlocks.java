@@ -4,10 +4,8 @@
 
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.BlockBench;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
@@ -21,6 +19,7 @@ import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.normal.LavaCactus;
 import net.thedragonteam.armorplus.blocks.normal.LavaNetherBrick;
+import net.thedragonteam.armorplus.blocks.ritual.BlockRitualAltar;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
 
 import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
@@ -35,49 +34,25 @@ import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
  */
 public class ModBlocks {
 
-    public static BlockLavaCrystal blockLavaCrystal;
-    public static CompressedObsidian compressedObsidian;
-    public static BaseMetalBlock steelBlock;
-    public static BaseMetalBlock electricalBlock;
-    public static LavaNetherBrick lavaNetherBrick;
-    public static LavaCactus lavaCactus;
+    public static BlockLavaCrystal blockLavaCrystal= new BlockLavaCrystal();
+    public static CompressedObsidian compressedObsidian = new CompressedObsidian();
+    public static BaseMetalBlock steelBlock = new BaseMetalBlock(STEEL);
+    public static BaseMetalBlock electricalBlock = new BaseMetalBlock(ELECTRICAL);
+    public static LavaNetherBrick lavaNetherBrick = new LavaNetherBrick();
+    public static LavaCactus lavaCactus = new LavaCactus();
     public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW};
     public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE};
-    private static BlockStoneBrick whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick;
-    public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[]{
-            whiteStoneBrick, redStoneBrick, blackStoneBrick, blueStoneBrick, yellowStoneBrick, greenStoneBrick, purpleStoneBrick
-    };
-    private static BlockStoneBrickTower whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower;
-    public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[]{
-            whiteStoneBrickTower, redStoneBrickTower, blackStoneBrickTower, blueStoneBrickTower, yellowStoneBrickTower, greenStoneBrickTower, purpleStoneBrickTower
-    };
-    private static BlockStoneBrickCorner whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner;
-    public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[]{
-            whiteStoneBrickCorner, redStoneBrickCorner, blackStoneBrickCorner, blueStoneBrickCorner, yellowStoneBrickCorner, greenStoneBrickCorner, purpleStoneBrickCorner
-    };
-    private static BlockStonebrickWall whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall;
-    public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[]{
-            whiteStoneBrickWall, redStoneBrickWall, blackStoneBrickWall, blueStoneBrickWall, yellowStoneBrickWall, greenStoneBrickWall, purpleStoneBrickWall
-    };
-    private static BlockBench arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew;
-    public static BlockBench[] benches = new BlockBench[]{arpWorkbench, arpHighTechBench, arpUltiTechBench, arpChampionBench, arpWorkbenchNew};
-    public static BlockLavaInfuser lavaInfuser;
-    public static BlockLavaInfuser lavaInfuserCharging;
-    public static BlockLavaInfusedObsidian lavaInfusedObsidian;
-
-    private static BlockBase testingBlock;
+    public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[7];
+    public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[7];
+    public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[7];
+    public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[7];
+    public static BlockBench[] benches = new BlockBench[5];
+    public static BlockLavaInfuser lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
+    public static BlockLavaInfuser lavaInfuserCharging = new BlockLavaInfuser("lava_infuser_infusing", true);
+    public static BlockLavaInfusedObsidian lavaInfusedObsidian = new BlockLavaInfusedObsidian();
+    public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
 
     public static void init() {
-        testingBlock = new BlockBase(Material.WOOD, "test_block", 10, 10);
-        lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
-        lavaInfuserCharging = new BlockLavaInfuser("lava_infuser_infusing", true);
-        lavaInfusedObsidian = new BlockLavaInfusedObsidian();
-        blockLavaCrystal = new BlockLavaCrystal();
-        compressedObsidian = new CompressedObsidian();
-        steelBlock = new BaseMetalBlock(STEEL);
-        electricalBlock = new BaseMetalBlock(ELECTRICAL);
-        lavaCactus = new LavaCactus();
-        lavaNetherBrick = new LavaNetherBrick();
         for (int s = 0; s < stoneBricks.length && s < stoneBrickTowers.length && s < stoneBrickCorners.length && s < stonebrickWalls.length; s++) {
             stoneBricks[s] = new BlockStoneBrick(stoneBrickTypes[s]);
             stoneBrickTowers[s] = new BlockStoneBrickTower(stoneBrickTypes[s]);
@@ -91,7 +66,6 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        testingBlock.initModel();
         lavaInfuser.initModel();
         lavaInfuserCharging.initModel();
         lavaInfusedObsidian.initModel();
@@ -101,14 +75,11 @@ public class ModBlocks {
         electricalBlock.initModel();
         lavaCactus.initModel();
         lavaNetherBrick.initModel();
-        for (int i = 0; i < stoneBricks.length && i < stoneBrickTowers.length && i < stoneBrickCorners.length && i < stonebrickWalls.length; i++) {
-            stoneBricks[i].initModel();
-            stoneBrickTowers[i].initModel();
-            stoneBrickCorners[i].initModel();
-            stonebrickWalls[i].initModel();
-        }
-        for (BlockBench benche : benches) {
-            benche.initModel();
-        }
+        for (BlockStoneBrick stoneBrick : stoneBricks) stoneBrick.initModel();
+        for (BlockStoneBrickTower stoneBrickTower : stoneBrickTowers) stoneBrickTower.initModel();
+        for (BlockStoneBrickCorner stoneBrickCorner : stoneBrickCorners) stoneBrickCorner.initModel();
+        for (BlockStonebrickWall stonebrickWall : stonebrickWalls) stonebrickWall.initModel();
+        for (BlockBench blockBench : benches) blockBench.initModel();
+        ritualAltar.initModel();
     }
 }

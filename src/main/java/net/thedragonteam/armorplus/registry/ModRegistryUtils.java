@@ -22,7 +22,7 @@ import static net.thedragonteam.armorplus.registry.ModItems.theUltimateParts;
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-public class RegistryUtils {
+public class ModRegistryUtils {
 
     public static void registerArmorModel(boolean isEnabled, ItemArmorBase[] armor) {
         if (isEnabled) for (ItemArmorBase anArmor : armor) anArmor.initModel();
@@ -75,9 +75,8 @@ public class RegistryUtils {
     }
 
     public static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
-        for (int i1 = 0; i1 < bow.length; i1++) {
+        for (int i1 = 0; i1 < bow.length; i1++)
             if (isEnabled[i1])
                 bow[i1] = new ItemSpecialBow(material[i1]);
-        }
     }
 }

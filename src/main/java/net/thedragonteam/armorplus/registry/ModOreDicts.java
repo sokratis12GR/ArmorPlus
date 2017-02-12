@@ -51,7 +51,7 @@ public class ModOreDicts {
         registerOre("workbenchTierThree", ultiTechBench);
 
         //CastleBlocks
-        for (int i = 0; i < colors.length || i < stoneBricks.length || i < stoneBrickCorners.length || i < stoneBrickTowers.length || i < stonebrickWalls.length; i++) {
+        for (int i = 0; i < colors.length; i++) {
             registerWildBrick(colors[i], stoneBricks[i]);
             registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
             registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);

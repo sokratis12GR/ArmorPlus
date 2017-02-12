@@ -28,7 +28,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
 import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
-import static net.thedragonteam.armorplus.registry.RegistryUtils.*;
+import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
 
 public class ModItems {
 
@@ -61,65 +61,31 @@ public class ModItems {
     public static boolean[] isBattleAxeEnabled = new boolean[]{
             enableCoalBattleAxe, enableLapisBattleAxe, enableRedstoneBattleAxe, enableEmeraldBattleAxe, enableObsidianBattleAxe, enableLavaBattleAxe, enableGuardianBattleAxe, enableSuperStarBattleAxe, enableEnderDragonBattleAxe
     };
-    private static ItemArmorBase coalHelmet, coalChestplate, coalLeggings, coalBoots,
-            emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots,
-            obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots,
-            redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots,
-            lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots,
-            lavaBoots, lavaHelmet, lavaChestplate, lavaLeggings,
-            chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots,
-            slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots,
-            enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots,
-            guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots,
-            superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots,
-            arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots,
-            cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots,
-            manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots,
-            pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots,
-            knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots;
-    public static ItemArmorBase[] coal = new ItemArmorBase[]{coalHelmet, coalChestplate, coalLeggings, coalBoots};
-    public static ItemArmorBase[] emerald = new ItemArmorBase[]{emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots};
-    public static ItemArmorBase[] obsidian = new ItemArmorBase[]{obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots};
-    public static ItemArmorBase[] redstone = new ItemArmorBase[]{redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots};
-    public static ItemArmorBase[] lapis = new ItemArmorBase[]{lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots};
-    public static ItemArmorBase[] lava = new ItemArmorBase[]{lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots};
-    public static ItemArmorBase[] chicken = new ItemArmorBase[]{chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots};
-    public static ItemArmorBase[] slime = new ItemArmorBase[]{slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots};
-    public static ItemArmorBase[] enderDragon = new ItemArmorBase[]{enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots};
-    public static ItemArmorBase[] guardian = new ItemArmorBase[]{guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots};
-    public static ItemArmorBase[] superStar = new ItemArmorBase[]{superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots};
-    public static ItemArmorBase[] ardite = new ItemArmorBase[]{arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots};
-    public static ItemArmorBase[] cobalt = new ItemArmorBase[]{cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots};
-    public static ItemArmorBase[] manyullyn = new ItemArmorBase[]{manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots};
-    public static ItemArmorBase[] pigIron = new ItemArmorBase[]{pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots};
-    public static ItemArmorBase[] knightSlime = new ItemArmorBase[]{knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots};
+    public static ItemArmorBase[] coal = new ItemArmorBase[4];
+    public static ItemArmorBase[] emerald = new ItemArmorBase[4];
+    public static ItemArmorBase[] obsidian = new ItemArmorBase[4];
+    public static ItemArmorBase[] redstone = new ItemArmorBase[4];
+    public static ItemArmorBase[] lapis = new ItemArmorBase[4];
+    public static ItemArmorBase[] lava = new ItemArmorBase[4];
+    public static ItemArmorBase[] chicken = new ItemArmorBase[4];
+    public static ItemArmorBase[] slime = new ItemArmorBase[4];
+    public static ItemArmorBase[] enderDragon = new ItemArmorBase[4];
+    public static ItemArmorBase[] guardian = new ItemArmorBase[4];
+    public static ItemArmorBase[] superStar = new ItemArmorBase[4];
+    public static ItemArmorBase[] ardite = new ItemArmorBase[4];
+    public static ItemArmorBase[] cobalt = new ItemArmorBase[4];
+    public static ItemArmorBase[] manyullyn = new ItemArmorBase[4];
+    public static ItemArmorBase[] pigIron = new ItemArmorBase[4];
+    public static ItemArmorBase[] knightSlime = new ItemArmorBase[4];
     //  private static APArmorMaterial[] armorMaterials = new APArmorMaterial[]{COAL, EMERALD, OBSIDIAN, REDSTONE, LAPIS, LAVA, CHICKEN, SLIME, ENDER_DRAGON, GUARDIAN, SUPER_STAR, ARDITE, COBALT, MANYULLYN, PIG_IRON, KNIGHT_SLIME};
 
-    private static ItemUltimateArmor theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots;
-    public static ItemUltimateArmor[] theUltimate = new ItemUltimateArmor[]{
-            theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots
-    };
-    private static ItemSpecialSword coalSword, lapisSword, redstoneSword,
-            emeraldSword, obsidianSword, lavaSword,
-            guardianSword, superStarSword, enderDragonSword;
-    public static ItemSpecialSword[] sword = new ItemSpecialSword[]{
-            coalSword, lapisSword, redstoneSword, emeraldSword, obsidianSword, lavaSword, guardianSword, superStarSword, enderDragonSword
-    };
-    private static ItemSpecialBattleAxe coalBattleAxe, lapisBattleAxe, redstoneBattleAxe,
-            emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe,
-            guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe;
-    public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[]{
-            coalBattleAxe, lapisBattleAxe, redstoneBattleAxe, emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe, guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe
-    };
-    private static ItemSpecialBow coalBow, lapisBow, redstoneBow,
-            emeraldBow, obsidianBow, lavaBow,
-            guardianBow, superStarBow, enderDragonBow;
-    public static ItemSpecialBow[] bow = new ItemSpecialBow[]{
-            coalBow, lapisBow, redstoneBow, emeraldBow, obsidianBow, lavaBow, guardianBow, superStarBow, enderDragonBow
-    };
+    public static ItemUltimateArmor[] theUltimate = new ItemUltimateArmor[4];
+    public static ItemSpecialSword[] sword = new ItemSpecialSword[9];
+    public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
+    public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
     public static ItemUltimateParts theUltimateParts;
     public static DevTool devTool;
-    public static BaseDevItem theDragonTeamItem, moddedCityItem, jonBamsItem, twitchItem, beamItem;
+    public static BaseDevItem twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem;
     public static ItemTeslaPickaxe itemTeslaPickaxe;
     public static ItemTeslaSword itemTeslaSword;
     public static ItemTeslaAxe itemTeslaAxe;
@@ -133,6 +99,14 @@ public class ModItems {
     public static ItemEnderDragonArrow itemEnderDragonArrow;
     public static ItemBaubleDragon itemBaubleDragon;
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
+
+    public static BaseItem[] templates = new BaseItem[16];
+    public static String[] templateNames = new String[]{
+            "coal_template", "lapis_template", "redstone_template",
+            "emerald_template", "obsidian_template", "lava_template",
+            "chicken_template", "slime_template",
+            "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
+            "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
 
     public static void init() {
         if (isBaublesLoaded()) {
@@ -189,6 +163,12 @@ public class ModItems {
         itemRedstoneArrow = new ItemRedstoneArrow();
         itemLavaArrow = new ItemLavaArrow();
         itemEnderDragonArrow = new ItemEnderDragonArrow();
+        for (int i = 0; i < templates.length; i++) {
+            templates[i] = (new BaseItem(templateNames[i]));
+        }
+        for (BaseItem template : templates) {
+            template.setCreativeTab(null);
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -243,5 +223,6 @@ public class ModItems {
         itemLapisArrow.initModel();
         itemRedstoneArrow.initModel();
         itemLavaArrow.initModel();
+        for (BaseItem template : templates) template.initModel();
     }
 }
