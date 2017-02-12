@@ -38,8 +38,7 @@ public class SubCommandHelp extends SubCommandBase {
     public void processSubCommand(MinecraftServer server, ICommandSender commandSender, String[] args) {
         super.processSubCommand(server, commandSender, args);
 
-        if (args.length > 0)
-            return;
+        if (args.length > 0) return;
 
         for (ISubCommand subCommand : ((CommandArmorPlus) getParentCommand()).getSubCommands().values())
             commandSender.sendMessage(new TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(commandSender))));

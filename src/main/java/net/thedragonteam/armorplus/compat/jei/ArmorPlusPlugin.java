@@ -84,10 +84,10 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser.class, JEI_CATEGORY_LAVA_INFUSER_INFUSING, 0, 1, 3, 36);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[0]), JEI_CATEGORY_WORKBENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[1]), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[2]), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER_INFUSING);
+        registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.workbench), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.highTechBench), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.ultiTechBench), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(getItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER_INFUSING);
 
         registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());

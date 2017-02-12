@@ -13,7 +13,6 @@ import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 
 public abstract class LavaInfuserRecipeCategory<T extends IRecipeWrapper> extends BlankRecipeCategory<T> {
 	protected static final int inputSlot = 0;
-	protected static final int fuelSlot = 1;
 	protected static final int outputSlot = 2;
 
 	protected final ResourceLocation backgroundLocation;

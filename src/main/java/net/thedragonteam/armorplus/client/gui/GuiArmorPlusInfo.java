@@ -22,12 +22,11 @@ import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
  */
 public class GuiArmorPlusInfo extends GuiScreen {
 
-    int guiWidth = 256;
-    int guiHeight = 256;
-
     @Override
     public void drawScreen(int x, int y, float ticks) {
+        int guiWidth = 256;
         int guiX = (width - guiWidth) / 2;
+        int guiHeight = 256;
         int guiY = (height - guiHeight) / 2;
         GL11.glColor4f(1, 1, 1, 1);
         mc.renderEngine.bindTexture(new ResourceLocation(ArmorPlus.MODID, "textures/gui/gui_armorplus.png"));

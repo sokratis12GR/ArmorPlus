@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.thedragonteam.armorplus.commands.subcommands.SubCommandDiscord;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandHelp;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
@@ -33,6 +34,7 @@ public class CommandArmorPlus extends CommandBase {
         subCommands.put("help", new SubCommandHelp(this));
         subCommands.put("info", new SubCommandInfo(this));
         subCommands.put("wiki", new SubCommandWiki(this));
+        subCommands.put("discord", new SubCommandDiscord(this));
     }
 
     @Override

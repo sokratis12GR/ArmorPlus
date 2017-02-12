@@ -33,7 +33,7 @@ public class APTab extends CreativeTabs {
         super(id, modid);
         this.label = label;
         this.tab = tab;
-        setBackgroundImageName(ArmorPlus.MODID + ".png"); // Automatically has tab_ applied to it. Make sure you change the texture name.
+        this.setBackgroundImageName(ArmorPlus.MODID + ".png"); // Automatically has tab_ applied to it. Make sure you change the texture name.
     }
 
     public static void initialize() {
