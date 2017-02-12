@@ -67,6 +67,46 @@ item.TheUltimateChestplate.name=El Peto Supremo
 item.TheUltimateLeggings.name=Las Grebas Supremas
 item.TheUltimateBoots.name=Las Botas Supremas
 
+#Swords
+item.armorplus.coal_sword.name=Espada de Carbón
+item.armorplus.lapis_sword.name=Espada de Lapislázuli
+item.armorplus.redstone_sword.name=Espada de Redstone
+item.armorplus.emerald_sword.name=Espada Esmeralda
+item.armorplus.obsidian_sword.name=Espada de Obsidiana
+item.armorplus.lava_sword.name=Espada de Lava
+item.armorplus.super_star_sword.name=Espada de Estrella Estupenda
+item.armorplus.guardian_sword.name=Espada de Guardián
+item.armorplus.ender_dragon_sword.name=Espada del Dragon del End
+
+#BattleAxes
+item.armorplus.coal_battle_axe.name=Hacha de Batalla de Carbón
+item.armorplus.lapis_battle_axe.name=Hacha de Batalla de Lapislázuli
+item.armorplus.redstone_battle_axe.name=Hacha de Batalla de Redstone
+item.armorplus.emerald_battle_axe.name=Hacha de Batalla Esmeralda
+item.armorplus.obsidian_battle_axe.name=Hacha de Batalla de Obsidiana
+item.armorplus.lava_battle_axe.name=Hacha de Batalla de Lava
+item.armorplus.super_star_battle_axe.name=Hacha de Batalla de Estrella Estupenda
+item.armorplus.guardian_battle_axe.name=Hacha de Batalla del Guardián
+item.armorplus.ender_dragon_battle_axe.name=Hacha de Batalla del Dragon del End
+
+#Bows
+item.armorplus.coal_bow.name=Arco de Carbón
+item.armorplus.lapis_bow.name=Arco de Lapislázuli
+item.armorplus.redstone_bow.name=Arco de Redstone
+item.armorplus.emerald_bow.name=Arco de Esmeralda
+item.armorplus.obsidian_bow.name=Arco de Obsidiana
+item.armorplus.lava_bow.name=Arco de Lava
+item.armorplus.super_star_bow.name=Arco de Estrella Estupenda
+item.armorplus.guardian_bow.name=Arco del Guardián
+item.armorplus.ender_dragon_bow.name=Arco del Dragon del End
+
+#Arrows
+item.armorplus.coal_arrow.name=Flecha de carbón
+item.armorplus.lapis_arrow.name=Flecha de Lapislázuli
+item.armorplus.redstone_arrow.name=Flecha de Redstone
+item.armorplus.lava_arrow.name=Flecha de Lava
+item.armorplus.ender_dragon_arrow.name=Flecha del Dragon del End
+
 #Achievements
 achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
 achievement.armorplus.craftCoalArmor.desc=Crear una Pieza de Armadura de Carbón
@@ -88,3 +128,10 @@ achievement.armorplus.craftGuardianArmor=¡Lleno de Espinos!
 achievement.armorplus.craftGuardianArmor.desc=Crear una Pieza de Armadura de Guardián
 achievement.armorplus.craftTheUltimateArmor=¡El Poder Supremo!
 achievement.armorplus.craftTheUltimateArmor.desc=Crear una Pieza de Armadura Suprema
+
+#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
+info.armorplus.console.config.refresh=Refreshing configuration file
+info.armorplus.console.load.preInit=Begin Pre-initialization
+info.armorplus.console.load.init=Begin Initialization
+info.armorplus.console.load.postInit=Begin Post-initialization
+info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
