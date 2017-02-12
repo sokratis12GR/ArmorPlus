@@ -1,3 +1,24 @@
+ArmorPlus 1.11.2-9.5.7.8-beta
+----------------------------
+
+Bugs Fixed:
+
+* Prevented crashes while trying to read more information for items and armors.
+
+ArmorPlus 1.11.2-9.5.6.7-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed Mob drops in the ArmorPlus towers.
+
+ArmorPlus 1.11.2-9.5.5.6-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed bow related issues, finally (hopefully)
+
 ArmorPlus 1.11.2-9.5.4.5-beta
 ----------------------------
 
