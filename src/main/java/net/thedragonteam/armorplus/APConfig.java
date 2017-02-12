@@ -763,6 +763,8 @@ public class APConfig {
 
     public static RecipesDifficulty getRD() {
         switch (gameMode) {
+            case -1:
+                return DISABLED;
             case 0:
                 return EASY;
             case 1:
@@ -773,9 +775,54 @@ public class APConfig {
         return EXPERT;
     }
 
+    public static boolean hasRecipes() {
+        switch (getRD()) {
+            case DISABLED:
+                return DISABLED.hasRecipes();
+            case EASY:
+                return EASY.hasRecipes();
+            case EXPERT:
+                return EXPERT.hasRecipes();
+            case HELLISH:
+                return HELLISH.hasRecipes();
+        }
+        return EXPERT.hasRecipes();
+    }
+
+    public static boolean hasRepair() {
+        switch (getRD()) {
+            case DISABLED:
+                return DISABLED.hasRepair();
+            case EASY:
+                return EASY.hasRepair();
+            case EXPERT:
+                return EXPERT.hasRepair();
+            case HELLISH:
+                return HELLISH.hasRepair();
+        }
+        return EXPERT.hasRepair();
+    }
+
     public enum RecipesDifficulty {
-        EASY,
-        EXPERT,
-        HELLISH,;
+        DISABLED(false, true),
+        EASY(true, true),
+        EXPERT(true, true),
+        HELLISH(true, false),;
+
+        private final boolean hasRecipes;
+        private final boolean hasRepair;
+
+        RecipesDifficulty(boolean hasRecipes, boolean hasRepair) {
+            this.hasRecipes = hasRecipes;
+            this.hasRepair = hasRepair;
+        }
+
+        public boolean hasRecipes() {
+            return hasRecipes;
+        }
+
+        public boolean hasRepair() {
+            return hasRepair;
+        }
     }
 }
