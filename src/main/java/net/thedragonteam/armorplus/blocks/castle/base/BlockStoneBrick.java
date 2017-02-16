@@ -19,18 +19,22 @@ public class BlockStoneBrick extends BlockBase implements IModelHelper {
 
     private String name;
 
+    private StoneBricks stoneBricks;
+
     public BlockStoneBrick(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0F, 5.0F, ToolType.PICKAXE, 0);
         this.name = stoneBricks.getName() + "_stone_brick";
         this.color = stoneBricks.getMapColor();
+        this.stoneBricks = stoneBricks;
     }
 
     public String getName() {
         return this.name;
     }
 
+    @Override
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(this, getRegistryName(), 0, "normal");
     }
 
     /**

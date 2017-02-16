@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "armorplus:blocks/yellow_stone_brick"
-  }
-}

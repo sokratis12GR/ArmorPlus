@@ -1,11 +1,17 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "transform": "forge:default-block"
+    "textures": {},
+    "model": "cube_all",
+    "uvlock": true
   },
   "variants": {
-    "normal": {
-      "model": "armorplus:red_stone_brick"
-    }
+    "normal": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/red_stone_brick"
+        }
+      }
+    ]
   }
 }
