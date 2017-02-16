@@ -13,8 +13,8 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.thedragonteam.armorplus.registry.APBlocks;
 import net.thedragonteam.armorplus.registry.ModAchievements;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
@@ -42,7 +42,7 @@ public class GlobalEventsArmorPlus {
     @SubscribeEvent
     public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
         Item i = event.crafting.getItem();
-        if (i == Item.getItemFromBlock(ModBlocks.benches[0])) event.player.addStat(ModAchievements.welcomeToArmorPlus);
+        if (i == Item.getItemFromBlock(APBlocks.workbench)) event.player.addStat(ModAchievements.welcomeToArmorPlus);
     }
 
     @SubscribeEvent
@@ -98,9 +98,7 @@ public class GlobalEventsArmorPlus {
                 addPotion(entity, getPotion(obsidianArmorAddPotionEffect), 120, obsidianArmorEffectLevel, GOOD);
             } else if (enableFullRedstoneArmorEffect && head.getItem() == redstoneHelmet && chest.getItem() == redstoneChestplate && legs.getItem() == redstoneLeggings && feet.getItem() == redstoneBoots) {
                 addPotion(entity, getPotion(redstoneArmorAddPotionEffect), 240, redstoneArmorEffectLevel, GOOD);
-                if (entity.world.isRemote) {
-                    spawnParticle(entity, REDSTONE, entity.posX, entity.posY, entity.posZ);
-                }
+                if (entity.world.isRemote) spawnParticle(entity, REDSTONE, entity.posX, entity.posY, entity.posZ);
             } else if (head.getItem() == guardianHelmet && chest.getItem() == guardianChestplate && legs.getItem() == guardianLeggings && feet.getItem() == guardianBoots) {
                 addPotion(entity, getPotion(guardianArmorAddPotionEffect), 120, guardianArmorEffectLevel, GOOD);
             } else if (head.getItem() == chickenHelmet && chest.getItem() == chickenChestplate && legs.getItem() == chickenLeggings && feet.getItem() == chickenBoots) {

@@ -84,7 +84,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
         switch (battleAxes) {
             case COAL:
                 if (enableCoalWeaponsEffects)
-                    addPotion(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(coalWeaponsAddPotionEffect), coalWeaponsEffectLevel, BAD);
                 break;
             case LAPIS:
                 if (enableLapisWeaponsEffects)
@@ -92,7 +92,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
                 break;
             case REDSTONE:
                 if (enableRedstoneWeaponsEffects)
-                    addPotion(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(redstoneWeaponsAddPotionEffect), redstoneWeaponsEffectLevel, BAD);
                 break;
             case EMERALD:
                 if (enableEmeraldWeaponsEffects)
@@ -115,7 +115,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
                 break;
             case ENDER_DRAGON:
                 if (enableEnderDragonWeaponsEffects)
-                    addPotion(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, BAD);
+                    addPotion(target, getPotion(enderDragonWeaponsAddPotionEffect), enderDragonWeaponsEffectLevel, BAD);
                 break;
         }
         return true;

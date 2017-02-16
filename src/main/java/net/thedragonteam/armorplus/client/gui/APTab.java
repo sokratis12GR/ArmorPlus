@@ -9,13 +9,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.registry.ModItems.lava;
-import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -50,13 +50,13 @@ public class APTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case (0):
-                return getItemStack(lava[1]);
+                return getItemStack(APItems.lavaChestplate);
             case (1):
-                return getItemStack(materials, 3);
+                return APItems.enderDragonScale;
             case (2):
                 return getItemStack(ModBlocks.blockLavaCrystal);
             case (3):
-                return getItemStack(ModItems.battleAxe[2]);
+                return getItemStack(APItems.redstoneBattleAxe);
             case (4):
                 return getItemStack(ModItems.itemTeslaRod);
         }

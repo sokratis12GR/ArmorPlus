@@ -77,8 +77,6 @@ public class ModItems {
     public static ItemArmorBase[] manyullyn = new ItemArmorBase[4];
     public static ItemArmorBase[] pigIron = new ItemArmorBase[4];
     public static ItemArmorBase[] knightSlime = new ItemArmorBase[4];
-    //  private static APArmorMaterial[] armorMaterials = new APArmorMaterial[]{COAL, EMERALD, OBSIDIAN, REDSTONE, LAPIS, LAVA, CHICKEN, SLIME, ENDER_DRAGON, GUARDIAN, SUPER_STAR, ARDITE, COBALT, MANYULLYN, PIG_IRON, KNIGHT_SLIME};
-
     public static ItemUltimateArmor[] theUltimate = new ItemUltimateArmor[4];
     public static ItemSpecialSword[] sword = new ItemSpecialSword[9];
     public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];

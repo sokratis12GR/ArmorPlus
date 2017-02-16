@@ -18,7 +18,6 @@ import static net.minecraft.util.text.translation.I18n.translateToLocal;
  */
 public class PotionUtils {
 
-
     public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
         if (potion != null)
             entity.addPotionEffect(new PotionEffect(getPotion(potion), duration, amplifier, ambientIn, showParticlesIn));
@@ -30,77 +29,32 @@ public class PotionUtils {
     }
 
     public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
-        switch (potionType) {
-            case GOOD:
-                if (potion != null)
-                    addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, false);
-                break;
-            case BAD:
-                if (potion != null)
-                    addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, true);
-                break;
-        }
+        if (potion != null)
+            addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, potionType.hasParticles());
     }
 
     public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
-        switch (potionType) {
-            case GOOD:
-                if (potion != null)
-                    addPotion(entity, potion, duration, amplifier, ambientIn, false);
-                break;
-            case BAD:
-                if (potion != null)
-                    addPotion(entity, potion, duration, amplifier, ambientIn, true);
-                break;
-        }
+        if (potion != null) addPotion(entity, potion, duration, amplifier, ambientIn, potionType.hasParticles());
     }
 
     public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, PotionType potionType) {
-        switch (potionType) {
-            case GOOD:
-                if (potion != null)
-                    addPotion(entity, potion, duration, amplifier, false, false);
-                break;
-            case BAD:
-                if (potion != null)
-                    addPotion(entity, potion, duration, amplifier, false, true);
-                break;
-        }
+        if (potion != null) addPotion(entity, potion, duration, amplifier, false, potionType.hasParticles());
     }
 
     public static void addPotion(EntityLivingBase entity, String potion, int amplifier, PotionType potionType) {
-        switch (potionType) {
-            case GOOD:
-                if (potion != null)
-                    addPotion(entity, getPotion(potion), 120, amplifier, false, false);
-                break;
-            case BAD:
-                if (potion != null)
-                    addPotion(entity, getPotion(potion), 120, amplifier, false, true);
-                break;
-        }
+        if (potion != null) addPotion(entity, getPotion(potion), 240, amplifier, false, potionType.hasParticles());
     }
 
     public static void addPotion(EntityLivingBase entity, Potion potion, int amplifier, PotionType potionType) {
-        switch (potionType) {
-            case GOOD:
-                if (potion != null)
-                    addPotion(entity, potion, 120, amplifier, false, false);
-                break;
-            case BAD:
-                if (potion != null)
-                    addPotion(entity, potion, 120, amplifier, false, true);
-                break;
-        }
+        if (potion != null) addPotion(entity, potion, 240, amplifier, false, potionType.hasParticles());
     }
 
     public static void removePotion(EntityLivingBase entity, String potion) {
-        if (potion != null)
-            entity.removePotionEffect(getPotion(potion));
+        entity.removePotionEffect(potion != null ? getPotion(potion) : ModPotions.EMPTY);
     }
 
     public static void removePotion(EntityLivingBase entity, Potion potion) {
-        entity.removePotionEffect(potion);
+        entity.removePotionEffect(potion != null ? potion : ModPotions.EMPTY);
     }
 
     public static String localizePotion(String resourceLocation) {
@@ -112,7 +66,17 @@ public class PotionUtils {
     }
 
     public enum PotionType {
-        GOOD,
-        BAD
+        GOOD(false),
+        BAD(true),;
+
+        private final boolean showParticles;
+
+        PotionType(boolean showParticlesIn) {
+            this.showParticles = showParticlesIn;
+        }
+
+        public boolean hasParticles() {
+            return showParticles;
+        }
     }
 }

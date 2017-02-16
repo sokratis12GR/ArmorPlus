@@ -27,7 +27,6 @@ import static net.thedragonteam.armorplus.APConfig.*;
 public class OreGen implements IWorldGenerator {
 
     private WorldGenerator lavaCrystalOverworldGenerator;
-    private WorldGenerator lavaCrystalOverworldGenerator2;
     private WorldGenerator lavaCrystalTheEndGenerator;
     private WorldGenerator lavaCrystalTheNetherGenerator;
 

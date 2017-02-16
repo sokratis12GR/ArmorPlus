@@ -41,12 +41,12 @@ public class SubCommandBase implements ISubCommand {
 
     @Override
     public String getHelpText() {
-        return null;
+        return "";
     }
 
     @Override
     public String getArgUsage(ICommandSender commandSender) {
-        return null;
+        return "";
     }
 
     @Override

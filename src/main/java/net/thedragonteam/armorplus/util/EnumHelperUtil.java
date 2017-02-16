@@ -52,16 +52,6 @@ public class EnumHelperUtil {
     }
 
     public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, EnumTiers enumTiers) {
-        switch (enumTiers) {
-            case TIER_1:
-                return addArmorMaterial(enumName, textureName, durability, armorPoints, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, toughnessPoints);
-            case TIER_2:
-                return addArmorMaterial(enumName, textureName, durability, armorPoints, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, toughnessPoints);
-            case TIER_3:
-                return addArmorMaterial(enumName, textureName, durability, armorPoints, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, toughnessPoints);
-            case TIER_4:
-                return addArmorMaterial(enumName, textureName, durability, armorPoints, 60, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, toughnessPoints);
-        }
-        return addArmorMaterial(enumName, textureName, durability, armorPoints, 0, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
+        return addArmorMaterial(enumName, textureName, durability, armorPoints, enumTiers.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
     }
 }
