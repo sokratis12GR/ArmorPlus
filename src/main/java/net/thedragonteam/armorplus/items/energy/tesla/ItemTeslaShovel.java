@@ -37,7 +37,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
             Blocks.SNOW, Blocks.SNOW_LAYER, Blocks.CLAY, Blocks.SOUL_SAND);
 
     public ItemTeslaShovel() {
-        super(ToolMaterial.DIAMOND, "tesla_shovel", EFFECTIVE_ON, maxCapacityShovel, inputShovel, outputShovel);
+        super(ToolMaterial.DIAMOND, "tesla_shovel", EFFECTIVE_ON, maxEnergyCapacity[3], energyInput[3], energyOutput[3]);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
     @Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(@Nonnull ItemStack stack, World worldIn, @Nonnull IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving) {
-        APTeslaUtils.usePower(stack, outputShovel);
+        APTeslaUtils.usePower(stack, energyOutput[3]);
         return true;
     }
 
@@ -60,7 +60,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
     @Method(modid = "tesla")
     @Override
     public float getStrVsBlock(@Nonnull ItemStack stack, IBlockState state) {
-        return APTeslaUtils.getStoredPower(stack) < outputShovel ? 0.5F : Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
+        return APTeslaUtils.getStoredPower(stack) < energyOutput[3] ? 0.5F : Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @Method(modid = "tesla")
@@ -74,7 +74,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(APTeslaUtils.getStoredPower(stack)), Long.toString(APTeslaUtils.getMaxCapacity(stack))));
-            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.tool", Long.toString(outputShovel)));
+            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.tool", Long.toString(energyOutput[3])));
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
     }

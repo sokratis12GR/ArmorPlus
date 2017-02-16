@@ -415,42 +415,6 @@ public class APConfig {
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorProtectionPoints", comment = "Set the amount of protection points the Slime Armor will have (boots, leggings, chestplate, boots)")
     public static int[] slimeArmorProtectionPoints = new int[]{1, 1, 2, 1};
 
-    //EnergyItems.Sword
-    @ModConfigProperty(category = "EnergyItems", name = "inputSword", comment = "Set the amount of Energy that the item can input")
-    public static int inputSword = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "outputSword", comment = "Set the amount of Energy that the item can output")
-    public static int outputSword = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacitySword", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacitySword = 3000;
-    //EnergyItems.Pickaxe
-    @ModConfigProperty(category = "EnergyItems", name = "inputPickaxe", comment = "Set the amount of Energy that the item can input")
-    public static int inputPickaxe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "outputPickaxe", comment = "Set the amount of Energy that the item can output")
-    public static int outputPickaxe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityPickaxe", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacityPickaxe = 3000;
-    //EnergyItems.Axe
-    @ModConfigProperty(category = "EnergyItems", name = "inputAxe", comment = "Set the amount of Energy that the item can input")
-    public static int inputAxe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "outputAxe", comment = "Set the amount of Energy that the item can output")
-    public static int outputAxe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityAxe", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacityAxe = 3000;
-    //EnergyItemsShovel
-    @ModConfigProperty(category = "EnergyItems", name = "inputShovel", comment = "Set the amount of Energy that the item can input")
-    public static int inputShovel = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "outputShovel", comment = "Set the amount of Energy that the item can output")
-    public static int outputShovel = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityShovel", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacityShovel = 3000;
-    //EnergyItems.Hoe
-    @ModConfigProperty(category = "EnergyItems", name = "inputHoe", comment = "Set the amount of Energy that the item can input")
-    public static int inputHoe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "outputHoe", comment = "Set the amount of Energy that the item can output")
-    public static int outputHoe = 10;
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacityHoe", comment = "Set the max capacity that the item can hold")
-    public static int maxCapacityHoe = 3000;
-
     //TheGiftOfTheGods (TGOTG)
     @ModConfigProperty(category = "TheGiftOfTheGods", name = "enableTheGiftOfTheGods", comment = "Enable/Disable The Gift Of The Gods")
     public static boolean enableTheGiftOfTheGods = true;
@@ -668,12 +632,6 @@ public class APConfig {
     public static int lavaCrystalTheEndVeinAmount = 0;
     @ModConfigProperty(category = "WorldGeneration.TheNether", name = "lavaCrystalTheNetherVeinAmount", comment = "Set the vein amount of the Lava Crystal Generation in the dimension `The Nether`")
     public static int lavaCrystalTheNetherVeinAmount = 0;
-    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnNeedOfChance", comment = "Set the spawn chance need of the Castle Generation in the Overworld")
-    public static int castleGenSpawnNeedOfChance = 7000;
-    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "castleGenSpawnChance", comment = "Set the spawn chance of the Castle Generation in the Overworld")
-    public static int castleGenSpawnChance = 1;
-    @ModConfigProperty(category = "WorldGeneration.CastleGeneration", name = "enableCastleGenSpawnChance", comment = "Enable/Disable the Castle Generation")
-    public static boolean enableCastleGen = true;
     @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "towerGenSpawnNeedOfChance", comment = "Set the spawn chance need of the Tower Generation in the Overworld")
     public static int towerGenSpawnNeedOfChance = 7000;
     @ModConfigProperty(category = "WorldGeneration.TowerGeneration", name = "towerGenSpawnChance", comment = "Set the spawn chance of the Tower Generation in the Overworld")
@@ -756,6 +714,14 @@ public class APConfig {
     public static boolean enableBattleAxesRecipes = true;
     @ModConfigProperty(category = "Registry.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
     public static boolean enableBowsRecipes = true;
+
+    //EnergyItems
+    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
+    public static int[] energyInput = new int[]{10, 10, 10, 10, 10};
+    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
+    public static int[] energyOutput = new int[]{10, 10, 10, 10, 10};
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
+    public static int[] maxEnergyCapacity = new int[]{3000, 3000, 3000, 3000, 3000};
 
     public static boolean isDebugMode() {
         return debugMode;
