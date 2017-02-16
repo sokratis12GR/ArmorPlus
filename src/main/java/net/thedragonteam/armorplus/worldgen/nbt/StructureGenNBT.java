@@ -4,6 +4,8 @@
 
 package net.thedragonteam.armorplus.worldgen.nbt;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -21,7 +23,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.worldgen.StructureGen.getGroundFromAbove;
 
 public class StructureGenNBT implements IWorldGenerator {
 
@@ -61,5 +62,21 @@ public class StructureGenNBT implements IWorldGenerator {
                 template.addBlocksToWorld(world, pos, settings);
             }
         }
+    }
+
+    /**
+     * HELPER METHODS
+     **/
+    // find a grass or dirt block to place the structure on
+    public static int getGroundFromAbove(World world, int x, int z) {
+        int y = 255;
+        boolean foundGround = false;
+        while (!foundGround && y-- >= 0) {
+            Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+            // "ground" for our bush is grass or dirt
+            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS || blockAt != Blocks.AIR;
+        }
+
+        return y;
     }
 }
