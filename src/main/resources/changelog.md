@@ -1,3 +1,35 @@
+ArmorPlus 1.11.2-9.6.0.1-beta
+----------------------------
+
+Features Changed:
+
+* Config values are now in a look of a list, each line = 1 of the armors/weapons/items, I made sure each line equals the representative armor/weapon/item
+
+Bugs Fixed:
+
+* A lot of performance issues fixed, now performance should be more smooth and mod size reduction
+
+ArmorPlus 1.11.2-9.5.7.8-beta
+----------------------------
+
+Bugs Fixed:
+
+* Prevented crashes while trying to read more information for items and armors.
+
+ArmorPlus 1.11.2-9.5.6.7-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed Mob drops in the ArmorPlus towers.
+
+ArmorPlus 1.11.2-9.5.5.6-beta
+----------------------------
+
+Bugs Fixed:
+
+* Fixed bow related issues, finally (hopefully)
+
 ArmorPlus 1.11.2-9.5.4.5-beta
 ----------------------------
 
