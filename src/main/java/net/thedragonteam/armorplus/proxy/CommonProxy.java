@@ -15,7 +15,6 @@ import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
 import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.worldgen.OreGen;
-import net.thedragonteam.armorplus.worldgen.StructureGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -91,7 +90,6 @@ public class CommonProxy {
 
     public void registerWorldGenerators() {
         GameRegistry.registerWorldGenerator(new OreGen(), 1);
-        GameRegistry.registerWorldGenerator(new StructureGen(), 2);
-        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 3);
+        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 2);
     }
 }
