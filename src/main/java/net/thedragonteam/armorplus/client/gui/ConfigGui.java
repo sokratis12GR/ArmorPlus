@@ -12,6 +12,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
@@ -27,18 +28,18 @@ public class ConfigGui extends GuiConfig {
         List<IConfigElement> list = new ArrayList<>();
 
         /* adds sections declared in ConfigHandler. toLowerCase() is used because the configuration class automatically does this, so must we. */
-        list.add(new ConfigElement(configuration.getCategory("Weapons".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("Armors".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("GameModes".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("Items".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("WhiteList".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("BlackList".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("WorldGeneration".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("MobDrops".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("Debug".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("EnderDragonZombie".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("TheGiftOfTheGods".toLowerCase())));
-        list.add(new ConfigElement(configuration.getCategory("EnergyItems".toLowerCase())));
+        list.add(new ConfigElement(configuration.getCategory("Weapons".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("Armors".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("GameModes".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("Items".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("WhiteList".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("BlackList".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("WorldGeneration".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("MobDrops".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("Debug".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("EnderDragonZombie".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("TheGiftOfTheGods".toLowerCase(Locale.ENGLISH))));
+        list.add(new ConfigElement(configuration.getCategory("EnergyItems".toLowerCase(Locale.ENGLISH))));
         return list;
     }
 }
