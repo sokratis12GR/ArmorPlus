@@ -99,7 +99,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rThe Most OverPowered Armor");
+            tooltip.add("\2479Question: " + "\247rAre you the chosen one ?");
             tooltip.add("\2473Use: " + "\247rEquip The Full Set");
         } else
             tooltip.add(I18n.format("tooltip.shift.showinfo", getValueByName(theUltimateArmorItemNameColor), keyBindSneak.getDisplayName(), TextFormatting.GRAY, TextFormatting.GREEN));
@@ -126,18 +126,15 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
             }
         if (APConfig.enableTheUltimateArmorInvincibility)
             entity.capabilities.disableDamage = head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator();
-        if ((head.getCount() <= 0 || head.getItem() != theUltimate[0] || chest.getCount() <= 0 || chest.getItem() != theUltimate[1] || legs.getCount() <= 0 || legs.getItem() != theUltimate[2] || feet.getCount() <= 0 || feet.getItem() != theUltimate[3]) && !entity.capabilities.isCreativeMode && !entity.isSpectator()) {
-            if (enableTheUltimateArmorDeBuffs) {
-                addPotion(entity, MobEffects.POISON, 60, 2, BAD);
-                addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
-                addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
+        if ((head.getCount() <= 0 || head.getItem() != theUltimate[0] || chest.getCount() <= 0 || chest.getItem() != theUltimate[1] || legs.getCount() <= 0 || legs.getItem() != theUltimate[2] || feet.getCount() <= 0 || feet.getItem() != theUltimate[3]) && !entity.capabilities.isCreativeMode && !entity.isSpectator() && enableTheUltimateArmorDeBuffs) {
+            addPotion(entity, MobEffects.POISON, 60, 2, BAD);
+            addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
+            addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
 
-                entity.motionX = 0;
-                if (entity.onGround)
-                    entity.motionY = 0;
-                entity.motionZ = 0;
-                entity.velocityChanged = true; // assumes that entity instanceof EntityPlayer
-            }
+            entity.motionX = 0;
+            if (entity.onGround) entity.motionY = 0;
+            entity.motionZ = 0;
+            entity.velocityChanged = true; // assumes that entity instanceof EntityPlayer
         }
     }
 
