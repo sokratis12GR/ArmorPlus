@@ -52,6 +52,7 @@ public class TheGiftOfTheGods extends BaseItem implements IModelHelper {
         this.setMaxDamage(maxUsable);
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

@@ -24,6 +24,7 @@ public class BaseAxe extends ItemAxe implements IItemHelper, IModelHelper {
         GameRegistry.register(this);
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

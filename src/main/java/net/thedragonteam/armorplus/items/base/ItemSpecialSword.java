@@ -134,6 +134,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
         return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);

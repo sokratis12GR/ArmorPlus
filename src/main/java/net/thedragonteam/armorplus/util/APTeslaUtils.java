@@ -84,7 +84,7 @@ public class APTeslaUtils {
             getContainer(chargedstack).setInputRate(APTeslaUtils.getMaxInput(stack));
             return chargedstack;
         }
-        return null;
+        return ItemStack.EMPTY;
     }
 
     /**

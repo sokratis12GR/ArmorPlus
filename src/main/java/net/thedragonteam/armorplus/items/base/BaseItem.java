@@ -18,7 +18,6 @@ public class BaseItem extends Item implements IItemHelper, IModelHelper {
 
     public EnumRarity formattingName;
     public String itemName;
-    private Items items;
 
     public BaseItem(String name) {
         this.itemName = name;
@@ -30,9 +29,9 @@ public class BaseItem extends Item implements IItemHelper, IModelHelper {
 
     public BaseItem(Items itemsIn) {
         this(itemsIn.getName());
-        this.items = itemsIn;
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

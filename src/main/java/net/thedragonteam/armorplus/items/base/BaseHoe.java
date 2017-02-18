@@ -24,6 +24,7 @@ public class BaseHoe extends ItemHoe implements IItemHelper, IModelHelper {
         GameRegistry.register(this);
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

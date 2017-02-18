@@ -55,20 +55,12 @@ public enum Bows implements IStringSerializable {
         this(durabilityIn, nameIn, damageIn, repairEasyIn.getItem(), Item.getItemFromBlock(repairExpertIn), textFormattingIn, bowItemIn);
     }
 
-    Bows(int durabilityIn, String nameIn, double damageIn, ItemStack repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, Item bowItemIn) {
-        this(durabilityIn, nameIn, damageIn, repairEasyIn.getItem(), repairExpertIn.getItem(), textFormattingIn, bowItemIn);
-    }
-
     Bows(int durabilityIn, String nameIn, double damageIn, Item repairEasyIn, Block repairExpertIn, TextFormatting textFormattingIn, Item bowItemIn) {
         this(durabilityIn, nameIn, damageIn, repairEasyIn, Item.getItemFromBlock(repairExpertIn), textFormattingIn, bowItemIn);
     }
 
     Bows(int durabilityIn, String nameIn, double damageIn, Item repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, Item bowItemIn) {
         this(durabilityIn, nameIn, damageIn, repairEasyIn, repairExpertIn.getItem(), textFormattingIn, bowItemIn);
-    }
-
-    Bows(int durabilityIn, String nameIn, double damageIn, Item repairBoth, TextFormatting textFormattingIn, Item bowItemIn) {
-        this(durabilityIn, nameIn, damageIn, repairBoth, repairBoth, textFormattingIn, bowItemIn);
     }
 
     Bows(int durabilityIn, String nameIn, double damageIn, ItemStack repairBoth, TextFormatting textFormattingIn, Item bowItemIn) {

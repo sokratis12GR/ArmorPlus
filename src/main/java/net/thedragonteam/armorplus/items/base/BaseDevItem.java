@@ -11,6 +11,7 @@ import net.minecraft.util.NonNullList;
 import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.DevItems;
+import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import javax.annotation.Nonnull;
 
@@ -27,14 +28,15 @@ public class BaseDevItem extends BaseItem implements IItemHelper, IModelHelper {
         }
     }
 
-    @Override
     @Nonnull
+    @Override
     public Item setCreativeTab(@Nonnull CreativeTabs tab) {
         return this;
     }
 
+    @Override
     public void initModel() {
-        this.initModel(this, getRegistryName() + "_second", 1);
+        if (devItems.hasSubTypes()) this.initModel(this, getRegistryName() + "_second", 1);
         this.initModel(this, getRegistryName(), 0);
     }
 
@@ -43,12 +45,11 @@ public class BaseDevItem extends BaseItem implements IItemHelper, IModelHelper {
         return this;
     }
 
-
     @Override
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (devItems.hasSubTypes()) {
-            subItems.add(new ItemStack(itemIn, 1, 0));
-            subItems.add(new ItemStack(itemIn, 1, 1));
+            subItems.add(ItemStackUtils.getItemStack(itemIn, 0));
+            subItems.add(ItemStackUtils.getItemStack(itemIn, 1));
         }
     }
 }

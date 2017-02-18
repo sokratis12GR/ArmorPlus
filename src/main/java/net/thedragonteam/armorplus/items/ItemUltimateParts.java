@@ -19,7 +19,7 @@ import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemUltimateParts extends Item implements IModelHelper{
+public class ItemUltimateParts extends Item implements IModelHelper {
 
     private final String[] ULTIMATE_NAMES = new String[]{
             "_helmet_right", "_helmet_middle", "_helmet_left",
@@ -61,6 +61,6 @@ public class ItemUltimateParts extends Item implements IModelHelper{
 
     public void initModel() {
         for (int i = 0; i < ULTIMATE_NAMES.length; i++)
-            this.initModel(this,getRegistryName() + ULTIMATE_NAMES[i], i);
+            this.initModel(this, getRegistryName() + ULTIMATE_NAMES[i], i);
     }
 }

@@ -24,9 +24,11 @@ public class BasePickaxe extends ItemPickaxe implements IItemHelper, IModelHelpe
         GameRegistry.register(this);
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }
+
     @Override
     public ItemStack getItemStack(ItemStack stack) {
         return stack;

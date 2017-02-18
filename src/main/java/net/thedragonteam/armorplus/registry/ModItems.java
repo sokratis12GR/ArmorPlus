@@ -164,9 +164,6 @@ public class ModItems {
         for (int i = 0; i < templates.length; i++) {
             templates[i] = (new BaseItem(templateNames[i]));
         }
-        for (BaseItem template : templates) {
-            template.setCreativeTab(null);
-        }
     }
 
     @SideOnly(Side.CLIENT)
