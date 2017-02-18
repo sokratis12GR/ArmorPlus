@@ -55,4 +55,7 @@ public interface IModelHelper {
     default void initModel(Item item, String registryName, int meta, @Nonnull String variantIn) {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(registryName, variantIn));
     }
+
+    @SideOnly(Side.CLIENT)
+    void initModel();
 }
