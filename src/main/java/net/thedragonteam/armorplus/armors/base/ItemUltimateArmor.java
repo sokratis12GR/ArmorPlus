@@ -31,8 +31,8 @@ import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.minecraftforge.common.util.EnumHelper.addArmorMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.registry.ModItems.theUltimate;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
@@ -118,15 +118,15 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
         ItemStack legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         ItemStack feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         if (APConfig.enableFlightAbility)
-            if (head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator())
+            if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator()) {
                 entity.capabilities.allowFlying = true;
-            else {
+            } else {
                 entity.capabilities.isFlying = false;
                 entity.capabilities.allowFlying = false;
             }
         if (APConfig.enableTheUltimateArmorInvincibility)
-            entity.capabilities.disableDamage = head.getCount() > 0 && head.getItem() == theUltimate[0] && chest.getCount() > 0 && chest.getItem() == theUltimate[1] && legs.getCount() > 0 && legs.getItem() == theUltimate[2] && feet.getCount() > 0 && feet.getItem() == theUltimate[3] || entity.capabilities.isCreativeMode || entity.isSpectator();
-        if ((head.getCount() <= 0 || head.getItem() != theUltimate[0] || chest.getCount() <= 0 || chest.getItem() != theUltimate[1] || legs.getCount() <= 0 || legs.getItem() != theUltimate[2] || feet.getCount() <= 0 || feet.getItem() != theUltimate[3]) && !entity.capabilities.isCreativeMode && !entity.isSpectator() && enableTheUltimateArmorDeBuffs) {
+            entity.capabilities.disableDamage = !head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator();
+        if ((head.isEmpty() || head.getItem() != theUltimateHelmet || chest.isEmpty() || chest.getItem() != theUltimateChestplate || legs.isEmpty() || legs.getItem() != theUltimateLeggings || feet.isEmpty() || feet.getItem() != theUltimateBoots) && !entity.capabilities.isCreativeMode && !entity.isSpectator() && enableTheUltimateArmorDeBuffs) {
             addPotion(entity, MobEffects.POISON, 60, 2, BAD);
             addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD);
             addPotion(entity, MobEffects.BLINDNESS, 60, 0, BAD);
