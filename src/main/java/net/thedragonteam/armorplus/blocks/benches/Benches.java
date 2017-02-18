@@ -4,21 +4,32 @@
 
 package net.thedragonteam.armorplus.blocks.benches;
 
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IStringSerializable;
+import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
+import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nonnull;
 
-public enum Benches implements IStringSerializable {
-    WORKBENCH("workbench"),
-    HIGH_TECH("high_tech_bench"),
-    ULTI_TECH("ulti_tech_bench"),
-    CHAMPION("champion_bench"),
-    WORKBENCH_NEW("workbench_new");
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
+
+public enum Benches implements IStringSerializable{
+    WORKBENCH("workbench", new TileEntityWorkbench(), GUI_WORKBENCH),
+    HIGH_TECH("high_tech_bench", new TileEntityHighTechBench(), GUI_HIGH_TECH_BENCH),
+    ULTI_TECH("ulti_tech_bench", new TileEntityUltiTechBench(), GUI_ULTI_TECH_BENCH),
+    CHAMPION("champion_bench", new TileEntityChampionBench(), GUI_CHAMPION_BENCH),
+    WORKBENCH_NEW("workbench_new", new TileEntityWorkbench(), GUI_WORKBENCH_NEW);
 
     private final String name;
+    private final TileEntity tileEntity;
+    private final int guiNumber;
 
-    Benches(String nameIn) {
+    Benches(String nameIn, TileEntity tileEntityIn, int guiNumberIn) {
         this.name = nameIn;
+        this.tileEntity = tileEntityIn;
+        this.guiNumber = guiNumberIn;
     }
 
     public String toString() {
@@ -29,5 +40,17 @@ public enum Benches implements IStringSerializable {
     @Nonnull
     public String getName() {
         return this.name;
+    }
+
+    public TileEntity getTileEntity() {
+        return tileEntity;
+    }
+
+    public int getGuiNumber() {
+        return guiNumber;
+    }
+
+    public Benches getBench() {
+        return this;
     }
 }

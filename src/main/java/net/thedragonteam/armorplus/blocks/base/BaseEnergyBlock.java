@@ -21,10 +21,6 @@ public class BaseEnergyBlock extends BlockContainer {
 
     private TileEntity tileEntity;
 
-    public BaseEnergyBlock(Material material, String name, TileEntity tileEntityIn) {
-        this(material, name, 0, 0, tileEntityIn);
-    }
-
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, TileEntity tileEntityIn) {
         this(material, name, resistance, hardness, null, 0, tileEntityIn);
     }

@@ -49,6 +49,7 @@ public class LavaCactus extends BlockCactus implements IModelHelper {
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

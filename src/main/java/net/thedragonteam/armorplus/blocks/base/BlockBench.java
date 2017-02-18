@@ -20,16 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
 import net.thedragonteam.armorplus.iface.IModelHelper;
-import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 public class BlockBench extends BlockBase implements ITileEntityProvider, IModelHelper {
 
@@ -37,22 +30,13 @@ public class BlockBench extends BlockBase implements ITileEntityProvider, IModel
 
     public Benches benches;
 
-    private int[] guiNumber = new int[]{
-            GUI_WORKBENCH, GUI_HIGH_TECH_BENCH, GUI_ULTI_TECH_BENCH, GUI_CHAMPION_BENCH, GUI_WORKBENCH_NEW
-    };
-    private Benches[] bench = new Benches[]{
-            WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION, WORKBENCH_NEW
-    };
-    private TileEntity[] tileEntities = new TileEntity[]{
-            new TileEntityWorkbench(), new TileEntityHighTechBench(), new TileEntityUltiTechBench(), new TileEntityChampionBench(), new TileEntityWorkbench()
-    };
-
     public BlockBench(Benches benches) {
         super(Material.IRON, benches.getName(), 1000.0F, 10.0F, ToolType.PICKAXE, 2);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;
     }
 
+    @Override
     public void initModel() {
         switch (benches) {
             case WORKBENCH:
@@ -69,10 +53,11 @@ public class BlockBench extends BlockBase implements ITileEntityProvider, IModel
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        for (int i = 0; i < guiNumber.length; i++)
-            if (benches == bench[i] && !worldIn.isRemote)
-                playerIn.openGui(ArmorPlus.instance, guiNumber[i], worldIn, pos.getX(), pos.getY(), pos.getZ());
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+        if (benches == benches.getBench() && !worldIn.isRemote) {
+            playerIn.openGui(ArmorPlus.instance, benches.getGuiNumber(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+            return false;
+        }
+        return false;
     }
 
     @Override
@@ -140,18 +125,6 @@ public class BlockBench extends BlockBase implements ITileEntityProvider, IModel
     @Nullable
     @Override
     public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
-        switch (benches) {
-            case WORKBENCH:
-                return tileEntities[0];
-            case HIGH_TECH:
-                return tileEntities[1];
-            case ULTI_TECH:
-                return tileEntities[2];
-            case CHAMPION:
-                return tileEntities[3];
-            case WORKBENCH_NEW:
-                return tileEntities[0];
-        }
-        return null;
+        return benches.getTileEntity();
     }
 }
