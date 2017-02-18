@@ -9,6 +9,8 @@ Bugs Fixed:
 
 * A lot of performance issues fixed, now performance should be more smooth and mod size reduction
 
+* Fixed repairing items
+
 ArmorPlus 1.11.2-9.5.7.8-beta
 ----------------------------
 

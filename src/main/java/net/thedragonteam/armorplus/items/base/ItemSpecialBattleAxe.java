@@ -31,9 +31,6 @@ import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 
 public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IModelHelper {
 
@@ -80,45 +77,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
-        stack.damageItem(1, attacker);
-        switch (battleAxes) {
-            case COAL:
-                if (enableCoalWeaponsEffects)
-                    addPotion(target, getPotion(coalWeaponsAddPotionEffect), coalWeaponsEffectLevel, BAD);
-                break;
-            case LAPIS:
-                if (enableLapisWeaponsEffects)
-                    addPotion(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, BAD);
-                break;
-            case REDSTONE:
-                if (enableRedstoneWeaponsEffects)
-                    addPotion(target, getPotion(redstoneWeaponsAddPotionEffect), redstoneWeaponsEffectLevel, BAD);
-                break;
-            case EMERALD:
-                if (enableEmeraldWeaponsEffects)
-                    addPotion(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, BAD);
-                break;
-            case OBSIDIAN:
-                if (enableObsidianWeaponsEffects)
-                    addPotion(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, BAD);
-                break;
-            case LAVA:
-                target.setFire(8);
-                break;
-            case GUARDIAN:
-                if (enableGuardianWeaponsEffects)
-                    addPotion(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, BAD);
-                break;
-            case SUPER_STAR:
-                if (enableSuperStarWeaponsEffects)
-                    addPotion(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, BAD);
-                break;
-            case ENDER_DRAGON:
-                if (enableEnderDragonWeaponsEffects)
-                    addPotion(target, getPotion(enderDragonWeaponsAddPotionEffect), enderDragonWeaponsEffectLevel, BAD);
-                break;
-        }
-        return true;
+        return battleAxes.hitEntity(stack, target, attacker);
     }
 
     @Override
@@ -142,6 +101,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
         return isItemRepairable(repair, itemEasy, itemExpert);
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

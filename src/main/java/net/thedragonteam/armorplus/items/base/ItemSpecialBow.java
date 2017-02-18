@@ -68,8 +68,7 @@ public class ItemSpecialBow extends ItemBow implements IItemHelper, IModelHelper
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(@Nonnull ItemStack stack, World worldIn, EntityLivingBase entityIn) {
-                if (entityIn == null)
-                    return 0.0F;
+                if (entityIn == null) return 0.0F;
                 ItemStack itemstack = entityIn.getActiveItemStack();
                 return itemstack.getCount() > 0 && itemstack.getItem() == itemBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 5.0F : 0.0F;
             }
@@ -83,6 +82,7 @@ public class ItemSpecialBow extends ItemBow implements IItemHelper, IModelHelper
         this.formattingName = addRarity("BOW", formatting, "Bow");
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }
@@ -109,14 +109,6 @@ public class ItemSpecialBow extends ItemBow implements IItemHelper, IModelHelper
         return this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)) ? player.getHeldItem(EnumHand.OFF_HAND) : this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)) ? player.getHeldItem(EnumHand.MAIN_HAND) : IntStream.range(0, player.inventory.getSizeInventory()).mapToObj(i -> player.inventory.getStackInSlot(i)).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
     }
 
-    public void setVelocityOfArrow(ItemStack stack, float velocity) {
-        NBTHelper.checkNBT(stack);
-
-        NBTTagCompound tag = stack.getTagCompound();
-
-        tag.setFloat("velocity", velocity);
-    }
-
     public float getVelocityOfArrow(ItemStack stack) {
         NBTHelper.checkNBT(stack);
 
@@ -124,7 +116,6 @@ public class ItemSpecialBow extends ItemBow implements IItemHelper, IModelHelper
 
         return tag.hasKey("velocity") ? tag.getFloat("velocity") : 3;
     }
-
 
     @Override
     public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World world, EntityLivingBase entityLiving, int timeLeft) {

@@ -114,6 +114,7 @@ public class APItems {
     public static ItemStack witherBone;
     public static ItemStack enderDragonScale;
     public static ItemStack theUltimateMaterial;
+    public static ItemStack infusedLavaCrystal;
 
     public APItems() {
     }
@@ -217,6 +218,7 @@ public class APItems {
         enderDragonBattleAxe = battleAxe[8];
         enderDragonBow = bow[8];
 
+        infusedLavaCrystal = getItemStack(lavaCrystal, 1);
         chainmail = getItemStack(materials, 0);
         guardianScale = getItemStack(materials, 1);
         witherBone = getItemStack(materials, 2);
