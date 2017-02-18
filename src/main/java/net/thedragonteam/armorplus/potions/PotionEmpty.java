@@ -4,19 +4,46 @@
 
 package net.thedragonteam.armorplus.potions;
 
-import net.minecraft.potion.Potion;
-
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import net.minecraft.potion.PotionEffect;
+import net.thedragonteam.armorplus.potions.base.PotionBaseGood;
 
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-public class PotionEmpty extends Potion {
+public class PotionEmpty extends PotionBaseGood {
 
     public PotionEmpty() {
-        super(false, 0xfff);
-        setPotionName(setName("empty"));
-        setRegistryName("empty");
+        super(0xfff, "empty");
+    }
+
+    @Override
+    public boolean shouldRender(PotionEffect effect) {
+        return false;
+    }
+
+    @Override
+    public boolean shouldRenderHUD(PotionEffect effect) {
+        return false;
+    }
+
+    @Override
+    public boolean shouldRenderInvText(PotionEffect effect) {
+        return false;
+    }
+
+    @Override
+    public boolean isReady(int duration, int amplifier) {
+        return false;
+    }
+
+    @Override
+    public boolean isInstant() {
+        return true;
+    }
+
+    @Override
+    public boolean isBadEffect() {
+        return true;
     }
 }
