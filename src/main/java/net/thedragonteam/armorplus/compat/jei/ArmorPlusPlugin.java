@@ -1,10 +1,13 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.jei;
 
-import mezz.jei.api.*;
+import mezz.jei.api.BlankModPlugin;
+import mezz.jei.api.IJeiHelpers;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,9 +17,9 @@ import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManag
 import net.thedragonteam.armorplus.client.gui.GuiHighTechBench;
 import net.thedragonteam.armorplus.client.gui.GuiUltiTechBench;
 import net.thedragonteam.armorplus.client.gui.GuiWorkbench;
-import net.thedragonteam.armorplus.compat.jei.hightechbench.*;
-import net.thedragonteam.armorplus.compat.jei.ultitechbench.*;
-import net.thedragonteam.armorplus.compat.jei.workbench.*;
+import net.thedragonteam.armorplus.compat.jei.old.hightechbench.*;
+import net.thedragonteam.armorplus.compat.jei.old.ultitechbench.*;
+import net.thedragonteam.armorplus.compat.jei.old.workbench.*;
 import net.thedragonteam.armorplus.container.ContainerHighTechBench;
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
 import net.thedragonteam.armorplus.container.ContainerWorkbench;
@@ -40,26 +43,25 @@ public class ArmorPlusPlugin extends BlankModPlugin {
     @Override
     public void register(@Nonnull IModRegistry registry) {
         jeiHelper = registry.getJeiHelpers();
-        IGuiHelper guiHelper = jeiHelper.getGuiHelper();
 
         registry.addRecipeCategories(
-                new WorkbenchRecipeCategory(),
-                new HighTechBenchRecipeCategory(),
-                new UltiTechBenchRecipeCategory()
+                new WBRecipeCategory(),
+                new HTBRecipeCategory(),
+                new UTBRecipeCategory()
         );
         registry.addRecipeHandlers(
-                new WorkbenchShapedRecipeHandler(),
-                new WorkbenchShapelessRecipeHandler(guiHelper),
-                new WorkbenchShapedOreRecipeHandler(),
-                new WorkbenchShapelessOreRecipeHandler(guiHelper),
-                new HighTechBenchShapelessRecipeHandler(guiHelper),
-                new HighTechBenchShapedRecipeHandler(),
-                new HighTechBenchShapelessOreRecipeHandler(guiHelper),
-                new HighTechBenchShapedOreRecipeHandler(),
-                new UltiTechBenchShapelessRecipeHandler(guiHelper),
-                new UltiTechBenchShapedRecipeHandler(),
-                new UltiTechBenchShapelessOreRecipeHandler(guiHelper),
-                new UltiTechBenchShapedOreRecipeHandler()
+                new WBShapedRecipeHandler(),
+                new WBShapelessRecipeHandler(),
+                new WBShapedOreRecipeHandler(jeiHelper),
+                new WBShapelessOreRecipeHandler(jeiHelper),
+                new HTBShapedRecipeHandler(),
+                new HTBShapelessRecipeHandler(),
+                new HTBShapelessOreRecipeHandler(jeiHelper),
+                new HTBShapedOreRecipeHandler(jeiHelper),
+                new UTBShapedRecipeHandler(),
+                new UTBShapelessRecipeHandler(),
+                new UTBShapelessOreRecipeHandler(jeiHelper),
+                new UTBShapedOreRecipeHandler(jeiHelper)
         );
 
         registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
@@ -72,9 +74,9 @@ public class ArmorPlusPlugin extends BlankModPlugin {
         recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36);
         recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpWorkbench), JEI_CATEGORY_WORKBENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpHighTechBench), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.arpUltiTechBench), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[0]), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[1]), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.benches[2]), JEI_CATEGORY_ULTI_TECH_BENCH);
 
         registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList());
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList());
