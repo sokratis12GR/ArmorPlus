@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
@@ -20,7 +20,7 @@ import java.util.List;
  * - TheDragonTeam
  */
 public class ShapelessRecipes implements IRecipe {
-    public final List<ItemStack> recipeItems;
+    public final List<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
@@ -28,7 +28,7 @@ public class ShapelessRecipes implements IRecipe {
 
     public ShapelessRecipes(ItemStack output, List<ItemStack> inputList) {
         this.recipeOutput = output;
-        this.recipeItems = inputList;
+        this.input = inputList;
     }
 
     @Nullable
@@ -51,7 +51,7 @@ public class ShapelessRecipes implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     public boolean matches(InventoryCrafting inv, World worldIn) {
-        List<ItemStack> list = Lists.newArrayList(this.recipeItems);
+        List<ItemStack> list = Lists.newArrayList(this.input);
 
         for (int i = 0; i < inv.getHeight(); ++i) {
             for (int j = 0; j < inv.getWidth(); ++j) {
@@ -90,6 +90,6 @@ public class ShapelessRecipes implements IRecipe {
      * Returns the size of the recipe area
      */
     public int getRecipeSize() {
-        return this.recipeItems.size();
+        return this.input.size();
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
@@ -21,15 +21,15 @@ public class ShapedRecipes implements IRecipe {
     /**
      * How many horizontal slots this recipe is wide.
      */
-    public final int recipeWidth;
+    public final int width;
     /**
      * How many vertical slots this recipe uses.
      */
-    public final int recipeHeight;
+    public final int height;
     /**
      * Is a array of ItemStack that composes the recipe.
      */
-    public final ItemStack[] recipeItems;
+    public final ItemStack[] input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
@@ -37,9 +37,9 @@ public class ShapedRecipes implements IRecipe {
     private boolean copyIngredientNBT;
 
     public ShapedRecipes(int width, int height, ItemStack[] p_i1917_3_, ItemStack output) {
-        this.recipeWidth = width;
-        this.recipeHeight = height;
-        this.recipeItems = p_i1917_3_;
+        this.width = width;
+        this.height = height;
+        this.input = p_i1917_3_;
         this.recipeOutput = output;
     }
 
@@ -63,8 +63,8 @@ public class ShapedRecipes implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     public boolean matches(InventoryCrafting inv, World worldIn) {
-        for (int i = 0; i <= 5 - this.recipeWidth; ++i) {
-            for (int j = 0; j <= 5 - this.recipeHeight; ++j) {
+        for (int i = 0; i <= 5 - this.width; ++i) {
+            for (int j = 0; j <= 5 - this.height; ++j) {
                 if (this.checkMatch(inv, i, j, true)) {
                     return true;
                 }
@@ -88,11 +88,11 @@ public class ShapedRecipes implements IRecipe {
                 int l = j - p_77573_3_;
                 ItemStack itemstack = null;
 
-                if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
+                if (k >= 0 && l >= 0 && k < this.width && l < this.height) {
                     if (p_77573_4_) {
-                        itemstack = this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth];
+                        itemstack = this.input[this.width - k - 1 + l * this.width];
                     } else {
-                        itemstack = this.recipeItems[k + l * this.recipeWidth];
+                        itemstack = this.input[k + l * this.width];
                     }
                 }
 
@@ -141,6 +141,14 @@ public class ShapedRecipes implements IRecipe {
      * Returns the size of the recipe area
      */
     public int getRecipeSize() {
-        return this.recipeWidth * this.recipeHeight;
+        return this.width * this.height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

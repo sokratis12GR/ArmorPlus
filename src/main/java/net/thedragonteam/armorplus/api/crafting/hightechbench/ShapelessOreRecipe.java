@@ -1,9 +1,8 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
-
 
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
@@ -56,7 +55,7 @@ public class ShapelessOreRecipe implements IRecipe {
     ShapelessOreRecipe(ShapelessRecipes recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
-        for (ItemStack ingredient : recipe.recipeItems) {
+        for (ItemStack ingredient : recipe.input) {
             Object finalObj = ingredient;
             for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, false)) {

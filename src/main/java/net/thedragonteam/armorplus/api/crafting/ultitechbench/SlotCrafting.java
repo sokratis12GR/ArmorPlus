@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
@@ -13,8 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.registry.ModAchievements;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nullable;
 

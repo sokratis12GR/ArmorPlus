@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
@@ -10,10 +10,12 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.thedragonteam.armorplus.registry.ModAchievements;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.registry.ModAchievements;
 
 import javax.annotation.Nullable;
 
@@ -83,7 +85,7 @@ public class SlotCrafting extends Slot {
 
         this.amountCrafted = 0;
 
-        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.arpUltiTechBench))
+        if (stack.getItem() == Item.getItemFromBlock(ModBlocks.benches[2]))
             this.thePlayer.addStat(ModAchievements.craftUltiTechBench, 1);
 
         /* Tinkers' Armors*/
@@ -105,11 +107,11 @@ public class SlotCrafting extends Slot {
     }
 
     public void onPickupFromSlot(EntityPlayer playerIn, ItemStack stack) {
-        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, craftMatrix);
+        FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, craftMatrix);
         this.onCrafting(stack);
-        net.minecraftforge.common.ForgeHooks.setCraftingPlayer(playerIn);
+        ForgeHooks.setCraftingPlayer(playerIn);
         ItemStack[] aitemstack = HighTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, playerIn.world);
-        net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
+        ForgeHooks.setCraftingPlayer(null);
 
         for (int i = 0; i < aitemstack.length; ++i) {
             ItemStack itemstack = this.craftMatrix.getStackInSlot(i);

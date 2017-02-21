@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
@@ -101,11 +101,7 @@ public class WorkbenchCraftingManager {
         for (int i1 = 0; i1 < j * k; ++i1) {
             char c0 = s.charAt(i1);
 
-            if (map.containsKey(c0)) {
-                aitemstack[i1] = map.get(c0).copy();
-            } else {
-                aitemstack[i1] = null;
-            }
+            aitemstack[i1] = map.containsKey(c0) ? map.get(c0).copy() : null;
         }
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
@@ -153,13 +149,7 @@ public class WorkbenchCraftingManager {
      */
     @Nullable
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
-
-        return null;
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(null);
     }
 
     public ItemStack[] getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

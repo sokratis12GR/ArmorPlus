@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
@@ -33,7 +33,7 @@ public class HighTechBenchCraftingManager {
      * this class
      */
     private static final HighTechBenchCraftingManager INSTANCE = new HighTechBenchCraftingManager();
-    private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
+    private final List<IRecipe> recipes = Lists.newArrayList();
 
     private HighTechBenchCraftingManager() {
 
@@ -42,7 +42,7 @@ public class HighTechBenchCraftingManager {
         (new ModWeaponTierTwoRecipes()).addRecipes(this);
         (new ModTinkersConstructRecipes()).addRecipes(this);
 
-        (this.recipes).sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -102,11 +102,7 @@ public class HighTechBenchCraftingManager {
         for (int i1 = 0; i1 < j * k; ++i1) {
             char c0 = s.charAt(i1);
 
-            if (map.containsKey(c0)) {
-                aitemstack[i1] = map.get(c0).copy();
-            } else {
-                aitemstack[i1] = null;
-            }
+            aitemstack[i1] = map.containsKey(c0) ? map.get(c0).copy() : null;
         }
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
@@ -154,19 +150,14 @@ public class HighTechBenchCraftingManager {
      */
     @Nullable
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getCraftingResult(craftMatrix);
-            }
-        }
-
-        return null;
+        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(null);
     }
 
     public ItemStack[] getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
         for (IRecipe irecipe : this.recipes) {
-            if (irecipe.matches(craftMatrix, worldIn))
+            if (irecipe.matches(craftMatrix, worldIn)) {
                 return irecipe.getRemainingItems(craftMatrix);
+            }
         }
 
         ItemStack[] aitemstack = new ItemStack[craftMatrix.getSizeInventory()];

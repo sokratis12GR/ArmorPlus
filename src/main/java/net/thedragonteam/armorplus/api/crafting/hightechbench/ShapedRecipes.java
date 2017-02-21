@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
@@ -18,28 +18,29 @@ import javax.annotation.Nullable;
  * - TheDragonTeam
  */
 public class ShapedRecipes implements IRecipe {
+
     /**
      * How many horizontal slots this recipe is wide.
      */
-    public final int recipeWidth;
+    public final int width;
     /**
      * How many vertical slots this recipe uses.
      */
-    public final int recipeHeight;
+    public final int height;
     /**
      * Is a array of ItemStack that composes the recipe.
      */
-    public final ItemStack[] recipeItems;
+    public final ItemStack[] input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
     private boolean copyIngredientNBT;
 
-    public ShapedRecipes(int width, int height, ItemStack[] p_i1917_3_, ItemStack output) {
-        this.recipeWidth = width;
-        this.recipeHeight = height;
-        this.recipeItems = p_i1917_3_;
+    public ShapedRecipes(int width, int height, ItemStack[] input, ItemStack output) {
+        this.width = width;
+        this.height = height;
+        this.input = input;
         this.recipeOutput = output;
     }
 
@@ -63,15 +64,12 @@ public class ShapedRecipes implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     public boolean matches(InventoryCrafting inv, World worldIn) {
-        for (int i = 0; i <= 4 - this.recipeWidth; ++i) {
-            for (int j = 0; j <= 4 - this.recipeHeight; ++j) {
-                if (this.checkMatch(inv, i, j, true)) {
+        for (int i = 0; i <= 4 - this.width; ++i) {
+            for (int j = 0; j <= 4 - this.height; ++j) {
+                if (this.checkMatch(inv, i, j, true) || this.checkMatch(inv, i, j, false)) {
                     return true;
                 }
 
-                if (this.checkMatch(inv, i, j, false)) {
-                    return true;
-                }
             }
         }
 
@@ -81,35 +79,24 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private boolean checkMatch(InventoryCrafting p_77573_1_, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
+    private boolean checkMatch(InventoryCrafting inv, int width, int height, boolean mirrored) {
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
-                int k = i - p_77573_2_;
-                int l = j - p_77573_3_;
+                int k = i - width;
+                int l = j - height;
                 ItemStack itemstack = null;
 
-                if (k >= 0 && l >= 0 && k < this.recipeWidth && l < this.recipeHeight) {
-                    if (p_77573_4_) {
-                        itemstack = this.recipeItems[this.recipeWidth - k - 1 + l * this.recipeWidth];
-                    } else {
-                        itemstack = this.recipeItems[k + l * this.recipeWidth];
-                    }
+                if (k >= 0 && l >= 0 && k < this.width && l < this.height) {
+                    itemstack = mirrored ? this.input[this.width - k - 1 + l * this.width] : this.input[k + l * this.width];
                 }
 
-                ItemStack itemstack1 = p_77573_1_.getStackInRowAndColumn(i, j);
+                ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);
 
                 if (itemstack1 != null || itemstack != null) {
-                    if (itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) {
+                    if (itemstack1 == null || itemstack == null || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
                         return false;
                     }
 
-                    if (itemstack.getItem() != itemstack1.getItem()) {
-                        return false;
-                    }
-
-                    if (itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata()) {
-                        return false;
-                    }
                 }
             }
         }
@@ -141,6 +128,14 @@ public class ShapedRecipes implements IRecipe {
      * Returns the size of the recipe area
      */
     public int getRecipeSize() {
-        return this.recipeWidth * this.recipeHeight;
+        return this.width * this.height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

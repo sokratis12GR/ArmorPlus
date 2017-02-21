@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
@@ -41,7 +41,7 @@ public class ModItemsRecipes {
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.electricalIngot, 9), "blockElectrical"));
 
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpWorkbench),
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[0]),
                 "LCL",
                 "OTO",
                 "O O",
@@ -49,7 +49,7 @@ public class ModItemsRecipes {
                 'O', "blockCoal",
                 'L', "gemLapis",
                 'C', "gemLavaCrystal"));
-        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.arpHighTechBench),
+        manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[1]),
                 "LLL",
                 "CAC",
                 "CCC",

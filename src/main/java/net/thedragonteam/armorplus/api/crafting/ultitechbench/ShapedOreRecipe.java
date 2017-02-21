@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
@@ -111,17 +111,17 @@ public class ShapedOreRecipe implements IRecipe {
 
     ShapedOreRecipe(ShapedRecipes recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
-        width = recipe.recipeWidth;
-        height = recipe.recipeHeight;
+        width = recipe.width;
+        height = recipe.height;
 
-        input = new Object[recipe.recipeItems.length];
+        input = new Object[recipe.input.length];
 
         for (int i = 0; i < input.length; i++) {
-            ItemStack ingredient = recipe.recipeItems[i];
+            ItemStack ingredient = recipe.input[i];
 
             if (ingredient == null) continue;
 
-            input[i] = recipe.recipeItems[i];
+            input[i] = recipe.input[i];
 
             for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, true)) {
@@ -160,11 +160,7 @@ public class ShapedOreRecipe implements IRecipe {
     public boolean matches(InventoryCrafting inv, World world) {
         for (int x = 0; x <= MAX_CRAFT_GRID_WIDTH - width; x++) {
             for (int y = 0; y <= MAX_CRAFT_GRID_HEIGHT - height; ++y) {
-                if (checkMatch(inv, x, y, false)) {
-                    return true;
-                }
-
-                if (mirrored && checkMatch(inv, x, y, true)) {
+                if (checkMatch(inv, x, y, false) || mirrored && checkMatch(inv, x, y, true)) {
                     return true;
                 }
             }
@@ -240,5 +236,13 @@ public class ShapedOreRecipe implements IRecipe {
         }
 
         return aitemstack;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
