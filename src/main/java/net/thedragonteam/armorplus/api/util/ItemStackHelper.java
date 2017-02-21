@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.api.util;
@@ -22,7 +22,8 @@ public class ItemStackHelper {
             if (stacks[index].stackSize == 0) stacks[index] = null;
 
             return itemstack;
-        } else return null;
+        }
+        return null;
     }
 
     @Nullable
@@ -31,6 +32,7 @@ public class ItemStackHelper {
             ItemStack itemstack = stacks[index];
             stacks[index] = null;
             return itemstack;
-        } else return null;
+        }
+        return null;
     }
 }

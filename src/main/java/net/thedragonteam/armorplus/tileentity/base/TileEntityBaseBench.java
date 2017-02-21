@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.tileentity.base;
@@ -93,22 +93,16 @@ public class TileEntityBaseBench extends TileEntity implements IInventory {
                 this.setInventorySlotContents(index, null);
                 this.markDirty();
                 return itemstack;
-            } else {
-                itemstack = this.getStackInSlot(index).splitStack(count);
-
-                if (this.getStackInSlot(index).stackSize <= 0) {
-                    this.setInventorySlotContents(index, null);
-                } else {
-                    //Just to show that changes happened
-                    this.setInventorySlotContents(index, this.getStackInSlot(index));
-                }
-
-                this.markDirty();
-                return itemstack;
             }
-        } else {
-            return null;
+            itemstack = this.getStackInSlot(index).splitStack(count);
+
+            //Just to show that changes happened
+            this.setInventorySlotContents(index, this.getStackInSlot(index).stackSize <= 0 ? null : this.getStackInSlot(index));
+
+            this.markDirty();
+            return itemstack;
         }
+        return null;
     }
 
     @Override

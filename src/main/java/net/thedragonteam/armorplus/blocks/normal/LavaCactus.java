@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.normal;
@@ -19,6 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
@@ -29,6 +30,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Random;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
+
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 8/15/2016.
@@ -38,9 +41,9 @@ public class LavaCactus extends BlockCactus {
     public LavaCactus() {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
         this.setTickRandomly(true);
-        setHardness(0.4F);
-        setUnlocalizedName(ArmorPlus.MODID + "." + "lava_cactus");
-        setRegistryName("lava_cactus");
+        this.setHardness(0.4F);
+        this.setUnlocalizedName(setName("lava_cactus"));
+        this.setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
@@ -58,7 +61,9 @@ public class LavaCactus extends BlockCactus {
         if (worldIn.isAirBlock(blockpos)) {
             int i;
 
-            for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; ++i) {
+            i = 1;
+            while (worldIn.getBlockState(pos.down(i)).getBlock() == this) {
+                ++i;
             }
 
             if (i < 3) {
@@ -162,12 +167,12 @@ public class LavaCactus extends BlockCactus {
     }
 
     @Override
-    public net.minecraftforge.common.EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+    public net.minecraftforge.common.EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
         return EnumPlantType.Nether;
     }
 
     @Override
-    public IBlockState getPlant(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
         return getDefaultState();
     }
 

@@ -1,9 +1,11 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus;
 
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
@@ -792,6 +794,8 @@ public class APConfig {
 
     public static RecipesDifficulty getRD() {
         switch (gameMode) {
+            case -1:
+                return DISABLED;
             case 0:
                 return EASY;
             case 1:
@@ -802,9 +806,46 @@ public class APConfig {
         return EXPERT;
     }
 
+    public static boolean hasRecipes() {
+        return getRD().hasRecipes();
+    }
+
     public enum RecipesDifficulty {
-        EASY,
-        EXPERT,
-        HELLISH,;
+        DISABLED(false) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+                return false;
+            }
+        },
+        EASY(true) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+                return repair.getItem() == easy;
+            }
+        },
+        EXPERT(true) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+                return repair.getItem() == expert;
+            }
+        },
+        HELLISH(true) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+                return false;
+            }
+        },;
+
+        private final boolean hasRecipes;
+
+        RecipesDifficulty(boolean hasRecipes) {
+            this.hasRecipes = hasRecipes;
+        }
+
+        public boolean hasRecipes() {
+            return hasRecipes;
+        }
+
+        public abstract boolean isItemRepairable(ItemStack repair, Item easy, Item expert);
     }
 }

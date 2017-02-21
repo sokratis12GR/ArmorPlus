@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.compat.tinkers;
@@ -18,18 +18,20 @@ import javax.annotation.Nonnull;
 public class CompatibilityTinkersConstruct implements ICompatibility {
     @Override
     public void loadCompatibility(InitializationPhase phase) {
-        if (phase == InitializationPhase.PRE_INIT) {
-            TiC.preInit();
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-                TiCModifiers.initRender();
-        }
-        if (phase == InitializationPhase.INIT) {
-            TiC.init();
-        }
-        if (phase == InitializationPhase.POST_INIT) {
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-                TiCMaterials.registerMaterialRendering();
-            TiC.postInit();
+        switch (phase) {
+            case PRE_INIT:
+                TiC.preInit();
+                if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+                    TiCModifiers.initRender();
+                break;
+            case INIT:
+                TiC.init();
+                break;
+            case POST_INIT:
+                if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+                    TiCMaterials.registerMaterialRendering();
+                TiC.postInit();
+                break;
         }
     }
 

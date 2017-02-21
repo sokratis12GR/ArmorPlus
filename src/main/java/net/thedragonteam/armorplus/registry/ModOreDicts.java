@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -8,12 +8,15 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import static net.thedragonteam.armorplus.registry.ModBlocks.*;
+import static net.thedragonteam.armorplus.util.ItemStackUtils.getItemStack;
 
 public class ModOreDicts {
+
+    public static String[] colors = new String[]{"White", "Red", "Black", "Blue", "Green", "Yellow", "Purple"};
 
     public static void registerOreDictEntries() {
         //Ingots
@@ -29,37 +32,22 @@ public class ModOreDicts {
         registerOre("blockSteel", ModBlocks.steelBlock);
         registerOre("blockElectrical", ModBlocks.electricalBlock);
         registerOre("blockCompressedObsidian", ModBlocks.compressedObsidian);
-        registerOre("arpWorkbench", ModBlocks.arpWorkbench);
-        registerOre("arpWorkbenchTier1", ModBlocks.arpWorkbench);
-        registerOre("arpWorkbenchTierOne", ModBlocks.arpWorkbench);
-        registerOre("arpHighTechBench", ModBlocks.arpHighTechBench);
-        registerOre("arpWorkbenchTier2", ModBlocks.arpHighTechBench);
-        registerOre("arpWorkbenchTierTwo", ModBlocks.arpHighTechBench);
-        registerOre("arpUltiTechBench", ModBlocks.arpUltiTechBench);
-        registerOre("arpWorkbenchTier3", ModBlocks.arpUltiTechBench);
-        registerOre("arpWorkbenchTierThree", ModBlocks.arpUltiTechBench);
+        registerOre("apWorkbench", benches[0]);
+        registerOre("workbenchTier1", benches[0]);
+        registerOre("workbenchTierOne", benches[0]);
+        registerOre("apHighTechBench", benches[1]);
+        registerOre("workbenchTier2", benches[1]);
+        registerOre("workbenchTierTwo", benches[1]);
+        registerOre("apUltiTechBench", benches[2]);
+        registerOre("workbenchTier3", benches[2]);
+        registerOre("workbenchTierThree", benches[2]);
         //CastleBlocks
-        registerWildBrick("White", ModBlocks.whiteStoneBrick);
-        registerWildBrick("Red", ModBlocks.redStoneBrick);
-        registerWildBrick("Black", ModBlocks.blackStoneBrick);
-        registerWildBrick("Blue", ModBlocks.blueStoneBrick);
-        registerWildBrick("Green", ModBlocks.greenStoneBrick);
-        registerWildBrick("Yellow", ModBlocks.yellowStoneBrick);
-        registerWildBrick("Purple", ModBlocks.purpleStoneBrick);
-        registerWildBrick("WhiteCorner", ModBlocks.whiteStoneBrickCorner);
-        registerWildBrick("RedCorner", ModBlocks.redStoneBrickCorner);
-        registerWildBrick("BlackCorner", ModBlocks.blackStoneBrickCorner);
-        registerWildBrick("BlueCorner", ModBlocks.blueStoneBrickCorner);
-        registerWildBrick("GreenCorner", ModBlocks.greenStoneBrickCorner);
-        registerWildBrick("YellowCorner", ModBlocks.yellowStoneBrickCorner);
-        registerWildBrick("PurpleCorner", ModBlocks.purpleStoneBrickCorner);
-        registerWildBrick("WhiteTower", ModBlocks.whiteStoneBrickTower);
-        registerWildBrick("RedTower", ModBlocks.redStoneBrickTower);
-        registerWildBrick("BlackTower", ModBlocks.blackStoneBrickTower);
-        registerWildBrick("BlueTower", ModBlocks.blueStoneBrickTower);
-        registerWildBrick("GreenTower", ModBlocks.greenStoneBrickTower);
-        registerWildBrick("YellowTower", ModBlocks.yellowStoneBrickTower);
-        registerWildBrick("PurpleTower", ModBlocks.purpleStoneBrickTower);
+        //CastleBlocks
+        for (int i = 0; i < colors.length; i++) {
+            registerWildBrick(colors[i], stoneBricks[i]);
+            registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
+            registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
+        }
         //Materials
         registerOre("chainmail", ModItems.chainmail);
         registerOre("witherBone", ModItems.witherBone);
@@ -78,12 +66,13 @@ public class ModOreDicts {
         registerWildBrick(Blocks.STONEBRICK, WILDCARD_VALUE);
     }
 
-    private static void registerWildOre(String name, Item item, int wildCardValue) {
-        registerOre(name, new ItemStack(item, 1, wildCardValue));
+
+    private static void registerWildOre(String name, Item item, int wildCardValiue) {
+        registerOre(name, getItemStack(item, wildCardValiue));
     }
 
-    private static void registerWildOre(String name, Block block, int wildCardValue) {
-        registerOre(name, new ItemStack(block, 1, wildCardValue));
+    private static void registerWildOre(String name, Block block, int wildCardValiue) {
+        registerOre(name, getItemStack(block, wildCardValiue));
     }
 
     private static void registerWildBrick(Block block, int wildCardValue) {
@@ -91,6 +80,6 @@ public class ModOreDicts {
     }
 
     private static void registerWildBrick(String color, Block block) {
-        registerWildOre("stonebrick" + color, block, 1);
+        registerOre("stonebrick" + color, block);
     }
 }

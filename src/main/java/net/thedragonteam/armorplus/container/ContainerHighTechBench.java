@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.container;
@@ -100,10 +100,13 @@ public class ContainerHighTechBench extends Container {
                 return null;
             }
 
-            if (slotStack.stackSize == 0) {
-                slot.putStack((ItemStack) null);
-            } else {
-                slot.onSlotChanged();
+            switch (slotStack.stackSize) {
+                case 0:
+                    slot.putStack(null);
+                    break;
+                default:
+                    slot.onSlotChanged();
+                    break;
             }
 
             if (slotStack.stackSize == itemstack.stackSize) {

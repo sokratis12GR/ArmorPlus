@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -18,6 +18,7 @@ import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRe
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.ModOreDicts.colors;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -118,29 +119,26 @@ public class ModRecipes {
     }
 
     public static void addShapedRecipes() {
-        addRecipe(new ShapedOreRecipe(new ItemStack(arpWorkbench), "LCL", "OTO", "OXO", 'T', "workbench", 'O', "blockCoal", 'L', "gemLapis", 'C', "gemLavaCrystal"));
-        addRecipe(new ItemStack(lavaNetherBrick, 4), " N ", "NLN", " N ", 'L', LAVA_BUCKET, 'N', Blocks.NETHER_BRICK);
-        addRecipeCastle(whiteStoneBrick, "White");
-        addRecipeCastle(redStoneBrick, "Red");
-        addRecipeCastle(blackStoneBrick, "Black");
-        addRecipeCastle(blueStoneBrick, "Blue");
-        addRecipeCastle(greenStoneBrick, "Green");
-        addRecipeCastle(yellowStoneBrick, "Yellow");
-        addRecipeCastle(purpleStoneBrick, "Purple");
-        addRecipeCastleCorner(whiteStoneBrickCorner, "White");
-        addRecipeCastleCorner(redStoneBrickCorner, "Red");
-        addRecipeCastleCorner(blackStoneBrickCorner, "Black");
-        addRecipeCastleCorner(blueStoneBrickCorner, "Blue");
-        addRecipeCastleCorner(greenStoneBrickCorner, "Green");
-        addRecipeCastleCorner(yellowStoneBrickCorner, "Yellow");
-        addRecipeCastleCorner(purpleStoneBrickCorner, "Purple");
-        addRecipeCastleTower(whiteStoneBrickTower, "White");
-        addRecipeCastleTower(redStoneBrickTower, "Red");
-        addRecipeCastleTower(blackStoneBrickTower, "Black");
-        addRecipeCastleTower(blueStoneBrickTower, "Blue");
-        addRecipeCastleTower(greenStoneBrickTower, "Green");
-        addRecipeCastleTower(yellowStoneBrickTower, "Yellow");
-        addRecipeCastleTower(purpleStoneBrickTower, "Purple");
+        addRecipe(new ItemStack(lavaNetherBrick, 4),
+                " N ",
+                "NLN",
+                " N ",
+                'L', LAVA_BUCKET,
+                'N', Blocks.NETHER_BRICK);
+        addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.benches[0]),
+                "LCL",
+                "OTO",
+                "O O",
+                'T', "workbench",
+                'O', "blockCoal",
+                'L', "gemLapis",
+                'C', "gemLavaCrystal"));
+        for (int i = 0; i < colors.length; i++) {
+            addRecipeCastle(stoneBricks[i], colors[i]);
+            addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
+            addRecipeCastleTower(stoneBrickTowers[i], colors[i]);
+            addRecipeStoneBrick(Blocks.STONEBRICK, colors[i]);
+        }
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', enderDragonScale, 'S', STRING, 'N', NETHER_STAR);
         if (enableChainArmorRecipes) {
@@ -151,7 +149,7 @@ public class ModRecipes {
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
             addRecipe(new ShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
         }
-        addRecipe(new ShapedOreRecipe(new ItemStack(chainmail, 12), "SS ", "S S", " SS", 'S', "ingotIron"));
+        addRecipe(new ShapedOreRecipe(new ItemStack(chainmail), "SS ", "S S", " SS", 'S', "ingotIron"));
         addRecipe(new ShapedOreRecipe(new ItemStack(compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
         if (enableRedstoneAppleRecipes) {
             addRecipe(new ShapedOreRecipe(new ItemStack(redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', APPLE));
@@ -162,7 +160,7 @@ public class ModRecipes {
     public static void addShapelessRecipes() {
         addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
         addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
-        addShapelessRecipe(new ItemStack(armorPlusInfoBook, 1), BOOK, COAL);
+        addShapelessRecipe(new ItemStack(armorPlusInfoBook), BOOK, COAL);
         addShapelessRecipe(new ItemStack(lavaCactus, 1), Blocks.CACTUS, new ItemStack(lavaCrystal, 1, 1));
     }
 
@@ -178,10 +176,20 @@ public class ModRecipes {
         addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), "S S", "SSS", "   ", 'S', "stonebrick" + color));
     }
 
+    public static void addRecipeCastleWall(Block block, String color) {
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', "stonebrick" + color));
+        addRecipe(new ShapedOreRecipe(new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', "stonebrick" + color));
+    }
+
     public static void addRecipeCastle(Block block, String color) {
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color + "Wall"));
         addRecipe(new ShapedOreRecipe(new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
+    }
+
+    public static void addRecipeStoneBrick(Block block, String color) {
+        addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
     }
 }
 

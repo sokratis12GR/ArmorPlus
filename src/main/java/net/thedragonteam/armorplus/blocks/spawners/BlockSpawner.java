@@ -1,17 +1,15 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.blocks.spawners.base;
+package net.thedragonteam.armorplus.blocks.spawners;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -21,26 +19,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BaseBlock;
-import net.thedragonteam.armorplus.blocks.spawners.Spawners;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BaseSpawner extends BaseBlock {
+public class BlockSpawner extends BaseBlock {
 
     public Spawners spawners;
 
-    public BaseSpawner(Spawners spawnersIn) {
+    public BlockSpawner(Spawners spawnersIn) {
         super(Material.ROCK, "spawner_" + spawnersIn.getName(), 20.0F, 20.0F);
         this.spawners = spawnersIn;
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
     @Override
@@ -48,18 +41,14 @@ public class BaseSpawner extends BaseBlock {
         return false;
     }
 
-    public boolean isVisuallyOpaque() {
+    @Override
+    public boolean isFullyOpaque(IBlockState state) {
         return false;
     }
 
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         return blockAccess.getBlockState(pos.offset(side)).getBlock() != this && super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     /**
@@ -72,19 +61,21 @@ public class BaseSpawner extends BaseBlock {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float x, float y, float z) {
-        if (!world.isRemote) switch (spawners) {
-            case ENDER_DRAGON_ZOMBIE:
-                EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
-                enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
-                world.spawnEntity(enderDragonZombie);
-                world.destroyBlock(pos, true);
-                break;
-            case GUARDIAN:
-                EntityGuardian guardian = new EntityGuardian(world);
-                guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
-                world.spawnEntity(guardian);
-                world.destroyBlock(pos, true);
-                break;
+        if (!world.isRemote) {
+            switch (spawners) {
+                case ENDER_DRAGON_ZOMBIE:
+                    EntityEnderDragonZombie enderDragonZombie = new EntityEnderDragonZombie(world);
+                    enderDragonZombie.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
+                    world.spawnEntity(enderDragonZombie);
+                    world.destroyBlock(pos, true);
+                    break;
+                case GUARDIAN:
+                    EntityGuardian guardian = new EntityGuardian(world);
+                    guardian.setPosition(pos.getX() + 0.5, pos.up(1).getY(), pos.getZ() + 0.5);
+                    world.spawnEntity(guardian);
+                    world.destroyBlock(pos, true);
+                    break;
+            }
         }
         return true;
     }

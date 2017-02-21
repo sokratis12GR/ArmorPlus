@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.worldgen.structures;
@@ -155,8 +155,8 @@ public class StructureCastle extends WorldGenerator {
     public boolean generate(World worldIn, Random rand, BlockPos corner) {
         if (canSpawnHere(worldIn, corner)) {
             // figure out each IBlockState we will use
-            IBlockState stoneBrickTower = ModBlocks.whiteStoneBrickTower.getDefaultState();
-            IBlockState stoneBrick = ModBlocks.whiteStoneBrick.getDefaultState();
+            IBlockState stoneBrickTower = ModBlocks.stoneBrickTowers[0].getDefaultState();
+            IBlockState stoneBrick = ModBlocks.stoneBricks[0].getDefaultState();
             IBlockState doorLower = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER);
             IBlockState doorUpper = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
             IBlockState chest = Blocks.CHEST.getDefaultState();

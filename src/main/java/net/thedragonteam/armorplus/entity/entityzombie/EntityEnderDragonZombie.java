@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.entity.entityzombie;
@@ -134,7 +134,8 @@ public class EntityEnderDragonZombie extends EntityMob {
             if (entityIn instanceof EntityLivingBase && enableEnderDragonZombieWithering)
                 ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
             return true;
-        } else return false;
+        }
+        return false;
     }
 
     @Override

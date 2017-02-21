@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.spawners;
@@ -20,6 +20,7 @@ public enum Spawners implements IStringSerializable {
         return this.name;
     }
 
+    @Override
     public String getName() {
         return this.name;
     }

@@ -1,3 +1,30 @@
+**ArmorPlus 1.10.2-8.5.0.1**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **{Features Changed}**
+    * A lot of optimizations, less file size, fixed some minor errors
+    * Removed the "logger" adding additional files inside config/armorplus (unnecessary)
+
+* **{Bugs Fixed}**
+    * Very rare but still possible crashes
+    * Some wrong assigments causing bugs and error reports
+
+* **{JEI}**
+    * Added support for latest JEI (fixs/prevents a crash)
+
+* **{Dependencies}**
+    * Updated to require TheDragonLib 1.10.2-1.0.3.1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**ArmorPlus 1.10.2-8.4.1.2**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **{Bugs Fixed}**
+    * Prevented crashes while trying to read more information for items and armors.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.4.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

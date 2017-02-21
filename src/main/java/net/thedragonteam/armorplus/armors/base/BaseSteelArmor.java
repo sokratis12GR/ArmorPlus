@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.armors.base;
@@ -102,6 +102,7 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return isItemRepairable(toRepair, steelIngot, steelBlock);
     }
+
     /**
      * Tesla
      */
@@ -269,6 +270,6 @@ public class BaseSteelArmor extends ItemArmor implements ITeslaConsumer, ITeslaP
     }
 
     public int getEnergyStored(ItemStack container) {
-        return (container.getTagCompound() == null) || (!container.getTagCompound().hasKey("Energy")) ? 0 : (power = container.getTagCompound().getInteger("Energy"));
+        return container.getTagCompound() == null || (!container.getTagCompound().hasKey("Energy")) ? 0 : (power = container.getTagCompound().getInteger("Energy"));
     }
 }

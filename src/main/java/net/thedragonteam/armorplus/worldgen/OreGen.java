@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.worldgen;
@@ -58,8 +58,7 @@ public class OreGen implements IWorldGenerator {
     }
 
     private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
-        if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
-            throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
+        assert !(minHeight < 0 || maxHeight > 256 || minHeight > maxHeight) : "Illegal Height Arguments for WorldGenerator";
         int heightDiff = maxHeight - minHeight + 1;
         for (int i = 0; i < chancesToSpawn; i++) {
             int x = chunk_X * 16 + rand.nextInt(16);

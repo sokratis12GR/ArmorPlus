@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.container;
@@ -77,7 +77,7 @@ public class ContainerUltiTechBench extends Container {
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
-        Slot slot = (Slot) this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack slotStack = slot.getStack();
@@ -101,10 +101,13 @@ public class ContainerUltiTechBench extends Container {
                 return null;
             }
 
-            if (slotStack.stackSize == 0) {
-                slot.putStack((ItemStack) null);
-            } else {
-                slot.onSlotChanged();
+            switch (slotStack.stackSize) {
+                case 0:
+                    slot.putStack(null);
+                    break;
+                default:
+                    slot.onSlotChanged();
+                    break;
             }
 
             if (slotStack.stackSize == itemstack.stackSize) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 /**
@@ -8,4 +8,3 @@
  * @version 1.0
  */
 package net.thedragonteam.armorplus;
-

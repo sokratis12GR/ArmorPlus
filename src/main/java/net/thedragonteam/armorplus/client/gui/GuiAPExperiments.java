@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.client.gui;
@@ -18,7 +18,7 @@ import java.io.IOException;
  * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
  * - TheDragonTeam
  */
-public class GuiARPExperiments extends GuiChat {
+public class GuiAPExperiments extends GuiChat {
 
     int guiWidth = 256;
     int guiHeight = 256;

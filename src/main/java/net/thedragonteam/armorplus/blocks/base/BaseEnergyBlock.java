@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.base;
@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseEnergyBlock extends BlockContainer {
 
@@ -33,14 +35,14 @@ public class BaseEnergyBlock extends BlockContainer {
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, TileEntity tileEntityIn) {
         super(material);
-        setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        setRegistryName(name);
+        this.setUnlocalizedName(setName(name));
+        this.setRegistryName(name);
         this.tileEntity = tileEntityIn;
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool, harvestLevel);
         this.setLightLevel(lightLevel);
-        setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 
     @Override
@@ -66,6 +68,6 @@ public class BaseEnergyBlock extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return tileEntity;
+        return this.tileEntity;
     }
 }

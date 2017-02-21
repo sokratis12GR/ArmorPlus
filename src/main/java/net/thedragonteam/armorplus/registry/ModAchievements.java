@@ -1,5 +1,5 @@
 /*
- * Copyright (c) TheDragonTeam 2017.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.registry;
@@ -42,9 +42,9 @@ public class ModAchievements {
 
     public static void init() {
         armorPlus = new AchievementAP("armorplus", -4, -4, ModItems.redstoneChestplate, AchievementList.OPEN_INVENTORY).setSpecial().initIndependentStat();
-        welcomeToArmorPlus = new AchievementAP("craft_workbench", -2, -2, ModBlocks.arpWorkbench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
-        craftHighTechBench = new AchievementAP("craft_high_tech_bench", -2, -4, ModBlocks.arpHighTechBench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
-        craftUltiTechBench = new AchievementAP("craft_ulti_tech_bench", -2, -6, ModBlocks.arpUltiTechBench, AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        welcomeToArmorPlus = new AchievementAP("craft_workbench", -2, -2, ModBlocks.benches[0], AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftHighTechBench = new AchievementAP("craft_high_tech_bench", -2, -4, ModBlocks.benches[1], AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
+        craftUltiTechBench = new AchievementAP("craft_ulti_tech_bench", -2, -6, ModBlocks.benches[2], AchievementList.OPEN_INVENTORY).setNormalCrafting().setSpecial();
         craftCoalArmor = new AchievementAP("craft_coal_armor", 0, 0, ModItems.coalHelmet, craftCoalArmor).setNormalCrafting();
         craftChickenArmor = new AchievementAP("craft_chicken_armor", 2, 2, ModItems.chickenBoots, craftCoalArmor).setNormalCrafting();
         craftSlimeArmor = new AchievementAP("craft_slime_armor", 2, 4, ModItems.slimeBoots, craftCoalArmor).setNormalCrafting();

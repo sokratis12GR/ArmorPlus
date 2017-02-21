@@ -1,38 +1,53 @@
 /*
- * Copyright (c) TheDragonTeam 2016.
+ * Copyright (c) TheDragonTeam 2016-2017.
  */
 
 package net.thedragonteam.armorplus.blocks.benches;
 
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IStringSerializable;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
-import net.thedragonteam.armorplus.tileentity.base.TileEntityBaseBench;
+
+import javax.annotation.Nonnull;
+
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
 
 public enum Benches implements IStringSerializable {
-    WORKBENCH("workbench", new TileEntityWorkbench()),
-    HIGH_TECH("high_tech_bench", new TileEntityHighTechBench()),
-    ULIT_TECH("ulti_tech_bench", new TileEntityUltiTechBench());
+    WORKBENCH("workbench", new TileEntityWorkbench(), GUI_WORKBENCH),
+    HIGH_TECH("high_tech_bench", new TileEntityHighTechBench(), GUI_HIGH_TECH_BENCH),
+    ULTI_TECH("ulti_tech_bench", new TileEntityUltiTechBench(), GUI_ULTI_TECH_BENCH),;
 
     private final String name;
+    private final TileEntity tileEntity;
+    private final int guiNumber;
 
-    private final TileEntityBaseBench entityBench;
-
-    Benches(String nameIn, TileEntityBaseBench tileEntityBaseBench) {
+    Benches(String nameIn, TileEntity tileEntityIn, int guiNumberIn) {
         this.name = nameIn;
-        this.entityBench = tileEntityBaseBench;
+        this.tileEntity = tileEntityIn;
+        this.guiNumber = guiNumberIn;
     }
 
     public String toString() {
         return this.name;
     }
 
+    @Override
+    @Nonnull
     public String getName() {
         return this.name;
     }
 
-    public TileEntityBaseBench getEntityBench() {
-        return entityBench;
+    public TileEntity getTileEntity() {
+        return tileEntity;
+    }
+
+    public int getGuiNumber() {
+        return guiNumber;
+    }
+
+    public Benches getBench() {
+        return this;
     }
 }

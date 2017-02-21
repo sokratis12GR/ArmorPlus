@@ -9,6 +9,15 @@ itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
+#CommandInfoText
+command.armorplus.info_line_one=%s[%s (%s) by%s sokratis12GR (TheDragonTeam)]
+command.armorplus.info_line_two=%s[Thank You %s for using %s]
+command.armorplus.info_line_three=%s[modid: %s]
+command.armorplus.info_line_four=%s[Minecraft Version: %s]
+command.armorplus.info_line_five=%s[ArmorPlus recipe difficulty: %s]
+command.armorplus.info_line_six=%s[Recipes] use command /armorplus wiki
+command.armorplus.info_line_seven=%s[Discord] use command /armorplus discord
+
 #Enchantmnets
 enchantment.life_steal=Life Steal
 enchantment.life_steal.desc=Steal's the attacked entity's health and heals you
@@ -439,6 +448,12 @@ effect.glowing.name=Glowing
 effect.luck.name=Luck
 effect.unluck.name=Bad Luck
 effect.levitation.name=Levitation
+
+#ArmorPlus Effects
+effect.armorplus.empty.name=Empty
+effect.armorplus.empty=Empty
+armorplus.empty.name=Empty
+armorplus.empty=Empty
 
 #CONSOLE LOG -- As part of console output, these entries shall not be translated. --
 info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
