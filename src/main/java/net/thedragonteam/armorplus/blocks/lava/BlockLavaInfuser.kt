@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.base.BlockBase
+import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
@@ -43,7 +44,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         this.unlocalizedName = setName(name)
         this.setResistance(10000.0.toFloat())
         this.setHardness(2.5.toFloat())
-        this.setHarvestLevel(BlockBase.ToolType.PICKAXE.tool, 1)
+        this.setHarvestLevel(ToolType.PICKAXE.tool, 1)
         GameRegistry.register(this)
         GameRegistry.register(ItemBlock(this), registryName)
     }

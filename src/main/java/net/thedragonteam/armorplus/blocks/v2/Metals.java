@@ -4,23 +4,18 @@
 
 package net.thedragonteam.armorplus.blocks.v2;
 
-import net.minecraft.block.Block;
 import net.minecraft.util.IStringSerializable;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
 
 public enum Metals implements IStringSerializable {
-    STEEL("steel", ModBlocks.steelBlock),
-    ELECTRICAL("electrical", ModBlocks.electricalBlock);
+    STEEL("steel"),
+    ELECTRICAL("electrical");
 
     private final String name;
 
-    private final Block beaconBase;
-
-    Metals(String nameIn, Block beaconBaseIn) {
+    Metals(String nameIn) {
         this.name = nameIn;
-        this.beaconBase = beaconBaseIn;
     }
 
     public String toString() {
@@ -33,7 +28,4 @@ public enum Metals implements IStringSerializable {
         return this.name;
     }
 
-    public Block getBeaconBase() {
-        return this.beaconBase;
-    }
 }

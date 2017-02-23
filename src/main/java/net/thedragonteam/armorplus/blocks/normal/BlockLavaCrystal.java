@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
+import net.thedragonteam.armorplus.blocks.base.ToolType;
 
 import javax.annotation.Nonnull;
 import java.util.List;
