@@ -20,7 +20,7 @@ import net.thedragonteam.armorplus.items.base.BaseItem;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static net.minecraft.util.text.translation.I18n.*;
+import static net.minecraft.util.text.translation.I18n.translateToLocalFormatted;
 
 /**
  * net.thedragonteam.armorplus.items.materials

@@ -59,6 +59,40 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     private int infusingTime;
     private int totalInfusingTime;
     private String infuserCustomName;
+    private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+    private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
+    private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+
+    public static void registerFixesFurnace(DataFixer fixer) {
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityLavaInfuser.class, "Items"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static boolean isInfusing(IInventory inventory) {
+        return inventory.getField(0) > 0;
+    }
+
+    /**
+     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+     * fuel
+     */
+    public static int getItemChargeTime(ItemStack stack) {
+        if (stack.isEmpty()) return 0;
+        Item item = stack.getItem();
+        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : GameRegistry.getFuelValue(stack);
+    }
+
+    /**
+     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+     * fuel
+     */
+    public static boolean isItemFuel(ItemStack stack) {
+        return isItemValid(stack) && getItemChargeTime(stack) > 0;
+    }
+
+    public static boolean isItemValid(ItemStack stack) {
+        return stack == getItemStack(Items.LAVA_BUCKET) || stack == getItemStack(ModItems.lavaCrystal);
+    }
 
     /**
      * Returns the number of slots in the inventory.
@@ -139,10 +173,6 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         this.infuserCustomName = invName;
     }
 
-    public static void registerFixesFurnace(DataFixer fixer) {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityLavaInfuser.class, "Items"));
-    }
-
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
@@ -182,11 +212,6 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     public boolean isInfusing() {
         return this.infuserInfusingTime > 0;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static boolean isInfusing(IInventory inventory) {
-        return inventory.getField(0) > 0;
     }
 
     /**
@@ -239,7 +264,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
             if (flag != this.isInfusing()) {
                 flag1 = true;
-                BlockLavaInfuser.setState(this.isInfusing(), this.world, this.pos);
+                BlockLavaInfuser.Companion.setState(this.isInfusing(), this.world, this.pos);
             }
         }
 
@@ -282,28 +307,6 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     }
 
     /**
-     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
-     * fuel
-     */
-    public static int getItemChargeTime(ItemStack stack) {
-        if (stack.isEmpty()) return 0;
-        Item item = stack.getItem();
-        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : GameRegistry.getFuelValue(stack);
-    }
-
-    /**
-     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
-     * fuel
-     */
-    public static boolean isItemFuel(ItemStack stack) {
-        return isItemValid(stack) && getItemChargeTime(stack) > 0;
-    }
-
-    public static boolean isItemValid(ItemStack stack) {
-        return stack == getItemStack(Items.LAVA_BUCKET) || stack == getItemStack(ModItems.lavaCrystal);
-    }
-
-    /**
      * Don't rename this method to canInteractWith due to conflicts with Container
      */
     @Override
@@ -328,7 +331,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         if (index == 2) return false;
         else if (index != 1) return true;
         ItemStack itemstack = this.infuserItemStacks.get(1);
-        return isItemFuel(stack) || SlotLavaInfuserFuel.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
+        return isItemFuel(stack) || SlotLavaInfuserFuel.Companion.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
     }
 
     @Override
@@ -413,10 +416,6 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     public void clear() {
         this.infuserItemStacks.clear();
     }
-
-    private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
-    private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
-    private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
     @SuppressWarnings("unchecked")
     @Override

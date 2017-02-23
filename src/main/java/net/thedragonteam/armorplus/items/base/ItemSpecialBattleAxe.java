@@ -6,10 +6,6 @@ package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -22,6 +18,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
+import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
@@ -29,7 +26,6 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IModelHelper {
@@ -63,7 +59,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         this.setRegistryName(battleAxes.getName() + "_battle_axe");
-        this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
+        this.setUnlocalizedName(Utils.INSTANCE.setName(battleAxes.getName() + "_battle_axe"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
@@ -82,12 +78,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rApplies " + effect);
-            tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        battleAxes.addInformation(tooltip);
     }
 
     @Override
@@ -98,7 +89,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
-        return isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @Override

@@ -187,4 +187,3 @@ public class ModRecipes {
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
     }
 }
-

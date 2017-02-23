@@ -52,12 +52,14 @@ public class ShapedRecipes implements IRecipe {
     }
 
     @Override
-    @Nonnull  public ItemStack getRecipeOutput() {
+    @Nonnull
+    public ItemStack getRecipeOutput() {
         return this.recipeOutput;
     }
 
     @Override
-    @Nonnull  public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
+    @Nonnull
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i) {
@@ -72,7 +74,7 @@ public class ShapedRecipes implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull  World worldIn) {
+    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
         for (int i = 0; i <= 3 - this.recipeWidth; ++i) {
             for (int j = 0; j <= 3 - this.recipeHeight; ++j) {
                 if (this.checkMatch(inv, i, j, true) || this.checkMatch(inv, i, j, false)) return true;

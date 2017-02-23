@@ -15,6 +15,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.util.PotionUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -27,22 +30,26 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
     COAL(battleAxeCoalMaterial, "coal", getItemStack(Items.COAL).getItem(), getItemStack(COAL_BLOCK).getItem(), getValueByName(coalWeaponItemNameColor),
-            setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F, enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
+            setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F,
+            enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
     LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(Items.DYE, 4).getItem(), getItemStack(LAPIS_BLOCK).getItem(), getValueByName(lapisWeaponItemNameColor),
-            setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F, enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE).getItem(), getItemStack(REDSTONE_BLOCK).getItem(), getValueByName(redstoneWeaponItemNameColor),
-            setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F, enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
+            setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F,
+            enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
+    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE).getItem(),
+            getItemStack(REDSTONE_BLOCK).getItem(), getValueByName(redstoneWeaponItemNameColor),
+            setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F,
+            enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
     EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(Items.EMERALD).getItem(), getItemStack(EMERALD_BLOCK).getItem(), getValueByName(emeraldWeaponItemNameColor),
-            setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F, enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
+            setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
+            enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
     OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN).getItem(), getItemStack(compressedObsidian).getItem(), getValueByName(obsidianWeaponItemNameColor),
-            setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F, enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
+            setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
+            enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
     LAVA(battleAxeLavaMaterial, "lava", lavaCrystal, getItemStack(lavaCrystal, 1).getItem(), getValueByName(lavaWeaponItemNameColor),
             setLavaToolTip(), 11.5F, true, "empty", 0) {
         @Override
@@ -63,7 +70,8 @@ public enum BattleAxes implements IStringSerializable {
         }
     },
     GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1).getItem(), getValueByName(guardianWeaponItemNameColor),
-            setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel), 14.0F, enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
+            setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel), 14.0F,
+            enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
     SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2).getItem(), getValueByName(superStarWeaponItemNameColor),
             setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel), 15.0F,
             enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
@@ -158,10 +166,11 @@ public enum BattleAxes implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            PotionUtils.INSTANCE.addPotion(target, PotionUtils.INSTANCE.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     public void addInformation(List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {

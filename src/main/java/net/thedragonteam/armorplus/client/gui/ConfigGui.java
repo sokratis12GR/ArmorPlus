@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.Locale;
 
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
+import static net.thedragonteam.thedragonlib.util.TextHelper.INSTANCE;
 
 public class ConfigGui extends GuiConfig {
 
     public ConfigGui(GuiScreen parentScreen) {
         super(parentScreen, getConfigElements(parentScreen), ArmorPlus.MODID, false, true,
-                localize("gui." + ArmorPlus.MODID + ".config.title"));
+                INSTANCE.localize("gui." + ArmorPlus.MODID + ".config.title"));
     }
 
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {

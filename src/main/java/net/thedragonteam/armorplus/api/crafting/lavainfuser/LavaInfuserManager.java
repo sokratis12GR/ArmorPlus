@@ -21,16 +21,16 @@ public class LavaInfuserManager {
     private final Map<ItemStack, ItemStack> infusingList = Maps.newHashMap();
     private final Map<ItemStack, Double> experienceList = Maps.newHashMap();
 
+    private LavaInfuserManager() {
+        this.addInfusingRecipe(new ItemStack(ModItems.lavaCrystal, 1, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
+        this.addInfusingRecipeForBlock(ModBlocks.compressedObsidian, getItemStack(ModBlocks.lavaInfusedObsidian), 0.2D);
+    }
+
     /**
      * Returns an instance of LavaInfuserCraftingManager.
      */
     public static LavaInfuserManager getInstance() {
         return INFUSING_BASE;
-    }
-
-    private LavaInfuserManager() {
-        this.addInfusingRecipe(new ItemStack(ModItems.lavaCrystal, 1, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
-        this.addInfusingRecipeForBlock(ModBlocks.compressedObsidian, getItemStack(ModBlocks.lavaInfusedObsidian), 0.2D);
     }
 
     /**
@@ -56,7 +56,7 @@ public class LavaInfuserManager {
      */
     public void addInfusingRecipe(ItemStack input, ItemStack stack, double experience) {
         if (!getSmeltingResult(input).isEmpty()) {
-            LogHelper.info("Ignored smelting recipe with conflicting input: " + input + " = " + stack);
+            LogHelper.INSTANCE.info("Ignored smelting recipe with conflicting input: " + input + " = " + stack);
             return;
         }
         this.infusingList.put(input, stack);

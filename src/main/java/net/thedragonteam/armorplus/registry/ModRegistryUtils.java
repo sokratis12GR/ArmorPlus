@@ -41,42 +41,42 @@ public class ModRegistryUtils {
 
     public static void registerBattleAxeModel(boolean isEnabled[], ItemSpecialBattleAxe[] battleAxe) {
         for (boolean anIsEnabled : isEnabled)
-            if (anIsEnabled) for (ItemSpecialBattleAxe aBattleAxe : battleAxe) aBattleAxe.initModel();
+        if (anIsEnabled) for (ItemSpecialBattleAxe aBattleAxe : battleAxe) aBattleAxe.initModel();
     }
 
     public static void registerBowModel(boolean isEnabled[], ItemSpecialBow[] bow) {
         for (boolean anIsEnabled : isEnabled)
-            if (anIsEnabled) for (ItemSpecialBow aBow : bow) aBow.initModel();
+        if (anIsEnabled) for (ItemSpecialBow aBow : bow) aBow.initModel();
     }
 
     public static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
         if (isEnabled) for (int i = 0; i < armor.length; i++)
-            armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]);
+        armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]);
     }
 
     public static void registerArmor(boolean isEnabled, ItemUltimateArmor[] armor) {
         if (isEnabled) {
             for (int i = 0; i < armor.length; i++)
-                armor[i] = new ItemUltimateArmor(equipmentSlots[i]);
+            armor[i] = new ItemUltimateArmor(equipmentSlots[i]);
             theUltimateParts = new ItemUltimateParts();
         }
     }
 
     public static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {
         for (int i = 0; i < sword.length; i++)
-            if (isEnabled[i])
-                sword[i] = new ItemSpecialSword(material[i]);
+        if (isEnabled[i])
+            sword[i] = new ItemSpecialSword(material[i]);
     }
 
     public static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
         for (int i = 0; i < battleAxe.length; i++)
-            if (isEnabled[i])
-                battleAxe[i] = new ItemSpecialBattleAxe(material[i]);
+        if (isEnabled[i])
+            battleAxe[i] = new ItemSpecialBattleAxe(material[i]);
     }
 
     public static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
         for (int i1 = 0; i1 < bow.length; i1++)
-            if (isEnabled[i1])
-                bow[i1] = new ItemSpecialBow(material[i1]);
+        if (isEnabled[i1])
+            bow[i1] = new ItemSpecialBow(material[i1]);
     }
 }

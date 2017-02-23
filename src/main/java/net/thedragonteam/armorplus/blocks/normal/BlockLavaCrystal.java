@@ -19,13 +19,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
-import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 
 /**
  * net.thedragonteam.armorplus.blocks
@@ -43,8 +44,7 @@ public class BlockLavaCrystal extends BlockBase {
     @Override
     @Nonnull
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune) {
-        List<ItemStack> ret;
-        Item item = ModItems.lavaCrystal;
+        Item item = lavaCrystal;
         Random rand = (world instanceof World) ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);
         return IntStream.range(0, count).mapToObj(i -> new ItemStack(item, 1, damageDropped(state))).collect(Collectors.toList());

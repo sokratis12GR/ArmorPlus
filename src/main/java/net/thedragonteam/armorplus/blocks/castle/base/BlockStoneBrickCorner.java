@@ -18,7 +18,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 // TODO: fix CollisionBox to mach Shape (not any time soon)
 public class BlockStoneBrickCorner extends BlockStairs implements IModelHelper {
@@ -27,7 +27,7 @@ public class BlockStoneBrickCorner extends BlockStairs implements IModelHelper {
 
     public BlockStoneBrickCorner(StoneBricks stoneBricks, IBlockState modelState) {
         super(modelState);
-        this.setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_corner"));
+        this.setUnlocalizedName(INSTANCE.setName(stoneBricks.getName() + "_stone_brick_corner"));
         this.setRegistryName(stoneBricks.getName() + "_stone_brick_corner");
         this.setHardness(10.0F);
         this.setResistance(5.0F);

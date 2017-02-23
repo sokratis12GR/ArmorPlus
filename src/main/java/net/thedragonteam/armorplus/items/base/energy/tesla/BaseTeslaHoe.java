@@ -67,14 +67,14 @@ public class BaseTeslaHoe extends BaseHoe {
     @Override
     @Nonnull
     public EnumActionResult onItemUse(EntityPlayer player, @Nonnull World worldIn, BlockPos posIn, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ) {
-        APTeslaUtils.usePower(player.getHeldItem(hand), cost);
+        APTeslaUtils.INSTANCE.usePower(player.getHeldItem(hand), cost);
         return super.onItemUse(player, worldIn, posIn, hand, facing, hitX, hitY, hitZ);
     }
 
     @Method(modid = "tesla")
     @Override
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.INSTANCE.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -98,7 +98,7 @@ public class BaseTeslaHoe extends BaseHoe {
     @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.INSTANCE.getStoredPower(stack) / (double) APTeslaUtils.INSTANCE.getMaxCapacity(stack));
     }
 
     @Override

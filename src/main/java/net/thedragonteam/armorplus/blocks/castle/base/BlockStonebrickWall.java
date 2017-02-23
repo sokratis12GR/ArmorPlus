@@ -20,7 +20,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class BlockStonebrickWall extends BlockWall implements IModelHelper {
 
@@ -30,7 +30,7 @@ public class BlockStonebrickWall extends BlockWall implements IModelHelper {
         super(modelBlock);
         this.stoneBrick = modelBlock;
         this.setRegistryName(modelBlock.getName() + "_wall");
-        this.setUnlocalizedName(setName(modelBlock.getName() + "_wall"));
+        this.setUnlocalizedName(INSTANCE.setName(modelBlock.getName() + "_wall"));
         this.setResistance(10F);
         this.setHardness(5F);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
@@ -45,11 +45,13 @@ public class BlockStonebrickWall extends BlockWall implements IModelHelper {
         return this.stoneBrick.color;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
         list.add(new ItemStack(itemIn, 1));
     }
 
+    @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

@@ -1,4 +1,4 @@
-ArmorPlus 1.11.2-9.6.0.1-beta
+ArmorPlus 1.11.2-10.0.0.1-beta
 ----------------------------
 
 Features Changed:
@@ -10,6 +10,15 @@ Bugs Fixed:
 * A lot of performance issues fixed, now performance should be more smooth and mod size reduction
 
 * Fixed repairing items
+
+Code Changes:
+
+* A large of code has been rewritten in Kotlin
+
+Dependencies:
+
+* Now **REQUIRES** [TheDragonLib](https://minecraft.curseforge.com/projects/thedragonlib) 1.11.2-3.0.0+ in order to work
+* Now **REQUIRES** [Shadowfacts' Forgelin](https://minecraft.curseforge.com/projects/shadowfacts-forgelin) 1.3.1+
 
 ArmorPlus 1.11.2-9.5.7.8-beta
 ----------------------------

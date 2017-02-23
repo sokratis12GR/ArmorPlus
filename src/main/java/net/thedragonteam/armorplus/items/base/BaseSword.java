@@ -13,11 +13,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 
-import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IItemHelper, IModelHelper {
@@ -37,21 +37,20 @@ public class BaseSword extends ItemSword implements IItemHelper, IModelHelper {
         this.formatting = TextFormatting.getValueByName(textFormatting);
         this.effect = effectName;
         this.setRegistryName(name);
-        this.setUnlocalizedName(Utils.setName(name));
+        this.setUnlocalizedName(Utils.INSTANCE.setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SWORD", formatting, "Sword");
     }
 
     @Override
-    @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
         return formattingName;
     }
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
-        return isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     public void initModel() {

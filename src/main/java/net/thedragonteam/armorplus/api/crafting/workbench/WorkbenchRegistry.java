@@ -14,7 +14,6 @@ public class WorkbenchRegistry {
      *
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
-     *
      * @result example: WorkbenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXX", "XXX", "XXX", 'X', Items.Stick )
      */
     public static void addRecipe(ItemStack output, Object... params) {

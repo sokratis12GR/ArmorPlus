@@ -37,17 +37,17 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         super(inventorySize);
         this.tileEntityName = tileEntityName;
         this.inventorySize = inventorySize;
-        this.inventory = this.itemHandler.getItems();
+        this.inventory = this.getItemHandler().getItems();
     }
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        return IntStream.rangeClosed(0, getItemHandler().getSlots()).anyMatch(i -> getItemHandler().getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
-        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        return IntStream.rangeClosed(0, getItemHandler().getSlots()).anyMatch(i -> getItemHandler().getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     public String getCustomName() {
@@ -76,10 +76,10 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         NBTTagList list = new NBTTagList();
         for (int i = 0; i < this.inventorySize; ++i) {
-            if (!this.itemHandler.getStackInSlot(i).isEmpty()) {
+            if (!this.getItemHandler().getStackInSlot(i).isEmpty()) {
                 NBTTagCompound stackTag = new NBTTagCompound();
                 stackTag.setByte("Slot", (byte) i);
-                this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
+                this.getItemHandler().getStackInSlot(i).writeToNBT(stackTag);
                 list.appendTag(stackTag);
             }
         }
@@ -97,7 +97,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         for (int i = 0; i < list.tagCount(); ++i) {
             NBTTagCompound stackTag = list.getCompoundTagAt(i);
             int slot = stackTag.getByte("Slot") & 255;
-            this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
+            this.getItemHandler().setStackInSlot(slot, new ItemStack(stackTag));
         }
 
         if (nbt.hasKey("CustomName", 8)) this.setCustomName(nbt.getString("CustomName"));

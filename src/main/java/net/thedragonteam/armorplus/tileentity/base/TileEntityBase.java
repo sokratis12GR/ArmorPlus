@@ -48,7 +48,7 @@ public abstract class TileEntityBase extends TileEntity {
         } else if (capability == CapabilityEnergy.ENERGY) {
             IEnergyStorage storage = this.getEnergyStorage(facing);
             if (storage != null) return (T) storage;
-        } else if (ArmorPlus.isTeslaLoaded() && (capability == APTeslaUtils.teslaConsumer || capability == APTeslaUtils.teslaProducer || capability == APTeslaUtils.teslaHolder)) {
+        } else if (ArmorPlus.isTeslaLoaded() && (capability == APTeslaUtils.INSTANCE.getTeslaConsumer() || capability == APTeslaUtils.INSTANCE.getTeslaProducer() || capability == APTeslaUtils.INSTANCE.getTeslaHolder())) {
             IEnergyStorage storage = this.getEnergyStorage(facing);
             if (storage != null) {
                 if (this.teslaWrapper == null) this.teslaWrapper = new TeslaForgeUnitsWrapper(storage);

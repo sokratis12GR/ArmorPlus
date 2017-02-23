@@ -14,7 +14,6 @@ public class UltiTechBenchRegistry {
      *
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
-     *
      * @result example: UltiTechBenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXXXX", "XXXXX", "XXXXX", "XXXXX", XXXXX", 'X', Items.Stick )
      */
     public static void addRecipe(ItemStack output, Object... params) {

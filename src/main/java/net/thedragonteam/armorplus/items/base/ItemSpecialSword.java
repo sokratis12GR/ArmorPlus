@@ -4,10 +4,6 @@
 
 package net.thedragonteam.armorplus.items.base;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -24,17 +20,13 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Swords;
+import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHelper {
 
@@ -64,7 +56,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
         this.setRegistryName(swords.getName() + "_sword");
-        this.setUnlocalizedName(setName(swords.getName() + "_sword"));
+        this.setUnlocalizedName(INSTANCE.setName(swords.getName() + "_sword"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SPECIAL_SWORD", formatting, "Special Sword");
@@ -72,55 +64,12 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
-        stack.damageItem(1, attacker);
-        switch (swords) {
-            case COAL:
-                if (enableCoalWeaponsEffects)
-                    addPotion(target, getPotion(coalWeaponsAddPotionEffect), 180, coalWeaponsEffectLevel, BAD);
-                break;
-            case LAPIS:
-                if (enableLapisWeaponsEffects)
-                    addPotion(target, getPotion(lapisWeaponsAddPotionEffect), lapisWeaponsEffectLevel, BAD);
-                break;
-            case REDSTONE:
-                if (enableRedstoneWeaponsEffects)
-                    addPotion(target, getPotion(redstoneWeaponsAddPotionEffect), 180, redstoneWeaponsEffectLevel, BAD);
-                break;
-            case EMERALD:
-                if (enableEmeraldWeaponsEffects)
-                    addPotion(target, getPotion(emeraldWeaponsAddPotionEffect), emeraldWeaponsEffectLevel, BAD);
-                break;
-            case OBSIDIAN:
-                if (enableObsidianWeaponsEffects)
-                    addPotion(target, getPotion(obsidianWeaponsAddPotionEffect), obsidianWeaponsEffectLevel, BAD);
-                break;
-            case LAVA:
-                target.setFire(8);
-                break;
-            case GUARDIAN:
-                if (enableGuardianWeaponsEffects)
-                    addPotion(target, getPotion(guardianWeaponsAddPotionEffect), guardianWeaponsEffectLevel, BAD);
-                break;
-            case SUPER_STAR:
-                if (enableSuperStarWeaponsEffects)
-                    addPotion(target, getPotion(superStarWeaponsAddPotionEffect), superStarWeaponsEffectLevel, BAD);
-                break;
-            case ENDER_DRAGON:
-                if (enableEnderDragonWeaponsEffects)
-                    addPotion(target, getPotion(enderDragonWeaponsAddPotionEffect), 60, enderDragonWeaponsEffectLevel, BAD);
-                break;
-        }
-        return true;
+        return swords.hitEntity(stack, target, attacker);
     }
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247r" + effect);
-            tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        swords.addInformation(tooltip);
     }
 
     @Override
@@ -131,7 +80,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
-        return isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @Override

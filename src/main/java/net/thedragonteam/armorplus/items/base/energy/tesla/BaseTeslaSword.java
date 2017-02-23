@@ -17,11 +17,12 @@ import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseSword;
-import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
 import javax.annotation.Nonnull;
 import java.util.Set;
+
+import static net.thedragonteam.armorplus.registry.ModItems.steelIngot;
 
 public class BaseTeslaSword extends BaseSword {
 
@@ -30,7 +31,7 @@ public class BaseTeslaSword extends BaseSword {
     private int input;
 
     public BaseTeslaSword(ToolMaterial material, String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
-        super(material, name, ModItems.steelIngot, ModItems.steelIngot, APConfig.teslaWeaponItemNameColor, null);
+        super(material, name, steelIngot, steelIngot, APConfig.teslaWeaponItemNameColor, null);
         this.setCreativeTab(ArmorPlus.tabArmorplusTesla);
         this.setMaxStackSize(1);
         this.maxCapacity = maxCapacity;
@@ -50,7 +51,7 @@ public class BaseTeslaSword extends BaseSword {
     @Method(modid = "tesla")
     @Override
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.INSTANCE.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -74,7 +75,7 @@ public class BaseTeslaSword extends BaseSword {
     @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.INSTANCE.getStoredPower(stack) / (double) APTeslaUtils.INSTANCE.getMaxCapacity(stack));
     }
 
     @Override

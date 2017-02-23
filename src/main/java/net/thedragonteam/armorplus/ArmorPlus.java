@@ -36,12 +36,12 @@ public class ArmorPlus {
      * Updates every MAJOR change,
      * never resets
      */
-    public static final int MAJOR = 9;
+    public static final int MAJOR = 10;
     /**
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 6;
+    public static final int MINOR = 0;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -56,9 +56,9 @@ public class ArmorPlus {
     /**
      * The ArmorPlus Version
      */
-    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "-beta";
+    public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11-2.1.0";
+    public static final String LIB_VERSION = "1.11-3.0.0";
     //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
     //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
     public static final String BAUBLES_VERSION = "1.4.0";
@@ -91,7 +91,7 @@ public class ArmorPlus {
     private GuiHandler GuiHandler = new GuiHandler();
 
     public ArmorPlus() {
-        LogHelper.info("Welcoming Minecraft");
+        LogHelper.INSTANCE.info("Welcoming Minecraft");
     }
 
     public static String getVersion() {

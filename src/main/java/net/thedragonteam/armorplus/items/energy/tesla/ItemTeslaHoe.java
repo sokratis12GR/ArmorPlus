@@ -42,7 +42,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     @Method(modid = "tesla")
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        APTeslaUtils.usePower(stack, energyOutput[4]);
+        APTeslaUtils.INSTANCE.usePower(stack, energyOutput[4]);
         return true;
     }
 
@@ -60,7 +60,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     @Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        return APTeslaUtils.getStoredPower(stack) < energyOutput[4] ? 0.5F : Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
+        return APTeslaUtils.INSTANCE.getStoredPower(stack) < energyOutput[4] ? 0.5F : Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @Method(modid = "tesla")
@@ -73,7 +73,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(APTeslaUtils.getStoredPower(stack)), Long.toString(APTeslaUtils.getMaxCapacity(stack))));
+            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(APTeslaUtils.INSTANCE.getStoredPower(stack)), Long.toString(APTeslaUtils.INSTANCE.getMaxCapacity(stack))));
             tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.tool", Long.toString(energyOutput[4])));
         } else
             tooltip.add(I18n.format("tooltip.tesla.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));

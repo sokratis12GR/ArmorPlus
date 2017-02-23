@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class BlockContainerBase extends Block implements ITileEntityProvider, IModelHelper {
 
@@ -26,7 +26,7 @@ public class BlockContainerBase extends Block implements ITileEntityProvider, IM
         super(materialIn);
         this.tileEntity = tileEntity;
         this.setRegistryName(name);
-        this.setUnlocalizedName(setName(name));
+        this.setUnlocalizedName(INSTANCE.setName(name));
         this.setResistance((float) resistance);
         this.setHardness((float) hardness);
         this.setHarvestLevel(toolType.getTool(), harvestLevel);

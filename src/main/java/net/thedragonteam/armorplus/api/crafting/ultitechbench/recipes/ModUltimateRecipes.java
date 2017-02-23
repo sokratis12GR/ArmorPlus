@@ -13,22 +13,7 @@ import net.thedragonteam.armorplus.util.Utils;
 import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmor;
 import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmorRecipes;
 import static net.thedragonteam.armorplus.registry.APBlocks.*;
-import static net.thedragonteam.armorplus.registry.APItems.enderDragonBoots;
-import static net.thedragonteam.armorplus.registry.APItems.enderDragonChestplate;
-import static net.thedragonteam.armorplus.registry.APItems.enderDragonHelmet;
-import static net.thedragonteam.armorplus.registry.APItems.enderDragonLeggings;
-import static net.thedragonteam.armorplus.registry.APItems.guardianBoots;
-import static net.thedragonteam.armorplus.registry.APItems.guardianChestplate;
-import static net.thedragonteam.armorplus.registry.APItems.guardianHelmet;
-import static net.thedragonteam.armorplus.registry.APItems.guardianLeggings;
-import static net.thedragonteam.armorplus.registry.APItems.superStarBoots;
-import static net.thedragonteam.armorplus.registry.APItems.superStarChestplate;
-import static net.thedragonteam.armorplus.registry.APItems.superStarHelmet;
-import static net.thedragonteam.armorplus.registry.APItems.superStarLeggings;
-import static net.thedragonteam.armorplus.registry.APItems.theUltimateBoots;
-import static net.thedragonteam.armorplus.registry.APItems.theUltimateChestplate;
-import static net.thedragonteam.armorplus.registry.APItems.theUltimateHelmet;
-import static net.thedragonteam.armorplus.registry.APItems.theUltimateLeggings;
+import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -36,10 +21,10 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModUltimateRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Sets The Ultimate Armor Unbreakable */
-        Utils.setUnbreakable(getItemStack(theUltimateHelmet));
-        Utils.setUnbreakable(getItemStack(theUltimateChestplate));
-        Utils.setUnbreakable(getItemStack(theUltimateLeggings));
-        Utils.setUnbreakable(getItemStack(theUltimateBoots));
+        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateHelmet));
+        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateChestplate));
+        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateLeggings));
+        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateBoots));
 
         manager.addRecipe(getItemStack(ultiTechBench, 1),
                 "LUUL ",

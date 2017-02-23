@@ -21,6 +21,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
+import net.thedragonteam.thedragonlib.util.TextHelper;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -28,7 +29,6 @@ import java.util.Set;
 
 import static net.thedragonteam.armorplus.APConfig.teslaWeaponItemNameColor;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.thedragonlib.util.TextHelper.localize;
 
 public class BaseTesla extends BaseItem {
     private int maxCapacity;
@@ -42,7 +42,7 @@ public class BaseTesla extends BaseItem {
         this.maxCapacity = maxCapacity;
         this.output = output;
         this.input = input;
-        this.formattingName = addRarity("TESLA", teslaWeaponItemNameColor, "Tesla");
+        this.setFormattingName(addRarity("TESLA", teslaWeaponItemNameColor, "Tesla"));
     }
 
     public BaseTesla(String name, Set<Block> effectiveOn, int maxCapacity, int input, int output) {
@@ -75,7 +75,7 @@ public class BaseTesla extends BaseItem {
     @Method(modid = "tesla")
     @Override
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.INSTANCE.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -84,7 +84,7 @@ public class BaseTesla extends BaseItem {
     @Override
     @Nonnull
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
-        return (TextFormatting.getValueByName(APConfig.teslaWeaponItemNameColor) + localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+        return (TextFormatting.getValueByName(APConfig.teslaWeaponItemNameColor) + TextHelper.INSTANCE.localize(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
     }
 
     @Override
@@ -106,7 +106,7 @@ public class BaseTesla extends BaseItem {
     @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.INSTANCE.getStoredPower(stack) / (double) APTeslaUtils.INSTANCE.getMaxCapacity(stack));
     }
 
     @Override

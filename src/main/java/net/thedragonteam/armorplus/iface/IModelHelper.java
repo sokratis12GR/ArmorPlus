@@ -12,8 +12,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
-
 public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
@@ -23,6 +21,7 @@ public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
     default void initModel(Block block, ResourceLocation registryName, int meta, String variantIn) {
+        if (variantIn == null) variantIn = "inventory";
         initModel(Item.getItemFromBlock(block), registryName.toString(), meta, variantIn);
     }
 
@@ -33,6 +32,7 @@ public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
     default void initModel(Block block, String registryName, int meta, String variantIn) {
+        if (variantIn == null) variantIn = "inventory";
         initModel(Item.getItemFromBlock(block), registryName, meta, variantIn);
     }
 
@@ -43,6 +43,7 @@ public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
     default void initModel(Item item, ResourceLocation registryName, int meta, String variantIn) {
+        if (variantIn == null) variantIn = "inventory";
         initModel(item, registryName.toString(), meta, variantIn);
     }
 
@@ -52,7 +53,8 @@ public interface IModelHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(Item item, String registryName, int meta, @Nonnull String variantIn) {
+    default void initModel(Item item, String registryName, int meta, String variantIn) {
+        if (variantIn == null) variantIn = "inventory";
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(registryName, variantIn));
     }
 

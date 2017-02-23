@@ -29,7 +29,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 /**
  * net.thedragonteam.armorplus.blocks
@@ -42,7 +42,7 @@ public class LavaCactus extends BlockCactus implements IModelHelper {
         this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
         this.setTickRandomly(true);
         this.setHardness(0.4F);
-        this.setUnlocalizedName(setName("lava_cactus"));
+        this.setUnlocalizedName(INSTANCE.setName("lava_cactus"));
         this.setRegistryName("lava_cactus");
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         GameRegistry.register(this);

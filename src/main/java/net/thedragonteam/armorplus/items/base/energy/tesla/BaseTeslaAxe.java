@@ -60,7 +60,7 @@ public class BaseTeslaAxe extends BaseAxe {
     @Method(modid = "tesla")
     @Override
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        ItemStack powered = APTeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack powered = APTeslaUtils.INSTANCE.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);
         subItems.add(powered);
         subItems.add(unpowered);
@@ -84,7 +84,7 @@ public class BaseTeslaAxe extends BaseAxe {
     @Method(modid = "tesla")
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (1 - (double) APTeslaUtils.getStoredPower(stack) / (double) APTeslaUtils.getMaxCapacity(stack));
+        return (1 - (double) APTeslaUtils.INSTANCE.getStoredPower(stack) / (double) APTeslaUtils.INSTANCE.getMaxCapacity(stack));
     }
 
     @Override

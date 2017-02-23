@@ -18,7 +18,7 @@ import net.thedragonteam.armorplus.registry.ModAchievements;
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
+import static net.thedragonteam.armorplus.util.EnchantmentUtils.INSTANCE;
 
 public class SlotCrafting extends Slot {
     /**
@@ -89,11 +89,11 @@ public class SlotCrafting extends Slot {
         if (stack.getItem() == Item.getItemFromBlock(APBlocks.highTechBench))
             this.player.addStat(ModAchievements.craftHighTechBench, 1);
         else if (stack.getItem() == lapisSword)
-            stack.addEnchantment(getEnchantment("looting"), 3);
+            stack.addEnchantment(INSTANCE.getEnchantment("looting"), 3);
         else if (stack.getItem() == lapisBattleAxe)
-            stack.addEnchantment(getEnchantment("looting"), 3);
+            stack.addEnchantment(INSTANCE.getEnchantment("looting"), 3);
         else if (stack.getItem() == lapisBow)
-            stack.addEnchantment(getEnchantment("looting"), 3);
+            stack.addEnchantment(INSTANCE.getEnchantment("looting"), 3);
         /*Vision Like A Bat! - Achievement Trigger*/
         else if (stack.getItem() == coalHelmet || stack.getItem() == coalChestplate || stack.getItem() == coalLeggings || stack.getItem() == coalBoots)
             this.player.addStat(ModAchievements.craftCoalArmor, 1);

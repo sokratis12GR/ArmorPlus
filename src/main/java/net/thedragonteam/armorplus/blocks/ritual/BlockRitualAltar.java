@@ -18,13 +18,13 @@ import net.minecraft.world.World;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.armorplus.tileentity.TileEntityRitualAltar;
-import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+import static net.thedragonteam.thedragonlib.util.LogHelper.INSTANCE;
 
 /**
  * ArmorPlus created by sokratis12GR
@@ -52,7 +52,7 @@ public class BlockRitualAltar extends BlockBase implements ITileEntityProvider {
         for (Item item : ModItems.templates)
             if (entityIn instanceof EntityItem && Objects.equals(((EntityItem) entityIn).getEntityItem().getItem(), item)) {
                 ritualAltar.isItemValid(getItemStack(item));
-                LogHelper.info("Is Item Valid: " + ritualAltar.isItemValid(getItemStack(item)));
+                INSTANCE.info("Is Item Valid: " + ritualAltar.isItemValid(getItemStack(item)));
             }
 
         super.onEntityWalk(worldIn, pos, entityIn);

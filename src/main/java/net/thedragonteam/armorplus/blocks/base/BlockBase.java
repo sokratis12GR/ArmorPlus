@@ -14,7 +14,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class BlockBase extends Block implements IModelHelper {
 
@@ -73,7 +73,7 @@ public class BlockBase extends Block implements IModelHelper {
     public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
         super(material);
         this.setRegistryName(name);
-        this.setUnlocalizedName(setName(name));
+        this.setUnlocalizedName(INSTANCE.setName(name));
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool.getTool(), harvestLevel);

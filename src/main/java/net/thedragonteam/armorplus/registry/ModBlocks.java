@@ -6,8 +6,8 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.blocks.base.BlockBench;
 import net.thedragonteam.armorplus.blocks.benches.Benches;
+import net.thedragonteam.armorplus.blocks.benches.BlockBench;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
@@ -34,7 +34,7 @@ import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
  */
 public class ModBlocks {
 
-    public static BlockLavaCrystal blockLavaCrystal= new BlockLavaCrystal();
+    public static BlockLavaCrystal blockLavaCrystal = new BlockLavaCrystal();
     public static CompressedObsidian compressedObsidian = new CompressedObsidian();
     public static BaseMetalBlock steelBlock = new BaseMetalBlock(STEEL);
     public static BaseMetalBlock electricalBlock = new BaseMetalBlock(ELECTRICAL);

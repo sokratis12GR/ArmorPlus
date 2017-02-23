@@ -8,9 +8,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 
-import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
+import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;

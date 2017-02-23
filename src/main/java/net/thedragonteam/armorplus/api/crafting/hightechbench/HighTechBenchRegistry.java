@@ -14,7 +14,6 @@ public class HighTechBenchRegistry {
      *
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
-     *
      * @result example: HighTechBenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
      */
     public static void addRecipe(ItemStack output, Object... params) {
