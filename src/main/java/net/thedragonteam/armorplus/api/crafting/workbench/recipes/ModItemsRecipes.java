@@ -55,7 +55,7 @@ public class ModItemsRecipes {
                 "CCC",
                 'C', "gemChargedLavaCrystal",
                 'L', "blockRedstone",
-                'A', "arpWorkbench"));
+                'A', "apWorkbench"));
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRFRod, 1),
                 " T ",
                 "TST",

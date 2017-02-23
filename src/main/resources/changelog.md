@@ -1,3 +1,11 @@
+**ArmorPlus 1.10.2-8.5.1.2**
+============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **{Bugs Fixed}**
+    * Fixed uncraftable High-Tech Bench
+    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **ArmorPlus 1.10.2-8.5.0.1**
 ============================
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8,7 +16,7 @@
 
 * **{Bugs Fixed}**
     * Very rare but still possible crashes
-    * Some wrong assigments causing bugs and error reports
+    * Some wrong assignments causing bugs and error reports
 
 * **{JEI}**
     * Added support for latest JEI (fixs/prevents a crash)
