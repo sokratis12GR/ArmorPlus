@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.compat.ICompatibility;
 import net.thedragonteam.armorplus.compat.baubles.CompatibilityBaubles;
 import net.thedragonteam.armorplus.compat.jei.CompatibilityJustEnoughItems;
+import net.thedragonteam.armorplus.compat.minetweaker.CompatibilityMineTweaker;
 import net.thedragonteam.armorplus.compat.tinkers.CompatibilityTinkersConstruct;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ModCompatibility {
         compatibilities.add(new CompatibilityJustEnoughItems());
         compatibilities.add(new CompatibilityBaubles());
         compatibilities.add(new CompatibilityTinkersConstruct());
+        compatibilities.add(new CompatibilityMineTweaker());
     }
 
     public static void loadCompat(ICompatibility.InitializationPhase phase) {
