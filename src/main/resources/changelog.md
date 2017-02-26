@@ -1,19 +1,48 @@
-ArmorPlus 1.11.2-10.0.0.1-beta
+ArmorPlus 1.11.2-10.0.0.1
 ----------------------------
+
+Features Added:
+
+* Config
+  * Added a config value to enable/disable mob drops added by A+
+  * Added a few config entries that had to be added a while back, but they just got added today
+
+* Added Craft Tweaker Integration
+  * Adding scripts is the exact same way as in the 1.10.2 version:
+
+`mods.armorplus.Workbench.addShaped`
+
+`mods.armorplus.Workbench.addShapeless`
+
+`mods.armorplus.Workbench.remove`
+
+`mods.armorplus.HighTechBench.addShaped`
+
+`mods.armorplus.HighTechBench.addShapeless`
+
+`mods.armorplus.HighTechBench.remove`
+
+`mods.armorplus.UltiTechBench.addShaped`
+
+`mods.armorplus.UltiTechBench.addShapeless`
+
+`mods.armorplus.UltiTechBench.remove`
 
 Features Changed:
 
-* Config values are now in a look of a list, each line = 1 of the armors/weapons/items, I made sure each line equals the representative armor/weapon/item
+* Config values are now in a look of a list, each line equals 1 of the armors/weapons/items, I made sure each line equals the representative armor/weapon/item
 
 Bugs Fixed:
 
 * A lot of performance issues fixed, now performance should be more smooth and mod size reduction
-
 * Fixed repairing items
+* Config
+  * Fixed config values with wrong settings
+  * Fixed some config entries having `(Boots, Leggings, Chestplate, Boots)` instead of `(Boots, Leggings, Chestplate, Helmet)`
 
 Code Changes:
 
-* A large of code has been rewritten in Kotlin
+* A huge amount of code has been rewritten in Kotlin
 
 Dependencies:
 
