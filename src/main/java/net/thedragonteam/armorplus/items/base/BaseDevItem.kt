@@ -31,10 +31,6 @@ class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName())
         this.initModel(this, registryName, 0)
     }
 
-    override fun getItem(): Item {
-        return this
-    }
-
     override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
         if (devItems.hasSubTypes()) {
             subItems.add(ItemStackUtils.getItemStack(itemIn, 0))

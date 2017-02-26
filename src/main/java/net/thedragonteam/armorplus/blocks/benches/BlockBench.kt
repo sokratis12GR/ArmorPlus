@@ -42,14 +42,17 @@ class BlockBench(var benches: Benches) : BlockBase(Material.IRON, benches.getNam
         return true
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun isOpaqueCube(state: IBlockState?): Boolean {
         return false
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun isFullCube(state: IBlockState?): Boolean {
         return false
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getRenderType(state: IBlockState?): EnumBlockRenderType {
         return EnumBlockRenderType.MODEL
     }
@@ -59,22 +62,23 @@ class BlockBench(var benches: Benches) : BlockBase(Material.IRON, benches.getNam
         return BlockRenderLayer.CUTOUT
     }
 
-    override fun getStateForPlacement(worldIn: World?, pos: BlockPos?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase?): IBlockState {
-        var iblockstate = super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer)
+    override fun getStateForPlacement(world: World?, pos: BlockPos?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase?, hand: EnumHand?): IBlockState {
+        var iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
         iblockstate = iblockstate.withProperty(FACING, placer!!.horizontalFacing)
-        return iblockstate
-    }
+        return iblockstate    }
 
     override fun getMetaFromState(state: IBlockState): Int {
         return state.getValue(FACING).horizontalIndex
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getStateFromMeta(meta: Int): IBlockState {
         var iblockstate = this.defaultState
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta))
         return iblockstate
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun withRotation(state: IBlockState, rot: Rotation?): IBlockState {
         return state.withProperty(FACING, rot!!.rotate(state.getValue(FACING)))
     }

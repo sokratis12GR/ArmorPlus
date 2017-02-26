@@ -39,27 +39,28 @@ public class ModItems {
     public static LavaCrystal lavaCrystal;
     public static TheGiftOfTheGods theGiftOfTheGods;
     public static NBTItem nbtItem;
+    @SuppressWarnings("unused")
     public static boolean[] isEnabled = new boolean[]{
-        enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
-        enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
+            enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
+            enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
     };
     public static Swords[] swordType = new Swords[]{
-        Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
+            Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
     };
     public static BattleAxes[] battleAxeType = new BattleAxes[]{
-        BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
+            BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
     };
     public static Bows[] bowType = new Bows[]{
-        Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
+            Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
     };
     public static boolean[] isSwordEnabled = new boolean[]{
-        enableCoalSword, enableLapisSword, enableRedstoneSword, enableEmeraldSword, enableObsidianSword, enableLavaSword, enableGuardianSword, enableSuperStarSword, enableEnderDragonSword
-    };
-    public static boolean[] isBowEnabled = new boolean[]{
-        enableCoalBow, enableLapisBow, enableRedstoneBow, enableEmeraldBow, enableObsidianBow, enableLavaBow, enableGuardianBow, enableSuperStarBow, enableEnderDragonBow
+            enableCoalWeapons[0], enableLapisWeapons[0], enableRedstoneWeapons[0], enableEmeraldWeapons[0], enableObsidianWeapons[0], enableLavaWeapons[0], enableGuardianWeapons[0], enableSuperStarWeapons[0], enableEnderDragonWeapons[0]
     };
     public static boolean[] isBattleAxeEnabled = new boolean[]{
-        enableCoalBattleAxe, enableLapisBattleAxe, enableRedstoneBattleAxe, enableEmeraldBattleAxe, enableObsidianBattleAxe, enableLavaBattleAxe, enableGuardianBattleAxe, enableSuperStarBattleAxe, enableEnderDragonBattleAxe
+            enableCoalWeapons[1], enableLapisWeapons[1], enableRedstoneWeapons[1], enableEmeraldWeapons[1], enableObsidianWeapons[1], enableLavaWeapons[1], enableGuardianWeapons[1], enableSuperStarWeapons[1], enableEnderDragonWeapons[1]
+    };
+    public static boolean[] isBowEnabled = new boolean[]{
+            enableCoalWeapons[2], enableLapisWeapons[2], enableRedstoneWeapons[2], enableEmeraldWeapons[2], enableObsidianWeapons[2], enableLavaWeapons[2], enableGuardianWeapons[2], enableSuperStarWeapons[2], enableEnderDragonWeapons[2]
     };
     public static ItemArmorBase[] coal = new ItemArmorBase[4];
     public static ItemArmorBase[] emerald = new ItemArmorBase[4];
@@ -100,11 +101,11 @@ public class ModItems {
 
     public static BaseItem[] templates = new BaseItem[16];
     public static String[] templateNames = new String[]{
-        "coal_template", "lapis_template", "redstone_template",
-        "emerald_template", "obsidian_template", "lava_template",
-        "chicken_template", "slime_template",
-        "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
-        "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
+            "coal_template", "lapis_template", "redstone_template",
+            "emerald_template", "obsidian_template", "lava_template",
+            "chicken_template", "slime_template",
+            "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
+            "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
 
     public static void init() {
         if (isBaublesLoaded()) {

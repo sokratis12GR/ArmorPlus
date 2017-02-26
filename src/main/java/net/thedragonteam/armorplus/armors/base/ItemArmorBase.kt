@@ -27,7 +27,7 @@ import net.thedragonteam.armorplus.util.PotionUtils.getPotion
 import net.thedragonteam.armorplus.util.Utils.setLocation
 import net.thedragonteam.armorplus.util.Utils.setName
 
-class ItemArmorBase(private val material: APArmorMaterial, private val slot: EntityEquipmentSlot) : ItemArmor(material.armorMaterial, 0, slot), IModelHelper {
+open class ItemArmorBase(private val material: APArmorMaterial, private val slot: EntityEquipmentSlot) : ItemArmor(material.armorMaterial, 0, slot), IModelHelper {
     var formattingName: EnumRarity
     var itemEasy: Item
     var itemExpert: Item
@@ -72,7 +72,7 @@ class ItemArmorBase(private val material: APArmorMaterial, private val slot: Ent
         addEffects(entity as EntityPlayer)
     }
 
-    private fun addEffects(entity: EntityPlayer) {
+    fun addEffects(entity: EntityPlayer) {
         when (slot) {
             EntityEquipmentSlot.FEET -> addAbilities(entity, material.areEffectsEnabled[0], material.enableFullArmorEffect(), getPotion(material.addPotionEffect) as Potion, material.addPotionEffectAmplifier, getPotion(material.removePotionEffect))
             EntityEquipmentSlot.LEGS -> addAbilities(entity, material.areEffectsEnabled[1], material.enableFullArmorEffect(), getPotion(material.addPotionEffect) as Potion, material.addPotionEffectAmplifier, getPotion(material.removePotionEffect))
@@ -142,7 +142,8 @@ class ItemArmorBase(private val material: APArmorMaterial, private val slot: Ent
 
         fun addAbilities(entity: EntityPlayer, isEnabled: Boolean, isFullArmorSet: Boolean, addPotion: Potion, potionAmplifier: Int, removePotion: Potion?) {
             if (isEnabled && !isFullArmorSet && entity.getActivePotionEffect(addPotion) == null) {
-                PotionUtils.addPotion(entity, addPotion, potionAmplifier, GOOD)
+                if (addPotion !== ModPotions.EMPTY)
+                    PotionUtils.addPotion(entity, addPotion, potionAmplifier, GOOD)
                 if (removePotion != null && removePotion !== ModPotions.EMPTY)
                     PotionUtils.removePotion(entity, removePotion)
             }

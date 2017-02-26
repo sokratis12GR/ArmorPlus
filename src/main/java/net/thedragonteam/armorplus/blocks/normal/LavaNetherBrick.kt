@@ -43,12 +43,14 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
         return state.getValue(FACING).horizontalIndex
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getStateFromMeta(meta: Int): IBlockState {
         var iblockstate = this.defaultState
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta))
         return iblockstate
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun withRotation(state: IBlockState, rot: Rotation?): IBlockState {
         return state.withProperty(FACING, rot!!.rotate(state.getValue(FACING)))
     }
@@ -60,6 +62,7 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getMapColor(state: IBlockState?): MapColor {
         return MapColor.NETHERRACK
     }

@@ -25,7 +25,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
-import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
@@ -184,14 +183,17 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         super.breakBlock(worldIn, pos, state)
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun hasComparatorInputOverride(state: IBlockState?): Boolean {
         return true
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getComparatorInputOverride(blockState: IBlockState?, worldIn: World?, pos: BlockPos?): Int {
         return Container.calcRedstone(worldIn!!.getTileEntity(pos!!))
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getItem(worldIn: World?, pos: BlockPos?, state: IBlockState): ItemStack {
         return getItemStack(lavaInfuser)
     }
@@ -200,6 +202,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
      * The type of render function called. MODEL for mixed tesr and static model, MODELBLOCK_ANIMATED for TESR-only,
      * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getRenderType(state: IBlockState?): EnumBlockRenderType {
         return EnumBlockRenderType.MODEL
     }
@@ -207,6 +210,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
     /**
      * Convert the given metadata into a BlockState for this Block
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getStateFromMeta(meta: Int): IBlockState {
         var enumfacing = EnumFacing.getFront(meta)
 
@@ -230,6 +234,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
      * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun withRotation(state: IBlockState, rot: Rotation?): IBlockState {
         return state.withProperty(FACING, rot!!.rotate(state.getValue(FACING)))
     }
@@ -238,6 +243,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
      * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun withMirror(state: IBlockState, mirrorIn: Mirror?): IBlockState {
         return state.withRotation(mirrorIn!!.toRotation(state.getValue(FACING)))
     }

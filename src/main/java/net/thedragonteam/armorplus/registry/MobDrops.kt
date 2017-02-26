@@ -32,27 +32,32 @@ class MobDrops {
     fun playerKilledEntity(event: LivingDropsEvent) {
         when {
             event.entity is EntityDragon -> {
-                event.entityLiving.entityDropItem(getItemStack(materials, enderdragonScaleDropAmount, 3), 0.0f)
+                if (enderDragonScaleDrop)
+                    event.entityLiving.entityDropItem(getItemStack(materials, enderDragonScaleDropAmount, 3), 0.0f)
                 if (debugMode)
-                    LogHelper.info("Ender Dragon Dropped: " + getItemStack(materials, 3) + " x " + enderdragonScaleDropAmount)
+                    LogHelper.info("Ender Dragon Dropped: " + getItemStack(materials, 3) + " x " + enderDragonScaleDropAmount)
             }
             event.entity is EntityWither -> {
-                event.entityLiving.entityDropItem(getItemStack(materials, witherBoneDropAmount, 2), 0.0f)
+                if (witherBoneWitherBossDrop)
+                    event.entityLiving.entityDropItem(getItemStack(materials, witherBoneWitherBossDropAmount, 2), 0.0f)
                 if (debugMode)
-                    LogHelper.info("Wither Boss Dropped: " + getItemStack(materials, 2) + " x " + witherBoneDropAmount)
+                    LogHelper.info("Wither Boss Dropped: " + getItemStack(materials, 2) + " x " + witherBoneWitherBossDropAmount)
             }
             event.entity is EntityWitherSkeleton -> {
-                event.entityLiving.entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 2), 0.0f)
+                if (witherBoneWitherSkeletonDrop)
+                    event.entityLiving.entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 2), 0.0f)
                 if (debugMode)
                     LogHelper.info("Wither Skeleton Dropped: " + getItemStack(materials, 2) + " x " + random.nextInt(max - min + 1) + min)
             }
             event.entity is EntityGuardian -> {
-                event.entityLiving.entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 1), 0.0f)
+                if (guardianScaleGuardianDrop)
+                    event.entityLiving.entityDropItem(getItemStack(materials, random.nextInt(max - min + 1) + min, 1), 0.0f)
                 if (debugMode)
                     LogHelper.info("Guardian Dropped: " + getItemStack(materials, 1) + " x " + random.nextInt(max - min + 1) + min)
             }
             event.entity is EntityElderGuardian -> {
-                event.entityLiving.entityDropItem(getItemStack(materials, guardianScaleElderDropAmount, 1), 0.0f)
+                if (guardianScaleElderGuardianDrop)
+                    event.entityLiving.entityDropItem(getItemStack(materials, guardianScaleElderDropAmount, 1), 0.0f)
                 if (debugMode)
                     LogHelper.info("Elder Guardian Dropped:" + getItemStack(materials, 1) + " x " + guardianScaleElderDropAmount)
             }

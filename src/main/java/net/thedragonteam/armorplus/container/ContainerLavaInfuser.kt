@@ -83,23 +83,25 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
             val itemstack1 = slot.stack
             itemstack = itemstack1.copy()
 
-            if (index == 2) {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true)) return ItemStack.EMPTY
+            when {
+                index == 2 -> {
+                    if (!this.mergeItemStack(itemstack1, 3, 39, true)) return ItemStack.EMPTY
 
-                slot.onSlotChange(itemstack1, itemstack)
-            } else if (index != 1 && index != 0) {
-                when {
+                    slot.onSlotChange(itemstack1, itemstack)
+                }
+                index != 1 && index != 0 -> when {
                     !LavaInfuserManager.getInstance().getSmeltingResult(itemstack1).isEmpty -> if (!this.mergeItemStack(itemstack1, 0, 1, false)) return ItemStack.EMPTY
                     TileEntityLavaInfuser.isItemFuel(itemstack1) -> if (!this.mergeItemStack(itemstack1, 1, 2, false)) return ItemStack.EMPTY
                     index >= 3 && index < 30 -> if (!this.mergeItemStack(itemstack1, 30, 39, false)) return ItemStack.EMPTY
                     index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false) -> return ItemStack.EMPTY
                 }
-            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) return ItemStack.EMPTY
+                !this.mergeItemStack(itemstack1, 3, 39, false) -> return ItemStack.EMPTY
+            }
 
-            if (itemstack1.isEmpty)
-                slot.putStack(ItemStack.EMPTY)
-            else
-                slot.onSlotChanged()
+            when {
+                itemstack1.isEmpty -> slot.putStack(ItemStack.EMPTY)
+                else -> slot.onSlotChanged()
+            }
 
             if (itemstack1.count == itemstack.count) return ItemStack.EMPTY
 

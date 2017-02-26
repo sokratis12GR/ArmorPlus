@@ -15,6 +15,7 @@ class BlockLavaInfusedObsidian : BlockBase(Material.ROCK, "lava_infused_obsidian
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getMapColor(state: IBlockState?): MapColor {
         return MapColor.RED
     }

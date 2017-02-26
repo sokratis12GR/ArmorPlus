@@ -43,7 +43,7 @@ class ArmorPlusPlugin : BlankModPlugin() {
 
     override fun register(registry: IModRegistry?) {
         jeiHelper = registry!!.jeiHelpers
-        val ingredientRegistry = registry.ingredientRegistry
+        //val ingredientRegistry = registry.ingredientRegistry
 
         //IGuiHelper guiHelper = jeiHelper.getGuiHelper();
 

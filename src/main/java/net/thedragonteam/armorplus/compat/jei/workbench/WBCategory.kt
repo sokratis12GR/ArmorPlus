@@ -65,11 +65,12 @@ class WBCategory : BlankRecipeCategory<IRecipeWrapper>() {
         val inputs = ingredients.getInputs(ItemStack::class.java)
         val outputs = ingredients.getOutputs(ItemStack::class.java)
 
-        if (recipeWrapper is IShapedCraftingRecipeWrapper) {
-            craftingGridHelper.setInputs(guiItemStacks, inputs, recipeWrapper.width, recipeWrapper.height)
-        } else {
-            craftingGridHelper.setInputs(guiItemStacks, inputs)
-            recipeLayout.setShapeless()
+        when (recipeWrapper) {
+            is IShapedCraftingRecipeWrapper -> craftingGridHelper.setInputs(guiItemStacks, inputs, recipeWrapper.width, recipeWrapper.height)
+            else -> {
+                craftingGridHelper.setInputs(guiItemStacks, inputs)
+                recipeLayout.setShapeless()
+            }
         }
         guiItemStacks.set(OUTPUT_SLOT, outputs[0])
     }

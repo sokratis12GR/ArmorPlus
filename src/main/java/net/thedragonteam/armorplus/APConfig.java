@@ -56,60 +56,24 @@ public class APConfig {
     public static String guardianWeaponItemNameColor = "aqua".toLowerCase(ENGLISH);
     @ModConfigProperty(category = "Weapons.Tesla.Registry", name = "teslaWeaponItemNameColor", comment = "Set the color name the Tesla Weapons will have")
     public static String teslaWeaponItemNameColor = "dark_aqua".toLowerCase(ENGLISH);
-    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalSword", comment = "Enable/Disable the Coal Sword from the Game")
-    public static boolean enableCoalSword = true;
-    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalBattleAxe", comment = "Enable/Disable the Coal BattleAxe from the Game")
-    public static boolean enableCoalBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalBow", comment = "Enable/Disable the Coal Bow from the Game")
-    public static boolean enableCoalBow = true;
-    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis Sword from the Game")
-    public static boolean enableLapisSword = true;
-    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis BattleAxe from the Game")
-    public static boolean enableLapisBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisSword", comment = "Enable/Disable the Lapis Bow from the Game")
-    public static boolean enableLapisBow = true;
-    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneSword", comment = "Enable/Disable the Redstone Sword from the Game")
-    public static boolean enableRedstoneSword = true;
-    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneBattleAxe", comment = "Enable/Disable the Redstone BattleAxe from the Game")
-    public static boolean enableRedstoneBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneBow", comment = "Enable/Disable the Redstone Bow from the Game")
-    public static boolean enableRedstoneBow = true;
-    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldSword", comment = "Enable/Disable the Emerald Sword from the Game")
-    public static boolean enableEmeraldSword = true;
-    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldBattleAxe", comment = "Enable/Disable the Emerald Battle from the Game")
-    public static boolean enableEmeraldBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldBow", comment = "Enable/Disable the Emerald Bow from the Game")
-    public static boolean enableEmeraldBow = true;
-    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianSword", comment = "Enable/Disable the Obsidian Sword from the Game")
-    public static boolean enableObsidianSword = true;
-    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianBattleAxe", comment = "Enable/Disable the Obsidian BattleAxe from the Game")
-    public static boolean enableObsidianBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianBow", comment = "Enable/Disable the Obsidian Bow from the Game")
-    public static boolean enableObsidianBow = true;
-    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaSword", comment = "Enable/Disable the Lava Sword from the Game")
-    public static boolean enableLavaSword = true;
-    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaBattleAxe", comment = "Enable/Disable the Lava BattleAxe from the Game")
-    public static boolean enableLavaBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaBow", comment = "Enable/Disable the Lava Bow from the Game")
-    public static boolean enableLavaBow = true;
-    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianSword", comment = "Enable/Disable the Guardian Sword from the Game")
-    public static boolean enableGuardianSword = true;
-    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianBattleAxe", comment = "Enable/Disable the Guardian BattleAxe from the Game")
-    public static boolean enableGuardianBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianBow", comment = "Enable/Disable the Guardian Bow from the Game")
-    public static boolean enableGuardianBow = true;
-    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarSword", comment = "Enable/Disable the Super Star Sword from the Game")
-    public static boolean enableSuperStarSword = true;
-    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarBattleAxe", comment = "Enable/Disable the Super Star BattleAxe from the Game")
-    public static boolean enableSuperStarBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarBow", comment = "Enable/Disable the Super Star Bow from the Game")
-    public static boolean enableSuperStarBow = true;
-    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonSword", comment = "Enable/Disable the Ender Dragon Sword from the Game")
-    public static boolean enableEnderDragonSword = true;
-    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonBattleAxe", comment = "Enable/Disable the Ender Dragon BattleAxe from the Game")
-    public static boolean enableEnderDragonBattleAxe = true;
-    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonBow", comment = "Enable/Disable the Ender Dragon Bow from the Game")
-    public static boolean enableEnderDragonBow = true;
+    @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalWeapons", comment = "Enable/Disable the Coal Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableCoalWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisWeapons", comment = "Enable/Disable the Lapis Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableLapisWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneWeapons", comment = "Enable/Disable the Redstone Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableRedstoneWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldWeapons", comment = "Enable/Disable the Emerald Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableEmeraldWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianWeapons", comment = "Enable/Disable the Obsidian Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableObsidianWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaWeapons", comment = "Enable/Disable the Lava Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableLavaWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianWeapons", comment = "Enable/Disable the Guardian Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableGuardianWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarWeapons", comment = "Enable/Disable the Super Star Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableSuperStarWeapons = new boolean[]{true, true, true};
+    @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonWeapons", comment = "Enable/Disable the Ender Dragon Weapons from the Game (Sword, Battle Axe, Bow)")
+    public static boolean[] enableEnderDragonWeapons = new boolean[]{true, true, true};
 
     //Weapons.*.Sword
     @ModConfigProperty(category = "Weapons.Coal.Sword", name = "coalSwordDamage", comment = "Set the amount of damage the Coal Sword will do (Additional +4 damage will be added automatically by minecraft)")
@@ -383,39 +347,39 @@ public class APConfig {
     public static double chickenArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorToughnessPoints", comment = "Set the amount of toughness points the Slime Armor will have")
     public static double slimeArmorToughnessPoints = 0.0;
-    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorProtectionPoints", comment = "Set the amount of protection points the Coal Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "coalArmorProtectionPoints", comment = "Set the amount of protection points the Coal Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] coalArmorProtectionPoints = new int[]{1, 1, 2, 1};
-    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorProtectionPoints", comment = "Set the amount of protection points the Lapis Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.LapisArmor.Registry", name = "lapisArmorProtectionPoints", comment = "Set the amount of protection points the Lapis Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] lapisArmorProtectionPoints = new int[]{1, 2, 3, 2};
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorProtectionPoints", comment = "Set the amount of protection points the Redstone Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Registry", name = "redstoneArmorProtectionPoints", comment = "Set the amount of protection points the Redstone Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] redstoneArmorProtectionPoints = new int[]{1, 2, 3, 2};
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorProtectionPoints", comment = "Set the amount of protection points the Emerald Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Registry", name = "emeraldArmorProtectionPoints", comment = "Set the amount of protection points the Emerald Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] emeraldArmorProtectionPoints = new int[]{3, 6, 8, 3};
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorProtectionPoints", comment = "Set the amount of protection points the Obsidian Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Registry", name = "obsidianArmorProtectionPoints", comment = "Set the amount of protection points the Obsidian Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] obsidianArmorProtectionPoints = new int[]{3, 6, 7, 3};
-    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorProtectionPoints", comment = "Set the amount of protection points the Lava Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.LavaArmor.Registry", name = "lavaArmorProtectionPoints", comment = "Set the amount of protection points the Lava Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] lavaArmorProtectionPoints = new int[]{3, 6, 8, 3};
-    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorProtectionPoints", comment = "Set the amount of protection points the Guardian Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.GuardianArmor.Registry", name = "guardianArmorProtectionPoints", comment = "Set the amount of protection points the Guardian Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] guardianArmorProtectionPoints = new int[]{4, 7, 8, 3};
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorProtectionPoints", comment = "Set the amount of protection points the Super Star Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Registry", name = "superStarArmorProtectionPoints", comment = "Set the amount of protection points the Super Star Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] superStarArmorProtectionPoints = new int[]{4, 7, 8, 3};
-    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorProtectionPoints", comment = "Set the amount of protection points the Ender Dragon Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Registry", name = "enderDragonArmorProtectionPoints", comment = "Set the amount of protection points the Ender Dragon Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] enderDragonArmorProtectionPoints = new int[]{4, 7, 8, 3};
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorProtectionPoints", comment = "Set the amount of protection points the Ultimate Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "theUltimateArmorProtectionPoints", comment = "Set the amount of protection points the Ultimate Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] theUltimateArmorProtectionPoints = new int[]{4, 8, 9, 4};
-    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorProtectionPoints", comment = "Set the amount of protection points the Ardite Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "arditeArmorProtectionPoints", comment = "Set the amount of protection points the Ardite Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] arditeArmorProtectionPoints = new int[]{2, 3, 4, 2};
-    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorProtectionPoints", comment = "Set the amount of protection points the Cobalt Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "cobaltArmorProtectionPoints", comment = "Set the amount of protection points the Cobalt Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] cobaltArmorProtectionPoints = new int[]{2, 3, 4, 2};
-    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorProtectionPoints", comment = "Set the amount of protection points the Manyullyn Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.ManyullynArmor.Registry", name = "manyullynArmorProtectionPoints", comment = "Set the amount of protection points the Manyullyn Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] manyullynArmorProtectionPoints = new int[]{3, 5, 5, 3};
-    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorProtectionPoints", comment = "Set the amount of protection points the Pig Iron Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.PigIronArmor.Registry", name = "pigIronArmorProtectionPoints", comment = "Set the amount of protection points the Pig Iron Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] pigIronArmorProtectionPoints = new int[]{2, 3, 4, 3};
-    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorProtectionPoints", comment = "Set the amount of protection points the Knight Slime Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.KnightSlimeArmor.Registry", name = "knightSlimeArmorProtectionPoints", comment = "Set the amount of protection points the Knight Slime Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] knightSlimeArmorProtectionPoints = new int[]{2, 3, 4, 3};
-    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorProtectionPoints", comment = "Set the amount of protection points the Chicen Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.ChickenArmor.Registry", name = "chickenArmorProtectionPoints", comment = "Set the amount of protection points the Chicen Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] chickenArmorProtectionPoints = new int[]{1, 1, 2, 1};
-    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorProtectionPoints", comment = "Set the amount of protection points the Slime Armor will have (boots, leggings, chestplate, boots)")
+    @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "slimeArmorProtectionPoints", comment = "Set the amount of protection points the Slime Armor will have (boots, leggings, chestplate, helmet)")
     public static int[] slimeArmorProtectionPoints = new int[]{1, 1, 2, 1};
 
     //TheGiftOfTheGods (TGOTG)
@@ -453,83 +417,62 @@ public class APConfig {
     public static boolean debugModeTGOTG = false;
     @ModConfigProperty(category = "Debug", name = "debugModeEnchantments", comment = "Enable/Disable Debug Mode for the Enchantments")
     public static boolean debugModeEnchantments = false;
+
+    //EnderDragon
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Effects", name = "enableEnderDragonEffect", comment = "Enable/Disable the Ender Dragon Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableEnderDragonEffect = new boolean[4];
+    @ModConfigProperty(category = "Armors.EnderDragonArmor.Effects", name = "enableFullEnderDragonArmorEffect", comment = "Enable/Disable the Full Ender Dragon Armor Effect")
+    public static boolean enableFullEnderDragonArmorEffect = true;
+    //Guardian
+    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "enableGuardianEffect", comment = "Enable/Disable the Guardian Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableGuardianEffect = new boolean[4];
+    @ModConfigProperty(category = "Armors.GuardianArmor.Effects", name = "enableFullGuardianArmorEffect", comment = "Enable/Disable the Full Guardian Armor Effect")
+    public static boolean enableFullGuardianArmorEffect = true;
     //SuperStarArmor
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarHEffect", comment = "Enable/Disable the Super Star Helmet Effect")
-    public static boolean enableSuperStarHEffect = false;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarCEffect", comment = "Enable/Disable the Super Star Chestplate Effect")
-    public static boolean enableSuperStarCEffect = false;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarLEffect", comment = "Enable/Disable the Super Star Leggings Effect")
-    public static boolean enableSuperStarLEffect = false;
-    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarBEffect", comment = "Enable/Disable the Super Star Boots Effect")
-    public static boolean enableSuperStarBEffect = false;
+    @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableSuperStarEffect", comment = "Enable/Disable the Super Star Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableSuperStarEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.SuperStarArmor.Effects", name = "enableFullSuperStarArmorEffect", comment = "Enable/Disable the Full Super Star Armor Effect")
     public static boolean enableFullSuperStarArmorEffect = true;
     //LavaArmor
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaHEffects", comment = "Enable/Disable the Lava Helmet Fire Resistance Effect")
-    public static boolean enableLavaHEffect = false;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaCEffects", comment = "Enable/Disable the Lava Chestplate Fire Resistance Effect")
-    public static boolean enableLavaCEffect = false;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaLEffects", comment = "Enable/Disable the Lava Leggings Fire Resistance Effect")
-    public static boolean enableLavaLEffect = false;
-    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaBEffects", comment = "Enable/Disable the Lava Boots Fire Resistance")
-    public static boolean enableLavaBEffect = false;
+    @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableLavaEffects", comment = "Enable/Disable the Lava Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableLavaEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.LavaArmor.Effects", name = "enableFullLavaArmorEffect", comment = "Enable/Disable the Full Lava Armor Effect")
     public static boolean enableFullLavaArmorEffect = true;
     //ObsidianArmor
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianHEffect", comment = "Enable/Disable the Obsidian Helmet Resistance")
-    public static boolean enableObsidianHEffect = false;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianCEffect", comment = "Enable/Disable the Obsidian Chestplate Resistance")
-    public static boolean enableObsidianCEffect = false;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianLEffect", comment = "Enable/Disable the Obsidian Leggings Resistance")
-    public static boolean enableObsidianLEffect = false;
-    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianBEffect", comment = "Enable/Disable the Obsidian Boots Resistance")
-    public static boolean enableObsidianBEffect = false;
+    @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableObsidianEffect", comment = "Enable/Disable the Obsidian Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableObsidianEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.ObsidianArmor.Effects", name = "enableFullObsidianArmorEffect", comment = "Enable/Disable the Full Obsidian Armor Effect")
     public static boolean enableFullObsidianArmorEffect = true;
     //EmeraldArmor
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldHEffect", comment = "Enable/Disable the Emerald Helmet Effect")
-    public static boolean enableEmeraldHEffect = false;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldCEffect", comment = "Enable/Disable the Emerald Chestplate Effect")
-    public static boolean enableEmeraldCEffect = false;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldLEffect", comment = "Enable/Disable the Emerald Leggings Effect")
-    public static boolean enableEmeraldLEffect = false;
-    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldBEffect", comment = "Enable/Disable the Emerald Boots Effect")
-    public static boolean enableEmeraldBEffect = false;
+    @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableEmeraldEffect", comment = "Enable/Disable the Emerald Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableEmeraldEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.EmeraldArmor.Effects", name = "enableFullEmeraldArmorEffect", comment = "Enable/Disable the Full Emerald Armor Effect")
     public static boolean enableFullEmeraldArmorEffect = true;
     //RedstoneArmor
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneHEffect", comment = "Enable/Disable the Redstone Helmet Effect")
-    public static boolean enableRedstoneHEffect = false;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneCEffect", comment = "Enable/Disable the Redstone Chestplate Effect")
-    public static boolean enableRedstoneCEffect = false;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneLEffect", comment = "Enable/Disable the Redstone Leggings Effect")
-    public static boolean enableRedstoneLEffect = false;
-    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneBEffect", comment = "Enable/Disable the Redstone Boots Effect")
-    public static boolean enableRedstoneBEffect = false;
+    @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableRedstoneEffect", comment = "Enable/Disable the Redstone Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableRedstoneEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.RedstoneArmor.Effects", name = "enableFullRedstoneArmorEffect", comment = "Enable/Disable the Full Redstone Armor Effect")
     public static boolean enableFullRedstoneArmorEffect = true;
     //LapisArmor
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisHEffect", comment = "Enable/Disable the Lapis Helmet Water Effect")
-    public static boolean enableLapisHEffect = false;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisCEffect", comment = "Enable/Disable the Lapis Chestplate Water Effect")
-    public static boolean enableLapisCEffect = false;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisLEffect", comment = "Enable/Disable the Lapis Leggings Water Effect")
-    public static boolean enableLapisLEffect = false;
-    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisBEffect", comment = "Enable/Disable the Lapis Boots Water Effect")
-    public static boolean enableLapisBEffect = false;
+    @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableLapisEffect", comment = "Enable/Disable the Lapis Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableLapisEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.LapisArmor.Effects", name = "enableFullLapisArmorEffect", comment = "Enable/Disable the Full Lapis Armor Effect")
     public static boolean enableFullLapisArmorEffect = true;
     //CoalArmor
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalHEffect", comment = "Enable/Disable the Coal Helmet Effect")
-    public static boolean enableCoalHEffect = false;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalCEffect", comment = "Enable/Disable the Coal Chestplate Effect")
-    public static boolean enableCoalCEffect = false;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalLEffect", comment = "Enable/Disable the Coal Leggings Effect")
-    public static boolean enableCoalLEffect = false;
-    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalBEffect", comment = "Enable/Disable the Coal Boots Effect")
-    public static boolean enableCoalBEffect = false;
+    @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableCoalEffect", comment = "Enable/Disable the Coal Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableCoalEffect = new boolean[4];
     @ModConfigProperty(category = "Armors.CoalArmor.Effects", name = "enableFullCoalArmorEffect", comment = "Enable/Disable the Full Coal Armor Effect")
     public static boolean enableFullCoalArmorEffect = true;
+    //ChickenArmor
+    @ModConfigProperty(category = "Armors.ChickenArmor.Effects", name = "enableChickenEffect", comment = "Enable/Disable the Chicken Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableChickenEffect = new boolean[4];
+    @ModConfigProperty(category = "Armors.ChickenArmor.Effects", name = "enableFullChickenArmorEffect", comment = "Enable/Disable the Full Chicken Armor Effect")
+    public static boolean enableFullChickenArmorEffect = true;
+    //SlimeArmor
+    @ModConfigProperty(category = "Armors.SlimeArmor.Effects", name = "enableSlimeEffect", comment = "Enable/Disable the Slime Effect (Boots, Leggings, Chestplate, Helmet)")
+    public static boolean[] enableSlimeEffect = new boolean[4];
+    @ModConfigProperty(category = "Armors.SlimeArmor.Effects", name = "enableFullSlimeArmorEffect", comment = "Enable/Disable the Full Slime Armor Effect")
+    public static boolean enableFullSlimeArmorEffect = true;
     //Registry
     @ModConfigProperty(category = "Armors.CoalArmor.Registry", name = "enableCoalArmor", comment = "Enable/Disable the Coal Armor from the Game")
     public static boolean enableCoalArmor = true;
@@ -551,8 +494,6 @@ public class APConfig {
     public static boolean enableGuardianArmor = true;
     @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "enableTheUltimateArmor", comment = "Enable/Disable The Ultimate Armor from the Game")
     public static boolean enableTheUltimateArmor = true;
-    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "makeTheUltimateArmorUnbreakable", comment = "Sets The Ultimate Armor Unbreakable")
-    public static boolean makeTheUltimateArmorUnbreakable = false;
     @ModConfigProperty(category = "Armors.ArditeArmor.Registry", name = "enableArditeArmor", comment = "Enable/Disable the Ardite Armors from the Game")
     public static boolean enableArditeArmor = true;
     @ModConfigProperty(category = "Armors.CobaltArmor.Registry", name = "enableCobaltArmor", comment = "Enable/Disable the Cobalt Armors from the Game")
@@ -567,6 +508,10 @@ public class APConfig {
     public static boolean enableChickenArmor = true;
     @ModConfigProperty(category = "Armors.SlimeArmor.Registry", name = "enableSlimeArmor", comment = "Enable/Disable the Slime Armors from the Game")
     public static boolean enableSlimeArmor = true;
+
+    //TheUltimateArmor
+    @ModConfigProperty(category = "Armors.TheUltimateArmor.Registry", name = "makeTheUltimateArmorUnbreakable", comment = "Sets The Ultimate Armor Unbreakable")
+    public static boolean makeTheUltimateArmorUnbreakable = false;
     //FlightAbility
     @ModConfigProperty(category = "FlightAbility", name = "enableFlightAbility", comment = "Enable/Disable the Armors Flight")
     public static boolean enableFlightAbility = true;
@@ -666,12 +611,22 @@ public class APConfig {
     @ModConfigProperty(category = "Registry.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The armorplus arrow recipes")
     public static boolean enableArrowRecipes = true;
     //MobDrops
-    @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderdragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
-    public static int enderdragonScaleDropAmount = 12;
-    @ModConfigProperty(category = "MobDrops.WitherBoss", name = "witherBoneDropAmount", comment = "Set the amount of dropped Wither Bones that the Wither Boss will drop")
-    public static int witherBoneDropAmount = 6;
+    @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderDragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
+    public static int enderDragonScaleDropAmount = 12;
+    @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderDragonScaleDrop", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
+    public static boolean enderDragonScaleDrop = true;
+    @ModConfigProperty(category = "MobDrops.WitherBoss", name = "witherBoneWitherBossDropAmount", comment = "Set the amount of dropped Wither Bones that the Wither Boss will drop")
+    public static int witherBoneWitherBossDropAmount = 6;
+    @ModConfigProperty(category = "MobDrops.WitherBoss", name = "witherBoneWitherBossDrop", comment = "Enable/Disable the drop of Wither Bones from the Wither Boss")
+    public static boolean witherBoneWitherBossDrop = true;
+    @ModConfigProperty(category = "MobDrops.WitherSkeleton", name = "witherBoneWitherSkeletonDrop", comment = "Enable/Disable the drop of Wither Bones from the Wither Skeleton")
+    public static boolean witherBoneWitherSkeletonDrop = true;
     @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderDropAmount", comment = "Set the amount of dropped Guardian Scales that the Elder Guardian will drop")
     public static int guardianScaleElderDropAmount = 6;
+    @ModConfigProperty(category = "MobDrops.ElderGuardian", name = "guardianScaleElderGuardianDrop", comment = "Enable/Disable the drop of Guardian Scales from the Elder Guardian")
+    public static boolean guardianScaleElderGuardianDrop = true;
+    @ModConfigProperty(category = "MobDrops.Guardian", name = "guardianScaleGuardianDrop", comment = "Enable/Disable the drop of Guardian Scales from the Guardian")
+    public static boolean guardianScaleGuardianDrop = true;
 
     @ModConfigProperty(category = "Registry.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
     public static boolean enableCoalArmorRecipes = true;
@@ -726,10 +681,6 @@ public class APConfig {
     @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] maxEnergyCapacity = new int[]{3000, 3000, 3000, 3000, 3000};
 
-    public static boolean isDebugMode() {
-        return debugMode;
-    }
-
     public static RecipesDifficulty getRD() {
         switch (gameMode) {
             case -1:
@@ -744,6 +695,7 @@ public class APConfig {
         return EXPERT;
     }
 
+    @SuppressWarnings("unused")
     public static boolean hasRecipes() {
         return getRD().hasRecipes();
     }

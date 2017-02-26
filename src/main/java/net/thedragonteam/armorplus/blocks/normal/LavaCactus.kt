@@ -75,15 +75,18 @@ class LavaCactus : BlockCactus(), IModelHelper {
         }
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getCollisionBoundingBox(blockState: IBlockState?, blockAccess: IBlockAccess?, pos: BlockPos?): AxisAlignedBB {
         return BlockCactus.CACTUS_AABB
     }
 
+    @Suppress("OverridingDeprecatedMember")
     @SideOnly(Side.CLIENT)
     override fun getSelectedBoundingBox(state: IBlockState?, worldIn: World?, pos: BlockPos): AxisAlignedBB {
         return BlockCactus.CACTUS_COLLISION_AABB.offset(pos)
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun isFullCube(state: IBlockState?): Boolean {
         return false
     }
@@ -91,14 +94,17 @@ class LavaCactus : BlockCactus(), IModelHelper {
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun isOpaqueCube(state: IBlockState?): Boolean {
         return false
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun canPlaceBlockAt(worldIn: World, pos: BlockPos): Boolean {
         return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos)
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun neighborChanged(state: IBlockState?, worldIn: World, pos: BlockPos, blockIn: Block?, blockPos: BlockPos?) {
         if (!this.canBlockStay(worldIn, pos)) worldIn.destroyBlock(pos, true)
     }
@@ -125,6 +131,7 @@ class LavaCactus : BlockCactus(), IModelHelper {
     /**
      * Convert the given metadata into a BlockState for this Block
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getStateFromMeta(meta: Int): IBlockState {
         return this.defaultState.withProperty(BlockCactus.AGE, meta)
     }
@@ -156,6 +163,7 @@ class LavaCactus : BlockCactus(), IModelHelper {
     /**
      * Get the MapColor for this Block and the given BlockState
      */
+    @Suppress("OverridingDeprecatedMember")
     override fun getMapColor(state: IBlockState?): MapColor {
         return MapColor.NETHERRACK
     }

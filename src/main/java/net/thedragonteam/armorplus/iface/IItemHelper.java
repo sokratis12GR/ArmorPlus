@@ -9,8 +9,10 @@ import net.minecraft.item.ItemStack;
 
 public interface IItemHelper extends INameHelper<String> {
 
+    @Deprecated
     ItemStack getItemStack(ItemStack stack);
 
+    @Deprecated
     Item getItem(Item item);
 
     ItemStack getItemStack();

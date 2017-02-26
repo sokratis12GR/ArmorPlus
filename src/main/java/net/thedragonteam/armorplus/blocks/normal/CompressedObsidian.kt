@@ -38,12 +38,14 @@ class CompressedObsidian : BlockBase(Material.ROCK, "compressed_obsidian", 2000.
         return state.getValue(FACING).horizontalIndex
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getStateFromMeta(meta: Int): IBlockState {
         var iblockstate = this.defaultState
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta))
         return iblockstate
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun withRotation(state: IBlockState, rot: Rotation?): IBlockState {
         return state.withProperty(FACING, rot!!.rotate(state.getValue(FACING)))
     }

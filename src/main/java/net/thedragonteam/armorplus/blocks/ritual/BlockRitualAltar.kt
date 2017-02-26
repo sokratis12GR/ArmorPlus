@@ -28,6 +28,7 @@ open class BlockRitualAltar : BlockBase(Material.ROCK, "ritual_altar", 10F, 10F)
 
     lateinit private var ritualAltar: TileEntityRitualAltar
 
+    @Suppress("OverridingDeprecatedMember")
     override fun getBoundingBox(state: IBlockState?, source: IBlockAccess?, pos: BlockPos?): AxisAlignedBB {
         return NOT_CONNECTED_AABB
     }

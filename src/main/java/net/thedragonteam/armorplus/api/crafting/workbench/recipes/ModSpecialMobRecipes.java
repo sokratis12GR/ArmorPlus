@@ -17,7 +17,7 @@ public class ModSpecialMobRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
         /* Chicken Armor */
-        if (enableSlimeArmor) {
+        if (enableChickenArmor) {
             if (getRD() == EASY && enableChickenArmorRecipes) {
                 manager.addRecipe(new ShapedOreRecipe(getItemStack(chickenHelmet), "   ", "FFF", "F F", 'F', "feather"));
                 manager.addRecipe(new ShapedOreRecipe(getItemStack(chickenHelmet), "FFF", "F F", "   ", 'F', "feather"));
