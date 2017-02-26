@@ -42,6 +42,10 @@ repositories {
         name 'shadowfacts'
         url 'http://mvn.rx14.co.uk/shadowfacts/'
     }
+    maven { // CraftTweaker repo
+        name 'MineTweaker3'
+        url "http://maven.blamejared.com"
+    }
 }
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
@@ -132,6 +136,8 @@ dependencies {
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile group: "net.shadowfacts", name: "Forgelin", version: '1.3.1'
+    compile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
+    deobfCompile "com.blamejared:MTLib:2.0.1.9"
 }
 
 processResources {
@@ -159,10 +165,11 @@ curseforge {
 	    id = '237366'
         changelog = file('src/main/resources/changelog.md')
 	    changelogType = 'markdown'
-        releaseType = 'beta'
+        releaseType = 'release'
         relations {
             requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
+            optionalLibrary 'crafttweaker'
             optionalLibrary 'tesla'
             optionalLibrary 'tinkers-construct'
             optionalLibrary 'baubles'
