@@ -29,16 +29,7 @@ public class MTArmorPlusPlugin {
         prep.add("ijkl");
         prep.add("mnop");
         char[][] map = new char[][]{{'a', 'b', 'c', 'd'}, {'e', 'f', 'g', 'h'}, {'i', 'j', 'k', 'l'}, {'m', 'n', 'o', 'p'}};
-        for (int x = 0; x < ingredients.length; x++) {
-            if (ingredients[x] != null) {
-                for (int y = 0; y < ingredients[x].length; y++) {
-                    if (ingredients[x][y] != null && x < map.length && y < map[x].length) {
-                        prep.add(map[x][y]);
-                        prep.add(toObject(ingredients[x][y]));
-                    }
-                }
-            }
-        }
+        toShapedObjects(ingredients, map, prep);
         return prep.toArray();
     }
 
@@ -53,6 +44,11 @@ public class MTArmorPlusPlugin {
         prep.add("pqrst");
         prep.add("uvwxy");
         char[][] map = new char[][]{{'a', 'b', 'c', 'd', 'e'}, {'f', 'g', 'h', 'i', 'j'}, {'k', 'l', 'm', 'n', 'o',}, {'p', 'q', 'r', 's', 't'}, {'u', 'v', 'w', 'x', 'y'}};
+        toShapedObjects(ingredients, map, prep);
+        return prep.toArray();
+    }
+
+    private static void toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList prep) {
         for (int x = 0; x < ingredients.length; x++) {
             if (ingredients[x] != null) {
                 for (int y = 0; y < ingredients[x].length; y++) {
@@ -63,6 +59,5 @@ public class MTArmorPlusPlugin {
                 }
             }
         }
-        return prep.toArray();
     }
 }

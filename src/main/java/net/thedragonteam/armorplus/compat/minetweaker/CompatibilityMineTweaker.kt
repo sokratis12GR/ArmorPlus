@@ -26,7 +26,5 @@ class CompatibilityMineTweaker : ICompatibility {
     override val modid: String
         get() = "crafttweaker"
 
-    override fun enableCompat(): Boolean {
-        return true
-    }
+    override fun enableCompat(): Boolean = true
 }
