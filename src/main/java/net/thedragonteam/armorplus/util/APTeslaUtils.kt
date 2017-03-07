@@ -33,11 +33,13 @@ object APTeslaUtils {
 
     @Method(modid = "tesla")
     fun getStoredPower(stack: ItemStack): Long {
-        if (isPoweredItem(stack)) {
-            val container = getContainer(stack)
-            return getContainer(stack)!!.storedPower
+        when {
+            isPoweredItem(stack) -> {
+                val container = getContainer(stack)
+                return getContainer(stack)!!.storedPower
+            }
+            else -> return 0
         }
-        return 0
     }
 
     @Method(modid = "tesla")

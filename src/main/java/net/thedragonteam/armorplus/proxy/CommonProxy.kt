@@ -80,7 +80,6 @@ open class CommonProxy {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench::class.java, "UltiTechBench", "APUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree")
         GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench::class.java, "ChampionBench", "APChampionBench", "WorkbenchTier4", "WorkbenchTierFour")
         GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser::class.java, "LavaInfuser", "APLavaInfuser")
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityRitualAltar::class.java, "RitualAltar", "APRitualAltar")
     }
 
     fun registerWorldGenerators() {

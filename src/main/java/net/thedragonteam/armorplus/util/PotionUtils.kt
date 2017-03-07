@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.registry.ModPotions
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
- object PotionUtils {
+object PotionUtils {
 
     fun addPotion(entity: EntityLivingBase, potion: String?, duration: Int, amplifier: Int, ambientIn: Boolean, showParticlesIn: Boolean) {
         if (potion != null)
@@ -49,20 +49,16 @@ import net.thedragonteam.armorplus.registry.ModPotions
     }
 
     fun removePotion(entity: EntityLivingBase, potion: String?) {
-        entity.removePotionEffect(if (potion != null) getPotion(potion) else ModPotions.EMPTY)
+        removePotion(entity, if (potion != null) getPotion(potion) else ModPotions.EMPTY)
     }
 
     fun removePotion(entity: EntityLivingBase, potion: Potion?) {
         entity.removePotionEffect(potion ?: ModPotions.EMPTY)
     }
 
-    fun localizePotion(resourceLocation: String): String {
-        return if (getPotion(resourceLocation) != null) translateToLocal(getPotion(resourceLocation)!!.name + ".name").trim { it <= ' ' } else ""
-    }
+    fun localizePotion(resourceLocation: String): String = if (getPotion(resourceLocation) != null) translateToLocal(getPotion(resourceLocation)!!.name + ".name").trim { it <= ' ' } else ""
 
-    fun getPotion(resourceLocation: String): Potion? {
-        return if (getPotionFromResourceLocation(resourceLocation) != null) getPotionFromResourceLocation(resourceLocation) else ModPotions.EMPTY
-    }
+    fun getPotion(resourceLocation: String): Potion? = if (getPotionFromResourceLocation(resourceLocation) != null) getPotionFromResourceLocation(resourceLocation) else ModPotions.EMPTY
 
     enum class PotionType constructor(private val showParticles: Boolean) {
         GOOD(false),

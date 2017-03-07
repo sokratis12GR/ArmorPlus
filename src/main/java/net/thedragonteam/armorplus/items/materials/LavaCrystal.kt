@@ -37,7 +37,7 @@ class LavaCrystal : Item(), IFuelHandler, IModelHelper {
     }
 
     override fun getBurnTime(fuel: ItemStack): Int {
-        if (fuel.item === this)
+        if (fuel.item == this)
             LAVA_CRYSTAL_NAMES.indices
                     .asSequence()
                     .filter { fuel.itemDamage == it }

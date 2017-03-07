@@ -7,14 +7,15 @@ package net.thedragonteam.armorplus.util
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-
 import net.thedragonteam.armorplus.APConfig.getRD
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItem
+import javax.annotation.Nullable
 
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
+@Nullable
 object ArmorPlusItemUtils {
 
     fun isItemRepairable(repair: ItemStack, easy: Item, expert: Item): Boolean {
