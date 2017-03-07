@@ -21,12 +21,17 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## Mod Integrations
 
-* **Tesla**
+* **[Tesla](https://minecraft.curseforge.com/projects/tesla)**
 * **RF** (Not in 1.11)
-* **Tinkers' Construct** (Not in 1.11 yet)
-* **The One Probe**
-* **Just Enough Items**
-* **Baubles**
+* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.11 yet)
+* **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)**
+* **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)**
+* **[Baubles](https://minecraft.curseforge.com/projects/baubles)**
+* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)**
+
+## TheDragonTeam's Discord
+
+Join now via this link: [TheDragonTeam Discord](discord.thedragonteam.info)
 
 ## Mod's Official Wiki
 
