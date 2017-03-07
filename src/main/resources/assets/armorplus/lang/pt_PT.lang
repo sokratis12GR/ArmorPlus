@@ -440,6 +440,3 @@ effect.glowing.name=Brilho
 effect.luck.name=Sorte
 effect.unluck.name=Má Sorte
 effect.levitation.name=Levitação
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
