@@ -98,7 +98,9 @@ public enum Swords implements IStringSerializable {
            boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this.material = materialIn;
         this.name = nameIn;
+        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY.getItem();
         this.repairEasy = repairEasyIn;
+        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY.getItem();
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.effect = effectIn;

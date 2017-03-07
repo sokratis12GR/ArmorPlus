@@ -71,7 +71,9 @@ public enum Bows implements IStringSerializable {
         this.name = nameIn;
         this.durability = durabilityIn;
         this.damage = damageIn;
+        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY.getItem();
         this.repairEasy = repairEasyIn;
+        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY.getItem();
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.bowItem = bowItemIn;
