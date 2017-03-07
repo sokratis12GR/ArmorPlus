@@ -28,7 +28,7 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
 import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
-import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
+import static net.thedragonteam.armorplus.registry.ModRegistryUtils.INSTANCE;
 
 public class ModItems {
 
@@ -108,16 +108,6 @@ public class ModItems {
             "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
 
     public static void init() {
-        if (isBaublesLoaded()) {
-            itemBaubleDragon = new ItemBaubleDragon();
-        }
-        if (isTeslaLoaded()) {
-            itemTeslaShovel = new ItemTeslaShovel();
-            itemTeslaHoe = new ItemTeslaHoe();
-            itemTeslaAxe = new ItemTeslaAxe();
-            itemTeslaPickaxe = new ItemTeslaPickaxe();
-            itemTeslaSword = new ItemTeslaSword();
-        }
         itemTeslaRod = new ItemTeslaRod();
         twitchItem = new BaseDevItem(DevItems.TWITCH);
         beamItem = new BaseDevItem(DevItems.BEAM);
@@ -132,30 +122,40 @@ public class ModItems {
         electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
         redstoneApple = new RedstoneApple();
         nbtItem = new NBTItem();
+        if (isBaublesLoaded()) {
+            itemBaubleDragon = new ItemBaubleDragon();
+        }
+        if (isTeslaLoaded()) {
+            itemTeslaShovel = new ItemTeslaShovel();
+            itemTeslaHoe = new ItemTeslaHoe();
+            itemTeslaAxe = new ItemTeslaAxe();
+            itemTeslaPickaxe = new ItemTeslaPickaxe();
+            itemTeslaSword = new ItemTeslaSword();
+        }
         //Armors
-        registerArmor(enableCoalArmor, coal, COAL);
-        registerArmor(enableEmeraldArmor, emerald, EMERALD);
-        registerArmor(enableLapisArmor, lapis, LAPIS);
-        registerArmor(enableLavaArmor, lava, LAVA);
-        registerArmor(enableObsidianArmor, obsidian, OBSIDIAN);
-        registerArmor(enableRedstoneArmor, redstone, REDSTONE);
-        registerArmor(enableChickenArmor, chicken, CHICKEN);
-        registerArmor(enableSlimeArmor, slime, SLIME);
-        registerArmor(enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
-        registerArmor(enableGuardianArmor, guardian, GUARDIAN);
-        registerArmor(enableSuperStarArmor, superStar, SUPER_STAR);
-        registerArmor(enableArditeArmor, ardite, ARDITE);
-        registerArmor(enableCobaltArmor, cobalt, COBALT);
-        registerArmor(enableManyullynArmor, manyullyn, MANYULLYN);
-        registerArmor(enablePigIronArmor, pigIron, PIG_IRON);
-        registerArmor(enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
-        registerArmor(enableTheUltimateArmor, theUltimate);
+        INSTANCE.registerArmor(enableCoalArmor, coal, COAL);
+        INSTANCE.registerArmor(enableEmeraldArmor, emerald, EMERALD);
+        INSTANCE.registerArmor(enableLapisArmor, lapis, LAPIS);
+        INSTANCE.registerArmor(enableLavaArmor, lava, LAVA);
+        INSTANCE.registerArmor(enableObsidianArmor, obsidian, OBSIDIAN);
+        INSTANCE.registerArmor(enableRedstoneArmor, redstone, REDSTONE);
+        INSTANCE.registerArmor(enableChickenArmor, chicken, CHICKEN);
+        INSTANCE.registerArmor(enableSlimeArmor, slime, SLIME);
+        INSTANCE.registerArmor(enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
+        INSTANCE.registerArmor(enableGuardianArmor, guardian, GUARDIAN);
+        INSTANCE.registerArmor(enableSuperStarArmor, superStar, SUPER_STAR);
+        INSTANCE.registerArmor(enableArditeArmor, ardite, ARDITE);
+        INSTANCE.registerArmor(enableCobaltArmor, cobalt, COBALT);
+        INSTANCE.registerArmor(enableManyullynArmor, manyullyn, MANYULLYN);
+        INSTANCE.registerArmor(enablePigIronArmor, pigIron, PIG_IRON);
+        INSTANCE.registerArmor(enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
+        INSTANCE.registerArmor(enableTheUltimateArmor, theUltimate);
         //Swords
-        registerSword(isSwordEnabled, sword, swordType);
+        INSTANCE.registerSword(isSwordEnabled, sword, swordType);
         //BattleAxes
-        registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
+        INSTANCE.registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
         //Bows
-        registerBow(isBowEnabled, bow, bowType);
+        INSTANCE.registerBow(isBowEnabled, bow, bowType);
         devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
         itemLapisArrow = new ItemLapisArrow();
@@ -193,26 +193,26 @@ public class ModItems {
         steelIngot.initModel();
         electricalIngot.initModel();
         redstoneApple.initModel();
-        registerArmorModel(enableCoalArmor, coal);
-        registerArmorModel(enableEmeraldArmor, emerald);
-        registerArmorModel(enableLapisArmor, lapis);
-        registerArmorModel(enableLavaArmor, lava);
-        registerArmorModel(enableObsidianArmor, obsidian);
-        registerArmorModel(enableRedstoneArmor, redstone);
-        registerArmorModel(enableChickenArmor, chicken);
-        registerArmorModel(enableSlimeArmor, slime);
-        registerArmorModel(enableEnderDragonArmor, enderDragon);
-        registerArmorModel(enableGuardianArmor, guardian);
-        registerArmorModel(enableSuperStarArmor, superStar);
-        registerArmorModel(enableArditeArmor, ardite);
-        registerArmorModel(enableCobaltArmor, cobalt);
-        registerArmorModel(enableManyullynArmor, manyullyn);
-        registerArmorModel(enablePigIronArmor, pigIron);
-        registerArmorModel(enableKnightSlimeArmor, knightSlime);
-        registerArmorModel(enableTheUltimateArmor, theUltimate);
-        registerSwordModel(isSwordEnabled, sword);
-        registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
-        registerBowModel(isBowEnabled, bow);
+        INSTANCE.registerArmorModel(enableCoalArmor, coal);
+        INSTANCE.registerArmorModel(enableEmeraldArmor, emerald);
+        INSTANCE.registerArmorModel(enableLapisArmor, lapis);
+        INSTANCE.registerArmorModel(enableLavaArmor, lava);
+        INSTANCE.registerArmorModel(enableObsidianArmor, obsidian);
+        INSTANCE.registerArmorModel(enableRedstoneArmor, redstone);
+        INSTANCE.registerArmorModel(enableChickenArmor, chicken);
+        INSTANCE.registerArmorModel(enableSlimeArmor, slime);
+        INSTANCE.registerArmorModel(enableEnderDragonArmor, enderDragon);
+        INSTANCE.registerArmorModel(enableGuardianArmor, guardian);
+        INSTANCE.registerArmorModel(enableSuperStarArmor, superStar);
+        INSTANCE.registerArmorModel(enableArditeArmor, ardite);
+        INSTANCE.registerArmorModel(enableCobaltArmor, cobalt);
+        INSTANCE.registerArmorModel(enableManyullynArmor, manyullyn);
+        INSTANCE.registerArmorModel(enablePigIronArmor, pigIron);
+        INSTANCE.registerArmorModel(enableKnightSlimeArmor, knightSlime);
+        INSTANCE.registerArmorModel(enableTheUltimateArmor, theUltimate);
+        INSTANCE.registerSwordModel(isSwordEnabled, sword);
+        INSTANCE.registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
+        INSTANCE.registerBowModel(isBowEnabled, bow);
         devTool.initModel();
         nbtItem.initModel();
         itemCoalArrow.initModel();
