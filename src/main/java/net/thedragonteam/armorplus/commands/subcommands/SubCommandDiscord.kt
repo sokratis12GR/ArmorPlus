@@ -25,7 +25,7 @@ class SubCommandDiscord(parent: ICommand) : SubCommandBase(parent, "discord") {
     override fun processSubCommand(server: MinecraftServer, commandSender: ICommandSender, args: Array<String>) {
         super.processSubCommand(server, commandSender, args)
         commandSender.sendMessage(TextComponentString("Opening an invite link to our TheDragonTeam Community Discord server"))
-        ClientUtills.openLink("https://discord.gg/ZVwmqyx")
+        ClientUtills.openLink("http://discord.thedragonteam.info")
         commandSender.sendMessage(TextComponentString("Link opened successfully"))
     }
 }
