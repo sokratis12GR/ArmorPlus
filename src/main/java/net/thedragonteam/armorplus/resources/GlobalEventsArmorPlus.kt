@@ -45,54 +45,53 @@ class GlobalEventsArmorPlus {
         val legs = entity.getItemStackFromSlot(LEGS)
         val feet = entity.getItemStackFromSlot(FEET)
 
-        if (head.count > 0 && chest.count > 0 && legs.count > 0 && feet.count > 0) {
-            when {
-                head.item === lavaHelmet && chest.item === lavaChestplate && legs.item === lavaLeggings && feet.item === lavaBoots && entity.isInWater && enableFullLavaArmorEffect -> {
-                    entity.extinguish()
-                    if (entity.isInLava)
-                        entity.absorptionAmount = 4.0f
-                    if (entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-                        addPotion(entity, MobEffects.SLOWNESS, 120, 1, BAD)
-                        head.damageItem(1, entity)
-                        chest.damageItem(1, entity)
-                        legs.damageItem(1, entity)
-                        feet.damageItem(1, entity)
-                        entity.attackEntityFrom(DamageSource.DROWN, 1f)
-                    }
-                }
-                head.item === theUltimateHelmet && chest.item === theUltimateChestplate && legs.item === theUltimateLeggings && feet.item === theUltimateBoots -> {
-                    addPotion(entity, getPotion(theUltimateArmorAddPotionEffects[0]), 120, ultimateArmorEffectLevels[0], GOOD)
-                    addPotion(entity, getPotion(theUltimateArmorAddPotionEffects[1]), 120, ultimateArmorEffectLevels[1], GOOD)
-                    addPotion(entity, getPotion(theUltimateArmorAddPotionEffects[2]), 120, ultimateArmorEffectLevels[2], GOOD)
-                    removePotion(entity, getPotion(theUltimateArmorRemovePotionEffect))
-                }
-                enableFullSuperStarArmorEffect && head.item === superStarHelmet && chest.item === superStarChestplate && legs.item === superStarLeggings && feet.item === superStarBoots -> {
-                    if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
-                        addPotion(entity, getPotion(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel, GOOD)
-                    removePotion(entity, getPotion(superStarArmorRemovePotionEffect))
-                }
-                enablePigIronArmorEffect && head.item === pigIronHelmet && chest.item === pigIronChestplate && legs.item === pigIronLeggings && feet.item === pigIronBoots && entity.foodStats.needFood() -> {
-                    addPotion(entity, getPotion(pigIronArmorAddPotionEffect), 20, pigIronArmorEffectLevel, GOOD)
+        if (head.isEmpty || chest.isEmpty || legs.isEmpty || feet.isEmpty) return
+        when {
+            head.item === lavaHelmet && chest.item === lavaChestplate && legs.item === lavaLeggings && feet.item === lavaBoots && entity.isInWater && enableFullLavaArmorEffect -> {
+                entity.extinguish()
+                if (entity.isInLava)
+                    entity.absorptionAmount = 4.0f
+                if (entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
+                    addPotion(entity, MobEffects.SLOWNESS, 120, 1, BAD)
                     head.damageItem(1, entity)
                     chest.damageItem(1, entity)
                     legs.damageItem(1, entity)
                     feet.damageItem(1, entity)
+                    entity.attackEntityFrom(DamageSource.DROWN, 1f)
                 }
             }
-            addEffects(event, enableFullCoalArmorEffect, coalHelmet, coalChestplate, coalLeggings, coalBoots, coalArmorAddPotionEffect, coalArmorEffectLevel)
-            addEffects(event, enableFullLapisArmorEffect, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots, lapisArmorAddPotionEffect, lapisArmorEffectLevel)
-            addEffects(event, enableFullEmeraldArmorEffect, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel)
-            addEffects(event, enableFullObsidianArmorEffect, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel)
-            addEffects(event, enableFullLavaArmorEffect, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots, lavaArmorAddPotionEffect, lavaArmorEffectLevel)
-            addEffects(event, enableFullRedstoneArmorEffect, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel)
-            addEffects(event, enableFullGuardianArmorEffect, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots, guardianArmorAddPotionEffect, guardianArmorEffectLevel)
-            addEffects(event, enableFullChickenArmorEffect, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots, chickenArmorAddPotionEffect, chickenArmorEffectLevel)
-            addEffects(event, enableFullSlimeArmorEffect, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots, slimeArmorAddPotionEffect, slimeArmorEffectLevel)
-            addEffects(event, enableManyullynArmorEffect, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel)
-            addEffects(event, enableKnightSlimeArmorEffect, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel)
-            addEffects(event, enableArditeArmorEffect, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots, arditeArmorAddPotionEffect, arditeArmorEffectLevel)
-            addEffects(event, enableCobaltArmorEffect, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel)
+            head.item === theUltimateHelmet && chest.item === theUltimateChestplate && legs.item === theUltimateLeggings && feet.item === theUltimateBoots -> {
+                addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[0]), 120, ultimateArmorEffectLevels[0], GOOD)
+                addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[1]), 120, ultimateArmorEffectLevels[1], GOOD)
+                addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[2]), 120, ultimateArmorEffectLevels[2], GOOD)
+                removePotion(entity, getPotion(theUltimateArmorRemovePotionEffect))
+            }
+            enableFullSuperStarArmorEffect && head.item === superStarHelmet && chest.item === superStarChestplate && legs.item === superStarLeggings && feet.item === superStarBoots -> {
+                if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
+                    addPotion(entity, getPotion(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel, GOOD)
+                removePotion(entity, getPotion(superStarArmorRemovePotionEffect))
+            }
+            enablePigIronArmorEffect && head.item === pigIronHelmet && chest.item === pigIronChestplate && legs.item === pigIronLeggings && feet.item === pigIronBoots && entity.foodStats.needFood() -> {
+                addPotion(entity, getPotion(pigIronArmorAddPotionEffect), 20, pigIronArmorEffectLevel, GOOD)
+                head.damageItem(1, entity)
+                chest.damageItem(1, entity)
+                legs.damageItem(1, entity)
+                feet.damageItem(1, entity)
+            }
         }
+        addEffects(event, enableFullCoalArmorEffect, coalHelmet, coalChestplate, coalLeggings, coalBoots, coalArmorAddPotionEffect, coalArmorEffectLevel)
+        addEffects(event, enableFullLapisArmorEffect, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots, lapisArmorAddPotionEffect, lapisArmorEffectLevel)
+        addEffects(event, enableFullEmeraldArmorEffect, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel)
+        addEffects(event, enableFullObsidianArmorEffect, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel)
+        addEffects(event, enableFullLavaArmorEffect, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots, lavaArmorAddPotionEffect, lavaArmorEffectLevel)
+        addEffects(event, enableFullRedstoneArmorEffect, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel)
+        addEffects(event, enableFullGuardianArmorEffect, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots, guardianArmorAddPotionEffect, guardianArmorEffectLevel)
+        addEffects(event, enableFullChickenArmorEffect, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots, chickenArmorAddPotionEffect, chickenArmorEffectLevel)
+        addEffects(event, enableFullSlimeArmorEffect, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots, slimeArmorAddPotionEffect, slimeArmorEffectLevel)
+        addEffects(event, enableManyullynArmorEffect, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel)
+        addEffects(event, enableKnightSlimeArmorEffect, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel)
+        addEffects(event, enableArditeArmorEffect, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots, arditeArmorAddPotionEffect, arditeArmorEffectLevel)
+        addEffects(event, enableCobaltArmorEffect, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel)
     }
 
     private fun addEffects(event: TickEvent.PlayerTickEvent, isEnabled: Boolean, helmet: Item, chestplate: Item, leggings: Item, boots: Item, addEffect: String, addEffectAmplifier: Int) {
@@ -102,8 +101,9 @@ class GlobalEventsArmorPlus {
         val legs = entity.getItemStackFromSlot(LEGS)
         val feet = entity.getItemStackFromSlot(FEET)
         if (isEnabled && head.item === helmet && chest.item === chestplate && legs.item === leggings && feet.item === boots) {
-            if (entity.getActivePotionEffect(getPotion(addEffect)) == null)
+            if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
                 addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD)
+            }
         }
     }
 

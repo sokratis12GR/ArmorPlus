@@ -92,7 +92,6 @@ class BlockBench(var benches: Benches) : BlockBase(Material.IRON, benches.getNam
     }
 
     companion object {
-
         private val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)
     }
 }

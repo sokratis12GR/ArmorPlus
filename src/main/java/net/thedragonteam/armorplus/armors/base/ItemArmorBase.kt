@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.armors.base
 
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.init.MobEffects
 import net.minecraft.inventory.EntityEquipmentSlot
 import net.minecraft.item.*
 import net.minecraft.potion.Potion
@@ -21,9 +22,10 @@ import net.thedragonteam.armorplus.registry.ModPotions
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable
 import net.thedragonteam.armorplus.util.EnumHelperUtil.*
 import net.thedragonteam.armorplus.util.EnumTiers
-import net.thedragonteam.armorplus.util.PotionUtils
 import net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD
+import net.thedragonteam.armorplus.util.PotionUtils.addPotion
 import net.thedragonteam.armorplus.util.PotionUtils.getPotion
+import net.thedragonteam.armorplus.util.PotionUtils.removePotion
 import net.thedragonteam.armorplus.util.Utils.setLocation
 import net.thedragonteam.armorplus.util.Utils.setName
 
@@ -106,7 +108,7 @@ open class ItemArmorBase(private val material: APArmorMaterial, private val slot
 
     companion object {
 
-        var coalArmor: ItemArmor.ArmorMaterial = addArmorMaterial("COAL", setLocation("coal_armor"), 7,
+        var coalArmor: ItemArmor.ArmorMaterial = addArmorMaterial("COAL", setLocation("coal_armor"), 2,
                 coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1)
         var emeraldArmor: ItemArmor.ArmorMaterial = addArmorMaterial("EMERALD", setLocation("emerald_armor"), 35,
                 emeraldArmorProtectionPoints, emeraldArmorToughnessPoints, EnumTiers.TIER_1)
@@ -118,9 +120,9 @@ open class ItemArmorBase(private val material: APArmorMaterial, private val slot
                 obsidianArmorProtectionPoints, obsidianArmorToughnessPoints, EnumTiers.TIER_1)
         var redstoneArmor: ItemArmor.ArmorMaterial = addArmorMaterial("REDSTONE", setLocation("redstone_armor"), 11,
                 redstoneArmorProtectionPoints, redstoneArmorToughnessPoints, EnumTiers.TIER_1)
-        var chickenArmor: ItemArmor.ArmorMaterial = addArmorMaterial("CHICKEN", setLocation("chicken_armor"), 3,
+        var chickenArmor: ItemArmor.ArmorMaterial = addArmorMaterial("CHICKEN", setLocation("chicken_armor"), 1,
                 chickenArmorProtectionPoints, chickenArmorToughnessPoints, EnumTiers.TIER_1)
-        var slimeArmor: ItemArmor.ArmorMaterial = addArmorMaterial("SLIME", setLocation("slime_armor"), 3,
+        var slimeArmor: ItemArmor.ArmorMaterial = addArmorMaterial("SLIME", setLocation("slime_armor"), 1,
                 slimeArmorProtectionPoints, slimeArmorToughnessPoints, EnumTiers.TIER_1)
         var arditeArmor: ItemArmor.ArmorMaterial = addArmorMaterial("ARDITE", setLocation("ardite_armor"), 55,
                 arditeArmorProtectionPoints, arditeArmorToughnessPoints, EnumTiers.TIER_2)
@@ -141,11 +143,18 @@ open class ItemArmorBase(private val material: APArmorMaterial, private val slot
         var wear: EnumAction = addAction("WEAR")
 
         fun addAbilities(entity: EntityPlayer, isEnabled: Boolean, isFullArmorSet: Boolean, addPotion: Potion, potionAmplifier: Int, removePotion: Potion?) {
-            if (isEnabled && !isFullArmorSet && entity.getActivePotionEffect(addPotion) == null) {
-                if (addPotion !== ModPotions.EMPTY)
-                    PotionUtils.addPotion(entity, addPotion, potionAmplifier, GOOD)
-                if (removePotion != null && removePotion !== ModPotions.EMPTY)
-                    PotionUtils.removePotion(entity, removePotion)
+            when {
+                isFullArmorSet -> return
+                removePotion == ModPotions.EMPTY -> return
+                addPotion == ModPotions.EMPTY -> return
+                isEnabled -> {
+                    if (entity.getActivePotionEffect(addPotion) == null || addPotion == MobEffects.NIGHT_VISION) {
+                        addPotion(entity, addPotion, potionAmplifier, GOOD)
+                    }
+                    if (removePotion != null) {
+                        removePotion(entity, removePotion)
+                    }
+                }
             }
         }
     }

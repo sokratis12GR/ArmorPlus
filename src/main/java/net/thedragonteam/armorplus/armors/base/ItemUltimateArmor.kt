@@ -103,16 +103,17 @@ class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor
         val chest = entity.getItemStackFromSlot(EntityEquipmentSlot.CHEST)
         val legs = entity.getItemStackFromSlot(EntityEquipmentSlot.LEGS)
         val feet = entity.getItemStackFromSlot(EntityEquipmentSlot.FEET)
+        if (head.isEmpty || chest.isEmpty || legs.isEmpty || feet.isEmpty) return
         if (APConfig.enableFlightAbility)
             when {
-                !head.isEmpty && head.item === theUltimateHelmet && !chest.isEmpty && chest.item === theUltimateChestplate && !legs.isEmpty && legs.item === theUltimateLeggings && !feet.isEmpty && feet.item === theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator -> entity.capabilities.allowFlying = true
+                head.item == theUltimateHelmet && chest.item == theUltimateChestplate && legs.item == theUltimateLeggings && feet.item == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator -> entity.capabilities.allowFlying = true
                 else -> {
                     entity.capabilities.isFlying = false
                     entity.capabilities.allowFlying = false
                 }
             }
         if (APConfig.enableTheUltimateArmorInvincibility)
-            entity.capabilities.disableDamage = !head.isEmpty && head.item === theUltimateHelmet && !chest.isEmpty && chest.item === theUltimateChestplate && !legs.isEmpty && legs.item === theUltimateLeggings && !feet.isEmpty && feet.item === theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator
+            entity.capabilities.disableDamage = head.item == theUltimateHelmet && chest.item == theUltimateChestplate && legs.item == theUltimateLeggings && feet.item == theUltimateBoots || entity.capabilities.isCreativeMode || entity.isSpectator
         if ((head.isEmpty || head.item !== theUltimateHelmet || chest.isEmpty || chest.item !== theUltimateChestplate || legs.isEmpty || legs.item !== theUltimateLeggings || feet.isEmpty || feet.item !== theUltimateBoots) && !entity.capabilities.isCreativeMode && !entity.isSpectator && enableTheUltimateArmorDeBuffs) {
             addPotion(entity, MobEffects.POISON, 60, 2, BAD)
             addPotion(entity, MobEffects.SLOWNESS, 60, 2, BAD)
