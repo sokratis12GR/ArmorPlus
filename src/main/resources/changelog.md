@@ -1,3 +1,52 @@
+ArmorPlus 1.11.2-10.1.0.1
+----------------------------
+
+####Balance start
+
+Features Changed:
+
+* Balance Changes
+  * Coal armor & weapons durability nerf
+  * Lapis weapons durability nerf
+  * Chicken armor durability nerf
+  * Slime armor durability nerf
+  * Replaced Knight Slime armor's Haste II with Jump Boost II
+  * Swapped the Emerald & Redstone armor abilities
+
+* Changed config style
+
+Bugs Fixed:
+
+* Fixed a few more performance issues
+
+* Night vision effect duration can can hurt some eyes on continuance use (coal armor equiped, fixes it):
+        * This change applies to all armors, so even if it is set on another armor to have night vision it will constantly keep updating it
+
+___
+**List of upcoming and maybe upcoming balance changes:** https://goo.gl/7fhbzx
+___
+
+ArmorPlus 1.11.2-10.0.3.4
+----------------------------
+
+Features Added:
+
+* Warn if the player don't have Forgelin installed
+
+ArmorPlus 1.11.2-10.0.2.3
+----------------------------
+
+Bugs Fixed:
+
+* Fixed a crash while using some A+ items
+
+ArmorPlus 1.11.2-10.0.1.2
+----------------------------
+
+Bugs Fixed:
+
+* Crash when trying to look up some items in JEI
+
 ArmorPlus 1.11.2-10.0.0.1
 ----------------------------
 
