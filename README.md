@@ -9,7 +9,7 @@
 
 ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/sokratis12GR)** **(TheDragonTeam)**. ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds.
 
-Credits for people who helped translating the mod can be found **[here](https://github.com/TheDragonTeam/ArmorPlus/blob/1.11/src/main/resources/assets/armorplus/lang/Credits.md)**
+Credits for people who helped translating the mod can be found **[here](https://github.com/TheDragonTeam/ArmorPlus/blob/kotlin/src/main/resources/assets/armorplus/lang/Credits.md)**
 
 ## Download
 
@@ -40,4 +40,4 @@ The Official Wiki for this mod is
 
 ## Licence
 
-ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/ArmorPlus/blob/1.11/LICENSE).
+ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/ArmorPlus/blob/kotlin/LICENSE).
