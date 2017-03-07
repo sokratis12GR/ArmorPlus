@@ -41,7 +41,7 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 0;
+    public static final int MINOR = 1;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -58,17 +58,16 @@ public class ArmorPlus {
      */
     public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11-3.0.0";
+    public static final String LIB_VERSION = "1.11.2-3.1.0";
     //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
     //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
-    public static final String BAUBLES_VERSION = "1.4.0";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String MOD_LANGUAGE = "java";
     public static final boolean SERVER_SIDE_ONLY = false;
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
     public static final boolean CAN_BE_DEACTIVATED = false;
-    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ + "after:baubles;";
+    public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ + "after:baubles;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
