@@ -189,6 +189,7 @@ public class ModWeaponTierTwoRecipes {
 
                 break;
             case EXPERT:
+            case HELLISH:
                 if (enableSwordsRecipes) {
                     if (enableEmeraldWeapons[0]) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(emeraldSword),

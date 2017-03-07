@@ -45,6 +45,7 @@ public class ModWeaponsTierOneRecipes {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBow), "SR ", "S R", "SR ", 'R', "dustRedstone", 'S', "string"));
                     }
                 }
+                break;
             case EXPERT:
             case HELLISH:
                 if (enableSwordsRecipes) {
@@ -77,6 +78,7 @@ public class ModWeaponsTierOneRecipes {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(redstoneBow), "SR ", "S R", "SR ", 'R', "blockRedstone", 'S', "string"));
                     }
                 }
+                break;
         }
     }
 }

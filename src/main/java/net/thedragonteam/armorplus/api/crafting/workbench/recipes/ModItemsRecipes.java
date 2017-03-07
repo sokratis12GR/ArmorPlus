@@ -91,7 +91,7 @@ public class ModItemsRecipes {
                     'T', "ingotSteel",
                     'S', "rodTesla"));
             manager.addRecipe(new ShapedOreRecipe(new ItemStack(itemTeslaAxe, 1),
-                    "TT ",
+                    " TT",
                     " ST",
                     " S ",
                     'T', "ingotSteel",
@@ -144,6 +144,7 @@ public class ModItemsRecipes {
                 }
                 break;
             case EXPERT:
+            case HELLISH:
                 manager.addRecipe(new ShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
                 if (enableArrowRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(new ItemStack(itemCoalArrow, 2),
@@ -171,6 +172,7 @@ public class ModItemsRecipes {
                             'L', "gemChargedLavaCrystal",
                             'A', "itemArrow"));
                 }
+                break;
         }
     }
 }

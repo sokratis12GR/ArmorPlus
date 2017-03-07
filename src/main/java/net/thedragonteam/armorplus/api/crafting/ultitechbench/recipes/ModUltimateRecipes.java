@@ -26,7 +26,7 @@ public class ModUltimateRecipes {
         Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateLeggings));
         Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateBoots));
 
-        manager.addRecipe(getItemStack(ultiTechBench, 1),
+        manager.addRecipe(getItemStack(ultiTechBench),
                 "LUUL ",
                 "OWHO ",
                 "OUUO ",
@@ -38,241 +38,239 @@ public class ModUltimateRecipes {
                 'O', compressedObsidian,
                 'L', getItemStack(lavaCrystal, 1));
         /* The Ultimate Armor */
-        if (enableTheUltimateArmor) {
-            if (enableTheUltimateArmorRecipes) {
-                manager.addRecipe(getItemStack(theUltimateHelmet),
+        if (enableTheUltimateArmor && enableTheUltimateArmorRecipes) {
+            manager.addRecipe(getItemStack(theUltimateHelmet),
+                    "UUCUU",
+                    "UC CU",
+                    "CLMRC",
+                    "UC CU",
+                    "UUCUU",
+                    'U', getItemStack(materials, 4),
+                    'C', getItemStack(lavaCrystal, 1),
+                    'L', getItemStack(theUltimateParts, 2),
+                    'M', getItemStack(theUltimateParts, 1),
+                    'R', getItemStack(theUltimateParts, 0)
+            );
+            manager.addRecipe(getItemStack(theUltimateChestplate),
+                    "UUCUU",
+                    "UC CU",
+                    "CLMRC",
+                    "UC CU",
+                    "UUCUU",
+                    'U', getItemStack(materials, 4),
+                    'C', getItemStack(lavaCrystal, 1),
+                    'L', getItemStack(theUltimateParts, 5),
+                    'M', getItemStack(theUltimateParts, 4),
+                    'R', getItemStack(theUltimateParts, 3)
+            );
+            manager.addRecipe(getItemStack(theUltimateLeggings),
+                    "UUCUU",
+                    "UC CU",
+                    "CLMRC",
+                    "UC CU",
+                    "UUCUU",
+                    'U', getItemStack(materials, 4),
+                    'C', getItemStack(lavaCrystal, 1),
+                    'L', getItemStack(theUltimateParts, 8),
+                    'M', getItemStack(theUltimateParts, 7),
+                    'R', getItemStack(theUltimateParts, 6)
+            );
+            manager.addRecipe(getItemStack(theUltimateBoots),
+                    "UUCUU",
+                    "UC CU",
+                    "CLMRC",
+                    "UC CU",
+                    "UUCUU",
+                    'U', getItemStack(materials, 4),
+                    'C', getItemStack(lavaCrystal, 1),
+                    'L', getItemStack(theUltimateParts, 11),
+                    'M', getItemStack(theUltimateParts, 10),
+                    'R', getItemStack(theUltimateParts, 9)
+            );
+            //Helmet Parts
+            if (APConfig.enableSuperStarArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 2),
                         "UUCUU",
-                        "UC CU",
+                        "UCTCU",
                         "CLMRC",
-                        "UC CU",
+                        "UCBCU",
                         "UUCUU",
+                        'M', superStarHelmet,
+                        'B', getItemStack(materials, 2),
+                        'L', Blocks.SOUL_SAND,
+                        'R', Blocks.NETHERRACK,
+                        'T', Blocks.NETHER_BRICK,
                         'U', getItemStack(materials, 4),
-                        'C', getItemStack(lavaCrystal, 1),
-                        'L', getItemStack(theUltimateParts, 2),
-                        'M', getItemStack(theUltimateParts, 1),
-                        'R', getItemStack(theUltimateParts, 0)
+                        'C', getItemStack(lavaCrystal, 1)
                 );
-                manager.addRecipe(getItemStack(theUltimateChestplate),
+            if (APConfig.enableEnderDragonArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 1),
                         "UUCUU",
-                        "UC CU",
+                        "UCTCU",
                         "CLMRC",
-                        "UC CU",
+                        "UCBCU",
                         "UUCUU",
+                        'M', enderDragonHelmet,
+                        'B', getItemStack(materials, 3),
+                        'L', Items.ENDER_PEARL,
+                        'R', Items.ENDER_EYE,
+                        'T', Items.END_CRYSTAL,
                         'U', getItemStack(materials, 4),
-                        'C', getItemStack(lavaCrystal, 1),
-                        'L', getItemStack(theUltimateParts, 5),
-                        'M', getItemStack(theUltimateParts, 4),
-                        'R', getItemStack(theUltimateParts, 3)
+                        'C', getItemStack(lavaCrystal, 1)
                 );
-                manager.addRecipe(getItemStack(theUltimateLeggings),
+            if (APConfig.enableGuardianArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 0),
                         "UUCUU",
-                        "UC CU",
+                        "UCTCU",
                         "CLMRC",
-                        "UC CU",
+                        "UCBCU",
                         "UUCUU",
+                        'M', guardianHelmet,
+                        'B', getItemStack(materials, 1),
+                        'L', Items.PRISMARINE_CRYSTALS,
+                        'R', Items.PRISMARINE_SHARD,
+                        'T', Blocks.SPONGE,
                         'U', getItemStack(materials, 4),
-                        'C', getItemStack(lavaCrystal, 1),
-                        'L', getItemStack(theUltimateParts, 8),
-                        'M', getItemStack(theUltimateParts, 7),
-                        'R', getItemStack(theUltimateParts, 6)
+                        'C', getItemStack(lavaCrystal, 1)
                 );
-                manager.addRecipe(getItemStack(theUltimateBoots),
+            //Chestplate Parts
+            if (APConfig.enableSuperStarArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 5),
                         "UUCUU",
-                        "UC CU",
+                        "UCTCU",
                         "CLMRC",
-                        "UC CU",
+                        "UCBCU",
                         "UUCUU",
+                        'M', superStarChestplate,
+                        'B', getItemStack(materials, 2),
+                        'L', Blocks.SOUL_SAND,
+                        'R', Blocks.NETHERRACK,
+                        'T', Blocks.NETHER_BRICK,
                         'U', getItemStack(materials, 4),
-                        'C', getItemStack(lavaCrystal, 1),
-                        'L', getItemStack(theUltimateParts, 11),
-                        'M', getItemStack(theUltimateParts, 10),
-                        'R', getItemStack(theUltimateParts, 9)
+                        'C', getItemStack(lavaCrystal, 1)
                 );
-                //Helmet Parts
-                if (APConfig.enableSuperStarArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 2),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', superStarHelmet,
-                            'B', getItemStack(materials, 2),
-                            'L', Blocks.SOUL_SAND,
-                            'R', Blocks.NETHERRACK,
-                            'T', Blocks.NETHER_BRICK,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableEnderDragonArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 1),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', enderDragonHelmet,
-                            'B', getItemStack(materials, 3),
-                            'L', Items.ENDER_PEARL,
-                            'R', Items.ENDER_EYE,
-                            'T', Items.END_CRYSTAL,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableGuardianArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 0),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', guardianHelmet,
-                            'B', getItemStack(materials, 1),
-                            'L', Items.PRISMARINE_CRYSTALS,
-                            'R', Items.PRISMARINE_SHARD,
-                            'T', Blocks.SPONGE,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                //Chestplate Parts
-                if (APConfig.enableSuperStarArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 5),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', superStarChestplate,
-                            'B', getItemStack(materials, 2),
-                            'L', Blocks.SOUL_SAND,
-                            'R', Blocks.NETHERRACK,
-                            'T', Blocks.NETHER_BRICK,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableEnderDragonArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 4),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', enderDragonChestplate,
-                            'B', getItemStack(materials, 3),
-                            'L', Items.ENDER_PEARL,
-                            'R', Items.ENDER_EYE,
-                            'T', Items.END_CRYSTAL,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableGuardianArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 3),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', guardianChestplate,
-                            'B', getItemStack(materials, 1),
-                            'L', Items.PRISMARINE_CRYSTALS,
-                            'R', Items.PRISMARINE_SHARD,
-                            'T', Blocks.SPONGE,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                //Leggings Parts
-                if (APConfig.enableSuperStarArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 8),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', superStarLeggings,
-                            'B', getItemStack(materials, 2),
-                            'L', Blocks.SOUL_SAND,
-                            'R', Blocks.NETHERRACK,
-                            'T', Blocks.NETHER_BRICK,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableEnderDragonArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 7),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', enderDragonLeggings,
-                            'B', getItemStack(materials, 3),
-                            'L', Items.ENDER_PEARL,
-                            'R', Items.ENDER_EYE,
-                            'T', Items.END_CRYSTAL,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableGuardianArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 6),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', guardianLeggings,
-                            'B', getItemStack(materials, 1),
-                            'L', Items.PRISMARINE_CRYSTALS,
-                            'R', Items.PRISMARINE_SHARD,
-                            'T', Blocks.SPONGE,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                //Boots Parts
-                if (APConfig.enableSuperStarArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 11),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', superStarBoots,
-                            'B', getItemStack(materials, 2),
-                            'L', Blocks.SOUL_SAND,
-                            'R', Blocks.NETHERRACK,
-                            'T', Blocks.NETHER_BRICK,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableEnderDragonArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 10),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', enderDragonBoots,
-                            'B', getItemStack(materials, 3),
-                            'L', Items.ENDER_PEARL,
-                            'R', Items.ENDER_EYE,
-                            'T', Items.END_CRYSTAL,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-                if (APConfig.enableGuardianArmor)
-                    manager.addRecipe(getItemStack(theUltimateParts, 9),
-                            "UUCUU",
-                            "UCTCU",
-                            "CLMRC",
-                            "UCBCU",
-                            "UUCUU",
-                            'M', guardianBoots,
-                            'B', getItemStack(materials, 1),
-                            'L', Items.PRISMARINE_CRYSTALS,
-                            'R', Items.PRISMARINE_SHARD,
-                            'T', Blocks.SPONGE,
-                            'U', getItemStack(materials, 4),
-                            'C', getItemStack(lavaCrystal, 1)
-                    );
-            }
+            if (APConfig.enableEnderDragonArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 4),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', enderDragonChestplate,
+                        'B', getItemStack(materials, 3),
+                        'L', Items.ENDER_PEARL,
+                        'R', Items.ENDER_EYE,
+                        'T', Items.END_CRYSTAL,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            if (APConfig.enableGuardianArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 3),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', guardianChestplate,
+                        'B', getItemStack(materials, 1),
+                        'L', Items.PRISMARINE_CRYSTALS,
+                        'R', Items.PRISMARINE_SHARD,
+                        'T', Blocks.SPONGE,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            //Leggings Parts
+            if (APConfig.enableSuperStarArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 8),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', superStarLeggings,
+                        'B', getItemStack(materials, 2),
+                        'L', Blocks.SOUL_SAND,
+                        'R', Blocks.NETHERRACK,
+                        'T', Blocks.NETHER_BRICK,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            if (APConfig.enableEnderDragonArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 7),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', enderDragonLeggings,
+                        'B', getItemStack(materials, 3),
+                        'L', Items.ENDER_PEARL,
+                        'R', Items.ENDER_EYE,
+                        'T', Items.END_CRYSTAL,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            if (APConfig.enableGuardianArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 6),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', guardianLeggings,
+                        'B', getItemStack(materials, 1),
+                        'L', Items.PRISMARINE_CRYSTALS,
+                        'R', Items.PRISMARINE_SHARD,
+                        'T', Blocks.SPONGE,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            //Boots Parts
+            if (APConfig.enableSuperStarArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 11),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', superStarBoots,
+                        'B', getItemStack(materials, 2),
+                        'L', Blocks.SOUL_SAND,
+                        'R', Blocks.NETHERRACK,
+                        'T', Blocks.NETHER_BRICK,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            if (APConfig.enableEnderDragonArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 10),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', enderDragonBoots,
+                        'B', getItemStack(materials, 3),
+                        'L', Items.ENDER_PEARL,
+                        'R', Items.ENDER_EYE,
+                        'T', Items.END_CRYSTAL,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
+            if (APConfig.enableGuardianArmor)
+                manager.addRecipe(getItemStack(theUltimateParts, 9),
+                        "UUCUU",
+                        "UCTCU",
+                        "CLMRC",
+                        "UCBCU",
+                        "UUCUU",
+                        'M', guardianBoots,
+                        'B', getItemStack(materials, 1),
+                        'L', Items.PRISMARINE_CRYSTALS,
+                        'R', Items.PRISMARINE_SHARD,
+                        'T', Blocks.SPONGE,
+                        'U', getItemStack(materials, 4),
+                        'C', getItemStack(lavaCrystal, 1)
+                );
         }
     }
 }

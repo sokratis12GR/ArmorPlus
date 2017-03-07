@@ -8,16 +8,15 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraft
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
 
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModTinkersConstructRecipes {
 
     public void addRecipes(HighTechBenchCraftingManager manager) {
-        if (getRD() == EASY) {//Ardite
-            if (enableArditeArmor) {
-                if (enableArditeArmorRecipes) {
+        switch (getRD()) {
+            case EASY:
+                if (enableArditeArmor && enableArditeArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(arditeHelmet),
                             "    ",
                             "    ",
@@ -55,10 +54,7 @@ public class ModTinkersConstructRecipes {
                             "    ",
                             'C', "ingotArdite"));
                 }
-            }
-            //Cobalt
-            if (enableCobaltArmor) {
-                if (enableCobaltArmorRecipes) {
+                if (enableCobaltArmor && enableCobaltArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(cobaltHelmet),
                             "    ",
                             "    ",
@@ -96,10 +92,7 @@ public class ModTinkersConstructRecipes {
                             "    ",
                             'C', "ingotCobalt"));
                 }
-            }
-            //KnightSlime
-            if (enableKnightSlimeArmor) {
-                if (enableKnightSlimeArmorRecipes) {
+                if (enableKnightSlimeArmor && enableKnightSlimeArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(knightSlimeHelmet),
                             "    ",
                             "    ",
@@ -137,10 +130,7 @@ public class ModTinkersConstructRecipes {
                             "    ",
                             'C', "ingotKnightslime"));
                 }
-            }
-            //Manyullyn
-            if (enableManyullynArmor) {
-                if (enableManyullynArmorRecipes) {
+                if (enableManyullynArmor && enableManyullynArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(manyullynHelmet),
                             "    ",
                             "    ",
@@ -178,10 +168,7 @@ public class ModTinkersConstructRecipes {
                             "    ",
                             'C', "ingotManyullyn"));
                 }
-            }
-            //PigIron
-            if (enablePigIronArmor) {
-                if (enablePigIronArmorRecipes) {
+                if (enablePigIronArmor && enablePigIronArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(pigIronHelmet),
                             "    ",
                             "    ",
@@ -219,11 +206,10 @@ public class ModTinkersConstructRecipes {
                             "    ",
                             'C', "ingotPigiron"));
                 }
-            }
-
-        } else if (getRD() == RecipesDifficulty.EXPERT) {//Ardite
-            if (enableArditeArmor) {
-                if (enableArditeArmorRecipes) {
+                break;
+            case EXPERT:
+            case HELLISH:
+                if (enableArditeArmor && enableArditeArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(arditeHelmet),
                             "    ",
                             "    ",
@@ -267,10 +253,7 @@ public class ModTinkersConstructRecipes {
                             'C', "blockArdite",
                             'A', "ingotArdite"));
                 }
-            }
-            //Cobalt
-            if (enableCobaltArmor) {
-                if (enableCobaltArmorRecipes) {
+                if (enableCobaltArmor && enableCobaltArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(cobaltHelmet),
                             "    ",
                             "    ",
@@ -314,10 +297,7 @@ public class ModTinkersConstructRecipes {
                             'C', "blockCobalt",
                             'A', "ingotCobalt"));
                 }
-            }
-            //KnightSlime
-            if (enableKnightSlimeArmor) {
-                if (enableKnightSlimeArmorRecipes) {
+                if (enableKnightSlimeArmor && enableKnightSlimeArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(knightSlimeHelmet),
                             "    ",
                             "    ",
@@ -361,10 +341,7 @@ public class ModTinkersConstructRecipes {
                             'C', "blockKnightslime",
                             'A', "ingotKnightslime"));
                 }
-            }
-            //Manyullyn
-            if (enableManyullynArmor) {
-                if (enableManyullynArmorRecipes) {
+                if (enableManyullynArmor && enableManyullynArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(manyullynHelmet),
                             "    ",
                             "    ",
@@ -408,10 +385,7 @@ public class ModTinkersConstructRecipes {
                             'C', "blockManyullyn",
                             'A', "ingotManyullyn"));
                 }
-            }
-            //PigIron
-            if (enablePigIronArmor) {
-                if (enablePigIronArmorRecipes) {
+                if (enablePigIronArmor && enablePigIronArmorRecipes) {
                     manager.addRecipe(new ShapedOreRecipe(getItemStack(pigIronHelmet),
                             "    ",
                             "    ",
@@ -455,7 +429,7 @@ public class ModTinkersConstructRecipes {
                             'C', "blockPigiron",
                             'A', "ingotPigiron"));
                 }
-            }
+                break;
         }
     }
 }

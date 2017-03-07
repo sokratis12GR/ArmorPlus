@@ -10,257 +10,262 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.APItems;
 
-import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EASY;
-import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
 import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
-        if (enableSwordsRecipes && getRD() == EASY) {
-            if (enableGuardianWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
-                        "  G  ",
-                        " GSG ",
-                        "G S G",
-                        "  S  ",
-                        "  S  ",
-                        'G', "scaleGuardian",
-                        'S', Items.STICK));
-            }
-            if (enableSuperStarWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
-                        "  W  ",
-                        " WSW ",
-                        "W S W",
-                        "  S  ",
-                        "  S  ",
-                        'W', "witherBone",
-                        'S', Items.STICK));
-            }
-            if (enableEnderDragonWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
-                        "  E  ",
-                        " ESE ",
-                        "E S E",
-                        "  S  ",
-                        "  S  ",
-                        'E', "scaleEnderDragon",
-                        'S', Items.STICK));
-            }
-        }
-        if (enableBattleAxesRecipes && getRD() == EASY) {
-            if (enableGuardianWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
-                        " G G ",
-                        "G S G",
-                        " GSG ",
-                        "  S  ",
-                        "  S  ",
-                        'G', "scaleGuardian",
-                        'S', Items.STICK));
-            }
-            if (enableSuperStarWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
-                        " W W ",
-                        "W S W",
-                        " WSW ",
-                        "  S  ",
-                        "  S  ",
-                        'W', "witherBone",
-                        'S', Items.STICK));
-            }
-            if (enableEnderDragonWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
-                        " E E ",
-                        "E S E",
-                        " ESE ",
-                        "  S  ",
-                        "  S  ",
-                        'E', "scaleEnderDragon",
-                        'S', Items.STICK));
-            }
-        }
-        if (enableBowsRecipes && getRD() == EASY) {
-            if (enableGuardianWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                        "  GGS",
-                        " GG S",
-                        "G   S",
-                        " GG S",
-                        "  GGS",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                        "SGG  ",
-                        "S GG ",
-                        "S   G",
-                        "S GG ",
-                        "SGG  ",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-            }
-            if (enableSuperStarWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                        "  WWS",
-                        " WW S",
-                        "N   S",
-                        " WW S",
-                        "  WWS",
-                        'W', "witherBone",
-                        'S', "string"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                        "SWW  ",
-                        "S WW ",
-                        "S   W",
-                        "S WW ",
-                        "SWW  ",
-                        'W', "witherBone",
-                        'S', "string"));
-            }
-            if (enableEnderDragonWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                        "  EES",
-                        " EE S",
-                        "E   S",
-                        " EE S",
-                        "  EES",
-                        'E', "scaleEnderDragon",
-                        'S', "string"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                        "SEE  ",
-                        "S EE ",
-                        "S   E",
-                        "S EE ",
-                        "SEE  ",
-                        'E', "scaleEnderDragon",
-                        'S', "string"));
-            }
-        }
-        if (enableSwordsRecipes && getRD() == EXPERT) {
-            if (enableGuardianWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
-                        "  G  ",
-                        " GSG ",
-                        "G S G",
-                        "  S  ",
-                        "  S  ",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-            }
-            if (enableSuperStarWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
-                        "  H  ",
-                        " WSW ",
-                        "W S W",
-                        "  S  ",
-                        "  S  ",
-                        'W', "witherBone",
-                        'S', Items.NETHER_STAR,
-                        'H', new ItemStack(Items.SKULL, 1, 1)));
-            }
-            if (enableEnderDragonWeapons[0]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
-                        "  E  ",
-                        " ESE ",
-                        "E S E",
-                        "  S  ",
-                        "  S  ",
-                        'E', "scaleEnderDragon",
-                        'S', Items.DRAGON_BREATH));
-            }
-        }
-        if (enableBattleAxesRecipes && getRD() == EXPERT) {
-            if (enableGuardianWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
-                        " G G ",
-                        "G S G",
-                        " GSG ",
-                        "  S  ",
-                        "  S  ",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-            }
-            if (enableSuperStarWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
-                        " W W ",
-                        "W H W",
-                        " WSW ",
-                        "  S  ",
-                        "  S  ",
-                        'W', "witherBone",
-                        'S', Items.NETHER_STAR,
-                        'H', new ItemStack(Items.SKULL, 1, 1)));
-            }
-            if (enableEnderDragonWeapons[1]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
-                        " E E ",
-                        "E S E",
-                        " ESE ",
-                        "  S  ",
-                        "  S  ",
-                        'E', "scaleEnderDragon",
-                        'S', Items.DRAGON_BREATH));
-            }
-        }
-        if (enableBowsRecipes && getRD() == EXPERT) {
-            if (enableGuardianWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                        "  GGS",
-                        " GG S",
-                        "G   S",
-                        " GG S",
-                        "  GGS",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                        "SGG  ",
-                        "S GG ",
-                        "S   G",
-                        "S GG ",
-                        "SGG  ",
-                        'G', "scaleGuardian",
-                        'S', "gemPrismarine"));
-            }
-            if (enableSuperStarWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                        "  WWS",
-                        " NW S",
-                        "N   S",
-                        " NW S",
-                        "  WWS",
-                        'W', "witherBone",
-                        'S', "string",
-                        'N', new ItemStack(Items.SKULL, 1, 1)));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                        "SWW  ",
-                        "S WN ",
-                        "S   N",
-                        "S WN ",
-                        "SWW  ",
-                        'W', "witherBone",
-                        'S', "string",
-                        'N', new ItemStack(Items.SKULL, 1, 1)));
-            }
-            if (enableEnderDragonWeapons[2]) {
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                        "  EES",
-                        " DE S",
-                        "D   S",
-                        " DE S",
-                        "  EES",
-                        'E', "scaleEnderDragon",
-                        'S', "string",
-                        'D', Items.DRAGON_BREATH));
-                manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                        "SEE  ",
-                        "S ED ",
-                        "S   D",
-                        "S ED ",
-                        "SEE  ",
-                        'E', "scaleEnderDragon",
-                        'S', "string",
-                        'D', Items.DRAGON_BREATH));
-            }
+        switch (getRD()) {
+            case EASY:
+                if (enableSwordsRecipes) {
+                    if (enableGuardianWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
+                                "  G  ",
+                                " GSG ",
+                                "G S G",
+                                "  S  ",
+                                "  S  ",
+                                'G', "scaleGuardian",
+                                'S', Items.STICK));
+                    }
+                    if (enableSuperStarWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
+                                "  W  ",
+                                " WSW ",
+                                "W S W",
+                                "  S  ",
+                                "  S  ",
+                                'W', "witherBone",
+                                'S', Items.STICK));
+                    }
+                    if (enableEnderDragonWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
+                                "  E  ",
+                                " ESE ",
+                                "E S E",
+                                "  S  ",
+                                "  S  ",
+                                'E', "scaleEnderDragon",
+                                'S', Items.STICK));
+                    }
+                }
+                if (enableBattleAxesRecipes) {
+                    if (enableGuardianWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
+                                " G G ",
+                                "G S G",
+                                " GSG ",
+                                "  S  ",
+                                "  S  ",
+                                'G', "scaleGuardian",
+                                'S', Items.STICK));
+                    }
+                    if (enableSuperStarWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
+                                " W W ",
+                                "W S W",
+                                " WSW ",
+                                "  S  ",
+                                "  S  ",
+                                'W', "witherBone",
+                                'S', Items.STICK));
+                    }
+                    if (enableEnderDragonWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
+                                " E E ",
+                                "E S E",
+                                " ESE ",
+                                "  S  ",
+                                "  S  ",
+                                'E', "scaleEnderDragon",
+                                'S', Items.STICK));
+                    }
+                }
+                if (enableBowsRecipes) {
+                    if (enableGuardianWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
+                                "  GGS",
+                                " GG S",
+                                "G   S",
+                                " GG S",
+                                "  GGS",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
+                                "SGG  ",
+                                "S GG ",
+                                "S   G",
+                                "S GG ",
+                                "SGG  ",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                    }
+                    if (enableSuperStarWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
+                                "  WWS",
+                                " WW S",
+                                "N   S",
+                                " WW S",
+                                "  WWS",
+                                'W', "witherBone",
+                                'S', "string"));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
+                                "SWW  ",
+                                "S WW ",
+                                "S   W",
+                                "S WW ",
+                                "SWW  ",
+                                'W', "witherBone",
+                                'S', "string"));
+                    }
+                    if (enableEnderDragonWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
+                                "  EES",
+                                " EE S",
+                                "E   S",
+                                " EE S",
+                                "  EES",
+                                'E', "scaleEnderDragon",
+                                'S', "string"));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
+                                "SEE  ",
+                                "S EE ",
+                                "S   E",
+                                "S EE ",
+                                "SEE  ",
+                                'E', "scaleEnderDragon",
+                                'S', "string"));
+                    }
+                }
+                break;
+            case EXPERT:
+            case HELLISH:
+                if (enableSwordsRecipes) {
+                    if (enableGuardianWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
+                                "  G  ",
+                                " GSG ",
+                                "G S G",
+                                "  S  ",
+                                "  S  ",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                    }
+                    if (enableSuperStarWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
+                                "  H  ",
+                                " WSW ",
+                                "W S W",
+                                "  S  ",
+                                "  S  ",
+                                'W', "witherBone",
+                                'S', Items.NETHER_STAR,
+                                'H', new ItemStack(Items.SKULL, 1, 1)));
+                    }
+                    if (enableEnderDragonWeapons[0]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
+                                "  E  ",
+                                " ESE ",
+                                "E S E",
+                                "  S  ",
+                                "  S  ",
+                                'E', "scaleEnderDragon",
+                                'S', Items.DRAGON_BREATH));
+                    }
+                }
+                if (enableBattleAxesRecipes) {
+                    if (enableGuardianWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
+                                " G G ",
+                                "G S G",
+                                " GSG ",
+                                "  S  ",
+                                "  S  ",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                    }
+                    if (enableSuperStarWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
+                                " W W ",
+                                "W H W",
+                                " WSW ",
+                                "  S  ",
+                                "  S  ",
+                                'W', "witherBone",
+                                'S', Items.NETHER_STAR,
+                                'H', new ItemStack(Items.SKULL, 1, 1)));
+                    }
+                    if (enableEnderDragonWeapons[1]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
+                                " E E ",
+                                "E S E",
+                                " ESE ",
+                                "  S  ",
+                                "  S  ",
+                                'E', "scaleEnderDragon",
+                                'S', Items.DRAGON_BREATH));
+                    }
+                }
+                if (enableBowsRecipes) {
+                    if (enableGuardianWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
+                                "  GGS",
+                                " GG S",
+                                "G   S",
+                                " GG S",
+                                "  GGS",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
+                                "SGG  ",
+                                "S GG ",
+                                "S   G",
+                                "S GG ",
+                                "SGG  ",
+                                'G', "scaleGuardian",
+                                'S', "gemPrismarine"));
+                    }
+                    if (enableSuperStarWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
+                                "  WWS",
+                                " NW S",
+                                "N   S",
+                                " NW S",
+                                "  WWS",
+                                'W', "witherBone",
+                                'S', "string",
+                                'N', new ItemStack(Items.SKULL, 1, 1)));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
+                                "SWW  ",
+                                "S WN ",
+                                "S   N",
+                                "S WN ",
+                                "SWW  ",
+                                'W', "witherBone",
+                                'S', "string",
+                                'N', new ItemStack(Items.SKULL, 1, 1)));
+                    }
+                    if (enableEnderDragonWeapons[2]) {
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
+                                "  EES",
+                                " DE S",
+                                "D   S",
+                                " DE S",
+                                "  EES",
+                                'E', "scaleEnderDragon",
+                                'S', "string",
+                                'D', Items.DRAGON_BREATH));
+                        manager.addRecipe(new ShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
+                                "SEE  ",
+                                "S ED ",
+                                "S   D",
+                                "S ED ",
+                                "SEE  ",
+                                'E', "scaleEnderDragon",
+                                'S', "string",
+                                'D', Items.DRAGON_BREATH));
+                    }
+                }
+                break;
         }
     }
 }
