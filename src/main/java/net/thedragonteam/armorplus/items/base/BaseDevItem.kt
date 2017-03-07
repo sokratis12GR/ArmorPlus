@@ -8,12 +8,11 @@ import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
-import net.thedragonteam.armorplus.iface.IItemHelper
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.enums.DevItems
 import net.thedragonteam.thedragonlib.util.ItemStackUtils
 
-class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName()), IItemHelper, IModelHelper {
+class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName()), IModelHelper {
 
     init {
         if (devItems.hasSubTypes()) {

@@ -30,11 +30,8 @@ class InventoryCraftingImproved(
          * the width of the crafting inventory
          */
         private val inventoryWidth: Int, private val inventoryHeight: Int) : InventoryCrafting(eventHandler, inventoryWidth, inventoryHeight), IInventory {
-    private val stackList: NonNullList<ItemStack>
 
-    init {
-        this.stackList = NonNullList.withSize(inventoryWidth * inventoryHeight, ItemStack.EMPTY)
-    }
+    private val stackList: NonNullList<ItemStack> = NonNullList.withSize(inventoryWidth * inventoryHeight, ItemStack.EMPTY)
 
     /**
      * Returns the number of slots in the inventory.

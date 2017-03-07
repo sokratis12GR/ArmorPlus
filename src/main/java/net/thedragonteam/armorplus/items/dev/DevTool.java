@@ -18,7 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 public class DevTool extends BaseItem {
@@ -30,7 +29,6 @@ public class DevTool extends BaseItem {
         dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
     }
 
-    @Nonnull
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return dev;
@@ -43,16 +41,18 @@ public class DevTool extends BaseItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+        if (playerIn.world.isRemote) {
+            return false;
+        }
         if (target != null) {
-            if (!playerIn.world.isRemote)
-                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GOLD +
-                        "[" + target.getName() + "]"
-                        + " - " + "Health: " + target.getHealth()
-                        + " - " + "Max Health: " + target.getMaxHealth()
-                        + " - " + "Class: " + target.getClass()
-                        + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
-                        + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
-                        + " - " + "Position: " + target.getPosition()), false);
+            playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GOLD +
+                    "[" + target.getName() + "]"
+                    + " - " + "Health: " + target.getHealth()
+                    + " - " + "Max Health: " + target.getMaxHealth()
+                    + " - " + "Class: " + target.getClass()
+                    + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
+                    + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
+                    + " - " + "Position: " + target.getPosition()), false);
             return true;
         }
         return true;

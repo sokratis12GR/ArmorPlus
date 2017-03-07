@@ -15,7 +15,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
@@ -28,7 +27,7 @@ import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
-public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IModelHelper {
+public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -88,42 +87,12 @@ public class ItemSpecialBattleAxe extends ItemSword implements IItemHelper, IMod
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @Override
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
-    }
-
-    @Override
-    public ItemStack getItemStack(ItemStack stack) {
-        return stack;
-    }
-
-    @Override
-    public Item getItem(Item item) {
-        return item;
-    }
-
-    @Override
-    public ItemStack getItemStack() {
-        return new ItemStack(this);
-    }
-
-    @Override
-    public Item getItem() {
-        return this;
-    }
-
-    @Override
-    public String getName(String name) {
-        return name;
-    }
-
-    @Override
-    public String getName() {
-        return this.itemName;
     }
 }

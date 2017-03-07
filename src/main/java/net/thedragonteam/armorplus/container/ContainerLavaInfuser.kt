@@ -28,11 +28,11 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
         this.addSlotToContainer(SlotLavaInfuserFuel(tile, 1, 34, 35))
         this.addSlotToContainer(SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35))
 
-        for (i in 0 .. 2)
-            for (j in 0 .. 8)
+        for (i in 0.rangeTo(2))
+            for (j in 0.rangeTo(8))
                 this.addSlotToContainer(Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18))
 
-        for (k in 0 .. 8) this.addSlotToContainer(Slot(playerInventory, k, 8 + k * ITEM_BOX, 142))
+        for (k in 0.rangeTo(8)) this.addSlotToContainer(Slot(playerInventory, k, 8 + k * ITEM_BOX, 142))
     }
 
     override fun addListener(listener: IContainerListener) {
@@ -92,8 +92,8 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
                 index != 1 && index != 0 -> when {
                     !LavaInfuserManager.getInstance().getSmeltingResult(itemstack1).isEmpty -> if (!this.mergeItemStack(itemstack1, 0, 1, false)) return ItemStack.EMPTY
                     TileEntityLavaInfuser.isItemFuel(itemstack1) -> if (!this.mergeItemStack(itemstack1, 1, 2, false)) return ItemStack.EMPTY
-                    index >= 3 && index < 30 -> if (!this.mergeItemStack(itemstack1, 30, 39, false)) return ItemStack.EMPTY
-                    index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false) -> return ItemStack.EMPTY
+                    index in 3.rangeTo(29) -> if (!this.mergeItemStack(itemstack1, 30, 39, false)) return ItemStack.EMPTY
+                    index in 30.rangeTo(38) && !this.mergeItemStack(itemstack1, 3, 30, false) -> return ItemStack.EMPTY
                 }
                 !this.mergeItemStack(itemstack1, 3, 39, false) -> return ItemStack.EMPTY
             }
@@ -112,7 +112,6 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
     }
 
     companion object {
-
         private val ITEM_BOX = 18
     }
 }

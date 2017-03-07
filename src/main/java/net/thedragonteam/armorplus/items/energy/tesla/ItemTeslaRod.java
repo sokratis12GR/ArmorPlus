@@ -10,7 +10,6 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
@@ -35,7 +34,7 @@ public class ItemTeslaRod extends BaseItem {
 
     @Override
     @Nonnull
-    public String getItemStackDisplayName(@Nonnull ItemStack stack) {
+    public String getItemStackDisplayName(ItemStack stack) {
         return translateToLocalFormatted(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
     }
 
@@ -51,10 +50,5 @@ public class ItemTeslaRod extends BaseItem {
             tooltip.add(1, Loader.isModLoaded("tesla") ? "Tesla is installed all the recipes should work" : "Tesla isn't installed none of the recipes will work");
         else
             tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
-    }
-
-    @Override
-    public Item getItem() {
-        return this;
     }
 }

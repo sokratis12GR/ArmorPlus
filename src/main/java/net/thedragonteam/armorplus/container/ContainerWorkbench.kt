@@ -32,15 +32,15 @@ class ContainerWorkbench(playerInventory: InventoryPlayer, tile: TileEntityWorkb
         this.world = tile.world
         this.addSlotToContainer(SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35))
 
-        for (i in 0 .. RECIPE_SIZE - 1)
-            for (j in 0 .. RECIPE_SIZE - 1)
+        for (i in 0 until RECIPE_SIZE)
+            for (j in 0 until RECIPE_SIZE)
                 this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 30 + j * ITEM_BOX, 17 + i * ITEM_BOX))
 
-        for (k in 0 .. 2)
-            for (i1 in 0 .. ROW_SLOTS - 1)
+        for (k in 0.rangeTo(2))
+            for (i1 in 0 until ROW_SLOTS)
                 this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 84 + k * ITEM_BOX))
 
-        for (l in 0 .. ROW_SLOTS - 1)
+        for (l in 0 until ROW_SLOTS)
             this.addSlotToContainer(Slot(playerInventory, l, 8 + l * ITEM_BOX, 142))
 
         this.onCraftMatrixChanged(this.craftMatrix)
@@ -60,7 +60,7 @@ class ContainerWorkbench(playerInventory: InventoryPlayer, tile: TileEntityWorkb
         super.onContainerClosed(playerIn)
 
         if (!this.world.isRemote) {
-            (0 .. RECIPE_SIZE_TOTAL - 1)
+            (0 until RECIPE_SIZE_TOTAL)
                     .asSequence()
                     .map { this.craftMatrix.removeStackFromSlot(it) }
                     .filterNot { it.isEmpty }

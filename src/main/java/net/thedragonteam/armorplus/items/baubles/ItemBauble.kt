@@ -11,7 +11,6 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.item.EnumRarity
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
@@ -67,7 +66,4 @@ abstract class ItemBauble(name: String) : BaseItem(name), IBauble {
         player!!.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75f, 2f)
     }
 
-    override fun getItem(): Item {
-        return this
-    }
 }

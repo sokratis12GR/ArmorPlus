@@ -35,33 +35,33 @@ class ContainerChampionBench(playerInventory: InventoryPlayer, tile: TileEntityC
         this.addSlotToContainer(SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 230, 134))
 
         //10x10 Crafting Inventory
-        for (i in 0 .. RECIPE_SIZE - 1)
-            for (j in 0 .. RECIPE_SIZE - 1)
+        for (i in 0 until RECIPE_SIZE)
+            for (j in 0 until RECIPE_SIZE)
                 this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 39 + j * ITEM_BOX, 17 + i * ITEM_BOX))
         //2x2 Armor Inventory
         this.addPlayerArmorInventoryTop(playerInventory, 5, 217)
         this.addPlayerArmorInventoryBot(playerInventory, 5, 235)
         //3x9 Main Inventory
-        for (k in 0 .. 2)
-            for (i1 in 0 .. ROW_SLOTS - 1)
+        for (k in 0.rangeTo(2))
+            for (i1 in 0 until ROW_SLOTS)
                 this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 48 + i1 * ITEM_BOX, 199 + k * ITEM_BOX))
 
         //1x9 HotBar Inventory
-        for (l in 0 .. ROW_SLOTS - 1)
+        for (l in 0 until ROW_SLOTS)
             this.addSlotToContainer(Slot(playerInventory, l, 5, 17 + l * ITEM_BOX))
 
         this.onCraftMatrixChanged(this.craftMatrix)
     }
 
     private fun addPlayerArmorInventoryTop(inventory: InventoryPlayer, xPos: Int, yPos: Int) {
-        for (k in 0 .. 1) {
+        for (k in 0.rangeTo(1)) {
             val equipmentSlot = EQUIPMENT_SLOTS[k]
             addSlotToContainer(SlotArmor(inventory, 4 * 9 + (3 - k), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot))
         }
     }
 
     private fun addPlayerArmorInventoryBot(inventory: InventoryPlayer, xPos: Int, yPos: Int) {
-        for (k in 0 .. 1) {
+        for (k in 0.rangeTo(1)) {
             val equipmentSlot = EQUIPMENT_SLOTS[k + 2]
             addSlotToContainer(SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot))
         }
@@ -81,7 +81,7 @@ class ContainerChampionBench(playerInventory: InventoryPlayer, tile: TileEntityC
         super.onContainerClosed(playerIn)
 
         if (!this.world.isRemote) {
-            (0 .. RECIPE_SIZE_TOTAL - 1)
+            (0 until RECIPE_SIZE_TOTAL)
                     .asSequence()
                     .map { this.craftMatrix.removeStackFromSlot(it) }
                     .filterNot { it.isEmpty }

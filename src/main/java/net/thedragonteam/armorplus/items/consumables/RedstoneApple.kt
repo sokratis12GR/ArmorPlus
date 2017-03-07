@@ -51,7 +51,7 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
 
     override fun onFoodEaten(stack: ItemStack?, worldIn: World, player: EntityPlayer) {
         if (!worldIn.isRemote)
-            player.addPotionEffect(if (stack!!.metadata > 0) PotionEffect(MobEffects.SPEED, 6000, 1) else PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1))
+            if (stack != null) player.addPotionEffect(if (stack.metadata > 0) PotionEffect(MobEffects.SPEED, 6000, 1) else PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1))
     }
 
     /**
@@ -65,7 +65,7 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     }
 
     override fun initModel() {
-        for (i in 0 .. 1) {
+        for (i in 0.rangeTo(1)) {
             this.initModel(this, registryName, i)
         }
     }

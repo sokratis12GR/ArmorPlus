@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-class SlotArmor
 /**
  * Make a new instance.
 
@@ -29,7 +28,7 @@ class SlotArmor
  * *
  * @param armorType The armor type.
  */
-(inventory: IInventory, index: Int, x: Int, y: Int, private val player: EntityPlayer, private val armorType: EntityEquipmentSlot) : Slot(inventory, index, x, y) {
+class SlotArmor(inventory: IInventory, index: Int, x: Int, y: Int, private val player: EntityPlayer, private val armorType: EntityEquipmentSlot) : Slot(inventory, index, x, y) {
 
     override fun getSlotStackLimit(): Int {
         return 1

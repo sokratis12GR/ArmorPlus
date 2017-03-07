@@ -43,11 +43,11 @@ open class ContainerBenchBase(tile: TileEntity, recipeSlotsIn: Int, mainInventor
 
                     slot.onSlotChange(itemstack1, itemstack)
                 }
-                index >= recipeSlots && index < mainInventorySlots -> if (!this.mergeItemStack(itemstack1, mainInventorySlots, fullInventorySlots, false)) {
-                    return ItemStack.EMPTY
+                index in recipeSlots.rangeTo((mainInventorySlots - 1)) -> when {
+                    !this.mergeItemStack(itemstack1, mainInventorySlots, fullInventorySlots, false) -> return ItemStack.EMPTY
                 }
-                index >= mainInventorySlots && index < fullInventorySlots -> if (!this.mergeItemStack(itemstack1, recipeSlots, mainInventorySlots, false)) {
-                    return ItemStack.EMPTY
+                index in mainInventorySlots.rangeTo((fullInventorySlots - 1)) -> when {
+                    !this.mergeItemStack(itemstack1, recipeSlots, mainInventorySlots, false) -> return ItemStack.EMPTY
                 }
                 !this.mergeItemStack(itemstack1, recipeSlots, fullInventorySlots, false) -> return ItemStack.EMPTY
             }

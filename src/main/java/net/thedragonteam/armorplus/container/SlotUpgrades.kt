@@ -8,7 +8,6 @@ import net.minecraft.inventory.IInventory
 import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 
-class SlotUpgrades
 /**
  * Make a new instance.
 
@@ -20,7 +19,7 @@ class SlotUpgrades
  * *
  * @param y         POS_Y coordinate.
  */
-(inventory: IInventory, index: Int, x: Int, y: Int) : Slot(inventory, index, x, y) {
+class SlotUpgrades(inventory: IInventory, index: Int, x: Int, y: Int) : Slot(inventory, index, x, y) {
 
     override fun getSlotStackLimit(): Int {
         return 1

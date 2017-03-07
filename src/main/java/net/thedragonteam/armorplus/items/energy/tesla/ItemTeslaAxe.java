@@ -4,8 +4,6 @@
 
 package net.thedragonteam.armorplus.items.energy.tesla;
 
-import com.google.common.collect.Sets;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -14,7 +12,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -25,22 +22,20 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaAxe;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
-import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Set;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemTeslaAxe extends BaseTeslaAxe {
 
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2, Blocks.WOODEN_SLAB, Blocks.DOUBLE_WOODEN_SLAB, Blocks.CHEST, Blocks.LADDER,
+    /*private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2, Blocks.WOODEN_SLAB, Blocks.DOUBLE_WOODEN_SLAB, Blocks.CHEST, Blocks.LADDER,
             Blocks.CRAFTING_TABLE, Blocks.TRAPDOOR, Blocks.ACACIA_FENCE, Blocks.BIRCH_FENCE, Blocks.DARK_OAK_FENCE, Blocks.JUNGLE_FENCE, Blocks.OAK_FENCE, Blocks.SPRUCE_FENCE,
             Blocks.ACACIA_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.LEAVES,
             Blocks.LEAVES2, Blocks.BOOKSHELF, Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.NOTEBLOCK, Blocks.PUMPKIN, Blocks.MELON_BLOCK, Blocks.PLANKS, Blocks.WOODEN_PRESSURE_PLATE,
             Blocks.ACACIA_STAIRS, Blocks.BIRCH_STAIRS, Blocks.SPRUCE_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.JUNGLE_STAIRS, Blocks.OAK_STAIRS);
-
+    */
     public ItemTeslaAxe() {
-        super(ToolMaterial.DIAMOND, "tesla_axe", EFFECTIVE_ON, maxEnergyCapacity[2], energyInput[2], energyOutput[2]);
+        super(ToolMaterial.DIAMOND, "tesla_axe", maxEnergyCapacity[2], energyInput[2], energyOutput[2]);
     }
 
     @Override
@@ -50,7 +45,7 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
 
     @Method(modid = "tesla")
     @Override
-    public boolean onBlockDestroyed(@Nonnull ItemStack stack, World worldIn, @Nonnull IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving) {
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         APTeslaUtils.INSTANCE.usePower(stack, energyOutput[2]);
         return true;
     }
@@ -62,7 +57,7 @@ public class ItemTeslaAxe extends BaseTeslaAxe {
 
     @Method(modid = "tesla")
     @Override
-    public float getStrVsBlock(@Nonnull ItemStack stack, IBlockState state) {
+    public float getStrVsBlock(ItemStack stack, IBlockState state) {
         return APTeslaUtils.INSTANCE.getStoredPower(stack) < energyOutput[2] ? 0.5F : Items.WOODEN_AXE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 

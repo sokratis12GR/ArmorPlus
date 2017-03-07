@@ -18,13 +18,17 @@ class CompatibilityTinkersConstruct : ICompatibility {
         when (phase) {
             ICompatibility.InitializationPhase.PRE_INIT -> {
                 TiC.preInit()
-                if (FMLCommonHandler.instance().effectiveSide == Side.CLIENT)
+                if (FMLCommonHandler.instance().effectiveSide == Side.CLIENT) {
                     TiCModifiers.initRender()
+                }
             }
-            ICompatibility.InitializationPhase.INIT -> TiC.init()
+            ICompatibility.InitializationPhase.INIT -> {
+                TiC.init()
+            }
             ICompatibility.InitializationPhase.POST_INIT -> {
-                if (FMLCommonHandler.instance().effectiveSide == Side.CLIENT)
+                if (FMLCommonHandler.instance().effectiveSide == Side.CLIENT) {
                     TiCMaterials.registerMaterialRendering()
+                }
                 TiC.postInit()
             }
             else -> {

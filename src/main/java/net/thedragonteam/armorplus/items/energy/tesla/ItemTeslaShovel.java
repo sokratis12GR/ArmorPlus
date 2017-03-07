@@ -4,8 +4,6 @@
 
 package net.thedragonteam.armorplus.items.energy.tesla;
 
-import com.google.common.collect.Sets;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -14,7 +12,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -25,19 +22,17 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.energy.tesla.BaseTeslaShovel;
 import net.thedragonteam.armorplus.util.APTeslaUtils;
 
-import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Set;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 
 public class ItemTeslaShovel extends BaseTeslaShovel {
 
-    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.FARMLAND, Blocks.SAND, Blocks.DIRT, Blocks.GRAVEL, Blocks.GRASS, Blocks.GRASS_PATH,
-            Blocks.SNOW, Blocks.SNOW_LAYER, Blocks.CLAY, Blocks.SOUL_SAND);
-
+    /* private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.FARMLAND, Blocks.SAND, Blocks.DIRT, Blocks.GRAVEL, Blocks.GRASS, Blocks.GRASS_PATH,
+             Blocks.SNOW, Blocks.SNOW_LAYER, Blocks.CLAY, Blocks.SOUL_SAND);
+     */
     public ItemTeslaShovel() {
-        super(ToolMaterial.DIAMOND, "tesla_shovel", EFFECTIVE_ON, maxEnergyCapacity[3], energyInput[3], energyOutput[3]);
+        super(ToolMaterial.DIAMOND, "tesla_shovel", maxEnergyCapacity[3], energyInput[3], energyOutput[3]);
     }
 
     @Override
@@ -47,7 +42,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
 
     @Method(modid = "tesla")
     @Override
-    public boolean onBlockDestroyed(@Nonnull ItemStack stack, World worldIn, @Nonnull IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving) {
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         APTeslaUtils.INSTANCE.usePower(stack, energyOutput[3]);
         return true;
     }
@@ -59,7 +54,7 @@ public class ItemTeslaShovel extends BaseTeslaShovel {
 
     @Method(modid = "tesla")
     @Override
-    public float getStrVsBlock(@Nonnull ItemStack stack, IBlockState state) {
+    public float getStrVsBlock(ItemStack stack, IBlockState state) {
         return APTeslaUtils.INSTANCE.getStoredPower(stack) < energyOutput[3] ? 0.5F : Items.WOODEN_SHOVEL.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 

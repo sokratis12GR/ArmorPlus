@@ -42,8 +42,4 @@ class NBTItem : BaseItem("dev_item") {
         if (stack!!.hasTagCompound() && stack.tagCompound!!.hasKey("Level"))
             tooltip!!.add("Item Level: " + Integer.toString(stack.tagCompound!!.getInteger("Level")))
     }
-
-    override fun getItem(): Item {
-        return this
-    }
 }

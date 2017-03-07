@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IItemHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
@@ -28,7 +27,7 @@ import java.util.List;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
-public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHelper {
+public class ItemSpecialSword extends ItemSword implements IModelHelper {
 
     public static Item.ToolMaterial swordCoalMaterial = EnumHelper.addToolMaterial("swordCoalMaterial", 1, APConfig.coalSwordDurability, 1.0F, (float) APConfig.coalSwordDamage, 15);
     public static Item.ToolMaterial swordLapisMaterial = EnumHelper.addToolMaterial("swordLapisMaterial", 1, APConfig.lapisSwordDurability, 1.0F, (float) APConfig.lapisSwordDamage, 30);
@@ -79,7 +78,7 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
@@ -87,35 +86,5 @@ public class ItemSpecialSword extends ItemSword implements IItemHelper, IModelHe
     @SideOnly(Side.CLIENT)
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
-    }
-
-    @Override
-    public ItemStack getItemStack(ItemStack stack) {
-        return stack;
-    }
-
-    @Override
-    public Item getItem(Item item) {
-        return item;
-    }
-
-    @Override
-    public ItemStack getItemStack() {
-        return new ItemStack(this);
-    }
-
-    @Override
-    public Item getItem() {
-        return this;
-    }
-
-    @Override
-    public String getName(String name) {
-        return name;
-    }
-
-    @Override
-    public String getName() {
-        return this.itemName;
     }
 }

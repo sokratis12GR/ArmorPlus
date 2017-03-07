@@ -46,7 +46,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
     }
 
     @Method(modid = "tesla")
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         APTeslaUtils.INSTANCE.usePower(stack, energyOutput[0]);
         return true;
     }
@@ -68,7 +68,7 @@ public class ItemTeslaSword extends BaseTeslaSword {
 
     @Method(modid = "tesla")
     @Override
-    public boolean onBlockDestroyed(@Nonnull ItemStack stack, @Nonnull World worldIn, IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving) {
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
         APTeslaUtils.INSTANCE.usePower(stack, energyOutput[0]);
         return true;
     }

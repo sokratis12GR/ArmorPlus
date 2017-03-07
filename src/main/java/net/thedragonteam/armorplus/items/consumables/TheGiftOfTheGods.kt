@@ -47,10 +47,6 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         this.initModel(this, registryName, 0)
     }
 
-    override fun getItem(): Item {
-        return this
-    }
-
     override fun getRarity(stack: ItemStack): EnumRarity {
         return golden
     }
@@ -76,8 +72,8 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         playerIn.getHeldItem(hand).tagCompound = nbt
 
         var count: Int
-        var item: Item? = null
-        do
+        var item: Item? = ItemStack.EMPTY.item
+        do {
             when {
                 APConfig.enableWhiteList -> if (APConfig.enableWhiteList)
                     item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
@@ -86,15 +82,15 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
                     item = Item.getItemById(count)
                 }
             }
-        while (item == null || item === ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
+        } while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
 
         if (enableTheGiftOfTheGods) {
             val cooldown = 0
             if (!playerIn.heldItemMainhand.isEmpty && playerIn.heldItemMainhand.item === playerIn.getHeldItem(hand).item || !playerIn.heldItemOffhand.isEmpty && playerIn.heldItemOffhand.item === playerIn.getHeldItem(hand).item)
-                if (!debugMode && !playerIn.cooldownTracker.hasCooldown(playerIn.getHeldItem(hand).item))
-                    playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldownTicks)
-                else if (debugMode && debugModeTGOTG)
-                    playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldown)
+                when {
+                    !debugMode && !playerIn.cooldownTracker.hasCooldown(playerIn.getHeldItem(hand).item) -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldownTicks)
+                    debugMode && debugModeTGOTG -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldown)
+                }
 
             if (!worldIn!!.isRemote) {
                 playerIn.dropItem(item, 1)
@@ -113,16 +109,17 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
         val maxUses = APConfig.maxUses
         tooltip!!.add("" + TextFormatting.ITALIC + "" + TextFormatting.RED + "This item can summon items which can potentially cause crashes")
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\u00a79Ability: " + "\u00a7rGrants Random Item")
-            tooltip.add("\u00a79Max Uses: \u00a7r$maxUses")
-            tooltip.add("\u00a73Use: " + "\u00a7rRight-Click")
-        } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.GOLD, keyBindSneak.displayName, TextFormatting.GRAY))
+        when {
+            GameSettings.isKeyDown(keyBindSneak) -> {
+                tooltip.add("\u00a79Ability: " + "\u00a7rGrants Random Item")
+                tooltip.add("\u00a79Max Uses: \u00a7r$maxUses")
+                tooltip.add("\u00a73Use: " + "\u00a7rRight-Click")
+            }
+            else -> tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.GOLD, keyBindSneak.displayName, TextFormatting.GRAY))
+        }
     }
 
     companion object {
-
         private val random = Random()
     }
 }
