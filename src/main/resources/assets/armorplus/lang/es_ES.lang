@@ -1,71 +1,385 @@
 #es_UY.lang File
 
 #CREATIVE TAB
-itemGroup.armorplus.creativeTab=ArmaduraMás
+itemGroup.armorplus.armors=AP Armaduras
+itemGroup.armorplus.items=AP Items
+itemGroup.armorplus.blocks=AP Bloques
+itemGroup.armorplus.weapons=AP Armas
+itemGroup.armorplus.tesla=AP Tesla
+itemGroup.armorplus.rf=AP RF
+itemGroup.armorplus.tinkers=AP Tinkers
+
+#GuiArmorPlusInfo
+gui.armorplus.info.text_line_heading=ArmorPlus Info
+gui.armorplus.info.text_line_one=ArmorPlus Crafting Recipes are
+gui.armorplus.info.text_line_two=Modo experto `I:Recipe:1` por defecto.
+gui.armorplus.info.text_line_three=Si tu queres cambiar a modo fácil
+gui.armorplus.info.text_line_four=Tendrás que cambiar la configuración
+gui.armorplus.info.text_line_five=De `I:Recipe:1` a `I:Recipe:0`.
+gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
+
+#Enchantmnets
+enchantment.armorplus.life_steal=Robo de vida
+enchantment.armorpls.life_steal.desc=Steal's the attacked entity's health and heals you
+enchantment.armorplus.furious=Furioso
+enchantment.armorplus.furious.desc=When hit you get furious, giving you strength and speed boost based on level.
+
+#JeiDescriptions
+armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
+armorplus.jei.wither_bone.desc=Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons.
+armorplus.jei.ender_dragon_scale.desc=Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies.
+armorplus.jei.lava_infuser.desc=Used for infusing Lava Crystals and Obsidian blocks into Lava Infused Obsidian. You need to provide it with lava in order to work.
+
+#Baubles
+item.armorplus.bauble_cosmetic_dragon.name=Dragón Cosmético
+
+#Containers
+container.armorplus.workbench=Banco de trabajo	
+container.armorplus.high_tech_bench=Banco de Alta Tecnología
+container.armorplus.ulti_tech_bench=Banco de Suprema Tecnología
+container.armorplus.champion_bench=Banco campeón
+container.armorplus.inventory=Inventario
+container.armorplus.lava_infuser=Infusor de Lava
+
+#Tooltip
+tooltip.shift.showinfo=Presione %s%s%s para más información.
+
+##RFTooltip
+tooltip.rf.showinfo=Presione %s%s%s para más información.
+tooltip.rf.powerinfo=%s/%s RF
+tooltip.rf.cost.tool=Cost: %s RF/bloque
+tooltip.rf.cost.hit=Cost: %s RF/hit
+
+##TeslaTooltip
+tooltip.tesla.showinfo=Presione %s%s%s para más información.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.cost.tool=Cost: %s Tesla/block
+tooltip.tesla.cost.hit=Cost: %s Tesla/hit
+
+#TiC
+modifier.firestorm.name=Tempestad de fuego
+modifier.firestorm.desc=§oThe real Super Nova!§r\nBonus fire damage, sets your enemies on fire.
+modifier.firestorm.extra=Dano por Fuego: +%s
+modifier.firestorm.extra2=Duración de la quemadura: %ss
+modifier.ultimatemod.name=Expandido
+modifier.ultimatemod.desc=Sumar +1 Modificador
+material.lava_crystal.name=Cristal de Lava
+material.compressed_obsidian.name=Obsidiana Comprimida
+
+﻿#Tile
+tile.armorplus.block_energy_creative.name=Celda de Energía Creativa
+
+#Commands
+commands.error.arg.invalid=Argumentos no Válidos.
+commands.error.arg.missing=No hay Suficientes arguementos.
+commands.error.arg.player.missing=You must specify which player you wish to perform this action on.
+commands.error.404=Command not found!
+commands.error.unknown=Unknown command! Please use /armorplus help
+commands.error.perm=You do not have permission to use this command.
+commands.success=Executed successfully
+commands.format.help=%s - %s
+
+#CommandHelp
+commands.help.usage=/armorplus help
+commands.help.help=Displays the help information for the "/armorplus" command.
+
+#CommandInfo
+commands.info.usage=/armorplus info
+commands.info.help=Shows Information about ArmorPlus
+
+#CommandWiki
+commands.wiki.usage=/armorplus wiki
+commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
+
+#JEI
+gui.jei.category.workbench=Workbench
+gui.jei.category.high_tech_bench=High-Tech Bench
+gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
+gui.jei.category.champion_bench=Champion Bench
+gui.jei.category.lava_infuser=Lava Infuser
+gui.jei.category.lava_infuser_infusing=Lava Infuser Infusing
+gui.jei.category.lava_infuser_fuel=Lava Infuser Fuel
+
+gui.jei.category.armorplus.infusing=Infusing
+gui.jei.category.armorplus.infusing.experience=%s XP
+gui.jei.category.armorplus.infusing.fuel=Fuel
+gui.jei.category.armorplus.infusing.fuel.smeltCount.single=Smelts 1 item
+gui.jei.category.armorplus.infusing.fuel.smeltCount=Infuses %s items
+gui.jei.category.armorplus.infusing.fuel.burnTime=Burn Time: %s
+
+#BOOKS
+item.armorplus.book.name=ArmorPlus Info Book
 
 #CONFIG GUI
 gui.armorplus.config.title=Configuración de ArmaduraMás
 
 #CoalArmor
-item.CoalHelmet.name=Casco de Carbón
-item.CoalChestplate.name=Peto de Carbón
-item.CoalLeggings.name=Grebas de Carbón
-item.CoalBoots.name=Botas de Carbón
+item.armorplus.coal_helmet.name=Casco de Carbón
+item.armorplus.coal_chestplate.name=Peto de Carbón
+item.armorplus.coal_leggings.name=Grebas de Carbón
+item.armorplus.coal_boots.name=Botas de Carbón
 
 #LapisArmor
-item.LapisHelmet.name=Casco de Lapislázuli
-item.LapisChestplate.name=Peto de Lapislázuli
-item.LapisLeggings.name=Grebas de Lapislázuli
-item.LapisBoots.name=Botas de Lapislázuli
+item.armorplus.lapis_helmet.name=Casco de Lapislázuli
+item.armorplus.lapis_chestplate.name=Peto de Lapislázuli
+item.armorplus.lapis_leggings.name=Grebas de Lapislázuli
+item.armorplus.lapis_boots.name=Botas de Lapislázuli
 
 #RedstoneArmor
-item.RedstoneHelmet.name=Casco de Redstone
-item.RedstoneChestplate.name=Peto de Redstone
-item.RedstoneLeggings.name=Grebas de Redstone
-item.RedstoneBoots.name=Botas de Redstone
+item.armorplus.redstone_helmet.name=Casco de Redstone
+item.armorplus.redstone_chestplate.name=Peto de Redstone
+item.armorplus.redstone_leggings.name=Grebas de Redstone
+item.armorplus.redstone_boots.name=Botas de Redstone
 
 #EmeraldArmor
-item.EmeraldHelmet.name=Casco de Esmeralda
-item.EmeraldChestplate.name=Peto de Esmeralda
-item.EmeraldLeggings.name=Grebas de Esmeralda
-item.EmeraldBoots.name=Botas de Esmeralda
+item.armorplus.emerald_helmet.name=Casco de Esmeralda
+item.armorplus.emerald_chestplate.name=Peto de Esmeralda
+item.armorplus.emerald_leggings.name=Grebas de Esmeralda
+item.armorplus.emerald_boots.name=Botas de Esmeralda
 
 #ObsidianArmor
-item.ObsidianHelmet.name=Casco de Obsidiana
-item.ObsidianChestplate.name=Peto de Obsidiana
-item.ObsidianLeggings.name=Grebas de Obsidiana
-item.ObsidianBoots.name=Botas de Obsidiana
+item.armorplus.obsidian_helmet.name=Casco de Obsidiana
+item.armorplus.obsidian_chestplate.name=Peto de Obsidiana
+item.armorplus.obsidian_leggings.name=Grebas de Obsidiana
+item.armorplus.obsidian_boots.name=Botas de Obsidiana
 
 #LavaArmor
-item.LavaHelmet.name=Casco de Lava
-item.LavaChestplate.name=Peto de Lava
-item.LavaLeggings.name=Grebas de Lava
-item.LavaBoots.name=Botas de Lava
+item.armorplus.lava_helmet.name=Casco de Lava
+item.armorplus.lava_chestplate.name=Peto de Lava
+item.armorplus.lava_leggings.name=Grebas de Lava
+item.armorplus.lava_boots.name=Botas de Lava
 
 #SuperStarArmor
-item.SuperStarHelmet.name=Casco de Estrella Estupenda
-item.SuperStarChestplate.name=Peto de Estrella Estupenda
-item.SuperStarLeggings.name=Grebas de Estrella Estupenda
-item.SuperStarBoots.name=Botas de Estrella Estupenda
+item.armorplus.super_star_helmet.name=Casco de Estrella Estupenda
+item.armorplus.super_star_chestplate.name=Peto de Estrella Estupenda
+item.armorplus.super_star_leggings.name=Grebas de Estrella Estupenda
+item.armorplus.super_star_boots.name=Botas de Estrella Estupenda
 
 #EnderDragon Armor
-item.EnderDragonScale.name=Escama del Dragón del End
-item.EnderDragonHelmet.name=Casco del Dragón del End
-item.EnderDragonChestplate.name=Peto del Dragón del End
-item.EnderDragonLeggings.name=Grebas del Dragón del End
-item.EnderDragonBoots.name=Botas del Dragón del End
+item.armorplus.ender_dragon_helmet.name=Casco del Dragón del End
+item.armorplus.ender_dragon_chestplate.name=Peto del Dragón del End
+item.armorplus.ender_dragon_leggings.name=Grebas del Dragón del End
+item.armorplus.ender_dragon_boots.name=Botas del Dragón del End
 
 #Guardian Armor
-item.GuardianHelmet.name=Casco del Guardián
-item.GuardianChestplate.name=Peto del Guardián
-item.GuardianLeggings.name=Grebas del Guardián
-item.GuardianBoots.name=Botas del Guardián
+item.armorplus.guardian_helmet.name=Casco del Guardián
+item.armorplus.guardian_chestplate.name=Peto del Guardián
+item.armorplus.guardian_leggings.name=Grebas del Guardián
+item.armorplus.guardian_boots.name=Botas del Guardián
 
 #TheUltimateArmor
-item.TheUltimateHelmet.name=El Casco Supremo
-item.TheUltimateChestplate.name=El Peto Supremo
-item.TheUltimateLeggings.name=Las Grebas Supremas
-item.TheUltimateBoots.name=Las Botas Supremas
+item.armorplus.the_ultimate_helmet_full.name=El Casco Supremo
+item.armorplus.the_ultimate_chestplate_full.name=El Peto Supremo
+item.armorplus.the_ultimate_leggings_full.name=Las Grebas Supremas
+item.armorplus.the_ultimate_boots_full.name=Las Botas Supremas
+
+#CobaltArmor
+item.armorplus.cobalt_helmet.name=Cobalt Helmet
+item.armorplus.cobalt_chestplate.name=Cobalt Chestplate
+item.armorplus.cobalt_leggings.name=Cobalt Leggings
+item.armorplus.cobalt_boots.name=Cobalt Boots
+
+#ArditeArmor
+item.armorplus.ardite_helmet.name=Ardite Helmet
+item.armorplus.ardite_chestplate.name=Ardite Chestplate
+item.armorplus.ardite_leggings.name=Ardite Leggings
+item.armorplus.ardite_boots.name=Ardite Boots
+
+#PigIronArmor
+item.armorplus.pig_iron_helmet.name=Pig Iron Helmet
+item.armorplus.pig_iron_chestplate.name=Pig Iron Chestplate
+item.armorplus.pig_iron_leggings.name=Pig Iron Leggings
+item.armorplus.pig_iron_boots.name=Pig Iron Boots
+
+#KnightSlimeArmor
+item.armorplus.knight_slime_helmet.name=Knight Slime Helmet
+item.armorplus.knight_slime_chestplate.name=Knight Slime Chestplate
+item.armorplus.knight_slime_leggings.name=Knight Slime Leggings
+item.armorplus.knight_slime_boots.name=Knight Slime Boots
+
+#ManyullynArmor
+item.armorplus.manyullyn_helmet.name=Manyullyn Helmet
+item.armorplus.manyullyn_chestplate.name=Manyullyn Chestplate
+item.armorplus.manyullyn_leggings.name=Manyullyn Leggings
+item.armorplus.manyullyn_boots.name=Manyullyn Boots
+
+#ChickenArmor
+item.armorplus.chicken_helmet.name=Chicken Helmet
+item.armorplus.chicken_chestplate.name=Chicken Chestplate
+item.armorplus.chicken_leggings.name=Chicken Leggings
+item.armorplus.chicken_boots.name=Chicken Boots
+
+#SlimeArmor
+item.armorplus.slime_helmet.name=Slime Helmet
+item.armorplus.slime_chestplate.name=Slime Chestplate
+item.armorplus.slime_leggings.name=Slime Leggings
+item.armorplus.slime_boots.name=Slime Boots
+
+#ElectricalArmor
+item.armorplus.electrical_helmet.name=Electrical Helmet
+item.armorplus.electrical_chestplate.name=Electrical Chestplate
+item.armorplus.electrical_leggings.name=Electrical Leggings
+item.armorplus.electrical_boots.name=Electrical Boots
+
+#SteelArmor
+item.armorplus.steel_helmet.name=Steel Helmet
+item.armorplus.steel_chestplate.name=Steel Chestplate
+item.armorplus.steel_leggings.name=Steel Leggings
+item.armorplus.steel_boots.name=Steel Boots
+
+#Dev
+item.armorplus.dev_helmet.name=Dev Helmet
+item.armorplus.dev_chestplate.name=Dev Chestplate
+item.armorplus.dev_leggings.name=Dev Leggings
+item.armorplus.dev_boots.name=Dev Boots
+item.armorplus.dev_tool.name=Dev Tool
+item.armorplus.dev_item.name=NBT Item
+item.armorplus.the_dragon_team.name=The Dragon Team
+item.armorplus.modded_city.name=Modded City
+item.armorplus.jon_bams.name=Jon Bams
+item.armorplus.beam.name=Beam
+item.armorplus.twitch.name=Twitch
+item.armorplus.gui_tester.name=GUI Tester
+
+#Items
+item.armorplus.material_chainmail.name=Chainmail
+item.armorplus.reinforcing_material.name=Reinforcing Material
+item.armorplus.lava_crystal_normal.name=Lava Crystal
+item.armorplus.lava_crystal_charged.name=Infused Lava Crystal
+item.armorplus.steel_ingot.name=Steel Ingot
+item.armorplus.electrical_ingot.name=Electrical Ingot
+
+#Food Items
+item.armorplus.redstone_apple.name=Redstone Apple
+
+#Special Items
+item.armorplus.material_wither_bone.name=Wither Bone
+item.armorplus.material_the_ultimate_material.name=El Material Supremo
+item.armorplus.material_ender_dragon_scale.name=Escama del Dragón del End
+item.armorplus.material_guardian_scale.name=Escama del Guardián
+item.armorplus.the_gift_of_the_gods.name=The Gift Of The Gods
+item.armorplus.the_ultimate_part_helmet_left.name=The Ultimate Helmet Left
+item.armorplus.the_ultimate_part_helmet_left.name=Izquierda de la Armadura de 
+item.armorplus.the_ultimate_part_helmet_middle.name=The Ultimate Helmet Middle
+item.armorplus.the_ultimate_part_helmet_right.name=The Ultimate Helmet Right
+item.armorplus.the_ultimate_part_chestplate_left.name=The Ultimate Chestplate Left
+item.armorplus.the_ultimate_part_chestplate_middle.name=The Ultimate Chestplate Middle
+item.armorplus.the_ultimate_part_chestplate_right.name=The Ultimate Chestplate Right
+item.armorplus.the_ultimate_part_leggings_left.name=The Ultimate Legging Left
+item.armorplus.the_ultimate_part_leggings_middle.name=The Ultimate Legging Middle
+item.armorplus.the_ultimate_part_leggings_right.name=The Ultimate Legging Right
+item.armorplus.the_ultimate_part_boots_left.name=The Ultimate Boots Left
+item.armorplus.the_ultimate_part_boots_middle.name=The Ultimate Boots Middle
+item.armorplus.the_ultimate_part_boots_right.name=The Ultimate Boots Right
+
+#Special Items
+
+#Blocks
+tile.armorplus.compressed_obsidian.name=Compressed Obsidian
+tile.armorplus.block_lava_crystal.name=Lava Crystal Block
+tile.armorplus.steel_block.name=Block of Steel
+tile.armorplus.electrical_block.name=Electrical Block
+tile.armorplus.workbench.name=Workbench
+tile.armorplus.high_tech_bench.name=High-Tech Bench
+tile.armorplus.ulti_tech_bench.name=Ulti-Tech Bench
+tile.armorplus.champion_bench.name=Champion Bench
+tile.armorplus.lava_cactus.name=Lava Cactus
+tile.armorplus.lava_nether_brick.name=Lava Nether Brick
+tile.armorplus.white_stone_brick.name=White Stone Brick
+tile.armorplus.white_stone_brick_tower.name=White Stone Brick Tower
+tile.armorplus.white_stone_brick_corner.name=White Stone Brick Corner
+tile.armorplus.white_stone_brick_wall.name=White Stone Brick Wall
+tile.armorplus.red_stone_brick.name=Red Stone Brick
+tile.armorplus.red_stone_brick_tower.name=Red Stone Brick Tower
+tile.armorplus.red_stone_brick_corner.name=Red Stone Brick Corner
+tile.armorplus.red_stone_brick_wall.name=Red Stone Brick Wall
+tile.armorplus.black_stone_brick.name=Black Stone Brick
+tile.armorplus.black_stone_brick_tower.name=Black Stone Brick Tower
+tile.armorplus.black_stone_brick_corner.name=Black Stone Brick Corner
+tile.armorplus.black_stone_brick_wall.name=Black Stone Brick Wall
+tile.armorplus.blue_stone_brick.name=Blue Stone Brick
+tile.armorplus.blue_stone_brick_tower.name=Blue Stone Brick Tower
+tile.armorplus.blue_stone_brick_corner.name=Blue Stone Brick Corner
+tile.armorplus.blue_stone_brick_wall.name=Blue Stone Brick Wall
+tile.armorplus.green_stone_brick.name=Green Stone Brick
+tile.armorplus.green_stone_brick_tower.name=Green Stone Brick Tower
+tile.armorplus.green_stone_brick_corner.name=Green Stone Brick Corner
+tile.armorplus.green_stone_brick_wall.name=Green Stone Brick Wall
+tile.armorplus.yellow_stone_brick.name=Yellow Stone Brick
+tile.armorplus.yellow_stone_brick_tower.name=Yellow Stone Brick Tower
+tile.armorplus.yellow_stone_brick_corner.name=Yellow Stone Brick Corner
+tile.armorplus.yellow_stone_brick_wall.name=Yellow Stone Brick Wall
+tile.armorplus.purple_stone_brick.name=Purple Stone Brick
+tile.armorplus.purple_stone_brick_tower.name=Purple Stone Brick Tower
+tile.armorplus.purple_stone_brick_corner.name=Purple Stone Brick Corner
+tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
+tile.armorplus.lava_infuser.name=Lava Infuser
+tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
+tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
+
+#Swords
+item.armorplus.coal_sword.name=Espada de Carbón
+item.armorplus.lapis_sword.name=Espada de Lapislázuli
+item.armorplus.redstone_sword.name=Espada de Redstone
+item.armorplus.emerald_sword.name=Espada Esmeralda
+item.armorplus.obsidian_sword.name=Espada de Obsidiana
+item.armorplus.lava_sword.name=Espada de Lava
+item.armorplus.super_star_sword.name=Espada de Estrella Estupenda
+item.armorplus.guardian_sword.name=Espada de Guardián
+item.armorplus.ender_dragon_sword.name=Espada del Dragon del End
+
+#BattleAxes
+item.armorplus.coal_battle_axe.name=Hacha de Batalla de Carbón
+item.armorplus.lapis_battle_axe.name=Hacha de Batalla de Lapislázuli
+item.armorplus.redstone_battle_axe.name=Hacha de Batalla de Redstone
+item.armorplus.emerald_battle_axe.name=Hacha de Batalla Esmeralda
+item.armorplus.obsidian_battle_axe.name=Hacha de Batalla de Obsidiana
+item.armorplus.lava_battle_axe.name=Hacha de Batalla de Lava
+item.armorplus.super_star_battle_axe.name=Hacha de Batalla de Estrella Estupenda
+item.armorplus.guardian_battle_axe.name=Hacha de Batalla del Guardián
+item.armorplus.ender_dragon_battle_axe.name=Hacha de Batalla del Dragon del End
+
+#Bows
+item.armorplus.coal_bow.name=Arco de Carbón
+item.armorplus.lapis_bow.name=Arco de Lapislázuli
+item.armorplus.redstone_bow.name=Arco de Redstone
+item.armorplus.emerald_bow.name=Arco de Esmeralda
+item.armorplus.obsidian_bow.name=Arco de Obsidiana
+item.armorplus.lava_bow.name=Arco de Lava
+item.armorplus.super_star_bow.name=Arco de Estrella Estupenda
+item.armorplus.guardian_bow.name=Arco del Guardián
+item.armorplus.ender_dragon_bow.name=Arco del Dragon del End
+
+#Arrows
+item.armorplus.coal_arrow.name=Flecha de carbón
+item.armorplus.lapis_arrow.name=Flecha de Lapislázuli
+item.armorplus.redstone_arrow.name=Flecha de Redstone
+item.armorplus.lava_arrow.name=Flecha de Lava
+item.armorplus.ender_dragon_arrow.name=Flecha del Dragon del End
+
+#TeslaItems
+item.armorplus.tesla_sword.name=Tesla Sword
+item.armorplus.tesla_pickaxe.name=Tesla Pickaxe
+item.armorplus.tesla_axe.name=Tesla Axe
+item.armorplus.tesla_rod.name=Tesla Rod
+item.armorplus.tesla_hoe.name=Tesla Hoe
+item.armorplus.tesla_shovel.name=Tesla Shovel
+
+#RedstoneFluxItems
+item.armorplus.redstone_flux_axe.name=Redstone Flux Axe
+item.armorplus.redstone_flux_rod.name=Redstone Flux Rod
+item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
+item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
+item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
+item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
+
+#Entities
+entity.ender_dragon_zombie.name=Ender Dragon Zombie
+entity.ice_golem.name=Ice Golem (WIP)
+
+#KeyBinds
+key.nightVision=Toggle NightVision from The Ultimate Armor
+key.categories.armorplus=ArmorPlus
 
 #Achievements
 achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
@@ -88,10 +402,3 @@ achievement.armorplus.craftGuardianArmor=¡Lleno de Espinos!
 achievement.armorplus.craftGuardianArmor.desc=Crear una Pieza de Armadura de Guardián
 achievement.armorplus.craftTheUltimateArmor=¡El Poder Supremo!
 achievement.armorplus.craftTheUltimateArmor.desc=Crear una Pieza de Armadura Suprema
-
-#CONSOLE LOG -- As part of console output, these entries shall not be translated. --
-info.armorplus.console.config.refresh=Refreshing configuration file
-info.armorplus.console.load.preInit=Begin Pre-initialization
-info.armorplus.console.load.init=Begin Initialization
-info.armorplus.console.load.postInit=Begin Post-initialization
-info.armorplus.console.armorplus.file.error= ArmorPlus.txt has an error
