@@ -15,11 +15,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper
 
 class BlockStoneBrickTower(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModelHelper {
 
-    private val mapColor: MapColor
-
-    init {
-        this.mapColor = stoneBricks.mapColor
-    }
+    private val mapColor: MapColor = stoneBricks.mapColor
 
     override fun initModel() {
         this.initModel(this, registryName, 0)

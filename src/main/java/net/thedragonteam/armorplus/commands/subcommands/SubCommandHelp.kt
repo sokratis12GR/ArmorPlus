@@ -32,7 +32,6 @@ class SubCommandHelp(parent: ICommand) : SubCommandBase(parent, "help") {
 
         if (args.isNotEmpty()) return
 
-        for (subCommand in (parentCommand as CommandArmorPlus).subCommands.values)
-            commandSender.sendMessage(TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.subCommandName), subCommand.getArgUsage(commandSender))))
+        (parentCommand as CommandArmorPlus).subCommands.values.forEach { subCommand -> commandSender.sendMessage(TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.subCommandName), subCommand.getArgUsage(commandSender)))) }
     }
 }

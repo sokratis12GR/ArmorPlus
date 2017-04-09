@@ -62,7 +62,6 @@ class CompressedObsidian : BlockBase(Material.ROCK, "compressed_obsidian", 2000.
     }
 
     companion object {
-
-        val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)
+        val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)!!
     }
 }

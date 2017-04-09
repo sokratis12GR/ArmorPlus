@@ -44,7 +44,7 @@ public class ShapedOreRecipe implements IRecipe {
     public ShapedOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
 
-        String shape = "";
+        StringBuilder shape = new StringBuilder();
         int idx = 0;
 
         if (recipe[idx] instanceof Boolean) {
@@ -61,14 +61,14 @@ public class ShapedOreRecipe implements IRecipe {
 
             for (String s : parts) {
                 width = s.length();
-                shape += s;
+                shape.append(s);
             }
 
             height = parts.length;
         } else {
             while (recipe[idx] instanceof String) {
                 String s = (String) recipe[idx++];
-                shape += s;
+                shape.append(s);
                 width = s.length();
                 height++;
             }
@@ -109,7 +109,7 @@ public class ShapedOreRecipe implements IRecipe {
 
         input = new Object[width * height];
         int x = 0;
-        for (char chr : shape.toCharArray()) {
+        for (char chr : shape.toString().toCharArray()) {
             input[x++] = itemMap.get(chr);
         }
     }

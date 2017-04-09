@@ -21,6 +21,8 @@ import net.minecraft.util.text.TextFormatting.getValueByName
 import net.minecraft.world.World
 import net.minecraftforge.common.util.EnumHelper.addArmorMaterial
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.APConfig.*
 import net.thedragonteam.armorplus.ArmorPlus
@@ -67,7 +69,7 @@ class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor
             }
         }
         GameRegistry.register(this)
-        this.setCreativeTab(ArmorPlus.tabArmorplus)
+        this.creativeTab = ArmorPlus.tabArmorplus
         this.formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color")
     }
 
@@ -83,6 +85,7 @@ class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor
         return false
     }
 
+    @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
 
@@ -135,7 +138,6 @@ class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor
     }
 
     companion object {
-
         private val theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
                 theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints.toFloat())
     }

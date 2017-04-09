@@ -68,7 +68,6 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
     }
 
     companion object {
-
-        val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)
+        val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)!!
     }
 }

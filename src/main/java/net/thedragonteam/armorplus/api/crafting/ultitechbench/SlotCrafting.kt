@@ -94,7 +94,7 @@ class SlotCrafting(
         val nonnulllist = UltiTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player!!.world)
         ForgeHooks.setCraftingPlayer(null)
 
-        for (i in nonnulllist.indices) {
+        nonnulllist.indices.forEach { i ->
             var itemstack = this.craftMatrix.getStackInSlot(i)
             val itemstack1 = nonnulllist[i]
 

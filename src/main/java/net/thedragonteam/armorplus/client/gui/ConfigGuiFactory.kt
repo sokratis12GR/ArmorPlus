@@ -10,6 +10,14 @@ import net.minecraftforge.fml.client.IModGuiFactory
 
 class ConfigGuiFactory : IModGuiFactory {
 
+    override fun hasConfigGui(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun createConfigGui(parentScreen: GuiScreen?): GuiScreen {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun initialize(minecraftInstance: Minecraft) {}
 
     override fun mainConfigGuiClass(): Class<out GuiScreen> {

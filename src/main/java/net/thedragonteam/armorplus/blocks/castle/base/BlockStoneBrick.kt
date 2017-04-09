@@ -14,14 +14,9 @@ import net.thedragonteam.armorplus.iface.IModelHelper
 
 class BlockStoneBrick(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModelHelper {
 
-    var color: MapColor
+    var color: MapColor = stoneBricks.mapColor
 
-    val name: String
-
-    init {
-        this.name = stoneBricks.getName() + "_stone_brick"
-        this.color = stoneBricks.mapColor
-    }
+    val name: String = stoneBricks.getName() + "_stone_brick"
 
     override fun initModel() {
         this.initModel(this, registryName, 0, "normal")

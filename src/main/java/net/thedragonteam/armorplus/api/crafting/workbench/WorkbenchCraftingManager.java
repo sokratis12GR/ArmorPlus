@@ -20,6 +20,7 @@ import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTier
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
@@ -149,8 +150,12 @@ public class WorkbenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
-
+        for (IRecipe recipe : this.recipes) {
+            if (recipe.matches(craftMatrix, worldIn)) {
+                return Optional.of(recipe).map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+            }
+        }
+        return Optional.<IRecipe>empty().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

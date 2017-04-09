@@ -20,6 +20,7 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponT
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -59,7 +60,7 @@ public class HighTechBenchCraftingManager {
      * Adds a shaped recipe to the games recipe list.
      */
     public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
         int k = 0;
@@ -70,14 +71,14 @@ public class HighTechBenchCraftingManager {
             for (String s2 : astring) {
                 ++k;
                 j = s2.length();
-                s = s + s2;
+                s.append(s2);
             }
         } else {
             while (recipeComponents[i] instanceof String) {
                 String s1 = (String) recipeComponents[i++];
                 ++k;
                 j = s1.length();
-                s = s + s1;
+                s.append(s1);
             }
         }
 
@@ -150,7 +151,12 @@ public class HighTechBenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+        for (IRecipe recipe : this.recipes) {
+            if (recipe.matches(craftMatrix, worldIn)) {
+                return Optional.of(recipe).map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+            }
+        }
+        return Optional.<IRecipe>empty().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {

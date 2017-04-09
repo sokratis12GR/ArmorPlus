@@ -13,6 +13,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -74,7 +75,12 @@ public class LavaInfuserManager {
      * Returns the smelting result of an item.
      */
     public ItemStack getSmeltingResult(ItemStack stack) {
-        return this.infusingList.entrySet().stream().filter(entry -> this.compareItemStacks(stack, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(ItemStack.EMPTY);
+        for (Map.Entry<ItemStack, ItemStack> entry : this.infusingList.entrySet()) {
+            if (this.compareItemStacks(stack, entry.getKey())) {
+                return Optional.of(entry).map(Map.Entry::getValue).orElse(ItemStack.EMPTY);
+            }
+        }
+        return Optional.<Map.Entry<ItemStack, ItemStack>>empty().map(Map.Entry::getValue).orElse(ItemStack.EMPTY);
     }
 
     /**
@@ -92,6 +98,11 @@ public class LavaInfuserManager {
         float ret = stack.getItem().getSmeltingExperience(stack);
         if (ret != -1) return ret;
 
-        return this.experienceList.entrySet().stream().filter(entry -> this.compareItemStacks(stack, entry.getKey())).findFirst().map(Map.Entry::getValue).orElse(0.0D);
+        for (Map.Entry<ItemStack, Double> entry : this.experienceList.entrySet()) {
+            if (this.compareItemStacks(stack, entry.getKey())) {
+                return Optional.of(entry).map(Map.Entry::getValue).orElse(0.0D);
+            }
+        }
+        return Optional.<Map.Entry<ItemStack, Double>>empty().map(Map.Entry::getValue).orElse(0.0D);
     }
 }

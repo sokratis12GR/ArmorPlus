@@ -119,6 +119,7 @@ public enum APArmorMaterial implements IStringSerializable {
         }
 
         @Override
+        @SideOnly(Side.CLIENT)
         public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
             final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
             if (isKeyDown()) {
@@ -269,10 +270,9 @@ public enum APArmorMaterial implements IStringSerializable {
         if (isKeyDown()) {
             if (!this.enableFullArmorEffect()) {
                 addToolTipPiece(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
-            } else {
-                addToolTipFull(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
             }
-        } else
-            showInfo(tooltip, keyBindSneak, this.getFormatting());
+            addToolTipFull(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
+        }
+        showInfo(tooltip, keyBindSneak, this.getFormatting());
     }
 }

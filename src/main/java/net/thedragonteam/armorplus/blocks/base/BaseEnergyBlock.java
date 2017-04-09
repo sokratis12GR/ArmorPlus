@@ -7,15 +7,23 @@ package net.thedragonteam.armorplus.blocks.base;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
+
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class BaseEnergyBlock extends BlockContainer {
 
@@ -69,5 +77,10 @@ public class BaseEnergyBlock extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
         return this.tileEntity;
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 }
