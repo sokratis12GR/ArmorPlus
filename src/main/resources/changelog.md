@@ -1,3 +1,17 @@
+ArmorPlus 1.11.2-10.1.2.3
+----------------------------
+
+Bugs Fixed:
+
+* Hopefully fully fixes crashes with Tile Entity interactions
+
+ArmorPlus 1.11.2-10.1.1.2
+----------------------------
+
+Bugs Fixed:
+
+* Potential Tile Entity crashes in interaction with other mods
+
 ArmorPlus 1.11.2-10.1.0.1
 ----------------------------
 

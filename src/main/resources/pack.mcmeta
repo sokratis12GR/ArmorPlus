@@ -1,6 +1,6 @@
 {
-  "pack": {
-    "pack_format": 2,
-    "description": "Resources used for ArmorPlus"
-  }
+    "pack": {
+        "description": "Resources used for ArmorPlus",
+        "pack_format": 3
+    }
 }

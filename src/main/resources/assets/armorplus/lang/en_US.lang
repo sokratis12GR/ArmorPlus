@@ -326,6 +326,12 @@ tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 tile.armorplus.lava_infuser.name=Lava Infuser
 tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
 tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
+##Dungeon Blocks
+tile.armorplus.ender_block.name=Ender Block
+tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks
+tile.armorplus.ender_glowstone.name=Ender Glowstone
+tile.armorplus.ender_floor_1.name=Ender Floor
+tile.armorplus.ender_floor_2.name=Ender Floor
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword
@@ -386,6 +392,7 @@ item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 #Entities
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
 entity.ice_golem.name=Ice Golem (WIP)
+entity.overlord_of_the_guardians.name=Overlord of the Guardians
 
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor
