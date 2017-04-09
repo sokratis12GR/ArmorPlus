@@ -129,7 +129,6 @@ class EntityEnderDragonZombie(worldIn: World) : EntityMob(worldIn) {
     }
 
     companion object {
-
         val LOOT = ResourceLocation(ArmorPlus.MODID, "entities/ender_dragon_zombie")
         // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
         private val ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie::class.java, DataSerializers.BOOLEAN)

@@ -20,7 +20,6 @@ class RenderLavaArrow(rm: RenderManager) : RenderArrow<EntityLavaArrow>(rm) {
     }
 
     companion object {
-
         private val res = ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/lava_arrow.png")
     }
 

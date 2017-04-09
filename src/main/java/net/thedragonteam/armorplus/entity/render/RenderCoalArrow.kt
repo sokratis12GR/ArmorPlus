@@ -20,7 +20,6 @@ class RenderCoalArrow(rm: RenderManager) : RenderArrow<EntityCoalArrow>(rm) {
     }
 
     companion object {
-
         private val res = ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/coal_arrow.png")
     }
 

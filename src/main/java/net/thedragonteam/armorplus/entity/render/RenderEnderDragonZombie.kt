@@ -49,7 +49,6 @@ class RenderEnderDragonZombie(rendermanagerIn: RenderManager) : RenderBiped<Enti
     }
 
     companion object {
-
         val FACTORY = Factory()
     }
 

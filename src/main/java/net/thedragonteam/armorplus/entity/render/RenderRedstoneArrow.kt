@@ -20,7 +20,6 @@ class RenderRedstoneArrow(rm: RenderManager) : RenderArrow<EntityRedstoneArrow>(
     }
 
     companion object {
-
         private val res = ResourceLocation(ArmorPlus.MODID, "textures/entity/projectiles/redstone_arrow.png")
     }
 
