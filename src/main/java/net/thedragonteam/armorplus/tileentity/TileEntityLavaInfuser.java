@@ -138,7 +138,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
      */
     @Override
-    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
+    public void setInventorySlotContents(int index, ItemStack stack) {
         ItemStack itemstack = this.infuserItemStacks.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.infuserItemStacks.set(index, stack);
@@ -310,16 +310,16 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Don't rename this method to canInteractWith due to conflicts with Container
      */
     @Override
-    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
+    public boolean isUsableByPlayer(EntityPlayer player) {
         return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     @Override
-    public void openInventory(@Nonnull EntityPlayer player) {
+    public void openInventory(EntityPlayer player) {
     }
 
     @Override
-    public void closeInventory(@Nonnull EntityPlayer player) {
+    public void closeInventory(EntityPlayer player) {
     }
 
     /**
@@ -327,7 +327,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * guis use Slot.isItemValid
      */
     @Override
-    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
         if (index == 2) return false;
         else if (index != 1) return true;
         ItemStack itemstack = this.infuserItemStacks.get(1);
@@ -336,7 +336,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @Override
     @Nonnull
-    public int[] getSlotsForFace(@Nonnull EnumFacing side) {
+    public int[] getSlotsForFace(EnumFacing side) {
         return side == EnumFacing.DOWN ? SLOTS_BOTTOM : (side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES);
     }
 
@@ -344,7 +344,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if automation can insert the given item in the given slot from the given side.
      */
     @Override
-    public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
+    public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
         return this.isItemValidForSlot(index, itemStackIn);
     }
 
@@ -352,7 +352,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      * Returns true if automation can extract the given item in the given slot from the given side.
      */
     @Override
-    public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
+    public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
         if (direction == EnumFacing.DOWN && index == 1) {
             Item item = stack.getItem();
 
@@ -370,7 +370,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @Override
     @Nonnull
-    public Container createContainer(@Nonnull InventoryPlayer playerInventory, @Nonnull EntityPlayer playerIn) {
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
         return new ContainerLavaInfuser(playerInventory, this);
     }
 
@@ -419,7 +419,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             switch (facing) {
                 case DOWN:
