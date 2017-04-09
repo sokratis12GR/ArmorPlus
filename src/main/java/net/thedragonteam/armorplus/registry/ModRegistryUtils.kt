@@ -36,7 +36,10 @@ object ModRegistryUtils {
     }
 
     fun registerSwordModel(isEnabled: BooleanArray, sword: Array<ItemSpecialSword>) {
-        for (anIsEnabled in isEnabled) if (anIsEnabled) for (aSword in sword) aSword.initModel()
+        isEnabled
+                .asSequence()
+                .filter { it }
+                .forEach { for (aSword in sword) aSword.initModel() }
     }
 
     fun registerBattleAxeModel(isEnabled: BooleanArray, battleAxe: Array<ItemSpecialBattleAxe>) {

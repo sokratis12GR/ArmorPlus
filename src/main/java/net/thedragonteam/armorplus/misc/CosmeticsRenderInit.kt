@@ -41,7 +41,7 @@ class CosmeticsRenderInit {
 
         fun parse(properties: Properties) {
             for (key in properties.stringPropertyNames()) {
-                val values = properties.getProperty(key).split("@".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val values = properties.getProperty(key).split("@".toRegex()).dropLastWhile(String::isEmpty).toTypedArray()
                 if (values.isNotEmpty()) {
                     val itemName = values[0]
 

@@ -29,6 +29,10 @@ public class ModCompatibility {
     }
 
     public static void loadCompat(ICompatibility.InitializationPhase phase) {
-        compatibilities.stream().filter(compatibility -> Loader.isModLoaded(compatibility.getModid()) && compatibility.enableCompat()).forEach(compatibility -> compatibility.loadCompatibility(phase));
+        for (ICompatibility compatibility : compatibilities) {
+            if (Loader.isModLoaded(compatibility.getModid()) && compatibility.enableCompat()) {
+                compatibility.loadCompatibility(phase);
+            }
+        }
     }
 }

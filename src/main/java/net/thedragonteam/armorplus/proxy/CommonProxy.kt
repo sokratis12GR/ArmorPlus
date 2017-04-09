@@ -8,23 +8,21 @@ import net.minecraft.util.datafix.DataFixesManager
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.event.*
 import net.minecraftforge.fml.common.registry.GameRegistry
-import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.client.gui.APTab
 import net.thedragonteam.armorplus.commands.CommandArmorPlus
 import net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*
+import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord
+import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb
 import net.thedragonteam.armorplus.registry.*
 import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus
 import net.thedragonteam.armorplus.tileentity.*
 import net.thedragonteam.armorplus.worldgen.OreGen
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT
 import net.thedragonteam.thedragonlib.util.LogHelper
-import java.io.File
 
 open class CommonProxy {
 
     open fun preInit(event: FMLPreInitializationEvent) {
-        configDir = File(event.modConfigurationDirectory.toString() + "/" + ArmorPlus.MODID)
-        configDir.mkdirs()
         ModPotions.registerPotions()
         ModEntities.init()
         ModBlocks.init()
@@ -35,8 +33,8 @@ open class CommonProxy {
         APItems.init() // Initializes the helper item class
         registerWorldGenerators()
         registerTileEntities()
-        TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer())
         MinecraftForge.EVENT_BUS.register(MobDrops())
+        registerFixes()
         ModCompatibility.registerModCompat()
         ModCompatibility.loadCompat(PRE_INIT)
         LogHelper.info("Finished PreInitialization")
@@ -87,8 +85,9 @@ open class CommonProxy {
         GameRegistry.registerWorldGenerator(StructureGenNBT(), 2)
     }
 
-    companion object {
-
-        lateinit var configDir: File
+    fun registerFixes(){
+        TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer())
+        EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer())
+        EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer())
     }
 }

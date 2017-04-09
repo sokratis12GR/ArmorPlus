@@ -13,6 +13,8 @@ import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
+import net.thedragonteam.armorplus.blocks.dungeon.BlockDungeonEnder;
+import net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks;
 import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfusedObsidian;
 import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfuser;
 import net.thedragonteam.armorplus.blocks.normal.BlockLavaCrystal;
@@ -24,6 +26,7 @@ import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
 
 import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
 import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
+import static net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks.*;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.ELECTRICAL;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
 
@@ -51,6 +54,8 @@ public class ModBlocks {
     public static BlockLavaInfuser lavaInfuserCharging = new BlockLavaInfuser("lava_infuser_infusing", true);
     public static BlockLavaInfusedObsidian lavaInfusedObsidian = new BlockLavaInfusedObsidian();
     public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
+    public static EnumEnderBlocks[] enumEnderBlocks = new EnumEnderBlocks[]{ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2};
+    public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[6];
 
     public static void init() {
         for (int s = 0; s < stoneBricks.length && s < stoneBrickTowers.length && s < stoneBrickCorners.length && s < stonebrickWalls.length; s++) {
@@ -61,6 +66,9 @@ public class ModBlocks {
         }
         for (int b = 0; b < benches.length; b++) {
             benches[b] = new BlockBench(benchTypes[b]);
+        }
+        for (int c = 0; c < enumEnderBlocks.length; c++) {
+            enderBlocks[c] = new BlockDungeonEnder(enumEnderBlocks[c]);
         }
     }
 
@@ -81,5 +89,6 @@ public class ModBlocks {
         for (BlockStonebrickWall stonebrickWall : stonebrickWalls) stonebrickWall.initModel();
         for (BlockBench blockBench : benches) blockBench.initModel();
         ritualAltar.initModel();
+        for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
     }
 }
