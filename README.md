@@ -31,7 +31,7 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## TheDragonTeam's Discord
 
-Join now via this link: [TheDragonTeam Discord](discord.thedragonteam.info)
+Join now via this link: [TheDragonTeam Discord](http://discord.thedragonteam.info)
 
 ## Mod's Official Wiki
 
