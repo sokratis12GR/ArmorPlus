@@ -31,16 +31,10 @@ class ContainerHighTechBench(playerInventory: InventoryPlayer, tile: TileEntityH
     init {
         this.addSlotToContainer(SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 44))
 
-        for (i in 0 until RECIPE_SIZE)
-            for (j in 0 until RECIPE_SIZE)
-                this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 12 + j * ITEM_BOX, 17 + i * ITEM_BOX))
+        (0 until RECIPE_SIZE).forEach { i -> (0 until RECIPE_SIZE).forEach { j -> this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 12 + j * ITEM_BOX, 17 + i * ITEM_BOX)) } }
 
-        for (k in 0.rangeTo(2))
-            for (i1 in 0 until ROW_SLOTS)
-                this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 102 + k * ITEM_BOX))
-
-        for (l in 0 until ROW_SLOTS)
-            this.addSlotToContainer(Slot(playerInventory, l, 8 + l * ITEM_BOX, 160))
+        0.rangeTo(2).forEach { k -> (0 until ROW_SLOTS).forEach { i1 -> this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 102 + k * ITEM_BOX)) } }
+        (0 until ROW_SLOTS).forEach { l -> this.addSlotToContainer(Slot(playerInventory, l, 8 + l * ITEM_BOX, 160)) }
 
         this.onCraftMatrixChanged(this.craftMatrix)
     }

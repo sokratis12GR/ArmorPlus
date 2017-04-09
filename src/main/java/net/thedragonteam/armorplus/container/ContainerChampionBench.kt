@@ -35,20 +35,15 @@ class ContainerChampionBench(playerInventory: InventoryPlayer, tile: TileEntityC
         this.addSlotToContainer(SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 230, 134))
 
         //10x10 Crafting Inventory
-        for (i in 0 until RECIPE_SIZE)
-            for (j in 0 until RECIPE_SIZE)
-                this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 39 + j * ITEM_BOX, 17 + i * ITEM_BOX))
+        (0 until RECIPE_SIZE).forEach { i -> (0 until RECIPE_SIZE).forEach { j -> this.addSlotToContainer(Slot(this.craftMatrix, j + i * RECIPE_SIZE, 39 + j * ITEM_BOX, 17 + i * ITEM_BOX)) } }
         //2x2 Armor Inventory
         this.addPlayerArmorInventoryTop(playerInventory, 5, 217)
         this.addPlayerArmorInventoryBot(playerInventory, 5, 235)
         //3x9 Main Inventory
-        for (k in 0.rangeTo(2))
-            for (i1 in 0 until ROW_SLOTS)
-                this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 48 + i1 * ITEM_BOX, 199 + k * ITEM_BOX))
+        0.rangeTo(2).forEach { k -> (0 until ROW_SLOTS).forEach { i1 -> this.addSlotToContainer(Slot(playerInventory, i1 + k * 9 + 9, 48 + i1 * ITEM_BOX, 199 + k * ITEM_BOX)) } }
 
         //1x9 HotBar Inventory
-        for (l in 0 until ROW_SLOTS)
-            this.addSlotToContainer(Slot(playerInventory, l, 5, 17 + l * ITEM_BOX))
+        (0 until ROW_SLOTS).forEach { l -> this.addSlotToContainer(Slot(playerInventory, l, 5, 17 + l * ITEM_BOX)) }
 
         this.onCraftMatrixChanged(this.craftMatrix)
     }

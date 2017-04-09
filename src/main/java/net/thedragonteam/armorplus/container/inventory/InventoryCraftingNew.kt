@@ -19,11 +19,7 @@ class InventoryCraftingNew(
          * Class containing the callbacks for the events on_GUIClosed and on_CraftMaxtrixChanged.
          */
         private val eventHandler: Container, slots: Int) : IInventory {
-    private val stackList: NonNullList<ItemStack>
-
-    init {
-        this.stackList = NonNullList.withSize(slots, ItemStack.EMPTY)
-    }
+    private val stackList: NonNullList<ItemStack> = NonNullList.withSize(slots, ItemStack.EMPTY)
 
     /**
      * Returns the number of itemHandler in the inventory.

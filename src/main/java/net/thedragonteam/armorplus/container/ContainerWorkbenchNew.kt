@@ -84,18 +84,18 @@ class ContainerWorkbenchNew(playerInventory: InventoryPlayer, private val world:
             val itemstack1 = slot.stack
             itemstack = itemstack1.copy()
 
-            when {
-                index == 0 -> {
+            when (index) {
+                0 -> {
                     itemstack1.item.onCreated(itemstack1, this.world, playerIn)
 
                     if (!this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, true)) return ItemStack.EMPTY
 
                     slot.onSlotChange(itemstack1, itemstack)
                 }
-                index in RECIPE_SLOTS .. (MAIN_INVENTORY_SLOTS - 1) -> if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
+                in RECIPE_SLOTS .. (MAIN_INVENTORY_SLOTS - 1) -> if (!this.mergeItemStack(itemstack1, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS, false)) {
                     return ItemStack.EMPTY
                 }
-                index in MAIN_INVENTORY_SLOTS .. (FULL_INVENTORY_SLOTS - 1) -> when {
+                in MAIN_INVENTORY_SLOTS .. (FULL_INVENTORY_SLOTS - 1) -> when {
                     !this.mergeItemStack(itemstack1, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, false) -> return ItemStack.EMPTY
                     !this.mergeItemStack(itemstack1, RECIPE_SLOTS, FULL_INVENTORY_SLOTS, false) -> return ItemStack.EMPTY
                 }

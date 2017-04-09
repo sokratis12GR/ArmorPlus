@@ -28,11 +28,9 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
         this.addSlotToContainer(SlotLavaInfuserFuel(tile, 1, 34, 35))
         this.addSlotToContainer(SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35))
 
-        for (i in 0.rangeTo(2))
-            for (j in 0.rangeTo(8))
-                this.addSlotToContainer(Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18))
+        0.rangeTo(2).forEach { i -> 0.rangeTo(8).forEach { j -> this.addSlotToContainer(Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18)) } }
 
-        for (k in 0.rangeTo(8)) this.addSlotToContainer(Slot(playerInventory, k, 8 + k * ITEM_BOX, 142))
+        0.rangeTo(8).forEach { k -> this.addSlotToContainer(Slot(playerInventory, k, 8 + k * ITEM_BOX, 142)) }
     }
 
     override fun addListener(listener: IContainerListener) {

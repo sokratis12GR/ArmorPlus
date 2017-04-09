@@ -48,6 +48,7 @@ public class MTArmorPlusPlugin {
         return prep.toArray();
     }
 
+    @SuppressWarnings("unchecked")
     private static void toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList prep) {
         for (int x = 0; x < ingredients.length; x++) {
             if (ingredients[x] != null) {
