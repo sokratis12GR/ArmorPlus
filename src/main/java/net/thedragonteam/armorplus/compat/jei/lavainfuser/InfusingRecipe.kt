@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.compat.jei.lavainfuser
 
 import mezz.jei.api.ingredients.IIngredients
 import mezz.jei.api.recipe.BlankRecipeWrapper
+import mezz.jei.api.recipe.IRecipeWrapper
 import net.minecraft.client.Minecraft
 import net.minecraft.item.ItemStack
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserManager
@@ -16,12 +17,8 @@ import java.awt.Color
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-class InfusingRecipe(inputs: List<ItemStack>, private val output: ItemStack) : BlankRecipeWrapper() {
-    val inputs: List<List<ItemStack>>
-
-    init {
-        this.inputs = listOf(inputs)
-    }
+class InfusingRecipe(inputs: List<ItemStack>, private val output: ItemStack) : BlankRecipeWrapper(), IRecipeWrapper {
+    val inputs: List<List<ItemStack>> = listOf(inputs)
 
     override fun getIngredients(ingredients: IIngredients) {
         ingredients.setInputLists(ItemStack::class.java, inputs)

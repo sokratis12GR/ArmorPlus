@@ -8,7 +8,7 @@ import mezz.jei.api.IJeiHelpers
 import mezz.jei.api.ingredients.IIngredients
 import mezz.jei.api.recipe.BlankRecipeWrapper
 import mezz.jei.api.recipe.IRecipeWrapper
-import mezz.jei.util.BrokenCraftingRecipeException
+import mezz.jei.recipes.BrokenCraftingRecipeException
 import mezz.jei.util.ErrorUtil
 import net.minecraft.item.ItemStack
 import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapelessOreRecipe
