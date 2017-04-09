@@ -67,6 +67,7 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         swords.addInformation(tooltip);
     }

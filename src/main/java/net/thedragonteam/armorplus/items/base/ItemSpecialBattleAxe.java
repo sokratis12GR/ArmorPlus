@@ -14,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
@@ -66,6 +68,8 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
+        if (stack == ItemStack.EMPTY) return 0.0F;
+        if (state == null) return 0.0F;
         Material material = state.getMaterial();
         return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getStrVsBlock(stack, state) : battleAxes.getEfficiency();
     }
@@ -76,6 +80,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         battleAxes.addInformation(tooltip);
     }
@@ -92,6 +97,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }

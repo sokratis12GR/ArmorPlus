@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.text.TextFormatting
 import net.minecraft.world.World
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entityarrow.EntityEnderDragonArrow
 import net.thedragonteam.armorplus.iface.IModelHelper
@@ -34,6 +36,7 @@ class ItemEnderDragonArrow : ItemArrow(), IModelHelper {
         return EntityEnderDragonArrow(world, shooter)
     }
 
+    @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: List<String>?, advanced: Boolean) {
         ArrowUtils.addArrowInformation(tooltip as MutableList<String>, "Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE)
     }

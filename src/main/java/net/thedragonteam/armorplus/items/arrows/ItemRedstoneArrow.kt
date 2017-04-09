@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.text.TextFormatting
 import net.minecraft.world.World
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow
 import net.thedragonteam.armorplus.iface.IModelHelper
@@ -34,6 +36,7 @@ class ItemRedstoneArrow : ItemArrow(), IModelHelper {
         return EntityRedstoneArrow(world, shooter)
     }
 
+    @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: List<String>?, advanced: Boolean) {
         ArrowUtils.addArrowInformation(tooltip as MutableList<String>, "Applies Slowness", 3.5, TextFormatting.DARK_RED)
     }

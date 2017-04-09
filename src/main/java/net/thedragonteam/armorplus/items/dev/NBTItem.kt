@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.items.dev
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.init.Enchantments
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -28,9 +27,6 @@ class NBTItem : BaseItem("dev_item") {
 
         nbt.setInteger("Level", if (nbt.hasKey("Level")) nbt.getInteger("Level") + 1 else 1)
         stack.tagCompound = nbt
-        if (stack.hasTagCompound() && stack.tagCompound!!.hasKey("Level")) {
-            stack.addEnchantment(Enchantments.SHARPNESS, stack.tagCompound!!.getInteger("Level"))
-        }
         return super.onEntitySwing(entityLiving, stack)
     }
 

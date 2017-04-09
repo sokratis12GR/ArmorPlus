@@ -43,7 +43,6 @@ class ItemMaterial : Item(), IModelHelper {
     }
 
     override fun initModel() {
-        for (i in MATERIAL_NAMES.indices)
-            this.initModel(this, registryName!!.toString() + MATERIAL_NAMES[i], i)
+        MATERIAL_NAMES.indices.forEach { i -> this.initModel(this, registryName!!.toString() + MATERIAL_NAMES[i], i) }
     }
 }

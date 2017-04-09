@@ -46,7 +46,6 @@ class ItemUltimateParts : Item(), IModelHelper {
     }
 
     override fun initModel() {
-        for (i in ULTIMATE_NAMES.indices)
-            this.initModel(this, registryName!!.toString() + ULTIMATE_NAMES[i], i)
+        ULTIMATE_NAMES.indices.forEach { i -> this.initModel(this, registryName!!.toString() + ULTIMATE_NAMES[i], i) }
     }
 }

@@ -61,12 +61,9 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
         subItems.add(ItemStack(itemIn))
         subItems.add(ItemStack(itemIn, 1, 1))
-
     }
 
     override fun initModel() {
-        for (i in 0.rangeTo(1)) {
-            this.initModel(this, registryName, i)
-        }
+        0.rangeTo(1).forEach { i -> this.initModel(this, registryName, i) }
     }
 }

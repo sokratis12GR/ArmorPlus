@@ -82,11 +82,13 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Bonus Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));

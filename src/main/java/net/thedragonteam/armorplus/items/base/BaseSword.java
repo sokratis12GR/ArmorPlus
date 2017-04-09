@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
@@ -48,6 +50,8 @@ public class BaseSword extends ItemSword implements IModelHelper {
         return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
     public void initModel() {
         initModel(this, getRegistryName(), 0);
     }

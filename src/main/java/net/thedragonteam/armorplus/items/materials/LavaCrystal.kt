@@ -61,8 +61,7 @@ class LavaCrystal : Item(), IFuelHandler, IModelHelper {
     }
 
     override fun initModel() {
-        for (i in LAVA_CRYSTAL_NAMES.indices)
-            this.initModel(this, registryName!!.toString() + LAVA_CRYSTAL_NAMES[i], i)
+        LAVA_CRYSTAL_NAMES.indices.forEach { i -> this.initModel(this, registryName!!.toString() + LAVA_CRYSTAL_NAMES[i], i) }
     }
 
     override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {

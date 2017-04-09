@@ -53,6 +53,7 @@ public enum BattleAxes implements IStringSerializable {
     LAVA(battleAxeLavaMaterial, "lava", lavaCrystal, getItemStack(lavaCrystal, 1).getItem(), getValueByName(lavaWeaponItemNameColor),
             setLavaToolTip(), 11.5F, true, "empty", 0) {
         @Override
+        @SideOnly(Side.CLIENT)
         public void addInformation(List<String> tooltip) {
             final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
             if (GameSettings.isKeyDown(keyBindSneak)) {

@@ -15,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
@@ -45,7 +47,7 @@ public class DevTool extends BaseItem {
             return false;
         }
         if (target != null) {
-            playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GOLD +
+            playerIn.sendStatusMessage(new TextComponentString(TextFormatting.RED +
                     "[" + target.getName() + "]"
                     + " - " + "Health: " + target.getHealth()
                     + " - " + "Max Health: " + target.getMaxHealth()
@@ -59,6 +61,7 @@ public class DevTool extends BaseItem {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
