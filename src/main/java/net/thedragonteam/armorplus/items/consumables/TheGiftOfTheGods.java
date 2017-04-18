@@ -107,6 +107,7 @@ public class TheGiftOfTheGods extends BaseItem {
         tooltip.add("" + TextFormatting.ITALIC + "" + TextFormatting.RED + "This item can summon items which can potentially cause crashes");
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGrants Random Item");
+            tooltip.add("\2479Uses: " + "\247r" + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
             tooltip.add("\2479Max Uses: " + "\247r" + maxUses);
             tooltip.add("\2473Use: " + "\247rRight-Click");
         } else
