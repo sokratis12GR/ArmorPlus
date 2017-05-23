@@ -14,6 +14,7 @@ import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
+import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
 class CosmeticsRenderInit {
@@ -56,8 +57,8 @@ class CosmeticsRenderInit {
                     //Get the Item from the String
                     val resLoc = ResourceLocation(itemName)
                     when {
-                        Item.REGISTRY.containsKey(resLoc) -> stack = ItemStack(ForgeRegistries.ITEMS.getValue(resLoc)!!, 1, meta)
-                        Block.REGISTRY.containsKey(resLoc) -> stack = ItemStack(ForgeRegistries.BLOCKS.getValue(resLoc)!!, 1, meta)
+                        Item.REGISTRY.containsKey(resLoc) -> stack = getItemStack(ForgeRegistries.ITEMS.getValue(resLoc)!!, 1, meta)
+                        Block.REGISTRY.containsKey(resLoc) -> stack = getItemStack(ForgeRegistries.BLOCKS.getValue(resLoc)!!, 1, meta)
                     }
 
                     //Add a new Special Renderer to the list

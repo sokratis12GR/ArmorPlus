@@ -12,7 +12,7 @@ import java.util.*
 
 class ThreadCosmeticsFetcher : Thread() {
     init {
-        this.name = "ArmorPlus" + " cosmetics fetcher"
+        this.name = "ArmorPlus cosmetics fetcher"
         this.isDaemon = true
         this.start()
     }
@@ -27,7 +27,7 @@ class ThreadCosmeticsFetcher : Thread() {
 
             LogHelper.info("Fetching cosmetics for people done!")
         } catch (e: IOException) {
-            LogHelper.error(ThreadCosmeticsFetcher::class.java.toString() + " Failed", e)
+            LogHelper.error("${ThreadCosmeticsFetcher::class.java} Failed", e)
         }
 
     }

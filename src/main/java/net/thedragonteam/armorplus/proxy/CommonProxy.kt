@@ -23,6 +23,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper
 open class CommonProxy {
 
     open fun preInit(event: FMLPreInitializationEvent) {
+        ModSounds.init()
         ModPotions.registerPotions()
         ModEntities.init()
         ModBlocks.init()
@@ -54,7 +55,7 @@ open class CommonProxy {
         LogHelper.info("Finished PostInitialization")
     }
 
-    fun modMapping(event: FMLModIdMappingEvent) {
+    fun modMapping(@Suppress("UNUSED_PARAMETER") event: FMLModIdMappingEvent) {
         ModCompatibility.loadCompat(MAPPING)
     }
 
@@ -68,6 +69,7 @@ open class CommonProxy {
         MinecraftForge.EVENT_BUS.register(this)
         ModAchievements.init()
         ModRecipes.init()
+        LavaInfuserRecipes.init()
     }
 
     open fun registerModels() {}
@@ -77,7 +79,7 @@ open class CommonProxy {
         GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench::class.java, "HighTechBench", "APHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo")
         GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench::class.java, "UltiTechBench", "APUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree")
         GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench::class.java, "ChampionBench", "APChampionBench", "WorkbenchTier4", "WorkbenchTierFour")
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser::class.java, "LavaInfuser", "APLavaInfuser")
+        GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser::class.java, "LavaInfuserRecipe", "APLavaInfuser")
     }
 
     fun registerWorldGenerators() {
@@ -85,7 +87,7 @@ open class CommonProxy {
         GameRegistry.registerWorldGenerator(StructureGenNBT(), 2)
     }
 
-    fun registerFixes(){
+    fun registerFixes() {
         TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer())
         EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer())
         EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer())
