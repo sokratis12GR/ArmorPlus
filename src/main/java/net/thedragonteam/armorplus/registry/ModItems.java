@@ -23,6 +23,8 @@ import net.thedragonteam.armorplus.items.enums.*;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
+import java.util.Arrays;
+
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
@@ -39,7 +41,6 @@ public class ModItems {
     public static LavaCrystal lavaCrystal;
     public static TheGiftOfTheGods theGiftOfTheGods;
     public static NBTItem nbtItem;
-    @SuppressWarnings("unused")
     public static boolean[] isEnabled = new boolean[]{
             enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
             enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
@@ -162,9 +163,7 @@ public class ModItems {
         itemRedstoneArrow = new ItemRedstoneArrow();
         itemLavaArrow = new ItemLavaArrow();
         itemEnderDragonArrow = new ItemEnderDragonArrow();
-        for (int i = 0; i < templates.length; i++) {
-            templates[i] = (new BaseItem(templateNames[i]));
-        }
+        Arrays.setAll(templates, i -> (new BaseItem(templateNames[i])));
     }
 
     @SideOnly(Side.CLIENT)

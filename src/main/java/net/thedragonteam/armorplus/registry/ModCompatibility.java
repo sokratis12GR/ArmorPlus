@@ -6,10 +6,10 @@ package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.compat.baubles.CompatibilityBaubles;
-import net.thedragonteam.armorplus.compat.jei.CompatibilityJustEnoughItems;
-import net.thedragonteam.armorplus.compat.minetweaker.CompatibilityMineTweaker;
-import net.thedragonteam.armorplus.compat.tinkers.CompatibilityTinkersConstruct;
+import net.thedragonteam.armorplus.compat.CompatibilityBaubles;
+import net.thedragonteam.armorplus.compat.CompatibilityJustEnoughItems;
+import net.thedragonteam.armorplus.compat.CompatibilityMineTweaker;
+import net.thedragonteam.armorplus.compat.CompatibilityTinkersConstruct;
 
 import java.util.ArrayList;
 

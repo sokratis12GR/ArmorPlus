@@ -60,13 +60,13 @@ public class ModAchievements {
                 .setNormalCrafting(getItemStack(chickenHelmet), getItemStack(chickenChestplate), getItemStack(chickenLeggings), getItemStack(chickenBoots));
         craftSlimeArmor = new AchievementAP("craft_slime_armor", 2, 4, slimeBoots, craftCoalArmor)
                 .setNormalCrafting(getItemStack(slimeHelmet), getItemStack(slimeChestplate), getItemStack(slimeLeggings), getItemStack(slimeBoots));
-        craftLapisArmor = new AchievementAP("craft_lapis_armor", -2, 2, ModItems.lapis[0], craftCoalArmor)
+        craftLapisArmor = new AchievementAP("craft_lapis_armor", -2, 2, lapisHelmet, craftCoalArmor)
                 .setNormalCrafting(getItemStack(lapisHelmet), getItemStack(lapisChestplate), getItemStack(lapisLeggings), getItemStack(lapisBoots));
-        craftGuardianArmor = new AchievementAP("craft_guardian_armor", -2, 4, ModItems.guardian[0], craftLapisArmor)
+        craftGuardianArmor = new AchievementAP("craft_guardian_armor", -2, 4, guardianHelmet, craftLapisArmor)
                 .setNormalCrafting(getItemStack(guardianHelmet), getItemStack(guardianChestplate), getItemStack(guardianLeggings), getItemStack(guardianBoots));
-        craftRedstoneArmor = new AchievementAP("craft_redstone_armor", 0, -4, ModItems.redstone[3], craftCoalArmor)
+        craftRedstoneArmor = new AchievementAP("craft_redstone_armor", 0, -4, redstoneBoots, craftCoalArmor)
                 .setNormalCrafting(getItemStack(redstoneHelmet), getItemStack(redstoneChestplate), getItemStack(redstoneLeggings), getItemStack(redstoneBoots));
-        craftEmeraldArmor = new AchievementAP("craft_emerald_armor", 0, -6, ModItems.emerald[1], craftRedstoneArmor)
+        craftEmeraldArmor = new AchievementAP("craft_emerald_armor", 0, -6,emeraldChestplate, craftRedstoneArmor)
                 .setNormalCrafting(getItemStack(emeraldHelmet), getItemStack(emeraldChestplate), getItemStack(emeraldLeggings), getItemStack(emeraldBoots));
         craftObsidianArmor = new AchievementAP("craft_obsidian_armor", 4, 0, ModItems.obsidian[1], craftCoalArmor)
                 .setNormalCrafting(getItemStack(obsidianHelmet), getItemStack(obsidianChestplate), getItemStack(obsidianLeggings), getItemStack(obsidianBoots));
@@ -88,10 +88,6 @@ public class ModAchievements {
                 .setNormalCrafting(getItemStack(pigIronHelmet), getItemStack(pigIronChestplate), getItemStack(pigIronLeggings), getItemStack(pigIronBoots));
         craftKnightSlimeArmor = new AchievementAP("craft_knight_knightSlime_armor", -4, 2, ModItems.knightSlime[1], craftCobaltArmor)
                 .setNormalCrafting(getItemStack(knightSlimeHelmet), getItemStack(knightSlimeChestplate), getItemStack(knightSlimeLeggings), getItemStack(knightSlimeBoots));
-
-        //Minecraft Achievements KAPPA
-        //        TDLAchievements.thedragonlibAchievements.add(new TDLAchievements.AchievementTDL("minecraft_achievement", 5, 0, Items.STONE_AXE, AchievementList.OPEN_INVENTORY).setSpecial());
-
         AchievementPage arpAchievementPage = new AchievementPage(ArmorPlus.MODNAME, AchievementAP.achievements.toArray(new Achievement[AchievementAP.achievements.size()]));
         AchievementPage.registerAchievementPage(arpAchievementPage);
     }

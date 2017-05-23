@@ -13,8 +13,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import static net.minecraft.init.Items.*;
-import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
-import static net.minecraftforge.fml.common.registry.GameRegistry.addShapelessRecipe;
+import static net.minecraftforge.fml.common.registry.GameRegistry.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
@@ -29,10 +28,12 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModRecipes {
 
     public static void init() {
+
         addShapedRecipes();
         addShapelessRecipes();
-        if (Loader.isModLoaded("theoneprobe"))
+        if (Loader.isModLoaded("theoneprobe")) {
             addIntegrationShapelessRecipes();
+        }
     }
 
     public static void addIntegrationShapelessRecipes() {
@@ -113,6 +114,8 @@ public class ModRecipes {
     }
 
     public static void addShapedRecipes() {
+        addShapedRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
+        addShapedRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
         addRecipe(new ItemStack(lavaNetherBrick, 4),
                 " N ",
                 "NLN",
@@ -153,6 +156,8 @@ public class ModRecipes {
     }
 
     public static void addShapelessRecipes() {
+        addShapelessRecipe(getItemStack(ModItems.lavaCrystal, 9, 0), ModBlocks.blockLavaCrystal);
+        addShapelessRecipe(getItemStack(ModItems.lavaCrystal, 9, 1), ModBlocks.blockInfusedLavaCrystal);
         addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
         addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
         addShapelessRecipe(new ItemStack(bookInfo), BOOK, COAL);

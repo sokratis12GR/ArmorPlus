@@ -25,69 +25,54 @@ import net.thedragonteam.armorplus.registry.ModItems.theUltimateParts
 object ModRegistryUtils {
 
     fun registerArmorModel(isEnabled: Boolean, armor: Array<ItemArmorBase>) {
-        if (isEnabled) for (anArmor in armor) anArmor.initModel()
+        if (isEnabled) armor.forEach(ItemArmorBase::initModel)
     }
 
     fun registerArmorModel(isEnabled: Boolean, armor: Array<ItemUltimateArmor>) {
         if (isEnabled) {
-            for (anArmor in armor) anArmor.initModel()
+            armor.forEach(ItemUltimateArmor::initModel)
             theUltimateParts.initModel()
         }
     }
 
     fun registerSwordModel(isEnabled: BooleanArray, sword: Array<ItemSpecialSword>) {
-        isEnabled
-                .asSequence()
-                .filter { it }
-                .forEach { for (aSword in sword) aSword.initModel() }
+        sword.indices.asSequence().filter { isEnabled[it] }.forEach { it -> sword[it].initModel() }
     }
 
     fun registerBattleAxeModel(isEnabled: BooleanArray, battleAxe: Array<ItemSpecialBattleAxe>) {
-        isEnabled
-                .asSequence()
-                .filter { it }
-                .forEach { for (aBattleAxe in battleAxe) aBattleAxe.initModel() }
+        battleAxe.indices.asSequence().filter { isEnabled[it] }.forEach { it -> battleAxe[it].initModel() }
     }
 
     fun registerBowModel(isEnabled: BooleanArray, bow: Array<ItemSpecialBow>) {
-        isEnabled
-                .asSequence()
-                .filter { it }
-                .forEach { for (aBow in bow) aBow.initModel() }
+        bow.indices.asSequence().filter { isEnabled[it] }.forEach { it -> bow[it].initModel() }
     }
 
     fun registerArmor(isEnabled: Boolean, armor: Array<ItemArmorBase>, armorMaterial: APArmorMaterial) {
-        if (isEnabled)
-            for (i in armor.indices)
-                armor[i] = ItemArmorBase(armorMaterial, equipmentSlots[i])
+        if (isEnabled) {
+            armor.indices.forEach { i -> armor[i] = ItemArmorBase(armorMaterial, equipmentSlots[i]) }
+        }
     }
 
     fun registerArmor(isEnabled: Boolean, armor: Array<ItemUltimateArmor>) {
         if (isEnabled) {
-            for (i in armor.indices)
-                armor[i] = ItemUltimateArmor(equipmentSlots[i])
+            armor.indices.forEach { i -> armor[i] = ItemUltimateArmor(equipmentSlots[i]) }
             theUltimateParts = ItemUltimateParts()
         }
     }
 
     fun registerSword(isEnabled: BooleanArray, sword: Array<ItemSpecialSword>, material: Array<Swords>) {
-        sword.indices
-                .asSequence()
-                .filter { isEnabled[it] }
-                .forEach { sword[it] = ItemSpecialSword(material[it]) }
+        sword.indices.asSequence().filter { isEnabled[it] }.forEach { it -> sword[it] = ItemSpecialSword(material[it]) }
+
     }
 
     fun registerBattleAxe(isEnabled: BooleanArray, battleAxe: Array<ItemSpecialBattleAxe>, material: Array<BattleAxes>) {
-        battleAxe.indices
-                .asSequence()
-                .filter { isEnabled[it] }
-                .forEach { battleAxe[it] = ItemSpecialBattleAxe(material[it]) }
+        battleAxe.indices.asSequence().filter { isEnabled[it] }.forEach { battleAxe[it] = ItemSpecialBattleAxe(material[it]) }
+
     }
 
     fun registerBow(isEnabled: BooleanArray, bow: Array<ItemSpecialBow>, material: Array<Bows>) {
-        bow.indices
-                .asSequence()
-                .filter { isEnabled[it] }
-                .forEach { bow[it] = ItemSpecialBow(material[it]) }
+        for (it in bow.indices.asSequence().filter { isEnabled[it] }) {
+            bow[it] = ItemSpecialBow(material[it])
+        }
     }
 }

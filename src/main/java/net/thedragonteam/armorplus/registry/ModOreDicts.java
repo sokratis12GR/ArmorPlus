@@ -32,8 +32,9 @@ public class ModOreDicts {
         registerWildOre("gemInfusedLavaCrystal", lavaCrystal, 1);
         registerWildOre("ingotInfusedLavaCrystal", lavaCrystal, 1);
         //Blocks
-        registerOre("oreLavaCrystal", blockLavaCrystal);
+        registerOre("oreLavaCrystal", oreLavaCrystal);
         registerOre("blockLavaCrystal", blockLavaCrystal);
+        registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);
