@@ -36,9 +36,10 @@ class APTab(id: Int, modid: String, private val label: String, private val tab: 
         when (tab) {
             0 -> return getItemStack(APItems.lavaChestplate)
             1 -> return APItems.enderDragonScale
-            2 -> return getItemStack(ModBlocks.blockLavaCrystal)
+            2 -> return getItemStack(ModBlocks.oreLavaCrystal)
             3 -> return getItemStack(APItems.redstoneBattleAxe)
             4 -> return getItemStack(ModItems.itemTeslaRod)
+            5 -> return getItemStack(APItems.arditeChestplate)
         }
         return ItemStack.EMPTY
     }

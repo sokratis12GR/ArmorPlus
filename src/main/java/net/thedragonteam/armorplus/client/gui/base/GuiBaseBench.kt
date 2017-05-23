@@ -8,7 +8,7 @@ import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.inventory.Container
 import net.minecraft.util.ResourceLocation
-import net.thedragonteam.thedragonlib.util.TextHelper.localize
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 open class GuiBaseBench(container: Container, var resourceLocation: ResourceLocation, var name: String, xSize: Int, ySize: Int) : GuiContainer(container) {
 
@@ -21,8 +21,8 @@ open class GuiBaseBench(container: Container, var resourceLocation: ResourceLoca
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     override fun drawGuiContainerForegroundLayer(mouseX: Int, mouseY: Int) {
-        this.fontRenderer.drawString(localize("container.armorplus." + name), 28, 5, 4210752)
-        this.fontRenderer.drawString(localize("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752)
+        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus." + name), 28, 5, 4210752)
+        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752)
     }
 
     /**

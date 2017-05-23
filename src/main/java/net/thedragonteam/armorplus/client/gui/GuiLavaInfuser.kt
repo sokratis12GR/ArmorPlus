@@ -10,7 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
-import net.thedragonteam.thedragonlib.util.TextHelper
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 class GuiLavaInfuser(playerInv: InventoryPlayer, private val tile: TileEntityLavaInfuser) : GuiContainer(ContainerLavaInfuser(playerInv, tile)) {
 
@@ -23,7 +23,7 @@ class GuiLavaInfuser(playerInv: InventoryPlayer, private val tile: TileEntityLav
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
     override fun drawGuiContainerForegroundLayer(mouseX: Int, mouseY: Int) {
-        this.fontRenderer.drawString(TextHelper.localize("container.armorplus.lava_infuser"), 28, 5, 0xffffff)
+        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.lava_infuser"), 28, 5, 0xffffff)
     }
 
     /**

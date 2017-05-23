@@ -25,8 +25,6 @@ class GuiHandler : IGuiHandler {
                 return ContainerUltiTechBench(player.inventory, (te as TileEntityUltiTechBench?)!!)
             GUI_CHAMPION_BENCH -> if (te != null && te is TileEntityChampionBench)
                 return ContainerChampionBench(player.inventory, (te as TileEntityChampionBench?)!!)
-            GUI_WORKBENCH_NEW -> if (te != null && te is TileEntityWorkbench)
-                return ContainerWorkbenchNew(player.inventory, world)
             GUI_LAVA_INFUSER -> if (te != null && te is TileEntityLavaInfuser)
                 return ContainerLavaInfuser(player.inventory, (te as TileEntityLavaInfuser?)!!)
             else -> {
@@ -47,8 +45,6 @@ class GuiHandler : IGuiHandler {
                 return GuiUltiTechBench(player.inventory, (te as TileEntityUltiTechBench?)!!)
             GUI_CHAMPION_BENCH -> if (te != null && te is TileEntityChampionBench)
                 return GuiChampionBench(player.inventory, (te as TileEntityChampionBench?)!!)
-            GUI_WORKBENCH_NEW -> if (te != null && te is TileEntityWorkbench)
-                return GuiWorkbenchNew(player.inventory, world)
             GUI_LAVA_INFUSER -> if (te != null && te is TileEntityLavaInfuser)
                 return GuiLavaInfuser(player.inventory, (te as TileEntityLavaInfuser?)!!)
             else -> {
@@ -64,8 +60,6 @@ class GuiHandler : IGuiHandler {
         val GUI_HIGH_TECH_BENCH = 3
         val GUI_ULTI_TECH_BENCH = 4
         val GUI_CHAMPION_BENCH = 5
-        val GUI_WORKBENCH_NEW = 6
         val GUI_LAVA_INFUSER = 9
-        val GUI_EXPERIMENT = 100
     }
 }

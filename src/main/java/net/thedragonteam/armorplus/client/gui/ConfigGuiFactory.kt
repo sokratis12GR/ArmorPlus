@@ -9,27 +9,18 @@ import net.minecraft.client.gui.GuiScreen
 import net.minecraftforge.fml.client.IModGuiFactory
 
 class ConfigGuiFactory : IModGuiFactory {
+    override fun createConfigGui(parentScreen: GuiScreen?): GuiScreen = ConfigGui(parentScreen)
 
-    override fun hasConfigGui(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun hasConfigGui(): Boolean = true
 
-    override fun createConfigGui(parentScreen: GuiScreen?): GuiScreen {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun initialize(minecraftInstance: Minecraft) = Unit
 
-    override fun initialize(minecraftInstance: Minecraft) {}
+    @Suppress("OverridingDeprecatedMember")
+    override fun mainConfigGuiClass(): Class<out GuiScreen> = ConfigGui::class.java
 
-    override fun mainConfigGuiClass(): Class<out GuiScreen> {
-        return ConfigGui::class.java
-    }
+    override fun runtimeGuiCategories(): Set<IModGuiFactory.RuntimeOptionCategoryElement>? = null
 
-    override fun runtimeGuiCategories(): Set<IModGuiFactory.RuntimeOptionCategoryElement>? {
-        return null
-    }
-
-    override fun getHandlerFor(element: IModGuiFactory.RuntimeOptionCategoryElement): IModGuiFactory.RuntimeOptionGuiHandler? {
-        return null
-    }
+    @Suppress("DEPRECATION")
+    override fun getHandlerFor(element: IModGuiFactory.RuntimeOptionCategoryElement): IModGuiFactory.RuntimeOptionGuiHandler? = null
 
 }

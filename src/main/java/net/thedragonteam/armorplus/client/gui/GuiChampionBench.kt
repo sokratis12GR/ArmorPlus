@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.client.gui.base.GuiBaseBench
 import net.thedragonteam.armorplus.container.ContainerChampionBench
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 /**
  * net.thedragonteam.armorplus.client.gui
@@ -18,5 +19,9 @@ import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench
 class GuiChampionBench(playerInv: InventoryPlayer, tile: TileEntityChampionBench) : GuiBaseBench(ContainerChampionBench(playerInv, tile), GuiChampionBench.AP_CHAMPION_BENCH_GUI_TEXTURES, "champion_bench", 256, 256) {
     companion object {
         private val AP_CHAMPION_BENCH_GUI_TEXTURES = ResourceLocation("armorplus:textures/gui/container/gui_champion_bench.png")
+    }
+
+    override fun drawGuiContainerForegroundLayer(mouseX: Int, mouseY: Int) {
+        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.champion_bench"), 28, 5, 4210752)
     }
 }
