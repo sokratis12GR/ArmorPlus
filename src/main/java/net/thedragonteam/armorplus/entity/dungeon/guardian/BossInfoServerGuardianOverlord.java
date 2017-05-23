@@ -10,7 +10,6 @@ import net.minecraft.world.BossInfoServer;
 public class BossInfoServerGuardianOverlord extends BossInfoServer {
 
     //Yes a class just for this.
-
     public BossInfoServerGuardianOverlord(ITextComponent nameIn) {
         super(nameIn, Color.BLUE, Overlay.NOTCHED_6);
         this.setDarkenSky(true);

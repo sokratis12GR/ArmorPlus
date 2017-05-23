@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.init.MobEffects;
@@ -11,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,8 +23,10 @@ import static net.minecraft.world.EnumDifficulty.NORMAL;
  * ArmorPlus - Kotlin created by sokratis12GR
  * - TheDragonTeam
  */
-public class EntityFreezeBomb extends EntityFireball {
+public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity {
     private static final DataParameter<Boolean> INVULNERABLE = EntityDataManager.createKey(EntityFreezeBomb.class, DataSerializers.BOOLEAN);
+
+    private Entity shooter;
 
     public EntityFreezeBomb(World worldIn) {
         super(worldIn);
@@ -32,6 +36,7 @@ public class EntityFreezeBomb extends EntityFireball {
     public EntityFreezeBomb(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
         super(worldIn, shooter, accelX, accelY, accelZ);
         this.setSize(0.3125F, 0.3125F);
+        this.shooter = shooter;
     }
 
     public static void registerFixesFreezeBomb(DataFixer fixer) {
@@ -116,5 +121,25 @@ public class EntityFreezeBomb extends EntityFireball {
     @Override
     protected boolean isFireballFiery() {
         return true;
+    }
+
+    /**
+     * Gets the entity that threw/created this entity.
+     *
+     * @return The owner instance, Null if none.
+     */
+    @Override
+    public Entity getThrower() {
+        return shooter;
+    }
+
+    /**
+     * Sets the entity that threw/created this entity.
+     *
+     * @param entity The new thrower/creator.
+     */
+    @Override
+    public void setThrower(Entity entity) {
+        shooter = entity;
     }
 }

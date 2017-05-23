@@ -26,7 +26,7 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
 
     public EntityGuardianOverlord(World worldIn) {
         super(worldIn);
-      //  this.setSize(this.width * 2.35F, this.height * 2.35F); Old stuffs - I wonder if I will ever need to change it back
+        //  this.setSize(this.width * 2.35F, this.height * 2.35F); Old stuffs - I wonder if I will ever need to change it back
         this.setSize(this.width * 5.00F, this.height * 5.00F);
         this.enablePersistence();
         if (this.wander != null) {
@@ -68,8 +68,10 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
 
     @Override
     public void onUpdate() {
-        //noinspection MethodCallSideOnly
-        this.setGhost();
+        if (!world.isRemote) {
+            //noinspection MethodCallSideOnly
+            this.setGhost();
+        }
         super.onUpdate();
     }
 
