@@ -10,15 +10,9 @@ import net.minecraft.enchantment.Enchantment.*
 
 object EnchantmentUtils {
 
-    fun getEnchantment(name: String): Enchantment {
-        return getEnchantmentByLocation(name) as Enchantment
-    }
+    fun getEnchantment(name: String): Enchantment = getEnchantmentByLocation(name) as Enchantment
 
-    fun getEnchantment(id: Int): Enchantment {
-        return getEnchantmentByID(id) as Enchantment
-    }
+    fun getEnchantment(id: Int): Enchantment = getEnchantmentByID(id) as Enchantment
 
-    fun getID(enchant: Enchantment): Int {
-        return getEnchantmentID(enchant)
-    }
+    fun getID(enchant: Enchantment): Int = getEnchantmentID(enchant)
 }

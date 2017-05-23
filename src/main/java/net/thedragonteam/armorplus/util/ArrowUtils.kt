@@ -5,11 +5,11 @@
 package net.thedragonteam.armorplus.util
 
 import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.I18n
 import net.minecraft.client.settings.GameSettings
 import net.minecraft.util.text.TextFormatting
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 object ArrowUtils {
 
@@ -18,10 +18,13 @@ object ArrowUtils {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
         when {
             GameSettings.isKeyDown(keyBindSneak) -> {
-                tooltip.add(String.format("§9Ability: §r%s", effect))
-                tooltip.add(String.format("§3Base Arrow Damage: §r%s", damage))
+                tooltip.add(TextUtils.formattedText("§9Ability: §r%s", effect))
+                tooltip.add(TextUtils.formattedText("§3Base Arrow Damage: §r%s", damage))
             }
-            else -> tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.displayName, TextFormatting.GRAY))
+            else -> {
+                tooltip.add(TextUtils.formattedText(TextFormatting.GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(formatting, "tooltip.showinfo.keybind", keyBindSneak.displayName,
+                        TextUtils.formattedText(TextFormatting.GRAY, "tooltip.showinfo.end"))))
+            }
         }
     }
 }

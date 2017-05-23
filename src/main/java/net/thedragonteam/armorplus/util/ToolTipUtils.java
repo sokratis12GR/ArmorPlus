@@ -5,24 +5,27 @@
 package net.thedragonteam.armorplus.util;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.thedragonlib.util.TextUtils;
 
 import java.util.List;
+
+import static net.minecraft.util.text.TextFormatting.GRAY;
 
 @SideOnly(Side.CLIENT)
 public class ToolTipUtils {
 
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(I18n.format("tooltip.shift.showinfo", formatting, keyBinding.getDisplayName(), TextFormatting.GRAY));
+        tooltip.add(TextUtils.INSTANCE.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.INSTANCE.formattedText(formatting, "tooltip.showinfo.keybind", keyBinding.getDisplayName(),
+                TextUtils.INSTANCE.formattedText(GRAY, "tooltip.showinfo.end"))));
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability, int amplifier) {
-        addToolTipFull(tooltip, ability + " " + (amplifier + 1));
+        addToolTipFull(tooltip, ability + " " + level(amplifier));
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability) {
@@ -31,7 +34,7 @@ public class ToolTipUtils {
     }
 
     public static void addToolTipPiece(List<String> tooltip, String ability, int amplifier) {
-        addToolTipPiece(tooltip, ability + " " + (amplifier + 1));
+        addToolTipPiece(tooltip, ability + " " + level(amplifier));
     }
 
     public static void addToolTipPiece(List<String> tooltip, String ability) {
@@ -42,5 +45,9 @@ public class ToolTipUtils {
     public static boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         return GameSettings.isKeyDown(keyBindSneak);
+    }
+
+    private static int level(int amplifier) {
+        return amplifier + 1;
     }
 }

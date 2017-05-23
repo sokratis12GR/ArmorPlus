@@ -13,9 +13,11 @@ import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.oredict.OreDictionary
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.ArmorPlus.MODID
 import net.thedragonteam.armorplus.api.util.NBTHelper
+
 
 /**
  * net.thedragonteam.armorplus.util
@@ -24,6 +26,7 @@ import net.thedragonteam.armorplus.api.util.NBTHelper
  */
 object Utils {
 
+    val WILDCARD = OreDictionary.WILDCARD_VALUE
     val BUCKET = Fluid.BUCKET_VOLUME
 
     fun setUnbreakable(stack: ItemStack): ItemStack {
@@ -47,16 +50,15 @@ object Utils {
         }
     }
 
-    fun setName(name: String): String {
-        return "$MODID.$name"
-    }
+    fun setName(name: String): String = "$MODID.$name"
 
-    fun setResourceLocation(path: String): ResourceLocation {
-        return ResourceLocation(ArmorPlus.MODID, path)
-    }
+    fun setResourceLocation(path: String): ResourceLocation = ResourceLocation(ArmorPlus.MODID, path)
 
-    fun setLocation(path: String): String {
-        return "$MODID:$path"
-    }
+    fun setLocation(path: String): String = "$MODID:$path"
 
+    fun areItemsEqual(stack1: ItemStack, stack2: ItemStack, checkWildcard: Boolean): Boolean = isValid(stack1) && isValid(stack2) && (stack1.isItemEqual(stack2) || checkWildcard && stack1.item === stack2.item && (stack1.itemDamage == WILDCARD || stack2.itemDamage == WILDCARD))
+
+    fun isValid(stack: ItemStack?): Boolean {
+        return stack != null && !stack.isEmpty
+    }
 }
