@@ -8,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -24,7 +23,9 @@ import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, canBeDeactivated = ArmorPlus.CAN_BE_DEACTIVATED, updateJSON = ArmorPlus.UPDATE_JSON, modLanguage = ArmorPlus.MOD_LANGUAGE, serverSideOnly = ArmorPlus.SERVER_SIDE_ONLY)
+import static net.minecraftforge.fml.common.Loader.isModLoaded;
+
+@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
 public class ArmorPlus {
 
     /**
@@ -41,33 +42,28 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 1;
+    public static final int MINOR = 4;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 2;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 3;
+    public static final int BUILD = 1;
     /**
      * The ArmorPlus Version
      */
     public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11.2-3.1.0";
-    //    public static final String MANTLE_VERSION = "1.10.2-1.0.0";
-    //    public static final String TCONSTRUCT_VERSION = "1.10.2-2.5.6";
+    public static final String LIB_VERSION = "1.11.2-3.2.1";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String MOD_LANGUAGE = "java";
-    public static final boolean SERVER_SIDE_ONLY = false;
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
-    public static final boolean CAN_BE_DEACTIVATED = false;
-    public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" /*+ "after:mantle@[" + ArmorPlus.MANTLE_VERSION + ",);"*/ /*+ "after:tconstruct@[" + ArmorPlus.TCONSTRUCT_VERSION + ",);"*/ + "after:baubles;";
+    public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle;" + "after:tconstruct;" + "after:baubles;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
@@ -80,8 +76,9 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusBlocks = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
     public static CreativeTabs tabArmorplusWeapons = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
     public static CreativeTabs tabArmorplusTesla = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tesla", 4);
+    public static CreativeTabs tabArmorplusTinkers = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tinkers", 5);
     public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{
-            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTesla
+            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, isTeslaLoaded() ? tabArmorplusTesla : null, isTiCLoaded() ? tabArmorplusTinkers : null
     });
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
@@ -98,15 +95,16 @@ public class ArmorPlus {
     }
 
     public static boolean isTeslaLoaded() {
-        return Loader.isModLoaded("tesla");
+        return isModLoaded("tesla");
     }
-
     public static boolean isBaublesLoaded() {
-        return Loader.isModLoaded("baubles");
+        return isModLoaded("baubles");
     }
-
+    public static boolean isTiCLoaded() {
+        return isModLoaded("tconstruct");
+    }
     public static boolean isTDLLoaded() {
-        return Loader.isModLoaded("thedragonlib");
+        return isModLoaded("thedragonlib");
     }
 
     @EventHandler
