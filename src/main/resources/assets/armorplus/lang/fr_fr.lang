@@ -46,7 +46,7 @@ tooltip.rf.cost.tool=Cost: %s RF/bloc
 tooltip.rf.cost.hit=Cost: %s RF/coup
 
 #TeslaTooltip
-tooltip.tesla.showinfo=Press %s%s%s pour plus d'info.
+tooltip.tesla.showinfo.text_one=Press %s%s%s pour plus d'info.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/bloc
 tooltip.tesla.cost.hit=Cost: %s Tesla/coup
@@ -71,7 +71,7 @@ commands.error.404=Commande introuvable!
 commands.error.unknown=Commande inconnue! Prières de tapper /armorplus help
 commands.error.perm=Vous n'avez pas la permission d'utiliser cette commande.
 commands.success=Exéctuée avec succès
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help

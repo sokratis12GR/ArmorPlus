@@ -21,7 +21,7 @@ commands.error.404=Befehl nicht gefunden!
 commands.error.unknown=Unbekannter Befehl! Bitte verwende /armorplus help
 commands.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
 commands.success=Erfolgreich ausgeführt
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help

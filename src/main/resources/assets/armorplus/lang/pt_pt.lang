@@ -25,7 +25,7 @@ container.armorplus.ulti_tech_bench=Bancada de Derradeira Tecnologia
 container.armorplus.inventory=Inventário
 
 #Tooltip
-tooltip.shift.showinfo=Pressiona %s%s%s para mais informação.
+tooltip.shift.showinfo.text_one=Pressiona %s%s%s para mais informação.
 
 ##RFTooltip
 tooltip.rf.showinfo=Pressiona %s%s%s para mais informação.
@@ -34,7 +34,7 @@ tooltip.rf.cost.tool=Cost: %s RF/bloco
 tooltip.rf.cost.hit=Cost: %s RF/golpe
 
 ##TeslaTooltip
-tooltip.tesla.showinfo=Pressiona %s%s%s para mais informação.
+tooltip.tesla.showinfo.text_one=Pressiona %s%s%s para mais informação.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/bloco
 tooltip.tesla.cost.hit=Cost: %s Tesla/golpe
@@ -60,7 +60,7 @@ commands.error.404=Comando não encontrado!
 commands.error.unknown=Comando Desconhecido! Por favor utilize /armorplus help
 commands.error.perm=Não tens permissão para utilizar este comando.
 commands.success=Executado com sucesso.
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help

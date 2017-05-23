@@ -9,6 +9,9 @@ itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
+# Status
+status.armorplus.tgotg.gained_item=You got: %s [%s]
+
 #GuiArmorPlusInfo
 gui.armorplus.info.text_line_heading=ArmorPlus Info
 gui.armorplus.info.text_line_one=ArmorPlus Crafting Recipes are
@@ -19,13 +22,14 @@ gui.armorplus.info.text_line_five=From `I:Recipe:1` to `I:Recipe:0`.
 gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
 
 #CommandInfoText
-command.armorplus.info_line_one=%s[%s (%s) by%s sokratis12GR (TheDragonTeam)]
-command.armorplus.info_line_two=%s[Thank You %s for using %s]
-command.armorplus.info_line_three=%s[modid: %s]
-command.armorplus.info_line_four=%s[Minecraft Version: %s]
-command.armorplus.info_line_five=%s[ArmorPlus recipe difficulty: %s]
-command.armorplus.info_line_six=%s[Recipes] use command /armorplus wiki
-command.armorplus.info_line_seven=%s[Discord] use command /armorplus discord
+command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
+command.armorplus.info_line_one.part_two.text=by %s sokratis12GR (TheDragonTeam)
+command.armorplus.info_line_two.text=[Thank You %s for using %s]
+command.armorplus.info_line_three.text=[modid: %s]
+command.armorplus.info_line_four.text=[Minecraft Version: %s]
+command.armorplus.info_line_five.text=[ArmorPlus recipe difficulty: %s]
+command.armorplus.info_line_six.text=[Recipes] use command /armorplus wiki
+command.armorplus.info_line_seven.text=[Discord] use command /armorplus discord
 
 #Enchantmnets
 enchantment.armorplus.life_steal=Life Steal
@@ -51,7 +55,9 @@ container.armorplus.inventory=Inventory
 container.armorplus.lava_infuser=Lava Infuser
 
 #Tooltip
-tooltip.shift.showinfo=Press %s%s%s for more info.
+tooltip.showinfo.beginning=Press %s
+tooltip.showinfo.keybind=%s %s
+tooltip.showinfo.end=for more info.
 
 ##RFTooltip
 tooltip.rf.showinfo=Press %s%s%s for more info.
@@ -60,7 +66,8 @@ tooltip.rf.cost.tool=Cost: %s RF/block
 tooltip.rf.cost.hit=Cost: %s RF/hit
 
 ##TeslaTooltip
-tooltip.tesla.showinfo=Press %s%s%s for more info.
+tooltip.tesla.showinfo.text_one=Press %s%s%s%s
+tooltip.tesla.showinfo.text_two=%s for more info.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/block
 tooltip.tesla.cost.hit=Cost: %s Tesla/hit
@@ -72,8 +79,9 @@ modifier.firestorm.extra=Fire Damage: +%s
 modifier.firestorm.extra2=Burn Duration: %ss
 modifier.ultimatemod.name=Expanded
 modifier.ultimatemod.desc=Add +1 Modifier
-material.lava_crystal.name=Lava Crystal
+material.infused_lava_crystal.name=Infused Lava Crystal
 material.compressed_obsidian.name=Compressed Obsidian
+material.lava_infused_obsidian.name=Lava Infused Obsidian
 
 ﻿#Tile
 tile.armorplus.block_energy_creative.name=Creative Power Cell
@@ -86,7 +94,7 @@ commands.error.404=Command not found!
 commands.error.unknown=Unknown command! Please use /armorplus help
 commands.error.perm=You do not have permission to use this command.
 commands.success=Executed successfully
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
@@ -101,8 +109,8 @@ commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #CommandDiscord
-commands.wiki.usage=/armorplus discord
-commands.wiki.help=Opens a Link invite in your browser to our TheDragonTeam Community Discord server
+commands.discord.usage=/armorplus discord
+commands.discord.help=Opens a Link invite in your browser to our TheDragonTeam Community Discord server
 
 #JEI
 gui.jei.category.workbench=Workbench
@@ -286,7 +294,7 @@ item.armorplus.the_ultimate_part_boots_right.name=The Ultimate Boots Right
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=Compressed Obsidian
-tile.armorplus.block_lava_crystal.name=Lava Crystal Block
+tile.armorplus.block_lava_crystal.name=Ore Lava Crystal
 tile.armorplus.steel_block.name=Block of Steel
 tile.armorplus.electrical_block.name=Electrical Block
 tile.armorplus.workbench.name=Workbench
@@ -326,10 +334,15 @@ tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 tile.armorplus.lava_infuser.name=Lava Infuser
 tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
 tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
+tile.armorplus.lava_crystal_block.name=Block of Lava Crystal
+tile.armorplus.lava_crystal_block_infused.name=Block of Infused Lava Crystal
+
 ##Dungeon Blocks
-tile.armorplus.ender_block.name=Ender Block
+tile.armorplus.ender_stone.name=Ender Stone
+tile.armorplus.ender_stone_trap.name=Ender Stone Trap
 tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks
 tile.armorplus.ender_glowstone.name=Ender Glowstone
+tile.armorplus.ender_pillar.name=Ender Pillar
 tile.armorplus.ender_floor_1.name=Ender Floor
 tile.armorplus.ender_floor_2.name=Ender Floor
 
@@ -391,8 +404,8 @@ item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 
 #Entities
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
-entity.ice_golem.name=Ice Golem (WIP)
-entity.overlord_of_the_guardians.name=Overlord of the Guardians
+entity.ice_golem.name=Ice Golem (WIP, Experimental)
+entity.overlord_of_the_guardians.name=Overlord of the Guardians (WIP, Experimental)
 
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor

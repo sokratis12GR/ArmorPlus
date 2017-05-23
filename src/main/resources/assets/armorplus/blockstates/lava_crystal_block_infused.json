@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {},
+    "model": "cube_all",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/block_lava_crystal_infused"
+        }
+      }
+    ]
+  }
+}

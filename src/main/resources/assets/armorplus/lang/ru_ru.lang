@@ -20,7 +20,7 @@ tooltip.rf.powerinfo=%s/%s RF
 tooltip.rf.cost.tool=Cost: %s RF/блок
 tooltip.rf.cost.hit=Cost: %s RF/удар
 #TeslaTooltip
-tooltip.tesla.showinfo=Нажмите %s%s%s для дополнительной информации.
+tooltip.tesla.showinfo.text_one=Нажмите %s%s%s для дополнительной информации.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=Cost: %s Tesla/блок
 tooltip.tesla.cost.hit=Cost: %s Tesla/удар

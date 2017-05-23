@@ -23,7 +23,7 @@ container.armorplus.ulti_tech_bench=ArmorPlus 超高性能作業台
 container.armorplus.inventory=インベントリ
 
 #Tooltip
-tooltip.shift.showinfo=%s%s%s を押すと詳細が表示されます
+tooltip.shift.showinfo.text_one=%s%s%s を押すと詳細が表示されます
 
 ##RFTooltip
 tooltip.rf.showinfo=%s%s%s を押すと詳細が表示されます
@@ -32,7 +32,7 @@ tooltip.rf.cost.tool=コスト: %s RF/block
 tooltip.rf.cost.hit=コスト: %s RF/hit
 
 ##TeslaTooltip
-tooltip.tesla.showinfo=%s%s%s を押すと詳細が表示されます
+tooltip.tesla.showinfo.text_one=%s%s%s を押すと詳細が表示されます
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=コスト: %s Tesla/block
 tooltip.tesla.cost.hit=コスト: %s Tesla/hit
@@ -58,7 +58,7 @@ commands.error.404=コマンドが存在しません!
 commands.error.unknown=不明なコマンドです! helpコマンド: /armorplus help
 commands.error.perm=コマンドの実行許可がありません
 commands.success=実行しました
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help

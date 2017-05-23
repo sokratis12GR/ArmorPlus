@@ -51,7 +51,7 @@ container.armorplus.inventory=物品栏
 container.armorplus.lava_infuser=熔岩灌注器
 
 #Tooltip
-tooltip.shift.showinfo=按下 %s%s%s 获取更多信息。
+tooltip.shift.showinfo.text_one=按下 %s%s%s 获取更多信息。
 
 ##RFTooltip
 tooltip.rf.showinfo=按下 %s%s%s 获取更多信息。
@@ -60,7 +60,7 @@ tooltip.rf.cost.tool=能耗：%s RF/方块
 tooltip.rf.cost.hit=能耗：%s RF/单次攻击
 
 ##TeslaTooltip
-tooltip.tesla.showinfo=按下 %s%s%s 获取更多信息。
+tooltip.tesla.showinfo.text_one=按下 %s%s%s 获取更多信息。
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.cost.tool=能耗：%s Tesla/方块
 tooltip.tesla.cost.hit=能耗：%s Tesla/单次攻击
@@ -86,7 +86,7 @@ commands.error.404=找不到此命令！
 commands.error.unknown=找不到此命令！请使用 /armorplus help 获得帮助信息。
 commands.error.perm=你没有权限使用此命令。
 commands.success=执行成功
-commands.format.help=%s - %s
+commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help

@@ -1,0 +1,9 @@
+{
+  "trap_triggered": {
+    "category": "block",
+    "subtitle": "armorplus.subtitle.trapTriggered",
+    "sounds": [
+      "armorplus:trap_triggered"
+    ]
+  }
+}
