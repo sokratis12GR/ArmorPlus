@@ -9,9 +9,10 @@ import mezz.jei.api.ingredients.IModIngredientRegistration
 import net.minecraftforge.fml.common.Optional.Interface
 import net.minecraftforge.fml.common.Optional.Method
 import net.thedragonteam.armorplus.registry.ModItems
+import net.thedragonteam.armorplus.registry.ModBlocks
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 
-@Interface(iface = "mezz.jei.api.IItemBlacklist", modid = "jei", striprefs = true)
+@Interface(iface = "mezz.jei.api.ingredients.IIngredientBlacklist", modid = "jei", striprefs = true)
 @JEIPlugin
 class JEI : IModPlugin {
 
@@ -26,18 +27,16 @@ class JEI : IModPlugin {
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.twitchItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.beamItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.nbtItem))
-        for (item in ModItems.templates) blacklist.addIngredientToBlacklist(getItemStack(item))
+        ModItems.templates.forEach { item -> blacklist.addIngredientToBlacklist(getItemStack(item)) }
+        ModBlocks.enderBlocks.forEach { block -> blacklist.addIngredientToBlacklist(getItemStack(block)) }
     }
 
     @Method(modid = "jei")
-    override fun onRuntimeAvailable(jeiRuntime: IJeiRuntime) {
-    }
+    override fun onRuntimeAvailable(jeiRuntime: IJeiRuntime) = Unit
 
     @Method(modid = "jei")
-    override fun registerIngredients(registry: IModIngredientRegistration) {
-    }
+    override fun registerIngredients(registry: IModIngredientRegistration) = Unit
 
     @Method(modid = "jei")
-    override fun registerItemSubtypes(subtypeRegistry: ISubtypeRegistry) {
-    }
+    override fun registerItemSubtypes(subtypeRegistry: ISubtypeRegistry) = Unit
 }

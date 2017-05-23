@@ -4,23 +4,20 @@
 
 package net.thedragonteam.armorplus.compat.jei.lavainfuser
 
-import mezz.jei.api.IJeiHelpers
 import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserManager
+import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuserRecipe
 import java.util.*
 
 object InfuserRecipeMaker {
 
-    fun getFurnaceRecipes(helpers: IJeiHelpers): List<InfusingRecipe> {
-        val stackHelper = helpers.stackHelper
+    fun getInfuserRecipes(): List<LavaInfuserRecipe> {
         val lavaInfuserManager = LavaInfuserManager.getInstance()
-        val smeltingMap = lavaInfuserManager.infusingList
+        val infusingMap = lavaInfuserManager.infusingList
 
-        val recipes = ArrayList<InfusingRecipe>()
+        val recipes = ArrayList<LavaInfuserRecipe>()
 
-        for ((input, output) in smeltingMap) {
-
-            val inputs = stackHelper.getSubtypes(input)
-            val recipe = InfusingRecipe(inputs, output)
+        infusingMap.forEach { (input, output) ->
+            val recipe = LavaInfuserRecipe(input, output)
             recipes.add(recipe)
         }
 

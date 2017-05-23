@@ -2,9 +2,10 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.compat.minetweaker
+package net.thedragonteam.armorplus.compat
 
 import net.thedragonteam.armorplus.compat.ICompatibility
+import net.thedragonteam.armorplus.compat.minetweaker.MTArmorPlusPlugin
 import net.thedragonteam.thedragonlib.util.LogHelper
 
 /**

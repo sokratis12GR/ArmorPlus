@@ -16,11 +16,7 @@ import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe
 class WBShapelessOreRecipeWrapper(private val jeiHelpers: IJeiHelpers, private val recipe: ShapelessOreRecipe) : BlankRecipeWrapper(), IRecipeWrapper {
 
     init {
-        this.recipe.input
-                .asSequence()
-                .filterIsInstance<ItemStack>()
-                .filter { it.count != 1 }
-                .forEach { it.count = 1 }
+        this.recipe.input.asSequence().filterIsInstance<ItemStack>().filter { it.count != 1 }.forEach { it.count = 1 }
     }
 
     override fun getIngredients(ingredients: IIngredients) {

@@ -8,22 +8,26 @@ import mezz.jei.api.*
 import mezz.jei.api.ingredients.IIngredientRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import net.thedragonteam.armorplus.api.crafting.hightechbench.*
+import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH
+import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_LAVA_INFUSER
+import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_ULTI_TECH_BENCH
+import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_WORKBENCH
+import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager
+import net.thedragonteam.armorplus.api.crafting.lavainfuser.LavaInfuserManager
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager
 import net.thedragonteam.armorplus.api.crafting.workbench.*
-import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe
-import net.thedragonteam.armorplus.api.crafting.workbench.ShapedRecipes
-import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe
-import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessRecipes
 import net.thedragonteam.armorplus.client.gui.GuiHighTechBench
 import net.thedragonteam.armorplus.client.gui.GuiLavaInfuser
 import net.thedragonteam.armorplus.client.gui.GuiUltiTechBench
 import net.thedragonteam.armorplus.client.gui.GuiWorkbench
+import net.thedragonteam.armorplus.compat.jei.JEIClientUtils.Companion.addDescription
 import net.thedragonteam.armorplus.compat.jei.hightechbench.*
 import net.thedragonteam.armorplus.compat.jei.lavainfuser.InfuserRecipeMaker
 import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserCategory
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserRecipeWrapper
 import net.thedragonteam.armorplus.compat.jei.ultitechbench.*
 import net.thedragonteam.armorplus.compat.jei.workbench.*
+import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuserRecipe
 import net.thedragonteam.armorplus.container.ContainerHighTechBench
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser
 import net.thedragonteam.armorplus.container.ContainerUltiTechBench
@@ -31,14 +35,8 @@ import net.thedragonteam.armorplus.container.ContainerWorkbench
 import net.thedragonteam.armorplus.registry.APBlocks
 import net.thedragonteam.armorplus.registry.APItems
 import net.thedragonteam.armorplus.registry.ModBlocks
-import net.thedragonteam.thedragonlib.util.TextHelper
-
-import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH
-import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_LAVA_INFUSER_INFUSING
-import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_ULTI_TECH_BENCH
-import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_WORKBENCH
-import net.thedragonteam.armorplus.compat.jei.JEIClientUtils.Companion.addDescription
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
+import net.thedragonteam.thedragonlib.util.TextUtils.formattedText
 
 @JEIPlugin
 class ArmorPlusPlugin : BlankModPlugin() {
@@ -59,24 +57,25 @@ class ArmorPlusPlugin : BlankModPlugin() {
         registry.addRecipeClickArea(GuiWorkbench::class.java, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH)
         registry.addRecipeClickArea(GuiHighTechBench::class.java, 88, 40, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH)
         registry.addRecipeClickArea(GuiUltiTechBench::class.java, 112, 50, 28, 27, JEI_CATEGORY_ULTI_TECH_BENCH)
-        registry.addRecipeClickArea(GuiLavaInfuser::class.java, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER_INFUSING)
+        registry.addRecipeClickArea(GuiLavaInfuser::class.java, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER)
 
         val recipeTransferRegistry = registry.recipeTransferRegistry
 
         recipeTransferRegistry.addRecipeTransferHandler(ContainerWorkbench::class.java, JEI_CATEGORY_WORKBENCH, 1, 9, 10, 36)
         recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench::class.java, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 16, 17, 36)
         recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench::class.java, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 25, 26, 36)
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser::class.java, JEI_CATEGORY_LAVA_INFUSER_INFUSING, 0, 1, 3, 36)
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser::class.java, JEI_CATEGORY_LAVA_INFUSER, 0, 1, 3, 36)
 
         registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.workbench), JEI_CATEGORY_WORKBENCH)
         registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.highTechBench), JEI_CATEGORY_HIGH_TECH_BENCH)
         registry.addRecipeCategoryCraftingItem(getItemStack(APBlocks.ultiTechBench), JEI_CATEGORY_ULTI_TECH_BENCH)
-        registry.addRecipeCategoryCraftingItem(getItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER_INFUSING)
+        registry.addRecipeCategoryCraftingItem(getItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER)
 
         registry.addRecipes(WorkbenchCraftingManager.getInstance().recipeList, JEI_CATEGORY_WORKBENCH)
         registry.addRecipes(HighTechBenchCraftingManager.getInstance().recipeList, JEI_CATEGORY_HIGH_TECH_BENCH)
         registry.addRecipes(UltiTechBenchCraftingManager.getInstance().recipeList, JEI_CATEGORY_ULTI_TECH_BENCH)
-        registry.addRecipes(InfuserRecipeMaker.getFurnaceRecipes(Companion.jeiHelper), JEI_CATEGORY_LAVA_INFUSER_INFUSING)
+        registry.addRecipes(LavaInfuserManager.getInstance().recipeList, JEI_CATEGORY_LAVA_INFUSER)
+        registry.addRecipes(InfuserRecipeMaker.getInfuserRecipes(), JEI_CATEGORY_LAVA_INFUSER)
 
         registerDescriptions(registry)
 
@@ -87,6 +86,7 @@ class ArmorPlusPlugin : BlankModPlugin() {
         registerWBRecipesHandlers(registry)
         registerHTBRecipesHandlers(registry)
         registerUTBRecipesHandlers(registry)
+        registry.handleRecipes(LavaInfuserRecipe::class.java, ::LavaInfuserRecipeWrapper, JEI_CATEGORY_LAVA_INFUSER)
     }
 
     fun registerWBRecipesHandlers(registry: IModRegistry) {
@@ -112,10 +112,10 @@ class ArmorPlusPlugin : BlankModPlugin() {
 
     @SideOnly(Side.CLIENT)
     private fun registerDescriptions(registry: IModRegistry) {
-        addDescription(registry, APItems.guardianScale, TextHelper.localize("armorplus.jei.guardian_scale.desc"))
-        addDescription(registry, APItems.witherBone, TextHelper.localize("armorplus.jei.wither_bone.desc"))
-        addDescription(registry, APItems.enderDragonScale, TextHelper.localize("armorplus.jei.ender_dragon_scale.desc"))
-        addDescription(registry, APBlocks.lavaInfuser, TextHelper.localize("armorplus.jei.lava_infuser.desc"))
+        addDescription(registry, APItems.guardianScale, formattedText("armorplus.jei.guardian_scale.desc"))
+        addDescription(registry, APItems.witherBone, formattedText("armorplus.jei.wither_bone.desc"))
+        addDescription(registry, APItems.enderDragonScale, formattedText("armorplus.jei.ender_dragon_scale.desc"))
+        addDescription(registry, APBlocks.lavaInfuser, formattedText("armorplus.jei.lava_infuser.desc"))
     }
 
     companion object {

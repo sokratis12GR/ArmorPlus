@@ -15,10 +15,7 @@ import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessRecipes
 internal class WBShapelessRecipeWrapper(private val recipe: ShapelessRecipes) : BlankRecipeWrapper(), IRecipeWrapper {
 
     init {
-        this.recipe.input
-                .asSequence()
-                .filter { it is ItemStack && it.count != 1 }
-                .forEach { it.count = 1 }
+        this.recipe.input.asSequence().filter { it is ItemStack && it.count != 1 }.forEach { it.count = 1 }
     }
 
     override fun getIngredients(ingredients: IIngredients) {

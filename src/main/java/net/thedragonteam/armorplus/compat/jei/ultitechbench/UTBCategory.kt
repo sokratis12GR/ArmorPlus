@@ -50,8 +50,8 @@ class UTBCategory : BlankRecipeCategory<IRecipeWrapper>() {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 136, 36)
 
-        for (y in 0 .. 4) {
-            for (x in 0 .. 4) {
+        for (y in 0..4) {
+            for (x in 0..4) {
                 val index = INPUT_SLOT + x + y * 5
                 guiItemStacks.init(index, true, x * 18, y * 18)
             }

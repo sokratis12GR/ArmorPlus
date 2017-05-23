@@ -50,8 +50,8 @@ class HTBCategory : BlankRecipeCategory<IRecipeWrapper>() {
 
         guiItemStacks.init(OUTPUT_SLOT, false, 113, 26)
 
-        for (y in 0 .. 3) {
-            for (x in 0 .. 3) {
+        for (y in 0..3) {
+            for (x in 0..3) {
                 val index = INPUT_SLOT + x + y * 4
                 guiItemStacks.init(index, true, x * 18, y * 18)
             }

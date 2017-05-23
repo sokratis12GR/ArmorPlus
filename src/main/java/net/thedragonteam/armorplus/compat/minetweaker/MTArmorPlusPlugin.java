@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.compat.minetweaker;
 
 import minetweaker.MineTweakerAPI;
 import minetweaker.api.item.IIngredient;
+import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuser;
 
 import java.util.ArrayList;
 
@@ -17,13 +18,13 @@ public class MTArmorPlusPlugin {
         MineTweakerAPI.registerClass(Workbench.class);
         MineTweakerAPI.registerClass(HighTechBench.class);
         MineTweakerAPI.registerClass(UltiTechBench.class);
+        MineTweakerAPI.registerClass(LavaInfuser.class);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public static Object[] toHighTechShapedObjects(IIngredient[][] ingredients) {
         if (ingredients == null)
             return null;
-        ArrayList prep = new ArrayList();
+        ArrayList<Object> prep = new ArrayList<>();
         prep.add("abcd");
         prep.add("efgh");
         prep.add("ijkl");
@@ -33,11 +34,10 @@ public class MTArmorPlusPlugin {
         return prep.toArray();
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public static Object[] toUltiTechShapedObjects(IIngredient[][] ingredients) {
         if (ingredients == null)
             return null;
-        ArrayList prep = new ArrayList();
+        ArrayList<Object> prep = new ArrayList<>();
         prep.add("abcde");
         prep.add("fghij");
         prep.add("klmno");
@@ -48,8 +48,7 @@ public class MTArmorPlusPlugin {
         return prep.toArray();
     }
 
-    @SuppressWarnings("unchecked")
-    private static void toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList prep) {
+    private static void toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList<Object> prep) {
         for (int x = 0; x < ingredients.length; x++) {
             if (ingredients[x] != null) {
                 for (int y = 0; y < ingredients[x].length; y++) {

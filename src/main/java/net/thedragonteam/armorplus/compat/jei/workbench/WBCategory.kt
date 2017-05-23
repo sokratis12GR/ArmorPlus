@@ -29,29 +29,21 @@ class WBCategory : BlankRecipeCategory<IRecipeWrapper>() {
         craftingGridHelper = ArmorPlusPlugin.jeiHelper.guiHelper.createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT)
     }
 
-    override fun getUid(): String {
-        return Constants.Compat.JEI_CATEGORY_WORKBENCH
-    }
+    override fun getUid(): String = Constants.Compat.JEI_CATEGORY_WORKBENCH
 
-    override fun getTitle(): String {
-        return localizedName
-    }
+    override fun getTitle(): String = localizedName
 
-    override fun getBackground(): IDrawable {
-        return background
-    }
+    override fun getBackground(): IDrawable = background
 
-    override fun getIcon(): IDrawable? {
-        return null
-    }
+    override fun getIcon(): IDrawable? = null
 
     override fun setRecipe(recipeLayout: IRecipeLayout, recipeWrapper: IRecipeWrapper, ingredients: IIngredients) {
         val guiItemStacks = recipeLayout.itemStacks
 
         guiItemStacks.init(OUTPUT_SLOT, false, 94, 18)
 
-        for (y in 0 .. 2) {
-            for (x in 0 .. 2) {
+        (0.rangeTo(2)).forEach { y ->
+            (0.rangeTo(2)).forEach { x ->
                 val index = INPUT_SLOT + x + y * 3
                 guiItemStacks.init(index, true, x * 18, y * 18)
             }

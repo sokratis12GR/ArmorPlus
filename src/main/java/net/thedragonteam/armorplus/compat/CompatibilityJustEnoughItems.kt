@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.compat.jei
+package net.thedragonteam.armorplus.compat
 
 import net.thedragonteam.armorplus.compat.ICompatibility
 
@@ -17,7 +17,5 @@ class CompatibilityJustEnoughItems : ICompatibility {
     override val modid: String
         get() = "jei"
 
-    override fun enableCompat(): Boolean {
-        return true
-    }
+    override fun enableCompat(): Boolean = true
 }

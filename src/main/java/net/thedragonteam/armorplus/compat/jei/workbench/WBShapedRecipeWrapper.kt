@@ -21,10 +21,7 @@ import java.util.*
 internal class WBShapedRecipeWrapper(private val recipe: ShapedRecipes) : BlankRecipeWrapper(), IShapedCraftingRecipeWrapper {
 
     init {
-        this.recipe.input
-                .asSequence()
-                .filter { it != null && it.count != 1 }
-                .forEach { it.count = 1 }
+        this.recipe.input.asSequence().filter { it != null && it.count != 1 }.forEach { it.count = 1 }
     }
 
     override fun getIngredients(ingredients: IIngredients) {
@@ -40,11 +37,7 @@ internal class WBShapedRecipeWrapper(private val recipe: ShapedRecipes) : BlankR
 
     }
 
-    override fun getWidth(): Int {
-        return recipe.recipeWidth
-    }
+    override fun getWidth(): Int = recipe.recipeWidth
 
-    override fun getHeight(): Int {
-        return recipe.recipeHeight
-    }
+    override fun getHeight(): Int = recipe.recipeHeight
 }

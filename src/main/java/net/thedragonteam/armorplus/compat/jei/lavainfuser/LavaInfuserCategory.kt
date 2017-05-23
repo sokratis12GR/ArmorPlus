@@ -11,44 +11,38 @@ import net.minecraft.client.Minecraft
 import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.api.Constants
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin
-import net.thedragonteam.thedragonlib.util.TextHelper.localize
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-class LavaInfuserCategory : LavaInfuserRecipeCategory<InfusingRecipe>() {
+class LavaInfuserCategory : LavaInfuserRecipeCategory<LavaInfuserRecipeWrapper>() {
     private val background: IDrawable
-    private val localizedName: String = localize("gui.jei.category.armorplus.infusing")
+    private val localizedName: String = TextUtils.formattedText("gui.jei.category.armorplus.infusing")
 
     init {
         val location = ResourceLocation("armorplus", "textures/gui/container/gui_lava_infuser.png")
         background = ArmorPlusPlugin.jeiHelper.guiHelper.createDrawable(location, 7, 20, 138, 46)
     }
 
-    override fun getBackground(): IDrawable {
-        return background
-    }
+    override fun getBackground(): IDrawable = background
 
     override fun drawExtras(minecraft: Minecraft?) {
-        fusion.draw(minecraft!!, 1, 1)
+        fusion.draw(minecraft, 1, 1)
         arrow.draw(minecraft, 84, 15)
+        lavaBucket.draw(minecraft, 26, 14)
     }
 
-    override fun getTitle(): String {
-        return localizedName
-    }
+    override fun getTitle(): String = localizedName
 
-    override fun getUid(): String {
-        return Constants.Compat.JEI_CATEGORY_LAVA_INFUSER_INFUSING
-    }
+    override fun getUid(): String = Constants.Compat.JEI_CATEGORY_LAVA_INFUSER
 
-    override fun setRecipe(recipeLayout: IRecipeLayout, recipeWrapper: InfusingRecipe, ingredients: IIngredients) {
-        val guiItemStacks = recipeLayout.itemStacks
+    override fun setRecipe(recipeLayout: IRecipeLayout, recipeWrapper: LavaInfuserRecipeWrapper, ingredients: IIngredients) {
+        recipeLayout.itemStacks.init(inputSlot, true, 61, 14);
+        recipeLayout.itemStacks.set(inputSlot, recipeWrapper.recipe.input)
 
-        guiItemStacks.init(LavaInfuserRecipeCategory.inputSlot, true, 61, 14)
-        guiItemStacks.init(LavaInfuserRecipeCategory.outputSlot, false, 115, 14)
-
-        guiItemStacks.set(ingredients)
+        recipeLayout.itemStacks.init(outputSlot, false, 115, 14);
+        recipeLayout.itemStacks.set(outputSlot, recipeWrapper.recipe.output)
     }
 }
