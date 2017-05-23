@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.armors.base
 
 import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.I18n
 import net.minecraft.client.settings.GameSettings
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.entity.Entity
@@ -16,7 +15,7 @@ import net.minecraft.inventory.EntityEquipmentSlot
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.ItemArmor
 import net.minecraft.item.ItemStack
-import net.minecraft.util.text.TextFormatting
+import net.minecraft.util.text.TextFormatting.GRAY
 import net.minecraft.util.text.TextFormatting.getValueByName
 import net.minecraft.world.World
 import net.minecraftforge.common.util.EnumHelper.addArmorMaterial
@@ -37,6 +36,7 @@ import net.thedragonteam.armorplus.util.Utils
 import net.thedragonteam.armorplus.util.Utils.setLocation
 import net.thedragonteam.armorplus.util.Utils.setName
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
+import net.thedragonteam.thedragonlib.util.TextUtils
 
 class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor.theUltimateArmor, 0, slot), IModelHelper {
 
@@ -89,11 +89,14 @@ class ItemUltimateArmor(slot: EntityEquipmentSlot) : ItemArmor(ItemUltimateArmor
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
 
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip!!.add("\u00a79Question: " + "\u00a7rAre you the chosen one ?")
-            tooltip.add("\u00a73Use: " + "\u00a7rEquip The Full Set")
-        } else
-            tooltip!!.add(I18n.format("tooltip.shift.showinfo", getValueByName(theUltimateArmorItemNameColor), keyBindSneak.displayName, TextFormatting.GRAY, TextFormatting.GREEN))
+        when {
+            GameSettings.isKeyDown(keyBindSneak) -> {
+                tooltip!!.add("\u00a79Question: \u00a7rAre you the chosen one ?")
+                tooltip.add("\u00a73Use: \u00a7rEquip The Full Set")//getValueByName(theUltimateArmorItemNameColor)!!
+            }
+            else -> tooltip!!.add(TextUtils.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(getValueByName(theUltimateArmorItemNameColor)!!, "tooltip.showinfo.keybind", keyBindSneak.displayName,
+                    TextUtils.formattedText(GRAY, "tooltip.showinfo.end"))))
+        }
     }
 
     override fun onUpdate(stack: ItemStack?, worldIn: World?, entityIn: Entity?, itemSlot: Int, isSelected: Boolean) {

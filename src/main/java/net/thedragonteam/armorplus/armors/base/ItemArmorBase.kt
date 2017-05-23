@@ -7,7 +7,10 @@ package net.thedragonteam.armorplus.armors.base
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.MobEffects
 import net.minecraft.inventory.EntityEquipmentSlot
-import net.minecraft.item.*
+import net.minecraft.item.EnumAction
+import net.minecraft.item.EnumRarity
+import net.minecraft.item.ItemArmor
+import net.minecraft.item.ItemStack
 import net.minecraft.potion.Potion
 import net.minecraft.util.text.TextFormatting
 import net.minecraft.world.World
@@ -31,14 +34,11 @@ import net.thedragonteam.armorplus.util.Utils.setName
 
 open class ItemArmorBase(private val material: APArmorMaterial, private val slot: EntityEquipmentSlot) : ItemArmor(material.armorMaterial, 0, slot), IModelHelper {
     var formattingName: EnumRarity
-    var itemEasy: Item
-    var itemExpert: Item
-    var formatting: TextFormatting
+    var itemEasy: ItemStack = material.itemEasy
+    var itemExpert: ItemStack = material.itemExpert
+    var formatting: TextFormatting = material.formatting
 
     init {
-        this.itemEasy = material.itemEasy
-        this.itemExpert = material.itemExpert
-        this.formatting = material.formatting
         this.setMaxStackSize(1)
         when (slot) {
             EntityEquipmentSlot.FEET -> {
