@@ -19,16 +19,21 @@ class FuriousEnchantment : EnchantmentBase("furious", Enchantment.Rarity.RARE, E
         when (levelIn) {
             EnchantmentBase.Levels.ZERO -> {
             }
-            EnchantmentBase.Levels.ONE -> user!!.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 0))
+            EnchantmentBase.Levels.ONE -> user?.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 0))
             EnchantmentBase.Levels.TWO -> {
-                user!!.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 0))
-                user.addPotionEffect(PotionEffect(MobEffects.SPEED, 460, 0))
+                if (user != null) {
+                    user.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 0))
+                    user.addPotionEffect(PotionEffect(MobEffects.SPEED, 460, 0))
+                }
             }
             EnchantmentBase.Levels.THREE -> {
-                user!!.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 1))
-                user.addPotionEffect(PotionEffect(MobEffects.SPEED, 920, 0))
+                if (user != null) {
+                    user.addPotionEffect(PotionEffect(MobEffects.STRENGTH, 460, 1))
+                    user.addPotionEffect(PotionEffect(MobEffects.SPEED, 920, 0))
+                }
             }
             else -> {
+                return
             }
         }
     }

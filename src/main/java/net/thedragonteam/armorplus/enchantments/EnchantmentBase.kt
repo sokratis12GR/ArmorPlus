@@ -76,6 +76,6 @@ open class EnchantmentBase @JvmOverloads constructor(name: String, rarity: Encha
         SEVEN,
         EIGHT,
         NINE,
-        TEN
+        TEN, ;
     }
 }
