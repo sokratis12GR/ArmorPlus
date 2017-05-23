@@ -26,8 +26,9 @@ class EntityLavaArrow : EntityArrow {
 
     override fun onUpdate() {
         super.onUpdate()
-        if (this.world.isRemote && !this.inGround)
+        if (this.world.isRemote && !this.inGround) {
             spawnParticle(this, EnumParticleTypes.FLAME, this.posX, this.posY, this.posZ)
+        }
     }
 
     public override fun getArrowStack(): ItemStack {

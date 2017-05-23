@@ -29,7 +29,9 @@ class EntityLapisArrow : EntityArrow {
 
     override fun onUpdate() {
         super.onUpdate()
-        spawnParticle(this, EnumParticleTypes.WATER_DROP, this.posX, this.posY, this.posZ)
+        if (this.world.isRemote && !this.inGround) {
+            spawnParticle(this, EnumParticleTypes.WATER_DROP, this.posX, this.posY, this.posZ)
+        }
     }
 
     public override fun getArrowStack(): ItemStack {

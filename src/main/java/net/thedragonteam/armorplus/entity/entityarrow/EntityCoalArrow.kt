@@ -29,8 +29,9 @@ class EntityCoalArrow : EntityArrow {
 
     override fun onUpdate() {
         super.onUpdate()
-        if (this.world.isRemote && !this.inGround)
+        if (this.world.isRemote && !this.inGround) {
             spawnParticle(this, EnumParticleTypes.CLOUD, this.posX, this.posY, this.posZ)
+        }
     }
 
     public override fun getArrowStack(): ItemStack {
