@@ -676,11 +676,11 @@ public class APConfig {
     public static boolean enableBowsRecipes = true;
 
     //EnergyItems
-    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Helmet, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] energyInput = new int[]{10, 10, 10, 10, 10};
-    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Helmet, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] energyOutput = new int[]{10, 10, 10, 10, 10};
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Helmet, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] maxEnergyCapacity = new int[]{3000, 3000, 3000, 3000, 3000};
 
     public static RecipesDifficulty getRD() {
