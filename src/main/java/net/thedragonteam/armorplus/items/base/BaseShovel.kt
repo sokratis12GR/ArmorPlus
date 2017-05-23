@@ -18,7 +18,5 @@ open class BaseShovel(material: Item.ToolMaterial, var itemName: String) : ItemS
         GameRegistry.register(this)
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 }

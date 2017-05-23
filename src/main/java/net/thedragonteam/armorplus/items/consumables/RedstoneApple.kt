@@ -38,20 +38,17 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    override fun hasEffect(stack: ItemStack): Boolean {
-        return stack.metadata > 0
-    }
+    override fun hasEffect(stack: ItemStack): Boolean = stack.metadata > 0
 
     /**
      * Return an item rarity from EnumRarity
      */
-    override fun getRarity(stack: ItemStack): EnumRarity {
-        return if (stack.metadata == 0) EnumRarity.RARE else EnumRarity.EPIC
-    }
+    override fun getRarity(stack: ItemStack): EnumRarity = if (stack.metadata == 0) EnumRarity.RARE else EnumRarity.EPIC
 
     override fun onFoodEaten(stack: ItemStack?, worldIn: World, player: EntityPlayer) {
-        if (!worldIn.isRemote)
+        if (!worldIn.isRemote) {
             if (stack != null) player.addPotionEffect(if (stack.metadata > 0) PotionEffect(MobEffects.SPEED, 6000, 1) else PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1))
+        }
     }
 
     /**
@@ -63,7 +60,5 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
         subItems.add(ItemStack(itemIn, 1, 1))
     }
 
-    override fun initModel() {
-        0.rangeTo(1).forEach { i -> this.initModel(this, registryName, i) }
-    }
+    override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(this, registryName, i) }
 }

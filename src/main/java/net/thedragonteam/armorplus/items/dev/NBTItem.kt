@@ -30,12 +30,11 @@ class NBTItem : BaseItem("dev_item") {
         return super.onEntitySwing(entityLiving, stack)
     }
 
-    override fun setCreativeTab(tab: CreativeTabs): Item {
-        return this
-    }
+    override fun setCreativeTab(tab: CreativeTabs): Item = this
 
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
-        if (stack!!.hasTagCompound() && stack.tagCompound!!.hasKey("Level"))
+        if (stack!!.hasTagCompound() && stack.tagCompound!!.hasKey("Level")) {
             tooltip!!.add("Item Level: " + Integer.toString(stack.tagCompound!!.getInteger("Level")))
+        }
     }
 }

@@ -21,9 +21,7 @@ class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName())
         }
     }
 
-    override fun setCreativeTab(tab: CreativeTabs): Item {
-        return this
-    }
+    override fun setCreativeTab(tab: CreativeTabs): Item = this
 
     override fun initModel() {
         if (devItems.hasSubTypes()) this.initModel(this, registryName!!.toString() + "_second", 1)

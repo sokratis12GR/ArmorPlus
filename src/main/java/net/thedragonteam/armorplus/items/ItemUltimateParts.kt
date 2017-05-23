@@ -35,10 +35,7 @@ class ItemUltimateParts : Item(), IModelHelper {
     }
 
     override fun getUnlocalizedName(stack: ItemStack?): String {
-        return ULTIMATE_NAMES.indices
-                .firstOrNull { stack!!.itemDamage == it }
-                ?.let { super.getUnlocalizedName(stack) + ULTIMATE_NAMES[it] }
-                ?: super.getUnlocalizedName()
+        return ULTIMATE_NAMES.indices.firstOrNull { stack!!.itemDamage == it }?.let { super.getUnlocalizedName(stack) + ULTIMATE_NAMES[it] } ?: super.getUnlocalizedName()
     }
 
     override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {

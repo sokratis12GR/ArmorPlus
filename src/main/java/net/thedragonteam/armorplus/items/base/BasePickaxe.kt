@@ -18,7 +18,5 @@ open class BasePickaxe(material: Item.ToolMaterial, var itemName: String) : Item
         GameRegistry.register(this)
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 }

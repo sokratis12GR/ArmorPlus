@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.enums;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,27 +29,27 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.INSTANCE;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItem;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum Swords implements IStringSerializable {
-    COAL(swordCoalMaterial, "coal", Items.COAL, getItem(COAL_BLOCK),
+    COAL(swordCoalMaterial, "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK),
             getValueByName(coalWeaponItemNameColor), setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
             enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-    LAPIS(swordLapisMaterial, "lapis", getItemStack(Items.DYE, 4).getItem(), getItem(LAPIS_BLOCK),
+    LAPIS(swordLapisMaterial, "lapis", getItemStack(Items.DYE, 4), getItemStack(LAPIS_BLOCK),
             getValueByName(lapisWeaponItemNameColor), setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
             enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-    REDSTONE(swordRedstoneMaterial, "redstone", Items.REDSTONE, getItem(REDSTONE_BLOCK),
+    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE), getItemStack(REDSTONE_BLOCK),
             getValueByName(redstoneWeaponItemNameColor), setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
             enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-    EMERALD(swordEmeraldMaterial, "emerald", Items.EMERALD, getItem(EMERALD_BLOCK),
+    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK),
             getValueByName(emeraldWeaponItemNameColor), setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
             enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItem(Blocks.OBSIDIAN), getItem(compressedObsidian),
+    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(compressedObsidian),
             getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(swordLavaMaterial, "lava", lavaCrystal, getItemStack(lavaCrystal, 1).getItem(),
+    LAVA(swordLavaMaterial, "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1),
             getValueByName(lavaWeaponItemNameColor), setLavaToolTip(), true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -59,8 +58,9 @@ public enum Swords implements IStringSerializable {
             if (GameSettings.isKeyDown(keyBindSneak)) {
                 tooltip.add("\2479Ability: " + "\247r" + this.getEffect());
                 tooltip.add("\2473Use: " + "\247rHit a Target");
-            } else
-                tooltip.add(I18n.format("tooltip.tesla.showinfo", this.getTextFormatting(), keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+            } else {
+                showInfo(tooltip, keyBindSneak, this.getTextFormatting());
+            }
         }
 
         @Override
@@ -70,38 +70,38 @@ public enum Swords implements IStringSerializable {
             return true;
         }
     },
-    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1).getItem(),
+    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1),
             getValueByName(guardianWeaponItemNameColor), setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
             enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
-    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2).getItem(),
+    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2),
             getValueByName(superStarWeaponItemNameColor), setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
             enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
-    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3).getItem(),
+    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3),
             getValueByName(enderDragonWeaponItemNameColor), setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel),
             enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
 
     private final String name;
     private final Item.ToolMaterial material;
-    private final Item repairEasy;
-    private final Item repairExpert;
+    private final ItemStack repairEasy;
+    private final ItemStack repairExpert;
     private final TextFormatting textFormatting;
     private final String effect;
     private final boolean enabledEffects;
     private final String addNegativePotionEffect;
     private final int addNegativePotionEffectAmplifier;
 
-    Swords(Item.ToolMaterial materialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn, String effectIn,
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairBoth, TextFormatting textFormattingIn, String effectIn,
            boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn, enableEffect, addNegativeEffect, addNegativeEffectAmplifier);
     }
 
-    Swords(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn,
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn,
            boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this.material = materialIn;
         this.name = nameIn;
-        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY.getItem();
+        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY;
         this.repairEasy = repairEasyIn;
-        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY.getItem();
+        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY;
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.effect = effectIn;
@@ -136,11 +136,11 @@ public enum Swords implements IStringSerializable {
         return effect;
     }
 
-    public Item getRepairEasy() {
+    public ItemStack getRepairEasy() {
         return repairEasy;
     }
 
-    public Item getRepairExpert() {
+    public ItemStack getRepairExpert() {
         return repairExpert;
     }
 
@@ -173,7 +173,8 @@ public enum Swords implements IStringSerializable {
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rApplies " + this.getEffect());
             tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", this.getTextFormatting(), keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        } else {
+            showInfo(tooltip, keyBindSneak, this.getTextFormatting());
+        }
     }
 }

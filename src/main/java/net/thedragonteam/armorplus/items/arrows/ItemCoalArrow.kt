@@ -28,13 +28,9 @@ class ItemCoalArrow : ItemArrow(), IModelHelper {
         this.creativeTab = ArmorPlus.tabArmorplusWeapons
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 
-    override fun createArrow(world: World, itemstack: ItemStack, shooter: EntityLivingBase): EntityArrow {
-        return EntityCoalArrow(world, shooter)
-    }
+    override fun createArrow(world: World, itemstack: ItemStack, shooter: EntityLivingBase): EntityArrow = EntityCoalArrow(world, shooter)
 
     @SideOnly(Side.CLIENT)
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: List<String>?, advanced: Boolean) {

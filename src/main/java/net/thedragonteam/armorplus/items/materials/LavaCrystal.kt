@@ -46,7 +46,7 @@ class LavaCrystal : Item(), IFuelHandler, IModelHelper {
     }
 
     override fun getUnlocalizedName(stack: ItemStack?): String {
-        return (0 .. 1)
+        return (0..1)
                 .firstOrNull { stack!!.itemDamage == it }
                 ?.let { super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[it] }
                 ?: super.getUnlocalizedName(stack)

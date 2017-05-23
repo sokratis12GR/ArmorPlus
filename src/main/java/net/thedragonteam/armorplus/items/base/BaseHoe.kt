@@ -18,7 +18,5 @@ open class BaseHoe(material: Item.ToolMaterial, var itemName: String) : ItemHoe(
         GameRegistry.register(this)
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 }

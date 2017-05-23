@@ -6,7 +6,6 @@ package net.thedragonteam.armorplus.items.energy.tesla;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +15,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,7 +26,12 @@ import net.thedragonteam.armorplus.util.APTeslaUtils;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+import static net.minecraft.util.text.TextFormatting.DARK_AQUA;
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.util.APTeslaUtils.getMaxCapacity;
+import static net.thedragonteam.armorplus.util.APTeslaUtils.getStoredPower;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.thedragonlib.util.TextUtils.INSTANCE;
 
 public class ItemTeslaHoe extends BaseTeslaHoe {
 
@@ -62,7 +65,7 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     @Method(modid = "tesla")
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        return APTeslaUtils.getStoredPower(stack) < energyOutput[4] ? 0.5F : Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
+        return getStoredPower(stack) < energyOutput[4] ? 0.5F : Items.WOODEN_HOE.getStrVsBlock(stack, state) > 1.0F ? 5.5F : super.getStrVsBlock(stack, state);
     }
 
     @Method(modid = "tesla")
@@ -77,9 +80,10 @@ public class ItemTeslaHoe extends BaseTeslaHoe {
     private void createTooltip(ItemStack stack, List<String> tooltip) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(APTeslaUtils.getStoredPower(stack)), Long.toString(APTeslaUtils.getMaxCapacity(stack))));
-            tooltip.add(TextFormatting.DARK_AQUA + I18n.format("tooltip.tesla.cost.tool", Long.toString(energyOutput[4])));
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+            tooltip.add(INSTANCE.formattedText(DARK_AQUA, "tooltip.tesla.powerinfo", Long.toString(getStoredPower(stack)), Long.toString(getMaxCapacity(stack))));
+            tooltip.add(INSTANCE.formattedText(DARK_AQUA, "tooltip.tesla.cost.tool", Long.toString(energyOutput[4])));
+        } else {
+            showInfo(tooltip, keyBindSneak, DARK_AQUA);
+        }
     }
 }

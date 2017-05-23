@@ -18,7 +18,5 @@ open class BaseAxe(material: Item.ToolMaterial, var itemName: String) : ItemAxe(
         GameRegistry.register(this)
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 }

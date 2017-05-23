@@ -25,7 +25,5 @@ open class BaseItem(var itemName: String) : Item(), IModelHelper {
 
     constructor(itemsIn: Items) : this(itemsIn.getName())
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 }

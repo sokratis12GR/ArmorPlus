@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -38,20 +37,23 @@ import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     public double damage;
 
-    private Item itemEasy;
-    private Item itemExpert;
+    private ItemStack itemEasy;
+    private ItemStack itemExpert;
     private Item itemBow;
     private TextFormatting formatting;
     public EnumRarity formattingName;
     public String itemName;
+    public Bows bows;
 
     public ItemSpecialBow(Bows bows) {
+        this.bows = bows;
         this.itemName = bows.getName();
         this.setMaxDamage(bows.getDurability());
         this.damage = bows.getDamage();
@@ -91,7 +93,8 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        tooltip.add(GameSettings.isKeyDown(keyBindSneak) ? "\2479Bonus Arrow Damage: " + "\247r" + damage : I18n.format("tooltip.shift.showinfo", formatting, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        if (GameSettings.isKeyDown(keyBindSneak)) tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
+        else showInfo(tooltip, keyBindSneak, formatting);
     }
 
     @Override

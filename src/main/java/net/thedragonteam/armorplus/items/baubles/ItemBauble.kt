@@ -30,7 +30,7 @@ abstract class ItemBauble(name: String) : BaseItem(name), IBauble {
         toEquip.count = 1
         if (canEquip(toEquip, player)) {
             val baubles = BaublesApi.getBaublesHandler(player)
-            for (i in 0 .. baubles.slots - 1) {
+            for (i in 0..baubles.slots - 1) {
                 val simulate = baubles.insertItem(i, toEquip, true)
                 if (simulate.isEmpty) {
                     val stackInSlot = baubles.getStackInSlot(i)
@@ -54,16 +54,10 @@ abstract class ItemBauble(name: String) : BaseItem(name), IBauble {
     }
 
 
-    override fun getRarity(par1ItemStack: ItemStack): EnumRarity {
-        return EnumRarity.RARE
-    }
+    override fun getRarity(par1ItemStack: ItemStack): EnumRarity = EnumRarity.RARE
 
-    override fun onEquipped(itemstack: ItemStack?, player: EntityLivingBase?) {
-        player!!.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75f, 1.9f)
-    }
+    override fun onEquipped(itemstack: ItemStack?, player: EntityLivingBase?) = player!!.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75f, 1.9f)
 
-    override fun onUnequipped(itemstack: ItemStack?, player: EntityLivingBase?) {
-        player!!.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75f, 2f)
-    }
+    override fun onUnequipped(itemstack: ItemStack?, player: EntityLivingBase?) = player!!.playSound(SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.75f, 2f)
 
 }

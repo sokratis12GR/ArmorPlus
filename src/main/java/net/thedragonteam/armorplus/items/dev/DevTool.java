@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.dev;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,6 +20,8 @@ import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
 import java.util.List;
+
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 
 public class DevTool extends BaseItem {
 
@@ -67,7 +68,8 @@ public class DevTool extends BaseItem {
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGives Information about the Target");
             tooltip.add("\2473Use: " + "\247rRight Click a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.BOLD, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        } else {
+            showInfo(tooltip, keyBindSneak, TextFormatting.BOLD);
+        }
     }
 }

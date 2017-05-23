@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.consumables
 
 import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.I18n
 import net.minecraft.client.settings.GameSettings
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
@@ -15,8 +14,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
-import net.minecraft.util.text.TextComponentString
-import net.minecraft.util.text.TextFormatting
+import net.minecraft.util.text.TextFormatting.*
 import net.minecraft.world.World
 import net.minecraftforge.common.util.EnumHelper.addRarity
 import net.thedragonteam.armorplus.APConfig
@@ -25,6 +23,8 @@ import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.base.BaseItem
 import net.thedragonteam.thedragonlib.util.ItemStackUtils
 import net.thedragonteam.thedragonlib.util.LogHelper
+import net.thedragonteam.thedragonlib.util.TextUtils
+import net.thedragonteam.thedragonlib.util.TextUtils.setTextTranslation
 import java.util.*
 
 /**
@@ -34,7 +34,7 @@ import java.util.*
  */
 class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
 
-    var golden: EnumRarity = addRarity("GOLD", TextFormatting.GOLD, "GOLD") as EnumRarity
+    var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD") as EnumRarity
 
     var maxUsable: Int = 0
 
@@ -43,28 +43,18 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         this.maxDamage = maxUsable
     }
 
-    override fun initModel() {
-        this.initModel(this, registryName, 0)
-    }
+    override fun initModel() = this.initModel(this, registryName, 0)
 
-    override fun getRarity(stack: ItemStack): EnumRarity {
-        return golden
-    }
+    override fun getRarity(stack: ItemStack): EnumRarity = golden
 
-    override fun shouldRotateAroundWhenRendering(): Boolean {
-        return true
-    }
+    override fun shouldRotateAroundWhenRendering(): Boolean = true
 
-    override fun isFull3D(): Boolean {
-        return true
-    }
+    override fun isFull3D(): Boolean = true
 
-    override fun setFull3D(): Item {
-        return this
-    }
+    override fun setFull3D(): Item = this
 
     override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
-        val blackListedItems = Arrays.asList(*APConfig.blackListedItems)
+        val blackListedItems = APConfig.blackListedItems.toList()
 
         val nbt: NBTTagCompound = if (playerIn.getHeldItem(hand).hasTagCompound()) playerIn.getHeldItem(hand).tagCompound as NBTTagCompound else NBTTagCompound()
 
@@ -84,21 +74,21 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
             }
         } while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
 
-        if (enableTheGiftOfTheGods) {
-            val cooldown = 0
-            if (!playerIn.heldItemMainhand.isEmpty && playerIn.heldItemMainhand.item === playerIn.getHeldItem(hand).item || !playerIn.heldItemOffhand.isEmpty && playerIn.heldItemOffhand.item === playerIn.getHeldItem(hand).item)
-                when {
-                    !debugMode && !playerIn.cooldownTracker.hasCooldown(playerIn.getHeldItem(hand).item) -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldownTicks)
-                    debugMode && debugModeTGOTG -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldown)
-                }
+        if (!worldIn!!.isRemote) {
+            if (enableTheGiftOfTheGods) {
+                val cooldown = 0
+                if (!playerIn.heldItemMainhand.isEmpty && playerIn.heldItemMainhand.item === playerIn.getHeldItem(hand).item || !playerIn.heldItemOffhand.isEmpty && playerIn.heldItemOffhand.item === playerIn.getHeldItem(hand).item)
+                    when {
+                        !debugMode && !playerIn.cooldownTracker.hasCooldown(playerIn.getHeldItem(hand).item) -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldownTicks)
+                        debugMode && debugModeTGOTG -> playerIn.cooldownTracker.setCooldown(playerIn.heldItemMainhand.item, cooldown)
+                    }
 
-            if (!worldIn!!.isRemote) {
                 playerIn.dropItem(item, 1)
-                playerIn.sendMessage(TextComponentString("You got: " + item.getItemStackDisplayName(playerIn.getHeldItem(hand)) + " [" + item.registryName + "]"))
+                playerIn.sendStatusMessage(setTextTranslation("status.armorplus.tgotg.gained_item", item.getItemStackDisplayName(playerIn.getHeldItem(hand)), item.registryName!!), false)
                 if (debugMode && debugModeTGOTG)
-                    LogHelper.info("Item's Registry Name: " + item.registryName + " ; Item's Creative Tab: " + item.creativeTab +
-                            " ; Item's Unlocalized Name: " + item.unlocalizedName + " ; Does the Item have Subtypes: " + item.hasSubtypes +
-                            " ; Item's Max Damage: " + getMaxDamage(ItemStack(item)))
+                    LogHelper.info("Item's Registry Name: ${item.registryName};\n Item's Creative Tab: ${item.creativeTab}\n" +
+                            " ; Item's Unlocalized Name: ${item.unlocalizedName};\n Does the Item have Subtypes: ${item.hasSubtypes}\n" +
+                            " ; Item's Max Damage: ${getMaxDamage(ItemStack(item))}")
             }
             playerIn.getHeldItem(hand).damageItem(1, playerIn)
         }
@@ -108,14 +98,17 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
     override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
         val maxUses = APConfig.maxUses
-        tooltip!!.add("" + TextFormatting.ITALIC + "" + TextFormatting.RED + "This item can summon items which can potentially cause crashes")
+        tooltip!!.add("$ITALIC${RED}This item can summon items which can potentially cause crashes")
         when {
             GameSettings.isKeyDown(keyBindSneak) -> {
-                tooltip.add("\u00a79Ability: " + "\u00a7rGrants Random Item")
+                tooltip.add("\u00a79Ability: \u00a7rGrants Random Item")
                 tooltip.add("\u00a79Max Uses: \u00a7r$maxUses")
-                tooltip.add("\u00a73Use: " + "\u00a7rRight-Click")
+                tooltip.add("\u00a73Use: \u00a7rRight-Click")
             }
-            else -> tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.GOLD, keyBindSneak.displayName, TextFormatting.GRAY))
+            else -> {
+                tooltip.add(TextUtils.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(GOLD, "tooltip.showinfo.keybind", keyBindSneak.displayName,
+                        TextUtils.formattedText(GRAY, "tooltip.showinfo.end"))))
+            }
         }
     }
 

@@ -16,9 +16,7 @@ class ItemBaubleDragon : ItemBauble("bauble_cosmetic_dragon") {
 
     // ========= Baubles =========
 
-    override fun getBaubleType(arg0: ItemStack): BaubleType {
-        return BaubleType.HEAD
-    }
+    override fun getBaubleType(arg0: ItemStack): BaubleType = BaubleType.HEAD
 
     override fun onEquipped(itemstack: ItemStack?, player: EntityLivingBase?) {}
 
@@ -29,13 +27,9 @@ class ItemBaubleDragon : ItemBauble("bauble_cosmetic_dragon") {
             player.addPotionEffect(PotionEffect(MobEffects.ABSORPTION, 20, 1))
     }
 
-    override fun onUnequipped(itemstack: ItemStack?, player: EntityLivingBase?) {}
+    override fun onUnequipped(itemstack: ItemStack?, player: EntityLivingBase?) = Unit
 
-    override fun canEquip(itemstack: ItemStack?, player: EntityLivingBase?): Boolean {
-        return true
-    }
+    override fun canEquip(itemstack: ItemStack?, player: EntityLivingBase?): Boolean = true
 
-    override fun canUnequip(itemstack: ItemStack?, player: EntityLivingBase?): Boolean {
-        return true
-    }
+    override fun canUnequip(itemstack: ItemStack?, player: EntityLivingBase?): Boolean = true
 }

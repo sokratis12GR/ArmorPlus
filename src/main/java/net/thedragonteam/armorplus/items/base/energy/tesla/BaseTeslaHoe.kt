@@ -24,7 +24,7 @@ import net.thedragonteam.armorplus.base.BaseAPTeslaContainerProvider
 import net.thedragonteam.armorplus.items.base.BaseHoe
 import net.thedragonteam.armorplus.util.APTeslaUtils
 
-open class BaseTeslaHoe(material: Item.ToolMaterial, name: String,  private var maxCapacity: Int, private var input: Int, private var output: Int) : BaseHoe(material, name) {
+open class BaseTeslaHoe(material: Item.ToolMaterial, name: String, private var maxCapacity: Int, private var input: Int, private var output: Int) : BaseHoe(material, name) {
 
     lateinit var formattingName: EnumRarity
     private val cost = 10
@@ -34,9 +34,7 @@ open class BaseTeslaHoe(material: Item.ToolMaterial, name: String,  private var 
         this.setMaxStackSize(1)
     }
 
-    override fun getRarity(stack: ItemStack): EnumRarity {
-        return formattingName
-    }
+    override fun getRarity(stack: ItemStack): EnumRarity = formattingName
 
     override fun onItemUse(player: EntityPlayer, worldIn: World, posIn: BlockPos, hand: EnumHand, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): EnumActionResult {
         APTeslaUtils.usePower(player.getHeldItem(hand), cost.toLong())
@@ -51,29 +49,17 @@ open class BaseTeslaHoe(material: Item.ToolMaterial, name: String,  private var 
         subItems.add(unpowered)
     }
 
-    override fun isRepairable(): Boolean {
-        return true
-    }
+    override fun isRepairable(): Boolean = true
 
-    override fun isBookEnchantable(stack: ItemStack?, book: ItemStack?): Boolean {
-        return true
-    }
+    override fun isBookEnchantable(stack: ItemStack?, book: ItemStack?): Boolean = true
 
-    override fun getItemEnchantability(stack: ItemStack?): Int {
-        return 30
-    }
+    override fun getItemEnchantability(stack: ItemStack?): Int = 30
 
     @Method(modid = "tesla")
-    override fun getDurabilityForDisplay(stack: ItemStack): Double {
-        return 1 - APTeslaUtils.getStoredPower(stack).toDouble() / APTeslaUtils.getMaxCapacity(stack).toDouble()
-    }
+    override fun getDurabilityForDisplay(stack: ItemStack): Double = 1 - APTeslaUtils.getStoredPower(stack).toDouble() / APTeslaUtils.getMaxCapacity(stack).toDouble()
 
-    override fun showDurabilityBar(stack: ItemStack): Boolean {
-        return true
-    }
+    override fun showDurabilityBar(stack: ItemStack): Boolean = true
 
     @Method(modid = "tesla")
-    override fun initCapabilities(stack: ItemStack?, nbt: NBTTagCompound?): ICapabilityProvider? {
-        return BaseAPTeslaContainerProvider(BaseTeslaContainer(), maxCapacity, output, input)
-    }
+    override fun initCapabilities(stack: ItemStack?, nbt: NBTTagCompound?): ICapabilityProvider? = BaseAPTeslaContainerProvider(BaseTeslaContainer(), maxCapacity, output, input)
 }

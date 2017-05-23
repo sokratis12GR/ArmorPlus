@@ -38,34 +38,20 @@ open class BaseTeslaShovel(material: Item.ToolMaterial, name: String, private va
         subItems.add(unpowered)
     }
 
-    override fun getRarity(stack: ItemStack): EnumRarity {
-        return formattingName
-    }
+    override fun getRarity(stack: ItemStack): EnumRarity = formattingName
 
-    override fun isRepairable(): Boolean {
-        return true
-    }
+    override fun isRepairable(): Boolean = true
 
-    override fun isBookEnchantable(stack: ItemStack?, book: ItemStack?): Boolean {
-        return true
-    }
+    override fun isBookEnchantable(stack: ItemStack?, book: ItemStack?): Boolean = true
 
-    override fun getItemEnchantability(stack: ItemStack?): Int {
-        return 30
-    }
+    override fun getItemEnchantability(stack: ItemStack?): Int = 30
 
     @Method(modid = "tesla")
-    override fun getDurabilityForDisplay(stack: ItemStack): Double {
-        return 1 - APTeslaUtils.getStoredPower(stack).toDouble() / APTeslaUtils.getMaxCapacity(stack).toDouble()
-    }
+    override fun getDurabilityForDisplay(stack: ItemStack): Double = 1 - APTeslaUtils.getStoredPower(stack).toDouble() / APTeslaUtils.getMaxCapacity(stack).toDouble()
 
-    override fun showDurabilityBar(stack: ItemStack): Boolean {
-        return true
-    }
+    override fun showDurabilityBar(stack: ItemStack): Boolean = true
 
     @Method(modid = "tesla")
-    override fun initCapabilities(stack: ItemStack?, nbt: NBTTagCompound?): ICapabilityProvider? {
-        return BaseAPTeslaContainerProvider(BaseTeslaContainer(), maxCapacity, output, input)
-    }
+    override fun initCapabilities(stack: ItemStack?, nbt: NBTTagCompound?): ICapabilityProvider? = BaseAPTeslaContainerProvider(BaseTeslaContainer(), maxCapacity, output, input)
 
 }

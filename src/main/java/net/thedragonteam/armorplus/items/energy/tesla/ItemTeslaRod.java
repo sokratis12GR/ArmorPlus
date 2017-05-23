@@ -5,23 +5,23 @@
 package net.thedragonteam.armorplus.items.energy.tesla;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.thedragonlib.util.TextUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static net.minecraft.util.text.translation.I18n.translateToLocalFormatted;
+import static net.minecraft.util.text.TextFormatting.DARK_AQUA;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 
 /**
  * net.thedragonteam.armorplus.items.materials
@@ -37,7 +37,7 @@ public class ItemTeslaRod extends BaseItem {
     @Override
     @Nonnull
     public String getItemStackDisplayName(ItemStack stack) {
-        return translateToLocalFormatted(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
+        return TextUtils.INSTANCE.formattedText(this.getUnlocalizedNameInefficiently(stack) + ".name");
     }
 
     @Override
@@ -51,7 +51,8 @@ public class ItemTeslaRod extends BaseItem {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak))
             tooltip.add(1, Loader.isModLoaded("tesla") ? "Tesla is installed all the recipes should work" : "Tesla isn't installed none of the recipes will work");
-        else
-            tooltip.add(I18n.format("tooltip.shift.showinfo", TextFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        else {
+            showInfo(tooltip, keyBindSneak, DARK_AQUA);
+        }
     }
 }

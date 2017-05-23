@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
@@ -21,13 +20,13 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class BaseSword extends ItemSword implements IModelHelper {
 
-    public Item itemEasy;
-    public Item itemExpert;
+    public ItemStack itemEasy;
+    public ItemStack itemExpert;
     public TextFormatting formatting;
     public EnumRarity formattingName;
     public String itemName;
 
-    public BaseSword(ToolMaterial material, String name, Item repairEasy, Item repairExpert, String textFormatting) {
+    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, ItemStack repairExpert, String textFormatting) {
         super(material);
         this.itemName = name;
         this.itemEasy = repairEasy;

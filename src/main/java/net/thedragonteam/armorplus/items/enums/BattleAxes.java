@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.items.enums;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,27 +29,28 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
-    COAL(battleAxeCoalMaterial, "coal", getItemStack(Items.COAL).getItem(), getItemStack(COAL_BLOCK).getItem(), getValueByName(coalWeaponItemNameColor),
+    COAL(battleAxeCoalMaterial, "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK), getValueByName(coalWeaponItemNameColor),
             setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F,
             enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(Items.DYE, 4).getItem(), getItemStack(LAPIS_BLOCK).getItem(), getValueByName(lapisWeaponItemNameColor),
+    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(Items.DYE, 4), getItemStack(LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor),
             setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F,
             enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE).getItem(),
-            getItemStack(REDSTONE_BLOCK).getItem(), getValueByName(redstoneWeaponItemNameColor),
+    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE),
+            getItemStack(REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor),
             setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F,
             enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(Items.EMERALD).getItem(), getItemStack(EMERALD_BLOCK).getItem(), getValueByName(emeraldWeaponItemNameColor),
+    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor),
             setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
             enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN).getItem(), getItemStack(compressedObsidian).getItem(), getValueByName(obsidianWeaponItemNameColor),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
             setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(battleAxeLavaMaterial, "lava", lavaCrystal, getItemStack(lavaCrystal, 1).getItem(), getValueByName(lavaWeaponItemNameColor),
+    LAVA(battleAxeLavaMaterial, "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
             setLavaToolTip(), 11.5F, true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -59,8 +59,9 @@ public enum BattleAxes implements IStringSerializable {
             if (GameSettings.isKeyDown(keyBindSneak)) {
                 tooltip.add("\2479Ability: " + "\247r" + this.getEffect());
                 tooltip.add("\2473Use: " + "\247rHit a Target");
-            } else
-                tooltip.add(I18n.format("tooltip.tesla.showinfo", this.getTextFormatting(), keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+            } else {
+                showInfo(tooltip, keyBindSneak, this.getTextFormatting());
+            }
         }
 
         @Override
@@ -70,20 +71,20 @@ public enum BattleAxes implements IStringSerializable {
             return true;
         }
     },
-    GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1).getItem(), getValueByName(guardianWeaponItemNameColor),
+    GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardianWeaponItemNameColor),
             setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel), 14.0F,
             enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
-    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2).getItem(), getValueByName(superStarWeaponItemNameColor),
+    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(superStarWeaponItemNameColor),
             setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel), 15.0F,
             enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
-    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3).getItem(), getValueByName(enderDragonWeaponItemNameColor),
+    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(enderDragonWeaponItemNameColor),
             setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel), 16.0F,
             enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
 
     private final String name;
     private final Item.ToolMaterial material;
-    private final Item repairEasy;
-    private final Item repairExpert;
+    private final ItemStack repairEasy;
+    private final ItemStack repairExpert;
     private final TextFormatting textFormatting;
     private final String effect;
     private final float efficiency;
@@ -91,18 +92,18 @@ public enum BattleAxes implements IStringSerializable {
     private final String addNegativePotionEffect;
     private final int addNegativePotionEffectAmplifier;
 
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairBoth, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairBoth, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
                boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn, efficiencyIn, enableEffect, addNegativeEffect, addNegativeEffectAmplifier);
     }
 
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, Item repairEasyIn, Item repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
                boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this.material = materialIn;
         this.name = nameIn;
-        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY.getItem();
+        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY;
         this.repairEasy = repairEasyIn;
-        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY.getItem();
+        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY;
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.effect = effectIn;
@@ -138,11 +139,11 @@ public enum BattleAxes implements IStringSerializable {
         return effect;
     }
 
-    public Item getRepairEasy() {
+    public ItemStack getRepairEasy() {
         return repairEasy;
     }
 
-    public Item getRepairExpert() {
+    public ItemStack getRepairExpert() {
         return repairExpert;
     }
 
@@ -179,7 +180,8 @@ public enum BattleAxes implements IStringSerializable {
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rApplies " + this.getEffect());
             tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else
-            tooltip.add(I18n.format("tooltip.tesla.showinfo", this.getTextFormatting(), keyBindSneak.getDisplayName(), TextFormatting.GRAY));
+        } else {
+            showInfo(tooltip, keyBindSneak, this.getTextFormatting());
+        }
     }
 }
