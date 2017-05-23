@@ -7,8 +7,8 @@ package net.thedragonteam.armorplus.commands
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
 import net.minecraft.server.MinecraftServer
-import net.minecraft.util.text.TextComponentString
-import net.thedragonteam.thedragonlib.util.TextHelper.localizeEffect
+import net.thedragonteam.thedragonlib.util.TextUtils.formattedText
+import net.thedragonteam.thedragonlib.util.TextUtils.setText
 import java.util.*
 
 /**
@@ -20,28 +20,18 @@ open class SubCommandBase(override val parentCommand: ICommand, override val sub
 
     override fun getHelpText(): String = ""
 
-    override fun getArgUsage(commandSender: ICommandSender): String {
-        return ""
-    }
+    override fun getArgUsage(commandSender: ICommandSender): String = ""
 
-    override fun processSubCommand(server: MinecraftServer, commandSender: ICommandSender, args: Array<String>) {}
+    override fun processSubCommand(server: MinecraftServer, cmdSender: ICommandSender, args: Array<String>) {}
 
-    protected fun capitalizeFirstLetter(toCapital: String): String {
-        return toCapital[0].toString().toUpperCase(Locale.ENGLISH) + toCapital.substring(1)
-    }
+    protected fun capitalizeFirstLetter(toCapital: String): String = toCapital[0].toString().toUpperCase(Locale.ENGLISH) + toCapital.substring(1)
 
     companion object {
 
-        fun displayHelpString(commandSender: ICommandSender, display: String, vararg info: Any) {
-            commandSender.sendMessage(TextComponentString(localizeEffect(display, *info)))
-        }
+        fun displayHelpString(commandSender: ICommandSender, display: String, vararg info: Any) = commandSender.sendMessage(setText(formattedText(display, *info)))
 
-        fun displayErrorString(commandSender: ICommandSender, display: String, vararg info: Any) {
-            commandSender.sendMessage(TextComponentString(localizeEffect(display, *info)))
-        }
+        fun displayErrorString(commandSender: ICommandSender, display: String, vararg info: Any) = commandSender.sendMessage(setText(formattedText(display, *info)))
 
-        fun displaySuccessString(commandSender: ICommandSender, display: String, vararg info: Any) {
-            commandSender.sendMessage(TextComponentString(localizeEffect(display, *info)))
-        }
+        fun displaySuccessString(commandSender: ICommandSender, display: String, vararg info: Any) = commandSender.sendMessage(setText(formattedText(display, *info)))
     }
 }

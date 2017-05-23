@@ -11,11 +11,12 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.server.MinecraftServer
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.text.TextComponentString
+import net.minecraft.util.text.TextFormatting.RED
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandDiscord
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandHelp
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki
-import net.thedragonteam.thedragonlib.util.TextHelper.localizeEffect
+import net.thedragonteam.thedragonlib.util.TextUtils.formattedText
 import java.util.*
 
 class CommandArmorPlus : CommandBase() {
@@ -34,25 +35,15 @@ class CommandArmorPlus : CommandBase() {
         subCommands.put("discord", SubCommandDiscord(this))
     }
 
-    override fun checkPermission(server: MinecraftServer?, sender: ICommandSender): Boolean {
-        return sender is EntityPlayer
-    }
+    override fun checkPermission(server: MinecraftServer?, sender: ICommandSender): Boolean = sender is EntityPlayer
 
-    override fun getAliases(): List<String> {
-        return Arrays.asList("armorplus", "arp", "a+")
-    }
+    override fun getAliases(): List<String> = Arrays.asList("armorplus", "arp", "a+")
 
-    override fun getName(): String {
-        return "ap"
-    }
+    override fun getName(): String = "ap"
 
-    override fun getTabCompletions(server: MinecraftServer?, sender: ICommandSender?, args: Array<String>?, pos: BlockPos?): List<String> {
-        return super.getTabCompletions(server, sender, args, pos)
-    }
+    override fun getTabCompletions(server: MinecraftServer?, sender: ICommandSender?, args: Array<String>?, pos: BlockPos?): List<String> = super.getTabCompletions(server, sender, args, pos)
 
-    override fun getUsage(sender: ICommandSender): String {
-        return name + " help"
-    }
+    override fun getUsage(sender: ICommandSender): String = name + " help"
 
     @Throws(CommandException::class)
     override fun execute(server: MinecraftServer, sender: ICommandSender, args: Array<String>) {
@@ -62,10 +53,8 @@ class CommandArmorPlus : CommandBase() {
             val subArgs = Arrays.copyOfRange(args, 1, args.size)
             subCommand?.processSubCommand(server, sender, subArgs)
         } else
-            sender.sendMessage(TextComponentString(localizeEffect("commands.error.unknown")))
+            sender.sendMessage(TextComponentString(formattedText(RED, "commands.error.unknown")))
     }
 
-    fun getSubCommands(): Map<String, ISubCommand> {
-        return subCommands
-    }
+    fun getSubCommands(): Map<String, ISubCommand> = subCommands
 }

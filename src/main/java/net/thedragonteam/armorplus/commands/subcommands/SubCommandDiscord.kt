@@ -10,22 +10,19 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.util.text.TextComponentString
 import net.thedragonteam.armorplus.commands.SubCommandBase
 import net.thedragonteam.thedragonlib.client.util.ClientUtills
-import net.thedragonteam.thedragonlib.util.TextHelper.localizeEffect
+import net.thedragonteam.thedragonlib.util.TextUtils.errorText
+import net.thedragonteam.thedragonlib.util.TextUtils.successText
 
 class SubCommandDiscord(parent: ICommand) : SubCommandBase(parent, "discord") {
 
-    override fun getArgUsage(commandSender: ICommandSender): String {
-        return localizeEffect("commands.discord.usage")
-    }
+    override fun getArgUsage(commandSender: ICommandSender): String = successText("commands.discord.usage")
 
-    override fun getHelpText(): String {
-        return localizeEffect("commands.discord.help")
-    }
+    override fun getHelpText(): String = errorText("commands.discord.help")
 
-    override fun processSubCommand(server: MinecraftServer, commandSender: ICommandSender, args: Array<String>) {
-        super.processSubCommand(server, commandSender, args)
-        commandSender.sendMessage(TextComponentString("Opening an invite link to our TheDragonTeam Community Discord server"))
+    override fun processSubCommand(server: MinecraftServer, cmdSender: ICommandSender, args: Array<String>) {
+        super.processSubCommand(server, cmdSender, args)
+        cmdSender.sendMessage(TextComponentString("Opening an invite link to our TheDragonTeam Community Discord server"))
         ClientUtills.openLink("http://discord.thedragonteam.info")
-        commandSender.sendMessage(TextComponentString("Link opened successfully"))
+        cmdSender.sendMessage(TextComponentString("Link opened successfully"))
     }
 }

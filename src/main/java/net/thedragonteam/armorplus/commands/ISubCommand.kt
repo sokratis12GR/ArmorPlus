@@ -23,5 +23,5 @@ interface ISubCommand {
 
     fun getHelpText(): String
 
-    fun processSubCommand(server: MinecraftServer, commandSender: ICommandSender, args: Array<String>)
+    fun processSubCommand(server: MinecraftServer, cmdSender: ICommandSender, args: Array<String>)
 }

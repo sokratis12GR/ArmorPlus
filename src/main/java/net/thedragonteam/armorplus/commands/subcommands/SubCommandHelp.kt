@@ -10,7 +10,9 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.util.text.TextComponentString
 import net.thedragonteam.armorplus.commands.CommandArmorPlus
 import net.thedragonteam.armorplus.commands.SubCommandBase
-import net.thedragonteam.thedragonlib.util.TextHelper
+import net.thedragonteam.thedragonlib.util.TextUtils.errorText
+import net.thedragonteam.thedragonlib.util.TextUtils.formattedText
+import net.thedragonteam.thedragonlib.util.TextUtils.successText
 
 /**
  * net.thedragonteam.armorplus.commands.subcommands
@@ -19,19 +21,15 @@ import net.thedragonteam.thedragonlib.util.TextHelper
  */
 class SubCommandHelp(parent: ICommand) : SubCommandBase(parent, "help") {
 
-    override fun getArgUsage(commandSender: ICommandSender): String {
-        return TextHelper.localize("commands.help.usage")
-    }
+    override fun getArgUsage(commandSender: ICommandSender): String = successText("commands.help.usage")
 
-    override fun getHelpText(): String {
-        return TextHelper.localizeEffect("commands.help.help")
-    }
+    override fun getHelpText(): String = errorText("commands.help.help")
 
-    override fun processSubCommand(server: MinecraftServer, commandSender: ICommandSender, args: Array<String>) {
-        super.processSubCommand(server, commandSender, args)
+    override fun processSubCommand(server: MinecraftServer, cmdSender: ICommandSender, args: Array<String>) {
+        super.processSubCommand(server, cmdSender, args)
 
         if (args.isNotEmpty()) return
 
-        (parentCommand as CommandArmorPlus).subCommands.values.forEach { subCommand -> commandSender.sendMessage(TextComponentString(TextHelper.localizeEffect("commands.format.help", capitalizeFirstLetter(subCommand.subCommandName), subCommand.getArgUsage(commandSender)))) }
+        (parentCommand as CommandArmorPlus).subCommands.values.forEach { cmdSender.sendMessage(TextComponentString(formattedText("commands.formatText.help", capitalizeFirstLetter(it.subCommandName), it.getArgUsage(cmdSender)))) }
     }
 }
