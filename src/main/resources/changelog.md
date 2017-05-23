@@ -1,3 +1,85 @@
+ArmorPlus 1.11.2-10.4.0.1
+----------------------------
+
+Features Tweaked:
+
+* The Creative Tabs for mod integrations will only load/show if the mod is present/loaded
+
+* The **Life Steal** enchantment no longer applies to ALL items/blocks but only to DAMAGEABLE items/blocks (with durability)
+
+Bugs Fixed:
+
+* Changing registry values causes crash (interaction with other mods and/or vanilla)
+
+*Secrets: There may be some secret things or spoilers for the upcoming update*
+
+ArmorPlus 1.11.2-10.3.2.3
+----------------------------
+
+Bugs Fixed:
+
+* Changing registry values for some armors will cause crash if full set effects are enabled
+
+ArmorPlus 1.11.2-10.3.1.2
+----------------------------
+
+Features Fixed & Changed:
+
+* Reworked Tinkers Construct Integration
+* Fixed crashes made by A+ with the Tinkers Integration
+
+ArmorPlus 1.11.2-10.3.0.1
+----------------------------
+
+Features Added:
+
+* Lava Infuser now has CT integration `mods.armorplus.addRecipe(<ouput>, <input>, <experience>)`
+
+* Tinkers' Construct Integration (If any bugs found, please report them)
+
+Bugs Fixed:
+
+* The Gift Of The Gods (TGOTG) not working in multiplayer
+
+ArmorPlus 1.11.2-10.2.1.2
+----------------------------
+
+Bugs Fixed:
+
+* Crash when changing weapons' registry settings
+
+ArmorPlus 1.11.2-10.2.0.1
+----------------------------
+
+Features Changed:
+
+* Block Lava Crystal (lava crystal ore) has been renamed to "Ore Lava Crystal"
+
+Features Added:
+
+* Block of Lava Crystal (crafted with 9 Lava Crystals)
+
+* Block of Infused Lava Crystal (crafted with 9 Infused Lava Crystals) or infused in the Lava Infuser
+
+* Added Textures to the new blocks and the lovely Lava Infuser (Tristaric <3)
+
+* Config Entries
+    * enableLavaArmorOnWaterTouchDeBuff (default = true, the DeBuffs when the lava armor touches water)
+    
+Features Removed:
+
+* Goodbye "Workbench New" - never used, experiment, wont come back
+
+Bugs Fixed:
+
+* Some armors, weapons and tools being unrepairable
+
+* Some achievement triggers not working
+
+Dependencies:
+
+* Requires TheDragonLib 1.11.2-3.2.2+ in order to work
+
 ArmorPlus 1.11.2-10.1.2.3
 ----------------------------
 
