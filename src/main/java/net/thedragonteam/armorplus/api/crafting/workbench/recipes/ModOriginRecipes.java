@@ -15,6 +15,8 @@ public class ModOriginRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
         switch (getRD()) {
+            case DISABLED:
+                break;
             case EASY:
                 if (enableCoalArmor) {
                     if (enableCoalArmorRecipes) {
@@ -24,8 +26,7 @@ public class ModOriginRecipes {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalLeggings), "CCC", "C C", "C C", 'C', "itemCoal"));
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "   ", "C C", "C C", 'C', "itemCoal"));
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", "   ", 'C', "itemCoal"));
-                    }
-                    if (enableCharcoalCoalArmorRecipe) {
+                    } else if (enableCharcoalCoalArmorRecipe) {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "   ", "CCC", "C C", 'C', "itemCharcoal"));
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalHelmet), "CCC", "C C", "   ", 'C', "itemCharcoal"));
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalChestplate), "C C", "CCC", "CCC", 'C', "itemCharcoal"));
@@ -34,15 +35,13 @@ public class ModOriginRecipes {
                         manager.addRecipe(new ShapedOreRecipe(getItemStack(coalBoots), "C C", "C C", "   ", 'C', "itemCharcoal"));
                     }
                 }
-                if (enableLapisArmor) {
-                    if (enableLapisArmorRecipes) {
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "   ", "LLL", "L L", 'L', "gemLapis"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "LLL", "L L", "   ", 'L', "gemLapis"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisChestplate), "L L", "LLL", "LLL", 'L', "gemLapis"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisLeggings), "LLL", "L L", "L L", 'L', "gemLapis"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "   ", "L L", "L L", 'L', "gemLapis"));
-                        manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "L L", "L L", "   ", 'L', "gemLapis"));
-                    }
+                if (enableLapisArmor && enableLapisArmorRecipes) {
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "   ", "LLL", "L L", 'L', "gemLapis"));
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisHelmet), "LLL", "L L", "   ", 'L', "gemLapis"));
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisChestplate), "L L", "LLL", "LLL", 'L', "gemLapis"));
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisLeggings), "LLL", "L L", "L L", 'L', "gemLapis"));
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "   ", "L L", "L L", 'L', "gemLapis"));
+                    manager.addRecipe(new ShapedOreRecipe(getItemStack(lapisBoots), "L L", "L L", "   ", 'L', "gemLapis"));
                 }
                 if (enableRedstoneArmor) {
                     if (enableRedstoneArmorRecipes) {

@@ -4,77 +4,109 @@
 
 package net.thedragonteam.armorplus.api.crafting.lavainfuser;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-
 public class LavaInfuserManager {
-    private static final LavaInfuserManager INFUSING_BASE = new LavaInfuserManager();
+    private static final LavaInfuserManager INSTANCE = new LavaInfuserManager();
+    private final List<LavaInfuserRecipe> recipes = Lists.newArrayList();
     private final Map<ItemStack, ItemStack> infusingList = Maps.newHashMap();
     private final Map<ItemStack, Double> experienceList = Maps.newHashMap();
 
     private LavaInfuserManager() {
-        this.addInfusingRecipe(new ItemStack(ModItems.lavaCrystal, 1, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
-        this.addInfusingRecipeForBlock(ModBlocks.compressedObsidian, getItemStack(ModBlocks.lavaInfusedObsidian), 0.2D);
     }
 
     /**
      * Returns an instance of LavaInfuserCraftingManager.
      */
     public static LavaInfuserManager getInstance() {
-        return INFUSING_BASE;
+        return INSTANCE;
     }
 
     /**
-     * Adds a smelting recipe, where the input item is an instance of Block.
+     * Adds a infusing recipe, where the input item is an instance of Block.
      */
-    public void addInfusingRecipeForBlock(Block input, ItemStack stack, double experience) {
-        this.addInfusing(Item.getItemFromBlock(input), stack, experience);
+    public void addInfusingRecipe(Block input, ItemStack stack, double experience) {
+        this.addInfusingRecipe(Item.getItemFromBlock(input), stack, experience);
     }
 
     /**
-     * Adds a smelting recipe using an Item as the input item.
+     * Adds a infusing recipe using an Item as the input item.
      */
-    public void addInfusing(Item input, ItemStack stack, double experience) {
+    public void addInfusingRecipe(Item input, ItemStack stack, double experience) {
         this.addInfusingRecipe(new ItemStack(input, 1, 32767), stack, experience);
     }
 
-    public void addInfusing(ItemStack input, ItemStack stack) {
+    public void addInfusingRecipe(ItemStack input, ItemStack stack) {
         this.addInfusingRecipe(input, stack, 0.0D);
     }
 
+    public void addInfusing(Item input, ItemStack stack, double experience) {
+        this.addInfusing(new ItemStack(input, 1, 32767), stack, experience);
+    }
+
+    public void addInfusing(ItemStack input, ItemStack stack) {
+        this.addInfusing(input, stack, 0.0D);
+    }
+
+    public void addInfusing(LavaInfuserRecipe recipe) {
+        this.recipes.add(recipe);
+    }
+
     /**
-     * Adds a smelting recipe using an ItemStack as the input for the recipe.
+     * Adds a infusing recipe using an ItemStack as the input for the recipe.
      */
     public void addInfusingRecipe(ItemStack input, ItemStack stack, double experience) {
-        if (!getSmeltingResult(input).isEmpty()) {
-            LogHelper.INSTANCE.info("Ignored smelting recipe with conflicting input: " + input + " = " + stack);
+        if (!getInfusingResult(input).isEmpty()) {
+            LogHelper.INSTANCE.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
             return;
         }
         this.infusingList.put(input, stack);
         this.experienceList.put(stack, experience);
     }
 
+    public void addInfusing(ItemStack input, ItemStack stack, double experience) {
+        if (!getInfusingResult(input).isEmpty()) {
+            LogHelper.INSTANCE.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
+            return;
+        }
+        this.recipes.add(new LavaInfuserRecipe(input, stack, experience));
+    }
+
     /**
      * Removes an IRecipe to the list of crafting recipes.
      */
-    public void removeRecipe(ItemStack recipe) {
+    public void removeFromRecipe(ItemStack recipe) {
         this.infusingList.remove(recipe);
     }
 
     /**
-     * Returns the smelting result of an item.
+     * Removes an IRecipe to the list of crafting recipes.
      */
-    public ItemStack getSmeltingResult(ItemStack stack) {
+    public void removeFromRecipe(LavaInfuserRecipe recipe) {
+        this.infusingList.remove(recipe.output);
+    }
+
+    /**
+     * Removes an IRecipe to the list of crafting recipes.
+     */
+    public void removeRecipe(LavaInfuserRecipe recipe) {
+        this.recipes.remove(recipe);
+    }
+
+    /**
+     * Returns the infusing result of an item.
+     */
+    public ItemStack getInfusingResult(ItemStack stack) {
         for (Map.Entry<ItemStack, ItemStack> entry : this.infusingList.entrySet()) {
             if (this.compareItemStacks(stack, entry.getKey())) {
                 return Optional.of(entry).map(Map.Entry::getValue).orElse(ItemStack.EMPTY);
@@ -94,7 +126,11 @@ public class LavaInfuserManager {
         return this.infusingList;
     }
 
-    public double getSmeltingExperience(ItemStack stack) {
+    public List<LavaInfuserRecipe> getRecipeList() {
+        return this.recipes;
+    }
+
+    public double getInfusingExperience(ItemStack stack) {
         float ret = stack.getItem().getSmeltingExperience(stack);
         if (ret != -1) return ret;
 

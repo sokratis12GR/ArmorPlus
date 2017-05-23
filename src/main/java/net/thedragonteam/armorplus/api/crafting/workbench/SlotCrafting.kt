@@ -86,12 +86,9 @@ class SlotCrafting(
             stack!!.item === coalHelmet || stack!!.item === coalChestplate || stack!!.item === coalLeggings || stack!!.item === coalBoots -> this.player.addStat(ModAchievements.craftCoalArmor, 1)
             stack!!.item === lapisHelmet || stack!!.item === lapisChestplate || stack!!.item === lapisLeggings || stack!!.item === lapisBoots -> this.player.addStat(ModAchievements.craftLapisArmor, 1)
             stack!!.item === redstoneHelmet || stack!!.item === redstoneChestplate || stack!!.item === redstoneLeggings || stack!!.item === redstoneBoots -> this.player.addStat(ModAchievements.craftRedstoneArmor, 1)
-            stack!!.item === emeraldHelmet || stack!!.item === emeraldChestplate || stack!!.item === emeraldLeggings || stack!!.item === emeraldBoots -> this.player.addStat(ModAchievements.craftEmeraldArmor, 1)
-            stack!!.item === obsidianHelmet || stack!!.item === obsidianChestplate || stack!!.item === obsidianLeggings || stack!!.item === obsidianBoots -> this.player.addStat(ModAchievements.craftObsidianArmor, 1)
-            stack!!.item === lavaHelmet || stack!!.item === lavaChestplate || stack!!.item === lavaLeggings || stack!!.item === lavaBoots -> this.player.addStat(ModAchievements.craftLavaArmor, 1)
             stack!!.item === slimeHelmet || stack!!.item === slimeChestplate || stack!!.item === slimeLeggings || stack!!.item === slimeBoots -> this.player.addStat(ModAchievements.craftSlimeArmor, 1)
-            stack!!.item === chickenHelmet || stack!!.item === chickenChestplate || stack!!.item === chickenLeggings || stack!!.item === chickenBoots -> this.player.addStat(ModAchievements.craftChickenArmor, 1)/*Its time to go Faster! - Achievement Trigger*//*Jump Jump Jump! - Achievement Trigger*//*The Overpowered! - Achievement Trigger*//*Indestructible! - Achievement Trigger*//*Swing Swing Faster! - Achievement Trigger*//*Speeedy! - Achievement Trigger*//*Never Drown Again - Achievement Trigger*//*Vision Like A Bat! - Achievement Trigger*/
-        }/*Its time to go Faster! - Achievement Trigger*//*Jump Jump Jump! - Achievement Trigger*//*The Overpowered! - Achievement Trigger*//*Indestructible! - Achievement Trigger*//*Swing Swing Faster! - Achievement Trigger*//*Speeedy! - Achievement Trigger*//*Never Drown Again - Achievement Trigger*//*Vision Like A Bat! - Achievement Trigger*/
+            stack!!.item === chickenHelmet || stack!!.item === chickenChestplate || stack!!.item === chickenLeggings || stack!!.item === chickenBoots -> this.player.addStat(ModAchievements.craftChickenArmor, 1)
+        }
     }
 
     override fun onTake(player: EntityPlayer?, stack: ItemStack): ItemStack {
