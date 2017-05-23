@@ -280,7 +280,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     private boolean canCharge() {
         if (this.infuserItemStacks.get(0).isEmpty()) return false;
-        ItemStack itemstack = LavaInfuserManager.getInstance().getSmeltingResult(this.infuserItemStacks.get(0));
+        ItemStack itemstack = LavaInfuserManager.getInstance().getInfusingResult(this.infuserItemStacks.get(0));
 
         if (itemstack.isEmpty()) return false;
         ItemStack itemstack1 = this.infuserItemStacks.get(2);
@@ -296,7 +296,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     public void chargeItem() {
         if (this.canCharge()) {
             ItemStack itemstack = this.infuserItemStacks.get(0);
-            ItemStack itemstack1 = LavaInfuserManager.getInstance().getSmeltingResult(itemstack);
+            ItemStack itemstack1 = LavaInfuserManager.getInstance().getInfusingResult(itemstack);
             ItemStack itemstack2 = this.infuserItemStacks.get(2);
 
             if (itemstack2.isEmpty()) this.infuserItemStacks.set(2, itemstack1.copy());
