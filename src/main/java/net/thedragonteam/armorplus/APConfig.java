@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
@@ -252,6 +251,9 @@ public class APConfig {
     public static String obsidianArmorAddPotionEffect = "resistance".toLowerCase(ENGLISH);
     @ModConfigProperty(category = "Armors.Lava.Effects", name = "lavaArmorAddPotionEffect", comment = "Adds the Potion Effect the Lava Armor will have (to disable the effect set the effects \'false\')")
     public static String lavaArmorAddPotionEffect = "fire_resistance".toLowerCase(ENGLISH);
+    @ModConfigProperty(category = "Armors.Lava.Effects", name = "enableLavaArmorOnWaterTouchDeBuff", comment = "Enables/Disables the DeBuffs that the armor will get when touching water without Water Breathing Potion. \naka nothing happens when player wears this armor while in water.")
+    public static boolean enableLavaArmorOnWaterTouchDeBuff = true;
+
     @ModConfigProperty(category = "Armors.Guardian.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set the effects \'false\')")
     public static String guardianArmorAddPotionEffect = "water_breathing".toLowerCase(ENGLISH);
     @ModConfigProperty(category = "Armors.SuperStar.Effects", name = "superStarArmorAddPotionEffect", comment = "Adds the Potion Effect the Super Star Armor will have (to disable the effect set the effects \'false\')")
@@ -674,11 +676,11 @@ public class APConfig {
     public static boolean enableBowsRecipes = true;
 
     //EnergyItems
-    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Helmet, Axe, Shovel, Hoe")
     public static int[] energyInput = new int[]{10, 10, 10, 10, 10};
-    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Helmet, Axe, Shovel, Hoe")
     public static int[] energyOutput = new int[]{10, 10, 10, 10, 10};
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
+    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Helmet, Axe, Shovel, Hoe")
     public static int[] maxEnergyCapacity = new int[]{3000, 3000, 3000, 3000, 3000};
 
     public static RecipesDifficulty getRD() {
@@ -695,7 +697,6 @@ public class APConfig {
         return EXPERT;
     }
 
-    @SuppressWarnings("unused")
     public static boolean hasRecipes() {
         return getRD().hasRecipes();
     }
@@ -703,25 +704,25 @@ public class APConfig {
     public enum RecipesDifficulty {
         DISABLED(false) {
             @Override
-            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+            public boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert) {
                 return false;
             }
         },
         EASY(true) {
             @Override
-            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
-                return repair.getItem() == easy;
+            public boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert) {
+                return repair.getItem() == easy.getItem() && repair.getMetadata() == easy.getMetadata();
             }
         },
         EXPERT(true) {
             @Override
-            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
-                return repair.getItem() == expert;
+            public boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert) {
+                return repair.getItem() == expert.getItem() && repair.getMetadata() == expert.getMetadata();
             }
         },
         HELLISH(true) {
             @Override
-            public boolean isItemRepairable(ItemStack repair, Item easy, Item expert) {
+            public boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert) {
                 return false;
             }
         },;
@@ -736,6 +737,6 @@ public class APConfig {
             return hasRecipes;
         }
 
-        public abstract boolean isItemRepairable(ItemStack repair, Item easy, Item expert);
+        public abstract boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert);
     }
 }
