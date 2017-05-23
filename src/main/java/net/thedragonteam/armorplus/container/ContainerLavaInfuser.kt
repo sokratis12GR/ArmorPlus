@@ -88,7 +88,7 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
                     slot.onSlotChange(itemstack1, itemstack)
                 }
                 index != 1 && index != 0 -> when {
-                    !LavaInfuserManager.getInstance().getSmeltingResult(itemstack1).isEmpty -> if (!this.mergeItemStack(itemstack1, 0, 1, false)) return ItemStack.EMPTY
+                    !LavaInfuserManager.getInstance().getInfusingResult(itemstack1).isEmpty -> if (!this.mergeItemStack(itemstack1, 0, 1, false)) return ItemStack.EMPTY
                     TileEntityLavaInfuser.isItemFuel(itemstack1) -> if (!this.mergeItemStack(itemstack1, 1, 2, false)) return ItemStack.EMPTY
                     index in 3.rangeTo(29) -> if (!this.mergeItemStack(itemstack1, 30, 39, false)) return ItemStack.EMPTY
                     index in 30.rangeTo(38) && !this.mergeItemStack(itemstack1, 3, 30, false) -> return ItemStack.EMPTY

@@ -55,11 +55,7 @@ class ContainerWorkbench(playerInventory: InventoryPlayer, tile: TileEntityWorkb
         super.onContainerClosed(playerIn)
 
         if (!this.world.isRemote) {
-            (0 until RECIPE_SIZE_TOTAL)
-                    .asSequence()
-                    .map { this.craftMatrix.removeStackFromSlot(it) }
-                    .filterNot { it.isEmpty }
-                    .forEach { playerIn.dropItem(it, false) }
+            (0.until(RECIPE_SIZE_TOTAL)).asSequence().map { this.craftMatrix.removeStackFromSlot(it) }.filterNot { it.isEmpty }.forEach { playerIn.dropItem(it, false) }
         }
     }
 
