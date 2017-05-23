@@ -131,12 +131,12 @@ processResources {
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
     compile "net.darkhax.tesla:Tesla:1.11-${tesla_version}"
-//    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
-//    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
+    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile group: "net.shadowfacts", name: "Forgelin", version: '1.4.1'
-    compile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
+    deobfCompile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
     deobfCompile "com.blamejared:MTLib:2.0.1.9"
 }
 
