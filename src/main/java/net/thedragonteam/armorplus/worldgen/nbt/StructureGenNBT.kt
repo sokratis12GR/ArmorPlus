@@ -25,6 +25,7 @@ class StructureGenNBT : IWorldGenerator {
         val posX = chunkX * 16 + random.nextInt(16)
         val posZ = chunkZ * 16 + random.nextInt(16)
 
+        @Suppress("UNUSED_VARIABLE")
         val posXZ = BlockPos(posX, 1, posZ)
 
         //        val biome = world.getBiomeForCoordsBody(posXZ)

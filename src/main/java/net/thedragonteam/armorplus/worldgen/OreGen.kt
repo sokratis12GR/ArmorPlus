@@ -24,9 +24,9 @@ import java.util.*
  */
 class OreGen : IWorldGenerator {
 
-    private val lavaCrystalOverworldGenerator: WorldGenerator = WorldGenMinable(ModBlocks.blockLavaCrystal.defaultState, lavaCrystalOverworldVeinAmountWorking)
-    private val lavaCrystalTheEndGenerator: WorldGenerator = WorldGenMinable(ModBlocks.blockLavaCrystal.defaultState, lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE))
-    private val lavaCrystalTheNetherGenerator: WorldGenerator = WorldGenMinable(ModBlocks.blockLavaCrystal.defaultState, lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK))
+    private val lavaCrystalOverworldGenerator: WorldGenerator = WorldGenMinable(ModBlocks.oreLavaCrystal.defaultState, lavaCrystalOverworldVeinAmountWorking);
+    private val lavaCrystalTheEndGenerator: WorldGenerator = WorldGenMinable(ModBlocks.oreLavaCrystal.defaultState, lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE))
+    private val lavaCrystalTheNetherGenerator: WorldGenerator = WorldGenMinable(ModBlocks.oreLavaCrystal.defaultState, lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK))
 
     override fun generate(random: Random, chunkX: Int, chunkZ: Int, world: World, chunkGenerator: IChunkGenerator, chunkProvider: IChunkProvider) {
         when (world.provider.dimension) {
@@ -48,7 +48,7 @@ class OreGen : IWorldGenerator {
     private fun runGenerator(generator: WorldGenerator, world: World, rand: Random, chunk_X: Int, chunk_Z: Int, chancesToSpawn: Int, minHeight: Int, maxHeight: Int) {
         assert(!(minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)) { "Illegal Height Arguments for WorldGenerator" }
         val heightDiff = maxHeight - minHeight + 1
-        for (i in 0 .. chancesToSpawn - 1) {
+        for (i in 0..chancesToSpawn - 1) {
             val x = chunk_X * 16 + rand.nextInt(16)
             val y = minHeight + rand.nextInt(heightDiff)
             val z = chunk_Z * 16 + rand.nextInt(16)
