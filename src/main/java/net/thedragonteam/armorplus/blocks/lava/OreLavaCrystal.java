@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.blocks.normal;
+package net.thedragonteam.armorplus.blocks.lava;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -34,11 +34,12 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class BlockLavaCrystal extends BlockBase {
+public class OreLavaCrystal extends BlockBase {
 
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    public BlockLavaCrystal() {
+    //Rename to "ore_lava_crystal" after major update
+    public OreLavaCrystal() {
         super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }
 

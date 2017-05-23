@@ -29,9 +29,10 @@ import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
-import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserCharging
+import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.Utils.setName
+import net.thedragonteam.armorplus.util.Utils.setResourceLocation
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
@@ -39,10 +40,10 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
-        this.setRegistryName(name)
+        this.registryName = setResourceLocation(name)
         this.unlocalizedName = setName(name)
-        this.setResistance(10000.0.toFloat())
-        this.setHardness(2.5.toFloat())
+        this.setResistance(10000.0F)
+        this.setHardness(2.5F)
         this.setHarvestLevel(ToolType.PICKAXE.tool, 1)
         GameRegistry.register(this)
         GameRegistry.register(ItemBlock(this), registryName)
@@ -50,6 +51,11 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
     override fun initModel() {
         this.initModel(this, registryName, 0)
+    }
+
+    @Suppress("OverridingDeprecatedMember")
+    override fun isOpaqueCube(state: IBlockState?): Boolean {
+        return false
     }
 
     /**
@@ -223,6 +229,16 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         return this.defaultState.withProperty(FACING, enumfacing)
     }
 
+    @Suppress("OverridingDeprecatedMember")
+    override fun isFullBlock(state: IBlockState?): Boolean {
+        return false
+    }
+
+    @Suppress("OverridingDeprecatedMember")
+    override fun isBlockNormalCube(state: IBlockState?): Boolean {
+        return false
+    }
+
     /**
      * Convert the BlockState into the correct metadata value
      */
@@ -264,8 +280,8 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
             when {
                 active -> {
-                    worldIn.setBlockState(pos, lavaInfuserCharging.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
-                    worldIn.setBlockState(pos, lavaInfuserCharging.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
                 }
                 else -> {
                     worldIn.setBlockState(pos, lavaInfuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)

@@ -56,6 +56,7 @@ public class BlockRitualAltar extends BlockBase {
         super.onEntityWalk(worldIn, pos, entityIn);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return NOT_CONNECTED_AABB;

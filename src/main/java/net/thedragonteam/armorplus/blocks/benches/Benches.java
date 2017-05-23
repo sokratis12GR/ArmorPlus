@@ -13,14 +13,13 @@ import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
 import javax.annotation.Nonnull;
 
-import static net.thedragonteam.armorplus.client.gui.GuiHandler.*;
+import static net.thedragonteam.armorplus.client.gui.GuiHandler.Companion;
 
 public enum Benches implements IStringSerializable {
     WORKBENCH("workbench", new TileEntityWorkbench(), Companion.getGUI_WORKBENCH()),
     HIGH_TECH("high_tech_bench", new TileEntityHighTechBench(), Companion.getGUI_HIGH_TECH_BENCH()),
     ULTI_TECH("ulti_tech_bench", new TileEntityUltiTechBench(), Companion.getGUI_ULTI_TECH_BENCH()),
-    CHAMPION("champion_bench", new TileEntityChampionBench(), Companion.getGUI_CHAMPION_BENCH()),
-    WORKBENCH_NEW("workbench_new", new TileEntityWorkbench(), Companion.getGUI_WORKBENCH_NEW());
+    CHAMPION("champion_bench", new TileEntityChampionBench(), Companion.getGUI_CHAMPION_BENCH()),;
 
     private final String name;
     private final TileEntity tileEntity;

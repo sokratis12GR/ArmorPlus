@@ -29,10 +29,7 @@ class BlockBench(var benches: Benches) : BlockBase(Material.IRON, benches.getNam
     }
 
     override fun initModel() {
-        when (benches) {
-            Benches.WORKBENCH, Benches.HIGH_TECH, Benches.ULTI_TECH, Benches.CHAMPION -> this.initModel(this, registryName, 0)
-            Benches.WORKBENCH_NEW -> this.initModel(this, "armorplus:workbench", 0)
-        }
+        this.initModel(this, registryName, 0)
     }
 
     override fun onBlockActivated(worldIn: World?, pos: BlockPos?, state: IBlockState?, playerIn: EntityPlayer?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): Boolean {
@@ -65,7 +62,8 @@ class BlockBench(var benches: Benches) : BlockBase(Material.IRON, benches.getNam
     override fun getStateForPlacement(world: World?, pos: BlockPos?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase?, hand: EnumHand?): IBlockState {
         var iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
         iblockstate = iblockstate.withProperty(FACING, placer!!.horizontalFacing)
-        return iblockstate    }
+        return iblockstate
+    }
 
     override fun getMetaFromState(state: IBlockState): Int {
         return state.getValue(FACING).horizontalIndex

@@ -7,7 +7,14 @@ package net.thedragonteam.armorplus.blocks.base;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -19,11 +26,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
-
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+import java.util.Random;
 
 public class BaseEnergyBlock extends BlockContainer {
 
@@ -81,6 +86,18 @@ public class BaseEnergyBlock extends BlockContainer {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        Random random = new Random();
+        int min = 0;
+        int max = 1;
+        //noinspection MethodCallSideOnly
+        Entity entity = worldIn.getLoadedEntityList().get(random.nextInt());
+        if (entity instanceof EntityCow || entity instanceof EntityPig || entity instanceof EntityChicken || entity instanceof EntityVillager) {
+            EntityLightningBolt lightningBolt = new EntityLightningBolt(worldIn, entity.posX, entity.posY, entity.posZ, false);
+            worldIn.spawnEntity(lightningBolt);//.setPositionAndUpdate(entity.posX, entity.posY, entity.posZ)
+            Entity[] hostiles = new Entity[]{new EntityZombie(worldIn), new EntitySkeleton(worldIn)};
+            worldIn.spawnEntity(hostiles[random.nextInt(max - min + 1) + min]);
+            entity.setDead();
+        }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 }
