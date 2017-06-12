@@ -12,6 +12,8 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
+import net.minecraft.util.math.BlockPos
+import net.minecraft.world.IBlockAccess
 import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -32,16 +34,17 @@ class BlockStonebrickWall(private val stoneBrick: BlockStoneBrick) : BlockWall(s
     }
 
     @Suppress("OverridingDeprecatedMember")
-    override fun getMapColor(state: IBlockState?): MapColor {
+    override fun getMapColor(state: IBlockState?, p_180659_2_: IBlockAccess?, p_180659_3_: BlockPos?): MapColor {
         return this.stoneBrick.color
     }
 
     @SideOnly(Side.CLIENT)
-    override fun getSubBlocks(itemIn: Item, tab: CreativeTabs?, list: NonNullList<ItemStack>) {
-        list.add(ItemStack(itemIn, 1))
+    override fun getSubBlocks(tab: CreativeTabs?, list: NonNullList<ItemStack>) {
+        list.add(ItemStack(this, 1))
     }
 
     override fun initModel() {
         this.initModel(this, registryName, 0)
     }
 }
+

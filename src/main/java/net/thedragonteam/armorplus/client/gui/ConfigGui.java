@@ -9,19 +9,19 @@ import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.thedragonlib.util.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
+import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
 public class ConfigGui extends GuiConfig {
 
     public ConfigGui(GuiScreen parentScreen) {
         super(parentScreen, getConfigElements(parentScreen), ArmorPlus.MODID, false, true,
-                TextUtils.INSTANCE.formattedText("gui." + ArmorPlus.MODID + ".config.title"));
+                formattedText("gui." + ArmorPlus.MODID + ".config.title"));
     }
 
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {

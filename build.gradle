@@ -1,69 +1,64 @@
 buildscript {
-    ext.kotlin_version = '1.1.1'
+    ext.kotlin_version = '1.1.2-2'
     repositories {
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
+        maven { url = "http://files.minecraftforge.net/maven" }
+
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 plugins {
-  id "com.matthewprenger.cursegradle" version "1.0.8"
+    id "com.matthewprenger.cursegradle" version "1.0.8"
 }
-
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'maven'
-apply plugin: 'java'
-apply plugin: 'maven-publish'
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'kotlin'
+apply plugin: 'java'
 
 repositories {
-    maven { // Tesla repo
-        url 'http://maven.epoxide.org'
-    }
+    jcenter()
+////    maven { // Tesla repo
+//        url 'http://maven.epoxide.org'
+//    }
     maven { // JEI repo
         name "JEI"
         url "http://dvs1.progwml6.com/files/maven"
     }
-    maven { //The repo to get TiC
-        url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { // HWYLA repo
-        url "http://tehnut.info/maven"
-    }
+//    maven { //The repo to get TiC
+//        url 'http://dvs1.progwml6.com/files/maven'
+//    }
+//    maven { // HWYLA repo
+//        url "http://tehnut.info/maven"
+//    }
     maven {
         name 'shadowfacts'
         url 'http://mvn.rx14.co.uk/shadowfacts/'
     }
-    maven { // CraftTweaker repo
-        name 'MineTweaker3'
-        url "http://maven.blamejared.com"
-    }
+//    maven { // CraftTweaker repo
+//        name 'MineTweaker3'
+//        url "http://maven.blamejared.com"
+//    }
 }
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
 group = package_group
 archivesBaseName = mod_id
 
 minecraft {
-    version = "${mc_version}-${forge_version}"
+    version = mc_version + "-" + forge_version
     runDir = "run"
-    makeObfSourceJar = true
-    useDepAts = true
+    //    makeObfSourceJar = false
+    //    useDepAts = true
 
-    if (project.hasProperty('mappings_version'))
-        mappings = project.mappings_version
+    mappings = mappings_version
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 jar {
     manifest {
@@ -78,35 +73,7 @@ jar {
     )
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
-    classifier = 'sources'
-}
-
-task apiJar(type: Jar) {
-    from sourceSets.main.allSource
-    from sourceSets.main.output
-    include 'net/thedragonteam/armorplus/api/**/*'
-    classifier = 'api'
-}
-
-task devJar(type: Jar) {
-    classifier = "dev"
-    from sourceSets.main.output
-}
-
-
-task deobfJar(type: Jar) { // Generate deobfuscated
-    from sourceSets.main.output
-    classifier = 'deobf'
-}
-tasks.build.dependsOn('deobfJar')
-
 artifacts {
-    archives deobfJar
-    archives sourcesJar
-    archives apiJar
-    archives devJar
 }
 
 processResources {
@@ -130,14 +97,14 @@ processResources {
 
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "net.darkhax.tesla:Tesla:1.11-${tesla_version}"
-    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
-    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+//    compile "net.darkhax.tesla:Tesla:1.11-${tesla_version}"
+//    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
+//    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile group: "net.shadowfacts", name: "Forgelin", version: '1.4.1'
-    deobfCompile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
-    deobfCompile "com.blamejared:MTLib:2.0.1.9"
+    compile group: "net.shadowfacts", name: "Forgelin", version: '1.5.0'
+//    deobfCompile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
+//    deobfCompile "com.blamejared:MTLib:2.0.2.3"
 }
 
 processResources {
@@ -160,14 +127,13 @@ processResources {
 }
 
 curseforge {
-	apiKey = project.hasProperty('api_token') ? project.api_token : '0'
-	project {
-	    id = '237366'
+    apiKey = project.hasProperty('api_token') ? project.api_token : '0'
+    project {
+        id = '237366'
         changelog = file('src/main/resources/changelog.md')
-	    changelogType = 'markdown'
-        releaseType = 'release'
+        changelogType = 'markdown'
+        releaseType = 'alpha'
         relations {
-            requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
             optionalLibrary 'crafttweaker'
             optionalLibrary 'tesla'
@@ -176,7 +142,5 @@ curseforge {
             optionalLibrary 'just-enough-items-jei'
             optionalLibrary 'the-one-probe'
         }
-  }
+    }
 }
-
-

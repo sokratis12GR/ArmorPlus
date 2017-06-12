@@ -10,9 +10,6 @@ import net.minecraft.inventory.InventoryCrafting
 import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.ForgeHooks
-import net.thedragonteam.armorplus.registry.APItems.*
-import net.thedragonteam.armorplus.registry.ModAchievements
-import net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -74,17 +71,17 @@ class SlotCrafting(
         this.amountCrafted = 0
 
         when {
-            stack!!.item === guardianSword -> stack!!.addEnchantment(getEnchantment("sharpness"), 1)
-            stack!!.item === guardianBattleAxe -> stack!!.addEnchantment(getEnchantment("sharpness"), 1)
-            stack!!.item === guardianBow -> stack!!.addEnchantment(getEnchantment("power"), 1)
-            stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("thorns"), 3)
-            stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("unbreaking"), 3)
-            stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("depth_strider"), 3)
-            stack!!.item === theUltimateHelmet || stack!!.item === theUltimateChestplate || stack!!.item === theUltimateLeggings || stack!!.item === theUltimateBoots -> stack!!.addEnchantment(getEnchantment("mending"), 1)
-            stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> this.player.addStat(ModAchievements.craftGuardianArmor, 1)
-            stack!!.item === superStarHelmet || stack!!.item === superStarChestplate || stack!!.item === superStarLeggings || stack!!.item === superStarBoots -> this.player.addStat(ModAchievements.craftSuperStarArmor, 1)
-            stack!!.item === enderDragonHelmet || stack!!.item === enderDragonChestplate || stack!!.item === enderDragonLeggings || stack!!.item === enderDragonBoots -> this.player.addStat(ModAchievements.craftEnderDragonArmor, 1)
-            stack!!.item === theUltimateHelmet || stack!!.item === theUltimateChestplate || stack!!.item === theUltimateLeggings || stack!!.item === theUltimateBoots -> this.player.addStat(ModAchievements.craftTheUltimateArmor, 1)/*The Ultimate Power! - Achievement Trigger*//*The Power of the Ender Dragon! - Achievement Trigger*//*Godlike! - Achievement Trigger*//*Full of Thorns! - Achievement Trigger*//*Mending*//* Guardian Boots Enchantments*//*Guardian Armor Unbreaking 3*//*Guardian Armor Thorns*/
+        //      stack!!.item === guardianSword -> stack!!.addEnchantment(getEnchantment("sharpness"), 1)
+        //      stack!!.item === guardianBattleAxe -> stack!!.addEnchantment(getEnchantment("sharpness"), 1)
+        //      stack!!.item === guardianBow -> stack!!.addEnchantment(getEnchantment("power"), 1)
+        //      stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("thorns"), 3)
+        //      stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("unbreaking"), 3)
+        //      stack!!.item === guardianBoots -> stack!!.addEnchantment(getEnchantment("depth_strider"), 3)
+        //      stack!!.item === theUltimateHelmet || stack!!.item === theUltimateChestplate || stack!!.item === theUltimateLeggings || stack!!.item === theUltimateBoots -> stack!!.addEnchantment(getEnchantment("mending"), 1)
+        //      stack!!.item === guardianHelmet || stack!!.item === guardianChestplate || stack!!.item === guardianLeggings || stack!!.item === guardianBoots -> this.player.addStat(ModAchievements.craftGuardianArmor, 1)
+        //      stack!!.item === superStarHelmet || stack!!.item === superStarChestplate || stack!!.item === superStarLeggings || stack!!.item === superStarBoots -> this.player.addStat(ModAchievements.craftSuperStarArmor, 1)
+        //      stack!!.item === enderDragonHelmet || stack!!.item === enderDragonChestplate || stack!!.item === enderDragonLeggings || stack!!.item === enderDragonBoots -> this.player.addStat(ModAchievements.craftEnderDragonArmor, 1)
+        //      stack!!.item === theUltimateHelmet || stack!!.item === theUltimateChestplate || stack!!.item === theUltimateLeggings || stack!!.item === theUltimateBoots -> this.player.addStat(ModAchievements.craftTheUltimateArmor, 1)/*The Ultimate Power! - Achievement Trigger*//*The Power of the Ender Dragon! - Achievement Trigger*//*Godlike! - Achievement Trigger*//*Full of Thorns! - Achievement Trigger*//*Mending*//* Guardian Boots Enchantments*//*Guardian Armor Unbreaking 3*//*Guardian Armor Thorns*/
         }/*The Ultimate Power! - Achievement Trigger*//*The Power of the Ender Dragon! - Achievement Trigger*//*Godlike! - Achievement Trigger*//*Full of Thorns! - Achievement Trigger*//*Mending*//* Guardian Boots Enchantments*//*Guardian Armor Unbreaking 3*//*Guardian Armor Thorns*/
     }
 

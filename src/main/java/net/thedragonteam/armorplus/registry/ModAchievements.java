@@ -2,25 +2,10 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.registry;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
-import net.minecraftforge.common.AchievementPage;
-import net.thedragonteam.armorplus.ArmorPlus;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static net.thedragonteam.armorplus.registry.APBlocks.*;
-import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+/*package net.thedragonteam.armorplus.registry;
 
 public class ModAchievements {
-    public static Achievement craftCoalArmor,
+    public static Advancement craftCoalArmor,
             craftLapisArmor,
             craftRedstoneArmor,
             craftEmeraldArmor,
@@ -41,7 +26,7 @@ public class ModAchievements {
             craftHighTechBench,
             craftUltiTechBench,
             craftChampionBench;
-    public static Achievement armorPlus;
+    public static Advancement armorPlus;
     public static ArrayList<AchievementAP> normalCraftingAchievements = new ArrayList<>();
 
     public static void init() {
@@ -92,21 +77,21 @@ public class ModAchievements {
         AchievementPage.registerAchievementPage(arpAchievementPage);
     }
 
-    public static class AchievementAP extends Achievement {
-        public static List<Achievement> achievements = new ArrayList<>();
+    public static class AchievementAP extends Advancement {
+        public static List<Advancement> achievements = new ArrayList<>();
         ItemStack[] triggerItems;
 
-        public AchievementAP(String name, int x, int y, ItemStack icon, Achievement parent) {
-            super("achievement.armorplus." + name, "armorplus." + name, x, y, icon, parent);
+        public AchievementAP(String name, int x, int y, ItemStack icon, Advancement parent) {
+            super(setLocation(""),"achievement.armorplus." + name, "armorplus." + name, x, y, icon, parent);
             achievements.add(this);
             registerStat();
         }
 
-        public AchievementAP(String name, int x, int y, Item icon, Achievement parent) {
+        public AchievementAP(String name, int x, int y, Item icon, Advancement parent) {
             this(name, x, y, getItemStack(icon), parent);
         }
 
-        public AchievementAP(String name, int x, int y, Block icon, Achievement parent) {
+        public AchievementAP(String name, int x, int y, Block icon, Advancement parent) {
             this(name, x, y, getItemStack(icon), parent);
         }
 
@@ -117,3 +102,4 @@ public class ModAchievements {
         }
     }
 }
+*/

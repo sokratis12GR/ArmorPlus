@@ -8,7 +8,7 @@ import net.minecraft.client.gui.GuiScreen
 import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.ArmorPlus
-import net.thedragonteam.thedragonlib.util.TextUtils.formattedText
+import net.thedragonteam.armorplus.util.TextUtils.formattedText
 import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 import java.io.IOException

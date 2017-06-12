@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.enums.DevItems
-import net.thedragonteam.thedragonlib.util.ItemStackUtils
+import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 
 class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName()), IModelHelper {
 
@@ -28,10 +28,10 @@ class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName())
         this.initModel(this, registryName, 0)
     }
 
-    override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
+    override fun getSubItems(tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
         if (devItems.hasSubTypes()) {
-            subItems.add(ItemStackUtils.getItemStack(itemIn, 0))
-            subItems.add(ItemStackUtils.getItemStack(itemIn, 1))
+            subItems.add(getItemStack(this, 0))
+            subItems.add(getItemStack(this, 1))
         }
     }
 }

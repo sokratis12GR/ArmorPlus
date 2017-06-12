@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.client.gui.base.GuiBaseBench
 import net.thedragonteam.armorplus.container.ContainerChampionBench
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench
-import net.thedragonteam.thedragonlib.util.TextUtils
+import net.thedragonteam.armorplus.util.TextUtils
 
 /**
  * net.thedragonteam.armorplus.client.gui

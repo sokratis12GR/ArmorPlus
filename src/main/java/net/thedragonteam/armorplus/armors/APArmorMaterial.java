@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.armors;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,8 +18,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModPotions;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -27,46 +28,44 @@ import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.ArmorMaterial;
-import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.Companion;
+import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.INSTANCE;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack;
 
 public enum APArmorMaterial implements IStringSerializable {
-    COAL(Companion.getCoalArmor(),
+    COAL(coalArmor,
             "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK), getValueByName(coalArmorItemNameColor),
             enableFullCoalArmorEffect, coalArmorAddPotionEffect, coalArmorEffectLevel,
             enableCoalEffect, "empty"
     ),
-    LAPIS(Companion.getLapisArmor(),
+    LAPIS(lapisArmor,
             "lapis", getItemStack(Items.DYE, 4), getItemStack(LAPIS_BLOCK), getValueByName(lapisArmorItemNameColor),
             enableFullLapisArmorEffect, lapisArmorAddPotionEffect, lapisArmorEffectLevel,
             enableLapisEffect, "empty"
     ),
-    REDSTONE(Companion.getRedstoneArmor(),
+    REDSTONE(redstoneArmor,
             "redstone", getItemStack(Items.REDSTONE), getItemStack(REDSTONE_BLOCK), getValueByName(redstoneArmorItemNameColor),
             enableFullRedstoneArmorEffect, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel,
             enableRedstoneEffect, "empty"
     ),
-    EMERALD(Companion.getEmeraldArmor(),
+    EMERALD(emeraldArmor,
             "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK), getValueByName(emeraldArmorItemNameColor),
             enableFullEmeraldArmorEffect, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel,
             enableEmeraldEffect, "empty"
     ),
-    OBSIDIAN(Companion.getObsidianArmor(),
-            "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(compressedObsidian), getValueByName(obsidianArmorItemNameColor),
+    OBSIDIAN(obsidianArmor,
+            "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianArmorItemNameColor),
             enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel,
             enableObsidianEffect, "empty"
     ),
-    LAVA(Companion.getLavaArmor(),
+    LAVA(lavaArmor,
             "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaArmorItemNameColor),
             enableFullLavaArmorEffect, lavaArmorAddPotionEffect, lavaArmorEffectLevel,
             enableLavaEffect, "empty"
@@ -79,24 +78,24 @@ public enum APArmorMaterial implements IStringSerializable {
             }
             if (enableLavaArmorOnWaterTouchDeBuff) {
                 if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-                    INSTANCE.addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
+                    addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
                     itemStack.damageItem(1, entity);
                     entity.attackEntityFrom(DamageSource.DROWN, 1F);
                 }
             }
         }
     },
-    GUARDIAN(Companion.getGuardianArmor(),
+    GUARDIAN(guardianArmor,
             "guardian", getItemStack(materials, 1), getValueByName(guardianArmorItemNameColor),
             enableFullGuardianArmorEffect, guardianArmorAddPotionEffect, guardianArmorEffectLevel,
             enableGuardianEffect, "empty"
     ),
-    SUPER_STAR(Companion.getSuperStarArmor(),
+    SUPER_STAR(superStarArmor,
             "super_star", getItemStack(materials, 2), getValueByName(superStarArmorItemNameColor),
             enableFullSuperStarArmorEffect, superStarArmorAddPotionEffect, superStarArmorEffectLevel,
             enableSuperStarEffect, superStarArmorRemovePotionEffect
     ),
-    ENDER_DRAGON(Companion.getEnderDragonArmor(),
+    ENDER_DRAGON(enderDragonArmor,
             "ender_dragon", getItemStack(materials, 3), getValueByName(enderDragonArmorItemNameColor),
             enableFullEnderDragonArmorEffect, "empty", 0,
             enableEnderDragonEffect, enderDragonArmorRemovePotionEffect
@@ -116,13 +115,13 @@ public enum APArmorMaterial implements IStringSerializable {
                     entity.capabilities.allowFlying = false;
                 }
             }
-            if (INSTANCE.getPotion(this.getRemovePotionEffect()) != null && INSTANCE.getPotion(this.getRemovePotionEffect()) != ModPotions.INSTANCE.getEMPTY())
-                INSTANCE.removePotion(entity, INSTANCE.getPotion(this.getRemovePotionEffect()));
+            if (getPotion(this.getRemovePotionEffect()) != null && getPotion(this.getRemovePotionEffect()) != ModPotions.EMPTY)
+                removePotion(entity, getPotion(this.getRemovePotionEffect()));
         }
 
         @Override
         @SideOnly(Side.CLIENT)
-        public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
             final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
             if (isKeyDown()) {
                 addToolTipFull(tooltip, "Flight");
@@ -131,27 +130,27 @@ public enum APArmorMaterial implements IStringSerializable {
             }
         }
     },
-    ARDITE(Companion.getArditeArmor(), "ardite",
+    ARDITE(arditeArmor, "ardite",
             getTICItemStack("ingots", 1), getValueByName(arditeArmorItemNameColor),
             true, arditeArmorAddPotionEffect, arditeArmorEffectLevel,
             new boolean[4], "empty"
     ),
-    COBALT(Companion.getCobaltArmor(), "cobalt",
+    COBALT(cobaltArmor, "cobalt",
             getTICItemStack("ingots", 0), getValueByName(cobaltArmorItemNameColor),
             true, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel,
             new boolean[4], "empty"
     ),
-    MANYULLYN(Companion.getManyullynArmor(), "manyullyn",
+    MANYULLYN(manyullynArmor, "manyullyn",
             getTICItemStack("ingots", 2), getValueByName(manyullynArmorItemNameColor),
             true, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel,
             new boolean[4], "empty"
     ),
-    KNIGHT_SLIME(Companion.getKnightSlimeArmor(), "knight_slime",
+    KNIGHT_SLIME(knightSlimeArmor, "knight_slime",
             getTICItemStack("ingots", 3), getValueByName(knightSlimeArmorItemNameColor),
             true, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel,
             new boolean[4], "empty"
     ),
-    PIG_IRON(Companion.getPigIronArmor(), "pig_iron",
+    PIG_IRON(pigIronArmor, "pig_iron",
             getTICItemStack("ingots", 4), getValueByName(pigIronArmorItemNameColor),
             true, pigIronArmorAddPotionEffect, pigIronArmorEffectLevel,
             new boolean[4], "empty"
@@ -166,7 +165,7 @@ public enum APArmorMaterial implements IStringSerializable {
             if (enablePigIronArmorEffect) {
                 if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) return;
                 if (head.getItem() == pigIronHelmet && chest.getItem() == pigIronChestplate && legs.getItem() == pigIronLeggings && feet.getItem() == pigIronBoots && entity.getFoodStats().needFood()) {
-                    INSTANCE.addPotion(entity, this.getAddPotionEffect(), this.getAddPotionEffectAmplifier(), GOOD);
+                    addPotion(entity, this.getAddPotionEffect(), this.getAddPotionEffectAmplifier(), GOOD);
                     head.damageItem(1, entity);
                     chest.damageItem(1, entity);
                     legs.damageItem(1, entity);
@@ -175,12 +174,12 @@ public enum APArmorMaterial implements IStringSerializable {
             }
         }
     },
-    SLIME(Companion.getSlimeArmor(), "slime",
+    SLIME(slimeArmor, "slime",
             getItemStack(Items.SLIME_BALL), getItemStack(SLIME_BLOCK), getValueByName(slimeArmorItemNameColor),
             enableFullSlimeArmorEffect, slimeArmorAddPotionEffect, slimeArmorEffectLevel,
             enableSlimeEffect, "empty"
     ),
-    CHICKEN(Companion.getChickenArmor(), "chicken",
+    CHICKEN(chickenArmor, "chicken",
             getItemStack(Items.FEATHER), getValueByName(chickenArmorItemNameColor),
             enableFullCoalArmorEffect, chickenArmorAddPotionEffect, chickenArmorEffectLevel,
             enableChickenEffect, "empty"
@@ -219,7 +218,6 @@ public enum APArmorMaterial implements IStringSerializable {
         return this.armorMaterial;
     }
 
-    @NotNull
     @Override
     public String getName() {
         return this.name;
@@ -261,13 +259,13 @@ public enum APArmorMaterial implements IStringSerializable {
     }
 
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
             if (!this.enableFullArmorEffect()) {
-                addToolTipPiece(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
+                addToolTipPiece(tooltip, localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
             }
-            addToolTipFull(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
+            addToolTipFull(tooltip, localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
         } else {
             showInfo(tooltip, keyBindSneak, this.getFormatting());
         }

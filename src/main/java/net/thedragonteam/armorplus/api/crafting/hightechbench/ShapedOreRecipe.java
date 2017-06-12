@@ -20,7 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ShapedOreRecipe implements IRecipe {
+public abstract class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
     public static final int MAX_CRAFT_GRID_WIDTH = 4;
     public static final int MAX_CRAFT_GRID_HEIGHT = 4;
@@ -96,12 +96,12 @@ public class ShapedOreRecipe implements IRecipe {
             } else if (in instanceof String) {
                 itemMap.put(chr, OreDictionary.getOres((String) in));
             } else {
-                String ret = "Invalid shaped ore recipe: ";
+                StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
                 for (Object tmp : recipe) {
-                    ret += tmp + ", ";
+                    ret.append(tmp).append(", ");
                 }
-                ret += output;
-                throw new RuntimeException(ret);
+                ret.append(output);
+                throw new RuntimeException(ret.toString());
             }
         }
 
@@ -147,7 +147,7 @@ public class ShapedOreRecipe implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+ //   @Override
     public int getRecipeSize() {
         return input.length;
     }

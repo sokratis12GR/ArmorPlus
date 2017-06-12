@@ -294,7 +294,7 @@ item.armorplus.the_ultimate_part_boots_right.name=The Ultimate Boots Right
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=Compressed Obsidian
-tile.armorplus.block_lava_crystal.name=Ore Lava Crystal
+tile.armorplus.ore_lava_crystal.name=Ore Lava Crystal
 tile.armorplus.steel_block.name=Block of Steel
 tile.armorplus.electrical_block.name=Electrical Block
 tile.armorplus.workbench.name=Workbench
@@ -334,8 +334,11 @@ tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 tile.armorplus.lava_infuser.name=Lava Infuser
 tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
 tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
-tile.armorplus.lava_crystal_block.name=Block of Lava Crystal
-tile.armorplus.lava_crystal_block_infused.name=Block of Infused Lava Crystal
+
+tile.armorplus.block_lava_crystal.name=Block of Lava Crystal
+tile.armorplus.block_infused_lava_crystal.name=Block of Infused Lava Crystal
+tile.armorplus.block_compressed_lava_crystal.name=Compressed Lava Crystal Block
+tile.armorplus.block_compressed_infused_lava_crystal.name=Compressed Infused Lava Crystal Block
 
 ##Dungeon Blocks
 tile.armorplus.ender_stone.name=Ender Stone

@@ -9,8 +9,9 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 public class BlockLavaCrystal extends BlockBase implements IModelHelper {
 
+    //TODO: Rename to "block_lava_crystal"
     public BlockLavaCrystal() {
-        super(Material.IRON, "lava_crystal_block", 1000, 5.0F, ToolType.PICKAXE, 3);
+        super(Material.IRON, "block_lava_crystal", 1000, 5.0F, ToolType.PICKAXE, 3);
     }
 
     @Override

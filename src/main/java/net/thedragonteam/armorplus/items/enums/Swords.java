@@ -16,6 +16,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -24,14 +25,12 @@ import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.INSTANCE;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum Swords implements IStringSerializable {
     COAL(swordCoalMaterial, "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK),
@@ -46,7 +45,7 @@ public enum Swords implements IStringSerializable {
     EMERALD(swordEmeraldMaterial, "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK),
             getValueByName(emeraldWeaponItemNameColor), setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
             enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(compressedObsidian),
+    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian),
             getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
     LAVA(swordLavaMaterial, "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1),
@@ -163,7 +162,7 @@ public enum Swords implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            INSTANCE.addPotion(target, INSTANCE.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 

@@ -8,7 +8,7 @@ import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.inventory.Container
 import net.minecraft.util.ResourceLocation
-import net.thedragonteam.thedragonlib.util.TextUtils
+import net.thedragonteam.armorplus.util.TextUtils
 
 open class GuiBaseBench(container: Container, var resourceLocation: ResourceLocation, var name: String, xSize: Int, ySize: Int) : GuiContainer(container) {
 

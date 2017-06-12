@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
  * - TheDragonTeam
  */
-public class ShapedRecipes implements IRecipe {
+public abstract class ShapedRecipes implements IRecipe {
     /**
      * How many horizontal itemHandler this recipe is wide.
      */
@@ -142,7 +142,7 @@ public class ShapedRecipes implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+ //   @Override
     public int getRecipeSize() {
         return this.recipeWidth * this.recipeHeight;
     }

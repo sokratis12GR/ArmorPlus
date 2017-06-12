@@ -5,21 +5,13 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModItemRecipes;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTierTwoRecipes;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -37,13 +29,12 @@ public class HighTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private HighTechBenchCraftingManager() {
+  //      new ModTierTwoRecipes().addRecipes(this);
+  //      new ModItemRecipes().addRecipes(this);
+  //      new ModWeaponTierTwoRecipes().addRecipes(this);
+  //      new ModTinkersConstructRecipes().addRecipes(this);
 
-        new ModTierTwoRecipes().addRecipes(this);
-        new ModItemRecipes().addRecipes(this);
-        new ModWeaponTierTwoRecipes().addRecipes(this);
-        new ModTinkersConstructRecipes().addRecipes(this);
-
-        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+  //    this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -59,7 +50,7 @@ public class HighTechBenchCraftingManager {
     /**
      * Adds a shaped recipe to the games recipe list.
      */
-    public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
+  /* public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
@@ -111,10 +102,10 @@ public class HighTechBenchCraftingManager {
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
-
+*/
     /**
      * Adds a shapeless crafting recipe to the the game.
-     */
+     *//*
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
 
@@ -131,7 +122,7 @@ public class HighTechBenchCraftingManager {
         }
 
         this.recipes.add(new ShapelessRecipes(stack, list));
-    }
+    }*/
 
     /**
      * Adds an IRecipe to the list of crafting recipes.

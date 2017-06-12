@@ -22,7 +22,7 @@ import java.util.Map;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class ShapelessOreRecipe implements IRecipe {
+public abstract class ShapelessOreRecipe implements IRecipe {
     protected ItemStack output = ItemStack.EMPTY;
     protected NonNullList<Object> input = NonNullList.create();
 
@@ -74,7 +74,7 @@ public class ShapelessOreRecipe implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+  //  @Override
     public int getRecipeSize() {
         return input.size();
     }

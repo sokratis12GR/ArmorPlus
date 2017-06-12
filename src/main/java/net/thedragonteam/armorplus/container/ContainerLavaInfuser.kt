@@ -47,16 +47,16 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
         for (listener in this.listeners) {
 
             if (this.cookTime != this.tile.getField(2))
-                listener.sendProgressBarUpdate(this, 2, this.tile.getField(2))
+                listener.sendWindowProperty(this, 2, this.tile.getField(2))
 
             if (this.furnaceBurnTime != this.tile.getField(0))
-                listener.sendProgressBarUpdate(this, 0, this.tile.getField(0))
+                listener.sendWindowProperty(this, 0, this.tile.getField(0))
 
             if (this.currentItemBurnTime != this.tile.getField(1))
-                listener.sendProgressBarUpdate(this, 1, this.tile.getField(1))
+                listener.sendWindowProperty(this, 1, this.tile.getField(1))
 
             if (this.totalCookTime != this.tile.getField(3))
-                listener.sendProgressBarUpdate(this, 3, this.tile.getField(3))
+                listener.sendWindowProperty(this, 3, this.tile.getField(3))
         }
 
         this.cookTime = this.tile.getField(2)

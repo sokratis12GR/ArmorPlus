@@ -38,9 +38,9 @@ public class OreLavaCrystal extends BlockBase {
 
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    //Rename to "ore_lava_crystal" after major update
+    //TODO: Rename to "ore_lava_crystal" after major update
     public OreLavaCrystal() {
-        super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
+        super(Material.ROCK, "ore_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }
 
     @Override
@@ -96,9 +96,7 @@ public class OreLavaCrystal extends BlockBase {
      * Get the MapColor for this Block and the given BlockState
      */
     @Override
-    @Nonnull
-    @SuppressWarnings("deprecation")
-    public MapColor getMapColor(IBlockState state) {
+    public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_) {
         return MapColor.RED;
     }
 }

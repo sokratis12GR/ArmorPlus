@@ -10,7 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
-import net.thedragonteam.thedragonlib.util.TextUtils
+import net.thedragonteam.armorplus.util.TextUtils
 
 class GuiLavaInfuser(playerInv: InventoryPlayer, private val tile: TileEntityLavaInfuser) : GuiContainer(ContainerLavaInfuser(playerInv, tile)) {
 

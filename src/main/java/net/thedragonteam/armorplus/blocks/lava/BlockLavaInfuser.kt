@@ -28,7 +28,7 @@ import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
-import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
+import net.thedragonteam.armorplus.registry.APBlocks.lavaInfuser
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.Utils.setName

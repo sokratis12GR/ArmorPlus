@@ -16,6 +16,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.util.PotionUtils;
 
 import javax.annotation.Nonnull;
@@ -25,13 +26,12 @@ import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialBattleAxe.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
 
 public enum BattleAxes implements IStringSerializable {
     COAL(battleAxeCoalMaterial, "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK), getValueByName(coalWeaponItemNameColor),
@@ -47,7 +47,7 @@ public enum BattleAxes implements IStringSerializable {
     EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor),
             setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
             enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
             setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
     LAVA(battleAxeLavaMaterial, "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
@@ -170,7 +170,7 @@ public enum BattleAxes implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            PotionUtils.INSTANCE.addPotion(target, PotionUtils.INSTANCE.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            PotionUtils.addPotion(target, PotionUtils.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 

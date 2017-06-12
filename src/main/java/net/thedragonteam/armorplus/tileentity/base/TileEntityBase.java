@@ -13,9 +13,6 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.util.APTeslaUtils;
-import net.thedragonteam.armorplus.util.TeslaForgeUnitsWrapper;
 
 /**
  * ArmorPlus created by sokratis12GR
@@ -46,12 +43,6 @@ public abstract class TileEntityBase extends TileEntity {
         } else if (capability == CapabilityEnergy.ENERGY) {
             IEnergyStorage storage = this.getEnergyStorage(facing);
             if (storage != null) return (T) storage;
-        } else if (ArmorPlus.isTeslaLoaded() && (capability == APTeslaUtils.teslaConsumer || capability == APTeslaUtils.teslaProducer || capability == APTeslaUtils.teslaHolder)) {
-            IEnergyStorage storage = this.getEnergyStorage(facing);
-            if (storage != null) {
-                if (this.teslaWrapper == null) this.teslaWrapper = new TeslaForgeUnitsWrapper(storage);
-                return (T) this.teslaWrapper;
-            }
         }
         return super.getCapability(capability, facing);
     }

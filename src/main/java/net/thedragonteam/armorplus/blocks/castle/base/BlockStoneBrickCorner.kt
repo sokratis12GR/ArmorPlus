@@ -9,6 +9,8 @@ import net.minecraft.block.material.MapColor
 import net.minecraft.block.state.IBlockState
 import net.minecraft.item.ItemBlock
 import net.minecraft.util.BlockRenderLayer
+import net.minecraft.util.math.BlockPos
+import net.minecraft.world.IBlockAccess
 import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -50,7 +52,7 @@ class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IB
      * Get the MapColor for this Block and the given BlockState
      */
     @Suppress("OverridingDeprecatedMember")
-    override fun getMapColor(state: IBlockState?): MapColor {
+    override fun getMapColor(state: IBlockState?, p_180659_2_: IBlockAccess?, p_180659_3_: BlockPos?): MapColor {
         return this.stoneBricks.mapColor
     }
 }

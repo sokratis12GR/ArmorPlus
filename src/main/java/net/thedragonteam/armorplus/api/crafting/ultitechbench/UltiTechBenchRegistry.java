@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
 public class UltiTechBenchRegistry {
@@ -16,17 +15,17 @@ public class UltiTechBenchRegistry {
      * @param params are the parameters for the recipe
      * @result example: UltiTechBenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXXXX", "XXXXX", "XXXXX", "XXXXX", XXXXX", 'X', Items.Stick )
      */
-    public static void addRecipe(ItemStack output, Object... params) {
-        addShapedRecipe(output, params);
-    }
+  //  public static void addRecipe(ItemStack output, Object... params) {
+  //      addShapedRecipe(output, params);
+  //  }
 
-    public static IRecipe addShapedRecipe(ItemStack output, Object... params) {
-        return UltiTechBenchCraftingManager.getInstance().addRecipe(output, params);
-    }
-
-    public static void addShapelessRecipe(ItemStack output, Object... params) {
-        UltiTechBenchCraftingManager.getInstance().addShapelessRecipe(output, params);
-    }
+  //  public static IRecipe addShapedRecipe(ItemStack output, Object... params) {
+  //      return UltiTechBenchCraftingManager.getInstance().addRecipe(output, params);
+  //  }
+//
+  //  public static void addShapelessRecipe(ItemStack output, Object... params) {
+  //      UltiTechBenchCraftingManager.getInstance().addShapelessRecipe(output, params);
+  //  }
 
     /**
      * @param recipe {@link UltiTechBenchCraftingManager#addRecipe(IRecipe)}

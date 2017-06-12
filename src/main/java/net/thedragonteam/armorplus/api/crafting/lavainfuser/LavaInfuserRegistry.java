@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.api.crafting.lavainfuser;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuserRecipe;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -33,7 +32,7 @@ public class LavaInfuserRegistry {
         LavaInfuserManager.getInstance().getInfusingList().remove(recipe);
     }
 
-    public static void removeInfusingRecipe(LavaInfuserRecipe recipe) {
-        LavaInfuserManager.getInstance().getInfusingList().remove(recipe.output);
-    }
-}
+ //   public static void removeInfusingRecipe(LavaInfuserRecipe recipe) {
+ //       LavaInfuserManager.getInstance().getInfusingList().remove(recipe.output);
+ //   }
+}//

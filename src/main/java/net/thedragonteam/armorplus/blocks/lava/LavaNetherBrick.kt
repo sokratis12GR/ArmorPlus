@@ -59,14 +59,9 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
         return BlockStateContainer(this, FACING)
     }
 
-    /**
-     * Get the MapColor for this Block and the given BlockState
-     */
-    @Suppress("OverridingDeprecatedMember")
-    override fun getMapColor(state: IBlockState?): MapColor {
+    override fun getMapColor(state: IBlockState?, p_180659_2_: IBlockAccess?, p_180659_3_: BlockPos?): MapColor {
         return MapColor.NETHERRACK
     }
-
     companion object {
         val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)!!
     }

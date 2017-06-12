@@ -161,6 +161,11 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
         this.launchFreezeBombToEntity(0, target);
     }
 
+    @Override
+    public void setSwingingArms(boolean swingingArms) {
+
+    }
+
     private double getHeadX(int xPos) {
         if (xPos <= 0) {
             return this.posX;

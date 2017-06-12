@@ -10,7 +10,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.thedragonlib.util.TextUtils;
 
 import java.util.List;
 
@@ -20,8 +19,8 @@ import static net.minecraft.util.text.TextFormatting.GRAY;
 public class ToolTipUtils {
 
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(TextUtils.INSTANCE.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.INSTANCE.formattedText(formatting, "tooltip.showinfo.keybind", keyBinding.getDisplayName(),
-                TextUtils.INSTANCE.formattedText(GRAY, "tooltip.showinfo.end"))));
+        tooltip.add(TextUtils.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(formatting, "tooltip.showinfo.keybind", keyBinding.getDisplayName(),
+                TextUtils.formattedText(GRAY, "tooltip.showinfo.end"))));
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability, int amplifier) {

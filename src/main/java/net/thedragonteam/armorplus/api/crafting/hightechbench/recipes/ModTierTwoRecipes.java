@@ -2,19 +2,9 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
+//package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.ShapedOreRecipe;
-
-import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-
-/**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+/*
 public class ModTierTwoRecipes {
 
     public void addRecipes(HighTechBenchCraftingManager manager) {
@@ -340,4 +330,4 @@ public class ModTierTwoRecipes {
                 break;
         }
     }
-}
+}*/

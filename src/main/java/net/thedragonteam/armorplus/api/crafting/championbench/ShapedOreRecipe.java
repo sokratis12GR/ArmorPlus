@@ -20,7 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ShapedOreRecipe implements IRecipe {
+public abstract class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
     public static final int MAX_CRAFT_GRID_WIDTH = 10;
     public static final int MAX_CRAFT_GRID_HEIGHT = 10;
@@ -147,7 +147,7 @@ public class ShapedOreRecipe implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+//    @Override
     public int getRecipeSize() {
         return input.length;
     }

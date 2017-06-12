@@ -39,10 +39,6 @@ import javax.annotation.Nonnull;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-/**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
 public class TileEntityLavaInfuser extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] SLOTS_TOP = new int[]{0};
     private static final int[] SLOTS_BOTTOM = new int[]{2, 1};

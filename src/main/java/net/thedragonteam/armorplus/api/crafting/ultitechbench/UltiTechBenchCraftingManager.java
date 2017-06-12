@@ -5,18 +5,13 @@
 package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -34,14 +29,13 @@ public class UltiTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private UltiTechBenchCraftingManager() {
-
-        new ModUltimateRecipes().addRecipes(this);
-        new ModEnderDragonRecipes().addRecipes(this);
-        new ModSuperStarRecipes().addRecipes(this);
-        new ModGuardianRecipes().addRecipes(this);
-        new ModWeaponTierThreeRecipes().addRecipes(this);
-        new ModItemRecipes().addRecipes(this);
-        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+ //       new ModUltimateRecipes().addRecipes(this);
+ //       new ModEnderDragonRecipes().addRecipes(this);
+ //       new ModSuperStarRecipes().addRecipes(this);
+ //       new ModGuardianRecipes().addRecipes(this);
+ //       new ModWeaponTierThreeRecipes().addRecipes(this);
+ //       new ModItemRecipes().addRecipes(this);
+  //      this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
     }
 
     /**
@@ -57,7 +51,7 @@ public class UltiTechBenchCraftingManager {
     /**
      * Adds a shaped recipe to the games recipe list.
      */
-    public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
+ /*   public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
@@ -108,28 +102,28 @@ public class UltiTechBenchCraftingManager {
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
-    }
+    }*/
 
-    /**
-     * Adds a shapeless crafting recipe to the the game.
-     */
-    public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
-        List<ItemStack> list = Lists.newArrayList();
-
-        for (Object object : recipeComponents) {
-            if (object instanceof ItemStack) {
-                list.add(((ItemStack) object).copy());
-            } else if (object instanceof Item) {
-                list.add(new ItemStack((Item) object));
-            } else {
-                assert object instanceof Block : "Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!";
-
-                list.add(new ItemStack((Block) object));
-            }
-        }
-
-        this.recipes.add(new ShapelessRecipes(stack, list));
-    }
+  //  /**
+  //   * Adds a shapeless crafting recipe to the the game.
+  //   */
+  //  public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
+  //      List<ItemStack> list = Lists.newArrayList();
+//
+  //      for (Object object : recipeComponents) {
+  //          if (object instanceof ItemStack) {
+  //              list.add(((ItemStack) object).copy());
+  //          } else if (object instanceof Item) {
+  //              list.add(new ItemStack((Item) object));
+  //          } else {
+  //              assert object instanceof Block : "Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!";
+//
+  //              list.add(new ItemStack((Block) object));
+  //          }
+  //      }
+//
+  //      this.recipes.add(new ShapelessRecipes(stack, list));
+  //  }
 
     /**
      * Adds an IRecipe to the list of crafting recipes.

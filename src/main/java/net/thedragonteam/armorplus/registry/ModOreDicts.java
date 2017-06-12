@@ -12,9 +12,9 @@ import static net.minecraft.init.Items.ARROW;
 import static net.minecraft.init.Items.COAL;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
-import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModOreDicts {
@@ -35,6 +35,8 @@ public class ModOreDicts {
         registerOre("oreLavaCrystal", oreLavaCrystal);
         registerOre("blockLavaCrystal", blockLavaCrystal);
         registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
+        registerOre("blockCompressedLavaCrystal", blockCompressedLavaCrystal);
+        registerOre("blockCompressedInfusedLavaCrystal", blockCompressedInfusedLavaCrystal);
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);
@@ -65,7 +67,6 @@ public class ModOreDicts {
         registerWildOre("materialUltimate", materials, 4);
         registerWildOre("scaleGuardian", materials, 1);
         registerWildOre("scaleEnderDragon", materials, 3);
-        registerOre("rodTesla", itemTeslaRod);
         //Vanilla
         registerOre("itemCoal", COAL);
         registerOre("coal", COAL);

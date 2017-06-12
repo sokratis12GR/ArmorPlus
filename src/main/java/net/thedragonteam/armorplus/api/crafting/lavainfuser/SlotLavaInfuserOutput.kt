@@ -10,7 +10,7 @@ import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.FMLCommonHandler
 
-class SlotLavaInfuserOutput(
+ class SlotLavaInfuserOutput(
         /**
          * The player that is using the GUI where this slot resides.
          */

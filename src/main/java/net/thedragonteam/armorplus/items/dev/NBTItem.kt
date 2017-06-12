@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.items.dev
 
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -32,9 +33,10 @@ class NBTItem : BaseItem("dev_item") {
 
     override fun setCreativeTab(tab: CreativeTabs): Item = this
 
-    override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
+    override fun addInformation(stack: ItemStack?, world: World?, tooltip: MutableList<String>?, advanced: ITooltipFlag?) {
         if (stack!!.hasTagCompound() && stack.tagCompound!!.hasKey("Level")) {
             tooltip!!.add("Item Level: " + Integer.toString(stack.tagCompound!!.getInteger("Level")))
         }
     }
+
 }

@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.items.base;
 
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
@@ -26,14 +27,14 @@ public class BaseSword extends ItemSword implements IModelHelper {
     public EnumRarity formattingName;
     public String itemName;
 
-    public BaseSword(ToolMaterial material, String name, ItemStack repairEasy, ItemStack repairExpert, String textFormatting) {
+    public BaseSword(Item.ToolMaterial material, String name, ItemStack repairEasy, ItemStack repairExpert, String textFormatting) {
         super(material);
         this.itemName = name;
         this.itemEasy = repairEasy;
         this.itemExpert = repairExpert;
         this.formatting = TextFormatting.getValueByName(textFormatting);
         this.setRegistryName(name);
-        this.setUnlocalizedName(Utils.INSTANCE.setName(name));
+        this.setUnlocalizedName(Utils.setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SWORD", formatting, "Sword");
@@ -46,7 +47,7 @@ public class BaseSword extends ItemSword implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @Override

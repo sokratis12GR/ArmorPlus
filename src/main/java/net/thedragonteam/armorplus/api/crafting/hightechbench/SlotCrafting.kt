@@ -12,8 +12,6 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.ForgeHooks
 import net.thedragonteam.armorplus.registry.APBlocks.ultiTechBench
-import net.thedragonteam.armorplus.registry.APItems.*
-import net.thedragonteam.armorplus.registry.ModAchievements
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -76,18 +74,18 @@ class SlotCrafting(
         this.amountCrafted = 0
 
         if (stack!!.item === Item.getItemFromBlock(ultiTechBench))
-            this.player.addStat(ModAchievements.craftUltiTechBench, 1)
+        //       this.player.addStat(ModAchievements.craftUltiTechBench, 1)
 
-        when {
-            stack!!.item === lavaHelmet || stack!!.item === lavaChestplate || stack!!.item === lavaLeggings || stack!!.item === lavaBoots -> this.player.addStat(ModAchievements.craftLavaArmor, 1)
-            stack!!.item === emeraldHelmet || stack!!.item === emeraldChestplate || stack!!.item === emeraldLeggings || stack!!.item === emeraldBoots -> this.player.addStat(ModAchievements.craftEmeraldArmor, 1)
-            stack!!.item === obsidianHelmet || stack!!.item === obsidianChestplate || stack!!.item === obsidianLeggings || stack!!.item === obsidianBoots -> this.player.addStat(ModAchievements.craftObsidianArmor, 1)
-            stack!!.item === cobaltHelmet || stack!!.item === cobaltChestplate || stack!!.item === cobaltLeggings || stack!!.item === cobaltBoots -> this.player.addStat(ModAchievements.craftCobaltArmor, 1)
-            stack!!.item === arditeHelmet || stack!!.item === arditeChestplate || stack!!.item === arditeLeggings || stack!!.item === arditeBoots -> this.player.addStat(ModAchievements.craftArditeArmor, 1)
-            stack!!.item === manyullynHelmet || stack!!.item === manyullynChestplate || stack!!.item === manyullynLeggings || stack!!.item === manyullynBoots -> this.player.addStat(ModAchievements.craftManyullynArmor, 1)
-            stack!!.item === pigIronHelmet || stack!!.item === pigIronChestplate || stack!!.item === pigIronLeggings || stack!!.item === pigIronBoots -> this.player.addStat(ModAchievements.craftPigIronArmor, 1)
-            stack!!.item === knightSlimeHelmet || stack!!.item === knightSlimeChestplate || stack!!.item === knightSlimeLeggings || stack!!.item === knightSlimeBoots -> this.player.addStat(ModAchievements.craftKnightSlimeArmor, 1)/* Fascinating! - Achievement Trigger*//* Oink! - Achievement Trigger*//*The Tinkers' Armors God! - Achievement Trigger*//*The Stronger The Better! - Achievement Trigger*/
-        }
+            when {
+            //         stack!!.item === lavaHelmet || stack!!.item === lavaChestplate || stack!!.item === lavaLeggings || stack!!.item === lavaBoots -> this.player.addStat(ModAchievements.craftLavaArmor, 1)
+            //         stack!!.item === emeraldHelmet || stack!!.item === emeraldChestplate || stack!!.item === emeraldLeggings || stack!!.item === emeraldBoots -> this.player.addStat(ModAchievements.craftEmeraldArmor, 1)
+            //         stack!!.item === obsidianHelmet || stack!!.item === obsidianChestplate || stack!!.item === obsidianLeggings || stack!!.item === obsidianBoots -> this.player.addStat(ModAchievements.craftObsidianArmor, 1)
+            //         stack!!.item === cobaltHelmet || stack!!.item === cobaltChestplate || stack!!.item === cobaltLeggings || stack!!.item === cobaltBoots -> this.player.addStat(ModAchievements.craftCobaltArmor, 1)
+            //         stack!!.item === arditeHelmet || stack!!.item === arditeChestplate || stack!!.item === arditeLeggings || stack!!.item === arditeBoots -> this.player.addStat(ModAchievements.craftArditeArmor, 1)
+            //         stack!!.item === manyullynHelmet || stack!!.item === manyullynChestplate || stack!!.item === manyullynLeggings || stack!!.item === manyullynBoots -> this.player.addStat(ModAchievements.craftManyullynArmor, 1)
+            //         stack!!.item === pigIronHelmet || stack!!.item === pigIronChestplate || stack!!.item === pigIronLeggings || stack!!.item === pigIronBoots -> this.player.addStat(ModAchievements.craftPigIronArmor, 1)
+            //         stack!!.item === knightSlimeHelmet || stack!!.item === knightSlimeChestplate || stack!!.item === knightSlimeLeggings || stack!!.item === knightSlimeBoots -> this.player.addStat(ModAchievements.craftKnightSlimeArmor, 1)/* Fascinating! - Achievement Trigger*//* Oink! - Achievement Trigger*//*The Tinkers' Armors God! - Achievement Trigger*//*The Stronger The Better! - Achievement Trigger*/
+            }
     }
 
     override fun onTake(player: EntityPlayer?, itemStack: ItemStack): ItemStack {

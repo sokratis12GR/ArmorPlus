@@ -4,21 +4,18 @@
 
 package net.thedragonteam.armorplus.api.crafting.lavainfuser;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.compat.minetweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 public class LavaInfuserManager {
     private static final LavaInfuserManager INSTANCE = new LavaInfuserManager();
-    private final List<LavaInfuserRecipe> recipes = Lists.newArrayList();
+   // private final List<LavaInfuserRecipe> recipes = Lists.newArrayList();
     private final Map<ItemStack, ItemStack> infusingList = Maps.newHashMap();
     private final Map<ItemStack, Double> experienceList = Maps.newHashMap();
 
@@ -58,16 +55,16 @@ public class LavaInfuserManager {
         this.addInfusing(input, stack, 0.0D);
     }
 
-    public void addInfusing(LavaInfuserRecipe recipe) {
-        this.recipes.add(recipe);
-    }
+   // public void addInfusing(LavaInfuserRecipe recipe) {
+  //      this.recipes.add(recipe);
+  //  }
 
     /**
      * Adds a infusing recipe using an ItemStack as the input for the recipe.
      */
     public void addInfusingRecipe(ItemStack input, ItemStack stack, double experience) {
         if (!getInfusingResult(input).isEmpty()) {
-            LogHelper.INSTANCE.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
+            LogHelper.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
             return;
         }
         this.infusingList.put(input, stack);
@@ -76,10 +73,10 @@ public class LavaInfuserManager {
 
     public void addInfusing(ItemStack input, ItemStack stack, double experience) {
         if (!getInfusingResult(input).isEmpty()) {
-            LogHelper.INSTANCE.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
+            LogHelper.info("Ignored infusing recipe with conflicting input: " + input + " = " + stack);
             return;
         }
-        this.recipes.add(new LavaInfuserRecipe(input, stack, experience));
+     //   this.recipes.add(new LavaInfuserRecipe(input, stack, experience));
     }
 
     /**
@@ -89,19 +86,19 @@ public class LavaInfuserManager {
         this.infusingList.remove(recipe);
     }
 
-    /**
-     * Removes an IRecipe to the list of crafting recipes.
-     */
-    public void removeFromRecipe(LavaInfuserRecipe recipe) {
-        this.infusingList.remove(recipe.output);
-    }
-
-    /**
-     * Removes an IRecipe to the list of crafting recipes.
-     */
-    public void removeRecipe(LavaInfuserRecipe recipe) {
-        this.recipes.remove(recipe);
-    }
+  //  /**
+  //   * Removes an IRecipe to the list of crafting recipes.
+  //   */
+  //  public void removeFromRecipe(LavaInfuserRecipe recipe) {
+  //      this.infusingList.remove(recipe.output);
+  //  }
+//
+  //  /**
+  //   * Removes an IRecipe to the list of crafting recipes.
+  //   */
+  //  public void removeRecipe(LavaInfuserRecipe recipe) {
+   //     this.recipes.remove(recipe);
+   // }
 
     /**
      * Returns the infusing result of an item.
@@ -126,9 +123,9 @@ public class LavaInfuserManager {
         return this.infusingList;
     }
 
-    public List<LavaInfuserRecipe> getRecipeList() {
-        return this.recipes;
-    }
+  //  public List<LavaInfuserRecipe> getRecipeList() {
+  //      return this.recipes;
+  //  }
 
     public double getInfusingExperience(ItemStack stack) {
         float ret = stack.getItem().getSmeltingExperience(stack);

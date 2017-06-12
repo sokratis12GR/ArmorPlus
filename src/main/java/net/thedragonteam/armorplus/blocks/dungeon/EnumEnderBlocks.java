@@ -1,7 +1,6 @@
 package net.thedragonteam.armorplus.blocks.dungeon;
 
 import net.minecraft.util.IStringSerializable;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Ender Dungeon Blocks - by sokratis12GR
@@ -13,7 +12,7 @@ public enum EnumEnderBlocks implements IStringSerializable {
     ENDER_GLOWSTONE("ender_glowstone", 1.0F),
     ENDER_FLOOR_1("ender_floor_1"),
     ENDER_FLOOR_2("ender_floor_2"),
-    ENDER_STONE_TRAP("ender_stone_trap");
+    ENDER_STONE_TRAP("ender_stone_trap"),;
 
     private final String name;
     private final float lightLevel;
@@ -28,7 +27,6 @@ public enum EnumEnderBlocks implements IStringSerializable {
     }
 
     @Override
-    @NotNull
     public String getName() {
         return name;
     }

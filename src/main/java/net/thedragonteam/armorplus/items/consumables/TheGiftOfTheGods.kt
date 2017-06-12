@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.items.consumables
 
 import net.minecraft.client.Minecraft
 import net.minecraft.client.settings.GameSettings
+import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.EnumRarity
 import net.minecraft.item.Item
@@ -16,15 +17,15 @@ import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
 import net.minecraft.util.text.TextFormatting.*
 import net.minecraft.world.World
-import net.minecraftforge.common.util.EnumHelper.addRarity
 import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.APConfig.*
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.base.BaseItem
+import net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity
+import net.thedragonteam.armorplus.util.TextUtils
+import net.thedragonteam.armorplus.util.TextUtils.setTextTranslation
 import net.thedragonteam.thedragonlib.util.ItemStackUtils
 import net.thedragonteam.thedragonlib.util.LogHelper
-import net.thedragonteam.thedragonlib.util.TextUtils
-import net.thedragonteam.thedragonlib.util.TextUtils.setTextTranslation
 import java.util.*
 
 /**
@@ -53,7 +54,7 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
 
     override fun setFull3D(): Item = this
 
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val blackListedItems = APConfig.blackListedItems.toList()
 
         val nbt: NBTTagCompound = if (playerIn.getHeldItem(hand).hasTagCompound()) playerIn.getHeldItem(hand).tagCompound as NBTTagCompound else NBTTagCompound()
@@ -65,8 +66,10 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         var item: Item? = ItemStack.EMPTY.item
         do {
             when {
-                APConfig.enableWhiteList -> if (APConfig.enableWhiteList)
-                    item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
+                APConfig.enableWhiteList -> {
+                    if (APConfig.enableWhiteList)
+                        item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
+                }
                 else -> {
                     count = 256 + random.nextInt(32000 - 256)
                     item = Item.getItemById(count)
@@ -74,7 +77,7 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
             }
         } while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
 
-        if (!worldIn!!.isRemote) {
+        if (!worldIn.isRemote) {
             if (enableTheGiftOfTheGods) {
                 val cooldown = 0
                 if (!playerIn.heldItemMainhand.isEmpty && playerIn.heldItemMainhand.item === playerIn.getHeldItem(hand).item || !playerIn.heldItemOffhand.isEmpty && playerIn.heldItemOffhand.item === playerIn.getHeldItem(hand).item)
@@ -95,7 +98,7 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         return ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(hand))
     }
 
-    override fun addInformation(stack: ItemStack?, playerIn: EntityPlayer?, tooltip: MutableList<String>?, advanced: Boolean) {
+    override fun addInformation(stack: ItemStack?, worldIn: World?, tooltip: MutableList<String>?, advanced: ITooltipFlag?) {
         val keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak
         val maxUses = APConfig.maxUses
         tooltip!!.add("$ITALIC${RED}This item can summon items which can potentially cause crashes")

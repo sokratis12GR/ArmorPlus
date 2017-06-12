@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
 public class HighTechBenchRegistry {
@@ -16,17 +15,17 @@ public class HighTechBenchRegistry {
      * @param params are the parameters for the recipe
      * @result example: HighTechBenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
      */
-    public static void addRecipe(ItemStack output, Object... params) {
-        addShapedRecipe(output, params);
-    }
+  // public static void addRecipe(ItemStack output, Object... params) {
+  //     addShapedRecipe(output, params);
+  // }
 
-    public static IRecipe addShapedRecipe(ItemStack output, Object... params) {
-        return HighTechBenchCraftingManager.getInstance().addRecipe(output, params);
-    }
+  // public static IRecipe addShapedRecipe(ItemStack output, Object... params) {
+  //     return HighTechBenchCraftingManager.getInstance().addRecipe(output, params);
+  // }
 
-    public static void addShapelessRecipe(ItemStack output, Object... params) {
-        HighTechBenchCraftingManager.getInstance().addShapelessRecipe(output, params);
-    }
+ //   public static void addShapelessRecipe(ItemStack output, Object... params) {
+  //      HighTechBenchCraftingManager.getInstance().addShapelessRecipe(output, params);
+  //  }
 
     /**
      * @param recipe {@link HighTechBenchCraftingManager#addRecipe(IRecipe)}

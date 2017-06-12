@@ -13,7 +13,7 @@ import net.minecraft.world.World
 import net.thedragonteam.armorplus.registry.ModItems
 import net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD
 import net.thedragonteam.armorplus.util.PotionUtils.addPotion
-import net.thedragonteam.thedragonlib.util.ParticlesHelper.Companion.spawnParticle
+import net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle
 
 class EntityLapisArrow : EntityArrow {
 

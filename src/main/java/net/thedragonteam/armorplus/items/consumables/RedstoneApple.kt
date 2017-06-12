@@ -8,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.MobEffects
 import net.minecraft.item.EnumRarity
-import net.minecraft.item.Item
 import net.minecraft.item.ItemFood
 import net.minecraft.item.ItemStack
 import net.minecraft.potion.PotionEffect
@@ -19,7 +18,6 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.iface.IModelHelper
-
 import net.thedragonteam.armorplus.util.Utils.setName
 
 /**
@@ -43,7 +41,9 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     /**
      * Return an item rarity from EnumRarity
      */
-    override fun getRarity(stack: ItemStack): EnumRarity = if (stack.metadata == 0) EnumRarity.RARE else EnumRarity.EPIC
+    override fun getRarity(stack: ItemStack): EnumRarity {
+        return if (stack.metadata == 0) EnumRarity.RARE else EnumRarity.EPIC
+    }
 
     override fun onFoodEaten(stack: ItemStack?, worldIn: World, player: EntityPlayer) {
         if (!worldIn.isRemote) {
@@ -55,9 +55,9 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
     @SideOnly(Side.CLIENT)
-    override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
-        subItems.add(ItemStack(itemIn))
-        subItems.add(ItemStack(itemIn, 1, 1))
+    override fun getSubItems(tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
+        subItems.add(ItemStack(this))
+        subItems.add(ItemStack(this, 1, 1))
     }
 
     override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(this, registryName, i) }

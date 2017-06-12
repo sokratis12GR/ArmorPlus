@@ -12,16 +12,11 @@ import net.minecraft.inventory.InventoryCraftResult
 import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraftingManager
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.SlotCrafting
+import net.thedragonteam.armorplus.api.crafting.championbench.SlotCrafting
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved
 import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench
 
-/**
- * net.thedragonteam.armorplus.container
- * ArmorPlus created by sokratis12GR on 6/19/2016 10:39 AM.
- * - TheDragonTeam
- */
 class ContainerChampionBench(playerInventory: InventoryPlayer, tile: TileEntityChampionBench) : ContainerBenchBase(tile, ContainerChampionBench.RECIPE_SLOTS, ContainerChampionBench.MAIN_INVENTORY_SLOTS, ContainerChampionBench.FULL_INVENTORY_SLOTS) {
     /**
      * The crafting matrix inventory (10x10).

@@ -20,7 +20,7 @@ import java.util.List;
  * ArmorPlus created by sokratis12GR on 6/19/2016 1:28 PM.
  * - TheDragonTeam
  */
-public class ShapelessRecipes implements IRecipe {
+public abstract class ShapelessRecipes implements IRecipe {
     public final List<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
@@ -95,7 +95,7 @@ public class ShapelessRecipes implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+  //  @Override
     public int getRecipeSize() {
         return this.input.size();
     }

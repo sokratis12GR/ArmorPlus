@@ -12,8 +12,6 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.common.ForgeHooks
 import net.thedragonteam.armorplus.registry.APBlocks.highTechBench
 import net.thedragonteam.armorplus.registry.APItems.*
-import net.thedragonteam.armorplus.registry.ModAchievements
-import net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItem
 
 /**
@@ -79,15 +77,15 @@ class SlotCrafting(
         this.amountCrafted = 0
 
         when {
-            stack!!.item === getItem(highTechBench) -> this.player.addStat(ModAchievements.craftHighTechBench, 1)
-            stack!!.item === lapisSword -> stack!!.addEnchantment(getEnchantment("looting"), 3)
-            stack!!.item === lapisBattleAxe -> stack!!.addEnchantment(getEnchantment("looting"), 3)
-            stack!!.item === lapisBow -> stack!!.addEnchantment(getEnchantment("looting"), 3)
-            stack!!.item === coalHelmet || stack!!.item === coalChestplate || stack!!.item === coalLeggings || stack!!.item === coalBoots -> this.player.addStat(ModAchievements.craftCoalArmor, 1)
-            stack!!.item === lapisHelmet || stack!!.item === lapisChestplate || stack!!.item === lapisLeggings || stack!!.item === lapisBoots -> this.player.addStat(ModAchievements.craftLapisArmor, 1)
-            stack!!.item === redstoneHelmet || stack!!.item === redstoneChestplate || stack!!.item === redstoneLeggings || stack!!.item === redstoneBoots -> this.player.addStat(ModAchievements.craftRedstoneArmor, 1)
-            stack!!.item === slimeHelmet || stack!!.item === slimeChestplate || stack!!.item === slimeLeggings || stack!!.item === slimeBoots -> this.player.addStat(ModAchievements.craftSlimeArmor, 1)
-            stack!!.item === chickenHelmet || stack!!.item === chickenChestplate || stack!!.item === chickenLeggings || stack!!.item === chickenBoots -> this.player.addStat(ModAchievements.craftChickenArmor, 1)
+     //       stack!!.item === getItem(highTechBench) -> this.player.addStat(ModAchievements.craftHighTechBench, 1)
+     //       stack!!.item === lapisSword -> stack!!.addEnchantment(getEnchantment("looting"), 3)
+     //       stack!!.item === lapisBattleAxe -> stack!!.addEnchantment(getEnchantment("looting"), 3)
+     //       stack!!.item === lapisBow -> stack!!.addEnchantment(getEnchantment("looting"), 3)
+     //       stack!!.item === coalHelmet || stack!!.item === coalChestplate || stack!!.item === coalLeggings || stack!!.item === coalBoots -> this.player.addStat(ModAchievements.craftCoalArmor, 1)
+     //       stack!!.item === lapisHelmet || stack!!.item === lapisChestplate || stack!!.item === lapisLeggings || stack!!.item === lapisBoots -> this.player.addStat(ModAchievements.craftLapisArmor, 1)
+     //       stack!!.item === redstoneHelmet || stack!!.item === redstoneChestplate || stack!!.item === redstoneLeggings || stack!!.item === redstoneBoots -> this.player.addStat(ModAchievements.craftRedstoneArmor, 1)
+     //       stack!!.item === slimeHelmet || stack!!.item === slimeChestplate || stack!!.item === slimeLeggings || stack!!.item === slimeBoots -> this.player.addStat(ModAchievements.craftSlimeArmor, 1)
+     //       stack!!.item === chickenHelmet || stack!!.item === chickenChestplate || stack!!.item === chickenLeggings || stack!!.item === chickenBoots -> this.player.addStat(ModAchievements.craftChickenArmor, 1)
         }
     }
 

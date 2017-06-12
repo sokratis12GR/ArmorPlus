@@ -4,22 +4,6 @@
 
 package net.thedragonteam.armorplus.registry;
 
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import static net.minecraft.init.Items.*;
-import static net.minecraftforge.fml.common.registry.GameRegistry.*;
-import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.*;
-import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.registry.ModOreDicts.colors;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-
 /**
  * net.thedragonteam.armorplus.registry
  * ArmorPlus created by sokratis12GR on 6/20/2016 6:44 PM.
@@ -28,20 +12,17 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModRecipes {
 
     public static void init() {
-
-        addShapedRecipes();
-        addShapelessRecipes();
-        if (Loader.isModLoaded("theoneprobe")) {
-            addIntegrationShapelessRecipes();
-        }
+        //     addShapedRecipes();
+        //     addShapelessRecipes();
+        //     if (Loader.isModLoaded("theoneprobe")) {
+        //          addIntegrationShapelessRecipes();
+        //      }
     }
 
-    public static void addIntegrationShapelessRecipes() {
-        /* NBT-Tag-Compound */
+  /*  public static void addIntegrationShapelessRecipes() {
         NBTTagCompound nbttagc = new NBTTagCompound();
         nbttagc.setInteger("theoneprobe", 1);
 
-        /* Set Helmets' NBT-Tags */
         ItemStack coalHelmet = new ItemStack(APItems.coalHelmet, 1);
         coalHelmet.setTagCompound(nbttagc);
         ItemStack emeraldHelmet = new ItemStack(APItems.emeraldHelmet, 1);
@@ -111,11 +92,15 @@ public class ModRecipes {
             addShapelessRecipe(pigIronHelmet, APItems.pigIronHelmet, getItemStack("theoneprobe", "probe"));
         if (enableKnightSlimeArmor)
             addShapelessRecipe(knightSlimeHelmet, APItems.knightSlimeHelmet, getItemStack("theoneprobe", "probe"));
-    }
+    }*/
 
-    public static void addShapedRecipes() {
+  /*  public static void addShapedRecipes() {
         addShapedRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
         addShapedRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
+
+        addShapedRecipe(getItemStack(ModBlocks.blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockLavaCrystal));
+        addShapedRecipe(getItemStack(ModBlocks.blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockInfusedLavaCrystal));
+
         addRecipe(new ItemStack(lavaNetherBrick, 4),
                 " N ",
                 "NLN",
@@ -190,5 +175,5 @@ public class ModRecipes {
 
     public static void addRecipeStoneBrick(Block block, String color) {
         addRecipe(new ShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
-    }
+    }*/
 }

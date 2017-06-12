@@ -20,7 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ShapelessOreRecipe implements IRecipe {
+public abstract class ShapelessOreRecipe implements IRecipe {
     protected ItemStack output = ItemStack.EMPTY;
     protected NonNullList<Object> input = NonNullList.create();
 
@@ -72,7 +72,7 @@ public class ShapelessOreRecipe implements IRecipe {
     /**
      * Returns the size of the recipe area
      */
-    @Override
+ //   @Override
     public int getRecipeSize() {
         return input.size();
     }

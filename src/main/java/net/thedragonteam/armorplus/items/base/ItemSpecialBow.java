@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.items.base;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,15 +31,16 @@ import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
+import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
-import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
 
 public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
@@ -62,7 +64,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(bows.getName() + "_bow");
-        this.setUnlocalizedName(INSTANCE.setName(bows.getName() + "_bow"));
+        this.setUnlocalizedName(Utils.setName(bows.getName() + "_bow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -91,11 +93,12 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
         else showInfo(tooltip, keyBindSneak, formatting);
     }
+
 
     @Override
     @Nonnull
@@ -105,7 +108,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return ArmorPlusItemUtils.INSTANCE.isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.isItemRepairable(repair, itemEasy, itemExpert);
     }
 
     @Nonnull
@@ -114,7 +117,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     }
 
     public float getVelocityOfArrow(ItemStack stack) {
-        NBTHelper.INSTANCE.checkNBT(stack);
+        NBTHelper.checkNBT(stack);
 
         NBTTagCompound tag = stack.getTagCompound();
 
