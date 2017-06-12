@@ -21,12 +21,12 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## Mod Integrations
 
-* **Tesla**
+* **Tesla** (Not in 1.12)
 * **RF** (Not in 1.11)
-* **Tinkers' Construct** (Not in 1.11 yet)
-* **The One Probe**
+* **Tinkers' Construct** (Not in 1.12 yet)
+* **The One Probe** (Not in 1.12 yet)
 * **Just Enough Items**
-* **Baubles**
+* **Baubles** (Not in 1.12)
 
 ## Mod's Official Wiki
 
