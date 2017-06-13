@@ -12,12 +12,12 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor;
-import static net.thedragonteam.armorplus.ArmorPlus.tabArmorplusItems;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
@@ -35,7 +35,7 @@ public class ItemUltimateParts extends Item implements IModelHelper {
         this.setRegistryName("the_ultimate_part");
         this.setUnlocalizedName(setName("the_ultimate_part"));
         GameRegistry.register(this);
-        this.setCreativeTab(tabArmorplusItems);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.formattingName = addRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
     }
 

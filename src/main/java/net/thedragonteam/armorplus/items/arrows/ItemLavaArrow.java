@@ -15,32 +15,33 @@ import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.ArrowUtils;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
+
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemLavaArrow extends ItemArrow implements IModelHelper {
 
     public ItemLavaArrow() {
-        this.setRegistryName("lava_arrow");
-        this.setUnlocalizedName(ArmorPlus.MODID + "." + "lava_arrow");
+        this.setRegistryName("infused_lava_arrow");
+        this.setUnlocalizedName(setName("infused_lava_arrow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
         this.initModel(this, getRegistryName(), 0);
     }
 
     @Override
-    public EntityArrow createArrow(@Nonnull World world, @Nonnull ItemStack itemstack, EntityLivingBase shooter) {
+    public EntityArrow createArrow(World world, ItemStack itemstack, EntityLivingBase shooter) {
         return new EntityLavaArrow(world, shooter);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         ArrowUtils.addArrowInformation(tooltip, "Sets on Fire", 5.5D, TextFormatting.GOLD);
     }
 }

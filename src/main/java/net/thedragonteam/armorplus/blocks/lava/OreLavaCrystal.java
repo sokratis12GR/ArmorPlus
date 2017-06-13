@@ -18,6 +18,8 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 
@@ -53,6 +55,12 @@ public class OreLavaCrystal extends BlockBase {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        this.initModel(this, getRegistryName(), 0, "normal");
+    }
+
+    @Override
     public int quantityDropped(IBlockState blockstate, int fortune, @Nonnull Random random) {
         return 1 + random.nextInt(1 + fortune);
     }
@@ -72,7 +80,6 @@ public class OreLavaCrystal extends BlockBase {
 
     @Override
     @Nonnull
-    @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -81,7 +88,6 @@ public class OreLavaCrystal extends BlockBase {
 
     @Override
     @Nonnull
-    @SuppressWarnings("deprecation")
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }

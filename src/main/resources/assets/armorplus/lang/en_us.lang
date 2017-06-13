@@ -165,10 +165,10 @@ item.armorplus.obsidian_leggings.name=Obsidian Leggings
 item.armorplus.obsidian_boots.name=Obsidian Boots
 
 #LavaArmor
-item.armorplus.lava_helmet.name=Infused Lava Helmet
-item.armorplus.lava_chestplate.name=Infused Lava Chestplate
-item.armorplus.lava_leggings.name=Infused Lava Leggings
-item.armorplus.lava_boots.name=Infused Lava Boots
+item.armorplus.infused_lava_helmet.name=Infused Lava Helmet
+item.armorplus.infused_lava_chestplate.name=Infused Lava Chestplate
+item.armorplus.infused_lava_leggings.name=Infused Lava Leggings
+item.armorplus.infused_lava_boots.name=Infused Lava Boots
 
 #SuperStarArmor
 item.armorplus.super_star_helmet.name=Super Star Helmet
@@ -265,8 +265,8 @@ item.armorplus.gui_tester.name=GUI Tester
 #Items
 item.armorplus.material_chainmail.name=Chainmail
 item.armorplus.reinforcing_material.name=Reinforcing Material
-item.armorplus.lava_crystal_normal.name=Lava Crystal
-item.armorplus.lava_crystal_charged.name=Infused Lava Crystal
+item.armorplus.lava_crystal.name=Lava Crystal
+item.armorplus.lava_crystal_infused.name=Infused Lava Crystal
 item.armorplus.steel_ingot.name=Steel Ingot
 item.armorplus.electrical_ingot.name=Electrical Ingot
 
@@ -355,7 +355,7 @@ item.armorplus.lapis_sword.name=Lapis Sword
 item.armorplus.redstone_sword.name=Redstone Sword
 item.armorplus.emerald_sword.name=Emerald Sword
 item.armorplus.obsidian_sword.name=Obsidian Sword
-item.armorplus.lava_sword.name=Infused Lava Sword
+item.armorplus.infused_lava_sword.name=Infused Lava Sword
 item.armorplus.super_star_sword.name=Super Star Sword
 item.armorplus.guardian_sword.name=Guardian Sword
 item.armorplus.ender_dragon_sword.name=Ender Dragon Sword
@@ -366,7 +366,7 @@ item.armorplus.lapis_battle_axe.name=Lapis Battle Axe
 item.armorplus.redstone_battle_axe.name=Redstone Battle Axe
 item.armorplus.emerald_battle_axe.name=Emerald Battle Axe
 item.armorplus.obsidian_battle_axe.name=Obsidian Battle Axe
-item.armorplus.lava_battle_axe.name=Infused Lava Battle Axe
+item.armorplus.infused_lava_battle_axe.name=Infused Lava Battle Axe
 item.armorplus.super_star_battle_axe.name=Super Star Battle Axe
 item.armorplus.guardian_battle_axe.name=Guardian Battle Axe
 item.armorplus.ender_dragon_battle_axe.name=Ender Dragon Battle Axe
@@ -377,7 +377,7 @@ item.armorplus.lapis_bow.name=Lapis Bow
 item.armorplus.redstone_bow.name=Redstone Bow
 item.armorplus.emerald_bow.name=Emerald Bow
 item.armorplus.obsidian_bow.name=Obsidian Bow
-item.armorplus.lava_bow.name=Infused Lava Bow
+item.armorplus.infused_lava_bow.name=Infused Lava Bow
 item.armorplus.super_star_bow.name=Super Star Bow
 item.armorplus.guardian_bow.name=Guardian Bow
 item.armorplus.ender_dragon_bow.name=Ender Dragon Bow
@@ -386,7 +386,7 @@ item.armorplus.ender_dragon_bow.name=Ender Dragon Bow
 item.armorplus.coal_arrow.name=Coal Arrow
 item.armorplus.lapis_arrow.name=Lapis Arrow
 item.armorplus.redstone_arrow.name=Redstone Arrow
-item.armorplus.lava_arrow.name=Infused Lava Arrow
+item.armorplus.infused_lava_arrow.name=Infused Lava Arrow
 item.armorplus.ender_dragon_arrow.name=Ender Dragon Arrow
 
 #TeslaItems
@@ -425,8 +425,8 @@ achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
 achievement.armorplus.craft_emerald_armor.desc=craft an Emerald Armor Piece
 achievement.armorplus.craft_obsidian_armor=Indestructible!
 achievement.armorplus.craft_obsidian_armor.desc=craft an Obsidian Armor Piece
-achievement.armorplus.craft_lava_armor=The Overpowered!
-achievement.armorplus.craft_lava_armor.desc=craft a Lava Armor Piece
+achievement.armorplus.craft_infused_lava_armor=The Overpowered!
+achievement.armorplus.craft_infused_lava_armor.desc=craft a Lava Armor Piece
 achievement.armorplus.craft_super_star_armor=Godlike!
 achievement.armorplus.craft_super_star_armor.desc=craft a Super Star Armor Piece
 achievement.armorplus.craft_ender_dragon_armor=The Power of the Ender Dragon!

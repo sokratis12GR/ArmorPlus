@@ -12,14 +12,6 @@ package net.thedragonteam.armorplus.compat;
 public class CompatibilityMineTweaker implements ICompatibility {
     @Override
     public void loadCompatibility(InitializationPhase phase) {
-     //   switch (phase) {
-     //       case POST_INIT:
-     //           try {
-     //               MTArmorPlusPlugin.init();
-     //           } catch (Throwable e) {
-     //               LogHelper.error("ArmorPlus seems to be having trouble with CraftTweaker.");
-     //           }
-     //   }
     }
 
     @Override

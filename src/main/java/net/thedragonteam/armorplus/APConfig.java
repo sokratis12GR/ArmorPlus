@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
-import static java.util.Arrays.fill;
+import static it.unimi.dsi.fastutil.booleans.BooleanArrays.fill;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
 
 /**
@@ -617,13 +617,13 @@ public class APConfig {
     public static boolean enableTheUltimateArmorInvincibility = false;
     @ModConfigProperty(category = "Armors.Ultimate.DeBuffs", name = "enableTheUltimateArmorDeBuffs", comment = "Enable/Disable The Ultimate Armor DeBuffs")
     public static boolean enableTheUltimateArmorDeBuffs = true;
-    //Items.Recipes
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
-    public static boolean enableRedstoneAppleRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
-    public static boolean enableElytraRecipe = false;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The armorplus arrow recipes")
-    public static boolean enableArrowRecipes = true;
+ //   //Items.Recipes
+ //   @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
+ //   public static boolean enableRedstoneAppleRecipes = true;
+ //   @ModConfigProperty(category = "Registry.Recipes", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
+ //   public static boolean enableElytraRecipe = false;
+ //   @ModConfigProperty(category = "Registry.Recipes", name = "enableArrowRecipes", comment = "Enable/Disable The armorplus arrow recipes")
+ //   public static boolean enableArrowRecipes = true;
     //MobDrops
     @ModConfigProperty(category = "MobDrops.EnderDragon", name = "enderDragonScaleDropAmount", comment = "Set the amount of dropped Ender Dragon Scales that the Ender Dragon will drop")
     public static int enderDragonScaleDropAmount = 12;
@@ -642,64 +642,64 @@ public class APConfig {
     @ModConfigProperty(category = "MobDrops.Guardian", name = "guardianScaleGuardianDrop", comment = "Enable/Disable the drop of Guardian Scales from the Guardian")
     public static boolean guardianScaleGuardianDrop = true;
 
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
-    public static boolean enableCoalArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
-    public static boolean enableCharcoalCoalArmorRecipe = false;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
-    public static boolean enableLapisArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
-    public static boolean enableRedstoneArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
-    public static boolean enableEmeraldArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
-    public static boolean enableObsidianArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
-    public static boolean enableLavaArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
-    public static boolean enableSuperStarArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
-    public static boolean enableEnderDragonArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
-    public static boolean enableGuardianArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
-    public static boolean enableTheUltimateArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
-    public static boolean enableChainArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
-    public static boolean enableArditeArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
-    public static boolean enableCobaltArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
-    public static boolean enableManyullynArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
-    public static boolean enablePigIronArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
-    public static boolean enableKnightSlimeArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
-    public static boolean enableSlimeArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
-    public static boolean enableChickenArmorRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
-    public static boolean enableSwordsRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
-    public static boolean enableBattleAxesRecipes = true;
-    @ModConfigProperty(category = "Registry.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
-    public static boolean enableBowsRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
+  //  public static boolean enableCoalArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
+  //  public static boolean enableCharcoalCoalArmorRecipe = false;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
+  //  public static boolean enableLapisArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
+  //  public static boolean enableRedstoneArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
+  //  public static boolean enableEmeraldArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
+  //  public static boolean enableObsidianArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
+  //  public static boolean enableLavaArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
+  //  public static boolean enableSuperStarArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
+  //  public static boolean enableEnderDragonArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
+  //  public static boolean enableGuardianArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
+  //  public static boolean enableTheUltimateArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
+  //  public static boolean enableChainArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
+  //  public static boolean enableArditeArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
+  //  public static boolean enableCobaltArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
+  //  public static boolean enableManyullynArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
+  //  public static boolean enablePigIronArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
+  //  public static boolean enableKnightSlimeArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
+  //  public static boolean enableSlimeArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
+  //  public static boolean enableChickenArmorRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
+  //  public static boolean enableSwordsRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
+  //  public static boolean enableBattleAxesRecipes = true;
+  //  @ModConfigProperty(category = "Registry.Recipes", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
+  //  public static boolean enableBowsRecipes = true;
+//
+  //  //EnergyItems
+  //  @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
+  //  public static int[] energyInput = new int[5];
+  //  @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
+  //  public static int[] energyOutput = new int[5];
+  //  @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
+  //  public static int[] maxEnergyCapacity = new int[5];
 
-    //EnergyItems
-    @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] energyInput = new int[5];
-    @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] energyOutput = new int[5];
-    @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] maxEnergyCapacity = new int[5];
-
-    static {
-        fill(energyInput, 10);
-        fill(energyOutput, 10);
-        fill(maxEnergyCapacity, 3000);
-    }
+   // static {
+   //     fill(energyInput, 10);
+   //     fill(energyOutput, 10);
+   //     fill(maxEnergyCapacity, 3000);
+   // }
 
     public static RecipesDifficulty getRD() {
         switch (gameMode) {
@@ -715,9 +715,9 @@ public class APConfig {
         return EXPERT;
     }
 
-    public static boolean hasRecipes() {
-        return getRD().hasRecipes();
-    }
+ //   public static boolean hasRecipes() {
+ //       return getRD().hasRecipes();
+ //   }
 
     public enum RecipesDifficulty {
         DISABLED(false) {

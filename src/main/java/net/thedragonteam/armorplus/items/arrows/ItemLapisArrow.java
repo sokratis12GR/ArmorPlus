@@ -20,7 +20,6 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.ArrowUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemLapisArrow extends ItemArrow implements IModelHelper {
@@ -45,7 +44,7 @@ public class ItemLapisArrow extends ItemArrow implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         ArrowUtils.addArrowInformation(tooltip, "Applies Nausea", 3.5, TextFormatting.DARK_AQUA);
     }
 }

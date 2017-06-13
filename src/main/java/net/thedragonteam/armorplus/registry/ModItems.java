@@ -21,8 +21,6 @@ import net.thedragonteam.armorplus.items.enums.*;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
-import java.util.Arrays;
-
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
@@ -89,15 +87,15 @@ public class ModItems {
     public static ItemEnderDragonArrow itemEnderDragonArrow;
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
-    public static BaseItem[] templates = new BaseItem[16];
-    public static String[] templateNames = new String[]{
-            "coal_template", "lapis_template", "redstone_template",
-            "emerald_template", "obsidian_template", "lava_template",
-            "chicken_template", "slime_template",
-            "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
-            "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
+  //  public static BaseItem[] templates = new BaseItem[16];
+  //  public static String[] templateNames = new String[]{
+  //          "coal_template", "lapis_template", "redstone_template",
+  //          "emerald_template", "obsidian_template", "lava_template",
+  //          "chicken_template", "slime_template",
+  //          "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
+  //          "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
 
-    public static void init() {
+    public static void registerItems() {
         twitchItem = new BaseDevItem(DevItems.TWITCH);
         beamItem = new BaseDevItem(DevItems.BEAM);
         theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
@@ -136,18 +134,17 @@ public class ModItems {
         registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
         //Bows
         registerBow(isBowEnabled, bow, bowType);
-             devTool = new DevTool();
+        devTool = new DevTool();
         itemCoalArrow = new ItemCoalArrow();
         itemLapisArrow = new ItemLapisArrow();
         itemRedstoneArrow = new ItemRedstoneArrow();
         itemLavaArrow = new ItemLavaArrow();
         itemEnderDragonArrow = new ItemEnderDragonArrow();
-             Arrays.setAll(templates, i -> (new BaseItem(templateNames[i])));
+       // Arrays.setAll(templates, i -> (new BaseItem(templateNames[i])));
     }
 
     @SideOnly(Side.CLIENT)
-    public static void initModels() {
-        itemEnderDragonArrow.initModel();
+    public static void initItemModels() {
         twitchItem.initModel();
         beamItem.initModel();
         theDragonTeamItem.initModel();
@@ -180,12 +177,13 @@ public class ModItems {
         registerSwordModel(isSwordEnabled, sword);
         registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
         registerBowModel(isBowEnabled, bow);
-            devTool.initModel();
-            nbtItem.initModel();
+        devTool.initModel();
+        nbtItem.initModel();
         itemCoalArrow.initModel();
         itemLapisArrow.initModel();
         itemRedstoneArrow.initModel();
         itemLavaArrow.initModel();
-           for (BaseItem template : templates) template.initModel();
+        itemEnderDragonArrow.initModel();
+        //  for (BaseItem template : templates) template.initModel();
     }
 }

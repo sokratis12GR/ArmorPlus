@@ -37,8 +37,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     public void registerModels() {
-        ModItems.initModels();
+        ModItems.initItemModels();
         ModBlocks.initModels();
-        ModEntities.initModels();
+        ModEntities.initEntityModels();
     }
 }

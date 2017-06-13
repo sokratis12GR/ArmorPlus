@@ -18,7 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModPotions;
 
 import java.util.List;
@@ -26,12 +25,11 @@ import java.util.List;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
-import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
@@ -61,12 +59,12 @@ public enum APArmorMaterial implements IStringSerializable {
             enableEmeraldEffect, "empty"
     ),
     OBSIDIAN(obsidianArmor,
-            "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianArmorItemNameColor),
+            "obsidian", getItemStack(Blocks.OBSIDIAN), EMPTY /*getItemStack(ModBlocks.compressedObsidian)*/, getValueByName(obsidianArmorItemNameColor),
             enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel,
             enableObsidianEffect, "empty"
     ),
     LAVA(lavaArmor,
-            "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaArmorItemNameColor),
+            "infused_lava", EMPTY /*getItemStack(lavaCrystal)*/, EMPTY /* getItemStack(lavaCrystal, 1)*/, getValueByName(lavaArmorItemNameColor),
             enableFullLavaArmorEffect, lavaArmorAddPotionEffect, lavaArmorEffectLevel,
             enableLavaEffect, "empty"
     ) {
@@ -86,17 +84,17 @@ public enum APArmorMaterial implements IStringSerializable {
         }
     },
     GUARDIAN(guardianArmor,
-            "guardian", getItemStack(materials, 1), getValueByName(guardianArmorItemNameColor),
+            "guardian", EMPTY /* getItemStack(materials, 1)*/, getValueByName(guardianArmorItemNameColor),
             enableFullGuardianArmorEffect, guardianArmorAddPotionEffect, guardianArmorEffectLevel,
             enableGuardianEffect, "empty"
     ),
     SUPER_STAR(superStarArmor,
-            "super_star", getItemStack(materials, 2), getValueByName(superStarArmorItemNameColor),
+            "super_star", EMPTY/* getItemStack(materials, 2)*/, getValueByName(superStarArmorItemNameColor),
             enableFullSuperStarArmorEffect, superStarArmorAddPotionEffect, superStarArmorEffectLevel,
             enableSuperStarEffect, superStarArmorRemovePotionEffect
     ),
     ENDER_DRAGON(enderDragonArmor,
-            "ender_dragon", getItemStack(materials, 3), getValueByName(enderDragonArmorItemNameColor),
+            "ender_dragon", EMPTY/* getItemStack(materials, 3)*/, getValueByName(enderDragonArmorItemNameColor),
             enableFullEnderDragonArmorEffect, "empty", 0,
             enableEnderDragonEffect, enderDragonArmorRemovePotionEffect
     ) {

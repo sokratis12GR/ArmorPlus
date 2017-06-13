@@ -121,7 +121,7 @@ public class APItems {
     }
 
     @SuppressWarnings({"Duplicates", "ConstantConditions"})
-    public static void init() {
+    public static void registerItems() {
         if (enableCoalArmor) {
             coalHelmet = coal[0];
             coalChestplate = coal[1];

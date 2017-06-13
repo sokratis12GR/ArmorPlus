@@ -19,7 +19,7 @@ public class APBlocks {
     public APBlocks() {
     }
 
-    public static void init() {
+    public static void registerBlocks() {
         workbench = benches[0];
         highTechBench = benches[1];
         ultiTechBench = benches[2];

@@ -25,7 +25,7 @@ import net.thedragonteam.armorplus.blocks.base.ToolType;
  * - TheDragonTeam
  */
 public class CompressedObsidian extends BlockBase {
-    private PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public CompressedObsidian() {
         super(Material.ROCK, "compressed_obsidian", 2000.0f, 50.0f, ToolType.PICKAXE, 3);
@@ -61,6 +61,7 @@ public class CompressedObsidian extends BlockBase {
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
+
 
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_) {

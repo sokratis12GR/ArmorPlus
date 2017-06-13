@@ -25,16 +25,15 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
@@ -43,7 +42,6 @@ import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
@@ -99,7 +97,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
         if (GameSettings.isKeyDown(keyBindSneak)) {
@@ -149,7 +147,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return isItemRepairable(repair, getItemStack(materials, 4), getItemStack(materials, 4));
+        return isItemRepairable(repair, EMPTY /*getItemStack(materials, 4)*/, EMPTY /*getItemStack(materials, 4)*/);
     }
 
     @Override

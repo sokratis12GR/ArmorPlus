@@ -26,7 +26,7 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
  */
 public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
 
-    private String[] LAVA_CRYSTAL_NAMES = new String[]{"_normal", "_charged"};
+    private String[] LAVA_CRYSTAL_NAMES = new String[]{"", "_infused"};
 
     private int[] BURN_TIME = new int[]{20000, 22000};
 
@@ -53,7 +53,7 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
     public String getUnlocalizedName(ItemStack stack) {
         for (int i = 0; i <= 1; i++)
             if (stack.getItemDamage() == i)
-                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[i];
+                return super.getUnlocalizedName(stack) +  LAVA_CRYSTAL_NAMES[i];
         return super.getUnlocalizedName(stack);
     }
 

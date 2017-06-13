@@ -26,7 +26,7 @@ import static net.thedragonteam.armorplus.util.TextUtils.setText;
 public class CommandArmorPlus extends CommandBase {
 
     private ArrayList<String> aliases = new ArrayList<>();
-    HashMap<String, ISubCommand> subCommands = new HashMap<>();
+    private HashMap<String, ISubCommand> subCommands = new HashMap<>();
 
     public CommandArmorPlus() {
         aliases.add("armorplus");
@@ -46,14 +46,13 @@ public class CommandArmorPlus extends CommandBase {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("armorplus", "arp", "a+");
+        return aliases;
     }
 
     @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,  BlockPos targetPos) {
         return super.getTabCompletions(server, sender, args, targetPos);
     }
-
 
     @Override
     public String getName() {

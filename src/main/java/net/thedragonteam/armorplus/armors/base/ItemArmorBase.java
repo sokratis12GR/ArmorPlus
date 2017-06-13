@@ -145,7 +145,7 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World world, List<String> tooltip, ITooltipFlag advanced) {
         material.addInformation(stack, world, tooltip, advanced);
     }
 

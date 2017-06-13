@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -30,11 +29,11 @@ import static net.thedragonteam.armorplus.util.PotionUtils.*;
 public class GlobalEventsArmorPlus {
     //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
 
-    @SubscribeEvent
-    public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
-        Item i = event.crafting.getItem();
-        //     if (i == Item.getItemFromBlock(APBlocks.workbench)) event.player.addStat(ModAchievements.welcomeToArmorPlus);
-    }
+    // @SubscribeEvent
+    // public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
+    ////     Item i = event.crafting.getItem();
+    //     //     if (i == Item.getItemFromBlock(APBlocks.workbench)) event.player.addStat(ModAchievements.welcomeToArmorPlus);
+    // }
 
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {
@@ -132,7 +131,7 @@ public class GlobalEventsArmorPlus {
         LogHelper.info("Refreshing configuration file");
     }
 
-    public static void syncConfig() {
+    private static void syncConfig() {
         if (configuration.hasChanged())
             configuration.save();
     }

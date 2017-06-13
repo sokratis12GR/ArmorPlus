@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 import static java.lang.String.format;
 import static net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin.jeiHelper;
-import static net.thedragonteam.armorplus.util.Utils.setResourceLocation;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 public class CategoryBase implements IRecipeCategory {
 
@@ -38,7 +38,7 @@ public class CategoryBase implements IRecipeCategory {
         this.yPos = outputYPos;
         this.xy = xy;
         this.category = category;
-        ResourceLocation location = setResourceLocation(format("textures/gui/container/gui_%sx%s.png", xy, xy));
+        ResourceLocation location = setRL(format("textures/gui/container/gui_%sx%s.png", xy, xy));
         background = jeiHelper.getGuiHelper().createDrawable(location, u, v, widthU, heightV);
         localizedName = TextUtils.formattedText(format("gui.jei.category.%sx%s", xy, xy));
         craftingGridHelper = jeiHelper.getGuiHelper().createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
@@ -75,7 +75,7 @@ public class CategoryBase implements IRecipeCategory {
 
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         JEIUtils.setRecipe(recipeLayout, recipeWrapper, ingredients, craftingGridHelper, xPos, yPos, xy, xy, INPUT_SLOT, OUTPUT_SLOT);
     }
 }

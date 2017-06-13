@@ -8,54 +8,52 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Objects;
+
+import static net.minecraftforge.client.model.ModelLoader.setCustomModelResourceLocation;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItem;
 
 public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
-    default void initModel(Block block, ResourceLocation registryName, int meta) {
-        initModel(Item.getItemFromBlock(block), registryName.toString(), meta);
+    default void initModel(Object object, String registryName, int meta) {
+        if (object instanceof Block) {
+            setCustomModelResourceLocation(getItem((Block) object), meta, new ModelResourceLocation(registryName, "inventory"));
+        } else if (object instanceof Item) {
+            setCustomModelResourceLocation((Item) object, meta, new ModelResourceLocation(registryName, "inventory"));
+        }
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(Block block, ResourceLocation registryName, int meta, String variantIn) {
-        if (variantIn == null) variantIn = "inventory";
-        initModel(Item.getItemFromBlock(block), registryName.toString(), meta, variantIn);
+    default void initModel(Object object, String registryName, int meta, String variantIn) {
+        if (variantIn == null || Objects.equals(variantIn, "")) variantIn = "inventory";
+        if (object instanceof Block) {
+            setCustomModelResourceLocation(getItem((Block) object), meta, new ModelResourceLocation(registryName, variantIn));
+        } else if (object instanceof Item) {
+            setCustomModelResourceLocation((Item) object, meta, new ModelResourceLocation(registryName, variantIn));
+        }
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(Block block, String registryName, int meta) {
-        initModel(Item.getItemFromBlock(block), registryName, meta);
+    default void initModel(Object object, ResourceLocation registryName, int meta) {
+        if (object instanceof Block) {
+            setCustomModelResourceLocation(getItem((Block) object), meta, new ModelResourceLocation(registryName, "inventory"));
+        } else if (object instanceof Item) {
+            setCustomModelResourceLocation((Item) object, meta, new ModelResourceLocation(registryName, "inventory"));
+        }
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(Block block, String registryName, int meta, String variantIn) {
-        if (variantIn == null) variantIn = "inventory";
-        initModel(Item.getItemFromBlock(block), registryName, meta, variantIn);
-    }
-
-    @SideOnly(Side.CLIENT)
-    default void initModel(Item item, ResourceLocation registryName, int meta) {
-        initModel(item, registryName.toString(), meta);
-    }
-
-    @SideOnly(Side.CLIENT)
-    default void initModel(Item item, ResourceLocation registryName, int meta, String variantIn) {
-        if (variantIn == null) variantIn = "inventory";
-        initModel(item, registryName.toString(), meta, variantIn);
-    }
-
-    @SideOnly(Side.CLIENT)
-    default void initModel(Item item, String registryName, int meta) {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(registryName, "inventory"));
-    }
-
-    @SideOnly(Side.CLIENT)
-    default void initModel(Item item, String registryName, int meta, String variantIn) {
-        if (variantIn == null) variantIn = "inventory";
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(registryName, variantIn));
+    default void initModel(Object object, ResourceLocation registryName, int meta, String variantIn) {
+        if (variantIn == null || Objects.equals(variantIn, "")) variantIn = "inventory";
+        if (object instanceof Block) {
+            setCustomModelResourceLocation(getItem((Block) object), meta, new ModelResourceLocation(registryName, variantIn));
+        } else if (object instanceof Item) {
+            setCustomModelResourceLocation((Item) object, meta, new ModelResourceLocation(registryName, variantIn));
+        }
     }
 
     @SideOnly(Side.CLIENT)

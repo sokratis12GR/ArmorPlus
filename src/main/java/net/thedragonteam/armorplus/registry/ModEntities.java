@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.storage.loot.LootTableList;
@@ -23,7 +24,7 @@ import static net.minecraftforge.fml.common.registry.EntityRegistry.addSpawn;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnEnd;
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
-import static net.thedragonteam.armorplus.util.Utils.setResourceLocation;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * net.thedragonteam.armorplus.entity
@@ -46,27 +47,43 @@ public class ModEntities {
     //Boss Projectile ID from 101 and up
     public static int FREEZE_BOMB = 101;
 
-    public static void init() {
+    private static void registerAPEntity(String name, Class<? extends Entity> entityClass, int id, int trackingRange, int eggPrimary, int eggSecondary) {
+        registerModEntity(setRL(name), entityClass, name, id, instance, trackingRange, 1, true, eggPrimary, eggSecondary);
+    }
+
+    private static void registerAPEntity(String name, Class<? extends Entity> entityClass, int id, int eggPrimary, int eggSecondary) {
+        registerAPEntity(name, entityClass, id, 64, eggPrimary, eggSecondary);
+    }
+
+    private static void registerAPEntity(String name, Class<? extends Entity> entityClass, int id, int trackingRange) {
+        registerModEntity(setRL(name), entityClass, name, id, instance, trackingRange, 1, true);
+    }
+
+    private static void registerAPEntity(String name, Class<? extends Entity> entityClass, int id) {
+        registerAPEntity(name, entityClass, id, 64);
+    }
+
+    public static void registerEntities() {
         // Every entity in ArmorPlus has an ID (local to this mod)
         // Entities
-       registerModEntity(setResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie.class, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, instance, 64, 1, true, 0x721164, 0x00ff00);
-       registerModEntity(setResourceLocation("ice_golem"), EntityIceGolem.class, "ice_golem", ICE_GOLEM, instance, 64, 1, true, 0xffffff, 0x00ff00);
-       // Arrows
-       registerModEntity(setResourceLocation("coal_arrow"), EntityCoalArrow.class, "coal_arrow", COAL_ARROW, instance, 64, 1, true);
-       registerModEntity(setResourceLocation("lapis_arrow"), EntityLapisArrow.class, "lapis_arrow", LAPIS_ARROW, instance, 64, 1, true);
-       registerModEntity(setResourceLocation("redstone_arrow"), EntityRedstoneArrow.class, "redstone_arrow", REDSTONE_ARROW, instance, 64, 1, true);
-       registerModEntity(setResourceLocation("lava_arrow"), EntityLavaArrow.class, "lava_arrow", LAVA_ARROW, instance, 64, 1, true);
-       registerModEntity(setResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow.class, "ender_dragon_arrow", ENDER_DRAGON_ARROW, instance, 64, 1, true);
+        registerAPEntity("ender_dragon_zombie", EntityEnderDragonZombie.class, ENDER_DRAGON_ZOMBIE, 0x721164, 0x00ff00);
+        registerAPEntity("ice_golem", EntityIceGolem.class, ICE_GOLEM, 0xffffff, 0x00ff00);
+        // Arrows
+        registerAPEntity("coal_arrow", EntityCoalArrow.class, COAL_ARROW);
+        registerAPEntity("lapis_arrow", EntityLapisArrow.class, LAPIS_ARROW);
+        registerAPEntity("redstone_arrow", EntityRedstoneArrow.class, REDSTONE_ARROW);
+        registerAPEntity("lava_arrow", EntityLavaArrow.class, LAVA_ARROW);
+        registerAPEntity("ender_dragon_arrow", EntityEnderDragonArrow.class, ENDER_DRAGON_ARROW);
 
         // Bosses
-        registerModEntity(setResourceLocation("overlord_of_the_guardians"), EntityGuardianOverlord.class, "overlord_of_the_guardians", OVERLORD_OF_THE_GUARDIANS, instance, 80, 1, true, 0x7ae4ff, 0x79a6ff);
+        registerAPEntity("overlord_of_the_guardians", EntityGuardianOverlord.class, OVERLORD_OF_THE_GUARDIANS, 80, 0x7ae4ff, 0x79a6ff);
         // Boss Projectiles
-        registerModEntity(setResourceLocation("freeze_bomb"), EntityFreezeBomb.class, "freeze_bomb", FREEZE_BOMB, instance, 64, 1, true);
+        registerAPEntity("freeze_bomb", EntityFreezeBomb.class, FREEZE_BOMB);
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually
-       if (enableEnderDragonZombieSpawnEnd)
-           addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
+        if (enableEnderDragonZombieSpawnEnd)
+            addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
 
         // This is the loot table for the mobs
         LootTableList.register(EntityEnderDragonZombie.Companion.getLOOT());
@@ -74,15 +91,15 @@ public class ModEntities {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void initModels() {
+    public static void initEntityModels() {
         //Mobs
-       registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
-       //Arrows
-       registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
-       registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
-       registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
-       registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
-       registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
+        registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
+        //Arrows
+        registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
+        registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
+        registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
+        registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
+        registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
         //Bosses
         registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
         //Boss Projectiles

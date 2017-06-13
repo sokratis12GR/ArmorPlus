@@ -10,10 +10,9 @@ import net.minecraftforge.fml.client.IModGuiFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
 import java.util.Set;
 
-class ConfigGuiFactory implements IModGuiFactory {
+public class ConfigGuiFactory implements IModGuiFactory {
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -31,7 +30,6 @@ class ConfigGuiFactory implements IModGuiFactory {
         return null;
     }
 
-    @Nullable
     @Override
     public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
         return null;

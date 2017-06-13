@@ -53,5 +53,4 @@ public class TextUtils {
         return setText(text).getFormattedText();
     }
 
-
 }

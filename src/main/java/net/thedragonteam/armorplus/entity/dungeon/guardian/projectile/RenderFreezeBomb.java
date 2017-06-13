@@ -12,8 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
-import javax.annotation.Nullable;
-
 /**
  * ArmorPlus - Kotlin created by sokratis12GR
  * - TheDragonTeam
@@ -27,7 +25,6 @@ public class RenderFreezeBomb extends Render<EntityFreezeBomb> {
         this.shadowSize = 0.5F;
     }
 
-    @Nullable
     @Override
     protected ResourceLocation getEntityTexture(EntityFreezeBomb entity) {
         return FREEZE_BOMB_TEXTURES;

@@ -22,6 +22,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.minecraft.init.Blocks.*;
+import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
@@ -48,7 +49,7 @@ public enum Swords implements IStringSerializable {
     OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian),
             getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(swordLavaMaterial, "lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1),
+    LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1),
             getValueByName(lavaWeaponItemNameColor), setLavaToolTip(), true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -98,9 +99,9 @@ public enum Swords implements IStringSerializable {
            boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this.material = materialIn;
         this.name = nameIn;
-        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY;
+        if (repairEasyIn == null) repairEasyIn = EMPTY;
         this.repairEasy = repairEasyIn;
-        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY;
+        if (repairExpertIn == null) repairExpertIn = EMPTY;
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.effect = effectIn;

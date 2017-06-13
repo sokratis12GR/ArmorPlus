@@ -20,18 +20,15 @@ import net.minecraftforge.items.IItemHandler;
  */
 public abstract class TileEntityBase extends TileEntity {
 
-    private Object teslaWrapper;
-
     public TileEntityBase() {
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+    public boolean hasCapability( Capability<?> capability, EnumFacing facing) {
         IItemHandler handler = this.getItemHandler(facing);
         return (handler != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing));
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {

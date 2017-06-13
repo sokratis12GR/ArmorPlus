@@ -14,6 +14,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import javax.annotation.Nonnull;
 
+import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
@@ -27,7 +28,7 @@ public enum Bows implements IStringSerializable {
     REDSTONE(redstoneBowDurability, "redstone", redstoneBowArrowBonusDamage, getItemStack(Items.REDSTONE), getItemStack(Blocks.REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor), redstoneBow),
     EMERALD(emeraldBowDurability, "emerald", emeraldBowArrowBonusDamage, getItemStack(Items.EMERALD), getItemStack(Blocks.EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor), emeraldBow),
     OBSIDIAN(obsidianBowDurability, "obsidian", obsidianBowArrowBonusDamage, getItemStack(Blocks.OBSIDIAN), getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor), obsidianBow),
-    LAVA(lavaBowDurability, "lava", lavaBowArrowBonusDamage, getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor), lavaBow),
+    LAVA(lavaBowDurability, "infused_lava", lavaBowArrowBonusDamage, getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor), lavaBow),
     GUARDIAN(guardianBowDurability, "guardian", guardianBowArrowBonusDamage, getItemStack(materials, 1), getValueByName(guardianWeaponItemNameColor), guardianBow),
     SUPER_STAR(superStarBowDurability, "super_star", superStarBowArrowBonusDamage, getItemStack(materials, 2), getValueByName(superStarWeaponItemNameColor), superStarBow),
     ENDER_DRAGON(enderDragonBowDurability, "ender_dragon", enderDragonBowArrowBonusDamage, getItemStack(materials, 3), getValueByName(enderDragonWeaponItemNameColor), enderDragonBow);
@@ -54,9 +55,9 @@ public enum Bows implements IStringSerializable {
         this.name = nameIn;
         this.durability = durabilityIn;
         this.damage = damageIn;
-        if (repairEasyIn == null) repairEasyIn = ItemStack.EMPTY;
+        if (repairEasyIn == null) repairEasyIn = EMPTY;
         this.repairEasy = repairEasyIn;
-        if (repairExpertIn == null) repairExpertIn = ItemStack.EMPTY;
+        if (repairExpertIn == null) repairExpertIn = EMPTY;
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.bowItem = bowItemIn;

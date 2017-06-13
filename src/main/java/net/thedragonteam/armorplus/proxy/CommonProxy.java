@@ -24,15 +24,15 @@ import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPh
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
-        ModSounds.init();
+        ModSounds.registerSounds();
         ModPotions.registerPotions();
-        ModEntities.init();
-        ModBlocks.init();
+        ModEntities.registerEntities();
+        ModBlocks.registerBlocks();
         LogHelper.debug("Blocks Successfully Registered");
-        APBlocks.init();
-        ModItems.init();// Initializes the items
+        APBlocks.registerBlocks();
+        ModItems.registerItems();// Initializes the items
         LogHelper.debug("Items Successfully Registered");
-        APItems.init(); // Initializes the helper item class
+        APItems.registerItems(); // Initializes the helper item class
         registerWorldGenerators();
         registerTileEntities();
         MinecraftForge.EVENT_BUS.register(new MobDrops());
@@ -45,8 +45,8 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         registerEvents();
         ModOreDicts.registerOreDictEntries();
-        APTab.init();
-      //  ModEnchantments.registerEnchantments();
+        APTab.registerTabs();
+        ModEnchantments.registerEnchantments();
         ModCompatibility.loadCompat(INIT);
         LogHelper.info("Finished Initialization");
     }
@@ -68,9 +68,8 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-        //    ModAchievements.init();
-        ModRecipes.init();
-        LavaInfuserRecipes.init();
+        //    ModRecipes.registerRecipes();
+        //    LavaInfuserRecipes.registerRecipes();
     }
 
     public void registerModels() {

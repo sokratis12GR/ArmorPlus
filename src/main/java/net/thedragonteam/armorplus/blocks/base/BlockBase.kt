@@ -8,6 +8,8 @@ import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.item.ItemBlock
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.util.Utils.setName
@@ -42,6 +44,7 @@ open class BlockBase @JvmOverloads constructor(material: Material, name: String,
         GameRegistry.register(ItemBlock(this), registryName)
     }
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
         this.initModel(this, registryName, 0)
     }

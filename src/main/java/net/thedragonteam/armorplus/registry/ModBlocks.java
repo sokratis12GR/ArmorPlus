@@ -58,7 +58,7 @@ public class ModBlocks {
     public static EnumEnderBlocks[] enumEnderBlocks = new EnumEnderBlocks[]{ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP};
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
 
-    public static void init() {
+    public static void registerBlocks() {
         Arrays.setAll(stoneBricks, s -> new BlockStoneBrick(stoneBrickTypes[s]));
         Arrays.setAll(stoneBrickTowers, s -> new BlockStoneBrickTower(stoneBrickTypes[s]));
         Arrays.setAll(stoneBrickCorners, s -> new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState()));

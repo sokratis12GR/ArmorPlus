@@ -27,14 +27,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -93,7 +91,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
         else showInfo(tooltip, keyBindSneak, formatting);
@@ -117,7 +115,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     }
 
     public float getVelocityOfArrow(ItemStack stack) {
-        NBTHelper.checkNBT(stack);
+        Utils.checkNBT(stack);
 
         NBTTagCompound tag = stack.getTagCompound();
 

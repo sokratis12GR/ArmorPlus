@@ -63,7 +63,7 @@ public class PotionEmpty extends PotionBaseGood {
     }
 
     @Override
-    public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
+    public void affectEntity( Entity source,  Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
         super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health);
     }
 }

@@ -19,6 +19,7 @@ import net.minecraft.util.text.TextFormatting.*
 import net.minecraft.world.World
 import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.APConfig.*
+import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.base.BaseItem
 import net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity
@@ -33,26 +34,17 @@ import java.util.*
  * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
  * - TheDragonTeam
  */
-class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
-
-    var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD") as EnumRarity
-
-    var maxUsable: Int = 0
+class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD")) : BaseItem("the_gift_of_the_gods"), IModelHelper {
 
     init {
         this.maxUsable = maxUses - 1
         this.maxDamage = maxUsable
+        this.creativeTab = ArmorPlus.tabArmorplusItems
     }
 
     override fun initModel() = this.initModel(this, registryName, 0)
 
     override fun getRarity(stack: ItemStack): EnumRarity = golden
-
-    override fun shouldRotateAroundWhenRendering(): Boolean = true
-
-    override fun isFull3D(): Boolean = true
-
-    override fun setFull3D(): Item = this
 
     override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val blackListedItems = APConfig.blackListedItems.toList()
@@ -115,7 +107,5 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         }
     }
 
-    companion object {
-        private val random = Random()
-    }
+    private val random = Random()
 }

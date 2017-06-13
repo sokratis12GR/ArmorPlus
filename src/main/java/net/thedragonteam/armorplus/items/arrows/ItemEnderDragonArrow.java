@@ -18,16 +18,16 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.entity.entityarrow.EntityEnderDragonArrow;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.ArrowUtils;
-import net.thedragonteam.armorplus.util.Utils;
 
-import javax.annotation.Nullable;
 import java.util.List;
+
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemEnderDragonArrow extends ItemArrow implements IModelHelper {
 
     public ItemEnderDragonArrow() {
         this.setRegistryName("ender_dragon_arrow");
-        this.setUnlocalizedName(Utils.setName("ender_dragon_arrow"));
+        this.setUnlocalizedName(setName("ender_dragon_arrow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
@@ -45,7 +45,7 @@ public class ItemEnderDragonArrow extends ItemArrow implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE);
     }
 

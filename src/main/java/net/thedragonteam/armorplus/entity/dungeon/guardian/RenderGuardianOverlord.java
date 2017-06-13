@@ -7,8 +7,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-
 /**
  * ArmorPlus - Kotlin created by sokratis12GR
  * - TheDragonTeam
@@ -21,7 +19,6 @@ public class RenderGuardianOverlord extends RenderLiving<EntityGuardianOverlord>
         super(renderManagerIn, new ModelGuardianOverlord(), 5.0F);
     }
 
-    @Nullable
     @Override
     protected ResourceLocation getEntityTexture(EntityGuardianOverlord entity) {
         return GUARDIAN_OVERLORD_TEXTURE;

@@ -12,7 +12,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
-import static net.thedragonteam.armorplus.registry.ModItems.lava;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -24,8 +23,8 @@ public class APTab extends CreativeTabs {
 
     private static ItemStack iconArmorPlus;
 
-    public static void init() {
-        iconArmorPlus = new ItemStack(lava[1]);
+    public static void registerTabs() {
+        iconArmorPlus = new ItemStack(APItems.lavaChestplate);
     }
 
     private int tab;
@@ -64,7 +63,7 @@ public class APTab extends CreativeTabs {
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getTabIconItem() {
-        return getIconItemStack();
+        return this.getIconItemStack();
     }
 
     @Override

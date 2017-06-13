@@ -13,15 +13,18 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.client.gui.APTab;
+import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
 import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
 public class ArmorPlus {
@@ -60,7 +63,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
-    public static final String DEPEND =  "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:mantle;" + "after:tconstruct;";
+    public static final String DEPEND = "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:mantle;" + "after:tconstruct;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
@@ -68,19 +71,21 @@ public class ArmorPlus {
     @SidedProxy(clientSide = ArmorPlus.CLIENT_PROXY, serverSide = ArmorPlus.SERVER_PROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs tabArmorplus = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "armors", 0);
-    public static CreativeTabs tabArmorplusItems = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "items", 1);
-    public static CreativeTabs tabArmorplusBlocks = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "blocks", 2);
-    public static CreativeTabs tabArmorplusWeapons = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "weapons", 3);
-    public static CreativeTabs tabArmorplusTinkers = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, ArmorPlus.MODID + "." + "tinkers", 4);
+    public static CreativeTabs tabArmorplus = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, setName("armors"), 0);
+    public static CreativeTabs tabArmorplusItems = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, setName("items"), 1);
+    public static CreativeTabs tabArmorplusBlocks = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, setName("blocks"), 2);
+    public static CreativeTabs tabArmorplusWeapons = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, setName("weapons"), 3);
+    public static CreativeTabs tabArmorplusTinkers = new APTab(CreativeTabs.getNextID(), ArmorPlus.MODID, setName("tinkers"), 4);
+
     public static ModFeatureParser featureParser = new ModFeatureParser(ArmorPlus.MODID, new CreativeTabs[]{
             tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, isTiCLoaded() ? tabArmorplusTinkers : null
     });
+
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
     public static Configuration configuration;
     @Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
-   //private GuiHandler GuiHandler = new GuiHandler();
+    private GuiHandler guiHandler = new GuiHandler();
 
     public ArmorPlus() {
         LogHelper.info("Welcoming Minecraft");
@@ -93,12 +98,15 @@ public class ArmorPlus {
     public static boolean isTeslaLoaded() {
         return isModLoaded("tesla");
     }
+
     public static boolean isBaublesLoaded() {
         return isModLoaded("baubles");
     }
+
     public static boolean isTiCLoaded() {
         return isModLoaded("tconstruct");
     }
+
     public static boolean isTDLLoaded() {
         return isModLoaded("thedragonlib");
     }
@@ -115,14 +123,14 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-  //      NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }
 
     @SideOnly(Side.SERVER)
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
-  //      NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }
 
@@ -140,4 +148,5 @@ public class ArmorPlus {
     public void serverLoad(FMLServerStartingEvent event) {
         proxy.serverLoad(event);
     }
+
 }

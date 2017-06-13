@@ -17,14 +17,15 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 public class StructureGenNBT implements IWorldGenerator {
-    private ResourceLocation TOWER = new ResourceLocation(ArmorPlus.MODID, "tower");
+
+    private ResourceLocation TOWER = setRL("tower");
 
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 

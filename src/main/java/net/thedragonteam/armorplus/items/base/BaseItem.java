@@ -4,14 +4,17 @@
 
 package net.thedragonteam.armorplus.items.base;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Items;
 
-import static net.thedragonteam.armorplus.ArmorPlus.tabArmorplusItems;
+import javax.annotation.Nullable;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseItem extends Item implements IModelHelper {
@@ -20,14 +23,17 @@ public class BaseItem extends Item implements IModelHelper {
         this.setRegistryName(itemName);
         this.setUnlocalizedName(setName(itemName));
         GameRegistry.register(this);
-        this.setCreativeTab(tabArmorplusItems);
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     public BaseItem(Items item) {
-        this.setRegistryName(item.getName());
-        this.setUnlocalizedName(setName(item.getName()));
-        GameRegistry.register(this);
-        this.setCreativeTab(tabArmorplusItems);
+        this(item.getName());
+    }
+
+    @Nullable
+    @Override
+    public CreativeTabs getCreativeTab() {
+        return ArmorPlus.tabArmorplusItems;
     }
 
     @Override

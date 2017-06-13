@@ -18,10 +18,10 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
@@ -33,6 +33,7 @@ public class DevTool extends BaseItem {
     public DevTool() {
         super("dev_tool");
         dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
+        this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class DevTool extends BaseItem {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\2479Ability: " + "\247rGives Information about the Target");

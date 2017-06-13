@@ -12,8 +12,6 @@ import net.thedragonteam.armorplus.registry.ModPotions;
 import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
-;
-
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam

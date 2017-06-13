@@ -21,7 +21,6 @@ import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
@@ -64,7 +63,7 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         swords.addInformation(tooltip);
     }
 

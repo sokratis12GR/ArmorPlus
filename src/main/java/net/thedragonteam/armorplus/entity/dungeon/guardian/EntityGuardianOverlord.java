@@ -69,7 +69,6 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     @Override
     public void onUpdate() {
         if (!world.isRemote) {
-            //noinspection MethodCallSideOnly
             this.setGhost();
         }
         super.onUpdate();

@@ -1,23 +1,17 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "transform": "forge:default-block"
+    "textures": {},
+    "model": "cube_all",
+    "uvlock": true
   },
   "variants": {
-    "facing=east": {
-      "model": "armorplus:block_lava_crystal"
-    },
-    "facing=west": {
-      "model": "armorplus:block_lava_crystal",
-      "y": 180
-    },
-    "facing=south": {
-      "model": "armorplus:block_lava_crystal",
-      "y": 90
-    },
-    "facing=north": {
-      "model": "armorplus:block_lava_crystal",
-      "y": 270
-    }
+    "normal": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/ore_lava_crystal"
+        }
+      }
+    ]
   }
 }

@@ -23,7 +23,6 @@ import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
@@ -82,7 +81,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         battleAxes.addInformation(tooltip);
     }
 

@@ -4,12 +4,6 @@
 
 package net.thedragonteam.armorplus.entity.entityzombie
 
-/**
- * net.thedragonteam.armorplus.entity.entityzombie
- * ArmorPlus created by sokratis12GR on 8/21/2016.
- * - TheDragonTeam
- */
-
 import net.minecraft.entity.ai.EntityAIAttackMelee
 
 /**

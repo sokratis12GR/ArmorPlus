@@ -5,9 +5,9 @@
 package net.thedragonteam.armorplus.items.base
 
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
+import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.enums.DevItems
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
@@ -19,9 +19,8 @@ class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName())
             this.setHasSubtypes(true)
             maxDamage = 0
         }
+        this.creativeTab = ArmorPlus.tabArmorplusItems
     }
-
-    override fun setCreativeTab(tab: CreativeTabs): Item = this
 
     override fun initModel() {
         if (devItems.hasSubTypes()) this.initModel(this, registryName!!.toString() + "_second", 1)

@@ -15,7 +15,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 /**
@@ -116,7 +115,6 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         super.onDataPacket(net, pkt);
     }
 
-    @Nullable
     @Override
     public SPacketUpdateTileEntity getUpdatePacket() {
         return super.getUpdatePacket();
