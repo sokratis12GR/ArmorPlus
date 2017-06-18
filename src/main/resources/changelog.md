@@ -1,3 +1,38 @@
+ArmorPlus 1.11.2-10.5.2.3
+----------------------------
+
+Features Added:
+
+* The Ability to enable/disable energy items via config
+
+Features Changed:
+
+* Updated the ru_ru.lang (Russian Translation edit, thanks to [IvanSteklow](https://github.com/IvanSteklow))
+
+ArmorPlus 1.11.2-10.5.1.2
+----------------------------
+
+Features Added:
+
+* An one time (per minecraft user) information of the analytics in A+
+
+* Added a config value for ModPack ID (TheDragonTeam ModPack Partner Program ID)
+
+Bugs Fixed:
+
+* Server Side Crashing
+
+ArmorPlus 1.11.2-10.5.0.1
+----------------------------
+
+Features Changed:
+
+Update checker migrated (**YOU WILL NOT RECEIVE ANY FURTHER UPDATER NOTIFICATION IF YOU DON'T UPDATE TO THIS VERSION**
+
+Features Added:
+
+Anonymous analytics for improving the mod added
+
 ArmorPlus 1.11.2-10.4.1.2
 ----------------------------
 
