@@ -1,4 +1,3 @@
-
 #ru_RU.lang File
 
 #CREATIVE TABS
@@ -89,7 +88,7 @@ item.armorplus.redstone_leggings.name=Редстоуновые Поножи
 item.armorplus.redstone_boots.name=Редстоуновые Ботинки
 
 #EmeraldArmor
-item.armorplus.emerald_helmet.name=Изумрудный Шлем	
+item.armorplus.emerald_helmet.name=Изумрудный Шлем
 item.armorplus.emerald_chestplate.name=Изумрудный Нагрудник
 item.armorplus.emerald_leggings.name=Изумрудные Поножи
 item.armorplus.emerald_boots.name=Изумрудные Ботинки
@@ -228,7 +227,7 @@ item.armorplus.test_2.name=Test 2
 #Items
 item.armorplus.chainmail.name=Кольчуга
 item.armorplus.reinforcing_material.name=Прочный Материал
-item.armorplus.lava_crystal_normal.name=Лавовый Кристалл	
+item.armorplus.lava_crystal_normal.name=Лавовый Кристалл
 item.armorplus.lava_crystal_charged.name=Заряженный Лавовый Кристалл
 item.armorplus.steel_ingot.name=Стальной Слиток
 item.armorplus.electrical_ingot.name=Электрический Слиток

@@ -9,6 +9,9 @@ itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
+# Analytics
+armorplus.analytics.info.text=ArmorPlus sends anonymous analytics data to it's creator TheDragonTeam. To opt out please disable the Minecraft Snooper setting.
+
 # Status
 status.armorplus.tgotg.gained_item=You got: %s [%s]
 
