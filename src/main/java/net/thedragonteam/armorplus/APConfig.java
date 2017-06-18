@@ -695,6 +695,9 @@ public class APConfig {
     @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] maxEnergyCapacity = new int[5];
 
+    @ModConfigProperty(category = "Modpack", name = "modpackID", comment = "The partner ID of the modpack (only for modpacks that are part of the TheDragonTeam modpack partner program")
+    public static String modpackID = "none";
+
     static {
         fill(energyInput, 10);
         fill(energyOutput, 10);

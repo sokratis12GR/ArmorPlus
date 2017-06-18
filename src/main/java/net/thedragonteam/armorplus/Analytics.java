@@ -66,6 +66,10 @@ public class Analytics {
             setVariable(request, "minecraft-version", MinecraftForge.MC_VERSION, 4);
             setVariable(request, "java-version", System.getProperty("java.version"), 5);
 
+            if (!APConfig.modpackID.equalsIgnoreCase("none")) {
+                request.setReferrerUrlWithString(APConfig.modpackID + ".mcpack");
+            }
+
             for (ModContainer container : Loader.instance().getModList()) {
                 if (container.getModId().equalsIgnoreCase("thedragonlib")) {
                     setVariable(request,"thedragonlib-version", container.getVersion(), 6);
