@@ -694,6 +694,8 @@ public class APConfig {
     public static int[] energyOutput = new int[5];
     @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
     public static int[] maxEnergyCapacity = new int[5];
+    @ModConfigProperty(category = "EnergyItems", name = "enableEnergyItems", comment = "Enable/Disable the energy items:\nSword, Pickaxe, Axe, Shovel, Hoe")
+    public static boolean[] enableEnergyItems = new boolean[5];
 
     @ModConfigProperty(category = "Modpack", name = "modpackID", comment = "The partner ID of the modpack (only for modpacks that are part of the TheDragonTeam modpack partner program")
     public static String modpackID = "none";
@@ -702,6 +704,7 @@ public class APConfig {
         fill(energyInput, 10);
         fill(energyOutput, 10);
         fill(maxEnergyCapacity, 3000);
+        fill(enableEnergyItems, true);
     }
 
     public static RecipesDifficulty getRD() {

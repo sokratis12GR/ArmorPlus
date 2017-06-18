@@ -1,16 +1,12 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.ChunkDataEvent;
-import net.minecraftforge.fml.common.*;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
 import org.piwik.java.tracking.CustomVariable;
 import org.piwik.java.tracking.PiwikRequest;
 import org.piwik.java.tracking.PiwikTracker;
@@ -20,7 +16,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.Objects;
 import java.util.UUID;
+
+import static net.thedragonteam.armorplus.APConfig.modpackID;
 
 /**
  * Created by Moritz30 on 17.06.2017.
@@ -37,6 +36,7 @@ public class Analytics {
 
     public static void registerLaunch() {
 
+        //noinspection MethodCallSideOnly
         if (!Minecraft.getMinecraft().isSnooperEnabled()) {
             System.out.println("asd");
             return;
@@ -64,13 +64,13 @@ public class Analytics {
             setVariable(request, "minecraft-version", MinecraftForge.MC_VERSION, 4);
             setVariable(request, "java-version", System.getProperty("java.version"), 5);
 
-            if (!APConfig.modpackID.equalsIgnoreCase("none")) {
-                request.setReferrerUrlWithString("https://" + APConfig.modpackID + ".mcpack");
+            if (!Objects.equals(modpackID, "none")) {
+                request.setReferrerUrlWithString("https://" + modpackID + ".mcpack");
             }
 
             for (ModContainer container : Loader.instance().getModList()) {
                 if (container.getModId().equalsIgnoreCase("thedragonlib")) {
-                    setVariable(request,"thedragonlib-version", container.getVersion(), 6);
+                    setVariable(request, "thedragonlib-version", container.getVersion(), 6);
                 }
             }
 
@@ -84,15 +84,14 @@ public class Analytics {
         }
 
     }
-    
+
     public static void setVariable(PiwikRequest request, String key, String value, int index) {
         request.setUserCustomVariable(key, value);
         request.setVisitCustomVariable(new CustomVariable(key, value), index);
     }
-    
-    public static void sendAnalyticsInfo (PlayerEvent.PlayerLoggedInEvent e) {
-        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-            e.player.sendMessage(new TextComponentString("ArmorPlus sends anonymous analytics data to it's creator TheDragonTeam. To opt out please disable the Minecraft Snooper setting."));
-        }
+
+    public static void sendAnalyticsInfo(EntityPlayer player) {
+        if (!player.world.isRemote) player.sendMessage(new TextComponentTranslation("armorplus.analytics.info.text"));
     }
+
 }

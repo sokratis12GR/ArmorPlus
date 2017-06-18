@@ -9,7 +9,6 @@ import net.minecraft.init.MobEffects
 import net.minecraft.inventory.EntityEquipmentSlot.*
 import net.minecraft.item.Item
 import net.minecraft.util.DamageSource
-import net.minecraft.util.text.ITextComponent
 import net.minecraftforge.fml.client.event.ConfigChangedEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent
@@ -125,18 +124,18 @@ class GlobalEventsArmorPlus {
         LogHelper.info("Refreshing configuration file")
     }
 
+    @SubscribeEvent
+    fun onJoin(event: PlayerEvent.PlayerLoggedInEvent) {
+        if (Analytics.newUser && Minecraft.getMinecraft().isSnooperEnabled) {
+            Analytics.sendAnalyticsInfo(event.player)
+        }
+    }
+
     companion object {
 
         fun syncConfig() {
             if (configuration.hasChanged())
                 configuration.save()
-        }
-    }
-
-    @SubscribeEvent
-    fun onJoin(event: PlayerEvent.PlayerLoggedInEvent) {
-        if (Analytics.newUser && Minecraft.getMinecraft().isSnooperEnabled) {
-            Analytics.sendAnalyticsInfo(event)
         }
     }
 }

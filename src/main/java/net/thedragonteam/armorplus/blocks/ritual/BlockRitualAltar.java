@@ -34,9 +34,9 @@ public class BlockRitualAltar extends BlockBase {
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         for (Item item : templates)
-            if (entityIn instanceof EntityItem && ((EntityItem) entityIn).getEntityItem().getItem() == item) {
-                isItemValid(((EntityItem) entityIn).getEntityItem().getItem());
-                LogHelper.INSTANCE.info("Is Item Valid: " + isItemValid(((EntityItem) entityIn).getEntityItem().getItem()));
+            if (entityIn instanceof EntityItem && ((EntityItem) entityIn).getItem().getItem() == item) {
+                isItemValid(((EntityItem) entityIn).getItem().getItem());
+                LogHelper.INSTANCE.info("Is Item Valid: " + isItemValid(((EntityItem) entityIn).getItem().getItem()));
             }
         super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
     }
@@ -49,9 +49,9 @@ public class BlockRitualAltar extends BlockBase {
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
         for (Item item : templates)
-            if (entityIn instanceof EntityItem && ((EntityItem) entityIn).getEntityItem().getItem() == item) {
-                isItemValid(((EntityItem) entityIn).getEntityItem().getItem());
-                LogHelper.INSTANCE.info("Is Item Valid: " + isItemValid(((EntityItem) entityIn).getEntityItem().getItem()));
+            if (entityIn instanceof EntityItem && ((EntityItem) entityIn).getItem().getItem() == item) {
+                isItemValid(((EntityItem) entityIn).getItem().getItem());
+                LogHelper.INSTANCE.info("Is Item Valid: " + isItemValid(((EntityItem) entityIn).getItem().getItem()));
             }
         super.onEntityWalk(worldIn, pos, entityIn);
     }

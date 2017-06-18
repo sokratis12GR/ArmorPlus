@@ -47,13 +47,13 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 0;
+    public static final int PATCH = 2;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 1;
+    public static final int BUILD = 3;
     /**
      * The ArmorPlus Version
      */
@@ -84,7 +84,7 @@ public class ArmorPlus {
     public static Configuration configuration;
     @Instance(ArmorPlus.MODID)
     public static ArmorPlus instance;
-    private GuiHandler GuiHandler = new GuiHandler();
+    private GuiHandler guiHandler = new GuiHandler();
 
     public ArmorPlus() {
         LogHelper.INSTANCE.info("Welcoming Minecraft");
@@ -120,14 +120,14 @@ public class ArmorPlus {
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
         Analytics.registerLaunch();
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }
 
     @SideOnly(Side.SERVER)
     @EventHandler
     public void initServer(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }
 

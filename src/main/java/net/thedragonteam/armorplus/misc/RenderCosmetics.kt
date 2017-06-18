@@ -23,7 +23,7 @@ class RenderCosmetics(private val renderedItemStack: ItemStack) {
 
         val currentPos: Vec3d = Minecraft.getMinecraft().player.getPositionEyes(partialTicks)
         val playerPos: Vec3d = player.getPositionEyes(partialTicks)
-        GlStateManager.translate(playerPos.xCoord - currentPos.xCoord, playerPos.yCoord - currentPos.yCoord, playerPos.zCoord - currentPos.zCoord)
+        GlStateManager.translate(playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z)
 
         GlStateManager.translate(0.0, 2.375 - (if (player.isSneaking) 0.125 else 0.0) + if (isBlock) 0.0 else 0.1875, 0.0)
         GlStateManager.rotate(180f, 1.0f, 0.0f, 1.0f)

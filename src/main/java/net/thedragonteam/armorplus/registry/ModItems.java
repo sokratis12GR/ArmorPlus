@@ -127,11 +127,11 @@ public class ModItems {
             itemBaubleDragon = new ItemBaubleDragon();
         }
         if (isTeslaLoaded()) {
-            itemTeslaShovel = new ItemTeslaShovel();
-            itemTeslaHoe = new ItemTeslaHoe();
-            itemTeslaAxe = new ItemTeslaAxe();
-            itemTeslaPickaxe = new ItemTeslaPickaxe();
-            itemTeslaSword = new ItemTeslaSword();
+            if (enableEnergyItems[4]) itemTeslaHoe = new ItemTeslaHoe();
+            if (enableEnergyItems[3]) itemTeslaShovel = new ItemTeslaShovel();
+            if (enableEnergyItems[2]) itemTeslaAxe = new ItemTeslaAxe();
+            if (enableEnergyItems[1]) itemTeslaPickaxe = new ItemTeslaPickaxe();
+            if (enableEnergyItems[0]) itemTeslaSword = new ItemTeslaSword();
         }
         //Armors
         INSTANCE.registerArmor(enableCoalArmor, coal, COAL);
