@@ -38,7 +38,7 @@ public class OreLavaCrystal extends BlockBase {
 
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    //Rename to "ore_lava_crystal" after major update
+    //TODO: Rename to "ore_lava_crystal" after major update
     public OreLavaCrystal() {
         super(Material.ROCK, "block_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }

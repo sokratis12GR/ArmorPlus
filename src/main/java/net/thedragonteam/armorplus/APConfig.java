@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
-import static java.util.Locale.ENGLISH;
+import static java.util.Arrays.fill;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
 
 /**
@@ -36,43 +36,55 @@ public class APConfig {
     public static String[] blackListedItems = new String[]{"minecraft:dirt"};
     //Weapons.*.Registry
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "coalWeaponItemNameColor", comment = "Set the color name the Coal Weapons will have")
-    public static String coalWeaponItemNameColor = "gray".toLowerCase(ENGLISH);
+    public static String coalWeaponItemNameColor = "gray";
     @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "lapisWeaponItemNameColor", comment = "Set the color name the Lapis Weapons will have")
-    public static String lapisWeaponItemNameColor = "dark_blue".toLowerCase(ENGLISH);
+    public static String lapisWeaponItemNameColor = "dark_blue";
     @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "redstoneWeaponItemNameColor", comment = "Set the color name the Redstone Weapons will have")
-    public static String redstoneWeaponItemNameColor = "dark_red".toLowerCase(ENGLISH);
+    public static String redstoneWeaponItemNameColor = "dark_red";
     @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "emeraldWeaponItemNameColor", comment = "Set the color name the Emerald Weapons will have")
-    public static String emeraldWeaponItemNameColor = "dark_green".toLowerCase(ENGLISH);
+    public static String emeraldWeaponItemNameColor = "dark_green";
     @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "obsidianWeaponItemNameColor", comment = "Set the color name the Obsidian Weapons will have")
-    public static String obsidianWeaponItemNameColor = "dark_gray".toLowerCase(ENGLISH);
+    public static String obsidianWeaponItemNameColor = "dark_gray";
     @ModConfigProperty(category = "Weapons.Lava.Registry", name = "lavaWeaponItemNameColor", comment = "Set the color name the Lava Weapons will have")
-    public static String lavaWeaponItemNameColor = "gold".toLowerCase(ENGLISH);
+    public static String lavaWeaponItemNameColor = "gold";
     @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "superStarWeaponItemNameColor", comment = "Set the color name the Super Star Weapons will have")
-    public static String superStarWeaponItemNameColor = "white".toLowerCase(ENGLISH);
+    public static String superStarWeaponItemNameColor = "white";
     @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enderDragonWeaponItemNameColor", comment = "Set the color name the Ender Dragon Weapons will have")
-    public static String enderDragonWeaponItemNameColor = "dark_purple".toLowerCase(ENGLISH);
+    public static String enderDragonWeaponItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "guardianWeaponItemNameColor", comment = "Set the color name the Guardian Weapons will have")
-    public static String guardianWeaponItemNameColor = "aqua".toLowerCase(ENGLISH);
+    public static String guardianWeaponItemNameColor = "aqua";
     @ModConfigProperty(category = "Weapons.Tesla.Registry", name = "teslaWeaponItemNameColor", comment = "Set the color name the Tesla Weapons will have")
-    public static String teslaWeaponItemNameColor = "dark_aqua".toLowerCase(ENGLISH);
+    public static String teslaWeaponItemNameColor = "dark_aqua";
     @ModConfigProperty(category = "Weapons.Coal.Registry", name = "enableCoalWeapons", comment = "Enable/Disable the Coal Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableCoalWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableCoalWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Lapis.Registry", name = "enableLapisWeapons", comment = "Enable/Disable the Lapis Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableLapisWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableLapisWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Redstone.Registry", name = "enableRedstoneWeapons", comment = "Enable/Disable the Redstone Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableRedstoneWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableRedstoneWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Emerald.Registry", name = "enableEmeraldWeapons", comment = "Enable/Disable the Emerald Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableEmeraldWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableEmeraldWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Obsidian.Registry", name = "enableObsidianWeapons", comment = "Enable/Disable the Obsidian Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableObsidianWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableObsidianWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Lava.Registry", name = "enableLavaWeapons", comment = "Enable/Disable the Lava Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableLavaWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableLavaWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.Guardian.Registry", name = "enableGuardianWeapons", comment = "Enable/Disable the Guardian Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableGuardianWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableGuardianWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.SuperStar.Registry", name = "enableSuperStarWeapons", comment = "Enable/Disable the Super Star Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableSuperStarWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableSuperStarWeapons = new boolean[3];
     @ModConfigProperty(category = "Weapons.EnderDragon.Registry", name = "enableEnderDragonWeapons", comment = "Enable/Disable the Ender Dragon Weapons from the Game (Sword, Battle Axe, Bow)")
-    public static boolean[] enableEnderDragonWeapons = new boolean[]{true, true, true};
+    public static boolean[] enableEnderDragonWeapons = new boolean[3];
+
+    static {
+        fill(enableCoalWeapons, true);
+        fill(enableLapisWeapons, true);
+        fill(enableRedstoneWeapons, true);
+        fill(enableEmeraldWeapons, true);
+        fill(enableObsidianWeapons, true);
+        fill(enableLavaWeapons, true);
+        fill(enableGuardianWeapons, true);
+        fill(enableGuardianWeapons, true);
+        fill(enableEnderDragonWeapons, true);
+    }
 
     //Weapons.*
     @ModConfigProperty(category = "Weapons.Coal", name = "coalSwordDamage", comment = "Set the amount of damage the Coal Sword will do (Additional +4 damage will be added automatically by minecraft)")
@@ -131,21 +143,21 @@ public class APConfig {
     public static int enderDragonWeaponsEffectLevel = 3;
 
     @ModConfigProperty(category = "Weapons.Coal.Effects", name = "coalWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Coal Weapons will have (to disable the effect set the effects \'false\')")
-    public static String coalWeaponsAddPotionEffect = "blindness".toLowerCase(ENGLISH);
+    public static String coalWeaponsAddPotionEffect = "blindness";
     @ModConfigProperty(category = "Weapons.Lapis.Effects", name = "lapisWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Lapis Weapons will have (to disable the effect set the effects \'false\')")
-    public static String lapisWeaponsAddPotionEffect = "nausea".toLowerCase(ENGLISH);
+    public static String lapisWeaponsAddPotionEffect = "nausea";
     @ModConfigProperty(category = "Weapons.Redstone.Effects", name = "redstoneWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Redstone Weapons will have (to disable the effect set the effects \'false\')")
-    public static String redstoneWeaponsAddPotionEffect = "slowness".toLowerCase(ENGLISH);
+    public static String redstoneWeaponsAddPotionEffect = "slowness";
     @ModConfigProperty(category = "Weapons.Emerald.Effects", name = "emeraldWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Emerald Weapons will have (to disable the effect set the effects \'false\')")
-    public static String emeraldWeaponsAddPotionEffect = "mining_fatigue".toLowerCase(ENGLISH);
+    public static String emeraldWeaponsAddPotionEffect = "mining_fatigue";
     @ModConfigProperty(category = "Weapons.Obsidian.Effects", name = "obsidianWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Obsidian Weapons will have (to disable the effect set the effects \'false\')")
-    public static String obsidianWeaponsAddPotionEffect = "weakness".toLowerCase(ENGLISH);
+    public static String obsidianWeaponsAddPotionEffect = "weakness";
     @ModConfigProperty(category = "Weapons.Guardian.Effects", name = "guardianWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Guardian Weapons will have (to disable the effect set the effects \'false\')")
-    public static String guardianWeaponsAddPotionEffect = "nausea".toLowerCase(ENGLISH);
+    public static String guardianWeaponsAddPotionEffect = "nausea";
     @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "superStarWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Super Star Weapons will have (to disable the effect set the effects \'false\')")
-    public static String superStarWeaponsAddPotionEffect = "wither".toLowerCase(ENGLISH);
+    public static String superStarWeaponsAddPotionEffect = "wither";
     @ModConfigProperty(category = "Weapons.SuperStar.Effects", name = "enderDragonWeaponsAddPotionEffect", comment = "Adds the Potion Effect the Super Star Weapons will have (to disable the effect set the effects \'false\')")
-    public static String enderDragonWeaponsAddPotionEffect = "wither".toLowerCase(ENGLISH);
+    public static String enderDragonWeaponsAddPotionEffect = "wither";
     @ModConfigProperty(category = "Weapons.Coal.Effects", name = "enableCoalWeaponsEffects", comment = "Enable/Disable the Potion Effect the Coal Weapons will have")
     public static boolean enableCoalWeaponsEffects = true;
     @ModConfigProperty(category = "Weapons.Lapis.Effects", name = "enableLapisWeaponsEffects", comment = "Enable/Disable the Potion Effect the Lapis Weapons will have")
@@ -240,81 +252,81 @@ public class APConfig {
 
     //Armors.*.Effects
     @ModConfigProperty(category = "Armors.Coal.Effects", name = "coalArmorAddPotionEffect", comment = "Adds the Potion Effect the Coal Armor will have (to disable the effect set the effects \'false\')")
-    public static String coalArmorAddPotionEffect = "night_vision".toLowerCase(ENGLISH);
+    public static String coalArmorAddPotionEffect = "night_vision";
     @ModConfigProperty(category = "Armors.Lapis.Effects", name = "lapisArmorAddPotionEffect", comment = "Adds the Potion Effect the Lapis Armor will have (to disable the effect set the effects \'false\')")
-    public static String lapisArmorAddPotionEffect = "water_breathing".toLowerCase(ENGLISH);
+    public static String lapisArmorAddPotionEffect = "water_breathing";
     @ModConfigProperty(category = "Armors.Redstone.Effects", name = "redstoneArmorAddPotionEffect", comment = "Adds the Potion Effect the Redstone Armor will have (to disable the effect set the effects \'false\')")
-    public static String redstoneArmorAddPotionEffect = "haste".toLowerCase(ENGLISH);
+    public static String redstoneArmorAddPotionEffect = "haste";
     @ModConfigProperty(category = "Armors.Emerald.Effects", name = "emeraldArmorAddPotionEffect", comment = "Adds the Potion Effect the Emerald Armor will have (to disable the effect set the effects \'false\')")
-    public static String emeraldArmorAddPotionEffect = "speed".toLowerCase(ENGLISH);
+    public static String emeraldArmorAddPotionEffect = "speed";
     @ModConfigProperty(category = "Armors.Obsidian.Effects", name = "obsidianArmorAddPotionEffect", comment = "Adds the Potion Effect the Obsidian Armor will have (to disable the effect set the effects \'false\')")
-    public static String obsidianArmorAddPotionEffect = "resistance".toLowerCase(ENGLISH);
+    public static String obsidianArmorAddPotionEffect = "resistance";
     @ModConfigProperty(category = "Armors.Lava.Effects", name = "lavaArmorAddPotionEffect", comment = "Adds the Potion Effect the Lava Armor will have (to disable the effect set the effects \'false\')")
-    public static String lavaArmorAddPotionEffect = "fire_resistance".toLowerCase(ENGLISH);
+    public static String lavaArmorAddPotionEffect = "fire_resistance";
     @ModConfigProperty(category = "Armors.Lava.Effects", name = "enableLavaArmorOnWaterTouchDeBuff", comment = "Enables/Disables the DeBuffs that the armor will get when touching water without Water Breathing Potion. \naka nothing happens when player wears this armor while in water.")
     public static boolean enableLavaArmorOnWaterTouchDeBuff = true;
 
     @ModConfigProperty(category = "Armors.Guardian.Effects", name = "guardianArmorAddPotionEffect", comment = "Adds the Potion Effect the Guardian Armor will have (to disable the effect set the effects \'false\')")
-    public static String guardianArmorAddPotionEffect = "water_breathing".toLowerCase(ENGLISH);
+    public static String guardianArmorAddPotionEffect = "water_breathing";
     @ModConfigProperty(category = "Armors.SuperStar.Effects", name = "superStarArmorAddPotionEffect", comment = "Adds the Potion Effect the Super Star Armor will have (to disable the effect set the effects \'false\')")
-    public static String superStarArmorAddPotionEffect = "regeneration".toLowerCase(ENGLISH);
+    public static String superStarArmorAddPotionEffect = "regeneration";
     @ModConfigProperty(category = "Armors.Ultimate.Effects", name = "theUltimateArmorAddPotionEffect", comment = "Adds the Potion Effects the Ultimate Armor will have (to disable the effect set the effects \'false\')")
     public static String[] theUltimateArmorAddPotionEffect = new String[]{("saturation"), ("regeneration"), ("water_breathing")};
     @ModConfigProperty(category = "Armors.Ultimate.Effects", name = "theUltimateArmorRemovePotionEffect", comment = "The Potion Effect that the Ultimate Dragon Armor will be Removing")
-    public static String theUltimateArmorRemovePotionEffect = "wither".toLowerCase(ENGLISH);
+    public static String theUltimateArmorRemovePotionEffect = "wither";
     @ModConfigProperty(category = "Armors.SuperStar.Effects", name = "superStarArmorRemovePotionEffect", comment = "The Potion Effect that the Super Star Armor will be Removing")
-    public static String superStarArmorRemovePotionEffect = "wither".toLowerCase(ENGLISH);
+    public static String superStarArmorRemovePotionEffect = "wither";
     @ModConfigProperty(category = "Armors.EnderDragon.Effects", name = "enderDragonArmorRemovePotionEffect", comment = "The Potion Effect that the Ender Dragon Armor will be Removing")
-    public static String enderDragonArmorRemovePotionEffect = "wither".toLowerCase(ENGLISH);
+    public static String enderDragonArmorRemovePotionEffect = "wither";
     @ModConfigProperty(category = "Armors.Ardite.Effects", name = "arditeArmorAddPotionEffect", comment = "Adds the Potion Effect the Ardite Armor will have (to disable the effect set the effects \'false\')")
-    public static String arditeArmorAddPotionEffect = "fire_resistance".toLowerCase(ENGLISH);
+    public static String arditeArmorAddPotionEffect = "fire_resistance";
     @ModConfigProperty(category = "Armors.Cobalt.Effects", name = "cobaltArmorAddPotionEffect", comment = "Adds the Potion Effect the Cobalt Armor will have (to disable the effect set the effects \'false\')")
-    public static String cobaltArmorAddPotionEffect = "haste".toLowerCase(ENGLISH);
+    public static String cobaltArmorAddPotionEffect = "haste";
     @ModConfigProperty(category = "Armors.Manyullyn.Effects", name = "manyullynArmorAddPotionEffect", comment = "Adds the Potion Effect the Manyullyn Armor will have (to disable the effect set the effects \'false\')")
-    public static String manyullynArmorAddPotionEffect = "strength".toLowerCase(ENGLISH);
+    public static String manyullynArmorAddPotionEffect = "strength";
     @ModConfigProperty(category = "Armors.PigIron.Effects", name = "pigIronArmorAddPotionEffect", comment = "Adds the Potion Effect the Pig Iron Armor will have (to disable the effect set the effects \'false\')")
-    public static String pigIronArmorAddPotionEffect = "saturation".toLowerCase(ENGLISH);
+    public static String pigIronArmorAddPotionEffect = "saturation";
     @ModConfigProperty(category = "Armors.KnightSlime.Effects", name = "knightSlimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Knight Slime Armor will have (to disable the effect set the effects \'false\')")
-    public static String knightSlimeArmorAddPotionEffect = "jump_boost".toLowerCase(ENGLISH);
+    public static String knightSlimeArmorAddPotionEffect = "jump_boost";
     @ModConfigProperty(category = "Armors.Chicken.Effects", name = "chickenArmorAddPotionEffect", comment = "Adds the Potion Effect the Chicken Armor will have (to disable the effect set the effects \'false\')")
-    public static String chickenArmorAddPotionEffect = "speed".toLowerCase(ENGLISH);
+    public static String chickenArmorAddPotionEffect = "speed";
     @ModConfigProperty(category = "Armors.Slime.Effects", name = "slimeArmorAddPotionEffect", comment = "Adds the Potion Effect the Slime Armor will have (to disable the effect set the effects \'false\')")
-    public static String slimeArmorAddPotionEffect = "jump_boost".toLowerCase(ENGLISH);
+    public static String slimeArmorAddPotionEffect = "jump_boost";
     //Armors.*.Registry
     @ModConfigProperty(category = "Armors.Coal.Registry", name = "coalArmorItemNameColor", comment = "Set the color name the Coal Armor will have")
-    public static String coalArmorItemNameColor = "gray".toLowerCase(ENGLISH);
+    public static String coalArmorItemNameColor = "gray";
     @ModConfigProperty(category = "Armors.Lapis.Registry", name = "lapisArmorItemNameColor", comment = "Set the color name the Lapis Armor will have")
-    public static String lapisArmorItemNameColor = "dark_blue".toLowerCase(ENGLISH);
+    public static String lapisArmorItemNameColor = "dark_blue";
     @ModConfigProperty(category = "Armors.Redstone.Registry", name = "redstoneArmorItemNameColor", comment = "Set the color name the Redstone Armor will have")
-    public static String redstoneArmorItemNameColor = "dark_red".toLowerCase(ENGLISH);
+    public static String redstoneArmorItemNameColor = "dark_red";
     @ModConfigProperty(category = "Armors.Emerald.Registry", name = "emeraldArmorItemNameColor", comment = "Set the color name the Emerald Armor will have")
-    public static String emeraldArmorItemNameColor = "dark_green".toLowerCase(ENGLISH);
+    public static String emeraldArmorItemNameColor = "dark_green";
     @ModConfigProperty(category = "Armors.Obsidian.Registry", name = "obsidianArmorItemNameColor", comment = "Set the color name the Obsidian Armor will have")
-    public static String obsidianArmorItemNameColor = "dark_gray".toLowerCase(ENGLISH);
+    public static String obsidianArmorItemNameColor = "dark_gray";
     @ModConfigProperty(category = "Armors.Lava.Registry", name = "lavaArmorItemNameColor", comment = "Set the color name the Lava Armor will have")
-    public static String lavaArmorItemNameColor = "gold".toLowerCase(ENGLISH);
+    public static String lavaArmorItemNameColor = "gold";
     @ModConfigProperty(category = "Armors.SuperStar.Registry", name = "superStarArmorItemNameColor", comment = "Set the color name the Super Star Armor will have")
-    public static String superStarArmorItemNameColor = "white".toLowerCase(ENGLISH);
+    public static String superStarArmorItemNameColor = "white";
     @ModConfigProperty(category = "Armors.EnderDragon.Registry", name = "enderDragonArmorItemNameColor", comment = "Set the color name the Ender Dragon Armor will have")
-    public static String enderDragonArmorItemNameColor = "dark_purple".toLowerCase(ENGLISH);
+    public static String enderDragonArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.Guardian.Registry", name = "guardianArmorItemNameColor", comment = "Set the color name the Guardian Armor will have")
-    public static String guardianArmorItemNameColor = "aqua".toLowerCase(ENGLISH);
+    public static String guardianArmorItemNameColor = "aqua";
     @ModConfigProperty(category = "Armors.Ultimate.Registry", name = "theUltimateArmorItemNameColor", comment = "Set the color name the Ultimate Armor will have")
-    public static String theUltimateArmorItemNameColor = "green".toLowerCase(ENGLISH);
+    public static String theUltimateArmorItemNameColor = "green";
     @ModConfigProperty(category = "Armors.Ardite.Registry", name = "arditeArmorItemNameColor", comment = "Set the color name the Ardite Armor will have")
-    public static String arditeArmorItemNameColor = "dark_red".toLowerCase(ENGLISH);
+    public static String arditeArmorItemNameColor = "dark_red";
     @ModConfigProperty(category = "Armors.Cobalt.Registry", name = "cobaltArmorItemNameColor", comment = "Set the color name the Cobalt Armor will have")
-    public static String cobaltArmorItemNameColor = "blue".toLowerCase(ENGLISH);
+    public static String cobaltArmorItemNameColor = "blue";
     @ModConfigProperty(category = "Armors.Manyullyn.Registry", name = "manyullynArmorItemNameColor", comment = "Set the color name the Manyullyn Armor will have")
-    public static String manyullynArmorItemNameColor = "dark_purple".toLowerCase(ENGLISH);
+    public static String manyullynArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.PigIron.Registry", name = "pigIronArmorItemNameColor", comment = "Set the color name the Pig Iron Armor will have")
-    public static String pigIronArmorItemNameColor = "light_purple".toLowerCase(ENGLISH);
+    public static String pigIronArmorItemNameColor = "light_purple";
     @ModConfigProperty(category = "Armors.KnightSlime.Registry", name = "knightSlimeArmorItemNameColor", comment = "Set the color name the Knight Slime Armor will have")
-    public static String knightSlimeArmorItemNameColor = "dark_purple".toLowerCase(ENGLISH);
+    public static String knightSlimeArmorItemNameColor = "dark_purple";
     @ModConfigProperty(category = "Armors.Chicken.Registry", name = "chickenArmorItemNameColor", comment = "Set the color name the Chicken Armor will have")
-    public static String chickenArmorItemNameColor = "aqua".toLowerCase(ENGLISH);
+    public static String chickenArmorItemNameColor = "aqua";
     @ModConfigProperty(category = "Armors.Slime.Registry", name = "slimeArmorItemNameColor", comment = "Set the color name the Slime Armor will have")
-    public static String slimeArmorItemNameColor = "green".toLowerCase(ENGLISH);
+    public static String slimeArmorItemNameColor = "green";
     @ModConfigProperty(category = "Armors.Coal.Registry", name = "coalArmorToughnessPoints", comment = "Set the amount of toughness points the Coal Armor will have")
     public static double coalArmorToughnessPoints = 0.0;
     @ModConfigProperty(category = "Armors.Lapis.Registry", name = "lapisArmorToughnessPoints", comment = "Set the amount of toughness points the Lapis Armor will have")
@@ -677,11 +689,17 @@ public class APConfig {
 
     //EnergyItems
     @ModConfigProperty(category = "EnergyItems", name = "input", comment = "Set the amount of Energy that the item can input\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] energyInput = new int[]{10, 10, 10, 10, 10};
+    public static int[] energyInput = new int[5];
     @ModConfigProperty(category = "EnergyItems", name = "output", comment = "Set the amount of Energy that the item can output\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] energyOutput = new int[]{10, 10, 10, 10, 10};
+    public static int[] energyOutput = new int[5];
     @ModConfigProperty(category = "EnergyItems", name = "maxCapacity", comment = "Set the max capacity that the item can hold\nSword, Pickaxe, Axe, Shovel, Hoe")
-    public static int[] maxEnergyCapacity = new int[]{3000, 3000, 3000, 3000, 3000};
+    public static int[] maxEnergyCapacity = new int[5];
+
+    static {
+        fill(energyInput, 10);
+        fill(energyOutput, 10);
+        fill(maxEnergyCapacity, 3000);
+    }
 
     public static RecipesDifficulty getRD() {
         switch (gameMode) {

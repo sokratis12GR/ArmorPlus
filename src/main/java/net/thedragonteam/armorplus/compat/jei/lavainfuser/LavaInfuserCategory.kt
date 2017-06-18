@@ -9,6 +9,7 @@ import mezz.jei.api.gui.IRecipeLayout
 import mezz.jei.api.ingredients.IIngredients
 import net.minecraft.client.Minecraft
 import net.minecraft.util.ResourceLocation
+import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.api.Constants
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin
 import net.thedragonteam.thedragonlib.util.TextUtils
@@ -18,6 +19,16 @@ import net.thedragonteam.thedragonlib.util.TextUtils
  * - TheDragonTeam
  */
 class LavaInfuserCategory : LavaInfuserRecipeCategory<LavaInfuserRecipeWrapper>() {
+    /**
+     * Return the name of the mod associated with this recipe category.
+     * Used for the recipe category tab's tooltip.
+
+     * @since JEI 4.5.0
+     */
+    override fun getModName(): String {
+        return ArmorPlus.MODNAME
+    }
+
     private val background: IDrawable
     private val localizedName: String = TextUtils.formattedText("gui.jei.category.armorplus.infusing")
 

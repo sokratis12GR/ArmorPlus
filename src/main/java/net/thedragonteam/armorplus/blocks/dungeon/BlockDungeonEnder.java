@@ -12,7 +12,8 @@ import net.minecraft.world.World;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.registry.ModSounds;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * ArmorPlus - Kotlin created by sokratis12GR
@@ -27,7 +28,7 @@ public class BlockDungeonEnder extends BlockBase {
         this.enderBlocks = enderBlocks;
     }
 
-    @NotNull
+    @Nonnull
     @SuppressWarnings("deprecation")
     @Override
     public MapColor getMapColor(IBlockState state) {

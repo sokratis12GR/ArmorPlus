@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemsRecipes;
+import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTierOneRecipes;
@@ -37,7 +37,7 @@ public class WorkbenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private WorkbenchCraftingManager() {
-        new ModItemsRecipes().addRecipes(this);
+        new ModItemRecipes().addRecipes(this);
         new ModOriginRecipes().addRecipes(this);
         new ModSpecialMobRecipes().addRecipes(this);
         new ModWeaponsTierOneRecipes().addRecipes(this);

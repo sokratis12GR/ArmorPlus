@@ -25,16 +25,11 @@ public class APItemCore extends TinkersItem implements IToolStationDisplay {
         return null;
     }
 
-    @Override
-    public void getTooltipDetailed(ItemStack stack, List<String> tooltips) {
-
-    }
-
-    @Override
-    public void getTooltipComponents(ItemStack stack, List<String> tooltips) {
-
-    }
-
+    /**
+     * The "title" displayed in the GUI
+     *
+     * @deprecated Use getLocalizedName for consistency
+     */
     @Override
     public String getLocalizedToolName() {
         return TextUtils.INSTANCE.formattedText(getUnlocalizedName() + ".name");
@@ -45,6 +40,12 @@ public class APItemCore extends TinkersItem implements IToolStationDisplay {
         return TextUtils.INSTANCE.formattedText(getUnlocalizedName() + ".name");
     }
 
+    /**
+     * Returns an List of Strings, where each String represents an information about the tool. Used to display
+     * Information about the item in the GUI
+     *
+     * @param stack
+     */
     @Override
     public List<String> getInformation(ItemStack stack) {
         return null;
@@ -62,4 +63,25 @@ public class APItemCore extends TinkersItem implements IToolStationDisplay {
         return new PartMaterialType(part, MaterialTypesImproved.HELMET_RIGHT);
     }
 
+    /**
+     * Detailed info about the tool. Displayed when Shift is held
+     *
+     * @param stack
+     * @param tooltips
+     */
+    @Override
+    public void getTooltipDetailed(ItemStack stack, List<String> tooltips) {
+
+    }
+
+    /**
+     * What the tool is made out of. Displayed whet Ctrl is held
+     *
+     * @param stack
+     * @param tooltips
+     */
+    @Override
+    public void getTooltipComponents(ItemStack stack, List<String> tooltips) {
+
+    }
 }

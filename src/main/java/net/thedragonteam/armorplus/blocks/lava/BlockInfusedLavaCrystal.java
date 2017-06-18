@@ -9,6 +9,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 public class BlockInfusedLavaCrystal extends BlockBase implements IModelHelper {
 
+    //TODO: Rename to "block_infused_lava_crystal"
     public BlockInfusedLavaCrystal() {
         super(Material.IRON, "lava_crystal_block_infused", 1000, 5.0F, ToolType.PICKAXE, 3);
     }

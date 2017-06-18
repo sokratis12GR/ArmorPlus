@@ -107,14 +107,12 @@ class SlotCrafting(
             }
 
             if (!itemstack1.isEmpty) {
-                when {
-                    itemstack.isEmpty -> this.craftMatrix.setInventorySlotContents(i, itemstack1)
-                    ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1) -> {
-                        itemstack1.grow(itemstack.count)
-                        this.craftMatrix.setInventorySlotContents(i, itemstack1)
-                    }
-                    !this.player.inventory.addItemStackToInventory(itemstack1) -> this.player.dropItem(itemstack1, false)
+                if (itemstack.isEmpty) this.craftMatrix.setInventorySlotContents(i, itemstack1)
+                else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1)) {
+                    itemstack1.grow(itemstack.count)
+                    this.craftMatrix.setInventorySlotContents(i, itemstack1)
                 }
+                else if (!this.player.inventory.addItemStackToInventory(itemstack1)) this.player.dropItem(itemstack1, false)
             }
         }
 

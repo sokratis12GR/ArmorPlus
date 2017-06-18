@@ -50,7 +50,9 @@ public class ModBlocks {
     public static BlockLavaInfuser lavaInfuser;
     public static BlockLavaInfuser lavaInfuserInfusing;
     public static BlockLavaInfusedObsidian lavaInfusedObsidian = new BlockLavaInfusedObsidian();
-  //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
+    public static BlockCompressedLavaCrystal blockCompressedLavaCrystal = new BlockCompressedLavaCrystal();
+    public static BlockCompressedInfusedLavaCrystal blockCompressedInfusedLavaCrystal = new BlockCompressedInfusedLavaCrystal();
+    //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
     public static BlockLavaCrystal blockLavaCrystal = new BlockLavaCrystal();
     public static BlockInfusedLavaCrystal blockInfusedLavaCrystal = new BlockInfusedLavaCrystal();
     public static EnumEnderBlocks[] enumEnderBlocks = new EnumEnderBlocks[]{ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP};
@@ -83,9 +85,11 @@ public class ModBlocks {
         for (BlockStoneBrickCorner stoneBrickCorner : stoneBrickCorners) stoneBrickCorner.initModel();
         for (BlockStonebrickWall stonebrickWall : stonebrickWalls) stonebrickWall.initModel();
         for (BlockBench blockBench : benches) blockBench.initModel();
- //       ritualAltar.initModel();
+        //       ritualAltar.initModel();
         blockLavaCrystal.initModel();
         blockInfusedLavaCrystal.initModel();
+        blockCompressedLavaCrystal.initModel();
+        blockCompressedInfusedLavaCrystal.initModel();
         for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
     }
 }

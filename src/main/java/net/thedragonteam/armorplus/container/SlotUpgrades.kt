@@ -25,7 +25,7 @@ class SlotUpgrades(inventory: IInventory, index: Int, x: Int, y: Int) : Slot(inv
         return 1
     }
 
-    override fun isItemValid(itemStack: ItemStack?): Boolean {
-        return !itemStack!!.isEmpty
+    override fun isItemValid(itemStack: ItemStack): Boolean {
+        return !itemStack.isEmpty
     }
 }

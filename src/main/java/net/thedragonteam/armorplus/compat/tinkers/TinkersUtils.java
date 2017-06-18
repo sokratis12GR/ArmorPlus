@@ -124,9 +124,7 @@ public class TinkersUtils extends AbstractToolPulse{
     }
 
     public static void setShardItem(Shard shard) {
-        if (shard == null) {
-            return;
-        }
+        if (shard == null) return;
         shardItem = shard;
     }
 

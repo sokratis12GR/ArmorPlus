@@ -53,7 +53,7 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
 
     override fun setFull3D(): Item = this
 
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
+    override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, hand: EnumHand): ActionResult<ItemStack> {
         val blackListedItems = APConfig.blackListedItems.toList()
 
         val nbt: NBTTagCompound = if (playerIn.getHeldItem(hand).hasTagCompound()) playerIn.getHeldItem(hand).tagCompound as NBTTagCompound else NBTTagCompound()
@@ -65,8 +65,10 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
         var item: Item? = ItemStack.EMPTY.item
         do {
             when {
-                APConfig.enableWhiteList -> if (APConfig.enableWhiteList)
-                    item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
+                APConfig.enableWhiteList -> {
+                    if (APConfig.enableWhiteList)
+                        item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
+                }
                 else -> {
                     count = 256 + random.nextInt(32000 - 256)
                     item = Item.getItemById(count)
@@ -74,7 +76,7 @@ class TheGiftOfTheGods : BaseItem("the_gift_of_the_gods"), IModelHelper {
             }
         } while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
 
-        if (!worldIn!!.isRemote) {
+        if (!worldIn.isRemote) {
             if (enableTheGiftOfTheGods) {
                 val cooldown = 0
                 if (!playerIn.heldItemMainhand.isEmpty && playerIn.heldItemMainhand.item === playerIn.getHeldItem(hand).item || !playerIn.heldItemOffhand.isEmpty && playerIn.heldItemOffhand.item === playerIn.getHeldItem(hand).item)

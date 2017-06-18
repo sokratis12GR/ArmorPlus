@@ -23,7 +23,6 @@ import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import static net.minecraftforge.fml.common.Loader.instance;
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
@@ -60,7 +59,7 @@ public class ArmorPlus {
      */
     public static final String VERSION = ArmorPlus.MCVERSION + "-" + ArmorPlus.MAJOR + "." + ArmorPlus.MINOR + "." + ArmorPlus.PATCH + "." + ArmorPlus.BUILD + "";
     public static final String TESLA_VERSION = "1.3.0.51";
-    public static final String LIB_VERSION = "1.11.2-3.2.1";
+    public static final String LIB_VERSION = "1.11.2-3.2.2";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";

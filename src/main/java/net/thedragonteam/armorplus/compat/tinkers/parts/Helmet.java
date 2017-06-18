@@ -34,6 +34,11 @@ public class Helmet extends APItemCore {
     }
 
     @Override
+    public NBTTagCompound buildTag(List<Material> materials) {
+        return null;
+    }
+
+    @Override
     public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) {
         return super.isValidArmor(stack, EntityEquipmentSlot.HEAD, entity);
     }
@@ -54,10 +59,5 @@ public class Helmet extends APItemCore {
                 if (!Config.listAllMaterials) break;
             }
         }
-    }
-
-    @Override
-    public NBTTagCompound buildTag(List<Material> materials) {
-        return super.buildTag(materials);
     }
 }

@@ -37,7 +37,6 @@ public class HighTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private HighTechBenchCraftingManager() {
-
         new ModTierTwoRecipes().addRecipes(this);
         new ModItemRecipes().addRecipes(this);
         new ModWeaponTierTwoRecipes().addRecipes(this);

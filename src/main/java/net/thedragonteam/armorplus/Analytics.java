@@ -1,14 +1,9 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraftforge.common.ForgeVersion;
-import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.ModContainer;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.piwik.java.tracking.CustomVariable;
 import org.piwik.java.tracking.PiwikRequest;
 import org.piwik.java.tracking.PiwikTracker;
@@ -48,21 +43,15 @@ public class Analytics {
 
             PiwikRequest request = new PiwikRequest(1, new URL("https://armorplus.mcmod/launch"));
             request.setUserId(userID);
-            request.setUserCustomVariable("forge-version", ForgeVersion.getVersion());
-            request.setUserCustomVariable("armorplus-version", ArmorPlus.getVersion());
-            request.setUserCustomVariable("operating-system", System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch"));
-            request.setUserCustomVariable("minecraft-version", MinecraftForge.MC_VERSION);
-            request.setUserCustomVariable("java-version", System.getProperty("java.version"));
-            request.setVisitCustomVariable(new CustomVariable("forge-version", ForgeVersion.getVersion()), 1);
-            request.setVisitCustomVariable(new CustomVariable("armorplus-version", ArmorPlus.getVersion()), 2);
-            request.setVisitCustomVariable(new CustomVariable("operating-system", System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch")), 3);
-            request.setVisitCustomVariable(new CustomVariable("minecraft-version", MinecraftForge.MC_VERSION), 4);
-            request.setVisitCustomVariable(new CustomVariable("java-version", System.getProperty("java.version")), 5);
+            setVariable(request, "forge-version", ForgeVersion.getVersion(), 1);
+            setVariable(request, "armorplus-version", ArmorPlus.getVersion(), 2);
+            setVariable(request, "operating-system", System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch"), 3);
+            setVariable(request, "minecraft-version", MinecraftForge.MC_VERSION, 4);
+            setVariable(request, "java-version", System.getProperty("java.version"), 5);
 
             for (ModContainer container : Loader.instance().getModList()) {
-                if(container.getModId().equalsIgnoreCase("thedragonlib")) {
-                    request.setUserCustomVariable("thedragonlib-version", container.getVersion());
-                    request.setVisitCustomVariable(new CustomVariable("thedragonlib-version", container.getVersion()), 6);
+                if (container.getModId().equalsIgnoreCase("thedragonlib")) {
+                    setVariable(request,"thedragonlib-version", container.getVersion(), 6);
                 }
             }
 
@@ -75,6 +64,11 @@ public class Analytics {
             e.printStackTrace();
         }
 
+    }
+
+    public static void setVariable(PiwikRequest request, String key, String value, int index) {
+        request.setUserCustomVariable(key, value);
+        request.setVisitCustomVariable(new CustomVariable(key, value), index);
     }
 
 }

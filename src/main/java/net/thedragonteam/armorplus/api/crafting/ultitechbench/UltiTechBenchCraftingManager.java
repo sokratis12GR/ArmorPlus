@@ -34,7 +34,6 @@ public class UltiTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private UltiTechBenchCraftingManager() {
-
         new ModUltimateRecipes().addRecipes(this);
         new ModEnderDragonRecipes().addRecipes(this);
         new ModSuperStarRecipes().addRecipes(this);

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) TheDragonTeam 2016-2017.
- */
-
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
 import net.minecraft.item.ItemStack;
@@ -9,6 +5,7 @@ import net.thedragonteam.armorplus.api.crafting.workbench.ShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.ShapelessOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
 import static net.thedragonteam.armorplus.APConfig.getRD;
@@ -16,8 +13,9 @@ import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
 import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class ModItemsRecipes {
+public class ModItemRecipes {
 
     public void addRecipes(WorkbenchCraftingManager manager) {
         manager.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.lavaInfuser, 1),
@@ -113,6 +111,11 @@ public class ModItemsRecipes {
                 "OOO",
                 "OOO",
                 'O', "ingotElectrical"));
+        manager.addRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
+        manager.addRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
+
+        manager.addRecipe(getItemStack(ModBlocks.blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockLavaCrystal));
+        manager.addRecipe(getItemStack(ModBlocks.blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockInfusedLavaCrystal));
         switch (getRD()) {
             case EASY:
                 manager.addRecipe(new ShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));

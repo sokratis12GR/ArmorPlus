@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.compat
 
-import net.thedragonteam.armorplus.compat.ICompatibility
 import net.thedragonteam.armorplus.compat.minetweaker.MTArmorPlusPlugin
 import net.thedragonteam.thedragonlib.util.LogHelper
 
@@ -16,10 +15,12 @@ import net.thedragonteam.thedragonlib.util.LogHelper
 class CompatibilityMineTweaker : ICompatibility {
     override fun loadCompatibility(phase: ICompatibility.InitializationPhase) {
         when {
-            phase === ICompatibility.InitializationPhase.POST_INIT -> try {
-                MTArmorPlusPlugin.init()
-            } catch (e: Throwable) {
-                LogHelper.error("ArmorPlus seems to be having trouble with CraftTweaker.")
+            phase === ICompatibility.InitializationPhase.POST_INIT -> {
+                try {
+                    MTArmorPlusPlugin.init()
+                } catch (e: Throwable) {
+                    LogHelper.error("ArmorPlus seems to be having trouble with CraftTweaker.")
+                }
             }
         }
     }

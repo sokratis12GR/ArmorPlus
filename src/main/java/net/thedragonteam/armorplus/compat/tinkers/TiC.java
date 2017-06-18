@@ -10,7 +10,6 @@ import net.thedragonteam.armorplus.compat.tinkers.parts.APItemCore;
 import net.thedragonteam.armorplus.compat.tinkers.parts.APItemPart;
 import net.thedragonteam.armorplus.compat.tinkers.parts.Helmet;
 import slimeknights.tconstruct.library.MaterialIntegration;
-import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.shared.TinkerFluids;
@@ -19,6 +18,7 @@ import slimeknights.tconstruct.tools.TinkerMaterials;
 
 import static net.thedragonteam.armorplus.compat.tinkers.TinkersUtils.registerItemPart;
 import static net.thedragonteam.armorplus.compat.tinkers.TinkersUtils.registerToolForgeCrafting;
+import static slimeknights.tconstruct.library.TinkerRegistry.getMaterial;
 
 public class TiC extends AbstractToolPulse {
 
@@ -42,7 +42,7 @@ public class TiC extends AbstractToolPulse {
         intMaterials(lavacrystalInt);
         intMaterials(infusedObsidianInt);
         intMaterials(obsidianInt);
-        if (TinkerRegistry.getMaterial("steel") == null) intMaterials(steelInt);
+        if (getMaterial("steel") == null) intMaterials(steelInt);
         tinkersModifiers = new TiCModifiers();
         tinkersMaterials.setupMaterials();
     }

@@ -1,3 +1,20 @@
+ArmorPlus 1.11.2-10.4.1.2
+----------------------------
+
+**Bugs Fixed:**
+
+* **Full Set Armors not Working Important**
+
+Features Added:
+
+* Compressed Lava Crystal Block
+
+* Compressed Infused Lava Crystal Block
+
+Dependencies:
+
+* Now compatible with JEI 1.11.2-4.5.0.287 and above
+
 ArmorPlus 1.11.2-10.4.0.1
 ----------------------------
 

@@ -35,6 +35,8 @@ public class ModOreDicts {
         registerOre("oreLavaCrystal", oreLavaCrystal);
         registerOre("blockLavaCrystal", blockLavaCrystal);
         registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
+        registerOre("blockCompressedLavaCrystal", blockCompressedLavaCrystal);
+        registerOre("blockCompressedInfusedLavaCrystal", blockCompressedInfusedLavaCrystal);
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
         registerOre("blockCompressedObsidian", compressedObsidian);

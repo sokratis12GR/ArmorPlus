@@ -15,10 +15,21 @@ import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper
 import mezz.jei.util.Translator
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
+import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.api.Constants
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin
 
 class UTBCategory : BlankRecipeCategory<IRecipeWrapper>() {
+    /**
+     * Return the name of the mod associated with this recipe category.
+     * Used for the recipe category tab's tooltip.
+
+     * @since JEI 4.5.0
+     */
+    override fun getModName(): String {
+        return ArmorPlus.MODNAME
+    }
+
     private val background: IDrawable
     private val localizedName: String = Translator.translateToLocal("gui.jei.category.ulti_tech_bench")
     private val craftingGridHelper: ICraftingGridHelper
