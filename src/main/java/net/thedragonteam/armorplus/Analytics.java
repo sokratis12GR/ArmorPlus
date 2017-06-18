@@ -67,7 +67,7 @@ public class Analytics {
             setVariable(request, "java-version", System.getProperty("java.version"), 5);
 
             if (!APConfig.modpackID.equalsIgnoreCase("none")) {
-                request.setReferrerUrlWithString(APConfig.modpackID + ".mcpack");
+                request.setReferrerUrlWithString("https://" + APConfig.modpackID + ".mcpack");
             }
 
             for (ModContainer container : Loader.instance().getModList()) {

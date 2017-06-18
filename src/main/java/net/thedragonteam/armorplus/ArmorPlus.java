@@ -109,7 +109,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Analytics.registerLaunch();
         SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(APConfig.class, configuration);
@@ -120,6 +119,7 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
+        Analytics.registerLaunch();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, GuiHandler);
         proxy.init(event);
     }
