@@ -7,12 +7,10 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.ChunkDataEvent;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ModClassLoader;
-import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
 import org.piwik.java.tracking.CustomVariable;
 import org.piwik.java.tracking.PiwikRequest;
 import org.piwik.java.tracking.PiwikTracker;
@@ -93,6 +91,8 @@ public class Analytics {
     }
     
     public static void sendAnalyticsInfo (PlayerEvent.PlayerLoggedInEvent e) {
-        e.player.sendMessage(new TextComponentString("ArmorPlus sends anonymous analytics data to it's creator TheDragonTeam. To opt out please disable the Minecraft Snooper setting."));
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+            e.player.sendMessage(new TextComponentString("ArmorPlus sends anonymous analytics data to it's creator TheDragonTeam. To opt out please disable the Minecraft Snooper setting."));
+        }
     }
 }
