@@ -1,9 +1,18 @@
 package net.thedragonteam.armorplus;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.piwik.java.tracking.CustomVariable;
 import org.piwik.java.tracking.PiwikRequest;
 import org.piwik.java.tracking.PiwikTracker;
@@ -26,7 +35,14 @@ public class Analytics {
 
     public static String userID;
 
+    public static boolean newUser = false;
+
     public static void registerLaunch() {
+
+        if (!Minecraft.getMinecraft().isSnooperEnabled()) {
+            System.out.println("asd");
+            return;
+        }
 
         try {
             (new File("thedragonteam")).mkdir();
@@ -35,6 +51,7 @@ public class Analytics {
             if (userIDFile.exists()) {
                 userID = (new BufferedReader(new FileReader(userIDFile))).readLine();
             } else {
+                newUser = true;
                 userID = UUID.randomUUID().toString();
                 userIDFile.createNewFile();
                 FileOutputStream oFile = new FileOutputStream(userIDFile, false);
@@ -65,10 +82,13 @@ public class Analytics {
         }
 
     }
-
+    
     public static void setVariable(PiwikRequest request, String key, String value, int index) {
         request.setUserCustomVariable(key, value);
         request.setVisitCustomVariable(new CustomVariable(key, value), index);
     }
-
+    
+    public static void sendAnalyticsInfo (PlayerEvent.PlayerLoggedInEvent e) {
+        e.player.sendMessage(new TextComponentString("ArmorPlus sends anonymous analytics data to it's creator TheDragonTeam. To opt out please disable the Minecraft Snooper setting."));
+    }
 }
