@@ -10,6 +10,8 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
     }
 }
 
@@ -23,6 +25,8 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'kotlin'
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'eu.appsatori.fatjar'
 
 repositories {
     maven { // Tesla repo
@@ -78,6 +82,14 @@ jar {
     )
 }
 
+shadowJar {
+    manifest {
+        attributes 'FMLAT': 'armorplus_at.cfg'
+    }
+    classifier = ''
+    configurations = [project.configurations.shadow]
+}
+
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
@@ -103,6 +115,7 @@ task deobfJar(type: Jar) { // Generate deobfuscated
 tasks.build.dependsOn('deobfJar')
 
 artifacts {
+    archives shadowJar
     archives deobfJar
     archives sourcesJar
     archives apiJar
@@ -138,6 +151,8 @@ dependencies {
     compile group: "net.shadowfacts", name: "Forgelin", version: '1.4.1'
     deobfCompile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
     deobfCompile "com.blamejared:MTLib:2.0.1.9"
+    compile 'org.piwik.java.tracking:piwik-java-tracker:1.2'
+    shadow 'org.piwik.java.tracking:piwik-java-tracker:1.2'
 }
 
 processResources {
@@ -159,6 +174,10 @@ processResources {
     }
 }
 
+reobf {
+    shadowJar {}
+}
+
 curseforge {
 	apiKey = project.hasProperty('api_token') ? project.api_token : '0'
 	project {
@@ -178,5 +197,3 @@ curseforge {
         }
   }
 }
-
-

@@ -23,6 +23,7 @@ import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import static net.minecraftforge.fml.common.Loader.instance;
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
@@ -62,7 +63,7 @@ public class ArmorPlus {
     public static final String LIB_VERSION = "1.11.2-3.2.1";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String UPDATE_JSON = "http://fdn.redstone.tech/TheDragonTeam/armorplus/update.json";
+    public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
     public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle;" + "after:tconstruct;" + "after:baubles;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
@@ -109,6 +110,7 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        Analytics.registerLaunch();
         SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(APConfig.class, configuration);
@@ -144,4 +146,5 @@ public class ArmorPlus {
     public void serverLoad(FMLServerStartingEvent event) {
         proxy.serverLoad(event);
     }
+
 }
