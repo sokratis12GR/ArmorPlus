@@ -1,3 +1,11 @@
+ArmorPlus 1.11.2-10.5.3.3
+----------------------------
+
+===THIS IS A HOTFIX===
+
+Fixed:
+* Servers now no longer crash when a user joins
+
 ArmorPlus 1.11.2-10.5.2.3
 ----------------------------
 

@@ -10,6 +10,7 @@ import net.minecraft.inventory.EntityEquipmentSlot.*
 import net.minecraft.item.Item
 import net.minecraft.util.DamageSource
 import net.minecraftforge.fml.client.event.ConfigChangedEvent
+import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
@@ -126,6 +127,9 @@ class GlobalEventsArmorPlus {
 
     @SubscribeEvent
     fun onJoin(event: PlayerEvent.PlayerLoggedInEvent) {
+        if (FMLCommonHandler.instance().side.isServer) {
+            return;
+        }
         if (Analytics.newUser && Minecraft.getMinecraft().isSnooperEnabled) {
             Analytics.sendAnalyticsInfo(event.player)
         }
