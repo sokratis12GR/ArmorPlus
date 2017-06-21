@@ -1,10 +1,18 @@
-ArmorPlus 1.11.2-10.5.3.3
-----------------------------
+ArmorPlus 1.11.2-10.5.4.4 
+---------------------------- 
+ 
+Features Added:
 
-===THIS IS A HOTFIX===
+* Opt-Out from the analytics option (in the config file)
+ 
+ArmorPlus 1.11.2-10.5.3.3 
+---------------------------- 
 
-Fixed:
-* Servers now no longer crash when a user joins
+######THIS IS A HOTFIX
+ 
+Fixed: 
+
+* Servers now no longer crash when a user joins 
 
 ArmorPlus 1.11.2-10.5.2.3
 ----------------------------
