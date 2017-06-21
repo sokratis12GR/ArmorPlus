@@ -37,7 +37,7 @@ public class Analytics {
     public static void registerLaunch() {
 
         //noinspection MethodCallSideOnly
-        if (!Minecraft.getMinecraft().isSnooperEnabled()) {
+        if (!Minecraft.getMinecraft().isSnooperEnabled() || APConfig.optOut) {
             System.out.println("asd");
             return;
         }
