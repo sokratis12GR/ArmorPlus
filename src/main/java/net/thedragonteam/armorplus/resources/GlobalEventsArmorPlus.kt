@@ -128,7 +128,7 @@ class GlobalEventsArmorPlus {
     @SubscribeEvent
     fun onJoin(event: PlayerEvent.PlayerLoggedInEvent) {
         if (FMLCommonHandler.instance().side.isServer) {
-            return;
+            return
         }
         if (Analytics.newUser && Minecraft.getMinecraft().isSnooperEnabled) {
             Analytics.sendAnalyticsInfo(event.player)

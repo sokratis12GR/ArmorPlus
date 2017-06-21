@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.proxy
 
+import net.minecraft.client.Minecraft
 import net.minecraftforge.client.model.obj.OBJLoader
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
@@ -11,18 +12,21 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import net.thedragonteam.armorplus.Analytics
 import net.thedragonteam.armorplus.ArmorPlus
+import net.thedragonteam.armorplus.client.gui.GuiAnalyticsDisclaimer
 import net.thedragonteam.armorplus.misc.CosmeticsRenderInit
 import net.thedragonteam.armorplus.registry.ModBlocks
 import net.thedragonteam.armorplus.registry.ModEntities
 import net.thedragonteam.armorplus.registry.ModItems
+import net.thedragonteam.armorplus.resources.ClientEventHandler
 
 @SideOnly(Side.CLIENT)
 class ClientProxy : CommonProxy() {
+    val MINECRAFT: Minecraft = Minecraft.getMinecraft()
 
     override fun preInit(event: FMLPreInitializationEvent) {
         super.preInit(event)
+        MinecraftForge.EVENT_BUS.register(ClientEventHandler())
         OBJLoader.INSTANCE.addDomain(ArmorPlus.MODID)
         registerModels()
         MinecraftForge.EVENT_BUS.register(this)
