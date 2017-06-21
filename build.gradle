@@ -185,7 +185,7 @@ curseforge {
 	    id = '237366'
         changelog = file('src/main/resources/changelog.md')
 	    changelogType = 'markdown'
-        releaseType = 'release'
+        releaseType = 'beta'
         relations {
             requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
