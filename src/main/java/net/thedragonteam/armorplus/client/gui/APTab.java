@@ -22,19 +22,17 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class APTab extends CreativeTabs {
 
     private static ItemStack iconArmorPlus;
-
-    public static void registerTabs() {
-        iconArmorPlus = new ItemStack(APItems.lavaChestplate);
-    }
-
     private int tab;
     private String label;
-
     public APTab(int id, String modid, String label, int tab) {
         super(id, modid);
         this.tab = tab;
         this.label = label;
         this.setBackgroundImageName(ArmorPlus.MODID + ".png");// Automatically has tab_ applied to it. Make sure you change the texture name.
+    }
+
+    public static void registerTabs() {
+        iconArmorPlus = new ItemStack(APItems.lavaChestplate);
     }
 
     @Override
@@ -49,11 +47,11 @@ public class APTab extends CreativeTabs {
             case 0:
                 return getItemStack(APItems.lavaChestplate);
             case 1:
-                return APItems.enderDragonScale;
+                return APItems.infusedLavaCrystal;
             case 2:
-                return getItemStack(ModBlocks.oreLavaCrystal);
+                return getItemStack(ModBlocks.blockInfusedLavaCrystal);
             case 3:
-                return getItemStack(APItems.redstoneBattleAxe);
+                return getItemStack(APItems.superStarBattleAxe);
             case 4:
                 return getItemStack(APItems.arditeChestplate);
         }
