@@ -13,9 +13,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -25,7 +23,6 @@ import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.EnumTiers;
 import net.thedragonteam.armorplus.util.PotionUtils;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
@@ -37,6 +34,7 @@ import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemArmorBase extends ItemArmor implements IModelHelper {
+
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 2,
             coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);
@@ -74,17 +72,13 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
 
     private APArmorMaterial material;
     private EnumRarity formattingName;
-    private ItemStack itemEasy;
-    private ItemStack itemExpert;
-    private TextFormatting formatting;
+    private ItemStack itemExpert = ItemStack.EMPTY;
     private EntityEquipmentSlot slot;
 
     public ItemArmorBase(APArmorMaterial material, EntityEquipmentSlot slot) {
         super(material.getArmorMaterial(), 0, slot);
         this.material = material;
-        this.itemEasy = material.getItemEasy();
         this.itemExpert = material.getItemExpert();
-        this.formatting = material.getFormatting();
         this.slot = slot;
         this.setMaxStackSize(1);
         switch (slot) {
@@ -109,9 +103,8 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
                 this.setUnlocalizedName(setName(helmet));
                 break;
         }
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplus);
-        this.formattingName = addRarity("ARMOR_COLOR", formatting, "Armor Color");
+        this.formattingName = addRarity("ARMOR_COLOR", material.getFormatting(), "Armor Color");
     }
 
     @Override
@@ -140,12 +133,12 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return isItemRepairable(repair, itemEasy, itemExpert);
+        return isItemRepairable(repair, this.itemExpert);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack,  World world, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         material.addInformation(stack, world, tooltip, advanced);
     }
 
@@ -157,7 +150,7 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), material.getName());
     }
 
 

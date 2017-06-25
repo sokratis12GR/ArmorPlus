@@ -17,7 +17,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
@@ -29,11 +28,11 @@ import java.util.List;
 
 import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
@@ -42,6 +41,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
@@ -49,10 +49,12 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
             theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints);
 
     private EnumRarity formattingName;
+    private EntityEquipmentSlot slot;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(ItemUltimateArmor.theUltimateArmor, 0, slot);
         this.setMaxStackSize(1);
+        this.slot = slot;
         switch (slot) {
             case FEET:
                 String boots = "the_ultimate_boots";
@@ -75,7 +77,6 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
                 this.setUnlocalizedName(setName(helmet));
                 break;
         }
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplus);
         this.formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
     }
@@ -147,12 +148,12 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return isItemRepairable(repair, EMPTY /*getItemStack(materials, 4)*/, EMPTY /*getItemStack(materials, 4)*/);
+        return isItemRepairable(repair, getItemStack(materials, 4));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), "ultimate");
     }
 }
