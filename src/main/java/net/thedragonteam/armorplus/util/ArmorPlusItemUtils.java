@@ -13,7 +13,7 @@ import net.thedragonteam.armorplus.APConfig;
  */
 public class ArmorPlusItemUtils {
 
-    public static boolean isItemRepairable(ItemStack repair, ItemStack easy, ItemStack expert) {
-        return APConfig.getRD().isItemRepairable(repair, easy, expert);
+    public static boolean isItemRepairable(ItemStack repair, ItemStack expert) {
+        return APConfig.getRD().isItemRepairable(repair, expert);
     }
 }

@@ -20,9 +20,7 @@ public class TextUtils {
     }
 
     public static String formattedText(TextFormatting color, String translationKey, Object... args) {
-        TextComponentTranslation ret = new TextComponentTranslation(translationKey, args);
-        ret.getStyle().setColor(color);
-        return ret.getFormattedText();
+        return formatText(color, translationKey, args).getFormattedText();
     }
 
     public static TextComponentTranslation formatText(String translationKey, Object... args) {
@@ -34,15 +32,11 @@ public class TextUtils {
     }
 
     public static String errorText(String translationKey, Object... args) {
-        TextComponentTranslation ret = new TextComponentTranslation(translationKey, args);
-        ret.getStyle().setColor(RED);
-        return ret.getFormattedText();
+        return formattedText(RED, translationKey, args);
     }
 
     public static String successText(String translationKey, Object... args) {
-        TextComponentTranslation ret = new TextComponentTranslation(translationKey, args);
-        ret.getStyle().setColor(GREEN);
-        return ret.getFormattedText();
+        return formattedText(GREEN, translationKey, args);
     }
 
     public static TextComponentString setText(String text) {

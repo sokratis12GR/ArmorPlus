@@ -11,12 +11,11 @@ import javax.annotation.Nonnull;
 import static net.thedragonteam.armorplus.util.EnumTiers.SubTypeMaterials.*;
 
 public enum EnumTiers implements IStringSerializable {
-    TIER_0(0, "tier_0", 0, new SubTypeMaterials[]{NONE}), //None
-    TIER_1(1, "tier_1", 8, new SubTypeMaterials[]{COAL, LAPIS, REDSTONE}), //Workbench
-    TIER_2(2, "tier_2", 16, new SubTypeMaterials[]{EMERALD, OBSIDIAN, LAVA}), //High-Tech Bench
-    TIER_3(3, "tier_3", 30, new SubTypeMaterials[]{GUARDIAN, SUPER_STAR, ENDER_DRAGON}), //Ulti-Tech Bench
-    TIER_4(4, "tier_4", 60, new SubTypeMaterials[]{ULTIMATE}), //Champion Bench
-    ;
+    TIER_0(0, "none", 0, new SubTypeMaterials[]{NONE}),
+    TIER_1(1, "beginner", 8, new SubTypeMaterials[]{COAL, LAPIS, REDSTONE}),
+    TIER_2(2, "amateur", 16, new SubTypeMaterials[]{EMERALD, OBSIDIAN, LAVA}),
+    TIER_3(3, "master", 30, new SubTypeMaterials[]{GUARDIAN, SUPER_STAR, ENDER_DRAGON}),
+    TIER_4(4, "grandmaster", 60, new SubTypeMaterials[]{ULTIMATE}),;
 
     private final int tierSlot;
 
