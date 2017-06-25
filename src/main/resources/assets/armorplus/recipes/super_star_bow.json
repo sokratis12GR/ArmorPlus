@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #s",
+    "# s",
+    " #s"
+  ],
+  "key": {
+    "#": {
+      "item": "#wither_bone"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:super_star_bow"
+  }
+}

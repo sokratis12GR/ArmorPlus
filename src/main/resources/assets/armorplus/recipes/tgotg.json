@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#O#",
+    "ONO",
+    "#O#"
+  ],
+  "key": {
+    "#": {
+      "item": "#infused_lava_crystal"
+    },
+    "O": {
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "armorplus:the_gift_of_the_gods"
+  }
+}

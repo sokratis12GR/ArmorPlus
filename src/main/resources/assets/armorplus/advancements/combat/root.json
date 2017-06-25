@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "armorplus:coal_battle_axe"
+    },
+    "title": "Well... it starts",
+    "background": "armorplus:textures/blocks/block_lava_crystal.png"
+  },
+  "criteria": {
+    "elytra": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_battle_axe",
+            "data": 1
+          }
+        ]
+      }
+    }
+  }
+}

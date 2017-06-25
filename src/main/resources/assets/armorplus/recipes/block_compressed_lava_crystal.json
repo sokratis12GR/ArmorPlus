@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "blockLavaCrystal"
+    }
+  },
+  "result": {
+    "item": "armorplus:block_compressed_lava_crystal"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s# ",
+    "s #",
+    "s# "
+  ],
+  "key": {
+    "#": {
+      "item": "#obsidian"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:obsidian_bow"
+  }
+}

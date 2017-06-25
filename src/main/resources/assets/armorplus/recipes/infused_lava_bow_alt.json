@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s# ",
+    "s #",
+    "s# "
+  ],
+  "key": {
+    "#": {
+      "item": "#infused_lava_crystal"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:infused_lava_bow"
+  }
+}

@@ -9,17 +9,15 @@ itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
+# Sound Events
+
+armorplus.subtitle.trap_triggered=Trap Triggered
+
 # Status
 status.armorplus.tgotg.gained_item=You got: %s [%s]
 
 #GuiArmorPlusInfo
 gui.armorplus.info.text_line_heading=ArmorPlus Info
-gui.armorplus.info.text_line_one=ArmorPlus Crafting Recipes are
-gui.armorplus.info.text_line_two=Expert Mode `I:Recipe:1` by default.
-gui.armorplus.info.text_line_three=If you want to change to Easy Mode
-gui.armorplus.info.text_line_four=you will need to change the config
-gui.armorplus.info.text_line_five=From `I:Recipe:1` to `I:Recipe:0`.
-gui.armorplus.info.text_line_six=Current Game Mode `I:Recipe: %s`.
 
 #CommandInfoText
 command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
@@ -41,7 +39,7 @@ enchantment.armorplus.furious.desc=When hit you get furious, giving you strength
 armorplus.jei.guardian_scale.desc=Used to craft the Guardian weapons, armor and the Ultimate Material. Dropped by the Elder Guardian and by Guardians.
 armorplus.jei.wither_bone.desc=Used to craft the Super Star weapons, armor and the Ultimate Material. Dropped by The Wither Boss and by Wither Skeletons.
 armorplus.jei.ender_dragon_scale.desc=Used to craft the Ender Dragon weapons, armor and the Ultimate Material. Dropped by the Ender Dragon and Ender Dragon Zombies.
-armorplus.jei.lava_infuser.desc=Used for infusing Lava Crystals and Obsidian blocks into Lava Infused Obsidian. You need to provide it with lava in order to work.
+armorplus.jei.lava_infuser.desc=Used for infusing Lava Crystals and Obsidian blocks into Lava Infused Obsidian. You need to provide it with lava buckets in order to work.
 
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Cosmetic Dragon
@@ -94,7 +92,7 @@ commands.error.404=Command not found!
 commands.error.unknown=Unknown command! Please use /armorplus help
 commands.error.perm=You do not have permission to use this command.
 commands.success=Executed successfully
-commands.formatText.help=%s - %s
+commands.format.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
@@ -409,10 +407,52 @@ item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
 entity.ice_golem.name=Ice Golem (WIP, Experimental)
 entity.overlord_of_the_guardians.name=Overlord of the Guardians (WIP, Experimental)
+entity.skeletal_king.name=Skeletal King (WIP, Experimental)
+entity.freeze_bomb.name=Freeze Bomb (WIP, Projectile, Explosive)
+entity.wither_minion.name=Wither Minion (WIP, Projectile, Spawner)
 
 #KeyBinds
 key.nightVision=Toggle NightVision from The Ultimate Armor
 key.categories.armorplus=ArmorPlus
+
+#ArmorPlus Effects
+effect.armorplus.empty.name=Empty
+effect.armorplus.empty=Empty
+armorplus.empty.name=Empty
+armorplus.empty=Empty
+
+##############
+# Deprecated #
+##############
+#VanillaPotions
+effect.none.name=No Effects
+effect.moveSpeed.name=Speed
+effect.moveSlowdown.name=Slowness
+effect.digSpeed.name=Haste
+effect.digSlowDown.name=Mining Fatigue
+effect.damageBoost.name=Strength
+effect.heal.name=Instant Health
+effect.harm.name=Instant Damage
+effect.jump.name=Jump Boost
+effect.confusion.name=Nausea
+effect.regeneration.name=Regeneration
+effect.resistance.name=Resistance
+effect.fireResistance.name=Fire Resistance
+effect.waterBreathing.name=Water Breathing
+effect.invisibility.name=Invisibility
+effect.blindness.name=Blindness
+effect.nightVision.name=Night Vision
+effect.hunger.name=Hunger
+effect.weakness.name=Weakness
+effect.poison.name=Poison
+effect.wither.name=Wither
+effect.healthBoost.name=Health Boost
+effect.absorption.name=Absorption
+effect.saturation.name=Saturation
+effect.glowing.name=Glowing
+effect.luck.name=Luck
+effect.unluck.name=Bad Luck
+effect.levitation.name=Levitation
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!
@@ -459,42 +499,3 @@ achievement.armorplus.craft_champion_bench=This is only for real Champions
 achievement.armorplus.craft_champion_bench.desc=craft the a Champion Bench from ArmorPlus
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus
-
-##############
-# Deprecated #
-##############
-#VanillaPotions
-effect.none.name=No Effects
-effect.moveSpeed.name=Speed
-effect.moveSlowdown.name=Slowness
-effect.digSpeed.name=Haste
-effect.digSlowDown.name=Mining Fatigue
-effect.damageBoost.name=Strength
-effect.heal.name=Instant Health
-effect.harm.name=Instant Damage
-effect.jump.name=Jump Boost
-effect.confusion.name=Nausea
-effect.regeneration.name=Regeneration
-effect.resistance.name=Resistance
-effect.fireResistance.name=Fire Resistance
-effect.waterBreathing.name=Water Breathing
-effect.invisibility.name=Invisibility
-effect.blindness.name=Blindness
-effect.nightVision.name=Night Vision
-effect.hunger.name=Hunger
-effect.weakness.name=Weakness
-effect.poison.name=Poison
-effect.wither.name=Wither
-effect.healthBoost.name=Health Boost
-effect.absorption.name=Absorption
-effect.saturation.name=Saturation
-effect.glowing.name=Glowing
-effect.luck.name=Luck
-effect.unluck.name=Bad Luck
-effect.levitation.name=Levitation
-
-#ArmorPlus Effects
-effect.armorplus.empty.name=Empty
-effect.armorplus.empty=Empty
-armorplus.empty.name=Empty
-armorplus.empty=Empty

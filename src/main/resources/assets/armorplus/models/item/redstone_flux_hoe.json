@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "armorplus:items/redstone_flux_hoe"
-  }
-}

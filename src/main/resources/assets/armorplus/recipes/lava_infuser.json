@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "G G",
+    "OOO"
+  ],
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "gemLavaCrystal"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlass"
+    },
+    "O": {
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
+    }
+  },
+  "result": {
+    "item": "armorplus:lava_infuser"
+  }
+}

@@ -1,4 +1,3 @@
-
 #ru_RU.lang File
 
 #CREATIVE TABS
@@ -40,7 +39,7 @@ tile.armorplus.block_energy_creative.name=Креативная Энергети�
 #Commands
 commands.error.arg.invalid=Недопустимые аргументы
 commands.error.arg.missing=Не хватает аргументов
-commands.error.arg.player.missing=You must specify which player you wish to perform this action on.
+commands.error.arg.player.missing=Вы должны указать, к какому игроку вы хотите выполнить это действие.
 commands.error.404=Команда не найдена!
 commands.error.unknown=Неизвестная команда! Пожалуйста, используйте /armorplus help
 commands.error.perm=У вас нет разрешения на использование этой команды.
@@ -61,11 +60,11 @@ commands.wiki.help=Открывает ссылку в браузере на Armo
 
 #JEI
 gui.jei.category.armor_forge=Armor Forge
-gui.jei.category.adv_armor_forge=Продвинутый Armor Forge
+gui.jei.category.adv_armor_forge=Продвинутый Кованная Броня
 
 #BOOKS
 item.armorplus.armorplus_book.name=ArmorPlus Книга
-item.armorplus.armorplus_info_book.name=ArmorPlus Информационна книга
+item.armorplus.armorplus_info_book.name=ArmorPlus Информационная книга
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Конфигурации
@@ -89,7 +88,7 @@ item.armorplus.redstone_leggings.name=Редстоуновые Поножи
 item.armorplus.redstone_boots.name=Редстоуновые Ботинки
 
 #EmeraldArmor
-item.armorplus.emerald_helmet.name=Изумрудный Шлем	
+item.armorplus.emerald_helmet.name=Изумрудный Шлем
 item.armorplus.emerald_chestplate.name=Изумрудный Нагрудник
 item.armorplus.emerald_leggings.name=Изумрудные Поножи
 item.armorplus.emerald_boots.name=Изумрудные Ботинки
@@ -107,10 +106,10 @@ item.armorplus.lava_leggings.name=Лавовые Поножи
 item.armorplus.lava_boots.name=Лавовые Ботинки
 
 #SuperStarArmor
-item.armorplus.super_star_helmet.name=Super Star Шлем
-item.armorplus.super_star_chestplate.name=Super Star Нагрудник
-item.armorplus.super_star_leggings.name=Super Star Поножи
-item.armorplus.super_star_boots.name=Super Star Ботинки
+item.armorplus.super_star_helmet.name=Супер-звездный Шлем
+item.armorplus.super_star_chestplate.name=Супер-звездный Нагрудник
+item.armorplus.super_star_leggings.name=Супер-звездные Поножи
+item.armorplus.super_star_boots.name=Супер-звездные Ботинки
 
 #EnderDragonArmor
 item.armorplus.ender_dragon_helmet.name=Эндер Драконовый Шлем
@@ -228,7 +227,7 @@ item.armorplus.test_2.name=Test 2
 #Items
 item.armorplus.chainmail.name=Кольчуга
 item.armorplus.reinforcing_material.name=Прочный Материал
-item.armorplus.lava_crystal_normal.name=Лавовый Кристалл	
+item.armorplus.lava_crystal_normal.name=Лавовый Кристалл
 item.armorplus.lava_crystal_charged.name=Заряженный Лавовый Кристалл
 item.armorplus.steel_ingot.name=Стальной Слиток
 item.armorplus.electrical_ingot.name=Электрический Слиток
@@ -297,7 +296,7 @@ item.armorplus.redstone_bow.name=Редстоуновый Лук
 item.armorplus.emerald_bow.name=Изумрудный Лук
 item.armorplus.obsidian_bow.name=Обсидиановый Лук
 item.armorplus.lava_bow.name=Лавовый Лук
-item.armorplus.super_star_bow.name=Super Star Лук
+item.armorplus.super_star_bow.name=Супер-звездный Лук
 item.armorplus.guardian_bow.name=Стражовый Лук
 item.armorplus.ender_dragon_bow.name=Эндер Драконовый Лук
 
@@ -308,20 +307,20 @@ item.redstone_arrow.name=Редстоуновая Стрела
 item.lava_arrow.name=Лавовая Стрела
 
 #TeslaItems
-item.armorplus.tesla_sword.name=Tesla Меч
-item.armorplus.tesla_pickaxe.name=Tesla Кирка
-item.armorplus.tesla_axe.name=Tesla Топор
-item.armorplus.tesla_rod.name=Tesla Род
-item.armorplus.tesla_hoe.name=Tesla Мотыга
-item.armorplus.tesla_shovel.name=Tesla Лопата
+item.armorplus.tesla_sword.name=Тесла Меч
+item.armorplus.tesla_pickaxe.name=Тесла Кирка
+item.armorplus.tesla_axe.name=Тесла Топор
+item.armorplus.tesla_rod.name=Тесла Стержень
+item.armorplus.tesla_hoe.name=Тесла Мотыга
+item.armorplus.tesla_shovel.name=Тесла Лопата
 
 #RedstoneFluxItems
-item.armorplus.redstone_flux_axe.name=Redstone Flux Топор
-item.armorplus.redstone_flux_rod.name=Redstone Flux Род
-item.armorplus.redstone_flux_sword.name=Redstone Flux Меч
-item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Кирка
-item.armorplus.redstone_flux_hoe.name=Redstone Flux Мотыга
-item.armorplus.redstone_flux_shovel.name=Redstone Flux Лопата
+item.armorplus.redstone_flux_axe.name=Редстоун Флакс Топор
+item.armorplus.redstone_flux_rod.name=Редстоун Флакс Стержень
+item.armorplus.redstone_flux_sword.name=Редстоун Флакс Меч
+item.armorplus.redstone_flux_pickaxe.name=Редстоун Флакс Кирка
+item.armorplus.redstone_flux_hoe.name=Редстоун Флакс Мотыга
+item.armorplus.redstone_flux_shovel.name=Редстоун Флакс Лопата
 #Entities
 entity.armorplus.ender_dragon_zombie.name=Эндер Драконовый Зомби
 

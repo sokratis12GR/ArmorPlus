@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s# ",
+    "s #",
+    "s# "
+  ],
+  "key": {
+    "#": {
+      "item": "#ender_dragon_scale"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:ender_dragon_bow"
+  }
+}
