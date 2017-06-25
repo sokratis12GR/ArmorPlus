@@ -4,11 +4,7 @@
 
 package net.thedragonteam.armorplus.items.enums;
 
-import net.minecraft.util.IStringSerializable;
-
-import javax.annotation.Nonnull;
-
-public enum DevItems implements IStringSerializable {
+public enum DevItems {
     THE_DRAGON_TEAM("the_dragon_team", 0),
     MODDED_CITY("modded_city", 1),
     JON_BAMS("jon_bams", 2, true),
@@ -37,8 +33,6 @@ public enum DevItems implements IStringSerializable {
         return subTypes;
     }
 
-    @Nonnull
-    @Override
     public String getName() {
         return this.name;
     }

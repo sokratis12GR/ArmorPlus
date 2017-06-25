@@ -10,8 +10,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.thedragonteam.armorplus.potions.base.PotionBaseGood;
 
-import javax.annotation.Nullable;
-
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
@@ -63,7 +61,7 @@ public class PotionEmpty extends PotionBaseGood {
     }
 
     @Override
-    public void affectEntity( Entity source,  Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
+    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {
         super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health);
     }
 }

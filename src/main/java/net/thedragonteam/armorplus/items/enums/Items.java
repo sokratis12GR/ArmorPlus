@@ -4,11 +4,7 @@
 
 package net.thedragonteam.armorplus.items.enums;
 
-import net.minecraft.util.IStringSerializable;
-
-import javax.annotation.Nonnull;
-
-public enum Items implements IStringSerializable {
+public enum Items {
     ELECTRICAL_INGOT("electrical_ingot", 0),
     STEEL_INGOT("steel_ingot", 1);
 
@@ -21,8 +17,6 @@ public enum Items implements IStringSerializable {
         this.id = ID;
     }
 
-    @Override
-    @Nonnull
     public String getName() {
         return this.name;
     }

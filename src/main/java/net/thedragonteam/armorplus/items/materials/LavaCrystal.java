@@ -35,11 +35,11 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
         GameRegistry.registerFuelHandler(this);
         this.setRegistryName("lava_crystal");      // The unique name (within your mod) that identifies this item
         this.setUnlocalizedName(setName("lava_crystal"));   // Used for localization (en_US.lang)
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.setMaxDamage(0);
     }
 
+    @Override
     public int getBurnTime(ItemStack fuel) {
         if (fuel.getItem() == this)
             for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
@@ -53,7 +53,7 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
     public String getUnlocalizedName(ItemStack stack) {
         for (int i = 0; i <= 1; i++)
             if (stack.getItemDamage() == i)
-                return super.getUnlocalizedName(stack) +  LAVA_CRYSTAL_NAMES[i];
+                return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[i];
         return super.getUnlocalizedName(stack);
     }
 
@@ -71,12 +71,15 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
     @Override
     public void initModel() {
         for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-            this.initModel(this, getRegistryName() + LAVA_CRYSTAL_NAMES[i], i);
+            this.initModel(getRegistryName(), LAVA_CRYSTAL_NAMES[i], "lava", i);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-            subItems.add(new ItemStack(this, 1, i));
+        if (isInCreativeTab(tab)) {
+            for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
+                subItems.add(new ItemStack(this, 1, i));
+        }
     }
 }

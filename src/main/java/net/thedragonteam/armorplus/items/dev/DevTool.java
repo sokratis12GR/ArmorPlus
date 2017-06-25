@@ -48,21 +48,21 @@ public class DevTool extends BaseItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-        if (playerIn.world.isRemote) {
-            return false;
-        }
-        if (target != null) {
-            playerIn.sendStatusMessage(new TextComponentString(TextFormatting.RED +
-                    "[" + target.getName() + "]"
-                    + " - " + "Health: " + target.getHealth()
-                    + " - " + "Max Health: " + target.getMaxHealth()
-                    + " - " + "Class: " + target.getClass()
-                    + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
-                    + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
-                    + " - " + "Position: " + target.getPosition()), false);
+        if (!playerIn.world.isRemote) {
+            if (target != null) {
+                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.RED +
+                        "[" + target.getName() + "]"
+                        + " - " + "Health: " + target.getHealth()
+                        + " - " + "Max Health: " + target.getMaxHealth()
+                        + " - " + "Class: " + target.getClass()
+                        + " - " + "Held Item Off Hand: " + target.getHeldItemOffhand()
+                        + " - " + "Held Item Main Hand: " + target.getHeldItemMainhand()
+                        + " - " + "Position: " + target.getPosition()), false);
+                return true;
+            }
             return true;
         }
-        return true;
+        return false;
     }
 
     @Override

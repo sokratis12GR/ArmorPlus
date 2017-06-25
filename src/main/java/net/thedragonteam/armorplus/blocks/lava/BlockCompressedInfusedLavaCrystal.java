@@ -16,6 +16,6 @@ public class BlockCompressedInfusedLavaCrystal extends BlockBase implements IMod
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0, "normal");
+        this.initModel(getRegistryName(), 0, "normal");
     }
 }

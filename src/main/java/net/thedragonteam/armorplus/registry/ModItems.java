@@ -5,8 +5,6 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.armorplus.items.ItemUltimateParts;
@@ -16,7 +14,6 @@ import net.thedragonteam.armorplus.items.books.ItemAPBook;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
-import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.enums.*;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
@@ -28,17 +25,16 @@ import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
 
 public class ModItems {
 
-    public static ItemAPBook bookInfo;
-    public static ItemMaterial materials;
-    public static BaseItem steelIngot, electricalIngot;
-    public static RedstoneApple redstoneApple;
-    public static LavaCrystal lavaCrystal;
-    public static TheGiftOfTheGods theGiftOfTheGods;
-    public static NBTItem nbtItem;
-    public static boolean[] isEnabled = new boolean[]{
-            enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
-            enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
-    };
+    public static ItemAPBook bookInfo = new ItemAPBook();
+    public static ItemMaterial materials = new ItemMaterial();
+    public static BaseItem steelIngot = new BaseItem(Items.STEEL_INGOT), electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
+    public static RedstoneApple redstoneApple = new RedstoneApple();
+    public static LavaCrystal lavaCrystal = new LavaCrystal();
+    public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
+  //  public static boolean[] isEnabled = new boolean[]{
+  //          enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
+  //          enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
+  //  };
     public static Swords[] swordType = new Swords[]{
             Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
     };
@@ -78,38 +74,24 @@ public class ModItems {
     public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
     public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
     public static ItemUltimateParts theUltimateParts;
-    public static DevTool devTool;
-    public static BaseDevItem twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem;
-    public static ItemCoalArrow itemCoalArrow;
-    public static ItemLapisArrow itemLapisArrow;
-    public static ItemRedstoneArrow itemRedstoneArrow;
-    public static ItemLavaArrow itemLavaArrow;
-    public static ItemEnderDragonArrow itemEnderDragonArrow;
+    public static DevTool devTool = new DevTool();
+    public static BaseDevItem twitchItem = new BaseDevItem(DevItems.TWITCH), beamItem = new BaseDevItem(DevItems.BEAM), theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM), moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY), jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
+    public static ItemCoalArrow itemCoalArrow = new ItemCoalArrow();
+    public static ItemLapisArrow itemLapisArrow = new ItemLapisArrow();
+    public static ItemRedstoneArrow itemRedstoneArrow = new ItemRedstoneArrow();
+    public static ItemLavaArrow itemLavaArrow = new ItemLavaArrow();
+    public static ItemEnderDragonArrow itemEnderDragonArrow = new ItemEnderDragonArrow();
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
-  //  public static BaseItem[] templates = new BaseItem[16];
-  //  public static String[] templateNames = new String[]{
-  //          "coal_template", "lapis_template", "redstone_template",
-  //          "emerald_template", "obsidian_template", "lava_template",
-  //          "chicken_template", "slime_template",
-  //          "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
-  //          "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
+    //  public static BaseItem[] templates = new BaseItem[16];
+    //  public static String[] templateNames = new String[]{
+    //          "coal_template", "lapis_template", "redstone_template",
+    //          "emerald_template", "obsidian_template", "lava_template",
+    //          "chicken_template", "slime_template",
+    //          "guardian_template", "super_star_template", "ender_dragon_template", "the_ultimate_template",
+    //          "cobalt_template", "ardite_template", "manyullyn_template", "knight_slime_template", "pig_iron_template"};
 
     public static void registerItems() {
-        twitchItem = new BaseDevItem(DevItems.TWITCH);
-        beamItem = new BaseDevItem(DevItems.BEAM);
-        theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
-        moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY);
-        jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
-        materials = new ItemMaterial();
-        lavaCrystal = new LavaCrystal();
-        theGiftOfTheGods = new TheGiftOfTheGods();
-        bookInfo = new ItemAPBook();
-        steelIngot = new BaseItem(Items.STEEL_INGOT);
-        electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
-        redstoneApple = new RedstoneApple();
-        nbtItem = new NBTItem();
-
         //Armors
         registerArmor(enableCoalArmor, coal, COAL);
         registerArmor(enableEmeraldArmor, emerald, EMERALD);
@@ -134,56 +116,6 @@ public class ModItems {
         registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
         //Bows
         registerBow(isBowEnabled, bow, bowType);
-        devTool = new DevTool();
-        itemCoalArrow = new ItemCoalArrow();
-        itemLapisArrow = new ItemLapisArrow();
-        itemRedstoneArrow = new ItemRedstoneArrow();
-        itemLavaArrow = new ItemLavaArrow();
-        itemEnderDragonArrow = new ItemEnderDragonArrow();
-       // Arrays.setAll(templates, i -> (new BaseItem(templateNames[i])));
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static void initItemModels() {
-        twitchItem.initModel();
-        beamItem.initModel();
-        theDragonTeamItem.initModel();
-        moddedCityItem.initModel();
-        jonBamsItem.initModel();
-        materials.initModel();
-        lavaCrystal.initModel();
-        theGiftOfTheGods.initModel();
-        bookInfo.initModel();
-        steelIngot.initModel();
-        electricalIngot.initModel();
-        redstoneApple.initModel();
-        registerArmorModel(enableCoalArmor, coal);
-        registerArmorModel(enableEmeraldArmor, emerald);
-        registerArmorModel(enableLapisArmor, lapis);
-        registerArmorModel(enableLavaArmor, lava);
-        registerArmorModel(enableObsidianArmor, obsidian);
-        registerArmorModel(enableRedstoneArmor, redstone);
-        registerArmorModel(enableChickenArmor, chicken);
-        registerArmorModel(enableSlimeArmor, slime);
-        registerArmorModel(enableEnderDragonArmor, enderDragon);
-        registerArmorModel(enableGuardianArmor, guardian);
-        registerArmorModel(enableSuperStarArmor, superStar);
-        registerArmorModel(enableArditeArmor, ardite);
-        registerArmorModel(enableCobaltArmor, cobalt);
-        registerArmorModel(enableManyullynArmor, manyullyn);
-        registerArmorModel(enablePigIronArmor, pigIron);
-        registerArmorModel(enableKnightSlimeArmor, knightSlime);
-        registerArmorModel(enableTheUltimateArmor, theUltimate);
-        registerSwordModel(isSwordEnabled, sword);
-        registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
-        registerBowModel(isBowEnabled, bow);
-        devTool.initModel();
-        nbtItem.initModel();
-        itemCoalArrow.initModel();
-        itemLapisArrow.initModel();
-        itemRedstoneArrow.initModel();
-        itemLavaArrow.initModel();
-        itemEnderDragonArrow.initModel();
-        //  for (BaseItem template : templates) template.initModel();
+        // Arrays.setAll(templates, i -> (new BaseItem(templateNames[i])));
     }
 }

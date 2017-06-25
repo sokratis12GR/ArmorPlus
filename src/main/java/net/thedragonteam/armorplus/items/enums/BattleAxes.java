@@ -8,50 +8,44 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.util.PotionUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
 import static net.minecraft.init.Blocks.*;
-import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialBattleAxe.*;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public enum BattleAxes implements IStringSerializable {
-    COAL(battleAxeCoalMaterial, "coal", getItemStack(Items.COAL), getItemStack(COAL_BLOCK), getValueByName(coalWeaponItemNameColor),
+public enum BattleAxes {
+    COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coalWeaponItemNameColor),
             setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F,
             enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(Items.DYE, 4), getItemStack(LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor),
+    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor),
             setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F,
             enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(Items.REDSTONE),
-            getItemStack(REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor),
+    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor),
             setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F,
             enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(Items.EMERALD), getItemStack(EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor),
+    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor),
             setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
             enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(Blocks.OBSIDIAN),getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian",  getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
             setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
             enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal), getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
+    LAVA(battleAxeLavaMaterial, "infused_lava",getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
             setLavaToolTip(), 11.5F, true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -84,7 +78,6 @@ public enum BattleAxes implements IStringSerializable {
 
     private final String name;
     private final Item.ToolMaterial material;
-    private final ItemStack repairEasy;
     private final ItemStack repairExpert;
     private final TextFormatting textFormatting;
     private final String effect;
@@ -93,18 +86,10 @@ public enum BattleAxes implements IStringSerializable {
     private final String addNegativePotionEffect;
     private final int addNegativePotionEffectAmplifier;
 
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairBoth, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
-               boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
-        this(materialIn, nameIn, repairBoth, repairBoth, textFormattingIn, effectIn, efficiencyIn, enableEffect, addNegativeEffect, addNegativeEffectAmplifier);
-    }
-
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairEasyIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn, float efficiencyIn,
                boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
         this.material = materialIn;
         this.name = nameIn;
-        if (repairEasyIn == null) repairEasyIn = EMPTY;
-        this.repairEasy = repairEasyIn;
-        if (repairExpertIn == null) repairExpertIn = EMPTY;
         this.repairExpert = repairExpertIn;
         this.textFormatting = textFormattingIn;
         this.effect = effectIn;
@@ -126,8 +111,6 @@ public enum BattleAxes implements IStringSerializable {
         return this.name;
     }
 
-    @Override
-    @Nonnull
     public String getName() {
         return this.name;
     }
@@ -138,10 +121,6 @@ public enum BattleAxes implements IStringSerializable {
 
     public String getEffect() {
         return effect;
-    }
-
-    public ItemStack getRepairEasy() {
-        return repairEasy;
     }
 
     public ItemStack getRepairExpert() {
@@ -171,7 +150,7 @@ public enum BattleAxes implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            PotionUtils.addPotion(target, PotionUtils.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 

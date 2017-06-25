@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.resources;
+package net.thedragonteam.armorplus.events;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -34,6 +34,36 @@ public class GlobalEventsArmorPlus {
     ////     Item i = event.crafting.getItem();
     //     //     if (i == Item.getItemFromBlock(APBlocks.workbench)) event.player.addStat(ModAchievements.welcomeToArmorPlus);
     // }
+
+    public static void addEffects(TickEvent.PlayerTickEvent event, boolean isEnabled, Item helmet, Item chestplate, Item leggings, Item boots, String addEffect, int addEffectAmplifier) {
+        EntityPlayer entity = event.player;
+        ItemStack head = entity.getItemStackFromSlot(HEAD);
+        ItemStack chest = entity.getItemStackFromSlot(CHEST);
+        ItemStack legs = entity.getItemStackFromSlot(LEGS);
+        ItemStack feet = entity.getItemStackFromSlot(FEET);
+        if (isEnabled) {
+            if (!head.isEmpty() && !chest.isEmpty() && !legs.isEmpty() && !feet.isEmpty()) {
+                if (helmet != null && chestplate != null && leggings != null && boots != null) {
+                    if (head.getItem() == helmet && chest.getItem() == chestplate && legs.getItem() == leggings && feet.getItem() == boots) {
+                        if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
+                            addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        syncConfig();
+        LogHelper.info("Refreshing configuration file");
+    }
+
+    private static void syncConfig() {
+        if (configuration.hasChanged())
+            configuration.save();
+    }
 
     @SubscribeEvent
     public void onArmorTick(TickEvent.PlayerTickEvent event) {
@@ -104,35 +134,5 @@ public class GlobalEventsArmorPlus {
             addEffects(event, enableArditeArmorEffect, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots, arditeArmorAddPotionEffect, arditeArmorEffectLevel);
         if (enableCobaltArmor)
             addEffects(event, enableCobaltArmorEffect, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel);
-    }
-
-    public static void addEffects(TickEvent.PlayerTickEvent event, boolean isEnabled, Item helmet, Item chestplate, Item leggings, Item boots, String addEffect, int addEffectAmplifier) {
-        EntityPlayer entity = event.player;
-        ItemStack head = entity.getItemStackFromSlot(HEAD);
-        ItemStack chest = entity.getItemStackFromSlot(CHEST);
-        ItemStack legs = entity.getItemStackFromSlot(LEGS);
-        ItemStack feet = entity.getItemStackFromSlot(FEET);
-        if (isEnabled) {
-            if (!head.isEmpty() && !chest.isEmpty() && !legs.isEmpty() && !feet.isEmpty()) {
-                if (helmet != null && chestplate != null && leggings != null && boots != null) {
-                    if (head.getItem() == helmet && chest.getItem() == chestplate && legs.getItem() == leggings && feet.getItem() == boots) {
-                        if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
-                            addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-        syncConfig();
-        LogHelper.info("Refreshing configuration file");
-    }
-
-    private static void syncConfig() {
-        if (configuration.hasChanged())
-            configuration.save();
     }
 }

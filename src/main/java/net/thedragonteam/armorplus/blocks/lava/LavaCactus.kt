@@ -12,7 +12,6 @@ import net.minecraft.block.material.Material.LAVA
 import net.minecraft.block.state.BlockStateContainer
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.Entity
-import net.minecraft.item.ItemBlock
 import net.minecraft.util.BlockRenderLayer
 import net.minecraft.util.BlockRenderLayer.CUTOUT
 import net.minecraft.util.EnumFacing.Plane
@@ -23,7 +22,6 @@ import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
 import net.minecraftforge.common.EnumPlantType
 import net.minecraftforge.common.EnumPlantType.Nether
-import net.minecraftforge.fml.common.registry.GameRegistry.register
 import net.minecraftforge.fml.relauncher.Side.CLIENT
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus.tabArmorplusBlocks
@@ -43,12 +41,10 @@ class LavaCactus : BlockCactus(), IModelHelper {
         this.unlocalizedName = setName("lava_cactus")
         this.setRegistryName("lava_cactus")
         this.setCreativeTab(tabArmorplusBlocks)
-        register(this)
-        register(ItemBlock(this), registryName)
     }
 
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName,"lava", 0)
     }
 
     override fun updateTick(worldIn: World, pos: BlockPos, state: IBlockState, rand: java.util.Random?) {

@@ -20,7 +20,7 @@ class BlockStoneBrickTower(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, 
     private val mapColor: MapColor = stoneBricks.mapColor
 
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName, "stone_bricks", 0)
     }
 
     /**

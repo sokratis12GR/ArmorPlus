@@ -18,13 +18,14 @@ import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
+import net.thedragonteam.armorplus.iface.IModelHelper
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 8/15/2016.
  * - TheDragonTeam
  */
-class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f) {
+class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f), IModelHelper {
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
     }
@@ -62,7 +63,12 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
     override fun getMapColor(state: IBlockState?, p_180659_2_: IBlockAccess?, p_180659_3_: BlockPos?): MapColor {
         return MapColor.NETHERRACK
     }
+
     companion object {
         val FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL)!!
+    }
+
+    override fun initModel() {
+        this.initModel(registryName, "lava", 0)
     }
 }

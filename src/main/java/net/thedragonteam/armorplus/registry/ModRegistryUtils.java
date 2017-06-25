@@ -42,7 +42,7 @@ public class ModRegistryUtils {
             if (isEnabled[i]) {
                 sword[i].initModel();
             }
-       }
+        }
     }
 
     @SideOnly(Side.CLIENT)

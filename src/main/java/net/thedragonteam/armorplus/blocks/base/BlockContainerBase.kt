@@ -7,10 +7,8 @@ package net.thedragonteam.armorplus.blocks.base
 import net.minecraft.block.Block
 import net.minecraft.block.ITileEntityProvider
 import net.minecraft.block.material.Material
-import net.minecraft.item.ItemBlock
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
-import net.minecraftforge.fml.common.registry.GameRegistry
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.util.Utils.setName
 
@@ -22,8 +20,6 @@ class BlockContainerBase(materialIn: Material, private val tileEntity: TileEntit
         this.setResistance(resistance.toFloat())
         this.setHardness(hardness.toFloat())
         this.setHarvestLevel(toolType.tool, harvestLevel)
-        GameRegistry.register(this)
-        GameRegistry.register(ItemBlock(this), registryName)
     }
 
     override fun createNewTileEntity(worldIn: World, meta: Int): TileEntity? {
@@ -31,6 +27,6 @@ class BlockContainerBase(materialIn: Material, private val tileEntity: TileEntit
     }
 
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName, 0)
     }
 }

@@ -12,9 +12,12 @@ import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.events.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.events.MobDropsEventHandler;
+import net.thedragonteam.armorplus.events.RegistryEventHandler;
 import net.thedragonteam.armorplus.registry.*;
-import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus;
-import net.thedragonteam.armorplus.tileentity.*;
+import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -24,18 +27,15 @@ import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPh
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
-        ModSounds.registerSounds();
-        ModPotions.registerPotions();
-        ModEntities.registerEntities();
         ModBlocks.registerBlocks();
         LogHelper.debug("Blocks Successfully Registered");
-        APBlocks.registerBlocks();
-        ModItems.registerItems();// Initializes the items
+        ModItems.registerItems();
         LogHelper.debug("Items Successfully Registered");
-        APItems.registerItems(); // Initializes the helper item class
+        MinecraftForge.EVENT_BUS.register(new RegistryEventHandler());
+        APItems.registerItemNames();
+        ModEntities.registerEntitySettings();
         registerWorldGenerators();
-        registerTileEntities();
-        MinecraftForge.EVENT_BUS.register(new MobDrops());
+        MinecraftForge.EVENT_BUS.register(new MobDropsEventHandler());
         registerFixes();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
@@ -46,7 +46,6 @@ public class CommonProxy {
         registerEvents();
         ModOreDicts.registerOreDictEntries();
         APTab.registerTabs();
-        ModEnchantments.registerEnchantments();
         ModCompatibility.loadCompat(INIT);
         LogHelper.info("Finished Initialization");
     }
@@ -66,21 +65,11 @@ public class CommonProxy {
 
     public void registerEvents() {
         MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
-        //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this);
-        //    ModRecipes.registerRecipes();
-        //    LavaInfuserRecipes.registerRecipes();
     }
 
-    public void registerModels() {
-    }
-
-    public void registerTileEntities() {
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityWorkbench.class, "Workbench", "APWorkbench", "WorkbenchTier1", "WorkbenchTierOne");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityHighTechBench.class, "HighTechBench", "APHighTechBench", "WorkbenchTier2", "WorkbenchTierTwo");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityUltiTechBench.class, "UltiTechBench", "APUltiTechBench", "WorkbenchTier3", "WorkbenchTierThree");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityChampionBench.class, "ChampionBench", "APChampionBench", "WorkbenchTier4", "WorkbenchTierFour");
-        GameRegistry.registerTileEntityWithAlternatives(TileEntityLavaInfuser.class, "LavaInfuserRecipe", "APLavaInfuser");
+    public static void registerTileEntities() {
+        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserRecipe");
     }
 
     public void registerWorldGenerators() {
@@ -92,5 +81,6 @@ public class CommonProxy {
         TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
         EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer());
         EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer());
+        EntityWitherMinion.registerFixesFreezeBomb(DataFixesManager.createFixer());
     }
 }

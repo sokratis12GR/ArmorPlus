@@ -30,7 +30,6 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
         this.setHasSubtypes(true)
         this.setRegistryName("redstone_apple")
         this.unlocalizedName = setName("redstone_apple")
-        GameRegistry.register(this)
         this.setAlwaysEdible()
         this.creativeTab = ArmorPlus.tabArmorplusItems
     }
@@ -56,9 +55,11 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
      */
     @SideOnly(Side.CLIENT)
     override fun getSubItems(tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
-        subItems.add(ItemStack(this))
-        subItems.add(ItemStack(this, 1, 1))
+        if (isInCreativeTab(tab)) {
+            subItems.add(ItemStack(this))
+            subItems.add(ItemStack(this, 1, 1))
+        }
     }
 
-    override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(this, registryName, i) }
+    override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(registryName, i) }
 }

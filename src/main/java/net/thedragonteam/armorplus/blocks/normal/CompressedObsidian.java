@@ -16,15 +16,18 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
+import net.thedragonteam.armorplus.iface.IModelHelper;
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:50 PM.
  * - TheDragonTeam
  */
-public class CompressedObsidian extends BlockBase {
+public class CompressedObsidian extends BlockBase implements IModelHelper{
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public CompressedObsidian() {
@@ -40,9 +43,14 @@ public class CompressedObsidian extends BlockBase {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        this.initModel(getRegistryName(), 0);
+    }
+
+    @Override
     public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getHorizontalIndex();
-
     }
 
     @Override

@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.potion.Potion;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
 
 /**
@@ -13,11 +12,5 @@ import net.thedragonteam.armorplus.potions.PotionEmpty;
  * - TheDragonTeam
  */
 public class ModPotions {
-
     public static final Potion EMPTY = new PotionEmpty(); //To Prevent Nulls :D
-
-    public static void registerPotions() {
-        GameRegistry.register(new PotionEmpty());
-    }
-
 }

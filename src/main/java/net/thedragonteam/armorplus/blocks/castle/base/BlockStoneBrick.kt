@@ -9,6 +9,8 @@ import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks
@@ -20,8 +22,9 @@ class BlockStoneBrick(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stone
 
     val name: String = stoneBricks.getName() + "_stone_brick"
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(this, registryName, 0, "normal")
+        this.initModel(registryName, 0, "normal")
     }
 
     /**

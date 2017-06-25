@@ -23,7 +23,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -39,31 +38,28 @@ import java.util.stream.IntStream;
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     public double damage;
-
-    private ItemStack itemEasy;
-    private ItemStack itemExpert;
-    private Item itemBow;
-    private TextFormatting formatting;
     public EnumRarity formattingName;
     public String itemName;
     public Bows bows;
+    private ItemStack itemExpert;
+    private Item itemBow;
+    private TextFormatting formatting;
 
     public ItemSpecialBow(Bows bows) {
         this.bows = bows;
         this.itemName = bows.getName();
         this.setMaxDamage(bows.getDurability());
         this.damage = bows.getDamage();
-        this.itemEasy = bows.getRepairEasy();
         this.itemExpert = bows.getRepairExpert();
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(bows.getName() + "_bow");
-        this.setUnlocalizedName(Utils.setName(bows.getName() + "_bow"));
-        GameRegistry.register(this);
+        this.setUnlocalizedName(setName(bows.getName() + "_bow"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
@@ -86,17 +82,16 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), bows.getName(), 0);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
         else showInfo(tooltip, keyBindSneak, formatting);
     }
-
 
     @Override
     @Nonnull
@@ -106,7 +101,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return ArmorPlusItemUtils.isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.isItemRepairable(repair, itemExpert);
     }
 
     @Nonnull

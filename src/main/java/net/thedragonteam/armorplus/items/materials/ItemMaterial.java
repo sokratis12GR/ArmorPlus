@@ -8,12 +8,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 
+import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemMaterial extends Item implements IModelHelper {
@@ -24,7 +25,6 @@ public class ItemMaterial extends Item implements IModelHelper {
         this.setRegistryName("material");
         this.setUnlocalizedName(setName("material"));
         this.setHasSubtypes(true);
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
@@ -41,15 +41,18 @@ public class ItemMaterial extends Item implements IModelHelper {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i < MATERIAL_NAMES.length; i++)
-            subItems.add(new ItemStack(this, 1, i));
+        if (isInCreativeTab(tab)) {
+            for (int i = 0; i < MATERIAL_NAMES.length; i++)
+                subItems.add(new ItemStack(this, 1, i));
+        }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
         for (int i = 0; i < MATERIAL_NAMES.length; i++)
-            this.initModel(this, getRegistryName() + MATERIAL_NAMES[i], i);
+            this.initModel(new ResourceLocation(MODID, MATERIAL_NAMES[i].replaceFirst("_", "")), "material", i);
     }
 }

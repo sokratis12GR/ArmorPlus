@@ -25,7 +25,7 @@ class BaseMetalBlock(metals: Metals) : BlockBase(Material.IRON, metals.getName()
     }
 
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName, 0)
     }
 
     override fun getStateForPlacement(worldIn: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase, hand: EnumHand?): IBlockState {

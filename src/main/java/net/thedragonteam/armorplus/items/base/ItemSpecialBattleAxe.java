@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -40,7 +39,6 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     public static ToolMaterial battleAxeGuardianMaterial = addToolMaterial("battleAxeGuardianMaterial", 1, guardianBattleAxeDurability, 1.0F, (float) guardianBattleAxeDamage, 30);
     public static ToolMaterial battleAxeSuperStarMaterial = addToolMaterial("battleAxeSuperStarMaterial", 1, superStarBattleAxeDurability, 1.0F, (float) superStarBattleAxeDamage, 20);
     public static ToolMaterial battleAxeEnderDragonMaterial = addToolMaterial("battleAxeEnderDragonMaterial", 1, enderDragonBattleAxeDurability, 1.0F, (float) enderDragonBattleAxeDamage, 20);
-    public ItemStack itemEasy;
     public ItemStack itemExpert;
     public TextFormatting formatting;
     public String effect;
@@ -54,14 +52,12 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
         this.setHasSubtypes(true);
         this.itemName = battleAxes.getName();
         this.battleAxes = battleAxes;
-        this.itemEasy = battleAxes.getRepairEasy();
         this.itemExpert = battleAxes.getRepairExpert();
         this.formatting = battleAxes.getTextFormatting();
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         this.setRegistryName(battleAxes.getName() + "_battle_axe");
         this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
     }
@@ -81,7 +77,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         battleAxes.addInformation(tooltip);
     }
 
@@ -93,12 +89,12 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return ArmorPlusItemUtils.isItemRepairable(repair, itemEasy, itemExpert);
+        return ArmorPlusItemUtils.isItemRepairable(repair, itemExpert);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), battleAxes.getName(), 0);
     }
 }

@@ -11,7 +11,6 @@ import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -28,14 +27,13 @@ public class ItemCoalArrow extends ItemArrow implements IModelHelper {
     public ItemCoalArrow() {
         this.setRegistryName("coal_arrow");
         this.setUnlocalizedName(setName("coal_arrow"));
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), "coal");
     }
 
     @Override

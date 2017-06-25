@@ -7,6 +7,8 @@ package net.thedragonteam.armorplus.items.base
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.enums.DevItems
@@ -22,15 +24,19 @@ class BaseDevItem(private val devItems: DevItems) : BaseItem(devItems.getName())
         this.creativeTab = ArmorPlus.tabArmorplusItems
     }
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
-        if (devItems.hasSubTypes()) this.initModel(this, registryName!!.toString() + "_second", 1)
-        this.initModel(this, registryName, 0)
+        if (devItems.hasSubTypes()) this.initModel(registryName, "_second", "cosmetics", 1)
+        this.initModel(registryName, "cosmetics", 0)
     }
 
     override fun getSubItems(tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
-        if (devItems.hasSubTypes()) {
-            subItems.add(getItemStack(this, 0))
-            subItems.add(getItemStack(this, 1))
+        if (isInCreativeTab(tab)) {
+            if (devItems.hasSubTypes()) {
+                subItems.add(getItemStack(this, 0))
+                subItems.add(getItemStack(this, 1))
+            }
         }
     }
+
 }

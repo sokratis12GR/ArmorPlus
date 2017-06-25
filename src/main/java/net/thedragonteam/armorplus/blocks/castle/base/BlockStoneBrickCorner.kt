@@ -19,7 +19,6 @@ import net.thedragonteam.armorplus.blocks.castle.StoneBricks
 import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.util.Utils.setName
 
-// TODO: fix CollisionBox to mach Shape (not any time soon)
 class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IBlockState) : BlockStairs(modelState), IModelHelper {
 
     init {
@@ -29,14 +28,12 @@ class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IB
         this.setResistance(5.0f)
         this.setHarvestLevel("pickaxe", 0)
         this.setLightOpacity(255)
-        GameRegistry.register(this)
-        GameRegistry.register(ItemBlock(this), registryName)
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks)
     }
 
     @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName, "stone_bricks", 0)
     }
 
     override fun getBlockLayer(): BlockRenderLayer {

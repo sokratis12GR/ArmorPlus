@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.registry;
+package net.thedragonteam.armorplus.events;
 
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
@@ -25,7 +25,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * ArmorPlus Created by sokratinstanceof12GR on 4/4/2016.
  * - TheDragonTeam
  */
-public class MobDrops {
+public class MobDropsEventHandler {
     private Random random = new Random();
     private int min = 0;
     private int max = 1;

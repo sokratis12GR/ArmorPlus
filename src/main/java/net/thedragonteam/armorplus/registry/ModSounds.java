@@ -1,14 +1,9 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.util.SoundEvent;
-
-import static net.thedragonteam.armorplus.util.Utils.setRL;
+import net.thedragonteam.armorplus.sounds.SoundTrapTriggered;
 
 public class ModSounds {
 
-    public static SoundEvent trap_triggered;
-
-    public static void registerSounds() {
-        trap_triggered = new SoundEvent(setRL("trap_triggered"));
-    }
+    public static final SoundEvent TRAP_TRIGGERED = new SoundTrapTriggered();
 }

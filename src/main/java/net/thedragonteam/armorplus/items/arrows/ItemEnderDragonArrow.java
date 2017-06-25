@@ -11,7 +11,6 @@ import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -28,14 +27,13 @@ public class ItemEnderDragonArrow extends ItemArrow implements IModelHelper {
     public ItemEnderDragonArrow() {
         this.setRegistryName("ender_dragon_arrow");
         this.setUnlocalizedName(setName("ender_dragon_arrow"));
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(this, getRegistryName(), 0);
+        this.initModel(getRegistryName(), "ender_dragon");
     }
 
     @Override
@@ -45,7 +43,7 @@ public class ItemEnderDragonArrow extends ItemArrow implements IModelHelper {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack,  World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
         ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE);
     }
 

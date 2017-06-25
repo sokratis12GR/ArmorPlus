@@ -15,21 +15,19 @@ import net.minecraft.init.SoundEvents
 import net.minecraft.inventory.Container
 import net.minecraft.inventory.InventoryHelper
 import net.minecraft.item.Item
-import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
-import net.thedragonteam.armorplus.registry.APBlocks.lavaInfuser
-import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
+import net.thedragonteam.armorplus.registry.ModBlocks.lava_infuser
+import net.thedragonteam.armorplus.registry.ModBlocks.lava_infuser_infusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.Utils.setName
 import net.thedragonteam.armorplus.util.Utils.setRL
@@ -45,12 +43,10 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         this.setResistance(10000.0F)
         this.setHardness(2.5F)
         this.setHarvestLevel(ToolType.PICKAXE.tool, 1)
-        GameRegistry.register(this)
-        GameRegistry.register(ItemBlock(this), registryName)
     }
 
     override fun initModel() {
-        this.initModel(this, registryName, 0)
+        this.initModel(registryName, 0)
     }
 
     @Suppress("OverridingDeprecatedMember")
@@ -62,7 +58,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
      * Get the Item that this Block should drop when harvested.
      */
     override fun getItemDropped(state: IBlockState?, rand: Random?, fortune: Int): Item {
-        return Item.getItemFromBlock(lavaInfuser)
+        return Item.getItemFromBlock(lava_infuser)
     }
 
     /**
@@ -139,7 +135,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
     override fun onBlockActivated(world: World?, pos: BlockPos?, state: IBlockState?, playerIn: EntityPlayer?, hand: EnumHand?, facing: EnumFacing?, hitX: Float, hitY: Float, hitZ: Float): Boolean {
         if (!world!!.isRemote)
             playerIn!!.openGui(ArmorPlus.instance, GuiHandler.GUI_LAVA_INFUSER, world, pos!!.x, pos.y, pos.z)
-        return super.onBlockActivated(world, pos, state, playerIn, hand, facing, hitX, hitY, hitZ)
+        return true
     }
 
     /**
@@ -201,7 +197,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
     @Suppress("OverridingDeprecatedMember")
     override fun getItem(worldIn: World?, pos: BlockPos?, state: IBlockState): ItemStack {
-        return getItemStack(lavaInfuser)
+        return getItemStack(lava_infuser)
     }
 
     /**
@@ -280,12 +276,12 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
             when {
                 active -> {
-                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
-                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lava_infuser_infusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lava_infuser_infusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
                 }
                 else -> {
-                    worldIn.setBlockState(pos, lavaInfuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
-                    worldIn.setBlockState(pos, lavaInfuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lava_infuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lava_infuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
                 }
             }
 

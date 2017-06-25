@@ -9,7 +9,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
@@ -34,7 +33,6 @@ public class ItemUltimateParts extends Item implements IModelHelper {
         this.setHasSubtypes(true);
         this.setRegistryName("the_ultimate_part");
         this.setUnlocalizedName(setName("the_ultimate_part"));
-        GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.formattingName = addRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
     }
@@ -53,16 +51,19 @@ public class ItemUltimateParts extends Item implements IModelHelper {
         return super.getUnlocalizedName();
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
-            subItems.add(new ItemStack(this, 1, i));
+        if (isInCreativeTab(tab)) {
+            for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+                subItems.add(new ItemStack(this, 1, i));
+        }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
         for (int i = 0; i < ULTIMATE_NAMES.length; i++)
-            this.initModel(this, getRegistryName() + ULTIMATE_NAMES[i], i);
+            this.initModel(getRegistryName(), ULTIMATE_NAMES[i], "ultimate", i);
     }
 }

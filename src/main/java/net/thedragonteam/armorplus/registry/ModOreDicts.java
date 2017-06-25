@@ -12,6 +12,7 @@ import static net.minecraft.init.Items.ARROW;
 import static net.minecraft.init.Items.COAL;
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.minecraftforge.oredict.OreDictionary.registerOre;
+import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -30,34 +31,24 @@ public class ModOreDicts {
         registerWildOre("gemInfusedLavaCrystal", lavaCrystal, 1);
         registerWildOre("ingotInfusedLavaCrystal", lavaCrystal, 1);
         //Blocks
-    //   registerOre("oreLavaCrystal", oreLavaCrystal);
-    //   registerOre("blockLavaCrystal", blockLavaCrystal);
-    //   registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
-    //   registerOre("blockCompressedLavaCrystal", blockCompressedLavaCrystal);
-    //   registerOre("blockCompressedInfusedLavaCrystal", blockCompressedInfusedLavaCrystal);
-    //   registerOre("blockSteel", steelBlock);
-    //   registerOre("blockElectrical", electricalBlock);
-    //   registerOre("blockCompressedObsidian", compressedObsidian);
-    //   registerOre("blockLavaInfusedObsidian", lavaInfusedObsidian);
-    //   registerOre("blockInfusedObsidian", lavaInfusedObsidian);
-        //Benches
-     //   registerOre("apWorkbench", workbench);
-     //   registerOre("workbenchTier1", workbench);
-     //   registerOre("workbenchTierOne", workbench);
-     //   registerOre("apHighTechBench", highTechBench);
-     //   registerOre("workbenchTier2", highTechBench);
-     //   registerOre("workbenchTierTwo", highTechBench);
-     //   registerOre("apUltiTechBench", ultiTechBench);
-     //   registerOre("workbenchTier3", ultiTechBench);
-     //   registerOre("workbenchTierThree", ultiTechBench);
+        registerOre("oreLavaCrystal", oreLavaCrystal);
+        registerOre("blockLavaCrystal", blockLavaCrystal);
+        registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
+        registerOre("blockCompressedLavaCrystal", blockCompressedLavaCrystal);
+        registerOre("blockCompressedInfusedLavaCrystal", blockCompressedInfusedLavaCrystal);
+        registerOre("blockSteel", steelBlock);
+        registerOre("blockElectrical", electricalBlock);
+        registerOre("blockCompressedObsidian", compressedObsidian);
+        registerOre("blockLavaInfusedObsidian", blockLavaInfusedObsidian);
+        registerOre("blockInfusedObsidian", blockLavaInfusedObsidian);
 
         //CastleBlocks
-    //    for (int i = 0; i < colors.length; i++) {
-    //        registerWildBrick(colors[i], stoneBricks[i]);
-    //        registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
-    //        registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
-    //        registerWildBrick(colors[i] + "Wall", stonebrickWalls[i]);
-    //    }
+        for (int i = 0; i < colors.length; i++) {
+            registerWildBrick(colors[i], stoneBricks[i]);
+            registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
+            registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
+            registerWildBrick(colors[i] + "Wall", stonebrickWalls[i]);
+        }
         //Materials
         registerWildOre("chainmail", materials, 0);
         registerWildOre("witherBone", materials, 2);

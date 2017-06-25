@@ -42,7 +42,7 @@ class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarit
         this.creativeTab = ArmorPlus.tabArmorplusItems
     }
 
-    override fun initModel() = this.initModel(this, registryName, 0)
+    override fun initModel() = this.initModel(registryName, 0)
 
     override fun getRarity(stack: ItemStack): EnumRarity = golden
 
