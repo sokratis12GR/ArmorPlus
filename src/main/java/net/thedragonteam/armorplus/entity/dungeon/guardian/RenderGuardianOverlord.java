@@ -26,7 +26,6 @@ public class RenderGuardianOverlord extends RenderLiving<EntityGuardianOverlord>
 
     @Override
     protected void preRenderCallback(EntityGuardianOverlord entityLivingBaseIn, float partialTickTime) {
-        //  GlStateManager.scale(2.35F, 2.35F, 2.35F);
         GlStateManager.scale(7.0F, 7.0F, 7.0F);
     }
 }

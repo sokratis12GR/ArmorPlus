@@ -1,52 +1,54 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.wither.projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.init.MobEffects;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static net.minecraft.world.EnumDifficulty.HARD;
-import static net.minecraft.world.EnumDifficulty.NORMAL;
+import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 
 /**
  * ArmorPlus - Kotlin created by sokratis12GR
  * - TheDragonTeam
  */
-public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity {
-    private static final DataParameter<Boolean> INVULNERABLE = EntityDataManager.createKey(EntityFreezeBomb.class, DataSerializers.BOOLEAN);
+public class EntityWitherMinion extends EntityFireball implements IThrowableEntity {
+    private static final DataParameter<Boolean> INVULNERABLE = EntityDataManager.createKey(EntityWitherMinion.class, DataSerializers.BOOLEAN);
 
     private Entity shooter;
+    private int spawnCount;
 
-    public EntityFreezeBomb(World worldIn) {
+    public EntityWitherMinion(World worldIn) {
         super(worldIn);
         this.setSize(0.3125F, 0.3125F);
     }
 
-    public EntityFreezeBomb(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
+    public EntityWitherMinion(World worldIn, EntityLivingBase shooter, int spawnCount, double accelX, double accelY, double accelZ) {
         super(worldIn, shooter, accelX, accelY, accelZ);
+        this.spawnCount = spawnCount;
         this.setSize(0.3125F, 0.3125F);
         this.shooter = shooter;
     }
 
     @SideOnly(Side.CLIENT)
-    public EntityFreezeBomb(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ) {
+    public EntityWitherMinion(World worldIn, int spawnCount, double x, double y, double z, double accelX, double accelY, double accelZ) {
         super(worldIn, x, y, z, accelX, accelY, accelZ);
+        this.spawnCount = spawnCount;
         this.setSize(0.3125F, 0.3125F);
     }
 
     public static void registerFixesFreezeBomb(DataFixer fixer) {
-        EntityFireball.registerFixesFireball(fixer, "FreezeBomb");
+        EntityFireball.registerFixesFireball(fixer, "WitherMinion");
     }
 
     /**
@@ -70,32 +72,37 @@ public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity
      */
     @Override
     protected void onImpact(RayTraceResult result) {
-        if (this.world.isRemote || result.entityHit == null) {
+        if (result.entityHit == null || this.world.isRemote) {
             return;
         }
-        if (this.shootingEntity == null) {
-            result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5.0F);
-        } else if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8.0F)) {
-            if (result.entityHit.isEntityAlive()) {
-                this.applyEnchantments(this.shootingEntity, result.entityHit);
-            }
-            this.shootingEntity.heal(5.0F);
-        }
-
         if (result.entityHit instanceof EntityLivingBase) {
             int i = 0;
-            if (this.world.getDifficulty() == NORMAL) {
-                i = 10;
-            } else if (this.world.getDifficulty() == HARD) {
-                i = 40;
+            switch (this.world.getDifficulty()) {
+                case NORMAL:
+                    i = 10;
+                    break;
+                case HARD:
+                    i = 10;
+                    break;
             }
 
             if (i > 0) {
-                ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 30 * i, 1));
+                double posX = result.entityHit.posX;
+                double posY = result.entityHit.posY;
+                double posZ = result.entityHit.posZ;
+                for (int c = 0; c < spawnCount; c++) {
+                    EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(this.world);
+                    this.world.spawnEntity(witherSkeleton);
+                    witherSkeleton.setPositionAndUpdate(posX, posY, posZ);
+                    witherSkeleton.setCustomNameTag(TextFormatting.YELLOW + "Skeletal King's Minion");
+                    witherSkeleton.setAlwaysRenderNameTag(true);
+                }
+                result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
             }
         }
         this.setDead();
     }
+
 
     /**
      * Returns true if other Entities should be prevented from moving through this Entity.
@@ -120,7 +127,7 @@ public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity
 
     @Override
     protected boolean isFireballFiery() {
-        return true;
+        return false;
     }
 
     /**

@@ -28,7 +28,7 @@ class RenderIceGolem(renderManagerIn: RenderManager) : RenderLiving<EntityIceGol
         super.applyRotations(entityLiving, p_77043_2_, p_77043_3_, partialTicks)
 
         if (entityLiving.limbSwingAmount.toDouble() >= 0.01) {
-          //  val f = 13.0f
+            //  val f = 13.0f
             val f1 = entityLiving.limbSwing - entityLiving.limbSwingAmount * (1.0f - partialTicks) + 6.0f
             val f2 = (Math.abs(f1 % 13.0f - 6.5f) - 3.25f) / 3.25f
             GlStateManager.rotate(6.5f * f2, 0.0f, 0.0f, 1.0f)

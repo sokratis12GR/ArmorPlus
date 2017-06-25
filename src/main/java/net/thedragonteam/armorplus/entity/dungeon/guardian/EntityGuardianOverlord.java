@@ -35,6 +35,10 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
         bossInfo = new BossInfoServerGuardianOverlord(this.getDisplayName());
     }
 
+    public static void registerFixesElderGuardian(DataFixer fixer) {
+        EntityLiving.registerFixesMob(fixer, EntityGuardianOverlord.class);
+    }
+
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(2, new EntityAIGuardianOverlordAttack(this, 0.5D, 10, 3.0F));
@@ -51,10 +55,6 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     public void setGhost() {
         this.clientSideSpikesAnimation = 1.0F;
         this.clientSideSpikesAnimationO = this.clientSideSpikesAnimation;
-    }
-
-    public static void registerFixesElderGuardian(DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, EntityGuardianOverlord.class);
     }
 
     @Override

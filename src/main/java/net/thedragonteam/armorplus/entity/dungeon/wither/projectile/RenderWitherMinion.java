@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.wither.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
@@ -17,23 +17,23 @@ import net.thedragonteam.armorplus.ArmorPlus;
  * - TheDragonTeam
  */
 @SideOnly(Side.CLIENT)
-public class RenderFreezeBomb extends Render<EntityFreezeBomb> {
-    private static final ResourceLocation FREEZE_BOMB_TEXTURES = new ResourceLocation(ArmorPlus.MODID, "textures/entity/guardian/freeze_bomb.png");
+public class RenderWitherMinion extends Render<EntityWitherMinion> {
+    private static final ResourceLocation WITHER_MINION_TEXTURE = new ResourceLocation(ArmorPlus.MODID, "textures/entity/wither/wither_minion.png");
 
-    public RenderFreezeBomb(RenderManager renderManager) {
+    public RenderWitherMinion(RenderManager renderManager) {
         super(renderManager);
         this.shadowSize = 0.5F;
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityFreezeBomb entity) {
-        return FREEZE_BOMB_TEXTURES;
+    protected ResourceLocation getEntityTexture(EntityWitherMinion entity) {
+        return WITHER_MINION_TEXTURE;
     }
 
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityFreezeBomb entity, double x, double y, double z, float entityYaw, float partialTicks) {
+    public void doRender(EntityWitherMinion entity, double x, double y, double z, float entityYaw, float partialTicks) {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         GlStateManager.pushMatrix();
         GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);

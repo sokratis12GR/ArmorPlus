@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created using Tabula 5.1.0
  */
-public class ModelDungeonWitherBoss extends ModelBase {
+public class ModelDungeonSkeletalKing extends ModelBase {
     public ModelRenderer headHolder;
     public ModelRenderer centerBodyRod;
     public ModelRenderer bottomCenterRod;
@@ -27,7 +27,7 @@ public class ModelDungeonWitherBoss extends ModelBase {
     public ModelRenderer handSkullLeft;
     public ModelRenderer handSkullRight;
 
-    public ModelDungeonWitherBoss() {
+    public ModelDungeonSkeletalKing() {
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.miniHead3 = new ModelRenderer(this, 40, 0);
