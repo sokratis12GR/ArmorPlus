@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.1.2-2'
+    ext.kotlin_version = '1.1.2-5'
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
@@ -12,7 +12,7 @@ buildscript {
 }
 
 plugins {
-    id "com.matthewprenger.cursegradle" version "1.0.8"
+    id "com.matthewprenger.cursegradle" version "1.0.9"
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
@@ -120,8 +120,9 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
         releaseType = 'alpha'
+        addGameVersion '1.12'
         relations {
-            requiredLibrary 'thedragonlib'
+            requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
             optionalLibrary 'crafttweaker'
             optionalLibrary 'tesla'
