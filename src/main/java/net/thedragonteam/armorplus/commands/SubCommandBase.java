@@ -29,7 +29,7 @@ public class SubCommandBase implements ISubCommand {
     }
 
     protected String capitalizeFirstLetter(String toCapital) {
-        return toCapital.toUpperCase(Locale.ENGLISH) + toCapital.substring(1);
+        return String.valueOf(toCapital.charAt(0)).toUpperCase(Locale.ENGLISH) + toCapital.substring(1);
     }
 
     public void displayHelpString(ICommandSender commandSender, String display, Object... info) {

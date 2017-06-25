@@ -11,7 +11,6 @@ import net.thedragonteam.armorplus.commands.SubCommandBase;
 import net.thedragonteam.armorplus.util.TextUtils;
 
 import static net.minecraft.util.text.TextFormatting.*;
-import static net.thedragonteam.armorplus.APConfig.gameMode;
 import static net.thedragonteam.armorplus.ArmorPlus.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 
@@ -37,7 +36,6 @@ public class SubCommandInfo extends SubCommandBase {
         cmdSender.sendMessage(formatText(RED, "command.armorplus.info_line_two.text", cmdSender.getName(), MODNAME));
         cmdSender.sendMessage(formatText(GREEN, "command.armorplus.info_line_three.text", MODID));
         cmdSender.sendMessage(formatText(GRAY, "command.armorplus.info_line_four.text", server.getMinecraftVersion()));
-        cmdSender.sendMessage(formatText(GRAY, "command.armorplus.info_line_five.text", gameMode));
         cmdSender.sendMessage(formatText(GOLD, "command.armorplus.info_line_six.text"));
         cmdSender.sendMessage(formatText(GOLD, "command.armorplus.info_line_seven.text"));
     }

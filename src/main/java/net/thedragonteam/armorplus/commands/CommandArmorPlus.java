@@ -16,7 +16,6 @@ import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import javax.annotation.Nullable;
 import java.util.*;
 
 import static net.minecraft.util.text.TextFormatting.RED;
@@ -50,7 +49,7 @@ public class CommandArmorPlus extends CommandBase {
     }
 
     @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,  BlockPos targetPos) {
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
         return super.getTabCompletions(server, sender, args, targetPos);
     }
 
