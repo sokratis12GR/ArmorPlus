@@ -29,7 +29,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.thedragonteam.armorplus.api.lavainfuser.LavaInfuserManager;
 import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfuser;
+import net.thedragonteam.armorplus.container.ContainerLavaInfuser;
 import net.thedragonteam.armorplus.registry.ModItems;
 
 import javax.annotation.Nonnull;
@@ -257,7 +259,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
             if (flag != this.isInfusing()) {
                 flag1 = true;
-                   BlockLavaInfuser.Companion.setState(this.isInfusing(), this.world, this.pos);
+                BlockLavaInfuser.Companion.setState(this.isInfusing(), this.world, this.pos);
             }
         }
 
@@ -273,7 +275,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     private boolean canCharge() {
         if (this.infuserItemStacks.get(0).isEmpty()) return false;
-        ItemStack itemstack = ItemStack.EMPTY/*LavaInfuserManager.getInstance().getInfusingResult(this.infuserItemStacks.get(0))*/;
+        ItemStack itemstack = LavaInfuserManager.getInstance().getInfusingResult(this.infuserItemStacks.get(0));
 
         if (itemstack.isEmpty()) return false;
         ItemStack itemstack1 = this.infuserItemStacks.get(2);
@@ -289,7 +291,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     public void chargeItem() {
         if (this.canCharge()) {
             ItemStack itemstack = this.infuserItemStacks.get(0);
-            ItemStack itemstack1 = ItemStack.EMPTY /*LavaInfuserManager.getInstance().getInfusingResult(itemstack)*/;
+            ItemStack itemstack1 = LavaInfuserManager.getInstance().getInfusingResult(itemstack);
             ItemStack itemstack2 = this.infuserItemStacks.get(2);
 
             if (itemstack2.isEmpty()) this.infuserItemStacks.set(2, itemstack1.copy());
@@ -363,7 +365,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-        return null /* new ContainerLavaInfuser(playerInventory, this)*/;
+        return new ContainerLavaInfuser(playerInventory, this);
     }
 
     @Override
