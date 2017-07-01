@@ -1,0 +1,46 @@
+{
+  "display": {
+    "icon": {
+      "item": "armorplus:coal_battle_axe"
+    },
+    "title": {
+      "text": "Coal Weapons"
+    },
+    "description": {
+      "text": "So... I can make people blind now ?"
+    }
+  },
+  "parent": "armorplus:combat/root",
+  "criteria": {
+    "battle_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_battle_axe"
+          }
+        ]
+      }
+    },
+    "sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_sword"
+          }
+        ]
+      }
+    },
+    "bow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_bow"
+          }
+        ]
+      }
+    }
+  }
+}

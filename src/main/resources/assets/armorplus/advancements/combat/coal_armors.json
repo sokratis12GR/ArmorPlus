@@ -1,46 +1,53 @@
 {
   "display": {
     "icon": {
-      "item": "armorplus:coal_battle_axe"
+      "item": "armorplus:coal_helmet"
     },
     "title": {
-      "text": "The Beginning ?"
+      "text": "Coal Armors"
     },
     "description": {
-      "text": "Well... it starts"
+      "text": "o.O I can see in dark ?"
     }
   },
   "parent": "armorplus:combat/root",
   "criteria": {
-    "trigger_1": {
+    "helmet": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "armorplus:coal_battle_axe",
-            "data": 1
+            "item": "armorplus:coal_helmet"
           }
         ]
       }
     },
-    "trigger_2": {
+    "chestplate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "armorplus:coal_sword",
-            "data": 1
+            "item": "armorplus:coal_chestplate"
           }
         ]
       }
     },
-    "trigger_3": {
+    "leggings": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "armorplus:coal_bow",
-            "data": 1
+            "item": "armorplus:coal_leggings"
+          }
+        ]
+      }
+    },
+    "boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_boots"
           }
         ]
       }

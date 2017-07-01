@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "armorplus:redstone_chestplate"
+      "item": "armorplus:book"
     },
     "title": {
       "text": "A+ Story"
@@ -9,7 +9,7 @@
     "description": {
       "text": "Getting started"
     },
-    "background": "armorplus:textures/blocks/compressed_lava_crystal.png",
+    "background": "armorplus:textures/blocks/white_stone_brick.png",
     "show_toast": false,
     "announce_to_chat": false
   },
