@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "item": "armorplus:coal_battle_axe"
+    },
+    "title": {
+      "text": "The Beginning ?"
+    },
+    "description": {
+      "text": "Well... it starts"
+    }
+  },
+  "parent": "armorplus:combat/root",
+  "criteria": {
+    "trigger_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_battle_axe",
+            "data": 1
+          }
+        ]
+      }
+    },
+    "trigger_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_sword",
+            "data": 1
+          }
+        ]
+      }
+    },
+    "trigger_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:coal_bow",
+            "data": 1
+          }
+        ]
+      }
+    }
+  }
+}

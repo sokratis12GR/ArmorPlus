@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/dungeon/ender/ender_pillar"
+          "all": "armorplus:blocks/dungeon/ender_pillar"
         }
       }
     ]

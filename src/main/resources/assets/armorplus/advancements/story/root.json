@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "armorplus:redstone_chestplate"
+    },
+    "title": {
+      "text": "A+ Story"
+    },
+    "description": {
+      "text": "Getting started"
+    },
+    "background": "armorplus:textures/blocks/compressed_lava_crystal.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "auto": {
+      "trigger": "minecraft:location"
+    }
+  }
+}
