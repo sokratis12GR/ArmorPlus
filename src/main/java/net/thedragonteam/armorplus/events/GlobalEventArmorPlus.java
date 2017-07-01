@@ -26,7 +26,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.*;
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-public class GlobalEventsArmorPlus {
+public class GlobalEventArmorPlus {
     //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
 
     // @SubscribeEvent

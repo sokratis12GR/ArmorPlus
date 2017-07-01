@@ -111,5 +111,6 @@ public class ModelsEventHandler {
         registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
         //Boss Projectiles
         registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
-        registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);    }
+        registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
+    }
 }

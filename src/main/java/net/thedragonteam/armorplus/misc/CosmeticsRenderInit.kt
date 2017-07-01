@@ -11,12 +11,16 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.event.RenderPlayerEvent
 import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
+import net.minecraftforge.fml.relauncher.Side
+import net.thedragonteam.armorplus.ArmorPlus.MODID
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
+@EventBusSubscriber(value = Side.CLIENT, modid = MODID)
 class CosmeticsRenderInit {
     init {
         ThreadCosmeticsFetcher()

@@ -5,8 +5,6 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -115,7 +113,6 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        SharedMonsterAttributes.ARMOR = new RangedAttribute(null, "generic.armor", 0.0D, 0.0D, 500.0D).setShouldWatch(true);
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configProcessor.processConfig(APConfig.class, configuration);
         featureParser.registerFeatures();

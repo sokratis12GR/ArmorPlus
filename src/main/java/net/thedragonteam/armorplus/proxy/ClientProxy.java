@@ -21,7 +21,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         OBJLoader.INSTANCE.addDomain(ArmorPlus.MODID);
-        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new CosmeticsRenderInit());
         MinecraftForge.EVENT_BUS.register(new ModelsEventHandler());
     }
 
@@ -31,7 +31,6 @@ public class ClientProxy extends CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        new CosmeticsRenderInit();
     }
 
 }

@@ -13,7 +13,7 @@ import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
-import net.thedragonteam.armorplus.events.GlobalEventsArmorPlus;
+import net.thedragonteam.armorplus.events.GlobalEventArmorPlus;
 import net.thedragonteam.armorplus.events.MobDropsEventHandler;
 import net.thedragonteam.armorplus.events.RegistryEventHandler;
 import net.thedragonteam.armorplus.registry.*;
@@ -28,14 +28,13 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         ModBlocks.registerBlocks();
-        LogHelper.debug("Blocks Successfully Registered");
         ModItems.registerItems();
-        LogHelper.debug("Items Successfully Registered");
         MinecraftForge.EVENT_BUS.register(new RegistryEventHandler());
         APItems.registerItemNames();
+        MinecraftForge.EVENT_BUS.register(new GlobalEventArmorPlus());
+        MinecraftForge.EVENT_BUS.register(new MobDropsEventHandler());
         ModEntities.registerEntitySettings();
         registerWorldGenerators();
-        MinecraftForge.EVENT_BUS.register(new MobDropsEventHandler());
         registerFixes();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
@@ -43,7 +42,6 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        registerEvents();
         ModOreDicts.registerOreDictEntries();
         APTab.registerTabs();
         ModCompatibility.loadCompat(INIT);
@@ -61,15 +59,6 @@ public class CommonProxy {
 
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandArmorPlus());
-    }
-
-    public void registerEvents() {
-        MinecraftForge.EVENT_BUS.register(new GlobalEventsArmorPlus());
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    public static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserRecipe");
     }
 
     public void registerWorldGenerators() {

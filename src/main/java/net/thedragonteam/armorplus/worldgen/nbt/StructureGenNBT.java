@@ -64,7 +64,6 @@ public class StructureGenNBT implements IWorldGenerator {
         BlockPos basePos = new BlockPos(posX, posY, posZ);
 
         this.generateTower(serverworld, random, basePos);
-
     }
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {
