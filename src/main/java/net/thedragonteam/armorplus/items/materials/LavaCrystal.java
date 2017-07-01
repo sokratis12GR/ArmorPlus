@@ -75,7 +75,6 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)

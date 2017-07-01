@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.potion.PotionEffect
 import net.minecraft.util.NonNullList
 import net.minecraft.world.World
-import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
@@ -53,7 +52,6 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     /**
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
-    @SideOnly(Side.CLIENT)
     override fun getSubItems(tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
         if (isInCreativeTab(tab)) {
             subItems.add(ItemStack(this))

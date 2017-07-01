@@ -45,25 +45,27 @@ public class ItemUltimateParts extends Item implements IModelHelper {
     @Override
     @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+        for (int i = 0; i < ULTIMATE_NAMES.length; i++) {
             if (stack.getItemDamage() == i)
                 return super.getUnlocalizedName(stack) + ULTIMATE_NAMES[i];
+        }
         return super.getUnlocalizedName();
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+            for (int i = 0; i < ULTIMATE_NAMES.length; i++) {
                 subItems.add(new ItemStack(this, 1, i));
+            }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        for (int i = 0; i < ULTIMATE_NAMES.length; i++)
+        for (int i = 0; i < ULTIMATE_NAMES.length; i++) {
             this.initModel(getRegistryName(), ULTIMATE_NAMES[i], "ultimate", i);
+        }
     }
 }

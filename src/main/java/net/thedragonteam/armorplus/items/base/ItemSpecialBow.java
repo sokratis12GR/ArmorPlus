@@ -33,7 +33,6 @@ import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
@@ -105,8 +104,25 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     }
 
     @Nonnull
-    public ItemStack findAmmo(EntityPlayer player) {
-        return this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)) ? player.getHeldItem(EnumHand.OFF_HAND) : this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)) ? player.getHeldItem(EnumHand.MAIN_HAND) : IntStream.range(0, player.inventory.getSizeInventory()).mapToObj(i -> player.inventory.getStackInSlot(i)).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
+    public ItemStack findAmmo(EntityLivingBase entityLivingBase) {
+        if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.MAIN_HAND))) {
+            if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
+                return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
+            } else {
+                return entityLivingBase.getHeldItem(EnumHand.MAIN_HAND);
+            }
+        } else if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
+            return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
+        } else {
+            int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
+            for (int i = 0; i < bound; i++) {
+                ItemStack stackInSlot = ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i);
+                if (isArrow(stackInSlot)) {
+                    return stackInSlot;
+                }
+            }
+            return ItemStack.EMPTY;
+        }
     }
 
     public float getVelocityOfArrow(ItemStack stack) {
@@ -119,6 +135,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+        //Player
         if (entityLiving instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entityLiving;
             boolean requiredConditions = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
@@ -139,41 +156,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
                 if ((double) arrowVelocity >= 0.1D) {
                     boolean secondaryConditions = requiredConditions && itemstack.getItem() == Items.ARROW;
 
-                    if (!world.isRemote) {
-                        ItemArrow itemarrow = ((ItemArrow) (itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW));
-                        EntityArrow entityArrow = itemarrow.createArrow(world, itemstack, player);
-
-                        float newArrowVelocity = arrowVelocity * getVelocityOfArrow(stack);
-                        entityArrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, newArrowVelocity, 1.0F);
-
-                        if (newArrowVelocity == 0) {
-                            world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 0.4F, 1.0F);
-                            return;
-                        }
-
-                        int powerLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
-
-                        entityArrow.setDamage(entityArrow.getDamage() + damage + (powerLevel > 0 ? powerLevel * 0.5 + 0.5 : 0));
-
-                        int punchLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
-
-                        if (punchLevel > 0) {
-                            entityArrow.setKnockbackStrength(punchLevel);
-                        }
-
-                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0) {
-                            entityArrow.setFire(100);
-                        }
-
-                        stack.damageItem(1, player);
-
-                        if (secondaryConditions) {
-                            entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-                        }
-
-                        world.spawnEntity(entityArrow);
-                    }
-
+                    this.spawnArrow(world, player, itemstack, stack, arrowVelocity, secondaryConditions);
                     world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + arrowVelocity * 0.5F);
 
                     if (!secondaryConditions) {
@@ -187,6 +170,43 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
                     player.addStat(getObjectUseStats(this));
                 }
             }
+        }
+    }
+
+    private void spawnArrow(World world, EntityLivingBase player, ItemStack itemstack, ItemStack stack, float arrowVelocity, boolean secondaryConditions) {
+        if (!world.isRemote) {
+            ItemArrow itemarrow = ((ItemArrow) (itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW));
+            EntityArrow entityArrow = itemarrow.createArrow(world, itemstack, player);
+
+            float newArrowVelocity = arrowVelocity * getVelocityOfArrow(stack);
+            entityArrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, newArrowVelocity, 1.0F);
+
+            if (newArrowVelocity == 0) {
+                world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 0.4F, 1.0F);
+                return;
+            }
+
+            int powerLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+
+            entityArrow.setDamage(entityArrow.getDamage() + damage + (powerLevel > 0 ? powerLevel * 0.5 + 0.5 : 0));
+
+            int punchLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
+
+            if (punchLevel > 0) {
+                entityArrow.setKnockbackStrength(punchLevel);
+            }
+
+            if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0) {
+                entityArrow.setFire(100);
+            }
+
+            stack.damageItem(1, player);
+
+            if (secondaryConditions) {
+                entityArrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+            }
+
+            world.spawnEntity(entityArrow);
         }
     }
 }

@@ -41,7 +41,6 @@ public class ItemMaterial extends Item implements IModelHelper {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             for (int i = 0; i < MATERIAL_NAMES.length; i++)
