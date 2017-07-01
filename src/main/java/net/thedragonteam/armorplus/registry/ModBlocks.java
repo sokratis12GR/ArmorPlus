@@ -15,8 +15,6 @@ import net.thedragonteam.armorplus.blocks.lava.*;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
 
-import java.util.Arrays;
-
 import static java.util.Arrays.setAll;
 import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
 import static net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks.*;
@@ -57,6 +55,6 @@ public class ModBlocks {
         setAll(stoneBrickTowers, s -> new BlockStoneBrickTower(stoneBrickTypes[s]));
         setAll(stoneBrickCorners, s -> new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState()));
         setAll(stonebrickWalls, s -> new BlockStonebrickWall(stoneBricks[s]));
-        Arrays.setAll(enderBlocks, c -> new BlockDungeonEnder(enumEnderBlocks[c]));
+        setAll(enderBlocks, c -> new BlockDungeonEnder(enumEnderBlocks[c]));
     }
 }

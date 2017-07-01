@@ -49,12 +49,10 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
             theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints);
 
     private EnumRarity formattingName;
-    private EntityEquipmentSlot slot;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(ItemUltimateArmor.theUltimateArmor, 0, slot);
         this.setMaxStackSize(1);
-        this.slot = slot;
         switch (slot) {
             case FEET:
                 String boots = "the_ultimate_boots";

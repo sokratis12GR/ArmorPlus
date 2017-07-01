@@ -31,10 +31,10 @@ public class ModItems {
     public static RedstoneApple redstoneApple = new RedstoneApple();
     public static LavaCrystal lavaCrystal = new LavaCrystal();
     public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
-  //  public static boolean[] isEnabled = new boolean[]{
-  //          enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
-  //          enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
-  //  };
+    //  public static boolean[] isEnabled = new boolean[]{
+    //          enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
+    //          enableChickenArmor, enableSlimeArmor, enableEnderDragonArmor, enableGuardianArmor, enableSuperStarArmor,
+    //  };
     public static Swords[] swordType = new Swords[]{
             Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
     };
@@ -73,7 +73,7 @@ public class ModItems {
     public static ItemSpecialSword[] sword = new ItemSpecialSword[9];
     public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
     public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
-    public static ItemUltimateParts theUltimateParts;
+    public static ItemUltimateParts theUltimateParts = new ItemUltimateParts();
     public static DevTool devTool = new DevTool();
     public static BaseDevItem twitchItem = new BaseDevItem(DevItems.TWITCH), beamItem = new BaseDevItem(DevItems.BEAM), theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM), moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY), jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
     public static ItemCoalArrow itemCoalArrow = new ItemCoalArrow();

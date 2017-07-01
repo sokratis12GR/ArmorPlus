@@ -66,6 +66,7 @@ public class ModelsEventHandler {
         steelIngot.initModel();
         electricalIngot.initModel();
         redstoneApple.initModel();
+        theUltimateParts.initModel();
         registerArmorModel(enableCoalArmor, coal);
         registerArmorModel(enableEmeraldArmor, emerald);
         registerArmorModel(enableLapisArmor, lapis);
