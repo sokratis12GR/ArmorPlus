@@ -44,7 +44,7 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 2;
+    public static final int MINOR = 3;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -55,7 +55,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 5;
+    public static final int BUILD = 7;
     /**
      * The ArmorPlus Version
      */
@@ -64,7 +64,7 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
-    public static final String DEPEND = "required-after:forge@[14.21.0.2359,);" + "required-after:thedragonlib@[" + LIB_VERSION + ",);" + "after:mantle;" + "after:tconstruct;";
+    public static final String DEPEND = "required-after:forge@[14.21.1.2387,);" + "required-after:thedragonlib@[" + LIB_VERSION + ",);" + "after:mantle;" + "after:tconstruct;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
