@@ -1,3 +1,23 @@
+ArmorPlus 1.12-11.3.0.7-alpha
+----------------------------
+
+**Breaking Changes**:
+
+* Updated to forge 14.21.1.2387 or later
+
+**Features Added/Changed/Removed**:
+
+* Tweaked the Lava Tower a bit
+    * Made it slightly harder than before.
+    * Fixed a few bugs with it.
+    * Improved the traps, just a little bit.
+
+* Improved a little bit the dev tool
+
+**Bugs Fixed***
+
+* Crash on startup
+
 ArmorPlus 1.12-11.2.0.5-alpha
 ----------------------------
 
