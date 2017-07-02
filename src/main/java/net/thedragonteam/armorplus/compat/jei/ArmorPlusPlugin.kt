@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.compat.jei
 import mezz.jei.api.*
 import mezz.jei.api.ingredients.IIngredientRegistry
 import mezz.jei.api.recipe.IRecipeCategoryRegistration
+import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.api.Constants.Compat.JEI_CATEGORY_HIGH_TECH_BENCH
@@ -106,10 +107,10 @@ class ArmorPlusPlugin : BlankModPlugin() {
 
     @SideOnly(Side.CLIENT)
     private fun registerDescriptions(registry: IModRegistry) {
-        registry.addDescription(APItems.witherBone, formattedText("armorplus.jei.guardian_scale.desc"))
-        registry.addDescription(APItems.witherBone, formattedText("armorplus.jei.wither_bone.desc"))
-        registry.addDescription(APItems.enderDragonScale, formattedText("armorplus.jei.ender_dragon_scale.desc"))
-        registry.addDescription(getItemStack(APBlocks.lavaInfuser), formattedText("armorplus.jei.lava_infuser.desc"))
+        registry.addIngredientInfo(APItems.witherBone, ItemStack::class.java, formattedText("armorplus.jei.guardian_scale.desc"))
+        registry.addIngredientInfo(APItems.witherBone, ItemStack::class.java, formattedText("armorplus.jei.wither_bone.desc"))
+        registry.addIngredientInfo(APItems.enderDragonScale, ItemStack::class.java, formattedText("armorplus.jei.ender_dragon_scale.desc"))
+        registry.addIngredientInfo(getItemStack(APBlocks.lavaInfuser), ItemStack::class.java, formattedText("armorplus.jei.lava_infuser.desc"))
     }
 
     /**
