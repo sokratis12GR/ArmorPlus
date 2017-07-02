@@ -27,7 +27,6 @@ class GuiHandler : IGuiHandler {
                 return ContainerChampionBench(player.inventory, (te as TileEntityChampionBench?)!!)
             GUI_LAVA_INFUSER -> if (te != null && te is TileEntityLavaInfuser)
                 return ContainerLavaInfuser(player.inventory, (te as TileEntityLavaInfuser?)!!)
-            GUI_ANALYTICS_DISCLAIMER -> return GuiAnalyticsDisclaimer()
             else -> {
             }
         }
@@ -48,7 +47,6 @@ class GuiHandler : IGuiHandler {
                 return GuiChampionBench(player.inventory, (te as TileEntityChampionBench?)!!)
             GUI_LAVA_INFUSER -> if (te != null && te is TileEntityLavaInfuser)
                 return GuiLavaInfuser(player.inventory, (te as TileEntityLavaInfuser?)!!)
-            GUI_ANALYTICS_DISCLAIMER -> return GuiAnalyticsDisclaimer()
             else -> {
             }
         }
@@ -63,7 +61,5 @@ class GuiHandler : IGuiHandler {
         val GUI_ULTI_TECH_BENCH = 4
         val GUI_CHAMPION_BENCH = 5
         val GUI_LAVA_INFUSER = 9
-
-        val GUI_ANALYTICS_DISCLAIMER = 100
     }
 }

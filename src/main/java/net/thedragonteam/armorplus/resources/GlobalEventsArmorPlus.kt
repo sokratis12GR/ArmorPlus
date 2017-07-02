@@ -4,18 +4,15 @@
 
 package net.thedragonteam.armorplus.resources
 
-import net.minecraft.client.Minecraft
 import net.minecraft.init.MobEffects
 import net.minecraft.inventory.EntityEquipmentSlot.*
 import net.minecraft.item.Item
 import net.minecraft.util.DamageSource
 import net.minecraftforge.fml.client.event.ConfigChangedEvent
-import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import net.thedragonteam.armorplus.APConfig.*
-import net.thedragonteam.armorplus.Analytics
 import net.thedragonteam.armorplus.ArmorPlus.configuration
 import net.thedragonteam.armorplus.registry.APBlocks
 import net.thedragonteam.armorplus.registry.APItems.*
@@ -125,18 +122,7 @@ class GlobalEventsArmorPlus {
         LogHelper.info("Refreshing configuration file")
     }
 
-    @SubscribeEvent
-    fun onJoin(event: PlayerEvent.PlayerLoggedInEvent) {
-        if (FMLCommonHandler.instance().side.isServer) {
-            return
-        }
-        if (Analytics.newUser && Minecraft.getMinecraft().isSnooperEnabled) {
-            Analytics.sendAnalyticsInfo(event.player)
-        }
-    }
-
     companion object {
-
         fun syncConfig() {
             if (configuration.hasChanged())
                 configuration.save()
