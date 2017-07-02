@@ -698,12 +698,12 @@ public class APConfig {
     public static boolean[] enableEnergyItems = new boolean[5];
 
     //Analytics
-    @ModConfigProperty(category = "Analytics", name = "optOut", comment = "Opt out of anonymous analytics")
-    public static boolean optOut = false;
+    //@ModConfigProperty(category = "Analytics", name = "optOut", comment = "Opt out of anonymous analytics")
+    //public static boolean optOut = false;
 
     //Modpack
-    @ModConfigProperty(category = "Modpack", name = "modpackID", comment = "The partner ID of the modpack (only for modpacks that are part of the TheDragonTeam modpack partner program")
-    public static String modpackID = "none";
+    //@ModConfigProperty(category = "Modpack", name = "modpackID", comment = "The partner ID of the modpack (only for modpacks that are part of the TheDragonTeam modpack partner program")
+    //public static String modpackID = "none";
 
     static {
         fill(energyInput, 10);

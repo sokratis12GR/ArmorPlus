@@ -26,7 +26,7 @@ import static net.thedragonteam.armorplus.APConfig.modpackID;
  */
 public class Analytics {
 
-    public static PiwikTracker tracker = new PiwikTracker("https://analytics.thedragonteam.net/piwik.php");
+    /** public static PiwikTracker tracker = new PiwikTracker("https://analytics.thedragonteam.net/piwik.php");
 
     public static String moddomain = "armorplus.mcmod";
 
@@ -93,5 +93,6 @@ public class Analytics {
     public static void sendAnalyticsInfo(EntityPlayer player) {
         if (!player.world.isRemote) player.sendMessage(new TextComponentTranslation("armorplus.analytics.info.text"));
     }
+     **/
 
 }

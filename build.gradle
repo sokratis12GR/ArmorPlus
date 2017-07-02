@@ -44,8 +44,8 @@ repositories {
         url "http://tehnut.info/maven"
     }
     maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
+        name = "ShadowFacts"
+        url = "http://maven.shadowfacts.net/"
     }
     maven { // CraftTweaker repo
         name 'MineTweaker3'
@@ -153,8 +153,6 @@ dependencies {
    compile "shadowfacts-forgelin:Forgelin:1.4.1"
     deobfCompile "MineTweaker3:MineTweaker3-API:${minetweaker_version}"
     deobfCompile "com.blamejared:MTLib:2.0.1.9"
-    compile 'org.piwik.java.tracking:piwik-java-tracker:1.2'
-    shadow 'org.piwik.java.tracking:piwik-java-tracker:1.2'
 }
 
 processResources {

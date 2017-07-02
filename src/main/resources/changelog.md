@@ -1,3 +1,12 @@
+ArmorPlus 1.11.2-10.5.4.5 
+---------------------------- 
+
+Summary: Removed unneeded gradle dependencies (Internal improvement)
+ 
+Improvements:
+
+* Removed unneeded gradle dependencies
+
 ArmorPlus 1.11.2-10.5.4.4 
 ---------------------------- 
  

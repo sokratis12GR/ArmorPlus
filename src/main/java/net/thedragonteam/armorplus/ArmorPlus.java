@@ -53,7 +53,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 4;
+    public static final int BUILD = 5;
     /**
      * The ArmorPlus Version
      */
@@ -119,7 +119,6 @@ public class ArmorPlus {
     @SideOnly(Side.CLIENT)
     @EventHandler
     public void initClient(FMLInitializationEvent event) {
-        Analytics.registerLaunch();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }
