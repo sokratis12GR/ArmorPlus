@@ -8,6 +8,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.datafix.DataFixesManager;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -33,13 +34,13 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 public class RegistryEventHandler {
 
-    //  private void registerEntities(Register<EntityEntry> event, Class<? extends Entity> entityClass, String registryName, boolean hasEgg, int primaryColor, int secondaryColor) {
-    //      EntityEntry entityEntry = new EntityEntry(entityClass, registryName);
-    //      ResourceLocation resourceLocation = setRL(registryName);
-    //      entityEntry.setRegistryName(resourceLocation);
-    //      if (hasEgg) entityEntry.setEgg(new EntityEggInfo(resourceLocation, primaryColor, secondaryColor));
-    //      event.getRegistry().register(entityEntry);
-    //  }
+    //private void registerEntities(Register<EntityEntry> event, Class<? extends Entity> entityClass, String registryName, boolean hasEgg, int primaryColor, int secondaryColor) {
+    //    EntityEntry entityEntry = new EntityEntry(entityClass, registryName);
+    //    ResourceLocation resourceLocation = setRL(registryName);
+    //    entityEntry.setRegistryName(resourceLocation);
+    //    if (hasEgg) entityEntry.setEgg(new EntityList.EntityEggInfo(resourceLocation, primaryColor, secondaryColor));
+    //    event.getRegistry().register(entityEntry);
+    //}
 
     private void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
         ResourceLocation resourceLocation = setRL(registryName);
@@ -63,11 +64,11 @@ public class RegistryEventHandler {
     }
 
     private void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int updateFrequency, boolean sendVelocityUpdates) {
-        this.registerEntities(entityClass, registryName, id, 0, updateFrequency, sendVelocityUpdates, false, 0, 0);
+        this.registerEntities(entityClass, registryName, id, 64, updateFrequency, sendVelocityUpdates, false, 0, 0);
     }
 
     private void registerEntities(Class<? extends Entity> entityClass, String registryName, int id) {
-        this.registerEntities(entityClass, registryName, id, 0, 1, true, false, 0, 0);
+        this.registerEntities(entityClass, registryName, id, 64, 1, true, false, 0, 0);
     }
 
     @SubscribeEvent
@@ -90,25 +91,32 @@ public class RegistryEventHandler {
 
         // Projectiles
         // Arrows
-        registerEntities(EntityCoalArrow.class, "coal_arrow", 0);
-        registerEntities(EntityLapisArrow.class, "lapis_arrow", 1);
-        registerEntities(EntityRedstoneArrow.class, "redstone_arrow", 3);
-        registerEntities(EntityLavaArrow.class, "lava_arrow", 4);
-        registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", 5);
+        this.registerEntities(EntityCoalArrow.class, "coal_arrow", 0);
+        this.registerEntities(EntityLapisArrow.class, "lapis_arrow", 1);
+        this.registerEntities(EntityRedstoneArrow.class, "redstone_arrow", 3);
+        this.registerEntities(EntityLavaArrow.class, "lava_arrow", 4);
+        this.registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", 5);
         // Abilities
-        registerEntities(EntityFreezeBomb.class, "freeze_bomb", 6);
-        registerEntities(EntityWitherMinion.class, "wither_minion", 7);
+        this.registerEntities(EntityFreezeBomb.class, "freeze_bomb", 6);
+        this.registerEntities(EntityWitherMinion.class, "wither_minion", 7);
         // Mobs
-        registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", 20, 24,
+        this.registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", 20, 64,
                 0x721164, 0x00ff00);
-        registerEntities(EntityIceGolem.class, "ice_golem", 21, 24,
+        this.registerEntities(EntityIceGolem.class, "ice_golem", 21, 64,
                 0xffffff, 0x00ff00);
         // Bosses
-        registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100, 64,
+        this.registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100, 64,
                 0x7ae4ff, 0x79a6ff);
-        registerEntities(EntitySkeletalKing.class, "skeletal_king", 101, 64,
+        this.registerEntities(EntitySkeletalKing.class, "skeletal_king", 101, 64,
                 0x665b52, 0x845833);
+        this.registerEntityFixes();
+    }
 
+    public void registerEntityFixes() {
+        EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer());
+        EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer());
+        EntitySkeletalKing.registerFixesSkeletalKing(DataFixesManager.createFixer());
+        EntityWitherMinion.registerFixesWitherMinion(DataFixesManager.createFixer());
     }
 
     @SubscribeEvent
@@ -122,10 +130,15 @@ public class RegistryEventHandler {
         event.getRegistry().registerAll(stoneBrickCorners);
         event.getRegistry().registerAll(stonebrickWalls);
         event.getRegistry().registerAll(enderBlocks);
-        registerTileEntities();
+        this.registerTileEntities();
+        this.registerTEFixes();
     }
 
-    public static void registerTileEntities() {
+    public void registerTEFixes() {
+        TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
+    }
+
+    public void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserTileEntity");
     }
 

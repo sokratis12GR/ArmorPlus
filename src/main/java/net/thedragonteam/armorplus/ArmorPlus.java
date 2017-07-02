@@ -66,7 +66,7 @@ public class ArmorPlus {
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
-    public static final boolean DEV_ENVIRONMENT = false;
+    public static final boolean DEV_ENVIRONMENT = true;
 
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
     public static CommonProxy proxy;

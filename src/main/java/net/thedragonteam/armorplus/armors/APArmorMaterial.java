@@ -40,7 +40,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack
 
 public enum APArmorMaterial implements IStringSerializable {
     COAL(coalArmor,
-            "coal",getItemStack(COAL_BLOCK), getValueByName(coalArmorItemNameColor),
+            "coal", getItemStack(COAL_BLOCK), getValueByName(coalArmorItemNameColor),
             enableFullCoalArmorEffect, coalArmorAddPotionEffect, coalArmorEffectLevel,
             enableCoalEffect, "empty"
     ),
@@ -55,12 +55,12 @@ public enum APArmorMaterial implements IStringSerializable {
             enableRedstoneEffect, "empty"
     ),
     EMERALD(emeraldArmor,
-            "emerald",  getItemStack(EMERALD_BLOCK), getValueByName(emeraldArmorItemNameColor),
+            "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emeraldArmorItemNameColor),
             enableFullEmeraldArmorEffect, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel,
             enableEmeraldEffect, "empty"
     ),
     OBSIDIAN(obsidianArmor,
-            "obsidian",  getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianArmorItemNameColor),
+            "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianArmorItemNameColor),
             enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel,
             enableObsidianEffect, "empty"
     ),
@@ -106,7 +106,6 @@ public enum APArmorMaterial implements IStringSerializable {
             ItemStack legs = entity.getItemStackFromSlot(LEGS);
             ItemStack feet = entity.getItemStackFromSlot(FEET);
             if (enableFlightAbility) {
-                if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) return;
                 if (head.getItem() == enderDragonHelmet && chest.getItem() == enderDragonChestplate && legs.getItem() == enderDragonLeggings && feet.getItem() == enderDragonBoots || entity.capabilities.isCreativeMode || entity.isSpectator())
                     entity.capabilities.allowFlying = true;
                 else {
@@ -162,7 +161,6 @@ public enum APArmorMaterial implements IStringSerializable {
             ItemStack feet = entity.getItemStackFromSlot(FEET);
 
             if (enablePigIronArmorEffect) {
-                if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) return;
                 if (head.getItem() == pigIronHelmet && chest.getItem() == pigIronChestplate && legs.getItem() == pigIronLeggings && feet.getItem() == pigIronBoots && entity.getFoodStats().needFood()) {
                     addPotion(entity, this.getAddPotionEffect(), this.getAddPotionEffectAmplifier(), GOOD);
                     head.damageItem(1, entity);
@@ -174,7 +172,7 @@ public enum APArmorMaterial implements IStringSerializable {
         }
     },
     SLIME(slimeArmor, "slime",
-           getItemStack(SLIME_BLOCK), getValueByName(slimeArmorItemNameColor),
+            getItemStack(SLIME_BLOCK), getValueByName(slimeArmorItemNameColor),
             enableFullSlimeArmorEffect, slimeArmorAddPotionEffect, slimeArmorEffectLevel,
             enableSlimeEffect, "empty"
     ),

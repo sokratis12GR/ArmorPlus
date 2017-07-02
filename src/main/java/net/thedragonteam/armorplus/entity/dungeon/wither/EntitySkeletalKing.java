@@ -1,12 +1,13 @@
 package net.thedragonteam.armorplus.entity.dungeon.wither;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -22,7 +23,19 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);
         this.setSize(this.width * 7.0F, this.height * 7.0F);
-        bossInfo = new BossInfoServerSkeletalKing(this.getDisplayName());
+        this.bossInfo = new BossInfoServerSkeletalKing(this.getDisplayName());
+        this.enablePersistence();
+        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, ItemStack.EMPTY);
+    }
+
+    public static void registerFixesSkeletalKing(DataFixer fixer) {
+        EntityLiving.registerFixesMob(fixer, EntitySkeletalKing.class);
+    }
+
+    @Override
+    public void onUpdate() {
+        this.removePotionEffect(MobEffects.WITHER);
+        super.onUpdate();
     }
 
     @Override
@@ -41,6 +54,15 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(50.5D);
     }
 
+    @Override
+    public Iterable<ItemStack> getEquipmentAndArmor() {
+        return super.getEquipmentAndArmor();
+    }
+
+    @Override
+    public Iterable<ItemStack> getHeldEquipment() {
+        return super.getHeldEquipment();
+    }
 
     /**
      * Sets the custom name tag for this entity
@@ -92,11 +114,13 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         double d3 = x - d0;
         double d4 = y - d1;
         double d5 = z - d2;
-        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, rand.nextInt(4 - 1 + 1) + 1, d3, d4, d5);
+        int spawnCount = rand.nextInt(4 - 1 + 1) + 1;
+        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, spawnCount, d3, d4, d5);
 
-        witherMinion.posY = d1;
-        witherMinion.posX = d0;
-        witherMinion.posZ = d2;
+        witherMinion.setPosition(d1, d0, d2);
+        //witherMinion.posY = d1;
+        //witherMinion.posX = d0;
+        //witherMinion.posZ = d2;
         this.world.spawnEntity(witherMinion);
     }
 

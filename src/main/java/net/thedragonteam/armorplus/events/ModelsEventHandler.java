@@ -8,6 +8,7 @@ import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
+import net.thedragonteam.armorplus.blocks.dungeon.BlockDungeonEnder;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.RenderGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
@@ -49,7 +50,7 @@ public class ModelsEventHandler {
         blockInfusedLavaCrystal.initModel();
         blockCompressedLavaCrystal.initModel();
         blockCompressedInfusedLavaCrystal.initModel();
-        //    for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
+        for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
     }
 
     @SubscribeEvent

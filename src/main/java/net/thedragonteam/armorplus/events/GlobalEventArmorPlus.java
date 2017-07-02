@@ -12,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
@@ -96,6 +97,7 @@ public class GlobalEventArmorPlus {
             addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[2]), 120, ultimateArmorEffectLevels[2], GOOD);
             removePotion(entity, getPotion(theUltimateArmorRemovePotionEffect));
         }
+        ItemUltimateArmor.onArmorTick(entity);
         if (enableFullSuperStarArmorEffect && head.getItem() == superStarHelmet && chest.getItem() == superStarChestplate && legs.getItem() == superStarLeggings && feet.getItem() == superStarBoots) {
             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
                 addPotion(entity, getPotion(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel, GOOD);

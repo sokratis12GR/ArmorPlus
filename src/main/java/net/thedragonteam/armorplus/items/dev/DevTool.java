@@ -57,7 +57,7 @@ public class DevTool extends BaseItem {
         if (ArmorPlus.DEV_ENVIRONMENT || APConfig.debugMode) {
             if (!playerIn.world.isRemote) {
                 if (target != null) {
-                    writeToFile(playerIn, target);
+                    this.writeToFile(playerIn, target);
                     entityNumber++;
                     return true;
                 }
@@ -73,10 +73,24 @@ public class DevTool extends BaseItem {
             writer = new OutputStreamWriter(new FileOutputStream(
                     new File(format("./armorplus/entity/%s/%s_%d.json", player.getName(), entity.getName(), entityNumber))));
             writer.write(write("{"));
-            writer.write(write(format("\t\"Entity Class\": \"%s\",", entity.getClass())));
+            writer.write(write(format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", ""))));
             writer.write(write("\t\"Names\": {"));
             writer.write(write(format("\t\t\"Name\": \"%s\",", entity.getName())));
             writer.write(write(format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag())));
+            writer.write(write("\t},"));
+            writer.write(write("\t\"Dimension\": {"));
+            writer.write(write(format("\t\t\"ID\": %d", entity.dimension)));
+            writer.write(write("\t},"));
+            writer.write(write("\t\"World\": {"));
+            writer.write(write(format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName())));
+            writer.write(write(format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed())));
+            writer.write(write(format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked())));
+            writer.write(write(format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled())));
+            writer.write(write("\t\t\"Spawn\": {"));
+            writer.write(write(format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX())));
+            writer.write(write(format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY())));
+            writer.write(write(format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ())));
+            writer.write(write("\t\t}"));
             writer.write(write("\t},"));
             writer.write(write("\t\"Position\": {"));
             writer.write(write(format("\t\t\"X\": %d,", entity.getPosition().getX())));
@@ -110,7 +124,10 @@ public class DevTool extends BaseItem {
             writer.write(write(format("\t\t\"Health\": %s,", entity.getHealth())));
             writer.write(write(format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount())));
             writer.write(write(format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable())));
-            writer.write(write(format("\t\t\"Is Invisible\": %s", entity.isInvisible())));
+            writer.write(write(format("\t\t\"Is Invisible\": %s,", entity.isInvisible())));
+            writer.write(write(format("\t\t\"Is Glowing\": %s,", entity.isGlowing())));
+            writer.write(write(format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions())));
+            writer.write(write(format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire())));
             writer.write(write("\t}"));
             writer.write(write("}"));
         } catch (IOException e) {

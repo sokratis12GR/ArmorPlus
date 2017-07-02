@@ -4,11 +4,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.init.MobEffects;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -16,6 +18,7 @@ import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static java.lang.String.format;
 import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 
 /**
@@ -47,7 +50,7 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         this.setSize(0.3125F, 0.3125F);
     }
 
-    public static void registerFixesFreezeBomb(DataFixer fixer) {
+    public static void registerFixesWitherMinion(DataFixer fixer) {
         EntityFireball.registerFixesFireball(fixer, "WitherMinion");
     }
 
@@ -76,29 +79,22 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             return;
         }
         if (result.entityHit instanceof EntityLivingBase) {
-            int i = 0;
-            switch (this.world.getDifficulty()) {
-                case NORMAL:
-                    i = 10;
-                    break;
-                case HARD:
-                    i = 10;
-                    break;
+            double posX = result.entityHit.posX;
+            double posY = result.entityHit.posY;
+            double posZ = result.entityHit.posZ;
+            for (int c = 0; c < spawnCount; c++) {
+                EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(this.world);
+                witherSkeleton.removePotionEffect(MobEffects.WITHER);
+                witherSkeleton.setPositionAndUpdate(posX, posY, posZ);
+                witherSkeleton.setCustomNameTag(format("%sSkeletal King's Minion", TextFormatting.YELLOW));
+                witherSkeleton.setAlwaysRenderNameTag(true);
+                witherSkeleton.setInvisible(false);
+                witherSkeleton.setEntityInvulnerable(false);
+                witherSkeleton.setCanPickUpLoot(true);
+                witherSkeleton.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(witherSkeleton)), null);
+                this.world.spawnEntity(witherSkeleton);
             }
-
-            if (i > 0) {
-                double posX = result.entityHit.posX;
-                double posY = result.entityHit.posY;
-                double posZ = result.entityHit.posZ;
-                for (int c = 0; c < spawnCount; c++) {
-                    EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(this.world);
-                    this.world.spawnEntity(witherSkeleton);
-                    witherSkeleton.setPositionAndUpdate(posX, posY, posZ);
-                    witherSkeleton.setCustomNameTag(TextFormatting.YELLOW + "Skeletal King's Minion");
-                    witherSkeleton.setAlwaysRenderNameTag(true);
-                }
-                result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
-            }
+            result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
         }
         this.setDead();
     }

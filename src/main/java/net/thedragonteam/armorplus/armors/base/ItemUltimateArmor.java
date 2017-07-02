@@ -116,11 +116,14 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        onArmorTick(player);
+    }
+
+    public static void onArmorTick(EntityPlayer player) {
         ItemStack head = player.getItemStackFromSlot(HEAD);
         ItemStack chest = player.getItemStackFromSlot(CHEST);
         ItemStack legs = player.getItemStackFromSlot(LEGS);
         ItemStack feet = player.getItemStackFromSlot(FEET);
-        if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) return;
         if (APConfig.enableFlightAbility) {
             if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings &&
                     feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator()) {
@@ -132,15 +135,17 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
         }
         if (APConfig.enableTheUltimateArmorInvincibility)
             player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
-        if ((head.isEmpty() || head.getItem() != theUltimateHelmet || chest.isEmpty() || chest.getItem() != theUltimateChestplate || legs.isEmpty() || legs.getItem() != theUltimateLeggings || feet.isEmpty() || feet.getItem() != theUltimateBoots) && !player.capabilities.isCreativeMode && !player.isSpectator() && enableTheUltimateArmorDeBuffs) {
-            addPotion(player, MobEffects.POISON, 60, 2, BAD);
-            addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
-            addPotion(player, MobEffects.BLINDNESS, 60, 0, BAD);
+        if (head.isEmpty() || head.getItem() != theUltimateHelmet || chest.isEmpty() || chest.getItem() != theUltimateChestplate || legs.isEmpty() || legs.getItem() != theUltimateLeggings || feet.isEmpty() || feet.getItem() != theUltimateBoots) {
+            if (!player.capabilities.isCreativeMode && !player.isSpectator() && enableTheUltimateArmorDeBuffs) {
+                addPotion(player, MobEffects.POISON, 60, 2, BAD);
+                addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
+                addPotion(player, MobEffects.BLINDNESS, 60, 0, BAD);
 
-            player.motionX = 0.0;
-            if (player.onGround) player.motionY = 0.0;
-            player.motionZ = 0.0;
-            player.velocityChanged = true; // assumes that player instanceof EntityPlayer
+                player.motionX = 0.0;
+                if (player.onGround) player.motionY = 0.0;
+                player.motionZ = 0.0;
+                player.velocityChanged = true; // assumes that player instanceof EntityPlayer
+            }
         }
     }
 

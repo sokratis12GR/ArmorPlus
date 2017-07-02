@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.EntityAIAttackRanged;
 public class EntityAISkeletalKingAttack extends EntityAIAttackRanged {
 
     public EntityAISkeletalKingAttack(IRangedAttackMob attacker, double movespeed, float maxAttackDistanceIn) {
-        super(attacker, movespeed, 240, maxAttackDistanceIn);
+        super(attacker, movespeed, 120, maxAttackDistanceIn);
     }
+
 }
