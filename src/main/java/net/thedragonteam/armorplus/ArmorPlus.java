@@ -25,7 +25,12 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
+@Mod(modid = ArmorPlus.MODID,
+        name = ArmorPlus.MODNAME,
+        version = ArmorPlus.VERSION,
+        dependencies = ArmorPlus.DEPEND,
+        guiFactory = ArmorPlus.GUI_FACTORY,
+        updateJSON = ArmorPlus.UPDATE_JSON)
 public class ArmorPlus {
 
     /**
@@ -42,18 +47,18 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 5;
+    public static final int MINOR = 7;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 4;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 5;
+    public static final int BUILD = 1;
     /**
      * The ArmorPlus Version
      */
@@ -63,7 +68,8 @@ public class ArmorPlus {
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
-    public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);" + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle;" + "after:tconstruct;" + "after:baubles;";
+    public static final String DEPEND = "required-after:forgelin;" + "required-after:thedragonlib@[" + ArmorPlus.LIB_VERSION + ",);"
+            + "after:tesla@[" + ArmorPlus.TESLA_VERSION + ",);" + "after:mantle;" + "after:tconstruct;" + "after:baubles;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
