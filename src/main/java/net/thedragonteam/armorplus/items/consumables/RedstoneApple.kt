@@ -54,7 +54,6 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
     /**
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
-    @SideOnly(Side.CLIENT)
     override fun getSubItems(itemIn: Item, tab: CreativeTabs?, subItems: NonNullList<ItemStack>) {
         subItems.add(ItemStack(itemIn))
         subItems.add(ItemStack(itemIn, 1, 1))
