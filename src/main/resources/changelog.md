@@ -1,3 +1,37 @@
+ArmorPlus 1.12-11.3.4.11-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Now correctly will generate `Ore Lava Crystal` in the world instead of `Block Lava Crystal`
+
+ArmorPlus 1.12-11.3.3.10-alpha
+----------------------------
+
+**Features Added**:
+
+* A few very needed recipes for lava crystal blocks/items (compressed blocks -> blocks, blocks -> crystals)
+
+* A small description in the Dev Tool
+
+* Added a few checks before allowing dev environment debug things to happen
+
+**Bugs Fixed**:
+
+* Dev Environment being set to true and causing a massive amount of Nether Towers to spawn
+
+ArmorPlus 1.12-11.3.2.9-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Equipping any set of armor gives you debuffs
+
+ArmorPlus 1.12-11.3.1.8-alpha
+----------------------------
+
+* Updated to forge 14.21.1.2412 or later
+
 ArmorPlus 1.12-11.3.0.7-alpha
 ----------------------------
 
