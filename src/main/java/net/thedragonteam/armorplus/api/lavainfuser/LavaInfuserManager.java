@@ -23,9 +23,9 @@ public class LavaInfuserManager {
     private final Map<ItemStack, Double> experienceList = Maps.newHashMap();
 
     private LavaInfuserManager() {
-        addInfusingRecipe(getItemStack(ModItems.lavaCrystal, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
-        addInfusingRecipe(getItemStack(ModBlocks.blockLavaCrystal), getItemStack(ModBlocks.blockInfusedLavaCrystal), 0.2D);
-        addInfusingRecipe(ModBlocks.compressedObsidian, getItemStack(ModBlocks.blockLavaInfusedObsidian), 0.2D);
+        this.addInfusingRecipe(getItemStack(ModItems.lavaCrystal, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
+        this.addInfusingRecipe(getItemStack(ModBlocks.blockLavaCrystal), getItemStack(ModBlocks.blockInfusedLavaCrystal), 0.2D);
+        this.addInfusingRecipe(ModBlocks.compressedObsidian, getItemStack(ModBlocks.blockLavaInfusedObsidian), 0.2D);
     }
 
     /**

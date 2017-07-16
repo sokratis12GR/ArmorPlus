@@ -30,10 +30,11 @@ class SlotLavaInfuserFuel(inventoryIn: IInventory, slotIndex: Int, xPosition: In
         var itemList = arrayOf(Items.LAVA_BUCKET, ModItems.lavaCrystal)
 
         fun isAllowed(stack: ItemStack): Boolean {
-            itemList
-                    .asSequence()
-                    .filterNot { getItemStack(it).isEmpty }
-                    .forEach { return stack.item === it }
+            itemList.asSequence().filterNot {
+                getItemStack(it).isEmpty
+            }.forEach {
+                return stack.item === it
+            }
             return stack.item === Items.LAVA_BUCKET
         }
     }
