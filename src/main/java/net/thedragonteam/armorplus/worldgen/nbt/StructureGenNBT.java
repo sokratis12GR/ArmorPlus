@@ -18,11 +18,11 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 public class StructureGenNBT implements IWorldGenerator {
@@ -68,7 +68,7 @@ public class StructureGenNBT implements IWorldGenerator {
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {
         if (enableTowerGen) {
-            if ((random.nextInt(towerGenSpawnNeedOfChance) < towerGenSpawnChance) || (ArmorPlus.DEV_ENVIRONMENT && (random.nextInt(100) < 10))) {
+            if ((random.nextInt(towerGenSpawnNeedOfChance) < towerGenSpawnChance) || (enableTowerDevEnv() && (random.nextInt(100) < 10))) {
                 PlacementSettings settings = new PlacementSettings();
                 settings.setRotation(Rotation.NONE);
                 MinecraftServer server = world.getMinecraftServer();

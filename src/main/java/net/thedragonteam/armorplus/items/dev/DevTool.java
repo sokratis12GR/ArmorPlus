@@ -28,6 +28,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.thedragonteam.armorplus.DevUtils.enableDevTool;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
 
@@ -54,7 +55,7 @@ public class DevTool extends BaseItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-        if (ArmorPlus.DEV_ENVIRONMENT || APConfig.debugMode) {
+        if (enableDevTool() || APConfig.debugMode) {
             if (!playerIn.world.isRemote) {
                 if (target != null) {
                     this.writeToFile(playerIn, target);
@@ -164,8 +165,9 @@ public class DevTool extends BaseItem {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rGives Information about the Target");
-            tooltip.add("\2473Use: " + "\247rRight Click a Target");
+            tooltip.add("\247cOnly works if debugMode = true in the configuration file");
+            tooltip.add("§9Ability: §rGives Information about the Target");
+            tooltip.add("§3Use: §rRight Click a Target");
             if (advanced.isAdvanced()) {
                 tooltip.add("Information is located at: <instance>/armorplus/<player_name>/<entity>-<id>");
             }
