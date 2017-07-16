@@ -96,8 +96,15 @@ public class GlobalEventArmorPlus {
             addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[1]), 120, ultimateArmorEffectLevels[1], GOOD);
             addPotion(entity, getPotion(theUltimateArmorAddPotionEffect[2]), 120, ultimateArmorEffectLevels[2], GOOD);
             removePotion(entity, getPotion(theUltimateArmorRemovePotionEffect));
+        } else if (head.getItem() != theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots) {
+            ItemUltimateArmor.onArmorTick(entity);
+        } else if (head.getItem() == theUltimateHelmet && chest.getItem() != theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots) {
+            ItemUltimateArmor.onArmorTick(entity);
+        } else if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() != theUltimateLeggings && feet.getItem() == theUltimateBoots) {
+            ItemUltimateArmor.onArmorTick(entity);
+        } else if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() != theUltimateBoots) {
+            ItemUltimateArmor.onArmorTick(entity);
         }
-        ItemUltimateArmor.onArmorTick(entity);
         if (enableFullSuperStarArmorEffect && head.getItem() == superStarHelmet && chest.getItem() == superStarChestplate && legs.getItem() == superStarLeggings && feet.getItem() == superStarBoots) {
             if (entity.getActivePotionEffect(getPotion(superStarArmorAddPotionEffect)) == null)
                 addPotion(entity, getPotion(superStarArmorAddPotionEffect), 120, superStarArmorEffectLevel, GOOD);
