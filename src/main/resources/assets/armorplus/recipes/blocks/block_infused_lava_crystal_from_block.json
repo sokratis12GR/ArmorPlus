@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockCompressedInfusedLavaCrystal"
+    }
+  ],
+  "result": {
+    "item": "armorplus:block_infused_lava_crystal",
+    "count": 9
+  }
+}

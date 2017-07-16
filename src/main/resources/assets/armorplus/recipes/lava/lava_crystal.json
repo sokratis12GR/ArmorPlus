@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockLavaCrystal"
+    }
+  ],
+  "result": {
+    "item": "armorplus:lava_crystal",
+    "data": 0,
+    "count": 9
+  }
+}
