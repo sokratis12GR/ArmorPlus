@@ -21,15 +21,17 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * net.thedragonteam.armorplus.blocks
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
  * - TheDragonTeam
  */
-public class OreLavaCrystal extends BlockBase implements IModelHelper{
+public class OreLavaCrystal extends BlockBase implements IModelHelper {
 
     public OreLavaCrystal() {
         super(Material.ROCK, "ore_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
@@ -38,12 +40,10 @@ public class OreLavaCrystal extends BlockBase implements IModelHelper{
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
         Item item = lavaCrystal;
-        Random rand = (world instanceof World) ? ((World) world).rand : RANDOM;
+        Random rand;
+        rand = world instanceof World ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);
-        for (int i = 0; i < count; i++) {
-            ItemStack stack = new ItemStack(item, 1, damageDropped(state));
-            drops.add(stack);
-        }
+        IntStream.range(0, count).mapToObj(i -> getItemStack(item)).forEachOrdered(drops::add);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class OreLavaCrystal extends BlockBase implements IModelHelper{
      * Get the MapColor for this Block and the given BlockState
      */
     @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_) {
+    public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
         return MapColor.RED;
     }
 }
