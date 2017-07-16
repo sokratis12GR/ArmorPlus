@@ -12,7 +12,13 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
+import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
+import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
+import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+
+import java.util.stream.IntStream;
 
 /**
  * ArmorPlus - Kotlin created by sokratis12GR
@@ -20,7 +26,7 @@ import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFree
  */
 public class EntityGuardianOverlord extends EntityGuardian implements IRangedAttackMob {
 
-    private final BossInfoServerGuardianOverlord bossInfo;
+    private final BossInfoServerDungeon bossInfo;
     private final int[] nextHeadUpdate = new int[2];
     private final int[] idleHeadUpdates = new int[2];
 
@@ -32,7 +38,7 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
         if (this.wander != null) {
             this.wander.setExecutionChance(100);
         }
-        bossInfo = new BossInfoServerGuardianOverlord(this.getDisplayName());
+        bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.GUARDIAN);
     }
 
     public static void registerFixesElderGuardian(DataFixer fixer) {
@@ -41,7 +47,7 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(2, new EntityAIGuardianOverlordAttack(this, 0.5D, 10, 3.0F));
+        this.tasks.addTask(2, new EntityAIRangedDungeonAttack(this, EntityAIType.GUARDIAN));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         super.initEntityAI();
     }
@@ -69,6 +75,7 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     @Override
     public void onUpdate() {
         if (!world.isRemote) {
+            //noinspection MethodCallSideOnly
             this.setGhost();
         }
         super.onUpdate();
@@ -87,25 +94,22 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     protected void updateAITasks() {
         super.updateAITasks();
 
-        for (int i = 1; i < 3; ++i) {
-            if (this.ticksExisted >= this.nextHeadUpdate[i - 1]) {
-                this.nextHeadUpdate[i - 1] = this.ticksExisted + 10 + this.rand.nextInt(10);
+        IntStream.range(1, 3).filter(i -> this.ticksExisted >= this.nextHeadUpdate[i - 1]).forEachOrdered(i -> {
+            this.nextHeadUpdate[i - 1] = this.ticksExisted + 10 + this.rand.nextInt(10);
+            if (this.world.getDifficulty() == EnumDifficulty.NORMAL || this.world.getDifficulty() == EnumDifficulty.HARD) {
+                int j3 = i - 1;
+                int k3 = this.idleHeadUpdates[i - 1];
+                this.idleHeadUpdates[j3] = this.idleHeadUpdates[i - 1] + 1;
 
-                if (this.world.getDifficulty() == EnumDifficulty.NORMAL || this.world.getDifficulty() == EnumDifficulty.HARD) {
-                    int j3 = i - 1;
-                    int k3 = this.idleHeadUpdates[i - 1];
-                    this.idleHeadUpdates[j3] = this.idleHeadUpdates[i - 1] + 1;
-
-                    if (k3 > 15) {
-                        double d0 = MathHelper.nextDouble(this.rand, this.posX - 10.0D, this.posX + 10.0D);
-                        double d1 = MathHelper.nextDouble(this.rand, this.posY - 5.0D, this.posY + 5.0D);
-                        double d2 = MathHelper.nextDouble(this.rand, this.posZ - 10.0D, this.posZ + 10.0D);
-                        this.launchFreezeBombToCoords(i + 1, d0, d1, d2);
-                        this.idleHeadUpdates[i - 1] = 0;
-                    }
+                if (k3 > 15) {
+                    double d0 = MathHelper.nextDouble(this.rand, this.posX - 10.0D, this.posX + 10.0D);
+                    double d1 = MathHelper.nextDouble(this.rand, this.posY - 5.0D, this.posY + 5.0D);
+                    double d2 = MathHelper.nextDouble(this.rand, this.posZ - 10.0D, this.posZ + 10.0D);
+                    this.launchFreezeBombToCoords(i + 1, d0, d1, d2);
+                    this.idleHeadUpdates[i - 1] = 0;
                 }
             }
-        }
+        });
 
         this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
     }

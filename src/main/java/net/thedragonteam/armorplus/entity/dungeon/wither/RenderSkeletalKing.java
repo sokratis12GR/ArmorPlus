@@ -9,9 +9,6 @@ import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
-/**
- * Created by sokratis12GR on 6/18/2017.
- */
 public class RenderSkeletalKing extends RenderLiving<EntitySkeletalKing> {
 
     public RenderSkeletalKing(RenderManager renderManagerIn) {

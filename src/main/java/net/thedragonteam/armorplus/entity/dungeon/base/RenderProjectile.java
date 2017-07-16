@@ -14,6 +14,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
+import static net.thedragonteam.armorplus.util.Utils.setRL;
+
 /**
  * Mob Inspect by sokratis12GR.
  */
@@ -22,9 +24,10 @@ public class RenderProjectile extends Render<Entity> {
 
     private ResourceLocation location;
 
-    protected RenderProjectile(RenderManager renderManager, ResourceLocation resourceLocation) {
+    public RenderProjectile(RenderManager renderManager, RenderProjectileType projectileType) {
         super(renderManager);
-        this.location = resourceLocation;
+        this.location = setRL(projectileType.getPath());
+        this.shadowSize = 0.5F;
     }
 
     /**
@@ -65,5 +68,20 @@ public class RenderProjectile extends Render<Entity> {
     @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
         return location;
+    }
+
+    public enum RenderProjectileType {
+        FREEZE_BOMB("textures/entity/guardian/freeze_bomb.png"),
+        WITHER_MINION("textures/entity/wither/wither_minion.png"),;
+
+        private final String path;
+
+        RenderProjectileType(String path) {
+            this.path = path;
+        }
+
+        public String getPath() {
+            return this.path;
+        }
     }
 }

@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static java.lang.String.format;
+import static java.util.stream.IntStream.range;
 import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 
 /**
@@ -82,8 +83,7 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             double posX = result.entityHit.posX;
             double posY = result.entityHit.posY;
             double posZ = result.entityHit.posZ;
-            for (int c = 0; c < spawnCount; c++) {
-                EntityWitherSkeleton witherSkeleton = new EntityWitherSkeleton(this.world);
+            range(0, spawnCount).mapToObj(c -> new EntityWitherSkeleton(this.world)).forEachOrdered(witherSkeleton -> {
                 witherSkeleton.removePotionEffect(MobEffects.WITHER);
                 witherSkeleton.setPositionAndUpdate(posX, posY, posZ);
                 witherSkeleton.setCustomNameTag(format("%sSkeletal King's Minion", TextFormatting.YELLOW));
@@ -93,7 +93,7 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
                 witherSkeleton.setCanPickUpLoot(true);
                 witherSkeleton.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(witherSkeleton)), null);
                 this.world.spawnEntity(witherSkeleton);
-            }
+            });
             result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
         }
         this.setDead();

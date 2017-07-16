@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.entity.dungeon.guardian;
 
+import net.minecraft.client.model.ModelGuardian;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -16,7 +17,7 @@ public class RenderGuardianOverlord extends RenderLiving<EntityGuardianOverlord>
     private static final ResourceLocation GUARDIAN_OVERLORD_TEXTURE = new ResourceLocation("armorplus:textures/entity/guardian_overlord.png");
 
     public RenderGuardianOverlord(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelGuardianOverlord(), 5.0F);
+        super(renderManagerIn, new ModelGuardian(), 5.0F);
     }
 
     @Override

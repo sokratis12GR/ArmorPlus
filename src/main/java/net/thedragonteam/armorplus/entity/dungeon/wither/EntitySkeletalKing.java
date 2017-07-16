@@ -5,28 +5,35 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
+import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
+import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+
+import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.*;
 
 /**
  * Created by sokratis12GR on 6/18/2017.
  */
 public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedAttackMob {
 
-    private final BossInfoServerSkeletalKing bossInfo;
+    private final BossInfoServerDungeon bossInfo;
 
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);
         this.setSize(this.width * 7.0F, this.height * 7.0F);
-        this.bossInfo = new BossInfoServerSkeletalKing(this.getDisplayName());
+        this.bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.WITHER);
         this.enablePersistence();
-        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, ItemStack.EMPTY);
+        this.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
+        this.setHeldItem(EnumHand.OFF_HAND, ItemStack.EMPTY);
     }
+
 
     public static void registerFixesSkeletalKing(DataFixer fixer) {
         EntityLiving.registerFixesMob(fixer, EntitySkeletalKing.class);
@@ -40,7 +47,7 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(2, new EntityAISkeletalKingAttack(this, 0.5D, 7.0F));
+        this.tasks.addTask(2, new EntityAIRangedDungeonAttack(this, EntityAIType.WITHER));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         super.initEntityAI();
     }
@@ -116,11 +123,7 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         double d5 = z - d2;
         int spawnCount = rand.nextInt(4 - 1 + 1) + 1;
         EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, spawnCount, d3, d4, d5);
-
         witherMinion.setPosition(d1, d0, d2);
-        //witherMinion.posY = d1;
-        //witherMinion.posX = d0;
-        //witherMinion.posZ = d2;
         this.world.spawnEntity(witherMinion);
     }
 
