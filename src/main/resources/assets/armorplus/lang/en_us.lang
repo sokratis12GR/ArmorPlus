@@ -331,8 +331,8 @@ tile.armorplus.purple_stone_brick_corner.name=Purple Stone Brick Corner
 tile.armorplus.purple_stone_brick_wall.name=Purple Stone Brick Wall
 tile.armorplus.lava_infuser.name=Lava Infuser
 tile.armorplus.lava_infuser_infusing.name=Lava Infuser Infusing
-tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
 
+tile.armorplus.lava_infused_obsidian.name=Lava Infused Obsidian
 tile.armorplus.block_lava_crystal.name=Block of Lava Crystal
 tile.armorplus.block_infused_lava_crystal.name=Block of Infused Lava Crystal
 tile.armorplus.block_compressed_lava_crystal.name=Compressed Lava Crystal Block
