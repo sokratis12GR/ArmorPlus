@@ -22,7 +22,7 @@ import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.creativetab.CreativeTabs.getNextID;
-import static net.minecraftforge.fml.common.Loader.isModLoaded;
+import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCLoaded;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 @Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
@@ -47,26 +47,32 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 0;
+    public static final int PATCH = 4;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 7;
+    public static final int BUILD = 11;
     /**
      * The ArmorPlus Version
      */
     public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "-alpha";
-    public static final String LIB_VERSION = "1.12-4.0.1";
+    public static final String LIB_VERSION = "1.12-4.1.0";
+    public static final String FORGE_VERSION = "14.21.1.2412";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
-    public static final String DEPEND = "required-after:forge@[14.21.1.2387,);" + "required-after:thedragonlib@[" + LIB_VERSION + ",);" + "after:mantle;" + "after:tconstruct;";
+    public static final String DEPEND = "required-after:forge@[" + FORGE_VERSION + ",);"
+            + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
+            + "required-after:forgelin;"
+            + "after:mantle;"
+            + "after:tconstruct;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
-    public static final boolean DEV_ENVIRONMENT = true;
+
+    public static final boolean DEV_ENVIRONMENT = false;
 
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
     public static CommonProxy proxy;
@@ -82,7 +88,7 @@ public class ArmorPlus {
     });
 
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
-    public static net.minecraftforge.common.config.Configuration configuration;
+    public static Configuration configuration;
     @Instance(MODID)
     public static ArmorPlus instance;
     public static GuiHandler guiHandler = new GuiHandler();
@@ -93,22 +99,6 @@ public class ArmorPlus {
 
     public static String getVersion() {
         return VERSION;
-    }
-
-    public static boolean isTeslaLoaded() {
-        return isModLoaded("tesla");
-    }
-
-    public static boolean isBaublesLoaded() {
-        return isModLoaded("baubles");
-    }
-
-    public static boolean isTiCLoaded() {
-        return isModLoaded("tconstruct");
-    }
-
-    public static boolean isTDLLoaded() {
-        return isModLoaded("thedragonlib");
     }
 
     @EventHandler
