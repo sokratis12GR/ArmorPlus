@@ -16,14 +16,7 @@ public class ShapelessRecipeWrapper implements IRecipeWrapper {
     public ShapelessRecipeWrapper(IRecipe recipe, List<ItemStack> inputList) {
         this.recipe = recipe;
         this.inputList = inputList;
-        for (Object input : inputList) {
-            if (input instanceof ItemStack) {
-                ItemStack itemStack = (ItemStack) input;
-                if (!itemStack.isEmpty() && itemStack.getCount() != 1) {
-                    itemStack.setCount(1);
-                }
-            }
-        }
+        inputList.stream().filter(input -> !input.isEmpty() && input.getCount() != 1).forEachOrdered(input -> input.setCount(1));
     }
 
     @Override

@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
 
+import java.util.stream.IntStream;
+
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 /**
@@ -70,15 +72,13 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-            this.initModel(getRegistryName(), LAVA_CRYSTAL_NAMES[i], "lava", i);
+        IntStream.range(0, LAVA_CRYSTAL_NAMES.length).forEachOrdered(i -> this.initModel(getRegistryName(), LAVA_CRYSTAL_NAMES[i], "lava", i));
     }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-                subItems.add(new ItemStack(this, 1, i));
+            IntStream.range(0, LAVA_CRYSTAL_NAMES.length).mapToObj(i -> new ItemStack(this, 1, i)).forEachOrdered(subItems::add);
         }
     }
 }

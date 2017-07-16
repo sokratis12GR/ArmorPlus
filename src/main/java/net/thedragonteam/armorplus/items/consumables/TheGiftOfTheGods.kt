@@ -56,18 +56,17 @@ class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarit
 
         var count: Int
         var item: Item? = ItemStack.EMPTY.item
-        do {
-            when {
-                APConfig.enableWhiteList -> {
-                    if (APConfig.enableWhiteList)
-                        item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
-                }
-                else -> {
-                    count = 256 + random.nextInt(32000 - 256)
-                    item = Item.getItemById(count)
-                }
+        do when {
+            APConfig.enableWhiteList -> {
+                if (APConfig.enableWhiteList)
+                    item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin])
             }
-        } while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
+            else -> {
+                count = 256 + random.nextInt(32000 - 256)
+                item = Item.getItemById(count)
+            }
+        }
+        while (item == null || item == ItemStack.EMPTY.item || item == ItemStackUtils.getItem(blackListedItems.toString()) && enableBlackList)
 
         if (!worldIn.isRemote) {
             if (enableTheGiftOfTheGods) {

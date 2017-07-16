@@ -33,6 +33,7 @@ import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
@@ -115,13 +116,9 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
             return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
         } else {
             int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
-            for (int i = 0; i < bound; i++) {
-                ItemStack stackInSlot = ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i);
-                if (isArrow(stackInSlot)) {
-                    return stackInSlot;
-                }
-            }
-            return ItemStack.EMPTY;
+            return IntStream.range(0, bound).mapToObj(
+                    i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
+            ).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
         }
     }
 

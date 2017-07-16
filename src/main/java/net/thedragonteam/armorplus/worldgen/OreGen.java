@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 
@@ -31,9 +32,9 @@ public class OreGen implements IWorldGenerator {
     private WorldGenerator lavaCrystalTheNetherGenerator;
 
     public OreGen() {
-        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalOverworldVeinAmountWorking);
-        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.blockLavaCrystal.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+        lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lavaCrystalOverworldVeinAmountWorking);
+        lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lavaCrystalTheEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+        lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lavaCrystalTheNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
     }
 
     @Override
@@ -61,12 +62,15 @@ public class OreGen implements IWorldGenerator {
         if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
             throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
         int heightDiff = maxHeight - minHeight + 1;
-        for (int i = 0; i < chancesToSpawn; i++) {
-            int x = chunk_X * 16 + rand.nextInt(16);
-            int y = minHeight + rand.nextInt(heightDiff);
-            int z = chunk_Z * 16 + rand.nextInt(16);
-            BlockPos orePos = new BlockPos(x, y, z);
-            generator.generate(world, rand, orePos);
-        }
+        IntStream.range(0, chancesToSpawn).map(
+                i -> chunk_X * 16 + rand.nextInt(16)
+        ).forEachOrdered(
+                x -> {
+                    int y = minHeight + rand.nextInt(heightDiff);
+                    int z = chunk_Z * 16 + rand.nextInt(16);
+                    BlockPos orePos = new BlockPos(x, y, z);
+                    generator.generate(world, rand, orePos);
+                }
+        );
     }
 }

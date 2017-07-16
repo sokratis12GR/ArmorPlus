@@ -9,20 +9,22 @@ import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
 import net.thedragonteam.armorplus.blocks.dungeon.BlockDungeonEnder;
+import net.thedragonteam.armorplus.entity.dungeon.base.RenderProjectile;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.RenderGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.RenderFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.RenderSkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
+import static java.util.Arrays.stream;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.entity.dungeon.base.RenderProjectile.RenderProjectileType.FREEZE_BOMB;
+import static net.thedragonteam.armorplus.entity.dungeon.base.RenderProjectile.RenderProjectileType.WITHER_MINION;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
@@ -41,16 +43,16 @@ public class ModelsEventHandler {
         electricalBlock.initModel();
         lavaCactus.initModel();
         lavaNetherBrick.initModel();
-        for (BlockStoneBrick stoneBrick : stoneBricks) stoneBrick.initModel();
-        for (BlockStoneBrickTower stoneBrickTower : stoneBrickTowers) stoneBrickTower.initModel();
-        for (BlockStoneBrickCorner stoneBrickCorner : stoneBrickCorners) stoneBrickCorner.initModel();
-        for (BlockStonebrickWall stonebrickWall : stonebrickWalls) stonebrickWall.initModel();
+        stream(stoneBricks).forEachOrdered(BlockStoneBrick::initModel);
+        stream(stoneBrickTowers).forEachOrdered(BlockStoneBrickTower::initModel);
+        stream(stoneBrickCorners).forEachOrdered(BlockStoneBrickCorner::initModel);
+        stream(stonebrickWalls).forEachOrdered(BlockStonebrickWall::initModel);
         //       ritualAltar.initModel();
         blockLavaCrystal.initModel();
         blockInfusedLavaCrystal.initModel();
         blockCompressedLavaCrystal.initModel();
         blockCompressedInfusedLavaCrystal.initModel();
-        for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
+        stream(enderBlocks).forEachOrdered(BlockDungeonEnder::initModel);
     }
 
     @SubscribeEvent
@@ -111,7 +113,7 @@ public class ModelsEventHandler {
         registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
         registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
         //Boss Projectiles
-        registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
-        registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
+        registerEntityRenderingHandler(EntityFreezeBomb.class, renderManagerIn -> new RenderProjectile(renderManagerIn, FREEZE_BOMB));
+        registerEntityRenderingHandler(EntityWitherMinion.class, renderManagerIn -> new RenderProjectile(renderManagerIn, WITHER_MINION));
     }
 }

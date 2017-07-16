@@ -15,7 +15,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nonnull;
-import java.util.stream.IntStream;
+
+import static java.util.stream.IntStream.range;
+import static java.util.stream.IntStream.rangeClosed;
 
 /**
  * ArmorPlus created by sokratis12GR
@@ -41,12 +43,12 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        return rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
-        return IntStream.rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        return rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
     }
 
     public String getCustomName() {
@@ -74,14 +76,12 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         NBTTagList list = new NBTTagList();
-        for (int i = 0; i < this.inventorySize; ++i) {
-            if (!this.itemHandler.getStackInSlot(i).isEmpty()) {
-                NBTTagCompound stackTag = new NBTTagCompound();
-                stackTag.setByte("Slot", (byte) i);
-                this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
-                list.appendTag(stackTag);
-            }
-        }
+        range(0, this.inventorySize).filter(i -> !this.itemHandler.getStackInSlot(i).isEmpty()).forEachOrdered(i -> {
+            NBTTagCompound stackTag = new NBTTagCompound();
+            stackTag.setByte("Slot", (byte) i);
+            this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
+            list.appendTag(stackTag);
+        });
         nbt.setTag("Items", list);
 
         if (this.hasCustomName()) nbt.setString("CustomName", this.getCustomName());
@@ -93,11 +93,10 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         super.readFromNBT(nbt);
 
         NBTTagList list = nbt.getTagList("Items", 10);
-        for (int i = 0; i < list.tagCount(); ++i) {
-            NBTTagCompound stackTag = list.getCompoundTagAt(i);
+        range(0, list.tagCount()).mapToObj(list::getCompoundTagAt).forEachOrdered(stackTag -> {
             int slot = stackTag.getByte("Slot") & 255;
             this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
-        }
+        });
 
         if (nbt.hasKey("CustomName", 8)) this.setCustomName(nbt.getString("CustomName"));
     }

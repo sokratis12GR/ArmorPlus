@@ -6,7 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
 
-import java.util.Arrays;
+import static java.util.Arrays.asList;
+import static java.util.Arrays.stream;
 
 public class ShapedRecipeWrapper implements IShapedCraftingRecipeWrapper {
 
@@ -20,16 +21,12 @@ public class ShapedRecipeWrapper implements IShapedCraftingRecipeWrapper {
         this.inputItems = inputItems;
         this.width = width;
         this.height = height;
-        for (ItemStack itemStack : inputItems) {
-            if (!itemStack.isEmpty() && itemStack.getCount() != 1) {
-                itemStack.setCount(1);
-            }
-        }
+        stream(inputItems).filter(itemStack -> !itemStack.isEmpty() && itemStack.getCount() != 1).forEachOrdered(itemStack -> itemStack.setCount(1));
     }
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        JEIUtils.getIngredients(ingredients, recipe, Arrays.asList(inputItems));
+        JEIUtils.getIngredients(ingredients, recipe, asList(inputItems));
     }
 
     @Override

@@ -45,7 +45,7 @@ class CosmeticsRenderInit {
         val COSMETICS_FOR_PEOPLE_LIST = HashMap<String, RenderCosmetics>()
 
         fun parse(properties: Properties) {
-            for (key in properties.stringPropertyNames()) {
+            properties.stringPropertyNames().forEach { key ->
                 val values = properties.getProperty(key).split("@".toRegex()).dropLastWhile(String::isEmpty).toTypedArray()
                 if (values.isNotEmpty()) {
                     val itemName = values[0]

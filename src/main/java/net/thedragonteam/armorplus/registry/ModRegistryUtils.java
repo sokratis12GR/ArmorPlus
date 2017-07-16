@@ -17,54 +17,39 @@ import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.items.enums.Swords;
 
 import static java.util.Arrays.setAll;
+import static java.util.Arrays.stream;
+import static java.util.stream.IntStream.range;
 import static net.thedragonteam.armorplus.registry.ModItems.equipmentSlots;
-import static net.thedragonteam.armorplus.registry.ModItems.theUltimateParts;
 
 public class ModRegistryUtils {
 
     @SideOnly(Side.CLIENT)
     public static void registerArmorModel(boolean isEnabled, ItemArmorBase[] armor) {
         if (isEnabled) {
-            for (ItemArmorBase anArmor : armor) {
-                anArmor.initModel();
-            }
+            stream(armor).forEachOrdered(ItemArmorBase::initModel);
         }
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerArmorModel(boolean isEnabled, ItemUltimateArmor[] armor) {
         if (isEnabled) {
-            for (ItemUltimateArmor anArmor : armor) {
-                anArmor.initModel();
-            }
+            stream(armor).forEachOrdered(ItemUltimateArmor::initModel);
         }
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerSwordModel(boolean isEnabled[], ItemSpecialSword[] sword) {
-        for (int i = 0; i < isEnabled.length; i++) {
-            if (isEnabled[i]) {
-                sword[i].initModel();
-            }
-        }
+        range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> sword[i].initModel());
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerBattleAxeModel(boolean isEnabled[], ItemSpecialBattleAxe[] battleAxe) {
-        for (int i = 0; i < isEnabled.length; i++) {
-            if (isEnabled[i]) {
-                battleAxe[i].initModel();
-            }
-        }
+        range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> battleAxe[i].initModel());
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerBowModel(boolean isEnabled[], ItemSpecialBow[] bow) {
-        for (int i = 0; i < isEnabled.length; i++) {
-            if (isEnabled[i]) {
-                bow[i].initModel();
-            }
-        }
+        range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> bow[i].initModel());
     }
 
     public static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
@@ -80,26 +65,14 @@ public class ModRegistryUtils {
     }
 
     public static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {
-        for (int i = 0; i < sword.length; i++) {
-            if (isEnabled[i]) {
-                sword[i] = new ItemSpecialSword(material[i]);
-            }
-        }
+        range(0, sword.length).filter(i -> isEnabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
     }
 
     public static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
-        for (int i = 0; i < battleAxe.length; i++) {
-            if (isEnabled[i]) {
-                battleAxe[i] = new ItemSpecialBattleAxe(material[i]);
-            }
-        }
+        range(0, battleAxe.length).filter(i -> isEnabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
     }
 
     public static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
-        for (int i1 = 0; i1 < bow.length; i1++) {
-            if (isEnabled[i1]) {
-                bow[i1] = new ItemSpecialBow(material[i1]);
-            }
-        }
+        range(0, bow.length).filter(i1 -> isEnabled[i1]).forEachOrdered(i1 -> bow[i1] = new ItemSpecialBow(material[i1]));
     }
 }

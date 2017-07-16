@@ -26,6 +26,8 @@ import net.thedragonteam.armorplus.potions.PotionEmpty;
 import net.thedragonteam.armorplus.sounds.SoundTrapTriggered;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
+import java.util.Arrays;
+
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
@@ -143,11 +145,11 @@ public class RegistryEventHandler {
     }
 
     private void registerItemBlock(Register<Item> event, Block... blocks) {
-        for (Block block : blocks) {
+        Arrays.stream(blocks).forEachOrdered(block -> {
             ItemBlock itemBlock = new ItemBlock(block);
             itemBlock.setRegistryName(block.getRegistryName());
             event.getRegistry().register(itemBlock);
-        }
+        });
     }
 
     @SubscribeEvent
