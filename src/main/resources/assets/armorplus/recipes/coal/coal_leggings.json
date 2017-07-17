@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:coal_leggings"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

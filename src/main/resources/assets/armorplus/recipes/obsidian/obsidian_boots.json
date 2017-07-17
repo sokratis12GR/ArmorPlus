@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:obsidian_boots"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",

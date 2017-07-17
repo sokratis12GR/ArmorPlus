@@ -1,4 +1,9 @@
-{
+{  "conditions": [
+  {
+    "type": "minecraft:item_exists",
+    "item": "armorplus:guardian_leggings"
+  }
+],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

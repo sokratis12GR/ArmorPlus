@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:ender_dragon_bow"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",

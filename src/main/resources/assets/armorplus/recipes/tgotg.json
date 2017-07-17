@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:the_gift_of_the_gods"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "#O#",

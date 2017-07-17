@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:slime_helmet"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

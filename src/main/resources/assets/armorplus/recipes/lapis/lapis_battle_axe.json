@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:lapis_battle_axe"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",

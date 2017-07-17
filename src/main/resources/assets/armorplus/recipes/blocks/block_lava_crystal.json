@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:block_lava_crystal"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

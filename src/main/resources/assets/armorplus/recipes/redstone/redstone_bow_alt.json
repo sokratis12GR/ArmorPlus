@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:redstone_bow"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",

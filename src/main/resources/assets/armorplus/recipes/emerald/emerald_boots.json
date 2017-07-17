@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "armorplus:emerald_boots"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",
