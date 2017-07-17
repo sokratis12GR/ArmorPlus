@@ -1,3 +1,10 @@
+ArmorPlus 1.12-11.3.5.12-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Crash on startup when disabling items, finally fixed... (this time 100% sure)
+
 ArmorPlus 1.12-11.3.4.11-alpha
 ----------------------------
 
