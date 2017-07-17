@@ -53,22 +53,7 @@ container.armorplus.inventory=Inventory
 container.armorplus.lava_infuser=Lava Infuser
 
 #Tooltip
-tooltip.showinfo.beginning=Press %s
-tooltip.showinfo.keybind=%s %s
-tooltip.showinfo.end=for more info.
-
-##RFTooltip
-tooltip.rf.showinfo=Press %s%s%s for more info.
-tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=Cost: %s RF/block
-tooltip.rf.cost.hit=Cost: %s RF/hit
-
-##TeslaTooltip
-tooltip.tesla.showinfo.text_one=Press %s%s%s%s
-tooltip.tesla.showinfo.text_two=%s for more info.
-tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=Cost: %s Tesla/block
-tooltip.tesla.cost.hit=Cost: %s Tesla/hit
+tooltip.showinfo.keybind=Press %s%s for more info.
 
 #TiC
 modifier.firestorm.name=Fire Storm
