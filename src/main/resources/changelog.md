@@ -1,7 +1,24 @@
+ArmorPlus 1.11.2-10.7.2.3
+---------------------------- 
+
+**Features Removed**:
+
+* NBT Stick (Had to go... even a long time before this update but now its finally gone)
+
+**Bugs Fixed**:
+
+* Armors not having their respective effects
+
+Code Changes:
+
+* Improved some bits
+
+* Moved event handlers over to use the EventBusSubscriber annotation
+
 ArmorPlus 1.11.2-10.7.1.2
 ---------------------------- 
 
-####**Once you load the world it will say a lot of items are missing, this is intened**
+####**Once you load the world it will say a lot of items are missing, this is intended**
 
 **Features Removed**:
 
