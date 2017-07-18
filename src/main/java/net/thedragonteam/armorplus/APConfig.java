@@ -82,7 +82,7 @@ public class APConfig {
         fill(enableObsidianWeapons, true);
         fill(enableLavaWeapons, true);
         fill(enableGuardianWeapons, true);
-        fill(enableGuardianWeapons, true);
+        fill(enableSuperStarWeapons, true);
         fill(enableEnderDragonWeapons, true);
     }
 
