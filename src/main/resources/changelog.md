@@ -1,3 +1,22 @@
+ArmorPlus 1.11.2-10.7.1.2
+---------------------------- 
+
+####**Once you load the world it will say a lot of items are missing, this is intened**
+
+**Features Removed**:
+
+* **Dungeon related blocks/entities (They will only be available in the 1.12 version of the mod)**
+
+Code Changes:
+
+* Improved some code to use Java 8's features
+
+* Some needed code cleanup and a few tweaks here and there
+
+**Bugs Fixed**:
+
+* **Some mobs not dropping their respective items (guardian scales, wither bones, ender dragon scale)**
+
 ArmorPlus 1.11.2-10.7.0.1
 ---------------------------- 
 
