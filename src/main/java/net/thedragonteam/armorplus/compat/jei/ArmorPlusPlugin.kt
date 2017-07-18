@@ -99,8 +99,6 @@ class ArmorPlusPlugin : BlankModPlugin() {
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.twitchItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.beamItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.nbtItem))
-        ModItems.templates.forEach { item -> blacklist.addIngredientToBlacklist(getItemStack(item)) }
-        ModBlocks.enderBlocks.forEach { block -> blacklist.addIngredientToBlacklist(getItemStack(block)) }
 
         super.register(registry)
     }

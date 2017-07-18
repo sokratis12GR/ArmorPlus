@@ -13,8 +13,6 @@ import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickTower;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStonebrickWall;
-import net.thedragonteam.armorplus.blocks.dungeon.BlockDungeonEnder;
-import net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks;
 import net.thedragonteam.armorplus.blocks.lava.*;
 import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
@@ -23,7 +21,6 @@ import java.util.Arrays;
 
 import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
 import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
-import static net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks.*;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.ELECTRICAL;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
 
@@ -55,8 +52,6 @@ public class ModBlocks {
     //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
     public static BlockLavaCrystal blockLavaCrystal = new BlockLavaCrystal();
     public static BlockInfusedLavaCrystal blockInfusedLavaCrystal = new BlockInfusedLavaCrystal();
-    public static EnumEnderBlocks[] enumEnderBlocks = new EnumEnderBlocks[]{ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP};
-    public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
 
     public static void init() {
         Arrays.setAll(stoneBricks, s -> new BlockStoneBrick(stoneBrickTypes[s]));
@@ -66,7 +61,6 @@ public class ModBlocks {
         Arrays.setAll(benches, b -> new BlockBench(benchTypes[b]));
         lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
         lavaInfuserInfusing = new BlockLavaInfuser("lava_infuser_infusing", true);
-        Arrays.setAll(enderBlocks, c -> new BlockDungeonEnder(enumEnderBlocks[c]));
     }
 
     @SideOnly(Side.CLIENT)
@@ -80,16 +74,15 @@ public class ModBlocks {
         electricalBlock.initModel();
         lavaCactus.initModel();
         lavaNetherBrick.initModel();
-        for (BlockStoneBrick stoneBrick : stoneBricks) stoneBrick.initModel();
-        for (BlockStoneBrickTower stoneBrickTower : stoneBrickTowers) stoneBrickTower.initModel();
-        for (BlockStoneBrickCorner stoneBrickCorner : stoneBrickCorners) stoneBrickCorner.initModel();
-        for (BlockStonebrickWall stonebrickWall : stonebrickWalls) stonebrickWall.initModel();
-        for (BlockBench blockBench : benches) blockBench.initModel();
+        Arrays.stream(stoneBricks).forEachOrdered(BlockStoneBrick::initModel);
+        Arrays.stream(stoneBrickTowers).forEachOrdered(BlockStoneBrickTower::initModel);
+        Arrays.stream(stoneBrickCorners).forEachOrdered(BlockStoneBrickCorner::initModel);
+        Arrays.stream(stonebrickWalls).forEachOrdered(BlockStonebrickWall::initModel);
+        Arrays.stream(benches).forEachOrdered(BlockBench::initModel);
         //       ritualAltar.initModel();
         blockLavaCrystal.initModel();
         blockInfusedLavaCrystal.initModel();
         blockCompressedLavaCrystal.initModel();
         blockCompressedInfusedLavaCrystal.initModel();
-        for (BlockDungeonEnder enderBlock : enderBlocks) enderBlock.initModel();
     }
 }
