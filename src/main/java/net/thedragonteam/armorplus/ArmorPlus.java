@@ -30,7 +30,8 @@ import static net.minecraftforge.fml.common.Loader.isModLoaded;
         version = ArmorPlus.VERSION,
         dependencies = ArmorPlus.DEPEND,
         guiFactory = ArmorPlus.GUI_FACTORY,
-        updateJSON = ArmorPlus.UPDATE_JSON)
+        updateJSON = ArmorPlus.UPDATE_JSON
+)
 public class ArmorPlus {
 
     /**
@@ -52,13 +53,13 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MINOR and MAJOR changes
      */
-    public static final int BUILD = 1;
+    public static final int BUILD = 2;
     /**
      * The ArmorPlus Version
      */
@@ -103,12 +104,15 @@ public class ArmorPlus {
     public static boolean isTeslaLoaded() {
         return isModLoaded("tesla");
     }
+
     public static boolean isBaublesLoaded() {
         return isModLoaded("baubles");
     }
+
     public static boolean isTiCLoaded() {
         return isModLoaded("tconstruct");
     }
+
     public static boolean isTDLLoaded() {
         return isModLoaded("thedragonlib");
     }
