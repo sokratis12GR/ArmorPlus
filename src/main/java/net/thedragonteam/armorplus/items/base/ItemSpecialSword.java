@@ -24,7 +24,7 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
-import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemSpecialSword extends ItemSword implements IModelHelper {
 
@@ -54,7 +54,7 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffect();
         this.setRegistryName(swords.getName() + "_sword");
-        this.setUnlocalizedName(INSTANCE.setName(swords.getName() + "_sword"));
+        this.setUnlocalizedName(setName(swords.getName() + "_sword"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SPECIAL_SWORD", formatting, "Special Sword");

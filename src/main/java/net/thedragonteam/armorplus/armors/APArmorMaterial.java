@@ -33,7 +33,7 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.INSTANCE;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
@@ -79,7 +79,7 @@ public enum APArmorMaterial implements IStringSerializable {
             }
             if (enableLavaArmorOnWaterTouchDeBuff) {
                 if (entity.isInWater() && !enableFullLavaArmorEffect && entity.getActivePotionEffect(MobEffects.WATER_BREATHING) == null) {
-                    INSTANCE.addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
+                    addPotion(entity, MobEffects.SLOWNESS, 1, BAD);
                     itemStack.damageItem(1, entity);
                     entity.attackEntityFrom(DamageSource.DROWN, 1F);
                 }
@@ -116,8 +116,8 @@ public enum APArmorMaterial implements IStringSerializable {
                     entity.capabilities.allowFlying = false;
                 }
             }
-            if (INSTANCE.getPotion(this.getRemovePotionEffect()) != null && INSTANCE.getPotion(this.getRemovePotionEffect()) != ModPotions.INSTANCE.getEMPTY())
-                INSTANCE.removePotion(entity, INSTANCE.getPotion(this.getRemovePotionEffect()));
+            if (getPotion(this.getRemovePotionEffect()) != null && getPotion(this.getRemovePotionEffect()) != ModPotions.INSTANCE.getEMPTY())
+                removePotion(entity, getPotion(this.getRemovePotionEffect()));
         }
 
         @Override
@@ -166,7 +166,7 @@ public enum APArmorMaterial implements IStringSerializable {
             if (enablePigIronArmorEffect) {
                 if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) return;
                 if (head.getItem() == pigIronHelmet && chest.getItem() == pigIronChestplate && legs.getItem() == pigIronLeggings && feet.getItem() == pigIronBoots && entity.getFoodStats().needFood()) {
-                    INSTANCE.addPotion(entity, this.getAddPotionEffect(), this.getAddPotionEffectAmplifier(), GOOD);
+                    addPotion(entity, this.getAddPotionEffect(), this.getAddPotionEffectAmplifier(), GOOD);
                     head.damageItem(1, entity);
                     chest.damageItem(1, entity);
                     legs.damageItem(1, entity);
@@ -265,9 +265,9 @@ public enum APArmorMaterial implements IStringSerializable {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
             if (!this.enableFullArmorEffect()) {
-                addToolTipPiece(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
+                addToolTipPiece(tooltip, localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
             }
-            addToolTipFull(tooltip, INSTANCE.localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
+            addToolTipFull(tooltip, localizePotion(this.getAddPotionEffect()), this.getAddPotionEffectAmplifier());
         } else {
             showInfo(tooltip, keyBindSneak, this.getFormatting());
         }

@@ -9,11 +9,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.armorplus.registry.ModItems;
-import net.thedragonteam.armorplus.util.Utils;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class TiCModifiers {
@@ -30,6 +30,7 @@ public class TiCModifiers {
 
     @SideOnly(Side.CLIENT)
     public static void initRender() {
-        ModelRegisterUtil.registerModifierModel(infusedLavaCrystalModifier, Utils.INSTANCE.setResourceLocation("models/item/modifiers/" + infusedLavaCrystalModifier.getIdentifier()));
+        ModelRegisterUtil.registerModifierModel(infusedLavaCrystalModifier, setRL("models/item/modifiers/" + infusedLavaCrystalModifier.getIdentifier()))
+        ;
     }
 }

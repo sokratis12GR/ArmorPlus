@@ -16,7 +16,6 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.util.PotionUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -29,6 +28,8 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
@@ -170,7 +171,7 @@ public enum BattleAxes implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            PotionUtils.INSTANCE.addPotion(target, PotionUtils.INSTANCE.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 

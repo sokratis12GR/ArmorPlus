@@ -32,7 +32,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.Utils.setName
-import net.thedragonteam.armorplus.util.Utils.setResourceLocation
+import net.thedragonteam.armorplus.util.Utils.setRL
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
@@ -40,7 +40,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
-        this.registryName = setResourceLocation(name)
+        this.registryName = setRL(name)
         this.unlocalizedName = setName(name)
         this.setResistance(10000.0F)
         this.setHardness(2.5F)

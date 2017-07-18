@@ -14,9 +14,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
-import net.thedragonteam.armorplus.util.Utils;
 
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class BaseSword extends ItemSword implements IModelHelper {
 
@@ -33,7 +33,7 @@ public class BaseSword extends ItemSword implements IModelHelper {
         this.itemExpert = repairExpert;
         this.formatting = TextFormatting.getValueByName(textFormatting);
         this.setRegistryName(name);
-        this.setUnlocalizedName(Utils.INSTANCE.setName(name));
+        this.setUnlocalizedName(setName(name));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("SWORD", formatting, "Sword");

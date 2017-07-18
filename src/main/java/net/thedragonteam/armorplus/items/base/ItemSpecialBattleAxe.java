@@ -19,7 +19,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
-import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -27,6 +26,7 @@ import java.util.List;
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
 
@@ -59,7 +59,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
         this.effect = battleAxes.getEffect();
         this.efficiency = battleAxes.getEfficiency();
         this.setRegistryName(battleAxes.getName() + "_battle_axe");
-        this.setUnlocalizedName(Utils.INSTANCE.setName(battleAxes.getName() + "_battle_axe"));
+        this.setUnlocalizedName(setName(battleAxes.getName() + "_battle_axe"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");

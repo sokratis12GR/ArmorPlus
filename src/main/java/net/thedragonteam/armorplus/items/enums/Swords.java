@@ -27,8 +27,9 @@ import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.INSTANCE;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.PotionUtils.localizePotion;
@@ -163,7 +164,7 @@ public enum Swords implements IStringSerializable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.hasEnabledEffects())
-            INSTANCE.addPotion(target, INSTANCE.getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
         return true;
     }
 

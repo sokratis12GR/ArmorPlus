@@ -18,7 +18,7 @@ import net.thedragonteam.armorplus.ArmorPlus.instance
 import net.thedragonteam.armorplus.entity.entityarrow.*
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie
 import net.thedragonteam.armorplus.entity.render.*
-import net.thedragonteam.armorplus.util.Utils.setResourceLocation
+import net.thedragonteam.armorplus.util.Utils.setRL
 
 /**
  * net.thedragonteam.armorplus.entity
@@ -41,13 +41,13 @@ object ModEntities {
     fun init() {
         // Every entity in ArmorPlus has an ID (local to this mod)
         // Entities
-        registerModEntity(setResourceLocation("ender_dragon_zombie"), EntityEnderDragonZombie::class.java, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, instance, 64, 1, true, 0x721164, 0x00ff00)
+        registerModEntity(setRL("ender_dragon_zombie"), EntityEnderDragonZombie::class.java, "ender_dragon_zombie", ENDER_DRAGON_ZOMBIE, instance, 64, 1, true, 0x721164, 0x00ff00)
         // Arrows
-        registerModEntity(setResourceLocation("coal_arrow"), EntityCoalArrow::class.java, "coal_arrow", COAL_ARROW, instance, 64, 1, true)
-        registerModEntity(setResourceLocation("lapis_arrow"), EntityLapisArrow::class.java, "lapis_arrow", LAPIS_ARROW, instance, 64, 1, true)
-        registerModEntity(setResourceLocation("redstone_arrow"), EntityRedstoneArrow::class.java, "redstone_arrow", REDSTONE_ARROW, instance, 64, 1, true)
-        registerModEntity(setResourceLocation("lava_arrow"), EntityLavaArrow::class.java, "lava_arrow", LAVA_ARROW, instance, 64, 1, true)
-        registerModEntity(setResourceLocation("ender_dragon_arrow"), EntityEnderDragonArrow::class.java, "ender_dragon_arrow", ENDER_DRAGON_ARROW, instance, 64, 1, true)
+        registerModEntity(setRL("coal_arrow"), EntityCoalArrow::class.java, "coal_arrow", COAL_ARROW, instance, 64, 1, true)
+        registerModEntity(setRL("lapis_arrow"), EntityLapisArrow::class.java, "lapis_arrow", LAPIS_ARROW, instance, 64, 1, true)
+        registerModEntity(setRL("redstone_arrow"), EntityRedstoneArrow::class.java, "redstone_arrow", REDSTONE_ARROW, instance, 64, 1, true)
+        registerModEntity(setRL("lava_arrow"), EntityLavaArrow::class.java, "lava_arrow", LAVA_ARROW, instance, 64, 1, true)
+        registerModEntity(setRL("ender_dragon_arrow"), EntityEnderDragonArrow::class.java, "ender_dragon_arrow", ENDER_DRAGON_ARROW, instance, 64, 1, true)
 
         // The mobs wont spawn automatically if we don't define biomes to spawn in
         // but it can still be spawned manually

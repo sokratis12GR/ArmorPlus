@@ -8,7 +8,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
-import net.thedragonteam.armorplus.util.Utils;
 
 import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmor;
 import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmorRecipes;
@@ -16,15 +15,16 @@ import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.util.Utils.setUnbreakable;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModUltimateRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         /* Sets The Ultimate Armor Unbreakable */
-        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateHelmet));
-        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateChestplate));
-        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateLeggings));
-        Utils.INSTANCE.setUnbreakable(getItemStack(theUltimateBoots));
+        setUnbreakable(getItemStack(theUltimateHelmet));
+        setUnbreakable(getItemStack(theUltimateChestplate));
+        setUnbreakable(getItemStack(theUltimateLeggings));
+        setUnbreakable(getItemStack(theUltimateBoots));
 
         manager.addRecipe(getItemStack(ultiTechBench),
                 "LUUL ",

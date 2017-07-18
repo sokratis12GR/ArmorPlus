@@ -98,7 +98,6 @@ class ArmorPlusPlugin : BlankModPlugin() {
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.theDragonTeamItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.twitchItem))
         blacklist.addIngredientToBlacklist(getItemStack(ModItems.beamItem))
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.nbtItem))
 
         super.register(registry)
     }

@@ -17,9 +17,11 @@ import net.thedragonteam.armorplus.items.books.ItemAPBook;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
-import net.thedragonteam.armorplus.items.dev.NBTItem;
 import net.thedragonteam.armorplus.items.energy.tesla.*;
-import net.thedragonteam.armorplus.items.enums.*;
+import net.thedragonteam.armorplus.items.enums.BattleAxes;
+import net.thedragonteam.armorplus.items.enums.Bows;
+import net.thedragonteam.armorplus.items.enums.Items;
+import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
@@ -28,18 +30,19 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.ArmorPlus.isBaublesLoaded;
 import static net.thedragonteam.armorplus.ArmorPlus.isTeslaLoaded;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
+import static net.thedragonteam.armorplus.items.enums.DevItems.*;
 import static net.thedragonteam.armorplus.registry.ModModelUtils.*;
 import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
 
 public class ModItems {
 
-    public static ItemAPBook bookInfo;
-    public static ItemMaterial materials;
-    public static BaseItem steelIngot, electricalIngot;
-    public static RedstoneApple redstoneApple;
-    public static LavaCrystal lavaCrystal;
-    public static TheGiftOfTheGods theGiftOfTheGods;
-    public static NBTItem nbtItem;
+    public static ItemAPBook bookInfo = new ItemAPBook();
+    public static ItemMaterial materials = new ItemMaterial();
+    public static BaseItem steelIngot = new BaseItem(Items.STEEL_INGOT), electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
+    public static RedstoneApple redstoneApple = new RedstoneApple();
+    public static LavaCrystal lavaCrystal = new LavaCrystal();
+    public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
+    public static ItemUltimateParts theUltimateParts = new ItemUltimateParts();
     public static boolean[] isArmorEnabled = new boolean[]{
             enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
             enableChickenArmor, enableSlimeArmor, enableGuardianArmor, enableSuperStarArmor, enableEnderDragonArmor,
@@ -83,48 +86,24 @@ public class ModItems {
     public static ItemSpecialSword[] sword = new ItemSpecialSword[9];
     public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
     public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
-    public static ItemUltimateParts theUltimateParts;
-    public static DevTool devTool;
-    public static BaseDevItem twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem;
-    public static ItemTeslaPickaxe itemTeslaPickaxe;
-    public static ItemTeslaSword itemTeslaSword;
-    public static ItemTeslaAxe itemTeslaAxe;
-    public static ItemTeslaRod itemTeslaRod;
-    public static ItemTeslaHoe itemTeslaHoe;
-    public static ItemTeslaShovel itemTeslaShovel;
-    public static ItemCoalArrow itemCoalArrow;
-    public static ItemLapisArrow itemLapisArrow;
-    public static ItemRedstoneArrow itemRedstoneArrow;
-    public static ItemLavaArrow itemLavaArrow;
-    public static ItemEnderDragonArrow itemEnderDragonArrow;
-    public static ItemBaubleDragon itemBaubleDragon;
+    public static DevTool devTool = new DevTool();
+    public static BaseDevItem twitchItem = new BaseDevItem(TWITCH), beamItem = new BaseDevItem(BEAM), theDragonTeamItem = new BaseDevItem(THE_DRAGON_TEAM),
+            moddedCityItem = new BaseDevItem(MODDED_CITY), jonBamsItem = new BaseDevItem(JON_BAMS);
+    public static ItemTeslaSword itemTeslaSword = isTeslaLoaded() && enableEnergyItems[0] ? new ItemTeslaSword() : null;
+    public static ItemTeslaPickaxe itemTeslaPickaxe = isTeslaLoaded() && enableEnergyItems[1] ? new ItemTeslaPickaxe() : null;
+    public static ItemTeslaAxe itemTeslaAxe = isTeslaLoaded() && enableEnergyItems[2] ? new ItemTeslaAxe() : null;
+    public static ItemTeslaShovel itemTeslaShovel = isTeslaLoaded() && enableEnergyItems[3] ? new ItemTeslaShovel() : null;
+    public static ItemTeslaHoe itemTeslaHoe = isTeslaLoaded() && enableEnergyItems[4] ? new ItemTeslaHoe() : null;
+    public static ItemTeslaRod itemTeslaRod = new ItemTeslaRod();
+    public static ItemCoalArrow itemCoalArrow = new ItemCoalArrow();
+    public static ItemLapisArrow itemLapisArrow = new ItemLapisArrow();
+    public static ItemRedstoneArrow itemRedstoneArrow = new ItemRedstoneArrow();
+    public static ItemLavaArrow itemLavaArrow = new ItemLavaArrow();
+    public static ItemEnderDragonArrow itemEnderDragonArrow = new ItemEnderDragonArrow();
+    public static ItemBaubleDragon itemBaubleDragon = isBaublesLoaded() ? new ItemBaubleDragon() : null;
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
     public static void init() {
-        itemTeslaRod = new ItemTeslaRod();
-        twitchItem = new BaseDevItem(DevItems.TWITCH);
-        beamItem = new BaseDevItem(DevItems.BEAM);
-        theDragonTeamItem = new BaseDevItem(DevItems.THE_DRAGON_TEAM);
-        moddedCityItem = new BaseDevItem(DevItems.MODDED_CITY);
-        jonBamsItem = new BaseDevItem(DevItems.JON_BAMS);
-        materials = new ItemMaterial();
-        lavaCrystal = new LavaCrystal();
-        theGiftOfTheGods = new TheGiftOfTheGods();
-        bookInfo = new ItemAPBook();
-        steelIngot = new BaseItem(Items.STEEL_INGOT);
-        electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
-        redstoneApple = new RedstoneApple();
-        nbtItem = new NBTItem();
-        if (isBaublesLoaded()) {
-            itemBaubleDragon = new ItemBaubleDragon();
-        }
-        if (isTeslaLoaded()) {
-            if (enableEnergyItems[4]) itemTeslaHoe = new ItemTeslaHoe();
-            if (enableEnergyItems[3]) itemTeslaShovel = new ItemTeslaShovel();
-            if (enableEnergyItems[2]) itemTeslaAxe = new ItemTeslaAxe();
-            if (enableEnergyItems[1]) itemTeslaPickaxe = new ItemTeslaPickaxe();
-            if (enableEnergyItems[0]) itemTeslaSword = new ItemTeslaSword();
-        }
         //Armors
         registerArmor(enableCoalArmor, coal, COAL);
         registerArmor(enableEmeraldArmor, emerald, EMERALD);
@@ -142,6 +121,7 @@ public class ModItems {
         registerArmor(enableManyullynArmor, manyullyn, MANYULLYN);
         registerArmor(enablePigIronArmor, pigIron, PIG_IRON);
         registerArmor(enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
+
         registerArmor(enableTheUltimateArmor, theUltimate);
         //Swords
         registerSword(isSwordEnabled, sword, swordType);
@@ -149,12 +129,6 @@ public class ModItems {
         registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
         //Bows
         registerBow(isBowEnabled, bow, bowType);
-        devTool = new DevTool();
-        itemCoalArrow = new ItemCoalArrow();
-        itemLapisArrow = new ItemLapisArrow();
-        itemRedstoneArrow = new ItemRedstoneArrow();
-        itemLavaArrow = new ItemLavaArrow();
-        itemEnderDragonArrow = new ItemEnderDragonArrow();
     }
 
     @SideOnly(Side.CLIENT)
@@ -190,8 +164,8 @@ public class ModItems {
         registerSwordModel(isSwordEnabled, sword);
         registerBattleAxeModel(isBattleAxeEnabled, battleAxe);
         registerBowModel(isBowEnabled, bow);
+        theUltimateParts.initModel();
         devTool.initModel();
-        nbtItem.initModel();
         itemCoalArrow.initModel();
         itemLapisArrow.initModel();
         itemRedstoneArrow.initModel();

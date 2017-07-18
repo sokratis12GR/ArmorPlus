@@ -164,7 +164,6 @@ public class ModRecipes {
     public static void addShapelessRecipes() {
         addShapelessRecipe(getItemStack(ModItems.lavaCrystal, 9, 0), ModBlocks.blockLavaCrystal);
         addShapelessRecipe(getItemStack(ModItems.lavaCrystal, 9, 1), ModBlocks.blockInfusedLavaCrystal);
-        addShapelessRecipe(new ItemStack(nbtItem, 1), STICK, GLOWSTONE_DUST);
         addShapelessRecipe(new ItemStack(Blocks.OBSIDIAN, 9), compressedObsidian);
         addShapelessRecipe(new ItemStack(bookInfo), BOOK, COAL);
         addShapelessRecipe(new ItemStack(lavaCactus, 1), Blocks.CACTUS, new ItemStack(lavaCrystal, 1, 1));

@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.registry;
+package net.thedragonteam.armorplus.resources;
 
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
@@ -23,13 +23,13 @@ import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 @EventBusSubscriber(modid = ArmorPlus.MODID)
-public class MobDrops {
+public class MobDropsEventHandler {
     private static Random random = new Random();
-    private static int min = 0;
-    private static int max = 1;
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLivingDrops(LivingDropsEvent event) {
+        int min = 0;
+        int max = 1;
         if (event.getEntityLiving() instanceof EntityDragon) {
             if (enderDragonScaleDrop) {
                 event.getEntityLiving().entityDropItem(getItemStack(materials, enderDragonScaleDropAmount, 3), 0.0f);
@@ -46,6 +46,7 @@ public class MobDrops {
                 LogHelper.INSTANCE.info("Wither Boss Dropped: " + getItemStack(materials, 2) + " x " + witherBoneWitherBossDropAmount);
             }
         }
+
         if (event.getEntityLiving() instanceof EntityWitherSkeleton) {
             int droppedWitherBoneAmount = random.nextInt(max - min + 1) + min;
             if (witherBoneWitherSkeletonDrop) {

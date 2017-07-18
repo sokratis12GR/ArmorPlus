@@ -25,10 +25,8 @@ import net.thedragonteam.armorplus.registry.ModPotions
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable
 import net.thedragonteam.armorplus.util.EnumHelperUtil.*
 import net.thedragonteam.armorplus.util.EnumTiers
+import net.thedragonteam.armorplus.util.PotionUtils.*
 import net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD
-import net.thedragonteam.armorplus.util.PotionUtils.addPotion
-import net.thedragonteam.armorplus.util.PotionUtils.getPotion
-import net.thedragonteam.armorplus.util.PotionUtils.removePotion
 import net.thedragonteam.armorplus.util.Utils.setLocation
 import net.thedragonteam.armorplus.util.Utils.setName
 

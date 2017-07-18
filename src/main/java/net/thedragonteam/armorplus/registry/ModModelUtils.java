@@ -16,12 +16,14 @@ import net.thedragonteam.armorplus.util.Utils;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static net.thedragonteam.armorplus.util.Utils.isNotNull;
+
 @SideOnly(Side.CLIENT)
 public class ModModelUtils {
 
     private static void registerArmorModel(boolean isEnabled, ItemArmorBase... armor) {
         if (isEnabled) {
-            Arrays.stream(armor).filter(Utils.INSTANCE::isNotNull).forEachOrdered(ItemArmorBase::initModel);
+            Arrays.stream(armor).filter(Utils::isNotNull).forEachOrdered(ItemArmorBase::initModel);
         }
     }
 
@@ -31,7 +33,7 @@ public class ModModelUtils {
 
     public static void registerArmorModel(boolean isEnabled, ItemUltimateArmor[] armor) {
         if (isEnabled) {
-            Arrays.stream(armor).filter(Utils.INSTANCE::isNotNull).forEachOrdered(ItemUltimateArmor::initModel);
+            Arrays.stream(armor).filter(Utils::isNotNull).forEachOrdered(ItemUltimateArmor::initModel);
         }
     }
 
@@ -40,7 +42,7 @@ public class ModModelUtils {
     }
 
     private static void registerSwordModel(boolean isEnabled, ItemSpecialSword sword) {
-        if (isEnabled && Utils.INSTANCE.isNotNull(sword)) sword.initModel();
+        if (isEnabled && isNotNull(sword)) sword.initModel();
     }
 
     public static void registerBattleAxeModel(boolean isEnabled[], ItemSpecialBattleAxe[] battleAxe) {
@@ -48,7 +50,7 @@ public class ModModelUtils {
     }
 
     private static void registerBattleAxeModel(boolean isEnabled, ItemSpecialBattleAxe battleAxe) {
-        if (isEnabled && Utils.INSTANCE.isNotNull(battleAxe)) battleAxe.initModel();
+        if (isEnabled && isNotNull(battleAxe)) battleAxe.initModel();
     }
 
     public static void registerBowModel(boolean isEnabled[], ItemSpecialBow[] bow) {
@@ -56,6 +58,6 @@ public class ModModelUtils {
     }
 
     private static void registerBowModel(boolean isEnabled, ItemSpecialBow bow) {
-        if (isEnabled && Utils.INSTANCE.isNotNull(bow)) bow.initModel();
+        if (isEnabled && isNotNull(bow)) bow.initModel();
     }
 }

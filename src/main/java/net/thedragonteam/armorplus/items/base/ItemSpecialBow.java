@@ -26,7 +26,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.api.util.NBTHelper;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
@@ -38,7 +37,8 @@ import java.util.stream.IntStream;
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
-import static net.thedragonteam.armorplus.util.Utils.INSTANCE;
+import static net.thedragonteam.armorplus.util.Utils.checkNBT;
+import static net.thedragonteam.armorplus.util.Utils.setName;
 
 public class ItemSpecialBow extends ItemBow implements IModelHelper {
 
@@ -62,7 +62,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(bows.getName() + "_bow");
-        this.setUnlocalizedName(INSTANCE.setName(bows.getName() + "_bow"));
+        this.setUnlocalizedName(setName(bows.getName() + "_bow"));
         GameRegistry.register(this);
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
@@ -114,7 +114,7 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     }
 
     public float getVelocityOfArrow(ItemStack stack) {
-        NBTHelper.INSTANCE.checkNBT(stack);
+        checkNBT(stack);
 
         NBTTagCompound tag = stack.getTagCompound();
 
