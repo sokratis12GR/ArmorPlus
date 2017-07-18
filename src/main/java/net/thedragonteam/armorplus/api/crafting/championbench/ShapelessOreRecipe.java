@@ -16,6 +16,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +46,7 @@ public class ShapelessOreRecipe implements IRecipe {
                 input.add(OreDictionary.getOres((String) in));
             } else {
                 StringBuilder ret = new StringBuilder("Invalid shapeless ore recipe: ");
-                for (Object tmp : recipe) {
-                    ret.append(tmp).append(", ");
-                }
+                Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
                 ret.append(output);
                 throw new RuntimeException(ret.toString());
             }
@@ -57,16 +56,13 @@ public class ShapelessOreRecipe implements IRecipe {
     ShapelessOreRecipe(ShapelessRecipes recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
-        for (ItemStack ingredient : recipe.recipeItems) {
-            Object finalObj = ingredient;
-            for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
-                if (OreDictionary.itemMatches(replace.getKey(), ingredient, false)) {
-                    finalObj = OreDictionary.getOres(replace.getValue());
-                    break;
-                }
-            }
-            input.add(finalObj);
-        }
+        recipe.recipeItems.stream().map(
+                ingredient -> replacements.entrySet().stream().filter(
+                        replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
+                ).findFirst().<Object>map(
+                        replace -> OreDictionary.getOres(replace.getValue())
+                ).orElse(ingredient)
+        ).forEachOrdered(finalObj -> input.add(finalObj));
     }
 
     /**

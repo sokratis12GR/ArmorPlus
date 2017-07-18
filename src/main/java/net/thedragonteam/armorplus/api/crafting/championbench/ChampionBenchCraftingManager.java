@@ -14,8 +14,11 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -32,7 +35,7 @@ public class ChampionBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private ChampionBenchCraftingManager() {
-        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
 
     /**
@@ -90,11 +93,10 @@ public class ChampionBenchCraftingManager {
 
         ItemStack[] aitemstack = new ItemStack[j * k];
 
-        for (int l = 0; l < j * k; ++l) {
+        IntStream.range(0, j * k).forEachOrdered(l -> {
             char c0 = s.charAt(l);
-
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
-        }
+        });
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
@@ -107,7 +109,7 @@ public class ChampionBenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
 
-        for (Object object : recipeComponents) {
+        Arrays.stream(recipeComponents).forEachOrdered(object -> {
             if (object instanceof ItemStack) {
                 list.add(((ItemStack) object).copy());
             } else if (object instanceof Item) {
@@ -117,7 +119,7 @@ public class ChampionBenchCraftingManager {
 
                 list.add(new ItemStack((Block) object));
             }
-        }
+        });
 
         this.recipes.add(new ShapelessRecipes(stack, list));
     }
@@ -140,7 +142,12 @@ public class ChampionBenchCraftingManager {
      * Retrieves an ItemStack that has multiple recipes for it.
      */
     public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
-        return this.recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+        for (IRecipe recipe : this.recipes) {
+            if (recipe.matches(craftMatrix, worldIn)) {
+                return Optional.of(recipe).map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+            }
+        }
+        return Optional.<IRecipe>empty().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
@@ -152,10 +159,7 @@ public class ChampionBenchCraftingManager {
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
-            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
-        }
-
+        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
         return nonnulllist;
     }
 

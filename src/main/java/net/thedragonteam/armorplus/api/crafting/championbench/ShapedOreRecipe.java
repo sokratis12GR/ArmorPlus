@@ -15,10 +15,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
@@ -57,10 +54,10 @@ public class ShapedOreRecipe implements IRecipe {
         if (recipe[idx] instanceof String[]) {
             String[] parts = ((String[]) recipe[idx++]);
 
-            for (String s : parts) {
+            Arrays.stream(parts).forEachOrdered(s -> {
                 width = s.length();
                 shape.append(s);
-            }
+            });
 
             height = parts.length;
         } else {
@@ -74,9 +71,7 @@ public class ShapedOreRecipe implements IRecipe {
 
         if (width * height != shape.length()) {
             StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
-            for (Object tmp : recipe) {
-                ret.append(tmp).append(", ");
-            }
+            Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
             ret.append(output);
             throw new RuntimeException(ret.toString());
         }
@@ -97,9 +92,7 @@ public class ShapedOreRecipe implements IRecipe {
                 itemMap.put(chr, OreDictionary.getOres((String) in));
             } else {
                 StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
-                for (Object tmp : recipe) {
-                    ret.append(tmp).append(", ");
-                }
+                Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
                 ret.append(output);
                 throw new RuntimeException(ret.toString());
             }

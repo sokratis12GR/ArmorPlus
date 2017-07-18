@@ -15,10 +15,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShapedOreRecipe implements IRecipe {
     //Added in for future ease of change, but hard coded for now.
@@ -42,7 +39,7 @@ public class ShapedOreRecipe implements IRecipe {
     public ShapedOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
 
-        String shape = "";
+        StringBuilder shape = new StringBuilder();
         int idx = 0;
 
         if (recipe[idx] instanceof Boolean) {
@@ -57,28 +54,26 @@ public class ShapedOreRecipe implements IRecipe {
         if (recipe[idx] instanceof String[]) {
             String[] parts = ((String[]) recipe[idx++]);
 
-            for (String s : parts) {
+            Arrays.stream(parts).forEachOrdered(s -> {
                 width = s.length();
-                shape += s;
-            }
+                shape.append(s);
+            });
 
             height = parts.length;
         } else {
             while (recipe[idx] instanceof String) {
                 String s = (String) recipe[idx++];
-                shape += s;
+                shape.append(s);
                 width = s.length();
                 height++;
             }
         }
 
         if (width * height != shape.length()) {
-            String ret = "Invalid shaped ore recipe: ";
-            for (Object tmp : recipe) {
-                ret += tmp + ", ";
-            }
-            ret += output;
-            throw new RuntimeException(ret);
+            StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
+            Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
+            ret.append(output);
+            throw new RuntimeException(ret.toString());
         }
 
         HashMap<Character, Object> itemMap = new HashMap<>();
@@ -96,18 +91,16 @@ public class ShapedOreRecipe implements IRecipe {
             } else if (in instanceof String) {
                 itemMap.put(chr, OreDictionary.getOres((String) in));
             } else {
-                String ret = "Invalid shaped ore recipe: ";
-                for (Object tmp : recipe) {
-                    ret += tmp + ", ";
-                }
-                ret += output;
-                throw new RuntimeException(ret);
+                StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
+                Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
+                ret.append(output);
+                throw new RuntimeException(ret.toString());
             }
         }
 
         input = new Object[width * height];
         int x = 0;
-        for (char chr : shape.toCharArray()) {
+        for (char chr : shape.toString().toCharArray()) {
             input[x++] = itemMap.get(chr);
         }
     }

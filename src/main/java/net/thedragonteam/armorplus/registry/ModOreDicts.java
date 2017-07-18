@@ -7,6 +7,8 @@ package net.thedragonteam.armorplus.registry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
+import java.util.stream.IntStream;
+
 import static net.minecraft.init.Blocks.STONEBRICK;
 import static net.minecraft.init.Items.ARROW;
 import static net.minecraft.init.Items.COAL;
@@ -54,12 +56,12 @@ public class ModOreDicts {
         registerOre("workbenchTierThree", ultiTechBench);
 
         //CastleBlocks
-        for (int i = 0; i < colors.length; i++) {
+        IntStream.range(0, colors.length).forEachOrdered(i -> {
             registerWildBrick(colors[i], stoneBricks[i]);
             registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
             registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
             registerWildBrick(colors[i] + "Wall", stonebrickWalls[i]);
-        }
+        });
         //Materials
         registerWildOre("chainmail", materials, 0);
         registerWildOre("witherBone", materials, 2);

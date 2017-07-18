@@ -15,10 +15,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -49,17 +46,20 @@ public class ShapedOreRecipe implements IRecipe {
 
         if (recipe[idx] instanceof Boolean) {
             mirrored = (Boolean) recipe[idx];
-            if (recipe[idx + 1] instanceof Object[]) recipe = (Object[]) recipe[idx + 1];
-            else idx = 1;
+            if (recipe[idx + 1] instanceof Object[]) {
+                recipe = (Object[]) recipe[idx + 1];
+            } else {
+                idx = 1;
+            }
         }
 
         if (recipe[idx] instanceof String[]) {
             String[] parts = ((String[]) recipe[idx++]);
 
-            for (String s : parts) {
+            Arrays.stream(parts).forEachOrdered(s -> {
                 width = s.length();
                 shape.append(s);
-            }
+            });
 
             height = parts.length;
         } else while (recipe[idx] instanceof String) {
@@ -71,7 +71,7 @@ public class ShapedOreRecipe implements IRecipe {
 
         if (width * height != shape.length()) {
             StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
-            for (Object tmp : recipe) ret.append(tmp).append(", ");
+            Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
             ret.append(output);
             throw new RuntimeException(ret.toString());
         }
@@ -87,10 +87,10 @@ public class ShapedOreRecipe implements IRecipe {
             else if (in instanceof Block) itemMap.put(chr, getItemStack((Block) in, 1, OreDictionary.WILDCARD_VALUE));
             else if (in instanceof String) itemMap.put(chr, OreDictionary.getOres((String) in));
             else {
-                String ret = "Invalid shaped ore recipe: ";
-                for (Object tmp : recipe) ret += tmp + ", ";
-                ret += output;
-                throw new RuntimeException(ret);
+                StringBuilder ret = new StringBuilder("Invalid shaped ore recipe: ");
+                Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
+                ret.append(output);
+                throw new RuntimeException(ret.toString());
             }
         }
 
@@ -113,11 +113,12 @@ public class ShapedOreRecipe implements IRecipe {
 
             input[i] = recipe.input[i];
 
-            for (Map.Entry<ItemStack, String> replace : replacements.entrySet())
+            for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, true)) {
                     input[i] = OreDictionary.getOres(replace.getValue());
                     break;
                 }
+            }
         }
     }
 

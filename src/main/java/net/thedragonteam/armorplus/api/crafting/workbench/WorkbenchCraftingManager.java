@@ -18,9 +18,11 @@ import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecip
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTierOneRecipes;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
@@ -42,7 +44,7 @@ public class WorkbenchCraftingManager {
         new ModSpecialMobRecipes().addRecipes(this);
         new ModWeaponsTierOneRecipes().addRecipes(this);
 
-        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
 
     /**
@@ -59,7 +61,7 @@ public class WorkbenchCraftingManager {
      * Adds a shaped recipe to the games recipe list.
      */
     public ShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
         int k = 0;
@@ -70,14 +72,14 @@ public class WorkbenchCraftingManager {
             for (String s2 : astring) {
                 ++k;
                 j = s2.length();
-                s = s + s2;
+                s.append(s2);
             }
         } else {
             while (recipeComponents[i] instanceof String) {
                 String s1 = (String) recipeComponents[i++];
                 ++k;
                 j = s1.length();
-                s = s + s1;
+                s.append(s1);
             }
         }
 
@@ -100,11 +102,10 @@ public class WorkbenchCraftingManager {
 
         ItemStack[] aitemstack = new ItemStack[j * k];
 
-        for (int l = 0; l < j * k; ++l) {
+        IntStream.range(0, j * k).forEachOrdered(l -> {
             char c0 = s.charAt(l);
-
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
-        }
+        });
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
@@ -117,7 +118,7 @@ public class WorkbenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
 
-        for (Object object : recipeComponents) {
+        Arrays.stream(recipeComponents).forEachOrdered(object -> {
             if (object instanceof ItemStack) {
                 list.add(((ItemStack) object).copy());
             } else if (object instanceof Item) {
@@ -127,7 +128,7 @@ public class WorkbenchCraftingManager {
 
                 list.add(new ItemStack((Block) object));
             }
-        }
+        });
 
         this.recipes.add(new ShapelessRecipes(stack, list));
     }
@@ -167,9 +168,7 @@ public class WorkbenchCraftingManager {
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
-            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
-        }
+        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
 
         return nonnulllist;
     }

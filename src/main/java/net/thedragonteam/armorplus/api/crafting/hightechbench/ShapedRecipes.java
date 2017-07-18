@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nonnull;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
@@ -42,9 +43,7 @@ public class ShapedRecipes implements IRecipe {
         this.recipeHeight = height;
         this.input = ingredientsIn;
 
-        for (int i = 0; i < this.input.length; ++i) {
-            if (this.input[i].isEmpty()) this.input[i] = ItemStack.EMPTY;
-        }
+        IntStream.range(0, this.input.length).filter(i -> this.input[i].isEmpty()).forEachOrdered(i -> this.input[i] = ItemStack.EMPTY);
 
         this.recipeOutput = output;
     }
@@ -60,10 +59,10 @@ public class ShapedRecipes implements IRecipe {
     public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
+        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
             ItemStack itemstack = inv.getStackInSlot(i);
             nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        }
+        });
 
         return nonnulllist;
     }
@@ -120,13 +119,9 @@ public class ShapedRecipes implements IRecipe {
         ItemStack itemstack = this.getRecipeOutput().copy();
 
         if (this.copyIngredientNBT) {
-            for (int i = 0; i < inv.getSizeInventory(); ++i) {
-                ItemStack itemstack1 = inv.getStackInSlot(i);
-
-                if (!itemstack1.isEmpty() && itemstack1.hasTagCompound()) {
-                    itemstack.setTagCompound(itemstack1.getTagCompound().copy());
-                }
-            }
+            IntStream.range(0, inv.getSizeInventory()).mapToObj(inv::getStackInSlot).filter(
+                    itemstack1 -> !itemstack1.isEmpty() && itemstack1.hasTagCompound()
+            ).map(itemstack1 -> itemstack1.getTagCompound().copy()).forEachOrdered(itemstack::setTagCompound);
         }
 
         return itemstack;

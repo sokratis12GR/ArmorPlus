@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import java.util.stream.IntStream;
+
 import static net.minecraft.init.Items.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.*;
 import static net.thedragonteam.armorplus.APConfig.*;
@@ -134,13 +136,13 @@ public class ModRecipes {
                 'O', "blockCoal",
                 'L', "gemLapis",
                 'C', "gemLavaCrystal"));
-        for (int i = 0; i < colors.length; i++) {
+        IntStream.range(0, colors.length).forEachOrdered(i -> {
             addRecipeCastle(stoneBricks[i], colors[i]);
             addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
             addRecipeCastleTower(stoneBrickTowers[i], colors[i]);
             addRecipeCastleWall(stonebrickWalls[i], colors[i]);
             addRecipeStoneBrick(Blocks.STONEBRICK, colors[i]);
-        }
+        });
         if (enableElytraRecipe)
             addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
         if (enableChainArmorRecipes) {

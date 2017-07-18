@@ -98,11 +98,10 @@ public final class TiCMaterials {
     public void postInit() {
         if (TinkerTools.shard == null) return;
 
-        for (Material material : TinkerRegistry.getAllMaterials()) {
+        TinkerRegistry.getAllMaterials().forEach(material -> {
             ItemStack shard = TinkerTools.shard.getItemstackWithMaterial(material);
-
             material.addRecipeMatch(new RecipeMatch.ItemCombination(Material.VALUE_Shard, shard));
-            if (material.getShard() != null || !material.getShard().isEmpty()) material.setShard(shard);
-        }
+            if (!material.getShard().isEmpty()) material.setShard(shard);
+        });
     }
 }

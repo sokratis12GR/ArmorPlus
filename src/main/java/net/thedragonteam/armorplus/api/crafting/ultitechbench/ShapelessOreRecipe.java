@@ -16,6 +16,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -36,33 +37,30 @@ public class ShapelessOreRecipe implements IRecipe {
 
     public ShapelessOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
-        for (Object in : recipe)
+        for (Object in : recipe) {
             if (in instanceof ItemStack) input.add(((ItemStack) in).copy());
             else if (in instanceof Item) input.add(getItemStack((Item) in));
             else if (in instanceof Block) input.add(getItemStack((Block) in));
             else if (in instanceof String) input.add(OreDictionary.getOres((String) in));
             else {
-                String ret = "Invalid shapeless ore recipe: ";
-                for (Object tmp : recipe) {
-                    ret += tmp + ", ";
-                }
-                ret += output;
-                throw new RuntimeException(ret);
+                StringBuilder ret = new StringBuilder("Invalid shapeless ore recipe: ");
+                Arrays.stream(recipe).forEachOrdered(tmp -> ret.append(tmp).append(", "));
+                ret.append(output);
+                throw new RuntimeException(ret.toString());
             }
+        }
     }
 
     ShapelessOreRecipe(ShapelessRecipes recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
-        for (ItemStack ingredient : recipe.input) {
-            Object finalObj = ingredient;
-            for (Map.Entry<ItemStack, String> replace : replacements.entrySet())
-                if (OreDictionary.itemMatches(replace.getKey(), ingredient, false)) {
-                    finalObj = OreDictionary.getOres(replace.getValue());
-                    break;
-                }
-            input.add(finalObj);
-        }
+        recipe.input.stream().map(
+                ingredient -> replacements.entrySet().stream().filter(
+                        replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
+                ).findFirst().<Object>map(
+                        replace -> OreDictionary.getOres(replace.getValue())
+                ).orElse(ingredient)
+        ).forEachOrdered(finalObj -> input.add(finalObj));
     }
 
     /**

@@ -18,9 +18,11 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTierTwo
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.hightechbench
@@ -42,7 +44,7 @@ public class HighTechBenchCraftingManager {
         new ModWeaponTierTwoRecipes().addRecipes(this);
         new ModTinkersConstructRecipes().addRecipes(this);
 
-        this.recipes.sort((pCompare1, pCompare2) -> pCompare1 instanceof ShapelessRecipes && pCompare2 instanceof ShapedRecipes ? 1 : (pCompare2 instanceof ShapelessRecipes && pCompare1 instanceof ShapedRecipes ? -1 : (pCompare2.getRecipeSize() < pCompare1.getRecipeSize() ? -1 : (pCompare2.getRecipeSize() > pCompare1.getRecipeSize() ? 1 : 0))));
+        this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
 
     /**
@@ -100,11 +102,10 @@ public class HighTechBenchCraftingManager {
 
         ItemStack[] aitemstack = new ItemStack[j * k];
 
-        for (int l = 0; l < j * k; ++l) {
+        IntStream.range(0, j * k).forEachOrdered(l -> {
             char c0 = s.charAt(l);
-
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
-        }
+        });
 
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
@@ -117,7 +118,7 @@ public class HighTechBenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
 
-        for (Object object : recipeComponents) {
+        Arrays.stream(recipeComponents).forEachOrdered(object -> {
             if (object instanceof ItemStack) {
                 list.add(((ItemStack) object).copy());
             } else if (object instanceof Item) {
@@ -127,7 +128,7 @@ public class HighTechBenchCraftingManager {
 
                 list.add(new ItemStack((Block) object));
             }
-        }
+        });
 
         this.recipes.add(new ShapelessRecipes(stack, list));
     }
@@ -167,9 +168,7 @@ public class HighTechBenchCraftingManager {
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
-            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
-        }
+        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
 
         return nonnulllist;
     }

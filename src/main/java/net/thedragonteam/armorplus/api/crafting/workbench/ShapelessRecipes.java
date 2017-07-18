@@ -14,6 +14,7 @@ import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * net.thedragonteam.armorplus.api.crafting.benches
@@ -43,10 +44,10 @@ public class ShapelessRecipes implements IRecipe {
     public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); ++i) {
+        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
             ItemStack itemstack = inv.getStackInSlot(i);
             nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        }
+        });
 
         return nonnulllist;
     }

@@ -5,11 +5,7 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraftforge.fml.common.Loader;
-import net.thedragonteam.armorplus.compat.ICompatibility;
-import net.thedragonteam.armorplus.compat.CompatibilityBaubles;
-import net.thedragonteam.armorplus.compat.CompatibilityJustEnoughItems;
-import net.thedragonteam.armorplus.compat.CompatibilityMineTweaker;
-import net.thedragonteam.armorplus.compat.CompatibilityTinkersConstruct;
+import net.thedragonteam.armorplus.compat.*;
 
 import java.util.ArrayList;
 
@@ -29,10 +25,8 @@ public class ModCompatibility {
     }
 
     public static void loadCompat(ICompatibility.InitializationPhase phase) {
-        for (ICompatibility compatibility : compatibilities) {
-            if (Loader.isModLoaded(compatibility.getModid()) && compatibility.enableCompat()) {
-                compatibility.loadCompatibility(phase);
-            }
-        }
+        compatibilities.stream().filter(
+                compatibility -> Loader.isModLoaded(compatibility.getModid()) && compatibility.enableCompat()
+        ).forEachOrdered(compatibility -> compatibility.loadCompatibility(phase));
     }
 }
