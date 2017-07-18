@@ -58,7 +58,11 @@ object Utils {
 
     fun areItemsEqual(stack1: ItemStack, stack2: ItemStack, checkWildcard: Boolean): Boolean = isValid(stack1) && isValid(stack2) && (stack1.isItemEqual(stack2) || checkWildcard && stack1.item === stack2.item && (stack1.itemDamage == WILDCARD || stack2.itemDamage == WILDCARD))
 
-    fun isValid(stack: ItemStack?): Boolean {
-        return stack != null && !stack.isEmpty
+    fun isValid(stack: ItemStack): Boolean {
+        return !stack.isEmpty
+    }
+
+    fun isNotNull(`object`: Any?): Boolean {
+        return `object` != null
     }
 }
