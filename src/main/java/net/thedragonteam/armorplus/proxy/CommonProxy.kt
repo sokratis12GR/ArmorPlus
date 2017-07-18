@@ -11,10 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 import net.thedragonteam.armorplus.client.gui.APTab
 import net.thedragonteam.armorplus.commands.CommandArmorPlus
 import net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*
-import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb
 import net.thedragonteam.armorplus.registry.*
-import net.thedragonteam.armorplus.resources.GlobalEventsArmorPlus
 import net.thedragonteam.armorplus.tileentity.*
 import net.thedragonteam.armorplus.worldgen.OreGen
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT
@@ -34,7 +31,6 @@ open class CommonProxy {
         APItems.init() // Initializes the helper item class
         registerWorldGenerators()
         registerTileEntities()
-        MinecraftForge.EVENT_BUS.register(MobDrops())
         registerFixes()
         ModCompatibility.registerModCompat()
         ModCompatibility.loadCompat(PRE_INIT)
@@ -64,7 +60,6 @@ open class CommonProxy {
     }
 
     fun registerEvents() {
-        MinecraftForge.EVENT_BUS.register(GlobalEventsArmorPlus())
         //Register to receive subscribed events
         MinecraftForge.EVENT_BUS.register(this)
         ModAchievements.init()
@@ -89,7 +84,5 @@ open class CommonProxy {
 
     fun registerFixes() {
         TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer())
-        EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer())
-        EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer())
     }
 }

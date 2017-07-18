@@ -9,10 +9,12 @@ import net.minecraft.inventory.EntityEquipmentSlot.*
 import net.minecraft.item.Item
 import net.minecraft.util.DamageSource
 import net.minecraftforge.fml.client.event.ConfigChangedEvent
+import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import net.thedragonteam.armorplus.APConfig.*
+import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.ArmorPlus.configuration
 import net.thedragonteam.armorplus.registry.APBlocks
 import net.thedragonteam.armorplus.registry.APItems.*
@@ -28,6 +30,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
+@Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
 class GlobalEventsArmorPlus {
     //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
 
