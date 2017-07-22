@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.thedragonteam.armorplus.compat.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * net.thedragonteam.armorplus.registry
@@ -18,13 +19,16 @@ public class ModCompatibility {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<>();
 
     public static void registerModCompat() {
-        compatibilities.add(new CompatibilityJustEnoughItems());
-        compatibilities.add(new CompatibilityBaubles());
-        compatibilities.add(new CompatibilityTinkersConstruct());
-        compatibilities.add(new CompatibilityMineTweaker());
+        addCompatibilities(new CompatibilityJustEnoughItems(), new CompatibilityBaubles(), new CompatibilityTinkersConstruct(), new CompatibilityMineTweaker());
+    }
+
+    private static void addCompatibilities(ICompatibility... compatibilities) {
+        Collections.addAll(ModCompatibility.compatibilities, compatibilities);
     }
 
     public static void loadCompat(ICompatibility.InitializationPhase phase) {
-        compatibilities.stream().filter(compatibility -> Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat()).forEachOrdered(compatibility -> compatibility.loadCompatibility(phase));
+        compatibilities.stream().filter(
+                compatibility -> Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat()
+        ).forEachOrdered(compatibility -> compatibility.loadCompatibility(phase));
     }
 }

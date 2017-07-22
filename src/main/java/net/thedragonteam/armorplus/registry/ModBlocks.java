@@ -42,8 +42,8 @@ public class ModBlocks {
     public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[7];
     public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[7];
     public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[7];
-    public static BlockLavaInfuser lava_infuser = new BlockLavaInfuser("lava_infuser", false);
-    public static BlockLavaInfuser lava_infuser_infusing = new BlockLavaInfuser("lava_infuser_infusing", true);
+    public static BlockLavaInfuser lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
+    public static BlockLavaInfuser lavaInfuserInfusing = new BlockLavaInfuser("lava_infuser_infusing", true);
     public static BlockLavaType blockLavaCrystal = new BlockLavaType(LAVA_CRYSTAL);
     public static BlockLavaType blockInfusedLavaCrystal = new BlockLavaType(INFUSED_LAVA_CRYSTAL);
     public static BlockLavaType blockCompressedLavaCrystal = new BlockLavaType(COMPRESSED_LAVA_CRYSTAL);
