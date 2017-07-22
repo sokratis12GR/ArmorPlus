@@ -11,16 +11,18 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.String.format;
 import static net.minecraft.util.text.TextFormatting.GRAY;
+import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
 @SideOnly(Side.CLIENT)
 public class ToolTipUtils {
 
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(TextUtils.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(formatting, "tooltip.showinfo.keybind", keyBinding.getDisplayName(),
-                TextUtils.formattedText(GRAY, "tooltip.showinfo.end"))));
+        tooltip.add(GRAY + formattedText("tooltip.showinfo.keybind", formatting, keyBinding.getDisplayName()) + GRAY);
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability, int amplifier) {
@@ -28,8 +30,10 @@ public class ToolTipUtils {
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability) {
-        tooltip.add("\2479Ability: " + "\247r" + ability);
-        tooltip.add("\2473Use: " + "\247rEquip The Full Set");
+        addToolTip(tooltip,
+                format("§9Ability: §r%s", ability),
+                "§3Use: §rEquip The Full Set"
+        );
     }
 
     public static void addToolTipPiece(List<String> tooltip, String ability, int amplifier) {
@@ -37,8 +41,10 @@ public class ToolTipUtils {
     }
 
     public static void addToolTipPiece(List<String> tooltip, String ability) {
-        tooltip.add("\2479Ability: " + "\247r" + ability);
-        tooltip.add("\2473Use: " + "\247rEquip A Piece");
+        addToolTip(tooltip,
+                format("§9Ability: §r%s", ability),
+                "§3Use: §rEquip A Piece"
+        );
     }
 
     public static boolean isKeyDown() {
@@ -48,5 +54,9 @@ public class ToolTipUtils {
 
     private static int level(int amplifier) {
         return amplifier + 1;
+    }
+
+    private static void addToolTip(List<String> tooltip, String... lines) {
+        tooltip.addAll(Arrays.asList(lines));
     }
 }
