@@ -46,7 +46,7 @@ public class ArmorPlusPlugin implements IModPlugin {
         registry.addIngredientInfo(APItems.guardianScale, ItemStack.class, formattedText("armorplus.jei.guardian_scale.desc"));
         registry.addIngredientInfo(APItems.witherBone, ItemStack.class, formattedText("armorplus.jei.wither_bone.desc"));
         registry.addIngredientInfo(APItems.enderDragonScale, ItemStack.class, formattedText("armorplus.jei.ender_dragon_scale.desc"));
-        registry.addIngredientInfo(getItemStack(ModBlocks.lava_infuser), ItemStack.class, formattedText("armorplus.jei.lava_infuser.desc"));
+        registry.addIngredientInfo(getItemStack(ModBlocks.lavaInfuser), ItemStack.class, formattedText("armorplus.jei.lava_infuser.desc"));
     }
 
     @Override
