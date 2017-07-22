@@ -47,13 +47,13 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 4;
+    public static final int PATCH = 6;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 11;
+    public static final int BUILD = 13;
     /**
      * The ArmorPlus Version
      */
@@ -84,7 +84,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusTinkers = isTiCLoaded() ? new APTab(getNextID(), MODID, setName("tinkers"), 4) : null;
 
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{
-            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, tabArmorplusTinkers
+            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, //tabArmorplusTinkers
     });
 
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
