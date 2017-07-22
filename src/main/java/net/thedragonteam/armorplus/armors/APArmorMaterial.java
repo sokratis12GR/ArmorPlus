@@ -35,6 +35,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
+import static net.thedragonteam.armorplus.util.Utils.isNotEmpty;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack;
 
@@ -183,7 +184,7 @@ public enum APArmorMaterial implements IStringSerializable {
     ),;
     private final ArmorMaterial armorMaterial;
     private final String name;
-    private final ItemStack itemExpert;
+    private final ItemStack repairStack;
     private final TextFormatting formatting;
     private final boolean enableFullArmorEffect;
     private final String addPotionEffect;
@@ -191,11 +192,11 @@ public enum APArmorMaterial implements IStringSerializable {
     private final String removePotionEffect;
     private boolean[] areEffectsEnabled;
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairExpertIn, TextFormatting textFormattingIn,
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairStack, TextFormatting textFormattingIn,
                     boolean enableFullArmorEffectIn, String addPotionEffectIn, int addPotionEffectInAmplifierIn, boolean[] areEffectsEnabledIn, String removePotionEffectIn) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
-        this.itemExpert = repairExpertIn;
+        this.repairStack = repairStack;
         this.formatting = textFormattingIn;
         this.enableFullArmorEffect = enableFullArmorEffectIn;
         this.addPotionEffect = addPotionEffectIn;
@@ -213,8 +214,8 @@ public enum APArmorMaterial implements IStringSerializable {
         return this.name;
     }
 
-    public ItemStack getItemExpert() {
-        return !this.itemExpert.isEmpty() ? this.itemExpert : ItemStack.EMPTY;
+    public ItemStack getRepairStack() {
+        return isNotEmpty(repairStack) ? this.repairStack : ItemStack.EMPTY;
     }
 
     public TextFormatting getFormatting() {
@@ -230,15 +231,15 @@ public enum APArmorMaterial implements IStringSerializable {
     }
 
     public int getAddPotionEffectAmplifier() {
-        return addPotionEffectAmplifier;
+        return this.addPotionEffectAmplifier;
     }
 
     public boolean[] getAreEffectsEnabled() {
-        return areEffectsEnabled;
+        return this.areEffectsEnabled;
     }
 
     public String getRemovePotionEffect() {
-        return removePotionEffect;
+        return this.removePotionEffect;
     }
 
     public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {

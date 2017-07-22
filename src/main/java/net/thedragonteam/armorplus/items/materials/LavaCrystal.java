@@ -9,14 +9,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.IFuelHandler;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 
 import javax.annotation.Nonnull;
-
 import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -34,7 +32,7 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
 
     public LavaCrystal() {
         this.setHasSubtypes(true);
-        GameRegistry.registerFuelHandler(this);
+        //GameRegistry.registerFuelHandler(this);
         this.setRegistryName("lava_crystal");      // The unique name (within your mod) that identifies this item
         this.setUnlocalizedName(setName("lava_crystal"));   // Used for localization (en_US.lang)
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
@@ -43,19 +41,24 @@ public class LavaCrystal extends Item implements IFuelHandler, IModelHelper {
 
     @Override
     public int getBurnTime(ItemStack fuel) {
-        if (fuel.getItem() == this)
-            for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++)
-                if (fuel.getItemDamage() == i)
+        if (fuel.getItem() == this) {
+            for (int i = 0; i < BURN_TIME.length; i++) {
+                if (fuel.getItemDamage() == i) {
                     return BURN_TIME[i];
+                }
+            }
+        }
         return 0;
     }
 
     @Override
     @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i <= 1; i++)
-            if (stack.getItemDamage() == i)
+        for (int i = 0; i < LAVA_CRYSTAL_NAMES.length; i++) {
+            if (stack.getItemDamage() == i) {
                 return super.getUnlocalizedName(stack) + LAVA_CRYSTAL_NAMES[i];
+            }
+        }
         return super.getUnlocalizedName(stack);
     }
 

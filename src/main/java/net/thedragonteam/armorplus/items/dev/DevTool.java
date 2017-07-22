@@ -30,6 +30,7 @@ import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.DevUtils.enableDevTool;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
 
 public class DevTool extends BaseItem {
@@ -39,7 +40,7 @@ public class DevTool extends BaseItem {
 
     public DevTool() {
         super("dev_tool");
-        dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
+        this.dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
@@ -57,7 +58,7 @@ public class DevTool extends BaseItem {
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if (enableDevTool() || APConfig.debugMode) {
             if (!playerIn.world.isRemote) {
-                if (target != null) {
+                if (isNotNull(target)) {
                     this.writeToFile(playerIn, target);
                     entityNumber++;
                     return true;
@@ -68,69 +69,83 @@ public class DevTool extends BaseItem {
     }
 
     private void writeToFile(EntityPlayer player, EntityLivingBase entity) {
-        new File("./armorplus/entity/" + player.getName()).mkdirs();
+        new File("./armorplus/entity/" + player.getUniqueID()).mkdirs();
         Writer writer = null;
         try {
             writer = new OutputStreamWriter(new FileOutputStream(
-                    new File(format("./armorplus/entity/%s/%s_%d.json", player.getName(), entity.getName(), entityNumber))));
-            writer.write(write("{"));
-            writer.write(write(format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", ""))));
-            writer.write(write("\t\"Names\": {"));
-            writer.write(write(format("\t\t\"Name\": \"%s\",", entity.getName())));
-            writer.write(write(format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag())));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"Dimension\": {"));
-            writer.write(write(format("\t\t\"ID\": %d", entity.dimension)));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"World\": {"));
-            writer.write(write(format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName())));
-            writer.write(write(format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed())));
-            writer.write(write(format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked())));
-            writer.write(write(format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled())));
-            writer.write(write("\t\t\"Spawn\": {"));
-            writer.write(write(format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX())));
-            writer.write(write(format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY())));
-            writer.write(write(format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ())));
-            writer.write(write("\t\t}"));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"Position\": {"));
-            writer.write(write(format("\t\t\"X\": %d,", entity.getPosition().getX())));
-            writer.write(write(format("\t\t\"Y\": %d,", entity.getPosition().getY())));
-            writer.write(write(format("\t\t\"Z\": %d", entity.getPosition().getZ())));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"Inventory Armor\": {"));
-            writer.write(write("\t\t\"Head\": {"));
+                    new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))));
+            this.write(writer,
+                    "{", //0
+                    format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", "")),
+                    "\t\"Names\": {",
+                    format("\t\t\"Name\": \"%s\",", entity.getName()),
+                    format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag()),
+                    "\t},",
+                    "\t\"Dimension\": {",
+                    format("\t\t\"ID\": %d", entity.dimension),
+                    "\t},",
+                    "\t\"World\": {",
+                    format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName()),
+                    format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed()),
+                    format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked()),
+                    format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled()),
+                    "\t\t\"Spawn\": {",
+                    format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX()),
+                    format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY()),
+                    format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ()),
+                    "\t\t}",
+                    "\t},",
+                    "\t\"Position\": {",
+                    format("\t\t\"X\": %d,", entity.getPosition().getX()),
+                    format("\t\t\"Y\": %d,", entity.getPosition().getY()),
+                    format("\t\t\"Z\": %d", entity.getPosition().getZ()),
+                    "\t},",
+                    "\t\"Inventory Armor\": {",
+                    "\t\t\"Head\": {"
+            );
             this.writeArmorSlotItem(writer, entity, HEAD);
-            writer.write(write("\t\t},"));
-            writer.write(write("\t\t\"Chest\": {"));
+            this.write(writer,
+                    tabTwo("},"), //2
+                    tabTwo("\"Chest\": {") //2
+            );
             this.writeArmorSlotItem(writer, entity, CHEST);
-            writer.write(write("\t\t},"));
-            writer.write(write("\t\t\"Legs\": {"));
+            this.write(writer,
+                    tabTwo("},"), //2
+                    tabTwo("\"Legs\": {") //2
+            );
             this.writeArmorSlotItem(writer, entity, LEGS);
-            writer.write(write("\t\t},"));
-            writer.write(write("\t\t\"Feet\": {"));
+            this.write(writer,
+                    tabTwo("},"), //2
+                    tabTwo("\"Feet\": {") //2
+            );
             this.writeArmorSlotItem(writer, entity, FEET);
-            writer.write(write("\t\t}"));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"Inventory Hands\": {"));
-            writer.write(write("\t\t\"Main-Hand\": {"));
-            writeItem(writer, entity.getHeldItemMainhand());
-            writer.write(write("\t\t},"));
-            writer.write(write("\t\t\"Off-Hand\": {"));
-            writeItem(writer, entity.getHeldItemOffhand());
-            writer.write(write("\t\t}"));
-            writer.write(write("\t},"));
-            writer.write(write("\t\"Entity Info\": {"));
-            writer.write(write(format("\t\t\"Max Health\": %s,", entity.getMaxHealth())));
-            writer.write(write(format("\t\t\"Health\": %s,", entity.getHealth())));
-            writer.write(write(format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount())));
-            writer.write(write(format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable())));
-            writer.write(write(format("\t\t\"Is Invisible\": %s,", entity.isInvisible())));
-            writer.write(write(format("\t\t\"Is Glowing\": %s,", entity.isGlowing())));
-            writer.write(write(format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions())));
-            writer.write(write(format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire())));
-            writer.write(write("\t}"));
-            writer.write(write("}"));
+            this.write(writer,
+                    tabTwo("}"), //2
+                    tabOne("},"), //1
+                    tabOne("\"Inventory Hands\": {"), //1
+                    tabTwo("\"Main-Hand\": {") //2
+            );
+            this.writeItem(writer, entity.getHeldItemMainhand());
+            this.write(writer,
+                    "\t\t},",
+                    "\t\t\"Off-Hand\": {"
+            );
+            this.writeItem(writer, entity.getHeldItemOffhand());
+            this.write(writer,
+                    "\t\t}",
+                    "\t},",
+                    "\t\"Entity Info\": {",
+                    format("\t\t\"Max Health\": %s,", entity.getMaxHealth()),
+                    format("\t\t\"Health\": %s,", entity.getHealth()),
+                    format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount()),
+                    format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable()),
+                    format("\t\t\"Is Invisible\": %s,", entity.isInvisible()),
+                    format("\t\t\"Is Glowing\": %s,", entity.isGlowing()),
+                    format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions()),
+                    format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire()),
+                    "\t}",
+                    "}" //0
+            );
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -143,13 +158,21 @@ public class DevTool extends BaseItem {
     }
 
     private void writeItem(Writer writer, ItemStack stack) {
+        if (!stack.isEmpty()) {
+            write(writer,
+                    tabThree(format("\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())),
+                    tabThree(format("\"Display Name\": \"%s\",", stack.getDisplayName())),
+                    tabThree(format("\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())),
+                    tabThree(format("\"Count\": %d,", stack.getCount())),
+                    tabThree(format("\"Metadata\": %d", stack.getMetadata()))
+            );
+        }
+    }
+
+    private void write(Writer writer, String... lines) {
         try {
-            if (!stack.isEmpty()) {
-                writer.write(write(format("\t\t\t\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())));
-                writer.write(write(format("\t\t\t\"Display Name\": \"%s\",", stack.getDisplayName())));
-                writer.write(write(format("\t\t\t\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())));
-                writer.write(write(format("\t\t\t\"Count\": %d,", stack.getCount())));
-                writer.write(write(format("\t\t\t\"Metadata\": %d", stack.getMetadata())));
+            for (String line : lines) {
+                writer.write(write(line));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -158,6 +181,18 @@ public class DevTool extends BaseItem {
 
     private String write(String string) {
         return format("%s\n", string);
+    }
+
+    private String tabOne(String string) {
+        return format("\t%s", string);
+    }
+
+    private String tabTwo(String string) {
+        return format("\t\t%s", string);
+    }
+
+    private String tabThree(String string) {
+        return format("\t\t\t%s", string);
     }
 
     @Override

@@ -14,6 +14,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
 
+import java.util.stream.IntStream;
+
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
@@ -43,15 +45,13 @@ public class ItemMaterial extends Item implements IModelHelper {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            for (int i = 0; i < MATERIAL_NAMES.length; i++)
-                subItems.add(new ItemStack(this, 1, i));
+            IntStream.range(0, MATERIAL_NAMES.length).mapToObj(i -> new ItemStack(this, 1, i)).forEachOrdered(subItems::add);
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        for (int i = 0; i < MATERIAL_NAMES.length; i++)
-            this.initModel(new ResourceLocation(MODID, MATERIAL_NAMES[i].replaceFirst("_", "")), "material", i);
+        IntStream.range(0, MATERIAL_NAMES.length).forEachOrdered(i -> this.initModel(new ResourceLocation(MODID, MATERIAL_NAMES[i].replaceFirst("_", "")), "material", i));
     }
 }

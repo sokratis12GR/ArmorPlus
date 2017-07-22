@@ -30,8 +30,7 @@ import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairab
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
-import static net.thedragonteam.armorplus.util.Utils.setLocation;
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.*;
 
 public class ItemArmorBase extends ItemArmor implements IModelHelper {
 
@@ -78,7 +77,7 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
     public ItemArmorBase(APArmorMaterial material, EntityEquipmentSlot slot) {
         super(material.getArmorMaterial(), 0, slot);
         this.material = material;
-        this.itemExpert = material.getItemExpert();
+        this.itemExpert = material.getRepairStack();
         this.slot = slot;
         this.setMaxStackSize(1);
         switch (slot) {
@@ -110,20 +109,19 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         material.onArmorTick(world, player, itemStack);
-        addEffects(player);
+        this.addEffects(player);
     }
 
     private void addEffects(EntityPlayer entity) {
-        switch (slot) {
-            case FEET:
-                addAbilities(entity, material.getAreEffectsEnabled()[0], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-            case LEGS:
-                addAbilities(entity, material.getAreEffectsEnabled()[1], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-            case CHEST:
-                addAbilities(entity, material.getAreEffectsEnabled()[2], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-            case HEAD:
-                addAbilities(entity, material.getAreEffectsEnabled()[3], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-        }
+      switch (slot) {
+          case FEET:
+              addAbilities(entity, material.getAreEffectsEnabled()[0], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+          case LEGS:
+              addAbilities(entity, material.getAreEffectsEnabled()[1], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+          case CHEST:
+              addAbilities(entity, material.getAreEffectsEnabled()[2], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+          case HEAD:
+      }
     }
 
     @Override
@@ -162,7 +160,7 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
             if (entity.getActivePotionEffect(addPotion) == null || addPotion == MobEffects.NIGHT_VISION) {
                 PotionUtils.addPotion(entity, addPotion, potionAmplifier, GOOD);
             }
-            if (removePotion != null) {
+            if (isNotNull(removePotion)) {
                 PotionUtils.removePotion(entity, removePotion);
             }
         }

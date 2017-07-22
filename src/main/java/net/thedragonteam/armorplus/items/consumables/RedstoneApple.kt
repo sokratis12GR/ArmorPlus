@@ -43,9 +43,12 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
         return if (stack.metadata == 0) EnumRarity.RARE else EnumRarity.EPIC
     }
 
-    override fun onFoodEaten(stack: ItemStack?, worldIn: World, player: EntityPlayer) {
+    override fun onFoodEaten(stack: ItemStack, worldIn: World, player: EntityPlayer) {
         if (!worldIn.isRemote) {
-            if (stack != null) player.addPotionEffect(if (stack.metadata > 0) PotionEffect(MobEffects.SPEED, 6000, 1) else PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 1))
+            if (!stack.isEmpty) player.addPotionEffect(when {
+                stack.metadata > 0 -> PotionEffect(MobEffects.SPEED, 6000, 1)
+                else -> PotionEffect(MobEffects.SPEED, 200, 1)
+            })
         }
     }
 
