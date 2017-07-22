@@ -1,9 +1,9 @@
-package net.thedragonteam.armorplus.entity.dungeon.base;
+package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -12,21 +12,18 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * Mob Inspect by sokratis12GR.
  */
 @SideOnly(Side.CLIENT)
-public class RenderProjectile extends Render<Entity> {
+public class RenderFreezeBomb extends RenderEntity {
 
-    private ResourceLocation location;
+    private static final ResourceLocation FREEZE_BOMB = setRL("textures/entity/guardian/freeze_bomb.png");
 
-    public RenderProjectile(RenderManager renderManager, RenderProjectileType projectileType) {
+    public RenderFreezeBomb(RenderManager renderManager) {
         super(renderManager);
-        this.location = setRL(projectileType.getPath());
         this.shadowSize = 0.5F;
     }
 
@@ -64,24 +61,9 @@ public class RenderProjectile extends Render<Entity> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    @Nullable
     @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
-        return location;
+        return FREEZE_BOMB;
     }
-
-    public enum RenderProjectileType {
-        FREEZE_BOMB("textures/entity/guardian/freeze_bomb.png"),
-        WITHER_MINION("textures/entity/wither/wither_minion.png"),;
-
-        private final String path;
-
-        RenderProjectileType(String path) {
-            this.path = path;
-        }
-
-        public String getPath() {
-            return this.path;
-        }
-    }
+    
 }

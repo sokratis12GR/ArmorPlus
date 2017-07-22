@@ -1,8 +1,10 @@
 package net.thedragonteam.armorplus.entity.dungeon.wither;
 
+import com.google.common.base.Predicate;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -10,13 +12,18 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 
-import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.*;
+import javax.annotation.Nullable;
+import java.util.Collections;
+
+import static net.minecraft.item.ItemStack.EMPTY;
+import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 
 /**
  * Created by sokratis12GR on 6/18/2017.
@@ -25,18 +32,33 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
 
     private final BossInfoServerDungeon bossInfo;
 
+    private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer &&
+            ((EntityLivingBase) target).attackable();
+
+
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);
         this.setSize(this.width * 7.0F, this.height * 7.0F);
         this.bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.WITHER);
         this.enablePersistence();
-        this.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
-        this.setHeldItem(EnumHand.OFF_HAND, ItemStack.EMPTY);
+        this.isImmuneToFire = true;
     }
 
 
     public static void registerFixesSkeletalKing(DataFixer fixer) {
         EntityLiving.registerFixesMob(fixer, EntitySkeletalKing.class);
+    }
+
+    @Nullable
+    @Override
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
+        if (!this.getHeldItem(EnumHand.MAIN_HAND).isEmpty()) {
+            this.setHeldItem(EnumHand.MAIN_HAND, EMPTY);
+        }
+        if (!this.getHeldItem(EnumHand.OFF_HAND).isEmpty()) {
+            this.setHeldItem(EnumHand.OFF_HAND, EMPTY);
+        }
+        return super.onInitialSpawn(difficulty, livingdata);
     }
 
     @Override
@@ -47,28 +69,33 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
 
     @Override
     protected void initEntityAI() {
+        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIRangedDungeonAttack(this, EntityAIType.WITHER));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 0, false, false, PLAYER));
+
         super.initEntityAI();
     }
 
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(30.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1000D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(50.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.0D);
     }
 
     @Override
     public Iterable<ItemStack> getEquipmentAndArmor() {
-        return super.getEquipmentAndArmor();
+        return Collections.emptyList();
     }
 
     @Override
     public Iterable<ItemStack> getHeldEquipment() {
-        return super.getHeldEquipment();
+        return Collections.emptyList();
     }
 
     /**
@@ -121,15 +148,17 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         double d3 = x - d0;
         double d4 = y - d1;
         double d5 = z - d2;
-        int spawnCount = rand.nextInt(4 - 1 + 1) + 1;
-        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, spawnCount, d3, d4, d5);
-        witherMinion.setPosition(d1, d0, d2);
+        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, d3, d4, d5);
+        witherMinion.posY = d1;
+        witherMinion.posX = d0;
+        witherMinion.posZ = d2;
         this.world.spawnEntity(witherMinion);
     }
 
     /**
      * Attack the specified entity using a ranged attack.
      */
+    @Override
     public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
         this.launchWitherMinionsToEntity(0, target);
     }
