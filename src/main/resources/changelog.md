@@ -1,5 +1,18 @@
+ArmorPlus 1.12-11.3.6.13-alpha
+----------------------------
+
+**Features Changed**:
+
+* Restricted the `Nether Towers` to only spawn in the `Overworld` and only spawn in desert biomes `Desert, Desert Hills, Mutated Desert`
+
 ArmorPlus 1.12-11.3.5.12-alpha
 ----------------------------
+
+**Features Added**:
+
+* Added some more progress towards the Skeletal King (Boss)
+
+* Added a conditional check to see if the item for a recipe exists before registering it to prevent it from stopping other recipes to load
 
 **Bugs Fixed**:
 
