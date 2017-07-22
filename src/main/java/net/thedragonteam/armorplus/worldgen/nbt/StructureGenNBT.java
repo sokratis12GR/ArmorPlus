@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.worldgen.nbt;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +19,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
@@ -58,12 +60,15 @@ public class StructureGenNBT implements IWorldGenerator {
         if (!(world instanceof WorldServer)) return;
 
         WorldServer serverworld = (WorldServer) world;
-        //BlockPos playerspawn = serverworld.provider.getSpawnPoint();
 
         int posY = getGroundFromAbove(world, posX, posZ);
         BlockPos basePos = new BlockPos(posX, posY, posZ);
 
-        this.generateTower(serverworld, random, basePos);
+        if (world.provider.getDimension() == 0) {
+            if (biome == Biomes.DESERT || biome == Biomes.DESERT_HILLS || biome == Biomes.MUTATED_DESERT) {
+                this.generateTower(serverworld, random, basePos);
+            }
+        }
     }
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {
@@ -74,6 +79,9 @@ public class StructureGenNBT implements IWorldGenerator {
                 MinecraftServer server = world.getMinecraftServer();
                 Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(server, TOWER);
                 template.addBlocksToWorld(world, pos, settings);
+                if (debugMode || enableTowerDevEnv()) {
+                    LogHelper.info("Tower generated at: " + pos);
+                }
             }
         }
     }
