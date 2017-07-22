@@ -14,6 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 
 public class ArrowUtils {
 
@@ -24,8 +25,7 @@ public class ArrowUtils {
             tooltip.add(formattedText("§9Ability: §r%s", effect));
             tooltip.add(formattedText("§3Base Arrow Damage: §r%s", damage));
         } else {
-            tooltip.add(formattedText(TextFormatting.GRAY, "tooltip.showinfo.beginning", formattedText(formatting, "tooltip.showinfo.keybind", keyBindSneak.getDisplayName(),
-                    formattedText(TextFormatting.GRAY, "tooltip.showinfo.end"))));
+            showInfo(tooltip, keyBindSneak, formatting);
         }
     }
 }
