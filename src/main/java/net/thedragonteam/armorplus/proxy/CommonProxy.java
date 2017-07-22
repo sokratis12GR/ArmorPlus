@@ -4,14 +4,15 @@
 
 package net.thedragonteam.armorplus.proxy;
 
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.util.datafix.DataFixesManager;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.events.GlobalEventArmorPlus;
-import net.thedragonteam.armorplus.events.MobDropsEventHandler;
-import net.thedragonteam.armorplus.events.RegistryEventHandler;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -24,15 +25,20 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         ModBlocks.registerBlocks();
         ModItems.registerItems();
-        MinecraftForge.EVENT_BUS.register(new RegistryEventHandler());
         APItems.registerItemNames();
-        MinecraftForge.EVENT_BUS.register(new GlobalEventArmorPlus());
-        MinecraftForge.EVENT_BUS.register(new MobDropsEventHandler());
+        this.registerEntityFixes();
         ModEntities.registerEntitySettings();
         registerWorldGenerators();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
         LogHelper.info("Finished PreInitialization");
+    }
+
+    private void registerEntityFixes() {
+        EntityGuardianOverlord.registerFixesElderGuardian(DataFixesManager.createFixer());
+        EntityFreezeBomb.registerFixesFreezeBomb(DataFixesManager.createFixer());
+        EntitySkeletalKing.registerFixesSkeletalKing(DataFixesManager.createFixer());
+        EntityWitherMinion.registerFixesWitherMinion(DataFixesManager.createFixer());
     }
 
     public void init(FMLInitializationEvent event) {

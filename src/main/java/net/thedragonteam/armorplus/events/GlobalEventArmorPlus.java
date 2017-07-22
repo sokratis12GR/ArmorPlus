@@ -10,8 +10,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -22,11 +24,13 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 
 /**
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
+@EventBusSubscriber(modid = ArmorPlus.MODID)
 public class GlobalEventArmorPlus {
     //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
 
@@ -44,7 +48,7 @@ public class GlobalEventArmorPlus {
         ItemStack feet = entity.getItemStackFromSlot(FEET);
         if (isEnabled) {
             if (!head.isEmpty() && !chest.isEmpty() && !legs.isEmpty() && !feet.isEmpty()) {
-                if (helmet != null && chestplate != null && leggings != null && boots != null) {
+                if (isNotNull(helmet) && isNotNull(chestplate) && isNotNull(leggings) && isNotNull(boots)) {
                     if (head.getItem() == helmet && chest.getItem() == chestplate && legs.getItem() == leggings && feet.getItem() == boots) {
                         if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
                             addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD);
@@ -67,7 +71,7 @@ public class GlobalEventArmorPlus {
     }
 
     @SubscribeEvent
-    public void onArmorTick(TickEvent.PlayerTickEvent event) {
+    public static void onArmorTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer entity = event.player;
         ItemStack head = entity.getItemStackFromSlot(HEAD);
         ItemStack chest = entity.getItemStackFromSlot(CHEST);
