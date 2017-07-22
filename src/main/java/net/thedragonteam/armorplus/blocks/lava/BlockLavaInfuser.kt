@@ -26,8 +26,8 @@ import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
 import net.thedragonteam.armorplus.iface.IModelHelper
-import net.thedragonteam.armorplus.registry.ModBlocks.lava_infuser
-import net.thedragonteam.armorplus.registry.ModBlocks.lava_infuser_infusing
+import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
+import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.Utils.setName
 import net.thedragonteam.armorplus.util.Utils.setRL
@@ -58,7 +58,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
      * Get the Item that this Block should drop when harvested.
      */
     override fun getItemDropped(state: IBlockState?, rand: Random?, fortune: Int): Item {
-        return Item.getItemFromBlock(lava_infuser)
+        return Item.getItemFromBlock(lavaInfuser)
     }
 
     /**
@@ -197,7 +197,7 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
     @Suppress("OverridingDeprecatedMember")
     override fun getItem(worldIn: World?, pos: BlockPos?, state: IBlockState): ItemStack {
-        return getItemStack(lava_infuser)
+        return getItemStack(lavaInfuser)
     }
 
     /**
@@ -276,12 +276,12 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
 
             when {
                 active -> {
-                    worldIn.setBlockState(pos, lava_infuser_infusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
-                    worldIn.setBlockState(pos, lava_infuser_infusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuserInfusing.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
                 }
                 else -> {
-                    worldIn.setBlockState(pos, lava_infuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
-                    worldIn.setBlockState(pos, lava_infuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
+                    worldIn.setBlockState(pos, lavaInfuser.defaultState.withProperty(FACING, iblockstate.getValue(FACING)), 3)
                 }
             }
 

@@ -10,11 +10,10 @@ import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 import net.thedragonteam.armorplus.ArmorPlus;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static java.util.Locale.ENGLISH;
+import static java.util.Locale.ROOT;
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
@@ -26,9 +25,15 @@ public class ConfigGui extends GuiConfig {
     }
 
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {
-        String[] categoryNames = new String[]{
-                "Weapons", "Armors", "GameModes", "Items", "WhiteList", "Blacklist", "WorkGeneration", "MobDrops", "Debug", "EnderDragonZombie", "TheGiftOfTheGods"
-        };
-        return Arrays.stream(categoryNames).map(name -> new ConfigElement(configuration.getCategory(name.toLowerCase(ENGLISH)))).collect(Collectors.toList());
+        List<IConfigElement> list = new ArrayList<>();
+        addCategories(list, "type", "items", "world", "mob_drops", "debug", "entities");
+        return list;
+    }
+
+    private static void addCategories(List<IConfigElement> list, String... categoryNames) {
+        for (String name : categoryNames) {
+            ConfigElement configElement = new ConfigElement(configuration.getCategory(name.toLowerCase(ROOT)));
+            list.add(configElement);
+        }
     }
 }

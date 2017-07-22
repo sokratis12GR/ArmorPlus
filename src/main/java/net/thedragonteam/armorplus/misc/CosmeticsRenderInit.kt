@@ -29,7 +29,7 @@ class CosmeticsRenderInit {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     fun onPlayerRender(event: RenderPlayerEvent.Pre) {
-        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty())
+        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty()) {
             for ((key, value) in COSMETICS_FOR_PEOPLE_LIST) {
                 val playerName = event.entityPlayer.name
                 if (key.equals(playerName, ignoreCase = true)) {
@@ -38,6 +38,7 @@ class CosmeticsRenderInit {
                     break
                 }
             }
+        }
     }
 
     companion object {

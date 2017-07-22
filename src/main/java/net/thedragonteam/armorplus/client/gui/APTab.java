@@ -4,13 +4,16 @@
 
 package net.thedragonteam.armorplus.client.gui;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.registry.ModItems;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -24,6 +27,7 @@ public class APTab extends CreativeTabs {
     private static ItemStack iconArmorPlus;
     private int tab;
     private String label;
+
     public APTab(int id, String modid, String label, int tab) {
         super(id, modid);
         this.tab = tab;
@@ -45,17 +49,25 @@ public class APTab extends CreativeTabs {
     public ItemStack getIconItemStack() {
         switch (tab) {
             case 0:
-                return getItemStack(APItems.lavaChestplate);
+                return addTabItemStack(APItems.lavaChestplate);
             case 1:
                 return APItems.infusedLavaCrystal;
             case 2:
-                return getItemStack(ModBlocks.blockInfusedLavaCrystal);
+                return addTabItemStack(ModBlocks.blockInfusedLavaCrystal);
             case 3:
-                return getItemStack(APItems.superStarBattleAxe);
+                return addTabItemStack(ModItems.battleAxe[7]);
             case 4:
-                return getItemStack(APItems.arditeChestplate);
+                return addTabItemStack(APItems.arditeChestplate);
         }
         return ItemStack.EMPTY;
+    }
+
+    private ItemStack addTabItemStack(Item stack) {
+        return !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal);
+    }
+
+    private ItemStack addTabItemStack(Block stack) {
+        return !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal);
     }
 
     @Override

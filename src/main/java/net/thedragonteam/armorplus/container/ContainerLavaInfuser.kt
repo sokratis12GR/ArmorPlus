@@ -45,8 +45,7 @@ class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: T
     override fun detectAndSendChanges() {
         super.detectAndSendChanges()
 
-        for (listener in this.listeners) {
-
+        this.listeners.forEach { listener ->
             if (this.cookTime != this.tile.getField(2))
                 listener.sendWindowProperty(this, 2, this.tile.getField(2))
 
