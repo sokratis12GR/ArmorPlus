@@ -41,13 +41,6 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class RegistryEventHandler {
 
-    //private void registerEntities(Register<EntityEntry> event, Class<? extends Entity> entityClass, String registryName, boolean hasEgg, int primaryColor, int secondaryColor) {
-    //    EntityEntry entityEntry = new EntityEntry(entityClass, registryName);
-    //    ResourceLocation resourceLocation = setRL(registryName);
-    //    entityEntry.setRegistryName(resourceLocation);
-    //    if (hasEgg) entityEntry.setEgg(new EntityList.EntityEggInfo(resourceLocation, primaryColor, secondaryColor));
-    //    event.getRegistry().register(entityEntry);
-    //}
 
     @SuppressWarnings("SameParameterValue")
     private static void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
@@ -106,11 +99,11 @@ public class RegistryEventHandler {
         registerTEFixes();
     }
 
-    public static void registerTEFixes() {
+    private static void registerTEFixes() {
         TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
     }
 
-    public static void registerTileEntities() {
+    private static void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserTileEntity");
     }
 
