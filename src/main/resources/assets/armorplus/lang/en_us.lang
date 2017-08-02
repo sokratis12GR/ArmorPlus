@@ -53,7 +53,7 @@ container.armorplus.inventory=Inventory
 container.armorplus.lava_infuser=Lava Infuser
 
 #Tooltip
-tooltip.showinfo.keybind=Press %s%s for more info.
+tooltip.showinfo.keybind=Press %s%s%s for more info.
 
 #TiC
 modifier.firestorm.name=Fire Storm
@@ -324,13 +324,13 @@ tile.armorplus.block_compressed_lava_crystal.name=Compressed Lava Crystal Block
 tile.armorplus.block_compressed_infused_lava_crystal.name=Compressed Infused Lava Crystal Block
 
 ##Dungeon Blocks
-tile.armorplus.ender_stone.name=Ender Stone
-tile.armorplus.ender_stone_trap.name=Ender Stone Trap
-tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks
-tile.armorplus.ender_glowstone.name=Ender Glowstone
-tile.armorplus.ender_pillar.name=Ender Pillar
-tile.armorplus.ender_floor_1.name=Ender Floor
-tile.armorplus.ender_floor_2.name=Ender Floor
+tile.armorplus.ender_stone.name=Ender Stone (WIP)
+tile.armorplus.ender_stone_trap.name=Ender Stone Trap (WIP)
+tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks (WIP)
+tile.armorplus.ender_glowstone.name=Ender Glowstone (WIP)
+tile.armorplus.ender_pillar.name=Ender Pillar (WIP)
+tile.armorplus.ender_floor_1.name=Ender Floor (WIP)
+tile.armorplus.ender_floor_2.name=Ender Floor (WIP)
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword
