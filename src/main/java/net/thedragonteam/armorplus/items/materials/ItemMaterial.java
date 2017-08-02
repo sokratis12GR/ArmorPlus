@@ -8,20 +8,21 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 
+import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class ItemMaterial extends Item implements IModelHelper {
+public class ItemMaterial extends Item implements IModdedItem {
 
-    private String[] MATERIAL_NAMES = new String[]{"_chainmail", "_guardian_scale", "_wither_bone", "_ender_dragon_scale", "_the_ultimate_material"};
+    private String[] materialNames = new String[]{"chainmail", "guardian_scale", "wither_bone", "ender_dragon_scale", "the_ultimate_material"};
 
     public ItemMaterial() {
         this.setRegistryName("material");
@@ -36,22 +37,34 @@ public class ItemMaterial extends Item implements IModelHelper {
     //3 = Ender Dragon Scale
     //4 = The Ultimate Material
     @Override
+    @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i < MATERIAL_NAMES.length; i++)
-            if (stack.getItemDamage() == i) return super.getUnlocalizedName(stack) + MATERIAL_NAMES[i];
-        return super.getUnlocalizedName(stack);
+        return getUnlocalizedNames(stack, materialNames);
+    }
+
+    private String getUnlocalizedNames(ItemStack stack, String... names) {
+        for (int i = 0; i < names.length; i++) {
+            if (stack.getItemDamage() == i) {
+                return super.getUnlocalizedName(stack) + "_" + names[i];
+            }
+        }
+        return super.getUnlocalizedName();
     }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, MATERIAL_NAMES.length).mapToObj(i -> new ItemStack(this, 1, i)).forEachOrdered(subItems::add);
+            IntStream.range(0, materialNames.length).mapToObj(
+                    i -> getItemStack(this, i)
+            ).forEachOrdered(subItems::add);
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, MATERIAL_NAMES.length).forEachOrdered(i -> this.initModel(new ResourceLocation(MODID, MATERIAL_NAMES[i].replaceFirst("_", "")), "material", i));
+        IntStream.range(0, materialNames.length).forEachOrdered(
+                i -> this.initModel(setRL(materialNames[i]), "material", i)
+        );
     }
 }

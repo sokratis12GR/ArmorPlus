@@ -22,33 +22,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IRarityHelper;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
 
 import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
+import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
+public class ItemUltimateArmor extends ItemArmor implements IModelHelper, IRarityHelper {
 
     public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
             theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints);
-
-    private EnumRarity formattingName;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(ItemUltimateArmor.theUltimateArmor, 0, slot);
@@ -76,12 +73,11 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
                 break;
         }
         this.setCreativeTab(ArmorPlus.tabArmorplus);
-        this.formattingName = addRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return this.formattingName;
+        return this.getRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
     }
 
     @Override
@@ -101,10 +97,9 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper {
 
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\u00a79Question: \u00a7rAre you the chosen one ?");
-            tooltip.add("\u00a73Use: \u00a7rEquip The Full Set");//getValueByName(theUltimateArmorItemNameColor)!!
+            tooltip.add("\u00a73Use: \u00a7rEquip The Full Set");
         } else {
-            tooltip.add(formattedText(GRAY, "tooltip.showinfo.beginning", formattedText(getValueByName(theUltimateArmorItemNameColor), "tooltip.showinfo.keybind", keyBindSneak.getDisplayName(),
-                    formattedText(GRAY, "tooltip.showinfo.end"))));
+            showInfo(tooltip, keyBindSneak, getValueByName(theUltimateArmorItemNameColor));
         }
     }
 

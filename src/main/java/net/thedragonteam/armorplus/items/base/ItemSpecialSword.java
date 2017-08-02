@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 
@@ -23,10 +23,9 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemSpecialSword extends ItemSword implements IModelHelper {
+public class ItemSpecialSword extends ItemSword implements IModdedItem {
 
     public static ToolMaterial swordCoalMaterial = addToolMaterial("swordCoalMaterial", 1, coalSwordDurability, 1.0F, (float) coalSwordDamage, 15);
     public static ToolMaterial swordLapisMaterial = addToolMaterial("swordLapisMaterial", 1, lapisSwordDurability, 1.0F, (float) lapisSwordDamage, 30);
@@ -39,7 +38,6 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
     public static ToolMaterial swordEnderDragonMaterial = addToolMaterial("swordEnderDragonMaterial", 1, enderDragonSwordDurability, 1.0F, (float) enderDragonSwordDamage, 20);
     public ItemStack itemExpert;
     public TextFormatting formatting;
-    public EnumRarity formattingName;
     public String effect;
     public String itemName;
     private Swords swords;
@@ -54,7 +52,6 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
         this.setRegistryName(swords.getName() + "_sword");
         this.setUnlocalizedName(setName(swords.getName() + "_sword"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        this.formattingName = addRarity("SPECIAL_SWORD", formatting, "Special Sword");
     }
 
     @Override
@@ -71,7 +68,7 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
     @Override
     @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
-        return formattingName;
+        return this.getRarity("SPECIAL_SWORD", formatting, "Special Sword");
     }
 
     @Override
@@ -82,6 +79,6 @@ public class ItemSpecialSword extends ItemSword implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), swords.getName(), 0);
+        this.initModel(swords.getName(), 0);
     }
 }

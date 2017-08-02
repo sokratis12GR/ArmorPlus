@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IRarityHelper;
 import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.EnumTiers;
 import net.thedragonteam.armorplus.util.PotionUtils;
@@ -27,12 +28,13 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.*;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addAction;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.Utils.*;
 
-public class ItemArmorBase extends ItemArmor implements IModelHelper {
+public class ItemArmorBase extends ItemArmor implements IModelHelper, IRarityHelper {
 
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 2,
@@ -70,7 +72,6 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
     private EnumAction wear = addAction("WEAR");
 
     private APArmorMaterial material;
-    private EnumRarity formattingName;
     private ItemStack itemExpert = ItemStack.EMPTY;
     private EntityEquipmentSlot slot;
 
@@ -103,7 +104,11 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
                 break;
         }
         this.setCreativeTab(ArmorPlus.tabArmorplus);
-        this.formattingName = addRarity("ARMOR_COLOR", material.getFormatting(), "Armor Color");
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return this.getRarity("ARMOR_COLOR", material.getFormatting(), "Armor Color");
     }
 
     @Override
@@ -113,20 +118,15 @@ public class ItemArmorBase extends ItemArmor implements IModelHelper {
     }
 
     private void addEffects(EntityPlayer entity) {
-      switch (slot) {
-          case FEET:
-              addAbilities(entity, material.getAreEffectsEnabled()[0], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-          case LEGS:
-              addAbilities(entity, material.getAreEffectsEnabled()[1], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-          case CHEST:
-              addAbilities(entity, material.getAreEffectsEnabled()[2], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
-          case HEAD:
-      }
-    }
-
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return this.formattingName;
+        switch (slot) {
+            case FEET:
+                addAbilities(entity, material.getAreEffectsEnabled()[0], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+            case LEGS:
+                addAbilities(entity, material.getAreEffectsEnabled()[1], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+            case CHEST:
+                addAbilities(entity, material.getAreEffectsEnabled()[2], material.enableFullArmorEffect(), getPotion(material.getAddPotionEffect()), material.getAddPotionEffectAmplifier(), getPotion(material.getRemovePotionEffect()));
+            case HEAD:
+        }
     }
 
     @Override

@@ -21,7 +21,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
-import net.thedragonteam.armorplus.util.EnumHelperUtil;
 
 import java.io.*;
 import java.util.List;
@@ -35,18 +34,16 @@ import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
 
 public class DevTool extends BaseItem {
 
-    private EnumRarity dev;
     private int entityNumber = 0;
 
     public DevTool() {
         super("dev_tool");
-        this.dev = EnumHelperUtil.addRarity("DEV", TextFormatting.BOLD, "Dev");
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return dev;
+        return this.getRarity("DEV", TextFormatting.BOLD, "Dev");
     }
 
     @Override
@@ -73,8 +70,9 @@ public class DevTool extends BaseItem {
         Writer writer = null;
         try {
             writer = new OutputStreamWriter(new FileOutputStream(
-                    new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))));
-            this.write(writer,
+                    new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))
+            ));
+            this.addLine(writer,
                     "{", //0
                     format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", "")),
                     "\t\"Names\": {",
@@ -104,34 +102,34 @@ public class DevTool extends BaseItem {
                     "\t\t\"Head\": {"
             );
             this.writeArmorSlotItem(writer, entity, HEAD);
-            this.write(writer,
+            this.addLine(writer,
                     tabTwo("},"), //2
                     tabTwo("\"Chest\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, CHEST);
-            this.write(writer,
+            this.addLine(writer,
                     tabTwo("},"), //2
                     tabTwo("\"Legs\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, LEGS);
-            this.write(writer,
+            this.addLine(writer,
                     tabTwo("},"), //2
                     tabTwo("\"Feet\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, FEET);
-            this.write(writer,
+            this.addLine(writer,
                     tabTwo("}"), //2
                     tabOne("},"), //1
                     tabOne("\"Inventory Hands\": {"), //1
                     tabTwo("\"Main-Hand\": {") //2
             );
             this.writeItem(writer, entity.getHeldItemMainhand());
-            this.write(writer,
+            this.addLine(writer,
                     "\t\t},",
                     "\t\t\"Off-Hand\": {"
             );
             this.writeItem(writer, entity.getHeldItemOffhand());
-            this.write(writer,
+            this.addLine(writer,
                     "\t\t}",
                     "\t},",
                     "\t\"Entity Info\": {",
@@ -159,7 +157,7 @@ public class DevTool extends BaseItem {
 
     private void writeItem(Writer writer, ItemStack stack) {
         if (!stack.isEmpty()) {
-            write(writer,
+            addLine(writer,
                     tabThree(format("\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())),
                     tabThree(format("\"Display Name\": \"%s\",", stack.getDisplayName())),
                     tabThree(format("\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())),
@@ -169,17 +167,17 @@ public class DevTool extends BaseItem {
         }
     }
 
-    private void write(Writer writer, String... lines) {
+    private void addLine(Writer writer, String... lines) {
         try {
             for (String line : lines) {
-                writer.write(write(line));
+                writer.write(addLine(line));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private String write(String string) {
+    private String addLine(String string) {
         return format("%s\n", string);
     }
 

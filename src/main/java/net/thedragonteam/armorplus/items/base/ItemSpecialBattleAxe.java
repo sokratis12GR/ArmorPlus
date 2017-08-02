@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
@@ -26,9 +26,8 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
-public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
+public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
     public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapisBattleAxeDurability, 1.0F, (float) lapisBattleAxeDamage, 30);
@@ -44,7 +43,6 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     public String effect;
     public BattleAxes battleAxes;
     public float efficiency;
-    public EnumRarity formattingName;
     public String itemName;
 
     public ItemSpecialBattleAxe(BattleAxes battleAxes) {
@@ -59,7 +57,6 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
         this.setRegistryName(battleAxes.getName() + "_battle_axe");
         this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
-        this.formattingName = addRarity("BATTLE_AXE", formatting, "Battle Axe");
     }
 
     @Override
@@ -84,7 +81,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     @Override
     @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
-        return formattingName;
+        return this.getRarity("BATTLE_AXE", formatting, "Battle Axe");
     }
 
     @Override
@@ -95,6 +92,6 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), battleAxes.getName(), 0);
+        this.initModel(battleAxes.getName(), 0);
     }
 }

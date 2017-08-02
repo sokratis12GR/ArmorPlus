@@ -16,7 +16,7 @@ import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedItem
 import net.thedragonteam.armorplus.util.Utils.setName
 
 /**
@@ -24,7 +24,7 @@ import net.thedragonteam.armorplus.util.Utils.setName
  * ArmorPlus created by sokratis12GR
  * - TheDragonTeam
  */
-class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
+class RedstoneApple : ItemFood(4, 2.0f, false), IModdedItem {
     init {
         this.setHasSubtypes(true)
         this.setRegistryName("redstone_apple")
@@ -62,5 +62,5 @@ class RedstoneApple : ItemFood(4, 2.0f, false), IModelHelper {
         }
     }
 
-    override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(registryName, i) }
+    override fun initModel() = 0.rangeTo(1).forEach { i -> this.initModel(i) }
 }

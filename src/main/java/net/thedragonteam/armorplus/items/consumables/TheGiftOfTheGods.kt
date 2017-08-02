@@ -20,11 +20,10 @@ import net.minecraft.world.World
 import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.APConfig.*
 import net.thedragonteam.armorplus.ArmorPlus
-import net.thedragonteam.armorplus.iface.IModelHelper
 import net.thedragonteam.armorplus.items.base.BaseItem
 import net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity
-import net.thedragonteam.armorplus.util.TextUtils
 import net.thedragonteam.armorplus.util.TextUtils.setTextTranslation
+import net.thedragonteam.armorplus.util.ToolTipUtils
 import net.thedragonteam.thedragonlib.util.ItemStackUtils
 import net.thedragonteam.thedragonlib.util.LogHelper
 import java.util.*
@@ -34,15 +33,13 @@ import java.util.*
  * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
  * - TheDragonTeam
  */
-class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD")) : BaseItem("the_gift_of_the_gods"), IModelHelper {
+class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD")) : BaseItem("the_gift_of_the_gods") {
 
     init {
         this.maxUsable = maxUses - 1
         this.maxDamage = maxUsable
         this.creativeTab = ArmorPlus.tabArmorplusItems
     }
-
-    override fun initModel() = this.initModel(registryName, 0)
 
     override fun getRarity(stack: ItemStack): EnumRarity = golden
 
@@ -100,8 +97,7 @@ class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarit
                 tooltip.add("\u00a73Use: \u00a7rRight-Click")
             }
             else -> {
-                tooltip.add(TextUtils.formattedText(GRAY, "tooltip.showinfo.beginning", TextUtils.formattedText(GOLD, "tooltip.showinfo.keybind", keyBindSneak.displayName,
-                        TextUtils.formattedText(GRAY, "tooltip.showinfo.end"))))
+                ToolTipUtils.showInfo(tooltip, keyBindSneak, GOLD)
             }
         }
     }

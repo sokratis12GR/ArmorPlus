@@ -26,7 +26,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
@@ -36,14 +36,12 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-public class ItemSpecialBow extends ItemBow implements IModelHelper {
+public class ItemSpecialBow extends ItemBow implements IModdedItem {
 
     public double damage;
-    public EnumRarity formattingName;
     public String itemName;
     public Bows bows;
     private ItemStack itemExpert;
@@ -76,27 +74,29 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
             }
         });
-        this.formattingName = addRarity("BOW", formatting, "Bow");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), bows.getName(), 0);
+        this.initModel(bows.getName(), 0);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
-        else showInfo(tooltip, keyBindSneak, formatting);
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add("\2479Bonus Arrow Damage: " + "\247r" + damage);
+        } else {
+            showInfo(tooltip, keyBindSneak, formatting);
+        }
     }
 
     @Override
     @Nonnull
     public EnumRarity getRarity(ItemStack stack) {
-        return formattingName;
+        return this.getRarity("BOW", formatting, "Bow");
     }
 
     @Override
@@ -107,14 +107,11 @@ public class ItemSpecialBow extends ItemBow implements IModelHelper {
     @Nonnull
     public ItemStack findAmmo(EntityLivingBase entityLivingBase) {
         if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.MAIN_HAND))) {
+            return this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND)) ? entityLivingBase.getHeldItem(EnumHand.OFF_HAND) : entityLivingBase.getHeldItem(EnumHand.MAIN_HAND);
+        } else {
             if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
                 return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
-            } else {
-                return entityLivingBase.getHeldItem(EnumHand.MAIN_HAND);
             }
-        } else if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
-            return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
-        } else {
             int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
             return IntStream.range(0, bound).mapToObj(
                     i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
