@@ -35,8 +35,8 @@ repositories {
 //        url "http://tehnut.info/maven"
 //    }
     maven {
-        name 'shadowfacts'
-        url 'http://mvn.rx14.co.uk/shadowfacts/'
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
     }
     maven { // CraftTweaker repo
         name 'MineTweaker3'
@@ -84,7 +84,7 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile group: "net.shadowfacts", name: "Forgelin", version: '1.5.0'
+    compile "shadowfacts-forgelin:Forgelin:1.5.1"
 //    deobfCompile "CraftTweaker2:CraftTweaker2-API${crafttweaker_version}"
 //    deobfCompile "com.blamejared:MTLib:2.0.2.3"
 }
