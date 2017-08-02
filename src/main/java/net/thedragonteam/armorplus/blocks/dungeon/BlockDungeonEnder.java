@@ -32,7 +32,7 @@ public class BlockDungeonEnder extends BlockBase implements IModelHelper {
 
     @SuppressWarnings("deprecation")
     @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_) {
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.PURPLE;
     }
 

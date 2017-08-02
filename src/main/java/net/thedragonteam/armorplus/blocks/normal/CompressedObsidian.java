@@ -27,7 +27,7 @@ import net.thedragonteam.armorplus.iface.IModelHelper;
  * ArmorPlus created by sokratis12GR on 6/13/2016 9:50 PM.
  * - TheDragonTeam
  */
-public class CompressedObsidian extends BlockBase implements IModelHelper{
+public class CompressedObsidian extends BlockBase implements IModelHelper {
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public CompressedObsidian() {
@@ -72,7 +72,7 @@ public class CompressedObsidian extends BlockBase implements IModelHelper{
 
 
     @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_) {
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.BLACK;
     }
 }
