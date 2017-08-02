@@ -9,9 +9,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * Created by sokratis12GR on 7/1/2017.
  */
 @SideOnly(Side.CLIENT)
+//@Mod.EventBusSubscriber(value = Side.CLIENT, modid = ArmorPlus.MODID)
 public class ClientEventHandler {
 
-    private void someting() {
+    public static void onRender() {
         RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager(), Minecraft.getMinecraft().getRenderManager().entityRenderMap);
     }
 }
