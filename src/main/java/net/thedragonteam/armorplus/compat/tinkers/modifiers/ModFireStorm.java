@@ -34,7 +34,7 @@ public class ModFireStorm extends ModifierTrait {
         this.dealFireDamage(tool, player, target);
     }
 
-    protected void dealFireDamage(ItemStack tool, EntityLivingBase attacker, EntityLivingBase target) {
+    private void dealFireDamage(ItemStack tool, EntityLivingBase attacker, EntityLivingBase target) {
         NBTTagCompound tag = TinkerUtil.getModifierTag(tool, identifier);
         ModifierNBT.IntegerNBT data = ModifierNBT.readInteger(tag);
 

@@ -4,11 +4,7 @@
 
 package net.thedragonteam.armorplus.compat;
 
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.thedragonteam.armorplus.compat.tinkers.TiC;
-import net.thedragonteam.armorplus.compat.tinkers.TiCMaterials;
-import net.thedragonteam.armorplus.compat.tinkers.modifiers.TiCModifiers;
+import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
 
 /**
  * net.thedragonteam.armorplus.compat.jei
@@ -18,25 +14,6 @@ import net.thedragonteam.armorplus.compat.tinkers.modifiers.TiCModifiers;
 public class CompatibilityTinkersConstruct implements ICompatibility {
     @Override
     public void loadCompatibility(ICompatibility.InitializationPhase phase) {
-        switch (phase) {
-            case PRE_INIT : {
-                TiC.preInit();
-                if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-                    //noinspection MethodCallSideOnly
-                    TiCModifiers.initRender();
-                }
-            }
-            case INIT : {
-                TiC.init();
-            }
-            case POST_INIT : {
-                if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-                    //noinspection MethodCallSideOnly
-                    TiCMaterials.registerMaterialRendering();
-                }
-                TiC.postInit();
-            }
-        }
     }
 
     @Override
@@ -46,6 +23,6 @@ public class CompatibilityTinkersConstruct implements ICompatibility {
 
     @Override
     public boolean enableCompat() {
-        return true;
+        return enableTConstructIntegration;
     }
 }

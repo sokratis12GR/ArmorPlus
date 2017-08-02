@@ -5,11 +5,17 @@
 package net.thedragonteam.armorplus.compat.tinkers;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
@@ -31,9 +37,9 @@ import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
 public final class TiCMaterials {
 
-    public static final Material lavacrystal = mat("infused_lava_crystal", 0xb32d00);
-    public static final Material compressed_obsidian = mat("compressed_obsidian", 0x005580);
-    public static final Material lava_infused_obsidian = mat("lava_infused_obsidian", 0x631706);
+    public static final Material INFUSED_LAVA_CRYSTAL = mat("infused_lava_crystal", 0xb32d00);
+    public static final Material COMPRESSED_OBSIDIAN = mat("compressed_obsidian", 0x005580);
+    public static final Material LAVA_INFUSED_OBSIDIAN = mat("lava_infused_obsidian", 0x631706);
 
     private static Material mat(String name, int color) {
         Material mat = new Material(name, color);
@@ -43,61 +49,83 @@ public final class TiCMaterials {
 
     @SideOnly(Side.CLIENT)
     public static void registerMaterialRendering() {
-        lavacrystal.setRenderInfo(0xb32d00).setTextureSuffix("contrast");
-        lavacrystal.setRenderInfo(new MaterialRenderInfo.Default(0xb32d00));
+        INFUSED_LAVA_CRYSTAL.setRenderInfo(0xb32d00).setTextureSuffix("contrast");
+        INFUSED_LAVA_CRYSTAL.setRenderInfo(new MaterialRenderInfo.Default(0xb32d00));
         //Funny Ghost-like inversion
-        //lavacrystal.setRenderInfo(new MaterialRenderInfo.InverseMultiColor(0xb32d00, 0xDD7A24, 0xF7A62A));
-        lavacrystal.setRenderInfo(new MaterialRenderInfo.MultiColor(0xb32d00, 0xDD7A24, 0xF7A62A));
+        //INFUSED_LAVA_CRYSTAL.setRenderInfo(new MaterialRenderInfo.InverseMultiColor(0xb32d00, 0xDD7A24, 0xF7A62A));
+        INFUSED_LAVA_CRYSTAL.setRenderInfo(new MaterialRenderInfo.MultiColor(0xb32d00, 0xDD7A24, 0xF7A62A));
 
-        compressed_obsidian.setRenderInfo(0x005580).setTextureSuffix("contrast");
-        compressed_obsidian.setRenderInfo(new MaterialRenderInfo.Default(0x005580));
-        compressed_obsidian.setRenderInfo(new MaterialRenderInfo.BlockTexture(setRL("blocks/compressed_obsidian")));
+        COMPRESSED_OBSIDIAN.setRenderInfo(0x005580).setTextureSuffix("contrast");
+        COMPRESSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.Default(0x005580));
+        COMPRESSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.BlockTexture(setRL("blocks/compressed_obsidian")));
 
-        lava_infused_obsidian.setRenderInfo(0x631706).setTextureSuffix("contrast");
-        lava_infused_obsidian.setRenderInfo(new MaterialRenderInfo.Default(0x631706));
-        lava_infused_obsidian.setRenderInfo(new MaterialRenderInfo.BlockTexture(setRL("blocks/lava_infused_obsidian")));
+        LAVA_INFUSED_OBSIDIAN.setRenderInfo(0x631706).setTextureSuffix("contrast");
+        LAVA_INFUSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.Default(0x631706));
+        LAVA_INFUSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.BlockTexture(setRL("blocks/compressed_obsidian")));
     }
 
     @Subscribe
-    public void setupMaterials() {
-        lavacrystal.setCraftable(true).setCastable(true);
-        lavacrystal.addItem(getItemStack(ModItems.lavaCrystal, 1), 2, Material.VALUE_Ingot);
-        lavacrystal.addItem("gemInfusedLavaCrystal", 2, Material.VALUE_Ingot);
-        lavacrystal.addItem(ModBlocks.blockInfusedLavaCrystal, Material.VALUE_Block);
-        lavacrystal.addItem("blockInfusedLavaCrystal", 2, Material.VALUE_Block);
-        //   lavacrystal.setRepresentativeItem(getItemStack(ModItems.lavaCrystal, 1));
-        lavacrystal.addTrait(lavacrystalic, HEAD).addTrait(flammable, HEAD).addTrait(autosmelt);
-
-        compressed_obsidian.setCraftable(true).setCastable(true);
-        compressed_obsidian.addItem(ModBlocks.compressedObsidian, Material.VALUE_Ingot);
-        compressed_obsidian.addTrait(duritos);
-        compressed_obsidian.setRepresentativeItem(ModBlocks.compressedObsidian);
-
-        lava_infused_obsidian.setCraftable(true).setCastable(true);
-        lava_infused_obsidian.addItem(ModBlocks.blockLavaInfusedObsidian, Material.VALUE_Ingot);
-        lava_infused_obsidian.addTrait(duritos).addTrait(autosmelt, HANDLE);
-        lava_infused_obsidian.setRepresentativeItem(ModBlocks.blockLavaInfusedObsidian);
-
+    public void setupMaterialStats(FMLPreInitializationEvent event) {
         this.registerToolMaterialStats();
     }
 
+    @Subscribe
+    public void setupMaterials(FMLInitializationEvent event) {
+        INFUSED_LAVA_CRYSTAL.addItem(getItemStack(ModItems.lavaCrystal, 1), 2, Material.VALUE_Ingot);
+        INFUSED_LAVA_CRYSTAL.addItem("gemInfusedLavaCrystal", 2, Material.VALUE_Ingot);
+        INFUSED_LAVA_CRYSTAL.addItem(ModBlocks.blockInfusedLavaCrystal, Material.VALUE_Block);
+        INFUSED_LAVA_CRYSTAL.addItem("blockInfusedLavaCrystal", 2, Material.VALUE_Block);
+        INFUSED_LAVA_CRYSTAL.addTrait(lavacrystalic, HEAD).addTrait(flammable, HEAD).addTrait(autosmelt);
+
+        COMPRESSED_OBSIDIAN.addItem(ModBlocks.compressedObsidian, Material.VALUE_Ingot);
+        COMPRESSED_OBSIDIAN.addTrait(duritos);
+
+        LAVA_INFUSED_OBSIDIAN.addItem(ModBlocks.blockLavaInfusedObsidian, Material.VALUE_Ingot);
+        LAVA_INFUSED_OBSIDIAN.addTrait(duritos).addTrait(autosmelt, HANDLE);
+
+
+        this.setupMaterialBasics(INFUSED_LAVA_CRYSTAL);
+        this.setupMaterialBasics(COMPRESSED_OBSIDIAN);
+        this.setupMaterialBasics(LAVA_INFUSED_OBSIDIAN);
+
+        this.setRepresentativeItems(INFUSED_LAVA_CRYSTAL, ModBlocks.blockInfusedLavaCrystal);
+        this.setRepresentativeItems(COMPRESSED_OBSIDIAN, ModBlocks.compressedObsidian);
+        this.setRepresentativeItems(LAVA_INFUSED_OBSIDIAN, ModBlocks.blockLavaInfusedObsidian);
+    }
+
+    private void setupMaterialBasics(Material material) {
+        material.setCraftable(true);
+    }
+
+    private void setRepresentativeItems(Material material, Object representative) {
+        if (representative instanceof ItemStack) {
+            material.setRepresentativeItem((ItemStack) representative);
+        } else if (representative instanceof Item) {
+            material.setRepresentativeItem((Item) representative);
+        } else if (representative instanceof Block) {
+            material.setRepresentativeItem((Block) representative);
+        } else {
+            LogHelper.info("couldn't determine the type of " + representative);
+        }
+    }
+
     public void registerToolMaterialStats() {
-        TinkerRegistry.addMaterialStats(lavacrystal,
+        TinkerRegistry.addMaterialStats(INFUSED_LAVA_CRYSTAL,
                 new HeadMaterialStats(110, 9.00f, 4.20f, COBALT),
                 new HandleMaterialStats(1.00f, 100),
                 new ExtraMaterialStats(100));
-        TinkerRegistry.addMaterialStats(compressed_obsidian,
+        TinkerRegistry.addMaterialStats(COMPRESSED_OBSIDIAN,
                 new HeadMaterialStats(139, 7.07f, 2.20f, COBALT),
                 new HandleMaterialStats(0.90f, 20),
                 new ExtraMaterialStats(90));
-        TinkerRegistry.addMaterialStats(lava_infused_obsidian,
+        TinkerRegistry.addMaterialStats(LAVA_INFUSED_OBSIDIAN,
                 new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
                 new HandleMaterialStats(1.00f, 80),
                 new ExtraMaterialStats(100));
     }
 
     @Subscribe
-    public void postInit() {
+    public void postInit(FMLPostInitializationEvent event) {
         if (isNull(TinkerTools.shard)) return;
 
         TinkerRegistry.getAllMaterials().forEach(material -> {

@@ -5,19 +5,25 @@
 package net.thedragonteam.armorplus.proxy;
 
 import net.minecraft.util.datafix.DataFixesManager;
+import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
+import net.thedragonteam.armorplus.compat.tinkers.TiC;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.registry.*;
+import net.thedragonteam.armorplus.util.LoaderUtils;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import java.util.stream.IntStream;
+
+import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
 import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
 
 public class CommonProxy {
@@ -28,9 +34,13 @@ public class CommonProxy {
         APItems.registerItemNames();
         this.registerEntityFixes();
         ModEntities.registerEntitySettings();
-        registerWorldGenerators();
+        this.registerWorldGenerator(new OreGen(), new StructureGenNBT());
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
+        //TConstruct
+        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
+            TiC.preInit(event);
+        }
         LogHelper.info("Finished PreInitialization");
     }
 
@@ -45,11 +55,19 @@ public class CommonProxy {
         ModOreDicts.registerOreDictEntries();
         APTab.registerTabs();
         ModCompatibility.loadCompat(INIT);
+        //TConstruct
+        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
+            TiC.init(event);
+        }
         LogHelper.info("Finished Initialization");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(POST_INIT);
+        //TConstruct
+        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
+            TiC.postInit(event);
+        }
         LogHelper.info("Finished PostInitialization");
     }
 
@@ -61,8 +79,7 @@ public class CommonProxy {
         event.registerServerCommand(new CommandArmorPlus());
     }
 
-    public void registerWorldGenerators() {
-        GameRegistry.registerWorldGenerator(new OreGen(), 1);
-        GameRegistry.registerWorldGenerator(new StructureGenNBT(), 2);
+    private void registerWorldGenerator(IWorldGenerator... generators) {
+        IntStream.range(0, generators.length).forEachOrdered(i -> GameRegistry.registerWorldGenerator(generators[i], i));
     }
 }
