@@ -294,8 +294,11 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
             ItemStack itemstack1 = LavaInfuserManager.getInstance().getInfusingResult(itemstack);
             ItemStack itemstack2 = this.infuserItemStacks.get(2);
 
-            if (itemstack2.isEmpty()) this.infuserItemStacks.set(2, itemstack1.copy());
-            else if (itemstack2.getItem() == itemstack1.getItem()) itemstack2.grow(itemstack1.getCount());
+            if (itemstack2.isEmpty()) {
+                this.infuserItemStacks.set(2, itemstack1.copy());
+            } else if (itemstack2.getItem() == itemstack1.getItem()) {
+                itemstack2.grow(itemstack1.getCount());
+            }
 
             itemstack.shrink(1);
         }

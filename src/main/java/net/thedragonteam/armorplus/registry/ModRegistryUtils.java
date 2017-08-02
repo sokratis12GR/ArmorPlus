@@ -14,20 +14,22 @@ import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.items.enums.Swords;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import static java.util.Arrays.setAll;
 import static net.thedragonteam.armorplus.util.Utils.equipmentSlots;
 
 public class ModRegistryUtils {
 
     public static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
-        if (isEnabled) setAll(armor, i -> new ItemArmorBase(armorMaterial, equipmentSlots[i]));
+        if (isEnabled) {
+            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]));
+        }
     }
 
     public static void registerArmor(boolean isEnabled, ItemUltimateArmor[] armor) {
-        if (isEnabled) Arrays.setAll(armor, i -> new ItemUltimateArmor(equipmentSlots[i]));
+        if (isEnabled) {
+            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemUltimateArmor(equipmentSlots[i]));
+        }
     }
 
     public static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {

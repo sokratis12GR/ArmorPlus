@@ -56,10 +56,10 @@ public class ModBlocks {
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
 
     public static void registerBlocks() {
-        setAll(stoneBricks, s -> new BlockStoneBrick(stoneBrickTypes[s]));
-        setAll(stoneBrickTowers, s -> new BlockStoneBrickTower(stoneBrickTypes[s]));
-        setAll(stoneBrickCorners, s -> new BlockStoneBrickCorner(stoneBrickTypes[s], stoneBricks[s].getDefaultState()));
-        setAll(stonebrickWalls, s -> new BlockStonebrickWall(stoneBricks[s]));
-        setAll(enderBlocks, c -> new BlockDungeonEnder(enumEnderBlocks[c]));
+        setAll(stoneBricks, b -> new BlockStoneBrick(stoneBrickTypes[b]));
+        setAll(stoneBrickTowers, b -> new BlockStoneBrickTower(stoneBrickTypes[b]));
+        setAll(stoneBrickCorners, b -> new BlockStoneBrickCorner(stoneBrickTypes[b], stoneBricks[b].getDefaultState()));
+        setAll(stonebrickWalls, b -> new BlockStonebrickWall(stoneBricks[b]));
+        setAll(enderBlocks, b -> new BlockDungeonEnder(enumEnderBlocks[b]));
     }
 }
