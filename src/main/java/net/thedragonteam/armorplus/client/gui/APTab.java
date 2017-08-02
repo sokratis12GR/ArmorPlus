@@ -24,7 +24,6 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class APTab extends CreativeTabs {
 
-    private static ItemStack iconArmorPlus;
     private int tab;
     private String label;
 
@@ -36,7 +35,7 @@ public class APTab extends CreativeTabs {
     }
 
     public static void registerTabs() {
-        iconArmorPlus = new ItemStack(APItems.lavaChestplate);
+        ItemStack iconArmorPlus = new ItemStack(APItems.lavaChestplate);
     }
 
     @Override
