@@ -1,3 +1,27 @@
+ArmorPlus 1.12-11.5.0.15-alpha
+----------------------------
+
+**Features Changed**:
+
+* Now there is an option for the nether tower if it should only spawn in the overworld (default: true)
+* The Nether Towers will now spawn on all "HOT" type areas, except types: "SAVANNA" & "JUNGLE"
+
+**Bugs Fixed**:
+
+* Some tool tips not being localized
+
+ArmorPlus 1.12-11.4.0.14-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Crash when loading with latest tinkers construct
+
+**Features Added**:
+
+* Configs for tinkers construct
+    * The ability to enable/disable the integration
+
 ArmorPlus 1.12-11.3.6.13-alpha
 ----------------------------
 
