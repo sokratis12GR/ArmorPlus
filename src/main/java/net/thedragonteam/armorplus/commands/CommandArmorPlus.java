@@ -16,8 +16,14 @@ import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.IntStream;
 
+import static java.util.Arrays.asList;
+import static java.util.Arrays.copyOfRange;
 import static net.minecraft.util.text.TextFormatting.RED;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.TextUtils.setText;
@@ -26,16 +32,24 @@ public class CommandArmorPlus extends CommandBase {
 
     private ArrayList<String> aliases = new ArrayList<>();
     private HashMap<String, ISubCommand> subCommands = new HashMap<>();
+    private ArrayList<ISubCommand> subCommandsList = new ArrayList<>();
+    private ArrayList<String> subCommandNames = new ArrayList<>();
 
     public CommandArmorPlus() {
-        aliases.add("armorplus");
-        aliases.add("arp");
-        aliases.add("a+");
+        aliases.addAll(asList("armorplus", "arp", "a+", "armor+"));
+        setSubCommandNames("help", "info", "wiki", "discord");
+        setSubCommands(new SubCommandHelp(this), new SubCommandInfo(this), new SubCommandWiki(this), new SubCommandDiscord(this));
+        IntStream.range(0, subCommandsList.size()).forEachOrdered(
+                i -> subCommands.put(subCommandNames.get(i), subCommandsList.get(i))
+        );
+    }
 
-        subCommands.put("help", new SubCommandHelp(this));
-        subCommands.put("info", new SubCommandInfo(this));
-        subCommands.put("wiki", new SubCommandWiki(this));
-        subCommands.put("discord", new SubCommandDiscord(this));
+    private void setSubCommandNames(String... names) {
+        IntStream.range(0, names.length).forEachOrdered(i -> subCommandNames.add(i, names[i]));
+    }
+
+    private void setSubCommands(ISubCommand... commands) {
+        IntStream.range(0, commands.length).forEachOrdered(i -> subCommandsList.add(i, commands[i]));
     }
 
     @Override
@@ -68,7 +82,7 @@ public class CommandArmorPlus extends CommandBase {
         LogHelper.info(getRequiredPermissionLevel());
         if (args.length > 0 && subCommands.containsKey(args[0])) {
             ISubCommand subCommand = subCommands.get(args[0]);
-            String[] subArgs = Arrays.copyOfRange(args, 1, args.length);
+            String[] subArgs = copyOfRange(args, 1, args.length);
             subCommand.processSubCommand(server, sender, subArgs);
         } else
             sender.sendMessage(setText(formattedText(RED, "commands.error.unknown")));
