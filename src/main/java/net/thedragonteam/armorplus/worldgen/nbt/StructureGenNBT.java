@@ -5,7 +5,6 @@
 package net.thedragonteam.armorplus.worldgen.nbt;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
@@ -23,6 +22,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
+import static net.minecraftforge.common.BiomeDictionary.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
@@ -64,10 +64,22 @@ public class StructureGenNBT implements IWorldGenerator {
         int posY = getGroundFromAbove(world, posX, posZ);
         BlockPos basePos = new BlockPos(posX, posY, posZ);
 
-        if (world.provider.getDimension() == 0) {
-            if (biome == Biomes.DESERT || biome == Biomes.DESERT_HILLS || biome == Biomes.MUTATED_DESERT) {
-                this.generateTower(serverworld, random, basePos);
+        if (shouldOnlyGenerateInTheOverworld) {
+            if (world.provider.getDimension() == 0) {
+                getBiomes(Type.HOT).forEach(hotBiome -> {
+                    boolean isBiomeEligible = (!hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE));
+                    if (isBiomeEligible && biome == hotBiome) {
+                        this.generateTower(serverworld, random, basePos);
+                    }
+                });
             }
+        } else {
+            getBiomes(Type.HOT).forEach(hotBiome -> {
+                boolean isBiomeEligible = (!hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE));
+                if (isBiomeEligible && biome == hotBiome) {
+                    this.generateTower(serverworld, random, basePos);
+                }
+            });
         }
     }
 
