@@ -9,13 +9,17 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
-import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional.Interface;
-import net.thedragonteam.armorplus.registry.APItems;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.registry.ModItems;
 
+import java.util.Arrays;
+
+import static net.thedragonteam.armorplus.APConfig.enableJEIIntegration;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
+import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -27,29 +31,35 @@ public class ArmorPlusPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        jeiHelper = registry.getJeiHelpers();
-        IIngredientBlacklist blacklist = jeiHelper.getIngredientBlacklist();
+        if (enableJEIIntegration) {
+            jeiHelper = registry.getJeiHelpers();
+            IIngredientBlacklist blacklist = jeiHelper.getIngredientBlacklist();
 
-        registerDescriptions(registry);
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.moddedCityItem));
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.jonBamsItem));
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.jonBamsItem, 1));
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.theDragonTeamItem));
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.twitchItem));
-        blacklist.addIngredientToBlacklist(getItemStack(ModItems.beamItem));
+            registerDescriptions(registry);
+            blackListIngredients(blacklist, moddedCityItem, jonBamsItem, getItemStack(jonBamsItem, 1), theDragonTeamItem, twitchItem, beamItem);
+        }
+    }
 
-        //  for (Block block : ModBlocks.enderBlocks)
-        //      blacklist.addIngredientToBlacklist(getItemStack(block));
+    private void blackListIngredients(IIngredientBlacklist blacklist, Object... stacks) {
+        Arrays.stream(stacks).forEachOrdered(stack -> {
+            if (stack instanceof ItemStack) {
+                blacklist.addIngredientToBlacklist(stack);
+            } else if (stack instanceof Block) {
+                blacklist.addIngredientToBlacklist(getItemStack((Block) stack));
+            } else if (stack instanceof Item) {
+                blacklist.addIngredientToBlacklist(getItemStack((Item) stack));
+            }
+        });
     }
 
     private void registerDescriptions(IModRegistry registry) {
-        registry.addIngredientInfo(APItems.guardianScale, ItemStack.class, formattedText("armorplus.jei.guardian_scale.desc"));
-        registry.addIngredientInfo(APItems.witherBone, ItemStack.class, formattedText("armorplus.jei.wither_bone.desc"));
-        registry.addIngredientInfo(APItems.enderDragonScale, ItemStack.class, formattedText("armorplus.jei.ender_dragon_scale.desc"));
-        registry.addIngredientInfo(getItemStack(ModBlocks.lavaInfuser), ItemStack.class, formattedText("armorplus.jei.lava_infuser.desc"));
+        this.registerDescriptions(registry, guardianScale, "armorplus.jei.guardian_scale.desc");
+        this.registerDescriptions(registry, witherBone, "armorplus.jei.wither_bone.desc");
+        this.registerDescriptions(registry, enderDragonScale, "armorplus.jei.ender_dragon_scale.desc");
+        this.registerDescriptions(registry, getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc");
     }
 
-    @Override
-    public void registerCategories(IRecipeCategoryRegistration registry) {
+    private void registerDescriptions(IModRegistry registry, ItemStack ingredient, String translationKey) {
+        registry.addIngredientInfo(ingredient, ItemStack.class, formattedText(translationKey));
     }
 }

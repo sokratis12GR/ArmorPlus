@@ -4,6 +4,8 @@
 
 package net.thedragonteam.armorplus.compat;
 
+import static net.thedragonteam.armorplus.APConfig.enableJEIIntegration;
+
 /**
  * net.thedragonteam.armorplus.compat.jei
  * ArmorPlus created by sokratis12GR on 6/21/2016 10:54 PM.
@@ -40,6 +42,6 @@ public class CompatibilityJustEnoughItems implements ICompatibility {
      */
     @Override
     public boolean enableCompat() {
-        return true;
+        return enableJEIIntegration;
     }
 }
