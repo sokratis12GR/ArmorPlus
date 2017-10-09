@@ -8,9 +8,8 @@ import net.minecraft.potion.Potion;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModPotions {
     public static final Potion EMPTY = new PotionEmpty(); //To Prevent Nulls :D
 }

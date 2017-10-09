@@ -21,9 +21,8 @@ import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFree
 import java.util.stream.IntStream;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class EntityGuardianOverlord extends EntityGuardian implements IRangedAttackMob {
 
     private final BossInfoServerDungeon bossInfo;

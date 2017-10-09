@@ -11,15 +11,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * net.thedragonteam.armorplus.registry
- * ArmorPlus created by sokratis12GR on 6/22/2016 12:20 AM.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModCompatibility {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<>();
 
     public static void registerModCompat() {
-        addCompatibilities(new CompatibilityJustEnoughItems(), new CompatibilityBaubles(), new CompatibilityTinkersConstruct(), new CompatibilityMineTweaker());
+        addCompatibilities(
+                new CompatibilityJustEnoughItems(),
+                new CompatibilityBaubles(),
+                new CompatibilityTinkersConstruct(),
+                new CompatibilityMineTweaker()
+        );
     }
 
     private static void addCompatibilities(ICompatibility... compatibilities) {

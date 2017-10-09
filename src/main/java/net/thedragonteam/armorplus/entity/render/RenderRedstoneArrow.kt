@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entityarrow.EntityRedstoneArrow
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @SideOnly(Side.CLIENT)
 class RenderRedstoneArrow(rm: RenderManager) : RenderArrow<EntityRedstoneArrow>(rm) {
 

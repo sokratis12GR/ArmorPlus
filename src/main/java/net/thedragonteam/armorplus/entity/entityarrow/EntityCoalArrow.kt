@@ -15,6 +15,9 @@ import net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD
 import net.thedragonteam.armorplus.util.PotionUtils.addPotion
 import net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class EntityCoalArrow : EntityArrow {
 
     constructor(worldIn: World) : super(worldIn)

@@ -8,6 +8,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 @SideOnly(Side.CLIENT)
 public class RenderWitherMinion extends Render<EntityWitherMinion> {
     private static final ResourceLocation WITHER_TEXTURES = new ResourceLocation("textures/entity/wither/wither.png");
@@ -24,8 +27,10 @@ public class RenderWitherMinion extends Render<EntityWitherMinion> {
     private float getRenderYaw(float prevRotationYaw, float rotationYaw, float partialTicks) {
         float f;
 
-        //noinspection StatementWithEmptyBody
-        for (f = rotationYaw - prevRotationYaw; f < -180.0F; f += 360.0F) {
+        f = rotationYaw - prevRotationYaw;
+        while (f < -180.0F) {
+
+            f += 360.0F;
         }
 
         while (f >= 180.0F) {

@@ -4,8 +4,6 @@
 
 package net.thedragonteam.armorplus.worldgen.nbt;
 
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -26,26 +24,15 @@ import static net.minecraftforge.common.BiomeDictionary.*;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
+import static net.thedragonteam.armorplus.util.WorldGenUtils.getGroundFromAbove;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class StructureGenNBT implements IWorldGenerator {
 
     private static final ResourceLocation TOWER = setRL("tower");
 
-    /**
-     * HELPER METHODS
-     **/
-    // find a grass or dirt block to place the structure on
-    public static int getGroundFromAbove(World world, int x, int z) {
-        int y = 255;
-        boolean foundGround = false;
-        while (!foundGround && y-- >= 0) {
-            Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-            // "ground" for our bush is grass or dirt
-            foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS || blockAt != Blocks.AIR;
-        }
-
-        return y;
-    }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

@@ -18,6 +18,9 @@ import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.util.Utils.equipmentSlots;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModRegistryUtils {
 
     public static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {

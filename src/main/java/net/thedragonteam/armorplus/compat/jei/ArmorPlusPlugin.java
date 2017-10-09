@@ -23,6 +23,9 @@ import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @Interface(iface = "mezz.jei.api.ingredients.IIngredientBlacklist", modid = "jei", striprefs = true)
 @JEIPlugin
 public class ArmorPlusPlugin implements IModPlugin {
@@ -36,30 +39,57 @@ public class ArmorPlusPlugin implements IModPlugin {
             IIngredientBlacklist blacklist = jeiHelper.getIngredientBlacklist();
 
             registerDescriptions(registry);
-            blackListIngredients(blacklist, moddedCityItem, jonBamsItem, getItemStack(jonBamsItem, 1), theDragonTeamItem, twitchItem, beamItem);
+            blackListIngredients(blacklist,
+                moddedCityItem,
+                jonBamsItem,
+                getItemStack(jonBamsItem, 1),
+                theDragonTeamItem,
+                twitchItem,
+                beamItem
+            );
         }
     }
 
     private void blackListIngredients(IIngredientBlacklist blacklist, Object... stacks) {
         Arrays.stream(stacks).forEachOrdered(stack -> {
-            if (stack instanceof ItemStack) {
-                blacklist.addIngredientToBlacklist(stack);
-            } else if (stack instanceof Block) {
-                blacklist.addIngredientToBlacklist(getItemStack((Block) stack));
-            } else if (stack instanceof Item) {
-                blacklist.addIngredientToBlacklist(getItemStack((Item) stack));
+            if (stack instanceof ItemStack || stack instanceof Block || stack instanceof Item) {
+                blacklist.addIngredientToBlacklist(getItemStack(stack));
             }
         });
     }
 
     private void registerDescriptions(IModRegistry registry) {
-        this.registerDescriptions(registry, guardianScale, "armorplus.jei.guardian_scale.desc");
-        this.registerDescriptions(registry, witherBone, "armorplus.jei.wither_bone.desc");
-        this.registerDescriptions(registry, enderDragonScale, "armorplus.jei.ender_dragon_scale.desc");
-        this.registerDescriptions(registry, getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc");
+        this.registerDescriptions(registry,
+            new EntryDescription(guardianScale, "armorplus.jei.guardian_scale.desc"),
+            new EntryDescription(witherBone, "armorplus.jei.wither_bone.desc"),
+            new EntryDescription(enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
+            new EntryDescription(getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc")
+        );
     }
 
-    private void registerDescriptions(IModRegistry registry, ItemStack ingredient, String translationKey) {
-        registry.addIngredientInfo(ingredient, ItemStack.class, formattedText(translationKey));
+    private void registerDescriptions(IModRegistry registry, EntryDescription entryDescription) {
+        registry.addIngredientInfo(entryDescription.getStack(), ItemStack.class, formattedText(entryDescription.getDesc()));
+    }
+
+    private void registerDescriptions(IModRegistry registry, EntryDescription... entryDescriptions) {
+        Arrays.stream(entryDescriptions).forEachOrdered(entryDescription -> registerDescriptions(registry, entryDescription));
+    }
+
+    private class EntryDescription {
+        private final ItemStack stack;
+        private final String desc;
+
+        public EntryDescription(ItemStack stack, String desc) {
+            this.stack = stack;
+            this.desc = desc;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public ItemStack getStack() {
+            return stack;
+        }
     }
 }

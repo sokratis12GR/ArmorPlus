@@ -7,19 +7,20 @@ package net.thedragonteam.armorplus.blocks.castle.base
 import net.minecraft.block.BlockStairs
 import net.minecraft.block.material.MapColor
 import net.minecraft.block.state.IBlockState
-import net.minecraft.item.ItemBlock
 import net.minecraft.util.BlockRenderLayer
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
-import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 import net.thedragonteam.armorplus.util.Utils.setName
 
-class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IBlockState) : BlockStairs(modelState), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IBlockState) : BlockStairs(modelState), IModdedBlock {
 
     init {
         this.unlocalizedName = setName(stoneBricks.getName() + "_stone_brick_corner")
@@ -33,7 +34,7 @@ class BlockStoneBrickCorner(private val stoneBricks: StoneBricks, modelState: IB
 
     @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(registryName, "stone_bricks", 0)
+        this.initModel("stone_bricks", 0)
     }
 
     override fun getBlockLayer(): BlockRenderLayer {

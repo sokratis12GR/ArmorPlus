@@ -27,6 +27,9 @@ import java.util.List;
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
 
     public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coalBattleAxeDurability, 1.0F, (float) coalBattleAxeDamage, 15);
@@ -60,11 +63,11 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
     }
 
     @Override
-    public float getStrVsBlock(ItemStack stack, IBlockState state) {
+    public float getDestroySpeed(ItemStack stack, IBlockState state) {
         if (stack == ItemStack.EMPTY) return 0.0F;
         if (state == null) return 0.0F;
         Material material = state.getMaterial();
-        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getStrVsBlock(stack, state) : battleAxes.getEfficiency();
+        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getDestroySpeed(stack, state) : battleAxes.getEfficiency();
     }
 
     @Override

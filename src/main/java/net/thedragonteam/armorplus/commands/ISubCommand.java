@@ -9,11 +9,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 
 /**
- * net.thedragonteam.armorplus.commands
- * ArmorPlus created by sokratis12GR on 6/25/2016 9:53 AM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-
 public interface ISubCommand {
 
     String getSubCommandName();

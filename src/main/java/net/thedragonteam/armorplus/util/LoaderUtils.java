@@ -1,12 +1,16 @@
 package net.thedragonteam.armorplus.util;
 
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
+import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
 
 /**
- * ArmorPlus - 1.12 created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class LoaderUtils {
+
+    public static boolean isTiCIntegrationEnabled() {
+        return LoaderUtils.isTiCLoaded() && enableTConstructIntegration;
+    }
 
     public static boolean isTeslaLoaded() {
         return isModLoaded("tesla");

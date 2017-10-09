@@ -16,6 +16,9 @@ import java.util.List;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ArrowUtils {
 
     @SideOnly(value = Side.CLIENT)

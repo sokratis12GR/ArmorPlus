@@ -15,10 +15,13 @@ import net.minecraft.world.IBlockAccess
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 import net.thedragonteam.armorplus.util.Utils.setName
 
-class BlockStonebrickWall(private val stoneBrick: BlockStoneBrick) : BlockWall(stoneBrick), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BlockStonebrickWall(private val stoneBrick: BlockStoneBrick) : BlockWall(stoneBrick), IModdedBlock {
 
     init {
         this.setRegistryName(stoneBrick.name + "_wall")
@@ -38,8 +41,9 @@ class BlockStonebrickWall(private val stoneBrick: BlockStoneBrick) : BlockWall(s
         list.add(ItemStack(this, 1))
     }
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(registryName, "stone_bricks", 0)
+        this.initModel("stone_bricks", 0)
     }
 }
 

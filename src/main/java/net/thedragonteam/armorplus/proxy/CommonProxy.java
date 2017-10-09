@@ -16,16 +16,18 @@ import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFree
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.registry.*;
-import net.thedragonteam.armorplus.util.LoaderUtils;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
 import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
+import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCIntegrationEnabled;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -38,9 +40,7 @@ public class CommonProxy {
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
         //TConstruct
-        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
-            TiC.preInit(event);
-        }
+        if (isTiCIntegrationEnabled()) TiC.instance().preInit(event);
         LogHelper.info("Finished PreInitialization");
     }
 
@@ -56,18 +56,14 @@ public class CommonProxy {
         APTab.registerTabs();
         ModCompatibility.loadCompat(INIT);
         //TConstruct
-        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
-            TiC.init(event);
-        }
+        if (isTiCIntegrationEnabled()) TiC.instance().init(event);
         LogHelper.info("Finished Initialization");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(POST_INIT);
         //TConstruct
-        if (LoaderUtils.isTiCLoaded() && enableTConstructIntegration) {
-            TiC.postInit(event);
-        }
+        if (isTiCIntegrationEnabled()) TiC.instance().postInit(event);
         LogHelper.info("Finished PostInitialization");
     }
 

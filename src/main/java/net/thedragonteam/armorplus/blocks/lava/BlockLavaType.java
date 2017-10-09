@@ -10,9 +10,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedBlock;
 
-public class BlockLavaType extends BlockBase implements IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+public class BlockLavaType extends BlockBase implements IModdedBlock {
 
     public BlockLavaType(EnumLavaType type) {
         super(Material.ROCK, type.getName(), type.getResistance(), type.getHardness(), ToolType.PICKAXE, 3, 0.8f);
@@ -21,7 +24,7 @@ public class BlockLavaType extends BlockBase implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), 0, "normal");
+        this.initModel(0, "normal");
     }
 
     @Override

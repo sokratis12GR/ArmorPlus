@@ -6,10 +6,8 @@ package net.thedragonteam.armorplus.api
 
 import net.thedragonteam.armorplus.ArmorPlus
 
-
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 class Constants {
 

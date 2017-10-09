@@ -4,6 +4,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class EnergyStorageNBT extends EnergyStorage implements INBTSerializable<NBTTagCompound> {
     public EnergyStorageNBT(int capacity) {
         super(capacity);

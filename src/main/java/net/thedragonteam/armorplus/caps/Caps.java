@@ -8,6 +8,9 @@ import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class Caps implements ICapabilitySerializable<NBTTagCompound> {
     EnergyStorageNBT storage;
 

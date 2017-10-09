@@ -24,6 +24,9 @@ import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class MobDropsEventHandler {
     private static Random random = new Random();
@@ -48,9 +51,9 @@ public class MobDropsEventHandler {
     private static void registerMobDrop(LivingDropsEvent event, Entity entity, boolean enableDrop, ItemStack drop) {
         if (enableDrop) {
             event.getEntityLiving().entityDropItem(drop, 0.0f);
-        }
-        if (debugMode) {
-            LogHelper.info(entity.getName() + " dropped:" + drop + " x " + drop.getCount());
+            if (debugMode) {
+                LogHelper.info(entity.getName() + " dropped:" + drop + " x " + drop.getCount());
+            }
         }
     }
 }

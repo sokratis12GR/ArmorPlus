@@ -29,9 +29,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper
 import java.util.*
 
 /**
- * net.thedragonteam.armorplus.items.consumables
- * ArmorPlus created by sokratis12GR on 6/30/2016 2:59 PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 class TheGiftOfTheGods(var maxUsable: Int = 0, var golden: EnumRarity = addRarity("GOLD", GOLD, "GOLD")) : BaseItem("the_gift_of_the_gods") {
 

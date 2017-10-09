@@ -22,10 +22,8 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
- * net.thedragonteam.armorplus.items.materials
- * ArmorPlus created by sokratis12GR on 4/19/2016.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class LavaCrystal extends Item implements IModdedItem {
 
     private String[] lavaCrystalNames = new String[]{"", "_infused"};
@@ -85,8 +83,8 @@ public class LavaCrystal extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, lavaCrystalNames.length).mapToObj(
-                    i -> getItemStack(this, i)
+            IntStream.range(0, lavaCrystalNames.length).mapToObj(i ->
+                    getItemStack(this, i)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -94,8 +92,8 @@ public class LavaCrystal extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, lavaCrystalNames.length).forEachOrdered(
-                i -> this.initModel(lavaCrystalNames[i], "lava", i)
+        IntStream.range(0, lavaCrystalNames.length).forEachOrdered(i ->
+                this.initModel(lavaCrystalNames[i], "lava", i)
         );
     }
 }

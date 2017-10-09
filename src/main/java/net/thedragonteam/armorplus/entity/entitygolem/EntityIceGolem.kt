@@ -9,6 +9,9 @@ import net.minecraft.util.ResourceLocation
 import net.minecraft.world.World
 import net.thedragonteam.armorplus.ArmorPlus
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class EntityIceGolem(worldIn: World) : EntityIronGolem(worldIn) {
 
     override fun getLootTable(): ResourceLocation? {

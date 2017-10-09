@@ -25,6 +25,9 @@ import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemSpecialSword extends ItemSword implements IModdedItem {
 
     public static ToolMaterial swordCoalMaterial = addToolMaterial("swordCoalMaterial", 1, coalSwordDurability, 1.0F, (float) coalSwordDamage, 15);

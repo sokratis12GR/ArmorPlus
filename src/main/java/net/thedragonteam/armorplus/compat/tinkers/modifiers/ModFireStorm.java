@@ -18,6 +18,9 @@ import slimeknights.tconstruct.tools.TinkerTools;
 
 import java.util.List;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ModFireStorm extends ModifierTrait {
 
     public ModFireStorm() {

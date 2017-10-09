@@ -3,7 +3,8 @@
  */
 
 /**
- * @author sorkatis12GR
+ * @author Sokratis Fotkatzikis
+ * @author sokratis12GR
  * @author TheDragonTeam
  * @version 1.0
  */

@@ -12,6 +12,9 @@ import net.thedragonteam.thedragonlib.client.util.ClientUtills;
 
 import static net.thedragonteam.armorplus.util.TextUtils.*;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class SubCommandWiki extends SubCommandBase {
 
     public SubCommandWiki(ICommand parent) {
@@ -27,7 +30,6 @@ public class SubCommandWiki extends SubCommandBase {
     public String getHelpText() {
         return errorText("commands.wiki.help");
     }
-
 
     public void processSubCommand(MinecraftServer server, ICommandSender cmdSender, String[] args) {
         super.processSubCommand(server, cmdSender, args);

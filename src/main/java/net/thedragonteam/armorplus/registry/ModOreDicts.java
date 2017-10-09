@@ -18,6 +18,9 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModOreDicts {
 
     public static String[] colors = new String[]{"White", "Red", "Black", "Blue", "Green", "Yellow", "Purple"};
@@ -67,12 +70,10 @@ public class ModOreDicts {
         registerWildBrick(STONEBRICK, WILDCARD_VALUE);
     }
 
-    private static void registerWildOre(String name, Item item, int wildCardValiue) {
-        registerOre(name, getItemStack(item, wildCardValiue));
-    }
-
-    private static void registerWildOre(String name, Block block, int wildCardValiue) {
-        registerOre(name, getItemStack(block, wildCardValiue));
+    private static void registerWildOre(String name, Object object, int wildCardValiue) {
+        if (object instanceof Item || object instanceof Block) {
+            registerOre(name, getItemStack(object, wildCardValiue));
+        }
     }
 
     private static void registerWildBrick(Block block, int wildCardValue) {

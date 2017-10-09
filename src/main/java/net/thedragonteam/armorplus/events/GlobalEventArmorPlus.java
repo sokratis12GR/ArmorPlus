@@ -24,36 +24,38 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
-import static net.thedragonteam.armorplus.util.Utils.isNotNull;
+import static net.thedragonteam.armorplus.util.Utils.*;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class GlobalEventArmorPlus {
-    //int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemStack);
 
-    // @SubscribeEvent
-    // public void onPlayerCraftedItem(PlayerEvent.ItemCraftedEvent event) {
-    ////     Item i = event.crafting.getItem();
-    //     //     if (i == Item.getItemFromBlock(APBlocks.workbench)) event.player.addStat(ModAchievements.welcomeToArmorPlus);
-    // }
-
-    public static void addEffects(TickEvent.PlayerTickEvent event, boolean isEnabled, Item helmet, Item chestplate, Item leggings, Item boots, String addEffect, int addEffectAmplifier) {
+    public static void addEffects(TickEvent.PlayerTickEvent event, boolean isEnabled, String addEffect, int addEffectAmplifier, Item... armor) {
         EntityPlayer entity = event.player;
         ItemStack head = entity.getItemStackFromSlot(HEAD);
         ItemStack chest = entity.getItemStackFromSlot(CHEST);
         ItemStack legs = entity.getItemStackFromSlot(LEGS);
         ItemStack feet = entity.getItemStackFromSlot(FEET);
+        if (armor.length != 4) {
+            return;
+        }
+        for (Item piece : armor) {
+            if (isNull(piece)) {
+                return;
+            }
+        }
+        if (!isNotNull(armor[0]) || !isNotNull(armor[1]) || !isNotNull(armor[2]) || !isNotNull(armor[3])) {
+            return;
+        }
+        if (isArmorEmpty(head, chest, legs, feet)) {
+            return;
+        }
         if (isEnabled) {
-            if (!head.isEmpty() && !chest.isEmpty() && !legs.isEmpty() && !feet.isEmpty()) {
-                if (isNotNull(helmet) && isNotNull(chestplate) && isNotNull(leggings) && isNotNull(boots)) {
-                    if (head.getItem() == helmet && chest.getItem() == chestplate && legs.getItem() == leggings && feet.getItem() == boots) {
-                        if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
-                            addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD);
-                        }
-                    }
+            if (areSame(head, armor[0]) && areSame(chest, armor[1]) && areSame(legs, armor[2]) && areSame(feet, armor[3])) {
+                if (entity.getActivePotionEffect(getPotion(addEffect)) == null || getPotion(addEffect) == MobEffects.NIGHT_VISION) {
+                    addPotion(entity, getPotion(addEffect), addEffectAmplifier, GOOD);
                 }
             }
         }
@@ -61,13 +63,16 @@ public class GlobalEventArmorPlus {
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.getModID().equals(ArmorPlus.MODID)) {
+            //        ConfigManager.sync(event.getModID(), Config.Type.INSTANCE); // Sync config values
+        }
+
         syncConfig();
         LogHelper.info("Refreshing configuration file");
     }
 
     private static void syncConfig() {
-        if (configuration.hasChanged())
-            configuration.save();
+        if (configuration.hasChanged()) configuration.save();
     }
 
     @SubscribeEvent
@@ -121,31 +126,44 @@ public class GlobalEventArmorPlus {
             legs.damageItem(1, entity);
             feet.damageItem(1, entity);
         }
-        if (enableCoalArmor)
-            addEffects(event, enableFullCoalArmorEffect, coalHelmet, coalChestplate, coalLeggings, coalBoots, coalArmorAddPotionEffect, coalArmorEffectLevel);
-        if (enableLapisArmor)
-            addEffects(event, enableFullLapisArmorEffect, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots, lapisArmorAddPotionEffect, lapisArmorEffectLevel);
-        if (enableEmeraldArmor)
-            addEffects(event, enableFullEmeraldArmorEffect, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel);
-        if (enableObsidianArmor)
-            addEffects(event, enableFullObsidianArmorEffect, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel);
-        if (enableLavaArmor)
-            addEffects(event, enableFullLavaArmorEffect, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots, lavaArmorAddPotionEffect, lavaArmorEffectLevel);
-        if (enableRedstoneArmor)
-            addEffects(event, enableFullRedstoneArmorEffect, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel);
-        if (enableGuardianArmor)
-            addEffects(event, enableFullGuardianArmorEffect, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots, guardianArmorAddPotionEffect, guardianArmorEffectLevel);
-        if (enableChickenArmor)
-            addEffects(event, enableFullChickenArmorEffect, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots, chickenArmorAddPotionEffect, chickenArmorEffectLevel);
-        if (enableSlimeArmor)
-            addEffects(event, enableFullSlimeArmorEffect, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots, slimeArmorAddPotionEffect, slimeArmorEffectLevel);
-        if (enableManyullynArmor)
-            addEffects(event, enableManyullynArmorEffect, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel);
-        if (enableKnightSlimeArmor)
-            addEffects(event, enableKnightSlimeArmorEffect, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel);
-        if (enableArditeArmor)
-            addEffects(event, enableArditeArmorEffect, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots, arditeArmorAddPotionEffect, arditeArmorEffectLevel);
-        if (enableCobaltArmor)
-            addEffects(event, enableCobaltArmorEffect, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel);
+        if (enableCoalArmor) {
+            addEffects(event, enableFullCoalArmorEffect, coalArmorAddPotionEffect, coalArmorEffectLevel, coalHelmet, coalChestplate, coalLeggings, coalBoots);
+        }
+        if (enableLapisArmor) {
+            addEffects(event, enableFullLapisArmorEffect, lapisArmorAddPotionEffect, lapisArmorEffectLevel, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
+        }
+        if (enableEmeraldArmor) {
+            addEffects(event, enableFullEmeraldArmorEffect, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
+        }
+        if (enableObsidianArmor) {
+            addEffects(event, enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
+        }
+        if (enableLavaArmor) {
+            addEffects(event, enableFullLavaArmorEffect, lavaArmorAddPotionEffect, lavaArmorEffectLevel, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
+        }
+        if (enableRedstoneArmor) {
+            addEffects(event, enableFullRedstoneArmorEffect, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
+        }
+        if (enableGuardianArmor) {
+            addEffects(event, enableFullGuardianArmorEffect, guardianArmorAddPotionEffect, guardianArmorEffectLevel, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
+        }
+        if (enableChickenArmor) {
+            addEffects(event, enableFullChickenArmorEffect, chickenArmorAddPotionEffect, chickenArmorEffectLevel, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
+        }
+        if (enableSlimeArmor) {
+            addEffects(event, enableFullSlimeArmorEffect, slimeArmorAddPotionEffect, slimeArmorEffectLevel, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
+        }
+        if (enableManyullynArmor) {
+            addEffects(event, enableManyullynArmorEffect, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
+        }
+        if (enableKnightSlimeArmor) {
+            addEffects(event, enableKnightSlimeArmorEffect, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
+        }
+        if (enableArditeArmor) {
+            addEffects(event, enableArditeArmorEffect, arditeArmorAddPotionEffect, arditeArmorEffectLevel, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
+        }
+        if (enableCobaltArmor) {
+            addEffects(event, enableCobaltArmorEffect, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
+        }
     }
 }

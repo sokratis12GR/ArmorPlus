@@ -21,18 +21,20 @@ import static net.minecraft.util.text.TextFormatting.fromColorIndex;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.minecraftforge.common.util.EnumHelper.addEnchantmentType;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class EnumHelperUtil {
 
-    public static EnumRarity addRarity(String enumName, TextFormatting formatting, String displayName) {
-        return EnumHelper.addRarity(enumName, formatting, displayName);
-    }
-
-    public static EnumRarity addRarity(String enumName, String formattingName, String displayName) {
-        return addRarity(enumName, getValueByName(formattingName), displayName);
-    }
-
-    public static EnumRarity addRarity(String enumName, int colorIndex, String displayName) {
-        return addRarity(enumName, fromColorIndex(colorIndex), displayName);
+    public static EnumRarity addRarity(String enumName, Object color, String displayName) {
+        if (color instanceof TextFormatting) {
+            return EnumHelper.addRarity(enumName, (TextFormatting) color, displayName);
+        } else if (color instanceof String) {
+            return EnumHelper.addRarity(enumName, getValueByName((String) color), displayName);
+        } else if (color instanceof Integer) {
+            return EnumHelper.addRarity(enumName, fromColorIndex((int) color), displayName);
+        }
+        return EnumRarity.COMMON;
     }
 
     public static EnumEnchantmentType addEnchantType(String enumName, Predicate<Item> itemPredicate) {

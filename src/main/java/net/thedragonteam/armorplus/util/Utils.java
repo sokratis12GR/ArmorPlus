@@ -4,23 +4,16 @@
 
 package net.thedragonteam.armorplus.util;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Objects;
 
 import static java.lang.String.format;
@@ -28,11 +21,15 @@ import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 
 /**
- * net.thedragonteam.armorplus.util
- * ArmorPlus created by sokratis12GR on 7/18/2016 8:17 PM.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public final class Utils {
+
+    public static ItemStack[] emptyArmor = new ItemStack[4];
+
+    static {
+        Arrays.fill(emptyArmor, ItemStack.EMPTY);
+    }
 
     public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
@@ -51,20 +48,6 @@ public final class Utils {
         return stack;
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void renderItemInWorld(ItemStack stack) {
-        if (stack.getCount() > 0) {
-            GlStateManager.pushMatrix();
-            GlStateManager.disableLighting();
-            GlStateManager.pushAttrib();
-            RenderHelper.enableStandardItemLighting();
-            Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
-            RenderHelper.disableStandardItemLighting();
-            GlStateManager.popAttrib();
-            GlStateManager.enableLighting();
-            GlStateManager.popMatrix();
-        }
-    }
 
     public static String setName(String name) {
         return format("%s.%s", MODID, name);
@@ -72,13 +55,13 @@ public final class Utils {
 
     public static NonNullList<ItemStack> getItemStacks(Item... items) {
         NonNullList<ItemStack> list = NonNullList.create();
-        Arrays.stream(items).map(ItemStackUtils::getItemStack).forEachOrdered(list::add);
+        if (items != null) Arrays.stream(items).map(ItemStackUtils::getItemStack).forEachOrdered(list::add);
         return list;
     }
 
-    public static NonNullList<ItemStack> getItemStacks(ItemStack... itemStacks) {
+    public static NonNullList<ItemStack> getItemStacks(ItemStack... items) {
         NonNullList<ItemStack> list = NonNullList.create();
-        Collections.addAll(list, itemStacks);
+        list.addAll(Arrays.asList(items));
         return list;
     }
 
@@ -116,5 +99,13 @@ public final class Utils {
 
     public static boolean isNullOrEmpty(String object) {
         return isNull(object) || Objects.equals(object, "");
+    }
+
+    public static boolean areSame(ItemStack a, Item b) {
+        return a.getItem() == b;
+    }
+
+    public static boolean isArmorEmpty(ItemStack... stacks) {
+        return Arrays.stream(stacks).findFirst().map(ItemStack::isEmpty).orElse(true);
     }
 }

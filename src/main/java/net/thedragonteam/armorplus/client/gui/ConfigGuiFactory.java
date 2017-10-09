@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Set;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ConfigGuiFactory implements IModGuiFactory {
 
     @Override

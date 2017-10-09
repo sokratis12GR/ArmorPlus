@@ -21,6 +21,9 @@ import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemUltimateParts extends Item implements IModdedItem {
 
     private String[] ultimatePartsNames = new String[]{
@@ -59,8 +62,8 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, ultimatePartsNames.length).mapToObj(
-                    i -> getItemStack(this, i)
+            IntStream.range(0, ultimatePartsNames.length).mapToObj(i ->
+                    getItemStack(this, i)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -68,8 +71,8 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, ultimatePartsNames.length).forEachOrdered(
-                i -> this.initModel(ultimatePartsNames[i], "ultimate", i)
+        IntStream.range(0, ultimatePartsNames.length).forEachOrdered(i ->
+                this.initModel(ultimatePartsNames[i], "ultimate", i)
         );
     }
 }

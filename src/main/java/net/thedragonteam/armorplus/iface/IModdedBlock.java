@@ -1,11 +1,14 @@
 package net.thedragonteam.armorplus.iface;
 
-import jdk.nashorn.internal.ir.Block;
+import net.minecraft.block.Block;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public interface IModdedBlock extends IModelHelper, IRarityHelper, IForgeRegistryEntry<Block> {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+public interface IModdedBlock extends IModelHelper, IForgeRegistryEntry<Block> {
 
     @SideOnly(Side.CLIENT)
     default void initModel(String suffix, String location, int meta, String variantIn) {
@@ -18,13 +21,13 @@ public interface IModdedBlock extends IModelHelper, IRarityHelper, IForgeRegistr
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(String suffix, String location) {
-        this.initModel(suffix, location, 0);
+    default void initModel(String location, int meta, String variantIn) {
+        this.initModel("", location, meta, variantIn);
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(String location, int meta, String variantIn) {
-        this.initModel("", location, meta, variantIn);
+    default void initModel(String suffix, String location) {
+        this.initModel(suffix, location, 0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -38,12 +41,11 @@ public interface IModdedBlock extends IModelHelper, IRarityHelper, IForgeRegistr
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(String location) {
-        this.initModel(location, 0);
-    }
-
-    @SideOnly(Side.CLIENT)
-    default void initModel(int meta) {
-        this.initModel(meta, "");
+    default void initModel(Object locOrMeta) {
+        if (locOrMeta instanceof String) {
+            this.initModel((String) locOrMeta, 0);
+        } else if (locOrMeta instanceof Integer) {
+            this.initModel((Integer) locOrMeta, "");
+        }
     }
 }

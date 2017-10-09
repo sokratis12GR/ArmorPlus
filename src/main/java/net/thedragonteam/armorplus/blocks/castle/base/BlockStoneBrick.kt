@@ -14,9 +14,12 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 
-class BlockStoneBrick(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BlockStoneBrick(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModdedBlock {
 
     var color: MapColor = stoneBricks.mapColor
 
@@ -24,7 +27,7 @@ class BlockStoneBrick(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stone
 
     @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(registryName, 0, "normal")
+        this.initModel(0, "normal")
     }
 
     /**

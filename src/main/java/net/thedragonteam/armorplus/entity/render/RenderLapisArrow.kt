@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLapisArrow
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @SideOnly(Side.CLIENT)
 class RenderLapisArrow(rm: RenderManager) : RenderArrow<EntityLapisArrow>(rm) {
 

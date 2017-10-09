@@ -17,6 +17,9 @@ import java.util.Optional;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class LavaInfuserManager {
     private static final LavaInfuserManager INSTANCE = new LavaInfuserManager();
     private final Map<ItemStack, ItemStack> infusingList = Maps.newHashMap();
@@ -35,29 +38,15 @@ public class LavaInfuserManager {
         return INSTANCE;
     }
 
-    /**
-     * Adds a infusing recipe, where the input item is an instance of Block.
-     */
-    public void addInfusingRecipe(Block input, ItemStack stack, double experience) {
-        this.addInfusingRecipe(Item.getItemFromBlock(input), stack, experience);
-    }
-
-    /**
-     * Adds a infusing recipe using an Item as the input item.
-     */
-    public void addInfusingRecipe(Item input, ItemStack stack, double experience) {
-        this.addInfusingRecipe(new ItemStack(input, 1, 32767), stack, experience);
+    public void addInfusingRecipe(Object input, ItemStack stack, double experience) {
+        if (input instanceof Block) {
+            this.addInfusingRecipe(getItemStack(input), stack, experience);
+        } else if (input instanceof Item) {
+            this.addInfusingRecipe(getItemStack(input, 32767), stack, experience);
+        }
     }
 
     public void addInfusingRecipe(ItemStack input, ItemStack stack) {
-        this.addInfusingRecipe(input, stack, 0.0D);
-    }
-
-    public void addInfusing(Item input, ItemStack stack, double experience) {
-        this.addInfusingRecipe(new ItemStack(input, 1, 32767), stack, experience);
-    }
-
-    public void addInfusing(ItemStack input, ItemStack stack) {
         this.addInfusingRecipe(input, stack, 0.0D);
     }
 

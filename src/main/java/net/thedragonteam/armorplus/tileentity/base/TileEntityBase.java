@@ -15,9 +15,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public abstract class TileEntityBase extends TileEntity {
 
     public TileEntityBase() {

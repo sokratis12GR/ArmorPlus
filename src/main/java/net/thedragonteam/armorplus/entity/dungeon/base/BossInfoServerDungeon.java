@@ -8,8 +8,7 @@ import static net.minecraft.world.BossInfo.Overlay.*;
 import static net.minecraft.world.BossInfo.Overlay.NOTCHED_20;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class BossInfoServerDungeon extends BossInfoServer {
 

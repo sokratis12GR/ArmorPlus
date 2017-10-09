@@ -19,13 +19,14 @@ import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.*
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.RayTraceResult
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.client.gui.GuiHandler
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser
 import net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
@@ -34,7 +35,10 @@ import net.thedragonteam.armorplus.util.Utils.setRL
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
-class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockContainer(Material.ROCK), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockContainer(Material.ROCK), IModdedBlock {
 
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
@@ -45,8 +49,9 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         this.setHarvestLevel(ToolType.PICKAXE.tool, 1)
     }
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(registryName, 0)
+        this.initModel(0)
     }
 
     @Suppress("OverridingDeprecatedMember")
@@ -195,16 +200,10 @@ class BlockLavaInfuser(name: String, private val isInfusing: Boolean) : BlockCon
         return Container.calcRedstone(worldIn!!.getTileEntity(pos!!))
     }
 
-    @Suppress("OverridingDeprecatedMember")
-    override fun getItem(worldIn: World?, pos: BlockPos?, state: IBlockState): ItemStack {
+    override fun getPickBlock(state: IBlockState?, target: RayTraceResult?, world: World?, pos: BlockPos?, player: EntityPlayer?): ItemStack {
         return getItemStack(lavaInfuser)
     }
 
-    /**
-     * The type of render function called. MODEL for mixed tesr and static model, MODELBLOCK_ANIMATED for TESR-only,
-     * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
-     */
-    @Suppress("OverridingDeprecatedMember")
     override fun getRenderType(state: IBlockState?): EnumBlockRenderType {
         return EnumBlockRenderType.MODEL
     }

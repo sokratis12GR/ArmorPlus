@@ -12,6 +12,9 @@ import net.thedragonteam.armorplus.registry.ModItems
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser.isItemFuel
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class SlotLavaInfuserFuel(inventoryIn: IInventory, slotIndex: Int, xPosition: Int, yPosition: Int) : Slot(inventoryIn, slotIndex, xPosition, yPosition) {
 
     /**

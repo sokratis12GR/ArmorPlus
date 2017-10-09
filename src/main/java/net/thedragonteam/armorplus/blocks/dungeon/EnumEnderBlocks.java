@@ -3,7 +3,7 @@ package net.thedragonteam.armorplus.blocks.dungeon;
 import net.minecraft.util.IStringSerializable;
 
 /**
- * Ender Dungeon Blocks - by sokratis12GR
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum EnumEnderBlocks implements IStringSerializable {
     ENDER_STONE("ender_stone"),

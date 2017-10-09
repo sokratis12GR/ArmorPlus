@@ -3,27 +3,24 @@ package net.thedragonteam.armorplus.blocks.base;
 import net.minecraft.util.IStringSerializable;
 
 import javax.annotation.Nonnull;
+import java.util.Locale;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum ToolType implements IStringSerializable {
-    PICKAXE("pickaxe", "Pickaxe"),
-    AXE("axe", "Axe"),
-    SHOVEL("shovel", "Shovel");
-
-    private final String tool;
+    PICKAXE("Pickaxe"),
+    AXE("Axe"),
+    SHOVEL("Shovel");
 
     private final String name;
 
-    ToolType(String toolIn, String nameIn) {
-        tool = toolIn;
+    ToolType(String nameIn) {
         name = nameIn;
     }
 
     public String getTool() {
-        return tool;
+        return name().toLowerCase(Locale.ROOT);
     }
 
     @Override

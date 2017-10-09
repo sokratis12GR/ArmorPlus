@@ -1,18 +1,19 @@
 package net.thedragonteam.armorplus.events;
 
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 
 /**
- * Created by sokratis12GR on 7/1/2017.
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 @SideOnly(Side.CLIENT)
-//@Mod.EventBusSubscriber(value = Side.CLIENT, modid = ArmorPlus.MODID)
+@Mod.EventBusSubscriber(value = Side.CLIENT, modid = ArmorPlus.MODID)
 public class ClientEventHandler {
 
     public static void onRender() {
-        RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager(), Minecraft.getMinecraft().getRenderManager().entityRenderMap);
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
+        //  RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager(), Minecraft.getMinecraft().getRenderManager().entityRenderMap);
     }
 }

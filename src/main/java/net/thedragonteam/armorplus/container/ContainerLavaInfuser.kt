@@ -17,6 +17,9 @@ import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserOutput
 import net.thedragonteam.armorplus.container.base.ContainerBase
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class ContainerLavaInfuser(playerInventory: InventoryPlayer, private val tile: TileEntityLavaInfuser) : ContainerBase() {
     private var cookTime: Int = 0
     private var totalCookTime: Int = 0

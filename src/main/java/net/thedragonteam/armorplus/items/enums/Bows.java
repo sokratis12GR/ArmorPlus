@@ -18,6 +18,9 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public enum Bows {
     COAL(coalBowDurability, "coal", coalBowArrowBonusDamage, getItemStack(Blocks.COAL_BLOCK), getValueByName(coalWeaponItemNameColor), coalBow),
     LAPIS(lapisBowDurability, "lapis", lapisBowArrowBonusDamage,getItemStack(Blocks.LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor), lapisBow),

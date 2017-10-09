@@ -4,5 +4,8 @@
 
 package net.thedragonteam.armorplus.proxy;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ServerProxy extends CommonProxy {
 }

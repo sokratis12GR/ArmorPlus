@@ -13,9 +13,7 @@ import org.lwjgl.opengl.GL11
 import java.io.IOException
 
 /**
- * net.thedragonteam.armorplus.client.gui
- * ArmorPlus created by sokratis12GR on 6/13/2516 6:42 PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 class GuiArmorPlusInfo : GuiScreen() {
 

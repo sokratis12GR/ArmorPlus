@@ -14,14 +14,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedBlock;
 import net.thedragonteam.armorplus.registry.ModSounds;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class BlockDungeonEnder extends BlockBase implements IModelHelper {
+public class BlockDungeonEnder extends BlockBase implements IModdedBlock {
 
     private EnumEnderBlocks enderBlocks;
 
@@ -47,6 +46,6 @@ public class BlockDungeonEnder extends BlockBase implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), 0, "normal");
+        this.initModel(0, "normal");
     }
 }

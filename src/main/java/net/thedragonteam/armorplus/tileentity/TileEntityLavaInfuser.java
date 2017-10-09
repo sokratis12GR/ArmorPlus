@@ -30,6 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.thedragonteam.armorplus.api.lavainfuser.LavaInfuserManager;
+import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserFuel;
 import net.thedragonteam.armorplus.blocks.lava.BlockLavaInfuser;
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -38,6 +39,9 @@ import javax.annotation.Nonnull;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class TileEntityLavaInfuser extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] SLOTS_TOP = new int[]{0};
     private static final int[] SLOTS_BOTTOM = new int[]{2, 1};
@@ -282,7 +286,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         if (itemstack1.isEmpty()) return true;
         if (!itemstack1.isItemEqual(itemstack)) return false;
         int result = itemstack1.getCount() + itemstack.getCount();
-        return result <= getInventoryStackLimit() && result <= itemstack1.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
+        return result <= getInventoryStackLimit() && result <= itemstack1.getMaxStackSize();
     }
 
     /**
@@ -326,10 +330,13 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
      */
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        if (index == 2) return false;
-        else if (index != 1) return true;
+        if (index == 2) {
+            return false;
+        } else if (index != 1) {
+            return true;
+        }
         ItemStack itemstack = this.infuserItemStacks.get(1);
-        return isItemFuel(stack) || /*SlotLavaInfuserFuel.Companion.isAllowed(stack) &&*/ itemstack.getItem() != Items.BUCKET;
+        return isItemFuel(stack) || SlotLavaInfuserFuel.Companion.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
     }
 
     @Override

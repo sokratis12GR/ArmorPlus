@@ -4,6 +4,9 @@
 
 package net.thedragonteam.armorplus.items.enums;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public enum DevItems {
     THE_DRAGON_TEAM("the_dragon_team", 0),
     MODDED_CITY("modded_city", 1),

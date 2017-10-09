@@ -13,9 +13,7 @@ import net.thedragonteam.armorplus.commands.SubCommandBase;
 import static net.thedragonteam.armorplus.util.TextUtils.*;
 
 /**
- * net.thedragonteam.armorplus.commands.subcommands
- * ArmorPlus created by sokratis12GR on 6/25/2016 9:59 AM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class SubCommandHelp extends SubCommandBase {
 
@@ -40,7 +38,7 @@ public class SubCommandHelp extends SubCommandBase {
         if (args.length > 0) return;
 
         ((CommandArmorPlus) getParentCommand()).getSubCommands().values().forEach(
-                subCommand -> cmdSender.sendMessage(setText(formattedText("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(cmdSender))))
+            subCommand -> cmdSender.sendMessage(setText(formattedText("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(cmdSender))))
         );
     }
 }

@@ -8,14 +8,18 @@ import net.minecraft.enchantment.Enchantment;
 
 import static net.minecraft.enchantment.Enchantment.*;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class EnchantmentUtils {
 
-    public Enchantment getEnchantment(String name) {
-        return getEnchantmentByLocation(name);
-    }
-
-    public Enchantment getEnchantment(int id) {
-        return getEnchantmentByID(id);
+    public Enchantment getEnchantment(Object nameOrId) {
+        if (nameOrId instanceof Integer) {
+            return getEnchantmentByID((Integer) nameOrId);
+        } else if (nameOrId instanceof String) {
+            return getEnchantmentByLocation((String) nameOrId);
+        }
+        return null;
     }
 
     public int getID(Enchantment enchant) {

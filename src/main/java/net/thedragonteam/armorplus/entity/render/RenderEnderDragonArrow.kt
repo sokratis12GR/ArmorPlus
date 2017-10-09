@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.entity.entityarrow.EntityEnderDragonArrow
 import net.thedragonteam.armorplus.util.Utils.setRL
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @SideOnly(Side.CLIENT)
 class RenderEnderDragonArrow(rm: RenderManager) : RenderArrow<EntityEnderDragonArrow>(rm) {
 

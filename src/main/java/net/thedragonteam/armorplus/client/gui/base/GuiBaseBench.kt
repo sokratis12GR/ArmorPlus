@@ -10,6 +10,9 @@ import net.minecraft.inventory.Container
 import net.minecraft.util.ResourceLocation
 import net.thedragonteam.armorplus.util.TextUtils
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 open class GuiBaseBench(container: Container, var resourceLocation: ResourceLocation, var name: String, xSize: Int, ySize: Int) : GuiContainer(container) {
 
     init {

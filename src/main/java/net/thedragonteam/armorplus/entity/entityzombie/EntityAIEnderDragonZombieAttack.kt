@@ -7,8 +7,10 @@ package net.thedragonteam.armorplus.entity.entityzombie
 import net.minecraft.entity.ai.EntityAIAttackMelee
 
 /**
- * Custom AI attack class to support raising of the arms when the zombie attacks
- */
+ * Custom AI attack class to support raising of the arms when the zombie attacks.
+ *
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+*/
 class EntityAIEnderDragonZombieAttack(private val enderDragonZombie: EntityEnderDragonZombie, speedIn: Double, longMemoryIn: Boolean) : EntityAIAttackMelee(enderDragonZombie, speedIn, longMemoryIn) {
     private var raiseArmTicks: Int = 0
 

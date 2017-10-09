@@ -5,9 +5,8 @@
 package net.thedragonteam.armorplus.potions.base;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class PotionBaseGood extends PotionBase {
 
     public PotionBaseGood(int liquidColorIn, String potionName) {

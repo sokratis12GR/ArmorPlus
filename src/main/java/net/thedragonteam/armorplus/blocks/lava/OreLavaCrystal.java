@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -27,11 +27,9 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:46 PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class OreLavaCrystal extends BlockBase implements IModelHelper {
+public class OreLavaCrystal extends BlockBase implements IModdedBlock {
 
     public OreLavaCrystal() {
         super(Material.ROCK, "ore_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
@@ -49,7 +47,7 @@ public class OreLavaCrystal extends BlockBase implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), 0, "normal");
+        this.initModel(0, "normal");
     }
 
     @Override

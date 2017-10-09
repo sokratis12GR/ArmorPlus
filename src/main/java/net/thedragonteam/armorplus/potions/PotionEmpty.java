@@ -11,9 +11,8 @@ import net.minecraft.potion.PotionEffect;
 import net.thedragonteam.armorplus.potions.base.PotionBaseGood;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class PotionEmpty extends PotionBaseGood {
 
     public PotionEmpty() {

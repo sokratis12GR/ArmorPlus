@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entityarrow.EntityLavaArrow
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @SideOnly(Side.CLIENT)
 class RenderLavaArrow(rm: RenderManager) : RenderArrow<EntityLavaArrow>(rm) {
 

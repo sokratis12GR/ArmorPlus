@@ -15,8 +15,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
- * Mob Inspect by sokratis12GR.
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 @SideOnly(Side.CLIENT)
 public class RenderFreezeBomb extends RenderEntity {
 

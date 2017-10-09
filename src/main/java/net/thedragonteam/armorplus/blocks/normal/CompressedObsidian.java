@@ -20,14 +20,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.iface.IModelHelper;
+import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 /**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:50 PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class CompressedObsidian extends BlockBase implements IModelHelper {
+public class CompressedObsidian extends BlockBase implements IModdedBlock {
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public CompressedObsidian() {
@@ -45,7 +43,7 @@ public class CompressedObsidian extends BlockBase implements IModelHelper {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), 0);
+        this.initModel(0);
     }
 
     @Override

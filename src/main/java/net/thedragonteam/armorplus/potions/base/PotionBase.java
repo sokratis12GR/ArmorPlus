@@ -8,9 +8,8 @@ import net.minecraft.potion.Potion;
 import net.thedragonteam.armorplus.util.Utils;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public abstract class PotionBase extends Potion {
 
     public PotionBase(Boolean isBadEffectIn, int liquidColorIn, String potionName) {

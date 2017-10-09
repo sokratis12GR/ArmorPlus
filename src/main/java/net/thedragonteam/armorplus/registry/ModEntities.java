@@ -15,10 +15,8 @@ import static net.minecraftforge.fml.common.registry.EntityRegistry.addSpawn;
 import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnEnd;
 
 /**
- * net.thedragonteam.armorplus.entity
- * ArmorPlus created by sokratis12GR on 8/21/2016.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModEntities {
 
     public static void registerEntitySettings() {

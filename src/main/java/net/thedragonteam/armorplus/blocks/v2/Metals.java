@@ -8,6 +8,9 @@ import net.minecraft.util.IStringSerializable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public enum Metals implements IStringSerializable {
     STEEL("steel"),
     ELECTRICAL("electrical");

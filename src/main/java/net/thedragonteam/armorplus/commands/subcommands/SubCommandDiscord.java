@@ -12,6 +12,9 @@ import net.thedragonteam.thedragonlib.client.util.ClientUtills;
 
 import static net.thedragonteam.armorplus.util.TextUtils.*;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class SubCommandDiscord extends SubCommandBase {
 
     public SubCommandDiscord(ICommand parent) {

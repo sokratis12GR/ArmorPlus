@@ -4,6 +4,9 @@
 
 package net.thedragonteam.armorplus.items.enums;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public enum Items {
     ELECTRICAL_INGOT("electrical_ingot", 0),
     STEEL_INGOT("steel_ingot", 1);

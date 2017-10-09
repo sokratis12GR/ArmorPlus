@@ -17,15 +17,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
-import net.thedragonteam.armorplus.sounds.SoundTrapTriggered;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -38,9 +35,11 @@ import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.Utils.areNotNull;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class RegistryEventHandler {
-
 
     @SuppressWarnings("SameParameterValue")
     private static void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
@@ -74,27 +73,34 @@ public class RegistryEventHandler {
         registerEntities(EntityWitherMinion.class, "wither_minion", 7);
         // Mobs
         registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", 20,
-                0x721164, 0x00ff00);
+            0x721164, 0x00ff00);
         registerEntities(EntityIceGolem.class, "ice_golem", 21,
-                0xffffff, 0x00ff00);
+            0xffffff, 0x00ff00);
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         // Bosses
-        registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
-                0x7ae4ff, 0x79a6ff);
-        registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
-                0x665b52, 0x845833);
+        //  registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
+        //  0x7ae4ff, 0x79a6ff);
+        //  registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
+        //  0x665b52, 0x845833);
     }
 
     private static void registerAllBlocks(Register<Block> event, Block[]... blocksArray) {
-        Arrays.stream(blocksArray).forEachOrdered(blockList -> event.getRegistry().registerAll(blockList));
+        Arrays.stream(blocksArray).forEachOrdered(blockList -> registerAllBlocks(event, blockList));
+    }
+
+    private static void registerAllBlocks(Register<Block> event, Block... blockList) {
+        Arrays.stream(blockList).filter(Utils::isNotNull).forEachOrdered(block -> event.getRegistry().register(block));
     }
 
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
-        event.getRegistry().registerAll(
-                oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
-                blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+        registerAllBlocks(event,
+            oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
-        registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls, enderBlocks);
+        registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
+        //  registerAllBlocks(event, enderBlocks);
         registerTileEntities();
         registerTEFixes();
     }
@@ -125,7 +131,7 @@ public class RegistryEventHandler {
         Arrays.stream(itemsArray).forEachOrdered(itemList -> registerAllItems(event, itemList));
     }
 
-    private static void registerAllItems(Register<Item> event, Item[] itemsArray) {
+    private static void registerAllItems(Register<Item> event, Item... itemsArray) {
         Arrays.stream(itemsArray).filter(Utils::isNotNull).forEachOrdered(anItemsArray -> event.getRegistry().register(anItemsArray));
     }
 
@@ -133,29 +139,26 @@ public class RegistryEventHandler {
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
         registerItemBlock(event,
-                oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
-                blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+            oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         // ==== DUNGEON BLOCKS ==== \\
-        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls, enderBlocks);
+        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
+        //  registerAllItemBlocks(event, enderBlocks);
         // ==== ITEMS ==== \\
-        event.getRegistry().registerAll(
-                bookInfo, materials, steelIngot, electricalIngot, redstoneApple, lavaCrystal, theGiftOfTheGods,
-                twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, devTool, theUltimateParts,
-                itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+        registerAllItems(event,
+            bookInfo, materials, steelIngot, electricalIngot, redstoneApple, lavaCrystal, theGiftOfTheGods, devTool, theUltimateParts,
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
+        // ==== COSMETICS ==== \\
+        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem);
         // ==== GEAR ==== \\
         registerAllItems(event,
-                coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
         registerAllItems(event,
-                sword
-        );
-        registerAllItems(event,
-                battleAxe
-        );
-        registerAllItems(event,
-                bow
+            sword, battleAxe, bow
         );
     }
 
@@ -171,6 +174,7 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void registerSounds(Register<SoundEvent> event) {
-        event.getRegistry().register(new SoundTrapTriggered());
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
+        //  event.getRegistry().register(new SoundTrapTriggered());
     }
 }

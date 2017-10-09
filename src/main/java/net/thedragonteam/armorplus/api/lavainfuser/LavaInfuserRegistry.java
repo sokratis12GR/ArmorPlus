@@ -10,6 +10,9 @@ import net.minecraft.item.ItemStack;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class LavaInfuserRegistry {
 
     public static void addInfusingRecipe(ItemStack input, ItemStack output, Double exp) {

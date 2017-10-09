@@ -12,6 +12,9 @@ import net.thedragonteam.armorplus.container.ContainerLavaInfuser
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 import net.thedragonteam.armorplus.util.TextUtils
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class GuiLavaInfuser(playerInv: InventoryPlayer, private val tile: TileEntityLavaInfuser) : GuiContainer(ContainerLavaInfuser(playerInv, tile)) {
 
     init {

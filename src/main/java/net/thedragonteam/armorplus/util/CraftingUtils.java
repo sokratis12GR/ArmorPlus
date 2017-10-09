@@ -7,6 +7,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class CraftingUtils {
     public static void addRecipe(int id, ResourceLocation resLoc, IRecipe recipe) {
         CraftingManager.REGISTRY.register(id, resLoc, recipe);

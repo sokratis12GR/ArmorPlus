@@ -25,15 +25,13 @@ import net.minecraftforge.common.EnumPlantType.Nether
 import net.minecraftforge.fml.relauncher.Side.CLIENT
 import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus.tabArmorplusBlocks
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 import net.thedragonteam.armorplus.util.Utils.setName
 
 /**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 8/15/2016.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-class LavaCactus : BlockCactus(), IModelHelper {
+class LavaCactus : BlockCactus(), IModdedBlock {
     init {
         this.defaultState = this.blockState.baseState.withProperty(BlockCactus.AGE, 0)
         this.tickRandomly = true
@@ -43,8 +41,9 @@ class LavaCactus : BlockCactus(), IModelHelper {
         this.setCreativeTab(tabArmorplusBlocks)
     }
 
+    @SideOnly(CLIENT)
     override fun initModel() {
-        this.initModel(registryName,"lava", 0)
+        this.initModel("lava", 0)
     }
 
     override fun updateTick(worldIn: World, pos: BlockPos, state: IBlockState, rand: java.util.Random?) {

@@ -20,9 +20,8 @@ import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     public int inventorySize;
@@ -31,7 +30,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
     /**
      * the amount of itemHandler for the crafting grid
      */
-    public NonNullList<ItemStack> inventory = NonNullList.withSize(inventorySize, ItemStack.EMPTY);
+    public NonNullList<ItemStack> inventory;
     public String customName;
 
     public TileEntityBaseBench(String tileEntityName, int inventorySize) {

@@ -20,6 +20,9 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemMaterial extends Item implements IModdedItem {
 
     private String[] materialNames = new String[]{"chainmail", "guardian_scale", "wither_bone", "ender_dragon_scale", "the_ultimate_material"};
@@ -54,8 +57,8 @@ public class ItemMaterial extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, materialNames.length).mapToObj(
-                    i -> getItemStack(this, i)
+            IntStream.range(0, materialNames.length).mapToObj(i ->
+                    getItemStack(this, i)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -63,8 +66,8 @@ public class ItemMaterial extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, materialNames.length).forEachOrdered(
-                i -> this.initModel(setRL(materialNames[i]), "material", i)
+        IntStream.range(0, materialNames.length).forEachOrdered(i ->
+                this.initModel(setRL(materialNames[i]), "material", i)
         );
     }
 }

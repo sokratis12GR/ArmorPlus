@@ -19,9 +19,12 @@ import java.util.List;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemSpecialArrow extends ItemArrow implements IModelHelper {
 
-    ArrowType type;
+    private ArrowType type;
 
     public ItemSpecialArrow(ArrowType type) {
         this.type = type;

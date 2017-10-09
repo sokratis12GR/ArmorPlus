@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.event.RenderPlayerEvent
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
+import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
@@ -20,33 +20,22 @@ import net.thedragonteam.armorplus.ArmorPlus.MODID
 import net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack
 import java.util.*
 
-@EventBusSubscriber(value = Side.CLIENT, modid = MODID)
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+@Mod.EventBusSubscriber(value = Side.CLIENT, modid = MODID)
 class CosmeticsRenderInit {
     init {
         ThreadCosmeticsFetcher()
         MinecraftForge.EVENT_BUS.register(this)
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    fun onPlayerRender(event: RenderPlayerEvent.Pre) {
-        if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty()) {
-            for ((key, value) in COSMETICS_FOR_PEOPLE_LIST) {
-                val playerName = event.entityPlayer.name
-                if (key.equals(playerName, ignoreCase = true)) {
-                    //Render the special Item/Block
-                    value.render(event.entityPlayer, event.partialRenderTick)
-                    break
-                }
-            }
-        }
-    }
-
     companion object {
 
-        val COSMETICS_FOR_PEOPLE_LIST = HashMap<String, RenderCosmetics>()
+        @JvmStatic val COSMETICS_FOR_PEOPLE_LIST = HashMap<String, RenderCosmetics>()
 
-        fun parse(properties: Properties) {
-            properties.stringPropertyNames().forEach { key ->
+        @JvmStatic fun parse(properties: Properties) {
+            for (key in properties.stringPropertyNames()) {
                 val values = properties.getProperty(key).split("@".toRegex()).dropLastWhile(String::isEmpty).toTypedArray()
                 if (values.isNotEmpty()) {
                     val itemName = values[0]
@@ -69,6 +58,20 @@ class CosmeticsRenderInit {
                     //Add a new Special Renderer to the list
                     if (!stack.isEmpty) {
                         COSMETICS_FOR_PEOPLE_LIST.put(key, RenderCosmetics(stack))
+                    }
+                }
+            }
+        }
+
+        @SubscribeEvent(priority = EventPriority.HIGH)
+        @JvmStatic fun onPlayerRender(event: RenderPlayerEvent.Pre) {
+            if (!COSMETICS_FOR_PEOPLE_LIST.isEmpty()) {
+                for ((key, value) in COSMETICS_FOR_PEOPLE_LIST) {
+                    val playerName = event.entityPlayer.name
+                    if (key.equals(playerName, ignoreCase = true)) {
+                        //Render the special Item/Block
+                        RenderCosmetics.render(value, event.entityPlayer, event.partialRenderTick)
+                        break
                     }
                 }
             }

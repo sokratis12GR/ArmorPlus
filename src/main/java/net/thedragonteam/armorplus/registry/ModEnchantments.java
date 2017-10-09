@@ -8,6 +8,9 @@ import net.minecraft.enchantment.Enchantment;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModEnchantments {
 
     public static final Enchantment FURIOUS = new FuriousEnchantment();

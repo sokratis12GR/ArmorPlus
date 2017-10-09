@@ -14,9 +14,7 @@ import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.TextUtils.setText;
 
 /**
- * net.thedragonteam.armorplus.commands
- * ArmorPlus created by sokratis12GR on 6/25/2016 9:54 AM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class SubCommandBase implements ISubCommand {
 
@@ -65,7 +63,7 @@ public class SubCommandBase implements ISubCommand {
     }
 
     @Override
-    public void processSubCommand(MinecraftServer server, ICommandSender cmdSender, String[] args) {
+    public void processSubCommand(MinecraftServer server, ICommandSender commandSender, String[] args) {
 
     }
 }

@@ -12,14 +12,9 @@ import static net.minecraft.item.ItemStack.areItemsEqual;
 import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
 
 /**
- * net.thedragonteam.armorplus
- * ArmorPlus created by sokratis12GR on 7/26/2016 4:47 PM.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class APConfig {
-    //GameModes
-    //   @ModConfigProperty(category = "GameModes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy (All recipes are extremely easy) , 1 = expert (default, All Recipes Are Harder), 2 = hellish (Repairing for A+ items is DISABLED)")
-    //   public static int gameMode = 1;
     //WhiteList
     @ModConfigProperty(category = "items.the_gift_of_the_gods.white_list", name = "whitelistMax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
     public static int whitelistMax = 0;
@@ -631,26 +626,15 @@ public class APConfig {
         return EXPERT;
     }
 
-    public static boolean hasRecipes() {
-        return getRD().hasRecipes();
-    }
-
     public enum RecipesDifficulty {
-        EXPERT(true) {
+        EXPERT() {
             @Override
             public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
                 return areItemsEqual(repair, expert);
             }
         };
 
-        private final boolean hasRecipes;
-
-        RecipesDifficulty(boolean hasRecipes) {
-            this.hasRecipes = hasRecipes;
-        }
-
-        public boolean hasRecipes() {
-            return hasRecipes;
+        RecipesDifficulty() {
         }
 
         public abstract boolean isItemRepairable(ItemStack repair, ItemStack expert);

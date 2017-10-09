@@ -14,51 +14,48 @@ import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 
 /**
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
- */
-public class PotionUtils {
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+public final class PotionUtils {
 
-    public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
+    public static void addPotion(EntityLivingBase entity, Object potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
         if (isNotNull(potion)) {
-            entity.addPotionEffect(new PotionEffect(getPotion(potion), duration, amplifier, ambientIn, showParticlesIn));
+            if (potion instanceof String) {
+                entity.addPotionEffect(new PotionEffect(getPotion((String) potion), duration, amplifier, ambientIn, showParticlesIn));
+            } else if (potion instanceof Potion) {
+                entity.addPotionEffect(new PotionEffect((Potion) potion, duration, amplifier, ambientIn, showParticlesIn));
+            }
         }
     }
 
-    public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, boolean showParticlesIn) {
+    public static void addPotion(EntityLivingBase entity, Object potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
         if (isNotNull(potion)) {
-            entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, ambientIn, showParticlesIn));
+            addPotion(entity, potion, duration, amplifier, ambientIn, potionType.hasParticles());
         }
     }
 
-    public static void addPotion(EntityLivingBase entity, String potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
+    public static void addPotion(EntityLivingBase entity, Object potion, int duration, int amplifier, PotionType potionType) {
         if (isNotNull(potion)) {
-            addPotion(entity, getPotion(potion), duration, amplifier, ambientIn, potionType.hasParticles());
+            addPotion(entity, potion, duration, amplifier, false, potionType.hasParticles());
         }
     }
 
-    public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean ambientIn, PotionType potionType) {
-        if (isNotNull(potion)) addPotion(entity, potion, duration, amplifier, ambientIn, potionType.hasParticles());
+    public static void addPotion(EntityLivingBase entity, Object potion, int amplifier, PotionType potionType) {
+        if (isNotNull(potion)) {
+            addPotion(entity, potion, 240, amplifier, false, potionType.hasParticles());
+        }
     }
 
-    public static void addPotion(EntityLivingBase entity, Potion potion, int duration, int amplifier, PotionType potionType) {
-        if (isNotNull(potion)) addPotion(entity, potion, duration, amplifier, false, potionType.hasParticles());
-    }
-
-    public static void addPotion(EntityLivingBase entity, String potion, int amplifier, PotionType potionType) {
-        if (isNotNull(potion)) addPotion(entity, getPotion(potion), 240, amplifier, false, potionType.hasParticles());
-    }
-
-    public static void addPotion(EntityLivingBase entity, Potion potion, int amplifier, PotionType potionType) {
-        if (isNotNull(potion)) addPotion(entity, potion, 240, amplifier, false, potionType.hasParticles());
-    }
-
-    public static void removePotion(EntityLivingBase entity, String potion) {
-        removePotion(entity, (isNotNull(potion)) ? getPotion(potion) : ModPotions.EMPTY);
-    }
-
-    public static void removePotion(EntityLivingBase entity, Potion potion) {
-        entity.removePotionEffect((isNotNull(potion)) ? potion : ModPotions.EMPTY);
+    public static void removePotion(EntityLivingBase entity, Object potion) {
+        if (isNotNull(potion)) {
+            if (potion instanceof String) {
+                entity.removePotionEffect(getPotion((String) potion));
+            } else if (potion instanceof Potion) {
+                entity.removePotionEffect((Potion) potion);
+            }
+        } else {
+            entity.removePotionEffect(ModPotions.EMPTY);
+        }
     }
 
     public static String localizePotion(String resourceLocation) {

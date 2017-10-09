@@ -39,6 +39,9 @@ import static net.thedragonteam.armorplus.util.Utils.isNotEmpty;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public enum APArmorMaterial implements IStringSerializable {
     COAL(coalArmor,
             "coal", getItemStack(COAL_BLOCK), getValueByName(coalArmorItemNameColor),

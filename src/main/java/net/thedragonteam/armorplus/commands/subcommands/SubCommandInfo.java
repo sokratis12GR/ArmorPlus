@@ -14,6 +14,9 @@ import static net.minecraft.util.text.TextFormatting.*;
 import static net.thedragonteam.armorplus.ArmorPlus.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class SubCommandInfo extends SubCommandBase {
 
     public SubCommandInfo(ICommand parent) {

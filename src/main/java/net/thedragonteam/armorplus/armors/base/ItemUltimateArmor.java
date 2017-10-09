@@ -21,8 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.iface.IModelHelper;
-import net.thedragonteam.armorplus.iface.IRarityHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.List;
@@ -42,10 +41,13 @@ import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class ItemUltimateArmor extends ItemArmor implements IModelHelper, IRarityHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
 
     public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", setLocation("the_ultimate_armor"), 160,
-            theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints);
+        theUltimateArmorProtectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, theUltimateArmorToughnessPoints);
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(ItemUltimateArmor.theUltimateArmor, 0, slot);
@@ -121,7 +123,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModelHelper, IRarit
         ItemStack feet = player.getItemStackFromSlot(FEET);
         if (APConfig.enableFlightAbility) {
             if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings &&
-                    feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator()) {
+                feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator()) {
                 player.capabilities.allowFlying = true;
             } else {
                 player.capabilities.isFlying = false;

@@ -7,7 +7,10 @@ import net.minecraft.util.text.TextFormatting;
 import static net.minecraft.util.text.TextFormatting.GREEN;
 import static net.minecraft.util.text.TextFormatting.RED;
 
-public class TextUtils {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+public final class TextUtils {
 
     public static TextComponentTranslation setTextTranslation(String translationKey, Object... args) {
         return new TextComponentTranslation(translationKey, args);

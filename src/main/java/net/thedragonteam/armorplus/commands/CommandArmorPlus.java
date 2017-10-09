@@ -15,6 +15,7 @@ import net.thedragonteam.armorplus.commands.subcommands.SubCommandHelp;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
 import net.thedragonteam.thedragonlib.util.LogHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,9 @@ import static net.minecraft.util.text.TextFormatting.RED;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.TextUtils.setText;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class CommandArmorPlus extends CommandBase {
 
     private ArrayList<String> aliases = new ArrayList<>();
@@ -40,7 +44,7 @@ public class CommandArmorPlus extends CommandBase {
         setSubCommandNames("help", "info", "wiki", "discord");
         setSubCommands(new SubCommandHelp(this), new SubCommandInfo(this), new SubCommandWiki(this), new SubCommandDiscord(this));
         IntStream.range(0, subCommandsList.size()).forEachOrdered(
-                i -> subCommands.put(subCommandNames.get(i), subCommandsList.get(i))
+            i -> subCommands.put(subCommandNames.get(i), subCommandsList.get(i))
         );
     }
 
@@ -57,11 +61,13 @@ public class CommandArmorPlus extends CommandBase {
         return sender instanceof EntityPlayer;
     }
 
+    @NotNull
     @Override
     public List<String> getAliases() {
         return aliases;
     }
 
+    @NotNull
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
         return super.getTabCompletions(server, sender, args, targetPos);
@@ -84,8 +90,9 @@ public class CommandArmorPlus extends CommandBase {
             ISubCommand subCommand = subCommands.get(args[0]);
             String[] subArgs = copyOfRange(args, 1, args.length);
             subCommand.processSubCommand(server, sender, subArgs);
-        } else
+        } else {
             sender.sendMessage(setText(formattedText(RED, "commands.error.unknown")));
+        }
     }
 
     public Map<String, ISubCommand> getSubCommands() {

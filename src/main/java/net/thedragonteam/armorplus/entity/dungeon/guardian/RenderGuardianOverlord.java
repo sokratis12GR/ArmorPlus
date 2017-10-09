@@ -9,9 +9,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 @SideOnly(Side.CLIENT)
 public class RenderGuardianOverlord extends RenderLiving<EntityGuardianOverlord> {
     private static final ResourceLocation GUARDIAN_OVERLORD_TEXTURE = new ResourceLocation("armorplus:textures/entity/guardian_overlord.png");

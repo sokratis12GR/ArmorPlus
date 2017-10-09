@@ -14,6 +14,9 @@ import java.util.List;
 import static java.util.Locale.ROOT;
 import static net.thedragonteam.armorplus.util.ArrowUtils.addArrowInformation;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public enum ArrowType {
     COAL {
         @Override

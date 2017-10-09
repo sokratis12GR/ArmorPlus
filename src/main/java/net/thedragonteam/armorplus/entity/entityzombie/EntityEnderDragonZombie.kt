@@ -29,9 +29,7 @@ import net.thedragonteam.armorplus.registry.APItems
 import net.thedragonteam.thedragonlib.util.LogHelper
 
 /**
- * net.thedragonteam.armorplus.entity.entityzombie
- * ArmorPlus created by sokratis12GR on 8/21/2016.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 class EntityEnderDragonZombie(worldIn: World) : EntityMob(worldIn) {
 

@@ -32,6 +32,9 @@ import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class DevTool extends BaseItem {
 
     private int entityNumber = 0;
@@ -70,79 +73,79 @@ public class DevTool extends BaseItem {
         Writer writer = null;
         try {
             writer = new OutputStreamWriter(new FileOutputStream(
-                    new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))
+                new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))
             ));
             this.addLine(writer,
-                    "{", //0
-                    format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", "")),
-                    "\t\"Names\": {",
-                    format("\t\t\"Name\": \"%s\",", entity.getName()),
-                    format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag()),
-                    "\t},",
-                    "\t\"Dimension\": {",
-                    format("\t\t\"ID\": %d", entity.dimension),
-                    "\t},",
-                    "\t\"World\": {",
-                    format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName()),
-                    format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed()),
-                    format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked()),
-                    format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled()),
-                    "\t\t\"Spawn\": {",
-                    format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX()),
-                    format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY()),
-                    format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ()),
-                    "\t\t}",
-                    "\t},",
-                    "\t\"Position\": {",
-                    format("\t\t\"X\": %d,", entity.getPosition().getX()),
-                    format("\t\t\"Y\": %d,", entity.getPosition().getY()),
-                    format("\t\t\"Z\": %d", entity.getPosition().getZ()),
-                    "\t},",
-                    "\t\"Inventory Armor\": {",
-                    "\t\t\"Head\": {"
+                "{", //0
+                format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", "")),
+                "\t\"Names\": {",
+                format("\t\t\"Name\": \"%s\",", entity.getName()),
+                format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag()),
+                "\t},",
+                "\t\"Dimension\": {",
+                format("\t\t\"ID\": %d", entity.dimension),
+                "\t},",
+                "\t\"World\": {",
+                format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName()),
+                format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed()),
+                format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked()),
+                format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled()),
+                "\t\t\"Spawn\": {",
+                format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX()),
+                format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY()),
+                format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ()),
+                "\t\t}",
+                "\t},",
+                "\t\"Position\": {",
+                format("\t\t\"X\": %d,", entity.getPosition().getX()),
+                format("\t\t\"Y\": %d,", entity.getPosition().getY()),
+                format("\t\t\"Z\": %d", entity.getPosition().getZ()),
+                "\t},",
+                "\t\"Inventory Armor\": {",
+                "\t\t\"Head\": {"
             );
             this.writeArmorSlotItem(writer, entity, HEAD);
             this.addLine(writer,
-                    tabTwo("},"), //2
-                    tabTwo("\"Chest\": {") //2
+                tabTwo("},"), //2
+                tabTwo("\"Chest\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, CHEST);
             this.addLine(writer,
-                    tabTwo("},"), //2
-                    tabTwo("\"Legs\": {") //2
+                tabTwo("},"), //2
+                tabTwo("\"Legs\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, LEGS);
             this.addLine(writer,
-                    tabTwo("},"), //2
-                    tabTwo("\"Feet\": {") //2
+                tabTwo("},"), //2
+                tabTwo("\"Feet\": {") //2
             );
             this.writeArmorSlotItem(writer, entity, FEET);
             this.addLine(writer,
-                    tabTwo("}"), //2
-                    tabOne("},"), //1
-                    tabOne("\"Inventory Hands\": {"), //1
-                    tabTwo("\"Main-Hand\": {") //2
+                tabTwo("}"), //2
+                tabOne("},"), //1
+                tabOne("\"Inventory Hands\": {"), //1
+                tabTwo("\"Main-Hand\": {") //2
             );
             this.writeItem(writer, entity.getHeldItemMainhand());
             this.addLine(writer,
-                    "\t\t},",
-                    "\t\t\"Off-Hand\": {"
+                "\t\t},",
+                "\t\t\"Off-Hand\": {"
             );
             this.writeItem(writer, entity.getHeldItemOffhand());
             this.addLine(writer,
-                    "\t\t}",
-                    "\t},",
-                    "\t\"Entity Info\": {",
-                    format("\t\t\"Max Health\": %s,", entity.getMaxHealth()),
-                    format("\t\t\"Health\": %s,", entity.getHealth()),
-                    format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount()),
-                    format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable()),
-                    format("\t\t\"Is Invisible\": %s,", entity.isInvisible()),
-                    format("\t\t\"Is Glowing\": %s,", entity.isGlowing()),
-                    format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions()),
-                    format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire()),
-                    "\t}",
-                    "}" //0
+                "\t\t}",
+                "\t},",
+                "\t\"Entity Info\": {",
+                format("\t\t\"Max Health\": %s,", entity.getMaxHealth()),
+                format("\t\t\"Health\": %s,", entity.getHealth()),
+                format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount()),
+                format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable()),
+                format("\t\t\"Is Invisible\": %s,", entity.isInvisible()),
+                format("\t\t\"Is Glowing\": %s,", entity.isGlowing()),
+                format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions()),
+                format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire()),
+                "\t}",
+                "}" //0
             );
         } catch (IOException e) {
             e.printStackTrace();
@@ -158,11 +161,11 @@ public class DevTool extends BaseItem {
     private void writeItem(Writer writer, ItemStack stack) {
         if (!stack.isEmpty()) {
             addLine(writer,
-                    tabThree(format("\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())),
-                    tabThree(format("\"Display Name\": \"%s\",", stack.getDisplayName())),
-                    tabThree(format("\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())),
-                    tabThree(format("\"Count\": %d,", stack.getCount())),
-                    tabThree(format("\"Metadata\": %d", stack.getMetadata()))
+                tabThree(format("\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())),
+                tabThree(format("\"Display Name\": \"%s\",", stack.getDisplayName())),
+                tabThree(format("\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())),
+                tabThree(format("\"Count\": %d,", stack.getCount())),
+                tabThree(format("\"Metadata\": %d", stack.getMetadata()))
             );
         }
     }

@@ -39,6 +39,9 @@ import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ItemSpecialBow extends ItemBow implements IModdedItem {
 
     public double damage;
@@ -173,7 +176,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
             EntityArrow entityArrow = itemarrow.createArrow(world, itemstack, player);
 
             float newArrowVelocity = arrowVelocity * getVelocityOfArrow(stack);
-            entityArrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, newArrowVelocity, 1.0F);
+            entityArrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, newArrowVelocity, 1.0F);
 
             if (newArrowVelocity == 0) {
                 world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 0.4F, 1.0F);

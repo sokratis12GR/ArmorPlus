@@ -18,14 +18,12 @@ import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 
 /**
- * net.thedragonteam.armorplus.blocks
- * ArmorPlus created by sokratis12GR on 8/15/2016.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f), IModelHelper {
+class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f), IModdedBlock {
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
     }
@@ -60,7 +58,7 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
         return BlockStateContainer(this, FACING)
     }
 
-    override fun getMapColor(state: IBlockState?, p_180659_2_: IBlockAccess?, p_180659_3_: BlockPos?): MapColor {
+    override fun getMapColor(state: IBlockState?, worldIn: IBlockAccess?, pos: BlockPos?): MapColor {
         return MapColor.NETHERRACK
     }
 
@@ -69,6 +67,6 @@ class LavaNetherBrick : BlockBase(Material.ROCK, "lava_nether_brick", 20.0f, 3.0
     }
 
     override fun initModel() {
-        this.initModel(registryName, "lava", 0)
+        this.initModel("lava", 0)
     }
 }

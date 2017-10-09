@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.compat.tinkers.modifiers.TiCModifiers;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -23,9 +24,10 @@ import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.traits.ITrait;
+import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerTools;
 
-import static net.thedragonteam.armorplus.compat.tinkers.modifiers.TiCTraits.lavacrystalic;
 import static net.thedragonteam.armorplus.util.Utils.isNull;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -35,7 +37,10 @@ import static slimeknights.tconstruct.library.utils.HarvestLevels.COBALT;
 import static slimeknights.tconstruct.tools.TinkerMaterials.materials;
 import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
-public final class TiCMaterials {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+public final class TiCMaterials extends AbstractToolPulse {
 
     public static final Material INFUSED_LAVA_CRYSTAL = mat("infused_lava_crystal", 0xb32d00);
     public static final Material COMPRESSED_OBSIDIAN = mat("compressed_obsidian", 0x005580);
@@ -75,7 +80,7 @@ public final class TiCMaterials {
         INFUSED_LAVA_CRYSTAL.addItem("gemInfusedLavaCrystal", 2, Material.VALUE_Ingot);
         INFUSED_LAVA_CRYSTAL.addItem(ModBlocks.blockInfusedLavaCrystal, Material.VALUE_Block);
         INFUSED_LAVA_CRYSTAL.addItem("blockInfusedLavaCrystal", 2, Material.VALUE_Block);
-        INFUSED_LAVA_CRYSTAL.addTrait(lavacrystalic, HEAD).addTrait(flammable, HEAD).addTrait(autosmelt);
+        INFUSED_LAVA_CRYSTAL.addTrait((ITrait) TiCModifiers.infusedLavaCrystalModifier, HEAD).addTrait(flammable, HEAD).addTrait(autosmelt);
 
         COMPRESSED_OBSIDIAN.addItem(ModBlocks.compressedObsidian, Material.VALUE_Ingot);
         COMPRESSED_OBSIDIAN.addTrait(duritos);
@@ -98,12 +103,8 @@ public final class TiCMaterials {
     }
 
     private void setRepresentativeItems(Material material, Object representative) {
-        if (representative instanceof ItemStack) {
-            material.setRepresentativeItem((ItemStack) representative);
-        } else if (representative instanceof Item) {
-            material.setRepresentativeItem((Item) representative);
-        } else if (representative instanceof Block) {
-            material.setRepresentativeItem((Block) representative);
+        if (representative instanceof ItemStack || representative instanceof Item || representative instanceof Block) {
+            material.setRepresentativeItem(getItemStack(representative));
         } else {
             LogHelper.info("couldn't determine the type of " + representative);
         }
@@ -111,17 +112,17 @@ public final class TiCMaterials {
 
     public void registerToolMaterialStats() {
         TinkerRegistry.addMaterialStats(INFUSED_LAVA_CRYSTAL,
-                new HeadMaterialStats(110, 9.00f, 4.20f, COBALT),
-                new HandleMaterialStats(1.00f, 100),
-                new ExtraMaterialStats(100));
+            new HeadMaterialStats(110, 9.00f, 4.20f, COBALT),
+            new HandleMaterialStats(1.00f, 100),
+            new ExtraMaterialStats(100));
         TinkerRegistry.addMaterialStats(COMPRESSED_OBSIDIAN,
-                new HeadMaterialStats(139, 7.07f, 2.20f, COBALT),
-                new HandleMaterialStats(0.90f, 20),
-                new ExtraMaterialStats(90));
+            new HeadMaterialStats(139, 7.07f, 2.20f, COBALT),
+            new HandleMaterialStats(0.90f, 20),
+            new ExtraMaterialStats(90));
         TinkerRegistry.addMaterialStats(LAVA_INFUSED_OBSIDIAN,
-                new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
-                new HandleMaterialStats(1.00f, 80),
-                new ExtraMaterialStats(100));
+            new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
+            new HandleMaterialStats(1.00f, 80),
+            new ExtraMaterialStats(100));
     }
 
     @Subscribe

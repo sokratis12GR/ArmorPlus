@@ -12,6 +12,9 @@ import net.minecraft.world.World
 import net.thedragonteam.armorplus.registry.ModItems
 import net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class EntityLavaArrow : EntityArrow {
 
     constructor(worldIn: World) : super(worldIn)

@@ -20,9 +20,8 @@ import static net.minecraft.world.EnumDifficulty.HARD;
 import static net.minecraft.world.EnumDifficulty.NORMAL;
 
 /**
- * ArmorPlus - Kotlin created by sokratis12GR
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity {
     private static final DataParameter<Boolean> INVULNERABLE = EntityDataManager.createKey(EntityFreezeBomb.class, DataSerializers.BOOLEAN);
 

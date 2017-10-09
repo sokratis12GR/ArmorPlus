@@ -10,6 +10,9 @@ import javax.annotation.Nonnull;
 
 import static net.thedragonteam.armorplus.util.EnumTiers.SubTypeMaterials.*;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public enum EnumTiers implements IStringSerializable {
     TIER_0(0, "none", 0, new SubTypeMaterials[]{NONE}),
     TIER_1(1, "beginner", 8, new SubTypeMaterials[]{COAL, LAPIS, REDSTONE}),

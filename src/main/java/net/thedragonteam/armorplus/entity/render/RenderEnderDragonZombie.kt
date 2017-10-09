@@ -17,9 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie
 
 /**
- * net.thedragonteam.armorplus.entity.render
- * ArmorPlus created by sokratis12GR on 8/21/2016.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 @SideOnly(Side.CLIENT)
 class RenderEnderDragonZombie(rendermanagerIn: RenderManager) : RenderBiped<EntityEnderDragonZombie>(rendermanagerIn, ModelZombie(), 0.5f) {

@@ -18,8 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
-import net.thedragonteam.armorplus.iface.IModelHelper;
-import net.thedragonteam.armorplus.iface.IRarityHelper;
+import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.EnumTiers;
 import net.thedragonteam.armorplus.util.PotionUtils;
@@ -34,8 +33,10 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 import static net.thedragonteam.armorplus.util.Utils.*;
 
-public class ItemArmorBase extends ItemArmor implements IModelHelper, IRarityHelper {
-
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
     public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 2,
             coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);

@@ -12,6 +12,10 @@ import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+//TODO: FIX that...
 public class APItems {
 
     public static Item coalHelmet;
@@ -224,24 +228,6 @@ public class APItems {
             knightSlimeLeggings = knightSlime[2];
             knightSlimeBoots = knightSlime[3];
         }
-        //Item[][] types = new Item[][]{sword, battleAxe, bow};
-        //Item[] swordItemList = new Item[]{coalSword, lapisSword, redstoneSword,
-        //        emeraldSword, obsidianSword, lavaSword,
-        //        guardianSword, superStarSword, enderDragonSword
-        //};
-        //Item[] battleAxeItemList = new Item[]{coalBattleAxe, lapisBattleAxe, redstoneBattleAxe,
-        //        emeraldBattleAxe, obsidianBattleAxe, lavaBattleAxe,
-        //        guardianBattleAxe, superStarBattleAxe, enderDragonBattleAxe
-        //};
-        //Item[] bowItemList = new Item[]{coalBow, lapisBow, redstoneBow,
-        //        emeraldBow, obsidianBow, lavaBow,
-        //        guardianBow, superStarBow, enderDragonBow
-        //};
-        //Item[][] weapons = new Item[][]{swordItemList, battleAxeItemList, bowItemList};
-        //boolean[][] weaponBooleanList = new boolean[][]{enableCoalWeapons, enableLapisWeapons, enableRedstoneWeapons,
-        //        enableEmeraldWeapons, enableObsidianWeapons, enableLavaWeapons,
-        //        enableGuardianWeapons, enableSuperStarWeapons, enableEnderDragonWeapons
-        //};
         if (enabled(enableCoalWeapons[0], coalSword)) coalSword = sword[0];
         if (enabled(enableCoalWeapons[1], coalBattleAxe)) coalBattleAxe = battleAxe[0];
         if (enabled(enableCoalWeapons[2], coalBow)) coalBow = bow[0];

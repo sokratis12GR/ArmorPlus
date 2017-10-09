@@ -20,9 +20,7 @@ import net.thedragonteam.armorplus.iface.IModdedItem
 import net.thedragonteam.armorplus.util.Utils.setName
 
 /**
- * net.thedragonteam.armorplus.items.consumables
- * ArmorPlus created by sokratis12GR
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 class RedstoneApple : ItemFood(4, 2.0f, false), IModdedItem {
     init {

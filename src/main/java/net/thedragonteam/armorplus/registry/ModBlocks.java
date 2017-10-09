@@ -23,10 +23,8 @@ import static net.thedragonteam.armorplus.blocks.v2.Metals.ELECTRICAL;
 import static net.thedragonteam.armorplus.blocks.v2.Metals.STEEL;
 
 /**
- * net.thedragonteam.armorplus.registry
- * ArmorPlus created by sokratis12GR on 6/13/2016 9:39 PM.
- * - TheDragonTeam
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class ModBlocks {
 
     public static OreLavaCrystal oreLavaCrystal = new OreLavaCrystal();

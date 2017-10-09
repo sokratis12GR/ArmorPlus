@@ -13,6 +13,9 @@ import net.thedragonteam.armorplus.items.enums.Items;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class BaseItem extends Item implements IModdedItem {
 
     public BaseItem(String itemName) {

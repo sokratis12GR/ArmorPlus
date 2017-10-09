@@ -11,6 +11,9 @@ import net.minecraftforge.fml.common.network.IGuiHandler
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class GuiHandler : IGuiHandler {
 
     override fun getServerGuiElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int, z: Int): Any? {

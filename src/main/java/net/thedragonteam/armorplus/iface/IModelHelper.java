@@ -18,6 +18,9 @@ import static net.thedragonteam.armorplus.util.Utils.isNotNullNorEmpty;
 import static net.thedragonteam.armorplus.util.Utils.isNullOrEmpty;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItem;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
@@ -29,7 +32,7 @@ public interface IModelHelper {
         if (isNullOrEmpty(variantIn)) variantIn = "inventory";
         ModelResourceLocation mrl = new ModelResourceLocation(resourceLocation, variantIn);
         if (this instanceof Block) {
-            setCustomModelResourceLocation(getItem((Block) this), meta, mrl);
+            setCustomModelResourceLocation(getItem(this), meta, mrl);
         } else if (this instanceof Item) {
             setCustomModelResourceLocation((Item) this, meta, mrl);
         }
@@ -41,13 +44,13 @@ public interface IModelHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(ResourceLocation registryName, String suffix, String location) {
-        this.initModel(registryName, suffix, location, 0);
+    default void initModel(ResourceLocation registryName, String location, int meta, String variantIn) {
+        this.initModel(registryName, "", location, meta, variantIn);
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(ResourceLocation registryName, String location, int meta, String variantIn) {
-        this.initModel(registryName, "", location, meta, variantIn);
+    default void initModel(ResourceLocation registryName, String suffix, String location) {
+        this.initModel(registryName, suffix, location, 0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -61,14 +64,14 @@ public interface IModelHelper {
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(ResourceLocation registryName, String location) {
-        this.initModel(registryName, location, 0);
+    default void initModel(ResourceLocation registryName, Object locOrMeta) {
+        if (locOrMeta instanceof Integer) {
+            this.initModel(registryName, (Integer) locOrMeta, "");
+        } else if (locOrMeta instanceof String) {
+            this.initModel(registryName, (String) locOrMeta, 0);
+        }
     }
 
     @SideOnly(Side.CLIENT)
-    default void initModel(ResourceLocation registryName, int meta) {
-        this.initModel(registryName, meta, "");
-    }
-
     void initModel();
 }

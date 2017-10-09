@@ -12,6 +12,9 @@ import net.minecraft.init.MobEffects
 import net.minecraft.inventory.EntityEquipmentSlot
 import net.minecraft.potion.PotionEffect
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class FuriousEnchantment : EnchantmentBase("furious", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR, arrayOf(EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET), 1, 3, 10, 15, true, true) {
 
     override fun onUserHurt(user: EntityLivingBase?, attacker: Entity?, level: Int) {

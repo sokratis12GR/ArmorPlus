@@ -18,8 +18,11 @@ import static java.lang.String.format;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 @SideOnly(Side.CLIENT)
-public class ToolTipUtils {
+public final class ToolTipUtils {
 
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
         tooltip.add(GRAY + formattedText("tooltip.showinfo.keybind", formatting, keyBinding.getDisplayName()) + GRAY);

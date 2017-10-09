@@ -14,6 +14,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 @SideOnly(Side.CLIENT)
 class RenderIceGolem(renderManagerIn: RenderManager) : RenderLiving<EntityIceGolem>(renderManagerIn, ModelArmorStand(), 0.5f) {
 

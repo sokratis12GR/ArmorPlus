@@ -10,6 +10,9 @@ import java.io.InputStreamReader
 import java.net.URL
 import java.util.*
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 class ThreadCosmeticsFetcher : Thread() {
     init {
         this.name = "ArmorPlus cosmetics fetcher"
@@ -20,7 +23,7 @@ class ThreadCosmeticsFetcher : Thread() {
     override fun run() {
         LogHelper.info("Fetching cosmetics for people...")
         try {
-            val url = URL("http://fdn.redstone.tech/TheDragonTeam/armorplus/thedragonteam.properties")
+            val url = URL("https://download.nodecdn.net/containers/thedragonteam/armorplus-cosmetics.properties")
             val specialProperties = Properties()
             specialProperties.load(InputStreamReader(url.openStream()))
             CosmeticsRenderInit.parse(specialProperties)

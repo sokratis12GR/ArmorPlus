@@ -13,14 +13,17 @@ import net.minecraft.world.IBlockAccess
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 
-class BlockStoneBrickTower(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BlockStoneBrickTower(stoneBricks: StoneBricks) : BlockBase(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0f, 5.0f, ToolType.PICKAXE, 0), IModdedBlock {
 
     private val mapColor: MapColor = stoneBricks.mapColor
 
     override fun initModel() {
-        this.initModel(registryName, "stone_bricks", 0)
+        this.initModel("stone_bricks", 0)
     }
 
     /**

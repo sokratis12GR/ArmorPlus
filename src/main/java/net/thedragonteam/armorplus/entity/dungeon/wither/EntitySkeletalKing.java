@@ -26,15 +26,14 @@ import static net.minecraft.item.ItemStack.EMPTY;
 import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 
 /**
- * Created by sokratis12GR on 6/18/2017.
- */
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedAttackMob {
 
     private final BossInfoServerDungeon bossInfo;
 
     private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer &&
             ((EntityLivingBase) target).attackable();
-
 
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);

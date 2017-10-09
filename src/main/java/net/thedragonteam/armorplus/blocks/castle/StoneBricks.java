@@ -9,6 +9,9 @@ import net.minecraft.util.IStringSerializable;
 
 import java.util.Locale;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public enum StoneBricks implements IStringSerializable {
     WHITE(MapColor.SNOW),
     RED(MapColor.RED),

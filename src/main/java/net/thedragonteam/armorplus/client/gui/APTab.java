@@ -18,9 +18,7 @@ import net.thedragonteam.armorplus.registry.ModItems;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
- * net.thedragonteam.armorplus.client.gui
- * ArmorPlus created by sokratis12GR on 7/26/2016 4:42 PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class APTab extends CreativeTabs {
 
@@ -46,27 +44,20 @@ public class APTab extends CreativeTabs {
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getIconItemStack() {
-        switch (tab) {
-            case 0:
-                return addTabItemStack(APItems.lavaChestplate);
-            case 1:
-                return APItems.infusedLavaCrystal;
-            case 2:
-                return addTabItemStack(ModBlocks.blockInfusedLavaCrystal);
-            case 3:
-                return addTabItemStack(ModItems.battleAxe[7]);
-            case 4:
-                return addTabItemStack(APItems.arditeChestplate);
+        if (tab == 0) {
+            return addTabItemStack(APItems.lavaChestplate);
+        } else if (tab == 1) {
+            return APItems.infusedLavaCrystal;
+        } else if (tab == 2) {
+            return addTabItemStack(ModBlocks.blockInfusedLavaCrystal);
+        } else if (tab == 3) {
+            return addTabItemStack(ModItems.battleAxe[7]);
         }
         return ItemStack.EMPTY;
     }
 
-    private ItemStack addTabItemStack(Item stack) {
-        return !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal);
-    }
-
-    private ItemStack addTabItemStack(Block stack) {
-        return !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal);
+    private ItemStack addTabItemStack(Object stack) {
+        return stack instanceof Block || stack instanceof Item ? !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal) : ItemStack.EMPTY;
     }
 
     @Override

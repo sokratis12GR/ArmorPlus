@@ -18,6 +18,9 @@ import static java.util.Locale.ROOT;
 import static net.thedragonteam.armorplus.ArmorPlus.configuration;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ConfigGui extends GuiConfig {
 
     public ConfigGui(GuiScreen parentScreen) {

@@ -11,6 +11,9 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 import net.thedragonteam.armorplus.util.Utils
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 open class EnchantmentBase @JvmOverloads constructor(name: String, rarity: Enchantment.Rarity, type: EnumEnchantmentType, allowedSlots: Array<EntityEquipmentSlot>, private val min: Int, private val max: Int, private val minEnchantability: Int = 10, private val maxEnchantability: Int = 15, private val isTreasure: Boolean = false, private val isBookAllowed: Boolean = false) : Enchantment(rarity, type, allowedSlots) {
 
     init {

@@ -30,6 +30,9 @@ import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
 public enum Swords {
     COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK),
             getValueByName(coalWeaponItemNameColor), setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),

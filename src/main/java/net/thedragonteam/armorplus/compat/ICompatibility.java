@@ -5,7 +5,7 @@
 package net.thedragonteam.armorplus.compat;
 
 /**
- * Implement on all primary compatibility classes.
+ * Implement on all primary compatibility classes. * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public interface ICompatibility {
     /**
@@ -14,7 +14,8 @@ public interface ICompatibility {
      *
      * @param phase - The load phase at which this method is being called.
      */
-    void loadCompatibility(InitializationPhase phase);
+    default void loadCompatibility(InitializationPhase phase) {
+    }
 
     /**
      * @return The `getMODID` of the mod we are adding compatibility for.

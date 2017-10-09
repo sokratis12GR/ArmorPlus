@@ -12,8 +12,6 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
@@ -22,17 +20,26 @@ import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import static net.minecraft.creativetab.CreativeTabs.getNextID;
-import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCLoaded;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
-@Mod(modid = ArmorPlus.MODID, name = ArmorPlus.MODNAME, version = ArmorPlus.VERSION, dependencies = ArmorPlus.DEPEND, guiFactory = ArmorPlus.GUI_FACTORY, updateJSON = ArmorPlus.UPDATE_JSON)
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+@Mod(modid = ArmorPlus.MODID,
+    name = ArmorPlus.MODNAME,
+    version = ArmorPlus.VERSION,
+    dependencies = ArmorPlus.DEPEND,
+    guiFactory = ArmorPlus.GUI_FACTORY,
+    updateJSON = ArmorPlus.UPDATE_JSON,
+    acceptedMinecraftVersions = "[1.12.2,1.13)"
+)
 public class ArmorPlus {
 
     /**
      * Updates every time the mod updates minecraft version,
      * Updates MAJOR with 1 after each version upgrade
      */
-    public static final String MCVERSION = "1.12";
+    public static final String MCVERSION = "1.12.2";
     /**
      * Updates every MAJOR change,
      * never resets
@@ -42,7 +49,7 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 5;
+    public static final int MINOR = 7;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -53,21 +60,21 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 15;
+    public static final int BUILD = 22;
     /**
      * The ArmorPlus Version
      */
-    public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "-alpha";
-    public static final String LIB_VERSION = "1.12-4.1.0";
-    public static final String FORGE_VERSION = "14.21.1.2412";
+    public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "-beta";
+    public static final String LIB_VERSION = "1.12.2-5.2.0";
+    public static final String FORGE_VERSION = "14.23.0.2512";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
     public static final String DEPEND = "required-after:forge@[" + FORGE_VERSION + ",);"
-            + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
-            + "required-after:forgelin;"
-            + "after:mantle;"
-            + "after:tconstruct;";
+        + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
+        + "required-after:forgelin;"
+        + "after:mantle;"
+        + "after:tconstruct;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
@@ -81,10 +88,9 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusItems = new APTab(getNextID(), MODID, setName("items"), 1);
     public static CreativeTabs tabArmorplusBlocks = new APTab(getNextID(), MODID, setName("blocks"), 2);
     public static CreativeTabs tabArmorplusWeapons = new APTab(getNextID(), MODID, setName("weapons"), 3);
-    public static CreativeTabs tabArmorplusTinkers = isTiCLoaded() ? new APTab(getNextID(), MODID, setName("tinkers"), 4) : null;
 
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{
-            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons, //tabArmorplusTinkers
+        tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons
     });
 
     public static ModConfigProcessor configProcessor = new ModConfigProcessor();
@@ -109,16 +115,8 @@ public class ArmorPlus {
         proxy.preInit(event);
     }
 
-    @SideOnly(Side.CLIENT)
     @EventHandler
-    public void initClient(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
-        proxy.init(event);
-    }
-
-    @SideOnly(Side.SERVER)
-    @EventHandler
-    public void initServer(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
         proxy.init(event);
     }

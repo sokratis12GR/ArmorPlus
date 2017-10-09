@@ -2,18 +2,21 @@ package net.thedragonteam.armorplus;
 
 import static net.thedragonteam.armorplus.ArmorPlus.DEV_ENVIRONMENT;
 
-@SuppressWarnings("ALL")
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ **/
+@SuppressWarnings("ConstantConditions")
 public class DevUtils {
 
-    private static boolean enableTowerDev = false;
-    private static boolean enableDevTool = false;
+    private static final boolean ENABLE_TOWER_DEV = false;
+    private static final boolean ENABLE_DEV_TOOL = false;
 
     public static boolean enableTowerDevEnv() {
-        return isDev(enableTowerDev);
+        return isDev(ENABLE_TOWER_DEV);
     }
 
     public static boolean enableDevTool() {
-        return isDev(enableDevTool);
+        return isDev(ENABLE_DEV_TOOL);
     }
 
     private static boolean isDev(boolean type){

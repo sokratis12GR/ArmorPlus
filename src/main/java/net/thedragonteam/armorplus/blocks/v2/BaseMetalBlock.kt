@@ -14,18 +14,24 @@ import net.minecraft.util.EnumHand
 import net.minecraft.util.Rotation
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
 import net.thedragonteam.armorplus.blocks.base.BlockBase
 import net.thedragonteam.armorplus.blocks.base.ToolType
-import net.thedragonteam.armorplus.iface.IModelHelper
+import net.thedragonteam.armorplus.iface.IModdedBlock
 
-class BaseMetalBlock(metals: Metals) : BlockBase(Material.IRON, metals.getName() + "_block", 20.0f, 5.0f, ToolType.PICKAXE, 1), IModelHelper {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+class BaseMetalBlock(metals: Metals) : BlockBase(Material.IRON, metals.getName() + "_block", 20.0f, 5.0f, ToolType.PICKAXE, 1), IModdedBlock {
 
     init {
         this.defaultState = this.blockState.baseState.withProperty(FACING, EnumFacing.NORTH)
     }
 
+    @SideOnly(Side.CLIENT)
     override fun initModel() {
-        this.initModel(registryName, 0)
+        this.initModel(0)
     }
 
     override fun getStateForPlacement(worldIn: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase, hand: EnumHand?): IBlockState {
