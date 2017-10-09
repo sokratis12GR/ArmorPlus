@@ -1,3 +1,83 @@
+ArmorPlus 1.12.2-11.7.0.22-beta
+----------------------------
+
+######Stability - Please Read
+
+**Note**: 
+
+* **This version is the first beta of the 1.12 mod, which will be focused on the 1.12.2 version of mc.**
+* **WIP and experimental features will not find their place in the mod. At least for now.**
+* **This release aims to be the first playable version of the mod**
+* **While some unfinished wip features are being removed, they WILL come back in the future, ready to be in use.**
+
+ArmorPlus 1.12.1-11.6.4.21-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Cosmetics not working
+
+ArmorPlus 1.12.1-11.6.3.20-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Tinkers' Construct Integration now works 100% (all features re-implemented)
+    * Modifiers work (FireStorm & Extra Modifier)
+    * Materials work (Infused Lava Crystal, Infused Obsidian & Compressed Obsidian)
+    
+ArmorPlus 1.12.1-11.6.2.19-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Crash with latest Tinkers (for some reason a modifier was being registered twice)
+
+ArmorPlus 1.12.1-11.6.1.18-alpha
+----------------------------
+
+**Features Changed**:
+
+* Some block textures added and a new model for the Ender Pillar
+
+* Skeletal King (WIP) progress, still not ready for even partial release
+
+**Bugs Fixed**:
+
+* Wrong version being used as Mod Version
+
+* Experimental World Gen being accidentally applied...
+
+ArmorPlus 1.12.1-11.6.0.17-alpha
+----------------------------
+
+**Features Changed**:
+
+* The Wither boss minions got a minor change, should work now... max amount to spawned minions has been added
+
+**Performance**:
+
+* Improved a lot of code and/or added/changed some others to work better
+
+**Bugs Fixed**:
+
+* Crash at startup caused by ModItems.java (hopefully)
+
+**Dependencies**:
+
+* Updated to Minecraft 1.12.1
+
+* Now requires TheDragonLib 1.12.1-5.0.0
+
+* Now requires Forge 14.22.0.2462
+
+ArmorPlus 1.12-11.5.1.16-alpha
+----------------------------
+
+**Bugs Fixed**:
+
+* Crash on startup, fixed a not full check for the tinkers' integration
+
 ArmorPlus 1.12-11.5.0.15-alpha
 ----------------------------
 
