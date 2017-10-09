@@ -1,17 +1,11 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "textures": {},
-    "model": "cube_all",
-    "uvlock": true
+    "transform": "forge:default-block"
   },
   "variants": {
-    "normal": [
-      {
-        "textures": {
-          "all": "armorplus:blocks/ender_pillar"
-        }
-      }
-    ]
+    "normal": {
+      "model": "armorplus:ender_pillar"
+    }
   }
 }
