@@ -76,12 +76,11 @@ jar {
 artifacts {
 }
 
-
 dependencies {
     deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
     compile "net.darkhax.tesla:Tesla-1.12:${tesla_version}"
-    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
-    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+    deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
+    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "shadowfacts-forgelin:Forgelin:1.5.1"
@@ -120,7 +119,7 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
         releaseType = 'alpha'
-        addGameVersion '1.12'
+        addGameVersion '1.12.2'
         relations {
             requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
