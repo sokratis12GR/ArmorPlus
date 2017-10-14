@@ -21,8 +21,6 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 [Grab the latest publicly available versions from curseforge.](https://minecraft.curseforge.com/projects/armorplus/files)
 
-[Or you can get a version from dev builds](http://fdn.redstone.tech/TheDragonTeam/armorplus/jars/)
-
 **[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/TheDragonTeam/ArmorPlus/wiki)**
 
 ## Mod Integrations
