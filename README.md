@@ -7,7 +7,7 @@
 
 ## Official Website
 
-[![Website](https://img.shields.io/website-online-offline-green-orange/https/sokratis12gr.com/mods/armorplus/index.php.svg?style=flat-square)](https://sokratis12gr.com/mods/armorplus/)
+[![Website](https://img.shields.io/website-online-offline-green-orange/https/sokratis12gr.com/mods/armorplus/index.php.svg?style=flat)](https://sokratis12gr.com/mods/armorplus/)
 
 ## About
 
