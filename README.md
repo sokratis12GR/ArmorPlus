@@ -35,7 +35,7 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## TheDragonTeam's Discord
 
-[![Discord](https://img.shields.io/discord/213305542712623105.svg)](https://discord.gg/ZVwmqyx)
+[![Discord](https://img.shields.io/discord/213305542712623105.svg?style=flat)](https://discord.gg/ZVwmqyx)
 
 ## Mod's Official Wiki
 
