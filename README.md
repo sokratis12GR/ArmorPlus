@@ -2,12 +2,18 @@
 
 ![](https://sokratis12gr.com/uploads/headerimg.jpg "AmorPlus")
 
-[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](http://minecraft.curseforge.com/projects/armorplus)
-[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](http://minecraft.curseforge.com/projects/armorplus)
+[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://minecraft.curseforge.com/projects/armorplus)
+[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://minecraft.curseforge.com/projects/armorplus)
 
-## About this Mod
+## Official Website
 
-ArmorPlus is a mod created by **[sokratis12GR](http://ftb.gamepedia.com/sokratis12GR)** **(TheDragonTeam)**. ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds.
+[![Website](https://img.shields.io/website-Online-Offline-green-red/https/sokratis12gr.com/mods/armorplus/index.php.svg?label=Official Website)](https://sokratis12gr.com/mods/armorplus/)
+
+## About
+
+ArmorPlus is a mod created by **[sokratis12GR](https://sokratis12gr.com)** **(TheDragonTeam)**. 
+
+ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds.
 
 Credits for people who helped translating the mod can be found **[here](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/assets/armorplus/lang/credits.md)**
 
@@ -31,12 +37,12 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## TheDragonTeam's Discord
 
-Join now via this link: **[TheDragonTeam Discord](http://discord.thedragonteam.info)**
+[![Discord](https://img.shields.io/discord/213305542712623105.svg)](https://discord.gg/ZVwmqyx)
 
 ## Mod's Official Wiki
 
 The Official Wiki for this mod is
-**[http://ftb.gamepedia.com/ArmorPlus](http://ftb.gamepedia.com/ArmorPlus)**
+**[FTB Gamepedia ArmorPlus](https://ftb.gamepedia.com/ArmorPlus)**
 
 ## Licence
 
