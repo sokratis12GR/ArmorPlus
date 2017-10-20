@@ -47,8 +47,8 @@ The Official Wiki for this mod is
 ### Repo
 [![GitHub forks](https://img.shields.io/github/forks/thedragonteam/armorplus.svg?style=social&label=Fork)](https://github.com/TheDragonTeam/ArmorPlus)
 [![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Stars)](https://github.com/TheDragonTeam/ArmorPlus)
-[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Watch)](https://github.com/TheDragonTeam/ArmorPlus)
-[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Follow)](https://github.com/TheDragonTeam/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/watchers/thedragonteam/armorplus.svg?style=social&label=Watch)](https://github.com/TheDragonTeam/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/followers/sokratis12GR.svg?style=social&label=Follow)]()
 ### Issues
 [![GitHub issues](https://img.shields.io/github/issues/thedragonteam/armorplus.svg?colorB=green)]()
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
