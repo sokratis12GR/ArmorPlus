@@ -42,6 +42,18 @@ Credits for people who helped translating the mod can be found **[here](https://
 The Official Wiki for this mod is
 **[FTB Gamepedia ArmorPlus](https://ftb.gamepedia.com/ArmorPlus)**
 
+## GitHub Stats
+
+### Issues
+[![GitHub issues](https://img.shields.io/github/issues/thedragonteam/armorplus.svg?colorB=green)]()
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+### Pull Requests
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/thedragonteam/armorplus.svg?colorB=green)]()
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+### Additional
+[![GitHub contributors](https://img.shields.io/github/contributors/thedragonteam/armorplus.svg)]()
+[![GitHub commit activity the past week, 4 weeks, yea](https://img.shields.io/github/commit-activity/y/thedragonteam/armorplus.svg)]()
+
 ## Licence
 
 [![license](https://img.shields.io/github/license/TheDragonTeam/ArmorPlus.svg)](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE)
