@@ -44,4 +44,4 @@ The Official Wiki for this mod is
 
 ## Licence
 
-ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE).
+[![license](https://img.shields.io/github/license/TheDragonTeam/ArmorPlus.svg)](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE)
