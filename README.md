@@ -42,8 +42,13 @@ Credits for people who helped translating the mod can be found **[here](https://
 The Official Wiki for this mod is
 **[FTB Gamepedia ArmorPlus](https://ftb.gamepedia.com/ArmorPlus)**
 
-## GitHub Stats
+## GitHub Information
 
+### Repo
+[![GitHub forks](https://img.shields.io/github/forks/thedragonteam/armorplus.svg?style=social&label=Fork)]()
+[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Stars)]()
+[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Watch)]()
+[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Follow)]()
 ### Issues
 [![GitHub issues](https://img.shields.io/github/issues/thedragonteam/armorplus.svg?colorB=green)]()
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
@@ -52,7 +57,7 @@ The Official Wiki for this mod is
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
 ### Additional
 [![GitHub contributors](https://img.shields.io/github/contributors/thedragonteam/armorplus.svg)]()
-[![GitHub commit activity the past week, 4 weeks, yea](https://img.shields.io/github/commit-activity/y/thedragonteam/armorplus.svg)]()
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/thedragonteam/armorplus.svg)]()
 
 ## Licence
 
