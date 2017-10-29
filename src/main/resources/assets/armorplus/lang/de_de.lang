@@ -1,3 +1,4 @@
+#PARSE_ESCAPES
 #de_DE.lang File
 
 #CREATIVE TAB
@@ -6,19 +7,19 @@ itemGroup.items=AP Gegenstände
 itemGroup.blocks=AP Blöcke
 
 #Containers
-container.ArmorForge=Rütungsschmiede
+container.ArmorForge=Rüstungsschmiede
 container.inventory=Inventar
 
 # Keybinds
 key.categories.armorplus=ArmorPlus
-key.nightvision=Umschalten Nachtsicht (The Ultimate Armor)
+key.nightvision=Nachtsicht Umschalten (Ultimative Rüstung)
 
 #Commands
 commands.error.arg.invalid=Ungültige Argumente
 commands.error.arg.missing=Nicht genügend Argumente
 commands.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
 commands.error.404=Befehl nicht gefunden!
-commands.error.unknown=Unbekannter Befehl! Bitte verwende /armorplus help
+commands.error.unknown=Unbekannter Befehl! mit "/armorplus help" kannst du dir eine übersicht anzeigen lassen
 commands.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
 commands.success=Erfolgreich ausgeführt
 commands.formatText.help=%s - %s
@@ -33,7 +34,7 @@ commands.info.help=Zeigt Informationen über ArmorPlus
 
 #CommandWiki
 commands.wiki.usage=/armorplus wiki
-commands.wiki.help=öffnet einen Link in deinem Browser zur ArmorPlus Wiki
+commands.wiki.help=Öffnet einen Link in deinem Browser zur ArmorPlus Wiki
 
 #JEI
 gui.jei.category.armorforge=Rüstungsschmiede
@@ -52,10 +53,10 @@ item.CoalLeggings.name=Kohlebeinschutz
 item.CoalBoots.name=Kohlestiefel
 
 #LapisArmor
-item.LapisHelmet.name=Lapislazulihelm
-item.LapisChestplate.name=Lapislazulibrustpanzer
-item.LapisLeggings.name=Lapislazulibeinschutz
-item.LapisBoots.name=Lapislazulistiefel
+item.LapisHelmet.name=Lapislazuli-Helm
+item.LapisChestplate.name=Lapislazuli-Brustpanzer
+item.LapisLeggings.name=Lapislazuli-Beinschutz
+item.LapisBoots.name=Lapislazuli-Stiefel
 
 #RedstoneArmor
 item.RedstoneHelmet.name=Redstonehelm
@@ -166,10 +167,10 @@ item.ManyullymLeggings.name=Manyullymbeinschutz
 item.ManyullymBoots.name=Manyullymstiefel
 
 #ChickenArmor
-item.ChickenHelmet.name=Chicken-Helm
-item.ChickenChestplate.name=Chicken-Brustpanzer
-item.ChickenLeggings.name=Chicken-Beinschutz
-item.ChickenBoots.name=Chicken-Stiefel
+item.ChickenHelmet.name=Hühnerhelm
+item.ChickenChestplate.name=Hühnerbrustpanzer
+item.ChickenLeggings.name=Hühnerbeinschutz
+item.ChickenBoots.name=Hühnerstiefel
 
 #SlimeArmor
 item.SlimeHelmet.name=Schleimhelm
@@ -190,30 +191,30 @@ item.SteelLeggings.name=Stahlbeinschutz
 item.SteelBoots.name=Stahlstiefel
 
 #DevArmor
-item.DevHelmet.name=Dev-Helm
-item.DevChestplate.name=Dev-Brustpanzer
-item.DevLeggings.name=Dev-Beinschutz
-item.DevBoots.name=Dev-Stiefel
+item.DevHelmet.name=Entwickler-Helm
+item.DevChestplate.name=Entwickler-Brustpanzer
+item.DevLeggings.name=Entwickler-Beinschutz
+item.DevBoots.name=Entwickler-Stiefel
 
 #Items
-item.Chainmail.name=Kettenhemd
+item.Chainmail.name=Kette
 item.ReinforcingMaterial.name=Verstärkendes Material
 item.LavaCrystal.name=Lavakristall
 item.SteelIngot.name=Stahlbarren
 item.ElectricalIngot.name=Elektrischer Barren
 
 #Food Items
-item.RedstoneApple.name=Redstone Apfel
+item.RedstoneApple.name=Redstone-Apfel
 
 #Special Items
-item.WitherBone.name=Wither Knochen
-item.TheUltimateMaterial.name=Das ultimative Material
+item.WitherBone.name=Wither-Knochen
+item.TheUltimateMaterial.name=Ultimatives Material
 item.EnderDragonScale.name=Enderdrachen-Schuppe
 item.GuardianScale.name=Beschützer-Schuppe
 item.TheGiftOfTheGods.name=Das Geschenk der Götter
 
 #Blocks
-tile.CompressedObsidian.name=Komprimiertes Obsidian
+tile.CompressedObsidian.name=komprimiertes Obsidian
 tile.BlockLavaCrystal.name=Block aus Lavakristall
 tile.ArmorForge.name=Rüstungsschmiede
 tile.SteelOre.name=Stahlerz
