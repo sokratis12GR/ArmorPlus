@@ -4,20 +4,28 @@
 
 package net.thedragonteam.armorplus.items.materials;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedItem;
+import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.stream.IntStream;
 
+import static net.thedragonteam.armorplus.util.ToolTipUtils.isKeyDown;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -36,6 +44,25 @@ public class LavaCrystal extends Item implements IModdedItem {
         this.setUnlocalizedName(setName("lava_crystal"));
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.setMaxDamage(0);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        ToolTipUtils.showInfo(tooltip, keyBindSneak, TextFormatting.GOLD);
+        if (isKeyDown()) {
+            switch (stack.getMetadata()) {
+                case 0: {
+                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
+                    break;
+                }
+                case 1: {
+                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Van be created by infusing the Lava Crystal inside the Lava Infuser");
+                    break;
+                }
+            }
+        }
     }
 
     @Override
@@ -84,7 +111,7 @@ public class LavaCrystal extends Item implements IModdedItem {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             IntStream.range(0, lavaCrystalNames.length).mapToObj(i ->
-                    getItemStack(this, i)
+                getItemStack(this, i)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -93,7 +120,7 @@ public class LavaCrystal extends Item implements IModdedItem {
     @Override
     public void initModel() {
         IntStream.range(0, lavaCrystalNames.length).forEachOrdered(i ->
-                this.initModel(lavaCrystalNames[i], "lava", i)
+            this.initModel(lavaCrystalNames[i], "lava", i)
         );
     }
 }
