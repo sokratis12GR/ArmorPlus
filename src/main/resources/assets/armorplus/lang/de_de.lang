@@ -1,3 +1,4 @@
+#PARSE_ESCAPES
 #de_DE.lang File
 
 #CREATIVE TAB
@@ -6,19 +7,19 @@ itemGroup.items=AP Gegenstände
 itemGroup.blocks=AP Blöcke
 
 #Containers
-container.ArmorForge=Rütungsschmiede
+container.ArmorForge=Rüstungsschmiede
 container.inventory=Inventar
 
 # Keybinds
 key.categories.armorplus=ArmorPlus
-key.nightvision=Umschalten Nachtsicht (The Ultimate Armor)
+key.nightvision=Nachtsicht Umschalten (Ultimative Rüstung)
 
 #Commands
 commands.error.arg.invalid=Ungültige Argumente
 commands.error.arg.missing=Nicht genügend Argumente
 commands.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
 commands.error.404=Befehl nicht gefunden!
-commands.error.unknown=Unbekannter Befehl! Bitte verwende /armorplus help
+commands.error.unknown=Unbekannter Befehl! mit "/armorplus help" kannst du dir eine übersicht anzeigen lassen
 commands.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
 commands.success=Erfolgreich ausgeführt
 commands.formatText.help=%s - %s
@@ -33,7 +34,7 @@ commands.info.help=Zeigt Informationen über ArmorPlus
 
 #CommandWiki
 commands.wiki.usage=/armorplus wiki
-commands.wiki.help=öffnet einen Link in deinem Browser zur ArmorPlus Wiki
+commands.wiki.help=Öffnet einen Link in deinem Browser zur ArmorPlus Wiki
 
 #JEI
 gui.jei.category.armorforge=Rüstungsschmiede
@@ -52,213 +53,7 @@ item.CoalLeggings.name=Kohlebeinschutz
 item.CoalBoots.name=Kohlestiefel
 
 #LapisArmor
-item.LapisHelmet.name=Lapislazulihelm
-item.LapisChestplate.name=Lapislazulibrustpanzer
-item.LapisLeggings.name=Lapislazulibeinschutz
-item.LapisBoots.name=Lapislazulistiefel
-
-#RedstoneArmor
-item.RedstoneHelmet.name=Redstonehelm
-item.RedstoneChestplate.name=Redstonebrustpanzer
-item.RedstoneLeggings.name=Redstonebeinschutz
-item.RedstoneBoots.name=Redstonestiefel
-
-#EmeraldArmor
-item.EmeraldHelmet.name=Smaragdhelm
-item.EmeraldChestplate.name=Smaragdbrustpanzer
-item.EmeraldLeggings.name=Smaragdbeinschutz
-item.EmeraldBoots.name=Smaragdstiefel
-
-#ObsidianArmor
-item.ObsidianHelmet.name=Obsidianhelm
-item.ObsidianChestplate.name=Obsidianbrustpanzer
-item.ObsidianLeggings.name=Obsidianbeinschutz
-item.ObsidianBoots.name=Obsidianstiefel
-
-#LavaArmor
-item.LavaHelmet.name=Lavahelm
-item.LavaChestplate.name=Lavabrustpanzer
-item.LavaLeggings.name=Lavabeinschutz
-item.LavaBoots.name=Lavastiefel
-
-#SuperStarArmor
-item.SuperStarHelmet.name=Superstern-Helm
-item.SuperStarChestplate.name=Superstern-Brustpanzer
-item.SuperStarLeggings.name=Superstern-Beinschutz
-item.SuperStarBoots.name=Superstern-Stiefel
-
-#EnderDragonArmor
-item.EnderDragonHelmet.name=Enderdrachen-Helm
-item.EnderDragonChestplate.name=Enderdrachen-Brustpanzer
-item.EnderDragonLeggings.name=Enderdrachen-Beinschutz
-item.EnderDragonBoots.name=Enderdrachen-Stiefel
-
-#GuardianArmor
-item.GuardianHelmet.name=Beschützer-Helm
-item.GuardianChestplate.name=Beschützer-Brustpanzer
-item.GuardianLeggings.name=Beschützer-Beinschutz
-item.GuardianBoots.name=Beschützer-Stiefel
-
-#TheUltimateArmor
-item.TheUltimateHelmet.name=Der ultimative Helm
-item.TheUltimateChestplate.name=Der ultimative Brustpanzer
-item.TheUltimateLeggings.name=Der ultimative Beinschutz
-item.TheUltimateBoots.name=Die ultimativen Stiefel
-
-#ReinforcedIronArmor
-item.RIHelmet.name=Verstärkter Eisenhelm
-item.RIChestplate.name=Verstärkter Eisenbrustpanzer
-item.RILeggings.name=Verstärkter Eisenbeinschutz
-item.RIBoots.name=Verstärkte Eisenstiefel
-
-#ReinforcedGoldenArmor
-item.RGHelmet.name=Verstärkter Goldhelm
-item.RGChestplate.name=Verstärkter Goldbrustpanzer
-item.RGLeggings.name=Verstärkter Goldbeinschutz
-item.RGBoots.name=Verstärkte Goldstiefel
-
-#ReinforcedDiamondArmor
-item.RDHelmet.name=Verstärkter Diamanthelm
-item.RDChestplate.name=Verstärkter Diamantbrustpanzer
-item.RDLeggings.name=Verstärkter Diamantbeinschutz
-item.RDBoots.name=Verstärkte Diamantstiefel
-
-#ReinforcedChainArmor
-item.RCHelmet.name=Verstärkte Kettenhaube
-item.RCChestplate.name=Verstärktes Kettenhemd
-item.RCLeggings.name=Verstärkte Kettenhose
-item.RCBoots.name=Verstärkte Kettenstiefel
-
-#CustomArmor
-item.CustomHelmet.name=Selbsterstellter Helm (WIP)
-item.CustomChestplate.name=Selbsterstellter Brustpanzer (WIP)
-item.CustomLeggings.name=Selbsterstellter Beinschutz (WIP)
-item.CustomBoots.name=Selbsterstellte Stiefel (WIP)
-
-#CobaltArmor
-item.CobaltHelmet.name=Kobalthelm
-item.CobaltChestplate.name=Kobaltbrustpanzer
-item.CobaltLeggings.name=Kobaltbeinschutz
-item.CobaltBoots.name=Kobaltstiefel
-
-#ArditeArmor
-item.ArditeHelmet.name=Arditehelm
-item.ArditeChestplate.name=Arditebrustpanzer
-item.ArditeLeggings.name=Arditebeinschutz
-item.ArditeBoots.name=Arditestiefel
-
-#PigIronArmor
-item.PigIronHelmet.name=PigIron-Helm
-item.PigIronChestplate.name=PigIron-Brustpanzer
-item.PigIronLeggings.name=PigIron-Beinschutz
-item.PigIronBoots.name=PigIron-Stiefel
-
-#KingSlimeArmor
-item.KingSlimeHelmet.name=KingSlime-Helm
-item.KingSlimeChestplate.name=KingSlime-Brustpanzer
-item.KingSlimeLeggings.name=KingSlime-Beinschutz
-item.KingSlimeBoots.name=KingSlime-Stiefel
-
-#ManyullynArmor
-item.ManyullymHelmet.name=Manyullymhelm
-item.ManyullymChestplate.name=Manyullymbrustpanzer
-item.ManyullymLeggings.name=Manyullymbeinschutz
-item.ManyullymBoots.name=Manyullymstiefel
-
-#ChickenArmor
-item.ChickenHelmet.name=Chicken-Helm
-item.ChickenChestplate.name=Chicken-Brustpanzer
-item.ChickenLeggings.name=Chicken-Beinschutz
-item.ChickenBoots.name=Chicken-Stiefel
-
-#SlimeArmor
-item.SlimeHelmet.name=Schleimhelm
-item.SlimeChestplate.name=Schleimbrustpanzer
-item.SlimeLeggings.name=Schleimbeinschutz
-item.SlimeBoots.name=Schleimstiefel
-
-#ElectricalArmor
-item.ElectricalHelmet.name=Elektrischer Helm
-item.ElectricalChestplate.name=Elektrischer Brustpanzer
-item.ElectricalLeggings.name=Elektrischer Beinschutz
-item.ElectricalBoots.name=Elektrische Stiefel
-
-#SteelArmor
-item.SteelHelmet.name=Stahlhelm
-item.SteelChestplate.name=Stahlbrustpanzer
-item.SteelLeggings.name=Stahlbeinschutz
-item.SteelBoots.name=Stahlstiefel
-
-#DevArmor
-item.DevHelmet.name=Dev-Helm
-item.DevChestplate.name=Dev-Brustpanzer
-item.DevLeggings.name=Dev-Beinschutz
-item.DevBoots.name=Dev-Stiefel
-
-#Items
-item.Chainmail.name=Kettenhemd
-item.ReinforcingMaterial.name=Verstärkendes Material
-item.LavaCrystal.name=Lavakristall
-item.SteelIngot.name=Stahlbarren
-item.ElectricalIngot.name=Elektrischer Barren
-
-#Food Items
-item.RedstoneApple.name=Redstone Apfel
-
-#Special Items
-item.WitherBone.name=Wither Knochen
-item.TheUltimateMaterial.name=Das ultimative Material
-item.EnderDragonScale.name=Enderdrachen-Schuppe
-item.GuardianScale.name=Beschützer-Schuppe
-item.TheGiftOfTheGods.name=Das Geschenk der Götter
-
-#Blocks
-tile.CompressedObsidian.name=Komprimiertes Obsidian
-tile.BlockLavaCrystal.name=Block aus Lavakristall
-tile.ArmorForge.name=Rüstungsschmiede
-tile.SteelOre.name=Stahlerz
-tile.SteelBlock.name=Block aus Stahl
-tile.ElectricalBlock.name=Elektrischer Block
-
-#PotionEffects
-potion.armorplusEffects=ArmorPlus Trank
-
-#Achievements
-achievement.armorplus.craftCoalArmor=Sehvermögen wie eine Fledermaus!
-achievement.armorplus.craftCoalArmor.desc=Fertige ein Teil der Kohlerüstung
-achievement.armorplus.craftLapisArmor=Nie Wieder Ertrinken!
-achievement.armorplus.craftLapisArmor.desc=Fertige ein Teil der Lapislazulirüstung an
-achievement.armorplus.craftRedstoneArmor=Schneller!
-achievement.armorplus.craftRedstoneArmor.desc=Fertige ein Teil der Redstonerüstung an
-achievement.armorplus.craftEmeraldArmor=Schwing Schwing Schneller!
-achievement.armorplus.craftEmeraldArmor.desc=Fertige ein Teil der Smaragdrüstung an
-achievement.armorplus.craftObsidianArmor=Unzerstörbar!
-achievement.armorplus.craftObsidianArmor.desc=Fertige ein Teil der Obsidianrüstung an
-achievement.armorplus.craftLavaArmor=Der Überwältigende!
-achievement.armorplus.craftLavaArmor.desc=Fertige ein Teil der Lavarüstung an
-achievement.armorplus.craftSuperStarArmor=Gottgleich!
-achievement.armorplus.craftSuperStarArmor.desc=Fertige ein Teil der Superstern-Rüstung an
-achievement.armorplus.craftEnderDragonArmor=Die Macht Des Enderdrachen!
-achievement.armorplus.craftEnderDragonArmor.desc=Besiege den Enderdrachen und fertige ein Enderdrachen-Rüstungsteil an
-achievement.armorplus.craftGuardianArmor=Voller Dornen!
-achievement.armorplus.craftGuardianArmor.desc=Fertige ein Teil der Beschützer-Rüstung an
-achievement.armorplus.craftTheUltimateArmor=Die Ultimative Macht!
-achievement.armorplus.craftTheUltimateArmor.desc=Fertige ein Teil der ultimativen Rüstung an
-achievement.armorplus.craftReinforcedArmor=Verstärkte Rüstung!
-achievement.armorplus.craftReinforcedArmor.desc=Fertige ein Teil der verstärkten Rüstung an
-achievement.armorplus.craftCobaltArmor=Die Tinkers' Rüstung!
-achievement.armorplus.craftCobaltArmor.desc=Fertige ein Teil der Kobaltrüstung an
-achievement.armorplus.craftArditeArmor=Je stärker, desto besser!
-achievement.armorplus.craftArditeArmor.desc=Fertige ein Teil der Arditerüstung an
-achievement.armorplus.craftManyullynArmor=Der Gott von Tinkers' Rüstungen!
-achievement.armorplus.craftManyullynArmor.desc=Fertige ein Teil der Manyullynrüstung an
-achievement.armorplus.craftPigIronArmor=Grunz!
-achievement.armorplus.craftPigIronArmor.desc=Fertige ein Teil der PigIron-Rüstung an
-achievement.armorplus.craftKnightSlimeArmor=Faszinierend!
-achievement.armorplus.craftKnightSlimeArmor.desc=Fertige ein Teil der KnightSlime-Rüstung an
-achievement.armorplus.craftSlimeArmor=Spring Spring Spring!
-achievement.armorplus.craftSlimeArmor.desc=Fertige ein Teil der Schleimrüstung an
-achievement.armorplus.craftChickenArmor=Es ist Zeit schneller zu gehen!
-achievement.armorplus.craftChickenArmor.desc=Fertige ein Teil der Chicken-Rüstung an
-achievement.armorplus.craftArmorForge=Willkommen bei ArmorPlus!
-achievement.armorplus.craftArmorForge.desc=Fertige die Rüstungsschmiede von ArmorPlus an
+item.LapisHelmet.name=Lapislazuli-Helm
+item.LapisChestplate.name=Lapislazuli-Brustpanzer
+item.LapisLeggings.name=Lapislazuli-Beinschutz
+item.LapisBoots.name=Lapislazuli-Stiefel
