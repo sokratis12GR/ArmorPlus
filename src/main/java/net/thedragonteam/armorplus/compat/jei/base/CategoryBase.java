@@ -11,10 +11,10 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
-import net.thedragonteam.thedragonlib.util.TextHelper;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -42,7 +42,7 @@ public class CategoryBase implements IRecipeCategory {
         ResourceLocation location = setRL(format("textures/gui/container/gui_%s.png", name));
         background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, u, v, widthU, heightV);
         //noinspection MethodCallSideOnly
-        localizedName = TextHelper.getFormattedText("gui.jei.category." + name);
+        localizedName = new TextComponentTranslation("gui.jei.category." + name).getFormattedText();
         craftingGridHelper = ArmorPlusPlugin.jeiHelper.getGuiHelper().createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
     }
 
