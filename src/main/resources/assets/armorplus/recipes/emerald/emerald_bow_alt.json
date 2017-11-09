@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:emerald_bow"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:emerald_bow"
+        }
+      ]
     }
   ],
+  "group": "weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",

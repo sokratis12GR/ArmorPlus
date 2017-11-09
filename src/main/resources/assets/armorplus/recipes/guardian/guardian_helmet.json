@@ -1,9 +1,19 @@
-{  "conditions": [
-  {
-    "type": "minecraft:item_exists",
-    "item": "armorplus:guardian_helmet"
-  }
-],
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:guardian_helmet"
+        }
+      ]
+    }
+  ],
+  "group": "armor",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

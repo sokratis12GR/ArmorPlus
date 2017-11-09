@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:infused_lava_boots"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:infused_lava_boots"
+        }
+      ]
     }
   ],
+  "group": "armor",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",

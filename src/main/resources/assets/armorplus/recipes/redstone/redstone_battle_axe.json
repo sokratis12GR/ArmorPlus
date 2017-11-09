@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:redstone_battle_axe"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:redstone_battle_axe"
+        }
+      ]
     }
   ],
+  "group": "weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",

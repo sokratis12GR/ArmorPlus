@@ -4,8 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled",
-          "optionName": "recipe"
+          "type": "armorplus:enabled"
         },
         {
           "type": "minecraft:item_exists",

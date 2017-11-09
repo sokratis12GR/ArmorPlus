@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:block_infused_lava_crystal"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:block_infused_lava_crystal"
+        }
+      ]
     }
   ],
+  "group": "block",
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {

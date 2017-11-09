@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:redstone_chestplate"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:redstone_chestplate"
+        }
+      ]
     }
   ],
+  "group": "armor",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "# #",

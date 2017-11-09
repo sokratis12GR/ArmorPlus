@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:obsidian_sword"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:obsidian_sword"
+        }
+      ]
     }
   ],
+  "group": "weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "#",

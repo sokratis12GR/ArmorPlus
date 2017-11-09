@@ -1,10 +1,19 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:lava_infuser"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:lava_infuser"
+        }
+      ]
     }
   ],
+  "group": "block",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "LLL",
