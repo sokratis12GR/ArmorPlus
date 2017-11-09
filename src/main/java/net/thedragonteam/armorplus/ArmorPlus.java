@@ -79,7 +79,7 @@ public class ArmorPlus {
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
 
-    public static final boolean DEV_ENVIRONMENT = false;
+    public static final boolean DEV_ENVIRONMENT = false; //TODO: DON'T FORGET TO TURN OFF
 
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
     public static CommonProxy proxy;
