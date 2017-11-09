@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModPotions;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -44,34 +45,34 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack
  */
 public enum APArmorMaterial implements IStringSerializable {
     COAL(coalArmor,
-            "coal", getItemStack(COAL_BLOCK), getValueByName(coalArmorItemNameColor),
-            enableFullCoalArmorEffect, coalArmorAddPotionEffect, coalArmorEffectLevel,
-            enableCoalEffect, "empty"
+        "coal", getItemStack(COAL_BLOCK), coalArmorItemNameColor,
+        enableFullCoalArmorEffect, coalArmorAddPotionEffect, coalArmorEffectLevel,
+        enableCoalEffect
     ),
     LAPIS(lapisArmor,
-            "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapisArmorItemNameColor),
-            enableFullLapisArmorEffect, lapisArmorAddPotionEffect, lapisArmorEffectLevel,
-            enableLapisEffect, "empty"
+        "lapis", getItemStack(LAPIS_BLOCK), lapisArmorItemNameColor,
+        enableFullLapisArmorEffect, lapisArmorAddPotionEffect, lapisArmorEffectLevel,
+        enableLapisEffect
     ),
     REDSTONE(redstoneArmor,
-            "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstoneArmorItemNameColor),
-            enableFullRedstoneArmorEffect, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel,
-            enableRedstoneEffect, "empty"
+        "redstone", getItemStack(REDSTONE_BLOCK), redstoneArmorItemNameColor,
+        enableFullRedstoneArmorEffect, redstoneArmorAddPotionEffect, redstoneArmorEffectLevel,
+        enableRedstoneEffect
     ),
     EMERALD(emeraldArmor,
-            "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emeraldArmorItemNameColor),
-            enableFullEmeraldArmorEffect, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel,
-            enableEmeraldEffect, "empty"
+        "emerald", getItemStack(EMERALD_BLOCK), emeraldArmorItemNameColor,
+        enableFullEmeraldArmorEffect, emeraldArmorAddPotionEffect, emeraldArmorEffectLevel,
+        enableEmeraldEffect
     ),
     OBSIDIAN(obsidianArmor,
-            "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianArmorItemNameColor),
-            enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel,
-            enableObsidianEffect, "empty"
+        "obsidian", getItemStack(ModBlocks.compressedObsidian), obsidianArmorItemNameColor,
+        enableFullObsidianArmorEffect, obsidianArmorAddPotionEffect, obsidianArmorEffectLevel,
+        enableObsidianEffect
     ),
     LAVA(lavaArmor,
-            "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lavaArmorItemNameColor),
-            enableFullLavaArmorEffect, lavaArmorAddPotionEffect, lavaArmorEffectLevel,
-            enableLavaEffect, "empty"
+        "infused_lava", getItemStack(lavaCrystal, 1), lavaArmorItemNameColor,
+        enableFullLavaArmorEffect, lavaArmorAddPotionEffect, lavaArmorEffectLevel,
+        enableLavaEffect
     ) {
         @Override
         public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -89,19 +90,19 @@ public enum APArmorMaterial implements IStringSerializable {
         }
     },
     GUARDIAN(guardianArmor,
-            "guardian", getItemStack(materials, 1), getValueByName(guardianArmorItemNameColor),
-            enableFullGuardianArmorEffect, guardianArmorAddPotionEffect, guardianArmorEffectLevel,
-            enableGuardianEffect, "empty"
+        "guardian", getItemStack(materials, 1), guardianArmorItemNameColor,
+        enableFullGuardianArmorEffect, guardianArmorAddPotionEffect, guardianArmorEffectLevel,
+        enableGuardianEffect
     ),
     SUPER_STAR(superStarArmor,
-            "super_star", getItemStack(materials, 2), getValueByName(superStarArmorItemNameColor),
-            enableFullSuperStarArmorEffect, superStarArmorAddPotionEffect, superStarArmorEffectLevel,
-            enableSuperStarEffect, superStarArmorRemovePotionEffect
+        "super_star", getItemStack(materials, 2), superStarArmorItemNameColor,
+        enableFullSuperStarArmorEffect, superStarArmorAddPotionEffect, superStarArmorEffectLevel,
+        enableSuperStarEffect, superStarArmorRemovePotionEffect
     ),
     ENDER_DRAGON(enderDragonArmor,
-            "ender_dragon", getItemStack(materials, 3), getValueByName(enderDragonArmorItemNameColor),
-            enableFullEnderDragonArmorEffect, "empty", 0,
-            enableEnderDragonEffect, enderDragonArmorRemovePotionEffect
+        "ender_dragon", getItemStack(materials, 3), enderDragonArmorItemNameColor,
+        enableFullEnderDragonArmorEffect, "empty", 0,
+        enableEnderDragonEffect, enderDragonArmorRemovePotionEffect
     ) {
         @Override
         public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -133,29 +134,29 @@ public enum APArmorMaterial implements IStringSerializable {
         }
     },
     ARDITE(arditeArmor, "ardite",
-            getTICItemStack("ingots", 1), getValueByName(arditeArmorItemNameColor),
-            true, arditeArmorAddPotionEffect, arditeArmorEffectLevel,
-            new boolean[4], "empty"
+        getTICItemStack("ingots", 1), arditeArmorItemNameColor,
+        true, arditeArmorAddPotionEffect, arditeArmorEffectLevel
+
     ),
     COBALT(cobaltArmor, "cobalt",
-            getTICItemStack("ingots", 0), getValueByName(cobaltArmorItemNameColor),
-            true, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel,
-            new boolean[4], "empty"
+        getTICItemStack("ingots", 0), cobaltArmorItemNameColor,
+        true, cobaltArmorAddPotionEffect, cobaltArmorEffectLevel
+
     ),
     MANYULLYN(manyullynArmor, "manyullyn",
-            getTICItemStack("ingots", 2), getValueByName(manyullynArmorItemNameColor),
-            true, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel,
-            new boolean[4], "empty"
+        getTICItemStack("ingots", 2), manyullynArmorItemNameColor,
+        true, manyullynArmorAddPotionEffect, manyullynArmorEffectLevel
+
     ),
     KNIGHT_SLIME(knightSlimeArmor, "knight_slime",
-            getTICItemStack("ingots", 3), getValueByName(knightSlimeArmorItemNameColor),
-            true, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel,
-            new boolean[4], "empty"
+        getTICItemStack("ingots", 3), knightSlimeArmorItemNameColor,
+        true, knightSlimeArmorAddPotionEffect, knightSlimeArmorEffectLevel
+
     ),
     PIG_IRON(pigIronArmor, "pig_iron",
-            getTICItemStack("ingots", 4), getValueByName(pigIronArmorItemNameColor),
-            true, pigIronArmorAddPotionEffect, pigIronArmorEffectLevel,
-            new boolean[4], "empty"
+        getTICItemStack("ingots", 4), pigIronArmorItemNameColor,
+        true, pigIronArmorAddPotionEffect, pigIronArmorEffectLevel
+
     ) {
         @Override
         public void onArmorTick(World world, EntityPlayer entity, ItemStack itemStack) {
@@ -176,26 +177,26 @@ public enum APArmorMaterial implements IStringSerializable {
         }
     },
     SLIME(slimeArmor, "slime",
-            getItemStack(SLIME_BLOCK), getValueByName(slimeArmorItemNameColor),
-            enableFullSlimeArmorEffect, slimeArmorAddPotionEffect, slimeArmorEffectLevel,
-            enableSlimeEffect, "empty"
+        getItemStack(SLIME_BLOCK), slimeArmorItemNameColor,
+        enableFullSlimeArmorEffect, slimeArmorAddPotionEffect, slimeArmorEffectLevel,
+        enableSlimeEffect
     ),
     CHICKEN(chickenArmor, "chicken",
-            getItemStack(Items.FEATHER), getValueByName(chickenArmorItemNameColor),
-            enableFullCoalArmorEffect, chickenArmorAddPotionEffect, chickenArmorEffectLevel,
-            enableChickenEffect, "empty"
+        getItemStack(Items.FEATHER), chickenArmorItemNameColor,
+        enableFullCoalArmorEffect, chickenArmorAddPotionEffect, chickenArmorEffectLevel,
+        enableChickenEffect
     ),;
     private final ArmorMaterial armorMaterial;
     private final String name;
     private final ItemStack repairStack;
-    private final TextFormatting formatting;
+    private final String formatting;
     private final boolean enableFullArmorEffect;
     private final String addPotionEffect;
     private final int addPotionEffectAmplifier;
     private final String removePotionEffect;
     private boolean[] areEffectsEnabled;
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairStack, TextFormatting textFormattingIn,
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairStack, String textFormattingIn,
                     boolean enableFullArmorEffectIn, String addPotionEffectIn, int addPotionEffectInAmplifierIn, boolean[] areEffectsEnabledIn, String removePotionEffectIn) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
@@ -208,10 +209,21 @@ public enum APArmorMaterial implements IStringSerializable {
         this.removePotionEffect = removePotionEffectIn;
     }
 
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairStack, String textFormattingIn,
+                    boolean enableFullArmorEffectIn, String addPotionEffectIn, int addPotionEffectInAmplifierIn, boolean[] areEffectsEnabledIn) {
+        this(armorMaterialIn, nameIn, repairStack, textFormattingIn, enableFullArmorEffectIn, addPotionEffectIn, addPotionEffectInAmplifierIn, areEffectsEnabledIn, "empty");
+    }
+
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, ItemStack repairStack, String textFormattingIn,
+                    boolean enableFullArmorEffectIn, String addPotionEffectIn, int addPotionEffectInAmplifierIn) {
+        this(armorMaterialIn, nameIn, repairStack, textFormattingIn, enableFullArmorEffectIn, addPotionEffectIn, addPotionEffectInAmplifierIn, new boolean[4], "empty");
+    }
+
     public ArmorMaterial getArmorMaterial() {
         return this.armorMaterial;
     }
 
+    @NotNull
     @Override
     public String getName() {
         return this.name;
@@ -222,7 +234,7 @@ public enum APArmorMaterial implements IStringSerializable {
     }
 
     public TextFormatting getFormatting() {
-        return this.formatting;
+        return getValueByName(this.formatting);
     }
 
     public boolean enableFullArmorEffect() {

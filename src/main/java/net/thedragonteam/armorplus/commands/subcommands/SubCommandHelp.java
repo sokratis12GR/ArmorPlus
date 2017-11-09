@@ -37,8 +37,8 @@ public class SubCommandHelp extends SubCommandBase {
 
         if (args.length > 0) return;
 
-        ((CommandArmorPlus) getParentCommand()).getSubCommands().values().forEach(
-            subCommand -> cmdSender.sendMessage(setText(formattedText("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(cmdSender))))
+        ((CommandArmorPlus) getParentCommand()).getSubCommands().values().forEach(subCommand ->
+            cmdSender.sendMessage(setText(formattedText("commands.format.help", capitalizeFirstLetter(subCommand.getSubCommandName()), subCommand.getArgUsage(cmdSender))))
         );
     }
 }

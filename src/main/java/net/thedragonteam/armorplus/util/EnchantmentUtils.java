@@ -13,7 +13,7 @@ import static net.minecraft.enchantment.Enchantment.*;
  **/
 public class EnchantmentUtils {
 
-    public Enchantment getEnchantment(Object nameOrId) {
+    public static Enchantment getEnchantment(Object nameOrId) {
         if (nameOrId instanceof Integer) {
             return getEnchantmentByID((Integer) nameOrId);
         } else if (nameOrId instanceof String) {
@@ -22,7 +22,7 @@ public class EnchantmentUtils {
         return null;
     }
 
-    public int getID(Enchantment enchant) {
+    public static int getID(Enchantment enchant) {
         return getEnchantmentID(enchant);
     }
 }
