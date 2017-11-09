@@ -1,10 +1,20 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:super_star_leggings"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled",
+          "optionName": "recipe"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:super_star_leggings"
+        }
+      ]
     }
   ],
+  "group": "armor",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

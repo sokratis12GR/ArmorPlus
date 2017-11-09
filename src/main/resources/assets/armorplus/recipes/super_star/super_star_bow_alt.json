@@ -1,10 +1,20 @@
 {
   "conditions": [
     {
-      "type": "minecraft:item_exists",
-      "item": "armorplus:super_star_bow"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled",
+          "optionName": "recipe"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:super_star_bow"
+        }
+      ]
     }
   ],
+  "group": "weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",
