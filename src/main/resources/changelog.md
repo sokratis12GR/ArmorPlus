@@ -1,7 +1,37 @@
+ArmorPlus 1.12.2-11.8.0.25-beta
+----------------------------
+
+**Features Added**:
+
+* Tiered Benches are back again (**Workbench, High-Tech Bench, Ulti-Tech Bench, Champion Bench**)
+  * Improved their performance and removed duplicated code.
+  * CraftingTweaker Integration Upcoming (**NOT IN THIS VERSION**)
+  * Just Enough Items Integration Upcoming (**Can be buggy, please report any issues in the [GitHub Issues](https://github.com/TheDragonTeam/ArmorPlus/issues)**)
+
+* Recipes
+  * Re-added the good old tiered recipes
+  * Added an option to choose between the tiered recipes and the all in recipes in the crafting table (3x3) via json
+
+* Gamemodes, they are back too. **BUT Repair Material is the same for Easy and Expert**
+
+ArmorPlus 1.12.2-11.7.2.24-beta
+----------------------------
+
+**Bugs Fixed**:
+
+* A million Nether Towers generating around the world
+
+ArmorPlus 1.12.2-11.7.1.23-beta
+----------------------------
+
+**Bugs Fixed**:
+
+* Wrong condition set on the Compressed Obsidian recipe, making it uncraftable
+
 ArmorPlus 1.12.2-11.7.0.22-beta
 ----------------------------
 
-######Stability - Please Read
+#####Stability - Please Read
 
 **Note**: 
 
@@ -206,7 +236,7 @@ ArmorPlus 1.12-11.0.1.2-alpha
 
 **Bugs Fixed**:
 
-* [Creative Tab Leak (fixed thanks to TheCodedOne)](https://www.reddit.com/r/feedthebeast/comments/6h9z7f/psa_the_creativetab_leak_glitch/)
+* [Creative Tab Leak (fixed thanks to TheCodedOne)](https://www.reddit.com/r/feedthebeast/comments/6h9z7f/psa_the_creativetab_leak_glitch)
 
 ArmorPlus 1.12-11.0.0.1-alpha
 ----------------------------
