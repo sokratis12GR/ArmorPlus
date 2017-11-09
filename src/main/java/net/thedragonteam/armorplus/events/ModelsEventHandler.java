@@ -6,6 +6,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.wither.RenderSkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
@@ -25,6 +29,7 @@ public class ModelsEventHandler {
 
     @SubscribeEvent
     public static void registerBlockModels(ModelRegistryEvent event) {
+        registerModels(benches);
         registerModels(blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockLavaInfusedObsidian,
                 oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, lavaCactus, lavaNetherBrick
         );
@@ -61,9 +66,9 @@ public class ModelsEventHandler {
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //Bosses
         //  registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
-        //  registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
+          registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
         //Boss Projectiles
         //  registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
-        //  registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
+          registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
     }
 }

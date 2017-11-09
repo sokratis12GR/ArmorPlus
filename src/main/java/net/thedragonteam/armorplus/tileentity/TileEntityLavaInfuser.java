@@ -263,7 +263,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
 
             if (flag != this.isInfusing()) {
                 flag1 = true;
-                BlockLavaInfuser.Companion.setState(this.isInfusing(), this.world, this.pos);
+                BlockLavaInfuser.setState(this.isInfusing(), this.world, this.pos);
             }
         }
 
@@ -336,7 +336,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
             return true;
         }
         ItemStack itemstack = this.infuserItemStacks.get(1);
-        return isItemFuel(stack) || SlotLavaInfuserFuel.Companion.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
+        return isItemFuel(stack) || SlotLavaInfuserFuel.isAllowed(stack) && itemstack.getItem() != Items.BUCKET;
     }
 
     @Override

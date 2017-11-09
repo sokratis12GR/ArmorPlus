@@ -4,6 +4,8 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.thedragonteam.armorplus.blocks.benches.Benches;
+import net.thedragonteam.armorplus.blocks.benches.BlockBench;
 import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrick;
 import net.thedragonteam.armorplus.blocks.castle.base.BlockStoneBrickCorner;
@@ -16,6 +18,7 @@ import net.thedragonteam.armorplus.blocks.normal.CompressedObsidian;
 import net.thedragonteam.armorplus.blocks.v2.BaseMetalBlock;
 
 import static java.util.Arrays.setAll;
+import static net.thedragonteam.armorplus.blocks.benches.Benches.*;
 import static net.thedragonteam.armorplus.blocks.castle.StoneBricks.*;
 import static net.thedragonteam.armorplus.blocks.dungeon.EnumEnderBlocks.*;
 import static net.thedragonteam.armorplus.blocks.lava.BlockLavaType.EnumLavaType.*;
@@ -33,6 +36,8 @@ public class ModBlocks {
     public static BaseMetalBlock electricalBlock = new BaseMetalBlock(ELECTRICAL);
     public static LavaNetherBrick lavaNetherBrick = new LavaNetherBrick();
     public static LavaCactus lavaCactus = new LavaCactus();
+    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
+    public static BlockBench[] benches = new BlockBench[4];
     public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{
             WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE
     };
@@ -54,10 +59,11 @@ public class ModBlocks {
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
 
     public static void registerBlocks() {
-        setAll(stoneBricks, b -> new BlockStoneBrick(stoneBrickTypes[b]));
-        setAll(stoneBrickTowers, b -> new BlockStoneBrickTower(stoneBrickTypes[b]));
-        setAll(stoneBrickCorners, b -> new BlockStoneBrickCorner(stoneBrickTypes[b], stoneBricks[b].getDefaultState()));
-        setAll(stonebrickWalls, b -> new BlockStonebrickWall(stoneBricks[b]));
-        setAll(enderBlocks, b -> new BlockDungeonEnder(enumEnderBlocks[b]));
+        setAll(benches, block -> new BlockBench(benchTypes[block]));
+        setAll(stoneBricks, block -> new BlockStoneBrick(stoneBrickTypes[block]));
+        setAll(stoneBrickTowers, block -> new BlockStoneBrickTower(stoneBrickTypes[block]));
+        setAll(stoneBrickCorners, block -> new BlockStoneBrickCorner(stoneBrickTypes[block], stoneBricks[block].getDefaultState()));
+        setAll(stonebrickWalls, block -> new BlockStonebrickWall(stoneBricks[block]));
+        setAll(enderBlocks, block -> new BlockDungeonEnder(enumEnderBlocks[block]));
     }
 }

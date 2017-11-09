@@ -48,11 +48,11 @@ public class ModOreDicts {
         registerOre("blockInfusedObsidian", blockLavaInfusedObsidian);
 
         //CastleBlocks
-        IntStream.range(0, colors.length).forEachOrdered(i -> {
-            registerWildBrick(colors[i], stoneBricks[i]);
-            registerWildBrick(colors[i] + "Corner", stoneBrickCorners[i]);
-            registerWildBrick(colors[i] + "Tower", stoneBrickTowers[i]);
-            registerWildBrick(colors[i] + "Wall", stonebrickWalls[i]);
+        IntStream.range(0, colors.length).forEachOrdered(index -> {
+            registerWildBrick(colors[index], stoneBricks[index]);
+            registerWildBrick(colors[index] + "Corner", stoneBrickCorners[index]);
+            registerWildBrick(colors[index] + "Tower", stoneBrickTowers[index]);
+            registerWildBrick(colors[index] + "Wall", stonebrickWalls[index]);
         });
         //Materials
         registerWildOre("chainmail", materials, 0);

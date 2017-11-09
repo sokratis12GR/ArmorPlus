@@ -18,6 +18,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
@@ -80,8 +81,8 @@ public class RegistryEventHandler {
         // Bosses
         //  registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
         //  0x7ae4ff, 0x79a6ff);
-        //  registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
-        //  0x665b52, 0x845833);
+        registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
+            0x665b52, 0x845833);
     }
 
     private static void registerAllBlocks(Register<Block> event, Block[]... blocksArray) {
@@ -94,6 +95,7 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
+        registerAllBlocks(event, benches);
         registerAllBlocks(event,
             oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
@@ -138,6 +140,7 @@ public class RegistryEventHandler {
     @SubscribeEvent
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
+        registerAllItemBlocks(event, benches);
         registerItemBlock(event,
             oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal

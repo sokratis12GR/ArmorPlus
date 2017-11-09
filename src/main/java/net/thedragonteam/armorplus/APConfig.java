@@ -609,6 +609,63 @@ public class APConfig {
     @ModConfigProperty(category = "integrations.jei", name = "enableJEIIntegration", comment = "Enable/Disable the JEI integration")
     public static boolean enableJEIIntegration = true;
 
+    //Items.Recipes
+    @ModConfigProperty(category = "items.registry", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
+    public static boolean enableRedstoneAppleRecipes = true;
+    @ModConfigProperty(category = "items.registry", name = "enableElytraRecipe", comment = "Enable/Disable The Elytra Recipe")
+    public static boolean enableElytraRecipe = false;
+    @ModConfigProperty(category = "items.registry", name = "enableArrowRecipes", comment = "Enable/Disable The armorplus arrow recipes")
+    public static boolean enableArrowRecipes = true;
+    //Recipes
+    @ModConfigProperty(category = "type.coal.registry", name = "enableCoalArmorRecipes", comment = "Enable/Disable The Coal Armor Recipes")
+    public static boolean enableCoalArmorRecipes = true;
+    @ModConfigProperty(category = "type.coal.registry", name = "enableCharcoalCoalArmorRecipe", comment = "Enable/Disable The Charcoal Coal Armor Recipes")
+    public static boolean enableCharcoalCoalArmorRecipe = false;
+    @ModConfigProperty(category = "type.lapis.registry", name = "enableLapisArmorRecipes", comment = "Enable/Disable The Lapis Armor Recipes")
+    public static boolean enableLapisArmorRecipes = true;
+    @ModConfigProperty(category = "type.redstone.registry", name = "enableRedstoneArmorRecipes", comment = "Enable/Disable The Redstone Armor Recipes")
+    public static boolean enableRedstoneArmorRecipes = true;
+    @ModConfigProperty(category = "type.emerald.registry", name = "enableEmeraldArmorRecipes", comment = "Enable/Disable The Emerald Armor Recipes")
+    public static boolean enableEmeraldArmorRecipes = true;
+    @ModConfigProperty(category = "type.obsidian.registry", name = "enableObsidianArmorRecipes", comment = "Enable/Disable The Obsidian Armor Recipes")
+    public static boolean enableObsidianArmorRecipes = true;
+    @ModConfigProperty(category = "type.lava.registry", name = "enableLavaArmorRecipes", comment = "Enable/Disable The Lava Armor Recipes")
+    public static boolean enableLavaArmorRecipes = true;
+    @ModConfigProperty(category = "type.super_star.registry", name = "enableSuperStarArmorRecipes", comment = "Enable/Disable The Super Star Armor Recipes")
+    public static boolean enableSuperStarArmorRecipes = true;
+    @ModConfigProperty(category = "type.ender_dragon.registry", name = "enableEnderDragonArmorRecipes", comment = "Enable/Disable The Ender Dragon Armor Recipes")
+    public static boolean enableEnderDragonArmorRecipes = true;
+    @ModConfigProperty(category = "type.guardian.registry", name = "enableGuardianArmorRecipes", comment = "Enable/Disable The Guardian Armor Recipes")
+    public static boolean enableGuardianArmorRecipes = true;
+    @ModConfigProperty(category = "type.ultimate.registry", name = "enableTheUltimateArmorRecipes", comment = "Enable/Disable The Ultimate Armor Recipes")
+    public static boolean enableTheUltimateArmorRecipes = true;
+    @ModConfigProperty(category = "type.chain.registry", name = "enableChainArmorRecipes", comment = "Enable/Disable The Chain Armors Recipes")
+    public static boolean enableChainArmorRecipes = true;
+    @ModConfigProperty(category = "type.ardite.registry", name = "enableArditeArmorRecipes", comment = "Enable/Disable The Ardite Armors Recipes")
+    public static boolean enableArditeArmorRecipes = true;
+    @ModConfigProperty(category = "type.cobalt.registry", name = "enableCobaltArmorRecipes", comment = "Enable/Disable The Cobalt Armors Recipes")
+    public static boolean enableCobaltArmorRecipes = true;
+    @ModConfigProperty(category = "type.manyullun.registry", name = "enableManyullynArmorRecipes", comment = "Enable/Disable The Manyullyn Armors Recipes")
+    public static boolean enableManyullynArmorRecipes = true;
+    @ModConfigProperty(category = "type.pig_iron.registry", name = "enablePigIronArmorRecipes", comment = "Enable/Disable The Pig Iron Armors Recipes")
+    public static boolean enablePigIronArmorRecipes = true;
+    @ModConfigProperty(category = "type.knight_slime.registry", name = "enableKnightSlimeArmorRecipes", comment = "Enable/Disable The Knight Slime Armors Recipes")
+    public static boolean enableKnightSlimeArmorRecipes = true;
+    @ModConfigProperty(category = "type.slime.registry", name = "enableSlimeArmorRecipes", comment = "Enable/Disable The Slime Armors Recipes")
+    public static boolean enableSlimeArmorRecipes = true;
+    @ModConfigProperty(category = "type.chicken.registry", name = "enableChickenArmorRecipes", comment = "Enable/Disable The Chicken Armors Recipes")
+    public static boolean enableChickenArmorRecipes = true;
+    @ModConfigProperty(category = "type.swords.registry", name = "enableSwordsRecipes", comment = "Enable/Disable ArmorPlus Sword's Recipes")
+    public static boolean enableSwordsRecipes = true;
+    @ModConfigProperty(category = "type.battle_axes.registry", name = "enableBattleAxesRecipes", comment = "Enable/Disable ArmorPlus Battle Axes's Recipes")
+    public static boolean enableBattleAxesRecipes = true;
+    @ModConfigProperty(category = "type.bows.registry", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
+    public static boolean enableBowsRecipes = true;
+
+    //JsonVsBenches
+    @ModConfigProperty(category = "global.recipes", name = "useJsonRecipes", comment = "Will make ArmorPlus use the Crafting Table 3x3 for all the recipes instead of the tiered benches")
+    public static boolean useJsonRecipes = false;
+
     static {
         fill(enableCoalWeapons, true);
         fill(enableLapisWeapons, true);
@@ -621,20 +678,44 @@ public class APConfig {
         fill(enableEnderDragonWeapons, true);
     }
 
-
     public static RecipesDifficulty getRD() {
         return EXPERT;
     }
 
     public enum RecipesDifficulty {
-        EXPERT() {
+        DISABLED(false) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
+                return false;
+            }
+        },
+        EASY(true) {
             @Override
             public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
                 return areItemsEqual(repair, expert);
             }
-        };
+        },
+        EXPERT(true) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
+                return areItemsEqual(repair, expert);
+            }
+        },
+        HELLISH(true) {
+            @Override
+            public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
+                return false;
+            }
+        },;
 
-        RecipesDifficulty() {
+        private final boolean hasRecipes;
+
+        RecipesDifficulty(boolean hasRecipes) {
+            this.hasRecipes = hasRecipes;
+        }
+
+        public boolean hasRecipes() {
+            return hasRecipes;
         }
 
         public abstract boolean isItemRepairable(ItemStack repair, ItemStack expert);
