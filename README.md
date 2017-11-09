@@ -1,4 +1,4 @@
-# ArmorPlus (A+|AP)
+# ArmorPlus (A+|AP|ARP)
 
 ![](https://sokratis12gr.com/uploads/headerimg.jpg "AmorPlus")
 
@@ -35,13 +35,30 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ## TheDragonTeam's Discord
 
-[![Discord](https://img.shields.io/discord/213305542712623105.svg?style=flat)](https://discord.gg/ZVwmqyx)
+[![Discord](https://img.shields.io/discord/213305542712623105.svg?style=flat&colorB=7289DA)](https://discord.gg/ZVwmqyx)
 
 ## Mod's Official Wiki
 
 The Official Wiki for this mod is
 **[FTB Gamepedia ArmorPlus](https://ftb.gamepedia.com/ArmorPlus)**
 
+## GitHub Information
+
+### Repo
+[![GitHub forks](https://img.shields.io/github/forks/thedragonteam/armorplus.svg?style=social&label=Fork)](https://github.com/TheDragonTeam/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Stars)](https://github.com/TheDragonTeam/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/watchers/thedragonteam/armorplus.svg?style=social&label=Watch)](https://github.com/TheDragonTeam/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/followers/sokratis12GR.svg?style=social&label=Follow)](https://github.com/sokratis12GR)
+### Issues
+[![GitHub issues](https://img.shields.io/github/issues/thedragonteam/armorplus.svg?colorB=green)]()
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+### Pull Requests
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/thedragonteam/armorplus.svg?colorB=green)]()
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+### Additional
+[![GitHub contributors](https://img.shields.io/github/contributors/thedragonteam/armorplus.svg)]()
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/thedragonteam/armorplus.svg)]()
+
 ## Licence
 
-ArmorPlus is licensed under the LGPLv3 license. Full license is in [LICENSE](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE).
+[![license](https://img.shields.io/github/license/TheDragonTeam/ArmorPlus.svg)](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE)
