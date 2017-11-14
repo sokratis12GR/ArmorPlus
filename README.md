@@ -27,11 +27,11 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 * **[Tesla](https://minecraft.curseforge.com/projects/tesla)** (Not in 1.12)
 * **RF** (Not in 1.11+)
-* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.12 yet)
+* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)**
 * **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** (Not in 1.12 yet)
-* **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)** (Not in 1.12 yet)
+* **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)**
 * **[Baubles](https://minecraft.curseforge.com/projects/baubles)** (Not in 1.12)
-* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** (Not in 1.12 yet)
+* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b)
 
 ## TheDragonTeam's Discord
 
