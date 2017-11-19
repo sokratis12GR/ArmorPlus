@@ -31,22 +31,23 @@ public class ModelsEventHandler {
     public static void registerBlockModels(ModelRegistryEvent event) {
         registerModels(benches);
         registerModels(blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockLavaInfusedObsidian,
-                oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, lavaCactus, lavaNetherBrick
+            oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, lavaCactus, lavaNetherBrick
         );
         registerModels(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        //   registerModels(blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerModels(enderBlocks);
     }
 
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
-        registerModels(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem,
-                materials, lavaCrystal, theGiftOfTheGods, bookInfo, steelIngot, electricalIngot, redstoneApple, theUltimateParts,
-                devTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+        registerModels(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan);
+        registerModels(materials, lavaCrystal, theGiftOfTheGods, bookInfo, steelIngot, electricalIngot, redstoneApple, theUltimateParts,
+            devTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         registerModels(enableTheUltimateArmor, theUltimate);
         registerModels(isArmorEnabled,
-                coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
         registerModels(isSwordEnabled, sword);
         registerModels(isBattleAxeEnabled, battleAxe);
@@ -66,9 +67,9 @@ public class ModelsEventHandler {
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //Bosses
         //  registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
-          registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
+        registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
         //Boss Projectiles
         //  registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
-          registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
+        registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
     }
 }
