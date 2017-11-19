@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.client.gui
 
 import net.minecraft.client.gui.GuiScreen
 import net.minecraft.util.ResourceLocation
+import net.thedragonteam.armorplus.APConfig
 import net.thedragonteam.armorplus.ArmorPlus
 import net.thedragonteam.armorplus.util.TextUtils.formattedText
 import org.lwjgl.input.Keyboard
@@ -27,6 +28,12 @@ class GuiArmorPlusInfo : GuiScreen() {
         drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight)
 
         fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_heading"), guiX + 25, guiY + 20, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_one"), guiX + 25, guiY + 40, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_two"), guiX + 25, guiY + 50, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_three"), guiX + 25, guiY + 60, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_four"), guiX + 25, guiY + 70, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_five"), guiX + 25, guiY + 80, 0x000000)
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_six", APConfig.gameMode), guiX + 25, guiY + 100, 0x000000)
         super.drawScreen(x, y, ticks)
     }
 
@@ -38,7 +45,4 @@ class GuiArmorPlusInfo : GuiScreen() {
         super.keyTyped(c, key)
     }
 
-    override fun setText(newChatText: String?, shouldOverwrite: Boolean) {
-        super.setText(newChatText, shouldOverwrite)
-    }
 }
