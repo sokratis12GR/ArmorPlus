@@ -1,18 +1,37 @@
-ArmorPlus 1.12.2-11.8.0.25-beta
+ArmorPlus 1.12.2-11.8.0.26-beta
 ----------------------------
+
+**Tinkers' Construct Integration temporary disabled** (Will come back)
 
 **Features Added**:
 
+* Added Just Enough Items Integration & CraftTweaker Integration to the Lava Infuser
+
 * Tiered Benches are back again (**Workbench, High-Tech Bench, Ulti-Tech Bench, Champion Bench**)
   * Improved their performance and removed duplicated code.
-  * CraftingTweaker Integration Upcoming (**NOT IN THIS VERSION**)
-  * Just Enough Items Integration Upcoming (**Can be buggy, please report any issues in the [GitHub Issues](https://github.com/TheDragonTeam/ArmorPlus/issues)**)
+  * CraftingTweaker Integration Upcoming (**Can be buggy, please report any issues in the [GitHub Issues](https://github.com/TheDragonTeam/ArmorPlus/issues)**)
+  * Just Enough Items Integration (**Can be buggy, please report any issues in the [GitHub Issues](https://github.com/TheDragonTeam/ArmorPlus/issues)**)
 
-* Recipes
+* **Recipes**
+  * Re-Added the recipes for the decorative blocks, for the benches and etc.
+  * Moved some recipes over the A+'s Workbench
+  * Added a few more recipes
+  * **Re-Crated most of the old crafting recipes for ALL OF THE BENCHES**
   * Re-added the good old tiered recipes
   * Added an option to choose between the tiered recipes and the all in recipes in the crafting table (3x3) via json
 
 * Gamemodes, they are back too. **BUT Repair Material is the same for Easy and Expert**
+
+**Bugs Fixed**:
+
+* Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent&**) event handler.
+    * Fixed insane amounts of time outs caused by the mod
+    * Fixed client issues when connecting to a server, too many checks per tick to be handled by the player/client
+    * Optimized the armor effects handling better, inside the Armor's properties.
+    * Removed the amounts of duplicated code
+    * Added a few more utilities
+
+* Some cosmetics no longer appear in the JEI nor in the Creative Tabs (A+ Items)
 
 ArmorPlus 1.12.2-11.7.2.24-beta
 ----------------------------
