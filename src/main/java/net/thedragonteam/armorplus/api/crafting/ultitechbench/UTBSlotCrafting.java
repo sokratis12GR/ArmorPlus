@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.crafting.workbench;
+package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -15,7 +15,7 @@ import java.util.Objects;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
-public class WBSlotCrafting extends Slot {
+public class UTBSlotCrafting extends Slot {
     /**
      * The craft matrix inventory linked to this result slot.
      */
@@ -29,7 +29,7 @@ public class WBSlotCrafting extends Slot {
      */
     private int amountCrafted;
 
-    public WBSlotCrafting(EntityPlayer player, InventoryCrafting craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
+    public UTBSlotCrafting(EntityPlayer player, InventoryCrafting craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
         super(inventoryIn, slotIndex, xPosition, yPosition);
         this.player = player;
         this.craftMatrix = craftingInventory;
@@ -92,9 +92,10 @@ public class WBSlotCrafting extends Slot {
     public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
-        NonNullList<ItemStack> nonnulllist = WorkbenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
+        NonNullList<ItemStack> nonnulllist = UltiTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
         ForgeHooks.setCraftingPlayer(null);
         CraftingUtils.onTake(player, craftMatrix, nonnulllist);
+
         return stack;
     }
 }

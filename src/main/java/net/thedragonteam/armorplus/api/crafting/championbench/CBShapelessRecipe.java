@@ -14,11 +14,7 @@ import net.thedragonteam.armorplus.api.crafting.utils.ShapelessRecipeUtils;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-/**
- * net.thedragonteam.armorplus.api.crafting.hightechbench
- * ArmorPlus created by sokratis12GR on 6/19/2016 1:28 PM.
- * - TheDragonTeam
- */
+/** * @author Sokratis Fotkatzikis - TheDragonTeam */
 public class CBShapelessRecipe implements IRecipe {
     public final List<ItemStack> input;
     /**

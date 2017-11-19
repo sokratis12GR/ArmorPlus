@@ -14,12 +14,8 @@ import net.thedragonteam.armorplus.api.crafting.utils.ShapedRecipeUtils;
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
-/**
- * net.thedragonteam.armorplus.api.crafting.benches
- * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
- * - TheDragonTeam
- */
-public class UTBShapedRecipes implements IRecipe {
+/** * @author Sokratis Fotkatzikis - TheDragonTeam */
+public class UTBShapedRecipe implements IRecipe {
     /**
      * How many horizontal itemHandler this recipe is wide.
      */
@@ -38,7 +34,7 @@ public class UTBShapedRecipes implements IRecipe {
     private final ItemStack recipeOutput;
     private boolean copyIngredientNBT;
 
-    public UTBShapedRecipes(int width, int height, ItemStack[] ingredientsIn, ItemStack output) {
+    public UTBShapedRecipe(int width, int height, ItemStack[] ingredientsIn, ItemStack output) {
         this.recipeWidth = width;
         this.recipeHeight = height;
         this.input = ingredientsIn;

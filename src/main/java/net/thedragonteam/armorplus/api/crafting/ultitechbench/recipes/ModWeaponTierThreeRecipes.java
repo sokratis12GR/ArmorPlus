@@ -5,267 +5,208 @@
 package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 import net.thedragonteam.armorplus.registry.APItems;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.*;
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         switch (getRD()) {
-            case EASY:
+            case EASY: {
                 if (enableSwordsRecipes) {
                     if (enableGuardianWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
-                                "  G  ",
-                                " GSG ",
-                                "G S G",
-                                "  S  ",
-                                "  S  ",
-                                'G', "scaleGuardian",
-                                'S', Items.STICK));
+                        registerSwordRecipe(manager, "scaleGuardian", guardianSword);
                     }
                     if (enableSuperStarWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
-                                "  W  ",
-                                " WSW ",
-                                "W S W",
-                                "  S  ",
-                                "  S  ",
-                                'W', "witherBone",
-                                'S', Items.STICK));
+                        registerSwordRecipe(manager, "witherBone", superStarSword);
                     }
                     if (enableEnderDragonWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
-                                "  E  ",
-                                " ESE ",
-                                "E S E",
-                                "  S  ",
-                                "  S  ",
-                                'E', "scaleEnderDragon",
-                                'S', Items.STICK));
+                        registerSwordRecipe(manager, "scaleEnderDragon", enderDragonSword);
                     }
                 }
                 if (enableBattleAxesRecipes) {
                     if (enableGuardianWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
-                                " G G ",
-                                "G S G",
-                                " GSG ",
-                                "  S  ",
-                                "  S  ",
-                                'G', "scaleGuardian",
-                                'S', Items.STICK));
+                        registerBattleAxeRecipe(manager, "scaleGuardian", guardianBattleAxe);
                     }
                     if (enableSuperStarWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
-                                " W W ",
-                                "W S W",
-                                " WSW ",
-                                "  S  ",
-                                "  S  ",
-                                'W', "witherBone",
-                                'S', Items.STICK));
+                        registerBattleAxeRecipe(manager, "witherBone", superStarBattleAxe);
                     }
                     if (enableEnderDragonWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
-                                " E E ",
-                                "E S E",
-                                " ESE ",
-                                "  S  ",
-                                "  S  ",
-                                'E', "scaleEnderDragon",
-                                'S', Items.STICK));
+                        registerBattleAxeRecipe(manager, "scaleEnderDragon", enderDragonBattleAxe);
                     }
                 }
                 if (enableBowsRecipes) {
                     if (enableGuardianWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                                "  GGS",
-                                " GG S",
-                                "G   S",
-                                " GG S",
-                                "  GGS",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                                "SGG  ",
-                                "S GG ",
-                                "S   G",
-                                "S GG ",
-                                "SGG  ",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
+                        registerBowRecipes(manager, "scaleGuardian", "gemPrismarine", guardianBow);
                     }
                     if (enableSuperStarWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                                "  WWS",
-                                " WW S",
-                                "N   S",
-                                " WW S",
-                                "  WWS",
-                                'W', "witherBone",
-                                'S', "string"));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                                "SWW  ",
-                                "S WW ",
-                                "S   W",
-                                "S WW ",
-                                "SWW  ",
-                                'W', "witherBone",
-                                'S', "string"));
+                        registerBowRecipes(manager, "witherBone", "string", superStarBow);
                     }
                     if (enableEnderDragonWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                                "  EES",
-                                " EE S",
-                                "E   S",
-                                " EE S",
-                                "  EES",
-                                'E', "scaleEnderDragon",
-                                'S', "string"));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                                "SEE  ",
-                                "S EE ",
-                                "S   E",
-                                "S EE ",
-                                "SEE  ",
-                                'E', "scaleEnderDragon",
-                                'S', "string"));
+                        registerBowRecipes(manager, "scaleEnderDragon", "string", enderDragonBow);
                     }
                 }
                 break;
+            }
             case EXPERT:
-            case HELLISH:
+            case HELLISH: {
                 if (enableSwordsRecipes) {
                     if (enableGuardianWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianSword, 1),
-                                "  G  ",
-                                " GSG ",
-                                "G S G",
-                                "  S  ",
-                                "  S  ",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(guardianSword),
+                            "   E   ",
+                            "  ESE  ",
+                            " E S E ",
+                            "E  S  E",
+                            "   S   ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "scaleGuardian",
+                            'S', "gemPrismarine"));
                     }
                     if (enableSuperStarWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarSword, 1),
-                                "  H  ",
-                                " WSW ",
-                                "W S W",
-                                "  S  ",
-                                "  S  ",
-                                'W', "witherBone",
-                                'S', Items.NETHER_STAR,
-                                'H', new ItemStack(Items.SKULL, 1, 1)));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(superStarSword),
+                            "   H   ",
+                            "  ESE  ",
+                            " E S E ",
+                            "E  S  E",
+                            "   S   ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "witherBone",
+                            'S', Items.NETHER_STAR,
+                            'H', getItemStack(Items.SKULL, 1)));
                     }
                     if (enableEnderDragonWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonSword, 1),
-                                "  E  ",
-                                " ESE ",
-                                "E S E",
-                                "  S  ",
-                                "  S  ",
-                                'E', "scaleEnderDragon",
-                                'S', Items.DRAGON_BREATH));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(enderDragonSword),
+                            "   E   ",
+                            "  ESE  ",
+                            " E S E ",
+                            "E  S  E",
+                            "   S   ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "scaleEnderDragon",
+                            'S', Items.DRAGON_BREATH));
                     }
                 }
                 if (enableBattleAxesRecipes) {
                     if (enableGuardianWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBattleAxe, 1),
-                                " G G ",
-                                "G S G",
-                                " GSG ",
-                                "  S  ",
-                                "  S  ",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(guardianBattleAxe),
+                            " E   E ",
+                            "E  S  E",
+                            " EESEE ",
+                            "E  S  E",
+                            " E S E ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "scaleGuardian",
+                            'S', "gemPrismarine"));
                     }
                     if (enableSuperStarWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBattleAxe, 1),
-                                " W W ",
-                                "W H W",
-                                " WSW ",
-                                "  S  ",
-                                "  S  ",
-                                'W', "witherBone",
-                                'S', Items.NETHER_STAR,
-                                'H', new ItemStack(Items.SKULL, 1, 1)));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(superStarBattleAxe),
+                            " E   E ",
+                            "E  H  E",
+                            " EESEE ",
+                            "E  S  E",
+                            " E S E ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "witherBone",
+                            'S', Items.NETHER_STAR,
+                            'H', getItemStack(Items.SKULL, 1)));
                     }
                     if (enableEnderDragonWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBattleAxe, 1),
-                                " E E ",
-                                "E S E",
-                                " ESE ",
-                                "  S  ",
-                                "  S  ",
-                                'E', "scaleEnderDragon",
-                                'S', Items.DRAGON_BREATH));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBattleAxe),
+                            " E   E ",
+                            "E  S  E",
+                            " EESEE ",
+                            "E  S  E",
+                            " E S E ",
+                            "   S   ",
+                            "   S   ",
+                            'E', "scaleEnderDragon",
+                            'S', Items.DRAGON_BREATH));
                     }
                 }
                 if (enableBowsRecipes) {
                     if (enableGuardianWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                                "  GGS",
-                                " GG S",
-                                "G   S",
-                                " GG S",
-                                "  GGS",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.guardianBow, 1),
-                                "SGG  ",
-                                "S GG ",
-                                "S   G",
-                                "S GG ",
-                                "SGG  ",
-                                'G', "scaleGuardian",
-                                'S', "gemPrismarine"));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.guardianBow),
+                            "    GGS",
+                            "  GG  S",
+                            " G    S",
+                            "G     S",
+                            " G    S",
+                            "  GG  S",
+                            "    GGS",
+                            'G', "scaleGuardian",
+                            'S', "gemPrismarine"));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.guardianBow),
+                            "SGG    ",
+                            "S  GG  ",
+                            "S    G ",
+                            "S     G",
+                            "S    G ",
+                            "S  GG  ",
+                            "SGG    ",
+                            'G', "scaleGuardian",
+                            'S', "gemPrismarine"));
                     }
                     if (enableSuperStarWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                                "  WWS",
-                                " NW S",
-                                "N   S",
-                                " NW S",
-                                "  WWS",
-                                'W', "witherBone",
-                                'S', "string",
-                                'N', new ItemStack(Items.SKULL, 1, 1)));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.superStarBow, 1),
-                                "SWW  ",
-                                "S WN ",
-                                "S   N",
-                                "S WN ",
-                                "SWW  ",
-                                'W', "witherBone",
-                                'S', "string",
-                                'N', new ItemStack(Items.SKULL, 1, 1)));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.superStarBow),
+                            "    WWS",
+                            "  NW  S",
+                            " N    S",
+                            "N     S",
+                            " N    S",
+                            "  NW  S",
+                            "    WWS",
+                            'W', "witherBone",
+                            'S', "string",
+                            'N', getItemStack(Items.SKULL, 1)));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.superStarBow),
+                            "SWW    ",
+                            "S  WN  ",
+                            "S    N ",
+                            "S     N",
+                            "S    N ",
+                            "S  WN  ",
+                            "SWW    ",
+                            'W', "witherBone",
+                            'S', "string",
+                            'N', getItemStack(Items.SKULL, 1)));
                     }
                     if (enableEnderDragonWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                                "  EES",
-                                " DE S",
-                                "D   S",
-                                " DE S",
-                                "  EES",
-                                'E', "scaleEnderDragon",
-                                'S', "string",
-                                'D', Items.DRAGON_BREATH));
-                        manager.addRecipe(new UTBShapedOreRecipe(new ItemStack(APItems.enderDragonBow, 1),
-                                "SEE  ",
-                                "S ED ",
-                                "S   D",
-                                "S ED ",
-                                "SEE  ",
-                                'E', "scaleEnderDragon",
-                                'S', "string",
-                                'D', Items.DRAGON_BREATH));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBow),
+                            "    EES",
+                            "  DE  S",
+                            " D    S",
+                            "D     S",
+                            " D    S",
+                            "  DE  S",
+                            "    EES",
+                            'E', "scaleEnderDragon",
+                            'S', "string",
+                            'D', Items.DRAGON_BREATH));
+                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBow),
+                            "SEE    ",
+                            "S  ED  ",
+                            "S    D ",
+                            "S     D",
+                            "S    D ",
+                            "S  ED  ",
+                            "SEE    ",
+                            'E', "scaleEnderDragon",
+                            'S', "string",
+                            'D', Items.DRAGON_BREATH));
                     }
                 }
                 break;
+            }
         }
     }
 }

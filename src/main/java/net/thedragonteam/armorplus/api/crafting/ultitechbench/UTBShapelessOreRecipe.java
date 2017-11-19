@@ -38,7 +38,7 @@ public class UTBShapelessOreRecipe implements IRecipe {
         ShapelessOreRecipeUtils.createRecipe(output, input, recipe);
     }
 
-    UTBShapelessOreRecipe(UTBShapelessRecipes recipe, Map<ItemStack, String> replacements) {
+    UTBShapelessOreRecipe(UTBShapelessRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
         recipe.input.stream().map(

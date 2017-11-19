@@ -14,11 +14,7 @@ import net.thedragonteam.armorplus.api.crafting.utils.ShapedRecipeUtils;
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
-/**
- * net.thedragonteam.armorplus.api.crafting.benches
- * ArmorPlus created by sokratis12GR on 6/19/2016 1:27 PM.
- * - TheDragonTeam
- */
+/** * @author Sokratis Fotkatzikis - TheDragonTeam */
 public class CBShapedRecipe implements IRecipe {
     /**
      * How many horizontal itemHandler this recipe is wide.

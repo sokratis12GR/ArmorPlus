@@ -13,6 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModItemRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTierTwoRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
 
 import java.util.List;
@@ -20,9 +24,7 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
- * net.thedragonteam.armorplus.api.crafting.hightechbench
- * ArmorPlus created by sokratis12GR on 6/19/2016 12:29PM.
- * - TheDragonTeam
+ * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class HighTechBenchCraftingManager {
     /**
@@ -34,10 +36,10 @@ public class HighTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private HighTechBenchCraftingManager() {
-       // new ModTierTwoRecipes().addRecipes(this);
-       // new ModItemRecipes().addRecipes(this);
-       // new ModWeaponTierTwoRecipes().addRecipes(this);
-       // new ModTinkersConstructRecipes().addRecipes(this);
+        new ModTierTwoRecipes().addRecipes(this);
+        new ModItemRecipes().addRecipes(this);
+        new ModWeaponTierTwoRecipes().addRecipes(this);
+        new ModTinkersConstructRecipes().addRecipes(this);
 
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
@@ -55,7 +57,7 @@ public class HighTechBenchCraftingManager {
     /**
      * Adds a shaped recipe to the games recipe list.
      */
-    public HTBShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
+    public HTBShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
@@ -102,7 +104,7 @@ public class HighTechBenchCraftingManager {
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
         });
 
-        HTBShapedRecipes shapedrecipes = new HTBShapedRecipes(j, k, aitemstack, stack);
+        HTBShapedRecipe shapedrecipes = new HTBShapedRecipe(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
@@ -113,7 +115,7 @@ public class HighTechBenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
         CraftingUtils.addShapelessRecipe(list, recipeComponents);
-        this.recipes.add(new HTBShapelessRecipes(stack, list));
+        this.recipes.add(new HTBShapelessRecipe(stack, list));
     }
 
     /**

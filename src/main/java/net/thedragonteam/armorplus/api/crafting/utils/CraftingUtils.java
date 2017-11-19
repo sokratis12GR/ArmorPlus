@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,9 +48,7 @@ public class CraftingUtils {
 
     public static NonNullList<ItemStack> getRemainingItems(List<IRecipe> recipes, InventoryCrafting craftMatrix, World worldIn) {
         for (IRecipe irecipe : recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getRemainingItems(craftMatrix);
-            }
+            if (irecipe.matches(craftMatrix, worldIn)) return irecipe.getRemainingItems(craftMatrix);
         }
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
@@ -57,5 +56,28 @@ public class CraftingUtils {
         IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
 
         return nonnulllist;
+    }
+
+    public static void onTake(EntityPlayer player, InventoryCrafting craftMatrix, NonNullList<ItemStack> nonnulllist) {
+        for (int i = 0; i < nonnulllist.size(); ++i) {
+            ItemStack itemstack = craftMatrix.getStackInSlot(i);
+            ItemStack itemstack1 = nonnulllist.get(i);
+
+            if (!itemstack.isEmpty()) {
+                craftMatrix.decrStackSize(i, 1);
+                itemstack = craftMatrix.getStackInSlot(i);
+            }
+
+            if (!itemstack1.isEmpty()) {
+                if (itemstack.isEmpty()) {
+                    craftMatrix.setInventorySlotContents(i, itemstack1);
+                } else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1)) {
+                    itemstack1.grow(itemstack.getCount());
+                    craftMatrix.setInventorySlotContents(i, itemstack1);
+                } else if (!player.inventory.addItemStackToInventory(itemstack1)) {
+                    player.dropItem(itemstack1, false);
+                }
+            }
+        }
     }
 }

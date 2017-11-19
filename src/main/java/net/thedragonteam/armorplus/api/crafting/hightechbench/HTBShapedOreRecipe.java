@@ -97,6 +97,7 @@ public class HTBShapedOreRecipe implements IRecipe {
                 throw new RuntimeException(ret.toString());
             }
         }
+
         input = new Object[width * height];
         int x = 0;
         for (char chr : shape.toString().toCharArray()) {
@@ -104,7 +105,7 @@ public class HTBShapedOreRecipe implements IRecipe {
         }
     }
 
-    HTBShapedOreRecipe(HTBShapedRecipes recipe, Map<ItemStack, String> replacements) {
+    HTBShapedOreRecipe(HTBShapedRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
         width = recipe.recipeWidth;
         height = recipe.recipeHeight;

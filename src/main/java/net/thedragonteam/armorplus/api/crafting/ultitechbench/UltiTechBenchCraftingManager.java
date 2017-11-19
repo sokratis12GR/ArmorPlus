@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.*;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
 
 import java.util.List;
@@ -32,12 +33,12 @@ public class UltiTechBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private UltiTechBenchCraftingManager() {
-     //   new ModUltimateRecipes().addRecipes(this);
-     //   new ModEnderDragonRecipes().addRecipes(this);
-     //   new ModSuperStarRecipes().addRecipes(this);
-     //   new ModGuardianRecipes().addRecipes(this);
-     //   new ModWeaponTierThreeRecipes().addRecipes(this);
-     //   new ModItemRecipes().addRecipes(this);
+        new ModUltimateRecipes().addRecipes(this);
+        new ModEnderDragonRecipes().addRecipes(this);
+        new ModSuperStarRecipes().addRecipes(this);
+        new ModGuardianRecipes().addRecipes(this);
+        new ModWeaponTierThreeRecipes().addRecipes(this);
+        new ModItemRecipes().addRecipes(this);
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
 
@@ -54,9 +55,9 @@ public class UltiTechBenchCraftingManager {
     /**
      * Adds a shaped recipe to the games recipe list.
      */
-    public UTBShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
+    public UTBShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
-        int i = 0,j = 0,k = 0;
+        int i = 0, j = 0, k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
             String[] astring = (String[]) recipeComponents[i++];
@@ -99,7 +100,7 @@ public class UltiTechBenchCraftingManager {
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
         });
 
-        UTBShapedRecipes shapedrecipes = new UTBShapedRecipes(j, k, aitemstack, stack);
+        UTBShapedRecipe shapedrecipes = new UTBShapedRecipe(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
@@ -110,7 +111,7 @@ public class UltiTechBenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
         CraftingUtils.addShapelessRecipe(list, recipeComponents);
-        this.recipes.add(new UTBShapelessRecipes(stack, list));
+        this.recipes.add(new UTBShapelessRecipe(stack, list));
     }
 
     /**

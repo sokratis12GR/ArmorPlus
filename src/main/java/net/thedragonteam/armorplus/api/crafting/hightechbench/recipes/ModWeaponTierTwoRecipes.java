@@ -6,364 +6,91 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
 
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapedOreRecipe;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ModWeaponTierTwoRecipes {
+
     public void addRecipes(HighTechBenchCraftingManager manager) {
         switch (getRD()) {
-            case EASY:
+            case EASY: {
                 if (enableSwordsRecipes) {
                     if (enableEmeraldWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "   E",
-                                "   E",
-                                "   E",
-                                "   S",
-                                'E', "gemEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "  E ",
-                                "  E ",
-                                "  E ",
-                                "  S ",
-                                'E', "gemEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                " E  ",
-                                " E  ",
-                                " E  ",
-                                " S  ",
-                                'E', "gemEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "E   ",
-                                "E   ",
-                                "E   ",
-                                "S   ",
-                                'E', "gemEmerald",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, emeraldSword, "gemEmerald");
                     }
                     if (enableObsidianWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "   O",
-                                "   O",
-                                "   O",
-                                "   S",
-                                'O', "obsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "  O ",
-                                "  O ",
-                                "  O ",
-                                "  S ",
-                                'O', "obsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                " O  ",
-                                " O  ",
-                                " O  ",
-                                " S  ",
-                                'O', "obsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "O   ",
-                                "O   ",
-                                "O   ",
-                                "S   ",
-                                'O', "obsidian",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, obsidianSword, "obsidian");
                     }
                     if (enableLavaWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "   L",
-                                "   L",
-                                "   L",
-                                "   S",
-                                'L', "gemLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "  L ",
-                                "  L ",
-                                "  L ",
-                                "  S ",
-                                'L', "gemLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                " L  ",
-                                " L  ",
-                                " L  ",
-                                " S  ",
-                                'L', "gemLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "L   ",
-                                "L   ",
-                                "L   ",
-                                "S   ",
-                                'L', "gemLavaCrystal",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, lavaSword, "gemLavaCrystal");
                     }
                 }
                 if (enableBattleAxesRecipes) {
                     if (enableEmeraldWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBattleAxe),
-                                "E  E",
-                                "ESSE",
-                                "ESSE",
-                                " SS ",
-                                'E', "gemEmerald",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, emeraldBattleAxe, "gemEmerald");
                     }
                     if (enableObsidianWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBattleAxe),
-                                "O  O",
-                                "OSSO",
-                                "OSSO",
-                                " SS ",
-                                'O', "obsidian",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, obsidianBattleAxe, "obsidian");
                     }
                     if (enableLavaWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBattleAxe),
-                                "L  L",
-                                "LSSL",
-                                "LSSL",
-                                " SS ",
-                                'L', "gemLavaCrystal",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, lavaBattleAxe, "gemLavaCrystal");
                     }
                 }
                 if (enableBowsRecipes) {
                     if (enableEmeraldWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBow),
-                                " EES",
-                                "E  S",
-                                "E  S",
-                                " EES",
-                                'E', "gemEmerald",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBow),
-                                "SEE ",
-                                "S  E",
-                                "S  E",
-                                "SEE ",
-                                'E', "gemEmerald",
-                                'S', "string"));
+                        createBowRecipe(manager, emeraldBow, "gemEmerald");
                     }
                     if (enableObsidianWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBow),
-                                " OOS",
-                                "O  S",
-                                "O  S",
-                                " OOS",
-                                'O', "obsidian",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBow),
-                                "SOO ",
-                                "S  O",
-                                "S  O",
-                                "SOO ",
-                                'O', "obsidian",
-                                'S', "C"));
+                        createBowRecipe(manager, obsidianBow, "obsidian");
                     }
                     if (enableLavaWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBow),
-                                " LLS",
-                                "L  S",
-                                "L  S",
-                                " LLS",
-                                'L', "gemLavaCrystal",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBow),
-                                "SLL ",
-                                "S  L",
-                                "S  L",
-                                "SLL ",
-                                'L', "gemLavaCrystal",
-                                'S', "string"));
+                        createBowRecipe(manager, lavaBow, "gemLavaCrystal");
                     }
                 }
-
                 break;
+            }
             case EXPERT:
-            case HELLISH:
+            case HELLISH: {
                 if (enableSwordsRecipes) {
                     if (enableEmeraldWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "   E",
-                                "   E",
-                                "   E",
-                                "   S",
-                                'E', "blockEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "  E ",
-                                "  E ",
-                                "  E ",
-                                "  S ",
-                                'E', "blockEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                " E  ",
-                                " E  ",
-                                " E  ",
-                                " S  ",
-                                'E', "blockEmerald",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldSword),
-                                "E   ",
-                                "E   ",
-                                "E   ",
-                                "S   ",
-                                'E', "blockEmerald",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, emeraldSword, "blockEmerald");
                     }
                     if (enableObsidianWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "   O",
-                                "   O",
-                                "   O",
-                                "   S",
-                                'O', "blockCompressedObsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "  O ",
-                                "  O ",
-                                "  O ",
-                                "  S ",
-                                'O', "blockCompressedObsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                " O  ",
-                                " O  ",
-                                " O  ",
-                                " S  ",
-                                'O', "blockCompressedObsidian",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianSword),
-                                "O   ",
-                                "O   ",
-                                "O   ",
-                                "S   ",
-                                'O', "blockCompressedObsidian",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, obsidianSword, "blockCompressedObsidian");
                     }
                     if (enableLavaWeapons[0]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "   L",
-                                "   L",
-                                "   L",
-                                "   S",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "  L ",
-                                "  L ",
-                                "  L ",
-                                "  S ",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                " L  ",
-                                " L  ",
-                                " L  ",
-                                " S  ",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "stickWood"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaSword),
-                                "L   ",
-                                "L   ",
-                                "L   ",
-                                "S   ",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "stickWood"));
+                        createSwordRecipes(manager, lavaSword, "gemChargedLavaCrystal");
                     }
                 }
                 if (enableBattleAxesRecipes) {
                     if (enableEmeraldWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBattleAxe),
-                                "E  E",
-                                "ESSE",
-                                "ESSE",
-                                " SS ",
-                                'E', "blockEmerald",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, emeraldBattleAxe, "blockEmerald");
                     }
                     if (enableObsidianWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBattleAxe),
-                                "O  O",
-                                "OSSO",
-                                "OSSO",
-                                " SS ",
-                                'O', "blockCompressedObsidian",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, obsidianBattleAxe, "blockCompressedObsidian");
                     }
                     if (enableLavaWeapons[1]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBattleAxe),
-                                "L  L",
-                                "LSSL",
-                                "LSSL",
-                                " SS ",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "stickWood"));
+                        createBattleAxeRecipe(manager, lavaBattleAxe, "gemChargedLavaCrystal");
                     }
                 }
                 if (enableBowsRecipes) {
                     if (enableEmeraldWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBow),
-                                " EES",
-                                "E  S",
-                                "E  S",
-                                " EES",
-                                'E', "blockEmerald",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(emeraldBow),
-                                "SEE ",
-                                "S  E",
-                                "S  E",
-                                "SEE ",
-                                'E', "blockEmerald",
-                                'S', "string"));
+                        createBowRecipe(manager, emeraldBow, "blockEmerald");
                     }
                     if (enableObsidianWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBow),
-                                " OOS",
-                                "O  S",
-                                "O  S",
-                                " OOS",
-                                'O', "blockCompressedObsidian",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(obsidianBow),
-                                "SOO ",
-                                "S  O",
-                                "S  O",
-                                "SOO ",
-                                'O', "blockCompressedObsidian",
-                                'S', "string"));
+                        createBowRecipe(manager, obsidianBow, "blockCompressedObsidian");
                     }
                     if (enableLavaWeapons[2]) {
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBow),
-                                " LLS",
-                                "L  S",
-                                "L  S",
-                                " LLS",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "string"));
-                        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(lavaBow),
-                                "SLL ",
-                                "S  L",
-                                "S  L",
-                                "SLL ",
-                                'L', "gemChargedLavaCrystal",
-                                'S', "string"));
+                        createBowRecipe(manager, lavaBow, "gemChargedLavaCrystal");
                     }
                 }
-
                 break;
+            }
         }
     }
 }

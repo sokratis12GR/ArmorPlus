@@ -2,31 +2,27 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.api.crafting.workbench;
+package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapelessRecipeUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.stream.IntStream;
 
-/**
- * @author Sokratis Fotkatzikis - TheDragonTeam
- */
-public class WBShapelessRecipes implements IRecipe {
+/** * @author Sokratis Fotkatzikis - TheDragonTeam */
+public class UTBShapelessRecipe implements IRecipe {
     public final List<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
 
-    public WBShapelessRecipes(ItemStack output, List<ItemStack> inputList) {
+    public UTBShapelessRecipe(ItemStack output, List<ItemStack> inputList) {
         this.recipeOutput = output;
         this.input = inputList;
     }
@@ -40,14 +36,7 @@ public class WBShapelessRecipes implements IRecipe {
     @Override
     @Nonnull
     public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
-        NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-
-        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
-            ItemStack itemstack = inv.getStackInSlot(i);
-            nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        });
-
-        return nonnulllist;
+       return ShapelessRecipeUtils.getRemainingItems(inv);
     }
 
     /**

@@ -19,15 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.registry.APBlocks.ultiTechBench;
-import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-
-/**
- * net.thedragonteam.armorplus.api.crafting.hightechbench
- * ArmorPlus created by sokratis12GR on 6/19/2016 12:29PM.
- * - TheDragonTeam
- */
+/** * @author Sokratis Fotkatzikis - TheDragonTeam */
 public class ChampionBenchCraftingManager {
     /**
      * The
@@ -38,18 +30,18 @@ public class ChampionBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private ChampionBenchCraftingManager() {
-        this.addRecipe(new CBShapedOreRecipe(getItemStack(ultiTechBench),
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            "LLLLLLLLL",
-            'L', getItemStack(lavaCrystal, 1)
-        ));
+      //  this.addRecipe(new CBShapedOreRecipe(getItemStack(ultiTechBench),
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      "LLLLLLLLL",
+      //      'L', getItemStack(lavaCrystal, 1)
+      //  ));
 
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }

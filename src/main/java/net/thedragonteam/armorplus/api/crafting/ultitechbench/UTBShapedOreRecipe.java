@@ -100,7 +100,7 @@ public class UTBShapedOreRecipe implements IRecipe {
         for (char chr : shape.toString().toCharArray()) input[x++] = itemMap.get(chr);
     }
 
-    UTBShapedOreRecipe(UTBShapedRecipes recipe, Map<ItemStack, String> replacements) {
+    UTBShapedOreRecipe(UTBShapedRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
         width = recipe.recipeWidth;
         height = recipe.recipeHeight;

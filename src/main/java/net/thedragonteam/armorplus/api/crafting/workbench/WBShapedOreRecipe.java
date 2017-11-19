@@ -108,7 +108,7 @@ public class WBShapedOreRecipe implements IRecipe {
         }
     }
 
-    WBShapedOreRecipe(WBShapedRecipes recipe, Map<ItemStack, String> replacements) {
+    WBShapedOreRecipe(WBShapedRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
         width = recipe.recipeWidth;
         height = recipe.recipeHeight;

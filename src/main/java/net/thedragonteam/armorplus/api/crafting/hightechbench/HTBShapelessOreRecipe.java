@@ -37,7 +37,7 @@ public class HTBShapelessOreRecipe implements IRecipe {
 
     }
 
-    HTBShapelessOreRecipe(HTBShapelessRecipes recipe, Map<ItemStack, String> replacements) {
+    HTBShapelessOreRecipe(HTBShapelessRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
         recipe.input.stream().map(

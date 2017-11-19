@@ -38,7 +38,7 @@ public class WBShapelessOreRecipe implements IRecipe {
         ShapelessOreRecipeUtils.createRecipe(output, input, recipe);
     }
 
-    WBShapelessOreRecipe(WBShapelessRecipes recipe, Map<ItemStack, String> replacements) {
+    WBShapelessOreRecipe(WBShapelessRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
         recipe.input.stream().map(ingredient -> replacements.entrySet().stream().filter(

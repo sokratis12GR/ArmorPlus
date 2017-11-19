@@ -57,7 +57,7 @@ public class WorkbenchCraftingManager {
     /**
      * Adds a shaped recipe to the games recipe list.
      */
-    public WBShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents) {
+    public WBShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
@@ -104,7 +104,7 @@ public class WorkbenchCraftingManager {
             aitemstack[l] = map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY;
         });
 
-        WBShapedRecipes shapedrecipes = new WBShapedRecipes(j, k, aitemstack, stack);
+        WBShapedRecipe shapedrecipes = new WBShapedRecipe(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
@@ -115,7 +115,7 @@ public class WorkbenchCraftingManager {
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents) {
         List<ItemStack> list = Lists.newArrayList();
         CraftingUtils.addShapelessRecipe(list, recipeComponents);
-        this.recipes.add(new WBShapelessRecipes(stack, list));
+        this.recipes.add(new WBShapelessRecipe(stack, list));
     }
 
     /**

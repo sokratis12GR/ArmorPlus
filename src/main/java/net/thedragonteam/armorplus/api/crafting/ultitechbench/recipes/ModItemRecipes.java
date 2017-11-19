@@ -14,20 +14,24 @@ import static net.thedragonteam.armorplus.registry.ModItems.materials;
 public class ModItemRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         manager.addRecipe(new ItemStack(itemEnderDragonArrow, 8),
-                "  EEE",
-                "   SE",
-                "  S E",
-                " S   ",
-                "S    ",
-                'E', Items.DRAGON_BREATH,
-                'S', new ItemStack(materials, 1, 3));
+            "   EEEE",
+            "     SE",
+            "    S E",
+            "   S  E",
+            "  S    ",
+            " S     ",
+            "S      ",
+            'E', Items.DRAGON_BREATH,
+            'S', new ItemStack(materials, 1, 3));
         manager.addRecipe(new ItemStack(itemEnderDragonArrow, 8),
-                "EEE  ",
-                "ES   ",
-                "E S  ",
-                "   S ",
-                "    S",
-                'E', Items.DRAGON_BREATH,
-                'S', new ItemStack(materials, 1, 3));
+            "EEEE   ",
+            "ES     ",
+            "E S    ",
+            "E  S   ",
+            "    S  ",
+            "     S ",
+            "      S",
+            'E', Items.DRAGON_BREATH,
+            'S', new ItemStack(materials, 1, 3));
     }
 }
