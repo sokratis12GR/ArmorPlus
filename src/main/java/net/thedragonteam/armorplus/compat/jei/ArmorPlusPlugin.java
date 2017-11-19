@@ -19,18 +19,17 @@ import net.thedragonteam.armorplus.api.crafting.championbench.*;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.*;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.*;
 import net.thedragonteam.armorplus.api.crafting.workbench.*;
-import net.thedragonteam.armorplus.client.gui.GuiChampionBench;
-import net.thedragonteam.armorplus.client.gui.GuiHighTechBench;
-import net.thedragonteam.armorplus.client.gui.GuiUltiTechBench;
-import net.thedragonteam.armorplus.client.gui.GuiWorkbench;
+import net.thedragonteam.armorplus.client.gui.*;
+import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.armorplus.compat.jei.base.*;
-import net.thedragonteam.armorplus.container.ContainerChampionBench;
-import net.thedragonteam.armorplus.container.ContainerHighTechBench;
-import net.thedragonteam.armorplus.container.ContainerUltiTechBench;
-import net.thedragonteam.armorplus.container.ContainerWorkbench;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.InfuserRecipeMaker;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserCategory;
+import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserRecipeWrapper;
+import net.thedragonteam.armorplus.container.*;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.APConfig.enableJEIIntegration;
 import static net.thedragonteam.armorplus.registry.APItems.*;
@@ -49,21 +48,22 @@ public class ArmorPlusPlugin implements IModPlugin {
 
     public static IJeiHelpers jeiHelper;
 
-    private static final String JEI_CATEGORY_3X3 = setLocation("workbench");
-    private static final String JEI_CATEGORY_5X5 = setLocation("high_tech_bench");
-    private static final String JEI_CATEGORY_7X7 = setLocation("ulti_tech_bench");
-    private static final String JEI_CATEGORY_9X9 = setLocation("champion_bench");
-
-    private static final String[] JEI_CATEGORIES = new String[]{JEI_CATEGORY_3X3, JEI_CATEGORY_5X5, JEI_CATEGORY_7X7, JEI_CATEGORY_9X9};
+    public static final String JEI_CATEGORY_WORKBENCH = setLocation("workbench");
+    public static final String JEI_CATEGORY_HIGH_TECH_BENCH = setLocation("high_tech_bench");
+    public static final String JEI_CATEGORY_ULTI_TECH_BENCH = setLocation("ulti_tech_bench");
+    public static final String JEI_CATEGORY_CHAMPION_BENCH = setLocation("champion_bench");
+    public static final String JEI_CATEGORY_LAVA_INFUSER = setLocation("lava_infuser_infusing");
+    public static final String[] JEI_CATEGORIES = new String[]{JEI_CATEGORY_WORKBENCH, JEI_CATEGORY_HIGH_TECH_BENCH, JEI_CATEGORY_ULTI_TECH_BENCH, JEI_CATEGORY_CHAMPION_BENCH};
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         jeiHelper = registry.getJeiHelpers();
         registry.addRecipeCategories(
-            new CategoryBase("workbench", 29, 16, 116, 54, 94, 18, 3, JEI_CATEGORY_3X3),
-            new CategoryBase("high_tech_bench", 11, 16, 156, 93, 136, 36, 5, JEI_CATEGORY_5X5),
-            new CategoryBaseAdvanced("ulti_tech_bench", 11, 16, 178, 126, 156, 54, 7, JEI_CATEGORY_7X7, 160, 180),
-            new CategoryBaseAdvanced("champion_bench", 11, 16, 200, 162, 178, 35, 9, JEI_CATEGORY_9X9, 185, 60)
+            new CategoryBase("workbench", 29, 16, 116, 54, 94, 18, 3, JEI_CATEGORY_WORKBENCH),
+            new CategoryBase("high_tech_bench", 11, 16, 156, 93, 136, 36, 5, JEI_CATEGORY_HIGH_TECH_BENCH),
+            new CategoryBaseAdvanced("ulti_tech_bench", 11, 16, 178, 126, 156, 54, 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
+            new CategoryBaseAdvanced("champion_bench", 11, 16, 162, 162, 35, 168, 9, JEI_CATEGORY_CHAMPION_BENCH, 60, 170),
+            new LavaInfuserCategory()
         );
     }
 
@@ -80,53 +80,58 @@ public class ArmorPlusPlugin implements IModPlugin {
                 getItemStack(jonBamsItem, 1),
                 theDragonTeamItem,
                 twitchItem,
-                beamItem
+                beamItem,
+                btmMoon,
+                m1Jordan
             );
         }
 
         jeiHelper = registry.getJeiHelpers();
+        registry.handleRecipes(LavaInfuserRecipe.class, LavaInfuserRecipeWrapper::new, JEI_CATEGORY_LAVA_INFUSER);
 
-        registry.handleRecipes(WBShapedRecipes.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_3X3);
-        registry.handleRecipes(WBShapelessRecipes.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_3X3);
-        registry.handleRecipes(WBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_3X3);
-        registry.handleRecipes(WBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_3X3);
+        registry.handleRecipes(WBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_WORKBENCH);
+        registry.handleRecipes(WBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_WORKBENCH);
+        registry.handleRecipes(WBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_WORKBENCH);
+        registry.handleRecipes(WBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_WORKBENCH);
 
-        registry.handleRecipes(HTBShapedRecipes.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_5X5);
-        registry.handleRecipes(HTBShapelessRecipes.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_5X5);
-        registry.handleRecipes(HTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_5X5);
-        registry.handleRecipes(HTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_5X5);
+        registry.handleRecipes(HTBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.handleRecipes(HTBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.handleRecipes(HTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.handleRecipes(HTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_HIGH_TECH_BENCH);
 
-        registry.handleRecipes(UTBShapedRecipes.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_7X7);
-        registry.handleRecipes(UTBShapelessRecipes.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_7X7);
-        registry.handleRecipes(UTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_7X7);
-        registry.handleRecipes(UTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_7X7);
+        registry.handleRecipes(UTBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.handleRecipes(UTBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.handleRecipes(UTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.handleRecipes(UTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_ULTI_TECH_BENCH);
 
-        registry.handleRecipes(CBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_9X9);
-        registry.handleRecipes(CBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_9X9);
-        registry.handleRecipes(CBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_9X9);
-        registry.handleRecipes(CBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_9X9);
+        registry.handleRecipes(CBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_CHAMPION_BENCH);
+        registry.handleRecipes(CBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_CHAMPION_BENCH);
+        registry.handleRecipes(CBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_CHAMPION_BENCH);
+        registry.handleRecipes(CBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_CHAMPION_BENCH);
 
-        registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_3X3);
-        registry.addRecipeClickArea(GuiHighTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_5X5);
-        registry.addRecipeClickArea(GuiUltiTechBench.class, 138, 70, 24, 17, JEI_CATEGORY_7X7);
-        registry.addRecipeClickArea(GuiChampionBench.class, 185, 23, 24, 17, JEI_CATEGORY_9X9);
+        registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeClickArea(GuiHighTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeClickArea(GuiUltiTechBench.class, 138, 70, 24, 17, JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipeClickArea(GuiChampionBench.class, 185, 23, 24, 17, JEI_CATEGORY_CHAMPION_BENCH);
+        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerWorkbench.class, JEI_CATEGORY_3X3, 1, 9, 10, 36);
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_5X5, 1, 25, 26, 36);
-        recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_7X7, 1, 49, 50, 36);
-        recipeTransferRegistry.addRecipeTransferHandler(new AdvancedRecipeTransferInfo<>(ContainerChampionBench.class, JEI_CATEGORY_9X9, 1, 81, 82, 36));
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerWorkbench.class, JEI_CATEGORY_WORKBENCH, 1, 9, 10, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerHighTechBench.class, JEI_CATEGORY_HIGH_TECH_BENCH, 1, 25, 26, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerUltiTechBench.class, JEI_CATEGORY_ULTI_TECH_BENCH, 1, 49, 50, 36);
+        recipeTransferRegistry.addRecipeTransferHandler(new AdvancedRecipeTransferInfo<>(ContainerChampionBench.class, JEI_CATEGORY_CHAMPION_BENCH, 1, 81, 82, 36));
+        recipeTransferRegistry.addRecipeTransferHandler(ContainerLavaInfuser.class, JEI_CATEGORY_LAVA_INFUSER, 0, 1, 3, 36);
 
-        int bound = JEI_CATEGORIES.length;
-        for (int i = 0; i < bound; i++) {
-            registry.addRecipeCatalyst(getItemStack(ModBlocks.benches[i]), JEI_CATEGORIES[i]);
-        }
+        registry.addRecipeCatalyst(getItemStack(ModBlocks.lavaInfuser), JEI_CATEGORY_LAVA_INFUSER);
 
-        registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_3X3);
-        registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_5X5);
-        registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_7X7);
-        registry.addRecipes(ChampionBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_9X9);
+        IntStream.range(0, JEI_CATEGORIES.length).forEach(i -> registry.addRecipeCatalyst(getItemStack(ModBlocks.benches[i]), JEI_CATEGORIES[i]));
+
+        registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipes(ChampionBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_CHAMPION_BENCH);
+        registry.addRecipes(InfuserRecipeMaker.getInfuserRecipes(), JEI_CATEGORY_LAVA_INFUSER);
 
     }
 

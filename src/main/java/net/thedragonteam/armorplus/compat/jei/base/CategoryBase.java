@@ -41,7 +41,6 @@ public class CategoryBase implements IRecipeCategory {
         this.category = category;
         ResourceLocation location = setRL(format("textures/gui/container/gui_%s.png", name));
         background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, u, v, widthU, heightV);
-        //noinspection MethodCallSideOnly
         localizedName = new TextComponentTranslation("gui.jei.category." + name).getFormattedText();
         craftingGridHelper = ArmorPlusPlugin.jeiHelper.getGuiHelper().createCraftingGridHelper(INPUT_SLOT, OUTPUT_SLOT);
     }

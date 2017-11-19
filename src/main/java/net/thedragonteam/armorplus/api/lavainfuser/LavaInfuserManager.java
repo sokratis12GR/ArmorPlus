@@ -4,14 +4,17 @@
 
 package net.thedragonteam.armorplus.api.lavainfuser;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,6 +27,7 @@ public class LavaInfuserManager {
     private static final LavaInfuserManager INSTANCE = new LavaInfuserManager();
     private final Map<ItemStack, ItemStack> infusingList = Maps.newHashMap();
     private final Map<ItemStack, Double> experienceList = Maps.newHashMap();
+    private final List<LavaInfuserRecipe> recipes = Lists.newArrayList();
 
     private LavaInfuserManager() {
         this.addInfusingRecipe(getItemStack(ModItems.lavaCrystal, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
@@ -36,6 +40,12 @@ public class LavaInfuserManager {
      */
     public static LavaInfuserManager getInstance() {
         return INSTANCE;
+    }
+
+    public void addInfusingRecipe(LavaInfuserRecipe recipe) {
+        this.infusingList.put(recipe.input, recipe.output);
+        this.experienceList.put(recipe.output, recipe.xp);
+        this.recipes.add(recipe);
     }
 
     public void addInfusingRecipe(Object input, ItemStack stack, double experience) {
@@ -60,6 +70,7 @@ public class LavaInfuserManager {
         }
         this.infusingList.put(input, stack);
         this.experienceList.put(stack, experience);
+        this.recipes.add(new LavaInfuserRecipe(input, stack, experience));
     }
 
     /**
@@ -67,6 +78,13 @@ public class LavaInfuserManager {
      */
     public void removeFromRecipe(ItemStack recipe) {
         this.infusingList.remove(recipe);
+    }
+
+    /**
+     * Removes an IRecipe to the list of crafting recipes.
+     */
+    public void removeRecipe(LavaInfuserRecipe recipe) {
+        this.recipes.remove(recipe);
     }
 
     /**
@@ -90,6 +108,10 @@ public class LavaInfuserManager {
 
     public Map<ItemStack, ItemStack> getInfusingList() {
         return this.infusingList;
+    }
+
+    public List<LavaInfuserRecipe> getRecipeList() {
+        return this.recipes;
     }
 
     public double getInfusingExperience(ItemStack stack) {

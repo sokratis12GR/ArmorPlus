@@ -105,7 +105,7 @@ public final class Utils {
         return a.getItem() == b;
     }
 
-    public static boolean isArmorEmpty(ItemStack... stacks) {
-        return Arrays.stream(stacks).findFirst().map(ItemStack::isEmpty).orElse(true);
+    public static boolean isArmorEmpty(ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots) {
+        return (helmet.isEmpty() && chestplate.isEmpty() && leggings.isEmpty() && boots.isEmpty());
     }
 }

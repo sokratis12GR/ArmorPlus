@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.util;
 
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.APConfig;
 
