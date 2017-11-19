@@ -9,12 +9,20 @@ import net.thedragonteam.thedragonlib.config.ModConfigProperty;
 
 import static java.util.Arrays.fill;
 import static net.minecraft.item.ItemStack.areItemsEqual;
-import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.EXPERT;
+import static net.thedragonteam.armorplus.APConfig.RecipesDifficulty.*;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public class APConfig {
+
+    //Global Config
+    @ModConfigProperty(category = "global.recipes", name = "useJsonRecipes", comment = "Will make ArmorPlus use the Crafting Table 3x3 for all the recipes instead of the tiered benches")
+    public static boolean useJsonRecipes = false;
+
+    @ModConfigProperty(category = "global.gamemodes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy (All recipes are extremely easy) , 1 = expert (default, All Recipes Are Harder), 2 = hellish (Repairing for A+ items is DISABLED)")
+    public static int gameMode = 1;
+
     //WhiteList
     @ModConfigProperty(category = "items.the_gift_of_the_gods.white_list", name = "whitelistMax", comment = "Set the maximum amount of items that the player can get by the \"The Gift Of The Gods\". \nNote:You will need to have that many WhiteListed Items.")
     public static int whitelistMax = 0;
@@ -26,7 +34,7 @@ public class APConfig {
     public static String[] whiteListedItems = new String[]{"minecraft:dirt"};
     //BlackList
     @ModConfigProperty(category = "items.the_gift_of_the_gods.black_list", name = "enableBlackList", comment = "Enable/Disable the BlackList")
-    public static boolean enableBlackList = true;
+    public static boolean enableBlackList = false;
     @ModConfigProperty(category = "items.the_gift_of_the_gods.black_list", name = "blackListedItems", comment = "Add Blacklisted Items to the \"The Gift Of The Gods\" \nIf You add want to add an item to the blacklist \nYou will need to replace 1 from \"minecraft:dirt\" to the item you want to add")
     public static String[] blackListedItems = new String[]{"minecraft:dirt"};
     //Weapons.*.registry
@@ -604,10 +612,13 @@ public class APConfig {
     @ModConfigProperty(category = "mob_drops.guardian", name = "guardianScaleGuardianDrop", comment = "Enable/Disable the drop of Guardian Scales from the Guardian")
     public static boolean guardianScaleGuardianDrop = true;
 
+    //Integrations
     @ModConfigProperty(category = "integrations.tinkers", name = "enableTConstructIntegration", comment = "Enable/Disable the Tinkers' Construct integration")
-    public static boolean enableTConstructIntegration = true;
+    public static boolean enableTConstructIntegration = false;
     @ModConfigProperty(category = "integrations.jei", name = "enableJEIIntegration", comment = "Enable/Disable the JEI integration")
     public static boolean enableJEIIntegration = true;
+    @ModConfigProperty(category = "integrations.top", name = "enableTOPIntegration", comment = "Enable/Disable the The One Probe integration")
+    public static boolean enableTOPIntegration = true;
 
     //Items.Recipes
     @ModConfigProperty(category = "items.registry", name = "enableRedstoneAppleRecipes", comment = "Enable/Disable The Redstone Apple Recipes")
@@ -662,10 +673,6 @@ public class APConfig {
     @ModConfigProperty(category = "type.bows.registry", name = "enableBowsRecipes", comment = "Enable/Disable ArmorPlus Bows's Recipes")
     public static boolean enableBowsRecipes = true;
 
-    //JsonVsBenches
-    @ModConfigProperty(category = "global.recipes", name = "useJsonRecipes", comment = "Will make ArmorPlus use the Crafting Table 3x3 for all the recipes instead of the tiered benches")
-    public static boolean useJsonRecipes = false;
-
     static {
         fill(enableCoalWeapons, true);
         fill(enableLapisWeapons, true);
@@ -679,6 +686,16 @@ public class APConfig {
     }
 
     public static RecipesDifficulty getRD() {
+        switch (gameMode) {
+            case -1:
+                return DISABLED;
+            case 0:
+                return EASY;
+            case 1:
+                return EXPERT;
+            case 2:
+                return HELLISH;
+        }
         return EXPERT;
     }
 
