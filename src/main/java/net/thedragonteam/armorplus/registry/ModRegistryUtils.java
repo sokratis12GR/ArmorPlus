@@ -36,17 +36,14 @@ public class ModRegistryUtils {
     }
 
     public static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {
-        int bound = isEnabled.length;
-        IntStream.range(0, bound).filter(i -> isEnabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
+        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
     }
 
     public static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
-        int bound = isEnabled.length;
-        IntStream.range(0, bound).filter(i -> isEnabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
+        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
     }
 
     public static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
-        int bound = isEnabled.length;
-        IntStream.range(0, bound).filter(i -> isEnabled[i]).forEachOrdered(i -> bow[i] = new ItemSpecialBow(material[i]));
+        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> bow[i] = new ItemSpecialBow(material[i]));
     }
 }

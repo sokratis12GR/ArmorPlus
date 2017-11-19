@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 
 import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -160,33 +159,33 @@ public class APItems {
             knightSlimeLeggings = knightSlime[2];
             knightSlimeBoots = knightSlime[3];
         }
-        if (enabled(enableCoalWeapons[0], coalSword)) coalSword = sword[0];
-        if (enabled(enableCoalWeapons[1], coalBattleAxe)) coalBattleAxe = battleAxe[0];
-        if (enabled(enableCoalWeapons[2], coalBow)) coalBow = bow[0];
-        if (enabled(enableLapisWeapons[0], lapisSword)) lapisSword = sword[1];
-        if (enabled(enableLapisWeapons[1], lapisBattleAxe)) lapisBattleAxe = battleAxe[1];
-        if (enabled(enableLapisWeapons[2], lapisBow)) lapisBow = bow[1];
-        if (enabled(enableRedstoneWeapons[0], redstoneSword)) redstoneSword = sword[2];
-        if (enabled(enableRedstoneWeapons[1], redstoneBattleAxe)) redstoneBattleAxe = battleAxe[2];
-        if (enabled(enableRedstoneWeapons[2], redstoneBow)) redstoneBow = bow[2];
-        if (enabled(enableEmeraldWeapons[0], emeraldSword)) emeraldSword = sword[3];
-        if (enabled(enableEmeraldWeapons[1], emeraldBattleAxe)) emeraldBattleAxe = battleAxe[3];
-        if (enabled(enableEmeraldWeapons[2], emeraldBow)) emeraldBow = bow[3];
-        if (enabled(enableObsidianWeapons[0], obsidianSword)) obsidianSword = sword[4];
-        if (enabled(enableObsidianWeapons[1], obsidianBattleAxe)) obsidianBattleAxe = battleAxe[4];
-        if (enabled(enableObsidianWeapons[2], obsidianBow)) obsidianBow = bow[4];
-        if (enabled(enableLavaWeapons[0], lavaSword)) lavaSword = sword[5];
-        if (enabled(enableLavaWeapons[1], lavaBattleAxe)) lavaBattleAxe = battleAxe[5];
-        if (enabled(enableLavaWeapons[2], lavaBow)) lavaBow = bow[5];
-        if (enabled(enableGuardianWeapons[0], guardianSword)) guardianSword = sword[6];
-        if (enabled(enableGuardianWeapons[1], guardianBattleAxe)) guardianBattleAxe = battleAxe[6];
-        if (enabled(enableGuardianWeapons[2], guardianBow)) guardianBow = bow[6];
-        if (enabled(enableSuperStarWeapons[0], superStarSword)) superStarSword = sword[7];
-        if (enabled(enableSuperStarWeapons[1], superStarBattleAxe)) superStarBattleAxe = battleAxe[7];
-        if (enabled(enableSuperStarWeapons[2], superStarBow)) superStarBow = bow[7];
-        if (enabled(enableEnderDragonWeapons[0], enderDragonSword)) enderDragonSword = sword[8];
-        if (enabled(enableEnderDragonWeapons[1], enderDragonBattleAxe)) enderDragonBattleAxe = battleAxe[8];
-        if (enabled(enableEnderDragonWeapons[2], enderDragonBow)) enderDragonBow = bow[8];
+        if (enableCoalWeapons[0]) coalSword = sword[0];
+        if (enableCoalWeapons[1]) coalBattleAxe = battleAxe[0];
+        if (enableCoalWeapons[2]) coalBow = bow[0];
+        if (enableLapisWeapons[0]) lapisSword = sword[1];
+        if (enableLapisWeapons[1]) lapisBattleAxe = battleAxe[1];
+        if (enableLapisWeapons[2]) lapisBow = bow[1];
+        if (enableRedstoneWeapons[0]) redstoneSword = sword[2];
+        if (enableRedstoneWeapons[1]) redstoneBattleAxe = battleAxe[2];
+        if (enableRedstoneWeapons[2]) redstoneBow = bow[2];
+        if (enableEmeraldWeapons[0]) emeraldSword = sword[3];
+        if (enableEmeraldWeapons[1]) emeraldBattleAxe = battleAxe[3];
+        if (enableEmeraldWeapons[2]) emeraldBow = bow[3];
+        if (enableObsidianWeapons[0]) obsidianSword = sword[4];
+        if (enableObsidianWeapons[1]) obsidianBattleAxe = battleAxe[4];
+        if (enableObsidianWeapons[2]) obsidianBow = bow[4];
+        if (enableLavaWeapons[0]) lavaSword = sword[5];
+        if (enableLavaWeapons[1]) lavaBattleAxe = battleAxe[5];
+        if (enableLavaWeapons[2]) lavaBow = bow[5];
+        if (enableGuardianWeapons[0]) guardianSword = sword[6];
+        if (enableGuardianWeapons[1]) guardianBattleAxe = battleAxe[6];
+        if (enableGuardianWeapons[2]) guardianBow = bow[6];
+        if (enableSuperStarWeapons[0]) superStarSword = sword[7];
+        if (enableSuperStarWeapons[1]) superStarBattleAxe = battleAxe[7];
+        if (enableSuperStarWeapons[2]) superStarBow = bow[7];
+        if (enableEnderDragonWeapons[0]) enderDragonSword = sword[8];
+        if (enableEnderDragonWeapons[1]) enderDragonBattleAxe = battleAxe[8];
+        if (enableEnderDragonWeapons[2]) enderDragonBow = bow[8];
 
         infusedLavaCrystal = getItemStack(lavaCrystal, 1);
         chainmail = getItemStack(materials, 0);
@@ -195,9 +194,4 @@ public class APItems {
         enderDragonScale = getItemStack(materials, 3);
         theUltimateMaterial = getItemStack(materials, 4);
     }
-
-    private static boolean enabled(boolean isEnabled, Item items) {
-        return isEnabled && isNotNull(items);
-    }
-
 }

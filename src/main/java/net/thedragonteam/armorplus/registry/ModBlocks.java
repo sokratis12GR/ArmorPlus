@@ -57,6 +57,7 @@ public class ModBlocks {
             ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP
     };
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
+   // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 
     public static void registerBlocks() {
         setAll(benches, block -> new BlockBench(benchTypes[block]));
