@@ -50,7 +50,6 @@ public class LavaCrystal extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        ToolTipUtils.showInfo(tooltip, keyBindSneak, TextFormatting.GOLD);
         if (isKeyDown()) {
             switch (stack.getMetadata()) {
                 case 0: {
@@ -58,10 +57,12 @@ public class LavaCrystal extends Item implements IModdedItem {
                     break;
                 }
                 case 1: {
-                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Van be created by infusing the Lava Crystal inside the Lava Infuser");
+                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
                     break;
                 }
             }
+        } else {
+            ToolTipUtils.showInfo(tooltip, keyBindSneak, TextFormatting.GOLD);
         }
     }
 
