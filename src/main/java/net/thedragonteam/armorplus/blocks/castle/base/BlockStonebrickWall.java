@@ -30,6 +30,7 @@ public class BlockStonebrickWall extends BlockWall implements IModdedBlock {
         this.setResistance(10f);
         this.setHardness(5f);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.stoneBrick = stoneBrick;
     }
 
     @Override
