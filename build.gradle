@@ -24,10 +24,6 @@ repositories {
     maven { // Tesla repo
         url 'http://maven.epoxide.org'
     }
-    maven { // JEI repo
-        name "jei"
-        url "http://dvs1.progwml6.com/files/maven"
-    }
     maven { //The repo to get TiC
         url 'http://dvs1.progwml6.com/files/maven'
     }
@@ -79,12 +75,12 @@ artifacts {
 dependencies {
     deobfCompile "mezz.jei:jei_1.12.2:${jei_version}"
     compile "net.darkhax.tesla:Tesla-1.12:${tesla_version}"
-    deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
-    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
+//    deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
+//    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "shadowfacts-forgelin:Forgelin:1.5.1"
-//    deobfCompile "CraftTweaker2:CraftTweaker2-API${crafttweaker_version}"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crafttweaker_version}"
 //    deobfCompile "com.blamejared:MTLib:2.0.2.3"
 }
 
