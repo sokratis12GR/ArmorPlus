@@ -24,7 +24,7 @@ import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
-import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.Arrays;
@@ -101,6 +101,7 @@ public class RegistryEventHandler {
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        //registerAllBlocks(event, blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerAllBlocks(event, enderBlocks);
         registerTileEntities();
@@ -112,7 +113,13 @@ public class RegistryEventHandler {
     }
 
     private static void registerTileEntities() {
+        //Before BTM Terrible Errors caused by A+
         GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserTileEntity");
+        //After BTM Terrible Error caused by A+
+        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "WorkbenchTileEntity");
+        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "HighTechBenchTileEntity");
+        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "UltiTechBenchTileEntity");
+        GameRegistry.registerTileEntity(TileEntityChampionBench.class, "ChampionBenchTileEntity");
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {
@@ -141,6 +148,7 @@ public class RegistryEventHandler {
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
         registerAllItemBlocks(event, benches);
+        //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
             oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
@@ -155,7 +163,7 @@ public class RegistryEventHandler {
             itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         // ==== COSMETICS ==== \\
-        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem);
+        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan);
         // ==== GEAR ==== \\
         registerAllItems(event,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
