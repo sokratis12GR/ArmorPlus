@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
-import net.thedragonteam.armorplus.compat.tinkers.TiC;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
@@ -23,7 +22,6 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
-import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCIntegrationEnabled;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -40,7 +38,7 @@ public class CommonProxy {
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(PRE_INIT);
         //TConstruct
-        if (isTiCIntegrationEnabled()) TiC.instance().preInit(event);
+      //  if (isTiCIntegrationEnabled()) TiC.instance().preInit(event);
         LogHelper.info("Finished PreInitialization");
     }
 
@@ -55,15 +53,16 @@ public class CommonProxy {
         ModOreDicts.registerOreDictEntries();
         APTab.registerTabs();
         ModCompatibility.loadCompat(INIT);
+        ModRecipes.init();
         //TConstruct
-        if (isTiCIntegrationEnabled()) TiC.instance().init(event);
+   //     if (isTiCIntegrationEnabled()) TiC.instance().init(event);
         LogHelper.info("Finished Initialization");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(POST_INIT);
         //TConstruct
-        if (isTiCIntegrationEnabled()) TiC.instance().postInit(event);
+    //    if (isTiCIntegrationEnabled()) TiC.instance().postInit(event);
         LogHelper.info("Finished PostInitialization");
     }
 
