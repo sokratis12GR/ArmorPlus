@@ -35,7 +35,8 @@ import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
+import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
+import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -130,19 +131,23 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
                 player.capabilities.allowFlying = false;
             }
         }
-        if (APConfig.enableTheUltimateArmorInvincibility)
+        if (APConfig.enableTheUltimateArmorInvincibility) {
             player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
-        if (head.isEmpty() || head.getItem() != theUltimateHelmet || chest.isEmpty() || chest.getItem() != theUltimateChestplate || legs.isEmpty() || legs.getItem() != theUltimateLeggings || feet.isEmpty() || feet.getItem() != theUltimateBoots) {
-            if (!player.capabilities.isCreativeMode && !player.isSpectator() && enableTheUltimateArmorDeBuffs) {
-                addPotion(player, MobEffects.POISON, 60, 2, BAD);
-                addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
-                addPotion(player, MobEffects.BLINDNESS, 60, 0, BAD);
+        }
+        if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
+            addPotion(player, getPotion(theUltimateArmorAddPotionEffect[0]), 120, ultimateArmorEffectLevels[0], GOOD);
+            addPotion(player, getPotion(theUltimateArmorAddPotionEffect[1]), 120, ultimateArmorEffectLevels[1], GOOD);
+            addPotion(player, getPotion(theUltimateArmorAddPotionEffect[2]), 120, ultimateArmorEffectLevels[2], GOOD);
+            removePotion(player, getPotion(theUltimateArmorRemovePotionEffect));
+        } else {
+            addPotion(player, MobEffects.POISON, 60, 2, BAD);
+            addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
+            addPotion(player, MobEffects.BLINDNESS, 60, 0, BAD);
 
-                player.motionX = 0.0;
-                if (player.onGround) player.motionY = 0.0;
-                player.motionZ = 0.0;
-                player.velocityChanged = true; // assumes that player instanceof EntityPlayer
-            }
+            player.motionX = 0.0;
+            if (player.onGround) player.motionY = 0.0;
+            player.motionZ = 0.0;
+            player.velocityChanged = true; // assumes that player instanceof EntityPlayer
         }
     }
 
