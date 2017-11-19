@@ -23,7 +23,7 @@ import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -78,7 +78,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     public static int getItemChargeTime(ItemStack stack) {
         if (stack.isEmpty()) return 0;
         Item item = stack.getItem();
-        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : GameRegistry.getFuelValue(stack);
+        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : ForgeEventFactory.getItemBurnTime(stack);
     }
 
     /**
