@@ -51,9 +51,9 @@ item.armorplus.bauble_cosmetic_dragon.name=龙饰品
 
 #Containers
 container.armorplus.workbench=工作台
-container.armorplus.high_tech_bench=进阶工作台
-container.armorplus.ulti_tech_bench=高级工作台
-container.armorplus.champion_bench=终级工作台
+container.armorplus.high_tech_bench=高科工作台
+container.armorplus.ulti_tech_bench=终极工作台
+container.armorplus.champion_bench=冠军工作台
 container.armorplus.inventory=物品栏
 container.armorplus.lava_infuser=熔岩灌注器
 
@@ -117,7 +117,7 @@ gui.jei.category.armorplus.infusing.fuel.smeltCount=灌注 %s 物品
 gui.jei.category.armorplus.infusing.fuel.burnTime=燃料时间：%s
 
 #BOOKS
-item.armorplus.book.name=ArmorPlus 指北
+item.armorplus.book.name=ArmorPlus 手册
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus 配置
@@ -397,57 +397,21 @@ item.armorplus.redstone_flux_shovel.name=红石通量锹
 
 #Entities
 entity.ender_dragon_zombie.name=末影龙僵尸
-entity.ice_golem.name=雪傀儡 (WIP)
+entity.ice_golem.name=雪傀儡（未完成，实验阶段）
+entity.overlord_of_the_guardians.name=管理者（未完成，实验阶段）
+entity.skeletal_king.name=骷髅王（未完成，实验阶段）
+entity.freeze_bomb.name=霜冻介质（未完成，远程，实验阶段）
+entity.wither_minion.name=凋谢仆从（未完成，远程，Spawner）
 
 #KeyBinds
 key.nightVision=终极护甲夜视开关
 key.categories.armorplus=ArmorPlus
 
-#Achievements
-achievement.armorplus.craft_coal_armor=蝙蝠一样的视觉！
-achievement.armorplus.craft_coal_armor.desc=合成任意一件煤炭护甲
-achievement.armorplus.craft_lapis_armor=不再溺水！
-achievement.armorplus.craft_lapis_armor.desc=合成任意一件青金石护甲
-achievement.armorplus.craft_redstone_armor=动如雷震！
-achievement.armorplus.craft_redstone_armor.desc=合成任意一件红石护甲
-achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
-achievement.armorplus.craft_emerald_armor.desc=合成任意一件绿宝石护甲
-achievement.armorplus.craft_obsidian_armor=坚不可摧！
-achievement.armorplus.craft_obsidian_armor.desc=合成任意一件黑曜石护甲
-achievement.armorplus.craft_lava_armor=OP！
-achievement.armorplus.craft_lava_armor.desc=合成任意一件熔岩护甲
-achievement.armorplus.craft_super_star_armor=超神！
-achievement.armorplus.craft_super_star_armor.desc=合成任意一件下界之星护甲
-achievement.armorplus.craft_ender_dragon_armor=末影龙的力量！
-achievement.armorplus.craft_ender_dragon_armor.desc=击杀末影龙并合成任意一件末影龙护甲
-achievement.armorplus.craft_guardian_armor=充满荆棘！
-achievement.armorplus.craft_guardian_armor.desc=合成任意一件守卫者护甲
-achievement.armorplus.craft_the_ultimate_armor=终极力量！
-achievement.armorplus.craft_the_ultimate_armor.desc=合成任意一件终极护甲
-achievement.armorplus.craft_cobalt_armor=匠魂护甲！
-achievement.armorplus.craft_cobalt_armor.desc=合成任意一件钴护甲
-achievement.armorplus.craft_ardite_armor=越强越好！
-achievement.armorplus.craft_ardite_armor.desc=合成任意一件阿迪特护甲
-achievement.armorplus.craft_manyullyn_armor=匠魂护甲之神！
-achievement.armorplus.craft_manyullyn_armor.desc=合成任意一件玛玉灵护甲
-achievement.armorplus.craft_pig_iron_armor=Oink!
-achievement.armorplus.craft_pig_iron_armor.desc=合成任意一件生铁护甲
-achievement.armorplus.craft_knight_slime_armor=闪耀！
-achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件史莱姆骑士护甲
-achievement.armorplus.craft_slime_armor=我跳跳跳！
-achievement.armorplus.craft_slime_armor.desc=合成任意一件史莱姆护甲
-achievement.armorplus.craft_chicken_armor=是时候跑起来了！
-achievement.armorplus.craft_chicken_armor.desc=合成任意一件鸡护甲
-achievement.armorplus.craft_workbench=欢迎使用 ArmorPlus！
-achievement.armorplus.craft_workbench.desc=合成 ArmorPlus 的工作台
-achievement.armorplus.craft_high_tech_bench=更加复杂
-achievement.armorplus.craft_high_tech_bench.desc=合成 ArmorPlus 的高科工作台
-achievement.armorplus.craft_ulti_tech_bench=终极强化
-achievement.armorplus.craft_ulti_tech_bench.desc=合成 ArmorPlus 的终极工作台
-achievement.armorplus.craft_champion_bench=只为冠军准备
-achievement.armorplus.craft_champion_bench.desc=合成 ArmorPlus 的冠军工作台
-achievement.armorplus.armorplus=sokratis12GR
-achievement.armorplus.armorplus.desc=制作了 ArmorPlus
+#ArmorPlus Effects
+effect.armorplus.empty.name=空
+effect.armorplus.empty=空
+armorplus.empty.name=空
+armorplus.empty=空
 
 ##############
 # Deprecated #
@@ -482,8 +446,48 @@ achievement.armorplus.armorplus.desc=制作了 ArmorPlus
 #effect.unluck.name=霉运
 #effect.levitation.name=飘浮
 
-#ArmorPlus Effects
-effect.armorplus.empty.name=空
-effect.armorplus.empty=空
-armorplus.empty.name=空
-armorplus.empty=空
+#Achievements
+achievement.armorplus.craft_coal_armor=蝙蝠一样的视觉！
+achievement.armorplus.craft_coal_armor.desc=合成任意一件煤炭护甲
+achievement.armorplus.craft_lapis_armor=不再溺水！
+achievement.armorplus.craft_lapis_armor.desc=合成任意一件青金石护甲
+achievement.armorplus.craft_redstone_armor=动如雷震！
+achievement.armorplus.craft_redstone_armor.desc=合成任意一件红石护甲
+achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
+achievement.armorplus.craft_emerald_armor.desc=合成任意一件绿宝石护甲
+achievement.armorplus.craft_obsidian_armor=坚不可摧！
+achievement.armorplus.craft_obsidian_armor.desc=合成任意一件黑曜石护甲
+achievement.armorplus.craft_lava_armor=OP！
+achievement.armorplus.craft_lava_armor.desc=合成任意一件熔岩护甲
+achievement.armorplus.craft_super_star_armor=超神！
+achievement.armorplus.craft_super_star_armor.desc=合成任意一件下界之星护甲
+achievement.armorplus.craft_ender_dragon_armor=龙魂耀世！
+achievement.armorplus.craft_ender_dragon_armor.desc=击杀末影龙并合成任意一件末影龙护甲
+achievement.armorplus.craft_guardian_armor=充满荆棘！
+achievement.armorplus.craft_guardian_armor.desc=合成任意一件守卫者护甲
+achievement.armorplus.craft_the_ultimate_armor=终极力量！
+achievement.armorplus.craft_the_ultimate_armor.desc=合成任意一件终极护甲
+achievement.armorplus.craft_cobalt_armor=匠魂护甲！
+achievement.armorplus.craft_cobalt_armor.desc=合成任意一件钴护甲
+achievement.armorplus.craft_ardite_armor=越强越好！
+achievement.armorplus.craft_ardite_armor.desc=合成任意一件阿迪特护甲
+achievement.armorplus.craft_manyullyn_armor=匠魂护甲之神！
+achievement.armorplus.craft_manyullyn_armor.desc=合成任意一件玛玉灵护甲
+achievement.armorplus.craft_pig_iron_armor=Oink!
+achievement.armorplus.craft_pig_iron_armor.desc=合成任意一件生铁护甲
+achievement.armorplus.craft_knight_slime_armor=闪耀！
+achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件史莱姆骑士护甲
+achievement.armorplus.craft_slime_armor=我跳跳跳！
+achievement.armorplus.craft_slime_armor.desc=合成任意一件史莱姆护甲
+achievement.armorplus.craft_chicken_armor=是时候跑起来了！
+achievement.armorplus.craft_chicken_armor.desc=合成任意一件鸡护甲
+achievement.armorplus.craft_workbench=欢迎使用 ArmorPlus！
+achievement.armorplus.craft_workbench.desc=合成 ArmorPlus 的工作台
+achievement.armorplus.craft_high_tech_bench=更加复杂
+achievement.armorplus.craft_high_tech_bench.desc=合成 ArmorPlus 的高科工作台
+achievement.armorplus.craft_ulti_tech_bench=终极强化
+achievement.armorplus.craft_ulti_tech_bench.desc=合成 ArmorPlus 的终极工作台
+achievement.armorplus.craft_champion_bench=只为冠军准备
+achievement.armorplus.craft_champion_bench.desc=合成 ArmorPlus 的冠军工作台
+achievement.armorplus.armorplus=sokratis12GR
+achievement.armorplus.armorplus.desc=制作了 ArmorPlus
