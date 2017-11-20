@@ -26,7 +26,7 @@ gui.armorplus.info.text_line_six=当前模式：`I:Recipe: %s`。
 
 #CommandInfoText
 command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
-command.armorplus.info_line_one.part_two.text=by %s sokratis12GR (TheDragonTeam)
+command.armorplus.info_line_one.part_two.text=作者%s sokratis12GR (TheDragonTeam)
 command.armorplus.info_line_two.text=%s[%s，感谢你使用 %s]
 command.armorplus.info_line_three.text=%s[modid: %s]
 command.armorplus.info_line_four.text=%s[Minecraft 版本：%s]
