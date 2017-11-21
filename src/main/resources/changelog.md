@@ -24,7 +24,7 @@ ArmorPlus 1.12.2-11.8.0.26-beta
 
 **Bugs Fixed**:
 
-* Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent&**) event handler.
+* Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent**) & event handler.
     * Fixed insane amounts of time outs caused by the mod
     * Fixed client issues when connecting to a server, too many checks per tick to be handled by the player/client
     * Optimized the armor effects handling better, inside the Armor's properties.
