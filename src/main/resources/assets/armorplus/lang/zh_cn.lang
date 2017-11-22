@@ -243,14 +243,14 @@ item.armorplus.dev_leggings.name=开发者护腿
 item.armorplus.dev_boots.name=开发者靴子
 item.armorplus.dev_tool.name=开发者工具
 item.armorplus.dev_item.name=NBT物品
-item.armorplus.the_dragon_team.name=TheDragonTeam
-item.armorplus.modded_city.name=ModdedCity
-item.armorplus.jon_bams.name=JonBams
-item.armorplus.beam.name=Beam
-item.armorplus.twitch.name=Twitch
+#item.armorplus.the_dragon_team.name=TheDragonTeam
+#item.armorplus.modded_city.name=ModdedCity
+#item.armorplus.jon_bams.name=JonBams
+#item.armorplus.beam.name=Beam
+#item.armorplus.twitch.name=Twitch
 item.armorplus.gui_tester.name=GUI测试工具
-item.armorplus.btm_moon=.nameBTM Moon
-item.armorplus.m1jordan.name=M1Jordan
+#item.armorplus.btm_moon=.nameBTM Moon
+#item.armorplus.m1jordan.name=M1Jordan
 
 #Items
 item.armorplus.material_chainmail.name=锁甲板材
@@ -401,7 +401,7 @@ entity.ice_golem.name=雪傀儡（未完成，实验阶段）
 entity.overlord_of_the_guardians.name=管理者（未完成，实验阶段）
 entity.skeletal_king.name=骷髅王（未完成，实验阶段）
 entity.freeze_bomb.name=霜冻介质（未完成，远程，实验阶段）
-entity.wither_minion.name=凋谢仆从（未完成，远程，Spawner）
+entity.wither_minion.name=凋灵仆从（未完成，远程，Spawner）
 
 #KeyBinds
 key.nightVision=终极护甲夜视开关
