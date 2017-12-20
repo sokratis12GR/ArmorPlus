@@ -4,17 +4,14 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapelessRecipeUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -37,24 +34,12 @@ public class WBShapelessRecipe implements IRecipe {
         return this.recipeOutput;
     }
 
-    @Override
-    @Nonnull
-    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
-        NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-
-        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
-            ItemStack itemstack = inv.getStackInSlot(i);
-            nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        });
-
-        return nonnulllist;
-    }
 
     /**
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
+    public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World worldIn) {
         return ShapelessRecipeUtils.matches(input, inv);
     }
 
@@ -63,7 +48,7 @@ public class WBShapelessRecipe implements IRecipe {
      */
     @Override
     @Nonnull
-    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv) {
+    public ItemStack getCraftingResult(@Nonnull InventoryCraftingImproved inv) {
         return this.recipeOutput.copy();
     }
 

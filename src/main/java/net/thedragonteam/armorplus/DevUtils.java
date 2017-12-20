@@ -19,7 +19,7 @@ public class DevUtils {
         return isDev(ENABLE_DEV_TOOL);
     }
 
-    private static boolean isDev(boolean type){
+    private static boolean isDev(boolean type) {
         return DEV_ENVIRONMENT && type;
     }
 }

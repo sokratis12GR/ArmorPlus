@@ -1,8 +1,8 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -23,12 +23,12 @@ public class ShapedOreRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(int xWidth, int yHeight, int width, int height, Object[] input, InventoryCrafting inv, boolean mirrored) {
+    public static boolean matches(int xWidth, int yHeight, int width, int height, Object[] input, InventoryCraftingImproved inv, boolean mirrored) {
         return IntStream.rangeClosed(0, xWidth - width).anyMatch(i -> IntStream.rangeClosed(0, yHeight - height).anyMatch(y -> checkMatch(xWidth, yHeight, input, inv, i, y, false) || mirrored && checkMatch(xWidth, yHeight, input, inv, i, y, true)));
     }
 
     @SuppressWarnings("unchecked")
-    private static boolean checkMatch(int width, int height, Object[] input, InventoryCrafting inv, int startX, int startY, boolean mirror) {
+    private static boolean checkMatch(int width, int height, Object[] input, InventoryCraftingImproved inv, int startX, int startY, boolean mirror) {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 int subX = x - startX;

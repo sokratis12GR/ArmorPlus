@@ -361,7 +361,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
         if (direction == EnumFacing.DOWN && index == 1) {
             Item item = stack.getItem();
 
-            if (item != Items.WATER_BUCKET && item != Items.BUCKET) return false;
+            return item == Items.WATER_BUCKET || item == Items.BUCKET;
         }
 
         return true;

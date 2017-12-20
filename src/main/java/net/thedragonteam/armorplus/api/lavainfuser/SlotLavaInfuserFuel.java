@@ -19,8 +19,19 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class SlotLavaInfuserFuel extends Slot {
 
+    private static Item[] itemList = new Item[]{Items.LAVA_BUCKET, ModItems.lavaCrystal};
+
     public SlotLavaInfuserFuel(IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
         super(inventoryIn, slotIndex, xPosition, yPosition);
+    }
+
+    public static boolean isAllowed(ItemStack stack) {
+        for (Item item : itemList) {
+            if (!getItemStack(item).isEmpty()) {
+                return stack.getItem() == item;
+            }
+        }
+        return stack.getItem() == Items.LAVA_BUCKET;
     }
 
     @Override
@@ -31,16 +42,5 @@ public class SlotLavaInfuserFuel extends Slot {
     @Override
     public int getItemStackLimit(ItemStack stack) {
         return isAllowed(stack) ? 1 : super.getItemStackLimit(stack);
-    }
-
-    private static Item[] itemList = new Item[]{Items.LAVA_BUCKET, ModItems.lavaCrystal};
-
-    public static boolean isAllowed(ItemStack stack) {
-        for (Item item : itemList) {
-            if (!getItemStack(item).isEmpty()) {
-                return stack.getItem() == item;
-            }
-        }
-        return stack.getItem() == Items.LAVA_BUCKET;
     }
 }

@@ -1,33 +1,17 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
 import com.google.common.collect.Lists;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.ForgeHooks;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
-import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ShapelessRecipeUtils {
-
-    @Nonnull
-    public static NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-        NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-
-        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
-            ItemStack itemstack = inv.getStackInSlot(i);
-            nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        });
-
-        return nonnulllist;
-    }
 
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(List<ItemStack> input, InventoryCrafting inv) {
+    public static boolean matches(List<ItemStack> input, InventoryCraftingImproved inv) {
         List<ItemStack> list = Lists.newArrayList(input);
 
         for (int i = 0; i < inv.getHeight(); ++i) {

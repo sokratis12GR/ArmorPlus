@@ -2,17 +2,15 @@ package net.thedragonteam.armorplus.api.crafting.utils;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class CraftingUtils {
 
@@ -36,29 +34,33 @@ public class CraftingUtils {
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
-    public static ItemStack findMatchingRecipe(List<IRecipe> recipes, InventoryCrafting craftMatrix, World worldIn) {
-        for (IRecipe recipe : recipes) {
-            if (recipe.matches(craftMatrix, worldIn)) {
-                return Optional.of(recipe).map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
-            }
-        }
-        return Optional.<IRecipe>empty().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
+    public static ItemStack findMatchingRecipe(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn) {
+        return recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
 
+    // @Nullable
+    // public static IRecipe findMatchingRecipe(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn)
+    // {
+    //     return recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().orElse(null);
+    // }
 
-    public static NonNullList<ItemStack> getRemainingItems(List<IRecipe> recipes, InventoryCrafting craftMatrix, World worldIn) {
+    public static NonNullList<ItemStack> getRemainingItems(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn) {
         for (IRecipe irecipe : recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) return irecipe.getRemainingItems(craftMatrix);
+            if (irecipe.matches(craftMatrix, worldIn)) {
+                return irecipe.getRemainingItems(craftMatrix);
+            }
         }
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
+        for (int i = 0; i < nonnulllist.size(); ++i) {
+            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
+        }
 
         return nonnulllist;
     }
 
-    public static void onTake(EntityPlayer player, InventoryCrafting craftMatrix, NonNullList<ItemStack> nonnulllist) {
+    public static void onTake(EntityPlayer player, InventoryCraftingImproved craftMatrix, NonNullList<ItemStack> nonnulllist) {
         for (int i = 0; i < nonnulllist.size(); ++i) {
             ItemStack itemstack = craftMatrix.getStackInSlot(i);
             ItemStack itemstack1 = nonnulllist.get(i);

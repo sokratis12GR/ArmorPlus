@@ -1,9 +1,7 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.ForgeHooks;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
@@ -12,23 +10,11 @@ import static java.util.Objects.requireNonNull;
 
 public class ShapedRecipeUtils {
 
-    @Nonnull
-    public static NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-        NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-
-        IntStream.range(0, nonnulllist.size()).forEachOrdered(i -> {
-            ItemStack itemstack = inv.getStackInSlot(i);
-            nonnulllist.set(i, ForgeHooks.getContainerItem(itemstack));
-        });
-
-        return nonnulllist;
-    }
-
     /**
      * Returns an Item that is the result of this recipe
      */
     @Nonnull
-    public static ItemStack getCraftingResult(ItemStack output, boolean copyIngredientNBT, InventoryCrafting inv) {
+    public static ItemStack getCraftingResult(ItemStack output, boolean copyIngredientNBT, InventoryCraftingImproved inv) {
         ItemStack itemstack = output.copy();
 
         if (copyIngredientNBT) {
@@ -43,14 +29,14 @@ public class ShapedRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCrafting inv) {
+    public static boolean matches(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCraftingImproved inv) {
         return IntStream.rangeClosed(0, xy - recipeWidth).anyMatch(i -> IntStream.rangeClosed(0, xy - recipeHeight).anyMatch(j -> checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, true) || checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, false)));
     }
 
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private static boolean checkMatch(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCrafting inv, int width, int height, boolean isMirrored) {
+    private static boolean checkMatch(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCraftingImproved inv, int width, int height, boolean isMirrored) {
         for (int i = 0; i < xy; ++i) {
             for (int j = 0; j < xy; ++j) {
                 int k = i - width;

@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -18,6 +17,7 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTierTwo
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModTinkersConstructRecipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.ModWeaponTierTwoRecipes;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.List;
 import java.util.Map;
@@ -59,9 +59,7 @@ public class HighTechBenchCraftingManager {
      */
     public HTBShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder s = new StringBuilder();
-        int i = 0;
-        int j = 0;
-        int k = 0;
+        int i = 0, j = 0, k = 0;
 
         if (recipeComponents[i] instanceof String[]) {
             String[] astring = (String[]) recipeComponents[i++];
@@ -135,11 +133,11 @@ public class HighTechBenchCraftingManager {
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
-    public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
+    public ItemStack findMatchingRecipe(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.findMatchingRecipe(recipes, craftMatrix, worldIn);
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
+    public NonNullList<ItemStack> getRemainingItems(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.getRemainingItems(recipes, craftMatrix, worldIn);
     }
 

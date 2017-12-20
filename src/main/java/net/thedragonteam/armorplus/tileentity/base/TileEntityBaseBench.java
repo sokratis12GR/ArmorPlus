@@ -24,13 +24,12 @@ import static java.util.stream.IntStream.rangeClosed;
  **/
 public class TileEntityBaseBench extends TileEntityInventoryBase {
 
-    private int inventorySize;
-    private String tileEntityName;
-
     /**
      * the amount of itemHandler for the crafting grid
      */
     public NonNullList<ItemStack> inventory;
+    private int inventorySize;
+    private String tileEntityName;
     private String customName;
 
     public TileEntityBaseBench(String tileEntityName, int inventorySize) {

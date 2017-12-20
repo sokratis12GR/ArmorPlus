@@ -71,16 +71,14 @@ public class StructureGenNBT implements IWorldGenerator {
     }
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {
-        if (enableTowerGen) {
-            if ((random.nextInt(towerGenSpawnNeedOfChance) < towerGenSpawnChance) || (enableTowerDevEnv() && (random.nextInt(100) < 10))) {
-                PlacementSettings settings = new PlacementSettings();
-                settings.setRotation(Rotation.NONE);
-                MinecraftServer server = world.getMinecraftServer();
-                Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(server, TOWER);
-                template.addBlocksToWorld(world, pos, settings);
-                if (debugMode || enableTowerDevEnv()) {
-                    LogHelper.info("Tower generated at: " + pos);
-                }
+        if (enableTowerGen && ((random.nextInt(towerGenSpawnNeedOfChance) < towerGenSpawnChance) || (enableTowerDevEnv() && (random.nextInt(100) < 10)))) {
+            PlacementSettings settings = new PlacementSettings();
+            settings.setRotation(Rotation.NONE);
+            MinecraftServer server = world.getMinecraftServer();
+            Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(server, TOWER);
+            template.addBlocksToWorld(world, pos, settings);
+            if (debugMode || enableTowerDevEnv()) {
+                LogHelper.info("Tower generated at: " + pos);
             }
         }
     }

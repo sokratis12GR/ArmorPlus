@@ -6,15 +6,14 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 
 
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapelessOreRecipeUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
@@ -42,11 +41,11 @@ public class UTBShapelessOreRecipe implements IRecipe {
         output = recipe.getRecipeOutput();
 
         recipe.input.stream().map(
-                ingredient -> replacements.entrySet().stream().filter(
-                        replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
-                ).findFirst().<Object>map(
-                        replace -> OreDictionary.getOres(replace.getValue())
-                ).orElse(ingredient)
+            ingredient -> replacements.entrySet().stream().filter(
+                replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
+            ).findFirst().<Object>map(
+                replace -> OreDictionary.getOres(replace.getValue())
+            ).orElse(ingredient)
         ).forEachOrdered(finalObj -> input.add(finalObj));
     }
 
@@ -69,7 +68,7 @@ public class UTBShapelessOreRecipe implements IRecipe {
      */
     @Override
     @Nonnull
-    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
+    public ItemStack getCraftingResult(@Nonnull InventoryCraftingImproved var1) {
         return output.copy();
     }
 
@@ -77,7 +76,7 @@ public class UTBShapelessOreRecipe implements IRecipe {
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world) {
+    public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World world) {
         return ShapelessOreRecipeUtils.matches(input, inv);
     }
 
@@ -89,11 +88,5 @@ public class UTBShapelessOreRecipe implements IRecipe {
      */
     public NonNullList<Object> getInput() {
         return this.input;
-    }
-
-    @Override
-    @Nonnull
-    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
-        return ForgeHooks.defaultRecipeGetRemainingItems(inv);
     }
 }

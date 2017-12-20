@@ -2,12 +2,12 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.ForgeHooks;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class HTBSlotCrafting extends Slot {
     /**
      * The craft matrix inventory linked to this result slot.
      */
-    private final InventoryCrafting craftMatrix;
+    private final InventoryCraftingImproved craftMatrix;
     /**
      * The player that is using the GUI where this slot resides.
      */
@@ -29,7 +29,7 @@ public class HTBSlotCrafting extends Slot {
      */
     private int amountCrafted;
 
-    public HTBSlotCrafting(EntityPlayer player, InventoryCrafting craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
+    public HTBSlotCrafting(EntityPlayer player, InventoryCraftingImproved craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
         super(inventoryIn, slotIndex, xPosition, yPosition);
         this.player = player;
         this.craftMatrix = craftingInventory;

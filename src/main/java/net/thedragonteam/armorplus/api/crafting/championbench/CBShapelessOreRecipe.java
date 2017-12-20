@@ -6,15 +6,14 @@ package net.thedragonteam.armorplus.api.crafting.championbench;
 
 
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapelessOreRecipeUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
@@ -67,7 +66,7 @@ public class CBShapelessOreRecipe implements IRecipe {
      */
     @Override
     @Nonnull
-    public ItemStack getCraftingResult(@Nonnull InventoryCrafting var1) {
+    public ItemStack getCraftingResult(@Nonnull InventoryCraftingImproved var1) {
         return output.copy();
     }
 
@@ -76,8 +75,8 @@ public class CBShapelessOreRecipe implements IRecipe {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world) {
-       return ShapelessOreRecipeUtils.matches(input, inv);
+    public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World world) {
+        return ShapelessOreRecipeUtils.matches(input, inv);
     }
 
     /**
@@ -90,9 +89,4 @@ public class CBShapelessOreRecipe implements IRecipe {
         return this.input;
     }
 
-    @Override
-    @Nonnull
-    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
-        return ForgeHooks.defaultRecipeGetRemainingItems(inv);
-    }
 }

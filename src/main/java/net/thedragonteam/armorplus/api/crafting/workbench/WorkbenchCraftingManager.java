@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.api.crafting.workbench;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -18,7 +17,9 @@ import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemRecipes
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModOriginRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModWeaponsTierOneRecipes;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -126,6 +127,13 @@ public class WorkbenchCraftingManager {
     }
 
     /**
+     * Adds an IRecipe to the list of crafting recipes.
+     */
+    public void addRecipes(IRecipe... recipes) {
+        Arrays.stream(recipes).forEach(this::addRecipe);
+    }
+
+    /**
      * Removes an IRecipe to the list of crafting recipes.
      */
     public void removeRecipe(IRecipe recipe) {
@@ -135,11 +143,11 @@ public class WorkbenchCraftingManager {
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
-    public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
+    public ItemStack findMatchingRecipe(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.findMatchingRecipe(recipes, craftMatrix, worldIn);
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
+    public NonNullList<ItemStack> getRemainingItems(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.getRemainingItems(recipes, craftMatrix, worldIn);
     }
 

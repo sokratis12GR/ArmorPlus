@@ -17,20 +17,10 @@ public class ModSpecialMobRecipes {
         switch (getRD()) {
             case EASY:
                 if (enableChickenArmor && enableChickenArmorRecipes) {
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenHelmet), "   ", "FFF", "F F", 'F', "feather"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenHelmet), "FFF", "F F", "   ", 'F', "feather"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenChestplate), "F F", "FFF", "FFF", 'F', "feather"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenLeggings), "FFF", "F F", "F F", 'F', "feather"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenBoots), "   ", "F F", "F F", 'F', "feather"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenBoots), "F F", "F F", "   ", 'F', "feather"));
+                    WBRecipesHelper.createArmorRecipes(manager, "feather", chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
                 }
                 if (enableSlimeArmor && enableSlimeArmorRecipes) {
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeHelmet), "   ", "SSS", "S S", 'S', "slimeball"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeHelmet), "SSS", "S S", "   ", 'S', "slimeball"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeChestplate), "S S", "SSS", "SSS", 'S', "slimeball"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeLeggings), "SSS", "S S", "S S", 'S', "slimeball"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeBoots), "   ", "S S", "S S", 'S', "slimeball"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeBoots), "S S", "S S", "   ", 'S', "slimeball"));
+                    WBRecipesHelper.createArmorRecipes(manager, "slimeball", slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
                 }
                 break;
             case EXPERT:
@@ -44,12 +34,7 @@ public class ModSpecialMobRecipes {
                     manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenBoots), "F F", "E E", "   ", 'F', "feather", 'E', "egg"));
                 }
                 if (enableSlimeArmor && enableSlimeArmorRecipes) {
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeHelmet), "   ", "SSS", "S S", 'S', "blockSlime"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeHelmet), "SSS", "S S", "   ", 'S', "blockSlime"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeChestplate), "S S", "SSS", "SSS", 'S', "blockSlime"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeLeggings), "SSS", "S S", "S S", 'S', "blockSlime"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeBoots), "   ", "S S", "S S", 'S', "blockSlime"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(slimeBoots), "S S", "S S", "   ", 'S', "blockSlime"));
+                    WBRecipesHelper.createArmorRecipes(manager, "blockSlime", slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
                 }
                 break;
         }

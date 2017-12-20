@@ -34,8 +34,8 @@ public final class ToolTipUtils {
 
     public static void addToolTipFull(List<String> tooltip, String ability) {
         addToolTip(tooltip,
-                format("§9Ability: §r%s", ability),
-                "§3Use: §rEquip The Full Set"
+            format("\u00a79Ability: \u00a7r%s", ability),
+            "\u00a73Use: \u00a7rEquip The Full Set"
         );
     }
 
@@ -45,10 +45,11 @@ public final class ToolTipUtils {
 
     public static void addToolTipPiece(List<String> tooltip, String ability) {
         addToolTip(tooltip,
-                format("§9Ability: §r%s", ability),
-                "§3Use: §rEquip A Piece"
+            format("\u00a79Ability: \u00a7r%s", ability),
+            "\u00a73Use: \u00a7rEquip A Piece"
         );
     }
+
 
     public static boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;

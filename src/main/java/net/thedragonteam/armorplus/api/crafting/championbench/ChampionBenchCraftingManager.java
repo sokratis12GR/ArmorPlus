@@ -7,19 +7,21 @@ package net.thedragonteam.armorplus.api.crafting.championbench;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-/** * @author Sokratis Fotkatzikis - TheDragonTeam */
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ChampionBenchCraftingManager {
     /**
      * The
@@ -30,18 +32,18 @@ public class ChampionBenchCraftingManager {
     private final List<IRecipe> recipes = Lists.newArrayList();
 
     private ChampionBenchCraftingManager() {
-      //  this.addRecipe(new CBShapedOreRecipe(getItemStack(ultiTechBench),
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      "LLLLLLLLL",
-      //      'L', getItemStack(lavaCrystal, 1)
-      //  ));
+        //  this.addRecipe(new CBShapedOreRecipe(getItemStack(ultiTechBench),
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      "LLLLLLLLL",
+        //      'L', getItemStack(lavaCrystal, 1)
+        //  ));
 
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
@@ -135,11 +137,11 @@ public class ChampionBenchCraftingManager {
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
-    public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
+    public ItemStack findMatchingRecipe(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.findMatchingRecipe(recipes, craftMatrix, worldIn);
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
+    public NonNullList<ItemStack> getRemainingItems(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.getRemainingItems(recipes, craftMatrix, worldIn);
     }
 

@@ -25,15 +25,13 @@ import static net.thedragonteam.armorplus.ArmorPlus.MODID;
  **/
 public final class Utils {
 
+    public static final int WILDCARD = OreDictionary.WILDCARD_VALUE;
     public static ItemStack[] emptyArmor = new ItemStack[4];
+    public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
     static {
         Arrays.fill(emptyArmor, ItemStack.EMPTY);
     }
-
-    public static EntityEquipmentSlot[] equipmentSlots = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
-
-    public static final int WILDCARD = OreDictionary.WILDCARD_VALUE;
 
     public static ItemStack checkNBT(ItemStack stack) {
         if (stack.getTagCompound() == null) {

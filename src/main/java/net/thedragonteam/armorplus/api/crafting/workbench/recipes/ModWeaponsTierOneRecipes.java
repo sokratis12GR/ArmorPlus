@@ -4,81 +4,88 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
 
 import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.api.crafting.workbench.recipes.WBRecipesHelper.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModWeaponsTierOneRecipes {
     public void addRecipes(WorkbenchCraftingManager manager) {
         switch (getRD()) {
-            case EASY:
+            case EASY: {
                 if (enableSwordsRecipes) {
-                    if (enableCoalWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalSword), " C ", " C ", " S ", 'C', "itemCoal", 'S', "stickWood"));
-                    if (enableLapisWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisSword), " L ", " L ", " S ", 'L', "gemLapis", 'S', "stickWood"));
-                    if (enableRedstoneWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneSword), " R ", " R ", " S ", 'R', "dustRedstone", 'S', "stickWood"));
+                    if (enableCoalWeapons[0]) {
+                        createSwordRecipe(manager, "itemCoal", coalSword);
+                    }
+                    if (enableLapisWeapons[0]) {
+                        createSwordRecipe(manager, "gemLapis", lapisSword);
+                    }
+                    if (enableRedstoneWeapons[0]) {
+                        createSwordRecipe(manager, "dustRedstone", redstoneSword);
+                    }
                 }
                 if (enableBattleAxesRecipes) {
-                    if (enableCoalWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBattleAxe), "C C", "CSC", " S ", 'C', "itemCoal", 'S', "stickWood"));
-                    if (enableLapisWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBattleAxe), "L L", "LSL", " S ", 'L', "gemLapis", 'S', "stickWood"));
-                    if (enableRedstoneWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBattleAxe), "R R", "RSR", " S ", 'R', "dustRedstone", 'S', "stickWood"));
+                    if (enableCoalWeapons[1]) {
+                        createBattleAxeRecipe(manager, "itemCoal", coalBattleAxe);
+                    }
+                    if (enableLapisWeapons[1]) {
+                        createBattleAxeRecipe(manager, "gemLapis", lapisBattleAxe);
+                    }
+                    if (enableRedstoneWeapons[1]) {
+                        createBattleAxeRecipe(manager, "dustRedstone", redstoneBattleAxe);
+                    }
                 }
                 if (enableBowsRecipes) {
                     if (enableCoalWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBow), " CS", "C S", " CS", 'C', "itemCoal", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBow), "SC ", "S C", "SC ", 'C', "itemCoal", 'S', "string"));
+                        createBowRecipes(manager, "itemCoal", coalBow);
                     }
                     if (enableLapisWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBow), " LS", "L S", " LS", 'L', "gemLapis", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBow), "SL ", "S L", "SL ", 'L', "gemLapis", 'S', "string"));
+                        createBowRecipes(manager, "gemLapis", lapisBow);
                     }
                     if (enableRedstoneWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBow), " RS", "R S", " RS", 'R', "dustRedstone", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBow), "SR ", "S R", "SR ", 'R', "dustRedstone", 'S', "string"));
+                        createBowRecipes(manager, "dustRedstone", redstoneBow);
                     }
                 }
                 break;
+            }
             case EXPERT:
-            case HELLISH:
+            case HELLISH: {
                 if (enableSwordsRecipes) {
-                    if (enableCoalWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalSword), " C ", " C ", " S ", 'C', "blockCoal", 'S', "stickWood"));
-                    if (enableLapisWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisSword), " L ", " L ", " S ", 'L', "blockLapis", 'S', "stickWood"));
-                    if (enableRedstoneWeapons[0])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneSword), " R ", " R ", " S ", 'R', "blockRedstone", 'S', "stickWood"));
+                    if (enableCoalWeapons[0]) {
+                        createSwordRecipe(manager, "blockCoal", coalSword);
+                    }
+                    if (enableLapisWeapons[0]) {
+                        createSwordRecipe(manager, "blockLapis", lapisSword);
+                    }
+                    if (enableRedstoneWeapons[0]) {
+                        createSwordRecipe(manager, "blockRedstone", redstoneSword);
+                    }
                 }
                 if (enableBattleAxesRecipes) {
-                    if (enableCoalWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBattleAxe), "C C", "CSC", " S ", 'C', "blockCoal", 'S', "stickWood"));
-                    if (enableLapisWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBattleAxe), "L L", "LSL", " S ", 'L', "blockLapis", 'S', "stickWood"));
-                    if (enableRedstoneWeapons[1])
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBattleAxe), "R R", "RSR", " S ", 'R', "blockRedstone", 'S', "stickWood"));
+                    if (enableCoalWeapons[1]) {
+                        createBattleAxeRecipe(manager, "blockCoal", coalBattleAxe);
+                    }
+                    if (enableLapisWeapons[1]) {
+                        createBattleAxeRecipe(manager, "blockLapis", lapisBattleAxe);
+                    }
+                    if (enableRedstoneWeapons[1]) {
+                        createBattleAxeRecipe(manager, "blockRedstone", redstoneBattleAxe);
+                    }
                 }
                 if (enableBowsRecipes) {
                     if (enableCoalWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBow), " CS", "C S", " CS", 'C', "blockCoal", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(coalBow), "SC ", "S C", "SC ", 'C', "blockCoal", 'S', "string"));
+                        createBowRecipes(manager, "blockCoal", coalBow);
                     }
                     if (enableLapisWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBow), " LS", "L S", " LS", 'L', "blockLapis", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(lapisBow), "SL ", "S L", "SL ", 'L', "blockLapis", 'S', "string"));
+                        createBowRecipes(manager, "blockLapis", lapisBow);
                     }
                     if (enableRedstoneWeapons[2]) {
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBow), " RS", "R S", " RS", 'R', "blockRedstone", 'S', "string"));
-                        manager.addRecipe(new WBShapedOreRecipe(getItemStack(redstoneBow), "SR ", "S R", "SR ", 'R', "blockRedstone", 'S', "string"));
+                        createBowRecipes(manager, "blockRedstone", redstoneBow);
                     }
                 }
                 break;
+            }
         }
     }
 }

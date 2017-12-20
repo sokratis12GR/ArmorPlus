@@ -30,24 +30,18 @@ public class OreGen implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        switch (world.provider.getDimension()) {
-            case 0: { //Overworld Dimension
-                if (enableLavaCrystalOverworldGen) {
-                    runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lavaCrystalOverworldRarityWorkingOne, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn);
-                }
-                break;
+        int i = world.provider.getDimension();
+        if (i == 0) {
+            if (enableLavaCrystalOverworldGen) {
+                runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lavaCrystalOverworldRarityWorkingOne, lavaCrystalOverworldMinYSpawn, lavaCrystalOverworldMaxYSpawn);
             }
-            case 1: { //The End
-                if (enableLavaCrystalTheEndGen) {
-                    runGenerator(lavaCrystalTheEndGenerator, world, random, chunkX, chunkZ, lavaCrystalTheEndRarity, lavaCrystalTheEndMinYSpawn, lavaCrystalTheEndMaxYSpawn);
-                }
-                break;
+        } else if (i == 1) {
+            if (enableLavaCrystalTheEndGen) {
+                runGenerator(lavaCrystalTheEndGenerator, world, random, chunkX, chunkZ, lavaCrystalTheEndRarity, lavaCrystalTheEndMinYSpawn, lavaCrystalTheEndMaxYSpawn);
             }
-            case -1: { //The Nether
-                if (enableLavaCrystalTheNetherGen) {
-                    runGenerator(lavaCrystalTheNetherGenerator, world, random, chunkX, chunkZ, lavaCrystalTheNetherRarity, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn);
-                }
-                break;
+        } else if (i == -1) {
+            if (enableLavaCrystalTheNetherGen) {
+                runGenerator(lavaCrystalTheNetherGenerator, world, random, chunkX, chunkZ, lavaCrystalTheNetherRarity, lavaCrystalTheNetherMinYSpawn, lavaCrystalTheNetherMaxYSpawn);
             }
         }
     }

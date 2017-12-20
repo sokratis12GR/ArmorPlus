@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 
@@ -30,7 +31,7 @@ public class ModEnderDragonRecipes {
                         "CEEEEEC",
                         "ES   SE",
                         "E     E",
-                        "       ",
+                        "E     E",
                         "       ",
                         "       ",
                         "       ",
@@ -42,7 +43,7 @@ public class ModEnderDragonRecipes {
                         "CEEEEEC",
                         "ES   SE",
                         "E     E",
-                        "       ",
+                        "E     E",
                         "       ",
                         "       ",
                         'E', getItemStack(materials, 3),
@@ -54,7 +55,7 @@ public class ModEnderDragonRecipes {
                         "CEEEEEC",
                         "ES   SE",
                         "E     E",
-                        "       ",
+                        "E     E",
                         "       ",
                         'E', getItemStack(materials, 3),
                         'S', Items.ENDER_EYE,
@@ -66,36 +67,26 @@ public class ModEnderDragonRecipes {
                         "CEEEEEC",
                         "ES   SE",
                         "E     E",
-                        "       ",
-                        'E', getItemStack(materials, 3),
-                        'S', Items.ENDER_EYE,
-                        'C', Items.END_CRYSTAL);
-                    manager.addRecipe(getItemStack(enderDragonHelmet),
-                        "       ",
-                        "       ",
-                        "       ",
-                        "       ",
-                        "CEEEEEC",
-                        "ES   SE",
                         "E     E",
                         'E', getItemStack(materials, 3),
                         'S', Items.ENDER_EYE,
                         'C', Items.END_CRYSTAL);
                     manager.addRecipe(getItemStack(enderDragonChestplate),
                         "S     S",
+                        "S     S",
                         "E     E",
-                        "E     E",
-                        "EEEEEEE",
+                        "NEECEEN",
                         "EECSCEE",
                         "EECSCEE",
-                        "EEEEEEE",
+                        "NEECEEN",
                         'E', getItemStack(materials, 3),
                         'S', Items.ENDER_EYE,
-                        'C', Items.END_CRYSTAL);
+                        'C', Items.END_CRYSTAL,
+                        'N', Blocks.END_STONE);
                     manager.addRecipe(getItemStack(enderDragonLeggings),
                         "SEEEEES",
                         "ECCSCCE",
-                        "E     E",
+                        "EC   CE",
                         "E     E",
                         "E     E",
                         "E     E",

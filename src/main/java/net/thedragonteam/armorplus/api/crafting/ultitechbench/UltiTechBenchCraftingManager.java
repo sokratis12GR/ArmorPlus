@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -15,6 +14,7 @@ import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.*;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.List;
 import java.util.Map;
@@ -131,11 +131,11 @@ public class UltiTechBenchCraftingManager {
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
-    public ItemStack findMatchingRecipe(InventoryCrafting craftMatrix, World worldIn) {
+    public ItemStack findMatchingRecipe(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.findMatchingRecipe(recipes, craftMatrix, worldIn);
     }
 
-    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn) {
+    public NonNullList<ItemStack> getRemainingItems(InventoryCraftingImproved craftMatrix, World worldIn) {
         return CraftingUtils.getRemainingItems(recipes, craftMatrix, worldIn);
     }
 

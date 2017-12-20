@@ -1,11 +1,11 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
 import net.minecraft.block.Block;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public class ShapelessOreRecipeUtils {
      * Used to check if a recipe matches current crafting inventory
      */
     @SuppressWarnings("unchecked")
-    public static boolean matches(NonNullList<Object> input, InventoryCrafting inv) {
+    public static boolean matches(NonNullList<Object> input, InventoryCraftingImproved inv) {
         NonNullList<Object> required = NonNullList.create();
         required.addAll(input);
 

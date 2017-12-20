@@ -4,17 +4,18 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapedRecipeUtils;
+import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
-/** * @author Sokratis Fotkatzikis - TheDragonTeam */
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class WBShapedRecipe implements IRecipe {
     /**
      * How many horizontal itemHandler this recipe is wide.
@@ -49,17 +50,11 @@ public class WBShapedRecipe implements IRecipe {
         return this.recipeOutput;
     }
 
-    @Override
-    @Nonnull
-    public NonNullList<ItemStack> getRemainingItems(@Nonnull InventoryCrafting inv) {
-        return ShapedRecipeUtils.getRemainingItems(inv);
-    }
-
     /**
      * Used to check if a recipe matches current crafting inventory
      */
     @Override
-    public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World worldIn) {
+    public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World worldIn) {
         return ShapedRecipeUtils.matches(3, recipeWidth, recipeHeight, input, inv);
     }
 
@@ -68,7 +63,7 @@ public class WBShapedRecipe implements IRecipe {
      */
     @Override
     @Nonnull
-    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv) {
+    public ItemStack getCraftingResult(@Nonnull InventoryCraftingImproved inv) {
         return ShapedRecipeUtils.getCraftingResult(getRecipeOutput(), copyIngredientNBT, inv);
     }
 
