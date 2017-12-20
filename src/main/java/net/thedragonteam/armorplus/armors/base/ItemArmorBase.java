@@ -18,7 +18,6 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.util.EnumTiers;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -66,11 +65,10 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
         guardianArmorProtectionPoints, guardianArmorToughnessPoints, EnumTiers.TIER_3);
     public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
         superStarArmorProtectionPoints, superStarArmorToughnessPoints, EnumTiers.TIER_3);
+    public EntityEquipmentSlot slot;
     private EnumAction wear = addAction("WEAR");
-
     private APArmorMaterial material;
     private ItemStack itemExpert;
-    private EntityEquipmentSlot slot;
 
     public ItemArmorBase(APArmorMaterial material, EntityEquipmentSlot slot) {
         super(material.getArmorMaterial(), 0, slot);
@@ -110,12 +108,9 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        material.onArmorTick(player, slot);
-      // if (!material.enableFullArmorEffect()) {
-      //     material.addArmorEffects(player, slot);
-      // } else {
-      //     material.addArmorEffects(player);
-      // }
+        if (material.isArmorEnabled()) {
+            material.onArmorTick(player, slot);
+        }
     }
 
     @Override
@@ -129,7 +124,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
         material.addInformation(stack, world, tooltip, advanced);
     }
 
-    @NotNull
+
     @Override
     public EnumAction getItemUseAction(ItemStack stack) {
         return wear;

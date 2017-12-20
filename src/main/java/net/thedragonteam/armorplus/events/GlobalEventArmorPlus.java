@@ -13,18 +13,18 @@ import net.thedragonteam.armorplus.ArmorPlus;
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class GlobalEventArmorPlus {
 
-  //  @SubscribeEvent
-  //  public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-  //      if (event.getModID().equals(ArmorPlus.MODID)) {
-  //          //        ConfigManager.sync(event.getModID(), Config.Type.INSTANCE); // Sync config values
-  //      }
+    //  @SubscribeEvent
+    //  public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+    //      if (event.getModID().equals(ArmorPlus.MODID)) {
+    //          //        ConfigManager.sync(event.getModID(), Config.Type.INSTANCE); // Sync config values
+    //      }
 
-  //      syncConfig();
-  //      LogHelper.info("Refreshing configuration file");
-  //  }
+    //      syncConfig();
+    //      LogHelper.info("Refreshing configuration file");
+    //  }
 
-  //  private static void syncConfig() {
-  //      if (configuration.hasChanged()) configuration.save();
-  //  }
+    //  private static void syncConfig() {
+    //      if (configuration.hasChanged()) configuration.save();
+    //  }
 
 }

@@ -78,45 +78,6 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         this.setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return this.getRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
-    }
-
-    @Override
-    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-        return false;
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return false;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
-        KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\u00a79Question: \u00a7rAre you the chosen one ?");
-            tooltip.add("\u00a73Use: \u00a7rEquip The Full Set");
-        } else {
-            showInfo(tooltip, keyBindSneak, getValueByName(theUltimateArmorItemNameColor));
-        }
-    }
-
-    @Override
-    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if (makeTheUltimateArmorUnbreakable)
-            Utils.setUnbreakable(stack);
-    }
-
-    @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        onArmorTick(player);
-    }
-
     public static void onArmorTick(EntityPlayer player) {
         ItemStack head = player.getItemStackFromSlot(HEAD);
         ItemStack chest = player.getItemStackFromSlot(CHEST);
@@ -149,6 +110,44 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
             player.motionZ = 0.0;
             player.velocityChanged = true; // assumes that player instanceof EntityPlayer
         }
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return this.getRarity("ULTIMATE_ARMOR_COLOR", theUltimateArmorItemNameColor, "Ultimate Armor Color");
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return false;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+        KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add("\u00a79Question: \u00a7rAre you the chosen one ?");
+            tooltip.add("\u00a73Use: \u00a7rEquip The Full Set");
+        } else {
+            showInfo(tooltip, keyBindSneak, getValueByName(theUltimateArmorItemNameColor));
+        }
+    }
+
+    @Override
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        if (makeTheUltimateArmorUnbreakable) Utils.setUnbreakable(stack);
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        onArmorTick(player);
     }
 
     @Override
