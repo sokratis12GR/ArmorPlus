@@ -31,10 +31,10 @@ public class ModEntities {
     }
 
     private static void registerLootTables() {
-        LootTableList.register(EntityEnderDragonZombie.Companion.getLOOT());
+        LootTableList.register(EntityEnderDragonZombie.LOOT);
     }
 
-    private static void registerTracking(){
+    private static void registerTracking() {
         EntityRegistry.instance().lookupModSpawn(EntitySkeletalKing.class, true);
     }
 }

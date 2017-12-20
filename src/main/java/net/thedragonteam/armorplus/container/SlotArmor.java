@@ -9,7 +9,9 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nullable;
 
-
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class SlotArmor extends Slot {
 
     private final EntityPlayer player;

@@ -9,18 +9,29 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ContainerBenchBase extends ContainerBase {
 
-    public World world;
     public static int recipeSlots;
     public static int mainInventorySlots;
     public static int fullInventorySlots;
+    public World world;
 
     public ContainerBenchBase(TileEntity tile, int recipeSlotsIn, int mainInventorySlotsIn, int fullInventorySlotsIn) {
         world = tile.getWorld();
         recipeSlots = recipeSlotsIn;
         mainInventorySlots = mainInventorySlotsIn;
         fullInventorySlots = fullInventorySlotsIn;
+    }
+
+    protected static void onContainerClosed(EntityPlayer playerIn, boolean isRemote, int recipeSizeTotal, InventoryCraftingImproved removeItemStack) {
+        if (!isRemote) {
+            IntStream.range(0, recipeSizeTotal).mapToObj(removeItemStack::removeStackFromSlot).filter(itemstack ->
+                !itemstack.isEmpty()
+            ).forEachOrdered(itemstack -> playerIn.dropItem(itemstack, false));
+        }
     }
 
     /**
@@ -68,14 +79,6 @@ public class ContainerBenchBase extends ContainerBase {
         }
 
         return itemstack;
-    }
-
-    protected static void onContainerClosed(EntityPlayer playerIn, boolean isRemote, int recipeSizeTotal, InventoryCraftingImproved removeItemStack) {
-        if (!isRemote) {
-            IntStream.range(0, recipeSizeTotal).mapToObj(removeItemStack::removeStackFromSlot).filter(itemstack ->
-                !itemstack.isEmpty()
-            ).forEachOrdered(itemstack -> playerIn.dropItem(itemstack, false));
-        }
     }
 
 }

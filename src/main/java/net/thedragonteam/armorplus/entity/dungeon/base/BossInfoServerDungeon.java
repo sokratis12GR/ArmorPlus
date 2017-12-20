@@ -4,8 +4,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.BossInfoServer;
 
 import static net.minecraft.world.BossInfo.Color.*;
-import static net.minecraft.world.BossInfo.Overlay.*;
 import static net.minecraft.world.BossInfo.Overlay.NOTCHED_20;
+import static net.minecraft.world.BossInfo.Overlay.NOTCHED_6;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

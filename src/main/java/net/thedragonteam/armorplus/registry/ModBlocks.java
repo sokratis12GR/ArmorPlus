@@ -39,7 +39,7 @@ public class ModBlocks {
     public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
     public static BlockBench[] benches = new BlockBench[4];
     public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{
-            WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE
+        WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE
     };
     public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[7];
     public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[7];
@@ -54,17 +54,17 @@ public class ModBlocks {
     public static BlockLavaType blockLavaInfusedObsidian = new BlockLavaType(LAVA_INFUSED_OBSIDIAN);
     //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
     public static EnumEnderBlocks[] enumEnderBlocks = new EnumEnderBlocks[]{
-            ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP
+        ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP
     };
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
-   // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
+    // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 
     public static void registerBlocks() {
         setAll(benches, block -> new BlockBench(benchTypes[block]));
         setAll(stoneBricks, block -> new BlockStoneBrick(stoneBrickTypes[block]));
         setAll(stoneBrickTowers, block -> new BlockStoneBrickTower(stoneBrickTypes[block]));
         setAll(stoneBrickCorners, block -> new BlockStoneBrickCorner(stoneBrickTypes[block], stoneBricks[block].getDefaultState()));
-        setAll(stonebrickWalls, block -> new BlockStonebrickWall(stoneBricks[block]));
+        setAll(stonebrickWalls, block -> new BlockStonebrickWall(stoneBrickTypes[block], stoneBricks[block].getDefaultState()));
         setAll(enderBlocks, block -> new BlockDungeonEnder(enumEnderBlocks[block]));
     }
 }

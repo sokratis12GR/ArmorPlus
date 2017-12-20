@@ -65,5 +65,5 @@ public class RenderFreezeBomb extends RenderEntity {
     protected ResourceLocation getEntityTexture(Entity entity) {
         return FREEZE_BOMB;
     }
-    
+
 }

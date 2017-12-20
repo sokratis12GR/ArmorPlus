@@ -63,6 +63,10 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         EntityFireball.registerFixesFireball(fixer, "WitherMinion");
     }
 
+    private static void setDropChance(EntityWitherSkeleton minion, EntityEquipmentSlot... slots) {
+        Arrays.stream(slots).forEachOrdered(slot -> minion.setDropChance(slot, 0.0F));
+    }
+
     /**
      * Return the motion factor for this projectile. The factor is multiplied by the original motion.
      */
@@ -142,7 +146,6 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         this.setDead();
     }
 
-
     private void setMinionStats(EntityWitherSkeleton witherSkeleton, String type, double maxHealth, ItemStack mainHand, ItemStack offHand, Item... equipedArmor) {
         if (equipedArmor != null) {
             setMinionStats(witherSkeleton, type, maxHealth, mainHand, offHand, getItemStacks(equipedArmor));
@@ -173,10 +176,6 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         minion.setInvisible(false);
         minion.setEntityInvulnerable(false);
         minion.setCanPickUpLoot(true);
-    }
-
-    private static void setDropChance(EntityWitherSkeleton minion, EntityEquipmentSlot... slots) {
-        Arrays.stream(slots).forEachOrdered(slot -> minion.setDropChance(slot, 0.0F));
     }
 
     /**

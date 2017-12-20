@@ -11,6 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -21,28 +22,28 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class BlockStonebrickWall extends BlockWall implements IModdedBlock {
 
-    private BlockStoneBrick stoneBrick;
+    private StoneBricks stoneBricks;
 
-    public BlockStonebrickWall(BlockStoneBrick stoneBrick) {
-        super(stoneBrick);
-        this.setRegistryName(stoneBrick.getName() + "_wall");
-        this.setUnlocalizedName(setName(stoneBrick.getName() + "_wall"));
+    public BlockStonebrickWall(StoneBricks stoneBricks, IBlockState modelState) {
+        super(modelState.getBlock());
+        this.stoneBricks = stoneBricks;
+        this.setRegistryName(stoneBricks.getName() + "_stone_brick_wall");
+        this.setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_wall"));
         this.setResistance(10f);
         this.setHardness(5f);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
-        this.stoneBrick = stoneBrick;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return this.stoneBrick.getColor();
+        return this.stoneBricks.getMapColor();
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
         items.add(getItemStack(this));
     }
-
 
     @SideOnly(Side.CLIENT)
     @Override

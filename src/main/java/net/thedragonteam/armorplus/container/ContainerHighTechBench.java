@@ -5,9 +5,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBSlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
@@ -15,6 +15,9 @@ import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
 
 import java.util.stream.IntStream;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ContainerHighTechBench extends ContainerBenchBase {
 
     private static final int ITEM_BOX = 18;
@@ -31,7 +34,7 @@ public class ContainerHighTechBench extends ContainerBenchBase {
     public ContainerHighTechBench(InventoryPlayer playerInventory, TileEntityHighTechBench tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
+        this.addSlotToContainer(new HTBSlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
             for (int j = 0; j < RECIPE_SIZE; ++j)

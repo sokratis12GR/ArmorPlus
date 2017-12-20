@@ -53,6 +53,26 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         this.setHarvestLevel(ToolType.PICKAXE.getTool(), 1);
     }
 
+    public static void setState(boolean active, World worldIn, BlockPos pos) {
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        keepInventory = true;
+
+        if (active) {
+            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+        } else {
+            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+        }
+
+        keepInventory = false;
+
+        if (tileentity != null) {
+            tileentity.validate();
+            worldIn.setTileEntity(pos, tileentity);
+        }
+    }
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {
@@ -147,27 +167,6 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
             player.openGui(ArmorPlus.instance, GuiHandler.GUI_LAVA_INFUSER, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
-    }
-
-    public static void setState(boolean active, World worldIn, BlockPos pos) {
-        IBlockState iblockstate = worldIn.getBlockState(pos);
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        keepInventory = true;
-
-        if (active) {
-            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-        } else {
-            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-        }
-
-        keepInventory = false;
-
-        if (tileentity != null) {
-            tileentity.validate();
-            worldIn.setTileEntity(pos, tileentity);
-        }
     }
 
     /**

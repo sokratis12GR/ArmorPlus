@@ -30,10 +30,9 @@ import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDung
  **/
 public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedAttackMob {
 
-    private final BossInfoServerDungeon bossInfo;
-
     private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer &&
-            ((EntityLivingBase) target).attackable();
+        ((EntityLivingBase) target).attackable();
+    private final BossInfoServerDungeon bossInfo;
 
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);
@@ -81,10 +80,10 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200.0F);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40.0F);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.0F);
     }
 
     @Override

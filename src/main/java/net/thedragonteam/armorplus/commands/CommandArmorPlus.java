@@ -15,7 +15,6 @@ import net.thedragonteam.armorplus.commands.subcommands.SubCommandHelp;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandInfo;
 import net.thedragonteam.armorplus.commands.subcommands.SubCommandWiki;
 import net.thedragonteam.thedragonlib.util.LogHelper;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,22 +51,16 @@ public class CommandArmorPlus extends CommandBase {
         IntStream.range(0, names.length).forEachOrdered(i -> subCommandNames.add(i, names[i]));
     }
 
-    private void setSubCommands(ISubCommand... commands) {
-        IntStream.range(0, commands.length).forEachOrdered(i -> subCommandsList.add(i, commands[i]));
-    }
-
     @Override
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return sender instanceof EntityPlayer;
     }
 
-    @NotNull
     @Override
     public List<String> getAliases() {
         return aliases;
     }
 
-    @NotNull
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
         return super.getTabCompletions(server, sender, args, targetPos);
@@ -97,5 +90,9 @@ public class CommandArmorPlus extends CommandBase {
 
     public Map<String, ISubCommand> getSubCommands() {
         return subCommands;
+    }
+
+    private void setSubCommands(ISubCommand... commands) {
+        IntStream.range(0, commands.length).forEachOrdered(i -> subCommandsList.add(i, commands[i]));
     }
 }

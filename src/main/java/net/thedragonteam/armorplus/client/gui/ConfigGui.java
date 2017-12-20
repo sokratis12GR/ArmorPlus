@@ -25,7 +25,7 @@ public class ConfigGui extends GuiConfig {
 
     public ConfigGui(GuiScreen parentScreen) {
         super(parentScreen, getConfigElements(parentScreen), ArmorPlus.MODID, false, true,
-                formattedText("gui." + ArmorPlus.MODID + ".config.title"));
+            formattedText("gui." + ArmorPlus.MODID + ".config.title"));
     }
 
     private static List<IConfigElement> getConfigElements(GuiScreen parent) {

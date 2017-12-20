@@ -2,9 +2,13 @@ package net.thedragonteam.armorplus.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.thedragonteam.armorplus.api.crafting.championbench.CBSlotCrafting;
 import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraftingManager;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
@@ -12,6 +16,9 @@ import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
 
 import java.util.stream.IntStream;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ContainerChampionBench extends ContainerBenchBase {
     private static final EntityEquipmentSlot[] EQUIPMENT_SLOTS = new EntityEquipmentSlot[]{EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
     private static final int ITEM_BOX = 18;
@@ -28,7 +35,7 @@ public class ContainerChampionBench extends ContainerBenchBase {
     public ContainerChampionBench(InventoryPlayer playerInventory, TileEntityChampionBench tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 189, 51));
+        this.addSlotToContainer(new CBSlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 189, 51));
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
             for (int j = 0; j < RECIPE_SIZE; ++j)
@@ -52,7 +59,7 @@ public class ContainerChampionBench extends ContainerBenchBase {
 
     private void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
         IntStream.range(0, 1).forEach(k -> {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k +2];
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k + 2];
             addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
         });
     }

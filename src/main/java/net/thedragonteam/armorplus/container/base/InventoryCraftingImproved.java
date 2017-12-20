@@ -13,6 +13,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class InventoryCraftingImproved extends InventoryCrafting implements IInventory {
     private final NonNullList<ItemStack> stackList;
     /**

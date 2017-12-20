@@ -1,10 +1,5 @@
-/*
- * Copyright (c) TheDragonTeam 2016-2017.
- */
+package net.thedragonteam.armorplus.blocks.v2;
 
-package net.thedragonteam.armorplus.blocks.normal;
-
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -14,7 +9,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,13 +19,19 @@ import net.thedragonteam.armorplus.iface.IModdedBlock;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class CompressedObsidian extends BlockBase implements IModdedBlock {
+public class BaseMetalBlock extends BlockBase implements IModdedBlock {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    public CompressedObsidian() {
-        super(Material.ROCK, "compressed_obsidian", 2000.0f, 50.0f, ToolType.PICKAXE, 3);
+    public BaseMetalBlock(Metals metals) {
+        super(Material.IRON, metals.getName() + "_block", 20.0f, 5.0f, ToolType.PICKAXE, 1);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void initModel() {
+        this.initModel(0);
     }
 
     @Override
@@ -42,16 +42,11 @@ public class CompressedObsidian extends BlockBase implements IModdedBlock {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        this.initModel(0);
-    }
-
-    @Override
     public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getHorizontalIndex();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
@@ -59,6 +54,7 @@ public class CompressedObsidian extends BlockBase implements IModdedBlock {
         return iblockstate;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
@@ -68,9 +64,5 @@ public class CompressedObsidian extends BlockBase implements IModdedBlock {
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
-
-    @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return MapColor.BLACK;
-    }
 }
+

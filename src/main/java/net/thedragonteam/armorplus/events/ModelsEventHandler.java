@@ -11,6 +11,7 @@ import net.thedragonteam.armorplus.entity.dungeon.wither.RenderSkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
+import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
@@ -58,6 +59,7 @@ public class ModelsEventHandler {
     public static void registerEntityModels(ModelRegistryEvent event) {
         //Mobs
         registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
+        registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
         //Arrows
         registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
         registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
