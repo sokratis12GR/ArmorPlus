@@ -1,3 +1,50 @@
+ArmorPlus 1.12.2-11.9.0.30-beta
+----------------------------
+
+**Dependencies**:
+  * **Shadowfact's Forgelin is no longer required**
+     * Converted all of the Kotlin classes back to Java Classes
+
+**Bugs Fixed**:
+  * Most of tinkers' construct armor config for armor enabled/disabling effects were not actually doing anything.
+  * A few performance issues.
+
+ArmorPlus 1.12.2-11.8.3.29-beta
+----------------------------
+
+**Features Changed**:
+
+* **Recipes**:
+  * Tweaked/Reworked most of the Ulti-Tech Bench armor recipes.
+
+**Bugs Fixed**:
+  * Obtaining Lava Nether Brick when trying to craft a workbench.
+  * Removed the advancements, they will be re-added once they are more complete.
+
+ArmorPlus 1.12.2-11.8.2.28-beta
+----------------------------
+
+**Bugs Fixed**:
+  * Some Recipes causing crashes.
+
+ArmorPlus 1.12.2-11.8.1.27-beta
+----------------------------
+
+**Tinkers' Construct Integration has been re-enabled**
+
+**Bugs Fixed**:
+  * Some Tinkers' Construct armor recipes being messed up
+  * Added oreDict to the benches, fixes a some recipes requiring the oreDict version of the benches.
+  * Ability to duplicate items from crafting.
+  * Incorrect use of InventoryCrafting instead of InventoryCraftingImproved
+  * Incorrect use of SlotCrafting instead of the crafting manager's specific SlotCrafting
+  * Fixed some issues with tinkers' construct integration.
+  * Fixed a few bugs with the recipe handling system.
+
+**Features Tweaked & Changed**:
+  * Fixed the per piece and full set effects of the armors
+  * Changed the way the effect system is being implemented
+  
 ArmorPlus 1.12.2-11.8.0.26-beta
 ----------------------------
 
@@ -24,7 +71,7 @@ ArmorPlus 1.12.2-11.8.0.26-beta
 
 **Bugs Fixed**:
 
-* Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent**) & event handler.
+* Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent&**) event handler.
     * Fixed insane amounts of time outs caused by the mod
     * Fixed client issues when connecting to a server, too many checks per tick to be handled by the player/client
     * Optimized the armor effects handling better, inside the Armor's properties.
