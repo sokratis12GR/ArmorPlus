@@ -129,13 +129,11 @@ public class ModRecipes {
             'C', ModItems.lavaCrystal
         );
         addRecipe(new ItemStack(lavaNetherBrick, 4),
-            "LCL",
-            "OTO",
-            "O O",
-            'T', Blocks.CRAFTING_TABLE,
-            'O', Blocks.COAL_BLOCK,
-            'L', getItemStack(Items.DYE, 4),
-            'C', ModItems.lavaCrystal);
+            " N ",
+            "NLN",
+            " N ",
+            'L', LAVA_BUCKET,
+            'N', Blocks.NETHER_BRICK);
         addRecipe(new WBShapedOreRecipe(new ItemStack(benches[0]),
             "LCL",
             "OTO",
