@@ -7,7 +7,6 @@ package net.thedragonteam.armorplus.compat.jei.base;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import org.jetbrains.annotations.NotNull;
 
 public class CategoryBaseAdvanced extends CategoryBase {
 
@@ -21,7 +20,7 @@ public class CategoryBaseAdvanced extends CategoryBase {
     }
 
     @Override
-    public void setRecipe(@NotNull IRecipeLayout recipeLayout, @NotNull IRecipeWrapper recipeWrapper, @NotNull IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         recipeLayout.setRecipeTransferButton(buttonX, buttonY);
         super.setRecipe(recipeLayout, recipeWrapper, ingredients);
     }

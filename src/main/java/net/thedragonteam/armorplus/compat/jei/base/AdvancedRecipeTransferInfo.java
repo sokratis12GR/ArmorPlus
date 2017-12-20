@@ -3,7 +3,6 @@ package net.thedragonteam.armorplus.compat.jei.base;
 import mezz.jei.api.recipe.transfer.IRecipeTransferInfo;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,34 +32,34 @@ public class AdvancedRecipeTransferInfo<C extends Container> implements IRecipeT
         this(containerClass, recipeCategoryUid, recipeSlotStart, recipeSlotCount, inventorySlotStart, inventorySlotCount, false, 0);
     }
 
-    @NotNull
+
     @Override
     public Class<C> getContainerClass() {
         return containerClass;
     }
 
-    @NotNull
+
     @Override
     public String getRecipeCategoryUid() {
         return recipeCategoryUid;
     }
 
     @Override
-    public boolean canHandle(@NotNull C container) {
+    public boolean canHandle(C container) {
         return true;
     }
 
-    @NotNull
+
     @Override
-    public List<Slot> getRecipeSlots(@NotNull C container) {
+    public List<Slot> getRecipeSlots(C container) {
         ArrayList<Slot> list;
         list = IntStream.range(recipeSlotStart, recipeSlotStart + recipeSlotCount).mapToObj(container::getSlot).collect(Collectors.toCollection(ArrayList::new));
         return list;
     }
 
-    @NotNull
+
     @Override
-    public ArrayList<Slot> getInventorySlots(@NotNull C container) {
+    public ArrayList<Slot> getInventorySlots(C container) {
         ArrayList<Slot> list;
         list = IntStream.range(inventorySlotStart, inventorySlotStart + inventorySlotCount + additionalSlots).filter(i -> i < container.inventorySlots.size()).mapToObj(container::getSlot).collect(Collectors.toCollection(ArrayList::new));
         return list;

@@ -15,6 +15,9 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
 
+    private IDrawable background;
+    private String localizedName = TextUtils.formattedText("gui.jei.category.armorplus.infusing");
+
     public LavaInfuserCategory() {
         ResourceLocation location = setRL("textures/gui/container/gui_lava_infuser.png");
         background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, 7, 20, 138, 46);
@@ -24,9 +27,6 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
     public String getModName() {
         return ArmorPlus.MODNAME;
     }
-
-    private IDrawable background;
-    private String localizedName = TextUtils.formattedText("gui.jei.category.armorplus.infusing");
 
     @Override
     public IDrawable getBackground() {

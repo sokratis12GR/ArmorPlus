@@ -17,9 +17,9 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraft
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toHighTechShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
-import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toHighTechShapedObjects;
 
 @ZenClass("mods." + ArmorPlus.MODID + ".HighTechBench")
 public class HighTechBench {

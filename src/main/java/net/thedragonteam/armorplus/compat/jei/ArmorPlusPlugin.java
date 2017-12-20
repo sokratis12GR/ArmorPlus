@@ -46,14 +46,13 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 @JEIPlugin
 public class ArmorPlusPlugin implements IModPlugin {
 
-    public static IJeiHelpers jeiHelper;
-
     public static final String JEI_CATEGORY_WORKBENCH = setLocation("workbench");
     public static final String JEI_CATEGORY_HIGH_TECH_BENCH = setLocation("high_tech_bench");
     public static final String JEI_CATEGORY_ULTI_TECH_BENCH = setLocation("ulti_tech_bench");
     public static final String JEI_CATEGORY_CHAMPION_BENCH = setLocation("champion_bench");
     public static final String JEI_CATEGORY_LAVA_INFUSER = setLocation("lava_infuser_infusing");
     public static final String[] JEI_CATEGORIES = new String[]{JEI_CATEGORY_WORKBENCH, JEI_CATEGORY_HIGH_TECH_BENCH, JEI_CATEGORY_ULTI_TECH_BENCH, JEI_CATEGORY_CHAMPION_BENCH};
+    public static IJeiHelpers jeiHelper;
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

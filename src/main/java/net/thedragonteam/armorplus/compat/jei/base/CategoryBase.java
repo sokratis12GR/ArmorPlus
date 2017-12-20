@@ -15,7 +15,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
@@ -63,7 +62,7 @@ public class CategoryBase implements IRecipeCategory {
      *
      * @since JEI 4.5.0
      */
-    @NotNull
+
     @Override
     public String getModName() {
         return ArmorPlus.MODNAME;
@@ -76,7 +75,7 @@ public class CategoryBase implements IRecipeCategory {
     }
 
     @Override
-    public void setRecipe(@NotNull IRecipeLayout recipeLayout, @NotNull IRecipeWrapper recipeWrapper, @NotNull IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         JEIUtils.setRecipe(recipeLayout, recipeWrapper, ingredients, craftingGridHelper, xPos, yPos, xy, xy, INPUT_SLOT, OUTPUT_SLOT);
     }
 }

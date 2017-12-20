@@ -4,7 +4,6 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
-import org.jetbrains.annotations.NotNull;
 
 public class LavaInfuserRecipeWrapper implements IRecipeWrapper {
 
@@ -15,7 +14,7 @@ public class LavaInfuserRecipeWrapper implements IRecipeWrapper {
     }
 
     @Override
-    public void getIngredients(@NotNull IIngredients ingredients) {
+    public void getIngredients(IIngredients ingredients) {
         ItemStack recipeOutput = recipe.output;
 
         ingredients.setInput(ItemStack.class, recipe.input);

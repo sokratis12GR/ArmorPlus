@@ -8,12 +8,12 @@ import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 
 public abstract class LavaInfuserRecipeCategory implements IRecipeCategory {
 
+    public static int inputSlot = 0;
+    public static int outputSlot = 2;
     protected ResourceLocation backgroundLocation = new ResourceLocation("armorplus", "textures/gui/container/gui_lava_infuser.png");
     protected IDrawableAnimated fusion;
     protected IDrawableAnimated arrow;
     protected IDrawableStatic lavaBucket;
-    public static int inputSlot = 0;
-    public static int outputSlot = 2;
 
     LavaInfuserRecipeCategory() {
         IDrawableStatic flameDrawable = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(backgroundLocation, 176, 0, 16, 44);
