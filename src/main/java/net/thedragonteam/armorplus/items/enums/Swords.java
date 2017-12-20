@@ -35,22 +35,22 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum Swords {
     COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK),
-            getValueByName(coalWeaponItemNameColor), setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-            enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
+        getValueByName(coalWeaponItemNameColor), setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
+        enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
     LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK),
-            getValueByName(lapisWeaponItemNameColor), setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-            enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
+        getValueByName(lapisWeaponItemNameColor), setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
+        enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
     REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK),
-            getValueByName(redstoneWeaponItemNameColor), setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-            enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
+        getValueByName(redstoneWeaponItemNameColor), setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
+        enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
     EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK),
-            getValueByName(emeraldWeaponItemNameColor), setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-            enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
+        getValueByName(emeraldWeaponItemNameColor), setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
+        enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
     OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian),
-            getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-            enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
+        getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
+        enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
     LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1),
-            getValueByName(lavaWeaponItemNameColor), setLavaToolTip(), true, "empty", 0) {
+        getValueByName(lavaWeaponItemNameColor), setLavaToolTip(), true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
         public void addInformation(List<String> tooltip) {
@@ -71,14 +71,14 @@ public enum Swords {
         }
     },
     GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1),
-            getValueByName(guardianWeaponItemNameColor), setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
-            enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
+        getValueByName(guardianWeaponItemNameColor), setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
+        enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
     SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2),
-            getValueByName(superStarWeaponItemNameColor), setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
-            enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
+        getValueByName(superStarWeaponItemNameColor), setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
+        enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
     ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3),
-            getValueByName(enderDragonWeaponItemNameColor), setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel),
-            enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
+        getValueByName(enderDragonWeaponItemNameColor), setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel),
+        enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
 
     private final String name;
     private final Item.ToolMaterial material;
@@ -148,8 +148,9 @@ public enum Swords {
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        if (this.hasEnabledEffects())
+        if (this.hasEnabledEffects()) {
             addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+        }
         return true;
     }
 

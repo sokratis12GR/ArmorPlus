@@ -26,8 +26,8 @@ public interface IModelHelper {
     @SideOnly(Side.CLIENT)
     default void initModel(ResourceLocation registryName, String suffix, String location, int meta, String variantIn) {
         String resourcePath = (isNotNullNorEmpty(location))
-                ? (location + "/" + registryName.getResourcePath() + suffix)
-                : registryName.getResourcePath() + suffix;
+            ? (location + "/" + registryName.getResourcePath() + suffix)
+            : registryName.getResourcePath() + suffix;
         String resourceLocation = format("%s:%s", MODID, resourcePath);
         if (isNullOrEmpty(variantIn)) variantIn = "inventory";
         ModelResourceLocation mrl = new ModelResourceLocation(resourceLocation, variantIn);

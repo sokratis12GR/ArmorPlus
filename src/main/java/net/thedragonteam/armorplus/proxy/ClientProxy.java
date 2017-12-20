@@ -12,7 +12,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.compat.tinkers.TiCMaterials;
 import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
+
+import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCIntegrationEnabled;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -35,6 +38,6 @@ public class ClientProxy extends CommonProxy {
         super.postInit(event);
         new CosmeticsRenderInit();
         //TConstruct
-      //  if (isTiCIntegrationEnabled()) TiCMaterials.registerMaterialRendering();
+        if (isTiCIntegrationEnabled()) TiCMaterials.registerMaterialRendering();
     }
 }

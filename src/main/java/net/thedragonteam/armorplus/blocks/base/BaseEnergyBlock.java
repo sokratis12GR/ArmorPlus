@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
- * */
+ */
 public class BaseEnergyBlock extends BlockContainer {
 
     private TileEntity tileEntity;

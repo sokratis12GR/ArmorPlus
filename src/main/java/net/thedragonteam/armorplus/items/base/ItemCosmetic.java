@@ -43,11 +43,9 @@ public class ItemCosmetic extends BaseItem implements IModelHelper {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (isInCreativeTab(tab)) {
-            if (cosmetics.hasSubTypes()) {
-                items.add(getItemStack(this, 0));
-                items.add(getItemStack(this, 1));
-            }
+        if (isInCreativeTab(tab) && cosmetics.hasSubTypes()) {
+            items.add(getItemStack(this, 0));
+            items.add(getItemStack(this, 1));
         }
     }
 

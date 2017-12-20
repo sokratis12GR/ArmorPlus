@@ -64,8 +64,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
-        if (stack == ItemStack.EMPTY) return 0.0F;
-        if (state == null) return 0.0F;
+        if (stack == ItemStack.EMPTY || state == null) return 0.0F;
         Material material = state.getMaterial();
         return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getDestroySpeed(stack, state) : battleAxes.getEfficiency();
     }

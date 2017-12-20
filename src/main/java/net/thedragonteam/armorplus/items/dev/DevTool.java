@@ -56,14 +56,10 @@ public class DevTool extends BaseItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-        if (enableDevTool() || APConfig.debugMode) {
-            if (!playerIn.world.isRemote) {
-                if (isNotNull(target)) {
-                    this.writeToFile(playerIn, target);
-                    entityNumber++;
-                    return true;
-                }
-            }
+        if ((enableDevTool() || APConfig.debugMode) && !playerIn.world.isRemote && isNotNull(target)) {
+            this.writeToFile(playerIn, target);
+            entityNumber++;
+            return true;
         }
         return false;
     }

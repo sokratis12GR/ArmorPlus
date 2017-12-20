@@ -34,22 +34,22 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum BattleAxes {
     COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coalWeaponItemNameColor),
-            setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F,
-            enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
+        setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel), 8.0F,
+        enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
     LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor),
-            setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F,
-            enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
+        setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel), 9.0F,
+        enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
     REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor),
-            setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F,
-            enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
+        setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel), 9.0F,
+        enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
     EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor),
-            setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
-            enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian",  getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
-            setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
-            enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(battleAxeLavaMaterial, "infused_lava",getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
-            setLavaToolTip(), 11.5F, true, "empty", 0) {
+        setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel), 10.0F,
+        enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor),
+        setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel), 10.5F,
+        enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
+    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor),
+        setLavaToolTip(), 11.5F, true, "empty", 0) {
         @Override
         @SideOnly(Side.CLIENT)
         public void addInformation(List<String> tooltip) {
@@ -70,14 +70,20 @@ public enum BattleAxes {
         }
     },
     GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardianWeaponItemNameColor),
-            setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel), 14.0F,
-            enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
+        setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel), 14.0F,
+        enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
     SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(superStarWeaponItemNameColor),
-            setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel), 15.0F,
-            enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
+        setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel), 15.0F,
+        enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
     ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(enderDragonWeaponItemNameColor),
-            setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel), 16.0F,
-            enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
+        setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel), 16.0F,
+        enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel),
+    // WOOD(, "wooden"),
+    // STONE(, "stone"),
+    // IRON(, "iron"),
+    // GOLD(, "golden"),
+    // DIAMOND(, "diamond")
+    ;
 
     private final String name;
     private final Item.ToolMaterial material;
@@ -152,8 +158,9 @@ public enum BattleAxes {
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        if (this.hasEnabledEffects())
+        if (this.hasEnabledEffects()) {
             addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+        }
         return true;
     }
 

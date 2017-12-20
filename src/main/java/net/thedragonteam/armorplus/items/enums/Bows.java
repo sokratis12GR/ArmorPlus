@@ -23,9 +23,9 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum Bows {
     COAL(coalBowDurability, "coal", coalBowArrowBonusDamage, getItemStack(Blocks.COAL_BLOCK), getValueByName(coalWeaponItemNameColor), coalBow),
-    LAPIS(lapisBowDurability, "lapis", lapisBowArrowBonusDamage,getItemStack(Blocks.LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor), lapisBow),
-    REDSTONE(redstoneBowDurability, "redstone", redstoneBowArrowBonusDamage,  getItemStack(Blocks.REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor), redstoneBow),
-    EMERALD(emeraldBowDurability, "emerald", emeraldBowArrowBonusDamage,  getItemStack(Blocks.EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor), emeraldBow),
+    LAPIS(lapisBowDurability, "lapis", lapisBowArrowBonusDamage, getItemStack(Blocks.LAPIS_BLOCK), getValueByName(lapisWeaponItemNameColor), lapisBow),
+    REDSTONE(redstoneBowDurability, "redstone", redstoneBowArrowBonusDamage, getItemStack(Blocks.REDSTONE_BLOCK), getValueByName(redstoneWeaponItemNameColor), redstoneBow),
+    EMERALD(emeraldBowDurability, "emerald", emeraldBowArrowBonusDamage, getItemStack(Blocks.EMERALD_BLOCK), getValueByName(emeraldWeaponItemNameColor), emeraldBow),
     OBSIDIAN(obsidianBowDurability, "obsidian", obsidianBowArrowBonusDamage, getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidianWeaponItemNameColor), obsidianBow),
     LAVA(lavaBowDurability, "infused_lava", lavaBowArrowBonusDamage, getItemStack(lavaCrystal, 1), getValueByName(lavaWeaponItemNameColor), lavaBow),
     GUARDIAN(guardianBowDurability, "guardian", guardianBowArrowBonusDamage, getItemStack(materials, 1), getValueByName(guardianWeaponItemNameColor), guardianBow),

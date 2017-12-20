@@ -111,15 +111,14 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
     public ItemStack findAmmo(EntityLivingBase entityLivingBase) {
         if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.MAIN_HAND))) {
             return this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND)) ? entityLivingBase.getHeldItem(EnumHand.OFF_HAND) : entityLivingBase.getHeldItem(EnumHand.MAIN_HAND);
-        } else {
-            if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
-                return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
-            }
-            int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
-            return IntStream.range(0, bound).mapToObj(
-                    i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
-            ).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
         }
+        if (this.isArrow(entityLivingBase.getHeldItem(EnumHand.OFF_HAND))) {
+            return entityLivingBase.getHeldItem(EnumHand.OFF_HAND);
+        }
+        int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
+        return IntStream.range(0, bound).mapToObj(
+            i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
+        ).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
     }
 
     public float getVelocityOfArrow(ItemStack stack) {
@@ -140,8 +139,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
 
             int useDuration = this.getMaxItemUseDuration(stack) - timeLeft;
             useDuration = ForgeEventFactory.onArrowLoose(stack, world, (EntityPlayer) entityLiving, useDuration, !itemstack.isEmpty() || requiredConditions);
-            if (useDuration < 0)
-                return;
+            if (useDuration < 0) return;
 
             if (!itemstack.isEmpty() || requiredConditions) {
                 if (itemstack.isEmpty()) {

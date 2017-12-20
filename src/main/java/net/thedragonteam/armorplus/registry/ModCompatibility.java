@@ -18,10 +18,10 @@ public class ModCompatibility {
 
     public static void registerModCompat() {
         addCompatibilities(
-                new CompatibilityJustEnoughItems(),
-                new CompatibilityBaubles(),
-                new CompatibilityTinkersConstruct(),
-                new CompatibilityMineTweaker()
+            new CompatibilityJustEnoughItems(),
+            new CompatibilityBaubles(),
+            new CompatibilityTinkersConstruct(),
+            new CompatibilityMineTweaker()
         );
     }
 
@@ -31,9 +31,9 @@ public class ModCompatibility {
 
     public static void loadCompat(ICompatibility.InitializationPhase phase) {
         compatibilities.stream().filter(
-                compatibility -> Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat()
+            compatibility -> Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat()
         ).forEachOrdered(
-                compatibility -> compatibility.loadCompatibility(phase)
+            compatibility -> compatibility.loadCompatibility(phase)
         );
     }
 }

@@ -8,7 +8,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public interface IModdedItem extends IModelHelper, IRarityHelper, IForgeRegistryEntry<Item> {
+public interface IModdedItem extends IRarityHelper, IModelHelper, IForgeRegistryEntry<Item> {
 
     @SideOnly(Side.CLIENT)
     default void initModel(String suffix, String location, int meta, String variantIn) {
@@ -48,4 +48,5 @@ public interface IModdedItem extends IModelHelper, IRarityHelper, IForgeRegistry
             this.initModel((Integer) locOrMeta, "");
         }
     }
+
 }

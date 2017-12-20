@@ -58,7 +58,7 @@ public class ItemMaterial extends Item implements IModdedItem {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             IntStream.range(0, materialNames.length).mapToObj(i ->
-                    getItemStack(this, i)
+                getItemStack(this, i)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -67,7 +67,7 @@ public class ItemMaterial extends Item implements IModdedItem {
     @Override
     public void initModel() {
         IntStream.range(0, materialNames.length).forEachOrdered(i ->
-                this.initModel(setRL(materialNames[i]), "material", i)
+            this.initModel(setRL(materialNames[i]), "material", i)
         );
     }
 }
