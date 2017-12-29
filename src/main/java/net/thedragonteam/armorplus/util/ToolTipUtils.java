@@ -11,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 public final class ToolTipUtils {
 
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(GRAY + formattedText("tooltip.showinfo.keybind", formatting, keyBinding.getDisplayName()) + GRAY);
+        tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, formattedText("tooltip.shift.showinfo.text_one"), formatting, keyBinding.getDisplayName(), GRAY, formattedText("tooltip.shift.showinfo.text_two")));
     }
 
     public static void addToolTipFull(List<String> tooltip, String ability, int amplifier) {
