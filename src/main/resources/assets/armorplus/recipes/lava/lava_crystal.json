@@ -13,6 +13,7 @@
       ]
     }
   ],
+  "group": "lava_crystal",
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {

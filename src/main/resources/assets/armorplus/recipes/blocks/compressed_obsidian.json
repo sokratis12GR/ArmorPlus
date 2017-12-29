@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "block",
+  "group": "compressed_obsidian",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

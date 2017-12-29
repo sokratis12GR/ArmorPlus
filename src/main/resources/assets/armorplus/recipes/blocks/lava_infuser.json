@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "block",
+  "group": "lava_infuser",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "LLL",

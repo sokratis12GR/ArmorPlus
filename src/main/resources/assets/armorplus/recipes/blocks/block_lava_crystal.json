@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "block",
+  "group": "lava_block",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

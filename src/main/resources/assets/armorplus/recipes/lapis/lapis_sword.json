@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "weapon",
+  "group": "lapis_weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "#",

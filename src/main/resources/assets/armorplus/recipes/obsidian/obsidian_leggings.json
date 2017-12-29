@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "armor",
+  "group": "obsidian_armor",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

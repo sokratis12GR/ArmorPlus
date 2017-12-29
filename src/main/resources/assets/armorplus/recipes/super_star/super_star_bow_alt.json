@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "weapon",
+  "group": "super_star_weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",

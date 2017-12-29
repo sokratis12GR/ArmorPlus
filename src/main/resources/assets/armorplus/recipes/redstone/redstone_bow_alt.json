@@ -13,7 +13,7 @@
       ]
     }
   ],
-  "group": "weapon",
+  "group": "redstone_weapon",
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "s# ",
