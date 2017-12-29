@@ -4,7 +4,6 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.lavainfuser.LavaInfuserManager;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -14,7 +13,7 @@ import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStac
 /**
  * @author Stan
  */
-@ZenClass("mods." + ArmorPlus.MODID + ".LavaInfuser")
+@ZenClass("mods.armorplus.LavaInfuser")
 public class LavaInfuser {
 
     @ZenMethod

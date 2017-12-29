@@ -9,7 +9,6 @@ import crafttweaker.IAction;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapelessOreRecipe;
@@ -23,7 +22,7 @@ import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
 
-@ZenClass("mods." + ArmorPlus.MODID + ".UltiTechBench")
+@ZenClass("mods.armorplus.UltiTechBench")
 public class UltiTechBench {
 
     @ZenMethod

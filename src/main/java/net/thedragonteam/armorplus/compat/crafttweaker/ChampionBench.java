@@ -19,12 +19,11 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import java.util.List;
 
 import static java.lang.String.format;
-import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toChampionShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
 
-@ZenClass("mods." + MODID + ".ChampionBench")
+@ZenClass("mods.armorplus.ChampionBench")
 public class ChampionBench {
 
     @ZenMethod

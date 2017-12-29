@@ -9,7 +9,6 @@ import crafttweaker.IAction;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapelessOreRecipe;
@@ -23,7 +22,7 @@ import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
 
-@ZenClass("mods." + ArmorPlus.MODID + ".HighTechBench")
+@ZenClass("mods.armorplus.HighTechBench")
 public class HighTechBench {
 
     @ZenMethod

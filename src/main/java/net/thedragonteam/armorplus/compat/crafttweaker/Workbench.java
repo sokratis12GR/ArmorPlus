@@ -9,7 +9,6 @@ import crafttweaker.IAction;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WBShapedOreRecipe;
 import net.thedragonteam.armorplus.api.crafting.workbench.WBShapelessOreRecipe;
@@ -24,7 +23,7 @@ import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObje
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
 
 
-@ZenClass("mods." + ArmorPlus.MODID + ".Workbench")
+@ZenClass("mods.armorplus.Workbench")
 public class Workbench {
 
     @ZenMethod
