@@ -18,22 +18,14 @@ import net.thedragonteam.armorplus.iface.IModdedBlock;
  */
 public class BlockStoneBrick extends BlockBase implements IModdedBlock {
 
-    private MapColor color;
+    public MapColor color;
 
-    private String name;
+    public String name;
 
     public BlockStoneBrick(StoneBricks stoneBricks) {
         super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0);
         this.color = stoneBricks.getMapColor();
-        this.name = stoneBricks.getName();
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public MapColor getColor() {
-        return color;
+        this.name = stoneBricks.getName() + "_stone_brick";
     }
 
     @SideOnly(Side.CLIENT)

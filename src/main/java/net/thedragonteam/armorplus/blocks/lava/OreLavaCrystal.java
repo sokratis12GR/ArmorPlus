@@ -59,6 +59,7 @@ public class OreLavaCrystal extends BlockBase implements IModdedBlock {
      * Get the MapColor for this Block and the given BlockState
      */
     @Override
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
         return MapColor.RED;
     }

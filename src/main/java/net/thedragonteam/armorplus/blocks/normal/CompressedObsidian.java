@@ -53,6 +53,7 @@ public class CompressedObsidian extends BlockBase implements IModdedBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
         iblockstate = iblockstate.withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -60,16 +61,19 @@ public class CompressedObsidian extends BlockBase implements IModdedBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.BLACK;
     }

@@ -220,11 +220,13 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean hasComparatorInputOverride(IBlockState state) {
         return true;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
         return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
@@ -247,6 +249,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * Convert the given metadata into a BlockState for this Block
      */
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
         EnumFacing enumfacing = EnumFacing.getFront(meta);
 
@@ -270,6 +273,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * blockstate.
      */
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
@@ -279,6 +283,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * blockstate.
      */
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }

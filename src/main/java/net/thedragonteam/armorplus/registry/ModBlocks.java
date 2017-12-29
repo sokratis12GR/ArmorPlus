@@ -32,10 +32,10 @@ public class ModBlocks {
 
     public static OreLavaCrystal oreLavaCrystal = new OreLavaCrystal();
     public static CompressedObsidian compressedObsidian = new CompressedObsidian();
+    public static LavaCactus lavaCactus = new LavaCactus();
     public static BaseMetalBlock steelBlock = new BaseMetalBlock(STEEL);
     public static BaseMetalBlock electricalBlock = new BaseMetalBlock(ELECTRICAL);
     public static LavaNetherBrick lavaNetherBrick = new LavaNetherBrick();
-    public static LavaCactus lavaCactus = new LavaCactus();
     public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
     public static BlockBench[] benches = new BlockBench[4];
     public static StoneBricks[] stoneBrickTypes = new StoneBricks[]{
@@ -64,7 +64,7 @@ public class ModBlocks {
         setAll(stoneBricks, block -> new BlockStoneBrick(stoneBrickTypes[block]));
         setAll(stoneBrickTowers, block -> new BlockStoneBrickTower(stoneBrickTypes[block]));
         setAll(stoneBrickCorners, block -> new BlockStoneBrickCorner(stoneBrickTypes[block], stoneBricks[block].getDefaultState()));
-        setAll(stonebrickWalls, block -> new BlockStonebrickWall(stoneBrickTypes[block], stoneBricks[block].getDefaultState()));
+        setAll(stonebrickWalls, block -> new BlockStonebrickWall(stoneBricks[block]));
         setAll(enderBlocks, block -> new BlockDungeonEnder(enumEnderBlocks[block]));
     }
 }

@@ -18,14 +18,12 @@ import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
-import javax.annotation.Nonnull;
-
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class LavaNetherBrick extends BlockBase implements IModdedBlock {
 
-    public final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public LavaNetherBrick() {
         super(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f);
@@ -69,7 +67,6 @@ public class LavaNetherBrick extends BlockBase implements IModdedBlock {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
-    @Nonnull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);

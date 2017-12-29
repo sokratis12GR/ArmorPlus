@@ -28,6 +28,7 @@ public class BlockLavaType extends BlockBase implements IModdedBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.RED;
     }
