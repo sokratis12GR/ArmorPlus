@@ -12,74 +12,62 @@ import net.thedragonteam.armorplus.util.ArrowUtils;
 import java.util.List;
 
 import static java.util.Locale.ROOT;
-import static net.thedragonteam.armorplus.util.ArrowUtils.addArrowInformation;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum ArrowType {
-    COAL {
+    COAL("Applies Blindness", 2.0, TextFormatting.GRAY) {
         @Override
         public EntityArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityCoalArrow(world, shooter);
         }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            addArrowInformation(tooltip, "Applies Blindness", 2.0, TextFormatting.GRAY);
-        }
     },
-    LAPIS {
+    LAPIS("Applies Nausea", 3.5, TextFormatting.DARK_AQUA) {
         @Override
         public EntityArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLapisArrow(world, shooter);
         }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            ArrowUtils.addArrowInformation(tooltip, "Applies Nausea", 3.5, TextFormatting.DARK_AQUA);
-        }
     },
-    REDSTONE {
+    REDSTONE("Applies Slowness", 3.5D, TextFormatting.DARK_RED) {
         @Override
         public EntityArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityRedstoneArrow(world, shooter);
         }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            ArrowUtils.addArrowInformation(tooltip, "Applies Slowness", 3.5D, TextFormatting.DARK_RED);
-        }
     },
-    INFUSED_LAVA {
+    INFUSED_LAVA("Sets on Fire", 5.5D, TextFormatting.GOLD) {
         @Override
         public EntityArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLavaArrow(world, shooter);
         }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            ArrowUtils.addArrowInformation(tooltip, "Sets on Fire", 5.5D, TextFormatting.GOLD);
-        }
     },
-    ENDER_DRAGON {
+    ENDER_DRAGON("Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE) {
         @Override
         public EntityArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityEnderDragonArrow(world, shooter);
         }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            ArrowUtils.addArrowInformation(tooltip, "Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE);
-        }
     };
 
-    ArrowType() {
+    private final String abilityDescription;
+    private final double damage;
+    private final TextFormatting formatting;
+
+    ArrowType(String abilityDescription, double damage, TextFormatting formatting) {
+        this.abilityDescription = abilityDescription;
+        this.damage = damage;
+        this.formatting = formatting;
+    }
+
+    public String getAbilityDescription() {
+        return abilityDescription;
+    }
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public TextFormatting getFormatting() {
+        return formatting;
     }
 
     public String getName() {
@@ -93,6 +81,8 @@ public enum ArrowType {
     public abstract EntityArrow createArrow(World world, EntityLivingBase shooter);
 
     @SideOnly(Side.CLIENT)
-    public abstract void addInformation(List<String> tooltip);
+    public void addInformation(List<String> tooltip) {
+        ArrowUtils.addArrowInformation(tooltip, getAbilityDescription(), getDamage(), getFormatting());
+    }
 
 }
