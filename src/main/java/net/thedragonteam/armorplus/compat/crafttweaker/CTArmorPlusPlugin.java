@@ -6,9 +6,12 @@ package net.thedragonteam.armorplus.compat.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
+import net.minecraft.item.ItemStack;
+import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObject;
 
@@ -103,8 +106,7 @@ public class CTArmorPlusPlugin {
             {'@', '#', '$', '%', '^', '&', '*', '(', ')'},
             {'-', '=', '_', '+', '`', '~', '|', '<', '>'}
         };
-        toShapedObjects(ingredients, map, prep);
-        return prep.toArray();
+        return toShapedObjects(ingredients, map, prep);
     }
 
     public static Object[] toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList<Object> prep) {
@@ -120,5 +122,17 @@ public class CTArmorPlusPlugin {
             }
         }
         return prep.toArray();
+    }
+
+    public static void removeRecipe(List<IRecipe> recipes, ItemStack remove){
+        for (Object obj : recipes) {
+            if (obj instanceof IRecipe) {
+                IRecipe craft = (IRecipe) obj;
+                if (craft.getRecipeOutput().isItemEqual(remove)) {
+                    recipes.remove(obj);
+                    break;
+                }
+            }
+        }
     }
 }

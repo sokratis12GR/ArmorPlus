@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManag
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.List;
+
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toWorkbenchShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
@@ -60,8 +62,8 @@ public class Workbench {
     }
 
     private static class Remove implements IAction {
-        IRecipe recipe = null;
         ItemStack remove;
+        List<IRecipe> recipes = WorkbenchCraftingManager.getInstance().getRecipeList();
 
         public Remove(ItemStack rem) {
             remove = rem;
@@ -69,17 +71,7 @@ public class Workbench {
 
         @Override
         public void apply() {
-
-            for (Object obj : WorkbenchCraftingManager.getInstance().getRecipeList()) {
-                if (obj instanceof IRecipe) {
-                    IRecipe craft = (IRecipe) obj;
-                    if (craft.getRecipeOutput().isItemEqual(remove)) {
-                        recipe = craft;
-                        WorkbenchCraftingManager.getInstance().getRecipeList().remove(obj);
-                        break;
-                    }
-                }
-            }
+            CTArmorPlusPlugin.removeRecipe(recipes, remove);
         }
 
         @Override

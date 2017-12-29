@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraft
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.List;
+
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toHighTechShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
@@ -58,8 +60,8 @@ public class HighTechBench {
     }
 
     private static class Remove implements IAction {
-        IRecipe recipe = null;
         ItemStack remove;
+        List<IRecipe> recipes = HighTechBenchCraftingManager.getInstance().getRecipeList();
 
         public Remove(ItemStack rem) {
             remove = rem;
@@ -67,17 +69,7 @@ public class HighTechBench {
 
         @Override
         public void apply() {
-
-            for (Object obj : HighTechBenchCraftingManager.getInstance().getRecipeList()) {
-                if (obj instanceof IRecipe) {
-                    IRecipe craft = (IRecipe) obj;
-                    if (craft.getRecipeOutput().isItemEqual(remove)) {
-                        recipe = craft;
-                        HighTechBenchCraftingManager.getInstance().getRecipeList().remove(obj);
-                        break;
-                    }
-                }
-            }
+            CTArmorPlusPlugin.removeRecipe(recipes, remove);
         }
 
         @Override

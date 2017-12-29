@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraft
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.List;
+
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toUltiTechShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
@@ -59,8 +61,8 @@ public class UltiTechBench {
     }
 
     private static class Remove implements IAction {
-        IRecipe recipe = null;
         ItemStack remove;
+        List<IRecipe> recipes = UltiTechBenchCraftingManager.getInstance().getRecipeList();
 
         public Remove(ItemStack rem) {
             remove = rem;
@@ -68,17 +70,7 @@ public class UltiTechBench {
 
         @Override
         public void apply() {
-
-            for (Object obj : UltiTechBenchCraftingManager.getInstance().getRecipeList()) {
-                if (obj instanceof IRecipe) {
-                    IRecipe craft = (IRecipe) obj;
-                    if (craft.getRecipeOutput().isItemEqual(remove)) {
-                        recipe = craft;
-                        UltiTechBenchCraftingManager.getInstance().getRecipeList().remove(obj);
-                        break;
-                    }
-                }
-            }
+            CTArmorPlusPlugin.removeRecipe(recipes, remove);
         }
 
         @Override

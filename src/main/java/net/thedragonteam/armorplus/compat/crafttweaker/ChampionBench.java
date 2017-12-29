@@ -16,6 +16,8 @@ import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraft
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.List;
+
 import static java.lang.String.format;
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toChampionShapedObjects;
@@ -60,8 +62,8 @@ public class ChampionBench {
     }
 
     private static class Remove implements IAction {
-        IRecipe recipe = null;
         ItemStack remove;
+        List<IRecipe> recipes = ChampionBenchCraftingManager.getInstance().getRecipeList();
 
         public Remove(ItemStack remove) {
             this.remove = remove;
@@ -69,17 +71,7 @@ public class ChampionBench {
 
         @Override
         public void apply() {
-
-            for (Object obj : ChampionBenchCraftingManager.getInstance().getRecipeList()) {
-                if (obj instanceof IRecipe) {
-                    IRecipe craft = (IRecipe) obj;
-                    if (craft.getRecipeOutput().isItemEqual(remove)) {
-                        recipe = craft;
-                        ChampionBenchCraftingManager.getInstance().getRecipeList().remove(obj);
-                        break;
-                    }
-                }
-            }
+            CTArmorPlusPlugin.removeRecipe(recipes, remove);
         }
 
         @Override
