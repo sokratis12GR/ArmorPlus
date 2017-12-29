@@ -109,7 +109,7 @@ public class RegistryEventHandler {
     }
 
     private static void registerTEFixes() {
-        TileEntityLavaInfuser.registerFixesFurnace(DataFixesManager.createFixer());
+        TileEntityLavaInfuser.registerFixesLavaInfuser(DataFixesManager.createFixer());
     }
 
     private static void registerTileEntities() {
@@ -154,7 +154,10 @@ public class RegistryEventHandler {
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         // ==== DUNGEON BLOCKS ==== \\
-        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        registerAllItemBlocks(event, stoneBricks);
+        registerAllItemBlocks(event,stoneBrickTowers);
+        registerAllItemBlocks(event, stoneBrickCorners);
+        registerAllItemBlocks(event, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerAllItemBlocks(event, enderBlocks);
         // ==== ITEMS ==== \\
