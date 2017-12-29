@@ -1,3 +1,26 @@
+ArmorPlus 1.12.2-11.9.1.31-beta
+----------------------------
+
+**Forge**:
+
+* Requires forge version 14.23.1.2582 or later
+
+**Features Changed**:
+
+* Recipes when in the json mod now actually load the vanilla groups correctly and *most* of the recipes.
+
+* Additional notes added to the gamemode's config property
+
+**Bugs Fixed**:
+
+* CraftTweaker's integration ZenScript string now uses string name directly instead of a static string. (outside editor/plugins/packages's support)
+
+* JSON Recipes being incorrectly grouped in the recipe book
+
+* Code vanilla recipes being incorrectly grouped in the recipe book
+
+* Vanilla bench recipes wont be duplicated when using both the benches and the useJSONRecipes property
+
 ArmorPlus 1.12.2-11.9.0.30-beta
 ----------------------------
 
