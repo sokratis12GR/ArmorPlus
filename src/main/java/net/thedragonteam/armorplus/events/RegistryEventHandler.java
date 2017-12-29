@@ -154,10 +154,7 @@ public class RegistryEventHandler {
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         // ==== DUNGEON BLOCKS ==== \\
-        registerAllItemBlocks(event, stoneBricks);
-        registerAllItemBlocks(event,stoneBrickTowers);
-        registerAllItemBlocks(event, stoneBrickCorners);
-        registerAllItemBlocks(event, stonebrickWalls);
+        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerAllItemBlocks(event, enderBlocks);
         // ==== ITEMS ==== \\
