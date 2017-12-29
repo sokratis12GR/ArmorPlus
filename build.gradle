@@ -7,7 +7,6 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -16,7 +15,6 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
-apply plugin: 'kotlin'
 apply plugin: 'java'
 
 repositories {
@@ -78,9 +76,10 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "shadowfacts-forgelin:Forgelin:1.5.1"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${crafttweaker_version}"
+    compile ("CraftTweaker2:CraftTweaker2-API:${crafttweaker_version}") {
+        exclude module: "asm-debug-all"
+    }
+    compile "CraftTweaker2:ZenScript:${zenscript_version}"
 //    deobfCompile "com.blamejared:MTLib:2.0.2.3"
 }
 
@@ -117,13 +116,12 @@ curseforge {
         releaseType = 'beta'
         addGameVersion '1.12.2'
         relations {
-            requiredLibrary 'shadowfacts-forgelin'
             requiredLibrary 'thedragonlib'
             optionalLibrary 'crafttweaker'
             optionalLibrary 'tesla'
             optionalLibrary 'tinkers-construct'
             optionalLibrary 'baubles'
-            optionalLibrary 'just-enough-items-jei'
+            optionalLibrary 'jei'
             optionalLibrary 'the-one-probe'
         }
     }
