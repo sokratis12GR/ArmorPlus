@@ -14,7 +14,6 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-//TODO: FIX that...
 public class APItems {
 
     public static Item coalHelmet, coalChestplate, coalLeggings, coalBoots;
