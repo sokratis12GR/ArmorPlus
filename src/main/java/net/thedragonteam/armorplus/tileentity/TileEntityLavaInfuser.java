@@ -62,7 +62,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
     private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
-    public static void registerFixesFurnace(DataFixer fixer) {
+    public static void registerFixesLavaInfuser(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityLavaInfuser.class, "Items"));
     }
 
