@@ -2,12 +2,25 @@ ArmorPlus 1.12.2-11.9.0.30-beta
 ----------------------------
 
 **Dependencies**:
-  * **Shadowfact's Forgelin is no longer required**
-     * Converted all of the Kotlin classes back to Java Classes
+
+* **Shadowfact's Forgelin is no longer required**
+  * Converted all of the Kotlin classes back to Java Classes
+
+**Features Added**:
+  
+* Arrow now have thier names colored (even when renamed)
 
 **Bugs Fixed**:
-  * Most of tinkers' construct armor config for armor enabled/disabling effects were not actually doing anything.
-  * A few performance issues.
+
+* Most of tinkers' construct armor config for armor enabled/disabling effects were not actually doing anything.
+
+* A few performance issues.
+
+* Fixed item description coloring
+
+* Fixed some formatting
+
+* Optimizations to how some functions and abilities are applied
 
 ArmorPlus 1.12.2-11.8.3.29-beta
 ----------------------------
@@ -18,14 +31,17 @@ ArmorPlus 1.12.2-11.8.3.29-beta
   * Tweaked/Reworked most of the Ulti-Tech Bench armor recipes.
 
 **Bugs Fixed**:
-  * Obtaining Lava Nether Brick when trying to craft a workbench.
-  * Removed the advancements, they will be re-added once they are more complete.
+
+* Obtaining Lava Nether Brick when trying to craft a workbench.
+
+* Removed the advancements, they will be re-added once they are more complete.
 
 ArmorPlus 1.12.2-11.8.2.28-beta
 ----------------------------
 
 **Bugs Fixed**:
-  * Some Recipes causing crashes.
+
+* Some Recipes causing crashes.
 
 ArmorPlus 1.12.2-11.8.1.27-beta
 ----------------------------
@@ -33,17 +49,26 @@ ArmorPlus 1.12.2-11.8.1.27-beta
 **Tinkers' Construct Integration has been re-enabled**
 
 **Bugs Fixed**:
-  * Some Tinkers' Construct armor recipes being messed up
-  * Added oreDict to the benches, fixes a some recipes requiring the oreDict version of the benches.
-  * Ability to duplicate items from crafting.
-  * Incorrect use of InventoryCrafting instead of InventoryCraftingImproved
-  * Incorrect use of SlotCrafting instead of the crafting manager's specific SlotCrafting
-  * Fixed some issues with tinkers' construct integration.
-  * Fixed a few bugs with the recipe handling system.
+
+* Some Tinkers' Construct armor recipes being messed up
+
+* Added oreDict to the benches, fixes a some recipes requiring the oreDict version of the benches.
+
+* Ability to duplicate items from crafting.
+
+* Incorrect use of InventoryCrafting instead of InventoryCraftingImproved
+
+* Incorrect use of SlotCrafting instead of the crafting manager's specific SlotCrafting
+
+* Fixed some issues with tinkers' construct integration.
+
+* Fixed a few bugs with the recipe handling system.
 
 **Features Tweaked & Changed**:
-  * Fixed the per piece and full set effects of the armors
-  * Changed the way the effect system is being implemented
+
+* Fixed the per piece and full set effects of the armors
+  
+* Changed the way the effect system is being implemented
   
 ArmorPlus 1.12.2-11.8.0.26-beta
 ----------------------------
@@ -72,11 +97,11 @@ ArmorPlus 1.12.2-11.8.0.26-beta
 **Bugs Fixed**:
 
 * Moved all the effect changes and checks outside of the Global onArmorTick(**PlayerTickEvent&**) event handler.
-    * Fixed insane amounts of time outs caused by the mod
-    * Fixed client issues when connecting to a server, too many checks per tick to be handled by the player/client
-    * Optimized the armor effects handling better, inside the Armor's properties.
-    * Removed the amounts of duplicated code
-    * Added a few more utilities
+  * Fixed insane amounts of time outs caused by the mod
+  * Fixed client issues when connecting to a server, too many checks per tick to be handled by the player/client
+  * Optimized the armor effects handling better, inside the Armor's properties.
+  * Removed the amounts of duplicated code
+  * Added a few more utilities
 
 * Some cosmetics no longer appear in the JEI nor in the Creative Tabs (A+ Items)
 
@@ -101,9 +126,12 @@ ArmorPlus 1.12.2-11.7.0.22-beta
 
 **Note**: 
 
-* **This version is the first beta of the 1.12 mod, which will be focused on the 1.12.2 version of mc.**
+* **This version is the first beta of the 1.12 mod, which will be focused on the 1.12.2 version of Minecraft.**
+
 * **WIP and experimental features will not find their place in the mod. At least for now.**
+
 * **This release aims to be the first playable version of the mod**
+
 * **While some unfinished wip features are being removed, they WILL come back in the future, ready to be in use.**
 
 ArmorPlus 1.12.1-11.6.4.21-alpha
