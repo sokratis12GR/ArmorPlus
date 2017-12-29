@@ -76,49 +76,50 @@ public class ModRecipes {
         theUltimateHelmet.setTagCompound(nbttagc);
 
         if (enableEnderDragonArmor)
-            addShapelessRecipe(setRL("ender_dragon__helmet"), setRL("integrations"), enderDragonHelmet, fromItem(APItems.enderDragonHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("ender_dragon__helmet"), setRL("top"), enderDragonHelmet, fromItem(APItems.enderDragonHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableGuardianArmor)
-            addShapelessRecipe(setRL("guardian_helmet"), setRL("integrations"), guardianHelmet, fromItem(APItems.guardianHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("guardian_helmet"), setRL("top"), guardianHelmet, fromItem(APItems.guardianHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableSuperStarArmor)
-            addShapelessRecipe(setRL("supert_star_helmet"), setRL("integrations"), superStarHelmet, fromItem(APItems.superStarHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("super_star_helmet"), setRL("top"), superStarHelmet, fromItem(APItems.superStarHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableTheUltimateArmor)
-            addShapelessRecipe(setRL("the_ultimate_helmet"), setRL("integrations"), theUltimateHelmet, fromItem(APItems.theUltimateHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("the_ultimate_helmet"), setRL("top"), theUltimateHelmet, fromItem(APItems.theUltimateHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableCoalArmor)
-            addShapelessRecipe(setRL("coal_helmet"), setRL("integrations"), coalHelmet, fromItem(APItems.coalHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("coal_helmet"), setRL("top"), coalHelmet, fromItem(APItems.coalHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableEmeraldArmor)
-            addShapelessRecipe(setRL("emerald_helmet"), setRL("integrations"), emeraldHelmet, fromItem(APItems.emeraldHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("emerald_helmet"), setRL("top"), emeraldHelmet, fromItem(APItems.emeraldHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableLapisArmor)
-            addShapelessRecipe(setRL("lapis_helmet"), setRL("integrations"), lapisHelmet, fromItem(APItems.lapisHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("lapis_helmet"), setRL("top"), lapisHelmet, fromItem(APItems.lapisHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableLavaArmor)
-            addShapelessRecipe(setRL("lava_helmet"), setRL("integrations"), lavaHelmet, fromItem(APItems.lavaHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("lava_helmet"), setRL("top"), lavaHelmet, fromItem(APItems.lavaHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableObsidianArmor)
-            addShapelessRecipe(setRL("obsidian_helmet"), setRL("integrations"), obsidianHelmet, fromItem(APItems.obsidianHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("obsidian_helmet"), setRL("top"), obsidianHelmet, fromItem(APItems.obsidianHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableRedstoneArmor)
-            addShapelessRecipe(setRL("redstone_helmet"), setRL("integrations"), redstoneHelmet, fromItem(APItems.redstoneHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("redstone_helmet"), setRL("top"), redstoneHelmet, fromItem(APItems.redstoneHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableChickenArmor)
-            addShapelessRecipe(setRL("chicken_helmet"), setRL("integrations"), chickenHelmet, fromItem(APItems.chickenHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("chicken_helmet"), setRL("top"), chickenHelmet, fromItem(APItems.chickenHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableSlimeArmor)
-            addShapelessRecipe(setRL("slime_helmet"), setRL("integrations"), slimeHelmet, fromItem(APItems.slimeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("slime_helmet"), setRL("top"), slimeHelmet, fromItem(APItems.slimeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableArditeArmor)
-            addShapelessRecipe(setRL("ardite_helmet"), setRL("integrations"), arditeHelmet, fromItem(APItems.arditeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("ardite_helmet"), setRL("top"), arditeHelmet, fromItem(APItems.arditeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableCobaltArmor)
-            addShapelessRecipe(setRL("cobalt_helmet"), setRL("integrations"), cobaltHelmet, fromItem(APItems.cobaltHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("cobalt_helmet"), setRL("top"), cobaltHelmet, fromItem(APItems.cobaltHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableManyullynArmor)
-            addShapelessRecipe(setRL("manyullyn_helmet"), setRL("integrations"), manyullynHelmet, fromItem(APItems.manyullynHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("manyullyn_helmet"), setRL("top"), manyullynHelmet, fromItem(APItems.manyullynHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enablePigIronArmor)
-            addShapelessRecipe(setRL("pig_iron_helmet"), setRL("integrations"), pigIronHelmet, fromItem(APItems.pigIronHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("pig_iron_helmet"), setRL("top"), pigIronHelmet, fromItem(APItems.pigIronHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
         if (enableKnightSlimeArmor)
-            addShapelessRecipe(setRL("knight_slime_helmet"), setRL("integrations"), knightSlimeHelmet, fromItem(APItems.knightSlimeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
+            addShapelessRecipe(setRL("knight_slime_helmet"), setRL("top"), knightSlimeHelmet, fromItem(APItems.knightSlimeHelmet), fromStacks(getItemStack("theoneprobe", "probe")));
     }
 
     public static void addShapedRecipes() {
-        addShapedRecipe(setRL("block_lava_crystal"), setRL("blocks"), getItemStack(blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
-        addShapedRecipe(setRL("block_infused_lava_crystal"), setRL("blocks"), getItemStack(blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
-        addShapedRecipe(setRL("block_compressed_lava_crystal"), setRL("blocks"), getItemStack(blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockLavaCrystal));
-        addShapedRecipe(setRL("block_compressed_infused_lava_crystal"), setRL("blocks"), getItemStack(blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockInfusedLavaCrystal));
+        if (!useJsonRecipes) {
+            addShapedRecipe(setRL("block_lava_crystal"), setRL("lava_block"), getItemStack(blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
+            addShapedRecipe(setRL("block_infused_lava_crystal"), setRL("infused_lava_block"), getItemStack(blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
+            addShapedRecipe(setRL("block_compressed_lava_crystal"), setRL("compressed_lava_block"), getItemStack(blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockLavaCrystal));
+            addShapedRecipe(setRL("block_compressed_infused_lava_crystal"), setRL("compressed_infused_lava_block"), getItemStack(blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockInfusedLavaCrystal));
+        }
 
-
-        addShapedRecipe(setRL("workbench"), setRL("blocks"),
+        addShapedRecipe(setRL("workbench"), setRL("benches"),
             getItemStack(benches[0]),
             "LCL",
             "OTO",
@@ -169,13 +170,15 @@ public class ModRecipes {
     }
 
     public static void addShapelessRecipes() {
-        addShapelessRecipe(setRL("lava_crystal_from_block"), setRL("items"), getItemStack(ModItems.lavaCrystal, 9, 0), fromStacks(getItemStack(blockLavaCrystal)));
-        addShapelessRecipe(setRL("infused_lava_crystal_from_block"), setRL("items"), getItemStack(ModItems.lavaCrystal, 9, 1), fromStacks(getItemStack(blockInfusedLavaCrystal)));
-        addShapelessRecipe(setRL("block_lava_crystal_from_compression"), setRL("blocks"), getItemStack(ModBlocks.blockLavaCrystal, 9, 0), fromStacks(getItemStack(blockCompressedLavaCrystal)));
-        addShapelessRecipe(setRL("block_infused_lava_crystal_from_compression"), setRL("blocks"), getItemStack(ModBlocks.blockInfusedLavaCrystal, 9, 0), fromStacks(getItemStack(blockCompressedInfusedLavaCrystal)));
-        addShapelessRecipe(setRL("obsidian_from_compression"), setRL("blocks"), getItemStack(Blocks.OBSIDIAN, 9, 0), fromStacks(getItemStack(compressedObsidian)));
-        addShapelessRecipe(setRL("info_book"), setRL("items"), getItemStack(bookInfo), fromItems(BOOK), fromItems(COAL));
-        addShapelessRecipe(setRL("lava_cactus"), setRL("blocks"), getItemStack(lavaCactus, 1, 0), fromStacks(getItemStack(CACTUS)), fromStacks(getItemStack(lavaCrystal, 1)));
+        if (!useJsonRecipes) {
+            addShapelessRecipe(setRL("lava_crystal_from_block"), setRL("lava_crystal"), getItemStack(ModItems.lavaCrystal, 9, 0), fromStacks(getItemStack(blockLavaCrystal)));
+            addShapelessRecipe(setRL("infused_lava_crystal_from_block"), setRL("infused_lava_crystal"), getItemStack(ModItems.lavaCrystal, 9, 1), fromStacks(getItemStack(blockInfusedLavaCrystal)));
+            addShapelessRecipe(setRL("block_lava_crystal_from_compression"), setRL("lava_block"), getItemStack(ModBlocks.blockLavaCrystal, 9, 0), fromStacks(getItemStack(blockCompressedLavaCrystal)));
+            addShapelessRecipe(setRL("block_infused_lava_crystal_from_compression"), setRL("infused_lava_block"), getItemStack(ModBlocks.blockInfusedLavaCrystal, 9, 0), fromStacks(getItemStack(blockCompressedInfusedLavaCrystal)));
+            addShapelessRecipe(setRL("obsidian_from_compression"), setRL("obsidian"), getItemStack(Blocks.OBSIDIAN, 9, 0), fromStacks(getItemStack(compressedObsidian)));
+        }
+        addShapelessRecipe(setRL("info_book"), setRL("item_book"), getItemStack(bookInfo), fromItems(BOOK), fromItems(COAL));
+        addShapelessRecipe(setRL("lava_cactus"), setRL("lava_cactus"), getItemStack(lavaCactus, 1, 0), fromStacks(getItemStack(CACTUS)), fromStacks(getItemStack(lavaCrystal, 1)));
     }
 
     public static void addRecipeCastleCorner(Block block, String color) {
