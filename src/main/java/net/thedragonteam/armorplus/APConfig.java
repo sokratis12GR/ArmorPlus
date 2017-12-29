@@ -20,7 +20,7 @@ public class APConfig {
     @ModConfigProperty(category = "global.recipes", name = "useJsonRecipes", comment = "Will make ArmorPlus use the Crafting Table 3x3 for all the recipes instead of the tiered benches")
     public static boolean useJsonRecipes = false;
 
-    @ModConfigProperty(category = "global.gamemodes", name = "recipes", comment = "Sets the Recipe Difficulty \n0 = easy (All recipes are extremely easy) , 1 = expert (default, All Recipes Are Harder), 2 = hellish (Repairing for A+ items is DISABLED)")
+    @ModConfigProperty(category = "global.gamemodes", name = "recipes", comment = "Sets the Recipe Difficulty \n-1 Disables almost all in-game recipes from the mod (can be used with the \'useJsonRecipes\' property to only enable vanilla crafting table recipes),\n0 = easy (All recipes are extremely easy),\n1 = expert (default, All Recipes Are Harder),\n2 = hellish (Repairing for A+ items is DISABLED)")
     public static int gameMode = 1;
 
     //WhiteList
