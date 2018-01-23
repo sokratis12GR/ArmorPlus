@@ -1,6 +1,6 @@
 # ArmorPlus (A+|AP|ARP)
 
-![](https://sokratis12gr.com/uploads/headerimg.jpg "AmorPlus")
+![](https://raw.githubusercontent.com/TheDragonTeam/ArmorPlus/1.12/headerimg.jpg "AmorPlus")
 
 [![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://minecraft.curseforge.com/projects/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://minecraft.curseforge.com/projects/armorplus)
