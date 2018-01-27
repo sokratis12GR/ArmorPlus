@@ -1,8 +1,8 @@
 package net.thedragonteam.armorplus.util;
 
 import static net.minecraftforge.fml.common.Loader.isModLoaded;
-import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
-import static net.thedragonteam.armorplus.APConfig.enableTOPIntegration;
+import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableTConstructIntegration;
+import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableTOPIntegration;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

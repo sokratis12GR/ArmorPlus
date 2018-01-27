@@ -10,10 +10,6 @@ import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
-import java.util.Objects;
-
-import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
 public class HTBSlotCrafting extends Slot {
     /**
@@ -77,10 +73,6 @@ public class HTBSlotCrafting extends Slot {
     protected void onCrafting(ItemStack stack) {
         if (this.amountCrafted > 0) {
             stack.onCrafting(this.player.world, this.player, this.amountCrafted);
-        }
-
-        if (stack.getItem() == lapisSword || stack.getItem() == lapisBattleAxe || stack.getItem() == lapisBow) {
-            stack.addEnchantment(Objects.requireNonNull(getEnchantment("looting")), 3);
         }
 
         this.amountCrafted = 0;

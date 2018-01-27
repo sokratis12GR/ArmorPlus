@@ -18,7 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
@@ -28,6 +27,7 @@ import java.util.List;
 import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.DevUtils.enableDevTool;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
@@ -56,7 +56,7 @@ public class DevTool extends BaseItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-        if ((enableDevTool() || APConfig.debugMode) && !playerIn.world.isRemote && isNotNull(target)) {
+        if ((enableDevTool() || debugMode) && !playerIn.world.isRemote && isNotNull(target)) {
             this.writeToFile(playerIn, target);
             entityNumber++;
             return true;
@@ -67,6 +67,7 @@ public class DevTool extends BaseItem {
     private void writeToFile(EntityPlayer player, EntityLivingBase entity) {
         new File("./armorplus/entity/" + player.getUniqueID()).mkdirs();
         Writer writer = null;
+
         try {
             writer = new OutputStreamWriter(new FileOutputStream(
                 new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))

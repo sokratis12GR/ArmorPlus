@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
 import net.thedragonteam.armorplus.api.crafting.workbench.recipes.ModItemRecipes;
@@ -90,7 +91,7 @@ public class WorkbenchCraftingManager {
             if (recipeComponents[i + 1] instanceof Item) {
                 itemstack = new ItemStack((Item) recipeComponents[i + 1]);
             } else if (recipeComponents[i + 1] instanceof Block) {
-                itemstack = new ItemStack((Block) recipeComponents[i + 1], 1, 32767);
+                itemstack = new ItemStack((Block) recipeComponents[i + 1], 1, OreDictionary.WILDCARD_VALUE);
             } else if (recipeComponents[i + 1] instanceof ItemStack) {
                 itemstack = (ItemStack) recipeComponents[i + 1];
             }

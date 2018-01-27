@@ -10,13 +10,13 @@
     "authorList": [
       "sokratis12GR and Moritz30 in Association with TheDragonTeam."
     ],
-    "credits": "Tris Astral - Created the textures of the tesla items, lava blocks and the lava infuser. To all the people who helped translating ArmorPlus: https://goo.gl/9Na67D",
-    "logoFile": "https://sokratis12gr.com/uploads/headerimg.jpg",
+    "credits": "Tris Astral - Created the textures of the tesla items, lava blocks and the lava infuser. To all the people who helped translating ArmorPlus: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/assets/armorplus/lang/credits.md",
+    "logoFile": "assets/armorplus/textures/headerimg.jpg",
     "screenshots": [],
     "parent": "",
     "dependencies": [
-      "MinecraftForge",
-      "TheDragonLib"
+      "forge",
+      "thedragonlib"
     ]
   }
 ]

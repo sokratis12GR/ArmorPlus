@@ -1,3 +1,59 @@
+ArmorPlus 1.12.2-11.10.0.34-beta
+----------------------------
+
+**Features Added**:
+
+* Mob Trophies (default drops disabled for the vanilla bosses)
+
+* Added colored borders for all of the materials (on their tooltips)
+
+**Features Changed**:
+
+* Redstone weapons and Emerald weapons swapped their effects (Redstone now apply Mining Fatigue, while Emerald now applies Slowness)
+
+* Improved the API, providing and changing access for many thins (IRepairable, IEffectHolder, IRemovable)
+
+* Configuration files, **MAJOR** rewrite.
+  * Now using forge's annotation system
+  * Configs are now located inside `config/armorplus/`
+  * Configs are now separated for different usages (`config.cfg`, `worldgen.cfg`, `entities.cfg`, `registry.cfg`, `misc.cfg`, `debug.cfg`, `integrations.cfg`)
+  * Potion effects, applied for both weapons and armor are now configurable and no longer limited to only 1 potion effect
+  * You can now enable/disable the setting on fire effect from the infused lava weapons
+  * Removable potion effects for when equiped a full set, i.e Super Star armor and its anti-wither effect is now a list for multiple effects on each armor
+ 
+**Bugs Fixed**:
+
+* Some redundant checks
+
+* Improved the way of checking for recipes, using WildCard value instead of hardcoding it
+
+* Removed the old sub-command system, and now using forge's sub-command system, commands remain unchanged
+
+* Tile Entities not having their correct resource locations
+  
+ArmorPlus 1.12.2-11.9.3.33-beta
+----------------------------
+
+**Bugs Fixed**:
+
+* Some armors having incorrect enchantability
+
+ArmorPlus 1.12.2-11.9.2.32-beta
+----------------------------
+
+**Important Note**:
+
+* **This update will require you reset/remove a few entries or even the whole config file, please create a backup of your old configuration file**
+
+**Bugs Fixed**:
+
+* **Config fixes**
+  * Incorrect properties set for enable/disable chicken armor
+  * Tinkers' Construct Config Entries are now 100% being used (finally functional)
+  * Fixed some grouping of the tinkers' construct settings
+  * Fixed some descriptions for the entries
+  * Made disableTheUltimateArmorDeBuffs functional
+
 ArmorPlus 1.12.2-11.9.1.31-beta
 ----------------------------
 

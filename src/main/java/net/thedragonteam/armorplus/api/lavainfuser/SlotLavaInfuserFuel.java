@@ -11,6 +11,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.registry.ModItems;
 
+import java.util.Collections;
+import java.util.List;
+
 import static net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser.isItemFuel;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -19,7 +22,12 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class SlotLavaInfuserFuel extends Slot {
 
-    private static Item[] itemList = new Item[]{Items.LAVA_BUCKET, ModItems.lavaCrystal};
+    private static List<Item> itemList = Collections.emptyList();
+
+    static {
+        itemList.add(Items.LAVA_BUCKET);
+        itemList.add(ModItems.lavaCrystal);
+    }
 
     public SlotLavaInfuserFuel(IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
         super(inventoryIn, slotIndex, xPosition, yPosition);

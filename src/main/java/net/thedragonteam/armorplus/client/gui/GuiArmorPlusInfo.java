@@ -1,12 +1,12 @@
 package net.thedragonteam.armorplus.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
-import net.thedragonteam.armorplus.APConfig;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 
+import static net.thedragonteam.armorplus.ModConfig.MainConfig.global;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
@@ -31,7 +31,7 @@ public class GuiArmorPlusInfo extends GuiScreen {
         fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_three"), guiX + 25, guiY + 60, 0x000000);
         fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_four"), guiX + 25, guiY + 70, 0x000000);
         fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_five"), guiX + 25, guiY + 80, 0x000000);
-        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_six", APConfig.gameMode), guiX + 25, guiY + 100, 0x000000);
+        fontRenderer.drawString(formattedText("gui.armorplus.info.text_line_six", global.gameMode), guiX + 25, guiY + 100, 0x000000);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 

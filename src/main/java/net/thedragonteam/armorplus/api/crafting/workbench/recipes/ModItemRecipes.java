@@ -7,8 +7,8 @@ import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManag
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.APConfig.enableArrowRecipes;
-import static net.thedragonteam.armorplus.APConfig.getRD;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
+import static net.thedragonteam.armorplus.ModConfig.getRD;
 import static net.thedragonteam.armorplus.registry.APBlocks.highTechBench;
 import static net.thedragonteam.armorplus.registry.APBlocks.workbench;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
@@ -118,7 +118,7 @@ public class ModItemRecipes {
         switch (getRD()) {
             case EASY:
                 manager.addRecipe(new WBShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
-                if (enableArrowRecipes) {
+                if (recipes.enableArrowRecipes) {
                     manager.addRecipe(new WBShapedOreRecipe(new ItemStack(itemCoalArrow, 2),
                         "CCC",
                         "CAC",
@@ -148,7 +148,7 @@ public class ModItemRecipes {
             case EXPERT:
             case HELLISH:
                 manager.addRecipe(new WBShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
-                if (enableArrowRecipes) {
+                if (recipes.enableArrowRecipes) {
                     manager.addRecipe(new WBShapedOreRecipe(new ItemStack(itemCoalArrow, 2),
                         "CCC",
                         "CAC",

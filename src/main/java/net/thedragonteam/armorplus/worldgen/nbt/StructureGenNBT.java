@@ -21,8 +21,9 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.Random;
 
 import static net.minecraftforge.common.BiomeDictionary.*;
-import static net.thedragonteam.armorplus.APConfig.*;
 import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
+import static net.thedragonteam.armorplus.ModConfig.WorldGenConfig.tower;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.armorplus.util.WorldGenUtils.getGroundFromAbove;
 
@@ -51,7 +52,7 @@ public class StructureGenNBT implements IWorldGenerator {
         int posY = getGroundFromAbove(world, posX, posZ);
         BlockPos basePos = new BlockPos(posX, posY, posZ);
 
-        if (shouldOnlyGenerateInTheOverworld) {
+        if (tower.shouldOnlyGenerateInTheOverworld) {
             if (world.provider.getDimension() == 0) {
                 getBiomes(Type.HOT).forEach(hotBiome -> {
                     boolean isBiomeEligible = (!hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE));
@@ -71,7 +72,7 @@ public class StructureGenNBT implements IWorldGenerator {
     }
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {
-        if (enableTowerGen && ((random.nextInt(towerGenSpawnNeedOfChance) < towerGenSpawnChance) || (enableTowerDevEnv() && (random.nextInt(100) < 10)))) {
+        if (tower.enable && ((random.nextInt(tower.chanceNeededForSpawning) < tower.spawnChance) || (enableTowerDevEnv() && (random.nextInt(100) < 10)))) {
             PlacementSettings settings = new PlacementSettings();
             settings.setRotation(Rotation.NONE);
             MinecraftServer server = world.getMinecraftServer();

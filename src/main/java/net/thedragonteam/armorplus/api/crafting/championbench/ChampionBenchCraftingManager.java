@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.CraftingUtils;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
@@ -91,7 +92,7 @@ public class ChampionBenchCraftingManager {
             if (recipeComponents[index + 1] instanceof Item) {
                 itemstack = new ItemStack((Item) recipeComponents[index + 1]);
             } else if (recipeComponents[index + 1] instanceof Block) {
-                itemstack = new ItemStack((Block) recipeComponents[index + 1], 1, 32767);
+                itemstack = new ItemStack((Block) recipeComponents[index + 1], 1, OreDictionary.WILDCARD_VALUE);
             } else if (recipeComponents[index + 1] instanceof ItemStack) {
                 itemstack = (ItemStack) recipeComponents[index + 1];
             }

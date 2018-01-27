@@ -12,7 +12,7 @@ import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 
 import static net.minecraftforge.fml.common.registry.EntityRegistry.addSpawn;
-import static net.thedragonteam.armorplus.APConfig.enableEnderDragonZombieSpawnEnd;
+import static net.thedragonteam.armorplus.ModConfig.EntitiesConfig.ender_dragon_zombie;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -25,7 +25,7 @@ public class ModEntities {
     }
 
     private static void registerSpawns() {
-        if (enableEnderDragonZombieSpawnEnd) {
+        if (ender_dragon_zombie.enableSpawnEnd) {
             addSpawn(EntityEnderDragonZombie.class, 1, 0, 1, EnumCreatureType.MONSTER, Biomes.SKY);
         }
     }

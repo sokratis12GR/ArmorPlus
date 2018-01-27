@@ -21,7 +21,7 @@ import net.thedragonteam.armorplus.items.enums.Swords;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.enums.Cosmetics.*;
 import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
@@ -38,9 +38,9 @@ public class ModItems {
     public static LavaCrystal lavaCrystal = new LavaCrystal();
     public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
     public static boolean[] isArmorEnabled = new boolean[]{
-        enableCoalArmor, enableEmeraldArmor, enableLapisArmor, enableLavaArmor, enableObsidianArmor, enableRedstoneArmor,
-        enableChickenArmor, enableSlimeArmor, enableGuardianArmor, enableSuperStarArmor, enableEnderDragonArmor,
-        enableArditeArmor, enableCobaltArmor, enableManyullynArmor, enablePigIronArmor, enableKnightSlimeArmor
+        global_registry.enableCoalArmor, global_registry.enableEmeraldArmor, global_registry.enableLapisArmor, global_registry.enableLavaArmor, global_registry.enableObsidianArmor, global_registry.enableRedstoneArmor,
+        global_registry.enableChickenArmor, global_registry.enableSlimeArmor, global_registry.enableGuardianArmor, global_registry.enableSuperStarArmor, global_registry.enableEnderDragonArmor,
+        global_registry.enableArditeArmor, global_registry.enableCobaltArmor, global_registry.enableManyullynArmor, global_registry.enablePigIronArmor, global_registry.enableKnightSlimeArmor
     };
     public static Swords[] swordType = new Swords[]{
         Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
@@ -52,13 +52,13 @@ public class ModItems {
         Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
     };
     public static boolean[] isSwordEnabled = new boolean[]{
-        enableCoalWeapons[0], enableLapisWeapons[0], enableRedstoneWeapons[0], enableEmeraldWeapons[0], enableObsidianWeapons[0], enableLavaWeapons[0], enableGuardianWeapons[0], enableSuperStarWeapons[0], enableEnderDragonWeapons[0]
+        global_registry.enableCoalWeapons[0], global_registry.enableLapisWeapons[0], global_registry.enableRedstoneWeapons[0], global_registry.enableEmeraldWeapons[0], global_registry.enableObsidianWeapons[0], global_registry.enableLavaWeapons[0], global_registry.enableGuardianWeapons[0], global_registry.enableSuperStarWeapons[0], global_registry.enableEnderDragonWeapons[0]
     };
     public static boolean[] isBattleAxeEnabled = new boolean[]{
-        enableCoalWeapons[1], enableLapisWeapons[1], enableRedstoneWeapons[1], enableEmeraldWeapons[1], enableObsidianWeapons[1], enableLavaWeapons[1], enableGuardianWeapons[1], enableSuperStarWeapons[1], enableEnderDragonWeapons[1]
+        global_registry.enableCoalWeapons[1], global_registry.enableLapisWeapons[1], global_registry.enableRedstoneWeapons[1], global_registry.enableEmeraldWeapons[1], global_registry.enableObsidianWeapons[1], global_registry.enableLavaWeapons[1], global_registry.enableGuardianWeapons[1], global_registry.enableSuperStarWeapons[1], global_registry.enableEnderDragonWeapons[1]
     };
     public static boolean[] isBowEnabled = new boolean[]{
-        enableCoalWeapons[2], enableLapisWeapons[2], enableRedstoneWeapons[2], enableEmeraldWeapons[2], enableObsidianWeapons[2], enableLavaWeapons[2], enableGuardianWeapons[2], enableSuperStarWeapons[2], enableEnderDragonWeapons[2]
+        global_registry.enableCoalWeapons[2], global_registry.enableLapisWeapons[2], global_registry.enableRedstoneWeapons[2], global_registry.enableEmeraldWeapons[2], global_registry.enableObsidianWeapons[2], global_registry.enableLavaWeapons[2], global_registry.enableGuardianWeapons[2], global_registry.enableSuperStarWeapons[2], global_registry.enableEnderDragonWeapons[2]
     };
     public static ItemArmorBase[] coal = new ItemArmorBase[4],
         emerald = new ItemArmorBase[4],
@@ -93,23 +93,23 @@ public class ModItems {
 
     public static void registerItems() {
         //Armors
-        registerArmor(enableCoalArmor, coal, COAL);
-        registerArmor(enableEmeraldArmor, emerald, EMERALD);
-        registerArmor(enableLapisArmor, lapis, LAPIS);
-        registerArmor(enableLavaArmor, lava, LAVA);
-        registerArmor(enableObsidianArmor, obsidian, OBSIDIAN);
-        registerArmor(enableRedstoneArmor, redstone, REDSTONE);
-        registerArmor(enableChickenArmor, chicken, CHICKEN);
-        registerArmor(enableSlimeArmor, slime, SLIME);
-        registerArmor(enableGuardianArmor, guardian, GUARDIAN);
-        registerArmor(enableSuperStarArmor, superStar, SUPER_STAR);
-        registerArmor(enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
-        registerArmor(enableArditeArmor, ardite, ARDITE);
-        registerArmor(enableCobaltArmor, cobalt, COBALT);
-        registerArmor(enableManyullynArmor, manyullyn, MANYULLYN);
-        registerArmor(enablePigIronArmor, pigIron, PIG_IRON);
-        registerArmor(enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
-        registerArmor(enableTheUltimateArmor, theUltimate);
+        registerArmor(global_registry.enableCoalArmor, coal, COAL);
+        registerArmor(global_registry.enableEmeraldArmor, emerald, EMERALD);
+        registerArmor(global_registry.enableLapisArmor, lapis, LAPIS);
+        registerArmor(global_registry.enableLavaArmor, lava, LAVA);
+        registerArmor(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
+        registerArmor(global_registry.enableRedstoneArmor, redstone, REDSTONE);
+        registerArmor(global_registry.enableChickenArmor, chicken, CHICKEN);
+        registerArmor(global_registry.enableSlimeArmor, slime, SLIME);
+        registerArmor(global_registry.enableGuardianArmor, guardian, GUARDIAN);
+        registerArmor(global_registry.enableSuperStarArmor, superStar, SUPER_STAR);
+        registerArmor(global_registry.enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
+        registerArmor(global_registry.enableArditeArmor, ardite, ARDITE);
+        registerArmor(global_registry.enableCobaltArmor, cobalt, COBALT);
+        registerArmor(global_registry.enableManyullynArmor, manyullyn, MANYULLYN);
+        registerArmor(global_registry.enablePigIronArmor, pigIron, PIG_IRON);
+        registerArmor(global_registry.enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
+        registerArmor(global_registry.enableTheUltimateArmor, theUltimate);
         //Swords
         registerSword(isSwordEnabled, sword, swordType);
         //BattleAxes

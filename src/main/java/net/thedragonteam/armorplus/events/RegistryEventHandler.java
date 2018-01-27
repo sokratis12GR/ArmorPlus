@@ -33,8 +33,7 @@ import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModE
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.util.Utils.areNotNull;
-import static net.thedragonteam.armorplus.util.Utils.setRL;
+import static net.thedragonteam.armorplus.util.Utils.*;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -104,22 +103,27 @@ public class RegistryEventHandler {
         //registerAllBlocks(event, blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerAllBlocks(event, enderBlocks);
+        registerAllBlocks(event, trophies);
         registerTileEntities();
         registerTEFixes();
     }
 
     private static void registerTEFixes() {
         TileEntityLavaInfuser.registerFixesLavaInfuser(DataFixesManager.createFixer());
+        TileEntityWorkbench.registerWBFixes(DataFixesManager.createFixer());
+        TileEntityHighTechBench.registerHTBFixes(DataFixesManager.createFixer());
+        TileEntityUltiTechBench.registerUTBFixes(DataFixesManager.createFixer());
+        TileEntityChampionBench.registerCBFixes(DataFixesManager.createFixer());
+        TileEntityTrophy.registerTrophyFixes(DataFixesManager.createFixer());
     }
 
     private static void registerTileEntities() {
-        //Before BTM Terrible Errors caused by A+
-        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, "LavaInfuserTileEntity");
-        //After BTM Terrible Error caused by A+
-        GameRegistry.registerTileEntity(TileEntityWorkbench.class, "WorkbenchTileEntity");
-        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, "HighTechBenchTileEntity");
-        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, "UltiTechBenchTileEntity");
-        GameRegistry.registerTileEntity(TileEntityChampionBench.class, "ChampionBenchTileEntity");
+        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, setLocation("lava_infuser_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityWorkbench.class, setLocation("workbench_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, setLocation("high_tech_bench_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, setLocation("ulti_tech_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityChampionBench.class, setLocation("champion_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityTrophy.class, setLocation("trophy_tile_entity"));
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {
@@ -157,6 +161,7 @@ public class RegistryEventHandler {
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerAllItemBlocks(event, enderBlocks);
+        registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
             bookInfo, materials, steelIngot, electricalIngot, redstoneApple, lavaCrystal, theGiftOfTheGods, devTool, theUltimateParts,

@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.*;
 
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
-import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmor;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.registry.ModModelUtils.registerModels;
@@ -38,6 +38,7 @@ public class ModelsEventHandler {
         //   registerModels(blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //  registerModels(enderBlocks);
+        registerModels(trophies);
     }
 
     @SubscribeEvent
@@ -46,7 +47,7 @@ public class ModelsEventHandler {
         registerModels(materials, lavaCrystal, theGiftOfTheGods, bookInfo, steelIngot, electricalIngot, redstoneApple, theUltimateParts,
             devTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
-        registerModels(enableTheUltimateArmor, theUltimate);
+        registerModels(global_registry.enableTheUltimateArmor, theUltimate);
         registerModels(isArmorEnabled,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );

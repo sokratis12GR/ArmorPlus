@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus.compat;
 
-import static net.thedragonteam.armorplus.APConfig.enableJEIIntegration;
+import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableJEIIntegration;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

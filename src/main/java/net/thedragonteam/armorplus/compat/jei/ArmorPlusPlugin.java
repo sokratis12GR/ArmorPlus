@@ -31,7 +31,7 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.APConfig.enableJEIIntegration;
+import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableJEIIntegration;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModItems.*;

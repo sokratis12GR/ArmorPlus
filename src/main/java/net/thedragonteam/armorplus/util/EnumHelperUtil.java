@@ -20,6 +20,7 @@ import java.util.function.Predicate;
 import static net.minecraft.util.text.TextFormatting.fromColorIndex;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.minecraftforge.common.util.EnumHelper.addEnchantmentType;
+import static net.thedragonteam.armorplus.util.Utils.setLocation;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -50,7 +51,7 @@ public class EnumHelperUtil {
     }
 
     public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, int enchantability, SoundEvent soundOnEquip, double toughnessPoints) {
-        return EnumHelper.addArmorMaterial(enumName, textureName, durability, armorPoints, enchantability, soundOnEquip, (float) toughnessPoints);
+        return EnumHelper.addArmorMaterial(enumName, setLocation(textureName), durability, armorPoints, enchantability, soundOnEquip, (float) toughnessPoints);
     }
 
     public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, EnumTiers enumTiers) {

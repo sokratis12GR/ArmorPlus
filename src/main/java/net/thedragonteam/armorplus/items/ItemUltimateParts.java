@@ -17,7 +17,7 @@ import net.thedragonteam.armorplus.iface.IModdedItem;
 import javax.annotation.Nonnull;
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.APConfig.theUltimateArmorItemNameColor;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.ultimate;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -41,7 +41,7 @@ public class ItemUltimateParts extends Item implements IModdedItem {
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return getRarity("ULTIMATE", theUltimateArmorItemNameColor, "Ultimate");
+        return getRarity("ULTIMATE", ultimate.armor.itemNameColor, "Ultimate");
     }
 
     @Override

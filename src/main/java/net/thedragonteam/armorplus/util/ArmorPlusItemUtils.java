@@ -5,7 +5,7 @@
 package net.thedragonteam.armorplus.util;
 
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.APConfig;
+import net.thedragonteam.armorplus.ModConfig;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -13,6 +13,6 @@ import net.thedragonteam.armorplus.APConfig;
 public final class ArmorPlusItemUtils {
 
     public static boolean isItemRepairable(ItemStack repair, ItemStack expert) {
-        return APConfig.getRD().isItemRepairable(repair, expert);
+        return ModConfig.getRD().isItemRepairable(repair, expert);
     }
 }

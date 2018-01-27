@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
@@ -49,7 +50,7 @@ public class ShapedRecipeUtils {
 
                 ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);
 
-                if ((!itemstack1.isEmpty() || !itemstack.isEmpty()) && (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != 32767 && itemstack.getMetadata() != itemstack1.getMetadata())) {
+                if ((!itemstack1.isEmpty() || !itemstack.isEmpty()) && (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != OreDictionary.WILDCARD_VALUE && itemstack.getMetadata() != itemstack1.getMetadata())) {
                     return false;
                 }
             }

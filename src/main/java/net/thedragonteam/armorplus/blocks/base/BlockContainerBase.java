@@ -29,7 +29,6 @@ public class BlockContainerBase extends Block implements IModdedBlock {
         this.setHarvestLevel(toolType.getTool(), harvestLevel);
     }
 
-
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {

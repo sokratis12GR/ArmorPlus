@@ -25,7 +25,9 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nullable;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugModeEnderDragonZombie;
+import static net.thedragonteam.armorplus.ModConfig.EntitiesConfig.ender_dragon_zombie;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -81,17 +83,17 @@ public class EntityEnderDragonZombie extends EntityMob {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(enderDragonZombieFollowRange);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(enderDragonZombieMovementSpeed);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(enderDragonZombieAttackDamage);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(enderDragonZombieArmor);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(enderDragonZombieHealth);
-        if (debugMode) {
-            LogHelper.info("EnderDragon Zombie Follow Range: " + enderDragonZombieFollowRange);
-            LogHelper.info("EnderDragon Zombie Movement Speed: " + enderDragonZombieMovementSpeed);
-            LogHelper.info("EnderDragon Zombie Attack Damage: " + enderDragonZombieAttackDamage);
-            LogHelper.info("EnderDragon Zombie Armor: " + enderDragonZombieArmor);
-            LogHelper.info("EnderDragon Zombie Max Health: " + enderDragonZombieHealth);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(ender_dragon_zombie.followRange);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(ender_dragon_zombie.movementSpeed);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(ender_dragon_zombie.attackDamage);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(ender_dragon_zombie.armor);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ender_dragon_zombie.health);
+        if (debugMode && debugModeEnderDragonZombie) {
+            LogHelper.info("EnderDragon Zombie Follow Range: " + ender_dragon_zombie.followRange);
+            LogHelper.info("EnderDragon Zombie Movement Speed: " + ender_dragon_zombie.movementSpeed);
+            LogHelper.info("EnderDragon Zombie Attack Damage: " + ender_dragon_zombie.attackDamage);
+            LogHelper.info("EnderDragon Zombie Armor: " + ender_dragon_zombie.armor);
+            LogHelper.info("EnderDragon Zombie Max Health: " + ender_dragon_zombie.health);
         }
     }
 
@@ -126,8 +128,8 @@ public class EntityEnderDragonZombie extends EntityMob {
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
             // This zombie gives wither 4 when it attacks
-            if (entityIn instanceof EntityLivingBase && enableEnderDragonZombieWithering) {
-                ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, enderDragonZombieWitheringEffectDuration, enderDragonZombieWitheringEffectLevel));
+            if (entityIn instanceof EntityLivingBase && ender_dragon_zombie.enableWithering) {
+                ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, ender_dragon_zombie.witheringEffectDuration, ender_dragon_zombie.witheringEffectLevel));
             }
             return true;
         }

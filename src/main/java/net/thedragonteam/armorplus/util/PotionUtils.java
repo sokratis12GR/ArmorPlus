@@ -9,6 +9,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.thedragonteam.armorplus.registry.ModPotions;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 import static net.minecraft.potion.Potion.getPotionFromResourceLocation;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
@@ -44,6 +47,16 @@ public final class PotionUtils {
         if (isNotNull(potion)) {
             addPotion(entity, potion, 240, amplifier, false, potionType.hasParticles());
         }
+    }
+
+    public static void addPotion(EntityLivingBase entity, List<String> potions, List<Integer> amplifiers, PotionType potionType) {
+        IntStream.range(0, potions.size()).forEach(i -> {
+            String potion = potions.get(i);
+            int amplifier = amplifiers.get(i);
+            if (isNotNull(potion)) {
+                addPotion(entity, potion, 240, amplifier, false, potionType.hasParticles());
+            }
+        });
     }
 
     public static void removePotion(EntityLivingBase entity, Object potion) {

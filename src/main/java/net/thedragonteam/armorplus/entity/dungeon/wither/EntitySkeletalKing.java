@@ -30,8 +30,7 @@ import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDung
  **/
 public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedAttackMob {
 
-    private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer &&
-        ((EntityLivingBase) target).attackable();
+    private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer && ((EntityLivingBase) target).attackable();
     private final BossInfoServerDungeon bossInfo;
 
     public EntitySkeletalKing(World worldIn) {
@@ -41,7 +40,6 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         this.enablePersistence();
         this.isImmuneToFire = true;
     }
-
 
     public static void registerFixesSkeletalKing(DataFixer fixer) {
         EntityLiving.registerFixesMob(fixer, EntitySkeletalKing.class);

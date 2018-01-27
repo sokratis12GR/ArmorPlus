@@ -7,7 +7,9 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
+import static net.thedragonteam.armorplus.ModConfig.getRD;
 import static net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 
@@ -19,36 +21,36 @@ public class ModWeaponTierTwoRecipes {
     public void addRecipes(HighTechBenchCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (enableSwordsRecipes) {
-                    if (enableEmeraldWeapons[0]) {
+                if (recipes.enableSwordsRecipes) {
+                    if (global_registry.enableEmeraldWeapons[0]) {
                         createSwordRecipes(manager, emeraldSword, "gemEmerald");
                     }
-                    if (enableObsidianWeapons[0]) {
+                    if (global_registry.enableObsidianWeapons[0]) {
                         createSwordRecipes(manager, obsidianSword, "obsidian");
                     }
-                    if (enableLavaWeapons[0]) {
+                    if (global_registry.enableLavaWeapons[0]) {
                         createSwordRecipes(manager, lavaSword, "gemLavaCrystal");
                     }
                 }
-                if (enableBattleAxesRecipes) {
-                    if (enableEmeraldWeapons[1]) {
+                if (recipes.enableBattleAxesRecipes) {
+                    if (global_registry.enableEmeraldWeapons[1]) {
                         createBattleAxeRecipe(manager, emeraldBattleAxe, "gemEmerald");
                     }
-                    if (enableObsidianWeapons[1]) {
+                    if (global_registry.enableObsidianWeapons[1]) {
                         createBattleAxeRecipe(manager, obsidianBattleAxe, "obsidian");
                     }
-                    if (enableLavaWeapons[1]) {
+                    if (global_registry.enableLavaWeapons[1]) {
                         createBattleAxeRecipe(manager, lavaBattleAxe, "gemLavaCrystal");
                     }
                 }
-                if (enableBowsRecipes) {
-                    if (enableEmeraldWeapons[2]) {
+                if (recipes.enableBowsRecipes) {
+                    if (global_registry.enableEmeraldWeapons[2]) {
                         createBowRecipe(manager, emeraldBow, "gemEmerald");
                     }
-                    if (enableObsidianWeapons[2]) {
+                    if (global_registry.enableObsidianWeapons[2]) {
                         createBowRecipe(manager, obsidianBow, "obsidian");
                     }
-                    if (enableLavaWeapons[2]) {
+                    if (global_registry.enableLavaWeapons[2]) {
                         createBowRecipe(manager, lavaBow, "gemLavaCrystal");
                     }
                 }
@@ -56,36 +58,36 @@ public class ModWeaponTierTwoRecipes {
             }
             case EXPERT:
             case HELLISH: {
-                if (enableSwordsRecipes) {
-                    if (enableEmeraldWeapons[0]) {
+                if (recipes.enableSwordsRecipes) {
+                    if (global_registry.enableEmeraldWeapons[0]) {
                         createSwordRecipes(manager, emeraldSword, "blockEmerald");
                     }
-                    if (enableObsidianWeapons[0]) {
+                    if (global_registry.enableObsidianWeapons[0]) {
                         createSwordRecipes(manager, obsidianSword, "blockCompressedObsidian");
                     }
-                    if (enableLavaWeapons[0]) {
+                    if (global_registry.enableLavaWeapons[0]) {
                         createSwordRecipes(manager, lavaSword, "gemChargedLavaCrystal");
                     }
                 }
-                if (enableBattleAxesRecipes) {
-                    if (enableEmeraldWeapons[1]) {
+                if (recipes.enableBattleAxesRecipes) {
+                    if (global_registry.enableEmeraldWeapons[1]) {
                         createBattleAxeRecipe(manager, emeraldBattleAxe, "blockEmerald");
                     }
-                    if (enableObsidianWeapons[1]) {
+                    if (global_registry.enableObsidianWeapons[1]) {
                         createBattleAxeRecipe(manager, obsidianBattleAxe, "blockCompressedObsidian");
                     }
-                    if (enableLavaWeapons[1]) {
+                    if (global_registry.enableLavaWeapons[1]) {
                         createBattleAxeRecipe(manager, lavaBattleAxe, "gemChargedLavaCrystal");
                     }
                 }
-                if (enableBowsRecipes) {
-                    if (enableEmeraldWeapons[2]) {
+                if (recipes.enableBowsRecipes) {
+                    if (global_registry.enableEmeraldWeapons[2]) {
                         createBowRecipe(manager, emeraldBow, "blockEmerald");
                     }
-                    if (enableObsidianWeapons[2]) {
+                    if (global_registry.enableObsidianWeapons[2]) {
                         createBowRecipe(manager, obsidianBow, "blockCompressedObsidian");
                     }
-                    if (enableLavaWeapons[2]) {
+                    if (global_registry.enableLavaWeapons[2]) {
                         createBowRecipe(manager, lavaBow, "gemChargedLavaCrystal");
                     }
                 }

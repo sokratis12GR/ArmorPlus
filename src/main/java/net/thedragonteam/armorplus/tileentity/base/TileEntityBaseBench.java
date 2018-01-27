@@ -13,6 +13,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
@@ -22,7 +24,7 @@ import static java.util.stream.IntStream.rangeClosed;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class TileEntityBaseBench extends TileEntityInventoryBase {
+public abstract class TileEntityBaseBench extends TileEntityInventoryBase {
 
     /**
      * the amount of itemHandler for the crafting grid
@@ -67,7 +69,7 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
 
     @Override
     public ITextComponent getDisplayName() {
-        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
+        return this.hasCustomName() ? new TextComponentString(tileEntityName) : new TextComponentTranslation(tileEntityName);
     }
 
     @Override
@@ -99,21 +101,22 @@ public class TileEntityBaseBench extends TileEntityInventoryBase {
         if (nbt.hasKey("CustomName", 8)) this.setCustomName(nbt.getString("CustomName"));
     }
 
-    //getUpdateTag, onDataTag, getUpdatePacket, onDataPacket
-
-    @Override
-    @Nonnull
-    public NBTTagCompound getUpdateTag() {
-        return super.getUpdateTag();
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        super.onDataPacket(net, pkt);
-    }
+    //getUpdateTag, getUpdatePacket, onDataPacket
 
     @Override
     public SPacketUpdateTileEntity getUpdatePacket() {
-        return super.getUpdatePacket();
+        return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
     }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        readFromNBT(pkt.getNbtCompound());
+    }
+
 }

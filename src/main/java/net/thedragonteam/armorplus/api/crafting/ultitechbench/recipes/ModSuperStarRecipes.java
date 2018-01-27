@@ -8,7 +8,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
+import static net.thedragonteam.armorplus.ModConfig.getRD;
 import static net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.registerEasyArmorSetRecipes;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
@@ -18,14 +20,14 @@ public class ModSuperStarRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (enableSuperStarArmor && enableSuperStarArmorRecipes) {
+                if (global_registry.enableSuperStarArmor && recipes.enableSuperStarArmorRecipes) {
                     registerEasyArmorSetRecipes(manager, 2, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
                 }
                 break;
             }
             case EXPERT:
             case HELLISH: {
-                if (enableSuperStarArmor && enableSuperStarArmorRecipes) {
+                if (global_registry.enableSuperStarArmor && recipes.enableSuperStarArmorRecipes) {
                     manager.addRecipe(getItemStack(superStarHelmet),
                         "SWWNWWS",
                         "WN   NW",

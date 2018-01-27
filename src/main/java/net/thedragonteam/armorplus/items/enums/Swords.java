@@ -4,110 +4,123 @@
 
 package net.thedragonteam.armorplus.items.enums;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.properties.IEffectHolder;
+import net.thedragonteam.armorplus.api.properties.IRemovable;
+import net.thedragonteam.armorplus.api.properties.IRepairable;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.util.LavaWeaponsUtils;
+import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static java.util.stream.IntStream.range;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public enum Swords {
-    COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK),
-        getValueByName(coalWeaponItemNameColor), setToolTip(coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-        enableCoalWeaponsEffects, coalWeaponsAddPotionEffect, coalWeaponsEffectLevel),
-    LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK),
-        getValueByName(lapisWeaponItemNameColor), setToolTip(lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-        enableLapisWeaponsEffects, lapisWeaponsAddPotionEffect, lapisWeaponsEffectLevel),
-    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK),
-        getValueByName(redstoneWeaponItemNameColor), setToolTip(redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-        enableRedstoneWeaponsEffects, redstoneWeaponsAddPotionEffect, redstoneWeaponsEffectLevel),
-    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK),
-        getValueByName(emeraldWeaponItemNameColor), setToolTip(emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-        enableEmeraldWeaponsEffects, emeraldWeaponsAddPotionEffect, emeraldWeaponsEffectLevel),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian),
-        getValueByName(obsidianWeaponItemNameColor), setToolTip(obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-        enableObsidianWeaponsEffects, obsidianWeaponsAddPotionEffect, obsidianWeaponsEffectLevel),
-    LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1),
-        getValueByName(lavaWeaponItemNameColor), setLavaToolTip(), true, "empty", 0) {
+public enum Swords implements IEffectHolder, IRemovable, IRepairable {
+    COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor),
+        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels, global_registry.enableCoalWeapons[0]
+    ),
+    LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor),
+        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels, global_registry.enableLapisWeapons[0]
+    ),
+    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor),
+        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels, global_registry.enableRedstoneWeapons[0]
+    ),
+    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor),
+        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels, global_registry.enableEmeraldWeapons[0]
+    ),
+    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidian.weapons.itemNameColor),
+        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels, global_registry.enableObsidianWeapons[0]
+    ),
+    LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor),
+        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels, global_registry.enableLavaWeapons[0]
+    ) {
         @Override
         @SideOnly(Side.CLIENT)
         public void addInformation(List<String> tooltip) {
-            final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-            if (GameSettings.isKeyDown(keyBindSneak)) {
-                tooltip.add("\2479Ability: " + "\247r" + this.getEffect());
-                tooltip.add("\2473Use: " + "\247rHit a Target");
-            } else {
-                showInfo(tooltip, keyBindSneak, this.getTextFormatting());
-            }
+            LavaWeaponsUtils.addLavaInformation(tooltip, getApplyEffectNames(), getApplyAmplifierLevels(), getTextFormatting());
         }
 
         @Override
         public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
             stack.damageItem(1, attacker);
-            target.setFire(8);
+            if (lava.weapons.shouldApplyFire) {
+                target.setFire(lava.weapons.onFireSeconds);
+            }
             return true;
         }
     },
-    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1),
-        getValueByName(guardianWeaponItemNameColor), setToolTip(guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
-        enableGuardianWeaponsEffects, guardianWeaponsAddPotionEffect, guardianWeaponsEffectLevel),
-    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2),
-        getValueByName(superStarWeaponItemNameColor), setToolTip(superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
-        enableSuperStarWeaponsEffects, superStarWeaponsAddPotionEffect, superStarWeaponsEffectLevel),
-    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3),
-        getValueByName(enderDragonWeaponItemNameColor), setToolTip(enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel),
-        enableEnderDragonWeaponsEffects, enderDragonWeaponsAddPotionEffect, enderDragonWeaponsEffectLevel);
+    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor),
+        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels, global_registry.enableGuardianWeapons[0]
+    ),
+    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor),
+        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels, global_registry.enableSuperStarWeapons[0]
+    ),
+    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor),
+        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels, global_registry.enableEnderDragonWeapons[0]
+    );
 
     private final String name;
     private final Item.ToolMaterial material;
-    private final ItemStack repairExpert;
+    private final ItemStack repairStack;
     private final TextFormatting textFormatting;
-    private final String effect;
+    private final boolean isEnabled;
+    private final List<String> effect;
     private final boolean enabledEffects;
-    private final String addNegativePotionEffect;
-    private final int addNegativePotionEffectAmplifier;
+    private final String[] addNegativePotionEffect;
+    private final int[] addNegativePotionEffectAmplifier;
 
-
-    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairExpertIn, TextFormatting textFormattingIn, String effectIn,
-           boolean enableEffect, String addNegativeEffect, int addNegativeEffectAmplifier) {
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn,
+           boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier, boolean isEnabled) {
         this.material = materialIn;
         this.name = nameIn;
-        this.repairExpert = repairExpertIn == null ? EMPTY : repairExpertIn;
+        this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
         this.textFormatting = textFormattingIn;
-        this.effect = effectIn;
+        this.isEnabled = isEnabled;
+        this.effect = setToolTip(addNegativeEffect, addNegativeEffectAmplifier);
         this.enabledEffects = enableEffect;
         this.addNegativePotionEffect = addNegativeEffect;
         this.addNegativePotionEffectAmplifier = addNegativeEffectAmplifier;
     }
 
-    public static String setToolTip(String effectName, int effectLevel) {
-        return localizePotion(effectName) + " " + (effectLevel + 1);
+    @Override
+    public boolean isEnabled() {
+        return this.isEnabled;
     }
 
-    public static String setLavaToolTip() {
-        return "Sets On Fire";
+    @Override
+    public List<String> getApplyEffectNames() {
+        return Arrays.asList(this.addNegativePotionEffect);
+    }
+
+    @Override
+    public List<Integer> getApplyAmplifierLevels() {
+        return Arrays.stream(addNegativePotionEffectAmplifier).boxed().collect(Collectors.toList());
+    }
+
+    public static List<String> setToolTip(String[] effectName, int[] effectLevel) {
+        return range(0, effectLevel.length).mapToObj(i -> localizePotion(effectName[i]) + " " + (effectLevel[i] + 1)).collect(Collectors.toList());
     }
 
     public String toString() {
@@ -122,46 +135,34 @@ public enum Swords {
         return material;
     }
 
-    public String getEffect() {
+    public List<String> getEffects() {
         return effect;
     }
 
-    public ItemStack getRepairExpert() {
-        return repairExpert;
+    public ItemStack getRepairStack() {
+        return repairStack;
     }
 
     public TextFormatting getTextFormatting() {
         return textFormatting;
     }
 
-    public boolean hasEnabledEffects() {
+    public boolean areEffectsEnabled() {
         return enabledEffects;
-    }
-
-    public String getAddNegativeEffect() {
-        return addNegativePotionEffect;
-    }
-
-    public int getAddNegativeEffectAmplifier() {
-        return addNegativePotionEffectAmplifier;
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        if (this.hasEnabledEffects()) {
-            addPotion(target, getPotion(this.getAddNegativeEffect()), this.getAddNegativeEffectAmplifier(), BAD);
+        if (this.areEffectsEnabled()) {
+            for (int i = 0; i < addNegativePotionEffect.length; i++) {
+                addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD);
+            }
         }
         return true;
     }
 
     @SideOnly(Side.CLIENT)
     public void addInformation(List<String> tooltip) {
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Ability: " + "\247rApplies " + this.getEffect());
-            tooltip.add("\2473Use: " + "\247rHit a Target");
-        } else {
-            showInfo(tooltip, keyBindSneak, this.getTextFormatting());
-        }
+        ToolTipUtils.addWeaponToolTip(tooltip, effect, getTextFormatting());
     }
 }

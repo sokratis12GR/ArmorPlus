@@ -8,7 +8,9 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
 import net.thedragonteam.armorplus.util.LoaderUtils;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
+import static net.thedragonteam.armorplus.ModConfig.getRD;
 import static net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.createEasyArmorSetRecipes;
 import static net.thedragonteam.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.createExpertArmorSetRecipes;
 import static net.thedragonteam.armorplus.registry.APItems.*;
@@ -22,38 +24,38 @@ public class ModTinkersConstructRecipes {
         if (LoaderUtils.isTiCLoaded()) {
             switch (getRD()) {
                 case EASY: {
-                    if (enableArditeArmor && enableArditeArmorRecipes) {
+                    if (global_registry.enableArditeArmor && recipes.enableArditeArmorRecipes) {
                         createEasyArmorSetRecipes(manager, "ingotArdite", arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
                     }
-                    if (enableCobaltArmor && enableCobaltArmorRecipes) {
+                    if (global_registry.enableCobaltArmor && recipes.enableCobaltArmorRecipes) {
                         createEasyArmorSetRecipes(manager, "ingotCobalt", cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
                     }
-                    if (enableKnightSlimeArmor && enableKnightSlimeArmorRecipes) {
+                    if (global_registry.enableKnightSlimeArmor && recipes.enableKnightSlimeArmorRecipes) {
                         createEasyArmorSetRecipes(manager, "ingotKnightslime", knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
                     }
-                    if (enableManyullynArmor && enableManyullynArmorRecipes) {
+                    if (global_registry.enableManyullynArmor && recipes.enableManyullynArmorRecipes) {
                         createEasyArmorSetRecipes(manager, "ingotManyullyn", manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
                     }
-                    if (enablePigIronArmor && enablePigIronArmorRecipes) {
+                    if (global_registry.enablePigIronArmor && recipes.enablePigIronArmorRecipes) {
                         createEasyArmorSetRecipes(manager, "ingotPigiron", pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
                     }
                     break;
                 }
                 case EXPERT:
                 case HELLISH: {
-                    if (enableArditeArmor && enableArditeArmorRecipes) {
+                    if (global_registry.enableArditeArmor && recipes.enableArditeArmorRecipes) {
                         createExpertArmorSetRecipes(manager, "blockArdite", "ingotArdite", arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
                     }
-                    if (enableCobaltArmor && enableCobaltArmorRecipes) {
+                    if (global_registry.enableCobaltArmor && recipes.enableCobaltArmorRecipes) {
                         createExpertArmorSetRecipes(manager, "blockCobalt", "ingotCobalt", cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
                     }
-                    if (enableKnightSlimeArmor && enableKnightSlimeArmorRecipes) {
+                    if (global_registry.enableKnightSlimeArmor && recipes.enableKnightSlimeArmorRecipes) {
                         createExpertArmorSetRecipes(manager, "blockKnightslime", "ingotKnightslime", knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
                     }
-                    if (enableManyullynArmor && enableManyullynArmorRecipes) {
+                    if (global_registry.enableManyullynArmor && recipes.enableManyullynArmorRecipes) {
                         createExpertArmorSetRecipes(manager, "blockManyullyn", "ingotManyullyn", manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
                     }
-                    if (enablePigIronArmor && enablePigIronArmorRecipes) {
+                    if (global_registry.enablePigIronArmor && recipes.enablePigIronArmorRecipes) {
                         createExpertArmorSetRecipes(manager, "blockPigiron", "ingotPigiron", pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
                     }
                     break;

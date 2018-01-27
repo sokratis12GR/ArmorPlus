@@ -32,7 +32,6 @@ public class AdvancedRecipeTransferInfo<C extends Container> implements IRecipeT
         this(containerClass, recipeCategoryUid, recipeSlotStart, recipeSlotCount, inventorySlotStart, inventorySlotCount, false, 0);
     }
 
-
     @Override
     public Class<C> getContainerClass() {
         return containerClass;
@@ -49,14 +48,12 @@ public class AdvancedRecipeTransferInfo<C extends Container> implements IRecipeT
         return true;
     }
 
-
     @Override
     public List<Slot> getRecipeSlots(C container) {
         ArrayList<Slot> list;
         list = IntStream.range(recipeSlotStart, recipeSlotStart + recipeSlotCount).mapToObj(container::getSlot).collect(Collectors.toCollection(ArrayList::new));
         return list;
     }
-
 
     @Override
     public ArrayList<Slot> getInventorySlots(C container) {

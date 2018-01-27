@@ -11,9 +11,4 @@ import net.thedragonteam.armorplus.ArmorPlus;
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = ArmorPlus.MODID)
 public class ClientEventHandler {
-
-    public static void onRender() {
-        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        //  RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager(), Minecraft.getMinecraft().getRenderManager().entityRenderMap);
-    }
 }

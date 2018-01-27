@@ -16,7 +16,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
@@ -30,7 +29,9 @@ import java.util.Random;
 
 import static java.text.MessageFormat.format;
 import static net.minecraft.util.text.TextFormatting.*;
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
+import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugModeTGOTG;
+import static net.thedragonteam.armorplus.ModConfig.MainConfig.tgotg;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.TextUtils.setTextTranslation;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -45,7 +46,7 @@ public class TheGiftOfTheGods extends BaseItem {
 
     public TheGiftOfTheGods() {
         super("the_gift_of_the_gods");
-        int maxUsable = maxUses - 1;
+        int maxUsable = tgotg.maxUses - 1;
         this.setMaxDamage(maxUsable);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
@@ -58,7 +59,7 @@ public class TheGiftOfTheGods extends BaseItem {
     @SuppressWarnings("unchecked")
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        String[] blackListedItems = APConfig.blackListedItems;
+        String[] blackListedItems =tgotg.blackListedItems;
 
         NBTTagCompound nbt = (playerIn.getHeldItem(hand).hasTagCompound()) ? playerIn.getHeldItem(hand).getTagCompound() : new NBTTagCompound();
 
@@ -67,13 +68,13 @@ public class TheGiftOfTheGods extends BaseItem {
 
         int count;
         Item item;
-        do if (APConfig.enableWhiteList) {
-            item = Item.getByNameOrId(whiteListedItems[random.nextInt(whitelistMax - whitelistMin + 1) + whitelistMin]);
+        do if (tgotg.enableWhiteList) {
+            item = Item.getByNameOrId(tgotg.whiteListedItems[random.nextInt(tgotg.whiteListedItems.length + 1)]);
         } else {
             count = 256 + random.nextInt(32000 - 256);
             item = Item.getItemById(count);
         }
-        while (item == null || item == ItemStack.EMPTY.getItem() || item == ItemStackUtils.getItem(Arrays.toString(blackListedItems)) && enableBlackList);
+        while (item == null || item == ItemStack.EMPTY.getItem() || item == ItemStackUtils.getItem(Arrays.toString(blackListedItems)) && tgotg.enableBlackList);
 
         ItemStack heldMainHand = playerIn.getHeldItemMainhand();
         Item itemMainHand = heldMainHand.getItem();
@@ -83,17 +84,17 @@ public class TheGiftOfTheGods extends BaseItem {
         Item itemHeld = getHeld.getItem();
         CooldownTracker cooldownTracker = playerIn.getCooldownTracker();
         if (!worldIn.isRemote) {
-            if (enableTheGiftOfTheGods) {
+            if (tgotg.enable) {
                 int cooldown = 0;
                 if (heldMainHand.isEmpty() && itemMainHand == itemHeld) {
                     if (!debugMode && !cooldownTracker.hasCooldown(itemHeld)) {
-                        cooldownTracker.setCooldown(itemMainHand, cooldownTicks);
+                        cooldownTracker.setCooldown(itemMainHand,tgotg. cooldownTicks);
                     } else if (debugMode && debugModeTGOTG) {
                         cooldownTracker.setCooldown(itemMainHand, cooldown);
                     }
                 } else if (!heldOffHand.isEmpty() && itemOffHand == itemHeld) {
                     if (!debugMode && !cooldownTracker.hasCooldown(itemHeld)) {
-                        cooldownTracker.setCooldown(itemOffHand, cooldownTicks);
+                        cooldownTracker.setCooldown(itemOffHand, tgotg.cooldownTicks);
                     } else if (debugMode && debugModeTGOTG) {
                         cooldownTracker.setCooldown(itemOffHand, cooldown);
                     }
@@ -115,7 +116,7 @@ public class TheGiftOfTheGods extends BaseItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        int maxUses = APConfig.maxUses;
+        int maxUses = tgotg.maxUses;
         tooltip.add(format("{0}{1}This item can summon items which can potentially cause crashes", ITALIC, RED));
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\u00a79Ability: \u00a7rGrants Random Item");

@@ -21,11 +21,11 @@ import net.thedragonteam.armorplus.util.EnumTiers;
 
 import java.util.List;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addAction;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
-import static net.thedragonteam.armorplus.util.Utils.setLocation;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 /**
@@ -33,72 +33,75 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
  */
 public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
-    public static ArmorMaterial coalArmor = addArmorMaterial("COAL", setLocation("coal_armor"), 2,
-        coalArmorProtectionPoints, coalArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", setLocation("emerald_armor"), 35,
-        emeraldArmorProtectionPoints, emeraldArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", setLocation("lapis_armor"), 11,
-        lapisArmorProtectionPoints, lapisArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", setLocation("lava_armor"), 45,
-        lavaArmorProtectionPoints, lavaArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", setLocation("obsidian_armor"), 40,
-        obsidianArmorProtectionPoints, obsidianArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", setLocation("redstone_armor"), 11,
-        redstoneArmorProtectionPoints, redstoneArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", setLocation("chicken_armor"), 1,
-        chickenArmorProtectionPoints, chickenArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", setLocation("slime_armor"), 1,
-        slimeArmorProtectionPoints, slimeArmorToughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", setLocation("ardite_armor"), 55,
-        arditeArmorProtectionPoints, arditeArmorToughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", setLocation("cobalt_armor"), 44,
-        cobaltArmorProtectionPoints, cobaltArmorToughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", setLocation("knight_slime_armor"), 33,
-        knightSlimeArmorProtectionPoints, knightSlimeArmorToughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", setLocation("manyullyn_armor"), 66,
-        manyullynArmorProtectionPoints, manyullynArmorToughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", setLocation("pig_iron_armor"), 33,
-        pigIronArmorProtectionPoints, pigIronArmorToughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", setLocation("ender_dragon_armor"), 60,
-        enderDragonArmorProtectionPoints, enderDragonArmorToughnessPoints, EnumTiers.TIER_3);
-    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", setLocation("guardian_armor"), 50,
-        guardianArmorProtectionPoints, guardianArmorToughnessPoints, EnumTiers.TIER_3);
-    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", setLocation("super_star_armor"), 50,
-        superStarArmorProtectionPoints, superStarArmorToughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial coalArmor = addArmorMaterial("COAL", "coal_armor", 2,
+        coal.armor.protectionPoints, coal.armor.toughnessPoints, EnumTiers.TIER_1);
+    public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", "lapis_armor", 11,
+        lapis.armor.protectionPoints, lapis.armor.toughnessPoints, EnumTiers.TIER_1);
+    public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", "redstone_armor", 11,
+        redstone.armor.protectionPoints, redstone.armor.toughnessPoints, EnumTiers.TIER_1);
+    public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", "emerald_armor", 35,
+        emerald.armor.protectionPoints, emerald.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", "obsidian_armor", 40,
+        obsidian.armor.protectionPoints, obsidian.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", "lava_armor", 45,
+        lava.armor.protectionPoints, lava.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", "guardian_armor", 50,
+        guardian.armor.protectionPoints, guardian.armor.toughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", "super_star_armor", 50,
+        super_star.armor.protectionPoints, super_star.armor.toughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", "ender_dragon_armor", 60,
+        ender_dragon.armor.protectionPoints, ender_dragon.armor.toughnessPoints, EnumTiers.TIER_3);
+    public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", "chicken_armor", 1,
+        chicken.armor.protectionPoints, chicken.armor.toughnessPoints, EnumTiers.TIER_1);
+    public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", "slime_armor", 1,
+        slime.armor.protectionPoints, slime.armor.toughnessPoints, EnumTiers.TIER_1);
+    public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", "ardite_armor", 55,
+        ardite.armor.protectionPoints, ardite.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", "cobalt_armor", 44,
+        cobalt.armor.protectionPoints, cobalt.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", "knight_slime_armor", 33,
+        knight_slime.armor.protectionPoints, knight_slime.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", "manyullyn_armor", 66,
+        manyullyn.armor.protectionPoints, manyullyn.armor.toughnessPoints, EnumTiers.TIER_2);
+    public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", "pig_iron_armor", 33,
+        pig_iron.armor.protectionPoints, pig_iron.armor.toughnessPoints, EnumTiers.TIER_2);
+
     public EntityEquipmentSlot slot;
     private EnumAction wear = addAction("WEAR");
     private APArmorMaterial material;
-    private ItemStack itemExpert;
+    private ItemStack repairStack;
 
     public ItemArmorBase(APArmorMaterial material, EntityEquipmentSlot slot) {
         super(material.getArmorMaterial(), 0, slot);
-        this.material = material;
-        this.itemExpert = material.getRepairStack();
-        this.slot = slot;
+        this.setMaterial(material);
+        this.setRepairStack(material.getRepairStack());
+        this.setSlot(slot);
         this.setMaxStackSize(1);
-        switch (slot) {
-            case FEET:
-                String boots = material.getName() + "_boots";
-                this.setRegistryName(boots);
-                this.setUnlocalizedName(setName(boots));
-                break;
-            case LEGS:
-                String leggings = material.getName() + "_leggings";
-                this.setRegistryName(leggings);
-                this.setUnlocalizedName(setName(leggings));
-                break;
-            case CHEST:
-                String chestplate = material.getName() + "_chestplate";
-                this.setRegistryName(chestplate);
-                this.setUnlocalizedName(setName(chestplate));
-                break;
-            case HEAD:
-                String helmet = material.getName() + "_helmet";
-                this.setRegistryName(helmet);
-                this.setUnlocalizedName(setName(helmet));
-                break;
-        }
+        this.createPieces(slot, material.getName());
         this.setCreativeTab(ArmorPlus.tabArmorplus);
+    }
+
+    private void createPieces(EntityEquipmentSlot slot, String name) {
+        String piece = name + (slot == HEAD ? "_helmet" : slot == CHEST ? "_chestplate" : slot == LEGS ? "_leggings" : slot == FEET ? "_boots" : "");
+        this.setRegistryName(piece);
+        this.setUnlocalizedName(setName(piece));
+    }
+
+    @Override
+    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+        super.onCreated(stack, worldIn, playerIn);
+    }
+
+    public void setMaterial(APArmorMaterial material) {
+        this.material = material;
+    }
+
+    public void setSlot(EntityEquipmentSlot slot) {
+        this.slot = slot;
+    }
+
+    private void setRepairStack(ItemStack repairStack) {
+        this.repairStack = repairStack;
     }
 
     @Override
@@ -108,14 +111,14 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (material.isArmorEnabled()) {
+        if (material.isEnabled()) {
             material.onArmorTick(player, slot);
         }
     }
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return isItemRepairable(repair, this.itemExpert);
+        return isItemRepairable(repair, this.repairStack);
     }
 
     @Override
@@ -123,7 +126,6 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         material.addInformation(stack, world, tooltip, advanced);
     }
-
 
     @Override
     public EnumAction getItemUseAction(ItemStack stack) {
@@ -133,7 +135,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(getRegistryName(), material.getName());
+        this.initModel(material.getName());
     }
 
 }

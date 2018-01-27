@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus.compat;
 
-import static net.thedragonteam.armorplus.APConfig.enableTConstructIntegration;
+import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableTConstructIntegration;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

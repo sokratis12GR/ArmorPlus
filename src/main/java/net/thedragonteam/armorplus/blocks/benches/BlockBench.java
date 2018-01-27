@@ -41,7 +41,7 @@ public class BlockBench extends BlockBase implements IModdedBlock {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (benches == benches.getBench() && !worldIn.isRemote) {
+        if (!worldIn.isRemote && benches == benches.getBench()) {
             playerIn.openGui(ArmorPlus.instance, benches.getGuiNumber(), worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
@@ -59,19 +59,16 @@ public class BlockBench extends BlockBase implements IModdedBlock {
         return false;
     }
 
-
     @SuppressWarnings("deprecation")
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
-
     @Override
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
-
 
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
@@ -84,7 +81,6 @@ public class BlockBench extends BlockBase implements IModdedBlock {
     public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getHorizontalIndex();
     }
-
 
     @SuppressWarnings("deprecation")
     @Override

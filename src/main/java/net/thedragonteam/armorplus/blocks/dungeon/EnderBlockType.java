@@ -5,7 +5,7 @@ import net.minecraft.util.IStringSerializable;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public enum EnumEnderBlocks implements IStringSerializable {
+public enum EnderBlockType implements IStringSerializable {
     ENDER_STONE("ender_stone"),
     ENDER_STONE_BRICKS("ender_stone_bricks"),
     ENDER_PILLAR("ender_pillar"),
@@ -17,12 +17,12 @@ public enum EnumEnderBlocks implements IStringSerializable {
     private final String name;
     private final float lightLevel;
 
-    EnumEnderBlocks(String nameIn, float lightLevelIn) {
+    EnderBlockType(String nameIn, float lightLevelIn) {
         this.name = nameIn;
         this.lightLevel = lightLevelIn;
     }
 
-    EnumEnderBlocks(String nameIn) {
+    EnderBlockType(String nameIn) {
         this(nameIn, 0);
     }
 

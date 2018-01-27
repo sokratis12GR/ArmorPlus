@@ -6,11 +6,10 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.thedragonteam.armorplus.APConfig;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 
-import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmor;
-import static net.thedragonteam.armorplus.APConfig.enableTheUltimateArmorRecipes;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
 import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
@@ -40,7 +39,7 @@ public class ModUltimateRecipes {
             'O', compressedObsidian,
             'L', getItemStack(lavaCrystal, 1));
         /* The Ultimate Armor */
-        if (enableTheUltimateArmor && enableTheUltimateArmorRecipes) {
+        if (global_registry.enableTheUltimateArmor &&recipes. enableTheUltimateArmorRecipes) {
             manager.addRecipe(getItemStack(theUltimateHelmet),
                 " UUUUU ",
                 "UCCLCCU",
@@ -98,7 +97,7 @@ public class ModUltimateRecipes {
                 'R', getItemStack(theUltimateParts, 9)
             );
             ////Helmet Parts
-            if (APConfig.enableSuperStarArmor) {
+            if (global_registry.enableSuperStarArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 2),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -116,7 +115,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableEnderDragonArmor) {
+            if (global_registry.enableEnderDragonArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 1),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -134,7 +133,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableGuardianArmor) {
+            if (global_registry.enableGuardianArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 0),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -153,7 +152,7 @@ public class ModUltimateRecipes {
                 );
             }
             //Chestplate Parts
-            if (APConfig.enableSuperStarArmor) {
+            if (global_registry.enableSuperStarArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 5),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -171,7 +170,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableEnderDragonArmor) {
+            if (global_registry.enableEnderDragonArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 4),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -189,7 +188,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableGuardianArmor) {
+            if (global_registry.enableGuardianArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 3),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -208,7 +207,7 @@ public class ModUltimateRecipes {
                 );
             }
             //Leggings Parts
-            if (APConfig.enableSuperStarArmor) {
+            if (global_registry.enableSuperStarArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 8),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -226,7 +225,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableEnderDragonArmor) {
+            if (global_registry.enableEnderDragonArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 7),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -244,7 +243,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableGuardianArmor) {
+            if (global_registry.enableGuardianArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 6),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -263,7 +262,7 @@ public class ModUltimateRecipes {
                 );
             }
             //Boots Parts
-            if (APConfig.enableSuperStarArmor) {
+            if (global_registry.enableSuperStarArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 11),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -281,7 +280,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableEnderDragonArmor) {
+            if (global_registry.enableEnderDragonArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 10),
                     "UUUCUUU",
                     "UUCBCUU",
@@ -299,7 +298,7 @@ public class ModUltimateRecipes {
                     'C', getItemStack(lavaCrystal, 1)
                 );
             }
-            if (APConfig.enableGuardianArmor) {
+            if (global_registry.enableGuardianArmor) {
                 manager.addRecipe(getItemStack(theUltimateParts, 9),
                     "UUUCUUU",
                     "UUCBCUU",

@@ -56,7 +56,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
         this.itemName = bows.getName();
         this.setMaxDamage(bows.getDurability());
         this.damage = bows.getDamage();
-        this.itemExpert = bows.getRepairExpert();
+        this.itemExpert = bows.getRepairStack();
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(bows.getName() + "_bow");

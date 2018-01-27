@@ -12,6 +12,8 @@ import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import java.util.Arrays;
 import java.util.List;
 
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
+
 public class CraftingUtils {
 
     /**
@@ -22,11 +24,11 @@ public class CraftingUtils {
             if (object instanceof ItemStack) {
                 list.add(((ItemStack) object).copy());
             } else if (object instanceof Item) {
-                list.add(new ItemStack((Item) object));
+                list.add(getItemStack(object));
             } else {
                 assert object instanceof Block : "Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!";
 
-                list.add(new ItemStack((Block) object));
+                list.add(getItemStack(object));
             }
         });
     }
@@ -37,12 +39,6 @@ public class CraftingUtils {
     public static ItemStack findMatchingRecipe(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn) {
         return recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().map(irecipe -> irecipe.getCraftingResult(craftMatrix)).orElse(ItemStack.EMPTY);
     }
-
-    // @Nullable
-    // public static IRecipe findMatchingRecipe(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn)
-    // {
-    //     return recipes.stream().filter(irecipe -> irecipe.matches(craftMatrix, worldIn)).findFirst().orElse(null);
-    // }
 
     public static NonNullList<ItemStack> getRemainingItems(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn) {
         for (IRecipe irecipe : recipes) {

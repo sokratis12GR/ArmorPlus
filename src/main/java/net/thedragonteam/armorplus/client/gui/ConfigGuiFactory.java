@@ -1,16 +1,17 @@
-/*
- * Copyright (c) TheDragonTeam 2016-2017.
- */
-
 package net.thedragonteam.armorplus.client.gui;
+
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.client.IModGuiFactory;
+import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.util.Set;
+
+import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -18,18 +19,8 @@ import java.util.Set;
 public class ConfigGuiFactory implements IModGuiFactory {
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public GuiScreen createConfigGui(GuiScreen parentScreen) {
-        return new ConfigGui(parentScreen);
-    }
-
-    @Override
-    public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
-        return null;
-    }
-
-    @Override
     public void initialize(Minecraft minecraftInstance) {
+
     }
 
     @Override
@@ -37,4 +28,14 @@ public class ConfigGuiFactory implements IModGuiFactory {
         return true;
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public GuiScreen createConfigGui(GuiScreen parentScreen) {
+        return new GuiConfig(parentScreen, ArmorPlus.MODID, formattedText("gui.armorplus.config.title"));
+    }
+
+    @Override
+    public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
+        return null;
+    }
 }

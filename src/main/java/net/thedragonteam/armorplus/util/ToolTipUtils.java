@@ -14,6 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.lang.String.format;
 import static net.minecraft.util.text.TextFormatting.GRAY;
@@ -40,6 +41,18 @@ public final class ToolTipUtils {
         );
     }
 
+    public static void addToolTipFull(List<String> tooltip, List<String> abilities) {
+        addToolTip(tooltip, "\u00a79Abilities:");
+        abilities.forEach(ability -> addToolTip(tooltip, "\u00a79" + ability));
+        addToolTip(tooltip, "\u00a73Use: \u00a7rEquip The Full Set");
+    }
+
+    public static void addToolTipFull(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
+        addToolTip(tooltip, "\u00a79Abilities:");
+        IntStream.range(0, abilities.size()).forEach(i -> addToolTip(tooltip, "\u00a79" + abilities.get(i) + " " + level(amplifier.get(i))));
+        addToolTip(tooltip, "\u00a73Use: \u00a7rEquip The Full Set");
+    }
+
     public static void addToolTipPiece(List<String> tooltip, String ability, int amplifier) {
         addToolTipPiece(tooltip, ability + " " + level(amplifier));
     }
@@ -51,6 +64,28 @@ public final class ToolTipUtils {
         );
     }
 
+    public static void addToolTipPiece(List<String> tooltip, List<String> abilities) {
+        addToolTip(tooltip, "\u00a79Abilities:");
+        abilities.forEach(ability -> addToolTip(tooltip, "\u00a79" + ability));
+        addToolTip(tooltip, "\u00a73Use: \u00a7rEquip A Piece");
+    }
+
+    public static void addToolTipPiece(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
+        addToolTip(tooltip, "\u00a79Abilities:");
+        IntStream.range(0, abilities.size()).forEach(i -> addToolTip(tooltip, "\u00a79" + abilities.get(i) + " " + level(amplifier.get(i))));
+        addToolTip(tooltip, "\u00a73Use: \u00a7rEquip A Piece");
+    }
+
+    public static void addWeaponToolTip(List<String> tooltip, List<String> effects, TextFormatting formatting){
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add("\2479Abilities:");
+            effects.forEach(ability -> addToolTip(tooltip, "\u00a79" + ability));
+            tooltip.add("\2473Use: " + "\247rHit a Target");
+        } else {
+            showInfo(tooltip, keyBindSneak, formatting);
+        }
+    }
 
     public static boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
@@ -61,7 +96,7 @@ public final class ToolTipUtils {
         return amplifier + 1;
     }
 
-    private static void addToolTip(List<String> tooltip, String... lines) {
+    public static void addToolTip(List<String> tooltip, String... lines) {
         tooltip.addAll(Arrays.asList(lines));
     }
 }

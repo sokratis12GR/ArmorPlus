@@ -8,7 +8,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
 
-import static net.thedragonteam.armorplus.APConfig.*;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
+import static net.thedragonteam.armorplus.ModConfig.getRD;
 import static net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.registerEasyArmorSetRecipes;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
@@ -19,14 +21,14 @@ public class ModEnderDragonRecipes {
     public void addRecipes(UltiTechBenchCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (enableEnderDragonArmor && enableEnderDragonArmorRecipes) {
+                if (global_registry.enableEnderDragonArmor && recipes.enableEnderDragonArmorRecipes) {
                     registerEasyArmorSetRecipes(manager, 3, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
                 }
                 break;
             }
             case EXPERT:
             case HELLISH: {
-                if (enableEnderDragonArmor && enableEnderDragonArmorRecipes) {
+                if (global_registry.enableEnderDragonArmor && recipes.enableEnderDragonArmorRecipes) {
                     manager.addRecipe(getItemStack(enderDragonHelmet),
                         "CEEEEEC",
                         "ES   SE",

@@ -17,16 +17,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class RenderCosmetics {
 
-    private ItemStack renderCosmetics;
+    public ItemStack renderCosmetics;
 
     public RenderCosmetics(ItemStack renderedItemStack) {
         this.renderCosmetics = renderedItemStack;
     }
 
     @SideOnly(Side.CLIENT)
-    public static void render(RenderCosmetics renderCosmetics, EntityPlayer player, float partialTicks) {
+    public static void render(RenderCosmetics cosmetics, EntityPlayer player, float partialTicks) {
         if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE)) return;
-        boolean isBlock = renderCosmetics.renderCosmetics.getItem() instanceof ItemBlock;
+        boolean isBlock = cosmetics.renderCosmetics.getItem() instanceof ItemBlock;
 
         GlStateManager.pushMatrix();
 
@@ -48,7 +48,7 @@ public class RenderCosmetics {
         GlStateManager.pushMatrix();
         if (!isBlock) GlStateManager.translate(0.0, 0.5, 0.0);
         GlStateManager.rotate(180f, 1f, 0f, 0f);
-        renderItemInWorld(renderCosmetics.renderCosmetics);
+        renderItemInWorld(cosmetics.renderCosmetics);
         GlStateManager.popMatrix();
         GlStateManager.enableLighting();
 

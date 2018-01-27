@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.util;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -42,10 +43,13 @@ public final class Utils {
 
     public static ItemStack setUnbreakable(ItemStack stack) {
         checkNBT(stack);
-        stack.getTagCompound().setBoolean("unbreakable", true);
+        stack.getTagCompound().setBoolean("Unbreakable", true);
         return stack;
     }
 
+    public static ItemStack getStackFromSlot(EntityPlayer player, EntityEquipmentSlot slot) {
+        return player.getItemStackFromSlot(slot);
+    }
 
     public static String setName(String name) {
         return format("%s.%s", MODID, name);

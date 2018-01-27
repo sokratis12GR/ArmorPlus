@@ -5,17 +5,18 @@
 package net.thedragonteam.armorplus;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
+import net.thedragonteam.armorplus.packets.TrophyPacket;
+import net.thedragonteam.armorplus.packets.TrophyPacketHandler;
 import net.thedragonteam.armorplus.proxy.CommonProxy;
-import net.thedragonteam.thedragonlib.config.ModConfigProcessor;
 import net.thedragonteam.thedragonlib.config.ModFeatureParser;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -49,18 +50,18 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 9;
+    public static final int MINOR = 10;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 31;
+    public static final int BUILD = 34;
     /**
      * The ArmorPlus Version
      */
@@ -92,8 +93,6 @@ public class ArmorPlus {
         tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons
     });
 
-    public static ModConfigProcessor configProcessor = new ModConfigProcessor();
-    public static Configuration configuration;
     @Instance(MODID)
     public static ArmorPlus instance;
     public static GuiHandler guiHandler = new GuiHandler();
@@ -108,9 +107,8 @@ public class ArmorPlus {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        configuration = new Configuration(event.getSuggestedConfigurationFile());
-        configProcessor.processConfig(APConfig.class, configuration);
         featureParser.registerFeatures();
+        TrophyPacketHandler.INSTANCE.registerMessage(TrophyPacketHandler.class, TrophyPacket.class, 0, Side.SERVER);
         proxy.preInit(event);
     }
 

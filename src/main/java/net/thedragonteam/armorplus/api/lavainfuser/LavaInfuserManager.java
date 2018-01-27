@@ -9,6 +9,7 @@ import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.registry.ModItems;
@@ -52,7 +53,7 @@ public class LavaInfuserManager {
         if (input instanceof Block) {
             this.addInfusingRecipe(getItemStack(input), stack, experience);
         } else if (input instanceof Item) {
-            this.addInfusingRecipe(getItemStack(input, 32767), stack, experience);
+            this.addInfusingRecipe(getItemStack(input, OreDictionary.WILDCARD_VALUE), stack, experience);
         }
     }
 
@@ -103,7 +104,7 @@ public class LavaInfuserManager {
      * Compares two itemstacks to ensure that they are the same. This checks both the item and the metadata of the item.
      */
     private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {
-        return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
+        return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == OreDictionary.WILDCARD_VALUE || stack2.getMetadata() == stack1.getMetadata());
     }
 
     public Map<ItemStack, ItemStack> getInfusingList() {
