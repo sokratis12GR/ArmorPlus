@@ -5,8 +5,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.thedragonteam.armorplus.api.lavainfuser.LavaInfuserManager;
 import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserFuel;
 import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserOutput;
 import net.thedragonteam.armorplus.container.base.ContainerBase;
@@ -77,6 +76,7 @@ public class ContainerLavaInfuser extends ContainerBase {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
+
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
@@ -88,11 +88,11 @@ public class ContainerLavaInfuser extends ContainerBase {
 
                 slot.onSlotChange(itemstack1, itemstack);
             } else if (index != 1 && index != 0) {
-                if (!FurnaceRecipes.instance().getSmeltingResult(itemstack1).isEmpty()) {
+                if (!LavaInfuserManager.getInstance().getInfusingResult(itemstack1).isEmpty()) {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (TileEntityFurnace.isItemFuel(itemstack1)) {
+                } else if (TileEntityLavaInfuser.isItemFuel(itemstack1)) {
                     if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
