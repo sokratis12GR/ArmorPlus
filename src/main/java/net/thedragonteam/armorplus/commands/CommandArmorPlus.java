@@ -29,9 +29,9 @@ public class CommandArmorPlus extends CommandTreeBase {
         super.addSubcommand(new CommandInfo());
         super.addSubcommand(new CommandWiki());
         super.addSubcommand(new CommandTreeHelp(this));
-        aliases.add("arp");
-        aliases.add("a+");
-        aliases.add("armorplus");
+        this.aliases.add("arp");
+        this.aliases.add("a+");
+        this.aliases.add("armorplus");
     }
 
     @Override
