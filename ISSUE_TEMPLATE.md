@@ -2,13 +2,15 @@
 
 **TheDragonLib Version**:
 
-**Forgelin Version**:
-
 **MinecraftForge Version**:
 
 **Minecraft Version**:
 
 **(Optional) Just Enough Items (JEI) Version**:
+
+**(Optional) Tinkers' Construct Version**:
+
+**(Optional) CraftTweaker (CT) Version**:
 
 **Client or Server?**:
 - [ ] Client
