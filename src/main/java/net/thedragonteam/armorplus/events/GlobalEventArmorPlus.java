@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.events;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -23,8 +24,9 @@ public class GlobalEventArmorPlus {
     public static Random random = new Random();
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void onTooltipColour(RenderTooltipEvent.Color event) {
-        ResourceLocation rl = event.getStack().getItem().getRegistryName();
+    public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
+        ItemStack stack = event.getStack();
+        ResourceLocation rl = stack.getItem().getRegistryName();
 
         Color gold = new Color(255, 148, 0);
         Color dark_purple = new Color(60, 26, 70);
@@ -33,6 +35,7 @@ public class GlobalEventArmorPlus {
 
         if (rl != null && rl.getResourceDomain().equals("armorplus")) {
             String rp = rl.getResourcePath();
+            String displayName = stack.getDisplayName();
             if (rp.contains("lava") && rp.contains("obsidian")) {
                 event.setBorderStart(gold.getRGB());
                 event.setBorderEnd(dark_purple.getRGB());
@@ -48,13 +51,13 @@ public class GlobalEventArmorPlus {
                 setBorderColor(event, dark_purple);
             } else if (rp.contains("lava")) {
                 setBorderColor(event, gold);
-            } else if (rp.contains("guardian") || rp.contains("chicken")) {
+            } else if (rp.contains("guardian") || displayName.contains("Guardian") || rp.contains("chicken")) {
                 setBorderColor(event, Color.CYAN);
-            } else if (rp.contains("super_star")) {
+            } else if (rp.contains("super_star") || displayName.contains("Wither")) {
                 setBorderColor(event, Color.WHITE);
-            } else if (rp.contains("ender_dragon") || rp.contains("manyullyn") || rp.contains("knight_slime")) {
+            } else if (rp.contains("ender_dragon") || displayName.contains("Ender Dragon") || rp.contains("manyullyn") || rp.contains("knight_slime")) {
                 setBorderColor(event, purple);
-            } else if (rp.contains("ultimate") || rp.contains("chicken")) {
+            } else if (rp.contains("ultimate") || displayName.contains("Ultimate") || rp.contains("chicken")) {
                 setBorderColor(event, light_green);
             }
         }
