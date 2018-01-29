@@ -31,6 +31,14 @@ public class HTBSlotCrafting extends Slot {
         this.craftMatrix = craftingInventory;
     }
 
+    public void setAmountCrafted(int amountCrafted) {
+        this.amountCrafted = amountCrafted;
+    }
+
+    public int getAmountCrafted() {
+        return amountCrafted;
+    }
+
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor itemHandler as well as furnace fuel.
      */
@@ -63,7 +71,7 @@ public class HTBSlotCrafting extends Slot {
 
     @Override
     protected void onSwapCraft(int p_190900_1_) {
-        this.amountCrafted += p_190900_1_;
+        this.setAmountCrafted(this.getAmountCrafted() + p_190900_1_);
     }
 
     /**
@@ -71,11 +79,11 @@ public class HTBSlotCrafting extends Slot {
      */
     @Override
     protected void onCrafting(ItemStack stack) {
-        if (this.amountCrafted > 0) {
-            stack.onCrafting(this.player.world, this.player, this.amountCrafted);
+        if (this.getAmountCrafted() > 0) {
+            stack.onCrafting(this.player.world, this.player, this.getAmountCrafted());
         }
 
-        this.amountCrafted = 0;
+        this.setAmountCrafted(0);
     }
 
 
