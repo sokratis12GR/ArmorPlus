@@ -7,7 +7,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.WeightedSpawnerEntity;
@@ -105,7 +104,7 @@ public class TileEntityTrophy extends TileEntity {
 
     public static void registerTrophyFixes(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, (IDataFixer fixer1, NBTTagCompound compound, int versionIn) -> {
-            if (TileEntity.getKey(TileEntityMobSpawner.class).equals(new ResourceLocation(compound.getString("id")))) {
+            if (TileEntity.getKey(TileEntityTrophy.class).equals(new ResourceLocation(compound.getString("id")))) {
                 compound.setTag("DisplayEntity", fixer1.process(FixTypes.ENTITY, compound.getCompoundTag("DisplayEntity"), versionIn));
             }
 
