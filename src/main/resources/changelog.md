@@ -20,6 +20,7 @@ ArmorPlus 1.12.2-11.10.0.34-beta
   * Potion effects, applied for both weapons and armor are now configurable and no longer limited to only 1 potion effect
   * You can now enable/disable the setting on fire effect from the infused lava weapons
   * Removable potion effects for when equiped a full set, i.e Super Star armor and its anti-wither effect is now a list for multiple effects on each armor
+  * You can now set each type of material (for armors only for now), to unbreakable.
  
 **Bugs Fixed**:
 
@@ -30,6 +31,8 @@ ArmorPlus 1.12.2-11.10.0.34-beta
 * Removed the old sub-command system, and now using forge's sub-command system, commands remain unchanged
 
 * Tile Entities not having their correct resource locations
+
+* Fixed Lava Infuser's shift click functionality and smelting fuel to allow the ignition of the Lava Crystals as an energy source in addition to just being functional with a bucket of lava
   
 ArmorPlus 1.12.2-11.9.3.33-beta
 ----------------------------
