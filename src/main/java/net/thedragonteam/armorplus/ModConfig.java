@@ -319,7 +319,7 @@ public class ModConfig {
 
             public class OriginArmor {
 
-         //       public Enchants enchants = new Enchants();
+                //       public Enchants enchants = new Enchants();
 
                 public OriginArmor(String[] arpe, String[] aape, String ainc, double atp, int[] app, boolean[] aepe, boolean aese, int[] ael) {
                     this.removePotionEffects = arpe;
@@ -332,14 +332,14 @@ public class ModConfig {
                     this.effectLevels = ael;
                 }
 
-         //      public class Enchants {
+                //      public class Enchants {
 
-         //          @Comment({
-         //              "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-         //              "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-         //          })
-         //          public Map<String, Integer> enchantments = new HashMap<>();
-         //      }
+                //          @Comment({
+                //              "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
+                //              "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
+                //          })
+                //          public Map<String, Integer> enchantments = new HashMap<>();
+                //      }
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects;
@@ -357,6 +357,8 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
             }
 
             public class OriginWeapons {
@@ -437,16 +439,16 @@ public class ModConfig {
 
             public class Armor {
 
-         //     public Enchants enchants = new Enchants();
+                //     public Enchants enchants = new Enchants();
 
-         //     public class Enchants {
+                //     public class Enchants {
 
-         //         @Comment({
-         //             "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-         //             "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-         //         })
-         //         public Map<String, Integer> enchantments = new HashMap<>();
-         //     }
+                //         @Comment({
+                //             "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
+                //             "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
+                //         })
+                //         public Map<String, Integer> enchantments = new HashMap<>();
+                //     }
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects = {"empty"};
@@ -463,19 +465,21 @@ public class ModConfig {
                 @Comment({"Enable/Disable the set armor effect(s)"})
                 public boolean enableSetEffects = true;
 
-       //        @Comment({
-       //            "Adds the potion effect the armor will have",
-       //            "To add an effect add a line with <modid>:<potion_effect>;<amplifier>",
-       //            "Note that the modid can be empty if used vanilla effects like: <potion_effect>;<amplifier>",
-       //            "Amplifier level is added after the \';\'",
-       //            "(to disable the effect set the effects \'false\')"
-       //        })
-       //        public String[] effects = {"minecraft:fire_resistance;0"};
+                //        @Comment({
+                //            "Adds the potion effect the armor will have",
+                //            "To add an effect add a line with <modid>:<potion_effect>;<amplifier>",
+                //            "Note that the modid can be empty if used vanilla effects like: <potion_effect>;<amplifier>",
+                //            "Amplifier level is added after the \';\'",
+                //            "(to disable the effect set the effects \'false\')"
+                //        })
+                //        public String[] effects = {"minecraft:fire_resistance;0"};
 
                 @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
                 public String[] addPotionEffects = {"fire_resistance"};
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels = {0};
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
             }
 
             public class Weapons {
@@ -558,6 +562,8 @@ public class ModConfig {
                 public String[] addPotionEffects = {"regeneration"};
                 @Comment({"Set the amplifier level for the effect(s) by the  armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels = {1};
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
             }
 
             public class Weapons {
@@ -565,20 +571,20 @@ public class ModConfig {
                 public BattleAxe battle_axe = new BattleAxe();
                 public Bow bow = new Bow();
 
-                @Comment({"Set the color name the  Weapons will have"})
+                @Comment({"Set the color name the weapons will have"})
                 public String itemNameColor = "white";
-                @Comment({"Set the amplifier level for the effect(s) by the  Weapons. (0 = level 1, 1 = level 2 etc.)"})
+                @Comment({"Set the amplifier level for the effect(s) by the weapons. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels = {1};
-                @Comment({"Adds the potion effect the  Weapons will have (to disable the effect set the effects \'false\')"})
+                @Comment({"Adds the potion effect the weapons will have (to disable the effect set the effects \'false\')"})
                 public String[] addPotionEffects = {"wither"};
-                @Comment({"Enable/Disable the potion effect the  Weapons will have"})
+                @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects = true;
 
                 public class Sword {
 
-                    @Comment({"Set the amount of damage the  Sword will do (Additional +4 damage will be added automatically by minecraft)"})
+                    @Comment({"Set the amount of damage the armor will do (Additional +4 damage will be added automatically by minecraft)"})
                     public double damage = 7.0;
-                    @Comment({"Set the amount of durability the  Sword have"})
+                    @Comment({"Set the amount of durability the armor have"})
                     public int durability = 1950;
                 }
 
@@ -635,6 +641,8 @@ public class ModConfig {
                 public String[] addPotionEffects = {"empty"};
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels = {0};
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
             }
 
             public class Weapons {
@@ -648,14 +656,14 @@ public class ModConfig {
                 public int[] effectLevels = {3};
                 @Comment({"Adds the potion effect the weapons will have (to disable the effect set the effects \'false\')"})
                 public String[] addPotionEffects = {"wither"};
-                @Comment({"Enable/Disable the potion effect the  Weapons will have"})
+                @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects = true;
 
                 public class Sword {
 
-                    @Comment({"Set the amount of damage the  sword will do (Additional +4 damage will be added automatically by minecraft)"})
+                    @Comment({"Set the amount of damage the armor will do (Additional +4 damage will be added automatically by minecraft)"})
                     public double damage = 8.0;
-                    @Comment({"Set the amount of durability the  sword have"})
+                    @Comment({"Set the amount of durability the armor have"})
                     public int durability = 2310;
                 }
 
@@ -682,16 +690,16 @@ public class ModConfig {
 
             public class Armor {
 
-      //         public Enchants enchants = new Enchants();
+                //         public Enchants enchants = new Enchants();
 
-      //         public class Enchants {
+                //         public class Enchants {
 
-      //             @Comment({
-      //                 "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-      //                 "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-      //             })
-      //             public Map<String, Integer> enchantments = new HashMap<>();
-      //         }
+                //             @Comment({
+                //                 "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
+                //                 "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
+                //             })
+                //             public Map<String, Integer> enchantments = new HashMap<>();
+                //         }
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects = {"wither"};
@@ -703,10 +711,10 @@ public class ModConfig {
                 public double toughnessPoints = 3.0;
                 @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
                 public int[] protectionPoints = {4, 8, 9, 4};
-                @Comment({"Sets The armor Unbreakable"})
-                public boolean makeUnbreakable = false;
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
                 @Comment({"Enable/Disable the armor's invincibility"})
-                public boolean enableInvincibility = false;
+                public boolean setInvincible = false;
                 @Comment({"Enable/Disable the armor's de-buffs (when a non complete set is equiped)"})
                 public boolean enableDeBuffs = true;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
@@ -724,7 +732,7 @@ public class ModConfig {
 
             public class Armor {
 
-         //       public Enchants enchants = new Enchants();
+                //       public Enchants enchants = new Enchants();
 
                 public Armor(String[] rpe, String inc, double tp, int[] pp, boolean[] epe, boolean ese, String[] ape, int[] el) {
 
@@ -738,14 +746,14 @@ public class ModConfig {
                     this.effectLevels = el;
                 }
 
-         //      public class Enchants {
+                //      public class Enchants {
 
-         //          @Comment({
-         //              "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-         //              "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-         //          })
-         //          public Map<String, Integer> enchantments = new HashMap<>();
-         //      }
+                //          @Comment({
+                //              "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
+                //              "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
+                //          })
+                //          public Map<String, Integer> enchantments = new HashMap<>();
+                //      }
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects;
@@ -763,6 +771,8 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
+                @Comment({"Sets the armor unbreakable"})
+                public boolean setUnbreakable = false;
             }
         }
 
@@ -826,7 +836,7 @@ public class ModConfig {
             public boolean enableRedstoneAppleRecipes = true;
             @Comment({"Enable/Disable The Elytra Recipe"})
             public boolean enableElytraRecipe = false;
-            @Comment({"Enable/Disable The armorplus arrow recipes"})
+            @Comment({"Enable/Disable the armorplus arrow recipes"})
             public boolean enableArrowRecipes = true;
             @Comment({"Enable/Disable The Coal armor Recipes"})
             public boolean enableCoalArmorRecipes = true;
@@ -840,7 +850,7 @@ public class ModConfig {
             public boolean enableEmeraldArmorRecipes = true;
             @Comment({"Enable/Disable The Obsidian armor Recipes"})
             public boolean enableObsidianArmorRecipes = true;
-            @Comment({"Enable/Disable The armor Recipes"})
+            @Comment({"Enable/Disable the armor Recipes"})
             public boolean enableLavaArmorRecipes = true;
             @Comment({"Enable/Disable The Super Star armor Recipes"})
             public boolean enableSuperStarArmorRecipes = true;

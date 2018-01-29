@@ -57,7 +57,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getTICItemStack
 public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     COAL(coalArmor, "coal", global_registry.enableCoalArmor, COAL_BLOCK, coal.armor.itemNameColor,
         coal.armor.enableSetEffects, coal.armor.addPotionEffects, coal.armor.effectLevels, coal.armor.enablePieceEffects,
-        coal.armor.removePotionEffects
+        coal.armor.removePotionEffects, coal.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -67,7 +67,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     LAPIS(lapisArmor, "lapis", global_registry.enableLapisArmor, LAPIS_BLOCK, lapis.armor.itemNameColor,
         lapis.armor.enableSetEffects, lapis.armor.addPotionEffects, lapis.armor.effectLevels, lapis.armor.enablePieceEffects,
-        lapis.armor.removePotionEffects
+        lapis.armor.removePotionEffects, lapis.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -77,7 +77,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     REDSTONE(redstoneArmor, "redstone", global_registry.enableRedstoneArmor, REDSTONE_BLOCK, redstone.armor.itemNameColor,
         redstone.armor.enableSetEffects, redstone.armor.addPotionEffects, redstone.armor.effectLevels, redstone.armor.enablePieceEffects,
-        redstone.armor.removePotionEffects
+        redstone.armor.removePotionEffects, redstone.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -87,7 +87,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     EMERALD(emeraldArmor, "emerald", global_registry.enableEmeraldArmor, EMERALD_BLOCK, emerald.armor.itemNameColor,
         emerald.armor.enableSetEffects, emerald.armor.addPotionEffects, emerald.armor.effectLevels, emerald.armor.enablePieceEffects,
-        emerald.armor.removePotionEffects
+        emerald.armor.removePotionEffects, emerald.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -97,7 +97,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     OBSIDIAN(obsidianArmor, "obsidian", global_registry.enableObsidianArmor, compressedObsidian, obsidian.armor.itemNameColor,
         obsidian.armor.enableSetEffects, obsidian.armor.addPotionEffects, obsidian.armor.effectLevels, obsidian.armor.enablePieceEffects,
-        obsidian.armor.removePotionEffects
+        obsidian.armor.removePotionEffects, obsidian.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -107,7 +107,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     LAVA(lavaArmor, "infused_lava", global_registry.enableLavaArmor, getItemStack(lavaCrystal, 1), lava.armor.itemNameColor,
         lava.armor.enableSetEffects, lava.armor.addPotionEffects, lava.armor.effectLevels, lava.armor.enablePieceEffects,
-        lava.armor.removePotionEffects
+        lava.armor.removePotionEffects, lava.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -149,7 +149,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     GUARDIAN(guardianArmor, "guardian", global_registry.enableGuardianArmor, getItemStack(materials, 1), guardian.armor.itemNameColor,
         guardian.armor.enableSetEffects, guardian.armor.addPotionEffects, guardian.armor.effectLevels, guardian.armor.enablePieceEffects,
-        guardian.armor.removePotionEffects
+        guardian.armor.removePotionEffects, guardian.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -159,7 +159,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     SUPER_STAR(superStarArmor, "super_star", global_registry.enableSuperStarArmor, getItemStack(materials, 2), super_star.armor.itemNameColor,
         super_star.armor.enableSetEffects, super_star.armor.addPotionEffects, super_star.armor.effectLevels, super_star.armor.enablePieceEffects,
-        super_star.armor.removePotionEffects
+        super_star.armor.removePotionEffects, super_star.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -185,7 +185,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     ENDER_DRAGON(enderDragonArmor, "ender_dragon", global_registry.enableEnderDragonArmor, getItemStack(materials, 3), ender_dragon.armor.itemNameColor,
         ender_dragon.armor.enableSetEffects, ender_dragon.armor.addPotionEffects, ender_dragon.armor.effectLevels, ender_dragon.armor.enablePieceEffects,
-        ender_dragon.armor.removePotionEffects
+        ender_dragon.armor.removePotionEffects, ender_dragon.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -222,7 +222,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     ARDITE(arditeArmor, "ardite", global_registry.enableArditeArmor, getTICItemStack("ingots", 1), ardite.armor.itemNameColor,
         ardite.armor.enableSetEffects, ardite.armor.addPotionEffects, ardite.armor.effectLevels, ardite.armor.enablePieceEffects,
-        ardite.armor.removePotionEffects
+        ardite.armor.removePotionEffects, ardite.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -232,7 +232,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, getTICItemStack("ingots", 0), cobalt.armor.itemNameColor,
         cobalt.armor.enableSetEffects, cobalt.armor.addPotionEffects, cobalt.armor.effectLevels, cobalt.armor.enablePieceEffects,
-        cobalt.armor.removePotionEffects
+        cobalt.armor.removePotionEffects, cobalt.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -242,7 +242,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, getTICItemStack("ingots", 2), manyullyn.armor.itemNameColor,
         manyullyn.armor.enableSetEffects, manyullyn.armor.addPotionEffects, manyullyn.armor.effectLevels, manyullyn.armor.enablePieceEffects,
-        manyullyn.armor.removePotionEffects
+        manyullyn.armor.removePotionEffects, manyullyn.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -252,7 +252,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, getTICItemStack("ingots", 3), knight_slime.armor.itemNameColor,
         knight_slime.armor.enableSetEffects, knight_slime.armor.addPotionEffects, knight_slime.armor.effectLevels, knight_slime.armor.enablePieceEffects,
-        knight_slime.armor.removePotionEffects
+        knight_slime.armor.removePotionEffects, knight_slime.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -262,7 +262,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     PIG_IRON(pigIronArmor, "pig_iron", global_registry.enablePigIronArmor, getTICItemStack("ingots", 4), pig_iron.armor.itemNameColor,
         pig_iron.armor.enableSetEffects, pig_iron.armor.addPotionEffects, pig_iron.armor.effectLevels, pig_iron.armor.enablePieceEffects,
-        pig_iron.armor.removePotionEffects
+        pig_iron.armor.removePotionEffects, pig_iron.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -284,7 +284,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, SLIME_BLOCK, slime.armor.itemNameColor,
         slime.armor.enableSetEffects, slime.armor.addPotionEffects, slime.armor.effectLevels, slime.armor.enablePieceEffects,
-        slime.armor.removePotionEffects
+        slime.armor.removePotionEffects, slime.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -294,7 +294,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     },
     CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, Items.FEATHER, chicken.armor.itemNameColor,
         chicken.armor.enableSetEffects, chicken.armor.addPotionEffects, chicken.armor.effectLevels, chicken.armor.enablePieceEffects,
-        chicken.armor.removePotionEffects
+        chicken.armor.removePotionEffects, chicken.armor.setUnbreakable
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
@@ -312,11 +312,12 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     private final String[] addPotionEffects;
     private final int[] addPotionEffectAmplifiers;
     private final String[] removePotionEffects;
+    private final boolean isUnbreakable;
     private final boolean[] areEffectsEnabled;
 
     APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, Object repairStack, String textFormattingIn,
                     boolean enableFullArmorEffectIn, String[] addPotionEffectsIn, int[] addPotionEffectInAmplifiersIn, boolean[] areEffectsEnabledIn,
-                    String[] removePotionEffectsIn) {
+                    String[] removePotionEffectsIn, boolean isUnbreakable) {
         this.armorMaterial = armorMaterialIn;
         this.name = nameIn;
         this.enableArmor = enableArmor;
@@ -327,6 +328,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         this.addPotionEffectAmplifiers = addPotionEffectInAmplifiersIn;
         this.areEffectsEnabled = areEffectsEnabledIn;
         this.removePotionEffects = removePotionEffectsIn;
+        this.isUnbreakable = isUnbreakable;
     }
 
     @Override
@@ -439,6 +441,10 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                 );
             }
         }
+    }
+
+    public boolean isUnbreakable() {
+        return isUnbreakable;
     }
 
     // @Override

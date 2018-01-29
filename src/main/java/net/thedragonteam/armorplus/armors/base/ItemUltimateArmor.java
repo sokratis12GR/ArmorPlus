@@ -84,7 +84,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
                 player.capabilities.allowFlying = false;
             }
         }
-        if (ultimate.armor.enableInvincibility) {
+        if (ultimate.armor.setInvincible) {
             player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
         }
         if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
@@ -142,7 +142,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         if (tagCompound != null) {
             isUnbreakable = tagCompound.getBoolean("Unbreakable");
         }
-        if (ultimate.armor.makeUnbreakable && !isUnbreakable) {
+        if (ultimate.armor.setUnbreakable && !isUnbreakable) {
             Utils.setUnbreakable(stack);
             LogHelper.info("Making The Ultimate Armor Unbreakable!");
         }

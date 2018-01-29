@@ -5,12 +5,14 @@
 package net.thedragonteam.armorplus.armors.base;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,6 +20,8 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.util.EnumTiers;
+import net.thedragonteam.armorplus.util.Utils;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.List;
 
@@ -88,8 +92,16 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
     }
 
     @Override
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-        super.onCreated(stack, worldIn, playerIn);
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        NBTTagCompound tagCompound = stack.getTagCompound();
+        boolean isUnbreakable = false;
+        if (tagCompound != null) {
+            isUnbreakable = tagCompound.getBoolean("Unbreakable");
+        }
+        if (material.isUnbreakable() && !isUnbreakable) {
+            Utils.setUnbreakable(stack);
+            LogHelper.info("Making The Ultimate Armor Unbreakable!");
+        }
     }
 
     public void setMaterial(APArmorMaterial material) {
