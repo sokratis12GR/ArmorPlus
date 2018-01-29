@@ -582,25 +582,25 @@ public class ModConfig {
 
                 public class Sword {
 
-                    @Comment({"Set the amount of damage the armor will do (Additional +4 damage will be added automatically by minecraft)"})
+                    @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
                     public double damage = 7.0;
-                    @Comment({"Set the amount of durability the armor have"})
+                    @Comment({"Set the amount of durability the sword have"})
                     public int durability = 1950;
                 }
 
                 public class BattleAxe {
 
-                    @Comment({"Set the amount of damage the  BattleAxe will do (Additional +4 damage will be added automatically by minecraft)"})
+                    @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
                     public double damage = 8.0;
-                    @Comment({"Set the amount of durability the  BattleAxe have"})
+                    @Comment({"Set the amount of durability the battle axe have"})
                     public int durability = 1950;
                 }
 
                 public class Bow {
 
-                    @Comment({"Set the amount of bonus arrow damage the  Bow will do"})
+                    @Comment({"Set the amount of bonus arrow damage the bow will do"})
                     public double arrowBonusDamage = 1.5;
-                    @Comment({"Set the amount of durability the  Bow have"})
+                    @Comment({"Set the amount of durability the bow have"})
                     public int durability = 1950;
                 }
             }
@@ -661,9 +661,9 @@ public class ModConfig {
 
                 public class Sword {
 
-                    @Comment({"Set the amount of damage the armor will do (Additional +4 damage will be added automatically by minecraft)"})
+                    @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
                     public double damage = 8.0;
-                    @Comment({"Set the amount of durability the armor have"})
+                    @Comment({"Set the amount of durability the sword have"})
                     public int durability = 2310;
                 }
 
