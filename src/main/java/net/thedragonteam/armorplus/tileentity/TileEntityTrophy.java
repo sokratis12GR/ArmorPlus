@@ -14,9 +14,9 @@ import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.IDataFixer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.storage.AnvilChunkLoader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,13 +35,27 @@ public class TileEntityTrophy extends TileEntity {
      */
     private float scale;
 
+    private String customName;
+
     public TileEntityTrophy() {
     }
 
-    @Nullable
-    @Override
-    public ITextComponent getDisplayName() {
-        return super.getDisplayName();
+    /**
+     * Get the name of this object. For players this returns their username
+     */
+    public String getName() {
+        return this.hasCustomName() ? this.customName : "container.shulkerBox";
+    }
+
+    /**
+     * Returns true if this thing is named
+     */
+    public boolean hasCustomName() {
+        return this.customName != null && !this.customName.isEmpty();
+    }
+
+    public void setCustomName(String name) {
+        this.customName = name;
     }
 
     @Nullable
@@ -51,7 +65,7 @@ public class TileEntityTrophy extends TileEntity {
     }
 
     public void setEntityId(@Nullable ResourceLocation id) {
-        if (id != null) {
+        if (id != null && ForgeRegistries.ENTITIES.containsKey(id)) {
             this.entityData.getNbt().setString("id", id.toString());
         }
     }
@@ -59,25 +73,14 @@ public class TileEntityTrophy extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        if (nbt.hasKey("DisplayEntity", 10)) {
-            this.setNextEntityData(new WeightedSpawnerEntity(1, nbt.getCompoundTag("DisplayEntity")));
-        }
-        if (nbt.hasKey("EntityScale", 99)) {
-            this.scale = nbt.getFloat("EntityScale");
-        }
-        this.cachedEntity = null;
+        this.loadFromNbt(nbt);
     }
 
     @Override
     @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        ResourceLocation resourcelocation = this.getEntityId();
-        if (resourcelocation == null) {
-            return nbt;
-        }
-        nbt.setFloat("EntityScale", this.scale);
-        nbt.setTag("DisplayEntity", this.entityData.getNbt().copy());
+        this.saveToNbt(nbt);
         return nbt;
     }
 
@@ -112,6 +115,33 @@ public class TileEntityTrophy extends TileEntity {
         });
     }
 
+    public void loadFromNbt(NBTTagCompound nbt) {
+        if (nbt.hasKey("CustomName", 8)) {
+            this.customName = nbt.getString("CustomName");
+        }
+        if (nbt.hasKey("DisplayEntity", 10)) {
+            this.setNextEntityData(new WeightedSpawnerEntity(1, nbt.getCompoundTag("DisplayEntity")));
+        }
+        if (nbt.hasKey("EntityScale", 99)) {
+            this.scale = nbt.getFloat("EntityScale");
+        }
+        this.cachedEntity = null;
+    }
+
+    public NBTTagCompound saveToNbt(NBTTagCompound nbt) {
+        if (this.hasCustomName()) {
+            nbt.setString("CustomName", this.customName);
+        }
+        ResourceLocation resourcelocation = this.getEntityId();
+        if (resourcelocation == null) {
+            return nbt;
+        }
+        nbt.setFloat("EntityScale", this.scale);
+        nbt.setTag("DisplayEntity", this.entityData.getNbt().copy());
+
+        return nbt;
+    }
+
     @Override
     public World getWorld() {
         return this.world;
@@ -134,7 +164,7 @@ public class TileEntityTrophy extends TileEntity {
     @Override
     @Nullable
     public SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
+        return new SPacketUpdateTileEntity(this.pos, 12, this.getUpdateTag());
     }
 
     @Override
@@ -155,7 +185,7 @@ public class TileEntityTrophy extends TileEntity {
 
     @Override
     public boolean onlyOpsCanSetNbt() {
-        return true;
+        return false;
     }
 
     @Override
