@@ -17,7 +17,7 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 @SideOnly(Side.CLIENT)
 public class RenderLapisArrow extends RenderArrow<EntityLapisArrow> {
 
-    private ResourceLocation res = setRL("textures/entity/projectiles/coal_arrow.png");
+    private ResourceLocation res = setRL("textures/entity/projectiles/lapis_arrow.png");
 
     public RenderLapisArrow(RenderManager rm) {
         super(rm);

@@ -17,7 +17,7 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 @SideOnly(Side.CLIENT)
 public class RenderRedstoneArrow extends RenderArrow<EntityRedstoneArrow> {
 
-    private ResourceLocation res = setRL("textures/entity/projectiles/coal_arrow.png");
+    private ResourceLocation res = setRL("textures/entity/projectiles/redstone_arrow.png");
 
     public RenderRedstoneArrow(RenderManager rm) {
         super(rm);
