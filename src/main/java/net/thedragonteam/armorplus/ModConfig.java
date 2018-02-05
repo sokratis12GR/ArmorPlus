@@ -388,6 +388,10 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects;
+                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
+                public boolean shouldApplyFire = false;
+                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
+                public int onFireSeconds = 0;
 
                 public class OriginSword {
 
@@ -579,6 +583,10 @@ public class ModConfig {
                 public String[] addPotionEffects = {"wither"};
                 @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects = true;
+                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
+                public boolean shouldApplyFire = false;
+                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
+                public int onFireSeconds = 0;
 
                 public class Sword {
 
@@ -658,6 +666,10 @@ public class ModConfig {
                 public String[] addPotionEffects = {"wither"};
                 @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects = true;
+                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
+                public boolean shouldApplyFire = false;
+                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
+                public int onFireSeconds = 0;
 
                 public class Sword {
 
@@ -797,7 +809,7 @@ public class ModConfig {
             public boolean enableObsidianArmor = true;
             @Comment({"Enable/Disable the Obsidian Weapons from the Game (Sword, Battle Axe, Bow)"})
             public boolean[] enableObsidianWeapons = {true, true, true};
-            @Comment({"Enable/Disable the armor from the game"})
+            @Comment({"Enable/Disable the Lava armor from the game"})
             public boolean enableLavaArmor = true;
             @Comment({"Enable/Disable the Weapons from the Game (Sword, Battle Axe, Bow)"})
             public boolean[] enableLavaWeapons = {true, true, true};
