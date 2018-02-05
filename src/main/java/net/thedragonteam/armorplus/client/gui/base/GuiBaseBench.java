@@ -36,6 +36,7 @@ public class GuiBaseBench extends GuiContainer {
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
+    @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus." + name), 28, 5, 4210752);
         this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
@@ -44,6 +45,7 @@ public class GuiBaseBench extends GuiContainer {
     /**
      * Draws the background layer of this container (behind the items).
      */
+    @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(resourceLocation);
