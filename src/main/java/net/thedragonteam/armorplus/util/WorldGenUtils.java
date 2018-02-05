@@ -30,7 +30,9 @@ public class WorldGenUtils {
     }
 
     public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
-        assert minHeight >= 0 && maxHeight <= 256 && minHeight <= maxHeight : "Illegal Height Arguments for WorldGenerator";
+        if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight) {
+            throw new AssertionError("Illegal Height Arguments for WorldGenerator");
+        }
         int heightDiff = maxHeight - minHeight + 1;
         for (int i = 0; i < chancesToSpawn; i++) {
             int x, y, z;
