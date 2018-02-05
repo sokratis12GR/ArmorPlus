@@ -1,3 +1,23 @@
+ArmorPlus 1.12.2-11.11.0.36-beta
+----------------------------
+
+###Introducing a change into how updates and changes are being displayed.
+
+* Simplification of the crafting system code
+* Added horse armor
+  * This feature is still wip, some horse armor textures are working (lava crystal, emerald, obsidian, guardian) horse armors and functionality
+  * In the works: Introduction of abilities, textures for them all, crafting recipes and configuration for all of these stuff
+* Added the ability to set a material type of weapons when hitting an entity to set them on fire, default disabled for all except the lava weapons
+* Fixed different types of arrows having the coal arrow texture instead of their own ones
+
+
+ArmorPlus 1.12.2-11.10.1.35-beta
+----------------------------
+
+**Bugs Fixed**:
+
+* Mod Crashing on server side
+
 ArmorPlus 1.12.2-11.10.0.34-beta
 ----------------------------
 
