@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.util;
 
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.entity.player.EntityPlayer.SleepResult;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -14,6 +15,8 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
+import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.armors.APArmorMaterial;
 
 import java.util.function.Predicate;
 
@@ -56,5 +59,13 @@ public class EnumHelperUtil {
 
     public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, EnumTiers enumTiers) {
         return addArmorMaterial(enumName, textureName, durability, armorPoints, enumTiers.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
+    }
+
+    public static HorseArmorType addHorseArmor(String name, int armorStrength) {
+        return EnumHelper.addHorseArmor(name, ArmorPlus.MODID + ":textures/entity/horse/armor/" + name + ".png", armorStrength);
+    }
+
+    public static HorseArmorType addHorseArmor(APArmorMaterial material, int armorStrength) {
+        return EnumHelper.addHorseArmor(material.getName(), ArmorPlus.MODID + ":textures/entity/horse/armor/" + material.getName() + ".png", armorStrength);
     }
 }
