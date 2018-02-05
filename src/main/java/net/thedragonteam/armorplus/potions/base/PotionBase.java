@@ -12,9 +12,9 @@ import net.thedragonteam.armorplus.util.Utils;
  **/
 public abstract class PotionBase extends Potion {
 
-    public PotionBase(Boolean isBadEffectIn, int liquidColorIn, String potionName) {
-        super(isBadEffectIn, liquidColorIn);
-        this.setPotionName(Utils.setName(potionName));
-        this.setRegistryName(potionName);
+    public PotionBase(Boolean isBad, int liquidColor, String name) {
+        super(isBad, liquidColor);
+        this.setPotionName(Utils.setName(name));
+        this.setRegistryName(name);
     }
 }

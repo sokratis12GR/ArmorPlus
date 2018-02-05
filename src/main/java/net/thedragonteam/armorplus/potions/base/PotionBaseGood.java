@@ -9,8 +9,8 @@ package net.thedragonteam.armorplus.potions.base;
  **/
 public class PotionBaseGood extends PotionBase {
 
-    public PotionBaseGood(int liquidColorIn, String potionName) {
-        super(false, liquidColorIn, potionName);
+    public PotionBaseGood(int liquidColor, String name) {
+        super(false, liquidColor, name);
         this.setBeneficial();
     }
 }
