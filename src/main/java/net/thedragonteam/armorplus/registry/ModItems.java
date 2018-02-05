@@ -6,6 +6,7 @@ package net.thedragonteam.armorplus.registry;
 
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
+import net.thedragonteam.armorplus.armors.horse.ItemHorseArmor;
 import net.thedragonteam.armorplus.items.ItemUltimateParts;
 import net.thedragonteam.armorplus.items.arrows.ArrowType;
 import net.thedragonteam.armorplus.items.arrows.ItemSpecialArrow;
@@ -90,17 +91,28 @@ public class ModItems {
         itemRedstoneArrow = new ItemSpecialArrow(ArrowType.REDSTONE),
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
+    public static ItemHorseArmor[] horseArmors = new ItemHorseArmor[9];
 
     public static void registerItems() {
+        //HorseArmors
+        horseArmors[0] = new ItemHorseArmor(COAL);
+        horseArmors[1] = new ItemHorseArmor(LAPIS);
+        horseArmors[2] = new ItemHorseArmor(REDSTONE);
+        horseArmors[3] = new ItemHorseArmor(EMERALD);
+        horseArmors[4] = new ItemHorseArmor(OBSIDIAN);
+        horseArmors[5] = new ItemHorseArmor(LAVA);
+        horseArmors[6] = new ItemHorseArmor(GUARDIAN);
+        horseArmors[7] = new ItemHorseArmor(SUPER_STAR);
+        horseArmors[8] = new ItemHorseArmor(ENDER_DRAGON);
         //Armors
-        registerArmor(global_registry.enableCoalArmor, coal, COAL);
-        registerArmor(global_registry.enableEmeraldArmor, emerald, EMERALD);
-        registerArmor(global_registry.enableLapisArmor, lapis, LAPIS);
-        registerArmor(global_registry.enableLavaArmor, lava, LAVA);
-        registerArmor(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
-        registerArmor(global_registry.enableRedstoneArmor, redstone, REDSTONE);
         registerArmor(global_registry.enableChickenArmor, chicken, CHICKEN);
         registerArmor(global_registry.enableSlimeArmor, slime, SLIME);
+        registerArmor(global_registry.enableCoalArmor, coal, COAL);
+        registerArmor(global_registry.enableLapisArmor, lapis, LAPIS);
+        registerArmor(global_registry.enableRedstoneArmor, redstone, REDSTONE);
+        registerArmor(global_registry.enableEmeraldArmor, emerald, EMERALD);
+        registerArmor(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
+        registerArmor(global_registry.enableLavaArmor, lava, LAVA);
         registerArmor(global_registry.enableGuardianArmor, guardian, GUARDIAN);
         registerArmor(global_registry.enableSuperStarArmor, superStar, SUPER_STAR);
         registerArmor(global_registry.enableEnderDragonArmor, enderDragon, ENDER_DRAGON);

@@ -51,6 +51,7 @@ public class ModelsEventHandler {
         registerModels(isArmorEnabled,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
+        registerModels(horseArmors);
         registerModels(isSwordEnabled, sword);
         registerModels(isBattleAxeEnabled, battleAxe);
         registerModels(isBowEnabled, bow);
