@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.items.dev;
 
+import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -14,30 +15,35 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.BaseItem;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.DevUtils.enableDevTool;
 import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
+import static net.thedragonteam.armorplus.util.JsonUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
-import static org.apache.commons.compress.utils.IOUtils.closeQuietly;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class DevTool extends BaseItem {
-
-    private int entityNumber = 0;
 
     public DevTool() {
         super("dev_tool");
@@ -57,140 +63,92 @@ public class DevTool extends BaseItem {
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         if ((enableDevTool() || debugMode) && !playerIn.world.isRemote && isNotNull(target)) {
-            this.writeToFile(playerIn, target);
-            entityNumber++;
+            this.writeFile(playerIn, target);
             return true;
         }
         return false;
     }
 
-    private void writeToFile(EntityPlayer player, EntityLivingBase entity) {
+    private void writeFile(EntityPlayer player, EntityLivingBase entity) {
         new File("./armorplus/entity/" + player.getUniqueID()).mkdirs();
-        Writer writer = null;
-
         try {
-            writer = new OutputStreamWriter(new FileOutputStream(
-                new File(format("./armorplus/entity/%s/%s_%d.json", player.getUniqueID(), entity.getName(), entityNumber))
+            WorldInfo worldInfo = entity.world.getWorldInfo();
+            BlockPos entityPos = entity.getPosition();
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.add("entity_class", getPrimitive(entity.getClass().getName()));
+            Map<String, JsonElement> nameMap = new HashMap<>();
+            nameMap.put("name", getPrimitive(entity.getName()));
+            nameMap.put("custom_name_tag", getPrimitive(entity.getCustomNameTag()));
+            jsonObject.add("names", addArray(nameMap));
+            jsonObject.add("dimension", addArray("id", getPrimitive(entity.dimension)));
+            Map<String, JsonElement> worldMap = new HashMap<>();
+            worldMap.put("name", getPrimitive(worldInfo.getWorldName()));
+            worldMap.put("are_commands_allowed", getPrimitive(worldInfo.areCommandsAllowed()));
+            worldMap.put("is_difficulty_locked", getPrimitive(worldInfo.isDifficultyLocked()));
+            worldMap.put("is_hardcore_mode_enabled", getPrimitive(worldInfo.isHardcoreModeEnabled()));
+            Map<String, JsonElement> worldSpawnMap = new HashMap<>();
+            worldSpawnMap.put("x", getPrimitive(worldInfo.getSpawnX()));
+            worldSpawnMap.put("y", getPrimitive(worldInfo.getSpawnY()));
+            worldSpawnMap.put("z", getPrimitive(worldInfo.getSpawnZ()));
+            worldMap.put("spawn", addArray(worldSpawnMap));
+            jsonObject.add("world", addArray(addProperty(worldMap)));
+            Map<String, JsonElement> entityPosMap = new HashMap<>();
+            entityPosMap.put("x", getPrimitive(entityPos.getX()));
+            entityPosMap.put("y", getPrimitive(entityPos.getY()));
+            entityPosMap.put("z", getPrimitive(entityPos.getZ()));
+            jsonObject.add("position", addArray(entityPosMap));
+            Map<String, JsonElement> inventoryArmorMap = new HashMap<>();
+            inventoryArmorMap.put("head", addArmorItemData(entity, HEAD));
+            inventoryArmorMap.put("chest", addArmorItemData(entity, CHEST));
+            inventoryArmorMap.put("legs", addArmorItemData(entity, LEGS));
+            inventoryArmorMap.put("feet", addArmorItemData(entity, FEET));
+            jsonObject.add("inventory_armor", addArray(inventoryArmorMap));
+            Map<String, JsonElement> inventoryHandsMap = new HashMap<>();
+            inventoryHandsMap.put("main_hand", addItemData(entity.getHeldItemMainhand()));
+            inventoryHandsMap.put("off_hand", addItemData(entity.getHeldItemOffhand()));
+            jsonObject.add("inventory_hands", addArray(inventoryHandsMap));
+            Map<String, JsonElement> entityInfoMap = new HashMap<>();
+            entityInfoMap.put("max_health", getPrimitive(entity.getMaxHealth()));
+            entityInfoMap.put("health", getPrimitive(entity.getHealth()));
+            entityInfoMap.put("absorption_amount", getPrimitive(entity.getAbsorptionAmount()));
+            entityInfoMap.put("is_invulnerable", getPrimitive(entity.getIsInvulnerable()));
+            entityInfoMap.put("is_invisible", getPrimitive(entity.isInvisible()));
+            entityInfoMap.put("is_glowing", getPrimitive(entity.isGlowing()));
+            entityInfoMap.put("is_immune_to_explosions", getPrimitive(entity.isImmuneToExplosions()));
+            entityInfoMap.put("is_immune_to_fire", getPrimitive(entity.isImmuneToFire()));
+            jsonObject.add("entity_info", addArray(entityInfoMap));
+            // Create a new Gson object
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            //convert the Java object to json
+            String jsonString = gson.toJson(jsonObject);
+            //Write JSON String to file
+            LocalDateTime dateTime = LocalDateTime.now();
+            String timeStamp = dateTime.getHour() + "-" + dateTime.getMinute() + "-" + dateTime.getSecond() + "-" + dateTime.getYear() + "-" + dateTime.getMonth().getValue() + "-" + dateTime.getDayOfMonth();
+            FileWriter fileWriter = new FileWriter(new File(
+                format("./armorplus/entity/%s/%s_%s.json", player.getUniqueID(), entity.getName(), timeStamp)
             ));
-            this.addLine(writer,
-                "{", //0
-                format("\t\"Entity Class\": \"%s\",", entity.getClass().toString().replace("class ", "")),
-                "\t\"Names\": {",
-                format("\t\t\"Name\": \"%s\",", entity.getName()),
-                format("\t\t\"Custom Name Tag\": \"%s\"", entity.getCustomNameTag()),
-                "\t},",
-                "\t\"Dimension\": {",
-                format("\t\t\"ID\": %d", entity.dimension),
-                "\t},",
-                "\t\"World\": {",
-                format("\t\t\"Name\": \"%s\",", entity.world.getWorldInfo().getWorldName()),
-                format("\t\t\"Are Commands Allowed\": %s,", entity.world.getWorldInfo().areCommandsAllowed()),
-                format("\t\t\"Is Difficulty Locked\": %s,", entity.world.getWorldInfo().isDifficultyLocked()),
-                format("\t\t\"Is Hardcore Mode Enabled\": %s,", entity.world.getWorldInfo().isHardcoreModeEnabled()),
-                "\t\t\"Spawn\": {",
-                format("\t\t\t\"X\": %d,", entity.world.getWorldInfo().getSpawnX()),
-                format("\t\t\t\"Y\": %d,", entity.world.getWorldInfo().getSpawnY()),
-                format("\t\t\t\"Z\": %d", entity.world.getWorldInfo().getSpawnZ()),
-                "\t\t}",
-                "\t},",
-                "\t\"Position\": {",
-                format("\t\t\"X\": %d,", entity.getPosition().getX()),
-                format("\t\t\"Y\": %d,", entity.getPosition().getY()),
-                format("\t\t\"Z\": %d", entity.getPosition().getZ()),
-                "\t},",
-                "\t\"Inventory Armor\": {",
-                "\t\t\"Head\": {"
-            );
-            this.writeArmorSlotItem(writer, entity, HEAD);
-            this.addLine(writer,
-                tabTwo("},"), //2
-                tabTwo("\"Chest\": {") //2
-            );
-            this.writeArmorSlotItem(writer, entity, CHEST);
-            this.addLine(writer,
-                tabTwo("},"), //2
-                tabTwo("\"Legs\": {") //2
-            );
-            this.writeArmorSlotItem(writer, entity, LEGS);
-            this.addLine(writer,
-                tabTwo("},"), //2
-                tabTwo("\"Feet\": {") //2
-            );
-            this.writeArmorSlotItem(writer, entity, FEET);
-            this.addLine(writer,
-                tabTwo("}"), //2
-                tabOne("},"), //1
-                tabOne("\"Inventory Hands\": {"), //1
-                tabTwo("\"Main-Hand\": {") //2
-            );
-            this.writeItem(writer, entity.getHeldItemMainhand());
-            this.addLine(writer,
-                "\t\t},",
-                "\t\t\"Off-Hand\": {"
-            );
-            this.writeItem(writer, entity.getHeldItemOffhand());
-            this.addLine(writer,
-                "\t\t}",
-                "\t},",
-                "\t\"Entity Info\": {",
-                format("\t\t\"Max Health\": %s,", entity.getMaxHealth()),
-                format("\t\t\"Health\": %s,", entity.getHealth()),
-                format("\t\t\"Absorption Amount\": %s,", entity.getAbsorptionAmount()),
-                format("\t\t\"Is Invulnerable\": %s,", entity.getIsInvulnerable()),
-                format("\t\t\"Is Invisible\": %s,", entity.isInvisible()),
-                format("\t\t\"Is Glowing\": %s,", entity.isGlowing()),
-                format("\t\t\"Is Immune To Explosion\": %s,", entity.isImmuneToExplosions()),
-                format("\t\t\"Is Immune To Fire\": %s", entity.isImmuneToFire()),
-                "\t}",
-                "}" //0
-            );
+            fileWriter.write(jsonString);
+            fileWriter.close();
+
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            closeQuietly(writer);
         }
     }
 
-    private void writeArmorSlotItem(Writer writer, EntityLivingBase entity, EntityEquipmentSlot slot) {
-        this.writeItem(writer, entity.getItemStackFromSlot(slot));
+    private JsonArray addArmorItemData(EntityLivingBase entity, EntityEquipmentSlot slot) {
+        return this.addItemData(entity.getItemStackFromSlot(slot));
     }
 
-    private void writeItem(Writer writer, ItemStack stack) {
+    private JsonArray addItemData(ItemStack stack) {
+        Map<String, JsonElement> itemDataMap = new HashMap<>();
         if (!stack.isEmpty()) {
-            addLine(writer,
-                tabThree(format("\"ItemStack\": \"%s\",", stack.getItem().getRegistryName())),
-                tabThree(format("\"Display Name\": \"%s\",", stack.getDisplayName())),
-                tabThree(format("\"Unlocalized Name\": \"%s\",", stack.getUnlocalizedName())),
-                tabThree(format("\"Count\": %d,", stack.getCount())),
-                tabThree(format("\"Metadata\": %d", stack.getMetadata()))
-            );
+            itemDataMap.put("itemstack", getPrimitive(stack.getItem().getRegistryName()));
+            itemDataMap.put("display_name", getPrimitive(stack.getDisplayName()));
+            itemDataMap.put("unlocalized_name", getPrimitive(stack.getUnlocalizedName()));
+            itemDataMap.put("count", getPrimitive(stack.getCount()));
+            itemDataMap.put("metadata", getPrimitive(stack.getMetadata()));
         }
-    }
-
-    private void addLine(Writer writer, String... lines) {
-        try {
-            for (String line : lines) {
-                writer.write(addLine(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String addLine(String string) {
-        return format("%s\n", string);
-    }
-
-    private String tabOne(String string) {
-        return format("\t%s", string);
-    }
-
-    private String tabTwo(String string) {
-        return format("\t\t%s", string);
-    }
-
-    private String tabThree(String string) {
-        return format("\t\t\t%s", string);
+        return addArray(itemDataMap);
     }
 
     @Override
@@ -202,7 +160,7 @@ public class DevTool extends BaseItem {
             tooltip.add("§9Ability: §rGives Information about the Target");
             tooltip.add("§3Use: §rRight Click a Target");
             if (advanced.isAdvanced()) {
-                tooltip.add("Information is located at: <instance>/armorplus/<player_name>/<entity>-<id>");
+                tooltip.add("Information is located at: <instance>/armorplus/<player_name>/<entity>-<id>-<date>");
             }
         } else {
             showInfo(tooltip, keyBindSneak, TextFormatting.BOLD);
