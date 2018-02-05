@@ -6,11 +6,11 @@ package net.thedragonteam.armorplus.api.crafting.workbench;
 
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-@SuppressWarnings("unused")
 public class WorkbenchRegistry {
 
     /**
@@ -18,31 +18,30 @@ public class WorkbenchRegistry {
      *
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
-     *               example: WorkbenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXX", "XXX", "XXX", 'X', Items.Stick )
      */
     public static void addRecipe(ItemStack output, Object... params) {
         addShapedRecipe(output, params);
     }
 
     public static void addShapedRecipe(ItemStack output, Object... params) {
-        WorkbenchCraftingManager.getInstance().addRecipe(output, params);
+        BaseCraftingManager.getWBInstance().addRecipe(output, params);
     }
 
     public static void addShapelessRecipe(ItemStack output, Object... params) {
-        WorkbenchCraftingManager.getInstance().addShapelessRecipe(output, params);
+        BaseCraftingManager.getWBInstance().addShapelessRecipe(output, params);
     }
 
     /**
-     * @param recipe {@link WorkbenchCraftingManager#addRecipe(IRecipe)}
+     * @param recipe {@link BaseCraftingManager#addRecipe(IRecipe)}
      */
     public static void addRecipe(IRecipe recipe) {
-        WorkbenchCraftingManager.getInstance().getRecipeList().add(recipe);
+        BaseCraftingManager.getWBInstance().getRecipeList().add(recipe);
     }
 
     /**
-     * @param recipe {@link WorkbenchCraftingManager#removeRecipe(IRecipe)}
+     * @param recipe {@link BaseCraftingManager#removeRecipe(IRecipe)}
      */
     public static void removeRecipe(IRecipe recipe) {
-        WorkbenchCraftingManager.getInstance().getRecipeList().remove(recipe);
+        BaseCraftingManager.getWBInstance().getRecipeList().remove(recipe);
     }
 }

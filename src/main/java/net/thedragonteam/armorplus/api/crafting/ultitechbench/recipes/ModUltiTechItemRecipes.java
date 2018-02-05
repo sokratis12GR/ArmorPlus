@@ -6,13 +6,13 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static net.thedragonteam.armorplus.registry.ModItems.itemEnderDragonArrow;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 
-public class ModItemRecipes {
-    public void addRecipes(UltiTechBenchCraftingManager manager) {
+public class ModUltiTechItemRecipes {
+    public void addRecipes(BaseCraftingManager manager) {
         manager.addRecipe(new ItemStack(itemEnderDragonArrow, 8),
             "   EEEE",
             "     SE",

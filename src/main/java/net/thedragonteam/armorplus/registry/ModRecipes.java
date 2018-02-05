@@ -6,8 +6,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.GlobalRegistry;
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapelessOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import net.thedragonteam.armorplus.util.LoaderUtils;
 
 import java.util.stream.IntStream;
@@ -45,39 +45,39 @@ public class ModRecipes {
         nbttagc.setInteger("theoneprobe", 1);
 
         /* Set Helmets' NBT-Tags */
-        ItemStack coalHelmet = new ItemStack(APItems.coalHelmet, 1);
+        ItemStack coalHelmet = getItemStack(APItems.coalHelmet);
         coalHelmet.setTagCompound(nbttagc);
-        ItemStack emeraldHelmet = new ItemStack(APItems.emeraldHelmet, 1);
+        ItemStack emeraldHelmet = getItemStack(APItems.emeraldHelmet);
         emeraldHelmet.setTagCompound(nbttagc);
-        ItemStack lapisHelmet = new ItemStack(APItems.lapisHelmet, 1);
+        ItemStack lapisHelmet = getItemStack(APItems.lapisHelmet);
         lapisHelmet.setTagCompound(nbttagc);
-        ItemStack lavaHelmet = new ItemStack(APItems.lavaHelmet, 1);
+        ItemStack lavaHelmet = getItemStack(APItems.lavaHelmet);
         lavaHelmet.setTagCompound(nbttagc);
-        ItemStack obsidianHelmet = new ItemStack(APItems.obsidianHelmet, 1);
+        ItemStack obsidianHelmet = getItemStack(APItems.obsidianHelmet);
         obsidianHelmet.setTagCompound(nbttagc);
-        ItemStack redstoneHelmet = new ItemStack(APItems.redstoneHelmet, 1);
+        ItemStack redstoneHelmet = getItemStack(APItems.redstoneHelmet);
         redstoneHelmet.setTagCompound(nbttagc);
-        ItemStack chickenHelmet = new ItemStack(APItems.chickenHelmet, 1);
+        ItemStack chickenHelmet = getItemStack(APItems.chickenHelmet);
         chickenHelmet.setTagCompound(nbttagc);
-        ItemStack slimeHelmet = new ItemStack(APItems.slimeHelmet, 1);
+        ItemStack slimeHelmet = getItemStack(APItems.slimeHelmet);
         slimeHelmet.setTagCompound(nbttagc);
-        ItemStack arditeHelmet = new ItemStack(APItems.arditeHelmet, 1);
+        ItemStack arditeHelmet = getItemStack(APItems.arditeHelmet);
         arditeHelmet.setTagCompound(nbttagc);
-        ItemStack cobaltHelmet = new ItemStack(APItems.cobaltHelmet, 1);
+        ItemStack cobaltHelmet = getItemStack(APItems.cobaltHelmet);
         cobaltHelmet.setTagCompound(nbttagc);
-        ItemStack manyullynHelmet = new ItemStack(APItems.manyullynHelmet, 1);
+        ItemStack manyullynHelmet = getItemStack(APItems.manyullynHelmet);
         manyullynHelmet.setTagCompound(nbttagc);
-        ItemStack pigIronHelmet = new ItemStack(APItems.pigIronHelmet, 1);
+        ItemStack pigIronHelmet = getItemStack(APItems.pigIronHelmet);
         pigIronHelmet.setTagCompound(nbttagc);
-        ItemStack knightSlimeHelmet = new ItemStack(APItems.knightSlimeHelmet, 1);
+        ItemStack knightSlimeHelmet = getItemStack(APItems.knightSlimeHelmet);
         knightSlimeHelmet.setTagCompound(nbttagc);
-        ItemStack enderDragonHelmet = new ItemStack(APItems.enderDragonHelmet, 1);
+        ItemStack enderDragonHelmet = getItemStack(APItems.enderDragonHelmet);
         enderDragonHelmet.setTagCompound(nbttagc);
-        ItemStack guardianHelmet = new ItemStack(APItems.guardianHelmet, 1);
+        ItemStack guardianHelmet = getItemStack(APItems.guardianHelmet);
         guardianHelmet.setTagCompound(nbttagc);
-        ItemStack superStarHelmet = new ItemStack(APItems.superStarHelmet, 1);
+        ItemStack superStarHelmet = getItemStack(APItems.superStarHelmet);
         superStarHelmet.setTagCompound(nbttagc);
-        ItemStack theUltimateHelmet = new ItemStack(APItems.theUltimateHelmet, 1);
+        ItemStack theUltimateHelmet = getItemStack(APItems.theUltimateHelmet);
         theUltimateHelmet.setTagCompound(nbttagc);
 
 
@@ -150,38 +150,39 @@ public class ModRecipes {
                 'L', getItemStack(Items.DYE, 4),
                 'C', ModItems.lavaCrystal
             );
-            addRecipe(new WBShapedOreRecipe(new ItemStack(benches[0]),
+            addRecipe(new BaseShapedOreRecipe(3, new ItemStack(benches[0]),
                 "LCL",
                 "OTO",
                 "O O",
-                'T', "workbench",
-                'O', "blockCoal",
-                'L', "gemLapis",
-                'C', "gemLavaCrystal")
+                'T', Blocks.CRAFTING_TABLE,
+                'O', Blocks.COAL_BLOCK,
+                'L', getItemStack(Items.DYE, 4),
+                'C', ModItems.lavaCrystal)
             );
             if (recipes.enableElytraRecipe) {
-                addRecipe(new ItemStack(ELYTRA, 1), "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR);
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ELYTRA, 1),
+                    "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR));
             }
             if (recipes.enableChainArmorRecipes) {
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
+                addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
             }
-            addRecipe(new WBShapedOreRecipe(new ItemStack(materials, 12, 0), "SS ", "S S", " SS", 'S', "ingotIron"));
-            addRecipe(new WBShapedOreRecipe(new ItemStack(compressedObsidian, 1), "OOO", "OOO", "OOO", 'O', "obsidian"));
+            addRecipe(new BaseShapedOreRecipe(3, getItemStack(materials, 12, 0), "SS ", "S S", " SS", 'S', "ingotIron"));
+            addRecipe(new BaseShapedOreRecipe(3, getItemStack(compressedObsidian), "OOO", "OOO", "OOO", 'O', "obsidian"));
             if (recipes.enableRedstoneAppleRecipes) {
-                addRecipe(new WBShapedOreRecipe(new ItemStack(redstoneApple, 1), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', APPLE));
-                addRecipe(new WBShapedOreRecipe(new ItemStack(redstoneApple, 1, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', APPLE));
+                addRecipe(new BaseShapedOreRecipe(3, getItemStack(redstoneApple), "RRR", "RAR", "RRR", 'R', "dustRedstone", 'A', APPLE));
+                addRecipe(new BaseShapedOreRecipe(3, getItemStack(redstoneApple, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', APPLE));
             }
-            addRecipe(new ItemStack(lavaNetherBrick, 4),
+            addRecipe(new BaseShapedOreRecipe(3, new ItemStack(lavaNetherBrick, 4),
                 " N ",
                 "NLN",
                 " N ",
                 'L', LAVA_BUCKET,
-                'N', Blocks.NETHER_BRICK);
+                'N', Blocks.NETHER_BRICK));
             IntStream.range(0, colors.length).forEachOrdered(i -> {
                 addRecipeCastle(stoneBricks[i], colors[i]);
                 addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);
@@ -205,30 +206,30 @@ public class ModRecipes {
     }
 
     private static void addRecipeCastleCorner(Block block, String color) {
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "   ", "  S", " SS", 'S', "stonebrick" + color));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "   ", "S  ", "SS ", 'S', "stonebrick" + color));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "  S", " SS", "   ", 'S', "stonebrick" + color));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "S  ", "SS ", "   ", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "   ", "  S", " SS", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "   ", "S  ", "SS ", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "  S", " SS", "   ", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "S  ", "SS ", "   ", 'S', "stonebrick" + color));
     }
 
     private static void addRecipeCastleTower(Block block, String color) {
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "   ", "S S", "SSS", 'S', "stonebrick" + color));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), "S S", "SSS", "   ", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "   ", "S S", "SSS", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), "S S", "SSS", "   ", 'S', "stonebrick" + color));
     }
 
     private static void addRecipeCastleWall(Block block, String color) {
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', "stonebrick" + color));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', "stonebrick" + color));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', "stonebrick" + color));
     }
 
     private static void addRecipeCastle(Block block, String color) {
-        addRecipe(new WBShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
-        addRecipe(new WBShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
-        addRecipe(new WBShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color + "Wall"));
-        addRecipe(new WBShapedOreRecipe(new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
+        addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
+        addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
+        addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color + "Wall"));
+        addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 1), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
     }
 
     private static void addRecipeStoneBrick(Block block, String color) {
-        addRecipe(new WBShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
+        addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 1), "stonebrick" + color));
     }
 }

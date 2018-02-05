@@ -10,14 +10,15 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapelessOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.List;
 
+import static java.lang.String.format;
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toUltiTechShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
@@ -27,12 +28,12 @@ public class UltiTechBench {
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] ingredients) {
-        CraftTweakerAPI.apply(new Add(new UTBShapelessOreRecipe(toStack(output), toObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapelessOreRecipe(toStack(output), toObjects(ingredients))));
     }
 
     @ZenMethod
     public static void addShaped(IItemStack output, IIngredient[][] ingredients) {
-        CraftTweakerAPI.apply(new Add(new UTBShapedOreRecipe(toStack(output), toUltiTechShapedObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapedOreRecipe(7, toStack(output), toUltiTechShapedObjects(ingredients))));
     }
 
     @ZenMethod
@@ -44,27 +45,27 @@ public class UltiTechBench {
         IRecipe recipe;
 
         public Add(IRecipe add) {
-            recipe = add;
+            this.recipe = add;
         }
 
         @Override
         public void apply() {
-            UltiTechBenchCraftingManager.getInstance().getRecipeList().add(recipe);
+            BaseCraftingManager.getUTBInstance().getRecipeList().add(recipe);
         }
 
         @Override
         public String describe() {
-            return "Adding Ulti-Tech Bench Recipe for " + recipe.getRecipeOutput().getDisplayName();
+            return format("Adding %s recipe for %s", recipe.getRecipeOutput().getDisplayName(), "Ulti-Tech Bench");
         }
 
     }
 
     private static class Remove implements IAction {
         ItemStack remove;
-        List<IRecipe> recipes = UltiTechBenchCraftingManager.getInstance().getRecipeList();
+        List<IRecipe> recipes = BaseCraftingManager.getUTBInstance().getRecipeList();
 
-        public Remove(ItemStack rem) {
-            remove = rem;
+        public Remove(ItemStack remove) {
+            this.remove = remove;
         }
 
         @Override
@@ -74,8 +75,7 @@ public class UltiTechBench {
 
         @Override
         public String describe() {
-            return "Removing Ulti-Tech Bench Recipe for " + remove.getDisplayName();
+            return format("Removing %s recipe for %s", remove.getDisplayName(), "Ulti-Tech Bench");
         }
-
     }
 }

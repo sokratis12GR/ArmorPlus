@@ -4,8 +4,8 @@
 
 package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapelessOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 
 import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
@@ -16,9 +16,9 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class ModItemRecipes {
+public class ModHighTechItemRecipes {
 
-    public void addRecipes(HighTechBenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         manager.addRecipe(getItemStack(ultiTechBench),
             "LUUUL",
             "OWOHO",
@@ -30,7 +30,7 @@ public class ModItemRecipes {
             'H', highTechBench,
             'O', compressedObsidian,
             'L', getItemStack(lavaCrystal, 1));
-        manager.addRecipe(new HTBShapelessOreRecipe(getItemStack(materials, 4),
+        manager.addRecipe(new BaseShapelessOreRecipe(getItemStack(materials, 4),
             "scaleEnderDragon",
             "scaleGuardian",
             "witherBone",

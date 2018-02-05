@@ -48,7 +48,7 @@ public class LavaInfuser {
 
         @Override
         public String describe() {
-            return "Removing High-Tech Bench Recipe for " + remove.getDisplayName();
+            return "Removing Lava Infuser recipe for " + remove.getDisplayName();
         }
 
     }
@@ -67,7 +67,7 @@ public class LavaInfuser {
 
         @Override
         public String describe() {
-            return "Adding lava infuser recipe for " + recipe.getRecipeOutput().getDisplayName();
+            return "Adding Lava Infuser recipe for " + recipe.getRecipeOutput().getDisplayName();
         }
     }
 }

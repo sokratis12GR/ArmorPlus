@@ -2,6 +2,7 @@ package net.thedragonteam.armorplus.api.crafting.utils;
 
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
@@ -12,7 +13,7 @@ public class ShapelessRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(List<ItemStack> input, InventoryCraftingImproved inv) {
+    public static boolean matches(NonNullList<ItemStack> input, InventoryCraftingImproved inv) {
         List<ItemStack> list = Lists.newArrayList(input);
 
         for (int i = 0; i < inv.getHeight(); ++i) {

@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.crafting.ultitechbench;
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -11,11 +11,12 @@ import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
 
-public class UTBSlotCrafting extends Slot {
+public class BaseSlotCrafting extends Slot {
     /**
      * The craft matrix inventory linked to this result slot.
      */
     private final InventoryCraftingImproved craftMatrix;
+    private final BaseCraftingManager manager;
     /**
      * The player that is using the GUI where this slot resides.
      */
@@ -25,8 +26,9 @@ public class UTBSlotCrafting extends Slot {
      */
     private int amountCrafted;
 
-    public UTBSlotCrafting(EntityPlayer player, InventoryCraftingImproved craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
+    public BaseSlotCrafting(BaseCraftingManager manager, EntityPlayer player, InventoryCraftingImproved craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
         super(inventoryIn, slotIndex, xPosition, yPosition);
+        this.manager = manager;
         this.player = player;
         this.craftMatrix = craftingInventory;
     }
@@ -45,8 +47,9 @@ public class UTBSlotCrafting extends Slot {
     @Override
     @Nonnull
     public ItemStack decrStackSize(int amount) {
-        if (this.getHasStack())
+        if (this.getHasStack()) {
             this.amountCrafted += Math.min(amount, this.getStack().getCount());
+        }
 
         return super.decrStackSize(amount);
     }
@@ -78,16 +81,14 @@ public class UTBSlotCrafting extends Slot {
         this.amountCrafted = 0;
     }
 
-
     @Override
     @Nonnull
     public ItemStack onTake(EntityPlayer player, @Nonnull ItemStack stack) {
         this.onCrafting(stack);
         ForgeHooks.setCraftingPlayer(player);
-        NonNullList<ItemStack> nonnulllist = UltiTechBenchCraftingManager.getInstance().getRemainingItems(this.craftMatrix, player.world);
+        NonNullList<ItemStack> nonnulllist = manager.getRemainingItems(this.craftMatrix, player.world);
         ForgeHooks.setCraftingPlayer(null);
         CraftingUtils.onTake(player, craftMatrix, nonnulllist);
-
         return stack;
     }
 }

@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.api.crafting.ultitechbench;
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,26 +20,25 @@ import java.util.Map;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class UTBShapedOreRecipe implements IRecipe {
-    //Added in for future ease of change, but hard coded for now.
-    public static final int MAX_CRAFT_GRID_WIDTH = 7;
-    public static final int MAX_CRAFT_GRID_HEIGHT = 7;
+public class BaseShapedOreRecipe implements IRecipe {
 
+    private int xy;
     protected ItemStack output = ItemStack.EMPTY;
     protected Object[] input = null;
     protected int width = 0;
     protected int height = 0;
     protected boolean mirrored = true;
 
-    public UTBShapedOreRecipe(Block result, Object... recipe) {
-        this(getItemStack(result), recipe);
+    public BaseShapedOreRecipe(int xy, Block result, Object... recipe) {
+        this(xy, new ItemStack(result), recipe);
     }
 
-    public UTBShapedOreRecipe(Item result, Object... recipe) {
-        this(getItemStack(result), recipe);
+    public BaseShapedOreRecipe(int xy, Item result, Object... recipe) {
+        this(xy, new ItemStack(result), recipe);
     }
 
-    public UTBShapedOreRecipe(ItemStack result, Object... recipe) {
+    public BaseShapedOreRecipe(int xy, ItemStack result, Object... recipe) {
+        this.xy = xy;
         output = result.copy();
 
         StringBuilder shape = new StringBuilder();
@@ -63,11 +62,13 @@ public class UTBShapedOreRecipe implements IRecipe {
             });
 
             height = parts.length;
-        } else while (recipe[idx] instanceof String) {
-            String s = (String) recipe[idx++];
-            shape.append(s);
-            width = s.length();
-            height++;
+        } else {
+            while (recipe[idx] instanceof String) {
+                String s = (String) recipe[idx++];
+                shape.append(s);
+                width = s.length();
+                height++;
+            }
         }
 
         ShapedOreRecipeUtils.checkRecipeShape(width, height, shape, output, recipe);
@@ -95,22 +96,24 @@ public class UTBShapedOreRecipe implements IRecipe {
         }
         input = new Object[width * height];
         int x = 0;
-        for (char chr : shape.toString().toCharArray()) input[x++] = itemMap.get(chr);
+        for (char chr : shape.toString().toCharArray()) {
+            input[x++] = itemMap.get(chr);
+        }
     }
 
-    UTBShapedOreRecipe(UTBShapedRecipe recipe, Map<ItemStack, String> replacements) {
+    BaseShapedOreRecipe(BaseShapedRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
         width = recipe.recipeWidth;
         height = recipe.recipeHeight;
 
-        input = new Object[recipe.input.length];
+        input = new Object[recipe.getInput().size()];
 
         for (int i = 0; i < input.length; i++) {
-            ItemStack ingredient = recipe.input[i];
+            ItemStack ingredient = recipe.getInput().get(i);
 
             if (ingredient.isEmpty()) continue;
 
-            input[i] = recipe.input[i];
+            input[i] = recipe.getInput().get(i);
 
             for (Map.Entry<ItemStack, String> replace : replacements.entrySet()) {
                 if (OreDictionary.itemMatches(replace.getKey(), ingredient, true)) {
@@ -124,8 +127,8 @@ public class UTBShapedOreRecipe implements IRecipe {
     /**
      * Returns an Item that is the result of this recipe
      */
-    @Override
     @Nonnull
+    @Override
     public ItemStack getCraftingResult(@Nonnull InventoryCraftingImproved var1) {
         return output.copy();
     }
@@ -138,8 +141,8 @@ public class UTBShapedOreRecipe implements IRecipe {
         return input.length;
     }
 
-    @Override
     @Nonnull
+    @Override
     public ItemStack getRecipeOutput() {
         return output;
     }
@@ -149,10 +152,10 @@ public class UTBShapedOreRecipe implements IRecipe {
      */
     @Override
     public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World world) {
-        return ShapedOreRecipeUtils.matches(MAX_CRAFT_GRID_WIDTH, MAX_CRAFT_GRID_HEIGHT, width, height, input, inv, mirrored);
+        return ShapedOreRecipeUtils.matches(xy, xy, width, height, input, inv, mirrored);
     }
 
-    public UTBShapedOreRecipe setMirrored(boolean mirror) {
+    public BaseShapedOreRecipe setMirrored(boolean mirror) {
         mirrored = mirror;
         return this;
     }
@@ -164,7 +167,7 @@ public class UTBShapedOreRecipe implements IRecipe {
      * @return The recipes input vales.
      */
     public Object[] getInput() {
-        return this.input;
+        return input;
     }
 
     public int getWidth() {

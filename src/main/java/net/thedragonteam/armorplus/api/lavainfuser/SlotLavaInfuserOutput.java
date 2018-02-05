@@ -33,7 +33,9 @@ public class SlotLavaInfuserOutput extends Slot {
 
     @Override
     public ItemStack decrStackSize(int amount) {
-        if (this.getHasStack()) this.removeCount += Math.min(amount, this.getStack().getCount());
+        if (this.getHasStack()) {
+            this.setRemoveCount(this.getRemoveCount() + Math.min(amount, this.getStack().getCount()));
+        }
         return super.decrStackSize(amount);
     }
 
@@ -46,14 +48,22 @@ public class SlotLavaInfuserOutput extends Slot {
 
     @Override
     protected void onCrafting(ItemStack stack, int amount) {
-        this.removeCount += amount;
+        this.setRemoveCount(this.getRemoveCount() + amount);
         this.onCrafting(stack);
     }
 
     @Override
     protected void onCrafting(ItemStack stack) {
-        stack.onCrafting(this.player.world, this.player, this.removeCount);
-        this.removeCount = 0;
+        stack.onCrafting(this.player.world, this.player, this.getRemoveCount());
+        this.setRemoveCount(0);
         FMLCommonHandler.instance().firePlayerSmeltedEvent(player, stack);
+    }
+
+    private void setRemoveCount(int removeCount) {
+        this.removeCount = removeCount;
+    }
+
+    public int getRemoveCount() {
+        return removeCount;
     }
 }

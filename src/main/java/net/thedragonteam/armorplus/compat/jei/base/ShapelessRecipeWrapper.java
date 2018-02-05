@@ -3,17 +3,16 @@ package net.thedragonteam.armorplus.compat.jei.base;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
-
-import java.util.List;
 
 public class ShapelessRecipeWrapper implements IRecipeWrapper {
 
     private final IRecipe recipe;
-    private final List<ItemStack> input;
+    private final NonNullList<ItemStack> input;
 
-    public ShapelessRecipeWrapper(IRecipe recipe, List<ItemStack> inputList) {
+    public ShapelessRecipeWrapper(IRecipe recipe, NonNullList<ItemStack> inputList) {
         this.recipe = recipe;
         this.input = inputList;
         inputList.stream().filter(ItemStack.class::isInstance).filter(itemStack ->

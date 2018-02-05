@@ -10,30 +10,30 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapelessOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.List;
 
+import static java.lang.String.format;
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toWorkbenchShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
-
 
 @ZenClass("mods.armorplus.Workbench")
 public class Workbench {
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] ingredients) {
-        CraftTweakerAPI.apply(new Add(new WBShapelessOreRecipe(toStack(output), toObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapelessOreRecipe(toStack(output), toObjects(ingredients))));
     }
 
     @ZenMethod
     public static void addShaped(IItemStack output, IIngredient[][] ingredients) {
-        CraftTweakerAPI.apply(new Add(new WBShapedOreRecipe(toStack(output), toWorkbenchShapedObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapedOreRecipe(3, toStack(output), toWorkbenchShapedObjects(ingredients))));
     }
 
     @ZenMethod
@@ -45,27 +45,27 @@ public class Workbench {
         IRecipe recipe;
 
         public Add(IRecipe add) {
-            recipe = add;
+            this.recipe = add;
         }
 
         @Override
         public void apply() {
-            WorkbenchCraftingManager.getInstance().getRecipeList().add(recipe);
+            BaseCraftingManager.getWBInstance().getRecipeList().add(recipe);
         }
 
         @Override
         public String describe() {
-            return "Adding Workbench Recipe for " + recipe.getRecipeOutput().getDisplayName();
+            return format("Adding %s recipe for %s", recipe.getRecipeOutput().getDisplayName(), "Workbench");
         }
 
     }
 
     private static class Remove implements IAction {
         ItemStack remove;
-        List<IRecipe> recipes = WorkbenchCraftingManager.getInstance().getRecipeList();
+        List<IRecipe> recipes = BaseCraftingManager.getWBInstance().getRecipeList();
 
-        public Remove(ItemStack rem) {
-            remove = rem;
+        public Remove(ItemStack remove) {
+            this.remove = remove;
         }
 
         @Override
@@ -75,8 +75,7 @@ public class Workbench {
 
         @Override
         public String describe() {
-            return "Removing Workbench Recipe for " + remove.getDisplayName();
+            return format("Removing %s recipe for %s", remove.getDisplayName(), "Workbench");
         }
-
     }
 }

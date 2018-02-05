@@ -23,11 +23,7 @@ public class ShapedOreRecipeWrapper implements IShapedCraftingRecipeWrapper {
         this.inputItems = inputItems;
         this.width = width;
         this.height = height;
-        Arrays.stream(inputItems).filter(input ->
-            input instanceof ItemStack
-        ).map(input -> (ItemStack) input).filter(itemStack ->
-            !itemStack.isEmpty() && itemStack.getCount() != 1
-        ).forEachOrdered(itemStack -> itemStack.setCount(1));
+        Arrays.stream(inputItems).filter(input -> input instanceof ItemStack).map(input -> (ItemStack) input).filter(itemStack -> !itemStack.isEmpty() && itemStack.getCount() != 1).forEach(itemStack -> itemStack.setCount(1));
     }
 
     @Override

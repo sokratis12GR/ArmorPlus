@@ -1,70 +1,70 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 class HTBRecipesHelper {
 
-    static void createEasyArmorSetRecipes(HighTechBenchCraftingManager manager, String material, Object... outputs) {
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+    static void createEasyArmorSetRecipes(BaseCraftingManager manager, String material, Object... outputs) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "EEEEE",
             "E   E",
             "     ",
             "     ",
             "     ",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "     ",
             "EEEEE",
             "E   E",
             "     ",
             "     ",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "     ",
             "     ",
             "EEEEE",
             "E   E",
             "     ",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "     ",
             "     ",
             "     ",
             "EEEEE",
             "E   E",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[1]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[1]),
             "E   E",
             "E   E",
             "EEEEE",
             "EEEEE",
             "EEEEE",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[2]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[2]),
             "EEEEE",
             "E   E",
             "E   E",
             "E   E",
             "E   E",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "     ",
             "     ",
             "E   E",
             "E   E",
             "E   E",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "     ",
             "E   E",
             "E   E",
             "E   E",
             "     ",
             'E', material));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "E   E",
             "E   E",
             "E   E",
@@ -73,8 +73,8 @@ class HTBRecipesHelper {
             'E', material));
     }
 
-    static void createExpertArmorSetRecipes(HighTechBenchCraftingManager manager, String materialA, String materialB, Object... outputs) {
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+    static void createExpertArmorSetRecipes(BaseCraftingManager manager, String materialA, String materialB, Object... outputs) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "EEeEE",
             "e   e",
             "e   e",
@@ -82,7 +82,7 @@ class HTBRecipesHelper {
             "     ",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "     ",
             "EEeEE",
             "e   e",
@@ -90,7 +90,7 @@ class HTBRecipesHelper {
             "     ",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[0]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[0]),
             "     ",
             "     ",
             "EEeEE",
@@ -98,7 +98,7 @@ class HTBRecipesHelper {
             "e   e",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[1]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[1]),
             "e   e",
             "e   e",
             "EEEEE",
@@ -106,7 +106,7 @@ class HTBRecipesHelper {
             "EEEEE",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[2]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[2]),
             "EEEEE",
             "EeeeE",
             "e   e",
@@ -114,7 +114,7 @@ class HTBRecipesHelper {
             "e   e",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "E   E",
             "E   E",
             "e   e",
@@ -122,7 +122,7 @@ class HTBRecipesHelper {
             "     ",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "     ",
             "E   E",
             "E   E",
@@ -130,7 +130,7 @@ class HTBRecipesHelper {
             "     ",
             'E', materialA,
             'e', materialB));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(outputs[3]),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(outputs[3]),
             "     ",
             "     ",
             "E   E",
@@ -140,8 +140,8 @@ class HTBRecipesHelper {
             'e', materialB));
     }
 
-    static void createSwordRecipes(HighTechBenchCraftingManager manager, Object output, String material) {
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+    static void createSwordRecipes(BaseCraftingManager manager, Object output, String material) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "    E",
             "    E",
             "    E",
@@ -149,7 +149,7 @@ class HTBRecipesHelper {
             "    S",
             'E', material,
             'S', "stickWood"));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "   E ",
             "   E ",
             "   E ",
@@ -157,7 +157,7 @@ class HTBRecipesHelper {
             "   S ",
             'E', material,
             'S', "stickWood"));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "  E  ",
             "  E  ",
             "  E  ",
@@ -165,7 +165,7 @@ class HTBRecipesHelper {
             "  S  ",
             'E', material,
             'S', "stickWood"));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             " E   ",
             " E   ",
             " E   ",
@@ -173,7 +173,7 @@ class HTBRecipesHelper {
             " S   ",
             'E', material,
             'S', "stickWood"));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "E    ",
             "E    ",
             "E    ",
@@ -183,8 +183,8 @@ class HTBRecipesHelper {
             'S', "stickWood"));
     }
 
-    static void createBattleAxeRecipe(HighTechBenchCraftingManager manager, Object output, String material) {
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+    static void createBattleAxeRecipe(BaseCraftingManager manager, Object output, String material) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "E   E",
             "EESEE",
             "E S E",
@@ -194,8 +194,8 @@ class HTBRecipesHelper {
             'S', "stickWood"));
     }
 
-    static void createBowRecipe(HighTechBenchCraftingManager manager, Object output, String material) {
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+    static void createBowRecipe(BaseCraftingManager manager, Object output, String material) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "  EES",
             " E  S",
             "E   S",
@@ -203,7 +203,7 @@ class HTBRecipesHelper {
             "  EES",
             'E', material,
             'S', "string"));
-        manager.addRecipe(new HTBShapedOreRecipe(getItemStack(output),
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
             "SEE  ",
             "S  E ",
             "S   E",

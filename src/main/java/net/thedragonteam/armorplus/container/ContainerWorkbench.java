@@ -7,13 +7,17 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.workbench.WBSlotCrafting;
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseSlotCrafting;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
 
+import java.util.Objects;
 import java.util.stream.IntStream;
+
+import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -34,7 +38,15 @@ public class ContainerWorkbench extends ContainerBenchBase {
     public ContainerWorkbench(InventoryPlayer playerInventory, TileEntityWorkbench tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new WBSlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35) {
+            @Override
+            protected void onCrafting(ItemStack stack) {
+                super.onCrafting(stack);
+                if (stack.getItem() == lapisSword || stack.getItem() == lapisBattleAxe || stack.getItem() == lapisBow) {
+                    stack.addEnchantment(Objects.requireNonNull(getEnchantment("looting")), 3);
+                }
+            }
+        });
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
             for (int j = 0; j < RECIPE_SIZE; ++j)
@@ -54,7 +66,7 @@ public class ContainerWorkbench extends ContainerBenchBase {
      */
     @Override
     public void onCraftMatrixChanged(IInventory inventoryIn) {
-        this.craftResult.setInventorySlotContents(0, WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
+        this.craftResult.setInventorySlotContents(0, BaseCraftingManager.getWBInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
 
     /**

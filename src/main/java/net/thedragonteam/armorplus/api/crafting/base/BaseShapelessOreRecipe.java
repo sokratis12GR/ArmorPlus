@@ -1,9 +1,4 @@
-/*
- * Copyright (c) TheDragonTeam 2016-2017.
- */
-
-package net.thedragonteam.armorplus.api.crafting.workbench;
-
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -18,33 +13,36 @@ import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
-
-public class WBShapelessOreRecipe implements IRecipe {
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
+public class BaseShapelessOreRecipe implements IRecipe {
     protected ItemStack output = ItemStack.EMPTY;
     protected NonNullList<Object> input = NonNullList.create();
 
-    public WBShapelessOreRecipe(Block result, Object... recipe) {
-        this(getItemStack(result), recipe);
+    public BaseShapelessOreRecipe(Block result, Object... recipe) {
+        this(new ItemStack(result), recipe);
     }
 
-    public WBShapelessOreRecipe(Item result, Object... recipe) {
-        this(getItemStack(result), recipe);
+    public BaseShapelessOreRecipe(Item result, Object... recipe) {
+        this(new ItemStack(result), recipe);
     }
 
-    public WBShapelessOreRecipe(ItemStack result, Object... recipe) {
+    public BaseShapelessOreRecipe(ItemStack result, Object... recipe) {
         output = result.copy();
         ShapelessOreRecipeUtils.createRecipe(output, input, recipe);
     }
 
-    WBShapelessOreRecipe(WBShapelessRecipe recipe, Map<ItemStack, String> replacements) {
+    BaseShapelessOreRecipe(BaseShapelessRecipe recipe, Map<ItemStack, String> replacements) {
         output = recipe.getRecipeOutput();
 
-        recipe.input.stream().map(ingredient -> replacements.entrySet().stream().filter(
-            replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
-        ).findFirst().<Object>map(
-            replace -> OreDictionary.getOres(replace.getValue())
-        ).orElse(ingredient)).forEachOrdered(finalObj -> input.add(finalObj));
+        recipe.input.stream().map(
+            ingredient -> replacements.entrySet().stream().filter(
+                replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
+            ).findFirst().<Object>map(
+                replace -> OreDictionary.getOres(replace.getValue())
+            ).orElse(ingredient)
+        ).forEachOrdered(finalObj -> input.add(finalObj));
     }
 
     /**
@@ -87,4 +85,5 @@ public class WBShapelessOreRecipe implements IRecipe {
     public NonNullList<Object> getInput() {
         return this.input;
     }
+
 }

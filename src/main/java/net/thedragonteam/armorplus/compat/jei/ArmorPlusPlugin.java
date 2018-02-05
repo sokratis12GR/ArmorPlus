@@ -15,10 +15,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional.Interface;
-import net.thedragonteam.armorplus.api.crafting.championbench.*;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.*;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.*;
-import net.thedragonteam.armorplus.api.crafting.workbench.*;
+import net.thedragonteam.armorplus.api.crafting.base.*;
 import net.thedragonteam.armorplus.client.gui.*;
 import net.thedragonteam.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
 import net.thedragonteam.armorplus.compat.jei.base.*;
@@ -61,7 +58,7 @@ public class ArmorPlusPlugin implements IModPlugin {
             new CategoryBase("workbench", 29, 16, 116, 54, 94, 18, 3, JEI_CATEGORY_WORKBENCH),
             new CategoryBase("high_tech_bench", 11, 16, 156, 93, 136, 36, 5, JEI_CATEGORY_HIGH_TECH_BENCH),
             new CategoryBaseAdvanced("ulti_tech_bench", 11, 16, 178, 126, 156, 54, 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
-            new CategoryBaseAdvanced("champion_bench", 11, 16, 162, 162, 35, 168, 9, JEI_CATEGORY_CHAMPION_BENCH, 60, 170),
+            new CategoryBaseAdvanced("champion_bench", 11, 16, 162, 162, 72, 168, 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
             new LavaInfuserCategory()
         );
     }
@@ -88,25 +85,10 @@ public class ArmorPlusPlugin implements IModPlugin {
         jeiHelper = registry.getJeiHelpers();
         registry.handleRecipes(LavaInfuserRecipe.class, LavaInfuserRecipeWrapper::new, JEI_CATEGORY_LAVA_INFUSER);
 
-        registry.handleRecipes(WBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_WORKBENCH);
-        registry.handleRecipes(WBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_WORKBENCH);
-        registry.handleRecipes(WBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_WORKBENCH);
-        registry.handleRecipes(WBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_WORKBENCH);
-
-        registry.handleRecipes(HTBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.handleRecipes(HTBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.handleRecipes(HTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.handleRecipes(HTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_HIGH_TECH_BENCH);
-
-        registry.handleRecipes(UTBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.handleRecipes(UTBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.handleRecipes(UTBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.handleRecipes(UTBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_ULTI_TECH_BENCH);
-
-        registry.handleRecipes(CBShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_CHAMPION_BENCH);
-        registry.handleRecipes(CBShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), JEI_CATEGORY_CHAMPION_BENCH);
-        registry.handleRecipes(CBShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), JEI_CATEGORY_CHAMPION_BENCH);
-        registry.handleRecipes(CBShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), JEI_CATEGORY_CHAMPION_BENCH);
+        this.handleRecipes(registry, JEI_CATEGORY_WORKBENCH);
+        this.handleRecipes(registry, JEI_CATEGORY_HIGH_TECH_BENCH);
+        this.handleRecipes(registry, JEI_CATEGORY_ULTI_TECH_BENCH);
+        this.handleRecipes(registry, JEI_CATEGORY_CHAMPION_BENCH);
 
         registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
         registry.addRecipeClickArea(GuiHighTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH);
@@ -126,12 +108,19 @@ public class ArmorPlusPlugin implements IModPlugin {
 
         IntStream.range(0, JEI_CATEGORIES.length).forEach(i -> registry.addRecipeCatalyst(getItemStack(ModBlocks.benches[i]), JEI_CATEGORIES[i]));
 
-        registry.addRecipes(WorkbenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_WORKBENCH);
-        registry.addRecipes(HighTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.addRecipes(UltiTechBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.addRecipes(ChampionBenchCraftingManager.getInstance().getRecipeList(), JEI_CATEGORY_CHAMPION_BENCH);
+        registry.addRecipes(BaseCraftingManager.getWBInstance().getRecipeList(), JEI_CATEGORY_WORKBENCH);
+        registry.addRecipes(BaseCraftingManager.getHTBInstance().getRecipeList(), JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipes(BaseCraftingManager.getUTBInstance().getRecipeList(), JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipes(BaseCraftingManager.getCBInstance().getRecipeList(), JEI_CATEGORY_CHAMPION_BENCH);
         registry.addRecipes(InfuserRecipeMaker.getInfuserRecipes(), JEI_CATEGORY_LAVA_INFUSER);
 
+    }
+
+    private void handleRecipes(IModRegistry registry, String category) {
+        registry.handleRecipes(BaseShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), category);
+        registry.handleRecipes(BaseShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), category);
+        registry.handleRecipes(BaseShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), category);
+        registry.handleRecipes(BaseShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), category);
     }
 
     private void blackListIngredients(IIngredientBlacklist blacklist, Object... stacks) {

@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
 import mezz.jei.recipes.BrokenCraftingRecipeException;
 import mezz.jei.util.ErrorUtil;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class JEIUtils {
         }
     }
 
-    public static void getIngredients(IIngredients ingredients, IRecipe recipe, List<ItemStack> recipeItems) {
+    public static void getIngredients(IIngredients ingredients, IRecipe recipe, NonNullList<ItemStack> recipeItems) {
         ItemStack recipeOutput = recipe.getRecipeOutput();
         try {
             ingredients.setInputs(ItemStack.class, recipeItems);

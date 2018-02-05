@@ -10,9 +10,9 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.championbench.CBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.championbench.CBShapelessOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.championbench.ChampionBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -28,12 +28,12 @@ public class ChampionBench {
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] ingredients) {
-        CraftTweakerAPI.apply(new Add(new CBShapelessOreRecipe(toStack(output), toObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapelessOreRecipe(toStack(output), toObjects(ingredients))));
     }
 
     @ZenMethod
     public static void addShaped(IItemStack output, IIngredient[][] ingredients) {
-        CraftTweakerAPI.apply(new Add(new CBShapedOreRecipe(toStack(output), toChampionShapedObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapedOreRecipe(9, toStack(output), toChampionShapedObjects(ingredients))));
     }
 
     @ZenMethod
@@ -50,19 +50,19 @@ public class ChampionBench {
 
         @Override
         public void apply() {
-            ChampionBenchCraftingManager.getInstance().getRecipeList().add(recipe);
+            BaseCraftingManager.getCBInstance().getRecipeList().add(recipe);
         }
 
         @Override
         public String describe() {
-            return format("Adding %s Recipe for Champion Bench", recipe.getRecipeOutput().getDisplayName());
+            return format("Adding %s recipe for %s", recipe.getRecipeOutput().getDisplayName(), "Champion Bench");
         }
 
     }
 
     private static class Remove implements IAction {
         ItemStack remove;
-        List<IRecipe> recipes = ChampionBenchCraftingManager.getInstance().getRecipeList();
+        List<IRecipe> recipes = BaseCraftingManager.getCBInstance().getRecipeList();
 
         public Remove(ItemStack remove) {
             this.remove = remove;
@@ -75,7 +75,7 @@ public class ChampionBench {
 
         @Override
         public String describe() {
-            return format("Removing %s Recipe for Champion Bench", remove.getDisplayName());
+            return format("Removing %s recipe for %s", remove.getDisplayName(), "Champion Bench");
         }
     }
 }

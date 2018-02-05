@@ -10,14 +10,15 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBShapelessOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.List;
 
+import static java.lang.String.format;
 import static net.thedragonteam.armorplus.compat.crafttweaker.CTArmorPlusPlugin.toHighTechShapedObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toObjects;
 import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
@@ -27,12 +28,12 @@ public class HighTechBench {
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] ingredients) {
-        CraftTweakerAPI.apply(new Add(new HTBShapelessOreRecipe(toStack(output), toObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapelessOreRecipe(toStack(output), toObjects(ingredients))));
     }
 
     @ZenMethod
     public static void addShaped(IItemStack output, IIngredient[][] ingredients) {
-        CraftTweakerAPI.apply(new Add(new HTBShapedOreRecipe(toStack(output), toHighTechShapedObjects(ingredients))));
+        CraftTweakerAPI.apply(new Add(new BaseShapedOreRecipe(5, toStack(output), toHighTechShapedObjects(ingredients))));
     }
 
     @ZenMethod
@@ -44,26 +45,27 @@ public class HighTechBench {
         IRecipe recipe;
 
         public Add(IRecipe add) {
-            recipe = add;
+            this.recipe = add;
         }
 
         @Override
         public void apply() {
-            HighTechBenchCraftingManager.getInstance().getRecipeList().add(recipe);
+            BaseCraftingManager.getHTBInstance().getRecipeList().add(recipe);
         }
 
         @Override
         public String describe() {
-            return "Adding High-Tech Bench Recipe for " + recipe.getRecipeOutput().getDisplayName();
+            return format("Adding %s recipe for %s", recipe.getRecipeOutput().getDisplayName(), "High-Tech Bench");
         }
+
     }
 
     private static class Remove implements IAction {
         ItemStack remove;
-        List<IRecipe> recipes = HighTechBenchCraftingManager.getInstance().getRecipeList();
+        List<IRecipe> recipes = BaseCraftingManager.getHTBInstance().getRecipeList();
 
-        public Remove(ItemStack rem) {
-            remove = rem;
+        public Remove(ItemStack remove) {
+            this.remove = remove;
         }
 
         @Override
@@ -73,8 +75,7 @@ public class HighTechBench {
 
         @Override
         public String describe() {
-            return "Removing High-Tech Bench Recipe for " + remove.getDisplayName();
+            return format("Removing %s recipe for %s", remove.getDisplayName(), "High-Tech Bench");
         }
-
     }
 }

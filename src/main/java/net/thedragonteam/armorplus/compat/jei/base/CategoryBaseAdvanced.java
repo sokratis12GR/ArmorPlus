@@ -24,4 +24,5 @@ public class CategoryBaseAdvanced extends CategoryBase {
         recipeLayout.setRecipeTransferButton(buttonX, buttonY);
         super.setRecipe(recipeLayout, recipeWrapper, ingredients);
     }
+
 }

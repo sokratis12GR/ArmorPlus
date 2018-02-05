@@ -5,8 +5,8 @@
 package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Items;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
 import net.thedragonteam.armorplus.registry.APItems;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
@@ -17,7 +17,7 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModWeaponTierThreeRecipes {
-    public void addRecipes(UltiTechBenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
                 if (recipes.enableSwordsRecipes) {
@@ -59,7 +59,7 @@ public class ModWeaponTierThreeRecipes {
             case HELLISH: {
                 if (recipes.enableSwordsRecipes) {
                     if (global_registry.enableGuardianWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(guardianSword),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(guardianSword),
                             "   E   ",
                             "  ESE  ",
                             " E S E ",
@@ -71,7 +71,7 @@ public class ModWeaponTierThreeRecipes {
                             'S', "gemPrismarine"));
                     }
                     if (global_registry.enableSuperStarWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(superStarSword),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(superStarSword),
                             "   H   ",
                             "  ESE  ",
                             " E S E ",
@@ -84,7 +84,7 @@ public class ModWeaponTierThreeRecipes {
                             'H', getItemStack(Items.SKULL, 1)));
                     }
                     if (global_registry.enableEnderDragonWeapons[0]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(enderDragonSword),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(enderDragonSword),
                             "   E   ",
                             "  ESE  ",
                             " E S E ",
@@ -98,7 +98,7 @@ public class ModWeaponTierThreeRecipes {
                 }
                 if (recipes.enableBattleAxesRecipes) {
                     if (global_registry.enableGuardianWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(guardianBattleAxe),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(guardianBattleAxe),
                             " E   E ",
                             "E  S  E",
                             " EESEE ",
@@ -110,7 +110,7 @@ public class ModWeaponTierThreeRecipes {
                             'S', "gemPrismarine"));
                     }
                     if (global_registry.enableSuperStarWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(superStarBattleAxe),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(superStarBattleAxe),
                             " E   E ",
                             "E  H  E",
                             " EESEE ",
@@ -123,7 +123,7 @@ public class ModWeaponTierThreeRecipes {
                             'H', getItemStack(Items.SKULL, 1)));
                     }
                     if (global_registry.enableEnderDragonWeapons[1]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBattleAxe),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.enderDragonBattleAxe),
                             " E   E ",
                             "E  S  E",
                             " EESEE ",
@@ -137,7 +137,7 @@ public class ModWeaponTierThreeRecipes {
                 }
                 if (recipes.enableBowsRecipes) {
                     if (global_registry.enableGuardianWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.guardianBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.guardianBow),
                             "    GGS",
                             "  GG  S",
                             " G    S",
@@ -147,7 +147,7 @@ public class ModWeaponTierThreeRecipes {
                             "    GGS",
                             'G', "scaleGuardian",
                             'S', "gemPrismarine"));
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.guardianBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.guardianBow),
                             "SGG    ",
                             "S  GG  ",
                             "S    G ",
@@ -159,7 +159,7 @@ public class ModWeaponTierThreeRecipes {
                             'S', "gemPrismarine"));
                     }
                     if (global_registry.enableSuperStarWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.superStarBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.superStarBow),
                             "    WWS",
                             "  NW  S",
                             " N    S",
@@ -170,7 +170,7 @@ public class ModWeaponTierThreeRecipes {
                             'W', "witherBone",
                             'S', "string",
                             'N', getItemStack(Items.SKULL, 1)));
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.superStarBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.superStarBow),
                             "SWW    ",
                             "S  WN  ",
                             "S    N ",
@@ -183,7 +183,7 @@ public class ModWeaponTierThreeRecipes {
                             'N', getItemStack(Items.SKULL, 1)));
                     }
                     if (global_registry.enableEnderDragonWeapons[2]) {
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.enderDragonBow),
                             "    EES",
                             "  DE  S",
                             " D    S",
@@ -194,7 +194,7 @@ public class ModWeaponTierThreeRecipes {
                             'E', "scaleEnderDragon",
                             'S', "string",
                             'D', Items.DRAGON_BREATH));
-                        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(APItems.enderDragonBow),
+                        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.enderDragonBow),
                             "SEE    ",
                             "S  ED  ",
                             "S    D ",

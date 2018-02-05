@@ -6,7 +6,7 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
@@ -18,7 +18,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModEnderDragonRecipes {
 
-    public void addRecipes(UltiTechBenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
                 if (global_registry.enableEnderDragonArmor && recipes.enableEnderDragonArmorRecipes) {

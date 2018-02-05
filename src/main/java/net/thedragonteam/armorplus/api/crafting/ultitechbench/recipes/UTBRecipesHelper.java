@@ -2,16 +2,16 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UTBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class UTBRecipesHelper {
 
-    public static void registerBowRecipes(UltiTechBenchCraftingManager manager, String materialA, String materialB, Item bow) {
-        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(bow),
+    public static void registerBowRecipes(BaseCraftingManager manager, String materialA, String materialB, Item bow) {
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(bow),
             "    GGS",
             "  GG  S",
             " G    S",
@@ -21,7 +21,7 @@ public class UTBRecipesHelper {
             "    GGS",
             'G', materialA,
             'S', materialB));
-        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(bow),
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(bow),
             "SGG    ",
             "S  GG  ",
             "S    G ",
@@ -33,8 +33,8 @@ public class UTBRecipesHelper {
             'S', materialB));
     }
 
-    public static void registerSwordRecipe(UltiTechBenchCraftingManager manager, String material, Item sword) {
-        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(sword),
+    public static void registerSwordRecipe(BaseCraftingManager manager, String material, Item sword) {
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(sword),
             "   E   ",
             "  ESE  ",
             " E S E ",
@@ -46,8 +46,8 @@ public class UTBRecipesHelper {
             'S', Items.STICK));
     }
 
-    public static void registerBattleAxeRecipe(UltiTechBenchCraftingManager manager, String material, Item sword) {
-        manager.addRecipe(new UTBShapedOreRecipe(getItemStack(sword),
+    public static void registerBattleAxeRecipe(BaseCraftingManager manager, String material, Item sword) {
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(sword),
             " E   E ",
             "E  S  E",
             " EESEE ",
@@ -59,7 +59,7 @@ public class UTBRecipesHelper {
             'S', Items.STICK));
     }
 
-    public static void registerEasyArmorSetRecipes(UltiTechBenchCraftingManager manager, int materialMeta, Object... outputs) {
+    public static void registerEasyArmorSetRecipes(BaseCraftingManager manager, int materialMeta, Object... outputs) {
         manager.addRecipe(getItemStack(outputs[0]),
             "EEEEEEE",
             "E     E",

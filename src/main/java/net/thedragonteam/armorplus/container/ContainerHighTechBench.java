@@ -7,8 +7,8 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HTBSlotCrafting;
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseSlotCrafting;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
@@ -34,7 +34,7 @@ public class ContainerHighTechBench extends ContainerBenchBase {
     public ContainerHighTechBench(InventoryPlayer playerInventory, TileEntityHighTechBench tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new HTBSlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getHTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
         for (int i = 0; i < RECIPE_SIZE; ++i)
             for (int j = 0; j < RECIPE_SIZE; ++j)
@@ -54,7 +54,7 @@ public class ContainerHighTechBench extends ContainerBenchBase {
      */
     @Override
     public void onCraftMatrixChanged(IInventory inventoryIn) {
-        this.craftResult.setInventorySlotContents(0, HighTechBenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
+        this.craftResult.setInventorySlotContents(0, BaseCraftingManager.getHTBInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
 
     /**

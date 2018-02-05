@@ -5,7 +5,7 @@
 package net.thedragonteam.armorplus.api.crafting.hightechbench.recipes;
 
 
-import net.thedragonteam.armorplus.api.crafting.hightechbench.HighTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 import net.thedragonteam.armorplus.util.LoaderUtils;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
@@ -20,7 +20,7 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
  */
 public class ModTinkersConstructRecipes {
 
-    public void addRecipes(HighTechBenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         if (LoaderUtils.isTiCLoaded()) {
             switch (getRD()) {
                 case EASY: {

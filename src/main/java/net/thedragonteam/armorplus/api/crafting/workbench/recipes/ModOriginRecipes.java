@@ -4,7 +4,7 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
@@ -14,7 +14,7 @@ import static net.thedragonteam.armorplus.registry.APItems.*;
 
 public class ModOriginRecipes {
 
-    public void addRecipes(WorkbenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case DISABLED:
                 break;

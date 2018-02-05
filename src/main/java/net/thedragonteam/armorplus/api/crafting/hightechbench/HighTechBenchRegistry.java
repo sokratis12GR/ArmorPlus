@@ -6,39 +6,39 @@ package net.thedragonteam.armorplus.api.crafting.hightechbench;
 
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 public class HighTechBenchRegistry {
 
     /**
-     * Created a 4x4 shaped recipe
+     * Created a 5x5 shaped recipe
      *
      * @param output is the recipe's result
      * @param params are the parameters for the recipe
-     * @result example: HighTechBenchRegistry.addInfusingRecipe(new ItemStack(Items.Stick), "XXXX", "XXXX", "XXXX", "XXXX", 'X', Items.Stick )
      */
     public static void addRecipe(ItemStack output, Object... params) {
         addShapedRecipe(output, params);
     }
 
     public static IRecipe addShapedRecipe(ItemStack output, Object... params) {
-        return HighTechBenchCraftingManager.getInstance().addRecipe(output, params);
+        return BaseCraftingManager.getHTBInstance().addRecipe(output, params);
     }
 
     public static void addShapelessRecipe(ItemStack output, Object... params) {
-        HighTechBenchCraftingManager.getInstance().addShapelessRecipe(output, params);
+        BaseCraftingManager.getHTBInstance().addShapelessRecipe(output, params);
     }
 
     /**
-     * @param recipe {@link HighTechBenchCraftingManager#addRecipe(IRecipe)}
+     * @param recipe {@link BaseCraftingManager#addRecipe(IRecipe)}
      */
     public static void addRecipe(IRecipe recipe) {
-        HighTechBenchCraftingManager.getInstance().getRecipeList().add(recipe);
+        BaseCraftingManager.getHTBInstance().getRecipeList().add(recipe);
     }
 
     /**
-     * @param recipe {@link HighTechBenchCraftingManager#removeRecipe(IRecipe)} (IRecipe)}
+     * @param recipe {@link BaseCraftingManager#removeRecipe(IRecipe)} (IRecipe)}
      */
     public static void removeRecipe(IRecipe recipe) {
-        HighTechBenchCraftingManager.getInstance().getRecipeList().remove(recipe);
+        BaseCraftingManager.getHTBInstance().getRecipeList().remove(recipe);
     }
 }

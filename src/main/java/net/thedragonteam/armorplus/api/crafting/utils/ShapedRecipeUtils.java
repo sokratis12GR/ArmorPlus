@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.api.crafting.utils;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
@@ -30,14 +31,14 @@ public class ShapedRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCraftingImproved inv) {
+    public static boolean matches(int xy, int recipeWidth, int recipeHeight, NonNullList<ItemStack> input, InventoryCraftingImproved inv) {
         return IntStream.rangeClosed(0, xy - recipeWidth).anyMatch(i -> IntStream.rangeClosed(0, xy - recipeHeight).anyMatch(j -> checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, true) || checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, false)));
     }
 
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private static boolean checkMatch(int xy, int recipeWidth, int recipeHeight, ItemStack[] input, InventoryCraftingImproved inv, int width, int height, boolean isMirrored) {
+    private static boolean checkMatch(int xy, int recipeWidth, int recipeHeight, NonNullList<ItemStack> input, InventoryCraftingImproved inv, int width, int height, boolean isMirrored) {
         for (int i = 0; i < xy; ++i) {
             for (int j = 0; j < xy; ++j) {
                 int k = i - width;
@@ -45,7 +46,7 @@ public class ShapedRecipeUtils {
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 if (k >= 0 && l >= 0 && k < recipeWidth && l < recipeHeight) {
-                    itemstack = isMirrored ? input[recipeWidth - k - 1 + l * recipeWidth] : input[k + l * recipeWidth];
+                    itemstack = isMirrored ? input.get(recipeWidth - k - 1 + l * recipeWidth) : input.get(k + l * recipeWidth);
                 }
 
                 ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);

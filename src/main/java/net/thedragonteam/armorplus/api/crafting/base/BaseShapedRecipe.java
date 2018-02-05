@@ -2,9 +2,10 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.api.crafting.hightechbench;
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapedRecipeUtils;
@@ -16,7 +17,8 @@ import java.util.stream.IntStream;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class HTBShapedRecipe implements IRecipe {
+public class BaseShapedRecipe implements IRecipe {
+    private int xy;
     /**
      * How many horizontal itemHandler this recipe is wide.
      */
@@ -28,20 +30,20 @@ public class HTBShapedRecipe implements IRecipe {
     /**
      * Is a array of ItemStack that composes the recipe.
      */
-    public final ItemStack[] input;
+    public final NonNullList<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
     private boolean copyIngredientNBT;
 
-    public HTBShapedRecipe(int width, int height, ItemStack[] ingredientsIn, ItemStack output) {
+    public BaseShapedRecipe(int xy, int width, int height, NonNullList<ItemStack> ingredientsIn, ItemStack output) {
+        this.xy = xy;
         this.recipeWidth = width;
         this.recipeHeight = height;
         this.input = ingredientsIn;
 
-        IntStream.range(0, this.input.length).filter(i -> this.input[i].isEmpty()).forEachOrdered(i -> this.input[i] = ItemStack.EMPTY);
-
+        IntStream.range(0, this.getInput().size()).filter(i -> this.getInput().get(i).isEmpty()).forEachOrdered(i -> this.getInput().set(i, ItemStack.EMPTY));
         this.recipeOutput = output;
     }
 
@@ -56,7 +58,7 @@ public class HTBShapedRecipe implements IRecipe {
      */
     @Override
     public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World worldIn) {
-        return ShapedRecipeUtils.matches(5, recipeWidth, recipeHeight, input, inv);
+        return ShapedRecipeUtils.matches(xy, recipeWidth, recipeHeight, input, inv);
     }
 
     /**
@@ -68,22 +70,22 @@ public class HTBShapedRecipe implements IRecipe {
         return ShapedRecipeUtils.getCraftingResult(getRecipeOutput(), copyIngredientNBT, inv);
     }
 
-    public int getWidth() {
-        return recipeWidth;
-    }
-
-    public int getHeight() {
-        return recipeHeight;
-    }
-
     /**
      * Returns the input for this recipe, any mod accessing this value should never
      * manipulate the values in this array as it will effect the recipe itself.
      *
      * @return The recipes input vales.
      */
-    public Object[] getInput() {
+    public NonNullList<ItemStack> getInput() {
         return this.input;
+    }
+
+    public int getWidth() {
+        return recipeWidth;
+    }
+
+    public int getHeight() {
+        return recipeHeight;
     }
 
     /**

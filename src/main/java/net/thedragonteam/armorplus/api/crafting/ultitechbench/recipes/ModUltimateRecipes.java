@@ -6,7 +6,7 @@ package net.thedragonteam.armorplus.api.crafting.ultitechbench.recipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.thedragonteam.armorplus.api.crafting.ultitechbench.UltiTechBenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
@@ -18,7 +18,7 @@ import static net.thedragonteam.armorplus.util.Utils.setUnbreakable;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModUltimateRecipes {
-    public void addRecipes(UltiTechBenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         /* Sets The Ultimate Armor Unbreakable */
         setUnbreakable(getItemStack(theUltimateHelmet));
         setUnbreakable(getItemStack(theUltimateChestplate));
@@ -39,7 +39,7 @@ public class ModUltimateRecipes {
             'O', compressedObsidian,
             'L', getItemStack(lavaCrystal, 1));
         /* The Ultimate Armor */
-        if (global_registry.enableTheUltimateArmor &&recipes. enableTheUltimateArmorRecipes) {
+        if (global_registry.enableTheUltimateArmor && recipes.enableTheUltimateArmorRecipes) {
             manager.addRecipe(getItemStack(theUltimateHelmet),
                 " UUUUU ",
                 "UCCLCCU",

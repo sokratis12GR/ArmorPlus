@@ -4,8 +4,8 @@
 
 package net.thedragonteam.armorplus.api.crafting.workbench.recipes;
 
-import net.thedragonteam.armorplus.api.crafting.workbench.WBShapedOreRecipe;
-import net.thedragonteam.armorplus.api.crafting.workbench.WorkbenchCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
@@ -15,7 +15,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModSpecialMobRecipes {
 
-    public void addRecipes(WorkbenchCraftingManager manager) {
+    public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY:
                 if (global_registry.enableChickenArmor && recipes.enableChickenArmorRecipes) {
@@ -28,12 +28,12 @@ public class ModSpecialMobRecipes {
             case EXPERT:
             case HELLISH:
                 if (global_registry.enableChickenArmor && recipes.enableChickenArmorRecipes) {
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenHelmet), "   ", "FFF", "E E", 'F', "feather", 'E', "egg"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenHelmet), "FFF", "E E", "   ", 'F', "feather", 'E', "egg"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenChestplate), "E E", "FEF", "FFF", 'F', "feather", 'E', "egg"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenLeggings), "EFE", "F F", "F F", 'F', "feather", 'E', "egg"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenBoots), "   ", "F F", "E E", 'F', "feather", 'E', "egg"));
-                    manager.addRecipe(new WBShapedOreRecipe(getItemStack(chickenBoots), "F F", "E E", "   ", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenHelmet), "   ", "FFF", "E E", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenHelmet), "FFF", "E E", "   ", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenChestplate), "E E", "FEF", "FFF", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenLeggings), "EFE", "F F", "F F", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenBoots), "   ", "F F", "E E", 'F', "feather", 'E', "egg"));
+                    manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenBoots), "F F", "E E", "   ", 'F', "feather", 'E', "egg"));
                 }
                 if (global_registry.enableSlimeArmor && recipes.enableSlimeArmorRecipes) {
                     WBRecipesHelper.createArmorRecipes(manager, "blockSlime", slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);

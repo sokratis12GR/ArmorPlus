@@ -1,33 +1,31 @@
-/*
- * Copyright (c) TheDragonTeam 2016-2017.
- */
-
-package net.thedragonteam.armorplus.api.crafting.hightechbench;
+package net.thedragonteam.armorplus.api.crafting.base;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapelessRecipeUtils;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class HTBShapelessRecipe implements IRecipe {
-    public final List<ItemStack> input;
+public class BaseShapelessRecipe implements IRecipe {
+
+    public final NonNullList<ItemStack> input;
     /**
      * Is the ItemStack that you get when craft the recipe.
      */
     private final ItemStack recipeOutput;
 
-    public HTBShapelessRecipe(ItemStack output, List<ItemStack> inputList) {
+    public BaseShapelessRecipe(ItemStack output, NonNullList<ItemStack> inputList) {
         this.recipeOutput = output;
         this.input = inputList;
     }
 
+    @Override
     @Nonnull
     public ItemStack getRecipeOutput() {
         return this.recipeOutput;
@@ -56,5 +54,9 @@ public class HTBShapelessRecipe implements IRecipe {
     @Override
     public int getRecipeSize() {
         return this.input.size();
+    }
+
+    public NonNullList<ItemStack> getInput() {
+        return input;
     }
 }
