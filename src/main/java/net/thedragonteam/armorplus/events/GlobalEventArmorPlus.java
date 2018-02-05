@@ -10,6 +10,8 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 import java.awt.*;
@@ -18,7 +20,8 @@ import java.util.Random;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-@EventBusSubscriber(modid = ArmorPlus.MODID)
+@EventBusSubscriber(modid = ArmorPlus.MODID, value = Side.CLIENT)
+@SideOnly(Side.CLIENT)
 public class GlobalEventArmorPlus {
 
     public static Random random = new Random();
