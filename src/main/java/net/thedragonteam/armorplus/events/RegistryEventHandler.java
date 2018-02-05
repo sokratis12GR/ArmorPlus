@@ -3,12 +3,15 @@ package net.thedragonteam.armorplus.events;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.DataFixesManager;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -28,11 +31,13 @@ import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.*;
 
 /**
@@ -136,6 +141,32 @@ public class RegistryEventHandler {
         });
     }
 
+    private static void registerBenchBlocks(Register<Item> event, Block... blocks) {
+        Arrays.stream(blocks).forEachOrdered(block -> {
+            if (areNotNull(block, block.getRegistryName())) {
+                ItemBlock itemBlock = new ItemBlock(block) {
+                    {
+                        setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+                    }
+                    @Override
+                    public EnumRarity getRarity(ItemStack stack) {
+                        if (getRegistryName() == setRL("workbench")) {
+                            return addRarity("WORKBENCH", TextFormatting.BLUE, "Workbench");
+                        } else if (getRegistryName() == setRL("high_tech_bench")) {
+                            return addRarity("HIGH_TECH", TextFormatting.DARK_RED, "High-Tech Bench");
+                        } else if (getRegistryName() == setRL("ulti_tech_bench")) {
+                            return addRarity("ULTI_TECH", TextFormatting.GREEN, "Ulti-Tech Bench");
+                        } else if (getRegistryName() == setRL("champion_bench")) {
+                            return addRarity("CHAMPION", TextFormatting.GOLD, "Champion Bench");
+                        }
+                        return EnumRarity.COMMON;
+                    }
+                };
+                event.getRegistry().register(itemBlock);
+            }
+        });
+    }
+
     private static void registerAllItemBlocks(Register<Item> event, Block[]... blockArray) {
         Arrays.stream(blockArray).forEachOrdered(blockList -> registerItemBlock(event, blockList));
     }
@@ -151,7 +182,7 @@ public class RegistryEventHandler {
     @SubscribeEvent
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
-        registerAllItemBlocks(event, benches);
+        registerBenchBlocks(event, benches);
         //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
             oreLavaCrystal, compressedObsidian, steelBlock, electricalBlock, lavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
@@ -173,6 +204,7 @@ public class RegistryEventHandler {
         registerAllItems(event,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
+        registerAllItems(event, horseArmors);
         registerAllItems(event,
             sword, battleAxe, bow
         );
