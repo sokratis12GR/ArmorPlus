@@ -21,6 +21,7 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.stream.IntStream.range;
 import static net.minecraft.init.Blocks.*;
@@ -154,9 +155,9 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.areEffectsEnabled()) {
-            for (int i = 0; i < addNegativePotionEffect.length; i++) {
-                addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD);
-            }
+            IntStream.range(0, addNegativePotionEffect.length).forEach(i ->
+                addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD)
+            );
         }
         return true;
     }

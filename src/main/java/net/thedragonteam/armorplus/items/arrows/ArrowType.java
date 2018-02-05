@@ -19,31 +19,31 @@ import static java.util.Locale.ROOT;
 public enum ArrowType {
     COAL("Applies Blindness", 2.0, TextFormatting.GRAY) {
         @Override
-        public EntityArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityCoalArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityCoalArrow(world, shooter);
         }
     },
     LAPIS("Applies Nausea", 3.5, TextFormatting.DARK_AQUA) {
         @Override
-        public EntityArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityLapisArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLapisArrow(world, shooter);
         }
     },
     REDSTONE("Applies Slowness", 3.5D, TextFormatting.DARK_RED) {
         @Override
-        public EntityArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityRedstoneArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityRedstoneArrow(world, shooter);
         }
     },
     INFUSED_LAVA("Sets on Fire", 5.5D, TextFormatting.GOLD) {
         @Override
-        public EntityArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityLavaArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLavaArrow(world, shooter);
         }
     },
     ENDER_DRAGON("Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE) {
         @Override
-        public EntityArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityEnderDragonArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityEnderDragonArrow(world, shooter);
         }
     };

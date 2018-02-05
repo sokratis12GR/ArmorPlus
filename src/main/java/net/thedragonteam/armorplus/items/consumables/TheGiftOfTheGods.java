@@ -59,7 +59,7 @@ public class TheGiftOfTheGods extends BaseItem {
     @SuppressWarnings("unchecked")
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        String[] blackListedItems =tgotg.blackListedItems;
+        String[] blackListedItems = tgotg.blackListedItems;
 
         NBTTagCompound nbt = (playerIn.getHeldItem(hand).hasTagCompound()) ? playerIn.getHeldItem(hand).getTagCompound() : new NBTTagCompound();
 
@@ -74,7 +74,7 @@ public class TheGiftOfTheGods extends BaseItem {
             count = 256 + random.nextInt(32000 - 256);
             item = Item.getItemById(count);
         }
-        while (item == null || item == ItemStack.EMPTY.getItem() || item == ItemStackUtils.getItem(Arrays.toString(blackListedItems)) && tgotg.enableBlackList);
+        while (item == null || getItemStack(item).isEmpty() || (tgotg.enableBlackList && item == ItemStackUtils.getItem(Arrays.toString(blackListedItems))));
 
         ItemStack heldMainHand = playerIn.getHeldItemMainhand();
         Item itemMainHand = heldMainHand.getItem();
@@ -88,7 +88,7 @@ public class TheGiftOfTheGods extends BaseItem {
                 int cooldown = 0;
                 if (heldMainHand.isEmpty() && itemMainHand == itemHeld) {
                     if (!debugMode && !cooldownTracker.hasCooldown(itemHeld)) {
-                        cooldownTracker.setCooldown(itemMainHand,tgotg. cooldownTicks);
+                        cooldownTracker.setCooldown(itemMainHand, tgotg.cooldownTicks);
                     } else if (debugMode && debugModeTGOTG) {
                         cooldownTracker.setCooldown(itemMainHand, cooldown);
                     }
