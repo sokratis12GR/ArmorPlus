@@ -10,4 +10,4 @@ A: **Yes**, but it would be nice if you could follow the instructions below, nor
 
 ##Private Modpacks
 
-**Optionally*, if you make a Private Modpack you have to make sure that you give credits to the author(s): sokratis12GR & TheDragonTeam and post a link back to this page, also if you want you can tell me about it in PM but it's not required
+**Optionally**, if you make a Private Modpack you have to make sure that you give credits to the author(s): sokratis12GR & TheDragonTeam and post a link back to this page, also if you want you can tell me about it in PM but it's not required
