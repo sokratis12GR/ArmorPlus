@@ -123,6 +123,7 @@ curseforge {
             optionalLibrary 'baubles'
             optionalLibrary 'jei'
             optionalLibrary 'the-one-probe'
+            optionalLibrary 'projecte'
         }
     }
 }
