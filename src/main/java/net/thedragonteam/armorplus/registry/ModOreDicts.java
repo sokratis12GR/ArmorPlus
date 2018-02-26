@@ -70,11 +70,14 @@ public class ModOreDicts {
         });
         //Materials
         registerWildOre("chainmail", materials, 0);
+        registerWildOre("scaleGuardian", materials, 1);
+        registerWildOre("guardianScale", materials, 1);
         registerWildOre("witherBone", materials, 2);
+        registerWildOre("scaleEnderDragon", materials, 3);
+        registerWildOre("enderDragonScale", materials, 3);
+        registerWildOre("dragonScale", materials, 3);
         registerWildOre("materialTheUltimate", materials, 4);
         registerWildOre("materialUltimate", materials, 4);
-        registerWildOre("scaleGuardian", materials, 1);
-        registerWildOre("scaleEnderDragon", materials, 3);
         //Vanilla
         registerOre("itemCoal", COAL);
         registerOre("coal", COAL);

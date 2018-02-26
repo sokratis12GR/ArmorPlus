@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.registry;
 
+import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.armorplus.armors.horse.ItemHorseArmor;
@@ -15,6 +16,7 @@ import net.thedragonteam.armorplus.items.books.ItemAPBook;
 import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
+import net.thedragonteam.armorplus.items.dev.ItemSpawnStructure;
 import net.thedragonteam.armorplus.items.enums.BattleAxes;
 import net.thedragonteam.armorplus.items.enums.Bows;
 import net.thedragonteam.armorplus.items.enums.Items;
@@ -26,6 +28,7 @@ import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_regist
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.enums.Cosmetics.*;
 import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
+import static net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT.TOWER;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -33,11 +36,16 @@ import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
 public class ModItems {
 
     public static ItemAPBook bookInfo = new ItemAPBook();
-    public static ItemMaterial materials = new ItemMaterial();
     public static BaseItem steelIngot = new BaseItem(Items.STEEL_INGOT), electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
     public static RedstoneApple redstoneApple = new RedstoneApple();
     public static LavaCrystal lavaCrystal = new LavaCrystal();
     public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
+    public static ItemMaterial materials = new ItemMaterial();
+    public static ItemAdvanced chainmail = new ItemAdvanced("chainmail", TextFormatting.GRAY, "Chainmail");
+    public static ItemAdvanced guardianScale = new ItemAdvanced("guardian_scale", TextFormatting.AQUA, "Guardian Scale");
+    public static ItemAdvanced witherBone = new ItemAdvanced("wither_bone", TextFormatting.WHITE, "Wither Bone");
+    public static ItemAdvanced enderDragonScale = new ItemAdvanced("ender_dragon_scale", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
+    public static ItemAdvanced theUltimateMaterial = new ItemAdvanced("the_ultimate_material", TextFormatting.GREEN, "The Ultimate Material");
     public static boolean[] isArmorEnabled = new boolean[]{
         global_registry.enableCoalArmor, global_registry.enableEmeraldArmor, global_registry.enableLapisArmor, global_registry.enableLavaArmor, global_registry.enableObsidianArmor, global_registry.enableRedstoneArmor,
         global_registry.enableChickenArmor, global_registry.enableSlimeArmor, global_registry.enableGuardianArmor, global_registry.enableSuperStarArmor, global_registry.enableEnderDragonArmor,
@@ -92,6 +100,7 @@ public class ModItems {
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
     public static ItemHorseArmor[] horseArmors = new ItemHorseArmor[9];
+    public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", TOWER);
 
     public static void registerItems() {
         //HorseArmors

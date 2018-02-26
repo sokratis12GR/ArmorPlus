@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.potions.base.PotionBaseGood;
 public class PotionEmpty extends PotionBaseGood {
 
     public PotionEmpty() {
-        super(0xfff, "empty");
+        super(0xffffff, "empty");
     }
 
     @Override

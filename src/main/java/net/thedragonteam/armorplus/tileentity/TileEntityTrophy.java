@@ -44,7 +44,7 @@ public class TileEntityTrophy extends TileEntity {
      * Get the name of this object. For players this returns their username
      */
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.shulkerBox";
+        return this.hasCustomName() ? this.customName : "container.trophy";
     }
 
     /**
@@ -58,10 +58,9 @@ public class TileEntityTrophy extends TileEntity {
         this.customName = name;
     }
 
-    @Nullable
     public ResourceLocation getEntityId() {
         String s = this.entityData.getNbt().getString("id");
-        return StringUtils.isNullOrEmpty(s) ? null : new ResourceLocation(s);
+        return StringUtils.isNullOrEmpty(s) ? new ResourceLocation("minecraft:pig") : new ResourceLocation(s);
     }
 
     public void setEntityId(@Nullable ResourceLocation id) {
@@ -84,7 +83,6 @@ public class TileEntityTrophy extends TileEntity {
         return nbt;
     }
 
-    @SideOnly(Side.CLIENT)
     public Entity getCachedEntity() {
         if (this.cachedEntity == null) {
             this.cachedEntity = AnvilChunkLoader.readWorldEntity(this.entityData.getNbt(), this.getWorld(), false);
@@ -154,7 +152,9 @@ public class TileEntityTrophy extends TileEntity {
 
     public void setNextEntityData(WeightedSpawnerEntity entityData) {
         this.entityData = entityData;
-
+        if (!this.getWorld().isRemote) {
+            return;
+        }
         if (this.getWorld() != null) {
             IBlockState iblockstate = this.getWorld().getBlockState(this.getPos());
             this.getWorld().notifyBlockUpdate(this.pos, iblockstate, iblockstate, 4);
