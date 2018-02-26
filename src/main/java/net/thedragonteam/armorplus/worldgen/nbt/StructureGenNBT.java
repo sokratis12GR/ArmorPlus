@@ -32,8 +32,7 @@ import static net.thedragonteam.armorplus.util.WorldGenUtils.getGroundFromAbove;
  **/
 public class StructureGenNBT implements IWorldGenerator {
 
-    private static final ResourceLocation TOWER = setRL("tower");
-
+    public static final ResourceLocation TOWER = setRL("tower");
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
