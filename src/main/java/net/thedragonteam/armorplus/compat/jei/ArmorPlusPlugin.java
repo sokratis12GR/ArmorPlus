@@ -29,7 +29,9 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableJEIIntegration;
-import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.registry.APItems.enderDragonScale;
+import static net.thedragonteam.armorplus.registry.APItems.guardianScale;
+import static net.thedragonteam.armorplus.registry.APItems.witherBone;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
@@ -117,10 +119,10 @@ public class ArmorPlusPlugin implements IModPlugin {
     }
 
     private void handleRecipes(IModRegistry registry, String category) {
-        registry.handleRecipes(BaseShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getWidth(), recipe.getHeight()), category);
+        registry.handleRecipes(BaseShapedRecipe.class, recipe -> new ShapedRecipeWrapper(recipe, recipe.input, recipe.getRecipeWidth(), recipe.getRecipeHeight()), category);
         registry.handleRecipes(BaseShapelessRecipe.class, recipe -> new ShapelessRecipeWrapper(recipe, recipe.input), category);
         registry.handleRecipes(BaseShapelessOreRecipe.class, recipe -> new ShapelessOreRecipeWrapper(jeiHelper, recipe, recipe.getInput()), category);
-        registry.handleRecipes(BaseShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getWidth(), recipe.getHeight()), category);
+        registry.handleRecipes(BaseShapedOreRecipe.class, recipe -> new ShapedOreRecipeWrapper(jeiHelper, recipe, recipe.getInput(), recipe.getRecipeWidth(), recipe.getRecipeHeight()), category);
     }
 
     private void blackListIngredients(IIngredientBlacklist blacklist, Object... stacks) {
