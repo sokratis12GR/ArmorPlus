@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
@@ -25,7 +26,9 @@ public class RenderCosmetics {
 
     @SideOnly(Side.CLIENT)
     public static void render(RenderCosmetics cosmetics, EntityPlayer player, float partialTicks) {
-        if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE)) return;
+        if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE) || player.isPotionActive(MobEffects.INVISIBILITY)) {
+            return;
+        }
         boolean isBlock = cosmetics.renderCosmetics.getItem() instanceof ItemBlock;
 
         GlStateManager.pushMatrix();

@@ -23,6 +23,7 @@ import java.util.Properties;
 
 import static java.util.Objects.requireNonNull;
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
+import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -54,11 +55,10 @@ public class CosmeticsRenderInit {
                 //Get the Item from the String
                 ResourceLocation resLoc = new ResourceLocation(registryName);
                 if (Item.REGISTRY.containsKey(resLoc)) {
-                    stack = new ItemStack(requireNonNull(ForgeRegistries.ITEMS.getValue(resLoc)), 1, meta);
+                    stack = getItemStack(requireNonNull(ForgeRegistries.ITEMS.getValue(resLoc)), meta);
                 } else if (Block.REGISTRY.containsKey(resLoc)) {
-                    stack = new ItemStack(requireNonNull(ForgeRegistries.BLOCKS.getValue(resLoc)), 1, meta);
+                    stack = getItemStack(requireNonNull(ForgeRegistries.BLOCKS.getValue(resLoc)), meta);
                 }
-                //Get the Entity from the String
 
                 //Add a new Special Renderer to the list
                 if (!stack.isEmpty()) {
