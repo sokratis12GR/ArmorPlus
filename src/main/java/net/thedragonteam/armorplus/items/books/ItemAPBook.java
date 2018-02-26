@@ -24,8 +24,9 @@ public class ItemAPBook extends BaseItem {
     @Override
     @SideOnly(Side.CLIENT)
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand hand) {
-        if (!player.getHeldItem(hand).isEmpty())
+        if (!player.getHeldItem(hand).isEmpty()) {
             Minecraft.getMinecraft().displayGuiScreen(new GuiArmorPlusInfo());
+        }
         return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
 

@@ -35,6 +35,7 @@ public class GlobalEventArmorPlus {
         Color dark_purple = new Color(60, 26, 70);
         Color purple = new Color(100, 27, 129);
         Color light_green = new Color(101, 255, 93);
+        Color light_blue = new Color(53, 92, 255);
 
         if (rl != null && rl.getResourceDomain().equals("armorplus")) {
             String rp = rl.getResourcePath();
@@ -46,13 +47,13 @@ public class GlobalEventArmorPlus {
                 setBorderColor(event, Color.GRAY);
             } else if (rp.contains("lapis")) {
                 setBorderColor(event, Color.BLUE);
-            } else if (rp.contains("redstone") || rp.contains("ardite")) {
+            } else if (rp.contains("redstone") || rp.contains("ardite") || rp.contains("high_tech_bench")) {
                 setBorderColor(event, Color.RED);
             } else if (rp.contains("emerald")) {
                 setBorderColor(event, Color.GREEN);
             } else if (rp.contains("obsidian")) {
                 setBorderColor(event, dark_purple);
-            } else if (rp.contains("lava")) {
+            } else if (rp.contains("lava") || rp.contains("champion_bench")) {
                 setBorderColor(event, gold);
             } else if (rp.contains("guardian") || displayName.contains("Guardian") || rp.contains("chicken")) {
                 setBorderColor(event, Color.CYAN);
@@ -60,8 +61,10 @@ public class GlobalEventArmorPlus {
                 setBorderColor(event, Color.WHITE);
             } else if (rp.contains("ender_dragon") || displayName.contains("Ender Dragon") || rp.contains("manyullyn") || rp.contains("knight_slime")) {
                 setBorderColor(event, purple);
-            } else if (rp.contains("ultimate") || displayName.contains("Ultimate") || rp.contains("chicken")) {
+            } else if (rp.contains("ultimate") || displayName.contains("Ultimate") || rp.contains("slime") || rp.contains("ulti_tech_bench")) {
                 setBorderColor(event, light_green);
+            } else if (rp.contains("cobalt") || rp.contains("workbench")) {
+                setBorderColor(event, light_blue);
             }
         }
     }

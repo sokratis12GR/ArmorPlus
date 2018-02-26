@@ -76,30 +76,14 @@ public class TheGiftOfTheGods extends BaseItem {
         }
         while (item == null || getItemStack(item).isEmpty() || (tgotg.enableBlackList && item == ItemStackUtils.getItem(Arrays.toString(blackListedItems))));
 
-        ItemStack heldMainHand = playerIn.getHeldItemMainhand();
-        Item itemMainHand = heldMainHand.getItem();
-        ItemStack heldOffHand = playerIn.getHeldItemOffhand();
-        Item itemOffHand = heldOffHand.getItem();
-        ItemStack getHeld = playerIn.getHeldItem(hand);
-        Item itemHeld = getHeld.getItem();
-        CooldownTracker cooldownTracker = playerIn.getCooldownTracker();
+        ItemStack heldMainHand = playerIn.getHeldItemMainhand(), heldOffHand = playerIn.getHeldItemOffhand();
+        ItemStack heldStack = playerIn.getHeldItem(hand);
+        CooldownTracker tracker = playerIn.getCooldownTracker();
+        boolean flag = debugMode && debugModeTGOTG;
         if (!worldIn.isRemote) {
             if (tgotg.enable) {
-                int cooldown = 0;
-                if (heldMainHand.isEmpty() && itemMainHand == itemHeld) {
-                    if (!debugMode && !cooldownTracker.hasCooldown(itemHeld)) {
-                        cooldownTracker.setCooldown(itemMainHand, tgotg.cooldownTicks);
-                    } else if (debugMode && debugModeTGOTG) {
-                        cooldownTracker.setCooldown(itemMainHand, cooldown);
-                    }
-                } else if (!heldOffHand.isEmpty() && itemOffHand == itemHeld) {
-                    if (!debugMode && !cooldownTracker.hasCooldown(itemHeld)) {
-                        cooldownTracker.setCooldown(itemOffHand, tgotg.cooldownTicks);
-                    } else if (debugMode && debugModeTGOTG) {
-                        cooldownTracker.setCooldown(itemOffHand, cooldown);
-                    }
-                }
-
+                this.setCooldown(tracker, heldMainHand, heldStack, flag);
+                this.setCooldown(tracker, heldOffHand, heldStack, flag);
                 playerIn.dropItem(item, 1);
                 playerIn.sendStatusMessage(setTextTranslation("status.armorplus.tgotg.gained_item", item.getItemStackDisplayName(playerIn.getHeldItem(hand)), item.getRegistryName()), false);
                 if (debugMode && debugModeTGOTG)
@@ -110,6 +94,19 @@ public class TheGiftOfTheGods extends BaseItem {
             playerIn.getHeldItem(hand).damageItem(1, playerIn);
         }
         return new ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+    }
+
+    private void setCooldown(CooldownTracker tracker, ItemStack handStack, ItemStack heldStack, boolean flag) {
+        int cd = 0;
+        Item handItem = handStack.getItem();
+        Item heldItem = heldStack.getItem();
+        if (!handStack.isEmpty() && handItem == heldItem) {
+            if (!flag && !tracker.hasCooldown(heldItem)) {
+                tracker.setCooldown(handItem, tgotg.cooldownTicks);
+            } else if (flag) {
+                tracker.setCooldown(handItem, cd);
+            }
+        }
     }
 
     @SideOnly(Side.CLIENT)

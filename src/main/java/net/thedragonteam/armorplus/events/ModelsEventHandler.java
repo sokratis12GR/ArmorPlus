@@ -1,19 +1,26 @@
 package net.thedragonteam.armorplus.events;
 
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.RenderGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.RenderFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.RenderSkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
+import net.thedragonteam.armorplus.entity.entitygolem.RenderIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
-import net.thedragonteam.armorplus.entity.render.*;
+import net.thedragonteam.armorplus.entity.entityzombie.RenderEnderDragonZombie;
+import net.thedragonteam.armorplus.entity.render.RenderModdedArrow;
 
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
@@ -51,6 +58,8 @@ public class ModelsEventHandler {
         registerModels(isArmorEnabled,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
+        registerModels(towerSpawnItem);
+        registerModels(chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
         registerModels(horseArmors);
         registerModels(isSwordEnabled, sword);
         registerModels(isBattleAxeEnabled, battleAxe);
@@ -63,17 +72,21 @@ public class ModelsEventHandler {
         registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
         registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
         //Arrows
-        registerEntityRenderingHandler(EntityCoalArrow.class, RenderCoalArrow::new);
-        registerEntityRenderingHandler(EntityLapisArrow.class, RenderLapisArrow::new);
-        registerEntityRenderingHandler(EntityRedstoneArrow.class, RenderRedstoneArrow::new);
-        registerEntityRenderingHandler(EntityLavaArrow.class, RenderLavaArrow::new);
-        registerEntityRenderingHandler(EntityEnderDragonArrow.class, RenderEnderDragonArrow::new);
+        registerRenderingHandler(EntityCoalArrow.class, "coal");
+        registerRenderingHandler(EntityLapisArrow.class, "lapis");
+        registerRenderingHandler(EntityRedstoneArrow.class, "redstone");
+        registerRenderingHandler(EntityLavaArrow.class, "lava");
+        registerRenderingHandler(EntityEnderDragonArrow.class, "ender_dragon");
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //Bosses
-        //  registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
+        registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
         registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
         //Boss Projectiles
-        //  registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
+        registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
         registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
+    }
+
+    private static void registerRenderingHandler(Class<? extends EntityArrow> entityClass, String name) {
+        registerEntityRenderingHandler(entityClass, rm -> new RenderModdedArrow<>(rm, name));
     }
 }

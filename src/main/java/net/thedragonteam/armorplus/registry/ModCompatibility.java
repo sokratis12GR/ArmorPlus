@@ -21,7 +21,8 @@ public class ModCompatibility {
             new CompatibilityJustEnoughItems(),
             new CompatibilityBaubles(),
             new CompatibilityTinkersConstruct(),
-            new CompatibilityMineTweaker()
+            new CompatibilityMineTweaker(),
+            new CompatibilityProjectE()
         );
     }
 

@@ -3,29 +3,35 @@ package net.thedragonteam.armorplus.events;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixesManager;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraftforge.common.util.CompoundDataFixer;
+import net.minecraftforge.common.util.ModFixs;
+import net.minecraftforge.event.RegistryEvent.MissingMappings;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.benches.BlockBench;
+import net.thedragonteam.armorplus.blocks.benches.ItemBlockBench;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
+import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
 import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
 import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
+import net.thedragonteam.armorplus.items.materials.ItemRename;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
 import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.util.Utils;
@@ -37,7 +43,6 @@ import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModE
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 import static net.thedragonteam.armorplus.util.Utils.*;
 
 /**
@@ -45,6 +50,13 @@ import static net.thedragonteam.armorplus.util.Utils.*;
  **/
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public class RegistryEventHandler {
+
+    public static final int DATA_FIXER_VERSION = 132;
+
+    @SubscribeEvent
+    public static void registerMappings(MissingMappings<Item> e) {
+        registerItemFixes();
+    }
 
     @SuppressWarnings("SameParameterValue")
     private static void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
@@ -83,8 +95,8 @@ public class RegistryEventHandler {
             0xffffff, 0x00ff00);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         // Bosses
-        //  registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
-        //  0x7ae4ff, 0x79a6ff);
+        registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
+            0x7ae4ff, 0x79a6ff);
         registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
             0x665b52, 0x845833);
     }
@@ -114,12 +126,13 @@ public class RegistryEventHandler {
     }
 
     private static void registerTEFixes() {
-        TileEntityLavaInfuser.registerFixesLavaInfuser(DataFixesManager.createFixer());
-        TileEntityWorkbench.registerWBFixes(DataFixesManager.createFixer());
-        TileEntityHighTechBench.registerHTBFixes(DataFixesManager.createFixer());
-        TileEntityUltiTechBench.registerUTBFixes(DataFixesManager.createFixer());
-        TileEntityChampionBench.registerCBFixes(DataFixesManager.createFixer());
-        TileEntityTrophy.registerTrophyFixes(DataFixesManager.createFixer());
+        DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
+        TileEntityLavaInfuser.registerFixesLavaInfuser(dataFixer);
+        TileEntityWorkbench.registerWBFixes(dataFixer);
+        TileEntityHighTechBench.registerHTBFixes(dataFixer);
+        TileEntityUltiTechBench.registerUTBFixes(dataFixer);
+        TileEntityChampionBench.registerCBFixes(dataFixer);
+        TileEntityTrophy.registerTrophyFixes(dataFixer);
     }
 
     private static void registerTileEntities() {
@@ -141,25 +154,12 @@ public class RegistryEventHandler {
         });
     }
 
-    private static void registerBenchBlocks(Register<Item> event, Block... blocks) {
+    private static void registerBenchBlocks(Register<Item> event, BlockBench... blocks) {
         Arrays.stream(blocks).forEachOrdered(block -> {
             if (areNotNull(block, block.getRegistryName())) {
-                ItemBlock itemBlock = new ItemBlock(block) {
+                ItemBlock itemBlock = new ItemBlockBench(block) {
                     {
                         setRegistryName(Objects.requireNonNull(block.getRegistryName()));
-                    }
-                    @Override
-                    public EnumRarity getRarity(ItemStack stack) {
-                        if (getRegistryName() == setRL("workbench")) {
-                            return addRarity("WORKBENCH", TextFormatting.BLUE, "Workbench");
-                        } else if (getRegistryName() == setRL("high_tech_bench")) {
-                            return addRarity("HIGH_TECH", TextFormatting.DARK_RED, "High-Tech Bench");
-                        } else if (getRegistryName() == setRL("ulti_tech_bench")) {
-                            return addRarity("ULTI_TECH", TextFormatting.GREEN, "Ulti-Tech Bench");
-                        } else if (getRegistryName() == setRL("champion_bench")) {
-                            return addRarity("CHAMPION", TextFormatting.GOLD, "Champion Bench");
-                        }
-                        return EnumRarity.COMMON;
                     }
                 };
                 event.getRegistry().register(itemBlock);
@@ -195,9 +195,14 @@ public class RegistryEventHandler {
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
-            bookInfo, materials, steelIngot, electricalIngot, redstoneApple, lavaCrystal, theGiftOfTheGods, devTool, theUltimateParts,
+            bookInfo, steelIngot, electricalIngot, redstoneApple, lavaCrystal, theGiftOfTheGods, devTool, theUltimateParts,
             itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
+        registerAllItems(event, materials);
+        //  registerAllItems(event, chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
+        // ==== SPECIAL ITEMS ===\\
+        registerAllItems(event, towerSpawnItem);
+        registerItemFixes();
         // ==== COSMETICS ==== \\
         registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan);
         // ==== GEAR ==== \\
@@ -208,6 +213,11 @@ public class RegistryEventHandler {
         registerAllItems(event,
             sword, battleAxe, bow
         );
+    }
+
+    public static void registerItemFixes() {
+        ModFixs modFixs = new CompoundDataFixer(FMLCommonHandler.instance().getDataFixer()).init(ArmorPlus.MODID, DATA_FIXER_VERSION);
+        modFixs.registerFix(FixTypes.ITEM_INSTANCE, new ItemRename());
     }
 
     @SubscribeEvent

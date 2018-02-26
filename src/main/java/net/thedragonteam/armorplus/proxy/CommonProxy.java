@@ -69,6 +69,7 @@ public class CommonProxy {
     }
 
     public void modMapping(FMLModIdMappingEvent event) {
+
         ModCompatibility.loadCompat(MAPPING);
     }
 

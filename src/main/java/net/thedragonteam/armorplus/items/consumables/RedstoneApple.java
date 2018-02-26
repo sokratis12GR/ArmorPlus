@@ -39,7 +39,6 @@ public class RedstoneApple extends ItemFood implements IModdedItem {
         return stack.getMetadata() > 0;
     }
 
-
     @Override
     public EnumRarity getRarity(ItemStack stack) {
         return (stack.getMetadata() == 0) ? EnumRarity.RARE : EPIC;
