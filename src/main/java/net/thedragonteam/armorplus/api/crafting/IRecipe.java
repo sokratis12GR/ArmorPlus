@@ -33,4 +33,5 @@ public interface IRecipe {
         IntStream.range(0, ret.size()).forEach(i -> ret.set(i, getContainerItem(inv.getStackInSlot(i))));
         return ret;
     }
+
 }

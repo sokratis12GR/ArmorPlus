@@ -31,25 +31,25 @@ public class ShapedRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(int xy, int recipeWidth, int recipeHeight, NonNullList<ItemStack> input, InventoryCraftingImproved inv) {
-        return IntStream.rangeClosed(0, xy - recipeWidth).anyMatch(i -> IntStream.rangeClosed(0, xy - recipeHeight).anyMatch(j -> checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, true) || checkMatch(xy, recipeWidth, recipeHeight, input, inv, i, j, false)));
+    public static boolean matches(int width, int height, NonNullList<ItemStack> input, InventoryCraftingImproved inv) {
+        return IntStream.rangeClosed(0, inv.getWidth() - width).anyMatch(x -> IntStream.rangeClosed(0, inv.getHeight() - height).anyMatch(y -> checkMatch(width, height, input, inv, x, y, true) || checkMatch(width, height, input, inv, x, y, false)));
     }
 
     /**
      * Checks if the region of a crafting inventory is match for the recipe.
      */
-    private static boolean checkMatch(int xy, int recipeWidth, int recipeHeight, NonNullList<ItemStack> input, InventoryCraftingImproved inv, int width, int height, boolean isMirrored) {
-        for (int i = 0; i < xy; ++i) {
-            for (int j = 0; j < xy; ++j) {
-                int k = i - width;
-                int l = j - height;
+    private static boolean checkMatch(int width, int height, NonNullList<ItemStack> input, InventoryCraftingImproved inv, int startX, int startY, boolean isMirrored) {
+        for (int x = 0; x < inv.getWidth(); ++x) {
+            for (int y = 0; y < inv.getHeight(); ++y) {
+                int subX = x - startX;
+                int subY = y - startY;
                 ItemStack itemstack = ItemStack.EMPTY;
 
-                if (k >= 0 && l >= 0 && k < recipeWidth && l < recipeHeight) {
-                    itemstack = isMirrored ? input.get(recipeWidth - k - 1 + l * recipeWidth) : input.get(k + l * recipeWidth);
+                if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
+                    itemstack = isMirrored ? input.get(width - subX - 1 + subY * width) : input.get(subX + subY * width);
                 }
 
-                ItemStack itemstack1 = inv.getStackInRowAndColumn(i, j);
+                ItemStack itemstack1 = inv.getStackInRowAndColumn(x, y);
 
                 if ((!itemstack1.isEmpty() || !itemstack.isEmpty()) && (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != OreDictionary.WILDCARD_VALUE && itemstack.getMetadata() != itemstack1.getMetadata())) {
                     return false;

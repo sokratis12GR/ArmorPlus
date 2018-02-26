@@ -65,8 +65,8 @@ public class BaseSlotCrafting extends Slot {
     }
 
     @Override
-    protected void onSwapCraft(int p_190900_1_) {
-        this.amountCrafted += p_190900_1_;
+    protected void onSwapCraft(int amount) {
+        this.amountCrafted += amount;
     }
 
     /**

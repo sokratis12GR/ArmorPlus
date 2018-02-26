@@ -16,9 +16,9 @@ public class ShapelessRecipeUtils {
     public static boolean matches(NonNullList<ItemStack> input, InventoryCraftingImproved inv) {
         List<ItemStack> list = Lists.newArrayList(input);
 
-        for (int i = 0; i < inv.getHeight(); ++i) {
-            for (int j = 0; j < inv.getWidth(); ++j) {
-                ItemStack itemstack = inv.getStackInRowAndColumn(j, i);
+        for (int x = 0; x < inv.getWidth(); ++x) {
+            for (int y = 0; y < inv.getHeight(); ++y) {
+                ItemStack itemstack = inv.getStackInRowAndColumn(y, x);
 
                 if (!itemstack.isEmpty()) {
                     boolean flag = false;

@@ -42,15 +42,16 @@ public class CraftingUtils {
     public static Map<Character, ItemStack> getCharacterItemStackMap(int index, Object[] recipeComponents) {
         Map<Character, ItemStack> map;
         for (map = Maps.newHashMap(); index < recipeComponents.length; index += 2) {
+            int secondary = index + 1;
             Character character = (Character) recipeComponents[index];
             ItemStack itemstack = ItemStack.EMPTY;
 
-            if (recipeComponents[index + 1] instanceof Item) {
-                itemstack = new ItemStack((Item) recipeComponents[index + 1]);
-            } else if (recipeComponents[index + 1] instanceof Block) {
-                itemstack = new ItemStack((Block) recipeComponents[index + 1], 1, OreDictionary.WILDCARD_VALUE);
-            } else if (recipeComponents[index + 1] instanceof ItemStack) {
-                itemstack = (ItemStack) recipeComponents[index + 1];
+            if (recipeComponents[secondary] instanceof Item) {
+                itemstack =getItemStack(recipeComponents[secondary]);
+            } else if (recipeComponents[secondary] instanceof Block) {
+                itemstack = getItemStack(recipeComponents[secondary], 1, OreDictionary.WILDCARD_VALUE);
+            } else if (recipeComponents[secondary] instanceof ItemStack) {
+                itemstack = (ItemStack) recipeComponents[secondary];
             }
 
             map.put(character, itemstack);

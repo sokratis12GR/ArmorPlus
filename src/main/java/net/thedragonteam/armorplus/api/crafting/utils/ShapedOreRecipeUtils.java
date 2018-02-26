@@ -23,14 +23,14 @@ public class ShapedOreRecipeUtils {
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    public static boolean matches(int xWidth, int yHeight, int width, int height, Object[] input, InventoryCraftingImproved inv, boolean mirrored) {
-        return IntStream.rangeClosed(0, xWidth - width).anyMatch(i -> IntStream.rangeClosed(0, yHeight - height).anyMatch(y -> checkMatch(xWidth, yHeight, input, inv, i, y, false) || mirrored && checkMatch(xWidth, yHeight, input, inv, i, y, true)));
+    public static boolean matches(int width, int height, Object[] input, InventoryCraftingImproved inv) {
+        return IntStream.rangeClosed(0, inv.getWidth() - width).anyMatch(x -> IntStream.rangeClosed(0, inv.getHeight() - height).anyMatch(y -> checkMatch(width, height, input, inv, x, y, true) || checkMatch(width, height, input, inv, x, y, false)));
     }
 
     @SuppressWarnings("unchecked")
     private static boolean checkMatch(int width, int height, Object[] input, InventoryCraftingImproved inv, int startX, int startY, boolean mirror) {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < inv.getWidth(); x++) {
+            for (int y = 0; y < inv.getHeight(); y++) {
                 int subX = x - startX;
                 int subY = y - startY;
                 Object target = null;

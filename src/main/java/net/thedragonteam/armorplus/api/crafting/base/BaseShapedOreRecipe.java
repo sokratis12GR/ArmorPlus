@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.IShapedRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapedOreRecipeUtils;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
@@ -18,15 +19,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
-public class BaseShapedOreRecipe implements IRecipe {
+public class BaseShapedOreRecipe implements IRecipe, IShapedRecipe {
 
     private int xy;
     protected ItemStack output = ItemStack.EMPTY;
     protected Object[] input = null;
-    protected int width = 0;
-    protected int height = 0;
+    protected int width = 0, height = 0;
     protected boolean mirrored = true;
 
     public BaseShapedOreRecipe(int xy, Block result, Object... recipe) {
@@ -42,19 +43,19 @@ public class BaseShapedOreRecipe implements IRecipe {
         output = result.copy();
 
         StringBuilder shape = new StringBuilder();
-        int idx = 0;
+        int index = 0;
 
-        if (recipe[idx] instanceof Boolean) {
-            mirrored = (Boolean) recipe[idx];
-            if (recipe[idx + 1] instanceof Object[]) {
-                recipe = (Object[]) recipe[idx + 1];
+        if (recipe[index] instanceof Boolean) {
+            mirrored = (Boolean) recipe[index];
+            if (recipe[index + 1] instanceof Object[]) {
+                recipe = (Object[]) recipe[index + 1];
             } else {
-                idx = 1;
+                index = 1;
             }
         }
 
-        if (recipe[idx] instanceof String[]) {
-            String[] parts = ((String[]) recipe[idx++]);
+        if (recipe[index] instanceof String[]) {
+            String[] parts = ((String[]) recipe[index++]);
 
             Arrays.stream(parts).forEachOrdered(s -> {
                 width = s.length();
@@ -63,8 +64,8 @@ public class BaseShapedOreRecipe implements IRecipe {
 
             height = parts.length;
         } else {
-            while (recipe[idx] instanceof String) {
-                String s = (String) recipe[idx++];
+            while (recipe[index] instanceof String) {
+                String s = (String) recipe[index++];
                 shape.append(s);
                 width = s.length();
                 height++;
@@ -75,16 +76,16 @@ public class BaseShapedOreRecipe implements IRecipe {
 
         HashMap<Character, Object> itemMap = new HashMap<>();
 
-        for (; idx < recipe.length; idx += 2) {
-            Character chr = (Character) recipe[idx];
-            Object in = recipe[idx + 1];
+        for (; index < recipe.length; index += 2) {
+            Character chr = (Character) recipe[index];
+            Object in = recipe[index + 1];
 
             if (in instanceof ItemStack) {
                 itemMap.put(chr, ((ItemStack) in).copy());
             } else if (in instanceof Item) {
                 itemMap.put(chr, getItemStack(in));
             } else if (in instanceof Block) {
-                itemMap.put(chr, getItemStack(in, 1, OreDictionary.WILDCARD_VALUE));
+                itemMap.put(chr, getItemStack(in, 1, WILDCARD_VALUE));
             } else if (in instanceof String) {
                 itemMap.put(chr, OreDictionary.getOres((String) in));
             } else {
@@ -152,7 +153,7 @@ public class BaseShapedOreRecipe implements IRecipe {
      */
     @Override
     public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World world) {
-        return ShapedOreRecipeUtils.matches(xy, xy, width, height, input, inv, mirrored);
+        return ShapedOreRecipeUtils.matches(width, height, input, inv);
     }
 
     public BaseShapedOreRecipe setMirrored(boolean mirror) {
@@ -170,11 +171,13 @@ public class BaseShapedOreRecipe implements IRecipe {
         return input;
     }
 
-    public int getWidth() {
-        return width;
+    @Override
+    public int getRecipeWidth() {
+        return xy;
     }
 
-    public int getHeight() {
-        return height;
+    @Override
+    public int getRecipeHeight() {
+        return xy;
     }
 }

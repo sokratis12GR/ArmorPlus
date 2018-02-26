@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
+import net.thedragonteam.armorplus.api.crafting.IShapedRecipe;
 import net.thedragonteam.armorplus.api.crafting.utils.ShapedRecipeUtils;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
 
@@ -17,7 +18,7 @@ import java.util.stream.IntStream;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class BaseShapedRecipe implements IRecipe {
+public class BaseShapedRecipe implements IRecipe, IShapedRecipe {
     private int xy;
     /**
      * How many horizontal itemHandler this recipe is wide.
@@ -58,7 +59,7 @@ public class BaseShapedRecipe implements IRecipe {
      */
     @Override
     public boolean matches(@Nonnull InventoryCraftingImproved inv, @Nonnull World worldIn) {
-        return ShapedRecipeUtils.matches(xy, recipeWidth, recipeHeight, input, inv);
+        return ShapedRecipeUtils.matches(recipeWidth, recipeHeight, input, inv);
     }
 
     /**
@@ -94,5 +95,15 @@ public class BaseShapedRecipe implements IRecipe {
     @Override
     public int getRecipeSize() {
         return this.recipeWidth * this.recipeHeight;
+    }
+
+    @Override
+    public int getRecipeWidth() {
+        return xy;
+    }
+
+    @Override
+    public int getRecipeHeight() {
+        return xy;
     }
 }
