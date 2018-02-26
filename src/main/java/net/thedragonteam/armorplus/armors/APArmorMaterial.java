@@ -22,15 +22,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.api.properties.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.IRemovable;
 import net.thedragonteam.armorplus.api.properties.IRepairable;
-import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.PotionUtils;
-import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
@@ -45,7 +44,6 @@ import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.removePotion;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -61,8 +59,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, cobaltHelmet, coalChestplate, coalLeggings, coalBoots);
+            addPerPieceEffects(player, coal.armor.addPotionEffects, coal.armor.effectLevels, coal.armor.removePotionEffects, slot);
+            addFullSetEffects(player, coal.armor.addPotionEffects, coal.armor.effectLevels, coal.armor.removePotionEffects, coalHelmet, coalChestplate, coalLeggings, coalBoots);
         }
     },
     LAPIS(lapisArmor, "lapis", global_registry.enableLapisArmor, LAPIS_BLOCK, lapis.armor.itemNameColor,
@@ -71,8 +69,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
+            addPerPieceEffects(player, lapis.armor.addPotionEffects, lapis.armor.effectLevels, lapis.armor.removePotionEffects, slot);
+            addFullSetEffects(player, lapis.armor.addPotionEffects, lapis.armor.effectLevels, lapis.armor.removePotionEffects, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
         }
     },
     REDSTONE(redstoneArmor, "redstone", global_registry.enableRedstoneArmor, REDSTONE_BLOCK, redstone.armor.itemNameColor,
@@ -81,8 +79,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
+            addPerPieceEffects(player, redstone.armor.addPotionEffects, redstone.armor.effectLevels, redstone.armor.removePotionEffects, slot);
+            addFullSetEffects(player, redstone.armor.addPotionEffects, redstone.armor.effectLevels, redstone.armor.removePotionEffects, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
         }
     },
     EMERALD(emeraldArmor, "emerald", global_registry.enableEmeraldArmor, EMERALD_BLOCK, emerald.armor.itemNameColor,
@@ -91,8 +89,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
+            addPerPieceEffects(player, emerald.armor.addPotionEffects, emerald.armor.effectLevels, emerald.armor.removePotionEffects, slot);
+            addFullSetEffects(player, emerald.armor.addPotionEffects, emerald.armor.effectLevels, emerald.armor.removePotionEffects, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
         }
     },
     OBSIDIAN(obsidianArmor, "obsidian", global_registry.enableObsidianArmor, compressedObsidian, obsidian.armor.itemNameColor,
@@ -101,8 +99,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
+            addPerPieceEffects(player, obsidian.armor.addPotionEffects, obsidian.armor.effectLevels, obsidian.armor.removePotionEffects, slot);
+            addFullSetEffects(player, obsidian.armor.addPotionEffects, obsidian.armor.effectLevels, obsidian.armor.removePotionEffects, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
         }
     },
     LAVA(lavaArmor, "infused_lava", global_registry.enableLavaArmor, getItemStack(lavaCrystal, 1), lava.armor.itemNameColor,
@@ -143,8 +141,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     player.attackEntityFrom(DamageSource.DROWN, 1f);
                 }
             }
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
+            addPerPieceEffects(player, lava.armor.addPotionEffects, lava.armor.effectLevels, lava.armor.removePotionEffects, slot);
+            addFullSetEffects(player, lava.armor.addPotionEffects, lava.armor.effectLevels, lava.armor.removePotionEffects, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
         }
     },
     GUARDIAN(guardianArmor, "guardian", global_registry.enableGuardianArmor, getItemStack(materials, 1), guardian.armor.itemNameColor,
@@ -153,8 +151,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
+            addPerPieceEffects(player, guardian.armor.addPotionEffects, guardian.armor.effectLevels, guardian.armor.removePotionEffects, slot);
+            addFullSetEffects(player, guardian.armor.addPotionEffects, guardian.armor.effectLevels, guardian.armor.removePotionEffects, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
         }
     },
     SUPER_STAR(superStarArmor, "super_star", global_registry.enableSuperStarArmor, getItemStack(materials, 2), super_star.armor.itemNameColor,
@@ -170,17 +168,23 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             if (isArmorEmpty(head, chest, legs, feet)) {
                 return;
             }
-            if (super_star.armor.enableSetEffects && head.getItem() == superStarHelmet && chest.getItem() == superStarChestplate && legs.getItem() == superStarLeggings && feet.getItem() == superStarBoots) {
-                List<Potion> potions = Arrays.stream(super_star.armor.addPotionEffects).map(PotionUtils::getPotion).collect(Collectors.toList());
-                IntStream.range(0, potions.size()).forEach(i -> {
-                    Potion potionEffect = potions.get(i);
-                    if (player.getActivePotionEffect(potionEffect) == null) {
-                        addPotion(player, potionEffect, 120, super_star.armor.effectLevels[i], GOOD);
-                    }
-                });
+            if (super_star.armor.enableSetEffects) {
+                if (head.getItem() == superStarHelmet && chest.getItem() == superStarChestplate && legs.getItem() == superStarLeggings && feet.getItem() == superStarBoots) {
+                    List<Potion> potions = stream(super_star.armor.addPotionEffects).map(PotionUtils::getPotion).collect(toList());
+                    IntStream.range(0, potions.size()).forEach(i -> {
+                        Potion potionEffect = potions.get(i);
+                        if (player.getActivePotionEffect(potionEffect) == null) {
+                            addPotion(player, potionEffect, 120, super_star.armor.effectLevels[i], GOOD);
+                        }
+                    });
+                    List<Potion> removablePotions = stream(super_star.armor.removePotionEffects).map(PotionUtils::getPotion).collect(toList());
+                    removablePotions.stream().filter(
+                        potionEffect -> player.getActivePotionEffect(potionEffect) != null
+                    ).forEach(
+                        player::removeActivePotionEffect
+                    );
+                }
             }
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
         }
     },
     ENDER_DRAGON(enderDragonArmor, "ender_dragon", global_registry.enableEnderDragonArmor, getItemStack(materials, 3), ender_dragon.armor.itemNameColor,
@@ -205,8 +209,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     player.capabilities.allowFlying = false;
                 }
             }
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
+            addPerPieceEffects(player, ender_dragon.armor.addPotionEffects, ender_dragon.armor.effectLevels, ender_dragon.armor.removePotionEffects, slot);
+            addFullSetEffects(player, ender_dragon.armor.addPotionEffects, ender_dragon.armor.effectLevels, ender_dragon.armor.removePotionEffects, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
         }
 
         @Override
@@ -226,8 +230,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
+            addPerPieceEffects(player, ardite.armor.addPotionEffects, ardite.armor.effectLevels, ardite.armor.removePotionEffects, slot);
+            addFullSetEffects(player, ardite.armor.addPotionEffects, ardite.armor.effectLevels, ardite.armor.removePotionEffects, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
         }
     },
     COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, getTICItemStack("ingots", 0), cobalt.armor.itemNameColor,
@@ -236,8 +240,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, cobaltHelmet, cobaltChestplate, coalLeggings, cobaltBoots);
+            addPerPieceEffects(player, cobalt.armor.addPotionEffects, cobalt.armor.effectLevels, cobalt.armor.removePotionEffects, slot);
+            addFullSetEffects(player, cobalt.armor.addPotionEffects, cobalt.armor.effectLevels, cobalt.armor.removePotionEffects, cobaltHelmet, cobaltChestplate, coalLeggings, cobaltBoots);
         }
     },
     MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, getTICItemStack("ingots", 2), manyullyn.armor.itemNameColor,
@@ -246,8 +250,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
+            addPerPieceEffects(player, manyullyn.armor.addPotionEffects, manyullyn.armor.effectLevels, manyullyn.armor.removePotionEffects, slot);
+            addFullSetEffects(player, manyullyn.armor.addPotionEffects, manyullyn.armor.effectLevels, manyullyn.armor.removePotionEffects, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
         }
     },
     KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, getTICItemStack("ingots", 3), knight_slime.armor.itemNameColor,
@@ -256,8 +260,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
+            addPerPieceEffects(player, knight_slime.armor.addPotionEffects, knight_slime.armor.effectLevels, knight_slime.armor.removePotionEffects, slot);
+            addFullSetEffects(player, knight_slime.armor.addPotionEffects, knight_slime.armor.effectLevels, knight_slime.armor.removePotionEffects, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
         }
     },
     PIG_IRON(pigIronArmor, "pig_iron", global_registry.enablePigIronArmor, getTICItemStack("ingots", 4), pig_iron.armor.itemNameColor,
@@ -278,8 +282,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     e.damageItem(1, player);
                 }
             }
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
+            addPerPieceEffects(player, pig_iron.armor.addPotionEffects, pig_iron.armor.effectLevels, pig_iron.armor.removePotionEffects, slot);
+            addFullSetEffects(player, pig_iron.armor.addPotionEffects, pig_iron.armor.effectLevels, pig_iron.armor.removePotionEffects, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
         }
     },
     SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, SLIME_BLOCK, slime.armor.itemNameColor,
@@ -288,8 +292,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
+            addPerPieceEffects(player, slime.armor.addPotionEffects, slime.armor.effectLevels, slime.armor.removePotionEffects, slot);
+            addFullSetEffects(player, slime.armor.addPotionEffects, slime.armor.effectLevels, slime.armor.removePotionEffects, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
         }
     },
     CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, Items.FEATHER, chicken.armor.itemNameColor,
@@ -298,8 +302,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            addPerPieceEffects(player, slot);
-            addFullSetEffects(player, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
+            addPerPieceEffects(player, chicken.armor.addPotionEffects, chicken.armor.effectLevels, chicken.armor.removePotionEffects, slot);
+            addFullSetEffects(player, chicken.armor.addPotionEffects, chicken.armor.effectLevels, chicken.armor.removePotionEffects, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
         }
     },;
 
@@ -333,12 +337,12 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
 
     @Override
     public List<String> getApplyEffectNames() {
-        return Arrays.asList(this.addPotionEffects);
+        return stream(this.addPotionEffects).collect(toList());
     }
 
     @Override
     public List<Integer> getApplyAmplifierLevels() {
-        return Arrays.stream(addPotionEffectAmplifiers).boxed().collect(Collectors.toList());
+        return stream(addPotionEffectAmplifiers).boxed().collect(toList());
     }
 
     @Override
@@ -377,7 +381,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
-            List<String> localizedEffects = getApplyEffectNames().stream().map(PotionUtils::localizePotion).collect(Collectors.toList());
+            List<String> localizedEffects = getApplyEffectNames().stream().map(PotionUtils::localizePotion).collect(toList());
             if (!this.enableFullArmorEffect()) {
                 addToolTipPiece(tooltip, localizedEffects, this.getApplyAmplifierLevels());
             } else {
@@ -393,51 +397,57 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         return this.enableArmor;
     }
 
-    public void addPerPieceEffects(EntityPlayer player, EntityEquipmentSlot slot) {
-        this.addEffects(player, slot == FEET ? 0 : slot == LEGS ? 1 : slot == CHEST ? 2 : slot == HEAD ? 3 : -1);
+    public void addPerPieceEffects(EntityPlayer player, String[] applyEffectNames, int[] applyEffectAmplifiers, String[] removeEffectNames, EntityEquipmentSlot slot) {
+        this.addEffects(player, stream(applyEffectNames).collect(toList()), stream(applyEffectAmplifiers).boxed().collect(toList()), stream(removeEffectNames).collect(toList()), slot == FEET ? 0 : slot == LEGS ? 1 : slot == CHEST ? 2 : slot == HEAD ? 3 : -1);
     }
 
-    public void addEffects(EntityPlayer player, int index) {
-        if (!enableFullArmorEffect() && this.getAreEffectsEnabled()[index]) {
-            List<Potion> potions = getApplyEffectNames().stream().map(PotionUtils::getPotion).collect(Collectors.toList());
-            IntStream.range(0, potions.size()).forEach(i -> {
-                Potion potionEffect = potions.get(i);
-                if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION) && potionEffect != ModPotions.EMPTY) {
-                    addPotion(player, potionEffect, getApplyAmplifierLevels().get(i), GOOD);
-                }
-            });
-            List<Potion> removablePotions = getRemoveEffectNames().stream().map(PotionUtils::getPotion).collect(Collectors.toList());
-            removablePotions.stream().filter(
-                potionEffect -> Utils.isNotNull(potionEffect) && potionEffect != ModPotions.EMPTY
-            ).forEach(
-                potionEffect -> removePotion(player, potionEffect)
-            );
+    public void addEffects(EntityPlayer player, List<String> applyEffectNames, List<Integer> applyEffectAmplifiers, List<String> removeEffectNames, int index) {
+        if (!enableFullArmorEffect()) {
+            if (this.getAreEffectsEnabled()[index]) {
+                List<Potion> potions = applyEffectNames.stream().map(PotionUtils::getPotion).collect(toList());
+                IntStream.range(0, potions.size()).forEach(i -> {
+                    Potion potionEffect = potions.get(i);
+                    if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
+                        addPotion(player, potionEffect, applyEffectAmplifiers.get(i), GOOD);
+                    }
+                });
+                List<Potion> removablePotions = removeEffectNames.stream().map(PotionUtils::getPotion).collect(toList());
+                removablePotions.stream().filter(
+                    potionEffect -> player.getActivePotionEffect(potionEffect) != null
+                ).forEach(
+                    player::removeActivePotionEffect
+                );
+            }
         }
     }
 
-    public void addFullSetEffects(EntityPlayer player, Item helmet, Item chestplate, Item leggings, Item boots) {
+    public void addFullSetEffects(EntityPlayer player, String[] applyEffectNames, int[] applyEffectAmplifiers, String[] removeEffectNames, Item helmet, Item chestplate, Item leggings, Item boots) {
+        this.addFullSetEffects(player, stream(applyEffectNames).collect(toList()), stream(applyEffectAmplifiers).boxed().collect(toList()), stream(removeEffectNames).collect(toList()), helmet, chestplate, leggings, boots);
+    }
+
+    public void addFullSetEffects(EntityPlayer player, List<String> applyEffectNames, List<Integer> applyEffectAmplifiers, List<String> removeEffectNames, Item helmet, Item chestplate, Item leggings, Item boots) {
+        ItemStack head = getStackFromSlot(player, HEAD);
+        ItemStack chest = getStackFromSlot(player, CHEST);
+        ItemStack legs = getStackFromSlot(player, LEGS);
+        ItemStack feet = getStackFromSlot(player, FEET);
         if (enableFullArmorEffect()) {
-            ItemStack head = getStackFromSlot(player, HEAD);
-            ItemStack chest = getStackFromSlot(player, CHEST);
-            ItemStack legs = getStackFromSlot(player, LEGS);
-            ItemStack feet = getStackFromSlot(player, FEET);
-            if (isNull(helmet) || isNull(chestplate) || isNull(leggings) || isNull(boots) || isArmorEmpty(head, chest, legs, feet)) {
+            if (isArmorEmpty(head, chest, legs, feet)) {
                 return;
             }
-            if (areSame(head, helmet) && areSame(chest, chestplate) && areSame(legs, leggings) && areSame(feet, boots)) {
-                List<Potion> potions = getApplyEffectNames().stream().map(PotionUtils::getPotion).collect(Collectors.toList());
+            if (this.enableFullArmorEffect() && head.getItem() == helmet && chest.getItem() == chestplate && legs.getItem() == leggings && feet.getItem() == boots) {
+                List<Potion> potions = applyEffectNames.stream().map(PotionUtils::getPotion).collect(toList());
                 IntStream.range(0, potions.size()).forEach(i -> {
                     Potion potionEffect = potions.get(i);
-                    if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION) && potionEffect != ModPotions.EMPTY) {
-                        addPotion(player, potionEffect, getApplyAmplifierLevels().get(i), GOOD);
+                    if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
+                        addPotion(player, potionEffect, applyEffectAmplifiers.get(i), GOOD);
                     }
                 });
 
-                List<Potion> removablePotions = getRemoveEffectNames().stream().map(PotionUtils::getPotion).collect(Collectors.toList());
+                List<Potion> removablePotions = removeEffectNames.stream().map(PotionUtils::getPotion).collect(toList());
                 removablePotions.stream().filter(
-                    potionEffect -> Utils.isNotNull(potionEffect) && potionEffect != ModPotions.EMPTY
+                    potionEffect -> player.getActivePotionEffect(potionEffect) != null
                 ).forEach(
-                    potionEffect -> removePotion(player, potionEffect)
+                    player::removeActivePotionEffect
                 );
             }
         }

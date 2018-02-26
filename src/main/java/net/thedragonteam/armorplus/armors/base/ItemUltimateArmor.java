@@ -86,6 +86,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         }
         if (ultimate.armor.setInvincible) {
             player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
+            addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
         if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
             IntStream.range(0, ultimate.armor.addPotionEffects.length).forEach(i -> addPotion(player, getPotion(ultimate.armor.addPotionEffects[i]), 120, ultimate.armor.effectLevels[i], GOOD));
