@@ -45,6 +45,10 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         EntityLiving.registerFixesMob(fixer, EntitySkeletalKing.class);
     }
 
+    @Override
+    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+    }
+
     @Nullable
     @Override
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {

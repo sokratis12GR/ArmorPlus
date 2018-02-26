@@ -3,15 +3,14 @@ package net.thedragonteam.armorplus.entity.dungeon.guardian;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.monster.EntityGuardian;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
@@ -23,7 +22,7 @@ import java.util.stream.IntStream;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class EntityGuardianOverlord extends EntityGuardian implements IRangedAttackMob {
+public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRangedAttackMob {
 
     private final BossInfoServerDungeon bossInfo;
     private final int[] nextHeadUpdate = new int[2];
@@ -31,12 +30,10 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
 
     public EntityGuardianOverlord(World worldIn) {
         super(worldIn);
-        //  this.setSize(this.width * 2.35F, this.height * 2.35F); Old stuffs - I wonder if I will ever need to change it back
+//        this.setSize(this.width * 2.35F, this.height * 2.35F);
+//        Old stuffs -I wonder if I will ever need to change it back
         this.setSize(this.width * 5.00F, this.height * 5.00F);
         this.enablePersistence();
-        if (this.wander != null) {
-            this.wander.setExecutionChance(100);
-        }
         bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.GUARDIAN);
     }
 
@@ -52,17 +49,6 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     }
 
     @Override
-    public int getAttackDuration() {
-        return 30;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void setGhost() {
-        this.clientSideSpikesAnimation = 1.0F;
-        this.clientSideSpikesAnimationO = this.clientSideSpikesAnimation;
-    }
-
-    @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
@@ -72,12 +58,8 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
     }
 
     @Override
-    public void onUpdate() {
-        if (!world.isRemote) {
-            //noinspection MethodCallSideOnly
-            this.setGhost();
-        }
-        super.onUpdate();
+    public AxisAlignedBB getEntityBoundingBox() {
+        return super.getEntityBoundingBox();
     }
 
     /**
@@ -161,11 +143,6 @@ public class EntityGuardianOverlord extends EntityGuardian implements IRangedAtt
      */
     public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
         this.launchFreezeBombToEntity(0, target);
-    }
-
-    @Override
-    public void setSwingingArms(boolean swingingArms) {
-
     }
 
     private double getHeadX(int xPos) {

@@ -6,6 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static net.thedragonteam.armorplus.util.RenderingUtils.*;
+
 /**
  * Created using Tabula 5.1.0
  */
@@ -125,5 +127,28 @@ public class ModelDungeonSkeletalKing extends ModelBase {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
+
+    }
+
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        //    EntitySkeletalKing entitySkeletalKing = (EntitySkeletalKing) entity;
+
+        //    limbSwing = entitySkeletalKing.ticksExisted;
+        //    limbSwingAmount = 0.5f;
+
+        float globalSpeed = 1.0f;
+        float globalDegree = 1.0f;
+        float globalHeight = 1.0f;
+
+        // walk(body, 0.1f * globalSpeed, 1.0f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        swing(armLeft, 0.2f * globalSpeed, 0.7f * globalDegree, 0.3f, 0.0f, limbSwing, limbSwingAmount);
+        swing(armRight, 0.2f * globalSpeed, 0.7f * globalDegree, 0.3f, 0.0f, limbSwing, limbSwingAmount);
+
+        flap(handSkullRight, 0.2f * globalSpeed, -0.7f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        flap(handSkullLeft, 0.2f * globalSpeed, 0.7f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+
+        walk(legLeft, 0.2f * globalSpeed, -1.0f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(legRight, 0.2f * globalSpeed, 1.0f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
     }
 }

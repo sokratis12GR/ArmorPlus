@@ -26,7 +26,6 @@ public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
     @Override
     public void resetTask() {
         super.resetTask();
-        //noinspection MethodCallSideOnly
         this.enderDragonZombie.setArmsRaised(false);
     }
 

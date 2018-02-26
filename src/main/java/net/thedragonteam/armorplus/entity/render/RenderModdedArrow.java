@@ -2,10 +2,10 @@ package net.thedragonteam.armorplus.entity.render;
 
 import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.entity.entityarrow.EntityCoalArrow;
 
 import javax.annotation.Nullable;
 
@@ -15,17 +15,18 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 @SideOnly(Side.CLIENT)
-public class RenderCoalArrow extends RenderArrow<EntityCoalArrow> {
+public class RenderModdedArrow<T extends EntityArrow> extends RenderArrow<T> {
 
-    private ResourceLocation res = setRL("textures/entity/projectiles/coal_arrow.png");
+    private ResourceLocation res ;
 
-    public RenderCoalArrow(RenderManager rm) {
+    public RenderModdedArrow(RenderManager rm, String typeName) {
         super(rm);
+        this.res = setRL("textures/entity/projectiles/" + typeName + "_arrow.png");
     }
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(EntityCoalArrow entity) {
+    protected ResourceLocation getEntityTexture(T entity) {
         return res;
     }
 

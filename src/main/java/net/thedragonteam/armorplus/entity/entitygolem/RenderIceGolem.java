@@ -1,13 +1,12 @@
-package net.thedragonteam.armorplus.entity.render;
+package net.thedragonteam.armorplus.entity.entitygolem;
 
-import net.minecraft.client.model.ModelArmorStand;
+import net.minecraft.client.model.ModelIronGolem;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 
 import javax.annotation.Nullable;
 
@@ -20,16 +19,14 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 @SideOnly(Side.CLIENT)
 public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
 
-    private static final ResourceLocation ICE_GOLEM_TEXTURES = setRL("textures/entity/ice_golem.png");
-
     public RenderIceGolem(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelArmorStand(), 0.5f);
+        super(renderManagerIn, new ModelIronGolem(), 0.5f);
     }
 
     @Nullable
     @Override
     protected ResourceLocation getEntityTexture(EntityIceGolem entity) {
-        return ICE_GOLEM_TEXTURES;
+        return setRL("textures/entity/ice_golem.png");
     }
 
     @Override
