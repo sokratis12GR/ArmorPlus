@@ -40,22 +40,28 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor),
-        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels, global_registry.enableCoalWeapons[0]
+        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels,
+        coal.weapons.shouldApplyFire, coal.weapons.onFireSeconds, global_registry.enableCoalWeapons[0]
     ),
     LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor),
-        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels, global_registry.enableLapisWeapons[0]
+        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels,
+        lapis.weapons.shouldApplyFire, lapis.weapons.onFireSeconds,global_registry.enableLapisWeapons[0]
     ),
     REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor),
-        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels, global_registry.enableRedstoneWeapons[0]
+        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels,
+        redstone.weapons.shouldApplyFire, redstone.weapons.onFireSeconds,global_registry.enableRedstoneWeapons[0]
     ),
     EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor),
-        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels, global_registry.enableEmeraldWeapons[0]
+        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels,
+        emerald.weapons.shouldApplyFire, emerald.weapons.onFireSeconds,global_registry.enableEmeraldWeapons[0]
     ),
     OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidian.weapons.itemNameColor),
-        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels, global_registry.enableObsidianWeapons[0]
+        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels,
+        obsidian.weapons.shouldApplyFire, obsidian.weapons.onFireSeconds,global_registry.enableObsidianWeapons[0]
     ),
     LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor),
-        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels, global_registry.enableLavaWeapons[0]
+        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels,
+        lava.weapons.shouldApplyFire, lava.weapons.onFireSeconds,global_registry.enableLavaWeapons[0]
     ) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -73,13 +79,16 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         }
     },
     GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor),
-        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels, global_registry.enableGuardianWeapons[0]
+        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels,
+        guardian.weapons.shouldApplyFire, guardian.weapons.onFireSeconds,global_registry.enableGuardianWeapons[0]
     ),
     SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor),
-        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels, global_registry.enableSuperStarWeapons[0]
+        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels,
+        super_star.weapons.shouldApplyFire, super_star.weapons.onFireSeconds,global_registry.enableSuperStarWeapons[0]
     ),
     ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor),
-        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels, global_registry.enableEnderDragonWeapons[0]
+        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels,
+        ender_dragon.weapons.shouldApplyFire, ender_dragon.weapons.onFireSeconds,global_registry.enableEnderDragonWeapons[0]
     );
 
     private final String name;
@@ -91,9 +100,13 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     private final boolean enabledEffects;
     private final String[] addNegativePotionEffect;
     private final int[] addNegativePotionEffectAmplifier;
+    private final boolean shouldApplyFire;
+    private final int fireSecond;
 
     Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn,
-           boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier, boolean isEnabled) {
+           boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier,
+           boolean shouldApplyFire, int fireSecond, boolean isEnabled
+    ) {
         this.material = materialIn;
         this.name = nameIn;
         this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
@@ -103,6 +116,8 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         this.enabledEffects = enableEffect;
         this.addNegativePotionEffect = addNegativeEffect;
         this.addNegativePotionEffectAmplifier = addNegativeEffectAmplifier;
+        this.shouldApplyFire = shouldApplyFire;
+        this.fireSecond = fireSecond;
     }
 
     @Override
@@ -154,6 +169,9 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
+        if (shouldApplyFire) {
+            target.setFire(fireSecond);
+        }
         if (this.areEffectsEnabled()) {
             IntStream.range(0, addNegativePotionEffect.length).forEach(i ->
                 addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD)

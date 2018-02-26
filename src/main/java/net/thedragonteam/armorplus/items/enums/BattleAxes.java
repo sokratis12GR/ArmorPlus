@@ -38,21 +38,28 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor), 8.0F,
-        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels, global_registry.enableCoalWeapons[1]),
+        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels,
+        coal.weapons.shouldApplyFire, coal.weapons.onFireSeconds, global_registry.enableCoalWeapons[1]
+    ),
     LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor), 9.0F,
-        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels, global_registry.enableLapisWeapons[1]
+        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels,
+        lapis.weapons.shouldApplyFire, lapis.weapons.onFireSeconds, global_registry.enableLapisWeapons[1]
     ),
     REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor), 9.0F,
-        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels, global_registry.enableRedstoneWeapons[1]
+        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels,
+        redstone.weapons.shouldApplyFire, redstone.weapons.onFireSeconds, global_registry.enableRedstoneWeapons[1]
     ),
     EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor), 10.0F,
-        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels, global_registry.enableEmeraldWeapons[1]
+        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels,
+        emerald.weapons.shouldApplyFire, emerald.weapons.onFireSeconds, global_registry.enableEmeraldWeapons[1]
     ),
     OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidian.weapons.itemNameColor), 10.5F,
-        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels, global_registry.enableObsidianWeapons[1]
+        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels,
+        obsidian.weapons.shouldApplyFire, obsidian.weapons.onFireSeconds, global_registry.enableObsidianWeapons[1]
     ),
     LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor), 11.5F,
-        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels, global_registry.enableLavaWeapons[1]
+        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels,
+        lava.weapons.shouldApplyFire, lava.weapons.onFireSeconds, global_registry.enableLavaWeapons[1]
     ) {
         @Override
         @SideOnly(Side.CLIENT)
@@ -70,13 +77,16 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         }
     },
     GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor), 14.0F,
-        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels, global_registry.enableGuardianWeapons[1]
+        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels,
+        guardian.weapons.shouldApplyFire, guardian.weapons.onFireSeconds, global_registry.enableGuardianWeapons[1]
     ),
     SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor), 15.0F,
-        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels, global_registry.enableSuperStarWeapons[1]
+        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels,
+        super_star.weapons.shouldApplyFire, super_star.weapons.onFireSeconds, global_registry.enableSuperStarWeapons[1]
     ),
     ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor), 16.0F,
-        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels, global_registry.enableEnderDragonWeapons[1]
+        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels,
+        ender_dragon.weapons.shouldApplyFire, ender_dragon.weapons.onFireSeconds, global_registry.enableEnderDragonWeapons[1]
     ),
     // WOOD(, "wooden"),
     // STONE(, "stone"),
@@ -95,9 +105,13 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     private final boolean enabledEffects;
     private final String[] addNegativePotionEffect;
     private final int[] addNegativePotionEffectAmplifier;
+    private final boolean shouldApplyFire;
+    private final int fireSecond;
 
     BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn, float efficiencyIn,
-               boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier, boolean isEnabled) {
+               boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier,
+               boolean shouldApplyFire, int fireSecond, boolean isEnabled
+    ) {
         this.material = materialIn;
         this.name = nameIn;
         this.repairStack = repairStackIn;
@@ -108,6 +122,8 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         this.enabledEffects = enableEffect;
         this.addNegativePotionEffect = addNegativeEffect;
         this.addNegativePotionEffectAmplifier = addNegativeEffectAmplifier;
+        this.shouldApplyFire = shouldApplyFire;
+        this.fireSecond = fireSecond;
     }
 
     @Override
@@ -163,6 +179,9 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
+        if (shouldApplyFire) {
+            target.setFire(fireSecond);
+        }
         if (this.areEffectsEnabled()) {
             for (int i = 0; i < addNegativePotionEffect.length; i++) {
                 addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD);

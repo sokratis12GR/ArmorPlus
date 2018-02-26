@@ -151,6 +151,8 @@ public class ModConfig {
         public static boolean enableJEIIntegration = true;
         @Comment({"Enable/Disable the The One Probe integration"})
         public static boolean enableTOPIntegration = true;
+        @Comment({"Enable/Disable the ProjectE integration"})
+        public static boolean enableProjectEIntegration = true;
     }
 
     @Config(modid = MODID, name = "armorplus/debug", category = "debug")
@@ -716,7 +718,7 @@ public class ModConfig {
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects = {"wither"};
                 @Comment({"Adds the potion effects the armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"saturation", "regeneration", "water_breathing"};
+                public String[] addPotionEffects = {"regeneration", "water_breathing"};
                 @Comment({"Set the color name the armor will have"})
                 public String itemNameColor = "green";
                 @Comment({"Set the amount of toughness points the armor will have"})
@@ -730,7 +732,7 @@ public class ModConfig {
                 @Comment({"Enable/Disable the armor's de-buffs (when a non complete set is equiped)"})
                 public boolean enableDeBuffs = true;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {0, 1, 0};
+                public int[] effectLevels = {1, 0};
             }
 
         }
