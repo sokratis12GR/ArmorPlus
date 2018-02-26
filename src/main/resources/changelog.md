@@ -3,13 +3,20 @@ ArmorPlus 1.12.2-11.11.0.36-beta
 
 ###Introducing a change into how updates and changes are being displayed.
 
-* Simplification of the crafting system code
+* Simplification of the crafting system code (Much better)
 * Added horse armor
-  * This feature is still wip, some horse armor textures are working (lava crystal, emerald, obsidian, guardian) horse armors and functionality
+  * This feature is still wip, some horse armor textures are working horse armors and functionality
   * In the works: Introduction of abilities, textures for them all, crafting recipes and configuration for all of these stuff
 * Added the ability to set a material type of weapons when hitting an entity to set them on fire, default disabled for all except the lava weapons
 * Fixed different types of arrows having the coal arrow texture instead of their own ones
-
+* Fixed usage of incorrect data fixers
+* Added Overlord of the Guardians texture
+* Animated (**VERY VERY WIP**) the bosses
+* Integrations (**WIP**, **Things might be unbalanced**)
+  * Added integration to ProjectE (enabled by default, can be disabled by a config option inside `config/armorplus/integrations.cfg`) 
+* Fixed some important bugs causing some armors to not have any abilities when equiped in any specified config option.
+* Made so that when The Ultimate Armor's invincibility has been enabled to add saturation effect. (Removed Saturation from the default effects config)
+* Fixed Trophies being unable to be picked up on servers, **temporarily** disabled the pickup function of NBT modified trophies (they will keep their nbt as long as they aren't broken, if they are broken they will not save any NBT except of the original type)
 
 ArmorPlus 1.12.2-11.10.1.35-beta
 ----------------------------
