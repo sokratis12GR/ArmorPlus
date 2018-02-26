@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 public class BlockBench extends BlockBase implements IModdedBlock {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-    private Benches benches;
+    public Benches benches;
 
     public BlockBench(Benches benches) {
         super(Material.IRON, benches.getName(), 1000.0f, 10.0f, ToolType.PICKAXE, 2);
