@@ -19,10 +19,10 @@ public class BossInfoServerDungeon extends BossInfoServer {
     }
 
     public enum BossInfoDungeonType {
-        WITHER(WHITE, NOTCHED_6, true, false),
-        GUARDIAN(BLUE, NOTCHED_6, false, false),
-        ENDER_DRAGON(PURPLE, NOTCHED_6, true, false),
-        ULTIMATE(GREEN, NOTCHED_20, true, true),;
+        SKELETAL_KING(WHITE, NOTCHED_6, true, false),
+        GUARDIAN_OVERLORD(BLUE, NOTCHED_6, false, false),
+        DEMONIC_DRAGON(PURPLE, NOTCHED_6, true, false),
+        THE_MEANING_OF_EVERYTHING(GREEN, NOTCHED_20, true, true),;
 
         private final Color color;
         private final Overlay overlay;

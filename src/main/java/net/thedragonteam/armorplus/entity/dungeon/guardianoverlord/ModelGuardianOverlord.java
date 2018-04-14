@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian;
+package net.thedragonteam.armorplus.entity.dungeon.guardianoverlord;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

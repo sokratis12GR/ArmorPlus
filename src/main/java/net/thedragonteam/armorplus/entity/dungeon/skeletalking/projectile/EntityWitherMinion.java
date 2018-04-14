@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.wither.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -85,27 +85,28 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        if (this.world.isRemote || shootingEntity == null || result.entityHit == null || !(result.entityHit instanceof EntityPlayer)) {
+        if (this.world.isRemote || shootingEntity == null || !(result.entityHit instanceof EntityPlayer)) {
             return;
         }
         BlockPos blockPos = new BlockPos(result.entityHit);
-        int warriorMax = 3, archerMax = 2, paladinMax = 1;
-        int warriorBound = rand.nextInt(warriorMax - 1 + 1) + 1;
-        int archerBound = rand.nextInt(archerMax - 1 + 1) + 1;
-        int paladinBound = rand.nextInt(paladinMax);
+        final int amountWarriorMax = 3, amountArcherMax = 2, amountPaladinMax = 1;
+        int warriorBound = rand.nextInt(amountWarriorMax) + 1;
+        int archerBound = rand.nextInt(amountArcherMax) + 1;
+        int paladinBound = rand.nextInt(amountPaladinMax);
+        float health = shootingEntity.getHealth();
         for (int i2 = 0; i2 < warriorBound; i2++) {
             EntityWitherSkeleton minionWarrior = new EntityWitherSkeleton(this.world);
-            if (shootingEntity.getHealth() <= 1200.0F && shootingEntity.getHealth() > 1000.0F) {
+            if (health <= 1200.0F && health > 1000.0F) {
                 this.setMinionStats(minionWarrior, getItemStack(WOODEN_SWORD), EMPTY, emptyArmor);
-            } else if (shootingEntity.getHealth() <= 1000.0F && shootingEntity.getHealth() > 800.0F) {
+            } else if (health <= 1000.0F && health > 800.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 18.0D, getItemStack(STONE_SWORD), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (shootingEntity.getHealth() <= 800.0F && shootingEntity.getHealth() > 600.0F) {
+            } else if (health <= 800.0F && health > 600.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 21.0D, getItemStack(GOLDEN_SWORD), EMPTY, GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS);
-            } else if (shootingEntity.getHealth() <= 600.0F && shootingEntity.getHealth() > 400.0F) {
+            } else if (health <= 600.0F && health > 400.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 24.0D, getItemStack(IRON_SWORD), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (shootingEntity.getHealth() <= 400.0F && shootingEntity.getHealth() > 200.0F) {
+            } else if (health <= 400.0F && health > 200.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 27.0D, getItemStack(DIAMOND_SWORD), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (shootingEntity.getHealth() <= 200.0F && shootingEntity.getHealth() > 0.0F) {
+            } else if (health <= 200.0F && health > 0.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 30.0D, getItemStack(DIAMOND_AXE), EMPTY, DIAMOND_HELMET, DIAMOND_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
             minionWarrior.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
@@ -114,13 +115,13 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         }
         for (int i1 = 0; i1 < archerBound; i1++) {
             EntityWitherSkeleton minionArcher = new EntityWitherSkeleton(this.world);
-            if (shootingEntity.getHealth() <= 800.0F && shootingEntity.getHealth() > 600.0F) {
+            if (health <= 800.0F && health > 600.0F) {
                 this.setMinionStats(minionArcher, "Archer", 15.0D, getItemStack(BOW), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (shootingEntity.getHealth() <= 600.0F && shootingEntity.getHealth() > 400.0F) {
+            } else if (health <= 600.0F && health > 400.0F) {
                 this.setMinionStats(minionArcher, "Archer", 16.0D, getItemStack(BOW), EMPTY, CHAINMAIL_HELMET, CHAINMAIL_CHESTPLATE, CHAINMAIL_LEGGINGS, CHAINMAIL_BOOTS);
-            } else if (shootingEntity.getHealth() <= 400.0F && shootingEntity.getHealth() > 200.0F) {
+            } else if (health <= 400.0F && health > 200.0F) {
                 this.setMinionStats(minionArcher, "Archer", 17.0D, getItemStack(BOW), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (shootingEntity.getHealth() <= 200.0F && shootingEntity.getHealth() > 0.0F) {
+            } else if (health <= 200.0F && health > 0.0F) {
                 this.setMinionStats(minionArcher, "Archer", 18.0D, getItemStack(BOW), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
             minionArcher.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
@@ -129,11 +130,11 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         }
         for (int i = 0; i < paladinBound; i++) {
             EntityWitherSkeleton minionPaladin = new EntityWitherSkeleton(this.world);
-            if (shootingEntity.getHealth() <= 400.0F && shootingEntity.getHealth() > 200.0F) {
+            if (health <= 400.0F && health > 200.0F) {
                 this.setMinionStats(minionPaladin, "Paladin", 30.0D,
                     getItemStack(superStarSword), getItemStack(SHIELD), DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS
                 );
-            } else if (shootingEntity.getHealth() <= 200.0F && shootingEntity.getHealth() > 0.0F) {
+            } else if (health <= 200.0F && health > 0.0F) {
                 this.setMinionStats(minionPaladin, "Paladin", 35.0D,
                     getItemStack(superStarBattleAxe), getItemStack(SHIELD), superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots
                 );

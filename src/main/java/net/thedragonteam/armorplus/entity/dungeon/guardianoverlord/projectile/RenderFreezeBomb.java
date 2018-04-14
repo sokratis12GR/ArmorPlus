@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;

@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.wither.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile;
 
 import net.minecraft.client.model.ModelSkeletonHead;
 import net.minecraft.client.renderer.GlStateManager;

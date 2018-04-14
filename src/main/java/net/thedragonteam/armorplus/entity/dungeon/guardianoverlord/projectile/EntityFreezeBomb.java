@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian.projectile;
+package net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,6 +11,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -72,25 +73,26 @@ public class EntityFreezeBomb extends EntityFireball implements IThrowableEntity
         if (this.world.isRemote || result.entityHit == null) {
             return;
         }
-        if (this.shootingEntity == null) {
-            result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5.0F);
-        } else if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8.0F)) {
-            if (result.entityHit.isEntityAlive()) {
-                this.applyEnchantments(this.shootingEntity, result.entityHit);
-            }
-            this.shootingEntity.heal(5.0F);
-        }
+//        if (this.shootingEntity == null) {
+//            result.entityHit.attackEntityFrom(DamageSource.MAGIC, 0.0F);
+//        } else if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8.0F)) {
+//            if (result.entityHit.isEntityAlive()) {
+//                this.applyEnchantments(this.shootingEntity, result.entityHit);
+//            }
+//            this.shootingEntity.heal(5.0F);
+//        }
 
         if (result.entityHit instanceof EntityLivingBase) {
-            int i = 0;
-            if (this.world.getDifficulty() == NORMAL) {
-                i = 10;
-            } else if (this.world.getDifficulty() == HARD) {
-                i = 40;
+            EnumDifficulty difficulty = this.world.getDifficulty();
+            int durationMultiplier = 0;
+            if (difficulty == NORMAL) {
+                durationMultiplier = 10;
+            } else if (difficulty == HARD) {
+                durationMultiplier = 40;
             }
 
-            if (i > 0) {
-                ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 30 * i, 1));
+            if (durationMultiplier > 0) {
+                ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 30 * durationMultiplier, 1));
             }
         }
         this.setDead();

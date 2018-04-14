@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.wither;
+package net.thedragonteam.armorplus.entity.dungeon.skeletalking;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

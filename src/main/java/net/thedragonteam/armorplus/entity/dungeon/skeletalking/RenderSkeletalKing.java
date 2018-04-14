@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.wither;
+package net.thedragonteam.armorplus.entity.dungeon.skeletalking;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;

@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian;
+package net.thedragonteam.armorplus.entity.dungeon.guardianoverlord;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;

@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.wither;
+package net.thedragonteam.armorplus.entity.dungeon.skeletalking;
 
 import com.google.common.base.Predicate;
 import net.minecraft.entity.*;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -36,7 +36,7 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);
         this.setSize(this.width * 7.0F, this.height * 7.0F);
-        this.bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.WITHER);
+        this.bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.SKELETAL_KING);
         this.enablePersistence();
         this.isImmuneToFire = true;
     }
@@ -82,7 +82,7 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200.0F);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40.0F);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(4.0F);

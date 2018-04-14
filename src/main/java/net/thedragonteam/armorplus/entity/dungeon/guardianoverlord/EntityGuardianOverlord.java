@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.dungeon.guardian;
+package net.thedragonteam.armorplus.entity.dungeon.guardianoverlord;
 
 
 import net.minecraft.entity.*;
@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack;
 import net.thedragonteam.armorplus.entity.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
 
 import java.util.stream.IntStream;
 
@@ -34,7 +34,7 @@ public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRan
 //        Old stuffs -I wonder if I will ever need to change it back
         this.setSize(this.width * 5.00F, this.height * 5.00F);
         this.enablePersistence();
-        bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.GUARDIAN);
+        bossInfo = new BossInfoServerDungeon(this.getDisplayName(), BossInfoDungeonType.GUARDIAN_OVERLORD);
     }
 
     public static void registerFixesElderGuardian(DataFixer fixer) {
@@ -53,7 +53,7 @@ public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRan
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(20.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1000D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(37.5D);
     }
 
