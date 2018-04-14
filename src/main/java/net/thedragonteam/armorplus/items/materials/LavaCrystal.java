@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
+import static net.minecraft.util.text.TextFormatting.ITALIC;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.isKeyDown;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -53,11 +55,11 @@ public class LavaCrystal extends Item implements IModdedItem {
         if (isKeyDown()) {
             switch (stack.getMetadata()) {
                 case 0: {
-                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
+                    tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
                     break;
                 }
                 case 1: {
-                    tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
+                    tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
                     break;
                 }
             }
@@ -111,8 +113,8 @@ public class LavaCrystal extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, lavaCrystalNames.length).mapToObj(i ->
-                getItemStack(this, i)
+            IntStream.range(0, lavaCrystalNames.length).mapToObj(
+                meta -> getItemStack(this, meta)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -120,8 +122,8 @@ public class LavaCrystal extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, lavaCrystalNames.length).forEachOrdered(i ->
-            this.initModel(lavaCrystalNames[i], "lava", i)
+        IntStream.range(0, lavaCrystalNames.length).forEachOrdered(
+            meta -> this.initModel(lavaCrystalNames[meta], "lava", meta)
         );
     }
 }

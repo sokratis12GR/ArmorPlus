@@ -11,10 +11,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.tinkers.TiC;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.registry.*;
 import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
@@ -69,7 +69,6 @@ public class CommonProxy {
     }
 
     public void modMapping(FMLModIdMappingEvent event) {
-
         ModCompatibility.loadCompat(MAPPING);
     }
 

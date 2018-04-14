@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -42,14 +42,14 @@ public class MobDropsEventHandler {
             registerMobDrop(event, event.getEntity(), mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
             registerMobDrop(event, event.getEntity(), mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[3]));
         } else if (event.getEntity() instanceof EntityWither) {
-            registerMobDrop(event, event.getEntity(), mob_drops.wither_bone.witherBossDrop, getItemStack(materials, mob_drops.wither_bone.witherBossDropAmount, 2));
+            registerMobDrop(event, event.getEntity(), mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
             registerMobDrop(event, event.getEntity(), mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[2]));
         } else if (event.getEntity() instanceof EntityWitherSkeleton) {
             registerMobDrop(event, event.getEntity(), mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
         } else if (event.getEntity() instanceof EntityGuardian) {
             registerMobDrop(event, event.getEntity(), mob_drops.guardian_scale.guardianDrop, getItemStack(materials, randomDrop, 1));
         } else if (event.getEntity() instanceof EntityElderGuardian) {
-            registerMobDrop(event, event.getEntity(), mob_drops.guardian_scale.elderGuardianDrop, getItemStack(materials, mob_drops.guardian_scale.elderDropAmount, 1));
+            registerMobDrop(event, event.getEntity(), mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
             registerMobDrop(event, event.getEntity(), mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[1]));
         } else if (event.getEntity() instanceof EntitySkeletalKing){
             registerMobDrop(event, event.getEntity(), mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[4]));

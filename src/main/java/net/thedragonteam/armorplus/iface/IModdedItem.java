@@ -48,5 +48,4 @@ public interface IModdedItem extends IRarityHelper, IModelHelper, IForgeRegistry
             this.initModel((Integer) locOrMeta, "");
         }
     }
-
 }

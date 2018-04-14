@@ -3,6 +3,8 @@ package net.thedragonteam.armorplus.items.materials;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.datafix.IFixableData;
 
+import java.util.stream.IntStream;
+
 import static net.thedragonteam.armorplus.events.RegistryEventHandler.DATA_FIXER_VERSION;
 
 public class ItemRename implements IFixableData {
@@ -18,11 +20,7 @@ public class ItemRename implements IFixableData {
     @Override
     public NBTTagCompound fixTagCompound(NBTTagCompound nbt) {
         if (OLD.equals(nbt.getString("id"))) {
-            for (int i = 0; i < REMAP_TO.length; i++) {
-                if (REMAP_TO[i] != null) {
-                    rename(nbt, i, REMAP_TO[i]);
-                }
-            }
+            IntStream.range(0, REMAP_TO.length).filter(i -> REMAP_TO[i] != null).forEach(i -> rename(nbt, i, REMAP_TO[i]));
         }
         return nbt;
     }

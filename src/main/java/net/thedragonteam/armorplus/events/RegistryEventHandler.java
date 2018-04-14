@@ -24,10 +24,10 @@ import net.thedragonteam.armorplus.blocks.benches.BlockBench;
 import net.thedragonteam.armorplus.blocks.benches.ItemBlockBench;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
@@ -204,7 +204,7 @@ public class RegistryEventHandler {
         registerAllItems(event, towerSpawnItem);
         registerItemFixes();
         // ==== COSMETICS ==== \\
-        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan);
+        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         // ==== GEAR ==== \\
         registerAllItems(event,
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime

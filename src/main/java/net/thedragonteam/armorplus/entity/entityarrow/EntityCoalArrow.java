@@ -18,7 +18,6 @@ import static net.thedragonteam.thedragonlib.util.ParticlesHelper.spawnParticle;
  */
 public class EntityCoalArrow extends EntityArrow {
 
-
     public EntityCoalArrow(World worldIn) {
         super(worldIn);
     }

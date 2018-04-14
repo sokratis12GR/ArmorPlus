@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.compat.projecte;
 
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,7 @@ import static net.thedragonteam.armorplus.registry.APBlocks.ultiTechBench;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.armorplus.registry.ModItems.theUltimateParts;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ProjectEEMCIntegration {
@@ -62,9 +64,6 @@ public class ProjectEEMCIntegration {
             infusedLavaCrystal, 2, theUltimateMaterial, 6, getItemStack(benches[0]), 1, getItemStack(benches[1]), 1, compressedObsidian, 8
         ));
         if (getRD() == EXPERT || getRD() == HELLISH) {
-            registerGuardianEMC(guardianScale);
-            registerSuperStarEMC(witherBone);
-            registerEnderDragonEMC(enderDragonScale);
             //
             createWorkbenchArmorEMC(COAL_BLOCK, coalHelmet, coalChestplate, coalLeggings, coalBoots);
             createWorkbenchArmorEMC(LAPIS_BLOCK, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
@@ -87,6 +86,10 @@ public class ProjectEEMCIntegration {
             createHighTechWeaponsEMC(EMERALD_BLOCK, emeraldSword, emeraldBattleAxe, emeraldBow);
             createHighTechWeaponsEMC(compressedObsidian, obsidianSword, obsidianBattleAxe, obsidianBow);
             createHighTechWeaponsEMC(infusedLavaCrystal, lavaSword, lavaBattleAxe, lavaBow);
+            registerGuardianEMC(guardianScale);
+            registerSuperStarEMC(witherBone);
+            registerEnderDragonEMC(enderDragonScale);
+            registerUltimateEMC();
         }
     }
 
@@ -133,6 +136,41 @@ public class ProjectEEMCIntegration {
         );
         addConversion(feet,
             of(material, feetAmount)
+        );
+    }
+
+    private static void registerUltimateEMC() {
+        //
+        registerUltimatePartsEMC(0, 1, 2, guardianHelmet, enderDragonHelmet, superStarHelmet);
+        addConversion(theUltimateHelmet, of(theUltimateMaterial, 26, infusedLavaCrystal, 12,
+            getItemStack(theUltimateParts, 0), 1, getItemStack(theUltimateParts, 1), 1, getItemStack(theUltimateParts, 2), 1
+        ));
+        //
+        registerUltimatePartsEMC(3, 4, 5, guardianChestplate, enderDragonChestplate, superStarChestplate);
+        addConversion(theUltimateChestplate, of(theUltimateMaterial, 26, infusedLavaCrystal, 12,
+            getItemStack(theUltimateParts, 3), 1, getItemStack(theUltimateParts, 4), 1, getItemStack(theUltimateParts, 5), 1
+        ));
+        //
+        registerUltimatePartsEMC(6, 7, 8, guardianLeggings, enderDragonLeggings, superStarLeggings);
+        addConversion(theUltimateLeggings, of(theUltimateMaterial, 26, infusedLavaCrystal, 12,
+            getItemStack(theUltimateParts, 6), 1, getItemStack(theUltimateParts, 7), 1, getItemStack(theUltimateParts, 8), 1
+        ));
+        //
+        registerUltimatePartsEMC(9, 10, 11, guardianBoots, enderDragonBoots, superStarBoots);
+        addConversion(theUltimateBoots, of(theUltimateMaterial, 26, infusedLavaCrystal, 12,
+            getItemStack(theUltimateParts, 9), 1, getItemStack(theUltimateParts, 10), 1, getItemStack(theUltimateParts, 11), 1
+        ));
+    }
+
+    private static void registerUltimatePartsEMC(int right, int middle, int left, Item itemRight, Item itemMid, Item itemLeft) {
+        addConversion(getItemStack(theUltimateParts, right), new ImmutableMap.Builder<Object, Integer>().put(theUltimateMaterial, 28).put(infusedLavaCrystal, 12)
+            .put(guardianScale, 2).put(SPONGE, 2).put(PRISMARINE_SHARD, 2).put(PRISMARINE_CRYSTALS, 2).put(itemRight, 1).build()
+        );
+        addConversion(getItemStack(theUltimateParts, middle), new ImmutableMap.Builder<Object, Integer>().put(theUltimateMaterial, 28).put(infusedLavaCrystal, 12)
+            .put(enderDragonScale, 2).put(END_CRYSTAL, 2).put(ENDER_EYE, 2).put(ENDER_PEARL, 2).put(itemMid, 1).build()
+        );
+        addConversion(getItemStack(theUltimateParts, left), new ImmutableMap.Builder<Object, Integer>().put(theUltimateMaterial, 28).put(infusedLavaCrystal, 12)
+            .put(witherBone, 2).put(NETHER_BRICK, 2).put(SOUL_SAND, 2).put(NETHERRACK, 2).put(itemLeft, 1).build()
         );
     }
 

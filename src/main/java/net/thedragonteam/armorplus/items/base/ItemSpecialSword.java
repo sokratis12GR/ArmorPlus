@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedItem;
-import net.thedragonteam.armorplus.items.enums.Swords;
+import net.thedragonteam.armorplus.items.weapons.Swords;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 
 import javax.annotation.Nonnull;

@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.armors.horse;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.item.ItemStack;
@@ -8,6 +9,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.items.base.BaseItem;
+
+import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addHorseArmor;
@@ -52,6 +55,12 @@ public class ItemHorseArmor extends BaseItem {
             case ENDER_DRAGON:
                 return ender_dragon;
         }
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public CreativeTabs getCreativeTab() {
         return null;
     }
 

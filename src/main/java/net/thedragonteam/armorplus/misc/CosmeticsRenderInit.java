@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import net.thedragonteam.armorplus.util.RenderEntityHelper;
 
 import java.util.HashMap;

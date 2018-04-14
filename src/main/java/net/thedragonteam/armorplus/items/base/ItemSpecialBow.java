@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedItem;
-import net.thedragonteam.armorplus.items.enums.Bows;
+import net.thedragonteam.armorplus.items.weapons.Bows;
 import net.thedragonteam.armorplus.util.ArmorPlusItemUtils;
 import net.thedragonteam.armorplus.util.Utils;
 

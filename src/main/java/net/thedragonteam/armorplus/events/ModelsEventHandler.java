@@ -7,14 +7,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.EntityGuardianOverlord;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.RenderGuardianOverlord;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.EntityFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.guardian.projectile.RenderFreezeBomb;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
-import net.thedragonteam.armorplus.entity.dungeon.wither.RenderSkeletalKing;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.EntityWitherMinion;
-import net.thedragonteam.armorplus.entity.dungeon.wither.projectile.RenderWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.RenderGuardianOverlord;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.RenderFreezeBomb;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.RenderSkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
 import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
 import net.thedragonteam.armorplus.entity.entitygolem.RenderIceGolem;
@@ -50,7 +50,7 @@ public class ModelsEventHandler {
 
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
-        registerModels(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan);
+        registerModels(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         registerModels(materials, lavaCrystal, theGiftOfTheGods, bookInfo, steelIngot, electricalIngot, redstoneApple, theUltimateParts,
             devTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );

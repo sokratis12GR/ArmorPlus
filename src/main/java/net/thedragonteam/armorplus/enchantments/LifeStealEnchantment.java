@@ -16,7 +16,9 @@ import static net.thedragonteam.armorplus.enchantments.EnchantmentBase.Levels.*;
 public class LifeStealEnchantment extends EnchantmentBase {
 
     public LifeStealEnchantment() {
-        super("life_steal", Enchantment.Rarity.RARE, EnumEnchantmentType.BREAKABLE, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}, 1, 3, 10, 15, true, true);
+        super("life_steal", Enchantment.Rarity.RARE, EnumEnchantmentType.BREAKABLE, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND},
+            1, 3, 10, 15, true, true
+        );
     }
 
     @Override

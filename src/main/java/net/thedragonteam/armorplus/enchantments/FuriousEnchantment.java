@@ -16,8 +16,7 @@ import static net.thedragonteam.armorplus.enchantments.EnchantmentBase.Levels.va
 public class FuriousEnchantment extends EnchantmentBase {
 
     public FuriousEnchantment() {
-        super(
-            "furious", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR,
+        super("furious", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR,
             new EntityEquipmentSlot[]{EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET},
             1, 3, 10, 15, true, true
         );

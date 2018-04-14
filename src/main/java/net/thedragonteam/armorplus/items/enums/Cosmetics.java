@@ -14,7 +14,8 @@ public enum Cosmetics {
     TWITCH("twitch", 3),
     BEAM("beam", 4),
     BTM_MOON("btm_moon", 5),
-    M1JORDAN("m1jordan", 6);
+    M1JORDAN("m1jordan", 6),
+    TEAM_RAPTURE("team_rapture", 7);
 
     private final String name;
     private final boolean subTypes;

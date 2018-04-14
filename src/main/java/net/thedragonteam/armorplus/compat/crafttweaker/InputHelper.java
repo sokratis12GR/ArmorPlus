@@ -23,7 +23,7 @@ public class InputHelper {
 
         Arrays.stream(iIngredient).map(IIngredient::getItems).forEach(stacks::addAll);
 
-        return stacks.toArray(new IItemStack[stacks.size()]);
+        return stacks.toArray(new IItemStack[0]);
     }
 
     public static boolean isABlock(ItemStack block) {
