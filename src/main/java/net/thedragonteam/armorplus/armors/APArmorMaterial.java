@@ -23,6 +23,7 @@ import net.thedragonteam.armorplus.api.properties.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.IRemovable;
 import net.thedragonteam.armorplus.api.properties.IRepairable;
 import net.thedragonteam.armorplus.util.PotionUtils;
+import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -161,30 +162,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            ItemStack head = player.getItemStackFromSlot(HEAD);
-            ItemStack chest = player.getItemStackFromSlot(CHEST);
-            ItemStack legs = player.getItemStackFromSlot(LEGS);
-            ItemStack feet = player.getItemStackFromSlot(FEET);
-            if (isArmorEmpty(head, chest, legs, feet)) {
-                return;
-            }
-            if (super_star.armor.enableSetEffects) {
-                if (head.getItem() == superStarHelmet && chest.getItem() == superStarChestplate && legs.getItem() == superStarLeggings && feet.getItem() == superStarBoots) {
-                    List<Potion> potions = stream(super_star.armor.addPotionEffects).map(PotionUtils::getPotion).collect(toList());
-                    IntStream.range(0, potions.size()).forEach(i -> {
-                        Potion potionEffect = potions.get(i);
-                        if (player.getActivePotionEffect(potionEffect) == null) {
-                            addPotion(player, potionEffect, 120, super_star.armor.effectLevels[i], GOOD);
-                        }
-                    });
-                    List<Potion> removablePotions = stream(super_star.armor.removePotionEffects).map(PotionUtils::getPotion).collect(toList());
-                    removablePotions.stream().filter(
-                        potionEffect -> player.getActivePotionEffect(potionEffect) != null
-                    ).forEach(
-                        player::removeActivePotionEffect
-                    );
-                }
-            }
+            addPerPieceEffects(player, super_star.armor.addPotionEffects, super_star.armor.effectLevels, super_star.armor.removePotionEffects, slot);
+            addFullSetEffects(player, super_star.armor.addPotionEffects, super_star.armor.effectLevels, super_star.armor.removePotionEffects, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
         }
     },
     ENDER_DRAGON(enderDragonArmor, "ender_dragon", global_registry.enableEnderDragonArmor, getItemStack(materials, 3), ender_dragon.armor.itemNameColor,
@@ -215,12 +194,10 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
 
         @Override
         @SideOnly(Side.CLIENT)
-        public void addInformation(ItemStack stack, World playerIn, List<String> tooltip, ITooltipFlag advanced) {
-            final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
+            super.addInformation(stack, world, tooltip, advanced);
             if (isKeyDown()) {
-                addToolTipFull(tooltip, "Flight");
-            } else {
-                showInfo(tooltip, keyBindSneak, this.getFormatting());
+                ToolTipUtils.addToolTip(tooltip, "§eSpecial ability: Flight");
             }
         }
     },

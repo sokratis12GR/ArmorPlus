@@ -89,7 +89,13 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
             addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
         if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
-            IntStream.range(0, ultimate.armor.addPotionEffects.length).forEach(i -> addPotion(player, getPotion(ultimate.armor.addPotionEffects[i]), 120, ultimate.armor.effectLevels[i], GOOD));
+
+            IntStream.range(0, ultimate.armor.addPotionEffects.length).forEach(i -> {
+                Potion potionEffect = getPotion(ultimate.armor.addPotionEffects[i]);
+                if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
+                    addPotion(player, potionEffect, ultimate.armor.effectLevels[i], GOOD);
+                }
+            });
             List<Potion> removablePotions = Arrays.stream(ultimate.armor.removePotionEffects).map(PotionUtils::getPotion).collect(Collectors.toList());
             removablePotions.stream().filter(
                 potionEffect -> Utils.isNotNull(potionEffect) && potionEffect != ModPotions.EMPTY
