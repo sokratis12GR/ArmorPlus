@@ -24,24 +24,24 @@ import static net.thedragonteam.armorplus.util.WorldGenUtils.runGenerator;
  **/
 public class OreGen implements IWorldGenerator {
 
-    private WorldGenerator lavaCrystalOverworldGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.overworldVeinAmountWorking);
-    private WorldGenerator lavaCrystalTheEndGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.theEndVeinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-    private WorldGenerator lavaCrystalTheNetherGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.theNetherVeinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.overworld.veinAmount);
+    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         int i = world.provider.getDimension();
         if (i == 0) {
-            if (lava_crystal.enableOverworldGen) {
-                runGenerator(lavaCrystalOverworldGenerator, world, random, chunkX, chunkZ, lava_crystal.overworldRarityWorkingOne, lava_crystal.overworldMinYSpawn, lava_crystal.overworldMaxYSpawn);
+            if (lava_crystal.overworld.enable) {
+                runGenerator(overworldGenerator, world, random, chunkX, chunkZ, lava_crystal.overworld.rarity, lava_crystal.overworld.minYSpawn, lava_crystal.overworld.maxYSpawn);
             }
         } else if (i == 1) {
-            if (lava_crystal.enableTheEndGen) {
-                runGenerator(lavaCrystalTheEndGenerator, world, random, chunkX, chunkZ, lava_crystal.theEndRarity, lava_crystal.theEndMinYSpawn, lava_crystal.theEndMaxYSpawn);
+            if (lava_crystal.the_end.enable) {
+                runGenerator(theEndGenerator, world, random, chunkX, chunkZ, lava_crystal.the_end.rarity, lava_crystal.the_end.minYSpawn, lava_crystal.the_end.maxYSpawn);
             }
         } else if (i == -1) {
-            if (lava_crystal.enableTheNetherGen) {
-                runGenerator(lavaCrystalTheNetherGenerator, world, random, chunkX, chunkZ, lava_crystal.theNetherRarity, lava_crystal.theNetherMinYSpawn, lava_crystal.theNetherMaxYSpawn);
+            if (lava_crystal.the_nether.enable) {
+                runGenerator(theNetherGenerator, world, random, chunkX, chunkZ, lava_crystal.the_nether.rarity, lava_crystal.the_nether.minYSpawn, lava_crystal.the_nether.maxYSpawn);
             }
         }
     }
