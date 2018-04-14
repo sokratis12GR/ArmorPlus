@@ -10,9 +10,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static net.minecraft.item.ItemStack.areItemsEqual;
 import static net.minecraftforge.common.config.Config.*;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -123,9 +120,9 @@ public class ModConfig {
 
             public class WitherBones {
                 @Comment({"Set the amount that the Wither Boss will drop"})
-                public int witherBossDropAmount = 6;
+                public int dropAmount = 6;
                 @Comment({"Enable/Disable the drop from the Wither Boss"})
-                public boolean witherBossDrop = true;
+                public boolean bossDrop = true;
                 @Comment({"Enable/Disable the drop from the Wither Skeleton"})
                 public boolean witherSkeletonDrop = true;
             }
@@ -133,9 +130,9 @@ public class ModConfig {
             public class GuardianScales {
 
                 @Comment({"Set the amount that the Elder Guardian will drop"})
-                public int elderDropAmount = 6;
+                public int dropAmount = 6;
                 @Comment({"Enable/Disable the drop from the Elder Guardian"})
-                public boolean elderGuardianDrop = true;
+                public boolean elderDrop = true;
                 @Comment({"Enable/Disable the drop from the Guardian"})
                 public boolean guardianDrop = true;
             }
@@ -152,7 +149,7 @@ public class ModConfig {
         @Comment({"Enable/Disable the The One Probe integration"})
         public static boolean enableTOPIntegration = true;
         @Comment({"Enable/Disable the ProjectE integration"})
-        public static boolean enableProjectEIntegration = true;
+        public static boolean enableProjectEIntegration = false;
     }
 
     @Config(modid = MODID, name = "armorplus/debug", category = "debug")
@@ -175,36 +172,36 @@ public class ModConfig {
         public static Tower tower = new Tower();
 
         public static class OreLavaCrystal {
-            @Comment({"Enable/Disable The Crystal World Generation in the dimension `Overworld`"})
-            public boolean enableOverworldGen = true;
-            @Comment({"Enable/Disable The Crystal World Generation in the dimension `The End`"})
-            public boolean enableTheEndGen = false;
-            @Comment({"Enable/Disable The Crystal World Generation in the dimension `The Nether`"})
-            public boolean enableTheNetherGen = false;
-            @Comment({"Set the rarity level of the Crystal Generation in the dimension `Overworld`"})
-            public int overworldRarityWorkingOne = 10;
-            @Comment({"Set the min POS_Y level of the Crystal Generation in the dimension `Overworld`"})
-            public int overworldMinYSpawn = 6;
-            @Comment({"Set the max POS_Y level of the Crystal Generation in the dimension `Overworld`"})
-            public int overworldMaxYSpawn = 16;
-            @Comment({"Set the rarity level of the Crystal Generation in the dimension `The End`"})
-            public int theEndRarity = 0;
-            @Comment({"Set the min POS_Y level of the Crystal Generation in the dimension `The End`"})
-            public int theEndMinYSpawn = 0;
-            @Comment({"Set the max POS_Y level of the Crystal Generation in the dimension `The End`"})
-            public int theEndMaxYSpawn = 0;
-            @Comment({"Set the rarity level of the Crystal Generation in the dimension `The Nether`"})
-            public int theNetherRarity = 0;
-            @Comment({"Set the min POS_Y level of the Crystal Generation in the dimension `The Nether`"})
-            public int theNetherMinYSpawn = 0;
-            @Comment({"Set the max POS_Y level of the Crystal Generation in the dimension `The Nether`"})
-            public int theNetherMaxYSpawn = 0;
-            @Comment({"Set the vein amount of the Crystal Generation in the dimension `Overworld`"})
-            public int overworldVeinAmountWorking = 4;
-            @Comment({"Set the vein amount of the Crystal Generation in the dimension `The End`"})
-            public int theEndVeinAmount = 0;
-            @Comment({"Set the vein amount of the Crystal Generation in the dimension `The Nether`"})
-            public int theNetherVeinAmount = 0;
+
+            @Comment({"Configuration for the 'Overworld' dimension"})
+            public DimensionOre overworld = new DimensionOre(true, 10, 6, 16, 4);
+            @Comment({"Configuration for the 'The Nether' dimension"})
+            public DimensionOre the_nether = new DimensionOre(false, 0, 0, 0, 0);
+            @Comment({"Configuration for the 'The End' dimension"})
+            public DimensionOre the_end = new DimensionOre(false, 0, 0, 0, 0);
+
+            public static class DimensionOre {
+
+                public DimensionOre(boolean enable, int rarity, int minYSpawn, int maxYSpawn, int veinAmount) {
+                    this.enable = enable;
+                    this.rarity = rarity;
+                    this.minYSpawn = minYSpawn;
+                    this.maxYSpawn = maxYSpawn;
+                    this.veinAmount = veinAmount;
+                }
+
+                @Comment({"Enable/Disable the lava crystal world generation"})
+                public boolean enable;
+
+                @Comment({"Set the rarity level of the lava crystal world gen"})
+                public int rarity;
+                @Comment({"Set the minimum y pos level of the lava crystal world gen"})
+                public int minYSpawn;
+                @Comment({"Set the maximum y pos level of the lava crystal world gen"})
+                public int maxYSpawn;
+                @Comment({"Set the vein amount of the lava crystal world gen"})
+                public int veinAmount;
+            }
         }
 
         public static class Tower {
@@ -231,77 +228,87 @@ public class ModConfig {
 
         @Comment({"Configurations for the Coal Material"})
         public static OriginMaterial coal = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"night_vision"}, "gray", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new int[]{0},
+            new String[]{"night_vision"}, "gray", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new int[]{0},
             "gray", new int[]{0}, new String[]{"blindness"}, true, 0.5, 24, 2.5, 24, -2.0, 24
         );
 
         @Comment({"Configurations for the Lapis Material"})
         public static OriginMaterial lapis = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"water_breathing"}, "dark_blue", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{0},
+            new String[]{"water_breathing"}, "dark_blue", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{0},
             "dark_blue", new int[]{1}, new String[]{"nausea"}, true, 1.0, 200, 3.0, 200, -1.5, 200
         );
 
         @Comment({"Configurations for the Redstone Material"})
         public static OriginMaterial redstone = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"haste"}, "dark_red", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{1},
+            new String[]{"haste"}, "dark_red", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{1},
             "dark_red", new int[]{1}, new String[]{"mining_fatigue"}, true, 1.0, 200, 3.0, 200, -1.5, 200
         );
 
         @Comment({"Configurations for the Emerald Material"})
         public static OriginMaterial emerald = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"speed"}, "dark_green", 1.0, new int[]{3, 6, 8, 3}, new boolean[4], true, new int[]{1},
+            new String[]{"speed"}, "dark_green", 1.0, new int[]{3, 6, 8, 3}, new boolean[4], true, new int[]{1},
             "dark_green", new int[]{1}, new String[]{"slowness"}, true, 1.5, 1561, 3.5, 1561, -0.5, 1561
         );
 
         @Comment({"Configurations for the Obsidian Material"})
         public static OriginMaterial obsidian = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"resistance"}, "dark_gray", 1.0, new int[]{3, 6, 7, 3}, new boolean[4], true, new int[]{0},
+            new String[]{"resistance"}, "dark_gray", 1.0, new int[]{3, 6, 7, 3}, new boolean[4], true, new int[]{0},
             "dark_gray", new int[]{1}, new String[]{"weakness"}, true, 4.0, 1500, 6.0, 1500, 0.0, 1500
         );
 
         @Comment({"Configurations for the Lava Material"})
+        //TODO: Convert this to be like its brothers
         public static LavaMaterial lava = new LavaMaterial();
 
         @Comment({"Configurations for the Guardian Material"})
         public static OriginMaterial guardian = new OriginMaterial(
-            new String[]{"empty"}, new String[]{"water_breathing"}, "aqua", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{0},
+            new String[]{"water_breathing"}, "aqua", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{0},
             "aqua", new int[]{1}, new String[]{"nausea"}, true, 6.0, 1800, 7.0, 1500, 1.5, 1800
         );
 
         @Comment({"Configurations for the Super Star Material"})
-        public static SuperStarMaterial super_star = new SuperStarMaterial();
+        public static OriginMaterial super_star = new OriginMaterial(
+            new String[]{"wither"}, new String[]{"regeneration"}, "white", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{1},
+            "white", new int[]{1}, new String[]{"wither"}, true, 7.0, 1950, 8.0, 1950, 1.5, 1950
+        );
+
         @Comment({"Configurations for the Ender Dragon Material"})
-        public static EnderDragonMaterial ender_dragon = new EnderDragonMaterial();
+        public static OriginMaterial ender_dragon = new OriginMaterial(
+            new String[]{"wither"}, new String[]{"empty"}, "dark_purple", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{0},
+            "dark_purple", new int[]{3}, new String[]{"wither"}, true, 8.0, 2310, 10.0, 2310, 1.5, 2310
+        );
+
         @Comment({"Configurations for the Ultimate Material"})
+        //TODO: Convert this to be like its sisters
         public static UltimateMaterial ultimate = new UltimateMaterial();
 
         @Comment({"Configurations for the Chicken Material"})
         public static SpecialMaterial chicken = new SpecialMaterial(
-            new String[]{"empty"}, "aqua", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"speed"}, new int[]{4}
+            "aqua", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"speed"}, new int[]{4}
         );
         @Comment({"Configurations for the Slime Material"})
         public static SpecialMaterial slime = new SpecialMaterial(
-            new String[]{"empty"}, "green", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{2}
+            "green", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{2}
         );
         @Comment({"Configurations for the Ardite Material"})
         public static SpecialMaterial ardite = new SpecialMaterial(
-            new String[]{"empty"}, "dark_red", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"fire_resistance"}, new int[]{0}
+            "dark_red", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"fire_resistance"}, new int[]{0}
         );
         @Comment({"Configurations for the Cobalt Material"})
         public static SpecialMaterial cobalt = new SpecialMaterial(
-            new String[]{"empty"}, "blue", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"haste"}, new int[]{2}
+            "blue", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"haste"}, new int[]{2}
         );
         @Comment({"Configurations for the Manyullyn Material"})
         public static SpecialMaterial manyullyn = new SpecialMaterial(
-            new String[]{"empty"}, "dark_purple", 2.0, new int[]{3, 5, 5, 3}, new boolean[4], true, new String[]{"strength"}, new int[]{1}
+            "dark_purple", 2.0, new int[]{3, 5, 5, 3}, new boolean[4], true, new String[]{"strength"}, new int[]{1}
         );
         @Comment({"Configurations for the Pig Iron Material"})
         public static SpecialMaterial pig_iron = new SpecialMaterial(
-            new String[]{"empty"}, "light_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"saturation"}, new int[]{0}
+            "light_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"saturation"}, new int[]{0}
         );
         @Comment({"Configurations for the Knight Slime Material"})
         public static SpecialMaterial knight_slime = new SpecialMaterial(
-            new String[]{"empty"}, "dark_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{1}
+            "dark_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{1}
         );
 
         public static GlobalRegistry global_registry = new GlobalRegistry();
@@ -319,6 +326,12 @@ public class ModConfig {
                 weapons = new OriginWeapons(winc, wel, wape, wee, sdmg, sdur, bdmg, bdur, babdmg, bowdur);
             }
 
+            public OriginMaterial(String[] aape, String ainc, double atp, int[] app, boolean[] aepe, boolean aese, int[] ael,
+                                  String winc, int[] wel, String[] wape, boolean wee, double sdmg, int sdur, double bdmg, int bdur, double babdmg, int bowdur
+            ) {
+                this(new String[]{"empty"}, aape, ainc, atp, app, aepe, aese, ael, winc, wel, wape, wee, sdmg, sdur, bdmg, bdur, babdmg, bowdur);
+            }
+
             public class OriginArmor {
 
                 //       public Enchants enchants = new Enchants();
@@ -332,6 +345,7 @@ public class ModConfig {
                     this.enablePieceEffects = aepe;
                     this.enableSetEffects = aese;
                     this.effectLevels = ael;
+                    this.setUnbreakable = false;
                 }
 
                 //      public class Enchants {
@@ -360,7 +374,7 @@ public class ModConfig {
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
                 @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable = false;
+                public boolean setUnbreakable;
             }
 
             public class OriginWeapons {
@@ -397,7 +411,7 @@ public class ModConfig {
 
                 public class OriginSword {
 
-                    public OriginSword(double sdmg, int sdur) {
+                    OriginSword(double sdmg, int sdur) {
                         damage = sdmg;
                         durability = sdur;
                     }
@@ -411,7 +425,7 @@ public class ModConfig {
 
                 public class OriginBattleAxe {
 
-                    public OriginBattleAxe(double bdmg, int bdur) {
+                    OriginBattleAxe(double bdmg, int bdur) {
                         damage = bdmg;
                         durability = bdur;
                     }
@@ -424,7 +438,7 @@ public class ModConfig {
 
                 public class OriginBow {
 
-                    public OriginBow(double babdmg, int bowdur) {
+                    OriginBow(double babdmg, int bowdur) {
                         arrowBonusDamage = babdmg;
                         durability = bowdur;
                     }
@@ -445,20 +459,9 @@ public class ModConfig {
 
             public class Armor {
 
-                //     public Enchants enchants = new Enchants();
-
-                //     public class Enchants {
-
-                //         @Comment({
-                //             "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-                //             "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-                //         })
-                //         public Map<String, Integer> enchantments = new HashMap<>();
-                //     }
-
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects = {"empty"};
-                @Comment({"Enables/Disables the DeBuffs that the armor will get when touching water without Water Breathing Potion. \naka nothing happens when player wears this armor while in water."})
+                @Comment({"Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion. \na.k.a nothing happens when player wears this armor while in water."})
                 public boolean enableOnWaterTouchDeBuff = true;
                 @Comment({"Set the color name the armor will have"})
                 public String itemNameColor = "gold";
@@ -470,16 +473,6 @@ public class ModConfig {
                 public boolean[] enablePieceEffects = new boolean[4];
                 @Comment({"Enable/Disable the set armor effect(s)"})
                 public boolean enableSetEffects = true;
-
-                //        @Comment({
-                //            "Adds the potion effect the armor will have",
-                //            "To add an effect add a line with <modid>:<potion_effect>;<amplifier>",
-                //            "Note that the modid can be empty if used vanilla effects like: <potion_effect>;<amplifier>",
-                //            "Amplifier level is added after the \';\'",
-                //            "(to disable the effect set the effects \'false\')"
-                //        })
-                //        public String[] effects = {"minecraft:fire_resistance;0"};
-
                 @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
                 public String[] addPotionEffects = {"fire_resistance"};
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
@@ -535,185 +528,10 @@ public class ModConfig {
 
         }
 
-        public static class SuperStarMaterial {
-            public Armor armor = new Armor();
-            public Weapons weapons = new Weapons();
-
-            public class Armor {
-
-                public Enchants enchants = new Enchants();
-
-                public class Enchants {
-
-                    @Comment({
-                        "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-                        "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-                    })
-                    public Map<String, Integer> enchantments = new HashMap<>();
-                }
-
-                @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
-                public String[] removePotionEffects = {"wither"};
-                @Comment({"Set the color name the  armor will have"})
-                public String itemNameColor = "white";
-                @Comment({"Set the amount of toughness points the armor will have"})
-                public double toughnessPoints = 2.0;
-                @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
-                public int[] protectionPoints = {4, 7, 8, 3};
-                @Comment({"Enable/Disable the effect (Boots, Leggings, Chestplate, Helmet)"})
-                public boolean[] enablePieceEffects = {false, false, false, false};
-                @Comment({"Enable/Disable the set armor effect(s)"})
-                public boolean enableSetEffects = true;
-                @Comment({"Adds the potion effect the  armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"regeneration"};
-                @Comment({"Set the amplifier level for the effect(s) by the  armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {1};
-                @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable = false;
-            }
-
-            public class Weapons {
-                public Sword sword = new Sword();
-                public BattleAxe battle_axe = new BattleAxe();
-                public Bow bow = new Bow();
-
-                @Comment({"Set the color name the weapons will have"})
-                public String itemNameColor = "white";
-                @Comment({"Set the amplifier level for the effect(s) by the weapons. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {1};
-                @Comment({"Adds the potion effect the weapons will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"wither"};
-                @Comment({"Enable/Disable the potion effect the weapons will have"})
-                public boolean enableEffects = true;
-                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
-                public boolean shouldApplyFire = false;
-                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
-                public int onFireSeconds = 0;
-
-                public class Sword {
-
-                    @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 7.0;
-                    @Comment({"Set the amount of durability the sword have"})
-                    public int durability = 1950;
-                }
-
-                public class BattleAxe {
-
-                    @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 8.0;
-                    @Comment({"Set the amount of durability the battle axe have"})
-                    public int durability = 1950;
-                }
-
-                public class Bow {
-
-                    @Comment({"Set the amount of bonus arrow damage the bow will do"})
-                    public double arrowBonusDamage = 1.5;
-                    @Comment({"Set the amount of durability the bow have"})
-                    public int durability = 1950;
-                }
-            }
-
-        }
-
-        public static class EnderDragonMaterial {
-
-            public Armor armor = new Armor();
-            public Weapons weapons = new Weapons();
-
-            public class Armor {
-
-                public Enchants enchants = new Enchants();
-
-                public class Enchants {
-
-                    @Comment({
-                        "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-                        "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-                    })
-                    public Map<String, Integer> enchantments = new HashMap<>();
-                }
-
-                @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
-                public String[] removePotionEffects = {"wither"};
-                @Comment({"Set the color name the  armor will have"})
-                public String itemNameColor = "dark_purple";
-                @Comment({"Set the amount of toughness points the armor will have"})
-                public double toughnessPoints = 2.0;
-                @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
-                public int[] protectionPoints = {4, 7, 8, 3};
-                @Comment({"Enable/Disable the set effect (Boots, Leggings, Chestplate, Helmet)"})
-                public boolean[] enablePieceEffects = {false, false, false, false};
-                @Comment({"Enable/Disable the Full armor effect(s)"})
-                public boolean enableSetEffects = true;
-                @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"empty"};
-                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {0};
-                @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable = false;
-            }
-
-            public class Weapons {
-                public Sword sword = new Sword();
-                public BattleAxe battle_axe = new BattleAxe();
-                public Bow bow = new Bow();
-
-                @Comment({"Set the color name the weapons will have"})
-                public String itemNameColor = "dark_purple";
-                @Comment({"Set the amplifier level for the effect(s) by the weapons. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {3};
-                @Comment({"Adds the potion effect the weapons will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"wither"};
-                @Comment({"Enable/Disable the potion effect the weapons will have"})
-                public boolean enableEffects = true;
-                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
-                public boolean shouldApplyFire = false;
-                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
-                public int onFireSeconds = 0;
-
-                public class Sword {
-
-                    @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 8.0;
-                    @Comment({"Set the amount of durability the sword have"})
-                    public int durability = 2310;
-                }
-
-                public class BattleAxe {
-
-                    @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 10.0;
-                    @Comment({"Set the amount of durability the battle axe have"})
-                    public int durability = 2310;
-                }
-
-                public class Bow {
-
-                    @Comment({"Set the amount of bonus arrow damage the bow will do"})
-                    public double arrowBonusDamage = 1.5;
-                    @Comment({"Set the amount of durability the bow have"})
-                    public int durability = 2310;
-                }
-            }
-        }
-
         public static class UltimateMaterial {
             public Armor armor = new Armor();
 
             public class Armor {
-
-                //         public Enchants enchants = new Enchants();
-
-                //         public class Enchants {
-
-                //             @Comment({
-                //                 "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-                //                 "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-                //             })
-                //             public Map<String, Integer> enchantments = new HashMap<>();
-                //         }
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects = {"wither"};
@@ -740,8 +558,8 @@ public class ModConfig {
         public static class SpecialMaterial {
             public Armor armor;
 
-            public SpecialMaterial(String[] rpe, String inc, double tp, int[] pp, boolean[] epe, boolean ese, String[] ape, int[] el) {
-                armor = new Armor(rpe, inc, tp, pp, epe, ese, ape, el);
+            SpecialMaterial(String inc, double tp, int[] pp, boolean[] epe, boolean ese, String[] ape, int[] el) {
+                armor = new Armor(new String[]{"empty"}, inc, tp, pp, epe, ese, ape, el);
             }
 
             public class Armor {
