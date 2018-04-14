@@ -10,9 +10,9 @@ import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.armorplus.items.base.ItemSpecialBattleAxe;
 import net.thedragonteam.armorplus.items.base.ItemSpecialBow;
 import net.thedragonteam.armorplus.items.base.ItemSpecialSword;
-import net.thedragonteam.armorplus.items.enums.BattleAxes;
-import net.thedragonteam.armorplus.items.enums.Bows;
-import net.thedragonteam.armorplus.items.enums.Swords;
+import net.thedragonteam.armorplus.items.weapons.BattleAxes;
+import net.thedragonteam.armorplus.items.weapons.Bows;
+import net.thedragonteam.armorplus.items.weapons.Swords;
 
 import java.util.stream.IntStream;
 

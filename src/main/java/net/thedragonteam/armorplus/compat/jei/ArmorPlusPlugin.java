@@ -80,8 +80,10 @@ public class ArmorPlusPlugin implements IModPlugin {
                 twitchItem,
                 beamItem,
                 btmMoon,
-                m1Jordan
+                m1Jordan,
+                teamRapture
             );
+            Arrays.stream(horseArmors).forEach(horseArmor -> blackListIngredients(blacklist, horseArmor));
         }
 
         jeiHelper = registry.getJeiHelpers();

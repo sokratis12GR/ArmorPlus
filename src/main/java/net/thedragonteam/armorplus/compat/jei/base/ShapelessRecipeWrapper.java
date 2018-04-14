@@ -7,6 +7,8 @@ import net.minecraft.util.NonNullList;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
 
+import java.util.Objects;
+
 public class ShapelessRecipeWrapper implements IRecipeWrapper {
 
     private final IRecipe recipe;
@@ -15,7 +17,7 @@ public class ShapelessRecipeWrapper implements IRecipeWrapper {
     public ShapelessRecipeWrapper(IRecipe recipe, NonNullList<ItemStack> inputList) {
         this.recipe = recipe;
         this.input = inputList;
-        inputList.stream().filter(ItemStack.class::isInstance).filter(itemStack ->
+        inputList.stream().filter(Objects::nonNull).filter(itemStack ->
             !itemStack.isEmpty() && itemStack.getCount() != 1
         ).forEachOrdered(itemStack -> itemStack.setCount(1));
     }

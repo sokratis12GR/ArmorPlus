@@ -17,10 +17,10 @@ import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
 import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
 import net.thedragonteam.armorplus.items.dev.DevTool;
 import net.thedragonteam.armorplus.items.dev.ItemSpawnStructure;
-import net.thedragonteam.armorplus.items.enums.BattleAxes;
-import net.thedragonteam.armorplus.items.enums.Bows;
+import net.thedragonteam.armorplus.items.weapons.BattleAxes;
+import net.thedragonteam.armorplus.items.weapons.Bows;
 import net.thedragonteam.armorplus.items.enums.Items;
-import net.thedragonteam.armorplus.items.enums.Swords;
+import net.thedragonteam.armorplus.items.weapons.Swords;
 import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
@@ -93,7 +93,8 @@ public class ModItems {
     public static DevTool devTool = new DevTool();
     public static ItemCosmetic twitchItem = new ItemCosmetic(TWITCH), beamItem = new ItemCosmetic(BEAM),
         theDragonTeamItem = new ItemCosmetic(THE_DRAGON_TEAM), moddedCityItem = new ItemCosmetic(MODDED_CITY),
-        jonBamsItem = new ItemCosmetic(JON_BAMS), btmMoon = new ItemCosmetic(BTM_MOON), m1Jordan = new ItemCosmetic(M1JORDAN);
+        jonBamsItem = new ItemCosmetic(JON_BAMS), btmMoon = new ItemCosmetic(BTM_MOON), m1Jordan = new ItemCosmetic(M1JORDAN),
+        teamRapture = new ItemCosmetic(TEAM_RAPTURE);
     public static ItemSpecialArrow itemCoalArrow = new ItemSpecialArrow(ArrowType.COAL),
         itemLapisArrow = new ItemSpecialArrow(ArrowType.LAPIS),
         itemRedstoneArrow = new ItemSpecialArrow(ArrowType.REDSTONE),

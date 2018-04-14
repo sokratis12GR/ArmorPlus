@@ -18,7 +18,11 @@ public class ShapelessOreRecipeWrapper implements IRecipeWrapper {
         this.jeiHelpers = jeiHelpers;
         this.recipe = recipe;
         this.inputItems = inputItems;
-        inputItems.stream().filter(itemStack -> itemStack instanceof ItemStack).filter(itemStack -> !((ItemStack) itemStack).isEmpty() && ((ItemStack) itemStack).getCount() != 1).forEach(itemStack -> ((ItemStack) itemStack).setCount(1));
+        inputItems.stream().filter(itemStack -> itemStack instanceof ItemStack).filter(itemStack
+            -> !((ItemStack) itemStack).isEmpty() && ((ItemStack) itemStack).getCount() != 1
+        ).forEach(itemStack
+            -> ((ItemStack) itemStack).setCount(1)
+        );
     }
 
     @Override

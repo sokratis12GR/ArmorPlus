@@ -8,7 +8,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.thedragonteam.armorplus.entity.dungeon.wither.EntitySkeletalKing;
+import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
 
 import static net.minecraftforge.fml.common.registry.EntityRegistry.addSpawn;
