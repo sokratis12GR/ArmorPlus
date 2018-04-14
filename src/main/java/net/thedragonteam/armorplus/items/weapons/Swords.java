@@ -2,7 +2,7 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.items.enums;
+package net.thedragonteam.armorplus.items.weapons;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -13,8 +13,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.api.properties.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.IRemovable;
 import net.thedragonteam.armorplus.api.properties.IRepairable;
-import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.util.LavaWeaponsUtils;
+import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
+import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import javax.annotation.Nonnull;
@@ -29,6 +29,7 @@ import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
+import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
@@ -40,55 +41,31 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  **/
 public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor),
-        coal.weapons.enableEffects, coal.weapons.addPotionEffects, coal.weapons.effectLevels,
-        coal.weapons.shouldApplyFire, coal.weapons.onFireSeconds, global_registry.enableCoalWeapons[0]
+        new Negative(coal), new Ignite(coal), global_registry.enableCoalWeapons[0]
     ),
     LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor),
-        lapis.weapons.enableEffects, lapis.weapons.addPotionEffects, lapis.weapons.effectLevels,
-        lapis.weapons.shouldApplyFire, lapis.weapons.onFireSeconds,global_registry.enableLapisWeapons[0]
+        new Negative(lapis), new Ignite(lapis), global_registry.enableLapisWeapons[0]
     ),
     REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor),
-        redstone.weapons.enableEffects, redstone.weapons.addPotionEffects, redstone.weapons.effectLevels,
-        redstone.weapons.shouldApplyFire, redstone.weapons.onFireSeconds,global_registry.enableRedstoneWeapons[0]
+        new Negative(redstone), new Ignite(redstone), global_registry.enableRedstoneWeapons[0]
     ),
     EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor),
-        emerald.weapons.enableEffects, emerald.weapons.addPotionEffects, emerald.weapons.effectLevels,
-        emerald.weapons.shouldApplyFire, emerald.weapons.onFireSeconds,global_registry.enableEmeraldWeapons[0]
+        new Negative(emerald), new Ignite(emerald), global_registry.enableEmeraldWeapons[0]
     ),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidian.weapons.itemNameColor),
-        obsidian.weapons.enableEffects, obsidian.weapons.addPotionEffects, obsidian.weapons.effectLevels,
-        obsidian.weapons.shouldApplyFire, obsidian.weapons.onFireSeconds,global_registry.enableObsidianWeapons[0]
+    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(compressedObsidian), getValueByName(obsidian.weapons.itemNameColor),
+        new Negative(obsidian), new Ignite(obsidian), global_registry.enableObsidianWeapons[0]
     ),
     LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor),
-        lava.weapons.enableEffects, lava.weapons.addPotionEffects, lava.weapons.effectLevels,
-        lava.weapons.shouldApplyFire, lava.weapons.onFireSeconds,global_registry.enableLavaWeapons[0]
-    ) {
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void addInformation(List<String> tooltip) {
-            LavaWeaponsUtils.addLavaInformation(tooltip, getApplyEffectNames(), getApplyAmplifierLevels(), getTextFormatting());
-        }
-
-        @Override
-        public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
-            stack.damageItem(1, attacker);
-            if (lava.weapons.shouldApplyFire) {
-                target.setFire(lava.weapons.onFireSeconds);
-            }
-            return true;
-        }
-    },
+        new Negative(lava), new Ignite(lava), global_registry.enableLavaWeapons[0]
+    ),
     GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor),
-        guardian.weapons.enableEffects, guardian.weapons.addPotionEffects, guardian.weapons.effectLevels,
-        guardian.weapons.shouldApplyFire, guardian.weapons.onFireSeconds,global_registry.enableGuardianWeapons[0]
+        new Negative(guardian), new Ignite(guardian), global_registry.enableGuardianWeapons[0]
     ),
     SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor),
-        super_star.weapons.enableEffects, super_star.weapons.addPotionEffects, super_star.weapons.effectLevels,
-        super_star.weapons.shouldApplyFire, super_star.weapons.onFireSeconds,global_registry.enableSuperStarWeapons[0]
+        new Negative(super_star), new Ignite(super_star), global_registry.enableSuperStarWeapons[0]
     ),
     ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor),
-        ender_dragon.weapons.enableEffects, ender_dragon.weapons.addPotionEffects, ender_dragon.weapons.effectLevels,
-        ender_dragon.weapons.shouldApplyFire, ender_dragon.weapons.onFireSeconds,global_registry.enableEnderDragonWeapons[0]
+        new Negative(ender_dragon), new Ignite(ender_dragon), global_registry.enableEnderDragonWeapons[0]
     );
 
     private final String name;
@@ -97,27 +74,19 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     private final TextFormatting textFormatting;
     private final boolean isEnabled;
     private final List<String> effect;
-    private final boolean enabledEffects;
-    private final String[] addNegativePotionEffect;
-    private final int[] addNegativePotionEffectAmplifier;
-    private final boolean shouldApplyFire;
-    private final int fireSecond;
+    private final Negative negative;
+    private final Ignite ignite;
 
-    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn,
-           boolean enableEffect, String[] addNegativeEffect, int[] addNegativeEffectAmplifier,
-           boolean shouldApplyFire, int fireSecond, boolean isEnabled
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn, Negative negative, Ignite ignite, boolean isEnabled
     ) {
         this.material = materialIn;
         this.name = nameIn;
         this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
         this.textFormatting = textFormattingIn;
         this.isEnabled = isEnabled;
-        this.effect = setToolTip(addNegativeEffect, addNegativeEffectAmplifier);
-        this.enabledEffects = enableEffect;
-        this.addNegativePotionEffect = addNegativeEffect;
-        this.addNegativePotionEffectAmplifier = addNegativeEffectAmplifier;
-        this.shouldApplyFire = shouldApplyFire;
-        this.fireSecond = fireSecond;
+        this.negative = negative;
+        this.ignite = ignite;
+        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectsAmplifier());
     }
 
     @Override
@@ -127,12 +96,12 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
 
     @Override
     public List<String> getApplyEffectNames() {
-        return Arrays.asList(this.addNegativePotionEffect);
+        return Arrays.asList(this.negative.getNegativeEffects());
     }
 
     @Override
     public List<Integer> getApplyAmplifierLevels() {
-        return Arrays.stream(addNegativePotionEffectAmplifier).boxed().collect(Collectors.toList());
+        return Arrays.stream(this.negative.getNegativeEffectsAmplifier()).boxed().collect(Collectors.toList());
     }
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {
@@ -164,16 +133,16 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     }
 
     public boolean areEffectsEnabled() {
-        return enabledEffects;
+        return this.negative.isEnabled();
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        if (shouldApplyFire) {
-            target.setFire(fireSecond);
+        if (this.ignite.isEnabled()) {
+            target.setFire(this.ignite.getFireSeconds());
         }
         if (this.areEffectsEnabled()) {
-            IntStream.range(0, addNegativePotionEffect.length).forEach(i ->
+            IntStream.range(0, this.negative.getNegativeEffects().length).forEach(i ->
                 addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD)
             );
         }
@@ -182,6 +151,6 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(List<String> tooltip) {
-        ToolTipUtils.addWeaponToolTip(tooltip, effect, getTextFormatting());
+        ToolTipUtils.addSpecialInformation(tooltip, this.negative, this.ignite, getTextFormatting());
     }
 }

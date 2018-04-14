@@ -62,8 +62,8 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, ultimatePartsNames.length).mapToObj(i ->
-                getItemStack(this, i)
+            IntStream.range(0, ultimatePartsNames.length).mapToObj(
+                meta -> getItemStack(this, meta)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -71,8 +71,8 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, ultimatePartsNames.length).forEachOrdered(i ->
-            this.initModel(ultimatePartsNames[i], "ultimate", i)
+        IntStream.range(0, ultimatePartsNames.length).forEachOrdered(
+            meta -> this.initModel(ultimatePartsNames[meta], "ultimate", meta)
         );
     }
 }
