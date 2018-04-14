@@ -1,3 +1,23 @@
+ArmorPlus 1.12.2-11.12.0.38-beta
+----------------------------
+
+* Technical: Made most of the configuration to be the same for all of the armors (Infused Lava & Ultimate Armor left)
+* Hidden the Horse Armor from Creative & JEI (as it not ready)
+* Simplified & improved the ability setting on tooltip, i.e you will no longer see duplicated entries as well as have a better indication of the abilities.
+* Tooltips now have a less cluttered look, removed redundant "Use: xyz", Abilities' Numbers now are converted to roman numerals i.e (1 = I, 4 = IV, 9 = IX, 10 = X, 99 = XC, 100 = C ...)
+* World gen configuration has been tweaked into sub categories (for the lava crystal per dimension), simplified names
+* Documented small parts of code
+
+ArmorPlus 1.12.2-11.11.1.37-beta
+----------------------------
+
+* Ultimate armor regeneration should be fixed
+* Translated to Italian thanks to [Davoleo](https://github.com/Davoleo) <3
+* Added a few more of the missing EMC (Including Ultimate level EMC)
+* Made EMC Integration disabled by default
+* Made the armors tab actually say that its an Armors tab (whoops)
+* Added Team Rapture Cosmetic :blue_heart: 
+
 ArmorPlus 1.12.2-11.11.0.36-beta
 ----------------------------
 

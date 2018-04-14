@@ -11,3 +11,4 @@ I want to give credit to those guys who helped with the translation of ArmorPlus
 | [ImmortalPharaoh7](https://www.youtube.com/channel/UCmpPDi94KWH_6eL0OGLFMpQ) | Arabic, French | اللغة العربية, Français | ar_sa.lang, fr_fr.lang
 | [FTB_lag](https://github.com/DoctorFTB) | Russian | ру́сский | ru_ru.lang 
 | [ikunai](https://github.com/ikunai) | Japanese | 日本語 | ja_jp.lang
+| [Davoleo](https://github.com/Davoleo) | Italian | italiano | it_it.lang
