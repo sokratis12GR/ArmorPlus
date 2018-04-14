@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 
 public interface IRepairable {
 
-    ItemStack getRepairStack();
+    default ItemStack getRepairStack() {
+        return ItemStack.EMPTY;
+    }
 
 }
