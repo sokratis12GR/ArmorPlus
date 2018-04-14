@@ -17,7 +17,7 @@ public class WorldGenUtils {
     /**
      * HELPER METHODS
      **/
-    // find a grass or dirt block to place the structure on
+
     public static int getGroundFromAbove(World world, int x, int z) {
         int y = 255;
         boolean foundGround = false;
