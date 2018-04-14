@@ -55,13 +55,13 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 0;
+    public static final int PATCH = 2;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 36;
+    public static final int BUILD = 38;
     /**
      * The ArmorPlus Version
      */
@@ -84,7 +84,7 @@ public class ArmorPlus {
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs tabArmorplus = new APTab(getNextID(), MODID, setName("items"), 0);
+    public static CreativeTabs tabArmorplus = new APTab(getNextID(), MODID, setName("armors"), 0);
     public static CreativeTabs tabArmorplusItems = new APTab(getNextID(), MODID, setName("items"), 1);
     public static CreativeTabs tabArmorplusBlocks = new APTab(getNextID(), MODID, setName("blocks"), 2);
     public static CreativeTabs tabArmorplusWeapons = new APTab(getNextID(), MODID, setName("weapons"), 3);
