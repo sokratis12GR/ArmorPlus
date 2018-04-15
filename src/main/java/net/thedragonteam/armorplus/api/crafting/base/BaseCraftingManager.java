@@ -27,8 +27,8 @@ import java.util.stream.IntStream;
  */
 public class BaseCraftingManager {
 
-    private static final BaseCraftingManager CHAMPION_BENCH = new BaseCraftingManager(9);
-    private static final BaseCraftingManager ULTI_TECH_BENCH = new BaseCraftingManager(7) {
+    private static final BaseCraftingManager CHAMPION_BENCH = new BaseCraftingManager(9, "Champion Bench");
+    private static final BaseCraftingManager ULTI_TECH_BENCH = new BaseCraftingManager(7, "Ulti-Tech Bench") {
         {
             new ModUltimateRecipes().addRecipes(this);
             new ModEnderDragonRecipes().addRecipes(this);
@@ -38,7 +38,7 @@ public class BaseCraftingManager {
             new ModUltiTechItemRecipes().addRecipes(this);
         }
     };
-    private static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(5) {
+    private static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(5, "High-Tech Bench") {
         {
             new ModTierTwoRecipes().addRecipes(this);
             new ModHighTechItemRecipes().addRecipes(this);
@@ -46,7 +46,7 @@ public class BaseCraftingManager {
             new ModTinkersConstructRecipes().addRecipes(this);
         }
     };
-    private static final BaseCraftingManager WORKBENCH = new BaseCraftingManager(3) {
+    private static final BaseCraftingManager WORKBENCH = new BaseCraftingManager(3, "Workbench") {
         {
             new ModItemRecipes().addRecipes(this);
             new ModOriginRecipes().addRecipes(this);
@@ -73,9 +73,11 @@ public class BaseCraftingManager {
 
     private final List<IRecipe> recipes = Lists.newArrayList();
     private int xy;
+    private String name;
 
-    public BaseCraftingManager(int xy) {
+    public BaseCraftingManager(int xy, String name) {
         this.xy = xy;
+        this.name = name;
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
     }
 
@@ -115,6 +117,10 @@ public class BaseCraftingManager {
         BaseShapedRecipe shapedrecipes = new BaseShapedRecipe(xy, width, height, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /**
