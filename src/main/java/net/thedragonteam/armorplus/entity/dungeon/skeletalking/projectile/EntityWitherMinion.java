@@ -13,6 +13,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
@@ -89,13 +90,16 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             return;
         }
         BlockPos blockPos = new BlockPos(result.entityHit);
-        final int amountWarriorMax = 3, amountArcherMax = 2, amountPaladinMax = 1;
+        final int amountWarriorMax = 4, amountArcherMax = 3, amountPaladinMax = 2;
         int warriorBound = rand.nextInt(amountWarriorMax) + 1;
         int archerBound = rand.nextInt(amountArcherMax) + 1;
         int paladinBound = rand.nextInt(amountPaladinMax);
         float health = shootingEntity.getHealth();
-        for (int i2 = 0; i2 < warriorBound; i2++) {
+        for (int ia = 0; ia < warriorBound; ia++) {
             EntityWitherSkeleton minionWarrior = new EntityWitherSkeleton(this.world);
+            minionWarrior.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+            minionWarrior.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionWarrior)), null);
+            this.world.spawnEntity(minionWarrior);
             if (health <= 1200.0F && health > 1000.0F) {
                 this.setMinionStats(minionWarrior, getItemStack(WOODEN_SWORD), EMPTY, emptyArmor);
             } else if (health <= 1000.0F && health > 800.0F) {
@@ -109,12 +113,12 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             } else if (health <= 200.0F && health > 0.0F) {
                 this.setMinionStats(minionWarrior, "Warrior", 30.0D, getItemStack(DIAMOND_AXE), EMPTY, DIAMOND_HELMET, DIAMOND_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
-            minionWarrior.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionWarrior.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionWarrior)), null);
-            this.world.spawnEntity(minionWarrior);
         }
-        for (int i1 = 0; i1 < archerBound; i1++) {
+        for (int ib = 0; ib < archerBound; ib++) {
             EntityWitherSkeleton minionArcher = new EntityWitherSkeleton(this.world);
+            minionArcher.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+            minionArcher.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionArcher)), null);
+            this.world.spawnEntity(minionArcher);
             if (health <= 800.0F && health > 600.0F) {
                 this.setMinionStats(minionArcher, "Archer", 15.0D, getItemStack(BOW), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
             } else if (health <= 600.0F && health > 400.0F) {
@@ -124,12 +128,12 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             } else if (health <= 200.0F && health > 0.0F) {
                 this.setMinionStats(minionArcher, "Archer", 18.0D, getItemStack(BOW), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
-            minionArcher.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionArcher.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionArcher)), null);
-            this.world.spawnEntity(minionArcher);
         }
-        for (int i = 0; i < paladinBound; i++) {
+        for (int ic = 0; ic < paladinBound; ic++) {
             EntityWitherSkeleton minionPaladin = new EntityWitherSkeleton(this.world);
+            minionPaladin.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+            minionPaladin.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionPaladin)), null);
+            this.world.spawnEntity(minionPaladin);
             if (health <= 400.0F && health > 200.0F) {
                 this.setMinionStats(minionPaladin, "Paladin", 30.0D,
                     getItemStack(superStarSword), getItemStack(SHIELD), DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS
@@ -139,9 +143,6 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
                     getItemStack(superStarBattleAxe), getItemStack(SHIELD), superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots
                 );
             }
-            minionPaladin.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionPaladin.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionPaladin)), null);
-            this.world.spawnEntity(minionPaladin);
         }
         result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
         this.setDead();
@@ -165,9 +166,10 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         minion.setCustomNameTag(format("%sSkeletal King's %s", TextFormatting.YELLOW, type));
         minion.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(maxHealth);
         minion.heal(minion.getMaxHealth());
+        minion.setHealth(minion.getMaxHealth());
         minion.setDropItemsWhenDead(false);
-        minion.setItemStackToSlot(MAINHAND, mainHand);
-        minion.setItemStackToSlot(OFFHAND, offHand);
+        minion.setHeldItem(EnumHand.MAIN_HAND, mainHand);
+        minion.setHeldItem(EnumHand.OFF_HAND, offHand);
         minion.setItemStackToSlot(HEAD, equipedArmor.get(0));
         minion.setItemStackToSlot(CHEST, equipedArmor.get(1));
         minion.setItemStackToSlot(LEGS, equipedArmor.get(2));

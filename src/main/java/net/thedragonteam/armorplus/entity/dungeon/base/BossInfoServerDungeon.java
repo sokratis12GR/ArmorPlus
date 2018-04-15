@@ -4,8 +4,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.BossInfoServer;
 
 import static net.minecraft.world.BossInfo.Color.*;
+import static net.minecraft.world.BossInfo.Overlay.NOTCHED_12;
 import static net.minecraft.world.BossInfo.Overlay.NOTCHED_20;
-import static net.minecraft.world.BossInfo.Overlay.NOTCHED_6;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -19,9 +19,9 @@ public class BossInfoServerDungeon extends BossInfoServer {
     }
 
     public enum BossInfoDungeonType {
-        SKELETAL_KING(WHITE, NOTCHED_6, true, false),
-        GUARDIAN_OVERLORD(BLUE, NOTCHED_6, false, false),
-        DEMONIC_DRAGON(PURPLE, NOTCHED_6, true, false),
+        SKELETAL_KING(WHITE, NOTCHED_12, true, false),
+        GUARDIAN_OVERLORD(BLUE, NOTCHED_12, false, false),
+        DEMONIC_DRAGON(PURPLE, NOTCHED_12, true, false),
         THE_MEANING_OF_EVERYTHING(GREEN, NOTCHED_20, true, true),;
 
         private final Color color;
