@@ -7,6 +7,7 @@ ArmorPlus 1.12.2-11.12.0.38-beta
 * Tooltips now have a less cluttered look, removed redundant "Use: xyz", Abilities' Numbers now are converted to roman numerals i.e (1 = I, 4 = IV, 9 = IX, 10 = X, 99 = XC, 100 = C ...)
 * World gen configuration has been tweaked into sub categories (for the lava crystal per dimension), simplified names
 * Documented small parts of code
+* Tweaked the CraftTweaker integration, removed duplication of code
 
 ArmorPlus 1.12.2-11.11.1.37-beta
 ----------------------------
