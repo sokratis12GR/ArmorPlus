@@ -12,12 +12,13 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import net.thedragonteam.armorplus.ModConfig.WorldGenConfig.OreLavaCrystal.DimensionOre;
 import net.thedragonteam.armorplus.registry.ModBlocks;
+import net.thedragonteam.armorplus.util.WorldGenUtils;
 
 import java.util.Random;
 
 import static net.thedragonteam.armorplus.ModConfig.WorldGenConfig.lava_crystal;
-import static net.thedragonteam.armorplus.util.WorldGenUtils.runGenerator;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -33,16 +34,20 @@ public class OreGen implements IWorldGenerator {
         int i = world.provider.getDimension();
         if (i == 0) {
             if (lava_crystal.overworld.enable) {
-                runGenerator(overworldGenerator, world, random, chunkX, chunkZ, lava_crystal.overworld.rarity, lava_crystal.overworld.minYSpawn, lava_crystal.overworld.maxYSpawn);
+                runGenerator(overworldGenerator, world, random, chunkX, chunkZ, lava_crystal.overworld);
             }
         } else if (i == 1) {
             if (lava_crystal.the_end.enable) {
-                runGenerator(theEndGenerator, world, random, chunkX, chunkZ, lava_crystal.the_end.rarity, lava_crystal.the_end.minYSpawn, lava_crystal.the_end.maxYSpawn);
+                runGenerator(theEndGenerator, world, random, chunkX, chunkZ, lava_crystal.the_end);
             }
         } else if (i == -1) {
             if (lava_crystal.the_nether.enable) {
-                runGenerator(theNetherGenerator, world, random, chunkX, chunkZ, lava_crystal.the_nether.rarity, lava_crystal.the_nether.minYSpawn, lava_crystal.the_nether.maxYSpawn);
+                runGenerator(theNetherGenerator, world, random, chunkX, chunkZ, lava_crystal.the_nether);
             }
         }
+    }
+
+    private void runGenerator(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, DimensionOre dimensionOre) {
+        WorldGenUtils.runGenerator(generator, world, random, chunkX, chunkZ, dimensionOre.rarity, dimensionOre.minYSpawn, dimensionOre.maxYSpawn);
     }
 }
