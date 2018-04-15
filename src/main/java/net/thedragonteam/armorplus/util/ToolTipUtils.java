@@ -28,16 +28,39 @@ import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
 @SideOnly(Side.CLIENT)
 public final class ToolTipUtils {
 
+    /**
+     * This provides the "Press [Key] to show more" tooltip
+     *
+     * @param tooltip the tooltip of the item
+     * @param keyBinding the keybind that the users will need to press to display the more information (replaces [Key])
+     * @param formatting the formatting of the tooltip, its color and style.
+     */
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
         tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, formattedText("tooltip.shift.showinfo.text_one"), formatting, keyBinding.getDisplayName(), GRAY, formattedText("tooltip.shift.showinfo.text_two")));
     }
 
+    /**
+     * Writes the abilities of the armor sets with an ordered list from abilitySorter to the item's tooltip.
+     * The abilities that will be written here, will only work when the full set is equipped.
+     *
+     * @param tooltip   the tooltip of the armor item
+     * @param abilities provides the abilities that are going to be applied to the main entity
+     * @param amplifier provides the levels of the abilities
+     */
     public static void addToolTipFull(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
         addToolTip(tooltip, "\u00a79Full set abilities:");
         int colorIndex = 1;
         abilitySorter(tooltip, abilities, amplifier, colorIndex);
     }
 
+    /**
+     * Writes the abilities of the armor pieces with an ordered list from abilitySorter to the item's tooltip.
+     * The abilities that will be written here, will work even if one armor piece is equipped.
+     *
+     * @param tooltip   the tooltip of the armor item
+     * @param abilities provides the abilities that are going to be applied to the main entity
+     * @param amplifier provides the levels of the abilities
+     */
     public static void addToolTipPiece(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
         addToolTip(tooltip, "\u00a79Abilities:");
         int colorIndex = 1;
@@ -45,9 +68,9 @@ public final class ToolTipUtils {
     }
 
     /**
-     * Formats the abilities of the armor sets/pieces to ordered organized lists of lines per ability
+     * Formats the abilities of the armor sets/pieces to ordered organized lists of lines per ability.
      *
-     * @param tooltip    the tooltip of the armor piece
+     * @param tooltip    the tooltip of the armor
      * @param abilities  provides the abilities that are going to be applied to the main entity
      * @param amplifier  provides the levels of the abilities
      * @param colorIndex the color of the line (color index)
@@ -100,15 +123,33 @@ public final class ToolTipUtils {
         }
     }
 
+    /**
+     * Checks if the Sneak (default: Shift) key is pressed
+     *
+     * @return true - if its pressed, false - if its not
+     */
     public static boolean isKeyDown() {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         return GameSettings.isKeyDown(keyBindSneak);
     }
 
+    /**
+     * Normalizes the level of the ability.
+     * In Minecraft: ability level 0 is equal to level 1. level 1 to level 2...
+     *
+     * @param amplifier the level of the ability
+     * @return The "normalized" ability level name
+     */
     private static int level(int amplifier) {
         return amplifier + 1;
     }
 
+    /**
+     * Adds simple tooltip lines util, each string is converted to exactly one line in the tooltip
+     *
+     * @param tooltip the tooltip of the item
+     * @param lines the lines that are written to the tooltip
+     */
     public static void addToolTip(List<String> tooltip, String... lines) {
         tooltip.addAll(Arrays.asList(lines));
     }
