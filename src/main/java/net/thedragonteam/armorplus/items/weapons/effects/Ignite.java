@@ -1,6 +1,7 @@
 package net.thedragonteam.armorplus.items.weapons.effects;
 
-import net.thedragonteam.armorplus.ModConfig;
+import net.thedragonteam.armorplus.ModConfig.RegistryConfig.LavaMaterial;
+import net.thedragonteam.armorplus.ModConfig.RegistryConfig.OriginMaterial;
 import net.thedragonteam.armorplus.api.properties.IRemovable;
 
 /**
@@ -14,11 +15,11 @@ public class Ignite implements IRemovable {
     private final boolean shouldApplyFire;
     private final int fireSeconds;
 
-    public Ignite(ModConfig.RegistryConfig.OriginMaterial material) {
+    public Ignite(OriginMaterial material) {
         this(material.weapons.shouldApplyFire, material.weapons.onFireSeconds);
     }
 
-    public Ignite(ModConfig.RegistryConfig.LavaMaterial material) {
+    public Ignite(LavaMaterial material) {
         this(material.weapons.shouldApplyFire, material.weapons.onFireSeconds);
     }
 

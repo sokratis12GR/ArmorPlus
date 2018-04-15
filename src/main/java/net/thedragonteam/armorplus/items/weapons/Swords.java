@@ -142,8 +142,8 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
             target.setFire(this.ignite.getFireSeconds());
         }
         if (this.areEffectsEnabled()) {
-            IntStream.range(0, this.negative.getNegativeEffects().length).forEach(i ->
-                addPotion(target, getPotion(this.getApplyEffectNames().get(i)), this.getApplyAmplifierLevels().get(i), BAD)
+            IntStream.range(0, this.negative.getNegativeEffects().length).forEach(
+                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), this.getApplyAmplifierLevels().get(potionID), BAD)
             );
         }
         return true;

@@ -4,7 +4,7 @@ public class RomanNumeralUtil {
 
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 5999;
-    //1000-
+    //1000-5999
     private static final String[] RN_M = {"", "M", "MM", "MMM", "MMMM", "MMMMM"};
     //100-900
     private static final String[] RN_C = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};

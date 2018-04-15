@@ -78,26 +78,22 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void registerEntities(Register<EntityEntry> event) {
-        // Projectiles
-        // Arrows
-        registerEntities(EntityCoalArrow.class, "coal_arrow", 0);
-        registerEntities(EntityLapisArrow.class, "lapis_arrow", 1);
-        registerEntities(EntityRedstoneArrow.class, "redstone_arrow", 3);
-        registerEntities(EntityLavaArrow.class, "lava_arrow", 4);
-        registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", 5);
-        // Abilities
-        registerEntities(EntityFreezeBomb.class, "freeze_bomb", 6);
-        registerEntities(EntityWitherMinion.class, "wither_minion", 7);
-        // Mobs
-        registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", 20,
+        int id = 0;
+        registerEntities(EntityCoalArrow.class, "coal_arrow", ++id);
+        registerEntities(EntityLapisArrow.class, "lapis_arrow", ++id);
+        registerEntities(EntityRedstoneArrow.class, "redstone_arrow", ++id);
+        registerEntities(EntityLavaArrow.class, "lava_arrow", ++id);
+        registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", ++id);
+        registerEntities(EntityFreezeBomb.class, "freeze_bomb", ++id);
+        registerEntities(EntityWitherMinion.class, "wither_minion", ++id);
+        registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", ++id,
             0x721164, 0x00ff00);
-        registerEntities(EntityIceGolem.class, "ice_golem", 21,
+        registerEntities(EntityIceGolem.class, "ice_golem", ++id,
             0xffffff, 0x00ff00);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        // Bosses
-        registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", 100,
+        registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", ++id,
             0x7ae4ff, 0x79a6ff);
-        registerEntities(EntitySkeletalKing.class, "skeletal_king", 101,
+        registerEntities(EntitySkeletalKing.class, "skeletal_king", ++id,
             0x665b52, 0x845833);
     }
 
