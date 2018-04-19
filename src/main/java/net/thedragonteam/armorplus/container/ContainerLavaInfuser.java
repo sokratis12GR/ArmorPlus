@@ -28,14 +28,14 @@ public class ContainerLavaInfuser extends ContainerBase {
         this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
         this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35));
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * ITEM_BOX, 84 + i * 18));
+        for (int height = 0; height < 3; height++) {
+            for (int width = 0; width < 9; width++) {
+                this.addSlotToContainer(new Slot(playerInventory, width + height * 9 + 9, 8 + width * ITEM_BOX, 84 + height * 18));
             }
         }
 
-        for (int k = 0; k < 9; k++) {
-            this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * ITEM_BOX, 142));
+        for (int index = 0; index < 9; index++) {
+            this.addSlotToContainer(new Slot(playerInventory, index, 8 + index * ITEM_BOX, 142));
         }
     }
 

@@ -12,6 +12,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon;
@@ -22,7 +23,9 @@ import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.Entity
 import javax.annotation.Nullable;
 import java.util.Collections;
 
+import static java.lang.String.format;
 import static net.minecraft.item.ItemStack.EMPTY;
+import static net.minecraft.util.text.TextFormatting.*;
 import static net.thedragonteam.armorplus.entity.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 
 /**
@@ -61,10 +64,52 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         return super.onInitialSpawn(difficulty, livingdata);
     }
 
+    private int sendDialog = 0;
+    private boolean sentA, sentB, sentC, sentD, sentE, sentF;
+
     @Override
     public void onUpdate() {
         this.removePotionEffect(MobEffects.WITHER);
         super.onUpdate();
+        //Some in-game dialogs
+        EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
+        sendDialog++;
+        if (world.isRemote || playerInRange == null) {
+            return;
+        }
+        if ((sendDialog % (20 * 6)) == 0) {
+            if (checkPhase(1200.0F)) {
+                if (!sentA) {
+                    playerInRange.sendMessage(new TextComponentTranslation(format(
+                        "%s%sSkeletal King:" +
+                            "\n%sHa ha ha!" +
+                            "\n%sYou really think you even want to get me started with you?" +
+                            "\n%sThis fight will be over way before it even starts.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                    )));
+                    sentA = true;
+                }
+            } else if (checkPhase(1000.0F)) {
+                if (!sentB) {
+                }
+            } else if (checkPhase(800.0F)) {
+                if (!sentC) {
+                }
+            } else if (checkPhase(600.0F)) {
+                if (!sentD) {
+                }
+            } else if (checkPhase(400.0F)) {
+                if (!sentE) {
+                }
+            } else if (checkPhase(200.0F)) {
+                if (!sentF) {
+                }
+            }
+        }
+    }
+
+    private boolean checkPhase(float phase) {
+        float health = this.getHealth();
+        return health <= phase && health > (phase - 200);
     }
 
     @Override
@@ -142,16 +187,16 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
      */
     private void launchWitherMinions(int pos, double x, double y, double z) {
         this.world.playEvent(null, 1024, new BlockPos(this), 0);
-        double d0 = this.getHeadX(pos);
-        double d1 = this.getHeadY(pos);
-        double d2 = this.getHeadZ(pos);
-        double d3 = x - d0;
-        double d4 = y - d1;
-        double d5 = z - d2;
-        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, d3, d4, d5);
-        witherMinion.posY = d1;
-        witherMinion.posX = d0;
-        witherMinion.posZ = d2;
+        double headingX = this.getHeadX(pos);
+        double headingY = this.getHeadY(pos);
+        double headingZ = this.getHeadZ(pos);
+        double estimatedX = x - headingX;
+        double estimatedY = y - headingY;
+        double estimatedZ = z - headingZ;
+        EntityWitherMinion witherMinion = new EntityWitherMinion(this.world, this, estimatedX, estimatedY, estimatedZ);
+        witherMinion.posY = headingY;
+        witherMinion.posX = headingX;
+        witherMinion.posZ = headingZ;
         this.world.spawnEntity(witherMinion);
     }
 

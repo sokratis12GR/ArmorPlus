@@ -37,7 +37,6 @@ import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.util.Utils;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
@@ -153,11 +152,7 @@ public class RegistryEventHandler {
     private static void registerBenchBlocks(Register<Item> event, BlockBench... blocks) {
         Arrays.stream(blocks).forEachOrdered(block -> {
             if (areNotNull(block, block.getRegistryName())) {
-                ItemBlock itemBlock = new ItemBlockBench(block) {
-                    {
-                        setRegistryName(Objects.requireNonNull(block.getRegistryName()));
-                    }
-                };
+                ItemBlock itemBlock = new ItemBlockBench(block);
                 event.getRegistry().register(itemBlock);
             }
         });

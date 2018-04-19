@@ -36,15 +36,15 @@ public class ContainerHighTechBench extends ContainerBenchBase {
         this.world = tile.getWorld();
         this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getHTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));
 
-        for (int i = 0; i < RECIPE_SIZE; ++i)
-            for (int j = 0; j < RECIPE_SIZE; ++j)
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * RECIPE_SIZE, 12 + j * ITEM_BOX, 17 + i * ITEM_BOX));
+        for (int yIndex = 0; yIndex < RECIPE_SIZE; ++yIndex)
+            for (int xIndex = 0; xIndex < RECIPE_SIZE; ++xIndex)
+                this.addSlotToContainer(new Slot(this.craftMatrix, xIndex + yIndex * RECIPE_SIZE, 12 + xIndex * ITEM_BOX, 17 + yIndex * ITEM_BOX));
 
-        for (int k = 0; k < 3; ++k)
-            for (int i1 = 0; i1 < ROW_SLOTS; ++i1)
-                this.addSlotToContainer(new Slot(playerInventory, i1 + k * 9 + 9, 8 + i1 * ITEM_BOX, 118 + k * ITEM_BOX));
+        for (int height = 0; height < 3; ++height)
+            for (int width = 0; width < ROW_SLOTS; ++width)
+                this.addSlotToContainer(new Slot(playerInventory, width + height * 9 + 9, 8 + width * ITEM_BOX, 118 + height * ITEM_BOX));
 
-        IntStream.range(0, ROW_SLOTS).mapToObj(l -> new Slot(playerInventory, l, 8 + l * ITEM_BOX, 176)).forEachOrdered(this::addSlotToContainer);
+        IntStream.range(0, ROW_SLOTS).mapToObj(index -> new Slot(playerInventory, index, 8 + index * ITEM_BOX, 176)).forEachOrdered(this::addSlotToContainer);
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }

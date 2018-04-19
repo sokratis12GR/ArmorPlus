@@ -71,7 +71,12 @@ public class DevTool extends BaseItem {
 
     private void writeFile(EntityPlayer player, EntityLivingBase entity) {
         new File("./armorplus/entity/" + player.getUniqueID()).mkdirs();
-        try {
+        //Write JSON String to file
+        LocalDateTime dateTime = LocalDateTime.now();
+        String timeStamp = dateTime.getHour() + "-" + dateTime.getMinute() + "-" + dateTime.getSecond() + "-" + dateTime.getYear() + "-" + dateTime.getMonth().getValue() + "-" + dateTime.getDayOfMonth();
+        try (FileWriter fileWriter = new FileWriter(new File(
+            format("./armorplus/entity/%s/%s_%s.json", player.getUniqueID(), entity.getName(), timeStamp)
+        ))) {
             WorldInfo worldInfo = entity.world.getWorldInfo();
             BlockPos entityPos = entity.getPosition();
             JsonObject jsonObject = new JsonObject();
@@ -121,14 +126,7 @@ public class DevTool extends BaseItem {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             //convert the Java object to json
             String jsonString = gson.toJson(jsonObject);
-            //Write JSON String to file
-            LocalDateTime dateTime = LocalDateTime.now();
-            String timeStamp = dateTime.getHour() + "-" + dateTime.getMinute() + "-" + dateTime.getSecond() + "-" + dateTime.getYear() + "-" + dateTime.getMonth().getValue() + "-" + dateTime.getDayOfMonth();
-            FileWriter fileWriter = new FileWriter(new File(
-                format("./armorplus/entity/%s/%s_%s.json", player.getUniqueID(), entity.getName(), timeStamp)
-            ));
             fileWriter.write(jsonString);
-            fileWriter.close();
 
         } catch (IOException e) {
             e.printStackTrace();

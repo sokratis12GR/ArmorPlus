@@ -90,28 +90,28 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             return;
         }
         BlockPos blockPos = new BlockPos(result.entityHit);
+        String phaseText = "%sRise Minions, Rise!!!";
         final int amountWarriorMax = 4, amountArcherMax = 3, amountPaladinMax = 2;
         int warriorBound = rand.nextInt(amountWarriorMax) + 1;
         int archerBound = rand.nextInt(amountArcherMax) + 1;
-        int paladinBound = rand.nextInt(amountPaladinMax);
-        float health = shootingEntity.getHealth();
+        int paladinBound = rand.nextInt(amountPaladinMax) + 1;
         for (int ia = 0; ia < warriorBound; ia++) {
             EntityWitherSkeleton minionWarrior = new EntityWitherSkeleton(this.world);
             minionWarrior.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
             minionWarrior.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionWarrior)), null);
             this.world.spawnEntity(minionWarrior);
-            if (health <= 1200.0F && health > 1000.0F) {
+            if (checkPhase(1200.0F)) {
                 this.setMinionStats(minionWarrior, getItemStack(WOODEN_SWORD), EMPTY, emptyArmor);
-            } else if (health <= 1000.0F && health > 800.0F) {
-                this.setMinionStats(minionWarrior, "Warrior", 18.0D, getItemStack(STONE_SWORD), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (health <= 800.0F && health > 600.0F) {
-                this.setMinionStats(minionWarrior, "Warrior", 21.0D, getItemStack(GOLDEN_SWORD), EMPTY, GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS);
-            } else if (health <= 600.0F && health > 400.0F) {
-                this.setMinionStats(minionWarrior, "Warrior", 24.0D, getItemStack(IRON_SWORD), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (health <= 400.0F && health > 200.0F) {
-                this.setMinionStats(minionWarrior, "Warrior", 27.0D, getItemStack(DIAMOND_SWORD), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (health <= 200.0F && health > 0.0F) {
-                this.setMinionStats(minionWarrior, "Warrior", 30.0D, getItemStack(DIAMOND_AXE), EMPTY, DIAMOND_HELMET, DIAMOND_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+            } else if (checkPhase(1000.0F)) {
+                this.setMinionStats(minionWarrior, "Warrior", 23.0D, getItemStack(STONE_SWORD), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
+            } else if (checkPhase(800.0F)) {
+                this.setMinionStats(minionWarrior, "Warrior", 26.0D, getItemStack(GOLDEN_SWORD), EMPTY, GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS);
+            } else if (checkPhase(600.0F)) {
+                this.setMinionStats(minionWarrior, "Warrior", 29.0D, getItemStack(IRON_SWORD), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+            } else if (checkPhase(400.0F)) {
+                this.setMinionStats(minionWarrior, "Warrior", 32.0D, getItemStack(DIAMOND_SWORD), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+            } else if (checkPhase(200.0F)) {
+                this.setMinionStats(minionWarrior, "Warrior", 35.0D, getItemStack(DIAMOND_AXE), EMPTY, DIAMOND_HELMET, DIAMOND_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
         }
         for (int ib = 0; ib < archerBound; ib++) {
@@ -119,14 +119,14 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             minionArcher.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
             minionArcher.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionArcher)), null);
             this.world.spawnEntity(minionArcher);
-            if (health <= 800.0F && health > 600.0F) {
-                this.setMinionStats(minionArcher, "Archer", 15.0D, getItemStack(BOW), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (health <= 600.0F && health > 400.0F) {
-                this.setMinionStats(minionArcher, "Archer", 16.0D, getItemStack(BOW), EMPTY, CHAINMAIL_HELMET, CHAINMAIL_CHESTPLATE, CHAINMAIL_LEGGINGS, CHAINMAIL_BOOTS);
-            } else if (health <= 400.0F && health > 200.0F) {
-                this.setMinionStats(minionArcher, "Archer", 17.0D, getItemStack(BOW), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (health <= 200.0F && health > 0.0F) {
-                this.setMinionStats(minionArcher, "Archer", 18.0D, getItemStack(BOW), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+            if (checkPhase(800.0F)) {
+                this.setMinionStats(minionArcher, "Archer", 18.0D, getItemStack(BOW), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
+            } else if (checkPhase(600.0F)) {
+                this.setMinionStats(minionArcher, "Archer", 21.0D, getItemStack(BOW), EMPTY, CHAINMAIL_HELMET, CHAINMAIL_CHESTPLATE, CHAINMAIL_LEGGINGS, CHAINMAIL_BOOTS);
+            } else if (checkPhase(400.0F)) {
+                this.setMinionStats(minionArcher, "Archer", 24.0D, getItemStack(BOW), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+            } else if (checkPhase(200.0F)) {
+                this.setMinionStats(minionArcher, "Archer", 27.0D, getItemStack(BOW), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
             }
         }
         for (int ic = 0; ic < paladinBound; ic++) {
@@ -134,18 +134,23 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
             minionPaladin.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
             minionPaladin.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionPaladin)), null);
             this.world.spawnEntity(minionPaladin);
-            if (health <= 400.0F && health > 200.0F) {
-                this.setMinionStats(minionPaladin, "Paladin", 30.0D,
+            if (checkPhase(400.0F)) {
+                this.setMinionStats(minionPaladin, "Paladin", 50.0D,
                     getItemStack(superStarSword), getItemStack(SHIELD), DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS
                 );
-            } else if (health <= 200.0F && health > 0.0F) {
-                this.setMinionStats(minionPaladin, "Paladin", 35.0D,
+            } else if (checkPhase(200.0F)) {
+                this.setMinionStats(minionPaladin, "Paladin", 55.0D,
                     getItemStack(superStarBattleAxe), getItemStack(SHIELD), superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots
                 );
             }
         }
-        result.entityHit.sendMessage(formatText(TextFormatting.RED, "%sRise Minions, Rise!!!", TextFormatting.ITALIC));
+        result.entityHit.sendMessage(formatText(TextFormatting.RED, phaseText, TextFormatting.ITALIC));
         this.setDead();
+    }
+
+    private boolean checkPhase(float phase) {
+        float health = shootingEntity.getHealth();
+        return health <= phase && health > (phase - 200);
     }
 
     private void setMinionStats(EntityWitherSkeleton witherSkeleton, String type, double maxHealth, ItemStack mainHand, ItemStack offHand, Item... equipedArmor) {

@@ -13,13 +13,12 @@ import static net.minecraft.enchantment.Enchantment.*;
  **/
 public class EnchantmentUtils {
 
-    public static Enchantment getEnchantment(Object nameOrId) {
-        if (nameOrId instanceof Integer) {
-            return getEnchantmentByID((Integer) nameOrId);
-        } else if (nameOrId instanceof String) {
-            return getEnchantmentByLocation((String) nameOrId);
-        }
-        return null;
+    public static Enchantment getEnchantment(int nameOrId) {
+        return getEnchantmentByID(nameOrId);
+    }
+
+    public static Enchantment getEnchantment(String nameOrId) {
+        return getEnchantmentByLocation(nameOrId);
     }
 
     public static int getID(Enchantment enchant) {

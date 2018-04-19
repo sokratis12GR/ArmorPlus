@@ -5,6 +5,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 
+import java.util.Objects;
+
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addRarity;
 
 public class ItemBlockBench extends ItemBlock {
@@ -13,7 +15,8 @@ public class ItemBlockBench extends ItemBlock {
 
     public ItemBlockBench(BlockBench block) {
         super(block);
-        benches = block.benches;
+        this.benches = block.benches;
+        this.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
     }
 
     @Override
