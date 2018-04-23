@@ -32,6 +32,7 @@ import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableJEI
 import static net.thedragonteam.armorplus.registry.APItems.enderDragonScale;
 import static net.thedragonteam.armorplus.registry.APItems.guardianScale;
 import static net.thedragonteam.armorplus.registry.APItems.witherBone;
+import static net.thedragonteam.armorplus.registry.ModBlocks.enderBlocks;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
@@ -84,6 +85,7 @@ public class ArmorPlusPlugin implements IModPlugin {
                 teamRapture
             );
             Arrays.stream(horseArmors).forEach(horseArmor -> blackListIngredients(blacklist, horseArmor));
+            Arrays.stream(enderBlocks).forEach(enderBlocks -> blackListIngredients(blacklist, enderBlocks));
         }
 
         jeiHelper = registry.getJeiHelpers();

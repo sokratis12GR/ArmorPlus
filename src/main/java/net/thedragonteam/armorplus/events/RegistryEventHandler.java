@@ -20,8 +20,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.benches.BlockBench;
 import net.thedragonteam.armorplus.blocks.benches.ItemBlockBench;
+import net.thedragonteam.armorplus.blocks.dungeon.ItemDungeonBlock;
 import net.thedragonteam.armorplus.enchantments.FuriousEnchantment;
 import net.thedragonteam.armorplus.enchantments.LifeStealEnchantment;
 import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
@@ -114,7 +116,7 @@ public class RegistryEventHandler {
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        //  registerAllBlocks(event, enderBlocks);
+        registerAllBlocks(event, enderBlocks);
         registerAllBlocks(event, trophies);
         registerTileEntities();
         registerTEFixes();
@@ -144,6 +146,15 @@ public class RegistryEventHandler {
             if (areNotNull(block, block.getRegistryName())) {
                 ItemBlock itemBlock = new ItemBlock(block);
                 itemBlock.setRegistryName(block.getRegistryName());
+                event.getRegistry().register(itemBlock);
+            }
+        });
+    }
+
+    private static void registerDungeonBlock(Register<Item> event, BlockBase... blocks) {
+        Arrays.stream(blocks).forEachOrdered(block -> {
+            if (areNotNull(block, block.getRegistryName())) {
+                ItemBlock itemBlock = new ItemDungeonBlock(block);
                 event.getRegistry().register(itemBlock);
             }
         });
@@ -182,7 +193,7 @@ public class RegistryEventHandler {
         // ==== DUNGEON BLOCKS ==== \\
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        //  registerAllItemBlocks(event, enderBlocks);
+        registerAllItemBlocks(event, enderBlocks);
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,

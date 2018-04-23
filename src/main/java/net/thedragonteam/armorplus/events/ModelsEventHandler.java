@@ -44,7 +44,7 @@ public class ModelsEventHandler {
         registerModels(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //   registerModels(blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        //  registerModels(enderBlocks);
+        registerModels(enderBlocks);
         registerModels(trophies);
     }
 

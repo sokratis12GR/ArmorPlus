@@ -9,6 +9,9 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.thedragonteam.armorplus.armors.base.ArmorProprties;
+import net.thedragonteam.armorplus.items.weapons.CombinedWeaponProperties;
+import net.thedragonteam.armorplus.items.weapons.WeaponProperty;
 
 import static net.minecraft.item.ItemStack.areItemsEqual;
 import static net.minecraftforge.common.config.Config.*;
@@ -228,54 +231,56 @@ public class ModConfig {
 
         @Comment({"Configurations for the Coal Material"})
         public static OriginMaterial coal = new OriginMaterial(
-            new String[]{"night_vision"}, "gray", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new int[]{0},
-            "gray", new int[]{0}, new String[]{"blindness"}, true, 0.5, 24, 2.5, 24, -2.0, 24
+            new String[]{"night_vision"}, "gray", new ArmorProprties(1, 1, 2, 1), new boolean[4], true, new int[]{0},
+            "gray", new int[]{0}, new String[]{"blindness"}, true, new CombinedWeaponProperties(0.5, 2.5, -2.0, 24)
         );
 
         @Comment({"Configurations for the Lapis Material"})
         public static OriginMaterial lapis = new OriginMaterial(
-            new String[]{"water_breathing"}, "dark_blue", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{0},
-            "dark_blue", new int[]{1}, new String[]{"nausea"}, true, 1.0, 200, 3.0, 200, -1.5, 200
+            new String[]{"water_breathing"}, "dark_blue", new ArmorProprties(1, 2, 3, 2), new boolean[4], true, new int[]{0},
+            "dark_blue", new int[]{1}, new String[]{"nausea"}, true, new CombinedWeaponProperties(1.0, 3.0, -1.5, 200)
         );
 
         @Comment({"Configurations for the Redstone Material"})
         public static OriginMaterial redstone = new OriginMaterial(
-            new String[]{"haste"}, "dark_red", 0.0, new int[]{1, 2, 3, 2}, new boolean[4], true, new int[]{1},
-            "dark_red", new int[]{1}, new String[]{"mining_fatigue"}, true, 1.0, 200, 3.0, 200, -1.5, 200
+            new String[]{"haste"}, "dark_red", new ArmorProprties(1, 2, 3, 2), new boolean[4], true, new int[]{1},
+            "dark_red", new int[]{1}, new String[]{"mining_fatigue"}, true, new CombinedWeaponProperties(1.0, 3.0, -1.5, 200)
         );
 
         @Comment({"Configurations for the Emerald Material"})
         public static OriginMaterial emerald = new OriginMaterial(
-            new String[]{"speed"}, "dark_green", 1.0, new int[]{3, 6, 8, 3}, new boolean[4], true, new int[]{1},
-            "dark_green", new int[]{1}, new String[]{"slowness"}, true, 1.5, 1561, 3.5, 1561, -0.5, 1561
+            new String[]{"speed"}, "dark_green", new ArmorProprties(1.0, 3, 6, 8, 3), new boolean[4], true, new int[]{1},
+            "dark_green", new int[]{1}, new String[]{"slowness"}, true, new CombinedWeaponProperties(1.5, 3.5, -0.5, 1561)
         );
 
         @Comment({"Configurations for the Obsidian Material"})
         public static OriginMaterial obsidian = new OriginMaterial(
-            new String[]{"resistance"}, "dark_gray", 1.0, new int[]{3, 6, 7, 3}, new boolean[4], true, new int[]{0},
-            "dark_gray", new int[]{1}, new String[]{"weakness"}, true, 4.0, 1500, 6.0, 1500, 0.0, 1500
+            new String[]{"resistance"}, "dark_gray", new ArmorProprties(1.0, 3, 6, 7, 3), new boolean[4], true, new int[]{0},
+            "dark_gray", new int[]{1}, new String[]{"weakness"}, true, new CombinedWeaponProperties(4.0, 6.0, 0.0, 1500)
         );
 
         @Comment({"Configurations for the Lava Material"})
-        //TODO: Convert this to be like its brothers
-        public static LavaMaterial lava = new LavaMaterial();
+        public static OriginMaterial lava = new OriginMaterial(
+            new String[]{"fire_resistance"}, "gold", new ArmorProprties(1.0, 3, 6, 8, 3), new boolean[4], true, new int[]{0}, true,
+            "gold", new int[]{0}, new String[]{"empty"}, false, new CombinedWeaponProperties(4.5, 6.5, 0.5, 1750), true, 8
+        );
 
         @Comment({"Configurations for the Guardian Material"})
         public static OriginMaterial guardian = new OriginMaterial(
-            new String[]{"water_breathing"}, "aqua", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{0},
-            "aqua", new int[]{1}, new String[]{"nausea"}, true, 6.0, 1800, 7.0, 1500, 1.5, 1800
+            new String[]{"water_breathing"}, "aqua", new ArmorProprties(2.0, 4, 7, 8, 3), new boolean[4], true, new int[]{0},
+            "aqua", new int[]{1}, new String[]{"nausea"}, true, new CombinedWeaponProperties(6.0, 7.0, 1.5, 1800)
         );
 
         @Comment({"Configurations for the Super Star Material"})
         public static OriginMaterial super_star = new OriginMaterial(
-            new String[]{"wither"}, new String[]{"regeneration"}, "white", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{1},
-            "white", new int[]{1}, new String[]{"wither"}, true, 7.0, 1950, 8.0, 1950, 1.5, 1950
+            new String[]{"wither"}, new String[]{"regeneration"}, "white", new ArmorProprties(2.0, 4, 7, 8, 3), new boolean[4], true, new int[]{1},
+            "white", new int[]{1}, new String[]{"wither"}, true, new CombinedWeaponProperties(7.0, 8.0, 1.5, 1950)
         );
 
         @Comment({"Configurations for the Ender Dragon Material"})
         public static OriginMaterial ender_dragon = new OriginMaterial(
-            new String[]{"wither"}, new String[]{"empty"}, "dark_purple", 2.0, new int[]{4, 7, 8, 3}, new boolean[4], true, new int[]{0},
-            "dark_purple", new int[]{3}, new String[]{"wither"}, true, 8.0, 2310, 10.0, 2310, 1.5, 2310
+            new String[]{"wither"}, new String[]{"empty"}, "dark_purple", new ArmorProprties(2.0, 4, 7, 8, 3), new boolean[4], true, new int[]{0},
+            "dark_purple", new int[]{3}, new String[]{"wither"}, true, new CombinedWeaponProperties(8.0, 10.0, 1.5, 2310)
         );
 
         @Comment({"Configurations for the Ultimate Material"})
@@ -284,31 +289,31 @@ public class ModConfig {
 
         @Comment({"Configurations for the Chicken Material"})
         public static SpecialMaterial chicken = new SpecialMaterial(
-            "aqua", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"speed"}, new int[]{4}
+            "aqua", new ArmorProprties(1, 1, 2, 1), new boolean[4], true, new String[]{"speed"}, new int[]{4}
         );
         @Comment({"Configurations for the Slime Material"})
         public static SpecialMaterial slime = new SpecialMaterial(
-            "green", 0.0, new int[]{1, 1, 2, 1}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{2}
+            "green", new ArmorProprties(1, 1, 2, 1), new boolean[4], true, new String[]{"jump_boost"}, new int[]{2}
         );
         @Comment({"Configurations for the Ardite Material"})
         public static SpecialMaterial ardite = new SpecialMaterial(
-            "dark_red", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"fire_resistance"}, new int[]{0}
+            "dark_red", new ArmorProprties(1.0, 2, 3, 4, 2), new boolean[4], true, new String[]{"fire_resistance"}, new int[]{0}
         );
         @Comment({"Configurations for the Cobalt Material"})
         public static SpecialMaterial cobalt = new SpecialMaterial(
-            "blue", 1.0, new int[]{2, 3, 4, 2}, new boolean[4], true, new String[]{"haste"}, new int[]{2}
+            "blue", new ArmorProprties(1.0, 2, 3, 4, 2), new boolean[4], true, new String[]{"haste"}, new int[]{2}
         );
         @Comment({"Configurations for the Manyullyn Material"})
         public static SpecialMaterial manyullyn = new SpecialMaterial(
-            "dark_purple", 2.0, new int[]{3, 5, 5, 3}, new boolean[4], true, new String[]{"strength"}, new int[]{1}
+            "dark_purple", new ArmorProprties(2.0, 3, 5, 5, 3), new boolean[4], true, new String[]{"strength"}, new int[]{1}
         );
         @Comment({"Configurations for the Pig Iron Material"})
         public static SpecialMaterial pig_iron = new SpecialMaterial(
-            "light_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"saturation"}, new int[]{0}
+            "light_purple", new ArmorProprties(1.0, 2, 3, 4, 3), new boolean[4], true, new String[]{"saturation"}, new int[]{0}
         );
         @Comment({"Configurations for the Knight Slime Material"})
         public static SpecialMaterial knight_slime = new SpecialMaterial(
-            "dark_purple", 1.0, new int[]{2, 3, 4, 3}, new boolean[4], true, new String[]{"jump_boost"}, new int[]{1}
+            "dark_purple", new ArmorProprties(1.0, 2, 3, 4, 3), new boolean[4], true, new String[]{"jump_boost"}, new int[]{1}
         );
 
         public static GlobalRegistry global_registry = new GlobalRegistry();
@@ -319,33 +324,56 @@ public class ModConfig {
             public OriginWeapons weapons;
 
             public OriginMaterial(
-                String[] arpe, String[] aape, String ainc, double atp, int[] app, boolean[] aepe, boolean aese, int[] ael,
-                String winc, int[] wel, String[] wape, boolean wee, double sdmg, int sdur, double bdmg, int bdur, double babdmg, int bowdur
+                String[] arpe, String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael, boolean aeowtdb,
+                String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weaponsProperties,
+                boolean wsaf, int wofs
             ) {
-                armor = new OriginArmor(arpe, aape, ainc, atp, app, aepe, aese, ael);
-                weapons = new OriginWeapons(winc, wel, wape, wee, sdmg, sdur, bdmg, bdur, babdmg, bowdur);
+                armor = new OriginArmor(arpe, aape, ainc, ap, aepe, aese, ael, aeowtdb);
+                weapons = new OriginWeapons(winc, wel, wape, wee, weaponsProperties, wsaf, wofs);
             }
 
-            public OriginMaterial(String[] aape, String ainc, double atp, int[] app, boolean[] aepe, boolean aese, int[] ael,
-                                  String winc, int[] wel, String[] wape, boolean wee, double sdmg, int sdur, double bdmg, int bdur, double babdmg, int bowdur
+            public OriginMaterial(
+                String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael, boolean aeowtdb,
+                String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weaponsProperties,
+                boolean wsaf, int wofs
             ) {
-                this(new String[]{"empty"}, aape, ainc, atp, app, aepe, aese, ael, winc, wel, wape, wee, sdmg, sdur, bdmg, bdur, babdmg, bowdur);
+                this(new String[]{"empty"}, aape, ainc, ap, aepe, aese, ael, aeowtdb, winc, wel, wape, wee, weaponsProperties, wsaf, wofs);
+            }
+
+            public OriginMaterial(
+                String[] arpe, String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael,
+                String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weaponsProperties
+            ) {
+                armor = new OriginArmor(arpe, aape, ainc, ap, aepe, aese, ael);
+                weapons = new OriginWeapons(winc, wel, wape, wee, weaponsProperties);
+            }
+
+            public OriginMaterial(
+                String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael,
+                String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weaponsProperties
+            ) {
+                this(new String[]{"empty"}, aape, ainc, ap, aepe, aese, ael, winc, wel, wape, wee, weaponsProperties);
             }
 
             public class OriginArmor {
 
                 //       public Enchants enchants = new Enchants();
 
-                public OriginArmor(String[] arpe, String[] aape, String ainc, double atp, int[] app, boolean[] aepe, boolean aese, int[] ael) {
+                public OriginArmor(String[] arpe, String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael) {
+                    this(arpe, aape, ainc, ap, aepe, aese, ael, false);
+                }
+
+                public OriginArmor(String[] arpe, String[] aape, String ainc, ArmorProprties ap, boolean[] aepe, boolean aese, int[] ael, boolean aeowtdb) {
                     this.removePotionEffects = arpe;
                     this.addPotionEffects = aape;
                     this.itemNameColor = ainc;
-                    this.toughnessPoints = atp;
-                    this.protectionPoints = app;
+                    this.toughnessPoints = ap.getArmorToughnessPoints();
+                    this.protectionPoints = ap.getArmorPoints();
                     this.enablePieceEffects = aepe;
                     this.enableSetEffects = aese;
                     this.effectLevels = ael;
                     this.setUnbreakable = false;
+                    this.enableOnWaterTouchDeBuff = aeowtdb;
                 }
 
                 //      public class Enchants {
@@ -359,6 +387,12 @@ public class ModConfig {
 
                 @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
                 public String[] removePotionEffects;
+                @Comment({
+                    "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
+                    "a.k.a nothing happens when player wears this armor while in water.",
+                    "CURRENTLY ONLY WORKS FOR THE INFUSED LAVA ARMOR"
+                })
+                public boolean enableOnWaterTouchDeBuff;
                 @Comment({"Set the color name the armor will have"})
                 public String itemNameColor;
                 @Comment({"Set the amount of toughness points the armor will have"})
@@ -383,17 +417,25 @@ public class ModConfig {
                 public OriginBattleAxe battle_axe;
                 public OriginBow bow;
 
-                public OriginWeapons(String winc, int[] wel, String[] wape, boolean wee,
-                                     double sdmg, int sdur,
-                                     double bdmg, int bdur,
-                                     double babdmg, int bowdur) {
+                public OriginWeapons(
+                    String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weapons
+                ) {
+                    this(winc, wel, wape, wee, weapons, false, 0);
+                }
+
+                public OriginWeapons(
+                    String winc, int[] wel, String[] wape, boolean wee, CombinedWeaponProperties weapons,
+                    boolean wsaf, int wofs
+                ) {
                     this.itemNameColor = winc;
                     this.effectLevels = wel;
                     this.addPotionEffects = wape;
                     this.enableEffects = wee;
-                    sword = new OriginSword(sdmg, sdur);
-                    battle_axe = new OriginBattleAxe(bdmg, bdur);
-                    bow = new OriginBow(babdmg, bowdur);
+                    this.shouldApplyFire = wsaf;
+                    this.onFireSeconds = wofs;
+                    sword = new OriginSword(weapons.getSword());
+                    battle_axe = new OriginBattleAxe(weapons.getBattleAxe());
+                    bow = new OriginBow(weapons.getBow());
                 }
 
                 @Comment({"Set the color name the weapons will have"})
@@ -405,15 +447,15 @@ public class ModConfig {
                 @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects;
                 @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
-                public boolean shouldApplyFire = false;
+                public boolean shouldApplyFire;
                 @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
-                public int onFireSeconds = 0;
+                public int onFireSeconds;
 
                 public class OriginSword {
 
-                    OriginSword(double sdmg, int sdur) {
-                        damage = sdmg;
-                        durability = sdur;
+                    OriginSword(WeaponProperty sword) {
+                        damage = sword.getDmg();
+                        durability = sword.getDur();
                     }
 
                     @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
@@ -425,9 +467,9 @@ public class ModConfig {
 
                 public class OriginBattleAxe {
 
-                    OriginBattleAxe(double bdmg, int bdur) {
-                        damage = bdmg;
-                        durability = bdur;
+                    OriginBattleAxe(WeaponProperty battleAxe) {
+                        damage = battleAxe.getDmg();
+                        durability = battleAxe.getDur();
                     }
 
                     @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
@@ -438,9 +480,9 @@ public class ModConfig {
 
                 public class OriginBow {
 
-                    OriginBow(double babdmg, int bowdur) {
-                        arrowBonusDamage = babdmg;
-                        durability = bowdur;
+                    OriginBow(WeaponProperty bow) {
+                        arrowBonusDamage = bow.getDmg();
+                        durability = bow.getDur();
                     }
 
                     @Comment({"Set the amount of bonus arrow damage the bow will do"})
@@ -449,83 +491,6 @@ public class ModConfig {
                     public int durability;
                 }
             }
-        }
-
-
-        public static class LavaMaterial {
-
-            public Armor armor = new Armor();
-            public Weapons weapons = new Weapons();
-
-            public class Armor {
-
-                @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
-                public String[] removePotionEffects = {"empty"};
-                @Comment({"Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion. \na.k.a nothing happens when player wears this armor while in water."})
-                public boolean enableOnWaterTouchDeBuff = true;
-                @Comment({"Set the color name the armor will have"})
-                public String itemNameColor = "gold";
-                @Comment({"Set the amount of toughness points the armor will have"})
-                public double toughnessPoints = 1.0;
-                @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
-                public int[] protectionPoints = {3, 6, 8, 3};
-                @Comment({"Enable/Disable the effect (Boots, Leggings, Chestplate, Helmet)"})
-                public boolean[] enablePieceEffects = new boolean[4];
-                @Comment({"Enable/Disable the set armor effect(s)"})
-                public boolean enableSetEffects = true;
-                @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects = {"fire_resistance"};
-                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {0};
-                @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable = false;
-            }
-
-            public class Weapons {
-                public Sword sword = new Sword();
-                public BattleAxe battle_axe = new BattleAxe();
-                public Bow bow = new Bow();
-
-                @Comment({"Set the color name the weapons will have"})
-                public String itemNameColor = "gold";
-                @Comment({"Set the amplifier level for the effect(s) by the weapons. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {0};
-                @Comment({
-                    "Adds the potion effect the weapons will have (to disable the effect set the effects \'false\')"
-                })
-                public String[] addPotionEffects = {"empty"};
-                @Comment({"Enable/Disable the potion effect the weapons will have"})
-                public boolean enableEffects;
-                @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
-                public boolean shouldApplyFire = true;
-                @Comment({"Sets the amount of seconds the entities will be set on fire after being hit"})
-                public int onFireSeconds = 8;
-
-                public class Sword {
-
-                    @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 4.5;
-                    @Comment({"Set the amount of durability the sword have"})
-                    public int durability = 1750;
-                }
-
-                public class BattleAxe {
-
-                    @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
-                    public double damage = 6.5;
-                    @Comment({"Set the amount of durability the battle axe have"})
-                    public int durability = 1750;
-                }
-
-                public class Bow {
-
-                    @Comment({"Set the amount of bonus arrow damage the bow will do"})
-                    public double arrowBonusDamage = 0.5;
-                    @Comment({"Set the amount of durability the bow have"})
-                    public int durability = 1750;
-                }
-            }
-
         }
 
         public static class UltimateMaterial {
@@ -558,20 +523,20 @@ public class ModConfig {
         public static class SpecialMaterial {
             public Armor armor;
 
-            SpecialMaterial(String inc, double tp, int[] pp, boolean[] epe, boolean ese, String[] ape, int[] el) {
-                armor = new Armor(new String[]{"empty"}, inc, tp, pp, epe, ese, ape, el);
+            SpecialMaterial(String inc, ArmorProprties ap, boolean[] epe, boolean ese, String[] ape, int[] el) {
+                armor = new Armor(new String[]{"empty"}, inc, ap, epe, ese, ape, el);
             }
 
             public class Armor {
 
                 //       public Enchants enchants = new Enchants();
 
-                public Armor(String[] rpe, String inc, double tp, int[] pp, boolean[] epe, boolean ese, String[] ape, int[] el) {
+                public Armor(String[] rpe, String inc, ArmorProprties ap, boolean[] epe, boolean ese, String[] ape, int[] el) {
 
                     this.removePotionEffects = rpe;
                     this.itemNameColor = inc;
-                    this.toughnessPoints = tp;
-                    this.protectionPoints = pp;
+                    this.toughnessPoints = ap.getArmorToughnessPoints();
+                    this.protectionPoints = ap.getArmorPoints();
                     this.enablePieceEffects = epe;
                     this.enableSetEffects = ese;
                     this.addPotionEffects = ape;

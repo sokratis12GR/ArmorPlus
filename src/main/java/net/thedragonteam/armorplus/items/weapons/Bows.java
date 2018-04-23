@@ -92,10 +92,6 @@ public enum Bows implements IRepairable, IRemovable {
             this(material.weapons.bow.durability, material.weapons.bow.arrowBonusDamage);
         }
 
-        BowStats(LavaMaterial material) {
-            this(material.weapons.bow.durability, material.weapons.bow.arrowBonusDamage);
-        }
-
         private BowStats(int durability, double bonusDamage) {
             this.durabilityIn = durability;
             this.bonusDamage = bonusDamage;

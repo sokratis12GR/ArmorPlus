@@ -1,6 +1,5 @@
 package net.thedragonteam.armorplus.items.weapons.effects;
 
-import net.thedragonteam.armorplus.ModConfig.RegistryConfig.LavaMaterial;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.OriginMaterial;
 import net.thedragonteam.armorplus.api.properties.IRemovable;
 
@@ -16,10 +15,6 @@ public class Negative implements IRemovable {
     private final int[] addNegativeEffectAmplifier;
 
     public Negative(OriginMaterial material) {
-        this(material.weapons.enableEffects, material.weapons.addPotionEffects, material.weapons.effectLevels);
-    }
-
-    public Negative(LavaMaterial material) {
         this(material.weapons.enableEffects, material.weapons.addPotionEffects, material.weapons.effectLevels);
     }
 
