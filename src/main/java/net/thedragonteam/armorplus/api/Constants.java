@@ -6,6 +6,6 @@ package net.thedragonteam.armorplus.api;
 public class Constants {
 
     public static class API {
-        public static final String API_VERSION = "2.0";
+        public static final String API_VERSION = "2.1";
     }
 }

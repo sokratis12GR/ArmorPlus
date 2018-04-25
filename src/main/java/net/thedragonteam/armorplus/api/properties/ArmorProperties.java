@@ -1,6 +1,6 @@
-package net.thedragonteam.armorplus.armors.base;
+package net.thedragonteam.armorplus.api.properties;
 
-public class ArmorProprties {
+public class ArmorProperties {
 
     private final double armorToughnessPoints;
     private final int headArmor;
@@ -8,11 +8,11 @@ public class ArmorProprties {
     private final int legsArmor;
     private final int feetArmor;
 
-    public ArmorProprties(int headA, int chestA, int legsA, int feetA) {
+    public ArmorProperties(int headA, int chestA, int legsA, int feetA) {
         this(0.0, headA, chestA, legsA, feetA);
     }
 
-    public ArmorProprties(double atPoints, int headA, int chestA, int legsA, int feetA) {
+    public ArmorProperties(double atPoints, int headA, int chestA, int legsA, int feetA) {
         this.armorToughnessPoints = atPoints;
         this.headArmor = headA;
         this.chestArmor = chestA;

@@ -1,11 +1,11 @@
-package net.thedragonteam.armorplus.items.weapons;
+package net.thedragonteam.armorplus.api.properties;
 
-public class WeaponProperty {
+public class WeaponProperties {
 
     private final double dmg;
     private final int dur;
 
-    public WeaponProperty(double dmg, int dur) {
+    public WeaponProperties(double dmg, int dur) {
         this.dmg = dmg;
         this.dur = dur;
     }

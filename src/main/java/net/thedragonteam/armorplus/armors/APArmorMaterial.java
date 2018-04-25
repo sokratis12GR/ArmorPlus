@@ -19,9 +19,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.api.properties.IEffectHolder;
-import net.thedragonteam.armorplus.api.properties.IRemovable;
-import net.thedragonteam.armorplus.api.properties.IRepairable;
+import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
+import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
+import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 
@@ -358,11 +358,10 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
-            List<String> localizedEffects = getApplyEffectNames().stream().map(PotionUtils::localizePotion).collect(toList());
             if (!this.enableFullArmorEffect()) {
-                addToolTipPiece(tooltip, localizedEffects, this.getApplyAmplifierLevels());
+                addToolTipPiece(tooltip, getApplyEffectNames(), this.getApplyAmplifierLevels());
             } else {
-                addToolTipFull(tooltip, localizedEffects, this.getApplyAmplifierLevels());
+                addToolTipFull(tooltip, getApplyEffectNames(), this.getApplyAmplifierLevels());
             }
         } else {
             showInfo(tooltip, keyBindSneak, this.getFormatting());

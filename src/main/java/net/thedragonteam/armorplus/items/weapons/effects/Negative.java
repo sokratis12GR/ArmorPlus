@@ -1,7 +1,7 @@
 package net.thedragonteam.armorplus.items.weapons.effects;
 
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.OriginMaterial;
-import net.thedragonteam.armorplus.api.properties.IRemovable;
+import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

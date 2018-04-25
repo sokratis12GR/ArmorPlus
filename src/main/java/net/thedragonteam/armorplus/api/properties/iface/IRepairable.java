@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.properties;
+package net.thedragonteam.armorplus.api.properties.iface;
 
 import net.minecraft.item.ItemStack;
 

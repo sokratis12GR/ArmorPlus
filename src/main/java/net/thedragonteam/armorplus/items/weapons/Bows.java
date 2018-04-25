@@ -8,8 +8,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.thedragonteam.armorplus.api.properties.IRemovable;
-import net.thedragonteam.armorplus.api.properties.IRepairable;
+import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
+import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
 import static net.minecraft.item.ItemStack.EMPTY;

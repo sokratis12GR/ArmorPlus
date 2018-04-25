@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.api.properties;
+package net.thedragonteam.armorplus.api.properties.iface;
 
 import java.util.ArrayList;
 import java.util.List;
