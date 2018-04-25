@@ -17,6 +17,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 import static net.thedragonteam.armorplus.util.RomanNumeralUtil.generate;
@@ -31,7 +32,7 @@ public final class ToolTipUtils {
     /**
      * This provides the "Press [Key] to show more" tooltip
      *
-     * @param tooltip the tooltip of the item
+     * @param tooltip    the tooltip of the item
      * @param keyBinding the keybind that the users will need to press to display the more information (replaces [Key])
      * @param formatting the formatting of the tooltip, its color and style.
      */
@@ -48,9 +49,8 @@ public final class ToolTipUtils {
      * @param amplifier provides the levels of the abilities
      */
     public static void addToolTipFull(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
-        addToolTip(tooltip, "\u00a79Full set abilities:");
         int colorIndex = 1;
-        abilitySorter(tooltip, abilities, amplifier, colorIndex);
+        abilitySorter(tooltip, abilities, amplifier, colorIndex, true);
     }
 
     /**
@@ -62,9 +62,8 @@ public final class ToolTipUtils {
      * @param amplifier provides the levels of the abilities
      */
     public static void addToolTipPiece(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
-        addToolTip(tooltip, "\u00a79Abilities:");
         int colorIndex = 1;
-        abilitySorter(tooltip, abilities, amplifier, colorIndex);
+        abilitySorter(tooltip, abilities, amplifier, colorIndex, false);
     }
 
     /**
@@ -74,15 +73,18 @@ public final class ToolTipUtils {
      * @param abilities  provides the abilities that are going to be applied to the main entity
      * @param amplifier  provides the levels of the abilities
      * @param colorIndex the color of the line (color index)
+     * @param areFullSet checks if the abilities are for sets or for individual pieces
      */
-    private static void abilitySorter(List<String> tooltip, List<String> abilities, List<Integer> amplifier, int colorIndex) {
+    private static void abilitySorter(List<String> tooltip, List<String> abilities, List<Integer> amplifier, int colorIndex, boolean areFullSet) {
+        addToolTip(tooltip, areFullSet ? "\u00a79Full set abilities" : "\u00a79Abilities");
         for (int i = 0; i < abilities.size(); i++) {
-            if (abilities.get(i).equals("empty")) {
+            if (abilities.get(i).contains("empty")) {
                 continue;
             }
+            List<String> localizedEffects = abilities.stream().map(PotionUtils::localizePotion).collect(toList());
             colorIndex++;
             TextFormatting abilityFormatting = TextFormatting.fromColorIndex(colorIndex % 15);
-            addToolTip(tooltip, String.format("%s%s %s", abilityFormatting, abilities.get(i), generate(level(amplifier.get(i)))));
+            addToolTip(tooltip, String.format("%s%s %s", abilityFormatting, localizedEffects, generate(level(amplifier.get(i)))));
         }
     }
 
@@ -110,7 +112,7 @@ public final class ToolTipUtils {
                 int[] effectLevels = negative.getNegativeEffectsAmplifier();
                 int colorIndex = 1;
                 for (int i = 0; i < negativeEffects.length; i++) {
-                    if (negativeEffects[i].equals("empty")) {
+                    if (negativeEffects[i].contains("empty")) {
                         continue;
                     }
                     colorIndex++;
@@ -148,7 +150,7 @@ public final class ToolTipUtils {
      * Adds simple tooltip lines util, each string is converted to exactly one line in the tooltip
      *
      * @param tooltip the tooltip of the item
-     * @param lines the lines that are written to the tooltip
+     * @param lines   the lines that are written to the tooltip
      */
     public static void addToolTip(List<String> tooltip, String... lines) {
         tooltip.addAll(Arrays.asList(lines));
