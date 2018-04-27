@@ -1,30 +1,29 @@
 package net.thedragonteam.armorplus.api.properties;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class CombinedWeaponProperties {
 
-    private final WeaponProperties sword;
-    private final WeaponProperties battleAxe;
-    private final WeaponProperties bow;
+    private final String itemColor;
+    private final AbilityProviderProperty abilityProperties;
+    private final SetWeaponProperties weaponProperties;
 
-    public CombinedWeaponProperties(double sdmg, double badmg, double bdmg, int dur) {
-        this(new WeaponProperties(sdmg, dur), new WeaponProperties(badmg, dur), new WeaponProperties(bdmg, dur));
+    public CombinedWeaponProperties(String itemColor, AbilityProviderProperty abilityProperties, SetWeaponProperties weaponProperties) {
+        this.itemColor = itemColor;
+        this.abilityProperties = abilityProperties;
+        this.weaponProperties = weaponProperties;
     }
 
-    public CombinedWeaponProperties(WeaponProperties sword, WeaponProperties battleAxe, WeaponProperties bow) {
-        this.sword = sword;
-        this.battleAxe = battleAxe;
-        this.bow = bow;
+    public String getItemColor() {
+        return itemColor;
     }
 
-    public WeaponProperties getSword() {
-        return sword;
+    public AbilityProviderProperty getAbilityProperties() {
+        return abilityProperties;
     }
 
-    public WeaponProperties getBattleAxe() {
-        return battleAxe;
-    }
-
-    public WeaponProperties getBow() {
-        return bow;
+    public SetWeaponProperties getWeaponProperties() {
+        return weaponProperties;
     }
 }

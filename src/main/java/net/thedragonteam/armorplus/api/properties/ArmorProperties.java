@@ -1,5 +1,8 @@
 package net.thedragonteam.armorplus.api.properties;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class ArmorProperties {
 
     private final double armorToughnessPoints;
@@ -40,6 +43,9 @@ public class ArmorProperties {
         return this.feetArmor;
     }
 
+    /**
+     * @return An array of the armor points for the armor set, ordered. (Head, Chest, Legs, Feet)
+     */
     public int[] getArmorPoints() {
         return new int[]{headArmor, chestArmor, legsArmor, feetArmor};
     }

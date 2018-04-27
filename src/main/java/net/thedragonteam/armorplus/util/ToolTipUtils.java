@@ -84,7 +84,7 @@ public final class ToolTipUtils {
             List<String> localizedEffects = abilities.stream().map(PotionUtils::localizePotion).collect(toList());
             colorIndex++;
             TextFormatting abilityFormatting = TextFormatting.fromColorIndex(colorIndex % 15);
-            addToolTip(tooltip, String.format("%s%s %s", abilityFormatting, localizedEffects, generate(level(amplifier.get(i)))));
+            addToolTip(tooltip, String.format("%s%s %s", abilityFormatting, localizedEffects.get(i), generate(level(amplifier.get(i)))));
         }
     }
 

@@ -30,8 +30,9 @@ public class CommandWiki extends CommandBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
-        sender.sendMessage(setText("Opening a link to the site:\n" + AQUA + "" + ITALIC + "https://ftb.gamepedia.com/com/ArmorPlus"));
-        ClientUtills.openLink("https://ftb.gamepedia.com/ArmorPlus");
+        String link = "https://ftb.gamepedia.com/ArmorPlus";
+        sender.sendMessage(setText("Opening a link to the site:\n" + AQUA + "" + ITALIC + link));
+        ClientUtills.openLink(link);
         sender.sendMessage(setText("Link opened successfully"));
     }
 }

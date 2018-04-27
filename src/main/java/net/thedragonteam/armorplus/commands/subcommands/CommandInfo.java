@@ -7,6 +7,9 @@ package net.thedragonteam.armorplus.commands.subcommands;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.ITextComponent;
+
+import java.util.Arrays;
 
 import static net.minecraft.util.text.TextFormatting.*;
 import static net.thedragonteam.armorplus.ArmorPlus.*;
@@ -29,11 +32,17 @@ public class CommandInfo extends CommandBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
-        sender.sendMessage(formatText(DARK_RED, "command.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "command.armorplus.info_line_one.part_two.text")));
-        sender.sendMessage(formatText(RED, "command.armorplus.info_line_two.text", sender.getName(), MODNAME));
-        sender.sendMessage(formatText(GREEN, "command.armorplus.info_line_three.text", MODID));
-        sender.sendMessage(formatText(GRAY, "command.armorplus.info_line_four.text", server.getMinecraftVersion()));
-        sender.sendMessage(formatText(GOLD, "command.armorplus.info_line_six.text"));
-        sender.sendMessage(formatText(GOLD, "command.armorplus.info_line_seven.text"));
+        sendMessages(sender,
+            formatText(DARK_RED, "command.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "command.armorplus.info_line_one.part_two.text")),
+            formatText(RED, "command.armorplus.info_line_two.text", sender.getName(), MODNAME),
+            formatText(GREEN, "command.armorplus.info_line_three.text", MODID),
+            formatText(GRAY, "command.armorplus.info_line_four.text", server.getMinecraftVersion()),
+            formatText(GOLD, "command.armorplus.info_line_six.text"),
+            formatText(GOLD, "command.armorplus.info_line_seven.text")
+        );
+    }
+
+    private void sendMessages(ICommandSender sender, ITextComponent... messages) {
+        Arrays.stream(messages).forEach(sender::sendMessage);
     }
 }

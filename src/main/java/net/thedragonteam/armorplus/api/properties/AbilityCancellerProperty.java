@@ -1,5 +1,8 @@
 package net.thedragonteam.armorplus.api.properties;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class AbilityCancellerProperty {
 
     private final String[] cancelledAbilities;

@@ -9,7 +9,6 @@ import static net.thedragonteam.armorplus.ModConfig.IntegrationsConfig.enableTOP
  *
  * LoaderUtils is an utility class that helps checking if integrations with other mods are disabled.
  * Also it checks if the other mods are present in order to validate the integration.
- *
  */
 public class LoaderUtils {
 

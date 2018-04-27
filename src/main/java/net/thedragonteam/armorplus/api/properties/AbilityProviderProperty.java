@@ -2,6 +2,9 @@ package net.thedragonteam.armorplus.api.properties;
 
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 
+/**
+ * @author Sokratis Fotkatzikis - TheDragonTeam
+ */
 public class AbilityProviderProperty implements IRemovable {
 
     private final String[] abilities;

@@ -21,15 +21,10 @@ public class SlotArmor extends Slot {
      * Make a new instance.
      *
      * @param inventory The inventory this slot will be in.
-     *                  *
      * @param index     The index of this slot.
-     *                  *
      * @param x         X coordinate.
-     *                  *
      * @param y         POS_Y coordinate.
-     *                  *
      * @param player    The player entity.
-     *                  *
      * @param armorType The armor type.
      */
     public SlotArmor(IInventory inventory, int index, int x, int y, EntityPlayer player, EntityEquipmentSlot armorType) {

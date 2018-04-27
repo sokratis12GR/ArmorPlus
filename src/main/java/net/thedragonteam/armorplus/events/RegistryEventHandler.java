@@ -193,7 +193,7 @@ public class RegistryEventHandler {
         // ==== DUNGEON BLOCKS ==== \\
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerAllItemBlocks(event, enderBlocks);
+        registerDungeonBlock(event, enderBlocks);
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
@@ -212,9 +212,7 @@ public class RegistryEventHandler {
             coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
         registerAllItems(event, horseArmors);
-        registerAllItems(event,
-            sword, battleAxe, bow
-        );
+        registerAllItems(event, sword, battleAxe, bow);
     }
 
     public static void registerItemFixes() {
