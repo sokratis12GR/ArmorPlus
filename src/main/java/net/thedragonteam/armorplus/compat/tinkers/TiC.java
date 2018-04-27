@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.thedragonteam.armorplus.compat.tinkers.modifiers.TiCModifiers;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerMaterials;
@@ -39,10 +38,10 @@ public class TiC extends AbstractToolPulse {
     }
 
     public void preInit(FMLPreInitializationEvent event) {
-        this.intMaterials(lavacrystalInt);
-        this.intMaterials(infusedObsidianInt);
-        this.intMaterials(obsidianInt);
-        if (getMaterial("steel") == null) this.intMaterials(steelInt);
+        this.initMaterials(lavacrystalInt);
+        this.initMaterials(infusedObsidianInt);
+        this.initMaterials(obsidianInt);
+        if (getMaterial("steel") == null) this.initMaterials(steelInt);
         tinkersMaterials.setupMaterialStats(event);
     }
 
@@ -58,11 +57,8 @@ public class TiC extends AbstractToolPulse {
         initRepresentativeItem(infusedObsidianInt, "blockLavaInfusedObsidian");
     }
 
-    public void intMaterials(MaterialIntegration material) {
+    public void initMaterials(MaterialIntegration material) {
         TinkerRegistry.addMaterial(material.material);
         TinkerRegistry.integrate(material);
-    }
-
-    public void intMaterials(Material material) {
     }
 }
