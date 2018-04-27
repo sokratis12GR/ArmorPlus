@@ -229,76 +229,75 @@ public class ModConfig {
 
         @Comment({"Configurations for the Coal Material"})
         public static OriginMaterial coal = new OriginMaterial(
-            new CombinedArmorProperties("gray", new ArmorAbilityProperties("night_vision"), new ArmorProperties(1, 1, 2, 1)),
-            new CombinedWeaponProperties("gray", new AbilityProviderProperty("blindness"), new SetWeaponProperties(0.5, 2.5, -2.0, 24))
+            new CombinedArmorProperties("gray", "night_vision", false, new ArmorProperties(1, 1, 2, 1)),
+            new CombinedWeaponProperties("gray", "blindness", new SetWeaponProperties(0.5, -2.0, 24))
         );
 
         @Comment({"Configurations for the Lapis Material"})
         public static OriginMaterial lapis = new OriginMaterial(
-            new CombinedArmorProperties("dark_blue", new ArmorAbilityProperties("water_breathing"), new ArmorProperties(1, 2, 3, 2)),
-            new CombinedWeaponProperties("dark_blue", new AbilityProviderProperty("nausea", 1), new SetWeaponProperties(1.0, 3.0, -1.5, 200))
+            new CombinedArmorProperties("dark_blue", "water_breathing", false, new ArmorProperties(1, 2, 3, 2)),
+            new CombinedWeaponProperties("dark_blue", "nausea", 1, new SetWeaponProperties(1.0, -1.5, 200))
         );
 
         @Comment({"Configurations for the Redstone Material"})
         public static OriginMaterial redstone = new OriginMaterial(
-            new CombinedArmorProperties("dark_red", new ArmorAbilityProperties("haste", 1), new ArmorProperties(1, 2, 3, 2)),
-            new CombinedWeaponProperties("dark_red", new AbilityProviderProperty("mining_fatigue", 1), new SetWeaponProperties(1.0, 3.0, -1.5, 200))
+            new CombinedArmorProperties("dark_red", "haste", 1, new ArmorProperties(1, 2, 3, 2)),
+            new CombinedWeaponProperties("dark_red", "mining_fatigue", 1, new SetWeaponProperties(1.0, -1.5, 200))
         );
 
         @Comment({"Configurations for the Emerald Material"})
         public static OriginMaterial emerald = new OriginMaterial(
-            new CombinedArmorProperties("dark_green", new ArmorAbilityProperties("speed", 1), new ArmorProperties(1.0, 3, 6, 8, 3)),
-            new CombinedWeaponProperties("dark_green", new AbilityProviderProperty("slowness", 1), new SetWeaponProperties(1.5, 3.5, -0.5, 1561))
+            new CombinedArmorProperties("dark_green", "speed", 1, new ArmorProperties(1.0, 3, 6, 8, 3)),
+            new CombinedWeaponProperties("dark_green", "slowness", 1, new SetWeaponProperties(1.5, -0.5, 1561))
         );
 
         @Comment({"Configurations for the Obsidian Material"})
         public static OriginMaterial obsidian = new OriginMaterial(
-            new CombinedArmorProperties("dark_gray", new ArmorAbilityProperties("resistance"), new ArmorProperties(1.0, 3, 6, 7, 3)),
-            new CombinedWeaponProperties("dark_gray", new AbilityProviderProperty("weakness", 1), new SetWeaponProperties(4.0, 6.0, 0.0, 1500))
+            new CombinedArmorProperties("dark_gray", "resistance", false, new ArmorProperties(1.0, 3, 6, 7, 3)),
+            new CombinedWeaponProperties("dark_gray", "weakness", 1, new SetWeaponProperties(4.0, 0.0, 1500))
         );
 
         @Comment({"Configurations for the Lava Material"})
         public static OriginMaterial lava = new OriginMaterial(
-            new CombinedArmorProperties("gold", new ArmorAbilityProperties("fire_resistance"), new ArmorProperties(1.0, 3, 6, 8, 3)), true,
-            new CombinedWeaponProperties("gold", new AbilityProviderProperty(), new SetWeaponProperties(4.5, 6.5, 0.5, 1750)), true, 8
+            new CombinedArmorProperties("gold", "fire_resistance", false, new ArmorProperties(1.0, 3, 6, 8, 3)), true,
+            new CombinedWeaponProperties("gold", new SetWeaponProperties(4.5, 0.5, 1750)), true, 8
         );
 
         @Comment({"Configurations for the Guardian Material"})
         public static OriginMaterial guardian = new OriginMaterial(
-            new CombinedArmorProperties("aqua", new ArmorAbilityProperties("water_breathing"), new ArmorProperties(2.0, 4, 7, 8, 3)),
-            new CombinedWeaponProperties("aqua", new AbilityProviderProperty("nausea", 1), new SetWeaponProperties(6.0, 7.0, 1.5, 1800))
+            new CombinedArmorProperties("aqua", "water_breathing", false, new ArmorProperties(2.0, 4, 7, 8, 3)),
+            new CombinedWeaponProperties("aqua", "nausea", 1, new SetWeaponProperties(6.0, 1.5, 1800))
         );
 
         @Comment({"Configurations for the Super Star Material"})
         public static OriginMaterial super_star = new OriginMaterial(
-            new CombinedArmorProperties("white", new ArmorAbilityProperties(new AbilityCancellerProperty("wither"), new AbilityProviderProperty("regeneration", 1)), new ArmorProperties(2.0, 4, 7, 8, 3)),
-            new CombinedWeaponProperties("white", new AbilityProviderProperty("wither", 1), new SetWeaponProperties(7.0, 8.0, 1.5, 1950))
+            new CombinedArmorProperties("white", "wither", "regeneration", 1, new ArmorProperties(2.0, 4, 7, 8, 3)),
+            new CombinedWeaponProperties("white", "wither", 1, new SetWeaponProperties(7.0, 1.5, 1950))
         );
 
         @Comment({"Configurations for the Ender Dragon Material"})
         public static OriginMaterial ender_dragon = new OriginMaterial(
-            new CombinedArmorProperties("dark_purple", new ArmorAbilityProperties(new AbilityCancellerProperty("wither")), new ArmorProperties(2.0, 4, 7, 8, 3)),
-            new CombinedWeaponProperties("dark_purple", new AbilityProviderProperty("wither", 3), new SetWeaponProperties(8.0, 10.0, 1.5, 2310))
+            new CombinedArmorProperties("dark_purple", "wither", true, new ArmorProperties(2.0, 4, 7, 8, 3)),
+            new CombinedWeaponProperties("dark_purple", "wither", 3, new SetWeaponProperties(8.0, 1.5, 2310))
         );
 
         @Comment({"Configurations for the Ultimate Material"})
-        //TODO: Convert this to be like its sisters
         public static UltimateMaterial ultimate = new UltimateMaterial();
 
         @Comment({"Configurations for the Chicken Material"})
-        public static SpecialMaterial chicken = new SpecialMaterial(new CombinedArmorProperties("aqua", new ArmorAbilityProperties("speed", 4), new ArmorProperties(1, 1, 2, 1)));
+        public static SpecialMaterial chicken = new SpecialMaterial(new CombinedArmorProperties("aqua", "speed", 4, new ArmorProperties(1, 1, 2, 1)));
         @Comment({"Configurations for the Slime Material"})
-        public static SpecialMaterial slime = new SpecialMaterial(new CombinedArmorProperties("green", new ArmorAbilityProperties("jump_boost", 2), new ArmorProperties(1, 1, 2, 1)));
+        public static SpecialMaterial slime = new SpecialMaterial(new CombinedArmorProperties("green", "jump_boost", 2, new ArmorProperties(1, 1, 2, 1)));
         @Comment({"Configurations for the Ardite Material"})
-        public static SpecialMaterial ardite = new SpecialMaterial(new CombinedArmorProperties("dark_red", new ArmorAbilityProperties("fire_resistance"), new ArmorProperties(1.0, 2, 3, 4, 2)));
+        public static SpecialMaterial ardite = new SpecialMaterial(new CombinedArmorProperties("dark_red", "fire_resistance", false, new ArmorProperties(1.0, 2, 3, 4, 2)));
         @Comment({"Configurations for the Cobalt Material"})
-        public static SpecialMaterial cobalt = new SpecialMaterial(new CombinedArmorProperties("blue", new ArmorAbilityProperties("haste", 2), new ArmorProperties(1.0, 2, 3, 4, 2)));
+        public static SpecialMaterial cobalt = new SpecialMaterial(new CombinedArmorProperties("blue", "haste", 2, new ArmorProperties(1.0, 2, 3, 4, 2)));
         @Comment({"Configurations for the Manyullyn Material"})
-        public static SpecialMaterial manyullyn = new SpecialMaterial(new CombinedArmorProperties("dark_purple", new ArmorAbilityProperties("strength", 1), new ArmorProperties(2.0, 3, 5, 5, 3)));
+        public static SpecialMaterial manyullyn = new SpecialMaterial(new CombinedArmorProperties("dark_purple", "strength", 1, new ArmorProperties(2.0, 3, 5, 5, 3)));
         @Comment({"Configurations for the Pig Iron Material"})
-        public static SpecialMaterial pig_iron = new SpecialMaterial(new CombinedArmorProperties("light_purple", new ArmorAbilityProperties("saturation"), new ArmorProperties(1.0, 2, 3, 4, 3)));
+        public static SpecialMaterial pig_iron = new SpecialMaterial(new CombinedArmorProperties("light_purple", "saturation", false, new ArmorProperties(1.0, 2, 3, 4, 3)));
         @Comment({"Configurations for the Knight Slime Material"})
-        public static SpecialMaterial knight_slime = new SpecialMaterial(new CombinedArmorProperties("dark_purple", new ArmorAbilityProperties("jump_boost", 1), new ArmorProperties(1.0, 2, 3, 4, 3)));
+        public static SpecialMaterial knight_slime = new SpecialMaterial(new CombinedArmorProperties("dark_purple", "jump_boost", 1, new ArmorProperties(1.0, 2, 3, 4, 3)));
 
         public static GlobalRegistry global_registry = new GlobalRegistry();
         public static RegistryRecipes recipes = new RegistryRecipes();

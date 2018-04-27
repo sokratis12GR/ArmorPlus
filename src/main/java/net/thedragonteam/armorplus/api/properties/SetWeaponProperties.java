@@ -13,6 +13,10 @@ public class SetWeaponProperties {
         this(new WeaponProperty(sdmg, dur), new WeaponProperty(badmg, dur), new WeaponProperty(bdmg, dur));
     }
 
+    public SetWeaponProperties(double meleedmg, double bdmg, int dur) {
+        this(new WeaponProperty(meleedmg, dur), new WeaponProperty(meleedmg + 2, dur), new WeaponProperty(bdmg, dur));
+    }
+
     public SetWeaponProperties(WeaponProperty sword, WeaponProperty battleAxe, WeaponProperty bow) {
         this.sword = sword;
         this.battleAxe = battleAxe;
