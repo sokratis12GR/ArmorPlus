@@ -1,3 +1,10 @@
+ArmorPlus 1.12.2-11.12.1.39-beta
+----------------------------
+
+* Technical: 
+  - More Simplifications and optimizations
+* Added the ability to configure the effects' duration, in seconds (automatically will get converted to seconds)
+
 ArmorPlus 1.12.2-11.12.0.38-beta
 ----------------------------
 
