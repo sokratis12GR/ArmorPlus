@@ -1,16 +1,17 @@
 ArmorPlus 1.12.2-11.12.0.38-beta
 ----------------------------
 
-* Technical: Made most of the configuration to be the same for all of the armors & weapons
+* Technical: 
+  - Made most of the configuration to be the same for all of the armors & weapons
+  - Documented small parts of code
+  - Major optimizations of the code & simplification of the system.
+  - Re-organized a bunch of packages and a bunch of code simplifications
 * Hidden the horse armor items from Creative & JEI (as they are not ready)
 * Simplified & improved the ability setting on tooltip, i.e you will no longer see duplicated entries as well as have a better indication of the abilities.
 * Tooltips now have a less cluttered look, removed redundant "Use: xyz", Abilities' Numbers now are converted to roman numerals i.e (1 = I, 4 = IV, 9 = IX, 10 = X, 99 = XC, 100 = C ...)
 * World gen configuration has been tweaked into sub categories (for the lava crystal per dimension), simplified names
-* Documented small parts of code
-* Tweaked the CraftTweaker integration, removed duplication of code
 * The Super Star & Guardian Battle Axes have received a +1 dmg buff on their default values
-* Major optimizations of the code & simplification of the system.
-* Tooltips have been supplied with colourful look of the abilities that they provide. Special Abilities (Not yet configurable) have their own lore.
+* Tooltips have been supplied with colorful look of the abilities that they provide. Special Abilities (Not yet configurable) have their own lore.
 
 ArmorPlus 1.12.2-11.11.1.37-beta
 ----------------------------
