@@ -76,9 +76,6 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
-    compile ("CraftTweaker2:CraftTweaker2-API:${crafttweaker_version}") {
-        exclude module: "asm-debug-all"
-    }
     compile "CraftTweaker2:ZenScript:${zenscript_version}"
 //    deobfCompile "com.blamejared:MTLib:2.0.2.3"
 }
