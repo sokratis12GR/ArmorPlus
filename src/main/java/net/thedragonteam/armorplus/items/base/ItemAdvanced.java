@@ -8,13 +8,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAdvanced extends BaseItem {
 
-    private String itemName;
     private final TextFormatting formatting;
     private final String displayName;
 
     public ItemAdvanced(String itemName, TextFormatting formatting, String displayName) {
         super(itemName);
-        this.itemName = itemName;
         this.formatting = formatting;
         this.displayName = displayName;
     }

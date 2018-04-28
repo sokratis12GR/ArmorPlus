@@ -31,8 +31,8 @@ import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.projectile.En
 import net.thedragonteam.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
-import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
-import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
+import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
+import net.thedragonteam.armorplus.entity.mobs.EntityIceGolem;
 import net.thedragonteam.armorplus.items.materials.ItemRename;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
 import net.thedragonteam.armorplus.tileentity.*;
@@ -85,6 +85,7 @@ public class RegistryEventHandler {
         registerEntities(EntityRedstoneArrow.class, "redstone_arrow", ++id);
         registerEntities(EntityLavaArrow.class, "lava_arrow", ++id);
         registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", ++id);
+        //
         registerEntities(EntityFreezeBomb.class, "freeze_bomb", ++id);
         registerEntities(EntityWitherMinion.class, "wither_minion", ++id);
         registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", ++id,

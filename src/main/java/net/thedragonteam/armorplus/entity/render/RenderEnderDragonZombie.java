@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.entityzombie;
+package net.thedragonteam.armorplus.entity.render;
 
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.Render;
@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
 
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 

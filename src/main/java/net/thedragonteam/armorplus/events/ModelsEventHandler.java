@@ -16,10 +16,10 @@ import net.thedragonteam.armorplus.entity.dungeon.skeletalking.RenderSkeletalKin
 import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.RenderWitherMinion;
 import net.thedragonteam.armorplus.entity.entityarrow.*;
-import net.thedragonteam.armorplus.entity.entitygolem.EntityIceGolem;
-import net.thedragonteam.armorplus.entity.entitygolem.RenderIceGolem;
-import net.thedragonteam.armorplus.entity.entityzombie.EntityEnderDragonZombie;
-import net.thedragonteam.armorplus.entity.entityzombie.RenderEnderDragonZombie;
+import net.thedragonteam.armorplus.entity.mobs.EntityIceGolem;
+import net.thedragonteam.armorplus.entity.render.RenderIceGolem;
+import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
+import net.thedragonteam.armorplus.entity.render.RenderEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.render.RenderModdedArrow;
 
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;

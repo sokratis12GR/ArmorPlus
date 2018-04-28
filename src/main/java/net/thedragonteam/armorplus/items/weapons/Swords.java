@@ -15,6 +15,7 @@ import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
+import net.thedragonteam.armorplus.items.weapons.effects.WeaponEffects;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import javax.annotation.Nonnull;
@@ -40,33 +41,15 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public enum Swords implements IEffectHolder, IRemovable, IRepairable {
-    COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor),
-        new Negative(coal), new Ignite(coal), global_registry.enableCoalWeapons[0]
-    ),
-    LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor),
-        new Negative(lapis), new Ignite(lapis), global_registry.enableLapisWeapons[0]
-    ),
-    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor),
-        new Negative(redstone), new Ignite(redstone), global_registry.enableRedstoneWeapons[0]
-    ),
-    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor),
-        new Negative(emerald), new Ignite(emerald), global_registry.enableEmeraldWeapons[0]
-    ),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(compressedObsidian), getValueByName(obsidian.weapons.itemNameColor),
-        new Negative(obsidian), new Ignite(obsidian), global_registry.enableObsidianWeapons[0]
-    ),
-    LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor),
-        new Negative(lava), new Ignite(lava), global_registry.enableLavaWeapons[0]
-    ),
-    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor),
-        new Negative(guardian), new Ignite(guardian), global_registry.enableGuardianWeapons[0]
-    ),
-    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor),
-        new Negative(super_star), new Ignite(super_star), global_registry.enableSuperStarWeapons[0]
-    ),
-    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor),
-        new Negative(ender_dragon), new Ignite(ender_dragon), global_registry.enableEnderDragonWeapons[0]
-    );
+    COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), coal, global_registry.enableCoalWeapons),
+    LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), lapis, global_registry.enableLapisWeapons),
+    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), redstone, global_registry.enableRedstoneWeapons),
+    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), emerald, global_registry.enableEmeraldWeapons),
+    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(compressedObsidian), obsidian, global_registry.enableObsidianWeapons),
+    LAVA(swordLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), lava, global_registry.enableLavaWeapons),
+    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), guardian, global_registry.enableGuardianWeapons),
+    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), super_star, global_registry.enableSuperStarWeapons),
+    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), ender_dragon, global_registry.enableEnderDragonWeapons);
 
     private final String name;
     private final Item.ToolMaterial material;
@@ -77,15 +60,16 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     private final Negative negative;
     private final Ignite ignite;
 
-    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn, Negative negative, Ignite ignite, boolean isEnabled
+    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, OriginMaterial material, boolean[] isEnabled
     ) {
         this.material = materialIn;
         this.name = nameIn;
         this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
-        this.textFormatting = textFormattingIn;
-        this.isEnabled = isEnabled;
-        this.negative = negative;
-        this.ignite = ignite;
+        this.textFormatting = getValueByName(material.weapons.itemNameColor);
+        this.isEnabled = isEnabled[0];
+        WeaponEffects effects = new WeaponEffects(material);
+        this.negative = effects.getNegative();
+        this.ignite = effects.getIgnite();
         this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectsAmplifier());
     }
 

@@ -74,9 +74,7 @@ public class DevTool extends BaseItem {
         //Write JSON String to file
         LocalDateTime dateTime = LocalDateTime.now();
         String timeStamp = dateTime.getHour() + "-" + dateTime.getMinute() + "-" + dateTime.getSecond() + "-" + dateTime.getYear() + "-" + dateTime.getMonth().getValue() + "-" + dateTime.getDayOfMonth();
-        try (FileWriter fileWriter = new FileWriter(new File(
-            format("./armorplus/entity/%s/%s_%s.json", player.getUniqueID(), entity.getName(), timeStamp)
-        ))) {
+        try (FileWriter fileWriter = new FileWriter(new File(format("./armorplus/entity/%s/%s_%s.json", player.getUniqueID(), entity.getName(), timeStamp)))) {
             WorldInfo worldInfo = entity.world.getWorldInfo();
             BlockPos entityPos = entity.getPosition();
             JsonObject jsonObject = new JsonObject();
@@ -127,7 +125,6 @@ public class DevTool extends BaseItem {
             //convert the Java object to json
             String jsonString = gson.toJson(jsonObject);
             fileWriter.write(jsonString);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

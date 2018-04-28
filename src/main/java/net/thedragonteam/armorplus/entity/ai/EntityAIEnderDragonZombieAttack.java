@@ -1,6 +1,7 @@
-package net.thedragonteam.armorplus.entity.entityzombie;
+package net.thedragonteam.armorplus.entity.ai;
 
 import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
 
 /**
  * Custom AI attack class to support raising of the arms when the zombie attacks.

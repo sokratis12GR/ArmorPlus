@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.entityzombie;
+package net.thedragonteam.armorplus.entity.mobs;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.entity.ai.EntityAIEnderDragonZombieAttack;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 

@@ -1,7 +1,6 @@
 package net.thedragonteam.armorplus.items.arrows;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,31 +18,31 @@ import static java.util.Locale.ROOT;
 public enum ArrowType {
     COAL("Applies Blindness", 2.0, TextFormatting.GRAY) {
         @Override
-        public EntityCoalArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityModdedArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityCoalArrow(world, shooter);
         }
     },
     LAPIS("Applies Nausea", 3.5, TextFormatting.DARK_AQUA) {
         @Override
-        public EntityLapisArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityModdedArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLapisArrow(world, shooter);
         }
     },
     REDSTONE("Applies Slowness", 3.5D, TextFormatting.DARK_RED) {
         @Override
-        public EntityRedstoneArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityModdedArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityRedstoneArrow(world, shooter);
         }
     },
     INFUSED_LAVA("Sets on Fire", 5.5D, TextFormatting.GOLD) {
         @Override
-        public EntityLavaArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityModdedArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityLavaArrow(world, shooter);
         }
     },
     ENDER_DRAGON("Applies Wither 4", 8.5, TextFormatting.DARK_PURPLE) {
         @Override
-        public EntityEnderDragonArrow createArrow(World world, EntityLivingBase shooter) {
+        public EntityModdedArrow createArrow(World world, EntityLivingBase shooter) {
             return new EntityEnderDragonArrow(world, shooter);
         }
     };
@@ -78,7 +77,7 @@ public enum ArrowType {
         return this.getName() + "_arrow";
     }
 
-    public abstract EntityArrow createArrow(World world, EntityLivingBase shooter);
+    public abstract EntityModdedArrow createArrow(World world, EntityLivingBase shooter);
 
     @SideOnly(Side.CLIENT)
     public void addInformation(List<String> tooltip) {

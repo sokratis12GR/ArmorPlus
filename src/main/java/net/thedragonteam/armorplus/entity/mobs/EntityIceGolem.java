@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.entitygolem;
+package net.thedragonteam.armorplus.entity.mobs;
 
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.util.ResourceLocation;

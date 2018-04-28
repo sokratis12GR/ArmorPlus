@@ -15,6 +15,7 @@ import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
+import net.thedragonteam.armorplus.items.weapons.effects.WeaponEffects;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 
@@ -39,33 +40,15 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
-    COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), getValueByName(coal.weapons.itemNameColor), 8.0F,
-        new Negative(coal), new Ignite(coal), global_registry.enableCoalWeapons[1]
-    ),
-    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), getValueByName(lapis.weapons.itemNameColor), 9.0F,
-        new Negative(lapis), new Ignite(lapis), global_registry.enableLapisWeapons[1]
-    ),
-    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), getValueByName(redstone.weapons.itemNameColor), 9.0F,
-        new Negative(redstone), new Ignite(redstone), global_registry.enableRedstoneWeapons[1]
-    ),
-    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), getValueByName(emerald.weapons.itemNameColor), 10.0F,
-        new Negative(emerald), new Ignite(emerald), global_registry.enableEmeraldWeapons[1]
-    ),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), getValueByName(obsidian.weapons.itemNameColor), 10.5F,
-        new Negative(obsidian), new Ignite(obsidian), global_registry.enableObsidianWeapons[1]
-    ),
-    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), getValueByName(lava.weapons.itemNameColor), 11.5F,
-        new Negative(lava), new Ignite(lava), global_registry.enableLavaWeapons[1]
-    ),
-    GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), getValueByName(guardian.weapons.itemNameColor), 14.0F,
-        new Negative(guardian), new Ignite(guardian), global_registry.enableGuardianWeapons[1]
-    ),
-    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), getValueByName(super_star.weapons.itemNameColor), 15.0F,
-        new Negative(super_star), new Ignite(super_star), global_registry.enableSuperStarWeapons[1]
-    ),
-    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), getValueByName(ender_dragon.weapons.itemNameColor), 16.0F,
-        new Negative(ender_dragon), new Ignite(ender_dragon), global_registry.enableEnderDragonWeapons[1]
-    ),
+    COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), coal, 8.0F, global_registry.enableCoalWeapons),
+    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), lapis, 9.0F, global_registry.enableLapisWeapons),
+    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), redstone, 9.0F, global_registry.enableRedstoneWeapons),
+    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), emerald, 10.0F, global_registry.enableEmeraldWeapons),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
+    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
+    GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), guardian, 14.0F, global_registry.enableGuardianWeapons),
+    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), super_star, 15.0F, global_registry.enableSuperStarWeapons),
+    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), ender_dragon, 16.0F, global_registry.enableEnderDragonWeapons),
     // WOOD(, "wooden"),
     // STONE(, "stone"),
     // IRON(, "iron"),
@@ -83,17 +66,17 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     private final Negative negative;
     private final Ignite ignite;
 
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, TextFormatting textFormattingIn, float efficiencyIn, Negative negativeEffect, Ignite igniteEffect,
-               boolean isEnabled
+    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, OriginMaterial material, float efficiencyIn, boolean[] isEnabled
     ) {
         this.material = materialIn;
         this.name = nameIn;
         this.repairStack = repairStackIn;
-        this.textFormatting = textFormattingIn;
-        this.isEnabled = isEnabled;
+        this.textFormatting = getValueByName(material.weapons.itemNameColor);
+        this.isEnabled = isEnabled[1];
         this.efficiency = efficiencyIn;
-        this.negative = negativeEffect;
-        this.ignite = igniteEffect;
+        WeaponEffects effects = new WeaponEffects(material);
+        this.negative = effects.getNegative();
+        this.ignite = effects.getIgnite();
         this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectsAmplifier());
     }
 

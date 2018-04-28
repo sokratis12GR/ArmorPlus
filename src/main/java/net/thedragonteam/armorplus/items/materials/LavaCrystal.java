@@ -53,15 +53,11 @@ public class LavaCrystal extends Item implements IModdedItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
-            switch (stack.getMetadata()) {
-                case 0: {
-                    tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
-                    break;
-                }
-                case 1: {
-                    tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
-                    break;
-                }
+            int i = stack.getMetadata();
+            if (i == 0) {
+                tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
+            } else if (i == 1) {
+                tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
             }
         } else {
             ToolTipUtils.showInfo(tooltip, keyBindSneak, TextFormatting.GOLD);

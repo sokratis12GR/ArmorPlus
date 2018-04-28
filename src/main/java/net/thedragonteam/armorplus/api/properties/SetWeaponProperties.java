@@ -17,6 +17,14 @@ public class SetWeaponProperties {
         this(new WeaponProperty(meleedmg, dur), new WeaponProperty(meleedmg + 2, dur), new WeaponProperty(bdmg, dur));
     }
 
+    /**
+     *
+     * Creates a set of weapons for the type with the specified values which are the sword, battle axe and the bow
+     *
+     * @param sword The weapon properties for the sword
+     * @param battleAxe The weapon properties for the battle axe
+     * @param bow The weapon properties for the bow
+     */
     public SetWeaponProperties(WeaponProperty sword, WeaponProperty battleAxe, WeaponProperty bow) {
         this.sword = sword;
         this.battleAxe = battleAxe;

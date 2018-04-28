@@ -100,7 +100,7 @@ public final class ToolTipUtils {
     public static void addSpecialInformation(List<String> tooltip, Negative negative, Ignite ignite, TextFormatting formatting) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\2479Abilities:");
+            tooltip.add("\2479Abilities");
             if (!ignite.isEnabled() && !negative.isEnabled()) {
                 tooltip.add("\u00a79" + "none");
             }

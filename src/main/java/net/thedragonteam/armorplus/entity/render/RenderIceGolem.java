@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.entity.entitygolem;
+package net.thedragonteam.armorplus.entity.render;
 
 import net.minecraft.client.model.ModelIronGolem;
 import net.minecraft.client.renderer.GlStateManager;
@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.entity.mobs.EntityIceGolem;
 
 import javax.annotation.Nullable;
 
