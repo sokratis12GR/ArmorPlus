@@ -472,6 +472,10 @@ public class ModConfig {
                 public String[] removePotionEffects = {"wither"};
                 @Comment({"Adds the potion effects the armor will have (to disable the effect set the effects \'false\')"})
                 public String[] addPotionEffects = {"regeneration", "water_breathing"};
+                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
+                public int[] effectLevels = {1, 0};
+                @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
+                public int[] effectDurations = {12, 12};
                 @Comment({"Set the color name the armor will have"})
                 public String itemNameColor = "green";
                 @Comment({"Set the amount of toughness points the armor will have"})
@@ -484,8 +488,6 @@ public class ModConfig {
                 public boolean setInvincible = false;
                 @Comment({"Enable/Disable the armor's de-buffs (when a non complete set is equiped)"})
                 public boolean enableDeBuffs = true;
-                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels = {1, 0};
             }
 
         }

@@ -22,6 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.ModConfig.RegistryConfig.UltimateMaterial.Armor;
 import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.PotionUtils;
@@ -46,6 +47,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -75,6 +77,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         ItemStack chest = player.getItemStackFromSlot(CHEST);
         ItemStack legs = player.getItemStackFromSlot(LEGS);
         ItemStack feet = player.getItemStackFromSlot(FEET);
+        Armor armor = ultimate.armor;
         if (enableFlightAbility) {
             if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings &&
                 feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator()) {
@@ -84,25 +87,25 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
                 player.capabilities.allowFlying = false;
             }
         }
-        if (ultimate.armor.setInvincible) {
+        if (armor.setInvincible) {
             player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
             addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
         if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
 
-            IntStream.range(0, ultimate.armor.addPotionEffects.length).forEach(i -> {
-                Potion potionEffect = getPotion(ultimate.armor.addPotionEffects[i]);
+            IntStream.range(0, armor.addPotionEffects.length).forEach(potionID -> {
+                Potion potionEffect = getPotion(armor.addPotionEffects[potionID]);
                 if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
-                    addPotion(player, potionEffect, ultimate.armor.effectLevels[i], GOOD);
+                    addPotion(player, potionEffect, convertToSeconds(armor.effectDurations[potionID]), armor.effectLevels[potionID], GOOD);
                 }
             });
-            List<Potion> removablePotions = Arrays.stream(ultimate.armor.removePotionEffects).map(PotionUtils::getPotion).collect(Collectors.toList());
+            List<Potion> removablePotions = Arrays.stream(armor.removePotionEffects).map(PotionUtils::getPotion).collect(Collectors.toList());
             removablePotions.stream().filter(
                 potionEffect -> Utils.isNotNull(potionEffect) && potionEffect != ModPotions.EMPTY
             ).forEach(
                 potionEffect -> removePotion(player, potionEffect)
             );
-        } else if (ultimate.armor.enableDeBuffs) {
+        } else if (armor.enableDeBuffs) {
             addPotion(player, MobEffects.POISON, 60, 2, BAD);
             addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
             addPotion(player, MobEffects.BLINDNESS, 60, 0, BAD);

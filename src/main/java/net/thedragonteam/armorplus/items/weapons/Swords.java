@@ -35,6 +35,8 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.Utils.boxList;
+import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -90,8 +92,9 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
 
     @Override
     public List<Integer> getApplyEffectDurations() {
-        return null;
+        return boxList(this.negative.getNegativeEffectDurations());
     }
+
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {
         return range(0, effectLevel.length).mapToObj(i -> localizePotion(effectName[i]) + " " + (effectLevel[i] + 1)).collect(Collectors.toList());
@@ -132,7 +135,7 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         }
         if (this.areEffectsEnabled()) {
             IntStream.range(0, this.negative.getNegativeEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), this.getApplyEffectLevels().get(potionID), BAD)
+                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), convertToSeconds(this.getApplyEffectDurations().get(potionID)), this.getApplyEffectLevels().get(potionID), BAD)
             );
         }
         return true;
