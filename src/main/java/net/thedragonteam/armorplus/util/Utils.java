@@ -15,9 +15,12 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import static java.lang.String.format;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
 
@@ -32,6 +35,18 @@ public final class Utils {
 
     static {
         Arrays.fill(emptyArmor, ItemStack.EMPTY);
+    }
+
+    public static List<String> boxList(String[] objects) {
+        return stream(objects).collect(toList());
+    }
+
+    public static List<Integer> boxList(int[] objects) {
+        return stream(objects).boxed().collect(toList());
+    }
+
+    public static int convertToSeconds(int seconds) {
+        return seconds * 20;
     }
 
     public static ItemStack checkNBT(ItemStack stack) {

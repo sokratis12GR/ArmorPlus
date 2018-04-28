@@ -20,7 +20,6 @@ import net.thedragonteam.armorplus.registry.ModBlocks;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,6 +33,8 @@ import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.Utils.boxList;
+import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -77,17 +78,22 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         WeaponEffects effects = new WeaponEffects(material);
         this.negative = effects.getNegative();
         this.ignite = effects.getIgnite();
-        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectsAmplifier());
+        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectLevels());
     }
 
     @Override
     public List<String> getApplyEffectNames() {
-        return Arrays.asList(this.negative.getNegativeEffects());
+        return boxList(this.negative.getNegativeEffects());
     }
 
     @Override
-    public List<Integer> getApplyAmplifierLevels() {
-        return Arrays.stream(this.negative.getNegativeEffectsAmplifier()).boxed().collect(Collectors.toList());
+    public List<Integer> getApplyEffectLevels() {
+        return boxList(this.negative.getNegativeEffectLevels());
+    }
+
+    @Override
+    public List<Integer> getApplyEffectDurations() {
+        return boxList(this.negative.getNegativeEffectDurations());
     }
 
     @Override
@@ -138,7 +144,7 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         }
         if (this.areEffectsEnabled()) {
             IntStream.range(0, this.negative.getNegativeEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), this.getApplyAmplifierLevels().get(potionID), BAD)
+                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), convertToSeconds(this.getApplyEffectDurations().get(potionID)), this.getApplyEffectLevels().get(potionID), BAD)
             );
         }
         return true;

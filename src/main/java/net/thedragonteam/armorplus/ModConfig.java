@@ -334,6 +334,7 @@ public class ModConfig {
                     AbilityProviderProperty abilityProvider = abilityProperties.getAbilityProvider();
                     this.addPotionEffects = abilityProvider.getAbilities();
                     this.effectLevels = abilityProvider.getAbilityLevels();
+                    this.effectDurations = abilityProvider.getAbilityDuration();
                     this.enableSetEffects = abilityProvider.isEnabled();
                     ArmorProperties armorProperties = properties.getArmorProperties();
                     this.toughnessPoints = armorProperties.getArmorToughnessPoints();
@@ -360,6 +361,8 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
+                @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
+                public int[] effectDurations;
                 @Comment({"Enable/Disable the set effect(s)"})
                 public boolean enableSetEffects;
                 @Comment({"Set the amount of toughness points the armor will have"})
@@ -393,6 +396,7 @@ public class ModConfig {
                     this.itemNameColor = properties.getItemColor();
                     this.addPotionEffects = abilities.getAbilities();
                     this.effectLevels = abilities.getAbilityLevels();
+                    this.effectDurations = abilities.getAbilityDuration();
                     this.enableEffects = abilities.isEnabled();
                     this.shouldApplyFire = wsaf;
                     this.onFireSeconds = wofs;
@@ -408,6 +412,8 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Set the amplifier level for the effect(s) by the weapons. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
+                @Comment({"Set the duration for the effect(s) by the weapons. (in seconds)"})
+                public int[] effectDurations;
                 @Comment({"Enable/Disable the potion effect the weapons will have"})
                 public boolean enableEffects;
                 @Comment({"Enable/Disable the ability for the weapons to set entities on fire"})
@@ -499,6 +505,7 @@ public class ModConfig {
                     AbilityProviderProperty abilityProperties = properties.getAbilityProperties().getAbilityProvider();
                     this.addPotionEffects = abilityProperties.getAbilities();
                     this.effectLevels = abilityProperties.getAbilityLevels();
+                    this.effectDurations = abilityProperties.getAbilityDuration();
                     this.enableSetEffects = abilityProperties.isEnabled();
                     ArmorProperties armorProperties = properties.getArmorProperties();
                     this.toughnessPoints = armorProperties.getArmorToughnessPoints();
@@ -515,6 +522,8 @@ public class ModConfig {
                 public String[] addPotionEffects;
                 @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
                 public int[] effectLevels;
+                @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
+                public int[] effectDurations;
                 @Comment({"Enable/Disable the set armor effect(s)"})
                 public boolean enableSetEffects;
                 @Comment({"Set the amount of toughness points the armor will have"})

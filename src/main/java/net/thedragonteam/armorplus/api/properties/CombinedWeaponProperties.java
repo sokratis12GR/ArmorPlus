@@ -18,7 +18,7 @@ public class CombinedWeaponProperties {
     }
 
     public CombinedWeaponProperties(String itemColor, String abilityName, int abilityLevel, SetWeaponProperties weaponProperties) {
-        this(itemColor, new AbilityProviderProperty(abilityName, abilityLevel), weaponProperties);
+        this(itemColor, new AbilityProviderProperty(abilityName, abilityLevel, 12), weaponProperties);
     }
 
     public CombinedWeaponProperties(String itemColor, AbilityProviderProperty abilityProperties, SetWeaponProperties weaponProperties) {

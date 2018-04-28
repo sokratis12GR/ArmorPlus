@@ -70,7 +70,7 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         WeaponEffects effects = new WeaponEffects(material);
         this.negative = effects.getNegative();
         this.ignite = effects.getIgnite();
-        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectsAmplifier());
+        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectLevels());
     }
 
     @Override
@@ -84,8 +84,13 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     }
 
     @Override
-    public List<Integer> getApplyAmplifierLevels() {
-        return Arrays.stream(this.negative.getNegativeEffectsAmplifier()).boxed().collect(Collectors.toList());
+    public List<Integer> getApplyEffectLevels() {
+        return Arrays.stream(this.negative.getNegativeEffectLevels()).boxed().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Integer> getApplyEffectDurations() {
+        return null;
     }
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {
@@ -127,7 +132,7 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         }
         if (this.areEffectsEnabled()) {
             IntStream.range(0, this.negative.getNegativeEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), this.getApplyAmplifierLevels().get(potionID), BAD)
+                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), this.getApplyEffectLevels().get(potionID), BAD)
             );
         }
         return true;

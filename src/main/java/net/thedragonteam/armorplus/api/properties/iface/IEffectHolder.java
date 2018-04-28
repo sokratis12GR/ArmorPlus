@@ -20,7 +20,11 @@ public interface IEffectHolder {
     /**
      * @return A list of the amplifier levels of the given effects provided by {@link #getApplyEffectNames()}
      */
-    default List<Integer> getApplyAmplifierLevels() {
+    default List<Integer> getApplyEffectLevels() {
+        return new ArrayList<>();
+    }
+
+    default List<Integer> getApplyEffectDurations(){
         return new ArrayList<>();
     }
 

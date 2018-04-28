@@ -109,7 +109,7 @@ public final class ToolTipUtils {
             }
             if (negative.isEnabled()) {
                 String[] negativeEffects = negative.getNegativeEffects();
-                int[] effectLevels = negative.getNegativeEffectsAmplifier();
+                int[] effectLevels = negative.getNegativeEffectLevels();
                 int colorIndex = 1;
                 for (int i = 0; i < negativeEffects.length; i++) {
                     if (negativeEffects[i].contains("empty")) {

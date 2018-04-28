@@ -17,7 +17,7 @@ public class ArmorAbilityProperties {
     }
 
     public ArmorAbilityProperties(String ability, int abilityLevel) {
-        this(new AbilityProviderProperty(ability, abilityLevel));
+        this(new AbilityProviderProperty(ability, abilityLevel, 12));
     }
 
     public ArmorAbilityProperties(String cancelledAbility, String appliedAbility) {
@@ -25,7 +25,7 @@ public class ArmorAbilityProperties {
     }
 
     public ArmorAbilityProperties(String cancelledAbility, String appliedAbility, int abilityLevel) {
-        this(new AbilityCancellerProperty(cancelledAbility), new AbilityProviderProperty(appliedAbility, abilityLevel));
+        this(new AbilityCancellerProperty(cancelledAbility), new AbilityProviderProperty(appliedAbility, abilityLevel, 12));
     }
 
     public ArmorAbilityProperties(AbilityProviderProperty abilityProvider) {
