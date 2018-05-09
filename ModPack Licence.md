@@ -2,7 +2,7 @@
 
 Q: Am I allowed to use this mod in my Modpack ?
 
-A: Yes but you *should* follow the instructions below.
+A: **Yes**, but you *should* follow the instructions below.
 
 ### Public Modpacks
 
