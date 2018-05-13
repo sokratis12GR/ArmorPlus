@@ -74,8 +74,8 @@
     "1.11.2-10.5.2.3": "Added the ability to enable/disable energy items via config and updated ru_ru.lang",
     "1.11.2-10.8.0.1": "Improved a few bits of code here and there, hopefully improves the performance a bit, now requires TheDragonLib 1.11.2-3.3.0"
   },
- "1.12.2": {
- 	"1.12.2-11.8.0.26-beta": "Releases are now beta, Updated to 1.12.2, Workbenchs ar back, and MANY MANY other change since last changelog, please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
- 	"1.12.2-11.13.0.40": "Many changes since last changelog, finally an actual release. Please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
- }
+  "1.12.2": {
+    "1.12.2-11.8.0.26-beta": "Releases are now beta, Updated to 1.12.2, Workbenchs ar back, and MANY MANY other change since last changelog, please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
+    "1.12.2-11.12.0.40": "Many changes since last changelog, finally a release. Please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
+  }
 }
