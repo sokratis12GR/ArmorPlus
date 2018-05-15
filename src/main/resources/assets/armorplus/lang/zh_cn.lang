@@ -9,6 +9,12 @@ itemGroup.armorplus.tesla=ArmorPlus|Tesla
 itemGroup.armorplus.rf=ArmorPlus|RF
 itemGroup.armorplus.tinkers=ArmorPlus|匠魂
 
+# Sound Events
+armorplus.subtitle.trap_triggered=陷阱触发
+
+# Status
+status.armorplus.tgotg.gained_item=你得到了：%s [%s]
+
 #GuiArmorPlusInfo
 gui.armorplus.info.text_line_heading=ArmorPlus 信息
 gui.armorplus.info.text_line_one=ArmorPlus 的合成默认为
@@ -19,16 +25,17 @@ gui.armorplus.info.text_line_five=将 `I:Recipe:1` 改为 `I:Recipe:0`。
 gui.armorplus.info.text_line_six=当前模式：`I:Recipe: %s`。
 
 #CommandInfoText
-command.armorplus.info_line_one=%s[%s (%s)，作者%s sokratis12GR (TheDragonTeam)]
-command.armorplus.info_line_two=%s[%s，感谢你使用 %s]
-command.armorplus.info_line_three=%s[modid: %s]
-command.armorplus.info_line_four=%s[Minecraft 版本：%s]
-command.armorplus.info_line_five=%s[ArmorPlus 合成难度：%s]
-command.armorplus.info_line_six=%s[Recipes] 请使用指令 /armorplus wiki
-command.armorplus.info_line_seven=%s[Discord] 请使用指令 /armorplus discord
+command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
+command.armorplus.info_line_one.part_two.text=作者%s sokratis12GR (TheDragonTeam)
+command.armorplus.info_line_two.text=%s[%s，感谢你使用 %s]
+command.armorplus.info_line_three.text=%s[modid: %s]
+command.armorplus.info_line_four.text=%s[Minecraft 版本：%s]
+command.armorplus.info_line_five.text=%s[ArmorPlus 合成难度：%s]
+command.armorplus.info_line_six.text=%s[Recipes] 请使用指令 /armorplus wiki
+command.armorplus.info_line_seven.text=%s[Discord] 请使用指令 /armorplus discord
 
 #Enchantmnets
-enchantment.armorplus.life_steal=Life Steal
+enchantment.armorplus.life_steal=嗜血
 enchantment.armorplus.life_steal.desc=吸取被攻击目标的生命值，并用来回复你的生命值
 enchantment.armorplus.furious=暴怒
 enchantment.armorplus.furious.desc=在你攻击时，你会暴躁起来，相应的，你的力量和速度会有所提升。
@@ -54,18 +61,6 @@ container.armorplus.lava_infuser=熔岩灌注器
 tooltip.shift.showinfo.text_one=按下
 tooltip.shift.showinfo.text_two=获取更多信息。
 
-##RFTooltip
-tooltip.rf.showinfo=按下 %s%s%s 获取更多信息。
-tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=能耗：%s RF/方块
-tooltip.rf.cost.hit=能耗：%s RF/单次攻击
-
-##TeslaTooltip
-tooltip.tesla.showinfo.text_one=按下 %s%s%s 获取更多信息。
-tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=能耗：%s Tesla/方块
-tooltip.tesla.cost.hit=能耗：%s Tesla/单次攻击
-
 #TiC
 modifier.firestorm.name=火焰风暴
 modifier.firestorm.desc=§o真正的超新星！§r\n火焰伤害加成，燃烧吧我的敌人们。
@@ -73,10 +68,11 @@ modifier.firestorm.extra=火焰伤害：+%s
 modifier.firestorm.extra2=燃烧时间：%s 秒
 modifier.ultimatemod.name=扩展插槽
 modifier.ultimatemod.desc=增加一个强化槽
-material.lava_crystal.name=熔岩水晶
+material.infused_lava_crystal.name=充能熔岩水晶
 material.compressed_obsidian.name=压缩黑曜石
+material.lava_infused_obsidian.name=熔岩黑曜石
 
-﻿#Tile
+#Tile
 tile.armorplus.block_energy_creative.name=创造能量单元
 
 #Commands
@@ -122,7 +118,7 @@ gui.jei.category.armorplus.infusing.fuel.smeltCount=灌注 %s 物品
 gui.jei.category.armorplus.infusing.fuel.burnTime=燃料时间：%s
 
 #BOOKS
-item.armorplus.book.name=ArmorPlus 指北
+item.armorplus.book.name=ArmorPlus 手册
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus 配置
@@ -254,6 +250,8 @@ item.armorplus.dev_item.name=NBT物品
 #item.armorplus.beam.name=Beam
 #item.armorplus.twitch.name=Twitch
 item.armorplus.gui_tester.name=GUI测试工具
+#item.armorplus.btm_moon=.nameBTM Moon
+#item.armorplus.m1jordan.name=M1Jordan
 
 #Items
 item.armorplus.material_chainmail.name=锁甲板材
@@ -326,7 +324,21 @@ tile.armorplus.purple_stone_brick_corner.name=紫色石砖拐角
 tile.armorplus.purple_stone_brick_wall.name=紫色石砖墙
 tile.armorplus.lava_infuser.name=熔岩灌注器
 tile.armorplus.lava_infuser_infusing.name=熔岩灌注器（工作中）
+
 tile.armorplus.lava_infused_obsidian.name=熔岩黑曜石
+tile.armorplus.block_lava_crystal.name=熔岩水晶块
+tile.armorplus.block_infused_lava_crystal.name=充能熔岩水晶块
+tile.armorplus.block_compressed_lava_crystal.name=压缩熔岩水晶块
+tile.armorplus.block_compressed_infused_lava_crystal.name=压缩充能熔岩水晶块
+
+##Dungeon Blocks
+tile.armorplus.ender_stone.name=末影石（未完成）
+tile.armorplus.ender_stone_trap.name=末影石陷阱（未完成）
+tile.armorplus.ender_stone_bricks.name=末影石砖块（未完成）
+tile.armorplus.ender_glowstone.name=荧光末影石（未完成）
+tile.armorplus.ender_pillar.name=末影柱（未完成）
+tile.armorplus.ender_floor_1.name=末影石台阶（未完成）
+tile.armorplus.ender_floor_2.name=末影石台阶（未完成）
 
 #Swords
 item.armorplus.coal_sword.name=煤炭剑
@@ -386,57 +398,21 @@ item.armorplus.redstone_flux_shovel.name=红石通量锹
 
 #Entities
 entity.ender_dragon_zombie.name=末影龙僵尸
-entity.ice_golem.name=雪傀儡 (WIP)
+entity.ice_golem.name=雪傀儡（未完成，实验阶段）
+entity.overlord_of_the_guardians.name=管理者（未完成，实验阶段）
+entity.skeletal_king.name=骷髅王（未完成，实验阶段）
+entity.freeze_bomb.name=霜冻介质（未完成，远程，实验阶段）
+entity.wither_minion.name=凋灵仆从（未完成，远程，Spawner）
 
 #KeyBinds
 key.nightVision=终极护甲夜视开关
 key.categories.armorplus=ArmorPlus
 
-#Achievements
-achievement.armorplus.craft_coal_armor=蝙蝠一样的视觉！
-achievement.armorplus.craft_coal_armor.desc=合成任意一件煤炭护甲
-achievement.armorplus.craft_lapis_armor=不再溺水！
-achievement.armorplus.craft_lapis_armor.desc=合成任意一件青金石护甲
-achievement.armorplus.craft_redstone_armor=动如雷震！
-achievement.armorplus.craft_redstone_armor.desc=合成任意一件红石护甲
-achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
-achievement.armorplus.craft_emerald_armor.desc=合成任意一件绿宝石护甲
-achievement.armorplus.craft_obsidian_armor=坚不可摧！
-achievement.armorplus.craft_obsidian_armor.desc=合成任意一件黑曜石护甲
-achievement.armorplus.craft_lava_armor=OP！
-achievement.armorplus.craft_lava_armor.desc=合成任意一件熔岩护甲
-achievement.armorplus.craft_super_star_armor=超神！
-achievement.armorplus.craft_super_star_armor.desc=合成任意一件下界之星护甲
-achievement.armorplus.craft_ender_dragon_armor=末影龙的力量！
-achievement.armorplus.craft_ender_dragon_armor.desc=击杀末影龙并合成任意一件末影龙护甲
-achievement.armorplus.craft_guardian_armor=充满荆棘！
-achievement.armorplus.craft_guardian_armor.desc=合成任意一件守卫者护甲
-achievement.armorplus.craft_the_ultimate_armor=终极力量！
-achievement.armorplus.craft_the_ultimate_armor.desc=合成任意一件终极护甲
-achievement.armorplus.craft_cobalt_armor=匠魂护甲！
-achievement.armorplus.craft_cobalt_armor.desc=合成任意一件钴护甲
-achievement.armorplus.craft_ardite_armor=越强越好！
-achievement.armorplus.craft_ardite_armor.desc=合成任意一件阿迪特护甲
-achievement.armorplus.craft_manyullyn_armor=匠魂护甲之神！
-achievement.armorplus.craft_manyullyn_armor.desc=合成任意一件玛玉灵护甲
-achievement.armorplus.craft_pig_iron_armor=Oink!
-achievement.armorplus.craft_pig_iron_armor.desc=合成任意一件生铁护甲
-achievement.armorplus.craft_knight_slime_armor=闪耀！
-achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件史莱姆骑士护甲
-achievement.armorplus.craft_slime_armor=我跳跳跳！
-achievement.armorplus.craft_slime_armor.desc=合成任意一件史莱姆护甲
-achievement.armorplus.craft_chicken_armor=是时候跑起来了！
-achievement.armorplus.craft_chicken_armor.desc=合成任意一件鸡护甲
-achievement.armorplus.craft_workbench=欢迎使用 ArmorPlus！
-achievement.armorplus.craft_workbench.desc=合成 ArmorPlus 的工作台
-achievement.armorplus.craft_high_tech_bench=更加复杂
-achievement.armorplus.craft_high_tech_bench.desc=合成 ArmorPlus 的高科工作台
-achievement.armorplus.craft_ulti_tech_bench=终极强化
-achievement.armorplus.craft_ulti_tech_bench.desc=合成 ArmorPlus 的终极工作台
-achievement.armorplus.craft_champion_bench=只为冠军准备
-achievement.armorplus.craft_champion_bench.desc=合成 ArmorPlus 的冠军工作台
-achievement.armorplus.armorplus=sokratis12GR
-achievement.armorplus.armorplus.desc=制作了 ArmorPlus
+#ArmorPlus Effects
+effect.armorplus.empty.name=空
+effect.armorplus.empty=空
+armorplus.empty.name=空
+armorplus.empty=空
 
 ##############
 # Deprecated #
@@ -471,8 +447,48 @@ achievement.armorplus.armorplus.desc=制作了 ArmorPlus
 #effect.unluck.name=霉运
 #effect.levitation.name=飘浮
 
-#ArmorPlus Effects
-effect.armorplus.empty.name=空
-effect.armorplus.empty=空
-armorplus.empty.name=空
-armorplus.empty=空
+#Achievements
+achievement.armorplus.craft_coal_armor=音波探测！
+achievement.armorplus.craft_coal_armor.desc=合成任意一件煤炭护甲
+achievement.armorplus.craft_lapis_armor=不再溺水！
+achievement.armorplus.craft_lapis_armor.desc=合成任意一件青金石护甲
+achievement.armorplus.craft_redstone_armor=动如雷震！
+achievement.armorplus.craft_redstone_armor.desc=合成任意一件红石护甲
+achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
+achievement.armorplus.craft_emerald_armor.desc=合成任意一件绿宝石护甲
+achievement.armorplus.craft_obsidian_armor=坚不可摧！
+achievement.armorplus.craft_obsidian_armor.desc=合成任意一件黑曜石护甲
+achievement.armorplus.craft_lava_armor=OP！
+achievement.armorplus.craft_lava_armor.desc=合成任意一件熔岩护甲
+achievement.armorplus.craft_super_star_armor=超神！
+achievement.armorplus.craft_super_star_armor.desc=合成任意一件下界之星护甲
+achievement.armorplus.craft_ender_dragon_armor=龙魂耀世！
+achievement.armorplus.craft_ender_dragon_armor.desc=击杀末影龙并合成任意一件末影龙护甲
+achievement.armorplus.craft_guardian_armor=充满荆棘！
+achievement.armorplus.craft_guardian_armor.desc=合成任意一件守卫者护甲
+achievement.armorplus.craft_the_ultimate_armor=终极力量！
+achievement.armorplus.craft_the_ultimate_armor.desc=合成任意一件终极护甲
+achievement.armorplus.craft_cobalt_armor=匠魂护甲！
+achievement.armorplus.craft_cobalt_armor.desc=合成任意一件钴护甲
+achievement.armorplus.craft_ardite_armor=越强越好！
+achievement.armorplus.craft_ardite_armor.desc=合成任意一件阿迪特护甲
+achievement.armorplus.craft_manyullyn_armor=匠魂护甲之神！
+achievement.armorplus.craft_manyullyn_armor.desc=合成任意一件玛玉灵护甲
+achievement.armorplus.craft_pig_iron_armor=Oink!
+achievement.armorplus.craft_pig_iron_armor.desc=合成任意一件生铁护甲
+achievement.armorplus.craft_knight_slime_armor=闪耀！
+achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件史莱姆骑士护甲
+achievement.armorplus.craft_slime_armor=我跳跳跳！
+achievement.armorplus.craft_slime_armor.desc=合成任意一件史莱姆护甲
+achievement.armorplus.craft_chicken_armor=是时候跑起来了！
+achievement.armorplus.craft_chicken_armor.desc=合成任意一件鸡护甲
+achievement.armorplus.craft_workbench=欢迎使用 ArmorPlus！
+achievement.armorplus.craft_workbench.desc=合成 ArmorPlus 的工作台
+achievement.armorplus.craft_high_tech_bench=更加复杂
+achievement.armorplus.craft_high_tech_bench.desc=合成 ArmorPlus 的高科工作台
+achievement.armorplus.craft_ulti_tech_bench=终极强化
+achievement.armorplus.craft_ulti_tech_bench.desc=合成 ArmorPlus 的终极工作台
+achievement.armorplus.craft_champion_bench=只为冠军准备
+achievement.armorplus.craft_champion_bench.desc=合成 ArmorPlus 的冠军工作台
+achievement.armorplus.armorplus=sokratis12GR
+achievement.armorplus.armorplus.desc=制作了 ArmorPlus
