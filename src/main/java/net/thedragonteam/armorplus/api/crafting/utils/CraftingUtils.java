@@ -47,7 +47,7 @@ public class CraftingUtils {
             ItemStack itemstack = ItemStack.EMPTY;
 
             if (recipeComponents[secondary] instanceof Item) {
-                itemstack =getItemStack(recipeComponents[secondary]);
+                itemstack = getItemStack(recipeComponents[secondary]);
             } else if (recipeComponents[secondary] instanceof Block) {
                 itemstack = getItemStack(recipeComponents[secondary], 1, OreDictionary.WILDCARD_VALUE);
             } else if (recipeComponents[secondary] instanceof ItemStack) {
@@ -67,9 +67,9 @@ public class CraftingUtils {
     }
 
     public static NonNullList<ItemStack> getRemainingItems(List<IRecipe> recipes, InventoryCraftingImproved craftMatrix, World worldIn) {
-        for (IRecipe irecipe : recipes) {
-            if (irecipe.matches(craftMatrix, worldIn)) {
-                return irecipe.getRemainingItems(craftMatrix);
+        for (IRecipe recipe : recipes) {
+            if (recipe.matches(craftMatrix, worldIn)) {
+                return recipe.getRemainingItems(craftMatrix);
             }
         }
 
@@ -80,24 +80,24 @@ public class CraftingUtils {
         return nonnulllist;
     }
 
-    public static void onTake(EntityPlayer player, InventoryCraftingImproved craftMatrix, NonNullList<ItemStack> nonnulllist) {
-        for (int i = 0; i < nonnulllist.size(); ++i) {
-            ItemStack itemstack = craftMatrix.getStackInSlot(i);
-            ItemStack itemstack1 = nonnulllist.get(i);
+    public static void onTake(EntityPlayer player, InventoryCraftingImproved craftMatrix, NonNullList<ItemStack> input) {
+        for (int i = 0; i < input.size(); ++i) {
+            ItemStack slotStack = craftMatrix.getStackInSlot(i);
+            ItemStack inputStack = input.get(i);
 
-            if (!itemstack.isEmpty()) {
+            if (!slotStack.isEmpty()) {
                 craftMatrix.decrStackSize(i, 1);
-                itemstack = craftMatrix.getStackInSlot(i);
+                slotStack = craftMatrix.getStackInSlot(i);
             }
 
-            if (!itemstack1.isEmpty()) {
-                if (itemstack.isEmpty()) {
-                    craftMatrix.setInventorySlotContents(i, itemstack1);
-                } else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1)) {
-                    itemstack1.grow(itemstack.getCount());
-                    craftMatrix.setInventorySlotContents(i, itemstack1);
-                } else if (!player.inventory.addItemStackToInventory(itemstack1)) {
-                    player.dropItem(itemstack1, false);
+            if (!inputStack.isEmpty()) {
+                if (slotStack.isEmpty()) {
+                    craftMatrix.setInventorySlotContents(i, inputStack);
+                } else if (ItemStack.areItemsEqual(slotStack, inputStack) && ItemStack.areItemStackTagsEqual(slotStack, inputStack)) {
+                    inputStack.grow(slotStack.getCount());
+                    craftMatrix.setInventorySlotContents(i, inputStack);
+                } else if (!player.inventory.addItemStackToInventory(inputStack)) {
+                    player.dropItem(inputStack, false);
                 }
             }
         }

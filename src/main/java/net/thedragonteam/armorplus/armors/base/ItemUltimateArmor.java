@@ -11,6 +11,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerCapabilities;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
@@ -27,7 +28,6 @@ import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.registry.ModPotions;
 import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.Utils;
-import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,8 +47,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.*;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
-import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
-import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -78,24 +77,25 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         ItemStack legs = player.getItemStackFromSlot(LEGS);
         ItemStack feet = player.getItemStackFromSlot(FEET);
         Armor armor = ultimate.armor;
+        PlayerCapabilities caps = player.capabilities;
         if (enableFlightAbility) {
             if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings &&
-                feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator()) {
-                player.capabilities.allowFlying = true;
+                feet.getItem() == theUltimateBoots || caps.isCreativeMode || player.isSpectator()) {
+                caps.allowFlying = true;
             } else {
-                player.capabilities.isFlying = false;
-                player.capabilities.allowFlying = false;
+                caps.isFlying = false;
+                caps.allowFlying = false;
             }
         }
         if (armor.setInvincible) {
-            player.capabilities.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || player.capabilities.isCreativeMode || player.isSpectator();
+            caps.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || caps.isCreativeMode || player.isSpectator();
             addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
-        if (!head.isEmpty() && head.getItem() == theUltimateHelmet && !chest.isEmpty() && chest.getItem() == theUltimateChestplate && !legs.isEmpty() && legs.getItem() == theUltimateLeggings && !feet.isEmpty() && feet.getItem() == theUltimateBoots) {
+        if (isSame(head, theUltimateHelmet) && isSame(chest, theUltimateChestplate) && isSame(legs, theUltimateLeggings) && isSame(feet, theUltimateBoots)) {
 
             IntStream.range(0, armor.addPotionEffects.length).forEach(potionID -> {
                 Potion potionEffect = getPotion(armor.addPotionEffects[potionID]);
-                if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
+                if (player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION) {
                     addPotion(player, potionEffect, convertToSeconds(armor.effectDurations[potionID]), armor.effectLevels[potionID], GOOD);
                 }
             });
@@ -139,7 +139,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
 
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add("\u00a79Question: \u00a7rAre you the chosen one ?");
-            tooltip.add("\u00a73Use: \u00a7rEquip The Full Set");
+            tooltip.add("\u00a7cRequires the full set equipped");
         } else {
             showInfo(tooltip, keyBindSneak, getValueByName(ultimate.armor.itemNameColor));
         }
@@ -154,7 +154,6 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         }
         if (ultimate.armor.setUnbreakable && !isUnbreakable) {
             Utils.setUnbreakable(stack);
-            LogHelper.info("Making The Ultimate Armor Unbreakable!");
         }
     }
 

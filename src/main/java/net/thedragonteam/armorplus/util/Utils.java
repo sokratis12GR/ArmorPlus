@@ -125,4 +125,8 @@ public final class Utils {
     public static boolean isArmorEmpty(ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots) {
         return (helmet.isEmpty() && chestplate.isEmpty() && leggings.isEmpty() && boots.isEmpty());
     }
+
+    public static boolean isSame(ItemStack stack, Item item) {
+        return !stack.isEmpty() && stack.getItem() == item;
+    }
 }

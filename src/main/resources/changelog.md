@@ -1,3 +1,8 @@
+ArmorPlus 1.12.2-11.13.0.40
+----------------------------
+
+* Version is now marked as release ("recommended").
+
 ArmorPlus 1.12.2-11.12.1.39-beta
 ----------------------------
 

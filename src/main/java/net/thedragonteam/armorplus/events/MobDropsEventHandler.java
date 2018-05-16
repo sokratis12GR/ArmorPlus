@@ -39,11 +39,11 @@ public class MobDropsEventHandler {
         int randomDrop = random.nextInt(max - min + 1) + min;
         if (event.getEntity() instanceof EntityDragon) {
             registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
-            registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[3]));
+            registerTrophyDrop(event, 3);
         }
         if (event.getEntity() instanceof EntityWither) {
             registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
-            registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[2]));
+            registerTrophyDrop(event, 2);
         }
         if (event.getEntity() instanceof EntityWitherSkeleton) {
             registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
@@ -53,11 +53,15 @@ public class MobDropsEventHandler {
         }
         if (event.getEntity() instanceof EntityElderGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
-            registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[1]));
+            registerTrophyDrop(event, 1);
         }
         if (event.getEntity() instanceof EntitySkeletalKing) {
-            registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[4]));
+            registerTrophyDrop(event, 4);
         }
+    }
+
+    private static void registerTrophyDrop(LivingDropsEvent event, int trophy) {
+        registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[trophy]));
     }
 
     private static void registerMobDrop(LivingDropsEvent event, boolean enableDrop, ItemStack drop) {

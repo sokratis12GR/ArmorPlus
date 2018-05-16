@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.blocks.lava;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -59,11 +60,11 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         keepInventory = true;
 
         if (active) {
-            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, lavaInfuserInfusing.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, getNeededState(lavaInfuserInfusing, iblockstate), 3);
+            worldIn.setBlockState(pos, getNeededState(lavaInfuserInfusing, iblockstate), 3);
         } else {
-            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, lavaInfuser.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, getNeededState(lavaInfuser, iblockstate), 3);
+            worldIn.setBlockState(pos, getNeededState(lavaInfuser, iblockstate), 3);
         }
 
         keepInventory = false;
@@ -72,6 +73,10 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
             tileentity.validate();
             worldIn.setTileEntity(pos, tileentity);
         }
+    }
+
+    public static IBlockState getNeededState(Block block, IBlockState other) {
+        return block.getDefaultState().withProperty(FACING, other.getValue(FACING));
     }
 
     @Override

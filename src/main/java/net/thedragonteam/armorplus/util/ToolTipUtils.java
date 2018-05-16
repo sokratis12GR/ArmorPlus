@@ -17,6 +17,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
@@ -77,14 +78,14 @@ public final class ToolTipUtils {
      */
     private static void abilitySorter(List<String> tooltip, List<String> abilities, List<Integer> amplifier, int colorIndex, boolean areFullSet) {
         addToolTip(tooltip, areFullSet ? "\u00a79Full set abilities" : "\u00a79Abilities");
-        for (int i = 0; i < abilities.size(); i++) {
-            if (abilities.get(i).contains("empty")) {
+        for (int abilityIndex = 0; abilityIndex < abilities.size(); abilityIndex++) {
+            if (abilities.get(abilityIndex).contains("empty")) {
                 continue;
             }
             List<String> localizedEffects = abilities.stream().map(PotionUtils::localizePotion).collect(toList());
             colorIndex++;
             TextFormatting abilityFormatting = TextFormatting.fromColorIndex(colorIndex % 15);
-            addToolTip(tooltip, String.format("%s%s %s", abilityFormatting, localizedEffects.get(i), generate(level(amplifier.get(i)))));
+            addToolTip(tooltip, format("%s%s %s", abilityFormatting, localizedEffects.get(abilityIndex), generate(level(amplifier.get(abilityIndex)))));
         }
     }
 
@@ -111,13 +112,13 @@ public final class ToolTipUtils {
                 String[] negativeEffects = negative.getNegativeEffects();
                 int[] effectLevels = negative.getNegativeEffectLevels();
                 int colorIndex = 1;
-                for (int i = 0; i < negativeEffects.length; i++) {
-                    if (negativeEffects[i].contains("empty")) {
+                for (int abilityIndex = 0; abilityIndex < negativeEffects.length; abilityIndex++) {
+                    if (negativeEffects[abilityIndex].contains("empty")) {
                         continue;
                     }
                     colorIndex++;
                     TextFormatting abilityFormatting = TextFormatting.fromColorIndex(colorIndex % 15);
-                    tooltip.add(String.format("%s%s %s", abilityFormatting, localizePotion(negativeEffects[i]), generate(effectLevels[i] + 1)));
+                    tooltip.add(format("%s%s %s", abilityFormatting, localizePotion(negativeEffects[abilityIndex]), generate(effectLevels[abilityIndex] + 1)));
                 }
             }
         } else {

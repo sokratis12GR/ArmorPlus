@@ -321,8 +321,6 @@ public class ModConfig {
 
             public class OriginArmor {
 
-                //       public Enchants enchants = new Enchants();
-
                 public OriginArmor(CombinedArmorProperties properties) {
                     this(properties, false);
                 }
@@ -343,15 +341,6 @@ public class ModConfig {
                     this.setUnbreakable = false;
                     this.enableOnWaterTouchDeBuff = aeowtdb;
                 }
-
-                //      public class Enchants {
-
-                //          @Comment({
-                //              "To add an entry, you gotta add a new line with I:\"<modid:enchantment>\"=<enchant_level>",
-                //              "Note vanilla enchantments can be added with just the use of I:<enchantment>=<enchant_level>"
-                //          })
-                //          public Map<String, Integer> enchantments = new HashMap<>();
-                //      }
 
                 @Comment({"Set the color name the armor will have"})
                 public String itemNameColor;

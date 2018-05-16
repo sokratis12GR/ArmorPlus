@@ -287,6 +287,11 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         return isNotEmpty(getItemStack(this.repairMaterial)) ? getItemStack(this.repairMaterial) : ItemStack.EMPTY;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return this.enableArmor;
+    }
+
     public ArmorMaterial getArmorMaterial() {
         return this.armorMaterial;
     }
@@ -332,11 +337,6 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     public void addEffects(EntityPlayer player, SpecialMaterial material, EntityEquipmentSlot slot, Item head, Item chestplate, Item legs, Item feet) {
         this.addPieceEffects(player, material, slot);
         this.addSetEffects(player, material, head, chestplate, legs, feet);
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.enableArmor;
     }
 
     public void addPieceEffects(EntityPlayer player, OriginMaterial material, EntityEquipmentSlot slot) {

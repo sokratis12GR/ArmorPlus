@@ -62,7 +62,6 @@ public class CategoryBase implements IRecipeCategory {
      *
      * @since JEI 4.5.0
      */
-
     @Override
     public String getModName() {
         return ArmorPlus.MODNAME;

@@ -85,36 +85,36 @@ public class BaseCraftingManager {
      * Adds a shaped recipe to the games recipe list.
      */
     public BaseShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
-        StringBuilder s = new StringBuilder();
+        StringBuilder shape = new StringBuilder();
         int index = 0, width = 0, height = 0;
 
         if (recipeComponents[index] instanceof String[]) {
-            String[] astring = (String[]) recipeComponents[index++];
+            String[] components = (String[]) recipeComponents[index++];
 
-            for (String s2 : astring) {
+            for (String component : components) {
                 ++height;
-                width = s2.length();
-                s.append(s2);
+                width = component.length();
+                shape.append(component);
             }
         } else {
             while (recipeComponents[index] instanceof String) {
-                String s1 = (String) recipeComponents[index++];
+                String components = (String) recipeComponents[index++];
                 ++height;
-                width = s1.length();
-                s.append(s1);
+                width = components.length();
+                shape.append(components);
             }
         }
 
         Map<Character, ItemStack> map = CraftingUtils.getCharacterItemStackMap(index, recipeComponents);
 
-        NonNullList<ItemStack> aitemstack = NonNullList.withSize(width * height, ItemStack.EMPTY);
+        NonNullList<ItemStack> recipeShape = NonNullList.withSize(width * height, ItemStack.EMPTY);
 
         IntStream.range(0, width * height).forEachOrdered(l -> {
-            char c0 = s.charAt(l);
-            aitemstack.set(l, map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY);
+            char c0 = shape.charAt(l);
+            recipeShape.set(l, map.containsKey(c0) ? map.get(c0).copy() : ItemStack.EMPTY);
         });
 
-        BaseShapedRecipe shapedrecipes = new BaseShapedRecipe(xy, width, height, aitemstack, stack);
+        BaseShapedRecipe shapedrecipes = new BaseShapedRecipe(xy, width, height, recipeShape, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }

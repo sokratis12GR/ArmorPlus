@@ -43,15 +43,15 @@ public class ShapedRecipeUtils {
             for (int y = 0; y < inv.getHeight(); ++y) {
                 int subX = x - startX;
                 int subY = y - startY;
-                ItemStack itemstack = ItemStack.EMPTY;
+                ItemStack stack = ItemStack.EMPTY;
 
                 if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-                    itemstack = isMirrored ? input.get(width - subX - 1 + subY * width) : input.get(subX + subY * width);
+                    stack = isMirrored ? input.get(width - subX - 1 + subY * width) : input.get(subX + subY * width);
                 }
 
-                ItemStack itemstack1 = inv.getStackInRowAndColumn(x, y);
+                ItemStack slotStack = inv.getStackInRowAndColumn(x, y);
 
-                if ((!itemstack1.isEmpty() || !itemstack.isEmpty()) && (itemstack1.isEmpty() != itemstack.isEmpty() || itemstack.getItem() != itemstack1.getItem() || itemstack.getMetadata() != OreDictionary.WILDCARD_VALUE && itemstack.getMetadata() != itemstack1.getMetadata())) {
+                if ((!slotStack.isEmpty() || !stack.isEmpty()) && (slotStack.isEmpty() != stack.isEmpty() || stack.getItem() != slotStack.getItem() || stack.getMetadata() != OreDictionary.WILDCARD_VALUE && stack.getMetadata() != slotStack.getMetadata())) {
                     return false;
                 }
             }

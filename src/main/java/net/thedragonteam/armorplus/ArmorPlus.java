@@ -50,27 +50,28 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 12;
+    public static final int MINOR = 13;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 1;
+    public static final int PATCH = 0;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 39;
+    public static final int BUILD = 40;
     /**
      * The ArmorPlus Version
      */
-    public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "-beta";
+    public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "";
     public static final String LIB_VERSION = "1.12.2-5.2.0";
     public static final String FORGE_VERSION = "14.23.1.2582";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
+  //  public static final String UPDATE_JSON = "https://download.nodecdn.net/containers/thedragonteam/armorplus-updater.json";
+    public static final String UPDATE_JSON = "https://raw.githubusercontent.com/TheDragonTeam/ArmorPlus/1.12/armorplus-updater.json";
     public static final String DEPEND = "required-after:forge@[" + FORGE_VERSION + ",);"
         + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
         + "after:mantle;"
