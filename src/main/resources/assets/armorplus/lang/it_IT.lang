@@ -72,7 +72,7 @@ material.infused_lava_crystal.name=Crystallo di lava infuso
 material.compressed_obsidian.name=Ossidiana compressa
 material.lava_infused_obsidian.name=Ossidiana infusa con la lava
 
-﻿#Tile
+#Tile
 tile.armorplus.block_energy_creative.name=Cella di energia creativa
 
 #Commands
@@ -179,7 +179,7 @@ item.armorplus.super_star_helmet.name=Elmo della Super Stella
 item.armorplus.super_star_chestplate.name=Corazza della Super Stella
 item.armorplus.super_star_leggings.name=Gambali della Super Stella
 item.armorplus.super_star_boots.name=Stivali della Super Stella
------------------------------
+
 #EnderDragonArmor
 item.armorplus.ender_dragon_helmet.name=Elmo del drago dell'End
 item.armorplus.ender_dragon_chestplate.name=Corazza del drago dell'End

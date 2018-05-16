@@ -1,93 +1,87 @@
 #es_UY.lang File
 
-#CREATIVE TAB
-itemGroup.armorplus.creativeTab=ArmaduraMás
-
 #CONFIG GUI
 gui.armorplus.config.title=Configuración de ArmaduraMás
 
 #CoalArmor
-item.CoalHelmet.name=Casco de Carbón
-item.CoalChestplate.name=Peto de Carbón
-item.CoalLeggings.name=Grebas de Carbón
-item.CoalBoots.name=Botas de Carbón
+item.armorplus.coal_helmet.name=Casco de Carbón
+item.armorplus.coal_chestplate.name=Peto de Carbón
+item.armorplus.coal_leggings.name=Grebas de Carbón
+item.armorplus.coal_boots.name=Botas de Carbón
 
 #LapisArmor
-item.LapisHelmet.name=Casco de Lapislázuli
-item.LapisChestplate.name=Peto de Lapislázuli
-item.LapisLeggings.name=Grebas de Lapislázuli
-item.LapisBoots.name=Botas de Lapislázuli
+item.armorplus.lapis_helmet.name=Casco de Lapislázuli
+item.armorplus.lapis_chestplate.name=Peto de Lapislázuli
+item.armorplus.lapis_leggings.name=Grebas de Lapislázuli
+item.armorplus.lapis_boots.name=Botas de Lapislázuli
 
 #RedstoneArmor
-item.RedstoneHelmet.name=Casco de Redstone
-item.RedstoneChestplate.name=Peto de Redstone
-item.RedstoneLeggings.name=Grebas de Redstone
-item.RedstoneBoots.name=Botas de Redstone
+item.armorplus.redstone_helmet.name=Casco de Redstone
+item.armorplus.redstone_chestplate.name=Peto de Redstone
+item.armorplus.redstone_leggings.name=Grebas de Redstone
+item.armorplus.redstone_boots.name=Botas de Redstone
 
 #EmeraldArmor
-item.EmeraldHelmet.name=Casco de Esmeralda
-item.EmeraldChestplate.name=Peto de Esmeralda
-item.EmeraldLeggings.name=Grebas de Esmeralda
-item.EmeraldBoots.name=Botas de Esmeralda
+item.armorplus.emerald_helmet.name=Casco de Esmeralda
+item.armorplus.emerald_chestplate.name=Peto de Esmeralda
+item.armorplus.emerald_leggings.name=Grebas de Esmeralda
+item.armorplus.emerald_boots.name=Botas de Esmeralda
 
 #ObsidianArmor
-item.ObsidianHelmet.name=Casco de Obsidiana
-item.ObsidianChestplate.name=Peto de Obsidiana
-item.ObsidianLeggings.name=Grebas de Obsidiana
-item.ObsidianBoots.name=Botas de Obsidiana
+item.armorplus.obsidian_helmet.name=Casco de Obsidiana
+item.armorplus.obsidian_chestplate.name=Peto de Obsidiana
+item.armorplus.obsidian_leggings.name=Grebas de Obsidiana
+item.armorplus.obsidian_boots.name=Botas de Obsidiana
 
 #LavaArmor
-item.LavaHelmet.name=Casco de Lava
-item.LavaChestplate.name=Peto de Lava
-item.LavaLeggings.name=Grebas de Lava
-item.LavaBoots.name=Botas de Lava
+item.armorplus.infused_lava_helmet.name=Casco de Lava
+item.armorplus.infused_lava_chestplate.name=Peto de Lava
+item.armorplus.infused_lava_leggings.name=Grebas de Lava
+item.armorplus.infused_lava_boots.name=Botas de Lava
 
 #SuperStarArmor
-item.SuperStarHelmet.name=Casco de Estrella Estupenda
-item.SuperStarChestplate.name=Peto de Estrella Estupenda
-item.SuperStarLeggings.name=Grebas de Estrella Estupenda
-item.SuperStarBoots.name=Botas de Estrella Estupenda
+item.armorplus.super_star_helmet.name=Casco de Estrella Estupenda
+item.armorplus.super_star_chestplate.name=Peto de Estrella Estupenda
+item.armorplus.super_star_leggings.name=Grebas de Estrella Estupenda
+item.armorplus.super_star_boots.name=Botas de Estrella Estupenda
 
 #EnderDragon Armor
-item.EnderDragonScale.name=Escama del Dragón del End
-item.EnderDragonHelmet.name=Casco del Dragón del End
-item.EnderDragonChestplate.name=Peto del Dragón del End
-item.EnderDragonLeggings.name=Grebas del Dragón del End
-item.EnderDragonBoots.name=Botas del Dragón del End
+item.armorplus.material_ender_dragon_scale.name=Escama del Dragón del End
+item.armorplus.ender_dragon_helmet.name=Casco del Dragón del End
+item.armorplus.ender_dragon_chestplate.name=Peto del Dragón del End
+item.armorplus.ender_dragon_leggings.name=Grebas del Dragón del End
+item.armorplus.ender_dragon_boots.name=Botas del Dragón del End
 
 #Guardian Armor
-item.GuardianHelmet.name=Casco del Guardián
-item.GuardianChestplate.name=Peto del Guardián
-item.GuardianLeggings.name=Grebas del Guardián
-item.GuardianBoots.name=Botas del Guardián
-
-#ArmorWorkshop
-tile.ArmorWorkshop.name=Taller de Armadura (WIP)
+item.armorplus.guardian_helmet.name=Casco del Guardián
+item.armorplus.guardian_chestplate.name=Peto del Guardián
+item.armorplus.guardian_leggings.name=Grebas del Guardián
+item.armorplus.guardian_boots.name=Botas del Guardián
 
 #TheUltimateArmor
-item.TheUltimateHelmet.name=El Casco Supremo
-item.TheUltimateChestplate.name=El Peto Supremo
-item.TheUltimateLeggings.name=Las Grebas Supremas
-item.TheUltimateBoots.name=Las Botas Supremas
+item.armorplus.the_ultimate_helmet.name=El Casco Supremo
+item.armorplus.the_ultimate_chestplate.name=El Peto Supremo
+item.armorplus.the_ultimate_leggings.name=Las Grebas Supremas
+item.armorplus.the_ultimate_boots.name=Las Botas Supremas
 
 #Achievements
-achievement.armorplus.craftCoalArmor=La Visión De Una Murciélago
-achievement.armorplus.craftCoalArmor.desc=Crear una Pieza de Armadura de Carbón
-achievement.armorplus.craftLapisArmor=¡Nunca Ahugue de Nuevo!
-achievement.armorplus.craftLapisArmor.desc=Crear una Pieza de Armadura de Lapislázuli
-achievement.armorplus.craftRedstoneArmor=¡Rápido!
-achievement.armorplus.craftRedstoneArmor.desc=Crear una Pieza de Armadura de Redstone
-achievement.armorplus.craftEmeraldArmor=¡Blande Más Rápido!
-achievement.armorplus.craftEmeraldArmor.desc=Crear una Pieza de Armadura de Esmeralda
-achievement.armorplus.craftObsidianArmor=Indestructable!
-achievement.armorplus.craftObsidianArmor.desc=Crear una Pieza de Armadura de Obsidiana
-achievement.armorplus.craftLavaArmor=¡El Dominado!
-achievement.armorplus.craftLavaArmor.desc=Crear una Pieza de Armadura de Lava
-achievement.armorplus.craftSuperStarArmor=¡Divino!
-achievement.armorplus.craftSuperStarArmor.desc=Crear una Pieza de Armadura de Estrella Estupenda
-achievement.armorplus.craftEnderDragonArmor=¡El Poder del Dragón del End!
-achievement.armorplus.craftEnderDragonArmor.desc=Mortar el Dragón del End, y crear una Pieza de Armadura del Dragón del End
-achievement.armorplus.craftGuardianArmor=¡Lleno de Espinos!
-achievement.armorplus.craftGuardianArmor.desc=Crear una Pieza de Armadura de Guardián
-achievement.armorplus.craftTheUltimateArmor=¡El Poder Supremo!
-achievement.armorplus.craftTheUltimateArmor.desc=Crear una Pieza de Armadura Suprema
+achievement.armorplus.craft_coal_armor=La Visión De Una Murciélago
+achievement.armorplus.craft_coal_armor.desc=Crear una Pieza de Armadura de Carbón
+achievement.armorplus.craft_lapis_armor=¡Nunca Ahugue de Nuevo!
+achievement.armorplus.craft_lapis_armor.desc=Crear una Pieza de Armadura de Lapislázuli
+achievement.armorplus.craft_redstone_armor=¡Rápido!
+achievement.armorplus.craft_redstone_armor.desc=Crear una Pieza de Armadura de Redstone
+achievement.armorplus.craft_emerald_armor=¡Blande Más Rápido!
+achievement.armorplus.craft_emerald_armor.desc=Crear una Pieza de Armadura de Esmeralda
+achievement.armorplus.craft_obsidian_armor=Indestructable!
+achievement.armorplus.craft_obsidian_armor.desc=Crear una Pieza de Armadura de Obsidiana
+achievement.armorplus.craft_infused_lava_armor=¡El Dominado!
+achievement.armorplus.craft_infused_lava_armor.desc=Crear una Pieza de Armadura de Lava
+achievement.armorplus.craft_super_star_armor=¡Divino!
+achievement.armorplus.craft_super_star_armor.desc=Crear una Pieza de Armadura de Estrella Estupenda
+achievement.armorplus.craft_ender_dragon_armor=¡El Poder del Dragón del End!
+achievement.armorplus.craft_ender_dragon_armor.desc=Mortar el Dragón del End, y crear una Pieza de Armadura del Dragón del End
+achievement.armorplus.craft_guardian_armor=¡Lleno de Espinos!
+achievement.armorplus.craft_guardian_armor.desc=Crear una Pieza de Armadura de Guardián
+achievement.armorplus.craft_the_ultimate_armor=¡El Poder Supremo!
+achievement.armorplus.craft_the_ultimate_armor.desc=Crear una Pieza de Armadura Suprema

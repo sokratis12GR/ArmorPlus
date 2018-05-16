@@ -10,8 +10,8 @@ itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
 #Enchantmnets
-enchantment.life_steal=吸命
-enchantment.furious=激烈
+enchantment.armorplus.life_steal=吸命
+enchantment.armorplus.furious=激烈
 
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=コスメティック・ドラゴン
@@ -25,18 +25,6 @@ container.armorplus.inventory=インベントリ
 #Tooltip
 tooltip.shift.showinfo.text_one=%s%s%s を押すと詳細が表示されます
 
-##RFTooltip
-tooltip.rf.showinfo=%s%s%s を押すと詳細が表示されます
-tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=コスト: %s RF/block
-tooltip.rf.cost.hit=コスト: %s RF/hit
-
-##TeslaTooltip
-tooltip.tesla.showinfo.text_one=%s%s%s を押すと詳細が表示されます
-tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=コスト: %s Tesla/block
-tooltip.tesla.cost.hit=コスト: %s Tesla/hit
-
 #TiC
 modifier.firestorm.name=火属性乱流
 modifier.firestorm.desc=§oThe real Super Nova!§r\nBonus fire damage, sets your enemies on fire.
@@ -44,10 +32,10 @@ modifier.firestorm.extra=火属性ダメージ: +%s
 modifier.firestorm.extra2=火属性持続時間: %ss
 modifier.ultimatemod.name=拡張
 modifier.ultimatemod.desc=+1
-material.lava_crystal.name=溶岩水晶
+material.infused_lava_crystal.name=溶岩水晶
 material.compressed_obsidian.name=高密度黒曜石
 
-﻿#Tile
+#Tile
 tile.armorplus.block_energy_creative.name=Creative Power Cell
 
 #Commands
@@ -58,7 +46,6 @@ commands.error.404=コマンドが存在しません!
 commands.error.unknown=不明なコマンドです! helpコマンド: /armorplus help
 commands.error.perm=コマンドの実行許可がありません
 commands.success=実行しました
-commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
@@ -78,8 +65,7 @@ gui.jei.category.high_tech_bench=ArmorPlus 高性能作業台
 gui.jei.category.ulti_tech_bench=ArmorPlus 超高性能作業台
 
 #BOOKS
-item.armorplus.armorplus_book.name=ArmorPlus 解説書
-item.armorplus.armorplus_info_book.name=ArmorPlus 詳細解説書
+item.armorplus.book.name=ArmorPlus 解説書
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus 設定
@@ -115,10 +101,10 @@ item.armorplus.obsidian_leggings.name=黒曜石のレギンス
 item.armorplus.obsidian_boots.name=黒曜石のブーツ
 
 #LavaArmor
-item.armorplus.lava_helmet.name=溶岩ヘルメット
-item.armorplus.lava_chestplate.name=溶岩チェストプレート
-item.armorplus.lava_leggings.name=溶岩レギンス
-item.armorplus.lava_boots.name=溶岩ブーツ
+item.armorplus.infused_lava_helmet.name=溶岩ヘルメット
+item.armorplus.infused_lava_chestplate.name=溶岩チェストプレート
+item.armorplus.infused_lava_leggings.name=溶岩レギンス
+item.armorplus.infused_lava_boots.name=溶岩ブーツ
 
 #SuperStarArmor
 item.armorplus.super_star_helmet.name=スーパースターヘルメット
@@ -139,34 +125,10 @@ item.armorplus.guardian_leggings.name=ガーディアンレギンス
 item.armorplus.guardian_boots.name=ガーディアンブーツ
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet_full.name=究極のヘルメット
-item.armorplus.the_ultimate_chestplate_full.name=究極のチェストプレート
-item.armorplus.the_ultimate_leggings_full.name=究極のレギンス
-item.armorplus.the_ultimate_boots_full.name=究極のブーツ
-
-#ReinforcedIronArmor
-item.armorplus.reinforced_iron_helmet.name=強化鉄のヘルメット
-item.armorplus.reinforced_iron_chestplate.name=強化鉄のチェストプレート
-item.armorplus.reinforced_iron_leggings.name=強化鉄のレギンス
-item.armorplus.reinforced_iron_boots.name=強化鉄のブーツ
-
-#ReinforcedGoldenArmor
-item.armorplus.reinforced_golden_helmet.name=強化金のヘルメット
-item.armorplus.reinforced_golden_chestplate.name=強化金のチェストプレート
-item.armorplus.reinforced_golden_leggings.name=強化金のレギンス
-item.armorplus.reinforced_golden_boots.name=強化金のブーツ
-
-#ReinforcedDiamondArmor
-item.armorplus.reinforced_diamond_helmet.name=強化ダイヤモンドのヘルメット
-item.armorplus.reinforced_diamond_chestplate.name=強化ダイヤモンドのチェストプレート
-item.armorplus.reinforced_diamond_leggings.name=強化ダイヤモンドのレギンス
-item.armorplus.reinforced_diamond_boots.name=強化ダイヤモンドのブーツ
-
-#ReinforcedChainArmor
-item.armorplus.reinforced_chain_helmet.name=強化チェーンのヘルメット
-item.armorplus.reinforced_chain_chestplate.name=化チェーンのチェストプレート
-item.armorplus.reinforced_chain_leggings.name=化チェーンのレギンス
-item.armorplus.reinforced_chain_boots.name=化チェーンのブーツ
+item.armorplus.the_ultimate_helmet.name=究極のヘルメット
+item.armorplus.the_ultimate_chestplate.name=究極のチェストプレート
+item.armorplus.the_ultimate_leggings.name=究極のレギンス
+item.armorplus.the_ultimate_boots.name=究極のブーツ
 
 #CobaltArmor
 item.armorplus.cobalt_helmet.name=銅のヘルメット
@@ -237,10 +199,10 @@ item.armorplus.twitch.name=Twitch
 item.armorplus.gui_tester.name=GUI Tester
 
 #Items
-item.armorplus.chainmail.name=チェーンメール
+item.armorplus.material_chainmail.name=チェーンメール
 item.armorplus.reinforcing_material.name=強化マテリアル
-item.armorplus.lava_crystal_normal.name=溶岩水晶
-item.armorplus.lava_crystal_charged.name=帯電溶岩水晶
+item.armorplus.lava_crystal.name=溶岩水晶
+item.armorplus.lava_crystal_infused.name=帯電溶岩水晶
 item.armorplus.steel_ingot.name=鋼鉄インゴット
 item.armorplus.electrical_ingot.name=電鋼インゴット
 
@@ -248,23 +210,23 @@ item.armorplus.electrical_ingot.name=電鋼インゴット
 item.armorplus.redstone_apple.name=レッドストーンりんご
 
 #Special Items
-item.armorplus.wither_bone.name=ウィザーの骨
-item.armorplus.the_ultimate_material.name=究極の素材
-item.armorplus.ender_dragon_scale.name=エンダードラゴンの革
-item.armorplus.guardian_scale.name=ガーディアンの革
+item.armorplus.material_wither_bone.name=ウィザーの骨
+item.armorplus.material_the_ultimate_material.name=究極の素材
+item.armorplus.material_ender_dragon_scale.name=エンダードラゴンの革
+item.armorplus.material_guardian_scale.name=ガーディアンの革
 item.armorplus.the_gift_of_the_gods.name=神々の贈り物
-item.armorplus.the_ultimate_helmet_left.name=究極のヘルメット部材(左)
-item.armorplus.the_ultimate_helmet_middle.name=究極のヘルメット部材(中央)
-item.armorplus.the_ultimate_helmet_right.name=究極のヘルメット部材(右)
-item.armorplus.the_ultimate_chestplate_left.name=究極のチェストプレート部材(左)
-item.armorplus.the_ultimate_chestplate_middle.name=究極のチェストプレート部材(中央)
-item.armorplus.the_ultimate_chestplate_right.name=究極のチェストプレート部材(右)
-item.armorplus.the_ultimate_leggings_left.name=究極のレギンス部材(左)
-item.armorplus.the_ultimate_leggings_middle.name=究極のレギンス部材(中央)
-item.armorplus.the_ultimate_leggings_right.name=究極のレギンス部材(右)
-item.armorplus.the_ultimate_boots_left.name=究極のブーツ部材(左)
-item.armorplus.the_ultimate_boots_middle.name=究極のブーツ部材(中央)
-item.armorplus.the_ultimate_boots_right.name=究極のブーツ部材(右)
+item.armorplus.the_ultimate_part_helmet_left.name=究極のヘルメット部材(左)
+item.armorplus.the_ultimate_part_helmet_middle.name=究極のヘルメット部材(中央)
+item.armorplus.the_ultimate_part_helmet_right.name=究極のヘルメット部材(右)
+item.armorplus.the_ultimate_part_chestplate_left.name=究極のチェストプレート部材(左)
+item.armorplus.the_ultimate_part_chestplate_middle.name=究極のチェストプレート部材(中央)
+item.armorplus.the_ultimate_part_chestplate_right.name=究極のチェストプレート部材(右)
+item.armorplus.the_ultimate_part_leggings_left.name=究極のレギンス部材(左)
+item.armorplus.the_ultimate_part_leggings_middle.name=究極のレギンス部材(中央)
+item.armorplus.the_ultimate_part_leggings_right.name=究極のレギンス部材(右)
+item.armorplus.the_ultimate_part_boots_left.name=究極のブーツ部材(左)
+item.armorplus.the_ultimate_part_boots_middle.name=究極のブーツ部材(中央)
+item.armorplus.the_ultimate_part_boots_right.name=究極のブーツ部材(右)
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=高密度黒曜石
@@ -304,7 +266,7 @@ item.armorplus.lapis_sword.name=ラピスラズリの剣
 item.armorplus.redstone_sword.name=レッドストーンの剣
 item.armorplus.emerald_sword.name=エメラルドの剣
 item.armorplus.obsidian_sword.name=黒曜石の剣
-item.armorplus.lava_sword.name=溶岩の剣
+item.armorplus.infused_lava_sword.name=溶岩の剣
 item.armorplus.super_star_sword.name=スーパースターソード
 item.armorplus.guardian_sword.name=ガーディアンソード
 item.armorplus.ender_dragon_sword.name=エンダードラゴンの剣
@@ -315,7 +277,7 @@ item.armorplus.lapis_battle_axe.name=ラピスラズリのの戦闘斧
 item.armorplus.redstone_battle_axe.name=レッドストーンの戦闘斧
 item.armorplus.emerald_battle_axe.name=エメラルドの戦闘斧
 item.armorplus.obsidian_battle_axe.name=黒曜石の戦闘斧
-item.armorplus.lava_battle_axe.name=溶岩の戦闘斧
+item.armorplus.infused_lava_battle_axe.name=溶岩の戦闘斧
 item.armorplus.super_star_battle_axe.name=スーパースターバトルアックス
 item.armorplus.guardian_battle_axe.name=ガーディアンバトルアックス
 item.armorplus.ender_dragon_battle_axe.name=エンダードラゴンの戦闘斧
@@ -326,7 +288,7 @@ item.armorplus.lapis_bow.name=ラピスラズリの弓
 item.armorplus.redstone_bow.name=レッドストーンの弓
 item.armorplus.emerald_bow.name=エメラルドの弓
 item.armorplus.obsidian_bow.name=黒曜石の弓
-item.armorplus.lava_bow.name=溶岩の弓
+item.armorplus.infused_lava_bow.name=溶岩の弓
 item.armorplus.super_star_bow.name=スーパースターの弓
 item.armorplus.guardian_bow.name=ガーディアンの弓
 item.armorplus.ender_dragon_bow.name=エンダードラゴンの弓
@@ -335,7 +297,7 @@ item.armorplus.ender_dragon_bow.name=エンダードラゴンの弓
 item.armorplus.coal_arrow.name=石炭の矢
 item.armorplus.lapis_arrow.name=ラピスヤズリの矢
 item.armorplus.redstone_arrow.name=レッドストーンの矢
-item.armorplus.lava_arrow.name=溶岩の矢
+item.armorplus.infused_lava_arrow.name=溶岩の矢
 
 #TeslaItems
 item.armorplus.tesla_sword.name=テスラの剣
@@ -354,15 +316,11 @@ item.armorplus.redstone_flux_hoe.name=溶解レッドストーンの鍬
 item.armorplus.redstone_flux_shovel.name=溶解レッドストーンのシャベル
 
 #Entities
-entity.armorplus.ender_dragon_zombie.name=エンダードラゴンゾンビ
+entity.ender_dragon_zombie.name=エンダードラゴンゾンビ
 
 #KeyBinds
 key.nightVision=究極の防具セットにより、暗視モードに切り替わりました
 key.categories.armorplus=ArmorPlus
-
-#Spawners
-tile.armorplus.spawner_guardian.name=ガーディアン スポナー
-tile.armorplus.spawner_ender_dragon_zombie.name=エンダードラゴンゾンビ スポナー
 
 #Achievements
 achievement.armorplus.craft_coal_armor=暗視の効果!
@@ -375,8 +333,8 @@ achievement.armorplus.craft_emerald_armor=採掘速度上昇の効果!
 achievement.armorplus.craft_emerald_armor.desc=エメラルド防具を作成
 achievement.armorplus.craft_obsidian_armor=耐性の効果!
 achievement.armorplus.craft_obsidian_armor.desc=c黒曜石防具を作成
-achievement.armorplus.craft_lava_armor=攻撃力上昇の効果!
-achievement.armorplus.craft_lava_armor.desc=溶岩防具を作成
+achievement.armorplus.craft_infused_lava_armor=攻撃力上昇の効果!
+achievement.armorplus.craft_infused_lava_armor.desc=溶岩防具を作成
 achievement.armorplus.craft_super_star_armor=神の如し!
 achievement.armorplus.craft_super_star_armor.desc=スーパースター防具を作成
 achievement.armorplus.craft_ender_dragon_armor=エンダードラゴンの如し!
@@ -399,7 +357,5 @@ achievement.armorplus.craft_slime_armor=跳躍力上昇IIIの効果!
 achievement.armorplus.craft_slime_armor.desc=スライムナイトの防具を作成
 achievement.armorplus.craft_chicken_armor=移動速度上昇IIIの効果!
 achievement.armorplus.craft_chicken_armor.desc=鶏の防具を作成
-achievement.armorplus.craft_armor_forge=ArmorPlusへようこそ!
-achievement.armorplus.craft_armor_forge.desc=ArmorPlusからArmor Forgeを作成
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Created ArmorPlus

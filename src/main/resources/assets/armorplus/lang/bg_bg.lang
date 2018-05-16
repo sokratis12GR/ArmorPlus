@@ -1,74 +1,53 @@
 #bg_BG.lang File
 
-#CREATIVE TAB
-itemGroup.armorplus.creativeTab=ArmorPlus
-
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Конфигурация
 
 #CoalArmor
-item.CoalHelmet.name=Въглищен Шлем
-item.CoalChestplate.name=Въглищен Нагръдник
-item.CoalLeggings.name=Въглищени Панталони
-item.CoalBoots.name=Въглищени Ботуши
+item.armorplus.coal_helmet.name=Въглищен Шлем
+item.armorplus.coal_chestplate.name=Въглищен Нагръдник
+item.armorplus.coal_leggings.name=Въглищени Панталони
+item.armorplus.coal_boots.name=Въглищени Ботуши
 
 #LapisArmor
-item.LapisHelmet.name=Лазуриден Шлем
-item.LapisChestplate.name=Лазуриден Нагръдник
-item.LapisLeggings.name=Лазуридени Панталони
-item.LapisBoots.name=Лазуридени Ботуши
+item.armorplus.lapis_helmet.name=Лазуриден Шлем
+item.armorplus.lapis_chestplate.name=Лазуриден Нагръдник
+item.armorplus.lapis_leggings.name=Лазуридени Панталони
+item.armorplus.lapis_boots.name=Лазуридени Ботуши
 
 #RedstoneArmor
-item.RedstoneHelmet.name=Червен камък Шлем
-item.RedstoneChestplate.name=Червен камък Нагръдник
-item.RedstoneLeggings.name=Червен камък Панталони
-item.RedstoneBoots.name=Червен камък Ботуши
+item.armorplus.redstone_helmet.name=Червен камък Шлем
+item.armorplus.redstone_chestplate.name=Червен камък Нагръдник
+item.armorplus.redstone_leggings.name=Червен камък Панталони
+item.armorplus.redstone_boots.name=Червен камък Ботуши
 
 #EmeraldArmor
-item.EmeraldHelmet.name=Смарагден Шлем
-item.EmeraldChestplate.name=Смарагден Нагръдник
-item.EmeraldLeggings.name=Смарагдени Панталони
-item.EmeraldBoots.name=Смарагдени Ботуши
+item.armorplus.emerald_helmet.name=Смарагден Шлем
+item.armorplus.emerald_chestplate.name=Смарагден Нагръдник
+item.armorplus.emerald_leggings.name=Смарагдени Панталони
+item.armorplus.emerald_boots.name=Смарагдени Ботуши
 
 #ObsidianArmor
-item.ObsidianHelmet.name=Обсидиан Шлем
-item.ObsidianChestplate.name=Обсидиан Нагръдник
-item.ObsidianLeggings.name=Обсидиан Панталони
-item.ObsidianBoots.name=Обсидиан Ботуши
+item.armorplus.obsidian_helmet.name=Обсидиан Шлем
+item.armorplus.obsidian_chestplate.name=Обсидиан Нагръдник
+item.armorplus.obsidian_leggings.name=Обсидиан Панталони
+item.armorplus.obsidian_boots.name=Обсидиан Ботуши
 
 #LavaArmor
-item.LavaHelmet.name=Лава Шлем
-item.LavaChestplate.name=Лава Нагръдник
-item.LavaLeggings.name=Лава Панталони
-item.LavaBoots.name=Лава Ботуши
+item.armorplus.infused_lava_helmet.name=Лава Шлем
+item.armorplus.infused_lava_chestplate.name=Лава Нагръдник
+item.armorplus.infused_lava_leggings.name=Лава Панталони
+item.armorplus.infused_lava_boots.name=Лава Ботуши
 
 #SuperStarArmor
-item.SuperStarHelmet.name=Супер Звезден Шлем
-item.SuperStarChestplate.name=Супер Звезден Нагръдник
-item.SuperStarLeggings.name=Супер Звездени Панталони
-item.SuperStarBoots.name=Супер Звездени Ботуши
+item.armorplus.super_star_helmet.name=Супер Звезден Шлем
+item.armorplus.super_star_chestplate.name=Супер Звезден Нагръдник
+item.armorplus.super_star_leggings.name=Супер Звездени Панталони
+item.armorplus.super_star_boots.name=Супер Звездени Ботуши
 
 #EnderDragon Armor
-item.EnderDragonScale.name=Ендер Драгон Люспа
-item.EnderDragonHelmet.name=Ендер Драгон Шлем
-item.EnderDragonChestplate.name=Ендер Драгон Нагръдник
-item.EnderDragonLeggings.name=Ендер Драгон Панталони
-item.EnderDragonBoots.name=Ендер Драгон Ботуши
-
-#Achievements
-achievement.armorplus.craftCoalArmor=Vision Like A Bat!
-achievement.armorplus.craftCoalArmor.desc=Craft a Coal Armor Piece
-achievement.armorplus.craftLapisArmor=Never Drown Again!
-achievement.armorplus.craftLapisArmor.desc=Craft a Lapis Armor Piece
-achievement.armorplus.craftRedstoneArmor=Speeedy!
-achievement.armorplus.craftRedstoneArmor.desc=Craft a Redstone Armor Piece
-achievement.armorplus.craftEmeraldArmor=Swing Swing Faster!
-achievement.armorplus.craftEmeraldArmor.desc=Craft an Emerald Armor Piece
-achievement.armorplus.craftObsidianArmor=Undestructable!
-achievement.armorplus.craftObsidianArmor.desc=Craft a Obsidian Armor Piece
-achievement.armorplus.craftLavaArmor=The Overpowered!
-achievement.armorplus.craftLavaArmor.desc=Craft a Lava Armor Piece
-achievement.armorplus.craftSuperStarArmor=Godlike!
-achievement.armorplus.craftSuperStarArmor.desc=Craft a Super Star Armor Piece
-achievement.armorplus.craftEnderDragonArmor=The Power of the Ender Dragon!
-achievement.armorplus.craftEnderDragonArmor.desc=Kill the Ender Dragon and craft an Ender Dragon Armor Piece
+item.armorplus.material_ender_dragon_scale.name=Ендер Драгон Люспа
+item.armorplus.ender_dragon_helmet.name=Ендер Драгон Шлем
+item.armorplus.ender_dragon_chestplate.name=Ендер Драгон Нагръдник
+item.armorplus.ender_dragon_leggings.name=Ендер Драгон Панталони
+item.armorplus.ender_dragon_boots.name=Ендер Драгон Ботуши

@@ -2,6 +2,8 @@ ArmorPlus 1.12.2-11.13.0.40
 ----------------------------
 
 * Version is now marked as release ("recommended").
+* Fixed Localization on all of the supported languages (not updated the localization)
+
 
 ArmorPlus 1.12.2-11.12.1.39-beta
 ----------------------------

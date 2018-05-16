@@ -9,20 +9,7 @@ itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 
 #Containers
-container.armorplus.armor_forge=Armor Forge
-container.armorplus.advanced_armor_forge=Продвинутый Armor Forge
 container.armorplus.inventory=Инвентарь
-
-#RFTooltip
-tooltip.rf.showinfo=Нажмите %s%s%s для дополнительной информации.
-tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=Cost: %s RF/блок
-tooltip.rf.cost.hit=Cost: %s RF/удар
-#TeslaTooltip
-tooltip.tesla.showinfo.text_one=Нажмите %s%s%s для дополнительной информации.
-tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=Cost: %s Tesla/блок
-tooltip.tesla.cost.hit=Cost: %s Tesla/удар
 
 #TiC
 modifier.firestorm.name=Огненый Шторм
@@ -31,9 +18,9 @@ modifier.firestorm.extra=Огненый Дамаг: +%s
 modifier.firestorm.extra2=Burn Duration: %ss
 modifier.ultimatemod.name=Расширенный
 modifier.ultimatemod.desc=Добавить +1 Модификатор
-material.lava_crystal.name=Лавовый Кристалл
+material.infused_lava_crystal.name=Лавовый Кристалл
 
-﻿#Tile
+#Tile
 tile.armorplus.block_energy_creative.name=Креативная Энергетическая Ячейка
 
 #Commands
@@ -58,13 +45,8 @@ commands.info.help=Показывает информацию о ArmorPlus
 commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Открывает ссылку в браузере на ArmorPlus Wiki
 
-#JEI
-gui.jei.category.armor_forge=Armor Forge
-gui.jei.category.adv_armor_forge=Продвинутый Кованная Броня
-
 #BOOKS
-item.armorplus.armorplus_book.name=ArmorPlus Книга
-item.armorplus.armorplus_info_book.name=ArmorPlus Информационная книга
+item.armorplus.book.name=ArmorPlus Книга
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Конфигурации
@@ -100,10 +82,10 @@ item.armorplus.obsidian_leggings.name=Обсидиановые Поножи
 item.armorplus.obsidian_boots.name=Обсидиановые Ботинки
 
 #LavaArmor
-item.armorplus.lava_helmet.name=Лавовый Шлем
-item.armorplus.lava_chestplate.name=Лавовый Нагрудник
-item.armorplus.lava_leggings.name=Лавовые Поножи
-item.armorplus.lava_boots.name=Лавовые Ботинки
+item.armorplus.infused_lava_helmet.name=Лавовый Шлем
+item.armorplus.infused_lava_chestplate.name=Лавовый Нагрудник
+item.armorplus.infused_lava_leggings.name=Лавовые Поножи
+item.armorplus.infused_lava_boots.name=Лавовые Ботинки
 
 #SuperStarArmor
 item.armorplus.super_star_helmet.name=Супер-звездный Шлем
@@ -124,34 +106,10 @@ item.armorplus.guardian_leggings.name=Стражовые Поножи
 item.armorplus.guardian_boots.name=Стражовые Ботинки
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet_full.name=Максимальный Шлем
-item.armorplus.the_ultimate_chestplate_full.name=Максимальный Нагрудник
-item.armorplus.the_ultimate_leggings_full.name=Максимальные Поножи
-item.armorplus.the_ultimate_boots_full.name=Максимальные Ботинки
-
-#ReinforcedIronArmor
-item.armorplus.reinforced_iron_helmet.name=Прочный Жедезный Шлем
-item.armorplus.reinforced_iron_chestplate.name=Прочный Жедезный Нагрудник
-item.armorplus.reinforced_iron_leggings.name=Прочные Жедезные Поножи
-item.armorplus.reinforced_iron_boots.name=Прочные Жедезные Ботинки
-
-#ReinforcedGoldenArmor
-item.armorplus.reinforced_golden_helmet.name=Прочный Золотой Шлем
-item.armorplus.reinforced_golden_chestplate.name=Прочный Золотой Нагрудник
-item.armorplus.reinforced_golden_leggings.name=Прочные Золотые Поножи
-item.armorplus.reinforced_golden_boots.name=Прочные Золотые Ботинки
-
-#ReinforcedDiamondArmor
-item.armorplus.reinforced_diamond_helmet.name=Прочный Алмазный Шлем
-item.armorplus.reinforced_diamond_chestplate.name=Прочный Алмазный Нагрудник
-item.armorplus.reinforced_diamond_leggings.name=Прочные Алмазные Поножи
-item.armorplus.reinforced_diamond_boots.name=Прочные Алмазные Ботинки
-
-#ReinforcedChainArmor
-item.armorplus.reinforced_chain_helmet.name=Прочный Койф
-item.armorplus.reinforced_chain_chestplate.name=Прочныа Кольчуга
-item.armorplus.reinforced_chain_leggings.name=Прочные Кольчужные Поножи
-item.armorplus.reinforced_chain_boots.name=Прочные Кольчужные Ботинки
+item.armorplus.the_ultimate_helmet.name=Максимальный Шлем
+item.armorplus.the_ultimate_chestplate.name=Максимальный Нагрудник
+item.armorplus.the_ultimate_leggings.name=Максимальные Поножи
+item.armorplus.the_ultimate_boots.name=Максимальные Ботинки
 
 #CobaltArmor
 item.armorplus.cobalt_helmet.name=Кобальтовый Шлем
@@ -219,16 +177,12 @@ item.armorplus.modded_city.name=Modded City
 item.armorplus.jon_bams.name=Jon Bams
 item.armorplus.beam.name=Beam
 item.armorplus.twitch.name=Twitch
-item.armorplus.mmd.name=MMD
-item.armorplus.test_0.name=Test 0
-item.armorplus.test_1.name=Test 1
-item.armorplus.test_2.name=Test 2
 
 #Items
-item.armorplus.chainmail.name=Кольчуга
+item.armorplus.material_chainmail.name=Кольчуга
 item.armorplus.reinforcing_material.name=Прочный Материал
-item.armorplus.lava_crystal_normal.name=Лавовый Кристалл
-item.armorplus.lava_crystal_charged.name=Заряженный Лавовый Кристалл
+item.armorplus.lava_crystal.name=Лавовый Кристалл
+item.armorplus.lava_crystal_infused.name=Заряженный Лавовый Кристалл
 item.armorplus.steel_ingot.name=Стальной Слиток
 item.armorplus.electrical_ingot.name=Электрический Слиток
 
@@ -236,31 +190,29 @@ item.armorplus.electrical_ingot.name=Электрический Слиток
 item.armorplus.redstone_apple.name=Редстоуновое Яблоко
 
 #Special Items
-item.armorplus.wither_bone.name=Визер кость
-item.armorplus.the_ultimate_material.name=Максимальный Материал
-item.armorplus.ender_dragon_scale.name=Эндер Драконовый Scale
-item.armorplus.guardian_scale.name=Стражовый Scale
+item.armorplus.material_wither_bone.name=Визер кость
+item.armorplus.material_the_ultimate_material.name=Максимальный Материал
+item.armorplus.material_ender_dragon_scale.name=Эндер Драконовый Scale
+item.armorplus.material_guardian_scale.name=Стражовый Scale
 item.armorplus.the_gift_of_the_gods.name=Подарок Богов
-item.armorplus.the_ultimate_helmet_left.name=Максимальный Шлем Левый
-item.armorplus.the_ultimate_helmet_middle.name=Максимальный Шлем Центральный
-item.armorplus.the_ultimate_helmet_right.name=Максимальный Шлем Правый
-item.armorplus.the_ultimate_chestplate_left.name=Максимальный Нагрудник Левый
-item.armorplus.the_ultimate_chestplate_middle.name=Максимальный Нагрудник Центральный
-item.armorplus.the_ultimate_chestplate_right.name=Максимальный Нагрудник Правый
-item.armorplus.the_ultimate_leggings_left.name=Максимальные Поножи Левый
-item.armorplus.the_ultimate_leggings_middle.name=Максимальные Поножи Центральный
-item.armorplus.the_ultimate_leggings_right.name=Максимальные Поножи Правый
-item.armorplus.the_ultimate_boots_left.name=Максимальные Ботинки Левый
-item.armorplus.the_ultimate_boots_middle.name=Максимальные Ботинки Центральный
-item.armorplus.the_ultimate_boots_right.name=Максимальные Ботинки Правый
+item.armorplus.the_ultimate_part_helmet_left.name=Максимальный Шлем Левый
+item.armorplus.the_ultimate_part_helmet_middle.name=Максимальный Шлем Центральный
+item.armorplus.the_ultimate_part_helmet_right.name=Максимальный Шлем Правый
+item.armorplus.the_ultimate_part_chestplate_left.name=Максимальный Нагрудник Левый
+item.armorplus.the_ultimate_part_chestplate_middle.name=Максимальный Нагрудник Центральный
+item.armorplus.the_ultimate_part_chestplate_right.name=Максимальный Нагрудник Правый
+item.armorplus.the_ultimate_part_leggings_left.name=Максимальные Поножи Левый
+item.armorplus.the_ultimate_part_leggings_middle.name=Максимальные Поножи Центральный
+item.armorplus.the_ultimate_part_leggings_right.name=Максимальные Поножи Правый
+item.armorplus.the_ultimate_part_boots_left.name=Максимальные Ботинки Левый
+item.armorplus.the_ultimate_part_boots_middle.name=Максимальные Ботинки Центральный
+item.armorplus.the_ultimate_part_boots_right.name=Максимальные Ботинки Правый
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=Сжатый Обсидиан
 tile.armorplus.block_lava_crystal.name=Лавовый Кристаллический Блок
 tile.armorplus.steel_block.name=Блок Стали
 tile.armorplus.electrical_block.name=Электрический Блок
-tile.armorplus.armor_forge.name=Armor Forge
-tile.armorplus.advanced_armor_forge.name=Продвинутый Armor Forge
 tile.armorplus.lava_cactus.name=Лавовый Кактус
 tile.armorplus.lava_nether_brick.name=Лавовый Адский Кирпич
 tile.armorplus.white_stone_brick.name=Белый Каменный Кирпич
@@ -273,7 +225,7 @@ item.armorplus.lapis_sword.name=Лазуритовый Меч
 item.armorplus.redstone_sword.name=Редстоуновый Меч
 item.armorplus.emerald_sword.name=Изумрудный Меч
 item.armorplus.obsidian_sword.name=Обсидиановый Меч
-item.armorplus.lava_sword.name=Лавовый Меч
+item.armorplus.infused_lava_sword.name=Лавовый Меч
 item.armorplus.super_star_sword.name=Super Star Меч
 item.armorplus.guardian_sword.name=Стражовый Меч
 item.armorplus.ender_dragon_sword.name=Эндер Драконовый Меч
@@ -284,7 +236,7 @@ item.armorplus.lapis_battle_axe.name=Лазуритовый Боевой Топ�
 item.armorplus.redstone_battle_axe.name=Редстоуновый Боевой Топор
 item.armorplus.emerald_battle_axe.name=Изумрудный Боевой Топор
 item.armorplus.obsidian_battle_axe.name=Обсидиановый Боевой Топор
-item.armorplus.lava_battle_axe.name=Лавовый Боевой Топор
+item.armorplus.infused_lava_battle_axe.name=Лавовый Боевой Топор
 item.armorplus.super_star_battle_axe.name=Super Star Боевой Топор
 item.armorplus.guardian_battle_axe.name=Стражовый Боевой Топор
 item.armorplus.ender_dragon_battle_axe.name=Эндер Драконовый Боевой Топор
@@ -295,16 +247,16 @@ item.armorplus.lapis_bow.name=Лазуритовый Лук
 item.armorplus.redstone_bow.name=Редстоуновый Лук
 item.armorplus.emerald_bow.name=Изумрудный Лук
 item.armorplus.obsidian_bow.name=Обсидиановый Лук
-item.armorplus.lava_bow.name=Лавовый Лук
+item.armorplus.infused_lava_bow.name=Лавовый Лук
 item.armorplus.super_star_bow.name=Супер-звездный Лук
 item.armorplus.guardian_bow.name=Стражовый Лук
 item.armorplus.ender_dragon_bow.name=Эндер Драконовый Лук
 
 #Arrows
-item.coal_arrow.name=Угольная Стрела
-item.lapis_arrow.name=Лазуритовая Стрела
-item.redstone_arrow.name=Редстоуновая Стрела
-item.lava_arrow.name=Лавовая Стрела
+item.armorplus.coal_arrow.name=Угольная Стрела
+item.armorplus.lapis_arrow.name=Лазуритовая Стрела
+item.armorplus.redstone_arrow.name=Редстоуновая Стрела
+item.armorplus.infused_lava_arrow.name=Лавовая Стрела
 
 #TeslaItems
 item.armorplus.tesla_sword.name=Тесла Меч
@@ -322,14 +274,11 @@ item.armorplus.redstone_flux_pickaxe.name=Редстоун Флакс Кирка
 item.armorplus.redstone_flux_hoe.name=Редстоун Флакс Мотыга
 item.armorplus.redstone_flux_shovel.name=Редстоун Флакс Лопата
 #Entities
-entity.armorplus.ender_dragon_zombie.name=Эндер Драконовый Зомби
+entity.ender_dragon_zombie.name=Эндер Драконовый Зомби
 
 #KeyBinds
 key.nightVision=Переключить Ночное Зрение у максимальной брони
 key.categories.armorplus=ArmorPlus
-
-#Spawners
-tile.armorplus.spawner_guardian.name=Спавнер Стражников
 
 #Achievements
 achievement.armorplus.craft_coal_armor=Vision Like A Bat!
@@ -342,8 +291,8 @@ achievement.armorplus.craft_emerald_armor=Swing Swing Faster!
 achievement.armorplus.craft_emerald_armor.desc=craft an Emerald Armor Piece
 achievement.armorplus.craft_obsidian_armor=Indestructible!
 achievement.armorplus.craft_obsidian_armor.desc=craft an Obsidian Armor Piece
-achievement.armorplus.craft_lava_armor=The Overpowered!
-achievement.armorplus.craft_lava_armor.desc=craft a Lava Armor Piece
+achievement.armorplus.craft_infused_lava_armor=The Overpowered!
+achievement.armorplus.craft_infused_lava_armor.desc=craft a Lava Armor Piece
 achievement.armorplus.craft_super_star_armor=Godlike!
 achievement.armorplus.craft_super_star_armor.desc=craft a Super Star Armor Piece
 achievement.armorplus.craft_ender_dragon_armor=The Power of the Ender Dragon!
@@ -366,5 +315,3 @@ achievement.armorplus.craft_slime_armor=Jump Jump Jump!
 achievement.armorplus.craft_slime_armor.desc=craft a Slime Armor Piece
 achievement.armorplus.craft_chicken_armor=Its time to go Faster!
 achievement.armorplus.craft_chicken_armor.desc=craft a Chicken Armor Piece
-achievement.armorplus.craft_armor_forge=Welcome to ArmorPlus!
-achievement.armorplus.craft_armor_forge.desc=craft the Armor Forge from ArmorPlus

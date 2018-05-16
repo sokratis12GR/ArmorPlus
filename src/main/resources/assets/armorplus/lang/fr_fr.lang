@@ -39,18 +39,6 @@ container.armorplus.ulti_tech_bench=Table d'Artisanat d'Ulti-Tech
 container.armorplus.champion_bench=Table d'Artisanat du Champion
 container.armorplus.inventory=Inventaire
 
-#RFTooltip
-tooltip.rf.showinfo=Appuyez sur %s%s%s pour plus d'info.
-tooltip.rf.powerinfo=%s/%s RF
-tooltip.rf.cost.tool=Cost: %s RF/bloc
-tooltip.rf.cost.hit=Cost: %s RF/coup
-
-#TeslaTooltip
-tooltip.tesla.showinfo.text_one=Press %s%s%s pour plus d'info.
-tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.cost.tool=Cost: %s Tesla/bloc
-tooltip.tesla.cost.hit=Cost: %s Tesla/coup
-
 #TiC
 modifier.firestorm.name=Tempête de Feu
 modifier.firestorm.desc=§oLa vrai Super Nova§r\nDégât de feu en bonus, enflame tes enemies.
@@ -58,7 +46,7 @@ modifier.firestorm.extra=Dégât du Feu: +%s
 modifier.firestorm.extra2=Durée du Combustion: %ss
 modifier.ultimatemod.name=Étendu
 modifier.ultimatemod.desc=Ajouter +1 Modificateur
-material.lava_crystal.name=Cristal de Lave
+material.infused_lava_crystal.name=Cristal de Lave
 
 #Tile
 tile.armorplus.block_energy_creative.name=Cellule d'Énergie Créative
@@ -71,7 +59,6 @@ commands.error.404=Commande introuvable!
 commands.error.unknown=Commande inconnue! Prières de tapper /armorplus help
 commands.error.perm=Vous n'avez pas la permission d'utiliser cette commande.
 commands.success=Exéctuée avec succès
-commands.formatText.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
@@ -85,13 +72,8 @@ commands.info.help=Affiche des informations sur ArmorPlus.
 commands.wiki.usage=/armorplus wiki
 commands.wiki.help=Ouvre un lien sur votre navigateur sur le wiki d'ArmorPlus.
 
-#JEI
-gui.jei.category.armor_forge=Forge d'Armures
-gui.jei.category.adv_armor_forge=Forge d'Armures Avancée
-
 #BOOKS
-item.armorplus.armorplus_book.name=Livre d'ArmorPlus
-item.armorplus.armorplus_info_book.name=Livre d'Info sur ArmorPlus
+item.armorplus.book.name=Livre d'ArmorPlus
 
 #CONFIG GUI
 gui.armorplus.config.title=Configuration d'ArmorPlus
@@ -127,10 +109,10 @@ item.armorplus.obsidian_leggings.name=Jambières en Obsidienne
 item.armorplus.obsidian_boots.name=Bottes en Obsidienne
 
 #LavaArmor
-item.armorplus.lava_helmet.name=Casque en Lave
-item.armorplus.lava_chestplate.name=Plastron en Lave
-item.armorplus.lava_leggings.name=Jambières en Lave
-item.armorplus.lava_boots.name=Bottes en Lave
+item.armorplus.infused_lava_helmet.name=Casque en Lave
+item.armorplus.infused_lava_chestplate.name=Plastron en Lave
+item.armorplus.infused_lava_leggings.name=Jambières en Lave
+item.armorplus.infused_lava_boots.name=Bottes en Lave
 
 #SuperStarArmor
 item.armorplus.super_star_helmet.name=Casque en Étoile Formidable
@@ -151,34 +133,10 @@ item.armorplus.guardian_leggings.name=Jambières du Guardien
 item.armorplus.guardian_boots.name=Bottes du Guardien
 
 #TheUltimateArmor
-item.armorplus.the_ultimate_helmet_full.name=Le Casque Ultime
-item.armorplus.the_ultimate_chestplate_full.name=Le Platron Ultime
-item.armorplus.the_ultimate_leggings_full.name=Les Jambières Ultimes
-item.armorplus.the_ultimate_boots_full.name=Les Bottes Ultimes
-
-#ReinforcedIronArmor
-item.armorplus.reinforced_iron_helmet.name=Casque en Fer Renforcé
-item.armorplus.reinforced_iron_chestplate.name=Plastron en Fer Renforcé
-item.armorplus.reinforced_iron_leggings.name=Jambières en Fer Renforcées
-item.armorplus.reinforced_iron_boots.name=Bottes en Fer Renforcées
-
-#ReinforcedGoldenArmor
-item.armorplus.reinforced_golden_helmet.name=Casque en Or Renforcé
-item.armorplus.reinforced_golden_chestplate.name=Plastron en Or Renforcée
-item.armorplus.reinforced_golden_leggings.name=Jambières en Or Renforcées
-item.armorplus.reinforced_golden_boots.name=Bottes en Or Renforcées
-
-#ReinforcedDiamondArmor
-item.armorplus.reinforced_diamond_helmet.name=Casque en Diamant Renforcé
-item.armorplus.reinforced_diamond_chestplate.name=Plastron en Diamant Renforcé
-item.armorplus.reinforced_diamond_leggings.name=Jambières en Diamant Renforcées
-item.armorplus.reinforced_diamond_boots.name=Bottes en Diamant Renforcées
-
-#ReinforcedChainArmor
-item.armorplus.reinforced_chain_helmet.name=Casque en Mailles Renforcé
-item.armorplus.reinforced_chain_chestplate.name=Cottes de Mailles Renforcées
-item.armorplus.reinforced_chain_leggings.name=Jambières en Mailles Renforcées
-item.armorplus.reinforced_chain_boots.name=Bottes en Mailles Renforcées
+item.armorplus.the_ultimate_helmet.name=Le Casque Ultime
+item.armorplus.the_ultimate_chestplate.name=Le Platron Ultime
+item.armorplus.the_ultimate_leggings.name=Les Jambières Ultimes
+item.armorplus.the_ultimate_boots.name=Les Bottes Ultimes
 
 #CobaltArmor
 item.armorplus.cobalt_helmet.name=Casque en Cobalt
@@ -246,16 +204,12 @@ item.armorplus.modded_city.name=Modded City
 item.armorplus.jon_bams.name=Jon Bams
 item.armorplus.beam.name=Beam
 item.armorplus.twitch.name=Twitch
-item.armorplus.mmd.name=MMD
-item.armorplus.test_0.name=Test 0
-item.armorplus.test_1.name=Test 1
-item.armorplus.test_2.name=Test 2
 
 #Items
-item.armorplus.chainmail.name=Mailles
+item.armorplus.material_chainmail.name=Mailles
 item.armorplus.reinforcing_material.name=Matériel de Renforcement
-item.armorplus.lava_crystal_normal.name=Cristal de Lave
-item.armorplus.lava_crystal_charged.name=Cristal de Lave Chargé
+item.armorplus.lava_crystal.name=Cristal de Lave
+item.armorplus.lava_crystal_infused.name=Cristal de Lave Chargé
 item.armorplus.steel_ingot.name=Lingot d'Acier
 item.armorplus.electrical_ingot.name=Lingot Électrique
 
@@ -263,31 +217,29 @@ item.armorplus.electrical_ingot.name=Lingot Électrique
 item.armorplus.redstone_apple.name=Pomme de Redstone
 
 #Special Items
-item.armorplus.wither_bone.name=Os du Wither
-item.armorplus.the_ultimate_material.name=Le Matériel Ultime
-item.armorplus.ender_dragon_scale.name=Écaille du Dragon de l'Ender
-item.armorplus.guardian_scale.name=Écaille du Guardien
+item.armorplus.material_wither_bone.name=Os du Wither
+item.armorplus.material_the_ultimate_material.name=Le Matériel Ultime
+item.armorplus.material_ender_dragon_scale.name=Écaille du Dragon de l'Ender
+item.armorplus.material_guardian_scale.name=Écaille du Guardien
 item.armorplus.the_gift_of_the_gods.name=Le Cadeau des dieux
-item.armorplus.the_ultimate_helmet_left.name=Morceau de Gauche du Casque Ultime
-item.armorplus.the_ultimate_helmet_middle.name=Morceau du Milieu du Casque Ultime
-item.armorplus.the_ultimate_helmet_right.name=Morceau Droit du Casque Ultime
-item.armorplus.the_ultimate_chestplate_left.name=Morceau de Gauche du Plastron Ultime
-item.armorplus.the_ultimate_chestplate_middle.name=Morceau du Milieu du Plastron Ultime
-item.armorplus.the_ultimate_chestplate_right.name=Morceau Droit du Plastron Ultime
-item.armorplus.the_ultimate_leggings_left.name=Morceau de Gauche des Jambières Ultimes
-item.armorplus.the_ultimate_leggings_middle.name=Morceau du Milieu des Jambières Ultimes
-item.armorplus.the_ultimate_leggings_right.name=Morceau Droit des Jambières Ultimes
-item.armorplus.the_ultimate_boots_left.name=Morceau de Gauche des Bottes Ultimes
-item.armorplus.the_ultimate_boots_middle.name=Morceau du Milieu des Bottes Ultimes
-item.armorplus.the_ultimate_boots_right.name=Morceau Droit des Bottes Ultimes
+item.armorplus.the_ultimate_part_helmet_left.name=Morceau de Gauche du Casque Ultime
+item.armorplus.the_ultimate_part_helmet_middle.name=Morceau du Milieu du Casque Ultime
+item.armorplus.the_ultimate_part_helmet_right.name=Morceau Droit du Casque Ultime
+item.armorplus.the_ultimate_part_chestplate_left.name=Morceau de Gauche du Plastron Ultime
+item.armorplus.the_ultimate_part_chestplate_middle.name=Morceau du Milieu du Plastron Ultime
+item.armorplus.the_ultimate_part_chestplate_right.name=Morceau Droit du Plastron Ultime
+item.armorplus.the_ultimate_part_leggings_left.name=Morceau de Gauche des Jambières Ultimes
+item.armorplus.the_ultimate_part_leggings_middle.name=Morceau du Milieu des Jambières Ultimes
+item.armorplus.the_ultimate_part_leggings_right.name=Morceau Droit des Jambières Ultimes
+item.armorplus.the_ultimate_part_boots_left.name=Morceau de Gauche des Bottes Ultimes
+item.armorplus.the_ultimate_part_boots_middle.name=Morceau du Milieu des Bottes Ultimes
+item.armorplus.the_ultimate_part_boots_right.name=Morceau Droit des Bottes Ultimes
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=Obsidienne Comprimée
 tile.armorplus.block_lava_crystal.name=Bloc de Cristal de Lave
 tile.armorplus.steel_block.name=Bloc d'Acier
 tile.armorplus.electrical_block.name=Bloc Électrique
-tile.armorplus.armor_forge.name=Forge d'Armure
-tile.armorplus.advanced_armor_forge.name=Forge d'Armures Avancée
 tile.armorplus.lava_cactus.name=Cactus de Lave
 tile.armorplus.lava_nether_brick.name=Brique de Lave du Nether
 tile.armorplus.white_stone_brick.name=Pierre Blanche Taillée
@@ -318,7 +270,7 @@ item.armorplus.lapis_sword.name=Épée en Lapis
 item.armorplus.redstone_sword.name=Épée en Redstone
 item.armorplus.emerald_sword.name=Épée en Émeraude
 item.armorplus.obsidian_sword.name=Épée en Obsidienne
-item.armorplus.lava_sword.name=Épée en Lave
+item.armorplus.infused_lava_sword.name=Épée en Lave
 item.armorplus.super_star_sword.name=Épée en Étoile Formidable
 item.armorplus.guardian_sword.name=Épée du Guardien
 item.armorplus.ender_dragon_sword.name=Épée du Dragon de l'Ender
@@ -329,7 +281,7 @@ item.armorplus.lapis_battle_axe.name=Hache de Guerre en Lapis
 item.armorplus.redstone_battle_axe.name=Hache de Guerre en Redstone
 item.armorplus.emerald_battle_axe.name=Hache de Guerre en Émeraude
 item.armorplus.obsidian_battle_axe.name=Hache de Guerre en Obsidienne
-item.armorplus.lava_battle_axe.name=Hache de Guerre en Lave
+item.armorplus.infused_lava_battle_axe.name=Hache de Guerre en Lave
 item.armorplus.super_star_battle_axe.name=Hache de Guerre en Étoile Formidable
 item.armorplus.guardian_battle_axe.name=Hache de Guerre du Guardien
 item.armorplus.ender_dragon_battle_axe.name=Hache de Guerre du Dragon de l'Ender
@@ -340,16 +292,16 @@ item.armorplus.lapis_bow.name=Arc en Lapis
 item.armorplus.redstone_bow.name=Arc en Redstone
 item.armorplus.emerald_bow.name=Arc en Émeraude
 item.armorplus.obsidian_bow.name=Arc en Obsidienne
-item.armorplus.lava_bow.name=Arc en Lave
+item.armorplus.infused_lava_bow.name=Arc en Lave
 item.armorplus.super_star_bow.name=Arc en Étoile Formidable
 item.armorplus.guardian_bow.name=Arc du Guardien
 item.armorplus.ender_dragon_bow.name=Arc du Dragon de l'Ender
 
 #Arrows
-item.coal_arrow.name=Flèche en Charbon
-item.lapis_arrow.name=Flèche en Lapis
-item.redstone_arrow.name=Flèche en Redstone
-item.lava_arrow.name=Flèche en Lave
+item.armorplus.coal_arrow.name=Flèche en Charbon
+item.armorplus.lapis_arrow.name=Flèche en Lapis
+item.armorplus.redstone_arrow.name=Flèche en Redstone
+item.armorplus.infused_lava_arrow.name=Flèche en Lave
 
 #TeslaItems
 item.armorplus.tesla_sword.name=Épée à Tesla
@@ -368,15 +320,12 @@ item.armorplus.redstone_flux_hoe.name=Houe à Redstone Flux
 item.armorplus.redstone_flux_shovel.name=Pelle à Redstone Flux
 
 #Entities
-entity.armorplus.ender_dragon_zombie.name=Zombie du Dragon de l'Ender
+entity.ender_dragon_zombie.name=Zombie du Dragon de l'Ender
 entity.ice_golem.name=Golem de Glace (WIP)
 
 #KeyBinds
 key.nightVision=Changer à la Vision Nocturne de l'Armure Ultime
 key.categories.armorplus=ArmorPlus
-
-#Spawners
-tile.armorplus.spawner_guardian.name=Générateurs de Guardiens
 
 #Achievements
 achievement.armorplus.craft_coal_armor=La Vision d'une Chauve-Souris!
@@ -389,8 +338,8 @@ achievement.armorplus.craft_emerald_armor=Frapper plus vite!
 achievement.armorplus.craft_emerald_armor.desc=Créez une pièce d'armure en Émeraude
 achievement.armorplus.craft_obsidian_armor=Indestructible!
 achievement.armorplus.craft_obsidian_armor.desc=Créez une pièce d'armure en Obsidienne
-achievement.armorplus.craft_lava_armor=La Domination!
-achievement.armorplus.craft_lava_armor.desc=Créez une pièce d'armure en Lave
+achievement.armorplus.craft_infused_lava_armor=La Domination!
+achievement.armorplus.craft_infused_lava_armor.desc=Créez une pièce d'armure en Lave
 achievement.armorplus.craft_super_star_armor=Divin!
 achievement.armorplus.craft_super_star_armor.desc=Créez une pièce d'armure en Étoile Formidable
 achievement.armorplus.craft_ender_dragon_armor=Le Pouvoir du Dragon de l'Ender!
@@ -413,8 +362,6 @@ achievement.armorplus.craft_slime_armor=Saute Saute Saute!
 achievement.armorplus.craft_slime_armor.desc=Créez une pièce d'armure des Slimes
 achievement.armorplus.craft_chicken_armor=C'est le temps d'être plus rapide!
 achievement.armorplus.craft_chicken_armor.desc=Créez une pièce d'armure de Poulet
-achievement.armorplus.craft_armor_forge=Bienvienue à ArmurPlus!
-achievement.armorplus.craft_armor_forge.desc==Créez la Forge d'Armures
 achievement.armorplus.craft_high_tech_bench=Plus de Complexité
 achievement.armorplus.craft_high_tech_bench.desc=craft a High-Tech Bench from ArmorPlus
 achievement.armorplus.craft_ulti_tech_bench=Ultimately Advanced
