@@ -23,6 +23,10 @@ gui.armorplus.info.text_line_four=necesitarás cambiar la configuración
 gui.armorplus.info.text_line_five=de `I:Recipe:1` a `I:Recipe:0`.
 gui.armorplus.info.text_line_six=Modo de Juego Activado `I:Recipe: %s`.
 
+#Enchantments
+enchantment.armorplus.furious=Furioso
+enchantment.armorplus.furious.desc=Cuando te golpean te pones furioso, dándote fuerza y ​​un impulso de velocidad basado en el nivel.
+
 #Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Dragón Cosmético
 
@@ -37,6 +41,42 @@ container.armorplus.lava_infuser=Infundidor de Lava
 #Tooltip
 tooltip.shift.showinfo.text_one=Presione
 tooltip.shift.showinfo.text_two=para más información.
+
+#TiC
+modifier.firestorm.name=Tormenta de Fuego
+modifier.firestorm.desc=§oLa verdadera Supernova!§r\nDaño adicional de fuego, la modificador se incienda a sus enemigos.
+modifier.firestorm.extra=Daño de Fuego: +%s
+modifier.firestorm.extra2=Duración de la Combustión: %ss
+modifier.ultimatemod.name=Expandido
+modifier.ultimatemod.desc=Agrega +1 Modificador
+material.infused_lava_crystal.name=Cristal de Lava Infundido
+material.compressed_obsidian.name=Obsidiana Comprimida
+material.lava_infused_obsidian.name=Obsidiana Infundida con Lava
+
+#Tile
+tile.armorplus.block_energy_creative.name=Celda de Energía Creativa
+
+#Commands
+commands.error.arg.invalid=Argumentos inválidos
+commands.error.arg.missing=No hay suficientes argumentos
+commands.error.arg.player.missing=Debe especificar en qué jugador desea realizar esta acción.
+commands.error.404=¡Comando no encontrado!
+commands.error.unknown=¡Comando desconocido! Por favor usa /armorplus ayuda
+commands.error.perm=No tienes permiso para usar este comando.
+commands.success=Realizado con Éxito
+commands.format.help=%s - %s
+
+#CommandHelp
+commands.help.usage=/armorplus ayuda
+commands.help.help=Muestra la información de ayuda para el comando "/armorplus".
+
+#CommandInfo
+commands.info.usage=/armorplus info
+commands.info.help=Muestra información sobre ArmaduraMás
+
+#CommandWiki
+commands.wiki.usage=/armorplus wiki
+commands.wiki.help=Abre un enlace en su navegador a la Wiki de ArmaduraMás
 
 #JEI
 gui.jei.category.workbench=Banco de Trabajo
@@ -58,10 +98,11 @@ item.armorplus.book.name=Libro de Información de ArmaduraMás
 gui.armorplus.config.title=Configuración de ArmaduraMás
 #Root Categories
 armorplus/misc.tooltip=Configuraciones Diversos
-armorplus/config.tooltip=Configurationes Principales
+armorplus/config.tooltip=Configuraciones Principales
 armorplus/entities.tooltip=Configuraciones de Entidades
 armorplus/integrations.tooltip=Configuraciones de Integraciones
-armorplus/registry.tooltip=Configuratciones de Registro
+armorplus/registry.tooltip=Configuraciones de Registro
+armorplus/worldgen.tooltip=Configuraciones de la Generación del Mundo.
 
 #CoalArmor
 item.armorplus.coal_helmet.name=Casco de Carbón
