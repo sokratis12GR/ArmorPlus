@@ -1,25 +1,22 @@
-**ArmorPlus Version**:
+**Affected Versions (Do not use "latest"):**:
+  - **ArmorPlus**:
+  - **TheDragonLib**:
+  - **Minecraft**:
+  - **Forge**:
+  - (Optional) Just Enough Items (JEI):
+  - (Optional) Tinkers' Construct:
+  - (Optional) CraftTweaker (CrT):
 
-**TheDragonLib Version**:
-
-**MinecraftForge Version**:
-
-**Minecraft Version**:
-
-**(Optional) Just Enough Items (JEI) Version**:
-
-**(Optional) Tinkers' Construct Version**:
-
-**(Optional) CraftTweaker (CT) Version**:
-
-**Client or Server?**:
+**Affected Side (Client or Server)**:
 - [ ] Client
 - [ ] Server
 
-**Crash Report (via. [Pastebin](http://pastebin.com/))**:
+**What happens**:
 
-**What happens / happened?**:
+**What you expected to happen:**:
 
-**How can I reproduce it?**:
+**If its a crash, post your crash report (via. pastebin/gist/etc)**:
+
+**Your configuration files from `config/armorplus/` (`registry.cfg` mainly)**:
 
 **(Optional) Mod List**:
