@@ -9,6 +9,12 @@ itemGroup.armorplus.tesla=ArmorPlus|Tesla
 itemGroup.armorplus.rf=ArmorPlus|RF
 itemGroup.armorplus.tinkers=ArmorPlus|匠魂
 
+# Sound Events
+armorplus.subtitle.trap_triggered=陷阱触发
+
+# Status
+status.armorplus.tgotg.gained_item=你拥有：%s [%s]
+
 #GuiArmorPlusInfo
 gui.armorplus.info.text_line_heading=ArmorPlus 信息
 gui.armorplus.info.text_line_one=ArmorPlus 的合成默认为
@@ -20,7 +26,7 @@ gui.armorplus.info.text_line_six=当前模式：`I:Recipe: %s`。
 
 #CommandInfoText
 command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
-command.armorplus.info_line_one.part_two.text=%s[%s (%s)，作者%s sokratis12GR (TheDragonTeam)]
+command.armorplus.info_line_one.part_two.text=作者%s sokratis12GR (TheDragonTeam)
 command.armorplus.info_line_two.text=%s[%s，感谢你使用 %s]
 command.armorplus.info_line_three.text=%s[modid: %s]
 command.armorplus.info_line_four.text=%s[Minecraft 版本：%s]
@@ -29,7 +35,7 @@ command.armorplus.info_line_six.text=%s[Recipes] 请使用指令 /armorplus wiki
 command.armorplus.info_line_seven.text=%s[Discord] 请使用指令 /armorplus discord
 
 #Enchantmnets
-enchantment.armorplus.life_steal=Life Steal
+enchantment.armorplus.life_steal=嗜血
 enchantment.armorplus.life_steal.desc=吸取被攻击目标的生命值，并用来回复你的生命值
 enchantment.armorplus.furious=暴怒
 enchantment.armorplus.furious.desc=在你攻击时，你会暴躁起来，相应的，你的力量和速度会有所提升。
@@ -64,6 +70,7 @@ modifier.ultimatemod.name=扩展插槽
 modifier.ultimatemod.desc=增加一个强化槽
 material.infused_lava_crystal.name=熔岩水晶
 material.compressed_obsidian.name=压缩黑曜石
+material.lava_infused_obsidian.name=熔岩黑曜石
 
 #Tile
 tile.armorplus.block_energy_creative.name=创造能量单元
@@ -76,6 +83,7 @@ commands.error.404=找不到此命令！
 commands.error.unknown=找不到此命令！请使用 /armorplus help 获得帮助信息。
 commands.error.perm=你没有权限使用此命令。
 commands.success=执行成功
+commands.format.help=%s - %s
 
 #CommandHelp
 commands.help.usage=/armorplus help
@@ -110,10 +118,25 @@ gui.jei.category.armorplus.infusing.fuel.smeltCount=灌注 %s 物品
 gui.jei.category.armorplus.infusing.fuel.burnTime=燃料时间：%s
 
 #BOOKS
-item.armorplus.book.name=ArmorPlus 指北
+item.armorplus.book.name=ArmorPlus 手册
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus 配置
+#Root Categories
+armorplus/misc.tooltip=杂项设置
+armorplus/config.tooltip=基础设置
+armorplus/debug.tooltip=Debug设置
+armorplus/entities.tooltip=实体设置
+armorplus/integrations.tooltip=Integrations configurations
+armorplus/registry.tooltip=Registry configurations
+armorplus/worldgen.tooltip=世界设置
+#SubCategories
+armorplus.global.tooltip=Globally applied configurations
+armorplus.tgotg.tooltip=Configurations for The Gift Of The Gods item
+armorplus.ender_dragon_zombie.tooltip=Configurations for the Ender Dragon Zombie entity
+armorplus.mob_drops.tooltip=Configuration for the Mob Drops
+armorplus.lava_crystal.tooltip=Configuration for the Ore Lava Crystal's world generation
+armorplus.tower.tooltip=Configuration for the Nether Tower's world generation
 
 #CoalArmor
 item.armorplus.coal_helmet.name=煤炭头盔
@@ -194,10 +217,10 @@ item.armorplus.pig_iron_leggings.name=生铁护腿
 item.armorplus.pig_iron_boots.name=生铁靴子
 
 #KnightSlimeArmor
-item.armorplus.knight_slime_helmet.name=史莱姆骑士头盔
-item.armorplus.knight_slime_chestplate.name=史莱姆骑士胸甲
-item.armorplus.knight_slime_leggings.name=史莱姆骑士护腿
-item.armorplus.knight_slime_boots.name=史莱姆骑士靴子
+item.armorplus.knight_slime_helmet.name=骑士史莱姆头盔
+item.armorplus.knight_slime_chestplate.name=骑士史莱姆胸甲
+item.armorplus.knight_slime_leggings.name=骑士史莱姆护腿
+item.armorplus.knight_slime_boots.name=骑士史莱姆靴子
 
 #ManyullynArmor
 item.armorplus.manyullyn_helmet.name=玛玉灵头盔
@@ -242,6 +265,8 @@ item.armorplus.dev_item.name=NBT物品
 #item.armorplus.beam.name=Beam
 #item.armorplus.twitch.name=Twitch
 item.armorplus.gui_tester.name=GUI测试工具
+#item.armorplus.btm_moon=.nameBTM Moon
+#item.armorplus.m1jordan.name=M1Jordan
 
 #Items
 item.armorplus.material_chainmail.name=锁甲板材
@@ -275,7 +300,7 @@ item.armorplus.the_ultimate_part_boots_right.name=终极靴子右侧
 
 #Blocks
 tile.armorplus.compressed_obsidian.name=压缩黑曜石
-tile.armorplus.block_lava_crystal.name=熔岩水晶块
+tile.armorplus.ore_lava_crystal.name=熔岩水晶矿
 tile.armorplus.steel_block.name=钢块
 tile.armorplus.electrical_block.name=电子合金块
 tile.armorplus.workbench.name=工作台
@@ -314,7 +339,30 @@ tile.armorplus.purple_stone_brick_corner.name=紫色石砖拐角
 tile.armorplus.purple_stone_brick_wall.name=紫色石砖墙
 tile.armorplus.lava_infuser.name=熔岩灌注器
 tile.armorplus.lava_infuser_infusing.name=熔岩灌注器（工作中）
+
 tile.armorplus.lava_infused_obsidian.name=熔岩黑曜石
+tile.armorplus.block_lava_crystal.name=熔岩水晶块
+tile.armorplus.block_infused_lava_crystal.name=注能熔岩水晶块
+tile.armorplus.block_compressed_lava_crystal.name=压缩熔岩水晶块
+tile.armorplus.block_compressed_infused_lava_crystal.name=压缩注能熔岩水晶块
+
+tile.armorplus.trophy.name=生物奖杯
+tile.armorplus.wither_boss_trophy.name=凋灵奖杯
+tile.armorplus.ender_dragon_trophy.name=末影龙奖杯
+tile.armorplus.elder_guardian_trophy.name=远古守卫者奖杯
+tile.armorplus.skeletal_king_trophy.name=骷髅王奖杯
+tile.armorplus.guardian_overlord_trophy.name=守卫者领主奖杯
+tile.armorplus.demonic_dragon_trophy.name=恶龙奖杯
+tile.armorplus.the_lord_of_everything_trophy.name=创世之杯
+
+##Dungeon Blocks
+tile.armorplus.ender_stone.name=末影石（未完成）
+tile.armorplus.ender_stone_trap.name=末影石陷阱（未完成）
+tile.armorplus.ender_stone_bricks.name=末影石砖块（未完成）
+tile.armorplus.ender_glowstone.name=末影荧石（未完成）
+tile.armorplus.ender_pillar.name=末影柱（未完成）
+tile.armorplus.ender_floor_1.name=末影石台阶（未完成）
+tile.armorplus.ender_floor_2.name=末影石台阶（未完成）
 
 #Swords
 item.armorplus.coal_sword.name=煤炭剑
@@ -374,11 +422,54 @@ item.armorplus.redstone_flux_shovel.name=红石通量锹
 
 #Entities
 entity.ender_dragon_zombie.name=末影龙僵尸
-entity.ice_golem.name=雪傀儡 (WIP)
+entity.ice_golem.name=雪傀儡（未完成，实验阶段）
+entity.overlord_of_the_guardians.name=守卫者领主（未完成，实验阶段）
+entity.skeletal_king.name=骷髅王（未完成，实验阶段）
+entity.freeze_bomb.name=霜冻介质（未完成，远程，实验阶段）
+entity.wither_minion.name=凋灵仆从（未完成，远程，Spawner）
 
 #KeyBinds
 key.nightVision=终极护甲夜视开关
 key.categories.armorplus=ArmorPlus
+
+#ArmorPlus Effects
+effect.armorplus.empty.name=空
+effect.armorplus.empty=空
+armorplus.empty.name=空
+armorplus.empty=空
+
+##############
+# Deprecated #
+##############
+#VanillaPotions
+#effect.none.name=无效果
+#effect.moveSpeed.name=速度
+#effect.moveSlowdown.name=缓慢
+#effect.digSpeed.name=急迫
+#effect.digSlowDown.name=挖掘疲劳
+#effect.damageBoost.name=力量
+#effect.heal.name=瞬间治疗
+#effect.harm.name=瞬间伤害
+#effect.jump.name=跳跃提升
+#effect.confusion.name=反胃
+#effect.regeneration.name=生命恢复
+#effect.resistance.name=抗性提升
+#effect.fireResistance.name=防火
+#effect.waterBreathing.name=水下呼吸
+#effect.invisibility.name=防火
+#effect.blindness.name=失明
+#effect.nightVision.name=夜视
+#effect.hunger.name=饥饿
+#effect.weakness.name=虚弱
+#effect.poison.name=中毒
+#effect.wither.name=凋零
+#effect.healthBoost.name=生命提升
+#effect.absorption.name=伤害吸收
+#effect.saturation.name=饱和
+#effect.glowing.name=发光
+#effect.luck.name=幸运
+#effect.unluck.name=霉运
+#effect.levitation.name=飘浮
 
 #Achievements
 achievement.armorplus.craft_coal_armor=蝙蝠一样的视觉！
@@ -395,7 +486,7 @@ achievement.armorplus.craft_infused_lava_armor=OP！
 achievement.armorplus.craft_infused_lava_armor.desc=合成任意一件熔岩护甲
 achievement.armorplus.craft_super_star_armor=超神！
 achievement.armorplus.craft_super_star_armor.desc=合成任意一件下界之星护甲
-achievement.armorplus.craft_ender_dragon_armor=末影龙的力量！
+achievement.armorplus.craft_ender_dragon_armor=龙魂耀世！
 achievement.armorplus.craft_ender_dragon_armor.desc=击杀末影龙并合成任意一件末影龙护甲
 achievement.armorplus.craft_guardian_armor=充满荆棘！
 achievement.armorplus.craft_guardian_armor.desc=合成任意一件守卫者护甲
@@ -410,7 +501,7 @@ achievement.armorplus.craft_manyullyn_armor.desc=合成任意一件玛玉灵护�
 achievement.armorplus.craft_pig_iron_armor=Oink!
 achievement.armorplus.craft_pig_iron_armor.desc=合成任意一件生铁护甲
 achievement.armorplus.craft_knight_slime_armor=闪耀！
-achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件史莱姆骑士护甲
+achievement.armorplus.craft_knight_slime_armor.desc=合成任意一件骑士史莱姆护甲
 achievement.armorplus.craft_slime_armor=我跳跳跳！
 achievement.armorplus.craft_slime_armor.desc=合成任意一件史莱姆护甲
 achievement.armorplus.craft_chicken_armor=是时候跑起来了！
@@ -425,9 +516,3 @@ achievement.armorplus.craft_champion_bench=只为冠军准备
 achievement.armorplus.craft_champion_bench.desc=合成 ArmorPlus 的冠军工作台
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=制作了 ArmorPlus
-
-#ArmorPlus Effects
-effect.armorplus.empty.name=空
-effect.armorplus.empty=空
-armorplus.empty.name=空
-armorplus.empty=空
