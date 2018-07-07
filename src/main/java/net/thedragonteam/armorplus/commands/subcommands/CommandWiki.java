@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.commands.subcommands;
 
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.thedragonteam.thedragonlib.client.util.ClientUtills;
@@ -16,16 +15,10 @@ import static net.thedragonteam.armorplus.util.TextUtils.setText;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class CommandWiki extends CommandBase {
+public class CommandWiki extends CommandSubBase {
 
-    @Override
-    public String getName() {
-        return "wiki";
-    }
-
-    @Override
-    public String getUsage(ICommandSender sender) {
-        return "commands.wiki.usage";
+    public CommandWiki() {
+        super("wiki");
     }
 
     @Override

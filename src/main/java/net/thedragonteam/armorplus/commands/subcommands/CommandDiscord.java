@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.commands.subcommands;
 
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.thedragonteam.thedragonlib.client.util.ClientUtills;
@@ -14,16 +13,10 @@ import static net.thedragonteam.armorplus.util.TextUtils.setText;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class CommandDiscord extends CommandBase {
+public class CommandDiscord extends CommandSubBase {
 
-    @Override
-    public String getName() {
-        return "discord";
-    }
-
-    @Override
-    public String getUsage(ICommandSender sender) {
-        return "commands.discord.usage";
+    public CommandDiscord() {
+        super("discord");
     }
 
     @Override

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.commands.subcommands;
 
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.ITextComponent;
@@ -18,27 +17,21 @@ import static net.thedragonteam.armorplus.util.TextUtils.formatText;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class CommandInfo extends CommandBase {
+public class CommandInfo extends CommandSubBase {
 
-    @Override
-    public String getName() {
-        return "info";
-    }
-
-    @Override
-    public String getUsage(ICommandSender sender) {
-        return "commands.info.usage";
+    public CommandInfo() {
+        super("info");
     }
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         sendMessages(sender,
-            formatText(DARK_RED, "command.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "command.armorplus.info_line_one.part_two.text")),
-            formatText(RED, "command.armorplus.info_line_two.text", sender.getName(), MODNAME),
-            formatText(GREEN, "command.armorplus.info_line_three.text", MODID),
-            formatText(GRAY, "command.armorplus.info_line_four.text", server.getMinecraftVersion()),
-            formatText(GOLD, "command.armorplus.info_line_six.text"),
-            formatText(GOLD, "command.armorplus.info_line_seven.text")
+            formatText(DARK_RED, "commands.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "commands.armorplus.info_line_one.part_two.text")),
+            formatText(RED, "commands.armorplus.info_line_two.text", sender.getName(), MODNAME),
+            formatText(GREEN, "commands.armorplus.info_line_three.text", MODID),
+            formatText(GRAY, "commands.armorplus.info_line_four.text", server.getMinecraftVersion()),
+            formatText(GOLD, "commands.armorplus.info_line_six.text"),
+            formatText(GOLD, "commands.armorplus.info_line_seven.text")
         );
     }
 

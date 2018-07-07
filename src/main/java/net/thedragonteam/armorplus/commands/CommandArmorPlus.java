@@ -12,6 +12,7 @@ import net.minecraftforge.server.command.CommandTreeBase;
 import net.minecraftforge.server.command.CommandTreeHelp;
 import net.thedragonteam.armorplus.commands.subcommands.CommandDiscord;
 import net.thedragonteam.armorplus.commands.subcommands.CommandInfo;
+import net.thedragonteam.armorplus.commands.subcommands.CommandNodecraft;
 import net.thedragonteam.armorplus.commands.subcommands.CommandWiki;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class CommandArmorPlus extends CommandTreeBase {
         super.addSubcommand(new CommandDiscord());
         super.addSubcommand(new CommandInfo());
         super.addSubcommand(new CommandWiki());
+        super.addSubcommand(new CommandNodecraft());
         super.addSubcommand(new CommandTreeHelp(this));
         this.aliases.add("arp");
         this.aliases.add("a+");
