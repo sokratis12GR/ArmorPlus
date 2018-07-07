@@ -25,7 +25,7 @@ import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
 import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
 import static net.thedragonteam.armorplus.ModConfig.WorldGenConfig.tower;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
-import static net.thedragonteam.armorplus.util.WorldGenUtils.getGroundFromAbove;
+import static net.thedragonteam.armorplus.util.WorldGenUtils.*;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -37,8 +37,8 @@ public class StructureGenNBT implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 
-        int posX = chunkX * 16 + random.nextInt(16);
-        int posZ = chunkZ * 16 + random.nextInt(16);
+        int posX = x16(chunkX) + random.nextInt(CHUNK_SIZE);
+        int posZ = x16(chunkZ) + random.nextInt(CHUNK_SIZE);
 
         BlockPos posXZ = new BlockPos(posX, 1, posZ);
 
