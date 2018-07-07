@@ -18,6 +18,7 @@ import java.util.stream.IntStream;
 
 import static net.minecraft.item.EnumRarity.EPIC;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -28,7 +29,7 @@ public class RedstoneApple extends ItemFood implements IModdedItem {
     public RedstoneApple() {
         super(4, 2.0f, false);
         this.setHasSubtypes(true);
-        this.setRegistryName("redstone_apple");
+        this.setRegistryName(setRL("redstone_apple"));
         this.setUnlocalizedName(setName("redstone_apple"));
         this.setAlwaysEdible();
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);

@@ -24,6 +24,7 @@ import java.util.List;
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -52,7 +53,7 @@ public class ItemSpecialSword extends ItemSword implements IModdedItem {
         this.itemExpert = swords.getRepairStack();
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffects();
-        this.setRegistryName(swords.getName() + "_sword");
+        this.setRegistryName(setRL(swords.getName() + "_sword"));
         this.setUnlocalizedName(setName(swords.getName() + "_sword"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

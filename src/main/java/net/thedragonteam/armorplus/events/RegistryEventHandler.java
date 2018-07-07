@@ -134,12 +134,12 @@ public class RegistryEventHandler {
     }
 
     private static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, setLocation("lava_infuser_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityWorkbench.class, setLocation("workbench_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, setLocation("high_tech_bench_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, setLocation("ulti_tech_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityChampionBench.class, setLocation("champion_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityTrophy.class, setLocation("trophy_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, setRL("lava_infuser_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityWorkbench.class, setRL("workbench_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, setRL("high_tech_bench_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, setRL("ulti_tech_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityChampionBench.class, setRL("champion_tile_entity"));
+        GameRegistry.registerTileEntity(TileEntityTrophy.class, setRL("trophy_tile_entity"));
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {

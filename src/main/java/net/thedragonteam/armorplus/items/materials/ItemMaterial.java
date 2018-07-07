@@ -30,7 +30,7 @@ public class ItemMaterial extends Item implements IModdedItem {
     private String[] materialNames = new String[]{"chainmail", "guardian_scale", "wither_bone", "ender_dragon_scale", "the_ultimate_material"};
 
     public ItemMaterial() {
-        this.setRegistryName("material");
+        this.setRegistryName(setRL("material"));
         this.setUnlocalizedName(setName("material"));
         this.setHasSubtypes(true);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);

@@ -1,5 +1,6 @@
 package net.thedragonteam.armorplus.entity.entityarrow;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,11 @@ public class EntityModdedArrow extends EntityArrow {
 
     public EntityModdedArrow(World worldIn) {
         super(worldIn);
-        this.arrowProperties = new ArrowProperties(0.0, CLOUD, ARROW);
+        this.arrowProperties = new ArrowProperties(0.0, CLOUD, ARROW) {
+            @Override
+            public void arrowHit(EntityLivingBase living, Entity shootingEntity) {
+            }
+        };
     }
 
     public EntityModdedArrow(World worldIn, ArrowProperties properties) {

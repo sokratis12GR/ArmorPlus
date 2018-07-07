@@ -14,6 +14,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -26,7 +27,7 @@ public class BlockStonebrickWall extends BlockWall implements IModdedBlock {
     public BlockStonebrickWall(BlockStoneBrick modelState) {
         super(modelState);
         this.stoneBricks = modelState;
-        this.setRegistryName(stoneBricks.name + "_wall");
+        this.setRegistryName(setRL(stoneBricks.name + "_wall"));
         this.setUnlocalizedName(setName(stoneBricks.name + "_wall"));
         this.setResistance(10f);
         this.setHardness(5f);

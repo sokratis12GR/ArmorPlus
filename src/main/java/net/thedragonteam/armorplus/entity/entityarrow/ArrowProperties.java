@@ -10,7 +10,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class ArrowProperties {
+public abstract class ArrowProperties {
 
     private final double dmg;
     private final EnumParticleTypes particleType;
@@ -38,7 +38,5 @@ public class ArrowProperties {
         return arrowItem;
     }
 
-    public void arrowHit(EntityLivingBase living, Entity shootingEntity) {
-
-    }
+    public abstract void arrowHit(EntityLivingBase living, Entity shootingEntity);
 }

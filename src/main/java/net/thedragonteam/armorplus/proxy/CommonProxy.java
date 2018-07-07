@@ -8,7 +8,6 @@ import net.minecraft.util.datafix.DataFixesManager;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.thedragonteam.armorplus.client.gui.APTab;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.tinkers.TiC;
 import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
@@ -53,7 +52,6 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         ModOreDicts.registerOreDictEntries();
-        APTab.registerTabs();
         ModCompatibility.loadCompat(INIT);
         ModRecipes.init();
         //TConstruct

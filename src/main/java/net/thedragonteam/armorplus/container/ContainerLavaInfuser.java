@@ -11,6 +11,10 @@ import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserOutput;
 import net.thedragonteam.armorplus.container.base.ContainerBase;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
 
+import java.util.stream.IntStream;
+
+import static net.minecraft.item.ItemStack.EMPTY;
+
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
@@ -34,9 +38,7 @@ public class ContainerLavaInfuser extends ContainerBase {
             }
         }
 
-        for (int index = 0; index < 9; index++) {
-            this.addSlotToContainer(new Slot(playerInventory, index, 8 + index * ITEM_BOX, 142));
-        }
+        IntStream.range(0, 9).mapToObj(index -> new Slot(playerInventory, index, 8 + index * ITEM_BOX, 142)).forEach(this::addSlotToContainer);
     }
 
     @Override
@@ -73,49 +75,49 @@ public class ContainerLavaInfuser extends ContainerBase {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
+        ItemStack itemstack = EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
 
         if (slot != null && slot.getHasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+            ItemStack slotStack = slot.getStack();
+            itemstack = slotStack.copy();
 
             if (index == 2) {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
-                    return ItemStack.EMPTY;
+                if (!this.mergeItemStack(slotStack, 3, 39, true)) {
+                    return EMPTY;
                 }
 
-                slot.onSlotChange(itemstack1, itemstack);
+                slot.onSlotChange(slotStack, itemstack);
             } else if (index != 1 && index != 0) {
-                if (!LavaInfuserManager.getInstance().getInfusingResult(itemstack1).isEmpty()) {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-                        return ItemStack.EMPTY;
+                if (!LavaInfuserManager.getInstance().getInfusingResult(slotStack).isEmpty()) {
+                    if (!this.mergeItemStack(slotStack, 0, 1, false)) {
+                        return EMPTY;
                     }
-                } else if (TileEntityLavaInfuser.isItemFuel(itemstack1)) {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
-                        return ItemStack.EMPTY;
+                } else if (TileEntityLavaInfuser.isItemFuel(slotStack)) {
+                    if (!this.mergeItemStack(slotStack, 1, 2, false)) {
+                        return EMPTY;
                     }
                 } else if (index < 30) {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
-                        return ItemStack.EMPTY;
+                    if (!this.mergeItemStack(slotStack, 30, 39, false)) {
+                        return EMPTY;
                     }
-                } else if (index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
-                    return ItemStack.EMPTY;
+                } else if (index < 39 && !this.mergeItemStack(slotStack, 3, 30, false)) {
+                    return EMPTY;
                 }
             }
 
-            if (itemstack1.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
+            if (slotStack.isEmpty()) {
+                slot.putStack(EMPTY);
             } else {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
+            if (slotStack.getCount() == itemstack.getCount()) {
+                return EMPTY;
             }
 
-            slot.onTake(playerIn, itemstack1);
+            slot.onTake(playerIn, slotStack);
         }
 
         return itemstack;

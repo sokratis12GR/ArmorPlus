@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.thedragonteam.armorplus.ArmorPlus;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -69,7 +70,7 @@ public class BlockBase extends Block {
 
     public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
         super(material);
-        this.setRegistryName(name);
+        this.setRegistryName(setRL(name));
         this.setUnlocalizedName(setName(name));
         this.setResistance(resistance);
         this.setHardness(hardness);

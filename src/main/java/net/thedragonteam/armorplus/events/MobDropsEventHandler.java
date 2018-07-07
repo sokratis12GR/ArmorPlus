@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.events;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityElderGuardian;
@@ -37,25 +38,26 @@ public class MobDropsEventHandler {
     public static void onLivingDrops(LivingDropsEvent event) {
         int min = 0, max = 1;
         int randomDrop = random.nextInt(max - min + 1) + min;
-        if (event.getEntity() instanceof EntityDragon) {
+        Entity entity = event.getEntity();
+        if (entity instanceof EntityDragon) {
             registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
             registerTrophyDrop(event, 3);
         }
-        if (event.getEntity() instanceof EntityWither) {
+        if (entity instanceof EntityWither) {
             registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
             registerTrophyDrop(event, 2);
         }
-        if (event.getEntity() instanceof EntityWitherSkeleton) {
+        if (entity instanceof EntityWitherSkeleton) {
             registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
         }
-        if (event.getEntity() instanceof EntityGuardian) {
+        if (entity instanceof EntityGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.guardianDrop, getItemStack(materials, randomDrop, 1));
         }
-        if (event.getEntity() instanceof EntityElderGuardian) {
+        if (entity instanceof EntityElderGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
             registerTrophyDrop(event, 1);
         }
-        if (event.getEntity() instanceof EntitySkeletalKing) {
+        if (entity instanceof EntitySkeletalKing) {
             registerTrophyDrop(event, 4);
         }
     }

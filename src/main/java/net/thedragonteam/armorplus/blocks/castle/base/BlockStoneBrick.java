@@ -34,7 +34,6 @@ public class BlockStoneBrick extends BlockBase implements IModdedBlock {
         this.initModel(0, "normal");
     }
 
-
     @SuppressWarnings("deprecation")
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {

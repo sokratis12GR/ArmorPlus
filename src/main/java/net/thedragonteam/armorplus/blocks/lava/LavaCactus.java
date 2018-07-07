@@ -23,6 +23,7 @@ import java.util.Random;
 import static net.minecraft.util.BlockRenderLayer.CUTOUT;
 import static net.thedragonteam.armorplus.ArmorPlus.tabArmorplusBlocks;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -34,7 +35,7 @@ public class LavaCactus extends BlockCactus implements IModdedBlock {
         this.setTickRandomly(true);
         this.setHardness(0.4f);
         this.setUnlocalizedName(setName("lava_cactus"));
-        this.setRegistryName("lava_cactus");
+        this.setRegistryName(setRL("lava_cactus"));
         this.setCreativeTab(tabArmorplusBlocks);
     }
 

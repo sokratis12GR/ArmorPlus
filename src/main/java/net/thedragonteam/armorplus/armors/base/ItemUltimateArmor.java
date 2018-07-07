@@ -67,7 +67,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
 
     private void createPieces(EntityEquipmentSlot slot) {
         String piece = slot == HEAD ? "the_ultimate_helmet" : slot == CHEST ? "the_ultimate_chestplate" : slot == LEGS ? "the_ultimate_leggings" : slot == FEET ? "the_ultimate_boots" : "";
-        this.setRegistryName(piece);
+        this.setRegistryName(setRL(piece));
         this.setUnlocalizedName(setName(piece));
     }
 

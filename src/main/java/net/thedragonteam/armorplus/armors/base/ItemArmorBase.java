@@ -31,6 +31,7 @@ import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairab
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addAction;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -87,7 +88,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
     private void createPieces(EntityEquipmentSlot slot, String name) {
         String piece = name + (slot == HEAD ? "_helmet" : slot == CHEST ? "_chestplate" : slot == LEGS ? "_leggings" : slot == FEET ? "_boots" : "");
-        this.setRegistryName(piece);
+        this.setRegistryName(setRL(piece));
         this.setUnlocalizedName(setName(piece));
     }
 

@@ -22,7 +22,7 @@ public class ThreadCosmeticsFetcher extends Thread {
     public void run() {
         LogHelper.info("Fetching cosmetics for people...");
         try {
-            URL url = new URL("https://download.nodecdn.net/containers/thedragonteam/armorplus-cosmetics.properties");
+            URL url = new URL("https://cdn.tdt.pw/thedragonteam.properties");
             Properties specialProperties = new Properties();
             specialProperties.load(new InputStreamReader(url.openStream()));
             CosmeticsRenderInit.parse(specialProperties);

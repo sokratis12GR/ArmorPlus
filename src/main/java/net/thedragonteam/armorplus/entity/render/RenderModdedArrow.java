@@ -17,7 +17,7 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 @SideOnly(Side.CLIENT)
 public class RenderModdedArrow<T extends EntityArrow> extends RenderArrow<T> {
 
-    private ResourceLocation res ;
+    private ResourceLocation res;
 
     public RenderModdedArrow(RenderManager rm, String typeName) {
         super(rm);

@@ -12,6 +12,7 @@ import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.items.enums.Items;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -19,7 +20,7 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
 public class BaseItem extends Item implements IModdedItem {
 
     public BaseItem(String itemName) {
-        this.setRegistryName(itemName);
+        this.setRegistryName(setRL(itemName));
         this.setUnlocalizedName(setName(itemName));
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

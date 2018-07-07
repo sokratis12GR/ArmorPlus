@@ -31,8 +31,10 @@ import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Random;
 
+import static net.minecraft.util.EnumFacing.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing;
+import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 
 /**
@@ -46,8 +48,8 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
     public BlockLavaInfuser(String name, boolean isInfusing) {
         super(Material.ROCK);
         this.isInfusing = isInfusing;
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        this.setRegistryName(Utils.setRL(name));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, NORTH));
+        this.setRegistryName(setRL(name));
         this.setUnlocalizedName(setName(name));
         this.setResistance(10000.0F);
         this.setHardness(2.5F);
@@ -110,13 +112,13 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
             IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
             EnumFacing enumfacing = state.getValue(FACING);
 
-            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
-                enumfacing = EnumFacing.SOUTH;
-            } else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
-                enumfacing = EnumFacing.NORTH;
+            if (enumfacing == NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
+                enumfacing = SOUTH;
+            } else if (enumfacing == SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
+                enumfacing = NORTH;
             } else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
-                enumfacing = EnumFacing.EAST;
-            } else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
+                enumfacing = EAST;
+            } else if (enumfacing == EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
                 enumfacing = EnumFacing.WEST;
             }
 
@@ -137,30 +139,16 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
             if (rand.nextDouble() < 0.1D) {
                 worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
-
-            switch (enumfacing) {
-                case WEST:
-                    worldIn.spawnParticle(EnumParticleTypes.LAVA, d0, d1 + 1, d2 + d4, -0.5, 0.5, 0.0);
-                    worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1 + 1, d2 + d4, -0.5, 0.5, 0.0);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1 + 1, d2 + d4, -0.5, 0.5, 0.0);
-                    break;
-                case EAST:
-                    worldIn.spawnParticle(EnumParticleTypes.LAVA, d0, d1 + 1, d2 + d4, 0.5, 0.5, 0.0);
-                    worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1 + 1, d2 + d4, 0.5, 0.5, 0.0);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1 + 1, d2 + d4, 0.5, 0.5, 0.0);
-                    break;
-                case NORTH:
-                    worldIn.spawnParticle(EnumParticleTypes.LAVA, d0, d1 + 1, d2 + d4, 0.0, 0.5, -0.5);
-                    worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1 + 1, d2 + d4, 0.0, 0.5, -0.5);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1 + 1, d2 + d4, 0.0, 0.5, -0.5);
-                    break;
-                case SOUTH:
-                    worldIn.spawnParticle(EnumParticleTypes.LAVA, d0, d1 + 1, d2 + d4, 0.0, 0.5, 0.5);
-                    worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1 + 1, d2 + d4, 0.0, 0.5, 0.5);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1 + 1, d2 + d4, 0.0, 0.5, 0.5);
-                    break;
-            }
+            this.spawnParticles(worldIn, d0, d1, d2, d4, enumfacing);
         }
+    }
+
+    private void spawnParticles(World worldIn, double d0, double d1, double d2, double d4, EnumFacing facing) {
+        double xSpeed = facing == WEST ? -0.5 : facing == EAST ? 0.5 : facing == NORTH || facing == SOUTH ? 0.0 : 0.0;
+        double zSpeed = facing == WEST || facing == EAST ? 0.0 : facing == NORTH ? -0.5 : facing == SOUTH ? 0.5 : 0.0;
+        worldIn.spawnParticle(EnumParticleTypes.LAVA, d0, d1 + 1, d2 + d4, xSpeed, 0.5, zSpeed);
+        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1 + 1, d2 + d4, xSpeed, 0.5, zSpeed);
+        worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1 + 1, d2 + d4, xSpeed, 0.5, zSpeed);
     }
 
     /**
@@ -259,7 +247,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         EnumFacing enumfacing = EnumFacing.getFront(meta);
 
         if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-            enumfacing = EnumFacing.NORTH;
+            enumfacing = NORTH;
         }
 
         return this.getDefaultState().withProperty(FACING, enumfacing);

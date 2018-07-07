@@ -17,6 +17,9 @@ import net.thedragonteam.armorplus.ArmorPlus;
 
 import javax.annotation.Nonnull;
 
+import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
+
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
@@ -34,8 +37,8 @@ public class BaseEnergyBlock extends BlockContainer {
 
     public BaseEnergyBlock(Material material, String name, float resistance, float hardness, String tool, int harvestLevel, float lightLevel, TileEntity tileEntityIn) {
         super(material);
-        this.setUnlocalizedName(ArmorPlus.MODID + "." + name);
-        this.setRegistryName(name);
+        this.setUnlocalizedName(setName(name));
+        this.setRegistryName(setRL(name));
         this.tileEntity = tileEntityIn;
         this.setResistance(resistance);
         this.setHardness(hardness);

@@ -26,6 +26,7 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.EnumHelper.addToolMaterial;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -57,7 +58,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
         this.formatting = battleAxes.getTextFormatting();
         this.effect = battleAxes.getEffects();
         this.efficiency = battleAxes.getEfficiency();
-        this.setRegistryName(battleAxes.getName() + "_battle_axe");
+        this.setRegistryName(setRL(battleAxes.getName() + "_battle_axe"));
         this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }

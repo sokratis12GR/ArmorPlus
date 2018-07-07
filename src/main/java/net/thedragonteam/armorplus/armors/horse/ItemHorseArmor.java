@@ -26,6 +26,7 @@ public class ItemHorseArmor extends BaseItem {
     public static HorseArmorType guardian = addHorseArmor(GUARDIAN, 18);
     public static HorseArmorType super_star = addHorseArmor(SUPER_STAR, 18);
     public static HorseArmorType ender_dragon = addHorseArmor(ENDER_DRAGON, 18);
+
     private APArmorMaterial material;
 
     public ItemHorseArmor(APArmorMaterial material) {

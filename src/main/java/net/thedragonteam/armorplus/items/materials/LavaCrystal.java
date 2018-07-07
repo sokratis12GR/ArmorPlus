@@ -29,6 +29,7 @@ import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
 import static net.minecraft.util.text.TextFormatting.ITALIC;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.isKeyDown;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -42,7 +43,7 @@ public class LavaCrystal extends Item implements IModdedItem {
 
     public LavaCrystal() {
         this.setHasSubtypes(true);
-        this.setRegistryName("lava_crystal");
+        this.setRegistryName(setRL("lava_crystal"));
         this.setUnlocalizedName(setName("lava_crystal"));
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.setMaxDamage(0);

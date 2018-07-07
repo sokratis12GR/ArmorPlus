@@ -11,4 +11,5 @@ import net.thedragonteam.armorplus.ArmorPlus;
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = ArmorPlus.MODID)
 public class ClientEventHandler {
+
 }

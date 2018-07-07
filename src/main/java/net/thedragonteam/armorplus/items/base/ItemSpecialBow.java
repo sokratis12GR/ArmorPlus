@@ -38,6 +38,7 @@ import java.util.stream.IntStream;
 import static net.minecraft.stats.StatList.getObjectUseStats;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -59,7 +60,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
         this.itemExpert = bows.getRepairStack();
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
-        this.setRegistryName(bows.getName() + "_bow");
+        this.setRegistryName(setRL(bows.getName() + "_bow"));
         this.setUnlocalizedName(setName(bows.getName() + "_bow"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;

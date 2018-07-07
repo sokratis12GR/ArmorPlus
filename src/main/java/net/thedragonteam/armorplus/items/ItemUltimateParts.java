@@ -19,6 +19,7 @@ import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.ultimate;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -34,7 +35,7 @@ public class ItemUltimateParts extends Item implements IModdedItem {
 
     public ItemUltimateParts() {
         this.setHasSubtypes(true);
-        this.setRegistryName("the_ultimate_part");
+        this.setRegistryName(setRL("the_ultimate_part"));
         this.setUnlocalizedName(setName("the_ultimate_part"));
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

@@ -13,6 +13,7 @@ import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -24,7 +25,7 @@ public class BlockStoneBrickCorner extends BlockStairs implements IModdedBlock {
     public BlockStoneBrickCorner(StoneBricks stoneBricks, IBlockState modelState) {
         super(modelState);
         this.setUnlocalizedName(setName(stoneBricks.getName() + "_stone_brick_corner"));
-        this.setRegistryName(stoneBricks.getName() + "_stone_brick_corner");
+        this.setRegistryName(setRL(stoneBricks.getName() + "_stone_brick_corner"));
         this.setHardness(10.0f);
         this.setResistance(5.0f);
         this.setHarvestLevel("pickaxe", 0);

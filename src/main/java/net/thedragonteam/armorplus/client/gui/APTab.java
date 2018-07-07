@@ -32,10 +32,6 @@ public class APTab extends CreativeTabs {
         this.setBackgroundImageName(ArmorPlus.MODID + ".png");// Automatically has tab_ applied to it. Make sure you change the texture name.
     }
 
-    public static void registerTabs() {
-        ItemStack iconArmorPlus = new ItemStack(APItems.lavaChestplate);
-    }
-
     @Override
     public boolean hasSearchBar() {
         return true;
