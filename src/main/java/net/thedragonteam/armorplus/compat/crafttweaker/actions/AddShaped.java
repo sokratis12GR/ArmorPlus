@@ -1,20 +1,23 @@
 package net.thedragonteam.armorplus.compat.crafttweaker.actions;
 
 import crafttweaker.IAction;
+import crafttweaker.api.item.IItemStack;
 import net.thedragonteam.armorplus.api.crafting.IRecipe;
 import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
+import net.thedragonteam.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
 import static java.lang.String.format;
+import static net.thedragonteam.armorplus.compat.crafttweaker.InputHelper.toStack;
 
-public class Add implements IAction {
+public class AddShaped implements IAction {
     private BaseCraftingManager manager;
     private String name;
     private IRecipe recipe;
 
-    public Add(BaseCraftingManager manager, IRecipe add) {
+    public AddShaped(BaseCraftingManager manager, int size, IItemStack output, Object[] ingredients) {
         this.manager = manager;
         this.name = manager.getName();
-        this.recipe = add;
+        this.recipe = new BaseShapedOreRecipe(size, toStack(output), ingredients);
     }
 
     @Override
