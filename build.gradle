@@ -110,7 +110,7 @@ curseforge {
         id = '237366'
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
-        releaseType = 'beta'
+        releaseType = 'release'
         addGameVersion '1.12.2'
         relations {
             requiredLibrary 'thedragonlib'
