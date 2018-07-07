@@ -7,8 +7,12 @@
     "1.11-recommended": "1.11.2-10.8.0.1",
     "1.11.2-latest": "1.11.2-10.8.0.1",
     "1.11.2-recommended": "1.11.2-10.8.0.1",
-    "1.12.2-latest": "1.12.2-11.13.0.40",
-    "1.12.2-recommended": "1.12.2-11.13.0.40"
+    "1.12-latest": "1.12-11.5.1.16-alpha",
+    "1.12-recommended": "1.12-11.5.1.16-alpha",
+    "1.12.1-latest": "1.12.1-11.6.4.21-alpha",
+    "1.12.1-recommended": "1.12.1-11.6.4.21-alpha",
+    "1.12.2-latest": "1.12.2-11.13.1.40",
+    "1.12.2-recommended": "1.12.2-11.13.1.40"
   },
   "1.10.2": {
     "1.10.2-8.0.1.7": "Quick Fix, Server Crash Issue",
@@ -74,8 +78,47 @@
     "1.11.2-10.5.2.3": "Added the ability to enable/disable energy items via config and updated ru_ru.lang",
     "1.11.2-10.8.0.1": "Improved a few bits of code here and there, hopefully improves the performance a bit, now requires TheDragonLib 1.11.2-3.3.0"
   },
+  "1.12": {
+    "1.12-11.0.0.1-alpha": "",
+    "1.12-11.0.1.2-alpha": "",
+    "1.12-11.2.0.5-alpha": "",
+    "1.12-11.3.0.7-alpha": "",
+    "1.12-11.3.1.8-alpha": "",
+    "1.12-11.3.2.9-alpha": "",
+    "1.12-11.3.3.10-alpha": "",
+    "1.12-11.3.4.11-alpha": "",
+    "1.12-11.3.5.12-alpha": "",
+    "1.12-11.3.6.13-alpha": "",
+    "1.12-11.4.0.14-alpha": "",
+    "1.12-11.5.0.15-alpha": "",
+    "1.12-11.5.1.16-alpha": ""
+  },
+  "1.12.1": {
+    "1.12.1-11.6.0.17-alpha": "",
+    "1.12.1-11.6.1.18-alpha": "",
+    "1.12.1-11.6.2.19-alpha": "",
+    "1.12.1-11.6.3.20-alpha": "",
+    "1.12.1-11.6.4.21-alpha": ""
+  },
   "1.12.2": {
-    "1.12.2-11.8.0.26-beta": "Releases are now beta, Updated to 1.12.2, Workbenchs ar back, and MANY MANY other change since last changelog, please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
-    "1.12.2-11.13.0.40": "Many changes since last changelog, finally a release. Please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
+    "1.12.2-11.7.0.22-beta": "",
+    "1.12.2-11.7.1.23-beta": "",
+    "1.12.2-11.7.2.24-beta": "",
+    "1.12.2-11.8.0.26-beta": "Releases are now beta, Updated to 1.12.2, Workbenches are back, and MANY MANY other change since last changelog, please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
+    "1.12.2-11.8.1.27-beta": "",
+    "1.12.2-11.8.2.28-beta": "",
+    "1.12.2-11.8.3.29-beta": "",
+    "1.12.2-11.9.0.30-beta": "",
+    "1.12.2-11.9.1.31-beta": "",
+    "1.12.2-11.9.2.32-beta": "",
+    "1.12.2-11.9.3.33-beta": "",
+    "1.12.2-11.10.0.34-beta": "",
+    "1.12.2-11.10.1.35-beta": "",
+    "1.12.2-11.11.0.36-beta": "",
+    "1.12.2-11.11.1.37-beta": "",
+    "1.12.2-11.12.0.38-beta": "",
+    "1.12.2-11.12.1.39-beta": "",
+    "1.12.2-11.13.0.40": "Many changes since last changelog, finally a release. Please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
+    "1.12.2-11.13.1.41": "Simplified the way the CraftTweaker scripts are being created in code.\nAdded minHeight and maxHeight to the world gen exception if those values are set incorrect.\nOptimized World Gen slightly.\nAdded a NodeCraft command.\nUpdated localization entries for the commands, to include modid (*this has been updated to the relative languages*).\nUpdated Tile Entity registration to use the ResourceLocation version instead of the string version.\nNow requires TheDragonLib 1.12.2-5.3.0"
   }
 }
