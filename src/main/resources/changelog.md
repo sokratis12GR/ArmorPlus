@@ -1,9 +1,20 @@
+ArmorPlus 1.12.2-11.13.1.41
+----------------------------
+
+* Simplified the way the CraftTweaker scripts are being created in code.
+* Added minHeight and maxHeight to the world gen exception if those values are set incorrect.
+* Optimized World Gen slightly.
+* Added a NodeCraft command
+* Updated localization entries for the commands, to include modid (*this has been updated to the relative languages*)
+* Updated Tile Entity registration to use the ResourceLocation version instead of the string version.
+* Updated registration objects (Items, Blocks) use ResourceLocations instead of Strings for their registry names.
+* Now requires TheDragonLib 1.12.2-5.3.0
+
 ArmorPlus 1.12.2-11.13.0.40
 ----------------------------
 
 * Version is now marked as release ("recommended").
 * Fixed Localization on all of the supported languages (not updated the localization)
-
 
 ArmorPlus 1.12.2-11.12.1.39-beta
 ----------------------------

@@ -24,26 +24,26 @@ material.infused_lava_crystal.name=Лавовый Кристалл
 tile.armorplus.block_energy_creative.name=Креативная Энергетическая Ячейка
 
 #Commands
-commands.error.arg.invalid=Недопустимые аргументы
-commands.error.arg.missing=Не хватает аргументов
-commands.error.arg.player.missing=Вы должны указать, к какому игроку вы хотите выполнить это действие.
-commands.error.404=Команда не найдена!
-commands.error.unknown=Неизвестная команда! Пожалуйста, используйте /armorplus help
-commands.error.perm=У вас нет разрешения на использование этой команды.
-commands.success=Совершено успешно
-commands.format.help=%s - %s
+commands.armorplus.error.arg.invalid=Недопустимые аргументы
+commands.armorplus.error.arg.missing=Не хватает аргументов
+commands.armorplus.error.arg.player.missing=Вы должны указать, к какому игроку вы хотите выполнить это действие.
+commands.armorplus.error.404=Команда не найдена!
+commands.armorplus.error.unknown=Неизвестная команда! Пожалуйста, используйте /armorplus help
+commands.armorplus.error.perm=У вас нет разрешения на использование этой команды.
+commands.armorplus.success=Совершено успешно
+commands.armorplus.format.help=%s - %s
 
 #CommandHelp
-commands.help.usage=/armorplus help
-commands.help.help=Отображает справочную информацию для "/armorplus" команды.
+commands.armorplus.help.usage=/armorplus help
+commands.armorplus.help.help=Отображает справочную информацию для "/armorplus" команды.
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Показывает информацию о ArmorPlus
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Показывает информацию о ArmorPlus
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Открывает ссылку в браузере на ArmorPlus Wiki
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Открывает ссылку в браузере на ArmorPlus Wiki
 
 #BOOKS
 item.armorplus.book.name=ArmorPlus Книга

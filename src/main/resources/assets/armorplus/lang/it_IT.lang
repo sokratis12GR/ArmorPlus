@@ -24,16 +24,6 @@ gui.armorplus.info.text_line_four=Avrai bisogno di cambiarlo nelle config
 gui.armorplus.info.text_line_five=Da `I:Recipe:1` a `I:Recipe:0`.
 gui.armorplus.info.text_line_six=Modalità di gioco attuale `I:Recipe: %s`.
 
-#CommandInfoText
-command.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
-command.armorplus.info_line_one.part_two.text=by %s sokratis12GR (TheDragonTeam)
-command.armorplus.info_line_two.text=[Grazie %s per aver scaricato %s]
-command.armorplus.info_line_three.text=[modid: %s]
-command.armorplus.info_line_four.text=[Versione minecraft: %s]
-command.armorplus.info_line_five.text=[Difficoltà delle ricette ArmorPlus: %s]
-command.armorplus.info_line_six.text=[Ricette] usa il comando /armorplus wiki
-command.armorplus.info_line_seven.text=[Discord] usa il comando /armorplus discord
-
 #Enchantmnets
 enchantment.armorplus.life_steal=Vampirismo
 enchantment.armorplus.life_steal.desc=Ruba i punti vita dell'entità attaccata e ti cura
@@ -76,30 +66,38 @@ material.lava_infused_obsidian.name=Ossidiana infusa con la lava
 tile.armorplus.block_energy_creative.name=Cella di energia creativa
 
 #Commands
-commands.error.arg.invalid=Argomenti invalidi
-commands.error.arg.missing=Argomenti mancanti
-commands.error.arg.player.missing=Devi specificare su quale giocatore desideri fare questa azione
-commands.error.404=Comando non trovato!
-commands.error.unknown=Comando sconosciuto! Per aiuto usa /armorplus help
-commands.error.perm=Non hai i permessi per eseguire questo comando.
-commands.success=Comando eseguito con successo!
-commands.format.help=%s - %s
+commands.armorplus.error.arg.invalid=Argomenti invalidi
+commands.armorplus.error.arg.missing=Argomenti mancanti
+commands.armorplus.error.arg.player.missing=Devi specificare su quale giocatore desideri fare questa azione
+commands.armorplus.error.404=Comando non trovato!
+commands.armorplus.error.unknown=Comando sconosciuto! Per aiuto usa /armorplus help
+commands.armorplus.error.perm=Non hai i permessi per eseguire questo comando.
+commands.armorplus.success=Comando eseguito con successo!
+commands.armorplus.format.help=%s - %s
 
 #CommandHelp
-commands.help.usage=/armorplus help
-commands.help.help=Mostra le informazioni di aiuto per il comando "/armorplus"
+commands.armorplus.help.usage=/armorplus help
+commands.armorplus.help.help=Mostra le informazioni di aiuto per il comando "/armorplus"
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Mostra infomazioni circa ArmorPlus mod
+commands.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
+commands.armorplus.info_line_one.part_two.text=by %s sokratis12GR (TheDragonTeam)
+commands.armorplus.info_line_two.text=[Grazie %s per aver scaricato %s]
+commands.armorplus.info_line_three.text=[modid: %s]
+commands.armorplus.info_line_four.text=[Versione minecraft: %s]
+commands.armorplus.info_line_five.text=[Difficoltà delle ricette ArmorPlus: %s]
+commands.armorplus.info_line_six.text=[Ricette] usa il comando /armorplus wiki
+commands.armorplus.info_line_seven.text=[Discord] usa il comando /armorplus discord
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Mostra infomazioni circa ArmorPlus mod
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Apre un collegamento nel tuo motore di ricerca per la Wiki di ArmorPlus
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Apre un collegamento nel tuo motore di ricerca per la Wiki di ArmorPlus
 
 #CommandDiscord
-commands.discord.usage=/armorplus discord
-commands.discord.help=Apre un link di invito per il nostro server Discord "TheDragonTeam" nel tuo motore di ricerca
+commands.armorplus.discord.usage=/armorplus discord
+commands.armorplus.discord.help=Apre un link di invito per il nostro server Discord "TheDragonTeam" nel tuo motore di ricerca
 
 #JEI
 gui.jei.category.workbench=Banco da Lavoro

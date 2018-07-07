@@ -39,25 +39,25 @@ material.compressed_obsidian.name=高密度黒曜石
 tile.armorplus.block_energy_creative.name=Creative Power Cell
 
 #Commands
-commands.error.arg.invalid=不正な引数です
-commands.error.arg.missing=引数が不足しています
-commands.error.arg.player.missing=このアクションを実行したいプレイヤーを指定する必要があります
-commands.error.404=コマンドが存在しません!
-commands.error.unknown=不明なコマンドです! helpコマンド: /armorplus help
-commands.error.perm=コマンドの実行許可がありません
-commands.success=実行しました
+commands.armorplus.error.arg.invalid=不正な引数です
+commands.armorplus.error.arg.missing=引数が不足しています
+commands.armorplus.error.arg.player.missing=このアクションを実行したいプレイヤーを指定する必要があります
+commands.armorplus.error.404=コマンドが存在しません!
+commands.armorplus.error.unknown=不明なコマンドです! helpコマンド: /armorplus help
+commands.armorplus.error.perm=コマンドの実行許可がありません
+commands.armorplus.success=実行しました
 
 #CommandHelp
-commands.help.usage=/armorplus help
-commands.help.help=Displays the help information for the "/armorplus" command.
+commands.armorplus.help.usage=/armorplus help
+commands.armorplus.help.help=Displays the help information for the "/armorplus" command.
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Shows Information about ArmorPlus
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Shows Information about ArmorPlus
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
 
 #JEI
 gui.jei.category.workbench=ArmorPlus 作業台

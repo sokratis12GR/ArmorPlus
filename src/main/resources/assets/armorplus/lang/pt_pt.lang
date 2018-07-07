@@ -41,25 +41,25 @@ material.compressed_obsidian.name=Obsidiana Comprimida
 tile.armorplus.block_energy_creative.name=Creative Power Cell
 
 #Commands
-commands.error.arg.invalid=Argumentos Inválidos
-commands.error.arg.missing=Argumentos Insuficientes
-commands.error.arg.player.missing=Precisas especificar em qual jogador desejas realizar esta ação.
-commands.error.404=Comando não encontrado!
-commands.error.unknown=Comando Desconhecido! Por favor utilize /armorplus help
-commands.error.perm=Não tens permissão para utilizar este comando.
-commands.success=Executado com sucesso.
+commands.armorplus.error.arg.invalid=Argumentos Inválidos
+commands.armorplus.error.arg.missing=Argumentos Insuficientes
+commands.armorplus.error.arg.player.missing=Precisas especificar em qual jogador desejas realizar esta ação.
+commands.armorplus.error.404=Comando não encontrado!
+commands.armorplus.error.unknown=Comando Desconhecido! Por favor utilize /armorplus help
+commands.armorplus.error.perm=Não tens permissão para utilizar este comando.
+commands.armorplus.success=Executado com sucesso.
 
 #CommandHelp
-commands.help.usage=/armorplus help
-commands.help.help=Exibe a informação de ajuda para o comando "/armorplus".
+commands.armorplus.help.usage=/armorplus help
+commands.armorplus.help.help=Exibe a informação de ajuda para o comando "/armorplus".
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Mostra Informação sobre ArmorPlus
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Mostra Informação sobre ArmorPlus
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Abre um link no browser para a ArmorPlus Wiki
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Abre um link no browser para a ArmorPlus Wiki
 
 #JEI
 gui.jei.category.workbench=Bancada de Trabalho

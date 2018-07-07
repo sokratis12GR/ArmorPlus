@@ -10,25 +10,25 @@ itemGroup.armorplus.blocks=AP Blöcke
 key.categories.armorplus=ArmorPlus
 
 #Commands
-commands.error.arg.invalid=Ungültige Argumente
-commands.error.arg.missing=Nicht genügend Argumente
-commands.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
-commands.error.404=Befehl nicht gefunden!
-commands.error.unknown=Unbekannter Befehl! mit "/armorplus help" kannst du dir eine übersicht anzeigen lassen
-commands.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
-commands.success=Erfolgreich ausgeführt
+commands.armorplus.error.arg.invalid=Ungültige Argumente
+commands.armorplus.error.arg.missing=Nicht genügend Argumente
+commands.armorplus.error.arg.player.missing=Du musst angeben, auf welchen Spieler die Aktion angewandt werden soll.
+commands.armorplus.error.404=Befehl nicht gefunden!
+commands.armorplus.error.unknown=Unbekannter Befehl! mit "/armorplus help" kannst du dir eine übersicht anzeigen lassen
+commands.armorplus.error.perm=Du hast nicht die Berechtigung diesen Befehl zu verwenden.
+commands.armorplus.success=Erfolgreich ausgeführt
 
 #CommandHelp
-commands.help.usage=/armorplus help
-commands.help.help=Zeigt die Hilfe für den "/armorplus" Befehl an.
+commands.armorplus.help.usage=/armorplus help
+commands.armorplus.help.help=Zeigt die Hilfe für den "/armorplus" Befehl an.
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Zeigt Informationen über ArmorPlus
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Zeigt Informationen über ArmorPlus
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Öffnet einen Link in deinem Browser zur ArmorPlus Wiki
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Öffnet einen Link in deinem Browser zur ArmorPlus Wiki
 
 #BOOKS
 item.armorplus.book.name=ArmorPlus Buch
