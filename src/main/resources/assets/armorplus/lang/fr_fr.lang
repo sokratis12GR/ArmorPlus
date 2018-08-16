@@ -9,7 +9,7 @@ itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
 
 # Sound Events
-armorplus.subtitle.trap_triggered=Trap Triggered
+armorplus.subtitle.trap_triggered=Piège Activé
 
 # Status
 status.armorplus.tgotg.gained_item=You got: %s [%s]
@@ -33,7 +33,7 @@ enchantment.armorplus.furious.desc=Quand vous êtes attaquée, vous devenez furi
 armorplus.jei.guardian_scale.desc=Utilisées pour fabriquer les armes du Gardien, ses armures et le Matériel Ultime. Ils sont lâchées par les gardiens et les anciens gardiens.
 armorplus.jei.wither_bone.desc=Utilisées pour fabriquer les armes et les armures formidables et le Matériel Ultime. Ils sont lâchées par les Withers et les withers squelettes.
 armorplus.jei.ender_dragon_scale.desc=Utilisées pour fabriquer les armes du l'Ender Dragon, ses armures et le Matériel Ultime. Ils sont lâchées par l'Ender Dragon et les Ender Dragon Zombies.
-armorplus.jei.lava_infuser.desc=Used for infusing Lava Crystals and Obsidian blocks into Lava Infused Obsidian. You need to provide it with lava buckets in order to work.
+armorplus.jei.lava_infuser.desc=Utilisée pour infuser des Crystaux de Lave avec de l'Obsidienne pour obtenir Obsidienne Infusée de Lave. Vous deviez la fournir avec des seaux de lave pour fonctionner.
 
 # Baubles
 item.armorplus.bauble_cosmetic_dragon.name=Dragon Cosmetique
@@ -44,11 +44,11 @@ container.armorplus.high_tech_bench=Table d'Artisanat d'Haute-Tech
 container.armorplus.ulti_tech_bench=Table d'Artisanat d'Ulti-Tech
 container.armorplus.champion_bench=Table d'Artisanat du Champion
 container.armorplus.inventory=Inventaire
-container.armorplus.lava_infuser=Lava Infuser
+container.armorplus.lava_infuser=Infuseur de Lave
 
 # Tooltip
-tooltip.shift.showinfo.text_one=Press
-tooltip.shift.showinfo.text_two=for more info.
+tooltip.shift.showinfo.text_one=Pressez
+tooltip.shift.showinfo.text_two=pour plus d'infos.
 
 # TiC
 modifier.firestorm.name=Tempête de Feu
@@ -58,8 +58,8 @@ modifier.firestorm.extra2=Durée du Combustion: %ss
 modifier.ultimatemod.name=Étendu
 modifier.ultimatemod.desc=Ajouter +1 Modificateur
 material.infused_lava_crystal.name=Cristal de Lave
-material.compressed_obsidian.name=Compressed Obsidian
-material.lava_infused_obsidian.name=Lava Infused Obsidian
+material.compressed_obsidian.name=Obsidienne Compressée
+material.lava_infused_obsidian.name=Obsidienne Infusée de Lave
 
 # Tile
 tile.armorplus.block_energy_creative.name=Cellule d'Énergie Créative
@@ -96,23 +96,23 @@ commands.armorplus.wiki.help=Ouvre un lien sur votre navigateur sur le wiki d'Ar
 
 # CommandDiscord
 commands.armorplus.discord.usage=/armorplus discord
-commands.armorplus.discord.help=Opens a Link invite in your browser to our TheDragonTeam Community Discord server
+commands.armorplus.discord.help=Ouvre une invitation sur votre navigateur chez TheDragonTeam, notre communauté Discord.
 
 # JEI
 gui.jei.category.workbench=Workbench
 gui.jei.category.high_tech_bench=High-Tech Bench
 gui.jei.category.ulti_tech_bench=Ulti-Tech Bench
 gui.jei.category.champion_bench=Champion Bench
-gui.jei.category.lava_infuser=Lava Infuser
-gui.jei.category.lava_infuser_infusing=Lava Infuser Infusing
-gui.jei.category.lava_infuser_fuel=Lava Infuser Fuel
+gui.jei.category.lava_infuser=Infuseur de Lave
+gui.jei.category.lava_infuser_infusing=Infuseur de Lave en train d'infuser
+gui.jei.category.lava_infuser_fuel=Carburant d'Infuseur de Lave
 
-gui.jei.category.armorplus.infusing=Infusing
+gui.jei.category.armorplus.infusing=Infuser
 gui.jei.category.armorplus.infusing.experience=%s XP
-gui.jei.category.armorplus.infusing.fuel=Fuel
+gui.jei.category.armorplus.infusing.fuel=Carburant
 gui.jei.category.armorplus.infusing.fuel.smeltCount.single=Smelts 1 item
-gui.jei.category.armorplus.infusing.fuel.smeltCount=Infuses %s items
-gui.jei.category.armorplus.infusing.fuel.burnTime=Burn Time: %s
+gui.jei.category.armorplus.infusing.fuel.smeltCount=Infuse %s objects
+gui.jei.category.armorplus.infusing.fuel.burnTime=Temps d'inflammation: %s
 
 # BOOKS
 item.armorplus.book.name=Livre d'ArmorPlus
