@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-    id "com.matthewprenger.cursegradle" version "1.0.9"
+    id "com.matthewprenger.cursegradle" version "1.1.0"
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
@@ -73,7 +73,7 @@ artifacts {
 dependencies {
     deobfCompile "mezz.jei:jei_1.12.2:${jei_version}"
     compile "net.darkhax.tesla:Tesla-1.12:${tesla_version}"
-    deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
+    deobfCompile "slimeknights:TConstruct:1.12.2-${tconstruct_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
 //    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
     compile "CraftTweaker2:ZenScript:${zenscript_version}"
@@ -104,6 +104,18 @@ processResources {
     rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
+def curseRelations = {
+    //requiredDependency '' //add curseforge-slug here
+    requiredDependency 'thedragonlib'
+    optionalDependency 'crafttweaker'
+    optionalDependency 'tesla'
+    optionalDependency 'tinkers-construct'
+    optionalDependency 'baubles'
+    optionalDependency 'jei'
+    optionalDependency 'the-one-probe'
+    optionalDependency 'projecte'
+}
+
 curseforge {
     apiKey = project.hasProperty('api_token') ? project.api_token : '0'
     project {
@@ -112,15 +124,6 @@ curseforge {
         changelogType = 'markdown'
         releaseType = 'release'
         addGameVersion '1.12.2'
-        relations {
-            requiredLibrary 'thedragonlib'
-            optionalLibrary 'crafttweaker'
-            optionalLibrary 'tesla'
-            optionalLibrary 'tinkers-construct'
-            optionalLibrary 'baubles'
-            optionalLibrary 'jei'
-            optionalLibrary 'the-one-probe'
-            optionalLibrary 'projecte'
-        }
+        relations curseRelations
     }
 }
