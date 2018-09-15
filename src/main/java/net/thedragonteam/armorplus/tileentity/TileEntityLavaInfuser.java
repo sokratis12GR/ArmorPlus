@@ -78,7 +78,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     public static int getItemChargeTime(ItemStack stack) {
         if (stack.isEmpty()) return 0;
         Item item = stack.getItem();
-        return item == Items.LAVA_BUCKET || item == ModItems.lavaCrystal ? 500 : ForgeEventFactory.getItemBurnTime(stack);
+        return item == Items.LAVA_BUCKET || item == ModItems.itemLavaCrystal ? 500 : ForgeEventFactory.getItemBurnTime(stack);
     }
 
     /**
@@ -90,7 +90,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     }
 
     public static boolean isItemValid(ItemStack stack) {
-        return stack == getItemStack(Items.LAVA_BUCKET) || stack == getItemStack(ModItems.lavaCrystal);
+        return stack == getItemStack(Items.LAVA_BUCKET) || stack == getItemStack(ModItems.itemLavaCrystal);
     }
 
     /**

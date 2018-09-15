@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class BaseShapelessOreRecipe implements IRecipe {
-    protected ItemStack output = ItemStack.EMPTY;
+    protected ItemStack output;
     protected NonNullList<Object> input = NonNullList.create();
 
     public BaseShapelessOreRecipe(Block result, Object... recipe) {

@@ -19,7 +19,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class TiCModifiers extends AbstractToolPulse {
 
-    private static final ItemStack infusedLavaCrystal = getItemStack(ModItems.lavaCrystal, 1);
+    private static final ItemStack infusedLavaCrystal = getItemStack(ModItems.itemLavaCrystal, 1);
     public static Modifier theUltimateMaterial;
     public static Modifier infusedLavaCrystalModifier;
 

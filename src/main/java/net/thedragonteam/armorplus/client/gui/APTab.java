@@ -38,8 +38,7 @@ public class APTab extends CreativeTabs {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public ItemStack getIconItemStack() {
+    public ItemStack createIcon() {
         if (tab == 0) {
             return addTabItemStack(APItems.lavaChestplate);
         } else if (tab == 1) {
@@ -53,13 +52,13 @@ public class APTab extends CreativeTabs {
     }
 
     private ItemStack addTabItemStack(Object stack) {
-        return stack instanceof Block || stack instanceof Item ? !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.lavaCrystal) : ItemStack.EMPTY;
+        return stack instanceof Block || stack instanceof Item ? !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.itemLavaCrystal) : ItemStack.EMPTY;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ItemStack getTabIconItem() {
-        return this.getIconItemStack();
+    public ItemStack getIcon() {
+        return this.createIcon();
     }
 
     @Override

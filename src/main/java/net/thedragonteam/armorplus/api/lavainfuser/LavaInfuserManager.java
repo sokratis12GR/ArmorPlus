@@ -31,9 +31,9 @@ public class LavaInfuserManager {
     private final List<LavaInfuserRecipe> recipes = Lists.newArrayList();
 
     private LavaInfuserManager() {
-        this.addInfusingRecipe(getItemStack(ModItems.lavaCrystal, 0), getItemStack(ModItems.lavaCrystal, 1), 0.1D);
+        this.addInfusingRecipe(getItemStack(ModItems.itemLavaCrystal, 0), getItemStack(ModItems.itemLavaCrystal, 1), 0.1D);
         this.addInfusingRecipe(getItemStack(ModBlocks.blockLavaCrystal), getItemStack(ModBlocks.blockInfusedLavaCrystal), 0.2D);
-        this.addInfusingRecipe(ModBlocks.compressedObsidian, getItemStack(ModBlocks.blockLavaInfusedObsidian), 0.2D);
+        this.addInfusingRecipe(ModBlocks.blockCompressedObsidian, getItemStack(ModBlocks.blockLavaInfusedObsidian), 0.2D);
     }
 
     /**

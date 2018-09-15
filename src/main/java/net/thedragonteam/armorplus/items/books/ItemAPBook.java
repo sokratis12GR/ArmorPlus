@@ -10,12 +10,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.client.gui.GuiArmorPlusInfo;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.base.ItemBase;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class ItemAPBook extends BaseItem {
+public class ItemAPBook extends ItemBase {
 
     public ItemAPBook() {
         super("book");

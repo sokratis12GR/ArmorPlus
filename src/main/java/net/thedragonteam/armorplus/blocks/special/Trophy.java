@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
-public enum TrophyType {
+public enum Trophy {
     //Compatibility
     ANY("", 0.5f) {
         @Override
@@ -60,7 +60,7 @@ public enum TrophyType {
     private final String name;
     private final float scale;
 
-    TrophyType(String name, float scale) {
+    Trophy(String name, float scale) {
         this.name = name;
         this.scale = scale;
     }

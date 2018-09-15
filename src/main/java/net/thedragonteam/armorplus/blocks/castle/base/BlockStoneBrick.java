@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.blocks.castle.BrickColor;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 
@@ -22,10 +22,10 @@ public class BlockStoneBrick extends BlockBase implements IModdedBlock {
 
     public String name;
 
-    public BlockStoneBrick(StoneBricks stoneBricks) {
-        super(Material.ROCK, stoneBricks.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0);
-        this.color = stoneBricks.getMapColor();
-        this.name = stoneBricks.getName() + "_stone_brick";
+    public BlockStoneBrick(BrickColor brickColor) {
+        super(Material.ROCK, brickColor.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0);
+        this.color = brickColor.getMapColor();
+        this.name = brickColor.getName() + "_stone_brick";
     }
 
     @SideOnly(Side.CLIENT)

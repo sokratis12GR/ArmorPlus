@@ -24,10 +24,11 @@ public interface IModelHelper {
 
     @SideOnly(Side.CLIENT)
     default void initModel(ResourceLocation registryName, String suffix, String location, int meta, String variantIn) {
-        String resourcePath = (isNotNullNorEmpty(location)) ? (location + "/" + registryName.getResourcePath() + suffix) : registryName.getResourcePath() + suffix;
-        String resourceLocation = format("%s:%s", registryName.getResourceDomain(), resourcePath);
+        String rp = (isNotNullNorEmpty(location)) ? (location + "/" + registryName.getPath() + suffix) : registryName.getPath() + suffix;
+        String rl = format("%s:%s", registryName.getNamespace(), rp);
+
         if (isNullOrEmpty(variantIn)) variantIn = "inventory";
-        ModelResourceLocation mrl = new ModelResourceLocation(resourceLocation, variantIn);
+        ModelResourceLocation mrl = new ModelResourceLocation(rl, variantIn);
         if (this instanceof Block) {
             setCustomModelResourceLocation(getItem(this), meta, mrl);
         } else if (this instanceof Item) {

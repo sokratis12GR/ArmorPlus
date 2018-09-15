@@ -28,7 +28,7 @@ public class BlockStonebrickWall extends BlockWall implements IModdedBlock {
         super(modelState);
         this.stoneBricks = modelState;
         this.setRegistryName(setRL(stoneBricks.name + "_wall"));
-        this.setUnlocalizedName(setName(stoneBricks.name + "_wall"));
+        this.setTranslationKey(setName(stoneBricks.name + "_wall"));
         this.setResistance(10f);
         this.setHardness(5f);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);

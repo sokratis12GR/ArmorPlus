@@ -25,7 +25,7 @@ public class ModItemRecipes {
             'G', "blockGlass",
             'O', "obsidian"
         ));
-        manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(theGiftOfTheGods, 1),
+        manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemTGOTG, 1),
             "LOL",
             "OSO",
             "LOL",
@@ -110,8 +110,8 @@ public class ModItemRecipes {
             "OOO",
             "OOO",
             'O', "ingotElectrical"));
-        manager.addRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 0));
-        manager.addRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.lavaCrystal, 1));
+        manager.addRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.itemLavaCrystal, 0));
+        manager.addRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.itemLavaCrystal, 1));
 
         manager.addRecipe(getItemStack(ModBlocks.blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockLavaCrystal));
         manager.addRecipe(getItemStack(ModBlocks.blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModBlocks.blockInfusedLavaCrystal));

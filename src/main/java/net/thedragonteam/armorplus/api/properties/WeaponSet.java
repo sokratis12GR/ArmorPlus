@@ -3,18 +3,18 @@ package net.thedragonteam.armorplus.api.properties;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class SetWeaponProperties {
+public class WeaponSet {
 
-    private final WeaponProperty sword;
-    private final WeaponProperty battleAxe;
-    private final WeaponProperty bow;
+    private final Weapon sword;
+    private final Weapon battleAxe;
+    private final Weapon bow;
 
-    public SetWeaponProperties(double meleedmg, double bdmg, int dur) {
+    public WeaponSet(double meleedmg, double bdmg, int dur) {
         this(meleedmg, meleedmg + 2, bdmg, dur);
     }
 
-    public SetWeaponProperties(double sdmg, double badmg, double bdmg, int dur) {
-        this(new WeaponProperty(sdmg, dur), new WeaponProperty(badmg, dur), new WeaponProperty(bdmg, dur));
+    public WeaponSet(double sdmg, double badmg, double bdmg, int dur) {
+        this(new Weapon(sdmg, dur), new Weapon(badmg, dur), new Weapon(bdmg, dur));
     }
 
     /**
@@ -24,21 +24,21 @@ public class SetWeaponProperties {
      * @param battleAxe The weapon properties for the battle axe
      * @param bow       The weapon properties for the bow
      */
-    public SetWeaponProperties(WeaponProperty sword, WeaponProperty battleAxe, WeaponProperty bow) {
+    public WeaponSet(Weapon sword, Weapon battleAxe, Weapon bow) {
         this.sword = sword;
         this.battleAxe = battleAxe;
         this.bow = bow;
     }
 
-    public WeaponProperty getSword() {
+    public Weapon getSword() {
         return sword;
     }
 
-    public WeaponProperty getBattleAxe() {
+    public Weapon getBattleAxe() {
         return battleAxe;
     }
 
-    public WeaponProperty getBow() {
+    public Weapon getBow() {
         return bow;
     }
 }

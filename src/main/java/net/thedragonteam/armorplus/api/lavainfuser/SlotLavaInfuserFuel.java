@@ -22,7 +22,7 @@ public class SlotLavaInfuserFuel extends Slot {
     }
 
     public static boolean isAllowed(ItemStack stack) {
-        return stack.getItem() == Items.LAVA_BUCKET || stack.getItem() == ModItems.lavaCrystal;
+        return stack.getItem() == Items.LAVA_BUCKET || stack.getItem() == ModItems.itemLavaCrystal;
     }
 
     @Override

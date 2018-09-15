@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
-import net.thedragonteam.armorplus.blocks.castle.StoneBricks;
+import net.thedragonteam.armorplus.blocks.castle.BrickColor;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 
 /**
@@ -18,11 +18,11 @@ import net.thedragonteam.armorplus.iface.IModdedBlock;
  */
 public class BlockStoneBrickTower extends BlockBase implements IModdedBlock {
 
-    private StoneBricks stoneBricks;
+    private BrickColor brickColor;
 
-    public BlockStoneBrickTower(StoneBricks stoneBricks) {
-        super(Material.ROCK, stoneBricks.getName() + "_stone_brick_tower", 10.0f, 5.0f, ToolType.PICKAXE, 0);
-        this.stoneBricks = stoneBricks;
+    public BlockStoneBrickTower(BrickColor brickColor) {
+        super(Material.ROCK, brickColor.getName() + "_stone_brick_tower", 10.0f, 5.0f, ToolType.PICKAXE, 0);
+        this.brickColor = brickColor;
     }
 
     @SideOnly(Side.CLIENT)
@@ -32,10 +32,9 @@ public class BlockStoneBrickTower extends BlockBase implements IModdedBlock {
     }
 
     @SuppressWarnings("deprecation")
-
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return this.stoneBricks.getMapColor();
+        return this.brickColor.getMapColor();
     }
 
     @SuppressWarnings("deprecation")

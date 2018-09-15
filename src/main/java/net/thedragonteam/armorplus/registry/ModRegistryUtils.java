@@ -23,27 +23,27 @@ import static net.thedragonteam.armorplus.util.Utils.equipmentSlots;
  **/
 public class ModRegistryUtils {
 
-    public static void registerArmor(boolean isEnabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
-        if (isEnabled) {
+    public static void register(boolean enabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
+        if (enabled) {
             IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]));
         }
     }
 
-    public static void registerArmor(boolean isEnabled, ItemUltimateArmor[] armor) {
-        if (isEnabled) {
+    public static void register(boolean enabled, ItemUltimateArmor[] armor) {
+        if (enabled) {
             IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemUltimateArmor(equipmentSlots[i]));
         }
     }
 
-    public static void registerSword(boolean[] isEnabled, ItemSpecialSword[] sword, Swords[] material) {
-        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
+    public static void register(boolean[] enabled, ItemSpecialSword[] sword, Swords[] material) {
+        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
     }
 
-    public static void registerBattleAxe(boolean[] isEnabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
-        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
+    public static void register(boolean[] enabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
+        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
     }
 
-    public static void registerBow(boolean[] isEnabled, ItemSpecialBow[] bow, Bows[] material) {
-        IntStream.range(0, isEnabled.length).filter(i -> isEnabled[i]).forEachOrdered(i -> bow[i] = new ItemSpecialBow(material[i]));
+    public static void register(boolean[] enabled, ItemSpecialBow[] bow, Bows[] material) {
+        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> bow[i] = new ItemSpecialBow(material[i]));
     }
 }

@@ -15,7 +15,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class ItemCosmetic extends BaseItem implements IModelHelper {
+public class ItemCosmetic extends ItemBase implements IModelHelper {
 
     private final Cosmetics cosmetics;
 

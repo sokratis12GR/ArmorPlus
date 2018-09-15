@@ -12,7 +12,7 @@ import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_regist
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.recipes;
 import static net.thedragonteam.armorplus.registry.APBlocks.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
+import static net.thedragonteam.armorplus.registry.ModBlocks.blockCompressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
 import static net.thedragonteam.armorplus.util.Utils.setUnbreakable;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -36,8 +36,8 @@ public class ModUltimateRecipes {
             'U', getItemStack(materials, 4),
             'W', workbench,
             'H', highTechBench,
-            'O', compressedObsidian,
-            'L', getItemStack(lavaCrystal, 1));
+            'O', blockCompressedObsidian,
+            'L', getItemStack(itemLavaCrystal, 1));
         /* The Ultimate Armor */
         if (global_registry.enableTheUltimateArmor && recipes.enableTheUltimateArmorRecipes) {
             manager.addRecipe(getItemStack(theUltimateHelmet),
@@ -49,7 +49,7 @@ public class ModUltimateRecipes {
                 "UCCRCCU",
                 " UUUUU ",
                 'U', getItemStack(materials, 4),
-                'C', getItemStack(lavaCrystal, 1),
+                'C', getItemStack(itemLavaCrystal, 1),
                 'L', getItemStack(theUltimateParts, 2),
                 'M', getItemStack(theUltimateParts, 1),
                 'R', getItemStack(theUltimateParts, 0)
@@ -63,7 +63,7 @@ public class ModUltimateRecipes {
                 "UCCRCCU",
                 " UUUUU ",
                 'U', getItemStack(materials, 4),
-                'C', getItemStack(lavaCrystal, 1),
+                'C', getItemStack(itemLavaCrystal, 1),
                 'L', getItemStack(theUltimateParts, 5),
                 'M', getItemStack(theUltimateParts, 4),
                 'R', getItemStack(theUltimateParts, 3)
@@ -77,7 +77,7 @@ public class ModUltimateRecipes {
                 "UCCRCCU",
                 " UUUUU ",
                 'U', getItemStack(materials, 4),
-                'C', getItemStack(lavaCrystal, 1),
+                'C', getItemStack(itemLavaCrystal, 1),
                 'L', getItemStack(theUltimateParts, 8),
                 'M', getItemStack(theUltimateParts, 7),
                 'R', getItemStack(theUltimateParts, 6)
@@ -91,7 +91,7 @@ public class ModUltimateRecipes {
                 "UCCRCCU",
                 " UUUUU ",
                 'U', getItemStack(materials, 4),
-                'C', getItemStack(lavaCrystal, 1),
+                'C', getItemStack(itemLavaCrystal, 1),
                 'L', getItemStack(theUltimateParts, 11),
                 'M', getItemStack(theUltimateParts, 10),
                 'R', getItemStack(theUltimateParts, 9)
@@ -112,7 +112,7 @@ public class ModUltimateRecipes {
                     'R', Blocks.NETHERRACK,
                     'T', Blocks.NETHER_BRICK,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableEnderDragonArmor) {
@@ -130,7 +130,7 @@ public class ModUltimateRecipes {
                     'R', Items.ENDER_EYE,
                     'T', Items.END_CRYSTAL,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableGuardianArmor) {
@@ -148,7 +148,7 @@ public class ModUltimateRecipes {
                     'R', Items.PRISMARINE_SHARD,
                     'T', Blocks.SPONGE,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             //Chestplate Parts
@@ -167,7 +167,7 @@ public class ModUltimateRecipes {
                     'R', Blocks.NETHERRACK,
                     'T', Blocks.NETHER_BRICK,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableEnderDragonArmor) {
@@ -185,7 +185,7 @@ public class ModUltimateRecipes {
                     'R', Items.ENDER_EYE,
                     'T', Items.END_CRYSTAL,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableGuardianArmor) {
@@ -203,7 +203,7 @@ public class ModUltimateRecipes {
                     'R', Items.PRISMARINE_SHARD,
                     'T', Blocks.SPONGE,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             //Leggings Parts
@@ -222,7 +222,7 @@ public class ModUltimateRecipes {
                     'R', Blocks.NETHERRACK,
                     'T', Blocks.NETHER_BRICK,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableEnderDragonArmor) {
@@ -240,7 +240,7 @@ public class ModUltimateRecipes {
                     'R', Items.ENDER_EYE,
                     'T', Items.END_CRYSTAL,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableGuardianArmor) {
@@ -258,7 +258,7 @@ public class ModUltimateRecipes {
                     'R', Items.PRISMARINE_SHARD,
                     'T', Blocks.SPONGE,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             //Boots Parts
@@ -277,7 +277,7 @@ public class ModUltimateRecipes {
                     'R', Blocks.NETHERRACK,
                     'T', Blocks.NETHER_BRICK,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableEnderDragonArmor) {
@@ -295,7 +295,7 @@ public class ModUltimateRecipes {
                     'R', Items.ENDER_EYE,
                     'T', Items.END_CRYSTAL,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
             if (global_registry.enableGuardianArmor) {
@@ -313,7 +313,7 @@ public class ModUltimateRecipes {
                     'R', Items.PRISMARINE_SHARD,
                     'T', Blocks.SPONGE,
                     'U', getItemStack(materials, 4),
-                    'C', getItemStack(lavaCrystal, 1)
+                    'C', getItemStack(itemLavaCrystal, 1)
                 );
             }
         }

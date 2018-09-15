@@ -25,6 +25,10 @@ public interface IRarityHelper {
         return addRarity(enumName, getValueByName(formatting), displayName);
     }
 
+    /**
+     * @param stack the ItemStack that is getting the rarity
+     * @return the color of the ItemStack (the `rarity`)
+     */
     EnumRarity getRarity(ItemStack stack);
 
 }

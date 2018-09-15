@@ -11,9 +11,9 @@ import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.base.ItemBase;
 
-public class ItemSpawnStructure extends BaseItem {
+public class ItemSpawnStructure extends ItemBase {
 
     private final ResourceLocation structureLocation;
 

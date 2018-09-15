@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.base.ItemBase;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 import net.thedragonteam.thedragonlib.util.LogHelper;
@@ -39,12 +39,12 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class TheGiftOfTheGods extends BaseItem {
+public class ItemTGOTG extends ItemBase {
 
     private EnumRarity golden = addRarity("GOLD", GOLD, "GOLD");
     private Random random = new Random();
 
-    public TheGiftOfTheGods() {
+    public ItemTGOTG() {
         super("the_gift_of_the_gods");
         int maxUsable = tgotg.maxUses - 1;
         this.setMaxDamage(maxUsable);
@@ -88,7 +88,7 @@ public class TheGiftOfTheGods extends BaseItem {
                 playerIn.sendStatusMessage(setTextTranslation("status.armorplus.tgotg.gained_item", item.getItemStackDisplayName(playerIn.getHeldItem(hand)), item.getRegistryName()), false);
                 if (debugMode && debugModeTGOTG)
                     LogHelper.info(format("Item's Registry Name: {0};\n Item''s Creative Tab: {1}\n{2}{3}", item.getRegistryName(), item.getCreativeTab(),
-                        " ; Item's Unlocalized Name: " + item.getUnlocalizedName() + ";\n Does the Item have Subtypes: " + item.getHasSubtypes() + "\n",
+                        " ; Item's Unlocalized Name: " + item.getTranslationKey() + ";\n Does the Item have Subtypes: " + item.getHasSubtypes() + "\n",
                         " ; Item's Max Damage: " + getMaxDamage(getItemStack(item))));
             }
             playerIn.getHeldItem(hand).damageItem(1, playerIn);

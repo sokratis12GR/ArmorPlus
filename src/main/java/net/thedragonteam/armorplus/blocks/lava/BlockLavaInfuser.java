@@ -26,7 +26,6 @@ import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
 import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
-import net.thedragonteam.armorplus.util.Utils;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Random;
@@ -34,8 +33,8 @@ import java.util.Random;
 import static net.minecraft.util.EnumFacing.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing;
-import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -50,7 +49,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         this.isInfusing = isInfusing;
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, NORTH));
         this.setRegistryName(setRL(name));
-        this.setUnlocalizedName(setName(name));
+        this.setTranslationKey(setName(name));
         this.setResistance(10000.0F);
         this.setHardness(2.5F);
         this.setHarvestLevel(ToolType.PICKAXE.getTool(), 1);
@@ -244,7 +243,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
     @Override
     @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
-        EnumFacing enumfacing = EnumFacing.getFront(meta);
+        EnumFacing enumfacing = EnumFacing.byIndex(meta);
 
         if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
             enumfacing = NORTH;

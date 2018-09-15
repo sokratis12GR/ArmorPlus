@@ -33,8 +33,8 @@ public class CompatibilityProjectE implements ICompatibility {
             ItemStack witherBone = getItemStack(materials, 2);
             ItemStack enderDragonScale = getItemStack(materials, 3);
             ItemStack theUltimateMaterial = getItemStack(materials, 4);
-            ItemStack lavaCrystal = getItemStack(ModItems.lavaCrystal);
-            ItemStack infusedLavaCrystal = getItemStack(ModItems.lavaCrystal, 1);
+            ItemStack lavaCrystal = getItemStack(ModItems.itemLavaCrystal);
+            ItemStack infusedLavaCrystal = getItemStack(ModItems.itemLavaCrystal, 1);
             emc.registerCustomEMC(getItemStack(Items.SKULL, 1), 46421);
             emc.registerCustomEMC(guardianScale, 69632);
             emc.registerCustomEMC(witherBone, 69632);

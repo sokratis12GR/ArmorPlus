@@ -32,7 +32,7 @@ public class ItemSpecialArrow extends ItemArrow implements IModelHelper {
     public ItemSpecialArrow(ArrowType type) {
         this.type = type;
         this.setRegistryName(type.getItemArrowName());
-        this.setUnlocalizedName(setName(type.getItemArrowName()));
+        this.setTranslationKey(setName(type.getItemArrowName()));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.arrowColor = addRarity("ARROW_TYPE", type.getFormatting(), "ARROW_TYPE");
     }

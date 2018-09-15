@@ -23,21 +23,21 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class OreLavaCrystal extends BlockBase implements IModdedBlock {
+public class BlockCrystalOre extends BlockBase implements IModdedBlock {
 
-    public OreLavaCrystal() {
+    public BlockCrystalOre() {
         super(Material.ROCK, "ore_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
     }
 
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        Item item = lavaCrystal;
+        Item item = itemLavaCrystal;
         Random rand;
         rand = world instanceof World ? ((World) world).rand : RANDOM;
         int count = quantityDropped(state, fortune, rand);

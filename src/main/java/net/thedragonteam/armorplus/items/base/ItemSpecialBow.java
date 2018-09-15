@@ -61,7 +61,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
         this.formatting = bows.getTextFormatting();
         this.itemBow = bows.getBowItem();
         this.setRegistryName(setRL(bows.getName() + "_bow"));
-        this.setUnlocalizedName(setName(bows.getName() + "_bow"));
+        this.setTranslationKey(setName(bows.getName() + "_bow"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {

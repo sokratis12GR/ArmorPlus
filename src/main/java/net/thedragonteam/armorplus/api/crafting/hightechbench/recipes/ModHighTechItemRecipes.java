@@ -8,8 +8,8 @@ import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 
 import static net.thedragonteam.armorplus.registry.APBlocks.*;
-import static net.thedragonteam.armorplus.registry.ModBlocks.compressedObsidian;
-import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModBlocks.blockCompressedObsidian;
+import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -28,8 +28,8 @@ public class ModHighTechItemRecipes {
             'U', getItemStack(materials, 4),
             'W', workbench,
             'H', highTechBench,
-            'O', compressedObsidian,
-            'L', getItemStack(lavaCrystal, 1));
+            'O', blockCompressedObsidian,
+            'L', getItemStack(itemLavaCrystal, 1));
         manager.addRecipe(new BaseShapelessOreRecipe(getItemStack(materials, 4),
             "scaleEnderDragon",
             "scaleGuardian",

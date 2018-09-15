@@ -76,13 +76,13 @@ public final class TiCMaterials extends AbstractToolPulse {
 
     @Subscribe
     public void setupMaterials(FMLInitializationEvent event) {
-        INFUSED_LAVA_CRYSTAL.addItem(getItemStack(ModItems.lavaCrystal, 1), 2, Material.VALUE_Ingot);
+        INFUSED_LAVA_CRYSTAL.addItem(getItemStack(ModItems.itemLavaCrystal, 1), 2, Material.VALUE_Ingot);
         INFUSED_LAVA_CRYSTAL.addItem("gemInfusedLavaCrystal", 2, Material.VALUE_Ingot);
         INFUSED_LAVA_CRYSTAL.addItem(ModBlocks.blockInfusedLavaCrystal, Material.VALUE_Block);
         INFUSED_LAVA_CRYSTAL.addItem("blockInfusedLavaCrystal", 2, Material.VALUE_Block);
         INFUSED_LAVA_CRYSTAL.addTrait((ITrait) TiCModifiers.infusedLavaCrystalModifier, HEAD).addTrait(flammable, HEAD).addTrait(autosmelt);
 
-        COMPRESSED_OBSIDIAN.addItem(ModBlocks.compressedObsidian, Material.VALUE_Ingot);
+        COMPRESSED_OBSIDIAN.addItem(ModBlocks.blockCompressedObsidian, Material.VALUE_Ingot);
         COMPRESSED_OBSIDIAN.addTrait(duritos);
 
         LAVA_INFUSED_OBSIDIAN.addItem(ModBlocks.blockLavaInfusedObsidian, Material.VALUE_Ingot);
@@ -94,7 +94,7 @@ public final class TiCMaterials extends AbstractToolPulse {
         this.setupMaterialBasics(LAVA_INFUSED_OBSIDIAN);
 
         this.setRepresentativeItems(INFUSED_LAVA_CRYSTAL, ModBlocks.blockInfusedLavaCrystal);
-        this.setRepresentativeItems(COMPRESSED_OBSIDIAN, ModBlocks.compressedObsidian);
+        this.setRepresentativeItems(COMPRESSED_OBSIDIAN, ModBlocks.blockCompressedObsidian);
         this.setRepresentativeItems(LAVA_INFUSED_OBSIDIAN, ModBlocks.blockLavaInfusedObsidian);
     }
 

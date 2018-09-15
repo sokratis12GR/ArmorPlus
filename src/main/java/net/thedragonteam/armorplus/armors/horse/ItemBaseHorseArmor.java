@@ -8,14 +8,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.armors.APArmorMaterial;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.base.ItemBase;
 
 import javax.annotation.Nullable;
 
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addHorseArmor;
 
-public class ItemHorseArmor extends BaseItem {
+public class ItemBaseHorseArmor extends ItemBase {
 
     public static HorseArmorType coal = addHorseArmor(COAL, 1);
     public static HorseArmorType lapis = addHorseArmor(LAPIS, 3);
@@ -29,7 +29,7 @@ public class ItemHorseArmor extends BaseItem {
 
     private APArmorMaterial material;
 
-    public ItemHorseArmor(APArmorMaterial material) {
+    public ItemBaseHorseArmor(APArmorMaterial material) {
         super(material.getName() + "_horse_armor");
         this.material = material;
     }

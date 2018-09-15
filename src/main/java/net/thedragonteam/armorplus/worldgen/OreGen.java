@@ -25,9 +25,9 @@ import static net.thedragonteam.armorplus.ModConfig.WorldGenConfig.lava_crystal;
  **/
 public class OreGen implements IWorldGenerator {
 
-    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.overworld.veinAmount);
-    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.oreLavaCrystal.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.overworld.veinAmount);
+    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

@@ -3,7 +3,7 @@ package net.thedragonteam.armorplus.api.properties;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class WeaponProperty {
+public class Weapon {
 
     private final double dmg;
     private final int dur;
@@ -14,13 +14,13 @@ public class WeaponProperty {
      * @param dmg the damage that the weapon will inflict.
      * @param dur the durability of the weapon
      */
-    public WeaponProperty(double dmg, int dur) {
+    public Weapon(double dmg, int dur) {
         this.dmg = dmg;
         this.dur = dur;
     }
 
     /**
-     * @return The damage that the weapon will inflict (+4 Added by minecraft)
+     * @return The damage that the weapon will inflict (+4 Added by minecraft, excluded for bows)
      */
     public double getDmg() {
         return dmg;

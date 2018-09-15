@@ -25,8 +25,8 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class BaseShapedOreRecipe implements IRecipe, IShapedRecipe {
 
     private int xy;
-    protected ItemStack output = ItemStack.EMPTY;
-    protected Object[] input = null;
+    protected ItemStack output;
+    protected Object[] input;
     protected int width = 0, height = 0;
     protected boolean mirrored = true;
 

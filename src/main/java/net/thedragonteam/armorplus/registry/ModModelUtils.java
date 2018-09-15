@@ -18,28 +18,28 @@ import java.util.stream.IntStream;
 @SideOnly(Side.CLIENT)
 public class ModModelUtils {
 
-    public static void registerModels(IModelHelper... objects) {
+    public static void register(IModelHelper... objects) {
         Arrays.stream(objects).forEachOrdered(IModelHelper::initModel);
     }
 
-    public static void registerModels(IModelHelper[]... modelHelpers) {
-        Arrays.stream(modelHelpers).forEachOrdered(ModModelUtils::registerModels);
+    public static void register(IModelHelper[]... modelHelpers) {
+        Arrays.stream(modelHelpers).forEachOrdered(ModModelUtils::register);
     }
 
-    public static void registerModels(boolean isEnabled, IModelHelper modelHolder) {
-        if (isEnabled && Utils.isNotNull(modelHolder)) registerModels(modelHolder);
+    public static void register(boolean isEnabled, IModelHelper modelHolder) {
+        if (isEnabled && Utils.isNotNull(modelHolder)) register(modelHolder);
     }
 
-    public static void registerModels(boolean isEnabled, IModelHelper... modelHolders) {
-        Arrays.stream(modelHolders).forEachOrdered(modelHolder -> registerModels(isEnabled, modelHolder));
+    public static void register(boolean isEnabled, IModelHelper... modelHolders) {
+        Arrays.stream(modelHolders).forEachOrdered(modelHolder -> register(isEnabled, modelHolder));
     }
 
-    public static void registerModels(boolean isEnabled[], IModelHelper[] modelHolder) {
-        IntStream.range(0, isEnabled.length).forEachOrdered(i -> registerModels(isEnabled[i], modelHolder[i]));
+    public static void register(boolean isEnabled[], IModelHelper[] modelHolder) {
+        IntStream.range(0, isEnabled.length).forEachOrdered(i -> register(isEnabled[i], modelHolder[i]));
     }
 
-    public static void registerModels(boolean[] isEnabled, IModelHelper[]... armor) {
-        IntStream.range(0, isEnabled.length).forEachOrdered(i -> registerModels(isEnabled[i], armor[i]));
+    public static void register(boolean[] isEnabled, IModelHelper[]... armor) {
+        IntStream.range(0, isEnabled.length).forEachOrdered(i -> register(isEnabled[i], armor[i]));
     }
 
 }

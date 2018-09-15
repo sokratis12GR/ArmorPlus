@@ -6,7 +6,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemAdvanced extends BaseItem {
+public class ItemAdvanced extends ItemBase {
 
     private final TextFormatting formatting;
     private final String displayName;

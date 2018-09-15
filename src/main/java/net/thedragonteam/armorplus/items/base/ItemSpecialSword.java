@@ -54,7 +54,7 @@ public class ItemSpecialSword extends ItemSword implements IModdedItem {
         this.formatting = swords.getTextFormatting();
         this.effect = swords.getEffects();
         this.setRegistryName(setRL(swords.getName() + "_sword"));
-        this.setUnlocalizedName(setName(swords.getName() + "_sword"));
+        this.setTranslationKey(setName(swords.getName() + "_sword"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 

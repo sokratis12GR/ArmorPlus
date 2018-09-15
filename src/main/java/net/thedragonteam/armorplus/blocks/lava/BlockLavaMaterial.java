@@ -15,9 +15,9 @@ import net.thedragonteam.armorplus.iface.IModdedBlock;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class BlockLavaType extends BlockBase implements IModdedBlock {
+public class BlockLavaMaterial extends BlockBase implements IModdedBlock {
 
-    public BlockLavaType(EnumLavaType type) {
+    public BlockLavaMaterial(LavaMaterial type) {
         super(Material.ROCK, type.getName(), type.getResistance(), type.getHardness(), ToolType.PICKAXE, 3, 0.8f);
     }
 
@@ -33,7 +33,7 @@ public class BlockLavaType extends BlockBase implements IModdedBlock {
         return MapColor.RED;
     }
 
-    public enum EnumLavaType implements IStringSerializable {
+    public enum LavaMaterial implements IStringSerializable {
         LAVA_CRYSTAL("lava_crystal"),
         INFUSED_LAVA_CRYSTAL("infused_lava_crystal"),
         COMPRESSED_LAVA_CRYSTAL("compressed_lava_crystal"),
@@ -44,13 +44,13 @@ public class BlockLavaType extends BlockBase implements IModdedBlock {
         private final float resistance;
         private final float hardness;
 
-        EnumLavaType(String name, float resistance, float hardness) {
+        LavaMaterial(String name, float resistance, float hardness) {
             this.name = name;
             this.resistance = resistance;
             this.hardness = hardness;
         }
 
-        EnumLavaType(String name) {
+        LavaMaterial(String name) {
             this("block_" + name, 1000.0F, 5.0F);
         }
 

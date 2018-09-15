@@ -24,13 +24,13 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class RedstoneApple extends ItemFood implements IModdedItem {
+public class ItemRedstoneApple extends ItemFood implements IModdedItem {
 
-    public RedstoneApple() {
+    public ItemRedstoneApple() {
         super(4, 2.0f, false);
         this.setHasSubtypes(true);
         this.setRegistryName(setRL("redstone_apple"));
-        this.setUnlocalizedName(setName("redstone_apple"));
+        this.setTranslationKey(setName("redstone_apple"));
         this.setAlwaysEdible();
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }

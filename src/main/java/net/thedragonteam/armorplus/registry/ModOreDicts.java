@@ -30,21 +30,21 @@ public class ModOreDicts {
         //Ingots
         registerOre("ingotSteel", steelIngot);
         registerOre("ingotElectrical", electricalIngot);
-        registerOre("gemLavaCrystal", lavaCrystal);
-        registerOre("ingotLavaCrystal", lavaCrystal);
-        registerWildOre("gemChargedLavaCrystal", lavaCrystal, 1);
-        registerWildOre("ingotChargedLavaCrystal", lavaCrystal, 1);
-        registerWildOre("gemInfusedLavaCrystal", lavaCrystal, 1);
-        registerWildOre("ingotInfusedLavaCrystal", lavaCrystal, 1);
+        registerOre("gemLavaCrystal", itemLavaCrystal);
+        registerOre("ingotLavaCrystal", itemLavaCrystal);
+        registerWildOre("gemChargedLavaCrystal", itemLavaCrystal, 1);
+        registerWildOre("ingotChargedLavaCrystal", itemLavaCrystal, 1);
+        registerWildOre("gemInfusedLavaCrystal", itemLavaCrystal, 1);
+        registerWildOre("ingotInfusedLavaCrystal", itemLavaCrystal, 1);
         //Blocks
-        registerOre("oreLavaCrystal", oreLavaCrystal);
+        registerOre("oreLavaCrystal", blockCrystalOre);
         registerOre("blockLavaCrystal", blockLavaCrystal);
         registerOre("blockInfusedLavaCrystal", blockInfusedLavaCrystal);
         registerOre("blockCompressedLavaCrystal", blockCompressedLavaCrystal);
         registerOre("blockCompressedInfusedLavaCrystal", blockCompressedInfusedLavaCrystal);
         registerOre("blockSteel", steelBlock);
         registerOre("blockElectrical", electricalBlock);
-        registerOre("blockCompressedObsidian", compressedObsidian);
+        registerOre("blockCompressedObsidian", blockCompressedObsidian);
         registerOre("blockLavaInfusedObsidian", blockLavaInfusedObsidian);
         registerOre("blockInfusedObsidian", blockLavaInfusedObsidian);
         //Benches

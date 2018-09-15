@@ -3,19 +3,19 @@ package net.thedragonteam.armorplus.api.properties;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class AbilityCancellerProperty {
+public class AbilityCanceller {
 
     private final String[] cancelledAbilities;
 
-    public AbilityCancellerProperty() {
+    public AbilityCanceller() {
         this("empty");
     }
 
-    public AbilityCancellerProperty(String cancelledAbility) {
+    public AbilityCanceller(String cancelledAbility) {
         this(new String[]{cancelledAbility});
     }
 
-    public AbilityCancellerProperty(String[] cancelledAbilities) {
+    public AbilityCanceller(String[] cancelledAbilities) {
         this.cancelledAbilities = cancelledAbilities;
     }
 

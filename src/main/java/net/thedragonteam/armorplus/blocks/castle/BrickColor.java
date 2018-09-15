@@ -12,7 +12,7 @@ import java.util.Locale;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public enum StoneBricks implements IStringSerializable {
+public enum BrickColor implements IStringSerializable {
     WHITE(MapColor.SNOW),
     RED(MapColor.RED),
     BLACK(MapColor.BLACK),
@@ -26,7 +26,7 @@ public enum StoneBricks implements IStringSerializable {
      */
     private final MapColor mapColor;
 
-    StoneBricks(MapColor mapColorIn) {
+    BrickColor(MapColor mapColorIn) {
         this.mapColor = mapColorIn;
     }
 

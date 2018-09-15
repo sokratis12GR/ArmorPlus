@@ -28,13 +28,13 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class LavaCactus extends BlockCactus implements IModdedBlock {
+public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
 
-    public LavaCactus() {
+    public BlockLavaCactus() {
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockCactus.AGE, 0));
         this.setTickRandomly(true);
         this.setHardness(0.4f);
-        this.setUnlocalizedName(setName("lava_cactus"));
+        this.setTranslationKey(setName("lava_cactus"));
         this.setRegistryName(setRL("lava_cactus"));
         this.setCreativeTab(tabArmorplusBlocks);
     }
@@ -117,11 +117,10 @@ public class LavaCactus extends BlockCactus implements IModdedBlock {
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+    public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         entityIn.attackEntityFrom(net.minecraft.util.DamageSource.CACTUS, 1.0f);
         entityIn.setFire(2);
     }
-
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
@@ -130,7 +129,7 @@ public class LavaCactus extends BlockCactus implements IModdedBlock {
 
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return CUTOUT;
     }
 

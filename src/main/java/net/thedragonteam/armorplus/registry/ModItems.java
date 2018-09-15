@@ -7,27 +7,27 @@ package net.thedragonteam.armorplus.registry;
 import net.minecraft.util.text.TextFormatting;
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
-import net.thedragonteam.armorplus.armors.horse.ItemHorseArmor;
+import net.thedragonteam.armorplus.armors.horse.ItemBaseHorseArmor;
 import net.thedragonteam.armorplus.items.ItemUltimateParts;
 import net.thedragonteam.armorplus.items.arrows.ArrowType;
 import net.thedragonteam.armorplus.items.arrows.ItemSpecialArrow;
 import net.thedragonteam.armorplus.items.base.*;
 import net.thedragonteam.armorplus.items.books.ItemAPBook;
-import net.thedragonteam.armorplus.items.consumables.RedstoneApple;
-import net.thedragonteam.armorplus.items.consumables.TheGiftOfTheGods;
-import net.thedragonteam.armorplus.items.dev.DevTool;
+import net.thedragonteam.armorplus.items.consumables.ItemRedstoneApple;
+import net.thedragonteam.armorplus.items.consumables.ItemTGOTG;
+import net.thedragonteam.armorplus.items.dev.ItemDevTool;
 import net.thedragonteam.armorplus.items.dev.ItemSpawnStructure;
+import net.thedragonteam.armorplus.items.enums.MetalItems;
+import net.thedragonteam.armorplus.items.materials.ItemMaterial;
+import net.thedragonteam.armorplus.items.materials.ItemLavaCrystal;
 import net.thedragonteam.armorplus.items.weapons.BattleAxes;
 import net.thedragonteam.armorplus.items.weapons.Bows;
-import net.thedragonteam.armorplus.items.enums.Items;
 import net.thedragonteam.armorplus.items.weapons.Swords;
-import net.thedragonteam.armorplus.items.materials.ItemMaterial;
-import net.thedragonteam.armorplus.items.materials.LavaCrystal;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
 import static net.thedragonteam.armorplus.items.enums.Cosmetics.*;
-import static net.thedragonteam.armorplus.registry.ModRegistryUtils.*;
+import static net.thedragonteam.armorplus.registry.ModRegistryUtils.register;
 import static net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT.TOWER;
 
 /**
@@ -36,10 +36,10 @@ import static net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT.TOWER;
 public class ModItems {
 
     public static ItemAPBook bookInfo = new ItemAPBook();
-    public static BaseItem steelIngot = new BaseItem(Items.STEEL_INGOT), electricalIngot = new BaseItem(Items.ELECTRICAL_INGOT);
-    public static RedstoneApple redstoneApple = new RedstoneApple();
-    public static LavaCrystal lavaCrystal = new LavaCrystal();
-    public static TheGiftOfTheGods theGiftOfTheGods = new TheGiftOfTheGods();
+    public static ItemBase steelIngot = new ItemBase(MetalItems.STEEL_INGOT), electricalIngot = new ItemBase(MetalItems.ELECTRICAL_INGOT);
+    public static ItemRedstoneApple itemRedstoneApple = new ItemRedstoneApple();
+    public static ItemLavaCrystal itemLavaCrystal = new ItemLavaCrystal();
+    public static ItemTGOTG itemTGOTG = new ItemTGOTG();
     public static ItemMaterial materials = new ItemMaterial();
     public static ItemAdvanced chainmail = new ItemAdvanced("chainmail", TextFormatting.GRAY, "Chainmail");
     public static ItemAdvanced guardianScale = new ItemAdvanced("guardian_scale", TextFormatting.AQUA, "Guardian Scale");
@@ -90,7 +90,7 @@ public class ModItems {
     public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
     public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
     public static ItemUltimateParts theUltimateParts = new ItemUltimateParts();
-    public static DevTool devTool = new DevTool();
+    public static ItemDevTool itemDevTool = new ItemDevTool();
     public static ItemCosmetic twitchItem = new ItemCosmetic(TWITCH), beamItem = new ItemCosmetic(BEAM),
         theDragonTeamItem = new ItemCosmetic(THE_DRAGON_TEAM), moddedCityItem = new ItemCosmetic(MODDED_CITY),
         jonBamsItem = new ItemCosmetic(JON_BAMS), btmMoon = new ItemCosmetic(BTM_MOON), m1Jordan = new ItemCosmetic(M1JORDAN),
@@ -100,43 +100,46 @@ public class ModItems {
         itemRedstoneArrow = new ItemSpecialArrow(ArrowType.REDSTONE),
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
-    public static ItemHorseArmor[] horseArmors = new ItemHorseArmor[9];
+    public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
     public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", TOWER);
 
     public static void registerItems() {
         //HorseArmors
-        horseArmors[0] = new ItemHorseArmor(COAL);
-        horseArmors[1] = new ItemHorseArmor(LAPIS);
-        horseArmors[2] = new ItemHorseArmor(REDSTONE);
-        horseArmors[3] = new ItemHorseArmor(EMERALD);
-        horseArmors[4] = new ItemHorseArmor(OBSIDIAN);
-        horseArmors[5] = new ItemHorseArmor(LAVA);
-        horseArmors[6] = new ItemHorseArmor(GUARDIAN);
-        horseArmors[7] = new ItemHorseArmor(SUPER_STAR);
-        horseArmors[8] = new ItemHorseArmor(ENDER_DRAGON);
+        horseArmors[0] = new ItemBaseHorseArmor(COAL);
+        horseArmors[1] = new ItemBaseHorseArmor(LAPIS);
+        horseArmors[2] = new ItemBaseHorseArmor(REDSTONE);
+        horseArmors[3] = new ItemBaseHorseArmor(EMERALD);
+        horseArmors[4] = new ItemBaseHorseArmor(OBSIDIAN);
+        horseArmors[5] = new ItemBaseHorseArmor(LAVA);
+        horseArmors[6] = new ItemBaseHorseArmor(GUARDIAN);
+        horseArmors[7] = new ItemBaseHorseArmor(SUPER_STAR);
+        horseArmors[8] = new ItemBaseHorseArmor(ENDER_DRAGON);
         //Armors
-        registerArmor(global_registry.enableChickenArmor, chicken, CHICKEN);
-        registerArmor(global_registry.enableSlimeArmor, slime, SLIME);
-        registerArmor(global_registry.enableCoalArmor, coal, COAL);
-        registerArmor(global_registry.enableLapisArmor, lapis, LAPIS);
-        registerArmor(global_registry.enableRedstoneArmor, redstone, REDSTONE);
-        registerArmor(global_registry.enableEmeraldArmor, emerald, EMERALD);
-        registerArmor(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
-        registerArmor(global_registry.enableLavaArmor, lava, LAVA);
-        registerArmor(global_registry.enableGuardianArmor, guardian, GUARDIAN);
-        registerArmor(global_registry.enableSuperStarArmor, superStar, SUPER_STAR);
-        registerArmor(global_registry.enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
-        registerArmor(global_registry.enableArditeArmor, ardite, ARDITE);
-        registerArmor(global_registry.enableCobaltArmor, cobalt, COBALT);
-        registerArmor(global_registry.enableManyullynArmor, manyullyn, MANYULLYN);
-        registerArmor(global_registry.enablePigIronArmor, pigIron, PIG_IRON);
-        registerArmor(global_registry.enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
-        registerArmor(global_registry.enableTheUltimateArmor, theUltimate);
+        register(global_registry.enableChickenArmor, chicken, CHICKEN);
+        register(global_registry.enableSlimeArmor, slime, SLIME);
+        register(global_registry.enableCoalArmor, coal, COAL);
+        register(global_registry.enableLapisArmor, lapis, LAPIS);
+        register(global_registry.enableRedstoneArmor, redstone, REDSTONE);
+        register(global_registry.enableEmeraldArmor, emerald, EMERALD);
+        register(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
+        register(global_registry.enableLavaArmor, lava, LAVA);
+        register(global_registry.enableGuardianArmor, guardian, GUARDIAN);
+        register(global_registry.enableSuperStarArmor, superStar, SUPER_STAR);
+        register(global_registry.enableEnderDragonArmor, enderDragon, ENDER_DRAGON);
+        register(global_registry.enableTheUltimateArmor, theUltimate);
         //Swords
-        registerSword(isSwordEnabled, sword, swordType);
+        register(isSwordEnabled, sword, swordType);
         //BattleAxes
-        registerBattleAxe(isBattleAxeEnabled, battleAxe, battleAxeType);
+        register(isBattleAxeEnabled, battleAxe, battleAxeType);
         //Bows
-        registerBow(isBowEnabled, bow, bowType);
+        register(isBowEnabled, bow, bowType);
+    }
+
+    public static void registerTCItems() {
+        register(global_registry.enableArditeArmor, ardite, ARDITE);
+        register(global_registry.enableCobaltArmor, cobalt, COBALT);
+        register(global_registry.enableManyullynArmor, manyullyn, MANYULLYN);
+        register(global_registry.enablePigIronArmor, pigIron, PIG_IRON);
+        register(global_registry.enableKnightSlimeArmor, knightSlime, KNIGHT_SLIME);
     }
 }

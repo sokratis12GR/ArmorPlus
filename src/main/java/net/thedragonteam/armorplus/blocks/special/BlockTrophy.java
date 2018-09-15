@@ -21,13 +21,13 @@ import net.thedragonteam.armorplus.tileentity.TileEntityTrophy;
 
 import javax.annotation.Nullable;
 
-import static net.thedragonteam.armorplus.blocks.special.TrophyType.ANY;
+import static net.thedragonteam.armorplus.blocks.special.Trophy.ANY;
 
 public class BlockTrophy extends BlockBase implements IModdedBlock {
 
-    private TrophyType type;
+    private Trophy type;
 
-    public BlockTrophy(TrophyType type) {
+    public BlockTrophy(Trophy type) {
         super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", 20.0f, 3.0f, ToolType.PICKAXE, 1);
         this.type = type;
     }
@@ -62,7 +62,7 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
         ItemStack itemstack = super.getPickBlock(state, target, world, pos, player);
         TileEntityTrophy tileTrophy = (TileEntityTrophy) world.getTileEntity(pos);
         NBTTagCompound nbttagcompound = tileTrophy.saveToNbt(new NBTTagCompound());
-        if (!nbttagcompound.hasNoTags()) {
+        if (!nbttagcompound.isEmpty()) {
             itemstack.setTagInfo("BlockEntityTag", nbttagcompound);
         }
         return itemstack;
@@ -87,7 +87,7 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
 

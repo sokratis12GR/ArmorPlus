@@ -13,5 +13,4 @@ public interface IRepairable {
     default ItemStack getRepairStack() {
         return ItemStack.EMPTY;
     }
-
 }

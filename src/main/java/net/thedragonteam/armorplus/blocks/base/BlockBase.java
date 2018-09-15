@@ -71,7 +71,7 @@ public class BlockBase extends Block {
     public BlockBase(Material material, String name, float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
         super(material);
         this.setRegistryName(setRL(name));
-        this.setUnlocalizedName(setName(name));
+        this.setTranslationKey(setName(name));
         this.setResistance(resistance);
         this.setHardness(hardness);
         this.setHarvestLevel(tool.getTool(), harvestLevel);

@@ -22,7 +22,7 @@ import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
-import net.thedragonteam.armorplus.items.base.BaseItem;
+import net.thedragonteam.armorplus.items.base.ItemBase;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -43,9 +43,9 @@ import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class DevTool extends BaseItem {
+public class ItemDevTool extends ItemBase {
 
-    public DevTool() {
+    public ItemDevTool() {
         super("dev_tool");
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
@@ -139,7 +139,7 @@ public class DevTool extends BaseItem {
         if (!stack.isEmpty()) {
             itemDataMap.put("itemstack", getPrimitive(stack.getItem().getRegistryName()));
             itemDataMap.put("display_name", getPrimitive(stack.getDisplayName()));
-            itemDataMap.put("unlocalized_name", getPrimitive(stack.getUnlocalizedName()));
+            itemDataMap.put("unlocalized_name", getPrimitive(stack.getTranslationKey()));
             itemDataMap.put("count", getPrimitive(stack.getCount()));
             itemDataMap.put("metadata", getPrimitive(stack.getMetadata()));
         }

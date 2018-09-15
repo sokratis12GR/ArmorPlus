@@ -7,7 +7,7 @@ package net.thedragonteam.armorplus.items.enums;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public enum Items {
+public enum MetalItems {
     ELECTRICAL_INGOT("electrical_ingot", 0),
     STEEL_INGOT("steel_ingot", 1);
 
@@ -15,7 +15,7 @@ public enum Items {
 
     private final int id;
 
-    Items(String nameIn, int ID) {
+    MetalItems(String nameIn, int ID) {
         this.name = nameIn;
         this.id = ID;
     }

@@ -188,7 +188,7 @@ public class APItems {
         if (gr.enableEnderDragonWeapons[1]) enderDragonBattleAxe = battleAxe[8];
         if (gr.enableEnderDragonWeapons[2]) enderDragonBow = bow[8];
 
-        infusedLavaCrystal = getItemStack(lavaCrystal, 1);
+        infusedLavaCrystal = getItemStack(itemLavaCrystal, 1);
         chainmail = getItemStack(materials, 0);
         guardianScale = getItemStack(materials, 1);
         witherBone = getItemStack(materials, 2);

@@ -59,7 +59,7 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
         this.effect = battleAxes.getEffects();
         this.efficiency = battleAxes.getEfficiency();
         this.setRegistryName(setRL(battleAxes.getName() + "_battle_axe"));
-        this.setUnlocalizedName(Utils.setName(battleAxes.getName() + "_battle_axe"));
+        this.setTranslationKey(Utils.setName(battleAxes.getName() + "_battle_axe"));
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
     }
 

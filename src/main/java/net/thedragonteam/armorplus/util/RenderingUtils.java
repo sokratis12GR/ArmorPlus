@@ -9,7 +9,7 @@ public class RenderingUtils {
         box.rotateAngleY = degree * limbSwingAmount * MathHelper.cos(speed * limbSwing + offset) + weight * limbSwingAmount;
     }
 
-    public static void flap(ModelRenderer box, float speed, float degree, boolean invert, float offset, float weight, float limbSwing, float limbSwingAmount) {
+    public static void flap(ModelRenderer box, float speed, float degree, float offset, float weight, float limbSwing, float limbSwingAmount) {
         box.rotateAngleZ = degree * limbSwingAmount * MathHelper.cos(speed * limbSwing + offset) + weight * limbSwingAmount;
     }
 
@@ -17,7 +17,7 @@ public class RenderingUtils {
         box.rotationPointY = degree * limbSwingAmount * MathHelper.cos(speed * limbSwing + offset) + weight * limbSwingAmount;
     }
 
-    public static void walk(ModelRenderer box, float speed, float degree, boolean invert, float offset, float weight, float limbSwing, float limbSwingAmount) {
+    public static void walk(ModelRenderer box, float speed, float degree, float offset, float weight, float limbSwing, float limbSwingAmount) {
         box.rotateAngleX = degree * limbSwingAmount * MathHelper.cos(speed * limbSwing + offset) + weight * limbSwingAmount;
     }
 }

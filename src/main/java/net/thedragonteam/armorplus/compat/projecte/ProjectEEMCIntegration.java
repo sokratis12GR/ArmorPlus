@@ -57,11 +57,11 @@ public class ProjectEEMCIntegration {
         ItemStack witherBone = getItemStack(materials, 2);
         ItemStack enderDragonScale = getItemStack(materials, 3);
         ItemStack theUltimateMaterial = getItemStack(materials, 4);
-        ItemStack infusedLavaCrystal = getItemStack(ModItems.lavaCrystal, 1);
-        addConversion(getItemStack(compressedObsidian), of(OBSIDIAN, 9));
+        ItemStack infusedLavaCrystal = getItemStack(ModItems.itemLavaCrystal, 1);
+        addConversion(getItemStack(blockCompressedObsidian), of(OBSIDIAN, 9));
         addConversion(highTechBench, of(getItemStack(infusedLavaCrystal), 3, getItemStack(REDSTONE_BLOCK), 5, getItemStack(benches[0]), 1));
         addConversion(ultiTechBench, of(
-            infusedLavaCrystal, 2, theUltimateMaterial, 6, getItemStack(benches[0]), 1, getItemStack(benches[1]), 1, compressedObsidian, 8
+            infusedLavaCrystal, 2, theUltimateMaterial, 6, getItemStack(benches[0]), 1, getItemStack(benches[1]), 1, blockCompressedObsidian, 8
         ));
         if (getRD() == EXPERT || getRD() == HELLISH) {
             //
@@ -71,7 +71,7 @@ public class ProjectEEMCIntegration {
             createWorkbenchArmorEMC(SLIME_BLOCK, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
             //
             createHighTechArmorEMC(EMERALD_BLOCK, EMERALD, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
-            createHighTechArmorEMC(compressedObsidian, OBSIDIAN, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
+            createHighTechArmorEMC(blockCompressedObsidian, OBSIDIAN, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
             createHighTechArmorEMC(blockInfusedLavaCrystal, infusedLavaCrystal, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
             //
             addConversion(chickenHelmet, of(getItemStack(FEATHER), 3, getItemStack(EGG), 2));
@@ -84,7 +84,7 @@ public class ProjectEEMCIntegration {
             createOriginWeaponsEMC(REDSTONE_BLOCK, redstoneSword, redstoneBattleAxe, redstoneBow);
             //
             createHighTechWeaponsEMC(EMERALD_BLOCK, emeraldSword, emeraldBattleAxe, emeraldBow);
-            createHighTechWeaponsEMC(compressedObsidian, obsidianSword, obsidianBattleAxe, obsidianBow);
+            createHighTechWeaponsEMC(blockCompressedObsidian, obsidianSword, obsidianBattleAxe, obsidianBow);
             createHighTechWeaponsEMC(infusedLavaCrystal, lavaSword, lavaBattleAxe, lavaBow);
             registerGuardianEMC(guardianScale);
             registerSuperStarEMC(witherBone);

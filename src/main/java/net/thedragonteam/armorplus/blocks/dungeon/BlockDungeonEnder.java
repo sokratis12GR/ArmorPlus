@@ -22,9 +22,9 @@ import net.thedragonteam.armorplus.registry.ModSounds;
  */
 public class BlockDungeonEnder extends BlockBase implements IModdedBlock {
 
-    private EnderBlockType enderBlocks;
+    private EnderType enderBlocks;
 
-    public BlockDungeonEnder(EnderBlockType enderBlocks) {
+    public BlockDungeonEnder(EnderType enderBlocks) {
         super(Material.ROCK, enderBlocks.getName(), 10000, 100, ToolType.PICKAXE, 4, enderBlocks.getLightLevel(), true);
         this.enderBlocks = enderBlocks;
     }
@@ -37,7 +37,7 @@ public class BlockDungeonEnder extends BlockBase implements IModdedBlock {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (enderBlocks == EnderBlockType.ENDER_STONE_TRAP) {
+        if (enderBlocks == EnderType.ENDER_STONE_TRAP) {
             worldIn.playSound(playerIn, pos, ModSounds.TRAP_TRIGGERED, SoundCategory.BLOCKS, 0.5F, 0.0F);
         }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
