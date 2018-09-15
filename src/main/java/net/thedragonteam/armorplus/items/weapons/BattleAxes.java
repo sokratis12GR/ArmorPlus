@@ -22,19 +22,17 @@ import net.thedragonteam.armorplus.util.ToolTipUtils;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.stream.IntStream.range;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.items.base.ItemSpecialBattleAxe.*;
-import static net.thedragonteam.armorplus.registry.ModItems.lavaCrystal;
+import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
+import static net.thedragonteam.armorplus.util.Utils.applyNegativeEffect;
 import static net.thedragonteam.armorplus.util.Utils.boxList;
-import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -45,8 +43,8 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), lapis, 9.0F, global_registry.enableLapisWeapons),
     REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), redstone, 9.0F, global_registry.enableRedstoneWeapons),
     EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), emerald, 10.0F, global_registry.enableEmeraldWeapons),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.compressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
-    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(lavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
+    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.blockCompressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
+    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(itemLavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
     GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), guardian, 14.0F, global_registry.enableGuardianWeapons),
     SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), super_star, 15.0F, global_registry.enableSuperStarWeapons),
     ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), ender_dragon, 16.0F, global_registry.enableEnderDragonWeapons),
@@ -133,20 +131,12 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         return efficiency;
     }
 
-    public boolean areEffectsEnabled() {
-        return this.negative.isEnabled();
-    }
-
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, @Nonnull EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (this.ignite.isEnabled()) {
             target.setFire(ignite.getFireSeconds());
         }
-        if (this.areEffectsEnabled()) {
-            IntStream.range(0, this.negative.getNegativeEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(this.getApplyEffectNames().get(potionID)), convertToSeconds(this.getApplyEffectDurations().get(potionID)), this.getApplyEffectLevels().get(potionID), BAD)
-            );
-        }
+        applyNegativeEffect(target, negative);
         return true;
     }
 

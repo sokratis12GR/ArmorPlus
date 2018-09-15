@@ -73,7 +73,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
     public EntityEquipmentSlot slot;
     private EnumAction wear = addAction("WEAR");
-    private APArmorMaterial material;
+    public APArmorMaterial material;
     private ItemStack repairStack;
 
     public ItemArmorBase(APArmorMaterial material, EntityEquipmentSlot slot) {
@@ -89,7 +89,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
     private void createPieces(EntityEquipmentSlot slot, String name) {
         String piece = name + (slot == HEAD ? "_helmet" : slot == CHEST ? "_chestplate" : slot == LEGS ? "_leggings" : slot == FEET ? "_boots" : "");
         this.setRegistryName(setRL(piece));
-        this.setUnlocalizedName(setName(piece));
+        this.setTranslationKey(setName(piece));
     }
 
     @Override
@@ -113,7 +113,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
         this.slot = slot;
     }
 
-    private void setRepairStack(ItemStack repairStack) {
+    public void setRepairStack(ItemStack repairStack) {
         this.repairStack = repairStack;
     }
 

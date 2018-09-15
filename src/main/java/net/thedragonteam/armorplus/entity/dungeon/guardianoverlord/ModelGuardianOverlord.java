@@ -464,10 +464,10 @@ public class ModelGuardianOverlord extends ModelBase {
 
         //Arms/Hands
         swing(conectionForArmRight, 0.2f * globalSpeed, 0.4f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
-        walk(conectionForArmRight, 0.2f * globalSpeed, 0.2f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(conectionForArmRight, 0.2f * globalSpeed, 0.2f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
 
         swing(conectionForArmRight_1, 0.2f * globalSpeed, 0.4f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
-        walk(conectionForArmRight_1, 0.2f * globalSpeed, 0.2f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(conectionForArmRight_1, 0.2f * globalSpeed, 0.2f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
 
         swing(connectionArm, 0.3f * globalSpeed, 0.4f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
         //  walk(connectionArm, 0.3f * globalSpeed, 0.2f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
@@ -489,7 +489,7 @@ public class ModelGuardianOverlord extends ModelBase {
         swing(tailFin, 0.2f * globalSpeed, 0.1f * globalDegree, 0.0f, 0.2f, limbSwing, limbSwingAmount);
 
         //Legs
-        walk(legOne, 0.2f * globalSpeed, -1.0f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
-        walk(legTwo, 0.2f * globalSpeed, 1.0f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(legOne, 0.2f * globalSpeed, -1.0f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(legTwo, 0.2f * globalSpeed, 1.0f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
     }
 }

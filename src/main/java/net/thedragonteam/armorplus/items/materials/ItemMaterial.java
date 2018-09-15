@@ -31,7 +31,7 @@ public class ItemMaterial extends Item implements IModdedItem {
 
     public ItemMaterial() {
         this.setRegistryName(setRL("material"));
-        this.setUnlocalizedName(setName("material"));
+        this.setTranslationKey(setName("material"));
         this.setHasSubtypes(true);
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
     }
@@ -43,17 +43,17 @@ public class ItemMaterial extends Item implements IModdedItem {
     //4 = The Ultimate Material
     @Override
     @Nonnull
-    public String getUnlocalizedName(ItemStack stack) {
+    public String getTranslationKey(ItemStack stack) {
         return getUnlocalizedNames(stack, materialNames);
     }
 
     private String getUnlocalizedNames(ItemStack stack, String... names) {
         for (int i = 0; i < names.length; i++) {
             if (stack.getItemDamage() == i) {
-                return super.getUnlocalizedName(stack) + "_" + names[i];
+                return super.getTranslationKey(stack) + "_" + names[i];
             }
         }
-        return super.getUnlocalizedName();
+        return super.getTranslationKey();
     }
 
     @Override

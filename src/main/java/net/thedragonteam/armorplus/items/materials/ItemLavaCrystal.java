@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.util.ToolTipUtils;
+import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -35,16 +36,16 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class LavaCrystal extends Item implements IModdedItem {
+public class ItemLavaCrystal extends Item implements IModdedItem {
 
-    private String[] lavaCrystalNames = new String[]{"", "_infused"};
+    private String[] names = new String[]{"", "_infused"};
 
     private int[] burnTime = new int[]{20000, 22000};
 
-    public LavaCrystal() {
+    public ItemLavaCrystal() {
         this.setHasSubtypes(true);
         this.setRegistryName(setRL("lava_crystal"));
-        this.setUnlocalizedName(setName("lava_crystal"));
+        this.setTranslationKey(setName("lava_crystal"));
         this.setCreativeTab(ArmorPlus.tabArmorplusItems);
         this.setMaxDamage(0);
     }
@@ -84,17 +85,8 @@ public class LavaCrystal extends Item implements IModdedItem {
 
     @Override
     @Nonnull
-    public String getUnlocalizedName(ItemStack stack) {
-        return getUnlocalizedNames(stack, lavaCrystalNames);
-    }
-
-    private String getUnlocalizedNames(ItemStack stack, String... names) {
-        for (int i = 0; i < names.length; i++) {
-            if (stack.getItemDamage() == i) {
-                return super.getUnlocalizedName(stack) + names[i];
-            }
-        }
-        return super.getUnlocalizedName();
+    public String getTranslationKey(ItemStack stack) {
+        return Utils.getUnlocalizedNames(stack, super.getTranslationKey(stack), names);
     }
 
     @Override
@@ -110,7 +102,7 @@ public class LavaCrystal extends Item implements IModdedItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
-            IntStream.range(0, lavaCrystalNames.length).mapToObj(
+            IntStream.range(0, names.length).mapToObj(
                 meta -> getItemStack(this, meta)
             ).forEachOrdered(subItems::add);
         }
@@ -119,8 +111,8 @@ public class LavaCrystal extends Item implements IModdedItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void initModel() {
-        IntStream.range(0, lavaCrystalNames.length).forEachOrdered(
-            meta -> this.initModel(lavaCrystalNames[meta], "lava", meta)
+        IntStream.range(0, names.length).forEachOrdered(
+            meta -> this.initModel(names[meta], "lava", meta)
         );
     }
 }

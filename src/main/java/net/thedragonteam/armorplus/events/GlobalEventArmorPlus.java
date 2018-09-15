@@ -37,8 +37,8 @@ public class GlobalEventArmorPlus {
         Color light_green = new Color(101, 255, 93);
         Color light_blue = new Color(53, 92, 255);
 
-        if (rl != null && rl.getResourceDomain().equals("armorplus")) {
-            String rp = rl.getResourcePath();
+        if (rl != null && rl.getNamespace().equals("armorplus")) {
+            String rp = rl.getPath();
             String displayName = stack.getDisplayName();
             if (rp.contains("lava") && rp.contains("obsidian")) {
                 event.setBorderStart(gold.getRGB());

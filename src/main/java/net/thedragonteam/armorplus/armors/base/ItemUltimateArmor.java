@@ -18,21 +18,15 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.UltimateMaterial.Armor;
 import net.thedragonteam.armorplus.iface.IModdedItem;
-import net.thedragonteam.armorplus.registry.ModPotions;
-import net.thedragonteam.armorplus.util.PotionUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
@@ -41,11 +35,11 @@ import static net.thedragonteam.armorplus.ModConfig.Misc.enableFlightAbility;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.ultimate;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
-import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isItemRepairable;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.*;
 import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
-import static net.thedragonteam.armorplus.util.PotionUtils.*;
+import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -68,19 +62,16 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
     private void createPieces(EntityEquipmentSlot slot) {
         String piece = slot == HEAD ? "the_ultimate_helmet" : slot == CHEST ? "the_ultimate_chestplate" : slot == LEGS ? "the_ultimate_leggings" : slot == FEET ? "the_ultimate_boots" : "";
         this.setRegistryName(setRL(piece));
-        this.setUnlocalizedName(setName(piece));
+        this.setTranslationKey(setName(piece));
     }
 
     public static void onArmorTick(EntityPlayer player) {
-        ItemStack head = player.getItemStackFromSlot(HEAD);
-        ItemStack chest = player.getItemStackFromSlot(CHEST);
-        ItemStack legs = player.getItemStackFromSlot(LEGS);
-        ItemStack feet = player.getItemStackFromSlot(FEET);
         Armor armor = ultimate.armor;
         PlayerCapabilities caps = player.capabilities;
+        boolean isFullSet = isFullSet(player, theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots);
+        boolean isAllowed = isFullSet || caps.isCreativeMode || player.isSpectator();
         if (enableFlightAbility) {
-            if (head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings &&
-                feet.getItem() == theUltimateBoots || caps.isCreativeMode || player.isSpectator()) {
+            if (isAllowed) {
                 caps.allowFlying = true;
             } else {
                 caps.isFlying = false;
@@ -88,23 +79,11 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
             }
         }
         if (armor.setInvincible) {
-            caps.disableDamage = head.getItem() == theUltimateHelmet && chest.getItem() == theUltimateChestplate && legs.getItem() == theUltimateLeggings && feet.getItem() == theUltimateBoots || caps.isCreativeMode || player.isSpectator();
+            caps.disableDamage = isAllowed;
             addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
-        if (isSame(head, theUltimateHelmet) && isSame(chest, theUltimateChestplate) && isSame(legs, theUltimateLeggings) && isSame(feet, theUltimateBoots)) {
-
-            IntStream.range(0, armor.addPotionEffects.length).forEach(potionID -> {
-                Potion potionEffect = getPotion(armor.addPotionEffects[potionID]);
-                if (player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION) {
-                    addPotion(player, potionEffect, convertToSeconds(armor.effectDurations[potionID]), armor.effectLevels[potionID], GOOD);
-                }
-            });
-            List<Potion> removablePotions = Arrays.stream(armor.removePotionEffects).map(PotionUtils::getPotion).collect(Collectors.toList());
-            removablePotions.stream().filter(
-                potionEffect -> Utils.isNotNull(potionEffect) && potionEffect != ModPotions.EMPTY
-            ).forEach(
-                potionEffect -> removePotion(player, potionEffect)
-            );
+        if (isFullSet) {
+            applyEffects(player, boxList(armor.addPotionEffects), boxList(armor.effectDurations), boxList(armor.effectLevels), boxList(armor.removePotionEffects));
         } else if (armor.enableDeBuffs) {
             addPotion(player, MobEffects.POISON, 60, 2, BAD);
             addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);

@@ -19,6 +19,7 @@ import net.thedragonteam.armorplus.worldgen.OreGen;
 import net.thedragonteam.armorplus.worldgen.nbt.StructureGenNBT;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
@@ -40,6 +41,7 @@ public class CommonProxy {
         ModCompatibility.loadCompat(PRE_INIT);
         //TConstruct
         if (isTiCIntegrationEnabled()) TiC.instance().preInit(event);
+        ModItems.registerTCItems();
         LogHelper.info("Finished PreInitialization");
     }
 
@@ -56,6 +58,11 @@ public class CommonProxy {
         ModRecipes.init();
         //TConstruct
         if (isTiCIntegrationEnabled()) TiC.instance().init(event);
+        Arrays.stream(ModItems.ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(ModItems.cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(ModItems.manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(ModItems.knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(ModItems.pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
         LogHelper.info("Finished Initialization");
     }
 

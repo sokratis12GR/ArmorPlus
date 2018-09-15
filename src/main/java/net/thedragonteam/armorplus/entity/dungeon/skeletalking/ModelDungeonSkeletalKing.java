@@ -145,10 +145,10 @@ public class ModelDungeonSkeletalKing extends ModelBase {
         swing(armLeft, 0.2f * globalSpeed, 0.7f * globalDegree, 0.3f, 0.0f, limbSwing, limbSwingAmount);
         swing(armRight, 0.2f * globalSpeed, 0.7f * globalDegree, 0.3f, 0.0f, limbSwing, limbSwingAmount);
 
-        flap(handSkullRight, 0.2f * globalSpeed, -0.7f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
-        flap(handSkullLeft, 0.2f * globalSpeed, 0.7f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        flap(handSkullRight, 0.2f * globalSpeed, -0.7f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        flap(handSkullLeft, 0.2f * globalSpeed, 0.7f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
 
-        walk(legLeft, 0.2f * globalSpeed, -1.0f * globalDegree, true, 0.0f, 0.0f, limbSwing, limbSwingAmount);
-        walk(legRight, 0.2f * globalSpeed, 1.0f * globalDegree, false, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(legLeft, 0.2f * globalSpeed, -1.0f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
+        walk(legRight, 0.2f * globalSpeed, 1.0f * globalDegree, 0.0f, 0.0f, limbSwing, limbSwingAmount);
     }
 }
