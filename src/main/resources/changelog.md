@@ -4,8 +4,9 @@ ArmorPlus 1.12.2-11.14.0.42
 * Technical
   - Simplified a lof of the logic for adding effects and removing them.
   - Additionally reduced the size of duplicated operations
-  - Renamed a lot of the internal code to have consistency in their names 
+  - Renamed a lot of the internal code to have consistency in their names
 * Fixed a bug where cobalt set effect would be impossible to achieve
+* Fixed the inability to repair tconstruct armors
 
 ArmorPlus 1.12.2-11.13.1.41
 ----------------------------
