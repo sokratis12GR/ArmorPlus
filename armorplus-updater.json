@@ -11,8 +11,8 @@
     "1.12-recommended": "1.12-11.5.1.16-alpha",
     "1.12.1-latest": "1.12.1-11.6.4.21-alpha",
     "1.12.1-recommended": "1.12.1-11.6.4.21-alpha",
-    "1.12.2-latest": "1.12.2-11.13.1.40",
-    "1.12.2-recommended": "1.12.2-11.13.1.40"
+    "1.12.2-latest": "1.12.2-11.14.0.42",
+    "1.12.2-recommended": "1.12.2-11.14.0.42"
   },
   "1.10.2": {
     "1.10.2-8.0.1.7": "Quick Fix, Server Crash Issue",
@@ -118,7 +118,8 @@
     "1.12.2-11.11.1.37-beta": "",
     "1.12.2-11.12.0.38-beta": "",
     "1.12.2-11.12.1.39-beta": "",
-    "1.12.2-11.13.0.40": "Many changes since last changelog, finally a release. Please check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md",
-    "1.12.2-11.13.1.41": "Simplified the way the CraftTweaker scripts are being created in code.\nAdded minHeight and maxHeight to the world gen exception if those values are set incorrect.\nOptimized World Gen slightly.\nAdded a NodeCraft command.\nUpdated localization entries for the commands, to include modid (*this has been updated to the relative languages*).\nUpdated Tile Entity registration to use the ResourceLocation version instead of the string version.\nNow requires TheDragonLib 1.12.2-5.3.0"
+    "1.12.2-11.13.0.40": "Many changes since last changelog, finally a release.",
+    "1.12.2-11.13.1.41": "Simplified the way the CraftTweaker scripts are being created in code.\nAdded minHeight and maxHeight to the world gen exception if those values are set incorrect.\nOptimized World Gen slightly.\nAdded a NodeCraft command.\nUpdated localization entries for the commands, to include modid (*this has been updated to the relative languages*).\nUpdated Tile Entity registration to use the ResourceLocation version instead of the string version.\nNow requires TheDragonLib 1.12.2-5.3.0",
+    "1.12.2-11.14.0.42": "\nOptimizations.\nBugs Fixed:\n* Fixed being unable to repair tconstruct armors\n* Fixed being unable to get the full set effect of the cobalt armor.\nPlease check the full changelog here: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
   }
 }
