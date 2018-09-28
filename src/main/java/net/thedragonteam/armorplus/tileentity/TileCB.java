@@ -7,18 +7,18 @@ package net.thedragonteam.armorplus.tileentity;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
-import net.thedragonteam.armorplus.tileentity.base.TileEntityBaseBench;
+import net.thedragonteam.armorplus.tileentity.base.TileBench;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class TileEntityChampionBench extends TileEntityBaseBench {
+public class TileCB extends TileBench {
 
-    public TileEntityChampionBench() {
+    public TileCB() {
         super("champion_bench",82);
     }
 
     public static void registerCBFixes(DataFixer fixer) {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityChampionBench.class, "Items"));
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileCB.class, "Items"));
     }
 }

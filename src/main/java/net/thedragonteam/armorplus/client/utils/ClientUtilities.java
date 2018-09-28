@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.util;
+package net.thedragonteam.armorplus.client.utils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;

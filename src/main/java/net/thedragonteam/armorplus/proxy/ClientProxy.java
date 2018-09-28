@@ -14,9 +14,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.compat.tinkers.TiCMaterials;
-import net.thedragonteam.armorplus.misc.CosmeticsRenderInit;
+import net.thedragonteam.armorplus.client.misc.CosmeticsRenderInit;
 import net.thedragonteam.armorplus.tileentity.TESRTrophy;
-import net.thedragonteam.armorplus.tileentity.TileEntityTrophy;
+import net.thedragonteam.armorplus.tileentity.TileTrophy;
 
 import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCIntegrationEnabled;
 
@@ -35,7 +35,7 @@ public class ClientProxy extends CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrophy.class, new TESRTrophy());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileTrophy.class, new TESRTrophy());
     }
 
     public void postInit(FMLPostInitializationEvent event) {

@@ -4,9 +4,9 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.thedragonteam.armorplus.container.ContainerLavaInfuser;
-import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
-import net.thedragonteam.armorplus.util.TextUtils;
+import net.thedragonteam.armorplus.tileentity.TileLavaInfuser;
 
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
@@ -17,9 +17,9 @@ public class GuiLavaInfuser extends GuiContainer {
 
     private ResourceLocation AP_LAVA_INFUSER_GUI_TEXTURES = setRL("textures/gui/container/gui_lava_infuser.png");
 
-    private TileEntityLavaInfuser tile;
+    private TileLavaInfuser tile;
 
-    public GuiLavaInfuser(InventoryPlayer playerInv, TileEntityLavaInfuser tile) {
+    public GuiLavaInfuser(InventoryPlayer playerInv, TileLavaInfuser tile) {
         super(new ContainerLavaInfuser(playerInv, tile));
         this.tile = tile;
         this.xSize = 176;
@@ -28,7 +28,7 @@ public class GuiLavaInfuser extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.lava_infuser"), 28, 5, 0xffffff);
+        this.fontRenderer.drawString(new TextComponentTranslation("container.armorplus.lava_infuser").getFormattedText(), 28, 5, 0xffffff);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class GuiLavaInfuser extends GuiContainer {
         int l = this.getInfusionProgressScaled(24);
         this.drawTexturedModalRect(i + 91, j + 34, 176, 44, l + 1, 16);
 
-        if (TileEntityLavaInfuser.isInfusing(this.tile)) {
+        if (TileLavaInfuser.isInfusing(this.tile)) {
             int k = this.getInfuseLeftScaled(33);
             this.drawTexturedModalRect(i + 8, j + 21 + 43 - k, 176, 43 - k, 16, k + 1);
         }

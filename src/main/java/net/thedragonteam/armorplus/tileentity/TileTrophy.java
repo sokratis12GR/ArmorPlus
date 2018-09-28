@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityTrophy extends TileEntity {
+public class TileTrophy extends TileEntity {
 
     public WeightedSpawnerEntity entityData = new WeightedSpawnerEntity();
     /**
@@ -37,7 +37,7 @@ public class TileEntityTrophy extends TileEntity {
 
     private String customName;
 
-    public TileEntityTrophy() {
+    public TileTrophy() {
     }
 
     /**
@@ -105,7 +105,7 @@ public class TileEntityTrophy extends TileEntity {
 
     public static void registerTrophyFixes(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, (IDataFixer fixer1, NBTTagCompound compound, int versionIn) -> {
-            if (TileEntity.getKey(TileEntityTrophy.class).equals(new ResourceLocation(compound.getString("id")))) {
+            if (TileEntity.getKey(TileTrophy.class).equals(new ResourceLocation(compound.getString("id")))) {
                 compound.setTag("DisplayEntity", fixer1.process(FixTypes.ENTITY, compound.getCompoundTag("DisplayEntity"), versionIn));
             }
 

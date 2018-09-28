@@ -42,7 +42,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public class TileEntityLavaInfuser extends TileEntityLockable implements ITickable, ISidedInventory {
+public class TileLavaInfuser extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] SLOTS_TOP = new int[]{0};
     private static final int[] SLOTS_BOTTOM = new int[]{2, 1};
     private static final int[] SLOTS_SIDES = new int[]{1};
@@ -63,7 +63,7 @@ public class TileEntityLavaInfuser extends TileEntityLockable implements ITickab
     private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
     public static void registerFixesLavaInfuser(DataFixer fixer) {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityLavaInfuser.class, "Items"));
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileLavaInfuser.class, "Items"));
     }
 
     @SideOnly(Side.CLIENT)

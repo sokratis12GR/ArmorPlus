@@ -15,6 +15,7 @@ import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
 import static slimeknights.tconstruct.library.TinkerRegistry.getMaterial;
+import static slimeknights.tconstruct.library.materials.Material.UNKNOWN;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -51,10 +52,10 @@ public class TiC extends AbstractToolPulse {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        tinkersMaterials.postInit(event);
         initRepresentativeItem(lavacrystalInt, "blockInfusedLavaCrystal");
         initRepresentativeItem(obsidianInt, "blockCompressedObsidian");
         initRepresentativeItem(infusedObsidianInt, "blockLavaInfusedObsidian");
+        tinkersMaterials.postInit(event);
     }
 
     public void initMaterials(MaterialIntegration material) {

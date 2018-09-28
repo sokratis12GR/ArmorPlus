@@ -45,11 +45,13 @@ public class BlockStoneBrickCorner extends BlockStairs implements IModdedBlock {
         return BlockRenderLayer.TRANSLUCENT;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
+    @SuppressWarnings({"deprecation", "NullableProblems"})
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return this.brickColor.getMapColor();

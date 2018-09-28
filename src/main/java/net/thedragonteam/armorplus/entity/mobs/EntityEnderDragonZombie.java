@@ -20,7 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.entity.ai.EntityAIEnderDragonZombieAttack;
+import net.thedragonteam.armorplus.entity.ai.EntityTaskEDZAttack;
 import net.thedragonteam.armorplus.registry.APItems;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
@@ -109,7 +109,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAIEnderDragonZombieAttack(this, 1.0, false));
+        this.tasks.addTask(2, new EntityTaskEDZAttack(this, 1.0, false));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0f));

@@ -25,7 +25,7 @@ import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
-import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.TileLavaInfuser;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Random;
@@ -80,6 +80,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         return block.getDefaultState().withProperty(FACING, other.getValue(FACING));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
@@ -166,7 +167,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      */
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityLavaInfuser();
+        return new TileLavaInfuser();
     }
 
     /**
@@ -174,7 +175,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * IBlockstate
      */
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
@@ -188,8 +189,8 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         if (stack.hasDisplayName()) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityLavaInfuser) {
-                ((TileEntityLavaInfuser) tileentity).setCustomInventoryName(stack.getDisplayName());
+            if (tileentity instanceof TileLavaInfuser) {
+                ((TileLavaInfuser) tileentity).setCustomInventoryName(stack.getDisplayName());
             }
         }
     }
@@ -202,8 +203,8 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         if (!keepInventory) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityLavaInfuser) {
-                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityLavaInfuser) tileentity);
+            if (tileentity instanceof TileLavaInfuser) {
+                InventoryHelper.dropInventoryItems(worldIn, pos, (TileLavaInfuser) tileentity);
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }
@@ -233,6 +234,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
      */
     @Override
+    @SuppressWarnings("deprecation")
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }

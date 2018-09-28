@@ -73,6 +73,11 @@ public class BlockCompressedObsidian extends BlockBase implements IModdedBlock {
     }
 
     @Override
+    public Material getMaterial(IBlockState state) {
+        return super.getMaterial(state);
+    }
+
+    @Override
     @SuppressWarnings("deprecation")
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.BLACK;

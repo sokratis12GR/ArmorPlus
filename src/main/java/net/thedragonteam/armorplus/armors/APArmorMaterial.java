@@ -22,7 +22,7 @@ import net.thedragonteam.armorplus.ModConfig.RegistryConfig.SpecialMaterial.Armo
 import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
-import net.thedragonteam.armorplus.util.ToolTipUtils;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.applyEffects;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isFullSet;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.*;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.armorplus.util.Utils.getTCIngot;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;

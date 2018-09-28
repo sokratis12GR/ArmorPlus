@@ -2,16 +2,18 @@
  * Copyright (c) TheDragonTeam 2016-2017.
  */
 
-package net.thedragonteam.armorplus.util;
+package net.thedragonteam.armorplus.client.utils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
+import net.thedragonteam.armorplus.util.PotionUtils;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
@@ -38,7 +40,7 @@ public final class ToolTipUtils {
      * @param formatting the formatting of the tooltip, its color and style.
      */
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, formattedText("tooltip.shift.showinfo.text_one"), formatting, keyBinding.getDisplayName(), GRAY, formattedText("tooltip.shift.showinfo.text_two")));
+        tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, new TextComponentTranslation("tooltip.shift.showinfo.text_one").getFormattedText(), formatting, keyBinding.getDisplayName(), GRAY, formattedText("tooltip.shift.showinfo.text_two")));
     }
 
     /**
@@ -109,8 +111,8 @@ public final class ToolTipUtils {
                 tooltip.add("\u00a76" + "Sets the entities on fire for " + ignite.getFireSeconds() + " seconds");
             }
             if (negative.isEnabled()) {
-                String[] negativeEffects = negative.getNegativeEffects();
-                int[] effectLevels = negative.getNegativeEffectLevels();
+                String[] negativeEffects = negative.getEffects();
+                int[] effectLevels = negative.getEffectLevels();
                 int colorIndex = 1;
                 for (int abilityIndex = 0; abilityIndex < negativeEffects.length; abilityIndex++) {
                     if (negativeEffects[abilityIndex].contains("empty")) {

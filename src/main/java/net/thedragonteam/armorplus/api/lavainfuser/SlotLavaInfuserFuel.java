@@ -10,7 +10,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.thedragonteam.armorplus.registry.ModItems;
 
-import static net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser.isItemFuel;
+import static net.thedragonteam.armorplus.tileentity.TileLavaInfuser.isItemFuel;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

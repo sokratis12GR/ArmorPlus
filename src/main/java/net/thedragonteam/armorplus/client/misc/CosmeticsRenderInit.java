@@ -1,8 +1,7 @@
-package net.thedragonteam.armorplus.misc;
+package net.thedragonteam.armorplus.client.misc;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -76,7 +75,7 @@ public class CosmeticsRenderInit {
                 String playerName = event.getEntityPlayer().getName();
                 if (entry.getKey() != null && entry.getKey().equalsIgnoreCase(playerName)) {
                     if (playerName.equals("sokratis12GR")) {
-                        Entity king = new EntitySkeletalKing(Minecraft.getMinecraft().world);
+                        EntitySkeletalKing king = new EntitySkeletalKing(Minecraft.getMinecraft().world);
                         RenderEntityHelper.renderBoss(king, event.getEntityPlayer(), event.getPartialRenderTick());
                     }
                     //Render the special Item/Block

@@ -16,30 +16,30 @@ public final class TextUtils {
         return new TextComponentTranslation(translationKey, args);
     }
 
-    public static TextComponentTranslation formatText(TextFormatting color, String translationKey, Object... args) {
-        TextComponentTranslation ret = new TextComponentTranslation(translationKey, args);
+    public static TextComponentTranslation formatText(TextFormatting color, String key, Object... args) {
+        TextComponentTranslation ret = new TextComponentTranslation(key, args);
         ret.getStyle().setColor(color);
         return ret;
     }
 
-    public static String formattedText(TextFormatting color, String translationKey, Object... args) {
-        return formatText(color, translationKey, args).getFormattedText();
+    public static String formattedText(TextFormatting color, String key, Object... args) {
+        return formatText(color, key, args).getFormattedText();
     }
 
-    public static TextComponentTranslation formatText(String translationKey, Object... args) {
-        return new TextComponentTranslation(translationKey, args);
+    public static TextComponentTranslation formatText(String key, Object... args) {
+        return new TextComponentTranslation(key, args);
     }
 
-    public static String formattedText(String translationKey, Object... args) {
-        return setTextTranslation(translationKey, args).getFormattedText();
+    public static String formattedText(String key, Object... args) {
+        return setTextTranslation(key, args).getFormattedText();
     }
 
-    public static String errorText(String translationKey, Object... args) {
-        return formattedText(RED, translationKey, args);
+    public static String errorText(String key, Object... args) {
+        return formattedText(RED, key, args);
     }
 
-    public static String successText(String translationKey, Object... args) {
-        return formattedText(GREEN, translationKey, args);
+    public static String successText(String key, Object... args) {
+        return formattedText(GREEN, key, args);
     }
 
     public static TextComponentString setText(String text) {

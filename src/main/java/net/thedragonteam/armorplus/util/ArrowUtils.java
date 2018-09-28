@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

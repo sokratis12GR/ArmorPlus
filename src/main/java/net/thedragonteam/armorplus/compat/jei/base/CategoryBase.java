@@ -15,6 +15,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.compat.jei.ArmorPlusPlugin;
 import net.thedragonteam.armorplus.compat.jei.JEIUtils;
+import net.thedragonteam.armorplus.compat.jei.misc.OutputSlot;
+import net.thedragonteam.armorplus.compat.jei.misc.UVData;
 
 import javax.annotation.Nonnull;
 
@@ -32,6 +34,10 @@ public class CategoryBase implements IRecipeCategory {
     private final int yPos;
     private final int xy;
     private final String category;
+
+    public CategoryBase(String name, UVData uvData, OutputSlot oSlot, int xy, String category) {
+        this(name, uvData.getU(), uvData.getV(), uvData.getWidthU(), uvData.getHeightV(), oSlot.getX(), oSlot.getY(), xy, category);
+    }
 
     public CategoryBase(String name, int u, int v, int widthU, int heightV, int outputXPos, int outputYPos, int xy, String category) {
         this.xPos = outputXPos;

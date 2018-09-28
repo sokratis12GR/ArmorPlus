@@ -1,29 +1,30 @@
 package net.thedragonteam.armorplus.client.gui.base;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
-import net.thedragonteam.armorplus.util.TextUtils;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import static java.lang.String.format;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 
-public class GuiBaseBench extends GuiContainer {
+public class GuiBaseBench extends GuiBase {
 
+    private final int color;
     public ResourceLocation resourceLocation;
     public String name;
 
-    public GuiBaseBench(Container container, ResourceLocation resourceLocation, String benchName, int xSize, int ySize) {
+    public GuiBaseBench(Container container, ResourceLocation resourceLocation, String benchName, int xSize, int ySize, int color) {
         super(container);
         this.resourceLocation = resourceLocation;
         this.name = benchName;
         this.xSize = xSize;
         this.ySize = ySize;
+        this.color = color;
     }
 
-    public GuiBaseBench(Container container, String benchName, int xSize, int ySize) {
-        this(container, setRL(format("textures/gui/container/gui_%s.png", benchName)), benchName, xSize, ySize);
+    public GuiBaseBench(Container container, String benchName, int xSize, int ySize, int color) {
+        this(container, setRL(format("textures/gui/container/gui_%s.png", benchName)), benchName, xSize, ySize, color);
     }
 
     @Override
@@ -38,8 +39,8 @@ public class GuiBaseBench extends GuiContainer {
      */
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus." + name), 28, 5, 4210752);
-        this.fontRenderer.drawString(TextUtils.formattedText("container.armorplus.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(new TextComponentTranslation("container.armorplus." + name).getFormattedText(), 28, 5, color);
+        this.fontRenderer.drawString(new TextComponentTranslation("container.armorplus.inventory").getFormattedText(), 8, this.ySize - 96 + 2, color);
     }
 
     /**

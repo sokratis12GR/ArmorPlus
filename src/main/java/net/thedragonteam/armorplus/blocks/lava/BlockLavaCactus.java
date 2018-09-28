@@ -71,17 +71,20 @@ public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
         return BlockCactus.CACTUS_AABB;
     }
 
 
+    @SuppressWarnings("NullableProblems")
     @Override
     public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
         return BlockCactus.CACTUS_COLLISION_AABB.offset(pos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;

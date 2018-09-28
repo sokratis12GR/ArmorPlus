@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
-import net.thedragonteam.armorplus.tileentity.TileEntityTrophy;
+import net.thedragonteam.armorplus.tileentity.TileTrophy;
 
 import javax.annotation.Nullable;
 
@@ -35,7 +35,7 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        TileEntityTrophy trophy = new TileEntityTrophy();
+        TileTrophy trophy = new TileTrophy();
         trophy.setEntityId(type.getEntityId());
         trophy.setEntityScale(type.getScale());
         return trophy;
@@ -47,8 +47,8 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
-        if (stack.hasDisplayName() && tileentity instanceof TileEntityTrophy) {
-            ((TileEntityTrophy) tileentity).setCustomName(stack.getDisplayName());
+        if (stack.hasDisplayName() && tileentity instanceof TileTrophy) {
+            ((TileTrophy) tileentity).setCustomName(stack.getDisplayName());
         }
 
         if (tileentity != null) {
@@ -60,7 +60,7 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         ItemStack itemstack = super.getPickBlock(state, target, world, pos, player);
-        TileEntityTrophy tileTrophy = (TileEntityTrophy) world.getTileEntity(pos);
+        TileTrophy tileTrophy = (TileTrophy) world.getTileEntity(pos);
         NBTTagCompound nbttagcompound = tileTrophy.saveToNbt(new NBTTagCompound());
         if (!nbttagcompound.isEmpty()) {
             itemstack.setTagInfo("BlockEntityTag", nbttagcompound);

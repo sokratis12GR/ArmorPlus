@@ -10,7 +10,7 @@ import net.thedragonteam.armorplus.util.Utils;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class EnchantmentBase extends Enchantment {
+public abstract class EnchantmentBase extends Enchantment {
 
     private int min;
     private int max;

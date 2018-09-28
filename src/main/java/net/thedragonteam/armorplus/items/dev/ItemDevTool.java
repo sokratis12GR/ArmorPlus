@@ -37,7 +37,7 @@ import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.DevUtils.enableDevTool;
 import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
 import static net.thedragonteam.armorplus.util.JsonUtils.*;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.isNotNull;
 
 /**

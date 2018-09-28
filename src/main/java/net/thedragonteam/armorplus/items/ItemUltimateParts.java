@@ -44,7 +44,7 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     public EnumRarity getRarity(ItemStack stack) {
         return getRarity("ULTIMATE", ultimate.armor.itemNameColor, "Ultimate");
     }
-
+    
     @Override
     @Nonnull
     public String getTranslationKey(ItemStack stack) {

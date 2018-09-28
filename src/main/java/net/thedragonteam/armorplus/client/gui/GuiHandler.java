@@ -33,20 +33,20 @@ public class GuiHandler implements IGuiHandler {
                 //noinspection NewExpressionSideOnly
                 return new GuiArmorPlusInfo();
             case GUI_WORKBENCH:
-                if (te instanceof TileEntityWorkbench)
-                    return new ContainerWorkbench(player.inventory, (TileEntityWorkbench) te);
+                if (te instanceof TileWB)
+                    return new ContainerWorkbench(player.inventory, (TileWB) te);
             case GUI_HIGH_TECH_BENCH:
-                if (te instanceof TileEntityHighTechBench)
-                    return new ContainerHighTechBench(player.inventory, (TileEntityHighTechBench) te);
+                if (te instanceof TileHTB)
+                    return new ContainerHighTechBench(player.inventory, (TileHTB) te);
             case GUI_ULTI_TECH_BENCH:
-                if (te instanceof TileEntityUltiTechBench)
-                    return new ContainerUltiTechBench(player.inventory, (TileEntityUltiTechBench) te);
+                if (te instanceof TileUTB)
+                    return new ContainerUltiTechBench(player.inventory, (TileUTB) te);
             case GUI_CHAMPION_BENCH:
-                if (te instanceof TileEntityChampionBench)
-                    return new ContainerChampionBench(player.inventory, (TileEntityChampionBench) te);
+                if (te instanceof TileCB)
+                    return new ContainerChampionBench(player.inventory, (TileCB) te);
             case GUI_LAVA_INFUSER:
-                if (te instanceof TileEntityLavaInfuser)
-                    return new ContainerLavaInfuser(player.inventory, (TileEntityLavaInfuser) te);
+                if (te instanceof TileLavaInfuser)
+                    return new ContainerLavaInfuser(player.inventory, (TileLavaInfuser) te);
         }
         return null;
     }
@@ -60,20 +60,20 @@ public class GuiHandler implements IGuiHandler {
             case GUI_ARMORPLUS_INFO:
                 return new GuiArmorPlusInfo();
             case GUI_WORKBENCH:
-                if (te instanceof TileEntityWorkbench)
-                    return new GuiWorkbench(player.inventory, (TileEntityWorkbench) te);
+                if (te instanceof TileWB)
+                    return new GuiWorkbench(player.inventory, (TileWB) te);
             case GUI_HIGH_TECH_BENCH:
-                if (te instanceof TileEntityHighTechBench)
-                    return new GuiHighTechBench(player.inventory, (TileEntityHighTechBench) te);
+                if (te instanceof TileHTB)
+                    return new GuiHighTechBench(player.inventory, (TileHTB) te);
             case GUI_ULTI_TECH_BENCH:
-                if (te instanceof TileEntityUltiTechBench)
-                    return new GuiUltiTechBench(player.inventory, (TileEntityUltiTechBench) te);
+                if (te instanceof TileUTB)
+                    return new GuiUltiTechBench(player.inventory, (TileUTB) te);
             case GUI_CHAMPION_BENCH:
-                if (te instanceof TileEntityChampionBench)
-                    return new GuiChampionBench(player.inventory, (TileEntityChampionBench) te);
+                if (te instanceof TileCB)
+                    return new GuiChampionBench(player.inventory, (TileCB) te);
             case GUI_LAVA_INFUSER:
-                if (te instanceof TileEntityLavaInfuser)
-                    return new GuiLavaInfuser(player.inventory, (TileEntityLavaInfuser) te);
+                if (te instanceof TileLavaInfuser)
+                    return new GuiLavaInfuser(player.inventory, (TileLavaInfuser) te);
         }
         return null;
     }

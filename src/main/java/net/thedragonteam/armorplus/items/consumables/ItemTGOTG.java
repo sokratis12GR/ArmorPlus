@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.items.base.ItemBase;
-import net.thedragonteam.armorplus.util.ToolTipUtils;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 

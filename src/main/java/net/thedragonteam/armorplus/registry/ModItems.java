@@ -5,6 +5,7 @@
 package net.thedragonteam.armorplus.registry;
 
 import net.minecraft.util.text.TextFormatting;
+import net.thedragonteam.armorplus.armors.APArmorMaterial;
 import net.thedragonteam.armorplus.armors.base.ItemArmorBase;
 import net.thedragonteam.armorplus.armors.base.ItemUltimateArmor;
 import net.thedragonteam.armorplus.armors.horse.ItemBaseHorseArmor;
@@ -18,11 +19,13 @@ import net.thedragonteam.armorplus.items.consumables.ItemTGOTG;
 import net.thedragonteam.armorplus.items.dev.ItemDevTool;
 import net.thedragonteam.armorplus.items.dev.ItemSpawnStructure;
 import net.thedragonteam.armorplus.items.enums.MetalItems;
-import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.materials.ItemLavaCrystal;
+import net.thedragonteam.armorplus.items.materials.ItemMaterial;
 import net.thedragonteam.armorplus.items.weapons.BattleAxes;
 import net.thedragonteam.armorplus.items.weapons.Bows;
 import net.thedragonteam.armorplus.items.weapons.Swords;
+
+import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.armors.APArmorMaterial.*;
@@ -101,19 +104,12 @@ public class ModItems {
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
     public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
+    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{COAL, LAPIS, REDSTONE, EMERALD, OBSIDIAN, LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON};
     public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", TOWER);
 
     public static void registerItems() {
         //HorseArmors
-        horseArmors[0] = new ItemBaseHorseArmor(COAL);
-        horseArmors[1] = new ItemBaseHorseArmor(LAPIS);
-        horseArmors[2] = new ItemBaseHorseArmor(REDSTONE);
-        horseArmors[3] = new ItemBaseHorseArmor(EMERALD);
-        horseArmors[4] = new ItemBaseHorseArmor(OBSIDIAN);
-        horseArmors[5] = new ItemBaseHorseArmor(LAVA);
-        horseArmors[6] = new ItemBaseHorseArmor(GUARDIAN);
-        horseArmors[7] = new ItemBaseHorseArmor(SUPER_STAR);
-        horseArmors[8] = new ItemBaseHorseArmor(ENDER_DRAGON);
+        IntStream.range(0, horseArmors.length).forEach(i -> horseArmors[i] = new ItemBaseHorseArmor(horseMaterial[i]));
         //Armors
         register(global_registry.enableChickenArmor, chicken, CHICKEN);
         register(global_registry.enableSlimeArmor, slime, SLIME);

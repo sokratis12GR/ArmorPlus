@@ -40,7 +40,7 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 

@@ -4,7 +4,6 @@
 
 package net.thedragonteam.armorplus.util;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -14,22 +13,17 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
-import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.thedragonteam.armorplus.ArmorPlus.MODID;
-import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
-import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -98,14 +92,6 @@ public final class Utils {
         return key;
     }
 
-    public static void applyNegativeEffect(EntityLivingBase target, Negative effect) {
-        if (effect.isEnabled()) {
-            IntStream.range(0, effect.getNegativeEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(effect.getNegativeEffects()[potionID]), convertToSeconds(effect.getNegativeEffectDurations()[potionID]), effect.getNegativeEffectLevels()[potionID], BAD)
-            );
-        }
-    }
-
     public static ResourceLocation setRL(String path) {
         return new ResourceLocation(MODID, path);
     }
@@ -140,10 +126,6 @@ public final class Utils {
 
     public static boolean isNullOrEmpty(String object) {
         return isNull(object) || Objects.equals(object, "");
-    }
-
-    public static boolean isArmorEmpty(ItemStack helmet, ItemStack chestplate, ItemStack leggings, ItemStack boots) {
-        return (helmet.isEmpty() || chestplate.isEmpty() || leggings.isEmpty() || boots.isEmpty());
     }
 
     public static ItemStack getTCIngot(int meta) {

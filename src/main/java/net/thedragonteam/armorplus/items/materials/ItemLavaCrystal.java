@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.iface.IModdedItem;
-import net.thedragonteam.armorplus.util.ToolTipUtils;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 import net.thedragonteam.armorplus.util.Utils;
 
 import javax.annotation.Nonnull;
@@ -28,7 +28,7 @@ import java.util.stream.IntStream;
 
 import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
 import static net.minecraft.util.text.TextFormatting.ITALIC;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.isKeyDown;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.isKeyDown;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;

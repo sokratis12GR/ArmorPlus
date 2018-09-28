@@ -11,7 +11,7 @@ import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.base.BaseSlotCrafting;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
+import net.thedragonteam.armorplus.tileentity.TileHTB;
 
 import java.util.stream.IntStream;
 
@@ -31,7 +31,7 @@ public class ContainerHighTechBench extends ContainerBenchBase {
     public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 5, 5);
     public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerHighTechBench(InventoryPlayer playerInventory, TileEntityHighTechBench tile) {
+    public ContainerHighTechBench(InventoryPlayer playerInventory, TileHTB tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
         this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getHTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 150, 53));

@@ -24,7 +24,7 @@ import static java.util.stream.IntStream.rangeClosed;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public abstract class TileEntityBaseBench extends TileEntityInventoryBase {
+public abstract class TileBench extends TileEntityInventoryBase {
 
     /**
      * the amount of itemHandler for the crafting grid
@@ -34,7 +34,7 @@ public abstract class TileEntityBaseBench extends TileEntityInventoryBase {
     private String tileEntityName;
     private String customName;
 
-    public TileEntityBaseBench(String tileEntityName, int inventorySize) {
+    public TileBench(String tileEntityName, int inventorySize) {
         super(inventorySize);
         this.tileEntityName = tileEntityName;
         this.inventorySize = inventorySize;
@@ -49,6 +49,11 @@ public abstract class TileEntityBaseBench extends TileEntityInventoryBase {
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
         return rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+    }
+
+    @Override
+    public int getMaxStackSizePerSlot(int slot) {
+        return 128;
     }
 
     public String getCustomName() {

@@ -35,6 +35,7 @@ import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
 import net.thedragonteam.armorplus.entity.mobs.EntityIceGolem;
 import net.thedragonteam.armorplus.items.materials.ItemRename;
 import net.thedragonteam.armorplus.potions.PotionEmpty;
+import net.thedragonteam.armorplus.sounds.SoundTrapTriggered;
 import net.thedragonteam.armorplus.tileentity.*;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -44,7 +45,8 @@ import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModE
 import static net.thedragonteam.armorplus.ArmorPlus.instance;
 import static net.thedragonteam.armorplus.registry.ModBlocks.*;
 import static net.thedragonteam.armorplus.registry.ModItems.*;
-import static net.thedragonteam.armorplus.util.Utils.*;
+import static net.thedragonteam.armorplus.util.Utils.areNotNull;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -125,21 +127,21 @@ public class RegistryEventHandler {
 
     private static void registerTEFixes() {
         DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
-        TileEntityLavaInfuser.registerFixesLavaInfuser(dataFixer);
-        TileEntityWorkbench.registerWBFixes(dataFixer);
-        TileEntityHighTechBench.registerHTBFixes(dataFixer);
-        TileEntityUltiTechBench.registerUTBFixes(dataFixer);
-        TileEntityChampionBench.registerCBFixes(dataFixer);
-        TileEntityTrophy.registerTrophyFixes(dataFixer);
+        TileLavaInfuser.registerFixesLavaInfuser(dataFixer);
+        TileWB.registerWBFixes(dataFixer);
+        TileHTB.registerHTBFixes(dataFixer);
+        TileUTB.registerUTBFixes(dataFixer);
+        TileCB.registerCBFixes(dataFixer);
+        TileTrophy.registerTrophyFixes(dataFixer);
     }
 
     private static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityLavaInfuser.class, setRL("lava_infuser_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityWorkbench.class, setRL("workbench_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityHighTechBench.class, setRL("high_tech_bench_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityUltiTechBench.class, setRL("ulti_tech_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityChampionBench.class, setRL("champion_tile_entity"));
-        GameRegistry.registerTileEntity(TileEntityTrophy.class, setRL("trophy_tile_entity"));
+        GameRegistry.registerTileEntity(TileLavaInfuser.class, setRL("lava_infuser_tile_entity"));
+        GameRegistry.registerTileEntity(TileWB.class, setRL("workbench_tile_entity"));
+        GameRegistry.registerTileEntity(TileHTB.class, setRL("high_tech_bench_tile_entity"));
+        GameRegistry.registerTileEntity(TileUTB.class, setRL("ulti_tech_tile_entity"));
+        GameRegistry.registerTileEntity(TileCB.class, setRL("champion_tile_entity"));
+        GameRegistry.registerTileEntity(TileTrophy.class, setRL("trophy_tile_entity"));
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {
@@ -233,7 +235,6 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void registerSounds(Register<SoundEvent> event) {
-        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        //  event.getRegistry().register(new SoundTrapTriggered());
+        event.getRegistry().register(new SoundTrapTriggered());
     }
 }

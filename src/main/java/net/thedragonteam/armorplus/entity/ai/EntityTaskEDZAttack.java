@@ -8,14 +8,14 @@ import net.thedragonteam.armorplus.entity.mobs.EntityEnderDragonZombie;
  *
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
+public class EntityTaskEDZAttack extends EntityAIAttackMelee {
 
-    private EntityEnderDragonZombie enderDragonZombie;
+    private EntityEnderDragonZombie entity;
     private int raiseArmTicks = 0;
 
-    public EntityAIEnderDragonZombieAttack(EntityEnderDragonZombie enderDragonZombie, double speedIn, boolean longMemoryIn) {
-        super(enderDragonZombie, speedIn, longMemoryIn);
-        this.enderDragonZombie = enderDragonZombie;
+    public EntityTaskEDZAttack(EntityEnderDragonZombie entity, double speedIn, boolean longMemoryIn) {
+        super(entity, speedIn, longMemoryIn);
+        this.entity = entity;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
     @Override
     public void resetTask() {
         super.resetTask();
-        this.enderDragonZombie.setArmsRaised(false);
+        this.entity.setArmsRaised(false);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class EntityAIEnderDragonZombieAttack extends EntityAIAttackMelee {
         super.updateTask();
         this.raiseArmTicks++;
 
-        this.enderDragonZombie.setArmsRaised(this.raiseArmTicks >= 5 && this.attackTick < 10);
+        this.entity.setArmsRaised(this.raiseArmTicks >= 5 && this.attackTick < 10);
     }
 
     private void setRaiseArmTicks(int raiseArmTicks) {

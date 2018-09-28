@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static net.minecraft.stats.StatList.getObjectUseStats;
-import static net.thedragonteam.armorplus.util.ToolTipUtils.showInfo;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.util.Utils.setName;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
 

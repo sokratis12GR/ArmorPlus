@@ -6,7 +6,7 @@ import net.minecraft.inventory.Container;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class ContainerBase extends Container {
+public abstract class ContainerBase extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {

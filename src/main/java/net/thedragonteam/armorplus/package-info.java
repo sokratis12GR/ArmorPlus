@@ -4,7 +4,7 @@
 
 /**
  * @author Sokratis Fotkatzikis
- * @author sokratis12GR
+ * @author SoFoDev
  * @author TheDragonTeam
  * @version 1.0
  */

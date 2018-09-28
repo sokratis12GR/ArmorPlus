@@ -9,7 +9,7 @@ import net.thedragonteam.armorplus.api.lavainfuser.LavaInfuserManager;
 import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserFuel;
 import net.thedragonteam.armorplus.api.lavainfuser.SlotLavaInfuserOutput;
 import net.thedragonteam.armorplus.container.base.ContainerBase;
-import net.thedragonteam.armorplus.tileentity.TileEntityLavaInfuser;
+import net.thedragonteam.armorplus.tileentity.TileLavaInfuser;
 
 import java.util.stream.IntStream;
 
@@ -20,13 +20,13 @@ import static net.minecraft.item.ItemStack.EMPTY;
  */
 public class ContainerLavaInfuser extends ContainerBase {
     private static final int ITEM_BOX = 18;
-    private int cookTime = 0;
-    private int totalCookTime = 0;
-    private int furnaceBurnTime = 0;
-    private int currentItemBurnTime = 0;
-    private TileEntityLavaInfuser tile;
+    private int infusionTime = 0;
+    private int totalInfusionTime = 0;
+    private int infuserInfusingTime = 0;
+    private int currentItemInfusingTime = 0;
+    private TileLavaInfuser tile;
 
-    public ContainerLavaInfuser(InventoryPlayer playerInventory, TileEntityLavaInfuser tile) {
+    public ContainerLavaInfuser(InventoryPlayer playerInventory, TileLavaInfuser tile) {
         this.tile = tile;
         this.addSlotToContainer(new Slot(tile, 0, 69, 35));
         this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
@@ -51,20 +51,20 @@ public class ContainerLavaInfuser extends ContainerBase {
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
         this.listeners.forEach(listener -> {
-            if (this.cookTime != this.tile.getField(2))
+            if (this.infusionTime != this.tile.getField(2))
                 listener.sendWindowProperty(this, 2, this.tile.getField(2));
-            if (this.furnaceBurnTime != this.tile.getField(0))
+            if (this.infuserInfusingTime != this.tile.getField(0))
                 listener.sendWindowProperty(this, 0, this.tile.getField(0));
-            if (this.currentItemBurnTime != this.tile.getField(1))
+            if (this.currentItemInfusingTime != this.tile.getField(1))
                 listener.sendWindowProperty(this, 1, this.tile.getField(1));
-            if (this.totalCookTime != this.tile.getField(3))
+            if (this.totalInfusionTime != this.tile.getField(3))
                 listener.sendWindowProperty(this, 3, this.tile.getField(3));
         });
 
-        this.cookTime = this.tile.getField(2);
-        this.furnaceBurnTime = this.tile.getField(0);
-        this.currentItemBurnTime = this.tile.getField(1);
-        this.totalCookTime = this.tile.getField(3);
+        this.infusionTime = this.tile.getField(2);
+        this.infuserInfusingTime = this.tile.getField(0);
+        this.currentItemInfusingTime = this.tile.getField(1);
+        this.totalInfusionTime = this.tile.getField(3);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class ContainerLavaInfuser extends ContainerBase {
                     if (!this.mergeItemStack(slotStack, 0, 1, false)) {
                         return EMPTY;
                     }
-                } else if (TileEntityLavaInfuser.isItemFuel(slotStack)) {
+                } else if (TileLavaInfuser.isItemFuel(slotStack)) {
                     if (!this.mergeItemStack(slotStack, 1, 2, false)) {
                         return EMPTY;
                     }

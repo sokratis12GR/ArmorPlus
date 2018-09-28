@@ -16,7 +16,7 @@ import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.armorplus.items.weapons.effects.WeaponEffects;
-import net.thedragonteam.armorplus.util.ToolTipUtils;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -32,8 +32,8 @@ import static net.thedragonteam.armorplus.items.base.ItemSpecialSword.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.blockCompressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
+import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.applyNegativeEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
-import static net.thedragonteam.armorplus.util.Utils.applyNegativeEffect;
 import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -70,7 +70,7 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         WeaponEffects effects = new WeaponEffects(material);
         this.negative = effects.getNegative();
         this.ignite = effects.getIgnite();
-        this.effect = setToolTip(negative.getNegativeEffects(), negative.getNegativeEffectLevels());
+        this.effect = setToolTip(negative.getEffects(), negative.getEffectLevels());
     }
 
     @Override
@@ -80,17 +80,17 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
 
     @Override
     public List<String> getApplyEffectNames() {
-        return Arrays.asList(this.negative.getNegativeEffects());
+        return Arrays.asList(this.negative.getEffects());
     }
 
     @Override
     public List<Integer> getApplyEffectLevels() {
-        return Arrays.stream(this.negative.getNegativeEffectLevels()).boxed().collect(Collectors.toList());
+        return Arrays.stream(this.negative.getEffectLevels()).boxed().collect(Collectors.toList());
     }
 
     @Override
     public List<Integer> getApplyEffectDurations() {
-        return boxList(this.negative.getNegativeEffectDurations());
+        return boxList(this.negative.getEffectDurations());
     }
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {

@@ -9,6 +9,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.block.Block;
@@ -22,6 +23,8 @@ import net.thedragonteam.armorplus.compat.jei.base.*;
 import net.thedragonteam.armorplus.compat.jei.lavainfuser.InfuserRecipeMaker;
 import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserCategory;
 import net.thedragonteam.armorplus.compat.jei.lavainfuser.LavaInfuserRecipeWrapper;
+import net.thedragonteam.armorplus.compat.jei.misc.OutputSlot;
+import net.thedragonteam.armorplus.compat.jei.misc.UVData;
 import net.thedragonteam.armorplus.container.*;
 import net.thedragonteam.armorplus.registry.ModBlocks;
 
@@ -58,10 +61,10 @@ public class ArmorPlusPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         jeiHelper = registry.getJeiHelpers();
         registry.addRecipeCategories(
-            new CategoryBase("workbench", 29, 16, 116, 54, 94, 18, 3, JEI_CATEGORY_WORKBENCH),
-            new CategoryBase("high_tech_bench", 11, 16, 156, 93, 136, 36, 5, JEI_CATEGORY_HIGH_TECH_BENCH),
-            new CategoryBaseAdvanced("ulti_tech_bench", 11, 16, 178, 126, 156, 54, 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
-            new CategoryBaseAdvanced("champion_bench", 11, 16, 162, 162, 72, 168, 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
+            new CategoryBase("workbench", new UVData(29, 16, 116, 54), new OutputSlot(94, 18), 3, JEI_CATEGORY_WORKBENCH),
+            new CategoryBase("high_tech_bench", new UVData(11, 16, 156, 93),new OutputSlot( 136, 36), 5, JEI_CATEGORY_HIGH_TECH_BENCH),
+            new CategoryBaseAdvanced("ulti_tech_bench", new UVData (11, 16, 178, 126), new OutputSlot(156, 54), 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
+            new CategoryBaseAdvanced("champion_bench", new UVData(11, 16, 162, 162),new OutputSlot( 72, 168), 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
             new LavaInfuserCategory()
         );
     }
@@ -139,19 +142,23 @@ public class ArmorPlusPlugin implements IModPlugin {
 
     private void registerDescriptions(IModRegistry registry) {
         this.registerDescriptions(registry,
-            new EntryDescription(guardianScale, "armorplus.jei.guardian_scale.desc"),
-            new EntryDescription(witherBone, "armorplus.jei.wither_bone.desc"),
-            new EntryDescription(enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
-            new EntryDescription(getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc")
+            createDesc(guardianScale, "armorplus.jei.guardian_scale.desc"),
+            createDesc(witherBone, "armorplus.jei.wither_bone.desc"),
+            createDesc(enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
+            createDesc(getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc")
         );
     }
 
-    private void registerDescriptions(IModRegistry registry, EntryDescription entryDescription) {
-        registry.addIngredientInfo(entryDescription.getStack(), ItemStack.class, formattedText(entryDescription.getDesc()));
+    private void registerDescriptions(IModRegistry registry, EntryDescription entry) {
+        registry.addIngredientInfo(entry.getStack(), VanillaTypes.ITEM, formattedText(entry.getDesc()));
     }
 
-    private void registerDescriptions(IModRegistry registry, EntryDescription... entryDescriptions) {
-        Arrays.stream(entryDescriptions).forEachOrdered(entryDescription -> registerDescriptions(registry, entryDescription));
+    private void registerDescriptions(IModRegistry registry, EntryDescription... entries) {
+        Arrays.stream(entries).forEachOrdered(entry -> registerDescriptions(registry, entry));
+    }
+
+    private EntryDescription createDesc(ItemStack stack, String desc){
+        return new EntryDescription(stack, desc);
     }
 
     private class EntryDescription {

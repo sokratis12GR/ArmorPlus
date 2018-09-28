@@ -17,6 +17,8 @@ import net.thedragonteam.armorplus.api.crafting.IRecipe;
 
 import java.util.List;
 
+import static mezz.jei.api.ingredients.VanillaTypes.ITEM;
+
 public class JEIUtils {
 
     public static void setRecipe(IRecipeLayout rL, IRecipeWrapper rW, IIngredients in, ICraftingGridHelper cGH, int xPos, int YPos, int height, int width, int inputSlot, int outputSlot) {
@@ -37,8 +39,8 @@ public class JEIUtils {
             return;
         }
 
-        List<List<ItemStack>> inputs = in.getInputs(ItemStack.class);
-        List<List<ItemStack>> outputs = in.getOutputs(ItemStack.class);
+        List<List<ItemStack>> inputs = in.getInputs(ITEM);
+        List<List<ItemStack>> outputs = in.getOutputs(ITEM);
 
         if (rW instanceof IShapedCraftingRecipeWrapper) {
             IShapedCraftingRecipeWrapper wrapper = (IShapedCraftingRecipeWrapper) rW;
@@ -56,9 +58,9 @@ public class JEIUtils {
     public static void getIngredients(IIngredients ingredients, IRecipe recipe, NonNullList<ItemStack> recipeItems) {
         ItemStack recipeOutput = recipe.getRecipeOutput();
         try {
-            ingredients.setInputs(ItemStack.class, recipeItems);
+            ingredients.setInputs(ITEM, recipeItems);
             if (!recipeOutput.isEmpty()) {
-                ingredients.setOutput(ItemStack.class, recipeOutput);
+                ingredients.setOutput(ITEM, recipeOutput);
             }
         } catch (RuntimeException e) {
             String info = ErrorUtil.getInfoFromBrokenCraftingRecipe(recipe, recipeItems, recipeOutput);
@@ -73,9 +75,9 @@ public class JEIUtils {
 
         try {
             List<List<ItemStack>> inputs = stackHelper.expandRecipeItemStackInputs(inputItems);
-            ingredients.setInputLists(ItemStack.class, inputs);
+            ingredients.setInputLists(ITEM, inputs);
             if (!recipeOutput.isEmpty()) {
-                ingredients.setOutput(ItemStack.class, recipeOutput);
+                ingredients.setOutput(ITEM, recipeOutput);
             }
         } catch (RuntimeException e) {
             String info = ErrorUtil.getInfoFromBrokenCraftingRecipe(recipe, inputItems, recipeOutput);

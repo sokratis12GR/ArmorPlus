@@ -4,6 +4,7 @@
 
 package net.thedragonteam.armorplus.util;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.entity.player.EntityPlayer.SleepResult;
@@ -20,6 +21,7 @@ import net.thedragonteam.armorplus.armors.APArmorMaterial;
 
 import java.util.function.Predicate;
 
+import static net.minecraft.enchantment.Enchantment.*;
 import static net.minecraft.util.text.TextFormatting.fromColorIndex;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.minecraftforge.common.util.EnumHelper.addEnchantmentType;
@@ -67,5 +69,17 @@ public class EnumHelperUtil {
 
     public static HorseArmorType addHorseArmor(APArmorMaterial material, int armorStrength) {
         return EnumHelper.addHorseArmor(material.getName(), ArmorPlus.MODID + ":textures/entity/horse/armor/" + material.getName() + ".png", armorStrength);
+    }
+
+    public static Enchantment getEnchantment(int nameOrId) {
+        return getEnchantmentByID(nameOrId);
+    }
+
+    public static Enchantment getEnchantment(String nameOrId) {
+        return getEnchantmentByLocation(nameOrId);
+    }
+
+    public static int getID(Enchantment enchant) {
+        return getEnchantmentID(enchant);
     }
 }

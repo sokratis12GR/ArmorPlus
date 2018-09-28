@@ -36,6 +36,10 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
         this.inventoryHeight = height;
     }
 
+    public NonNullList<ItemStack> getStackList() {
+        return stackList;
+    }
+
     /**
      * Returns the number of slots in the inventory.
      */
@@ -73,7 +77,7 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
     @Nonnull
     @Override
     public String getName() {
-        return "container.cct.crafting";
+        return "container.armorplus.crafting";
     }
 
     /**

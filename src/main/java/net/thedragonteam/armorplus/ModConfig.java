@@ -193,7 +193,6 @@ public class ModConfig {
 
                 @Comment({"Enable/Disable the lava crystal world generation"})
                 public boolean enable;
-
                 @Comment({"Set the rarity level of the lava crystal world gen"})
                 public int rarity;
                 @Comment({"Set the minimum y pos level of the lava crystal world gen"})

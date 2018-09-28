@@ -12,7 +12,7 @@ import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.base.BaseSlotCrafting;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
-import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
+import net.thedragonteam.armorplus.tileentity.TileCB;
 
 import java.util.stream.IntStream;
 
@@ -32,7 +32,7 @@ public class ContainerChampionBench extends ContainerBenchBase {
     public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 9, 9);
     public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerChampionBench(InventoryPlayer playerInventory, TileEntityChampionBench tile) {
+    public ContainerChampionBench(InventoryPlayer playerInventory, TileCB tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
         this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getCBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 189, 51));
@@ -50,19 +50,19 @@ public class ContainerChampionBench extends ContainerBenchBase {
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
-    private void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
-        IntStream.range(0, 1).forEach(k -> {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - k), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
-        });
-    }
+//   private void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
+//       IntStream.range(0, 1).forEach(k -> {
+//           EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k];
+//           addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - k), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+//       });
+//   }
 
-    private void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
-        IntStream.range(0, 1).forEach(k -> {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k + 2];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
-        });
-    }
+//   private void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
+//       IntStream.range(0, 1).forEach(k -> {
+//           EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k + 2];
+//           addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+//       });
+//   }
 
     /**
      * Callback for when the crafting matrix is changed.

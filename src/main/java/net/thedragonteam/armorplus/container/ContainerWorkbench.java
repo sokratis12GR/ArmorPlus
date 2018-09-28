@@ -11,12 +11,12 @@ import net.thedragonteam.armorplus.api.crafting.base.BaseCraftingManager;
 import net.thedragonteam.armorplus.api.crafting.base.BaseSlotCrafting;
 import net.thedragonteam.armorplus.container.base.ContainerBenchBase;
 import net.thedragonteam.armorplus.container.base.InventoryCraftingImproved;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
+import net.thedragonteam.armorplus.tileentity.TileWB;
 
 import java.util.stream.IntStream;
 
 import static net.thedragonteam.armorplus.registry.APItems.*;
-import static net.thedragonteam.armorplus.util.EnchantmentUtils.getEnchantment;
+import static net.thedragonteam.armorplus.util.EnumHelperUtil.getEnchantment;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -34,7 +34,7 @@ public class ContainerWorkbench extends ContainerBenchBase {
     public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
 
-    public ContainerWorkbench(InventoryPlayer playerInventory, TileEntityWorkbench tile) {
+    public ContainerWorkbench(InventoryPlayer playerInventory, TileWB tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
         this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35) {

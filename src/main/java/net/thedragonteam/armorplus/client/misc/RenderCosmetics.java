@@ -1,4 +1,4 @@
-package net.thedragonteam.armorplus.misc;
+package net.thedragonteam.armorplus.client.misc;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

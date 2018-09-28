@@ -7,10 +7,10 @@ package net.thedragonteam.armorplus.blocks.benches;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IStringSerializable;
 import net.thedragonteam.armorplus.client.gui.GuiHandler;
-import net.thedragonteam.armorplus.tileentity.TileEntityChampionBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityHighTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityUltiTechBench;
-import net.thedragonteam.armorplus.tileentity.TileEntityWorkbench;
+import net.thedragonteam.armorplus.tileentity.TileCB;
+import net.thedragonteam.armorplus.tileentity.TileHTB;
+import net.thedragonteam.armorplus.tileentity.TileUTB;
+import net.thedragonteam.armorplus.tileentity.TileWB;
 
 import javax.annotation.Nonnull;
 
@@ -18,10 +18,10 @@ import javax.annotation.Nonnull;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum Benches implements IStringSerializable {
-    WORKBENCH("workbench", new TileEntityWorkbench(), GuiHandler.GUI_WORKBENCH),
-    HIGH_TECH("high_tech_bench", new TileEntityHighTechBench(), GuiHandler.GUI_HIGH_TECH_BENCH),
-    ULTI_TECH("ulti_tech_bench", new TileEntityUltiTechBench(), GuiHandler.GUI_ULTI_TECH_BENCH),
-    CHAMPION("champion_bench", new TileEntityChampionBench(), GuiHandler.GUI_CHAMPION_BENCH),;
+    WORKBENCH("workbench", new TileWB(), GuiHandler.GUI_WORKBENCH),
+    HIGH_TECH("high_tech_bench", new TileHTB(), GuiHandler.GUI_HIGH_TECH_BENCH),
+    ULTI_TECH("ulti_tech_bench", new TileUTB(), GuiHandler.GUI_ULTI_TECH_BENCH),
+    CHAMPION("champion_bench", new TileCB(), GuiHandler.GUI_CHAMPION_BENCH),;
 
     private final String name;
     private final TileEntity tileEntity;

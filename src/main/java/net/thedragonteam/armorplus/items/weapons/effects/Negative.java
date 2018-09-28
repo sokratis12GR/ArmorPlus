@@ -11,19 +11,19 @@ import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 public class Negative implements IRemovable {
 
     private final boolean enableEffect;
-    private final String[] negativeEffects;
-    private final int[] negativeEffectLevels;
-    private final int[] negativeEffectDurations;
+    private final String[] effects;
+    private final int[] effectLevels;
+    private final int[] effectDurations;
 
     public Negative(OriginMaterial material) {
         this(material.weapons.enableEffects, material.weapons.addPotionEffects, material.weapons.effectLevels, material.weapons.effectDurations);
     }
 
-    private Negative(boolean enableEffect, String[] negativeEffects, int[] negativeEffectLevels, int[] negativeEffectDurations) {
+    private Negative(boolean enableEffect, String[] effects, int[] effectLevels, int[] effectDurations) {
         this.enableEffect = enableEffect;
-        this.negativeEffects = negativeEffects;
-        this.negativeEffectLevels = negativeEffectLevels;
-        this.negativeEffectDurations = negativeEffectDurations;
+        this.effects = effects;
+        this.effectLevels = effectLevels;
+        this.effectDurations = effectDurations;
     }
 
     @Override
@@ -31,15 +31,15 @@ public class Negative implements IRemovable {
         return enableEffect;
     }
 
-    public String[] getNegativeEffects() {
-        return negativeEffects;
+    public String[] getEffects() {
+        return effects;
     }
 
-    public int[] getNegativeEffectLevels() {
-        return negativeEffectLevels;
+    public int[] getEffectLevels() {
+        return effectLevels;
     }
 
-    public int[] getNegativeEffectDurations() {
-        return negativeEffectDurations;
+    public int[] getEffectDurations() {
+        return effectDurations;
     }
 }
