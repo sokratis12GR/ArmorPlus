@@ -37,11 +37,12 @@ public class CommonProxy {
         this.registerEntityFixes();
         ModEntities.registerEntitySettings();
         this.registerWorldGenerator(new OreGen(), new StructureGenNBT());
-        ModCompatibility.registerModCompat();
-        ModCompatibility.loadCompat(PRE_INIT);
         //TConstruct
         if (isTiCIntegrationEnabled()) TiC.instance().preInit(event);
         ModItems.registerTCItems();
+        APItems.registerTCItemNames();
+        ModCompatibility.registerModCompat();
+        ModCompatibility.loadCompat(PRE_INIT);
         LogHelper.info("Finished PreInitialization");
     }
 

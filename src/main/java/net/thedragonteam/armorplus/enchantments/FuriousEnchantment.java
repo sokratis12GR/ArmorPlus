@@ -4,11 +4,12 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 
-import static net.thedragonteam.armorplus.enchantments.EnchantmentBase.Levels.values;
+import static net.minecraft.init.MobEffects.SPEED;
+import static net.minecraft.init.MobEffects.STRENGTH;
+import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -24,15 +25,35 @@ public class FuriousEnchantment extends EnchantmentBase {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        Levels levelIn = values()[level];
-        if (levelIn == Levels.ONE) {
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 0));
-        } else if (levelIn == Levels.TWO) {
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 0));
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 460, 0));
-        } else if (levelIn == Levels.THREE) {
-            user.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 460, 1));
-            user.addPotionEffect(new PotionEffect(MobEffects.SPEED, 920, 0));
+        Levels lvl = Levels.values()[level];
+        user.addPotionEffect(new PotionEffect(STRENGTH, convertToSeconds(lvl.strSecs), lvl.strLevel));
+        if (lvl.hasFastLegs) {
+            user.addPotionEffect(new PotionEffect(SPEED, convertToSeconds(lvl.speedSecs), lvl.speedLevel));
+        }
+    }
+
+    public enum Levels {
+        ZERO(),
+        ONE(23, 0, false, 0, 0),
+        TWO(23, 0, true, 23, 0),
+        THREE(23, 1, true, 46, 0);
+
+        public final int strSecs;
+        public final int strLevel;
+        public final boolean hasFastLegs;
+        public final int speedSecs;
+        public final int speedLevel;
+
+        Levels() {
+            this(0, 0, false, 0, 0);
+        }
+
+        Levels(int strSecs, int strLevel, boolean hasFastLegs, int speedSecs, int speedLevel) {
+            this.strSecs = strSecs;
+            this.strLevel = strLevel;
+            this.hasFastLegs = hasFastLegs;
+            this.speedSecs = speedSecs;
+            this.speedLevel = speedLevel;
         }
     }
 }

@@ -327,14 +327,14 @@ public class ModConfig {
                 public OriginArmor(CombinedArmor properties, boolean aeowtdb) {
                     this.itemNameColor = properties.getColor();
                     ArmorAbility abilityProperties = properties.getAbility();
-                    this.removePotionEffects = abilityProperties.getAbilityCanceller().getCancelledAbilities();
+                    this.removePotionEffects = abilityProperties.getAbilityCanceller().getAbilities();
                     AbilityProvider abilityProvider = abilityProperties.getAbilityProvider();
                     this.addPotionEffects = abilityProvider.getAbilities();
                     this.effectLevels = abilityProvider.getLevels();
                     this.effectDurations = abilityProvider.getDurations();
                     this.enableSetEffects = abilityProvider.isEnabled();
                     Armor armor = properties.getArmor();
-                    this.toughnessPoints = armor.getArmorToughnessPoints();
+                    this.toughnessPoints = armor.getToughnessPoints();
                     this.protectionPoints = armor.getArmorPoints();
                     this.enablePieceEffects = new boolean[4];
                     this.setUnbreakable = false;
@@ -413,7 +413,7 @@ public class ModConfig {
 
                     OriginSword(Weapon sword) {
                         damage = sword.getDmg();
-                        durability = sword.getDur();
+                        durability = sword.getDurability(false);
                     }
 
                     @Comment({"Set the amount of damage the sword will do (Additional +4 damage will be added automatically by minecraft)"})
@@ -427,7 +427,7 @@ public class ModConfig {
 
                     OriginBattleAxe(Weapon battleAxe) {
                         damage = battleAxe.getDmg();
-                        durability = battleAxe.getDur();
+                        durability = battleAxe.getDurability(false);
                     }
 
                     @Comment({"Set the amount of damage the battle axe will do (Additional +4 damage will be added automatically by minecraft)"})
@@ -440,7 +440,7 @@ public class ModConfig {
 
                     OriginBow(Weapon bow) {
                         arrowBonusDamage = bow.getDmg();
-                        durability = bow.getDur();
+                        durability = bow.getDurability(false);
                     }
 
                     @Comment({"Set the amount of bonus arrow damage the bow will do"})
@@ -491,14 +491,14 @@ public class ModConfig {
 
                 public Armor(CombinedArmor properties) {
                     this.itemNameColor = properties.getColor();
-                    this.removePotionEffects = properties.getAbility().getAbilityCanceller().getCancelledAbilities();
+                    this.removePotionEffects = properties.getAbility().getAbilityCanceller().getAbilities();
                     AbilityProvider abilityProperties = properties.getAbility().getAbilityProvider();
                     this.addPotionEffects = abilityProperties.getAbilities();
                     this.effectLevels = abilityProperties.getLevels();
                     this.effectDurations = abilityProperties.getDurations();
                     this.enableSetEffects = abilityProperties.isEnabled();
                     net.thedragonteam.armorplus.api.properties.Armor armor = properties.getArmor();
-                    this.toughnessPoints = armor.getArmorToughnessPoints();
+                    this.toughnessPoints = armor.getToughnessPoints();
                     this.protectionPoints = armor.getArmorPoints();
                     this.enablePieceEffects = new boolean[4];
                     this.setUnbreakable = false;
@@ -686,7 +686,8 @@ public class ModConfig {
             public boolean isItemRepairable(ItemStack repair, ItemStack expert) {
                 return false;
             }
-        },;
+        },
+        ;
 
         private final boolean hasRecipes;
 

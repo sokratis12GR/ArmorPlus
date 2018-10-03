@@ -1,30 +1,36 @@
 package net.thedragonteam.armorplus.api.properties;
 
+import static net.thedragonteam.armorplus.api.properties.ArmorPiece.create;
+
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public class Armor {
 
-    private final double armorToughnessPoints;
+    private final double toughnessPoints;
     private final int headArmor;
     private final int chestArmor;
     private final int legsArmor;
     private final int feetArmor;
 
-    public Armor(int headA, int chestA, int legsA, int feetA) {
-        this(0.0, headA, chestA, legsA, feetA);
+    public Armor(int head, int chest, int legs, int feet) {
+        this(0.0, head, chest, legs, feet);
     }
 
-    public Armor(double atPoints, int headA, int chestA, int legsA, int feetA) {
-        this.armorToughnessPoints = atPoints;
-        this.headArmor = headA;
-        this.chestArmor = chestA;
-        this.legsArmor = legsA;
-        this.feetArmor = feetA;
+    public Armor(double toughness, int head, int chest, int legs, int feet) {
+        this(toughness, create(head), create(chest), create(legs), create(feet));
     }
 
-    public double getArmorToughnessPoints() {
-        return this.armorToughnessPoints;
+    public Armor(double toughness, ArmorPiece head, ArmorPiece chest, ArmorPiece legs, ArmorPiece feet) {
+        this.toughnessPoints = toughness;
+        this.headArmor = head.getArmor();
+        this.chestArmor = chest.getArmor();
+        this.legsArmor = legs.getArmor();
+        this.feetArmor = feet.getArmor();
+    }
+
+    public double getToughnessPoints() {
+        return this.toughnessPoints;
     }
 
     public int getHeadArmor() {
@@ -47,6 +53,6 @@ public class Armor {
      * @return An array of the armor points for the armor set, ordered. (Head, Chest, Legs, Feet)
      */
     public int[] getArmorPoints() {
-        return new int[]{headArmor, chestArmor, legsArmor, feetArmor};
+        return new int[]{this.getHeadArmor(), this.getChestArmor(), this.getLegsArmor(), this.getFeetArmor()};
     }
 }

@@ -5,10 +5,10 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-
-import static net.thedragonteam.armorplus.enchantments.EnchantmentBase.Levels.*;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -23,102 +23,71 @@ public class LifeStealEnchantment extends EnchantmentBase {
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        Levels levelIn = values()[level];
+        Levels lvl = Levels.values()[level];
+        float effectPower = lvl.healingFactor;
         float damageDealt;
-        if (user != null) {
-            if (((user.getHeldItemMainhand().getCount() > 0) && !(user.getHeldItemMainhand().getItem() instanceof
-                ItemTool)) || ((user.getHeldItemOffhand().getCount() > 0) && !(user.getHeldItemOffhand().getItem() instanceof
-                ItemTool)) || ((user.getHeldItemMainhand().getCount() > 0) && !(user.getHeldItemMainhand().getItem() instanceof
-                ItemSword)) || ((user.getHeldItemOffhand().getCount() > 0) && !(user.getHeldItemOffhand().getItem() instanceof ItemSword))) {
-                switch (levelIn) {
-                    case ONE:
-                        user.heal(0.5f);
-                        break;
-                    case TWO:
-                        user.heal(1.5f);
-                        break;
-                    case THREE:
-                        user.heal(2.5f);
-                        break;
-                }
-            } else if (((user.getHeldItemMainhand().getCount() > 0) && (user.getHeldItemMainhand().getItem() instanceof ItemTool)) ||
-                ((user.getHeldItemOffhand().getCount() > 0) && (user.getHeldItemOffhand().getItem() instanceof ItemTool))) {
-                damageDealt = ((ItemTool) user.getHeldItemMainhand().getItem()).toolMaterial.getAttackDamage();
-                float damageDealtTool = damageDealt / 0.5f;
-                if (levelIn == Levels.ONE) {
-                    if (damageDealtTool >= 0.0f) {
-                        float damageGained = damageDealtTool + 0.5f;
-                        float healedDamage = (damageGained <= 4.0f) ? 0.5f * damageGained + 0.5f - 0.312f
-                            : (damageGained >= 4.5f && damageGained < 9.5f) ? (0.5f * damageGained + 1.0f) / 2f + 0.272f
-                            : (damageGained >= 9.5f && damageGained < 14.5f) ? (0.5f * damageGained - 5.0f) / 2f + 0.411f
-                            : (damageGained >= 14.5f && damageGained < 19.5f) ? (0.5f * damageGained - 10.0f) / 2f + 0.914f
-                            : (damageGained >= 19.5f) ? (0.5f * damageGained - 15.0f) / 2f + 1.21f : 0.0f;
-                        user.heal(healedDamage);
-                    }
+        if (user == null) {
+            return;
+        }
+        ItemStack mainHand = user.getHeldItemMainhand();
+        ItemStack offHand = user.getHeldItemOffhand();
+        if (mainHand.isEmpty() || offHand.isEmpty()) return;
+        if (!isCorrectItem(mainHand.getItem()) || !isCorrectItem(offHand.getItem())) {
+            user.heal(lvl.healingFactor);
+        } else if (offHand.getItem() instanceof ItemTool || mainHand.getItem() instanceof ItemTool) {
+            damageDealt = ((ItemTool) offHand.getItem()).toolMaterial.getAttackDamage();
+            float damageDealtTool = damageDealt / 0.5f;
+            float damageGained = damageDealtTool + effectPower;
+            float healedDamage = lifeStealObtained(lvl, damageGained);
+            user.heal(healedDamage);
+        }
+    }
 
-                } else if (levelIn == Levels.TWO) {
-                    if (damageDealtTool >= 0.0f) {
-                        float damageGained = damageDealtTool + 1.5f;
-                        float healedDamage = (damageGained <= 4.0f) ? 1.5f * damageGained + 0.312f - 0.34f
-                            : (damageGained >= 4.5f && damageGained < 9.5f) ? (1.5f * damageGained - 1.0f) / 2f - 0.82f
-                            : (damageGained >= 9.5f && damageGained < 14.5f) ? (1.5f * damageGained - 4.0f) / 2f - 1.11f
-                            : (damageGained >= 14.5f && damageGained < 19.5f) ? (1.5f * damageGained - 10.0f) / 2f - 3.0f
-                            : (damageGained >= 19.5f) ? (1.5f * damageGained - 15.0f) / 2f - 5.23f
-                            : 0.0f;
-                        user.heal(healedDamage);
-                    }
+    private float lifeStealObtained(Levels lvl, float damageGained) {
+        float weakest = 4.5f, weak = 5.0f, average = 10.0f, strong = 15.0f, strongest = 20.0f;
+        if (damageGained <= weakest) {
+            return calcLifeObtained(lvl, damageGained, 0);
+        } else if (damageGained >= weak && damageGained < average) {
+            return calcLifeObtained(lvl, damageGained, 1) / capped(0);
+        } else if (damageGained >= average && damageGained < strong) {
+            return calcLifeObtained(lvl, damageGained, 2) / capped(1);
+        } else if (damageGained >= strong && damageGained < strongest) {
+            return calcLifeObtained(lvl, damageGained, 3) / capped(2);
+        } else if (damageGained >= strongest) {
+            return calcLifeObtained(lvl, damageGained, 4) / capped(3);
+        }
+        return 0.0f;
+    }
 
-                } else if (levelIn == Levels.THREE) {
-                    if (damageDealtTool >= 0.0f) {
-                        float damageGained = damageDealtTool + 2.5f;
-                        float healedDamage = (damageGained <= 4.0f) ? 2.5f * damageGained - 2.0f
-                            : (damageGained >= 4.5f && damageGained < 9.5f) ? (2.5f * damageGained - 3.0f) / 2f - 2.53f
-                            : (damageGained >= 9.5f && damageGained < 14.5f) ? (2.5f * damageGained - 4.0f) / 2f - 3.4f
-                            : (damageGained >= 14.5f && damageGained < 19.5f) ? (2.5f * damageGained - 10.0f) / 2f - 6.5f
-                            : (damageGained >= 19.5f) ? (2.5f * damageGained - 15.0f) / 2f - 10.5f
-                            : 0.0f;
-                        user.heal(healedDamage);
-                    }
-                }
-            } else if (user.getHeldItemMainhand().getCount() > 0 && user.getHeldItemMainhand().getItem() instanceof ItemSword ||
-                user.getHeldItemOffhand().getCount() > 0 && user.getHeldItemOffhand().getItem() instanceof ItemSword) {
-                damageDealt = ((ItemSword) user.getHeldItemMainhand().getItem()).getAttackDamage();
-                float damageDealtSword = damageDealt / 0.5f;
-                if (levelIn == ONE) {
-                    if (damageDealtSword >= 0.0f) {
-                        float damageGained = damageDealtSword + 0.5f;
-                        float healedDamage = (damageGained <= 4.5f) ? 0.5f * damageGained + 0.534f + 0.135f
-                            : (damageGained >= 5.0f && damageGained < 10.0f) ? (0.5f * damageGained + 1.0f) / 2f + 0.84f
-                            : (damageGained >= 10.0f && damageGained < 15.0f) ? (0.5f * damageGained - 4.0f) / 2f + 0.525f
-                            : (damageGained >= 15.0f && damageGained < 20.0f) ? (0.5f * damageGained - 6.0f) / 2f + 2.125f
-                            : (damageGained >= 20.0f) ? (0.5f * damageGained - 12.0f) / 2f + 2.5f
-                            : 0.0f;
-                        user.heal(healedDamage);
-                    }
-                } else if (levelIn == TWO) {
-                    if (damageDealtSword >= 0.0f) {
-                        float damageGained = damageDealtSword + 1.5f;
-                        float healedDamage = (damageGained <= 4.5f) ? 1.5f * damageGained - 1.0f
-                            : (damageGained >= 5.0f && damageGained < 10.0f) ? (1.5f * damageGained - 1.0f) / 2f - 1.0f
-                            : (damageGained >= 10.0f && damageGained < 15.0f) ? (1.5f * damageGained - 4.0f) / 2f - 1.2f
-                            : (damageGained >= 15.0f && damageGained < 20.0f) ? (1.5f * damageGained - 10.0f) / 2f - 3.0f
-                            : (damageGained >= 20.0f) ? (1.5f * damageGained - 15.0f) / 2f - 3.3f
-                            : 0.0f;
-                        user.heal(healedDamage);
-                    }
-                } else if (levelIn == THREE) {
-                    if (damageDealtSword >= 0.0f) {
-                        float damageGained = damageDealtSword + 2.5f;
-                        float healedDamage = (damageGained <= 4.5f) ? 2.5f * damageGained - 2.0f
-                            : (damageGained >= 5.0f && damageGained < 10.0f) ? (2.5f * damageGained - 3.0f) / 2f - 2.52f
-                            : (damageGained >= 10.0f && damageGained < 15.0f) ? (2.5f * damageGained - 4.0f) / 2f - 5.5f
-                            : (damageGained >= 15.0f && damageGained < 20.0f) ? (2.5f * damageGained - 10.0f) / 2f - 6.3f
-                            : (damageGained >= 20.0f) ? (2.5f * damageGained - 15.0f) / 2f - 13.22f
-                            : 0.0f;
-                        user.heal(healedDamage);
-                    }
-                }
-            }
+    private float capped(int power) {
+        float[] reductions = new float[]{1f, 1.5f, 3f, 6f};
+        return 2f - reductions[power];
+    }
+
+    private float calcLifeObtained(Levels lvl, float damageGained, int power) {
+        float effectPower = lvl.healingFactor;
+        return effectPower * damageGained - lvl.getReductions()[power];
+    }
+
+    private boolean isCorrectItem(Item item) {
+        return item instanceof ItemTool || item instanceof ItemSword;
+    }
+
+    public enum Levels {
+        ZERO(0.0f),
+        ONE(0.5f),
+        TWO(1.5f),
+        THREE(2.5f),
+        ;
+
+        public final float healingFactor;
+
+        Levels(float healingFactor) {
+            this.healingFactor = healingFactor;
+        }
+
+        public float[] getReductions() {
+            return new float[]{1f, 2f, 4f, 10f, 15f};
         }
     }
 }

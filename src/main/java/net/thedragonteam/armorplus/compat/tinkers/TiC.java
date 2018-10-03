@@ -15,7 +15,6 @@ import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
 import static slimeknights.tconstruct.library.TinkerRegistry.getMaterial;
-import static slimeknights.tconstruct.library.materials.Material.UNKNOWN;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam

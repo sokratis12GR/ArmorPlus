@@ -19,6 +19,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.OriginMaterial.OriginArmor;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.SpecialMaterial.Armor;
+import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
 import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
@@ -34,6 +36,7 @@ import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ModConfig.Misc.enableFlightAbility;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.*;
 import static net.thedragonteam.armorplus.armors.base.ItemArmorBase.*;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.*;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModBlocks.blockCompressedObsidian;
 import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
@@ -42,8 +45,6 @@ import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.applyEffects;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.isFullSet;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.*;
-import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.armorplus.util.Utils.getTCIngot;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -54,7 +55,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     COAL(coalArmor, "coal", global_registry.enableCoalArmor, coal.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, coal, slot, coalHelmet, coalChestplate, coalLeggings, coalBoots);
+            this.addEffects(player, slot, coalHelmet, coalChestplate, coalLeggings, coalBoots);
         }
 
         @Override
@@ -65,7 +66,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     LAPIS(lapisArmor, "lapis", global_registry.enableLapisArmor, lapis.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, lapis, slot, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
+            this.addEffects(player, slot, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
         }
 
         @Override
@@ -76,7 +77,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     REDSTONE(redstoneArmor, "redstone", global_registry.enableRedstoneArmor, redstone.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, redstone, slot, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
+            this.addEffects(player, slot, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
         }
 
         @Override
@@ -87,7 +88,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     EMERALD(emeraldArmor, "emerald", global_registry.enableEmeraldArmor, emerald.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, emerald, slot, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
+            this.addEffects(player, slot, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
         }
 
         @Override
@@ -98,7 +99,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     OBSIDIAN(obsidianArmor, "obsidian", global_registry.enableObsidianArmor, obsidian.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, obsidian, slot, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
+            this.addEffects(player, slot, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
         }
 
         @Override
@@ -132,7 +133,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     player.attackEntityFrom(DamageSource.DROWN, 1f);
                 }
             }
-            this.addEffects(player, lava, slot, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
+            this.addEffects(player, slot, lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
         }
 
         @Override
@@ -143,7 +144,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     GUARDIAN(guardianArmor, "guardian", global_registry.enableGuardianArmor, guardian.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, guardian, slot, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
+            this.addEffects(player, slot, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
         }
 
         @Override
@@ -154,7 +155,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     SUPER_STAR(superStarArmor, "super_star", global_registry.enableSuperStarArmor, super_star.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, super_star, slot, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
+            this.addEffects(player, slot, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
         }
 
         @Override
@@ -173,7 +174,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     player.capabilities.allowFlying = false;
                 }
             }
-            this.addEffects(player, ender_dragon, slot, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
+            this.addEffects(player, slot, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
         }
 
         @Override
@@ -193,7 +194,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ARDITE(arditeArmor, "ardite", global_registry.enableArditeArmor, ardite.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, ardite, slot, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
+            this.addEffects(player, slot, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
         }
 
         @Override
@@ -204,7 +205,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, cobalt.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, cobalt, slot, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
+            this.addEffects(player, slot, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
         }
 
         @Override
@@ -215,7 +216,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, manyullyn.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, manyullyn, slot, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
+            this.addEffects(player, slot, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
         }
 
         @Override
@@ -226,7 +227,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, knight_slime.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, knight_slime, slot, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
+            this.addEffects(player, slot, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
         }
 
         @Override
@@ -242,7 +243,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
                     e.damageItem(1, player);
                 }
             }
-            this.addEffects(player, pig_iron, slot, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
+            this.addEffects(player, slot, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots);
         }
 
         @Override
@@ -253,7 +254,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, slime.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, slime, slot, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
+            this.addEffects(player, slot, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
         }
 
         @Override
@@ -264,7 +265,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, chicken.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            this.addEffects(player, chicken, slot, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
+            this.addEffects(player, slot, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
         }
 
         @Override
@@ -279,10 +280,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     private final boolean enableArmor;
     private final String formatting;
     private final boolean enableSetEffects;
-    private final String[] effects;
-    private final int[] effectLevels;
-    private final int[] effectDurations;
-    private final String[] removeEffects;
+    private final AbilityProvider applicableEffects;
+    private final AbilityCanceller removableEffects;
     private final boolean isUnbreakable;
     private final boolean[] areEffectsEnabled;
 
@@ -306,32 +305,20 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         this.enableArmor = enableArmor;
         this.formatting = textFormattingIn;
         this.enableSetEffects = enableSetEffects;
-        this.effects = effects;
-        this.effectLevels = effectLevels;
-        this.effectDurations = effectDurations;
+        this.applicableEffects = new AbilityProvider(effects, effectLevels, effectDurations);
         this.areEffectsEnabled = areEffectsEnabledIn;
-        this.removeEffects = removeEffects;
+        this.removableEffects = new AbilityCanceller(removeEffects);
         this.isUnbreakable = isUnbreakable;
     }
 
     @Override
-    public List<String> getApplyEffectNames() {
-        return boxList(this.effects);
+    public AbilityProvider getApplicableAbilities() {
+        return this.applicableEffects;
     }
 
     @Override
-    public List<Integer> getApplyEffectLevels() {
-        return boxList(this.effectLevels);
-    }
-
-    @Override
-    public List<Integer> getApplyEffectDurations() {
-        return boxList(this.effectDurations);
-    }
-
-    @Override
-    public List<String> getRemoveEffectNames() {
-        return boxList(this.removeEffects);
+    public AbilityCanceller getRemovableAbilities() {
+        return this.removableEffects;
     }
 
     @Override
@@ -373,87 +360,40 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (isKeyDown()) {
             if (!this.enableFullArmorEffect()) {
-                addToolTipPiece(tooltip, getApplyEffectNames(), this.getApplyEffectLevels());
+                addToolTipPiece(tooltip, this);
             } else {
-                addToolTipFull(tooltip, getApplyEffectNames(), this.getApplyEffectLevels());
+                addToolTipFull(tooltip, this);
             }
         } else {
             showInfo(tooltip, keyBindSneak, this.getFormatting());
         }
     }
 
-    public void addEffects(EntityPlayer player, OriginMaterial material, EntityEquipmentSlot slot, Item head, Item chestplate, Item legs, Item feet) {
-        this.addPieceEffects(player, material, slot);
-        this.addSetEffects(player, material, head, chestplate, legs, feet);
+    public void addEffects(EntityPlayer player, EntityEquipmentSlot slot, Item head, Item chestplate, Item legs, Item feet) {
+        this.addPieceEffects(player, slot);
+        this.addSetEffects(player, head, chestplate, legs, feet);
     }
 
-    public void addEffects(EntityPlayer player, SpecialMaterial material, EntityEquipmentSlot slot, Item head, Item chestplate, Item legs, Item feet) {
-        this.addPieceEffects(player, material, slot);
-        this.addSetEffects(player, material, head, chestplate, legs, feet);
+
+    public void addPieceEffects(EntityPlayer player, EntityEquipmentSlot slot) {
+        this.addEffects(player, slot == FEET ? 0 : slot == LEGS ? 1 : slot == CHEST ? 2 : slot == HEAD ? 3 : -1);
     }
 
-    public void addPieceEffects(EntityPlayer player, OriginMaterial material, EntityEquipmentSlot slot) {
-        OriginArmor armor = material.armor;
-        this.addPieceEffects(player, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.removePotionEffects, slot);
-    }
-
-    public void addPieceEffects(EntityPlayer player, SpecialMaterial material, EntityEquipmentSlot slot) {
-        Armor armor = material.armor;
-        this.addPieceEffects(player, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.removePotionEffects, slot);
-    }
-
-    public void addPieceEffects(EntityPlayer player, String[] applyEffectNames, int[] applyEffectLevels, int[] applyEffectDurations, String[] removeEffectNames, EntityEquipmentSlot slot) {
-        this.addEffects(player, boxList(applyEffectNames), boxList(applyEffectLevels), boxList(applyEffectDurations), boxList(removeEffectNames), slot == FEET ? 0 : slot == LEGS ? 1 : slot == CHEST ? 2 : slot == HEAD ? 3 : -1);
-    }
-
-    public void addEffects(EntityPlayer player, List<String> applyEffectNames, List<Integer> applyEffectLevels, List<Integer> applyEffectDurations, List<String> removeEffectNames, int index) {
+    public void addEffects(EntityPlayer player, int index) {
         if (!enableFullArmorEffect()) {
             if (this.areEffectsEnabled()[index]) {
-                applyEffects(player, applyEffectNames, applyEffectDurations, applyEffectLevels, removeEffectNames);
+                applyEffects(player, this);
             }
         }
     }
 
-    public void addSetEffects(EntityPlayer player, String[] applyEffectNames, int[] applyEffectLevels, int[] applyEffectDurations, String[] removeEffectNames, Item head, Item chest, Item legs, Item feet) {
-        this.addSetEffects(player, boxList(applyEffectNames), boxList(applyEffectLevels), boxList(applyEffectDurations), boxList(removeEffectNames), head, chest, legs, feet);
-    }
-
-    public void addSetEffects(EntityPlayer player, OriginMaterial material, Item head, Item chest, Item legs, Item feet) {
-        OriginArmor armor = material.armor;
-        addSetEffects(player, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.removePotionEffects, head, chest, legs, feet);
-    }
-
-    public void addSetEffects(EntityPlayer player, SpecialMaterial material, Item head, Item chest, Item legs, Item feet) {
-        Armor armor = material.armor;
-        addSetEffects(player, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.removePotionEffects, head, chest, legs, feet);
-    }
-
-    public void addSetEffects(EntityPlayer player, List<String> applyEffectNames, List<Integer> applyEffectLevels, List<Integer> applyEffectDurations, List<String> removeEffectNames, Item head, Item chest, Item legs, Item feet) {
-        if (enableFullArmorEffect()) {
-            if (this.enableFullArmorEffect() && isFullSet(player, head, chest, legs, feet)) {
-                applyEffects(player, applyEffectNames, applyEffectDurations, applyEffectLevels, removeEffectNames);
-            }
+    public void addSetEffects(EntityPlayer player, Item head, Item chest, Item legs, Item feet) {
+        if (this.enableFullArmorEffect() && isFullSet(player, head, chest, legs, feet)) {
+            applyEffects(player, this);
         }
     }
 
     public boolean isUnbreakable() {
         return isUnbreakable;
     }
-
-    // @Override
-    // public Map<Enchantment, Integer> getEnchantments() {
-    //     Map<Enchantment, Integer> appliedEnchantments = new HashMap<>();
-    //     if (!enchantments.isEmpty()) {
-    //         enchantments.forEach((key, value) -> {
-    //             if (ModConfig.DebugConfig.debugMode && ModConfig.DebugConfig.debugModeEnchantments) {
-    //                 LogHelper.info("Enchantment " + key + " is being applied with amplifier level of " + value);
-    //             }
-    //             Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(key));
-    //             if (enchantment != null) {
-    //                 appliedEnchantments.put(enchantment, value);
-    //             }
-    //         });
-    //     }
-    //     return appliedEnchantments;
-    // }
 }

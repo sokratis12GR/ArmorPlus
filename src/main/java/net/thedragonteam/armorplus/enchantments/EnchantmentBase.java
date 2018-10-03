@@ -94,18 +94,4 @@ public abstract class EnchantmentBase extends Enchantment {
     public boolean canApply(ItemStack stack) {
         return super.canApply(stack);
     }
-
-    public enum Levels {
-        ZERO,
-        ONE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,;
-    }
 }

@@ -7,6 +7,7 @@ package net.thedragonteam.armorplus.items.weapons;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.thedragonteam.armorplus.api.properties.iface.IDurable;
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
 
@@ -23,7 +24,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
-public enum Bows implements IRepairable, IRemovable {
+public enum Bows implements IRepairable, IRemovable, IDurable {
     COAL("coal", getItemStack(COAL_BLOCK), coal, coalBow, global_registry.enableCoalWeapons),
     LAPIS("lapis", getItemStack(LAPIS_BLOCK), lapis, lapisBow, global_registry.enableEmeraldWeapons),
     REDSTONE("redstone", getItemStack(REDSTONE_BLOCK), redstone, redstoneBow, global_registry.enableRedstoneWeapons),
@@ -68,7 +69,8 @@ public enum Bows implements IRepairable, IRemovable {
         return this.bowStats.getBonusDamage();
     }
 
-    public int getDurability() {
+    @Override
+    public int getDurability(boolean unbreakable) {
         return this.bowStats.getDurability();
     }
 
@@ -83,6 +85,7 @@ public enum Bows implements IRepairable, IRemovable {
     public TextFormatting getTextFormatting() {
         return this.textFormatting;
     }
+
 
     private static class BowStats {
         private final int durabilityIn;

@@ -31,6 +31,7 @@ import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 import java.util.Random;
 
 import static net.minecraft.util.EnumFacing.*;
+import static net.thedragonteam.armorplus.ArmorPlus.tabArmorplusBlocks;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuser;
 import static net.thedragonteam.armorplus.registry.ModBlocks.lavaInfuserInfusing;
 import static net.thedragonteam.armorplus.util.Utils.setName;
@@ -53,6 +54,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         this.setResistance(10000.0F);
         this.setHardness(2.5F);
         this.setHarvestLevel(ToolType.PICKAXE.getTool(), 1);
+        this.setCreativeTab(tabArmorplusBlocks);
     }
 
     public static void setState(boolean active, World worldIn, BlockPos pos) {
@@ -98,9 +100,9 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
      * Called after the block is set in the Chunk data, but before the Tile Entity is set
      */
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (worldIn != null && state != null && pos != null) {
-            this.setDefaultFacing(worldIn, pos, state);
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        if (world != null && state != null && pos != null) {
+            this.setDefaultFacing(world, pos, state);
         }
     }
 

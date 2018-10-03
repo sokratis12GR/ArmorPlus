@@ -11,6 +11,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.thedragonteam.armorplus.ModConfig;
+import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
+import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 
 import java.util.List;
@@ -22,6 +25,7 @@ import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
 import static net.thedragonteam.armorplus.util.PotionUtils.getPotion;
+import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
 
 /**
@@ -117,6 +121,12 @@ public final class ArmorPlusItemUtils {
     }
 
 
+    public static void applyEffects(EntityPlayer player, IEffectHolder effectHolder) {
+        AbilityProvider applicable = effectHolder.getApplicableAbilities();
+        AbilityCanceller removable = effectHolder.getRemovableAbilities();
+        applyEffects(player, boxList(applicable.getAbilities()), boxList(applicable.getDurations()), boxList(applicable.getLevels()), boxList(removable.getAbilities()));
+    }
+
     /**
      * @param player               The player that we will apply the effects on (The entity with the equipped armor pieces)
      * @param applyEffectNames     The list of the effects that will get applied
@@ -126,12 +136,18 @@ public final class ArmorPlusItemUtils {
      */
     public static void applyEffects(EntityPlayer player, List<String> applyEffectNames, List<Integer> applyEffectDurations, List<Integer> applyEffectLevels, List<String> removableEffects) {
         List<Potion> potions = applyEffectNames.stream().map(PotionUtils::getPotion).collect(toList());
-        IntStream.range(0, potions.size()).forEach(potionID -> {
+        int bound = potions.size();
+        for (int potionID = 0; potionID < bound; potionID++) {
+            if (potions.isEmpty()) {
+                return;
+            }
             Potion potionEffect = potions.get(potionID);
             if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
-                addPotion(player, potionEffect, convertToSeconds(applyEffectDurations.get(potionID)), applyEffectLevels.get(potionID), GOOD);
+                int duration = convertToSeconds(applyEffectDurations.get(potionID));
+                int level = applyEffectLevels.get(potionID);
+                addPotion(player, potionEffect, duration, level, GOOD);
             }
-        });
+        }
 
         List<Potion> removablePotions = removableEffects.stream().map(PotionUtils::getPotion).collect(toList());
         removablePotions.stream().filter(
@@ -153,9 +169,12 @@ public final class ArmorPlusItemUtils {
      */
     public static void applyNegativeEffect(EntityLivingBase target, Negative effect) {
         if (effect.isEnabled()) {
-            IntStream.range(0, effect.getEffects().length).forEach(
-                potionID -> addPotion(target, getPotion(effect.getEffects()[potionID]), convertToSeconds(effect.getEffectDurations()[potionID]), effect.getEffectLevels()[potionID], BAD)
-            );
+            IntStream.range(0, effect.getEffects().length).forEach(potionID -> {
+                Potion negative = getPotion(effect.getEffects()[potionID]);
+                int duration = convertToSeconds(effect.getEffectDurations()[potionID]);
+                int level = effect.getEffectLevels()[potionID];
+                addPotion(target, negative, duration, level, BAD);
+            });
         }
     }
 

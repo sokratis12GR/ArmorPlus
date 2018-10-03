@@ -10,16 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
 import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.armorplus.items.weapons.effects.WeaponEffects;
-import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,6 @@ import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.applyNegativeEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
-import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -79,18 +79,13 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     }
 
     @Override
-    public List<String> getApplyEffectNames() {
-        return Arrays.asList(this.negative.getEffects());
+    public AbilityProvider getApplicableAbilities() {
+        return new AbilityProvider(this.negative.getEffects(), this.negative.getEffectLevels(), this.negative.getEffectDurations());
     }
 
     @Override
-    public List<Integer> getApplyEffectLevels() {
-        return Arrays.stream(this.negative.getEffectLevels()).boxed().collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Integer> getApplyEffectDurations() {
-        return boxList(this.negative.getEffectDurations());
+    public AbilityCanceller getRemovableAbilities() {
+        return new AbilityCanceller();
     }
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {

@@ -23,6 +23,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
 import net.thedragonteam.armorplus.ModConfig.RegistryConfig.UltimateMaterial.Armor;
+import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
+import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.iface.IModdedItem;
 import net.thedragonteam.armorplus.util.Utils;
 
@@ -33,6 +36,7 @@ import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.armorplus.ModConfig.Misc.enableFlightAbility;
 import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.ultimate;
+import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
 import static net.thedragonteam.armorplus.registry.APItems.*;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.*;
@@ -40,17 +44,18 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addArmorMaterial;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.BAD;
 import static net.thedragonteam.armorplus.util.PotionUtils.PotionType.GOOD;
 import static net.thedragonteam.armorplus.util.PotionUtils.addPotion;
-import static net.thedragonteam.armorplus.client.utils.ToolTipUtils.showInfo;
-import static net.thedragonteam.armorplus.util.Utils.*;
+import static net.thedragonteam.armorplus.util.Utils.setName;
+import static net.thedragonteam.armorplus.util.Utils.setRL;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
+public class ItemUltimateArmor extends ItemArmor implements IModdedItem, IEffectHolder {
 
     public static ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", "the_ultimate_armor", 160,
         ultimate.armor.protectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, ultimate.armor.toughnessPoints);
+    private Armor armor = ultimate.armor;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
         super(ItemUltimateArmor.theUltimateArmor, 0, slot);
@@ -65,8 +70,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
         this.setTranslationKey(setName(piece));
     }
 
-    public static void onArmorTick(EntityPlayer player) {
-        Armor armor = ultimate.armor;
+    public void onArmorTick(EntityPlayer player) {
         PlayerCapabilities caps = player.capabilities;
         boolean isFullSet = isFullSet(player, theUltimateHelmet, theUltimateChestplate, theUltimateLeggings, theUltimateBoots);
         boolean isAllowed = isFullSet || caps.isCreativeMode || player.isSpectator();
@@ -83,7 +87,7 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
             addPotion(player, MobEffects.SATURATION, 120, 0, GOOD);
         }
         if (isFullSet) {
-            applyEffects(player, boxList(armor.addPotionEffects), boxList(armor.effectDurations), boxList(armor.effectLevels), boxList(armor.removePotionEffects));
+            applyEffects(player, this);
         } else if (armor.enableDeBuffs) {
             addPotion(player, MobEffects.POISON, 60, 2, BAD);
             addPotion(player, MobEffects.SLOWNESS, 60, 2, BAD);
@@ -94,6 +98,17 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem {
             player.motionZ = 0.0;
             player.velocityChanged = true; // assumes that player instanceof EntityPlayer
         }
+    }
+
+
+    @Override
+    public AbilityProvider getApplicableAbilities() {
+        return new AbilityProvider(armor.addPotionEffects, armor.effectLevels, armor.effectDurations);
+    }
+
+    @Override
+    public AbilityCanceller getRemovableAbilities() {
+        return new AbilityCanceller(armor.removePotionEffects);
     }
 
     @Override

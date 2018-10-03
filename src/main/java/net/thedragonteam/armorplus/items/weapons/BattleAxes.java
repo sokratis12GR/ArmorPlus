@@ -10,14 +10,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
 import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.api.properties.iface.IRemovable;
 import net.thedragonteam.armorplus.api.properties.iface.IRepairable;
+import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.armorplus.items.weapons.effects.WeaponEffects;
 import net.thedragonteam.armorplus.registry.ModBlocks;
-import net.thedragonteam.armorplus.client.utils.ToolTipUtils;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -32,7 +34,6 @@ import static net.thedragonteam.armorplus.registry.ModItems.itemLavaCrystal;
 import static net.thedragonteam.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.armorplus.util.ArmorPlusItemUtils.applyNegativeEffect;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
-import static net.thedragonteam.armorplus.util.Utils.boxList;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -80,18 +81,13 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     }
 
     @Override
-    public List<String> getApplyEffectNames() {
-        return boxList(this.negative.getEffects());
+    public AbilityProvider getApplicableAbilities() {
+        return new AbilityProvider(this.negative.getEffects(), this.negative.getEffectLevels(), this.negative.getEffectDurations());
     }
 
     @Override
-    public List<Integer> getApplyEffectLevels() {
-        return boxList(this.negative.getEffectLevels());
-    }
-
-    @Override
-    public List<Integer> getApplyEffectDurations() {
-        return boxList(this.negative.getEffectDurations());
+    public AbilityCanceller getRemovableAbilities() {
+        return new AbilityCanceller();
     }
 
     @Override

@@ -13,7 +13,7 @@ public class AbilityProvider implements IRemovable {
     private final boolean enabled;
 
     public AbilityProvider() {
-        this("empty", 0, 0, false);
+        this("empty", -1, 0, false);
     }
 
     public AbilityProvider(String ability) {
@@ -30,6 +30,10 @@ public class AbilityProvider implements IRemovable {
 
     public AbilityProvider(String ability, int abilityLevel, int duration, boolean enabled) {
         this(new String[]{ability}, new int[]{abilityLevel}, new int[]{duration}, enabled);
+    }
+
+    public AbilityProvider(String[] abilities, int[] abilityLevels, int[] abilityDuration){
+        this(abilities,abilityLevels, abilityDuration, true);
     }
 
     public AbilityProvider(String[] abilities, int[] abilityLevels, int[] abilityDuration, boolean enabled) {

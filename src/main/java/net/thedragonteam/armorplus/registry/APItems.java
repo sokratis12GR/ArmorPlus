@@ -130,36 +130,6 @@ public class APItems {
             theUltimateLeggings = theUltimate[2];
             theUltimateBoots = theUltimate[3];
         }
-        if (gr.enableCobaltArmor) {
-            cobaltHelmet = cobalt[0];
-            cobaltChestplate = cobalt[1];
-            cobaltLeggings = cobalt[2];
-            cobaltBoots = cobalt[3];
-        }
-        if (gr.enableArditeArmor) {
-            arditeHelmet = ardite[0];
-            arditeChestplate = ardite[1];
-            arditeLeggings = ardite[2];
-            arditeBoots = ardite[3];
-        }
-        if (gr.enableManyullynArmor) {
-            manyullynHelmet = manyullyn[0];
-            manyullynChestplate = manyullyn[1];
-            manyullynLeggings = manyullyn[2];
-            manyullynBoots = manyullyn[3];
-        }
-        if (gr.enablePigIronArmor) {
-            pigIronHelmet = pigIron[0];
-            pigIronChestplate = pigIron[1];
-            pigIronLeggings = pigIron[2];
-            pigIronBoots = pigIron[3];
-        }
-        if (gr.enableKnightSlimeArmor) {
-            knightSlimeHelmet = knightSlime[0];
-            knightSlimeChestplate = knightSlime[1];
-            knightSlimeLeggings = knightSlime[2];
-            knightSlimeBoots = knightSlime[3];
-        }
         if (gr.enableCoalWeapons[0]) coalSword = sword[0];
         if (gr.enableCoalWeapons[1]) coalBattleAxe = battleAxe[0];
         if (gr.enableCoalWeapons[2]) coalBow = bow[0];
@@ -194,5 +164,39 @@ public class APItems {
         witherBone = getItemStack(materials, 2);
         enderDragonScale = getItemStack(materials, 3);
         theUltimateMaterial = getItemStack(materials, 4);
+    }
+
+    public static void registerTCItemNames() {
+        GlobalRegistry gr = global_registry;
+        if (gr.enableCobaltArmor) {
+            cobaltHelmet = cobalt[0];
+            cobaltChestplate = cobalt[1];
+            cobaltLeggings = cobalt[2];
+            cobaltBoots = cobalt[3];
+        }
+        if (gr.enableArditeArmor) {
+            arditeHelmet = ardite[0];
+            arditeChestplate = ardite[1];
+            arditeLeggings = ardite[2];
+            arditeBoots = ardite[3];
+        }
+        if (gr.enableManyullynArmor) {
+            manyullynHelmet = manyullyn[0];
+            manyullynChestplate = manyullyn[1];
+            manyullynLeggings = manyullyn[2];
+            manyullynBoots = manyullyn[3];
+        }
+        if (gr.enablePigIronArmor) {
+            pigIronHelmet = pigIron[0];
+            pigIronChestplate = pigIron[1];
+            pigIronLeggings = pigIron[2];
+            pigIronBoots = pigIron[3];
+        }
+        if (gr.enableKnightSlimeArmor) {
+            knightSlimeHelmet = knightSlime[0];
+            knightSlimeChestplate = knightSlime[1];
+            knightSlimeLeggings = knightSlime[2];
+            knightSlimeBoots = knightSlime[3];
+        }
     }
 }

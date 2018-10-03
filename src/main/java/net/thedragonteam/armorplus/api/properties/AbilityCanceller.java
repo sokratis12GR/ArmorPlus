@@ -19,7 +19,7 @@ public class AbilityCanceller {
         this.cancelledAbilities = cancelledAbilities;
     }
 
-    public String[] getCancelledAbilities() {
+    public String[] getAbilities() {
         return cancelledAbilities;
     }
 }

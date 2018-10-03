@@ -1,9 +1,11 @@
 package net.thedragonteam.armorplus.api.properties;
 
+import net.thedragonteam.armorplus.api.properties.iface.IDurable;
+
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
-public class Weapon {
+public class Weapon implements IDurable {
 
     private final double dmg;
     private final int dur;
@@ -29,7 +31,8 @@ public class Weapon {
     /**
      * @return The durability that the weapon will have
      */
-    public int getDur() {
-        return dur;
+    @Override
+    public int getDurability(boolean unbreakable) {
+        return unbreakable ? -1 : dur;
     }
 }

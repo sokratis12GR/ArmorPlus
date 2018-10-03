@@ -11,6 +11,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.api.properties.AbilityProvider;
+import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
 import net.thedragonteam.armorplus.items.weapons.effects.Ignite;
 import net.thedragonteam.armorplus.items.weapons.effects.Negative;
 import net.thedragonteam.armorplus.util.PotionUtils;
@@ -20,11 +22,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.String.format;
+import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 import static net.thedragonteam.armorplus.util.PotionUtils.localizePotion;
 import static net.thedragonteam.armorplus.util.RomanNumeralUtil.generate;
-import static net.thedragonteam.armorplus.util.TextUtils.formattedText;
+import static net.thedragonteam.armorplus.util.Utils.boxList;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -40,7 +43,7 @@ public final class ToolTipUtils {
      * @param formatting the formatting of the tooltip, its color and style.
      */
     public static void showInfo(List<String> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, new TextComponentTranslation("tooltip.shift.showinfo.text_one").getFormattedText(), formatting, keyBinding.getDisplayName(), GRAY, formattedText("tooltip.shift.showinfo.text_two")));
+        tooltip.add(MessageFormat.format("{0}{1} {2}{3} {4}{5}", GRAY, new TextComponentTranslation("tooltip.shift.showinfo.text_one").getFormattedText(), formatting, keyBinding.getDisplayName(), GRAY, new TextComponentTranslation("tooltip.shift.showinfo.text_two").getFormattedText()));
     }
 
     /**
@@ -56,6 +59,12 @@ public final class ToolTipUtils {
         abilitySorter(tooltip, abilities, amplifier, colorIndex, true);
     }
 
+    public static void addToolTipFull(List<String> tooltip, IEffectHolder effectHolder) {
+        int colorIndex = 1;
+        AbilityProvider applicable = effectHolder.getApplicableAbilities();
+        abilitySorter(tooltip, boxList(applicable.getAbilities()), boxList(applicable.getLevels()), colorIndex, true);
+    }
+
     /**
      * Writes the abilities of the armor pieces with an ordered list from abilitySorter to the item's tooltip.
      * The abilities that will be written here, will work even if one armor piece is equipped.
@@ -67,6 +76,12 @@ public final class ToolTipUtils {
     public static void addToolTipPiece(List<String> tooltip, List<String> abilities, List<Integer> amplifier) {
         int colorIndex = 1;
         abilitySorter(tooltip, abilities, amplifier, colorIndex, false);
+    }
+
+    public static void addToolTipPiece(List<String> tooltip, IEffectHolder effectHolder) {
+        int colorIndex = 1;
+        AbilityProvider applicable = effectHolder.getApplicableAbilities();
+        abilitySorter(tooltip, boxList(applicable.getAbilities()), boxList(applicable.getLevels()), colorIndex, false);
     }
 
     /**
@@ -87,7 +102,7 @@ public final class ToolTipUtils {
             List<String> localizedEffects = abilities.stream().map(PotionUtils::localizePotion).collect(toList());
             colorIndex++;
             TextFormatting abilityFormatting = TextFormatting.fromColorIndex(colorIndex % 15);
-            addToolTip(tooltip, format("%s%s %s", abilityFormatting, localizedEffects.get(abilityIndex), generate(level(amplifier.get(abilityIndex)))));
+            addToolTip(tooltip, format("%s%s %s", valueOf(abilityFormatting), localizedEffects.get(abilityIndex), generate(level(amplifier.get(abilityIndex)))));
         }
     }
 
