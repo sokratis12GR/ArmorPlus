@@ -372,10 +372,8 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     }
 
     public void addEffects(EntityPlayer player, int index) {
-        if (!enableFullArmorEffect()) {
-            if (this.areEffectsEnabled()[index]) {
-                applyEffects(player, this);
-            }
+        if (!enableFullArmorEffect() && this.areEffectsEnabled()[index]) {
+            applyEffects(player, this);
         }
     }
 

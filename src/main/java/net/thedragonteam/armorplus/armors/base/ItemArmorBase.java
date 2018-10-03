@@ -38,37 +38,37 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
  */
 public class ItemArmorBase extends ItemArmor implements IModdedItem {
 
-    public static ArmorMaterial coalArmor = addArmorMaterial("COAL", "coal_armor", 2,
+    public static final ArmorMaterial coalArmor = addArmorMaterial("COAL", "coal_armor", 2,
         coal.armor.protectionPoints, coal.armor.toughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", "lapis_armor", 11,
+    public static final ArmorMaterial lapisArmor = addArmorMaterial("LAPIS", "lapis_armor", 11,
         lapis.armor.protectionPoints, lapis.armor.toughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", "redstone_armor", 11,
+    public static final ArmorMaterial redstoneArmor = addArmorMaterial("REDSTONE", "redstone_armor", 11,
         redstone.armor.protectionPoints, redstone.armor.toughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", "emerald_armor", 35,
+    public static final ArmorMaterial emeraldArmor = addArmorMaterial("EMERALD", "emerald_armor", 35,
         emerald.armor.protectionPoints, emerald.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", "obsidian_armor", 40,
+    public static final ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", "obsidian_armor", 40,
         obsidian.armor.protectionPoints, obsidian.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial lavaArmor = addArmorMaterial("LAVA", "lava_armor", 45,
+    public static final ArmorMaterial lavaArmor = addArmorMaterial("LAVA", "lava_armor", 45,
         lava.armor.protectionPoints, lava.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", "guardian_armor", 50,
+    public static final ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", "guardian_armor", 50,
         guardian.armor.protectionPoints, guardian.armor.toughnessPoints, EnumTiers.TIER_3);
-    public static ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", "super_star_armor", 50,
+    public static final ArmorMaterial superStarArmor = addArmorMaterial("SUPER_STAR", "super_star_armor", 50,
         super_star.armor.protectionPoints, super_star.armor.toughnessPoints, EnumTiers.TIER_3);
-    public static ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", "ender_dragon_armor", 60,
+    public static final ArmorMaterial enderDragonArmor = addArmorMaterial("ENDER_DRAGON", "ender_dragon_armor", 60,
         ender_dragon.armor.protectionPoints, ender_dragon.armor.toughnessPoints, EnumTiers.TIER_3);
-    public static ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", "chicken_armor", 1,
+    public static final ArmorMaterial chickenArmor = addArmorMaterial("CHICKEN", "chicken_armor", 1,
         chicken.armor.protectionPoints, chicken.armor.toughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial slimeArmor = addArmorMaterial("SLIME", "slime_armor", 1,
+    public static final ArmorMaterial slimeArmor = addArmorMaterial("SLIME", "slime_armor", 1,
         slime.armor.protectionPoints, slime.armor.toughnessPoints, EnumTiers.TIER_1);
-    public static ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", "ardite_armor", 55,
+    public static final ArmorMaterial arditeArmor = addArmorMaterial("ARDITE", "ardite_armor", 55,
         ardite.armor.protectionPoints, ardite.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", "cobalt_armor", 44,
+    public static final ArmorMaterial cobaltArmor = addArmorMaterial("COBALT", "cobalt_armor", 44,
         cobalt.armor.protectionPoints, cobalt.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", "knight_slime_armor", 33,
+    public static final ArmorMaterial knightSlimeArmor = addArmorMaterial("KNIGHT_SLIME", "knight_slime_armor", 33,
         knight_slime.armor.protectionPoints, knight_slime.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", "manyullyn_armor", 66,
+    public static final ArmorMaterial manyullynArmor = addArmorMaterial("MANYULLYN", "manyullyn_armor", 66,
         manyullyn.armor.protectionPoints, manyullyn.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", "pig_iron_armor", 33,
+    public static final ArmorMaterial pigIronArmor = addArmorMaterial("PIG_IRON", "pig_iron_armor", 33,
         pig_iron.armor.protectionPoints, pig_iron.armor.toughnessPoints, EnumTiers.TIER_2);
 
     public EntityEquipmentSlot slot;

@@ -24,49 +24,34 @@ public class LifeStealEnchantment extends EnchantmentBase {
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
         Levels lvl = Levels.values()[level];
-        float effectPower = lvl.healingFactor;
         float damageDealt;
         if (user == null) {
             return;
         }
         ItemStack mainHand = user.getHeldItemMainhand();
-        ItemStack offHand = user.getHeldItemOffhand();
-        if (mainHand.isEmpty() || offHand.isEmpty()) return;
-        if (!isCorrectItem(mainHand.getItem()) || !isCorrectItem(offHand.getItem())) {
+        Item handItem = mainHand.getItem();
+        if (mainHand.isEmpty()) return;
+        if (!isCorrectItem(handItem)) {
             user.heal(lvl.healingFactor);
-        } else if (offHand.getItem() instanceof ItemTool || mainHand.getItem() instanceof ItemTool) {
-            damageDealt = ((ItemTool) offHand.getItem()).toolMaterial.getAttackDamage();
-            float damageDealtTool = damageDealt / 0.5f;
-            float damageGained = damageDealtTool + effectPower;
-            float healedDamage = lifeStealObtained(lvl, damageGained);
-            user.heal(healedDamage);
+        } else if (handItem instanceof ItemTool) {
+            damageDealt = ((ItemTool) handItem).toolMaterial.getAttackDamage();
+            user.heal(level * softCap(damageDealt, 10, 1) / 4);
+        } else if (handItem instanceof ItemSword) {
+            damageDealt = ((ItemSword) handItem).getAttackDamage();
+            user.heal(level * softCap(damageDealt, 10, 1) / 4);
         }
     }
 
-    private float lifeStealObtained(Levels lvl, float damageGained) {
-        float weakest = 4.5f, weak = 5.0f, average = 10.0f, strong = 15.0f, strongest = 20.0f;
-        if (damageGained <= weakest) {
-            return calcLifeObtained(lvl, damageGained, 0);
-        } else if (damageGained >= weak && damageGained < average) {
-            return calcLifeObtained(lvl, damageGained, 1) / capped(0);
-        } else if (damageGained >= average && damageGained < strong) {
-            return calcLifeObtained(lvl, damageGained, 2) / capped(1);
-        } else if (damageGained >= strong && damageGained < strongest) {
-            return calcLifeObtained(lvl, damageGained, 3) / capped(2);
-        } else if (damageGained >= strongest) {
-            return calcLifeObtained(lvl, damageGained, 4) / capped(3);
+    ///
+    ///julian's function for softCap
+    ///
+    private float softCap(float value, float max, float scale) {
+        if (value <= max) {
+            return value;
         }
-        return 0.0f;
-    }
-
-    private float capped(int power) {
-        float[] reductions = new float[]{1f, 1.5f, 3f, 6f};
-        return 2f - reductions[power];
-    }
-
-    private float calcLifeObtained(Levels lvl, float damageGained, int power) {
-        float effectPower = lvl.healingFactor;
-        return effectPower * damageGained - lvl.getReductions()[power];
+        float space = max * scale;
+        float offset = value - max;
+        return max + space * offset / (space + offset);
     }
 
     private boolean isCorrectItem(Item item) {
@@ -84,10 +69,6 @@ public class LifeStealEnchantment extends EnchantmentBase {
 
         Levels(float healingFactor) {
             this.healingFactor = healingFactor;
-        }
-
-        public float[] getReductions() {
-            return new float[]{1f, 2f, 4f, 10f, 15f};
         }
     }
 }
