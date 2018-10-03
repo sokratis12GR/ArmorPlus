@@ -301,6 +301,45 @@ public class ModConfig {
         public static GlobalRegistry global_registry = new GlobalRegistry();
         public static RegistryRecipes recipes = new RegistryRecipes();
 
+        public static class ArmorProperties {
+
+            public ArmorProperties(CombinedArmor properties) {
+                this.itemNameColor = properties.getColor();
+                this.removePotionEffects = properties.getAbility().getAbilityCanceller().getAbilities();
+                AbilityProvider abilityProperties = properties.getAbility().getAbilityProvider();
+                this.addPotionEffects = abilityProperties.getAbilities();
+                this.effectLevels = abilityProperties.getLevels();
+                this.effectDurations = abilityProperties.getDurations();
+                this.enableSetEffects = abilityProperties.isEnabled();
+                Armor armor = properties.getArmor();
+                this.toughnessPoints = armor.getToughnessPoints();
+                this.protectionPoints = armor.getArmorPoints();
+                this.enablePieceEffects = new boolean[4];
+                this.setUnbreakable = false;
+            }
+
+            @Comment({"Set the color name the armor will have"})
+            public String itemNameColor;
+            @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
+            public String[] removePotionEffects;
+            @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
+            public String[] addPotionEffects;
+            @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
+            public int[] effectLevels;
+            @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
+            public int[] effectDurations;
+            @Comment({"Enable/Disable the set effect(s)"})
+            public boolean enableSetEffects;
+            @Comment({"Set the amount of toughness points the armor will have"})
+            public double toughnessPoints;
+            @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
+            public int[] protectionPoints;
+            @Comment({"Enable/Disable the piece effect(s) (Boots, Leggings, Chestplate, Helmet)"})
+            public boolean[] enablePieceEffects;
+            @Comment({"Sets the armor unbreakable"})
+            public boolean setUnbreakable;
+        }
+
         public static class OriginMaterial {
             public OriginArmor armor;
             public OriginWeapons weapons;
@@ -318,49 +357,17 @@ public class ModConfig {
                 weapons = new OriginWeapons(combinedWeapon, wsaf, wofs);
             }
 
-            public class OriginArmor {
+            public class OriginArmor extends ArmorProperties {
 
                 public OriginArmor(CombinedArmor properties) {
                     this(properties, false);
                 }
 
                 public OriginArmor(CombinedArmor properties, boolean aeowtdb) {
-                    this.itemNameColor = properties.getColor();
-                    ArmorAbility abilityProperties = properties.getAbility();
-                    this.removePotionEffects = abilityProperties.getAbilityCanceller().getAbilities();
-                    AbilityProvider abilityProvider = abilityProperties.getAbilityProvider();
-                    this.addPotionEffects = abilityProvider.getAbilities();
-                    this.effectLevels = abilityProvider.getLevels();
-                    this.effectDurations = abilityProvider.getDurations();
-                    this.enableSetEffects = abilityProvider.isEnabled();
-                    Armor armor = properties.getArmor();
-                    this.toughnessPoints = armor.getToughnessPoints();
-                    this.protectionPoints = armor.getArmorPoints();
-                    this.enablePieceEffects = new boolean[4];
-                    this.setUnbreakable = false;
+                    super(properties);
                     this.enableOnWaterTouchDeBuff = aeowtdb;
                 }
 
-                @Comment({"Set the color name the armor will have"})
-                public String itemNameColor;
-                @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
-                public String[] removePotionEffects;
-                @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects;
-                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels;
-                @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
-                public int[] effectDurations;
-                @Comment({"Enable/Disable the set effect(s)"})
-                public boolean enableSetEffects;
-                @Comment({"Set the amount of toughness points the armor will have"})
-                public double toughnessPoints;
-                @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
-                public int[] protectionPoints;
-                @Comment({"Enable/Disable the piece effect(s) (Boots, Leggings, Chestplate, Helmet)"})
-                public boolean[] enablePieceEffects;
-                @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable;
                 @Comment({
                     "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
                     "a.k.a nothing happens when player wears this armor while in water.",
@@ -481,49 +488,17 @@ public class ModConfig {
         }
 
         public static class SpecialMaterial {
-            public Armor armor;
+            public SpecialArmor armor;
 
             public SpecialMaterial(CombinedArmor properties) {
-                armor = new Armor(properties);
+                armor = new SpecialArmor(properties);
             }
 
-            public class Armor {
+            public class SpecialArmor extends ArmorProperties {
 
-                public Armor(CombinedArmor properties) {
-                    this.itemNameColor = properties.getColor();
-                    this.removePotionEffects = properties.getAbility().getAbilityCanceller().getAbilities();
-                    AbilityProvider abilityProperties = properties.getAbility().getAbilityProvider();
-                    this.addPotionEffects = abilityProperties.getAbilities();
-                    this.effectLevels = abilityProperties.getLevels();
-                    this.effectDurations = abilityProperties.getDurations();
-                    this.enableSetEffects = abilityProperties.isEnabled();
-                    net.thedragonteam.armorplus.api.properties.Armor armor = properties.getArmor();
-                    this.toughnessPoints = armor.getToughnessPoints();
-                    this.protectionPoints = armor.getArmorPoints();
-                    this.enablePieceEffects = new boolean[4];
-                    this.setUnbreakable = false;
+                public SpecialArmor(CombinedArmor properties) {
+                    super(properties);
                 }
-
-                @Comment({"Set the color name the armor will have"})
-                public String itemNameColor;
-                @Comment({"The potion effect(s) that the armor will be removing (to disable the effect set the effects \'empty\')"})
-                public String[] removePotionEffects;
-                @Comment({"Adds the potion effect the armor will have (to disable the effect set the effects \'false\')"})
-                public String[] addPotionEffects;
-                @Comment({"Set the amplifier level for the effect(s) by the armor. (0 = level 1, 1 = level 2 etc.)"})
-                public int[] effectLevels;
-                @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
-                public int[] effectDurations;
-                @Comment({"Enable/Disable the set armor effect(s)"})
-                public boolean enableSetEffects;
-                @Comment({"Set the amount of toughness points the armor will have"})
-                public double toughnessPoints;
-                @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
-                public int[] protectionPoints;
-                @Comment({"Enable/Disable the effect (Boots, Leggings, Chestplate, Helmet)"})
-                public boolean[] enablePieceEffects;
-                @Comment({"Sets the armor unbreakable"})
-                public boolean setUnbreakable;
             }
         }
 

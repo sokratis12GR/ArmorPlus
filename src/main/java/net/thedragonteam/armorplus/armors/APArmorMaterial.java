@@ -17,8 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.thedragonteam.armorplus.ModConfig.RegistryConfig.OriginMaterial.OriginArmor;
-import net.thedragonteam.armorplus.ModConfig.RegistryConfig.SpecialMaterial.Armor;
 import net.thedragonteam.armorplus.api.properties.AbilityCanceller;
 import net.thedragonteam.armorplus.api.properties.AbilityProvider;
 import net.thedragonteam.armorplus.api.properties.iface.IEffectHolder;
@@ -285,13 +283,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     private final boolean isUnbreakable;
     private final boolean[] areEffectsEnabled;
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, OriginArmor armor) {
-        this(armorMaterialIn, nameIn, enableArmor,
-            armor.itemNameColor, armor.enableSetEffects, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.enablePieceEffects, armor.removePotionEffects, armor.setUnbreakable
-        );
-    }
-
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, Armor armor) {
+    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, ArmorProperties armor) {
         this(armorMaterialIn, nameIn, enableArmor,
             armor.itemNameColor, armor.enableSetEffects, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.enablePieceEffects, armor.removePotionEffects, armor.setUnbreakable
         );
