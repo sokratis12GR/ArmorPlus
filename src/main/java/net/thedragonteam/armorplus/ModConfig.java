@@ -195,9 +195,9 @@ public class ModConfig {
                 public boolean enable;
                 @Comment({"Set the rarity level of the lava crystal world gen"})
                 public int rarity;
-                @Comment({"Set the minimum y pos level of the lava crystal world gen"})
+                @Comment({"Set the minimum y getExactRandPos level of the lava crystal world gen"})
                 public int minYSpawn;
-                @Comment({"Set the maximum y pos level of the lava crystal world gen"})
+                @Comment({"Set the maximum y getExactRandPos level of the lava crystal world gen"})
                 public int maxYSpawn;
                 @Comment({"Set the vein amount of the lava crystal world gen"})
                 public int veinAmount;
@@ -284,26 +284,26 @@ public class ModConfig {
         public static UltimateMaterial ultimate = new UltimateMaterial();
 
         @Comment({"Configurations for the Chicken Material"})
-        public static SpecialMaterial chicken = new SpecialMaterial(new CombinedArmor("aqua", "speed", 4, new Armor(1, 1, 2, 1)));
+        public static ArmorProperties chicken = new ArmorProperties(new CombinedArmor("aqua", "speed", 4, new Armor(1, 1, 2, 1)), false);
         @Comment({"Configurations for the Slime Material"})
-        public static SpecialMaterial slime = new SpecialMaterial(new CombinedArmor("green", "jump_boost", 2, new Armor(1, 1, 2, 1)));
+        public static ArmorProperties slime = new ArmorProperties(new CombinedArmor("green", "jump_boost", 2, new Armor(1, 1, 2, 1)), false);
         @Comment({"Configurations for the Ardite Material"})
-        public static SpecialMaterial ardite = new SpecialMaterial(new CombinedArmor("dark_red", "fire_resistance", false, new Armor(1.0, 2, 3, 4, 2)));
+        public static ArmorProperties ardite = new ArmorProperties(new CombinedArmor("dark_red", "fire_resistance", false, new Armor(1.0, 2, 3, 4, 2)), false);
         @Comment({"Configurations for the Cobalt Material"})
-        public static SpecialMaterial cobalt = new SpecialMaterial(new CombinedArmor("blue", "haste", 2, new Armor(1.0, 2, 3, 4, 2)));
+        public static ArmorProperties cobalt = new ArmorProperties(new CombinedArmor("blue", "haste", 2, new Armor(1.0, 2, 3, 4, 2)), false);
         @Comment({"Configurations for the Manyullyn Material"})
-        public static SpecialMaterial manyullyn = new SpecialMaterial(new CombinedArmor("dark_purple", "strength", 1, new Armor(2.0, 3, 5, 5, 3)));
+        public static ArmorProperties manyullyn = new ArmorProperties(new CombinedArmor("dark_purple", "strength", 1, new Armor(2.0, 3, 5, 5, 3)), false);
         @Comment({"Configurations for the Pig Iron Material"})
-        public static SpecialMaterial pig_iron = new SpecialMaterial(new CombinedArmor("light_purple", "saturation", false, new Armor(1.0, 2, 3, 4, 3)));
+        public static ArmorProperties pig_iron = new ArmorProperties(new CombinedArmor("light_purple", "saturation", false, new Armor(1.0, 2, 3, 4, 3)), false);
         @Comment({"Configurations for the Knight Slime Material"})
-        public static SpecialMaterial knight_slime = new SpecialMaterial(new CombinedArmor("dark_purple", "jump_boost", 1, new Armor(1.0, 2, 3, 4, 3)));
+        public static ArmorProperties knight_slime = new ArmorProperties(new CombinedArmor("dark_purple", "jump_boost", 1, new Armor(1.0, 2, 3, 4, 3)), false);
 
         public static GlobalRegistry global_registry = new GlobalRegistry();
         public static RegistryRecipes recipes = new RegistryRecipes();
 
         public static class ArmorProperties {
 
-            public ArmorProperties(CombinedArmor properties) {
+            public ArmorProperties(CombinedArmor properties, boolean enableOnWaterTouchDeBuff) {
                 this.itemNameColor = properties.getColor();
                 this.removePotionEffects = properties.getAbility().getAbilityCanceller().getAbilities();
                 AbilityProvider abilityProperties = properties.getAbility().getAbilityProvider();
@@ -316,6 +316,7 @@ public class ModConfig {
                 this.protectionPoints = armor.getArmorPoints();
                 this.enablePieceEffects = new boolean[4];
                 this.setUnbreakable = false;
+                this.enableOnWaterTouchDeBuff = enableOnWaterTouchDeBuff;
             }
 
             @Comment({"Set the color name the armor will have"})
@@ -338,10 +339,17 @@ public class ModConfig {
             public boolean[] enablePieceEffects;
             @Comment({"Sets the armor unbreakable"})
             public boolean setUnbreakable;
+            @Comment({
+                "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
+                "a.k.a nothing happens when player wears this armor while in water.",
+                "CURRENTLY ONLY WORKS FOR THE INFUSED LAVA ARMOR"
+            })
+            public boolean enableOnWaterTouchDeBuff;
         }
 
         public static class OriginMaterial {
-            public OriginArmor armor;
+
+            public ArmorProperties armor;
             public OriginWeapons weapons;
 
             public OriginMaterial(CombinedArmor armorProperties, CombinedWeapon weaponProperties) {
@@ -353,27 +361,8 @@ public class ModConfig {
             }
 
             public OriginMaterial(CombinedArmor combinedArmor, boolean aeowtdb, CombinedWeapon combinedWeapon, boolean wsaf, int wofs) {
-                armor = new OriginArmor(combinedArmor, aeowtdb);
+                armor = new ArmorProperties(combinedArmor, aeowtdb);
                 weapons = new OriginWeapons(combinedWeapon, wsaf, wofs);
-            }
-
-            public class OriginArmor extends ArmorProperties {
-
-                public OriginArmor(CombinedArmor properties) {
-                    this(properties, false);
-                }
-
-                public OriginArmor(CombinedArmor properties, boolean aeowtdb) {
-                    super(properties);
-                    this.enableOnWaterTouchDeBuff = aeowtdb;
-                }
-
-                @Comment({
-                    "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
-                    "a.k.a nothing happens when player wears this armor while in water.",
-                    "CURRENTLY ONLY WORKS FOR THE INFUSED LAVA ARMOR"
-                })
-                public boolean enableOnWaterTouchDeBuff;
             }
 
             public class OriginWeapons {
@@ -485,21 +474,6 @@ public class ModConfig {
                 public boolean enableDeBuffs = true;
             }
 
-        }
-
-        public static class SpecialMaterial {
-            public SpecialArmor armor;
-
-            public SpecialMaterial(CombinedArmor properties) {
-                armor = new SpecialArmor(properties);
-            }
-
-            public class SpecialArmor extends ArmorProperties {
-
-                public SpecialArmor(CombinedArmor properties) {
-                    super(properties);
-                }
-            }
         }
 
         public static class GlobalRegistry {

@@ -32,29 +32,36 @@ public class WorldGenUtils {
         return y;
     }
 
-    public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
+    public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunkX, int chunkZ, int chancesToSpawn, int minHeight, int maxHeight) {
         if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight) {
             throw new AssertionError(format("Illegal Height Arguments for WorldGenerator. Min height must in the range (0, %d) [Value: %d]. Max height must not be greater than 256. [Value: %d", maxHeight, minHeight, maxHeight));
         }
         int heightDiff = maxHeight - minHeight + 1;
         for (int i = 0; i < chancesToSpawn; i++) {
-            int x, y, z;
-            x = x16(chunk_X) + rand.nextInt(CHUNK_SIZE);
+            int x;
+            int y;
+            int z;
             y = minHeight + rand.nextInt(heightDiff);
-            z = x16(chunk_Z) + rand.nextInt(CHUNK_SIZE);
+            x = getExactRandPos(chunkX,rand);
+            z = getExactRandPos(chunkZ,rand);
             BlockPos orePos = new BlockPos(x, y, z);
             generator.generate(world, rand, orePos);
         }
     }
 
-    public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int posY) {
+    public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunkX, int chunkZ, int chancesToSpawn, int posY) {
         for (int i = 0; i < chancesToSpawn; i++) {
-            int x, z;
-            x = x16(chunk_X) + rand.nextInt(CHUNK_SIZE);
-            z = x16(chunk_Z) + rand.nextInt(CHUNK_SIZE);
+            int x;
+            int z;
+            x = getExactRandPos(chunkX, rand);
+            z = getExactRandPos(chunkZ, rand);
             BlockPos orePos = new BlockPos(x, posY, z);
             generator.generate(world, rand, orePos);
         }
+    }
+
+    public static int getExactRandPos(int chunk, Random rand){
+        return x16(chunk) + rand.nextInt(CHUNK_SIZE);
     }
 
     public static int x16(int chunkCord) {

@@ -52,10 +52,6 @@ public class APItems {
     public static ItemStack theUltimateMaterial;
     public static ItemStack infusedLavaCrystal;
 
-    public APItems() {
-    }
-
-    @SuppressWarnings({"Duplicates", "ConstantConditions"})
     public static void registerItemNames() {
         GlobalRegistry gr = global_registry;
         if (gr.enableCoalArmor) {
@@ -130,6 +126,17 @@ public class APItems {
             theUltimateLeggings = theUltimate[2];
             theUltimateBoots = theUltimate[3];
         }
+
+        infusedLavaCrystal = getItemStack(itemLavaCrystal, 1);
+        chainmail = getItemStack(materials, 0);
+        guardianScale = getItemStack(materials, 1);
+        witherBone = getItemStack(materials, 2);
+        enderDragonScale = getItemStack(materials, 3);
+        theUltimateMaterial = getItemStack(materials, 4);
+    }
+
+    public static void registerWeaponsA(){
+        GlobalRegistry gr = global_registry;
         if (gr.enableCoalWeapons[0]) coalSword = sword[0];
         if (gr.enableCoalWeapons[1]) coalBattleAxe = battleAxe[0];
         if (gr.enableCoalWeapons[2]) coalBow = bow[0];
@@ -145,6 +152,10 @@ public class APItems {
         if (gr.enableObsidianWeapons[0]) obsidianSword = sword[4];
         if (gr.enableObsidianWeapons[1]) obsidianBattleAxe = battleAxe[4];
         if (gr.enableObsidianWeapons[2]) obsidianBow = bow[4];
+    }
+
+    public static void registerWeaponsB(){
+        GlobalRegistry gr = global_registry;
         if (gr.enableLavaWeapons[0]) lavaSword = sword[5];
         if (gr.enableLavaWeapons[1]) lavaBattleAxe = battleAxe[5];
         if (gr.enableLavaWeapons[2]) lavaBow = bow[5];
@@ -157,13 +168,6 @@ public class APItems {
         if (gr.enableEnderDragonWeapons[0]) enderDragonSword = sword[8];
         if (gr.enableEnderDragonWeapons[1]) enderDragonBattleAxe = battleAxe[8];
         if (gr.enableEnderDragonWeapons[2]) enderDragonBow = bow[8];
-
-        infusedLavaCrystal = getItemStack(itemLavaCrystal, 1);
-        chainmail = getItemStack(materials, 0);
-        guardianScale = getItemStack(materials, 1);
-        witherBone = getItemStack(materials, 2);
-        enderDragonScale = getItemStack(materials, 3);
-        theUltimateMaterial = getItemStack(materials, 4);
     }
 
     public static void registerTCItemNames() {

@@ -56,7 +56,7 @@ public class AdvancedRecipeTransferInfo<C extends Container> implements IRecipeT
     }
 
     @Override
-    public ArrayList<Slot> getInventorySlots(C container) {
+    public List<Slot> getInventorySlots(C container) {
         ArrayList<Slot> list;
         list = IntStream.range(inventorySlotStart, inventorySlotStart + inventorySlotCount + additionalSlots).filter(i -> i < container.inventorySlots.size()).mapToObj(container::getSlot).collect(Collectors.toCollection(ArrayList::new));
         return list;

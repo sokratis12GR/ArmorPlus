@@ -108,6 +108,7 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         return effect;
     }
 
+    @Override
     public ItemStack getRepairStack() {
         return repairStack;
     }

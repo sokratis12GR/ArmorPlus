@@ -31,15 +31,15 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
  **/
 public class ItemSpecialSword extends ItemSword implements IModdedItem {
 
-    public static ToolMaterial swordCoalMaterial = addToolMaterial("swordCoalMaterial", 1, coal.weapons.sword.durability, 1.0F, (float) coal.weapons.sword.damage, 15);
-    public static ToolMaterial swordLapisMaterial = addToolMaterial("swordLapisMaterial", 1, lapis.weapons.sword.durability, 1.0F, (float) lapis.weapons.sword.damage, 30);
-    public static ToolMaterial swordRedstoneMaterial = addToolMaterial("swordRedstoneMaterial", 1, redstone.weapons.sword.durability, 1.0F, (float) redstone.weapons.sword.damage, 20);
-    public static ToolMaterial swordEmeraldMaterial = addToolMaterial("swordEmeraldMaterial", 1, emerald.weapons.sword.durability, 1.0F, (float) emerald.weapons.sword.damage, 20);
-    public static ToolMaterial swordObsidianMaterial = addToolMaterial("swordObsidianMaterial", 1, obsidian.weapons.sword.durability, 1.0F, (float) obsidian.weapons.sword.damage, 20);
-    public static ToolMaterial swordLavaMaterial = addToolMaterial("swordLavaMaterial", 1, lava.weapons.sword.durability, 1.0F, (float) lava.weapons.sword.damage, 20);
-    public static ToolMaterial swordGuardianMaterial = addToolMaterial("swordGuardianMaterial", 1, guardian.weapons.sword.durability, 1.0F, (float) guardian.weapons.sword.damage, 30);
-    public static ToolMaterial swordSuperStarMaterial = addToolMaterial("swordSuperStarMaterial", 1, super_star.weapons.sword.durability, 1.0F, (float) super_star.weapons.sword.damage, 20);
-    public static ToolMaterial swordEnderDragonMaterial = addToolMaterial("swordEnderDragonMaterial", 1, ender_dragon.weapons.sword.durability, 1.0F, (float) ender_dragon.weapons.sword.damage, 20);
+    public static final ToolMaterial swordCoalMaterial = addToolMaterial("swordCoalMaterial", 1, coal.weapons.sword.durability, 1.0F, (float) coal.weapons.sword.damage, 15);
+    public static final ToolMaterial swordLapisMaterial = addToolMaterial("swordLapisMaterial", 1, lapis.weapons.sword.durability, 1.0F, (float) lapis.weapons.sword.damage, 30);
+    public static final ToolMaterial swordRedstoneMaterial = addToolMaterial("swordRedstoneMaterial", 1, redstone.weapons.sword.durability, 1.0F, (float) redstone.weapons.sword.damage, 20);
+    public static final ToolMaterial swordEmeraldMaterial = addToolMaterial("swordEmeraldMaterial", 1, emerald.weapons.sword.durability, 1.0F, (float) emerald.weapons.sword.damage, 20);
+    public static final ToolMaterial swordObsidianMaterial = addToolMaterial("swordObsidianMaterial", 1, obsidian.weapons.sword.durability, 1.0F, (float) obsidian.weapons.sword.damage, 20);
+    public static final ToolMaterial swordLavaMaterial = addToolMaterial("swordLavaMaterial", 1, lava.weapons.sword.durability, 1.0F, (float) lava.weapons.sword.damage, 20);
+    public static final ToolMaterial swordGuardianMaterial = addToolMaterial("swordGuardianMaterial", 1, guardian.weapons.sword.durability, 1.0F, (float) guardian.weapons.sword.damage, 30);
+    public static final ToolMaterial swordSuperStarMaterial = addToolMaterial("swordSuperStarMaterial", 1, super_star.weapons.sword.durability, 1.0F, (float) super_star.weapons.sword.damage, 20);
+    public static final ToolMaterial swordEnderDragonMaterial = addToolMaterial("swordEnderDragonMaterial", 1, ender_dragon.weapons.sword.durability, 1.0F, (float) ender_dragon.weapons.sword.damage, 20);
     public ItemStack itemExpert;
     public TextFormatting formatting;
     public List<String> effect;

@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -18,7 +19,7 @@ import net.thedragonteam.armorplus.iface.IModdedBlock;
 public class BlockLavaMaterial extends BlockBase implements IModdedBlock {
 
     public BlockLavaMaterial(LavaMaterial type) {
-        super(Material.ROCK, type.getName(), type.getResistance(), type.getHardness(), ToolType.PICKAXE, 3, 0.8f);
+        super(Material.ROCK, type.getName(), new BlockProperties(type.getResistance(), type.getHardness(), ToolType.PICKAXE, 3, 0.8f));
     }
 
     @Override

@@ -34,6 +34,8 @@ public class CommonProxy {
         ModBlocks.registerBlocks();
         ModItems.registerItems();
         APItems.registerItemNames();
+        APItems.registerWeaponsA();
+        APItems.registerWeaponsB();
         this.registerEntityFixes();
         ModEntities.registerEntitySettings();
         this.registerWorldGenerator(new OreGen(), new StructureGenNBT());

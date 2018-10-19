@@ -5,8 +5,10 @@ package net.thedragonteam.armorplus.compat.jei.misc;
  */
 public class UVData {
 
-    private final int u, v;
-    private final int widthU, heightV;
+    private final int u;
+    private final int v;
+    private final int widthU;
+    private final int heightV;
 
     public UVData(int u, int v, int widthU, int heightV) {
         this.u = u;

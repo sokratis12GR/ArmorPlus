@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -30,7 +31,7 @@ public class BlockCompressedObsidian extends BlockBase implements IModdedBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockCompressedObsidian() {
-        super(Material.ROCK, "compressed_obsidian", 2000.0f, 50.0f, ToolType.PICKAXE, 3);
+        super(Material.ROCK, "compressed_obsidian", new BlockProperties(2000.0f, 50.0f, ToolType.PICKAXE, 3));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

@@ -17,15 +17,15 @@ import static net.thedragonteam.armorplus.util.EnumHelperUtil.addHorseArmor;
 
 public class ItemBaseHorseArmor extends ItemBase {
 
-    public static HorseArmorType coal = addHorseArmor(COAL, 1);
-    public static HorseArmorType lapis = addHorseArmor(LAPIS, 3);
-    public static HorseArmorType redstone = addHorseArmor(REDSTONE, 3);
-    public static HorseArmorType emerald = addHorseArmor(EMERALD, 11);
-    public static HorseArmorType obsidian = addHorseArmor(OBSIDIAN, 13);
-    public static HorseArmorType lava = addHorseArmor(LAVA, 15);
-    public static HorseArmorType guardian = addHorseArmor(GUARDIAN, 18);
-    public static HorseArmorType super_star = addHorseArmor(SUPER_STAR, 18);
-    public static HorseArmorType ender_dragon = addHorseArmor(ENDER_DRAGON, 18);
+    public static final HorseArmorType coal = addHorseArmor(COAL, 1);
+    public static final HorseArmorType lapis = addHorseArmor(LAPIS, 3);
+    public static final HorseArmorType redstone = addHorseArmor(REDSTONE, 3);
+    public static final HorseArmorType emerald = addHorseArmor(EMERALD, 11);
+    public static final HorseArmorType obsidian = addHorseArmor(OBSIDIAN, 13);
+    public static final HorseArmorType lava = addHorseArmor(LAVA, 15);
+    public static final HorseArmorType guardian = addHorseArmor(GUARDIAN, 18);
+    public static final HorseArmorType super_star = addHorseArmor(SUPER_STAR, 18);
+    public static final HorseArmorType ender_dragon = addHorseArmor(ENDER_DRAGON, 18);
 
     private APArmorMaterial material;
 

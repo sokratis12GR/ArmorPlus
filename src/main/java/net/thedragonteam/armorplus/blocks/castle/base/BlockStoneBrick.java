@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.blocks.castle.BrickColor;
@@ -23,7 +24,7 @@ public class BlockStoneBrick extends BlockBase implements IModdedBlock {
     public String name;
 
     public BlockStoneBrick(BrickColor brickColor) {
-        super(Material.ROCK, brickColor.getName() + "_stone_brick", 10.0f, 5.0f, ToolType.PICKAXE, 0);
+        super(Material.ROCK, brickColor.getName() + "_stone_brick", new BlockProperties(10.0f, 5.0f, ToolType.PICKAXE, 0));
         this.color = brickColor.getMapColor();
         this.name = brickColor.getName() + "_stone_brick";
     }

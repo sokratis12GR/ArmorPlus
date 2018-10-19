@@ -342,7 +342,11 @@ public class TileLavaInfuser extends TileEntityLockable implements ITickable, IS
     @Override
     @Nonnull
     public int[] getSlotsForFace(EnumFacing side) {
-        return side == EnumFacing.DOWN ? SLOTS_BOTTOM : (side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES);
+        if (side == EnumFacing.DOWN) {
+            return SLOTS_BOTTOM;
+        } else {
+            return side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES;
+        }
     }
 
     /**

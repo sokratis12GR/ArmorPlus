@@ -125,6 +125,7 @@ public final class TiCMaterials extends AbstractToolPulse {
             new ExtraMaterialStats(100));
     }
 
+    @Override
     @Subscribe
     public void postInit(FMLPostInitializationEvent event) {
         if (isNull(TinkerTools.shard)) return;

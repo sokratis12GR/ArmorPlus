@@ -15,6 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -32,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class BlockCrystalOre extends BlockBase implements IModdedBlock {
 
     public BlockCrystalOre() {
-        super(Material.ROCK, "ore_lava_crystal", 2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F);
+        super(Material.ROCK, "ore_lava_crystal", new BlockProperties(2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F));
     }
 
     @Override

@@ -7,7 +7,6 @@ import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,14 +26,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 
 import static java.lang.String.format;
-import static net.minecraft.init.Items.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraft.item.ItemStack.EMPTY;
-import static net.thedragonteam.armorplus.registry.APItems.*;
+import static net.thedragonteam.armorplus.entity.dungeon.skeletalking.projectile.Skeleton.*;
 import static net.thedragonteam.armorplus.util.TextUtils.formatText;
-import static net.thedragonteam.armorplus.util.Utils.emptyArmor;
 import static net.thedragonteam.armorplus.util.Utils.getItemStacks;
-import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -89,63 +84,60 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         if (this.world.isRemote || shootingEntity == null || !(result.entityHit instanceof EntityPlayer)) {
             return;
         }
+        // Minion Data
         BlockPos blockPos = new BlockPos(result.entityHit);
         String phaseText = "%sRise Minions, Rise!!!";
-        final int amountWarriorMax = 4, amountArcherMax = 3, amountPaladinMax = 2;
+        int amountWarriorMax = 4;
+        int amountArcherMax = 3;
+        int amountPaladinMax = 2;
         int warriorBound = rand.nextInt(amountWarriorMax) + 1;
         int archerBound = rand.nextInt(amountArcherMax) + 1;
         int paladinBound = rand.nextInt(amountPaladinMax) + 1;
-        for (int ia = 0; ia < warriorBound; ia++) {
-            EntityWitherSkeleton minionWarrior = new EntityWitherSkeleton(this.world);
-            minionWarrior.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionWarrior.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionWarrior)), null);
-            this.world.spawnEntity(minionWarrior);
+        // Spawning Mechanic
+        for (int min = 0; min < warriorBound; min++) {
+            EntityWitherSkeleton minionWarrior = create(blockPos);
             if (checkPhase(1200.0F)) {
-                this.setMinionStats(minionWarrior, getItemStack(WOODEN_SWORD), EMPTY, emptyArmor);
+                this.setMinionStats(minionWarrior, WARRIOR_0);
             } else if (checkPhase(1000.0F)) {
-                this.setMinionStats(minionWarrior, "Warrior", 23.0D, getItemStack(STONE_SWORD), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (checkPhase(800.0F)) {
-                this.setMinionStats(minionWarrior, "Warrior", 26.0D, getItemStack(GOLDEN_SWORD), EMPTY, GOLDEN_HELMET, GOLDEN_CHESTPLATE, GOLDEN_LEGGINGS, GOLDEN_BOOTS);
-            } else if (checkPhase(600.0F)) {
-                this.setMinionStats(minionWarrior, "Warrior", 29.0D, getItemStack(IRON_SWORD), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (checkPhase(400.0F)) {
-                this.setMinionStats(minionWarrior, "Warrior", 32.0D, getItemStack(DIAMOND_SWORD), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (checkPhase(200.0F)) {
-                this.setMinionStats(minionWarrior, "Warrior", 35.0D, getItemStack(DIAMOND_AXE), EMPTY, DIAMOND_HELMET, DIAMOND_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
+                this.setMinionStats(minionWarrior, WARRIOR_1);
+            } else {
+                spawnMinions(minionWarrior, WARRIOR_2, WARRIOR_3, WARRIOR_4, WARRIOR_5);
             }
         }
-        for (int ib = 0; ib < archerBound; ib++) {
-            EntityWitherSkeleton minionArcher = new EntityWitherSkeleton(this.world);
-            minionArcher.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionArcher.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionArcher)), null);
-            this.world.spawnEntity(minionArcher);
-            if (checkPhase(800.0F)) {
-                this.setMinionStats(minionArcher, "Archer", 18.0D, getItemStack(BOW), EMPTY, LEATHER_HELMET, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_BOOTS);
-            } else if (checkPhase(600.0F)) {
-                this.setMinionStats(minionArcher, "Archer", 21.0D, getItemStack(BOW), EMPTY, CHAINMAIL_HELMET, CHAINMAIL_CHESTPLATE, CHAINMAIL_LEGGINGS, CHAINMAIL_BOOTS);
-            } else if (checkPhase(400.0F)) {
-                this.setMinionStats(minionArcher, "Archer", 24.0D, getItemStack(BOW), EMPTY, IRON_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            } else if (checkPhase(200.0F)) {
-                this.setMinionStats(minionArcher, "Archer", 27.0D, getItemStack(BOW), EMPTY, DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS);
-            }
+        for (int min = 0; min < archerBound; min++) {
+            EntityWitherSkeleton minionArcher = create(blockPos);
+            spawnMinions(minionArcher, ARCHER_1, ARCHER_2, ARCHER_3, ARCHER_4);
         }
-        for (int ic = 0; ic < paladinBound; ic++) {
-            EntityWitherSkeleton minionPaladin = new EntityWitherSkeleton(this.world);
-            minionPaladin.setPositionAndUpdate(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            minionPaladin.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minionPaladin)), null);
-            this.world.spawnEntity(minionPaladin);
+        for (int min = 0; min < paladinBound; min++) {
+            EntityWitherSkeleton minionPaladin = create(blockPos);
             if (checkPhase(400.0F)) {
-                this.setMinionStats(minionPaladin, "Paladin", 50.0D,
-                    getItemStack(superStarSword), getItemStack(SHIELD), DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS
-                );
+                this.setMinionStats(minionPaladin, PALADIN_1);
             } else if (checkPhase(200.0F)) {
-                this.setMinionStats(minionPaladin, "Paladin", 55.0D,
-                    getItemStack(superStarBattleAxe), getItemStack(SHIELD), superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots
-                );
+                this.setMinionStats(minionPaladin, PALADIN_2);
             }
         }
         result.entityHit.sendMessage(formatText(TextFormatting.RED, phaseText, TextFormatting.ITALIC));
         this.setDead();
+    }
+
+    private void spawnMinions(EntityWitherSkeleton minion, Skeleton one, Skeleton two, Skeleton three, Skeleton four) {
+        if (checkPhase(800.0F)) {
+            this.setMinionStats(minion, one);
+        } else if (checkPhase(600.0F)) {
+            this.setMinionStats(minion, two);
+        } else if (checkPhase(400.0F)) {
+            this.setMinionStats(minion, three);
+        } else if (checkPhase(200.0F)) {
+            this.setMinionStats(minion, four);
+        }
+    }
+
+    private EntityWitherSkeleton create(BlockPos pos) {
+        EntityWitherSkeleton minion = new EntityWitherSkeleton(this.world);
+        minion.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
+        minion.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minion)), null);
+        this.world.spawnEntity(minion);
+        return minion;
     }
 
     private boolean checkPhase(float phase) {
@@ -153,18 +145,8 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         return health <= phase && health > (phase - 200);
     }
 
-    private void setMinionStats(EntityWitherSkeleton witherSkeleton, String type, double maxHealth, ItemStack mainHand, ItemStack offHand, Item... equipedArmor) {
-        if (equipedArmor != null) {
-            setMinionStats(witherSkeleton, type, maxHealth, mainHand, offHand, getItemStacks(equipedArmor));
-        }
-    }
-
-    private void setMinionStats(EntityWitherSkeleton witherSkeleton, String type, double maxHealth, ItemStack mainHand, ItemStack offHand, ItemStack... equipedArmor) {
-        setMinionStats(witherSkeleton, type, maxHealth, mainHand, offHand, getItemStacks(equipedArmor));
-    }
-
-    private void setMinionStats(EntityWitherSkeleton witherSkeleton, ItemStack mainHand, ItemStack offHand, ItemStack[] equipedArmor) {
-        setMinionStats(witherSkeleton, "Warrior", 15.0D, mainHand, offHand, getItemStacks(equipedArmor));
+    private void setMinionStats(EntityWitherSkeleton witherSkeleton, Skeleton data) {
+        setMinionStats(witherSkeleton, data.getName(), data.getHealth(), data.getWeapon(), data.getOffHand(), getItemStacks(data.getArmor()));
     }
 
     private void setMinionStats(EntityWitherSkeleton minion, String type, double maxHealth, ItemStack mainHand, ItemStack offHand, NonNullList<ItemStack> equipedArmor) {

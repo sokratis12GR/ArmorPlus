@@ -189,7 +189,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             }
         }
     },
-    ARDITE(arditeArmor, "ardite", global_registry.enableArditeArmor, ardite.armor) {
+    ARDITE(arditeArmor, "ardite", global_registry.enableArditeArmor, ardite) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
@@ -200,7 +200,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(1);
         }
     },
-    COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, cobalt.armor) {
+    COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, cobalt) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
@@ -211,7 +211,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(0);
         }
     },
-    MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, manyullyn.armor) {
+    MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, manyullyn) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
@@ -222,7 +222,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(2);
         }
     },
-    KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, knight_slime.armor) {
+    KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, knight_slime) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
@@ -233,10 +233,10 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(3);
         }
     },
-    PIG_IRON(pigIronArmor, "pig_iron", global_registry.enablePigIronArmor, pig_iron.armor) {
+    PIG_IRON(pigIronArmor, "pig_iron", global_registry.enablePigIronArmor, pig_iron) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
-            if (pig_iron.armor.enableSetEffects && isFullSet(player, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots)) {
+            if (pig_iron.enableSetEffects && isFullSet(player, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots)) {
                 for (ItemStack e : player.getArmorInventoryList()) {
                     e.damageItem(1, player);
                 }
@@ -249,7 +249,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(4);
         }
     },
-    SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, slime.armor) {
+    SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, slime) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
@@ -260,7 +260,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(SLIME_BLOCK);
         }
     },
-    CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, chicken.armor) {
+    CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, chicken) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);

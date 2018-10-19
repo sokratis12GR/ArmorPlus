@@ -13,11 +13,9 @@ import static net.thedragonteam.armorplus.registry.ModBlocks.benches;
  **/
 public class APBlocks {
 
-    public static Block workbench = benches[0];
-    public static Block highTechBench = benches[1];
-    public static Block ultiTechBench = benches[2];
-    public static Block championBench = benches[3];
+    public static final Block workbench = benches[0];
+    public static final Block highTechBench = benches[1];
+    public static final Block ultiTechBench = benches[2];
+    public static final Block championBench = benches[3];
 
-    public APBlocks() {
-    }
 }

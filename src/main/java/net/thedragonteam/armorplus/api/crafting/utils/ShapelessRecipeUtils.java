@@ -23,10 +23,10 @@ public class ShapelessRecipeUtils {
                 if (!itemstack.isEmpty()) {
                     boolean flag = false;
 
-                    for (ItemStack itemstack1 : list) {
-                        if (itemstack.getItem() == itemstack1.getItem() && (itemstack1.getMetadata() == OreDictionary.WILDCARD_VALUE || itemstack.getMetadata() == itemstack1.getMetadata())) {
+                    for (ItemStack slotStack : list) {
+                        if (itemstack.getItem() == slotStack.getItem() && (slotStack.getMetadata() == OreDictionary.WILDCARD_VALUE || itemstack.getMetadata() == slotStack.getMetadata())) {
                             flag = true;
-                            list.remove(itemstack1);
+                            list.remove(slotStack);
                             break;
                         }
                     }

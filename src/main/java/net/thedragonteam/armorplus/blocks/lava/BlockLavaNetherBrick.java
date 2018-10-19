@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -26,7 +27,7 @@ public class BlockLavaNetherBrick extends BlockBase implements IModdedBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockLavaNetherBrick() {
-        super(Material.ROCK, "lava_nether_brick", 20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f);
+        super(Material.ROCK, "lava_nether_brick", new BlockProperties(20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

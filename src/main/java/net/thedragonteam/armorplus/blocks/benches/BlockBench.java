@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thedragonteam.armorplus.ArmorPlus;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -28,7 +29,7 @@ public class BlockBench extends BlockBase implements IModdedBlock {
     public Benches benches;
 
     public BlockBench(Benches benches) {
-        super(Material.IRON, benches.getName(), 1000.0f, 10.0f, ToolType.PICKAXE, 2);
+        super(Material.IRON, benches.getName(), new BlockProperties(1000.0f, 10.0f, ToolType.PICKAXE, 2));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;
     }

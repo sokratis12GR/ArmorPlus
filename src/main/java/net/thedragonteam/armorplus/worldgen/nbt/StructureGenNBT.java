@@ -25,7 +25,8 @@ import static net.thedragonteam.armorplus.DevUtils.enableTowerDevEnv;
 import static net.thedragonteam.armorplus.ModConfig.DebugConfig.debugMode;
 import static net.thedragonteam.armorplus.ModConfig.WorldGenConfig.tower;
 import static net.thedragonteam.armorplus.util.Utils.setRL;
-import static net.thedragonteam.armorplus.util.WorldGenUtils.*;
+import static net.thedragonteam.armorplus.util.WorldGenUtils.getExactRandPos;
+import static net.thedragonteam.armorplus.util.WorldGenUtils.getGroundFromAbove;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
@@ -37,8 +38,8 @@ public class StructureGenNBT implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 
-        int posX = x16(chunkX) + random.nextInt(CHUNK_SIZE);
-        int posZ = x16(chunkZ) + random.nextInt(CHUNK_SIZE);
+        int posX = getExactRandPos(chunkX, random);
+        int posZ = getExactRandPos(chunkZ, random);
 
         BlockPos posXZ = new BlockPos(posX, 1, posZ);
 
@@ -53,21 +54,24 @@ public class StructureGenNBT implements IWorldGenerator {
 
         if (tower.shouldOnlyGenerateInTheOverworld) {
             if (world.provider.getDimension() == 0) {
-                getBiomes(Type.HOT).forEach(hotBiome -> {
-                    boolean isBiomeEligible = (!hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE));
-                    if (isBiomeEligible && biome == hotBiome) {
-                        this.generateTower(serverworld, random, basePos);
-                    }
-                });
+                generateTowerWithChecks(biome, serverworld, random, basePos);
             }
         } else {
-            getBiomes(Type.HOT).forEach(hotBiome -> {
-                boolean isBiomeEligible = (!hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE));
-                if (isBiomeEligible && biome == hotBiome) {
-                    this.generateTower(serverworld, random, basePos);
-                }
-            });
+            generateTowerWithChecks(biome, serverworld, random, basePos);
         }
+    }
+
+    public void generateTowerWithChecks(Biome biome, WorldServer serverworld, Random random, BlockPos basePos) {
+        getBiomes(Type.HOT).forEach(hotBiome -> {
+            boolean isBiomeEligible = checkEligibility(hotBiome);
+            if (isBiomeEligible && biome == hotBiome) {
+                this.generateTower(serverworld, random, basePos);
+            }
+        });
+    }
+
+    public boolean checkEligibility(Biome hotBiome) {
+        return !hasType(hotBiome, Type.SAVANNA) && !hasType(hotBiome, Type.JUNGLE);
     }
 
     public void generateTower(WorldServer world, Random random, BlockPos pos) {

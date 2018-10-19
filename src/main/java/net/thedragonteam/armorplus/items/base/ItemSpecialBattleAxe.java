@@ -33,15 +33,15 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
  **/
 public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
 
-    public static ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coal.weapons.battle_axe.durability, 1.0F, (float) coal.weapons.battle_axe.damage, 15);
-    public static ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapis.weapons.battle_axe.durability, 1.0F, (float) lapis.weapons.battle_axe.damage, 30);
-    public static ToolMaterial battleAxeRedstoneMaterial = addToolMaterial("battleAxeRedstoneMaterial", 1, redstone.weapons.battle_axe.durability, 1.0F, (float) redstone.weapons.battle_axe.damage, 20);
-    public static ToolMaterial battleAxeEmeraldMaterial = addToolMaterial("battleAxeEmeraldMaterial", 1, emerald.weapons.battle_axe.durability, 1.0F, (float) emerald.weapons.battle_axe.damage, 20);
-    public static ToolMaterial battleAxeObsidianMaterial = addToolMaterial("battleAxeObsidianMaterial", 1, obsidian.weapons.battle_axe.durability, 1.0F, (float) obsidian.weapons.battle_axe.damage, 20);
-    public static ToolMaterial battleAxeLavaMaterial = addToolMaterial("battleAxeLavaMaterial", 1, lava.weapons.battle_axe.durability, 1.0F, (float) lava.weapons.battle_axe.damage, 20);
-    public static ToolMaterial battleAxeGuardianMaterial = addToolMaterial("battleAxeGuardianMaterial", 1, guardian.weapons.battle_axe.durability, 1.0F, (float) guardian.weapons.battle_axe.damage, 30);
-    public static ToolMaterial battleAxeSuperStarMaterial = addToolMaterial("battleAxeSuperStarMaterial", 1, super_star.weapons.battle_axe.durability, 1.0F, (float) super_star.weapons.battle_axe.damage, 20);
-    public static ToolMaterial battleAxeEnderDragonMaterial = addToolMaterial("battleAxeEnderDragonMaterial", 1, ender_dragon.weapons.battle_axe.durability, 1.0F, (float) ender_dragon.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeCoalMaterial = addToolMaterial("battleAxeCoalMaterial", 1, coal.weapons.battle_axe.durability, 1.0F, (float) coal.weapons.battle_axe.damage, 15);
+    public static final ToolMaterial battleAxeLapisMaterial = addToolMaterial("battleAxeLapisMaterial", 1, lapis.weapons.battle_axe.durability, 1.0F, (float) lapis.weapons.battle_axe.damage, 30);
+    public static final ToolMaterial battleAxeRedstoneMaterial = addToolMaterial("battleAxeRedstoneMaterial", 1, redstone.weapons.battle_axe.durability, 1.0F, (float) redstone.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeEmeraldMaterial = addToolMaterial("battleAxeEmeraldMaterial", 1, emerald.weapons.battle_axe.durability, 1.0F, (float) emerald.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeObsidianMaterial = addToolMaterial("battleAxeObsidianMaterial", 1, obsidian.weapons.battle_axe.durability, 1.0F, (float) obsidian.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeLavaMaterial = addToolMaterial("battleAxeLavaMaterial", 1, lava.weapons.battle_axe.durability, 1.0F, (float) lava.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeGuardianMaterial = addToolMaterial("battleAxeGuardianMaterial", 1, guardian.weapons.battle_axe.durability, 1.0F, (float) guardian.weapons.battle_axe.damage, 30);
+    public static final ToolMaterial battleAxeSuperStarMaterial = addToolMaterial("battleAxeSuperStarMaterial", 1, super_star.weapons.battle_axe.durability, 1.0F, (float) super_star.weapons.battle_axe.damage, 20);
+    public static final ToolMaterial battleAxeEnderDragonMaterial = addToolMaterial("battleAxeEnderDragonMaterial", 1, ender_dragon.weapons.battle_axe.durability, 1.0F, (float) ender_dragon.weapons.battle_axe.damage, 20);
     public ItemStack itemExpert;
     public TextFormatting formatting;
     public List<String> effect;

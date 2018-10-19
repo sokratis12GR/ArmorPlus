@@ -65,7 +65,14 @@ public class ItemUltimateArmor extends ItemArmor implements IModdedItem, IEffect
     }
 
     private void createPieces(EntityEquipmentSlot slot) {
-        String piece = slot == HEAD ? "the_ultimate_helmet" : slot == CHEST ? "the_ultimate_chestplate" : slot == LEGS ? "the_ultimate_leggings" : slot == FEET ? "the_ultimate_boots" : "";
+        String piece;
+        if (slot == HEAD) {
+            piece = "the_ultimate_helmet";
+        } else if (slot == CHEST) {
+            piece = "the_ultimate_chestplate";
+        } else if (slot == LEGS) {
+            piece = "the_ultimate_leggings";
+        } else piece = slot == FEET ? "the_ultimate_boots" : "";
         this.setRegistryName(setRL(piece));
         this.setTranslationKey(setName(piece));
     }

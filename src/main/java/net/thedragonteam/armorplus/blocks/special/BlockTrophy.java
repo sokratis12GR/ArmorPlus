@@ -14,6 +14,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -28,7 +29,7 @@ public class BlockTrophy extends BlockBase implements IModdedBlock {
     private Trophy type;
 
     public BlockTrophy(Trophy type) {
-        super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", 20.0f, 3.0f, ToolType.PICKAXE, 1);
+        super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", new BlockProperties(20.0f, 3.0f, ToolType.PICKAXE, 1));
         this.type = type;
     }
 

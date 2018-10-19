@@ -33,6 +33,9 @@ import static net.thedragonteam.armorplus.util.Utils.convertToSeconds;
  **/
 public final class ArmorPlusItemUtils {
 
+    private ArmorPlusItemUtils() {
+    }
+
     //=========================================================
     //||                                                     ||
     //||                        ITEMS                        ||
@@ -64,7 +67,10 @@ public final class ArmorPlusItemUtils {
      * @return Returns a validated result of the check if the player has the full armor set equipped.
      */
     public static boolean isFullSet(EntityPlayer player, Item head, Item chest, Item legs, Item feet) {
-        ItemStack headStack = getHead(player), chestStack = getChest(player), legsStack = getLegs(player), feetStack = getFeet(player);
+        ItemStack headStack = getHead(player);
+        ItemStack chestStack = getChest(player);
+        ItemStack legsStack = getLegs(player);
+        ItemStack feetStack = getFeet(player);
         return !isArmorEmpty(headStack, chestStack, legsStack, feetStack) && areEqual(headStack, head) && areEqual(chestStack, chest) && areEqual(legsStack, legs) && areEqual(feetStack, feet);
     }
 

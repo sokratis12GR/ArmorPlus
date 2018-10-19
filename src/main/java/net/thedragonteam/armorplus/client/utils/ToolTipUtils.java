@@ -117,7 +117,9 @@ public final class ToolTipUtils {
     @SideOnly(Side.CLIENT)
     public static void addSpecialInformation(List<String> tooltip, Negative negative, Ignite ignite, TextFormatting formatting) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-        if (GameSettings.isKeyDown(keyBindSneak)) {
+        if (!GameSettings.isKeyDown(keyBindSneak)) {
+            showInfo(tooltip, keyBindSneak, formatting);
+        } else {
             tooltip.add("\2479Abilities");
             if (!ignite.isEnabled() && !negative.isEnabled()) {
                 tooltip.add("\u00a79" + "none");
@@ -138,8 +140,6 @@ public final class ToolTipUtils {
                     tooltip.add(format("%s%s %s", abilityFormatting, localizePotion(negativeEffects[abilityIndex]), generate(effectLevels[abilityIndex] + 1)));
                 }
             }
-        } else {
-            showInfo(tooltip, keyBindSneak, formatting);
         }
     }
 

@@ -36,7 +36,8 @@ public class MobDropsEventHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLivingDrops(LivingDropsEvent event) {
-        int min = 0, max = 1;
+        int min = 0;
+        int max = 1;
         int randomDrop = random.nextInt(max - min + 1) + min;
         Entity entity = event.getEntity();
         if (entity instanceof EntityDragon) {

@@ -22,12 +22,12 @@ import static slimeknights.tconstruct.library.TinkerRegistry.getMaterial;
 public class TiC extends AbstractToolPulse {
 
     private static final TiC INSTANCE = new TiC();
-    public static TiCMaterials tinkersMaterials = new TiCMaterials();
-    public static TiCModifiers tiCModifiers = new TiCModifiers();
-    public static MaterialIntegration lavacrystalInt = new MaterialIntegration(TiCMaterials.INFUSED_LAVA_CRYSTAL);
-    public static MaterialIntegration steelInt = new MaterialIntegration(TinkerMaterials.steel, TinkerFluids.steel);
-    public static MaterialIntegration obsidianInt = new MaterialIntegration(TiCMaterials.COMPRESSED_OBSIDIAN);
-    public static MaterialIntegration infusedObsidianInt = new MaterialIntegration(TiCMaterials.LAVA_INFUSED_OBSIDIAN);
+    public static final TiCMaterials tinkersMaterials = new TiCMaterials();
+    public static final TiCModifiers tiCModifiers = new TiCModifiers();
+    public static final MaterialIntegration lavacrystalInt = new MaterialIntegration(TiCMaterials.INFUSED_LAVA_CRYSTAL);
+    public static final MaterialIntegration steelInt = new MaterialIntegration(TinkerMaterials.steel, TinkerFluids.steel);
+    public static final MaterialIntegration obsidianInt = new MaterialIntegration(TiCMaterials.COMPRESSED_OBSIDIAN);
+    public static final MaterialIntegration infusedObsidianInt = new MaterialIntegration(TiCMaterials.LAVA_INFUSED_OBSIDIAN);
 
     public static TiC instance() {
         return INSTANCE;
@@ -45,11 +45,13 @@ public class TiC extends AbstractToolPulse {
         tinkersMaterials.setupMaterialStats(event);
     }
 
+    @Override
     public void init(FMLInitializationEvent event) {
         tiCModifiers.init(event);
         tinkersMaterials.setupMaterials(event);
     }
 
+    @Override
     public void postInit(FMLPostInitializationEvent event) {
         initRepresentativeItem(lavacrystalInt, "blockInfusedLavaCrystal");
         initRepresentativeItem(obsidianInt, "blockCompressedObsidian");

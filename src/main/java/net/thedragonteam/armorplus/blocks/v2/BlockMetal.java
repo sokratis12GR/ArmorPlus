@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -24,7 +25,7 @@ public class BlockMetal extends BlockBase implements IModdedBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockMetal(Metals metals) {
-        super(Material.IRON, metals.getName() + "_block", 20.0f, 5.0f, ToolType.PICKAXE, 1);
+        super(Material.IRON, metals.getName() + "_block", new BlockProperties(20.0f, 5.0f, ToolType.PICKAXE, 1));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

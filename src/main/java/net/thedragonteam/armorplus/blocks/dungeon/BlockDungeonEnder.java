@@ -12,6 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.armorplus.blocks.BlockProperties;
 import net.thedragonteam.armorplus.blocks.base.BlockBase;
 import net.thedragonteam.armorplus.blocks.base.ToolType;
 import net.thedragonteam.armorplus.iface.IModdedBlock;
@@ -25,7 +26,7 @@ public class BlockDungeonEnder extends BlockBase implements IModdedBlock {
     private EnderType enderBlocks;
 
     public BlockDungeonEnder(EnderType enderBlocks) {
-        super(Material.ROCK, enderBlocks.getName(), 10000, 100, ToolType.PICKAXE, 4, enderBlocks.getLightLevel(), true);
+        super(Material.ROCK, enderBlocks.getName(), new BlockProperties(10000, 100, ToolType.PICKAXE, 4, enderBlocks.getLightLevel(), true));
         this.enderBlocks = enderBlocks;
     }
 

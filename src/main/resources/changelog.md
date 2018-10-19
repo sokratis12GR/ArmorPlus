@@ -3,6 +3,9 @@ ArmorPlus 1.12.2-11.15.0.43
 
 * Technical
   - Improved the API
+  - Fixed a crash with the new config refactor
+  - Improved code quality
+* Skeletal King, now fully implemented (1/4) Bosses ready.
 
 ArmorPlus 1.12.2-11.14.0.42
 ----------------------------
