@@ -39,7 +39,7 @@ public class ModBlocks {
     public static BlockMetal steelBlock = new BlockMetal(STEEL);
     public static BlockMetal electricalBlock = new BlockMetal(ELECTRICAL);
     public static BlockLavaNetherBrick blockLavaNetherBrick = new BlockLavaNetherBrick();
-    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH, ULTI_TECH, CHAMPION};
+    public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH_BENCH, ULTI_TECH_BENCH, CHAMPION_BENCH};
     public static BlockBench[] benches = new BlockBench[4];
     public static BrickColor[] stoneBrickTypes = new BrickColor[]{
         WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE

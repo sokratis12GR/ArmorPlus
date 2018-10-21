@@ -41,17 +41,16 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public enum Swords implements IEffectHolder, IRemovable, IRepairable {
-    COAL(swordCoalMaterial, "coal", getItemStack(COAL_BLOCK), coal, global_registry.enableCoalWeapons),
-    LAPIS(swordLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), lapis, global_registry.enableLapisWeapons),
-    REDSTONE(swordRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), redstone, global_registry.enableRedstoneWeapons),
-    EMERALD(swordEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), emerald, global_registry.enableEmeraldWeapons),
-    OBSIDIAN(swordObsidianMaterial, "obsidian", getItemStack(blockCompressedObsidian), obsidian, global_registry.enableObsidianWeapons),
-    LAVA(swordLavaMaterial, "infused_lava", getItemStack(itemLavaCrystal, 1), lava, global_registry.enableLavaWeapons),
-    GUARDIAN(swordGuardianMaterial, "guardian", getItemStack(materials, 1), guardian, global_registry.enableGuardianWeapons),
-    SUPER_STAR(swordSuperStarMaterial, "super_star", getItemStack(materials, 2), super_star, global_registry.enableSuperStarWeapons),
-    ENDER_DRAGON(swordEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), ender_dragon, global_registry.enableEnderDragonWeapons);
+    COAL(swordCoalMaterial, getItemStack(COAL_BLOCK), coal, global_registry.enableCoalWeapons),
+    LAPIS(swordLapisMaterial, getItemStack(LAPIS_BLOCK), lapis, global_registry.enableLapisWeapons),
+    REDSTONE(swordRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone, global_registry.enableRedstoneWeapons),
+    EMERALD(swordEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald, global_registry.enableEmeraldWeapons),
+    OBSIDIAN(swordObsidianMaterial, getItemStack(blockCompressedObsidian), obsidian, global_registry.enableObsidianWeapons),
+    INFUSED_LAVA(swordLavaMaterial, getItemStack(itemLavaCrystal, 1), lava, global_registry.enableLavaWeapons),
+    GUARDIAN(swordGuardianMaterial, getItemStack(materials, 1), guardian, global_registry.enableGuardianWeapons),
+    SUPER_STAR(swordSuperStarMaterial, getItemStack(materials, 2), super_star, global_registry.enableSuperStarWeapons),
+    ENDER_DRAGON(swordEnderDragonMaterial, getItemStack(materials, 3), ender_dragon, global_registry.enableEnderDragonWeapons);
 
-    private final String name;
     private final Item.ToolMaterial material;
     private final ItemStack repairStack;
     private final TextFormatting textFormatting;
@@ -60,10 +59,9 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
     private final Negative negative;
     private final Ignite ignite;
 
-    Swords(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, OriginMaterial material, boolean[] isEnabled
+    Swords(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material, boolean[] isEnabled
     ) {
         this.material = materialIn;
-        this.name = nameIn;
         this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
         this.textFormatting = getValueByName(material.weapons.itemNameColor);
         this.isEnabled = isEnabled[0];
@@ -92,12 +90,8 @@ public enum Swords implements IEffectHolder, IRemovable, IRepairable {
         return range(0, effectLevel.length).mapToObj(i -> localizePotion(effectName[i]) + " " + (effectLevel[i] + 1)).collect(Collectors.toList());
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
     public Item.ToolMaterial getToolMaterial() {

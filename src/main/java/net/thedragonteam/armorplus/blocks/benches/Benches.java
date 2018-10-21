@@ -18,29 +18,24 @@ import javax.annotation.Nonnull;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum Benches implements IStringSerializable {
-    WORKBENCH("workbench", new TileWB(), GuiHandler.GUI_WORKBENCH),
-    HIGH_TECH("high_tech_bench", new TileHTB(), GuiHandler.GUI_HIGH_TECH_BENCH),
-    ULTI_TECH("ulti_tech_bench", new TileUTB(), GuiHandler.GUI_ULTI_TECH_BENCH),
-    CHAMPION("champion_bench", new TileCB(), GuiHandler.GUI_CHAMPION_BENCH),;
+    WORKBENCH(new TileWB(), GuiHandler.GUI_WORKBENCH),
+    HIGH_TECH_BENCH(new TileHTB(), GuiHandler.GUI_HIGH_TECH_BENCH),
+    ULTI_TECH_BENCH(new TileUTB(), GuiHandler.GUI_ULTI_TECH_BENCH),
+    CHAMPION_BENCH(new TileCB(), GuiHandler.GUI_CHAMPION_BENCH),
+    ;
 
-    private final String name;
     private final TileEntity tileEntity;
     private final int guiNumber;
 
-    Benches(String nameIn, TileEntity tileEntityIn, int guiNumberIn) {
-        this.name = nameIn;
+    Benches(TileEntity tileEntityIn, int guiNumberIn) {
         this.tileEntity = tileEntityIn;
         this.guiNumber = guiNumberIn;
-    }
-
-    public String toString() {
-        return this.name;
     }
 
     @Override
     @Nonnull
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
     public TileEntity getTileEntity() {

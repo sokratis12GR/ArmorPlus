@@ -8,31 +8,25 @@ package net.thedragonteam.armorplus.items.enums;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public enum Cosmetics {
-    THE_DRAGON_TEAM("the_dragon_team"),
-    MODDED_CITY("modded_city"),
-    JON_BAMS("jon_bams", true),
-    TWITCH("twitch"),
-    BEAM("beam"),
-    BTM_MOON("btm_moon"),
-    M1JORDAN("m1jordan"),
-    TEAM_RAPTURE("team_rapture");
+    THE_DRAGON_TEAM,
+    MODDED_CITY,
+    JON_BAMS(true),
+    TWITCH,
+    BEAM,
+    BTM_MOON,
+    M1JORDAN,
+    TEAM_RAPTURE;
 
-    private final String name;
     private final boolean subTypes;
     private final int id;
 
-    Cosmetics(String nameIn) {
-        this(nameIn, false);
+    Cosmetics() {
+        this(false);
     }
 
-    Cosmetics(String nameIn, boolean hasSubTypes) {
-        this.name = nameIn;
+    Cosmetics(boolean hasSubTypes) {
         this.id = ordinal();
         this.subTypes = hasSubTypes;
-    }
-
-    public String toString() {
-        return this.name;
     }
 
     public boolean hasSubTypes() {
@@ -40,7 +34,7 @@ public enum Cosmetics {
     }
 
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
     public int getId() {

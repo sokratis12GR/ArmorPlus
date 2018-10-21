@@ -24,12 +24,12 @@ public class ItemBlockBench extends ItemBlock {
         switch (benches) {
             case WORKBENCH:
                 return addRarity("WORKBENCH", TextFormatting.BLUE, "Workbench");
-            case HIGH_TECH:
-                return addRarity("HIGH_TECH", TextFormatting.DARK_RED, "High-Tech Bench");
-            case ULTI_TECH:
-                return addRarity("ULTI_TECH", TextFormatting.GREEN, "Ulti-Tech Bench");
-            case CHAMPION:
-                return addRarity("CHAMPION", TextFormatting.GOLD, "Champion Bench");
+            case HIGH_TECH_BENCH:
+                return addRarity("HIGH_TECH_BENCH", TextFormatting.DARK_RED, "High-Tech Bench");
+            case ULTI_TECH_BENCH:
+                return addRarity("ULTI_TECH_BENCH", TextFormatting.GREEN, "Ulti-Tech Bench");
+            case CHAMPION_BENCH:
+                return addRarity("CHAMPION_BENCH", TextFormatting.GOLD, "Champion Bench");
         }
         return EnumRarity.COMMON;
     }

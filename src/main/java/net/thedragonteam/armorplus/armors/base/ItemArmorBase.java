@@ -48,7 +48,7 @@ public class ItemArmorBase extends ItemArmor implements IModdedItem {
         emerald.armor.protectionPoints, emerald.armor.toughnessPoints, EnumTiers.TIER_2);
     public static final ArmorMaterial obsidianArmor = addArmorMaterial("OBSIDIAN", "obsidian_armor", 40,
         obsidian.armor.protectionPoints, obsidian.armor.toughnessPoints, EnumTiers.TIER_2);
-    public static final ArmorMaterial lavaArmor = addArmorMaterial("LAVA", "lava_armor", 45,
+    public static final ArmorMaterial lavaArmor = addArmorMaterial("INFUSED_LAVA", "lava_armor", 45,
         lava.armor.protectionPoints, lava.armor.toughnessPoints, EnumTiers.TIER_2);
     public static final ArmorMaterial guardianArmor = addArmorMaterial("GUARDIAN", "guardian_armor", 50,
         guardian.armor.protectionPoints, guardian.armor.toughnessPoints, EnumTiers.TIER_3);

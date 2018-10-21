@@ -50,7 +50,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
-    COAL(coalArmor, "coal", global_registry.enableCoalArmor, coal.armor) {
+    COAL(coalArmor, global_registry.enableCoalArmor, coal.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, coalHelmet, coalChestplate, coalLeggings, coalBoots);
@@ -61,7 +61,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(COAL_BLOCK);
         }
     },
-    LAPIS(lapisArmor, "lapis", global_registry.enableLapisArmor, lapis.armor) {
+    LAPIS(lapisArmor, global_registry.enableLapisArmor, lapis.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
@@ -72,7 +72,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(LAPIS_BLOCK);
         }
     },
-    REDSTONE(redstoneArmor, "redstone", global_registry.enableRedstoneArmor, redstone.armor) {
+    REDSTONE(redstoneArmor, global_registry.enableRedstoneArmor, redstone.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
@@ -83,7 +83,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(REDSTONE_BLOCK);
         }
     },
-    EMERALD(emeraldArmor, "emerald", global_registry.enableEmeraldArmor, emerald.armor) {
+    EMERALD(emeraldArmor, global_registry.enableEmeraldArmor, emerald.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
@@ -94,7 +94,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(EMERALD_BLOCK);
         }
     },
-    OBSIDIAN(obsidianArmor, "obsidian", global_registry.enableObsidianArmor, obsidian.armor) {
+    OBSIDIAN(obsidianArmor, global_registry.enableObsidianArmor, obsidian.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
@@ -105,7 +105,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(blockCompressedObsidian);
         }
     },
-    LAVA(lavaArmor, "infused_lava", global_registry.enableLavaArmor, lava.armor) {
+    INFUSED_LAVA(lavaArmor, global_registry.enableLavaArmor, lava.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             if (!lava.armor.enableSetEffects) {
@@ -139,7 +139,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(itemLavaCrystal, 1);
         }
     },
-    GUARDIAN(guardianArmor, "guardian", global_registry.enableGuardianArmor, guardian.armor) {
+    GUARDIAN(guardianArmor, global_registry.enableGuardianArmor, guardian.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
@@ -150,7 +150,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(materials, 1);
         }
     },
-    SUPER_STAR(superStarArmor, "super_star", global_registry.enableSuperStarArmor, super_star.armor) {
+    SUPER_STAR(superStarArmor, global_registry.enableSuperStarArmor, super_star.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
@@ -161,7 +161,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(materials, 2);
         }
     },
-    ENDER_DRAGON(enderDragonArmor, "ender_dragon", global_registry.enableEnderDragonArmor, ender_dragon.armor) {
+    ENDER_DRAGON(enderDragonArmor, global_registry.enableEnderDragonArmor, ender_dragon.armor) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             if (enableFlightAbility) {
@@ -189,7 +189,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             }
         }
     },
-    ARDITE(arditeArmor, "ardite", global_registry.enableArditeArmor, ardite) {
+    ARDITE(arditeArmor, global_registry.enableArditeArmor, ardite) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, arditeHelmet, arditeChestplate, arditeLeggings, arditeBoots);
@@ -200,7 +200,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(1);
         }
     },
-    COBALT(cobaltArmor, "cobalt", global_registry.enableCobaltArmor, cobalt) {
+    COBALT(cobaltArmor, global_registry.enableCobaltArmor, cobalt) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, cobaltHelmet, cobaltChestplate, cobaltLeggings, cobaltBoots);
@@ -211,7 +211,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(0);
         }
     },
-    MANYULLYN(manyullynArmor, "manyullyn", global_registry.enableManyullynArmor, manyullyn) {
+    MANYULLYN(manyullynArmor, global_registry.enableManyullynArmor, manyullyn) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, manyullynHelmet, manyullynChestplate, manyullynLeggings, manyullynBoots);
@@ -222,7 +222,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(2);
         }
     },
-    KNIGHT_SLIME(knightSlimeArmor, "knight_slime", global_registry.enableKnightSlimeArmor, knight_slime) {
+    KNIGHT_SLIME(knightSlimeArmor, global_registry.enableKnightSlimeArmor, knight_slime) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, knightSlimeHelmet, knightSlimeChestplate, knightSlimeLeggings, knightSlimeBoots);
@@ -233,7 +233,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(3);
         }
     },
-    PIG_IRON(pigIronArmor, "pig_iron", global_registry.enablePigIronArmor, pig_iron) {
+    PIG_IRON(pigIronArmor, global_registry.enablePigIronArmor, pig_iron) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             if (pig_iron.enableSetEffects && isFullSet(player, pigIronHelmet, pigIronChestplate, pigIronLeggings, pigIronBoots)) {
@@ -249,7 +249,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getTCIngot(4);
         }
     },
-    SLIME(slimeArmor, "slime", global_registry.enableSlimeArmor, slime) {
+    SLIME(slimeArmor, global_registry.enableSlimeArmor, slime) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
@@ -260,7 +260,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
             return getItemStack(SLIME_BLOCK);
         }
     },
-    CHICKEN(chickenArmor, "chicken", global_registry.enableChickenArmor, chicken) {
+    CHICKEN(chickenArmor, global_registry.enableChickenArmor, chicken) {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             this.addEffects(player, slot, chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
@@ -274,7 +274,6 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     ;
 
     private final ArmorMaterial armorMaterial;
-    private final String name;
     private final boolean enableArmor;
     private final String formatting;
     private final boolean enableSetEffects;
@@ -283,17 +282,16 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     private final boolean isUnbreakable;
     private final boolean[] areEffectsEnabled;
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, ArmorProperties armor) {
-        this(armorMaterialIn, nameIn, enableArmor,
+    APArmorMaterial(ArmorMaterial armorMaterialIn, boolean enableArmor, ArmorProperties armor) {
+        this(armorMaterialIn, enableArmor,
             armor.itemNameColor, armor.enableSetEffects, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.enablePieceEffects, armor.removePotionEffects, armor.setUnbreakable
         );
     }
 
-    APArmorMaterial(ArmorMaterial armorMaterialIn, String nameIn, boolean enableArmor, String textFormattingIn,
+    APArmorMaterial(ArmorMaterial armorMaterialIn, boolean enableArmor, String textFormattingIn,
                     boolean enableSetEffects, String[] effects, int[] effectLevels, int[] effectDurations, boolean[] areEffectsEnabledIn,
                     String[] removeEffects, boolean isUnbreakable) {
         this.armorMaterial = armorMaterialIn;
-        this.name = nameIn;
         this.enableArmor = enableArmor;
         this.formatting = textFormattingIn;
         this.enableSetEffects = enableSetEffects;
@@ -330,7 +328,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
     }
 
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
     public TextFormatting getFormatting() {

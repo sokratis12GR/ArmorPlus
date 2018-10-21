@@ -55,13 +55,13 @@ public class ModItems {
         global_registry.enableArditeArmor, global_registry.enableCobaltArmor, global_registry.enableManyullynArmor, global_registry.enablePigIronArmor, global_registry.enableKnightSlimeArmor
     };
     public static Swords[] swordType = new Swords[]{
-        Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
+        Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.INFUSED_LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
     };
     public static BattleAxes[] battleAxeType = new BattleAxes[]{
-        BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
+        BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.INFUSED_LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
     };
     public static Bows[] bowType = new Bows[]{
-        Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
+        Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.INFUSED_LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
     };
     public static boolean[] isSwordEnabled = new boolean[]{
         global_registry.enableCoalWeapons[0], global_registry.enableLapisWeapons[0], global_registry.enableRedstoneWeapons[0], global_registry.enableEmeraldWeapons[0], global_registry.enableObsidianWeapons[0], global_registry.enableLavaWeapons[0], global_registry.enableGuardianWeapons[0], global_registry.enableSuperStarWeapons[0], global_registry.enableEnderDragonWeapons[0]
@@ -104,7 +104,7 @@ public class ModItems {
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
     public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
-    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{COAL, LAPIS, REDSTONE, EMERALD, OBSIDIAN, LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON};
+    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{COAL, LAPIS, REDSTONE, EMERALD, OBSIDIAN, INFUSED_LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON};
     public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", TOWER);
 
     public static void registerItems() {
@@ -118,7 +118,7 @@ public class ModItems {
         register(global_registry.enableRedstoneArmor, redstone, REDSTONE);
         register(global_registry.enableEmeraldArmor, emerald, EMERALD);
         register(global_registry.enableObsidianArmor, obsidian, OBSIDIAN);
-        register(global_registry.enableLavaArmor, lava, LAVA);
+        register(global_registry.enableLavaArmor, lava, INFUSED_LAVA);
         register(global_registry.enableGuardianArmor, guardian, GUARDIAN);
         register(global_registry.enableSuperStarArmor, superStar, SUPER_STAR);
         register(global_registry.enableEnderDragonArmor, enderDragon, ENDER_DRAGON);

@@ -11,8 +11,8 @@ import static net.thedragonteam.armorplus.util.Utils.setRL;
 public class GuiBaseBench extends GuiBase {
 
     private final int color;
-    public ResourceLocation resourceLocation;
-    public String name;
+    private ResourceLocation resourceLocation;
+    private String name;
 
     public GuiBaseBench(Container container, ResourceLocation resourceLocation, String benchName, int xSize, int ySize, int color) {
         super(container);

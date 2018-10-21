@@ -35,29 +35,28 @@ public class BlockLavaMaterial extends BlockBase implements IModdedBlock {
     }
 
     public enum LavaMaterial implements IStringSerializable {
-        LAVA_CRYSTAL("lava_crystal"),
-        INFUSED_LAVA_CRYSTAL("infused_lava_crystal"),
-        COMPRESSED_LAVA_CRYSTAL("compressed_lava_crystal"),
-        COMPRESSED_INFUSED_LAVA_CRYSTAL("compressed_infused_lava_crystal"),
-        LAVA_INFUSED_OBSIDIAN("lava_infused_obsidian", 2000.0f, 25.0F),;
+        LAVA_CRYSTAL,
+        INFUSED_LAVA_CRYSTAL,
+        COMPRESSED_LAVA_CRYSTAL,
+        COMPRESSED_INFUSED_LAVA_CRYSTAL,
+        LAVA_INFUSED_OBSIDIAN(2000.0f, 25.0F),
+        ;
 
-        private final String name;
         private final float resistance;
         private final float hardness;
 
-        LavaMaterial(String name, float resistance, float hardness) {
-            this.name = name;
+        LavaMaterial(float resistance, float hardness) {
             this.resistance = resistance;
             this.hardness = hardness;
         }
 
-        LavaMaterial(String name) {
-            this("block_" + name, 1000.0F, 5.0F);
+        LavaMaterial() {
+            this(1000.0F, 5.0F);
         }
 
         @Override
         public String getName() {
-            return this.name;
+            return this == LavaMaterial.LAVA_INFUSED_OBSIDIAN ? this.name().toLowerCase() : "block_" + this.name().toLowerCase();
         }
 
         public float getResistance() {

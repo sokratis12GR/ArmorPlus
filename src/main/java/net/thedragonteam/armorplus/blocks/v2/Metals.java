@@ -12,23 +12,13 @@ import javax.annotation.Nonnull;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  */
 public enum Metals implements IStringSerializable {
-    STEEL("steel"),
-    ELECTRICAL("electrical");
-
-    private final String name;
-
-    Metals(String nameIn) {
-        this.name = nameIn;
-    }
-
-    public String toString() {
-        return this.name;
-    }
+    STEEL,
+    ELECTRICAL;
 
     @Override
     @Nonnull
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
 }

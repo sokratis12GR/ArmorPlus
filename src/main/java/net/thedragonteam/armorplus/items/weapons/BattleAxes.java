@@ -40,15 +40,15 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
-    COAL(battleAxeCoalMaterial, "coal", getItemStack(COAL_BLOCK), coal, 8.0F, global_registry.enableCoalWeapons),
-    LAPIS(battleAxeLapisMaterial, "lapis", getItemStack(LAPIS_BLOCK), lapis, 9.0F, global_registry.enableLapisWeapons),
-    REDSTONE(battleAxeRedstoneMaterial, "redstone", getItemStack(REDSTONE_BLOCK), redstone, 9.0F, global_registry.enableRedstoneWeapons),
-    EMERALD(battleAxeEmeraldMaterial, "emerald", getItemStack(EMERALD_BLOCK), emerald, 10.0F, global_registry.enableEmeraldWeapons),
-    OBSIDIAN(battleAxeObsidianMaterial, "obsidian", getItemStack(ModBlocks.blockCompressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
-    LAVA(battleAxeLavaMaterial, "infused_lava", getItemStack(itemLavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
-    GUARDIAN(battleAxeGuardianMaterial, "guardian", getItemStack(materials, 1), guardian, 14.0F, global_registry.enableGuardianWeapons),
-    SUPER_STAR(battleAxeSuperStarMaterial, "super_star", getItemStack(materials, 2), super_star, 15.0F, global_registry.enableSuperStarWeapons),
-    ENDER_DRAGON(battleAxeEnderDragonMaterial, "ender_dragon", getItemStack(materials, 3), ender_dragon, 16.0F, global_registry.enableEnderDragonWeapons),
+    COAL(battleAxeCoalMaterial, getItemStack(COAL_BLOCK), coal, 8.0F, global_registry.enableCoalWeapons),
+    LAPIS(battleAxeLapisMaterial, getItemStack(LAPIS_BLOCK), lapis, 9.0F, global_registry.enableLapisWeapons),
+    REDSTONE(battleAxeRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone, 9.0F, global_registry.enableRedstoneWeapons),
+    EMERALD(battleAxeEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald, 10.0F, global_registry.enableEmeraldWeapons),
+    OBSIDIAN(battleAxeObsidianMaterial, getItemStack(ModBlocks.blockCompressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
+    INFUSED_LAVA(battleAxeLavaMaterial, getItemStack(itemLavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
+    GUARDIAN(battleAxeGuardianMaterial, getItemStack(materials, 1), guardian, 14.0F, global_registry.enableGuardianWeapons),
+    SUPER_STAR(battleAxeSuperStarMaterial, getItemStack(materials, 2), super_star, 15.0F, global_registry.enableSuperStarWeapons),
+    ENDER_DRAGON(battleAxeEnderDragonMaterial, getItemStack(materials, 3), ender_dragon, 16.0F, global_registry.enableEnderDragonWeapons),
     // WOOD(, "wooden"),
     // STONE(, "stone"),
     // IRON(, "iron"),
@@ -56,7 +56,6 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     // DIAMOND(, "diamond")
     ;
 
-    private final String name;
     private final Item.ToolMaterial material;
     private final ItemStack repairStack;
     private final TextFormatting textFormatting;
@@ -66,10 +65,9 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     private final Negative negative;
     private final Ignite ignite;
 
-    BattleAxes(Item.ToolMaterial materialIn, String nameIn, ItemStack repairStackIn, OriginMaterial material, float efficiencyIn, boolean[] isEnabled
+    BattleAxes(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material, float efficiencyIn, boolean[] isEnabled
     ) {
         this.material = materialIn;
-        this.name = nameIn;
         this.repairStack = repairStackIn;
         this.textFormatting = getValueByName(material.weapons.itemNameColor);
         this.isEnabled = isEnabled[1];
@@ -99,12 +97,8 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         return range(0, effectLevel.length).mapToObj(i -> localizePotion(effectName[i]) + " " + (effectLevel[i] + 1)).collect(Collectors.toList());
     }
 
-    public String toString() {
-        return this.name;
-    }
-
     public String getName() {
-        return this.name;
+        return this.name().toLowerCase();
     }
 
     public Item.ToolMaterial getToolMaterial() {
@@ -115,6 +109,7 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
         return effect;
     }
 
+    @Override
     public ItemStack getRepairStack() {
         return repairStack;
     }

@@ -22,7 +22,7 @@ public class ItemBaseHorseArmor extends ItemBase {
     public static final HorseArmorType redstone = addHorseArmor(REDSTONE, 3);
     public static final HorseArmorType emerald = addHorseArmor(EMERALD, 11);
     public static final HorseArmorType obsidian = addHorseArmor(OBSIDIAN, 13);
-    public static final HorseArmorType lava = addHorseArmor(LAVA, 15);
+    public static final HorseArmorType lava = addHorseArmor(INFUSED_LAVA, 15);
     public static final HorseArmorType guardian = addHorseArmor(GUARDIAN, 18);
     public static final HorseArmorType super_star = addHorseArmor(SUPER_STAR, 18);
     public static final HorseArmorType ender_dragon = addHorseArmor(ENDER_DRAGON, 18);
@@ -47,7 +47,7 @@ public class ItemBaseHorseArmor extends ItemBase {
                 return emerald;
             case OBSIDIAN:
                 return obsidian;
-            case LAVA:
+            case INFUSED_LAVA:
                 return lava;
             case GUARDIAN:
                 return guardian;
