@@ -32,8 +32,8 @@ public class AbilityProvider implements IRemovable {
         this(new String[]{ability}, new int[]{abilityLevel}, new int[]{duration}, enabled);
     }
 
-    public AbilityProvider(String[] abilities, int[] abilityLevels, int[] abilityDuration){
-        this(abilities,abilityLevels, abilityDuration, true);
+    public AbilityProvider(String[] abilities, int[] abilityLevels, int[] abilityDuration) {
+        this(abilities, abilityLevels, abilityDuration, true);
     }
 
     public AbilityProvider(String[] abilities, int[] abilityLevels, int[] abilityDuration, boolean enabled) {

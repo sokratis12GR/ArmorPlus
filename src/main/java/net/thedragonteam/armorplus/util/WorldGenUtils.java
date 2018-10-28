@@ -42,8 +42,8 @@ public class WorldGenUtils {
             int y;
             int z;
             y = minHeight + rand.nextInt(heightDiff);
-            x = getExactRandPos(chunkX,rand);
-            z = getExactRandPos(chunkZ,rand);
+            x = getExactRandPos(chunkX, rand);
+            z = getExactRandPos(chunkZ, rand);
             BlockPos orePos = new BlockPos(x, y, z);
             generator.generate(world, rand, orePos);
         }
@@ -60,7 +60,7 @@ public class WorldGenUtils {
         }
     }
 
-    public static int getExactRandPos(int chunk, Random rand){
+    public static int getExactRandPos(int chunk, Random rand) {
         return x16(chunk) + rand.nextInt(CHUNK_SIZE);
     }
 
@@ -70,7 +70,7 @@ public class WorldGenUtils {
 
     public static void runGenerator(WorldGenerator generator, World world, Random rand, int chancesToSpawn, BlockPos blockPos) {
         IntStream.range(0, chancesToSpawn).forEachOrdered(i ->
-            generator.generate(world, rand, blockPos)
+                generator.generate(world, rand, blockPos)
         );
     }
 }

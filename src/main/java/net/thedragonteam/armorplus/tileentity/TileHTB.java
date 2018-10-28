@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.tileentity.base.TileBench;
 public class TileHTB extends TileBench {
 
     public TileHTB() {
-        super("high_tech_bench",26);
+        super("high_tech_bench", 26);
     }
 
     public static void registerHTBFixes(DataFixer fixer) {

@@ -124,17 +124,17 @@ public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRan
      */
     private void launchFreezeBombToCoords(int pos, double x, double y, double z) {
         this.world.playEvent(null, 1024, new BlockPos(this), 0);
-        double d0 = this.getHeadX(pos);
-        double d1 = this.getHeadY(pos);
-        double d2 = this.getHeadZ(pos);
-        double d3 = x - d0;
-        double d4 = y - d1;
-        double d5 = z - d2;
-        EntityFreezeBomb entityFreezeBomb = new EntityFreezeBomb(this.world, this, d3, d4, d5);
+        double headingX = this.getHeadX(pos);
+        double headingY = this.getHeadY(pos);
+        double headingZ = this.getHeadZ(pos);
+        double estimatedX = x - headingX;
+        double estimatedY = y - headingY;
+        double estimatedZ = z - headingZ;
+        EntityFreezeBomb entityFreezeBomb = new EntityFreezeBomb(this.world, this, estimatedX, estimatedY, estimatedZ);
 
-        entityFreezeBomb.posY = d1;
-        entityFreezeBomb.posX = d0;
-        entityFreezeBomb.posZ = d2;
+        entityFreezeBomb.posY = estimatedY;
+        entityFreezeBomb.posX = estimatedX;
+        entityFreezeBomb.posZ = estimatedZ;
         this.world.spawnEntity(entityFreezeBomb);
     }
 

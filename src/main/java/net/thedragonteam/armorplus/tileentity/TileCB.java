@@ -15,7 +15,7 @@ import net.thedragonteam.armorplus.tileentity.base.TileBench;
 public class TileCB extends TileBench {
 
     public TileCB() {
-        super("champion_bench",82);
+        super("champion_bench", 82);
     }
 
     public static void registerCBFixes(DataFixer fixer) {

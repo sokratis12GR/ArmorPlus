@@ -27,12 +27,12 @@ import static net.thedragonteam.armorplus.util.Utils.setName;
  * @author Sokratis Fotkatzikis - TheDragonTeam
  **/
 @Mod(modid = ArmorPlus.MODID,
-    name = ArmorPlus.MODNAME,
-    version = ArmorPlus.VERSION,
-    dependencies = ArmorPlus.DEPEND,
-    guiFactory = ArmorPlus.GUI_FACTORY,
-    updateJSON = ArmorPlus.UPDATE_JSON,
-    acceptedMinecraftVersions = "[1.12.2,1.13)"
+        name = ArmorPlus.MODNAME,
+        version = ArmorPlus.VERSION,
+        dependencies = ArmorPlus.DEPEND,
+        guiFactory = ArmorPlus.GUI_FACTORY,
+        updateJSON = ArmorPlus.UPDATE_JSON,
+        acceptedMinecraftVersions = "[1.12.2,1.13)"
 )
 public class ArmorPlus {
 
@@ -72,9 +72,9 @@ public class ArmorPlus {
     public static final String MODNAME = "ArmorPlus";
     public static final String UPDATE_JSON = "https://cdn.tdt.pw/armorplus-updater.json";
     public static final String DEPEND = "required-after:forge@[" + FORGE_VERSION + ",);"
-        + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
-        + "after:mantle;"
-        + "after:tconstruct;";
+            + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
+            + "after:mantle;"
+            + "after:tconstruct;";
     public static final String GUI_FACTORY = "net.thedragonteam.armorplus.client.gui.ConfigGuiFactory";
     public static final String CLIENT_PROXY = "net.thedragonteam.armorplus.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.armorplus.proxy.ServerProxy";
@@ -90,7 +90,7 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorplusWeapons = new APTab(getNextID(), MODID, setName("weapons"), 3);
 
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{
-        tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons
+            tabArmorplus, tabArmorplusItems, tabArmorplusBlocks, tabArmorplusWeapons
     });
 
     @Instance(MODID)

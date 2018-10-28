@@ -13,13 +13,13 @@ public class WBRecipesHelper {
 
     public static void createArmorRecipes(BaseCraftingManager manager, String material, Object... outputs) {
         manager.addRecipes(
-            createShapedRecipe(outputs[0], "   ", "CCC", "C C", 'C', material),
-            createShapedRecipe(outputs[0], "   ", "CCC", "C C", 'C', material),
-            createShapedRecipe(outputs[0], "CCC", "C C", "   ", 'C', material),
-            createShapedRecipe(outputs[1], "C C", "CCC", "CCC", 'C', material),
-            createShapedRecipe(outputs[2], "CCC", "C C", "C C", 'C', material),
-            createShapedRecipe(outputs[3], "   ", "C C", "C C", 'C', material),
-            createShapedRecipe(outputs[3], "C C", "C C", "   ", 'C', material)
+                createShapedRecipe(outputs[0], "   ", "CCC", "C C", 'C', material),
+                createShapedRecipe(outputs[0], "   ", "CCC", "C C", 'C', material),
+                createShapedRecipe(outputs[0], "CCC", "C C", "   ", 'C', material),
+                createShapedRecipe(outputs[1], "C C", "CCC", "CCC", 'C', material),
+                createShapedRecipe(outputs[2], "CCC", "C C", "C C", 'C', material),
+                createShapedRecipe(outputs[3], "   ", "C C", "C C", 'C', material),
+                createShapedRecipe(outputs[3], "C C", "C C", "   ", 'C', material)
         );
     }
 
@@ -33,8 +33,8 @@ public class WBRecipesHelper {
 
     public static void createBowRecipes(BaseCraftingManager manager, String material, Object output) {
         manager.addRecipes(
-            createShapedRecipe(output, " CS", "C S", " CS", 'C', material, 'S', "string"),
-            createShapedRecipe(output, "SC ", "S C", "SC ", 'C', material, 'S', "string")
+                createShapedRecipe(output, " CS", "C S", " CS", 'C', material, 'S', "string"),
+                createShapedRecipe(output, "SC ", "S C", "SC ", 'C', material, 'S', "string")
         );
     }
 }

@@ -55,7 +55,8 @@ public enum Trophy {
         public ResourceLocation getEntityId() {
             return new ResourceLocation("pig");
         }
-    },;
+    },
+    ;
 
     private final String name;
     private final float scale;

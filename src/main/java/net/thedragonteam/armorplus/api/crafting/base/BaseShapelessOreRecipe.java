@@ -37,11 +37,11 @@ public class BaseShapelessOreRecipe implements IRecipe {
         output = recipe.getRecipeOutput();
 
         recipe.input.stream().map(
-            ingredient -> replacements.entrySet().stream().filter(
-                replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
-            ).findFirst().<Object>map(
-                replace -> OreDictionary.getOres(replace.getValue())
-            ).orElse(ingredient)
+                ingredient -> replacements.entrySet().stream().filter(
+                        replace -> OreDictionary.itemMatches(replace.getKey(), ingredient, false)
+                ).findFirst().<Object>map(
+                        replace -> OreDictionary.getOres(replace.getValue())
+                ).orElse(ingredient)
         ).forEachOrdered(finalObj -> input.add(finalObj));
     }
 

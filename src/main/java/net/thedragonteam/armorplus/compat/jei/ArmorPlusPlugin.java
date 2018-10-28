@@ -61,11 +61,11 @@ public class ArmorPlusPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         jeiHelper = registry.getJeiHelpers();
         registry.addRecipeCategories(
-            new CategoryBase("workbench", new UVData(29, 16, 116, 54), new OutputSlot(94, 18), 3, JEI_CATEGORY_WORKBENCH),
-            new CategoryBase("high_tech_bench", new UVData(11, 16, 156, 93),new OutputSlot( 136, 36), 5, JEI_CATEGORY_HIGH_TECH_BENCH),
-            new CategoryBaseAdvanced("ulti_tech_bench", new UVData (11, 16, 178, 126), new OutputSlot(156, 54), 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
-            new CategoryBaseAdvanced("champion_bench", new UVData(11, 16, 162, 162),new OutputSlot( 72, 168), 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
-            new LavaInfuserCategory()
+                new CategoryBase("workbench", new UVData(29, 16, 116, 54), new OutputSlot(94, 18), 3, JEI_CATEGORY_WORKBENCH),
+                new CategoryBase("high_tech_bench", new UVData(11, 16, 156, 93), new OutputSlot(136, 36), 5, JEI_CATEGORY_HIGH_TECH_BENCH),
+                new CategoryBaseAdvanced("ulti_tech_bench", new UVData(11, 16, 178, 126), new OutputSlot(156, 54), 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
+                new CategoryBaseAdvanced("champion_bench", new UVData(11, 16, 162, 162), new OutputSlot(72, 168), 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
+                new LavaInfuserCategory()
         );
     }
 
@@ -77,15 +77,15 @@ public class ArmorPlusPlugin implements IModPlugin {
 
             registerDescriptions(registry);
             blackListIngredients(blacklist,
-                moddedCityItem,
-                jonBamsItem,
-                getItemStack(jonBamsItem, 1),
-                theDragonTeamItem,
-                twitchItem,
-                beamItem,
-                btmMoon,
-                m1Jordan,
-                teamRapture
+                    moddedCityItem,
+                    jonBamsItem,
+                    getItemStack(jonBamsItem, 1),
+                    theDragonTeamItem,
+                    twitchItem,
+                    beamItem,
+                    btmMoon,
+                    m1Jordan,
+                    teamRapture
             );
             Arrays.stream(horseArmors).forEach(horseArmor -> blackListIngredients(blacklist, horseArmor));
             Arrays.stream(enderBlocks).forEach(enderBlocks -> blackListIngredients(blacklist, enderBlocks));
@@ -142,10 +142,10 @@ public class ArmorPlusPlugin implements IModPlugin {
 
     private void registerDescriptions(IModRegistry registry) {
         this.registerDescriptions(registry,
-            createDesc(guardianScale, "armorplus.jei.guardian_scale.desc"),
-            createDesc(witherBone, "armorplus.jei.wither_bone.desc"),
-            createDesc(enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
-            createDesc(getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc")
+                createDesc(guardianScale, "armorplus.jei.guardian_scale.desc"),
+                createDesc(witherBone, "armorplus.jei.wither_bone.desc"),
+                createDesc(enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
+                createDesc(getItemStack(lavaInfuser), "armorplus.jei.lava_infuser.desc")
         );
     }
 
@@ -157,7 +157,7 @@ public class ArmorPlusPlugin implements IModPlugin {
         Arrays.stream(entries).forEachOrdered(entry -> registerDescriptions(registry, entry));
     }
 
-    private EntryDescription createDesc(ItemStack stack, String desc){
+    private EntryDescription createDesc(ItemStack stack, String desc) {
         return new EntryDescription(stack, desc);
     }
 

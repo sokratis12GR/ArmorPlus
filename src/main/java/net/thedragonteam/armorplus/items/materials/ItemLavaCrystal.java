@@ -103,7 +103,7 @@ public class ItemLavaCrystal extends Item implements IModdedItem {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             IntStream.range(0, names.length).mapToObj(
-                meta -> getItemStack(this, meta)
+                    meta -> getItemStack(this, meta)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -112,7 +112,7 @@ public class ItemLavaCrystal extends Item implements IModdedItem {
     @Override
     public void initModel() {
         IntStream.range(0, names.length).forEachOrdered(
-            meta -> this.initModel(names[meta], "lava", meta)
+                meta -> this.initModel(names[meta], "lava", meta)
         );
     }
 }

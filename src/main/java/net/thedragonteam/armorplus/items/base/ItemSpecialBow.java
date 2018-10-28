@@ -118,7 +118,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
         }
         int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
         return IntStream.range(0, bound).mapToObj(
-            i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
+                i -> ((EntityPlayer) entityLivingBase).inventory.getStackInSlot(i)
         ).filter(this::isArrow).findFirst().orElse(ItemStack.EMPTY);
     }
 

@@ -56,6 +56,7 @@ public interface ICompatibility {
          * Represents
          * [net.minecraftforge.fml.common.event.FMLModIdMappingEvent]
          */
-        MAPPING,;
+        MAPPING,
+        ;
     }
 }

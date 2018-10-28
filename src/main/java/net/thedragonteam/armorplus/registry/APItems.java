@@ -135,7 +135,7 @@ public class APItems {
         theUltimateMaterial = getItemStack(materials, 4);
     }
 
-    public static void registerWeaponsA(){
+    public static void registerWeaponsA() {
         GlobalRegistry gr = global_registry;
         if (gr.enableCoalWeapons[0]) coalSword = sword[0];
         if (gr.enableCoalWeapons[1]) coalBattleAxe = battleAxe[0];
@@ -154,7 +154,7 @@ public class APItems {
         if (gr.enableObsidianWeapons[2]) obsidianBow = bow[4];
     }
 
-    public static void registerWeaponsB(){
+    public static void registerWeaponsB() {
         GlobalRegistry gr = global_registry;
         if (gr.enableLavaWeapons[0]) lavaSword = sword[5];
         if (gr.enableLavaWeapons[1]) lavaBattleAxe = battleAxe[5];

@@ -18,7 +18,8 @@ public enum EnumTiers implements IStringSerializable {
     TIER_1(1, "beginner", 8, new SubTypeMaterials[]{COAL, LAPIS, REDSTONE}),
     TIER_2(2, "amateur", 16, new SubTypeMaterials[]{EMERALD, OBSIDIAN, LAVA}),
     TIER_3(3, "master", 30, new SubTypeMaterials[]{GUARDIAN, SUPER_STAR, ENDER_DRAGON}),
-    TIER_4(4, "grandmaster", 60, new SubTypeMaterials[]{ULTIMATE}),;
+    TIER_4(4, "grandmaster", 60, new SubTypeMaterials[]{ULTIMATE}),
+    ;
 
     private final int tierSlot;
 
@@ -68,6 +69,7 @@ public enum EnumTiers implements IStringSerializable {
         GUARDIAN,
         SUPER_STAR,
         ENDER_DRAGON,
-        ULTIMATE,;
+        ULTIMATE,
+        ;
     }
 }

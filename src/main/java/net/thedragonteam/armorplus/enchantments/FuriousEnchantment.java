@@ -18,8 +18,8 @@ public class FuriousEnchantment extends EnchantmentBase {
 
     public FuriousEnchantment() {
         super("furious", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR,
-            new EntityEquipmentSlot[]{EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET},
-            1, 3, 10, 15, true, true
+                new EntityEquipmentSlot[]{EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET},
+                1, 3, 10, 15, true, true
         );
     }
 

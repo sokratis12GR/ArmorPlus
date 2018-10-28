@@ -18,7 +18,7 @@ public class ShapelessRecipeWrapper implements IRecipeWrapper {
         this.recipe = recipe;
         this.input = inputList;
         inputList.stream().filter(Objects::nonNull).filter(itemStack ->
-            !itemStack.isEmpty() && itemStack.getCount() != 1
+                !itemStack.isEmpty() && itemStack.getCount() != 1
         ).forEachOrdered(itemStack -> itemStack.setCount(1));
     }
 

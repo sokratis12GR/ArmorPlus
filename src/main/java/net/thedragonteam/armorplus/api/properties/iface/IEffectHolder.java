@@ -15,14 +15,12 @@ public interface IEffectHolder {
 
     /**
      * @return the abilities that will be applied
-     *
      * @since JEI 4.12.0
      */
     AbilityProvider getApplicableAbilities();
 
     /**
      * @return The abilities that will be cancelled.
-     *
      * @since JEI 4.12.0
      */
     AbilityCanceller getRemovableAbilities();
@@ -31,7 +29,6 @@ public interface IEffectHolder {
 
     /**
      * @return A list of the effects that will be applied to the entity
-     *
      * @deprecated since A+ 11.15.0.43. Use {@link #getApplicableAbilities()}
      */
     @Deprecated
@@ -41,7 +38,6 @@ public interface IEffectHolder {
 
     /**
      * @return A list of the amplifier levels of the given effects provided by {@link #getApplyEffectNames()}
-
      * @deprecated since A+ 11.15.0.43. Use {@link #getApplicableAbilities()}
      */
     @Deprecated
@@ -51,11 +47,10 @@ public interface IEffectHolder {
 
     /**
      * @return A list of the durations of the given effects provided by {@link #getApplyEffectNames()} ()}
-     *
      * @deprecated since A+ 11.15.0.43. Use {@link #getApplicableAbilities()}
      */
     @Deprecated
-    default List<Integer> getApplyEffectDurations(){
+    default List<Integer> getApplyEffectDurations() {
         return new ArrayList<>();
     }
 

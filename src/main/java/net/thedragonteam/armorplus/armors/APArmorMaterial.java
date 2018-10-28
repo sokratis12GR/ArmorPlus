@@ -284,7 +284,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
 
     APArmorMaterial(ArmorMaterial armorMaterialIn, boolean enableArmor, ArmorProperties armor) {
         this(armorMaterialIn, enableArmor,
-            armor.itemNameColor, armor.enableSetEffects, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.enablePieceEffects, armor.removePotionEffects, armor.setUnbreakable
+                armor.itemNameColor, armor.enableSetEffects, armor.addPotionEffects, armor.effectLevels, armor.effectDurations, armor.enablePieceEffects, armor.removePotionEffects, armor.setUnbreakable
         );
     }
 

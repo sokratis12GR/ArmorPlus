@@ -22,7 +22,8 @@ public class BossInfoServerDungeon extends BossInfoServer {
         SKELETAL_KING(WHITE, NOTCHED_12, true, false),
         GUARDIAN_OVERLORD(BLUE, NOTCHED_12, false, false),
         DEMONIC_DRAGON(PURPLE, NOTCHED_12, true, false),
-        THE_MEANING_OF_EVERYTHING(GREEN, NOTCHED_20, true, true),;
+        THE_MEANING_OF_EVERYTHING(GREEN, NOTCHED_20, true, true),
+        ;
 
         private final Color color;
         private final Overlay overlay;

@@ -12,7 +12,7 @@ import net.thedragonteam.armorplus.potions.base.PotionBaseGood;
 
 /**
  * @author Sokratis Fotkatzikis - TheDragonTeam
- *
+ * <p>
  * Provides an Empty or a "null" type Potion effect that makes potion removal, setting & replacing easier.
  **/
 public class PotionEmpty extends PotionBaseGood {

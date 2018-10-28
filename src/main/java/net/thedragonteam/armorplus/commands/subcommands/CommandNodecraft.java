@@ -27,11 +27,11 @@ public class CommandNodecraft extends CommandSubBase {
         ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/thedragonteam");
         Style linkStyle = new Style().setColor(BLUE).setUnderlined(true).setClickEvent(promoLink);
         sendMessages(sender, formatText(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"), formatText(
-            "commands.armorplus.nodecraft.promo.start.text", ""
+                "commands.armorplus.nodecraft.promo.start.text", ""
         ).appendSibling(formatText(
-            "commands.armorplus.nodecraft.promo.middle.text"
+                "commands.armorplus.nodecraft.promo.middle.text"
         ).setStyle(linkStyle)).appendSibling(formatText(
-            "commands.armorplus.nodecraft.promo.end.text", "30%")
+                "commands.armorplus.nodecraft.promo.end.text", "30%")
         ));
     }
 

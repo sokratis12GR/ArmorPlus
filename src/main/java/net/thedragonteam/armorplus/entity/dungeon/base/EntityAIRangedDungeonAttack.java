@@ -14,7 +14,8 @@ public class EntityAIRangedDungeonAttack extends EntityAIAttackRanged {
 
     public enum EntityAIType {
         GUARDIAN(0.5D, 10, 3.0F),
-        WITHER(1.0D, 120, 10.0F),;
+        WITHER(1.0D, 120, 10.0F),
+        ;
 
         private final double moveSpeed;
         private final int maxAttackTime;
