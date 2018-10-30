@@ -8,6 +8,7 @@ import net.minecraft.util.datafix.DataFixesManager;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.thedragonteam.armorplus.ModConfig;
 import net.thedragonteam.armorplus.commands.CommandArmorPlus;
 import net.thedragonteam.armorplus.compat.tinkers.TiC;
 import net.thedragonteam.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
@@ -22,6 +23,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static net.thedragonteam.armorplus.ModConfig.RegistryConfig.global_registry;
 import static net.thedragonteam.armorplus.compat.ICompatibility.InitializationPhase.*;
 import static net.thedragonteam.armorplus.util.LoaderUtils.isTiCIntegrationEnabled;
 
@@ -61,11 +63,21 @@ public class CommonProxy {
         ModRecipes.init();
         //TConstruct
         if (isTiCIntegrationEnabled()) TiC.instance().init(event);
-        Arrays.stream(ModItems.ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        Arrays.stream(ModItems.cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        Arrays.stream(ModItems.manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        Arrays.stream(ModItems.knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        Arrays.stream(ModItems.pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        if (global_registry.enableArditeArmor) {
+            Arrays.stream(ModItems.ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        }
+        if (global_registry.enableCobaltArmor) {
+            Arrays.stream(ModItems.cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        }
+        if (global_registry.enableManyullynArmor) {
+            Arrays.stream(ModItems.manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        }
+        if (global_registry.enableKnightSlimeArmor) {
+            Arrays.stream(ModItems.knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        }
+        if (global_registry.enablePigIronArmor) {
+            Arrays.stream(ModItems.pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        }
         LogHelper.info("Finished Initialization");
     }
 
