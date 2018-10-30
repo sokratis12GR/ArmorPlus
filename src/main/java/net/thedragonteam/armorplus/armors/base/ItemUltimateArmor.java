@@ -54,7 +54,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ItemUltimateArmor extends ItemArmor implements IModdedItem, IEffectHolder {
 
     public static final ArmorMaterial theUltimateArmor = addArmorMaterial("THE_ULTIMATE_ARMOR", "the_ultimate_armor", 160,
-            ultimate.armor.protectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, ultimate.armor.toughnessPoints);
+        ultimate.armor.protectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, ultimate.armor.toughnessPoints);
     private Armor armor = ultimate.armor;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {

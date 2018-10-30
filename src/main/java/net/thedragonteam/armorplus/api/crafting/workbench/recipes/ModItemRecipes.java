@@ -18,38 +18,38 @@ public class ModItemRecipes {
 
     public void addRecipes(BaseCraftingManager manager) {
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ModBlocks.lavaInfuser, 1),
-                "LLL",
-                "G G",
-                "OOO",
-                'L', "gemLavaCrystal",
-                'G', "blockGlass",
-                'O', "obsidian"
+            "LLL",
+            "G G",
+            "OOO",
+            'L', "gemLavaCrystal",
+            'G', "blockGlass",
+            'O', "obsidian"
         ));
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemTGOTG, 1),
-                "LOL",
-                "OSO",
-                "LOL",
-                'S', "netherStar",
-                'O', "obsidian",
-                'L', "gemChargedLavaCrystal"));
+            "LOL",
+            "OSO",
+            "LOL",
+            'S', "netherStar",
+            'O', "obsidian",
+            'L', "gemChargedLavaCrystal"));
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 9), "blockSteel"));
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 9), "blockElectrical"));
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(workbench),
-                "LCL",
-                "OTO",
-                "O O",
-                'T', "workbench",
-                'O', "blockCoal",
-                'L', "gemLapis",
-                'C', "gemLavaCrystal"));
+            "LCL",
+            "OTO",
+            "O O",
+            'T', "workbench",
+            'O', "blockCoal",
+            'L', "gemLapis",
+            'C', "gemLavaCrystal"));
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(highTechBench),
-                "LLL",
-                "CAC",
-                "CCC",
-                'C', "gemChargedLavaCrystal",
-                'L', "blockRedstone",
-                'A', "apWorkbench"));
+            "LLL",
+            "CAC",
+            "CCC",
+            'C', "gemChargedLavaCrystal",
+            'L', "blockRedstone",
+            'A', "apWorkbench"));
         //   if (isTeslaLoaded()) {
         //      manager.addRecipe(new ShapedOreRecipe(new ItemStack(itemTeslaRod, 1),
         //              " T ",
@@ -101,15 +101,15 @@ public class ModItemRecipes {
         //              'S', "rodTesla"));
         //    }
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ModBlocks.steelBlock, 1),
-                "OOO",
-                "OOO",
-                "OOO",
-                'O', "ingotSteel"));
+            "OOO",
+            "OOO",
+            "OOO",
+            'O', "ingotSteel"));
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ModBlocks.electricalBlock, 1),
-                "OOO",
-                "OOO",
-                "OOO",
-                'O', "ingotElectrical"));
+            "OOO",
+            "OOO",
+            "OOO",
+            'O', "ingotElectrical"));
         manager.addRecipe(getItemStack(ModBlocks.blockLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.itemLavaCrystal, 0));
         manager.addRecipe(getItemStack(ModBlocks.blockInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(ModItems.itemLavaCrystal, 1));
 
@@ -120,29 +120,29 @@ public class ModItemRecipes {
                 manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "dustGlowstone"));
                 if (recipes.enableArrowRecipes) {
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemCoalArrow, 2),
-                            "CCC",
-                            "CAC",
-                            "CCC",
-                            'C', "itemCoal",
-                            'A', "itemArrow"));
+                        "CCC",
+                        "CAC",
+                        "CCC",
+                        'C', "itemCoal",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLapisArrow, 2),
-                            "LLL",
-                            "LAL",
-                            "LLL",
-                            'L', "gemLapis",
-                            'A', "itemArrow"));
+                        "LLL",
+                        "LAL",
+                        "LLL",
+                        'L', "gemLapis",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemRedstoneArrow, 2),
-                            "RRR",
-                            "RAR",
-                            "RRR",
-                            'R', "dustRedstone",
-                            'A', "itemArrow"));
+                        "RRR",
+                        "RAR",
+                        "RRR",
+                        'R', "dustRedstone",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLavaArrow, 2),
-                            "LLL",
-                            "LAL",
-                            "LLL",
-                            'L', "gemLavaCrystal",
-                            'A', "itemArrow"));
+                        "LLL",
+                        "LAL",
+                        "LLL",
+                        'L', "gemLavaCrystal",
+                        'A', "itemArrow"));
                 }
                 break;
             case EXPERT:
@@ -150,29 +150,29 @@ public class ModItemRecipes {
                 manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
                 if (recipes.enableArrowRecipes) {
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemCoalArrow, 2),
-                            "CCC",
-                            "CAC",
-                            "CCC",
-                            'C', "blockCoal",
-                            'A', "itemArrow"));
+                        "CCC",
+                        "CAC",
+                        "CCC",
+                        'C', "blockCoal",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLapisArrow, 2),
-                            "LLL",
-                            "LAL",
-                            "LLL",
-                            'L', "blockLapis",
-                            'A', "itemArrow"));
+                        "LLL",
+                        "LAL",
+                        "LLL",
+                        'L', "blockLapis",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemRedstoneArrow, 2),
-                            "RRR",
-                            "RAR",
-                            "RRR",
-                            'R', "blockRedstone",
-                            'A', "itemArrow"));
+                        "RRR",
+                        "RAR",
+                        "RRR",
+                        'R', "blockRedstone",
+                        'A', "itemArrow"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLavaArrow, 2),
-                            "LLL",
-                            "LAL",
-                            "LLL",
-                            'L', "gemChargedLavaCrystal",
-                            'A', "itemArrow"));
+                        "LLL",
+                        "LAL",
+                        "LLL",
+                        'L', "gemChargedLavaCrystal",
+                        'A', "itemArrow"));
                 }
                 break;
         }

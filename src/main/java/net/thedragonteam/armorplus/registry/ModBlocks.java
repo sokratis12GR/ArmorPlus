@@ -42,7 +42,7 @@ public class ModBlocks {
     public static Benches[] benchTypes = new Benches[]{WORKBENCH, HIGH_TECH_BENCH, ULTI_TECH_BENCH, CHAMPION_BENCH};
     public static BlockBench[] benches = new BlockBench[4];
     public static BrickColor[] stoneBrickTypes = new BrickColor[]{
-            WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE
+        WHITE, RED, BLACK, BLUE, GREEN, YELLOW, PURPLE
     };
     public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[7];
     public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[7];
@@ -57,12 +57,12 @@ public class ModBlocks {
     public static BlockLavaMaterial blockLavaInfusedObsidian = new BlockLavaMaterial(LAVA_INFUSED_OBSIDIAN);
     //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
     public static EnderType[] enderTypes = new EnderType[]{
-            ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP
+        ENDER_STONE, ENDER_STONE_BRICKS, ENDER_PILLAR, ENDER_GLOWSTONE, ENDER_FLOOR_1, ENDER_FLOOR_2, ENDER_STONE_TRAP
     };
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
     public static BlockTrophy[] trophies = new BlockTrophy[8];
     public static Trophy[] types = new Trophy[]{
-            ANY, ELDER_GUARDIAN, WITHER_BOSS, ENDER_DRAGON, SKELETAL_KING, GUARDIAN_OVERLORD, DEMONIC_DRAGON, THE_LORD_OF_EVERYTHING
+        ANY, ELDER_GUARDIAN, WITHER_BOSS, ENDER_DRAGON, SKELETAL_KING, GUARDIAN_OVERLORD, DEMONIC_DRAGON, THE_LORD_OF_EVERYTHING
     };
     // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 

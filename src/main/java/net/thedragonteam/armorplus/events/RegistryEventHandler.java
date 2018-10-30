@@ -91,14 +91,14 @@ public class RegistryEventHandler {
         registerEntities(EntityFreezeBomb.class, "freeze_bomb", ++id);
         registerEntities(EntityWitherMinion.class, "wither_minion", ++id);
         registerEntities(EntityEnderDragonZombie.class, "ender_dragon_zombie", ++id,
-                0x721164, 0x00ff00);
+            0x721164, 0x00ff00);
         registerEntities(EntityIceGolem.class, "ice_golem", ++id,
-                0xffffff, 0x00ff00);
+            0xffffff, 0x00ff00);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         registerEntities(EntityGuardianOverlord.class, "overlord_of_the_guardians", ++id,
-                0x7ae4ff, 0x79a6ff);
+            0x7ae4ff, 0x79a6ff);
         registerEntities(EntitySkeletalKing.class, "skeletal_king", ++id,
-                0x665b52, 0x845833);
+            0x665b52, 0x845833);
     }
 
     private static void registerAllBlocks(Register<Block> event, Block[]... blocksArray) {
@@ -113,8 +113,8 @@ public class RegistryEventHandler {
     public static void registerBlocks(Register<Block> event) {
         registerAllBlocks(event, benches);
         registerAllBlocks(event,
-                blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
-                blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
@@ -190,8 +190,8 @@ public class RegistryEventHandler {
         registerBenchBlocks(event, benches);
         //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
-                blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
-                blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         // ==== DUNGEON BLOCKS ==== \\
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
@@ -200,8 +200,8 @@ public class RegistryEventHandler {
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
-                bookInfo, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
-                itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+            bookInfo, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         registerAllItems(event, materials);
         //  registerAllItems(event, chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
@@ -212,7 +212,7 @@ public class RegistryEventHandler {
         registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         // ==== GEAR ==== \\
         registerAllItems(event,
-                coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
         registerAllItems(event, horseArmors);
         registerAllItems(event, sword, battleAxe, bow);

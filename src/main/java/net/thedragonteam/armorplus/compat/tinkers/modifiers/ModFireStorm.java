@@ -68,8 +68,8 @@ public class ModFireStorm extends ModifierTrait {
         float dmg = getFireDamage(data);
 
         return ImmutableList.of(
-                Util.translateFormatted(loc, Util.df.format(dmg)),
-                Util.translateFormatted(loc + 2, Util.df.format(duration))
+            Util.translateFormatted(loc, Util.df.format(dmg)),
+            Util.translateFormatted(loc + 2, Util.df.format(duration))
         );
     }
 }

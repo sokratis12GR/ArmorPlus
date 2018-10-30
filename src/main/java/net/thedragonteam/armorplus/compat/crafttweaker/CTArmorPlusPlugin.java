@@ -33,9 +33,9 @@ public class CTArmorPlusPlugin {
         prep.add("def");
         prep.add("ghi");
         char[][] map = new char[][]{
-                {'a', 'b', 'c'},
-                {'d', 'e', 'f'},
-                {'g', 'h', 'i'}
+            {'a', 'b', 'c'},
+            {'d', 'e', 'f'},
+            {'g', 'h', 'i'}
         };
         toShapedObjects(ingredients, map, prep);
         return prep.toArray();
@@ -50,11 +50,11 @@ public class CTArmorPlusPlugin {
         prep.add("pqrst");
         prep.add("uvwxy");
         char[][] map = new char[][]{
-                {'a', 'b', 'c', 'd', 'e'},
-                {'f', 'g', 'h', 'i', 'j'},
-                {'k', 'l', 'm', 'n', 'o'},
-                {'p', 'q', 'r', 's', 't'},
-                {'u', 'v', 'w', 'x', 'y'}
+            {'a', 'b', 'c', 'd', 'e'},
+            {'f', 'g', 'h', 'i', 'j'},
+            {'k', 'l', 'm', 'n', 'o'},
+            {'p', 'q', 'r', 's', 't'},
+            {'u', 'v', 'w', 'x', 'y'}
         };
         toShapedObjects(ingredients, map, prep);
         return prep.toArray();
@@ -71,13 +71,13 @@ public class CTArmorPlusPlugin {
         prep.add("JKLMNOP");
         prep.add("QRSTUVW");
         char[][] map = new char[][]{
-                {'a', 'b', 'c', 'd', 'e', 'f', 'g'},
-                {'h', 'i', 'j', 'k', 'l', 'm', 'n'},
-                {'o', 'p', 'q', 'r', 's', 't', 'u'},
-                {'v', 'w', 'x', 'y', 'z', 'A', 'B'},
-                {'C', 'D', 'E', 'F', 'G', 'H', 'I'},
-                {'J', 'K', 'L', 'M', 'N', 'O', 'P'},
-                {'Q', 'R', 'S', 'T', 'U', 'V', 'W'}
+            {'a', 'b', 'c', 'd', 'e', 'f', 'g'},
+            {'h', 'i', 'j', 'k', 'l', 'm', 'n'},
+            {'o', 'p', 'q', 'r', 's', 't', 'u'},
+            {'v', 'w', 'x', 'y', 'z', 'A', 'B'},
+            {'C', 'D', 'E', 'F', 'G', 'H', 'I'},
+            {'J', 'K', 'L', 'M', 'N', 'O', 'P'},
+            {'Q', 'R', 'S', 'T', 'U', 'V', 'W'}
         };
         toShapedObjects(ingredients, map, prep);
         return prep.toArray();
@@ -96,15 +96,15 @@ public class CTArmorPlusPlugin {
         prep.add("@#$%^&*()");
         prep.add("-=_+`~|<>");
         char[][] map = new char[][]{
-                {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'},
-                {'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r'},
-                {'s', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A'},
-                {'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'},
-                {'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'},
-                {'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2'},
-                {'3', '4', '5', '6', '7', '8', '9', '0', '!'},
-                {'@', '#', '$', '%', '^', '&', '*', '(', ')'},
-                {'-', '=', '_', '+', '`', '~', '|', '<', '>'}
+            {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'},
+            {'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r'},
+            {'s', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A'},
+            {'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'},
+            {'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'},
+            {'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2'},
+            {'3', '4', '5', '6', '7', '8', '9', '0', '!'},
+            {'@', '#', '$', '%', '^', '&', '*', '(', ')'},
+            {'-', '=', '_', '+', '`', '~', '|', '<', '>'}
         };
         return toShapedObjects(ingredients, map, prep);
     }

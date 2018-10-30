@@ -39,7 +39,7 @@ public class ModelsEventHandler {
     public static void registerBlockModels(ModelRegistryEvent event) {
         register(benches);
         register(blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockLavaInfusedObsidian,
-                blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, blockLavaCactus, blockLavaNetherBrick
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, blockLavaCactus, blockLavaNetherBrick
         );
         register(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //   register(blockBTMMoon);
@@ -52,11 +52,11 @@ public class ModelsEventHandler {
     public static void registerItemModels(ModelRegistryEvent event) {
         register(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         register(materials, itemLavaCrystal, itemTGOTG, bookInfo, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
-                itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+            itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         register(global_registry.enableTheUltimateArmor, theUltimate);
         register(isArmorEnabled,
-                coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
         register(towerSpawnItem);
         register(chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);

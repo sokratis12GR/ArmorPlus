@@ -21,14 +21,32 @@ import static mezz.jei.api.ingredients.VanillaTypes.ITEM;
 
 public class JEIUtils {
 
-    public static void setRecipe(IRecipeLayout rL, IRecipeWrapper rW, IIngredients in, ICraftingGridHelper cGH, int xPos, int YPos, int height, int width, int inputSlot, int outputSlot) {
+    public static class XYProperties {
+        private final int xPos;
+        private final int yPos;
+        private final int height;
+        private final int width;
+
+        public XYProperties(int xPos, int yPos, int height, int width) {
+            this.xPos = xPos;
+            this.yPos = yPos;
+            this.height = height;
+            this.width = width;
+        }
+
+        public XYProperties(int xPos, int yPos, int xy) {
+            this(xPos, yPos, xy, xy);
+        }
+    }
+
+    public static void setRecipe(IRecipeLayout rL, IRecipeWrapper rW, IIngredients in, ICraftingGridHelper cGH, XYProperties prop, int inputSlot, int outputSlot) {
         IGuiItemStackGroup guiItemStacks = rL.getItemStacks();
 
-        guiItemStacks.init(outputSlot, false, xPos, YPos);
+        guiItemStacks.init(outputSlot, false, prop.xPos, prop.yPos);
 
-        for (int y = 0; y < height; ++y) {
-            for (int x = 0; x < width; ++x) {
-                int index = inputSlot + x + (y * height);
+        for (int y = 0; y < prop.height; ++y) {
+            for (int x = 0; x < prop.width; ++x) {
+                int index = inputSlot + x + (y * prop.height);
                 guiItemStacks.init(index, true, x * 18, y * 18);
             }
         }

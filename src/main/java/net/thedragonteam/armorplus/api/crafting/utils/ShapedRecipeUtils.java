@@ -21,7 +21,7 @@ public class ShapedRecipeUtils {
 
         if (copyIngredientNBT) {
             IntStream.range(0, inv.getSizeInventory()).mapToObj(inv::getStackInSlot).filter(
-                    itemstack1 -> !itemstack1.isEmpty() && itemstack1.hasTagCompound()
+                itemstack1 -> !itemstack1.isEmpty() && itemstack1.hasTagCompound()
             ).map(itemstack1 -> requireNonNull(itemstack1.getTagCompound()).copy()).forEachOrdered(itemstack::setTagCompound);
         }
 

@@ -27,7 +27,6 @@ public class ContainerUltiTechBench extends ContainerBenchBase {
     private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-    private final World world;
     public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 7, 7);
     public IInventory craftResult = new InventoryCraftResult();
 

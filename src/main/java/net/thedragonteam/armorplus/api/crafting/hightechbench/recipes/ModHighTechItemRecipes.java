@@ -20,20 +20,20 @@ public class ModHighTechItemRecipes {
 
     public void addRecipes(BaseCraftingManager manager) {
         manager.addRecipe(getItemStack(ultiTechBench),
-                "LUUUL",
-                "OWOHO",
-                "OUUUO",
-                "O   O",
-                "O   O",
-                'U', getItemStack(materials, 4),
-                'W', workbench,
-                'H', highTechBench,
-                'O', blockCompressedObsidian,
-                'L', getItemStack(itemLavaCrystal, 1));
+            "LUUUL",
+            "OWOHO",
+            "OUUUO",
+            "O   O",
+            "O   O",
+            'U', getItemStack(materials, 4),
+            'W', workbench,
+            'H', highTechBench,
+            'O', blockCompressedObsidian,
+            'L', getItemStack(itemLavaCrystal, 1));
         manager.addRecipe(new BaseShapelessOreRecipe(getItemStack(materials, 4),
-                "scaleEnderDragon",
-                "scaleGuardian",
-                "witherBone",
-                "gemChargedLavaCrystal"));
+            "scaleEnderDragon",
+            "scaleGuardian",
+            "witherBone",
+            "gemChargedLavaCrystal"));
     }
 }

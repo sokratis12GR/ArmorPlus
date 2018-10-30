@@ -28,10 +28,10 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ItemUltimateParts extends Item implements IModdedItem {
 
     private String[] names = new String[]{
-            "_helmet_right", "_helmet_middle", "_helmet_left",
-            "_chestplate_right", "_chestplate_middle", "_chestplate_left",
-            "_leggings_right", "_leggings_middle", "_leggings_left",
-            "_boots_right", "_boots_middle", "_boots_left"};
+        "_helmet_right", "_helmet_middle", "_helmet_left",
+        "_chestplate_right", "_chestplate_middle", "_chestplate_left",
+        "_leggings_right", "_leggings_middle", "_leggings_left",
+        "_boots_right", "_boots_middle", "_boots_left"};
 
     public ItemUltimateParts() {
         this.setHasSubtypes(true);
@@ -55,7 +55,7 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
         if (isInCreativeTab(tab)) {
             IntStream.range(0, names.length).mapToObj(
-                    meta -> getItemStack(this, meta)
+                meta -> getItemStack(this, meta)
             ).forEachOrdered(subItems::add);
         }
     }
@@ -64,7 +64,7 @@ public class ItemUltimateParts extends Item implements IModdedItem {
     @Override
     public void initModel() {
         IntStream.range(0, names.length).forEachOrdered(
-                meta -> this.initModel(names[meta], "ultimate", meta)
+            meta -> this.initModel(names[meta], "ultimate", meta)
         );
     }
 }

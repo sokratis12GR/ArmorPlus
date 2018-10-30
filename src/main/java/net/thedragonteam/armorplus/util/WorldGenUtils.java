@@ -70,7 +70,7 @@ public class WorldGenUtils {
 
     public static void runGenerator(WorldGenerator generator, World world, Random rand, int chancesToSpawn, BlockPos blockPos) {
         IntStream.range(0, chancesToSpawn).forEachOrdered(i ->
-                generator.generate(world, rand, blockPos)
+            generator.generate(world, rand, blockPos)
         );
     }
 }

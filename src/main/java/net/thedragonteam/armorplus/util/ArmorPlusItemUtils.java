@@ -157,9 +157,9 @@ public final class ArmorPlusItemUtils {
 
         List<Potion> removablePotions = removableEffects.stream().map(PotionUtils::getPotion).collect(toList());
         removablePotions.stream().filter(
-                potionEffect -> player.getActivePotionEffect(potionEffect) != null
+            potionEffect -> player.getActivePotionEffect(potionEffect) != null
         ).forEach(
-                player::removeActivePotionEffect
+            player::removeActivePotionEffect
         );
     }
 

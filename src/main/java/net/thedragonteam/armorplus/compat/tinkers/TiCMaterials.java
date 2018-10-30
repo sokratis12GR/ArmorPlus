@@ -112,17 +112,17 @@ public final class TiCMaterials extends AbstractToolPulse {
 
     public void registerToolMaterialStats() {
         TinkerRegistry.addMaterialStats(INFUSED_LAVA_CRYSTAL,
-                new HeadMaterialStats(110, 9.00f, 4.20f, COBALT),
-                new HandleMaterialStats(1.00f, 100),
-                new ExtraMaterialStats(100));
+            new HeadMaterialStats(110, 9.00f, 4.20f, COBALT),
+            new HandleMaterialStats(1.00f, 100),
+            new ExtraMaterialStats(100));
         TinkerRegistry.addMaterialStats(COMPRESSED_OBSIDIAN,
-                new HeadMaterialStats(139, 7.07f, 2.20f, COBALT),
-                new HandleMaterialStats(0.90f, 20),
-                new ExtraMaterialStats(90));
+            new HeadMaterialStats(139, 7.07f, 2.20f, COBALT),
+            new HandleMaterialStats(0.90f, 20),
+            new ExtraMaterialStats(90));
         TinkerRegistry.addMaterialStats(LAVA_INFUSED_OBSIDIAN,
-                new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
-                new HandleMaterialStats(1.00f, 80),
-                new ExtraMaterialStats(100));
+            new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
+            new HandleMaterialStats(1.00f, 80),
+            new ExtraMaterialStats(100));
     }
 
     @Override

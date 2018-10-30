@@ -88,8 +88,8 @@ public class ItemTGOTG extends ItemBase {
                 playerIn.sendStatusMessage(setTextTranslation("status.armorplus.tgotg.gained_item", item.getItemStackDisplayName(playerIn.getHeldItem(hand)), item.getRegistryName()), false);
                 if (debugMode && debugModeTGOTG)
                     LogHelper.info(format("Item's Registry Name: {0};\n Item''s Creative Tab: {1}\n{2}{3}", item.getRegistryName(), item.getCreativeTab(),
-                            " ; Item's Unlocalized Name: " + item.getTranslationKey() + ";\n Does the Item have Subtypes: " + item.getHasSubtypes() + "\n",
-                            " ; Item's Max Damage: " + getMaxDamage(getItemStack(item))));
+                        " ; Item's Unlocalized Name: " + item.getTranslationKey() + ";\n Does the Item have Subtypes: " + item.getHasSubtypes() + "\n",
+                        " ; Item's Max Damage: " + getMaxDamage(getItemStack(item))));
             }
             playerIn.getHeldItem(hand).damageItem(1, playerIn);
         }

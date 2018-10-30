@@ -26,12 +26,12 @@ public class CommandInfo extends CommandSubBase {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         sendMessages(sender,
-                formatText(DARK_RED, "commands.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "commands.armorplus.info_line_one.part_two.text")),
-                formatText(RED, "commands.armorplus.info_line_two.text", sender.getName(), MODNAME),
-                formatText(GREEN, "commands.armorplus.info_line_three.text", MODID),
-                formatText(GRAY, "commands.armorplus.info_line_four.text", server.getMinecraftVersion()),
-                formatText(GOLD, "commands.armorplus.info_line_six.text"),
-                formatText(GOLD, "commands.armorplus.info_line_seven.text")
+            formatText(DARK_RED, "commands.armorplus.info_line_one.part_one.text", MODNAME, VERSION, formatText(GOLD, "commands.armorplus.info_line_one.part_two.text")),
+            formatText(RED, "commands.armorplus.info_line_two.text", sender.getName(), MODNAME),
+            formatText(GREEN, "commands.armorplus.info_line_three.text", MODID),
+            formatText(GRAY, "commands.armorplus.info_line_four.text", server.getMinecraftVersion()),
+            formatText(GOLD, "commands.armorplus.info_line_six.text"),
+            formatText(GOLD, "commands.armorplus.info_line_seven.text")
         );
     }
 

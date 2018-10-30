@@ -41,7 +41,7 @@ public class EntityEnderDragonZombie extends EntityMob {
     // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie.class, DataSerializers.BOOLEAN);
     @SideOnly(Side.CLIENT)
-    public boolean isArmsRaised;
+    public boolean armsRaised;
 
     public EntityEnderDragonZombie(World world) {
         super(world);
@@ -98,7 +98,7 @@ public class EntityEnderDragonZombie extends EntityMob {
         }
     }
 
-    public boolean isArmsRaised() {
+    public boolean areArmsRaised() {
         return this.getDataManager().get(ARMS_RAISED);
     }
 

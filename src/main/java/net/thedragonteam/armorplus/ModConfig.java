@@ -36,11 +36,11 @@ public class ModConfig {
 
             @RangeInt(min = -1, max = 2)
             @Comment({
-                    "Sets the Recipe Difficulty",
-                    "-1 Disables almost all in-game recipes from the mod (can be used with the \'useJsonRecipes\' property to only enable vanilla crafting table recipes),",
-                    "0 = easy (All recipes are extremely easy),",
-                    "1 = expert (default, All Recipes Are Harder),",
-                    "2 = hellish (Repairing for A+ items is DISABLED)"
+                "Sets the Recipe Difficulty",
+                "-1 Disables almost all in-game recipes from the mod (can be used with the \'useJsonRecipes\' property to only enable vanilla crafting table recipes),",
+                "0 = easy (All recipes are extremely easy),",
+                "1 = expert (default, All Recipes Are Harder),",
+                "2 = hellish (Repairing for A+ items is DISABLED)"
             })
             public int gameMode = 1;
         }
@@ -49,15 +49,15 @@ public class ModConfig {
             @Comment({"Enable/Disable the WhiteList"})
             public boolean enableWhiteList = false;
             @Comment({"Add WhiteListed Items to the \"The Gift Of The Gods\"",
-                    "If You add want to add an item to the whitelist",
-                    "You will need to replace 1 from \"minecraft:dirt\" to the item you want to add"
+                "If You add want to add an item to the whitelist",
+                "You will need to replace 1 from \"minecraft:dirt\" to the item you want to add"
             })
             public String[] whiteListedItems = {"minecraft:dirt"};
             @Comment({"Enable/Disable the BlackList"})
             public boolean enableBlackList = false;
             @Comment({"Add Blacklisted Items to the \"The Gift Of The Gods\"",
-                    "If You add want to add an item to the blacklist",
-                    "You will need to replace 1 from \"minecraft:dirt\" to the item you want to add"
+                "If You add want to add an item to the blacklist",
+                "You will need to replace 1 from \"minecraft:dirt\" to the item you want to add"
             })
             public String[] blackListedItems = {"minecraft:dirt"};
 
@@ -228,56 +228,56 @@ public class ModConfig {
 
         @Comment({"Configurations for the Coal Material"})
         public static OriginMaterial coal = new OriginMaterial(
-                new CombinedArmor("gray", "night_vision", false, new Armor(1, 1, 2, 1)),
-                new CombinedWeapon("gray", "blindness", new WeaponSet(0.5, -2.0, 24))
+            new CombinedArmor("gray", "night_vision", false, new Armor(1, 1, 2, 1)),
+            new CombinedWeapon("gray", "blindness", new WeaponSet(0.5, -2.0, 24))
         );
 
         @Comment({"Configurations for the Lapis Material"})
         public static OriginMaterial lapis = new OriginMaterial(
-                new CombinedArmor("dark_blue", "water_breathing", false, new Armor(1, 2, 3, 2)),
-                new CombinedWeapon("dark_blue", "nausea", 1, new WeaponSet(1.0, -1.5, 200))
+            new CombinedArmor("dark_blue", "water_breathing", false, new Armor(1, 2, 3, 2)),
+            new CombinedWeapon("dark_blue", "nausea", 1, new WeaponSet(1.0, -1.5, 200))
         );
 
         @Comment({"Configurations for the Redstone Material"})
         public static OriginMaterial redstone = new OriginMaterial(
-                new CombinedArmor("dark_red", "haste", 1, new Armor(1, 2, 3, 2)),
-                new CombinedWeapon("dark_red", "mining_fatigue", 1, new WeaponSet(1.0, -1.5, 200))
+            new CombinedArmor("dark_red", "haste", 1, new Armor(1, 2, 3, 2)),
+            new CombinedWeapon("dark_red", "mining_fatigue", 1, new WeaponSet(1.0, -1.5, 200))
         );
 
         @Comment({"Configurations for the Emerald Material"})
         public static OriginMaterial emerald = new OriginMaterial(
-                new CombinedArmor("dark_green", "speed", 1, new Armor(1.0, 3, 6, 8, 3)),
-                new CombinedWeapon("dark_green", "slowness", 1, new WeaponSet(1.5, -0.5, 1561))
+            new CombinedArmor("dark_green", "speed", 1, new Armor(1.0, 3, 6, 8, 3)),
+            new CombinedWeapon("dark_green", "slowness", 1, new WeaponSet(1.5, -0.5, 1561))
         );
 
         @Comment({"Configurations for the Obsidian Material"})
         public static OriginMaterial obsidian = new OriginMaterial(
-                new CombinedArmor("dark_gray", "resistance", false, new Armor(1.0, 3, 6, 7, 3)),
-                new CombinedWeapon("dark_gray", "weakness", 1, new WeaponSet(4.0, 0.0, 1500))
+            new CombinedArmor("dark_gray", "resistance", false, new Armor(1.0, 3, 6, 7, 3)),
+            new CombinedWeapon("dark_gray", "weakness", 1, new WeaponSet(4.0, 0.0, 1500))
         );
 
         @Comment({"Configurations for the Lava Material"})
         public static OriginMaterial lava = new OriginMaterial(
-                new CombinedArmor("gold", "fire_resistance", false, new Armor(1.0, 3, 6, 8, 3)), true,
-                new CombinedWeapon("gold", new WeaponSet(4.5, 0.5, 1750)), true, 8
+            new CombinedArmor("gold", "fire_resistance", false, new Armor(1.0, 3, 6, 8, 3)), true,
+            new CombinedWeapon("gold", new WeaponSet(4.5, 0.5, 1750)), true, 8
         );
 
         @Comment({"Configurations for the Guardian Material"})
         public static OriginMaterial guardian = new OriginMaterial(
-                new CombinedArmor("aqua", "water_breathing", false, new Armor(2.0, 4, 7, 8, 3)),
-                new CombinedWeapon("aqua", "nausea", 1, new WeaponSet(6.0, 1.5, 1800))
+            new CombinedArmor("aqua", "water_breathing", false, new Armor(2.0, 4, 7, 8, 3)),
+            new CombinedWeapon("aqua", "nausea", 1, new WeaponSet(6.0, 1.5, 1800))
         );
 
         @Comment({"Configurations for the Super Star Material"})
         public static OriginMaterial super_star = new OriginMaterial(
-                new CombinedArmor("white", "wither", "regeneration", 1, new Armor(2.0, 4, 7, 8, 3)),
-                new CombinedWeapon("white", "wither", 1, new WeaponSet(7.0, 1.5, 1950))
+            new CombinedArmor("white", "wither", "regeneration", 1, new Armor(2.0, 4, 7, 8, 3)),
+            new CombinedWeapon("white", "wither", 1, new WeaponSet(7.0, 1.5, 1950))
         );
 
         @Comment({"Configurations for the Ender Dragon Material"})
         public static OriginMaterial ender_dragon = new OriginMaterial(
-                new CombinedArmor("dark_purple", "wither", true, new Armor(2.0, 4, 7, 8, 3)),
-                new CombinedWeapon("dark_purple", "wither", 3, new WeaponSet(8.0, 1.5, 2310))
+            new CombinedArmor("dark_purple", "wither", true, new Armor(2.0, 4, 7, 8, 3)),
+            new CombinedWeapon("dark_purple", "wither", 3, new WeaponSet(8.0, 1.5, 2310))
         );
 
         @Comment({"Configurations for the Ultimate Material"})
@@ -340,9 +340,9 @@ public class ModConfig {
             @Comment({"Sets the armor unbreakable"})
             public boolean setUnbreakable;
             @Comment({
-                    "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
-                    "a.k.a nothing happens when player wears this armor while in water.",
-                    "CURRENTLY ONLY WORKS FOR THE INFUSED LAVA ARMOR"
+                "Enables/Disables the de-buffs that the armor will get when touching water without Water Breathing potion",
+                "a.k.a nothing happens when player wears this armor while in water.",
+                "CURRENTLY ONLY WORKS FOR THE INFUSED LAVA ARMOR"
             })
             public boolean enableOnWaterTouchDeBuff;
         }

@@ -82,27 +82,27 @@ public class ModRecipes {
             addShapedRecipe(setRL("block_compressed_lava_crystal"), setRL("compressed_lava_block"), getItemStack(blockCompressedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockLavaCrystal));
             addShapedRecipe(setRL("block_compressed_infused_lava_crystal"), setRL("compressed_infused_lava_block"), getItemStack(blockCompressedInfusedLavaCrystal), "CCC", "CCC", "CCC", 'C', getItemStack(blockInfusedLavaCrystal));
             addShapedRecipe(setRL("workbench"), setRL("benches"),
-                    getItemStack(benches[0]),
-                    "LCL",
-                    "OTO",
-                    "O O",
-                    'T', Blocks.CRAFTING_TABLE,
-                    'O', Blocks.COAL_BLOCK,
-                    'L', getItemStack(Items.DYE, 4),
-                    'C', ModItems.itemLavaCrystal
+                getItemStack(benches[0]),
+                "LCL",
+                "OTO",
+                "O O",
+                'T', Blocks.CRAFTING_TABLE,
+                'O', Blocks.COAL_BLOCK,
+                'L', getItemStack(Items.DYE, 4),
+                'C', ModItems.itemLavaCrystal
             );
             addRecipe(new BaseShapedOreRecipe(3, new ItemStack(benches[0]),
-                    "LCL",
-                    "OTO",
-                    "O O",
-                    'T', Blocks.CRAFTING_TABLE,
-                    'O', Blocks.COAL_BLOCK,
-                    'L', getItemStack(Items.DYE, 4),
-                    'C', ModItems.itemLavaCrystal)
+                "LCL",
+                "OTO",
+                "O O",
+                'T', Blocks.CRAFTING_TABLE,
+                'O', Blocks.COAL_BLOCK,
+                'L', getItemStack(Items.DYE, 4),
+                'C', ModItems.itemLavaCrystal)
             );
             if (recipes.enableElytraRecipe) {
                 addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ELYTRA, 1),
-                        "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR));
+                    "ESE", "SNS", "EEE", 'E', new ItemStack(materials, 1, 3), 'S', STRING, 'N', NETHER_STAR));
             }
             if (recipes.enableChainArmorRecipes) {
                 addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
@@ -119,11 +119,11 @@ public class ModRecipes {
                 addRecipe(new BaseShapedOreRecipe(3, getItemStack(itemRedstoneApple, 1), "BBB", "BAB", "BBB", 'B', "blockRedstone", 'A', APPLE));
             }
             addRecipe(new BaseShapedOreRecipe(3, new ItemStack(blockLavaNetherBrick, 4),
-                    " N ",
-                    "NLN",
-                    " N ",
-                    'L', LAVA_BUCKET,
-                    'N', Blocks.NETHER_BRICK));
+                " N ",
+                "NLN",
+                " N ",
+                'L', LAVA_BUCKET,
+                'N', Blocks.NETHER_BRICK));
             IntStream.range(0, colors.length).forEachOrdered(i -> {
                 addRecipeCastle(stoneBricks[i], colors[i]);
                 addRecipeCastleCorner(stoneBrickCorners[i], colors[i]);

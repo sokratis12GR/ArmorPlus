@@ -30,23 +30,29 @@ public class GuiHandler implements IGuiHandler {
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
         switch (ID) {
             case GUI_ARMORPLUS_INFO:
-                //noinspection NewExpressionSideOnly
                 return new GuiArmorPlusInfo();
             case GUI_WORKBENCH:
                 if (te instanceof TileWB)
                     return new ContainerWorkbench(player.inventory, (TileWB) te);
+                break;
             case GUI_HIGH_TECH_BENCH:
                 if (te instanceof TileHTB)
                     return new ContainerHighTechBench(player.inventory, (TileHTB) te);
+                break;
             case GUI_ULTI_TECH_BENCH:
                 if (te instanceof TileUTB)
                     return new ContainerUltiTechBench(player.inventory, (TileUTB) te);
+                break;
             case GUI_CHAMPION_BENCH:
                 if (te instanceof TileCB)
                     return new ContainerChampionBench(player.inventory, (TileCB) te);
+                break;
             case GUI_LAVA_INFUSER:
                 if (te instanceof TileLavaInfuser)
                     return new ContainerLavaInfuser(player.inventory, (TileLavaInfuser) te);
+                break;
+            default:
+                return null;
         }
         return null;
     }
@@ -62,18 +68,25 @@ public class GuiHandler implements IGuiHandler {
             case GUI_WORKBENCH:
                 if (te instanceof TileWB)
                     return new GuiWorkbench(player.inventory, (TileWB) te);
+                break;
             case GUI_HIGH_TECH_BENCH:
                 if (te instanceof TileHTB)
                     return new GuiHighTechBench(player.inventory, (TileHTB) te);
+                break;
             case GUI_ULTI_TECH_BENCH:
                 if (te instanceof TileUTB)
                     return new GuiUltiTechBench(player.inventory, (TileUTB) te);
+                break;
             case GUI_CHAMPION_BENCH:
                 if (te instanceof TileCB)
                     return new GuiChampionBench(player.inventory, (TileCB) te);
+                break;
             case GUI_LAVA_INFUSER:
                 if (te instanceof TileLavaInfuser)
                     return new GuiLavaInfuser(player.inventory, (TileLavaInfuser) te);
+                break;
+            default:
+                return null;
         }
         return null;
     }

@@ -81,6 +81,6 @@ public class CategoryBase implements IRecipeCategory {
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
-        JEIUtils.setRecipe(recipeLayout, recipeWrapper, ingredients, craftingGridHelper, xPos, yPos, xy, xy, INPUT_SLOT, OUTPUT_SLOT);
+        JEIUtils.setRecipe(recipeLayout, recipeWrapper, ingredients, craftingGridHelper, new JEIUtils.XYProperties(xPos, yPos, xy), INPUT_SLOT, OUTPUT_SLOT);
     }
 }

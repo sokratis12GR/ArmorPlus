@@ -29,7 +29,7 @@ public class ContainerBenchBase extends ContainerBase {
     protected static void onContainerClosed(EntityPlayer playerIn, boolean isRemote, int recipeSizeTotal, InventoryCraftingImproved removeItemStack) {
         if (!isRemote) {
             IntStream.range(0, recipeSizeTotal).mapToObj(removeItemStack::removeStackFromSlot).filter(itemstack ->
-                    !itemstack.isEmpty()
+                !itemstack.isEmpty()
             ).forEachOrdered(itemstack -> playerIn.dropItem(itemstack, false));
         }
     }

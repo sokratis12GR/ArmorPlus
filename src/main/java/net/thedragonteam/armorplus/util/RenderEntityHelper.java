@@ -57,8 +57,8 @@ public class RenderEntityHelper {
         RenderHelper.enableStandardItemLighting();
         if (entity != null) {
             Minecraft.getMinecraft().getRenderManager().renderEntity(entity,
-                    playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z,
-                    entity.rotationYaw, partialTicks, false
+                playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z,
+                entity.rotationYaw, partialTicks, false
             );
         }
         RenderHelper.disableStandardItemLighting();
