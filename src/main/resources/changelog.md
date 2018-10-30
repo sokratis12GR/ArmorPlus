@@ -1,3 +1,8 @@
+ArmorPlus 1.12.2-11.15.1.44
+----------------------------
+
+* Fixed a crash when disabling tinkers' armors
+
 ArmorPlus 1.12.2-11.15.0.43
 ----------------------------
 
