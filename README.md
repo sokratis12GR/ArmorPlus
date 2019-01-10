@@ -57,20 +57,20 @@ The Official Wiki for this mod is
 ## GitHub Information
 
 ### Repo
-[![GitHub forks](https://img.shields.io/github/forks/thedragonteam/armorplus.svg?style=social&label=Fork)](https://github.com/TheDragonTeam/ArmorPlus)
-[![GitHub stars](https://img.shields.io/github/stars/thedragonteam/armorplus.svg?style=social&label=Stars)](https://github.com/TheDragonTeam/ArmorPlus)
-[![GitHub stars](https://img.shields.io/github/watchers/thedragonteam/armorplus.svg?style=social&label=Watch)](https://github.com/TheDragonTeam/ArmorPlus)
-[![GitHub stars](https://img.shields.io/github/followers/sokratis12GR.svg?style=social&label=Follow)](https://github.com/sokratis12GR)
+[![GitHub forks](https://img.shields.io/github/forks/sokratis12gr/armorplus.svg?style=social&label=Fork)](https://github.com/sokratis12GR/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/stars/sokratis12gr/armorplus.svg?style=social&label=Stars)](https://github.com/sokratis12GR/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/watchers/sokratis12gr/armorplus.svg?style=social&label=Watch)](https://github.com/sokratis12GR/ArmorPlus)
+[![GitHub stars](https://img.shields.io/github/followers/sokratis12gr.svg?style=social&label=Follow)](https://github.com/sokratis12GR)
 ### Issues
-[![GitHub issues](https://img.shields.io/github/issues/thedragonteam/armorplus.svg?colorB=green)]()
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+[![GitHub issues](https://img.shields.io/github/issues/sokratis12gr/armorplus.svg?colorB=green)]()
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/sokratis12gr/armorplus.svg?colorB=ff5900)]()
 ### Pull Requests
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/thedragonteam/armorplus.svg?colorB=green)]()
-[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/thedragonteam/armorplus.svg?colorB=ff5900)]()
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/sokratis12gr/armorplus.svg?colorB=green)]()
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/sokratis12gr/armorplus.svg?colorB=ff5900)]()
 ### Additional
-[![GitHub contributors](https://img.shields.io/github/contributors/thedragonteam/armorplus.svg)]()
-[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/thedragonteam/armorplus.svg)]()
+[![GitHub contributors](https://img.shields.io/github/contributors/sokratis12gr/armorplus.svg)]()
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/sokratis12gr/armorplus.svg)]()
 
 ## Licence
 
-[![license](https://img.shields.io/github/license/TheDragonTeam/ArmorPlus.svg)](https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/LICENSE)
+[![license](https://img.shields.io/github/license/sokratis12GR/ArmorPlus.svg)](https://github.com/sokratis12GR/ArmorPlus/blob/1.12/LICENSE)
