@@ -8,7 +8,7 @@
     "url": "https://minecraft.curseforge.com/projects/armorplus",
     "updateUrl": "https://minecraft.curseforge.com/projects/armorplus/files",
     "authorList": [
-      "sokratis12GR and Moritz30 in association with TheDragonTeam."
+      "sokratis12GR"
     ],
     "credits": "Tris Astral - Created the textures of the tesla items, lava blocks and the lava infuser. To all the people who helped translating ArmorPlus: https://github.com/TheDragonTeam/ArmorPlus/blob/1.12/src/main/resources/assets/armorplus/lang/credits.md",
     "logoFile": "assets/armorplus/textures/headerimg.jpg",

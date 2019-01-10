@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
+ */
+
+package com.sofodev.armorplus.entity.entityarrow;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.world.World;
+
+import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.lapisArrow;
+
+/**
+ * @author Sokratis Fotkatzikis
+ */
+public class EntityLapisArrow extends EntityModdedArrow {
+
+    public EntityLapisArrow(World worldIn) {
+        super(worldIn, lapisArrow);
+    }
+
+    public EntityLapisArrow(World worldIn, double x, double y, double z) {
+        super(worldIn, x, y, z, lapisArrow);
+    }
+
+    public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
+        super(worldIn, shooter, lapisArrow);
+    }
+}

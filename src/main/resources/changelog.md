@@ -1,3 +1,14 @@
+ArmorPlus 1.12.2-11.17.0.46
+----------------------------
+
+* No longer part of TheDragonTeam, now its once again, completely under Sokratis Fotkatzikis aka sokratis12GR's control.
+
+ArmorPlus 1.12.2-11.16.0.45
+----------------------------
+
+* Changed how config values for potion effects are set
+* Fixed a bug where potion level was set with duration modifiers.
+
 ArmorPlus 1.12.2-11.15.1.44
 ----------------------------
 
