@@ -25,7 +25,7 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ### 1.12.2 
 
-#### Recommended: [1.12.2-11.13.0.40](https://minecraft.curseforge.com/projects/armorplus/files/2562477)
+#### Recommended: [1.12.2-11.16.3.48](https://minecraft.curseforge.com/projects/armorplus/files/2660245)
 
 ### 1.11.2
 
@@ -45,9 +45,11 @@ Credits for people who helped translating the mod can be found **[here](https://
 * **[Baubles](https://minecraft.curseforge.com/projects/baubles)** (Not in 1.12)
 * **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b)
 
-## TheDragonTeam's Discord
-
+## ArmorPlus Community Discord
 [![Discord](https://img.shields.io/discord/213305542712623105.svg?style=flat&colorB=7289DA)](https://discord.gg/ZVwmqyx)
+
+## sokratis12GR's Official Discord
+[![Discord](https://img.shields.io/discord/371637813361377281.svg?style=flat&colorB=7289DA)](https://discord.gg/tmFPHb2)
 
 ## Mod's Official Wiki
 
