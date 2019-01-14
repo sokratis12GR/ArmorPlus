@@ -11,8 +11,8 @@
     "1.12-recommended": "1.12-11.5.1.16-alpha",
     "1.12.1-latest": "1.12.1-11.6.4.21-alpha",
     "1.12.1-recommended": "1.12.1-11.6.4.21-alpha",
-    "1.12.2-latest": "1.12.2-11.16.2.47",
-    "1.12.2-recommended": "1.12.2-11.16.2.47"
+    "1.12.2-latest": "1.12.2-11.16.3.48",
+    "1.12.2-recommended": "1.12.2-11.16.3.48"
   },
   "1.10.2": {
     "1.10.2-8.0.1.7": "Quick Fix, Server Crash Issue",
@@ -123,6 +123,7 @@
     "1.12.2-11.14.0.42": "\nOptimizations.\nBugs Fixed:\n* Fixed being unable to repair tconstruct armors\n* Fixed being unable to get the full set effect of the cobalt armor."
     "1.12.2-11.16.0.45": "Fixed some bugs related to invalid config values, potions are now grouped in the config file, fixed a bug where amplifier was being set with the duration values.",
     "1.12.2-11.16.1.46": "Fixed Update checker, Cosmetics and a few under the scene bugs. Also no longer associated with TheDragonTeam.",
-    "1.12.2-11.16.2.47": "Fixed a lot of bugs related to crafting, especially items getting voided when exiting the gui.\nPlease check the full changelog here: https://github.com/sokratis12GR/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
+    "1.12.2-11.16.2.47": "Fixed a lot of bugs related to crafting, especially items getting voided when exiting the gui.",
+    "1.12.2-11.16.3.48": "MAJOR FIX, fixed blocks being unbreakable... also adds config values that you can change for block's harvest properties (registry.cfg) under blocks.\nPlease check the full changelog here: https://github.com/sokratis12GR/ArmorPlus/blob/1.12/src/main/resources/changelog.md"
   }
 }
