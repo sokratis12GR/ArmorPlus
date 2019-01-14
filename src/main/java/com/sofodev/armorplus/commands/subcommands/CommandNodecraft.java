@@ -28,7 +28,7 @@ public class CommandNodecraft extends CommandSubBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
-        ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/thedragonteam");
+        ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/armorplus");
         Style linkStyle = new Style().setColor(BLUE).setUnderlined(true).setClickEvent(promoLink);
         sendMessages(sender, TextUtils.formatText(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"), TextUtils.formatText(
             "commands.armorplus.nodecraft.promo.start.text", ""

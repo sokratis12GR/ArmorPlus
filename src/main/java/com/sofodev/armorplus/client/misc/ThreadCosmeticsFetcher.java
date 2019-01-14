@@ -26,7 +26,7 @@ public class ThreadCosmeticsFetcher extends Thread {
     public void run() {
         LogHelper.info("Fetching cosmetics for people...");
         try {
-            URL url = new URL("https://cdn.tdt.pw/thedragonteam.properties");
+            URL url = new URL("https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/armorplus.properties");
             Properties specialProperties = new Properties();
             specialProperties.load(new InputStreamReader(url.openStream()));
             CosmeticsRenderInit.parse(specialProperties);

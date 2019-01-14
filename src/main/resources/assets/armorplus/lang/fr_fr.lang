@@ -80,7 +80,7 @@ commands.armorplus.help.help=Affiche l'aide de l'"armorplus" commande.
 
 # CommandInfo
 commands.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
-commands.armorplus.info_line_one.part_two.text=by %s sokratis12GR (TheDragonTeam)
+commands.armorplus.info_line_one.part_two.text=by %s sokratis12GR
 commands.armorplus.info_line_two.text=[Thank you %s for using %s]
 commands.armorplus.info_line_three.text=[modid: %s]
 commands.armorplus.info_line_four.text=[Minecraft Version: %s]

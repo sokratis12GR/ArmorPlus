@@ -20,8 +20,8 @@ public class CommandDiscord extends CommandSubBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
-        sender.sendMessage(TextUtils.setText("Opening an invite link to our TheDragonTeam Community Discord server"));
-        ClientUtills.openLink("http://discord.thedragonteam.info");
-        sender.sendMessage(TextUtils.setText("Link opened successfully"));
+        sender.sendMessage(TextUtils.setTextTranslation("commands.armorplus.discord.help"));
+        ClientUtills.openLink("http://discord.gg/tmFPHb2");
+        sender.sendMessage(TextUtils.setTextTranslation("Link opened successfully"));
     }
 }
