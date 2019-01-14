@@ -18,22 +18,24 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis
  */
-public class BlockStonebrickWall extends BlockWall implements IModdedBlock {
+public class BlockStoneBrickWall extends BlockWall implements IModdedBlock {
 
     private BlockStoneBrick stoneBricks;
 
-    public BlockStonebrickWall(BlockStoneBrick modelState) {
+    public BlockStoneBrickWall(BlockStoneBrick modelState) {
         super(modelState);
         this.stoneBricks = modelState;
         this.setRegistryName(Utils.setRL(stoneBricks.name + "_wall"));
         this.setTranslationKey(Utils.setName(stoneBricks.name + "_wall"));
         this.setResistance(10f);
         this.setHardness(5f);
+        this.setHarvestLevel(blocks.stone_bricks.toolType, blocks.stone_bricks.harvestLevel);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 

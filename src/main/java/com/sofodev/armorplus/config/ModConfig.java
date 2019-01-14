@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.config;
 
 import com.sofodev.armorplus.api.properties.*;
+import com.sofodev.armorplus.blocks.HarvestProps;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -12,6 +13,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
+import static com.sofodev.armorplus.blocks.base.ToolType.PICKAXE;
 import static com.sofodev.armorplus.config.ModConfig.RecipesDifficulty.*;
 import static net.minecraft.item.ItemStack.areItemsEqual;
 import static net.minecraftforge.common.config.Config.*;
@@ -225,6 +227,51 @@ public class ModConfig {
 
     @Config(modid = MODID, name = "armorplus/registry", category = "")
     public static class RegistryConfig {
+
+        public static Blocks blocks = new Blocks();
+
+        public static class Blocks {
+
+            @Comment({"This includes all benches: [Workbench, High-Tech Bench, Ulti-Tech Bench, Champion Bench]"})
+            public BlockRegistry benches = new BlockRegistry(new HarvestProps(PICKAXE, 2));
+            public BlockRegistry stone_bricks = new BlockRegistry(new HarvestProps(PICKAXE));
+            public BlockRegistry ore_lava_crystal = new BlockRegistry(new HarvestProps(PICKAXE, 3));
+            public BlockRegistry lava_cactus = new BlockRegistry(new HarvestProps(PICKAXE));
+            public BlockRegistry lava_infuser = new BlockRegistry(new HarvestProps(PICKAXE, 1));
+            @Comment({"This includes: Block Lava Crystal, Block Infused Lava Crystal, Block Compressed Lava Crystal, Block Compressed Infused Lava Crystal & Block Lava Infused Obsidian"})
+            public BlockRegistry lava_material = new BlockRegistry(new HarvestProps(PICKAXE, 2));
+            public BlockRegistry lava_nether_brick = new BlockRegistry(new HarvestProps(PICKAXE, 1));
+            public BlockRegistry block_compressed_obsidian = new BlockRegistry(new HarvestProps(PICKAXE, 3));
+            public BlockRegistry block_trophy = new BlockRegistry(new HarvestProps(PICKAXE, 1));
+            public BlockRegistry block_metal = new BlockRegistry(new HarvestProps(PICKAXE, 1));
+
+            public class BlockRegistry {
+
+                public BlockRegistry(HarvestProps props) {
+                    this.props = props;
+                    toolType = props.getType().getTool();
+                    harvestLevel = props.getHarvestLevel();
+                    isUnbreakable = props.isUnbreakable();
+                }
+
+                @Ignore
+                public HarvestProps props;
+
+                @Comment({
+                    "The tool type required to mine this block",
+                    "Available tool types are: 'pickaxe', 'axe', 'shovel'"
+                })
+                public String toolType;
+                @Comment({
+                    "The harvest level of the tool required to mine this block",
+                    "Wood: 0, Stone: 1, Iron: 2, Diamond: 3, Gold: 0"
+                })
+                public int harvestLevel;
+                @Comment({"Sets whether the block can be mined or not (Like bedrock)"})
+                public boolean isUnbreakable;
+            }
+
+        }
 
         @Comment({"Configurations for the Coal Material"})
         public static OriginMaterial coal = new OriginMaterial(

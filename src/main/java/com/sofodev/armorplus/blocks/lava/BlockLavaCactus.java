@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
 import static net.minecraft.util.BlockRenderLayer.CUTOUT;
 
 /**
@@ -40,6 +41,7 @@ public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
         this.setTranslationKey(Utils.setName("lava_cactus"));
         this.setRegistryName(Utils.setRL("lava_cactus"));
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
+        this.setHarvestLevel(blocks.lava_cactus.toolType, blocks.lava_cactus.harvestLevel);
     }
 
     @SideOnly(Side.CLIENT)
@@ -81,7 +83,7 @@ public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
     }
 
 
-    @SuppressWarnings("NullableProblems")
+    @SuppressWarnings({"NullableProblems", "deprecation"})
     @Override
     public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
         return BlockCactus.CACTUS_COLLISION_AABB.offset(pos);
@@ -93,6 +95,7 @@ public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;

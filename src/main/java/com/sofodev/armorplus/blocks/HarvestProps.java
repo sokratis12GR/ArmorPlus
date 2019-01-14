@@ -7,27 +7,28 @@ package com.sofodev.armorplus.blocks;
 import com.sofodev.armorplus.blocks.base.ToolType;
 
 public class HarvestProps {
-    private final float hardness;
     private final ToolType tool;
     private final int harvestLevel;
     private final boolean unbreakable;
 
-    public HarvestProps(float hardness, ToolType tool, int harvestLevel, boolean unbreakable) {
-        this.hardness = hardness;
+    public HarvestProps(ToolType tool, int harvestLevel, boolean unbreakable) {
         this.tool = tool;
         this.harvestLevel = harvestLevel;
         this.unbreakable = unbreakable;
     }
 
-    public float getHardness() {
-        return hardness;
+    public HarvestProps(ToolType tool, int harvestLevel) {
+        this(tool, harvestLevel, false);
+    }
+    public HarvestProps(ToolType tool){
+        this(tool, 0);
     }
 
     public int getHarvestLevel() {
         return harvestLevel;
     }
 
-    public ToolType getTool() {
+    public ToolType getType() {
         return tool;
     }
 

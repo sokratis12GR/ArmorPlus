@@ -1,3 +1,11 @@
+ArmorPlus 1.12.2-11.16.3.48
+----------------------------
+
+* MAJOR FIX: Blocks can be mined once again with their corresponding tools (They are no longer permanent unbreakable)
+* Config addition, you can now configure a block's properties currently only:
+  - You can now change block's harvest level **[(Wood/Gold) 0-3 (Diamond)]**, harvest tool **["pickaxe", "axe", "shovel"]** &/or make it unbreakable
+  - You can change pretty much any block's properties from the mod (except the wip dungeon blocks)
+  
 ArmorPlus 1.12.2-11.16.2.47
 ----------------------------
 

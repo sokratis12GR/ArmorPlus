@@ -20,8 +20,6 @@ import com.sofodev.armorplus.entity.mobs.EntityEnderDragonZombie;
 import com.sofodev.armorplus.entity.mobs.EntityIceGolem;
 import com.sofodev.armorplus.items.materials.ItemRename;
 import com.sofodev.armorplus.potions.PotionEmpty;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.sounds.SoundTrapTriggered;
 import com.sofodev.armorplus.tileentity.*;
 import com.sofodev.armorplus.util.Utils;
@@ -43,11 +41,19 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Arrays;
 
+import static com.sofodev.armorplus.registry.ModBlocks.*;
+import static com.sofodev.armorplus.registry.ModItems.*;
+import static com.sofodev.armorplus.tileentity.TileCB.*;
+import static com.sofodev.armorplus.tileentity.TileHTB.*;
+import static com.sofodev.armorplus.tileentity.TileLavaInfuser.*;
+import static com.sofodev.armorplus.tileentity.TileTrophy.*;
+import static com.sofodev.armorplus.tileentity.TileUTB.*;
+import static com.sofodev.armorplus.tileentity.TileWB.*;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
+import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -112,37 +118,37 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void registerBlocks(Register<Block> event) {
-        registerAllBlocks(event, ModBlocks.benches);
+        registerAllBlocks(event, benches);
         registerAllBlocks(event,
-            ModBlocks.blockCrystalOre, ModBlocks.blockCompressedObsidian, ModBlocks.steelBlock, ModBlocks.electricalBlock, ModBlocks.blockLavaNetherBrick, ModBlocks.blockLavaCactus, ModBlocks.lavaInfuser, ModBlocks.lavaInfuserInfusing,
-            ModBlocks.blockLavaInfusedObsidian, ModBlocks.blockLavaCrystal, ModBlocks.blockInfusedLavaCrystal, ModBlocks.blockCompressedLavaCrystal, ModBlocks.blockCompressedInfusedLavaCrystal
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
-        registerAllBlocks(event, ModBlocks.stoneBricks, ModBlocks.stoneBrickTowers, ModBlocks.stoneBrickCorners, ModBlocks.stonebrickWalls);
+        registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerAllBlocks(event, ModBlocks.enderBlocks);
-        registerAllBlocks(event, ModBlocks.trophies);
+        registerAllBlocks(event, enderBlocks);
+        registerAllBlocks(event, trophies);
         registerTileEntities();
         registerTEFixes();
     }
 
     private static void registerTEFixes() {
         DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
-        TileLavaInfuser.registerFixesLavaInfuser(dataFixer);
-        TileWB.registerWBFixes(dataFixer);
-        TileHTB.registerHTBFixes(dataFixer);
-        TileUTB.registerUTBFixes(dataFixer);
-        TileCB.registerCBFixes(dataFixer);
-        TileTrophy.registerTrophyFixes(dataFixer);
+        registerFixesLavaInfuser(dataFixer);
+        registerWBFixes(dataFixer);
+        registerHTBFixes(dataFixer);
+        registerUTBFixes(dataFixer);
+        registerCBFixes(dataFixer);
+        registerTrophyFixes(dataFixer);
     }
 
     private static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileLavaInfuser.class, Utils.setRL("lava_infuser_tile_entity"));
-        GameRegistry.registerTileEntity(TileWB.class, Utils.setRL("workbench_tile_entity"));
-        GameRegistry.registerTileEntity(TileHTB.class, Utils.setRL("high_tech_bench_tile_entity"));
-        GameRegistry.registerTileEntity(TileUTB.class, Utils.setRL("ulti_tech_tile_entity"));
-        GameRegistry.registerTileEntity(TileCB.class, Utils.setRL("champion_tile_entity"));
-        GameRegistry.registerTileEntity(TileTrophy.class, Utils.setRL("trophy_tile_entity"));
+        registerTileEntity(TileLavaInfuser.class, Utils.setRL("lava_infuser_tile_entity"));
+        registerTileEntity(TileWB.class, Utils.setRL("workbench_tile_entity"));
+        registerTileEntity(TileHTB.class, Utils.setRL("high_tech_bench_tile_entity"));
+        registerTileEntity(TileUTB.class, Utils.setRL("ulti_tech_tile_entity"));
+        registerTileEntity(TileCB.class, Utils.setRL("champion_tile_entity"));
+        registerTileEntity(TileTrophy.class, Utils.setRL("trophy_tile_entity"));
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {
@@ -188,35 +194,35 @@ public class RegistryEventHandler {
     @SubscribeEvent
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
-        registerBenchBlocks(event, ModBlocks.benches);
+        registerBenchBlocks(event, benches);
         //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
-            ModBlocks.blockCrystalOre, ModBlocks.blockCompressedObsidian, ModBlocks.steelBlock, ModBlocks.electricalBlock, ModBlocks.blockLavaNetherBrick, ModBlocks.blockLavaCactus, ModBlocks.lavaInfuser, ModBlocks.lavaInfuserInfusing,
-            ModBlocks.blockLavaInfusedObsidian, ModBlocks.blockLavaCrystal, ModBlocks.blockInfusedLavaCrystal, ModBlocks.blockCompressedLavaCrystal, ModBlocks.blockCompressedInfusedLavaCrystal
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         // ==== DUNGEON BLOCKS ==== \\
-        registerAllItemBlocks(event, ModBlocks.stoneBricks, ModBlocks.stoneBrickTowers, ModBlocks.stoneBrickCorners, ModBlocks.stonebrickWalls);
+        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerDungeonBlock(event, ModBlocks.enderBlocks);
-        registerAllItemBlocks(event, ModBlocks.trophies);
+        registerDungeonBlock(event, enderBlocks);
+        registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
-            ModItems.bookInfo, ModItems.steelIngot, ModItems.electricalIngot, ModItems.itemRedstoneApple, ModItems.itemLavaCrystal, ModItems.itemTGOTG, ModItems.itemDevTool, ModItems.theUltimateParts,
-            ModItems.itemCoalArrow, ModItems.itemLapisArrow, ModItems.itemRedstoneArrow, ModItems.itemLavaArrow, ModItems.itemEnderDragonArrow
+            bookInfo, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
-        registerAllItems(event, ModItems.materials);
+        registerAllItems(event, materials);
         //  registerAllItems(event, chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
         // ==== SPECIAL ITEMS ===\\
-        registerAllItems(event, ModItems.towerSpawnItem);
+        registerAllItems(event, towerSpawnItem);
         registerItemFixes();
         // ==== COSMETICS ==== \\
-        registerAllItems(event, ModItems.twitchItem, ModItems.beamItem, ModItems.theDragonTeamItem, ModItems.moddedCityItem, ModItems.jonBamsItem, ModItems.btmMoon, ModItems.m1Jordan, ModItems.teamRapture);
+        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         // ==== GEAR ==== \\
         registerAllItems(event,
-            ModItems.coal, ModItems.emerald, ModItems.lapis, ModItems.lava, ModItems.obsidian, ModItems.redstone, ModItems.chicken, ModItems.slime, ModItems.guardian, ModItems.superStar, ModItems.enderDragon, ModItems.theUltimate, ModItems.ardite, ModItems.cobalt, ModItems.manyullyn, ModItems.pigIron, ModItems.knightSlime
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
-        registerAllItems(event, ModItems.horseArmors);
-        registerAllItems(event, ModItems.sword, ModItems.battleAxe, ModItems.bow);
+        registerAllItems(event, horseArmors);
+        registerAllItems(event, sword, battleAxe, bow);
     }
 
     public static void registerItemFixes() {

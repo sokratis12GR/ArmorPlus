@@ -17,6 +17,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -30,7 +32,7 @@ public class BlockStoneBrickCorner extends BlockStairs implements IModdedBlock {
         this.setRegistryName(Utils.setRL(brickColor.getName() + "_stone_brick_corner"));
         this.setHardness(10.0f);
         this.setResistance(5.0f);
-        this.setHarvestLevel("pickaxe", 0);
+        this.setHarvestLevel(blocks.stone_bricks.toolType, blocks.stone_bricks.harvestLevel);
         this.setLightOpacity(255);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
         this.brickColor = brickColor;

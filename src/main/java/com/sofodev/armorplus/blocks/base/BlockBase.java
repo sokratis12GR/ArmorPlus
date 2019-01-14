@@ -20,11 +20,14 @@ public class BlockBase extends Block {
         this.setRegistryName(Utils.setRL(name));
         this.setTranslationKey(Utils.setName(name));
         this.setResistance(prop.getResistance());
-        this.setHardness(prop.isUnbreakable() ? -1.0F : prop.getHardness());
-        this.setHarvestLevel(prop.getToolType().getTool(), prop.getHarvestLevel());
+        this.setHardness(prop.getHardness());
+        this.setHarvestLevel(prop.getToolType().getTool(), prop.isUnbreakable() ? -1 : prop.getHarvestLevel());
         this.setLightLevel(prop.getLightLevel());
         this.setLightOpacity(prop.getLightOpacity());
-        this.setBlockUnbreakable();
+        //Sets block unbreakable if true
+        if (prop.isUnbreakable()) {
+            this.setBlockUnbreakable();
+        }
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 }

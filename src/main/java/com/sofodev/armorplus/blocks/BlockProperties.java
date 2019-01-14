@@ -19,34 +19,22 @@ public class BlockProperties {
     private final float lightLevel;
     private final int lightOpacity;
 
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity, boolean unbreakable) {
+    public BlockProperties(float resistance, float hardness,  HarvestProps props, float lightLevel, int lightOpacity) {
         this.resistance = resistance;
         this.hardness = hardness;
-        this.tool = tool;
-        this.harvestLevel = harvestLevel;
+        this.tool = props.getType();
+        this.harvestLevel = props.getHarvestLevel();
         this.lightLevel = lightLevel;
         this.lightOpacity = lightOpacity;
-        this.unbreakable = unbreakable;
+        this.unbreakable = props.isUnbreakable();
     }
 
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, int lightOpacity) {
-        this(resistance, hardness, tool, harvestLevel, lightLevel, lightOpacity, false);
+    public BlockProperties(float resistance, float hardness, HarvestProps props, float lightLevel) {
+        this(resistance, hardness, props, lightLevel, 0);
     }
 
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel, boolean unbreakable) {
-        this(resistance, hardness, tool, harvestLevel, lightLevel, 0, unbreakable);
-    }
-
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel, float lightLevel) {
-        this(resistance, hardness, tool, harvestLevel, lightLevel, 0);
-    }
-
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel, boolean unbreakable) {
-        this(resistance, hardness, tool, harvestLevel, 0, unbreakable);
-    }
-
-    public BlockProperties(float resistance, float hardness, ToolType tool, int harvestLevel) {
-        this(resistance, hardness, tool, harvestLevel, 0);
+    public BlockProperties(float resistance, float hardness, HarvestProps props) {
+        this(resistance, hardness, props, 0);
     }
 
     public float getResistance() {

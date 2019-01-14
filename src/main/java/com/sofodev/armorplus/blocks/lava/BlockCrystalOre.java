@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.lava;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.block.material.MapColor;
@@ -25,6 +24,7 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -33,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class BlockCrystalOre extends BlockBase implements IModdedBlock {
 
     public BlockCrystalOre() {
-        super(Material.ROCK, "ore_lava_crystal", new BlockProperties(2000.0F, 25.0F, ToolType.PICKAXE, 3, 0.8F));
+        super(Material.ROCK, "ore_lava_crystal", new BlockProperties(2000.0F, 25.0F, blocks.ore_lava_crystal.props,0.8F));
     }
 
     @Override

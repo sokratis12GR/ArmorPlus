@@ -10,7 +10,7 @@ import com.sofodev.armorplus.blocks.castle.BrickColor;
 import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrick;
 import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickCorner;
 import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickTower;
-import com.sofodev.armorplus.blocks.castle.base.BlockStonebrickWall;
+import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickWall;
 import com.sofodev.armorplus.blocks.dungeon.BlockDungeonEnder;
 import com.sofodev.armorplus.blocks.dungeon.EnderType;
 import com.sofodev.armorplus.blocks.lava.*;
@@ -47,7 +47,7 @@ public class ModBlocks {
     public static BlockStoneBrick[] stoneBricks = new BlockStoneBrick[7];
     public static BlockStoneBrickTower[] stoneBrickTowers = new BlockStoneBrickTower[7];
     public static BlockStoneBrickCorner[] stoneBrickCorners = new BlockStoneBrickCorner[7];
-    public static BlockStonebrickWall[] stonebrickWalls = new BlockStonebrickWall[7];
+    public static BlockStoneBrickWall[] stonebrickWalls = new BlockStoneBrickWall[7];
     public static BlockLavaInfuser lavaInfuser = new BlockLavaInfuser("lava_infuser", false);
     public static BlockLavaInfuser lavaInfuserInfusing = new BlockLavaInfuser("lava_infuser_infusing", true);
     public static BlockLavaMaterial blockLavaCrystal = new BlockLavaMaterial(LAVA_CRYSTAL);
@@ -71,7 +71,7 @@ public class ModBlocks {
         setAll(stoneBricks, type -> new BlockStoneBrick(stoneBrickTypes[type]));
         setAll(stoneBrickTowers, type -> new BlockStoneBrickTower(stoneBrickTypes[type]));
         setAll(stoneBrickCorners, type -> new BlockStoneBrickCorner(stoneBrickTypes[type], stoneBricks[type].getDefaultState()));
-        setAll(stonebrickWalls, type -> new BlockStonebrickWall(stoneBricks[type]));
+        setAll(stonebrickWalls, type -> new BlockStoneBrickWall(stoneBricks[type]));
         setAll(enderBlocks, type -> new BlockDungeonEnder(enderTypes[type]));
         setAll(trophies, type -> new BlockTrophy(types[type]));
     }

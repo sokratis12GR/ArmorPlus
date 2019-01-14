@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.lava;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -17,13 +16,15 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
 public class BlockLavaMaterial extends BlockBase implements IModdedBlock {
 
     public BlockLavaMaterial(LavaMaterial type) {
-        super(Material.ROCK, type.getName(), new BlockProperties(type.getResistance(), type.getHardness(), ToolType.PICKAXE, 3, 0.8f));
+        super(Material.ROCK, type.getName(), new BlockProperties(type.getResistance(), type.getHardness(), blocks.lava_material.props, 0.8f));
     }
 
     @Override

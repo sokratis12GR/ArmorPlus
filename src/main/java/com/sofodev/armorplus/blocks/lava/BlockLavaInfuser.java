@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.blocks.lava;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.client.gui.GuiHandler;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import com.sofodev.armorplus.registry.ModBlocks;
@@ -36,6 +35,7 @@ import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 
 import java.util.Random;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
 import static net.minecraft.util.EnumFacing.*;
 
 /**
@@ -54,7 +54,7 @@ public class BlockLavaInfuser extends BlockContainer implements IModdedBlock {
         this.setTranslationKey(Utils.setName(name));
         this.setResistance(10000.0F);
         this.setHardness(2.5F);
-        this.setHarvestLevel(ToolType.PICKAXE.getTool(), 1);
+        this.setHarvestLevel(blocks.lava_infuser.toolType, blocks.lava_infuser.harvestLevel);
         this.setCreativeTab(ArmorPlus.tabArmorplusBlocks);
     }
 

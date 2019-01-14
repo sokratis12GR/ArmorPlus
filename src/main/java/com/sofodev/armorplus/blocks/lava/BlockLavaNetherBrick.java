@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.lava;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -23,6 +22,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -31,7 +32,7 @@ public class BlockLavaNetherBrick extends BlockBase implements IModdedBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockLavaNetherBrick() {
-        super(Material.ROCK, "lava_nether_brick", new BlockProperties(20.0f, 3.0f, ToolType.PICKAXE, 1, 1.0f));
+        super(Material.ROCK, "lava_nether_brick", new BlockProperties(20.0f, 3.0f, blocks.lava_nether_brick.props, 1.0f));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

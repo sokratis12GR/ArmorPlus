@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.castle.base;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.blocks.castle.BrickColor;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import net.minecraft.block.material.MapColor;
@@ -18,6 +17,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -26,7 +27,7 @@ public class BlockStoneBrickTower extends BlockBase implements IModdedBlock {
     private BrickColor brickColor;
 
     public BlockStoneBrickTower(BrickColor brickColor) {
-        super(Material.ROCK, brickColor.getName() + "_stone_brick_tower", new BlockProperties(10.0f, 5.0f, ToolType.PICKAXE, 0));
+        super(Material.ROCK, brickColor.getName() + "_stone_brick_tower", new BlockProperties(10.0f, 5.0f, blocks.stone_bricks.props));
         this.brickColor = brickColor;
     }
 

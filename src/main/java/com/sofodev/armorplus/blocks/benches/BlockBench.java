@@ -7,7 +7,6 @@ package com.sofodev.armorplus.blocks.benches;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -24,6 +23,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -33,7 +34,7 @@ public class BlockBench extends BlockBase implements IModdedBlock {
     public Benches benches;
 
     public BlockBench(Benches benches) {
-        super(Material.IRON, benches.getName(), new BlockProperties(1000.0f, 10.0f, ToolType.PICKAXE, 2));
+        super(Material.IRON, benches.getName(), new BlockProperties(1000.0f, 10.0f, blocks.benches.props));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.benches = benches;
     }

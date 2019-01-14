@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.v2;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -21,6 +20,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -29,7 +30,7 @@ public class BlockMetal extends BlockBase implements IModdedBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockMetal(Metals metals) {
-        super(Material.IRON, metals.getName() + "_block", new BlockProperties(20.0f, 5.0f, ToolType.PICKAXE, 1));
+        super(Material.IRON, metals.getName() + "_block", new BlockProperties(20.0f, 5.0f, blocks.block_metal.props));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

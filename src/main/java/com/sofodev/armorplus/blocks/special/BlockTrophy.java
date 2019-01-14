@@ -6,7 +6,6 @@ package com.sofodev.armorplus.blocks.special;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
 import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
 import com.sofodev.armorplus.tileentity.TileTrophy;
 import net.minecraft.block.material.Material;
@@ -27,13 +26,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 import static com.sofodev.armorplus.blocks.special.Trophy.ANY;
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.blocks;
 
 public class BlockTrophy extends BlockBase implements IModdedBlock {
 
     private Trophy type;
 
     public BlockTrophy(Trophy type) {
-        super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", new BlockProperties(20.0f, 3.0f, ToolType.PICKAXE, 1));
+        super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", new BlockProperties(20.0f, 3.0f, blocks.block_trophy.props));
         this.type = type;
     }
 

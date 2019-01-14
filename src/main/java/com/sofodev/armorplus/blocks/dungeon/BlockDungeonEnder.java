@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.blocks.dungeon;
 
 import com.sofodev.armorplus.blocks.BlockProperties;
+import com.sofodev.armorplus.blocks.HarvestProps;
 import com.sofodev.armorplus.blocks.base.BlockBase;
 import com.sofodev.armorplus.blocks.base.ToolType;
 import com.sofodev.armorplus.iface.IModdedBlock;
@@ -30,7 +31,7 @@ public class BlockDungeonEnder extends BlockBase implements IModdedBlock {
     private EnderType enderBlocks;
 
     public BlockDungeonEnder(EnderType enderBlocks) {
-        super(Material.ROCK, enderBlocks.getName(), new BlockProperties(10000, 100, ToolType.PICKAXE, 4, enderBlocks.getLightLevel(), true));
+        super(Material.ROCK, enderBlocks.getName(), new BlockProperties(10000, 100, new HarvestProps(ToolType.PICKAXE, 4, true), enderBlocks.getLightLevel()));
         this.enderBlocks = enderBlocks;
     }
 
