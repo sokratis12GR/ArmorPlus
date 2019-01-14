@@ -1,7 +1,17 @@
-ArmorPlus 1.12.2-11.17.0.46
+ArmorPlus 1.12.2-11.16.2.47
 ----------------------------
 
-* No longer part of TheDragonTeam, now its once again, completely under Sokratis Fotkatzikis aka sokratis12GR's control.
+* Fixed a lot of bugs related to crafting, especially items getting voided when exiting the gui.
+
+ArmorPlus 1.12.2-11.16.1.46
+----------------------------
+
+* No longer part of TheDragonTeam, now its once again, completely under **Sokratis Fotkatzikis** aka sokratis12GR's control.
+* **Updates** from now on should be displayed when they happen (updateJson, forge way's)
+* **Cosmetics** should finally be working as intended & now more accessible than ever. (You can get one by donating to me via Patreon or PayPal)
+  - Patreon: [https://www.patreon.com/join/sokratis12GR](https://www.patreon.com/join/sokratis12GR)
+  - PayPal email: [sokratis12GR@gmail.com](https://www.paypal.com/cgi-bin/webscr?return=https://minecraft.curseforge.com/projects/armorplus?gameCategorySlug=mc-mods&projectID=237366&cn=Add+special+instructions+to+the+addon+author()&business=sokratis12GR%40gmail.com&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted&cancel_return=https://minecraft.curseforge.com/projects/armorplus?gameCategorySlug=mc-mods&projectID=237366&lc=US&item_name=ArmorPlus+(from+curseforge.com)&cmd=_donations&rm=1&no_shipping=1&currency_code=USD)
+* **ArmorPlus** is sponsored by NodeCraft. Use code **[ArmorPlus](https://nodecraft.com/r/armorplus)** for 30% off your first month of service!
 
 ArmorPlus 1.12.2-11.16.0.45
 ----------------------------
