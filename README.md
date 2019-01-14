@@ -1,6 +1,6 @@
 # ArmorPlus (A+|AP|ARP)
 
-![](https://raw.githubusercontent.com/TheDragonTeam/ArmorPlus/1.12/headerimg.jpg "AmorPlus")
+![](https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/headerimg.jpg "AmorPlus")
 
 [![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://minecraft.curseforge.com/projects/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://minecraft.curseforge.com/projects/armorplus)
@@ -11,7 +11,7 @@
 
 ## About
 
-ArmorPlus is a mod created by **[sokratis12GR](https://sokratis12gr.com)** **(TheDragonTeam)**. 
+ArmorPlus is a mod created by **[sokratis12GR](https://sokratis12gr.com)**
 
 ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds.
 
