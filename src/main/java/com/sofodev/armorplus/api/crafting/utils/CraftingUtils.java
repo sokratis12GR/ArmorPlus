@@ -18,7 +18,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -51,9 +50,9 @@ public class CraftingUtils {
             ItemStack itemstack = ItemStack.EMPTY;
 
             if (recipeComponents[secondary] instanceof Item) {
-                itemstack = getItemStack(recipeComponents[secondary]);
+                itemstack = new ItemStack((Item) (recipeComponents[secondary]));
             } else if (recipeComponents[secondary] instanceof Block) {
-                itemstack = getItemStack(recipeComponents[secondary], 1, OreDictionary.WILDCARD_VALUE);
+                itemstack = new ItemStack((Block) (recipeComponents[secondary]), 1, OreDictionary.WILDCARD_VALUE);
             } else if (recipeComponents[secondary] instanceof ItemStack) {
                 itemstack = (ItemStack) recipeComponents[secondary];
             }
@@ -79,8 +78,9 @@ public class CraftingUtils {
 
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
-        IntStream.range(0, nonnulllist.size()).forEach(i -> nonnulllist.set(i, craftMatrix.getStackInSlot(i)));
-
+        for (int i = 0; i < nonnulllist.size(); ++i) {
+            nonnulllist.set(i, craftMatrix.getStackInSlot(i));
+        }
         return nonnulllist;
     }
 

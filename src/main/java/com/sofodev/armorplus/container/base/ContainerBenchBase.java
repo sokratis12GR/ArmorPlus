@@ -48,62 +48,56 @@ public class ContainerBenchBase extends ContainerBase {
         Slot slot = inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
-            ItemStack slotStack = slot.getStack();
-            itemstack = slotStack.copy();
-            boolean cannotMergeReverse = this.cannotMergeReverse(slotStack, recipeSlots, fullInventorySlots);
-            boolean cannotMergeMainFull = this.cannotMerge(slotStack, mainInventorySlots, fullInventorySlots, false);
-            boolean cannotMergeRecipeMain = this.cannotMergeFromRecipeSlots(slotStack, mainInventorySlots);
-            boolean cannotMergeRecipeFull = this.cannotMergeFromRecipeSlots(slotStack, fullInventorySlots);
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
 
             if (index == 0) {
-                slotStack.getItem().onCreated(slotStack, world, playerIn);
+                itemstack1.getItem().onCreated(itemstack1, world, playerIn);
 
-                if (cannotMergeReverse) return ItemStack.EMPTY;
+                if (!this.mergeItemStack(itemstack1, recipeSlots, fullInventorySlots, true)) return ItemStack.EMPTY;
 
-                slot.onSlotChange(slotStack, itemstack);
-            } else if (this.withinIndex(index, recipeSlots, mainInventorySlots)) {
-                if (cannotMergeMainFull) {
+                slot.onSlotChange(itemstack1, itemstack);
+            } else if (index >= recipeSlots && index < mainInventorySlots) {
+                if (!this.mergeItemStack(itemstack1, mainInventorySlots, fullInventorySlots, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.withinIndex(index, mainInventorySlots, fullInventorySlots)) {
-                if (cannotMergeRecipeMain) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (cannotMergeRecipeFull) return ItemStack.EMPTY;
+            } else if (index >= mainInventorySlots && index < fullInventorySlots) {
+                if (!this.mergeItemStack(itemstack1, recipeSlots, mainInventorySlots, false)) return ItemStack.EMPTY;
+            } else if (!this.mergeItemStack(itemstack1, recipeSlots, fullInventorySlots, false)) return ItemStack.EMPTY;
 
-            if (slotStack.isEmpty()) {
+            if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }
 
-            if (slotStack.getCount() == itemstack.getCount()) {
+            if (itemstack1.getCount() == itemstack.getCount()) {
                 return ItemStack.EMPTY;
             }
 
-            ItemStack takenStack = slot.onTake(playerIn, slotStack);
+            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
 
             if (index == 0) {
-                playerIn.dropItem(takenStack, false);
+                playerIn.dropItem(itemstack2, false);
             }
         }
 
         return itemstack;
     }
 
-    private boolean withinIndex(int index, int minSlotIndex, int maxSlotIndex) {
-        return (index >= minSlotIndex && index < maxSlotIndex);
-    }
-
-    private boolean cannotMerge(ItemStack slotStack, int slots, int inventorySlots, boolean reverseDirection) {
-        return !(this.mergeItemStack(slotStack, slots, inventorySlots, reverseDirection));
-    }
-
-    private boolean cannotMergeReverse(ItemStack slotStack, int slots, int inventorySlots) {
-        return cannotMerge(slotStack, slots, inventorySlots, true);
-    }
-
-    private boolean cannotMergeFromRecipeSlots(ItemStack slotStack, int inventorySlots) {
-        return cannotMerge(slotStack, recipeSlots, inventorySlots, false);
-    }
+//    private boolean withinIndex(int index, int minSlotIndex, int maxSlotIndex) {
+//        return (index >= minSlotIndex && index < maxSlotIndex);
+//    }
+//
+//    private boolean cannotMerge(ItemStack slotStack, int slots, int inventorySlots, boolean reverseDirection) {
+//        return !(this.mergeItemStack(slotStack, slots, inventorySlots, reverseDirection));
+//    }
+//
+//    private boolean cannotMergeReverse(ItemStack slotStack, int slots, int inventorySlots) {
+//        return cannotMerge(slotStack, slots, inventorySlots, true);
+//    }
+//
+//    private boolean cannotMergeFromRecipeSlots(ItemStack slotStack, int inventorySlots) {
+//        return cannotMerge(slotStack, recipeSlots, inventorySlots, false);
+//    }
 }
