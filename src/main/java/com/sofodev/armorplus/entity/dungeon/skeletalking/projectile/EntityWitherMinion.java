@@ -4,13 +4,16 @@
 
 package com.sofodev.armorplus.entity.dungeon.skeletalking.projectile;
 
+import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.util.TextUtils;
 import com.sofodev.armorplus.util.Utils;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -31,6 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 
+import static com.sofodev.armorplus.entity.dungeon.skeletalking.projectile.Skeleton.*;
 import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
@@ -84,7 +88,7 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        if (this.world.isRemote || shootingEntity == null || !(result.entityHit instanceof EntityPlayer)) {
+        if (this.world.isRemote || shootingEntity == null || !(result.entityHit instanceof EntityLivingBase)) {
             return;
         }
         // Minion Data
@@ -97,26 +101,35 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         int archerBound = rand.nextInt(amountArcherMax) + 1;
         int paladinBound = rand.nextInt(amountPaladinMax) + 1;
         // Spawning Mechanic
-        for (int min = 0; min < warriorBound; min++) {
-            EntityWitherSkeleton minionWarrior = create(blockPos);
-            if (checkPhase(1200.0F)) {
-                this.setMinionStats(minionWarrior, Skeleton.WARRIOR_0);
-            } else if (checkPhase(1000.0F)) {
-                this.setMinionStats(minionWarrior, Skeleton.WARRIOR_1);
-            } else {
-                spawnMinions(minionWarrior, Skeleton.WARRIOR_2, Skeleton.WARRIOR_3, Skeleton.WARRIOR_4, Skeleton.WARRIOR_5);
+        if (checkPhase(1200, 0)) {
+            for (int min = 0; min < warriorBound; min++) {
+                if (checkPhase(1200.0F)) {
+                    EntityWitherSkeleton minionWarrior = create(blockPos);
+                    this.setMinionStats(minionWarrior, WARRIOR_0);
+                } else if (checkPhase(1000.0F)) {
+                    EntityWitherSkeleton minionWarrior = create(blockPos);
+                    this.setMinionStats(minionWarrior, WARRIOR_1);
+                } else {
+                    EntityWitherSkeleton minionWarrior = create(blockPos);
+                    spawnMinions(minionWarrior, WARRIOR_2, WARRIOR_3, WARRIOR_4, WARRIOR_5);
+                }
             }
         }
-        for (int min = 0; min < archerBound; min++) {
-            EntityWitherSkeleton minionArcher = create(blockPos);
-            spawnMinions(minionArcher, Skeleton.ARCHER_1, Skeleton.ARCHER_2, Skeleton.ARCHER_3, Skeleton.ARCHER_4);
+        if (checkPhase(800, 0)) {
+            for (int min = 0; min < archerBound; min++) {
+                EntityWitherSkeleton minionArcher = create(blockPos);
+                spawnMinions(minionArcher, ARCHER_1, ARCHER_2, ARCHER_3, ARCHER_4);
+            }
         }
-        for (int min = 0; min < paladinBound; min++) {
-            EntityWitherSkeleton minionPaladin = create(blockPos);
-            if (checkPhase(400.0F)) {
-                this.setMinionStats(minionPaladin, Skeleton.PALADIN_1);
-            } else if (checkPhase(200.0F)) {
-                this.setMinionStats(minionPaladin, Skeleton.PALADIN_2);
+        if (checkPhase(400, 0)) {
+            for (int min = 0; min < paladinBound; min++) {
+                if (checkPhase(400.0F)) {
+                    EntityWitherSkeleton minionPaladin = create(blockPos);
+                    this.setMinionStats(minionPaladin, PALADIN_1);
+                } else if (checkPhase(200.0F)) {
+                    EntityWitherSkeleton minionPaladin = create(blockPos);
+                    this.setMinionStats(minionPaladin, PALADIN_2);
+                }
             }
         }
         result.entityHit.sendMessage(TextUtils.formatText(TextFormatting.RED, phaseText, TextFormatting.ITALIC));
@@ -137,6 +150,8 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
 
     private EntityWitherSkeleton create(BlockPos pos) {
         EntityWitherSkeleton minion = new EntityWitherSkeleton(this.world);
+        minion.targetTasks.addTask(1, new EntityAIHurtByTarget(minion, true));
+        minion.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(minion, EntityLiving.class, 0, false, false, EntitySkeletalKing.ANY_ENTITY));
         minion.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
         minion.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(minion)), null);
         this.world.spawnEntity(minion);
@@ -144,8 +159,12 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
     }
 
     private boolean checkPhase(float phase) {
+        return checkPhase(phase, phase - 200);
+    }
+
+    private boolean checkPhase(float phase, float rangeEnd) {
         float health = shootingEntity.getHealth();
-        return health <= phase && health > (phase - 200);
+        return health <= phase && health > (rangeEnd);
     }
 
     private void setMinionStats(EntityWitherSkeleton witherSkeleton, Skeleton data) {
@@ -169,6 +188,7 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
         minion.setInvisible(false);
         minion.setEntityInvulnerable(false);
         minion.setCanPickUpLoot(true);
+        minion.forceSpawn = true;
     }
 
     /**

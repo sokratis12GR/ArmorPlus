@@ -29,19 +29,19 @@ public class RenderWitherMinion extends Render<EntityWitherMinion> {
 
 
     private float getRenderYaw(float prevRotationYaw, float rotationYaw, float partialTicks) {
-        float f;
+        float rotation;
 
-        f = rotationYaw - prevRotationYaw;
-        while (f < -180.0F) {
+        rotation = rotationYaw - prevRotationYaw;
+        while (rotation < -180.0F) {
 
-            f += 360.0F;
+            rotation += 360.0F;
         }
 
-        while (f >= 180.0F) {
-            f -= 360.0F;
+        while (rotation >= 180.0F) {
+            rotation -= 360.0F;
         }
 
-        return prevRotationYaw + partialTicks * f;
+        return prevRotationYaw + partialTicks * rotation;
     }
 
     /**

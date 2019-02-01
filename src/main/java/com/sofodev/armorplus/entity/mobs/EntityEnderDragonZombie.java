@@ -4,14 +4,18 @@
 
 package com.sofodev.armorplus.entity.mobs;
 
+import com.google.common.base.Predicate;
 import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.entity.ai.EntityTaskEDZAttack;
 import com.sofodev.armorplus.registry.APItems;
 import com.sofodev.armorplus.util.Utils;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
@@ -32,6 +36,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nullable;
 
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -39,6 +44,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class EntityEnderDragonZombie extends EntityMob {
 
+    public static final Predicate<Entity> ANY_ENTITY = entity -> entity instanceof EntityLivingBase && ((EntityLivingBase) entity).attackable() && !(entity instanceof EntityEnderDragonZombie || entity instanceof EntityEnderman || entity instanceof EntityDragon)  ;
     public static final ResourceLocation LOOT = Utils.setRL("entities/ender_dragon_zombie");
     // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie.class, DataSerializers.BOOLEAN);
@@ -92,11 +98,11 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.armor);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.health);
         if (ModConfig.DebugConfig.debugMode && ModConfig.DebugConfig.debugModeEnderDragonZombie) {
-            LogHelper.info("EnderDragon Zombie Follow Range: " + ModConfig.EntitiesConfig.ender_dragon_zombie.followRange);
-            LogHelper.info("EnderDragon Zombie Movement Speed: " + ModConfig.EntitiesConfig.ender_dragon_zombie.movementSpeed);
-            LogHelper.info("EnderDragon Zombie Attack Damage: " + ModConfig.EntitiesConfig.ender_dragon_zombie.attackDamage);
-            LogHelper.info("EnderDragon Zombie Armor: " + ModConfig.EntitiesConfig.ender_dragon_zombie.armor);
-            LogHelper.info("EnderDragon Zombie Max Health: " + ModConfig.EntitiesConfig.ender_dragon_zombie.health);
+            LogHelper.getLogger(MODID).info("EnderDragon Zombie Follow Range: " + ModConfig.EntitiesConfig.ender_dragon_zombie.followRange);
+            LogHelper.getLogger(MODID).info("EnderDragon Zombie Movement Speed: " + ModConfig.EntitiesConfig.ender_dragon_zombie.movementSpeed);
+            LogHelper.getLogger(MODID).info("EnderDragon Zombie Attack Damage: " + ModConfig.EntitiesConfig.ender_dragon_zombie.attackDamage);
+            LogHelper.getLogger(MODID).info("EnderDragon Zombie Armor: " + ModConfig.EntitiesConfig.ender_dragon_zombie.armor);
+            LogHelper.getLogger(MODID).info("EnderDragon Zombie Max Health: " + ModConfig.EntitiesConfig.ender_dragon_zombie.health);
         }
     }
 
@@ -125,6 +131,7 @@ public class EntityEnderDragonZombie extends EntityMob {
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 0, false, false, ANY_ENTITY));
     }
 
     @Override

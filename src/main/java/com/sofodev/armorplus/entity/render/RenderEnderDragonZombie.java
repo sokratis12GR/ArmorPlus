@@ -29,15 +29,16 @@ public class RenderEnderDragonZombie extends RenderBiped<EntityEnderDragonZombie
 
     public RenderEnderDragonZombie(RenderManager rendermanagerIn) {
         super(rendermanagerIn, new ModelZombie(), 0.5f);
-        this.layerRenderers.get(0);
+        this.layerRenderers.get(0).shouldCombineTextures();
         this.addLayer(new LayerHeldItem(this));
-        new LayerBipedArmor(this) {
+        this.addLayer(new LayerBipedArmor(this) {
             @Override
             protected void initArmor() {
                 this.modelLeggings = new ModelZombie(1.5f, true);
                 this.modelArmor = new ModelZombie(1.5f, true);
             }
-        };
+        });
+        //this.addLayer(new LayerElytra(this));
     }
 
     //Using Minecraft Zombie's Texture and Re-Texturing it

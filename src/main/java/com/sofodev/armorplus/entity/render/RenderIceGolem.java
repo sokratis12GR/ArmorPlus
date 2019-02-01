@@ -6,7 +6,7 @@ package com.sofodev.armorplus.entity.render;
 
 import com.sofodev.armorplus.entity.mobs.EntityIceGolem;
 import com.sofodev.armorplus.util.Utils;
-import net.minecraft.client.model.ModelIronGolem;
+import net.minecraft.client.model.ModelArmorStand;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
 
     public RenderIceGolem(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelIronGolem(), 0.5f);
+        super(renderManagerIn, new ModelArmorStand(), 0.5f);
     }
 
     @Nullable
@@ -34,8 +34,8 @@ public class RenderIceGolem extends RenderLiving<EntityIceGolem> {
     }
 
     @Override
-    protected void applyRotations(EntityIceGolem entityLiving, float p_77043_2_, float rotationYaw, float partialTicks) {
-        super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
+    protected void applyRotations(EntityIceGolem entityLiving, float ageInTicks, float rotationYaw, float partialTicks) {
+        super.applyRotations(entityLiving, ageInTicks, rotationYaw, partialTicks);
 
 
         if (entityLiving.limbSwingAmount >= 0.01f) {

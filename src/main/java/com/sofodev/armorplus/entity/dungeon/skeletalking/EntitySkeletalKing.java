@@ -39,7 +39,7 @@ import static net.minecraft.util.text.TextFormatting.*;
  **/
 public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedAttackMob {
 
-    private static final Predicate<Entity> PLAYER = target -> target instanceof EntityPlayer && ((EntityLivingBase) target).attackable();
+    public static final Predicate<Entity> ANY_ENTITY = entity -> entity instanceof EntityLivingBase && ((EntityLivingBase) entity).attackable() && !(entity instanceof EntityWitherSkeleton);
     private final BossInfoServerDungeon bossInfo;
     private List<EntityPlayer> playersReadDialog = new ArrayList<>();
     private List<EntityPlayer> playersReadDeathDialog = new ArrayList<>();
@@ -80,99 +80,102 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         this.removePotionEffect(MobEffects.WITHER);
         super.onUpdate();
         //Some in-game dialogs
-        EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
-        sendDialog++;
-        if (world.isRemote || playerInRange == null) {
-            return;
-        }
-        if (!playersReadDialog.contains(playerInRange) && (sendDialog % (20 * 6)) == 0) {
-            if (checkPhase(1200.0F)) {
-                if (!sentA) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sHa ha ha!" +
-                            "\n%sYou really think you even want to get me started with you?" +
-                            "\n%sThis fight will be over way before it even starts.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
-                    )));
-                    sentA = true;
-                }
-            } else if (checkPhase(1000.0F)) {
-                if (!sentB) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sThat's just the beginning.", GOLD, BOLD, ITALIC
-                    )));
-                    sentB = true;
-                }
-            } else if (checkPhase(800.0F)) {
-                if (!sentC) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sIt seems that you are enjoying my minions..." +
-                            "\n%sWell, I got some news to you." +
-                            "\n%sI own this world", GOLD, BOLD, ITALIC, ITALIC, ITALIC
-                    )));
-                    sentC = true;
-                }
-            } else if (checkPhase(600.0F)) {
-                if (!sentD) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sWhy do you keep fighting" +
-                            "\n%sThere is no escape from me!", GOLD, BOLD, ITALIC, ITALIC
-                    )));
-                    sentD = true;
-                }
-            } else if (checkPhase(400.0F)) {
-                if (!sentE) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sWHY CAN'T YOU JUST DIE!?" +
-                            "\n%sPaladins, Rise!", GOLD, BOLD, ITALIC, ITALIC
-                    )));
-                    sentE = true;
-                }
-            } else if (checkPhase(200.0F)) {
-                if (!sentF) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sNothing can stop me from destroying this world" +
-                            "\n%sIf my minions, cannot kill you. then I'll kill you myself!" +
-                            "\n%sMinions, CHARGE with your full power!!!", GOLD, BOLD, ITALIC, ITALIC, ITALIC
-                    )));
-                    sentF = true;
-                }
-            } else if (isDead) {
-                if (sentEnd) {
-                    playerInRange.sendMessage(new TextComponentTranslation(format(
-                        "%s%sSkeletal King:" +
-                            "\n%sYou cannot win this battle, " + playerInRange.getName() +
-                            "\n%sThe end is near, but remember I'll be BACK " +
-                            "\n%sAnd there will be an END to this world.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
-                    )));
-                    sentEnd = true;
-                    playersReadDialog.add(playerInRange);
+        if (getLastDamageSource() != null && getLastDamageSource().damageType.equals("player")) {
+            EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
+            sendDialog++;
+            if (world.isRemote || playerInRange == null) {
+                return;
+            }
+            if (!playersReadDialog.contains(playerInRange) && (sendDialog % (20 * 6)) == 0) {
+                if (checkPhase(1200.0F)) {
+                    if (!sentA) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sHa ha ha!" +
+                                "\n%sYou really think you even want to get me started with you?" +
+                                "\n%sThis fight will be over way before it even starts.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                        )));
+                        sentA = true;
+                    }
+                } else if (checkPhase(1000.0F)) {
+                    if (!sentB) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sThat's just the beginning.", GOLD, BOLD, ITALIC
+                        )));
+                        sentB = true;
+                    }
+                } else if (checkPhase(800.0F)) {
+                    if (!sentC) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sIt seems that you are enjoying my minions..." +
+                                "\n%sWell, I got some news to you." +
+                                "\n%sI own this world", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                        )));
+                        sentC = true;
+                    }
+                } else if (checkPhase(600.0F)) {
+                    if (!sentD) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sWhy do you keep fighting" +
+                                "\n%sThere is no escape from me!", GOLD, BOLD, ITALIC, ITALIC
+                        )));
+                        sentD = true;
+                    }
+                } else if (checkPhase(400.0F)) {
+                    if (!sentE) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sWHY CAN'T YOU JUST DIE!?" +
+                                "\n%sPaladins, Rise!", GOLD, BOLD, ITALIC, ITALIC
+                        )));
+                        sentE = true;
+                    }
+                } else if (checkPhase(200.0F)) {
+                    if (!sentF) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sNothing can stop me from destroying this world" +
+                                "\n%sIf my minions, cannot kill you. then I'll kill you myself!" +
+                                "\n%sMinions, CHARGE with your full power!!!", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                        )));
+                        sentF = true;
+                    }
+                } else if (isDead) {
+                    if (sentEnd) {
+                        playerInRange.sendMessage(new TextComponentTranslation(format(
+                            "%s%sSkeletal King:" +
+                                "\n%sYou cannot win this battle, " + playerInRange.getName() +
+                                "\n%sThe end is near, but remember I'll be BACK " +
+                                "\n%sAnd there will be an END to this world.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                        )));
+                        sentEnd = true;
+                        playersReadDialog.add(playerInRange);
+                    }
                 }
             }
         }
-
     }
 
     @Override
     protected void onDeathUpdate() {
         super.onDeathUpdate();
-        EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
-        if (world.isRemote || playerInRange == null) {
-            return;
-        }
-        if (!playersReadDeathDialog.contains(playerInRange) && (sendDialog % (20 * 6)) == 0) {
-            playerInRange.sendMessage(new TextComponentTranslation(format(
-                "%s%sSkeletal King:" +
-                    "\n%sYou cannot win this battle, " + playerInRange.getName() +
-                    "\n%sThe end is near, but remember I'll be BACK " +
-                    "\n%sAnd there will be an END to this world.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
-            )));
-            playersReadDeathDialog.add(playerInRange);
+        if (getLastDamageSource() != null && getLastDamageSource().damageType.equals("player")) {
+            EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
+            if (world.isRemote || playerInRange == null) {
+                return;
+            }
+            if (!playersReadDeathDialog.contains(playerInRange) && (sendDialog % (20 * 6)) == 0) {
+                playerInRange.sendMessage(new TextComponentTranslation(format(
+                    "%s%sSkeletal King:" +
+                        "\n%sYou cannot win this battle, " + playerInRange.getName() +
+                        "\n%sThe end is near, but remember I'll be BACK " +
+                        "\n%sAnd there will be an END to this world.", GOLD, BOLD, ITALIC, ITALIC, ITALIC
+                )));
+                playersReadDeathDialog.add(playerInRange);
+            }
         }
     }
 
@@ -188,7 +191,8 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 0, false, false, PLAYER));
+        //this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, 0, false, false, PLAYER));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 0, false, false, ANY_ENTITY));
 
         super.initEntityAI();
     }
