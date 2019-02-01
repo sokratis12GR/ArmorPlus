@@ -1,3 +1,16 @@
+ArmorPlus 1.12.2-11.17.0.49
+----------------------------
+
+* Introducing experimental mode **DISABLED BY DEFAULT**, a config value that changes everything about this mod, as the name suggest its EXPERIMENTAL and can cause corruption/destroy/break your worlds.
+  - New way of obtaining abilities, ability limits, quests, and a lot more (WIP)
+  - Once enabled armors' will be revamped, and made so that they will require quests to be done (if any, use with caution) to obtain abilities.
+* A few QoL improvements, moved most of the InGame dialogs to use the translatable key format (now can be translated).
+* Fixed a few bugs related to the Skeletal King, additionally it no longer targets players but also any other type of mob, except Wither Skeletons
+* GUIs:
+  - Re-aligned some grid positions of the crafting GUIs, made them more correctly aligned. 
+  - Added armor inventory slots to the crafting GUIs
+  - JEI: Fixed some GUI arrangements
+
 ArmorPlus 1.12.2-11.16.3.48
 ----------------------------
 
