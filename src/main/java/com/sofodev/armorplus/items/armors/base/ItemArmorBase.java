@@ -2,10 +2,10 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.armors.base;
+package com.sofodev.armorplus.items.armors.base;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.armors.APArmorMaterial;
+import com.sofodev.armorplus.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.iface.IModdedItem;
 import com.sofodev.armorplus.util.EnumHelperUtil;
 import com.sofodev.armorplus.util.EnumTiers;

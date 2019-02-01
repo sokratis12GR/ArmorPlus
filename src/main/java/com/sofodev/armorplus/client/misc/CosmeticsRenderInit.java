@@ -9,6 +9,9 @@ import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.util.RenderEntityHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EnumPlayerModelParts;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -79,6 +82,10 @@ public class CosmeticsRenderInit {
                 String playerName = event.getEntityPlayer().getName();
                 if (entry.getKey() != null && entry.getKey().equalsIgnoreCase(playerName)) {
                     if (playerName.equals("sokratis12GR")) {
+                        EntityPlayer player = event.getEntityPlayer();
+                        if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE) || player.isPotionActive(MobEffects.INVISIBILITY)) {
+                            return;
+                        }
                         EntitySkeletalKing king = new EntitySkeletalKing(Minecraft.getMinecraft().world);
                         RenderEntityHelper.renderBoss(king, event.getEntityPlayer(), event.getPartialRenderTick());
                     }

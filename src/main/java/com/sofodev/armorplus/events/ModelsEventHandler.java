@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.RenderGuardianOverlord;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
@@ -20,9 +19,6 @@ import com.sofodev.armorplus.entity.mobs.EntityIceGolem;
 import com.sofodev.armorplus.entity.render.RenderEnderDragonZombie;
 import com.sofodev.armorplus.entity.render.RenderIceGolem;
 import com.sofodev.armorplus.entity.render.RenderModdedArrow;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
-import com.sofodev.armorplus.registry.ModModelUtils;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -30,6 +26,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
+import static com.sofodev.armorplus.registry.ModBlocks.*;
+import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.registry.ModModelUtils.register;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 
@@ -42,39 +42,47 @@ public class ModelsEventHandler {
 
     @SubscribeEvent
     public static void registerBlockModels(ModelRegistryEvent event) {
-        register(ModBlocks.benches);
-        register(ModBlocks.blockLavaCrystal, ModBlocks.blockInfusedLavaCrystal, ModBlocks.blockCompressedLavaCrystal, ModBlocks.blockCompressedInfusedLavaCrystal, ModBlocks.blockLavaInfusedObsidian,
-            ModBlocks.blockCrystalOre, ModBlocks.blockCompressedObsidian, ModBlocks.steelBlock, ModBlocks.electricalBlock, ModBlocks.lavaInfuser, ModBlocks.lavaInfuserInfusing, ModBlocks.blockLavaCactus, ModBlocks.blockLavaNetherBrick
+        register(benches);
+        register(blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockLavaInfusedObsidian,
+            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, blockLavaCactus, blockLavaNetherBrick
         );
-        register(ModBlocks.stoneBricks, ModBlocks.stoneBrickTowers, ModBlocks.stoneBrickCorners, ModBlocks.stonebrickWalls);
+        register(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //   register(blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        register(ModBlocks.enderBlocks);
-        register(ModBlocks.trophies);
+        register(enderBlocks);
+        register(trophies);
     }
 
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
-        ModModelUtils.register(ModItems.twitchItem, ModItems.beamItem, ModItems.theDragonTeamItem, ModItems.moddedCityItem, ModItems.jonBamsItem, ModItems.btmMoon, ModItems.m1Jordan, ModItems.teamRapture);
-        register(ModItems.materials, ModItems.itemLavaCrystal, ModItems.itemTGOTG, ModItems.bookInfo, ModItems.steelIngot, ModItems.electricalIngot, ModItems.itemRedstoneApple, ModItems.theUltimateParts,
-            ModItems.itemDevTool, ModItems.itemCoalArrow, ModItems.itemLapisArrow, ModItems.itemRedstoneArrow, ModItems.itemLavaArrow, ModItems.itemEnderDragonArrow
+        register(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
+        register(materials, itemLavaCrystal, itemTGOTG, bookInfo, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
+            itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
-        ModModelUtils.register(ModConfig.RegistryConfig.global_registry.enableTheUltimateArmor, ModItems.theUltimate);
-        ModModelUtils.register(ModItems.isArmorEnabled,
-            ModItems.coal, ModItems.emerald, ModItems.lapis, ModItems.lava, ModItems.obsidian, ModItems.redstone, ModItems.chicken, ModItems.slime, ModItems.guardian, ModItems.superStar, ModItems.enderDragon, ModItems.ardite, ModItems.cobalt, ModItems.manyullyn, ModItems.pigIron, ModItems.knightSlime
+        register(global_registry.enableTheUltimateArmor, theUltimate);
+        register(isArmorEnabled,
+            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
-        register(ModItems.towerSpawnItem);
-        register(ModItems.chainmail, ModItems.guardianScale, ModItems.witherBone, ModItems.enderDragonScale, ModItems.theUltimateMaterial);
-        register(ModItems.horseArmors);
-        ModModelUtils.register(ModItems.isSwordEnabled, ModItems.sword);
-        ModModelUtils.register(ModItems.isBattleAxeEnabled, ModItems.battleAxe);
-        ModModelUtils.register(ModItems.isBowEnabled, ModItems.bow);
+        register(towerSpawnItem, enderDungeonFloor1SpawnItem);
+        register(chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
+        register(horseArmors);
+        register(isSwordEnabled, sword);
+        register(isBattleAxeEnabled, battleAxe);
+        register(isBowEnabled, bow);
+
+        //Prototype
+        if (enableExperimentalMode) {
+            register(
+                coalExp, emeraldExp, lapisExp, lavaExp, obsidianExp, redstoneExp, chickenExp, slimeExp, guardianExp, superStarExp, enderDragonExp,
+                arditeExp, cobaltExp, manyullynExp, pigIronExp, knightSlimeExp
+            );
+        }
     }
 
     @SubscribeEvent
     public static void registerEntityModels(ModelRegistryEvent event) {
         //Mobs
-        registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie::new);
+        registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie.FACTORY);
         registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
         //Arrows
         registerRenderingHandler(EntityCoalArrow.class, "coal");

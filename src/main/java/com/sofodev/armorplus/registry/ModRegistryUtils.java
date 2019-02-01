@@ -4,18 +4,21 @@
 
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.armors.APArmorMaterial;
-import com.sofodev.armorplus.armors.base.ItemArmorBase;
-import com.sofodev.armorplus.armors.base.ItemUltimateArmor;
+import com.sofodev.armorplus.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.items.armors.Material;
+import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
+import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
+import com.sofodev.armorplus.items.armors.base.ItemUltimateArmor;
 import com.sofodev.armorplus.items.base.ItemSpecialBattleAxe;
 import com.sofodev.armorplus.items.base.ItemSpecialBow;
 import com.sofodev.armorplus.items.base.ItemSpecialSword;
 import com.sofodev.armorplus.items.weapons.BattleAxes;
 import com.sofodev.armorplus.items.weapons.Bows;
 import com.sofodev.armorplus.items.weapons.Swords;
-import com.sofodev.armorplus.util.Utils;
 
 import java.util.stream.IntStream;
+
+import static com.sofodev.armorplus.util.Utils.equipmentSlots;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -24,13 +27,17 @@ public class ModRegistryUtils {
 
     public static void register(boolean enabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
         if (enabled) {
-            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorBase(armorMaterial, Utils.equipmentSlots[i]));
+            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]));
         }
+    }
+
+    public static void register(ItemArmorV2[] armor, Material material) {
+        IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorV2(material, equipmentSlots[i]));
     }
 
     public static void register(boolean enabled, ItemUltimateArmor[] armor) {
         if (enabled) {
-            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemUltimateArmor(Utils.equipmentSlots[i]));
+            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemUltimateArmor(equipmentSlots[i]));
         }
     }
 

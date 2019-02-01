@@ -4,10 +4,10 @@
 
 package com.sofodev.armorplus.proxy;
 
+import com.sofodev.armorplus.caps.abilities.AbilityDataHandler;
 import com.sofodev.armorplus.commands.CommandArmorPlus;
 import com.sofodev.armorplus.compat.ICompatibility;
 import com.sofodev.armorplus.compat.tinkers.TiC;
-import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
 import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
@@ -25,14 +25,22 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.ArmorPlus.MODID;
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
+import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
+import static com.sofodev.armorplus.registry.ModItems.*;
+
 /**
  * @author Sokratis Fotkatzikis
  **/
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
+        if (enableExperimentalMode) {
+            AbilityDataHandler.register();
+        }
         ModBlocks.registerBlocks();
-        ModItems.registerItems();
+        registerItems();
         APItems.registerItemNames();
         APItems.registerWeaponsA();
         APItems.registerWeaponsB();
@@ -41,7 +49,7 @@ public class CommonProxy {
         this.registerWorldGenerator(new OreGen(), new StructureGenNBT());
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().preInit(event);
-        ModItems.registerTCItems();
+        registerTCItems();
         APItems.registerTCItemNames();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
@@ -61,29 +69,31 @@ public class CommonProxy {
         ModRecipes.init();
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().init(event);
-        if (ModConfig.RegistryConfig.global_registry.enableArditeArmor) {
-            Arrays.stream(ModItems.ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        if (!enableExperimentalMode) {
+            if (global_registry.enableArditeArmor) {
+                Arrays.stream(ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+            }
+            if (global_registry.enableCobaltArmor) {
+                Arrays.stream(cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+            }
+            if (global_registry.enableManyullynArmor) {
+                Arrays.stream(manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+            }
+            if (global_registry.enableKnightSlimeArmor) {
+                Arrays.stream(knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+            }
+            if (global_registry.enablePigIronArmor) {
+                Arrays.stream(pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+            }
         }
-        if (ModConfig.RegistryConfig.global_registry.enableCobaltArmor) {
-            Arrays.stream(ModItems.cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        }
-        if (ModConfig.RegistryConfig.global_registry.enableManyullynArmor) {
-            Arrays.stream(ModItems.manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        }
-        if (ModConfig.RegistryConfig.global_registry.enableKnightSlimeArmor) {
-            Arrays.stream(ModItems.knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        }
-        if (ModConfig.RegistryConfig.global_registry.enablePigIronArmor) {
-            Arrays.stream(ModItems.pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-        }
-        LogHelper.info("Finished Initialization");
+        LogHelper.getLogger(MODID).info("Finished Initialization");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().postInit(event);
-        LogHelper.info("Finished PostInitialization");
+        LogHelper.getLogger(MODID).info("Finished PostInitialization");
     }
 
     public void modMapping(FMLModIdMappingEvent event) {

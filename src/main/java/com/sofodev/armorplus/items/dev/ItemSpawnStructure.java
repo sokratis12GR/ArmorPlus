@@ -19,16 +19,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSpawnStructure extends ItemBase {
 
+    private final String itemName;
     private final ResourceLocation structureLocation;
 
     public ItemSpawnStructure(String itemName, ResourceLocation structureLocation) {
         super(itemName);
+        this.itemName = itemName;
         this.structureLocation = structureLocation;
     }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return "Nether Tower (ArmorPlus) Structure Spawn";
+        switch (itemName) {
+            case "ender_dungeon_floor_1_spawn_item":
+                return "Ender Dungeon Floor 1 (ArmorPlus) Structure Spawn";
+            case "tower_spawn_item":
+                return "Nether Tower (ArmorPlus) Structure Spawn";
+            default:
+                return "Invalid Item";
+        }
     }
 
     @Override

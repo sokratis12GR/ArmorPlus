@@ -2,14 +2,14 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.armors;
+package com.sofodev.armorplus.items.armors;
 
 import com.sofodev.armorplus.api.properties.AbilityCanceller;
 import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
 import com.sofodev.armorplus.api.properties.iface.IRemovable;
 import com.sofodev.armorplus.api.properties.iface.IRepairable;
-import com.sofodev.armorplus.armors.base.ItemArmorBase;
+import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
 import com.sofodev.armorplus.client.utils.ToolTipUtils;
 import com.sofodev.armorplus.config.Abilities;
 import net.minecraft.client.Minecraft;
@@ -167,7 +167,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         @Override
         public void onArmorTick(EntityPlayer player, EntityEquipmentSlot slot) {
             if (enableFlightAbility) {
-                if (isFullSet(player, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots)) {
+                if (isFullSet(player, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots) || player.capabilities.isCreativeMode || player.isSpectator()) {
                     player.capabilities.allowFlying = true;
                 } else {
                     player.capabilities.isFlying = false;
@@ -187,7 +187,7 @@ public enum APArmorMaterial implements IEffectHolder, IRepairable, IRemovable {
         public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
             super.addInformation(stack, world, tooltip, advanced);
             if (isKeyDown()) {
-                ToolTipUtils.addToolTip(tooltip, "§eSpecial ability: Flight");
+                ToolTipUtils.addToolTip(tooltip, "\u00a7eSpecial ability: Flight");
             }
         }
     },

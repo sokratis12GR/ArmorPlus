@@ -44,14 +44,14 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 
 import java.util.Arrays;
 
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.tileentity.TileCB.*;
-import static com.sofodev.armorplus.tileentity.TileHTB.*;
-import static com.sofodev.armorplus.tileentity.TileLavaInfuser.*;
-import static com.sofodev.armorplus.tileentity.TileTrophy.*;
-import static com.sofodev.armorplus.tileentity.TileUTB.*;
-import static com.sofodev.armorplus.tileentity.TileWB.*;
+import static com.sofodev.armorplus.tileentity.TileCB.registerCBFixes;
+import static com.sofodev.armorplus.tileentity.TileHTB.registerHTBFixes;
+import static com.sofodev.armorplus.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
+import static com.sofodev.armorplus.tileentity.TileUTB.registerUTBFixes;
+import static com.sofodev.armorplus.tileentity.TileWB.registerWBFixes;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
@@ -63,11 +63,17 @@ public class RegistryEventHandler {
 
     public static final int DATA_FIXER_VERSION = 132;
 
+    /**
+     * Mappings
+     */
     @SubscribeEvent
     public static void registerMappings(MissingMappings<Item> e) {
         registerItemFixes();
     }
 
+    /**
+     * Entities
+     */
     @SuppressWarnings("SameParameterValue")
     private static void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
         ResourceLocation resourceLocation = Utils.setRL(registryName);
@@ -108,6 +114,9 @@ public class RegistryEventHandler {
             0x665b52, 0x845833);
     }
 
+    /**
+     * Blocks
+     */
     private static void registerAllBlocks(Register<Block> event, Block[]... blocksArray) {
         Arrays.stream(blocksArray).forEachOrdered(blockList -> registerAllBlocks(event, blockList));
     }
@@ -139,7 +148,6 @@ public class RegistryEventHandler {
         registerHTBFixes(dataFixer);
         registerUTBFixes(dataFixer);
         registerCBFixes(dataFixer);
-        registerTrophyFixes(dataFixer);
     }
 
     private static void registerTileEntities() {
@@ -179,6 +187,9 @@ public class RegistryEventHandler {
         });
     }
 
+    /**
+     * Items
+     */
     private static void registerAllItemBlocks(Register<Item> event, Block[]... blockArray) {
         Arrays.stream(blockArray).forEachOrdered(blockList -> registerItemBlock(event, blockList));
     }
@@ -213,16 +224,26 @@ public class RegistryEventHandler {
         registerAllItems(event, materials);
         //  registerAllItems(event, chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
         // ==== SPECIAL ITEMS ===\\
-        registerAllItems(event, towerSpawnItem);
+        registerAllItems(event, towerSpawnItem, enderDungeonFloor1SpawnItem);
         registerItemFixes();
         // ==== COSMETICS ==== \\
         registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
         // ==== GEAR ==== \\
         registerAllItems(event,
-            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
+            coal, lapis, redstone, emerald, obsidian, lava, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
         );
+        if (enableExperimentalMode) {
+            registerAllItems(event,
+                coalExp, lapisExp, redstoneExp, emeraldExp, obsidianExp, lavaExp,
+                chickenExp, slimeExp, guardianExp, superStarExp, enderDragonExp, ultimateExp,
+                arditeExp, cobaltExp, manyullynExp, pigIronExp, knightSlimeExp
+            );
+        }
         registerAllItems(event, horseArmors);
         registerAllItems(event, sword, battleAxe, bow);
+        //   if (enableExperimentalMode) {
+        //       registerAllItems(event, prototype);
+        //   }
     }
 
     public static void registerItemFixes() {
@@ -230,16 +251,25 @@ public class RegistryEventHandler {
         modFixs.registerFix(FixTypes.ITEM_INSTANCE, new ItemRename());
     }
 
+    /**
+     * Enchantments
+     */
     @SubscribeEvent
     public static void registerEnchantments(Register<Enchantment> event) {
         event.getRegistry().registerAll(new FuriousEnchantment(), new LifeStealEnchantment());
     }
 
+    /**
+     * Potions
+     */
     @SubscribeEvent
     public static void registerPotions(Register<Potion> event) {
         event.getRegistry().register(new PotionEmpty());
     }
 
+    /**
+     * Sounds
+     */
     @SubscribeEvent
     public static void registerSounds(Register<SoundEvent> event) {
         event.getRegistry().register(new SoundTrapTriggered());

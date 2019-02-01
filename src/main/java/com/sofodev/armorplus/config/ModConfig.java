@@ -25,6 +25,14 @@ import static net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = MODID)
 public class ModConfig {
 
+    @Config(modid = MODID, name = "armorplus/experimental", category = "experimental")
+    public static class Experimental {
+
+        @Comment({"This will enable experimental features that the mod provides, use with caution can corrupt/destroy/break your worlds"})
+        public static boolean enableExperimentalMode = false;
+
+    }
+
     @Config(modid = MODID, name = "armorplus/config", category = "")
     public static class MainConfig {
 

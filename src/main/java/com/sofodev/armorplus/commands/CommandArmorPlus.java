@@ -4,10 +4,7 @@
 
 package com.sofodev.armorplus.commands;
 
-import com.sofodev.armorplus.commands.subcommands.CommandDiscord;
-import com.sofodev.armorplus.commands.subcommands.CommandInfo;
-import com.sofodev.armorplus.commands.subcommands.CommandNodecraft;
-import com.sofodev.armorplus.commands.subcommands.CommandWiki;
+import com.sofodev.armorplus.commands.subcommands.*;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -17,6 +14,8 @@ import net.minecraftforge.server.command.CommandTreeHelp;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -31,6 +30,9 @@ public class CommandArmorPlus extends CommandTreeBase {
         super.addSubcommand(new CommandWiki());
         super.addSubcommand(new CommandNodecraft());
         super.addSubcommand(new CommandTreeHelp(this));
+        if (enableExperimentalMode) {
+            super.addSubcommand(new CommandAbilities());
+        }
         this.aliases.add("arp");
         this.aliases.add("a+");
         this.aliases.add("armorplus");

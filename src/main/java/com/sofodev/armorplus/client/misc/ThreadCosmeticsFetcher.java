@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Properties;
 
+import static com.sofodev.armorplus.ArmorPlus.MODID;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -24,16 +26,16 @@ public class ThreadCosmeticsFetcher extends Thread {
 
     @Override
     public void run() {
-        LogHelper.info("Fetching cosmetics for people...");
+        LogHelper.getLogger(MODID).info("Fetching cosmetics for people...");
         try {
             URL url = new URL("https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/armorplus.properties");
             Properties specialProperties = new Properties();
             specialProperties.load(new InputStreamReader(url.openStream()));
             CosmeticsRenderInit.parse(specialProperties);
 
-            LogHelper.info("Fetching cosmetics for people done!");
+            LogHelper.getLogger(MODID).info("Fetching cosmetics for people done!");
         } catch (IOException e) {
-            LogHelper.error("${ThreadCosmeticsFetcher::class.java} Failed", e);
+            LogHelper.getLogger(MODID).error("${ThreadCosmeticsFetcher::class.java} Failed", e);
         }
     }
 }

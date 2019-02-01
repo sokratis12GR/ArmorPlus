@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.registry.APItems.infusedLavaCrystal;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -42,11 +43,11 @@ public class APTab extends CreativeTabs {
         if (tab == 0) {
             return addTabItemStack(APItems.lavaChestplate);
         } else if (tab == 1) {
-            return APItems.infusedLavaCrystal;
+            return infusedLavaCrystal;
         } else if (tab == 2) {
             return addTabItemStack(ModBlocks.blockInfusedLavaCrystal);
         } else if (tab == 3) {
-            return addTabItemStack(ModItems.battleAxe[7]);
+            return addTabItemStack(APItems.lavaBattleAxe);
         }
         return ItemStack.EMPTY;
     }

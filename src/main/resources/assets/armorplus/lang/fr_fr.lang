@@ -119,6 +119,7 @@ item.armorplus.book.name=Livre d'ArmorPlus
 
 # CONFIG GUI
 gui.armorplus.config.title=Configuration d'ArmorPlus
+
 # Root Categories
 armorplus/misc.tooltip=Miscellaneous configurations
 armorplus/config.tooltip=Main configurations
@@ -127,6 +128,7 @@ armorplus/entities.tooltip=Entities configurations
 armorplus/integrations.tooltip=Integrations configurations
 armorplus/registry.tooltip=Registry configurations
 armorplus/worldgen.tooltip=World Gen configurations
+
 # SubCategories
 armorplus.global.tooltip=Globally applied configurations
 armorplus.tgotg.tooltip=Configurations for The Gift Of The Gods item

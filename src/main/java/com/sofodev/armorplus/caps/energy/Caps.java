@@ -2,7 +2,7 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.caps;
+package com.sofodev.armorplus.caps.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

@@ -22,10 +22,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class RenderCosmetics {
 
-    public ItemStack renderCosmetics;
+    public ItemStack renderedStack;
 
     public RenderCosmetics(ItemStack renderedItemStack) {
-        this.renderCosmetics = renderedItemStack;
+        this.renderedStack = renderedItemStack;
     }
 
     @SideOnly(Side.CLIENT)
@@ -33,7 +33,7 @@ public class RenderCosmetics {
         if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE) || player.isPotionActive(MobEffects.INVISIBILITY)) {
             return;
         }
-        boolean isBlock = cosmetics.renderCosmetics.getItem() instanceof ItemBlock;
+        boolean isBlock = cosmetics.renderedStack.getItem() instanceof ItemBlock;
 
         GlStateManager.pushMatrix();
 
@@ -55,7 +55,7 @@ public class RenderCosmetics {
         GlStateManager.pushMatrix();
         if (!isBlock) GlStateManager.translate(0.0, 0.5, 0.0);
         GlStateManager.rotate(180f, 1f, 0f, 0f);
-        renderItemInWorld(cosmetics.renderCosmetics);
+        renderItemInWorld(cosmetics.renderedStack);
         GlStateManager.popMatrix();
         GlStateManager.enableLighting();
 

@@ -4,9 +4,9 @@
 
 package com.sofodev.armorplus.commands.subcommands;
 
-import com.sofodev.armorplus.util.TextUtils;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.thedragonteam.thedragonlib.client.util.ClientUtills;
 
 import static net.minecraft.util.text.TextFormatting.AQUA;
@@ -24,8 +24,8 @@ public class CommandWiki extends CommandSubBase {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         String link = "https://ftb.gamepedia.com/ArmorPlus";
-        sender.sendMessage(TextUtils.setText("Opening a link to the site:\n" + AQUA + "" + ITALIC + link));
+        sender.sendMessage(new TextComponentTranslation("commands.armorplus.wiki.link_details", String.format("%n%s%s%s", AQUA.toString(), ITALIC.toString(), link)));
         ClientUtills.openLink(link);
-        sender.sendMessage(TextUtils.setText("Link opened successfully"));
+        sender.sendMessage(new TextComponentTranslation("commands.armorplus.wiki.link_open"));
     }
 }

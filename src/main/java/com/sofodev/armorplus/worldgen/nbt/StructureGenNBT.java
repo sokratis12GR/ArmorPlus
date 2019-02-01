@@ -32,6 +32,7 @@ import static net.minecraftforge.common.BiomeDictionary.*;
 public class StructureGenNBT implements IWorldGenerator {
 
     public static final ResourceLocation TOWER = Utils.setRL("tower");
+    public static final ResourceLocation ENDER_DUNGEON_FLOOR_1 = Utils.setRL("ender_dungeon_floor_1");
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

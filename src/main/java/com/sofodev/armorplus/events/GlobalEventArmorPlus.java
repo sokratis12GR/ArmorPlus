@@ -18,6 +18,8 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
+import static java.awt.Color.*;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -42,31 +44,35 @@ public class GlobalEventArmorPlus {
             return;
         }
         String rp = rl.getPath();
-        if (rp.contains("lava") && rp.contains("obsidian")) {
+        if ((rp.contains("lava") && rp.contains("obsidian")) || rp.contains("lava") && rp.contains("infuser")) {
             event.setBorderStart(gold.getRGB());
             event.setBorderEnd(darkPurple.getRGB());
-        } else if (match(rl, "coal")) {
-            setBorderColor(event, Color.GRAY);
-        } else if (match(rl, "lapis")) {
-            setBorderColor(event, Color.BLUE);
-        } else if (match(rl, "redstone", "ardite", "high_tech_bench")) {
-            setBorderColor(event, Color.RED);
-        } else if (match(rl, "emerald")) {
-            setBorderColor(event, Color.GREEN);
+        } else if (match(rl, "Coal", "coal")) {
+            setBorderColor(event, GRAY);
+        } else if (match(rl, "Lapis", "lapis", "blue")) {
+            setBorderColor(event, BLUE);
+        } else if (match(rl, "Redstone", "redstone", "ardite", "high_tech_bench", "red")) {
+            setBorderColor(event, RED);
+        } else if (match(rl, "Emerald", "emerald", "green")) {
+            setBorderColor(event, GREEN);
         } else if (match(rl, "obsidian")) {
             setBorderColor(event, darkPurple);
-        } else if (match(rl, "lava", "champion_bench")) {
+        } else if (match(rl, "lava", "champion_bench", "lava")) {
             setBorderColor(event, gold);
         } else if (match(rl, "Guardian", "guardian", "chicken")) {
-            setBorderColor(event, Color.CYAN);
-        } else if (match(rl, "Wither", "super_star")) {
-            setBorderColor(event, Color.WHITE);
-        } else if (match(rl, "Ender Dragon", "ender_dragon", "manyullyn", "knight_slime")) {
+            setBorderColor(event, CYAN);
+        } else if (match(rl, "Wither", "wither", "super_star", "white")) {
+            setBorderColor(event, WHITE);
+        } else if (match(rl, "Ender Dragon", "ender_dragon", "manyullyn", "knight_slime", "purple")) {
             setBorderColor(event, purple);
         } else if (match(rl, "Ultimate", "ultimate", "slime", "ulti_tech_bench")) {
             setBorderColor(event, lightGreen);
-        } else if (match(rl, "cobalt", "workbench")) {
+        } else if (match(rl, "Cobalt", "cobalt", "workbench")) {
             setBorderColor(event, lightBlue);
+        } else if (match(rl, "Yellow", "yellow")) {
+            setBorderColor(event, YELLOW);
+        } else if (match(rl, "Black", "black")) {
+            setBorderColor(event, BLACK);
         }
     }
 

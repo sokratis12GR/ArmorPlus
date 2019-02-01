@@ -8,7 +8,6 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
@@ -24,6 +23,8 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
+import static com.sofodev.armorplus.config.ModConfig.EntitiesConfig.mob_drops;
+import static com.sofodev.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -40,21 +41,21 @@ public class MobDropsEventHandler {
         int randomDrop = random.nextInt(max - min + 1) + min;
         Entity entity = event.getEntity();
         if (entity instanceof EntityDragon) {
-            registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.ender_dragon_scale.drop, getItemStack(ModItems.materials, ModConfig.EntitiesConfig.mob_drops.ender_dragon_scale.dropAmount, 3));
+            registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
             registerTrophyDrop(event, 3);
         }
         if (entity instanceof EntityWither) {
-            registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.wither_bone.bossDrop, getItemStack(ModItems.materials, ModConfig.EntitiesConfig.mob_drops.wither_bone.dropAmount, 2));
+            registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
             registerTrophyDrop(event, 2);
         }
         if (entity instanceof EntityWitherSkeleton) {
-            registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.wither_bone.witherSkeletonDrop, getItemStack(ModItems.materials, randomDrop, 2));
+            registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
         }
         if (entity instanceof EntityGuardian) {
-            registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.guardian_scale.guardianDrop, getItemStack(ModItems.materials, randomDrop, 1));
+            registerMobDrop(event, mob_drops.guardian_scale.guardianDrop, getItemStack(materials, randomDrop, 1));
         }
         if (entity instanceof EntityElderGuardian) {
-            registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.guardian_scale.elderDrop, getItemStack(ModItems.materials, ModConfig.EntitiesConfig.mob_drops.guardian_scale.dropAmount, 1));
+            registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
             registerTrophyDrop(event, 1);
         }
         if (entity instanceof EntitySkeletalKing) {
@@ -63,7 +64,7 @@ public class MobDropsEventHandler {
     }
 
     private static void registerTrophyDrop(LivingDropsEvent event, int trophy) {
-        registerMobDrop(event, ModConfig.EntitiesConfig.mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[trophy]));
+        registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[trophy]));
     }
 
     private static void registerMobDrop(LivingDropsEvent event, boolean enableDrop, ItemStack drop) {

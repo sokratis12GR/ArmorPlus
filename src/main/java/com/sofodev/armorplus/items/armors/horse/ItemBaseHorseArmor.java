@@ -2,9 +2,9 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.armors.horse;
+package com.sofodev.armorplus.items.armors.horse;
 
-import com.sofodev.armorplus.armors.APArmorMaterial;
+import com.sofodev.armorplus.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.items.base.ItemBase;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-import static com.sofodev.armorplus.armors.APArmorMaterial.*;
+import static com.sofodev.armorplus.items.armors.APArmorMaterial.*;
 import static com.sofodev.armorplus.util.EnumHelperUtil.addHorseArmor;
 
 public class ItemBaseHorseArmor extends ItemBase {

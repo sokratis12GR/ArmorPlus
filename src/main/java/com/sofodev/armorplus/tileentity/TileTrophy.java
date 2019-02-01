@@ -14,9 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.WeightedSpawnerEntity;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.datafix.FixTypes;
-import net.minecraft.util.datafix.IDataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.storage.AnvilChunkLoader;
@@ -105,16 +102,6 @@ public class TileTrophy extends TileEntity {
 
     public void setEntityScale(float scale) {
         this.scale = scale;
-    }
-
-    public static void registerTrophyFixes(DataFixer fixer) {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, (IDataFixer fixer1, NBTTagCompound compound, int versionIn) -> {
-            if (TileEntity.getKey(TileTrophy.class).equals(new ResourceLocation(compound.getString("id")))) {
-                compound.setTag("DisplayEntity", fixer1.process(FixTypes.ENTITY, compound.getCompoundTag("DisplayEntity"), versionIn));
-            }
-
-            return compound;
-        });
     }
 
     public void loadFromNbt(NBTTagCompound nbt) {
