@@ -54,22 +54,26 @@ public class ArmorPlusPlugin implements IModPlugin {
     public static final String[] JEI_CATEGORIES = new String[]{JEI_CATEGORY_WORKBENCH, JEI_CATEGORY_HIGH_TECH_BENCH, JEI_CATEGORY_ULTI_TECH_BENCH, JEI_CATEGORY_CHAMPION_BENCH};
     public static IJeiHelpers jeiHelper;
 
+    public static void setJeiHelper(IJeiHelpers jeiHelper) {
+        ArmorPlusPlugin.jeiHelper = jeiHelper;
+    }
+
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
-        jeiHelper = registry.getJeiHelpers();
+        setJeiHelper(registry.getJeiHelpers());
         registry.addRecipeCategories(
-            new CategoryBase("workbench", new UVData(29, 16, 116, 54), new OutputSlot(94, 18), 3, JEI_CATEGORY_WORKBENCH),
-            new CategoryBase("high_tech_bench", new UVData(11, 16, 156, 93), new OutputSlot(136, 36), 5, JEI_CATEGORY_HIGH_TECH_BENCH),
-            new CategoryBaseAdvanced("ulti_tech_bench", new UVData(11, 16, 178, 126), new OutputSlot(156, 54), 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 80),
-            new CategoryBaseAdvanced("champion_bench", new UVData(11, 16, 162, 162), new OutputSlot(72, 168), 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 170),
+            new CategoryBase("workbench", new UVData(0, 0, 116, 54), new OutputSlot(94, 18), 3, JEI_CATEGORY_WORKBENCH),
+            new CategoryBase("high_tech_bench", new UVData(0, 0, 144, 90), new OutputSlot(122, 37), 5, JEI_CATEGORY_HIGH_TECH_BENCH),
+            new CategoryBaseAdvanced("ulti_tech_bench", new UVData(0, 0, 180, 126), new OutputSlot(158, 55), 7, JEI_CATEGORY_ULTI_TECH_BENCH, 160, 85),
+            new CategoryBaseAdvanced("champion_bench", new UVData(0, 0, 162, 197), new OutputSlot(72, 179), 9, JEI_CATEGORY_CHAMPION_BENCH, 100, 182),
             new LavaInfuserCategory()
         );
     }
 
     @Override
     public void register(IModRegistry registry) {
+        setJeiHelper(registry.getJeiHelpers());
         if (ModConfig.IntegrationsConfig.enableJEIIntegration) {
-            jeiHelper = registry.getJeiHelpers();
             IIngredientBlacklist blacklist = jeiHelper.getIngredientBlacklist();
 
             registerDescriptions(registry);
@@ -88,7 +92,6 @@ public class ArmorPlusPlugin implements IModPlugin {
             Arrays.stream(ModBlocks.enderBlocks).forEach(enderBlocks -> blackListIngredients(blacklist, enderBlocks));
         }
 
-        jeiHelper = registry.getJeiHelpers();
         registry.handleRecipes(LavaInfuserRecipe.class, LavaInfuserRecipeWrapper::new, JEI_CATEGORY_LAVA_INFUSER);
 
         this.handleRecipes(registry, JEI_CATEGORY_WORKBENCH);
@@ -96,11 +99,11 @@ public class ArmorPlusPlugin implements IModPlugin {
         this.handleRecipes(registry, JEI_CATEGORY_ULTI_TECH_BENCH);
         this.handleRecipes(registry, JEI_CATEGORY_CHAMPION_BENCH);
 
-        registry.addRecipeClickArea(GuiWorkbench.class, 88, 32, 28, 23, JEI_CATEGORY_WORKBENCH);
-        registry.addRecipeClickArea(GuiHighTechBench.class, 112, 50, 28, 27, JEI_CATEGORY_HIGH_TECH_BENCH);
-        registry.addRecipeClickArea(GuiUltiTechBench.class, 138, 70, 24, 17, JEI_CATEGORY_ULTI_TECH_BENCH);
-        registry.addRecipeClickArea(GuiChampionBench.class, 185, 23, 24, 17, JEI_CATEGORY_CHAMPION_BENCH);
-        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 34, 28, 27, JEI_CATEGORY_LAVA_INFUSER);
+        registry.addRecipeClickArea(GuiWorkbench.class, 61, 33, 22, 15, JEI_CATEGORY_WORKBENCH);
+        registry.addRecipeClickArea(GuiHighTechBench.class, 100, 33, 22, 15, JEI_CATEGORY_HIGH_TECH_BENCH);
+        registry.addRecipeClickArea(GuiUltiTechBench.class, 136, 70, 22, 15, JEI_CATEGORY_ULTI_TECH_BENCH);
+        registry.addRecipeClickArea(GuiChampionBench.class, 184, 24, 21, 23, JEI_CATEGORY_CHAMPION_BENCH);
+        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 35, 20, 17, JEI_CATEGORY_LAVA_INFUSER);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 

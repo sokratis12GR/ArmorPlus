@@ -15,15 +15,13 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import java.util.stream.IntStream;
-
 import static net.minecraft.item.ItemStack.EMPTY;
 
 /**
  * @author Sokratis Fotkatzikis
  */
 public class ContainerLavaInfuser extends ContainerBase {
-    private static final int ITEM_BOX = 18;
+
     private int infusionTime = 0;
     private int totalInfusionTime = 0;
     private int infuserInfusingTime = 0;
@@ -35,14 +33,7 @@ public class ContainerLavaInfuser extends ContainerBase {
         this.addSlotToContainer(new Slot(tile, 0, 69, 35));
         this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
         this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35));
-
-        for (int height = 0; height < 3; height++) {
-            for (int width = 0; width < 9; width++) {
-                this.addSlotToContainer(new Slot(playerInventory, width + height * 9 + 9, 8 + width * ITEM_BOX, 84 + height * 18));
-            }
-        }
-
-        IntStream.range(0, 9).mapToObj(index -> new Slot(playerInventory, index, 8 + index * ITEM_BOX, 142)).forEach(this::addSlotToContainer);
+        this.addPlayerInventory(playerInventory, 8, 142, 84);
     }
 
     @Override

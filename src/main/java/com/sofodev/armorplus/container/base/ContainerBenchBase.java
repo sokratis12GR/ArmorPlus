@@ -4,7 +4,10 @@
 
 package com.sofodev.armorplus.container.base;
 
+import com.sofodev.armorplus.container.SlotArmor;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -85,19 +88,22 @@ public class ContainerBenchBase extends ContainerBase {
         return itemstack;
     }
 
-//    private boolean withinIndex(int index, int minSlotIndex, int maxSlotIndex) {
-//        return (index >= minSlotIndex && index < maxSlotIndex);
-//    }
-//
-//    private boolean cannotMerge(ItemStack slotStack, int slots, int inventorySlots, boolean reverseDirection) {
-//        return !(this.mergeItemStack(slotStack, slots, inventorySlots, reverseDirection));
-//    }
-//
-//    private boolean cannotMergeReverse(ItemStack slotStack, int slots, int inventorySlots) {
-//        return cannotMerge(slotStack, slots, inventorySlots, true);
-//    }
-//
-//    private boolean cannotMergeFromRecipeSlots(ItemStack slotStack, int inventorySlots) {
-//        return cannotMerge(slotStack, recipeSlots, inventorySlots, false);
-//    }
+    protected void addPlayerArmorInventory(InventoryPlayer inventory, int xPos, int yPos) {
+        this.addPlayerArmorInventoryTop(inventory, xPos, yPos);
+        this.addPlayerArmorInventoryBot(inventory, xPos, yPos + ITEM_BOX);
+    }
+
+    protected void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
+        for (int k = 0; k < 2; k++) {
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k];
+            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - k), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+        }
+    }
+
+    protected void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
+        for (int k = 0; k < 2; k++) {
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k + 2];
+            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+        }
+    }
 }

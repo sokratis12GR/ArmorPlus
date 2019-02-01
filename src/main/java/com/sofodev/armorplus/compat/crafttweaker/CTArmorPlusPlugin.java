@@ -107,7 +107,7 @@ public class CTArmorPlusPlugin {
         return toShapedObjects(ingredients, map, prep);
     }
 
-    public static Object[] toShapedObjects(IIngredient[][] ingredients, char[][] map, ArrayList<Object> prep) {
+    public static Object[] toShapedObjects(IIngredient[][] ingredients, char[][] map, List<Object> prep) {
         if (ingredients == null) return new Object[0];
         for (int x = 0; x < ingredients.length; x++) {
             if (ingredients[x] != null) {

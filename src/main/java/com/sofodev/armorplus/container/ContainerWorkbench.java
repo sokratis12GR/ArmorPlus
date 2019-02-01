@@ -17,8 +17,6 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import java.util.stream.IntStream;
-
 import static com.sofodev.armorplus.registry.APItems.*;
 
 /**
@@ -26,11 +24,9 @@ import static com.sofodev.armorplus.registry.APItems.*;
  */
 public class ContainerWorkbench extends ContainerBenchBase {
 
-    private static final int ITEM_BOX = 18;
     private static final int RECIPE_SLOTS = 10;
     private static final int RECIPE_SIZE = 3;
     private static final int RECIPE_SIZE_TOTAL = 9;
-    private static final int ROW_SLOTS = 9;
     private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
     private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
     public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 3, 3);
@@ -39,7 +35,7 @@ public class ContainerWorkbench extends ContainerBenchBase {
     public ContainerWorkbench(InventoryPlayer playerInventory, TileWB tile) {
         super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35) {
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 101, 34) {
             @Override
             protected void onCrafting(ItemStack stack) {
                 super.onCrafting(stack);
@@ -51,14 +47,10 @@ public class ContainerWorkbench extends ContainerBenchBase {
 
         for (int yIndex = 0; yIndex < RECIPE_SIZE; ++yIndex)
             for (int xIndex = 0; xIndex < RECIPE_SIZE; ++xIndex)
-                this.addSlotToContainer(new Slot(this.craftMatrix, xIndex + yIndex * RECIPE_SIZE, 30 + xIndex * ITEM_BOX, 17 + yIndex * ITEM_BOX));
+                this.addSlotToContainer(new Slot(this.craftMatrix, xIndex + yIndex * RECIPE_SIZE, 8 + xIndex * ITEM_BOX, 17 + yIndex * ITEM_BOX));
 
-        for (int height = 0; height < 3; ++height)
-            for (int width = 0; width < ROW_SLOTS; ++width)
-                this.addSlotToContainer(new Slot(playerInventory, width + height * 9 + 9, 8 + width * ITEM_BOX, 84 + height * ITEM_BOX));
-
-        IntStream.range(0, ROW_SLOTS).mapToObj(index -> new Slot(playerInventory, index, 8 + index * ITEM_BOX, 142)).forEachOrdered(this::addSlotToContainer);
-
+        this.addPlayerInventory(playerInventory, 8, 142, 84);
+        this.addPlayerArmorInventory(playerInventory, 134, 26);
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
