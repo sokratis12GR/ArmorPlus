@@ -61,7 +61,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 49;
+    public static final int BUILD = 50;
     /**
      * The ArmorPlus Version
      */

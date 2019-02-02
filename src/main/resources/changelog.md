@@ -1,4 +1,4 @@
-ArmorPlus 1.12.2-11.17.0.49
+ArmorPlus 1.12.2-11.17.0.50
 ----------------------------
 
 * Introducing experimental mode **DISABLED BY DEFAULT**, a config value that changes everything about this mod, as the name suggest its EXPERIMENTAL and can cause corruption/destroy/break your worlds.
@@ -10,6 +10,7 @@ ArmorPlus 1.12.2-11.17.0.49
   - Re-aligned some grid positions of the crafting GUIs, made them more correctly aligned. 
   - Added armor inventory slots to the crafting GUIs
   - JEI: Fixed some GUI arrangements
+  - MAJOR: Fixed items getting voided from the GUIs
 
 ArmorPlus 1.12.2-11.16.3.48
 ----------------------------
