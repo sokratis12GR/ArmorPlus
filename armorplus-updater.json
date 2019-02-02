@@ -11,8 +11,8 @@
     "1.12-recommended": "1.12-11.5.1.16-alpha",
     "1.12.1-latest": "1.12.1-11.6.4.21-alpha",
     "1.12.1-recommended": "1.12.1-11.6.4.21-alpha",
-    "1.12.2-latest": "1.12.2-11.17.0.50",
-    "1.12.2-recommended": "1.12.2-11.17.0.50"
+    "1.12.2-latest": "1.12.2-11.17.1.51",
+    "1.12.2-recommended": "1.12.2-11.17.1.51"
   },
   "1.10.2": {
     "1.10.2-8.0.1.7": "Quick Fix, Server Crash Issue",
@@ -125,6 +125,7 @@
     "1.12.2-11.16.1.46": "Fixed Update checker, Cosmetics and a few under the scene bugs. Also no longer associated with TheDragonTeam.",
     "1.12.2-11.16.2.47": "Fixed a lot of bugs related to crafting, especially items getting voided when exiting the gui.",
     "1.12.2-11.16.3.48": "MAJOR FIX, fixed blocks being unbreakable... also adds config values that you can change for block's harvest properties (registry.cfg) under blocks.",
-    "1.12.2-11.17.0.50": "* Introducing experimental mode **DISABLED BY DEFAULT**, a config value that changes everything about this mod, as the name suggest its EXPERIMENTAL and can cause corruption/destroy/break your worlds.\n  - New way of obtaining abilities, ability limits, quests, and a lot more (WIP)\n  - Once enabled armors' will be revamped, and made so that they will require quests to be done (if any, use with caution) to obtain abilities.\n* A few QoL improvements, moved most of the InGame dialogs to use the translatable key format (now can be translated).\n* Fixed a few bugs related to the Skeletal King, additionally it no longer targets players but also any other type of mob, except Wither Skeletons\n* GUIs:\n  - Re-aligned some grid positions of the crafting GUIs, made them more correctly aligned. \n  - Added armor inventory slots to the crafting GUIs\n  - JEI: Fixed some GUI arrangements\n  - MAJOR: Fixed items getting voided from the GUIs"
+    "1.12.2-11.17.0.50": "* Introducing experimental mode **DISABLED BY DEFAULT**, a config value that changes everything about this mod, as the name suggest its EXPERIMENTAL and can cause corruption/destroy/break your worlds.\n  - New way of obtaining abilities, ability limits, quests, and a lot more (WIP)\n  - Once enabled armors' will be revamped, and made so that they will require quests to be done (if any, use with caution) to obtain abilities.\n* A few QoL improvements, moved most of the InGame dialogs to use the translatable key format (now can be translated).\n* Fixed a few bugs related to the Skeletal King, additionally it no longer targets players but also any other type of mob, except Wither Skeletons\n* GUIs:\n  - Re-aligned some grid positions of the crafting GUIs, made them more correctly aligned. \n  - Added armor inventory slots to the crafting GUIs\n  - JEI: Fixed some GUI arrangements\n  - MAJOR: Fixed items getting voided from the GUIs",
+    "1.12.2-11.17.1.51": "Fixed CraftTweaker recipes being broken."
   }
 }
