@@ -16,10 +16,8 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.caps.abilities.AbilityData.canProvide;
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
@@ -61,7 +59,9 @@ public class CommandAbilities extends CommandSubBase {
         if (args.length == 1) {
             return getListOfStringsMatchingLastWord(args, "list", "limit", "add", "remove", "clear");
         } else if (args.length == 2 && ("add".equals(args[0]) || "remove".equals(args[0]))) {
-            return getListOfStringsMatchingLastWord(args, "night_vision", "water_breathing", "resistance", "fire_resistance", "haste", "speed", "jump_boost", "regeneration", "strength", "invisibility", "flight");
+            AbilityData[] dataList = AbilityData.values();
+            List<String> abilities = Arrays.stream(dataList).map(AbilityData::getSafeName).collect(Collectors.toList());
+            return getListOfStringsMatchingLastWord(args, abilities);
         } else if (args.length == 3 && "add".equals(args[0])) {
             return getListOfStringsMatchingLastWord(args, "consume", "hide");
         } else if (args.length == 2 && "limit".equals(args[0])) {
@@ -82,9 +82,8 @@ public class CommandAbilities extends CommandSubBase {
                 int limit = handler.getLimit();
                 if ("show".equals(args[0]) || "display".equals(args[0]) || "list".equals(args[0])) {
                     ArrayList<String> abilities = new ArrayList<>();
-                    for (Integer id : handler.getAbilities()) {
-                        int i = id;
-                        AbilityData data = AbilityData.getData(i);
+                    for (String id : handler.getAbilities()) {
+                        AbilityData data = AbilityData.getData(id);
                         if (data != null) {
                             abilities.add(data.getName());
                         }
@@ -107,14 +106,14 @@ public class CommandAbilities extends CommandSubBase {
                 } else if ("add".equals(args[0])) {
                     String ability = (args[1]);
                     AbilityData data = AbilityData.getData(ability);
-                    int id = data.getID();
+                    String id = data.getSafeName();
                     if (!handler.getAbilities().contains(id)) {
                         if (canProvide(stack, id)) {
                             if (args.length == 2) {
                                 this.addAbility(handler, player, data, false);
                             } else if (args.length == 3) {
                                 if (args[2].equals("consume")) {
-                                    if (id == 1) {
+                                    if (id.equals("night_vision")) {
                                         ItemStack coalStack = new ItemStack(Items.COAL, 64);
                                         for (ItemStack slotStack : player.inventory.mainInventory) {
                                             if (areItemStacksEqual(slotStack, coalStack)) {
@@ -124,13 +123,11 @@ public class CommandAbilities extends CommandSubBase {
                                         }
                                         this.addAbility(handler, player, data, false);
                                     }
+                                } else if (args[2].equals("hide")) {
+                                    this.addAbility(handler, player, data, true);
                                 } else {
                                     player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.cost.usage").setStyle(error));
-                                }
-                                //This is here just in case you want to silently add an ability
-                                if (args[2].equals("hide")) {
-                                    this.addAbility(handler, player, data, true);
-                                }
+                                }//This is here just in case you want to silently add an ability
                             }
                         } else {
                             player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.incorrect_ability", data.getName()).setStyle(error));
@@ -148,8 +145,8 @@ public class CommandAbilities extends CommandSubBase {
                 } else if ("remove".equals(args[0])) {
                     if (args.length > 1) {
                         AbilityData data = AbilityData.getData(args[1]);
-                        int id = data.getID();
-                        List<Integer> oldAbilities = handler.getAbilities();
+                        String id = data.getSafeName();
+                        List<String> oldAbilities = handler.getAbilities();
                         if (!oldAbilities.isEmpty() && oldAbilities.contains(id)) {
                             handler.removeAbility(id);
                         } else {
@@ -173,7 +170,7 @@ public class CommandAbilities extends CommandSubBase {
     private void addAbility(IAbilityHandler handler, EntityPlayer player, AbilityData data, boolean hide) {
         int abilitySize = handler.getAbilities().size();
         int limit = handler.getLimit();
-        int id = data.getID();
+        String id = data.getSafeName();
         if (abilitySize < limit) {
             if (!isEmpty(data)) {
                 handler.addAbility(id);

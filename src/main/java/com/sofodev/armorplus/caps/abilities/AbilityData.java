@@ -15,25 +15,26 @@ import static com.sofodev.armorplus.items.armors.Material.*;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 public enum AbilityData {
-    NONE(0, "Empty", true, null, Material.NONE),
-    NIGHT_VISION(1, "Night Vision", true, HEAD, COAL),
+    NONE(0, "Empty", true, EntityEquipmentSlot.values(), Material.NONE),
+    NIGHT_VISION(1, "Night Vision", true, HEAD, COAL, INFUSED_LAVA),
     WATER_BREATHING(2, "Water Breathing", true, HEAD, LAPIS, GUARDIAN),
-    RESISTANCE(3, "Resistance", true, CHEST, INFUSED_LAVA),
-    FIRE_RESISTANCE(4, "Fire Resistance", true, CHEST, INFUSED_LAVA),
+    RESISTANCE(3, "Resistance", true, HEAD, CHEST, LEGS, FEET, OBSIDIAN, INFUSED_LAVA),
+    FIRE_RESISTANCE(4, "Fire Resistance", true, HEAD, CHEST, LEGS, FEET, OBSIDIAN, INFUSED_LAVA),
     HASTE(5, "Haste", true, CHEST, REDSTONE, EMERALD),
     SPEED(6, "Speed", true, FEET, REDSTONE, EMERALD, GUARDIAN),
     JUMP_BOOST(7, "Jump Boost", true, FEET, SLIME),
-    REGENERATION(8, "Regeneration", true, CHEST, SUPER_STAR),
+    REGENERATION(8, "Regeneration", true, CHEST, SUPER_STAR, ULTIMATE),
     STRENGTH(9, "Strength", true, CHEST, MANYULLYN),
     INVISIBILITY(10, "Invisibility", true, CHEST, ULTIMATE),
-    WITHER_PROOF(99, "Wither-Proof", false, CHEST, SUPER_STAR, ENDER_DRAGON),
-    FLIGHT(100, "Flight", false, CHEST, ENDER_DRAGON),
+    ABSORPTION(11, "Absorption", true, CHEST, INFUSED_LAVA),
+    WITHER_PROOF(99, "Wither Proof", false, CHEST, SUPER_STAR, ENDER_DRAGON, ULTIMATE),
+    FLIGHT(100, "Flight", false, CHEST, ENDER_DRAGON, ULTIMATE),
     //TBD
-    STEP_ASSIST(101, "Step Assist", false, LEGS, Material.NONE),
-    BONUS_XP_ON_KILL(102, "Bonus XP on Kill", false, CHEST, Material.NONE),
-    WALK_ON_LAVA(103, "Walk on Lava", false, FEET, Material.NONE),
-    SWIMMING_SPEED(104, "Swimming Speed", false, FEET, Material.NONE),
-    UNDERWATER_VISION(105, "Underwater Vision", false, HEAD, Material.NONE);
+    STEP_ASSIST(101, "Step Assist", false, LEGS, REDSTONE, SUPER_STAR),
+    BONUS_XP_ON_KILL(102, "Bonus XP on Kill", false, CHEST, COAL, LAPIS, EMERALD),
+    WALK_ON_LAVA(103, "Walk on Lava", false, FEET, INFUSED_LAVA),
+    SWIMMING_SPEED(104, "Swimming Speed", false, FEET, GUARDIAN),
+    UNDERWATER_VISION(105, "Underwater Vision", false, HEAD, GUARDIAN);
 
     /**
      * The ability "unique" id
@@ -50,18 +51,34 @@ public enum AbilityData {
     /**
      * The slots that the ability is available for
      */
-    private final EntityEquipmentSlot slot;
+    private final EntityEquipmentSlot[] slot;
     /**
      * The materials that the ability is available for
      */
     private final Material[] materials;
 
-    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot slot, Material... materials) {
+    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot[] slot, Material... materials) {
         this.id = id;
         this.name = name;
         this.isPotion = isPotion;
         this.slot = slot;
         this.materials = materials;
+    }
+
+    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, Material... materials) {
+        this(id, name, isPotion, new EntityEquipmentSlot[]{a, b, c, d}, materials);
+    }
+
+    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, Material... materials) {
+        this(id, name, isPotion, a, b, c, null, materials);
+    }
+
+    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot a, EntityEquipmentSlot b, Material... materials) {
+        this(id, name, isPotion, a, b, null, null, materials);
+    }
+
+    AbilityData(int id, String name, boolean isPotion, EntityEquipmentSlot a, Material... materials) {
+        this(id, name, isPotion, a, null, null, null, materials);
     }
 
     public int getID() {
@@ -80,7 +97,7 @@ public enum AbilityData {
         return isPotion;
     }
 
-    public EntityEquipmentSlot getSlots() {
+    public EntityEquipmentSlot[] getSlots() {
         return slot;
     }
 
@@ -100,18 +117,20 @@ public enum AbilityData {
         return Arrays.stream(AbilityData.values()).filter(data -> data.getSafeName().equals(safeID)).findFirst().orElse(NONE);
     }
 
-    public static boolean canProvide(ItemStack stack, int id) {
+    public static boolean canProvide(ItemStack stack, String id) {
         if (stack.getItem() instanceof ItemArmorV2) {
             ItemArmorV2 armor = ((ItemArmorV2) stack.getItem());
             AbilityData data = getData(id);
-            for (Material mat : data.getMaterials()) {
-                if (mat == armor.material) {
-                 //   for (EntityEquipmentSlot equipmentSlot : data.getSlots()) {
-                        if (armor.getEquipmentSlot() == data.getSlots()) {
-                            return data.getID() == id;
-                        }
-                 //   }
-                }
+            if (Arrays.stream(
+                data.getMaterials()
+            ).filter(
+                mat -> mat == armor.material
+            ).flatMap(
+                mat -> Arrays.stream(data.getSlots())
+            ).anyMatch(
+                equipmentSlot -> armor.getEquipmentSlot() == equipmentSlot
+            )) {
+                return data.getSafeName().equals(id);
             }
         }
         return false;

@@ -8,6 +8,8 @@ import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
@@ -19,8 +21,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static com.sofodev.armorplus.util.Utils.boxList;
 import static com.sofodev.armorplus.util.Utils.setRL;
 
 public class AbilityDataHandler {
@@ -57,52 +60,52 @@ public class AbilityDataHandler {
 
         void setLimit(int limit);
 
-        List<Integer> getAbilities();
+        List<String> getAbilities();
 
-        void setAbilities(List<Integer> ability);
+        void setAbilities(List<String> ability);
 
-        void addAbility(int ability);
+        void addAbility(String ability);
 
-        void removeAbility(int ability);
+        void removeAbility(String ability);
     }
 
     // The default implementation of the capability. Holds all the logic.
     public static class DefaultAbilityHandler implements IAbilityHandler {
 
         private int limit = 0;
-        private ArrayList<Integer> abilities = new ArrayList<>();
-
-        public List<Integer> getAbilities() {
-            return this.abilities;
-        }
+        private ArrayList<String> abilities = new ArrayList<>();
 
         @Override
         public int getLimit() {
             return this.limit;
         }
 
-        public void setAbilities(List<Integer> abilities) {
+        @Override
+        public void setLimit(int limit) {
+            this.limit = limit;
+        }
+
+        public List<String> getAbilities() {
+            return this.abilities;
+        }
+
+        public void setAbilities(List<String> abilities) {
             this.abilities.clear();
             this.abilities.addAll(abilities);
         }
 
         @Override
-        public void addAbility(int ability) {
+        public void addAbility(String ability) {
             if (abilities.size() < limit && !abilities.contains(ability)) {
                 this.abilities.add(ability);
             }
         }
 
         @Override
-        public void removeAbility(int ability) {
+        public void removeAbility(String ability) {
             if (!this.abilities.isEmpty()) {
-                this.abilities.remove(Integer.valueOf(ability));
+                this.abilities.remove(ability);
             }
-        }
-
-        @Override
-        public void setLimit(int limit) {
-            this.limit = limit;
         }
     }
 
@@ -113,13 +116,13 @@ public class AbilityDataHandler {
         public NBTBase writeNBT(Capability<IAbilityHandler> capability, IAbilityHandler instance, EnumFacing side) {
 
             final NBTTagCompound tag = new NBTTagCompound();
-
-            int[] abilities;
-            List<Integer> list = instance.getAbilities() != null ? instance.getAbilities() : new ArrayList<>();
-            abilities = list.stream().mapToInt(i -> i).toArray();
-            tag.setIntArray("abilities", abilities);
-            tag.setInteger("limit", instance.getLimit());
-
+            if (instance != null) {
+                NBTTagList tagList = new NBTTagList();
+                List<String> abilities = instance.getAbilities();
+                abilities.stream().map(NBTTagString::new).forEach(tagList::appendTag);
+                tag.setTag("abilities", tagList);
+                tag.setInteger("limit", instance.getLimit());
+            }
             return tag;
         }
 
@@ -127,7 +130,10 @@ public class AbilityDataHandler {
         public void readNBT(Capability<IAbilityHandler> capability, IAbilityHandler instance, EnumFacing side, NBTBase nbt) {
 
             final NBTTagCompound tag = (NBTTagCompound) nbt;
-            instance.setAbilities(boxList(tag.getIntArray("abilities")));
+
+            NBTTagList tagList = tag.getTagList("abilities", 8);
+            List<String> abilities = IntStream.range(0, tagList.tagCount()).mapToObj(tagList::getStringTagAt).collect(Collectors.toList());
+            instance.setAbilities(abilities);
             instance.setLimit(tag.getInteger("limit"));
         }
     }

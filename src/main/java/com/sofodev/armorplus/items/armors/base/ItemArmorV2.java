@@ -33,7 +33,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.caps.abilities.AbilityData.*;
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.CAPABILITY_ABILITIES;
@@ -66,10 +68,6 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     public EntityEquipmentSlot slot;
     private EnumAction wear = EnumHelperUtil.addAction("WEAR");
 
-    public ItemArmorV2(EntityEquipmentSlot slot) {
-        this(Material.COAL, slot);
-    }
-
     public ItemArmorV2(Material material, EntityEquipmentSlot slot) {
         super(prototype, 0, slot);
         this.material = material;
@@ -97,7 +95,7 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         if (isKeyDown() && handler != null) {
             tooltip.add(1, updateLimitToolTip(stack));
             tooltip.add(2, "");
-            this.addTTAbility(tooltip, stack, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, FLIGHT);
+            this.addTTAbility(tooltip, stack, AbilityData.values());
             addToolTip(tooltip, "", "__________");
         } else {
             showInfo(tooltip, keyBindSneak, GOLD);
@@ -121,8 +119,8 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         if (!ability.equals("")) {
             tooltip.add(ability);
         }
-        if (isNotNull(tooltip) && data.getSlots() != this.getEquipmentSlot()) {
-            tooltip.set(2, notSpecial(stack, data));
+        if (isNotNull(tooltip)) {
+            tooltip.set(2, notSpecial(stack));
         }
     }
 
@@ -130,15 +128,15 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         return tooltip.get(2) != null;
     }
 
-    private String notSpecial(ItemStack stack, AbilityData data) {
+    private String notSpecial(ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
         if (handler != null) {
-            return handler.getAbilities().isEmpty() && !canProvide(stack, data.getID()) ? ITALIC + "No unlocked abilities" : "";
+            return !hasAbilities(handler) ? ITALIC + "No unlocked abilities" : "";
         } else return "";
     }
 
     private String getTTAbility(IAbilityHandler handler, ItemStack stack, AbilityData data) {
-        int id = data.getID();
+        String id = data.getSafeName();
         String name = "- " + data.getName();
         boolean canProvide = canProvide(stack, id);
         boolean flag = false;
@@ -174,24 +172,29 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
         if (handler != null && hasAbilities(handler)) {
-            applyAbility(player, stack, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY);
-            if (this.getEquipmentSlot() == FLIGHT.getSlots() && contains(handler, FLIGHT.getID()) || player.capabilities.isCreativeMode || player.isSpectator()) {
-                player.capabilities.allowFlying = true;
-            } else if (!contains(handler, FLIGHT.getID()) && !(player.inventory.armorInventory.get(2).getItem() instanceof ItemArmorV2)) {
-                player.capabilities.isFlying = false;
-                player.capabilities.allowFlying = false;
+            ArrayList<AbilityData> potionList = stream(AbilityData.values()).filter(AbilityData::isPotion).collect(Collectors.toCollection(ArrayList::new));
+            applyAbility(player, stack, potionList);
+            for (EntityEquipmentSlot equipmentSlot : FLIGHT.getSlots()) {
+                if (this.getEquipmentSlot() == equipmentSlot && contains(handler, FLIGHT.getSafeName()) || player.capabilities.isCreativeMode || player.isSpectator()) {
+                    player.capabilities.allowFlying = true;
+                } else if (!contains(handler, FLIGHT.getSafeName()) && !(player.inventory.armorInventory.get(2).getItem() instanceof ItemArmorV2)) {
+                    player.capabilities.isFlying = false;
+                    player.capabilities.allowFlying = false;
+                }
             }
         }
 
     }
 
-    private void applyAbility(EntityPlayer player, ItemStack stack, AbilityData... dataList) {
-        stream(dataList).forEach(data -> applyAbility(player, stack, data));
+    private void applyAbility(EntityPlayer player, ItemStack stack, List<AbilityData> dataList) {
+        for (AbilityData data : dataList) {
+            applyAbility(player, stack, data);
+        }
     }
 
     private void applyAbility(EntityPlayer player, ItemStack stack, AbilityData data) {
         IAbilityHandler handler = getHandler(stack);
-        int id = data.getID();
+        String id = data.getSafeName();
         if (handler != null && data.isPotion() && canProvide(stack, id) && contains(handler, id)) {
             addPotion(player, getPotion(data.getSafeName()), 0, GOOD);
         }
@@ -232,7 +235,7 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     @Override
     public boolean onEntitySwing(EntityLivingBase entity, ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
-        if (!entity.world.isRemote && handler != null && hasRoomForAbilities(handler) && !contains(handler, 1)) {
+        if (!entity.world.isRemote && handler != null && hasRoomForAbilities(handler) && !contains(handler, NIGHT_VISION.getSafeName())) {
             ItemStack coalStack = new ItemStack(Items.COAL, 64);
             if (entity instanceof EntityPlayer && entity.swingingHand == MAIN_HAND) {
                 EntityPlayer player = (EntityPlayer) entity;
@@ -280,8 +283,8 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     //     return false;
     // }
 
-    public static boolean contains(IAbilityHandler handler, int id) {
-        List<Integer> list = handler.getAbilities();
+    public static boolean contains(IAbilityHandler handler, String id) {
+        List<String> list = handler.getAbilities();
         return list.contains(id);
     }
 }
