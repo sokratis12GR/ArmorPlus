@@ -31,7 +31,7 @@ public class InputHelper {
     }
 
     public static boolean isABlock(ItemStack block) {
-        return block.getItem() instanceof ItemBlock;
+        return !block.isEmpty() && block.getItem() instanceof ItemBlock;
     }
 
     public static ItemStack toStack(IItemStack iStack) {
@@ -63,11 +63,24 @@ public class InputHelper {
     }
 
     public static Object toObject(IIngredient iStack) {
-        return iStack == null ? null : iStack instanceof IOreDictEntry ? toString((IOreDictEntry) iStack) : iStack instanceof IItemStack ? toStack((IItemStack) iStack) : null;
+        if (iStack == null) {
+            return null;
+        } else if (iStack instanceof IOreDictEntry) {
+            return toString((IOreDictEntry) iStack);
+        }
+        return iStack instanceof IItemStack ? toStack((IItemStack) iStack) : null;
     }
 
     public static Object[] toObjects(IIngredient[] ingredient) {
-        return ingredient == null ? null : Arrays.stream(ingredient).map(iIngredient -> iIngredient != null ? toObject(iIngredient) : "").toArray();
+        return ingredient == null ? null : Arrays.stream(ingredient).map(
+            iIngredient -> {
+                if (iIngredient != null) {
+                    return toObject(iIngredient);
+                } else {
+                    return "";
+                }
+            }
+        ).toArray();
     }
 
     public static String toString(IOreDictEntry entry) {

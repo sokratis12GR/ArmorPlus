@@ -4,6 +4,7 @@
 
 package com.sofodev.armorplus.util;
 
+import com.sofodev.armorplus.client.misc.RenderCosmetics;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -24,22 +25,12 @@ public class RenderEntityHelper {
 
     @SideOnly(Side.CLIENT)
     public static void render(Entity entity, EntityPlayer player, float partialTicks, float size) {
-        GlStateManager.pushMatrix();
-        Vec3d currentPos = Minecraft.getMinecraft().player.getPositionEyes(partialTicks);
-        Vec3d playerPos = player.getPositionEyes(partialTicks);
-
-        GlStateManager.translate(playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z);
+        RenderCosmetics.renderLocation(player, partialTicks);
 
         GlStateManager.translate(0.0, 2.375 - (player.isSneaking() ? 0.125 : 0.0) + 0.1875, 0.0);
         GlStateManager.rotate(180f, 1.0f, 0.0f, 1.0f);
 
-        GlStateManager.scale(size, size, size);
-        double boop = Minecraft.getSystemTime() / 1000.0;
-        GlStateManager.translate(0.0, Math.sin(boop % (2 * Math.PI)) * 0.25, 0.0);
-        GlStateManager.rotate((float) (boop * 40.0 % 360), 0f, 1f, 0f);
-
-        GlStateManager.disableLighting();
-        GlStateManager.pushMatrix();
+        RenderCosmetics.renderSize(size);
         GlStateManager.translate(0.0, 0.5, 0.0);
         GlStateManager.rotate(180f, 1f, 0f, 0f);
         renderMob(entity, player, partialTicks);

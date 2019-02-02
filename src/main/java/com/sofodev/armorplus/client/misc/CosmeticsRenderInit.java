@@ -83,7 +83,8 @@ public class CosmeticsRenderInit {
                 if (entry.getKey() != null && entry.getKey().equalsIgnoreCase(playerName)) {
                     if (playerName.equals("sokratis12GR")) {
                         EntityPlayer player = event.getEntityPlayer();
-                        if (player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE) || player.isPotionActive(MobEffects.INVISIBILITY)) {
+                        boolean canShow = player.isInvisible() || !player.isWearing(EnumPlayerModelParts.CAPE) || player.isPotionActive(MobEffects.INVISIBILITY);
+                        if (canShow) {
                             return;
                         }
                         EntitySkeletalKing king = new EntitySkeletalKing(Minecraft.getMinecraft().world);

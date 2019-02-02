@@ -123,13 +123,15 @@ public final class ToolTipUtils {
             showInfo(tooltip, keyBindSneak, formatting);
         } else {
             tooltip.add("\2479Abilities");
-            if (!ignite.isEnabled() && !negative.isEnabled()) {
+            boolean canIgnite = ignite.isEnabled();
+            boolean isEffectEnabled = negative.isEnabled();
+            if (!canIgnite && !isEffectEnabled) {
                 tooltip.add("\u00a79" + "none");
             }
-            if (ignite.isEnabled()) {
+            if (canIgnite) {
                 tooltip.add("\u00a76" + "Sets the entities on fire for " + ignite.getFireSeconds() + " seconds");
             }
-            if (negative.isEnabled()) {
+            if (isEffectEnabled) {
                 String[] negativeEffects = negative.getEffects();
                 int[] effectLevels = negative.getEffectLevels();
                 int colorIndex = 1;

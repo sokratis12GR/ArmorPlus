@@ -35,16 +35,31 @@ public class RenderCosmetics {
         }
         boolean isBlock = cosmetics.renderedStack.getItem() instanceof ItemBlock;
 
-        GlStateManager.pushMatrix();
-
-        Vec3d currentPos = Minecraft.getMinecraft().player.getPositionEyes(partialTicks);
-        Vec3d playerPos = player.getPositionEyes(partialTicks);
-        GlStateManager.translate(playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z);
+        renderLocation(player, partialTicks);
 
         GlStateManager.translate(0.0, 2.375 - ((player.isSneaking()) ? 0.125 : 0.0) + (isBlock ? 0.0 : 0.1875), 0.0);
         GlStateManager.rotate(180f, 1.0f, 0.0f, 1.0f);
 
         float size = (isBlock) ? 0.5f : 0.4f;
+        renderSize(size);
+        if (!isBlock) GlStateManager.translate(0.0, 0.5, 0.0);
+        GlStateManager.rotate(180f, 1f, 0f, 0f);
+        renderItemInWorld(cosmetics.renderedStack);
+        GlStateManager.popMatrix();
+        GlStateManager.enableLighting();
+
+        GlStateManager.popMatrix();
+    }
+
+    public static void renderLocation(EntityPlayer player, float partialTicks) {
+        GlStateManager.pushMatrix();
+
+        Vec3d currentPos = Minecraft.getMinecraft().player.getPositionEyes(partialTicks);
+        Vec3d playerPos = player.getPositionEyes(partialTicks);
+        GlStateManager.translate(playerPos.x - currentPos.x, playerPos.y - currentPos.y, playerPos.z - currentPos.z);
+    }
+
+    public static void renderSize(float size) {
         GlStateManager.scale(size, size, size);
 
         double boop = Minecraft.getSystemTime() / 1000.0;
@@ -53,13 +68,6 @@ public class RenderCosmetics {
 
         GlStateManager.disableLighting();
         GlStateManager.pushMatrix();
-        if (!isBlock) GlStateManager.translate(0.0, 0.5, 0.0);
-        GlStateManager.rotate(180f, 1f, 0f, 0f);
-        renderItemInWorld(cosmetics.renderedStack);
-        GlStateManager.popMatrix();
-        GlStateManager.enableLighting();
-
-        GlStateManager.popMatrix();
     }
 
     @SideOnly(Side.CLIENT)
