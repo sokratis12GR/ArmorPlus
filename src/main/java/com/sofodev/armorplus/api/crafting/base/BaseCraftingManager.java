@@ -29,50 +29,55 @@ import java.util.stream.IntStream;
 /**
  * @author Sokratis Fotkatzikis
  */
-public class BaseCraftingManager {
-
-    private static final BaseCraftingManager CHAMPION_BENCH = new BaseCraftingManager(9, "Champion Bench");
-    private static final BaseCraftingManager ULTI_TECH_BENCH = new BaseCraftingManager(7, "Ulti-Tech Bench") {
-        {
-            new ModUltimateRecipes().addRecipes(this);
-            new ModEnderDragonRecipes().addRecipes(this);
-            new ModSuperStarRecipes().addRecipes(this);
-            new ModGuardianRecipes().addRecipes(this);
-            new ModWeaponTierThreeRecipes().addRecipes(this);
-            new ModUltiTechItemRecipes().addRecipes(this);
-        }
-    };
-    private static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(5, "High-Tech Bench") {
-        {
-            new ModTierTwoRecipes().addRecipes(this);
-            new ModHighTechItemRecipes().addRecipes(this);
-            new ModWeaponTierTwoRecipes().addRecipes(this);
-            new ModTinkersConstructRecipes().addRecipes(this);
-        }
-    };
-    private static final BaseCraftingManager WORKBENCH = new BaseCraftingManager(3, "Workbench") {
-        {
-            new ModItemRecipes().addRecipes(this);
-            new ModOriginRecipes().addRecipes(this);
-            new ModSpecialMobRecipes().addRecipes(this);
-            new ModWeaponsTierOneRecipes().addRecipes(this);
-        }
-    };
+public abstract class BaseCraftingManager {
 
     public static BaseCraftingManager getCBInstance() {
-        return CHAMPION_BENCH;
+        return new BaseCraftingManager(9, "Champion Bench") {
+            @Override
+            public void setRecipes() {
+                //None
+            }
+        };
     }
 
     public static BaseCraftingManager getUTBInstance() {
-        return ULTI_TECH_BENCH;
+        return new BaseCraftingManager(7, "Ulti-Tech Bench") {
+
+            @Override
+            public void setRecipes() {
+                new ModUltimateRecipes().addRecipes(this);
+                new ModEnderDragonRecipes().addRecipes(this);
+                new ModSuperStarRecipes().addRecipes(this);
+                new ModGuardianRecipes().addRecipes(this);
+                new ModWeaponTierThreeRecipes().addRecipes(this);
+                new ModUltiTechItemRecipes().addRecipes(this);
+            }
+        };
     }
 
     public static BaseCraftingManager getHTBInstance() {
-        return HIGH_TECH_BENCH;
+        return new BaseCraftingManager(5, "High-Tech Bench") {
+
+            @Override
+            public void setRecipes() {
+                new ModTierTwoRecipes().addRecipes(this);
+                new ModHighTechItemRecipes().addRecipes(this);
+                new ModWeaponTierTwoRecipes().addRecipes(this);
+                new ModTinkersConstructRecipes().addRecipes(this);
+            }
+        };
     }
 
     public static BaseCraftingManager getWBInstance() {
-        return WORKBENCH;
+        return new BaseCraftingManager(3, "Workbench") {
+            @Override
+            public void setRecipes() {
+                new ModItemRecipes().addRecipes(this);
+                new ModOriginRecipes().addRecipes(this);
+                new ModSpecialMobRecipes().addRecipes(this);
+                new ModWeaponsTierOneRecipes().addRecipes(this);
+            }
+        };
     }
 
     private final List<IRecipe> recipes = Lists.newArrayList();
@@ -83,14 +88,19 @@ public class BaseCraftingManager {
         this.xy = xy;
         this.name = name;
         this.recipes.sort((pCompare1, pCompare2) -> Integer.compare(pCompare2.getRecipeSize(), pCompare1.getRecipeSize()));
+        this.setRecipes();
     }
+
+    public abstract void setRecipes();
 
     /**
      * Adds a shaped recipe to the games recipe list.
      */
     public BaseShapedRecipe addRecipe(ItemStack stack, Object... recipeComponents) {
         StringBuilder shape = new StringBuilder();
-        int index = 0, width = 0, height = 0;
+        int index = 0;
+        int width = 0;
+        int height = 0;
 
         if (recipeComponents[index] instanceof String[]) {
             String[] components = (String[]) recipeComponents[index++];

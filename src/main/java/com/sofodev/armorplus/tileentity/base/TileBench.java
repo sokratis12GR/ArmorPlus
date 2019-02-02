@@ -18,7 +18,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
-import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
 
 /**
@@ -43,7 +42,10 @@ public abstract class TileBench extends TileEntityInventoryBase {
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        if (slot < inventorySize) {
+            return itemHandler.getStackInSlot(slot).isEmpty() || stack.getCount() + inventory.get(slot).getCount() <= getMaxStackSizePerSlot(slot);
+        }
+        return false;
     }
 
     @Override
@@ -53,7 +55,7 @@ public abstract class TileBench extends TileEntityInventoryBase {
 
     @Override
     public int getMaxStackSizePerSlot(int slot) {
-        return 128;
+        return 64;
     }
 
     public String getCustomName() {
@@ -81,12 +83,15 @@ public abstract class TileBench extends TileEntityInventoryBase {
     @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         NBTTagList list = new NBTTagList();
-        range(0, this.inventorySize).filter(i -> !this.itemHandler.getStackInSlot(i).isEmpty()).forEachOrdered(i -> {
-            NBTTagCompound stackTag = new NBTTagCompound();
-            stackTag.setByte("Slot", (byte) i);
-            this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
-            list.appendTag(stackTag);
-        });
+        int bound = this.inventorySize;
+        for (int i = 0; i < bound; i++) {
+            if (!this.itemHandler.getStackInSlot(i).isEmpty()) {
+                NBTTagCompound stackTag = new NBTTagCompound();
+                stackTag.setByte("Slot", (byte) i);
+                this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
+                list.appendTag(stackTag);
+            }
+        }
         nbt.setTag("Items", list);
 
         if (this.hasCustomName()) nbt.setString("CustomName", this.getCustomName());
@@ -98,10 +103,12 @@ public abstract class TileBench extends TileEntityInventoryBase {
         super.readFromNBT(nbt);
 
         NBTTagList list = nbt.getTagList("Items", 10);
-        range(0, list.tagCount()).mapToObj(list::getCompoundTagAt).forEachOrdered(stackTag -> {
+        int bound = list.tagCount();
+        for (int i1 = 0; i1 < bound; i1++) {
+            NBTTagCompound stackTag = list.getCompoundTagAt(i1);
             int slot = stackTag.getByte("Slot") & 255;
             this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
-        });
+        }
 
         if (nbt.hasKey("CustomName", 8)) this.setCustomName(nbt.getString("CustomName"));
     }

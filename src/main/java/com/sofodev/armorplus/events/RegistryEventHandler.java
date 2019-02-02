@@ -47,11 +47,7 @@ import java.util.Arrays;
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.tileentity.TileCB.registerCBFixes;
-import static com.sofodev.armorplus.tileentity.TileHTB.registerHTBFixes;
 import static com.sofodev.armorplus.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
-import static com.sofodev.armorplus.tileentity.TileUTB.registerUTBFixes;
-import static com.sofodev.armorplus.tileentity.TileWB.registerWBFixes;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
@@ -144,10 +140,6 @@ public class RegistryEventHandler {
     private static void registerTEFixes() {
         DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
         registerFixesLavaInfuser(dataFixer);
-        registerWBFixes(dataFixer);
-        registerHTBFixes(dataFixer);
-        registerUTBFixes(dataFixer);
-        registerCBFixes(dataFixer);
     }
 
     private static void registerTileEntities() {

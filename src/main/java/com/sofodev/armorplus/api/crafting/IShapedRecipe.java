@@ -10,6 +10,7 @@ package com.sofodev.armorplus.api.crafting;
  * Note: These methods can't be named 'getHeight' or 'getWidth' due to obfusication issues.
  */
 public interface IShapedRecipe extends IRecipe {
+
     int getRecipeWidth();
 
     int getRecipeHeight();

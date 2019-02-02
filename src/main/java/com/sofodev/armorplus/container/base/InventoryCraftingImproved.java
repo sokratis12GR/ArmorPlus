@@ -6,7 +6,6 @@ package com.sofodev.armorplus.container.base;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
@@ -20,8 +19,7 @@ import javax.annotation.Nonnull;
 /**
  * @author Sokratis Fotkatzikis
  */
-public class InventoryCraftingImproved extends InventoryCrafting implements IInventory {
-    private final NonNullList<ItemStack> stackList;
+public class InventoryCraftingImproved extends InventoryCrafting {
     /**
      * the width of the crafting inventory
      */
@@ -41,7 +39,7 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
     }
 
     public NonNullList<ItemStack> getStackList() {
-        return stackList;
+        return this.stackList;
     }
 
     /**
@@ -49,28 +47,26 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
      */
     @Override
     public int getSizeInventory() {
-        return this.stackList.size();
+        return this.getStackList().size();
     }
 
     @Override
     public boolean isEmpty() {
-        return this.stackList.stream().allMatch(ItemStack::isEmpty);
+        return this.getStackList().stream().allMatch(ItemStack::isEmpty);
     }
 
     /**
      * Returns the stack in the given slot.
      */
     @Override
-    @Nonnull
     public ItemStack getStackInSlot(int index) {
-        return index >= this.getSizeInventory() ? ItemStack.EMPTY : this.stackList.get(index);
+        return index >= this.getSizeInventory() ? ItemStack.EMPTY : this.getStackList().get(index);
     }
 
     /**
      * Gets the ItemStack in the slot specified.
      */
     @Override
-    @Nonnull
     public ItemStack getStackInRowAndColumn(int row, int column) {
         return row >= 0 && row < this.inventoryWidth && column >= 0 && column <= this.inventoryHeight ? this.getStackInSlot(row + column * this.inventoryWidth) : ItemStack.EMPTY;
     }
@@ -105,20 +101,20 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
      * Removes a stack from the given slot and returns it.
      */
     @Override
-    @Nonnull
     public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.stackList, index);
+        return ItemStackHelper.getAndRemove(this.getStackList(), index);
     }
 
     /**
      * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
      */
     @Override
-    @Nonnull
     public ItemStack decrStackSize(int index, int count) {
-        ItemStack itemstack = ItemStackHelper.getAndSplit(this.stackList, index, count);
+        ItemStack itemstack = ItemStackHelper.getAndSplit(this.getStackList(), index, count);
 
-        if (!itemstack.isEmpty()) this.eventHandler.onCraftMatrixChanged(this);
+        if (!itemstack.isEmpty()) {
+            this.eventHandler.onCraftMatrixChanged(this);
+        }
 
         return itemstack;
     }
@@ -128,7 +124,7 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
      */
     @Override
     public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
-        this.stackList.set(index, stack);
+        this.getStackList().set(index, stack);
         this.eventHandler.onCraftMatrixChanged(this);
     }
 
@@ -189,7 +185,7 @@ public class InventoryCraftingImproved extends InventoryCrafting implements IInv
 
     @Override
     public void clear() {
-        this.stackList.clear();
+        this.getStackList().clear();
     }
 
     @Override

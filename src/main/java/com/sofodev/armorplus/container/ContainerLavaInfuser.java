@@ -67,12 +67,10 @@ public class ContainerLavaInfuser extends ContainerBase {
         this.tile.setField(id, data);
     }
 
-
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = EMPTY;
         Slot slot = this.inventorySlots.get(index);
-
 
         if (slot != null && slot.getHasStack()) {
             ItemStack slotStack = slot.getStack();

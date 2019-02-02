@@ -39,15 +39,11 @@ public class LavaInfuser {
 
         @Override
         public void apply() {
-            for (Object obj : LavaInfuserManager.getInstance().getRecipeList()) {
-                if (obj instanceof LavaInfuserRecipe) {
-                    LavaInfuserRecipe craft = (LavaInfuserRecipe) obj;
-                    if (craft.getRecipeOutput().isItemEqual(remove)) {
-                        LavaInfuserManager.getInstance().getRecipeList().remove(obj);
-                        break;
-                    }
-                }
-            }
+            LavaInfuserManager.getInstance().getRecipeList().stream().filter(
+                recipe -> recipe != null && recipe.getRecipeOutput().isItemEqual(remove)
+            ).findFirst().ifPresent(
+                recipe -> LavaInfuserManager.getInstance().getRecipeList().remove(recipe)
+            );
         }
 
         @Override

@@ -21,19 +21,17 @@ import net.minecraft.item.ItemStack;
  */
 public class ContainerUltiTechBench extends ContainerBenchBase {
 
-    private static final int RECIPE_SLOTS = 50;
     private static final int RECIPE_SIZE = 7;
-    private static final int RECIPE_SIZE_TOTAL = 49;
-    private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
-    private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
+    private static final int RECIPE_SIZE_TOTAL = RECIPE_SIZE * RECIPE_SIZE;
+    private static final int RECIPE_SLOTS = RECIPE_SIZE_TOTAL + 1;
 
-    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 7, 7);
+    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, RECIPE_SIZE, RECIPE_SIZE);
     public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerUltiTechBench(InventoryPlayer playerInventory, TileUTB tile) {
-        super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
+        super(tile, RECIPE_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getUTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 165, 71));
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getUTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 166, 72));
 
         for (int yIndex = 0; yIndex < RECIPE_SIZE; ++yIndex) {
             for (int xIndex = 0; xIndex < RECIPE_SIZE; ++xIndex) {
@@ -42,7 +40,7 @@ public class ContainerUltiTechBench extends ContainerBenchBase {
         }
 
         this.addPlayerInventory(playerInventory, 17, 214, 156);
-        this.addPlayerArmorInventory(playerInventory, 152, 107);
+       this.addPlayerArmorInventory(playerInventory, 152, 107);
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
@@ -60,7 +58,7 @@ public class ContainerUltiTechBench extends ContainerBenchBase {
     @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
-        onContainerClosed(playerIn, this.world.isRemote, RECIPE_SIZE_TOTAL, this.craftMatrix);
+        onContainerClosed(playerIn, this.craftMatrix);
     }
 
     /**

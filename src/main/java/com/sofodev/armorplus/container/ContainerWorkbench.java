@@ -24,18 +24,16 @@ import static com.sofodev.armorplus.registry.APItems.*;
  */
 public class ContainerWorkbench extends ContainerBenchBase {
 
-    private static final int RECIPE_SLOTS = 10;
     private static final int RECIPE_SIZE = 3;
-    private static final int RECIPE_SIZE_TOTAL = 9;
-    private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
-    private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 3, 3);
+    private static final int RECIPE_SIZE_TOTAL = RECIPE_SIZE * RECIPE_SIZE;
+    private static final int RECIPE_SLOTS = RECIPE_SIZE_TOTAL + 1;
+    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, RECIPE_SIZE, RECIPE_SIZE);
     public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerWorkbench(InventoryPlayer playerInventory, TileWB tile) {
-        super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
+        super(tile, RECIPE_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 101, 34) {
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getWBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 102, 35) {
             @Override
             protected void onCrafting(ItemStack stack) {
                 super.onCrafting(stack);
@@ -68,7 +66,7 @@ public class ContainerWorkbench extends ContainerBenchBase {
     @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
-        onContainerClosed(playerIn, this.world.isRemote, RECIPE_SIZE_TOTAL, this.craftMatrix);
+        onContainerClosed(playerIn, this.craftMatrix);
     }
 
     /**

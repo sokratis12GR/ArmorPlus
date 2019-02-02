@@ -10,10 +10,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 
-import javax.annotation.Nonnull;
-
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -36,20 +33,14 @@ public abstract class ContainerBase extends Container {
      * @param playerInventory The players inventory
      */
     protected void addPlayerInventory(InventoryPlayer playerInventory, int xPos, int yFirstRow, int yInventoryRow) {
-        for (int height = 0; height < PLAYER_COL_SLOTS; height++) {
-            for (int width = 0; width < PLAYER_ROW_SLOTS; width++) {
-                this.addSlotToContainer(new Slot(playerInventory, width + height * 9 + 9, xPos + width * ITEM_BOX, yInventoryRow + height * ITEM_BOX));
+        for (int yIndex = 0; yIndex < PLAYER_COL_SLOTS; yIndex++) {
+            for (int xIndex = 0; xIndex < PLAYER_ROW_SLOTS; xIndex++) {
+                this.addSlotToContainer(new Slot(playerInventory, xIndex + yIndex * 9 + 9, xPos + xIndex * ITEM_BOX, yInventoryRow + yIndex * ITEM_BOX));
             }
         }
 
-        for (int row = 0; row < PLAYER_ROW_SLOTS; row++) {
-            this.addSlotToContainer(new Slot(playerInventory, row, xPos + row * ITEM_BOX, yFirstRow));
+        for (int index = 0; index < PLAYER_ROW_SLOTS; index++) {
+            this.addSlotToContainer(new Slot(playerInventory, index, xPos + index * ITEM_BOX, yFirstRow));
         }
-    }
-
-    @Nonnull
-    @Override
-    protected Slot addSlotToContainer(Slot slotIn) {
-        return super.addSlotToContainer(slotIn);
     }
 }

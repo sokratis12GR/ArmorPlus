@@ -14,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-import java.util.stream.IntStream;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -22,23 +21,17 @@ import java.util.stream.IntStream;
 public class ContainerBenchBase extends ContainerBase {
 
     public static int recipeSlots;
+    // 36 - Full
+    // 27 - Main
     public static int mainInventorySlots;
     public static int fullInventorySlots;
     public World world;
 
-    public ContainerBenchBase(TileEntity tile, int recipeSlotsIn, int mainInventorySlotsIn, int fullInventorySlotsIn) {
+    public ContainerBenchBase(TileEntity tile, int recipeSlotsIn) {
         world = tile.getWorld();
         recipeSlots = recipeSlotsIn;
-        mainInventorySlots = mainInventorySlotsIn;
-        fullInventorySlots = fullInventorySlotsIn;
-    }
-
-    protected static void onContainerClosed(EntityPlayer playerIn, boolean isRemote, int recipeSizeTotal, InventoryCraftingImproved removeItemStack) {
-        if (!isRemote) {
-            IntStream.range(0, recipeSizeTotal).mapToObj(removeItemStack::removeStackFromSlot).filter(itemstack ->
-                !itemstack.isEmpty()
-            ).forEachOrdered(itemstack -> playerIn.dropItem(itemstack, false));
-        }
+        mainInventorySlots = recipeSlotsIn + 27;
+        fullInventorySlots = recipeSlotsIn + 36;
     }
 
     /**
@@ -51,41 +44,58 @@ public class ContainerBenchBase extends ContainerBase {
         Slot slot = inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+            ItemStack slotStack = slot.getStack();
+            itemstack = slotStack.copy();
 
             if (index == 0) {
-                itemstack1.getItem().onCreated(itemstack1, world, playerIn);
+                slotStack.getItem().onCreated(slotStack, world, playerIn);
 
-                if (!this.mergeItemStack(itemstack1, recipeSlots, fullInventorySlots, true)) return ItemStack.EMPTY;
+                if (!this.mergeItemStack(slotStack, recipeSlots, fullInventorySlots, true)) {
+                    return ItemStack.EMPTY;
+                }
 
-                slot.onSlotChange(itemstack1, itemstack);
+                slot.onSlotChange(slotStack, itemstack);
             } else if (index >= recipeSlots && index < mainInventorySlots) {
-                if (!this.mergeItemStack(itemstack1, mainInventorySlots, fullInventorySlots, false)) {
+                if (!this.mergeItemStack(slotStack, mainInventorySlots, fullInventorySlots, false)) {
                     return ItemStack.EMPTY;
                 }
             } else if (index >= mainInventorySlots && index < fullInventorySlots) {
-                if (!this.mergeItemStack(itemstack1, recipeSlots, mainInventorySlots, false)) return ItemStack.EMPTY;
-            } else if (!this.mergeItemStack(itemstack1, recipeSlots, fullInventorySlots, false)) return ItemStack.EMPTY;
+                if (!this.mergeItemStack(slotStack, recipeSlots, mainInventorySlots, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.mergeItemStack(slotStack, recipeSlots, fullInventorySlots, false)) {
+                return ItemStack.EMPTY;
+            }
 
-            if (itemstack1.isEmpty()) {
+            if (slotStack.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.getCount() == itemstack.getCount()) {
+            if (slotStack.getCount() == itemstack.getCount()) {
                 return ItemStack.EMPTY;
             }
 
-            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
+            ItemStack takenStack = slot.onTake(playerIn, slotStack);
 
             if (index == 0) {
-                playerIn.dropItem(itemstack2, false);
+                playerIn.dropItem(takenStack, false);
             }
         }
 
         return itemstack;
+    }
+
+    public static void onContainerClosed(EntityPlayer player, InventoryCraftingImproved craftingMatrix) {
+        if (!player.world.isRemote) {
+            for (int i = 0; i < craftingMatrix.getSizeInventory(); i++) {
+                ItemStack itemstack = craftingMatrix.removeStackFromSlot(i);
+                if (!itemstack.isEmpty()) {
+                    player.dropItem(itemstack, false);
+                }
+            }
+        }
     }
 
     protected void addPlayerArmorInventory(InventoryPlayer inventory, int xPos, int yPos) {
@@ -94,16 +104,16 @@ public class ContainerBenchBase extends ContainerBase {
     }
 
     protected void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
-        for (int k = 0; k < 2; k++) {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - k), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+        for (int index = 0; index < 2; index++) {
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[index];
+            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - index), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
         }
     }
 
     protected void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
-        for (int k = 0; k < 2; k++) {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[k + 2];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (k + 2)), xPos + k * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+        for (int index = 0; index < 2; index++) {
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[index + 2];
+            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (index + 2)), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
         }
     }
 }

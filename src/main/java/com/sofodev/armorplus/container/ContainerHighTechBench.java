@@ -21,18 +21,17 @@ import net.minecraft.item.ItemStack;
  */
 public class ContainerHighTechBench extends ContainerBenchBase {
 
-    private static final int RECIPE_SLOTS = 26;
     private static final int RECIPE_SIZE = 5;
-    private static final int RECIPE_SIZE_TOTAL = 25;
-    private static final int FULL_INVENTORY_SLOTS = RECIPE_SLOTS + 36;
-    private static final int MAIN_INVENTORY_SLOTS = RECIPE_SLOTS + 27;
-    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, 5, 5);
+    private static final int RECIPE_SIZE_TOTAL = RECIPE_SIZE * RECIPE_SIZE;
+    private static final int RECIPE_SLOTS = RECIPE_SIZE_TOTAL + 1;
+
+    public InventoryCraftingImproved craftMatrix = new InventoryCraftingImproved(this, RECIPE_SIZE, RECIPE_SIZE);
     public IInventory craftResult = new InventoryCraftResult();
 
     public ContainerHighTechBench(InventoryPlayer playerInventory, TileHTB tile) {
-        super(tile, RECIPE_SLOTS, MAIN_INVENTORY_SLOTS, FULL_INVENTORY_SLOTS);
+        super(tile, RECIPE_SLOTS);
         this.world = tile.getWorld();
-        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getHTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 129, 33));
+        this.addSlotToContainer(new BaseSlotCrafting(BaseCraftingManager.getHTBInstance(), playerInventory.player, this.craftMatrix, this.craftResult, 0, 130, 34));
 
         for (int yIndex = 0; yIndex < RECIPE_SIZE; ++yIndex) {
             for (int xIndex = 0; xIndex < RECIPE_SIZE; ++xIndex) {
@@ -60,7 +59,7 @@ public class ContainerHighTechBench extends ContainerBenchBase {
     @Override
     public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
-        onContainerClosed(playerIn, this.world.isRemote, RECIPE_SIZE_TOTAL, this.craftMatrix);
+        onContainerClosed(playerIn, this.craftMatrix);
     }
 
     /**
