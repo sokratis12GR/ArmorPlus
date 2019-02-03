@@ -55,13 +55,13 @@ public class ArmorPlus {
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
      */
-    public static final int PATCH = 0;
+    public static final int PATCH = 1;
     /**
      * Updates every time a build is created, mostly used for dev versions and
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 50;
+    public static final int BUILD = 51;
     /**
      * The ArmorPlus Version
      */

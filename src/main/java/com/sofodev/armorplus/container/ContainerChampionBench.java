@@ -65,7 +65,6 @@ public class ContainerChampionBench extends ContainerBenchBase {
         this.craftResult.setInventorySlotContents(0, BaseCraftingManager.getCBInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
 
-
     /**
      * Called when the container is closed.
      */

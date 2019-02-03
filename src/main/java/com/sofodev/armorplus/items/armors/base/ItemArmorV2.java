@@ -113,8 +113,7 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         if (handler == null) {
             return;
         }
-        // boolean canProvide = canProvide(stack, data.getID());
-        //  boolean flag = contains(handler, data.getID()) && canProvide;
+
         String ability = getTTAbility(handler, stack, data);
         if (!ability.equals("")) {
             tooltip.add(ability);
@@ -139,14 +138,17 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         String id = data.getSafeName();
         String name = "- " + data.getName();
         boolean canProvide = canProvide(stack, id);
-        boolean flag = false;
-        if (handler != null) {
-            flag = contains(handler, id) && canProvide;
+        boolean flag;
+        if (handler == null) {
+            return "";
         }
+        flag = contains(handler, id) && canProvide;
         if (flag) {
             return DARK_GREEN + name;
         } else if (!canProvide) {
             return "";
+        } else if (!hasRoomForAbilities(handler)) {
+            return RED + name;
         } else {
             return DARK_GRAY + name;
         }

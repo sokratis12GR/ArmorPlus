@@ -31,53 +31,59 @@ import java.util.stream.IntStream;
  */
 public abstract class BaseCraftingManager {
 
+    public static final BaseCraftingManager CHAMPION_BENCH = new BaseCraftingManager(9, "Champion Bench") {
+        @Override
+        public void setRecipes() {
+            //None
+        }
+    };
+    public static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(7, "Ulti-Tech Bench") {
+
+        @Override
+        public void setRecipes() {
+            new ModUltimateRecipes().addRecipes(this);
+            new ModEnderDragonRecipes().addRecipes(this);
+            new ModSuperStarRecipes().addRecipes(this);
+            new ModGuardianRecipes().addRecipes(this);
+            new ModWeaponTierThreeRecipes().addRecipes(this);
+            new ModUltiTechItemRecipes().addRecipes(this);
+        }
+    };
+    public static final BaseCraftingManager ULT_TECH_BENCH = new BaseCraftingManager(5, "High-Tech Bench") {
+
+        @Override
+        public void setRecipes() {
+            new ModTierTwoRecipes().addRecipes(this);
+            new ModHighTechItemRecipes().addRecipes(this);
+            new ModWeaponTierTwoRecipes().addRecipes(this);
+            new ModTinkersConstructRecipes().addRecipes(this);
+        }
+    };
+
+    public static final BaseCraftingManager WORKBENCH = new BaseCraftingManager(3, "Workbench") {
+        @Override
+        public void setRecipes() {
+            new ModItemRecipes().addRecipes(this);
+            new ModOriginRecipes().addRecipes(this);
+            new ModSpecialMobRecipes().addRecipes(this);
+            new ModWeaponsTierOneRecipes().addRecipes(this);
+        }
+    };
+
     public static BaseCraftingManager getCBInstance() {
-        return new BaseCraftingManager(9, "Champion Bench") {
-            @Override
-            public void setRecipes() {
-                //None
-            }
-        };
+        return CHAMPION_BENCH;
     }
 
     public static BaseCraftingManager getUTBInstance() {
-        return new BaseCraftingManager(7, "Ulti-Tech Bench") {
-
-            @Override
-            public void setRecipes() {
-                new ModUltimateRecipes().addRecipes(this);
-                new ModEnderDragonRecipes().addRecipes(this);
-                new ModSuperStarRecipes().addRecipes(this);
-                new ModGuardianRecipes().addRecipes(this);
-                new ModWeaponTierThreeRecipes().addRecipes(this);
-                new ModUltiTechItemRecipes().addRecipes(this);
-            }
-        };
+        return HIGH_TECH_BENCH;
     }
 
     public static BaseCraftingManager getHTBInstance() {
-        return new BaseCraftingManager(5, "High-Tech Bench") {
-
-            @Override
-            public void setRecipes() {
-                new ModTierTwoRecipes().addRecipes(this);
-                new ModHighTechItemRecipes().addRecipes(this);
-                new ModWeaponTierTwoRecipes().addRecipes(this);
-                new ModTinkersConstructRecipes().addRecipes(this);
-            }
-        };
+        return ULT_TECH_BENCH;
     }
 
     public static BaseCraftingManager getWBInstance() {
-        return new BaseCraftingManager(3, "Workbench") {
-            @Override
-            public void setRecipes() {
-                new ModItemRecipes().addRecipes(this);
-                new ModOriginRecipes().addRecipes(this);
-                new ModSpecialMobRecipes().addRecipes(this);
-                new ModWeaponsTierOneRecipes().addRecipes(this);
-            }
-        };
+        return WORKBENCH;
     }
 
     private final List<IRecipe> recipes = Lists.newArrayList();

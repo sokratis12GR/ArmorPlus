@@ -104,29 +104,34 @@ public class TileTrophy extends TileEntity {
         this.scale = scale;
     }
 
+
+    private String name = "CustomName";
+    private String displayedEntity = "DisplayEntity";
+    private String entityScale = "EntityScale";
+
     public void loadFromNbt(NBTTagCompound nbt) {
-        if (nbt.hasKey("CustomName", 8)) {
-            this.customName = nbt.getString("CustomName");
+        if (nbt.hasKey(name, 8)) {
+            this.customName = nbt.getString(name);
         }
-        if (nbt.hasKey("DisplayEntity", 10)) {
-            this.setNextEntityData(new WeightedSpawnerEntity(1, nbt.getCompoundTag("DisplayEntity")));
+        if (nbt.hasKey(displayedEntity, 10)) {
+            this.setNextEntityData(new WeightedSpawnerEntity(1, nbt.getCompoundTag(displayedEntity)));
         }
-        if (nbt.hasKey("EntityScale", 99)) {
-            this.scale = nbt.getFloat("EntityScale");
+        if (nbt.hasKey(entityScale, 99)) {
+            this.scale = nbt.getFloat(entityScale);
         }
         this.cachedEntity = null;
     }
 
     public NBTTagCompound saveToNbt(NBTTagCompound nbt) {
         if (this.hasCustomName()) {
-            nbt.setString("CustomName", this.customName);
+            nbt.setString(name, this.customName);
         }
         ResourceLocation resourcelocation = this.getEntityId();
         if (resourcelocation == null) {
             return nbt;
         }
         nbt.setFloat("EntityScale", this.scale);
-        nbt.setTag("DisplayEntity", this.entityData.getNbt().copy());
+        nbt.setTag(displayedEntity, this.entityData.getNbt().copy());
 
         return nbt;
     }

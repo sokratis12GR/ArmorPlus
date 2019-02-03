@@ -25,7 +25,7 @@ public class CTArmorPlusPlugin {
     }
 
     public static Object[] toWorkbenchShapedObjects(IIngredient[][] ingredients) {
-        if (ingredients == null) return new Object[]{};
+        if (ingredients == null) return null;
         ArrayList<Object> prep = new ArrayList<>();
         prep.add("abc");
         prep.add("def");
@@ -40,7 +40,7 @@ public class CTArmorPlusPlugin {
     }
 
     public static Object[] toHighTechShapedObjects(IIngredient[][] ingredients) {
-        if (ingredients == null) return new Object[]{};
+        if (ingredients == null) return null;
         ArrayList<Object> prep = new ArrayList<>();
         prep.add("abcde");
         prep.add("fghij");
@@ -59,7 +59,7 @@ public class CTArmorPlusPlugin {
     }
 
     public static Object[] toUltiTechShapedObjects(IIngredient[][] ingredients) {
-        if (ingredients == null) return new Object[]{};
+        if (ingredients == null) return null;
         ArrayList<Object> prep = new ArrayList<>();
         prep.add("abcdefg");
         prep.add("hijklmn");
@@ -82,7 +82,7 @@ public class CTArmorPlusPlugin {
     }
 
     public static Object[] toChampionShapedObjects(IIngredient[][] ingredients) {
-        if (ingredients == null) return new Object[]{};
+        if (ingredients == null) return null;
         ArrayList<Object> prep = new ArrayList<>();
         prep.add("abcdefghi");
         prep.add("jklmnopqr");
@@ -108,7 +108,7 @@ public class CTArmorPlusPlugin {
     }
 
     public static Object[] toShapedObjects(IIngredient[][] ingredients, char[][] map, List<Object> prep) {
-        if (ingredients == null) return new Object[0];
+        if (ingredients == null) return null;
         for (int x = 0; x < ingredients.length; x++) {
             if (ingredients[x] != null) {
                 for (int y = 0; y < ingredients[x].length; y++) {

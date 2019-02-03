@@ -57,26 +57,26 @@ material.lava_infused_obsidian.name=Obsidiana Infundida con Lava
 tile.armorplus.block_energy_creative.name=Celda de Energía Creativa
 
 #Commands
-commands.error.arg.invalid=Argumentos inválidos
-commands.error.arg.missing=No hay suficientes argumentos
-commands.error.arg.player.missing=Debe especificar en qué jugador desea realizar esta acción.
-commands.error.404=¡Comando no encontrado!
-commands.error.unknown=¡Comando desconocido! Por favor usa /armorplus ayuda
-commands.error.perm=No tienes permiso para usar este comando.
-commands.success=Realizado con Éxito
-commands.format.help=%s - %s
+commands.armorplus.error.arg.invalid=Argumentos inválidos
+commands.armorplus.error.arg.missing=No hay suficientes argumentos
+commands.armorplus.error.arg.player.missing=Debe especificar en qué jugador desea realizar esta acción.
+commands.armorplus.error.404=¡Comando no encontrado!
+commands.armorplus.error.unknown=¡Comando desconocido! Por favor usa /armorplus ayuda
+commands.armorplus.error.perm=No tienes permiso para usar este comando.
+commands.armorplus.success=Realizado con Éxito
+commands.armorplus.format.help=%s - %s
 
 #CommandHelp
-commands.help.usage=/armorplus ayuda
-commands.help.help=Muestra la información de ayuda para el comando "/armorplus".
+commands.armorplus.help.usage=/armorplus ayuda
+commands.armorplus.help.help=Muestra la información de ayuda para el comando "/armorplus".
 
 #CommandInfo
-commands.info.usage=/armorplus info
-commands.info.help=Muestra información sobre ArmaduraMás
+commands.armorplus.info.usage=/armorplus info
+commands.armorplus.info.help=Muestra información sobre ArmaduraMás
 
 #CommandWiki
-commands.wiki.usage=/armorplus wiki
-commands.wiki.help=Abre un enlace en su navegador a la Wiki de ArmaduraMás
+commands.armorplus.wiki.usage=/armorplus wiki
+commands.armorplus.wiki.help=Abre un enlace en su navegador a la Wiki de ArmaduraMás
 
 #JEI
 gui.jei.category.workbench=Banco de Trabajo
@@ -93,16 +93,8 @@ gui.jei.category.armorplus.infusing.fuel.smeltCount.single=Se Funde 1 objeto
 
 #BOOKS
 item.armorplus.book.name=Libro de Información de ArmaduraMás
-
 #CONFIG GUI
 gui.armorplus.config.title=Configuración de ArmaduraMás
-#Root Categories
-armorplus/misc.tooltip=Configuraciones Diversos
-armorplus/config.tooltip=Configuraciones Principales
-armorplus/entities.tooltip=Configuraciones de Entidades
-armorplus/integrations.tooltip=Configuraciones de Integraciones
-armorplus/registry.tooltip=Configuraciones de Registro
-armorplus/worldgen.tooltip=Configuraciones de la Generación del Mundo.
 
 #CoalArmor
 item.armorplus.coal_helmet.name=Casco de Carbón
@@ -165,6 +157,7 @@ item.armorplus.the_ultimate_chestplate.name=El Peto Supremo
 item.armorplus.the_ultimate_leggings.name=Las Grebas Supremas
 item.armorplus.the_ultimate_boots.name=Las Botas Supremas
 
+
 #CobaltArmor
 item.armorplus.cobalt_helmet.name=Casco de Cobalto
 item.armorplus.cobalt_chestplate.name=Peto de Cobalto
@@ -182,18 +175,6 @@ item.armorplus.chicken_helmet.name=Casco de Pollo
 item.armorplus.chicken_chestplate.name=Peto de Pollo
 item.armorplus.chicken_leggings.name=Grebas de Pollo
 item.armorplus.chicken_boots.name=Botas de Pollo
-
-#ElectricalArmor
-item.armorplus.electrical_helmet.name=Casco Eléctrico
-item.armorplus.electrical_chestplate.name=Peto Eléctrico
-item.armorplus.electrical_leggings.name=Grebas Eléctricas
-item.armorplus.electrical_boots.name=Botas Eléctricas
-
-#SteelArmor
-item.armorplus.steel_helmet.name=Casco de Acero
-item.armorplus.steel_chestplate.name=Peto de Acero
-item.armorplus.steel_leggings.name=Grebas de Acero
-item.armorplus.steel_boots.name=Botas de Acero
 
 #Items
 item.armorplus.material_chainmail.name=Cota de Malla

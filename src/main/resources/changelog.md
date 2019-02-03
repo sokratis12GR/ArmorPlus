@@ -1,3 +1,8 @@
+ArmorPlus 1.12.2-11.17.1.51
+----------------------------
+
+* Fixed CraftTweaker recipes being broken.
+
 ArmorPlus 1.12.2-11.17.0.50
 ----------------------------
 

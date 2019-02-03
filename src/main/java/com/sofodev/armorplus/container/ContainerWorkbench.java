@@ -50,6 +50,7 @@ public class ContainerWorkbench extends ContainerBenchBase {
         this.addPlayerInventory(playerInventory, 8, 142, 84);
         this.addPlayerArmorInventory(playerInventory, 134, 26);
         this.onCraftMatrixChanged(this.craftMatrix);
+        this.onContainerClosed(playerInventory.player);
     }
 
     /**

@@ -47,12 +47,12 @@ public class InventoryCraftingImproved extends InventoryCrafting {
      */
     @Override
     public int getSizeInventory() {
-        return this.getStackList().size();
+        return this.stackList.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return this.getStackList().stream().allMatch(ItemStack::isEmpty);
+        return this.stackList.stream().allMatch(ItemStack::isEmpty);
     }
 
     /**
@@ -60,7 +60,7 @@ public class InventoryCraftingImproved extends InventoryCrafting {
      */
     @Override
     public ItemStack getStackInSlot(int index) {
-        return index >= this.getSizeInventory() ? ItemStack.EMPTY : this.getStackList().get(index);
+        return index >= this.getSizeInventory() ? ItemStack.EMPTY : this.stackList.get(index);
     }
 
     /**
@@ -102,7 +102,7 @@ public class InventoryCraftingImproved extends InventoryCrafting {
      */
     @Override
     public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.getStackList(), index);
+        return ItemStackHelper.getAndRemove(this.stackList, index);
     }
 
     /**
@@ -110,7 +110,7 @@ public class InventoryCraftingImproved extends InventoryCrafting {
      */
     @Override
     public ItemStack decrStackSize(int index, int count) {
-        ItemStack itemstack = ItemStackHelper.getAndSplit(this.getStackList(), index, count);
+        ItemStack itemstack = ItemStackHelper.getAndSplit(this.stackList, index, count);
 
         if (!itemstack.isEmpty()) {
             this.eventHandler.onCraftMatrixChanged(this);
@@ -124,7 +124,7 @@ public class InventoryCraftingImproved extends InventoryCrafting {
      */
     @Override
     public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
-        this.getStackList().set(index, stack);
+        this.stackList.set(index, stack);
         this.eventHandler.onCraftMatrixChanged(this);
     }
 
@@ -185,7 +185,7 @@ public class InventoryCraftingImproved extends InventoryCrafting {
 
     @Override
     public void clear() {
-        this.getStackList().clear();
+        this.stackList.clear();
     }
 
     @Override
