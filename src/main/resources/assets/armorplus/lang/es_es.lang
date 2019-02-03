@@ -1,9 +1,108 @@
 #es_es.lang File
 
-#CREATIVE TAB
+#CREATIVE TABS
+itemGroup.armorplus.armors=Armaduras de AM
+itemGroup.armorplus.items=Objetos de AM
+itemGroup.armorplus.blocks=Bloques de AM
+itemGroup.armorplus.weapons=Armas de AM
+itemGroup.armorplus.tesla=Tesla de AM
+itemGroup.armorplus.rf=RF de AM
+
+# Sound Events
+armorplus.subtitle.trap_triggered=Desencadenó la Trampa
+
+# Status
+status.armorplus.tgotg.gained_item=Tienes: %s [%s]
+
+#GuiArmorPlusInfo
+gui.armorplus.info.text_line_heading=Información de ArmaduraMás
+gui.armorplus.info.text_line_one=Las Recetas de Fabricación de ArmaduraMás
+gui.armorplus.info.text_line_two=son Modo Experto `I:Recipe:1` por defecto.
+gui.armorplus.info.text_line_three=Si quieres cambiar al Modo Fácil
+gui.armorplus.info.text_line_four=necesitarás cambiar la configuración
+gui.armorplus.info.text_line_five=de `I:Recipe:1` a `I:Recipe:0`.
+gui.armorplus.info.text_line_six=Modo de Juego Activado `I:Recipe: %s`.
+
+#Enchantments
+enchantment.armorplus.furious=Furioso
+enchantment.armorplus.furious.desc=Cuando te golpean te pones furioso, dándote fuerza y ​​un impulso de velocidad basado en el nivel.
+
+#Baubles
+item.armorplus.bauble_cosmetic_dragon.name=Dragón Cosmético
+
+#Containers
+container.armorplus.workbench=Banco de Trabajo
+container.armorplus.high_tech_bench=Banco de Alta Tecnología
+container.armorplus.ulti_tech_bench=Banco de Tecnología Extrema
+container.armorplus.champion_bench=Banco de Trabajo Campeón
+container.armorplus.inventory=Inventario
+container.armorplus.lava_infuser=Infundidor de Lava
+
+#Tooltip
+tooltip.shift.showinfo.text_one=Presione
+tooltip.shift.showinfo.text_two=para más información.
+
+#TiC
+modifier.firestorm.name=Tormenta de Fuego
+modifier.firestorm.desc=§oLa verdadera Supernova!§r\nDaño adicional de fuego, la modificador se incienda a sus enemigos.
+modifier.firestorm.extra=Daño de Fuego: +%s
+modifier.firestorm.extra2=Duración de la Combustión: %ss
+modifier.ultimatemod.name=Expandido
+modifier.ultimatemod.desc=Agrega +1 Modificador
+material.infused_lava_crystal.name=Cristal de Lava Infundido
+material.compressed_obsidian.name=Obsidiana Comprimida
+material.lava_infused_obsidian.name=Obsidiana Infundida con Lava
+
+#Tile
+tile.armorplus.block_energy_creative.name=Celda de Energía Creativa
+
+#Commands
+commands.error.arg.invalid=Argumentos inválidos
+commands.error.arg.missing=No hay suficientes argumentos
+commands.error.arg.player.missing=Debe especificar en qué jugador desea realizar esta acción.
+commands.error.404=¡Comando no encontrado!
+commands.error.unknown=¡Comando desconocido! Por favor usa /armorplus ayuda
+commands.error.perm=No tienes permiso para usar este comando.
+commands.success=Realizado con Éxito
+commands.format.help=%s - %s
+
+#CommandHelp
+commands.help.usage=/armorplus ayuda
+commands.help.help=Muestra la información de ayuda para el comando "/armorplus".
+
+#CommandInfo
+commands.info.usage=/armorplus info
+commands.info.help=Muestra información sobre ArmaduraMás
+
+#CommandWiki
+commands.wiki.usage=/armorplus wiki
+commands.wiki.help=Abre un enlace en su navegador a la Wiki de ArmaduraMás
+
+#JEI
+gui.jei.category.workbench=Banco de Trabajo
+gui.jei.category.high_tech_bench=Banco de Trabajo de Alta Tecnología
+gui.jei.category.ulti_tech_bench=Banco de Trabajo de Tecnología Extrema
+gui.jei.category.champion_bench=Banco de Trabajo Campeón
+gui.jei.category.lava_infuser=Infundidor de Lava
+gui.jei.category.lava_infuser_infusing=Infundidor de Lava Infundiendo
+
+gui.jei.category.armorplus.infusing=Infundiendo
+gui.jei.category.armorplus.infusing.experience=%s XP
+gui.jei.category.armorplus.infusing.fuel=Combustible
+gui.jei.category.armorplus.infusing.fuel.smeltCount.single=Se Funde 1 objeto
+
+#BOOKS
+item.armorplus.book.name=Libro de Información de ArmaduraMás
 
 #CONFIG GUI
 gui.armorplus.config.title=Configuración de ArmaduraMás
+#Root Categories
+armorplus/misc.tooltip=Configuraciones Diversos
+armorplus/config.tooltip=Configuraciones Principales
+armorplus/entities.tooltip=Configuraciones de Entidades
+armorplus/integrations.tooltip=Configuraciones de Integraciones
+armorplus/registry.tooltip=Configuraciones de Registro
+armorplus/worldgen.tooltip=Configuraciones de la Generación del Mundo.
 
 #CoalArmor
 item.armorplus.coal_helmet.name=Casco de Carbón
@@ -65,6 +164,73 @@ item.armorplus.the_ultimate_helmet.name=El Casco Supremo
 item.armorplus.the_ultimate_chestplate.name=El Peto Supremo
 item.armorplus.the_ultimate_leggings.name=Las Grebas Supremas
 item.armorplus.the_ultimate_boots.name=Las Botas Supremas
+
+#CobaltArmor
+item.armorplus.cobalt_helmet.name=Casco de Cobalto
+item.armorplus.cobalt_chestplate.name=Peto de Cobalto
+item.armorplus.cobalt_leggings.name=Grebas de Cobalto
+item.armorplus.cobalt_boots.name=Botas de Cobalto
+
+#ArditeArmor
+item.armorplus.ardite_helmet.name=Casco de Ardite
+item.armorplus.ardite_chestplate.name=Peto de Ardite
+item.armorplus.ardite_leggings.name=Grebas de Ardite
+item.armorplus.ardite_boots.name=Botas de Ardite
+
+#ChickenArmor
+item.armorplus.chicken_helmet.name=Casco de Pollo
+item.armorplus.chicken_chestplate.name=Peto de Pollo
+item.armorplus.chicken_leggings.name=Grebas de Pollo
+item.armorplus.chicken_boots.name=Botas de Pollo
+
+#ElectricalArmor
+item.armorplus.electrical_helmet.name=Casco Eléctrico
+item.armorplus.electrical_chestplate.name=Peto Eléctrico
+item.armorplus.electrical_leggings.name=Grebas Eléctricas
+item.armorplus.electrical_boots.name=Botas Eléctricas
+
+#SteelArmor
+item.armorplus.steel_helmet.name=Casco de Acero
+item.armorplus.steel_chestplate.name=Peto de Acero
+item.armorplus.steel_leggings.name=Grebas de Acero
+item.armorplus.steel_boots.name=Botas de Acero
+
+#Items
+item.armorplus.material_chainmail.name=Cota de Malla
+item.armorplus.reinforcing_material.name=Material de Refuerzo
+item.armorplus.lava_crystal.name=Cristal de Lava
+item.armorplus.lava_crystal_infused.name=Cristal de Lava Infundido
+item.armorplus.steel_ingot.name=Lingote de Acero
+item.armorplus.electrical_ingot.name=Lingote Eléctrico
+
+#Food Items
+item.armorplus.redstone_apple.name=Manzana de Redstone
+
+#Blocks
+tile.armorplus.compressed_obsidian.name=Obsidiana Comprimida
+tile.armorplus.steel_block.name=Bloque de Acero
+tile.armorplus.electrical_block.name=Bloque Eléctrico
+tile.armorplus.workbench.name=Banco de Trabajo
+tile.armorplus.high_tech_bench.name=Banco de Trabajo de Alta Tecnología
+tile.armorplus.ulti_tech_bench.name=Banco de Trabajo de Tecnología Extrema
+tile.armorplus.champion_bench.name=Banco de Trabajo Campeón
+tile.armorplus.lava_cactus.name=Cactus de Lava
+tile.armorplus.lava_nether_brick.name=Ladrillos del Nether de Lava
+tile.armorplus.white_stone_brick.name=Ladrillos de Piedra Blanca
+tile.armorplus.red_stone_brick.name=Ladrillos de Piedra Roja
+tile.armorplus.black_stone_brick.name=Ladrillos de Piedra Negro
+tile.armorplus.blue_stone_brick.name=Ladrillos de Piedra Azul
+tile.armorplus.green_stone_brick.name=Ladrillos de Piedra Verde
+tile.armorplus.yellow_stone_brick.name=Ladrillos de Piedra Amarilla
+tile.armorplus.purple_stone_brick.name=Ladrillos de Piedra Púrpura
+tile.armorplus.lava_infuser.name=Infundidor de Lava
+tile.armorplus.lava_infuser_infusing.name=Infundidor de Lava Infundiendo
+
+tile.armorplus.lava_infused_obsidian.name=Obsidiana Infundida con Lava
+tile.armorplus.block_lava_crystal.name=Bloque de Cristal de Lava
+tile.armorplus.block_infused_lava_crystal.name=Bloque de Cristal de Lava Infundido
+tile.armorplus.block_compressed_lava_crystal.name=Bloque de Cristal de Lava Comprimido
+tile.armorplus.block_compressed_infused_lava_crystal.name=Bloque de Cristal de Lava Infundido Comprimido
 
 #Swords
 item.armorplus.coal_sword.name=Espada de Carbón
