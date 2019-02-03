@@ -10,7 +10,6 @@ import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
 import com.sofodev.armorplus.config.ModConfig.RegistryConfig.UltimateMaterial.Armor;
 import com.sofodev.armorplus.iface.IModdedItem;
-import com.sofodev.armorplus.util.EnumHelperUtil;
 import com.sofodev.armorplus.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
@@ -35,6 +34,7 @@ import java.util.List;
 import static com.sofodev.armorplus.client.utils.ToolTipUtils.showInfo;
 import static com.sofodev.armorplus.config.ModConfig.Misc.enableFlightAbility;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.ultimate;
+import static com.sofodev.armorplus.items.armors.ArmorMaterials.THE_ULTIMATE_ARMOR;
 import static com.sofodev.armorplus.registry.APItems.*;
 import static com.sofodev.armorplus.registry.ModItems.materials;
 import static com.sofodev.armorplus.util.ArmorPlusItemUtils.*;
@@ -43,7 +43,6 @@ import static com.sofodev.armorplus.util.PotionUtils.PotionType.GOOD;
 import static com.sofodev.armorplus.util.PotionUtils.addPotion;
 import static com.sofodev.armorplus.util.Utils.setName;
 import static com.sofodev.armorplus.util.Utils.setRL;
-import static net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraft.util.text.TextFormatting.getValueByName;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -53,12 +52,10 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class ItemUltimateArmor extends ItemArmor implements IModdedItem, IEffectHolder {
 
-    public static final ArmorMaterial theUltimateArmor = EnumHelperUtil.addArmorMaterial("THE_ULTIMATE_ARMOR", "the_ultimate_armor", 160,
-        ultimate.armor.protectionPoints, 1, ITEM_ARMOR_EQUIP_DIAMOND, ultimate.armor.toughnessPoints);
     private Armor armor = ultimate.armor;
 
     public ItemUltimateArmor(EntityEquipmentSlot slot) {
-        super(ItemUltimateArmor.theUltimateArmor, 0, slot);
+        super(THE_ULTIMATE_ARMOR, 0, slot);
         this.setMaxStackSize(1);
         this.createPieces(slot);
         this.setCreativeTab(ArmorPlus.tabArmorplus);

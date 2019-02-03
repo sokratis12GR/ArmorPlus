@@ -65,6 +65,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
         this.setCreativeTab(ArmorPlus.tabArmorplusWeapons);
         this.maxStackSize = 1;
         this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter() {
+            @Override
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
                 if (entityIn == null) return 0.0F;
@@ -73,6 +74,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
             }
         });
         this.addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter() {
+            @Override
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, World worldIn, EntityLivingBase entityIn) {
                 return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;

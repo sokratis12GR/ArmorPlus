@@ -521,13 +521,17 @@ achievement.armorplus.craft_champion_bench.desc=craft the a Champion Bench from 
 achievement.armorplus.armorplus=sokratis12GR
 achievement.armorplus.armorplus.desc=Creator & Developer of ArmorPlus
 
+##############################################################################################################
 #New
+##############################################################################################################
+
+#Abilities
 commands.armorplus.abilities.clear.success=You have successfully removed all abilities from this item.
 commands.armorplus.abilities.clear.fail=This item doesn't contain any abilities.
 commands.armorplus.abilities.add.fail=Sorry, cannot add more abilities to this item. Your limit [%d/%d].
 commands.armorplus.abilities.add.fail.already_there=Sorry, this ability is already provided to this item.
 commands.armorplus.abilities.add.success=You have successfully added the [%s] ability to this item.
-commands.armorplus.abilities.add.cost.usage=Use <hide/consume> if it should consume the required items when its applied or just not show the command.
+commands.armorplus.abilities.add.cost.usage=Use hide to not show the command's output.
 commands.armorplus.abilities.add.incorrect_ability=You cannot add [%s] to this item.
 commands.armorplus.abilities.usage=Incomplete command arguments. Use /armorplus abilities <list/limit/add/clear/remove> <secondary_arguments>
 commands.armorplus.abilities.usage.second=Incomplete command arguments. Use /armorplus abilities add <string: abilityID>

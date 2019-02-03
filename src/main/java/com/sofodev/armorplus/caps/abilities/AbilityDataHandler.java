@@ -18,6 +18,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class AbilityDataHandler {
 
     // Handles all of the required registration for the capability.
     public static void register() {
-        CapabilityManager.INSTANCE.register(IAbilityHandler.class, new Storage(), DefaultAbilityHandler::new);
+        CapabilityManager.INSTANCE.register(IAbilityHandler.class, new Storage(), Abilities::new);
         MinecraftForge.EVENT_BUS.register(new AbilityDataHandler());
     }
 
@@ -44,7 +45,7 @@ public class AbilityDataHandler {
     public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 
         if (event.getObject().getItem() instanceof ItemArmorV2) {
-            event.addCapability(setRL("prototype"), new Provider());
+            event.addCapability(setRL("prototype_armor"), new Provider());
         }
     }
 
@@ -56,55 +57,57 @@ public class AbilityDataHandler {
     // The basic properties for the new capability.
     public interface IAbilityHandler {
 
-        int getLimit();
+        byte getLimit();
 
-        void setLimit(int limit);
+        void setLimit(byte limit);
 
-        List<String> getAbilities();
+        List<AbilityData> getAbilities();
 
-        void setAbilities(List<String> ability);
+        void setAbilities(List<AbilityData> ability);
 
-        void addAbility(String ability);
+        void addAbility(AbilityData ability);
 
-        void removeAbility(String ability);
+        void removeAbility(AbilityData ability);
     }
 
     // The default implementation of the capability. Holds all the logic.
-    public static class DefaultAbilityHandler implements IAbilityHandler {
+    public static class Abilities extends IForgeRegistryEntry.Impl<Abilities> implements IAbilityHandler {
 
-        private int limit = 0;
-        private ArrayList<String> abilities = new ArrayList<>();
+        private byte limit = 0;
+        private ArrayList<AbilityData> abilityList = new ArrayList<>();
 
         @Override
-        public int getLimit() {
+        public byte getLimit() {
             return this.limit;
         }
 
         @Override
-        public void setLimit(int limit) {
+        public void setLimit(byte limit) {
             this.limit = limit;
         }
 
-        public List<String> getAbilities() {
-            return this.abilities;
-        }
-
-        public void setAbilities(List<String> abilities) {
-            this.abilities.clear();
-            this.abilities.addAll(abilities);
+        @Override
+        public List<AbilityData> getAbilities() {
+            return this.abilityList;
         }
 
         @Override
-        public void addAbility(String ability) {
-            if (abilities.size() < limit && !abilities.contains(ability)) {
-                this.abilities.add(ability);
+        public void setAbilities(List<AbilityData> abilities) {
+            this.abilityList.clear();
+            this.abilityList.addAll(abilities);
+        }
+
+        @Override
+        public void addAbility(AbilityData ability) {
+            if (abilityList.size() < limit && !abilityList.contains(ability)) {
+                this.abilityList.add(ability);
             }
         }
 
         @Override
-        public void removeAbility(String ability) {
-            if (!this.abilities.isEmpty()) {
-                this.abilities.remove(ability);
+        public void removeAbility(AbilityData ability) {
+            if (!this.abilityList.isEmpty()) {
+                this.abilityList.remove(ability);
             }
         }
     }
@@ -118,10 +121,11 @@ public class AbilityDataHandler {
             final NBTTagCompound tag = new NBTTagCompound();
             if (instance != null) {
                 NBTTagList tagList = new NBTTagList();
-                List<String> abilities = instance.getAbilities();
-                abilities.stream().map(NBTTagString::new).forEach(tagList::appendTag);
-                tag.setTag("abilities", tagList);
-                tag.setInteger("limit", instance.getLimit());
+                List<AbilityData> abilityDataList = instance.getAbilities();
+                List<String> ability = abilityDataList.stream().map(AbilityData::getSafeName).collect(Collectors.toList());
+                ability.stream().map(NBTTagString::new).forEach(tagList::appendTag);
+                tag.setTag("abilityList", tagList);
+                tag.setByte("limit", instance.getLimit());
             }
             return tag;
         }
@@ -131,14 +135,15 @@ public class AbilityDataHandler {
 
             final NBTTagCompound tag = (NBTTagCompound) nbt;
 
-            NBTTagList tagList = tag.getTagList("abilities", 8);
-            List<String> abilities = IntStream.range(0, tagList.tagCount()).mapToObj(tagList::getStringTagAt).collect(Collectors.toList());
-            instance.setAbilities(abilities);
-            instance.setLimit(tag.getInteger("limit"));
+            NBTTagList tagList = tag.getTagList("abilityList", 8);
+            List<AbilityData> abilityDataList = IntStream.range(0, tagList.tagCount()).mapToObj(tagList::getStringTagAt).map(AbilityData::getData).collect(Collectors.toList());
+            instance.setAbilities(abilityDataList);
+            instance.setLimit(tag.getByte("limit"));
         }
     }
 
     // Delegates all of the system calls to the capability.
+    @SuppressWarnings("all")
     public static class Provider implements ICapabilitySerializable<NBTTagCompound> {
 
         IAbilityHandler instance = CAPABILITY_ABILITIES.getDefaultInstance();

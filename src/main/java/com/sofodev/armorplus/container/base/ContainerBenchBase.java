@@ -87,6 +87,13 @@ public class ContainerBenchBase extends ContainerBase {
         return itemstack;
     }
 
+    /**
+     * Here we pass through all the slot contents for each slot in the {@link InventoryCraftingImproved},
+     * then we get and remove the itemstack from that slot and we make the player drop it once the container is closed.
+     *
+     * @param player         the player that is closing the container
+     * @param craftingMatrix the inventory that is being closed by the player
+     */
     public static void onContainerClosed(EntityPlayer player, InventoryCraftingImproved craftingMatrix) {
         if (!player.world.isRemote) {
             for (int i = 0; i < craftingMatrix.getSizeInventory(); i++) {
@@ -103,17 +110,30 @@ public class ContainerBenchBase extends ContainerBase {
         this.addPlayerArmorInventoryBot(inventory, xPos, yPos + ITEM_BOX);
     }
 
+    /**
+     * @param inventory the player's inventory that is being used to get the armor slots for [Head, Chest]
+     * @param xPos      the x pos of the container that we will render this on
+     * @param yPos      the y pos of the container that we will render this on
+     */
     protected void addPlayerArmorInventoryTop(InventoryPlayer inventory, int xPos, int yPos) {
+        int fullInventoryIndex = 4 * 9;
         for (int index = 0; index < 2; index++) {
             EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[index];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - index), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+            addSlotToContainer(new SlotArmor(inventory, fullInventoryIndex + (3 - index), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
         }
     }
 
+    /**
+     * @param inventory the player's inventory that is being used to get the armor slots for [Legs, Feet]
+     * @param xPos      the x pos of the container that we will render this on
+     * @param yPos      the y pos of the container that we will render this on
+     */
     protected void addPlayerArmorInventoryBot(InventoryPlayer inventory, int xPos, int yPos) {
+        int secondaryIndex = 2;
+        int fullInventoryIndex = 4 * 9;
         for (int index = 0; index < 2; index++) {
-            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[index + 2];
-            addSlotToContainer(new SlotArmor(inventory, 4 * 9 + (3 - (index + 2)), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
+            EntityEquipmentSlot equipmentSlot = EQUIPMENT_SLOTS[index + secondaryIndex];
+            addSlotToContainer(new SlotArmor(inventory, fullInventoryIndex + (3 - (index + secondaryIndex)), xPos + index * ITEM_BOX, yPos, inventory.player, equipmentSlot));
         }
     }
 }

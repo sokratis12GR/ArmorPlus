@@ -22,6 +22,7 @@ public class TiCModifiers extends AbstractToolPulse {
     public static Modifier theUltimateMaterial;
     public static Modifier infusedLavaCrystalModifier;
 
+    @Override
     public void init(FMLInitializationEvent event) {
         theUltimateMaterial = registerModifier(new ModExtraModifier());
         infusedLavaCrystalModifier = registerModifier(new ModFireStorm());

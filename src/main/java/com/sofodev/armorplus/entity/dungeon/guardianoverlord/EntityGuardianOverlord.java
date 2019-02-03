@@ -145,6 +145,7 @@ public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRan
     /**
      * Attack the specified entity using a ranged attack.
      */
+    @Override
     public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
         this.launchFreezeBombToEntity(0, target);
     }

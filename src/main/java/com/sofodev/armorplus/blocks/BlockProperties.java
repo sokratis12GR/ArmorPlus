@@ -37,6 +37,10 @@ public class BlockProperties {
         this(resistance, hardness, props, 0);
     }
 
+    public BlockProperties(float resistance, float hardness){
+        this(resistance, hardness, new HarvestProps(ToolType.PICKAXE));
+    }
+
     public float getResistance() {
         return resistance;
     }

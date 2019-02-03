@@ -9,6 +9,7 @@ import com.sofodev.armorplus.blocks.base.BlockBase;
 import com.sofodev.armorplus.blocks.benches.BlockBench;
 import com.sofodev.armorplus.blocks.benches.ItemBlockBench;
 import com.sofodev.armorplus.blocks.dungeon.ItemDungeonBlock;
+import com.sofodev.armorplus.caps.abilities.AbilityData;
 import com.sofodev.armorplus.enchantments.FuriousEnchantment;
 import com.sofodev.armorplus.enchantments.LifeStealEnchantment;
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
@@ -41,9 +42,11 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Arrays;
 
+import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.*;
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
@@ -126,7 +129,7 @@ public class RegistryEventHandler {
         registerAllBlocks(event, benches);
         registerAllBlocks(event,
             blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
-            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
         );
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
@@ -195,13 +198,30 @@ public class RegistryEventHandler {
     }
 
     @SubscribeEvent
+    public static void registerAbilities(Register<AbilityData> event) {
+        registerAbility(event,
+            NONE, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, ABSORPTION,
+            WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED, UNDERWATER_VISION
+        );
+    }
+
+    private static void registerAbility(Register<AbilityData> event, AbilityData... dataList) {
+        for (AbilityData data : dataList) {
+            IForgeRegistry<AbilityData> registry = event.getRegistry();
+            if (!registry.containsValue(data)) {
+                event.getRegistry().register(data);
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
         registerBenchBlocks(event, benches);
         //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
             blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
-            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
         );
         // ==== DUNGEON BLOCKS ==== \\
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);

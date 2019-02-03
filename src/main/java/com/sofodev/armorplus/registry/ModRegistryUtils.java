@@ -4,8 +4,8 @@
 
 package com.sofodev.armorplus.registry;
 
+import com.sofodev.armorplus.caps.abilities.Material;
 import com.sofodev.armorplus.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.items.armors.Material;
 import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
 import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import com.sofodev.armorplus.items.armors.base.ItemUltimateArmor;

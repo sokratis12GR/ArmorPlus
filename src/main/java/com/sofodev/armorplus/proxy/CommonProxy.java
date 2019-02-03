@@ -12,6 +12,7 @@ import com.sofodev.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverl
 import com.sofodev.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
 import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
+import com.sofodev.armorplus.items.armors.ArmorMaterials;
 import com.sofodev.armorplus.registry.*;
 import com.sofodev.armorplus.util.LoaderUtils;
 import com.sofodev.armorplus.worldgen.OreGen;
@@ -26,6 +27,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
+import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.createRegistry;
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.registry.ModItems.*;
@@ -38,7 +40,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         if (enableExperimentalMode) {
             AbilityDataHandler.register();
+            createRegistry();
         }
+        new ArmorMaterials();
         ModBlocks.registerBlocks();
         registerItems();
         APItems.registerItemNames();

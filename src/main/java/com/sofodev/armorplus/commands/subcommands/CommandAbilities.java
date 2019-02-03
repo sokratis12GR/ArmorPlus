@@ -8,20 +8,24 @@ import com.sofodev.armorplus.caps.abilities.AbilityData;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.caps.abilities.AbilityData.canProvide;
+import static com.sofodev.armorplus.caps.abilities.AbilityData.getData;
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
-import static net.minecraft.item.ItemStack.areItemStacksEqual;
+import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.ABILITY_REGISTRY;
 import static net.minecraft.util.text.TextFormatting.GREEN;
 import static net.minecraft.util.text.TextFormatting.RED;
 
@@ -55,15 +59,15 @@ public class CommandAbilities extends CommandSubBase {
     /**
      * Get a list of options for when the user presses the TAB key
      */
+    @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         if (args.length == 1) {
             return getListOfStringsMatchingLastWord(args, "list", "limit", "add", "remove", "clear");
         } else if (args.length == 2 && ("add".equals(args[0]) || "remove".equals(args[0]))) {
-            AbilityData[] dataList = AbilityData.values();
-            List<String> abilities = Arrays.stream(dataList).map(AbilityData::getSafeName).collect(Collectors.toList());
+            List<ResourceLocation> abilities = ABILITY_REGISTRY.getEntries().stream().map(Map.Entry::getKey).collect(Collectors.toList());
             return getListOfStringsMatchingLastWord(args, abilities);
         } else if (args.length == 3 && "add".equals(args[0])) {
-            return getListOfStringsMatchingLastWord(args, "consume", "hide");
+            return getListOfStringsMatchingLastWord(args, "hide");
         } else if (args.length == 2 && "limit".equals(args[0])) {
             return getListOfStringsMatchingLastWord(args, "set");
         } else {
@@ -73,93 +77,76 @@ public class CommandAbilities extends CommandSubBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
-        if (sender.getCommandSenderEntity() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
-            ItemStack stack = player.getHeldItemMainhand();
-            IAbilityHandler handler = getHandler(stack);
-            if (handler != null && args.length > 0) {
-                int abilitySize = handler.getAbilities().size();
-                int limit = handler.getLimit();
-                if ("show".equals(args[0]) || "display".equals(args[0]) || "list".equals(args[0])) {
-                    ArrayList<String> abilities = new ArrayList<>();
-                    for (String id : handler.getAbilities()) {
-                        AbilityData data = AbilityData.getData(id);
-                        if (data != null) {
-                            abilities.add(data.getName());
-                        }
-                    }
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.show", abilities));
-                } else if ("limit".equals(args[0])) {
-                    if (args.length == 1) {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit", abilitySize, limit));
-                    } else if (args[1].equals("set")) {
-                        if (args.length == 3) {
-                            int wantedLimit = Integer.parseInt(args[2]);
-                            handler.setLimit(wantedLimit);
-                            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set", abilitySize, limit).setStyle(success));
-                        } else {
-                            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set.usage").setStyle(error));
-                        }
+        if (!(sender.getCommandSenderEntity() instanceof EntityPlayer)) {
+            return;
+        }
+        EntityPlayer player = (EntityPlayer) sender.getCommandSenderEntity();
+        ItemStack stack = player.getHeldItemMainhand();
+        IAbilityHandler handler = getHandler(stack);
+        if (handler == null) {
+            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.wrong_item").setStyle(error));
+        } else if (args.length <= 0) {
+            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.usage").setStyle(error));
+        } else {
+            String argA = args[0];
+            int abilitySize = handler.getAbilities().size();
+            int limit = handler.getLimit();
+            if ("show".equals(argA) || "display".equals(argA) || "list".equals(argA)) {
+                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.show", handler.getAbilities()));
+            } else if ("limit".equals(argA)) {
+                if (args.length == 1) {
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit", abilitySize, limit));
+                } else if (args[1].equals("set")) {
+                    if (args.length == 3) {
+                        byte wantedLimit = Byte.parseByte(args[2]);
+                        handler.setLimit(wantedLimit);
+                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set", abilitySize, limit).setStyle(success));
                     } else {
                         player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set.usage").setStyle(error));
                     }
-                } else if ("add".equals(args[0])) {
-                    String ability = (args[1]);
-                    AbilityData data = AbilityData.getData(ability);
-                    String id = data.getSafeName();
-                    if (!handler.getAbilities().contains(id)) {
-                        if (canProvide(stack, id)) {
-                            if (args.length == 2) {
-                                this.addAbility(handler, player, data, false);
-                            } else if (args.length == 3) {
-                                if (args[2].equals("consume")) {
-                                    if (id.equals("night_vision")) {
-                                        ItemStack coalStack = new ItemStack(Items.COAL, 64);
-                                        for (ItemStack slotStack : player.inventory.mainInventory) {
-                                            if (areItemStacksEqual(slotStack, coalStack)) {
-                                                slotStack.setCount(0);
-                                                return;
-                                            }
-                                        }
-                                        this.addAbility(handler, player, data, false);
-                                    }
-                                } else if (args[2].equals("hide")) {
-                                    this.addAbility(handler, player, data, true);
-                                } else {
-                                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.cost.usage").setStyle(error));
-                                }//This is here just in case you want to silently add an ability
+                } else {
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set.usage").setStyle(error));
+                }
+            } else if ("add".equals(argA)) {
+                ResourceLocation id = new ResourceLocation(args[1]);
+                AbilityData data = getData(id);
+                if (!handler.getAbilities().contains(data)) {
+                    if (canProvide(stack, data)) {
+                        if (args.length == 2) {
+                            this.addAbility(handler, player, data, false);
+                        } else if (args.length == 3) {
+                            //This is here just in case you want to silently add an ability
+                            if (args[2].equals("hide")) {
+                                this.addAbility(handler, player, data, true);
+                            } else {
+                                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.cost.usage").setStyle(error));
                             }
-                        } else {
-                            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.incorrect_ability", data.getName()).setStyle(error));
                         }
                     } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.fail.already_there", abilitySize, limit).setStyle(error));
-                    }
-                } else if ("clear".equals(args[0])) {
-                    if (!handler.getAbilities().isEmpty()) {
-                        handler.getAbilities().clear();
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.success").setStyle(success));
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.fail").setStyle(error));
-                    }
-                } else if ("remove".equals(args[0])) {
-                    if (args.length > 1) {
-                        AbilityData data = AbilityData.getData(args[1]);
-                        String id = data.getSafeName();
-                        List<String> oldAbilities = handler.getAbilities();
-                        if (!oldAbilities.isEmpty() && oldAbilities.contains(id)) {
-                            handler.removeAbility(id);
-                        } else {
-                            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.fail", data.getName()).setStyle(error));
-                        }
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.usage").setStyle(error));
+                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.incorrect_ability", data.getName()).setStyle(error));
                     }
                 } else {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.usage").setStyle(error));
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.fail.already_there", abilitySize, limit).setStyle(error));
                 }
-            } else if (handler == null) {
-                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.wrong_item").setStyle(error));
+            } else if ("clear".equals(argA)) {
+                if (!handler.getAbilities().isEmpty()) {
+                    handler.getAbilities().clear();
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.success").setStyle(success));
+                } else {
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.fail").setStyle(error));
+                }
+            } else if ("remove".equals(argA)) {
+                if (args.length > 1) {
+                    ResourceLocation id = new ResourceLocation(args[1]);
+                    AbilityData data = getData(id);
+                    if (!handler.getAbilities().isEmpty() && handler.getAbilities().contains(data)) {
+                        handler.removeAbility(data);
+                    } else {
+                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.fail", data.getName()).setStyle(error));
+                    }
+                } else {
+                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.usage").setStyle(error));
+                }
             } else {
                 player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.usage").setStyle(error));
             }
@@ -170,10 +157,9 @@ public class CommandAbilities extends CommandSubBase {
     private void addAbility(IAbilityHandler handler, EntityPlayer player, AbilityData data, boolean hide) {
         int abilitySize = handler.getAbilities().size();
         int limit = handler.getLimit();
-        String id = data.getSafeName();
         if (abilitySize < limit) {
             if (!isEmpty(data)) {
-                handler.addAbility(id);
+                handler.addAbility(data);
                 if (!hide) {
                     player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.success", data.getName()).setStyle(success));
                 }
@@ -184,6 +170,6 @@ public class CommandAbilities extends CommandSubBase {
     }
 
     private boolean isEmpty(AbilityData data) {
-        return Objects.equals(data.getName(), "Empty");
+        return Objects.equals(data.getRegistryName(), "armorplus:empty");
     }
 }

@@ -64,6 +64,7 @@ public class ModBlocks {
     public static Trophy[] types = new Trophy[]{
         ANY, ELDER_GUARDIAN, WITHER_BOSS, ENDER_DRAGON, SKELETAL_KING, GUARDIAN_OVERLORD, DEMONIC_DRAGON, THE_LORD_OF_EVERYTHING
     };
+    public static BlockMeltingObsidian blockMeltingObsidian = new BlockMeltingObsidian();
     // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 
     public static void registerBlocks() {

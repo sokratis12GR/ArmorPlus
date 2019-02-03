@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.util;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.items.armors.Tier;
 import com.sofodev.armorplus.items.armors.APArmorMaterial;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -59,8 +60,8 @@ public class EnumHelperUtil {
         return EnumHelper.addArmorMaterial(enumName, setLocation(textureName), durability, armorPoints, enchantability, soundOnEquip, (float) toughnessPoints);
     }
 
-    public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, EnumTiers enumTiers) {
-        return addArmorMaterial(enumName, textureName, durability, armorPoints, enumTiers.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
+    public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, Tier tier) {
+        return addArmorMaterial(enumName, textureName, durability, armorPoints, tier.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
     }
 
     public static HorseArmorType addHorseArmor(String name, int armorStrength) {

@@ -47,32 +47,25 @@ public class GlobalEventArmorPlus {
         if ((rp.contains("lava") && rp.contains("obsidian")) || rp.contains("lava") && rp.contains("infuser")) {
             event.setBorderStart(gold.getRGB());
             event.setBorderEnd(darkPurple.getRGB());
-        } else if (match(rl, "Coal", "coal")) {
-            setBorderColor(event, GRAY);
-        } else if (match(rl, "Lapis", "lapis", "blue")) {
-            setBorderColor(event, BLUE);
-        } else if (match(rl, "Redstone", "redstone", "ardite", "high_tech_bench", "red")) {
-            setBorderColor(event, RED);
-        } else if (match(rl, "Emerald", "emerald", "green")) {
-            setBorderColor(event, GREEN);
-        } else if (match(rl, "obsidian")) {
-            setBorderColor(event, darkPurple);
-        } else if (match(rl, "lava", "champion_bench", "lava")) {
-            setBorderColor(event, gold);
-        } else if (match(rl, "Guardian", "guardian", "chicken")) {
-            setBorderColor(event, CYAN);
-        } else if (match(rl, "Wither", "wither", "super_star", "white")) {
-            setBorderColor(event, WHITE);
-        } else if (match(rl, "Ender Dragon", "ender_dragon", "manyullyn", "knight_slime", "purple")) {
-            setBorderColor(event, purple);
-        } else if (match(rl, "Ultimate", "ultimate", "slime", "ulti_tech_bench")) {
-            setBorderColor(event, lightGreen);
-        } else if (match(rl, "Cobalt", "cobalt", "workbench")) {
-            setBorderColor(event, lightBlue);
-        } else if (match(rl, "Yellow", "yellow")) {
-            setBorderColor(event, YELLOW);
-        } else if (match(rl, "Black", "black")) {
-            setBorderColor(event, BLACK);
+        }
+        setBorder(event, GRAY, rl, "Coal", "coal");
+        setBorder(event, BLUE, rl, "Lapis", "lapis", "blue");
+        setBorder(event, RED, rl, "Redstone", "redstone", "ardite", "high_tech_bench", "red");
+        setBorder(event, GREEN, rl, "Emerald", "emerald", "green");
+        setBorder(event, darkPurple, rl, "Obsidian", "obsidian");
+        setBorder(event, gold, rl, "Lava", "champion_bench", "lava");
+        setBorder(event, CYAN, rl, "Guardian", "guardian", "chicken");
+        setBorder(event, WHITE, rl, "Wither", "wither", "super_star", "white");
+        setBorder(event, purple, rl, "Ender Dragon", "ender_dragon", "manyullyn", "knight_slime", "purple");
+        setBorder(event, lightGreen, rl, "Ultimate", "ultimate", "slime", "ulti_tech_bench");
+        setBorder(event, lightBlue, rl, "Cobalt", "cobalt", "workbench");
+        setBorder(event, YELLOW, rl, "Yellow", "yellow");
+        setBorder(event, BLACK, rl, "Black", "black");
+    }
+
+    private static void setBorder(RenderTooltipEvent.Color event, Color color, ResourceLocation rl, String name, String... ids) {
+        if (match(rl, name, ids)) {
+            setBorderColor(event, color);
         }
     }
 
@@ -88,6 +81,10 @@ public class GlobalEventArmorPlus {
         return Arrays.stream(ids).anyMatch(rp::contains);
     }
 
+    /**
+     * @param event the tooltip event that we will use to change the border's colors
+     * @param color the color that we will set for both the start and the end of the border
+     */
     public static void setBorderColor(RenderTooltipEvent.Color event, Color color) {
         event.setBorderStart(color.getRGB());
         event.setBorderEnd(color.getRGB());

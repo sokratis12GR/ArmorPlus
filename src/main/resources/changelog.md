@@ -1,3 +1,10 @@
+ArmorPlus 1.12.2-11.18.0.52
+----------------------------
+
+* Slowly migrating towards the new Ability System. Migration will be done in **1.13**.
+* Made a registry that other mods can use to implement their own abilities.
+* Introducing abilities: Walk on Lava, Bonus XP on Kill, Underwater Vision
+
 ArmorPlus 1.12.2-11.17.1.51
 ----------------------------
 
@@ -131,7 +138,7 @@ ArmorPlus 1.12.2-11.11.0.36-beta
 * Added horse armor
   * This feature is still wip, some horse armor textures are working horse armors and functionality
   * In the works: Introduction of abilities, textures for them all, crafting recipes and configuration for all of these stuff
-* Added the ability to set a material type of weapons when hitting an entity to set them on fire, default disabled for all except the lava weapons
+* Added the ability to set a armorMaterial type of weapons when hitting an entity to set them on fire, default disabled for all except the lava weapons
 * Fixed different types of arrows having the coal arrow texture instead of their own ones
 * Fixed usage of incorrect data fixers
 * Added Overlord of the Guardians texture
@@ -171,7 +178,7 @@ ArmorPlus 1.12.2-11.10.0.34-beta
   * Potion effects, applied for both weapons and armor are now configurable and no longer limited to only 1 potion effect
   * You can now enable/disable the setting on fire effect from the infused lava weapons
   * Removable potion effects for when equiped a full set, i.e Super Star armor and its anti-wither effect is now a list for multiple effects on each armor
-  * You can now set each type of material (for armors only for now), to unbreakable.
+  * You can now set each type of armorMaterial (for armors only for now), to unbreakable.
  
 **Bugs Fixed**:
 

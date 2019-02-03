@@ -4,9 +4,9 @@
 
 package com.sofodev.armorplus.registry;
 
+import com.sofodev.armorplus.caps.abilities.Material;
 import com.sofodev.armorplus.items.ItemUltimateParts;
 import com.sofodev.armorplus.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.items.armors.Material;
 import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
 import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import com.sofodev.armorplus.items.armors.base.ItemUltimateArmor;
@@ -30,6 +30,7 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.items.enums.Cosmetics.*;
 import static com.sofodev.armorplus.registry.ModRegistryUtils.register;
@@ -130,7 +131,6 @@ public class ModItems {
         //HorseArmors
         IntStream.range(0, horseArmors.length).forEach(i -> horseArmors[i] = new ItemBaseHorseArmor(horseMaterial[i]));
         //Armors
-        // if (!enableExperimentalMode) {
         register(global_registry.enableChickenArmor, chicken, APArmorMaterial.CHICKEN);
         register(global_registry.enableSlimeArmor, slime, APArmorMaterial.SLIME);
         register(global_registry.enableCoalArmor, coal, APArmorMaterial.COAL);
@@ -143,25 +143,26 @@ public class ModItems {
         register(global_registry.enableSuperStarArmor, superStar, APArmorMaterial.SUPER_STAR);
         register(global_registry.enableEnderDragonArmor, enderDragon, APArmorMaterial.ENDER_DRAGON);
         register(global_registry.enableTheUltimateArmor, theUltimate);
-        //    } else {
-        register(chickenExp, Material.CHICKEN);
-        register(slimeExp, Material.SLIME);
-        register(coalExp, Material.COAL);
-        register(lapisExp, Material.LAPIS);
-        register(redstoneExp, Material.REDSTONE);
-        register(emeraldExp, Material.EMERALD);
-        register(obsidianExp, Material.OBSIDIAN);
-        register(lavaExp, Material.INFUSED_LAVA);
-        register(guardianExp, Material.GUARDIAN);
-        register(superStarExp, Material.SUPER_STAR);
-        register(enderDragonExp, Material.ENDER_DRAGON);
-        register(ultimateExp, Material.ULTIMATE);
-        register(arditeExp, Material.ARDITE);
-        register(cobaltExp, Material.COBALT);
-        register(manyullynExp, Material.MANYULLYN);
-        register(pigIronExp, Material.PIG_IRON);
-        register(knightSlimeExp, Material.KNIGHT_SLIME);
-        //  }
+
+        if (enableExperimentalMode) {
+            register(chickenExp, Material.CHICKEN);
+            register(slimeExp, Material.SLIME);
+            register(coalExp, Material.COAL);
+            register(lapisExp, Material.LAPIS);
+            register(redstoneExp, Material.REDSTONE);
+            register(emeraldExp, Material.EMERALD);
+            register(obsidianExp, Material.OBSIDIAN);
+            register(lavaExp, Material.INFUSED_LAVA);
+            register(guardianExp, Material.GUARDIAN);
+            register(superStarExp, Material.SUPER_STAR);
+            register(enderDragonExp, Material.ENDER_DRAGON);
+            register(ultimateExp, Material.ULTIMATE);
+            register(arditeExp, Material.ARDITE);
+            register(cobaltExp, Material.COBALT);
+            register(manyullynExp, Material.MANYULLYN);
+            register(pigIronExp, Material.PIG_IRON);
+            register(knightSlimeExp, Material.KNIGHT_SLIME);
+        }
 
         //Swords
         register(isSwordEnabled, sword, swordType);

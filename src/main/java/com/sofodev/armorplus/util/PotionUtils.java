@@ -8,6 +8,7 @@ import com.sofodev.armorplus.registry.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -75,6 +76,10 @@ public final class PotionUtils {
 
     public static Potion getPotion(String resourceLocation) {
         return (Utils.isNotNull(getPotionFromResourceLocation(resourceLocation))) ? getPotionFromResourceLocation(resourceLocation) : ModPotions.EMPTY;
+    }
+
+    public static Potion getPotion(ResourceLocation resourceLocation) {
+        return getPotion(resourceLocation.toString());
     }
 
     public enum PotionType {
