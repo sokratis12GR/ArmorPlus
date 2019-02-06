@@ -126,9 +126,19 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     private String notSpecial(ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
         if (handler != null) {
-            return !hasAbilities(handler) ? ITALIC + "No unlocked abilities" : "";
+            return !canProvideAny(stack) && !hasAbilities(handler) ? ITALIC + "No available abilities" : "";
         }
         return "";
+    }
+
+    public static boolean canProvideAny(ItemStack stack) {
+        List<Boolean> array = ABILITY_REGISTRY.getValuesCollection().stream().map(data -> canProvide(stack, data)).collect(Collectors.toList());
+        for (boolean canProvide : array) {
+            if (canProvide) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -177,14 +187,15 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
         if (handler != null && hasAbilities(handler)) {
-            for (AbilityData data : handler.getAbilities().stream().filter(AbilityData::isPotion).collect(Collectors.toList())) {
-                if (canProvide(stack, data) && contains(handler, data) && data.isPotion()) {
-                    data.applyPotionToPlayer(player);
-                }
-            }
             for (AbilityData data : handler.getAbilities()) {
-                if (canProvide(stack, data) && contains(handler, data)) {
-                    data.onArmorTick(world, player, stack);
+                if (contains(handler, data)) {
+                    if (canProvide(stack, data)) {
+                        if (data.isPotion()) {
+                            data.applyPotionToPlayer(player);
+                        }
+                        data.onArmorTick(world, player, stack);
+                    }
+                    data.onSpecialArmorTick(world, player, stack);
                 }
             }
         }

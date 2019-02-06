@@ -201,7 +201,7 @@ public class RegistryEventHandler {
     public static void registerAbilities(Register<AbilityData> event) {
         registerAbility(event,
             NONE, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, ABSORPTION,
-            WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED, UNDERWATER_VISION
+            WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED
         );
     }
 

@@ -7,11 +7,11 @@ package com.sofodev.armorplus.caps.abilities;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
 import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -25,6 +25,7 @@ import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.ABILITY_
 import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.NONE;
 import static com.sofodev.armorplus.util.PotionUtils.addPotion;
 import static com.sofodev.armorplus.util.PotionUtils.getPotion;
+import static net.minecraft.init.MobEffects.REGENERATION;
 import static net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
@@ -42,31 +43,31 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
      */
     private final Material[] materials;
 
-    public AbilityData(ResourceLocation rl, String name, EntityEquipmentSlot[] slot, Material... materials) {
+    public AbilityData(ResourceLocation rl, String translatableName, EntityEquipmentSlot[] slot, Material... materials) {
         this.setRegistryName(rl);
-        this.name = name;
+        this.name = new TextComponentTranslation(translatableName).getFormattedText();
         this.slot = slot;
         this.materials = materials;
     }
 
-    public AbilityData(String rl, String name, EntityEquipmentSlot[] slot, Material... materials) {
-        this(new ResourceLocation(rl), name, slot, materials);
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot[] slot, Material... materials) {
+        this(new ResourceLocation(rl), translatableName, slot, materials);
     }
 
-    public AbilityData(String rl, String name, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, Material... materials) {
-        this(rl, name, new EntityEquipmentSlot[]{a, b, c, d}, materials);
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, Material... materials) {
+        this(rl, translatableName, new EntityEquipmentSlot[]{a, b, c, d}, materials);
     }
 
-    public AbilityData(String rl, String name, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, Material... materials) {
-        this(rl, name, a, b, c, null, materials);
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, Material... materials) {
+        this(rl, translatableName, a, b, c, null, materials);
     }
 
-    public AbilityData(String rl, String name, EntityEquipmentSlot a, EntityEquipmentSlot b, Material... materials) {
-        this(rl, name, a, b, null, null, materials);
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, Material... materials) {
+        this(rl, translatableName, a, b, null, null, materials);
     }
 
-    public AbilityData(String rl, String name, EntityEquipmentSlot a, Material... materials) {
-        this(rl, name, a, null, null, null, materials);
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, Material... materials) {
+        this(rl, translatableName, a, null, null, null, materials);
     }
 
 
@@ -108,7 +109,8 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
         AbilityPotion potion = new AbilityPotion(this.getRegistryName());
         if (isPotion() && this.getRegistryName() != null) {
             Potion actualPotion = getPotion(potion.getResourceLocation());
-            if (actualPotion != null || !(player.isPotionActive(MobEffects.REGENERATION))) {
+            //Here we hardcode check if the player doesn't have the regeneration ability because it needs ticking time to be able to apply its effect, if its re-applied instantly the ability doesnt go into effect.
+            if (actualPotion != null || !(player.isPotionActive(REGENERATION))) {
                 addPotion(player, actualPotion, potion.getDuration(), potion.getAmplifier(), potion.isAmbientIn(), potion.getType());
             }
         }
@@ -117,7 +119,13 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
 
     /**
      * Triggers when the armor piece ticks {@link ItemArmorV2#onArmorTick}
+     *
+     * Caution: This event doesn't check whether or not the Ability can be provided by other EntityEquipmentSlots, you will have to make sure to check if it can be provided {@link ItemArmorV2#onArmorTick(World, EntityPlayer, ItemStack)}
      */
+    public void onSpecialArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        //No need for abstraction
+    }
+
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
         //No need for abstraction
     }
@@ -151,9 +159,9 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
     }
 
     /**
-     * Triggers when the entity jumps {@link LivingJumpEvent}
+     * Triggers when the wearer jumps {@link LivingJumpEvent}
      */
-    public void onJump(LivingJumpEvent event, ItemStack stack) {
+    public void onPlayerJump(LivingJumpEvent event, ItemStack stack) {
         //No need for abstraction
     }
 

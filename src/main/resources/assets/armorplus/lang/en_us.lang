@@ -620,3 +620,24 @@ item.armorplus.ultimate_prototype_helmet.name=The Ultimate Helmet
 item.armorplus.ultimate_prototype_chestplate.name=The Ultimate Chestplate
 item.armorplus.ultimate_prototype_leggings.name=The Ultimate Leggings
 item.armorplus.ultimate_prototype_boots.name=The Ultimate Boots
+
+#AbilityNames
+ability.armorplus.empty.name=Empty
+ability.armorplus.night_vision.name=Night Vision
+ability.armorplus.water_breathing.name=Water Breathing
+ability.armorplus.resistance.name=Resistance
+ability.armorplus.fire_resistance.name=Fire Resistance
+ability.armorplus.haste.name=Haste
+ability.armorplus.speed.name=Speed
+ability.armorplus.jump_boost.name=Jump Boost
+ability.armorplus.regeneration.name=Regeneration
+ability.armorplus.strength.name=Strength
+ability.armorplus.invisibility.name=Invisibility
+ability.armorplus.absorption.name=Absorption
+ability.armorplus.wither_proof.name=Wither Proof
+ability.armorplus.flight.name=Flight
+ability.armorplus.step_assist.name=Step Assist
+ability.armorplus.bonus_xp_on_kill.name=Bonus XP on Kill
+ability.armorplus.walk_on_lava.name=Walk on Lava
+ability.armorplus.swimming_speed.name=Swimming Speed
+ability.armorplus.underwater_vision.name=Underwater Vision

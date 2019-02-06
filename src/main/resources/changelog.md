@@ -3,7 +3,11 @@ ArmorPlus 1.12.2-11.18.0.52
 
 * Slowly migrating towards the new Ability System. Migration will be done in **1.13**.
 * Made a registry that other mods can use to implement their own abilities.
-* Introducing abilities: Walk on Lava, Bonus XP on Kill, Underwater Vision
+  - Ability Registry - the registry where people can register their own abilities.
+  - AbilityData - the class mods will need to extend and implement with mod-provided methods, if something is missing contact me to add more stuff.
+  - ImplementedAbilities - all the implemented abilities by ArmorPlus
+  - Made the ability names translatable
+* Introducing abilities: Walk on Lava, Bonus XP on Kill, Wither-Proof, Potion Abilities
 
 ArmorPlus 1.12.2-11.17.1.51
 ----------------------------

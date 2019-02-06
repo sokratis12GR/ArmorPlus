@@ -26,7 +26,7 @@ import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler
 public class AbilityDataEventHandler {
 
     @SubscribeEvent
-    public static void onJump(LivingEvent.LivingJumpEvent event) {
+    public static void onPlayerJump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             ItemStack stack = player.getArmorInventoryList().iterator().next();
@@ -34,7 +34,7 @@ public class AbilityDataEventHandler {
             if (validated(handler, stack)) {
                 for (AbilityData data : handler.getAbilities()) {
                     if (canApply(handler, data, stack)) {
-                        data.onJump(event, stack);
+                        data.onPlayerJump(event, stack);
                     }
                 }
             }
@@ -75,7 +75,7 @@ public class AbilityDataEventHandler {
     }
 
     @SubscribeEvent
-    public static void onEntityBreakBlock(BlockEvent.BreakEvent event) {
+    public static void onPlayerBreakBlock(BlockEvent.BreakEvent event) {
         EntityPlayer player = event.getPlayer();
         ItemStack stack = player.getArmorInventoryList().iterator().next();
         IAbilityHandler handler = getHandler(stack);

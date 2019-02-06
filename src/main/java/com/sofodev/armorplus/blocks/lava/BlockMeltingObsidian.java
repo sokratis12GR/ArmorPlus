@@ -9,6 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,17 +27,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static com.sofodev.armorplus.util.Utils.setName;
 import static com.sofodev.armorplus.util.Utils.setRL;
 
 public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock {
+
+    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 3);
 
     public BlockMeltingObsidian() {
         super(Material.ROCK, false);
@@ -45,6 +52,21 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
         this.setHardness(0.5F);
         this.setLightOpacity(3);
         this.setSoundType(SoundType.STONE);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
+    }
+
+    /**
+     * Convert the BlockState into the correct metadata value
+     */
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(AGE);
+    }
+
+    /**
+     * Convert the given metadata into a BlockState for this Block
+     */
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(AGE, MathHelper.clamp(meta, 0, 3));
     }
 
     /**
@@ -57,7 +79,7 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
 
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if ((rand.nextInt(3) == 0 || this.countNeighbors(worldIn, pos) < 4) && worldIn.getLightFromNeighbors(pos) > 11 - state.getLightOpacity(worldIn, pos)) {
+        if ((rand.nextInt(3) == 0 || this.countNeighbors(worldIn, pos) < 4) && worldIn.getLightFromNeighbors(pos) > 11 - state.getValue(AGE) - state.getLightOpacity(worldIn, pos)) {
             this.slightlyMelt(worldIn, pos, state, rand, true);
         } else {
             worldIn.scheduleUpdate(pos, this, MathHelper.getInt(rand, 20, 40));
@@ -85,10 +107,10 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
         player.addExhaustion(0.005F);
 
         if (this.canSilkHarvest(worldIn, pos, state, player) && EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0) {
-            java.util.List<ItemStack> items = new java.util.ArrayList<>();
+            List<ItemStack> items = new ArrayList<>();
             items.add(this.getSilkTouchDrop(state));
 
-            net.minecraftforge.event.ForgeEventFactory.fireBlockHarvesting(items, worldIn, pos, state, 0, 1.0f, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, worldIn, pos, state, 0, 1.0f, true, player);
             for (ItemStack is : items)
                 spawnAsEntity(worldIn, pos, is);
         } else {
@@ -104,7 +126,7 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
             Material material = worldIn.getBlockState(pos.down()).getMaterial();
 
             if (material.blocksMovement() || material.isLiquid()) {
-                worldIn.setBlockState(pos, Blocks.FLOWING_LAVA.getDefaultState());
+                worldIn.setBlockState(pos, Blocks.LAVA.getDefaultState());
             }
         }
     }
@@ -131,15 +153,22 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
     }
 
     protected void slightlyMelt(World worldIn, BlockPos pos, IBlockState state, Random rand, boolean meltNeighbors) {
-        this.turnIntoLava(worldIn, pos);
+        int age = state.getValue(AGE);
 
-        if (meltNeighbors) {
-            for (EnumFacing enumfacing : EnumFacing.values()) {
-                BlockPos blockpos = pos.offset(enumfacing);
-                IBlockState blockState = worldIn.getBlockState(blockpos);
+        if (age < 3) {
+            worldIn.setBlockState(pos, state.withProperty(AGE, age + 1), 2);
+            worldIn.scheduleUpdate(pos, this, MathHelper.getInt(rand, 20, 40));
+        } else {
+            this.turnIntoLava(worldIn, pos);
 
-                if (blockState.getBlock() == this) {
-                    this.slightlyMelt(worldIn, blockpos, blockState, rand, false);
+            if (meltNeighbors) {
+                for (EnumFacing enumfacing : EnumFacing.values()) {
+                    BlockPos blockpos = pos.offset(enumfacing);
+                    IBlockState iblockstate = worldIn.getBlockState(blockpos);
+
+                    if (iblockstate.getBlock() == this) {
+                        this.slightlyMelt(worldIn, blockpos, iblockstate, rand, false);
+                    }
                 }
             }
         }
@@ -150,6 +179,11 @@ public class BlockMeltingObsidian extends BlockBreakable implements IModdedBlock
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         return ItemStack.EMPTY;
     }
+
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, AGE);
+    }
+
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
