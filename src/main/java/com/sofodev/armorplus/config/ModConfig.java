@@ -98,8 +98,6 @@ public class ModConfig {
             public double attackDamage = 3.0;
             @Comment({"Set the Ender Dragon Zombie's Movement Speed"})
             public double movementSpeed = 0.23000000417232513;
-            @Comment({"Set the Ender Dragon Zombie's Follow Range"})
-            public double followRange = 35.0;
             @Comment({"Enable/Disable the Ender Dragon Zombie's Withering Effect"})
             public boolean enableWithering = true;
             @Comment({"Set the Ender Dragon Zombie's Withering effect Duration"})

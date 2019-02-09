@@ -23,6 +23,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.sofodev.armorplus.util.TextUtils.translatedText;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.util.text.TextFormatting.GRAY;
@@ -96,7 +97,7 @@ public final class ToolTipUtils {
      * @param areFullSet checks if the abilities are for sets or for individual pieces
      */
     private static void abilitySorter(List<String> tooltip, List<String> abilities, List<Integer> amplifier, int colorIndex, boolean areFullSet) {
-        addToolTip(tooltip, areFullSet ? "\u00a79Full set abilities" : "\u00a79Abilities");
+        addToolTip(tooltip, areFullSet ? translatedText("item.armorplus.ability_holder.full_set") : translatedText("item.armorplus.ability_holder.piece"));
         for (int abilityIndex = 0; abilityIndex < abilities.size(); abilityIndex++) {
             if (abilities.get(abilityIndex).contains("empty")) {
                 continue;

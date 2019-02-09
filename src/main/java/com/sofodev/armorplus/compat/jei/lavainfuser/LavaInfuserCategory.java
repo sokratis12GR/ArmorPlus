@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
 
     private IDrawable background;
-    private String localizedName = TextUtils.formattedText("gui.jei.category.armorplus.infusing");
+    private String localizedName = TextUtils.translatedText("gui.jei.category.armorplus.infusing");
 
     public LavaInfuserCategory() {
         ResourceLocation location = Utils.setRL("textures/gui/container/gui_lava_infuser.png");

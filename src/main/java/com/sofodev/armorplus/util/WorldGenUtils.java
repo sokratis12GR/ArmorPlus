@@ -13,7 +13,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static java.lang.String.format;
+import static com.sofodev.armorplus.util.TextUtils.translatedText;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -38,30 +38,29 @@ public class WorldGenUtils {
 
     public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunkX, int chunkZ, int chancesToSpawn, int minHeight, int maxHeight) {
         if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight) {
-            throw new AssertionError(format("Illegal Height Arguments for WorldGenerator. Min height must in the range (0, %d) [Value: %d]. Max height must not be greater than 256. [Value: %d", maxHeight, minHeight, maxHeight));
+            throw new AssertionError(translatedText("error.world_gen.armorplus.generator_height", maxHeight, minHeight, maxHeight));
         }
         int heightDiff = maxHeight - minHeight + 1;
         for (int i = 0; i < chancesToSpawn; i++) {
-            int x;
             int y;
-            int z;
             y = minHeight + rand.nextInt(heightDiff);
-            x = getExactRandPos(chunkX, rand);
-            z = getExactRandPos(chunkZ, rand);
-            BlockPos orePos = new BlockPos(x, y, z);
-            generator.generate(world, rand, orePos);
+            generate(generator, world, rand, chunkX, chunkZ, y);
         }
     }
 
     public static void runGenerator(WorldGenerator generator, World world, Random rand, int chunkX, int chunkZ, int chancesToSpawn, int posY) {
         for (int i = 0; i < chancesToSpawn; i++) {
-            int x;
-            int z;
-            x = getExactRandPos(chunkX, rand);
-            z = getExactRandPos(chunkZ, rand);
-            BlockPos orePos = new BlockPos(x, posY, z);
-            generator.generate(world, rand, orePos);
+            generate(generator, world, rand, chunkX, chunkZ, posY);
         }
+    }
+
+    private static void generate(WorldGenerator generator, World world, Random rand, int chunkX, int chunkZ, int y) {
+        int x;
+        int z;
+        x = getExactRandPos(chunkX, rand);
+        z = getExactRandPos(chunkZ, rand);
+        BlockPos orePos = new BlockPos(x, y, z);
+        generator.generate(world, rand, orePos);
     }
 
     public static int getExactRandPos(int chunk, Random rand) {

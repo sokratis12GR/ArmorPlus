@@ -26,6 +26,7 @@ public class EntityModdedArrow extends EntityArrow {
         this.arrowProperties = new ArrowProperties(0.0, CLOUD, ARROW) {
             @Override
             public void arrowHit(EntityLivingBase living, Entity shootingEntity) {
+                //
             }
         };
     }

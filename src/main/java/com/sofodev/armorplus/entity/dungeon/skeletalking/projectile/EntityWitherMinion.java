@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.entity.dungeon.skeletalking.projectile;
 
 import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
-import com.sofodev.armorplus.util.TextUtils;
 import com.sofodev.armorplus.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -14,6 +13,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -35,6 +35,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 
 import static com.sofodev.armorplus.entity.dungeon.skeletalking.projectile.Skeleton.*;
+import static com.sofodev.armorplus.util.TextUtils.translate;
 import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
@@ -132,7 +133,9 @@ public class EntityWitherMinion extends EntityFireball implements IThrowableEnti
                 }
             }
         }
-        result.entityHit.sendMessage(TextUtils.formatText(TextFormatting.RED, phaseText, TextFormatting.ITALIC));
+        if (result.entityHit instanceof EntityPlayer) {
+            ((EntityPlayer) result.entityHit).sendStatusMessage(translate(TextFormatting.RED, phaseText, TextFormatting.ITALIC), true);
+        }
         this.setDead();
     }
 

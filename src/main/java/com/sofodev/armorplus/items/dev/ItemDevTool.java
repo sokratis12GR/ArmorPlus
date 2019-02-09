@@ -18,6 +18,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
@@ -70,7 +71,7 @@ public class ItemDevTool extends ItemBase {
     }
 
     private void writeFile(EntityPlayer player, EntityLivingBase entity) {
-        new File("./armorplus/entity/" + player.getUniqueID()).mkdirs();
+        new File(String.format("./config/armorplus/dev_tool/entities/%s/%s", entity.getName(), player.getUniqueID())).mkdirs();
         //Write JSON String to file
         LocalDateTime dateTime = LocalDateTime.now();
         String timeStamp = dateTime.getHour() + "-" + dateTime.getMinute() + "-" + dateTime.getSecond() + "-" + dateTime.getYear() + "-" + dateTime.getMonth().getValue() + "-" + dateTime.getDayOfMonth();
@@ -155,11 +156,11 @@ public class ItemDevTool extends ItemBase {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag advanced) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\247cOnly works if debugMode = true in the configuration file");
-            tooltip.add("§9Ability: §rGives Information about the Target");
-            tooltip.add("§3Use: §rRight Click a Target");
+            tooltip.add(new TextComponentTranslation("item.armorplus.dev_tool.desc_one", debugMode).getFormattedText());
+            tooltip.add(new TextComponentTranslation("item.armorplus.dev_tool.desc_two").getFormattedText());
+            tooltip.add(new TextComponentTranslation("item.armorplus.dev_tool.desc_three").getFormattedText());
             if (advanced.isAdvanced()) {
-                tooltip.add("Information is located at: <instance>/armorplus/<player_name>/<entity>-<id>-<date>");
+                tooltip.add(new TextComponentTranslation("item.armorplus.dev_tool.desc.advanced").getFormattedText());
             }
         } else {
             showInfo(tooltip, keyBindSneak, TextFormatting.BOLD);

@@ -53,10 +53,10 @@ public class APTab extends CreativeTabs {
     }
 
     private ItemStack addTabItemStack(Object stack) {
-        return stack instanceof Block || stack instanceof Item ? getLavaBucket(stack) : ItemStack.EMPTY;
+        return stack instanceof Block || stack instanceof Item ? getLavaCrystal(stack) : ItemStack.EMPTY;
     }
 
-    private ItemStack getLavaBucket(Object stack) {
+    private ItemStack getLavaCrystal(Object stack) {
         return !getItemStack(stack).isEmpty() ? getItemStack(stack) : getItemStack(ModItems.itemLavaCrystal);
     }
 

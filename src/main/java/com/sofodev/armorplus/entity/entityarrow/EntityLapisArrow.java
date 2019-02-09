@@ -7,7 +7,7 @@ package com.sofodev.armorplus.entity.entityarrow;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
-import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.lapisArrow;
+import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.LAPIS_ARROW;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -15,14 +15,14 @@ import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.lapisArrow;
 public class EntityLapisArrow extends EntityModdedArrow {
 
     public EntityLapisArrow(World worldIn) {
-        super(worldIn, lapisArrow);
+        super(worldIn, LAPIS_ARROW);
     }
 
     public EntityLapisArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z, lapisArrow);
+        super(worldIn, x, y, z, LAPIS_ARROW);
     }
 
     public EntityLapisArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter, lapisArrow);
+        super(worldIn, shooter, LAPIS_ARROW);
     }
 }

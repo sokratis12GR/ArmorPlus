@@ -33,7 +33,7 @@ public class ConfigGuiFactory implements IModGuiFactory {
     @Override
     @SideOnly(Side.CLIENT)
     public GuiScreen createConfigGui(GuiScreen parentScreen) {
-        return new GuiConfig(parentScreen, ArmorPlus.MODID, TextUtils.formattedText("gui.armorplus.config.title"));
+        return new GuiConfig(parentScreen, ArmorPlus.MODID, TextUtils.translatedText("gui.armorplus.config.title"));
     }
 
     @Override

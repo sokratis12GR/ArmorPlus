@@ -30,11 +30,11 @@ public class CommandNodecraft extends CommandSubBase {
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/armorplus");
         Style linkStyle = new Style().setColor(BLUE).setUnderlined(true).setClickEvent(promoLink);
-        sendMessages(sender, TextUtils.formatText(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"), TextUtils.formatText(
+        sendMessages(sender, TextUtils.translate(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"), TextUtils.translate(
             "commands.armorplus.nodecraft.promo.start.text", ""
-        ).appendSibling(TextUtils.formatText(
+        ).appendSibling(TextUtils.translate(
             "commands.armorplus.nodecraft.promo.middle.text"
-        ).setStyle(linkStyle)).appendSibling(TextUtils.formatText(
+        ).setStyle(linkStyle)).appendSibling(TextUtils.translate(
             "commands.armorplus.nodecraft.promo.end.text", "30%")
         ));
     }

@@ -57,17 +57,17 @@ public class ItemMaterial extends Item implements IModdedItem {
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        switch (stack.getMetadata()) {
-            case 0:
-                return this.getRarity("CHAINMAIL", TextFormatting.GRAY, "Chainmail");
-            case 1:
-                return this.getRarity("GUARDIAN_SCALE", TextFormatting.AQUA, "Guardian Scale");
-            case 2:
-                return this.getRarity("WITHER_BONE", TextFormatting.WHITE, "Wither Bone");
-            case 3:
-                return this.getRarity("ENDER_DRAGON_SCALE", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
-            case 4:
-                return this.getRarity("THE_ULTIMATE_MATERIAL", TextFormatting.GREEN, "The Ultimate Material");
+        int i = stack.getMetadata();
+        if (i == 0) {
+            return this.getRarity("CHAINMAIL", TextFormatting.GRAY, "Chainmail");
+        } else if (i == 1) {
+            return this.getRarity("GUARDIAN_SCALE", TextFormatting.AQUA, "Guardian Scale");
+        } else if (i == 2) {
+            return this.getRarity("WITHER_BONE", TextFormatting.WHITE, "Wither Bone");
+        } else if (i == 3) {
+            return this.getRarity("ENDER_DRAGON_SCALE", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
+        } else if (i == 4) {
+            return this.getRarity("THE_ULTIMATE_MATERIAL", TextFormatting.GREEN, "The Ultimate Material");
         }
         return this.getRarity("DEFAULT", TextFormatting.WHITE, "Default");
     }

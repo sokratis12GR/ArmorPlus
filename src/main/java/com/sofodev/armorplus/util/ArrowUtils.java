@@ -14,6 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 import static com.sofodev.armorplus.client.utils.ToolTipUtils.showInfo;
+import static com.sofodev.armorplus.util.TextUtils.translatedText;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -24,8 +25,8 @@ public class ArrowUtils {
     public static void addArrowInformation(List<String> tooltip, String effect, double damage, TextFormatting formatting) {
         KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(TextUtils.formattedText("§9Ability: §r%s", effect));
-            tooltip.add(TextUtils.formattedText("§3Base Arrow Damage: §r%s", damage));
+            tooltip.add(translatedText("item.armorplus.arrow.ability_desc", effect));
+            tooltip.add(translatedText("item.armorplus.arrow.ability", damage));
         } else {
             showInfo(tooltip, keyBindSneak, formatting);
         }

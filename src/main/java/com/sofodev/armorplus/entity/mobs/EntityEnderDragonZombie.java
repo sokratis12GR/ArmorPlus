@@ -92,13 +92,11 @@ public class EntityEnderDragonZombie extends EntityMob {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.followRange);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.movementSpeed);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.attackDamage);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.armor);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ModConfig.EntitiesConfig.ender_dragon_zombie.health);
         if (ModConfig.DebugConfig.debugMode && ModConfig.DebugConfig.debugModeEnderDragonZombie) {
-            LogHelper.getLogger(MODID).info("EnderDragon Zombie Follow Range: " + ModConfig.EntitiesConfig.ender_dragon_zombie.followRange);
             LogHelper.getLogger(MODID).info("EnderDragon Zombie Movement Speed: " + ModConfig.EntitiesConfig.ender_dragon_zombie.movementSpeed);
             LogHelper.getLogger(MODID).info("EnderDragon Zombie Attack Damage: " + ModConfig.EntitiesConfig.ender_dragon_zombie.attackDamage);
             LogHelper.getLogger(MODID).info("EnderDragon Zombie Armor: " + ModConfig.EntitiesConfig.ender_dragon_zombie.armor);

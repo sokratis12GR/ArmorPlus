@@ -13,14 +13,14 @@ import net.minecraft.world.World;
 public class EntityCoalArrow extends EntityModdedArrow {
 
     public EntityCoalArrow(World worldIn) {
-        super(worldIn, ModdedArrows.coalArrow);
+        super(worldIn, ModdedArrows.COAL_ARROW);
     }
 
     public EntityCoalArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z, ModdedArrows.coalArrow);
+        super(worldIn, x, y, z, ModdedArrows.COAL_ARROW);
     }
 
     public EntityCoalArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter, ModdedArrows.coalArrow);
+        super(worldIn, shooter, ModdedArrows.COAL_ARROW);
     }
 }

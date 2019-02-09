@@ -16,6 +16,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,9 +55,9 @@ public class ItemLavaCrystal extends Item implements IModdedItem {
         if (ToolTipUtils.isKeyDown()) {
             int i = stack.getMetadata();
             if (i == 0) {
-                tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be obtained by mining Ore Lava Crystal");
+                tooltip.add(DARK_PURPLE + ITALIC.toString() + new TextComponentTranslation("item.armorplus.lava_crystal.desc").getFormattedText());
             } else if (i == 1) {
-                tooltip.add(ITALIC + "" + DARK_PURPLE + "Can be created by infusing the Lava Crystal inside the Lava Infuser");
+                tooltip.add(DARK_PURPLE + ITALIC.toString() + new TextComponentTranslation("item.armorplus.infused_lava_crystal.desc").getFormattedText());
             }
         } else {
             ToolTipUtils.showInfo(tooltip, keyBindSneak, TextFormatting.GOLD);

@@ -43,31 +43,31 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
      */
     private final Material[] materials;
 
-    public AbilityData(ResourceLocation rl, String translatableName, EntityEquipmentSlot[] slot, Material... materials) {
+    public AbilityData(ResourceLocation rl, String translatableName, EquipmentSlot slot, Material... materials) {
         this.setRegistryName(rl);
         this.name = new TextComponentTranslation(translatableName).getFormattedText();
-        this.slot = slot;
+        this.slot = slot.getSlots();
         this.materials = materials;
     }
 
-    public AbilityData(String rl, String translatableName, EntityEquipmentSlot[] slot, Material... materials) {
+    public AbilityData(String rl, String translatableName, EquipmentSlot slot, Material... materials) {
         this(new ResourceLocation(rl), translatableName, slot, materials);
     }
 
     public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, Material... materials) {
-        this(rl, translatableName, new EntityEquipmentSlot[]{a, b, c, d}, materials);
+        this(rl, translatableName, new EquipmentSlot(a, b, c, d), materials);
     }
 
     public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, Material... materials) {
-        this(rl, translatableName, a, b, c, null, materials);
+        this(rl, translatableName, new EquipmentSlot(a, b, c), materials);
     }
 
     public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, Material... materials) {
-        this(rl, translatableName, a, b, null, null, materials);
+        this(rl, translatableName, new EquipmentSlot(a, b), materials);
     }
 
     public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, Material... materials) {
-        this(rl, translatableName, a, null, null, null, materials);
+        this(rl, translatableName, new EquipmentSlot(a), materials);
     }
 
 
@@ -106,7 +106,7 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
      * Applies a potion to the player onArmorTick internally (directly via {@link ItemArmorV2#onArmorTick}), is NOT affected by {@link AbilityData#onArmorTick(World, EntityPlayer, ItemStack)}
      */
     public AbilityData applyPotionToPlayer(EntityPlayer player) {
-        AbilityPotion potion = new AbilityPotion(this.getRegistryName());
+        AbilityPotion potion = new AbilityPotion().setResourceLocation(this.getRegistryName());
         if (isPotion() && this.getRegistryName() != null) {
             Potion actualPotion = getPotion(potion.getResourceLocation());
             //Here we hardcode check if the player doesn't have the regeneration ability because it needs ticking time to be able to apply its effect, if its re-applied instantly the ability doesnt go into effect.
@@ -119,7 +119,7 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
 
     /**
      * Triggers when the armor piece ticks {@link ItemArmorV2#onArmorTick}
-     *
+     * <p>
      * Caution: This event doesn't check whether or not the Ability can be provided by other EntityEquipmentSlots, you will have to make sure to check if it can be provided {@link ItemArmorV2#onArmorTick(World, EntityPlayer, ItemStack)}
      */
     public void onSpecialArmorTick(World world, EntityPlayer player, ItemStack stack) {

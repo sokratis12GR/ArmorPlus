@@ -71,7 +71,7 @@ public final class PotionUtils {
     }
 
     public static String localizePotion(String resourceLocation) {
-        return (Utils.isNotNull(getPotion(resourceLocation))) ? TextUtils.formattedText(getPotion(resourceLocation).getName() + ".name") : "";
+        return (Utils.isNotNull(getPotion(resourceLocation))) ? TextUtils.translatedText(getPotion(resourceLocation).getName() + ".name") : "";
     }
 
     public static Potion getPotion(String resourceLocation) {

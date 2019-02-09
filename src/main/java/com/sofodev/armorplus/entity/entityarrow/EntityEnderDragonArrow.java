@@ -13,14 +13,14 @@ import net.minecraft.world.World;
 public class EntityEnderDragonArrow extends EntityModdedArrow {
 
     public EntityEnderDragonArrow(World worldIn) {
-        super(worldIn, ModdedArrows.enderDragonArrow);
+        super(worldIn, ModdedArrows.ENDER_DRAGON_ARROW);
     }
 
     public EntityEnderDragonArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z, ModdedArrows.enderDragonArrow);
+        super(worldIn, x, y, z, ModdedArrows.ENDER_DRAGON_ARROW);
     }
 
     public EntityEnderDragonArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter, ModdedArrows.enderDragonArrow);
+        super(worldIn, shooter, ModdedArrows.ENDER_DRAGON_ARROW);
     }
 }

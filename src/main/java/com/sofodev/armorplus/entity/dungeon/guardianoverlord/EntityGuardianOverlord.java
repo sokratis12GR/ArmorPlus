@@ -58,7 +58,7 @@ public class EntityGuardianOverlord extends EntityWitherSkeleton implements IRan
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(20.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1200D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(37.5D);
+       // this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(37.5D);
     }
 
     @Override

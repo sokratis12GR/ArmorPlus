@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.registry.ModBlocks;
 import net.minecraft.entity.Entity;
@@ -23,6 +22,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.Random;
 
+import static com.sofodev.armorplus.config.ModConfig.DebugConfig.debugMode;
 import static com.sofodev.armorplus.config.ModConfig.EntitiesConfig.mob_drops;
 import static com.sofodev.armorplus.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -70,7 +70,7 @@ public class MobDropsEventHandler {
     private static void registerMobDrop(LivingDropsEvent event, boolean enableDrop, ItemStack drop) {
         if (enableDrop) {
             event.getEntityLiving().entityDropItem(drop, 0.0f);
-            if (ModConfig.DebugConfig.debugMode) {
+            if (debugMode) {
                 LogHelper.info(event.getEntity().getName() + " dropped:" + drop + " x " + drop.getCount());
             }
         }

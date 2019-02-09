@@ -74,7 +74,7 @@ public class ModelsEventHandler {
         if (enableExperimentalMode) {
             register(
                 coalExp, emeraldExp, lapisExp, lavaExp, obsidianExp, redstoneExp, chickenExp, slimeExp, guardianExp, superStarExp, enderDragonExp,
-                arditeExp, cobaltExp, manyullynExp, pigIronExp, knightSlimeExp
+                arditeExp, cobaltExp, manyullynExp, pigIronExp, knightSlimeExp, ultimateExp
             );
         }
     }

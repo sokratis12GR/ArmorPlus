@@ -542,10 +542,12 @@ commands.armorplus.abilities.limit.set.usage=Incomplete command arguments. Use /
 commands.armorplus.abilities.limit.set=Sucessfully set the limit of this item to %s/%s
 commands.armorplus.abilities.remove.usage=Incomplete command arguments. Use /armorplus abilities remove <string: abilityID>
 commands.armorplus.abilities.remove.fail=You cannot remove [%s] because it doesn't exist.
-info.abilities.cost=You have enough coal [%s] to unlock night vision
-info.abilities.cost.missing=You don't have enough stats/items to unlock any abilities
-info.abilities.apply.text=Click to apply the ability
-info.abilities.apply.button= [Apply]
+
+#Temporary
+info.armorplus.abilities.cost=You have enough coal [%s] to unlock night vision
+info.armorplus.abilities.cost.missing=You don't have enough stats/items to unlock any abilities
+info.armorplus.abilities.apply.text=Click to apply the ability
+info.armorplus.abilities.apply.button= [Apply]
 
 #Armors
 item.armorplus.coal_prototype_helmet.name=Coal Helmet
@@ -641,3 +643,47 @@ ability.armorplus.bonus_xp_on_kill.name=Bonus XP on Kill
 ability.armorplus.walk_on_lava.name=Walk on Lava
 ability.armorplus.swimming_speed.name=Swimming Speed
 ability.armorplus.underwater_vision.name=Underwater Vision
+
+#Info
+info.armorplus.items.ability.not_found=No available abilities
+info.armorplus.items.ability.display_limit=Abilities %d/%d
+item.armorplus.coal_arrow.ability_desc=Applies Blindness
+item.armorplus.lapis_arrow.ability_desc=Applies Nausea
+item.armorplus.redstone_arrow.ability_desc=Applies Slowness
+item.armorplus.infused_lava_arrow.ability_desc=Sets on Fire
+item.armorplus.ender_dragon_arrow.ability_desc=Applies Wither 4
+item.armorplus.lava_crystal.desc=Can be obtained by mining Ore Lava Crystal
+item.armorplus.infused_lava_crystal.desc=Can be created by infusing the Lava Crystal inside the Lava Infuser
+item.armorplus.bow.desc=§9Bonus Arrow Damage: §r%s
+item.armorplus.dev_tool.desc_one=§cOnly works if debugMode is set to true in the configuration file [debugMode:%s]
+item.armorplus.dev_tool.desc_two=§9Ability: §rGives Information about the Target
+item.armorplus.dev_tool.desc_three=§3Use: §rRight Click a Target
+item.armorplus.dev_tool.desc.advanced=Information is located at: <instance>/config/armorplus/entities/<entity_name>/<player_name>/<entity>-<id>-<date>
+item.armorplus.ability_holder.full_set=§9Full set abilities
+item.armorplus.ability_holder.piece=§9Abilities
+item.armorplus.arrow.ability_desc=§9Ability: §r%s
+item.armorplus.arrow.ability=§3Base Arrow Damage: §r%s
+
+#Dialogs
+##For Futurue maybe...
+dialogs.armorplus.skeletal_king.name=%sSkeletal King:
+dialogs.armorplus.skeletal_king.line_one.a=Ha ha ha!
+dialogs.armorplus.skeletal_king.line_one.b=You really think you even want to get me started with you?
+dialogs.armorplus.skeletal_king.line_one.c=This fight will be over way before it even starts.
+dialogs.armorplus.skeletal_king.line_two.a=That's just the beginning.
+dialogs.armorplus.skeletal_king.line_three.a=It seems that you are enjoying my minions...
+dialogs.armorplus.skeletal_king.line_three.b=Well, I got some news to you.
+dialogs.armorplus.skeletal_king.line_three.c=I own this world
+dialogs.armorplus.skeletal_king.line_four.a=Why do you keep fighting
+dialogs.armorplus.skeletal_king.line_four.b=There is no escape from me!
+dialogs.armorplus.skeletal_king.line_five.a=WHY CAN'T YOU JUST DIE!?
+dialogs.armorplus.skeletal_king.line_five.b=Paladins, Rise!
+dialogs.armorplus.skeletal_king.line_six.a=Nothing can stop me from destroying this world
+dialogs.armorplus.skeletal_king.line_six.b=If my minions, cannot kill you. then I'll kill you myself!
+dialogs.armorplus.skeletal_king.line_six.c=Minions, CHARGE with your full power!!!
+dialogs.armorplus.skeletal_king.death_line.a=You cannot win this battle, %s
+dialogs.armorplus.skeletal_king.death_line.b=The end is near, but remember I'll be BACK
+dialogs.armorplus.skeletal_king.death_line.c=And there will be an END to this world.
+
+#ErrorHandling
+error.world_gen.armorplus.generator_height=Illegal Height Arguments for WorldGenerator. Min height must in the range (0, %d) [Value: %d]. Max height must not be greater than 256. [Value: %d]

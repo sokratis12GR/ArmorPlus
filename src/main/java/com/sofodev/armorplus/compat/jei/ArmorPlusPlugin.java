@@ -150,7 +150,7 @@ public class ArmorPlusPlugin implements IModPlugin {
     }
 
     private void registerDescriptions(IModRegistry registry, EntryDescription entry) {
-        registry.addIngredientInfo(entry.getStack(), VanillaTypes.ITEM, TextUtils.formattedText(entry.getDesc()));
+        registry.addIngredientInfo(entry.getStack(), VanillaTypes.ITEM, TextUtils.translatedText(entry.getDesc()));
     }
 
     private void registerDescriptions(IModRegistry registry, EntryDescription... entries) {

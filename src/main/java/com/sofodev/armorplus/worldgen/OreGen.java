@@ -18,30 +18,26 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
+import static com.sofodev.armorplus.config.ModConfig.WorldGenConfig.lava_crystal;
+
 /**
  * @author Sokratis Fotkatzikis
  **/
 public class OreGen implements IWorldGenerator {
 
-    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), ModConfig.WorldGenConfig.lava_crystal.overworld.veinAmount);
-    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), ModConfig.WorldGenConfig.lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), ModConfig.WorldGenConfig.lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.overworld.veinAmount);
+    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         int i = world.provider.getDimension();
-        if (i == 0) {
-            if (ModConfig.WorldGenConfig.lava_crystal.overworld.enable) {
-                runGenerator(overworldGenerator, world, random, chunkX, chunkZ, ModConfig.WorldGenConfig.lava_crystal.overworld);
-            }
-        } else if (i == 1) {
-            if (ModConfig.WorldGenConfig.lava_crystal.the_end.enable) {
-                runGenerator(theEndGenerator, world, random, chunkX, chunkZ, ModConfig.WorldGenConfig.lava_crystal.the_end);
-            }
-        } else if (i == -1) {
-            if (ModConfig.WorldGenConfig.lava_crystal.the_nether.enable) {
-                runGenerator(theNetherGenerator, world, random, chunkX, chunkZ, ModConfig.WorldGenConfig.lava_crystal.the_nether);
-            }
+        if (i == 0 && lava_crystal.overworld.enable) {
+            runGenerator(overworldGenerator, world, random, chunkX, chunkZ, lava_crystal.overworld);
+        } else if (i == 1 && lava_crystal.the_end.enable) {
+            runGenerator(theEndGenerator, world, random, chunkX, chunkZ, lava_crystal.the_end);
+        } else if (i == -1 && lava_crystal.the_nether.enable) {
+            runGenerator(theNetherGenerator, world, random, chunkX, chunkZ, lava_crystal.the_nether);
         }
     }
 

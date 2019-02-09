@@ -7,7 +7,7 @@ package com.sofodev.armorplus.entity.entityarrow;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
-import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.lavaArrow;
+import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.INFUSED_LAVA_ARROW;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -15,14 +15,14 @@ import static com.sofodev.armorplus.entity.entityarrow.ModdedArrows.lavaArrow;
 public class EntityLavaArrow extends EntityModdedArrow {
 
     public EntityLavaArrow(World worldIn) {
-        super(worldIn, lavaArrow);
+        super(worldIn, INFUSED_LAVA_ARROW);
     }
 
     public EntityLavaArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z, lavaArrow);
+        super(worldIn, x, y, z, INFUSED_LAVA_ARROW);
     }
 
     public EntityLavaArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter, lavaArrow);
+        super(worldIn, shooter, INFUSED_LAVA_ARROW);
     }
 }

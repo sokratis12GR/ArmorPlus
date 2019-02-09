@@ -21,6 +21,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,7 +39,6 @@ import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.ABILITY_
 import static com.sofodev.armorplus.client.utils.ToolTipUtils.*;
 import static com.sofodev.armorplus.util.Utils.setName;
 import static com.sofodev.armorplus.util.Utils.setRL;
-import static java.lang.String.format;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraft.util.text.TextFormatting.*;
 
@@ -126,7 +126,8 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     private String notSpecial(ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
         if (handler != null) {
-            return !canProvideAny(stack) && !hasAbilities(handler) ? ITALIC + "No available abilities" : "";
+            boolean notSpecial = !canProvideAny(stack) && !hasAbilities(handler);
+            return notSpecial ? ITALIC + new TextComponentTranslation("info.armorplus.items.ability.not_found").getFormattedText() : "";
         }
         return "";
     }
@@ -169,7 +170,10 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
 
     private String updateLimitToolTip(ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
-        return format("%sAbilities %d/%d", GOLD, handler.getAbilities().size(), handler.getLimit());
+        if (handler == null) {
+            return "";
+        }
+        return GOLD + new TextComponentTranslation("info.armorplus.items.ability.display_limit", handler.getAbilities().size(), handler.getLimit()).getFormattedText();
     }
 
     @Override
@@ -186,17 +190,19 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
         IAbilityHandler handler = getHandler(stack);
-        if (handler != null && hasAbilities(handler)) {
-            for (AbilityData data : handler.getAbilities()) {
-                if (contains(handler, data)) {
-                    if (canProvide(stack, data)) {
-                        if (data.isPotion()) {
-                            data.applyPotionToPlayer(player);
-                        }
-                        data.onArmorTick(world, player, stack);
+        boolean hasAbilities = handler != null && hasAbilities(handler);
+        if (!hasAbilities) {
+            return;
+        }
+        for (AbilityData data : handler.getAbilities()) {
+            if (contains(handler, data)) {
+                if (canProvide(stack, data)) {
+                    if (data.isPotion()) {
+                        data.applyPotionToPlayer(player);
                     }
-                    data.onSpecialArmorTick(world, player, stack);
+                    data.onArmorTick(world, player, stack);
                 }
+                data.onSpecialArmorTick(world, player, stack);
             }
         }
     }

@@ -146,31 +146,33 @@ public class ModRecipes {
         addShapelessRecipe(Utils.setRL("lava_cactus"), Utils.setRL("lava_cactus"), getItemStack(blockLavaCactus, 1, 0), fromStacks(getItemStack(CACTUS)), fromStacks(getItemStack(ModItems.itemLavaCrystal, 1)));
     }
 
+    private static String stoneBrick = "stonebrick";
+
     private static void addRecipeCastleCorner(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "  S", " SS", 'S', "stonebrick" + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S  ", "SS ", 'S', "stonebrick" + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "  S", " SS", "   ", 'S', "stonebrick" + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "S  ", "SS ", "   ", 'S', "stonebrick" + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "  S", " SS", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S  ", "SS ", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "  S", " SS", "   ", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "S  ", "SS ", "   ", 'S', stoneBrick + color));
     }
 
     private static void addRecipeCastleTower(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S S", "SSS", 'S', "stonebrick" + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "S S", "SSS", "   ", 'S', "stonebrick" + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S S", "SSS", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "S S", "SSS", "   ", 'S', stoneBrick + color));
     }
 
     private static void addRecipeCastleWall(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', "stonebrick" + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', "stonebrick" + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "   ", "SSS", "SSS", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block, 6), "SSS", "SSS", "   ", 'S', stoneBrick + color));
     }
 
     private static void addRecipeCastle(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 3), "stonebrick" + color + "Corner"));
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 5), "stonebrick" + color + "Tower"));
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block), "stonebrick" + color + "Wall"));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), " S ", "SCS", " S ", 'S', "stonebrick", 'C', "dye" + color));
+        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 3), stoneBrick + color + "Corner"));
+        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 5), stoneBrick + color + "Tower"));
+        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block), stoneBrick + color + "Wall"));
+        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), " S ", "SCS", " S ", 'S', stoneBrick, 'C', "dye" + color));
     }
 
     private static void addRecipeStoneBrick(String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(Blocks.STONEBRICK), "stonebrick" + color));
+        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(Blocks.STONEBRICK), stoneBrick + color));
     }
 }

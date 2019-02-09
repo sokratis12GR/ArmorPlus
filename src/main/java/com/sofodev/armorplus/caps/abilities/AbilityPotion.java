@@ -16,6 +16,10 @@ public class AbilityPotion {
     private boolean ambientIn;
     private PotionType type;
 
+    public AbilityPotion() {
+        this(null, 240, 0, false, GOOD);
+    }
+
     public AbilityPotion(ResourceLocation rl) {
         this(rl, 240, 0, false, GOOD);
     }

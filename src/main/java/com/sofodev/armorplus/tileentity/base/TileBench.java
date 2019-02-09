@@ -17,8 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
-
-import static java.util.stream.IntStream.rangeClosed;
+import java.util.stream.IntStream;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -50,7 +49,8 @@ public abstract class TileBench extends TileEntityInventoryBase {
 
     @Override
     public boolean canExtractItem(int slot, ItemStack stack) {
-        return rangeClosed(0, itemHandler.getSlots()).anyMatch(i -> itemHandler.getStackInSlot(slot) != ItemStack.EMPTY);
+        int bound = itemHandler.getSlots();
+        return IntStream.rangeClosed(0, bound).anyMatch(i -> !itemHandler.getStackInSlot(slot).isEmpty());
     }
 
     @Override

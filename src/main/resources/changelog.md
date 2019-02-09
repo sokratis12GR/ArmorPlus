@@ -1,3 +1,15 @@
+ArmorPlus 1.12.2-11.18.1.53
+----------------------------
+
+* Localized the majority of the mod
+* Fixed the special bows not working correctly with infinity and creative mode.
+* Fixed MAJOR performance lose because of the Skeletal King.
+* Fixes for TGOTG (The Gift of The Gods) 
+  - Blacklist should now work correctly
+  - Made it look through the Item registry instead of the numeric id system.
+* Added Textures to the prototypes (corresponding to the original ones)
+* Added more bugs
+
 ArmorPlus 1.12.2-11.18.0.52
 ----------------------------
 

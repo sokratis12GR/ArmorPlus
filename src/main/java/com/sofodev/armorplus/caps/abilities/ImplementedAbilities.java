@@ -39,7 +39,7 @@ public class ImplementedAbilities {
 
     public static IForgeRegistry<AbilityData> ABILITY_REGISTRY;
 
-    public static final AbilityData NONE = new AbilityData("armorplus:empty", "ability.armorplus.empty.name", EntityEquipmentSlot.values(), Material.NONE);
+    public static final AbilityData NONE = new AbilityData("armorplus:empty", "ability.armorplus.empty.name", new EquipmentSlot(EntityEquipmentSlot.values()), Material.NONE);
     public static final AbilityData NIGHT_VISION = new AbilityData("minecraft:night_vision", "ability.armorplus.night_vision.name", HEAD, COAL, INFUSED_LAVA, GUARDIAN).setPotion(true);
     public static final AbilityData WATER_BREATHING = new AbilityData("minecraft:water_breathing", "ability.armorplus.water_breathing.name", HEAD, LAPIS, GUARDIAN).setPotion(true);
     public static final AbilityData RESISTANCE = new AbilityData("minecraft:resistance", "ability.armorplus.resistance.name", HEAD, CHEST, LEGS, FEET, OBSIDIAN, INFUSED_LAVA).setPotion(true);
