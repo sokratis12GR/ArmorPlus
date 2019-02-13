@@ -104,11 +104,12 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
 
     @Nonnull
     public ItemStack findAmmo(EntityLivingBase entityLivingBase) {
-        if (this.isArrow(entityLivingBase.getHeldItemMainhand())) {
-            return this.isArrow(entityLivingBase.getHeldItemOffhand()) ? entityLivingBase.getHeldItemOffhand() : entityLivingBase.getHeldItemMainhand();
-        }
-        if (this.isArrow(entityLivingBase.getHeldItemOffhand())) {
-            return entityLivingBase.getHeldItemMainhand();
+        ItemStack offHand = entityLivingBase.getHeldItemOffhand();
+        ItemStack mainHand = entityLivingBase.getHeldItemMainhand();
+        if (this.isArrow(mainHand)) {
+            return mainHand;
+        } else if (this.isArrow(offHand)) {
+            return offHand;
         }
         int bound = ((EntityPlayer) entityLivingBase).inventory.getSizeInventory();
         return IntStream.range(0, bound).mapToObj(

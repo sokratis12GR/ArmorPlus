@@ -1,14 +1,22 @@
-ArmorPlus 1.12.2-11.18.1.53
+ArmorPlus 1.12.2-11.19.0.53
 ----------------------------
 
 * Localized the majority of the mod
 * Fixed the special bows not working correctly with infinity and creative mode.
+* Fixed special bows getting consumed if the arrow is placed in the off-hand slot 
 * Fixed MAJOR performance lose because of the Skeletal King.
 * Fixes for TGOTG (The Gift of The Gods) 
   - Blacklist should now work correctly
   - Made it look through the Item registry instead of the numeric id system.
 * Added Textures to the prototypes (corresponding to the original ones)
-* Added more bugs
+* Battle axes can now disable shields
+* Overhauled some of the textures for:
+  - Arrows (16x16->32x32)
+  - Battle Axes (16x16->64x64) - Rescaled Third-person View
+  - Swords (16x16->64x64) - Rescaled Third-person View
+* A few performance fixes and QoL improvements
+* Commands with links now properly display information and do NOT open the link immediately. 
+* _Added more bugs_
 
 ArmorPlus 1.12.2-11.18.0.52
 ----------------------------

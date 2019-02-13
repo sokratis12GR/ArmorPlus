@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.commands.subcommands;
 
 import com.sofodev.armorplus.caps.abilities.AbilityData;
+import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.Abilities;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,8 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.ITextComponent;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -22,12 +22,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.sofodev.armorplus.caps.abilities.AbilityData.canProvide;
-import static com.sofodev.armorplus.caps.abilities.AbilityData.getData;
+import static com.sofodev.armorplus.caps.abilities.AbilityData.*;
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
 import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.ABILITY_REGISTRY;
-import static net.minecraft.util.text.TextFormatting.GREEN;
-import static net.minecraft.util.text.TextFormatting.RED;
+import static com.sofodev.armorplus.util.TextUtils.*;
 
 public class CommandAbilities extends CommandSubBase {
 
@@ -42,9 +40,6 @@ public class CommandAbilities extends CommandSubBase {
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return sender.canUseCommand(this.getRequiredPermissionLevel(), this.getName());
     }
-
-    private Style error = new Style().setColor(RED);
-    private Style success = new Style().setColor(GREEN);
 
     @Override
     public int getRequiredPermissionLevel() {
@@ -84,92 +79,152 @@ public class CommandAbilities extends CommandSubBase {
         ItemStack stack = player.getHeldItemMainhand();
         IAbilityHandler handler = getHandler(stack);
         if (handler == null) {
-            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.wrong_item").setStyle(error));
-        } else if (args.length <= 0) {
-            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.usage").setStyle(error));
-        } else {
-            String argA = args[0];
+            this.send(player, error("commands.armorplus.abilities.wrong_item"));
+        } else if (args.length > 0) {
+            String argOne = args[0];
             int abilitySize = handler.getAbilities().size();
-            int limit = handler.getLimit();
-            if ("show".equals(argA) || "display".equals(argA) || "list".equals(argA)) {
-                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.show", handler.getAbilities()));
-            } else if ("limit".equals(argA)) {
-                if (args.length == 1) {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit", abilitySize, limit));
-                } else if (args[1].equals("set")) {
-                    if (args.length == 3) {
-                        byte wantedLimit = Byte.parseByte(args[2]);
-                        handler.setLimit(wantedLimit);
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set", abilitySize, limit).setStyle(success));
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set.usage").setStyle(error));
-                    }
-                } else {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.limit.set.usage").setStyle(error));
-                }
-            } else if ("add".equals(argA)) {
-                ResourceLocation id = new ResourceLocation(args[1]);
-                AbilityData data = getData(id);
-                if (!handler.getAbilities().contains(data)) {
-                    if (canProvide(stack, data)) {
-                        if (args.length == 2) {
-                            this.addAbility(handler, player, data, false);
-                        } else if (args.length == 3) {
-                            //This is here just in case you want to silently add an ability
-                            if (args[2].equals("hide")) {
-                                this.addAbility(handler, player, data, true);
-                            } else {
-                                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.cost.usage").setStyle(error));
-                            }
-                        }
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.incorrect_ability", data.getName()).setStyle(error));
-                    }
-                } else {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.fail.already_there", abilitySize, limit).setStyle(error));
-                }
-            } else if ("clear".equals(argA)) {
-                if (!handler.getAbilities().isEmpty()) {
-                    handler.getAbilities().clear();
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.success").setStyle(success));
-                } else {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.clear.fail").setStyle(error));
-                }
-            } else if ("remove".equals(argA)) {
-                if (args.length > 1) {
-                    ResourceLocation id = new ResourceLocation(args[1]);
-                    AbilityData data = getData(id);
-                    if (!handler.getAbilities().isEmpty() && handler.getAbilities().contains(data)) {
-                        handler.removeAbility(data);
-                    } else {
-                        player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.fail", data.getName()).setStyle(error));
-                    }
-                } else {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.remove.usage").setStyle(error));
-                }
-            } else {
-                player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.usage").setStyle(error));
+            byte limit = handler.getLimit();
+            switch (argOne) {
+                case "show":
+                case "display":
+                case "list":
+                    this.send(player, "commands.armorplus.abilities.show", handler.getAbilities());
+                    break;
+                case "limit":
+                    this.limitCMD(handler, player, abilitySize, limit, args);
+                    break;
+                case "add":
+                    this.addCMD(handler, player, stack, abilitySize, limit, args);
+                    break;
+                case "clear":
+                    this.clearCMD(handler, player);
+                    break;
+                case "remove":
+                    this.removeCMD(handler, player, args);
+                    break;
+                default:
+                    this.send(player, error("commands.armorplus.abilities.usage"));
+                    break;
             }
+        } else {
+            this.send(player, error("commands.armorplus.abilities.usage"));
         }
-
     }
 
+    //Commands to be executed
+
+    /**
+     * Functionality: If the ability list isn't empty, the command will remove all entries from the ability list of the given handler,
+     * otherwise will report a fail command hence there is nothing to clear
+     */
+    private void clearCMD(IAbilityHandler handler, EntityPlayer player) {
+        if (hasAbilities(handler)) {
+            handler.getAbilities().clear();
+            this.send(player, success("commands.armorplus.abilities.clear.success"));
+        } else {
+            this.send(player, error("commands.armorplus.abilities.clear.fail"));
+        }
+    }
+
+    /**
+     * Functionality: if only "limit" is present, limit shows the abilityLimit {@link Abilities#getLimit()} for the current item,
+     * if followed by {@code set (value)} will set change the held item's limit to the one provided {@link Abilities#setLimit(byte)},
+     * otherwise fails with an error.
+     */
+    private void limitCMD(IAbilityHandler handler, EntityPlayer player, int abilitySize, byte limit, String[] args) {
+        if (args.length == 2) {
+            this.send(player, "commands.armorplus.abilities.limit", abilitySize, limit);
+        } else if (args.length > 2 && args[1].equals("set")) {
+            if (args.length > 3) {
+                byte wantedLimit = Byte.parseByte(args[2]);
+                handler.setLimit(wantedLimit);
+                this.send(player, success("commands.armorplus.abilities.limit.set", abilitySize, limit));
+            } else {
+                this.send(player, error("commands.armorplus.abilities.limit.set.usage"));
+            }
+        } else {
+            this.send(player, error("commands.armorplus.abilities.limit.set.usage"));
+        }
+    }
+
+    /**
+     * The command which is used to actually provide the abilities.
+     * Functionality: if the provided {@param id} is not null and can be provided by the ItemStack, the ability will be added to the list of abilities (a message will popup),
+     * if {@code (hide)} is provided there will be no messages,
+     * otherwise fails with an error.
+     */
+    private void addCMD(IAbilityHandler handler, EntityPlayer player, ItemStack stack, int abilitySize, byte limit, String[] args) {
+        if (args.length <= 1) {
+            return;
+        }
+        ResourceLocation id = new ResourceLocation(args[1]);
+        AbilityData data = getData(id);
+        if (!contains(handler, data)) {
+            if (canProvide(stack, data)) {
+                if (args.length == 2) {
+                    this.addAbility(handler, player, data, false);
+                } else if (args.length == 3) {
+                    //This is here just in case you want to silently add an ability
+                    if (args[2].equals("hide")) {
+                        this.addAbility(handler, player, data, true);
+                    } else {
+                        this.send(player, error("commands.armorplus.abilities.add.hide.usage"));
+                    }
+                }
+            } else {
+                this.send(player, error("commands.armorplus.abilities.add.incorrect_ability", data.getName()));
+            }
+        } else {
+            this.send(player, error("commands.armorplus.abilities.add.fail.already_there", abilitySize, limit));
+        }
+    }
+
+    /**
+     * Provides the functionality of {@link this#addCMD(IAbilityHandler, EntityPlayer, ItemStack, int, byte, String[])}
+     */
     private void addAbility(IAbilityHandler handler, EntityPlayer player, AbilityData data, boolean hide) {
         int abilitySize = handler.getAbilities().size();
         int limit = handler.getLimit();
-        if (abilitySize < limit) {
+        if (hasRoomForAbilities(handler)) {
             if (!isEmpty(data)) {
                 handler.addAbility(data);
                 if (!hide) {
-                    player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.success", data.getName()).setStyle(success));
+                    this.send(player, success("commands.armorplus.abilities.add.success", data.getName()));
                 }
             }
         } else if (!hide) {
-            player.sendMessage(new TextComponentTranslation("commands.armorplus.abilities.add.fail", limit, abilitySize, limit).setStyle(error));
+            this.send(player, error("commands.armorplus.abilities.add.fail", limit, abilitySize, limit));
         }
     }
 
+    /**
+     * Functionality: Removes an ability from the list of abilities the handler provides, if not present in the list this fails with an error
+     */
+    private void removeCMD(IAbilityHandler handler, EntityPlayer player, String[] args) {
+        if (args.length > 1) {
+            ResourceLocation id = new ResourceLocation(args[1]);
+            AbilityData data = getData(id);
+            if (hasAbilities(handler) && contains(handler, data)) {
+                handler.removeAbility(data);
+            } else {
+                this.send(player, error("commands.armorplus.abilities.remove.fail", data.getName()));
+            }
+        } else {
+            this.send(player, error("commands.armorplus.abilities.remove.usage"));
+        }
+    }
+
+    //Utils
+
     private boolean isEmpty(AbilityData data) {
-        return Objects.equals(data.getRegistryName(), "armorplus:empty");
+        return Objects.equals(data.getRegistryName(), new ResourceLocation("armorplus:empty"));
+    }
+
+    private void send(EntityPlayer player, String key, Object... args) {
+        send(player, translate(key, args));
+    }
+
+    private void send(EntityPlayer player, ITextComponent component) {
+        player.sendMessage(component);
     }
 }

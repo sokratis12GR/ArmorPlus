@@ -95,8 +95,8 @@ commands.armorplus.info.help=Shows Information about ArmorPlus
 #CommandWiki
 commands.armorplus.wiki.usage=/armorplus wiki
 commands.armorplus.wiki.help=Opens a Link in your browser to the ArmorPlus Wiki
-commands.armorplus.wiki.link_details=Opening a link to the site:%s
-commands.armorplus.wiki.link_open=Link opened successfully
+commands.armorplus.wiki.link_details=ArmorPlus' Official Wiki: %s
+commands.armorplus.wiki.link_open=Opens a link to ArmorPlus' wiki
 
 #CommandNodecraft
 commands.armorplus.nodecraft.about.text=This project is sponsored by Nodecraft.
@@ -108,8 +108,10 @@ commands.armorplus.nodecraft.help=Displays the promo code for Nodecraft.
 
 #CommandDiscord
 commands.armorplus.discord.usage=/armorplus discord
-commands.armorplus.discord.help=Opens a link invite in your browser to sokratis12GR's official discord server
-commands.armorplus.discord.link_open=Link opened successfully
+commands.armorplus.discord.line_one=TheDragonTeam's (ArmorPlus') Community discord:
+commands.armorplus.discord.line_one.hover=Opens a discord link to armorplus' discord
+commands.armorplus.discord.line_two=sokratis12GR's Personal discord server:
+commands.armorplus.discord.line_two.hover=Opens a discord link to sokratis12GR's discord
 
 #JEI
 gui.jei.category.workbench=Workbench
@@ -531,7 +533,7 @@ commands.armorplus.abilities.clear.fail=This item doesn't contain any abilities.
 commands.armorplus.abilities.add.fail=Sorry, cannot add more abilities to this item. Your limit [%d/%d].
 commands.armorplus.abilities.add.fail.already_there=Sorry, this ability is already provided to this item.
 commands.armorplus.abilities.add.success=You have successfully added the [%s] ability to this item.
-commands.armorplus.abilities.add.cost.usage=Use hide to not show the command's output.
+commands.armorplus.abilities.add.hide.usage=Use hide to not show the command's output.
 commands.armorplus.abilities.add.incorrect_ability=You cannot add [%s] to this item.
 commands.armorplus.abilities.usage=Incomplete command arguments. Use /armorplus abilities <list/limit/add/clear/remove> <secondary_arguments>
 commands.armorplus.abilities.usage.second=Incomplete command arguments. Use /armorplus abilities add <string: abilityID>
@@ -687,3 +689,4 @@ dialogs.armorplus.skeletal_king.death_line.c=And there will be an END to this wo
 
 #ErrorHandling
 error.world_gen.armorplus.generator_height=Illegal Height Arguments for WorldGenerator. Min height must in the range (0, %d) [Value: %d]. Max height must not be greater than 256. [Value: %d]
+

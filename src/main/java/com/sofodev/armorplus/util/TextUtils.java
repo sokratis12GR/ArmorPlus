@@ -4,9 +4,7 @@
 
 package com.sofodev.armorplus.util;
 
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.*;
 
 import static net.minecraft.util.text.TextFormatting.GREEN;
 import static net.minecraft.util.text.TextFormatting.RED;
@@ -34,20 +32,21 @@ public final class TextUtils {
         return translate(key, args).getFormattedText();
     }
 
-    public static String errorText(String key, Object... args) {
-        return translatedText(RED, key, args);
+    //Additional
+    public static ITextComponent error(String key, Object... args) {
+        return translate(key, args).setStyle(new Style().setColor(RED));
     }
 
-    public static String successText(String key, Object... args) {
-        return translatedText(GREEN, key, args);
+    public static ITextComponent success(String key, Object... args) {
+        return translate(key, args).setStyle(new Style().setColor(GREEN));
     }
 
-    public static TextComponentString setText(String text) {
+    public static TextComponentString set(String text) {
         return new TextComponentString(text);
     }
 
-    public static String getText(String text) {
-        return setText(text).getFormattedText();
+    public static String get(String text) {
+        return set(text).getFormattedText();
     }
 
 }

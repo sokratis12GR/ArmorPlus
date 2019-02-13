@@ -64,6 +64,11 @@ public class ItemSpecialBattleAxe extends ItemSword implements IModdedItem {
     }
 
     @Override
+    public boolean canDisableShield(ItemStack stack, ItemStack shield, EntityLivingBase entity, EntityLivingBase attacker) {
+        return true;
+    }
+
+    @Override
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
         if (stack == ItemStack.EMPTY || state == null) return 0.0F;
         Material material = state.getMaterial();

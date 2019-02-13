@@ -126,6 +126,7 @@ public class ModItems {
         pigIronExp = new ItemArmorV2[4],
         knightSlimeExp = new ItemArmorV2[4],
         ultimateExp = new ItemArmorV2[4];
+    //public static ItemBase obsidianStick,guardianStone,dragonBornStick, witheredStick;
 
     public static void registerItems() {
         //HorseArmors
