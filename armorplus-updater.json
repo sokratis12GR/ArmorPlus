@@ -11,8 +11,8 @@
     "1.12-recommended": "1.12-11.5.1.16-alpha",
     "1.12.1-latest": "1.12.1-11.6.4.21-alpha",
     "1.12.1-recommended": "1.12.1-11.6.4.21-alpha",
-    "1.12.2-latest": "1.12.2-11.18.0.52",
-    "1.12.2-recommended": "1.12.2-11.18.0.52"
+    "1.12.2-latest": "1.12.2-11.19.1.54",
+    "1.12.2-recommended": "1.12.2-11.19.1.54"
   },
   "1.10.2": {
     "1.10.2-8.0.1.7": "Quick Fix, Server Crash Issue",
@@ -127,6 +127,8 @@
     "1.12.2-11.16.3.48": "MAJOR FIX, fixed blocks being unbreakable... also adds config values that you can change for block's harvest properties (registry.cfg) under blocks.",
     "1.12.2-11.17.0.50": "* Introducing experimental mode **DISABLED BY DEFAULT**, a config value that changes everything about this mod, as the name suggest its EXPERIMENTAL and can cause corruption/destroy/break your worlds.\n  - New way of obtaining abilities, ability limits, quests, and a lot more (WIP)\n  - Once enabled armors' will be revamped, and made so that they will require quests to be done (if any, use with caution) to obtain abilities.\n* A few QoL improvements, moved most of the InGame dialogs to use the translatable key format (now can be translated).\n* Fixed a few bugs related to the Skeletal King, additionally it no longer targets players but also any other type of mob, except Wither Skeletons\n* GUIs:\n  - Re-aligned some grid positions of the crafting GUIs, made them more correctly aligned. \n  - Added armor inventory slots to the crafting GUIs\n  - JEI: Fixed some GUI arrangements\n  - MAJOR: Fixed items getting voided from the GUIs",
     "1.12.2-11.17.1.51": "Fixed CraftTweaker recipes being broken.",
-    "1.12.2-11.18.0.52": "* Slowly migrating towards the new Ability System. Migration will be done in **1.13**.\n* Made a registry that other mods can use to implement their own abilities.\n  - Ability Registry - the registry where people can register their own abilities.\n  - AbilityData - the class mods will need to extend and implement with mod-provided methods, if something is missing contact me to add more stuff.\n  - ImplementedAbilities - all the implemented abilities by ArmorPlus\n  - Made the ability names translatable\n* Introducing abilities: Walk on Lava, Bonus XP on Kill, Wither-Proof, Potion Abilities"
+    "1.12.2-11.18.0.52": "* Slowly migrating towards the new Ability System. Migration will be done in **1.13**.\n* Made a registry that other mods can use to implement their own abilities.\n  - Ability Registry - the registry where people can register their own abilities.\n  - AbilityData - the class mods will need to extend and implement with mod-provided methods, if something is missing contact me to add more stuff.\n  - ImplementedAbilities - all the implemented abilities by ArmorPlus\n  - Made the ability names translatable\n* Introducing abilities: Walk on Lava, Bonus XP on Kill, Wither-Proof, Potion Abilities",
+    "1.12.2-11.19.0.53": "* Localized the majority of the mod\n* Fixed the special bows not working correctly with infinity and creative mode.\n* Fixed special bows getting consumed if the arrow is placed in the off-hand slot \n* Fixed MAJOR performance lose because of the Skeletal King.\n* Fixes for TGOTG (The Gift of The Gods) \n  - Blacklist should now work correctly\n  - Made it look through the Item registry instead of the numeric id system.\n* Added Textures to the prototypes (corresponding to the original ones)\n* Battle axes can now disable shields\n* Overhauled some of the textures for:\n  - Arrows (16x16->32x32)\n  - Battle Axes (16x16->64x64) - Rescaled Third-person View\n  - Swords (16x16->64x64) - Rescaled Third-person View\n* A few performance fixes and QoL improvements\n* Commands with links now properly display information and do NOT open the link immediately. \n* _Added more bugs_",
+    "1.12.2-11.19.1.54": "* Made a lot of null-checks for the ability usages, should respect their uses\n* Fixed capability conflicts causing issues (mainly crashes)"
   }
 }
