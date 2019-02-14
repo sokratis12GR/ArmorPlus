@@ -1,3 +1,9 @@
+ArmorPlus 1.12.2-11.19.1.54
+----------------------------
+
+* Made a lot of null-checks for the ability usages, should respect their uses
+* Fixed capability conflicts causing issues (mainly crashes)
+
 ArmorPlus 1.12.2-11.19.0.53
 ----------------------------
 

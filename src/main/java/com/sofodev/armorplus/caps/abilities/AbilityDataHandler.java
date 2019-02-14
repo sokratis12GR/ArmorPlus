@@ -22,9 +22,11 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.util.Utils.setRL;
 
 public class AbilityDataHandler {
@@ -36,7 +38,7 @@ public class AbilityDataHandler {
 
     // Handles all of the required registration for the capability.
     public static void register() {
-        CapabilityManager.INSTANCE.register(IAbilityHandler.class, new Storage(), Abilities::new);
+        CapabilityManager.INSTANCE.register(IAbilityHandler.class, new Storage(), new Factory());
         MinecraftForge.EVENT_BUS.register(new AbilityDataHandler());
     }
 
@@ -44,14 +46,16 @@ public class AbilityDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 
-        if (event.getObject().getItem() instanceof ItemArmorV2) {
-            event.addCapability(setRL("prototype_armor"), new Provider());
+        if (enableExperimentalMode && event.getObject().getItem() instanceof ItemArmorV2) {
+            event.addCapability(setRL("abilities"), new Provider());
         }
     }
 
     // Simple wrapper to get the handler from an entity.
     public static IAbilityHandler getHandler(ItemStack stack) {
-        return stack.hasCapability(CAPABILITY_ABILITIES, null) ? stack.getCapability(CAPABILITY_ABILITIES, null) : null;
+        if (enableExperimentalMode && stack.getItem() instanceof ItemArmorV2) {
+            return stack.hasCapability(CAPABILITY_ABILITIES, null) ? stack.getCapability(CAPABILITY_ABILITIES, null) : null;
+        } else return null;
     }
 
     // The basic properties for the new capability.
@@ -71,7 +75,7 @@ public class AbilityDataHandler {
     }
 
     // The default implementation of the capability. Holds all the logic.
-    public static class Abilities extends IForgeRegistryEntry.Impl<Abilities> implements IAbilityHandler {
+    public static class DefaultAbilityData extends IForgeRegistryEntry.Impl<DefaultAbilityData> implements IAbilityHandler {
 
         private byte limit = 0;
         private ArrayList<AbilityData> abilityList = new ArrayList<>();
@@ -150,7 +154,7 @@ public class AbilityDataHandler {
 
         @Override
         public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-            return capability == CAPABILITY_ABILITIES;
+            return capability.equals(CAPABILITY_ABILITIES);
         }
 
         @Override
@@ -168,5 +172,11 @@ public class AbilityDataHandler {
             CAPABILITY_ABILITIES.getStorage().readNBT(CAPABILITY_ABILITIES, instance, null, nbt);
         }
     }
+    public static class Factory implements Callable<IAbilityHandler> {
 
+        @Override
+        public IAbilityHandler call() throws Exception {
+            return new DefaultAbilityData();
+        }
+    }
 }

@@ -43,6 +43,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryBuilder;
 
 import java.util.Arrays;
 
@@ -51,6 +52,7 @@ import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperime
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
+import static com.sofodev.armorplus.util.Utils.setRL;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
@@ -75,7 +77,7 @@ public class RegistryEventHandler {
      */
     @SuppressWarnings("SameParameterValue")
     private static void registerEntities(Class<? extends Entity> entityClass, String registryName, int id, int trackingRange, int updateFrequency, boolean sendVelocityUpdates, boolean hasEgg, int primaryColor, int secondaryColor) {
-        ResourceLocation resourceLocation = Utils.setRL(registryName);
+        ResourceLocation resourceLocation = setRL(registryName);
         if (hasEgg) {
             registerModEntity(resourceLocation, entityClass, registryName, id, ArmorPlus.instance, trackingRange, updateFrequency, sendVelocityUpdates, primaryColor, secondaryColor);
         } else {
@@ -146,12 +148,12 @@ public class RegistryEventHandler {
     }
 
     private static void registerTileEntities() {
-        registerTileEntity(TileLavaInfuser.class, Utils.setRL("lava_infuser_tile_entity"));
-        registerTileEntity(TileWB.class, Utils.setRL("workbench_tile_entity"));
-        registerTileEntity(TileHTB.class, Utils.setRL("high_tech_bench_tile_entity"));
-        registerTileEntity(TileUTB.class, Utils.setRL("ulti_tech_tile_entity"));
-        registerTileEntity(TileCB.class, Utils.setRL("champion_tile_entity"));
-        registerTileEntity(TileTrophy.class, Utils.setRL("trophy_tile_entity"));
+        registerTileEntity(TileLavaInfuser.class, setRL("lava_infuser_tile_entity"));
+        registerTileEntity(TileWB.class, setRL("workbench_tile_entity"));
+        registerTileEntity(TileHTB.class, setRL("high_tech_bench_tile_entity"));
+        registerTileEntity(TileUTB.class, setRL("ulti_tech_tile_entity"));
+        registerTileEntity(TileCB.class, setRL("champion_tile_entity"));
+        registerTileEntity(TileTrophy.class, setRL("trophy_tile_entity"));
     }
 
     private static void registerItemBlock(Register<Item> event, Block... blocks) {
@@ -198,11 +200,21 @@ public class RegistryEventHandler {
     }
 
     @SubscribeEvent
+    public static void registerCapability(Register.NewRegistry event) {
+        if (enableExperimentalMode && ABILITY_REGISTRY == null) {
+            ResourceLocation registryName = setRL("abilities");
+            ABILITY_REGISTRY = new RegistryBuilder<AbilityData>().setType(AbilityData.class).setName(registryName).create();
+        }
+    }
+
+    @SubscribeEvent
     public static void registerAbilities(Register<AbilityData> event) {
-        registerAbility(event,
-            NONE, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, ABSORPTION,
-            WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED
-        );
+        if (enableExperimentalMode) {
+            registerAbility(event,
+                NONE, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, ABSORPTION,
+                WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED
+            );
+        }
     }
 
     private static void registerAbility(Register<AbilityData> event, AbilityData... dataList) {

@@ -5,7 +5,8 @@
 package com.sofodev.armorplus.commands.subcommands;
 
 import com.sofodev.armorplus.caps.abilities.AbilityData;
-import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.Abilities;
+import com.sofodev.armorplus.caps.abilities.AbilityDataHandler;
+import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.DefaultAbilityData;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -127,8 +128,8 @@ public class CommandAbilities extends CommandSubBase {
     }
 
     /**
-     * Functionality: if only "limit" is present, limit shows the abilityLimit {@link Abilities#getLimit()} for the current item,
-     * if followed by {@code set (value)} will set change the held item's limit to the one provided {@link Abilities#setLimit(byte)},
+     * Functionality: if only "limit" is present, limit shows the abilityLimit {@link DefaultAbilityData#getLimit()} for the current item,
+     * if followed by {@code set (value)} will set change the held item's limit to the one provided {@link AbilityDataHandler.DefaultAbilityData#setLimit(byte)},
      * otherwise fails with an error.
      */
     private void limitCMD(IAbilityHandler handler, EntityPlayer player, int abilitySize, byte limit, String[] args) {

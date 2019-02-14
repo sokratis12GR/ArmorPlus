@@ -14,20 +14,15 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.RegistryBuilder;
 
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
 import static com.sofodev.armorplus.caps.abilities.Material.*;
 import static com.sofodev.armorplus.registry.ModBlocks.blockMeltingObsidian;
-import static com.sofodev.armorplus.util.Utils.setRL;
 import static net.minecraft.block.material.Material.AIR;
 import static net.minecraft.block.material.Material.WATER;
 import static net.minecraft.init.Blocks.FLOWING_LAVA;
@@ -142,12 +137,4 @@ public class ImplementedAbilities {
         }
     };
     //public static final AbilityData UNDERWATER_VISION = new AbilityData("armorplus:underwater_vision", "ability.armorplus.underwater_vision.name", HEAD, GUARDIAN);
-
-    public static void createRegistry() {
-        if (ABILITY_REGISTRY == null) {
-            ResourceLocation registryName = setRL("abilities");
-            ABILITY_REGISTRY = new RegistryBuilder<AbilityData>().setType(AbilityData.class).setName(registryName).create();
-            MinecraftForge.EVENT_BUS.post(new RegistryEvent.Register<>(registryName, ABILITY_REGISTRY));
-        }
-    }
 }
