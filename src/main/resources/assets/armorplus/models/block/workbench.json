@@ -1,11 +1,11 @@
 {
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "particle": "armorplus:blocks/compressed_obsidian",
-    "0": "armorplus:blocks/compressed_obsidian",
-    "1": "blocks/furnace_top",
-    "2": "blocks/anvil_base",
-    "3": "armorplus:blocks/workbench_top"
+    "particle": "armorplus:block/compressed_obsidian",
+    "0": "armorplus:block/compressed_obsidian",
+    "1": "block/furnace_top",
+    "2": "block/anvil",
+    "3": "armorplus:block/workbench_top"
   },
   "elements": [
     {

@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:ender_pillar"
+      "model": "armorplus:block/ender_pillar"
     }
   }
 }

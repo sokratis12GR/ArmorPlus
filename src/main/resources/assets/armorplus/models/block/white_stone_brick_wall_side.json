@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_side",
   "textures": {
-    "wall": "armorplus:blocks/white_stone_brick"
+    "wall": "armorplus:block/white_stone_brick"
   }
 }

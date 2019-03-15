@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:blue_stone_brick_tower"
+      "model": "armorplus:block/blue_stone_brick_tower"
     }
   }
 }

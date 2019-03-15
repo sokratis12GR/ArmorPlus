@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:block_energy_storage"
+      "model": "armorplus:block/block_energy_storage"
     }
   }
 }

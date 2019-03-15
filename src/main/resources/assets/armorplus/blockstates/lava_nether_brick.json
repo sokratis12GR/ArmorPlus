@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=east": {
-      "model": "armorplus:lava_nether_brick"
+      "model": "armorplus:block/lava_nether_brick"
     },
     "facing=west": {
-      "model": "armorplus:lava_nether_brick",
+      "model": "armorplus:block/lava_nether_brick",
       "y": 180
     },
     "facing=south": {
-      "model": "armorplus:lava_nether_brick",
+      "model": "armorplus:block/lava_nether_brick",
       "y": 90
     },
     "facing=north": {
-      "model": "armorplus:lava_nether_brick",
+      "model": "armorplus:block/lava_nether_brick",
       "y": 270
     }
   }

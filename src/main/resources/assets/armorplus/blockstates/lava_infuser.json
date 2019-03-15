@@ -5,18 +5,18 @@
   },
   "variants": {
     "facing=north": {
-      "model": "armorplus:lava_infuser"
+      "model": "armorplus:block/lava_infuser"
     },
     "facing=south": {
-      "model": "armorplus:lava_infuser",
+      "model": "armorplus:block/lava_infuser",
       "y": 180
     },
     "facing=west": {
-      "model": "armorplus:lava_infuser",
+      "model": "armorplus:block/lava_infuser",
       "y": 270
     },
     "facing=east": {
-      "model": "armorplus:lava_infuser",
+      "model": "armorplus:block/lava_infuser",
       "y": 90
     }
   }

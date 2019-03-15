@@ -1,0 +1,55 @@
+{
+  "_comment": "bg_BG.lang File",
+
+  "_comment": "CONFIG GUI",
+  "gui.armorplus.config.title": "ArmorPlus Конфигурация",
+
+  "_comment": "CoalArmor",
+  "item.armorplus.coal_helmet": "Въглищен Шлем",
+  "item.armorplus.coal_chestplate": "Въглищен Нагръдник",
+  "item.armorplus.coal_leggings": "Въглищени Панталони",
+  "item.armorplus.coal_boots": "Въглищени Ботуши",
+
+  "_comment": "LapisArmor",
+  "item.armorplus.lapis_helmet": "Лазуриден Шлем",
+  "item.armorplus.lapis_chestplate": "Лазуриден Нагръдник",
+  "item.armorplus.lapis_leggings": "Лазуридени Панталони",
+  "item.armorplus.lapis_boots": "Лазуридени Ботуши",
+
+  "_comment": "RedstoneArmor",
+  "item.armorplus.redstone_helmet": "Червен камък Шлем",
+  "item.armorplus.redstone_chestplate": "Червен камък Нагръдник",
+  "item.armorplus.redstone_leggings": "Червен камък Панталони",
+  "item.armorplus.redstone_boots": "Червен камък Ботуши",
+
+  "_comment": "EmeraldArmor",
+  "item.armorplus.emerald_helmet": "Смарагден Шлем",
+  "item.armorplus.emerald_chestplate": "Смарагден Нагръдник",
+  "item.armorplus.emerald_leggings": "Смарагдени Панталони",
+  "item.armorplus.emerald_boots": "Смарагдени Ботуши",
+
+  "_comment": "ObsidianArmor",
+  "item.armorplus.obsidian_helmet": "Обсидиан Шлем",
+  "item.armorplus.obsidian_chestplate": "Обсидиан Нагръдник",
+  "item.armorplus.obsidian_leggings": "Обсидиан Панталони",
+  "item.armorplus.obsidian_boots": "Обсидиан Ботуши",
+
+  "_comment": "LavaArmor",
+  "item.armorplus.infused_lava_helmet": "Лава Шлем",
+  "item.armorplus.infused_lava_chestplate": "Лава Нагръдник",
+  "item.armorplus.infused_lava_leggings": "Лава Панталони",
+  "item.armorplus.infused_lava_boots": "Лава Ботуши",
+
+  "_comment": "SuperStarArmor",
+  "item.armorplus.super_star_helmet": "Супер Звезден Шлем",
+  "item.armorplus.super_star_chestplate": "Супер Звезден Нагръдник",
+  "item.armorplus.super_star_leggings": "Супер Звездени Панталони",
+  "item.armorplus.super_star_boots": "Супер Звездени Ботуши",
+
+  "_comment": "EnderDragon Armor",
+  "item.armorplus.material_ender_dragon_scale": "Ендер Драгон Люспа",
+  "item.armorplus.ender_dragon_helmet": "Ендер Драгон Шлем",
+  "item.armorplus.ender_dragon_chestplate": "Ендер Драгон Нагръдник",
+  "item.armorplus.ender_dragon_leggings": "Ендер Драгон Панталони",
+  "item.armorplus.ender_dragon_boots": "Ендер Драгон Ботуши"
+}

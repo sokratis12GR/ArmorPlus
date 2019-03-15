@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/spawner"
+          "all": "armorplus:block/spawner"
         }
       }
     ]

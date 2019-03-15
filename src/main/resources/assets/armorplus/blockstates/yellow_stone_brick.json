@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/yellow_stone_brick"
+          "all": "armorplus:block/yellow_stone_brick"
         }
       }
     ]

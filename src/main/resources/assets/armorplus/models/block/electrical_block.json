@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "armorplus:blocks/electrical_block"
+    "all": "armorplus:block/electrical_block"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {},
+    "model": "cube_all",
+    "uvlock": true
+  },
+  "variants": {
+    "age=0": [
+      {
+        "textures": {
+          "all": "armorplus:block/compressed_obsidian"
+        }
+      }
+    ],
+    "age=1": [
+      {
+        "textures": {
+          "all": "armorplus:block/compressed_obsidian"
+        }
+      }
+    ],
+    "age=2": [
+      {
+        "textures": {
+          "all": "armorplus:block/compressed_obsidian"
+        }
+      }
+    ],
+    "normal": [
+      {
+        "textures": {
+          "all": "armorplus:block/compressed_obsidian"
+        }
+      }
+    ]
+  }
+}

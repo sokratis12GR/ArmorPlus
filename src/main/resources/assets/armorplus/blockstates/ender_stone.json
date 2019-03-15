@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/ender_stone"
+          "all": "armorplus:block/ender_stone"
         }
       }
     ]

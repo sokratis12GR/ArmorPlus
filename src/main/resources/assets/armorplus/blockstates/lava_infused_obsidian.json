@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:lava_infused_obsidian"
+      "model": "armorplus:block/lava_infused_obsidian"
     }
   }
 }

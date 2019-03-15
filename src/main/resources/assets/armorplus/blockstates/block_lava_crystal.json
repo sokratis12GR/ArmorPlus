@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/block_lava_crystal"
+          "all": "armorplus:block/block_lava_crystal"
         }
       }
     ]

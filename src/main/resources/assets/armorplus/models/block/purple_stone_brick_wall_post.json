@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_post",
   "textures": {
-    "wall": "armorplus:blocks/purple_stone_brick"
+    "wall": "armorplus:block/purple_stone_brick"
   }
 }

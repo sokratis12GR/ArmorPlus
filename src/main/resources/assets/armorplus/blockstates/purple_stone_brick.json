@@ -9,7 +9,7 @@
     "normal": [
       {
         "textures": {
-          "all": "armorplus:blocks/purple_stone_brick"
+          "all": "armorplus:block/purple_stone_brick"
         }
       }
     ]

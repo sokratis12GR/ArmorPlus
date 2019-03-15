@@ -5,19 +5,19 @@
   },
   "variants": {
     "facing=east": {
-      "model": "armorplus:ulti_tech_bench",
+      "model": "armorplus:block/ulti_tech_bench",
       "y": 90
     },
     "facing=west": {
-      "model": "armorplus:ulti_tech_bench",
+      "model": "armorplus:block/ulti_tech_bench",
       "y": 270
     },
     "facing=south": {
-      "model": "armorplus:ulti_tech_bench",
+      "model": "armorplus:block/ulti_tech_bench",
       "y": 180
     },
     "facing=north": {
-      "model": "armorplus:ulti_tech_bench"
+      "model": "armorplus:block/ulti_tech_bench"
     }
   }
 }

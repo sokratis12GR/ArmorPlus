@@ -5,19 +5,19 @@
   },
   "variants": {
     "facing=east": {
-      "model": "armorplus:workbench",
+      "model": "armorplus:block/workbench",
       "y": 90
     },
     "facing=west": {
-      "model": "armorplus:workbench",
+      "model": "armorplus:block/workbench",
       "y": 270
     },
     "facing=south": {
-      "model": "armorplus:workbench",
+      "model": "armorplus:block/workbench",
       "y": 180
     },
     "facing=north": {
-      "model": "armorplus:workbench"
+      "model": "armorplus:block/workbench"
     }
   }
 }

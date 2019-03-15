@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:spawner"
+      "model": "armorplus:block/spawner"
     }
   }
 }

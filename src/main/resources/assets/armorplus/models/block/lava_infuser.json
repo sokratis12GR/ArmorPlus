@@ -1,11 +1,11 @@
 {
 "__comment": "Designed by Tristaric with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net",
 "textures": {
-    "particle": "armorplus:blocks/infuser_side",
-    "lava": "blocks/lava_still",
-    "up": "armorplus:blocks/infuser_top",
-    "down": "armorplus:blocks/infuser_bottom",
-    "side": "armorplus:blocks/infuser_side"
+    "particle": "armorplus:block/infuser_side",
+    "lava": "block/lava_still",
+    "up": "armorplus:block/infuser_top",
+    "down": "armorplus:block/infuser_bottom",
+    "side": "armorplus:block/infuser_side"
 },
 "elements": [ 
 {

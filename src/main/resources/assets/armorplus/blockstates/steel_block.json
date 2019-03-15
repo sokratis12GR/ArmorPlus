@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=east": {
-      "model": "armorplus:steel_block"
+      "model": "armorplus:block/steel_block"
     },
     "facing=west": {
-      "model": "armorplus:steel_block",
+      "model": "armorplus:block/steel_block",
       "y": 180
     },
     "facing=south": {
-      "model": "armorplus:steel_block",
+      "model": "armorplus:block/steel_block",
       "y": 90
     },
     "facing=north": {
-      "model": "armorplus:steel_block",
+      "model": "armorplus:block/steel_block",
       "y": 270
     }
   }

@@ -5,7 +5,7 @@
   },
   "variants": {
     "normal": {
-      "model": "armorplus:spawner_ender_dragon_zombie"
+      "model": "armorplus:block/spawner_ender_dragon_zombie"
     }
   }
 }

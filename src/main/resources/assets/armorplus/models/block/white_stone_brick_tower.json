@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "particle": "armorplus:blocks/white_stone_brick",
-    "0": "armorplus:blocks/white_stone_brick"
+    "particle": "armorplus:block/white_stone_brick",
+    "0": "armorplus:block/white_stone_brick"
   },
   "elements": [
     {
