@@ -44,7 +44,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 public class EntityEnderDragonZombie extends EntityMob {
 
-    public static final Predicate<Entity> ANY_ENTITY = entity -> entity instanceof EntityLivingBase && ((EntityLivingBase) entity).attackable() && !(entity instanceof EntityEnderDragonZombie || entity instanceof EntityEnderman || entity instanceof EntityDragon)  ;
+    public static final Predicate<Entity> ANY_ENTITY = entity -> entity instanceof EntityLivingBase && ((EntityLivingBase) entity).attackable() && !(entity instanceof EntityEnderDragonZombie || entity instanceof EntityEnderman || entity instanceof EntityDragon);
     public static final ResourceLocation LOOT = Utils.setRL("entities/ender_dragon_zombie");
     // We reuse the zombie model which has arms that need to be raised when the zombie is attacking:
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityEnderDragonZombie.class, DataSerializers.BOOLEAN);

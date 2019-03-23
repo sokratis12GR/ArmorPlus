@@ -40,14 +40,14 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
 
     public static final Predicate<Entity> ANY_ENTITY = entity -> entity instanceof EntityLivingBase && ((EntityLivingBase) entity).attackable() && !(entity instanceof EntityWitherSkeleton);
     private final BossInfoServerDungeon bossInfo;
-  //  public static List<EntityPlayer> playersReadDeathDialog = new ArrayList<>();
-  //  private static TextComponentTranslation KING_NAME = translate(GOLD, "dialogs.armorplus.skeletal_king.name", BOLD.toString());
-  //  public static ITextComponent PHASE_ONE = setDialog(KING_NAME, "line_one.a", "line_one.b", "line_one.c");
-  //  public static ITextComponent PHASE_TWO = setDialog(KING_NAME, "line_two.a");
-  //  public static ITextComponent PHASE_THREE = setDialog(KING_NAME, "line_three.a", "line_three.b", "line_three.c");
-  //  public static ITextComponent PHASE_FOUR = setDialog(KING_NAME, "line_four.a", "line_four.b");
-  //  public static ITextComponent PHASE_FIVE = setDialog(KING_NAME, "line_five.a", "line_five.b");
-  //  public static ITextComponent PHASE_SIX = setDialog(KING_NAME, "line_six.a", "line_six.b", "line_six.c");
+    //  public static List<EntityPlayer> playersReadDeathDialog = new ArrayList<>();
+    //  private static TextComponentTranslation KING_NAME = translate(GOLD, "dialogs.armorplus.skeletal_king.name", BOLD.toString());
+    //  public static ITextComponent PHASE_ONE = setDialog(KING_NAME, "line_one.a", "line_one.b", "line_one.c");
+    //  public static ITextComponent PHASE_TWO = setDialog(KING_NAME, "line_two.a");
+    //  public static ITextComponent PHASE_THREE = setDialog(KING_NAME, "line_three.a", "line_three.b", "line_three.c");
+    //  public static ITextComponent PHASE_FOUR = setDialog(KING_NAME, "line_four.a", "line_four.b");
+    //  public static ITextComponent PHASE_FIVE = setDialog(KING_NAME, "line_five.a", "line_five.b");
+    //  public static ITextComponent PHASE_SIX = setDialog(KING_NAME, "line_six.a", "line_six.b", "line_six.c");
 
     public EntitySkeletalKing(World worldIn) {
         super(worldIn);

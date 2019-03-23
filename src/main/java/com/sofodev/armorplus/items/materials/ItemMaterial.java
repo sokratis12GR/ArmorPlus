@@ -39,7 +39,7 @@ public class ItemMaterial extends Item implements IModdedItem {
     //1 = Guardian Scale
     //2 = Wither Bone
     //3 = Ender Dragon Scale
-    //4 = The Ultimate Material
+    //4 = The Ultimate MaterialType
     @Override
     @Nonnull
     public String getTranslationKey(ItemStack stack) {
@@ -67,7 +67,7 @@ public class ItemMaterial extends Item implements IModdedItem {
         } else if (i == 3) {
             return this.getRarity("ENDER_DRAGON_SCALE", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
         } else if (i == 4) {
-            return this.getRarity("THE_ULTIMATE_MATERIAL", TextFormatting.GREEN, "The Ultimate Material");
+            return this.getRarity("THE_ULTIMATE_MATERIAL", TextFormatting.GREEN, "The Ultimate MaterialType");
         }
         return this.getRarity("DEFAULT", TextFormatting.WHITE, "Default");
     }

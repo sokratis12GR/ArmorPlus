@@ -4,13 +4,13 @@
 
 package com.sofodev.armorplus.items.armors;
 
-import com.sofodev.armorplus.caps.abilities.Material;
+import com.sofodev.armorplus.caps.abilities.MaterialType;
 import net.minecraft.util.IStringSerializable;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 
-import static com.sofodev.armorplus.caps.abilities.Material.*;
+import static com.sofodev.armorplus.caps.abilities.MaterialType.*;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -27,9 +27,9 @@ public enum Tier implements IStringSerializable {
 
     private final int enchantability;
 
-    private final Material[] materials;
+    private final MaterialType[] materials;
 
-    Tier(String name, int enchantability, Material... materials) {
+    Tier(String name, int enchantability, MaterialType... materials) {
         this.name = name;
         this.materials = materials;
         this.enchantability = enchantability;
@@ -41,7 +41,7 @@ public enum Tier implements IStringSerializable {
         return name;
     }
 
-    public Material[] getMaterials() {
+    public MaterialType[] getMaterials() {
         return materials;
     }
 
@@ -53,7 +53,7 @@ public enum Tier implements IStringSerializable {
         return Arrays.stream(values()).filter(tier -> tier.getName().equals(name)).findFirst().orElse(this);
     }
 
-    public Tier getTier(Material material) {
+    public Tier getTier(MaterialType material) {
         return Arrays.stream(Tier.values()).filter(tier -> Arrays.stream(tier.getMaterials()).anyMatch(mat -> mat == material)).findFirst().orElse(this);
     }
 

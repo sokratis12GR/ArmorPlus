@@ -8,6 +8,8 @@ import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
 import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +21,10 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import java.util.Arrays;
 import java.util.List;
 
+import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
 import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.ABILITY_REGISTRY;
 import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.NONE;
 import static com.sofodev.armorplus.util.PotionUtils.addPotion;
@@ -41,32 +45,32 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
     /**
      * The materials that the ability is available for
      */
-    private final Material[] materials;
+    private final MaterialType[] materials;
 
-    public AbilityData(ResourceLocation rl, String translatableName, EquipmentSlot slot, Material... materials) {
+    public AbilityData(ResourceLocation rl, String translatableName, EquipmentSlot slot, MaterialType... materials) {
         this.setRegistryName(rl);
         this.name = new TextComponentTranslation(translatableName).getFormattedText();
         this.slot = slot.getSlots();
         this.materials = materials;
     }
 
-    public AbilityData(String rl, String translatableName, EquipmentSlot slot, Material... materials) {
+    public AbilityData(String rl, String translatableName, EquipmentSlot slot, MaterialType... materials) {
         this(new ResourceLocation(rl), translatableName, slot, materials);
     }
 
-    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, Material... materials) {
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, EntityEquipmentSlot d, MaterialType... materials) {
         this(rl, translatableName, new EquipmentSlot(a, b, c, d), materials);
     }
 
-    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, Material... materials) {
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, EntityEquipmentSlot c, MaterialType... materials) {
         this(rl, translatableName, new EquipmentSlot(a, b, c), materials);
     }
 
-    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, Material... materials) {
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, EntityEquipmentSlot b, MaterialType... materials) {
         this(rl, translatableName, new EquipmentSlot(a, b), materials);
     }
 
-    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, Material... materials) {
+    public AbilityData(String rl, String translatableName, EntityEquipmentSlot a, MaterialType... materials) {
         this(rl, translatableName, new EquipmentSlot(a), materials);
     }
 
@@ -83,7 +87,7 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
         return slot;
     }
 
-    public Material[] getMaterials() {
+    public MaterialType[] getMaterials() {
         return materials;
     }
 
@@ -103,7 +107,7 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
     }
 
     /**
-     * Applies a potion to the player onArmorTick internally (directly via {@link ItemArmorV2#onArmorTick}), is NOT affected by {@link AbilityData#onArmorTick(World, EntityPlayer, ItemStack)}
+     * Applies a potion to the player onArmorTick internally (directly via {@link ItemArmorV2#onArmorTick}), is NOT affected by {@link AbilityData#onArmorTick(ItemStack, World, EntityPlayer)}
      */
     public AbilityData applyPotionToPlayer(EntityPlayer player) {
         AbilityPotion potion = new AbilityPotion().setResourceLocation(this.getRegistryName());
@@ -117,51 +121,53 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
         return this;
     }
 
+    // These two are unique for ItemArmorV2, if you want to inherit its properties call AbilityData.provideArmorAbilities inside onArmorTick for you item (type: armor)
+
     /**
      * Triggers when the armor piece ticks {@link ItemArmorV2#onArmorTick}
      * <p>
      * Caution: This event doesn't check whether or not the Ability can be provided by other EntityEquipmentSlots, you will have to make sure to check if it can be provided {@link ItemArmorV2#onArmorTick(World, EntityPlayer, ItemStack)}
      */
-    public void onSpecialArmorTick(World world, EntityPlayer player, ItemStack stack) {
+    public void onSpecialArmorTick(ItemStack stack, World world, EntityPlayer player) {
         //No need for abstraction
     }
 
-    public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+    public void onArmorTick(ItemStack stack, World world, EntityPlayer player) {
         //No need for abstraction
     }
 
     /**
      * Triggers when the player kills an entity {@link LivingDeathEvent}
      */
-    public void onPlayerKillEntity(LivingDeathEvent event, ItemStack stack) {
+    public void onPlayerKillEntity(ItemStack stack, LivingDeathEvent event) {
         //No need for abstraction
     }
 
     /**
      * Triggers when the player breaks a block, make sure to use checks to not overload the player for each broken block {@link BreakEvent}
      */
-    public void onPlayerBreakBlock(BreakEvent event, ItemStack stack) {
+    public void onPlayerBreakBlock(ItemStack stack, BreakEvent event) {
         //No need for abstraction
     }
 
     /**
      * Triggers when the wearer is set as hurt {@link LivingHurtEvent}
      */
-    public void onPlayerPreDamaged(LivingHurtEvent event, ItemStack stack) {
+    public void onPlayerPreDamaged(ItemStack stack, LivingHurtEvent event) {
         //No need for abstraction
     }
 
     /**
      * Triggers just before the wearer is being hurt {@link LivingDamageEvent}
      */
-    public void onPlayerDamaged(LivingDamageEvent event, ItemStack stack) {
+    public void onPlayerDamaged(ItemStack stack, LivingDamageEvent event) {
         //No need for abstraction
     }
 
     /**
      * Triggers when the wearer jumps {@link LivingJumpEvent}
      */
-    public void onPlayerJump(LivingJumpEvent event, ItemStack stack) {
+    public void onPlayerJump(ItemStack stack, LivingJumpEvent event) {
         //No need for abstraction
     }
 
@@ -182,27 +188,53 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
     }
 
     /**
+     * @param data the ability data that we want to get the resource location from
+     * @return the resource location for the given {@param data} ability
+     */
+    public static ResourceLocation getResourceLocation(AbilityData data) {
+        return ABILITY_REGISTRY.getKey(data);
+    }
+
+    /**
      * @param stack       The {@link ItemStack} that we will be checking for availability
      * @param abilityData the ability data that we will use to check if it can be provided by the ItemStack
      * @return true if the given {@param stack} can provide the ability, we check if that's the case using first,
-     * ItemStack's {@link Material} for match, then we get the equipment slot that the ItemStack is for and if it matches our ability's requirements.
+     * ItemStack's {@link MaterialType} for match, then we get the equipment slot that the ItemStack is for and if it matches our ability's requirements.
      * We also return straight up false if the{@link ItemStack#getItem()} isn't instance of {@link ItemArmorV2}
      * @author Sokratis Fotkatzikis
      */
     public static boolean canProvide(ItemStack stack, AbilityData abilityData) {
-        if (stack.getItem() instanceof ItemArmorV2) {
-            ItemArmorV2 armor = ((ItemArmorV2) stack.getItem());
-            for (Material mat : abilityData.getMaterials()) {
-                if (mat == armor.material) {
-                    for (EntityEquipmentSlot equipmentSlot : abilityData.getSlots()) {
-                        if (armor.getEquipmentSlot() == equipmentSlot) {
-                            return true;
-                        }
-                    }
-                }
+        Item item = stack.getItem();
+        if (!(item instanceof ISpecialItem)) {
+            return false;
+        }
+        ISpecialItem special = ((ISpecialItem) item);
+        if (!special.isSpecial(stack)) {
+            return false;
+        }
+        if (special.isSpecialArmor(stack)) {
+            if (special.hasSpecialMaterial()) {
+                return hasEqualMaterials(abilityData, special, hasEqualSlots(abilityData, special));
+            } else {
+                return hasEqualSlots(abilityData, special);
+            }
+        } else if (special.hasSpecialMaterial()) {
+            return hasEqualMaterials(abilityData, special, true);
+        }
+        return false;
+    }
+
+    private static boolean hasEqualMaterials(AbilityData abilityData, ISpecialItem special, boolean additionalChecks) {
+        for (MaterialType mat : abilityData.getMaterials()) {
+            if (mat != null && mat == special.getMaterial()) {
+                return additionalChecks;
             }
         }
         return false;
+    }
+
+    private static boolean hasEqualSlots(AbilityData abilityData, ISpecialItem armor) {
+        return Arrays.stream(abilityData.getSlots()).anyMatch(equipmentSlot -> equipmentSlot != null && equipmentSlot == armor.getSlot());
     }
 
     /**
@@ -250,5 +282,28 @@ public class AbilityData extends IForgeRegistryEntry.Impl<AbilityData> {
 
     public static boolean contains(IAbilityHandler handler, String safeID) {
         return contains(handler, getData(safeID));
+    }
+
+    /**
+     * Used inside {@link ItemArmorV2#onArmorTick(World, EntityPlayer, ItemStack)} to provide armor abilities.
+     * Call this on your own (onArmorTick) if you use a custom {@link ItemArmor}
+     */
+    public static void provideArmorAbilities(ItemStack stack, World world, EntityPlayer player) {
+        IAbilityHandler handler = getHandler(stack);
+        boolean hasAbilities = handler != null && hasAbilities(handler);
+        if (!hasAbilities) {
+            return;
+        }
+        for (AbilityData data : handler.getAbilities()) {
+            if (contains(handler, data)) {
+                if (canProvide(stack, data)) {
+                    if (data.isPotion()) {
+                        data.applyPotionToPlayer(player);
+                    }
+                    data.onArmorTick(stack, world, player);
+                }
+                data.onSpecialArmorTick(stack, world, player);
+            }
+        }
     }
 }

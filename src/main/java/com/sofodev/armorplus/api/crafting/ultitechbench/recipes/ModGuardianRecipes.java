@@ -8,7 +8,6 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.config.ModConfig.getRD;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -19,14 +18,14 @@ public class ModGuardianRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (global_registry.enableGuardianArmor && recipes.enableGuardianArmorRecipes) {
+                if (recipes.enableGuardianArmorRecipes) {
                     UTBRecipesHelper.registerEasyArmorSetRecipes(manager, 1, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
                 }
                 break;
             }
             case EXPERT:
             case HELLISH: {
-                if (global_registry.enableGuardianArmor && recipes.enableGuardianArmorRecipes) {
+                if (recipes.enableGuardianArmorRecipes) {
                     manager.addRecipe(getItemStack(guardianHelmet),
                         "GPGPGPG",
                         "GS L SG",

@@ -12,7 +12,8 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 
 import static java.lang.String.format;
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.util.text.TextFormatting.AQUA;
+import static net.minecraft.util.text.TextFormatting.ITALIC;
 import static net.minecraft.util.text.event.ClickEvent.Action.OPEN_URL;
 import static net.minecraft.util.text.event.HoverEvent.Action.SHOW_TEXT;
 

@@ -30,8 +30,6 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModRecipes {
 
-    private static ModConfig.RegistryConfig.GlobalRegistry gr = ModConfig.RegistryConfig.global_registry;
-
     public static void init() {
         addShapedRecipes();
         addShapelessRecipes();
@@ -41,26 +39,26 @@ public class ModRecipes {
     }
 
     private static void addIntegrationShapelessRecipes() {
-        addTOPRecipe(gr.enableEnderDragonArmor, "ender_dragon_helmet");
-        addTOPRecipe(gr.enableGuardianArmor, "guardian_helmet");
-        addTOPRecipe(gr.enableSuperStarArmor, "super_star_helmet");
-        addTOPRecipe(gr.enableTheUltimateArmor, "the_ultimate_helmet");
-        addTOPRecipe(gr.enableCoalArmor, "coal_helmet");
-        addTOPRecipe(gr.enableEmeraldArmor, "emerald_helmet");
-        addTOPRecipe(gr.enableLapisArmor, "lapis_helmet");
-        addTOPRecipe(gr.enableLavaArmor, "lava_helmet");
-        addTOPRecipe(gr.enableObsidianArmor, "obsidian_helmet");
-        addTOPRecipe(gr.enableRedstoneArmor, "redstone_helmet");
-        addTOPRecipe(gr.enableChickenArmor, "chicken_helmet");
-        addTOPRecipe(gr.enableSlimeArmor, "slime_helmet");
-        addTOPRecipe(gr.enableArditeArmor, "ardite_helmet");
-        addTOPRecipe(gr.enableCobaltArmor, "cobalt_helmet");
-        addTOPRecipe(gr.enableManyullynArmor, "manyullyn_helmet");
-        addTOPRecipe(gr.enablePigIronArmor, "pig_iron_helmet");
-        addTOPRecipe(gr.enableKnightSlimeArmor, "knight_slime_helmet");
+        addTOPRecipe("ender_dragon_helmet");
+        addTOPRecipe("guardian_helmet");
+        addTOPRecipe("super_star_helmet");
+        addTOPRecipe("the_ultimate_helmet");
+        addTOPRecipe("coal_helmet");
+        addTOPRecipe("emerald_helmet");
+        addTOPRecipe("lapis_helmet");
+        addTOPRecipe("lava_helmet");
+        addTOPRecipe("obsidian_helmet");
+        addTOPRecipe("redstone_helmet");
+        addTOPRecipe("chicken_helmet");
+        addTOPRecipe("slime_helmet");
+        addTOPRecipe("ardite_helmet");
+        addTOPRecipe("cobalt_helmet");
+        addTOPRecipe("manyullyn_helmet");
+        addTOPRecipe("pig_iron_helmet");
+        addTOPRecipe("knight_slime_helmet");
     }
 
-    private static void addTOPRecipe(boolean enabled, String name) {
+    private static void addTOPRecipe(String name) {
         /* NBT-Tag-Compound */
         NBTTagCompound nbttagc = new NBTTagCompound();
         nbttagc.setInteger("theoneprobe", 1);
@@ -68,8 +66,12 @@ public class ModRecipes {
         if (helmet != null) {
             /* Set Helmets' NBT-Tags */
             ItemStack stack = getItemStack(helmet);
+            NBTTagCompound oldNBT = stack.getTagCompound();
+            if (oldNBT != null) {
+                nbttagc.merge(oldNBT);
+            }
             stack.setTagCompound(nbttagc);
-            if (enabled && !stack.isEmpty()) {
+            if (!stack.isEmpty()) {
                 addShapelessRecipe(Utils.setRL(name), Utils.setRL("top"), stack, fromItem(helmet), fromStacks(getItemStack("theoneprobe", "probe")));
             }
         }
@@ -143,7 +145,7 @@ public class ModRecipes {
             GameRegistry.addShapelessRecipe(Utils.setRL("obsidian_from_compression"), Utils.setRL("obsidian"), getItemStack(Blocks.OBSIDIAN, 9, 0), fromStacks(getItemStack(blockCompressedObsidian)));
         }
         addShapelessRecipe(Utils.setRL("info_book"), Utils.setRL("item_book"), getItemStack(ModItems.bookInfo), fromItems(BOOK), fromItems(COAL));
-        addShapelessRecipe(Utils.setRL("lava_cactus"), Utils.setRL("lava_cactus"), getItemStack(blockLavaCactus, 1, 0), fromStacks(getItemStack(CACTUS)), fromStacks(getItemStack(ModItems.itemLavaCrystal, 1)));
+        addShapelessRecipe(Utils.setRL("lava_cactus"), Utils.setRL("lava_cactus"), getItemStack(lavaCactus, 1, 0), fromStacks(getItemStack(CACTUS)), fromStacks(getItemStack(ModItems.itemLavaCrystal, 1)));
     }
 
     private static String stoneBrick = "stonebrick";

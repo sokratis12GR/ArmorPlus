@@ -28,7 +28,6 @@ import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.registry.ModItems.*;
 
 /**
@@ -46,13 +45,13 @@ public class CommonProxy {
         APItems.registerItemNames();
         APItems.registerWeaponsA();
         APItems.registerWeaponsB();
+        APItems.registerTCItemNames();
         this.registerEntityFixes();
         ModEntities.registerEntitySettings();
         this.registerWorldGenerator(new OreGen(), new StructureGenNBT());
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().preInit(event);
         registerTCItems();
-        APItems.registerTCItemNames();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         LogHelper.info("Finished PreInitialization");
@@ -71,23 +70,11 @@ public class CommonProxy {
         ModRecipes.init();
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().init(event);
-        if (!enableExperimentalMode) {
-            if (global_registry.enableArditeArmor) {
-                Arrays.stream(ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-            }
-            if (global_registry.enableCobaltArmor) {
-                Arrays.stream(cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-            }
-            if (global_registry.enableManyullynArmor) {
-                Arrays.stream(manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-            }
-            if (global_registry.enableKnightSlimeArmor) {
-                Arrays.stream(knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-            }
-            if (global_registry.enablePigIronArmor) {
-                Arrays.stream(pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
-            }
-        }
+        Arrays.stream(ardite).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(cobalt).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(manyullyn).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(knightSlime).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
+        Arrays.stream(pigIron).forEach(armor -> armor.setRepairStack(armor.material.getRepairStack()));
         LogHelper.getLogger(MODID).info("Finished Initialization");
     }
 

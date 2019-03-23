@@ -5,10 +5,6 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.blocks.base.BlockBase;
-import com.sofodev.armorplus.blocks.benches.BlockBench;
-import com.sofodev.armorplus.blocks.benches.ItemBlockBench;
-import com.sofodev.armorplus.blocks.dungeon.ItemDungeonBlock;
 import com.sofodev.armorplus.caps.abilities.AbilityData;
 import com.sofodev.armorplus.enchantments.FuriousEnchantment;
 import com.sofodev.armorplus.enchantments.LifeStealEnchantment;
@@ -22,7 +18,6 @@ import com.sofodev.armorplus.entity.mobs.EntityIceGolem;
 import com.sofodev.armorplus.items.materials.ItemRename;
 import com.sofodev.armorplus.potions.PotionEmpty;
 import com.sofodev.armorplus.sounds.SoundTrapTriggered;
-import com.sofodev.armorplus.tileentity.*;
 import com.sofodev.armorplus.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -32,7 +27,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraftforge.common.util.CompoundDataFixer;
 import net.minecraftforge.common.util.ModFixs;
@@ -42,6 +36,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 
@@ -51,10 +46,8 @@ import static com.sofodev.armorplus.caps.abilities.ImplementedAbilities.*;
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
 import static com.sofodev.armorplus.util.Utils.setRL;
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
-import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -115,49 +108,9 @@ public class RegistryEventHandler {
             0x665b52, 0x845833);
     }
 
-    /**
-     * Blocks
-     */
-    private static void registerAllBlocks(Register<Block> event, Block[]... blocksArray) {
-        Arrays.stream(blocksArray).forEachOrdered(blockList -> registerAllBlocks(event, blockList));
-    }
-
-    private static void registerAllBlocks(Register<Block> event, Block... blockList) {
-        Arrays.stream(blockList).filter(Utils::isNotNull).forEachOrdered(block -> event.getRegistry().register(block));
-    }
-
-    @SubscribeEvent
-    public static void registerBlocks(Register<Block> event) {
-        registerAllBlocks(event, benches);
-        registerAllBlocks(event,
-            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
-            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
-        );
-        registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
-        //registerAllBlocks(event, blockBTMMoon);
-        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerAllBlocks(event, enderBlocks);
-        registerAllBlocks(event, trophies);
-        registerTileEntities();
-        registerTEFixes();
-    }
-
-    private static void registerTEFixes() {
-        DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
-        registerFixesLavaInfuser(dataFixer);
-    }
-
-    private static void registerTileEntities() {
-        registerTileEntity(TileLavaInfuser.class, setRL("lava_infuser_tile_entity"));
-        registerTileEntity(TileWB.class, setRL("workbench_tile_entity"));
-        registerTileEntity(TileHTB.class, setRL("high_tech_bench_tile_entity"));
-        registerTileEntity(TileUTB.class, setRL("ulti_tech_tile_entity"));
-        registerTileEntity(TileCB.class, setRL("champion_tile_entity"));
-        registerTileEntity(TileTrophy.class, setRL("trophy_tile_entity"));
-    }
-
-    private static void registerItemBlock(Register<Item> event, Block... blocks) {
-        Arrays.stream(blocks).forEachOrdered(block -> {
+    private static void registerItemBlock(Register<Item> event, ResourceLocation... registryNames) {
+        Arrays.stream(registryNames).forEachOrdered(regName -> {
+            Block block = ForgeRegistries.BLOCKS.getValue(regName);
             if (Utils.areNotNull(block, block.getRegistryName())) {
                 ItemBlock itemBlock = new ItemBlock(block);
                 itemBlock.setRegistryName(block.getRegistryName());
@@ -166,22 +119,12 @@ public class RegistryEventHandler {
         });
     }
 
-    private static void registerDungeonBlock(Register<Item> event, BlockBase... blocks) {
-        Arrays.stream(blocks).forEachOrdered(block -> {
-            if (Utils.areNotNull(block, block.getRegistryName())) {
-                ItemBlock itemBlock = new ItemDungeonBlock(block);
-                event.getRegistry().register(itemBlock);
-            }
-        });
+    private static void registerItemBlock(Register<Item> event, String... locations) {
+        Arrays.stream(locations).forEach(name -> registerItemBlock(event, setRL(name)));
     }
 
-    private static void registerBenchBlocks(Register<Item> event, BlockBench... blocks) {
-        Arrays.stream(blocks).forEachOrdered(block -> {
-            if (Utils.areNotNull(block, block.getRegistryName())) {
-                ItemBlock itemBlock = new ItemBlockBench(block);
-                event.getRegistry().register(itemBlock);
-            }
-        });
+    private static void registerItemBlock(Register<Item> event, Block... blocks) {
+        Arrays.stream(blocks).forEach(block -> registerItemBlock(event, block.getRegistryName()));
     }
 
     /**
@@ -229,16 +172,16 @@ public class RegistryEventHandler {
     @SubscribeEvent
     public static void registerItems(Register<Item> event) {
         // ==== BLOCKS ==== \\
-        registerBenchBlocks(event, benches);
+        registerItemBlock(event, benches);
         //registerItemBlock(event, blockBTMMoon);
         registerItemBlock(event,
-            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, blockLavaCactus, lavaInfuser, lavaInfuserInfusing,
+            oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
             blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
         );
         // ==== DUNGEON BLOCKS ==== \\
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerDungeonBlock(event, enderBlocks);
+        registerItemBlock(event, enderBlocks);
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,

@@ -7,7 +7,7 @@ package com.sofodev.armorplus.events;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.caps.abilities.AbilityData;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
-import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
+import com.sofodev.armorplus.caps.abilities.ISpecialItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,37 +31,28 @@ public class AbilityDataEventHandler {
         if (isEnabled() && event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             if (player == null) return;
-            ItemStack stack = player.getArmorInventoryList().iterator().next();
-            if (isValid(stack)) {
-                IAbilityHandler handler = getHandler(stack);
-                if (validateHandler(handler)) {
-                    handler.getAbilities().stream().filter(
-                        data -> canApply(handler, data, stack)
-                    ).forEach(
-                        data -> data.onPlayerJump(event, stack)
-                    );
-                }
+            for (ItemStack stack : player.getArmorInventoryList()) {
+                onPlayerJump(event, stack);
+            }
+            for (ItemStack stack : player.getHeldEquipment()) {
+                onPlayerJump(event, stack);
             }
         }
     }
 
     @SubscribeEvent
     public static void onPlayerPreDamaged(LivingHurtEvent event) {
-        if (isEnabled()) {
-            Entity entity = event.getEntity();
-            if (entity instanceof EntityPlayer) {
-                EntityPlayer player = (EntityPlayer) entity;
-                ItemStack stack = player.getArmorInventoryList().iterator().next();
-                if (stack.getItem() instanceof ItemArmorV2) {
-                    IAbilityHandler handler = getHandler(stack);
-                    if (validateHandler(handler)) {
-                        handler.getAbilities().stream().filter(
-                            data -> canApply(handler, data, stack)
-                        ).forEach(
-                            data -> data.onPlayerPreDamaged(event, stack)
-                        );
-                    }
-                }
+        if (!isEnabled()) {
+            return;
+        }
+        Entity entity = event.getEntity();
+        if (entity instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entity;
+            for (ItemStack stack : player.getArmorInventoryList()) {
+                onPlayerPreDamaged(event, stack);
+            }
+            for (ItemStack stack : player.getHeldEquipment()) {
+                onPlayerPreDamaged(event, stack);
             }
         }
     }
@@ -71,16 +62,11 @@ public class AbilityDataEventHandler {
         if (isEnabled() && event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             if (player == null) return;
-            ItemStack stack = player.getArmorInventoryList().iterator().next();
-            if (isValid(stack)) {
-                IAbilityHandler handler = getHandler(stack);
-                if (validateHandler(handler)) {
-                    handler.getAbilities().stream().filter(
-                        data -> canApply(handler, data, stack)
-                    ).forEach(
-                        data -> data.onPlayerDamaged(event, stack)
-                    );
-                }
+            for (ItemStack stack : player.getArmorInventoryList()) {
+                onPlayerDamaged(event, stack);
+            }
+            for (ItemStack stack : player.getHeldEquipment()) {
+                onPlayerDamaged(event, stack);
             }
         }
     }
@@ -90,16 +76,11 @@ public class AbilityDataEventHandler {
         if (isEnabled()) {
             EntityPlayer player = event.getPlayer();
             if (player == null) return;
-            ItemStack stack = player.getArmorInventoryList().iterator().next();
-            if (isValid(stack)) {
-                IAbilityHandler handler = getHandler(stack);
-                if (validateHandler(handler)) {
-                    handler.getAbilities().stream().filter(
-                        data -> canApply(handler, data, stack)
-                    ).forEach(
-                        data -> data.onPlayerBreakBlock(event, stack)
-                    );
-                }
+            for (ItemStack stack : player.getArmorInventoryList()) {
+                onPlayerBreakBlock(event, stack);
+            }
+            for (ItemStack stack : player.getHeldEquipment()) {
+                onPlayerBreakBlock(event, stack);
             }
         }
     }
@@ -110,16 +91,80 @@ public class AbilityDataEventHandler {
         if (attacker == null) return;
         if (isEnabled() && attacker instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) attacker;
-            ItemStack stack = player.getArmorInventoryList().iterator().next();
-            if (isValid(stack)) {
-                IAbilityHandler handler = getHandler(stack);
-                if (validateHandler(handler)) {
-                    handler.getAbilities().stream().filter(
-                        data -> canApply(handler, data, stack)
-                    ).forEach(
-                        data -> data.onPlayerKillEntity(event, stack)
-                    );
-                }
+            for (ItemStack stack : player.getArmorInventoryList()) {
+                onPlayerKilledEntity(event, stack);
+            }
+            for (ItemStack stack : player.getHeldEquipment()) {
+                onPlayerKilledEntity(event, stack);
+            }
+        }
+    }
+
+    //////////////////////
+    //  HELPER METHODS  //
+    //////////////////////
+
+    private static void onPlayerJump(LivingEvent.LivingJumpEvent event, ItemStack stack) {
+        if (isValid(stack)) {
+            IAbilityHandler handler = getHandler(stack);
+            if (validateHandler(handler)) {
+                handler.getAbilities().stream().filter(
+                    data -> canApply(handler, data, stack)
+                ).forEach(
+                    data -> data.onPlayerJump(stack, event)
+                );
+            }
+        }
+    }
+
+    private static void onPlayerPreDamaged(LivingHurtEvent event, ItemStack stack) {
+        if (isValid(stack)) {
+            IAbilityHandler handler = getHandler(stack);
+            if (validateHandler(handler)) {
+                handler.getAbilities().stream().filter(
+                    data -> canApply(handler, data, stack)
+                ).forEach(
+                    data -> data.onPlayerPreDamaged(stack, event)
+                );
+            }
+        }
+    }
+
+    private static void onPlayerDamaged(LivingDamageEvent event, ItemStack stack) {
+        if (isValid(stack)) {
+            IAbilityHandler handler = getHandler(stack);
+            if (validateHandler(handler)) {
+                handler.getAbilities().stream().filter(
+                    data -> canApply(handler, data, stack)
+                ).forEach(
+                    data -> data.onPlayerDamaged(stack, event)
+                );
+            }
+        }
+    }
+
+    private static void onPlayerBreakBlock(BlockEvent.BreakEvent event, ItemStack stack) {
+        if (isValid(stack)) {
+            IAbilityHandler handler = getHandler(stack);
+            if (validateHandler(handler)) {
+                handler.getAbilities().stream().filter(
+                    data -> canApply(handler, data, stack)
+                ).forEach(
+                    data -> data.onPlayerBreakBlock(stack, event)
+                );
+            }
+        }
+    }
+
+    private static void onPlayerKilledEntity(LivingDeathEvent event, ItemStack stack) {
+        if (isValid(stack)) {
+            IAbilityHandler handler = getHandler(stack);
+            if (validateHandler(handler)) {
+                handler.getAbilities().stream().filter(
+                    data -> canApply(handler, data, stack)
+                ).forEach(
+                    data -> data.onPlayerKillEntity(stack, event)
+                );
             }
         }
     }
@@ -130,10 +175,10 @@ public class AbilityDataEventHandler {
 
     /**
      * @param stack the ItemStack that we will use
-     * @return true if the {@code stack#getItem()} is an instanceof ItemArmorV2, otherwise false
+     * @return true if the {@code stack#getItem()} is an instanceof ISpecialItem, otherwise false
      */
     private static boolean isValid(ItemStack stack) {
-        return !stack.isEmpty() && stack.getItem() instanceof ItemArmorV2;
+        return !stack.isEmpty() && stack.getItem() instanceof ISpecialItem;
     }
 
     private static boolean validateHandler(IAbilityHandler handler) {

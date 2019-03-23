@@ -1,3 +1,24 @@
+ArmorPlus 1.12.2-11.20.0.56
+----------------------------
+
+* Internal changes made to registries
+  - You can no longer fully remove an item from the registry. 
+  - Use another methods to stop the ability of getting such items (like removal of its recipes) 
+  - Why? 
+    ~ This is done to firstly have "safe" items, as well as optimization towards the registry handling.
+    ~ Items/Blocks/Entities shouldn't be fully removed, only made unobtainable.
+  - Notes:
+    ~ The config options will be gone, but they will not remove themselves from the registry.cfg.
+    ~ Only affects item registration (Experimental Mode still removes/adds the experimental items). Recipes can still be enabled/disabled, by both configs and/or CraftTweaker.
+    ~ JEI: these items will always show in JEI even if unobtainable, if you want to change that JEI provides options to hide those items.
+* TOP Recipes should now save old NBT data.
+
+ArmorPlus 1.12.2-11.19.2.55
+----------------------------
+
+* Reworked a bit the ability system even more, its no longer only for ItemArmorV2 but any item that implements ISpecialItem
+* Health Boost will no longer lose its cooldown and reset, will be reset constantly so the hearts stay there?
+
 ArmorPlus 1.12.2-11.19.1.54
 ----------------------------
 

@@ -40,7 +40,7 @@ public class ContainerUltiTechBench extends ContainerBenchBase {
         }
 
         this.addPlayerInventory(playerInventory, 17, 214, 156);
-       this.addPlayerArmorInventory(playerInventory, 152, 107);
+        this.addPlayerArmorInventory(playerInventory, 152, 107);
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 

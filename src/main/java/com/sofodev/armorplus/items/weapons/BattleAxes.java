@@ -40,15 +40,15 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis
  **/
 public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
-    COAL(ItemSpecialBattleAxe.battleAxeCoalMaterial, getItemStack(COAL_BLOCK), coal, 8.0F, global_registry.enableCoalWeapons),
-    LAPIS(ItemSpecialBattleAxe.battleAxeLapisMaterial, getItemStack(LAPIS_BLOCK), lapis, 9.0F, global_registry.enableLapisWeapons),
-    REDSTONE(ItemSpecialBattleAxe.battleAxeRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone, 9.0F, global_registry.enableRedstoneWeapons),
-    EMERALD(ItemSpecialBattleAxe.battleAxeEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald, 10.0F, global_registry.enableEmeraldWeapons),
-    OBSIDIAN(ItemSpecialBattleAxe.battleAxeObsidianMaterial, getItemStack(ModBlocks.blockCompressedObsidian), obsidian, 10.5F, global_registry.enableObsidianWeapons),
-    INFUSED_LAVA(ItemSpecialBattleAxe.battleAxeLavaMaterial, getItemStack(itemLavaCrystal, 1), lava, 11.5F, global_registry.enableLavaWeapons),
-    GUARDIAN(ItemSpecialBattleAxe.battleAxeGuardianMaterial, getItemStack(materials, 1), guardian, 14.0F, global_registry.enableGuardianWeapons),
-    SUPER_STAR(ItemSpecialBattleAxe.battleAxeSuperStarMaterial, getItemStack(materials, 2), super_star, 15.0F, global_registry.enableSuperStarWeapons),
-    ENDER_DRAGON(ItemSpecialBattleAxe.battleAxeEnderDragonMaterial, getItemStack(materials, 3), ender_dragon, 16.0F, global_registry.enableEnderDragonWeapons),
+    COAL(ItemSpecialBattleAxe.battleAxeCoalMaterial, getItemStack(COAL_BLOCK), coal, 8.0F),
+    LAPIS(ItemSpecialBattleAxe.battleAxeLapisMaterial, getItemStack(LAPIS_BLOCK), lapis, 9.0F),
+    REDSTONE(ItemSpecialBattleAxe.battleAxeRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone, 9.0F),
+    EMERALD(ItemSpecialBattleAxe.battleAxeEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald, 10.0F),
+    OBSIDIAN(ItemSpecialBattleAxe.battleAxeObsidianMaterial, getItemStack(ModBlocks.blockCompressedObsidian), obsidian, 10.5F),
+    INFUSED_LAVA(ItemSpecialBattleAxe.battleAxeLavaMaterial, getItemStack(itemLavaCrystal, 1), lava, 11.5F),
+    GUARDIAN(ItemSpecialBattleAxe.battleAxeGuardianMaterial, getItemStack(materials, 1), guardian, 14.0F),
+    SUPER_STAR(ItemSpecialBattleAxe.battleAxeSuperStarMaterial, getItemStack(materials, 2), super_star, 15.0F),
+    ENDER_DRAGON(ItemSpecialBattleAxe.battleAxeEnderDragonMaterial, getItemStack(materials, 3), ender_dragon, 16.0F),
     // WOOD(, "wooden"),
     // STONE(, "stone"),
     // IRON(, "iron"),
@@ -59,18 +59,15 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     private final Item.ToolMaterial material;
     private final ItemStack repairStack;
     private final TextFormatting textFormatting;
-    private final boolean isEnabled;
     private final List<String> effect;
     private final float efficiency;
     private final Negative negative;
     private final Ignite ignite;
 
-    BattleAxes(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material, float efficiencyIn, boolean[] isEnabled
-    ) {
+    BattleAxes(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material, float efficiencyIn) {
         this.material = materialIn;
         this.repairStack = repairStackIn;
         this.textFormatting = getValueByName(material.weapons.itemNameColor);
-        this.isEnabled = isEnabled[1];
         this.efficiency = efficiencyIn;
         WeaponEffects effects = new WeaponEffects(material);
         this.negative = effects.getNegative();
@@ -86,11 +83,6 @@ public enum BattleAxes implements IEffectHolder, IRemovable, IRepairable {
     @Override
     public AbilityCanceller getRemovableAbilities() {
         return new AbilityCanceller();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.isEnabled;
     }
 
     public static List<String> setToolTip(String[] effectName, int[] effectLevel) {

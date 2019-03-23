@@ -21,7 +21,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import static com.sofodev.armorplus.caps.abilities.AbilityDataHandler.getHandler;
-import static com.sofodev.armorplus.caps.abilities.Material.*;
+import static com.sofodev.armorplus.caps.abilities.MaterialType.*;
 import static com.sofodev.armorplus.registry.ModBlocks.blockMeltingObsidian;
 import static net.minecraft.block.material.Material.AIR;
 import static net.minecraft.block.material.Material.WATER;
@@ -34,7 +34,7 @@ public class ImplementedAbilities {
 
     public static IForgeRegistry<AbilityData> ABILITY_REGISTRY;
 
-    public static final AbilityData NONE = new AbilityData("armorplus:empty", "ability.armorplus.empty.name", new EquipmentSlot(EntityEquipmentSlot.values()), Material.NONE);
+    public static final AbilityData NONE = new AbilityData("armorplus:empty", "ability.armorplus.empty.name", new EquipmentSlot(EntityEquipmentSlot.values()), MaterialType.NONE);
     public static final AbilityData NIGHT_VISION = new AbilityData("minecraft:night_vision", "ability.armorplus.night_vision.name", HEAD, COAL, INFUSED_LAVA, GUARDIAN).setPotion(true);
     public static final AbilityData WATER_BREATHING = new AbilityData("minecraft:water_breathing", "ability.armorplus.water_breathing.name", HEAD, LAPIS, GUARDIAN).setPotion(true);
     public static final AbilityData RESISTANCE = new AbilityData("minecraft:resistance", "ability.armorplus.resistance.name", HEAD, CHEST, LEGS, FEET, OBSIDIAN, INFUSED_LAVA).setPotion(true);
@@ -48,7 +48,7 @@ public class ImplementedAbilities {
     public static final AbilityData ABSORPTION = new AbilityData("minecraft:absorption", "ability.armorplus.absorption.name", CHEST, INFUSED_LAVA).setPotion(true);
     public static final AbilityData WITHER_PROOF = new AbilityData("armorplus:wither_proof", "ability.armorplus.wither_proof.name", CHEST, SUPER_STAR, ENDER_DRAGON, ULTIMATE) {
         @Override
-        public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        public void onArmorTick(ItemStack stack, World world, EntityPlayer player) {
             PotionEffect effect = player.getActivePotionEffect(WITHER);
             if (effect != null) {
                 player.removePotionEffect(WITHER);
@@ -57,7 +57,7 @@ public class ImplementedAbilities {
     };
     public static final AbilityData FLIGHT = new AbilityData("armorplus:flight", "ability.armorplus.flight.name", CHEST, ENDER_DRAGON, ULTIMATE) {
         @Override
-        public void onSpecialArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        public void onSpecialArmorTick(ItemStack stack, World world, EntityPlayer player) {
             if (stack.getItem() instanceof ItemArmorV2) {
                 ItemArmorV2 armor = (ItemArmorV2) stack.getItem();
                 EntityEquipmentSlot slot = armor.getEquipmentSlot();
@@ -75,7 +75,7 @@ public class ImplementedAbilities {
     public static final AbilityData STEP_ASSIST = new AbilityData("armorplus:step_assist", "ability.armorplus.step_assist.name", LEGS, REDSTONE, SUPER_STAR);
     public static final AbilityData BONUS_XP_ON_KILL = new AbilityData("armorplus:bonus_xp_on_kill", "ability.armorplus.bonus_xp_on_kill.name", CHEST, COAL, LAPIS, EMERALD) {
         @Override
-        public void onPlayerKillEntity(LivingDeathEvent event, ItemStack stack) {
+        public void onPlayerKillEntity(ItemStack stack, LivingDeathEvent event) {
             Entity entity = event.getEntity();
             entity.world.spawnEntity(new EntityXPOrb(entity.world, entity.posX, entity.posY + 0.5D, entity.posZ, 1 + entity.world.rand.nextInt(4)));
         }
@@ -83,7 +83,7 @@ public class ImplementedAbilities {
 
     public static final AbilityData WALK_ON_LAVA = new AbilityData("armorplus:walk_on_lava", "ability.armorplus.walk_on_lava.name", FEET, INFUSED_LAVA) {
         @Override
-        public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        public void onArmorTick(ItemStack stack, World world, EntityPlayer player) {
             if (player.onGround) {
                 player.extinguish(); //Called so the player doesn't catch on fire
                 float area = (float) Math.min(16, 1);
@@ -113,7 +113,7 @@ public class ImplementedAbilities {
         private static final double MAX_SPEED = 1.3;
 
         @Override
-        public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        public void onArmorTick(ItemStack stack, World world, EntityPlayer player) {
             if (player.isInsideOfMaterial(WATER)) {
                 //Wor
                 double motionX = player.motionX * MULTIPLIER;

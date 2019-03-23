@@ -8,7 +8,6 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.registry.APBlocks.*;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -38,8 +37,8 @@ public class ModUltimateRecipes {
             'H', highTechBench,
             'O', blockCompressedObsidian,
             'L', getItemStack(itemLavaCrystal, 1));
-        /* The Ultimate Armor */
-        if (global_registry.enableTheUltimateArmor && recipes.enableTheUltimateArmorRecipes) {
+        /*The Ultimate Armor */
+        if (recipes.enableTheUltimateArmorRecipes) {
             manager.addRecipe(getItemStack(theUltimateHelmet),
                 " UUUUU ",
                 "UCCLCCU",
@@ -96,226 +95,202 @@ public class ModUltimateRecipes {
                 'M', getItemStack(theUltimateParts, 10),
                 'R', getItemStack(theUltimateParts, 9)
             );
-            ////Helmet Parts
-            if (global_registry.enableSuperStarArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 2),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', superStarHelmet,
-                    'B', getItemStack(materials, 2),
-                    'L', Blocks.SOUL_SAND,
-                    'R', Blocks.NETHERRACK,
-                    'T', Blocks.NETHER_BRICK,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableEnderDragonArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 1),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', enderDragonHelmet,
-                    'B', getItemStack(materials, 3),
-                    'L', Items.ENDER_PEARL,
-                    'R', Items.ENDER_EYE,
-                    'T', Items.END_CRYSTAL,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableGuardianArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 0),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', guardianHelmet,
-                    'B', getItemStack(materials, 1),
-                    'L', Items.PRISMARINE_CRYSTALS,
-                    'R', Items.PRISMARINE_SHARD,
-                    'T', Blocks.SPONGE,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
+            ///Helmet Parts
+            manager.addRecipe(getItemStack(theUltimateParts, 2),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', superStarHelmet,
+                'B', getItemStack(materials, 2),
+                'L', Blocks.SOUL_SAND,
+                'R', Blocks.NETHERRACK,
+                'T', Blocks.NETHER_BRICK,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 1),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', enderDragonHelmet,
+                'B', getItemStack(materials, 3),
+                'L', Items.ENDER_PEARL,
+                'R', Items.ENDER_EYE,
+                'T', Items.END_CRYSTAL,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 0),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', guardianHelmet,
+                'B', getItemStack(materials, 1),
+                'L', Items.PRISMARINE_CRYSTALS,
+                'R', Items.PRISMARINE_SHARD,
+                'T', Blocks.SPONGE,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
             //Chestplate Parts
-            if (global_registry.enableSuperStarArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 5),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', superStarChestplate,
-                    'B', getItemStack(materials, 2),
-                    'L', Blocks.SOUL_SAND,
-                    'R', Blocks.NETHERRACK,
-                    'T', Blocks.NETHER_BRICK,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableEnderDragonArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 4),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', enderDragonChestplate,
-                    'B', getItemStack(materials, 3),
-                    'L', Items.ENDER_PEARL,
-                    'R', Items.ENDER_EYE,
-                    'T', Items.END_CRYSTAL,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableGuardianArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 3),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', guardianChestplate,
-                    'B', getItemStack(materials, 1),
-                    'L', Items.PRISMARINE_CRYSTALS,
-                    'R', Items.PRISMARINE_SHARD,
-                    'T', Blocks.SPONGE,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
+            manager.addRecipe(getItemStack(theUltimateParts, 5),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', superStarChestplate,
+                'B', getItemStack(materials, 2),
+                'L', Blocks.SOUL_SAND,
+                'R', Blocks.NETHERRACK,
+                'T', Blocks.NETHER_BRICK,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 4),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', enderDragonChestplate,
+                'B', getItemStack(materials, 3),
+                'L', Items.ENDER_PEARL,
+                'R', Items.ENDER_EYE,
+                'T', Items.END_CRYSTAL,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 3),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', guardianChestplate,
+                'B', getItemStack(materials, 1),
+                'L', Items.PRISMARINE_CRYSTALS,
+                'R', Items.PRISMARINE_SHARD,
+                'T', Blocks.SPONGE,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
             //Leggings Parts
-            if (global_registry.enableSuperStarArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 8),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', superStarLeggings,
-                    'B', getItemStack(materials, 2),
-                    'L', Blocks.SOUL_SAND,
-                    'R', Blocks.NETHERRACK,
-                    'T', Blocks.NETHER_BRICK,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableEnderDragonArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 7),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', enderDragonLeggings,
-                    'B', getItemStack(materials, 3),
-                    'L', Items.ENDER_PEARL,
-                    'R', Items.ENDER_EYE,
-                    'T', Items.END_CRYSTAL,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableGuardianArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 6),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', guardianLeggings,
-                    'B', getItemStack(materials, 1),
-                    'L', Items.PRISMARINE_CRYSTALS,
-                    'R', Items.PRISMARINE_SHARD,
-                    'T', Blocks.SPONGE,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
+            manager.addRecipe(getItemStack(theUltimateParts, 8),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', superStarLeggings,
+                'B', getItemStack(materials, 2),
+                'L', Blocks.SOUL_SAND,
+                'R', Blocks.NETHERRACK,
+                'T', Blocks.NETHER_BRICK,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 7),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', enderDragonLeggings,
+                'B', getItemStack(materials, 3),
+                'L', Items.ENDER_PEARL,
+                'R', Items.ENDER_EYE,
+                'T', Items.END_CRYSTAL,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 6),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', guardianLeggings,
+                'B', getItemStack(materials, 1),
+                'L', Items.PRISMARINE_CRYSTALS,
+                'R', Items.PRISMARINE_SHARD,
+                'T', Blocks.SPONGE,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
             //Boots Parts
-            if (global_registry.enableSuperStarArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 11),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', superStarBoots,
-                    'B', getItemStack(materials, 2),
-                    'L', Blocks.SOUL_SAND,
-                    'R', Blocks.NETHERRACK,
-                    'T', Blocks.NETHER_BRICK,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableEnderDragonArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 10),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', enderDragonBoots,
-                    'B', getItemStack(materials, 3),
-                    'L', Items.ENDER_PEARL,
-                    'R', Items.ENDER_EYE,
-                    'T', Items.END_CRYSTAL,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
-            if (global_registry.enableGuardianArmor) {
-                manager.addRecipe(getItemStack(theUltimateParts, 9),
-                    "UUUCUUU",
-                    "UUCBCUU",
-                    "UCT RCU",
-                    "CL M LC",
-                    "UCR TCU",
-                    "UUCBCUU",
-                    "UUUCUUU",
-                    'M', guardianBoots,
-                    'B', getItemStack(materials, 1),
-                    'L', Items.PRISMARINE_CRYSTALS,
-                    'R', Items.PRISMARINE_SHARD,
-                    'T', Blocks.SPONGE,
-                    'U', getItemStack(materials, 4),
-                    'C', getItemStack(itemLavaCrystal, 1)
-                );
-            }
+            manager.addRecipe(getItemStack(theUltimateParts, 11),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', superStarBoots,
+                'B', getItemStack(materials, 2),
+                'L', Blocks.SOUL_SAND,
+                'R', Blocks.NETHERRACK,
+                'T', Blocks.NETHER_BRICK,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 10),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', enderDragonBoots,
+                'B', getItemStack(materials, 3),
+                'L', Items.ENDER_PEARL,
+                'R', Items.ENDER_EYE,
+                'T', Items.END_CRYSTAL,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
+            manager.addRecipe(getItemStack(theUltimateParts, 9),
+                "UUUCUUU",
+                "UUCBCUU",
+                "UCT RCU",
+                "CL M LC",
+                "UCR TCU",
+                "UUCBCUU",
+                "UUUCUUU",
+                'M', guardianBoots,
+                'B', getItemStack(materials, 1),
+                'L', Items.PRISMARINE_CRYSTALS,
+                'R', Items.PRISMARINE_SHARD,
+                'T', Blocks.SPONGE,
+                'U', getItemStack(materials, 4),
+                'C', getItemStack(itemLavaCrystal, 1)
+            );
         }
     }
 }

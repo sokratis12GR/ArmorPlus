@@ -4,7 +4,7 @@
 
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.caps.abilities.Material;
+import com.sofodev.armorplus.caps.abilities.MaterialType;
 import com.sofodev.armorplus.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
 import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
@@ -25,31 +25,40 @@ import static com.sofodev.armorplus.util.Utils.equipmentSlots;
  **/
 public class ModRegistryUtils {
 
-    public static void register(boolean enabled, ItemArmorBase[] armor, APArmorMaterial armorMaterial) {
-        if (enabled) {
-            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorBase(armorMaterial, equipmentSlots[i]));
+
+    public static void registerAll(ItemUltimateArmor[] ultArmor) {
+        for (int i = 0; i < ultArmor.length; i++) {
+            ultArmor[i] = new ItemUltimateArmor(equipmentSlots[i]);
         }
     }
 
-    public static void register(ItemArmorV2[] armor, Material material) {
+    public static void registerAll(ItemSpecialSword[] swords) {
+        for (int i = 0; i < swords.length; i++) {
+            swords[i] = new ItemSpecialSword(Swords.values()[i]);
+        }
+    }
+
+    public static void registerAll(ItemSpecialBattleAxe[] battleAxes) {
+        for (int i = 0; i < battleAxes.length; i++) {
+            battleAxes[i] = new ItemSpecialBattleAxe(BattleAxes.values()[i]);
+        }
+    }
+
+    public static void registerAll(ItemSpecialBow[] bows) {
+        for (int i = 0; i < bows.length; i++) {
+            bows[i] = new ItemSpecialBow(Bows.values()[i]);
+        }
+    }
+
+    public static void register(ItemArmorV2[] armor, MaterialType material) {
         IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemArmorV2(material, equipmentSlots[i]));
     }
 
-    public static void register(boolean enabled, ItemUltimateArmor[] armor) {
-        if (enabled) {
-            IntStream.range(0, armor.length).forEachOrdered(i -> armor[i] = new ItemUltimateArmor(equipmentSlots[i]));
+    public static void register(ItemArmorBase[] armor, APArmorMaterial material) {
+        int bound = armor.length;
+        for (int i = 0; i < bound; i++) {
+            armor[i] = new ItemArmorBase(material, equipmentSlots[i]);
         }
-    }
 
-    public static void register(boolean[] enabled, ItemSpecialSword[] sword, Swords[] material) {
-        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> sword[i] = new ItemSpecialSword(material[i]));
-    }
-
-    public static void register(boolean[] enabled, ItemSpecialBattleAxe[] battleAxe, BattleAxes[] material) {
-        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> battleAxe[i] = new ItemSpecialBattleAxe(material[i]));
-    }
-
-    public static void register(boolean[] enabled, ItemSpecialBow[] bow, Bows[] material) {
-        IntStream.range(0, enabled.length).filter(i -> enabled[i]).forEachOrdered(i -> bow[i] = new ItemSpecialBow(material[i]));
     }
 }

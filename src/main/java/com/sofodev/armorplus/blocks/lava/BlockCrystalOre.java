@@ -33,7 +33,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class BlockCrystalOre extends BlockBase implements IModdedBlock {
 
     public BlockCrystalOre() {
-        super(Material.ROCK, "ore_lava_crystal", new BlockProperties(2000.0F, 25.0F, blocks.ore_lava_crystal.props,0.8F));
+        super(Material.ROCK, "ore_lava_crystal", new BlockProperties(2000.0F, 25.0F, blocks.ore_lava_crystal.props, 0.8F));
     }
 
     @Override

@@ -19,7 +19,7 @@ public class BlockProperties {
     private final float lightLevel;
     private final int lightOpacity;
 
-    public BlockProperties(float resistance, float hardness,  HarvestProps props, float lightLevel, int lightOpacity) {
+    public BlockProperties(float resistance, float hardness, HarvestProps props, float lightLevel, int lightOpacity) {
         this.resistance = resistance;
         this.hardness = hardness;
         this.tool = props.getType();
@@ -37,7 +37,7 @@ public class BlockProperties {
         this(resistance, hardness, props, 0);
     }
 
-    public BlockProperties(float resistance, float hardness){
+    public BlockProperties(float resistance, float hardness) {
         this(resistance, hardness, new HarvestProps(ToolType.PICKAXE));
     }
 

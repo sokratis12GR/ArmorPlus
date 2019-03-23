@@ -4,7 +4,6 @@
 
 package com.sofodev.armorplus.caps.abilities;
 
-import com.sofodev.armorplus.items.armors.base.ItemArmorV2;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,14 +45,14 @@ public class AbilityDataHandler {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 
-        if (enableExperimentalMode && event.getObject().getItem() instanceof ItemArmorV2) {
+        if (enableExperimentalMode && event.getObject().getItem() instanceof ISpecialItem) {
             event.addCapability(setRL("abilities"), new Provider());
         }
     }
 
     // Simple wrapper to get the handler from an entity.
     public static IAbilityHandler getHandler(ItemStack stack) {
-        if (enableExperimentalMode && stack.getItem() instanceof ItemArmorV2) {
+        if (enableExperimentalMode && stack.getItem() instanceof ISpecialItem) {
             return stack.hasCapability(CAPABILITY_ABILITIES, null) ? stack.getCapability(CAPABILITY_ABILITIES, null) : null;
         } else return null;
     }
@@ -172,6 +171,7 @@ public class AbilityDataHandler {
             CAPABILITY_ABILITIES.getStorage().readNBT(CAPABILITY_ABILITIES, instance, null, nbt);
         }
     }
+
     public static class Factory implements Callable<IAbilityHandler> {
 
         @Override

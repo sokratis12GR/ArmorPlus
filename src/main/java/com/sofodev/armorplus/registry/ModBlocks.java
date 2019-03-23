@@ -18,7 +18,18 @@ import com.sofodev.armorplus.blocks.normal.BlockCompressedObsidian;
 import com.sofodev.armorplus.blocks.special.BlockTrophy;
 import com.sofodev.armorplus.blocks.special.Trophy;
 import com.sofodev.armorplus.blocks.v2.BlockMetal;
+import com.sofodev.armorplus.tileentity.*;
+import com.sofodev.armorplus.util.Utils;
+import net.minecraft.block.Block;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Arrays;
+
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.blocks.benches.Benches.*;
 import static com.sofodev.armorplus.blocks.castle.BrickColor.*;
 import static com.sofodev.armorplus.blocks.dungeon.EnderType.*;
@@ -26,16 +37,20 @@ import static com.sofodev.armorplus.blocks.lava.BlockLavaMaterial.LavaMaterial.*
 import static com.sofodev.armorplus.blocks.special.Trophy.*;
 import static com.sofodev.armorplus.blocks.v2.Metals.ELECTRICAL;
 import static com.sofodev.armorplus.blocks.v2.Metals.STEEL;
+import static com.sofodev.armorplus.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
+import static com.sofodev.armorplus.util.Utils.setRL;
 import static java.util.Arrays.setAll;
+import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
 /**
  * @author Sokratis Fotkatzikis
  **/
+@Mod.EventBusSubscriber(modid = MODID)
 public class ModBlocks {
 
-    public static BlockCrystalOre blockCrystalOre = new BlockCrystalOre();
+    public static BlockCrystalOre oreLavaCrystal = new BlockCrystalOre();
     public static BlockCompressedObsidian blockCompressedObsidian = new BlockCompressedObsidian();
-    public static BlockLavaCactus blockLavaCactus = new BlockLavaCactus();
+    public static BlockLavaCactus lavaCactus = new BlockLavaCactus();
     public static BlockMetal steelBlock = new BlockMetal(STEEL);
     public static BlockMetal electricalBlock = new BlockMetal(ELECTRICAL);
     public static BlockLavaNetherBrick blockLavaNetherBrick = new BlockLavaNetherBrick();
@@ -75,5 +90,46 @@ public class ModBlocks {
         setAll(stonebrickWalls, type -> new BlockStoneBrickWall(stoneBricks[type]));
         setAll(enderBlocks, type -> new BlockDungeonEnder(enderTypes[type]));
         setAll(trophies, type -> new BlockTrophy(types[type]));
+    }
+
+    /**
+     * Blocks
+     */
+    private static void registerAllBlocks(RegistryEvent.Register<Block> event, Block[]... blocksArray) {
+        Arrays.stream(blocksArray).forEachOrdered(blockList -> registerAllBlocks(event, blockList));
+    }
+
+    private static void registerAllBlocks(RegistryEvent.Register<Block> event, Block... blockList) {
+        Arrays.stream(blockList).filter(Utils::isNotNull).forEachOrdered(block -> event.getRegistry().register(block));
+    }
+
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        registerAllBlocks(event, benches);
+        registerAllBlocks(event,
+            oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
+        );
+        registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        //registerAllBlocks(event, blockBTMMoon);
+        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
+        registerAllBlocks(event, enderBlocks);
+        registerAllBlocks(event, trophies);
+        registerTileEntities();
+        registerTEFixes();
+    }
+
+    private static void registerTEFixes() {
+        DataFixer dataFixer = FMLCommonHandler.instance().getDataFixer();
+        registerFixesLavaInfuser(dataFixer);
+    }
+
+    private static void registerTileEntities() {
+        registerTileEntity(TileLavaInfuser.class, setRL("lava_infuser_tile_entity"));
+        registerTileEntity(TileWB.class, setRL("workbench_tile_entity"));
+        registerTileEntity(TileHTB.class, setRL("high_tech_bench_tile_entity"));
+        registerTileEntity(TileUTB.class, setRL("ulti_tech_tile_entity"));
+        registerTileEntity(TileCB.class, setRL("champion_tile_entity"));
+        registerTileEntity(TileTrophy.class, setRL("trophy_tile_entity"));
     }
 }

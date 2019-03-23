@@ -4,7 +4,7 @@
 
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.caps.abilities.Material;
+import com.sofodev.armorplus.caps.abilities.MaterialType;
 import com.sofodev.armorplus.items.ItemUltimateParts;
 import com.sofodev.armorplus.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.items.armors.base.ItemArmorBase;
@@ -22,18 +22,15 @@ import com.sofodev.armorplus.items.dev.ItemSpawnStructure;
 import com.sofodev.armorplus.items.enums.MetalItems;
 import com.sofodev.armorplus.items.materials.ItemLavaCrystal;
 import com.sofodev.armorplus.items.materials.ItemMaterial;
-import com.sofodev.armorplus.items.weapons.BattleAxes;
-import com.sofodev.armorplus.items.weapons.Bows;
-import com.sofodev.armorplus.items.weapons.Swords;
 import com.sofodev.armorplus.worldgen.nbt.StructureGenNBT;
 import net.minecraft.util.text.TextFormatting;
 
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.items.enums.Cosmetics.*;
 import static com.sofodev.armorplus.registry.ModRegistryUtils.register;
+import static com.sofodev.armorplus.registry.ModRegistryUtils.registerAll;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -50,30 +47,16 @@ public class ModItems {
     public static ItemAdvanced guardianScale = new ItemAdvanced("guardian_scale", TextFormatting.AQUA, "Guardian Scale");
     public static ItemAdvanced witherBone = new ItemAdvanced("wither_bone", TextFormatting.WHITE, "Wither Bone");
     public static ItemAdvanced enderDragonScale = new ItemAdvanced("ender_dragon_scale", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
-    public static ItemAdvanced theUltimateMaterial = new ItemAdvanced("the_ultimate_material", TextFormatting.GREEN, "The Ultimate Material");
-    public static boolean[] isArmorEnabled = new boolean[]{
-        global_registry.enableCoalArmor, global_registry.enableEmeraldArmor, global_registry.enableLapisArmor, global_registry.enableLavaArmor, global_registry.enableObsidianArmor, global_registry.enableRedstoneArmor,
-        global_registry.enableChickenArmor, global_registry.enableSlimeArmor, global_registry.enableGuardianArmor, global_registry.enableSuperStarArmor, global_registry.enableEnderDragonArmor,
-        global_registry.enableArditeArmor, global_registry.enableCobaltArmor, global_registry.enableManyullynArmor, global_registry.enablePigIronArmor, global_registry.enableKnightSlimeArmor
-    };
-    public static Swords[] swordType = new Swords[]{
-        Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.INFUSED_LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
-    };
-    public static BattleAxes[] battleAxeType = new BattleAxes[]{
-        BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.INFUSED_LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
-    };
-    public static Bows[] bowType = new Bows[]{
-        Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.INFUSED_LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
-    };
-    public static boolean[] isSwordEnabled = new boolean[]{
-        global_registry.enableCoalWeapons[0], global_registry.enableLapisWeapons[0], global_registry.enableRedstoneWeapons[0], global_registry.enableEmeraldWeapons[0], global_registry.enableObsidianWeapons[0], global_registry.enableLavaWeapons[0], global_registry.enableGuardianWeapons[0], global_registry.enableSuperStarWeapons[0], global_registry.enableEnderDragonWeapons[0]
-    };
-    public static boolean[] isBattleAxeEnabled = new boolean[]{
-        global_registry.enableCoalWeapons[1], global_registry.enableLapisWeapons[1], global_registry.enableRedstoneWeapons[1], global_registry.enableEmeraldWeapons[1], global_registry.enableObsidianWeapons[1], global_registry.enableLavaWeapons[1], global_registry.enableGuardianWeapons[1], global_registry.enableSuperStarWeapons[1], global_registry.enableEnderDragonWeapons[1]
-    };
-    public static boolean[] isBowEnabled = new boolean[]{
-        global_registry.enableCoalWeapons[2], global_registry.enableLapisWeapons[2], global_registry.enableRedstoneWeapons[2], global_registry.enableEmeraldWeapons[2], global_registry.enableObsidianWeapons[2], global_registry.enableLavaWeapons[2], global_registry.enableGuardianWeapons[2], global_registry.enableSuperStarWeapons[2], global_registry.enableEnderDragonWeapons[2]
-    };
+    public static ItemAdvanced theUltimateMaterial = new ItemAdvanced("the_ultimate_material", TextFormatting.GREEN, "The Ultimate MaterialType");
+    // public static Swords[] swordType = new Swords[]{
+    //     Swords.COAL, Swords.LAPIS, Swords.REDSTONE, Swords.EMERALD, Swords.OBSIDIAN, Swords.INFUSED_LAVA, Swords.GUARDIAN, Swords.SUPER_STAR, Swords.ENDER_DRAGON
+    // };
+    // public static BattleAxes[] battleAxeType = new BattleAxes[]{
+    //     BattleAxes.COAL, BattleAxes.LAPIS, BattleAxes.REDSTONE, BattleAxes.EMERALD, BattleAxes.OBSIDIAN, BattleAxes.INFUSED_LAVA, BattleAxes.GUARDIAN, BattleAxes.SUPER_STAR, BattleAxes.ENDER_DRAGON
+    // };
+    // public static Bows[] bowType = new Bows[]{
+    //     Bows.COAL, Bows.LAPIS, Bows.REDSTONE, Bows.EMERALD, Bows.OBSIDIAN, Bows.INFUSED_LAVA, Bows.GUARDIAN, Bows.SUPER_STAR, Bows.ENDER_DRAGON
+    // };
     public static ItemArmorBase[] coal = new ItemArmorBase[4],
         emerald = new ItemArmorBase[4],
         lapis = new ItemArmorBase[4],
@@ -132,54 +115,48 @@ public class ModItems {
         //HorseArmors
         IntStream.range(0, horseArmors.length).forEach(i -> horseArmors[i] = new ItemBaseHorseArmor(horseMaterial[i]));
         //Armors
-        register(global_registry.enableChickenArmor, chicken, APArmorMaterial.CHICKEN);
-        register(global_registry.enableSlimeArmor, slime, APArmorMaterial.SLIME);
-        register(global_registry.enableCoalArmor, coal, APArmorMaterial.COAL);
-        register(global_registry.enableLapisArmor, lapis, APArmorMaterial.LAPIS);
-        register(global_registry.enableRedstoneArmor, redstone, APArmorMaterial.REDSTONE);
-        register(global_registry.enableEmeraldArmor, emerald, APArmorMaterial.EMERALD);
-        register(global_registry.enableObsidianArmor, obsidian, APArmorMaterial.OBSIDIAN);
-        register(global_registry.enableLavaArmor, lava, APArmorMaterial.INFUSED_LAVA);
-        register(global_registry.enableGuardianArmor, guardian, APArmorMaterial.GUARDIAN);
-        register(global_registry.enableSuperStarArmor, superStar, APArmorMaterial.SUPER_STAR);
-        register(global_registry.enableEnderDragonArmor, enderDragon, APArmorMaterial.ENDER_DRAGON);
-        register(global_registry.enableTheUltimateArmor, theUltimate);
+        register(chicken, APArmorMaterial.CHICKEN);
+        register(slime, APArmorMaterial.SLIME);
+        register(coal, APArmorMaterial.COAL);
+        register(lapis, APArmorMaterial.LAPIS);
+        register(redstone, APArmorMaterial.REDSTONE);
+        register(emerald, APArmorMaterial.EMERALD);
+        register(obsidian, APArmorMaterial.OBSIDIAN);
+        register(lava, APArmorMaterial.INFUSED_LAVA);
+        register(guardian, APArmorMaterial.GUARDIAN);
+        register(superStar, APArmorMaterial.SUPER_STAR);
+        register(enderDragon, APArmorMaterial.ENDER_DRAGON);
+        registerAll(theUltimate);
+        registerAll(sword);
+        registerAll(battleAxe);
+        registerAll(bow);
 
         if (enableExperimentalMode) {
-            register(chickenExp, Material.CHICKEN);
-            register(slimeExp, Material.SLIME);
-            register(coalExp, Material.COAL);
-            register(lapisExp, Material.LAPIS);
-            register(redstoneExp, Material.REDSTONE);
-            register(emeraldExp, Material.EMERALD);
-            register(obsidianExp, Material.OBSIDIAN);
-            register(lavaExp, Material.INFUSED_LAVA);
-            register(guardianExp, Material.GUARDIAN);
-            register(superStarExp, Material.SUPER_STAR);
-            register(enderDragonExp, Material.ENDER_DRAGON);
-            register(ultimateExp, Material.ULTIMATE);
-            register(arditeExp, Material.ARDITE);
-            register(cobaltExp, Material.COBALT);
-            register(manyullynExp, Material.MANYULLYN);
-            register(pigIronExp, Material.PIG_IRON);
-            register(knightSlimeExp, Material.KNIGHT_SLIME);
+            register(chickenExp, MaterialType.CHICKEN);
+            register(slimeExp, MaterialType.SLIME);
+            register(coalExp, MaterialType.COAL);
+            register(lapisExp, MaterialType.LAPIS);
+            register(redstoneExp, MaterialType.REDSTONE);
+            register(emeraldExp, MaterialType.EMERALD);
+            register(obsidianExp, MaterialType.OBSIDIAN);
+            register(lavaExp, MaterialType.INFUSED_LAVA);
+            register(guardianExp, MaterialType.GUARDIAN);
+            register(superStarExp, MaterialType.SUPER_STAR);
+            register(enderDragonExp, MaterialType.ENDER_DRAGON);
+            register(ultimateExp, MaterialType.ULTIMATE);
+            register(arditeExp, MaterialType.ARDITE);
+            register(cobaltExp, MaterialType.COBALT);
+            register(manyullynExp, MaterialType.MANYULLYN);
+            register(pigIronExp, MaterialType.PIG_IRON);
+            register(knightSlimeExp, MaterialType.KNIGHT_SLIME);
         }
-
-        //Swords
-        register(isSwordEnabled, sword, swordType);
-        //BattleAxes
-        register(isBattleAxeEnabled, battleAxe, battleAxeType);
-        //Bows
-        register(isBowEnabled, bow, bowType);
     }
 
     public static void registerTCItems() {
-        //    if (!enableExperimentalMode) {
-        register(global_registry.enableArditeArmor, ardite, APArmorMaterial.ARDITE);
-        register(global_registry.enableCobaltArmor, cobalt, APArmorMaterial.COBALT);
-        register(global_registry.enableManyullynArmor, manyullyn, APArmorMaterial.MANYULLYN);
-        register(global_registry.enablePigIronArmor, pigIron, APArmorMaterial.PIG_IRON);
-        register(global_registry.enableKnightSlimeArmor, knightSlime, APArmorMaterial.KNIGHT_SLIME);
-        //    }
+        register(ardite, APArmorMaterial.ARDITE);
+        register(cobalt, APArmorMaterial.COBALT);
+        register(manyullyn, APArmorMaterial.MANYULLYN);
+        register(pigIron, APArmorMaterial.PIG_IRON);
+        register(knightSlime, APArmorMaterial.KNIGHT_SLIME);
     }
 }

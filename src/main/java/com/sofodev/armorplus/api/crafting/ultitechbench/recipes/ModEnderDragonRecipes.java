@@ -9,7 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
 import static com.sofodev.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.registerEasyArmorSetRecipes;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.config.ModConfig.getRD;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -21,14 +20,14 @@ public class ModEnderDragonRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (global_registry.enableEnderDragonArmor && recipes.enableEnderDragonArmorRecipes) {
+                if (recipes.enableEnderDragonArmorRecipes) {
                     registerEasyArmorSetRecipes(manager, 3, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
                 }
                 break;
             }
             case EXPERT:
             case HELLISH: {
-                if (global_registry.enableEnderDragonArmor && recipes.enableEnderDragonArmorRecipes) {
+                if (recipes.enableEnderDragonArmorRecipes) {
                     manager.addRecipe(getItemStack(enderDragonHelmet),
                         "CEEEEEC",
                         "ES   SE",

@@ -17,7 +17,6 @@ import java.util.List;
 
 import static java.util.Locale.ROOT;
 import static net.minecraft.util.text.TextFormatting.*;
-import static net.minecraft.util.text.TextFormatting.DARK_AQUA;
 
 /**
  * @author Sokratis Fotkatzikis

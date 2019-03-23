@@ -41,39 +41,31 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  * @author Sokratis Fotkatzikis
  **/
 public enum Swords implements IEffectHolder, IRemovable, IRepairable {
-    COAL(ItemSpecialSword.swordCoalMaterial, getItemStack(COAL_BLOCK), coal, global_registry.enableCoalWeapons),
-    LAPIS(ItemSpecialSword.swordLapisMaterial, getItemStack(LAPIS_BLOCK), lapis, global_registry.enableLapisWeapons),
-    REDSTONE(ItemSpecialSword.swordRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone, global_registry.enableRedstoneWeapons),
-    EMERALD(ItemSpecialSword.swordEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald, global_registry.enableEmeraldWeapons),
-    OBSIDIAN(ItemSpecialSword.swordObsidianMaterial, getItemStack(blockCompressedObsidian), obsidian, global_registry.enableObsidianWeapons),
-    INFUSED_LAVA(ItemSpecialSword.swordLavaMaterial, getItemStack(itemLavaCrystal, 1), lava, global_registry.enableLavaWeapons),
-    GUARDIAN(ItemSpecialSword.swordGuardianMaterial, getItemStack(materials, 1), guardian, global_registry.enableGuardianWeapons),
-    SUPER_STAR(ItemSpecialSword.swordSuperStarMaterial, getItemStack(materials, 2), super_star, global_registry.enableSuperStarWeapons),
-    ENDER_DRAGON(ItemSpecialSword.swordEnderDragonMaterial, getItemStack(materials, 3), ender_dragon, global_registry.enableEnderDragonWeapons);
+    COAL(ItemSpecialSword.swordCoalMaterial, getItemStack(COAL_BLOCK), coal),
+    LAPIS(ItemSpecialSword.swordLapisMaterial, getItemStack(LAPIS_BLOCK), lapis),
+    REDSTONE(ItemSpecialSword.swordRedstoneMaterial, getItemStack(REDSTONE_BLOCK), redstone),
+    EMERALD(ItemSpecialSword.swordEmeraldMaterial, getItemStack(EMERALD_BLOCK), emerald),
+    OBSIDIAN(ItemSpecialSword.swordObsidianMaterial, getItemStack(blockCompressedObsidian), obsidian),
+    INFUSED_LAVA(ItemSpecialSword.swordLavaMaterial, getItemStack(itemLavaCrystal, 1), lava),
+    GUARDIAN(ItemSpecialSword.swordGuardianMaterial, getItemStack(materials, 1), guardian),
+    SUPER_STAR(ItemSpecialSword.swordSuperStarMaterial, getItemStack(materials, 2), super_star),
+    ENDER_DRAGON(ItemSpecialSword.swordEnderDragonMaterial, getItemStack(materials, 3), ender_dragon);
 
     private final Item.ToolMaterial material;
     private final ItemStack repairStack;
     private final TextFormatting textFormatting;
-    private final boolean isEnabled;
     private final List<String> effect;
     private final Negative negative;
     private final Ignite ignite;
 
-    Swords(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material, boolean[] isEnabled
-    ) {
+    Swords(Item.ToolMaterial materialIn, ItemStack repairStackIn, OriginMaterial material) {
         this.material = materialIn;
         this.repairStack = repairStackIn == null ? EMPTY : repairStackIn;
         this.textFormatting = getValueByName(material.weapons.itemNameColor);
-        this.isEnabled = isEnabled[0];
         WeaponEffects effects = new WeaponEffects(material);
         this.negative = effects.getNegative();
         this.ignite = effects.getIgnite();
         this.effect = setToolTip(negative.getEffects(), negative.getEffectLevels());
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.isEnabled;
     }
 
     @Override

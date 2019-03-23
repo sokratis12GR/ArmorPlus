@@ -11,7 +11,6 @@ import com.sofodev.armorplus.config.ModConfig;
 import com.sofodev.armorplus.items.weapons.effects.Negative;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -25,6 +24,7 @@ import static com.sofodev.armorplus.util.PotionUtils.addPotion;
 import static com.sofodev.armorplus.util.PotionUtils.getPotion;
 import static com.sofodev.armorplus.util.Utils.boxList;
 import static java.util.stream.Collectors.toList;
+import static net.minecraft.init.MobEffects.NIGHT_VISION;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 /**
@@ -146,7 +146,7 @@ public final class ArmorPlusItemUtils {
                 return;
             }
             Potion potionEffect = potions.get(potionID);
-            if ((player.getActivePotionEffect(potionEffect) == null || potionEffect == MobEffects.NIGHT_VISION)) {
+            if (player.getActivePotionEffect(potionEffect) == null || potionEffect == NIGHT_VISION) {
                 int duration = Utils.convertToSeconds(applyEffectDurations.get(potionID));
                 int level = applyEffectLevels.get(potionID);
                 addPotion(player, potionEffect, duration, level, GOOD);

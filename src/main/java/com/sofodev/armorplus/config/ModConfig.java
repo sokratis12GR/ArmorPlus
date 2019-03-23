@@ -279,81 +279,79 @@ public class ModConfig {
 
         }
 
-        @Comment({"Configurations for the Coal Material"})
+        @Comment({"Configurations for the Coal MaterialType"})
         public static OriginMaterial coal = new OriginMaterial(
             new CombinedArmor("gray", "night_vision", false, new Armor(1, 1, 2, 1)),
             new CombinedWeapon("gray", "blindness", new WeaponSet(0.5, -2.0, 24))
         );
 
-        @Comment({"Configurations for the Lapis Material"})
+        @Comment({"Configurations for the Lapis MaterialType"})
         public static OriginMaterial lapis = new OriginMaterial(
             new CombinedArmor("dark_blue", "water_breathing", false, new Armor(1, 2, 3, 2)),
             new CombinedWeapon("dark_blue", "nausea", 1, new WeaponSet(1.0, -1.5, 200))
         );
 
-        @Comment({"Configurations for the Redstone Material"})
+        @Comment({"Configurations for the Redstone MaterialType"})
         public static OriginMaterial redstone = new OriginMaterial(
             new CombinedArmor("dark_red", "haste", 1, new Armor(1, 2, 3, 2)),
             new CombinedWeapon("dark_red", "mining_fatigue", 1, new WeaponSet(1.0, -1.5, 200))
         );
 
-        @Comment({"Configurations for the Emerald Material"})
+        @Comment({"Configurations for the Emerald MaterialType"})
         public static OriginMaterial emerald = new OriginMaterial(
             new CombinedArmor("dark_green", "speed", 1, new Armor(1.0, 3, 6, 8, 3)),
             new CombinedWeapon("dark_green", "slowness", 1, new WeaponSet(1.5, -0.5, 1561))
         );
 
-        @Comment({"Configurations for the Obsidian Material"})
+        @Comment({"Configurations for the Obsidian MaterialType"})
         public static OriginMaterial obsidian = new OriginMaterial(
             new CombinedArmor("dark_gray", "resistance", false, new Armor(1.0, 3, 6, 7, 3)),
             new CombinedWeapon("dark_gray", "weakness", 1, new WeaponSet(4.0, 0.0, 1500))
         );
 
-        @Comment({"Configurations for the Lava Material"})
+        @Comment({"Configurations for the Lava MaterialType"})
         public static OriginMaterial lava = new OriginMaterial(
             new CombinedArmor("gold", "fire_resistance", false, new Armor(1.0, 3, 6, 8, 3)), true,
             new CombinedWeapon("gold", new WeaponSet(4.5, 0.5, 1750)), true, 8
         );
 
-        @Comment({"Configurations for the Guardian Material"})
+        @Comment({"Configurations for the Guardian MaterialType"})
         public static OriginMaterial guardian = new OriginMaterial(
             new CombinedArmor("aqua", "water_breathing", false, new Armor(2.0, 4, 7, 8, 3)),
             new CombinedWeapon("aqua", "nausea", 1, new WeaponSet(6.0, 1.5, 1800))
         );
 
-        @Comment({"Configurations for the Super Star Material"})
+        @Comment({"Configurations for the Super Star MaterialType"})
         public static OriginMaterial super_star = new OriginMaterial(
             new CombinedArmor("white", "wither", "regeneration", 1, new Armor(2.0, 4, 7, 8, 3)),
             new CombinedWeapon("white", "wither", 1, new WeaponSet(7.0, 1.5, 1950))
         );
 
-        @Comment({"Configurations for the Ender Dragon Material"})
+        @Comment({"Configurations for the Ender Dragon MaterialType"})
         public static OriginMaterial ender_dragon = new OriginMaterial(
             new CombinedArmor("dark_purple", "wither", true, new Armor(2.0, 4, 7, 8, 3)),
             new CombinedWeapon("dark_purple", "wither", 3, new WeaponSet(8.0, 1.5, 2310))
         );
 
-        @Comment({"Configurations for the Ultimate Material"})
+        @Comment({"Configurations for the Ultimate MaterialType"})
         public static UltimateMaterial ultimate = new UltimateMaterial();
 
-        @Comment({"Configurations for the Chicken Material"})
+        @Comment({"Configurations for the Chicken MaterialType"})
         public static ArmorProperties chicken = new ArmorProperties(new CombinedArmor("aqua", "speed", 4, new Armor(1, 1, 2, 1)), false);
-        @Comment({"Configurations for the Slime Material"})
+        @Comment({"Configurations for the Slime MaterialType"})
         public static ArmorProperties slime = new ArmorProperties(new CombinedArmor("green", "jump_boost", 2, new Armor(1, 1, 2, 1)), false);
-        @Comment({"Configurations for the Ardite Material"})
+        @Comment({"Configurations for the Ardite MaterialType"})
         public static ArmorProperties ardite = new ArmorProperties(new CombinedArmor("dark_red", "fire_resistance", false, new Armor(1.0, 2, 3, 4, 2)), false);
-        @Comment({"Configurations for the Cobalt Material"})
+        @Comment({"Configurations for the Cobalt MaterialType"})
         public static ArmorProperties cobalt = new ArmorProperties(new CombinedArmor("blue", "haste", 2, new Armor(1.0, 2, 3, 4, 2)), false);
-        @Comment({"Configurations for the Manyullyn Material"})
+        @Comment({"Configurations for the Manyullyn MaterialType"})
         public static ArmorProperties manyullyn = new ArmorProperties(new CombinedArmor("dark_purple", "strength", 1, new Armor(2.0, 3, 5, 5, 3)), false);
-        @Comment({"Configurations for the Pig Iron Material"})
+        @Comment({"Configurations for the Pig Iron MaterialType"})
         public static ArmorProperties pig_iron = new ArmorProperties(new CombinedArmor("light_purple", "saturation", false, new Armor(1.0, 2, 3, 4, 3)), false);
-        @Comment({"Configurations for the Knight Slime Material"})
+        @Comment({"Configurations for the Knight Slime MaterialType"})
         public static ArmorProperties knight_slime = new ArmorProperties(new CombinedArmor("dark_purple", "jump_boost", 1, new Armor(1.0, 2, 3, 4, 3)), false);
 
-        public static GlobalRegistry global_registry = new GlobalRegistry();
         public static RegistryRecipes recipes = new RegistryRecipes();
-
 
         public static class ArmorProperties {
 
@@ -516,61 +514,6 @@ public class ModConfig {
                 public boolean enableDeBuffs = true;
             }
 
-        }
-
-        public static class GlobalRegistry {
-            @Comment({"Enable/Disable the Coal armor from the Game"})
-            public boolean enableCoalArmor = true;
-            @Comment({"Enable/Disable the Coal Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableCoalWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Lapis armor from the game"})
-            public boolean enableLapisArmor = true;
-            @Comment({"Enable/Disable the Lapis Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableLapisWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Redstone armor from the game"})
-            public boolean enableRedstoneArmor = true;
-            @Comment({"Enable/Disable the Redstone Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableRedstoneWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Emerald armor from the game"})
-            public boolean enableEmeraldArmor = true;
-            @Comment({"Enable/Disable the Emerald Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableEmeraldWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Obsidian armor from the game"})
-            public boolean enableObsidianArmor = true;
-            @Comment({"Enable/Disable the Obsidian Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableObsidianWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Lava armor from the game"})
-            public boolean enableLavaArmor = true;
-            @Comment({"Enable/Disable the Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableLavaWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Guardian armor from the game"})
-            public boolean enableGuardianArmor = true;
-            @Comment({"Enable/Disable the Guardian Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableGuardianWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Super Star armor from the game"})
-            public boolean enableSuperStarArmor = true;
-            @Comment({"Enable/Disable the Super Star Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableSuperStarWeapons = {true, true, true};
-            @Comment({"Enable/Disable the Ender Dragon armor from the game"})
-            public boolean enableEnderDragonArmor = true;
-            @Comment({"Enable/Disable the Ender Dragon Weapons from the Game (Sword, Battle Axe, Bow)"})
-            public boolean[] enableEnderDragonWeapons = {true, true, true};
-            @Comment({"Enable/Disable The Ultimate armor from the game"})
-            public boolean enableTheUltimateArmor = true;
-            @Comment({"Enable/Disable the Ardite armor from the game"})
-            public boolean enableArditeArmor = true;
-            @Comment({"Enable/Disable the Cobalt armor from the game"})
-            public boolean enableCobaltArmor = true;
-            @Comment({"Enable/Disable the Manyullyn armor from the game"})
-            public boolean enableManyullynArmor = true;
-            @Comment({"Enable/Disable the Pig Iron armor from the game"})
-            public boolean enablePigIronArmor = true;
-            @Comment({"Enable/Disable the Knight Slime armor from the game"})
-            public boolean enableKnightSlimeArmor = true;
-            @Comment({"Enable/Disable the Chicken armor from the game"})
-            public boolean enableChickenArmor = true;
-            @Comment({"Enable/Disable the Slime armor from the Game"})
-            public boolean enableSlimeArmor = true;
         }
 
         public static class RegistryRecipes {

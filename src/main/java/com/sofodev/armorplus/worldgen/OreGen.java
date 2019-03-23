@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.worldgen;
 
 import com.sofodev.armorplus.config.ModConfig;
-import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.util.WorldGenUtils;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
@@ -19,15 +18,16 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import java.util.Random;
 
 import static com.sofodev.armorplus.config.ModConfig.WorldGenConfig.lava_crystal;
+import static com.sofodev.armorplus.registry.ModBlocks.oreLavaCrystal;
 
 /**
  * @author Sokratis Fotkatzikis
  **/
 public class OreGen implements IWorldGenerator {
 
-    private WorldGenerator overworldGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.overworld.veinAmount);
-    private WorldGenerator theEndGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
-    private WorldGenerator theNetherGenerator = new WorldGenMinable(ModBlocks.blockCrystalOre.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    public WorldGenerator overworldGenerator = new WorldGenMinable(oreLavaCrystal.getDefaultState(), lava_crystal.overworld.veinAmount);
+    public WorldGenerator theEndGenerator = new WorldGenMinable(oreLavaCrystal.getDefaultState(), lava_crystal.the_end.veinAmount, BlockMatcher.forBlock(Blocks.END_STONE));
+    public WorldGenerator theNetherGenerator = new WorldGenMinable(oreLavaCrystal.getDefaultState(), lava_crystal.the_nether.veinAmount, BlockMatcher.forBlock(Blocks.NETHERRACK));
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

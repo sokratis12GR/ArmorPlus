@@ -8,7 +8,8 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.caps.abilities.AbilityData;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler;
 import com.sofodev.armorplus.caps.abilities.AbilityDataHandler.IAbilityHandler;
-import com.sofodev.armorplus.caps.abilities.Material;
+import com.sofodev.armorplus.caps.abilities.ISpecialItem;
+import com.sofodev.armorplus.caps.abilities.MaterialType;
 import com.sofodev.armorplus.iface.IModdedItem;
 import com.sofodev.armorplus.util.EnumHelperUtil;
 import net.minecraft.client.Minecraft;
@@ -45,19 +46,19 @@ import static net.minecraft.util.text.TextFormatting.*;
 /**
  * @author Sokratis Fotkatzikis
  */
-public class ItemArmorV2 extends ItemArmor implements IModdedItem {
+public class ItemArmorV2 extends ItemArmor implements IModdedItem, ISpecialItem {
 
 
-    public final Material material;
+    public final MaterialType material;
     public EntityEquipmentSlot slot;
     private EnumAction wear = EnumHelperUtil.addAction("WEAR");
 
-    public ItemArmorV2(Material material, EntityEquipmentSlot slot) {
+    public ItemArmorV2(MaterialType material, EntityEquipmentSlot slot) {
         super(material.getArmorMaterial(), 0, slot);
         this.material = material;
         this.slot = slot;
         this.setMaxStackSize(1);
-        this.createPieces(slot, material.name().toLowerCase() + "_prototype");
+        this.createPieces(slot, material.getName() + "_prototype");
         this.setCreativeTab(ArmorPlus.tabArmorplus);
     }
 
@@ -189,22 +190,7 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-        IAbilityHandler handler = getHandler(stack);
-        boolean hasAbilities = handler != null && hasAbilities(handler);
-        if (!hasAbilities) {
-            return;
-        }
-        for (AbilityData data : handler.getAbilities()) {
-            if (contains(handler, data)) {
-                if (canProvide(stack, data)) {
-                    if (data.isPotion()) {
-                        data.applyPotionToPlayer(player);
-                    }
-                    data.onArmorTick(world, player, stack);
-                }
-                data.onSpecialArmorTick(world, player, stack);
-            }
-        }
+        provideArmorAbilities(stack, world, player);
     }
 
     /**
@@ -221,7 +207,6 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
         return provider;
     }
 
-
     //NBTShareTag
     @Nullable
     @Override
@@ -236,5 +221,25 @@ public class ItemArmorV2 extends ItemArmor implements IModdedItem {
     public void readNBTShareTag(ItemStack stack, @Nullable NBTTagCompound nbt) {
         super.readNBTShareTag(stack, nbt.getCompoundTag("super"));
         CAPABILITY_ABILITIES.readNBT(getHandler(stack), null, nbt.getTag("capability"));
+    }
+
+    @Override
+    public boolean isSpecial(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public MaterialType getMaterial() {
+        return this.material;
+    }
+
+    @Override
+    public boolean hasSpecialMaterial() {
+        return true;
+    }
+
+    @Override
+    public EntityEquipmentSlot getSlot() {
+        return this.slot;
     }
 }

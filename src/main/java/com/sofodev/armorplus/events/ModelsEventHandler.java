@@ -27,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.sofodev.armorplus.config.ModConfig.Experimental.enableExperimentalMode;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.registry.ModModelUtils.register;
@@ -44,7 +43,7 @@ public class ModelsEventHandler {
     public static void registerBlockModels(ModelRegistryEvent event) {
         register(benches);
         register(blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockLavaInfusedObsidian,
-            blockCrystalOre, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, blockLavaCactus, blockLavaNetherBrick
+            oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, lavaCactus, blockLavaNetherBrick
         );
         register(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //   register(blockBTMMoon);
@@ -59,16 +58,14 @@ public class ModelsEventHandler {
         register(materials, itemLavaCrystal, itemTGOTG, bookInfo, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
             itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
-        register(global_registry.enableTheUltimateArmor, theUltimate);
-        register(isArmorEnabled,
-            coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime
-        );
+        register(theUltimate);
+        register(coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime);
         register(towerSpawnItem, enderDungeonFloor1SpawnItem);
         register(chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
         register(horseArmors);
-        register(isSwordEnabled, sword);
-        register(isBattleAxeEnabled, battleAxe);
-        register(isBowEnabled, bow);
+        register(sword);
+        register(battleAxe);
+        register(bow);
 
         //Prototype
         if (enableExperimentalMode) {

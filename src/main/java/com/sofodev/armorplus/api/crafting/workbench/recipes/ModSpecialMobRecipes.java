@@ -7,7 +7,6 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.config.ModConfig.getRD;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -18,16 +17,16 @@ public class ModSpecialMobRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY:
-                if (global_registry.enableChickenArmor && recipes.enableChickenArmorRecipes) {
+                if (recipes.enableChickenArmorRecipes) {
                     WBRecipesHelper.createArmorRecipes(manager, "feather", chickenHelmet, chickenChestplate, chickenLeggings, chickenBoots);
                 }
-                if (global_registry.enableSlimeArmor && recipes.enableSlimeArmorRecipes) {
+                if (recipes.enableSlimeArmorRecipes) {
                     WBRecipesHelper.createArmorRecipes(manager, "slimeball", slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
                 }
                 break;
             case EXPERT:
             case HELLISH:
-                if (global_registry.enableChickenArmor && recipes.enableChickenArmorRecipes) {
+                if (recipes.enableChickenArmorRecipes) {
                     manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenHelmet), "   ", "FFF", "E E", 'F', "feather", 'E', "egg"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenHelmet), "FFF", "E E", "   ", 'F', "feather", 'E', "egg"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenChestplate), "E E", "FEF", "FFF", 'F', "feather", 'E', "egg"));
@@ -35,7 +34,7 @@ public class ModSpecialMobRecipes {
                     manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenBoots), "   ", "F F", "E E", 'F', "feather", 'E', "egg"));
                     manager.addRecipe(new BaseShapedOreRecipe(3, getItemStack(chickenBoots), "F F", "E E", "   ", 'F', "feather", 'E', "egg"));
                 }
-                if (global_registry.enableSlimeArmor && recipes.enableSlimeArmorRecipes) {
+                if (recipes.enableSlimeArmorRecipes) {
                     WBRecipesHelper.createArmorRecipes(manager, "blockSlime", slimeHelmet, slimeChestplate, slimeLeggings, slimeBoots);
                 }
                 break;

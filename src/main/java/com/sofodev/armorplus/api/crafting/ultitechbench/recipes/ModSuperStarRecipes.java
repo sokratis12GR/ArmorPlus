@@ -8,7 +8,6 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.config.ModConfig.getRD;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -19,14 +18,14 @@ public class ModSuperStarRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
             case EASY: {
-                if (global_registry.enableSuperStarArmor && recipes.enableSuperStarArmorRecipes) {
+                if (recipes.enableSuperStarArmorRecipes) {
                     UTBRecipesHelper.registerEasyArmorSetRecipes(manager, 2, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
                 }
                 break;
             }
             case EXPERT:
             case HELLISH: {
-                if (global_registry.enableSuperStarArmor && recipes.enableSuperStarArmorRecipes) {
+                if (recipes.enableSuperStarArmorRecipes) {
                     manager.addRecipe(getItemStack(superStarHelmet),
                         "SWWNWWS",
                         "WN   NW",

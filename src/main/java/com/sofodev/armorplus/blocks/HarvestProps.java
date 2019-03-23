@@ -20,7 +20,8 @@ public class HarvestProps {
     public HarvestProps(ToolType tool, int harvestLevel) {
         this(tool, harvestLevel, false);
     }
-    public HarvestProps(ToolType tool){
+
+    public HarvestProps(ToolType tool) {
         this(tool, 0);
     }
 

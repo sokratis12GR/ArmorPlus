@@ -7,7 +7,6 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static com.sofodev.armorplus.api.crafting.workbench.recipes.WBRecipesHelper.createArmorRecipes;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.global_registry;
 import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.config.ModConfig.getRD;
 import static com.sofodev.armorplus.registry.APItems.*;
@@ -19,29 +18,27 @@ public class ModOriginRecipes {
             case DISABLED:
                 break;
             case EASY:
-                if (global_registry.enableCoalArmor) {
-                    if (recipes.enableCoalArmorRecipes) {
-                        createArmorRecipes(manager, "itemCoal", coalHelmet, coalChestplate, coalLeggings, coalBoots);
-                    } else if (recipes.enableCharcoalCoalArmorRecipe) {
-                        createArmorRecipes(manager, "itemCharcoal", coalHelmet, coalChestplate, coalLeggings, coalBoots);
-                    }
+                if (recipes.enableCoalArmorRecipes) {
+                    createArmorRecipes(manager, "itemCoal", coalHelmet, coalChestplate, coalLeggings, coalBoots);
+                } else if (recipes.enableCharcoalCoalArmorRecipe) {
+                    createArmorRecipes(manager, "itemCharcoal", coalHelmet, coalChestplate, coalLeggings, coalBoots);
                 }
-                if (global_registry.enableLapisArmor && recipes.enableLapisArmorRecipes) {
+                if (recipes.enableLapisArmorRecipes) {
                     createArmorRecipes(manager, "gemLapis", lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
                 }
-                if (global_registry.enableRedstoneArmor && recipes.enableRedstoneArmorRecipes) {
+                if (recipes.enableRedstoneArmorRecipes) {
                     createArmorRecipes(manager, "dustRedstone", redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
                 }
                 break;
             case EXPERT:
             case HELLISH:
-                if (global_registry.enableLapisArmor && recipes.enableLapisArmorRecipes) {
+                if (recipes.enableLapisArmorRecipes) {
                     createArmorRecipes(manager, "blockLapis", lapisHelmet, lapisChestplate, lapisLeggings, lapisBoots);
                 }
-                if (global_registry.enableRedstoneArmor && recipes.enableRedstoneArmorRecipes) {
+                if (recipes.enableRedstoneArmorRecipes) {
                     createArmorRecipes(manager, "blockRedstone", redstoneHelmet, redstoneChestplate, redstoneLeggings, redstoneBoots);
                 }
-                if (global_registry.enableCoalArmor && recipes.enableCoalArmorRecipes) {
+                if (recipes.enableCoalArmorRecipes) {
                     createArmorRecipes(manager, "blockCoal", coalHelmet, coalChestplate, coalLeggings, coalBoots);
                 }
                 break;
