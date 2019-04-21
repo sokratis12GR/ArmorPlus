@@ -2,8 +2,8 @@
 
 ![](https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/headerimg.jpg "AmorPlus")
 
-[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://minecraft.curseforge.com/projects/armorplus)
-[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://minecraft.curseforge.com/projects/armorplus)
+[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://smarturl.it/armorplus)
+[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://smarturl.it/armorplus)
 
 ## Official Website
 
@@ -25,7 +25,7 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ### 1.12.2 
 
-#### Recommended: [1.12.2-11.16.3.48](https://minecraft.curseforge.com/projects/armorplus/files/2660245)
+#### Recommended: [1.12.2-11.22.0.58](https://minecraft.curseforge.com/projects/armorplus/files/2660245)
 
 ### 1.11.2
 
