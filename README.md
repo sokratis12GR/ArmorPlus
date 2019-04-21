@@ -21,11 +21,11 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ### [Grab the latest publicly available versions from curseforge.](https://minecraft.curseforge.com/projects/armorplus/files)
 
-[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/TheDragonTeam/ArmorPlus/wiki)
+[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)
 
 ### 1.12.2 
 
-#### Recommended: [1.12.2-11.22.0.58](https://minecraft.curseforge.com/projects/armorplus/files/2660245)
+#### Recommended: [1.12.2-11.22.0.58](https://minecraft.curseforge.com/projects/armorplus/files/2701614)
 
 ### 1.11.2
 
