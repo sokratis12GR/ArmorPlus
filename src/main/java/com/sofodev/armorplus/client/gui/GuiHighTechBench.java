@@ -5,8 +5,8 @@
 package com.sofodev.armorplus.client.gui;
 
 import com.sofodev.armorplus.client.gui.base.GuiBaseBench;
-import com.sofodev.armorplus.container.ContainerHighTechBench;
-import com.sofodev.armorplus.tileentity.TileHTB;
+import com.sofodev.armorplus.common.container.ContainerHighTechBench;
+import com.sofodev.armorplus.common.tileentity.TileHTB;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.text.TextComponentTranslation;
 

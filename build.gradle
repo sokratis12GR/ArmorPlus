@@ -24,7 +24,7 @@ repositories {
 //        url 'http://maven.epoxide.org'
 //    }
     maven { //The repo to get TiC
-        url 'http://dvs1.progwml6.com/files/maven'
+        url 'https://dvs1.progwml6.com/files/maven'
     }
 //    maven { // HWYLA repo
 //        url "http://tehnut.info/maven"

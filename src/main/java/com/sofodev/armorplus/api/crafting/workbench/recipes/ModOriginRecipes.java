@@ -7,9 +7,9 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static com.sofodev.armorplus.api.crafting.workbench.recipes.WBRecipesHelper.createArmorRecipes;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
 
 public class ModOriginRecipes {
 

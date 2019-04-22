@@ -4,9 +4,9 @@
 
 package com.sofodev.armorplus.client.gui;
 
-import com.sofodev.armorplus.container.ContainerLavaInfuser;
-import com.sofodev.armorplus.tileentity.TileLavaInfuser;
-import com.sofodev.armorplus.util.Utils;
+import com.sofodev.armorplus.common.container.ContainerLavaInfuser;
+import com.sofodev.armorplus.common.tileentity.TileLavaInfuser;
+import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

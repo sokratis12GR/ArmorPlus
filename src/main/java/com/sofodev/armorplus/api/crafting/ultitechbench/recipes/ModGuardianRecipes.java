@@ -8,10 +8,10 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
-import static com.sofodev.armorplus.registry.ModItems.materials;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
+import static com.sofodev.armorplus.common.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModGuardianRecipes {

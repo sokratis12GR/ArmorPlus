@@ -7,9 +7,10 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static com.sofodev.armorplus.api.crafting.workbench.recipes.WBRecipesHelper.*;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
+import static com.sofodev.armorplus.common.registry.ModItems.pickaxe;
 
 public class ModWeaponsTierOneRecipes {
     public void addRecipes(BaseCraftingManager manager) {
@@ -26,9 +27,14 @@ public class ModWeaponsTierOneRecipes {
                     createBattleAxeRecipe(manager, "dustRedstone", redstoneBattleAxe);
                 }
                 if (recipes.enableBowsRecipes) {
-                    createBowRecipes(manager, "itemCoal", coalBow);
-                    createBowRecipes(manager, "gemLapis", lapisBow);
-                    createBowRecipes(manager, "dustRedstone", redstoneBow);
+                    createBowRecipe(manager, "itemCoal", coalBow);
+                    createBowRecipe(manager, "gemLapis", lapisBow);
+                    createBowRecipe(manager, "dustRedstone", redstoneBow);
+                }
+                if (recipes.enablePickaxesRecipes) {
+                    createPickaxeRecipe(manager, "itemCoal", pickaxe[0]);
+                    createPickaxeRecipe(manager, "gemLapis", pickaxe[1]);
+                    createPickaxeRecipe(manager, "dustRedstone", pickaxe[2]);
                 }
                 break;
             }
@@ -45,9 +51,14 @@ public class ModWeaponsTierOneRecipes {
                     createBattleAxeRecipe(manager, "blockRedstone", redstoneBattleAxe);
                 }
                 if (recipes.enableBowsRecipes) {
-                    createBowRecipes(manager, "blockCoal", coalBow);
-                    createBowRecipes(manager, "blockLapis", lapisBow);
-                    createBowRecipes(manager, "blockRedstone", redstoneBow);
+                    createBowRecipe(manager, "blockCoal", coalBow);
+                    createBowRecipe(manager, "blockLapis", lapisBow);
+                    createBowRecipe(manager, "blockRedstone", redstoneBow);
+                }
+                if (recipes.enablePickaxesRecipes) {
+                    createPickaxeRecipe(manager, "blockCoal", pickaxe[0]);
+                    createPickaxeRecipe(manager, "blockLapis", pickaxe[1]);
+                    createPickaxeRecipe(manager, "blockRedstone", pickaxe[2]);
                 }
                 break;
             }

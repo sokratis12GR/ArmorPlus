@@ -5,7 +5,7 @@
 package com.sofodev.armorplus.api.properties;
 
 import com.sofodev.armorplus.api.properties.iface.IRemovable;
-import com.sofodev.armorplus.config.Abilities;
+import com.sofodev.armorplus.common.config.Abilities;
 
 /**
  * @author Sokratis Fotkatzikis

@@ -16,7 +16,7 @@ import com.sofodev.armorplus.api.crafting.workbench.recipes.ModItemRecipes;
 import com.sofodev.armorplus.api.crafting.workbench.recipes.ModOriginRecipes;
 import com.sofodev.armorplus.api.crafting.workbench.recipes.ModSpecialMobRecipes;
 import com.sofodev.armorplus.api.crafting.workbench.recipes.ModWeaponsTierOneRecipes;
-import com.sofodev.armorplus.container.base.InventoryCraftingImproved;
+import com.sofodev.armorplus.common.container.base.InventoryCraftingImproved;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
@@ -37,7 +37,7 @@ public abstract class BaseCraftingManager {
             //None
         }
     };
-    public static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(7, "Ulti-Tech Bench") {
+    public static final BaseCraftingManager ULT_TECH_BENCH = new BaseCraftingManager(7, "Ulti-Tech Bench") {
 
         @Override
         public void setRecipes() {
@@ -49,7 +49,7 @@ public abstract class BaseCraftingManager {
             new ModUltiTechItemRecipes().addRecipes(this);
         }
     };
-    public static final BaseCraftingManager ULT_TECH_BENCH = new BaseCraftingManager(5, "High-Tech Bench") {
+    public static final BaseCraftingManager HIGH_TECH_BENCH = new BaseCraftingManager(5, "High-Tech Bench") {
 
         @Override
         public void setRecipes() {
@@ -75,11 +75,11 @@ public abstract class BaseCraftingManager {
     }
 
     public static BaseCraftingManager getUTBInstance() {
-        return HIGH_TECH_BENCH;
+        return ULT_TECH_BENCH;
     }
 
     public static BaseCraftingManager getHTBInstance() {
-        return ULT_TECH_BENCH;
+        return HIGH_TECH_BENCH;
     }
 
     public static BaseCraftingManager getWBInstance() {

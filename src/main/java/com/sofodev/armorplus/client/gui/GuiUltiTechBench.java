@@ -5,8 +5,8 @@
 package com.sofodev.armorplus.client.gui;
 
 import com.sofodev.armorplus.client.gui.base.GuiBaseBench;
-import com.sofodev.armorplus.container.ContainerUltiTechBench;
-import com.sofodev.armorplus.tileentity.TileUTB;
+import com.sofodev.armorplus.common.container.ContainerUltiTechBench;
+import com.sofodev.armorplus.common.tileentity.TileUTB;
 import net.minecraft.entity.player.InventoryPlayer;
 
 /**

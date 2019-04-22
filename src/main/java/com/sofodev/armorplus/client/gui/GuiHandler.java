@@ -4,8 +4,8 @@
 
 package com.sofodev.armorplus.client.gui;
 
-import com.sofodev.armorplus.container.*;
-import com.sofodev.armorplus.tileentity.*;
+import com.sofodev.armorplus.common.container.*;
+import com.sofodev.armorplus.common.tileentity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

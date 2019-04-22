@@ -5,9 +5,9 @@
 package com.sofodev.armorplus.client.gui;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.APItems;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.common.registry.APItems;
+import com.sofodev.armorplus.common.registry.ModBlocks;
+import com.sofodev.armorplus.common.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.sofodev.armorplus.registry.APItems.infusedLavaCrystal;
+import static com.sofodev.armorplus.common.registry.APItems.infusedLavaCrystal;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**

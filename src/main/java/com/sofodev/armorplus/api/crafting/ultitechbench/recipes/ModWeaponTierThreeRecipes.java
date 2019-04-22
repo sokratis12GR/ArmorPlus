@@ -6,13 +6,14 @@ package com.sofodev.armorplus.api.crafting.ultitechbench.recipes;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
-import com.sofodev.armorplus.registry.APItems;
+import com.sofodev.armorplus.common.registry.APItems;
 import net.minecraft.init.Items;
 
 import static com.sofodev.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.*;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
+import static com.sofodev.armorplus.common.registry.ModItems.pickaxe;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModWeaponTierThreeRecipes {
@@ -33,6 +34,11 @@ public class ModWeaponTierThreeRecipes {
                     registerBowRecipes(manager, "scaleGuardian", "gemPrismarine", guardianBow);
                     registerBowRecipes(manager, "witherBone", "string", superStarBow);
                     registerBowRecipes(manager, "scaleEnderDragon", "string", enderDragonBow);
+                }
+                if (recipes.enablePickaxesRecipes) {
+                    registerPickaxeRecipe(manager, "scaleGuardian", pickaxe[6]);
+                    registerPickaxeRecipe(manager, "witherBone", pickaxe[7]);
+                    registerPickaxeRecipe(manager, "scaleEnderDragon", pickaxe[8]);
                 }
                 break;
             }
@@ -93,7 +99,7 @@ public class ModWeaponTierThreeRecipes {
                         'E', "witherBone",
                         'S', Items.NETHER_STAR,
                         'H', getItemStack(Items.SKULL, 1)));
-                    manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(APItems.enderDragonBattleAxe),
+                    manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(enderDragonBattleAxe),
                         " E   E ",
                         "E  S  E",
                         " EESEE ",
@@ -170,6 +176,39 @@ public class ModWeaponTierThreeRecipes {
                         'E', "scaleEnderDragon",
                         'S', "string",
                         'D', Items.DRAGON_BREATH));
+                }
+                if (recipes.enablePickaxesRecipes) {
+                    manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe[6]),
+                        " EEEEE ",
+                        "EEESEEE",
+                        "EE S EE",
+                        "E  S  E",
+                        "   S   ",
+                        "   S   ",
+                        "   S   ",
+                        'E', "scaleGuardian",
+                        'S', "gemPrismarine"));
+                    manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe[7]),
+                        " EEEEE ",
+                        "EEEHEEE",
+                        "EE S EE",
+                        "E  S  E",
+                        "   S   ",
+                        "   S   ",
+                        "   S   ",
+                        'E', "witherBone",
+                        'S', Items.NETHER_STAR,
+                        'H', getItemStack(Items.SKULL, 1)));
+                    manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe[8]),
+                        " EEEEE ",
+                        "EEESEEE",
+                        "EE S EE",
+                        "E  S  E",
+                        "   S   ",
+                        "   S   ",
+                        "   S   ",
+                        'E', "scaleEnderDragon",
+                        'S', Items.DRAGON_BREATH));
                 }
                 break;
             }

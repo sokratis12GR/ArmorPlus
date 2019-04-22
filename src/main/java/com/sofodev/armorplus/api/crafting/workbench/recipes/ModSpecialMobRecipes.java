@@ -7,9 +7,9 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModSpecialMobRecipes {

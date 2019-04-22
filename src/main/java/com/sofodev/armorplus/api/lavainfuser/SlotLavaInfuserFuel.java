@@ -4,13 +4,13 @@
 
 package com.sofodev.armorplus.api.lavainfuser;
 
-import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.common.registry.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.tileentity.TileLavaInfuser.isItemFuel;
+import static com.sofodev.armorplus.common.tileentity.TileLavaInfuser.isItemFuel;
 
 /**
  * @author Sokratis Fotkatzikis

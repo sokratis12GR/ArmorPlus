@@ -8,8 +8,8 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.registry.ModItems.itemEnderDragonArrow;
-import static com.sofodev.armorplus.registry.ModItems.materials;
+import static com.sofodev.armorplus.common.registry.ModItems.itemEnderDragonArrow;
+import static com.sofodev.armorplus.common.registry.ModItems.materials;
 
 public class ModUltiTechItemRecipes {
     public void addRecipes(BaseCraftingManager manager) {

@@ -4,7 +4,7 @@
 
 package com.sofodev.armorplus.client.gui.base;
 
-import com.sofodev.armorplus.util.Utils;
+import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;

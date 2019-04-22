@@ -6,11 +6,10 @@ package com.sofodev.armorplus.client.utils;
 
 import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
-import com.sofodev.armorplus.items.weapons.effects.Ignite;
-import com.sofodev.armorplus.items.weapons.effects.Negative;
-import com.sofodev.armorplus.util.PotionUtils;
-import com.sofodev.armorplus.util.RomanNumeralUtil;
-import com.sofodev.armorplus.util.Utils;
+import com.sofodev.armorplus.common.items.special.effects.Ignite;
+import com.sofodev.armorplus.common.items.special.effects.Negative;
+import com.sofodev.armorplus.common.util.PotionUtils;
+import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -23,7 +22,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.sofodev.armorplus.util.TextUtils.translatedText;
+import static com.sofodev.armorplus.common.util.TextUtils.translatedText;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.util.text.TextFormatting.GRAY;
@@ -145,6 +144,20 @@ public final class ToolTipUtils {
                     tooltip.add(String.format("%s%s %s", abilityFormatting, PotionUtils.localizePotion(negativeEffects[abilityIndex]), RomanNumeralUtil.generate(effectLevels[abilityIndex] + 1)));
                 }
             }
+        }
+    }
+
+    /**
+     * Adds a basic damage information about arrows
+     */
+    @SideOnly(value = Side.CLIENT)
+    public static void addArrowInformation(List<String> tooltip, String effect, double damage, TextFormatting formatting) {
+        KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+        if (GameSettings.isKeyDown(keyBindSneak)) {
+            tooltip.add(translatedText("item.armorplus.arrow.ability_desc", effect));
+            tooltip.add(translatedText("item.armorplus.arrow.ability", damage + 2.0D));
+        } else {
+            showInfo(tooltip, keyBindSneak, formatting);
         }
     }
 

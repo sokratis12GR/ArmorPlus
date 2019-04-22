@@ -5,7 +5,7 @@
 package com.sofodev.armorplus.api.crafting.base;
 
 import com.sofodev.armorplus.api.crafting.utils.CraftingUtils;
-import com.sofodev.armorplus.container.base.InventoryCraftingImproved;
+import com.sofodev.armorplus.common.container.base.InventoryCraftingImproved;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

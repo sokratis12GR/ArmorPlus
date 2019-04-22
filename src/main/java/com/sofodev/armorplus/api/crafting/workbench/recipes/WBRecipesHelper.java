@@ -35,7 +35,11 @@ public class WBRecipesHelper {
         manager.addRecipe(createShapedRecipe(output, "C C", "CSC", " S ", 'C', material, 'S', "stickWood"));
     }
 
-    public static void createBowRecipes(BaseCraftingManager manager, String material, Object output) {
+    public static void createPickaxeRecipe(BaseCraftingManager manager, String material, Object output) {
+        manager.addRecipe(createShapedRecipe(output, "CCC", " S ", " S ", 'C', material, 'S', "stickWood"));
+    }
+
+    public static void createBowRecipe(BaseCraftingManager manager, String material, Object output) {
         manager.addRecipes(
             createShapedRecipe(output, " CS", "C S", " CS", 'C', material, 'S', "string"),
             createShapedRecipe(output, "SC ", "S C", "SC ", 'C', material, 'S', "string")

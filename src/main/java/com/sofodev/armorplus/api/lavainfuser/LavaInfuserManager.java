@@ -6,9 +6,9 @@ package com.sofodev.armorplus.api.lavainfuser;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sofodev.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.common.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
+import com.sofodev.armorplus.common.registry.ModBlocks;
+import com.sofodev.armorplus.common.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -6,7 +6,7 @@ package com.sofodev.armorplus.api.crafting.utils;
 
 import com.google.common.collect.Maps;
 import com.sofodev.armorplus.api.crafting.IRecipe;
-import com.sofodev.armorplus.container.base.InventoryCraftingImproved;
+import com.sofodev.armorplus.common.container.base.InventoryCraftingImproved;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

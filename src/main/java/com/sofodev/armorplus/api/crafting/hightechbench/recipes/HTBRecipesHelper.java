@@ -149,75 +149,86 @@ class HTBRecipesHelper {
     }
 
     static void createSwordRecipes(BaseCraftingManager manager, Object output, String material) {
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "    E",
-                "    E",
-                "    E",
-                "    E",
-                "    S",
-                'E', material,
-                'S', "stickWood"));
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "   E ",
-                "   E ",
-                "   E ",
-                "   E ",
-                "   S ",
-                'E', material,
-                'S', "stickWood"));
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "  E  ",
-                "  E  ",
-                "  E  ",
-                "  E  ",
-                "  S  ",
-                'E', material,
-                'S', "stickWood"));
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                " E   ",
-                " E   ",
-                " E   ",
-                " E   ",
-                " S   ",
-                'E', material,
-                'S', "stickWood"));
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "E    ",
-                "E    ",
-                "E    ",
-                "E    ",
-                "S    ",
-                'E', material,
-                'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "    E",
+            "    E",
+            "    E",
+            "    E",
+            "    S",
+            'E', material,
+            'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "   E ",
+            "   E ",
+            "   E ",
+            "   E ",
+            "   S ",
+            'E', material,
+            'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "  E  ",
+            "  E  ",
+            "  E  ",
+            "  E  ",
+            "  S  ",
+            'E', material,
+            'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            " E   ",
+            " E   ",
+            " E   ",
+            " E   ",
+            " S   ",
+            'E', material,
+            'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "E    ",
+            "E    ",
+            "E    ",
+            "E    ",
+            "S    ",
+            'E', material,
+            'S', "stickWood"));
     }
 
     static void createBattleAxeRecipe(BaseCraftingManager manager, Object output, String material) {
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "E   E",
-                "EESEE",
-                "E S E",
-                "  S  ",
-                "  S  ",
-                'E', material,
-                'S', "stickWood"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "E   E",
+            "EESEE",
+            "E S E",
+            "  S  ",
+            "  S  ",
+            'E', material,
+            'S', "stickWood"));
+    }
+
+    static void createPickaxeRecipe(BaseCraftingManager manager, Object output, String material) {
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            " EEE ",
+            "E S E",
+            "E S E",
+            "  S  ",
+            "  S  ",
+            'E', material,
+            'S', "stickWood"));
     }
 
     static void createBowRecipe(BaseCraftingManager manager, Object output, String material) {
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "  EES",
-                " E  S",
-                "E   S",
-                " E  S",
-                "  EES",
-                'E', material,
-                'S', "string"));
-            manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
-                "SEE  ",
-                "S  E ",
-                "S   E",
-                "S  E ",
-                "SEE  ",
-                'E', material,
-                'S', "string"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "  EES",
+            " E  S",
+            "E   S",
+            " E  S",
+            "  EES",
+            'E', material,
+            'S', "string"));
+        manager.addRecipe(new BaseShapedOreRecipe(5, getItemStack(output),
+            "SEE  ",
+            "S  E ",
+            "S   E",
+            "S  E ",
+            "SEE  ",
+            'E', material,
+            'S', "string"));
     }
 }

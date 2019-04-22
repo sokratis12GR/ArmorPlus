@@ -8,9 +8,10 @@ package com.sofodev.armorplus.api.crafting.hightechbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 
 import static com.sofodev.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.*;
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APItems.*;
+import static com.sofodev.armorplus.common.registry.ModItems.pickaxe;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -35,6 +36,11 @@ public class ModWeaponTierTwoRecipes {
                     createBowRecipe(manager, obsidianBow, "obsidian");
                     createBowRecipe(manager, lavaBow, "gemLavaCrystal");
                 }
+                if (recipes.enablePickaxesRecipes) {
+                    createPickaxeRecipe(manager, pickaxe[3], "gemEmerald");
+                    createPickaxeRecipe(manager, pickaxe[4], "obsidian");
+                    createPickaxeRecipe(manager, pickaxe[5], "gemLavaCrystal");
+                }
                 break;
             }
             case EXPERT:
@@ -53,6 +59,11 @@ public class ModWeaponTierTwoRecipes {
                     createBowRecipe(manager, emeraldBow, "blockEmerald");
                     createBowRecipe(manager, obsidianBow, "blockCompressedObsidian");
                     createBowRecipe(manager, lavaBow, "gemChargedLavaCrystal");
+                }
+                if (recipes.enablePickaxesRecipes) {
+                    createPickaxeRecipe(manager, pickaxe[3], "blockEmerald");
+                    createPickaxeRecipe(manager, pickaxe[4], "blockCompressedObsidian");
+                    createPickaxeRecipe(manager, pickaxe[5], "gemChargedLavaCrystal");
                 }
                 break;
             }

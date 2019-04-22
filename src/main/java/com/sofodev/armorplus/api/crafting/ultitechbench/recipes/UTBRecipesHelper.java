@@ -9,7 +9,8 @@ import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
-import static com.sofodev.armorplus.registry.ModItems.materials;
+import static com.sofodev.armorplus.common.registry.ModItems.materials;
+import static net.minecraft.init.Items.STICK;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class UTBRecipesHelper {
@@ -47,11 +48,11 @@ public class UTBRecipesHelper {
             "   S   ",
             "   S   ",
             'E', material,
-            'S', Items.STICK));
+            'S', STICK));
     }
 
-    public static void registerBattleAxeRecipe(BaseCraftingManager manager, String material, Item sword) {
-        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(sword),
+    public static void registerBattleAxeRecipe(BaseCraftingManager manager, String material, Item battleAxe) {
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(battleAxe),
             " E   E ",
             "E  S  E",
             " EESEE ",
@@ -60,7 +61,20 @@ public class UTBRecipesHelper {
             "   S   ",
             "   S   ",
             'E', material,
-            'S', Items.STICK));
+            'S', STICK));
+    }
+
+    public static void registerPickaxeRecipe(BaseCraftingManager manager, String material, Item pickaxe) {
+        manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe),
+            " EEEEE ",
+            "EE S EE",
+            "E  S  E",
+            "E  S  E",
+            "   S   ",
+            "   S   ",
+            "   S   ",
+            'E', material,
+            'S', STICK));
     }
 
     public static void registerEasyArmorSetRecipes(BaseCraftingManager manager, int materialMeta, Object... outputs) {

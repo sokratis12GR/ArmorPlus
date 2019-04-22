@@ -5,7 +5,7 @@
 package com.sofodev.armorplus.api.crafting.utils;
 
 import com.google.common.collect.Lists;
-import com.sofodev.armorplus.container.base.InventoryCraftingImproved;
+import com.sofodev.armorplus.common.container.base.InventoryCraftingImproved;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;

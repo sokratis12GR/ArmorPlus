@@ -7,10 +7,10 @@ package com.sofodev.armorplus.api.crafting.hightechbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 
-import static com.sofodev.armorplus.registry.APBlocks.*;
-import static com.sofodev.armorplus.registry.ModBlocks.blockCompressedObsidian;
-import static com.sofodev.armorplus.registry.ModItems.itemLavaCrystal;
-import static com.sofodev.armorplus.registry.ModItems.materials;
+import static com.sofodev.armorplus.common.registry.APBlocks.*;
+import static com.sofodev.armorplus.common.registry.ModBlocks.blockCompressedObsidian;
+import static com.sofodev.armorplus.common.registry.ModItems.itemLavaCrystal;
+import static com.sofodev.armorplus.common.registry.ModItems.materials;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**

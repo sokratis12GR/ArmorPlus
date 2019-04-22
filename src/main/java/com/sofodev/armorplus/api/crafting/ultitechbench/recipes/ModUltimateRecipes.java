@@ -8,12 +8,12 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.registry.APBlocks.*;
-import static com.sofodev.armorplus.registry.APItems.*;
-import static com.sofodev.armorplus.registry.ModBlocks.blockCompressedObsidian;
-import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.util.Utils.setUnbreakable;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.registry.APBlocks.*;
+import static com.sofodev.armorplus.common.registry.APItems.*;
+import static com.sofodev.armorplus.common.registry.ModBlocks.blockCompressedObsidian;
+import static com.sofodev.armorplus.common.registry.ModItems.*;
+import static com.sofodev.armorplus.common.util.Utils.setUnbreakable;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModUltimateRecipes {

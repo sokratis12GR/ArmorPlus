@@ -1,0 +1,168 @@
+/*
+ * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
+ */
+
+package com.sofodev.armorplus.common.registry;
+
+import com.sofodev.armorplus.common.caps.abilities.MaterialType;
+import com.sofodev.armorplus.common.items.ItemUltimateParts;
+import com.sofodev.armorplus.common.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.common.items.armors.base.ItemArmorV2;
+import com.sofodev.armorplus.common.items.armors.base.ItemEnhancedArmor;
+import com.sofodev.armorplus.common.items.armors.base.ItemSpecialArmor;
+import com.sofodev.armorplus.common.items.armors.base.ItemUltimateArmor;
+import com.sofodev.armorplus.common.items.armors.horse.ItemBaseHorseArmor;
+import com.sofodev.armorplus.common.items.arrows.ArrowType;
+import com.sofodev.armorplus.common.items.arrows.ItemSpecialArrow;
+import com.sofodev.armorplus.common.items.base.*;
+import com.sofodev.armorplus.common.items.books.ItemAPBook;
+import com.sofodev.armorplus.common.items.consumables.ItemRedstoneApple;
+import com.sofodev.armorplus.common.items.consumables.ItemTGOTG;
+import com.sofodev.armorplus.common.items.dev.ItemDevTool;
+import com.sofodev.armorplus.common.items.dev.ItemSpawnStructure;
+import com.sofodev.armorplus.common.items.enums.MetalItems;
+import com.sofodev.armorplus.common.items.materials.ItemLavaCrystal;
+import com.sofodev.armorplus.common.items.materials.ItemMaterial;
+import com.sofodev.armorplus.common.items.special.Pickaxes;
+import com.sofodev.armorplus.common.worldgen.nbt.StructureGenNBT;
+import net.minecraft.util.text.TextFormatting;
+
+import java.util.stream.IntStream;
+
+import static com.sofodev.armorplus.common.config.ModConfig.Experimental.enableExperimentalMode;
+import static com.sofodev.armorplus.common.items.armors.ArmorMaterials.*;
+import static com.sofodev.armorplus.common.items.enums.Cosmetics.*;
+import static com.sofodev.armorplus.common.registry.ModRegistryUtils.register;
+import static com.sofodev.armorplus.common.registry.ModRegistryUtils.registerAll;
+
+/**
+ * @author Sokratis Fotkatzikis
+ **/
+public class ModItems {
+
+    public static ItemAPBook bookInfo = new ItemAPBook();
+    public static ItemBase steelIngot = new ItemBase(MetalItems.STEEL_INGOT), electricalIngot = new ItemBase(MetalItems.ELECTRICAL_INGOT);
+    public static ItemRedstoneApple itemRedstoneApple = new ItemRedstoneApple();
+    public static ItemLavaCrystal itemLavaCrystal = new ItemLavaCrystal();
+    public static ItemTGOTG itemTGOTG = new ItemTGOTG();
+    public static ItemMaterial materials = new ItemMaterial();
+    public static ItemAdvanced chainmail = new ItemAdvanced("chainmail", TextFormatting.GRAY, "Chainmail");
+    public static ItemAdvanced guardianScale = new ItemAdvanced("guardian_scale", TextFormatting.AQUA, "Guardian Scale");
+    public static ItemAdvanced witherBone = new ItemAdvanced("wither_bone", TextFormatting.WHITE, "Wither Bone");
+    public static ItemAdvanced enderDragonScale = new ItemAdvanced("ender_dragon_scale", TextFormatting.DARK_PURPLE, "Ender Dragon Scale");
+    public static ItemAdvanced theUltimateMaterial = new ItemAdvanced("the_ultimate_material", TextFormatting.GREEN, "The Ultimate MaterialType");
+    public static ItemSpecialArmor[] coal = new ItemSpecialArmor[4],
+        emerald = new ItemSpecialArmor[4],
+        lapis = new ItemSpecialArmor[4],
+        redstone = new ItemSpecialArmor[4],
+        obsidian = new ItemSpecialArmor[4],
+        lava = new ItemSpecialArmor[4],
+        chicken = new ItemSpecialArmor[4],
+        slime = new ItemSpecialArmor[4],
+        guardian = new ItemSpecialArmor[4],
+        superStar = new ItemSpecialArmor[4],
+        enderDragon = new ItemSpecialArmor[4],
+        ardite = new ItemSpecialArmor[4],
+        cobalt = new ItemSpecialArmor[4],
+        manyullyn = new ItemSpecialArmor[4],
+        pigIron = new ItemSpecialArmor[4],
+        knightSlime = new ItemSpecialArmor[4];
+    public static ItemUltimateArmor[] theUltimate = new ItemUltimateArmor[4];
+    public static ItemSpecialSword[] sword = new ItemSpecialSword[9];
+    public static ItemSpecialBattleAxe[] battleAxe = new ItemSpecialBattleAxe[9];
+    public static ItemSpecialBow[] bow = new ItemSpecialBow[9];
+    public static ItemSpecialPickaxe[] pickaxe = new ItemSpecialPickaxe[9];
+    public static ItemUltimateParts theUltimateParts = new ItemUltimateParts();
+    public static ItemDevTool itemDevTool = new ItemDevTool();
+    public static ItemCosmetic twitchItem = new ItemCosmetic(TWITCH), beamItem = new ItemCosmetic(BEAM),
+        theDragonTeamItem = new ItemCosmetic(THE_DRAGON_TEAM), moddedCityItem = new ItemCosmetic(MODDED_CITY),
+        jonBamsItem = new ItemCosmetic(JON_BAMS), btmMoon = new ItemCosmetic(BTM_MOON), m1Jordan = new ItemCosmetic(M1JORDAN),
+        teamRapture = new ItemCosmetic(TEAM_RAPTURE);
+    public static ItemSpecialArrow itemCoalArrow = new ItemSpecialArrow(ArrowType.COAL),
+        itemLapisArrow = new ItemSpecialArrow(ArrowType.LAPIS),
+        itemRedstoneArrow = new ItemSpecialArrow(ArrowType.REDSTONE),
+        itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
+        itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
+    public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
+    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{APArmorMaterial.COAL, APArmorMaterial.LAPIS, APArmorMaterial.REDSTONE, APArmorMaterial.EMERALD, APArmorMaterial.OBSIDIAN, APArmorMaterial.INFUSED_LAVA, APArmorMaterial.GUARDIAN, APArmorMaterial.SUPER_STAR, APArmorMaterial.ENDER_DRAGON};
+    public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", StructureGenNBT.TOWER);
+    public static ItemSpawnStructure enderDungeonFloor1SpawnItem = new ItemSpawnStructure("ender_dungeon_floor_1_spawn_item", StructureGenNBT.ENDER_DUNGEON_FLOOR_1);
+    public static ItemArmorV2[] coalExp = new ItemArmorV2[4],
+        chickenExp = new ItemArmorV2[4],
+        slimeExp = new ItemArmorV2[4],
+        emeraldExp = new ItemArmorV2[4],
+        lapisExp = new ItemArmorV2[4],
+        redstoneExp = new ItemArmorV2[4],
+        obsidianExp = new ItemArmorV2[4],
+        lavaExp = new ItemArmorV2[4],
+        guardianExp = new ItemArmorV2[4],
+        superStarExp = new ItemArmorV2[4],
+        enderDragonExp = new ItemArmorV2[4],
+        arditeExp = new ItemArmorV2[4],
+        cobaltExp = new ItemArmorV2[4],
+        manyullynExp = new ItemArmorV2[4],
+        pigIronExp = new ItemArmorV2[4],
+        knightSlimeExp = new ItemArmorV2[4],
+        ultimateExp = new ItemArmorV2[4];
+    public static ItemEnhancedArmor[] iron = new ItemEnhancedArmor[4],
+        chain = new ItemEnhancedArmor[4],
+        gold = new ItemEnhancedArmor[4],
+        diamond = new ItemEnhancedArmor[4];
+    //public static ItemBase obsidianStick,guardianStone,dragonBornStick, witheredStick;
+
+    public static void registerItems() {
+        //HorseArmors
+        IntStream.range(0, horseArmors.length).forEach(i -> horseArmors[i] = new ItemBaseHorseArmor(horseMaterial[i]));
+        //Armors
+        register(chicken, APArmorMaterial.CHICKEN);
+        register(slime, APArmorMaterial.SLIME);
+        register(coal, APArmorMaterial.COAL);
+        register(lapis, APArmorMaterial.LAPIS);
+        register(redstone, APArmorMaterial.REDSTONE);
+        register(emerald, APArmorMaterial.EMERALD);
+        register(obsidian, APArmorMaterial.OBSIDIAN);
+        register(lava, APArmorMaterial.INFUSED_LAVA);
+        register(guardian, APArmorMaterial.GUARDIAN);
+        register(superStar, APArmorMaterial.SUPER_STAR);
+        register(enderDragon, APArmorMaterial.ENDER_DRAGON);
+        registerAll(theUltimate);
+        registerAll(sword);
+        registerAll(battleAxe);
+        registerAll(bow);
+
+        if (enableExperimentalMode) {
+            register(chickenExp, MaterialType.CHICKEN);
+            register(slimeExp, MaterialType.SLIME);
+            register(coalExp, MaterialType.COAL);
+            register(lapisExp, MaterialType.LAPIS);
+            register(redstoneExp, MaterialType.REDSTONE);
+            register(emeraldExp, MaterialType.EMERALD);
+            register(obsidianExp, MaterialType.OBSIDIAN);
+            register(lavaExp, MaterialType.INFUSED_LAVA);
+            register(guardianExp, MaterialType.GUARDIAN);
+            register(superStarExp, MaterialType.SUPER_STAR);
+            register(enderDragonExp, MaterialType.ENDER_DRAGON);
+            register(ultimateExp, MaterialType.ULTIMATE);
+            register(arditeExp, MaterialType.ARDITE);
+            register(cobaltExp, MaterialType.COBALT);
+            register(manyullynExp, MaterialType.MANYULLYN);
+            register(pigIronExp, MaterialType.PIG_IRON);
+            register(knightSlimeExp, MaterialType.KNIGHT_SLIME);
+        }
+
+        register(chain, ENHANCED_CHAIN_ARMOR, "chainmail");
+        register(iron, ENHANCED_IRON_ARMOR, "iron");
+        register(gold, ENHANCED_GOLD_ARMOR, "gold");
+        register(diamond, ENHANCED_DIAMOND_ARMOR, "diamond");
+
+        IntStream.range(0, pickaxe.length).forEach(i -> pickaxe[i] = new ItemSpecialPickaxe(Pickaxes.values()[i]));
+    }
+
+    public static void registerTCItems() {
+        register(ardite, APArmorMaterial.ARDITE);
+        register(cobalt, APArmorMaterial.COBALT);
+        register(manyullyn, APArmorMaterial.MANYULLYN);
+        register(pigIron, APArmorMaterial.PIG_IRON);
+        register(knightSlime, APArmorMaterial.KNIGHT_SLIME);
+    }
+}

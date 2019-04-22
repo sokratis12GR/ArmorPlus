@@ -7,15 +7,15 @@ package com.sofodev.armorplus.api.crafting.workbench.recipes;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
 import com.sofodev.armorplus.api.crafting.base.BaseShapelessOreRecipe;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.common.registry.ModBlocks;
+import com.sofodev.armorplus.common.registry.ModItems;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.config.ModConfig.RegistryConfig.recipes;
-import static com.sofodev.armorplus.config.ModConfig.getRD;
-import static com.sofodev.armorplus.registry.APBlocks.highTechBench;
-import static com.sofodev.armorplus.registry.APBlocks.workbench;
-import static com.sofodev.armorplus.registry.ModItems.*;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.config.ModConfig.getRD;
+import static com.sofodev.armorplus.common.registry.APBlocks.highTechBench;
+import static com.sofodev.armorplus.common.registry.APBlocks.workbench;
+import static com.sofodev.armorplus.common.registry.ModItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModItemRecipes {

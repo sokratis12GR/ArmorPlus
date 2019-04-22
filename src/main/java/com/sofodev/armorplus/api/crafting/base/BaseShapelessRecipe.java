@@ -6,7 +6,7 @@ package com.sofodev.armorplus.api.crafting.base;
 
 import com.sofodev.armorplus.api.crafting.IRecipe;
 import com.sofodev.armorplus.api.crafting.utils.ShapelessRecipeUtils;
-import com.sofodev.armorplus.container.base.InventoryCraftingImproved;
+import com.sofodev.armorplus.common.container.base.InventoryCraftingImproved;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;

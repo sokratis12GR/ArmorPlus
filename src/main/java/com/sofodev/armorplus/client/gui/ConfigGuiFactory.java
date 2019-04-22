@@ -6,7 +6,7 @@ package com.sofodev.armorplus.client.gui;
 
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.util.TextUtils;
+import com.sofodev.armorplus.common.util.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.client.IModGuiFactory;

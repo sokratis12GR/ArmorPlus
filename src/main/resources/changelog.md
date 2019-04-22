@@ -1,3 +1,30 @@
+ArmorPlus 1.12.2-11.22.0.58
+----------------------------
+
+* Added the "Enhanced" enchantment, followed by Enhanced Vanilla Armors, obtainable by enchanting a vanilla armor with the "Enhanced" enchantment.
+* Fixed a bug causing tinkers' armors not having any recipes.
+* Added Pickaxes corresponding to their material (Coal, Lapis, Redstone, Emerald, Obsidian, Infused Lava, Guardian, Super Star, Ender Dragon)
+* The Ultimate armor can now be enchanted via the Enchanting Table and have enchantment books apply to the armor
+* Informational commands can now be accessed with no permissions.
+* Made use of Forge's new IRarity interface
+* Added a config to disable the chaos immunity for the Ultimate armor
+* Added Swedish translation of the mod
+* Now REQUIRES MINIMUM Forge version 1.12.2-14.23.5.2836
+
+ArmorPlus 1.12.2-11.21.0.57
+----------------------------
+
+* Draconic Evolution integration.
+  - Armors can now negate CHAOS damage
+    ~ Super Star Armor <chest> (90%) 
+    ~ Guardian Armor <chest> (90%)
+    ~ Ender Dragon Armor <chest> (90%)
+    ~ Ultimate Armor <chest> (100%, Immune to the Chaos dragon damage)
+  - ToolTip information has been added accordingly
+* Reworded the way the ultimate armor tooltip is displayed on full set
+* Some internal package re-organization
+* Fixed credits link being broken (They deserve 100% of the credits for their contributions)
+
 ArmorPlus 1.12.2-11.20.0.56
 ----------------------------
 
@@ -78,7 +105,7 @@ ArmorPlus 1.12.2-11.17.0.50
 ArmorPlus 1.12.2-11.16.3.48
 ----------------------------
 
-* MAJOR FIX: Blocks can be mined once again with their corresponding tools (They are no longer permanent unbreakable)
+* MAJOR FIX: Blocks can be mined once again with their corresponding pickaxes (They are no longer permanent unbreakable)
 * Config addition, you can now configure a block's properties currently only:
   - You can now change block's harvest level **[(Wood/Gold) 0-3 (Diamond)]**, harvest tool **["pickaxe", "axe", "shovel"]** &/or make it unbreakable
   - You can change pretty much any block's properties from the mod (except the wip dungeon blocks)
