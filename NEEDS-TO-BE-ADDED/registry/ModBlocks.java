@@ -2,22 +2,22 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
-import com.sofodev.armorplus.blocks.benches.Benches;
-import com.sofodev.armorplus.blocks.benches.BlockBench;
-import com.sofodev.armorplus.blocks.castle.BrickColor;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrick;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickCorner;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickTower;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickWall;
-import com.sofodev.armorplus.blocks.dungeon.BlockDungeonEnder;
-import com.sofodev.armorplus.blocks.dungeon.EnderType;
-import com.sofodev.armorplus.blocks.lava.*;
-import com.sofodev.armorplus.blocks.normal.BlockCompressedObsidian;
-import com.sofodev.armorplus.blocks.special.BlockTrophy;
-import com.sofodev.armorplus.blocks.special.Trophy;
-import com.sofodev.armorplus.blocks.v2.BlockMetal;
+import com.sofodev.armorplus.common.registry.blocks.benches.Benches;
+import com.sofodev.armorplus.common.registry.blocks.benches.BlockBench;
+import com.sofodev.armorplus.common.registry.blocks.castle.BrickColor;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrick;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickCorner;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickTower;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickWall;
+import com.sofodev.armorplus.common.registry.blocks.dungeon.BlockDungeonEnder;
+import com.sofodev.armorplus.common.registry.blocks.dungeon.EnderType;
+import com.sofodev.armorplus.common.registry.blocks.lava.*;
+import com.sofodev.armorplus.common.registry.blocks.normal.BlockCompressedObsidian;
+import com.sofodev.armorplus.common.registry.blocks.special.BlockTrophy;
+import com.sofodev.armorplus.common.registry.blocks.special.Trophy;
+import com.sofodev.armorplus.common.registry.blocks.v2.BlockMetal;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -2,9 +2,9 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
-import com.sofodev.armorplus.compat.*;
+import com.sofodev.armorplus.common.compat.*;
 import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;

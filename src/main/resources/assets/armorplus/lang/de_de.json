@@ -91,10 +91,10 @@
   "item.armorplus.guardian_boots": "Beschützer-Stiefel",
 
   "_comment": "TheUltimateArmor",
-  "item.armorplus.the_ultimate_helmet": "Der ultimative Helm",
-  "item.armorplus.the_ultimate_chestplate": "Der ultimative Brustpanzer",
-  "item.armorplus.the_ultimate_leggings": "Der ultimative Beinschutz",
-  "item.armorplus.the_ultimate_boots": "Die ultimativen Stiefel",
+  "item.armorplus.ultimate_helmet": "Der ultimative Helm",
+  "item.armorplus.ultimate_chestplate": "Der ultimative Brustpanzer",
+  "item.armorplus.ultimate_leggings": "Der ultimative Beinschutz",
+  "item.armorplus.ultimate_boots": "Die ultimativen Stiefel",
 
   "_comment": "CobaltArmor",
   "item.armorplus.cobalt_helmet": "Kobalthelm",

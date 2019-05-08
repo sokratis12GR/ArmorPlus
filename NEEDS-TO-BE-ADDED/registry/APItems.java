@@ -2,9 +2,9 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
-import com.sofodev.armorplus.config.ModConfig;
+import com.sofodev.armorplus.common.config.ModConfig;
 import net.minecraft.item.Item;
 
 import static com.sofodev.thedragonlib.util.ItemStackUtils.getItem;

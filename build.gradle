@@ -10,12 +10,14 @@ buildscript {
 }
 
 plugins {
-    id "com.matthewprenger.cursegradle" version "1.1.0"
+    id "com.matthewprenger.cursegradle" version "1.2.0"
     id "org.sonarqube" version "2.6"
 }
+
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: "com.matthewprenger.cursegradle"
 
 repositories {
     jcenter()
@@ -47,7 +49,7 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 minecraft {
     mappings channel: 'snapshot', version: mappings_version
 
-    accessTransformer = file('build/resources/main/META-INF/armorplus_at.cfg')
+    //accessTransformer = file('build/resources/main/META-INF/accesstransformer.cfg')
 
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     runs {
@@ -89,6 +91,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:' + mc_version + '-' + forge_version
 
     implementation 'thedragonlib:thedragonlib:1.13.2:6.0.0'
+    //implementation "mezz.jei:jei-1.13.2:${jei_version}"
 }
 
 jar {
@@ -100,5 +103,29 @@ jar {
                     "Implementation-Version"  : "${version}",
                     "Implementation-Vendor"   : "${author}",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
+    }
+}
+
+def curseRelations = {
+    //requiredDependency '' //add curseforge-slug here
+    requiredDependency 'thedragonlib'
+//    optionalDependency 'crafttweaker'
+//    optionalDependency 'tesla'
+//    optionalDependency 'tinkers-construct'
+//    optionalDependency 'baubles'
+//    optionalDependency 'jei'
+//    optionalDependency 'the-one-probe'
+//    optionalDependency 'projecte'
+}
+
+curseforge {
+    apiKey = project.hasProperty('api_token') ? project.api_token : '0'
+    project {
+        id = '237366'
+        changelog = file('src/main/resources/changelog.md')
+        changelogType = 'markdown'
+        releaseType = 'beta'
+        addGameVersion '1.13.2'
+        relations curseRelations
     }
 }

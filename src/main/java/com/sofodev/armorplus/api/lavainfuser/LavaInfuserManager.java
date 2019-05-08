@@ -6,7 +6,7 @@ package com.sofodev.armorplus.api.lavainfuser;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sofodev.armorplus.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
+import com.sofodev.armorplus.common.compat.crafttweaker.lavainfuser.LavaInfuserRecipe;
 import com.sofodev.thedragonlib.util.LogHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.sofodev.armorplus.util.Utils.getBlock;
-import static com.sofodev.armorplus.util.Utils.getItem;
+import static com.sofodev.armorplus.common.util.Utils.getBlock;
+import static com.sofodev.armorplus.common.util.Utils.getItem;
 
 /**
  * @author Sokratis Fotkatzikis

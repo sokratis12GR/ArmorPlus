@@ -1,53 +1,48 @@
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.blocks.benches.Benches;
-import com.sofodev.armorplus.blocks.benches.BlockBench;
-import com.sofodev.armorplus.blocks.castle.BrickColor;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrick;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickCorner;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickTower;
-import com.sofodev.armorplus.blocks.castle.base.BlockStoneBrickWall;
-import com.sofodev.armorplus.blocks.dungeon.BlockDungeonEnder;
-import com.sofodev.armorplus.blocks.dungeon.EnderType;
-import com.sofodev.armorplus.blocks.lava.*;
-import com.sofodev.armorplus.blocks.normal.BlockCompressedObsidian;
-import com.sofodev.armorplus.blocks.special.BlockTrophy;
-import com.sofodev.armorplus.blocks.special.Trophy;
-import com.sofodev.armorplus.blocks.v2.BlockMetal;
-import com.sofodev.armorplus.caps.abilities.AbilityDataHandler;
-import com.sofodev.armorplus.client.GuiHandler;
-import com.sofodev.armorplus.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
-import com.sofodev.armorplus.entity.dungeon.guardianoverlord.RenderGuardianOverlord;
-import com.sofodev.armorplus.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
-import com.sofodev.armorplus.entity.dungeon.guardianoverlord.projectile.RenderFreezeBomb;
-import com.sofodev.armorplus.entity.dungeon.skeletalking.EntitySkeletalKing;
-import com.sofodev.armorplus.entity.dungeon.skeletalking.RenderSkeletalKing;
-import com.sofodev.armorplus.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
-import com.sofodev.armorplus.entity.dungeon.skeletalking.projectile.RenderWitherMinion;
-import com.sofodev.armorplus.entity.entityarrow.*;
-import com.sofodev.armorplus.entity.mobs.EntityEnderDragonZombie;
-import com.sofodev.armorplus.entity.mobs.EntityIceGolem;
-import com.sofodev.armorplus.entity.render.RenderEnderDragonZombie;
-import com.sofodev.armorplus.entity.render.RenderIceGolem;
-import com.sofodev.armorplus.entity.render.RenderModdedArrow;
-import com.sofodev.armorplus.items.arrows.ArrowType;
-import com.sofodev.armorplus.items.arrows.ItemSpecialArrow;
-import com.sofodev.armorplus.items.base.ItemBase;
-import com.sofodev.armorplus.items.base.ItemCosmetic;
-import com.sofodev.armorplus.items.books.ItemAPBook;
-import com.sofodev.armorplus.items.consumables.ItemRedstoneApple;
-import com.sofodev.armorplus.items.consumables.ItemTGOTG;
-import com.sofodev.armorplus.items.materials.ItemLavaCrystal;
-import com.sofodev.armorplus.items.materials.ItemMaterial;
-import com.sofodev.armorplus.items.materials.ItemMaterial.Ingredient;
-import com.sofodev.armorplus.potions.PotionEmpty;
-import com.sofodev.armorplus.registry.ModRegistryUtils;
-import com.sofodev.armorplus.registry.ModTileEntities;
-import com.sofodev.armorplus.tileentity.TESRTrophy;
-import com.sofodev.armorplus.tileentity.TileTrophy;
+import com.mojang.brigadier.CommandDispatcher;
+import com.sofodev.armorplus.client.ClientLifecycleHandler;
+import com.sofodev.armorplus.common.caps.abilities.CapabilityAbility;
+import com.sofodev.armorplus.common.caps.abilities.data.AbilityData;
+import com.sofodev.armorplus.common.commands.AbilityArgument;
+import com.sofodev.armorplus.common.commands.CommandAbilities;
+import com.sofodev.armorplus.common.commands.CommandArmorPlus;
+import com.sofodev.armorplus.common.registry.ModTileEntities;
+import com.sofodev.armorplus.common.registry.blocks.castle.BrickColor;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrick;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickCorner;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickTower;
+import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickWall;
+import com.sofodev.armorplus.common.registry.blocks.dungeon.BlockDungeonEnder;
+import com.sofodev.armorplus.common.registry.blocks.dungeon.EnderType;
+import com.sofodev.armorplus.common.registry.blocks.lava.*;
+import com.sofodev.armorplus.common.registry.blocks.normal.BlockCompressedObsidian;
+import com.sofodev.armorplus.common.registry.blocks.special.BlockTrophy;
+import com.sofodev.armorplus.common.registry.blocks.special.Trophy;
+import com.sofodev.armorplus.common.registry.blocks.v2.BlockMetal;
+import com.sofodev.armorplus.common.registry.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
+import com.sofodev.armorplus.common.registry.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
+import com.sofodev.armorplus.common.registry.entity.dungeon.skeletalking.EntitySkeletalKing;
+import com.sofodev.armorplus.common.registry.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
+import com.sofodev.armorplus.common.registry.entity.entityarrow.*;
+import com.sofodev.armorplus.common.registry.entity.mobs.EntityEnderDragonZombie;
+import com.sofodev.armorplus.common.registry.entity.mobs.EntityIceGolem;
+import com.sofodev.armorplus.common.registry.items.arrows.ArrowType;
+import com.sofodev.armorplus.common.registry.items.arrows.ItemSpecialArrow;
+import com.sofodev.armorplus.common.registry.items.base.ItemBase;
+import com.sofodev.armorplus.common.registry.items.base.ItemCosmetic;
+import com.sofodev.armorplus.common.registry.items.books.ItemAPBook;
+import com.sofodev.armorplus.common.registry.items.consumables.ItemRedstoneApple;
+import com.sofodev.armorplus.common.registry.items.consumables.ItemTGOTG;
+import com.sofodev.armorplus.common.registry.items.materials.ItemLavaCrystal;
+import com.sofodev.armorplus.common.registry.items.materials.ItemMaterial;
+import com.sofodev.armorplus.common.registry.items.materials.ItemMaterial.Ingredient;
+import com.sofodev.armorplus.common.registry.potions.PotionEmpty;
 import net.minecraft.block.Block;
+import net.minecraft.command.CommandSource;
+import net.minecraft.command.arguments.ArgumentSerializer;
+import net.minecraft.command.arguments.ArgumentTypes;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -57,43 +52,45 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ExtensionPoint;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.registries.RegistryBuilder;
 
 import java.util.Arrays;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.blocks.lava.BlockLavaMaterial.LavaMaterial.*;
-import static com.sofodev.armorplus.blocks.special.Trophy.ANY;
-import static com.sofodev.armorplus.blocks.v2.Metals.ELECTRICAL;
-import static com.sofodev.armorplus.blocks.v2.Metals.STEEL;
-import static com.sofodev.armorplus.client.GuiHandler.Client.getClientGuiElement;
-import static com.sofodev.armorplus.config.ModConfig.MainConfig.tgotg;
-import static com.sofodev.armorplus.items.enums.Cosmetics.*;
-import static com.sofodev.armorplus.items.materials.ItemLavaCrystal.LavaType.INFUSED;
-import static com.sofodev.armorplus.items.materials.ItemLavaCrystal.LavaType.NORMAL;
-import static com.sofodev.armorplus.util.Utils.setName;
-import static com.sofodev.armorplus.util.Utils.setRL;
-import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
+import static com.sofodev.armorplus.common.caps.abilities.ImplementedAbilities.NONE;
+import static com.sofodev.armorplus.common.caps.abilities.ImplementedAbilities.*;
+import static com.sofodev.armorplus.common.caps.abilities.data.MaterialType.*;
+import static com.sofodev.armorplus.common.config.ModConfig.MainConfig.tgotg;
+import static com.sofodev.armorplus.common.registry.ModRegistryUtils.registerItems;
+import static com.sofodev.armorplus.common.registry.blocks.lava.BlockLavaMaterial.LavaMaterial.*;
+import static com.sofodev.armorplus.common.registry.blocks.special.Trophy.ANY;
+import static com.sofodev.armorplus.common.registry.blocks.v2.Metals.ELECTRICAL;
+import static com.sofodev.armorplus.common.registry.blocks.v2.Metals.STEEL;
+import static com.sofodev.armorplus.common.registry.items.enums.Cosmetics.*;
+import static com.sofodev.armorplus.common.registry.items.materials.ItemLavaCrystal.LavaType.INFUSED;
+import static com.sofodev.armorplus.common.registry.items.materials.ItemLavaCrystal.LavaType.NORMAL;
+import static com.sofodev.armorplus.common.util.Utils.setName;
+import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
 
-@Mod(MODID)
-@Mod.EventBusSubscriber(bus = MOD)
+@Mod("armorplus")
+@Mod.EventBusSubscriber(bus = MOD, modid = MODID)
 public class ArmorPlus {
-    public static final String MODID = "armorplus";
+
+    public static final String MODID = "armorplus1";
+    public static final String MODNAME = "ArmorPlus";
+    public static final String VERSION = "1.13.2-12.0.0.2";
 
     public static ItemGroup tabArmorplus = new ItemGroup(setName("armors")) {
         @Override
@@ -120,9 +117,6 @@ public class ArmorPlus {
         }
     };
 
-    // public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(),
-    // () -> () -> new ServerProxy());
-
     public static ArmorPlus instance;
     // public static GuiHandler guiHandler = new GuiHandler();
 
@@ -130,51 +124,23 @@ public class ArmorPlus {
         instance = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModTileEntities::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-       // ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.GUIFACTORY, () -> message -> getClientGuiElement(message));
-
+        FMLJavaModLoadingContext.get().getModEventBus().<FMLClientSetupEvent>addListener(e -> new ClientLifecycleHandler().clientSetup(e));
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        AbilityDataHandler.register();
+        CapabilityAbility.register();
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        //      OBJLoader.INSTANCE.addDomain(MODID);
-        ClientRegistry.bindTileEntitySpecialRenderer(TileTrophy.class, new TESRTrophy());
-        //      new CosmeticsRenderInit();
-        //      //TConstruct
-        //      //  if (LoaderUtils.isTiCIntegrationEnabled()) TiCMaterials.registerMaterialRendering();
+    @SubscribeEvent
+    public void serverStarting(FMLServerStartingEvent evt) {
+        final CommandDispatcher<CommandSource> dispatcher = evt.getCommandDispatcher();
+        ArgumentTypes.register(new ResourceLocation("armorplus:abilities"), AbilityArgument.class, new ArgumentSerializer<>(AbilityArgument::ability));
+        CommandArmorPlus.register(dispatcher);
+        CommandAbilities.register(dispatcher);
     }
 
-    @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = MOD)
-    public static class RenderingEvents {
-        @SubscribeEvent
-        public static void registerEntityModels(ModelRegistryEvent event) {
-            //Mobs
-            registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie.FACTORY);
-            registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
-            //Arrows
-            registerRenderingHandler(EntityCoalArrow.class, "coal");
-            registerRenderingHandler(EntityLapisArrow.class, "lapis");
-            registerRenderingHandler(EntityRedstoneArrow.class, "redstone");
-            registerRenderingHandler(EntityLavaArrow.class, "lava");
-            registerRenderingHandler(EntityEnderDragonArrow.class, "ender_dragon");
-            //Bosses
-            registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
-            registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);
-            //Boss Projectiles
-            registerEntityRenderingHandler(EntityFreezeBomb.class, RenderFreezeBomb::new);
-            registerEntityRenderingHandler(EntityWitherMinion.class, RenderWitherMinion::new);
-        }
-
-        private static void registerRenderingHandler(Class<? extends EntityArrow> entityClass, String name) {
-            registerEntityRenderingHandler(entityClass, rm -> new RenderModdedArrow<>(rm, name));
-        }
-    }
-
-    @Mod.EventBusSubscriber(bus = MOD)
+    @Mod.EventBusSubscriber(bus = MOD, modid = MODID)
     public static class RegistryEvents {
         @ObjectHolder(MODID + ":ender_dragon_zombie")
         public static EntityType<?> ENTITY_ENDER_DRAGON_ZOMBIE;
@@ -223,17 +189,15 @@ public class ArmorPlus {
                 new BlockLavaMaterial(LAVA_INFUSED_OBSIDIAN).setRegistryName(setRL("block_infused_obsidian")),
                 new BlockMeltingObsidian().setRegistryName(setRL("block_melting_obsidian"))
             );
-            for (Benches bench : Benches.values()) {
-                registry.register(new BlockBench(bench).setRegistryName(setRL(bench.getName())));
-            }
             for (BrickColor color : BrickColor.values()) {
                 String name = color.getName() + "_stone_brick";
                 BlockStoneBrick brick = new BlockStoneBrick(color);
                 brick.setRegistryName(setRL(name));
-                registry.register(brick);
-                registry.register(new BlockStoneBrickTower(color).setRegistryName(setRL(name + "_tower")));
-                registry.register(new BlockStoneBrickCorner(color, brick.getDefaultState()).setRegistryName(name + "_corner"));
-                registry.register(new BlockStoneBrickWall(brick).setRegistryName(name + "_wall"));
+                registry.registerAll(brick,
+                    new BlockStoneBrickTower(color).setRegistryName(setRL(name + "_tower")),
+                    new BlockStoneBrickCorner(color, brick.getDefaultState()).setRegistryName(name + "_corner"),
+                    new BlockStoneBrickWall(brick).setRegistryName(name + "_wall")
+                );
             }
             for (EnderType type : EnderType.values()) {
                 registry.register(new BlockDungeonEnder(type).setRegistryName(setRL(type.getName())));
@@ -273,11 +237,14 @@ public class ArmorPlus {
             for (Ingredient material : Ingredient.values()) {
                 itemRegister.getRegistry().register(new ItemMaterial(new Item.Properties().group(tabArmorplusItems)).setRegistryName(setRL(material.getName())));
             }
-            registerMost(itemRegister.getRegistry());
+            registerMostItems(itemRegister.getRegistry());
         }
 
-        private static void registerMost(IForgeRegistry<Item> registry) {
-            ModRegistryUtils.registerItems(registry);
+        private static void registerMostItems(IForgeRegistry<Item> registry) {
+            registerItems(registry);
+            registerItems(registry,
+                CHICKEN, SLIME, COAL, REDSTONE, LAPIS, EMERALD, OBSIDIAN, INFUSED_LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON, ARDITE, COBALT, MANYULLYN, PIG_IRON, KNIGHT_SLIME, ULTIMATE
+            );
             // ==== ITEM BLOCKS ==== \\
             registerItemBlock(registry,
                 "ore_lava_crystal",
@@ -294,7 +261,6 @@ public class ArmorPlus {
                 "block_compressed_infused_lava_crystal",
                 "block_infused_obsidian",
                 "block_melting_obsidian");
-            Arrays.stream(Benches.values()).forEach(bench -> registerItemBlock(registry, bench.getName()));
             Arrays.stream(BrickColor.values()).forEach(color -> {
                 String name = color.getName() + "_stone_brick";
                 BlockStoneBrick brick = new BlockStoneBrick(color);
@@ -306,21 +272,37 @@ public class ArmorPlus {
             });
             Arrays.stream(EnderType.values()).forEach(type -> registerItemBlock(registry, type.getName()));
             Arrays.stream(Trophy.values()).forEach(type -> registerItemBlock(registry, type == ANY ? "trophy" : type.getName() + "_trophy"));
+            //   createSpawnEgg(registry, ENTITY_ENDER_DRAGON_ZOMBIE, 0x721164, 0x00ff00, EntityEnderDragonZombie.class);
+            //   createSpawnEgg(registry, ENTITY_GUARDIAN_OVERLORD, 0x7ae4ff, 0x79a6ff, EntityGuardianOverlord.class);
+            //   createSpawnEgg(registry, ENTITY_SKELETAL_KING, 0x665b52, 0x845833, EntitySkeletalKing.class);
         }
+
+        // private static void createSpawnEgg(IForgeRegistry<Item> registry, EntityType<?> type, int colorA, int colorB, Class<? extends Entity> entity) {
+        //     ItemModdedSpawnEgg egg = new ItemModdedSpawnEgg(type, colorA, colorB);
+        //     egg.setRegistryName(entity.getName() + "_spawn_egg");
+        //     registry.register(egg);
+        //     eggs.put(egg, entity);
+        // }
 
         @SubscribeEvent
         public static void registerEntityTypes(RegistryEvent.Register<EntityType<?>> event) {
-            EntityType.register(setRL("ender_dragon_zombie").toString(), EntityType.Builder.create(EntityEnderDragonZombie.class, EntityEnderDragonZombie::new));
-            EntityType.register(setRL("ice_golem").toString(), EntityType.Builder.create(EntityIceGolem.class, EntityIceGolem::new));
-            EntityType.register(setRL("guardian_overlord").toString(), EntityType.Builder.create(EntityGuardianOverlord.class, EntityGuardianOverlord::new));
-            EntityType.register(setRL("skeletal_king").toString(), EntityType.Builder.create(EntitySkeletalKing.class, EntitySkeletalKing::new));
-            EntityType.register(setRL("wither_minion").toString(), EntityType.Builder.create(EntityWitherMinion.class, EntityWitherMinion::new));
-            EntityType.register(setRL("freeze_bomb").toString(), EntityType.Builder.create(EntityFreezeBomb.class, EntityFreezeBomb::new));
-            EntityType.register(setRL("coal_arrow").toString(), EntityType.Builder.create(EntityCoalArrow.class, EntityCoalArrow::new));
-            EntityType.register(setRL("lapis_arrow").toString(), EntityType.Builder.create(EntityLapisArrow.class, EntityLapisArrow::new));
-            EntityType.register(setRL("redstone_arrow").toString(), EntityType.Builder.create(EntityRedstoneArrow.class, EntityRedstoneArrow::new));
-            EntityType.register(setRL("infused_lava_arrow").toString(), EntityType.Builder.create(EntityLavaArrow.class, EntityLavaArrow::new));
-            EntityType.register(setRL("ender_dragon_arrow").toString(), EntityType.Builder.create(EntityEnderDragonArrow.class, EntityEnderDragonArrow::new));
+            registerEntity(setRL("ender_dragon_zombie"), EntityType.Builder.create(EntityEnderDragonZombie.class, EntityEnderDragonZombie::new));
+            registerEntity(setRL("ice_golem"), EntityType.Builder.create(EntityIceGolem.class, EntityIceGolem::new));
+            registerEntity(setRL("guardian_overlord"), EntityType.Builder.create(EntityGuardianOverlord.class, EntityGuardianOverlord::new));
+            registerEntity(setRL("skeletal_king"), EntityType.Builder.create(EntitySkeletalKing.class, EntitySkeletalKing::new));
+            registerEntity(setRL("wither_minion"), EntityType.Builder.create(EntityWitherMinion.class, EntityWitherMinion::new));
+            registerEntity(setRL("freeze_bomb"), EntityType.Builder.create(EntityFreezeBomb.class, EntityFreezeBomb::new));
+            registerEntity(setRL("coal_arrow"), EntityType.Builder.create(EntityCoalArrow.class, EntityCoalArrow::new));
+            registerEntity(setRL("lapis_arrow"), EntityType.Builder.create(EntityLapisArrow.class, EntityLapisArrow::new));
+            registerEntity(setRL("redstone_arrow"), EntityType.Builder.create(EntityRedstoneArrow.class, EntityRedstoneArrow::new));
+            registerEntity(setRL("infused_lava_arrow"), EntityType.Builder.create(EntityLavaArrow.class, EntityLavaArrow::new));
+            registerEntity(setRL("ender_dragon_arrow"), EntityType.Builder.create(EntityEnderDragonArrow.class, EntityEnderDragonArrow::new));
+        }
+
+        private static void registerEntity(ResourceLocation loc, EntityType.Builder<?> type) {
+            EntityType.register(loc.toString(), type
+                .tracker(64, 1, true)
+            );
         }
 
         @SubscribeEvent
@@ -331,6 +313,35 @@ public class ArmorPlus {
         @SubscribeEvent
         public static void registerPotionTypes(RegistryEvent.Register<PotionType> event) {
             event.getRegistry().register(new PotionType().setRegistryName(setRL("empty_potion_type")));
+        }
+
+        @SubscribeEvent
+        public static void registerCapability(RegistryEvent.Register.NewRegistry event) {
+            if (ARMOR_ABILITY_REGISTRY == null) {
+                ResourceLocation registryName = setRL("armor_abilities");
+                ARMOR_ABILITY_REGISTRY = new RegistryBuilder<AbilityData>().setType(AbilityData.class).setName(registryName).create();
+            }
+            //  if (WEAPON_ABILITY_REGISTRY == null) {
+            //      ResourceLocation registryName = setRL("weapon_abilities");
+            //      WEAPON_ABILITY_REGISTRY = new RegistryBuilder<AbilityData>().setType(AbilityData.class).setName(registryName).create();
+            //  }
+        }
+
+        @SubscribeEvent
+        public static void registerAbilities(RegistryEvent.Register<AbilityData> event) {
+            registerAbility(event,
+                NONE, NIGHT_VISION, WATER_BREATHING, RESISTANCE, FIRE_RESISTANCE, HASTE, SPEED, JUMP_BOOST, REGENERATION, STRENGTH, INVISIBILITY, ABSORPTION,
+                WITHER_PROOF, FLIGHT, STEP_ASSIST, BONUS_XP_ON_KILL, WALK_ON_LAVA, SWIMMING_SPEED
+            );
+        }
+
+        private static void registerAbility(RegistryEvent.Register<AbilityData> event, AbilityData... dataList) {
+            for (AbilityData data : dataList) {
+                IForgeRegistry<AbilityData> registry = event.getRegistry();
+                if (!registry.containsValue(data)) {
+                    event.getRegistry().register(data);
+                }
+            }
         }
 
         /**

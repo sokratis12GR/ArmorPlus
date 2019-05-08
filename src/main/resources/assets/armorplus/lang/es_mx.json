@@ -60,10 +60,10 @@
   "item.armorplus.guardian_boots": "Botas del Guardián",
 
   "_comment": "TheUltimateArmor",
-  "item.armorplus.the_ultimate_helmet": "El Casco Supremo",
-  "item.armorplus.the_ultimate_chestplate": "El Peto Supremo",
-  "item.armorplus.the_ultimate_leggings": "Las Grebas Supremas",
-  "item.armorplus.the_ultimate_boots": "Las Botas Supremas",
+  "item.armorplus.ultimate_helmet": "El Casco Supremo",
+  "item.armorplus.ultimate_chestplate": "El Peto Supremo",
+  "item.armorplus.ultimate_leggings": "Las Grebas Supremas",
+  "item.armorplus.ultimate_boots": "Las Botas Supremas",
 
   "_comment": "Achievements",
   "achievement.armorplus.craft_coal_armor": "La Visión De Una Murciélago",

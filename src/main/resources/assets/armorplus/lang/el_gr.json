@@ -60,10 +60,10 @@
   "item.armorplus.guardian_boots": "Φύλακας Μπότες",
 
   "_comment": "TheUltimateArmor",
-  "item.armorplus.the_ultimate_helmet": "Tο Απόλυτo Κράνος",
-  "item.armorplus.the_ultimate_chestplate": "Tο Απόλυτo Θώρακας",
-  "item.armorplus.the_ultimate_leggings": "Tο Απόλυτo Περικνημίδες",
-  "item.armorplus.the_ultimate_boots": "Tο Απόλυτo Μπότες",
+  "item.armorplus.ultimate_helmet": "Tο Απόλυτo Κράνος",
+  "item.armorplus.ultimate_chestplate": "Tο Απόλυτo Θώρακας",
+  "item.armorplus.ultimate_leggings": "Tο Απόλυτo Περικνημίδες",
+  "item.armorplus.ultimate_boots": "Tο Απόλυτo Μπότες",
 
   "_comment": "Chainmail",
   "item.armorplus.material_chainmail": "Αλυσίδα",

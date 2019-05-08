@@ -35,7 +35,6 @@ public class CosmeticsRenderInit {
 
     public CosmeticsRenderInit() {
         new ThreadCosmeticsFetcher();
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     public static void parse(Properties properties) {

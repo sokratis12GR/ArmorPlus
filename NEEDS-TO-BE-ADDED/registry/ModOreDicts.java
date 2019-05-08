@@ -2,7 +2,7 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

@@ -4,9 +4,9 @@
 
 package com.sofodev.armorplus.client.gui;
 
-import com.sofodev.armorplus.config.ModConfig;
-import com.sofodev.armorplus.util.TextUtils;
-import com.sofodev.armorplus.util.Utils;
+import com.sofodev.armorplus.common.config.ModConfig;
+import com.sofodev.armorplus.common.util.TextUtils;
+import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;

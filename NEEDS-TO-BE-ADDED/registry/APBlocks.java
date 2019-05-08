@@ -2,11 +2,11 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
 import net.minecraft.block.Block;
 
-import static com.sofodev.armorplus.registry.ModBlocks.benches;
+import static com.sofodev.armorplus.common.registry.ModBlocks.benches;
 
 /**
  * @author Sokratis Fotkatzikis

@@ -6,11 +6,11 @@ package com.sofodev.armorplus.client.utils;
 
 import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
-import com.sofodev.armorplus.items.weapons.effects.Ignite;
-import com.sofodev.armorplus.items.weapons.effects.Negative;
-import com.sofodev.armorplus.util.PotionUtils;
-import com.sofodev.armorplus.util.RomanNumeralUtil;
-import com.sofodev.armorplus.util.Utils;
+import com.sofodev.armorplus.common.registry.items.weapons.effects.Ignite;
+import com.sofodev.armorplus.common.registry.items.weapons.effects.Negative;
+import com.sofodev.armorplus.common.util.PotionUtils;
+import com.sofodev.armorplus.common.util.RomanNumeralUtil;
+import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
@@ -24,7 +24,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.sofodev.armorplus.util.TextUtils.translatedText;
+import static com.sofodev.armorplus.common.util.TextUtils.translatedText;
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;

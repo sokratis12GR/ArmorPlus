@@ -13,7 +13,6 @@ updateJSONURL="https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/arm
 description='''
 ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds
 '''
-#Forge
 [[dependencies.armorplus]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
@@ -25,14 +24,12 @@ ArmorPlus is a mod based on exploration, killing, building, getting geared up, f
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-#Minecraft
 [[dependencies.armorplus]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.13.2]"
     ordering="NONE"
     side="BOTH"
-#TheDragonLib
 [[dependencies.armorplus]]
    modId="thedragonlib"
    mandatory=true

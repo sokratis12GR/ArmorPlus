@@ -9,7 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.tileentity.TileLavaInfuser.isItemFuel;
+import static com.sofodev.armorplus.common.registry.tileentity.TileLavaInfuser.isItemFuel;
 import static com.sofodev.thedragonlib.util.ItemStackUtils.getItem;
 
 /**

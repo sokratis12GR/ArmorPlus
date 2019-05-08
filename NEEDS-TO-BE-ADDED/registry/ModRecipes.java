@@ -2,13 +2,13 @@
  * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
  */
 
-package com.sofodev.armorplus.registry;
+package com.sofodev.armorplus.common.registry;
 
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
 import com.sofodev.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import com.sofodev.armorplus.api.crafting.workbench.WorkbenchRegistry;
-import com.sofodev.armorplus.config.ModConfig;
-import com.sofodev.armorplus.util.LoaderUtils;
+import com.sofodev.armorplus.common.config.ModConfig;
+import com.sofodev.armorplus.common.util.LoaderUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -16,8 +16,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.stream.IntStream;
 
-import static com.sofodev.armorplus.registry.ModBlocks.*;
-import static com.sofodev.armorplus.util.Utils.setRL;
+import static com.sofodev.armorplus.common.registry.ModBlocks.*;
+import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static net.minecraft.init.Items.*;
 
 public class ModRecipes {
