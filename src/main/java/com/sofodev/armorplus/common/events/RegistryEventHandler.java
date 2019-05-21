@@ -6,6 +6,7 @@ package com.sofodev.armorplus.common.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.common.caps.abilities.AbilityData;
+import com.sofodev.armorplus.common.dimension.arena.BiomeArena;
 import com.sofodev.armorplus.common.enchantments.EnhancedEnchantment;
 import com.sofodev.armorplus.common.enchantments.FuriousEnchantment;
 import com.sofodev.armorplus.common.enchantments.LifeStealEnchantment;
@@ -29,6 +30,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.util.CompoundDataFixer;
 import net.minecraftforge.common.util.ModFixs;
 import net.minecraftforge.event.RegistryEvent.MissingMappings;
@@ -109,6 +111,20 @@ public class RegistryEventHandler {
             0x665b52, 0x845833);
     }
 
+    ////////////////
+    //   Biomes   //
+    ////////////////
+
+    @SubscribeEvent
+    public static void registerBiomes(Register<Biome> event) {
+        event.getRegistry().register(new BiomeArena(new Biome.BiomeProperties("Arena").setTemperature(2.0F).setRainDisabled()).setRegistryName(setRL("arena")));
+    }
+
+    ////////////////////////////
+    //   Items & ItemBlocks   //
+    ////////////////////////////
+
+
     private static void registerItemBlock(Register<Item> event, ResourceLocation... registryNames) {
         Arrays.stream(registryNames).forEachOrdered(regName -> {
             Block block = ForgeRegistries.BLOCKS.getValue(regName);
@@ -128,9 +144,6 @@ public class RegistryEventHandler {
         Arrays.stream(blocks).forEach(block -> registerItemBlock(event, block.getRegistryName()));
     }
 
-    /**
-     * Items
-     */
     private static void registerAllItemBlocks(Register<Item> event, Block[]... blockArray) {
         Arrays.stream(blockArray).forEachOrdered(blockList -> registerItemBlock(event, blockList));
     }
@@ -185,7 +198,7 @@ public class RegistryEventHandler {
         registerAllItemBlocks(event, trophies);
         // ==== ITEMS ==== \\
         registerAllItems(event,
-            bookInfo, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
+            bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
             itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         registerAllItems(event, materials);

@@ -52,6 +52,7 @@ public class CommonProxy {
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().preInit(event);
         registerTCItems();
+        ModDimensions.init();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         LogHelper.info("Finished PreInitialization");

@@ -51,7 +51,7 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 22;
+    public static final int MINOR = 23;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -62,7 +62,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 58;
+    public static final int BUILD = 59;
     /**
      * The ArmorPlus Version
      */
