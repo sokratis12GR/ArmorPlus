@@ -84,6 +84,7 @@ public class TileTrophy extends TileEntity {
         return nbt;
     }
 
+    @SideOnly(Side.CLIENT)
     public Entity getCachedEntity() {
         if (this.cachedEntity == null) {
             this.cachedEntity = AnvilChunkLoader.readWorldEntity(this.entityData.getNbt(), this.getWorld(), false);
@@ -103,7 +104,6 @@ public class TileTrophy extends TileEntity {
     public void setEntityScale(float scale) {
         this.scale = scale;
     }
-
 
     private String name = "CustomName";
     private String displayedEntity = "DisplayEntity";
@@ -148,10 +148,7 @@ public class TileTrophy extends TileEntity {
 
     public void setNextEntityData(WeightedSpawnerEntity entityData) {
         this.entityData = entityData;
-        if (!this.getWorld().isRemote) {
-            return;
-        }
-        if (this.getWorld() != null) {
+        if (this.getWorld() != null && this.getWorld().isRemote) {
             IBlockState iblockstate = this.getWorld().getBlockState(this.getPos());
             this.getWorld().notifyBlockUpdate(this.pos, iblockstate, iblockstate, 4);
         }

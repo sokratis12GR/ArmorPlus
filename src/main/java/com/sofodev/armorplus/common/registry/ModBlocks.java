@@ -21,12 +21,15 @@ import com.sofodev.armorplus.common.blocks.special.Trophy;
 import com.sofodev.armorplus.common.tileentity.*;
 import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
@@ -40,6 +43,7 @@ import static com.sofodev.armorplus.common.blocks.special.Trophy.*;
 import static com.sofodev.armorplus.common.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static java.util.Arrays.setAll;
+import static net.minecraftforge.fml.common.registry.ForgeRegistries.ENTITIES;
 import static net.minecraftforge.fml.common.registry.GameRegistry.registerTileEntity;
 
 /**

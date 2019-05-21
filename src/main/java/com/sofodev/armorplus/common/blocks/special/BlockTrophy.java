@@ -17,6 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -30,19 +31,32 @@ import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.block
 
 public class BlockTrophy extends BlockBase implements IModdedBlock {
 
+    private final ResourceLocation mob;
     private Trophy type;
 
     public BlockTrophy(Trophy type) {
         super(Material.CORAL, type == ANY ? "trophy" : type.getName() + "_trophy", new BlockProperties(20.0f, 3.0f, blocks.block_trophy.props));
         this.type = type;
+        this.mob = type.getEntityId();
+    }
+
+    public BlockTrophy(ResourceLocation mob) {
+        super(Material.CORAL, mob.getPath() + "_trophy", new BlockProperties(20.0f, 3.0f, blocks.block_trophy.props));
+        this.type = null;
+        this.mob = mob;
     }
 
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
         TileTrophy trophy = new TileTrophy();
-        trophy.setEntityId(type.getEntityId());
-        trophy.setEntityScale(type.getScale());
+        if (type == null) {
+            trophy.setEntityId(mob);
+            trophy.setEntityScale(0.1f);
+        } else {
+            trophy.setEntityId(mob);
+            trophy.setEntityScale(type.getScale());
+        }
         return trophy;
     }
 
