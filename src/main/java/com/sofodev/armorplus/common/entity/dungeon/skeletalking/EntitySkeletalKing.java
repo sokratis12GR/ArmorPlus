@@ -11,10 +11,12 @@ import com.sofodev.armorplus.common.entity.dungeon.base.EntityAIRangedDungeonAtt
 import com.sofodev.armorplus.common.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
@@ -172,6 +174,27 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
 
     //Dialog
     //   private int sendDialog = 0;
+
+
+    @Override
+    public void onDeath(DamageSource cause) {
+        super.onDeath(cause);
+        if (!world.isRemote) {
+            String[] names = new String[]{"Lefty", "Central", "Righty"};
+            for (int i = 0; i < 3; i++) {
+                EntityWither split = new EntityWither(world);
+                split.setPosition(posX, posY, posZ);
+                split.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(this)), null);
+                this.world.spawnEntity(split);
+                split.setCustomNameTag(names[i]);
+                split.setAlwaysRenderNameTag(true);
+                split.setInvisible(false);
+                split.setEntityInvulnerable(false);
+                split.setCanPickUpLoot(true);
+                split.forceSpawn = true;
+            }
+        }
+    }
 
     @Override
     protected void onDeathUpdate() {
