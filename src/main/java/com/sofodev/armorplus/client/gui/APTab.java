@@ -48,6 +48,8 @@ public class APTab extends CreativeTabs {
             return addTabItemStack(ModBlocks.blockInfusedLavaCrystal);
         } else if (tab == 3) {
             return addTabItemStack(APItems.lavaBattleAxe);
+        } else if (tab == 4) {
+            return addTabItemStack(ModItems.pickaxe[5]);
         }
         return ItemStack.EMPTY;
     }

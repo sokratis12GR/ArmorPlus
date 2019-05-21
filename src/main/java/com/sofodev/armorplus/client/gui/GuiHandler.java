@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 public class GuiHandler implements IGuiHandler {
 
     public static final int GUI_ARMORPLUS_INFO = 0;
+    public static final int GUI_ARMORPLUS_LORE = 1;
     public static final int GUI_WORKBENCH = 2;
     public static final int GUI_HIGH_TECH_BENCH = 3;
     public static final int GUI_ULTI_TECH_BENCH = 4;
@@ -35,6 +36,8 @@ public class GuiHandler implements IGuiHandler {
         switch (ID) {
             case GUI_ARMORPLUS_INFO:
                 return new GuiArmorPlusInfo();
+            case GUI_ARMORPLUS_LORE:
+                return new GuiArmorPlusLore();
             case GUI_WORKBENCH:
                 if (te instanceof TileWB)
                     return new ContainerWorkbench(player.inventory, (TileWB) te);
@@ -69,6 +72,8 @@ public class GuiHandler implements IGuiHandler {
         switch (ID) {
             case GUI_ARMORPLUS_INFO:
                 return new GuiArmorPlusInfo();
+            case GUI_ARMORPLUS_LORE:
+                return new GuiArmorPlusLore();
             case GUI_WORKBENCH:
                 if (te instanceof TileWB)
                     return new GuiWorkbench(player.inventory, (TileWB) te);
