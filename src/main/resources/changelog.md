@@ -1,3 +1,15 @@
+ArmorPlus 1.12.2-11.23.0.59
+----------------------------
+
+* Fixed errors being spammed on servers when placing down a Trophy or having an old one there. And apparently some rare cases of lag spikes.
+* Made trophy drops default, split the WIP & vanilla bosses into 2 fields.
+* Fixed the localization of the Tools Tab.
+* Made the Skeletal King to explode into 3 small Wither Bosses when defeated.
+* Fixed a crashes related to Enchantment levels being able to be set higher than the intended maximum for the Life Steal & Furious enchantment.
+* Added separate config options that allow to enable/disable the enchantments' functionality, making them useless.
+* Added a 4rth more powerful level of the Furious enchantment
+* Added a new WIP dimension (The Arena), where you can fight important ArmorPlus bosses. Do not load this dimension (id: 120, configurable)
+
 ArmorPlus 1.12.2-11.22.0.58
 ----------------------------
 
