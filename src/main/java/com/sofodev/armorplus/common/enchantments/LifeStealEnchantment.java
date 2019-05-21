@@ -14,35 +14,43 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.enchantments;
+import static com.sofodev.armorplus.common.enchantments.FuriousEnchantment.Levels.limit;
+
 /**
  * @author Sokratis Fotkatzikis
  */
 public class LifeStealEnchantment extends EnchantmentBase {
 
     public LifeStealEnchantment() {
-        super("life_steal", Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND},
+        super("life_steal", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND},
             1, 3, 10, 30, true, true
         );
     }
 
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
-        Levels lvl = Levels.values()[level];
-        float damageDealt;
-        if (user == null) {
-            return;
-        }
-        ItemStack mainHand = user.getHeldItemMainhand();
-        Item handItem = mainHand.getItem();
-        if (mainHand.isEmpty()) return;
-        if (!isCorrectItem(handItem)) {
-            user.heal(lvl.healingFactor);
-        } else if (handItem instanceof ItemTool) {
-            damageDealt = ((ItemTool) handItem).toolMaterial.getAttackDamage();
-            user.heal(level * softCap(damageDealt, 10, 1) / 4);
-        } else if (handItem instanceof ItemSword) {
-            damageDealt = ((ItemSword) handItem).getAttackDamage();
-            user.heal(level * softCap(damageDealt, 10, 1) / 4);
+        if (enchantments.enableLifeSteal) {
+            if (level > limit()) {
+                level = limit();
+            }
+            Levels lvl = Levels.values()[level];
+            float damageDealt;
+            if (user == null) {
+                return;
+            }
+            ItemStack mainHand = user.getHeldItemMainhand();
+            Item handItem = mainHand.getItem();
+            if (mainHand.isEmpty()) return;
+            if (!isCorrectItem(handItem)) {
+                user.heal(lvl.healingFactor);
+            } else if (handItem instanceof ItemTool) {
+                damageDealt = ((ItemTool) handItem).toolMaterial.getAttackDamage();
+                user.heal(level * softCap(damageDealt, 10, 1) / 4);
+            } else if (handItem instanceof ItemSword) {
+                damageDealt = ((ItemSword) handItem).getAttackDamage();
+                user.heal(level * softCap(damageDealt, 10, 1) / 4);
+            }
         }
     }
 
@@ -73,6 +81,10 @@ public class LifeStealEnchantment extends EnchantmentBase {
 
         Levels(float healingFactor) {
             this.healingFactor = healingFactor;
+        }
+
+        public static int limit() {
+            return values().length - 1;
         }
     }
 }

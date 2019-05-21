@@ -12,6 +12,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.enchantments;
+import static com.sofodev.armorplus.common.enchantments.FuriousEnchantment.Levels.limit;
 import static net.minecraft.init.MobEffects.SPEED;
 import static net.minecraft.init.MobEffects.STRENGTH;
 
@@ -29,10 +31,15 @@ public class FuriousEnchantment extends EnchantmentBase {
 
     @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
-        Levels lvl = Levels.values()[level];
-        user.addPotionEffect(new PotionEffect(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel));
-        if (lvl.hasFastLegs) {
-            user.addPotionEffect(new PotionEffect(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel));
+        if (enchantments.enableFurious) {
+            if (level > limit()) {
+                level = limit();
+            }
+            Levels lvl = Levels.values()[level];
+            user.addPotionEffect(new PotionEffect(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel));
+            if (lvl.hasFastLegs) {
+                user.addPotionEffect(new PotionEffect(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel));
+            }
         }
     }
 
@@ -40,7 +47,8 @@ public class FuriousEnchantment extends EnchantmentBase {
         ZERO(),
         ONE(23, 0, false, 0, 0),
         TWO(23, 0, true, 23, 0),
-        THREE(23, 1, true, 46, 0);
+        THREE(23, 1, true, 46, 0),
+        FOUR(30, 2, true, 60, 1);
 
         public final int strSecs;
         public final int strLevel;
@@ -58,6 +66,10 @@ public class FuriousEnchantment extends EnchantmentBase {
             this.hasFastLegs = hasFastLegs;
             this.speedSecs = speedSecs;
             this.speedLevel = speedLevel;
+        }
+
+        public static int limit() {
+            return values().length - 1;
         }
     }
 }
