@@ -33,6 +33,17 @@ public class ModConfig {
 
     }
 
+    @Config(modid = MODID, name = "armorplus/dimensions", category = "dimensions")
+    public static class DimensionConfig {
+
+        @Comment({"The numeral id of the armorplus:arena dimension"})
+        public static int arenaDimensionID = 120;
+
+        @Comment({"Too unstable, unfinished to be enabled by default."})
+        public static boolean enableArenaDimension = false;
+
+    }
+
     @Config(modid = MODID, name = "armorplus/config", category = "")
     public static class MainConfig {
 
@@ -115,8 +126,11 @@ public class ModConfig {
 
             public class Trophy {
 
-                @Comment({"Enable/Disable the trophy dropped when killing a boss (vanilla bosses & some of the wip armorplus bosses)"})
-                public boolean enableTrophyDrops = false;
+                @Comment({"Enable/Disable the trophy dropped when killing a boss (vanilla bosses)"})
+                public boolean enableVanillaTrophyDrops = true;
+
+                @Comment({"Enable/Disable the trophy dropped when killing a boss (some of the wip armorplus bosses)"})
+                public boolean enableAPBossTrophyDrops = true;
             }
 
             public class EnderDragonScales {
@@ -546,6 +560,12 @@ public class ModConfig {
         public static class Enchantments {
             @Comment("Enable/Disable the ability to 'enhance' vanilla armors (Chainmail, Iron, Gold, Diamond) via the 'enhanced' enchantment")
             public boolean enableArmorEnhancement = true;
+
+            @Comment("Enable/Disable the `furious` enchantment's functionality")
+            public boolean enableFurious = true;
+
+            @Comment("Enable/Disable the `life steal` enchantment's functionality")
+            public boolean enableLifeSteal = true;
         }
 
         public static class EnhancedMaterial {
