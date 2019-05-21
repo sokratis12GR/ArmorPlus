@@ -16,6 +16,7 @@ import com.sofodev.armorplus.common.items.arrows.ArrowType;
 import com.sofodev.armorplus.common.items.arrows.ItemSpecialArrow;
 import com.sofodev.armorplus.common.items.base.*;
 import com.sofodev.armorplus.common.items.books.ItemAPBook;
+import com.sofodev.armorplus.common.items.books.ItemLoreBook;
 import com.sofodev.armorplus.common.items.consumables.ItemRedstoneApple;
 import com.sofodev.armorplus.common.items.consumables.ItemTGOTG;
 import com.sofodev.armorplus.common.items.dev.ItemDevTool;
@@ -30,6 +31,8 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.common.config.ModConfig.Experimental.enableExperimentalMode;
+import static com.sofodev.armorplus.common.items.armors.APArmorMaterial.*;
+import static com.sofodev.armorplus.common.items.armors.APArmorMaterial.REDSTONE;
 import static com.sofodev.armorplus.common.items.armors.ArmorMaterials.*;
 import static com.sofodev.armorplus.common.items.enums.Cosmetics.*;
 import static com.sofodev.armorplus.common.registry.ModRegistryUtils.register;
@@ -41,6 +44,7 @@ import static com.sofodev.armorplus.common.registry.ModRegistryUtils.registerAll
 public class ModItems {
 
     public static ItemAPBook bookInfo = new ItemAPBook();
+    public static ItemLoreBook bookLore = new ItemLoreBook();
     public static ItemBase steelIngot = new ItemBase(MetalItems.STEEL_INGOT), electricalIngot = new ItemBase(MetalItems.ELECTRICAL_INGOT);
     public static ItemRedstoneApple itemRedstoneApple = new ItemRedstoneApple();
     public static ItemLavaCrystal itemLavaCrystal = new ItemLavaCrystal();
@@ -84,7 +88,7 @@ public class ModItems {
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
     public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
-    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{APArmorMaterial.COAL, APArmorMaterial.LAPIS, APArmorMaterial.REDSTONE, APArmorMaterial.EMERALD, APArmorMaterial.OBSIDIAN, APArmorMaterial.INFUSED_LAVA, APArmorMaterial.GUARDIAN, APArmorMaterial.SUPER_STAR, APArmorMaterial.ENDER_DRAGON};
+    public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{COAL, LAPIS, REDSTONE, EMERALD, OBSIDIAN, INFUSED_LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON};
     public static ItemSpawnStructure towerSpawnItem = new ItemSpawnStructure("tower_spawn_item", StructureGenNBT.TOWER);
     public static ItemSpawnStructure enderDungeonFloor1SpawnItem = new ItemSpawnStructure("ender_dungeon_floor_1_spawn_item", StructureGenNBT.ENDER_DUNGEON_FLOOR_1);
     public static ItemArmorV2[] coalExp = new ItemArmorV2[4],
@@ -114,17 +118,17 @@ public class ModItems {
         //HorseArmors
         IntStream.range(0, horseArmors.length).forEach(i -> horseArmors[i] = new ItemBaseHorseArmor(horseMaterial[i]));
         //Armors
-        register(chicken, APArmorMaterial.CHICKEN);
-        register(slime, APArmorMaterial.SLIME);
-        register(coal, APArmorMaterial.COAL);
-        register(lapis, APArmorMaterial.LAPIS);
-        register(redstone, APArmorMaterial.REDSTONE);
-        register(emerald, APArmorMaterial.EMERALD);
-        register(obsidian, APArmorMaterial.OBSIDIAN);
-        register(lava, APArmorMaterial.INFUSED_LAVA);
-        register(guardian, APArmorMaterial.GUARDIAN);
-        register(superStar, APArmorMaterial.SUPER_STAR);
-        register(enderDragon, APArmorMaterial.ENDER_DRAGON);
+        register(chicken, CHICKEN);
+        register(slime, SLIME);
+        register(coal, COAL);
+        register(lapis, LAPIS);
+        register(redstone, REDSTONE);
+        register(emerald, EMERALD);
+        register(obsidian, OBSIDIAN);
+        register(lava, INFUSED_LAVA);
+        register(guardian, GUARDIAN);
+        register(superStar, SUPER_STAR);
+        register(enderDragon, ENDER_DRAGON);
         registerAll(theUltimate);
         registerAll(sword);
         registerAll(battleAxe);
@@ -159,10 +163,10 @@ public class ModItems {
     }
 
     public static void registerTCItems() {
-        register(ardite, APArmorMaterial.ARDITE);
-        register(cobalt, APArmorMaterial.COBALT);
-        register(manyullyn, APArmorMaterial.MANYULLYN);
-        register(pigIron, APArmorMaterial.PIG_IRON);
-        register(knightSlime, APArmorMaterial.KNIGHT_SLIME);
+        register(ardite, ARDITE);
+        register(cobalt, COBALT);
+        register(manyullyn, MANYULLYN);
+        register(pigIron, PIG_IRON);
+        register(knightSlime, KNIGHT_SLIME);
     }
 }

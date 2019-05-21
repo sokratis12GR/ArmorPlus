@@ -55,7 +55,7 @@ public class ModelsEventHandler {
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
         register(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
-        register(materials, itemLavaCrystal, itemTGOTG, bookInfo, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
+        register(materials, itemLavaCrystal, itemTGOTG, bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
             itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
         );
         register(theUltimate);

@@ -142,7 +142,7 @@ public class ItemDevTool extends ItemBase {
             this.put(itemDataMap, "itemstack", stack.getItem().getRegistryName());
             this.put(itemDataMap, "display_name", stack.getDisplayName());
             this.put(itemDataMap, "unlocalized_name", stack.getTranslationKey());
-            this.put(itemDataMap, "count", stack.getCount());
+            this.put(itemDataMap, "limit", stack.getCount());
             this.put(itemDataMap, "metadata", stack.getMetadata());
         }
         return addArray(itemDataMap);

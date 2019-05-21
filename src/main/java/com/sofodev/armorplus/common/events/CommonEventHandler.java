@@ -36,6 +36,7 @@ import net.thedragonteam.thedragonlib.util.LogHelper;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.common.config.ModConfig.DebugConfig.debugMode;
 import static com.sofodev.armorplus.common.config.ModConfig.EntitiesConfig.mob_drops;
@@ -66,11 +67,11 @@ public class CommonEventHandler {
             EntityPlayerMP player = (EntityPlayerMP) event.player;
             if (enchantments.enableArmorEnhancement && event.phase == TickEvent.Phase.END && !player.world.isRemote) {
                 NonNullList<ItemStack> armorInventory = player.inventory.armorInventory;
-                for (int i = 0; i < armorInventory.size(); i++) {
-                    ItemStack stack = armorInventory.get(i);
+                IntStream.range(0, armorInventory.size()).forEach(index -> {
+                    ItemStack stack = armorInventory.get(index);
                     Item item = stack.getItem();
                     if (!(item instanceof ItemArmor)) {
-                        continue;
+                        return;
                     }
                     ItemArmor armor = (ItemArmor) item;
                     Map<Enchantment, Integer> enchants = EnchantmentHelper.getEnchantments(stack);
@@ -78,18 +79,18 @@ public class CommonEventHandler {
                     ArmorMaterial armorMaterial = armor.getArmorMaterial();
                     if (enhanceable) {
                         if (armorMaterial == CHAIN) {
-                            enhance(armorInventory, enchants, stack, chain, i);
+                            enhance(armorInventory, enchants, stack, chain, index);
                         } else if (armorMaterial == IRON) {
-                            enhance(armorInventory, enchants, stack, iron, i);
+                            enhance(armorInventory, enchants, stack, iron, index);
                         } else if (armorMaterial == GOLD) {
-                            enhance(armorInventory, enchants, stack, gold, i);
+                            enhance(armorInventory, enchants, stack, gold, index);
                         } else if (armorMaterial == DIAMOND) {
-                            enhance(armorInventory, enchants, stack, diamond, i);
+                            enhance(armorInventory, enchants, stack, diamond, index);
                         } else {
                             enchants.remove(ENHANCE);
                         }
                     }
-                }
+                });
             }
         }
     }
@@ -163,11 +164,11 @@ public class CommonEventHandler {
         Entity entity = event.getEntity();
         if (entity instanceof EntityDragon) {
             registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
-            registerTrophyDrop(event, 3);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 3);
         }
         if (entity instanceof EntityWither) {
             registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
-            registerTrophyDrop(event, 2);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 2);
         }
         if (entity instanceof EntityWitherSkeleton) {
             registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
@@ -177,19 +178,19 @@ public class CommonEventHandler {
         }
         if (entity instanceof EntityElderGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
-            registerTrophyDrop(event, 1);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 1);
         }
         if (entity instanceof EntitySkeletalKing) {
-            registerTrophyDrop(event, 4);
+            registerTrophyDrop(event, mob_drops.trophy.enableAPBossTrophyDrops, 4);
         }
     }
 
-    private static void registerTrophyDrop(LivingDropsEvent event, int trophy) {
-        registerMobDrop(event, mob_drops.trophy.enableTrophyDrops, getItemStack(ModBlocks.trophies[trophy]));
+    private static void registerTrophyDrop(LivingDropsEvent event, boolean flag, int trophy) {
+        registerMobDrop(event, flag, getItemStack(ModBlocks.trophies[trophy]));
     }
 
     private static void registerMobDrop(LivingDropsEvent event, boolean enableDrop, ItemStack drop) {
-        if (enableDrop) {
+        if (enableDrop && !event.getEntityLiving().world.isRemote) {
             event.getEntityLiving().entityDropItem(drop, 0.0f);
             if (debugMode) {
                 LogHelper.info(event.getEntity().getName() + " dropped:" + drop + " x " + drop.getCount());
