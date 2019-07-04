@@ -5,9 +5,9 @@
 package com.sofodev.armorplus.client.gui;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.common.registry.APItems;
 import com.sofodev.armorplus.common.registry.ModBlocks;
 import com.sofodev.armorplus.common.registry.ModItems;
+import com.sofodev.armorplus.common.registry.constants.APItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -15,7 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.sofodev.armorplus.common.registry.APItems.infusedLavaCrystal;
+import static com.sofodev.armorplus.common.registry.constants.APItems.infusedLavaCrystal;
+import static com.sofodev.armorplus.common.util.Utils.setRL;
+import static net.minecraftforge.fml.common.registry.ForgeRegistries.BLOCKS;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -50,6 +52,8 @@ public class APTab extends CreativeTabs {
             return addTabItemStack(APItems.lavaBattleAxe);
         } else if (tab == 4) {
             return addTabItemStack(ModItems.pickaxe[5]);
+        } else if (tab == 5) {
+            return addTabItemStack(BLOCKS.getValue(setRL("trophy")));
         }
         return ItemStack.EMPTY;
     }

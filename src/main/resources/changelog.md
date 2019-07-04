@@ -1,3 +1,15 @@
+ArmorPlus 1.12.2-11.24.0.60
+----------------------------
+
+* Added Trophies for almost ALL of the Vanilla mobs. (Modifiable by NBT)
+* Some minor performance improvements
+* Fixed a bug causing Tinker Construct Armors not being able to provide abilities.
+* Added a new entity Demonic Dragon (WIP, Dungeon, Boss)
+* Some code optimizations & Tweaks
+  - Moved Models & Renderers under the client packaging
+  - Merged most of the event registry stuff together with their corresponding classes of constants
+  - Removed ItemRemove
+
 ArmorPlus 1.12.2-11.23.0.59
 ----------------------------
 

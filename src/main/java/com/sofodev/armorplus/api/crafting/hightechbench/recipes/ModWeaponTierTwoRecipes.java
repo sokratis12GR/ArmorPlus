@@ -10,8 +10,8 @@ import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import static com.sofodev.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.*;
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.common.config.ModConfig.getRD;
-import static com.sofodev.armorplus.common.registry.APItems.*;
 import static com.sofodev.armorplus.common.registry.ModItems.pickaxe;
+import static com.sofodev.armorplus.common.registry.constants.APItems.*;
 
 /**
  * @author Sokratis Fotkatzikis

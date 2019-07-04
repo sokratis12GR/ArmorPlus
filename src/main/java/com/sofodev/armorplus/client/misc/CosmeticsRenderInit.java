@@ -6,7 +6,7 @@ package com.sofodev.armorplus.client.misc;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.client.utils.RenderEntityHelper;
-import com.sofodev.armorplus.common.entity.dungeon.skeletalking.EntitySkeletalKing;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

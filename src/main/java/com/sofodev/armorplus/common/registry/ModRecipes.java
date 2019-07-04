@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.common.registry.ModBlocks.*;
@@ -39,23 +40,17 @@ public class ModRecipes {
     }
 
     private static void addIntegrationShapelessRecipes() {
-        addTOPRecipe("ender_dragon_helmet");
-        addTOPRecipe("guardian_helmet");
-        addTOPRecipe("super_star_helmet");
-        addTOPRecipe("the_ultimate_helmet");
-        addTOPRecipe("coal_helmet");
-        addTOPRecipe("emerald_helmet");
-        addTOPRecipe("lapis_helmet");
-        addTOPRecipe("lava_helmet");
-        addTOPRecipe("obsidian_helmet");
-        addTOPRecipe("redstone_helmet");
-        addTOPRecipe("chicken_helmet");
-        addTOPRecipe("slime_helmet");
-        addTOPRecipe("ardite_helmet");
-        addTOPRecipe("cobalt_helmet");
-        addTOPRecipe("manyullyn_helmet");
-        addTOPRecipe("pig_iron_helmet");
-        addTOPRecipe("knight_slime_helmet");
+        addTOPRecipes("ardite_helmet", "chicken_helmet", "coal_helmet",
+            "cobalt_helmet", "emerald_helmet", "ender_dragon_helmet",
+            "guardian_helmet", "knight_slime_helmet", "lapis_helmet",
+            "lava_helmet", "manyullyn_helmet", "obsidian_helmet",
+            "pig_iron_helmet", "redstone_helmet", "slime_helmet",
+            "super_star_helmet", "the_ultimate_helmet"
+        );
+    }
+
+    private static void addTOPRecipes(String... names) {
+        Arrays.stream(names).forEach(ModRecipes::addTOPRecipe);
     }
 
     private static void addTOPRecipe(String name) {
@@ -107,12 +102,14 @@ public class ModRecipes {
                     "ESE", "SNS", "EEE", 'E', new ItemStack(ModItems.materials, 1, 3), 'S', STRING, 'N', NETHER_STAR));
             }
             if (ModConfig.RegistryConfig.recipes.enableChainArmorRecipes) {
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"));
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"));
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"));
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"));
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"));
-                WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail"));
+                WorkbenchRegistry.addRecipe(
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "   ", "CCC", "C C", 'C', "chainmail"),
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_HELMET, 1), "CCC", "C C", "   ", 'C', "chainmail"),
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_CHESTPLATE, 1), "C C", "CCC", "CCC", 'C', "chainmail"),
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_LEGGINGS, 1), "CCC", "C C", "C C", 'C', "chainmail"),
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "   ", "C C", "C C", 'C', "chainmail"),
+                    new BaseShapedOreRecipe(3, new ItemStack(CHAINMAIL_BOOTS, 1), "C C", "C C", "   ", 'C', "chainmail")
+                );
             }
             WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, getItemStack(ModItems.materials, 12, 0), "SS ", "S S", " SS", 'S', "ingotIron"));
             WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, getItemStack(blockCompressedObsidian), "OOO", "OOO", "OOO", 'O', "obsidian"));
@@ -151,10 +148,12 @@ public class ModRecipes {
     private static String stoneBrick = "stonebrick";
 
     private static void addRecipeCastleCorner(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "  S", " SS", 'S', stoneBrick + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S  ", "SS ", 'S', stoneBrick + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "  S", " SS", "   ", 'S', stoneBrick + color));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), "S  ", "SS ", "   ", 'S', stoneBrick + color));
+        WorkbenchRegistry.addRecipe(
+            new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "  S", " SS", 'S', stoneBrick + color),
+            new BaseShapedOreRecipe(3, new ItemStack(block), "   ", "S  ", "SS ", 'S', stoneBrick + color),
+            new BaseShapedOreRecipe(3, new ItemStack(block), "  S", " SS", "   ", 'S', stoneBrick + color),
+            new BaseShapedOreRecipe(3, new ItemStack(block), "S  ", "SS ", "   ", 'S', stoneBrick + color)
+        );
     }
 
     private static void addRecipeCastleTower(Block block, String color) {
@@ -168,10 +167,12 @@ public class ModRecipes {
     }
 
     private static void addRecipeCastle(Block block, String color) {
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 3), stoneBrick + color + "Corner"));
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block, 5), stoneBrick + color + "Tower"));
-        WorkbenchRegistry.addRecipe(new BaseShapelessOreRecipe(new ItemStack(block), stoneBrick + color + "Wall"));
-        WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(block), " S ", "SCS", " S ", 'S', stoneBrick, 'C', "dye" + color));
+        WorkbenchRegistry.addRecipe(
+            new BaseShapelessOreRecipe(new ItemStack(block, 3), stoneBrick + color + "Corner"),
+            new BaseShapelessOreRecipe(new ItemStack(block, 5), stoneBrick + color + "Tower"),
+            new BaseShapelessOreRecipe(new ItemStack(block), stoneBrick + color + "Wall"),
+            new BaseShapedOreRecipe(3, new ItemStack(block), " S ", "SCS", " S ", 'S', stoneBrick, 'C', "dye" + color)
+        );
     }
 
     private static void addRecipeStoneBrick(String color) {

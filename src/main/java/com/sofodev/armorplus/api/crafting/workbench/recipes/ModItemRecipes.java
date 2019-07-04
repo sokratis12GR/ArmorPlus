@@ -13,9 +13,9 @@ import net.minecraft.item.ItemStack;
 
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.common.config.ModConfig.getRD;
-import static com.sofodev.armorplus.common.registry.APBlocks.highTechBench;
-import static com.sofodev.armorplus.common.registry.APBlocks.workbench;
 import static com.sofodev.armorplus.common.registry.ModItems.*;
+import static com.sofodev.armorplus.common.registry.constants.APBlocks.highTechBench;
+import static com.sofodev.armorplus.common.registry.constants.APBlocks.workbench;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModItemRecipes {

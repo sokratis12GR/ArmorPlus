@@ -6,7 +6,6 @@ package com.sofodev.armorplus.api.crafting.ultitechbench.recipes;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 import static com.sofodev.armorplus.common.registry.ModItems.materials;

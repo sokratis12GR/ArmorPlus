@@ -6,8 +6,8 @@ package com.sofodev.armorplus.client.utils;
 
 import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
-import com.sofodev.armorplus.common.items.special.effects.Ignite;
-import com.sofodev.armorplus.common.items.special.effects.Negative;
+import com.sofodev.armorplus.common.registry.items.base.special.effects.Ignite;
+import com.sofodev.armorplus.common.registry.items.base.special.effects.Negative;
 import com.sofodev.armorplus.common.util.PotionUtils;
 import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.client.Minecraft;

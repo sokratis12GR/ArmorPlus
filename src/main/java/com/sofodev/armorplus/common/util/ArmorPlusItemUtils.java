@@ -8,10 +8,10 @@ import com.sofodev.armorplus.api.properties.AbilityCanceller;
 import com.sofodev.armorplus.api.properties.AbilityProvider;
 import com.sofodev.armorplus.api.properties.iface.IEffectHolder;
 import com.sofodev.armorplus.common.config.ModConfig;
-import com.sofodev.armorplus.common.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.common.items.armors.base.ItemSpecialArmor;
-import com.sofodev.armorplus.common.items.armors.base.ItemUltimateArmor;
-import com.sofodev.armorplus.common.items.special.effects.Negative;
+import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemSpecialArmor;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemUltimateArmor;
+import com.sofodev.armorplus.common.registry.items.base.special.effects.Negative;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -43,8 +43,8 @@ public final class ArmorPlusItemUtils {
      * Creating registry and translation key for armor sets.
      *
      * @param armor The armor that we are going to use.
-     * @param slot the slot piece of the armor.
-     * @param name the name that we are going to be setting to the piece.
+     * @param slot  the slot piece of the armor.
+     * @param name  the name that we are going to be setting to the piece.
      */
     public static void createPieces(ItemArmor armor, EntityEquipmentSlot slot, String name) {
         String piece;

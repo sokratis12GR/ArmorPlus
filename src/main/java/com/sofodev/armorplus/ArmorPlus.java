@@ -51,7 +51,7 @@ public class ArmorPlus {
      * Updates every time a new block, item or features is added or change,
      * resets on MAJOR changes
      */
-    public static final int MINOR = 23;
+    public static final int MINOR = 24;
     /**
      * Updates every time a bug is fixed or issue solved or very minor code changes,
      * resets on MINOR changes
@@ -62,7 +62,7 @@ public class ArmorPlus {
      * final versions for releases after for each Minor or Major update,
      * resets on MAJOR changes
      */
-    public static final int BUILD = 59;
+    public static final int BUILD = 60;
     /**
      * The ArmorPlus Version
      */
@@ -91,9 +91,10 @@ public class ArmorPlus {
     public static CreativeTabs tabArmorPlusBlocks = new APTab(getNextID(), MODID, setName("blocks"), 2);
     public static CreativeTabs tabArmorPlusWeapons = new APTab(getNextID(), MODID, setName("weapons"), 3);
     public static CreativeTabs tabArmorPlusTools = new APTab(getNextID(), MODID, setName("tools"), 4);
+    public static CreativeTabs tabArmorPlusTrophies = new APTab(getNextID(), MODID, setName("trophies"), 5);
 
     public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{
-        tabArmorPlus, tabArmorPlusItems, tabArmorPlusBlocks, tabArmorPlusWeapons, tabArmorPlusTools
+        tabArmorPlus, tabArmorPlusItems, tabArmorPlusBlocks, tabArmorPlusWeapons, tabArmorPlusTools, tabArmorPlusTrophies
     });
 
     @Instance(MODID)

@@ -4,43 +4,56 @@
 
 package com.sofodev.armorplus.common.registry;
 
-import com.sofodev.armorplus.common.caps.abilities.MaterialType;
-import com.sofodev.armorplus.common.items.ItemUltimateParts;
-import com.sofodev.armorplus.common.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.common.items.armors.base.ItemArmorV2;
-import com.sofodev.armorplus.common.items.armors.base.ItemEnhancedArmor;
-import com.sofodev.armorplus.common.items.armors.base.ItemSpecialArmor;
-import com.sofodev.armorplus.common.items.armors.base.ItemUltimateArmor;
-import com.sofodev.armorplus.common.items.armors.horse.ItemBaseHorseArmor;
-import com.sofodev.armorplus.common.items.arrows.ArrowType;
-import com.sofodev.armorplus.common.items.arrows.ItemSpecialArrow;
-import com.sofodev.armorplus.common.items.base.*;
-import com.sofodev.armorplus.common.items.books.ItemAPBook;
-import com.sofodev.armorplus.common.items.books.ItemLoreBook;
-import com.sofodev.armorplus.common.items.consumables.ItemRedstoneApple;
-import com.sofodev.armorplus.common.items.consumables.ItemTGOTG;
-import com.sofodev.armorplus.common.items.dev.ItemDevTool;
-import com.sofodev.armorplus.common.items.dev.ItemSpawnStructure;
-import com.sofodev.armorplus.common.items.enums.MetalItems;
-import com.sofodev.armorplus.common.items.materials.ItemLavaCrystal;
-import com.sofodev.armorplus.common.items.materials.ItemMaterial;
-import com.sofodev.armorplus.common.items.special.Pickaxes;
+import com.sofodev.armorplus.api.caps.abilities.MaterialType;
+import com.sofodev.armorplus.common.registry.items.ItemUltimateParts;
+import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemArmorV2;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemEnhancedArmor;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemSpecialArmor;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemUltimateArmor;
+import com.sofodev.armorplus.common.registry.items.armors.horse.ItemBaseHorseArmor;
+import com.sofodev.armorplus.common.registry.items.arrows.ArrowType;
+import com.sofodev.armorplus.common.registry.items.arrows.ItemSpecialArrow;
+import com.sofodev.armorplus.common.registry.items.base.*;
+import com.sofodev.armorplus.common.registry.items.base.special.Pickaxes;
+import com.sofodev.armorplus.common.registry.items.books.ItemAPBook;
+import com.sofodev.armorplus.common.registry.items.books.ItemLoreBook;
+import com.sofodev.armorplus.common.registry.items.consumables.ItemRedstoneApple;
+import com.sofodev.armorplus.common.registry.items.consumables.ItemTGOTG;
+import com.sofodev.armorplus.common.registry.items.dev.ItemDevTool;
+import com.sofodev.armorplus.common.registry.items.dev.ItemSpawnStructure;
+import com.sofodev.armorplus.common.registry.items.enums.MetalItems;
+import com.sofodev.armorplus.common.registry.items.materials.ItemLavaCrystal;
+import com.sofodev.armorplus.common.registry.items.materials.ItemMaterial;
+import com.sofodev.armorplus.common.util.Utils;
 import com.sofodev.armorplus.common.worldgen.nbt.StructureGenNBT;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.config.ModConfig.Experimental.enableExperimentalMode;
-import static com.sofodev.armorplus.common.items.armors.APArmorMaterial.*;
-import static com.sofodev.armorplus.common.items.armors.APArmorMaterial.REDSTONE;
-import static com.sofodev.armorplus.common.items.armors.ArmorMaterials.*;
-import static com.sofodev.armorplus.common.items.enums.Cosmetics.*;
-import static com.sofodev.armorplus.common.registry.ModRegistryUtils.register;
-import static com.sofodev.armorplus.common.registry.ModRegistryUtils.registerAll;
+import static com.sofodev.armorplus.common.registry.ModBlocks.*;
+import static com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial.*;
+import static com.sofodev.armorplus.common.registry.items.armors.ArmorMaterials.*;
+import static com.sofodev.armorplus.common.registry.items.enums.Cosmetics.*;
+import static com.sofodev.armorplus.common.util.ModRegistryUtils.register;
+import static com.sofodev.armorplus.common.util.ModRegistryUtils.registerAll;
+import static com.sofodev.armorplus.common.util.Utils.setRL;
 
 /**
  * @author Sokratis Fotkatzikis
  **/
+@EventBusSubscriber(modid = MODID)
 public class ModItems {
 
     public static ItemAPBook bookInfo = new ItemAPBook();
@@ -168,5 +181,79 @@ public class ModItems {
         register(manyullyn, MANYULLYN);
         register(pigIron, PIG_IRON);
         register(knightSlime, KNIGHT_SLIME);
+    }
+
+
+    ////////////////////////////
+    //   Items & ItemBlocks   //
+    ////////////////////////////
+    private static void registerItemBlock(RegistryEvent.Register<Item> event, ResourceLocation... registryNames) {
+        Arrays.stream(registryNames).forEachOrdered(regName -> {
+            Block block = ForgeRegistries.BLOCKS.getValue(regName);
+            if (Utils.areNotNull(block, block.getRegistryName())) {
+                ItemBlock itemBlock = new ItemBlock(block);
+                itemBlock.setRegistryName(block.getRegistryName());
+                event.getRegistry().register(itemBlock);
+            }
+        });
+    }
+
+    private static void registerItemBlock(RegistryEvent.Register<Item> event, String... locations) {
+        Arrays.stream(locations).forEach(name -> registerItemBlock(event, setRL(name)));
+    }
+
+    private static void registerItemBlock(RegistryEvent.Register<Item> event, Block... blocks) {
+        Arrays.stream(blocks).forEach(block -> registerItemBlock(event, block.getRegistryName()));
+    }
+
+    private static void registerAllItemBlocks(RegistryEvent.Register<Item> event, Block[]... blockArray) {
+        Arrays.stream(blockArray).forEachOrdered(blockList -> registerItemBlock(event, blockList));
+    }
+
+    private static void registerAllItems(RegistryEvent.Register<Item> event, Item[]... itemsArray) {
+        Arrays.stream(itemsArray).forEachOrdered(itemList -> registerAllItems(event, itemList));
+    }
+
+    private static void registerAllItems(RegistryEvent.Register<Item> event, Item... itemsArray) {
+        Arrays.stream(itemsArray).filter(Utils::isNotNull).forEachOrdered(anItemsArray -> event.getRegistry().register(anItemsArray));
+    }
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        // ==== BLOCKS ==== \\
+        registerItemBlock(event, benches);
+        registerItemBlock(event,
+            oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
+        );
+        registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
+        registerItemBlock(event, trophies);
+        // ==== DUNGEON BLOCKS ==== \\
+        registerItemBlock(event, enderBlocks);
+        // ==== ITEMS ==== \\
+        registerAllItems(event,
+            bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+        );
+        registerAllItems(event, materials);
+        // ==== SPECIAL ITEMS ===\\
+        registerAllItems(event, towerSpawnItem, enderDungeonFloor1SpawnItem);
+        // ==== COSMETICS ==== \\
+        registerAllItems(event, twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
+        // ==== GEAR ==== \\
+        registerAllItems(event,
+            coal, lapis, redstone, emerald, obsidian, lava, chicken, slime, guardian, superStar, enderDragon, theUltimate, ardite, cobalt, manyullyn, pigIron, knightSlime
+        );
+        if (enableExperimentalMode) {
+            registerAllItems(event,
+                coalExp, lapisExp, redstoneExp, emeraldExp, obsidianExp, lavaExp,
+                chickenExp, slimeExp, guardianExp, superStarExp, enderDragonExp, ultimateExp,
+                arditeExp, cobaltExp, manyullynExp, pigIronExp, knightSlimeExp
+            );
+        }
+        registerAllItems(event, horseArmors);
+        registerAllItems(event, sword, battleAxe, bow);
+        registerAllItems(event, chain, iron, gold, diamond);
+        registerAllItems(event, pickaxe);
     }
 }

@@ -6,14 +6,14 @@ package com.sofodev.armorplus.api.crafting.ultitechbench.recipes;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.api.crafting.base.BaseShapedOreRecipe;
-import com.sofodev.armorplus.common.registry.APItems;
+import com.sofodev.armorplus.common.registry.constants.APItems;
 import net.minecraft.init.Items;
 
 import static com.sofodev.armorplus.api.crafting.ultitechbench.recipes.UTBRecipesHelper.*;
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.common.config.ModConfig.getRD;
-import static com.sofodev.armorplus.common.registry.APItems.*;
 import static com.sofodev.armorplus.common.registry.ModItems.pickaxe;
+import static com.sofodev.armorplus.common.registry.constants.APItems.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 public class ModWeaponTierThreeRecipes {

@@ -5,7 +5,7 @@
 package com.sofodev.armorplus.common.config;
 
 import com.sofodev.armorplus.api.properties.*;
-import com.sofodev.armorplus.common.blocks.HarvestProps;
+import com.sofodev.armorplus.common.registry.blocks.HarvestProps;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -13,8 +13,8 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.common.blocks.base.ToolType.PICKAXE;
 import static com.sofodev.armorplus.common.config.ModConfig.RecipesDifficulty.*;
+import static com.sofodev.armorplus.common.registry.blocks.base.ToolType.PICKAXE;
 import static net.minecraft.item.ItemStack.areItemsEqual;
 import static net.minecraftforge.common.config.Config.*;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber;

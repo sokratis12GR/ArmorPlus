@@ -8,6 +8,8 @@ import com.sofodev.armorplus.api.crafting.IRecipe;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import net.minecraft.item.ItemStack;
 
+import java.util.Arrays;
+
 /**
  * @author Sokratis Fotkatzikis
  */
@@ -36,6 +38,10 @@ public class WorkbenchRegistry {
      */
     public static void addRecipe(IRecipe recipe) {
         BaseCraftingManager.getWBInstance().getRecipeList().add(recipe);
+    }
+
+    public static void addRecipe(IRecipe... recipeList) {
+        Arrays.stream(recipeList).forEach(WorkbenchRegistry::addRecipe);
     }
 
     /**

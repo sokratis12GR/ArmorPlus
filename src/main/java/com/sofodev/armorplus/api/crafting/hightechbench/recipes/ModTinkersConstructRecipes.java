@@ -14,7 +14,6 @@ import static com.sofodev.armorplus.api.crafting.hightechbench.recipes.HTBRecipe
 import static com.sofodev.armorplus.api.crafting.hightechbench.recipes.HTBRecipesHelper.createExpertArmorSetRecipes;
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
 import static com.sofodev.armorplus.common.config.ModConfig.getRD;
-import static com.sofodev.armorplus.common.registry.APItems.*;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 
 /**

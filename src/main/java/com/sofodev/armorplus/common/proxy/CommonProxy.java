@@ -4,16 +4,17 @@
 
 package com.sofodev.armorplus.common.proxy;
 
-import com.sofodev.armorplus.common.caps.abilities.AbilityDataHandler;
-import com.sofodev.armorplus.common.commands.CommandArmorPlus;
+import com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler;
 import com.sofodev.armorplus.common.compat.ICompatibility;
 import com.sofodev.armorplus.common.compat.tinkers.TiC;
-import com.sofodev.armorplus.common.entity.dungeon.guardianoverlord.EntityGuardianOverlord;
-import com.sofodev.armorplus.common.entity.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
-import com.sofodev.armorplus.common.entity.dungeon.skeletalking.EntitySkeletalKing;
-import com.sofodev.armorplus.common.entity.dungeon.skeletalking.projectile.EntityWitherMinion;
-import com.sofodev.armorplus.common.items.armors.ArmorMaterials;
 import com.sofodev.armorplus.common.registry.*;
+import com.sofodev.armorplus.common.registry.commands.CommandArmorPlus;
+import com.sofodev.armorplus.common.registry.constants.APItems;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.guardianoverlord.EntityGuardianOverlord;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.guardianoverlord.projectile.EntityFreezeBomb;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherMinion;
+import com.sofodev.armorplus.common.registry.items.armors.ArmorMaterials;
 import com.sofodev.armorplus.common.util.LoaderUtils;
 import com.sofodev.armorplus.common.worldgen.OreGen;
 import com.sofodev.armorplus.common.worldgen.nbt.StructureGenNBT;
@@ -45,13 +46,13 @@ public class CommonProxy {
         APItems.registerItemNames();
         APItems.registerWeaponsA();
         APItems.registerWeaponsB();
+        registerTCItems();
         APItems.registerTCItemNames();
         this.registerEntityFixes();
         ModEntities.registerEntitySettings();
         this.registerWorldGenerator(new OreGen(), new StructureGenNBT());
         //TConstruct
         if (LoaderUtils.isTiCIntegrationEnabled()) TiC.instance().preInit(event);
-        registerTCItems();
         ModDimensions.init();
         ModCompatibility.registerModCompat();
         ModCompatibility.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);

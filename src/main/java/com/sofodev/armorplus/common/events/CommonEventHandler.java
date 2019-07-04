@@ -6,9 +6,8 @@ package com.sofodev.armorplus.common.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.api.lavainfuser.LavaInfuserManager;
-import com.sofodev.armorplus.common.entity.dungeon.skeletalking.EntitySkeletalKing;
-import com.sofodev.armorplus.common.items.base.ItemSpecialPickaxe;
-import com.sofodev.armorplus.common.registry.ModBlocks;
+import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
+import com.sofodev.armorplus.common.registry.items.base.ItemSpecialPickaxe;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -41,15 +40,16 @@ import java.util.stream.IntStream;
 import static com.sofodev.armorplus.common.config.ModConfig.DebugConfig.debugMode;
 import static com.sofodev.armorplus.common.config.ModConfig.EntitiesConfig.mob_drops;
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.enchantments;
-import static com.sofodev.armorplus.common.items.special.Pickaxes.INFUSED_LAVA;
-import static com.sofodev.armorplus.common.registry.ModEnchantments.ENHANCE;
 import static com.sofodev.armorplus.common.registry.ModItems.*;
+import static com.sofodev.armorplus.common.registry.constants.APEnchantments.ENHANCE;
+import static com.sofodev.armorplus.common.registry.items.base.special.Pickaxes.INFUSED_LAVA;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.entity.EntityLiving.getSlotForItemStack;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraft.item.ItemArmor.ArmorMaterial;
 import static net.minecraft.item.ItemArmor.ArmorMaterial.*;
+import static net.minecraftforge.fml.common.registry.ForgeRegistries.BLOCKS;
 import static net.minecraftforge.fml.common.registry.ForgeRegistries.ENCHANTMENTS;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
@@ -164,11 +164,11 @@ public class CommonEventHandler {
         Entity entity = event.getEntity();
         if (entity instanceof EntityDragon) {
             registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
-            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 3);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "ender_dragon");
         }
         if (entity instanceof EntityWither) {
             registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
-            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 2);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "wither_boss");
         }
         if (entity instanceof EntityWitherSkeleton) {
             registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
@@ -178,15 +178,15 @@ public class CommonEventHandler {
         }
         if (entity instanceof EntityElderGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
-            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, 1);
+            registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "elder_guardian");
         }
         if (entity instanceof EntitySkeletalKing) {
-            registerTrophyDrop(event, mob_drops.trophy.enableAPBossTrophyDrops, 4);
+            registerTrophyDrop(event, mob_drops.trophy.enableAPBossTrophyDrops, "skeletal_king");
         }
     }
 
-    private static void registerTrophyDrop(LivingDropsEvent event, boolean flag, int trophy) {
-        registerMobDrop(event, flag, getItemStack(ModBlocks.trophies[trophy]));
+    private static void registerTrophyDrop(LivingDropsEvent event, boolean flag, String mob) {
+        registerMobDrop(event, flag, getItemStack(BLOCKS.getValue(setRL(mob + "_trophy"))));
     }
 
     private static void registerMobDrop(LivingDropsEvent event, boolean enableDrop, ItemStack drop) {

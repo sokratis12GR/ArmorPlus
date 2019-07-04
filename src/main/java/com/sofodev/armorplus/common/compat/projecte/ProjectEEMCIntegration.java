@@ -6,10 +6,10 @@ package com.sofodev.armorplus.common.compat.projecte;
 
 import com.google.common.collect.ImmutableMap;
 import com.sofodev.armorplus.common.config.ModConfig;
-import com.sofodev.armorplus.common.registry.APBlocks;
-import com.sofodev.armorplus.common.registry.APItems;
 import com.sofodev.armorplus.common.registry.ModBlocks;
 import com.sofodev.armorplus.common.registry.ModItems;
+import com.sofodev.armorplus.common.registry.constants.APBlocks;
+import com.sofodev.armorplus.common.registry.constants.APItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

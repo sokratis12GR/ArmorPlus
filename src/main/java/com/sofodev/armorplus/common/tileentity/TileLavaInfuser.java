@@ -6,9 +6,9 @@ package com.sofodev.armorplus.common.tileentity;
 
 import com.sofodev.armorplus.api.lavainfuser.LavaInfuserManager;
 import com.sofodev.armorplus.api.lavainfuser.SlotLavaInfuserFuel;
-import com.sofodev.armorplus.common.blocks.lava.BlockLavaInfuser;
 import com.sofodev.armorplus.common.container.ContainerLavaInfuser;
 import com.sofodev.armorplus.common.registry.ModItems;
+import com.sofodev.armorplus.common.registry.blocks.lava.BlockLavaInfuser;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;

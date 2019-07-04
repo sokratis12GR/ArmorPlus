@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.common.events;
 
 import com.sofodev.armorplus.common.compat.draconicevolution.DEUtils;
-import com.sofodev.armorplus.common.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.common.items.armors.base.ItemSpecialArmor;
-import com.sofodev.armorplus.common.items.armors.base.ItemUltimateArmor;
+import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemSpecialArmor;
+import com.sofodev.armorplus.common.registry.items.armors.base.ItemUltimateArmor;
 import com.sofodev.armorplus.common.util.LoaderUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.config.ModConfig.IntegrationsConfig.normalChaosResistance;
 import static com.sofodev.armorplus.common.config.ModConfig.IntegrationsConfig.ultimateChaosImmunity;
-import static com.sofodev.armorplus.common.items.armors.APArmorMaterial.*;
+import static com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial.*;
 import static com.sofodev.armorplus.common.util.ArmorPlusItemUtils.getChest;
 
 @Mod.EventBusSubscriber(modid = MODID)

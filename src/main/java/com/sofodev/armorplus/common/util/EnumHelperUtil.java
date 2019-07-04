@@ -5,8 +5,8 @@
 package com.sofodev.armorplus.common.util;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.common.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.common.items.armors.Tier;
+import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.common.registry.items.armors.Tier;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.passive.HorseArmorType;

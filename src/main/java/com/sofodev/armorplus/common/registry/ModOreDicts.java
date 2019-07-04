@@ -4,6 +4,7 @@
 
 package com.sofodev.armorplus.common.registry;
 
+import com.sofodev.armorplus.common.registry.constants.APBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 

@@ -4,7 +4,7 @@
 
 package com.sofodev.armorplus.common.util;
 
-import com.sofodev.armorplus.common.registry.ModPotions;
+import com.sofodev.armorplus.common.registry.constants.APPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -66,7 +66,7 @@ public final class PotionUtils {
                 entity.removePotionEffect((Potion) potion);
             }
         } else {
-            entity.removePotionEffect(ModPotions.EMPTY);
+            entity.removePotionEffect(APPotions.EMPTY);
         }
     }
 
@@ -75,7 +75,7 @@ public final class PotionUtils {
     }
 
     public static Potion getPotion(String resourceLocation) {
-        return (Utils.isNotNull(getPotionFromResourceLocation(resourceLocation))) ? getPotionFromResourceLocation(resourceLocation) : ModPotions.EMPTY;
+        return (Utils.isNotNull(getPotionFromResourceLocation(resourceLocation))) ? getPotionFromResourceLocation(resourceLocation) : APPotions.EMPTY;
     }
 
     public static Potion getPotion(ResourceLocation resourceLocation) {

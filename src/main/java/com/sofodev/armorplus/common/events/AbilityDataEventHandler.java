@@ -5,9 +5,9 @@
 package com.sofodev.armorplus.common.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.common.caps.abilities.AbilityData;
-import com.sofodev.armorplus.common.caps.abilities.AbilityDataHandler.IAbilityHandler;
-import com.sofodev.armorplus.common.caps.abilities.ISpecialItem;
+import com.sofodev.armorplus.api.caps.abilities.AbilityData;
+import com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler.IAbilityHandler;
+import com.sofodev.armorplus.api.caps.abilities.ISpecialItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,8 +19,8 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static com.sofodev.armorplus.common.caps.abilities.AbilityData.*;
-import static com.sofodev.armorplus.common.caps.abilities.AbilityDataHandler.getHandler;
+import static com.sofodev.armorplus.api.caps.abilities.AbilityData.*;
+import static com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler.getHandler;
 import static com.sofodev.armorplus.common.config.ModConfig.Experimental.enableExperimentalMode;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
