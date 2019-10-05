@@ -1,3 +1,18 @@
+ArmorPlus 1.12.2-11.25.0.61
+----------------------------
+
+* **Recipes**: _The Ultimate Overhaul_
+  - _The Guardian, Super Star & Ender Dragon Weapons_: The recipes have been changed significantly.
+  - Guardian Bow: Fixed recipe being broken.
+  - Infused Lava Arrow: Moved it up a tier, to High-Tech bench from the Workbench, slightly changed requirements.
+  - Arrows: Any arrow tier recipe will always give 8 arrows to the player.
+* **Bows**: Fixed a bug where bow information was incorrectly stating that the bows can give reduced damage values.
+* **Arrows**: Corrected individual arrow damage tooltip, balanced some of the arrows.
+  - Feature: Added the missing arrows from the set, each with its own ability (Emerald, Obsidian, Guardian, Super Star)
+  - Technical: Simplified Arrow addition.
+* **Fragments**: A new WIP item, currently useless.
+* **Enchantments**: Fixed a bug where the level limit for the life steal enchantment could exceed and cause a game crash.
+
 ArmorPlus 1.12.2-11.24.0.60
 ----------------------------
 
