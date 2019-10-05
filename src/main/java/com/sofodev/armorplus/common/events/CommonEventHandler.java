@@ -42,6 +42,7 @@ import static com.sofodev.armorplus.common.config.ModConfig.EntitiesConfig.mob_d
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.enchantments;
 import static com.sofodev.armorplus.common.registry.ModItems.*;
 import static com.sofodev.armorplus.common.registry.constants.APEnchantments.ENHANCE;
+import static com.sofodev.armorplus.common.registry.items.ItemFragment.Fragments.*;
 import static com.sofodev.armorplus.common.registry.items.base.special.Pickaxes.INFUSED_LAVA;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
@@ -165,10 +166,12 @@ public class CommonEventHandler {
         if (entity instanceof EntityDragon) {
             registerMobDrop(event, mob_drops.ender_dragon_scale.drop, getItemStack(materials, mob_drops.ender_dragon_scale.dropAmount, 3));
             registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "ender_dragon");
+            registerMobDrop(event, true, getItemStack(fragments[MIDNIGHT.getIndex()]));
         }
         if (entity instanceof EntityWither) {
             registerMobDrop(event, mob_drops.wither_bone.bossDrop, getItemStack(materials, mob_drops.wither_bone.dropAmount, 2));
             registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "wither_boss");
+            registerMobDrop(event, true, getItemStack(fragments[NOON.getIndex()]));
         }
         if (entity instanceof EntityWitherSkeleton) {
             registerMobDrop(event, mob_drops.wither_bone.witherSkeletonDrop, getItemStack(materials, randomDrop, 2));
@@ -179,6 +182,7 @@ public class CommonEventHandler {
         if (entity instanceof EntityElderGuardian) {
             registerMobDrop(event, mob_drops.guardian_scale.elderDrop, getItemStack(materials, mob_drops.guardian_scale.dropAmount, 1));
             registerTrophyDrop(event, mob_drops.trophy.enableVanillaTrophyDrops, "elder_guardian");
+            registerMobDrop(event, true, getItemStack(fragments[DAWN.getIndex()]));
         }
         if (entity instanceof EntitySkeletalKing) {
             registerTrophyDrop(event, mob_drops.trophy.enableAPBossTrophyDrops, "skeletal_king");

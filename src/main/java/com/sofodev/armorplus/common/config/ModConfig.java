@@ -39,9 +39,14 @@ public class ModConfig {
         @Comment({"The numeral id of the armorplus:arena dimension"})
         public static int arenaDimensionID = 120;
 
+        @Comment({"The numeral id of the armorplus:realm_of_insanity dimension"})
+        public static int realmDimensionID = 121;
+
         @Comment({"Too unstable, unfinished to be enabled by default."})
         public static boolean enableArenaDimension = false;
 
+        @Comment({"Enable/Disable the realm of insanity"})
+        public static boolean enableRealmOfInsanity = true;
     }
 
     @Config(modid = MODID, name = "armorplus/config", category = "")

@@ -111,12 +111,12 @@ public class ArenaProvider extends WorldProvider {
 
     @Override
     public BlockPos getSpawnCoordinate() {
-        return new BlockPos(100, 50, 0);
+        return new BlockPos(32, 20, 0);
     }
 
     @Override
     public int getAverageGroundLevel() {
-        return 50;
+        return 10;
     }
 
     /**
