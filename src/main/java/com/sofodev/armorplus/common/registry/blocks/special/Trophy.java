@@ -52,7 +52,12 @@ public enum Trophy {
             return Utils.setRL("overlord_of_the_guardians");
         }
     },
-    DEMONIC_DRAGON(0.1f),
+    DEMONIC_DRAGON(0.1f) {
+        @Override
+        public ResourceLocation getEntityId() {
+            return Utils.setRL("demonic_dragon");
+        }
+    },
     THE_LORD_OF_EVERYTHING(0.1f),
     ;
 

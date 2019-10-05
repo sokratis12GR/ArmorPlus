@@ -5,6 +5,8 @@
 package com.sofodev.armorplus.common.registry;
 
 import com.sofodev.armorplus.api.caps.abilities.MaterialType;
+import com.sofodev.armorplus.common.registry.items.ItemFragment;
+import com.sofodev.armorplus.common.registry.items.ItemFragment.Fragments;
 import com.sofodev.armorplus.common.registry.items.ItemUltimateParts;
 import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.common.registry.items.armors.base.ItemArmorV2;
@@ -98,7 +100,11 @@ public class ModItems {
     public static ItemSpecialArrow itemCoalArrow = new ItemSpecialArrow(ArrowType.COAL),
         itemLapisArrow = new ItemSpecialArrow(ArrowType.LAPIS),
         itemRedstoneArrow = new ItemSpecialArrow(ArrowType.REDSTONE),
+        itemEmeraldArrow = new ItemSpecialArrow(ArrowType.EMERALD),
+        itemObsidianArrow = new ItemSpecialArrow(ArrowType.OBSIDIAN),
         itemLavaArrow = new ItemSpecialArrow(ArrowType.INFUSED_LAVA),
+        itemGuardianArrow = new ItemSpecialArrow(ArrowType.GUARDIAN),
+        itemSuperStarArrow = new ItemSpecialArrow(ArrowType.SUPER_STAR),
         itemEnderDragonArrow = new ItemSpecialArrow(ArrowType.ENDER_DRAGON);
     public static ItemBaseHorseArmor[] horseArmors = new ItemBaseHorseArmor[9];
     public static APArmorMaterial[] horseMaterial = new APArmorMaterial[]{COAL, LAPIS, REDSTONE, EMERALD, OBSIDIAN, INFUSED_LAVA, GUARDIAN, SUPER_STAR, ENDER_DRAGON};
@@ -125,6 +131,7 @@ public class ModItems {
         chain = new ItemEnhancedArmor[4],
         gold = new ItemEnhancedArmor[4],
         diamond = new ItemEnhancedArmor[4];
+    public static ItemFragment[] fragments = new ItemFragment[4];
     //public static ItemBase obsidianStick,guardianStone,dragonBornStick, witheredStick;
 
     public static void registerItems() {
@@ -173,6 +180,7 @@ public class ModItems {
         register(diamond, ENHANCED_DIAMOND_ARMOR, "diamond");
 
         IntStream.range(0, pickaxe.length).forEach(i -> pickaxe[i] = new ItemSpecialPickaxe(Pickaxes.values()[i]));
+        IntStream.range(0, fragments.length).forEach(i -> fragments[i] = new ItemFragment(Fragments.values()[i]));
     }
 
     public static void registerTCItems() {
@@ -233,7 +241,7 @@ public class ModItems {
         // ==== ITEMS ==== \\
         registerAllItems(event,
             bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
-            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemEmeraldArrow, itemObsidianArrow, itemLavaArrow, itemGuardianArrow, itemSuperStarArrow, itemEnderDragonArrow
         );
         registerAllItems(event, materials);
         // ==== SPECIAL ITEMS ===\\
@@ -254,6 +262,6 @@ public class ModItems {
         registerAllItems(event, horseArmors);
         registerAllItems(event, sword, battleAxe, bow);
         registerAllItems(event, chain, iron, gold, diamond);
-        registerAllItems(event, pickaxe);
+        registerAllItems(event, pickaxe, fragments);
     }
 }

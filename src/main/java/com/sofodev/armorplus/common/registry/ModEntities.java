@@ -82,7 +82,11 @@ public class ModEntities {
         registerEntities(EntityCoalArrow.class, "coal_arrow", ++id);
         registerEntities(EntityLapisArrow.class, "lapis_arrow", ++id);
         registerEntities(EntityRedstoneArrow.class, "redstone_arrow", ++id);
-        registerEntities(EntityLavaArrow.class, "lava_arrow", ++id);
+        registerEntities(EntityEmeraldArrow.class, "emerald_arrow", ++id);
+        registerEntities(EntityObsidianArrow.class, "obsidian_arrow", ++id);
+        registerEntities(EntityInfusedLavaArrow.class, "lava_arrow", ++id);
+        registerEntities(EntityGuardianArrow.class, "guardian_arrow", ++id);
+        registerEntities(EntitySuperStarArrow.class, "super_star_arrow", ++id);
         registerEntities(EntityEnderDragonArrow.class, "ender_dragon_arrow", ++id);
         //
         registerEntities(EntityFreezeBomb.class, "freeze_bomb", ++id);

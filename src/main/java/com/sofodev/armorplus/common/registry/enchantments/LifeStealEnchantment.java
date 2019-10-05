@@ -4,7 +4,6 @@
 
 package com.sofodev.armorplus.common.registry.enchantments;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +14,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 
 import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.enchantments;
-import static com.sofodev.armorplus.common.registry.enchantments.FuriousEnchantment.Levels.limit;
+import static com.sofodev.armorplus.common.registry.enchantments.LifeStealEnchantment.Levels.limit;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -23,9 +22,17 @@ import static com.sofodev.armorplus.common.registry.enchantments.FuriousEnchantm
 public class LifeStealEnchantment extends EnchantmentBase {
 
     public LifeStealEnchantment() {
-        super("life_steal", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND},
+        super("life_steal", Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND},
             1, 3, 10, 30, true, true
         );
+    }
+
+    @Override
+    public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
+        if (level > limit()) {
+            level = limit();
+        }
+        super.onUserHurt(user, attacker, level);
     }
 
     @Override

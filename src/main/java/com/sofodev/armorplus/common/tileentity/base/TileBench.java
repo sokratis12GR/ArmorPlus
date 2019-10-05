@@ -84,11 +84,11 @@ public abstract class TileBench extends TileEntityInventoryBase {
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         NBTTagList list = new NBTTagList();
         int bound = this.inventorySize;
-        for (int i = 0; i < bound; i++) {
-            if (!this.itemHandler.getStackInSlot(i).isEmpty()) {
+        for (int index = 0; index < bound; index++) {
+            if (!this.itemHandler.getStackInSlot(index).isEmpty()) {
                 NBTTagCompound stackTag = new NBTTagCompound();
-                stackTag.setByte("Slot", (byte) i);
-                this.itemHandler.getStackInSlot(i).writeToNBT(stackTag);
+                stackTag.setByte("Slot", (byte) index);
+                this.itemHandler.getStackInSlot(index).writeToNBT(stackTag);
                 list.appendTag(stackTag);
             }
         }
@@ -104,8 +104,8 @@ public abstract class TileBench extends TileEntityInventoryBase {
 
         NBTTagList list = nbt.getTagList("Items", 10);
         int bound = list.tagCount();
-        for (int i1 = 0; i1 < bound; i1++) {
-            NBTTagCompound stackTag = list.getCompoundTagAt(i1);
+        for (int index = 0; index < bound; index++) {
+            NBTTagCompound stackTag = list.getCompoundTagAt(index);
             int slot = stackTag.getByte("Slot") & 255;
             this.itemHandler.setStackInSlot(slot, new ItemStack(stackTag));
         }

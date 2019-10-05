@@ -30,6 +30,14 @@ public class FuriousEnchantment extends EnchantmentBase {
     }
 
     @Override
+    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
+        if (level > limit()) {
+            level = limit();
+        }
+        super.onEntityDamaged(user, target, level);
+    }
+
+    @Override
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level) {
         if (enchantments.enableFurious) {
             if (level > limit()) {

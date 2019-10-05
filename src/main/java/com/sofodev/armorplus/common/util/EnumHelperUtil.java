@@ -5,6 +5,10 @@
 package com.sofodev.armorplus.common.util;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.common.config.ModConfig;
+import com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.ArmorProperties;
+import com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.EnhancedMaterial;
+import com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.OriginMaterial;
 import com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.common.registry.items.armors.Tier;
 import net.minecraft.enchantment.Enchantment;
@@ -45,12 +49,15 @@ public class EnumHelperUtil {
         return EnumHelper.addArmorMaterial(enumName, setLocation(textureName), durability, armorPoints, enchantability, soundOnEquip, (float) toughnessPoints);
     }
 
-    public static ArmorMaterial addVanillaArmorMaterial(String textureName, int durability, int[] armorPoints, int enchantability, SoundEvent soundOnEquip, double toughnessPoints) {
-        return EnumHelper.addArmorMaterial("ENHANCED_" + textureName.toUpperCase() + "_ARMOR", textureName, durability, armorPoints, enchantability, soundOnEquip, (float) toughnessPoints);
+    public static ArmorMaterial addVanillaArmorMaterial(String textureName, int durability, EnhancedMaterial props, int enchantability, SoundEvent soundOnEquip) {
+        return EnumHelper.addArmorMaterial("ENHANCED_" + textureName.toUpperCase() + "_ARMOR", textureName, durability, props.protectionPoints, enchantability, soundOnEquip, (float) props.toughnessPoints);
     }
 
-    public static ArmorMaterial addArmorMaterial(String enumName, String textureName, int durability, int[] armorPoints, double toughnessPoints, Tier tier) {
-        return addArmorMaterial(enumName, textureName, durability, armorPoints, tier.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
+    public static ArmorMaterial addArmorMaterial(String textureName, int durability, int[] armorPoints, double toughnessPoints, Tier tier) {
+        return addArmorMaterial(textureName.toUpperCase(), textureName, durability, armorPoints, tier.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, toughnessPoints);
+    }
+    public static ArmorMaterial addArmorMaterial(String textureName, int durability, ArmorProperties props, Tier tier) {
+        return addArmorMaterial(textureName.toUpperCase(), textureName, durability, props.protectionPoints, tier.getEnchantability(), SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, props.toughnessPoints);
     }
 
     public static HorseArmorType addHorseArmor(String name, int armorStrength) {
