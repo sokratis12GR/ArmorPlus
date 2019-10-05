@@ -475,7 +475,11 @@ item.armorplus.ender_dragon_pickaxe.name=Ender Dragon Pickaxe
 item.armorplus.coal_arrow.name=Coal Arrow
 item.armorplus.lapis_arrow.name=Lapis Arrow
 item.armorplus.redstone_arrow.name=Redstone Arrow
+item.armorplus.emerald_arrow.name=Emerald Arrow
+item.armorplus.obsidian_arrow.name=Obsidian Arrow
 item.armorplus.infused_lava_arrow.name=Infused Lava Arrow
+item.armorplus.guardian_arrow.name=Guardian Arrow
+item.armorplus.super_star_arrow.name=Super Star Arrow
 item.armorplus.ender_dragon_arrow.name=Ender Dragon Arrow
 
 #TeslaItems
@@ -694,6 +698,12 @@ item.armorplus.ultimate_prototype_chestplate.name=The Ultimate Chestplate
 item.armorplus.ultimate_prototype_leggings.name=The Ultimate Leggings
 item.armorplus.ultimate_prototype_boots.name=The Ultimate Boots
 
+#Fragments
+item.armorplus.dawn.name=Fragment of Dawn
+item.armorplus.midnight.name=Fragment of Midnight
+item.armorplus.noon.name=Fragment of Noon
+item.armorplus.dusk.name=Fragment of Dusk
+
 #AbilityNames
 ability.armorplus.empty.name=Empty
 ability.armorplus.night_vision.name=Night Vision
@@ -721,8 +731,12 @@ info.armorplus.items.ability.display_limit=Abilities %d/%d
 item.armorplus.coal_arrow.ability_desc=Applies Blindness
 item.armorplus.lapis_arrow.ability_desc=Applies Nausea
 item.armorplus.redstone_arrow.ability_desc=Applies Slowness
+item.armorplus.emerald_arrow.ability_desc=Applies Mining Fatugue
+item.armorplus.obsidian_arrow.ability_desc=Applies Weakness
 item.armorplus.infused_lava_arrow.ability_desc=Sets on Fire
-item.armorplus.ender_dragon_arrow.ability_desc=Applies Wither 4
+item.armorplus.guardian_arrow.ability_desc=Applies Nausea
+item.armorplus.super_star_arrow.ability_desc=Applies Wither II
+item.armorplus.ender_dragon_arrow.ability_desc=Applies Wither IV
 item.armorplus.lava_crystal.desc=Can be obtained by mining Ore Lava Crystal
 item.armorplus.infused_lava_crystal.desc=Can be created by infusing the Lava Crystal inside the Lava Infuser
 item.armorplus.bow.desc=§9Bonus Arrow Damage: §r%s
