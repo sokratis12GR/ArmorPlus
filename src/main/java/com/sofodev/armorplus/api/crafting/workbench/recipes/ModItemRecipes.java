@@ -141,41 +141,29 @@ public class ModItemRecipes {
                         "RRR",
                         'R', "dustRedstone",
                         'A', "itemArrow"));
-                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLavaArrow, 2),
-                        "LLL",
-                        "LAL",
-                        "LLL",
-                        'L', "gemLavaCrystal",
-                        'A', "itemArrow"));
                 }
                 break;
             case EXPERT:
             case HELLISH:
                 manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 1), "ingotSteel", "dustRedstone", "glowstone"));
                 if (recipes.enableArrowRecipes) {
-                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemCoalArrow, 2),
+                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemCoalArrow, 8),
                         "CCC",
                         "CAC",
                         "CCC",
                         'C', "blockCoal",
                         'A', "itemArrow"));
-                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLapisArrow, 2),
+                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLapisArrow, 8),
                         "LLL",
                         "LAL",
                         "LLL",
                         'L', "blockLapis",
                         'A', "itemArrow"));
-                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemRedstoneArrow, 2),
+                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemRedstoneArrow, 8),
                         "RRR",
                         "RAR",
                         "RRR",
                         'R', "blockRedstone",
-                        'A', "itemArrow"));
-                    manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(itemLavaArrow, 2),
-                        "LLL",
-                        "LAL",
-                        "LLL",
-                        'L', "gemChargedLavaCrystal",
                         'A', "itemArrow"));
                 }
                 break;

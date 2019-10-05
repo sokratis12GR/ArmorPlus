@@ -5,15 +5,26 @@
 package com.sofodev.armorplus.api.crafting.ultitechbench.recipes;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
+import com.sofodev.armorplus.common.registry.constants.APItems;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.common.registry.ModItems.itemEnderDragonArrow;
-import static com.sofodev.armorplus.common.registry.ModItems.materials;
+import static com.sofodev.armorplus.common.config.ModConfig.RegistryConfig.recipes;
+import static com.sofodev.armorplus.common.registry.ModItems.*;
 
 public class ModUltiTechItemRecipes {
     public void addRecipes(BaseCraftingManager manager) {
-        manager.addRecipe(new ItemStack(itemEnderDragonArrow, 8),
+        if (recipes.enableArrowRecipes) {
+            this.addArrowRecipes(manager, itemGuardianArrow, Items.PRISMARINE_SHARD, APItems.guardianScale);
+            this.addArrowRecipes(manager, itemSuperStarArrow, Items.NETHER_STAR, APItems.witherBone);
+            this.addArrowRecipes(manager, itemEnderDragonArrow, Items.DRAGON_BREATH, APItems.enderDragonScale);
+        }
+    }
+
+
+    private void addArrowRecipes(BaseCraftingManager manager, Item result, Item top, ItemStack handle) {
+        manager.addRecipe(new ItemStack(result, 8),
             "   EEEE",
             "     SE",
             "    S E",
@@ -21,9 +32,9 @@ public class ModUltiTechItemRecipes {
             "  S    ",
             " S     ",
             "S      ",
-            'E', Items.DRAGON_BREATH,
-            'S', new ItemStack(materials, 1, 3));
-        manager.addRecipe(new ItemStack(itemEnderDragonArrow, 8),
+            'E', top,
+            'S', handle);
+        manager.addRecipe(new ItemStack(result, 8),
             "EEEE   ",
             "ES     ",
             "E S    ",
@@ -31,7 +42,7 @@ public class ModUltiTechItemRecipes {
             "    S  ",
             "     S ",
             "      S",
-            'E', Items.DRAGON_BREATH,
-            'S', new ItemStack(materials, 1, 3));
+            'E', top,
+            'S', handle);
     }
 }
