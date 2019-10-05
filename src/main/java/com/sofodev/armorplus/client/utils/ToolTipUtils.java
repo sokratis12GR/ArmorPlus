@@ -155,7 +155,7 @@ public final class ToolTipUtils {
         KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
             tooltip.add(translatedText("item.armorplus.arrow.ability_desc", effect));
-            tooltip.add(translatedText("item.armorplus.arrow.ability", damage + 2.0D));
+            tooltip.add(translatedText("item.armorplus.arrow.ability", damage));
         } else {
             showInfo(tooltip, keyBindSneak, formatting);
         }

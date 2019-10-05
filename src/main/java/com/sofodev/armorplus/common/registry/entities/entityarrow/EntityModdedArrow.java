@@ -4,6 +4,8 @@
 
 package com.sofodev.armorplus.common.registry.entities.entityarrow;
 
+import com.sofodev.armorplus.common.registry.items.arrows.ArrowType;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
@@ -66,6 +68,13 @@ public class EntityModdedArrow extends EntityArrow {
     @Override
     protected void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        this.properties.hit(living, shootingEntity);
+        if (living != shootingEntity) {
+            this.properties.hit(living, shootingEntity);
+        }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return super.equals(other);
     }
 }

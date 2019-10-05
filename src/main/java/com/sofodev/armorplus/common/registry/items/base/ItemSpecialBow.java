@@ -85,7 +85,7 @@ public class ItemSpecialBow extends ItemBow implements IModdedItem {
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add(new TextComponentTranslation("item.armorplus.bow.desc", damage).getFormattedText());
+            tooltip.add(new TextComponentTranslation("item.armorplus.bow.desc", damage + 1 > 0 ? damage : "None").getFormattedText());
         } else {
             showInfo(tooltip, keyBindSneak, formatting);
         }

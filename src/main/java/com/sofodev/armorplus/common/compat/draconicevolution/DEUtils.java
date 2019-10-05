@@ -2,6 +2,8 @@ package com.sofodev.armorplus.common.compat.draconicevolution;
 
 import net.minecraft.util.DamageSource;
 
+import java.util.Arrays;
+
 public class DEUtils {
 
     private static String[] matchingTypes = {
@@ -24,12 +26,7 @@ public class DEUtils {
         }
         String type = source.damageType;
         if (type != null) {
-            for (String match : matchingTypes) {
-                if (match != null && match.equalsIgnoreCase(type)) {
-                    return true;
-                }
-            }
-            return false;
+            return Arrays.stream(matchingTypes).anyMatch(match -> match != null && match.equalsIgnoreCase(type));
         }
         return false;
     }

@@ -15,6 +15,7 @@ import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.guardianoverl
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherMinion;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherling;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -51,17 +52,15 @@ public class ModelsEventHandler {
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
         register(twitchItem, beamItem, theDragonTeamItem, moddedCityItem, jonBamsItem, btmMoon, m1Jordan, teamRapture);
-        register(materials, itemLavaCrystal, itemTGOTG, bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts,
-            itemDevTool, itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemLavaArrow, itemEnderDragonArrow
+        register(materials, itemLavaCrystal, itemTGOTG, bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, theUltimateParts, itemDevTool,
+            itemCoalArrow, itemLapisArrow, itemRedstoneArrow, itemEmeraldArrow, itemObsidianArrow, itemLavaArrow, itemGuardianArrow, itemSuperStarArrow, itemEnderDragonArrow
         );
         register(theUltimate);
         register(coal, emerald, lapis, lava, obsidian, redstone, chicken, slime, guardian, superStar, enderDragon, ardite, cobalt, manyullyn, pigIron, knightSlime);
         register(towerSpawnItem, enderDungeonFloor1SpawnItem);
         register(chainmail, guardianScale, witherBone, enderDragonScale, theUltimateMaterial);
         register(horseArmors);
-        register(sword);
-        register(battleAxe);
-        register(bow);
+        register(sword, battleAxe, bow);
 
         //Prototype
         if (enableExperimentalMode) {
@@ -71,7 +70,7 @@ public class ModelsEventHandler {
             );
         }
         register(chain, iron, gold, diamond);
-        register(pickaxe);
+        register(pickaxe, fragments);
     }
 
     @SubscribeEvent
@@ -83,7 +82,11 @@ public class ModelsEventHandler {
         registerRenderingHandler(EntityCoalArrow.class, "coal");
         registerRenderingHandler(EntityLapisArrow.class, "lapis");
         registerRenderingHandler(EntityRedstoneArrow.class, "redstone");
-        registerRenderingHandler(EntityLavaArrow.class, "lava");
+        registerRenderingHandler(EntityEmeraldArrow.class, "emerald");
+        registerRenderingHandler(EntityObsidianArrow.class, "obsidian");
+        registerRenderingHandler(EntityInfusedLavaArrow.class, "lava");
+        registerRenderingHandler(EntityGuardianArrow.class, "guardian");
+        registerRenderingHandler(EntitySuperStarArrow.class, "super_star");
         registerRenderingHandler(EntityEnderDragonArrow.class, "ender_dragon");
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //Bosses

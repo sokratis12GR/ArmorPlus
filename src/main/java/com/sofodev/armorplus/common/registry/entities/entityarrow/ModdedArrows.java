@@ -4,49 +4,35 @@
 
 package com.sofodev.armorplus.common.registry.entities.entityarrow;
 
-import com.sofodev.armorplus.common.registry.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
+import net.minecraft.util.EnumParticleTypes;
 
-import static com.sofodev.armorplus.common.util.PotionUtils.PotionType.BAD;
-import static com.sofodev.armorplus.common.util.PotionUtils.addPotion;
+import static com.sofodev.armorplus.common.registry.ModItems.*;
+import static net.minecraft.init.MobEffects.*;
 import static net.minecraft.util.EnumParticleTypes.*;
+import static net.minecraft.util.text.TextFormatting.DARK_GRAY;
+import static net.minecraft.util.text.TextFormatting.DARK_GREEN;
 
 /**
  * @author Sokratis Fotkatzikis
  */
 public class ModdedArrows {
 
-    public static final ArrowProperties COAL_ARROW = new ArrowProperties(3.0, CLOUD, ModItems.itemCoalArrow) {
+    public static final ArrowProperties COAL_ARROW = ArrowProperties.create(3.0, CLOUD, itemCoalArrow, BLINDNESS);
+    public static final ArrowProperties LAPIS_ARROW = ArrowProperties.create(3.5, WATER_DROP, itemLapisArrow, NAUSEA);
+    public static final ArrowProperties REDSTONE_ARROW = ArrowProperties.create(3.5, REDSTONE, itemRedstoneArrow, SLOWNESS);
+    public static final ArrowProperties EMERALD_ARROW = ArrowProperties.create(5.0, VILLAGER_HAPPY, itemEmeraldArrow, MINING_FATIGUE);
+    public static final ArrowProperties OBSIDIAN_ARROW = new ArrowProperties(6.0, SMOKE_NORMAL, itemObsidianArrow, WEAKNESS, 1);
+    public static final ArrowProperties INFUSED_LAVA_ARROW = new ArrowProperties(7.0, FLAME, itemLavaArrow) {
         @Override
-        public void hit(EntityLivingBase living, Entity shootingEntity) {
-            if (living != shootingEntity) addPotion(living, MobEffects.BLINDNESS, 180, 0, BAD);
+        public IArrow hit(EntityLivingBase living, Entity shootingEntity) {
+            living.setFire(6);
+            return this;
         }
     };
-    public static final ArrowProperties LAPIS_ARROW = new ArrowProperties(3.5, WATER_DROP, ModItems.itemLapisArrow) {
-        @Override
-        public void hit(EntityLivingBase living, Entity shootingEntity) {
-            if (living != shootingEntity) addPotion(living, MobEffects.NAUSEA, 180, 0, BAD);
-        }
-    };
-    public static final ArrowProperties REDSTONE_ARROW = new ArrowProperties(3.5, REDSTONE, ModItems.itemRedstoneArrow) {
-        @Override
-        public void hit(EntityLivingBase living, Entity shootingEntity) {
-            if (living != shootingEntity) addPotion(living, MobEffects.SLOWNESS, 180, 0, BAD);
-        }
-    };
-    public static final ArrowProperties INFUSED_LAVA_ARROW = new ArrowProperties(5.5, FLAME, ModItems.itemLavaArrow) {
-        @Override
-        public void hit(EntityLivingBase living, Entity shootingEntity) {
-            if (living != shootingEntity) living.setFire(6);
-        }
-    };
-    public static final ArrowProperties ENDER_DRAGON_ARROW = new ArrowProperties(10.5, DRAGON_BREATH, ModItems.itemEnderDragonArrow) {
-        @Override
-        public void hit(EntityLivingBase living, Entity shootingEntity) {
-            if (living != shootingEntity) addPotion(living, MobEffects.WITHER, 180, 4, BAD);
-        }
-    };
+    public static final ArrowProperties GUARDIAN_ARROW = new ArrowProperties(10.5, WATER_WAKE, itemGuardianArrow, NAUSEA, 2);
+    public static final ArrowProperties SUPER_STAR_ARROW = new ArrowProperties(10.5, CRIT_MAGIC, itemSuperStarArrow, WITHER, 2);
+    public static final ArrowProperties ENDER_DRAGON_ARROW = new ArrowProperties(10.5, DRAGON_BREATH, itemEnderDragonArrow, WITHER, 4);
 
 }

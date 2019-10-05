@@ -1,15 +1,8 @@
-/*
- * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
- */
-
 package com.sofodev.armorplus.common.registry.entities.entityarrow;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
-/**
- * @author Sokratis Fotkatzikis
- */
 public class EntityEnderDragonArrow extends EntityModdedArrow {
 
     public EntityEnderDragonArrow(World worldIn) {
@@ -21,6 +14,6 @@ public class EntityEnderDragonArrow extends EntityModdedArrow {
     }
 
     public EntityEnderDragonArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter, ModdedArrows.ENDER_DRAGON_ARROW);
+        super(worldIn, shooter, ModdedArrows.ENDER_DRAGON_ARROW );
     }
 }
