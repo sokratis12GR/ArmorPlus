@@ -25,7 +25,7 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ### 1.12.2 
 
-#### Recommended: [1.12.2-11.24.0.60](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2730003)
+#### Recommended: [1.12.2-11.25.1.62](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2803109)
 
 ### 1.11.2
 
