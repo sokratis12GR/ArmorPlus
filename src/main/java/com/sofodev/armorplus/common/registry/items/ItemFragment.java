@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.common.registry.items;
 
+import com.sofodev.armorplus.common.iface.IModdedItem;
 import com.sofodev.armorplus.common.registry.items.base.ItemBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

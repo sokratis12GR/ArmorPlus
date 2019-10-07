@@ -97,6 +97,13 @@ public class ModRecipes {
                 'L', getItemStack(Items.DYE, 4),
                 'C', ModItems.itemLavaCrystal)
             );
+            WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(blockEmptyDisplay),
+                "   ",
+                "PPP",
+                "SSS",
+                'S', Blocks.STONE_SLAB,
+                'P', IRON_INGOT
+            ));
             if (ModConfig.RegistryConfig.recipes.enableElytraRecipe) {
                 WorkbenchRegistry.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(ELYTRA, 1),
                     "ESE", "SNS", "EEE", 'E', new ItemStack(ModItems.materials, 1, 3), 'S', STRING, 'N', NETHER_STAR));
