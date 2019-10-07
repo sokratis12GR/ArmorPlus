@@ -15,7 +15,6 @@ import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.guardianoverl
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherMinion;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherling;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -46,7 +45,8 @@ public class ModelsEventHandler {
         //   register(blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         register(enderBlocks);
-        register(trophies);
+        register(trophies, blockSwordDisplays);
+        register(blockEmptyDisplay);
     }
 
     @SubscribeEvent
@@ -70,7 +70,7 @@ public class ModelsEventHandler {
             );
         }
         register(chain, iron, gold, diamond);
-        register(pickaxe, fragments);
+        register(pickaxe, fragments, maps);
     }
 
     @SubscribeEvent

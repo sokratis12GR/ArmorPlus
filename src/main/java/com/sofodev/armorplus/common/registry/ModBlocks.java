@@ -16,8 +16,11 @@ import com.sofodev.armorplus.common.registry.blocks.dungeon.EnderType;
 import com.sofodev.armorplus.common.registry.blocks.lava.*;
 import com.sofodev.armorplus.common.registry.blocks.metals.BlockMetal;
 import com.sofodev.armorplus.common.registry.blocks.normal.BlockCompressedObsidian;
+import com.sofodev.armorplus.common.registry.blocks.special.BlockEmptyDisplay;
+import com.sofodev.armorplus.common.registry.blocks.special.BlockSwordDisplay;
 import com.sofodev.armorplus.common.registry.blocks.special.BlockTrophy;
 import com.sofodev.armorplus.common.registry.blocks.special.Trophy;
+import com.sofodev.armorplus.common.registry.items.base.special.Swords;
 import com.sofodev.armorplus.common.tileentity.*;
 import com.sofodev.armorplus.common.util.Utils;
 import net.minecraft.block.Block;
@@ -66,6 +69,8 @@ public class ModBlocks {
     public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
     public static BlockTrophy[] trophies = new BlockTrophy[42];
     public static BlockMeltingObsidian blockMeltingObsidian = new BlockMeltingObsidian();
+    public static BlockSwordDisplay[] blockSwordDisplays = new BlockSwordDisplay[Swords.values().length];
+    public static BlockEmptyDisplay blockEmptyDisplay = new BlockEmptyDisplay();
     // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 
     public static void registerBlocks() {
@@ -76,6 +81,10 @@ public class ModBlocks {
         setAll(stonebrickWalls, type -> new BlockStoneBrickWall(stoneBricks[type]));
         setAll(enderBlocks, type -> new BlockDungeonEnder(EnderType.values()[type]));
         setAll(trophies, type -> new BlockTrophy(Trophy.values()[type]));
+        Swords[] values = Swords.values();
+        for (int index = 0; index < values.length; index++) {
+            blockSwordDisplays[index] = new BlockSwordDisplay(values[index]);
+        }
     }
 
     /**
@@ -99,8 +108,9 @@ public class ModBlocks {
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
         //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
-        registerAllBlocks(event, enderBlocks);
-        registerAllBlocks(event, trophies);
+        registerAllBlocks(event, enderBlocks, trophies);
+        registerAllBlocks(event, blockSwordDisplays);
+        registerAllBlocks(event, blockEmptyDisplay);
         registerTileEntities();
         registerTEFixes();
     }

@@ -1,3 +1,19 @@
+ArmorPlus 1.12.2-11.25.1.62
+----------------------------
+
+* Added Sword Displays: you can now showcase your cool swords ;) for each mod material sword (soon vanilla support)
+  - Recipe requires 3 Stone Slabs & 3 Iron Ingots 
+* Added WIP Maps Items: (Maps in a later version of the mod will be used to travel between dimensions with ease)
+  - Map of Overworld
+  - Map of The Nether
+  - Map of The End
+  - Map of The Realm
+  - Map of Sacrifice
+  - Map of Arena
+  - Map of The Shaper
+  - Map of The Elder
+* Fixed a bug where unregistered dimensions crashed the game (I forgot to add a check)
+
 ArmorPlus 1.12.2-11.25.0.61
 ----------------------------
 
@@ -12,6 +28,7 @@ ArmorPlus 1.12.2-11.25.0.61
   - Technical: Simplified Arrow addition.
 * **Fragments**: A new WIP item, currently useless.
 * **Enchantments**: Fixed a bug where the level limit for the life steal enchantment could exceed and cause a game crash.
+* **Dimensions**: Added a WIP Dimension called the "Realm of Insanity".
 
 ArmorPlus 1.12.2-11.24.0.60
 ----------------------------

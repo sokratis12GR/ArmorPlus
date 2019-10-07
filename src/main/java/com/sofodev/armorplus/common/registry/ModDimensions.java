@@ -36,8 +36,8 @@ public class ModDimensions {
     }
 
     private static void registerDimensions() {
-        DimensionManager.registerDimension(arenaDimensionID, arenaDimension);
-        DimensionManager.registerDimension(realmDimensionID, realmOfInsanity);
+        if (enableArenaDimension) DimensionManager.registerDimension(arenaDimensionID, arenaDimension);
+        if (enableRealmOfInsanity) DimensionManager.registerDimension(realmDimensionID, realmOfInsanity);
     }
 
     ////////////////
@@ -45,7 +45,11 @@ public class ModDimensions {
     ////////////////
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        event.getRegistry().register(new BiomeArena(new Biome.BiomeProperties("Arena").setTemperature(2.0F).setRainDisabled()).setRegistryName(setRL("arena")));
-        event.getRegistry().register(new RealmBiome(new Biome.BiomeProperties("Realm Of Insanity").setTemperature(5.0F).setRainDisabled()).setRegistryName(setRL("realm_of_insanity")));
+        if (enableArenaDimension) {
+            event.getRegistry().register(new BiomeArena(new Biome.BiomeProperties("Arena").setTemperature(2.0F).setRainDisabled()).setRegistryName(setRL("arena")));
+        }
+        if (enableRealmOfInsanity) {
+            event.getRegistry().register(new RealmBiome(new Biome.BiomeProperties("Realm Of Insanity").setTemperature(5.0F).setRainDisabled()).setRegistryName(setRL("realm_of_insanity")));
+        }
     }
 }

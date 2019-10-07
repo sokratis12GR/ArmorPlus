@@ -368,6 +368,18 @@ tile.armorplus.block_infused_lava_crystal.name=Block of Infused Lava Crystal
 tile.armorplus.block_compressed_lava_crystal.name=Compressed Lava Crystal Block
 tile.armorplus.block_compressed_infused_lava_crystal.name=Compressed Infused Lava Crystal Block
 
+##Sword Displays
+tile.armorplus.empty_sword_display.name=Empty Sword Display
+tile.armorplus.coal_sword_display.name=Display of Coal Sword
+tile.armorplus.redstone_sword_display.name=Display of Redstone Sword
+tile.armorplus.lapis_sword_display.name=Display of Lapis Sword
+tile.armorplus.emerald_sword_display.name=Display of Emerald Sword
+tile.armorplus.obsidian_sword_display.name=Display of Obsidian Sword
+tile.armorplus.infused_lava_sword_display.name=Display of Infused Lava Sword
+tile.armorplus.guardian_sword_display.name=Display of Guardian Sword
+tile.armorplus.super_star_sword_display.name=Display of Super Star Sword
+tile.armorplus.ender_dragon_sword_display.name=Display of Ender Dragon Sword
+tile.armorplus.excalibur_sword_display.name=Display of Excalibur
 ##Tophies
 tile.armorplus.trophy.name=Mob Trophy
 ###Vanilla Mobs
@@ -497,6 +509,26 @@ item.armorplus.redstone_flux_sword.name=Redstone Flux Sword
 item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
 item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
 item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
+
+#################
+### Fragments ###
+#################
+item.armorplus.dawn.name=Fragment of Dawn
+item.armorplus.midnight.name=Fragment of Midnight
+item.armorplus.noon.name=Fragment of Noon
+item.armorplus.dusk.name=Fragment of Dusk
+
+#################
+###   MAPS    ###
+#################
+item.armorplus.map_of_overworld.name=Map of Overworld
+item.armorplus.map_of_the_nether.name=Map of The Nether
+item.armorplus.map_of_the_end.name=Map of The End
+item.armorplus.map_of_sacrifice.name=Map of Sacrifice
+item.armorplus.map_of_arena.name=Map [Arena]
+item.armorplus.map_of_the_realm.name=Map of The Realm
+item.armorplus.map_of_the_shaper.name=Map of The Shaper
+item.armorplus.map_of_the_elder.name=Map of The Elder
 
 #Entities
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
@@ -698,11 +730,6 @@ item.armorplus.ultimate_prototype_chestplate.name=The Ultimate Chestplate
 item.armorplus.ultimate_prototype_leggings.name=The Ultimate Leggings
 item.armorplus.ultimate_prototype_boots.name=The Ultimate Boots
 
-#Fragments
-item.armorplus.dawn.name=Fragment of Dawn
-item.armorplus.midnight.name=Fragment of Midnight
-item.armorplus.noon.name=Fragment of Noon
-item.armorplus.dusk.name=Fragment of Dusk
 
 #AbilityNames
 ability.armorplus.empty.name=Empty

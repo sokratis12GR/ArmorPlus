@@ -6,17 +6,28 @@ package com.sofodev.armorplus.common.registry.items.base;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.common.iface.IModdedItem;
+import com.sofodev.armorplus.common.registry.ModBlocks;
+import com.sofodev.armorplus.common.registry.blocks.special.BlockSwordDisplay;
 import com.sofodev.armorplus.common.registry.items.base.special.Swords;
 import com.sofodev.armorplus.common.util.ArmorPlusItemUtils;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -44,7 +55,7 @@ public class ItemSpecialSword extends ItemSword implements IModdedItem {
     public TextFormatting formatting;
     public List<String> effect;
     public String itemName;
-    private Swords swords;
+    public Swords swords;
 
     public ItemSpecialSword(Swords swords) {
         super(swords.getToolMaterial());
@@ -68,6 +79,32 @@ public class ItemSpecialSword extends ItemSword implements IModdedItem {
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         return swords.hitEntity(stack, target, attacker);
+    }
+
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (player == null) {
+            return EnumActionResult.FAIL;
+        }
+        if (world.isRemote || player.isSneaking()) {
+            return EnumActionResult.PASS;
+        }
+        ItemStack stack = player.getHeldItem(hand);
+        Block block = world.getBlockState(pos).getBlock();
+        if (block == ModBlocks.blockEmptyDisplay && hand == EnumHand.MAIN_HAND) {
+            Block display = ForgeRegistries.BLOCKS.getValue(setRL(swords.getName() + "_sword_display"));
+            if (display instanceof BlockSwordDisplay) {
+                ((BlockSwordDisplay) display).setSword(new ItemStack(stack.getItem(), stack.getCount(), stack.getItemDamage()));
+                IBlockState state = display.getDefaultState();
+                world.setBlockState(pos, state, 3);
+                LogHelper.debug("Object [BlockSwordDisplay] - " + display.getTranslationKey() + " has been placed");
+                if (world.getBlockState(pos) == display.getDefaultState()) {
+                    stack.shrink(1);
+                    return EnumActionResult.SUCCESS;
+                }
+            }
+        }
+        return EnumActionResult.SUCCESS;
     }
 
     @Override

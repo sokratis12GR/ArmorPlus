@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.common.registry;
 
 import com.sofodev.armorplus.api.caps.abilities.MaterialType;
+import com.sofodev.armorplus.common.registry.items.ItemCombinedMap;
 import com.sofodev.armorplus.common.registry.items.ItemFragment;
 import com.sofodev.armorplus.common.registry.items.ItemFragment.Fragments;
 import com.sofodev.armorplus.common.registry.items.ItemUltimateParts;
@@ -45,6 +46,7 @@ import java.util.stream.IntStream;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.config.ModConfig.Experimental.enableExperimentalMode;
 import static com.sofodev.armorplus.common.registry.ModBlocks.*;
+import static com.sofodev.armorplus.common.registry.items.ItemCombinedMap.Variants;
 import static com.sofodev.armorplus.common.registry.items.armors.APArmorMaterial.*;
 import static com.sofodev.armorplus.common.registry.items.armors.ArmorMaterials.*;
 import static com.sofodev.armorplus.common.registry.items.enums.Cosmetics.*;
@@ -132,6 +134,7 @@ public class ModItems {
         gold = new ItemEnhancedArmor[4],
         diamond = new ItemEnhancedArmor[4];
     public static ItemFragment[] fragments = new ItemFragment[4];
+    public static ItemCombinedMap[] maps = new ItemCombinedMap[Variants.values().length];
     //public static ItemBase obsidianStick,guardianStone,dragonBornStick, witheredStick;
 
     public static void registerItems() {
@@ -181,6 +184,7 @@ public class ModItems {
 
         IntStream.range(0, pickaxe.length).forEach(i -> pickaxe[i] = new ItemSpecialPickaxe(Pickaxes.values()[i]));
         IntStream.range(0, fragments.length).forEach(i -> fragments[i] = new ItemFragment(Fragments.values()[i]));
+        IntStream.range(0, maps.length).forEach(i -> maps[i] = new ItemCombinedMap(Variants.values()[i]));
     }
 
     public static void registerTCItems() {
@@ -236,6 +240,8 @@ public class ModItems {
         );
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         registerItemBlock(event, trophies);
+        registerItemBlock(event, blockSwordDisplays);
+        registerItemBlock(event, blockEmptyDisplay);
         // ==== DUNGEON BLOCKS ==== \\
         registerItemBlock(event, enderBlocks);
         // ==== ITEMS ==== \\
@@ -262,6 +268,6 @@ public class ModItems {
         registerAllItems(event, horseArmors);
         registerAllItems(event, sword, battleAxe, bow);
         registerAllItems(event, chain, iron, gold, diamond);
-        registerAllItems(event, pickaxe, fragments);
+        registerAllItems(event, pickaxe, fragments, maps);
     }
 }
