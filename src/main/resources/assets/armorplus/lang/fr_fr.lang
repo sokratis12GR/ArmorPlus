@@ -79,15 +79,15 @@ commands.armorplus.help.help=Affiche l'aide de l'"armorplus" commande.
 
 # CommandInfo
 commands.armorplus.info_line_one.part_one.text=[%s [%s] (%s) %s
-commands.armorplus.info_line_one.part_two.text=by %s sokratis12GR
-commands.armorplus.info_line_two.text=[Thank you %s for using %s]
+commands.armorplus.info_line_one.part_two.text=par %s sokratis12GR
+commands.armorplus.info_line_two.text=[Merci %s d'utiliser %s]
 commands.armorplus.info_line_three.text=[modid: %s]
 commands.armorplus.info_line_four.text=[Minecraft Version: %s]
-commands.armorplus.info_line_five.text=[ArmorPlus recipe difficulty: %s]
-commands.armorplus.info_line_six.text=[Recipes] use command /armorplus wiki
-commands.armorplus.info_line_seven.text=[Discord] use command /armorplus discord
+commands.armorplus.info_line_five.text=[Difficulté des recettes d'ArmorPlus: %s]
+commands.armorplus.info_line_six.text=[Recettes] utilisez la commande /armorplus wiki
+commands.armorplus.info_line_seven.text=[Discord] utilisez la commande /armorplus discord
 commands.armorplus.info.usage=/armorplus info
-commands.armorplus.info.help=Affiche des informations sur ArmorPlus.
+commands.armorplus.info.help=Affiche des informations sur ArmorPlus
 
 # CommandWiki
 commands.armorplus.wiki.usage=/armorplus wiki
