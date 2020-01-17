@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.common.registry;
 
 import com.sofodev.armorplus.api.caps.abilities.MaterialType;
+import com.sofodev.armorplus.common.registry.items.ItemBlockMissingTexture;
 import com.sofodev.armorplus.common.registry.items.ItemCombinedMap;
 import com.sofodev.armorplus.common.registry.items.ItemFragment;
 import com.sofodev.armorplus.common.registry.items.ItemFragment.Fragments;
@@ -135,6 +136,10 @@ public class ModItems {
         diamond = new ItemEnhancedArmor[4];
     public static ItemFragment[] fragments = new ItemFragment[4];
     public static ItemCombinedMap[] maps = new ItemCombinedMap[Variants.values().length];
+    public static ItemSpawnStructure skeletalDungeon = new ItemSpawnStructure("dungeon_placer_1", StructureGenNBT.TOWER);
+    public static ItemSpawnStructure overlordDungeon = new ItemSpawnStructure("dungeon_placer_2", StructureGenNBT.TOWER);
+    public static ItemSpawnStructure demonicDungeon = new ItemSpawnStructure("dungeon_placer_3", StructureGenNBT.TOWER);
+
     //public static ItemBase obsidianStick,guardianStone,dragonBornStick, witheredStick;
 
     public static void registerItems() {
@@ -210,6 +215,24 @@ public class ModItems {
         });
     }
 
+    //TODO: MAKE SURE TO ADD TEXTURES TO ANY BLOCKS ADDED VIA THIS METHOD
+    private static void registerItemBlockMT(RegistryEvent.Register<Item> event, ResourceLocation... registryNames) {
+        Arrays.stream(registryNames).forEachOrdered(regName -> {
+            Block block = ForgeRegistries.BLOCKS.getValue(regName);
+            if (Utils.areNotNull(block, block.getRegistryName())) {
+                ItemBlock itemBlock = new ItemBlockMissingTexture(block);
+                itemBlock.setRegistryName(block.getRegistryName());
+                event.getRegistry().register(itemBlock);
+            }
+        });
+    }
+
+    private static void registerItemBlockMT(RegistryEvent.Register<Item> event, Block... blocks) {
+        Arrays.stream(blocks).forEach(block -> registerItemBlockMT(event, block.getRegistryName()));
+    }
+
+    //
+
     private static void registerItemBlock(RegistryEvent.Register<Item> event, String... locations) {
         Arrays.stream(locations).forEach(name -> registerItemBlock(event, setRL(name)));
     }
@@ -217,6 +240,7 @@ public class ModItems {
     private static void registerItemBlock(RegistryEvent.Register<Item> event, Block... blocks) {
         Arrays.stream(blocks).forEach(block -> registerItemBlock(event, block.getRegistryName()));
     }
+
 
     private static void registerAllItemBlocks(RegistryEvent.Register<Item> event, Block[]... blockArray) {
         Arrays.stream(blockArray).forEachOrdered(blockList -> registerItemBlock(event, blockList));
@@ -236,14 +260,16 @@ public class ModItems {
         registerItemBlock(event, benches);
         registerItemBlock(event,
             oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
-            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal
         );
         registerAllItemBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         registerItemBlock(event, trophies);
         registerItemBlock(event, blockSwordDisplays);
         registerItemBlock(event, blockEmptyDisplay);
+        registerItemBlock(event, blockMapDevice);
         // ==== DUNGEON BLOCKS ==== \\
         registerItemBlock(event, enderBlocks);
+        registerItemBlock(event, enderPillar);
         // ==== ITEMS ==== \\
         registerAllItems(event,
             bookInfo, bookLore, steelIngot, electricalIngot, itemRedstoneApple, itemLavaCrystal, itemTGOTG, itemDevTool, theUltimateParts,
@@ -269,5 +295,6 @@ public class ModItems {
         registerAllItems(event, sword, battleAxe, bow);
         registerAllItems(event, chain, iron, gold, diamond);
         registerAllItems(event, pickaxe, fragments, maps);
+        registerAllItems(event, skeletalDungeon, overlordDungeon, demonicDungeon);
     }
 }

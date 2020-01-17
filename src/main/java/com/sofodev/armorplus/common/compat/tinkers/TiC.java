@@ -28,6 +28,9 @@ public class TiC extends AbstractToolPulse {
     public static final MaterialIntegration steelInt = new MaterialIntegration(TinkerMaterials.steel, TinkerFluids.steel);
     public static final MaterialIntegration obsidianInt = new MaterialIntegration(TiCMaterials.COMPRESSED_OBSIDIAN);
     public static final MaterialIntegration infusedObsidianInt = new MaterialIntegration(TiCMaterials.LAVA_INFUSED_OBSIDIAN);
+    public static final MaterialIntegration guardianInt = new MaterialIntegration(TiCMaterials.GUARDIAN);
+    public static final MaterialIntegration superStarInt = new MaterialIntegration(TiCMaterials.SUPER_STAR);
+    public static final MaterialIntegration enderDragonInt = new MaterialIntegration(TiCMaterials.ENDER_DRAGON);
 
     public static TiC instance() {
         return INSTANCE;
@@ -43,6 +46,9 @@ public class TiC extends AbstractToolPulse {
         this.initMaterials(obsidianInt);
         if (getMaterial("steel") == null) this.initMaterials(steelInt);
         tinkersMaterials.setupMaterialStats(event);
+        this.initMaterials(guardianInt);
+        this.initMaterials(superStarInt);
+        this.initMaterials(enderDragonInt);
     }
 
     @Override
@@ -56,6 +62,9 @@ public class TiC extends AbstractToolPulse {
         initRepresentativeItem(lavacrystalInt, "blockInfusedLavaCrystal");
         initRepresentativeItem(obsidianInt, "blockCompressedObsidian");
         initRepresentativeItem(infusedObsidianInt, "blockLavaInfusedObsidian");
+        initRepresentativeItem(guardianInt, "guardianScale");
+        initRepresentativeItem(superStarInt, "witherBone");
+        initRepresentativeItem(enderDragonInt, "enderDragonScale");
         tinkersMaterials.postInit(event);
     }
 

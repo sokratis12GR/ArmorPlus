@@ -20,7 +20,7 @@ public class ModWeaponTierTwoRecipes {
 
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableSwordsRecipes) {
                     createSwordRecipes(manager, emeraldSword, "gemEmerald");
                     createSwordRecipes(manager, obsidianSword, "obsidian");
@@ -42,31 +42,29 @@ public class ModWeaponTierTwoRecipes {
                     createPickaxeRecipe(manager, pickaxe[5], "gemLavaCrystal");
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableSwordsRecipes) {
                     createSwordRecipes(manager, emeraldSword, "blockEmerald");
                     createSwordRecipes(manager, obsidianSword, "blockCompressedObsidian");
-                    createSwordRecipes(manager, lavaSword, "gemChargedLavaCrystal");
+                    createSwordRecipes(manager, lavaSword, "gemInfusedLavaCrystal");
                 }
                 if (recipes.enableBattleAxesRecipes) {
                     createBattleAxeRecipe(manager, emeraldBattleAxe, "blockEmerald");
                     createBattleAxeRecipe(manager, obsidianBattleAxe, "blockCompressedObsidian");
-                    createBattleAxeRecipe(manager, lavaBattleAxe, "gemChargedLavaCrystal");
+                    createBattleAxeRecipe(manager, lavaBattleAxe, "gemInfusedLavaCrystal");
                 }
                 if (recipes.enableBowsRecipes) {
                     createBowRecipe(manager, emeraldBow, "blockEmerald");
                     createBowRecipe(manager, obsidianBow, "blockCompressedObsidian");
-                    createBowRecipe(manager, lavaBow, "gemChargedLavaCrystal");
+                    createBowRecipe(manager, lavaBow, "gemInfusedLavaCrystal");
                 }
                 if (recipes.enablePickaxesRecipes) {
                     createPickaxeRecipe(manager, pickaxe[3], "blockEmerald");
                     createPickaxeRecipe(manager, pickaxe[4], "blockCompressedObsidian");
-                    createPickaxeRecipe(manager, pickaxe[5], "gemChargedLavaCrystal");
+                    createPickaxeRecipe(manager, pickaxe[5], "gemInfusedLavaCrystal");
                 }
                 break;
-            }
         }
     }
 }

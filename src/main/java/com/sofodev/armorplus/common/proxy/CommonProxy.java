@@ -7,6 +7,7 @@ package com.sofodev.armorplus.common.proxy;
 import com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler;
 import com.sofodev.armorplus.common.compat.ICompatibility;
 import com.sofodev.armorplus.common.compat.tinkers.TiC;
+import com.sofodev.armorplus.common.registry.commands.subcommands.teleporter.CommandTeleport;
 import com.sofodev.armorplus.common.registry.*;
 import com.sofodev.armorplus.common.registry.commands.CommandArmorPlus;
 import com.sofodev.armorplus.common.registry.constants.APItems;

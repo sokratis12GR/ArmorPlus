@@ -20,19 +20,17 @@ public class ModTierTwoRecipes {
 
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 createEasyArmorSetRecipes(recipes.enableEmeraldArmorRecipes, manager, "gemEmerald", emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
                 createEasyArmorSetRecipes(recipes.enableObsidianArmorRecipes, manager, "obsidian", obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
                 createEasyArmorSetRecipes(recipes.enableLavaArmorRecipes, manager, "gemLavaCrystal", lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 createExpertArmorSetRecipes(recipes.enableEmeraldArmorRecipes, manager, "blockEmerald", "gemEmerald", emeraldHelmet, emeraldChestplate, emeraldLeggings, emeraldBoots);
                 createExpertArmorSetRecipes(recipes.enableObsidianArmorRecipes, manager, "blockCompressedObsidian", "obsidian", obsidianHelmet, obsidianChestplate, obsidianLeggings, obsidianBoots);
-                createExpertArmorSetRecipes(recipes.enableLavaArmorRecipes, manager, "blockInfusedObsidian", "gemChargedLavaCrystal", lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
+                createExpertArmorSetRecipes(recipes.enableLavaArmorRecipes, manager, "blockInfusedObsidian", "gemInfusedLavaCrystal", lavaHelmet, lavaChestplate, lavaLeggings, lavaBoots);
                 break;
-            }
         }
     }
 }

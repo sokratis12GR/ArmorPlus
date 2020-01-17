@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.TinkerTraits;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HANDLE;
@@ -44,6 +45,9 @@ public final class TiCMaterials extends AbstractToolPulse {
     public static final Material INFUSED_LAVA_CRYSTAL = mat("infused_lava_crystal", 0xb32d00);
     public static final Material COMPRESSED_OBSIDIAN = mat("compressed_obsidian", 0x005580);
     public static final Material LAVA_INFUSED_OBSIDIAN = mat("lava_infused_obsidian", 0x631706);
+    public static final Material GUARDIAN = mat("guardian", 0x0A9BFF);
+    public static final Material SUPER_STAR = mat("super_star", 0xFFFFFF);
+    public static final Material ENDER_DRAGON = mat("ender_dragon", 0x8747FF);
 
     private static Material mat(String name, int color) {
         Material mat = new Material(name, color);
@@ -66,6 +70,18 @@ public final class TiCMaterials extends AbstractToolPulse {
         LAVA_INFUSED_OBSIDIAN.setRenderInfo(0x631706).setTextureSuffix("contrast");
         LAVA_INFUSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.Default(0x631706));
         LAVA_INFUSED_OBSIDIAN.setRenderInfo(new MaterialRenderInfo.BlockTexture(Utils.setRL("blocks/compressed_obsidian")));
+
+        GUARDIAN.setRenderInfo(0x0A9BFF).setTextureSuffix("contrast");
+        GUARDIAN.setRenderInfo(new MaterialRenderInfo.Default(0x0A9BFF));
+        GUARDIAN.setRenderInfo(new MaterialRenderInfo.MultiColor(0x0A9BFF, 0x0060BF, 0x0549FF));
+
+        SUPER_STAR.setRenderInfo(0xFFFFFF).setTextureSuffix("contrast");
+        SUPER_STAR.setRenderInfo(new MaterialRenderInfo.Default(0xFFFFFF));
+        SUPER_STAR.setRenderInfo(new MaterialRenderInfo.MultiColor(0xFFFFFF, 0xB8B8B8, 0xF3FFB8));
+
+        ENDER_DRAGON.setRenderInfo(0x8747FF).setTextureSuffix("contrast");
+        ENDER_DRAGON.setRenderInfo(new MaterialRenderInfo.Default(0x8747FF));
+        ENDER_DRAGON.setRenderInfo(new MaterialRenderInfo.MultiColor(0x8747FF, 0xAA00FF, 0x02004A));
     }
 
     @Subscribe
@@ -87,14 +103,23 @@ public final class TiCMaterials extends AbstractToolPulse {
         LAVA_INFUSED_OBSIDIAN.addItem(ModBlocks.blockLavaInfusedObsidian, Material.VALUE_Ingot);
         LAVA_INFUSED_OBSIDIAN.addTrait(duritos).addTrait(autosmelt, HANDLE);
 
+        GUARDIAN.addItem(ModItems.guardianScale, 2, Material.VALUE_Ingot);
+        SUPER_STAR.addItem(ModItems.witherBone, 2, Material.VALUE_Ingot);
+        ENDER_DRAGON.addItem(ModItems.enderDragonScale, 2, Material.VALUE_Ingot);
 
         this.setupMaterialBasics(INFUSED_LAVA_CRYSTAL);
         this.setupMaterialBasics(COMPRESSED_OBSIDIAN);
         this.setupMaterialBasics(LAVA_INFUSED_OBSIDIAN);
+        this.setupMaterialBasics(GUARDIAN);
+        this.setupMaterialBasics(SUPER_STAR);
+        this.setupMaterialBasics(ENDER_DRAGON);
 
         this.setRepresentativeItems(INFUSED_LAVA_CRYSTAL, ModBlocks.blockInfusedLavaCrystal);
         this.setRepresentativeItems(COMPRESSED_OBSIDIAN, ModBlocks.blockCompressedObsidian);
         this.setRepresentativeItems(LAVA_INFUSED_OBSIDIAN, ModBlocks.blockLavaInfusedObsidian);
+        this.setRepresentativeItems(GUARDIAN, ModItems.guardianScale);
+        this.setRepresentativeItems(SUPER_STAR, ModItems.witherBone);
+        this.setRepresentativeItems(ENDER_DRAGON, ModItems.enderDragonScale);
     }
 
     private void setupMaterialBasics(Material material) {
@@ -122,6 +147,18 @@ public final class TiCMaterials extends AbstractToolPulse {
             new HeadMaterialStats(153, 8.00f, 2.35f, COBALT),
             new HandleMaterialStats(1.00f, 80),
             new ExtraMaterialStats(100));
+        TinkerRegistry.addMaterialStats(GUARDIAN,
+            new HeadMaterialStats(1200, 10.00f, 7f, COBALT),
+            new HandleMaterialStats(1.50f, 100),
+            new ExtraMaterialStats(200));
+        TinkerRegistry.addMaterialStats(SUPER_STAR,
+            new HeadMaterialStats(1200, 10.00f, 7f, COBALT),
+            new HandleMaterialStats(1.50f, 100),
+            new ExtraMaterialStats(200));
+        TinkerRegistry.addMaterialStats(ENDER_DRAGON,
+            new HeadMaterialStats(1200, 10.00f, 7f, COBALT),
+            new HandleMaterialStats(1.50f, 100),
+            new ExtraMaterialStats(200));
     }
 
     @Override

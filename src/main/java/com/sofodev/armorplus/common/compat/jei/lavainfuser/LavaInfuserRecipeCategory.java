@@ -23,13 +23,13 @@ public abstract class LavaInfuserRecipeCategory implements IRecipeCategory {
 
     LavaInfuserRecipeCategory() {
         IGuiHelper helper = ArmorPlusPlugin.jeiHelper.getGuiHelper();
-        IDrawableStatic flameDrawable = helper.createDrawable(backgroundLocation, 176, 0, 16, 44);
+        IDrawableStatic flameDrawable = helper.createDrawable(backgroundLocation, 176, 0, 16, 38);
         fusion = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
 
         IDrawableStatic arrowDrawable = helper.createDrawable(backgroundLocation, 176, 44, 24, 17);
         this.arrow = helper.createAnimatedDrawable(arrowDrawable, 200, IDrawableAnimated.StartDirection.LEFT, false);
 
-        this.lavaBucket = helper.createDrawable(new ResourceLocation("textures/items/bucket_lava.png"), 0, 0, 16, 16);
+        this.lavaBucket = helper.drawableBuilder(new ResourceLocation("minecraft:textures/items/bucket_lava.png"), 0, 0, 16, 16).setTextureSize(16,16).build();
 
     }
 }

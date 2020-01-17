@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.common.registry.commands;
 
 import com.sofodev.armorplus.common.registry.commands.subcommands.*;
+import com.sofodev.armorplus.common.registry.commands.subcommands.teleporter.CommandTeleport;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -29,6 +30,7 @@ public class CommandArmorPlus extends CommandTreeBase {
         super.addSubcommand(new CommandNodecraft());
         super.addSubcommand(new CommandTreeHelp(this));
         super.addSubcommand(new CommandAbilities());
+        super.addSubcommand(new CommandTeleport());
         this.aliases.add("arp");
         this.aliases.add("a+");
         this.aliases.add("armorplus");

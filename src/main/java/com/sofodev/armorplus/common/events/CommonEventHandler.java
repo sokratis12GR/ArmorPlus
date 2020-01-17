@@ -24,12 +24,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.storage.loot.LootEntryItem;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraft.world.storage.loot.conditions.RandomChance;
+import net.minecraft.world.storage.loot.functions.LootFunction;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
 import java.util.ListIterator;
@@ -59,6 +67,45 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
  */
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
 public class CommonEventHandler {
+
+
+    @SubscribeEvent
+    public void onLootTablesLoaded(LootTableLoadEvent event) {
+        boolean isSDC = event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON);
+        boolean isDPC = event.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID);
+        boolean isWMC = event.getName().equals(LootTableList.CHESTS_WOODLAND_MANSION);
+        boolean isECC = event.getName().equals(LootTableList.CHESTS_END_CITY_TREASURE);
+        boolean isNBC = event.getName().equals(LootTableList.CHESTS_NETHER_BRIDGE);
+        if (isSDC || isDPC || isWMC || isECC || isNBC) {
+
+            final LootPool secondaryPool = event.getTable().getPool("pool1");
+            final LootPool mainPool = event.getTable().getPool("main");
+
+            // pool2.addEntry(new LootEntryItem(ITEM, WEIGHT, QUALITY, FUNCTIONS, CONDITIONS, NAME));
+            if (mainPool != null) {
+                addLootTable(mainPool, "guardian", 5, 2, 0.25f);
+                addLootTable(mainPool, "super_star", 5, 2, 0.25f);
+                addLootTable(mainPool, "ender_dragon", 5, 2, 0.25f);
+                //Lower
+                addLootTable(mainPool, "emerald", 7, 1, 0.5f);
+                addLootTable(mainPool, "obsidian", 7, 1, 0.5f);
+                addLootTable(mainPool, "infused_lava", 7, 1, 0.5f);
+            }
+            if (secondaryPool != null) {
+                addLootTable(secondaryPool, "coal", 10, 0, 0.75f);
+                addLootTable(secondaryPool, "lapis", 10, 0, 0.75f);
+                addLootTable(secondaryPool, "redstone", 10, 0, 0.75f);
+            }
+        }
+    }
+
+    public static void addLootTable(LootPool pool, String itemName, int weight, int quality, float chance) {
+        pool.addEntry(new LootEntryItem(getHA(itemName), weight, quality, new LootFunction[0], new LootCondition[]{new RandomChance(chance)}, "armorplus:" + itemName + "_horse_armor"));
+    }
+
+    public static Item getHA(String name) {
+        return ForgeRegistries.ITEMS.getValue(setRL(name + "_horse_armor"));
+    }
 
     public static Random random = new Random();
 
@@ -96,7 +143,9 @@ public class CommonEventHandler {
         }
     }
 
-    public static void enhance(NonNullList<ItemStack> armorInventory, Map<Enchantment, Integer> enchants, ItemStack stack, ItemArmor[] array, int i) {
+    public static void enhance
+        (NonNullList<ItemStack> armorInventory, Map<Enchantment, Integer> enchants, ItemStack stack, ItemArmor[]
+            array, int i) {
         enchants.remove(ENHANCE);
         EnchantmentHelper.setEnchantments(enchants, stack);
         NBTTagCompound oldCompound = stack.getTagCompound();
@@ -146,7 +195,8 @@ public class CommonEventHandler {
         }
     }
 
-    private static void convertDrop(ItemStack tool, ItemStack result, ItemStack drop, ListIterator<ItemStack> iter) {
+    private static void convertDrop(ItemStack tool, ItemStack result, ItemStack
+        drop, ListIterator<ItemStack> iter) {
         result = result.copy();
         result.setCount(drop.getCount());
         int fortune = getEnchantmentLevel(Enchantments.FORTUNE, tool);
@@ -155,7 +205,6 @@ public class CommonEventHandler {
         }
         iter.set(result);
     }
-
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLivingDrops(LivingDropsEvent event) {

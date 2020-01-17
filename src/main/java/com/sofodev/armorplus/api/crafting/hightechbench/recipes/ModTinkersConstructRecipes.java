@@ -24,23 +24,21 @@ public class ModTinkersConstructRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         if (LoaderUtils.isTiCLoaded()) {
             switch (getRD()) {
-                case EASY: {
+                case EASY:
                     createEasyArmorSetRecipes(recipes.enableArditeArmorRecipes, manager, "ingotArdite", getItem("ardite_helmet"), getItem("ardite_chestplate"), getItem("ardite_leggings"), getItem("ardite_boots"));
                     createEasyArmorSetRecipes(recipes.enableCobaltArmorRecipes, manager, "ingotCobalt", getItem("cobalt_helmet"), getItem("cobalt_chestplate"), getItem("cobalt_leggings"), getItem("cobalt_boots"));
                     createEasyArmorSetRecipes(recipes.enableKnightSlimeArmorRecipes, manager, "ingotKnightslime", getItem("knight_slime_helmet"), getItem("knight_slime_chestplate"), getItem("knight_slime_leggings"), getItem("knight_slime_boots"));
                     createEasyArmorSetRecipes(recipes.enableManyullynArmorRecipes, manager, "ingotManyullyn", getItem("manyullyn_helmet"), getItem("manyullyn_chestplate"), getItem("manyullyn_leggings"), getItem("manyullyn_boots"));
                     createEasyArmorSetRecipes(recipes.enablePigIronArmorRecipes, manager, "ingotPigiron", getItem("pig_iron_helmet"), getItem("pig_iron_chestplate"), getItem("pig_iron_leggings"), getItem("pig_iron_boots"));
                     break;
-                }
                 case EXPERT:
-                case HELLISH: {
+                case HELLISH:
                     createExpertArmorSetRecipes(recipes.enableArditeArmorRecipes, manager, "blockArdite", "ingotArdite", getItem("ardite_helmet"), getItem("ardite_chestplate"), getItem("ardite_leggings"), getItem("ardite_boots"));
                     createExpertArmorSetRecipes(recipes.enableCobaltArmorRecipes, manager, "blockCobalt", "ingotCobalt", getItem("cobalt_helmet"), getItem("cobalt_chestplate"), getItem("cobalt_leggings"), getItem("cobalt_boots"));
                     createExpertArmorSetRecipes(recipes.enableKnightSlimeArmorRecipes, manager, "blockKnightslime", "ingotKnightslime", getItem("knight_slime_helmet"), getItem("knight_slime_chestplate"), getItem("knight_slime_leggings"), getItem("knight_slime_boots"));
                     createExpertArmorSetRecipes(recipes.enableManyullynArmorRecipes, manager, "blockManyullyn", "ingotManyullyn", getItem("manyullyn_helmet"), getItem("manyullyn_chestplate"), getItem("manyullyn_leggings"), getItem("manyullyn_boots"));
                     createExpertArmorSetRecipes(recipes.enablePigIronArmorRecipes, manager, "blockPigiron", "ingotPigiron", getItem("pig_iron_helmet"), getItem("pig_iron_chestplate"), getItem("pig_iron_leggings"), getItem("pig_iron_boots"));
                     break;
-                }
             }
         }
     }

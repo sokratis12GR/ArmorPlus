@@ -17,14 +17,13 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModSuperStarRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableSuperStarArmorRecipes) {
                     UTBRecipesHelper.registerEasyArmorSetRecipes(manager, 2, superStarHelmet, superStarChestplate, superStarLeggings, superStarBoots);
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableSuperStarArmorRecipes) {
                     manager.addRecipe(getItemStack(superStarHelmet),
                         "SWWNWWS",
@@ -139,7 +138,6 @@ public class ModSuperStarRecipes {
                         'S', Blocks.SOUL_SAND);
                 }
                 break;
-            }
         }
     }
 }

@@ -28,6 +28,7 @@ public class GuiHandler implements IGuiHandler {
     public static final int GUI_ULTI_TECH_BENCH = 4;
     public static final int GUI_CHAMPION_BENCH = 5;
     public static final int GUI_LAVA_INFUSER = 9;
+    public static final int GUI_MAP_DEVICE = 11;
 
     @Nullable
     @Override
@@ -57,6 +58,10 @@ public class GuiHandler implements IGuiHandler {
             case GUI_LAVA_INFUSER:
                 if (te instanceof TileLavaInfuser)
                     return new ContainerLavaInfuser(player.inventory, (TileLavaInfuser) te);
+                break;
+            case GUI_MAP_DEVICE:
+                if (te instanceof TileEntityMapDevice)
+                    return new ContainerMapDevice(player.inventory, (TileEntityMapDevice) te);
                 break;
             default:
                 return null;
@@ -93,6 +98,10 @@ public class GuiHandler implements IGuiHandler {
             case GUI_LAVA_INFUSER:
                 if (te instanceof TileLavaInfuser)
                     return new GuiLavaInfuser(player.inventory, (TileLavaInfuser) te);
+                break;
+            case GUI_MAP_DEVICE:
+                if (te instanceof TileEntityMapDevice)
+                    return new GuiMapDevice(player.inventory, (TileEntityMapDevice) te);
                 break;
             default:
                 return null;

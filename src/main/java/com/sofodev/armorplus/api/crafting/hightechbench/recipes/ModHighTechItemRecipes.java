@@ -42,7 +42,7 @@ public class ModHighTechItemRecipes {
             "scaleEnderDragon",
             "scaleGuardian",
             "witherBone",
-            "gemChargedLavaCrystal"));
+            "gemInfusedLavaCrystal"));
         if (recipes.enableArrowRecipes) {
             createArrowRecipes(manager, itemLavaArrow, getItemStack(infusedLavaCrystal), getItemStack(blockLavaInfusedObsidian));
             createArrowRecipes(manager, itemObsidianArrow, getItemStack(OBSIDIAN), getItemStack(blockCompressedObsidian));

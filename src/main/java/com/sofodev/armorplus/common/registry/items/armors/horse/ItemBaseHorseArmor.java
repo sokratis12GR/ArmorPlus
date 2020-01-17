@@ -63,12 +63,6 @@ public class ItemBaseHorseArmor extends ItemBase {
         return null;
     }
 
-    @Nullable
-    @Override
-    public CreativeTabs getCreativeTab() {
-        return null;
-    }
-
     @Override
     @SideOnly(Side.CLIENT)
     public String getHorseArmorTexture(EntityLiving wearer, ItemStack stack) {
@@ -82,6 +76,6 @@ public class ItemBaseHorseArmor extends ItemBase {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        this.initModel(material.getName());
+        this.initModel("horse");
     }
 }

@@ -54,7 +54,7 @@ public class UTBRecipesHelper {
         manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(battleAxe),
             " E   E ",
             "E  S  E",
-            " EESEE ",
+            " SSSSS ",
             "E  S  E",
             " E S E ",
             "   S   ",

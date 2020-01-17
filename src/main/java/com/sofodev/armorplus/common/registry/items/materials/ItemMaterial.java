@@ -61,13 +61,13 @@ public class ItemMaterial extends Item implements IModdedItem {
         if (i == 0) {
             return this.getRarity(GRAY, "Chainmail");
         } else if (i == 1) {
-            return this.getRarity(AQUA, "Guardian Scale");
+            return this.getRarity(BLUE, "Guardian Scale");
         } else if (i == 2) {
             return this.getRarity(WHITE, "Wither Bone");
         } else if (i == 3) {
             return this.getRarity(DARK_PURPLE, "Ender Dragon Scale");
         } else if (i == 4) {
-            return this.getRarity(GREEN, "The Ultimate MaterialType");
+            return this.getRarity(DARK_PURPLE, "The Ultimate Material");
         }
         return this.getRarity(WHITE, "Default");
     }

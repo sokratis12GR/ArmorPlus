@@ -136,7 +136,6 @@ public class BlockLavaCactus extends BlockCactus implements IModdedBlock {
         return this.getDefaultState().withProperty(BlockCactus.AGE, meta);
     }
 
-
     @Override
     public BlockRenderLayer getRenderLayer() {
         return CUTOUT;

@@ -17,14 +17,13 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModGuardianRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableGuardianArmorRecipes) {
                     UTBRecipesHelper.registerEasyArmorSetRecipes(manager, 1, guardianHelmet, guardianChestplate, guardianLeggings, guardianBoots);
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableGuardianArmorRecipes) {
                     manager.addRecipe(getItemStack(guardianHelmet),
                         "GPGPGPG",
@@ -140,7 +139,6 @@ public class ModGuardianRecipes {
                         'S', Blocks.SPONGE);
                 }
                 break;
-            }
         }
     }
 }

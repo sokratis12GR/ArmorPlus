@@ -10,6 +10,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 
+import java.util.stream.IntStream;
+
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 
 /**
@@ -39,8 +41,8 @@ public abstract class ContainerBase extends Container {
             }
         }
 
-        for (int index = 0; index < PLAYER_ROW_SLOTS; index++) {
-            this.addSlotToContainer(new Slot(playerInventory, index, xPos + index * ITEM_BOX, yFirstRow));
-        }
+        IntStream.range(0, PLAYER_ROW_SLOTS)
+            .mapToObj(index -> new Slot(playerInventory, index, xPos + index * ITEM_BOX, yFirstRow))
+            .forEach(this::addSlotToContainer);
     }
 }

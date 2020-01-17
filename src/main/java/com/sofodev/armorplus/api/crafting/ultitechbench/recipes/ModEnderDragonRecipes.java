@@ -19,14 +19,13 @@ public class ModEnderDragonRecipes {
 
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableEnderDragonArmorRecipes) {
                     registerEasyArmorSetRecipes(manager, 3, enderDragonHelmet, enderDragonChestplate, enderDragonLeggings, enderDragonBoots);
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableEnderDragonArmorRecipes) {
                     manager.addRecipe(getItemStack(enderDragonHelmet),
                         "CEEEEEC",
@@ -141,7 +140,6 @@ public class ModEnderDragonRecipes {
                         'C', Items.END_CRYSTAL);
                 }
                 break;
-            }
         }
     }
 }

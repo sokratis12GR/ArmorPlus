@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.api.lavainfuser;
 
 import com.sofodev.armorplus.common.registry.ModItems;
+import com.sofodev.armorplus.common.registry.items.materials.ItemLavaCrystal;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -32,6 +33,16 @@ public class SlotLavaInfuserFuel extends Slot {
 
     @Override
     public int getItemStackLimit(ItemStack stack) {
-        return isAllowed(stack) ? 1 : super.getItemStackLimit(stack);
+        int stackSize;
+        if (isAllowed(stack)) {
+            if (stack.getItem() == Items.LAVA_BUCKET) {
+                stackSize = 1;
+                return stackSize;
+            } else if (stack.getItem() instanceof ItemLavaCrystal) {
+                stackSize = 64;
+                return stackSize;
+            }
+        }
+        return super.getItemStackLimit(stack);
     }
 }

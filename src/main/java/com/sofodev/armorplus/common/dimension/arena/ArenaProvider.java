@@ -26,7 +26,7 @@ public class ArenaProvider extends WorldProvider {
 
     @Override
     public DimensionType getDimensionType() {
-        return ModDimensions.arenaDimension;
+        return ModDimensions.ARENA;
     }
 
     @Override

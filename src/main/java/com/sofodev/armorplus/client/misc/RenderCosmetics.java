@@ -11,8 +11,10 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,10 +24,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class RenderCosmetics {
 
+    public Item renderedItem;
     public ItemStack renderedStack;
 
-    public RenderCosmetics(ItemStack renderedItemStack) {
-        this.renderedStack = renderedItemStack;
+    public RenderCosmetics(Item renderedItem) {
+        this.renderedItem = renderedItem;
+        this.renderedStack = new ItemStack(renderedItem);
+    }
+
+    public RenderCosmetics(ItemStack renderedStack) {
+        this.renderedItem = renderedStack.getItem();
+        this.renderedStack = renderedStack;
     }
 
     @SideOnly(Side.CLIENT)
@@ -84,5 +93,23 @@ public class RenderCosmetics {
             GlStateManager.popMatrix();
         }
     }
+
+    @SideOnly(Side.CLIENT)
+    public static void renderInPos(RenderCosmetics cosmetics, float partialTicks, BlockPos pos) {
+        GlStateManager.translate(pos.getX(), pos.getY(), pos.getZ());
+        GlStateManager.translate(0.0,  1+ 0.1875, 0.0);
+        // GlStateManager.rotate(180f, 1.0f, 0.0f, 1.0f);
+
+        float size = 0.4f;
+        renderSize(size);
+        GlStateManager.translate(0.0, 0.5, 0.0);
+        //   GlStateManager.rotate(180f, 1f, 0f, 0f);
+        renderItemInWorld(cosmetics.renderedStack);
+        GlStateManager.popMatrix();
+        GlStateManager.enableLighting();
+
+        GlStateManager.popMatrix();
+    }
+
 
 }

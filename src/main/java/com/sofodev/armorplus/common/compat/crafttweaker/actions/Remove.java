@@ -4,30 +4,32 @@
 
 package com.sofodev.armorplus.common.compat.crafttweaker.actions;
 
-import com.sofodev.armorplus.api.crafting.IRecipe;
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
-import com.sofodev.armorplus.common.compat.crafttweaker.CTArmorPlusPlugin;
 import crafttweaker.IAction;
 import net.minecraft.item.ItemStack;
 
-import java.util.List;
-
 import static java.lang.String.format;
+import static net.minecraft.item.ItemStack.areItemsEqual;
 
 public class Remove implements IAction {
-    private final String name;
+    private BaseCraftingManager manager;
+    private String name;
     private ItemStack remove;
-    private List<IRecipe> recipes;
 
     public Remove(BaseCraftingManager manager, ItemStack remove) {
-        this.recipes = manager.getRecipeList();
+        this.manager = manager;
         this.name = manager.getName();
         this.remove = remove;
     }
 
     @Override
     public void apply() {
-        CTArmorPlusPlugin.removeRecipe(recipes, remove);
+        manager.getRecipeList().stream().filter(
+            iRecipe -> iRecipe != null && areItemsEqual(iRecipe.getRecipeOutput(), remove)
+        ).forEach(
+            iRecipe -> manager.getRecipeList().remove(iRecipe)
+        );
+        // CTArmorPlusPlugin.removeRecipe(manager, remove);
     }
 
     @Override

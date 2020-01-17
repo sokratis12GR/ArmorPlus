@@ -1,8 +1,9 @@
 {
 	"credit": "Created by Sokratis Fotkatzikis",
 	"textures": {
-		"1": "armorplus:swords/excalibur",
-		"particle": "armorplus:swords/excalibur"
+		"0": "armorplus:blocks/stone_bot",
+		"1": "armorplus:blocks/stone_top",
+		"particle": "armorplus:blocks/stone_top"
 	},
 	"elements": [
 		{
@@ -10,12 +11,12 @@
 			"from": [0, 0, 0],
 			"to": [16, 2, 16],
 			"faces": {
-				"north": {"uv": [4, 4, 8, 4.5], "texture": "#1"},
-				"east": {"uv": [0, 4, 4, 4.5], "texture": "#1"},
-				"south": {"uv": [12, 4, 16, 4.5], "texture": "#1"},
-				"west": {"uv": [8, 4, 12, 4.5], "texture": "#1"},
-				"up": {"uv": [8, 4, 4, 0], "texture": "#1"},
-				"down": {"uv": [12, 0, 8, 4], "texture": "#1"}
+				"north": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"up": {"uv": [16, 16, 0, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
 			}
 		},
 		{
@@ -23,12 +24,12 @@
 			"from": [2, 2, 2],
 			"to": [14, 5, 14],
 			"faces": {
-				"north": {"uv": [3, 7.5, 6, 8.25], "texture": "#1"},
-				"east": {"uv": [0, 7.5, 3, 8.25], "texture": "#1"},
-				"south": {"uv": [9, 7.5, 12, 8.25], "texture": "#1"},
-				"west": {"uv": [6, 7.5, 9, 8.25], "texture": "#1"},
-				"up": {"uv": [6, 7.5, 3, 4.5], "texture": "#1"},
-				"down": {"uv": [9, 4.5, 6, 7.5], "texture": "#1"}
+				"north": {"uv": [2, 0, 14, 3], "texture": "#1"},
+				"east": {"uv": [2, 0, 14, 3], "texture": "#1"},
+				"south": {"uv": [2, 0, 14, 3], "texture": "#1"},
+				"west": {"uv": [2, 0, 14, 3], "texture": "#1"},
+				"up": {"uv": [14, 14, 2, 2], "texture": "#1"},
+				"down": {"uv": [14, 2, 2, 14], "texture": "#1"}
 			}
 		}
 	],
@@ -69,11 +70,6 @@
 		}
 	},
 	"groups": [
-		{
-			"name": "blade",
-			"origin": [8, 8, 8],
-			"children": []
-		},
 		{
 			"name": "rock",
 			"origin": [8, 8, 8],

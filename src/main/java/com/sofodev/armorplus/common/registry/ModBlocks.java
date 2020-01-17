@@ -12,14 +12,17 @@ import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickC
 import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickTower;
 import com.sofodev.armorplus.common.registry.blocks.castle.base.BlockStoneBrickWall;
 import com.sofodev.armorplus.common.registry.blocks.dungeon.BlockDungeonEnder;
+import com.sofodev.armorplus.common.registry.blocks.dungeon.BlockEnderPillar;
 import com.sofodev.armorplus.common.registry.blocks.dungeon.EnderType;
 import com.sofodev.armorplus.common.registry.blocks.lava.*;
 import com.sofodev.armorplus.common.registry.blocks.metals.BlockMetal;
 import com.sofodev.armorplus.common.registry.blocks.normal.BlockCompressedObsidian;
-import com.sofodev.armorplus.common.registry.blocks.special.BlockEmptyDisplay;
-import com.sofodev.armorplus.common.registry.blocks.special.BlockSwordDisplay;
-import com.sofodev.armorplus.common.registry.blocks.special.BlockTrophy;
-import com.sofodev.armorplus.common.registry.blocks.special.Trophy;
+import com.sofodev.armorplus.common.registry.blocks.special.decorative.BlockEmptyDisplay;
+import com.sofodev.armorplus.common.registry.blocks.special.decorative.BlockSwordDisplay;
+import com.sofodev.armorplus.common.registry.blocks.special.decorative.BlockTrophy;
+import com.sofodev.armorplus.common.registry.blocks.special.decorative.Trophy;
+import com.sofodev.armorplus.common.registry.blocks.special.tp.BlockMapDevice;
+import com.sofodev.armorplus.common.registry.blocks.special.tp.BlockPortal;
 import com.sofodev.armorplus.common.registry.items.base.special.Swords;
 import com.sofodev.armorplus.common.tileentity.*;
 import com.sofodev.armorplus.common.util.Utils;
@@ -36,6 +39,7 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.registry.blocks.lava.BlockLavaMaterial.LavaMaterial.*;
 import static com.sofodev.armorplus.common.registry.blocks.metals.Metals.ELECTRICAL;
 import static com.sofodev.armorplus.common.registry.blocks.metals.Metals.STEEL;
+import static com.sofodev.armorplus.common.registry.items.ItemCombinedMap.Variants.*;
 import static com.sofodev.armorplus.common.tileentity.TileLavaInfuser.registerFixesLavaInfuser;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static java.util.Arrays.setAll;
@@ -66,11 +70,24 @@ public class ModBlocks {
     public static BlockLavaMaterial blockCompressedInfusedLavaCrystal = new BlockLavaMaterial(COMPRESSED_INFUSED_LAVA_CRYSTAL);
     public static BlockLavaMaterial blockLavaInfusedObsidian = new BlockLavaMaterial(LAVA_INFUSED_OBSIDIAN);
     //  public static BlockRitualAltar ritualAltar = new BlockRitualAltar();
-    public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[7];
+    public static BlockDungeonEnder[] enderBlocks = new BlockDungeonEnder[6];
+    public static BlockEnderPillar enderPillar = new BlockEnderPillar();
     public static BlockTrophy[] trophies = new BlockTrophy[42];
     public static BlockMeltingObsidian blockMeltingObsidian = new BlockMeltingObsidian();
     public static BlockSwordDisplay[] blockSwordDisplays = new BlockSwordDisplay[Swords.values().length];
     public static BlockEmptyDisplay blockEmptyDisplay = new BlockEmptyDisplay();
+    public static BlockMapDevice blockMapDevice = new BlockMapDevice();
+    //Currently Usable Portals
+    public static BlockPortal portal = new BlockPortal(MAP);
+    public static BlockPortal overworldPortal = new BlockPortal(MAP_OF_OVERWORLD);
+    public static BlockPortal netherPortal = new BlockPortal(MAP_OF_THE_NETHER);
+    public static BlockPortal endPortal = new BlockPortal(MAP_OF_THE_END);
+    //Extras
+    public static BlockPortal arenaPortal = new BlockPortal(MAP_OF_ARENA);
+    public static BlockPortal shaperPortal = new BlockPortal(MAP_OF_THE_SHAPER);
+    public static BlockPortal elderPortal = new BlockPortal(MAP_OF_THE_ELDER);
+    public static BlockPortal sacrificePortal = new BlockPortal(MAP_OF_SACRIFICE);
+    public static BlockPortal realmPortal = new BlockPortal(MAP_OF_THE_REALM);
     // public static BlockBTMMoon blockBTMMoon = new BlockBTMMoon();
 
     public static void registerBlocks() {
@@ -103,7 +120,8 @@ public class ModBlocks {
         registerAllBlocks(event, benches);
         registerAllBlocks(event,
             oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, blockLavaNetherBrick, lavaCactus, lavaInfuser, lavaInfuserInfusing,
-            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian
+            blockLavaInfusedObsidian, blockLavaCrystal, blockInfusedLavaCrystal, blockCompressedLavaCrystal, blockCompressedInfusedLavaCrystal, blockMeltingObsidian,
+            blockMapDevice
         );
         registerAllBlocks(event, stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
         //registerAllBlocks(event, blockBTMMoon);
@@ -111,6 +129,8 @@ public class ModBlocks {
         registerAllBlocks(event, enderBlocks, trophies);
         registerAllBlocks(event, blockSwordDisplays);
         registerAllBlocks(event, blockEmptyDisplay);
+        registerAllBlocks(event, portal, overworldPortal, netherPortal, endPortal, arenaPortal, sacrificePortal, realmPortal, shaperPortal, elderPortal);
+        registerAllBlocks(event, enderPillar);
         registerTileEntities();
         registerTEFixes();
     }
@@ -127,5 +147,8 @@ public class ModBlocks {
         registerTileEntity(TileUTB.class, setRL("ulti_tech_tile_entity"));
         registerTileEntity(TileCB.class, setRL("champion_tile_entity"));
         registerTileEntity(TileTrophy.class, setRL("trophy_tile_entity"));
+        registerTileEntity(TilePortal.class, setRL("portal_tile_entity"));
+        registerTileEntity(TileEntityMapDevice.class, setRL("map_device_tile_entity"));
+        registerTileEntity(TileSwordDisplay.class, setRL("sword_display_tile_entity"));
     }
 }

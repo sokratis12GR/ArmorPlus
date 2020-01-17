@@ -43,10 +43,10 @@ public class ModConfig {
         public static int realmDimensionID = 121;
 
         @Comment({"Too unstable, unfinished to be enabled by default."})
-        public static boolean enableArenaDimension = false;
+        public static boolean enableTheArenaDimension = false;
 
         @Comment({"Enable/Disable the realm of insanity"})
-        public static boolean enableRealmOfInsanity = true;
+        public static boolean enableRealmOfInsanity = false;
     }
 
     @Config(modid = MODID, name = "armorplus/config", category = "")
@@ -315,9 +315,9 @@ public class ModConfig {
 
         @Comment({"Configurations for the Lapis MaterialType"})
         public static OriginMaterial lapis = new OriginMaterial(
-            new CombinedArmor("dark_blue", "water_breathing", false, new Armor(1, 2, 3, 2)),
-            new CombinedWeapon("dark_blue", "nausea", 1, new WeaponSet(1.0, -1.5, 200)),
-            new CombinedTool("dark_blue", new ToolSet(6.0F, 200))
+            new CombinedArmor("blue", "water_breathing", false, new Armor(1, 2, 3, 2)),
+            new CombinedWeapon("blue", "nausea", 1, new WeaponSet(1.0, -1.5, 200)),
+            new CombinedTool("blue", new ToolSet(6.0F, 200))
         );
 
         @Comment({"Configurations for the Redstone MaterialType"})
@@ -350,9 +350,9 @@ public class ModConfig {
 
         @Comment({"Configurations for the Guardian MaterialType"})
         public static OriginMaterial guardian = new OriginMaterial(
-            new CombinedArmor("aqua", "water_breathing", false, new Armor(2.0, 4, 7, 8, 3)),
-            new CombinedWeapon("aqua", "nausea", 1, new WeaponSet(6.0, 1.5, 1800)),
-            new CombinedTool("aqua", new ToolSet(15.0F, 1800))
+            new CombinedArmor("blue", "water_breathing", false, new Armor(2.0, 4, 7, 8, 3)),
+            new CombinedWeapon("blue", "nausea", 1, new WeaponSet(6.0, 1.5, 1800)),
+            new CombinedTool("blue", new ToolSet(15.0F, 1800))
         );
 
         @Comment({"Configurations for the Super Star MaterialType"})
@@ -600,7 +600,7 @@ public class ModConfig {
                 @Comment({"Set the duration for the effect(s) by the armor. (in seconds)"})
                 public int[] effectDurations = {12, 12};
                 @Comment({"Set the color name the armor will have"})
-                public String itemNameColor = "green";
+                public String itemNameColor = "dark_purple";
                 @Comment({"Set the amount of toughness points the armor will have"})
                 public double toughnessPoints = 3.0;
                 @Comment({"Set the amount of protection points the armor will have (boots, leggings, chestplate, helmet)"})
@@ -616,6 +616,10 @@ public class ModConfig {
         }
 
         public static class RegistryRecipes {
+            @Comment({"Enable/Disable The Steel Ingot Recipes"})
+            public boolean enableSteelIngotRecipes = true;
+            @Comment({"Enable/Disable The Electrical Ingot Recipes"})
+            public boolean enableElectricalIngotRecipes = true;
             @Comment({"Enable/Disable The Redstone Apple Recipes"})
             public boolean enableRedstoneAppleRecipes = true;
             @Comment({"Enable/Disable The Elytra Recipe"})

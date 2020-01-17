@@ -7,7 +7,7 @@ package com.sofodev.armorplus.common.registry.items.base;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.common.iface.IModdedItem;
 import com.sofodev.armorplus.common.registry.ModBlocks;
-import com.sofodev.armorplus.common.registry.blocks.special.BlockSwordDisplay;
+import com.sofodev.armorplus.common.registry.blocks.special.decorative.BlockSwordDisplay;
 import com.sofodev.armorplus.common.registry.items.base.special.Swords;
 import com.sofodev.armorplus.common.util.ArmorPlusItemUtils;
 import net.minecraft.block.Block;

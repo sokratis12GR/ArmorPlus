@@ -54,6 +54,8 @@ public class APTab extends CreativeTabs {
             return addTabItemStack(ModItems.pickaxe[5]);
         } else if (tab == 5) {
             return addTabItemStack(BLOCKS.getValue(setRL("trophy")));
+        } else if (tab == 6) {
+            return addTabItemStack(APItems.theUltimateChestplate);
         }
         return ItemStack.EMPTY;
     }

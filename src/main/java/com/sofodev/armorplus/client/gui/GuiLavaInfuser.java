@@ -38,23 +38,23 @@ public class GuiLavaInfuser extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(AP_LAVA_INFUSER_GUI_TEXTURES);
-        int i = (this.width - this.xSize) / 2;
-        int j = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+        int x = (this.width - this.xSize) / 2;
+        int y = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 
-        int l = this.getInfusionProgressScaled(24);
-        this.drawTexturedModalRect(i + 91, j + 34, 176, 44, l + 1, 16);
+        int arrowSize = this.getInfusionProgressScaled(24);
+        this.drawTexturedModalRect(x + 105, y + 35, 176, 44, arrowSize + 1, 16);
 
         if (TileLavaInfuser.isInfusing(this.tile)) {
             int k = this.getInfuseLeftScaled(33);
-            this.drawTexturedModalRect(i + 8, j + 21 + 43 - k, 176, 43 - k, 16, k + 1);
+            this.drawTexturedModalRect(x + 42, y + 22 + 38 - k, 176, 37 - k, 16, k + 1);
         }
     }
 
     private int getInfusionProgressScaled(int pixels) {
-        int i = this.tile.getField(2);
-        int j = this.tile.getField(3);
-        return (j != 0 && i != 0) ? i * pixels / j : 0;
+        int x = this.tile.getField(2);
+        int y = this.tile.getField(3);
+        return (y != 0 && x != 0) ? x * pixels / y : 0;
     }
 
     private int getInfuseLeftScaled(int pixels) {

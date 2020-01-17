@@ -19,7 +19,7 @@ import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 public class ModWeaponTierThreeRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableSwordsRecipes) {
                     registerSwordRecipe(manager, "scaleGuardian", guardianSword);
                     registerSwordRecipe(manager, "witherBone", superStarSword);
@@ -41,9 +41,8 @@ public class ModWeaponTierThreeRecipes {
                     registerPickaxeRecipe(manager, "scaleEnderDragon", pickaxe[8]);
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableSwordsRecipes) {
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(guardianSword),
                         "   E   ",
@@ -53,8 +52,8 @@ public class ModWeaponTierThreeRecipes {
                         "   E   ",
                         " SSESS ",
                         "   S   ",
-                        'E', "scaleGuardian",
-                        'S', "gemPrismarine"));
+                        'S', "scaleGuardian",
+                        'E', "gemPrismarine"));
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(superStarSword),
                         "   S   ",
                         "   S   ",
@@ -81,32 +80,32 @@ public class ModWeaponTierThreeRecipes {
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(guardianBattleAxe),
                         " E   E ",
                         "E  S  E",
-                        " ESESE ",
+                        " SSSSS ",
                         "E  S  E",
                         " E S E ",
                         "   S   ",
                         "   S   ",
-                        'E', "scaleGuardian",
-                        'S', "gemPrismarine"));
+                        'S', "scaleGuardian",
+                        'E', "gemPrismarine"));
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(superStarBattleAxe),
-                        " S   S ",
-                        "S  H  S",
-                        " SESES ",
-                        "S  E  S",
-                        " S E S ",
-                        "   E   ",
-                        "   E   ",
+                        " E   E ",
+                        "E  H  E",
+                        " SSSSS ",
+                        "E  S  E",
+                        " E S E ",
+                        "   S   ",
+                        "   S   ",
                         'S', "witherBone",
                         'E', Items.NETHER_STAR,
                         'H', getItemStack(Items.SKULL, 1)));
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(enderDragonBattleAxe),
-                        " S   S ",
-                        "S  E  S",
-                        " SESES ",
-                        "S  E  S",
-                        " S E S ",
-                        "   E   ",
-                        "   E   ",
+                        " E   E ",
+                        "E  S  E",
+                        " SSSSS ",
+                        "E  S  E",
+                        " E S E ",
+                        "   S   ",
+                        "   S   ",
                         'S', "scaleEnderDragon",
                         'E', Items.DRAGON_BREATH));
                 }
@@ -186,8 +185,8 @@ public class ModWeaponTierThreeRecipes {
                         "   S   ",
                         "   S   ",
                         "   S   ",
-                        'E', "scaleGuardian",
-                        'S', "gemPrismarine"));
+                        'S', "scaleGuardian",
+                        'E', "gemPrismarine"));
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe[7]),
                         " EEEEE ",
                         "EEEHEEE",
@@ -196,8 +195,8 @@ public class ModWeaponTierThreeRecipes {
                         "   S   ",
                         "   S   ",
                         "   S   ",
-                        'E', "witherBone",
-                        'S', Items.NETHER_STAR,
+                        'S', "witherBone",
+                        'E', Items.NETHER_STAR,
                         'H', getItemStack(Items.SKULL, 1)));
                     manager.addRecipe(new BaseShapedOreRecipe(7, getItemStack(pickaxe[8]),
                         " EEEEE ",
@@ -207,11 +206,10 @@ public class ModWeaponTierThreeRecipes {
                         "   S   ",
                         "   S   ",
                         "   S   ",
-                        'E', "scaleEnderDragon",
-                        'S', Items.DRAGON_BREATH));
+                        'S', "scaleEnderDragon",
+                        'E', Items.DRAGON_BREATH));
                 }
                 break;
-            }
         }
     }
 }

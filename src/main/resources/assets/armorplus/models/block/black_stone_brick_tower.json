@@ -1,354 +1,75 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "particle": "armorplus:blocks/black_stone_brick",
-    "0": "armorplus:blocks/black_stone_brick"
-  },
-  "elements": [
-    {
-      "name": "Base",
-      "from": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "to": [
-        16.0,
-        13.0,
-        16.0
-      ],
-      "faces": {
-        "north": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        },
-        "east": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        },
-        "south": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        },
-        "west": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        },
-        "up": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        },
-        "down": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            1.0,
-            16.0,
-            16.0
-          ]
-        }
-      }
-    },
-    {
-      "name": "Top-One",
-      "from": [
-        0.0,
-        13.0,
-        0.0
-      ],
-      "to": [
-        3.0,
-        16.0,
-        3.0
-      ],
-      "faces": {
-        "north": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "east": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "south": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "west": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "up": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        },
-        "down": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        }
-      }
-    },
-    {
-      "name": "Top-Two",
-      "from": [
-        0.0,
-        13.0,
-        13.0
-      ],
-      "to": [
-        3.0,
-        16.0,
-        16.0
-      ],
-      "faces": {
-        "north": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "east": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "south": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "west": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "up": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        },
-        "down": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        }
-      }
-    },
-    {
-      "name": "Top-Three",
-      "from": [
-        13.0,
-        13.0,
-        0.0
-      ],
-      "to": [
-        16.0,
-        16.0,
-        3.0
-      ],
-      "faces": {
-        "north": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "east": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "south": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "west": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "up": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        },
-        "down": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        }
-      }
-    },
-    {
-      "name": "Top-Four",
-      "from": [
-        13.0,
-        13.0,
-        13.0
-      ],
-      "to": [
-        16.0,
-        16.0,
-        16.0
-      ],
-      "faces": {
-        "north": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "east": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "south": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "west": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            3.0
-          ]
-        },
-        "up": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        },
-        "down": {
-          "texture": "#0",
-          "uv": [
-            0.0,
-            0.0,
-            3.0,
-            1.0
-          ]
-        }
-      }
-    }
-  ]
+	"credit": "Created by Sokratis Fotkatzikis",
+	"parent": "block/cube_all",
+	"textures": {
+		"0": "armorplus:blocks/black_stone_brick",
+		"particle": "armorplus:blocks/black_stone_brick"
+	},
+	"elements": [
+		{
+			"name": "Base",
+			"from": [0, 0, 0],
+			"to": [16, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 1, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 1, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 1, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 1, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 1, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 1, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Top-One",
+			"from": [0, 13, 0],
+			"to": [3, 16, 3],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Top-Two",
+			"from": [0, 13, 13],
+			"to": [3, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Top-Three",
+			"from": [13, 13, 0],
+			"to": [16, 16, 3],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Top-Four",
+			"from": [13, 13, 13],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#0"}
+			}
+		}
+	]
 }

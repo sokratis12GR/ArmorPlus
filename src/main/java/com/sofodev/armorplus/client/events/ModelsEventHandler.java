@@ -42,11 +42,11 @@ public class ModelsEventHandler {
             oreLavaCrystal, blockCompressedObsidian, steelBlock, electricalBlock, lavaInfuser, lavaInfuserInfusing, lavaCactus, blockLavaNetherBrick
         );
         register(stoneBricks, stoneBrickTowers, stoneBrickCorners, stonebrickWalls);
-        //   register(blockBTMMoon);
-        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         register(enderBlocks);
+        register(enderPillar);
         register(trophies, blockSwordDisplays);
         register(blockEmptyDisplay);
+        register(blockMapDevice);
     }
 
     @SubscribeEvent
@@ -71,6 +71,7 @@ public class ModelsEventHandler {
         }
         register(chain, iron, gold, diamond);
         register(pickaxe, fragments, maps);
+        register(skeletalDungeon, overlordDungeon, demonicDungeon);
     }
 
     @SubscribeEvent
@@ -79,6 +80,7 @@ public class ModelsEventHandler {
         registerEntityRenderingHandler(EntityEnderDragonZombie.class, RenderEnderDragonZombie.FACTORY);
         registerEntityRenderingHandler(EntityIceGolem.class, RenderIceGolem::new);
         //Arrows
+        //registerEntityRenderingHandler(EntityCoalArrow.class, rm -> new Render3DArrow(rm, "base"));
         registerRenderingHandler(EntityCoalArrow.class, "coal");
         registerRenderingHandler(EntityLapisArrow.class, "lapis");
         registerRenderingHandler(EntityRedstoneArrow.class, "redstone");
@@ -88,7 +90,6 @@ public class ModelsEventHandler {
         registerRenderingHandler(EntityGuardianArrow.class, "guardian");
         registerRenderingHandler(EntitySuperStarArrow.class, "super_star");
         registerRenderingHandler(EntityEnderDragonArrow.class, "ender_dragon");
-        //TODO: Finish the Dungeons: Blocks, Bosses, Abilities, Mechanics
         //Bosses
         registerEntityRenderingHandler(EntityGuardianOverlord.class, RenderGuardianOverlord::new);
         registerEntityRenderingHandler(EntitySkeletalKing.class, RenderSkeletalKing::new);

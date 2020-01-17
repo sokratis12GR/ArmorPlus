@@ -35,10 +35,13 @@ public class ModItemRecipes {
             "LOL",
             'S', "netherStar",
             'O', "obsidian",
-            'L', "gemChargedLavaCrystal"));
+            'L', "gemInfusedLavaCrystal"));
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 9), "blockSteel"));
-        manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 1), "itemCharcoal", "ingotIron", "gemChargedLavaCrystal"));
+        if (recipes.enableSteelIngotRecipes) {
+            manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 1), "itemCharcoal", "ingotIron", "gemInfusedLavaCrystal"));
+        }
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 9), "blockElectrical"));
+
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(workbench),
             "LCL",
             "OTO",
@@ -51,7 +54,7 @@ public class ModItemRecipes {
             "LLL",
             "CAC",
             "CCC",
-            'C', "gemChargedLavaCrystal",
+            'C', "gemInfusedLavaCrystal",
             'L', "blockRedstone",
             'A', "apWorkbench"));
         //   if (isTeslaLoaded()) {

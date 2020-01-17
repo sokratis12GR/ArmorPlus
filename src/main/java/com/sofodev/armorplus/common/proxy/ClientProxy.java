@@ -7,8 +7,12 @@ package com.sofodev.armorplus.common.proxy;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.client.misc.CosmeticsRenderInit;
 import com.sofodev.armorplus.common.compat.tinkers.TiCMaterials;
-import com.sofodev.armorplus.common.tileentity.TESRTrophy;
+import com.sofodev.armorplus.common.tileentity.TilePortal;
+import com.sofodev.armorplus.common.tileentity.TileSwordDisplay;
 import com.sofodev.armorplus.common.tileentity.TileTrophy;
+import com.sofodev.armorplus.common.tileentity.tesr.TESRPortal;
+import com.sofodev.armorplus.common.tileentity.tesr.TESRSwordDisplay;
+import com.sofodev.armorplus.common.tileentity.tesr.TESRTrophy;
 import com.sofodev.armorplus.common.util.LoaderUtils;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,6 +41,8 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent event) {
         super.init(event);
         ClientRegistry.bindTileEntitySpecialRenderer(TileTrophy.class, new TESRTrophy());
+        ClientRegistry.bindTileEntitySpecialRenderer(TilePortal.class, new TESRPortal());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileSwordDisplay.class, new TESRSwordDisplay());
     }
 
     @Override

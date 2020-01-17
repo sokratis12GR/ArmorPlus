@@ -18,8 +18,10 @@ import static com.sofodev.armorplus.common.util.Utils.setRL;
 @EventBusSubscriber(modid = MODID)
 public class ModDimensions {
 
-    public static DimensionType arenaDimension;
-    public static DimensionType realmOfInsanity;
+    private static final boolean DIMENSIONS_ENABLED = false;
+
+    public static DimensionType ARENA;
+    public static DimensionType REALM;
 
     public static void init() {
         registerDimensionTypes();
@@ -27,17 +29,21 @@ public class ModDimensions {
     }
 
     private static void registerDimensionTypes() {
-        if (enableArenaDimension) {
-            arenaDimension = DimensionType.register("arena", "_arena", arenaDimensionID, ArenaProvider.class, false);
-        }
-        if (enableRealmOfInsanity) {
-            realmOfInsanity = DimensionType.register("realm_of_insanity", "_realm", realmDimensionID, RealmWorldProvider.class, true);
+        if (DIMENSIONS_ENABLED) {
+            if (enableTheArenaDimension) {
+                ARENA = DimensionType.register("arena", "_arena", arenaDimensionID, ArenaProvider.class, false);
+            }
+            if (enableRealmOfInsanity) {
+                REALM = DimensionType.register("realm_of_insanity", "_realm", realmDimensionID, RealmWorldProvider.class, true);
+            }
         }
     }
 
     private static void registerDimensions() {
-        if (enableArenaDimension) DimensionManager.registerDimension(arenaDimensionID, arenaDimension);
-        if (enableRealmOfInsanity) DimensionManager.registerDimension(realmDimensionID, realmOfInsanity);
+        if (DIMENSIONS_ENABLED) {
+            if (enableTheArenaDimension) DimensionManager.registerDimension(arenaDimensionID, ARENA);
+            if (enableRealmOfInsanity) DimensionManager.registerDimension(realmDimensionID, REALM);
+        }
     }
 
     ////////////////
@@ -45,11 +51,13 @@ public class ModDimensions {
     ////////////////
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        if (enableArenaDimension) {
-            event.getRegistry().register(new BiomeArena(new Biome.BiomeProperties("Arena").setTemperature(2.0F).setRainDisabled()).setRegistryName(setRL("arena")));
-        }
-        if (enableRealmOfInsanity) {
-            event.getRegistry().register(new RealmBiome(new Biome.BiomeProperties("Realm Of Insanity").setTemperature(5.0F).setRainDisabled()).setRegistryName(setRL("realm_of_insanity")));
+        if (DIMENSIONS_ENABLED) {
+            if (enableTheArenaDimension) {
+                event.getRegistry().register(new BiomeArena(new Biome.BiomeProperties("Arena").setTemperature(2.0F).setRainDisabled()).setRegistryName(setRL("arena")));
+            }
+            if (enableRealmOfInsanity) {
+                event.getRegistry().register(new RealmBiome(new Biome.BiomeProperties("Realm Of Insanity").setTemperature(5.0F).setRainDisabled()).setRegistryName(setRL("realm_of_insanity")));
+            }
         }
     }
 }

@@ -1,3 +1,36 @@
+ArmorPlus 1.12.2-11.26.1.65
+----------------------------
+
+**\[LAST UPDATE FOR 1.12.2, unless there are issues that need to be resolved! Report Issues Here: [https://github.com/sokratis12GR/ArmorPlus](Issues)\]**
+
+* Updated JEI & CraftTweaker integrations
+  - Remove recipe (ItemStack) should now work as intended.
+* Added config options
+  - Added the ability to enable/disable the steel and electrical ingot recipes.
+
+ArmorPlus 1.12.2-11.26.0.64
+----------------------------
+
+* The arrow pos & texture displayed on the crafting benches got fixed finally..
+* You can now use stacked lava crystals (either infused or normal) in the lava infuser, but only 1 lava bucket.
+* Hard-Disabled all the Dimensions for the [1.12.2] version.
+* Complete overhaul of the textures in the mod. Enjoy a brand new look of the mod :D
+  - Added Textures & Models to the Ender (Dungeon) blocks, yey more decorative blocks.
+    - Ender Pillars - Connectable blocks, that expand if connected vertically together, with a cool-ish model.
+    - Re-designed all the stones, floors, and bricks.
+  - Added textures for the horse armors.
+  - Remade all the main materials in the mod.. to have a more unique and special look.
+  - Remade all of the weapon textures, as well as some of the armor textures.
+* Added more Tinkers' material types
+  - Guardian, Ender Dragon, Super Star
+* Added a probably loot table chance for the horse armors to spawns in default vanilla dungeon chests
+* Added Dungeon Spawner Items (right-clickable items that will spawn dungeons with bosses in them).
+  - They do not work as intended atm (all spawn the same structure).
+* Updated the French (fr_fr.lang) translation thanks to [Poke](https://github.com/antoinegag).
+* Updated the textures for the sword displays.
+
+##### NOTE: This update might require a brand new registry.cfg.. Please save your modifications to the config and update accordingly.
+
 ArmorPlus 1.12.2-11.25.1.62
 ----------------------------
 

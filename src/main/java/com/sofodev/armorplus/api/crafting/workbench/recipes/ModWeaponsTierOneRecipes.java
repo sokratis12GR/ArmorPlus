@@ -15,7 +15,7 @@ import static com.sofodev.armorplus.common.registry.constants.APItems.*;
 public class ModWeaponsTierOneRecipes {
     public void addRecipes(BaseCraftingManager manager) {
         switch (getRD()) {
-            case EASY: {
+            case EASY:
                 if (recipes.enableSwordsRecipes) {
                     createSwordRecipe(manager, "itemCoal", coalSword);
                     createSwordRecipe(manager, "gemLapis", lapisSword);
@@ -37,9 +37,8 @@ public class ModWeaponsTierOneRecipes {
                     createPickaxeRecipe(manager, "dustRedstone", pickaxe[2]);
                 }
                 break;
-            }
             case EXPERT:
-            case HELLISH: {
+            case HELLISH:
                 if (recipes.enableSwordsRecipes) {
                     createSwordRecipe(manager, "blockCoal", coalSword);
                     createSwordRecipe(manager, "blockLapis", lapisSword);
@@ -61,7 +60,6 @@ public class ModWeaponsTierOneRecipes {
                     createPickaxeRecipe(manager, "blockRedstone", pickaxe[2]);
                 }
                 break;
-            }
         }
     }
 }

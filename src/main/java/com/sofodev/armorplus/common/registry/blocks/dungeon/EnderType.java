@@ -12,7 +12,6 @@ import net.minecraft.util.IStringSerializable;
 public enum EnderType implements IStringSerializable {
     ENDER_STONE,
     ENDER_STONE_BRICKS,
-    ENDER_PILLAR,
     ENDER_GLOWSTONE(1.0F),
     ENDER_FLOOR_1,
     ENDER_FLOOR_2,

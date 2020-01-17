@@ -1,9 +1,14 @@
 package com.sofodev.armorplus.common.registry.items;
 
-import com.sofodev.armorplus.common.iface.IModdedItem;
+import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.common.registry.items.base.ItemBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.IRarity;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -23,6 +28,11 @@ public class ItemFragment extends ItemBase {
     @Override
     public boolean hasEffect(ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public IRarity getForgeRarity(ItemStack stack) {
+        return getRarity(TextFormatting.DARK_RED, "fragment");
     }
 
     public enum Fragments {

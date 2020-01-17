@@ -30,9 +30,9 @@ public class ContainerLavaInfuser extends ContainerBase {
 
     public ContainerLavaInfuser(InventoryPlayer playerInventory, TileLavaInfuser tile) {
         this.tile = tile;
-        this.addSlotToContainer(new Slot(tile, 0, 69, 35));
-        this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 34, 35));
-        this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 124, 35));
+        this.addSlotToContainer(new Slot(tile, 0, 83, 35));
+        this.addSlotToContainer(new SlotLavaInfuserFuel(tile, 1, 19, 35));
+        this.addSlotToContainer(new SlotLavaInfuserOutput(playerInventory.player, tile, 2, 136, 35));
         this.addPlayerInventory(playerInventory, 8, 142, 84);
     }
 

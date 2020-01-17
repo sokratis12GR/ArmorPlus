@@ -7,6 +7,7 @@ itemGroup.armorplus.blocks=AP Blocks
 itemGroup.armorplus.weapons=AP Weapons
 itemGroup.armorplus.tools=AP Tools
 itemGroup.armorplus.trophies=AP Trophies
+itemGroup.armorplus.prototypes=AP Prototypes
 itemGroup.armorplus.tesla=AP Tesla
 itemGroup.armorplus.rf=AP RF
 itemGroup.armorplus.tinkers=AP Tinkers
@@ -65,6 +66,9 @@ modifier.ultimatemod.desc=Add +1 Modifier
 material.infused_lava_crystal.name=Infused Lava Crystal
 material.compressed_obsidian.name=Compressed Obsidian
 material.lava_infused_obsidian.name=Lava Infused Obsidian
+material.guardian.name=Guardian
+material.super_star.name=Super Star
+material.ender_dragon.name=Ender Dragon
 
 #Tile
 tile.armorplus.block_energy_creative.name=Creative Power Cell
@@ -117,6 +121,9 @@ commands.armorplus.discord.line_one.hover=Opens a discord link to armorplus' dis
 commands.armorplus.discord.line_two=sokratis12GR's Personal discord server:
 commands.armorplus.discord.line_two.hover=Opens a discord link to sokratis12GR's discord
 
+#CommandTeleport
+commands.armorplus.tp.usage=/ap tp <id>
+
 #JEI
 gui.jei.category.workbench=Workbench
 gui.jei.category.high_tech_bench=High-Tech Bench
@@ -135,6 +142,7 @@ gui.jei.category.armorplus.infusing.fuel.burnTime=Burn Time: %s
 
 #BOOKS
 item.armorplus.book.name=ArmorPlus Info Book
+item.armorplus.book_lore.name=ArmorPlus Lore Book
 
 #CONFIG GUI
 gui.armorplus.config.title=ArmorPlus Configuration
@@ -419,6 +427,10 @@ tile.armorplus.witch_trophy.name=Witch Trophy
 tile.armorplus.zombie_trophy.name=Zombie Trophy
 tile.armorplus.zombie_villager_trophy.name=Zombie Villager Trophy
 tile.armorplus.zombie_pigman_trophy.name=Zombie Pigman Trophy
+
+###MAP DEVICE
+tile.armorplus.map_device.name=Map Device
+
 ###Vanilla Bosses
 tile.armorplus.wither_boss_trophy.name=Wither Boss Trophy
 tile.armorplus.ender_dragon_trophy.name=Ender Dragon Trophy
@@ -430,13 +442,14 @@ tile.armorplus.demonic_dragon_trophy.name=Demonic Dragon Trophy
 tile.armorplus.the_lord_of_everything_trophy.name=The Lord Of Everything Trophy
 
 ##Dungeon Blocks
-tile.armorplus.ender_stone.name=Ender Stone (WIP)
-tile.armorplus.ender_stone_trap.name=Ender Stone Trap (WIP)
-tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks (WIP)
-tile.armorplus.ender_glowstone.name=Ender Glowstone (WIP)
-tile.armorplus.ender_pillar.name=Ender Pillar (WIP)
-tile.armorplus.ender_floor_1.name=Ender Floor (WIP)
-tile.armorplus.ender_floor_2.name=Ender Floor (WIP)
+tile.armorplus.ender_stone.name=Ender Stone
+tile.armorplus.ender_stone_trap.name=Ender Floor I (Trap)
+tile.armorplus.ender_stone_bricks.name=Ender Stone Bricks
+tile.armorplus.ender_glowstone.name=Ender Glowstone
+tile.armorplus.ender_pillar.name=Ender Pillar
+tile.armorplus.ender_floor_1.name=Ender Floor I
+tile.armorplus.ender_floor_2.name=Ender Floor II
+tile.armorplus.block_melting_obsidian.name=Melting Obsidian
 
 #Swords
 item.armorplus.coal_sword.name=Coal Sword
@@ -510,6 +523,20 @@ item.armorplus.redstone_flux_pickaxe.name=Redstone Flux Pickaxe
 item.armorplus.redstone_flux_hoe.name=Redstone Flux Hoe
 item.armorplus.redstone_flux_shovel.name=Redstone Flux Shovel
 
+###################
+### Horse Armor ###
+###################
+
+item.armorplus.coal_horse_armor.name=Coal Horse Armor
+item.armorplus.redstone_horse_armor.name=Redstone Horse Armor
+item.armorplus.lapis_horse_armor.name=Lapis Horse Armor
+item.armorplus.emerald_horse_armor.name=Emerald Horse Armor
+item.armorplus.infused_lava_horse_armor.name=Infused Lava Horse Armor
+item.armorplus.obsidian_horse_armor.name=Obsidian Horse Armor
+item.armorplus.guardian_horse_armor.name=Guardian Horse Armor
+item.armorplus.super_star_horse_armor.name=Super Star Horse Armor
+item.armorplus.ender_dragon_horse_armor.name=Ender Dragon Horse Armor
+
 #################
 ### Fragments ###
 #################
@@ -521,6 +548,7 @@ item.armorplus.dusk.name=Fragment of Dusk
 #################
 ###   MAPS    ###
 #################
+item.armorplus.map.name=Map
 item.armorplus.map_of_overworld.name=Map of Overworld
 item.armorplus.map_of_the_nether.name=Map of The Nether
 item.armorplus.map_of_the_end.name=Map of The End
@@ -533,10 +561,10 @@ item.armorplus.map_of_the_elder.name=Map of The Elder
 #Entities
 entity.ender_dragon_zombie.name=Ender Dragon Zombie
 entity.ice_golem.name=Ice Golem (Experimental)
-entity.overlord_of_the_guardians.name=Overlord of the Guardians (WIP)
-entity.skeletal_king.name=Skeletal King (WIP)
-entity.freeze_bomb.name=Freeze Bomb (WIP, Projectile, Explosive)
-entity.wither_minion.name=Wither Minion (WIP, Projectile, Spawner)
+entity.overlord_of_the_guardians.name=Overlord of the Guardians
+entity.skeletal_king.name=Skeletal King
+entity.freeze_bomb.name=Freeze Bomb (Projectile, Explosive)
+entity.wither_minion.name=Wither Minion (Projectile, Spawner)
 entity.witherling.name=Witherling
 
 #KeyBinds
@@ -657,78 +685,78 @@ info.armorplus.abilities.apply.text=Click to apply the ability
 info.armorplus.abilities.apply.button= [Apply]
 
 #Armors
-item.armorplus.coal_prototype_helmet.name=Coal Helmet
-item.armorplus.coal_prototype_chestplate.name=Coal Chestplate
-item.armorplus.coal_prototype_leggings.name=Coal Leggings
-item.armorplus.coal_prototype_boots.name=Coal Boots
-item.armorplus.lapis_prototype_helmet.name=Lapis Helmet
-item.armorplus.lapis_prototype_chestplate.name=Lapis Chestplate
-item.armorplus.lapis_prototype_leggings.name=Lapis Leggings
-item.armorplus.lapis_prototype_boots.name=Lapis Boots
-item.armorplus.redstone_prototype_helmet.name=Redstone Helmet
-item.armorplus.redstone_prototype_chestplate.name=Redstone Chestplate
-item.armorplus.redstone_prototype_leggings.name=Redstone Leggings
-item.armorplus.redstone_prototype_boots.name=Redstone Boots
-item.armorplus.emerald_prototype_helmet.name=Emerald Helmet
-item.armorplus.emerald_prototype_chestplate.name=Emerald Chestplate
-item.armorplus.emerald_prototype_leggings.name=Emerald Leggings
-item.armorplus.emerald_prototype_boots.name=Emerald Boots
-item.armorplus.obsidian_prototype_helmet.name=Obsidian Helmet
-item.armorplus.obsidian_prototype_chestplate.name=Obsidian Chestplate
-item.armorplus.obsidian_prototype_leggings.name=Obsidian Leggings
-item.armorplus.obsidian_prototype_boots.name=Obsidian Boots
-item.armorplus.infused_lava_prototype_helmet.name=Infused Lava Helmet
-item.armorplus.infused_lava_prototype_chestplate.name=Infused Lava Chestplate
-item.armorplus.infused_lava_prototype_leggings.name=Infused Lava Leggings
-item.armorplus.infused_lava_prototype_boots.name=Infused Lava Boots
-item.armorplus.super_star_prototype_helmet.name=Super Star Helmet
-item.armorplus.super_star_prototype_chestplate.name=Super Star Chestplate
-item.armorplus.super_star_prototype_leggings.name=Super Star Leggings
-item.armorplus.super_star_prototype_boots.name=Super Star Boots
-item.armorplus.ender_dragon_prototype_helmet.name=Ender Dragon Helmet
-item.armorplus.ender_dragon_prototype_chestplate.name=Ender Dragon Chestplate
-item.armorplus.ender_dragon_prototype_leggings.name=Ender Dragon Leggings
-item.armorplus.ender_dragon_prototype_boots.name=Ender Dragon Boots
-item.armorplus.guardian_prototype_helmet.name=Guardian Helmet
-item.armorplus.guardian_prototype_chestplate.name=Guardian Chestplate
-item.armorplus.guardian_prototype_leggings.name=Guardian Leggings
-item.armorplus.guardian_prototype_boots.name=Guardian Boots
-item.armorplus.the_ultimate_prototype_helmet.name=The Ultimate Helmet
-item.armorplus.the_ultimate_prototype_chestplate.name=The Ultimate Chestplate
-item.armorplus.the_ultimate_prototype_leggings.name=The Ultimate Leggings
-item.armorplus.the_ultimate_prototype_boots.name=The Ultimate Boots
-item.armorplus.cobalt_prototype_helmet.name=Cobalt Helmet
-item.armorplus.cobalt_prototype_chestplate.name=Cobalt Chestplate
-item.armorplus.cobalt_prototype_leggings.name=Cobalt Leggings
-item.armorplus.cobalt_prototype_boots.name=Cobalt Boots
-item.armorplus.ardite_prototype_helmet.name=Ardite Helmet
-item.armorplus.ardite_prototype_chestplate.name=Ardite Chestplate
-item.armorplus.ardite_prototype_leggings.name=Ardite Leggings
-item.armorplus.ardite_prototype_boots.name=Ardite Boots
-item.armorplus.pig_iron_prototype_helmet.name=Pig Iron Helmet
-item.armorplus.pig_iron_prototype_chestplate.name=Pig Iron Chestplate
-item.armorplus.pig_iron_prototype_leggings.name=Pig Iron Leggings
-item.armorplus.pig_iron_prototype_boots.name=Pig Iron Boots
-item.armorplus.knight_slime_prototype_helmet.name=Knight Slime Helmet
-item.armorplus.knight_slime_prototype_chestplate.name=Knight Slime Chestplate
-item.armorplus.knight_slime_prototype_leggings.name=Knight Slime Leggings
-item.armorplus.knight_slime_prototype_boots.name=Knight Slime Boots
-item.armorplus.manyullyn_prototype_helmet.name=Manyullyn Helmet
-item.armorplus.manyullyn_prototype_chestplate.name=Manyullyn Chestplate
-item.armorplus.manyullyn_prototype_leggings.name=Manyullyn Leggings
-item.armorplus.manyullyn_prototype_boots.name=Manyullyn Boots
-item.armorplus.chicken_prototype_helmet.name=Chicken Helmet
-item.armorplus.chicken_prototype_chestplate.name=Chicken Chestplate
-item.armorplus.chicken_prototype_leggings.name=Chicken Leggings
-item.armorplus.chicken_prototype_boots.name=Chicken Boots
-item.armorplus.slime_prototype_helmet.name=Slime Helmet
-item.armorplus.slime_prototype_chestplate.name=Slime Chestplate
-item.armorplus.slime_prototype_leggings.name=Slime Leggings
-item.armorplus.slime_prototype_boots.name=Slime Boots
-item.armorplus.ultimate_prototype_helmet.name=The Ultimate Helmet
-item.armorplus.ultimate_prototype_chestplate.name=The Ultimate Chestplate
-item.armorplus.ultimate_prototype_leggings.name=The Ultimate Leggings
-item.armorplus.ultimate_prototype_boots.name=The Ultimate Boots
+item.armorplus.coal_prototype_helmet.name=Coal Helmet (Prototype)
+item.armorplus.coal_prototype_chestplate.name=Coal Chestplate (Prototype)
+item.armorplus.coal_prototype_leggings.name=Coal Leggings (Prototype)
+item.armorplus.coal_prototype_boots.name=Coal Boots (Prototype)
+item.armorplus.lapis_prototype_helmet.name=Lapis Helmet (Prototype)
+item.armorplus.lapis_prototype_chestplate.name=Lapis Chestplate (Prototype)
+item.armorplus.lapis_prototype_leggings.name=Lapis Leggings (Prototype)
+item.armorplus.lapis_prototype_boots.name=Lapis Boots (Prototype)
+item.armorplus.redstone_prototype_helmet.name=Redstone Helmet (Prototype)
+item.armorplus.redstone_prototype_chestplate.name=Redstone Chestplate (Prototype)
+item.armorplus.redstone_prototype_leggings.name=Redstone Leggings (Prototype)
+item.armorplus.redstone_prototype_boots.name=Redstone Boots (Prototype)
+item.armorplus.emerald_prototype_helmet.name=Emerald Helmet (Prototype)
+item.armorplus.emerald_prototype_chestplate.name=Emerald Chestplate (Prototype)
+item.armorplus.emerald_prototype_leggings.name=Emerald Leggings (Prototype)
+item.armorplus.emerald_prototype_boots.name=Emerald Boots (Prototype)
+item.armorplus.obsidian_prototype_helmet.name=Obsidian Helmet (Prototype)
+item.armorplus.obsidian_prototype_chestplate.name=Obsidian Chestplate (Prototype)
+item.armorplus.obsidian_prototype_leggings.name=Obsidian Leggings (Prototype)
+item.armorplus.obsidian_prototype_boots.name=Obsidian Boots (Prototype)
+item.armorplus.infused_lava_prototype_helmet.name=Infused Lava Helmet (Prototype)
+item.armorplus.infused_lava_prototype_chestplate.name=Infused Lava Chestplate (Prototype)
+item.armorplus.infused_lava_prototype_leggings.name=Infused Lava Leggings (Prototype)
+item.armorplus.infused_lava_prototype_boots.name=Infused Lava Boots (Prototype)
+item.armorplus.super_star_prototype_helmet.name=Super Star Helmet (Prototype)
+item.armorplus.super_star_prototype_chestplate.name=Super Star Chestplate (Prototype)
+item.armorplus.super_star_prototype_leggings.name=Super Star Leggings (Prototype)
+item.armorplus.super_star_prototype_boots.name=Super Star Boots (Prototype)
+item.armorplus.ender_dragon_prototype_helmet.name=Ender Dragon Helmet (Prototype)
+item.armorplus.ender_dragon_prototype_chestplate.name=Ender Dragon Chestplate (Prototype)
+item.armorplus.ender_dragon_prototype_leggings.name=Ender Dragon Leggings (Prototype)
+item.armorplus.ender_dragon_prototype_boots.name=Ender Dragon Boots (Prototype)
+item.armorplus.guardian_prototype_helmet.name=Guardian Helmet (Prototype)
+item.armorplus.guardian_prototype_chestplate.name=Guardian Chestplate (Prototype)
+item.armorplus.guardian_prototype_leggings.name=Guardian Leggings (Prototype)
+item.armorplus.guardian_prototype_boots.name=Guardian Boots (Prototype)
+item.armorplus.the_ultimate_prototype_helmet.name=The Ultimate Helmet (Prototype)
+item.armorplus.the_ultimate_prototype_chestplate.name=The Ultimate Chestplate (Prototype)
+item.armorplus.the_ultimate_prototype_leggings.name=The Ultimate Leggings (Prototype)
+item.armorplus.the_ultimate_prototype_boots.name=The Ultimate Boots (Prototype)
+item.armorplus.cobalt_prototype_helmet.name=Cobalt Helmet (Prototype)
+item.armorplus.cobalt_prototype_chestplate.name=Cobalt Chestplate (Prototype)
+item.armorplus.cobalt_prototype_leggings.name=Cobalt Leggings (Prototype)
+item.armorplus.cobalt_prototype_boots.name=Cobalt Boots (Prototype)
+item.armorplus.ardite_prototype_helmet.name=Ardite Helmet (Prototype)
+item.armorplus.ardite_prototype_chestplate.name=Ardite Chestplate (Prototype)
+item.armorplus.ardite_prototype_leggings.name=Ardite Leggings (Prototype)
+item.armorplus.ardite_prototype_boots.name=Ardite Boots (Prototype)
+item.armorplus.pig_iron_prototype_helmet.name=Pig Iron Helmet (Prototype)
+item.armorplus.pig_iron_prototype_chestplate.name=Pig Iron Chestplate (Prototype)
+item.armorplus.pig_iron_prototype_leggings.name=Pig Iron Leggings (Prototype)
+item.armorplus.pig_iron_prototype_boots.name=Pig Iron Boots (Prototype)
+item.armorplus.knight_slime_prototype_helmet.name=Knight Slime Helmet (Prototype)
+item.armorplus.knight_slime_prototype_chestplate.name=Knight Slime Chestplate (Prototype)
+item.armorplus.knight_slime_prototype_leggings.name=Knight Slime Leggings (Prototype)
+item.armorplus.knight_slime_prototype_boots.name=Knight Slime Boots (Prototype)
+item.armorplus.manyullyn_prototype_helmet.name=Manyullyn Helmet (Prototype)
+item.armorplus.manyullyn_prototype_chestplate.name=Manyullyn Chestplate (Prototype)
+item.armorplus.manyullyn_prototype_leggings.name=Manyullyn Leggings (Prototype)
+item.armorplus.manyullyn_prototype_boots.name=Manyullyn Boots (Prototype)
+item.armorplus.chicken_prototype_helmet.name=Chicken Helmet (Prototype)
+item.armorplus.chicken_prototype_chestplate.name=Chicken Chestplate (Prototype)
+item.armorplus.chicken_prototype_leggings.name=Chicken Leggings (Prototype)
+item.armorplus.chicken_prototype_boots.name=Chicken Boots (Prototype)
+item.armorplus.slime_prototype_helmet.name=Slime Helmet (Prototype)
+item.armorplus.slime_prototype_chestplate.name=Slime Chestplate (Prototype)
+item.armorplus.slime_prototype_leggings.name=Slime Leggings (Prototype)
+item.armorplus.slime_prototype_boots.name=Slime Boots (Prototype)
+item.armorplus.ultimate_prototype_helmet.name=The Ultimate Helmet (Prototype)
+item.armorplus.ultimate_prototype_chestplate.name=The Ultimate Chestplate (Prototype)
+item.armorplus.ultimate_prototype_leggings.name=The Ultimate Leggings (Prototype)
+item.armorplus.ultimate_prototype_boots.name=The Ultimate Boots (Prototype)
 
 
 #AbilityNames

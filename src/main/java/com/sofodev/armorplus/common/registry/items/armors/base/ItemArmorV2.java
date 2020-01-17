@@ -30,6 +30,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.sofodev.armorplus.ArmorPlus.tabArmorPlusPrototypes;
 import static com.sofodev.armorplus.api.caps.abilities.AbilityData.*;
 import static com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler.CAPABILITY_ABILITIES;
 import static com.sofodev.armorplus.api.caps.abilities.AbilityDataHandler.getHandler;
@@ -51,6 +52,7 @@ public class ItemArmorV2 extends ItemArmorBase implements ISpecialItem {
         super(material.getArmorMaterial(), slot, material.getName() + "_prototype", "prototype");
         this.material = material;
         this.slot = slot;
+        this.setCreativeTab(tabArmorPlusPrototypes);
     }
 
     @Override

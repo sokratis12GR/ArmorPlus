@@ -19,7 +19,7 @@ public class RealmWorldProvider extends WorldProvider {
 
     @Override
     public DimensionType getDimensionType() {
-        return ModDimensions.realmOfInsanity;
+        return ModDimensions.REALM;
     }
 
     @Override

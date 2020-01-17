@@ -23,7 +23,7 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
 
     public LavaInfuserCategory() {
         ResourceLocation location = Utils.setRL("textures/gui/container/gui_lava_infuser.png");
-        background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, 7, 20, 138, 46);
+        background = ArmorPlusPlugin.jeiHelper.getGuiHelper().createDrawable(location, 18, 20, 140, 46);
     }
 
     @Override
@@ -38,9 +38,9 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
 
     @Override
     public void drawExtras(Minecraft minecraft) {
-        fusion.draw(minecraft, 1, 1);
-        arrow.draw(minecraft, 84, 15);
-        lavaBucket.draw(minecraft, 26, 14);
+        fusion.draw(minecraft, 24, 4);
+        arrow.draw(minecraft, 87, 15);
+        lavaBucket.draw(minecraft, 0, 15);
     }
 
     @Override
@@ -57,8 +57,8 @@ public class LavaInfuserCategory extends LavaInfuserRecipeCategory {
     public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
-        guiItemStacks.init(inputSlot, true, 61, 14);
-        guiItemStacks.init(outputSlot, false, 115, 14);
+        guiItemStacks.init(inputSlot, true, 64, 14);
+        guiItemStacks.init(outputSlot, false, 117, 14);
 
         guiItemStacks.set(ingredients);
     }

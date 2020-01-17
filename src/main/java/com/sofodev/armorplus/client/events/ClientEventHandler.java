@@ -39,6 +39,8 @@ public class ClientEventHandler {
         Color purple = new Color(100, 27, 129);
         Color lightGreen = new Color(101, 255, 93);
         Color lightBlue = new Color(53, 92, 255);
+        Color blue = new Color(0, 149, 255);
+        Color lightPurple = new Color(120, 29, 255);
 
         if (rl == null || !rl.getNamespace().equals("armorplus")) {
             return;
@@ -48,15 +50,16 @@ public class ClientEventHandler {
             setBorderColor(event, gold, darkPurple);
         }
         setBorder(event, GRAY, rl, "Coal", "coal");
-        setBorder(event, BLUE, rl, "Lapis", "lapis", "blue");
+        setBorder(event, blue, rl, "Lapis", "lapis", "blue");
         setBorder(event, RED, rl, "Redstone", "redstone", "ardite", "high_tech_bench", "red");
         setBorder(event, GREEN, rl, "Emerald", "emerald", "green");
         setBorder(event, darkPurple, rl, "Obsidian", "obsidian");
         setBorder(event, gold, rl, "Lava", "champion_bench", "lava", "infused_lava", "lava_infused", "infused");
-        setBorder(event, CYAN, rl, "Guardian", "guardian", "chicken");
+        setBorder(event, blue, rl, "Guardian", "guardian", "chicken");
         setBorder(event, WHITE, rl, "Wither", "wither", "super_star", "white");
         setBorder(event, purple, rl, "Ender Dragon", "ender_dragon", "manyullyn", "knight_slime", "purple");
-        setBorder(event, lightGreen, rl, "Ultimate", "ultimate", "slime", "ulti_tech_bench");
+        setBorder(event, lightPurple, rl, "Ultimate", "ultimate", "slime", "ulti_tech_bench");
+        setBorder(event, lightGreen, rl, "Slime", "slime");
         setBorder(event, lightBlue, rl, "Cobalt", "cobalt", "workbench");
         setBorder(event, YELLOW, rl, "Yellow", "yellow");
         setBorder(event, BLACK, rl, "Black", "black");

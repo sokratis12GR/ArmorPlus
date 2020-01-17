@@ -35,14 +35,13 @@ public class InputHelper {
     }
 
     public static ItemStack toStack(IItemStack iStack) {
-        if (iStack == null) {
-            return null;
+        if (iStack.isEmpty() || iStack == null) {
+            return ItemStack.EMPTY;
         }
         Object internal = iStack.getInternal();
         if (!(internal instanceof ItemStack)) {
             LogHelper.error("Not a valid item stack: " + iStack);
         }
-
         return (ItemStack) internal;
     }
 

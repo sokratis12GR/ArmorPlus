@@ -17,6 +17,8 @@ import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.sofodev.armorplus.common.util.Utils.setRL;
+
 public class ItemSpawnStructure extends ItemBase {
 
     private final String itemName;
@@ -32,9 +34,15 @@ public class ItemSpawnStructure extends ItemBase {
     public String getItemStackDisplayName(ItemStack stack) {
         switch (itemName) {
             case "ender_dungeon_floor_1_spawn_item":
-                return "Ender Dungeon Floor 1 (ArmorPlus) Structure Spawn";
+                return "Structure Spawn: Ender Dungeon Floor 1 (ArmorPlus)";
             case "tower_spawn_item":
-                return "Nether Tower (ArmorPlus) Structure Spawn";
+                return "Structure Spawn: Nether Tower (ArmorPlus)";
+            case "dungeon_placer_1":
+                return "Structure Spawn: Skeletal King Dungeon (ArmorPlus)";
+            case "dungeon_placer_2":
+                return "Structure Spawn: Guardian Overlord Dungeon (ArmorPlus)";
+            case "dungeon_placer_3":
+                return "Structure Spawn: Demonic Dragon Dungeon (ArmorPlus)";
             default:
                 return "Invalid Item";
         }
@@ -66,6 +74,6 @@ public class ItemSpawnStructure extends ItemBase {
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        super.initModel();
+        super.initModel(setRL("tower_spawn_item"), 0);
     }
 }

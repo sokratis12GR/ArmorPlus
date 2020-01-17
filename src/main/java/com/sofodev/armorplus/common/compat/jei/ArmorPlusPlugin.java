@@ -88,8 +88,6 @@ public class ArmorPlusPlugin implements IModPlugin {
                 ModItems.m1Jordan,
                 ModItems.teamRapture
             );
-            Arrays.stream(ModItems.horseArmors).forEach(horseArmor -> blackListIngredients(blacklist, horseArmor));
-            Arrays.stream(ModBlocks.enderBlocks).forEach(enderBlocks -> blackListIngredients(blacklist, enderBlocks));
         }
 
         registry.handleRecipes(LavaInfuserRecipe.class, LavaInfuserRecipeWrapper::new, JEI_CATEGORY_LAVA_INFUSER);
@@ -103,7 +101,7 @@ public class ArmorPlusPlugin implements IModPlugin {
         registry.addRecipeClickArea(GuiHighTechBench.class, 100, 33, 22, 15, JEI_CATEGORY_HIGH_TECH_BENCH);
         registry.addRecipeClickArea(GuiUltiTechBench.class, 136, 70, 22, 15, JEI_CATEGORY_ULTI_TECH_BENCH);
         registry.addRecipeClickArea(GuiChampionBench.class, 184, 24, 21, 23, JEI_CATEGORY_CHAMPION_BENCH);
-        registry.addRecipeClickArea(GuiLavaInfuser.class, 92, 35, 20, 17, JEI_CATEGORY_LAVA_INFUSER);
+        registry.addRecipeClickArea(GuiLavaInfuser.class, 105, 35, 22, 16, JEI_CATEGORY_LAVA_INFUSER);
 
         IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 
@@ -135,7 +133,8 @@ public class ArmorPlusPlugin implements IModPlugin {
     private void blackListIngredients(IIngredientBlacklist blacklist, Object... stacks) {
         Arrays.stream(stacks).forEachOrdered(stack -> {
             if (stack instanceof ItemStack || stack instanceof Block || stack instanceof Item) {
-                blacklist.addIngredientToBlacklist(getItemStack(stack));
+                ItemStack ingredient = getItemStack(stack);
+                if (!ingredient.isEmpty()) blacklist.addIngredientToBlacklist(ingredient);
             }
         });
     }
@@ -161,7 +160,7 @@ public class ArmorPlusPlugin implements IModPlugin {
         return new EntryDescription(stack, desc);
     }
 
-    private class EntryDescription {
+    private static class EntryDescription {
         private final ItemStack stack;
         private final String desc;
 

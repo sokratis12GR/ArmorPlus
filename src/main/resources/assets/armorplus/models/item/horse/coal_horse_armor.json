@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "armorplus:items/coal_horse_armor"
+  }
+}
