@@ -5,7 +5,6 @@
 package com.sofodev.armorplus.common.compat.crafttweaker;
 
 import com.sofodev.armorplus.api.crafting.IRecipe;
-import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
 import com.sofodev.armorplus.common.compat.crafttweaker.lavainfuser.LavaInfuser;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
@@ -123,12 +122,15 @@ public class CTArmorPlusPlugin {
         return prep.toArray();
     }
 
-  // public static void removeRecipe(BaseCraftingManager manager, ItemStack remove) {
-  //     for (IRecipe recipe : manager.getRecipeList()) {
-  //         if (recipe.getRecipeOutput().isItemEqual(remove)) {
-  //             manager.getRecipeList().remove(recipe);
-  //             break;
-  //         }
-  //     }
-  // }
+    public static void removeRecipe(List<IRecipe> recipes, ItemStack remove) {
+        for (Object obj : recipes) {
+            if (obj instanceof IRecipe) {
+                IRecipe craft = (IRecipe) obj;
+                if (craft.getRecipeOutput().isItemEqual(remove)) {
+                    recipes.remove(obj);
+                    break;
+                }
+            }
+        }
+    }
 }

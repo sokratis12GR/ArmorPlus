@@ -86,7 +86,6 @@ public class ItemSpecialPickaxe extends ItemPickaxe implements IModdedItem {
         if (pickaxes.hasAbilities()) {
             if (GameSettings.isKeyDown(keyBindSneak)) {
                 ToolTipUtils.addToolTip(tooltip, pickaxes.getAbilityDesc());
-                ;
             } else {
                 showInfo(tooltip, keyBindSneak, pickaxes.getFormatting());
             }

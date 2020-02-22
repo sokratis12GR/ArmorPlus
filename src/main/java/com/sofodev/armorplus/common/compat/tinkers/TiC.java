@@ -14,6 +14,7 @@ import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
+import static com.sofodev.armorplus.common.config.ModConfig.IntegrationsConfig.tConstruct;
 import static slimeknights.tconstruct.library.TinkerRegistry.getMaterial;
 
 /**
@@ -46,9 +47,9 @@ public class TiC extends AbstractToolPulse {
         this.initMaterials(obsidianInt);
         if (getMaterial("steel") == null) this.initMaterials(steelInt);
         tinkersMaterials.setupMaterialStats(event);
-        this.initMaterials(guardianInt);
-        this.initMaterials(superStarInt);
-        this.initMaterials(enderDragonInt);
+        if (tConstruct.enableGuardianScaleMaterial) this.initMaterials(guardianInt);
+        if (tConstruct.enableWitherBoneMaterial) this.initMaterials(superStarInt);
+        if (tConstruct.enableEnderDragonMaterial) this.initMaterials(enderDragonInt);
     }
 
     @Override
@@ -62,9 +63,9 @@ public class TiC extends AbstractToolPulse {
         initRepresentativeItem(lavacrystalInt, "blockInfusedLavaCrystal");
         initRepresentativeItem(obsidianInt, "blockCompressedObsidian");
         initRepresentativeItem(infusedObsidianInt, "blockLavaInfusedObsidian");
-        initRepresentativeItem(guardianInt, "guardianScale");
-        initRepresentativeItem(superStarInt, "witherBone");
-        initRepresentativeItem(enderDragonInt, "enderDragonScale");
+        if (tConstruct.enableGuardianScaleMaterial) initRepresentativeItem(guardianInt, "guardianScale");
+        if (tConstruct.enableWitherBoneMaterial) initRepresentativeItem(superStarInt, "witherBone");
+        if (tConstruct.enableEnderDragonMaterial) initRepresentativeItem(enderDragonInt, "enderDragonScale");
         tinkersMaterials.postInit(event);
     }
 

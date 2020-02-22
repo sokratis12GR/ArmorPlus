@@ -25,7 +25,7 @@ public enum Pickaxes {
     REDSTONE(REDSTONE_PICKAXE, redstone),
     EMERALD(EMERALD_PICKAXE, emerald),
     OBSIDIAN(OBSIDIAN_PICKAXE, obsidian),
-    INFUSED_LAVA(INFUSED_LAVA_PICKAXE, lava, new String[]{"Smelts blocks to their corresponding smelted form", "Uses Furnace & Lava Infuser recipes"}),
+    INFUSED_LAVA(INFUSED_LAVA_PICKAXE, lava, new String[]{"Smelts blocks to their corresponding smelted form", "Uses Furnace recipes"}),
     GUARDIAN(GUARDIAN_PICKAXE, guardian, new String[]{"While underwater:", "Increases mining speed"}) {
         @Override
         public void onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player) {

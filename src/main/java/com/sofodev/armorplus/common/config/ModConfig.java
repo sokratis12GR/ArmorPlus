@@ -12,6 +12,8 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.ArrayList;
+
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.config.ModConfig.RecipesDifficulty.*;
 import static com.sofodev.armorplus.common.registry.blocks.base.ToolType.PICKAXE;
@@ -55,6 +57,17 @@ public class ModConfig {
         public static final Global global = new Global();
 
         public static final TheGiftOfTheGods tgotg = new TheGiftOfTheGods();
+
+        public static final InfusedLavaPickaxe lavaPickaxe = new InfusedLavaPickaxe();
+
+        public static class InfusedLavaPickaxe {
+            @Comment({"Add blocks to the smelting blacklist of \"Infused Lava Pickaxe\"",
+                "If You add want to add an item to the blacklist",
+                "Add it in the following format: \"<namespace>:<name>\"",
+                "Examples can be found inside the list itself"
+            })
+            public String[] blacklist = {"minecraft:wet_sponge", "minecraft:sponge", "minecraft:obsidian"};
+        }
 
         public static class Global {
             @Comment({"Will make ArmorPlus use the Crafting Table 3x3 for all the recipes instead of the tiered benches"})
@@ -170,8 +183,22 @@ public class ModConfig {
     @Config(modid = MODID, name = "armorplus/integrations", category = "integrations")
     public static class IntegrationsConfig {
 
+        public static TConstruct tConstruct = new TConstruct();
+
         @Comment({"Enable/Disable the Tinkers' Construct integration"})
         public static boolean enableTConstructIntegration = true;
+
+        public static class TConstruct {
+            @Comment({"Enable/Disable guardian scale material."})
+            public boolean enableGuardianScaleMaterial = true;
+
+            @Comment({"Enable/Disable wither bone material."})
+            public boolean enableWitherBoneMaterial = true;
+
+            @Comment({"Enable/Disable ender dragon scale material."})
+            public boolean enableEnderDragonMaterial = true;
+        }
+
         @Comment({"Enable/Disable the JEI integration"})
         public static boolean enableJEIIntegration = true;
         @Comment({"Enable/Disable the The One Probe integration"})

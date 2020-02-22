@@ -5,11 +5,11 @@
 package com.sofodev.armorplus.common.compat.crafttweaker.actions;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
+import com.sofodev.armorplus.common.compat.crafttweaker.CTArmorPlusPlugin;
 import crafttweaker.IAction;
 import net.minecraft.item.ItemStack;
 
 import static java.lang.String.format;
-import static net.minecraft.item.ItemStack.areItemsEqual;
 
 public class Remove implements IAction {
     private BaseCraftingManager manager;
@@ -24,12 +24,12 @@ public class Remove implements IAction {
 
     @Override
     public void apply() {
-        manager.getRecipeList().stream().filter(
-            iRecipe -> iRecipe != null && areItemsEqual(iRecipe.getRecipeOutput(), remove)
-        ).forEach(
-            iRecipe -> manager.getRecipeList().remove(iRecipe)
-        );
-        // CTArmorPlusPlugin.removeRecipe(manager, remove);
+        //   manager.getRecipeList().stream().filter(
+        //       iRecipe -> iRecipe != null && areItemsEqual(iRecipe.getRecipeOutput(), remove)
+        //   ).forEach(
+        //       iRecipe -> manager.getRecipeList().remove(iRecipe)
+        //   );
+        CTArmorPlusPlugin.removeRecipe(manager.getRecipeList(), remove);
     }
 
     @Override

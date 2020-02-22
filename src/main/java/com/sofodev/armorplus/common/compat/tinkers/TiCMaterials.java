@@ -28,7 +28,6 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerTools;
-import slimeknights.tconstruct.tools.TinkerTraits;
 
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HANDLE;
@@ -103,9 +102,23 @@ public final class TiCMaterials extends AbstractToolPulse {
         LAVA_INFUSED_OBSIDIAN.addItem(ModBlocks.blockLavaInfusedObsidian, Material.VALUE_Ingot);
         LAVA_INFUSED_OBSIDIAN.addTrait(duritos).addTrait(autosmelt, HANDLE);
 
-        GUARDIAN.addItem(ModItems.guardianScale, 2, Material.VALUE_Ingot);
-        SUPER_STAR.addItem(ModItems.witherBone, 2, Material.VALUE_Ingot);
-        ENDER_DRAGON.addItem(ModItems.enderDragonScale, 2, Material.VALUE_Ingot);
+        GUARDIAN.addItem(ModItems.guardianScale, 3, Material.VALUE_Ingot);
+        GUARDIAN.addItem("guardianScale", 3, Material.VALUE_Ingot);
+        GUARDIAN.addTrait(depthdigger);
+        GUARDIAN.addTrait(alien);
+        GUARDIAN.addTrait(aquadynamic);
+
+        SUPER_STAR.addItem(ModItems.witherBone, 3, Material.VALUE_Ingot);
+        SUPER_STAR.addItem("witherBone", 3, Material.VALUE_Ingot);
+        SUPER_STAR.addTrait(aridiculous);
+        SUPER_STAR.addTrait(alien);
+        SUPER_STAR.addTrait(hellish);
+
+        ENDER_DRAGON.addItem(ModItems.enderDragonScale, 3, Material.VALUE_Ingot);
+        ENDER_DRAGON.addItem("enderDragonScale", 3, Material.VALUE_Ingot);
+        ENDER_DRAGON.addTrait(enderference);
+        ENDER_DRAGON.addTrait(alien);
+        ENDER_DRAGON.addTrait(coldblooded);
 
         this.setupMaterialBasics(INFUSED_LAVA_CRYSTAL);
         this.setupMaterialBasics(COMPRESSED_OBSIDIAN);
@@ -118,8 +131,11 @@ public final class TiCMaterials extends AbstractToolPulse {
         this.setRepresentativeItems(COMPRESSED_OBSIDIAN, ModBlocks.blockCompressedObsidian);
         this.setRepresentativeItems(LAVA_INFUSED_OBSIDIAN, ModBlocks.blockLavaInfusedObsidian);
         this.setRepresentativeItems(GUARDIAN, ModItems.guardianScale);
+        this.setRepresentativeItems(GUARDIAN, "guardianScale");
         this.setRepresentativeItems(SUPER_STAR, ModItems.witherBone);
+        this.setRepresentativeItems(SUPER_STAR, "witherBone");
         this.setRepresentativeItems(ENDER_DRAGON, ModItems.enderDragonScale);
+        this.setRepresentativeItems(ENDER_DRAGON, "enderDragonScale");
     }
 
     private void setupMaterialBasics(Material material) {
@@ -166,10 +182,10 @@ public final class TiCMaterials extends AbstractToolPulse {
     public void postInit(FMLPostInitializationEvent event) {
         if (Utils.isNull(TinkerTools.shard)) return;
 
-        TinkerRegistry.getAllMaterials().forEach(material -> {
+        for (Material material : TinkerRegistry.getAllMaterials()) {
             ItemStack shard = TinkerTools.shard.getItemstackWithMaterial(material);
             material.addRecipeMatch(new RecipeMatch.ItemCombination(Material.VALUE_Shard, shard));
             if (!material.getShard().isEmpty()) material.setShard(shard);
-        });
+        }
     }
 }

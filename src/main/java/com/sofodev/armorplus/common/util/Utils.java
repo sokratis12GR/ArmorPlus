@@ -67,6 +67,10 @@ public final class Utils {
         return player.getItemStackFromSlot(slot);
     }
 
+    public static Item getItem(String name) {
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(name));
+    }
+
     public static String setName(String name) {
         return format("%s.%s", MODID, name);
     }

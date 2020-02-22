@@ -5,7 +5,7 @@
 package com.sofodev.armorplus.common.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.api.lavainfuser.LavaInfuserManager;
+import com.sofodev.armorplus.common.config.ModConfig;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.EntitySkeletalKing;
 import com.sofodev.armorplus.common.registry.items.base.ItemSpecialPickaxe;
 import net.minecraft.enchantment.Enchantment;
@@ -18,6 +18,7 @@ import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -40,9 +41,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.thedragonteam.thedragonlib.util.LogHelper;
 
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.common.config.ModConfig.DebugConfig.debugMode;
@@ -52,6 +51,7 @@ import static com.sofodev.armorplus.common.registry.ModItems.*;
 import static com.sofodev.armorplus.common.registry.constants.APEnchantments.ENHANCE;
 import static com.sofodev.armorplus.common.registry.items.ItemFragment.Fragments.*;
 import static com.sofodev.armorplus.common.registry.items.base.special.Pickaxes.INFUSED_LAVA;
+import static com.sofodev.armorplus.common.util.Utils.getItem;
 import static com.sofodev.armorplus.common.util.Utils.setRL;
 import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.entity.EntityLiving.getSlotForItemStack;
@@ -177,12 +177,9 @@ public class CommonEventHandler {
                     while (iter.hasNext()) {
                         ItemStack drop = iter.next();
                         ItemStack furnace = FurnaceRecipes.instance().getSmeltingResult(drop);
-                        ItemStack infuser = LavaInfuserManager.getInstance().getInfusingResult(drop);
                         ItemStack result;
-                        if (!furnace.isEmpty()) {
+                        if (!furnace.isEmpty() && isNotForbidden(furnace)) {
                             result = furnace;
-                        } else if (!infuser.isEmpty()) {
-                            result = infuser;
                         } else {
                             result = ItemStack.EMPTY;
                         }
@@ -193,6 +190,19 @@ public class CommonEventHandler {
                 }
             }
         }
+    }
+
+    private static Set<Item> forbiddenList = new HashSet<>();
+
+    static {
+        Arrays.stream(ModConfig.MainConfig.lavaPickaxe.blacklist)
+            .filter(entry -> getItem(entry) != null || getItem(entry) != Items.AIR || entry != null)
+            .forEach(entry -> forbiddenList.add(getItem(entry)));
+    }
+
+    private static boolean isNotForbidden(ItemStack firstStack) {
+        Item item = firstStack.getItem();
+        return !forbiddenList.contains(item);
     }
 
     private static void convertDrop(ItemStack tool, ItemStack result, ItemStack

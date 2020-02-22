@@ -1,7 +1,29 @@
-ArmorPlus 1.12.2-11.26.1.65
+ArmorPlus 1.12.2-11.26.3.67
 ----------------------------
 
 **\[LAST UPDATE FOR 1.12.2, unless there are issues that need to be resolved! Report Issues Here: [https://github.com/sokratis12GR/ArmorPlus](Issues)\]**
+
+**QUICK FIX**
+* Tinkers' Construct Integration
+  - Added Trails for each of the tier 3 materials
+    - Guardian: Aquadynamic, Alien, Depthdigger
+    - Super Star: Aridiculous, Alien, Hellish
+    - Ender Dragon: Enderference, Alien, Cold-Blooded 
+  - Added 3 config options that allow you to disable/enable each material individually (guardian scale, wither bone, ender dragon scale).
+
+ArmorPlus 1.12.2-11.26.2.66
+----------------------------
+
+* Fixed Craft Tweaker's (Remove) function.
+  - To remove items like crafting a Steel Ingot, you will need to remove its recipes twice.. (you remove each recipe it has individually)
+     - Steel Ingot has 2 recipes, one for its block recipe and one for itself.
+     
+* Infused Lava Pickaxe no longer uses the Lava Infuser's infusing registry.
+  - Added the following blocks to the forbidden from smelting list: Sponge, Wet Sponge, Obsidian
+  - Added a config entry for the forbidden list. 
+
+ArmorPlus 1.12.2-11.26.1.65
+----------------------------
 
 * Updated JEI & CraftTweaker integrations
   - Remove recipe (ItemStack) should now work as intended.
