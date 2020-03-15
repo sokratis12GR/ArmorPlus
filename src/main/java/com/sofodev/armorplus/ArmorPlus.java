@@ -1,140 +1,76 @@
-/*
- * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2019.
- */
-
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.client.gui.APTab;
-import com.sofodev.armorplus.client.gui.GuiHandler;
-import com.sofodev.armorplus.common.packets.TrophyPacket;
-import com.sofodev.armorplus.common.packets.TrophyPacketHandler;
-import com.sofodev.armorplus.common.proxy.CommonProxy;
-import net.minecraft.creativetab.CreativeTabs;
+import com.sofodev.armorplus.registry.APItems;
+import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.registry.items.tools.properties.APToolProperties;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.thedragonteam.thedragonlib.config.ModFeatureParser;
-import net.thedragonteam.thedragonlib.util.LogHelper;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import static com.sofodev.armorplus.common.util.Utils.setName;
-import static net.minecraft.creativetab.CreativeTabs.getNextID;
+import static com.sofodev.armorplus.utils.Utils.setName;
+import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
 
-/**
- * @author Sokratis Fotkatzikis
- **/
-@Mod(modid = ArmorPlus.MODID,
-    name = ArmorPlus.MODNAME,
-    version = ArmorPlus.VERSION,
-    dependencies = ArmorPlus.DEPEND,
-    guiFactory = ArmorPlus.GUI_FACTORY,
-    updateJSON = ArmorPlus.UPDATE_JSON,
-    acceptedMinecraftVersions = "[1.12.2,1.13)"
-)
+@Mod("armorplus")
+@Mod.EventBusSubscriber(bus = MOD, modid = ArmorPlus.MODID)
 public class ArmorPlus {
 
-    //<editor-fold desc="Mod Information">
-    /**
-     * Updates every time the mod updates minecraft version,
-     * Updates MAJOR with 1 after each version upgrade
-     */
-    public static final String MCVERSION = "1.12.2";
-    /**
-     * Updates every MAJOR change,
-     * never resets
-     */
-    public static final int MAJOR = 11;
-    /**
-     * Updates every time a new block, item or features is added or change,
-     * resets on MAJOR changes
-     */
-    public static final int MINOR = 26;
-    /**
-     * Updates every time a bug is fixed or issue solved or very minor code changes,
-     * resets on MINOR changes
-     */
-    public static final int PATCH = 3;
-    /**
-     * Updates every time a build is created, mostly used for dev versions and
-     * final versions for releases after for each Minor or Major update,
-     * resets on MAJOR changes
-     */
-    public static final int BUILD = 67;
-    /**
-     * The ArmorPlus Version
-     */
-    public static final String VERSION = MCVERSION + "-" + MAJOR + "." + MINOR + "." + PATCH + "." + BUILD + "";
-    public static final String LIB_VERSION = "1.12.2-5.3.0";
-    public static final String FORGE_VERSION = "14.23.5.2836";
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String UPDATE_JSON = "https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/armorplus-updater.json";
-    public static final String DEPEND = "required-after:forge@[" + FORGE_VERSION + ",);"
-        + "required-after:thedragonlib@[" + LIB_VERSION + ",);"
-        + "after:mantle;"
-        + "after:tconstruct;";
-    public static final String GUI_FACTORY = "com.sofodev.armorplus.client.gui.ConfigGuiFactory";
-    public static final String CLIENT_PROXY = "com.sofodev.armorplus.common.proxy.ClientProxy";
-    public static final String SERVER_PROXY = "com.sofodev.armorplus.common.proxy.ServerProxy";
-    //</editor-fold>
+    public static final String VERSION = "1.14.4-13.0.0.1";
 
-    public static final boolean DEV_ENVIRONMENT = false; //TODO: DON'T FORGET TO TURN OFF
+    private static ArmorPlus instance;
 
-    @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
-    public static CommonProxy proxy;
+    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, MODID);
 
-    public static CreativeTabs tabArmorPlus = new APTab(getNextID(), MODID, setName("armors"), 0);
-    public static CreativeTabs tabArmorPlusItems = new APTab(getNextID(), MODID, setName("items"), 1);
-    public static CreativeTabs tabArmorPlusBlocks = new APTab(getNextID(), MODID, setName("blocks"), 2);
-    public static CreativeTabs tabArmorPlusWeapons = new APTab(getNextID(), MODID, setName("weapons"), 3);
-    public static CreativeTabs tabArmorPlusTools = new APTab(getNextID(), MODID, setName("tools"), 4);
-    public static CreativeTabs tabArmorPlusTrophies = new APTab(getNextID(), MODID, setName("trophies"), 5);
-    public static CreativeTabs tabArmorPlusPrototypes = new APTab(getNextID(), MODID, setName("prototypes"), 6);
+    /**
+     * Used as an "upper ground" variable, which sets the limit for the sets which use these materials.
+     */
+    public static final int AP_ARMOR_MATERIAL_LENGTH = APArmorMaterial.values().length;
+    public static final int AP_TOOL_MATERIAL_LENGTH = APToolProperties.values().length;
 
-    public static ModFeatureParser featureParser = new ModFeatureParser(MODID, new CreativeTabs[]{
-        tabArmorPlus, tabArmorPlusItems, tabArmorPlusBlocks, tabArmorPlusWeapons, tabArmorPlusTools, tabArmorPlusTrophies
-    });
-
-    @Instance(MODID)
-    public static ArmorPlus instance;
-    public static GuiHandler guiHandler = new GuiHandler();
+    public static final ItemGroup AP_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("armors")) {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ModItems.CHESTPLATES[7].get());
+        }
+    };
+    public static final ItemGroup AP_ITEM_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("items")) {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(APItems.INFUSED_LAVA_CRYSTAL.get());
+        }
+    };
+    public static final ItemGroup AP_BLOCK_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("blocks")) {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(Blocks.OBSIDIAN);
+        }
+    };
+    public static final ItemGroup AP_WEAPON_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("weapons")) {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(Items.GOLDEN_AXE);
+        }
+    };
 
     public ArmorPlus() {
-        LogHelper.getLogger(MODID).info("Welcoming Minecraft");
+        instance = this;
+        MinecraftForge.EVENT_BUS.register(this);
+        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-    public static String getVersion() {
-        return VERSION;
-    }
-
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        featureParser.registerFeatures();
-        TrophyPacketHandler.INSTANCE.registerMessage(TrophyPacketHandler.class, TrophyPacket.class, 0, Side.SERVER);
-        proxy.preInit(event);
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
-        proxy.init(event);
-    }
-
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
-    }
-
-    @EventHandler
-    public void modMapping(FMLModIdMappingEvent event) {
-        proxy.modMapping(event);
-    }
-
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
-        proxy.serverLoad(event);
+    public static ArmorPlus getInstance() {
+        return instance;
     }
 }

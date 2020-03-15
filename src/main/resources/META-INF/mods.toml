@@ -1,0 +1,37 @@
+modLoader="javafml" #mandatory
+loaderVersion="[28,)" #mandatory (28 is current forge version)
+issueTrackerURL="https://github.com/sokratis12GR/ArmorPlus/issues" #optional
+[[mods]] #mandatory
+modId="armorplus" #mandatory
+version="1.14.4-13.0.0.1" #mandatory
+displayName="ArmorPlus" #mandatory
+#updateJSONURL="https://github.com/sokratis12GR/ArmorPlus/blob/1.14/armorplus-updater.json" #optional
+displayURL="https://www.curseforge.com/minecraft/mc-mods/armorplus" #optional
+#logoFile="assets/armorplus/textures/headerimg.jpg" #optional
+credits="" #optional
+authors="SoFoDev" #optional
+description='''
+    ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.armorplus]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[28,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+# Here's another dependency
+[[dependencies.armorplus]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
+# ArmorPlus
+[[dependencies.armorplus]]
+    modId="thedragonlib"
+    mandatory=true
+    versionRange="[1.14.4-7.0.1,)"
+    ordering="AFTER"
+    side="BOTH"
