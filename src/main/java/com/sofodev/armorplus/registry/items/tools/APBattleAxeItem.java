@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.APToolMaterial;
+import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
@@ -14,16 +15,16 @@ import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.B
 
 public class APBattleAxeItem extends AxeItem {
 
-    private final APToolMaterial mat;
+    private final IAPTool mat;
 
-    public APBattleAxeItem(APToolMaterial mat) {
+    public APBattleAxeItem(IAPTool mat) {
         super(mat.get(), mat.get().getAttackDamage() + BATTLE_AXE.getDmg(), BATTLE_AXE.getAttackSpeed(), new Item.Properties().group(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
     }
 
     @Override
     public Rarity getRarity(ItemStack stack) {
-        return mat.get().getRarity();
+        return mat.getRarity();
     }
 
     @Override

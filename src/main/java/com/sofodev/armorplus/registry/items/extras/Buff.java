@@ -65,6 +65,7 @@ public enum Buff implements IBuff {
         return effect;
     }
 
+    @Override
     public boolean requiresFullSet() {
         return requireFullSet;
     }

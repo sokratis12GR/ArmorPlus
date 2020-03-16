@@ -34,4 +34,8 @@ public interface IBuff {
     default void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
     }
 
+    default boolean requiresFullSet() {
+        return true;
+    }
+
 }

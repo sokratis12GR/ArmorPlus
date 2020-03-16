@@ -15,9 +15,9 @@ import static net.minecraft.inventory.EquipmentSlotType.*;
 
 public class APArmorItem extends ArmorItem {
 
-    private final APArmorMaterial mat;
+    private final IAPArmor mat;
 
-    public APArmorItem(APArmorMaterial material, EquipmentSlotType slot) {
+    public APArmorItem(IAPArmor material, EquipmentSlotType slot) {
         super(material.get(), slot, material.getProperties());
         this.mat = material;
     }
@@ -27,7 +27,7 @@ public class APArmorItem extends ArmorItem {
         if (!world.isRemote) {
             Arrays.stream(mat.getBuffInstances()).forEach(instance -> {
                 if (instance.getBuff() instanceof Buff) {
-                    if (((Buff) instance.getBuff()).requiresFullSet()) {
+                    if (instance.getBuff().requiresFullSet()) {
                         if (isExactMatch(player, HEAD) && isExactMatch(player, CHEST) && isExactMatch(player, LEGS) &&
                             isExactMatch(player, FEET)) {
                             instance.onArmorTick(stack, world, player);
@@ -44,7 +44,7 @@ public class APArmorItem extends ArmorItem {
         return player.hasItemInSlot(slotType) && player.getItemStackFromSlot(slotType).getItem() == getAPItemByName(String.format("%s_%s", mat.getName(), getNormalizedName(slotType)));
     }
 
-    public APArmorMaterial getMat() {
+    public IAPArmor getMat() {
         return mat;
     }
 }

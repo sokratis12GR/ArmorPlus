@@ -20,7 +20,7 @@ import static net.minecraft.util.text.TextFormatting.*;
  * <p>
  * Simple creation of new equipment types, which can contain many buffs, de-buffs and etc.
  */
-public enum APArmorMaterial {
+public enum APArmorMaterial implements IAPArmor {
     /*Tier 1*/
     COAL(COAL_PROP, GRAY, new BuffInstance(NIGHT_VISION, 0)),
     REDSTONE(REDSTONE_PROP, DARK_RED, new BuffInstance(HASTE, 1)),
@@ -74,22 +74,27 @@ public enum APArmorMaterial {
         this.formatting = formatting;
     }
 
+    @Override
     public String getName() {
         return name().toLowerCase();
     }
 
+    @Override
     public IArmorMaterial get() {
         return armor;
     }
 
+    @Override
     public TextFormatting getFormatting() {
         return formatting;
     }
 
+    @Override
     public Item.Properties getProperties() {
         return properties.group(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
     }
 
+    @Override
     public BuffInstance[] getBuffInstances() {
         return buffs;
     }

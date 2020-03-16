@@ -4,6 +4,7 @@ package com.sofodev.armorplus.events;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
+import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
@@ -22,7 +23,7 @@ public class ModGlobalEvents {
         for (ItemStack stack : player.getArmorInventoryList()) {
             if (stack.getItem() instanceof APArmorItem) {
                 APArmorItem item = ((APArmorItem) stack.getItem());
-                APArmorMaterial mat = item.getMat();
+                IAPArmor mat = item.getMat();
                 if (mat == APArmorMaterial.ENDER_DRAGON || mat == APArmorMaterial.SLAYER) {
                     if ((isExactMatch(mat, player, HEAD) && isExactMatch(mat, player, CHEST) && isExactMatch(mat, player, LEGS) &&
                         isExactMatch(mat, player, FEET)) || player.abilities.isCreativeMode || player.isSpectator()) {

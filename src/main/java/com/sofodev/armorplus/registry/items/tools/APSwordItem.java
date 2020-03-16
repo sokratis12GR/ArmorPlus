@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.APToolMaterial;
+import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -13,16 +14,16 @@ import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.S
 
 public class APSwordItem extends SwordItem {
 
-    private final APToolMaterial mat;
+    private final IAPTool mat;
 
-    public APSwordItem(APToolMaterial mat) {
+    public APSwordItem(IAPTool mat) {
         super(mat.get(), (int) (mat.get().getAttackDamage() + SWORD.getDmg()), SWORD.getAttackSpeed(), new Properties().group(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
     }
 
     @Override
     public Rarity getRarity(ItemStack stack) {
-        return mat.get().getRarity();
+        return mat.getRarity();
     }
 
     @Override
