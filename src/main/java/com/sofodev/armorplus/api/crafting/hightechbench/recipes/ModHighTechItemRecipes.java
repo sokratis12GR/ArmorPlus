@@ -43,6 +43,7 @@ public class ModHighTechItemRecipes {
             "scaleGuardian",
             "witherBone",
             "gemInfusedLavaCrystal"));
+        manager.addRecipe(new BaseShapelessOreRecipe(maps[4], fragments[0], fragments[1], fragments[2], fragments[3]));
         if (recipes.enableArrowRecipes) {
             createArrowRecipes(manager, itemLavaArrow, getItemStack(infusedLavaCrystal), getItemStack(blockLavaInfusedObsidian));
             createArrowRecipes(manager, itemObsidianArrow, getItemStack(OBSIDIAN), getItemStack(blockCompressedObsidian));

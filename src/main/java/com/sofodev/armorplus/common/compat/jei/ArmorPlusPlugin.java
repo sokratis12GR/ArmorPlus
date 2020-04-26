@@ -18,6 +18,7 @@ import com.sofodev.armorplus.common.container.*;
 import com.sofodev.armorplus.common.registry.ModBlocks;
 import com.sofodev.armorplus.common.registry.ModItems;
 import com.sofodev.armorplus.common.registry.constants.APItems;
+import com.sofodev.armorplus.common.registry.items.ItemFragment;
 import com.sofodev.armorplus.common.util.TextUtils;
 import com.sofodev.armorplus.common.util.Utils;
 import mezz.jei.api.IJeiHelpers;
@@ -37,6 +38,7 @@ import net.thedragonteam.thedragonlib.util.ItemStackUtils;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.common.registry.ModItems.fragments;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
 
 /**
@@ -141,15 +143,20 @@ public class ArmorPlusPlugin implements IModPlugin {
 
     private void registerDescriptions(IModRegistry registry) {
         this.registerDescriptions(registry,
-            createDesc(APItems.guardianScale, "armorplus.jei.guardian_scale.desc"),
-            createDesc(APItems.witherBone, "armorplus.jei.wither_bone.desc"),
-            createDesc(APItems.enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
-            createDesc(getItemStack(ModBlocks.lavaInfuser), "armorplus.jei.lava_infuser.desc")
+            this.createDesc(APItems.guardianScale, "armorplus.jei.guardian_scale.desc"),
+            this.createDesc(APItems.witherBone, "armorplus.jei.wither_bone.desc"),
+            this.createDesc(APItems.enderDragonScale, "armorplus.jei.ender_dragon_scale.desc"),
+            this.createDesc(getItemStack(ModBlocks.lavaInfuser), "armorplus.jei.lava_infuser.desc")
         );
+        for (ItemFragment fragment : fragments) {
+            this.registerDescriptions(registry,
+                createDesc(getItemStack(fragment), "armorplus.jei.fragment.desc", " " + fragment.getHolderEntry().getName())
+            );
+        }
     }
 
     private void registerDescriptions(IModRegistry registry, EntryDescription entry) {
-        registry.addIngredientInfo(entry.getStack(), VanillaTypes.ITEM, TextUtils.translatedText(entry.getDesc()));
+        registry.addIngredientInfo(entry.getStack(), VanillaTypes.ITEM, TextUtils.translatedText(entry.getDesc(), entry.getArgs()));
     }
 
     private void registerDescriptions(IModRegistry registry, EntryDescription... entries) {
@@ -160,13 +167,25 @@ public class ArmorPlusPlugin implements IModPlugin {
         return new EntryDescription(stack, desc);
     }
 
+    private EntryDescription createDesc(ItemStack stack, String desc, String args) {
+        return new EntryDescription(stack, desc, args);
+    }
+
     private static class EntryDescription {
         private final ItemStack stack;
         private final String desc;
+        private final String args;
+
+        public EntryDescription(ItemStack stack, String desc, String args) {
+            this.stack = stack;
+            this.desc = desc;
+            this.args = args;
+        }
 
         public EntryDescription(ItemStack stack, String desc) {
             this.stack = stack;
             this.desc = desc;
+            this.args = "";
         }
 
         public String getDesc() {
@@ -175,6 +194,10 @@ public class ArmorPlusPlugin implements IModPlugin {
 
         public ItemStack getStack() {
             return stack;
+        }
+
+        public String getArgs() {
+            return args;
         }
     }
 }

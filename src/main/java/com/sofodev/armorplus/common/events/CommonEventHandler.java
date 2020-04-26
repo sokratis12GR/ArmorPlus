@@ -143,9 +143,7 @@ public class CommonEventHandler {
         }
     }
 
-    public static void enhance
-        (NonNullList<ItemStack> armorInventory, Map<Enchantment, Integer> enchants, ItemStack stack, ItemArmor[]
-            array, int i) {
+    public static void enhance(NonNullList<ItemStack> armorInventory, Map<Enchantment, Integer> enchants, ItemStack stack, ItemArmor[] array, int i) {
         enchants.remove(ENHANCE);
         EnchantmentHelper.setEnchantments(enchants, stack);
         NBTTagCompound oldCompound = stack.getTagCompound();

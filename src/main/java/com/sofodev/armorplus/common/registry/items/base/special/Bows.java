@@ -30,10 +30,10 @@ public enum Bows implements IRepairable, IRemovable, IDurable {
     REDSTONE(getItemStack(REDSTONE_BLOCK), ModConfig.RegistryConfig.redstone, APItems.redstoneBow),
     EMERALD(getItemStack(EMERALD_BLOCK), ModConfig.RegistryConfig.emerald, APItems.emeraldBow),
     OBSIDIAN(getItemStack(ModBlocks.blockCompressedObsidian), ModConfig.RegistryConfig.obsidian, APItems.obsidianBow),
-    INFUSED_LAVA(ItemStackUtils.getItemStack(ModItems.itemLavaCrystal, 1), ModConfig.RegistryConfig.lava, APItems.lavaBow),
-    GUARDIAN(ItemStackUtils.getItemStack(ModItems.materials, 1), ModConfig.RegistryConfig.guardian, APItems.guardianBow),
-    SUPER_STAR(ItemStackUtils.getItemStack(ModItems.materials, 2), ModConfig.RegistryConfig.super_star, APItems.superStarBow),
-    ENDER_DRAGON(ItemStackUtils.getItemStack(ModItems.materials, 3), ModConfig.RegistryConfig.ender_dragon, APItems.enderDragonBow);
+    INFUSED_LAVA(getItemStack(ModItems.itemLavaCrystal, 1), ModConfig.RegistryConfig.lava, APItems.lavaBow),
+    GUARDIAN(getItemStack(ModItems.materials, 1), ModConfig.RegistryConfig.guardian, APItems.guardianBow),
+    SUPER_STAR(getItemStack(ModItems.materials, 2), ModConfig.RegistryConfig.super_star, APItems.superStarBow),
+    ENDER_DRAGON(getItemStack(ModItems.materials, 3), ModConfig.RegistryConfig.ender_dragon, APItems.enderDragonBow);
 
     private final BowStats bowStats;
     private final ItemStack repairStack;

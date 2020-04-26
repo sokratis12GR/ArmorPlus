@@ -52,6 +52,12 @@ minecraft {
     //    useDepAts = true
 
     mappings = mappings_version
+
+    //Replaces all text that matches the left side with the right.
+    replace '@FINGERPRINT@', project.findProperty('signSHA1')
+    //Makes those replacement changes to the main mod class.
+    //My mod class is set in my project's gradle.properties file.
+    replaceIn "${mod_class}.java"
 }
 
 jar {
@@ -71,7 +77,7 @@ artifacts {
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_1.12.2:${jei_version}"
+//    deobfCompile "mezz.jei:jei_1.12.2:${jei_version}"
 //    compile "net.darkhax.tesla:Tesla-1.12:${tesla_version}"
     deobfCompile "slimeknights:TConstruct:1.12.2-${tconstruct_version}"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"

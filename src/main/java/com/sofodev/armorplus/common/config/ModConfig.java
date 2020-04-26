@@ -12,8 +12,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.ArrayList;
-
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.common.config.ModConfig.RecipesDifficulty.*;
 import static com.sofodev.armorplus.common.registry.blocks.base.ToolType.PICKAXE;
@@ -59,6 +57,7 @@ public class ModConfig {
         public static final TheGiftOfTheGods tgotg = new TheGiftOfTheGods();
 
         public static final InfusedLavaPickaxe lavaPickaxe = new InfusedLavaPickaxe();
+        public static final CombinedMap maps = new CombinedMap();
 
         public static class InfusedLavaPickaxe {
             @Comment({"Add blocks to the smelting blacklist of \"Infused Lava Pickaxe\"",
@@ -67,6 +66,12 @@ public class ModConfig {
                 "Examples can be found inside the list itself"
             })
             public String[] blacklist = {"minecraft:wet_sponge", "minecraft:sponge", "minecraft:obsidian"};
+        }
+
+
+        public static class CombinedMap {
+            @Comment("Enable/Disable the ability of the maps to spawn bosses, suck as the \"Skeletal King\" from the \"Map of Sacrifice\"")
+            public boolean allowSpawnOfBosses = true;
         }
 
         public static class Global {
@@ -113,6 +118,7 @@ public class ModConfig {
     public static class EntitiesConfig {
 
         public static EnderDragonZombieMob ender_dragon_zombie = new EnderDragonZombieMob();
+        public static SkeletalKingMob skeletal_king = new SkeletalKingMob();
 
         public static MobDrops mob_drops = new MobDrops();
 
@@ -135,12 +141,26 @@ public class ModConfig {
             public int witheringEffectLevel = 4;
         }
 
+        public static class SkeletalKingMob {
+            @Comment({"Set the Skeletal King's Health"})
+            public double health = 1200.0;
+            @Comment({"Set the Skeletal King's Armor"})
+            public double armor = 8.0;
+            @Comment({"Set the Skeletal King's Movement Speed"})
+            public double movementSpeed = 0.6000000238418579D;
+            @Comment({"Enable/Disable the Skeletal King's resistance buff effect"})
+            public boolean enableResistance = true;
+            @Comment({"Set the Skeletal King's resistance effect Level (0 = lvl 1)"})
+            public int resistanceAmplifier = 0;
+        }
+
         public static class MobDrops {
 
             public Trophy trophy = new Trophy();
             public EnderDragonScales ender_dragon_scale = new EnderDragonScales();
             public WitherBones wither_bone = new WitherBones();
             public GuardianScales guardian_scale = new GuardianScales();
+            public SkeletalKing skeletal_king = new SkeletalKing();
 
             public class Trophy {
 
@@ -176,6 +196,12 @@ public class ModConfig {
                 public boolean elderDrop = true;
                 @Comment({"Enable/Disable the drop from the Guardian"})
                 public boolean guardianDrop = true;
+            }
+
+            public class SkeletalKing {
+
+                @Comment({"Enable/Disable the drops from the Skeletal King"})
+                public boolean skeletalKingDrop = true;
             }
         }
     }

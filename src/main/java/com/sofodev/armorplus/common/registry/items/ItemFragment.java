@@ -1,16 +1,21 @@
 package com.sofodev.armorplus.common.registry.items;
 
-import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.common.registry.items.base.ItemBase;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+import static com.sofodev.armorplus.common.util.TextUtils.translatedText;
+import static net.minecraft.util.text.TextFormatting.BLUE;
+import static net.minecraftforge.fml.common.registry.ForgeRegistries.ENTITIES;
 
 public class ItemFragment extends ItemBase {
 
@@ -22,7 +27,7 @@ public class ItemFragment extends ItemBase {
     }
 
     public EntityEntry getHolderEntry() {
-        return ForgeRegistries.ENTITIES.getValue(fragment.getHolderRL());
+        return ENTITIES.getValue(fragment.getHolderRL());
     }
 
     @Override
@@ -33,6 +38,15 @@ public class ItemFragment extends ItemBase {
     @Override
     public IRarity getForgeRarity(ItemStack stack) {
         return getRarity(TextFormatting.DARK_RED, "fragment");
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        String name = this.getHolderEntry().getName();
+        if (name != null) {
+            tooltip.add(String.format("%s%s %s", BLUE, translatedText("item.armorplus.fragment.info"), name));
+        }
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     public enum Fragments {

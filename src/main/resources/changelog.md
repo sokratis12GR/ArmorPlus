@@ -1,7 +1,26 @@
-ArmorPlus 1.12.2-11.26.3.67
+ArmorPlus 1.12.2-11.27.0.68
 ----------------------------
 
-**\[LAST UPDATE FOR 1.12.2, unless there are issues that need to be resolved! Report Issues Here: [https://github.com/sokratis12GR/ArmorPlus](Issues)\]**
+**\[LAST UPDATE FOR 1.12.2, unless there are issues that need to be resolved! Report Issues Here: [Issues](https://github.com/sokratis12GR/ArmorPlus) \]**
+
+* Added repair materials for the pickaxes. (the material is the same, as the one used for other tools/armors/weapons of the same type)
+* Added repair materials for the enhanced vanilla armors. (matching the vanilla ones)
+* Fragments (of Sacrifice) got usage:
+  - The 4 Fragments can be combined into the "Map of Sacrifice". (Works in any bench, shapeless)
+  - Added a tooltip that indicates how they can be obtained.
+* Map of Sacrifice:
+  - Can now be used to spawn, the one, the only, The Skeletal King
+    - Skeletal King Stats: (1200 Health, 8 Armor)
+       - Shoots wither spawners (they summon witherlings, each witherling gets stronger after defeating % of the Skeletal King's HP)
+       - Buffs: Wither Immunity, Resistance I
+       - Summons 5 Blazes on death
+       - Drops: 2-3 Nether Stars, 1-2 Wither Bones
+* Added more localization key entries sets
+  - One of the sets is for TGOTG (The Gift Of The Gods) (Yes, their tooltips can now be translated)
+  - Maps, Fragments.
+
+ArmorPlus 1.12.2-11.26.3.67
+----------------------------
 
 **QUICK FIX**
 * Tinkers' Construct Integration

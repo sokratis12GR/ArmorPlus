@@ -5,6 +5,7 @@
 package com.sofodev.armorplus.api.crafting.ultitechbench.recipes;
 
 import com.sofodev.armorplus.api.crafting.base.BaseCraftingManager;
+import com.sofodev.armorplus.api.crafting.base.BaseShapelessOreRecipe;
 import com.sofodev.armorplus.common.registry.constants.APItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -20,6 +21,7 @@ public class ModUltiTechItemRecipes {
             this.addArrowRecipes(manager, itemSuperStarArrow, Items.NETHER_STAR, APItems.witherBone);
             this.addArrowRecipes(manager, itemEnderDragonArrow, Items.DRAGON_BREATH, APItems.enderDragonScale);
         }
+        manager.addRecipe(new BaseShapelessOreRecipe(maps[4], fragments[0], fragments[1], fragments[2], fragments[3]));
     }
 
 

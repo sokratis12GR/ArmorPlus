@@ -31,8 +31,10 @@ import java.util.Random;
 
 import static com.sofodev.armorplus.common.config.ModConfig.DebugConfig.debugMode;
 import static com.sofodev.armorplus.common.config.ModConfig.DebugConfig.debugModeTGOTG;
+import static com.sofodev.armorplus.common.config.ModConfig.MainConfig.maps;
 import static com.sofodev.armorplus.common.config.ModConfig.MainConfig.tgotg;
 import static com.sofodev.armorplus.common.util.TextUtils.translate;
+import static com.sofodev.armorplus.common.util.TextUtils.translatedText;
 import static java.text.MessageFormat.format;
 import static net.minecraft.util.text.TextFormatting.*;
 import static net.thedragonteam.thedragonlib.util.ItemStackUtils.getItemStack;
@@ -123,11 +125,12 @@ public class ItemTGOTG extends ItemBase {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
         int maxUses = tgotg.maxUses;
-        tooltip.add(format("{0}{1}This item can summon items which can potentially cause crashes", ITALIC, RED));
+        tooltip.add(format("{0}{1}{2}", ITALIC, RED, translatedText("item.armorplus.tgotg.warning")));
         if (GameSettings.isKeyDown(keyBindSneak)) {
-            tooltip.add("\u00a79Ability: \u00a7rGrants Random Item");
-            tooltip.add("\u00a79Max Uses: \u00a7r" + maxUses);
-            tooltip.add("\u00a73Use: \u00a7rRight-Click");
+            tooltip.add(String.format("%s%s %s%s", BLUE, translatedText("item.armorplus.tgotg.info_1"), RESET, translatedText("item.armorplus.tgotg.info_2")));
+            tooltip.add(String.format("%s%s%s %d", BLUE, translatedText("item.armorplus.tgotg.max_usage"), RESET, maxUses));
+            tooltip.add(BLUE + translatedText("item.armorplus.tgotg.usage"));
+            tooltip.add(String.format("%s%s%s %s", GRAY, ITALIC, translatedText("item.armorplus.tgotg.allowed"), maps.allowSpawnOfBosses));
         } else {
             ToolTipUtils.showInfo(tooltip, keyBindSneak, GOLD);
         }

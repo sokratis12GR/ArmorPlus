@@ -41,7 +41,7 @@ public class ModItemRecipes {
             manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(steelIngot, 1), "itemCharcoal", "ingotIron", "gemInfusedLavaCrystal"));
         }
         manager.addRecipe(new BaseShapelessOreRecipe(new ItemStack(electricalIngot, 9), "blockElectrical"));
-
+        manager.addRecipe(new BaseShapelessOreRecipe(maps[4], fragments[0], fragments[1], fragments[2], fragments[3]));
         manager.addRecipe(new BaseShapedOreRecipe(3, new ItemStack(workbench),
             "LCL",
             "OTO",

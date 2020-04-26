@@ -4,6 +4,7 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.client.utils.ToolTipUtils;
 import com.sofodev.armorplus.common.iface.IModdedItem;
 import com.sofodev.armorplus.common.registry.items.base.special.Pickaxes;
+import com.sofodev.armorplus.common.util.ArmorPlusItemUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
@@ -41,14 +42,21 @@ public class ItemSpecialPickaxe extends ItemPickaxe implements IModdedItem {
     public static final ToolMaterial ENDER_DRAGON_PICKAXE = addToolMaterial("enderDragonPickaxe", 4, ender_dragon.tools.pickaxe.durability, (float) ender_dragon.tools.pickaxe.efficiency, 8.5f, 30);
 
     public final Pickaxes pickaxes;
+    public ItemStack itemExpert;
     private Random random = new Random();
 
     public ItemSpecialPickaxe(Pickaxes pickaxes) {
         super(pickaxes.getMaterial());
         this.pickaxes = pickaxes;
+        this.itemExpert = pickaxes.getRepairStack();
         this.setRegistryName(pickaxes.getName() + "_pickaxe");
         this.setTranslationKey(setName(pickaxes.getName() + "_pickaxe"));
         this.setCreativeTab(ArmorPlus.tabArmorPlusTools);
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return ArmorPlusItemUtils.isItemRepairable(repair, itemExpert);
     }
 
     @Override

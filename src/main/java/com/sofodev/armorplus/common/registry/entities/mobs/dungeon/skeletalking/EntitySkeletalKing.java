@@ -5,32 +5,39 @@
 package com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking;
 
 import com.google.common.base.Predicate;
+import com.sofodev.armorplus.common.registry.ModItems;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.base.BossInfoServerDungeon;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.base.EntityAIRangedDungeonAttack;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.base.EntityAIRangedDungeonAttack.EntityAIType;
 import com.sofodev.armorplus.common.registry.entities.mobs.dungeon.skeletalking.projectile.EntityWitherMinion;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 
+import static com.sofodev.armorplus.common.config.ModConfig.EntitiesConfig.mob_drops;
+import static com.sofodev.armorplus.common.config.ModConfig.EntitiesConfig.skeletal_king;
 import static com.sofodev.armorplus.common.registry.entities.mobs.dungeon.base.BossInfoServerDungeon.BossInfoDungeonType;
 import static com.sofodev.armorplus.common.util.TextUtils.translatedText;
 import static net.minecraft.entity.SharedMonsterAttributes.*;
+import static net.minecraft.init.MobEffects.RESISTANCE;
 import static net.minecraft.init.MobEffects.WITHER;
 import static net.minecraft.item.ItemStack.EMPTY;
 import static net.minecraft.util.text.TextFormatting.ITALIC;
@@ -64,6 +71,9 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
         if (this.isPotionActive(WITHER)) {
             this.removePotionEffect(WITHER);
         }
+        if (skeletal_king.enableResistance && !this.isPotionActive(RESISTANCE)) {
+            this.addPotionEffect(new PotionEffect(RESISTANCE, 240, skeletal_king.resistanceAmplifier));
+        }
         super.onUpdate();
     }
 
@@ -80,9 +90,9 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(MAX_HEALTH).setBaseValue(1200.0D);
-        this.getEntityAttribute(MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
-        this.getEntityAttribute(ARMOR).setBaseValue(4.0F);
+        this.getEntityAttribute(MAX_HEALTH).setBaseValue(skeletal_king.health);
+        this.getEntityAttribute(MOVEMENT_SPEED).setBaseValue(skeletal_king.movementSpeed);
+        this.getEntityAttribute(ARMOR).setBaseValue(skeletal_king.armor);
     }
 
     /**
@@ -180,18 +190,23 @@ public class EntitySkeletalKing extends EntityWitherSkeleton implements IRangedA
     public void onDeath(DamageSource cause) {
         super.onDeath(cause);
         if (!world.isRemote) {
-            String[] names = new String[]{"Lefty", "Central", "Righty"};
-            for (int i = 0; i < 3; i++) {
-                EntityWither split = new EntityWither(world);
+            String[] names = new String[]{"D", "E", "A", "T", "H"};
+            for (String name : names) {
+                EntityBlaze split = new EntityBlaze(world);
                 split.setPosition(posX, posY, posZ);
                 split.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(this)), null);
                 this.world.spawnEntity(split);
-                split.setCustomNameTag(names[i]);
+                split.setCustomNameTag(TextFormatting.GOLD + "" + TextFormatting.BOLD + name);
                 split.setAlwaysRenderNameTag(true);
                 split.setInvisible(false);
                 split.setEntityInvulnerable(false);
                 split.setCanPickUpLoot(true);
                 split.forceSpawn = true;
+            }
+
+            if (mob_drops.skeletal_king.skeletalKingDrop) {
+                this.dropItemWithOffset(Items.NETHER_STAR, 2 + rand.nextInt(1), 5f);
+                this.entityDropItem(new ItemStack(ModItems.materials, 1 + rand.nextInt(1), 2), 5f);
             }
         }
     }

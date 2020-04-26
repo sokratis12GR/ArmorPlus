@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+import static com.sofodev.armorplus.common.registry.ModItems.fragments;
+import static com.sofodev.armorplus.common.registry.ModItems.maps;
+
 /**
  * @author Sokratis Fotkatzikis
  */
