@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:coal_battle_axe"
+        }
+      ]
+    }
+  ],
+  "group": "coal_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#s#",
+    " s "
+  ],
+  "key": {
+    "#": {
+      "item": "#coal"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:coal_battle_axe",
+    "data": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:ender_dragon_leggings"
+        }
+      ]
+    }
+  ],
+  "group": "ender_dragon_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "#ender_dragon_scale"
+    }
+  },
+  "result": {
+    "item": "armorplus:ender_dragon_leggings"
+  }
+}

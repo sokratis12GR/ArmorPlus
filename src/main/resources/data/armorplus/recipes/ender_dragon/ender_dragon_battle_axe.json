@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:ender_dragon_battle_axe"
+        }
+      ]
+    }
+  ],
+  "group": "ender_dragon_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#s#",
+    " s "
+  ],
+  "key": {
+    "#": {
+      "item": "#ender_dragon_scale"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:ender_dragon_battle_axe",
+    "data": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:emerald_boots"
+        }
+      ]
+    }
+  ],
+  "group": "emerald_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "#emerald"
+    }
+  },
+  "result": {
+    "item": "armorplus:emerald_boots"
+  }
+}

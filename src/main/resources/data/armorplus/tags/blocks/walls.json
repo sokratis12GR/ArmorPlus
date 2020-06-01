@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "armorplus:black_stone_brick_wall",
+    "armorplus:blue_stone_brick_wall",
+    "armorplus:green_stone_brick_wall",
+    "armorplus:purple_stone_brick_wall",
+    "armorplus:red_stone_brick_wall",
+    "armorplus:white_stone_brick_wall",
+    "armorplus:yellow_stone_brick_wall"
+  ]
+}

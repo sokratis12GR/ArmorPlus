@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "armorplus:enabled"
+        },
+        {
+          "type": "minecraft:item_exists",
+          "item": "armorplus:redstone_boots"
+        }
+      ]
+    }
+  ],
+  "group": "redstone_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "#redstone"
+    }
+  },
+  "result": {
+    "item": "armorplus:redstone_boots"
+  }
+}
