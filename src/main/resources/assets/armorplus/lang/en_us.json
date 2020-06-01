@@ -331,7 +331,7 @@
 
   "_comment": "Blocks",
   "block.armorplus.compressed_obsidian": "Compressed Obsidian",
-  "block.armorplus.ore_lava_crystal": "Ore Lava Crystal",
+  "block.armorplus.ore_lava_crystal": "Lava Crystal Ore",
   "block.armorplus.steel_block": "Block of Steel",
   "block.armorplus.electrical_block": "Electrical Block",
   "block.armorplus.workbench": "Workbench",
@@ -370,12 +370,11 @@
   "block.armorplus.purple_stone_brick_wall": "Purple Stone Brick Wall",
   "block.armorplus.lava_infuser": "Lava Infuser",
   "block.armorplus.lava_infuser_infusing": "Lava Infuser Infusing",
-
   "block.armorplus.lava_infused_obsidian": "Lava Infused Obsidian",
   "block.armorplus.block_lava_crystal": "Block of Lava Crystal",
   "block.armorplus.block_infused_lava_crystal": "Block of Infused Lava Crystal",
-  "block.armorplus.block_compressed_lava_crystal": "Compressed Lava Crystal Block",
-  "block.armorplus.block_compressed_infused_lava_crystal": "Compressed Infused Lava Crystal Block",
+  "block.armorplus.compressed_lava_crystal": "Compressed Lava Crystal Block",
+  "block.armorplus.compressed_infused_lava_crystal": "Compressed Infused Lava Crystal Block",
 
   "_comment": "#Sword Displays",
   "block.armorplus.empty_sword_display": "Empty Sword Display",
@@ -385,10 +384,10 @@
   "block.armorplus.emerald_sword_display": "Display of Emerald Sword",
   "block.armorplus.obsidian_sword_display": "Display of Obsidian Sword",
   "block.armorplus.infused_lava_sword_display": "Display of Infused Lava Sword",
-  "block.armorplus.guardian_sword_display": "Display of Guardian Sword",
-  "block.armorplus.super_star_sword_display": "Display of Super Star Sword",
-  "block.armorplus.ender_dragon_sword_display": "Display of Ender Dragon Sword",
-  "block.armorplus.excalibur_sword_display": "Display of Excalibur",
+  "block.armorplus.guardian_sword_display": "Display of Elder's Spike",
+  "block.armorplus.super_star_sword_display": "Display of King's Bane",
+  "block.armorplus.ender_dragon_sword_display": "Display of The Dragon Slayer",
+  "block.armorplus.slayer_sword_display": "Display of The Forbidden Blade",
   "_comment": "#Tophies",
   "block.armorplus.trophy": "Mob Trophy",
   "_comment": "##Vanilla Mobs",
@@ -450,7 +449,7 @@
   "block.armorplus.ender_pillar": "Ender Pillar",
   "block.armorplus.ender_floor_1": "Ender Floor I",
   "block.armorplus.ender_floor_2": "Ender Floor II",
-  "block.armorplus.block_melting_obsidian": "Melting Obsidian",
+  "block.armorplus.melting_obsidian": "Melting Obsidian",
 
   "_comment": "Swords",
   "item.armorplus.coal_sword": "Coal Sword",
@@ -846,6 +845,14 @@
   "dialogs.armorplus.skeletal_king.death_line.a": "You cannot win this battle, %s",
   "dialogs.armorplus.skeletal_king.death_line.b": "The end is near, but remember I'll be BACK",
   "dialogs.armorplus.skeletal_king.death_line.c": "And there will be an END to this world.",
+
+  "_comment":  "Frost Kingdom Expansion",
+  "block.armorplus.block_frost_crystal":  "Block of Frost Crystal",
+  "block.armorplus.ore_frost_crystal":  "Frost Crystal Ore",
+  "block.armorplus.block_infused_frost_crystal":  "Block of Infused Frost Crystal",
+  "item.armorplus.frost_crystal":  "Frost Crystal",
+  "item.armorplus.infused_frost_crystal":  "Infused Frost Crystal",
+
 
   "_comment": "ErrorHandling",
   "error.world_gen.armorplus.generator_height": "Illegal Height Arguments for WorldGenerator. Min height must in the range (0, %d) [Value: %d]. Max height must not be greater than 256. [Value: %d]"

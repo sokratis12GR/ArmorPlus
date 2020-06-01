@@ -1,5 +1,5 @@
 {
-  "parent": "block/wall_side",
+  "parent": "block/template_wall_side",
   "textures": {
     "wall": "armorplus:blocks/yellow_stone_brick"
   }

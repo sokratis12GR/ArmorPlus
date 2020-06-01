@@ -1,17 +1,7 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {},
-    "model": "cube_all",
-    "uvlock": true
-  },
   "variants": {
-    "normal": [
-      {
-        "textures": {
-          "all": "armorplus:blocks/white_stone_brick"
-        }
-      }
-    ]
+    "": {
+      "model": "armorplus:block/white_stone_brick"
+    }
   }
 }

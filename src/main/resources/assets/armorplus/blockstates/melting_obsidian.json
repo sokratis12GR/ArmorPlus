@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "age=0": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/compressed_obsidian"
+        }
+      }
+    ],
+    "age=1": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/compressed_obsidian"
+        }
+      }
+    ],
+    "age=2": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/compressed_obsidian"
+        }
+      }
+    ],
+    "": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/compressed_obsidian"
+        }
+      }
+    ]
+  }
+}
