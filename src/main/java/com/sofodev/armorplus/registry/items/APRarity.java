@@ -29,6 +29,6 @@ public enum APRarity {
     }
 
     public Rarity getRarity() {
-        return Rarity.create(this.name().toLowerCase(), this.color);
+        return Rarity.create(this.name().toLowerCase(), this.getColor());
     }
 }
