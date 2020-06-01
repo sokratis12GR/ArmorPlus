@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static java.lang.String.format;
@@ -195,4 +196,7 @@ public final class Utils {
         return getForgeConfig().resolve("armorplus.json");
     }
 
+    public static boolean canAllowFlight(PlayerEntity player, boolean flag) {
+        return (flag) || player.abilities.isCreativeMode || player.isSpectator();
+    }
 }

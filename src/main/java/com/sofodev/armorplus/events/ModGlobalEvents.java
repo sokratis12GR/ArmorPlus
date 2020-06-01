@@ -11,8 +11,8 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.sofodev.armorplus.utils.ItemArmorUtility.isExactMatch;
-import static net.minecraft.inventory.EquipmentSlotType.*;
+import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
+import static com.sofodev.armorplus.utils.Utils.canAllowFlight;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
 public class ModGlobalEvents {
@@ -25,8 +25,7 @@ public class ModGlobalEvents {
                 APArmorItem item = ((APArmorItem) stack.getItem());
                 IAPArmor mat = item.getMat();
                 if (mat == APArmorMaterial.ENDER_DRAGON || mat == APArmorMaterial.SLAYER) {
-                    if ((isExactMatch(mat, player, HEAD) && isExactMatch(mat, player, CHEST) && isExactMatch(mat, player, LEGS) &&
-                        isExactMatch(mat, player, FEET)) || player.abilities.isCreativeMode || player.isSpectator()) {
+                    if (canAllowFlight(player, areExactMatch(mat, player))) {
                         player.abilities.allowFlying = true;
                     } else {
                         player.abilities.allowFlying = false;

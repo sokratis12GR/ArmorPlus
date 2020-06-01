@@ -9,9 +9,7 @@ import net.minecraft.world.World;
 
 import java.util.Arrays;
 
-import static com.sofodev.armorplus.utils.Utils.getAPItemByName;
-import static com.sofodev.armorplus.utils.Utils.getNormalizedName;
-import static net.minecraft.inventory.EquipmentSlotType.*;
+import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 
 public class APArmorItem extends ArmorItem {
 
@@ -28,8 +26,7 @@ public class APArmorItem extends ArmorItem {
             Arrays.stream(mat.getBuffInstances()).forEach(instance -> {
                 if (instance.getBuff() instanceof Buff) {
                     if (instance.getBuff().requiresFullSet()) {
-                        if (isExactMatch(player, HEAD) && isExactMatch(player, CHEST) && isExactMatch(player, LEGS) &&
-                            isExactMatch(player, FEET)) {
+                        if (areExactMatch(mat, player)) {
                             instance.onArmorTick(stack, world, player);
                         }
                     } else {
@@ -38,10 +35,6 @@ public class APArmorItem extends ArmorItem {
                 }
             });
         }
-    }
-
-    private boolean isExactMatch(PlayerEntity player, EquipmentSlotType slotType) {
-        return player.hasItemInSlot(slotType) && player.getItemStackFromSlot(slotType).getItem() == getAPItemByName(String.format("%s_%s", mat.getName(), getNormalizedName(slotType)));
     }
 
     public IAPArmor getMat() {
