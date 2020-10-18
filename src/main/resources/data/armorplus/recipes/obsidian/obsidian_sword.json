@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:obsidian_sword"
+        }
+      ]
+    }
+  ],
+  "group": "obsidian_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "s"
+  ],
+  "key": {
+    "#": {
+      "item": "armorplus:compressed_obsidian"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:obsidian_sword"
+  }
+}

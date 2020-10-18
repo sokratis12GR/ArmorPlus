@@ -1,11 +1,19 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "transform": "forge:default-block"
-  },
   "variants": {
-    "normal": {
-      "model": "armorplus:empty_sword_display"
+    "facing=north": {
+      "model": "armorplus:block/empty_sword_display"
+    },
+    "facing=south": {
+      "model": "armorplus:block/empty_sword_display",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "armorplus:block/empty_sword_display",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "armorplus:block/empty_sword_display",
+      "y": 270
     }
   }
 }

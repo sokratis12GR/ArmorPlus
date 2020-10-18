@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "armorplus:block/orange_stone_brick_corner"
+    },
+    "facing=west": {
+      "model": "armorplus:block/orange_stone_brick_corner",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "armorplus:block/orange_stone_brick_corner",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north": {
+      "model": "armorplus:block/orange_stone_brick_corner",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

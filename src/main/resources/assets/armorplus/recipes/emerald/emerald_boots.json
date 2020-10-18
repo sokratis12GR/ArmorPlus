@@ -4,10 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled"
-        },
-        {
-          "type": "minecraft:item_exists",
+          "type": "forge:item_exists",
           "item": "armorplus:emerald_boots"
         }
       ]

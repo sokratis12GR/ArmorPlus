@@ -2,11 +2,11 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {},
-    "model": "cube_all",
+    "model": "block/cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
+    "": [
       {
         "textures": {
           "all": "armorplus:blocks/ender_stone"

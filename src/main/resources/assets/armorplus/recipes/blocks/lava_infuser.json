@@ -4,10 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled"
-        },
-        {
-          "type": "minecraft:item_exists",
+          "type": "forge:item_exists",
           "item": "armorplus:lava_infuser"
         }
       ]
@@ -22,16 +19,13 @@
   ],
   "key": {
     "L": {
-      "type": "forge:ore_dict",
-      "ore": "gemLavaCrystal"
+"item": "armorplus:lava_crystal"
     },
     "G": {
-      "type": "forge:ore_dict",
-      "ore": "blockGlass"
+"item": "blockGlass"
     },
     "O": {
-      "type": "forge:ore_dict",
-      "ore": "obsidian"
+"item": "obsidian"
     }
   },
   "result": {

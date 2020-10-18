@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:redstone_chestplate"
+        }
+      ]
+    }
+  ],
+  "group": "redstone_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "armorplus:redstone_chestplate"
+  }
+}

@@ -4,10 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled"
-        },
-        {
-          "type": "minecraft:item_exists",
+          "type": "forge:item_exists",
           "item": "armorplus:block_lava_crystal"
         }
       ]
@@ -17,8 +14,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "blockCompressedLavaCrystal"
+"item": "armorplus:block_compressed_lava_crystal"
     }
   ],
   "result": {

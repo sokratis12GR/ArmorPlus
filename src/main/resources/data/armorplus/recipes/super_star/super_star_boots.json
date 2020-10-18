@@ -1,0 +1,27 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:super_star_boots"
+        }
+      ]
+    }
+  ],
+  "group": "super_star_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "armorplus:wither_bone"
+    }
+  },
+  "result": {
+    "item": "armorplus:super_star_boots"
+  }
+}

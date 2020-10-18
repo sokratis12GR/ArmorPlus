@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "": [
+      {
+        "textures": {
+          "all": "armorplus:blocks/spawner"
+        }
+      }
+    ]
+  }
+}

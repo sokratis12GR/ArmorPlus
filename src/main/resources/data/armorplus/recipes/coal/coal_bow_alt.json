@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:coal_bow"
+        }
+      ]
+    }
+  ],
+  "group": "coal_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s# ",
+    "s #",
+    "s# "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:coal_block"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:coal_bow"
+  }
+}

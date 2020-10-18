@@ -4,10 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled"
-        },
-        {
-          "type": "minecraft:item_exists",
+          "type": "forge:item_exists",
           "item": "armorplus:the_gift_of_the_gods"
         }
       ]
@@ -21,11 +18,10 @@
   ],
   "key": {
     "#": {
-      "item": "#infused_lava_crystal"
+      "item": "armorplus:infused_lava_crystal"
     },
     "O": {
-      "type": "forge:ore_dict",
-      "ore": "obsidian"
+"item": "obsidian"
     },
     "N": {
       "item": "minecraft:nether_star"

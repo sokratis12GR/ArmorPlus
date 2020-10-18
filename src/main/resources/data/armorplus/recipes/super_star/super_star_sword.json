@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:super_star_sword"
+        }
+      ]
+    }
+  ],
+  "group": "super_star_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "s"
+  ],
+  "key": {
+    "#": {
+      "item": "armorplus:wither_bone"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:super_star_sword"
+  }
+}

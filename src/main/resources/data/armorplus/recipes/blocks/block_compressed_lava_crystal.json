@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:block_compressed_lava_crystal"
+        }
+      ]
+    }
+  ],
+  "group": "compressed_lava_block",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "armorplus:block_lava_crystal"
+    }
+  },
+  "result": {
+    "item": "armorplus:block_compressed_lava_crystal"
+  }
+}

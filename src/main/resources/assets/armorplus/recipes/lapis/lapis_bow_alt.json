@@ -4,10 +4,7 @@
       "type": "forge:and",
       "values": [
         {
-          "type": "armorplus:enabled"
-        },
-        {
-          "type": "minecraft:item_exists",
+          "type": "forge:item_exists",
           "item": "armorplus:lapis_bow"
         }
       ]
@@ -22,7 +19,7 @@
   ],
   "key": {
     "#": {
-      "item": "#lapis"
+      "item": "armorplus:#lapis"
     },
     "s": {
       "item": "minecraft:string"

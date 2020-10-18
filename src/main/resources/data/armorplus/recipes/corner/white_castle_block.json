@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:stone_bricks",
+  "ingredients": [
+    {
+      "item": "armorplus:white_castle_block_corner"
+    }
+  ],
+  "result": {
+    "item": "armorplus:white_castle_block"
+  }
+}

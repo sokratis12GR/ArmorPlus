@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:emerald_battle_axe"
+        }
+      ]
+    }
+  ],
+  "group": "emerald_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#s#",
+    " s "
+  ],
+  "key": {
+    "#": {
+      minecraft:emerald_block"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:emerald_battle_axe"
+  }
+}

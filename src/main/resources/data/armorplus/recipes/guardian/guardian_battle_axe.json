@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:guardian_battle_axe"
+        }
+      ]
+    }
+  ],
+  "group": "guardian_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#s#",
+    " s "
+  ],
+  "key": {
+    "#": {
+      "item": "armorplus:guardian_scale"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "armorplus:guardian_battle_axe"
+  }
+}

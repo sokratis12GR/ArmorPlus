@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:lapis_bow"
+        }
+      ]
+    }
+  ],
+  "group": "lapis_weapon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s# ",
+    "s #",
+    "s# "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:lapis_block"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "armorplus:lapis_bow"
+  }
+}

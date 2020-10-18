@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "armorplus:block/purple_castle_block_corner"
+    },
+    "facing=west": {
+      "model": "armorplus:block/purple_castle_block_corner",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "armorplus:block/purple_castle_block_corner",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north": {
+      "model": "armorplus:block/purple_castle_block_corner",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

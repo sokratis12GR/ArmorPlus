@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "armorplus:slime_chestplate"
+        }
+      ]
+    }
+  ],
+  "group": "slime_armor",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "armorplus:slime_chestplate"
+  }
+}
