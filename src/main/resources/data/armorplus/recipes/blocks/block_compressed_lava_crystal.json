@@ -5,7 +5,7 @@
       "values": [
         {
           "type": "forge:item_exists",
-          "item": "armorplus:block_compressed_lava_crystal"
+          "item": "armorplus:compressed_lava_crystal"
         }
       ]
     }
@@ -23,6 +23,6 @@
     }
   },
   "result": {
-    "item": "armorplus:block_compressed_lava_crystal"
+    "item": "armorplus:compressed_lava_crystal"
   }
 }

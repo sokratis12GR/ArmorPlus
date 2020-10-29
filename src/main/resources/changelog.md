@@ -1,3 +1,10 @@
+ArmorPlus 1.16.3-16.0.1.2
+----------------------------
+
+* Fixed servers crashing on startup.
+* Fixed emerald weapon/armor temporary recipes.
+* Fixed some more recipes being broken.
+
 ArmorPlus 1.16.3-16.0.0.1
 ----------------------------
 

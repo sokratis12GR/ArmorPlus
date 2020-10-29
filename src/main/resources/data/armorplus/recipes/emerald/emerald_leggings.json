@@ -19,7 +19,7 @@
   ],
   "key": {
     "#": {
-      minecraft:emerald_block"
+      "item": "minecraft:emerald_block"
     }
   },
   "result": {

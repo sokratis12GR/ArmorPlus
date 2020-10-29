@@ -14,7 +14,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "armorplus:block_compressed_infused_lava_crystal"
+      "item": "armorplus:compressed_infused_lava_crystal"
     }
   ],
   "result": {
