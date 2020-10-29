@@ -1,10 +1,11 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
   "promos": {
-    "1.16.3-latest": "1.16.3-16.0.0.1",
-    "1.16.3-recommended": "1.16.3-16.0.0.1",
+    "1.16.3-latest": "1.16.3-16.0.1.2",
+    "1.16.3-recommended": "1.16.3-16.0.1.2"
   },
   "1.16.3": {
     "1.16.3-16.0.0.1": "Initial 1.16.3 release, for more info see the changelog file at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md",
+    "1.16.2-16.0.1.2": "**Fixed server crashing on startup**, fixed some broken prototype recipes"
   }
 }
