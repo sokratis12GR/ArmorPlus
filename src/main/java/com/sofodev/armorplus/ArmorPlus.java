@@ -99,7 +99,6 @@ public class ArmorPlus {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
     }
 
-    @OnlyIn(Dist.CLIENT)
     private void clientInit(FMLClientSetupEvent event) {
         registerRenderingHandler(CoalArrowEntity.class, "coal");
         registerRenderingHandler(LapisArrowEntity.class, "lapis");
