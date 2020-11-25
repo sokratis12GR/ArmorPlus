@@ -18,7 +18,7 @@ apply plugin: 'maven-publish'
 apply plugin: "com.wynprice.cursemaven"
 apply plugin: "com.matthewprenger.cursegradle"
 
-version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
+version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch
 group = package_group
 archivesBaseName = mod_id
 
