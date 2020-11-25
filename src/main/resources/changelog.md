@@ -1,4 +1,9 @@
-ArmorPlus 1.16.3-16.1.0.0 (BETA)
+ArmorPlus 1.16.3-16.1.1 (BETA)
+----------------------------
+
+**QUICK-FIX**: Fixed Version mismatching, recipe mismatching.
+
+ArmorPlus 1.16.3-16.1.0 (BETA)
 ----------------------------
 
 Keep In Mind that this is still beta, so some stuff might not have textures, others might crash etc.
