@@ -32,7 +32,7 @@ public class BuffInstance {
         this.buff = buff;
         this.instant = instant;
         if (buff.isEffect() && buff.getEffect() != null) {
-            this.potion = new Potion(new EffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier));
+            this.potion = new Potion(new EffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false));
         } else {
             this.potion = Potions.EMPTY;
         }

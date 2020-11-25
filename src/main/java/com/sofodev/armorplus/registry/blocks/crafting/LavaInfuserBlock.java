@@ -22,6 +22,8 @@ import java.util.Random;
 import static net.minecraft.util.math.shapes.IBooleanFunction.OR;
 import static net.minecraftforge.common.ToolType.PICKAXE;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class LavaInfuserBlock extends AbstractInfuserBlock {
 
     protected static final VoxelShape BOTTOM_P1 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(2, 0, 2, 14, 1, 14),

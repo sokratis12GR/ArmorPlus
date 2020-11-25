@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:ender_dragon/ender_dragon_arrow"
+    ]
+  },
+  "criteria": {
+    "has_arrows": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:arrow"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:ender_dragon/ender_dragon_arrow"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_arrows",
+      "has_the_recipe"
+    ]
+  ]
+}

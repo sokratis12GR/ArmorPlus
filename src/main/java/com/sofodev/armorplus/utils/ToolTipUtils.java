@@ -24,9 +24,9 @@ public class ToolTipUtils {
      * @param formatting the formatting of the tooltip, its color and style.
      */
     public static void showInfo(List<ITextComponent> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(translate("tooltip.shift.showinfo.text_one").setStyle(EMPTY.setFormatting(GRAY))
-                .append(new TranslationTextComponent(keyBinding.getTranslationKey()).setStyle(EMPTY.setFormatting(formatting)))
-                .append(translate("tooltip.shift.showinfo.text_two")).setStyle(EMPTY.setFormatting(GRAY)));
+        tooltip.add(translate("tooltip.shift.showinfo.text_one").mergeStyle(GRAY)
+                .append(new TranslationTextComponent(keyBinding.getTranslationKey()).mergeStyle(formatting))
+                .append(translate("tooltip.shift.showinfo.text_two")).mergeStyle(GRAY));
     }
 
     /**

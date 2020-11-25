@@ -1,11 +1,9 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
-import com.sofodev.armorplus.registry.entities.bosses.WitherMinionEntity;
 import com.sofodev.armorplus.registry.entities.bosses.WitherlingEntity;
 import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
 import net.minecraft.entity.Entity;
@@ -16,12 +14,18 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 
 import static com.sofodev.armorplus.ArmorPlus.ENTITIES;
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.entities.arrows.ArrowType.*;
+import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.entity.EntityClassification.MISC;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
 
+    public static void registerEntities() {
+    }
+
+    //Arrows
     public static final RegistryObject<EntityType<APArrowEntity>> COAL_ARROW = ENTITIES.register("coal_arrow",
             () -> buildArrow(CoalArrowEntity::new, COAL));
     public static final RegistryObject<EntityType<APArrowEntity>> LAPIS_ARROW = ENTITIES.register("lapis_arrow",
@@ -40,19 +44,18 @@ public class ModEntities {
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
     public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = ENTITIES.register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
-    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = ENTITIES.register("skeletal_king",
-            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
+    //Bosses-Minions-Projectiles
     public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = ENTITIES.register("witherling",
             () -> build(WitherlingEntity::new, MobType.WITHERLING));
-    public static final RegistryObject<EntityType<WitherMinionEntity>> WITHER_MINION = ENTITIES.register("wither_minion",
-            () -> build(WitherMinionEntity::new, MobType.WITHER_MINION));
+    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = ENTITIES.register("skeletal_king",
+            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
 
     /////////////////////
     // UTILITY METHODS //
     /////////////////////
 
     private static <T extends Entity> EntityType<T> build(String id, Builder<T> builder) {
-        return builder.build(id);
+        return builder.build(setRL(id).toString());
     }
 
     /**
@@ -69,4 +72,5 @@ public class ModEntities {
     private static <T extends Entity> EntityType<T> build(EntityType.IFactory<T> factory, MobType data) {
         return build(data.getName(), Builder.create(factory, data.getClassification()).size(data.getWidth(), data.getHeight()));
     }
+
 }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:ap_souls",
+  "pattern": [
+    "ESE",
+    "SXS",
+    "ESE"
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:soul_enderman"
+    },
+    "X": {
+      "item": "armorplus:ender_dragon_scale"
+    },
+    "E": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "armorplus:soul_ender_dragon"
+  }
+}

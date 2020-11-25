@@ -3,14 +3,14 @@ package com.sofodev.armorplus.registry.entities.bosses;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.sofodev.armorplus.utils.RenderingUtils;
-import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 
 /**
  * Created using Tabula 5.1.0
  */
-public class SkeletalKingModel<T extends Entity> extends EntityModel<T> {
+public class SkeletalKingModel<T extends LivingEntity> extends BipedModel<T> {
     public ModelRenderer headHolder;
     public ModelRenderer centerBodyRod;
     public ModelRenderer bottomCenterRod;
@@ -28,7 +28,8 @@ public class SkeletalKingModel<T extends Entity> extends EntityModel<T> {
     public ModelRenderer handSkullLeft;
     public ModelRenderer handSkullRight;
 
-    public SkeletalKingModel() {
+    public SkeletalKingModel(int scale) {
+        super(scale, 0, 64, 64);
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.miniHead3 = new ModelRenderer(this, 40, 0);
@@ -115,8 +116,8 @@ public class SkeletalKingModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-
+    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        headHolder.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
     /**

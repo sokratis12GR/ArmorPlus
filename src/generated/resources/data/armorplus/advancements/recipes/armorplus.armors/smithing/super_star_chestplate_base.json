@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:smithing/super_star_chestplate_base"
+    ]
+  },
+  "criteria": {
+    "has_soul": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:soul_wither_boss"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:smithing/super_star_chestplate_base"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soul",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -7,6 +7,9 @@ import static net.minecraft.world.BossInfo.Color.*;
 import static net.minecraft.world.BossInfo.Overlay.NOTCHED_12;
 import static net.minecraft.world.BossInfo.Overlay.NOTCHED_20;
 
+import net.minecraft.world.BossInfo.Color;
+import net.minecraft.world.BossInfo.Overlay;
+
 /**
  * @author Sokratis Fotkatzikis
  */

@@ -29,10 +29,15 @@ import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
 
+    public static void registerModBlocks() {
+    }
+
     public static List<RegistryObject<Block>> blocks = new ArrayList<>();
 
     public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = regWithItem("compressed_obsidian", () -> new Block(AbstractBlock.Properties.from(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = regWithItem("ore_lava_crystal", CrystalOreBlock::new);
+    public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = regWithItem("ore_lava_crystal_stone", CrystalOreBlock::new);
+    public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = regWithItem("ore_lava_crystal_obsidian", CrystalOreBlock::new);
     public static final RegistryObject<Block> LAVA_CRYSTAL = regWithItem("block_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> INFUSED_LAVA_CRYSTAL = regWithItem("block_infused_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> COMPRESSED_LAVA_CRYSTAL = regWithItem("compressed_lava_crystal", APLavaBlock::new);
@@ -40,6 +45,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = regWithItem("lava_infused_obsidian", () ->
             new APLavaBlock(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PURPLE).hardnessAndResistance(25.0f, 2000.0f)));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL = regWithItem("ore_frost_crystal", CrystalOreBlock::new);
+    public static final RegistryObject<Block> ORE_FROST_CRYSTAL_STONE = regWithItem("ore_frost_crystal_stone", CrystalOreBlock::new);
+    public static final RegistryObject<Block> ORE_FROST_CRYSTAL_OBSIDIAN = regWithItem("ore_frost_crystal_obsidian", CrystalOreBlock::new);
     public static final RegistryObject<Block> FROST_CRYSTAL = regWithItem("block_frost_crystal", APFrostBlock::new);
     public static final RegistryObject<Block> INFUSED_FROST_CRYSTAL = regWithItem("block_infused_frost_crystal", APFrostBlock::new);
     public static final RegistryObject<Block>[] STONE_BRICKS = new RegistryObject[AP_STONE_BRICKS_LENGTH];

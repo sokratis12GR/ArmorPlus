@@ -4,7 +4,7 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
+import net.minecraft.item.Item.Properties;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.text.TextFormatting;
 
@@ -30,11 +30,19 @@ public enum APArmorMaterial implements IAPArmor {
     /*Tier 2*/
     EMERALD(EMERALD_PROP, DARK_GREEN, new BuffInstance(SPEED, 1)),
     OBSIDIAN(OBSIDIAN_PROP, DARK_GRAY, new BuffInstance(RESISTANCE, 1)),
-    INFUSED_LAVA(INFUSED_LAVA_PROP, GOLD, new BuffInstance(FIRE_RESISTANCE, 0)),
+    INFUSED_LAVA(INFUSED_LAVA_PROP, new Properties().isImmuneToFire(), GOLD,
+            new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WATER_WEAKNESS)
+    ),
     /*Tier 3*/
-    GUARDIAN(GUARDIAN_PROP, BLUE, new BuffInstance(WATER_BREATHING, 0)),
-    SUPER_STAR(SUPER_STAR_PROP, WHITE, new BuffInstance(WITHER_IMMUNITY), new BuffInstance(REGENERATION, 2)),
-    ENDER_DRAGON(ENDER_DRAGON_PROP, DARK_PURPLE, new BuffInstance(FLIGHT), new BuffInstance(SLOW_FALLING, 0)),
+    GUARDIAN(GUARDIAN_PROP, new Properties().isImmuneToFire(), BLUE,
+            new BuffInstance(WATER_BREATHING, 0)
+    ),
+    SUPER_STAR(SUPER_STAR_PROP, new Properties().isImmuneToFire(), WHITE,
+            new BuffInstance(WITHER_IMMUNITY), new BuffInstance(REGENERATION, 2)
+    ),
+    ENDER_DRAGON(ENDER_DRAGON_PROP, new Properties().isImmuneToFire(), DARK_PURPLE,
+            new BuffInstance(FLIGHT), new BuffInstance(SLOW_FALLING, 0)
+    ),
     /*Tier TConstruct*/
     ARDITE(ARDITE_PROP, RED),
     COBALT(COBALT_PROP, BLUE),
@@ -42,32 +50,36 @@ public enum APArmorMaterial implements IAPArmor {
     PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
     MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
     /*Tier Slayer*/
-    SLAYER(SLAYER_PROP, DARK_PURPLE, new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WITHER_IMMUNITY), new BuffInstance(FLIGHT), new BuffInstance(WATER_BREATHING, 0)),
+    SLAYER(SLAYER_PROP, new Properties().isImmuneToFire(), DARK_PURPLE,
+            new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WITHER_IMMUNITY), new BuffInstance(FLIGHT),
+            new BuffInstance(WATER_BREATHING, 0), new BuffInstance(SLOW_FALLING, 0)
+    ),
     /*Enhanced Vanilla Armor*/
-    CHAINMAIL(ENHANCED_CHAINMAIL_PROP),
-    GOLDEN(ENHANCED_GOLD_PROP),
-    IRON(ENHANCED_IRON_PROP),
-    DIAMOND(ENHANCED_DIAMOND_PROP),
+    CHAINMAIL(ENHANCED_CHAINMAIL_PROP, GRAY),
+    GOLDEN(ENHANCED_GOLD_PROP, GRAY),
+    IRON(ENHANCED_IRON_PROP, GRAY),
+    DIAMOND(ENHANCED_DIAMOND_PROP, GRAY),
+    NETHERITE(ENHANCED_NETHERITE_PROP, GRAY)
     ;
 
     private final IArmorMaterial armor;
-    private final Item.Properties properties;
+    private final Properties properties;
     private final BuffInstance[] buffs;
     private final TextFormatting formatting;
 
     APArmorMaterial() {
-        this(ArmorMaterial.IRON, new Item.Properties(), RESET);
+        this(ArmorMaterial.IRON, new Properties(), RESET);
     }
 
     APArmorMaterial(IArmorMaterial armor) {
-        this(armor, new Item.Properties(), RESET);
+        this(armor, new Properties(), RESET);
     }
 
     APArmorMaterial(IArmorMaterial armor, TextFormatting formatting, BuffInstance... buffs) {
-        this(armor, new Item.Properties(), formatting, buffs);
+        this(armor, new Properties(), formatting, buffs);
     }
 
-    APArmorMaterial(IArmorMaterial armor, Item.Properties properties, TextFormatting formatting, BuffInstance... buffs) {
+    APArmorMaterial(IArmorMaterial armor, Properties properties, TextFormatting formatting, BuffInstance... buffs) {
         this.armor = armor;
         this.properties = properties;
         this.buffs = buffs;
@@ -90,7 +102,7 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     @Override
-    public Item.Properties getProperties() {
+    public Properties getProperties() {
         return properties.group(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
     }
 

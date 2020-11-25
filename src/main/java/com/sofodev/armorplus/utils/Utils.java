@@ -124,6 +124,10 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getValue(setRL(name));
     }
 
+    public static Block getAPBlock(String name) {
+        return ForgeRegistries.BLOCKS.getValue(setRL(name));
+    }
+
     public static ResourceLocation setRL(String path) {
         return new ResourceLocation(MODID, path);
     }

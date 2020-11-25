@@ -3,11 +3,10 @@ package com.sofodev.armorplus.registry.entities.bosses;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.sofodev.armorplus.utils.Utils;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
-import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import javax.swing.text.html.parser.Entity;
@@ -15,10 +14,11 @@ import javax.swing.text.html.parser.Entity;
 /**
  * @author Sokratis Fotkatzikis
  **/
-public class WitherlingRenderer extends MobRenderer<WitherlingEntity, SkeletalKingModel<WitherlingEntity>> {
+@OnlyIn(Dist.CLIENT)
+public class WitherlingRenderer extends BipedRenderer<WitherlingEntity, SkeletalKingModel<WitherlingEntity>> {
 
     public WitherlingRenderer(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new SkeletalKingModel<>(), 1.0f);
+        super(renderManagerIn, new SkeletalKingModel<>(0), 1.0f);
     }
 
     @Nullable

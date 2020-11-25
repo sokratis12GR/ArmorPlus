@@ -1,12 +1,11 @@
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.registry.APItems;
-import com.sofodev.armorplus.registry.ModBlocks;
+import com.sofodev.armorplus.events.WorldGenEvents;
+import com.sofodev.armorplus.registry.*;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
-import com.sofodev.armorplus.registry.entities.arrows.impl.*;
+import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingRenderer;
-import com.sofodev.armorplus.registry.entities.bosses.WitherMinionRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.WitherlingRenderer;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.APToolProperties;
@@ -15,28 +14,37 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 
+import static com.sofodev.armorplus.registry.ModBlocks.registerModBlocks;
+import static com.sofodev.armorplus.registry.ModEnchantments.registerEnchantments;
 import static com.sofodev.armorplus.registry.ModEntities.*;
+import static com.sofodev.armorplus.registry.ModItems.registerModItems;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setName;
+import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
+import static net.minecraftforge.fml.loading.FMLEnvironment.dist;
 
 @Mod("armorplus")
 @Mod.EventBusSubscriber(bus = MOD, modid = ArmorPlus.MODID)
@@ -44,7 +52,6 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.16.3-16.0.0.1";
 
     private static ArmorPlus instance;
 
@@ -54,6 +61,8 @@ public class ArmorPlus {
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
+    public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, MODID);
 
     /**
      * Used as an "upper ground" variable, which sets the limit for the sets which use these materials.
@@ -90,42 +99,63 @@ public class ArmorPlus {
     public ArmorPlus() {
         instance = this;
         MinecraftForge.EVENT_BUS.register(this);
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        BLOCKS.register(modEventBus);
+        ITEMS.register(modEventBus);
+        ENCHANTMENTS.register(modEventBus);
+        TILE_ENTITIES.register(modEventBus);
+        ENTITIES.register(modEventBus);
+        EFFECTS.register(modEventBus);
+        FEATURES.register(modEventBus);
+        ATTRIBUTES.register(modEventBus);
+        modEventBus.addListener(this::onCommonSetup);
+        forgeBus.addListener(EventPriority.HIGH, WorldGenEvents::onBiomeLoad);
+        if (dist == CLIENT) {
+            modEventBus.addListener(this::clientInit);
+        }
+    }
+
+    public void onCommonSetup(FMLCommonSetupEvent event) {
+        registerModBlocks();
+        registerModItems();
+        registerEnchantments();
+        registerEntities();
+        event.enqueueWork(this::afterSetup);
+    }
+
+    private void afterSetup() {
+        ModAttributes.registerAttributes();
+        ModFeatures.registerFeatures();
+        ModConfiguredFeatures.registerConfiguredFeatures();
     }
 
     private void clientInit(FMLClientSetupEvent event) {
-        registerRenderingHandler(CoalArrowEntity.class, "coal");
-        registerRenderingHandler(LapisArrowEntity.class, "lapis");
-        registerRenderingHandler(RedstoneArrowEntity.class, "redstone");
-        registerRenderingHandler(EmeraldArrowEntity.class, "emerald");
-        registerRenderingHandler(ObsidianArrowEntity.class, "obsidian");
-        registerRenderingHandler(InfusedLavaArrowEntity.class, "lava");
-        registerRenderingHandler(GuardianArrowEntity.class, "guardian");
-        registerRenderingHandler(SuperStarArrowEntity.class, "super_star");
-        registerRenderingHandler(EnderDragonArrowEntity.class, "ender_dragon");
+        registerRenderingHandler(COAL_ARROW.get(), "coal");
+        registerRenderingHandler(LAPIS_ARROW.get(), "lapis");
+        registerRenderingHandler(REDSTONE_ARROW.get(), "redstone");
+        registerRenderingHandler(EMERALD_ARROW.get(), "emerald");
+        registerRenderingHandler(OBSIDIAN_ARROW.get(), "obsidian");
+        registerRenderingHandler(INFUSED_LAVA_ARROW.get(), "lava");
+        registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
+        registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
+        registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
         registerEntityRenderingHandler(SKELETAL_KING.get(), SkeletalKingRenderer::new);
-        registerEntityRenderingHandler(WITHER_MINION.get(), WitherMinionRenderer::new);
         registerEntityRenderingHandler(WITHERLING.get(), WitherlingRenderer::new);
         this.setRenderLayer(ModBlocks.LAVA_INFUSER);
     }
 
-    @SafeVarargs
-    private final void setRenderLayer(RegistryObject<Block>... blocks) {
+    private void setRenderLayer(RegistryObject<Block>... blocks) {
         Arrays.stream(blocks).forEach(block -> RenderTypeLookup.setRenderLayer(block.get(), RenderType.getCutout()));
     }
 
-    private static void registerRenderingHandler(Class<? extends APArrowEntity> entityClass, String name) {
-        //    registerEntityRenderingHandler(entityClass, rm -> new APArrowRenderer<>(rm, name));
+    @OnlyIn(CLIENT)
+    private static void registerRenderingHandler(EntityType<? extends APArrowEntity> entityClass, String name) {
+        registerEntityRenderingHandler(entityClass, rm -> new APArrowRenderer<>(rm, name));
     }
 
     //      ClientRegistry.bindTileEntitySpecialRenderer(TileTrophy.class, new TESRTrophy());
-    //  ClientRegistry.bindTileEntitySpecialRenderer(TilePortal.class, new TESRPortal());
 
     public static ArmorPlus getInstance() {
         return instance;

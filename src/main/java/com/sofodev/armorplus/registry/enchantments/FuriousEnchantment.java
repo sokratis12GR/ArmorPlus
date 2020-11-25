@@ -36,9 +36,9 @@ public class FuriousEnchantment extends APEnchantment {
             level = limit();
         }
         Levels lvl = Levels.values()[level];
-        user.addPotionEffect(new EffectInstance(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel));
+        user.addPotionEffect(new EffectInstance(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
         if (lvl.hasFastLegs) {
-            user.addPotionEffect(new EffectInstance(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel));
+            user.addPotionEffect(new EffectInstance(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
         }
     }
 

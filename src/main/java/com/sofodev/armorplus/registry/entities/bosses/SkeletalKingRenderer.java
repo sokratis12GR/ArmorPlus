@@ -1,24 +1,23 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.sofodev.armorplus.utils.Utils;
-import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.BipedRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
 /**
  * @author Sokratis Fotkatzikis
  **/
-public class SkeletalKingRenderer extends MobRenderer<SkeletalKingEntity, SkeletalKingModel<SkeletalKingEntity>> {
+@OnlyIn(Dist.CLIENT)
+public class SkeletalKingRenderer extends BipedRenderer<SkeletalKingEntity, SkeletalKingModel<SkeletalKingEntity>> {
 
     public SkeletalKingRenderer(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new SkeletalKingModel<>(), 3.0F);
+        super(renderManagerIn, new SkeletalKingModel<>(0), 0.0F);
     }
 
     @Nullable

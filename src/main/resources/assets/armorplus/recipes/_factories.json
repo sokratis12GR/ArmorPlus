@@ -1,5 +1,0 @@
-{
-  "conditions": {
-    "enabled": "com.sofodev.armorplus.common.config.conditions.ConditionEnabled"
-  }
-}

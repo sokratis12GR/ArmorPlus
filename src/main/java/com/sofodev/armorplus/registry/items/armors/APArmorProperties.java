@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.items.armors;
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundEvent;
@@ -22,21 +23,22 @@ public enum APArmorProperties implements IArmorMaterial {
     EMERALD_PROP(true, 35, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, EMERALD, EMERALD_BLOCK),
     OBSIDIAN_PROP(true, 40, new int[]{3, 6, 7, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, OBSIDIAN),
     INFUSED_LAVA_PROP(true, 55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, INFUSED_LAVA_CRYSTAL),
-    GUARDIAN_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_DIAMOND, 2.0f, GUARDIAN_SCALE),
-    SUPER_STAR_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_DIAMOND, 2.0f, WITHER_BONE),
-    ENDER_DRAGON_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_DIAMOND, 2.0f, ENDER_DRAGON_SCALE),
+    GUARDIAN_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, GUARDIAN_SCALE),
+    SUPER_STAR_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, WITHER_BONE),
+    ENDER_DRAGON_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, ENDER_DRAGON_SCALE),
     ARDITE_PROP(true, 55, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
     COBALT_PROP(true, 44, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
     KNIGHT_SLIME_PROP(true, 33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
     PIG_IRON_PROP(true, 33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
-    MANYULLYN_PROP(true, 66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_DIAMOND, 2.0f, AIR),
-    SLAYER_PROP(true, 160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_DIAMOND, 3.0f, THE_ULTIMATE_MATERIAL),
+    MANYULLYN_PROP(true, 66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
+    SLAYER_PROP(true, 160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, THE_ULTIMATE_MATERIAL),
     /*Enhanced Vanilla Armor*/
     ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ITEM_ARMOR_EQUIP_CHAIN, 1.0f, IRON_INGOT, CHAINMAIL),
-    ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 6, 2}, 30, ITEM_ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
+    ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ITEM_ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
     ENHANCED_IRON_PROP(false, 20, new int[]{2, 5, 6, 2}, 15, ITEM_ARMOR_EQUIP_IRON, 2.0f, IRON_INGOT),
-    ENHANCED_DIAMOND_PROP(false, 35, new int[]{3, 6, 8, 3}, 20, ITEM_ARMOR_EQUIP_DIAMOND, 4.0f, DIAMOND);
-
+    ENHANCED_DIAMOND_PROP(false, 35, new int[]{3, 6, 7, 3}, 20, ITEM_ARMOR_EQUIP_DIAMOND, 3.0f, DIAMOND),
+    ENHANCED_NETHERITE_PROP(false, 47, new int[]{3, 6, 8, 3}, 25, ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, NETHERITE_INGOT),
+    ;
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */

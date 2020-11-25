@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_boots"
+  },
+  "addition": {
+    "item": "armorplus:en_netherite"
+  },
+  "result": {
+    "item": "armorplus:netherite_boots"
+  }
+}

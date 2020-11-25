@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.items.extras;
 
 import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraft.world.World;
@@ -34,6 +35,26 @@ public enum Buff implements IBuff {
             if (!world.isRemote) {
                 player.removeActivePotionEffect(WITHER);
             }
+        }
+    },
+    WATER_WEAKNESS(true) {
+        int ticks = 0;
+
+        @Override
+        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+            if (!world.isRemote && player.isInWater()) {
+                ticks++;
+                if ((ticks + 1) % 20 == 0) {
+                    this.damageArmorSet(player, stack);
+                }
+            }
+        }
+
+        private void damageArmorSet(PlayerEntity playerEntity, ItemStack stack) {
+            stack.damageItem(1, playerEntity, e -> e.sendBreakAnimation(EquipmentSlotType.HEAD));
+            stack.damageItem(1, playerEntity, e -> e.sendBreakAnimation(EquipmentSlotType.CHEST));
+            stack.damageItem(1, playerEntity, e -> e.sendBreakAnimation(EquipmentSlotType.LEGS));
+            stack.damageItem(1, playerEntity, e -> e.sendBreakAnimation(EquipmentSlotType.FEET));
         }
     };
 

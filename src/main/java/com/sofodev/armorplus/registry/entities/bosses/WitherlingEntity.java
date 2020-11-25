@@ -1,10 +1,13 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierManager;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -12,19 +15,19 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import javax.annotation.Nullable;
-
 import static com.sofodev.armorplus.registry.ModEntities.WITHERLING;
+import static net.minecraft.entity.ai.attributes.Attributes.ARMOR;
+import static net.minecraft.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 import static net.minecraft.potion.Effects.WITHER;
 
 public class WitherlingEntity extends AbstractSkeletonEntity {
@@ -39,6 +42,16 @@ public class WitherlingEntity extends AbstractSkeletonEntity {
     @Override
     public EntitySize getSize(Pose poseIn) {
         return new EntitySize(this.getWidth() * 2f, this.getHeight() * 1.1f, false);
+    }
+
+    @Override
+    public ITextComponent getCustomName() {
+        return new StringTextComponent("Witherling");
+    }
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MonsterEntity.func_234295_eP_()
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D);
     }
 
     @Override
@@ -80,14 +93,6 @@ public class WitherlingEntity extends AbstractSkeletonEntity {
     @Override
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
         this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_AXE));
-    }
-
-    @Override
-    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag) {
-        ILivingEntityData ientitylivingdata = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-        this.setCombatTask();
-        return ientitylivingdata;
     }
 
     @Override

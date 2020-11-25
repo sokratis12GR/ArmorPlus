@@ -18,7 +18,7 @@ public class MobType {
     private boolean isImmuneToFire;
 
     MobType(String name, EntityClassification classification) {
-        this(name, classification, false, 0, 0);
+        this(name, classification, false, 1, 1);
     }
 
     MobType(String name, EntityClassification classification, float width, float height) {

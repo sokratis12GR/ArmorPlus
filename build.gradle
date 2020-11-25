@@ -26,7 +26,7 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'snapshot', version: '20200916-1.16.2'
+    mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
@@ -90,8 +90,8 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.3-34.1.29'
-    compile fg.deobf("curse.maven:thedragonlib:3085663")
+    minecraft 'net.minecraftforge:forge:1.16.3-34.1.42'
+    compile fg.deobf("curse.maven:thedragonlib:3108730")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

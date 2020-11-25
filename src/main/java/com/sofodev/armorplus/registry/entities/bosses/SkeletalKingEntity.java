@@ -6,47 +6,43 @@ import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificRangedAttac
 import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificRangedAttackGoal.EntityAIType;
 import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificServerBossInfo;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.monster.BlazeEntity;
-import net.minecraft.entity.monster.WitherSkeletonEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import javax.annotation.Nullable;
 import java.util.Collections;
 
-import static com.sofodev.armorplus.registry.entities.bosses.extras.SpecificServerBossInfo.BossInfoDungeonType.SKELETAL_KING;
-import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.entity.EntityType.BLAZE;
-import static net.minecraft.entity.ai.attributes.Attributes.*;
-import static net.minecraft.potion.Effects.RESISTANCE;
-import static net.minecraft.potion.Effects.WITHER;
-import static net.minecraft.util.text.Style.EMPTY;
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.entity.ai.attributes.Attributes.ARMOR;
+import static net.minecraft.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
+import static net.minecraft.util.text.TextFormatting.BOLD;
+import static net.minecraft.util.text.TextFormatting.GOLD;
 
 /**
  * @author Sokratis Fotkatzikis
  **/
-public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedAttackMob {
+public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMob {
 
     public static final Predicate<Entity> ANY_ENTITY = entity ->
             entity instanceof LivingEntity && ((LivingEntity) entity).attackable() && !(entity instanceof SkeletalKingEntity);
-    private final SpecificServerBossInfo bossInfo;
+    private final SpecificServerBossInfo bossInfo = new SpecificServerBossInfo(this.getDisplayName(), SpecificServerBossInfo.BossInfoDungeonType.SKELETAL_KING);
     private final EntityType<? extends SkeletalKingEntity> type;
     //  public static List<EntityPlayer> playersReadDeathDialog = new ArrayList<>();
     //  private static TextComponentTranslation KING_NAME = translate(GOLD, "dialogs.armorplus.skeletal_king.name", BOLD.toString());
@@ -60,24 +56,14 @@ public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedA
     public SkeletalKingEntity(EntityType<? extends SkeletalKingEntity> type, World world) {
         super(type, world);
         this.type = type;
-        this.bossInfo = new SpecificServerBossInfo(this.getDisplayName(), SKELETAL_KING);
         this.enablePersistence();
+        this.setHealth(this.getMaxHealth());
+        this.getNavigator().setCanSwim(true);
     }
 
     @Override
     public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(this.getWidth() * 7.0F, this.getHeight() * 7.0F, true);
-    }
-
-    @Override
-    public void tick() {
-        if (this.isPotionActive(WITHER)) {
-            this.removePotionEffect(WITHER);
-        }
-        if (!this.isPotionActive(RESISTANCE)) {
-            this.addPotionEffect(new EffectInstance(RESISTANCE, 240, 0));
-        }
-        super.tick();
+        return new EntitySize(this.getWidth() * 7.0F, this.getHeight() * 7.0F, false);
     }
 
     @Override
@@ -91,9 +77,28 @@ public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedA
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, LivingEntity.class, 0, false, true, ANY_ENTITY));
     }
 
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MonsterEntity.func_234295_eP_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 1024.0D)
+                .createMutableAttribute(MOVEMENT_SPEED, 0.6000000238418579D)
+                .createMutableAttribute(ARMOR, 8.0D);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
     @Override
-    protected void registerData() {
-        super.registerData();
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        if (this.hasCustomName()) {
+            this.bossInfo.setName(this.getDisplayName());
+        }
+
+    }
+
+    @Override
+    public ITextComponent getCustomName() {
+        return new StringTextComponent("Skeletal King");
     }
 
     @Override
@@ -128,59 +133,22 @@ public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedA
         this.bossInfo.removePlayer(player);
     }
 
-    private void launchWitherMinionsToEntity(int pos, LivingEntity entity) {
-        this.launchWitherMinions(pos, entity.getPosX(), entity.getPosY() + (double) entity.getEyeHeight() * 0.5D, entity.getPosZ());
-    }
-
     /**
-     * Launches a Freeze Bomb toward (par2, par4, par6)
+     * Called when the entity is attacked.
      */
-    private void launchWitherMinions(int pos, double x, double y, double z) {
-        this.world.playEvent(null, 1024, new BlockPos(this.getPosition()), 0);
-        double headingX = this.getHeadX(pos);
-        double headingY = this.getHeadY(pos);
-        double headingZ = this.getHeadZ(pos);
-        double estimatedX = x - headingX;
-        double estimatedY = y - headingY;
-        double estimatedZ = z - headingZ;
-        WitherMinionEntity witherMinion = new WitherMinionEntity(this.world, this, estimatedX, estimatedY, estimatedZ);
-        witherMinion.setPositionAndUpdate(headingX, headingY, headingZ);
-        this.world.addEntity(witherMinion);
-    }
-
-    /**
-     * Attack the specified entity using a ranged attack.
-     */
-    @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-        this.launchWitherMinionsToEntity(0, target);
-    }
-
-    private double getHeadX(int xPos) {
-        if (xPos <= 0) {
-            return this.getPosX();
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        boolean trueSources = source.getTrueSource() instanceof SkeletalKingEntity || source.getTrueSource() instanceof WitherEntity;
+        if (source != DamageSource.DROWN && !(trueSources)) {
+            Entity entity1 = source.getTrueSource();
+            if (!(entity1 instanceof PlayerEntity) && entity1 instanceof LivingEntity && ((LivingEntity) entity1).getCreatureAttribute() == this.getCreatureAttribute()) {
+                return false;
+            } else {
+                return super.attackEntityFrom(source, amount);
+            }
+        } else {
+            return false;
         }
-        float f = (this.renderYawOffset + (float) (180 * (xPos - 1))) * 0.017453292F;
-        float f1 = MathHelper.cos(f);
-        return this.getPosX() + (double) f1 * 1.3D;
     }
-
-    private double getHeadY(int yPos) {
-        return yPos <= 0 ? this.getPosY() + 3.0D : this.getPosY() + 2.2D;
-    }
-
-    private double getHeadZ(int zPos) {
-        if (zPos <= 0) {
-            return this.getPosZ();
-        }
-        float f = (this.renderYawOffset + (float) (180 * (zPos - 1))) * 0.017453292F;
-        float f1 = MathHelper.sin(f);
-        return this.getPosZ() + (double) f1 * 1.3D;
-    }
-
-    //Dialog
-    //   private int sendDialog = 0;
-
 
     @Override
     public void onDeath(DamageSource cause) {
@@ -205,52 +173,16 @@ public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedA
         }
     }
 
-    @Override
-    protected void onDeathUpdate() {
-        super.onDeathUpdate();
-        //      if (getLastDamageSource() == null) {
-        //          return;
-        //      }
-        //      EntityPlayer playerInRange = world.getClosestPlayerToEntity(this, 150);
-        //      if (world.isRemote || playerInRange == null) {
-        //          return;
-        //      }
-        //      if (!playersReadDeathDialog.contains(playerInRange) && sendDialog % (20 * 6) == 0) {
-        //          playerInRange.sendMessage(KING_NAME.appendText(dialog("death_line.a", playerInRange.getName()))
-        //              .appendText(dialog("death_line.b"))
-        //              .appendText(dialog("death_line.c")));
-        //          playersReadDeathDialog.add(playerInRange);
-        //      }
+    public CreatureAttribute getCreatureAttribute() {
+        return CreatureAttribute.UNDEAD;
     }
 
-    //private static ITextComponent setDialog(ITextComponent parent, String... appended) {
-    //    ITextComponent copy = parent.deepCopy();
-    //    for (String part : appended) {
-    //        copy.appendText(dialog(part));
-    //    }
-    //    return copy;
-    //}
-
-    private static String dialog(String part, Object... args) {
-        return "\n" + translate("dialogs.armorplus.skeletal_king." + part, args).setStyle(EMPTY.setFormatting(ITALIC));
+    /**
+     * Returns false if this Entity is a boss, true otherwise.
+     */
+    public boolean isNonBoss() {
+        return false;
     }
-
-    @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-        //We override this so the Skeletal King spawns with no equipment in its possession
-    }
-
-    //  @Override
-    //  public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag) {
-    //      if (!this.getHeldItemMainhand().isEmpty()) {
-    //          this.setHeldItem(Hand.MAIN_HAND, EMPTY);
-    //      }
-
-    //      if (!this.getHeldItemOffhand().isEmpty()) {
-    //          this.setHeldItem(Hand.OFF_HAND, EMPTY);
-    //      }
-    //      return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-    //  }
 
     @Override
     public float getCollisionBorderSize() {
@@ -274,15 +206,17 @@ public class SkeletalKingEntity extends WitherSkeletonEntity implements IRangedA
     }
 
     @Override
+    public EntityType<? extends SkeletalKingEntity> getType() {
+        return type;
+    }
+
+    @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
-    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag) {
-        this.getAttribute(MAX_HEALTH).setBaseValue(1024.0D);
-        this.getAttribute(MOVEMENT_SPEED).setBaseValue(0.6000000238418579D);
-        this.getAttribute(ARMOR).setBaseValue(8.0);
-        return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
+
     }
 }
