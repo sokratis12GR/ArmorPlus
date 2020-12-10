@@ -5,7 +5,7 @@
 [![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://smarturl.it/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://smarturl.it/armorplus)
 
-## Official Website
+## ~~Official Website~~ (OLD-REDUNDANT)
 
 [![Website](https://img.shields.io/website-online-offline-green-orange/https/sokratis12gr.com/mods/armorplus/index.php.svg?style=flat)](https://sokratis12gr.com/mods/armorplus/)
 
@@ -23,17 +23,14 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 [ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)
 
-### 1.12.2 
-
-#### Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
-
-### 1.11.2
-
-#### Recommended: [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)
-
-### 1.10.2
-
-#### Recommended: [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)
+* **1.16.3/4**
+  * Latest: [1.16.3-16.1.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3122892)
+* **1.12.2**
+  * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
+* **1.11.2**
+  * Recommended: [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)
+* **1.10.2**
+  * Recommended: [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)
 
 ## Mod Integrations
 
