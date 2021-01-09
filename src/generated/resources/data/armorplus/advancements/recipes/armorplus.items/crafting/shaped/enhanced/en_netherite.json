@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shaped/enhanced/en_netherite"
+    ]
+  },
+  "criteria": {
+    "has_req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:crafting/shaped/enhanced/en_netherite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ]
+}

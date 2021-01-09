@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:stone_brick",
+  "ingredients": [
+    {
+      "item": "armorplus:red_castle_block_wall"
+    }
+  ],
+  "result": {
+    "item": "armorplus:red_castle_block"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:ap_arrows",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:coal"
+    },
+    "S": {
+      "item": "minecraft:arrow"
+    }
+  },
+  "result": {
+    "item": "armorplus:coal_arrow",
+    "count": 8
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:storage",
+  "ingredients": [
+    {
+      "item": "armorplus:compressed_lava_crystal"
+    }
+  ],
+  "result": {
+    "item": "armorplus:block_lava_crystal",
+    "count": 9
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:obsidian_battle_axes",
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "M": {
+      "item": "armorplus:compressed_obsidian"
+    }
+  },
+  "result": {
+    "item": "armorplus:obsidian_battle_axe"
+  }
+}

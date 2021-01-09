@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shaped/guardian/guardian_helmet_base_alt"
+    ]
+  },
+  "criteria": {
+    "has_req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:guardian_scale"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:crafting/shaped/guardian/guardian_helmet_base_alt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ]
+}

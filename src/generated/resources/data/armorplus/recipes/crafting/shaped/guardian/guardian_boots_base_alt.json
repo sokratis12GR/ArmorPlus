@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:guardian",
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:guardian_scale"
+    }
+  },
+  "result": {
+    "item": "armorplus:guardian_boots_base"
+  }
+}

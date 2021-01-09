@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:ap_arrows",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:emerald"
+    },
+    "S": {
+      "item": "minecraft:arrow"
+    }
+  },
+  "result": {
+    "item": "armorplus:emerald_arrow",
+    "count": 8
+  }
+}
