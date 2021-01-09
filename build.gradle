@@ -11,12 +11,17 @@ buildscript {
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: "com.wynprice.cursemaven"
 apply plugin: "com.matthewprenger.cursegradle"
+
+repositories {
+    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+}
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch
 group = package_group
@@ -91,7 +96,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.42'
-    compile fg.deobf("curse.maven:thedragonlib:3108730")
+    implementation fg.deobf("curse.maven:thedragonlib:3108730")
+//    implementation fg.deobf("curse.maven:ichunutil:3062089")
+//    implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
+    implementation fg.deobf('software.bernie.geckolib:forge-1.16.4-geckolib:3.0.0')
+    //implementation fg.deobf("curse.maven:blame:3135054")
+
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -128,6 +138,12 @@ publishing {
     }
 }
 
+def curseRelations = {
+    //requiredDependency '' //add curseforge-slug here
+    requiredDependency 'thedragonlib'
+    requiredDependency 'geckolib'
+}
+
 curseforge {
     apiKey = project.hasProperty('api_token') ? project.api_token : '0'
     project {
@@ -136,5 +152,7 @@ curseforge {
         changelogType = 'markdown'
         releaseType = 'beta'
         addGameVersion '1.16.3'
+        addGameVersion '1.16.4'
+        relations curseRelations
     }
 }
