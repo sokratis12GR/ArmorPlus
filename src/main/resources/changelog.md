@@ -1,3 +1,8 @@
+ArmorPlus 1.16.3-16.2.1 (BETA)
+----------------------------
+
+* Ensures ArmorPlus requires GeckoLib 3 to be present to prevent weird errors.
+
 ArmorPlus 1.16.3-16.2.0 (BETA)
 ----------------------------
 

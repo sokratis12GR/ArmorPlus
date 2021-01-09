@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "armorplus:obsidian_bows",
+  "group": "armorplus:ender_dragon_bows",
   "pattern": [
     "SM ",
     "S M",
@@ -11,10 +11,10 @@
       "item": "minecraft:string"
     },
     "M": {
-      "item": "armorplus:compressed_obsidian"
+      "item": "armorplus:ender_dragon_scale"
     }
   },
   "result": {
-    "item": "armorplus:obsidian_bow"
+    "item": "armorplus:ender_dragon_bow_base"
   }
 }

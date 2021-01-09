@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "armorplus:obsidian_bows",
+  "group": "armorplus:guardian_bows",
   "pattern": [
-    " MS",
-    "M S",
-    " MS"
+    "SM ",
+    "S M",
+    "SM "
   ],
   "key": {
     "S": {
       "item": "minecraft:string"
     },
     "M": {
-      "item": "armorplus:compressed_obsidian"
+      "item": "armorplus:guardian_scale"
     }
   },
   "result": {
-    "item": "armorplus:obsidian_bow"
+    "item": "armorplus:guardian_bow_base"
   }
 }

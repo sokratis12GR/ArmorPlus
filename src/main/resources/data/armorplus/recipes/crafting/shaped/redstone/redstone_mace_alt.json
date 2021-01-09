@@ -11,7 +11,7 @@
       "item": "minecraft:stick"
     },
     "D": {
-      "item": "minecraft:redstone"
+      "item": "minecraft:redstone_block"
     }
   },
   "result": {
