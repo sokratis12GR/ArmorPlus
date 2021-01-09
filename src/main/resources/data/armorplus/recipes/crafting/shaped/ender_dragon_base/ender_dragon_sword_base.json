@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:ender_dragon_base_swords",
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    },
+    "M": {
+      "item": "armorplus:ender_dragon_scale"
+    }
+  },
+  "result": {
+    "item": "armorplus:ender_dragon_sword_base"
+  }
+}

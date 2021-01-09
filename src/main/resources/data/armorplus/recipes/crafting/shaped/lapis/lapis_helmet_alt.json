@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:lapis",
+  "pattern": [
+    "   ",
+    "SSS",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:lapis_block"
+    }
+  },
+  "result": {
+    "item": "armorplus:lapis_helmet"
+  }
+}

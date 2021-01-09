@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:super_star",
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:wither_bone"
+    }
+  },
+  "result": {
+    "item": "armorplus:super_star_leggings_base"
+  }
+}

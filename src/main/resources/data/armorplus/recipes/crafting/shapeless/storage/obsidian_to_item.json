@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:storage",
+  "ingredients": [
+    {
+      "item": "armorplus:compressed_obsidian"
+    }
+  ],
+  "result": {
+    "item": "minecraft:obsidian",
+    "count": 9
+  }
+}

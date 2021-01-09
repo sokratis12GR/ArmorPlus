@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:guardian_base_battle_axes",
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    },
+    "M": {
+      "item": "armorplus:guardian_scale"
+    }
+  },
+  "result": {
+    "item": "armorplus:guardian_battle_axe_base"
+  }
+}

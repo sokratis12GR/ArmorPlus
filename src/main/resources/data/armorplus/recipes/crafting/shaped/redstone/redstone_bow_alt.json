@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:redstone_bows",
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "M": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "armorplus:redstone_bow"
+  }
+}

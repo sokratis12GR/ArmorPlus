@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "armorplus:guardian_pickaxe_base"
+  },
+  "addition": {
+    "item": "armorplus:soul_elder_guardian"
+  },
+  "result": {
+    "item": "armorplus:guardian_pickaxe"
+  }
+}

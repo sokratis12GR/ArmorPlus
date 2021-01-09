@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:stone_brick",
+  "ingredients": [
+    {
+      "item": "armorplus:red_stone_brick_tower"
+    }
+  ],
+  "result": {
+    "item": "armorplus:red_stone_brick"
+  }
+}
