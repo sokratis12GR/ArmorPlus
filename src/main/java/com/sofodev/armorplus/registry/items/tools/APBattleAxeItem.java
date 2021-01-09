@@ -1,8 +1,7 @@
 package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.items.tools.properties.APToolMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
@@ -11,7 +10,7 @@ import net.minecraft.item.Rarity;
 
 import java.util.Arrays;
 
-import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.BATTLE_AXE;
+import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.BATTLE_AXE;
 
 public class APBattleAxeItem extends AxeItem {
 
