@@ -20,11 +20,8 @@ ArmorPlus 1.16.3-16.2.0 (BETA)
         * Shockwave: Depending on the material, the maces can destroy blocks in line of sight, for the cost of a heavy
           chunk of durability with a cooldown added on top.
     * The current recipe (is subject to change in the future), where S - Stick, M - Material
-    
-|       |   M   |   M   |
-|  ---  |  ---  |  ---  |
-|       | **S** | **M** |
-| **S** |       |       |
+
+![Mace Recipe](https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.16.3/mace_recipe.png "Mace Recipe")
 
 * **Added** the first **config** entries.
     * **Ore Lava/Frost Crystal** world generation is now toggleable. You can enable/disable it. (Of course with this
