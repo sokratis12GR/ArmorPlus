@@ -467,6 +467,19 @@
   "item.armorplus.ender_dragon_battle_axe": "Dragonborn Axe",
   "item.armorplus.slayer_battle_axe": "Kingslayer",
 
+
+  "_comment": "BattleAxes",
+  "item.armorplus.coal_mace": "Coal Mace",
+  "item.armorplus.lapis_mace": "Lapis Mace",
+  "item.armorplus.redstone_mace": "Redstone Mace",
+  "item.armorplus.emerald_mace": "Emerald Mace",
+  "item.armorplus.obsidian_mace": "Obsidian Mace",
+  "item.armorplus.infused_lava_mace": "Infused Lava Mace",
+  "item.armorplus.super_star_mace": "King's Redemption",
+  "item.armorplus.guardian_mace": "Elder's Revolve",
+  "item.armorplus.ender_dragon_mace": "Shifting Darkness",
+  "item.armorplus.slayer_mace": "Executor",
+
   "_comment": "Bows",
   "item.armorplus.coal_bow": "Coal Bow",
   "item.armorplus.lapis_bow": "Lapis Bow",
@@ -692,6 +705,10 @@
   "info.armorplus.abilities.apply.button": "[Apply]",
 
   "_comment": "ArmorBaseItems",
+  "item.armorplus.guardian_helmet_base": "Base: Guardian Helmet",
+  "item.armorplus.guardian_chestplate_base": "Base: Guardian Chestplate",
+  "item.armorplus.guardian_leggings_base": "Base: Guardian Leggings",
+  "item.armorplus.guardian_boots_base": "Base: Guardian Boots",
   "item.armorplus.super_star_helmet_base": "Base: Super Star Helmet",
   "item.armorplus.super_star_chestplate_base": "Base: Super Star Chestplate",
   "item.armorplus.super_star_leggings_base": "Base: Super Star Leggings",
@@ -700,14 +717,28 @@
   "item.armorplus.ender_dragon_chestplate_base": "Base: Ender Dragon Chestplate",
   "item.armorplus.ender_dragon_leggings_base": "Base: Ender Dragon Leggings",
   "item.armorplus.ender_dragon_boots_base": "Base: Ender Dragon Boots",
-  "item.armorplus.guardian_helmet_base": "Base: Guardian Helmet",
-  "item.armorplus.guardian_chestplate_base": "Base: Guardian Chestplate",
-  "item.armorplus.guardian_leggings_base": "Base: Guardian Leggings",
-  "item.armorplus.guardian_boots_base": "Base: Guardian Boots",
   "item.armorplus.slayer_helmet_base": "Base: Slayer Helmet",
   "item.armorplus.slayer_chestplate_base": "Base: Slayer Chestplate",
   "item.armorplus.slayer_leggings_base": "Base: Slayer Leggings",
   "item.armorplus.slayer_boots_base": "Base: Slayer Boots",
+
+  "_comment": "ToolBaseItems",
+  "item.armorplus.guardian_sword_base": "Base: Guardian Sword",
+  "item.armorplus.guardian_battle_axe_base": "Base: Guardian Battle Axe",
+  "item.armorplus.guardian_pickaxe_base": "Base: Guardian Pickaxe",
+  "item.armorplus.guardian_bow_base": "Base: Guardian Bow",
+  "item.armorplus.super_star_sword_base": "Base: Super Star Sword",
+  "item.armorplus.super_star_battle_axe_base": "Base: Super Star Battle Axe",
+  "item.armorplus.super_star_pickaxe_base": "Base: Super Star Pickaxe",
+  "item.armorplus.super_star_bow_base": "Base: Super Star Bow",
+  "item.armorplus.ender_dragon_sword_base": "Base: Ender Dragon Sword",
+  "item.armorplus.ender_dragon_battle_axe_base": "Base: Ender Dragon Battle Axe",
+  "item.armorplus.ender_dragon_pickaxe_base": "Base: Ender Dragon Pickaxe",
+  "item.armorplus.ender_dragon_bow_base": "Base: Ender Dragon Bow",
+
+  "_comment": "NewItems",
+  "item.armorplus.obsidian_stick": "Obsidian Stick",
+
 
   "_comment": "AbilityNames",
   "ability.armorplus.empty": "Empty",
@@ -847,6 +878,10 @@
   "block.armorplus.ore_lava_crystal_stone": "Lava Crystal Ore",
   "block.armorplus.ore_lava_crystal_obsidian": "Lava Crystal Ore",
   "block.armorplus.ore_frost_crystal_stone": "Frost Crystal Ore",
-  "block.armorplus.ore_frost_crystal_obsidian": "Frost Crystal Ore"
+  "block.armorplus.ore_frost_crystal_obsidian": "Frost Crystal Ore",
 
+  "_comment": "Additional Lore",
+  "item.armorplus.lava_crystal.how_to_infuse": "It is said that these crystals react to lava in a certain way.",
+  "item.armorplus.lava_crystal.lore": "The reaction of lava and ordinary lava crystals created these crystals.",
+  "item.armorplus.base_soulless": "Hmm... Seems to require a specific soul in order to work!"
 }
