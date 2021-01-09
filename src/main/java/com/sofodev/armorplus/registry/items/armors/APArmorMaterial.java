@@ -8,6 +8,8 @@ import net.minecraft.item.Item.Properties;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.text.TextFormatting;
 
+import java.util.Arrays;
+
 import static com.sofodev.armorplus.registry.items.armors.APArmorProperties.*;
 import static com.sofodev.armorplus.registry.items.extras.Buff.*;
 import static net.minecraft.util.text.TextFormatting.*;
@@ -22,14 +24,26 @@ import static net.minecraft.util.text.TextFormatting.*;
  */
 public enum APArmorMaterial implements IAPArmor {
     /*Tier 1*/
-    COAL(COAL_PROP, GRAY, new BuffInstance(NIGHT_VISION, 0)),
-    REDSTONE(REDSTONE_PROP, DARK_RED, new BuffInstance(HASTE, 1)),
-    LAPIS(LAPIS_PROP, DARK_BLUE, new BuffInstance(WATER_BREATHING, 0)),
-    CHICKEN(CHICKEN_PROP, WHITE, new BuffInstance(SPEED, 3)),
-    SLIME(SLIME_PROP, GREEN, new BuffInstance(JUMP_BOOST, 3), new BuffInstance(SLOW_FALLING, 1)),
+    COAL(COAL_PROP, GRAY,
+            new BuffInstance(NIGHT_VISION, 0)
+    ),
+    REDSTONE(REDSTONE_PROP, DARK_RED,
+            new BuffInstance(HASTE, 1)
+    ),
+    LAPIS(LAPIS_PROP, DARK_BLUE,
+            new BuffInstance(WATER_BREATHING, 0)
+    ),
+    CHICKEN(CHICKEN_PROP, WHITE,
+            new BuffInstance(SPEED, 3)
+    ),
+    SLIME(SLIME_PROP, GREEN,
+            new BuffInstance(JUMP_BOOST, 3), new BuffInstance(SLOW_FALLING, 1)
+    ),
     /*Tier 2*/
-    EMERALD(EMERALD_PROP, DARK_GREEN, new BuffInstance(SPEED, 1)),
-    OBSIDIAN(OBSIDIAN_PROP, DARK_GRAY, new BuffInstance(RESISTANCE, 1)),
+    EMERALD(EMERALD_PROP, DARK_GREEN,
+            new BuffInstance(SPEED, 1)),
+    OBSIDIAN(OBSIDIAN_PROP, DARK_GRAY,
+            new BuffInstance(RESISTANCE, 1)),
     INFUSED_LAVA(INFUSED_LAVA_PROP, new Properties().isImmuneToFire(), GOLD,
             new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WATER_WEAKNESS)
     ),
@@ -59,8 +73,7 @@ public enum APArmorMaterial implements IAPArmor {
     GOLDEN(ENHANCED_GOLD_PROP, GRAY),
     IRON(ENHANCED_IRON_PROP, GRAY),
     DIAMOND(ENHANCED_DIAMOND_PROP, GRAY),
-    NETHERITE(ENHANCED_NETHERITE_PROP, GRAY)
-    ;
+    NETHERITE(ENHANCED_NETHERITE_PROP, GRAY);
 
     private final IArmorMaterial armor;
     private final Properties properties;
@@ -109,5 +122,15 @@ public enum APArmorMaterial implements IAPArmor {
     @Override
     public BuffInstance[] getBuffInstances() {
         return buffs;
+    }
+
+    @Override
+    public String toString() {
+        return "APArmorMaterial{" +
+                "armor=" + armor +
+                ", properties=" + properties +
+                ", buffs=" + Arrays.toString(buffs) +
+                ", formatting=" + formatting +
+                '}';
     }
 }

@@ -3,35 +3,36 @@ package com.sofodev.armorplus.registry.items.armors;
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Arrays;
+
 import static com.sofodev.armorplus.utils.GlobalVars.*;
 import static net.minecraft.item.Items.*;
 import static net.minecraft.util.SoundEvents.*;
 
 public enum APArmorProperties implements IArmorMaterial {
-    COAL_PROP(true, 2, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, 0.0f, COAL),
-    REDSTONE_PROP(true, 11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, 0.0f, REDSTONE),
-    LAPIS_PROP(true, 11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, 0.0f, LAPIS_LAZULI),
-    CHICKEN_PROP(true, 1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, 0.0f, FEATHER),
-    SLIME_PROP(true, 1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, 0.0f, SLIME_BALL),
-    EMERALD_PROP(true, 35, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, EMERALD, EMERALD_BLOCK),
-    OBSIDIAN_PROP(true, 40, new int[]{3, 6, 7, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, OBSIDIAN),
-    INFUSED_LAVA_PROP(true, 55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, INFUSED_LAVA_CRYSTAL),
-    GUARDIAN_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, GUARDIAN_SCALE),
-    SUPER_STAR_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, WITHER_BONE),
-    ENDER_DRAGON_PROP(true, 60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, ENDER_DRAGON_SCALE),
-    ARDITE_PROP(true, 55, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
-    COBALT_PROP(true, 44, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
-    KNIGHT_SLIME_PROP(true, 33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
-    PIG_IRON_PROP(true, 33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
-    MANYULLYN_PROP(true, 66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
-    SLAYER_PROP(true, 160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, THE_ULTIMATE_MATERIAL),
+    COAL_PROP(2, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, COAL),
+    REDSTONE_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, REDSTONE),
+    LAPIS_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, LAPIS_LAZULI),
+    CHICKEN_PROP(1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, FEATHER),
+    SLIME_PROP(1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, SLIME_BALL),
+    EMERALD_PROP(35, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, EMERALD, EMERALD_BLOCK),
+    OBSIDIAN_PROP(40, new int[]{3, 6, 7, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, OBSIDIAN),
+    INFUSED_LAVA_PROP(55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, INFUSED_LAVA_CRYSTAL),
+    GUARDIAN_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, GUARDIAN_SCALE),
+    SUPER_STAR_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, WITHER_BONE),
+    ENDER_DRAGON_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, ENDER_DRAGON_SCALE),
+    ARDITE_PROP(55, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
+    COBALT_PROP(44, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
+    KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
+    PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
+    MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f),
+    SLAYER_PROP(160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, THE_ULTIMATE_MATERIAL),
     /*Enhanced Vanilla Armor*/
     ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ITEM_ARMOR_EQUIP_CHAIN, 1.0f, IRON_INGOT, CHAINMAIL),
     ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ITEM_ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
@@ -52,6 +53,14 @@ public enum APArmorProperties implements IArmorMaterial {
     private final Ingredient repairMaterial;
     private final boolean special;
 
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repairMaterial) {
+        this(true, durability, damageReduction, enchantability, soundEvent, toughness, repairMaterial);
+    }
+
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, IItemProvider... repairMaterial) {
+        this(true, durability, damageReduction, enchantability, soundEvent, 0.0f, repairMaterial);
+    }
+
     APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repairMaterial) {
         this.special = special;
         this.name = name().toLowerCase().replace("_prop", "").replace("enhanced_", "");
@@ -60,7 +69,7 @@ public enum APArmorProperties implements IArmorMaterial {
         this.damageReduction = damageReduction;
         this.enchantability = enchantability;
         this.soundEvent = soundEvent;
-        this.repairMaterial = Ingredient.fromItems(repairMaterial);
+        this.repairMaterial = repairMaterial.length == 0 ? Ingredient.EMPTY : Ingredient.fromItems(repairMaterial);
     }
 
     @Override
@@ -102,5 +111,19 @@ public enum APArmorProperties implements IArmorMaterial {
     @Override
     public float getKnockbackResistance() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "APArmorProperties{" +
+                "name='" + name + '\'' +
+                ", durability=" + durability +
+                ", toughness=" + toughness +
+                ", damageReduction=" + Arrays.toString(damageReduction) +
+                ", enchantability=" + enchantability +
+                ", soundEvent=" + soundEvent +
+                ", repairMaterial=" + repairMaterial +
+                ", special=" + special +
+                '}';
     }
 }
