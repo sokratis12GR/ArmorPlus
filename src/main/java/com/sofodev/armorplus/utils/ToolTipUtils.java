@@ -4,13 +4,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.text.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.text.MessageFormat;
 import java.util.List;
 
-import static java.text.MessageFormat.*;
 import static net.minecraft.util.text.Style.EMPTY;
 import static net.minecraft.util.text.TextFormatting.GRAY;
 
@@ -42,7 +38,14 @@ public class ToolTipUtils {
         }
     }
 
+    public static IFormattableTextComponent translate(Color color, String key, Object... args) {
+        return new TranslationTextComponent(key, args).setStyle(EMPTY.setColor(color));
+    }
 
+
+    public static IFormattableTextComponent translate(Style style, String key, Object... args) {
+        return new TranslationTextComponent(key, args).setStyle(style);
+    }
 
     public static TextComponent translate(String key, Object... args) {
         return new TranslationTextComponent(key, args);

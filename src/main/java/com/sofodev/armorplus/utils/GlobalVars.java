@@ -13,8 +13,8 @@ import static com.sofodev.armorplus.utils.Utils.getAPItem;
 public class GlobalVars {
 
     //General Items & Materials
-    public static final IItemProvider LAVA_CRYSTAL = getAPItem("lava_crystals");
-    public static final IItemProvider INFUSED_LAVA_CRYSTAL = getAPItem("infused_lava_crystals");
+    public static final IItemProvider LAVA_CRYSTAL = getAPItem("lava_crystal");
+    public static final IItemProvider INFUSED_LAVA_CRYSTAL = getAPItem("infused_lava_crystal");
     public static final IItemProvider FROST_CRYSTAL = getAPItem("frost_crystal");
     public static final IItemProvider INFUSED_FROST_CRYSTAL = getAPItem("infused_frost_crystal");
     public static final IItemProvider CHAINMAIL = getAPItem("chainmail");
@@ -43,4 +43,8 @@ public class GlobalVars {
     public static final IItemProvider ENDER_DRAGON_CHEST = getAPItem("ender_dragon_chestplate");
     public static final IItemProvider ENDER_DRAGON_LEGS = getAPItem("ender_dragon_leggings");
     public static final IItemProvider ENDER_DRAGON_FEET = getAPItem("ender_dragon_boots");
+
+    public static void registerAfterEverything() {
+
+    }
 }

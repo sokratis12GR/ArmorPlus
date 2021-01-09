@@ -180,14 +180,15 @@ public final class Utils {
     }
 
     public static String getNormalizedName(EquipmentSlotType slot) {
-        if (slot == HEAD) {
-            return "helmet";
-        } else if (slot == LEGS) {
-            return "leggings";
-        } else if (slot == CHEST) {
-            return "chestplate";
-        } else if (slot == FEET) {
-            return "boots";
+        switch (slot) {
+            case HEAD:
+                return "helmet";
+            case LEGS:
+                return "leggings";
+            case CHEST:
+                return "chestplate";
+            case FEET:
+                return "boots";
         }
         return slot.getName();
     }
