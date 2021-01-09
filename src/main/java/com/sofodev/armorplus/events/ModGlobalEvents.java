@@ -2,29 +2,40 @@ package com.sofodev.armorplus.events;
 
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.config.APConfig;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
+import com.sofodev.armorplus.registry.items.extras.BuffInstance;
+import com.sofodev.armorplus.registry.items.tools.APMaceItem;
+import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Map;
 import java.util.Random;
 
+import static com.sofodev.armorplus.registry.items.tools.APMaceItem.getControllerForStack;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
 import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
@@ -51,11 +62,47 @@ public class ModGlobalEvents {
                 }
             }
         }
+    //  for (BuffInstance instance : APConfig.SERVER.BUFF_INSTANCE_LIST) {
+    //      System.out.println(instance.toString());
+    //  }
     }
 
-    //TODO: Change the guaranteed drop to support only `Soulstealer` enchanted weapons
-    //TODO: Make wither skeletons to drop their souls, so that they are upgraded to higher versions
-    //TODO: Same for guardians
+    @SubscribeEvent
+    public static void onAttackEntityEvent(AttackEntityEvent event) {
+        World world = event.getEntityLiving().world;
+        PlayerEntity player = event.getPlayer();
+        Entity target = event.getTarget();
+        float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        double movedDistance = player.distanceWalkedModified - player.prevDistanceWalkedModified;
+        boolean isMace = false;
+        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        if (player.isOnGround() && movedDistance < (double) player.getAIMoveSpeed() && stack.getItem() instanceof APMaceItem) {
+            isMace = true;
+        }
+
+        if (isMace) {
+            APMaceItem mace = (APMaceItem) stack.getItem();
+            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
+
+            for (LivingEntity entity : world.getEntitiesWithinAABB(LivingEntity.class, target.getBoundingBox().grow(1.0D, 0.25D, 1.0D))) {
+                boolean isNewTarget = entity != player && entity != target;
+                boolean isValidTarget = !player.isOnSameTeam(entity) && (!(entity instanceof ArmorStandEntity) || !((ArmorStandEntity) entity).hasMarker());
+                boolean isReachable = player.getDistanceSq(entity) < 15.0D;
+                if (isNewTarget && isValidTarget && isReachable) {
+                    double ratioX = MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F));
+                    double ratioZ = -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F));
+                    entity.applyKnockback(0.4F, ratioX, ratioZ);
+                    entity.attackEntityFrom(DamageSource.causePlayerDamage(player), sweepingDamage);
+                }
+            }
+            if (world.isRemote) {
+                mace.swingAnimation(getControllerForStack(mace.factory, stack, mace.controllerName));
+            }
+            world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, player.getSoundCategory(), 1.0F, 1.0F);
+            player.spawnSweepParticles();
+        }
+    }
+
     @SubscribeEvent
     public static void onMobDeathEvent(LivingDropsEvent event) {
         boolean oneInFourChance = RAND.nextInt(4) == 0; // 1/4 chance

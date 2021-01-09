@@ -8,7 +8,6 @@ import net.minecraft.potion.EffectInstance;
 
 import static com.sofodev.armorplus.registry.enchantments.FuriousEnchantment.Levels.limit;
 import static net.minecraft.enchantment.Enchantment.Rarity.RARE;
-import static net.minecraft.enchantment.EnchantmentType.ARMOR;
 import static net.minecraft.enchantment.EnchantmentType.WEARABLE;
 import static net.minecraft.inventory.EquipmentSlotType.*;
 import static net.minecraft.potion.Effects.SPEED;
@@ -45,9 +44,9 @@ public class FuriousEnchantment extends APEnchantment {
     public enum Levels {
         ZERO(),
         ONE(23, 0),
-        TWO(23, 0, true, 23, 0),
-        THREE(23, 1, true, 46, 0),
-        FOUR(30, 2, true, 60, 1);
+        TWO(23, 0, 23, 0),
+        THREE(23, 1, 46, 0),
+        FOUR(30, 2, 60, 1);
 
         public final int strSecs;
         public final int strLevel;
@@ -61,6 +60,11 @@ public class FuriousEnchantment extends APEnchantment {
 
         Levels(int strSecs, int strLevel) {
             this(strSecs, strLevel, false, 0, 0);
+
+        }
+
+        Levels(int strSecs, int strLevel, int speedSecs, int speedLevel) {
+            this(strSecs, strLevel, true, speedSecs, speedLevel);
         }
 
         Levels(int strSecs, int strLevel, boolean hasFastLegs, int speedSecs, int speedLevel) {
