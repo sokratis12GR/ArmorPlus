@@ -16,6 +16,10 @@ import static net.minecraft.util.text.TextFormatting.*;
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class APItems {
 
+    public static void registerAPItems() {
+
+    }
+
     //Crystals
     public static final RegistryObject<Item> LAVA_CRYSTAL = ITEMS.register("lava_crystal", () -> new LavaCrystalItem(false));
     public static final RegistryObject<Item> INFUSED_LAVA_CRYSTAL = ITEMS.register("infused_lava_crystal", () -> new LavaCrystalItem(true));
@@ -45,5 +49,8 @@ public class APItems {
     public static final RegistryObject<Item> ENHANCED_GOLD = ITEMS.register("en_gold", () -> new MaterialItem(true, GRAY, new Properties()));
     public static final RegistryObject<Item> ENHANCED_DIAMOND = ITEMS.register("en_diamond", () -> new MaterialItem(true, GRAY, new Properties()));
     public static final RegistryObject<Item> ENHANCED_NETHERITE = ITEMS.register("en_netherite", () -> new MaterialItem(true, GRAY, new Properties()));
+
+    //Other
+    public static final RegistryObject<Item> OBSIDIAN_STICK = ITEMS.register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, new Properties()));
 
 }

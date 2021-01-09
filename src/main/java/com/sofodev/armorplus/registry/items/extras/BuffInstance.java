@@ -13,9 +13,11 @@ import static com.sofodev.armorplus.utils.Utils.convertToSeconds;
 
 public class BuffInstance {
 
-    private final IBuff buff;
+    private IBuff buff;
+    private int amplifier;
     private final boolean instant;
     private final Potion potion;
+    private boolean enabled;
 
     public BuffInstance(IBuff buff, int amplifier) {
         this(buff, amplifier, 20, true);
@@ -30,6 +32,7 @@ public class BuffInstance {
      */
     public BuffInstance(IBuff buff, int amplifier, int duration, boolean instant) {
         this.buff = buff;
+        this.amplifier = amplifier;
         this.instant = instant;
         if (buff.isEffect() && buff.getEffect() != null) {
             this.potion = new Potion(new EffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false));
@@ -43,8 +46,40 @@ public class BuffInstance {
      */
     public BuffInstance(IBuff buff) {
         this.buff = buff;
+        this.amplifier = 0;
         this.instant = true;
         this.potion = Potions.EMPTY;
+    }
+
+    public static BuffInstance build(IBuff buff, int amplifier, int duration, boolean instant) {
+        return new BuffInstance(buff, amplifier, duration, instant);
+    }
+
+    public static BuffInstance build(IBuff buff, int amplifier, int duration) {
+        return new BuffInstance(buff, amplifier, duration);
+    }
+
+    public static BuffInstance build(IBuff buff, int amplifier) {
+        return new BuffInstance(buff, amplifier);
+    }
+
+    public static BuffInstance build(IBuff buff) {
+        return new BuffInstance(buff);
+    }
+
+    public BuffInstance setBuff(IBuff buff) {
+        this.buff = buff;
+        return this;
+    }
+
+    public BuffInstance setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    public BuffInstance setAmplifier(int amplifier) {
+        this.amplifier = amplifier;
+        return this;
     }
 
     /**
@@ -85,5 +120,24 @@ public class BuffInstance {
 
     public IBuff getBuff() {
         return buff;
+    }
+
+    public int getAmplifier() {
+        return amplifier;
+    }
+
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    @Override
+    public String toString() {
+        return "BuffInstance{" +
+                "buff=" + buff +
+                ", amplifier=" + amplifier +
+                ", instant=" + instant +
+                ", potion=" + potion +
+                ", enabled=" + enabled +
+                '}';
     }
 }

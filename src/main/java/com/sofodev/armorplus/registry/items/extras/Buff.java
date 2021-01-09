@@ -90,4 +90,13 @@ public enum Buff implements IBuff {
     public boolean requiresFullSet() {
         return requireFullSet;
     }
+
+    @Override
+    public String toString() {
+        return "Buff{" +
+                "isEffect=" + isEffect +
+                ", effect=" + effect +
+                ", requireFullSet=" + requireFullSet +
+                '}';
+    }
 }

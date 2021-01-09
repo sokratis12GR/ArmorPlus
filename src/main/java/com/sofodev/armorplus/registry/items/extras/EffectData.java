@@ -53,4 +53,13 @@ public class EffectData {
     public int getAmplifier() {
         return amplifier;
     }
+
+    @Override
+    public String toString() {
+        return "EffectData{" +
+                "effect=" + effect +
+                ", duration=" + duration +
+                ", amplifier=" + amplifier +
+                '}';
+    }
 }

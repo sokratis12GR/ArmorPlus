@@ -54,4 +54,12 @@ public enum DeBuff implements IBuff {
         return effect;
     }
 
+    @Override
+    public String toString() {
+        return "DeBuff{" +
+                "rand=" + rand +
+                ", isEffect=" + isEffect +
+                ", effect=" + effect +
+                '}';
+    }
 }
