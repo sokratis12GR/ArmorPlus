@@ -2,15 +2,10 @@ package com.sofodev.armorplus.registry.entities.arrows;
 
 import com.sofodev.armorplus.registry.ModPotions;
 import com.sofodev.armorplus.registry.items.extras.EffectData;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
-
-import static net.minecraft.item.Items.ARROW;
 
 public class ArrowProperty implements IArrow {
 
@@ -65,5 +60,15 @@ public class ArrowProperty implements IArrow {
             living.addPotionEffect(new EffectInstance(eff, effData.getDuration(), effData.getAmplifier()));
         }
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrowProperty{" +
+                "name='" + name + '\'' +
+                ", particleType=" + particleType +
+                ", dmg=" + dmg +
+                ", data=" + data +
+                '}';
     }
 }

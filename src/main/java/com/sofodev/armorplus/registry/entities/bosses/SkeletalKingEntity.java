@@ -19,13 +19,19 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Collections;
 
@@ -38,20 +44,13 @@ import static net.minecraft.util.text.TextFormatting.GOLD;
 /**
  * @author Sokratis Fotkatzikis
  **/
-public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMob {
+public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMob, IAnimatable {
 
-    public static final Predicate<Entity> ANY_ENTITY = entity ->
-            entity instanceof LivingEntity && ((LivingEntity) entity).attackable() && !(entity instanceof SkeletalKingEntity);
+    public static final Predicate<LivingEntity> ANY_ENTITY = entity ->
+            entity != null && entity.attackable() && !(entity instanceof SkeletalKingEntity);
     private final SpecificServerBossInfo bossInfo = new SpecificServerBossInfo(this.getDisplayName(), SpecificServerBossInfo.BossInfoDungeonType.SKELETAL_KING);
     private final EntityType<? extends SkeletalKingEntity> type;
-    //  public static List<EntityPlayer> playersReadDeathDialog = new ArrayList<>();
-    //  private static TextComponentTranslation KING_NAME = translate(GOLD, "dialogs.armorplus.skeletal_king.name", BOLD.toString());
-    //  public static ITextComponent PHASE_ONE = setDialog(KING_NAME, "line_one.a", "line_one.b", "line_one.c");
-    //  public static ITextComponent PHASE_TWO = setDialog(KING_NAME, "line_two.a");
-    //  public static ITextComponent PHASE_THREE = setDialog(KING_NAME, "line_three.a", "line_three.b", "line_three.c");
-    //  public static ITextComponent PHASE_FOUR = setDialog(KING_NAME, "line_four.a", "line_four.b");
-    //  public static ITextComponent PHASE_FIVE = setDialog(KING_NAME, "line_five.a", "line_five.b");
-    //  public static ITextComponent PHASE_SIX = setDialog(KING_NAME, "line_six.a", "line_six.b", "line_six.c");
+    private AnimationFactory factory = new AnimationFactory(this);
 
     public SkeletalKingEntity(EntityType<? extends SkeletalKingEntity> type, World world) {
         super(type, world);
@@ -59,11 +58,18 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
         this.enablePersistence();
         this.setHealth(this.getMaxHealth());
         this.getNavigator().setCanSwim(true);
+        this.ignoreFrustumCheck = true;
+        this.recalculateSize();
     }
 
     @Override
     public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(this.getWidth() * 7.0F, this.getHeight() * 7.0F, false);
+        return new EntitySize(1, 1, true).scale(2.4f, 8);
+    }
+
+    @Override
+    public float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+        return 7F;
     }
 
     @Override
@@ -74,7 +80,7 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 20.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, LivingEntity.class, 0, false, true, ANY_ENTITY));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 0, false, true, ANY_ENTITY));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
@@ -94,6 +100,11 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
             this.bossInfo.setName(this.getDisplayName());
         }
 
+    }
+
+    @Override
+    public void handleStatusUpdate(byte id) {
+        super.handleStatusUpdate(id);
     }
 
     @Override
@@ -173,6 +184,25 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
         }
     }
 
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        if (event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.skeletal_king.move", true));
+            this.recalculateSize();
+            return PlayState.CONTINUE;
+        }
+        return PlayState.STOP;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
+
     public CreatureAttribute getCreatureAttribute() {
         return CreatureAttribute.UNDEAD;
     }
@@ -184,15 +214,6 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
         return false;
     }
 
-    @Override
-    public float getCollisionBorderSize() {
-        return super.getCollisionBorderSize();
-    }
-
-    @Override
-    public AxisAlignedBB getBoundingBox() {
-        return super.getBoundingBox();
-    }
 
     //Management Stuff
     @Override

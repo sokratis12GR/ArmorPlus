@@ -8,7 +8,9 @@ import static net.minecraft.entity.EntityClassification.MONSTER;
 public class MobType {
     public static final MobType SKELETAL_KING = new MobType("skeletal_king", MONSTER).setImmuneToFire(true);
     public static final MobType WITHERLING = new MobType("witherling", MONSTER).setImmuneToFire(true);
-    public static final MobType WITHER_MINION = new MobType("wither_minion", MISC, 0.3125F, 0.3125F).setImmuneToFire(true);
+
+    public static final MobType GUARDIAN_OVERLORD = new MobType("guardian_overlord", MONSTER);
+    public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER);
 
     private String name;
     private EntityClassification classification;

@@ -24,19 +24,28 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import static com.sofodev.armorplus.registry.ModEntities.WITHERLING;
 import static net.minecraft.entity.ai.attributes.Attributes.ARMOR;
 import static net.minecraft.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 import static net.minecraft.potion.Effects.WITHER;
 
-public class WitherlingEntity extends AbstractSkeletonEntity {
+public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimatable {
 
     private final EntityType<? extends AbstractSkeletonEntity> type;
+    private AnimationFactory factory = new AnimationFactory(this);
 
     public WitherlingEntity(EntityType<? extends AbstractSkeletonEntity> type, World worldIn) {
         super(type, worldIn);
         this.type = type;
+        this.ignoreFrustumCheck = true;
     }
 
     @Override
@@ -117,6 +126,22 @@ public class WitherlingEntity extends AbstractSkeletonEntity {
         AbstractArrowEntity entityarrow = super.fireArrow(arrowStack, distanceFactor);
         entityarrow.setFire(100);
         return entityarrow;
+    }
+
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.skeletal_king.move", true));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
     }
 
     @Override
