@@ -27,7 +27,8 @@ public class LootTables extends BaseLootTableProvider {
     @Override
     protected void addTables() {
         blockList.addAll(blocks);
-        this.removeEntries(ORE_FROST_CRYSTAL, ORE_LAVA_CRYSTAL);
+        this.removeEntries(ORE_FROST_CRYSTAL, ORE_FROST_CRYSTAL_STONE, ORE_FROST_CRYSTAL_OBSIDIAN,
+                ORE_LAVA_CRYSTAL, ORE_LAVA_CRYSTAL_STONE, ORE_LAVA_CRYSTAL_OBSIDIAN);
 
         blockList.stream().map(RegistryObject::get).forEach(this::registerDropSelfLootTable);
     }
