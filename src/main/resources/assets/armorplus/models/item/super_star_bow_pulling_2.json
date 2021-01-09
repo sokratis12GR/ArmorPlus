@@ -1,0 +1,6 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "armorplus:items/super_Star_bow_pulling_2"
+  }
+}

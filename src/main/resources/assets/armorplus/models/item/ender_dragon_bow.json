@@ -78,7 +78,21 @@
       "predicate": {
         "pulling": 1
       },
-      "model": "armorplus:item/ender_dragon/ender_dragon_bow_pulling_0"
+      "model": "armorplus:item/ender_dragon_bow_pulling_0"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.65
+      },
+      "model": "armorplus:item/ender_dragon_bow_pulling_1"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.9
+      },
+      "model": "armorplus:item/ender_dragon_bow_pulling_2"
     }
   ]
 }

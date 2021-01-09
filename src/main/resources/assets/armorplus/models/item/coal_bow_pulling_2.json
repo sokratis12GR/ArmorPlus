@@ -1,0 +1,6 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "armorplus:items/coal_bow_pulling_2"
+  }
+}

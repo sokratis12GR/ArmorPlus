@@ -1,0 +1,6 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "armorplus:items/obsidian_bow_pulling_1"
+  }
+}
