@@ -1,0 +1,84 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.mace.attack": {
+			"loop": true,
+			"bones": {
+				"mace": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.mace.swipe_attack": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 2.08,
+			"bones": {
+				"mace": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.52": [0, 12.5, -32.5],
+						"1.04": [35, -12.5, -32.5],
+						"1.56": [45, -57.5, -32.5],
+						"2.08": [45, -127.5, -32.5]
+					},
+					"position": [0, 0, 0]
+				}
+			}
+		},
+		"animation.mace.swing_attack": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.489,
+			"bones": {
+				"mace": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 135, 0]
+						},
+						"0.24": {
+							"vector": [27.5, 0, 0]
+						},
+						"0.48": {
+							"vector": [0, -45, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.mace.charge": {
+			"animation_length": 1,
+			"bones": {
+				"mace": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 135, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.mace.hold_charge": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"mace": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 135, 0]
+						},
+						"1.0": {
+							"vector": [0, 135, 0]
+						}
+					}
+				}
+			}
+		}
+	}
+}
