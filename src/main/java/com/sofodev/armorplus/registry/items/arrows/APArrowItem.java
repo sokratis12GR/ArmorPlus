@@ -20,7 +20,7 @@ import static net.minecraft.enchantment.Enchantments.INFINITY;
 
 public class APArrowItem extends ArrowItem {
 
-    private ArrowType type;
+    private final ArrowType type;
 
     public APArrowItem(ArrowType type) {
         super(new Item.Properties().group(ArmorPlus.AP_WEAPON_GROUP).rarity(Rarity.create("ARROW_TYPE", type.getFormatting())));
