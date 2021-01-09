@@ -1,15 +1,12 @@
 package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.items.tools.properties.APToolMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 
-import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.SHOVEL;
-
-import net.minecraft.item.Item.Properties;
+import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.SHOVEL;
 
 public class APShovelItem extends ShovelItem {
 

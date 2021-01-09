@@ -1,29 +1,15 @@
 package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SwordItem;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 
-import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.SWORD;
-import static com.sofodev.armorplus.utils.Utils.setRL;
-
-import net.minecraft.item.Item.Properties;
+import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.SWORD;
 
 public class APSwordItem extends SwordItem {
 

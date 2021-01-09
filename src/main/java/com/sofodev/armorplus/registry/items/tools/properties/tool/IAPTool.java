@@ -1,4 +1,4 @@
-package com.sofodev.armorplus.registry.items.tools.properties;
+package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.item.IItemTier;
@@ -27,4 +27,5 @@ public interface IAPTool {
      * @return The rarity of the tool, (i.e the color of its name)
      */
     Rarity getRarity();
+
 }

@@ -1,10 +1,10 @@
-package com.sofodev.armorplus.registry.items.tools.properties;
+package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
 public enum APToolType {
     SWORD(2f, -1.5f),
     BATTLE_AXE(4.0f, -3.0f),
     PICKAXE(0.5f, -2.8f),
-    SHOVEL(1.0f, -3f)
+    SHOVEL(1.0f, -3f),
     ;
 
     private final float dmg;
@@ -25,5 +25,13 @@ public enum APToolType {
 
     public String getName() {
         return this.name().toLowerCase();
+    }
+
+    @Override
+    public String toString() {
+        return "APToolType{" +
+                "dmg=" + dmg +
+                ", attackSpeed=" + attackSpeed +
+                '}';
     }
 }

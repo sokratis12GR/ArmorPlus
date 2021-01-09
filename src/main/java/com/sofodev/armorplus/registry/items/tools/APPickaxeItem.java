@@ -1,15 +1,13 @@
 package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.items.tools.properties.APToolMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.APToolProperties;
-import com.sofodev.armorplus.registry.items.tools.properties.IAPTool;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 
-import static com.sofodev.armorplus.registry.items.tools.properties.APToolType.PICKAXE;
+import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.PICKAXE;
 
 public class APPickaxeItem extends PickaxeItem {
 

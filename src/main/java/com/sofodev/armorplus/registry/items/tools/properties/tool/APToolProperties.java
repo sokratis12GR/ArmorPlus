@@ -1,4 +1,4 @@
-package com.sofodev.armorplus.registry.items.tools.properties;
+package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
 import com.sofodev.armorplus.utils.GlobalVars;
 import net.minecraft.item.IItemTier;
@@ -70,4 +70,15 @@ public enum APToolProperties implements IItemTier {
         return this.repairMaterial.get();
     }
 
+    @Override
+    public String toString() {
+        return "APToolProperties{" +
+                "harvestLevel=" + harvestLevel +
+                ", maxUses=" + maxUses +
+                ", efficiency=" + efficiency +
+                ", attackDamage=" + attackDamage +
+                ", enchantability=" + enchantability +
+                ", repairMaterial=" + repairMaterial +
+                '}';
+    }
 }

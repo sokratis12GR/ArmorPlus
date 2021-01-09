@@ -1,12 +1,14 @@
-package com.sofodev.armorplus.registry.items.tools.properties;
+package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Rarity;
 
+import java.util.Arrays;
+
 import static com.sofodev.armorplus.registry.items.APRarity.*;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
-import static com.sofodev.armorplus.registry.items.tools.properties.APToolProperties.*;
+import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties.*;
 
 public enum APToolMaterial implements IAPTool {
     COAL_MAT(COAL.getRarity(), COAL_PROP, new BuffInstance(BLINDNESS, 0, 10)),
@@ -23,15 +25,12 @@ public enum APToolMaterial implements IAPTool {
     //TODO: Implement Enhanced Vanilla Tools
     //TODO: Implement Soul Gathering System
 
-
-    private final String name;
     private final IItemTier properties;
     private final BuffInstance[] buffs;
     private final Rarity rarity;
 
     APToolMaterial(Rarity rarity, IItemTier properties, BuffInstance... buffs) {
         this.rarity = rarity;
-        this.name = this.name().toLowerCase().replace("_mat", "");
         this.properties = properties;
         this.buffs = buffs;
     }
@@ -48,7 +47,7 @@ public enum APToolMaterial implements IAPTool {
 
     @Override
     public String getName() {
-        return name;
+        return this.name().toLowerCase().replace("_mat", "");
     }
 
     @Override
@@ -56,4 +55,12 @@ public enum APToolMaterial implements IAPTool {
         return rarity;
     }
 
+    @Override
+    public String toString() {
+        return "APToolMaterial{" +
+                "properties=" + properties +
+                ", buffs=" + Arrays.toString(buffs) +
+                ", rarity=" + rarity +
+                '}';
+    }
 }
