@@ -1,6 +1,5 @@
 package com.sofodev.armorplus.registry.enchantments;
 
-import com.sofodev.armorplus.registry.items.tools.APBattleAxeItem;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
@@ -9,7 +8,6 @@ import static net.minecraft.enchantment.EnchantmentType.WEAPON;
 import static net.minecraft.inventory.EquipmentSlotType.MAINHAND;
 
 public class SoulStealerEnchantment extends APEnchantment {
-
 
 
     public SoulStealerEnchantment() {

@@ -1,17 +1,14 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierManager;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -21,7 +18,6 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -32,9 +28,6 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import static com.sofodev.armorplus.registry.ModEntities.WITHERLING;
-import static net.minecraft.entity.ai.attributes.Attributes.ARMOR;
-import static net.minecraft.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 import static net.minecraft.potion.Effects.WITHER;
 
 public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimatable {
@@ -128,10 +121,12 @@ public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimata
         return entityarrow;
     }
 
-
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.skeletal_king.move", true));
-        return PlayState.CONTINUE;
+        if (event.isMoving()) {
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.skeletal_king.move", true));
+            return PlayState.CONTINUE;
+        }
+        return PlayState.STOP;
     }
 
     @Override

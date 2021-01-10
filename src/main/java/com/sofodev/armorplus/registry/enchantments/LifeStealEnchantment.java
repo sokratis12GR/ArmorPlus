@@ -12,8 +12,6 @@ import static com.sofodev.armorplus.registry.enchantments.LifeStealEnchantment.L
 import static net.minecraft.enchantment.EnchantmentType.WEAPON;
 import static net.minecraft.inventory.EquipmentSlotType.MAINHAND;
 
-import net.minecraft.enchantment.Enchantment.Rarity;
-
 public class LifeStealEnchantment extends APEnchantment {
 
     public LifeStealEnchantment() {

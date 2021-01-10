@@ -186,8 +186,7 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.skeletal_king.move", true));
-            this.recalculateSize();
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.skeletal_king.move", true));
             return PlayState.CONTINUE;
         }
         return PlayState.STOP;
@@ -195,7 +194,7 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
+        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     @Override

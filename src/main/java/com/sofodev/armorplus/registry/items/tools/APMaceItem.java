@@ -1,9 +1,7 @@
 package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.IAPMace;
-import com.sofodev.armorplus.registry.items.tools.render.APMaceRenderer;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +13,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;

@@ -1,13 +1,10 @@
 package com.sofodev.armorplus.registry.entities.arrows;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
-import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.registry.items.extras.EffectData.create;
 import static net.minecraft.particles.ParticleTypes.*;
 import static net.minecraft.potion.Effects.*;
-import static net.minecraft.util.text.TextFormatting.*;
 
 public class APArrowProperty {
 

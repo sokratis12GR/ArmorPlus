@@ -10,7 +10,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
-import net.minecraft.world.BossInfo;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -18,7 +17,6 @@ import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
-import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
 import static net.minecraft.util.text.TextFormatting.GOLD;
 
 /**

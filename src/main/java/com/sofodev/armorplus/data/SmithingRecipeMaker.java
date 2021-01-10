@@ -1,7 +1,5 @@
 package com.sofodev.armorplus.data;
 
-import com.sofodev.armorplus.registry.items.APItem;
-import com.sofodev.armorplus.registry.items.APItemBase;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;

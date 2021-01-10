@@ -9,7 +9,7 @@ public interface IAPArmor {
 
     /**
      * @return The name of the armor piece
-     *
+     * <p>
      * Output would be something like this, if we use `coal`
      * `coal_helmet`, `coal_chestplate`, `coal_leggings`, `coal_boots`
      */
@@ -32,7 +32,7 @@ public interface IAPArmor {
 
     /**
      * A list of all the BuffInstances for the armor set
-     *
+     * <p>
      * An armor set can contain multiple buff instances, which means it can utilize many custom effects.
      */
     BuffInstance[] getBuffInstances();

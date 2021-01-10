@@ -3,20 +3,16 @@ package com.sofodev.armorplus.config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import com.sofodev.armorplus.registry.items.extras.Buff;
-import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.extras.DeBuff;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.registry.items.extras.Buff.*;
-import static com.sofodev.armorplus.registry.items.extras.BuffInstance.build;
 import static java.util.Arrays.asList;
 import static net.minecraftforge.common.ForgeConfigSpec.Builder;
 import static net.minecraftforge.common.ForgeConfigSpec.ConfigValue;

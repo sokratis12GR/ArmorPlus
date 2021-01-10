@@ -26,7 +26,7 @@ public enum BrickColor implements IStringSerializable {
     public MaterialColor get() {
         return color;
     }
-    
+
     @Override
     public String getString() {
         return name().toLowerCase(Locale.ENGLISH);

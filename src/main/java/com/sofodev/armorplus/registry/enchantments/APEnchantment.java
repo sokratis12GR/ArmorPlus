@@ -5,8 +5,6 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-import net.minecraft.enchantment.Enchantment.Rarity;
-
 public class APEnchantment extends Enchantment {
 
     private int min;

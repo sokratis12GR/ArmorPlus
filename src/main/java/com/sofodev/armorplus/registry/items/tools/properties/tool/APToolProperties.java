@@ -1,6 +1,5 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
-import com.sofodev.armorplus.utils.GlobalVars;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
@@ -8,7 +7,6 @@ import net.minecraft.util.IItemProvider;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.utils.GlobalVars.*;
-import static com.sofodev.armorplus.utils.GlobalVars.GUARDIAN_SCALE;
 import static net.minecraft.item.Items.*;
 
 public enum APToolProperties implements IItemTier {

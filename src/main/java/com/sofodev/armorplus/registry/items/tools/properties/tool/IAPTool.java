@@ -13,7 +13,7 @@ public interface IAPTool {
 
     /**
      * A list of all the BuffInstances for the tool
-     *
+     * <p>
      * A tool can contain multiple buff instances, which means it can utilize many custom effects.
      */
     BuffInstance[] getBuffInstances();

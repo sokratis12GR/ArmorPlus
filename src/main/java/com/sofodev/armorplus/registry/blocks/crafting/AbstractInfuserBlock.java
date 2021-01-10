@@ -30,7 +30,7 @@ public abstract class AbstractInfuserBlock extends ContainerBlock {
 
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-        return  state.get(LIT) ? super.getLightValue(state, world, pos) : 0;
+        return state.get(LIT) ? super.getLightValue(state, world, pos) : 0;
     }
 
     @Override

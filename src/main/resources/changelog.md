@@ -1,3 +1,9 @@
+ArmorPlus 1.16.3-16.2.2 (BETA)
+----------------------------
+
+* Fixed world crash on startup when using other mods that check the entity registry. **Fixes #243 (1/2)**
+* Fixed animation of the entities not existing and causing crashes. **Fixes #243 (2/2)**
+
 ArmorPlus 1.16.3-16.2.1 (BETA)
 ----------------------------
 

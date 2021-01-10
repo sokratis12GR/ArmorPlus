@@ -4,7 +4,7 @@ import com.sofodev.armorplus.registry.items.APItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.util.text.TextFormatting.AQUA;
 
 /**
  * @author Sokratis Fotkatzikis

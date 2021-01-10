@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.registry;
 
 import com.sofodev.armorplus.ArmorPlus;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 import net.minecraft.potion.InstantEffect;

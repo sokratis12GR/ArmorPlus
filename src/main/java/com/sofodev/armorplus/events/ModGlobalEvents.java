@@ -2,11 +2,9 @@ package com.sofodev.armorplus.events;
 
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.config.APConfig;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
-import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.tools.APMaceItem;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
 import net.minecraft.enchantment.Enchantment;
@@ -62,9 +60,9 @@ public class ModGlobalEvents {
                 }
             }
         }
-    //  for (BuffInstance instance : APConfig.SERVER.BUFF_INSTANCE_LIST) {
-    //      System.out.println(instance.toString());
-    //  }
+        //  for (BuffInstance instance : APConfig.SERVER.BUFF_INSTANCE_LIST) {
+        //      System.out.println(instance.toString());
+        //  }
     }
 
     @SubscribeEvent

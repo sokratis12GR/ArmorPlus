@@ -1,6 +1,5 @@
 package com.sofodev.armorplus.registry.items.extras;
 
-import com.sofodev.armorplus.registry.ModPotions;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 

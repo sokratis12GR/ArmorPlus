@@ -12,7 +12,7 @@ public class ItemArmorUtility {
 
     public static boolean isExactMatch(IAPArmor mat, PlayerEntity player, EquipmentSlotType slotType) {
         return player.hasItemInSlot(slotType) && player.getItemStackFromSlot(slotType).getItem() ==
-                        getAPItem(String.format("%s_%s", mat.getName(), getNormalizedName(slotType)));
+                getAPItem(String.format("%s_%s", mat.getName(), getNormalizedName(slotType)));
     }
 
     public static boolean areExactMatch(IAPArmor mat, PlayerEntity player) {

@@ -39,5 +39,5 @@ description='''
     modId="geckolib3"
     mandatory=true
     versionRange="[3.0.0,)"
-    ordering="AFTER"
+    ordering="NONE"
     side="BOTH"

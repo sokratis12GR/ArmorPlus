@@ -5,8 +5,6 @@ import net.minecraft.block.material.Material;
 
 import static net.minecraftforge.common.ToolType.PICKAXE;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class CrystalOreBlock extends OreBlock {
 
     public CrystalOreBlock() {

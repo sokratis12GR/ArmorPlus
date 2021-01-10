@@ -3,7 +3,8 @@ package com.sofodev.armorplus.registry.entities.bosses.data;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import static com.sofodev.armorplus.utils.Utils.*;
+import static com.sofodev.armorplus.utils.Utils.getAPItem;
+import static com.sofodev.armorplus.utils.Utils.getItemStack;
 
 /**
  * @author Sokratis Fotkatzikis

@@ -1,13 +1,11 @@
 package com.sofodev.armorplus.registry.items;
 
-import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -27,7 +25,7 @@ public class APItemBase extends APItem {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(translate(Color.fromHex("#252874"),"item.armorplus.base_soulless"));
+        tooltip.add(translate(Color.fromHex("#252874"), "item.armorplus.base_soulless"));
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 }

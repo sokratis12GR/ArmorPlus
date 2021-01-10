@@ -6,8 +6,6 @@ import com.sofodev.armorplus.utils.RenderingUtils;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 /**
  * OverlordOfguardians - EPIIC_THUNDERCAT

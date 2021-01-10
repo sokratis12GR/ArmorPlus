@@ -3,6 +3,8 @@ package com.sofodev.armorplus.registry.entities.bosses;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 /**

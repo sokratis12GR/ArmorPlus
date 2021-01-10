@@ -8,7 +8,6 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 
 import static com.sofodev.armorplus.registry.ModEntities.COAL_ARROW;
 import static com.sofodev.armorplus.registry.entities.arrows.APArrowProperty.COAL_ARROW_PROP;
-import static com.sofodev.armorplus.registry.entities.arrows.APArrowProperty.SUPER_STAR_ARROW_PROP;
 
 public class CoalArrowEntity extends APArrowEntity {
 

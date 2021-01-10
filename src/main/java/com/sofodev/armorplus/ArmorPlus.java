@@ -2,10 +2,7 @@ package com.sofodev.armorplus;
 
 import com.sofodev.armorplus.config.APConfig;
 import com.sofodev.armorplus.events.WorldGenEvents;
-import com.sofodev.armorplus.registry.APItems;
-import com.sofodev.armorplus.registry.ModAttributes;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModConfiguredFeatures;
+import com.sofodev.armorplus.registry.*;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
@@ -27,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -55,7 +53,6 @@ import static com.sofodev.armorplus.registry.ModItems.BOWS;
 import static com.sofodev.armorplus.registry.ModItems.registerModItems;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setName;
-import static java.util.Arrays.asList;
 import static net.minecraft.item.ItemModelsProperties.registerProperty;
 import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
@@ -164,8 +161,8 @@ public class ArmorPlus {
         registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
         registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
         registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
-        registerEntityRenderingHandler(SKELETAL_KING.get(), SkeletalKingRenderer::new);
-        registerEntityRenderingHandler(WITHERLING.get(), WitherlingRenderer::new);
+        registerEntityRenderingHandler(ModEntities.SKELETAL_KING.get(), SkeletalKingRenderer::new);
+        registerEntityRenderingHandler(ModEntities.WITHERLING.get(), WitherlingRenderer::new);
         this.setRenderLayer(Collections.singletonList(ModBlocks.LAVA_INFUSER));
         registerBowOverrides();
     }

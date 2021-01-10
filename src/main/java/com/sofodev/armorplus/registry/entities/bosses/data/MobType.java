@@ -2,7 +2,6 @@ package com.sofodev.armorplus.registry.entities.bosses.data;
 
 import net.minecraft.entity.EntityClassification;
 
-import static net.minecraft.entity.EntityClassification.MISC;
 import static net.minecraft.entity.EntityClassification.MONSTER;
 
 public class MobType {

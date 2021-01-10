@@ -33,8 +33,8 @@ public class MinionType {
     public static final MinionType ARCHER_4 = new MinionType(ARCHER, ARCHER_HEALTH + 9, BOW, EMPTY, new ArmorSet(DIAMOND_HELMET, IRON_CHESTPLATE, IRON_LEGGINGS, IRON_BOOTS));
     //400-200
     public static final MinionType PALADIN_1 = new MinionType(PALADIN, PALADIN_HEALTH, getAPItem("super_star_sword"), getItemStack(SHIELD), new ArmorSet(DIAMOND_HELMET, DIAMOND_CHESTPLATE, DIAMOND_LEGGINGS, DIAMOND_BOOTS));
-    public static final MinionType PALADIN_2 = new MinionType(PALADIN, PALADIN_HEALTH + 5,  getAPItem("super_star_battle_axe"), getItemStack(SHIELD),
-            new ArmorSet( "super_star_helmet", "super_star_chestplate", "super_star_leggings", "super_star_boots"));
+    public static final MinionType PALADIN_2 = new MinionType(PALADIN, PALADIN_HEALTH + 5, getAPItem("super_star_battle_axe"), getItemStack(SHIELD),
+            new ArmorSet("super_star_helmet", "super_star_chestplate", "super_star_leggings", "super_star_boots"));
 
     private final String name;
     private final double health;

@@ -31,11 +31,11 @@ public enum APMaceMaterial implements IAPMace {
     private final DestructionShape shape;
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range) {
-        this(material,type, cooldown, range, false, SQUARE);
+        this(material, type, cooldown, range, false, SQUARE);
     }
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, DestructionShape shape) {
-        this(material,type, cooldown, range, true, shape);
+        this(material, type, cooldown, range, true, shape);
     }
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, boolean hasAOE, DestructionShape shape) {

@@ -5,8 +5,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class APFrostBlock extends Block {
 
     public APFrostBlock() {
