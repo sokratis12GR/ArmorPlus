@@ -1,10 +1,10 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
   "promos": {
-    "1.16.3-latest": "1.16.3-16.2.1",
-    "1.16.3-recommended": "1.16.3-16.2.1",
-    "1.16.4-latest": "1.16.3-16.2.1",
-    "1.16.4-recommended": "1.16.3-16.2.1"
+    "1.16.3-latest": "1.16.3-16.2.2",
+    "1.16.3-recommended": "1.16.3-16.2.2",
+    "1.16.4-latest": "1.16.3-16.2.2",
+    "1.16.4-recommended": "1.16.3-16.2.2"
   },
   "1.16.3": {
     "1.16.3-16.0.0.1": "Initial 1.16.3 release, for more info see the changelog file at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md",
@@ -12,10 +12,12 @@
     "1.16.3-16.1.0.0": "Read the full changelog at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md#armorplus-1163-1610-beta",
     "1.16.3-16.1.1": "**QUICK-FIX**: Fixed Version mismatching, recipe mismatching.",
     "1.16.3-16.2.0": "Read the full changelog at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md#armorplus-1163-1620-beta",
-    "1.16.3-16.2.1": "* Ensures ArmorPlus requires GeckoLib 3 to be present to prevent weird errors."
+    "1.16.3-16.2.1": "Ensures ArmorPlus requires GeckoLib 3 to be present to prevent weird errors.",
+    "1.16.3-16.2.2": "Fixed crashes on world start related to entities and their rendering."
   },
   "1.16.4": {
     "1.16.3-16.2.0": "Read the full changelog at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md#armorplus-1163-1620-beta",
-    "1.16.3-16.2.1": "* Ensures ArmorPlus requires GeckoLib 3 to be present to prevent weird errors."
+    "1.16.3-16.2.1": "Ensures ArmorPlus requires GeckoLib 3 to be present to prevent weird errors.",
+    "1.16.3-16.2.2": "Fixed crashes on world start related to entities and their rendering."
   }
 }
