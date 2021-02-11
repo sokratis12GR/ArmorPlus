@@ -5,10 +5,6 @@
 [![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://smarturl.it/armorplus)
 [![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://smarturl.it/armorplus)
 
-## Official Website
-
-[![Website](https://img.shields.io/website-online-offline-green-orange/https/sokratis12gr.com/mods/armorplus/index.php.svg?style=flat)](https://sokratis12gr.com/mods/armorplus/)
-
 ## About
 
 ArmorPlus is a mod created by **[sokratis12GR](https://sokratis12gr.com)**
@@ -21,35 +17,30 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ### [Grab the latest publicly available versions from curseforge.](https://minecraft.curseforge.com/projects/armorplus/files)
 
-[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)
+~~[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)~~
 
-### 1.12.2 
-
-#### Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
-
-### 1.11.2
-
-#### Recommended: [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)
-
-### 1.10.2
-
-#### Recommended: [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)
+* **1.16.3/4**
+  * Latest: [1.16.3-16.2.2](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3164140)
+* **1.12.2**
+  * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
+* **1.11.2**
+  * Recommended: [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)
+* **1.10.2**
+  * Recommended: [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)
 
 ## Mod Integrations
 
-* **[Tesla](https://minecraft.curseforge.com/projects/tesla)** (Not in 1.12)
+* **[Tesla](https://minecraft.curseforge.com/projects/tesla)** (Not in 1.12+)
 * **RF** (Not in 1.11+)
-* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)**
-* **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)**
+* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.16.3+, yet)
+* **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** (Not in 1.16.3+)
 * **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)**
 * **[Baubles](https://minecraft.curseforge.com/projects/baubles)** (Not in 1.12)
-* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b)
+* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b) (Not in 1.16.3+)
 
 ## ArmorPlus Community Discord
-[![Discord](https://img.shields.io/discord/213305542712623105.svg?style=flat&colorB=7289DA)](https://discord.gg/ZVwmqyx)
 
-## sokratis12GR's Official Discord
-[![Discord](https://img.shields.io/discord/371637813361377281.svg?style=flat&colorB=7289DA)](https://discord.gg/tmFPHb2)
+[![Discord](https://img.shields.io/discord/275731168203243521.svg?style=flat&colorB=7289DA)](https://discord.gg/JCWbJvA )
 
 ## Mod's Official Wiki
 
