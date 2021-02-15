@@ -19,8 +19,8 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ~~[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)~~
 
-* **1.16.3/4**
-  * Latest: [1.16.3-16.2.2](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3164140)
+* **1.16+**
+  * Latest: [1.16.5-16.3.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3205388)
 * **1.12.2**
   * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
 * **1.11.2**
@@ -66,4 +66,4 @@ The Official Wiki for this mod is
 
 ## Licence
 
-[![license](https://img.shields.io/github/license/sokratis12GR/ArmorPlus.svg)](https://github.com/sokratis12GR/ArmorPlus/blob/1.12/LICENSE)
+[![license](https://img.shields.io/github/license/sokratis12GR/ArmorPlus.svg)](https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/LICENSE)
