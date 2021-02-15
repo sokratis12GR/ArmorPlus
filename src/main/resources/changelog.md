@@ -1,3 +1,40 @@
+ArmorPlus 1.16.5-16.3.0 (BETA)
+----------------------------
+
+* Added support for 1.16.5
+* Added Patchouli integration/support, 1st edition will not contain everything, will be updated alongside the mod
+  updates.
+* Added ToolTips to the armors, weapons, tools that display their conditions and their effects (and weaknesses)
+* Added some commands "/armorplus <help, info, nodecraft, discord>"
+* Added a new treasure enchantment "Unknown", in the future will provide a special effect based on the item it is
+  applied to.
+* Added Demonic Dragon (WIP) boss entity, a very wip model + texture + animation (No functionality atm)
+* Added a new item "Wooden Rod", crafted via a shapeless recipe of 4 sticks together.
+  - It replaces the current sticks in mace recipes
+* Added recipes for the slime and chicken armors.
+* Added ElementalMastery Capability
+* Added new "buffs": Fire Weakness, Natural Immunity (Provides Protection & Fire Resistance)
+* Added a few advancements to keep track of your A+ progress.
+* Added a special celebration item & advancement
+* Made various currently available items (obsidian+ tier items) to be immune to lava
+* Replaced the obsidian in the obsidian armor recipe with compressed obsidian (as it should have been).
+* Replaced sticks in infuse lava tier + maces with obsidian sticks
+* Adjusted some armor protection, toughness and knockback resistance values of several armors
+* Fixed Flight equipment check conflicting with other mods (hopefully). Fixes #245
+* Fixed Water Weakness not being applied correctly.
+* Fixed repair materials not working for all items.
+* Fixed some recipe miss-matches with Colored Stone Bricks.
+* Fixed some items having incorrect colored names.
+* Fixed armor items having incorrect durability values.
+* Fixed GeckoLib animations not working in the newer versions of GeckoLib due to change in the controller usage.
+* Fixed silent major issues caused with the model registering, fixed properly this time.
+
+Technical:
+* Added Elements (affinities) for future expansions, Added Frost Armor, Frost-Lava armor (obviously dev only).
+* Added ElementalMastery(Element primary, Element secondary) capability for future use.
+* Organized the language file (en_us.json), everything now should be inside a category/sub-category depending on what
+  use it has.
+
 ArmorPlus 1.16.3-16.2.2 (BETA)
 ----------------------------
 
@@ -15,7 +52,8 @@ ArmorPlus 1.16.3-16.2.0 (BETA)
 * **GeckoLib 3** is now a **required** dependency
     - What does this mean? Well now, modeling and animation will be much easier. Entities, armors, weapons and even some
       items will get new models/animations.
-* The obsidian & stone variants of lava crystal and frost crystal ores should now drop the correct crystal. **Fixes #240 (1/2)**
+* The obsidian & stone variants of lava crystal and frost crystal ores should now drop the correct crystal. **Fixes
+  # 240 (1/2)**
 * **Lava Crystals** should now infuse when interacting with lava. **Fixes #240 (2/2)**
 * **ConfiguredFeatures** should no longer cause issues with world generation! **Fixes #241**
 * **Lava Crystals** (Compressed/Original variant) now drop 1-2 crystals per ore, fortune affects it.
@@ -43,11 +81,12 @@ ArmorPlus 1.16.3-16.2.0 (BETA)
     * Rewrote how all the recipes are being added/changed/generated so expect some recipes to be missing/changed.
     * Recipes will be changing periodically until they reach a final "satisfying" state.
     * I'll include all the changes in a guide/recipe book or something in game in a later version
-* **Changed** the (Guardian, Super Star and Ender Dragon) swords, battle axes, pickaxes and bows to have a base item as a
-  result of their recipe after which you need to add souls to them in the smithing table.
+* **Changed** the (Guardian, Super Star and Ender Dragon) swords, battle axes, pickaxes and bows to have a base item as
+  a result of their recipe after which you need to add souls to them in the smithing table.
 * **Added** new items:
     * Guardian, Super Star, Ender Dragon bases for the following tools/weapons: swords, battle axes, pickaxes and bows.
-    * **Obsidian Stick**, crafted by using 2 obsidian blocks (shapeless recipe). Used for the new recipes of high tier items.
+    * **Obsidian Stick**, crafted by using 2 obsidian blocks (shapeless recipe). Used for the new recipes of high tier
+      items.
 * **Fixed** bows not having a pulling animation with **new** textures! **Fixes #242**
 * **Added** some flavour text to some items to hopefully help indicate how to use them.
 
