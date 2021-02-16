@@ -1,17 +1,23 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "textures": {},
-    "model": "block/cube_all",
-    "uvlock": true
+    "transform": "forge:default-block"
   },
   "variants": {
-    "": [
-      {
-        "textures": {
-          "all": "armorplus:blocks/lava_infused_obsidian"
-        }
-      }
-    ]
+    "facing=east": {
+      "model": "armorplus:lava_infused_obsidian",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "armorplus:lava_infused_obsidian",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "armorplus:lava_infused_obsidian",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "armorplus:lava_infused_obsidian"
+    }
   }
 }
