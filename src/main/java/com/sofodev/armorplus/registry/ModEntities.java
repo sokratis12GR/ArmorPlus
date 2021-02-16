@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
+import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonEntity;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
 import com.sofodev.armorplus.registry.entities.bosses.WitherlingEntity;
 import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
@@ -10,59 +11,78 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityType.Builder;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import static com.sofodev.armorplus.ArmorPlus.ENTITIES;
+import java.util.function.Supplier;
+
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.entities.arrows.ArrowType.*;
 import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.entity.EntityClassification.MISC;
 
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
 
-    public static void registerEntities() {
-    }
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
 
     //Arrows
-    public static final RegistryObject<EntityType<APArrowEntity>> COAL_ARROW = ENTITIES.register("coal_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> COAL_ARROW = register("coal_arrow",
             () -> buildArrow(CoalArrowEntity::new, COAL));
-    public static final RegistryObject<EntityType<APArrowEntity>> LAPIS_ARROW = ENTITIES.register("lapis_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> LAPIS_ARROW = register("lapis_arrow",
             () -> buildArrow(LapisArrowEntity::new, LAPIS));
-    public static final RegistryObject<EntityType<APArrowEntity>> REDSTONE_ARROW = ENTITIES.register("redstone_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> REDSTONE_ARROW = register("redstone_arrow",
             () -> buildArrow(RedstoneArrowEntity::new, REDSTONE));
-    public static final RegistryObject<EntityType<APArrowEntity>> EMERALD_ARROW = ENTITIES.register("emerald_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> EMERALD_ARROW = register("emerald_arrow",
             () -> buildArrow(EmeraldArrowEntity::new, EMERALD));
-    public static final RegistryObject<EntityType<APArrowEntity>> OBSIDIAN_ARROW = ENTITIES.register("obsidian_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> OBSIDIAN_ARROW = register("obsidian_arrow",
             () -> buildArrow(ObsidianArrowEntity::new, OBSIDIAN));
-    public static final RegistryObject<EntityType<APArrowEntity>> INFUSED_LAVA_ARROW = ENTITIES.register("infused_lava_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> INFUSED_LAVA_ARROW = register("infused_lava_arrow",
             () -> buildArrow(InfusedLavaArrowEntity::new, INFUSED_LAVA));
-    public static final RegistryObject<EntityType<APArrowEntity>> GUARDIAN_ARROW = ENTITIES.register("guardian_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> GUARDIAN_ARROW = register("guardian_arrow",
             () -> buildArrow(GuardianArrowEntity::new, GUARDIAN));
-    public static final RegistryObject<EntityType<APArrowEntity>> SUPER_STAR_ARROW = ENTITIES.register("super_star_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> SUPER_STAR_ARROW = register("super_star_arrow",
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
-    public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = ENTITIES.register("ender_dragon_arrow",
+    public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
     //Bosses-Minions-Projectiles
-    public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = ENTITIES.register("witherling",
-            () -> build(WitherlingEntity::new, MobType.WITHERLING));
-    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = ENTITIES.register("skeletal_king",
-            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
-
+    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = register("skeletal_king",
+            build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
+    public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
+            build(WitherlingEntity::new, MobType.WITHERLING));
+    public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
+            build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
     /////////////////////
     // UTILITY METHODS //
     /////////////////////
 
+    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, Supplier<EntityType<T>> sup) {
+        return ENTITY_TYPES.register(name, sup);
+    }
+
+    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType<T> sup) {
+        return register(name, () -> sup);
+    }
+
+    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, Builder<T> sup) {
+        return register(name, () -> build(name, sup));
+    }
+
+    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.IFactory<T> factory, MobType data) {
+        return register(name, () -> build(factory, data));
+    }
+
     private static <T extends Entity> EntityType<T> build(String id, Builder<T> builder) {
-        return builder.build(setRL(id).toString());
+        ResourceLocation rl = setRL(id);
+        return builder.build(rl.toString());
     }
 
     /**
      * This is a preset for generating ArmorPlus arrow entity types
      *
      * @param factoryIn The Entity Class
-     * @param data      The Arrow data used for the creationg of the entity (in this case its name)
+     * @param data      The Arrow data used for the creationg of the entityAttachCapabilitiesEvent (in this case its name)
      * @return an EntityType object with all the required information.
      */
     private static <T extends AbstractArrowEntity> EntityType<T> buildArrow(EntityType.IFactory<T> factoryIn, ArrowType data) {

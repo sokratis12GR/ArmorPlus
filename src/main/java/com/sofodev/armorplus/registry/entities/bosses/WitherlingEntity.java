@@ -1,11 +1,10 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
+import com.sofodev.armorplus.registry.ModEntities;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,14 +29,20 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import static net.minecraft.potion.Effects.WITHER;
 
-public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimatable {
+public class WitherlingEntity extends MonsterEntity implements IAnimatable {
 
-    private final EntityType<? extends AbstractSkeletonEntity> type;
+    private final EntityType<? extends WitherlingEntity> type;
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public WitherlingEntity(EntityType<? extends AbstractSkeletonEntity> type, World worldIn) {
+    public WitherlingEntity(EntityType<? extends WitherlingEntity> type, World worldIn) {
         super(type, worldIn);
         this.type = type;
+        this.ignoreFrustumCheck = true;
+    }
+
+    public WitherlingEntity(World worldIn) {
+        super(ModEntities.WITHERLING.get(), worldIn);
+        this.type = ModEntities.WITHERLING.get();
         this.ignoreFrustumCheck = true;
     }
 
@@ -80,11 +85,6 @@ public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimata
     }
 
     @Override
-    protected SoundEvent getStepSound() {
-        return SoundEvents.ENTITY_WITHER_SKELETON_STEP;
-    }
-
-    @Override
     public boolean isImmuneToExplosions() {
         return true;
     }
@@ -114,12 +114,12 @@ public class WitherlingEntity extends AbstractSkeletonEntity implements IAnimata
         }
     }
 
-    @Override
-    protected AbstractArrowEntity fireArrow(ItemStack arrowStack, float distanceFactor) {
-        AbstractArrowEntity entityarrow = super.fireArrow(arrowStack, distanceFactor);
-        entityarrow.setFire(100);
-        return entityarrow;
-    }
+    //  @Override
+    //  protected AbstractArrowEntity fireArrow(ItemStack arrowStack, float distanceFactor) {
+    //      AbstractArrowEntity entityarrow = super.fireArrow(arrowStack, distanceFactor);
+    //      entityarrow.setFire(100);
+    //      return entityarrow;
+    //  }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {

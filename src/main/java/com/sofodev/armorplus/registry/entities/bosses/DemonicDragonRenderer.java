@@ -8,13 +8,13 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 /**
  * @author Sokratis Fotkatzikis
  **/
-public class SkeletalKingRenderer extends GeoEntityRenderer<SkeletalKingEntity> {
-    public SkeletalKingRenderer(EntityRendererManager renderManager) {
-        super(renderManager, new SkeletalKingAnimatedModel<>());
+public class DemonicDragonRenderer extends GeoEntityRenderer<DemonicDragonEntity> {
+    public DemonicDragonRenderer(EntityRendererManager renderManager) {
+        super(renderManager, new DemonicDragonAnimatedModel<>());
     }
 
     @Override
-    public void render(SkeletalKingEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    public void render(DemonicDragonEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
         stack.scale(7, 7, 7);
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
     }

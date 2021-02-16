@@ -9,7 +9,7 @@ public class MobType {
     public static final MobType WITHERLING = new MobType("witherling", MONSTER).setImmuneToFire(true);
 
     public static final MobType GUARDIAN_OVERLORD = new MobType("guardian_overlord", MONSTER);
-    public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER);
+    public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER, 7, 7);
 
     private String name;
     private EntityClassification classification;
@@ -19,7 +19,7 @@ public class MobType {
     private boolean isImmuneToFire;
 
     MobType(String name, EntityClassification classification) {
-        this(name, classification, false, 1, 1);
+        this(name, classification, true, 1, 1);
     }
 
     MobType(String name, EntityClassification classification, float width, float height) {
