@@ -1,3 +1,10 @@
+
+ArmorPlus 1.16.5-16.3.1 (BETA)
+----------------------------
+
+**QUICK-FIX**: Fixed a crash when booting and mekanism is not present. Fixes #248
+* Fixed super star bow pulling animation not being correct.
+
 ArmorPlus 1.16.5-16.3.0 (BETA)
 ----------------------------
 
