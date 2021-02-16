@@ -12,11 +12,12 @@ import net.minecraft.world.World;
  */
 public interface IBuff {
 
+    String name();
+
     /**
      * @return true if the effect above is a potion effect
      */
     boolean isEffect();
-
 
     /**
      * @return {@link Effect} if {{@link #isEffect()}} is true and the value (enum name of the effect) is valid

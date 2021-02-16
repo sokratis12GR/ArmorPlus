@@ -36,9 +36,9 @@ public class LavaCrystalItem extends APItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (!isInfused) {
-            tooltip.add(translate("item.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
         } else
-            tooltip.add(translate("item.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
@@ -73,6 +73,13 @@ public class LavaCrystalItem extends APItem {
     @Override
     public int getBurnTime(ItemStack itemStack) {
         return isInfused ? burnTime[1] : burnTime[0];
+    }
+
+    /**
+     * @return True, If the crystal is infused otherwise False.
+     */
+    public boolean isInfused() {
+        return isInfused;
     }
 
 }

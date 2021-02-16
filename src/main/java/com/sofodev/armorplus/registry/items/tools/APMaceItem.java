@@ -23,6 +23,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.Objects;
@@ -54,12 +55,17 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return super.getIsRepairable(toRepair, repair);
+    }
+
+    @Override
     public boolean shouldSyncTag() {
         return super.shouldSyncTag();
     }
 
     public static AnimationController getControllerForStack(AnimationFactory factory, ItemStack stack, String controllerName) {
-        return factory.getOrCreateAnimationData(getIDFromStack(stack)).getAnimationControllers().get(controllerName);
+        return factory.getOrCreateAnimationData(GeckoLibUtil.getIDFromStack(stack)).getAnimationControllers().get(controllerName);
     }
 
     @Override
@@ -83,7 +89,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
             PlayerEntity player = (PlayerEntity) living;
             CompoundNBT nbt = stack.getTag();
             if (nbt != null && nbt.hasUniqueId("key")) {
-                AnimationController<?> controller = getControllerForStack(this.factory, stack, this.controllerName);
+                AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
                 Animation currentAnimation = controller.getCurrentAnimation();
                 int chargeTime = this.getUseDuration(stack) - timeLeft;
                 if (chargeTime >= mat.getType().getChargeSpeed() && player.getCooldownPeriod() >= 1.0F) {
@@ -117,7 +123,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         ItemStack stack = this.setTag(player.getHeldItem(hand));
         CompoundNBT nbt = stack.getTag();
         if (nbt != null && nbt.hasUniqueId("key")) {
-            AnimationController<?> controller = getControllerForStack(this.factory, stack, this.controllerName);
+            AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
             if (world.isRemote) {
                 this.chargeAnimation(controller);
                 return ActionResult.resultPass(stack);
@@ -137,7 +143,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         ItemStack itemStack = this.setTag(stack);
         CompoundNBT nbt = stack.getTag();
         if (nbt != null && nbt.hasUniqueId("key")) {
-            AnimationController<?> controller = getControllerForStack(this.factory, itemStack, this.controllerName);
+            AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, itemStack, this.controllerName);
             if (world.isRemote && entity instanceof PlayerEntity) {
                 this.swingAnimation(controller);
                 return true;
@@ -152,6 +158,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         UUID randomUUID = UUID.randomUUID();
         if (tag == null) {
             tag = new CompoundNBT();
+            tag.putUniqueId("key", randomUUID);
             stack.setTag(tag);
         }
         if (!tag.hasUniqueId("key")) {

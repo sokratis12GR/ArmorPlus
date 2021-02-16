@@ -8,7 +8,7 @@ import net.minecraft.util.text.TextFormatting;
 public class MaterialItem extends APItem {
 
     private final boolean hasGlint;
-    private TextFormatting color;
+    private final TextFormatting color;
 
     public MaterialItem(boolean hasGlint, TextFormatting color, Properties props) {
         super(props);

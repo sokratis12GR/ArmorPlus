@@ -22,4 +22,10 @@ public class FrostCrystalItem extends APItem {
         return Rarity.create("Crystalic", AQUA);
     }
 
+    /**
+     * @return True, If the crystal is infused otherwise False.
+     */
+    public boolean isInfused() {
+        return isInfused;
+    }
 }

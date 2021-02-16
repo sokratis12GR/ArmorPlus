@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.items.tools;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.item.BowItem;
+import net.minecraft.item.ItemStack;
 
 public class APBowItem extends BowItem {
 
@@ -13,5 +14,8 @@ public class APBowItem extends BowItem {
         );
     }
 
-
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return super.getIsRepairable(toRepair, repair);
+    }
 }

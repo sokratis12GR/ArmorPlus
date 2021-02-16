@@ -7,9 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.world.World;
 
+import java.util.Locale;
+
+import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.convertToSeconds;
+import static net.minecraft.util.text.TextFormatting.DARK_AQUA;
 
 public class BuffInstance {
 
@@ -39,6 +44,7 @@ public class BuffInstance {
         } else {
             this.potion = Potions.EMPTY;
         }
+        this.enabled = true;
     }
 
     /**
@@ -46,9 +52,10 @@ public class BuffInstance {
      */
     public BuffInstance(IBuff buff) {
         this.buff = buff;
-        this.amplifier = 0;
+        this.amplifier = -1;
         this.instant = true;
         this.potion = Potions.EMPTY;
+        this.enabled = true;
     }
 
     public static BuffInstance build(IBuff buff, int amplifier, int duration, boolean instant) {
@@ -128,6 +135,11 @@ public class BuffInstance {
 
     public boolean isEnabled() {
         return this.enabled;
+    }
+
+    public IFormattableTextComponent getTranslatedName() {
+        String name = this.buff.name().toLowerCase(Locale.ENGLISH);
+        return this.buff.isEffect() ? translate(DARK_AQUA, "armorplus.effect." + name) : translate(DARK_AQUA, "armorplus.buff." + name);
     }
 
     @Override
