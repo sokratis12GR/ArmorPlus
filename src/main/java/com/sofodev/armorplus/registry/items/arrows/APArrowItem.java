@@ -28,6 +28,11 @@ public class APArrowItem extends ArrowItem {
     }
 
     @Override
+    public Rarity getRarity(ItemStack stack) {
+        return Rarity.create(type.getName(), type.getFormatting());
+    }
+
+    @Override
     public AbstractArrowEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
         return type.createArrow(shooter, world);
     }

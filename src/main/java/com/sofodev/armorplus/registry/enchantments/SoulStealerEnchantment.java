@@ -2,13 +2,13 @@ package com.sofodev.armorplus.registry.enchantments;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 
 import static net.minecraft.enchantment.EnchantmentType.WEAPON;
 import static net.minecraft.inventory.EquipmentSlotType.MAINHAND;
 
 public class SoulStealerEnchantment extends APEnchantment {
-
 
     public SoulStealerEnchantment() {
         super(Rarity.VERY_RARE, WEAPON, new EquipmentSlotType[]{MAINHAND},
@@ -18,7 +18,7 @@ public class SoulStealerEnchantment extends APEnchantment {
 
     @Override
     public boolean canApply(ItemStack stack) {
-        return WEAPON.canEnchantItem(stack.getItem()) || stack.getItem() instanceof AxeItem;
+        return WEAPON.canEnchantItem(stack.getItem()) || stack.getItem() instanceof AxeItem || stack.getItem() instanceof BowItem;
     }
 
     @Override

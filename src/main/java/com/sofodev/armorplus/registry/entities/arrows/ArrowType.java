@@ -71,22 +71,22 @@ public class ArrowType {
         }
     };
 
-    private final String txt;
+    private final String name;
     private final double dmg;
     private final TextFormatting formatting;
 
-    ArrowType(String txt, double dmg, TextFormatting formatting) {
-        this.txt = txt;
+    ArrowType(String name, double dmg, TextFormatting formatting) {
+        this.name = name;
         this.dmg = dmg;
         this.formatting = formatting;
     }
 
-    public String getTxt() {
-        return txt;
+    public String getName() {
+        return name;
     }
 
     public TranslationTextComponent getAbilityDescription() {
-        return new TranslationTextComponent("item.armorplus." + getTxt() + "_arrow.ability_desc");
+        return new TranslationTextComponent("info.armorplus." + getName() + "_arrow.ability_desc");
     }
 
     public TextFormatting getFormatting() {
@@ -95,10 +95,6 @@ public class ArrowType {
 
     public double getDmg() {
         return dmg;
-    }
-
-    public String getName() {
-        return txt;
     }
 
     public String getItemArrowName() {
