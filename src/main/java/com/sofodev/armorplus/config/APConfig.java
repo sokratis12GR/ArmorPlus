@@ -46,6 +46,9 @@ public class APConfig {
         public final ConfigValue<List<Integer>> frostCrystalVeinList;
         public final ConfigValue<List<Integer>> frostCrystalOffsetList;
         public final ConfigValue<List<Integer>> frostCrystalRangeList;
+        //Advancements
+        public final ConfigValue<Boolean> enableThankYouAdvancement;
+
         //Tests
         public final ConfigValue<Integer> TEST;
         public final ConfigValue<List<Boolean>> TEST_LIST;
@@ -68,6 +71,12 @@ public class APConfig {
             frostCrystalVeinList = this.withDefaultVeinSize(builder, FROST_CRYSTAL);
             frostCrystalOffsetList = this.withDefaultOffset(builder, FROST_CRYSTAL);
             frostCrystalRangeList = this.withDefaultRange(builder, FROST_CRYSTAL);
+            //Advancements
+            builder.pop().pop();
+            builder.push("advancements").comment("Configure advancements");
+            enableThankYouAdvancement = builder.comment("Enable/Disable the Thank You 6M advancement")
+                    .translation(MODID + ".config.advancement.thank_you_6m")
+                    .define("enableThankYou6M", true);
 //CUSTOM_MAP_TEST = withValues(builder, "list", 4, 3, 12, 4, 3, 12, 4, 3, 12, 123);
             builder.pop();
             builder.push("test").comment("Please Ignore");
