@@ -26,6 +26,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static com.sofodev.armorplus.ArmorPlus.*;
+import static com.sofodev.armorplus.registry.items.armors.APArmorMaterial.SLAYER;
 import static com.sofodev.armorplus.utils.Utils.getNormalizedName;
 import static net.minecraft.inventory.EquipmentSlotType.*;
 import static net.minecraft.inventory.EquipmentSlotType.Group.ARMOR;
@@ -46,7 +47,7 @@ public class ModItems {
     public static final Set<RegistryObject<Item>> SUPER_STAR_BASES = registerArmorBases(APArmorMaterial.SUPER_STAR);
     public static final Set<RegistryObject<Item>> GUARDIAN_BASES = registerArmorBases(APArmorMaterial.GUARDIAN);
     public static final Set<RegistryObject<Item>> ENDER_DRAGON_BASES = registerArmorBases(APArmorMaterial.ENDER_DRAGON);
-    public static final Set<RegistryObject<Item>> SLAYER_BASES = registerArmorBases(APArmorMaterial.SLAYER);
+    public static final Set<RegistryObject<Item>> SLAYER_BASES = registerArmorBases(SLAYER);
     //ToolBases (Soulless)
     public static final RegistryObject<Item> GUARDIAN_SWORD_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "sword");
     public static final RegistryObject<Item> GUARDIAN_BATTLE_AXE_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "battle_axe");
@@ -139,7 +140,7 @@ public class ModItems {
         IntStream.range(0, AP_MACE_MAT_LENGTH).forEach(i -> {
             APMaceMaterial mat = APMaceMaterial.values()[i];
             maces[i] = ITEMS.register(String.format("%s_mace", mat.getName()), () -> new APMaceItem(mat, new Item.Properties()
-                    .setISTER(() -> new APMaceRenderer(mat))));
+                    .setISTER(() -> APMaceRenderer::new)));
         });
     }
 
