@@ -4,6 +4,7 @@
 
 package com.sofodev.armorplus.utils;
 
+import com.sofodev.armorplus.registry.items.armors.APRepair;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -20,10 +21,12 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static java.lang.String.format;
 import static java.util.Arrays.stream;
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static net.minecraft.inventory.EquipmentSlotType.*;
 
@@ -200,7 +203,21 @@ public final class Utils {
         return getForgeConfig().resolve("armorplus.json");
     }
 
-    public static boolean canAllowFlight(PlayerEntity player, boolean flag) {
-        return (flag) || player.abilities.isCreativeMode || player.isSpectator();
+    public static boolean allowsFlightByDefault(PlayerEntity player) {
+        return player.abilities.isCreativeMode || player.isSpectator();
+    }
+
+    public static List<ItemStack> getRepairStacks(APRepair repair) {
+        boolean isString = !(repair.getRepair().isEmpty());
+        boolean isStack = !(repair.getRepairStacks().isEmpty());
+        boolean isItem = !(repair.getRepairItems().isEmpty());
+        if (isString) {
+            return repair.getRepair().stream().map(Utils::getAPItem).map(ItemStack::new).collect(toList());
+        } else if (isItem) {
+            return repair.getRepairItems().stream().map(ItemStack::new).collect(Collectors.toList());
+        } else if (isStack) {
+            return repair.getRepairStacks();
+        }
+        return emptyList();
     }
 }

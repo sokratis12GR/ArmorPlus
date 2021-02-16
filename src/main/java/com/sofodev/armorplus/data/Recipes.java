@@ -39,7 +39,6 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
     public static final List<IItemProvider> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<IItemProvider> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get()).collect(Collectors.toList());
 
-
     public Recipes(DataGenerator generatorIn) {
         super(generatorIn);
     }
@@ -106,11 +105,14 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         crafter.buildArmorSet(con, "golden", ENHANCED_GOLD.get(), enGroup + "gold", enPath, "", "");
         crafter.buildArmorSet(con, "diamond", ENHANCED_DIAMOND.get(), enGroup + "diamond", enPath, "", "");
         //Bases
+        crafter.buildArmorSet(con, "chicken", FEATHER, "");
+        crafter.buildArmorSet(con, "slime", SLIME_BLOCK, "");
+
         crafter.buildArmorSet(con, "coal", COAL_BLOCK, "");
         crafter.buildArmorSet(con, "lapis", LAPIS_BLOCK, "");
         crafter.buildArmorSet(con, "redstone", REDSTONE_BLOCK, "");
         crafter.buildArmorSet(con, "emerald", EMERALD_BLOCK, "");
-        crafter.buildArmorSet(con, "obsidian", Items.OBSIDIAN, "");
+        crafter.buildArmorSet(con, "obsidian", COMPRESSED_OBSIDIAN.get(), "");
         crafter.buildArmorSet(con, "infused_lava", INFUSED_LAVA_CRYSTAL.get(), "");
         crafter.buildArmorSet(con, "guardian", GUARDIAN_SCALE.get(), "_base");
         crafter.buildArmorSet(con, "super_star", WITHER_BONE.get(), "_base");
@@ -119,8 +121,9 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         IntStream.range(0, bound).forEach(i -> {
             Item mace = MACES[i].get();
             String path = getPath(mace).replace("item_", "").replace("_mace", "");
-            crafter.build(con, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), STICK, BLOCK_MATERIALS_ORDERED.get(i));
-            crafter.build(con, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), STICK, BLOCK_MATERIALS_ORDERED.get(i));
+            IItemProvider material = BLOCK_MATERIALS_ORDERED.get(i);
+            crafter.build(con, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
+            crafter.build(con, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
         });
         //Storage Blocks
         crafter.buildStorage(con, COMPRESSED_LAVA_CRYSTAL.get(), ModBlocks.LAVA_CRYSTAL.get());
@@ -131,6 +134,7 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
 
         //Other
         crafter.build(con, Result.build(OBSIDIAN_STICK.get(), 4), Items.OBSIDIAN, Items.OBSIDIAN);
+        crafter.build(con, Result.build(WOODEN_ROD.get(), 2), STICK, STICK, STICK, STICK);
     }
 
     private void registerSmithingRecipes(Consumer<IFinishedRecipe> con) {

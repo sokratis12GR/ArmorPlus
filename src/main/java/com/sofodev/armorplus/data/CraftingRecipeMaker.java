@@ -18,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -29,6 +30,7 @@ import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.item.crafting.Ingredient.*;
 
 public class CraftingRecipeMaker extends RecipeProvider {
+
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     public CraftingRecipeMaker(DataGenerator generatorIn) {
@@ -70,7 +72,6 @@ public class CraftingRecipeMaker extends RecipeProvider {
                 GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, fromItems(material)
         );
     }
-
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -137,7 +138,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         final String pathWall = "wall";
         final String pathTower = "tower";
         //shaped
-        this.build(con, Result.build(wall.get(), 6, getGroup(pathCorner), pathCorner),
+        this.build(con, Result.build(corner.get(), 6, getGroup(pathCorner), pathCorner),
                 GridInput.build("   ", "S  ", "SSS", 'S'), bricks.get()
         );
         this.build(con, Result.build(wall.get(), 6, getGroup(pathWall), pathWall),
@@ -247,6 +248,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @since 16.2.0
      */
     public void build(Consumer<IFinishedRecipe> consumer, Result result, GridInput layout, IItemProvider mainInput, Ingredient... additional) {
+        HashMap<GridInput, List<IItemProvider>> arrangedGrid = new HashMap<>();
         String path = getPath(result.getObject());
         Grid grid = layout.getGrid();
         Input input = layout.getSimpleInput();
