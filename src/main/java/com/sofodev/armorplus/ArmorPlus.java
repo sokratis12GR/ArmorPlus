@@ -2,10 +2,13 @@ package com.sofodev.armorplus;
 
 import com.sofodev.armorplus.config.APConfig;
 import com.sofodev.armorplus.events.WorldGenEvents;
+import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.*;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
+import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonEntity;
+import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.WitherlingRenderer;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
@@ -24,7 +27,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -38,6 +40,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Arrays;
@@ -66,14 +70,16 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
+    public static final String VERSION = "1.16.5-16.3.1";
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    private static ArmorPlus instance;
+    public static ArmorPlus instance;
+    public static final PacketHandler PACKET_HANDLER = new PacketHandler();
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, MODID);
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MODID);
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, MODID);
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, MODID);
 
@@ -124,7 +130,7 @@ public class ArmorPlus {
         ITEMS.register(modEventBus);
         ENCHANTMENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
-        ENTITIES.register(modEventBus);
+        ENTITY_TYPES.register(modEventBus);
         EFFECTS.register(modEventBus);
         FEATURES.register(modEventBus);
         ATTRIBUTES.register(modEventBus);
@@ -132,16 +138,15 @@ public class ArmorPlus {
         modEventBus.addListener(this::onCommonSetup);
         forgeBus.addListener(EventPriority.HIGH, WorldGenEvents::onBiomeLoad);
         if (dist == CLIENT) {
-            modEventBus.addListener(this::clientInit);
+            modEventBus.addListener(this::onClientSetup);
         }
     }
 
     public void onCommonSetup(FMLCommonSetupEvent event) {
         registerModBlocks();
-        registerModItems();
         registerAPItems();
+        registerModItems();
         registerEnchantments();
-        registerEntities();
         event.enqueueWork(this::afterSetup);
     }
 
@@ -149,9 +154,10 @@ public class ArmorPlus {
         GlobalVars.registerAfterEverything();
         ModAttributes.registerAttributes();
         ModConfiguredFeatures.registerConfiguredFeatures();
+        PACKET_HANDLER.initialize();
     }
 
-    private void clientInit(FMLClientSetupEvent event) {
+    private void onClientSetup(FMLClientSetupEvent event) {
         registerRenderingHandler(COAL_ARROW.get(), "coal");
         registerRenderingHandler(LAPIS_ARROW.get(), "lapis");
         registerRenderingHandler(REDSTONE_ARROW.get(), "redstone");
@@ -163,6 +169,7 @@ public class ArmorPlus {
         registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
         registerEntityRenderingHandler(ModEntities.SKELETAL_KING.get(), SkeletalKingRenderer::new);
         registerEntityRenderingHandler(ModEntities.WITHERLING.get(), WitherlingRenderer::new);
+        registerEntityRenderingHandler(ModEntities.DEMONIC_DRAGON.get(), DemonicDragonRenderer::new);
         this.setRenderLayer(Collections.singletonList(ModBlocks.LAVA_INFUSER));
         registerBowOverrides();
     }
@@ -191,8 +198,6 @@ public class ArmorPlus {
             });
         });
     }
-
-    //      ClientRegistry.bindTileEntitySpecialRenderer(TileTrophy.class, new TESRTrophy());
 
     public static ArmorPlus getInstance() {
         return instance;
