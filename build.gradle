@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url  = 'https://plugins.gradle.org/m2/' }
+        maven { url = 'https://plugins.gradle.org/m2/' }
         jcenter()
         mavenCentral()
     }
@@ -21,6 +21,8 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 repositories {
     maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+    maven { url 'https://maven.blamejared.com' }
+
 }
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch
@@ -46,6 +48,7 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+            properties 'mixin.env.disableRefMap': 'true'
 
             mods {
                 examplemod {
@@ -95,12 +98,22 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.3-34.1.42'
-    implementation fg.deobf("curse.maven:thedragonlib:3108730")
-//    implementation fg.deobf("curse.maven:ichunutil:3062089")
-//    implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
-    implementation fg.deobf('software.bernie.geckolib:forge-1.16.4-geckolib:3.0.0')
-    //implementation fg.deobf("curse.maven:blame:3135054")
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    implementation fg.deobf("curse.maven:thedragonlib:3108730") //TheDragonLib
+//    implementation fg.deobf('software.bernie.geckolib:forge-1.16.5-geckolib:3.0.13') //Geckolib
+    implementation fg.deobf("curse.maven:geckolib:3195959") //Geckolib (3.0.13)
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48:api") //Patchouli
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48") //Patchouli
+    implementation fg.deobf("curse.maven:mekanism:3183270") //Mekanism
+    implementation fg.deobf("curse.maven:jei:3192904") //JEI
+
+    // implementation fg.deobf("curse.maven:ichunutil:3062089")
+    // implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
+    // implementation fg.deobf("curse.maven:corail-tombstone:3169275")
+    // implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
+    // implementation fg.deobf('curse.maven:minecolonies:3126211')
+    // implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
+    // implementation fg.deobf("curse.maven:blame:3135054")
 
 }
 
@@ -142,6 +155,7 @@ def curseRelations = {
     //requiredDependency '' //add curseforge-slug here
     requiredDependency 'thedragonlib'
     requiredDependency 'geckolib'
+    optionalDependency 'patchouli'
 }
 
 curseforge {
@@ -153,6 +167,7 @@ curseforge {
         releaseType = 'beta'
         addGameVersion '1.16.3'
         addGameVersion '1.16.4'
+        addGameVersion '1.16.5'
         relations curseRelations
     }
 }
