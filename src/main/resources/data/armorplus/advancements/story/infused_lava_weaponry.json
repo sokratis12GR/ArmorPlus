@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/infused_lava_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:infused_lava_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.infused_lava_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.infused_lava_weaponry.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "infused_lava_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:infused_lava_sword"
+                    },
+                    {
+                        "item": "armorplus:infused_lava_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:infused_lava_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "infused_lava_weaponry"
+        ]
+    ]
+}

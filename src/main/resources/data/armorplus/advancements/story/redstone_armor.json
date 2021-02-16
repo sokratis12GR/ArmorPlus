@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/lapis_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:redstone_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.redstone_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.redstone_armor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "redstone_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:redstone_helmet"
+                    },
+                    {
+                        "item": "armorplus:redstone_chestplate"
+                    },
+                    {
+                        "item": "armorplus:redstone_leggings"
+                    },
+                    {
+                        "item": "armorplus:redstone_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "redstone_armor"
+        ]
+    ]
+}

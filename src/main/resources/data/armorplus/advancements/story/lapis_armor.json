@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/coal_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:lapis_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.lapis_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.lapis_armor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "lapis_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:lapis_helmet"
+                    },
+                    {
+                        "item": "armorplus:lapis_chestplate"
+                    },
+                    {
+                        "item": "armorplus:lapis_leggings"
+                    },
+                    {
+                        "item": "armorplus:lapis_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "lapis_armor"
+        ]
+    ]
+}

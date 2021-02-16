@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/redstone_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:emerald_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.emerald_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.emerald_armor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "emerald_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:emerald_helmet"
+                    },
+                    {
+                        "item": "armorplus:emerald_chestplate"
+                    },
+                    {
+                        "item": "armorplus:emerald_leggings"
+                    },
+                    {
+                        "item": "armorplus:emerald_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "emerald_armor"
+        ]
+    ]
+}

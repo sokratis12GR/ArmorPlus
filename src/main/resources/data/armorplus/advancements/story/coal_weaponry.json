@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/coal_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:coal_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.coal_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.coal_weaponry.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "coal_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:coal_sword"
+                    },
+                    {
+                        "item": "armorplus:coal_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:coal_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "coal_weaponry"
+        ]
+    ]
+}

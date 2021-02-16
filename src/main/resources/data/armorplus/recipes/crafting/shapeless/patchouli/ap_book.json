@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "armorplus:books",
+    "ingredients": [
+        {
+            "item": "armorplus:lava_crystal"
+        },
+        {
+            "item": "minecraft:book"
+        }
+    ],
+    "result": {
+        "item": "patchouli:guide_book",
+        "nbt": {
+            "patchouli:book": "armorplus:guide_book"
+        },
+        "count": 1
+    }
+}

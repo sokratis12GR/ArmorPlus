@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/emerald_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:emerald_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.emerald_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.emerald_weaponry.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "emerald_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:emerald_sword"
+                    },
+                    {
+                        "item": "armorplus:emerald_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:emerald_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "emerald_weaponry"
+        ]
+    ]
+}

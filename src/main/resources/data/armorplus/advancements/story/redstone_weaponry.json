@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/redstone_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:redstone_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.redstone_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.redstone_weaponry.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "redstone_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:redstone_sword"
+                    },
+                    {
+                        "item": "armorplus:redstone_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:redstone_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "redstone_weaponry"
+        ]
+    ]
+}

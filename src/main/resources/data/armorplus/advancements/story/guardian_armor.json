@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/infused_lava_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:guardian_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.guardian_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.guardian_armor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "guardian_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:guardian_helmet"
+                    },
+                    {
+                        "item": "armorplus:guardian_chestplate"
+                    },
+                    {
+                        "item": "armorplus:guardian_leggings"
+                    },
+                    {
+                        "item": "armorplus:guardian_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "guardian_armor"
+        ]
+    ]
+}

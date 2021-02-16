@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/ender_dragon_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:ender_dragon_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.ender_dragon_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.ender_dragon_weaponry.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "ender_dragon_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:ender_dragon_sword"
+                    },
+                    {
+                        "item": "armorplus:ender_dragon_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:ender_dragon_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ender_dragon_weaponry"
+        ]
+    ]
+}

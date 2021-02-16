@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/ender_dragon_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:slayer_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.slayer_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.slayer_armor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "slayer_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:slayer_helmet"
+                    },
+                    {
+                        "item": "armorplus:slayer_chestplate"
+                    },
+                    {
+                        "item": "armorplus:slayer_leggings"
+                    },
+                    {
+                        "item": "armorplus:slayer_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "slayer_armor"
+        ]
+    ]
+}

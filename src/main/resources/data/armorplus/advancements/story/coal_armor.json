@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/root",
+    "display": {
+        "icon": {
+            "item": "armorplus:coal_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.coal_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.coal_armor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "coal_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:coal_helmet"
+                    },
+                    {
+                        "item": "armorplus:coal_chestplate"
+                    },
+                    {
+                        "item": "armorplus:coal_leggings"
+                    },
+                    {
+                        "item": "armorplus:coal_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "coal_armor"
+        ]
+    ]
+}

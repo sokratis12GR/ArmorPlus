@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/infused_lava_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:super_star_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.super_star_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.super_star_armor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "super_star_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:super_star_helmet"
+                    },
+                    {
+                        "item": "armorplus:super_star_chestplate"
+                    },
+                    {
+                        "item": "armorplus:super_star_leggings"
+                    },
+                    {
+                        "item": "armorplus:super_star_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "super_star_armor"
+        ]
+    ]
+}

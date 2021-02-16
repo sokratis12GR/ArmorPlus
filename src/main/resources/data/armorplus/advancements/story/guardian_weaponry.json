@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/guardian_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:guardian_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.guardian_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.guardian_weaponry.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "guardian_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:guardian_sword"
+                    },
+                    {
+                        "item": "armorplus:guardian_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:guardian_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "guardian_weaponry"
+        ]
+    ]
+}

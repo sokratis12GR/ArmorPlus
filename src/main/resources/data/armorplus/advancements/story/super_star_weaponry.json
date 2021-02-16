@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/super_star_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:super_star_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.super_star_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.super_star_weaponry.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "super_star_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:super_star_sword"
+                    },
+                    {
+                        "item": "armorplus:super_star_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:super_star_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "super_star_weaponry"
+        ]
+    ]
+}

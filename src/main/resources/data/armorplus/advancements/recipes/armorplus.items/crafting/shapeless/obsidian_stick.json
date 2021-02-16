@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "armorplus:crafting/shapeless//obsidian_stick"
+        "recipe": "armorplus:crafting/shapeless/obsidian_stick"
       }
     }
   },

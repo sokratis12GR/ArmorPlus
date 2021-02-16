@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/obsidian_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:infused_lava_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.infused_lava_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.infused_lava_armor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "infused_lava_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:infused_lava_helmet"
+                    },
+                    {
+                        "item": "armorplus:infused_lava_chestplate"
+                    },
+                    {
+                        "item": "armorplus:infused_lava_leggings"
+                    },
+                    {
+                        "item": "armorplus:infused_lava_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "infused_lava_armor"
+        ]
+    ]
+}

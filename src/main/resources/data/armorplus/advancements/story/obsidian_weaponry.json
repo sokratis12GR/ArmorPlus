@@ -1,0 +1,44 @@
+{
+    "parent": "armorplus:story/obsidian_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:obsidian_sword"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.obsidian_weaponry.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.obsidian_weaponry.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 10
+    },
+    "criteria": {
+        "obsidian_weaponry": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:obsidian_sword"
+                    },
+                    {
+                        "item": "armorplus:obsidian_battle_axe"
+                    },
+                    {
+                        "item": "armorplus:obsidian_mace"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "obsidian_weaponry"
+        ]
+    ]
+}

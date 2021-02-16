@@ -1,0 +1,47 @@
+{
+    "parent": "armorplus:story/infused_lava_armor",
+    "display": {
+        "icon": {
+            "item": "armorplus:ender_dragon_chestplate"
+        },
+        "title": {
+            "translate": "advancements.armorplus.story.ender_dragon_armor.title"
+        },
+        "description": {
+            "translate": "advancements.armorplus.story.ender_dragon_armor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "rewards": {
+        "experience": 100
+    },
+    "criteria": {
+        "ender_dragon_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "armorplus:ender_dragon_helmet"
+                    },
+                    {
+                        "item": "armorplus:ender_dragon_chestplate"
+                    },
+                    {
+                        "item": "armorplus:ender_dragon_leggings"
+                    },
+                    {
+                        "item": "armorplus:ender_dragon_boots"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ender_dragon_armor"
+        ]
+    ]
+}
