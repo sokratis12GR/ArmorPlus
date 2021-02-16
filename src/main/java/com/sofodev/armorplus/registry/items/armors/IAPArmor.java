@@ -30,6 +30,8 @@ public interface IAPArmor {
      */
     Item.Properties getProperties();
 
+    boolean isImmuneToFire();
+
     /**
      * A list of all the BuffInstances for the armor set
      * <p>

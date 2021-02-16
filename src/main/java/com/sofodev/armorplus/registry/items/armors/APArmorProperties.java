@@ -11,35 +11,36 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
 
-import static com.sofodev.armorplus.utils.GlobalVars.*;
+import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
 import static net.minecraft.item.Items.*;
 import static net.minecraft.util.SoundEvents.*;
 
 public enum APArmorProperties implements IArmorMaterial {
-    COAL_PROP(2, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, COAL),
-    REDSTONE_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, REDSTONE),
-    LAPIS_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, LAPIS_LAZULI),
+    COAL_PROP(2, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, COAL, COAL_BLOCK),
+    REDSTONE_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, REDSTONE, REDSTONE_BLOCK),
+    LAPIS_PROP(11, new int[]{1, 2, 3, 2}, 8, ITEM_ARMOR_EQUIP_IRON, LAPIS_LAZULI, LAPIS_BLOCK),
     CHICKEN_PROP(1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, FEATHER),
-    SLIME_PROP(1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, SLIME_BALL),
+    SLIME_PROP(1, new int[]{1, 1, 2, 1}, 8, ITEM_ARMOR_EQUIP_LEATHER, SLIME_BALL, SLIME_BLOCK),
     EMERALD_PROP(35, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, EMERALD, EMERALD_BLOCK),
     OBSIDIAN_PROP(40, new int[]{3, 6, 7, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, OBSIDIAN),
-    INFUSED_LAVA_PROP(55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, INFUSED_LAVA_CRYSTAL),
-    GUARDIAN_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, GUARDIAN_SCALE),
-    SUPER_STAR_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, WITHER_BONE),
-    ENDER_DRAGON_PROP(60, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, ENDER_DRAGON_SCALE),
-    ARDITE_PROP(55, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
-    COBALT_PROP(44, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
-    KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
-    PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f),
-    MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f),
-    SLAYER_PROP(160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, THE_ULTIMATE_MATERIAL),
+    INFUSED_LAVA_PROP(55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, "infused_lava_crystal"),
+    GUARDIAN_PROP(80, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, "guardian_scale"),
+    SUPER_STAR_PROP(80, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, "wither_bone"),
+    ENDER_DRAGON_PROP(80, new int[]{4, 7, 8, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, "ender_dragon_scale"),
+    ARDITE_PROP(55, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
+    COBALT_PROP(44, new int[]{2, 3, 4, 2}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
+    KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
+    PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ITEM_ARMOR_EQUIP_IRON, 1.0f, AIR),
+    MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
+    SLAYER_PROP(160, new int[]{4, 8, 9, 4}, 60, ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, "the_ultimate_material"),
     /*Enhanced Vanilla Armor*/
-    ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ITEM_ARMOR_EQUIP_CHAIN, 1.0f, IRON_INGOT, CHAINMAIL),
+    ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ITEM_ARMOR_EQUIP_CHAIN, 1.0f, "chainmail"),
     ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ITEM_ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
     ENHANCED_IRON_PROP(false, 20, new int[]{2, 5, 6, 2}, 15, ITEM_ARMOR_EQUIP_IRON, 2.0f, IRON_INGOT),
     ENHANCED_DIAMOND_PROP(false, 35, new int[]{3, 6, 7, 3}, 20, ITEM_ARMOR_EQUIP_DIAMOND, 3.0f, DIAMOND),
     ENHANCED_NETHERITE_PROP(false, 47, new int[]{3, 6, 8, 3}, 25, ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, NETHERITE_INGOT),
-    ;
+    FROST_PROP(55, new int[]{3, 6, 8, 3}, 16, ITEM_ARMOR_EQUIP_DIAMOND, 1.0f, "infused_frost_crystal"),
+    FROST_LAVA_PROP(70, new int[]{4, 7, 8, 3}, 32, ITEM_ARMOR_EQUIP_NETHERITE, 2.0f, AIR);
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */
@@ -50,18 +51,34 @@ public enum APArmorProperties implements IArmorMaterial {
     private final int[] damageReduction;
     private final int enchantability;
     private final SoundEvent soundEvent;
-    private final Ingredient repairMaterial;
+    private final APRepair repair;
     private final boolean special;
 
-    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repairMaterial) {
-        this(true, durability, damageReduction, enchantability, soundEvent, toughness, repairMaterial);
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, IItemProvider... repair) {
+        this(true, durability, damageReduction, enchantability, soundEvent, 0.0f, repair);
     }
 
-    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, IItemProvider... repairMaterial) {
-        this(true, durability, damageReduction, enchantability, soundEvent, 0.0f, repairMaterial);
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repair) {
+        this(true, durability, damageReduction, enchantability, soundEvent, toughness, repair);
     }
 
-    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repairMaterial) {
+    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repair) {
+        this(special, durability, damageReduction, enchantability, soundEvent, toughness, new APRepair(repair));
+    }
+
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, String... repair) {
+        this(true, durability, damageReduction, enchantability, soundEvent, 0.0f, repair);
+    }
+
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, String... repair) {
+        this(true, durability, damageReduction, enchantability, soundEvent, toughness, repair);
+    }
+
+    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, String... repair) {
+        this(special, durability, damageReduction, enchantability, soundEvent, toughness, new APRepair(repair));
+    }
+
+    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, APRepair repair) {
         this.special = special;
         this.name = name().toLowerCase().replace("_prop", "").replace("enhanced_", "");
         this.durability = durability;
@@ -69,7 +86,7 @@ public enum APArmorProperties implements IArmorMaterial {
         this.damageReduction = damageReduction;
         this.enchantability = enchantability;
         this.soundEvent = soundEvent;
-        this.repairMaterial = repairMaterial.length == 0 ? Ingredient.EMPTY : Ingredient.fromItems(repairMaterial);
+        this.repair = repair;
     }
 
     @Override
@@ -94,7 +111,7 @@ public enum APArmorProperties implements IArmorMaterial {
 
     @Override
     public Ingredient getRepairMaterial() {
-        return repairMaterial;
+        return Ingredient.fromStacks(getRepairStacks(repair).stream());
     }
 
     @Override
@@ -110,7 +127,7 @@ public enum APArmorProperties implements IArmorMaterial {
 
     @Override
     public float getKnockbackResistance() {
-        return 0;
+        return this == ENHANCED_NETHERITE_PROP ? 0.1f : 0;
     }
 
     @Override
@@ -122,7 +139,7 @@ public enum APArmorProperties implements IArmorMaterial {
                 ", damageReduction=" + Arrays.toString(damageReduction) +
                 ", enchantability=" + enchantability +
                 ", soundEvent=" + soundEvent +
-                ", repairMaterial=" + repairMaterial +
+                ", repairMaterial=" + repair +
                 ", special=" + special +
                 '}';
     }

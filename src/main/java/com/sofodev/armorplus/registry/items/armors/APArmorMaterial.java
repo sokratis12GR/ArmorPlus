@@ -44,17 +44,17 @@ public enum APArmorMaterial implements IAPArmor {
             new BuffInstance(SPEED, 1)),
     OBSIDIAN(OBSIDIAN_PROP, DARK_GRAY,
             new BuffInstance(RESISTANCE, 1)),
-    INFUSED_LAVA(INFUSED_LAVA_PROP, new Properties().isImmuneToFire(), GOLD,
+    INFUSED_LAVA(INFUSED_LAVA_PROP, true, GOLD,
             new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WATER_WEAKNESS)
     ),
     /*Tier 3*/
-    GUARDIAN(GUARDIAN_PROP, new Properties().isImmuneToFire(), BLUE,
+    GUARDIAN(GUARDIAN_PROP, true, BLUE,
             new BuffInstance(WATER_BREATHING, 0)
     ),
-    SUPER_STAR(SUPER_STAR_PROP, new Properties().isImmuneToFire(), WHITE,
+    SUPER_STAR(SUPER_STAR_PROP, true, WHITE,
             new BuffInstance(WITHER_IMMUNITY), new BuffInstance(REGENERATION, 2)
     ),
-    ENDER_DRAGON(ENDER_DRAGON_PROP, new Properties().isImmuneToFire(), DARK_PURPLE,
+    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE,
             new BuffInstance(FLIGHT), new BuffInstance(SLOW_FALLING, 0)
     ),
     /*Tier TConstruct*/
@@ -64,7 +64,7 @@ public enum APArmorMaterial implements IAPArmor {
     PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
     MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
     /*Tier Slayer*/
-    SLAYER(SLAYER_PROP, new Properties().isImmuneToFire(), DARK_PURPLE,
+    SLAYER(SLAYER_PROP, true, DARK_PURPLE,
             new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(WITHER_IMMUNITY), new BuffInstance(FLIGHT),
             new BuffInstance(WATER_BREATHING, 0), new BuffInstance(SLOW_FALLING, 0)
     ),
@@ -73,28 +73,34 @@ public enum APArmorMaterial implements IAPArmor {
     GOLDEN(ENHANCED_GOLD_PROP, GRAY),
     IRON(ENHANCED_IRON_PROP, GRAY),
     DIAMOND(ENHANCED_DIAMOND_PROP, GRAY),
-    NETHERITE(ENHANCED_NETHERITE_PROP, GRAY);
+    NETHERITE(ENHANCED_NETHERITE_PROP, true, GRAY),
+    FROST(FROST_PROP, false, BLUE,
+            new BuffInstance(FIRE_WEAKNESS)
+    ),
+    FROST_LAVA(FROST_LAVA_PROP, true, YELLOW,
+            new BuffInstance(NATURAL_IMMUNITY)
+    );
 
     private final IArmorMaterial armor;
-    private final Properties properties;
+    private final boolean isImmuneToFire;
     private final BuffInstance[] buffs;
     private final TextFormatting formatting;
 
     APArmorMaterial() {
-        this(ArmorMaterial.IRON, new Properties(), RESET);
+        this(ArmorMaterial.IRON, false, RESET);
     }
 
     APArmorMaterial(IArmorMaterial armor) {
-        this(armor, new Properties(), RESET);
+        this(armor, false, RESET);
     }
 
     APArmorMaterial(IArmorMaterial armor, TextFormatting formatting, BuffInstance... buffs) {
-        this(armor, new Properties(), formatting, buffs);
+        this(armor, false, formatting, buffs);
     }
 
-    APArmorMaterial(IArmorMaterial armor, Properties properties, TextFormatting formatting, BuffInstance... buffs) {
+    APArmorMaterial(IArmorMaterial armor, boolean isImmuneToFire, TextFormatting formatting, BuffInstance... buffs) {
         this.armor = armor;
-        this.properties = properties;
+        this.isImmuneToFire = isImmuneToFire;
         this.buffs = buffs;
         this.formatting = formatting;
     }
@@ -110,13 +116,18 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     @Override
-    public TextFormatting getFormatting() {
-        return formatting;
+    public Properties getProperties() {
+        return new Properties().group(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
     }
 
     @Override
-    public Properties getProperties() {
-        return properties.group(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
+    public boolean isImmuneToFire() {
+        return isImmuneToFire;
+    }
+
+    @Override
+    public TextFormatting getFormatting() {
+        return formatting;
     }
 
     @Override
@@ -124,11 +135,12 @@ public enum APArmorMaterial implements IAPArmor {
         return buffs;
     }
 
+
     @Override
     public String toString() {
         return "APArmorMaterial{" +
                 "armor=" + armor +
-                ", properties=" + properties +
+                ", isImmuneToFire=" + isImmuneToFire +
                 ", buffs=" + Arrays.toString(buffs) +
                 ", formatting=" + formatting +
                 '}';
