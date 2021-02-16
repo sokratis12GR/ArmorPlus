@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:stone_brick_corner",
+  "pattern": [
+    "   ",
+    "S  ",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:green_stone_brick"
+    }
+  },
+  "result": {
+    "item": "armorplus:green_stone_brick_corner",
+    "count": 6
+  }
+}

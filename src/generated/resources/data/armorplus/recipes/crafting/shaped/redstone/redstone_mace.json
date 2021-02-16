@@ -8,7 +8,7 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:stick"
+      "item": "armorplus:wooden_rod"
     },
     "D": {
       "item": "minecraft:redstone_block"
