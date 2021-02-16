@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[34,)" #mandatory (28 is current forge version)
+loaderVersion="[34,36)" #mandatory (28 is current forge version)
 license="GNU Lesser General Public License v3.0"
 issueTrackerURL="https://github.com/sokratis12GR/ArmorPlus/issues" #optional
 [[mods]] #mandatory
@@ -18,7 +18,7 @@ description='''
     # the modid of the dependency
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[34,)" #mandatory
+    versionRange="[34,36)" #mandatory
     ordering="NONE"
     side="BOTH"
 # Here's another dependency
