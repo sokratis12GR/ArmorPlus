@@ -1,0 +1,40 @@
+{
+    "name": "Super Star Bases",
+    "icon": "armorplus:super_star_chestplate_base",
+    "category": "armorplus:base_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:super_star_helmet_base,armorplus:super_star_chestplate_base,armorplus:super_star_leggings_base,armorplus:super_star_boots_base,armorplus:super_star_sword_base,armorplus:super_star_battle_axe_base,armorplus:super_star_bow_base,armorplus:super_star_pickaxe_base",
+            "title": "Info",
+            "link_recipe": true,
+            "text": "These are the base items of the $(l:armors/super_star_armor)super star armor$() pieces, in order to obtain the actual armor piece you must combine them with a $(l:souls/wither_boss_soul)Soul of the Wither Boss$() in the $(l)Smithing Table$()."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/super_star/super_star_helmet_base",
+            "recipe2": "armorplus:crafting/shaped/super_star/super_star_chestplate_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/super_star/super_star_leggings_base",
+            "recipe2": "armorplus:crafting/shaped/super_star/super_star_boots_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/super_star/super_star_sword_base",
+            "recipe2": "armorplus:crafting/shaped/super_star/super_star_battle_axe_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/super_star/super_star_bow_base",
+            "recipe2": "armorplus:crafting/shaped/super_star/super_star_pickaxe_base"
+        }
+    ]
+}

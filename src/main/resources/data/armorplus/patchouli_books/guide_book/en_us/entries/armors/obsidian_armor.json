@@ -1,0 +1,26 @@
+{
+    "name": "Obsidian Armor",
+    "icon": "armorplus:obsidian_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Obsidian Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:obsidian_boots',Count:1},{id:'armorplus:obsidian_leggings',Count:1},{id:'armorplus:obsidian_chestplate',Count:1},{id:'armorplus:obsidian_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Resistance II$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/obsidian/obsidian_helmet",
+            "recipe2": "armorplus:crafting/shaped/obsidian/obsidian_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/obsidian/obsidian_leggings",
+            "recipe2": "armorplus:crafting/shaped/obsidian/obsidian_boots"
+        }
+    ]
+}

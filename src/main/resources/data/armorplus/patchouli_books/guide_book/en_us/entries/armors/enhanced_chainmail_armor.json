@@ -1,0 +1,28 @@
+{
+    "name": "Enhanced: Chainmail Armor",
+    "icon": "armorplus:chainmail_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Enhanced: Chainmail Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:chainmail_boots',Count:1},{id:'armorplus:chainmail_leggings',Count:1},{id:'armorplus:chainmail_chestplate',Count:1},{id:'armorplus:chainmail_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor is an enhanced version of the vanilla chainmail armor."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/chainmail_helmet",
+            "recipe2": "armorplus:crafting/shaped/enhanced/chainmail_chestplate"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/chainmail_leggings",
+            "recipe2": "armorplus:crafting/shaped/enhanced/chainmail_boots"
+        }
+    ]
+}

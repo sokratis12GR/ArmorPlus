@@ -1,0 +1,26 @@
+{
+    "name": "Infused Lava Armor",
+    "icon": "armorplus:infused_lava_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Infused Lava Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:infused_lava_boots',Count:1},{id:'armorplus:infused_lava_leggings',Count:1},{id:'armorplus:infused_lava_chestplate',Count:1},{id:'armorplus:infused_lava_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Fire Resistance & Water Weakness$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/infused_lava/infused_lava_helmet",
+            "recipe2": "armorplus:crafting/shaped/infused_lava/infused_lava_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/infused_lava/infused_lava_leggings",
+            "recipe2": "armorplus:crafting/shaped/infused_lava/infused_lava_boots"
+        }
+    ]
+}

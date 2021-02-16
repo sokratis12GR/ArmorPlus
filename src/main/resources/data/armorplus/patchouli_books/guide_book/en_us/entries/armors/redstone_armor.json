@@ -1,0 +1,26 @@
+{
+    "name": "Redstone Armor",
+    "icon": "armorplus:redstone_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Redstone Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:redstone_boots',Count:1},{id:'armorplus:redstone_leggings',Count:1},{id:'armorplus:redstone_chestplate',Count:1},{id:'armorplus:redstone_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Haste II$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_helmet",
+            "recipe2": "armorplus:crafting/shaped/redstone/redstone_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_leggings",
+            "recipe2": "armorplus:crafting/shaped/redstone/redstone_boots"
+        }
+    ]
+}

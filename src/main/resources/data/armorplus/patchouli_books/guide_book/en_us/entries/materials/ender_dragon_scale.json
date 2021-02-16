@@ -1,0 +1,15 @@
+{
+    "name": "Ender Dragon Scale",
+    "icon": "armorplus:ender_dragon_scale",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:ender_dragon_scale",
+            "link_recipe": true,
+            "text": "These scales can be obtained by defeating the $(l)Ender Dragon$().$(br)It is used to craft the $(l:bases/ender_dragon_base)ender dragon base$() items."
+        }
+    ]
+}

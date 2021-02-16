@@ -1,0 +1,20 @@
+{
+    "name": "Slayer Armor",
+    "icon": "armorplus:slayer_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Slayer Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:slayer_boots',Count:1},{id:'armorplus:slayer_leggings',Count:1},{id:'armorplus:slayer_chestplate',Count:1},{id:'armorplus:slayer_helmet',Count:1}]}",
+            "rotate": true
+        },
+        {
+            "type": "text",
+            "name": "Info",
+            "text": "The armor provides the wearer with $(l)Flight, Wither Immunity, Fire Resistance I, Water Breathing, Slow Falling I$() upon wearing the full set."
+        }
+    ]
+}

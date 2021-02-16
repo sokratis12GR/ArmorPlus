@@ -1,0 +1,16 @@
+{
+    "name": "Soul of the Enderman",
+    "icon": "armorplus:soul_enderman",
+    "category": "armorplus:soul_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:soul_enderman",
+            "title": "Soul: Enderman",
+            "link_recipe": true,
+            "text": "This soul can only be obtained by defeating an $(l)Enderman$() with a weapon enchanted with the $(l)$(l:enchants/soul_stealer)Soul Stealer$() enchantment."
+        }
+    ]
+}

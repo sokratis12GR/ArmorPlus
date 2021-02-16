@@ -1,0 +1,26 @@
+{
+    "name": "Lapis Armor",
+    "icon": "armorplus:lapis_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Lapis Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:lapis_boots',Count:1},{id:'armorplus:lapis_leggings',Count:1},{id:'armorplus:lapis_chestplate',Count:1},{id:'armorplus:lapis_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Water Breathing$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/lapis/lapis_helmet",
+            "recipe2": "armorplus:crafting/shaped/lapis/lapis_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/lapis/lapis_leggings",
+            "recipe2": "armorplus:crafting/shaped/lapis/lapis_boots"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Frost Crystal",
+    "icon": "armorplus:frost_crystal",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:frost_crystal",
+            "link_recipe": true,
+            "text": "These crystals are obtained by mining $(l:blocks/ore_frost_crystal)Ore Frost Crystal$() blocks. As of the current moment is purely decorative."
+        }
+    ]
+}

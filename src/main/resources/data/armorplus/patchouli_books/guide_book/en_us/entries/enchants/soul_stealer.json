@@ -1,0 +1,16 @@
+{
+    "name": "Soul Stealer",
+    "icon": "minecraft:enchanted_book",
+    "category": "armorplus:enchant_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "minecraft:enchanted_book",
+            "title": "Soul Stealer",
+            "link_recipe": true,
+            "text": "$(l)Soul Stealer$() is an enchantment that is applicable on weapons. $(br)Certain mobs killed by a weapon enchanted with this, will have a chance of dropping the mob's soul.$(br)This enchantment provides the only way to obtain the required souls for the item bases."
+        }
+    ]
+}

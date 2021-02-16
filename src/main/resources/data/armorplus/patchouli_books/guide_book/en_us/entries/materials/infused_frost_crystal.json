@@ -1,0 +1,15 @@
+{
+    "name": "Infused Frost Crystal",
+    "icon": "armorplus:infused_frost_crystal",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:infused_frost_crystal",
+            "link_recipe": true,
+            "text": "The infused variant of the $(l:materials/frost_crystal)Frost Crystal$(). As of the current moment is purely decorative."
+        }
+    ]
+}

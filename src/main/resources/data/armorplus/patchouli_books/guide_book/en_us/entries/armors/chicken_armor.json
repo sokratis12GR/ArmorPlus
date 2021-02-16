@@ -1,0 +1,26 @@
+{
+    "name": "Chicken Armor",
+    "icon": "armorplus:chicken_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Chicken Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:chicken_boots',Count:1},{id:'armorplus:chicken_leggings',Count:1},{id:'armorplus:chicken_chestplate',Count:1},{id:'armorplus:chicken_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Speed IV$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/chicken/chicken_helmet",
+            "recipe2": "armorplus:crafting/shaped/chicken/chicken_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/chicken/chicken_leggings",
+            "recipe2": "armorplus:crafting/shaped/chicken/chicken_boots"
+        }
+    ]
+}

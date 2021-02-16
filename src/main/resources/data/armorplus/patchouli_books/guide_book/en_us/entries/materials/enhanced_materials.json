@@ -1,0 +1,61 @@
+{
+    "name": "Enhanced Materials",
+    "icon": "armorplus:en_netherite",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:en_chainmail",
+            "link_recipe": true,
+            "text": "The enhanced chainmail is used to craft the $(l:armors/enhanced_chainmail_armor)enhanced chainmail armor$() pieces."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/enhanced/en_chainmail"
+        },
+        {
+            "type": "spotlight",
+            "item": "armorplus:en_iron",
+            "link_recipe": true,
+            "text": "The enhanced iron ingot is used to craft the $(l:armors/enhanced_iron_armor)enhanced iron armor$() pieces."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/enhanced/en_iron"
+        },
+        {
+            "type": "spotlight",
+            "item": "armorplus:en_gold",
+            "link_recipe": true,
+            "text": "The enhanced golden ingot is used to forge the $(l:armors/enhanced_golden_armor)enhanced golden armor$() pieces."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/enhanced/en_gold"
+        },
+        {
+            "type": "spotlight",
+            "item": "armorplus:en_diamond",
+            "link_recipe": true,
+            "text": "The enhanced diamond is used to forge the $(l:armors/enhanced_diamond_armor)enhanced diamond armor$() pieces."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/enhanced/en_diamond"
+        },
+        {
+            "type": "spotlight",
+            "item": "armorplus:en_netherite",
+            "title": "Enhanced: Netherite",
+            "link_recipe": true,
+            "text": "The enhanced netherite ingot is used to forge the $(l:armors/enhanced_netherite_armor)enhanced netherite armor$() pieces."
+        },
+        {
+            "type": "crafting",
+            "title": "Enhanced: Netherite",
+            "recipe": "armorplus:crafting/shaped/enhanced/en_netherite"
+        }
+    ]
+}

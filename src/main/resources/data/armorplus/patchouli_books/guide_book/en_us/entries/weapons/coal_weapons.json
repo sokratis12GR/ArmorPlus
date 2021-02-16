@@ -1,0 +1,30 @@
+{
+    "name": "Coal Weapons",
+    "icon": "armorplus:coal_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:coal_sword,armorplus:coal_battle_axe,armorplus:coal_bow,armorplus:coal_mace",
+            "title": "Coal Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Blindness$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_sword",
+            "recipe2": "armorplus:crafting/shaped/coal/coal_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_bow",
+            "recipe2": "armorplus:crafting/shaped/coal/coal_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_mace"
+        }
+    ]
+}

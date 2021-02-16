@@ -1,0 +1,15 @@
+{
+    "name": "Wither Bone",
+    "icon": "armorplus:wither_bone",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:wither_bone",
+            "link_recipe": true,
+            "text": "Wither Bones can be obtained by defeating $(l)Wither Skeletons & The Wither$().$(br)It is used to craft the $(l:bases/super_star_base)super star base$() items."
+        }
+    ]
+}

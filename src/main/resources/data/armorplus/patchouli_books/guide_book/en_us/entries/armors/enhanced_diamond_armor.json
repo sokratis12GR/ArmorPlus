@@ -1,0 +1,28 @@
+{
+    "name": "Enhanced: Diamond Armor",
+    "icon": "armorplus:diamond_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Enhanced: Diamond Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:diamond_boots',Count:1},{id:'armorplus:diamond_leggings',Count:1},{id:'armorplus:diamond_chestplate',Count:1},{id:'armorplus:diamond_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor is an enhanced version of the vanilla diamond armor."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/diamond_helmet",
+            "recipe2": "armorplus:crafting/shaped/enhanced/diamond_chestplate"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/diamond_leggings",
+            "recipe2": "armorplus:crafting/shaped/enhanced/diamond_boots"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Ore Lava Crystal",
+    "icon": "armorplus:ore_lava_crystal",
+    "category": "armorplus:block_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:ore_lava_crystal,armorplus:ore_lava_crystal_stone,armorplus:ore_lava_crystal_obsidian",
+            "link_recipe": true,
+            "text": "These ores drop $(l:materials/lava_crystal)Lava Crystals$() when mined.$(br)Their variants can be found at.$(br)Stone: $(li)Y=[12-20]$()$(br)Obsidian: $(li)Y=[6-10]$()$(br)Compressed: $(li)Y=[0-4]$()"
+        }
+    ]
+}

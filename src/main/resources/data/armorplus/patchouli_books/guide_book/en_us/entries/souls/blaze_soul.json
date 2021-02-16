@@ -1,0 +1,16 @@
+{
+    "name": "Soul of the Blaze",
+    "icon": "armorplus:soul_blaze",
+    "category": "armorplus:soul_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:soul_blaze",
+            "title": "Soul: Blaze",
+            "link_recipe": true,
+            "text": "This soul can only be obtained by defeating a $(l)Blaze$() with a weapon enchanted with the $(l)$(l:enchants/soul_stealer)Soul Stealer$() enchantment."
+        }
+    ]
+}

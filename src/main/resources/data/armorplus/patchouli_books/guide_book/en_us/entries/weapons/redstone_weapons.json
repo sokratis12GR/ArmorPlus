@@ -1,0 +1,30 @@
+{
+    "name": "Redstone Weapons",
+    "icon": "armorplus:redstone_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:redstone_sword,armorplus:redstone_battle_axe,armorplus:redstone_bow,armorplus:redstone_mace",
+            "title": "Redstone Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Mining Fatigue II$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_sword",
+            "recipe2": "armorplus:crafting/shaped/redstone/redstone_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_bow",
+            "recipe2": "armorplus:crafting/shaped/redstone/redstone_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_mace"
+        }
+    ]
+}

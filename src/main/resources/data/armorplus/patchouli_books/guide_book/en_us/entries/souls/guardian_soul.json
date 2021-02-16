@@ -1,0 +1,16 @@
+{
+    "name": "Soul of the Guardian",
+    "icon": "armorplus:soul_guardian",
+    "category": "armorplus:soul_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:soul_guardian",
+            "title": "Soul: Guardian",
+            "link_recipe": true,
+            "text": "This soul can only be obtained by defeating a $(l)Guardian$() with a weapon enchanted with the $(l)$(l:enchants/soul_stealer)Soul Stealer$() enchantment."
+        }
+    ]
+}

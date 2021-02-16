@@ -1,0 +1,26 @@
+{
+    "name": "Coal Armor",
+    "icon": "armorplus:coal_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Coal Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:coal_boots',Count:1},{id:'armorplus:coal_leggings',Count:1},{id:'armorplus:coal_chestplate',Count:1},{id:'armorplus:coal_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Night Vision$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_helmet",
+            "recipe2": "armorplus:crafting/shaped/coal/coal_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_leggings",
+            "recipe2": "armorplus:crafting/shaped/coal/coal_boots"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Coal Tools",
+    "icon": "armorplus:coal_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:coal_pickaxe",
+            "title": "Coal Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/coal/coal_pickaxe"
+        }
+    ]
+}

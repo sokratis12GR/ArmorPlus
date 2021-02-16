@@ -1,0 +1,26 @@
+{
+    "name": "Emerald Armor",
+    "icon": "armorplus:emerald_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Emerald Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:emerald_boots',Count:1},{id:'armorplus:emerald_leggings',Count:1},{id:'armorplus:emerald_chestplate',Count:1},{id:'armorplus:emerald_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Speed II$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_helmet",
+            "recipe2": "armorplus:crafting/shaped/emerald/emerald_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_leggings",
+            "recipe2": "armorplus:crafting/shaped/emerald/emerald_boots"
+        }
+    ]
+}

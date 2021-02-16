@@ -1,0 +1,40 @@
+{
+    "name": "Guardian Bases",
+    "icon": "armorplus:guardian_chestplate_base",
+    "category": "armorplus:base_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:guardian_helmet_base,armorplus:guardian_chestplate_base,armorplus:guardian_leggings_base,armorplus:guardian_boots_base,armorplus:guardian_sword_base,armorplus:guardian_battle_axe_base,armorplus:guardian_bow_base,armorplus:guardian_pickaxe_base",
+            "title": "Info",
+            "link_recipe": true,
+            "text": "These are the base items of the $(l:armors/guardian_armor)guardian armor$() pieces, in order to obtain the actual armor piece you must combine them with a $(l:souls/elder_guardian_soul)Soul of the Elder Guardian$() in the $(l)Smithing Table$()."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/guardian/guardian_helmet_base",
+            "recipe2": "armorplus:crafting/shaped/guardian/guardian_chestplate_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/guardian/guardian_leggings_base",
+            "recipe2": "armorplus:crafting/shaped/guardian/guardian_boots_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/guardian/guardian_sword_base",
+            "recipe2": "armorplus:crafting/shaped/guardian/guardian_battle_axe_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/guardian/guardian_bow_base",
+            "recipe2": "armorplus:crafting/shaped/guardian/guardian_pickaxe_base"
+        }
+    ]
+}

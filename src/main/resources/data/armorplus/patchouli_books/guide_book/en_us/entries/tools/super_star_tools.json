@@ -1,0 +1,21 @@
+{
+    "name": "Super Star Tools",
+    "icon": "armorplus:super_star_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:super_star_pickaxe",
+            "title": "Super Star Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/super_star_pickaxe_base"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Wooden Rod",
+    "icon": "armorplus:wooden_rod",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shapeless/wooden_rod"
+        }
+    ]
+}

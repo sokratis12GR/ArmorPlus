@@ -1,0 +1,31 @@
+{
+    "name": "Super Star Weapons",
+    "icon": "armorplus:super_star_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:super_star_sword,armorplus:super_star_battle_axe,armorplus:super_star_bow,armorplus:super_star_mace",
+            "title": "Super Star Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Wither II & Glowing I$() upon hitting an entity."
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/super_star_sword_base",
+            "recipe2": "armorplus:smithing/super_star_battle_axe_base"
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/super_star_bow_base"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/super_star/super_star_mace"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "name": "Soul of the Elder Guardian",
+    "icon": "armorplus:soul_elder_guardian",
+    "category": "armorplus:soul_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:soul_elder_guardian",
+            "title": "Soul: Elder Guardian",
+            "link_recipe": true,
+            "text": "This soul can only be obtained by defeating the $(l)Elder Guardian$() with a weapon enchanted with the $(l)$(l:enchants/soul_stealer)Soul Stealer$() enchantment."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/soul/soul_elder_guardian"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Obsidian Weapons",
+    "icon": "armorplus:obsidian_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:obsidian_sword,armorplus:obsidian_battle_axe,armorplus:obsidian_bow,armorplus:obsidian_mace",
+            "title": "Obsidian Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Weakness III$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/obsidian/obsidian_sword",
+            "recipe2": "armorplus:crafting/shaped/obsidian/obsidian_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/obsidian/obsidian_bow",
+            "recipe2": "armorplus:crafting/shaped/obsidian/obsidian_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/obsidian/obsidian_mace"
+        }
+    ]
+}

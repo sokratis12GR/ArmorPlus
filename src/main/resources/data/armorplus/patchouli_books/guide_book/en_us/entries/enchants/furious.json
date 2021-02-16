@@ -1,0 +1,20 @@
+{
+    "name": "Furious",
+    "icon": "minecraft:enchanted_book",
+    "category": "armorplus:enchant_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "minecraft:enchanted_book",
+            "title": "Furious",
+            "link_recipe": true,
+            "text": "$(l)Furious$() is a $(l)treasure$() enchantment that is applicable on armor pieces. $(br)Depending on the level of the enchantment, when the user is damaged it will provide the user with different effects."
+        },
+        {
+            "type": "text",
+            "text": "I:$(li)Strength I - 23 seconds.$()$(br)II:$(li)Strength I - 23 seconds.$()$(li)Speed I - 23 seconds.$()$(br)III:$(li)Strength II - 23 seconds.$()$(li)Speed I - 46 seconds.$()$(br)IV:$(li)Strength III - 30 seconds.$()$(li)Speed II - 60 seconds.$()"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Guardian Scale",
+    "icon": "armorplus:guardian_scale",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:guardian_scale",
+            "link_recipe": true,
+            "text": "These scales can be obtained by defeating $(l)Guardians & Elder Guardians$().$(br)It is used to craft the $(l:bases/guardian_base)guardian base$() items."
+        }
+    ]
+}

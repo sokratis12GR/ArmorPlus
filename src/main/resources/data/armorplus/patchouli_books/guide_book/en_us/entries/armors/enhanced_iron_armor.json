@@ -1,0 +1,28 @@
+{
+    "name": "Enhanced: Iron Armor",
+    "icon": "armorplus:iron_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Enhanced: Iron Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:iron_boots',Count:1},{id:'armorplus:iron_leggings',Count:1},{id:'armorplus:iron_chestplate',Count:1},{id:'armorplus:iron_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor is an enhanced version of the vanilla iron armor."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/iron_helmet",
+            "recipe2": "armorplus:crafting/shaped/enhanced/iron_chestplate"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/iron_leggings",
+            "recipe2": "armorplus:crafting/shaped/enhanced/iron_boots"
+        }
+    ]
+}

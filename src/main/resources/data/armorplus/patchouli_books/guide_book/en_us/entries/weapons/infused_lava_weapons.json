@@ -1,0 +1,30 @@
+{
+    "name": "Infused Lava Weapons",
+    "icon": "armorplus:infused_lava_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:infused_lava_sword,armorplus:infused_lava_battle_axe,armorplus:infused_lava_bow,armorplus:infused_lava_mace",
+            "title": "Infused Lava Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Ignite for a few seconds$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/infused_lava/infused_lava_sword",
+            "recipe2": "armorplus:crafting/shaped/infused_lava/infused_lava_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/infused_lava/infused_lava_bow",
+            "recipe2": "armorplus:crafting/shaped/infused_lava/infused_lava_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/infused_lava/infused_lava_mace"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "name": "Ender Dragon Bases",
+    "icon": "armorplus:ender_dragon_chestplate_base",
+    "category": "armorplus:base_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:ender_dragon_helmet_base,armorplus:ender_dragon_chestplate_base,armorplus:ender_dragon_leggings_base,armorplus:ender_dragon_boots_base,armorplus:ender_dragon_sword_base,armorplus:ender_dragon_battle_axe_base,armorplus:ender_dragon_bow_base,armorplus:ender_dragon_pickaxe_base",
+            "title": "Info",
+            "link_recipe": true,
+            "text": "These are the base items of the $(l:armors/ender_dragon_armor)ender dragon armor$() pieces, in order to obtain the actual armor piece you must combine them with a $(l:souls/ender_dragon_soul)Soul of the Ender Dragon$() in the $(l)Smithing Table$()."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_helmet_base",
+            "recipe2": "armorplus:crafting/shaped/ender_dragon/ender_dragon_chestplate_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_leggings_base",
+            "recipe2": "armorplus:crafting/shaped/ender_dragon/ender_dragon_boots_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_sword_base",
+            "recipe2": "armorplus:crafting/shaped/ender_dragon/ender_dragon_battle_axe_base"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_bow_base",
+            "recipe2": "armorplus:crafting/shaped/ender_dragon/ender_dragon_pickaxe_base"
+        }
+    ]
+}

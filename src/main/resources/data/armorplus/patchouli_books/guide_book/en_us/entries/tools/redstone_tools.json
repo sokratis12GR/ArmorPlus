@@ -1,0 +1,20 @@
+{
+    "name": "Redstone Tools",
+    "icon": "armorplus:redstone_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:redstone_pickaxe",
+            "title": "Redstone Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/redstone/redstone_pickaxe"
+        }
+    ]
+}

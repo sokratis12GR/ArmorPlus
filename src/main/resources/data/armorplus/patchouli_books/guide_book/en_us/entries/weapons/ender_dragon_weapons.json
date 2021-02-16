@@ -1,0 +1,31 @@
+{
+    "name": "Ender Dragon Weapons",
+    "icon": "armorplus:ender_dragon_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:ender_dragon_sword,armorplus:ender_dragon_battle_axe,armorplus:ender_dragon_bow,armorplus:ender_dragon_mace",
+            "title": "Ender Dragon Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Wither IV & Slowness II$() upon hitting an entity."
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/ender_dragon_sword_base",
+            "recipe2": "armorplus:smithing/ender_dragon_battle_axe_base"
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/ender_dragon_bow_base"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_mace"
+        }
+    ]
+}

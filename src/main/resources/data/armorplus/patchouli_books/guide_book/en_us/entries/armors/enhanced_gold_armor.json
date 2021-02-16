@@ -1,0 +1,28 @@
+{
+    "name": "Enhanced: Golden Armor",
+    "icon": "armorplus:golden_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Enhanced: Golden Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:golden_boots',Count:1},{id:'armorplus:golden_leggings',Count:1},{id:'armorplus:golden_chestplate',Count:1},{id:'armorplus:golden_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor is an enhanced version of the vanilla golden armor."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/golden_helmet",
+            "recipe2": "armorplus:crafting/shaped/enhanced/golden_chestplate"
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/enhanced/golden_leggings",
+            "recipe2": "armorplus:crafting/shaped/enhanced/golden_boots"
+        }
+    ]
+}

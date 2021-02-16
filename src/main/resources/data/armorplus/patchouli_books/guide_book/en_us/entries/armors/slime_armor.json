@@ -1,0 +1,26 @@
+{
+    "name": "Slime Armor",
+    "icon": "armorplus:slime_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Slime Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:slime_boots',Count:1},{id:'armorplus:slime_leggings',Count:1},{id:'armorplus:slime_chestplate',Count:1},{id:'armorplus:slime_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Jump Boost IV & Slow Falling II$() upon wearing the full set."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/slime/slime_helmet",
+            "recipe2": "armorplus:crafting/shaped/slime/slime_chestplate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/slime/slime_leggings",
+            "recipe2": "armorplus:crafting/shaped/slime/slime_boots"
+        }
+    ]
+}

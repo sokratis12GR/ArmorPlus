@@ -1,0 +1,30 @@
+{
+    "name": "Lapis Weapons",
+    "icon": "armorplus:lapis_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:lapis_sword,armorplus:lapis_battle_axe,armorplus:lapis_bow,armorplus:lapis_mace",
+            "title": "Lapis Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Nausea$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/lapis/lapis_sword",
+            "recipe2": "armorplus:crafting/shaped/lapis/lapis_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/lapis/lapis_bow",
+            "recipe2": "armorplus:crafting/shaped/lapis/lapis_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/lapis/lapis_mace"
+        }
+    ]
+}

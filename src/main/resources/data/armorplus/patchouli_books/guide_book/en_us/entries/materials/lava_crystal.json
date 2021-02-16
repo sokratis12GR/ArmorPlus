@@ -1,0 +1,15 @@
+{
+    "name": "Lava Crystal",
+    "icon": "armorplus:lava_crystal",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:lava_crystal",
+            "link_recipe": true,
+            "text": "These crystals are obtained by mining $(l:blocks/ore_lava_crystal)Ore Lava Crystal$() blocks.$(br)These crystals can be infused by throwing them into lava and they will turn into $(l:materials/infused_lava_crystal)Infused Lava Crystals$()."
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "name": "Ender Dragon Tools",
+    "icon": "armorplus:ender_dragon_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:ender_dragon_pickaxe",
+            "title": "Ender Dragon Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/ender_dragon_pickaxe_base"
+        }
+    ]
+}

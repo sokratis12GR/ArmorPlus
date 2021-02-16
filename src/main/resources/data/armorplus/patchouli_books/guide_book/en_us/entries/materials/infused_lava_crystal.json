@@ -1,0 +1,15 @@
+{
+    "name": "Infused Lava Crystal",
+    "icon": "armorplus:infused_lava_crystal",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:infused_lava_crystal",
+            "link_recipe": true,
+            "text": "The infused variant of the $(l:materials/lava_crystal)Lava Crystal$() is obtained by throwing the regular variants into lava.$(br)The crystals are used to craft the $(l:armors/infused_lava_armor)infused lava armor$(), $(l:tools/infused_lava_tools)infused lava tools$() as well as the $(l:weapons/infused_lava_weapons)infused lava weapons$()."
+        }
+    ]
+}

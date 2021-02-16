@@ -1,0 +1,21 @@
+{
+    "name": "Soul of the Ender Dragon",
+    "icon": "armorplus:soul_ender_dragon",
+    "category": "armorplus:soul_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:soul_ender_dragon",
+            "title": "Soul: Ender Dragon",
+            "link_recipe": true,
+            "text": "This soul can only be obtained by defeating the $(l)Ender Dragon$() with a weapon enchanted with the $(l)$(l:enchants/soul_stealer)Soul Stealer$() enchantment."
+        },
+        {
+            "type": "crafting",
+            "title": "Crafting Recipes",
+            "recipe": "armorplus:crafting/shaped/soul/soul_ender_dragon"
+        }
+    ]
+}

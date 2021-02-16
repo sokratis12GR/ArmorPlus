@@ -1,0 +1,28 @@
+{
+    "name": "Super Star Armor",
+    "icon": "armorplus:super_star_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Super Star Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:super_star_boots',Count:1},{id:'armorplus:super_star_leggings',Count:1},{id:'armorplus:super_star_chestplate',Count:1},{id:'armorplus:super_star_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Regeneration III & Wither Immunity$() upon wearing the full set."
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/super_star_helmet_base",
+            "recipe2": "armorplus:smithing/super_star_chestplate_base"
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/super_star_leggings_base",
+            "recipe2": "armorplus:smithing/super_star_boots_base"
+        }
+    ]
+}

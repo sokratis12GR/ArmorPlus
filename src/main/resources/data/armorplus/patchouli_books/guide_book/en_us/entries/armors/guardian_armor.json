@@ -1,0 +1,28 @@
+{
+    "name": "Guardian Armor",
+    "icon": "armorplus:guardian_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Guardian Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:guardian_boots',Count:1},{id:'armorplus:guardian_leggings',Count:1},{id:'armorplus:guardian_chestplate',Count:1},{id:'armorplus:guardian_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Water Breathing$() upon wearing the full set."
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/guardian_helmet_base",
+            "recipe2": "armorplus:smithing/guardian_chestplate_base"
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/guardian_leggings_base",
+            "recipe2": "armorplus:smithing/guardian_boots_base"
+        }
+    ]
+}

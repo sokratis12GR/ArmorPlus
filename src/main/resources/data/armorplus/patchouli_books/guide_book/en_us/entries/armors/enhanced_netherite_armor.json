@@ -1,0 +1,28 @@
+{
+    "name": "Enhanced: Netherite Armor",
+    "icon": "armorplus:netherite_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Enhanced: Diamond Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:netherite_boots',Count:1},{id:'armorplus:netherite_leggings',Count:1},{id:'armorplus:netherite_chestplate',Count:1},{id:'armorplus:netherite_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor is an enhanced version of the vanilla netherite armor."
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/netherite_helmet",
+            "recipe2": "armorplus:smithing/netherite_chestplate"
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/netherite_leggings",
+            "recipe2": "armorplus:smithing/netherite_boots"
+        }
+    ]
+}

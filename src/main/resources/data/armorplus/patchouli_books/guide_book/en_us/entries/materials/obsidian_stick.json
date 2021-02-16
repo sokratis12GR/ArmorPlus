@@ -1,0 +1,13 @@
+{
+    "name": "Obsidian Stick",
+    "icon": "armorplus:obsidian_stick",
+    "category": "armorplus:material_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shapeless/obsidian_stick"
+        }
+    ]
+}

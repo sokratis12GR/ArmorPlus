@@ -1,0 +1,30 @@
+{
+    "name": "Emerald Weapons",
+    "icon": "armorplus:emerald_battle_axe",
+    "category": "armorplus:weapon_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:emerald_sword,armorplus:emerald_battle_axe,armorplus:emerald_bow,armorplus:emerald_mace",
+            "title": "Emerald Weapons",
+            "link_recipe": true,
+            "text": "These weapons (excluding the bow & mace) will inflict $(l)Slowness$() upon hitting an entity."
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_sword",
+            "recipe2": "armorplus:crafting/shaped/emerald/emerald_battle_axe"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_bow",
+            "recipe2": "armorplus:crafting/shaped/emerald/emerald_bow_alt"
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_mace"
+        }
+    ]
+}

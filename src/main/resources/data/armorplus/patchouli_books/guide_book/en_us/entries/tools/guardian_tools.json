@@ -1,0 +1,21 @@
+{
+    "name": "Guardian Tools",
+    "icon": "armorplus:guardian_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:guardian_pickaxe",
+            "title": "Guardian Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "smithing",
+            "title": "Smithing Recipes",
+            "recipe": "armorplus:smithing/guardian_pickaxe_base"
+        }
+    ]
+}

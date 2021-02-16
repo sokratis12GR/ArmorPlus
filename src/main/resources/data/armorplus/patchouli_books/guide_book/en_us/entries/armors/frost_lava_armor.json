@@ -1,0 +1,16 @@
+{
+    "name": "Frost-Lava Armor",
+    "icon": "armorplus:frost_lava_chestplate",
+    "category": "armorplus:armor_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "entity",
+            "name": "Frost-Lava Armor",
+            "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:frost_lava_boots',Count:1},{id:'armorplus:frost_lava_leggings',Count:1},{id:'armorplus:frost_lava_chestplate',Count:1},{id:'armorplus:frost_lava_helmet',Count:1}]}",
+            "rotate": true,
+            "text": "The armor provides the wearer with $(l)Natural Immunity$() upon wearing the full set."
+        }
+    ]
+}

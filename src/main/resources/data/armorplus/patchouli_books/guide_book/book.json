@@ -1,0 +1,8 @@
+{
+    "name": "Adventurer's Guide",
+    "landing_text": "The guidebook for everything ArmorPlus",
+    "version": 1,
+    "show_progress": true,
+    "book_texture": "patchouli:textures/gui/book_blue.png",
+    "model": "armorplus:guide_book"
+}

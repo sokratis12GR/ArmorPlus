@@ -1,0 +1,20 @@
+{
+    "name": "Emerald Tools",
+    "icon": "armorplus:emerald_pickaxe",
+    "category": "armorplus:tool_category",
+    "secret": false,
+    "read_by_default": false,
+    "pages": [
+        {
+            "type": "spotlight",
+            "item": "armorplus:emerald_pickaxe",
+            "title": "Emerald Tools",
+            "link_recipe": true,
+            "text": ""
+        },
+        {
+            "type": "crafting",
+            "recipe": "armorplus:crafting/shaped/emerald/emerald_pickaxe"
+        }
+    ]
+}
