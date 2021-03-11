@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/slab_top",
+    "textures": {
+        "bottom": "armorplus:blocks/blue_stone_brick",
+        "top": "armorplus:blocks/blue_stone_brick",
+        "side": "armorplus:blocks/blue_stone_brick"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "armorplus:block/purple_stone_brick_slab"
+        },
+        "type=double": {
+            "model": "armorplus:block/purple_stone_brick"
+        },
+        "type=top": {
+            "model": "armorplus:block/purple_stone_brick_slab_top"
+        }
+    }
+}

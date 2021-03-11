@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+        "bottom": "armorplus:blocks/orange_stone_brick",
+        "top": "armorplus:blocks/orange_stone_brick",
+        "side": "armorplus:blocks/orange_stone_brick"
+    }
+}

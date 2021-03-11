@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+        "bottom": "armorplus:blocks/yellow_castle_block",
+        "top": "armorplus:blocks/yellow_castle_block",
+        "side": "armorplus:blocks/yellow_castle_block"
+    }
+}
