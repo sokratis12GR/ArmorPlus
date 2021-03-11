@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shaped/slab/yellow_stone_brick_slab_mid"
+    ]
+  },
+  "criteria": {
+    "has_req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:yellow_stone_brick"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:crafting/shaped/slab/yellow_stone_brick_slab_mid"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,14 +1,14 @@
 {
-  "replace": false,
-  "values": [
-    "armorplus:coal_arrow",
-    "armorplus:lapis_arrow",
-    "armorplus:redstone_arrow",
-    "armorplus:emerald_arrow",
-    "armorplus:obsidian_arrow",
-    "armorplus:infused_lava_arrow",
-    "armorplus:guardian_arrow",
-    "armorplus:super_star_arrow",
-    "armorplus:ender_dragon_arrow"
-  ]
+    "replace": false,
+    "values": [
+        "armorplus:coal_arrow",
+        "armorplus:lapis_arrow",
+        "armorplus:redstone_arrow",
+        "armorplus:emerald_arrow",
+        "armorplus:obsidian_arrow",
+        "armorplus:infused_lava_arrow",
+        "armorplus:guardian_arrow",
+        "armorplus:super_star_arrow",
+        "armorplus:ender_dragon_arrow"
+    ]
 }

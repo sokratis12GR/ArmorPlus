@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:stone_brick_stairs",
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "armorplus:blue_stone_brick"
+    }
+  },
+  "result": {
+    "item": "armorplus:blue_stone_brick_stairs",
+    "count": 4
+  }
+}

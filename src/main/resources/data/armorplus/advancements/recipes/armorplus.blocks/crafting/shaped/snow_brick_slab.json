@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shaped/snow_brick_slab"
+    ]
+  },
+  "criteria": {
+    "has_req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "armorplus:snow_brick"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "armorplus:crafting/shaped/snow_brick_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ]
+}
