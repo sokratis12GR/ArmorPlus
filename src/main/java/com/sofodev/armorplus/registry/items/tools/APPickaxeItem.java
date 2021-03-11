@@ -14,7 +14,7 @@ public class APPickaxeItem extends PickaxeItem {
     private final IAPTool mat;
 
     public APPickaxeItem(IAPTool mat) {
-        super(mat.get(), (int) (mat.get().getAttackDamage() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed(), new Item.Properties().group(ArmorPlus.AP_WEAPON_GROUP));
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed(), new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
     }
 

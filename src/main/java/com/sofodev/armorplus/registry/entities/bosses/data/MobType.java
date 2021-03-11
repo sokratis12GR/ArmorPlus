@@ -5,33 +5,46 @@ import net.minecraft.entity.EntityClassification;
 import static net.minecraft.entity.EntityClassification.MONSTER;
 
 public class MobType {
-    public static final MobType SKELETAL_KING = new MobType("skeletal_king", MONSTER).setImmuneToFire(true);
-    public static final MobType WITHERLING = new MobType("witherling", MONSTER).setImmuneToFire(true);
+    public static final MobType SKELETAL_KING = new MobType("skeletal_king", MONSTER, 2f, 2f, true);
+    public static final MobType WITHERLING = new MobType("witherling", MONSTER, 2f, 2f, true);
 
     public static final MobType GUARDIAN_OVERLORD = new MobType("guardian_overlord", MONSTER);
-    public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER, 7, 7);
+    public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER, 2f, 2f, true);
 
     private String name;
     private EntityClassification classification;
-    private boolean hasSize;
     private float width;
     private float height;
     private boolean isImmuneToFire;
+    private int trackingRange;
 
     MobType(String name, EntityClassification classification) {
-        this(name, classification, true, 1, 1);
+        this(name, classification, 10);
     }
 
     MobType(String name, EntityClassification classification, float width, float height) {
-        this(name, classification, true, width, height);
+        this(name, classification, width, height, 10);
     }
 
-    MobType(String name, EntityClassification classification, boolean hasSize, float width, float height) {
+    MobType(String name, EntityClassification classification, int trackingRange) {
+        this(name, classification, 1.0f, 1.0f, trackingRange);
+    }
+
+    MobType(String name, EntityClassification classification, float width, float height, int trackingRange) {
+        this(name, classification, width, height, trackingRange, false);
+    }
+
+    MobType(String name, EntityClassification classification, float width, float height, boolean isImmuneToFire) {
+        this(name, classification, width, height, 10, isImmuneToFire);
+    }
+
+    MobType(String name, EntityClassification classification, float width, float height, int trackingRange, boolean isImmuneToFire) {
         this.name = name;
         this.classification = classification;
-        this.hasSize = hasSize;
         this.width = width;
         this.height = height;
+        this.trackingRange = trackingRange;
+        this.isImmuneToFire = isImmuneToFire;
     }
 
     public String getName() {
@@ -40,10 +53,6 @@ public class MobType {
 
     public EntityClassification getClassification() {
         return classification;
-    }
-
-    public boolean hasSize() {
-        return hasSize;
     }
 
     public float getWidth() {
@@ -58,8 +67,7 @@ public class MobType {
         return isImmuneToFire;
     }
 
-    public MobType setImmuneToFire(boolean immuneToFire) {
-        isImmuneToFire = immuneToFire;
-        return this;
+    public int getTrackingRange() {
+        return trackingRange;
     }
 }

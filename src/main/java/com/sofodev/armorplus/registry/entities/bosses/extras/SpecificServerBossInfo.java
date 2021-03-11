@@ -14,8 +14,8 @@ public class SpecificServerBossInfo extends ServerBossInfo {
 
     public SpecificServerBossInfo(ITextComponent nameIn, BossInfoDungeonType type) {
         super(nameIn, type.getColor(), type.getOverlay());
-        this.setDarkenSky(type.isDarkenSky());
-        this.setPlayEndBossMusic(type.canPlayEndBossMusic());
+        this.setDarkenScreen(type.isDarkenSky());
+        this.setPlayBossMusic(type.canPlayEndBossMusic());
     }
 
     public enum BossInfoDungeonType {

@@ -17,14 +17,14 @@ public class APBookItem extends BookItem {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getHeldItem(hand);
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        ItemStack stack = player.getItemInHand(hand);
         this.openBook(player, stack, hand);
-        player.addStat(Stats.ITEM_USED.get(this));
-        return ActionResult.func_233538_a_(stack, world.isRemote());
+        player.awardStat(Stats.ITEM_USED.get(this));
+        return ActionResult.sidedSuccess(stack, world.isClientSide());
     }
 
     public void openBook(PlayerEntity player, ItemStack stack, Hand hand) {
-        Minecraft.getInstance().displayGuiScreen(new BookScreen());
+        Minecraft.getInstance().setScreen(new BookScreen());
     }
 }

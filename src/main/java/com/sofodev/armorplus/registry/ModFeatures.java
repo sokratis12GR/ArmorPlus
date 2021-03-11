@@ -14,6 +14,7 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModFeatures {
+
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
 
     //Features

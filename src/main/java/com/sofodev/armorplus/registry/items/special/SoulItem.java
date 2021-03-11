@@ -23,27 +23,27 @@ public class SoulItem extends Item {
     private final String entity;
 
     public SoulItem(String entity) {
-        super(new Properties().group(AP_ITEM_GROUP).rarity(Rarity.EPIC).isImmuneToFire().maxStackSize(16));
+        super(new Properties().tab(AP_ITEM_GROUP).rarity(Rarity.EPIC).fireResistant().stacksTo(16));
         this.entity = entity;
         this.isBoss = true;
     }
 
     public SoulItem(boolean isBoss, String entity) {
-        super(new Properties().group(AP_ITEM_GROUP).rarity(Rarity.RARE).isImmuneToFire().maxStackSize(32));
+        super(new Properties().tab(AP_ITEM_GROUP).rarity(Rarity.RARE).fireResistant().stacksTo(32));
         this.entity = entity;
         this.isBoss = isBoss;
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
         if (value != null) {
-            tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.soul", value.getName()));
+            tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.soul", value.toString()));
             if (isBoss) {
                 tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.boss_soul"));
             }
         }
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class SoulItem extends Item {
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return isBoss;
     }
 }

@@ -36,26 +36,26 @@ public abstract class APArrowEntity extends AbstractArrowEntity {
         super(type, x, y, z, world);
         this.type = type;
         this.setProp(property);
-        this.setPosition(x, y, z);
+        this.setPos(x, y, z);
     }
 
     public APArrowEntity(EntityType<? extends APArrowEntity> type, LivingEntity shooter, World world, ArrowProperty property) {
         super(type, shooter, world);
         this.type = type;
         this.setProp(property);
-        this.setShooter(shooter);
+        this.setOwner(shooter);
         if (shooter instanceof PlayerEntity) {
-            this.pickupStatus = AbstractArrowEntity.PickupStatus.ALLOWED;
+            this.pickup = AbstractArrowEntity.PickupStatus.ALLOWED;
         }
     }
 
     public APArrowEntity(EntityType<? extends APArrowEntity> type, FMLPlayMessages.SpawnEntity packet, World world, ArrowProperty property) {
         this(type, packet.getPosX(), packet.getPosY(), packet.getPosZ(), world, property);
         this.type = type;
-        this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
-        this.setUniqueId(packet.getUuid());
-        this.setEntityId(packet.getEntityId());
-        this.setVelocity(packet.getVelX(), packet.getVelY(), packet.getVelZ());
+        this.setRot(packet.getHeadYaw(), packet.getPitch());
+        this.setUUID(packet.getUuid());
+        this.setId(packet.getEntityId());
+        this.setDeltaMovement(packet.getVelX(), packet.getVelY(), packet.getVelZ());
     }
 
     public APArrowEntity setProp(ArrowProperty prop) {
@@ -68,13 +68,13 @@ public abstract class APArrowEntity extends AbstractArrowEntity {
     }
 
     @Override
-    public void setDamage(double damageIn) {
-        super.setDamage(this.prop.getDmg());
+    public void setBaseDamage(double damageIn) {
+        super.setBaseDamage(this.prop.getDmg());
     }
 
     @Override
-    public double getDamage() {
-        return super.getDamage();
+    public double getBaseDamage() {
+        return super.getBaseDamage();
     }
 
     @Override
@@ -93,7 +93,7 @@ public abstract class APArrowEntity extends AbstractArrowEntity {
     }
 
     @Override
-    protected ItemStack getArrowStack() {
+    protected ItemStack getPickupItem() {
         ItemStack stack = new ItemStack(ForgeRegistries.ITEMS.getValue(setRL(prop.getName() + "_arrow")));
         return stack.isEmpty() ? new ItemStack(ARROW) : stack;
     }
@@ -104,14 +104,14 @@ public abstract class APArrowEntity extends AbstractArrowEntity {
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
-    protected void arrowHit(LivingEntity target) {
-        super.arrowHit(target);
-        if (!world.isRemote && target != getEntity()) {
+    protected void doPostHurtEffects(LivingEntity target) {
+        super.doPostHurtEffects(target);
+        if (!level.isClientSide && target != getEntity()) {
             this.prop.hit(target);
         }
     }

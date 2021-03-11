@@ -18,7 +18,7 @@ public class APOreFeature extends Feature<APOreFeatureConfig> {
         super(codec);
     }
 
-    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, APOreFeatureConfig config) {
+    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, APOreFeatureConfig config) {
         float randomNextPI = rand.nextFloat() * (float) Math.PI;
         float size = (float) config.size / 8.0F;
         int veinSize = MathHelper.ceil(((float) config.size / 16.0F * 2.0F + 1.0F) / 2.0F);
@@ -37,7 +37,7 @@ public class APOreFeature extends Feature<APOreFeatureConfig> {
         for (int nextX = posX; nextX <= posX + maxSize; ++nextX) {
             for (int nextZ = posZ; nextZ <= posZ + maxSize; ++nextZ) {
                 if (posY <= reader.getHeight(Heightmap.Type.OCEAN_FLOOR_WG, nextX, nextZ)) {
-                    return this.func_207803_a(reader, rand, config, startX, endX, startZ, endZ, startY, endY, posX, posY, posZ, maxSize, minSize);
+                    return this.place(reader, rand, config, startX, endX, startZ, endZ, startY, endY, posX, posY, posZ, maxSize, minSize);
                 }
             }
         }
@@ -45,7 +45,7 @@ public class APOreFeature extends Feature<APOreFeatureConfig> {
         return false;
     }
 
-    protected boolean func_207803_a(IWorld worldIn, Random random, APOreFeatureConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int posX, int posY, int posZ, int maxSize, int minSize) {
+    protected boolean place(IWorld worldIn, Random random, APOreFeatureConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int posX, int posY, int posZ, int maxSize, int minSize) {
         int i = 0;
         BitSet bitset = new BitSet(maxSize * minSize * maxSize);
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
@@ -110,9 +110,9 @@ public class APOreFeature extends Feature<APOreFeatureConfig> {
                                         int l2 = i2 - posX + (j2 - posY) * maxSize + (k2 - posZ) * maxSize * minSize;
                                         if (!bitset.get(l2)) {
                                             bitset.set(l2);
-                                            blockpos$mutable.setPos(i2, j2, k2);
+                                            blockpos$mutable.set(i2, j2, k2);
                                             if (config.target.test(worldIn.getBlockState(blockpos$mutable), random)) {
-                                                worldIn.setBlockState(blockpos$mutable, config.state, 2);
+                                                worldIn.setBlock(blockpos$mutable, config.state, 2);
                                                 ++i;
                                             }
                                         }

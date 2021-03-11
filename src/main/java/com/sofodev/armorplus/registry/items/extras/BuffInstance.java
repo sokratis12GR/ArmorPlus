@@ -101,11 +101,11 @@ public class BuffInstance {
         if (buff.isEffect()) {
             for (EffectInstance pot : this.getPotion().getEffects()) {
                 if (!instant) {
-                    if (!player.getActivePotionEffects().contains(pot)) {
-                        player.addPotionEffect(pot);
+                    if (!player.getActiveEffects().contains(pot)) {
+                        player.addEffect(pot);
                     }
                 } else {
-                    player.addPotionEffect(pot);
+                    player.addEffect(pot);
                 }
             }
         }
@@ -114,7 +114,7 @@ public class BuffInstance {
     public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         buff.hitEntity(stack, target, attacker);
         if (buff.isEffect()) {
-            this.getPotion().getEffects().forEach(target::addPotionEffect);
+            this.getPotion().getEffects().forEach(target::addEffect);
         }
     }
 

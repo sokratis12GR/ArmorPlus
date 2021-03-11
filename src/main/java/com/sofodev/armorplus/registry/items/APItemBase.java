@@ -18,14 +18,14 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 public class APItemBase extends APItem {
 
     public APItemBase() {
-        super(new Item.Properties().rarity(Rarity.UNCOMMON).maxStackSize(8));
+        super(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(8));
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(translate(Color.fromHex("#252874"), "tooltip.armorplus.base_soulless"));
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(translate(Color.parseColor("#252874"), "tooltip.armorplus.base_soulless"));
         ResourceLocation rl = this.getRegistryName();
         if (rl != null && rl.getPath().contains("slayer")) addExperimentalItemInformation(tooltip);
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }

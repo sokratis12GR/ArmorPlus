@@ -15,7 +15,7 @@ public class DemonicDragonRenderer extends GeoEntityRenderer<DemonicDragonEntity
 
     @Override
     public void render(DemonicDragonEntity entity, float entityYaw, float partialTicks, MatrixStack stack, IRenderTypeBuffer bufferIn, int packedLightIn) {
-        stack.scale(7, 7, 7);
+        stack.scale(2, 2, 2);
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
     }
 }

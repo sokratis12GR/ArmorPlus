@@ -24,14 +24,14 @@ public class ToolTipUtils {
      * @param formatting the formatting of the tooltip, its color and style.
      */
     public static void showInfo(List<ITextComponent> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
-        tooltip.add(translate(GRAY, "tooltip.armorplus.shift.showinfo", translate(formatting, keyBinding.getTranslationKey())));
+        tooltip.add(translate(GRAY, "tooltip.armorplus.shift.showinfo", translate(formatting, keyBinding.getName())));
     }
 
     /**
      * Adds a basic damage information about arrows
      */
-    public static void addArrowInformation(List<ITextComponent> tooltip, ITextComponent effect, double damage, TextFormatting formatting) {
-        KeyBinding keyBindSneak = Minecraft.getInstance().gameSettings.keyBindSneak;
+    public static void appendArrowHoverText(List<ITextComponent> tooltip, ITextComponent effect, double damage, TextFormatting formatting) {
+        KeyBinding keyBindSneak = Minecraft.getInstance().options.keyShift;
         if (Screen.hasShiftDown()) {
             tooltip.add(translate("tooltip.armorplus.arrow.ability_desc", effect));
             tooltip.add(translate("tooltip.armorplus.arrow.ability", damage));
@@ -63,7 +63,7 @@ public class ToolTipUtils {
     }
 
     public static IFormattableTextComponent translate(Color color, String key, Object... args) {
-        return new TranslationTextComponent(key, args).setStyle(EMPTY.setColor(color));
+        return new TranslationTextComponent(key, args).setStyle(EMPTY.withColor(color));
     }
 
 
@@ -72,7 +72,7 @@ public class ToolTipUtils {
     }
 
     public static IFormattableTextComponent translate(TextFormatting formatting, String key, Object... args) {
-        return new TranslationTextComponent(key, args).mergeStyle(formatting);
+        return new TranslationTextComponent(key, args).withStyle(formatting);
     }
 
     public static TextComponent translate(String key, Object... args) {

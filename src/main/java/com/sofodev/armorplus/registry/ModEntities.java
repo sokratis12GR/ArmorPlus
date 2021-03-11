@@ -48,11 +48,12 @@ public class ModEntities {
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
     //Bosses-Minions-Projectiles
     public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = register("skeletal_king",
-            build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
+            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
     public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
-            build(WitherlingEntity::new, MobType.WITHERLING));
+            () -> build(WitherlingEntity::new, MobType.WITHERLING));
     public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
-            build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
+            () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
+
     /////////////////////
     // UTILITY METHODS //
     /////////////////////
@@ -61,36 +62,30 @@ public class ModEntities {
         return ENTITY_TYPES.register(name, sup);
     }
 
-    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType<T> sup) {
-        return register(name, () -> sup);
+    /**
+     * This is a preset for generating ArmorPlus arrow entity types
+     *
+     * @param factoryIn The Entity Class
+     * @param data      The Arrow data used for the creation of the entityAttachCapabilitiesEvent (in this case its name)
+     * @return an EntityType object with all the required information.
+     */
+    private static <T extends AbstractArrowEntity> EntityType<T> buildArrow(EntityType.IFactory<T> factoryIn, ArrowType data) {
+        return build(data.getItemArrowName(), Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
     }
 
-    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, Builder<T> sup) {
-        return register(name, () -> build(name, sup));
-    }
+    private static <T extends Entity> EntityType<T> build(EntityType.IFactory<T> factory, MobType data) {
+        Builder<T> builder = Builder.of(factory, data.getClassification())
+                .setTrackingRange(data.getTrackingRange())
+                .sized(data.getWidth(), data.getHeight());
+        if (data.isImmuneToFire()) {
+            builder.fireImmune();
+        }
 
-    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.IFactory<T> factory, MobType data) {
-        return register(name, () -> build(factory, data));
+        return build(data.getName(), builder);
     }
 
     private static <T extends Entity> EntityType<T> build(String id, Builder<T> builder) {
         ResourceLocation rl = setRL(id);
         return builder.build(rl.toString());
     }
-
-    /**
-     * This is a preset for generating ArmorPlus arrow entity types
-     *
-     * @param factoryIn The Entity Class
-     * @param data      The Arrow data used for the creationg of the entityAttachCapabilitiesEvent (in this case its name)
-     * @return an EntityType object with all the required information.
-     */
-    private static <T extends AbstractArrowEntity> EntityType<T> buildArrow(EntityType.IFactory<T> factoryIn, ArrowType data) {
-        return build(data.getItemArrowName(), Builder.create(factoryIn, MISC).size(0.5f, 0.5f));
-    }
-
-    private static <T extends Entity> EntityType<T> build(EntityType.IFactory<T> factory, MobType data) {
-        return build(data.getName(), Builder.create(factory, data.getClassification()).size(data.getWidth(), data.getHeight()));
-    }
-
 }

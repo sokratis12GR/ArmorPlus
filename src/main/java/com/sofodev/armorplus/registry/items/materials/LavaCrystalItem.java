@@ -29,17 +29,17 @@ public class LavaCrystalItem extends APItem {
     private int[] burnTime = new int[]{20000, 22000};
 
     public LavaCrystalItem(boolean isInfused) {
-        super(new Properties().isImmuneToFire());
+        super(new Properties().fireResistant());
         this.isInfused = isInfused;
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (!isInfused) {
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(Color.parseColor("#670067"))));
         } else
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.setItalic(true).setColor(Color.fromHex("#670067"))));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(Color.parseColor("#670067"))));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     /**
@@ -51,9 +51,9 @@ public class LavaCrystalItem extends APItem {
      */
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        boolean isInLava = entity.getEntityWorld().getFluidState(entity.getPosition()).getFluid().isIn(FluidTags.LAVA);
+        boolean isInLava = entity.getCommandSenderWorld().getFluidState(entity.blockPosition()).getFluidState().is(FluidTags.LAVA);
         if (!isInfused && isInLava) {
-            entity.entityDropItem(new ItemStack(getAPItem("infused_lava_crystal"), entity.getItem().getCount()));
+            entity.spawnAtLocation(new ItemStack(getAPItem("infused_lava_crystal"), entity.getItem().getCount()));
             entity.getItem().setCount(0);
             return true;
         }
@@ -61,8 +61,8 @@ public class LavaCrystalItem extends APItem {
     }
 
     @Override
-    public boolean isDamageable(DamageSource damageSource) {
-        return super.isDamageable(damageSource);
+    public boolean canBeHurtBy(DamageSource damageSource) {
+        return super.canBeHurtBy(damageSource);
     }
 
     @Override

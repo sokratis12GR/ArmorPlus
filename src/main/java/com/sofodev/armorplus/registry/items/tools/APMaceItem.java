@@ -44,8 +44,8 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     public final String controllerName = "maceController";
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
-        super(mat.get(), (int) (mat.get().getAttackDamage() + mat.getType().getDmg()), mat.getType().getAttackSpeed(),
-                props.group(ArmorPlus.AP_WEAPON_GROUP)
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed(),
+                props.tab(ArmorPlus.AP_WEAPON_GROUP)
         );
         this.mat = mat;
     }
@@ -55,13 +55,13 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return super.getIsRepairable(toRepair, repair);
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+        return super.isValidRepairItem(toRepair, repair);
     }
 
     @Override
-    public boolean shouldSyncTag() {
-        return super.shouldSyncTag();
+    public boolean shouldOverrideMultiplayerNbt() {
+        return super.shouldOverrideMultiplayerNbt();
     }
 
     public static AnimationController getControllerForStack(AnimationFactory factory, ItemStack stack, String controllerName) {
@@ -69,7 +69,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
+    public boolean canAttackBlock(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
         return !player.isCreative();
     }
 
@@ -84,26 +84,26 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World world, LivingEntity living, int timeLeft) {
+    public void releaseUsing(ItemStack stack, World world, LivingEntity living, int timeLeft) {
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) living;
             CompoundNBT nbt = stack.getTag();
-            if (nbt != null && nbt.hasUniqueId("key")) {
+            if (nbt != null && nbt.hasUUID("key")) {
                 AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
                 Animation currentAnimation = controller.getCurrentAnimation();
                 int chargeTime = this.getUseDuration(stack) - timeLeft;
-                if (chargeTime >= mat.getType().getChargeSpeed() && player.getCooldownPeriod() >= 1.0F) {
+                if (chargeTime >= mat.getType().getChargeSpeed()) {
                     if (currentAnimation != null) {
                         currentAnimation.loop = false;
                     }
-                    if (world.isRemote) {
+                    if (world.isClientSide) {
                         this.swingAnimation(controller);
                     } else {
                         //check if the offhand is empty
-                        boolean isOffHandEmpty = player.getItemStackFromSlot(EquipmentSlotType.OFFHAND).isEmpty();
+                        boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlotType.OFFHAND).isEmpty();
                         if (isOffHandEmpty) {
-                            BlockPos destructionPos = new BlockPos(player.getPosition());
-                            Direction direction = player.getAdjustedHorizontalFacing();
+                            BlockPos destructionPos = new BlockPos(player.position());
+                            Direction direction = player.getMotionDirection();
                             boolean isNorthOrSouth = direction == NORTH || direction == SOUTH;
                             boolean isWestOrEast = direction == EAST || direction == WEST;
                             if (isNorthOrSouth) {
@@ -119,32 +119,32 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-        ItemStack stack = this.setTag(player.getHeldItem(hand));
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        ItemStack stack = this.setTag(player.getItemInHand(hand));
         CompoundNBT nbt = stack.getTag();
-        if (nbt != null && nbt.hasUniqueId("key")) {
+        if (nbt != null && nbt.hasUUID("key")) {
             AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
-            if (world.isRemote) {
+            if (world.isClientSide) {
                 this.chargeAnimation(controller);
-                return ActionResult.resultPass(stack);
+                return ActionResult.pass(stack);
             }
         }
-        if (stack.getDamage() >= stack.getMaxDamage() - 1) {
-            return ActionResult.resultFail(stack);
+        if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
+            return ActionResult.fail(stack);
         } else {
-            player.setActiveHand(hand);
-            return ActionResult.resultConsume(stack);
+            player.startUsingItem(hand);
+            return ActionResult.consume(stack);
         }
     }
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        World world = entity.world;
+        World world = entity.level;
         ItemStack itemStack = this.setTag(stack);
         CompoundNBT nbt = stack.getTag();
-        if (nbt != null && nbt.hasUniqueId("key")) {
+        if (nbt != null && nbt.hasUUID("key")) {
             AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, itemStack, this.controllerName);
-            if (world.isRemote && entity instanceof PlayerEntity) {
+            if (world.isClientSide && entity instanceof PlayerEntity) {
                 this.swingAnimation(controller);
                 return true;
             }
@@ -158,19 +158,18 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         UUID randomUUID = UUID.randomUUID();
         if (tag == null) {
             tag = new CompoundNBT();
-            tag.putUniqueId("key", randomUUID);
+            tag.putUUID("key", randomUUID);
             stack.setTag(tag);
         }
-        if (!tag.hasUniqueId("key")) {
-            tag.putUniqueId("key", randomUUID);
+        if (!tag.hasUUID("key")) {
+            tag.putUUID("key", randomUUID);
         }
         stack.setTag(tag);
         return stack;
     }
 
-
     @Override
-    public UseAction getUseAction(ItemStack stack) {
+    public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.NONE;
     }
 
@@ -193,9 +192,9 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
         int damage = mat.destructionRange();
         //Damages the item and executes the animation
-        stack.damageItem(random.nextInt(damage) + (damage * damage), player, (entity) -> entity.sendBreakAnimation(EquipmentSlotType.MAINHAND));
-        player.getCooldownTracker().setCooldown(stack.getItem(), mat.cooldown() * 20);
-        player.addStat(Stats.ITEM_USED.get(this));
+        stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, (entity)->entity.broadcastBreakEvent(EquipmentSlotType.MAINHAND));
+        player.getCooldowns().addCooldown(stack.getItem(), mat.cooldown() * 20);
+        player.awardStat(Stats.ITEM_USED.get(this));
     }
 
     private void destroyBlocksInLineDirectional(IAPMace mat, World world, BlockPos destructionPos, Direction direction, boolean isNorthOrSouth) {
@@ -230,12 +229,12 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     private void destroyBlockInLine(World world, BlockPos destructionPos, Direction direction, int offset) {
         BlockPos pos = directionalOffset(destructionPos, direction, offset);
         this.destroyBlock(world, pos);
-        this.destroyBlock(world, pos.up());
-        this.destroyBlock(world, pos.up().up());
+        this.destroyBlock(world, pos.above());
+        this.destroyBlock(world, pos.above().above());
     }
 
     private void destroyBlockSingleLine(World world, BlockPos destructionPos, Direction direction, int i) {
-        this.destroyBlock(world, directionalOffset(destructionPos, direction, i).up());
+        this.destroyBlock(world, directionalOffset(destructionPos, direction, i).above());
     }
 
     /**
@@ -253,7 +252,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
      * @return {@link BlockPos} the offset of the original destruction pos.
      */
     private BlockPos directionalOffset(BlockPos pos, Direction direction, int offset) {
-        return pos.offset(direction, offset + 1);
+        return pos.relative(direction, offset + 1);
     }
 
     private <P extends Item & IAnimatable> PlayState predicate(AnimationEvent<P> event) {
@@ -261,7 +260,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         if (!stackData.isEmpty()) {
             ItemStack stack = stackData.get(0);
             if (!stack.isEmpty()) {
-                return stack.isOnItemFrame() ? STOP : CONTINUE;
+                return stack.isFramed() ? STOP : CONTINUE;
             }
         }
         return STOP;

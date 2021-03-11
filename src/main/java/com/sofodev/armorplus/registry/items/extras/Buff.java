@@ -32,8 +32,8 @@ public enum Buff implements IBuff {
     WITHER_IMMUNITY(true) {
         @Override
         public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-            if (!world.isRemote) {
-                player.removeActivePotionEffect(WITHER);
+            if (!world.isClientSide) {
+                player.removeEffect(WITHER);
             }
         }
     },

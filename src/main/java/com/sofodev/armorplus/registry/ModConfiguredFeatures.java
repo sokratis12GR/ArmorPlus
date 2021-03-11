@@ -62,9 +62,9 @@ public class ModConfiguredFeatures {
      */
     private static ConfiguredFeature<?, ?> createOreConfiguredFeature(RuleTest replace, RegistryObject<Block> block, int veinSize, int yOffset, int yRange) {
         return ModFeatures.ORE_CONFIG.get()
-                .withConfiguration(new APOreFeatureConfig(replace, block.get().getDefaultState(), veinSize))
-                .withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(yOffset, 0, yRange)))
-                .square();
+                .configured(new APOreFeatureConfig(replace, block.get().defaultBlockState(), veinSize))
+                .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(yOffset, 0, yRange)))
+                .squared();
     }
 
 }

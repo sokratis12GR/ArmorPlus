@@ -105,7 +105,7 @@ public class ArrowType {
         return new ArrowEntity(world, shooter);
     }
 
-    public void addInformation(List<ITextComponent> tooltip) {
-        ToolTipUtils.addArrowInformation(tooltip, this.getAbilityDescription(), this.getDmg(), this.getFormatting());
+    public void appendHoverText(List<ITextComponent> tooltip) {
+        ToolTipUtils.appendArrowHoverText(tooltip, this.getAbilityDescription(), this.getDmg(), this.getFormatting());
     }
 }

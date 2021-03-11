@@ -22,7 +22,7 @@ public class APSwordItem extends SwordItem {
     private final IAPTool mat;
 
     public APSwordItem(IAPTool mat) {
-        super(mat.get(), (int) (mat.get().getAttackDamage() + SWORD.getDmg()), SWORD.getAttackSpeed(), new Properties().group(ArmorPlus.AP_WEAPON_GROUP));
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + SWORD.getDmg()), SWORD.getAttackSpeed(), new Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
     }
 
@@ -32,17 +32,17 @@ public class APSwordItem extends SwordItem {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         addBuffInformation(mat, tooltip, "on_hit", false);
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.world.isRemote) {
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!target.level.isClientSide) {
             Arrays.stream(mat.getBuffInstances()).forEach(instance -> instance.hitEntity(stack, target, attacker));
         }
-        return super.hitEntity(stack, target, attacker);
+        return super.hurtEnemy(stack, target, attacker);
     }
 
 }

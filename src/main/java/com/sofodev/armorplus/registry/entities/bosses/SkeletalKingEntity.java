@@ -1,8 +1,7 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
 import com.google.common.base.Predicate;
-import com.sofodev.armorplus.registry.APItems;
-import com.sofodev.armorplus.registry.ModEntities;
+import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificRangedAttackGoal;
 import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificRangedAttackGoal.EntityAIType;
 import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificServerBossInfo;
@@ -18,14 +17,12 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -50,32 +47,20 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
     public static final Predicate<LivingEntity> ANY_ENTITY = entity ->
             entity != null && entity.attackable() && !(entity instanceof SkeletalKingEntity);
     private final SpecificServerBossInfo bossInfo = new SpecificServerBossInfo(this.getDisplayName(), SpecificServerBossInfo.BossInfoDungeonType.SKELETAL_KING);
-    private final EntityType<? extends SkeletalKingEntity> type;
     private AnimationFactory factory = new AnimationFactory(this);
 
     public SkeletalKingEntity(EntityType<? extends SkeletalKingEntity> type, World world) {
         super(type, world);
-        this.type = type;
-        this.enablePersistence();
+        this.setPersistenceRequired();
         this.setHealth(this.getMaxHealth());
-        this.getNavigator().setCanSwim(true);
-        this.ignoreFrustumCheck = true;
-        this.recalculateSize();
-    }
-
-    public SkeletalKingEntity(World world) {
-        super(ModEntities.SKELETAL_KING.get(), world);
-        this.type = ModEntities.SKELETAL_KING.get();
-        this.enablePersistence();
-        this.setHealth(this.getMaxHealth());
-        this.getNavigator().setCanSwim(true);
-        this.ignoreFrustumCheck = true;
-        this.recalculateSize();
+        this.getNavigation().setCanFloat(true);
+        this.noCulling = true;
+        this.refreshDimensions();
     }
 
     @Override
-    public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(1, 1, true).scale(2.4f, 8);
+    public EntitySize getDimensions(Pose pose) {
+        return new EntitySize(2.4f, 8, false).scale(1f, 1f);
     }
 
     @Override
@@ -95,28 +80,28 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_234295_eP_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 1024.0D)
-                .createMutableAttribute(MOVEMENT_SPEED, 0.6000000238418579D)
-                .createMutableAttribute(ARMOR, 8.0D);
+        return MonsterEntity.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 1024.0D)
+                .add(MOVEMENT_SPEED, 0.6000000238418579D)
+                .add(ARMOR, 8.0D);
     }
 
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
     @Override
-    public void readAdditional(CompoundNBT compound) {
-        super.readAdditional(compound);
+    public void readAdditionalSaveData(CompoundNBT compound) {
+        super.readAdditionalSaveData(compound);
         if (this.hasCustomName()) {
             this.bossInfo.setName(this.getDisplayName());
         }
 
     }
 
-    @Override
-    public void handleStatusUpdate(byte id) {
-        super.handleStatusUpdate(id);
-    }
+  //  @Override
+  //  public void handleStatusUpdate(byte id) {
+  //      super.handleStatusUpdate(id);
+  //  }
 
     @Override
     public ITextComponent getCustomName() {
@@ -130,8 +115,8 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
     }
 
     @Override
-    protected void updateAITasks() {
-        super.updateAITasks();
+    protected void updateControlFlags() {
+        super.updateControlFlags();
         this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
     }
 
@@ -140,18 +125,18 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
      * order to view its associated boss bar.
      */
     @Override
-    public void addTrackingPlayer(ServerPlayerEntity player) {
-        super.addTrackingPlayer(player);
+    public void startSeenByPlayer(ServerPlayerEntity player) {
+        super.startSeenByPlayer(player);
         this.bossInfo.addPlayer(player);
     }
 
     /**
-     * Removes the given player from the list of players tracking this entity. See {@link Entity#addTrackingPlayer} for
+     * Removes the given player from the list of players tracking this entity. See {@link Entity#startSeenByPlayer} for
      * more information on tracking.
      */
     @Override
-    public void removeTrackingPlayer(ServerPlayerEntity player) {
-        super.removeTrackingPlayer(player);
+    public void stopSeenByPlayer(ServerPlayerEntity player) {
+        super.stopSeenByPlayer(player);
         this.bossInfo.removePlayer(player);
     }
 
@@ -159,14 +144,14 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
      * Called when the entity is attacked.
      */
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        boolean trueSources = source.getTrueSource() instanceof SkeletalKingEntity || source.getTrueSource() instanceof WitherEntity;
+    public boolean hurt(DamageSource source, float amount) {
+        boolean trueSources = source.getEntity() instanceof SkeletalKingEntity || source.getEntity() instanceof WitherEntity;
         if (source != DamageSource.DROWN && !(trueSources)) {
-            Entity entity1 = source.getTrueSource();
-            if (!(entity1 instanceof PlayerEntity) && entity1 instanceof LivingEntity && ((LivingEntity) entity1).getCreatureAttribute() == this.getCreatureAttribute()) {
+            Entity sourceEntity = source.getDirectEntity();
+            if (!(sourceEntity instanceof PlayerEntity) && sourceEntity instanceof LivingEntity && ((LivingEntity) sourceEntity).getMobType() == this.getMobType()) {
                 return false;
             } else {
-                return super.attackEntityFrom(source, amount);
+                return super.hurt(source, amount);
             }
         } else {
             return false;
@@ -174,25 +159,25 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
     }
 
     @Override
-    public void onDeath(DamageSource cause) {
-        super.onDeath(cause);
-        if (!world.isRemote) {
+    public void die(DamageSource cause) {
+        super.die(cause);
+        if (!level.isClientSide) {
             String[] names = new String[]{"D", "E", "A", "T", "H"};
             for (String name : names) {
-                BlazeEntity split = new BlazeEntity(BLAZE, world);
-                split.setPosition(getPosX(), getPosY(), getPosZ());
-                split.onInitialSpawn((IServerWorld) world, this.world.getDifficultyForLocation(new BlockPos(this.getPosition())), SpawnReason.NATURAL, null, null);
-                this.world.addEntity(split);
+                BlazeEntity split = new BlazeEntity(BLAZE, level);
+                split.setPos(getX(), getY(), getZ());
+                split.finalizeSpawn((IServerWorld) level, this.level.getCurrentDifficultyAt(new BlockPos(this.blockPosition())), SpawnReason.NATURAL, null, null);
+                this.level.addFreshEntity(split);
                 split.setCustomName(new StringTextComponent(GOLD + "" + BOLD + name));
                 split.setCustomNameVisible(true);
                 split.setInvisible(false);
                 split.setInvulnerable(false);
                 split.setCanPickUpLoot(true);
-                split.forceSpawn = true;
+                //split.forceSpawn = true;
             }
 
-            this.entityDropItem(new ItemStack(Items.NETHER_STAR, 2 + rand.nextInt(1)), 5f);
-            this.entityDropItem(new ItemStack(APItems.WITHER_BONE.get(), 1 + rand.nextInt(1)), 5f);
+            this.spawnAtLocation(new ItemStack(Items.NETHER_STAR, 2 + random.nextInt(1)), 5f);
+            this.spawnAtLocation(new ItemStack(ModItems.WITHER_BONE.get(), 1 + random.nextInt(1)), 5f);
         }
     }
 
@@ -215,7 +200,7 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
     }
 
     @Override
-    public CreatureAttribute getCreatureAttribute() {
+    public CreatureAttribute getMobType() {
         return CreatureAttribute.UNDEAD;
     }
 
@@ -223,33 +208,17 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
      * Returns false if this Entity is a boss, true otherwise.
      */
     @Override
-    public boolean isNonBoss() {
+    public boolean canChangeDimensions() {
         return false;
     }
 
-    //Management Stuff
     @Override
-    public Iterable<ItemStack> getEquipmentAndArmor() {
+    public Iterable<ItemStack> getArmorSlots() {
         return Collections.emptyList();
     }
 
     @Override
-    public Iterable<ItemStack> getHeldEquipment() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public EntityType<? extends SkeletalKingEntity> getType() {
-        return type;
-    }
-
-    @Override
-    public IPacket<?> createSpawnPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
+    public void performRangedAttack(LivingEntity target, float damage) {
 
     }
 }

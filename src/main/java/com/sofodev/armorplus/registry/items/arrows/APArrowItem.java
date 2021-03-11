@@ -15,15 +15,15 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
-import static net.minecraft.enchantment.Enchantments.INFINITY;
+import static net.minecraft.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
+import static net.minecraft.enchantment.Enchantments.INFINITY_ARROWS;
 
 public class APArrowItem extends ArrowItem {
 
     private final ArrowType type;
 
     public APArrowItem(ArrowType type) {
-        super(new Item.Properties().group(ArmorPlus.AP_WEAPON_GROUP).rarity(Rarity.create("ARROW_TYPE", type.getFormatting())));
+        super(new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP).rarity(Rarity.create("ARROW_TYPE", type.getFormatting())));
         this.type = type;
     }
 
@@ -38,13 +38,13 @@ public class APArrowItem extends ArrowItem {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        type.addInformation(tooltip);
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        type.appendHoverText(tooltip);
     }
 
     @Override
     public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
-        int enchant = getEnchantmentLevel(INFINITY, bow);
+        int enchant = getItemEnchantmentLevel(INFINITY_ARROWS, bow);
         return enchant > 0;
     }
 }

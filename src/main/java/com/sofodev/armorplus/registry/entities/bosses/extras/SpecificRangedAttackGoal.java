@@ -15,6 +15,7 @@ public class SpecificRangedAttackGoal extends RangedAttackGoal {
     public enum EntityAIType {
         GUARDIAN(0.5D, 10, 3.0F),
         WITHER(1.0D, 120, 10.0F),
+        DEMONIC(0.5D, 200, 50.0F),
         ;
 
         private final double moveSpeed;

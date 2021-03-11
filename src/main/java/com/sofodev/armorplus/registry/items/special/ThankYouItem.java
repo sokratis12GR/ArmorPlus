@@ -23,7 +23,7 @@ import static net.minecraft.util.text.TextFormatting.*;
 public class ThankYouItem extends APItem {
 
     public ThankYouItem() {
-        super(new Properties().isImmuneToFire().maxStackSize(0).group(ItemGroup.SEARCH));
+        super(new Properties().fireResistant().stacksTo(0).tab(ItemGroup.TAB_SEARCH));
     }
 
     @Override
@@ -31,26 +31,27 @@ public class ThankYouItem extends APItem {
         return Rarity.create(stack.getDisplayName().getString(), TextFormatting.RED);
     }
 
+
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(translate(GOLD, "tooltip.armorplus.thank_you_6m.1"));
         tooltip.add(translate(BLUE, "tooltip.armorplus.thank_you_6m.2"));
         tooltip.add(translate(GREEN, "tooltip.armorplus.thank_you_6m.3"));
         tooltip.add(translate(RED, "tooltip.armorplus.thank_you_6m.4"));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return true;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-        if (!world.isRemote) {
-            InventoryHelper.spawnItemStack(world, player.getPosX(), player.getPosY(), player.getPosZ(), new ItemStack(Items.CAKE));
-            player.getHeldItemMainhand().setCount(0);
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        if (!world.isClientSide) {
+            InventoryHelper.dropItemStack(world, player.getX(), player.getY(), player.getZ(), new ItemStack(Items.CAKE));
+            player.getMainHandItem().setCount(0);
         }
-        return super.onItemRightClick(world, player, hand);
+        return super.use(world, player, hand);
     }
 }

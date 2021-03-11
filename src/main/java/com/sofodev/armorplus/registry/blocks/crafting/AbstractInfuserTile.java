@@ -2,7 +2,7 @@ package com.sofodev.armorplus.registry.blocks.crafting;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sofodev.armorplus.registry.APItems;
+import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -99,8 +99,8 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     public static Map<Item, Integer> getInfusionTimes() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
         addItemInfuseTime(map, Items.LAVA_BUCKET, 20000);
-        addItemInfuseTime(map, APItems.LAVA_CRYSTAL, 22000);
-        addItemInfuseTime(map, APItems.INFUSED_LAVA_CRYSTAL, 24000);
+        addItemInfuseTime(map, ModItems.LAVA_CRYSTAL, 22000);
+        addItemInfuseTime(map, ModItems.INFUSED_LAVA_CRYSTAL, 24000);
         return map;
     }
 

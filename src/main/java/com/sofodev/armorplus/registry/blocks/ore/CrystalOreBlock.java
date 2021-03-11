@@ -7,9 +7,9 @@ import static net.minecraftforge.common.ToolType.PICKAXE;
 
 public class CrystalOreBlock extends OreBlock {
 
-    public CrystalOreBlock() {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(25f, 2000f)
-                .setLightLevel((light) -> 8).harvestTool(PICKAXE).harvestLevel(3)
+    public CrystalOreBlock(Variant variant) {
+        super(Properties.create(Material.ROCK).hardnessAndResistance(variant.getHardness(), variant.getResistance()).setRequiresTool()
+                .setLightLevel((light) -> 8).harvestTool(PICKAXE).harvestLevel(variant.getHarvestLevel())
         );
     }
 

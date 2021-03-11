@@ -13,7 +13,7 @@ public class APShovelItem extends ShovelItem {
     private final IAPTool mat;
 
     public APShovelItem(IAPTool mat) {
-        super(mat.get(), mat.get().getAttackDamage() + SHOVEL.getDmg(), SHOVEL.getAttackSpeed(), new Properties().group(ArmorPlus.AP_WEAPON_GROUP));
+        super(mat.get(), mat.get().getAttackDamageBonus() + SHOVEL.getDmg(), SHOVEL.getAttackSpeed(), new Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
     }
 

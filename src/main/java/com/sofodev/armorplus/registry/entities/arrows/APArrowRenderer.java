@@ -21,7 +21,7 @@ public class APArrowRenderer<T extends APArrowEntity> extends ArrowRenderer<T> {
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(APArrowEntity entity) {
+    public ResourceLocation getTextureLocation(APArrowEntity entity) {
         return res;
     }
 

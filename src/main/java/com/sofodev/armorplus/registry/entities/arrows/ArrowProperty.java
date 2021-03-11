@@ -57,7 +57,7 @@ public class ArrowProperty implements IArrow {
         EffectData effData = this.getData();
         Effect eff = effData.getEffect();
         if (eff != null) { // APPotions.EMPTY
-            living.addPotionEffect(new EffectInstance(eff, effData.getDuration(), effData.getAmplifier()));
+            living.addEffect(new EffectInstance(eff, effData.getDuration(), effData.getAmplifier()));
         }
         return this;
     }

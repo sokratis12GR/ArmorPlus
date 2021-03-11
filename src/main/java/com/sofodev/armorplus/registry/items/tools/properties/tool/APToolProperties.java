@@ -46,33 +46,33 @@ public enum APToolProperties implements IItemTier {
     }
 
     @Override
-    public int getHarvestLevel() {
+    public int getLevel() {
         return this.harvestLevel;
     }
 
     @Override
-    public int getMaxUses() {
+    public int getUses() {
         return this.maxUses;
     }
 
     @Override
-    public float getEfficiency() {
+    public float getSpeed() {
         return this.efficiency;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
-        return Ingredient.fromStacks(getRepairStacks(repair).stream());
+    public Ingredient getRepairIngredient() {
+        return Ingredient.of(getRepairStacks(repair).stream());
     }
 
     @Override

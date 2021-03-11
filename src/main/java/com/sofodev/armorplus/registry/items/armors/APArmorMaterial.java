@@ -117,7 +117,7 @@ public enum APArmorMaterial implements IAPArmor {
 
     @Override
     public Properties getProperties() {
-        return new Properties().group(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
+        return new Properties().tab(ArmorPlus.AP_GROUP).rarity(Rarity.create(this.getName(), this.getFormatting()));
     }
 
     @Override

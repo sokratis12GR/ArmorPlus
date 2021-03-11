@@ -1,6 +1,5 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
-import com.sofodev.armorplus.registry.ModEntities;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -8,7 +7,6 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -18,7 +16,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -31,24 +28,16 @@ import static net.minecraft.potion.Effects.WITHER;
 
 public class WitherlingEntity extends MonsterEntity implements IAnimatable {
 
-    private final EntityType<? extends WitherlingEntity> type;
     private AnimationFactory factory = new AnimationFactory(this);
 
     public WitherlingEntity(EntityType<? extends WitherlingEntity> type, World worldIn) {
         super(type, worldIn);
-        this.type = type;
-        this.ignoreFrustumCheck = true;
-    }
-
-    public WitherlingEntity(World worldIn) {
-        super(ModEntities.WITHERLING.get(), worldIn);
-        this.type = ModEntities.WITHERLING.get();
-        this.ignoreFrustumCheck = true;
+        this.noCulling = true;
     }
 
     @Override
-    public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(this.getWidth() * 2f, this.getHeight() * 1.1f, false);
+    public EntitySize getDimensions(Pose pose) {
+        return new EntitySize(this.getBbWidth() * 2f, this.getBbHeight() * 1.1f, false);
     }
 
     @Override
@@ -57,35 +46,34 @@ public class WitherlingEntity extends MonsterEntity implements IAnimatable {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_234295_eP_()
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D);
+        return MonsterEntity.createMonsterAttributes().add(Attributes.ATTACK_DAMAGE, 4.0D);
     }
 
     @Override
     public void tick() {
-        if (this.isPotionActive(WITHER)) {
-            this.removePotionEffect(WITHER);
+        if (this.hasEffect(WITHER)) {
+            this.removeEffect(WITHER);
         }
         super.tick();
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_WITHER_SKELETON_AMBIENT;
+        return SoundEvents.WITHER_SKELETON_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.ENTITY_WITHER_SKELETON_HURT;
+        return SoundEvents.WITHER_SKELETON_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_WITHER_SKELETON_DEATH;
+        return SoundEvents.WITHER_SKELETON_DEATH;
     }
 
     @Override
-    public boolean isImmuneToExplosions() {
+    public boolean ignoreExplosion() {
         return true;
     }
 
@@ -93,8 +81,8 @@ public class WitherlingEntity extends MonsterEntity implements IAnimatable {
      * Gives armor or weapon for entity based on given DifficultyInstance
      */
     @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-        this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_AXE));
+    protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
+        this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_AXE));
     }
 
     @Override
@@ -103,12 +91,12 @@ public class WitherlingEntity extends MonsterEntity implements IAnimatable {
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        if (!super.attackEntityAsMob(entityIn)) {
+    public boolean skipAttackInteraction(Entity entityIn) {
+        if (!super.skipAttackInteraction(entityIn)) {
             return false;
         } else {
             if (entityIn instanceof LivingEntity) {
-                ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.WITHER, 200));
+                ((LivingEntity) entityIn).addEffect(new EffectInstance(Effects.WITHER, 200));
             }
             return true;
         }
@@ -139,13 +127,4 @@ public class WitherlingEntity extends MonsterEntity implements IAnimatable {
         return this.factory;
     }
 
-    @Override
-    public EntityType<?> getType() {
-        return this.type;
-    }
-
-    @Override
-    public IPacket<?> createSpawnPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
 }
