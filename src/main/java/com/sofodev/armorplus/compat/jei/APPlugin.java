@@ -4,7 +4,6 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.registration.IAdvancedRegistration;
-import mezz.jei.load.registration.RecipeRegistration;
 import net.minecraft.util.ResourceLocation;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;

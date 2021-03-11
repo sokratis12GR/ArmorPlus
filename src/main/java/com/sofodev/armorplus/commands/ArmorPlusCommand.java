@@ -1,10 +1,10 @@
 package com.sofodev.armorplus.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.sofodev.armorplus.commands.sub.WikiCommand;
-import com.sofodev.armorplus.commands.sub.NodecraftCommand;
-import com.sofodev.armorplus.commands.sub.InfoCommand;
 import com.sofodev.armorplus.commands.sub.DiscordCommand;
+import com.sofodev.armorplus.commands.sub.InfoCommand;
+import com.sofodev.armorplus.commands.sub.NodecraftCommand;
+import com.sofodev.armorplus.commands.sub.WikiCommand;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 

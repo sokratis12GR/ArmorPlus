@@ -85,17 +85,31 @@ public class GridInput {
      * @return The Grid with the params that will create a <b>Hollow Square</b> template.
      * @since 16.2.0
      */
-    public static GridInput buildSquare(Grid.Size size, char filler) {
+    public static GridInput buildSmallSquare(char filler) {
         String small = replace("XX ", filler);
+        return build(Grid.build(small, small), filler);
+    }
+
+    /**
+     * Creates a grid for a 3x3 square, filled by the same ingredient.
+     *
+     * @see #buildSmallSquare(char);
+     */
+    public static GridInput buildBigSquare(char filler) {
         String big = replace("XXX", filler);
-        switch (size) {
-            case SMALL:
-                return build(Grid.build(small, small), filler);
-            case BIG:
-                return build(Grid.build(big, big, big), filler);
-            default:
-                throw new IllegalStateException("Unexpected value: " + size);
-        }
+        return build(Grid.build(big, big, big), filler);
+    }
+
+    public static GridInput buildStairs(char filler) {
+        String top = replace("X  ", filler);
+        String mid = replace("XX ", filler);
+        String bot = replace("XXX", filler);
+        return build(Grid.build(top, mid, bot), filler);
+    }
+
+    public static GridInput buildSlab(char filler) {
+        String big = replace("XXX", filler);
+        return build(Grid.build(big), filler);
     }
 
     /**

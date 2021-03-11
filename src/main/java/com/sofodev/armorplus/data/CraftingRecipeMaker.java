@@ -132,13 +132,15 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildStoneBrick(Consumer<IFinishedRecipe> con, RegistryObject<Block> bricks, RegistryObject<Block> tower,
-                                RegistryObject<Block> corner, RegistryObject<Block> wall) {
+                                RegistryObject<Block> corner, RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab) {
         final String group = "stone_brick";
-        final String pathCorner = "corner";
         final String pathWall = "wall";
         final String pathTower = "tower";
+        final String pathCorner = "corner";
+        final String pathStairs = "stairs";
+        final String pathSlab = "slab";
         //shaped
-        this.build(con, Result.build(corner.get(), 6, getGroup(pathCorner), pathCorner),
+        this.build(con, Result.build(corner.get(), 4, getGroup(pathCorner), pathCorner),
                 GridInput.build("   ", "S  ", "SSS", 'S'), bricks.get()
         );
         this.build(con, Result.build(wall.get(), 6, getGroup(pathWall), pathWall),
@@ -147,10 +149,12 @@ public class CraftingRecipeMaker extends RecipeProvider {
         this.build(con, Result.build(tower.get(), 8, getGroup(pathTower), pathTower),
                 GridInput.build("S S", "SSS", "SSS", 'S'), bricks.get()
         );
-        //shapeless
-        this.build(con, Result.build(bricks.get(), group, pathWall), wall.get());
-        this.build(con, Result.build(bricks.get(), group, pathCorner), corner.get());
-        this.build(con, Result.build(bricks.get(), group, pathTower), tower.get());
+        this.build(con, Result.build(stairs.get(), 4, getGroup(pathStairs), pathStairs),
+                GridInput.build("S  ", "SS ", "SSS", 'S'), bricks.get()
+        );
+        this.build(con, Result.build(slab.get(), 6, getGroup(pathSlab), pathSlab),
+                GridInput.build("   ", "SSS", "   ", 'S'), bricks.get()
+        );
     }
 
     private String getGroup(String form) {
@@ -162,7 +166,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     //=========\\
 
     public void buildStorage(Consumer<IFinishedRecipe> con, IItemProvider result, IItemProvider item) {
-        this.build(con, Result.build(result, 1, "storage", "storage"), GridInput.buildSquare(Grid.Size.BIG, 'X'), item);
+        this.build(con, Result.build(result, 1, "storage", "storage"), GridInput.buildBigSquare('X'), item);
         this.build(con, Result.build(item, 9, "storage", "storage").setSuffix("_to_item"), result);
     }
 

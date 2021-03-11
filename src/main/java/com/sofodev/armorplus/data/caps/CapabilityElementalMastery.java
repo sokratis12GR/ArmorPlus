@@ -20,7 +20,6 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Locale;
-import java.util.concurrent.Callable;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;
 

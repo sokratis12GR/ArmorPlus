@@ -2,8 +2,8 @@ package com.sofodev.armorplus.data;
 
 import com.sofodev.armorplus.data.recipe.GridInput;
 import com.sofodev.armorplus.data.recipe.Result;
-import com.sofodev.armorplus.registry.APItems;
 import com.sofodev.armorplus.registry.ModBlocks;
+import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IDataProvider;
 import net.minecraft.data.IFinishedRecipe;
@@ -22,10 +22,9 @@ import java.util.stream.Stream;
 
 import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.AP_TOOL_MATERIAL_LENGTH;
-import static com.sofodev.armorplus.registry.APItems.INFUSED_LAVA_CRYSTAL;
-import static com.sofodev.armorplus.registry.APItems.*;
 import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICKS;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_LAVA_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static java.util.Arrays.asList;
@@ -54,10 +53,10 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;
         for (int i = 0; i < l; i++) {
-            crafter.buildStoneBrick(con, CASTLE_BLOCKS[i], CASTLE_BLOCK_TOWERS[i], CASTLE_BLOCK_CORNERS[i], CASTLE_BLOCK_WALLS[i]);
+            crafter.buildStoneBrick(con, CASTLE_BLOCKS[i], CASTLE_BLOCK_TOWERS[i], CASTLE_BLOCK_CORNERS[i], CASTLE_BLOCK_WALLS[i], CASTLE_BLOCK_STAIRS[i], CASTLE_BLOCK_SLABS[i]);
         }
         for (int i = 0; i < l; i++) {
-            crafter.buildStoneBrick(con, STONE_BRICKS[i], STONE_BRICK_TOWERS[i], STONE_BRICK_CORNERS[i], STONE_BRICK_WALLS[i]);
+            crafter.buildStoneBrick(con, STONE_BRICKS[i], STONE_BRICK_TOWERS[i], STONE_BRICK_CORNERS[i], STONE_BRICK_WALLS[i], ModBlocks.STONE_BRICK_STAIRS[i], STONE_BRICK_SLABS[i]);
         }
         for (int i = 0; i < l; i++) {
             crafter.buildColoredBrick(con, STONE_BRICKS[i], BRICK_COLORS.get(i));
@@ -127,14 +126,19 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         });
         //Storage Blocks
         crafter.buildStorage(con, COMPRESSED_LAVA_CRYSTAL.get(), ModBlocks.LAVA_CRYSTAL.get());
-        crafter.buildStorage(con, ModBlocks.LAVA_CRYSTAL.get(), APItems.LAVA_CRYSTAL.get());
+        crafter.buildStorage(con, ModBlocks.LAVA_CRYSTAL.get(), ModItems.LAVA_CRYSTAL.get());
         crafter.buildStorage(con, COMPRESSED_INFUSED_LAVA_CRYSTAL.get(), ModBlocks.INFUSED_LAVA_CRYSTAL.get());
-        crafter.buildStorage(con, ModBlocks.INFUSED_LAVA_CRYSTAL.get(), APItems.INFUSED_LAVA_CRYSTAL.get());
+        crafter.buildStorage(con, ModBlocks.INFUSED_LAVA_CRYSTAL.get(), ModItems.INFUSED_LAVA_CRYSTAL.get());
         crafter.buildStorage(con, COMPRESSED_OBSIDIAN.get(), Items.OBSIDIAN);
+        crafter.buildStorage(con, ModItems.LAVA_CRYSTAL.get(), LAVA_SHARD.get());
+        crafter.buildStorage(con, ModItems.FROST_CRYSTAL.get(), FROST_SHARD.get());
 
         //Other
         crafter.build(con, Result.build(OBSIDIAN_STICK.get(), 4), Items.OBSIDIAN, Items.OBSIDIAN);
         crafter.build(con, Result.build(WOODEN_ROD.get(), 2), STICK, STICK, STICK, STICK);
+        crafter.build(con, Result.build(SNOW_BRICK.get(), 4).setGroup("snow_brick").setSuffix(""), GridInput.buildSmallSquare('X'), SNOW_BLOCK);
+        crafter.build(con, Result.build(SNOW_BRICK_STAIRS.get(), 4).setGroup("snow_brick_stairs").setSuffix(""), GridInput.buildStairs('X'), SNOW_BRICK.get());
+        crafter.build(con, Result.build(SNOW_BRICK_SLAB.get(), 4).setGroup("snow_brick_slab").setSuffix(""), GridInput.buildSlab('X'), SNOW_BRICK.get());
     }
 
     private void registerSmithingRecipes(Consumer<IFinishedRecipe> con) {
