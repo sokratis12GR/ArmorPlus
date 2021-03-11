@@ -1,8 +1,25 @@
+ArmorPlus 1.16.5-16.4.0 (BETA)
+----------------------------
+
+* From now on, supporting only 1.16.5+
+* Minimum required forge version 36.0.42
+* Added Lava Shards & Frost Shards, they can be turned into crystals using 3x3 shards
+* Added Castle & Colored Brick Stairs & Slabs with recipes to match them
+* Added Snow Bricks (crafted using 2x2 Snow blocks), Stairs (crafted like regular stairs) and Slabs (crafted like regular slabs)
+* Changed the hardness and harvest level of the lava & frost crystal ores and their drops for each variant.
+  - Stone: Now drop 1-2 shards, require Iron Pickaxe or higher harvest level, fastest to mine.
+  - Obsidian: Now drop 3-7 shards, require Diamond Pickaxe or higher harvest level, faster to mine.
+  - Compressed: Drops are unchanged (1-2 crystals), require Netherite Pickaxe or higher harvest level, same mining speed.
+* Introducing the Soul Exchanger (Villager Profession), by having a villager next to x, they will obtain this profession.
+  - Provides a way to get frost & lava shards and crystals, blaze rods/powder, minor souls, major soul exchange as well as a way to obtain Soul Stealer books and/or enchanted weapons. 
+* Removed Castle Block & Colored Brick Type to Block recipes(i.e. Wall -> Block, Corner -> Block);
+* Fixed a crash on world load related to Entity Types being null when mods like Reliquary, Better Diving, Minecolonies are present. (Hopefully).
 
 ArmorPlus 1.16.5-16.3.1 (BETA)
 ----------------------------
 
 **QUICK-FIX**: Fixed a crash when booting and mekanism is not present. Fixes #248
+
 * Fixed super star bow pulling animation not being correct.
 
 ArmorPlus 1.16.5-16.3.0 (BETA)
@@ -17,7 +34,7 @@ ArmorPlus 1.16.5-16.3.0 (BETA)
   applied to.
 * Added Demonic Dragon (WIP) boss entity, a very wip model + texture + animation (No functionality atm)
 * Added a new item "Wooden Rod", crafted via a shapeless recipe of 4 sticks together.
-  - It replaces the current sticks in mace recipes
+    - It replaces the current sticks in mace recipes
 * Added recipes for the slime and chicken armors.
 * Added ElementalMastery Capability
 * Added new "buffs": Fire Weakness, Natural Immunity (Provides Protection & Fire Resistance)
@@ -37,6 +54,7 @@ ArmorPlus 1.16.5-16.3.0 (BETA)
 * Fixed silent major issues caused with the model registering, fixed properly this time.
 
 Technical:
+
 * Added Elements (affinities) for future expansions, Added Frost Armor, Frost-Lava armor (obviously dev only).
 * Added ElementalMastery(Element primary, Element secondary) capability for future use.
 * Organized the language file (en_us.json), everything now should be inside a category/sub-category depending on what
