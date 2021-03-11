@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
         classpath "com.wynprice.cursemaven:CurseMaven:2.1.5"
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
@@ -33,7 +33,8 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'snapshot', version: '20201028-1.16.3'
+    // mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'official', version: '1.16.5'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
@@ -61,6 +62,11 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
+            // The markers can be changed as needed.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
+            // property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
@@ -110,7 +116,8 @@ dependencies {
     // implementation fg.deobf("curse.maven:ichunutil:3062089")
     // implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
     // implementation fg.deobf("curse.maven:corail-tombstone:3169275")
-    // implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
+     implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
+     implementation fg.deobf("curse.maven:better-diving:3214276")
     // implementation fg.deobf('curse.maven:minecolonies:3126211')
     // implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
     // implementation fg.deobf("curse.maven:blame:3135054")
@@ -165,8 +172,6 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
         releaseType = 'beta'
-        addGameVersion '1.16.3'
-        addGameVersion '1.16.4'
         addGameVersion '1.16.5'
         relations curseRelations
     }
