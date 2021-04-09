@@ -33,7 +33,7 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    // mappings channel: 'snapshot', version: '20201028-1.16.3'
+    //mappings channel: 'snapshot', version: '20201028-1.16.3'
     mappings channel: 'official', version: '1.16.5'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
@@ -52,7 +52,7 @@ minecraft {
             properties 'mixin.env.disableRefMap': 'true'
 
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -73,7 +73,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -92,7 +92,7 @@ minecraft {
             args '--mod', 'armorplus', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -108,16 +108,16 @@ dependencies {
     implementation fg.deobf("curse.maven:thedragonlib:3108730") //TheDragonLib
 //    implementation fg.deobf('software.bernie.geckolib:forge-1.16.5-geckolib:3.0.13') //Geckolib
     implementation fg.deobf("curse.maven:geckolib:3195959") //Geckolib (3.0.13)
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48:api") //Patchouli
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-48") //Patchouli
+    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
+    // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
     implementation fg.deobf("curse.maven:mekanism:3183270") //Mekanism
     implementation fg.deobf("curse.maven:jei:3192904") //JEI
 
     // implementation fg.deobf("curse.maven:ichunutil:3062089")
     // implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
     // implementation fg.deobf("curse.maven:corail-tombstone:3169275")
-     implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
-     implementation fg.deobf("curse.maven:better-diving:3214276")
+    // implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
+    // implementation fg.deobf("curse.maven:better-diving:3214276")
     // implementation fg.deobf('curse.maven:minecolonies:3126211')
     // implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
     // implementation fg.deobf("curse.maven:blame:3135054")
@@ -158,6 +158,7 @@ publishing {
     }
 }
 
+
 def curseRelations = {
     //requiredDependency '' //add curseforge-slug here
     requiredDependency 'thedragonlib'
@@ -171,7 +172,7 @@ curseforge {
         id = '237366'
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
-        releaseType = 'beta'
+        releaseType = 'release'
         addGameVersion '1.16.5'
         relations curseRelations
     }
