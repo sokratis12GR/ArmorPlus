@@ -1,19 +1,51 @@
-ArmorPlus 1.16.5-16.4.0 (BETA)
+ArmorPlus 1.16.5-16.4.0
 ----------------------------
 
 * From now on, supporting only 1.16.5+
+    - First official major release after the 1.12.2 releases.
 * Minimum required forge version 36.0.42
+* Added 3 new biomes (Frozen Plains, Valley of Souls and Possessed Grounds)
+* Re-Added Trophy Blocks, drops enabled for the boss entities (Elder Guardian, Wither Boss, Ender Dragon) and the
+  current wip A+ bosses
 * Added Lava Shards & Frost Shards, they can be turned into crystals using 3x3 shards
 * Added Castle & Colored Brick Stairs & Slabs with recipes to match them
-* Added Snow Bricks (crafted using 2x2 Snow blocks), Stairs (crafted like regular stairs) and Slabs (crafted like regular slabs)
+* Added Snow Bricks (crafted using 2x2 Snow blocks), Stairs (crafted like regular stairs) and Slabs (crafted like
+  regular slabs)
+* Added Frost Wolves (Tamable, Wild, Aggressive), Frost Wolf Alphas (Untamable, Wild, Hostile, Pack-Leaders) drop hide.
+* Added Boreas, a minotaur like monster that inhabits the "Frozen Plains" biome, it's aggressive and very wip.
 * Changed the hardness and harvest level of the lava & frost crystal ores and their drops for each variant.
-  - Stone: Now drop 1-2 shards, require Iron Pickaxe or higher harvest level, fastest to mine.
-  - Obsidian: Now drop 3-7 shards, require Diamond Pickaxe or higher harvest level, faster to mine.
-  - Compressed: Drops are unchanged (1-2 crystals), require Netherite Pickaxe or higher harvest level, same mining speed.
-* Introducing the Soul Exchanger (Villager Profession), by having a villager next to x, they will obtain this profession.
-  - Provides a way to get frost & lava shards and crystals, blaze rods/powder, minor souls, major soul exchange as well as a way to obtain Soul Stealer books and/or enchanted weapons. 
-* Removed Castle Block & Colored Brick Type to Block recipes(i.e. Wall -> Block, Corner -> Block);
-* Fixed a crash on world load related to Entity Types being null when mods like Reliquary, Better Diving, Minecolonies are present. (Hopefully).
+    - Stone: Now drop 1-2 shards, require Iron Pickaxe or higher harvest level, fastest to mine.
+    - Obsidian: Now drop 3-7 shards, require Diamond Pickaxe or higher harvest level, faster to mine.
+    - Compressed: Drops are unchanged (1-2 crystals), require Netherite Pickaxe or higher harvest level, same mining
+      speed.
+* Added soul box, used to transform a villager into a Soul Exchanger.
+    - Crafted Table Recipe: 1x Glowstone surrounded by 4x Soul Sand and 4x Stone.
+* Introducing the Soul Exchanger (Villager Profession), by having a villager next to x, they will obtain this
+  profession.
+    - Provides a way to get frost & lava shards and crystals, blaze rods/powder, minor souls, major soul exchange as
+      well as a way to obtain Soul Stealer books and/or enchanted weapons.
+* Added Soul: Slayer (texture pending)
+    - Crafting Table Recipe: 1x Elder Guardian Soul, 1x Wither Boss Soul, 1x Ender Dragon Soul (Shapeless)
+    - Used alongside the slayer bases in a smithing table to create the slayer armor pieces.
+* Changes to "The Ultimate Material"
+    - Crafting Table Recipe: 1x Guardian Scale, 1x Wither Bone, 1x Ender Dragon Scale, 1x Infused Frost-Lava Crystal  (
+      Shapeless)
+    - Used to create the slayer bases in a crafting table, the recipe layout for the bases is the same one vanilla
+      armors use.
+* Added Infused Frost-Lava Crystal (texture pending)
+    - Smithing Table Recipe: Infused Lava Crystal + Infused Frost Crystal (or vise versa)
+    - Used to create the frost lava set and an ingredient for future recipes
+* Added Trophies (`armorplus:trophy`), a decorative block which can be obtained by killing bosses.
+    - By default, only drops from the (Elder Guardian, Wither Boss, Ender Dragon).
+    - Is fully customizable via nbt, so ModPack devs can tweak/add/remove drops as they see fit.
+* Ignite (buff) now correctly applies before damage calculations and will cause mobs to drop their "cooked" variants of
+  food when slayed.
+* Removed Castle Block & Colored Brick Type to Block recipes (i.e. Wall -> Block, Corner -> Block);
+* Remade the demonic dragon model & texture (still very much wip)
+* Fixed a crash on world load related to Entity Types being null when mods like Reliquary, Better Diving, Minecolonies
+  are present. (Hopefully).
+* Fixed a NPE crash related to water weakness (It should be fixed please open a ticket if the issue persists) Fixes &
+  Closes #250
 
 ArmorPlus 1.16.5-16.3.1 (BETA)
 ----------------------------
