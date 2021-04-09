@@ -27,7 +27,8 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setRL;
-import static net.minecraft.item.crafting.Ingredient.*;
+import static net.minecraft.item.crafting.Ingredient.EMPTY;
+import static net.minecraft.item.crafting.Ingredient.of;
 
 public class CraftingRecipeMaker extends RecipeProvider {
 
@@ -44,32 +45,32 @@ public class CraftingRecipeMaker extends RecipeProvider {
     public void buildSword(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> sword, IItemProvider material, IItemProvider handle) {
         String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
         build(con, Result.build(sword.get(), path + "_swords", path),
-                GridInput.build("M  ", "M  ", "S  ", 'S', 'M'), handle, fromItems(material)
+                GridInput.build("M  ", "M  ", "S  ", 'S', 'M'), handle, of(material)
         );
     }
 
     public void buildBattleAxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
         build(con, Result.build(battleAxe.get(), path + "_battle_axes", path),
-                GridInput.build("M M", "MSM", " S ", 'S', 'M'), handle, fromItems(material)
+                GridInput.build("M M", "MSM", " S ", 'S', 'M'), handle, of(material)
         );
     }
 
     public void buildPickaxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
         build(con, Result.build(battleAxe.get(), path + "_pickaxes", path),
-                GridInput.build("MMM", " S ", " S ", 'S', 'M'), handle, fromItems(material)
+                GridInput.build("MMM", " S ", " S ", 'S', 'M'), handle, of(material)
         );
     }
 
     public void buildBow(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> bow, IItemProvider material) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, Result.build(bow.get(), path + "_bows", path),
-                GridInput.build("SM ", "S M", "SM ", 'S', 'M'), Items.STRING, fromItems(material)
+                GridInput.build("SM ", "S M", "SM ", 'S', 'M'), Items.STRING, of(material)
         );
 
         build(con, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"),
-                GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, fromItems(material)
+                GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, of(material)
         );
     }
 
@@ -113,7 +114,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
                           IItemProvider lesserSoul, IItemProvider mat, IItemProvider extra) {
         this.build(con, Result.build(bossSoul.get(), 1, "ap_souls", "soul"),
                 GridInput.build("ESE", "SXS", "ESE", 'S', 'X', 'E'),
-                lesserSoul, fromItems(mat), fromItems(extra)
+                lesserSoul, of(mat), of(extra)
         );
     }
 
@@ -128,7 +129,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildColoredBrick(Consumer<IFinishedRecipe> con, RegistryObject<Block> bricks, Tags.IOptionalNamedTag<Item> color) {
-        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, fromTag(color));
+        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, of(color));
     }
 
     public void buildStoneBrick(Consumer<IFinishedRecipe> con, RegistryObject<Block> bricks, RegistryObject<Block> tower,
@@ -171,15 +172,15 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildFilling(Consumer<IFinishedRecipe> con, IItemProvider result, IItemProvider center, IItemProvider filler) {
-        this.buildFilling(con, Result.build(result), center, fromItems(filler));
+        this.buildFilling(con, Result.build(result), center, of(filler));
     }
 
     public void buildFilling(Consumer<IFinishedRecipe> con, IItemProvider result, int count, IItemProvider center, IItemProvider filler) {
-        this.buildFilling(con, Result.build(result, count), center, fromItems(filler));
+        this.buildFilling(con, Result.build(result, count), center, of(filler));
     }
 
     public void buildFilling(Consumer<IFinishedRecipe> con, Result result, IItemProvider center, IItemProvider filler) {
-        this.buildFilling(con, result, center, fromItems(filler));
+        this.buildFilling(con, result, center, of(filler));
     }
 
     public void buildFilling(Consumer<IFinishedRecipe> con, Result result, IItemProvider center, Ingredient filler) {
@@ -257,15 +258,15 @@ public class CraftingRecipeMaker extends RecipeProvider {
         Grid grid = layout.getGrid();
         Input input = layout.getSimpleInput();
         this.logGrid(result, path, grid);
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shapedRecipe(result.getObject(), result.getCount());
-        builder.patternLine(grid.getFirstRow());
-        builder.patternLine(grid.getSecondRow());
-        builder.patternLine(grid.getThirdRow());
-        builder.key(input.getA(), mainInput);
+        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(result.getObject(), result.getCount());
+        builder.pattern(grid.getFirstRow());
+        builder.pattern(grid.getSecondRow());
+        builder.pattern(grid.getThirdRow());
+        builder.define(input.getA(), mainInput);
         IntStream.range(0, additional.length).forEach(i -> this.addIngredients(builder, input.getCharList().get(i + 1), additional[i]));
-        builder.setGroup(Utils.setLocation(result.getGroup().orElse(path)));
-        builder.addCriterion("has_req", hasItem(mainInput));
-        builder.build(consumer, setRL("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
+        builder.group(Utils.setLocation(result.getGroup().orElse(path)));
+        builder.unlockedBy("has_req", has(mainInput));
+        builder.save(consumer, setRL("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     /**
@@ -285,19 +286,19 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @since 16.2.0
      */
     public void build(Consumer<IFinishedRecipe> consumer, Result result, GridInput layout, IItemProvider... inputs) {
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shapedRecipe(result.getObject(), result.getCount());
+        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(result.getObject(), result.getCount());
         String path = getPath(result.getObject());
         Grid grid = layout.getGrid();
         Input input = layout.getSimpleInput();
         this.logGrid(result, path, grid);
-        builder.patternLine(grid.getFirstRow());
-        builder.patternLine(grid.getSecondRow());
-        builder.patternLine(grid.getThirdRow());
+        builder.pattern(grid.getFirstRow());
+        builder.pattern(grid.getSecondRow());
+        builder.pattern(grid.getThirdRow());
         IntStream.range(0, inputs.length).forEach(i -> this.addIngredients(builder, input.getCharList().get(i), inputs[i]));
         boolean hasGroup = result.getGroup().isPresent();
-        if (hasGroup) builder.setGroup(Utils.setLocation(result.getGroup().get()));
-        builder.addCriterion("has_req", hasItem(inputs[0]));
-        builder.build(consumer, setRL("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
+        if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
+        builder.unlockedBy("has_req", has(inputs[0]));
+        builder.save(consumer, setRL("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     private void logGrid(Result result, String path, Grid grid) {
@@ -309,12 +310,12 @@ public class CraftingRecipeMaker extends RecipeProvider {
 
     private void addIngredients(ShapedRecipeBuilder builder, char character, Ingredient input) {
         if (!input.isSimple()) {
-            builder.key(character, input);
+            builder.define(character, input);
         }
     }
 
     private void addIngredients(ShapedRecipeBuilder builder, char character, IItemProvider input) {
-        builder.key(character, input);
+        builder.define(character, input);
     }
 
     //##############################\\
@@ -331,34 +332,34 @@ public class CraftingRecipeMaker extends RecipeProvider {
     public void build(Consumer<IFinishedRecipe> con, Result result, IItemProvider inputA, Ingredient... inputs) {
         String path = getPath(result.getObject());
         LOGGER.info("Item: {}, count: {}", path, result.getCount());
-        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapelessRecipe(result.getObject(), result.getCount());
-        builder.addIngredient(inputA);
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(result.getObject(), result.getCount());
+        builder.requires(inputA);
         Arrays.stream(inputs).forEach(ingredient -> this.addIngredients(builder, ingredient));
         boolean hasGroup = result.getGroup().isPresent();
-        if (hasGroup) builder.setGroup(Utils.setLocation(result.getGroup().get()));
-        builder.addCriterion("has_req", hasItem(inputA));
-        builder.build(con, setRL("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
+        if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
+        builder.unlockedBy("has_req", has(inputA));
+        builder.save(con, setRL("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     public void build(Consumer<IFinishedRecipe> con, Result result, IItemProvider... item) {
         String path = getPath(result.getObject());
         LOGGER.info("Item: {}, count: {}", path, result.getCount());
-        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapelessRecipe(result.getObject(), result.getCount());
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(result.getObject(), result.getCount());
         Arrays.stream(item).forEach(ingredient -> this.addIngredients(builder, ingredient));
         boolean hasGroup = result.getGroup().isPresent();
-        if (hasGroup) builder.setGroup(Utils.setLocation(result.getGroup().get()));
-        builder.addCriterion("has_req", hasItem(item[0]));
-        builder.build(con, setRL("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
+        if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
+        builder.unlockedBy("has_req", has(item[0]));
+        builder.save(con, setRL("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, Ingredient input) {
         if (!input.isSimple()) {
-            builder.addIngredient(input);
+            builder.requires(input);
         }
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, IItemProvider input) {
-        builder.addIngredient(input);
+        builder.requires(input);
     }
 
 }

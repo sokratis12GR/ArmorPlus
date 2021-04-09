@@ -27,21 +27,21 @@ public class FlamingSittingPhase extends SittingPhase {
         ++this.flameTicks;
         if (this.flameTicks % 2 == 0 && this.flameTicks < 10) {
             Vector3d vector3d = this.dragon.getUpVector(1.0F).normalize();
-            vector3d.rotateYaw((-(float) Math.PI / 4F));
-            double d0 = this.dragon.getPosX();
-            double d1 = this.dragon.getPosYHeight(0.5D);
-            double d2 = this.dragon.getPosZ();
+            vector3d.yRot((-(float) Math.PI / 4F));
+            double d0 = this.dragon.getX();
+            double d1 = this.dragon.getY(0.5D);
+            double d2 = this.dragon.getZ();
 
             for (int i = 0; i < 8; ++i) {
-                double d3 = d0 + this.dragon.getRNG().nextGaussian() / 2.0D;
-                double d4 = d1 + this.dragon.getRNG().nextGaussian() / 2.0D;
-                double d5 = d2 + this.dragon.getRNG().nextGaussian() / 2.0D;
+                double d3 = d0 + this.dragon.getRandom().nextGaussian() / 2.0D;
+                double d4 = d1 + this.dragon.getRandom().nextGaussian() / 2.0D;
+                double d5 = d2 + this.dragon.getRandom().nextGaussian() / 2.0D;
 
                 for (int j = 0; j < 6; ++j) {
-                    this.dragon.world.addParticle(ParticleTypes.DRAGON_BREATH, d3, d4, d5, -vector3d.x * (double) 0.08F * (double) j, -vector3d.y * (double) 0.6F, -vector3d.z * (double) 0.08F * (double) j);
+                    this.dragon.level.addParticle(ParticleTypes.DRAGON_BREATH, d3, d4, d5, -vector3d.x * (double) 0.08F * (double) j, -vector3d.y * (double) 0.6F, -vector3d.z * (double) 0.08F * (double) j);
                 }
 
-                vector3d.rotateYaw(0.19634955F);
+                vector3d.yRot(0.19634955F);
             }
         }
 
@@ -62,30 +62,30 @@ public class FlamingSittingPhase extends SittingPhase {
         } else if (this.flameTicks == 10) {
             Vector3d vector3d = (new Vector3d(0.0, 0.0D, 0.0)).normalize();
             float f = 5.0F;
-            double d0 = this.dragon.getPosX() + vector3d.x * 5.0D / 2.0D;
-            double d1 = this.dragon.getPosZ() + vector3d.z * 5.0D / 2.0D;
-            double d2 = this.dragon.getPosYHeight(0.5D);
+            double d0 = this.dragon.getX() + vector3d.x * 5.0D / 2.0D;
+            double d1 = this.dragon.getZ() + vector3d.z * 5.0D / 2.0D;
+            double d2 = this.dragon.getY(0.5D);
             double d3 = d2;
             BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(d0, d2, d1);
 
-            while (this.dragon.world.isAirBlock(blockpos$mutable)) {
+            while (this.dragon.level.isEmptyBlock(blockpos$mutable)) {
                 --d3;
                 if (d3 < 0.0D) {
                     d3 = d2;
                     break;
                 }
 
-                blockpos$mutable.setPos(d0, d3, d1);
+                blockpos$mutable.set(d0, d3, d1);
             }
 
             d3 = (double) (MathHelper.floor(d3) + 1);
-            this.areaEffectCloud = new AreaEffectCloudEntity(this.dragon.world, d0, d3, d1);
+            this.areaEffectCloud = new AreaEffectCloudEntity(this.dragon.level, d0, d3, d1);
             this.areaEffectCloud.setOwner(this.dragon);
             this.areaEffectCloud.setRadius(5.0F);
             this.areaEffectCloud.setDuration(200);
-            this.areaEffectCloud.setParticleData(ParticleTypes.DRAGON_BREATH);
-            this.areaEffectCloud.addEffect(new EffectInstance(Effects.INSTANT_DAMAGE));
-            this.dragon.world.addEntity(this.areaEffectCloud);
+            this.areaEffectCloud.setParticle(ParticleTypes.DRAGON_BREATH);
+            this.areaEffectCloud.addEffect(new EffectInstance(Effects.HARM));
+            this.dragon.level.addFreshEntity(this.areaEffectCloud);
         }
 
     }

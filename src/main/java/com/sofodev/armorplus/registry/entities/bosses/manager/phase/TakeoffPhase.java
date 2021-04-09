@@ -27,8 +27,8 @@ public class TakeoffPhase extends Phase {
      */
     public void serverTick() {
         if (!this.firstTick && this.currentPath != null) {
-            BlockPos blockpos = this.dragon.world.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.END_PODIUM_LOCATION);
-            if (!blockpos.withinDistance(this.dragon.getPositionVec(), 10.0D)) {
+            BlockPos blockpos = this.dragon.level.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.END_PODIUM_LOCATION);
+            if (!blockpos.closerThan(this.dragon.position(), 10.0D)) {
                 this.dragon.getPhaseManager().setPhase(PhaseType.HOLDING_PATTERN);
             }
         } else {
@@ -48,9 +48,9 @@ public class TakeoffPhase extends Phase {
     }
 
     private void findNewTarget() {
-        int i = this.dragon.initPathPoints();
+        int i = this.dragon.findClosestNode();
         Vector3d vector3d = this.dragon.getUpVector(1.0F);
-        int j = this.dragon.getNearestPpIdx(-vector3d.x * 40.0D, 105.0D, -vector3d.z * 40.0D);
+        int j = this.dragon.findClosestNode(-vector3d.x * 40.0D, 105.0D, -vector3d.z * 40.0D);
         if (this.dragon.getDragonFight() != null && this.dragon.getDragonFight().getNumAliveCrystals() > 0) {
             j = j % 12;
             if (j < 0) {
@@ -62,23 +62,23 @@ public class TakeoffPhase extends Phase {
             j = j + 12;
         }
 
-        this.currentPath = this.dragon.findPath(i, j, (PathPoint) null);
+        this.currentPath = this.dragon.findPath(i, j, null);
         this.navigateToNextPathNode();
     }
 
     private void navigateToNextPathNode() {
         if (this.currentPath != null) {
-            this.currentPath.incrementPathIndex();
-            if (!this.currentPath.isFinished()) {
-                Vector3i vector3i = this.currentPath.func_242948_g();
-                this.currentPath.incrementPathIndex();
+            this.currentPath.advance();
+            if (!this.currentPath.isDone()) {
+                Vector3i vector3i = this.currentPath.getNextNodePos();
+                this.currentPath.advance();
 
                 double d0;
                 do {
-                    d0 = (double) ((float) vector3i.getY() + this.dragon.getRNG().nextFloat() * 20.0F);
+                    d0 = (float) vector3i.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
                 } while (d0 < (double) vector3i.getY());
 
-                this.targetLocation = new Vector3d((double) vector3i.getX(), d0, (double) vector3i.getZ());
+                this.targetLocation = new Vector3d(vector3i.getX(), d0, vector3i.getZ());
             }
         }
 

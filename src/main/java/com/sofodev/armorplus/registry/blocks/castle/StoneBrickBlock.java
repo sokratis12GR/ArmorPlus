@@ -8,8 +8,8 @@ import static net.minecraftforge.common.ToolType.PICKAXE;
 public class StoneBrickBlock extends Block {
 
     public StoneBrickBlock(BrickColor color) {
-        super(Properties.create(Material.ROCK, color.get()).harvestTool(PICKAXE).hardnessAndResistance(5, 10)
-                .variableOpacity().harvestLevel(0)
+        super(Properties.of(Material.STONE, color.get()).harvestTool(PICKAXE).strength(5, 10)
+                .dynamicShape().harvestLevel(0)
         );
     }
 }

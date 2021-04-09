@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.registry.blocks.special.TrophyItem;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.items.APItemBase;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
@@ -8,6 +9,7 @@ import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.armors.APArmorProperties;
 import com.sofodev.armorplus.registry.items.arrows.APArrowItem;
 import com.sofodev.armorplus.registry.items.materials.FrostCrystalItem;
+import com.sofodev.armorplus.registry.items.materials.FrostLavaCrystalItem;
 import com.sofodev.armorplus.registry.items.materials.LavaCrystalItem;
 import com.sofodev.armorplus.registry.items.materials.MaterialItem;
 import com.sofodev.armorplus.registry.items.special.SoulItem;
@@ -100,13 +102,14 @@ public class ModItems {
     public static final RegistryObject<Item> INFUSED_LAVA_CRYSTAL = ITEMS.register("infused_lava_crystal", () -> new LavaCrystalItem(true));
     public static final RegistryObject<Item> FROST_CRYSTAL = ITEMS.register("frost_crystal", () -> new FrostCrystalItem(false));
     public static final RegistryObject<Item> INFUSED_FROST_CRYSTAL = ITEMS.register("infused_frost_crystal", () -> new FrostCrystalItem(true));
+    public static final RegistryObject<Item> INFUSED_FROST_LAVA_CRYSTAL = ITEMS.register("infused_frost_lava_crystal", FrostLavaCrystalItem::new);
 
     //Materials
     public static final RegistryObject<Item> CHAINMAIL = ITEMS.register("chainmail", () -> new MaterialItem(GRAY, new Item.Properties()));
     public static final RegistryObject<Item> GUARDIAN_SCALE = ITEMS.register("guardian_scale", () -> new MaterialItem(BLUE, new Item.Properties()));
-    public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new MaterialItem(WHITE, new Item.Properties().isImmuneToFire()));
+    public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new MaterialItem(WHITE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ENDER_DRAGON_SCALE = ITEMS.register("ender_dragon_scale", () -> new MaterialItem(DARK_PURPLE, new Item.Properties()));
-    public static final RegistryObject<Item> THE_ULTIMATE_MATERIAL = ITEMS.register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, new Item.Properties().isImmuneToFire()));
+    public static final RegistryObject<Item> THE_ULTIMATE_MATERIAL = ITEMS.register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, new Item.Properties().fireResistant()));
 
     //Boss Souls
     public static final RegistryObject<Item> WITHER_BOSS_SOUL = ITEMS.register("soul_wither_boss", () -> new SoulItem("wither"));
@@ -117,21 +120,22 @@ public class ModItems {
     public static final RegistryObject<Item> GUARDIAN_SOUL = ITEMS.register("soul_guardian", () -> new SoulItem(false, "guardian"));
     public static final RegistryObject<Item> ENDERMAN_SOUL = ITEMS.register("soul_enderman", () -> new SoulItem(false, "enderman"));
     public static final RegistryObject<Item> BLAZE_SOUL = ITEMS.register("soul_blaze", () -> new SoulItem(false, "blaze"));
+    public static final RegistryObject<Item> SLAYER_SOUL = ITEMS.register("soul_slayer", () -> new SoulItem(null));
 
     //Enhanced Materials
     public static final RegistryObject<Item> ENHANCED_CHAINMAIL = ITEMS.register("en_chainmail", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_IRON = ITEMS.register("en_iron", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_GOLD = ITEMS.register("en_gold", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_DIAMOND = ITEMS.register("en_diamond", () -> new MaterialItem(true, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> ENHANCED_NETHERITE = ITEMS.register("en_netherite", () -> new MaterialItem(true, GRAY, new Item.Properties().isImmuneToFire()));
+    public static final RegistryObject<Item> ENHANCED_NETHERITE = ITEMS.register("en_netherite", () -> new MaterialItem(true, GRAY, new Item.Properties().fireResistant()));
 
     //Other
-    public static final RegistryObject<Item> OBSIDIAN_STICK = ITEMS.register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, new Item.Properties().isImmuneToFire()));
+    public static final RegistryObject<Item> OBSIDIAN_STICK = ITEMS.register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> WOODEN_ROD = ITEMS.register("wooden_rod", () -> new MaterialItem(false, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> LAVA_SHARD = ITEMS.register("lava_shard", () -> new MaterialItem(false, GOLD, new Item.Properties()));
     public static final RegistryObject<Item> FROST_SHARD = ITEMS.register("frost_shard", () -> new MaterialItem(false, AQUA, new Item.Properties()));
     public static final RegistryObject<Item> THANK_YOU_6M = ITEMS.register("thank_you_6m", ThankYouItem::new);
-    //public static final RegistryObject<Item> ARMORPLUS_BOOK = ITEMS.register("guide_book", () -> new APBookItem(new Properties()));
+    public static final RegistryObject<Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(() -> ModBlocks.TROPHY.get()));
 
     /**
      * This function automatically registers item(s), in groups that represent an armor set.
@@ -195,7 +199,7 @@ public class ModItems {
     public static Set<RegistryObject<BlockItem>> registerBlockItems() {
         return ModBlocks.blocks.stream()
                 .map(block -> ITEMS.register(block.getId().getPath(),
-                        () -> new BlockItem(block.get(), new Item.Properties().group(ArmorPlus.AP_BLOCK_GROUP))))
+                        () -> new BlockItem(block.get(), new Item.Properties().tab(ArmorPlus.AP_BLOCK_GROUP))))
                 .collect(Collectors.toSet());
     }
 
@@ -212,7 +216,7 @@ public class ModItems {
      * @return a set of item registry objects that consists of "base" items for the specified armor material.
      */
     private static Set<RegistryObject<Item>> registerArmorBases(APArmorMaterial material) {
-        Stream<EquipmentSlotType> armorSlots = Arrays.stream(EquipmentSlotType.values()).filter((v) -> v.getSlotType() == ARMOR);
+        Stream<EquipmentSlotType> armorSlots = Arrays.stream(EquipmentSlotType.values()).filter((v) -> v.getType() == ARMOR);
         return armorSlots.map(slot -> ITEMS.register(String.format("%s_%s_base", material.getName(), getNormalizedName(slot)),
                 () -> (Item) new APItemBase()))
                 .collect(Collectors.toSet());

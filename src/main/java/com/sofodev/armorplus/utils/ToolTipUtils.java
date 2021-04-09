@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.utils;
 
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
-import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -50,9 +49,6 @@ public class ToolTipUtils {
                 String theLvl = lvl > 0 ? " " + generate(lvl) : "";
                 tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));
             }
-        }
-        if (tool.equals(APToolMaterial.SLAYER_MAT)) {
-            addExperimentalItemInformation(tooltip);
         }
     }
 

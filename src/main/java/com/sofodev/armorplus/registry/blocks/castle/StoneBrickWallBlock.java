@@ -8,14 +8,14 @@ import net.minecraft.state.properties.BlockStateProperties;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static net.minecraft.block.AbstractBlock.Properties.from;
+import static net.minecraft.block.AbstractBlock.Properties.copy;
 
 public class StoneBrickWallBlock extends WallBlock {
 
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
     public StoneBrickWallBlock(Block block) {
-        super(from(block));
-        this.setDefaultState(this.stateContainer.getBaseState().with(UP, TRUE).with(WALL_HEIGHT_NORTH, WallHeight.NONE).with(WALL_HEIGHT_EAST, WallHeight.NONE).with(WALL_HEIGHT_SOUTH, WallHeight.NONE).with(WALL_HEIGHT_WEST, WallHeight.NONE).with(WATERLOGGED, FALSE));
+        super(copy(block));
+        this.registerDefaultState(this.stateDefinition.any().setValue(UP, TRUE).setValue(NORTH_WALL, WallHeight.NONE).setValue(EAST_WALL, WallHeight.NONE).setValue(SOUTH_WALL, WallHeight.NONE).setValue(WEST_WALL, WallHeight.NONE).setValue(WATERLOGGED, FALSE));
     }
 }

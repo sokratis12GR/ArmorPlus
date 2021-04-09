@@ -17,13 +17,13 @@ public class SoulStealerEnchantment extends APEnchantment {
     }
 
     @Override
-    public boolean canApply(ItemStack stack) {
-        return WEAPON.canEnchantItem(stack.getItem()) || stack.getItem() instanceof AxeItem || stack.getItem() instanceof BowItem;
+    public boolean canEnchant(ItemStack stack) {
+        return WEAPON.canEnchant(stack.getItem()) || stack.getItem() instanceof AxeItem || stack.getItem() instanceof BowItem;
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return this.canApply(stack);
+        return this.canEnchant(stack);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ import java.util.List;
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.SWORD;
 import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
 
-public class APSwordItem extends SwordItem {
+public class APSwordItem extends SwordItem implements Tool {
 
     private final IAPTool mat;
 
@@ -45,4 +46,7 @@ public class APSwordItem extends SwordItem {
         return super.hurtEnemy(stack, target, attacker);
     }
 
+    public IAPTool getMat() {
+        return this.mat;
+    }
 }

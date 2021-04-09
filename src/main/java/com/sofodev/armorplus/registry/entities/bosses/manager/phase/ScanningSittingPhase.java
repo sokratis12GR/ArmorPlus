@@ -8,14 +8,14 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 
 public class ScanningSittingPhase extends SittingPhase {
-    private static final EntityPredicate field_221115_b = (new EntityPredicate()).setDistance(150.0D);
-    private final EntityPredicate field_221116_c;
+    private static final EntityPredicate CHARGE_TARGETING = (new EntityPredicate()).range(150.0D);
+    private final EntityPredicate scanTargeting;
     private int scanningTime;
 
     public ScanningSittingPhase(DemonicDragonEntity dragonIn) {
         super(dragonIn);
-        this.field_221116_c = (new EntityPredicate()).setDistance(20.0D).setCustomPredicate((p_221114_1_) -> {
-            return Math.abs(p_221114_1_.getPosY() - dragonIn.getPosY()) <= 10.0D;
+        this.scanTargeting = (new EntityPredicate()).range(20.0D).selector((p_221114_1_) -> {
+            return Math.abs(p_221114_1_.getY() - dragonIn.getY()) <= 10.0D;
         });
     }
 
@@ -25,18 +25,18 @@ public class ScanningSittingPhase extends SittingPhase {
      */
     public void serverTick() {
         ++this.scanningTime;
-        LivingEntity livingentity = this.dragon.world.getClosestPlayer(this.field_221116_c, this.dragon, this.dragon.getPosX(), this.dragon.getPosY(), this.dragon.getPosZ());
+        LivingEntity livingentity = this.dragon.level.getNearestPlayer(this.scanTargeting, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
         if (livingentity != null) {
             if (this.scanningTime > 25) {
                 this.dragon.getPhaseManager().setPhase(PhaseType.SITTING_ATTACKING);
             } else {
-                Vector3d vector3d = (new Vector3d(livingentity.getPosX() - this.dragon.getPosX(), 0.0D, livingentity.getPosZ() - this.dragon.getPosZ())).normalize();
+                Vector3d vector3d = (new Vector3d(livingentity.getX() - this.dragon.getX(), 0.0D, livingentity.getZ() - this.dragon.getZ())).normalize();
                 Vector3d vector3d1 = (new Vector3d((double) MathHelper.sin(this.dragon.rotationYaw * ((float) Math.PI / 180F)), 0.0D, (double) (-MathHelper.cos(this.dragon.rotationYaw * ((float) Math.PI / 180F))))).normalize();
-                float f = (float) vector3d1.dotProduct(vector3d);
+                float f = (float) vector3d1.dot(vector3d);
                 float f1 = (float) (Math.acos((double) f) * (double) (180F / (float) Math.PI)) + 0.5F;
                 if (f1 < 0.0F || f1 > 10.0F) {
-                    double d0 = livingentity.getPosX() - this.dragon.getPosX();
-                    double d1 = livingentity.getPosZ() - this.dragon.getPosZ();
+                    double d0 = livingentity.getX() - this.dragon.getX();
+                    double d1 = livingentity.getZ() - this.dragon.getZ();
                     double d2 = MathHelper.clamp(MathHelper.wrapDegrees(180.0D - MathHelper.atan2(d0, d1) * (double) (180F / (float) Math.PI) - (double) this.dragon.rotationYaw), -100.0D, 100.0D);
                     this.dragon.rotationYaw *= 0.8F;
                     float f2 = MathHelper.sqrt(d0 * d0 + d1 * d1) + 1.0F;
@@ -50,11 +50,11 @@ public class ScanningSittingPhase extends SittingPhase {
                 }
             }
         } else if (this.scanningTime >= 100) {
-            livingentity = this.dragon.world.getClosestPlayer(field_221115_b, this.dragon, this.dragon.getPosX(), this.dragon.getPosY(), this.dragon.getPosZ());
+            livingentity = this.dragon.level.getNearestPlayer(CHARGE_TARGETING, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
             this.dragon.getPhaseManager().setPhase(PhaseType.TAKEOFF);
             if (livingentity != null) {
                 this.dragon.getPhaseManager().setPhase(PhaseType.CHARGING_PLAYER);
-                this.dragon.getPhaseManager().getPhase(PhaseType.CHARGING_PLAYER).setTarget(new Vector3d(livingentity.getPosX(), livingentity.getPosY(), livingentity.getPosZ()));
+                this.dragon.getPhaseManager().getPhase(PhaseType.CHARGING_PLAYER).setTarget(new Vector3d(livingentity.getX(), livingentity.getY(), livingentity.getZ()));
             }
         }
 

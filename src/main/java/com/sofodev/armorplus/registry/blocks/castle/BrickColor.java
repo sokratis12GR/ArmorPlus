@@ -8,14 +8,14 @@ import java.util.Locale;
 import static net.minecraft.block.material.MaterialColor.*;
 
 public enum BrickColor implements IStringSerializable {
-    BLACK(BLACK_TERRACOTTA),
-    BLUE(BLUE_TERRACOTTA),
-    GREEN(GREEN_TERRACOTTA),
-    PURPLE(PURPLE_TERRACOTTA),
-    RED(RED_TERRACOTTA),
-    WHITE(WHITE_TERRACOTTA),
-    YELLOW(YELLOW_TERRACOTTA),
-    ORANGE(ORANGE_TERRACOTTA);
+    BLACK(TERRACOTTA_BLACK),
+    BLUE(TERRACOTTA_BLUE),
+    GREEN(TERRACOTTA_GREEN),
+    PURPLE(TERRACOTTA_PURPLE),
+    RED(TERRACOTTA_RED),
+    WHITE(TERRACOTTA_WHITE),
+    YELLOW(TERRACOTTA_YELLOW),
+    ORANGE(TERRACOTTA_ORANGE);
 
     private final MaterialColor color;
 
@@ -28,11 +28,11 @@ public enum BrickColor implements IStringSerializable {
     }
 
     @Override
-    public String getString() {
+    public String getSerializedName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 
     public String getName() {
-        return getString();
+        return getSerializedName();
     }
 }

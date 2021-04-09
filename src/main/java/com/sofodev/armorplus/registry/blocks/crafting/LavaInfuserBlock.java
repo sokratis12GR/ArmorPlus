@@ -27,31 +27,31 @@ import static net.minecraftforge.common.ToolType.PICKAXE;
 
 public class LavaInfuserBlock extends AbstractInfuserBlock {
 
-    protected static final VoxelShape BOTTOM_P1 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(2, 0, 2, 14, 1, 14),
-            Block.makeCuboidShape(1, 1, 1, 15, 2, 15), OR);
-    protected static final VoxelShape BOTTOM_P2 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(2, 2, 2, 14, 4, 14),
-            Block.makeCuboidShape(1, 4, 1, 15, 5, 15), OR);
-    protected static final VoxelShape BOTTOM_P3 = VoxelShapes.combineAndSimplify(BOTTOM_P1, BOTTOM_P2, OR);
-    protected static final VoxelShape BOTTOM = VoxelShapes.combineAndSimplify(BOTTOM_P3,
-            Block.makeCuboidShape(3, 5, 3, 13, 6, 13), OR);
+    protected static final VoxelShape BOTTOM_P1 = VoxelShapes.join(Block.box(2, 0, 2, 14, 1, 14),
+            Block.box(1, 1, 1, 15, 2, 15), OR);
+    protected static final VoxelShape BOTTOM_P2 = VoxelShapes.join(Block.box(2, 2, 2, 14, 4, 14),
+            Block.box(1, 4, 1, 15, 5, 15), OR);
+    protected static final VoxelShape BOTTOM_P3 = VoxelShapes.join(BOTTOM_P1, BOTTOM_P2, OR);
+    protected static final VoxelShape BOTTOM = VoxelShapes.join(BOTTOM_P3,
+            Block.box(3, 5, 3, 13, 6, 13), OR);
     //Middle
-    protected static final VoxelShape MIDDLE_P1 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(4, 6, 4, 6, 13, 6),
-            Block.makeCuboidShape(4, 6, 12, 6, 13, 10), OR);
-    protected static final VoxelShape MIDDLE_P2 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(12, 6, 4, 10, 13, 6),
-            Block.makeCuboidShape(12, 6, 4, 12, 13, 6), OR);
-    protected static final VoxelShape MIDDLE = VoxelShapes.combineAndSimplify(MIDDLE_P1, MIDDLE_P2, OR);
-    protected static final VoxelShape BOT_MIDDLE = VoxelShapes.combineAndSimplify(BOTTOM, MIDDLE, OR);
-    protected static final VoxelShape TOP_P1 = VoxelShapes.combineAndSimplify(Block.makeCuboidShape(3, 13, 3, 13, 14, 13),
-            Block.makeCuboidShape(6, 14, 6, 10, 15, 10), OR);
-    protected static final VoxelShape TOP_P2 = VoxelShapes.combineAndSimplify(TOP_P1,
-            Block.makeCuboidShape(7, 15, 7, 9, 15.5, 9), OR);
-    protected static final VoxelShape TOP = VoxelShapes.combineAndSimplify(TOP_P1, TOP_P2, OR);
-    protected static final VoxelShape FULL = VoxelShapes.combineAndSimplify(BOT_MIDDLE, TOP, OR);
+    protected static final VoxelShape MIDDLE_P1 = VoxelShapes.join(Block.box(4, 6, 4, 6, 13, 6),
+            Block.box(4, 6, 12, 6, 13, 10), OR);
+    protected static final VoxelShape MIDDLE_P2 = VoxelShapes.join(Block.box(12, 6, 4, 10, 13, 6),
+            Block.box(12, 6, 4, 12, 13, 6), OR);
+    protected static final VoxelShape MIDDLE = VoxelShapes.join(MIDDLE_P1, MIDDLE_P2, OR);
+    protected static final VoxelShape BOT_MIDDLE = VoxelShapes.join(BOTTOM, MIDDLE, OR);
+    protected static final VoxelShape TOP_P1 = VoxelShapes.join(Block.box(3, 13, 3, 13, 14, 13),
+            Block.box(6, 14, 6, 10, 15, 10), OR);
+    protected static final VoxelShape TOP_P2 = VoxelShapes.join(TOP_P1,
+            Block.box(7, 15, 7, 9, 15.5, 9), OR);
+    protected static final VoxelShape TOP = VoxelShapes.join(TOP_P1, TOP_P2, OR);
+    protected static final VoxelShape FULL = VoxelShapes.join(BOT_MIDDLE, TOP, OR);
 
 
     public LavaInfuserBlock() {
-        super(Properties.create(Material.ROCK).harvestTool(PICKAXE).hardnessAndResistance(2.5F, 10000.0F)
-                .variableOpacity().harvestLevel(0));
+        super(Properties.of(Material.STONE).harvestTool(PICKAXE).strength(2.5F, 10000.0F)
+                .dynamicShape().harvestLevel(0));
     }
 
     @SuppressWarnings("deprecation")
@@ -67,7 +67,7 @@ public class LavaInfuserBlock extends AbstractInfuserBlock {
     }
 
     @Override
-    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+    public TileEntity newBlockEntity(IBlockReader worldIn) {
         return new LavaInfuserTile();
     }
 
@@ -77,31 +77,31 @@ public class LavaInfuserBlock extends AbstractInfuserBlock {
      */
     @Override
     protected void interactWith(World worldIn, BlockPos pos, PlayerEntity player) {
-        TileEntity tileentity = worldIn.getTileEntity(pos);
+        TileEntity tileentity = worldIn.getBlockEntity(pos);
         if (tileentity instanceof LavaInfuserTile) {
-            player.openContainer((INamedContainerProvider) tileentity);
-            player.addStat(Stats.INTERACT_WITH_FURNACE);
+            player.openMenu((INamedContainerProvider) tileentity);
+            player.awardStat(Stats.INTERACT_WITH_FURNACE);
         }
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        if (stateIn.get(LIT)) {
+        if (stateIn.getValue(LIT)) {
             double d0 = (double) pos.getX() + 0.5D;
             double d1 = (double) pos.getY();
             double d2 = (double) pos.getZ() + 0.5D;
             if (rand.nextDouble() < 0.1D) {
-                worldIn.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                worldIn.playLocalSound(d0, d1, d2, SoundEvents.FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
 
-            Direction direction = stateIn.get(FACING);
+            Direction direction = stateIn.getValue(FACING);
             Direction.Axis direction$axis = direction.getAxis();
             double d3 = 0.52D;
             double d4 = rand.nextDouble() * 0.6D - 0.3D;
-            double d5 = direction$axis == Direction.Axis.X ? (double) direction.getXOffset() * 0.52D : d4;
+            double d5 = direction$axis == Direction.Axis.X ? (double) direction.getStepX() * 0.52D : d4;
             double d6 = rand.nextDouble() * 6.0D / 16.0D;
-            double d7 = direction$axis == Direction.Axis.Z ? (double) direction.getZOffset() * 0.52D : d4;
+            double d7 = direction$axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.52D : d4;
             worldIn.addParticle(ParticleTypes.LARGE_SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
             worldIn.addParticle(ParticleTypes.DRIPPING_LAVA, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
         }

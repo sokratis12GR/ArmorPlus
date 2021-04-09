@@ -98,10 +98,10 @@ public class SkeletalKingEntity extends MonsterEntity implements IRangedAttackMo
 
     }
 
-  //  @Override
-  //  public void handleStatusUpdate(byte id) {
-  //      super.handleStatusUpdate(id);
-  //  }
+    //  @Override
+    //  public void handleStatusUpdate(byte id) {
+    //      super.handleStatusUpdate(id);
+    //  }
 
     @Override
     public ITextComponent getCustomName() {

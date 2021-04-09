@@ -47,124 +47,124 @@ public class DemonicDragonModel extends EntityModel {
     public ModelRenderer rightBigFingerWing;
 
     public DemonicDragonModel() {
-        this.textureWidth = 200;
-        this.textureHeight = 200;
+        this.texWidth = 200;
+        this.texHeight = 200;
         this.noseExtension = new ModelRenderer(this, 27, 106);
-        this.noseExtension.setRotationPoint(0.0F, 0.0F, -8.0F);
+        this.noseExtension.setPos(0.0F, 0.0F, -8.0F);
         this.noseExtension.addBox(-1.5F, 0.0F, 0.0F, 3, 3, 7, 0.0F);
         this.setRotateAngle(noseExtension, 0.27314402793711257F, 0.0F, 0.0F);
         this.mouth = new ModelRenderer(this, 75, 105);
-        this.mouth.setRotationPoint(0.0F, 5.8F, 0.5F);
+        this.mouth.setPos(0.0F, 5.8F, 0.5F);
         this.mouth.addBox(-2.0F, 0.0F, -8.0F, 4, 2, 9, 0.0F);
         this.setRotateAngle(mouth, -0.091106186954104F, 0.0F, 0.0F);
         this.rightFoot = new ModelRenderer(this, 62, 19);
-        this.rightFoot.setRotationPoint(0.5F, 6.9F, 3.0F);
+        this.rightFoot.setPos(0.5F, 6.9F, 3.0F);
         this.rightFoot.addBox(-2.0F, -0.1F, -3.6F, 4, 2, 7, 0.0F);
         this.setRotateAngle(rightFoot, -0.27314402793711257F, 0.0F, 0.0F);
         this.neckHeadConector = new ModelRenderer(this, 0, 82);
-        this.neckHeadConector.setRotationPoint(0.0F, -0.1F, -9.6F);
+        this.neckHeadConector.setPos(0.0F, -0.1F, -9.6F);
         this.neckHeadConector.addBox(-2.5F, -3.5F, -8.0F, 5, 7, 10, 0.0F);
         this.setRotateAngle(neckHeadConector, -0.22759093446006054F, 0.0F, 0.0F);
         this.rightRadius = new ModelRenderer(this, 40, 133);
-        this.rightRadius.setRotationPoint(-20.0F, 0.0F, 0.0F);
+        this.rightRadius.setPos(-20.0F, 0.0F, 0.0F);
         this.rightRadius.addBox(0.0F, -1.0F, -1.0F, 17, 2, 2, 0.0F);
         this.setRotateAngle(rightRadius, 0.0F, 3.141592653589793F, 0.0F);
         this.middleNeckPiece = new ModelRenderer(this, 32, 82);
-        this.middleNeckPiece.setRotationPoint(0.0F, 4.8F, 2.3F);
+        this.middleNeckPiece.setPos(0.0F, 4.8F, 2.3F);
         this.middleNeckPiece.addBox(-3.0F, -4.0F, -9.7F, 6, 8, 10, 0.0F);
         this.setRotateAngle(middleNeckPiece, -0.22759093446006054F, 0.0F, 0.0F);
         this.tail_2 = new ModelRenderer(this, 60, 54);
-        this.tail_2.setRotationPoint(0.0F, 0.3F, 9.5F);
+        this.tail_2.setPos(0.0F, 0.3F, 9.5F);
         this.tail_2.addBox(-1.5F, 0.0F, 0.0F, 3, 6, 8, 0.0F);
         this.setRotateAngle(tail_2, -0.091106186954104F, 0.0F, 0.0F);
         this.leftBigFingerWing = new ModelRenderer(this, -15, 185);
-        this.leftBigFingerWing.setRotationPoint(0.0F, 0.0F, 2.0F);
+        this.leftBigFingerWing.setPos(0.0F, 0.0F, 2.0F);
         this.leftBigFingerWing.addBox(0.0F, 0.0F, 0.0F, 10, 0, 15, 0.0F);
         this.leftHumerus = new ModelRenderer(this, 0, 122);
-        this.leftHumerus.setRotationPoint(4.0F, 2.2F, 3.5F);
+        this.leftHumerus.setPos(4.0F, 2.2F, 3.5F);
         this.leftHumerus.addBox(0.0F, -1.5F, -1.5F, 20, 3, 3, 0.0F);
         this.head = new ModelRenderer(this, 88, 122);
-        this.head.setRotationPoint(0.0F, -1.0F, -5.6F);
+        this.head.setPos(0.0F, -1.0F, -5.6F);
         this.head.addBox(-3.0F, -3.5F, -8.0F, 6, 7, 8, 0.0F);
         this.setRotateAngle(head, 0.5009094953223726F, 0.0F, 0.0F);
         this.tail = new ModelRenderer(this, 0, 58);
-        this.tail.setRotationPoint(0.0F, 0.0F, 13.0F);
+        this.tail.setPos(0.0F, 0.0F, 13.0F);
         this.tail.addBox(-2.5F, 0.0F, -2.0F, 5, 8, 12, 0.0F);
         this.setRotateAngle(tail, 0.136659280431156F, 0.0F, 0.0F);
         this.rightBigFinger = new ModelRenderer(this, 26, 143);
-        this.rightBigFinger.setRotationPoint(17.0F, 0.0F, 1.0F);
+        this.rightBigFinger.setPos(17.0F, 0.0F, 1.0F);
         this.rightBigFinger.addBox(0.0F, -0.5F, -2.0F, 10, 1, 2, 0.0F);
         this.leftRadiusWing = new ModelRenderer(this, -16, 167);
-        this.leftRadiusWing.setRotationPoint(0.0F, 0.0F, 1.0F);
+        this.leftRadiusWing.setPos(0.0F, 0.0F, 1.0F);
         this.leftRadiusWing.addBox(0.0F, 0.0F, 0.0F, 17, 0, 16, 0.0F);
         this.rightBigFingerWing = new ModelRenderer(this, 7, 185);
-        this.rightBigFingerWing.setRotationPoint(0.0F, 0.0F, -1.8F);
+        this.rightBigFingerWing.setPos(0.0F, 0.0F, -1.8F);
         this.rightBigFingerWing.addBox(0.0F, 0.0F, -15.0F, 10, 0, 15, 0.0F);
         this.nose = new ModelRenderer(this, 0, 102);
-        this.nose.setRotationPoint(0.0F, -3.5F, -8.0F);
+        this.nose.setPos(0.0F, -3.5F, -8.0F);
         this.nose.addBox(-2.5F, 0.0F, -8.0F, 5, 6, 8, 0.0F);
         this.tail_3 = new ModelRenderer(this, 64, 75);
-        this.tail_3.setRotationPoint(0.0F, 0.7F, 8.0F);
+        this.tail_3.setPos(0.0F, 0.7F, 8.0F);
         this.tail_3.addBox(-1.0F, 0.0F, 0.0F, 2, 4, 5, 0.0F);
         this.setRotateAngle(tail_3, -0.045553093477052F, 0.0F, 0.0F);
         this.leftHumerusWing = new ModelRenderer(this, -16, 149);
-        this.leftHumerusWing.setRotationPoint(0.0F, 0.0F, 1.5F);
+        this.leftHumerusWing.setPos(0.0F, 0.0F, 1.5F);
         this.leftHumerusWing.addBox(0.0F, 0.0F, 0.0F, 20, 0, 16, 0.0F);
         this.rightHumerusWing = new ModelRenderer(this, 24, 149);
-        this.rightHumerusWing.setRotationPoint(-20.0F, 0.0F, 1.5F);
+        this.rightHumerusWing.setPos(-20.0F, 0.0F, 1.5F);
         this.rightHumerusWing.addBox(0.0F, 0.0F, 0.0F, 22, 0, 16, 0.0F);
         this.leftTibia = new ModelRenderer(this, 0, 9);
-        this.leftTibia.setRotationPoint(1.0F, 10.0F, -3.2F);
+        this.leftTibia.setPos(1.0F, 10.0F, -3.2F);
         this.leftTibia.addBox(-0.5F, 0.0F, 0.0F, 2, 8, 6, 0.0F);
         this.setRotateAngle(leftTibia, 0.40980330836826856F, 0.0F, 0.0F);
         this.leftRadius = new ModelRenderer(this, 0, 133);
-        this.leftRadius.setRotationPoint(20.0F, 0.0F, 0.0F);
+        this.leftRadius.setPos(20.0F, 0.0F, 0.0F);
         this.leftRadius.addBox(0.0F, -1.0F, -1.0F, 17, 2, 2, 0.0F);
         this.Stomach = new ModelRenderer(this, 120, 76);
-        this.Stomach.setRotationPoint(0.0F, 0.0F, 18.0F);
+        this.Stomach.setPos(0.0F, 0.0F, 18.0F);
         this.Stomach.addBox(-3.5F, 0.0F, 0.0F, 7, 11, 13, 0.0F);
         this.setRotateAngle(Stomach, -0.18203784098300857F, 0.0F, 0.0F);
         this.rightTibia = new ModelRenderer(this, 18, 9);
-        this.rightTibia.setRotationPoint(-2.0F, 10.0F, -3.2F);
+        this.rightTibia.setPos(-2.0F, 10.0F, -3.2F);
         this.rightTibia.addBox(-0.5F, 0.0F, 0.0F, 2, 8, 6, 0.0F);
         this.setRotateAngle(rightTibia, 0.40980330836826856F, 0.0F, 0.0F);
         this.torso = new ModelRenderer(this, 65, 70);
-        this.torso.setRotationPoint(0.0F, 4.0F, -12.5F);
+        this.torso.setPos(0.0F, 4.0F, -12.5F);
         this.torso.addBox(-4.5F, 0.0F, 0.0F, 9, 12, 18, 0.0F);
         this.setRotateAngle(torso, 0.045553093477052F, 0.0F, 0.0F);
         this.mouthExtension = new ModelRenderer(this, 103, 109);
-        this.mouthExtension.setRotationPoint(0.0F, 2.0F, 1.0F);
+        this.mouthExtension.setPos(0.0F, 2.0F, 1.0F);
         this.mouthExtension.addBox(-2.0F, -1.0F, 0.0F, 4, 1, 6, 0.0F);
         this.setRotateAngle(mouthExtension, 0.22759093446006054F, 0.0F, 0.0F);
         this.leftBigFinger = new ModelRenderer(this, 0, 143);
-        this.leftBigFinger.setRotationPoint(17.0F, 0.0F, -1.0F);
+        this.leftBigFinger.setPos(17.0F, 0.0F, -1.0F);
         this.leftBigFinger.addBox(0.0F, -0.5F, -0.1F, 10, 1, 2, 0.0F);
         this.rightFemur = new ModelRenderer(this, 21, 26);
-        this.rightFemur.setRotationPoint(-3.5F, 2.8F, 6.3F);
+        this.rightFemur.setPos(-3.5F, 2.8F, 6.3F);
         this.rightFemur.addBox(-3.0F, -2.5F, -3.2F, 3, 13, 7, 0.0F);
         this.leftFemur = new ModelRenderer(this, 0, 26);
-        this.leftFemur.setRotationPoint(3.5F, 2.8F, 6.3F);
+        this.leftFemur.setPos(3.5F, 2.8F, 6.3F);
         this.leftFemur.addBox(0.0F, -2.5F, -3.2F, 3, 13, 7, 0.0F);
         this.noseExtension_1 = new ModelRenderer(this, 48, 104);
-        this.noseExtension_1.setRotationPoint(0.0F, 0.0F, 7.0F);
+        this.noseExtension_1.setPos(0.0F, 0.0F, 7.0F);
         this.noseExtension_1.addBox(-2.0F, 0.0F, 0.0F, 4, 3, 9, 0.0F);
         this.setRotateAngle(noseExtension_1, -0.5462880558742251F, 0.0F, 0.0F);
         this.rightHumerus = new ModelRenderer(this, 47, 122);
-        this.rightHumerus.setRotationPoint(-4.0F, 2.2F, 3.5F);
+        this.rightHumerus.setPos(-4.0F, 2.2F, 3.5F);
         this.rightHumerus.addBox(-20.0F, -1.5F, -1.5F, 20, 3, 3, 0.0F);
         this.tail_1 = new ModelRenderer(this, 37, 60);
-        this.tail_1.setRotationPoint(0.0F, 0.0F, 10.0F);
+        this.tail_1.setPos(0.0F, 0.0F, 10.0F);
         this.tail_1.addBox(-2.0F, 0.0F, -1.5F, 4, 7, 11, 0.0F);
         this.setRotateAngle(tail_1, 0.045553093477052F, 0.0F, 0.0F);
         this.tail_4 = new ModelRenderer(this, 30, 58);
-        this.tail_4.setRotationPoint(0.0F, 0.5F, 5.0F);
+        this.tail_4.setPos(0.0F, 0.5F, 5.0F);
         this.tail_4.addBox(-0.5F, 0.0F, 0.0F, 1, 3, 5, 0.0F);
         this.setRotateAngle(tail_4, -0.091106186954104F, 0.0F, 0.0F);
         this.rightRadiusWing = new ModelRenderer(this, 20, 167);
-        this.rightRadiusWing.setRotationPoint(0.0F, 0.0F, -1.0F);
+        this.rightRadiusWing.setPos(0.0F, 0.0F, -1.0F);
         this.rightRadiusWing.addBox(0.0F, 0.0F, -16.0F, 17, 0, 16, 0.0F);
         this.leftFoot = new ModelRenderer(this, 36, 19);
-        this.leftFoot.setRotationPoint(0.5F, 6.9F, 3.0F);
+        this.leftFoot.setPos(0.5F, 6.9F, 3.0F);
         this.leftFoot.addBox(-2.0F, -0.1F, -3.6F, 4, 2, 7, 0.0F);
         this.setRotateAngle(leftFoot, -0.27314402793711257F, 0.0F, 0.0F);
         this.nose.addChild(this.noseExtension);
@@ -202,7 +202,7 @@ public class DemonicDragonModel extends EntityModel {
     }
 
     @Override
-    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
         torso.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
     }
 
@@ -210,13 +210,13 @@ public class DemonicDragonModel extends EntityModel {
      * This is a helper function from Tabula to set the rotation of model parts
      */
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+        modelRenderer.xRot = x;
+        modelRenderer.yRot = y;
+        modelRenderer.zRot = z;
     }
 
     @Override
-    public void setRotationAngles(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         //    EntitySkeletalKing entitySkeletalKing = (EntitySkeletalKing) entity;
 
         //    limbSwing = entitySkeletalKing.ticksExisted;

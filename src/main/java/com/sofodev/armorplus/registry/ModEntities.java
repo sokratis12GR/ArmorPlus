@@ -5,7 +5,10 @@ import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
 import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonEntity;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
-import com.sofodev.armorplus.registry.entities.bosses.WitherlingEntity;
+import com.sofodev.armorplus.registry.entities.normal.BoreasEntity;
+import com.sofodev.armorplus.registry.entities.normal.FrostWolfAlphaEntity;
+import com.sofodev.armorplus.registry.entities.normal.FrostWolfEntity;
+import com.sofodev.armorplus.registry.entities.normal.WitherlingEntity;
 import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -53,6 +56,12 @@ public class ModEntities {
             () -> build(WitherlingEntity::new, MobType.WITHERLING));
     public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
             () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
+    public static final RegistryObject<EntityType<FrostWolfEntity>> FROST_WOLF = register("frost_wolf",
+            () -> build(FrostWolfEntity::new, MobType.FROST_WOLF));
+    public static final RegistryObject<EntityType<FrostWolfAlphaEntity>> FROST_WOLF_ALPHA = register("frost_wolf_alpha",
+            () -> build(FrostWolfAlphaEntity::new, MobType.FROST_WOLF_ALPHA));
+    public static final RegistryObject<EntityType<BoreasEntity>> BOREAS = register("boreas",
+            () -> build(BoreasEntity::new, MobType.BOREAS));
 
     /////////////////////
     // UTILITY METHODS //

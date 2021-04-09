@@ -15,7 +15,7 @@ import net.minecraft.world.gen.feature.EndPodiumFeature;
 import javax.annotation.Nullable;
 
 public class LandingApproachPhase extends Phase {
-    private static final EntityPredicate field_221118_b = (new EntityPredicate()).setDistance(128.0D);
+    private static final EntityPredicate NEAR_EGG_TARGETING = (new EntityPredicate()).range(128.0D);
     private Path currentPath;
     private Vector3d targetLocation;
 
@@ -40,8 +40,8 @@ public class LandingApproachPhase extends Phase {
      * Called by dragon's onLivingUpdate. Only used when !worldObj.isRemote.
      */
     public void serverTick() {
-        double d0 = this.targetLocation == null ? 0.0D : this.targetLocation.squareDistanceTo(this.dragon.getPosX(), this.dragon.getPosY(), this.dragon.getPosZ());
-        if (d0 < 100.0D || d0 > 22500.0D || this.dragon.collidedHorizontally || this.dragon.collidedVertically) {
+        double d0 = this.targetLocation == null ? 0.0D : this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
+        if (d0 < 100.0D || d0 > 22500.0D || this.dragon.horizontalCollision || this.dragon.verticalCollision) {
             this.findNewTarget();
         }
 
@@ -56,42 +56,42 @@ public class LandingApproachPhase extends Phase {
     }
 
     private void findNewTarget() {
-        if (this.currentPath == null || this.currentPath.isFinished()) {
-            int i = this.dragon.initPathPoints();
-            BlockPos blockpos = this.dragon.world.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.END_PODIUM_LOCATION);
-            PlayerEntity playerentity = this.dragon.world.getClosestPlayer(field_221118_b, (double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ());
+        if (this.currentPath == null || this.currentPath.isDone()) {
+            int i = this.dragon.findClosestNode();
+            BlockPos blockpos = this.dragon.level.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.END_PODIUM_LOCATION);
+            PlayerEntity playerentity = this.dragon.level.getNearestPlayer(NEAR_EGG_TARGETING, (double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ());
             int j;
             if (playerentity != null) {
-                Vector3d vector3d = (new Vector3d(playerentity.getPosX(), 0.0D, playerentity.getPosZ())).normalize();
-                j = this.dragon.getNearestPpIdx(-vector3d.x * 40.0D, 105.0D, -vector3d.z * 40.0D);
+                Vector3d vector3d = (new Vector3d(playerentity.getX(), 0.0D, playerentity.getZ())).normalize();
+                j = this.dragon.findClosestNode(-vector3d.x * 40.0D, 105.0D, -vector3d.z * 40.0D);
             } else {
-                j = this.dragon.getNearestPpIdx(40.0D, (double) blockpos.getY(), 0.0D);
+                j = this.dragon.findClosestNode(40.0D, (double) blockpos.getY(), 0.0D);
             }
 
             PathPoint pathpoint = new PathPoint(blockpos.getX(), blockpos.getY(), blockpos.getZ());
             this.currentPath = this.dragon.findPath(i, j, pathpoint);
             if (this.currentPath != null) {
-                this.currentPath.incrementPathIndex();
+                this.currentPath.advance();
             }
         }
 
         this.navigateToNextPathNode();
-        if (this.currentPath != null && this.currentPath.isFinished()) {
+        if (this.currentPath != null && this.currentPath.isDone()) {
             this.dragon.getPhaseManager().setPhase(PhaseType.LANDING);
         }
 
     }
 
     private void navigateToNextPathNode() {
-        if (this.currentPath != null && !this.currentPath.isFinished()) {
-            Vector3i vector3i = this.currentPath.func_242948_g();
-            this.currentPath.incrementPathIndex();
+        if (this.currentPath != null && !this.currentPath.isDone()) {
+            Vector3i vector3i = this.currentPath.getNextNodePos();
+            this.currentPath.advance();
             double d0 = (double) vector3i.getX();
             double d1 = (double) vector3i.getZ();
 
             double d2;
             do {
-                d2 = (double) ((float) vector3i.getY() + this.dragon.getRNG().nextFloat() * 20.0F);
+                d2 = (double) ((float) vector3i.getY() + this.dragon.getRandom().nextFloat() * 20.0F);
             } while (d2 < (double) vector3i.getY());
 
             this.targetLocation = new Vector3d(d0, d2, d1);

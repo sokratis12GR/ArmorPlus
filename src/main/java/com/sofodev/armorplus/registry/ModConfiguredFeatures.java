@@ -8,6 +8,9 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.List;
@@ -16,6 +19,7 @@ import static com.sofodev.armorplus.config.APConfig.SERVER;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.features.APOreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD;
 import static com.sofodev.armorplus.utils.Utils.setRL;
+import static net.minecraft.block.Blocks.*;
 
 public class ModConfiguredFeatures {
 
@@ -40,14 +44,23 @@ public class ModConfiguredFeatures {
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CRYSTAL = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL,
             frostVeinSize.get(2), frostOffset.get(2), frostRange.get(2));
 
+    public static final SurfaceBuilderConfig CONFIG_SOUL_VALLEY = new SurfaceBuilderConfig(SOUL_SOIL.defaultBlockState(), SOUL_SOIL.defaultBlockState(), SOUL_SAND.defaultBlockState());
+    public static final SurfaceBuilderConfig CONFIG_POSSESSED_GROUNDS = new SurfaceBuilderConfig(BASALT.defaultBlockState(), BLACKSTONE.defaultBlockState(), GRAVEL.defaultBlockState());
+
+    public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CONFIGURED_SOUL_VALLEY = createConfiguredSurfaceBuilder(ModFeatures.SOUL_VALLEY.get(), CONFIG_SOUL_VALLEY);
+    public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> CONFIGURED_POSSESSED_GROUNDS = createConfiguredSurfaceBuilder(ModFeatures.POSSESSED_GROUNDS.get(), CONFIG_POSSESSED_GROUNDS);
+
     public static void registerConfiguredFeatures() {
-        Registry<ConfiguredFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_FEATURE;
-        Registry.register(registry, setRL("ore_lava_crystal"), CF_ORE_LAVA_CRYSTAL);
-        Registry.register(registry, setRL("ore_lava_crystal_stone"), CF_ORE_LAVA_CR_STONE);
-        Registry.register(registry, setRL("ore_lava_crystal_obsidian"), CF_ORE_LAVA_CR_OBSIDIAN);
-        Registry.register(registry, setRL("ore_frost_crystal"), CF_ORE_FROST_CRYSTAL);
-        Registry.register(registry, setRL("ore_frost_crystal_stone"), CF_ORE_FROST_CR_STONE);
-        Registry.register(registry, setRL("ore_frost_crystal_obsidian"), CF_ORE_FROST_CR_OBSIDIAN);
+        Registry<ConfiguredFeature<?, ?>> registryConfiguredFeatures = WorldGenRegistries.CONFIGURED_FEATURE;
+        Registry.register(registryConfiguredFeatures, setRL("ore_lava_crystal"), CF_ORE_LAVA_CRYSTAL);
+        Registry.register(registryConfiguredFeatures, setRL("ore_lava_crystal_stone"), CF_ORE_LAVA_CR_STONE);
+        Registry.register(registryConfiguredFeatures, setRL("ore_lava_crystal_obsidian"), CF_ORE_LAVA_CR_OBSIDIAN);
+        Registry.register(registryConfiguredFeatures, setRL("ore_frost_crystal"), CF_ORE_FROST_CRYSTAL);
+        Registry.register(registryConfiguredFeatures, setRL("ore_frost_crystal_stone"), CF_ORE_FROST_CR_STONE);
+        Registry.register(registryConfiguredFeatures, setRL("ore_frost_crystal_obsidian"), CF_ORE_FROST_CR_OBSIDIAN);
+        Registry<ConfiguredSurfaceBuilder<?>> registryConfiguredSurfaceBuilder = WorldGenRegistries.CONFIGURED_SURFACE_BUILDER;
+        Registry.register(registryConfiguredSurfaceBuilder, setRL("soul_valley"), CONFIGURED_SOUL_VALLEY);
+        Registry.register(registryConfiguredSurfaceBuilder, setRL("possessed_grounds"), CONFIGURED_POSSESSED_GROUNDS);
     }
 
     /**
@@ -65,6 +78,10 @@ public class ModConfiguredFeatures {
                 .configured(new APOreFeatureConfig(replace, block.get().defaultBlockState(), veinSize))
                 .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(yOffset, 0, yRange)))
                 .squared();
+    }
+
+    private static ConfiguredSurfaceBuilder<SurfaceBuilderConfig> createConfiguredSurfaceBuilder(SurfaceBuilder<SurfaceBuilderConfig> builder, SurfaceBuilderConfig config) {
+        return builder.configured(config);
     }
 
 }

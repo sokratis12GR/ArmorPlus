@@ -16,7 +16,7 @@ import net.minecraft.world.gen.feature.EndPodiumFeature;
 import javax.annotation.Nullable;
 
 public class HoldingPatternPhase extends Phase {
-    private static final EntityPredicate field_221117_b = (new EntityPredicate()).setDistance(64.0D);
+    private static final EntityPredicate NEW_TARGET_TARGETING = (new EntityPredicate()).range(64.0D);
     private Path currentPath;
     private Vector3d targetLocation;
     private boolean clockwise;
@@ -34,8 +34,8 @@ public class HoldingPatternPhase extends Phase {
      * Called by dragon's onLivingUpdate. Only used when !worldObj.isRemote.
      */
     public void serverTick() {
-        double d0 = this.targetLocation == null ? 0.0D : this.targetLocation.squareDistanceTo(this.dragon.getPosX(), this.dragon.getPosY(), this.dragon.getPosZ());
-        if (d0 < 100.0D || d0 > 22500.0D || this.dragon.collidedHorizontally || this.dragon.collidedVertically) {
+        double d0 = this.targetLocation == null ? 0.0D : this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
+        if (d0 < 100.0D || d0 > 22500.0D || this.dragon.horizontalCollision || this.dragon.verticalCollision) {
             this.findNewTarget();
         }
 
@@ -58,30 +58,30 @@ public class HoldingPatternPhase extends Phase {
     }
 
     private void findNewTarget() {
-        if (this.currentPath != null && this.currentPath.isFinished()) {
-            BlockPos blockpos = this.dragon.world.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, new BlockPos(EndPodiumFeature.END_PODIUM_LOCATION));
+        if (this.currentPath != null && this.currentPath.isDone()) {
+            BlockPos blockpos = this.dragon.level.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, new BlockPos(EndPodiumFeature.END_PODIUM_LOCATION));
             int i = this.dragon.getDragonFight() == null ? 0 : this.dragon.getDragonFight().getNumAliveCrystals();
-            if (this.dragon.getRNG().nextInt(i + 3) == 0) {
+            if (this.dragon.getRandom().nextInt(i + 3) == 0) {
                 this.dragon.getPhaseManager().setPhase(PhaseType.LANDING_APPROACH);
                 return;
             }
 
             double d0 = 64.0D;
-            PlayerEntity playerentity = this.dragon.world.getClosestPlayer(field_221117_b, (double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ());
+            PlayerEntity playerentity = this.dragon.level.getNearestPlayer(NEW_TARGET_TARGETING, (double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ());
             if (playerentity != null) {
-                d0 = blockpos.distanceSq(playerentity.getPositionVec(), true) / 512.0D;
+                d0 = blockpos.distSqr(playerentity.position(), true) / 512.0D;
             }
 
-            if (playerentity != null && !playerentity.abilities.disableDamage && (this.dragon.getRNG().nextInt(MathHelper.abs((int) d0) + 2) == 0 || this.dragon.getRNG().nextInt(i + 2) == 0)) {
+            if (playerentity != null && !playerentity.abilities.invulnerable && (this.dragon.getRandom().nextInt(MathHelper.abs((int) d0) + 2) == 0 || this.dragon.getRandom().nextInt(i + 2) == 0)) {
                 this.strafePlayer(playerentity);
                 return;
             }
         }
 
-        if (this.currentPath == null || this.currentPath.isFinished()) {
-            int j = this.dragon.initPathPoints();
+        if (this.currentPath == null || this.currentPath.isDone()) {
+            int j = this.dragon.findClosestNode();
             int k = j;
-            if (this.dragon.getRNG().nextInt(8) == 0) {
+            if (this.dragon.getRandom().nextInt(8) == 0) {
                 this.clockwise = !this.clockwise;
                 k = j + 6;
             }
@@ -105,7 +105,7 @@ public class HoldingPatternPhase extends Phase {
 
             this.currentPath = this.dragon.findPath(j, k, (PathPoint) null);
             if (this.currentPath != null) {
-                this.currentPath.incrementPathIndex();
+                this.currentPath.advance();
             }
         }
 
@@ -118,15 +118,15 @@ public class HoldingPatternPhase extends Phase {
     }
 
     private void navigateToNextPathNode() {
-        if (this.currentPath != null && !this.currentPath.isFinished()) {
-            Vector3i vector3i = this.currentPath.func_242948_g();
-            this.currentPath.incrementPathIndex();
+        if (this.currentPath != null && !this.currentPath.isDone()) {
+            Vector3i vector3i = this.currentPath.getNextNodePos();
+            this.currentPath.advance();
             double d0 = (double) vector3i.getX();
             double d1 = (double) vector3i.getZ();
 
             double d2;
             do {
-                d2 = (float) vector3i.getY() + this.dragon.getRNG().nextFloat() * 20.0F;
+                d2 = (float) vector3i.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
             } while (d2 < (double) vector3i.getY());
 
             this.targetLocation = new Vector3d(d0, d2, d1);

@@ -24,11 +24,11 @@ public class MaterialItem extends APItem {
 
     @Override
     public Rarity getRarity(ItemStack stack) {
-        return Rarity.create(stack.getDisplayName().getString(), color);
+        return Rarity.create(stack.getHoverName().getString(), color);
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return hasGlint;
     }
 }

@@ -68,7 +68,7 @@ public final class Utils {
     }
 
     public static ItemStack getStackFromSlot(PlayerEntity player, EquipmentSlotType slot) {
-        return player.getItemStackFromSlot(slot);
+        return player.getItemBySlot(slot);
     }
 
     public static String setName(String name) {
@@ -111,7 +111,7 @@ public final class Utils {
 
     public static String getUnlocalizedNames(ItemStack stack, String key, String... names) {
         for (int i = 0; i < names.length; i++) {
-            if (stack.getDamage() == i) {
+            if (stack.getDamageValue() == i) {
                 return key + names[i];
             }
         }
@@ -204,7 +204,7 @@ public final class Utils {
     }
 
     public static boolean allowsFlightByDefault(PlayerEntity player) {
-        return player.abilities.isCreativeMode || player.isSpectator();
+        return player.abilities.instabuild || player.isSpectator();
     }
 
     public static List<ItemStack> getRepairStacks(APRepair repair) {

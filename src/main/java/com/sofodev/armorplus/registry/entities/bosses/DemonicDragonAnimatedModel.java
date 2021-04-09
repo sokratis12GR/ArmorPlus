@@ -10,7 +10,7 @@ public class DemonicDragonAnimatedModel<T extends MobEntity & IAnimatable> exten
 
     @Override
     public ResourceLocation getModelLocation(T object) {
-        return new ResourceLocation(ArmorPlus.MODID, "geo/demonic_dragon.geo.json");
+        return new ResourceLocation(ArmorPlus.MODID, "geo/demonic_dragon_v2.geo.json");
     }
 
     @Override
@@ -19,7 +19,8 @@ public class DemonicDragonAnimatedModel<T extends MobEntity & IAnimatable> exten
         //        return new ResourceLocation("textures/block/basalt_side.png");
         //        return new ResourceLocation(ArmorPlus.MODID, "textures/blocks/compressed_obsidian.png");
         //        return new ResourceLocation( "textures/block/crying_obsidian.png");
-        return new ResourceLocation("textures/block/gilded_blackstone.png");
+        //        return new ResourceLocation("textures/block/gilded_blackstone.png");
+        return new ResourceLocation("textures/block/stone.png");
     }
 
     @Override

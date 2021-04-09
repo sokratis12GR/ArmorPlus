@@ -11,6 +11,6 @@ public class APBlockItem extends BlockItem {
     }
 
     public APBlockItem(Block blockIn) {
-        super(blockIn, new Properties().group(ArmorPlus.AP_BLOCK_GROUP));
+        super(blockIn, new Properties().tab(ArmorPlus.AP_BLOCK_GROUP));
     }
 }

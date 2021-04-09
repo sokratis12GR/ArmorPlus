@@ -15,10 +15,8 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.sofodev.armorplus.registry.items.armors.APArmorMaterial.*;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.RomanNumeralUtil.generate;
-import static com.sofodev.armorplus.utils.ToolTipUtils.addExperimentalItemInformation;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.util.text.TextFormatting.*;
 
@@ -61,9 +59,6 @@ public class APArmorItem extends ArmorItem {
                 String theLvl = lvl > 0 ? " " + generate(lvl) : "";
                 tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));
             }
-        }
-        if (mat.equals(FROST) || mat.equals(FROST_LAVA) || mat.equals(MANYULLYN) || mat.equals(ARDITE) || mat.equals(COBALT) || mat.equals(KNIGHT_SLIME) || mat.equals(PIG_IRON) || mat.equals(SLAYER)) {
-            addExperimentalItemInformation(tooltip);
         }
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }

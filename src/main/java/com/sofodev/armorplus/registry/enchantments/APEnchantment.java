@@ -30,13 +30,13 @@ public class APEnchantment extends Enchantment {
     }
 
     @Override
-    public int getMinEnchantability(int enchantmentLevel) {
+    public int getMinCost(int enchantmentLevel) {
         return enchantmentLevel * this.minEnchantability;
     }
 
     @Override
-    public int getMaxEnchantability(int enchantmentLevel) {
-        return this.getMinEnchantability(enchantmentLevel) + this.maxEnchantability;
+    public int getMaxCost(int enchantmentLevel) {
+        return this.getMinCost(enchantmentLevel) + this.maxEnchantability;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class APEnchantment extends Enchantment {
     }
 
     @Override
-    public boolean isTreasureEnchantment() {
+    public boolean isTreasureOnly() {
         return this.isTreasure;
     }
 
@@ -65,12 +65,12 @@ public class APEnchantment extends Enchantment {
     }
 
     @Override
-    protected boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench);
+    protected boolean checkCompatibility(Enchantment ench) {
+        return super.checkCompatibility(ench);
     }
 
     @Override
-    public boolean canApply(ItemStack stack) {
-        return super.canApply(stack);
+    public boolean canEnchant(ItemStack stack) {
+        return super.canEnchant(stack);
     }
 }

@@ -19,7 +19,7 @@ public class HoverPhase extends Phase {
      */
     public void serverTick() {
         if (this.targetLocation == null) {
-            this.targetLocation = this.dragon.getPositionVec();
+            this.targetLocation = this.dragon.position();
         }
 
     }

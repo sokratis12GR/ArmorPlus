@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.entities.bosses.data;
 
 import net.minecraft.entity.EntityClassification;
 
+import static net.minecraft.entity.EntityClassification.CREATURE;
 import static net.minecraft.entity.EntityClassification.MONSTER;
 
 public class MobType {
@@ -10,6 +11,10 @@ public class MobType {
 
     public static final MobType GUARDIAN_OVERLORD = new MobType("guardian_overlord", MONSTER);
     public static final MobType DEMONIC_DRAGON = new MobType("demonic_dragon", MONSTER, 2f, 2f, true);
+
+    public static final MobType FROST_WOLF = new MobType("frost_wolf", CREATURE, 1f, 1f, false);
+    public static final MobType FROST_WOLF_ALPHA = new MobType("frost_wolf_alpha", CREATURE, 1f, 1f, false);
+    public static final MobType BOREAS = new MobType("boreas", MONSTER, 1f, 3f, false);
 
     private String name;
     private EntityClassification classification;

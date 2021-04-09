@@ -1,4 +1,4 @@
-package com.sofodev.armorplus.registry.entities.bosses;
+package com.sofodev.armorplus.registry.entities.normal;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;

@@ -9,21 +9,21 @@ public class DummyBiome {
 
     public static Biome build() {
         BiomeAmbience.Builder ambience = new BiomeAmbience.Builder()
-                .withSkyColor(10668270)
-                .setFogColor(7133439)
-                .setWaterColor(10869759)
-                .setWaterFogColor(5538960);
+                .skyColor(10668270)
+                .fogColor(7133439)
+                .waterColor(10869759)
+                .waterFogColor(5538960);
         Biome.Builder builder = new Biome.Builder()
                 .precipitation(Biome.RainType.SNOW)
-                .category(Biome.Category.PLAINS)
+                .biomeCategory(Biome.Category.PLAINS)
                 .scale(0.5f)
                 .depth(0.125f)
                 .temperature(0.0f)
                 .downfall(0.4f)
-                .setEffects(ambience.build())
-                .withTemperatureModifier(Biome.TemperatureModifier.FROZEN)
-                .withMobSpawnSettings(new MobSpawnInfo.Builder().copy())
-                .withGenerationSettings(BiomeGenerationSettings.DEFAULT_SETTINGS);
+                .specialEffects(ambience.build())
+                .temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
+                .mobSpawnSettings(new MobSpawnInfo.Builder().build())
+                .generationSettings(BiomeGenerationSettings.EMPTY);
         return builder.build();
     }
 }

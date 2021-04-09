@@ -10,8 +10,8 @@ import static com.sofodev.armorplus.registry.enchantments.FuriousEnchantment.Lev
 import static net.minecraft.enchantment.Enchantment.Rarity.RARE;
 import static net.minecraft.enchantment.EnchantmentType.WEARABLE;
 import static net.minecraft.inventory.EquipmentSlotType.*;
-import static net.minecraft.potion.Effects.SPEED;
-import static net.minecraft.potion.Effects.STRENGTH;
+import static net.minecraft.potion.Effects.DAMAGE_BOOST;
+import static net.minecraft.potion.Effects.MOVEMENT_SPEED;
 
 public class FuriousEnchantment extends APEnchantment {
 
@@ -22,22 +22,22 @@ public class FuriousEnchantment extends APEnchantment {
     }
 
     @Override
-    public void onEntityDamaged(LivingEntity user, Entity target, int level) {
+    public void doPostAttack(LivingEntity user, Entity target, int level) {
         if (level > limit()) {
             level = limit();
         }
-        super.onEntityDamaged(user, target, level);
+        super.doPostAttack(user, target, level);
     }
 
     @Override
-    public void onUserHurt(LivingEntity user, Entity attacker, int level) {
+    public void doPostHurt(LivingEntity user, Entity attacker, int level) {
         if (level > limit()) {
             level = limit();
         }
         Levels lvl = Levels.values()[level];
-        user.addPotionEffect(new EffectInstance(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
+        user.addEffect(new EffectInstance(DAMAGE_BOOST, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
         if (lvl.hasFastLegs) {
-            user.addPotionEffect(new EffectInstance(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
+            user.addEffect(new EffectInstance(MOVEMENT_SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
         }
     }
 

@@ -24,8 +24,6 @@ public class APItemBase extends APItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(translate(Color.parseColor("#252874"), "tooltip.armorplus.base_soulless"));
-        ResourceLocation rl = this.getRegistryName();
-        if (rl != null && rl.getPath().contains("slayer")) addExperimentalItemInformation(tooltip);
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }

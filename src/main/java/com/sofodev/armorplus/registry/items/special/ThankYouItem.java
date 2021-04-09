@@ -28,7 +28,7 @@ public class ThankYouItem extends APItem {
 
     @Override
     public Rarity getRarity(ItemStack stack) {
-        return Rarity.create(stack.getDisplayName().getString(), TextFormatting.RED);
+        return Rarity.create(stack.getHoverName().getString(), TextFormatting.RED);
     }
 
 

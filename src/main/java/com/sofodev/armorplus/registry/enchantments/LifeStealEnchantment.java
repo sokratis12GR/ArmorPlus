@@ -21,15 +21,15 @@ public class LifeStealEnchantment extends APEnchantment {
     }
 
     @Override
-    public void onUserHurt(LivingEntity user, Entity attacker, int level) {
+    public void doPostHurt(LivingEntity user, Entity attacker, int level) {
         if (level > limit()) {
             level = limit();
         }
-        super.onUserHurt(user, attacker, level);
+        super.doPostHurt(user, attacker, level);
     }
 
     @Override
-    public void onEntityDamaged(LivingEntity user, Entity target, int level) {
+    public void doPostAttack(LivingEntity user, Entity target, int level) {
         if (level > limit()) {
             level = limit();
         }
@@ -38,16 +38,16 @@ public class LifeStealEnchantment extends APEnchantment {
         if (user == null || target == null) {
             return;
         }
-        ItemStack mainHand = user.getHeldItemMainhand();
+        ItemStack mainHand = user.getMainHandItem();
         Item handItem = mainHand.getItem();
         if (mainHand.isEmpty()) return;
         if (!isCorrectItem(handItem)) {
             user.heal(lvl.healingFactor);
         } else if (handItem instanceof ToolItem) {
-            damageDealt = ((ToolItem) handItem).getTier().getAttackDamage();
+            damageDealt = ((ToolItem) handItem).getTier().getAttackDamageBonus();
             user.heal(level * softCap(damageDealt, 10, 1) / 4);
         } else if (handItem instanceof SwordItem) {
-            damageDealt = ((SwordItem) handItem).getAttackDamage();
+            damageDealt = ((SwordItem) handItem).getDamage();
             user.heal(level * softCap(damageDealt, 10, 1) / 4);
         }
     }

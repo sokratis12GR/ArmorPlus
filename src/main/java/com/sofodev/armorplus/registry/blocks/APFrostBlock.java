@@ -8,12 +8,12 @@ import net.minecraftforge.common.ToolType;
 public class APFrostBlock extends Block {
 
     public APFrostBlock() {
-        super(Properties.create(Material.ROCK, MaterialColor.LIGHT_BLUE).hardnessAndResistance(5.0f, 1000.0f)
-                .setLightLevel((light) -> 8).harvestLevel(2).harvestTool(ToolType.PICKAXE)
+        super(Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(5.0f, 1000.0f)
+                .lightLevel((light) -> 8).harvestLevel(2).harvestTool(ToolType.PICKAXE)
         );
     }
 
     public APFrostBlock(Properties props) {
-        super(props.setLightLevel((light) -> 8).harvestLevel(2).harvestTool(ToolType.PICKAXE));
+        super(props.lightLevel((light) -> 8).harvestLevel(2).harvestTool(ToolType.PICKAXE));
     }
 }

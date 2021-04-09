@@ -192,7 +192,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
         int damage = mat.destructionRange();
         //Damages the item and executes the animation
-        stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, (entity)->entity.broadcastBreakEvent(EquipmentSlotType.MAINHAND));
+        stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, (entity) -> entity.broadcastBreakEvent(EquipmentSlotType.MAINHAND));
         player.getCooldowns().addCooldown(stack.getItem(), mat.cooldown() * 20);
         player.awardStat(Stats.ITEM_USED.get(this));
     }

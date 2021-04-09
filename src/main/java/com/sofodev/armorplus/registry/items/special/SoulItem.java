@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.items.special;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,15 +36,22 @@ public class SoulItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
-        if (value != null) {
-            tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.soul", value.toString()));
-            if (isBoss) {
-                tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.boss_soul"));
+    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        if (world != null && world.isClientSide) {
+            if (entity != null && !entity.isEmpty()) {
+            EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
+            if (value != null) {
+                    Entity entity = value.create(world);
+                    if (entity != null) {
+                        tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.soul", entity.getName()));
+                    }
+                    if (isBoss) {
+                        tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.boss_soul"));
+                    }
+                }
             }
         }
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, world, tooltip, flagIn);
     }
 
     @Override

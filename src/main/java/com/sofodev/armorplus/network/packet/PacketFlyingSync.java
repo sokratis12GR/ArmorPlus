@@ -23,8 +23,8 @@ public class PacketFlyingSync {
         ctx.enqueueWork(() -> {
             ClientPlayerEntity player = Minecraft.getInstance().player;
             if (player != null) {
-                player.abilities.allowFlying = message.allowFlying;
-                player.abilities.isFlying = message.isFlying;
+                player.abilities.mayfly = message.allowFlying;
+                player.abilities.flying = message.isFlying;
             }
         });
         ctx.setPacketHandled(true);

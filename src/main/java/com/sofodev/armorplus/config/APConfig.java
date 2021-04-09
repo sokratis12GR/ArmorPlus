@@ -2,20 +2,16 @@ package com.sofodev.armorplus.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import com.sofodev.armorplus.registry.items.extras.Buff;
-import com.sofodev.armorplus.registry.items.extras.DeBuff;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.Builder;
+import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static java.util.Arrays.asList;
-import static net.minecraftforge.common.ForgeConfigSpec.Builder;
-import static net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 
 public class APConfig {
 
@@ -48,13 +44,13 @@ public class APConfig {
         public final ConfigValue<List<Integer>> frostCrystalRangeList;
         //Advancements
         public final ConfigValue<Boolean> enableThankYouAdvancement;
+        //Armor
+        //    public final ConfigValue<List<Buff>> coalArmorBuffs;
 
         //Tests
-        public final ConfigValue<Integer> TEST;
-        public final ConfigValue<List<Boolean>> TEST_LIST;
-        public final ConfigValue<List<Integer>> TEST_INT_LIST;
-        public final ConfigValue<Buff> ENUM_TEST;
-        public final ConfigValue<List<DeBuff>> ENUM_LIST_TEST;
+        //    public final ConfigValue<Integer> coalArmor;
+        //    public final ConfigValue<List<Boolean>> TEST_LIST;
+        //    public final ConfigValue<List<Integer>> TEST_INT_LIST;
 
         ServerConfig(Builder builder) {
             builder.push("world_gen");
@@ -77,25 +73,25 @@ public class APConfig {
             enableThankYouAdvancement = builder.comment("Enable/Disable the Thank You 6M advancement")
                     .translation(MODID + ".config.advancement.thank_you_6m")
                     .define("enableThankYou6M", true);
-//CUSTOM_MAP_TEST = withValues(builder, "list", 4, 3, 12, 4, 3, 12, 4, 3, 12, 123);
-            builder.pop();
-            builder.push("test").comment("Please Ignore");
-            TEST = builder.comment("Test: Please Ignore")
-                    .translation(MODID + ".config.test")
-                    .define("TEST", 1);
-            TEST_LIST = builder.comment("Test List: Please Ignore")
-                    .translation(MODID + ".config.test_list")
-                    .define("_boolean", asList(true, true, false, true));
-            TEST_INT_LIST = builder.comment("Test List: Please Ignore")
-                    .translation(MODID + ".config.test_int_list")
-                    .define("_int", asList(1, 2, 1, 3));
-            ENUM_TEST = builder.comment("Enum Test: Please Ignore")
-                    .translation(MODID + ".config.test_enum")
-                    .defineEnum("_enum", Buff.NONE);
-            ENUM_LIST_TEST = builder.comment("Enum List Test: Please Ignore", "Allowed Values: ",
-                    Arrays.stream(DeBuff.values()).map(Enum::name).collect(Collectors.joining(", ")))
-                    .translation(MODID + ".config.test_enum_list")
-                    .define("_enum_list", asList(DeBuff.NONE, DeBuff.IGNITE));
+            //CUSTOM_MAP_TEST = withValues(builder, "list", 4, 3, 12, 4, 3, 12, 4, 3, 12, 123);
+            // builder.pop();
+            // builder.push("test").comment("Please Ignore");
+            //TEST = builder.comment("Test: Please Ignore")
+            //        .translation(MODID + ".config.test")
+            //        .define("TEST", 1);
+            //TEST_LIST = builder.comment("Test List: Please Ignore")
+            //        .translation(MODID + ".config.test_list")
+            //        .define("_boolean", asList(true, true, false, true));
+            //TEST_INT_LIST = builder.comment("Test List: Please Ignore")
+            //        .translation(MODID + ".config.test_int_list")
+            //        .define("_int", asList(1, 2, 1, 3));
+            //ENUM_TEST = builder.comment("Enum Test: Please Ignore")
+            //        .translation(MODID + ".config.test_enum")
+            //        .defineEnum("_enum", Buff.NONE);
+            //ENUM_LIST_TEST = builder.comment("Enum List Test: Please Ignore", "Allowed Values: ",
+            //        Arrays.stream(DeBuff.values()).map(Enum::name).collect(Collectors.joining(", ")))
+            //        .translation(MODID + ".config.test_enum_list")
+            //        .define("_enum_list", asList(DeBuff.NONE, DeBuff.IGNITE));
 
             builder.pop();
         }

@@ -42,7 +42,7 @@ public class ModVillagers {
     }
 
     public static Supplier<Set<BlockState>> getAllStates() {
-        return () -> ImmutableSet.copyOf(ForgeRegistries.BLOCKS.getValue(setRL("compressed_obsidian")).getStateDefinition().getPossibleStates());
+        return () -> ImmutableSet.copyOf(ForgeRegistries.BLOCKS.getValue(setRL("soul_box")).getStateDefinition().getPossibleStates());
     }
 
     public static RegistryObject<VillagerProfession> register(String name, Supplier<? extends VillagerProfession> sup) {

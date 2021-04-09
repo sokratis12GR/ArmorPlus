@@ -21,29 +21,29 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-import static net.minecraft.block.AbstractBlock.Properties.from;
+import static net.minecraft.block.AbstractBlock.Properties.copy;
 import static net.minecraft.util.math.shapes.IBooleanFunction.OR;
-import static net.minecraft.util.math.shapes.VoxelShapes.combineAndSimplify;
+import static net.minecraft.util.math.shapes.VoxelShapes.join;
 
 public class StoneBrickCornerBlock extends Block implements IWaterLoggable {
 
-    public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = HorizontalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public static final VoxelShape NW_C = combineAndSimplify(makeCuboidShape(0, 8, 0, 8, 16, 8), makeCuboidShape(0, 0, 0, 16, 8, 16), OR);
-    public static final VoxelShape NE_C = combineAndSimplify(makeCuboidShape(8, 8, 0, 16, 16, 8), makeCuboidShape(0, 0, 0, 16, 8, 16), OR);
-    public static final VoxelShape SW_C = combineAndSimplify(makeCuboidShape(0, 8, 8, 8, 16, 16), makeCuboidShape(0, 0, 0, 16, 8, 16), OR);
-    public static final VoxelShape SE_C = combineAndSimplify(makeCuboidShape(8, 8, 8, 16, 16, 16), makeCuboidShape(0, 0, 0, 16, 8, 16), OR);
+    public static final VoxelShape NW_C = join(box(0, 8, 0, 8, 16, 8), box(0, 0, 0, 16, 8, 16), OR);
+    public static final VoxelShape NE_C = join(box(8, 8, 0, 16, 16, 8), box(0, 0, 0, 16, 8, 16), OR);
+    public static final VoxelShape SW_C = join(box(0, 8, 8, 8, 16, 16), box(0, 0, 0, 16, 8, 16), OR);
+    public static final VoxelShape SE_C = join(box(8, 8, 8, 16, 16, 16), box(0, 0, 0, 16, 8, 16), OR);
 
     public StoneBrickCornerBlock(Block block) {
-        super(from(block));
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
+        super(copy(block));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        switch (state.get(FACING)) {
+        switch (state.getValue(FACING)) {
             case NORTH:
                 return SW_C;
             case EAST:
@@ -63,24 +63,24 @@ public class StoneBrickCornerBlock extends Block implements IWaterLoggable {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        BlockPos blockpos = context.getPos();
-        FluidState fluidstate = context.getWorld().getFluidState(blockpos);
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing()).with(WATERLOGGED, fluidstate.getFluid() == Fluids.WATER);
+        BlockPos blockpos = context.getClickedPos();
+        FluidState fluidstate = context.getLevel().getFluidState(blockpos);
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection()).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (stateIn.get(WATERLOGGED)) {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (stateIn.getValue(WATERLOGGED)) {
+            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
-        return facing.getAxis().isHorizontal() ? stateIn : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return facing.getAxis().isHorizontal() ? stateIn : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
-        return state.with(FACING, rot.rotate(state.get(FACING)));
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @SuppressWarnings("deprecation")
@@ -90,19 +90,19 @@ public class StoneBrickCornerBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING, WATERLOGGED);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
         return false;
     }
 

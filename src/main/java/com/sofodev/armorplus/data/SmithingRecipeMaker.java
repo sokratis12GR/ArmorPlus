@@ -5,6 +5,8 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.SmithingRecipeBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.fml.RegistryObject;
 
@@ -16,7 +18,7 @@ import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.DataUtils.quickModLookupItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setRL;
-import static net.minecraft.item.crafting.Ingredient.fromItems;
+import static net.minecraft.item.crafting.Ingredient.*;
 
 public class SmithingRecipeMaker extends RecipeProvider {
 
@@ -46,10 +48,10 @@ public class SmithingRecipeMaker extends RecipeProvider {
 
     public void buildSmithing(Consumer<IFinishedRecipe> consumer, IItemProvider base, IItemProvider addition, IItemProvider result) {
         String path = getPath(base);
-        SmithingRecipeBuilder.smithingRecipe(fromItems(base), //Base
-                fromItems(addition), //Addition
+        SmithingRecipeBuilder.smithing(of(base), //Base
+                of(addition), //Addition
                 result.asItem() // Result
-        ).addCriterion("has_req", hasItem(addition))
-                .build(consumer, setRL("smithing/" + path));
+        ).unlocks("has_req", has(addition))
+                .save(consumer, setRL("smithing/" + path));
     }
 }

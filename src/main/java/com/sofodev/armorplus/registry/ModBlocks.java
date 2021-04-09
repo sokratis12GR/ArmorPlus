@@ -8,6 +8,9 @@ import com.sofodev.armorplus.registry.blocks.castle.*;
 import com.sofodev.armorplus.registry.blocks.crafting.LavaInfuserBlock;
 import com.sofodev.armorplus.registry.blocks.crafting.LavaInfuserTile;
 import com.sofodev.armorplus.registry.blocks.ore.CrystalOreBlock;
+import com.sofodev.armorplus.registry.blocks.special.SoulBox;
+import com.sofodev.armorplus.registry.blocks.special.TrophyBlock;
+import com.sofodev.armorplus.registry.blocks.special.TrophyTile;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -31,6 +34,7 @@ import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
 import static com.sofodev.armorplus.registry.blocks.ore.Variant.*;
+import static net.minecraft.block.AbstractBlock.Properties.copy;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
@@ -39,7 +43,7 @@ public class ModBlocks {
 
     public static List<RegistryObject<Block>> blocks = new ArrayList<>();
 
-    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = regWithItem("compressed_obsidian", () -> new Block(AbstractBlock.Properties.copy(Blocks.OBSIDIAN)));
+    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = regWithItem("compressed_obsidian", () -> new Block(copy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = regWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = regWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = regWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
@@ -72,7 +76,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SNOW_BRICK = regWithItem("snow_brick", () -> new APBlock(Material.SNOW, 2.0f, 20f, 1, ToolType.PICKAXE));
     public static final RegistryObject<Block> SNOW_BRICK_STAIRS = regWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get().defaultBlockState(), SNOW_BRICK.get()));
     public static final RegistryObject<Block> SNOW_BRICK_SLAB = regWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
-
+    public static final RegistryObject<Block> PETRIFIED_SOULS = regWithItem("petrified_souls", () -> new APBlock(copy(Blocks.TERRACOTTA)));
+    public static final RegistryObject<Block> SOUL_BOX = regWithItem("soul_box", SoulBox::new);
+    public static final RegistryObject<Block> TROPHY = register("trophy", TrophyBlock::new);
+    public static final RegistryObject<TileEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy",
+            () -> build(Builder.of(TrophyTile::new, TROPHY.get())));
     static {
         registerBlocks();
     }

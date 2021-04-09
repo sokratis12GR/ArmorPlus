@@ -83,7 +83,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
         }
 
         @Override
-        public int size() {
+        public int getCount() {
             return 4;
         }
     };
@@ -105,7 +105,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     private static void addItemTagBurnTime(Map<Item, Integer> map, Tag<Item> itemTag, int infusionTime) {
-        itemTag.getAllElements().forEach(item -> map.put(item, infusionTime));
+        itemTag.getValues().forEach(item -> map.put(item, infusionTime));
     }
 
     private static void addItemInfuseTime(Map<Item, Integer> map, IItemProvider itemProvider, int infusionTime) {
@@ -121,9 +121,9 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
-        super.read(state, nbt);
-        this.items = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
+    public void load(BlockState state, CompoundNBT nbt) {
+        super.load(state, nbt);
+        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(nbt, this.items);
         this.infusionTime = nbt.getInt("InfusionTime");
         this.infusingTime = nbt.getInt("InfusingTime");
@@ -139,8 +139,8 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT nbt) {
-        super.write(nbt);
+    public CompoundNBT save(CompoundNBT nbt) {
+        super.save(nbt);
         nbt.putInt("InfusionTime", this.infusionTime);
         nbt.putInt("InfusingTime", this.infusingTime);
         nbt.putInt("InfusingTimeTotal", this.totalInfusingTime);
@@ -164,11 +164,11 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
         if (this.isInfusing()) {
             --this.infusionTime;
         }
-        if (world == null) return;
-        if (!this.world.isRemote) {
+        if (level == null) return;
+        if (!this.level.isClientSide) {
             ItemStack itemstack = this.items.get(1);
             if (this.isInfusing() || !itemstack.isEmpty() && !this.items.get(0).isEmpty()) {
-                IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world).orElse(null);
+                IRecipe<?> irecipe = this.level.getRecipeManager().getRecipeFor((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.level).orElse(null);
                 if (!this.isInfusing() && this.canSmelt(irecipe)) {
                     this.infusionTime = this.getInfusionTime(itemstack);
                     this.recipesUsed = this.infusionTime;
@@ -203,28 +203,28 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
 
             if (flag != this.isInfusing()) {
                 flag1 = true;
-                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(AbstractFurnaceBlock.LIT, this.isInfusing()), 3);
+                this.level.setBlock(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(AbstractFurnaceBlock.LIT, this.isInfusing()), 3);
             }
         }
 
         if (flag1) {
-            this.markDirty();
+            this.setChanged();
         }
 
     }
 
     protected boolean canSmelt(@Nullable IRecipe<?> recipeIn) {
         if (!this.items.get(0).isEmpty() && recipeIn != null) {
-            ItemStack itemstack = recipeIn.getRecipeOutput();
+            ItemStack itemstack = recipeIn.getResultItem();
             if (itemstack.isEmpty()) {
                 return false;
             } else {
                 ItemStack itemstack1 = this.items.get(2);
                 if (itemstack1.isEmpty()) {
                     return true;
-                } else if (!itemstack1.isItemEqual(itemstack)) {
+                } else if (!itemstack1.sameItem(itemstack)) {
                     return false;
-                } else if (itemstack1.getCount() + itemstack.getCount() <= this.getInventoryStackLimit() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { // Forge fix: make furnace respect stack sizes in furnace recipes
+                } else if (itemstack1.getCount() + itemstack.getCount() <= this.getMaxStackSize() && itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { // Forge fix: make furnace respect stack sizes in furnace recipes
                     return true;
                 } else {
                     return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
@@ -238,7 +238,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     private void getInfusionRecipe(@Nullable IRecipe<?> recipe) {
         if (recipe != null && this.canSmelt(recipe)) {
             ItemStack itemstack = this.items.get(0);
-            ItemStack itemstack1 = recipe.getRecipeOutput();
+            ItemStack itemstack1 = recipe.getResultItem();
             ItemStack itemstack2 = this.items.get(2);
             if (itemstack2.isEmpty()) {
                 this.items.set(2, itemstack1.copy());
@@ -246,7 +246,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
                 itemstack2.grow(itemstack1.getCount());
             }
 
-            if (!this.world.isRemote) {
+            if (!this.level.isClientSide) {
                 this.setRecipeUsed(recipe);
             }
 
@@ -263,7 +263,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     protected int totalInfusingTime() {
-        return this.world.getRecipeManager().getRecipe((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.world).map(AbstractCookingRecipe::getCookTime).orElse(200);
+        return this.level.getRecipeManager().getRecipeFor((IRecipeType<AbstractCookingRecipe>) this.recipeType, this, this.level).map(AbstractCookingRecipe::getCookingTime).orElse(200);
     }
 
     public static boolean isFuel(ItemStack stack) {
@@ -283,15 +283,15 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * Returns true if automation can insert the given item in the given slot from the given side.
      */
     @Override
-    public boolean canInsertItem(int index, ItemStack stack, @Nullable Direction direction) {
-        return this.isItemValidForSlot(index, stack);
+    public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
+        return this.canPlaceItem(index, stack);
     }
 
     /**
      * Returns true if automation can extract the given item in the given slot from the given side.
      */
     @Override
-    public boolean canExtractItem(int index, ItemStack stack, Direction direction) {
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
         if (direction == Direction.DOWN && index == 1) {
             Item item = stack.getItem();
             return item == Items.BUCKET;
@@ -304,7 +304,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * Returns the number of slots in the inventory.
      */
     @Override
-    public int getSizeInventory() {
+    public int getContainerSize() {
         return this.items.size();
     }
 
@@ -317,7 +317,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * Returns the stack in the given slot.
      */
     @Override
-    public ItemStack getStackInSlot(int index) {
+    public ItemStack getItem(int index) {
         return this.items.get(index);
     }
 
@@ -325,34 +325,34 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
      */
     @Override
-    public ItemStack decrStackSize(int index, int count) {
-        return ItemStackHelper.getAndSplit(this.items, index, count);
+    public ItemStack removeItem(int index, int count) {
+        return ItemStackHelper.removeItem(this.items, index, count);
     }
 
     /**
      * Removes a stack from the given slot and returns it.
      */
     @Override
-    public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.items, index);
+    public ItemStack removeItemNoUpdate(int index) {
+        return ItemStackHelper.takeItem(this.items, index);
     }
 
     /**
      * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
      */
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack) {
+    public void setItem(int index, ItemStack stack) {
         ItemStack itemstack = this.items.get(index);
-        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+        boolean flag = !stack.isEmpty() && stack.sameItem(itemstack) && ItemStack.tagMatches(stack, itemstack);
         this.items.set(index, stack);
-        if (stack.getCount() > this.getInventoryStackLimit()) {
-            stack.setCount(this.getInventoryStackLimit());
+        if (stack.getCount() > this.getMaxStackSize()) {
+            stack.setCount(this.getMaxStackSize());
         }
 
         if (index == 0 && !flag) {
             this.totalInfusingTime = this.totalInfusingTime();
             this.infusingTime = 0;
-            this.markDirty();
+            this.setChanged();
         }
 
     }
@@ -361,11 +361,11 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * Don't rename this method to canInteractWith due to conflicts with Container
      */
     @Override
-    public boolean isUsableByPlayer(PlayerEntity player) {
-        if (this.world.getTileEntity(this.pos) != this) {
+    public boolean stillValid(PlayerEntity player) {
+        if (this.level.getBlockEntity(this.worldPosition) != this) {
             return false;
         } else {
-            return player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
+            return player.distanceToSqr((double) this.worldPosition.getX() + 0.5D, (double) this.worldPosition.getY() + 0.5D, (double) this.worldPosition.getZ() + 0.5D) <= 64.0D;
         }
     }
 
@@ -374,7 +374,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * guis use Slot.isItemValid
      */
     @Override
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    public boolean canPlaceItem(int index, ItemStack stack) {
         if (index == 2) {
             return false;
         } else if (index != 1) {
@@ -386,7 +386,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     @Override
-    public void clear() {
+    public void clearContent() {
         this.items.clear();
     }
 
@@ -405,20 +405,20 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
     }
 
     @Override
-    public void onCrafting(PlayerEntity player) {
+    public void awardUsedRecipes(PlayerEntity player) {
     }
 
     public void noNameForThisYet(PlayerEntity player) {
         List<IRecipe<?>> list = Lists.newArrayList();
 
         for (Map.Entry<ResourceLocation, Integer> entry : this.itemInfusionList.entrySet()) {
-            player.world.getRecipeManager().getRecipe(entry.getKey()).ifPresent((recipe) -> {
+            player.level.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
                 list.add(recipe);
                 giveExperience(player, entry.getValue(), ((AbstractCookingRecipe) recipe).getExperience());
             });
         }
 
-        player.unlockRecipes(list);
+        player.awardRecipes(list);
         this.itemInfusionList.clear();
     }
 
@@ -435,9 +435,9 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
         }
 
         while (expValue > 0) {
-            int j = ExperienceOrbEntity.getXPSplit(expValue);
+            int j = ExperienceOrbEntity.getExperienceValue(expValue);
             expValue -= j;
-            player.world.addEntity(new ExperienceOrbEntity(player.world, player.getPosX(), player.getPosY() + 0.5D, player.getPosZ() + 0.5D, j));
+            player.level.addFreshEntity(new ExperienceOrbEntity(player.level, player.getX(), player.getY() + 0.5D, player.getZ() + 0.5D, j));
         }
 
     }
@@ -452,7 +452,7 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        if (!this.removed && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (facing == Direction.UP)
                 return handlers[0].cast();
             else if (facing == Direction.DOWN)
@@ -467,8 +467,8 @@ public abstract class AbstractInfuserTile extends LockableTileEntity implements 
      * invalidates a tile entity
      */
     @Override
-    public void remove() {
-        super.remove();
+    public void setRemoved() {
+        super.setRemoved();
         for (LazyOptional<? extends IItemHandler> handler : handlers) handler.invalidate();
     }
 }

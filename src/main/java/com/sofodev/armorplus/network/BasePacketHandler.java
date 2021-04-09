@@ -45,7 +45,7 @@ public abstract class BasePacketHandler {
     }
 
     public static String readString(PacketBuffer buffer) {
-        return buffer.readString(32767);
+        return buffer.readUtf(32767);
     }
 
     public static Vector3d readVector3d(PacketBuffer buffer) {
@@ -53,9 +53,9 @@ public abstract class BasePacketHandler {
     }
 
     public static void writeVector3d(PacketBuffer buffer, Vector3d vector) {
-        buffer.writeDouble(vector.getX());
-        buffer.writeDouble(vector.getY());
-        buffer.writeDouble(vector.getZ());
+        buffer.writeDouble(vector.x());
+        buffer.writeDouble(vector.y());
+        buffer.writeDouble(vector.z());
     }
 
     protected abstract SimpleChannel getChannel();
@@ -71,7 +71,7 @@ public abstract class BasePacketHandler {
     }
 
     public <MSG> void sendTo(MSG message, ServerPlayerEntity player) {
-        this.getChannel().sendTo(message, player.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
+        this.getChannel().sendTo(message, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
     }
 
     public <MSG> void sendToAll(MSG message) {
@@ -108,12 +108,12 @@ public abstract class BasePacketHandler {
     }
 
     public <MSG> void sendToAllTracking(MSG message, TileEntity tile) {
-        this.sendToAllTracking(message, tile.getWorld(), tile.getPos());
+        this.sendToAllTracking(message, tile.getLevel(), tile.getBlockPos());
     }
 
     public <MSG> void sendToAllTracking(MSG message, World world, BlockPos pos) {
         if (world instanceof ServerWorld) {
-            ((ServerWorld) world).getChunkProvider().chunkManager.getTrackingPlayers(new ChunkPos(pos), false).forEach((p) -> {
+            ((ServerWorld) world).getChunkSource().chunkMap.getPlayers(new ChunkPos(pos), false).forEach((p) -> {
                 this.sendTo(message, p);
             });
         } else {

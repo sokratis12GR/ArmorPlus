@@ -47,9 +47,9 @@ public class LootTables extends BaseLootTableProvider {
     }
 
     protected static LootTable.Builder dropping(IItemProvider block) {
-        return LootTable.builder().addLootPool(LootPool.builder()
-                .rolls(ConstantRange.of(1))
-                .addEntry(ItemLootEntry.builder(block))
+        return LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantRange.exactly(1))
+                .add(ItemLootEntry.lootTableItem(block))
         );
     }
 
@@ -66,15 +66,15 @@ public class LootTables extends BaseLootTableProvider {
     }
 
     protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
-        return LootTable.builder().addLootPool(LootPool.builder()
-                .rolls(ConstantRange.of(1))
-                .addEntry(ItemLootEntry.builder(block)
-                        .acceptFunction(CopyName.builder(CopyName.Source.BLOCK_ENTITY))
-                        .acceptFunction(CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY)
-                                .replaceOperation("Lock", "BlockEntityTag.Lock")
-                                .replaceOperation("LootTable", "BlockEntityTag.LootTable")
-                                .replaceOperation("LootTableSeed", "BlockEntityTag.LootTableSeed"))
-                        .acceptFunction(SetContents.builderIn().addLootEntry(DynamicLootEntry.func_216162_a(key)))
+        return LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantRange.exactly(1))
+                .add(ItemLootEntry.lootTableItem(block)
+                        .apply(CopyName.copyName(CopyName.Source.BLOCK_ENTITY))
+                        .apply(CopyNbt.copyData(CopyNbt.Source.BLOCK_ENTITY)
+                                .copy("Lock", "BlockEntityTag.Lock")
+                                .copy("LootTable", "BlockEntityTag.LootTable")
+                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
+                        .apply(SetContents.setContents().withEntry(DynamicLootEntry.dynamicEntry(key)))
                 ));
     }
 

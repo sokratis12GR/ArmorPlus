@@ -13,9 +13,9 @@ public abstract class SittingPhase extends Phase {
         return true;
     }
 
-    public float func_221113_a(DamageSource source, float amount) {
-        if (source.getImmediateSource() instanceof AbstractArrowEntity) {
-            source.getImmediateSource().setFire(1);
+    public float onHurt(DamageSource source, float amount) {
+        if (source.getDirectEntity() instanceof AbstractArrowEntity) {
+            source.getDirectEntity().setSecondsOnFire(1);
             return 0.0F;
         } else {
             return super.damageAmount(source, amount);

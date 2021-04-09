@@ -18,14 +18,14 @@ public class UnknownEnchantment extends APEnchantment {
     }
 
     @Override
-    public boolean canApply(ItemStack stack) {
+    public boolean canEnchant(ItemStack stack) {
         Item item = stack.getItem();
-        return WEAPON.canEnchantItem(item) || BREAKABLE.canEnchantItem(item) || VANISHABLE.canEnchantItem(item) || WEARABLE.canEnchantItem(item);
+        return WEAPON.canEnchant(item) || BREAKABLE.canEnchant(item) || VANISHABLE.canEnchant(item) || WEARABLE.canEnchant(item);
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return this.canApply(stack);
+        return this.canEnchant(stack);
     }
 
     @Override
