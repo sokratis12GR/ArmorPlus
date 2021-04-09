@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:villager",
+  "pattern": [
+    "ASA",
+    "SGS",
+    "ASA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:stone"
+    },
+    "S": {
+      "item": "minecraft:soul_sand"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "result": {
+    "item": "armorplus:soul_box"
+  }
+}
