@@ -7,11 +7,15 @@ import com.sofodev.armorplus.events.data.FlightData;
 import com.sofodev.armorplus.network.packet.PacketFlyingSync;
 import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
+import com.sofodev.armorplus.registry.items.armors.Armor;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.extras.IBuff;
+import com.sofodev.armorplus.registry.items.materials.FrostCrystalItem;
 import com.sofodev.armorplus.registry.items.tools.APMaceItem;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.PlayerAdvancements;
@@ -19,36 +23,46 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.WeightedSpawnerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
@@ -56,6 +70,7 @@ import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModVillagers.SOUL_EXCHANGER;
 import static com.sofodev.armorplus.registry.items.extras.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.items.extras.Buff.WATER_WEAKNESS;
+import static com.sofodev.armorplus.registry.items.extras.DeBuff.IGNITE;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
 import static java.util.Arrays.asList;
@@ -73,18 +88,20 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onPlayerTickEvent(PlayerTickEvent e) {
         PlayerEntity player = e.player;
-        if (!player.world.isRemote()) {
-            for (ItemStack stack : player.getArmorInventoryList()) {
-                if (!(stack.getItem() instanceof APArmorItem)) {
+        if (!player.level.isClientSide()) {
+            for (ItemStack stack : player.getArmorSlots()) {
+                Item item = stack.getItem();
+                if (!(item instanceof Armor)) {
                     return;
                 }
-                APArmorItem item = ((APArmorItem) stack.getItem());
-                IAPArmor mat = item.getMat();
+                IAPArmor mat = ((Armor) item).getMat();
                 boolean areExactMatch = areExactMatch(mat, player);
                 List<IBuff> buffList = Arrays.stream(mat.getBuffInstances()).map(BuffInstance::getBuff).collect(toList());
                 if (areExactMatch) {
-                    if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
-                    if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
+                    if (!buffList.isEmpty()) {
+                        if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
+                        if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
+                    }
                 } else {
                     attemptDisableFlight(e, player);
                     return;
@@ -92,6 +109,25 @@ public class ModGlobalEvents {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void onLivingDamageEvent(LivingDamageEvent e) {
+        if (e.getSource().getEntity() instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) e.getSource().getEntity();
+            if (!player.level.isClientSide()) {
+                ItemStack stack = player.getMainHandItem();
+                Item item = stack.getItem();
+                if (item instanceof Tool) {
+                    IAPTool mat = ((Tool) item).getMat();
+                    List<IBuff> buffList = Arrays.stream(mat.getBuffInstances()).map(BuffInstance::getBuff).collect(toList());
+                    if (!buffList.isEmpty()) {
+                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, e.getEntityLiving(), player);
+                    }
+                }
+            }
+        }
+    }
+
 
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
@@ -115,11 +151,11 @@ public class ModGlobalEvents {
             ));
             e.getTrades().put(3, asList(
                     new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.WITHER_SKELETON_SOUL.get()), 6, 15, 0.05f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.BLAZE_SOUL.get()), 6, 15, 0.05f),
+                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.SLAYER_SOUL.get()), 6, 15, 0.05f),
                     new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(PRISMARINE, 4 + rand.nextInt(16)), new ItemStack(ModItems.GUARDIAN_SOUL.get()), 6, 15, 0.05f),
                     new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(END_STONE, 4 + rand.nextInt(16)), new ItemStack(ModItems.ENDERMAN_SOUL.get()), 6, 15, 0.05f)
             ));
-            ItemStack priceBook = EnchantedBookItem.getEnchantedItemStack(new EnchantmentData(SOUL_STEALER.get(), 1));
+            ItemStack priceBook = EnchantedBookItem.createForEnchantment(new EnchantmentData(SOUL_STEALER.get(), 1));
             e.getTrades().put(4, asList(
                     new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), witherSoul, elderGuardianSoul, 2, 20, 0.0f),
                     new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), enderDragonSoul, elderGuardianSoul, 2, 20, 0.0f),
@@ -133,18 +169,18 @@ public class ModGlobalEvents {
             //Boss Soul for Boss Soul exchange without cost.
             //Soul Stealer enchanted gear.
             int bound = 5 + rand.nextInt(15);
-            ItemStack priceILBA = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(getAPItem("infused_lava_battle_axe")), bound, false);
-            ItemStack priceILS = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(getAPItem("infused_lava_sword")), bound, false);
-            ItemStack priceDA = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(Items.DIAMOND_AXE), bound, false);
-            ItemStack priceDS = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(Items.DIAMOND_SWORD), bound, false);
-            ItemStack priceNA = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(Items.NETHERITE_AXE), bound, false);
-            ItemStack priceNS = EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(Items.NETHERITE_SWORD), bound, false);
-            priceILBA.addEnchantment(SOUL_STEALER.get(), 1);
-            priceILS.addEnchantment(SOUL_STEALER.get(), 1);
-            priceDA.addEnchantment(SOUL_STEALER.get(), 1);
-            priceDS.addEnchantment(SOUL_STEALER.get(), 1);
-            priceNA.addEnchantment(SOUL_STEALER.get(), 1);
-            priceNS.addEnchantment(SOUL_STEALER.get(), 1);
+            ItemStack priceILBA = EnchantmentHelper.enchantItem(rand, new ItemStack(getAPItem("infused_lava_battle_axe")), bound, false);
+            ItemStack priceILS = EnchantmentHelper.enchantItem(rand, new ItemStack(getAPItem("infused_lava_sword")), bound, false);
+            ItemStack priceDA = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.DIAMOND_AXE), bound, false);
+            ItemStack priceDS = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.DIAMOND_SWORD), bound, false);
+            ItemStack priceNA = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.NETHERITE_AXE), bound, false);
+            ItemStack priceNS = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.NETHERITE_SWORD), bound, false);
+            priceILBA.enchant(SOUL_STEALER.get(), 1);
+            priceILS.enchant(SOUL_STEALER.get(), 1);
+            priceDA.enchant(SOUL_STEALER.get(), 1);
+            priceDS.enchant(SOUL_STEALER.get(), 1);
+            priceNA.enchant(SOUL_STEALER.get(), 1);
+            priceNS.enchant(SOUL_STEALER.get(), 1);
             int crystalAmount = Math.min(10 + bound, 64);
             ItemStack crystalCost = new ItemStack(LAVA_CRYSTAL.get(), crystalAmount);
             e.getTrades().put(5, asList(
@@ -166,18 +202,18 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onPlayerJoinWorldEvent(EntityJoinWorldEvent e) {
-        if (APConfig.SERVER.enableThankYouAdvancement.get() && !e.getWorld().isRemote()) {
+        if (APConfig.SERVER.enableThankYouAdvancement.get() && !e.getWorld().isClientSide()) {
             if (e.getEntity() instanceof ServerPlayerEntity) {
                 ServerPlayerEntity player = (ServerPlayerEntity) e.getEntity();
                 CompoundNBT nbt = player.serializeNBT();
-                if (nbt != null && (!nbt.hasUniqueId("key") || !nbt.getBoolean("thanked"))) {
+                if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
-                    AdvancementProgress progress = advancements.getProgress(Advancement.Builder.builder().build(setRL("story/thank_you_6m")));
+                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement().build(setRL("story/thank_you_6m")));
                     if (!progress.isDone()) {
                         nbt.putBoolean("thanked", true);
-                        player.writeAdditional(nbt);
+                        player.addAdditionalSaveData(nbt);
                         player.serializeNBT();
-                        player.entityDropItem(new ItemStack(ModItems.THANK_YOU_6M.get()));
+                        player.spawnAtLocation(new ItemStack(ModItems.THANK_YOU_6M.get()));
                     }
                 }
             }
@@ -188,8 +224,8 @@ public class ModGlobalEvents {
 
     private static void shouldApplyFlight(PlayerTickEvent e, PlayerEntity player) {
         if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
-            if (!player.abilities.allowFlying || allowsFlightByDefault(player)) {
-                player.abilities.allowFlying = true;
+            if (!player.abilities.mayfly || allowsFlightByDefault(player)) {
+                player.abilities.mayfly = true;
                 updateClientServerFlight(player, true);
                 //       ArmorPlus.LOGGER.info("Enabling flight, hasFlight: " + flightData.wasFlyingAllowed());
             }
@@ -198,19 +234,19 @@ public class ModGlobalEvents {
 
     private static void attemptDisableFlight(PlayerTickEvent e, PlayerEntity player) {
         if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
-            player.getArmorInventoryList().forEach(i -> {
+            player.getArmorSlots().forEach(i -> {
                 if (!i.isEmpty() || flightData.allowFlying() && flightData.wasFlyingAllowed()) {
-                    if (player.abilities.allowFlying && flightData.allowFlying() && flightData.wasFlyingAllowed() && !allowsFlightByDefault(player)) {
-                        player.abilities.allowFlying = false;
-                        player.abilities.isFlying = false;
+                    if (player.abilities.mayfly && flightData.allowFlying() && flightData.wasFlyingAllowed() && !allowsFlightByDefault(player)) {
+                        player.abilities.mayfly = false;
+                        player.abilities.flying = false;
                         updateClientServerFlight(player, false);
                         flightData.setFlying(false);
                         flightData.setAllowFlying(false);
                         //    ArmorPlus.LOGGER.info("Disabling flight [0], hasFlight: " + flightData.allowFlying());
                     } else if ((i.getItem() instanceof APArmorItem)) {
-                        if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.abilities.allowFlying) {
-                            player.abilities.allowFlying = false;
-                            player.abilities.isFlying = false;
+                        if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.abilities.mayfly) {
+                            player.abilities.mayfly = false;
+                            player.abilities.flying = false;
                             updateClientServerFlight(player, false);
                             flightData.setFlying(false);
                             flightData.setAllowFlying(false);
@@ -223,20 +259,20 @@ public class ModGlobalEvents {
     }
 
     private static void updateClientServerFlight(PlayerEntity player, boolean allowFlying) {
-        updateClientServerFlight(player, allowFlying, allowFlying && player.abilities.isFlying);
+        updateClientServerFlight(player, allowFlying, allowFlying && player.abilities.flying);
     }
 
     private static void updateClientServerFlight(PlayerEntity player, boolean allowFlying, boolean isFlying) {
         ArmorPlus.PACKET_HANDLER.sendTo(new PacketFlyingSync(allowFlying, isFlying), (ServerPlayerEntity) player);
-        player.abilities.allowFlying = allowFlying;
-        player.abilities.isFlying = isFlying;
+        player.abilities.mayfly = allowFlying;
+        player.abilities.flying = isFlying;
         updateFlightData(player);
     }
 
     private static void updateFlightData(PlayerEntity player) {
-        flightData.setFlying(player.abilities.isFlying);
-        flightData.setAllowFlying(player.abilities.allowFlying);
-        flightData.setWasFlyingAllowed(player.abilities.allowFlying);
+        flightData.setFlying(player.abilities.flying);
+        flightData.setAllowFlying(player.abilities.mayfly);
+        flightData.setWasFlyingAllowed(player.abilities.mayfly);
     }
 
     //Flight Control End
@@ -245,9 +281,9 @@ public class ModGlobalEvents {
         if (player.isInWater()) {
             ticks++;
             if ((ticks + 1) % 20 == 0) {
-                for (ItemStack stack : player.getArmorInventoryList()) {
-                    if (!stack.isEmpty()) {
-                        stack.damageItem(1, player, e -> e.sendBreakAnimation(Objects.requireNonNull(stack.getEquipmentSlot())));
+                for (ItemStack stack : player.getArmorSlots()) {
+                    if (!stack.isEmpty() && stack.getEquipmentSlot() != null) {
+                        stack.hurtAndBreak(1, player, event -> event.broadcastBreakEvent(stack.getEquipmentSlot()));
                     }
                 }
             }
@@ -256,14 +292,14 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onAttackEntityEvent(AttackEntityEvent event) {
-        World world = event.getEntityLiving().world;
+        World world = event.getEntityLiving().level;
         PlayerEntity player = event.getPlayer();
         Entity target = event.getTarget();
         float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        double movedDistance = player.distanceWalkedModified - player.prevDistanceWalkedModified;
+        double movedDistance = player.walkDist - player.walkDistO;
         boolean isMace = false;
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
-        if (player.isOnGround() && movedDistance < (double) player.getAIMoveSpeed() && stack.getItem() instanceof APMaceItem) {
+        ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
+        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
             isMace = true;
         }
 
@@ -271,24 +307,46 @@ public class ModGlobalEvents {
             APMaceItem mace = (APMaceItem) stack.getItem();
             float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
 
-            for (LivingEntity entity : world.getEntitiesWithinAABB(LivingEntity.class, target.getBoundingBox().grow(1.0D, 0.25D, 1.0D))) {
+            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0D, 0.25D, 1.0D))) {
                 boolean isNewTarget = entity != player && entity != target;
-                boolean isValidTarget = !player.isOnSameTeam(entity) && (!(entity instanceof ArmorStandEntity) || !((ArmorStandEntity) entity).hasMarker());
-                boolean isReachable = player.getDistanceSq(entity) < 15.0D;
+                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStandEntity) || !((ArmorStandEntity) entity).isMarker());
+                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
                 if (isNewTarget && isValidTarget && isReachable) {
-                    double ratioX = MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F));
-                    double ratioZ = -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F));
-                    entity.applyKnockback(0.4F, ratioX, ratioZ);
-                    entity.attackEntityFrom(DamageSource.causePlayerDamage(player), sweepingDamage);
+                    double ratioX = MathHelper.sin(player.yRot * ((float) Math.PI / 180F));
+                    double ratioZ = -MathHelper.cos(player.yRot * ((float) Math.PI / 180F));
+                    entity.knockback(0.4F, ratioX, ratioZ);
+                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
                 }
             }
-            if (world.isRemote) {
+            if (world.isClientSide) {
                 mace.swingAnimation(GeckoLibUtil.getControllerForStack(mace.factory, stack, mace.controllerName));
             }
-            world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, player.getSoundCategory(), 1.0F, 1.0F);
-            player.spawnSweepParticles();
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
+            player.sweepAttack();
         }
     }
+
+    @SubscribeEvent
+    public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
+        if (!event.getEntity().level.isClientSide && event.getEntity() instanceof ItemEntity) {
+            ItemEntity entity = (ItemEntity) event.getEntity();
+            Item item = entity.getItem().getItem();
+            if (item instanceof FrostCrystalItem) {
+                boolean infused = ((FrostCrystalItem) item).isInfused();
+                if (!infused) {
+                    FrostCrystalItem infusedCrystal = (FrostCrystalItem) getAPItem("infused_frost_crystal");
+                    entity.spawnAtLocation(new ItemStack(infusedCrystal, entity.getItem().getCount()), 1f);
+                    entity.getItem().setCount(0);
+                    event.getLightning().setVisualOnly(true);
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    //
+    // ENTITY DROPS
+    //
 
     @SubscribeEvent
     public static void onMobDeathEvent(LivingDropsEvent event) {
@@ -296,7 +354,7 @@ public class ModGlobalEvents {
         int amountZeroToTwo = RAND.nextInt(3); //0..1..2
         int amountFourToSix = RAND.nextInt(3) + 4; //4+(0..1..2)
         LivingEntity entity = event.getEntityLiving();
-        Entity trueSource = event.getSource().getTrueSource();
+        Entity trueSource = event.getSource().getEntity();
         boolean isSourcePlayer = trueSource instanceof ServerPlayerEntity;
         ServerPlayerEntity player;
         ItemStack heldItem;
@@ -304,7 +362,7 @@ public class ModGlobalEvents {
         Map<Enchantment, Integer> enchantmentList;
         if (isSourcePlayer) {
             player = (ServerPlayerEntity) trueSource;
-            heldItem = player.getHeldItemMainhand();
+            heldItem = player.getMainHandItem();
             if (!heldItem.isEmpty()) {
                 enchantmentList = EnchantmentHelper.getEnchantments(heldItem);
                 hasSoulStealer = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_stealer")));
@@ -312,16 +370,19 @@ public class ModGlobalEvents {
         }
         if (entity != null) {
             if (entity instanceof WitherEntity) {
+                dropTrophyItem(entity, EntityType.WITHER, 0.2F);
                 dropItem(entity, "wither_bone", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_wither_boss", 1);
                 }
             } else if (entity instanceof EnderDragonEntity) {
+                dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
                 dropItem(entity, "ender_dragon_scale", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_ender_dragon", 1);
                 }
             } else if (entity instanceof ElderGuardianEntity) {
+                dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
                 dropItem(entity, "guardian_scale", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_elder_guardian", 1);
@@ -348,7 +409,18 @@ public class ModGlobalEvents {
         }
     }
 
+    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
+        ItemStack trophy = new ItemStack(getAPItem("trophy"));
+        CompoundNBT tag = new CompoundNBT();
+        WeightedSpawnerEntity trophyEntity = new WeightedSpawnerEntity();
+        trophyEntity.getTag().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
+        tag.put("DisplayEntity", trophyEntity.getTag().copy());
+        tag.putFloat("EntityScale", scale);
+        trophy.setTag(tag);
+        entity.spawnAtLocation(trophy);
+    }
+
     private static void dropItem(Entity entity, String item, int amount) {
-        entity.entityDropItem(new ItemStack(getAPItem(item), amount));
+        entity.spawnAtLocation(new ItemStack(getAPItem(item), amount));
     }
 }

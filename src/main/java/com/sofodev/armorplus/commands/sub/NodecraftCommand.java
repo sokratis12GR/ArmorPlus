@@ -20,7 +20,7 @@ public class NodecraftCommand {
 
     public static int execute(CommandSource sender) {
         ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/armorplus");
-        Style linkStyle = Style.EMPTY.applyFormatting(BLUE).setUnderlined(true).setClickEvent(promoLink);
+        Style linkStyle = Style.EMPTY.applyFormat(BLUE).setUnderlined(true).withClickEvent(promoLink);
         sendMessages(sender, translate(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"),
                 translate("commands.armorplus.nodecraft.promo.start.text")
                         .append(translate("commands.armorplus.nodecraft.promo.middle.text").setStyle(linkStyle))
@@ -30,6 +30,6 @@ public class NodecraftCommand {
     }
 
     private static void sendMessages(CommandSource sender, ITextComponent... messages) {
-        Arrays.stream(messages).forEach(msg -> sender.sendFeedback(msg, false));
+        Arrays.stream(messages).forEach(msg -> sender.sendSuccess(msg, false));
     }
 }

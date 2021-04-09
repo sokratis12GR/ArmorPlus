@@ -14,12 +14,13 @@ import static net.minecraft.util.text.event.HoverEvent.Action.SHOW_TEXT;
 /**
  * @author Sokratis Fotkatzikis
  */
-public class DiscordCommand {
+public class PatreonCommand {
 
     public static int execute(CommandSource sender) {
-        String discord = "https://discord.gg/JCWbJvA";
-        Style ap = Style.EMPTY.withClickEvent(new ClickEvent(OPEN_URL, discord)).withHoverEvent(new HoverEvent(SHOW_TEXT, translate("commands.armorplus.discord.hover")));
-        sender.sendSuccess(translate(AQUA, "commands.armorplus.discord.line_one", discord).setStyle(ap), true);
+        String link = "https://www.patreon.com/sokratis12GR";
+        Style wiki = Style.EMPTY.withClickEvent(new ClickEvent(OPEN_URL, link)).withHoverEvent(new HoverEvent(SHOW_TEXT, translate("commands.armorplus.patreon.link_open")));
+        sender.sendSuccess(translate(AQUA, "commands.armorplus.patreon.link_details", link).setStyle(wiki), false);
         return Command.SINGLE_SUCCESS;
     }
+
 }

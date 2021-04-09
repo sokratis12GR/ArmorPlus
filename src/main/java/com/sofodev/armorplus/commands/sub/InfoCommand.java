@@ -18,9 +18,9 @@ public class InfoCommand {
     public static int execute(CommandSource sender) {
         sendMessages(sender,
                 translate(DARK_RED, "commands.armorplus.line_one", ArmorPlus.MODNAME, ArmorPlus.MODID),
-                translate(RED, "commands.armorplus.line_two", sender.getName(), ArmorPlus.MODNAME),
+                translate(RED, "commands.armorplus.line_two", sender.getTextName(), ArmorPlus.MODNAME),
                 translate(GREEN, "commands.armorplus.line_three", ArmorPlus.MODID),
-                translate(GRAY, "commands.armorplus.line_four", sender.getServer().getMinecraftVersion()),
+                translate(GRAY, "commands.armorplus.line_four", sender.getServer().getServerVersion()),
                 translate(GOLD, "commands.armorplus.line_six"),
                 translate(GOLD, "commands.armorplus.line_seven")
         );
@@ -28,6 +28,6 @@ public class InfoCommand {
     }
 
     private static void sendMessages(CommandSource sender, ITextComponent... messages) {
-        Arrays.stream(messages).forEach(message -> sender.sendFeedback(message, false));
+        Arrays.stream(messages).forEach(message -> sender.sendSuccess(message, false));
     }
 }

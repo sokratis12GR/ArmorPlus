@@ -5,14 +5,17 @@ import com.sofodev.armorplus.events.WorldGenEvents;
 import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModConfiguredFeatures;
-import com.sofodev.armorplus.registry.ModEntities;
 import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
+import com.sofodev.armorplus.registry.blocks.special.TrophyTileEntityRenderer;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonRenderer;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingRenderer;
-import com.sofodev.armorplus.registry.entities.bosses.WitherlingRenderer;
+import com.sofodev.armorplus.registry.entities.normal.BoreasRenderer;
+import com.sofodev.armorplus.registry.entities.normal.FrostWolfAlphaRenderer;
+import com.sofodev.armorplus.registry.entities.normal.FrostWolfRenderer;
+import com.sofodev.armorplus.registry.entities.normal.WitherlingRenderer;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties;
@@ -34,6 +37,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,16 +49,15 @@ import software.bernie.geckolib3.GeckoLib;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static com.sofodev.armorplus.registry.ModAttributes.ATTRIBUTES;
 import static com.sofodev.armorplus.registry.ModBiomes.*;
-import static com.sofodev.armorplus.registry.ModBlocks.BLOCKS;
-import static com.sofodev.armorplus.registry.ModBlocks.TILE_ENTITIES;
+import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModEnchantments.ENCHANTMENTS;
 import static com.sofodev.armorplus.registry.ModEntities.*;
 import static com.sofodev.armorplus.registry.ModFeatures.FEATURES;
+import static com.sofodev.armorplus.registry.ModFeatures.SURFACE_BUILDERS;
 import static com.sofodev.armorplus.registry.ModItems.BOWS;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
 import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
@@ -62,6 +65,7 @@ import static com.sofodev.armorplus.registry.ModVillagers.POI_TYPES;
 import static com.sofodev.armorplus.registry.ModVillagers.PROFESSIONS;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setName;
+import static java.util.Arrays.asList;
 import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
@@ -74,7 +78,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.16.5-16.3.1";
+    public static final String VERSION = "1.16.5-16.4.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     public static ArmorPlus instance;
@@ -129,6 +133,7 @@ public class ArmorPlus {
         TILE_ENTITIES.register(modEventBus);
         ENTITY_TYPES.register(modEventBus);
         EFFECTS.register(modEventBus);
+        SURFACE_BUILDERS.register(modEventBus);
         FEATURES.register(modEventBus);
         ATTRIBUTES.register(modEventBus);
         PROFESSIONS.register(modEventBus);
@@ -150,6 +155,7 @@ public class ArmorPlus {
     private void afterSetup() {
         GlobalVars.registerAfterEverything();
         ModConfiguredFeatures.registerConfiguredFeatures();
+        ModConfiguredFeatures.registerConfiguredFeatures();
         BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(RegistryKey.create(Registry.BIOME_REGISTRY, FROZEN_PLAINS.getId()), 5));
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(RegistryKey.create(Registry.BIOME_REGISTRY, VALLEY_OF_SOULS.getId()), 5));
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(RegistryKey.create(Registry.BIOME_REGISTRY, POSSESSED_GROUNDS.getId()), 5));
@@ -166,10 +172,14 @@ public class ArmorPlus {
         registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
         registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
         registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
-        registerEntityRenderingHandler(ModEntities.SKELETAL_KING.get(), SkeletalKingRenderer::new);
-        registerEntityRenderingHandler(ModEntities.WITHERLING.get(), WitherlingRenderer::new);
-        registerEntityRenderingHandler(ModEntities.DEMONIC_DRAGON.get(), DemonicDragonRenderer::new);
-        this.setRenderLayer(Collections.singletonList(ModBlocks.LAVA_INFUSER));
+        registerEntityRenderingHandler(SKELETAL_KING.get(), SkeletalKingRenderer::new);
+        registerEntityRenderingHandler(WITHERLING.get(), WitherlingRenderer::new);
+        registerEntityRenderingHandler(DEMONIC_DRAGON.get(), DemonicDragonRenderer::new);
+        registerEntityRenderingHandler(FROST_WOLF.get(), FrostWolfRenderer::new);
+        registerEntityRenderingHandler(FROST_WOLF_ALPHA.get(), FrostWolfAlphaRenderer::new);
+        registerEntityRenderingHandler(BOREAS.get(), BoreasRenderer::new);
+        this.setRenderLayer(asList(ModBlocks.LAVA_INFUSER, ModBlocks.TROPHY));
+        ClientRegistry.bindTileEntityRenderer(TROPHY_TYPE.get(), TrophyTileEntityRenderer::new);
         registerBowOverrides();
     }
 
