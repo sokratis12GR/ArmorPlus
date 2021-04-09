@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "armorplus:crafting/shapeless//wooden_rod"
+        "recipe": "armorplus:crafting/shapeless/wooden_rod"
       }
     }
   },

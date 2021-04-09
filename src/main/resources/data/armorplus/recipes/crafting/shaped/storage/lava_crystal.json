@@ -1,32 +1,17 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "armorplus:crafting/shaped/storage/lava_crystal"
-    ]
-  },
-  "criteria": {
-    "has_req": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "armorplus:lava_shard"
-          }
-        ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "armorplus:crafting/shaped/storage/lava_crystal"
-      }
+  "type": "minecraft:crafting_shaped",
+  "group": "armorplus:storage",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "armorplus:lava_shard"
     }
   },
-  "requirements": [
-    [
-      "has_req",
-      "has_the_recipe"
-    ]
-  ]
+  "result": {
+    "item": "armorplus:lava_crystal"
+  }
 }

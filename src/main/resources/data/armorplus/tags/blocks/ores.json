@@ -1,7 +1,7 @@
 {
     "replace": false,
     "values": [
-        "#armorplus:lava_crystal",
-        "#armorplus:frost_crystal"
+        "#armorplus:ores/lava_crystal",
+        "#armorplus:ores/frost_crystal"
     ]
 }

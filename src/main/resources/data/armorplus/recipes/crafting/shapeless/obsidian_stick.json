@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "armorplus:obsidian_stick",
+  "group": "armorplus:materials",
   "ingredients": [
     {
       "item": "minecraft:obsidian"
