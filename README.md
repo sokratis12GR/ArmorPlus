@@ -19,8 +19,8 @@ Credits for people who helped translating the mod can be found **[here](https://
 
 ~~[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)~~
 
-* **1.16+**
-  * Latest: [1.16.5-16.3.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3205388)
+* **1.16.5**
+  * Recommended: [1.16.5-16.4.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3272865)
 * **1.12.2**
   * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
 * **1.11.2**
