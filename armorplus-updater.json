@@ -5,8 +5,8 @@
         "1.16.3-recommended": "1.16.5-16.3.1",
         "1.16.4-latest": "1.16.5-16.3.1",
         "1.16.4-recommended": "1.16.5-16.3.1",
-        "1.16.5-latest": "1.16.5-16.3.1",
-        "1.16.5-recommended": "1.16.5-16.3.1"
+        "1.16.5-latest": "1.16.5-16.4.0",
+        "1.16.5-recommended": "1.16.5-16.4.0"
     },
     "1.16.3": {
         "1.16.3-16.0.0.1": "Initial 1.16.3 release, for more info see the changelog file at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md",
@@ -28,6 +28,7 @@
     },
     "1.16.5": {
         "1.16.5-16.3.0": "Read the full changelog at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.3/src/main/resources/changelog.md#armorplus-1165-1630-beta",
-        "1.16.5-16.3.1": "**QUICK-FIX**: Fixed a crash when booting and mekanism is not present.\n* Fixed super star bow pulling animation not being correct."
+        "1.16.5-16.3.1": "**QUICK-FIX**: Fixed a crash when booting and mekanism is not present.\n* Fixed super star bow pulling animation not being correct.",
+        "1.16.5-16.4.0": "First Official Stable Release - Supporting only 1.16.5+. Read the full changelog at: https://github.com/sokratis12GR/ArmorPlus/blob/1.16.5/src/main/resources/changelog.md#armorplus-1165-1640"
     }
 }
