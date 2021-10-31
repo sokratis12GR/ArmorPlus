@@ -9,9 +9,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.List;
-
-import static com.sofodev.armorplus.config.APConfig.SERVER;
+import static com.sofodev.armorplus.config.APConfig.COMMON;
 import static com.sofodev.armorplus.registry.ModConfiguredFeatures.*;
 import static java.util.Arrays.stream;
 import static net.minecraft.world.biome.Biome.Category.*;
@@ -27,19 +25,16 @@ public class WorldGenEvents {
         boolean isSnowing = event.getClimate().precipitation == SNOW;
         boolean isFreezing = event.getClimate().temperatureModifier == FROZEN;
 
-        List<? extends Boolean> isLavaCrystalEnabled = SERVER.enableOreLavaWorldGen.get();
-        List<? extends Boolean> isFrostCrystalEnabled = SERVER.enableOreFrostWorldGen.get();
-
         if (!matchesBiomes(event.getCategory(), ICY, THEEND, OCEAN, NONE)) {
-            withConfiguration(event, CF_ORE_LAVA_CR_STONE, isLavaCrystalEnabled.get(0));
-            withConfiguration(event, CF_ORE_LAVA_CR_OBSIDIAN, isLavaCrystalEnabled.get(1));
-            withConfiguration(event, CF_ORE_LAVA_CRYSTAL, isLavaCrystalEnabled.get(2));
+            withConfiguration(event, CF_ORE_LAVA_CR_STONE, COMMON.oreLavaCrystalStone.enabled.get());
+            withConfiguration(event, CF_ORE_LAVA_CR_OBSIDIAN, COMMON.oreLavaCrystalObsidian.enabled.get());
+            withConfiguration(event, CF_ORE_LAVA_CRYSTAL, COMMON.oreLavaCrystalCompressed.enabled.get());
         }
 
         if (isSnowy || isSnowing || isFreezing) {
-            withConfiguration(event, CF_ORE_FROST_CR_STONE, isFrostCrystalEnabled.get(0));
-            withConfiguration(event, CF_ORE_FROST_CR_OBSIDIAN, isFrostCrystalEnabled.get(1));
-            withConfiguration(event, CF_ORE_FROST_CRYSTAL, isFrostCrystalEnabled.get(2));
+            withConfiguration(event, CF_ORE_FROST_CR_STONE, COMMON.oreFrostCrystalStone.enabled.get());
+            withConfiguration(event, CF_ORE_FROST_CR_OBSIDIAN, COMMON.oreFrostCrystalObsidian.enabled.get());
+            withConfiguration(event, CF_ORE_FROST_CRYSTAL, COMMON.oreFrostCrystalCompressed.enabled.get());
         }
     }
 

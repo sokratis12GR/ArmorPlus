@@ -41,7 +41,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.annotation.Nonnull;
 import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.function.BiFunction;
@@ -49,6 +48,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 /**
  * Config helper for automatically subscribing forge configs to config reload events as you build them. See DataBuddyExampleMod and ExampleServerConfig in the examplemod for usage examples.
@@ -171,8 +171,8 @@ public class ConfigHelper {
      * A config-reload-sensitive wrapper around your config value
      **/
     public static class ConfigValueListener<T> implements Supplier<T> {
-        private T value = null;
         private final ConfigValue<T> configValue;
+        private T value = null;
 
         private ConfigValueListener(final ConfigValue<T> configValue) {
             this.configValue = configValue;
@@ -201,15 +201,10 @@ public class ConfigHelper {
      * A config-reload-sensitive wrapper around a config field for a complex object
      **/
     public static class ConfigObjectListener<T> implements Supplier<T> {
-        private @Nonnull
         final ConfigValueListener<Object> listener;
-        private @Nonnull
         final Codec<T> codec;
-        private @Nonnull
         Object cachedObject;
-        private @Nonnull
         T parsedObject;
-        private @Nonnull
         T defaultObject;
 
         private ConfigObjectListener(ConfigValueListener<Object> listener, Codec<T> codec, T defaultObject, Object encodedDefaultObject) {
@@ -221,7 +216,6 @@ public class ConfigHelper {
         }
 
         @Override
-        @Nonnull
         public T get() {
             Object freshObject = this.listener.get();
             if (!Objects.equals(this.cachedObject, freshObject)) {

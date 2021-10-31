@@ -13,9 +13,7 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.fml.RegistryObject;
 
-import java.util.List;
-
-import static com.sofodev.armorplus.config.APConfig.SERVER;
+import static com.sofodev.armorplus.config.APConfig.COMMON;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.features.APOreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD;
 import static com.sofodev.armorplus.utils.Utils.setRL;
@@ -23,26 +21,19 @@ import static net.minecraft.block.Blocks.*;
 
 public class ModConfiguredFeatures {
 
-    public static List<? extends Integer> lavaVeinSize = SERVER.lavaCrystalVeinList.get();
-    public static List<? extends Integer> lavaOffset = SERVER.lavaCrystalOffsetList.get();
-    public static List<? extends Integer> lavaRange = SERVER.lavaCrystalRangeList.get();
-    public static List<? extends Integer> frostVeinSize = SERVER.frostCrystalVeinList.get();
-    public static List<? extends Integer> frostOffset = SERVER.frostCrystalOffsetList.get();
-    public static List<? extends Integer> frostRange = SERVER.frostCrystalRangeList.get();
-
     //Configured Features
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CR_STONE = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL_STONE,
-            lavaVeinSize.get(0), lavaOffset.get(0), lavaRange.get(0));
+            COMMON.oreLavaCrystalStone.veinSize.get(), COMMON.oreLavaCrystalStone.offset.get(), COMMON.oreLavaCrystalStone.range.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CR_OBSIDIAN = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL_OBSIDIAN,
-            lavaVeinSize.get(1), lavaOffset.get(1), lavaRange.get(1));
+            COMMON.oreLavaCrystalObsidian.veinSize.get(), COMMON.oreLavaCrystalObsidian.offset.get(), COMMON.oreLavaCrystalObsidian.range.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CRYSTAL = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL,
-            lavaVeinSize.get(2), lavaOffset.get(2), lavaRange.get(2));
+            COMMON.oreLavaCrystalCompressed.veinSize.get(), COMMON.oreLavaCrystalCompressed.offset.get(), COMMON.oreLavaCrystalCompressed.range.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CR_STONE = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL_STONE,
-            frostVeinSize.get(0), frostOffset.get(0), frostRange.get(0));
+            COMMON.oreFrostCrystalStone.veinSize.get(), COMMON.oreFrostCrystalStone.offset.get(), COMMON.oreFrostCrystalStone.range.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CR_OBSIDIAN = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL_OBSIDIAN,
-            frostVeinSize.get(1), frostOffset.get(1), frostRange.get(1));
+            COMMON.oreFrostCrystalObsidian.veinSize.get(), COMMON.oreFrostCrystalObsidian.offset.get(), COMMON.oreFrostCrystalObsidian.range.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CRYSTAL = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL,
-            frostVeinSize.get(2), frostOffset.get(2), frostRange.get(2));
+            COMMON.oreFrostCrystalCompressed.veinSize.get(), COMMON.oreFrostCrystalCompressed.offset.get(), COMMON.oreFrostCrystalCompressed.range.get());
 
     public static final SurfaceBuilderConfig CONFIG_SOUL_VALLEY = new SurfaceBuilderConfig(SOUL_SOIL.defaultBlockState(), SOUL_SOIL.defaultBlockState(), SOUL_SAND.defaultBlockState());
     public static final SurfaceBuilderConfig CONFIG_POSSESSED_GROUNDS = new SurfaceBuilderConfig(BASALT.defaultBlockState(), BLACKSTONE.defaultBlockState(), GRAVEL.defaultBlockState());
@@ -64,7 +55,7 @@ public class ModConfiguredFeatures {
     }
 
     /**
-     * Creates a configured feature which will add a new feature to the world gen, in this instance it will creating a preset for ore world generation.
+     * Creates a configured feature which will add a new feature to the world gen, in this instance it will be creating a preset for ore world generation.
      * <p>
      * The filling block will be determined by the specified {@link RuleTest} in {@param replace}, and the filler will be our block of choice {@param block}.
      * We can determine the size of the veins that can appear by tweaking the {@param veinSize} accordingly.

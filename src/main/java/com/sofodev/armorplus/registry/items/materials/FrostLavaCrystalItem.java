@@ -13,7 +13,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.util.text.TextFormatting.AQUA;
 import static net.minecraft.util.text.TextFormatting.YELLOW;
 
 /**

@@ -37,7 +37,7 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
     public static final List<IOptionalNamedTag<Item>> BRICK_COLORS = Stream.of(DYES_BLACK, DYES_BLUE, DYES_GREEN, DYES_PURPLE, DYES_RED, DYES_WHITE, DYES_YELLOW, DYES_ORANGE).collect(Collectors.toList());
     public static final List<IItemProvider> MATERIALS_ORDERED = Stream.of(COAL, REDSTONE, LAPIS_LAZULI, EMERALD, Items.OBSIDIAN, INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<IItemProvider> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
-    public static final List<IItemProvider> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get()).collect(Collectors.toList());
+    public static final List<IItemProvider> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get()).collect(Collectors.toList());
 
     public Recipes(DataGenerator generatorIn) {
         super(generatorIn);
@@ -63,24 +63,30 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
             crafter.buildColoredBrick(con, STONE_BRICKS[i], BRICK_COLORS.get(i));
         }
         //Bows
-        for (int i = 0; i < AP_TOOL_MATERIAL_LENGTH - 4; i++) {
+        for (int i = 0; i < AP_TOOL_MATERIAL_LENGTH - 5; i++) {
             crafter.buildSword(con, SWORDS[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
             crafter.buildBattleAxe(con, BATTLE_AXES[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
             crafter.buildPickaxe(con, PICKAXES[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
             crafter.buildBow(con, BOWS[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i));
         }
-        crafter.buildSword(con, GUARDIAN_SWORD_BASE, GUARDIAN_SCALE.get(), OBSIDIAN_STICK.get());
-        crafter.buildSword(con, SUPER_STAR_SWORD_BASE, WITHER_BONE.get(), OBSIDIAN_STICK.get());
-        crafter.buildSword(con, ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_SCALE.get(), OBSIDIAN_STICK.get());
-        crafter.buildBattleAxe(con, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_SCALE.get(), OBSIDIAN_STICK.get());
+        int lava = AP_TOOL_MATERIAL_LENGTH - 5;
+        crafter.buildSword(con, SWORDS[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
+        crafter.buildBattleAxe(con, BATTLE_AXES[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
+        crafter.buildPickaxe(con, PICKAXES[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
+        crafter.buildBow(con, BOWS[lava], INFUSED_LAVA_CRYSTAL.get());
+
+        crafter.buildSword(con, GUARDIAN_SWORD_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
+        crafter.buildSword(con, SUPER_STAR_SWORD_BASE, WITHER_BONE.get(), NETHER_STAR, OBSIDIAN_STICK.get());
+        crafter.buildSword(con, ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, OBSIDIAN_STICK.get());
+        crafter.buildBattleAxe(con, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
         crafter.buildBattleAxe(con, SUPER_STAR_BATTLE_AXE_BASE, WITHER_BONE.get(), OBSIDIAN_STICK.get());
-        crafter.buildBattleAxe(con, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_SCALE.get(), OBSIDIAN_STICK.get());
-        crafter.buildPickaxe(con, GUARDIAN_PICKAXE_BASE, GUARDIAN_SCALE.get(), OBSIDIAN_STICK.get());
-        crafter.buildPickaxe(con, SUPER_STAR_PICKAXE_BASE, WITHER_BONE.get(), OBSIDIAN_STICK.get());
-        crafter.buildPickaxe(con, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_SCALE.get(), OBSIDIAN_STICK.get());
-        crafter.buildBow(con, GUARDIAN_BOW_BASE, GUARDIAN_SCALE.get());
-        crafter.buildBow(con, SUPER_STAR_BOW_BASE, WITHER_BONE.get());
-        crafter.buildBow(con, ENDER_DRAGON_BOW_BASE, ENDER_DRAGON_SCALE.get());
+        crafter.buildBattleAxe(con, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, OBSIDIAN_STICK.get());
+        crafter.buildPickaxe(con, GUARDIAN_PICKAXE_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
+        crafter.buildPickaxe(con, SUPER_STAR_PICKAXE_BASE, WITHER_BONE.get(), NETHER_STAR, OBSIDIAN_STICK.get());
+        crafter.buildPickaxe(con, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, OBSIDIAN_STICK.get());
+        crafter.buildBow(con, GUARDIAN_BOW_BASE, PRISMARINE, GUARDIAN_SCALE.get());
+        crafter.buildBow(con, SUPER_STAR_BOW_BASE, NETHER_STAR, WITHER_BONE.get());
+        crafter.buildBow(con, ENDER_DRAGON_BOW_BASE, DRAGON_BREATH, ENDER_DRAGON_SCALE.get());
         //Arrows
         crafter.buildOrderedArrow(con,
                 asList(ITEM_COAL_ARROW, ITEM_REDSTONE_ARROW, ITEM_LAPIS_ARROW, ITEM_EMERALD_ARROW, ITEM_OBSIDIAN_ARROW,
@@ -114,9 +120,9 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         crafter.buildArmorSet(con, "emerald", EMERALD_BLOCK, "");
         crafter.buildArmorSet(con, "obsidian", COMPRESSED_OBSIDIAN.get(), "");
         crafter.buildArmorSet(con, "infused_lava", INFUSED_LAVA_CRYSTAL.get(), "");
-        crafter.buildArmorSet(con, "guardian", GUARDIAN_SCALE.get(), "_base");
-        crafter.buildArmorSet(con, "super_star", WITHER_BONE.get(), "_base");
-        crafter.buildArmorSet(con, "ender_dragon", ENDER_DRAGON_SCALE.get(), "_base");
+        crafter.buildArmorSet(con, "guardian", GUARDIAN_SCALE.get(), PRISMARINE, "_base");
+        crafter.buildArmorSet(con, "super_star", WITHER_BONE.get(), NETHER_STAR, "_base");
+        crafter.buildArmorSet(con, "ender_dragon", ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, "_base");
         crafter.buildArmorSet(con, "frost", INFUSED_FROST_CRYSTAL.get(), "");
         crafter.buildArmorSet(con, "frost_lava", INFUSED_FROST_LAVA_CRYSTAL.get(), "");
         int bound = MACES.length - 1;
@@ -141,7 +147,16 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
                 INFUSED_FROST_LAVA_CRYSTAL.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get(), GUARDIAN_SCALE.get()
         );
         //Slayer Set
-        crafter.buildArmorSet(con, "slayer", THE_ULTIMATE_MATERIAL.get(), "_base");
+        crafter.buildComplexArmorSet(con, "slayer", THE_ULTIMATE_MATERIAL.get(), "super_star", "ender_dragon", "guardian", "_base");
+        crafter.buildSword(con, SLAYER_SWORD_BASE, THE_ULTIMATE_MATERIAL.get(),
+                SUPER_STAR_SWORD_BASE.get(), ENDER_DRAGON_SWORD_BASE.get(), GUARDIAN_SWORD_BASE.get(), OBSIDIAN_STICK.get());
+        crafter.buildBattleAxe(con, SLAYER_BATTLE_AXE_BASE, THE_ULTIMATE_MATERIAL.get(),
+                SUPER_STAR_BATTLE_AXE_BASE.get(), ENDER_DRAGON_BATTLE_AXE_BASE.get(), GUARDIAN_BATTLE_AXE_BASE.get(), OBSIDIAN_STICK.get());
+        crafter.buildPickaxe(con, SLAYER_PICKAXE_BASE, THE_ULTIMATE_MATERIAL.get(),
+                SUPER_STAR_PICKAXE_BASE.get(), ENDER_DRAGON_PICKAXE_BASE.get(), GUARDIAN_PICKAXE_BASE.get(), OBSIDIAN_STICK.get());
+        crafter.buildBow(con, SLAYER_BOW_BASE, THE_ULTIMATE_MATERIAL.get(),
+                SUPER_STAR_BOW_BASE.get(), ENDER_DRAGON_BOW_BASE.get(), GUARDIAN_BOW_BASE.get());
+
         crafter.build(con, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get());
         //Other
         crafter.build(con, Result.build(SOUL_BOX.get()).setGroup("villager").setSuffix(""), GridInput.build("ASA", "SGS", "ASA", 'A', 'S', 'G'), Items.STONE, SOUL_SAND, GLOWSTONE);
@@ -168,6 +183,9 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         );
         smither.buildBaseToFullSmithing(con, ENDER_DRAGON_SOUL.get(),
                 ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BOW_BASE
+        );
+        smither.buildBaseToFullSmithing(con, SLAYER_SOUL.get(),
+                SLAYER_SWORD_BASE, SLAYER_BATTLE_AXE_BASE, SLAYER_PICKAXE_BASE, SLAYER_BOW_BASE
         );
 
         smither.buildVanillaToEnhancedSmithing(con, NETHERITE_HELMET, ENHANCED_NETHERITE);

@@ -12,7 +12,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.SWORD;
@@ -41,7 +40,7 @@ public class APSwordItem extends SwordItem implements Tool {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.level.isClientSide) {
-            Arrays.stream(mat.getBuffInstances()).forEach(instance -> instance.hitEntity(stack, target, attacker));
+            mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
         }
         return super.hurtEnemy(stack, target, attacker);
     }

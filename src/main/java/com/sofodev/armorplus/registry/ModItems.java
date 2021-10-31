@@ -70,6 +70,11 @@ public class ModItems {
     public static final RegistryObject<Item> ENDER_DRAGON_BATTLE_AXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "battle_axe");
     public static final RegistryObject<Item> ENDER_DRAGON_PICKAXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "pickaxe");
     public static final RegistryObject<Item> ENDER_DRAGON_BOW_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "bow");
+    //Slayer
+    public static final RegistryObject<Item> SLAYER_SWORD_BASE = registerBase(APToolMaterial.SLAYER_MAT, "sword");
+    public static final RegistryObject<Item> SLAYER_BATTLE_AXE_BASE = registerBase(APToolMaterial.SLAYER_MAT, "battle_axe");
+    public static final RegistryObject<Item> SLAYER_PICKAXE_BASE = registerBase(APToolMaterial.SLAYER_MAT, "pickaxe");
+    public static final RegistryObject<Item> SLAYER_BOW_BASE = registerBase(APToolMaterial.SLAYER_MAT, "bow");
 
     //Tools & Weapons
     public static final RegistryObject<Item>[] SWORDS = new RegistryObject[AP_TOOL_MATERIAL_LENGTH];
@@ -91,26 +96,18 @@ public class ModItems {
     public static final RegistryObject<ArrowItem> ITEM_ENDER_DRAGON_ARROW = registerArrow(ArrowType.ENDER_DRAGON);
 
     public static final Set<RegistryObject<BlockItem>> ITEM_BLOCKS = registerBlockItems();
-
-    static {
-        registerToolForType(SWORDS, BATTLE_AXES, PICKAXES, BOWS);
-        registerMaceForType(MACES);
-    }
-
     //Crystals
     public static final RegistryObject<Item> LAVA_CRYSTAL = ITEMS.register("lava_crystal", () -> new LavaCrystalItem(false));
     public static final RegistryObject<Item> INFUSED_LAVA_CRYSTAL = ITEMS.register("infused_lava_crystal", () -> new LavaCrystalItem(true));
     public static final RegistryObject<Item> FROST_CRYSTAL = ITEMS.register("frost_crystal", () -> new FrostCrystalItem(false));
     public static final RegistryObject<Item> INFUSED_FROST_CRYSTAL = ITEMS.register("infused_frost_crystal", () -> new FrostCrystalItem(true));
     public static final RegistryObject<Item> INFUSED_FROST_LAVA_CRYSTAL = ITEMS.register("infused_frost_lava_crystal", FrostLavaCrystalItem::new);
-
     //Materials
     public static final RegistryObject<Item> CHAINMAIL = ITEMS.register("chainmail", () -> new MaterialItem(GRAY, new Item.Properties()));
     public static final RegistryObject<Item> GUARDIAN_SCALE = ITEMS.register("guardian_scale", () -> new MaterialItem(BLUE, new Item.Properties()));
     public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new MaterialItem(WHITE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ENDER_DRAGON_SCALE = ITEMS.register("ender_dragon_scale", () -> new MaterialItem(DARK_PURPLE, new Item.Properties()));
     public static final RegistryObject<Item> THE_ULTIMATE_MATERIAL = ITEMS.register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, new Item.Properties().fireResistant()));
-
     //Boss Souls
     public static final RegistryObject<Item> WITHER_BOSS_SOUL = ITEMS.register("soul_wither_boss", () -> new SoulItem("wither"));
     public static final RegistryObject<Item> ELDER_GUARDIAN_SOUL = ITEMS.register("soul_elder_guardian", () -> new SoulItem("elder_guardian"));
@@ -121,21 +118,24 @@ public class ModItems {
     public static final RegistryObject<Item> ENDERMAN_SOUL = ITEMS.register("soul_enderman", () -> new SoulItem(false, "enderman"));
     public static final RegistryObject<Item> BLAZE_SOUL = ITEMS.register("soul_blaze", () -> new SoulItem(false, "blaze"));
     public static final RegistryObject<Item> SLAYER_SOUL = ITEMS.register("soul_slayer", () -> new SoulItem(null));
-
     //Enhanced Materials
     public static final RegistryObject<Item> ENHANCED_CHAINMAIL = ITEMS.register("en_chainmail", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_IRON = ITEMS.register("en_iron", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_GOLD = ITEMS.register("en_gold", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_DIAMOND = ITEMS.register("en_diamond", () -> new MaterialItem(true, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> ENHANCED_NETHERITE = ITEMS.register("en_netherite", () -> new MaterialItem(true, GRAY, new Item.Properties().fireResistant()));
-
     //Other
     public static final RegistryObject<Item> OBSIDIAN_STICK = ITEMS.register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> WOODEN_ROD = ITEMS.register("wooden_rod", () -> new MaterialItem(false, GRAY, new Item.Properties()));
     public static final RegistryObject<Item> LAVA_SHARD = ITEMS.register("lava_shard", () -> new MaterialItem(false, GOLD, new Item.Properties()));
     public static final RegistryObject<Item> FROST_SHARD = ITEMS.register("frost_shard", () -> new MaterialItem(false, AQUA, new Item.Properties()));
     public static final RegistryObject<Item> THANK_YOU_6M = ITEMS.register("thank_you_6m", ThankYouItem::new);
-    public static final RegistryObject<Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(() -> ModBlocks.TROPHY.get()));
+    public static final RegistryObject<Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
+
+    static {
+        registerToolForType(SWORDS, BATTLE_AXES, PICKAXES, BOWS);
+        registerMaceForType(MACES);
+    }
 
     /**
      * This function automatically registers item(s), in groups that represent an armor set.
@@ -154,7 +154,7 @@ public class ModItems {
     }
 
     /**
-     * Registers each {@link APToolMaterial#values()} to have its own sword, battle axe, pickaxe and bow.
+     * Registers each {@link APToolMaterial#values()} to have its own sword, battleaxe, pickaxe and bow.
      *
      * @param swords   - Sword objects to be registered
      * @param axes     - Battle Axe objects to be registered
@@ -172,7 +172,7 @@ public class ModItems {
     }
 
     /**
-     * Registers the specified {@link APToolMaterial} to have its own sword, battle axe, pickaxe and bow <b>bases</b>.
+     * Registers the specified {@link APToolMaterial} to have its own sword, battleaxe, pickaxe and bow <b>bases</b>.
      *
      * @param type - What kind of item will be registered for the base
      */
@@ -218,7 +218,7 @@ public class ModItems {
     private static Set<RegistryObject<Item>> registerArmorBases(APArmorMaterial material) {
         Stream<EquipmentSlotType> armorSlots = Arrays.stream(EquipmentSlotType.values()).filter((v) -> v.getType() == ARMOR);
         return armorSlots.map(slot -> ITEMS.register(String.format("%s_%s_base", material.getName(), getNormalizedName(slot)),
-                () -> (Item) new APItemBase()))
+                        () -> (Item) new APItemBase()))
                 .collect(Collectors.toSet());
     }
 }

@@ -10,6 +10,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
 import static net.minecraft.item.Items.*;
@@ -22,7 +23,7 @@ public enum APArmorProperties implements IArmorMaterial {
     CHICKEN_PROP(1, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, FEATHER),
     SLIME_PROP(1, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, SLIME_BALL, SLIME_BLOCK),
     EMERALD_PROP(35, new int[]{3, 6, 8, 3}, 16, ARMOR_EQUIP_DIAMOND, 1.0f, EMERALD, EMERALD_BLOCK),
-    OBSIDIAN_PROP(40, new int[]{3, 6, 7, 3}, 16, ARMOR_EQUIP_DIAMOND, 1.0f, OBSIDIAN),
+    OBSIDIAN_PROP(40, new int[]{3, 6, 7, 3}, 16, ARMOR_EQUIP_DIAMOND, 2.0f, OBSIDIAN),
     INFUSED_LAVA_PROP(55, new int[]{3, 6, 8, 3}, 16, ARMOR_EQUIP_DIAMOND, 1.0f, "infused_lava_crystal"),
     GUARDIAN_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "guardian_scale"),
     SUPER_STAR_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "wither_bone"),
@@ -32,7 +33,7 @@ public enum APArmorProperties implements IArmorMaterial {
     KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
     PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
     MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
-    SLAYER_PROP(160, new int[]{4, 8, 9, 4}, 60, ARMOR_EQUIP_NETHERITE, 5.0f, "the_ultimate_material"),
+    SLAYER_PROP(169, new int[]{4, 8, 9, 4}, 60, ARMOR_EQUIP_NETHERITE, 5.0f, "the_ultimate_material"),
     /*Enhanced Vanilla Armor*/
     ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ARMOR_EQUIP_CHAIN, 1.0f, "chainmail"),
     ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
@@ -80,7 +81,7 @@ public enum APArmorProperties implements IArmorMaterial {
 
     APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, APRepair repair) {
         this.special = special;
-        this.name = name().toLowerCase().replace("_prop", "").replace("enhanced_", "");
+        this.name = name().toLowerCase(Locale.ENGLISH).replace("_prop", "").replace("enhanced_", "");
         this.durability = durability;
         this.toughness = toughness;
         this.damageReduction = damageReduction;

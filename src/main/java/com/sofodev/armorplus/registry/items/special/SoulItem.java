@@ -39,8 +39,8 @@ public class SoulItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (world != null && world.isClientSide) {
             if (entity != null && !entity.isEmpty()) {
-            EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
-            if (value != null) {
+                EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
+                if (value != null) {
                     Entity entity = value.create(world);
                     if (entity != null) {
                         tooltip.add(translate(DARK_PURPLE, "tooltip.armorplus.soul", entity.getName()));

@@ -3,6 +3,8 @@ package com.sofodev.armorplus.registry.items;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.text.TextFormatting;
 
+import java.util.Locale;
+
 import static net.minecraft.util.text.TextFormatting.*;
 
 public enum APRarity {
@@ -29,6 +31,6 @@ public enum APRarity {
     }
 
     public Rarity getRarity() {
-        return Rarity.create(this.name().toLowerCase(), this.getColor());
+        return Rarity.create(this.name().toLowerCase(Locale.ENGLISH), this.getColor());
     }
 }

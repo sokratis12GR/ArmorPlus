@@ -40,11 +40,11 @@ public class ToolTipUtils {
     }
 
     public static void addBuffInformation(IAPTool tool, List<ITextComponent> tooltip, String condition, boolean applyToSelf) {
-        if (tool.getBuffInstances().length > 0) {
+        if (!tool.getBuffInstances().get().isEmpty()) {
             tooltip.add(translate(YELLOW, "tooltip.armorplus.condition"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition." + condition));
             tooltip.add(translate(GREEN, "tooltip.armorplus." + (applyToSelf ? "provides" : "applies")));
-            for (BuffInstance buff : tool.getBuffInstances()) {
+            for (BuffInstance buff : tool.getBuffInstances().get()) {
                 int lvl = buff.getAmplifier() + 1;
                 String theLvl = lvl > 0 ? " " + generate(lvl) : "";
                 tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));

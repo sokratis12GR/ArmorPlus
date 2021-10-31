@@ -6,6 +6,7 @@ package com.sofodev.armorplus.utils;
 
 import com.sofodev.armorplus.registry.items.armors.APRepair;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
@@ -13,10 +14,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.loading.FMLConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
@@ -220,4 +223,19 @@ public final class Utils {
         }
         return emptyList();
     }
+
+    @Nullable
+    public static ItemEntity spawnAtLocation(PlayerEntity player, ItemStack stack, BlockPos pos) {
+        if (stack.isEmpty() || player.level.isClientSide) {
+            return null;
+        }
+        ItemEntity itementity = new ItemEntity(player.level, pos.getX(), pos.getY(), pos.getZ(), stack);
+        itementity.setDefaultPickUpDelay();
+        if (player.captureDrops() != null) player.captureDrops().add(itementity);
+        else {
+            player.level.addFreshEntity(itementity);
+        }
+        return itementity;
+    }
+
 }

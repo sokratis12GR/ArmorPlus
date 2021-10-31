@@ -4,6 +4,8 @@ import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Rarity;
 
+import java.util.Locale;
+
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType.*;
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.SQUARE;
@@ -64,7 +66,7 @@ public enum APMaceMaterial implements IAPMace {
 
     @Override
     public String getName() {
-        return this.name().toLowerCase().replace("_mace", "");
+        return this.name().toLowerCase(Locale.ENGLISH).replace("_mace", "");
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.sofodev.armorplus.registry.features.surface;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.sofodev.armorplus.registry.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;

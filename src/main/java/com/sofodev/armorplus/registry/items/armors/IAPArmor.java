@@ -1,9 +1,13 @@
 package com.sofodev.armorplus.registry.items.armors;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.TextFormatting;
+
+import java.util.List;
+import java.util.function.Supplier;
 
 public interface IAPArmor {
 
@@ -37,5 +41,7 @@ public interface IAPArmor {
      * <p>
      * An armor set can contain multiple buff instances, which means it can utilize many custom effects.
      */
-    BuffInstance[] getBuffInstances();
+    Supplier<List<BuffInstance>> getBuffInstances();
+
+    Supplier<MaterialConfig> getConfiguration();
 }

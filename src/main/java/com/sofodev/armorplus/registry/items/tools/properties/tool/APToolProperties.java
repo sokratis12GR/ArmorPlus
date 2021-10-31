@@ -13,12 +13,12 @@ public enum APToolProperties implements IItemTier {
     REDSTONE_PROP(2, 250, 6.0f, 1f, 60, REDSTONE),
     LAPIS_PROP(2, 250, 6.0f, 1f, 60, LAPIS_LAZULI),
     EMERALD_PROP(3, 1561, 8.0f, 3f, 60, EMERALD),
-    OBSIDIAN_PROP(3, 4200, 6.0f, 2f, 30, OBSIDIAN),
+    OBSIDIAN_PROP(3, 5200, 6.0f, 2f, 30, OBSIDIAN),
     INFUSED_LAVA_PROP(4, 3000, 10.0f, 3f, 60, "infused_lava_crystal"),
     GUARDIAN_PROP(4, 6000, 14.0f, 5f, 70, "guardian_scale"),
     SUPER_STAR_PROP(4, 6000, 14.0f, 5f, 70, "wither_bone"),
     ENDER_DRAGON_PROP(4, 6000, 14.0f, 5f, 70, "ender_dragon_scale"),
-    SLAYER_PROP(5, 9001, 20.0f, 6.0f, 100, "the_ultimate_material"),
+    SLAYER_PROP(5, 9001, 20.0f, 7.0f, 100, "the_ultimate_material"),
     ;
 
     private final int harvestLevel;

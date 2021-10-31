@@ -5,8 +5,6 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.SmithingRecipeBuilder;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.fml.RegistryObject;
 
@@ -18,7 +16,7 @@ import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.DataUtils.quickModLookupItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setRL;
-import static net.minecraft.item.crafting.Ingredient.*;
+import static net.minecraft.item.crafting.Ingredient.of;
 
 public class SmithingRecipeMaker extends RecipeProvider {
 
@@ -38,7 +36,8 @@ public class SmithingRecipeMaker extends RecipeProvider {
         this.buildSmithing(consumer, base.get(), soul, quickModLookupItem(base.getId()));
     }
 
-    public void buildBaseToFullSmithing(Consumer<IFinishedRecipe> consumer, IItemProvider soul, RegistryObject<Item>... bases) {
+    @SafeVarargs
+    public final void buildBaseToFullSmithing(Consumer<IFinishedRecipe> consumer, IItemProvider soul, RegistryObject<Item>... bases) {
         Arrays.stream(bases).forEach(base -> this.buildSmithing(consumer, base.get(), soul, quickModLookupItem(base.getId())));
     }
 
@@ -49,9 +48,9 @@ public class SmithingRecipeMaker extends RecipeProvider {
     public void buildSmithing(Consumer<IFinishedRecipe> consumer, IItemProvider base, IItemProvider addition, IItemProvider result) {
         String path = getPath(base);
         SmithingRecipeBuilder.smithing(of(base), //Base
-                of(addition), //Addition
-                result.asItem() // Result
-        ).unlocks("has_req", has(addition))
+                        of(addition), //Addition
+                        result.asItem() // Result
+                ).unlocks("has_req", has(addition))
                 .save(consumer, setRL("smithing/" + path));
     }
 }

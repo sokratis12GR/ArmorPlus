@@ -4,7 +4,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -12,7 +11,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static com.sofodev.armorplus.utils.ToolTipUtils.addExperimentalItemInformation;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 
 public class APItemBase extends APItem {

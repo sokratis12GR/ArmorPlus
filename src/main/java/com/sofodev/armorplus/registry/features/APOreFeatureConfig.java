@@ -12,9 +12,9 @@ import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 
 public class APOreFeatureConfig implements IFeatureConfig {
     public static final Codec<APOreFeatureConfig> CODEC = RecordCodecBuilder.create((apOreFeatureConfigInstance) -> apOreFeatureConfigInstance.group(
-            RuleTest.CODEC.fieldOf("target").forGetter((config) -> config.target),
-            BlockState.CODEC.fieldOf("state").forGetter((config) -> config.state),
-            Codec.intRange(0, 64).fieldOf("size").forGetter((config) -> config.size))
+                    RuleTest.CODEC.fieldOf("target").forGetter((config) -> config.target),
+                    BlockState.CODEC.fieldOf("state").forGetter((config) -> config.state),
+                    Codec.intRange(0, 64).fieldOf("size").forGetter((config) -> config.size))
             .apply(apOreFeatureConfigInstance, APOreFeatureConfig::new));
     public final RuleTest target;
     public final int size;

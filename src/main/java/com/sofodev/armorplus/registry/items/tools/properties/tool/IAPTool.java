@@ -9,6 +9,9 @@ import net.minecraft.item.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.List;
+import java.util.function.Supplier;
+
 public interface IAPTool {
 
     /**
@@ -20,8 +23,10 @@ public interface IAPTool {
      * A list of all the BuffInstances for the tool
      * <p>
      * A tool can contain multiple buff instances, which means it can utilize many custom effects.
+     *
+     * @return
      */
-    BuffInstance[] getBuffInstances();
+    Supplier<List<BuffInstance>> getBuffInstances();
 
     /**
      * @return The name of the tool

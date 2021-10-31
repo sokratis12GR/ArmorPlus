@@ -1,6 +1,7 @@
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.config.APConfig;
+import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.events.WorldGenEvents;
 import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.ModBlocks;
@@ -39,10 +40,10 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
@@ -69,7 +70,6 @@ import static java.util.Arrays.asList;
 import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 import static net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
-import static net.minecraftforge.fml.config.ModConfig.Type.SERVER;
 import static net.minecraftforge.fml.loading.FMLEnvironment.dist;
 
 @Mod("armorplus")
@@ -78,12 +78,9 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.16.5-16.4.0";
+    public static final String VERSION = "1.16.5-16.5.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-
-    public static ArmorPlus instance;
     public static final PacketHandler PACKET_HANDLER = new PacketHandler();
-
     /**
      * Used as an "upper ground" variable, which sets the limit for the sets which use these materials.
      */
@@ -91,7 +88,6 @@ public class ArmorPlus {
     public static final int AP_TOOL_MATERIAL_LENGTH = APToolProperties.values().length;
     public static final int AP_STONE_BRICKS_LENGTH = BrickColor.values().length;
     public static final int AP_MACE_MAT_LENGTH = APMaceMaterial.values().length;
-
     public static final ItemGroup AP_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("armors")) {
         @Override
         public ItemStack makeIcon() {
@@ -107,7 +103,7 @@ public class ArmorPlus {
     public static final ItemGroup AP_BLOCK_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("blocks")) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModBlocks.LAVA_CRYSTAL.get());
+            return new ItemStack(INFUSED_LAVA_CRYSTAL.get());
         }
     };
     public static final ItemGroup AP_WEAPON_GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), setName("weapons")) {
@@ -116,6 +112,8 @@ public class ArmorPlus {
             return new ItemStack(getAPItem("ender_dragon_battle_axe"));
         }
     };
+    public static ArmorPlusConfig config;
+    public static ArmorPlus instance;
 
     public ArmorPlus() {
         instance = this;
@@ -125,8 +123,15 @@ public class ArmorPlus {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext modLoadingCTX = ModLoadingContext.get();
 
-        modLoadingCTX.registerConfig(SERVER, APConfig.SERVER_SPEC, "ap_config.toml");
-        APConfig.loadConfig(APConfig.SERVER_SPEC, FMLPaths.CONFIGDIR.get().resolve("ap_config.toml").toString());
+        ArmorPlus.config = ConfigHelper.register(
+                ModLoadingContext.get(), FMLJavaModLoadingContext.get(),
+                ModConfig.Type.SERVER, ArmorPlusConfig::new);
+        //ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, APConfig.clientSpec);
+        //  modLoadingCTX.registerConfig(ModConfig.Type.SERVER, APConfig.SERVER_SPEC, "armorplus-server.toml");
+        //  modLoadingCTX.registerConfig(ModConfig.Type.COMMON, APConfig.COMMON_SPEC, "armorplus-common.toml");
+        //  modEventBus.register(APConfig.class);
+        // APConfig.loadConfig(APConfig.SERVER_SPEC, FMLPaths.CONFIGDIR.get().resolve("armorplus-server.toml").toString());
+        // APConfig.loadConfig(APConfig.COMMON_SPEC, FMLPaths.CONFIGDIR.get().resolve("armorplus-common.toml").toString());
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         ENCHANTMENTS.register(modEventBus);
@@ -146,6 +151,37 @@ public class ArmorPlus {
             modEventBus.addListener(this::onClientSetup);
         }
         //  modEventBus.addListener(ModAttributes::registerAttributes);
+    }
+
+    @OnlyIn(CLIENT)
+    private static void registerRenderingHandler(EntityType<? extends APArrowEntity> entityClass, String name) {
+        registerEntityRenderingHandler(entityClass, rm -> new APArrowRenderer<>(rm, name));
+    }
+
+    @OnlyIn(CLIENT)
+    private static void registerBowOverrides() {
+        Arrays.stream(BOWS).forEach(bow -> {
+            ItemModelsProperties.register(bow.get(), new ResourceLocation("pull"), (stack, world, player) -> {
+                if (player == null) {
+                    return 0.0F;
+                } else {
+                    return player.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration() - player.getUseItemRemainingTicks()) / 20.0F;
+                }
+            });
+            ItemModelsProperties.register(bow.get(), new ResourceLocation("pulling"), (stack, world, player) -> {
+                return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;
+            });
+        });
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    @Nullable
+    public static <T> Registry<T> findRegistryByKey(RegistryKey<Registry<T>> key) {
+        return Registry.REGISTRY.get((RegistryKey) key);
+    }
+
+    public static ArmorPlus getInstance() {
+        return instance;
     }
 
     public void onCommonSetup(FMLCommonSetupEvent event) {
@@ -187,33 +223,6 @@ public class ArmorPlus {
         blocks.forEach(block -> RenderTypeLookup.setRenderLayer(block.get(), RenderType.cutout()));
     }
 
-    @OnlyIn(CLIENT)
-    private static void registerRenderingHandler(EntityType<? extends APArrowEntity> entityClass, String name) {
-        registerEntityRenderingHandler(entityClass, rm -> new APArrowRenderer<>(rm, name));
-    }
-
-    @OnlyIn(CLIENT)
-    private static void registerBowOverrides() {
-        Arrays.stream(BOWS).forEach(bow -> {
-            ItemModelsProperties.register(bow.get(), new ResourceLocation("pull"), (stack, world, player) -> {
-                if (player == null) {
-                    return 0.0F;
-                } else {
-                    return player.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration() - player.getUseItemRemainingTicks()) / 20.0F;
-                }
-            });
-            ItemModelsProperties.register(bow.get(), new ResourceLocation("pulling"), (stack, world, player) -> {
-                return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;
-            });
-        });
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    @Nullable
-    public static <T> Registry<T> findRegistryByKey(RegistryKey<Registry<T>> key) {
-        return Registry.REGISTRY.get((RegistryKey) key);
-    }
-
     @SuppressWarnings("unchecked")
     @Nullable
     public <T> T findObjectByKey(RegistryKey<T> key) {
@@ -221,9 +230,5 @@ public class ArmorPlus {
         if (registry == null)
             return null;
         return registry.get(key.getRegistryName());
-    }
-
-    public static ArmorPlus getInstance() {
-        return instance;
     }
 }

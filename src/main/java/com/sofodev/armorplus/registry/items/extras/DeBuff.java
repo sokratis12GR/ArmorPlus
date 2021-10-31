@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Locale;
 import java.util.Random;
 
 public enum DeBuff implements IBuff {
@@ -37,7 +38,7 @@ public enum DeBuff implements IBuff {
 
     DeBuff(boolean isEffect) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.POTIONS.getValue(Utils.setVanillaLocation(this.name().toLowerCase()));
+        this.effect = ForgeRegistries.POTIONS.getValue(Utils.setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
     }
 
     DeBuff() {

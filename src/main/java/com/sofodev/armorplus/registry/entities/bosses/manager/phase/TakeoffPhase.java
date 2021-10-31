@@ -3,7 +3,6 @@ package com.sofodev.armorplus.registry.entities.bosses.manager.phase;
 import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonEntity;
 import com.sofodev.armorplus.registry.entities.bosses.manager.PhaseType;
 import net.minecraft.pathfinding.Path;
-import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3i;

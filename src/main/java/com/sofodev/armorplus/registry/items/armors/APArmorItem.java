@@ -12,7 +12,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
@@ -22,7 +21,7 @@ import static net.minecraft.util.text.TextFormatting.*;
 
 public class APArmorItem extends ArmorItem {
 
-    private final IAPArmor mat;
+    private IAPArmor mat;
 
     public APArmorItem(IAPArmor mat, EquipmentSlotType slot) {
         super(mat.get(), slot, mat.isImmuneToFire()
@@ -34,32 +33,37 @@ public class APArmorItem extends ArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isClientSide) {
-            Arrays.stream(mat.getBuffInstances()).forEach(instance -> {
-                if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
-                    if (instance.getBuff().requiresFullSet()) {
-                        if (areExactMatch(mat, player)) {
+            //           if (APConfig.ServerConfig.redstoneMaterial.enableArmorEffects.get()) {
+            if (mat.getConfiguration().get().enableArmorEffects.get()) {
+                mat.getBuffInstances().get().forEach(instance -> {
+                    if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
+                        if (instance.getBuff().requiresFullSet()) {
+                            if (areExactMatch(mat, player)) {
+                                instance.onArmorTick(stack, world, player);
+                            }
+                        } else {
                             instance.onArmorTick(stack, world, player);
                         }
-                    } else {
-                        instance.onArmorTick(stack, world, player);
                     }
-                }
-            });
+                });
+            }
+            //         }
         }
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (mat.getBuffInstances().length > 0) {
+        if (!mat.getBuffInstances().get().isEmpty()) {
             tooltip.add(translate(YELLOW, "tooltip.armorplus.condition"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
             tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
-            for (BuffInstance buff : mat.getBuffInstances()) {
+            for (BuffInstance buff : mat.getBuffInstances().get()) {
                 int lvl = buff.getAmplifier() + 1;
                 String theLvl = lvl > 0 ? " " + generate(lvl) : "";
                 tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));
             }
         }
+        //     }
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 

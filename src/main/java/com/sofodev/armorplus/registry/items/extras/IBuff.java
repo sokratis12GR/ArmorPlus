@@ -1,12 +1,10 @@
 package com.sofodev.armorplus.registry.items.extras;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**

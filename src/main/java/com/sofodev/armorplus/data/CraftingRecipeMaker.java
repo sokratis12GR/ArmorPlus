@@ -49,6 +49,21 @@ public class CraftingRecipeMaker extends RecipeProvider {
         );
     }
 
+    public void buildSword(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> sword, IItemProvider material, IItemProvider core, IItemProvider handle) {
+        String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
+        build(con, Result.build(sword.get(), path + "_swords", path),
+                GridInput.build("M  ", "C  ", "S  ", 'S', 'M', 'C'), handle, of(material), of(core)
+        );
+    }
+
+    public void buildSword(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> sword, IItemProvider material,
+                           IItemProvider coreA, IItemProvider coreB, IItemProvider coreC, IItemProvider handle) {
+        String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
+        build(con, Result.build(sword.get(), path + "_swords", path),
+                GridInput.build(" M ", "ABC", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC)
+        );
+    }
+
     public void buildBattleAxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
         build(con, Result.build(battleAxe.get(), path + "_battle_axes", path),
@@ -56,10 +71,40 @@ public class CraftingRecipeMaker extends RecipeProvider {
         );
     }
 
+    public void buildBattleAxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider core, IItemProvider handle) {
+        String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
+        build(con, Result.build(battleAxe.get(), path + "_battle_axes", path),
+                GridInput.build("M M", "MCM", " S ", 'S', 'M', 'C'), handle, of(material), of(core)
+        );
+    }
+
+    public void buildBattleAxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material,
+                               IItemProvider coreA, IItemProvider coreB, IItemProvider coreC, IItemProvider handle) {
+        String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
+        build(con, Result.build(battleAxe.get(), path + "_battle_axes", path),
+                GridInput.build("M M", "ABC", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC)
+        );
+    }
+
     public void buildPickaxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
         build(con, Result.build(battleAxe.get(), path + "_pickaxes", path),
                 GridInput.build("MMM", " S ", " S ", 'S', 'M'), handle, of(material)
+        );
+    }
+
+    public void buildPickaxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material, IItemProvider core, IItemProvider handle) {
+        String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
+        build(con, Result.build(battleAxe.get(), path + "_pickaxes", path),
+                GridInput.build("MMM", " C ", " S ", 'S', 'M', 'C'), handle, of(material), of(core)
+        );
+    }
+
+    public void buildPickaxe(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> battleAxe, IItemProvider material,
+                             IItemProvider coreA, IItemProvider coreB, IItemProvider coreC, IItemProvider handle) {
+        String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
+        build(con, Result.build(battleAxe.get(), path + "_pickaxes", path),
+                GridInput.build("AMC", " B ", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC)
         );
     }
 
@@ -73,6 +118,29 @@ public class CraftingRecipeMaker extends RecipeProvider {
                 GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, of(material)
         );
     }
+
+    public void buildBow(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> bow, IItemProvider core, IItemProvider material) {
+        String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
+        build(con, Result.build(bow.get(), path + "_bows", path),
+                GridInput.build("SM ", "S C", "SM ", 'S', 'M', 'C'), Items.STRING, of(material), of(core)
+        );
+
+        build(con, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"),
+                GridInput.build(" MS", "C S", " MS", 'S', 'M', 'C'), Items.STRING, of(material), of(core)
+        );
+    }
+
+    public void buildBow(Consumer<IFinishedRecipe> con, RegistryObject<? extends Item> bow, IItemProvider material, IItemProvider coreA, IItemProvider coreB, IItemProvider coreC) {
+        String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
+        build(con, Result.build(bow.get(), path + "_bows", path),
+                GridInput.build("SAM", "SBM", "SCM", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC)
+        );
+
+        build(con, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"),
+                GridInput.build("MAS", "MBS", "MCS", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC)
+        );
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -97,6 +165,75 @@ public class CraftingRecipeMaker extends RecipeProvider {
         );
     }
 
+    //START SINGLE-CORES
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, String name, IItemProvider material, IItemProvider core, String itemSuffix) {
+        this.buildArmorSet(con, name, material, core, name, name, "", itemSuffix);
+    }
+
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, String name, IItemProvider material, IItemProvider core, String group, String path, String suffix, String itemSuffix) {
+        this.buildArmorSet(con, material, core,
+                getAPItem(name + "_helmet" + itemSuffix.trim()),
+                getAPItem(name + "_chestplate" + itemSuffix.trim()),
+                getAPItem(name + "_leggings" + itemSuffix.trim()),
+                getAPItem(name + "_boots" + itemSuffix.trim()),
+                group, path, suffix
+        );
+    }
+
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, IItemProvider material, IItemProvider core,
+                              IItemProvider head, IItemProvider chest, IItemProvider legs, IItemProvider feet, String group, String path, String suffix) {
+        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path).setSuffix(suffix),
+                Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path).setSuffix(suffix), material, core
+        );
+    }
+    //END SINGLE-CORES
+
+    //START TRI-CORES
+    public void buildComplexArmorSet(Consumer<IFinishedRecipe> con, String name, IItemProvider material,
+                                     String left, String middle, String right, String itemSuffix) {
+        this.buildArmorSet(con, name, material,
+                Utils.getAPItem(left + "_helmet_base"), Utils.getAPItem(middle + "_helmet_base"), Utils.getAPItem(right + "_helmet_base"),
+                Utils.getAPItem(left + "_chestplate_base"), Utils.getAPItem(middle + "_chestplate_base"), Utils.getAPItem(right + "_chestplate_base"),
+                Utils.getAPItem(left + "_leggings_base"), Utils.getAPItem(middle + "_leggings_base"), Utils.getAPItem(right + "_leggings_base"),
+                Utils.getAPItem(left + "_boots_base"), Utils.getAPItem(middle + "_boots_base"), Utils.getAPItem(right + "_boots_base"),
+                name, name, "", itemSuffix);
+    }
+
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, String name, IItemProvider material,
+                              IItemProvider coreHA, IItemProvider coreHB, IItemProvider coreHC,
+                              IItemProvider coreCA, IItemProvider coreCB, IItemProvider coreCC,
+                              IItemProvider coreLA, IItemProvider coreLB, IItemProvider coreLC,
+                              IItemProvider coreBA, IItemProvider coreBB, IItemProvider coreBC,
+                              String group, String path, String suffix, String itemSuffix) {
+        this.buildArmorSet(con, material,
+                coreHA, coreHB, coreHC,
+                coreCA, coreCB, coreCC,
+                coreLA, coreLB, coreLC,
+                coreBA, coreBB, coreBC,
+                getAPItem(name + "_helmet" + itemSuffix.trim()),
+                getAPItem(name + "_chestplate" + itemSuffix.trim()),
+                getAPItem(name + "_leggings" + itemSuffix.trim()),
+                getAPItem(name + "_boots" + itemSuffix.trim()),
+                group, path, suffix
+        );
+    }
+
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, IItemProvider material,
+                              IItemProvider coreHA, IItemProvider coreHB, IItemProvider coreHC,
+                              IItemProvider coreCA, IItemProvider coreCB, IItemProvider coreCC,
+                              IItemProvider coreLA, IItemProvider coreLB, IItemProvider coreLC,
+                              IItemProvider coreBA, IItemProvider coreBB, IItemProvider coreBC,
+                              IItemProvider head, IItemProvider chest, IItemProvider legs, IItemProvider feet, String group, String path, String suffix) {
+        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path).setSuffix(suffix),
+                Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path).setSuffix(suffix), material,
+                coreHA, coreHB, coreHC,
+                coreCA, coreCB, coreCC,
+                coreLA, coreLB, coreLC,
+                coreBA, coreBB, coreBC
+        );
+    }
+
+    //END - TRI-CORES
     public void buildEnhanced(Consumer<IFinishedRecipe> con, RegistryObject<Item> enMaterial, IItemProvider material) {
         this.buildFilling(con, Result.build(enMaterial.get(), "ap_en_mats", "enhanced"), material, Items.GLOWSTONE_DUST);
     }
@@ -215,6 +352,65 @@ public class CraftingRecipeMaker extends RecipeProvider {
         this.build(con, result, GridInput.build("S S", "S S", 'S'), material);
         this.build(con, result.setSuffix("_alt"), GridInput.build("   ", "S S", "S S", 'S'), material);
     }
+
+    //START SINGLE-CORES
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, Result head, Result chest, Result legs, Result feet, IItemProvider material, IItemProvider core) {
+        this.buildHelmet(con, head, material, core);
+        this.buildChestplate(con, chest, material, core);
+        this.buildLeggings(con, legs, material, core);
+        this.buildBoots(con, feet, material, core);
+    }
+
+    public void buildHelmet(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider core) {
+        this.build(con, result, GridInput.build("SCS", "S S", 'S', 'C'), material, of(core));
+        this.build(con, result.setSuffix("_alt"), GridInput.build("   ", "SCS", "S S", 'S', 'C'), material, of(core));
+    }
+
+    public void buildChestplate(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider core) {
+        this.build(con, result, GridInput.build("S S", "SCS", "SSS", 'S', 'C'), material, of(core));
+    }
+
+    public void buildLeggings(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider core) {
+        this.build(con, result, GridInput.build("SCS", "S S", "S S", 'S', 'C'), material, of(core));
+    }
+
+    public void buildBoots(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider core) {
+        this.build(con, result, GridInput.build("S S", "SCS", 'S', 'C'), material, of(core));
+        this.build(con, result.setSuffix("_alt"), GridInput.build("   ", "S S", "SCS", 'S', 'C'), material, of(core));
+    }
+    //END SINGLE-CORES
+
+    //START TRI-CORES
+    public void buildArmorSet(Consumer<IFinishedRecipe> con, Result head, Result chest, Result legs, Result feet, IItemProvider material,
+                              IItemProvider coreHA, IItemProvider coreHB, IItemProvider coreHC,
+                              IItemProvider coreCA, IItemProvider coreCB, IItemProvider coreCC,
+                              IItemProvider coreLA, IItemProvider coreLB, IItemProvider coreLC,
+                              IItemProvider coreBA, IItemProvider coreBB, IItemProvider coreBC
+    ) {
+        this.buildHelmet(con, head, material, coreHA, coreHB, coreHC);
+        this.buildChestplate(con, chest, material, coreCA, coreCB, coreCC);
+        this.buildLeggings(con, legs, material, coreLA, coreLB, coreLC);
+        this.buildBoots(con, feet, material, coreBA, coreBB, coreBC);
+    }
+
+    public void buildHelmet(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider coreHA, IItemProvider coreHB, IItemProvider coreHC) {
+        this.build(con, result, GridInput.build("ABC", "S S", 'S', 'A', 'B', 'C'), material, of(coreHA), of(coreHB), of(coreHC));
+        this.build(con, result.setSuffix("_alt"), GridInput.build("   ", "ABC", "S S", 'S', 'A', 'B', 'C'), material, of(coreHA), of(coreHB), of(coreHC));
+    }
+
+    public void buildChestplate(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider coreCA, IItemProvider coreCB, IItemProvider coreCC) {
+        this.build(con, result, GridInput.build("A C", "SBS", "SSS", 'S', 'A', 'B', 'C'), material, of(coreCA), of(coreCB), of(coreCC));
+    }
+
+    public void buildLeggings(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider coreLA, IItemProvider coreLB, IItemProvider coreLC) {
+        this.build(con, result, GridInput.build("ABC", "S S", "S S", 'S', 'A', 'B', 'C'), material, of(coreLA), of(coreLB), of(coreLC));
+    }
+
+    public void buildBoots(Consumer<IFinishedRecipe> con, Result result, IItemProvider material, IItemProvider coreBA, IItemProvider coreBB, IItemProvider coreBC) {
+        this.build(con, result, GridInput.build("S S", "ABC", 'S', 'A', 'B', 'C'), material, of(coreBA), of(coreBB), of(coreBC));
+        this.build(con, result.setSuffix("_alt"), GridInput.build("   ", "S S", "ABC", 'S', 'A', 'B', 'C'), material, of(coreBA), of(coreBB), of(coreBC));
+    }
+    //END TRI-CORES
 
     //#########################\\
     //  HELPER METHOD - SHAPED \\

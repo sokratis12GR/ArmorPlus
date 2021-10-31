@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
+import java.util.Locale;
+
 public enum APToolType {
     SWORD(2f, -1.5f),
     BATTLE_AXE(4.0f, -3.0f),
@@ -24,7 +26,7 @@ public enum APToolType {
     }
 
     public String getName() {
-        return this.name().toLowerCase();
+        return this.name().toLowerCase(Locale.ENGLISH);
     }
 
     @Override

@@ -81,6 +81,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> TROPHY = register("trophy", TrophyBlock::new);
     public static final RegistryObject<TileEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy",
             () -> build(Builder.of(TrophyTile::new, TROPHY.get())));
+
     static {
         registerBlocks();
     }
