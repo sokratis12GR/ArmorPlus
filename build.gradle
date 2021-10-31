@@ -49,7 +49,8 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            properties 'mixin.env.disableRefMap': 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 armorplus {
@@ -107,20 +108,20 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     implementation fg.deobf("curse.maven:thedragonlib:3108730") //TheDragonLib
 //    implementation fg.deobf('software.bernie.geckolib:forge-1.16.5-geckolib:3.0.13') //Geckolib
-    implementation fg.deobf("curse.maven:geckolib:3195959") //Geckolib (3.0.13)
-    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
-    // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
+    implementation fg.deobf("curse.maven:geckolib:3502622") //Geckolib (3.0.49)
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
     implementation fg.deobf("curse.maven:mekanism:3183270") //Mekanism
-    implementation fg.deobf("curse.maven:jei:3192904") //JEI
+    implementation fg.deobf("curse.maven:jei:3502687") //JEI 7.7.1.129
 
-    // implementation fg.deobf("curse.maven:ichunutil:3062089")
-    // implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
-    // implementation fg.deobf("curse.maven:corail-tombstone:3169275")
-    // implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
-    // implementation fg.deobf("curse.maven:better-diving:3214276")
-    // implementation fg.deobf('curse.maven:minecolonies:3126211')
-    // implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
-    // implementation fg.deobf("curse.maven:blame:3135054")
+//    implementation fg.deobf("curse.maven:ichunutil:3062089")
+//    implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
+//    implementation fg.deobf("curse.maven:corail-tombstone:3169275")
+//    implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
+//    implementation fg.deobf("curse.maven:better-diving:3214276")
+//    implementation fg.deobf('curse.maven:minecolonies:3126211')
+//    implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
+    //implementation fg.deobf("curse.maven:blame:3181314")
 
 }
 
