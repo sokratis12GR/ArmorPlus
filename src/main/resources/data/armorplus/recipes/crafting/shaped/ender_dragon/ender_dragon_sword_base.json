@@ -3,7 +3,7 @@
   "group": "armorplus:ender_dragon_swords",
   "pattern": [
     "M  ",
-    "M  ",
+    "C  ",
     "S  "
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "M": {
       "item": "armorplus:ender_dragon_scale"
+    },
+    "C": {
+      "item": "minecraft:dragon_breath"
     }
   },
   "result": {

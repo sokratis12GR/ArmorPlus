@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "group": "armorplus:super_star",
   "pattern": [
-    "SSS",
+    "SCS",
     "S S",
     "   "
   ],
   "key": {
     "S": {
       "item": "armorplus:wither_bone"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
     }
   },
   "result": {

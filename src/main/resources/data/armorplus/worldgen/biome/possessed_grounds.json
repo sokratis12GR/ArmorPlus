@@ -1,5 +1,5 @@
 {
-    "scale": 0.05,
+    "scale": 0.01,
     "effects": {
         "mood_sound": {
             "sound": "minecraft:ambient.soul_sand_valley.mood",
@@ -115,12 +115,6 @@
                 "weight": 5,
                 "minCount": 1,
                 "maxCount": 1
-            },
-            {
-                "type": "minecraft:stray",
-                "weight": 80,
-                "minCount": 4,
-                "maxCount": 4
             }
         ],
         "creature": [],

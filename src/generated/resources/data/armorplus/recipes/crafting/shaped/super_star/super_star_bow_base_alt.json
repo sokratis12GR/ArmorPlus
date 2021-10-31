@@ -3,7 +3,7 @@
   "group": "armorplus:super_star_bows",
   "pattern": [
     " MS",
-    "M S",
+    "C S",
     " MS"
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "M": {
       "item": "armorplus:wither_bone"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
     }
   },
   "result": {

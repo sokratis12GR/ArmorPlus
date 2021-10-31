@@ -1,6 +1,7 @@
 {
 	"texture_size": [64, 64],
 	"textures": {
+		"particle": "armorplus:blocks/soul_box",
 		"1": "armorplus:blocks/soul_box"
 	},
 	"elements": [

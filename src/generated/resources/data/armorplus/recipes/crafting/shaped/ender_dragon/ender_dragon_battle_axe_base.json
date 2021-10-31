@@ -3,7 +3,7 @@
   "group": "armorplus:ender_dragon_battle_axes",
   "pattern": [
     "M M",
-    "MSM",
+    "MCM",
     " S "
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "M": {
       "item": "armorplus:ender_dragon_scale"
+    },
+    "C": {
+      "item": "minecraft:dragon_breath"
     }
   },
   "result": {

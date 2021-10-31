@@ -3,12 +3,21 @@
   "group": "armorplus:slayer",
   "pattern": [
     "   ",
-    "SSS",
+    "ABC",
     "S S"
   ],
   "key": {
     "S": {
       "item": "armorplus:the_ultimate_material"
+    },
+    "A": {
+      "item": "armorplus:super_star_helmet_base"
+    },
+    "B": {
+      "item": "armorplus:ender_dragon_helmet_base"
+    },
+    "C": {
+      "item": "armorplus:guardian_helmet_base"
     }
   },
   "result": {

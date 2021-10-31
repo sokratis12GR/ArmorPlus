@@ -3,7 +3,7 @@
   "group": "armorplus:guardian_swords",
   "pattern": [
     "M  ",
-    "M  ",
+    "C  ",
     "S  "
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "M": {
       "item": "armorplus:guardian_scale"
+    },
+    "C": {
+      "item": "minecraft:prismarine"
     }
   },
   "result": {

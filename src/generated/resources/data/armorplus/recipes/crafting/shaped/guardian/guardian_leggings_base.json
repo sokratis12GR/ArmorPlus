@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "group": "armorplus:guardian",
   "pattern": [
-    "SSS",
+    "SCS",
     "S S",
     "S S"
   ],
   "key": {
     "S": {
       "item": "armorplus:guardian_scale"
+    },
+    "C": {
+      "item": "minecraft:prismarine"
     }
   },
   "result": {

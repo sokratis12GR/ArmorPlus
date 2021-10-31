@@ -3,12 +3,21 @@
   "group": "armorplus:slayer",
   "pattern": [
     "S S",
-    "S S",
+    "ABC",
     "   "
   ],
   "key": {
     "S": {
       "item": "armorplus:the_ultimate_material"
+    },
+    "A": {
+      "item": "armorplus:super_star_boots_base"
+    },
+    "B": {
+      "item": "armorplus:ender_dragon_boots_base"
+    },
+    "C": {
+      "item": "armorplus:guardian_boots_base"
     }
   },
   "result": {

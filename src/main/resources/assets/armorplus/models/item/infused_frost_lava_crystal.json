@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/missing"
+    "layer0": "armorplus:items/infused_frost_lava_crystal"
   }
 }

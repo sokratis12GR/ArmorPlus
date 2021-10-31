@@ -1,3 +1,38 @@
+ArmorPlus 1.16.5-16.5.0
+----------------------------
+
+* Removed strays from the possessed grounds and valley of souls spawns list.
+* Made all modded biomes 5x rarer than before (0.05 chance to 0.01 chance).
+* Removed "Thank you cake" reward on world start.
+* Infused Lava tools now use obsidian sticks instead of regular sticks for their recipes.
+* Super Star Armor now provides Fire Resistance as well (and **Fire Extinguish** which removes any visual fire).
+* All armor bases now require a core in their crafting recipe:
+  * Guardian Bases: Prismarine
+  * Super Star Bases: Nether Star
+  * Ender Dragon Bases: Dragon Breath
+* Slayer Base now requires all the mentioned above bases (Guardian, Super Star, Ender Dragon) alongside some ultimate material to be crafted.
+  * Introduced slayer bases for weapons and tools.
+* Slayer armor and tools will now retain all of its material's powers and claim them as their own.
+  * Increased the attack damage done by tools by 1.5 intervals.
+* The current iteration of Obsidian Armor is now renamed to Enriched Obsidian Armor and will provide additional toughness level.
+* Slightly buffed the durability of the Slayer Armor, Enriched Obsidian Armor and its tools
+* Added Wither Immunity to the Ender Dragon Armor like in 1.12.2
+* Frost Armor's Fire Weakness adds another 5 seconds to any fire damage taken.
+* Infused Lava Armor's Water Weakness halves all your underwater breathing air by 2 for each tick.
+* Removed Herobrine.
+* Added some more functionality to the **Unknown** enchantment
+  * **__SPOILER ALERT__**:
+    * Wearing a metal helmet during a thunderstorm has a 25% chance to spawn a harmless thunder on top of the player.
+    * Using a bow with the enchantment on will spawn a sequential line of lightning bolts, eats 10 durability per summoned lightning bolt per tick.
+    * Attacking with a trident with the enchantment, 5 lightning bolts will spawn surrounding the target (may damage you in the process).
+    * A few more
+    
+ArmorPlus 1.16.5-16.4.1
+----------------------------
+
+* Fixed a bug causing flight and water weakness to not work.
+* Note: Configs might not work as intended, please ignore them for now.
+
 ArmorPlus 1.16.5-16.4.0
 ----------------------------
 
@@ -24,7 +59,7 @@ ArmorPlus 1.16.5-16.4.0
   profession.
     - Provides a way to get frost & lava shards and crystals, blaze rods/powder, minor souls, major soul exchange as
       well as a way to obtain Soul Stealer books and/or enchanted weapons.
-* Added Soul: Slayer (texture pending)
+* Added Soul: Slayer (`armorplus:soul_slayer`)
     - Crafting Table Recipe: 1x Elder Guardian Soul, 1x Wither Boss Soul, 1x Ender Dragon Soul (Shapeless)
     - Used alongside the slayer bases in a smithing table to create the slayer armor pieces.
 * Changes to "The Ultimate Material"
@@ -32,7 +67,7 @@ ArmorPlus 1.16.5-16.4.0
       Shapeless)
     - Used to create the slayer bases in a crafting table, the recipe layout for the bases is the same one vanilla
       armors use.
-* Added Infused Frost-Lava Crystal (texture pending)
+* Added Infused Frost-Lava Crystal (`armorplus:infused_frost_lava_crystal`)
     - Smithing Table Recipe: Infused Lava Crystal + Infused Frost Crystal (or vise versa)
     - Used to create the frost lava set and an ingredient for future recipes
 * Added Trophies (`armorplus:trophy`), a decorative block which can be obtained by killing bosses.
@@ -40,6 +75,7 @@ ArmorPlus 1.16.5-16.4.0
     - Is fully customizable via nbt, so ModPack devs can tweak/add/remove drops as they see fit.
 * Ignite (buff) now correctly applies before damage calculations and will cause mobs to drop their "cooked" variants of
   food when slayed.
+* Infused Lava Tools now auto-smelt blocks into their "smelted" variant, configurable in `config/ap_config.toml`
 * Removed Castle Block & Colored Brick Type to Block recipes (i.e. Wall -> Block, Corner -> Block);
 * Remade the demonic dragon model & texture (still very much wip)
 * Fixed a crash on world load related to Entity Types being null when mods like Reliquary, Better Diving, Minecolonies

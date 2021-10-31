@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "group": "armorplus:ender_dragon",
   "pattern": [
-    "SSS",
+    "SCS",
     "S S",
     "   "
   ],
   "key": {
     "S": {
       "item": "armorplus:ender_dragon_scale"
+    },
+    "C": {
+      "item": "minecraft:dragon_breath"
     }
   },
   "result": {

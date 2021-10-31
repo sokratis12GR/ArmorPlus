@@ -4,11 +4,14 @@
   "pattern": [
     "   ",
     "S S",
-    "S S"
+    "SCS"
   ],
   "key": {
     "S": {
       "item": "armorplus:ender_dragon_scale"
+    },
+    "C": {
+      "item": "minecraft:dragon_breath"
     }
   },
   "result": {
