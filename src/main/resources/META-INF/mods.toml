@@ -12,7 +12,8 @@ logoFile="headerimg.jpg"
 credits="To everyone who helped with the translation of ArmorPlus: https://bit.ly/armorplus-credits" #optional
 authors="SoFoDev" #optional
 description='''
-    ArmorPlus is a mod based on exploration, killing, building, getting geared up, fight the bosses and explore the depths of your worlds
+    ArmorPlus is a mod which introduces brand new multi-tiered arsenal to your Minecraft world, each with its own unique abilities so that they can all be utilized to the fullest depending on the different situations your journeys may encounter.
+    It also adds some world generation to ensure that you will always have something new to explore.
 '''
 [[dependencies.armorplus]] #optional
     # the modid of the dependency

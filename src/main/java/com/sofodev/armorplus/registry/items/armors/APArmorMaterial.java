@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.registry.items.armors;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.IArmorMaterial;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.items.armors.APArmorProperties.*;
 import static com.sofodev.armorplus.registry.items.extras.Buff.*;
 import static net.minecraft.util.text.TextFormatting.*;
@@ -32,102 +30,47 @@ public enum APArmorMaterial implements IAPArmor {
     /*Tier 1*/
     COAL(COAL_PROP, GRAY, () -> withBuffs(
             new BuffInstance(NIGHT_VISION, 0)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.coalMaterial;
-        }
-    },
+    )),
     REDSTONE(REDSTONE_PROP, DARK_RED, () -> withBuffs(
             new BuffInstance(HASTE, 1)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.redstoneMaterial;
-        }
-    },
+    )),
     LAPIS(LAPIS_PROP, DARK_BLUE, () -> withBuffs(
             new BuffInstance(WATER_BREATHING, 0)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.lapisMaterial;
-        }
-    },
+    )),
     CHICKEN(CHICKEN_PROP, WHITE, () -> withBuffs(
             new BuffInstance(SPEED, 3)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.chickenMaterial;
-        }
-    },
+    )),
     SLIME(SLIME_PROP, GREEN, () -> withBuffs(
             new BuffInstance(JUMP_BOOST, 3),
             new BuffInstance(SLOW_FALLING, 1)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.slimeMaterial;
-        }
-    },
+    )),
     /*Tier 2*/
     EMERALD(EMERALD_PROP, DARK_GREEN, () -> withBuffs(
             new BuffInstance(SPEED, 1)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.emeraldMaterial;
-        }
-    },
+    )),
     OBSIDIAN(OBSIDIAN_PROP, DARK_GRAY, () -> withBuffs(
             new BuffInstance(RESISTANCE, 1)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.obsidianMaterial;
-        }
-    },
+    )),
     INFUSED_LAVA(INFUSED_LAVA_PROP, true, GOLD, () -> withBuffs(
             new BuffInstance(FIRE_RESISTANCE, 0),
             new BuffInstance(FIRE_EXTINGUISH),
             new BuffInstance(WATER_WEAKNESS)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.infusedLavaMaterial;
-        }
-    },
+    )),
     /*Tier 3*/
     GUARDIAN(GUARDIAN_PROP, true, BLUE, () -> withBuffs(
             new BuffInstance(WATER_BREATHING, 0)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.guardianMaterial;
-        }
-    },
+    )),
     SUPER_STAR(SUPER_STAR_PROP, true, WHITE, () -> withBuffs(
             new BuffInstance(WITHER_IMMUNITY),
             new BuffInstance(REGENERATION, 0),
             new BuffInstance(FIRE_RESISTANCE),
             new BuffInstance(FIRE_EXTINGUISH)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.superStarMaterial;
-        }
-    },
+    )),
     ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, () -> withBuffs(
             new BuffInstance(WITHER_IMMUNITY),
             new BuffInstance(FLIGHT),
             new BuffInstance(SLOW_FALLING, 0)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.enderDragonMaterial;
-        }
-    },
+    )),
     /*Tier TConstruct*/
     ARDITE(ARDITE_PROP, RED),
     COBALT(COBALT_PROP, BLUE),
@@ -142,12 +85,7 @@ public enum APArmorMaterial implements IAPArmor {
             new BuffInstance(WATER_BREATHING, 0),
             new BuffInstance(SLOW_FALLING, 0),
             new BuffInstance(FIRE_EXTINGUISH)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.slayerMaterial;
-        }
-    },
+    )),
     /*Enhanced Vanilla Armor*/
     CHAINMAIL(ENHANCED_CHAINMAIL_PROP, GRAY),
     GOLDEN(ENHANCED_GOLD_PROP, GRAY),
@@ -156,19 +94,10 @@ public enum APArmorMaterial implements IAPArmor {
     NETHERITE(ENHANCED_NETHERITE_PROP, true, GRAY, Collections::emptyList),
     FROST(FROST_PROP, false, BLUE, () -> withBuffs(
             new BuffInstance(FIRE_WEAKNESS)
-    )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.frostMaterial;
-        }
-    },
+    )),
     FROST_LAVA(FROST_LAVA_PROP, true, YELLOW, () -> withBuffs(
             new BuffInstance(NATURAL_IMMUNITY)
     )) {
-        @Override
-        public Supplier<MaterialConfig> getConfiguration() {
-            return () -> config.frostLavaMaterial;
-        }
     };
 
     private final IArmorMaterial armor;
@@ -231,11 +160,6 @@ public enum APArmorMaterial implements IAPArmor {
     @Override
     public Supplier<List<BuffInstance>> getBuffInstances() {
         return this.buffs;
-    }
-
-    @Override
-    public Supplier<MaterialConfig> getConfiguration() {
-        return null;
     }
 
     @Override

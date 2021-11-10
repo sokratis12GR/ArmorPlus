@@ -1,3 +1,10 @@
+ArmorPlus 1.16.5-16.5.1
+----------------------------
+
+* Changed mod's short description to more accurately represent the mod and what it does.
+* Fixed crashes related at empty buff lists, which were causing all non effect armors to cause crashes.
+* Removed any and all configs related to the armors directly (didn't actually work so there was no point in them), kept the world gen configs.
+
 ArmorPlus 1.16.5-16.5.0
 ----------------------------
 

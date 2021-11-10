@@ -65,7 +65,6 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.LOGGER;
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
@@ -288,7 +287,7 @@ public class ModGlobalEvents {
 
         //disable for now, but don't remove
         final boolean isRunning = false;
-        if (isRunning && config.enableThankYouAdvancement.get() && !e.getWorld().isClientSide()) {
+        if (isRunning && !e.getWorld().isClientSide()) {
             if (e.getEntity() instanceof ServerPlayerEntity) {
                 ServerPlayerEntity player = (ServerPlayerEntity) e.getEntity();
                 CompoundNBT nbt = player.serializeNBT();

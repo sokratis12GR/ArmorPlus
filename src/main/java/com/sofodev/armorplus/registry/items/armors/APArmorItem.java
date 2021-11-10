@@ -34,19 +34,18 @@ public class APArmorItem extends ArmorItem {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isClientSide) {
             //           if (APConfig.ServerConfig.redstoneMaterial.enableArmorEffects.get()) {
-            if (mat.getConfiguration().get().enableArmorEffects.get()) {
-                mat.getBuffInstances().get().forEach(instance -> {
-                    if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
-                        if (instance.getBuff().requiresFullSet()) {
-                            if (areExactMatch(mat, player)) {
-                                instance.onArmorTick(stack, world, player);
-                            }
-                        } else {
+            if (mat.getBuffInstances().get() == null || mat.getBuffInstances().get().isEmpty()) return;
+            mat.getBuffInstances().get().forEach(instance -> {
+                if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
+                    if (instance.getBuff().requiresFullSet()) {
+                        if (areExactMatch(mat, player)) {
                             instance.onArmorTick(stack, world, player);
                         }
+                    } else {
+                        instance.onArmorTick(stack, world, player);
                     }
-                });
-            }
+                }
+            });
             //         }
         }
     }

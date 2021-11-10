@@ -23,18 +23,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.PICKAXE;
 import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static java.util.Arrays.asList;
 
 public class APPickaxeItem extends PickaxeItem implements Tool {
 
     public static Map<Block, IItemProvider> SMELTING_MAP = registerSmeltingMap();
+    private final IAPTool mat;
+
+    public APPickaxeItem(IAPTool mat) {
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed(), new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
+        this.mat = mat;
+    }
 
     private static Map<Block, IItemProvider> registerSmeltingMap() {
         HashMap<Block, IItemProvider> map = new HashMap<>();
-        List<? extends String> input = config.autoSmeltingInput.get();
-        List<? extends String> output = config.autoSmeltingOutput.get();
+        List<? extends String> input = asList("minecraft:iron_ore", "minecraft:gold_ore",
+                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
+                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
+                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks");
+        List<? extends String> output = asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
+                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
+                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
+                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks");
         if (input.size() != output.size()) {
             throw new IllegalArgumentException("autoSmeltingInput and autoSmeltingOutput in config/ap_config.toml must have the same size!");
         }
@@ -50,13 +62,6 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
             }
         }
         return map;
-    }
-
-    private final IAPTool mat;
-
-    public APPickaxeItem(IAPTool mat) {
-        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed(), new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
-        this.mat = mat;
     }
 
     @Override

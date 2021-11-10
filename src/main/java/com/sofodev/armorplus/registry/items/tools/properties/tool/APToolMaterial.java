@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 import java.util.*;
 import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.items.APRarity.OBSIDIAN;
 import static com.sofodev.armorplus.registry.items.APRarity.*;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
@@ -45,7 +44,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
-            if (player instanceof PlayerEntity && config.infusedLavaMaterial.enableWeaponEffects.get()) {
+            if (player instanceof PlayerEntity) {
                 SMELTING_MAP.forEach((block, item) -> {
                     if (block == state.getBlock()) {
                         world.destroyBlock(pos, false, player);
@@ -85,13 +84,11 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
-            if (config.superStarMaterial.enableWeaponEffects.get()) {
-                if (state == STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                    player.spawnAtLocation(new ItemStack(NETHERRACK, 1), 0);
-                }
-                if (state == SAND.defaultBlockState() && random.nextInt(3) == 1) {
-                    player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
-                }
+            if (state == STONE.defaultBlockState() && random.nextInt(3) == 1) {
+                player.spawnAtLocation(new ItemStack(NETHERRACK, 1), 0);
+            }
+            if (state == SAND.defaultBlockState() && random.nextInt(3) == 1) {
+                player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
             }
         }
     },
@@ -101,11 +98,10 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
-            if (config.enderDragonMaterial.enableWeaponEffects.get()) {
-                if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                    player.spawnAtLocation(new ItemStack(Items.ENDER_PEARL, 1), 0);
-                }
+            if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
+                player.spawnAtLocation(new ItemStack(Items.ENDER_PEARL, 1), 0);
             }
+
         }
     },
     SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(
