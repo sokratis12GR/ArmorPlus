@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:ender_dragon_helmet"
+                        "items": ["armorplus:ender_dragon_helmet"]
                     },
                     {
-                        "item": "armorplus:ender_dragon_chestplate"
+                        "items":[ "armorplus:ender_dragon_chestplate"]
                     },
                     {
-                        "item": "armorplus:ender_dragon_leggings"
+                        "items": ["armorplus:ender_dragon_leggings"]
                     },
                     {
-                        "item": "armorplus:ender_dragon_boots"
+                        "items":[ "armorplus:ender_dragon_boots"]
                     }
                 ]
             }

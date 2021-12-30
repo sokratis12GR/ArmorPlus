@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:coal_sword"
+                        "items": ["armorplus:coal_sword"]
                     },
                     {
-                        "item": "armorplus:coal_battle_axe"
+                        "items": ["armorplus:coal_battle_axe"]
                     },
                     {
-                        "item": "armorplus:coal_mace"
+                        "items": ["armorplus:coal_mace"]
                     }
                 ]
             }

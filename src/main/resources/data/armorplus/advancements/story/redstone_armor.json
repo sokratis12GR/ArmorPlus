@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:redstone_helmet"
+                        "items":[ "armorplus:redstone_helmet"]
                     },
                     {
-                        "item": "armorplus:redstone_chestplate"
+                        "items":[ "armorplus:redstone_chestplate"]
                     },
                     {
-                        "item": "armorplus:redstone_leggings"
+                        "items": ["armorplus:redstone_leggings"]
                     },
                     {
-                        "item": "armorplus:redstone_boots"
+                        "items": ["armorplus:redstone_boots"]
                     }
                 ]
             }

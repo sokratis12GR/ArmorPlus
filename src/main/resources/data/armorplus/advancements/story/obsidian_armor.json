@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:obsidian_helmet"
+                        "items": ["armorplus:obsidian_helmet"]
                     },
                     {
-                        "item": "armorplus:obsidian_chestplate"
+                        "items":[ "armorplus:obsidian_chestplate"]
                     },
                     {
-                        "item": "armorplus:obsidian_leggings"
+                        "items":[ "armorplus:obsidian_leggings"]
                     },
                     {
-                        "item": "armorplus:obsidian_boots"
+                        "items": ["armorplus:obsidian_boots"]
                     }
                 ]
             }

@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:redstone_sword"
+                        "items": ["armorplus:redstone_sword"]
                     },
                     {
-                        "item": "armorplus:redstone_battle_axe"
+                        "items": ["armorplus:redstone_battle_axe"]
                     },
                     {
-                        "item": "armorplus:redstone_mace"
+                        "items":[ "armorplus:redstone_mace"]
                     }
                 ]
             }

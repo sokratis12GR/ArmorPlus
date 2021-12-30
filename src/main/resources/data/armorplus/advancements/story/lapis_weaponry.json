@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:lapis_sword"
+                        "items": ["armorplus:lapis_sword"]
                     },
                     {
-                        "item": "armorplus:lapis_battle_axe"
+                        "items":[ "armorplus:lapis_battle_axe"]
                     },
                     {
-                        "item": "armorplus:lapis_mace"
+                        "items":[ "armorplus:lapis_mace"]
                     }
                 ]
             }

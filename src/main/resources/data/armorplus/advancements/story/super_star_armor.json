@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:super_star_helmet"
+                        "items":[ "armorplus:super_star_helmet"]
                     },
                     {
-                        "item": "armorplus:super_star_chestplate"
+                        "items": ["armorplus:super_star_chestplate"]
                     },
                     {
-                        "item": "armorplus:super_star_leggings"
+                        "items":[ "armorplus:super_star_leggings"]
                     },
                     {
-                        "item": "armorplus:super_star_boots"
+                        "items":[ "armorplus:super_star_boots"]
                     }
                 ]
             }

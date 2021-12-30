@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:obsidian_sword"
+                        "items":[ "armorplus:obsidian_sword"]
                     },
                     {
-                        "item": "armorplus:obsidian_battle_axe"
+                        "items": ["armorplus:obsidian_battle_axe"]
                     },
                     {
-                        "item": "armorplus:obsidian_mace"
+                        "items":[ "armorplus:obsidian_mace"]
                     }
                 ]
             }

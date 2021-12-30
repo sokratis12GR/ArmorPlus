@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:emerald_helmet"
+                        "items": ["armorplus:emerald_helmet"]
                     },
                     {
-                        "item": "armorplus:emerald_chestplate"
+                        "items":[ "armorplus:emerald_chestplate"]
                     },
                     {
-                        "item": "armorplus:emerald_leggings"
+                        "items": ["armorplus:emerald_leggings"]
                     },
                     {
-                        "item": "armorplus:emerald_boots"
+                        "items":[ "armorplus:emerald_boots"]
                     }
                 ]
             }

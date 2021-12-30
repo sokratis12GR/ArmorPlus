@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:coal_helmet"
+                        "items":[ "armorplus:coal_helmet"]
                     },
                     {
-                        "item": "armorplus:coal_chestplate"
+                        "items":[ "armorplus:coal_chestplate"]
                     },
                     {
-                        "item": "armorplus:coal_leggings"
+                        "items":[ "armorplus:coal_leggings"]
                     },
                     {
-                        "item": "armorplus:coal_boots"
+                        "items":[ "armorplus:coal_boots"]
                     }
                 ]
             }

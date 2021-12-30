@@ -1,0 +1,34 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "armorplus:crafting/shapeless/storage/obsidian_to_item"
+        ]
+    },
+    "criteria": {
+        "has_req": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "armorplus:compressed_obsidian"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "armorplus:crafting/shapeless/storage/obsidian_to_item"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_req",
+            "has_the_recipe"
+        ]
+    ]
+}

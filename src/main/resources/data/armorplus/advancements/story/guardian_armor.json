@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:guardian_helmet"
+                        "items":[ "armorplus:guardian_helmet"]
                     },
                     {
-                        "item": "armorplus:guardian_chestplate"
+                        "items":[ "armorplus:guardian_chestplate"]
                     },
                     {
-                        "item": "armorplus:guardian_leggings"
+                        "items": ["armorplus:guardian_leggings"]
                     },
                     {
-                        "item": "armorplus:guardian_boots"
+                        "items": ["armorplus:guardian_boots"]
                     }
                 ]
             }

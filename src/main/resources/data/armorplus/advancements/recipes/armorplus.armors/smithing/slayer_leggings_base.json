@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:soul_slayer"
+            "items": [
+              "armorplus:soul_slayer"
+            ]
           }
         ]
       }

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:purple_castle_block"
+            "items": [
+              "armorplus:purple_castle_block"
+            ]
           }
         ]
       }

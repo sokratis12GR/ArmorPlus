@@ -1,12 +1,12 @@
 modLoader="javafml" #mandatory
-loaderVersion="[34,36)" #mandatory (28 is current forge version)
+loaderVersion="[39,)" #mandatory (28 is current forge version)
 license="GNU Lesser General Public License v3.0"
 issueTrackerURL="https://github.com/sokratis12GR/ArmorPlus/issues" #optional
 [[mods]] #mandatory
 modId="armorplus" #mandatory
 version="${file.jarVersion}" #mandatory
 displayName="ArmorPlus" #mandatory
-updateJSONURL="https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.16.5/armorplus-updater.json" #optional
+updateJSONURL="https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.18.1/armorplus-updater.json" #optional
 displayURL="https://www.curseforge.com/minecraft/mc-mods/armorplus" #optional
 logoFile="headerimg.jpg"
 credits="To everyone who helped with the translation of ArmorPlus: https://bit.ly/armorplus-credits" #optional
@@ -19,26 +19,26 @@ description='''
     # the modid of the dependency
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[34,36)" #mandatory
+    versionRange="[39,)" #mandatory
     ordering="NONE"
     side="BOTH"
 # Here's another dependency
 [[dependencies.armorplus]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"
 # ArmorPlus
 [[dependencies.armorplus]]
     modId="thedragonlib"
     mandatory=true
-    versionRange="[1.16.3-1.1.0,)"
+    versionRange="[1.18.1-1.0.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.armorplus]]
     modId="geckolib3"
     mandatory=true
-    versionRange="[3.0.0,)"
+    versionRange="[3.0.3,)"
     ordering="NONE"
     side="BOTH"

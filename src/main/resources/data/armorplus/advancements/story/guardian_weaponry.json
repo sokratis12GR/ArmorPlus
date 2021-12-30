@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:guardian_sword"
+                        "items": ["armorplus:guardian_sword"]
                     },
                     {
-                        "item": "armorplus:guardian_battle_axe"
+                        "items": ["armorplus:guardian_battle_axe"]
                     },
                     {
-                        "item": "armorplus:guardian_mace"
+                        "items":[ "armorplus:guardian_mace"]
                     }
                 ]
             }

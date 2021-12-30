@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:soul_enderman"
+            "items": [
+              "armorplus:soul_enderman"
+            ]
           }
         ]
       }

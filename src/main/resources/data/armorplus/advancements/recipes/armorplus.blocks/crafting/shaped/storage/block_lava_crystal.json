@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:lava_crystal"
+            "items": [
+              "armorplus:lava_crystal"
+            ]
           }
         ]
       }

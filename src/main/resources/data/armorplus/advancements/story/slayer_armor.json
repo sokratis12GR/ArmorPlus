@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:slayer_helmet"
+                        "items":[ "armorplus:slayer_helmet"]
                     },
                     {
-                        "item": "armorplus:slayer_chestplate"
+                        "items": ["armorplus:slayer_chestplate"]
                     },
                     {
-                        "item": "armorplus:slayer_leggings"
+                        "items": ["armorplus:slayer_leggings"]
                     },
                     {
-                        "item": "armorplus:slayer_boots"
+                        "items":[ "armorplus:slayer_boots"]
                     }
                 ]
             }

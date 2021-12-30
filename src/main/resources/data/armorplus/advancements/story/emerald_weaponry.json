@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:emerald_sword"
+                        "items": ["armorplus:emerald_sword"]
                     },
                     {
-                        "item": "armorplus:emerald_battle_axe"
+                        "items": ["armorplus:emerald_battle_axe"]
                     },
                     {
-                        "item": "armorplus:emerald_mace"
+                        "items":[ "armorplus:emerald_mace"]
                     }
                 ]
             }

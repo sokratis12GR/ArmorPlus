@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:lapis_helmet"
+                        "items": ["armorplus:lapis_helmet"]
                     },
                     {
-                        "item": "armorplus:lapis_chestplate"
+                        "items":[ "armorplus:lapis_chestplate"]
                     },
                     {
-                        "item": "armorplus:lapis_leggings"
+                        "items": ["armorplus:lapis_leggings"]
                     },
                     {
-                        "item": "armorplus:lapis_boots"
+                        "items": ["armorplus:lapis_boots"]
                     }
                 ]
             }

@@ -24,13 +24,13 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:ender_dragon_sword"
+                        "items":[ "armorplus:ender_dragon_sword"]
                     },
                     {
-                        "item": "armorplus:ender_dragon_battle_axe"
+                        "items": ["armorplus:ender_dragon_battle_axe"]
                     },
                     {
-                        "item": "armorplus:ender_dragon_mace"
+                        "items":[ "armorplus:ender_dragon_mace"]
                     }
                 ]
             }

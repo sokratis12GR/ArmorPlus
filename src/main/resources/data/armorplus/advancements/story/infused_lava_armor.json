@@ -24,16 +24,16 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "armorplus:infused_lava_helmet"
+                        "items": ["armorplus:infused_lava_helmet"]
                     },
                     {
-                        "item": "armorplus:infused_lava_chestplate"
+                        "items": ["armorplus:infused_lava_chestplate"]
                     },
                     {
-                        "item": "armorplus:infused_lava_leggings"
+                        "items":[ "armorplus:infused_lava_leggings"]
                     },
                     {
-                        "item": "armorplus:infused_lava_boots"
+                        "items":[ "armorplus:infused_lava_boots"]
                     }
                 ]
             }

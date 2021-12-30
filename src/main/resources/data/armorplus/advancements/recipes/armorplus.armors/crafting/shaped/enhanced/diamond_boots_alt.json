@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:en_diamond"
+            "items": [
+              "armorplus:en_diamond"
+            ]
           }
         ]
       }

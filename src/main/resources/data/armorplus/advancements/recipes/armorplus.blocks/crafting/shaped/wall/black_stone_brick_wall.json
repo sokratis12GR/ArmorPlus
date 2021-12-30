@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "armorplus:black_stone_brick"
+            "items": [
+              "armorplus:black_stone_brick"
+            ]
           }
         ]
       }
