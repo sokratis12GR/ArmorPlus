@@ -1,2 +1,2 @@
-Copyright (C) 2021 Sokratis Fotkatzikis, All Rights Reserved.
+Copyright (C) 2018-2022 Sokratis Fotkatzikis, All Rights Reserved.
 ___
